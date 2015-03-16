@@ -1,7 +1,7 @@
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 5/5] dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers
-Date: Mon, 16 Mar 2015 06:55:11 +0100
-Message-ID: <1426485311-31428-6-git-send-email-s.hauer@pengutronix.de>
+Subject: [PATCH 2/5] clk: mediatek: Add reset controller support
+Date: Mon, 16 Mar 2015 06:55:08 +0100
+Message-ID: <1426485311-31428-3-git-send-email-s.hauer@pengutronix.de>
 References: <1426485311-31428-1-git-send-email-s.hauer@pengutronix.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1426485311-31428-1-git-send-email-s.hauer@pengutronix.de>
@@ -10,147 +10,147 @@ To: Mike Turquette <mturquette@linaro.org>
 Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
+The pericfg and infracfg units also provide reset lines to several
+other SoC internal units. Add support for the reset controller.
+
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- .../bindings/arm/mediatek/mediatek,apmixedsys.txt  | 23 +++++++++++++++++
- .../bindings/arm/mediatek/mediatek,infracfg.txt    | 30 ++++++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,pericfg.txt     | 30 ++++++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,topckgen.txt    | 23 +++++++++++++++++
- 4 files changed, 106 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+ drivers/clk/mediatek/Makefile  |  1 +
+ drivers/clk/mediatek/clk-mtk.h | 10 +++++
+ drivers/clk/mediatek/reset.c   | 99 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 110 insertions(+)
+ create mode 100644 drivers/clk/mediatek/reset.c
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index c384e97..0b6f1c3 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -1 +1,2 @@
+ obj-y += clk-mtk.o clk-pll.o clk-gate.o
++obj-$(CONFIG_RESET_CONTROLLER) += reset.o
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index c660a9e..fc98101 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -152,4 +152,14 @@ void __init mtk_clk_register_plls(struct device_node *node,
+ 		const struct mtk_pll_data *plls, int num_plls,
+ 		struct clk_onecell_data *clk_data);
+ 
++#ifdef CONFIG_RESET_CONTROLLER
++void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs);
++#else
++static inline void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs)
++{
++}
++#endif
++
+ #endif /* __DRV_CLK_MTK_H */
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
 new file mode 100644
-index 0000000..5af6d73
+index 0000000..3a85a53
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-@@ -0,0 +1,23 @@
-+Mediatek apmixedsys controller
-+==============================
++++ b/drivers/clk/mediatek/reset.c
+@@ -0,0 +1,99 @@
++/*
++ * Copyright (c) 2014 MediaTek Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
 +
-+The Mediatek apmixedsys controller provides the PLLs to the system.
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 +
-+Required Properties:
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/reset-controller.h>
++#include <linux/slab.h>
 +
-+- compatible: Should be:
-+	- "mediatek,mt8135-apmixedsys"
-+	- "mediatek,mt8173-apmixedsys"
-+- #clock-cells: Must be 1
++#include "clk-mtk.h"
 +
-+The apmixedsys controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+Example:
-+
-+apmixedsys: apmixedsys@10209000 {
-+	compatible = "mediatek,mt8173-apmixedsys";
-+	reg = <0 0x10209000 0 0x1000>;
-+	#clock-cells = <1>;
++struct mtk_reset {
++	struct regmap *regmap;
++	int regofs;
++	struct reset_controller_dev rcdev;
 +};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-new file mode 100644
-index 0000000..684da473
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-@@ -0,0 +1,30 @@
-+Mediatek infracfg controller
-+============================
 +
-+The Mediatek infracfg controller provides various clocks and reset
-+outputs to the system.
++static int mtk_reset_assert(struct reset_controller_dev *rcdev,
++			      unsigned long id)
++{
++	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
 +
-+Required Properties:
++	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
++			BIT(id % 32), ~0);
++}
 +
-+- compatible: Should be:
-+	- "mediatek,mt8135-infracfg", "syscon"
-+	- "mediatek,mt8173-infracfg", "syscon"
-+- #clock-cells: Must be 1
-+- #reset-cells: Must be 1
++static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
++				unsigned long id)
++{
++	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
 +
-+The infracfg controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+Also it uses the common reset controller binding from
-+Documentation/devicetree/bindings/reset/reset.txt.
-+The available reset outputs are defined in
-+dt-bindings/reset-controller/mt*-resets.h
++	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
++			BIT(id % 32), 0);
++}
 +
-+Example:
++static int mtk_reset(struct reset_controller_dev *rcdev,
++			      unsigned long id)
++{
++	int ret;
 +
-+infracfg: infracfg@10001000 {
-+	compatible = "mediatek,mt8173-infracfg", "syscon";
-+	reg = <0 0x10001000 0 0x1000>;
-+	#clock-cells = <1>;
-+	#reset-cells = <1>;
++	ret = mtk_reset_assert(rcdev, id);
++	if (ret)
++		return ret;
++
++	return mtk_reset_deassert(rcdev, id);
++}
++
++static struct reset_control_ops mtk_reset_ops = {
++	.assert = mtk_reset_assert,
++	.deassert = mtk_reset_deassert,
++	.reset = mtk_reset,
 +};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
-new file mode 100644
-index 0000000..fdb45c6
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
-@@ -0,0 +1,30 @@
-+Mediatek pericfg controller
-+===========================
 +
-+The Mediatek pericfg controller provides various clocks and reset
-+outputs to the system.
++void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs)
++{
++	struct mtk_reset *data;
++	int ret;
++	struct regmap *regmap;
 +
-+Required Properties:
++	regmap = syscon_node_to_regmap(np);
++	if (IS_ERR(regmap)) {
++		pr_err("Cannot find regmap for %s: %ld\n", np->full_name,
++				PTR_ERR(regmap));
++		return;
++	}
 +
-+- compatible: Should be:
-+	- "mediatek,mt8135-pericfg", "syscon"
-+	- "mediatek,mt8173-pericfg", "syscon"
-+- #clock-cells: Must be 1
-+- #reset-cells: Must be 1
++	data = kzalloc(sizeof(*data), GFP_KERNEL);
++	if (!data)
++		return;
 +
-+The pericfg controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+Also it uses the common reset controller binding from
-+Documentation/devicetree/bindings/reset/reset.txt.
-+The available reset outputs are defined in
-+dt-bindings/reset-controller/mt*-resets.h
++	data->regmap = regmap;
++	data->regofs = regofs;
++	data->rcdev.owner = THIS_MODULE;
++	data->rcdev.nr_resets = num_regs * 32;
++	data->rcdev.ops = &mtk_reset_ops;
++	data->rcdev.of_node = np;
 +
-+Example:
-+
-+pericfg: pericfg@10003000 {
-+	compatible = "mediatek,mt8173-pericfg", "syscon";
-+	reg = <0 0x10003000 0 0x1000>;
-+	#clock-cells = <1>;
-+	#reset-cells = <1>;
-+};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-new file mode 100644
-index 0000000..a425248
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-@@ -0,0 +1,23 @@
-+Mediatek topckgen controller
-+============================
-+
-+The Mediatek topckgen controller provides various clocks to the system.
-+
-+Required Properties:
-+
-+- compatible: Should be:
-+	- "mediatek,mt8135-topckgen"
-+	- "mediatek,mt8173-topckgen"
-+- #clock-cells: Must be 1
-+
-+The topckgen controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+Example:
-+
-+topckgen: topckgen@10000000 {
-+	compatible = "mediatek,mt8173-topckgen";
-+	reg = <0 0x10000000 0 0x1000>;
-+	#clock-cells = <1>;
-+};
++	ret = reset_controller_register(&data->rcdev);
++	if (ret) {
++		pr_err("could not register reset controller: %d\n", ret);
++		kfree(data);
++		return;
++	}
++}
 -- 
 2.1.4
