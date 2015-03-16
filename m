@@ -1,69 +1,112 @@
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 1/5] clk: mediatek: Add initial common clock support for
- Mediatek SoCs.
-Date: Mon, 16 Mar 2015 06:34:19 +0100
-Message-ID: <20150316053419.GE24798@pengutronix.de>
-References: <1424605765-19751-1-git-send-email-s.hauer@pengutronix.de>
- <1424605765-19751-2-git-send-email-s.hauer@pengutronix.de>
- <55031468.2040109@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Subject: [PATCH v7]: clk: Add common clock support for Mediatek MT8135 and MT8173
+Date: Mon, 16 Mar 2015 06:55:06 +0100
+Message-ID: <1426485311-31428-1-git-send-email-s.hauer@pengutronix.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <55031468.2040109@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, YH Chen <yh.chen@mediatek.com>, kernel@pengutronix.de, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+To: Mike Turquette <mturquette@linaro.org>
+Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Mar 13, 2015 at 05:46:32PM +0100, Matthias Brugger wrote:
->=20
->=20
-> On 22/02/15 12:49, Sascha Hauer wrote:
-> > From: James Liao <jamesjj.liao@mediatek.com>
->=20
-> > diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/=
-clk-mtk.h
-> > new file mode 100644
-> > index 0000000..c7c0d35
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mtk.h
->=20
-> [...]
->=20
-> > +void __init mtk_clk_register_plls(struct device_node *node,
-> > +		const struct mtk_pll_data *plls, int num_plls);
-> > +
-> > +#ifdef CONFIG_RESET_CONTROLLER
-> > +void mtk_register_reset_controller(struct device_node *np,
-> > +			unsigned int num_regs, int regofs);
-> > +#else
-> > +static inline void mtk_register_reset_controller(struct device_nod=
-e *np,
-> > +			unsigned int num_regs, int regofs)
-> > +{
-> > +}
-> > +#endif
->=20
-> This lines should only be added once in [2/5], compiling ends with:
->=20
-> In file included from drivers/clk/mediatek/clk-mtk.c:24:0:
-> drivers/clk/mediatek/clk-mtk.h:168:20: error: redefinition of =E2=80=98=
-mtk_register_reset_controller=E2=80=99
-> drivers/clk/mediatek/clk-mtk.h:158:20: note: previous definition of =E2=
-=80=98mtk_register_reset_controller=E2=80=99 was here
+The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
 
-Hm, seems to be a rebase accident. Fixed, thanks
+  Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
+
+are available in the git repository at:
+
+  git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v7
+
+for you to fetch changes up to 147dc836b1206e8118509229594d82ff8ad3b99e:
+
+  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-16 06:31:37 +0100)
+
+----------------------------------------------------------------
+This patchset contains the initial common clock support for Mediatek SoCs.
+Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+and clock gates.
 
 Sascha
 
---=20
-Pengutronix e.K.                           |                           =
-  |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0  =
-  |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-555=
-5 |
+Changes in v7:
+- fix duplicate definition/declaration of mtk_register_reset_controller
+- fix pd_reg offset of tvdpll
+- make clk initialization arrays const
+
+Changes in v6:
+- rework PLL support, only a fraction of original size now
+- Move binding docs to Documentation/devicetree/bindings/arm/mediatek since
+  the units are not really clock specific (they contain reset controllers)
+
+Changes in v5:
+- Add reset controller support for pericfg/infracfg
+- Use regmap for the gates
+- remove now unnecessary spinlock for the gates
+- Add PMIC wrapper support as of v3
+
+Changes in v4:
+- Support MT8173 platform.
+- Re-ordered patchset. driver/clk/Makefile in 2nd patch.
+- Extract the common part definition(mtk_gate/mtk_pll/mtk_mux) from
+  clk-mt8135.c/clk-mt8173.c to clk-mtk.c.
+- Refine code. Rmove unnessacary debug information and unsed defines,
+  add prefix "mtk_" for static functions.
+- Remove flag CLK_IGNORE_UNUSED and set flag CLK_SET_RATE_PARENT on
+  gate/mux/fixed-factor.
+- Use spin_lock_irqsave(&clk_ops_lock, flags) instead of mtk_clk_lock.
+- Example above include a node for the clock controller itself, followed
+  by the i2c controller example above.
+
+Changes in v3:
+- Rebase to 3.19-rc1.
+- Refine code. Remove unneed functions, debug logs and comments, and fine tune
+  error logs.
+
+Changes in v2:
+- Re-ordered patchset. Fold include/dt-bindings and DT document in 1st patch.
+
+----------------------------------------------------------------
+James Liao (3):
+      clk: mediatek: Add initial common clock support for Mediatek SoCs.
+      clk: mediatek: Add basic clocks for Mediatek MT8135.
+      clk: mediatek: Add basic clocks for Mediatek MT8173.
+
+Sascha Hauer (2):
+      clk: mediatek: Add reset controller support
+      dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  23 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |  30 +
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |  30 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |  23 +
+ drivers/clk/Makefile                               |   1 +
+ drivers/clk/mediatek/Makefile                      |   4 +
+ drivers/clk/mediatek/clk-gate.c                    | 137 ++++
+ drivers/clk/mediatek/clk-gate.h                    |  49 ++
+ drivers/clk/mediatek/clk-mt8135.c                  | 640 ++++++++++++++++
+ drivers/clk/mediatek/clk-mt8173.c                  | 826 +++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     | 197 +++++
+ drivers/clk/mediatek/clk-mtk.h                     | 165 ++++
+ drivers/clk/mediatek/clk-pll.c                     | 325 ++++++++
+ drivers/clk/mediatek/reset.c                       |  99 +++
+ include/dt-bindings/clock/mt8135-clk.h             | 190 +++++
+ include/dt-bindings/clock/mt8173-clk.h             | 231 ++++++
+ .../dt-bindings/reset-controller/mt8135-resets.h   |  64 ++
+ .../dt-bindings/reset-controller/mt8173-resets.h   |  63 ++
+ 18 files changed, 3097 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+ create mode 100644 drivers/clk/mediatek/Makefile
+ create mode 100644 drivers/clk/mediatek/clk-gate.c
+ create mode 100644 drivers/clk/mediatek/clk-gate.h
+ create mode 100644 drivers/clk/mediatek/clk-mt8135.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8173.c
+ create mode 100644 drivers/clk/mediatek/clk-mtk.c
+ create mode 100644 drivers/clk/mediatek/clk-mtk.h
+ create mode 100644 drivers/clk/mediatek/clk-pll.c
+ create mode 100644 drivers/clk/mediatek/reset.c
+ create mode 100644 include/dt-bindings/clock/mt8135-clk.h
+ create mode 100644 include/dt-bindings/clock/mt8173-clk.h
+ create mode 100644 include/dt-bindings/reset-controller/mt8135-resets.h
+ create mode 100644 include/dt-bindings/reset-controller/mt8173-resets.h
