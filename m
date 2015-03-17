@@ -1,15 +1,16 @@
-From: Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
-Subject: Re: [PATCH 35/35 linux-next] pinctrl: constify of_device_id array
-Date: Tue, 17 Mar 2015 09:34:00 +0100
-Message-ID: <5507E6F8.9060109@st.com>
-References: <1426533469-25458-1-git-send-email-fabf@skynet.be>
- <1426535949-26107-1-git-send-email-fabf@skynet.be>
- <1426535949-26107-4-git-send-email-fabf@skynet.be>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH 3/5] clk: mediatek: Add basic clocks for Mediatek MT8135.
+Date: Tue, 17 Mar 2015 10:47:38 +0100
+Message-ID: <20150317094738.GF4927@pengutronix.de>
+References: <1426485311-31428-1-git-send-email-s.hauer@pengutronix.de>
+ <1426485311-31428-4-git-send-email-s.hauer@pengutronix.de>
+ <20150316070339.GA25487@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1426535949-26107-4-git-send-email-fabf-AgBVmzD5pcezQB+pC5nmwQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20150316070339.GA25487-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,38 +20,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Fabian Frederick <fabf-AgBVmzD5pcezQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Uwe =?iso-8859-15?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, YH Chen <yh.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, Mar 16, 2015 at 08:03:39AM +0100, Uwe Kleine-K=F6nig wrote:
+> Hello Sascha,
+> =
+
+> On Mon, Mar 16, 2015 at 06:55:09AM +0100, Sascha Hauer wrote:
+> > +static const char *axi_parents[] __initconst =3D {
+> > +	"clk26m",
+> > +	"syspll_d3",
+> > +	"syspll_d4",
+> > +	"syspll_d6",
+> > +	"univpll_d5",
+> > +	"univpll2_d2",
+> > +	"syspll_d3p5"
+> > +};
+> __initconst should only be used for const data, but this array isn't
+> const. Only the strings the pointer in this array point to are constant.
+
+That may be true, but the way it's currently done compiles through
+without warnings with CONFIG_DEBUG_SECTION_MISMATCH enabled.
+
+> =
+
+> So you have to use either
+> =
+
+> 	static const char *axi_parents[] __initdata =3D {
+
+This results in:
+
+drivers/clk/mediatek/clk-mt8173.c:515:20: error: i2s3_b_ck_parents causes a=
+ section type conflict with infra_clks
+ static const char *i2s3_b_ck_parents[] __initdata =3D {
+
+which can be avoided with static const char * const axi_parents[] __initdata
+
+> =
+
+> or
+> =
+
+> 	static const char * const axi_parents[] __initconst =3D {
+
+Which results in:
+
+drivers/clk/mediatek/clk-mt8173.c:568:2: warning: initialization discards '=
+const' qualifier from pointer target type
+  MUX_GATE(TOP_HDCP_24M_SEL, "hdcp_24m_sel", hdcp_24m_parents, 0x00d0, 16, =
+2, 23),
+
+With the following patch this can also be resolved. Until this is merged
+(or I have the OK from Mike to add this in front of this series) I
+prefer to keep it like it is at the moment.
+
+(BTW I compile tested this with ARM multi_v7_defconfig, no additional
+warnings are introduced with this patch)
+
+Sascha
+
+-------------------------------8<-----------------------------------
+
+>From 49f76867545d2f402c9684bb26339054b2151977 Mon Sep 17 00:00:00 2001
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Date: Tue, 17 Mar 2015 10:43:41 +0100
+Subject: [PATCH] clk: make initialization arrays const char * const *
+
+Not only the initialization arrays should be const, but also the
+strings inside the arrays. This allows users to put the parent_name
+arrays into __initdata or __initconst.
+
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+ drivers/clk/clk-composite.c  | 2 +-
+ drivers/clk/clk-mux.c        | 4 ++--
+ include/linux/clk-provider.h | 8 ++++----
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
+index 956b7e5..077f4c714 100644
+--- a/drivers/clk/clk-composite.c
++++ b/drivers/clk/clk-composite.c
+@@ -188,7 +188,7 @@ static void clk_composite_disable(struct clk_hw *hw)
+ }
+ =
+
+ struct clk *clk_register_composite(struct device *dev, const char *name,
+-			const char **parent_names, int num_parents,
++			const char * const *parent_names, int num_parents,
+ 			struct clk_hw *mux_hw, const struct clk_ops *mux_ops,
+ 			struct clk_hw *rate_hw, const struct clk_ops *rate_ops,
+ 			struct clk_hw *gate_hw, const struct clk_ops *gate_ops,
+diff --git a/drivers/clk/clk-mux.c b/drivers/clk/clk-mux.c
+index 69a094c..1fa2a8d 100644
+--- a/drivers/clk/clk-mux.c
++++ b/drivers/clk/clk-mux.c
+@@ -114,7 +114,7 @@ const struct clk_ops clk_mux_ro_ops =3D {
+ EXPORT_SYMBOL_GPL(clk_mux_ro_ops);
+ =
+
+ struct clk *clk_register_mux_table(struct device *dev, const char *name,
+-		const char **parent_names, u8 num_parents, unsigned long flags,
++		const char * const *parent_names, u8 num_parents, unsigned long flags,
+ 		void __iomem *reg, u8 shift, u32 mask,
+ 		u8 clk_mux_flags, u32 *table, spinlock_t *lock)
+ {
+@@ -166,7 +166,7 @@ struct clk *clk_register_mux_table(struct device *dev, =
+const char *name,
+ EXPORT_SYMBOL_GPL(clk_register_mux_table);
+ =
+
+ struct clk *clk_register_mux(struct device *dev, const char *name,
+-		const char **parent_names, u8 num_parents, unsigned long flags,
++		const char * const *parent_names, u8 num_parents, unsigned long flags,
+ 		void __iomem *reg, u8 shift, u8 width,
+ 		u8 clk_mux_flags, spinlock_t *lock)
+ {
+diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
+index 5591ea7..3bdae71 100644
+--- a/include/linux/clk-provider.h
++++ b/include/linux/clk-provider.h
+@@ -209,7 +209,7 @@ struct clk_ops {
+ struct clk_init_data {
+ 	const char		*name;
+ 	const struct clk_ops	*ops;
+-	const char		**parent_names;
++	const char * const	*parent_names;
+ 	u8			num_parents;
+ 	unsigned long		flags;
+ };
+@@ -426,12 +426,12 @@ extern const struct clk_ops clk_mux_ops;
+ extern const struct clk_ops clk_mux_ro_ops;
+ =
+
+ struct clk *clk_register_mux(struct device *dev, const char *name,
+-		const char **parent_names, u8 num_parents, unsigned long flags,
++		const char * const *parent_names, u8 num_parents, unsigned long flags,
+ 		void __iomem *reg, u8 shift, u8 width,
+ 		u8 clk_mux_flags, spinlock_t *lock);
+ =
+
+ struct clk *clk_register_mux_table(struct device *dev, const char *name,
+-		const char **parent_names, u8 num_parents, unsigned long flags,
++		const char * const *parent_names, u8 num_parents, unsigned long flags,
+ 		void __iomem *reg, u8 shift, u32 mask,
+ 		u8 clk_mux_flags, u32 *table, spinlock_t *lock);
+ =
+
+@@ -518,7 +518,7 @@ struct clk_composite {
+ };
+ =
+
+ struct clk *clk_register_composite(struct device *dev, const char *name,
+-		const char **parent_names, int num_parents,
++		const char * const *parent_names, int num_parents,
+ 		struct clk_hw *mux_hw, const struct clk_ops *mux_ops,
+ 		struct clk_hw *rate_hw, const struct clk_ops *rate_ops,
+ 		struct clk_hw *gate_hw, const struct clk_ops *gate_ops,
+-- =
+
+2.1.4
 
 
-On 03/16/2015 08:59 PM, Fabian Frederick wrote:
-> of_device_id is always used as const.
-> (See driver.of_match_table and open firmware functions)
->
-> Signed-off-by: Fabian Frederick <fabf-AgBVmzD5pcezQB+pC5nmwQ@public.gmane.org>
-> ---
->   drivers/pinctrl/bcm/pinctrl-bcm2835.c       | 2 +-
->   drivers/pinctrl/mediatek/pinctrl-mt8135.c   | 2 +-
->   drivers/pinctrl/mediatek/pinctrl-mt8173.c   | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-armada-370.c  | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-armada-375.c  | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-armada-38x.c  | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-armada-39x.c  | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-armada-xp.c   | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-kirkwood.c    | 2 +-
->   drivers/pinctrl/mvebu/pinctrl-orion.c       | 2 +-
->   drivers/pinctrl/pinctrl-as3722.c            | 2 +-
->   drivers/pinctrl/pinctrl-at91.c              | 4 ++--
->   drivers/pinctrl/pinctrl-palmas.c            | 2 +-
->   drivers/pinctrl/pinctrl-single.c            | 4 ++--
->   drivers/pinctrl/pinctrl-st.c                | 2 +-
->
+-- =
 
-For the pinctrl-st driver, you can add my:
-
-Acked-by: Maxime Coquelin <maxime.coquelin-qxv4g6HH51o@public.gmane.org>
-
-Thanks!
-Maxime
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
