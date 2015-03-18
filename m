@@ -1,99 +1,223 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-	<u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 2/2] rtc: mediatek: Add MT63xx RTC driver
-Date: Wed, 18 Mar 2015 08:42:32 +0100
-Message-ID: <20150318074232.GO10068@pengutronix.de>
-References: <1422437276-41334-1-git-send-email-eddie.huang@mediatek.com>
- <1422437276-41334-3-git-send-email-eddie.huang@mediatek.com>
- <20150316153048.GC10068@pengutronix.de>
- <1426595474.24415.18.camel@mtksdaap41>
- <20150317134345.GG10068@pengutronix.de>
- <1426649260.3662.5.camel@mtksdaap41>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/5] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Wed, 18 Mar 2015 19:22:29 +0800
+Message-ID: <1426677749.22581.38.camel@mhfsdcap03>
+References: <1425638900-24989-1-git-send-email-yong.wu@mediatek.com>
+	<1425638900-24989-3-git-send-email-yong.wu@mediatek.com>
+	<CAAFQd5ASywTX7P9L8cogBbBTra0W1=oVxeWfK5=K7L+SR2xaFA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1426649260.3662.5.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, devicetree@vger.kernel.org, rtc-linux@googlegroups.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, yh.chen@mediatek.com, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Grant Likely <grant.likely@linaro.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAAFQd5ASywTX7P9L8cogBbBTra0W1=oVxeWfK5=K7L+SR2xaFA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Eddie,
+Hi Tomasz,
+   Thanks very much for your review. please help check below.
+The others I will fix in the next version.
 
-On Wed, Mar 18, 2015 at 11:27:40AM +0800, Eddie Huang wrote:
-> On Tue, 2015-03-17 at 14:43 +0100, Uwe Kleine-K=F6nig wrote:
-> > On Tue, Mar 17, 2015 at 08:31:14PM +0800, Eddie Huang wrote:
-> > > On Mon, 2015-03-16 at 16:30 +0100, Uwe Kleine-K=F6nig wrote:
-> > > > On Wed, Jan 28, 2015 at 05:27:56PM +0800, Eddie Huang wrote:
-> > > > > [...]
-> > > > > +static irqreturn_t rtc_irq_handler_thread(int irq, void *dat=
-a)
-> > > > > +{
-> > > > > +	struct mt6397_rtc *rtc =3D data;
-> > > > > +	u16 irqsta, irqen;
-> > > > > +
-> > > > > +	mutex_lock(&rtc->lock);
-> > > > > +	irqsta =3D rtc_read(rtc, RTC_IRQ_STA);
-> > > > Do you really need to lock for a single read access?
-> > >=20
-> > > I think this lock is necessary, because other thread may access r=
-tc
-> > > register at the same time, for example, call mtk_rtc_set_alarm to=
- modify
-> > > alarm time.
-> > That would be a valid reason if mtk_rtc_set_alarm touched that regi=
-ster
-> > twice in a single critical section and the handler must not read th=
-e
-> > value of the first write. Otherwise it should be fine, shouldn't it=
-?
-> >=20
->=20
-> My original though is if disable alarm in mtk_rtc_set_alarm function,
-> RTC_IRQ_STA may be affected, this is why I add mutex. After checking
-> with designer, RTC_IRQ_STA will not be affected. I will remove the
-> mutex.
-Even if IRQ_STA is changed there is no problem. With the lock the
-following can happen:
+Hi Robin,
+   There are some place I would like you can have a look and give me
+some suggestion.
 
-Either the irq thread comes first:
+On Wed, 2015-03-11 at 19:53 +0900, Tomasz Figa wrote:
+> Hi,
+> 
+> Please find next part of my comments inline.
+> 
+> On Fri, Mar 6, 2015 at 7:48 PM,  <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> [snip]
+> 
+> > +/*
+> > + * pimudev is a global var for dma_alloc_coherent.
+> > + * It is not accepatable, we will delete it if "domain_alloc" is enabled
+> 
+> It looks like we indeed need to use dma_alloc_coherent() and we don't
+> have a good way to pass the device pointer to domain_init callback.
+> 
+> If you don't expect SoCs in the nearest future to have multiple M4U
+> blocks, then I guess this global variable could stay, after changing
+> the comment into an explanation why it's correct. Also it should be
+> moved to the top of the file, below #include directives, as this is
+> where usually global variables are located.
+@Robin,
+     We have merged this patch[0] in order to delete the global var, But
+it seems that your patch of "arm64:IOMMU" isn't based on it right row.
+it will build fail.
 
-	thread1			thread2
+[0]:http://lists.linuxfoundation.org/pipermail/iommu/2015-January/011939.html
 
-	lock
-	rtc_read
-	unlock   ------------>  lock
-				dosomething with IRQ_STA
-				unlock
-
-or the other thread comes first:
-
-	thread1			thread2
-
-				lock
-				dosomething with IRQ_STA
-	lock   <-------------	unlock
-	rtc_read
-	unlock
-
-So thread1 either reads the old or the new value of IRQ_STA.
-
-Without locking you have the same! Either the write in thread2 comes
-first or not. And depending on that you either read the new or the old
-value respectively.
-
-Of course this assumes that a write is atomic in the sense that if you
-update a value from 0x01 to 0x10 there is no point in time a reader can
-see 0x00 or 0x11. But this is usually given. Also reading the register
-in question must not have side effects that affect the other threads.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
-    |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
+> > + */
+> > +static struct device *pimudev;
+> > +
+[snip]
+> > +
+> > +static int mtk_iommu_attach_device(struct iommu_domain *domain,
+> > +                                  struct device *dev)
+> > +{
+> > +       unsigned long flags;
+> > +       struct mtk_iommu_domain *priv = domain->priv;
+> > +       struct mtk_iommu_info *piommu = priv->piommuinfo;
+> > +       struct of_phandle_args out_args = {0};
+> > +       struct device *imudev;
+> > +       unsigned int i = 0;
+> > +
+> > +       if (!piommu)
+> 
+> Could you explain when this can happen?
+	If we call arch_setup_dma_ops to create a iommu domain,
+it will enter iommu_dma_attach_device, then enter here. At that time, we
+don't add the private data to this "struct iommu_domain *".
+@Robin, Could this be improved?
+> 
+> > +               goto imudev;
+> 
+> return 0;
+> 
+> > +       else
+> 
+> No else needed.
+> 
+> > +               imudev = piommu->dev;
+> > +
+> > +       spin_lock_irqsave(&priv->portlock, flags);
+> 
+> What is protected by this spinlock?
+	We will write a register of the local arbiter while config port. If
+some modules are in the same local arbiter, it may be overwrite. so I
+add it here.
+> 
+> > +
+> > +       while (!of_parse_phandle_with_args(dev->of_node, "iommus",
+> > +                                          "#iommu-cells", i, &out_args)) {
+> > +               if (1 == out_args.args_count) {
+> 
+> Can we be sure that this is actually referring to our IOMMU?
+> 
+> Maybe this should be rewritten to
+> 
+> if (out_args.np != imudev->of_node)
+>         continue;
+> if (out_args.args_count != 1) {
+>         dev_err(imudev, "invalid #iommu-cells property for IOMMU %s\n",
+> 
+> }
+> 
+> > +                       unsigned int portid = out_args.args[0];
+> > +
+> > +                       dev_dbg(dev, "iommu add port:%d\n", portid);
+> 
+> imudev should be used here instead of dev.
+> 
+> > +
+> > +                       mtk_iommu_config_port(piommu, portid);
+> > +
+> > +                       if (i == 0)
+> > +                               dev->archdata.dma_ops =
+> > +                                       piommu->dev->archdata.dma_ops;
+> 
+> Shouldn't this be set automatically by IOMMU or DMA mapping core?
+@Robin, 
+     In the original "arm_iommu_attach_device" of arm/mm, it will call
+set_dma_ops to add iommu_ops for each iommu device.
+But iommu_dma_attach_device don't help this, so I have to add it here.
+Could this be improved?
+> 
+> > +               }
+> > +               i++;
+> > +       }
+> > +
+> > +       spin_unlock_irqrestore(&priv->portlock, flags);
+> > +
+> > +imudev:
+> > +       return 0;
+> > +}
+> > +
+> > +static void mtk_iommu_detach_device(struct iommu_domain *domain,
+> > +                                   struct device *dev)
+> > +{
+> 
+> No hardware (de)configuration or clean-up necessary?
+I will add it. Actually we design like this:If a device have attached to
+iommu domain, it won't detach from it.
+> 
+> > +}
+> > +
+[snip]
+> 
+> > +
+> > +       piommu->protect_va = devm_kmalloc(piommu->dev, MTK_PROTECT_PA_ALIGN*2,
+> 
+> style: Operators like * should have space on both sides.
+> 
+> > +                                         GFP_KERNEL);
+> 
+> Shouldn't dma_alloc_coherent() be used for this?
+     We don't care the data in it. I think they are the same. Could you
+help tell me why dma_alloc_coherent may be better.
+> 
+> > +       if (!piommu->protect_va)
+> > +               goto protect_err;
+> 
+> Please return -ENOMEM here directly, as there is nothing to clean up
+> in this case.
+> 
+[snip]
+> 
+> > +               dev_err(piommu->dev, "IRQ request %d failed\n",
+> > +                       piommu->irq);
+> > +               goto hw_err;
+> > +       }
+> > +
+> > +       iommu_set_fault_handler(domain, mtk_iommu_fault_handler, piommu);
+> 
+> I don't see any other drivers doing this. Isn't this for upper layers,
+> so that they can set their own generic fault handlers?
+     I think that this function is related with the iommu domain, we
+have only one multimedia iommu domain. so I add it after the iommu
+domain are created.
+> 
+> > +
+> > +       dev_set_drvdata(piommu->dev, piommu);
+> 
+> This should be set before allowing the interrupt to fire. In other
+> words, the driver should be fully set up at the time of enabling the
+> IRQ.
+> 
+> > +
+> > +       return 0;
+> 
+> style: Missing blank line.
+> 
+> > +hw_err:
+> > +       arch_teardown_dma_ops(piommu->dev);
+> > +pte_err:
+> > +       kmem_cache_destroy(piommu->m4u_pte_kmem);
+> > +protect_err:
+> > +       dev_err(piommu->dev, "probe error\n");
+> 
+> Please replace this with specific messages for all errors (in case the
+> called function doesn't already print one like kmalloc and friends).
+> 
+> > +       return 0;
+> 
+> Returning 0, which means success, doesn't look like a good idea for
+> signalling a failure. Please return the correct error code as received
+> from function that errors out if possible.
+> 
+> End of part 3.
+> 
+> Best regards,
+> Tomasz
