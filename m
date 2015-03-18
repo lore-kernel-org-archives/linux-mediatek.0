@@ -1,93 +1,55 @@
 From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH 2/2] rtc: mediatek: Add MT63xx RTC driver
-Date: Wed, 18 Mar 2015 11:27:40 +0800
-Message-ID: <1426649260.3662.5.camel@mtksdaap41>
-References: <1422437276-41334-1-git-send-email-eddie.huang@mediatek.com>
-	 <1422437276-41334-3-git-send-email-eddie.huang@mediatek.com>
-	 <20150316153048.GC10068@pengutronix.de>
-	 <1426595474.24415.18.camel@mtksdaap41>
-	 <20150317134345.GG10068@pengutronix.de>
+Subject: [PATCH v2 0/3] Add Mediatek SoC RTC driver
+Date: Wed, 18 Mar 2015 13:45:34 +0800
+Message-ID: <1426657537-41414-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150317134345.GG10068@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro Zummo <a.zummo@towertech.it>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, devicetree@vger.kernel.org, rtc-linux@googlegroups.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, yh.chen@mediatek.com, linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>, Grant Likely <grant.likely@linaro.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Andrew Morton <akpm@linux-foundation.org>, "David S. Miller" <davem@davemloft.net>, Greg KH <gregkh@linuxfoundation.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Joe Perches <joe@perches.com>, Tejun Heo <tj@kernel.org>, Jingoo Han <jg1.han@samsung.com>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Uwe=20Kleine-K=C3=83=C2=B6nig?= <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Uwe,
+RTC is one submodule of Mediatek MT6397 PMIC chip[1]. This series 
+support RTC driver that work with Mediatek SoC like MT8135, MT8173.
+It implements second counter and also provide alarm function.
 
-On Tue, 2015-03-17 at 14:43 +0100, Uwe Kleine-K=C3=B6nig wrote:
-> Hello Eddie,
->=20
-> On Tue, Mar 17, 2015 at 08:31:14PM +0800, Eddie Huang wrote:
-> > On Mon, 2015-03-16 at 16:30 +0100, Uwe Kleine-K=C3=B6nig wrote:
-> > > On Wed, Jan 28, 2015 at 05:27:56PM +0800, Eddie Huang wrote:
-> > > > [...]
-> > > > +static u16 rtc_read(struct mt6397_rtc *rtc, u32 offset)
-> > > rtc_read is a bad name for a driver. There are already 6 function=
-s with
-> > > this name in the kernel. Better use a unique prefix.
-> >=20
-> > I will use prefix mtk_
-> I would prefer a prefix that is unique to the driver. "mtk_" doesn't
-> work to distinguish between the rtc and a (say) spi driver. What you
-> want here is that if someone reports a bug on any mailinglist with a
-> backtrace you are able to immediately see which driver is affected.
->=20
+This series base on 4.0-rc1, and Sascha's PMIC mfd patch[2]. Test ok 
+on MT8173 platform.
 
-My meaning is mtk_rtc_read, mtk_rtc_write.
+[1] https://lkml.org/lkml/2015/1/23/325
+[2] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-February/324985.html
 
-> > > > [...]
-> > > > +static irqreturn_t rtc_irq_handler_thread(int irq, void *data)
-> > > > +{
-> > > > +	struct mt6397_rtc *rtc =3D data;
-> > > > +	u16 irqsta, irqen;
-> > > > +
-> > > > +	mutex_lock(&rtc->lock);
-> > > > +	irqsta =3D rtc_read(rtc, RTC_IRQ_STA);
-> > > Do you really need to lock for a single read access?
-> >=20
-> > I think this lock is necessary, because other thread may access rtc
-> > register at the same time, for example, call mtk_rtc_set_alarm to m=
-odify
-> > alarm time.
-> That would be a valid reason if mtk_rtc_set_alarm touched that regist=
-er
-> twice in a single critical section and the handler must not read the
-> value of the first write. Otherwise it should be fine, shouldn't it?
->=20
+Change in v2:
+1. Move RTC address and interrupt to mt6397-core.c, and register 
+   these resource in mfd_cell.
+   http://lists.infradead.org/pipermail/linux-arm-kernel/2015-February/323239.html
+2. Remove dt-binding document due to register resouce in mfd_cell, not from 
+   device tree.
+3. Update MAINTAINER file to add Mediatek RTC mainainter.
+4. Add prefix mtk_ to some internal functions.
+5. Fix racy condition
+6. Check return value of regmap_read and regmap_write
+7. Remove some unnecessary register readback, clear, then write.
+8. Add disable alarm in mtk_rtc_set_alarm function
 
-My original though is if disable alarm in mtk_rtc_set_alarm function,
-RTC_IRQ_STA may be affected, this is why I add mutex. After checking
-with designer, RTC_IRQ_STA will not be affected. I will remove the
-mutex.
+v1:
+http://lists.infradead.org/pipermail/linux-arm-kernel/2015-January/320424.html
 
-> > > > +static int mtk_rtc_set_time(struct device *dev, struct rtc_tim=
-e *tm)
-> > > > +{
-> > > > +	struct mt6397_rtc *rtc =3D dev_get_drvdata(dev);
-> > > > +
-> > > > +	tm->tm_year -=3D RTC_MIN_YEAR_OFFSET;
-> > > > +	tm->tm_mon++;
-> > > > +	mutex_lock(&rtc->lock);
-> > > > +	rtc_write(rtc, RTC_TC_YEA, tm->tm_year);
-> > > > +	rtc_write(rtc, RTC_TC_MTH, tm->tm_mon);
-> > > > +	rtc_write(rtc, RTC_TC_DOM, tm->tm_mday);
-> > > > +	rtc_write(rtc, RTC_TC_HOU, tm->tm_hour);
-> > > > +	rtc_write(rtc, RTC_TC_MIN, tm->tm_min);
-> > > > +	rtc_write(rtc, RTC_TC_SEC, tm->tm_sec);
-> > > Is this racy? I.e. what happens if RTC_TC_SEC overflows just befo=
-re you
-> > > write to it but after you wrote RTC_TC_MIN?
-> >=20
-> > register value will write to hardware after rtc_write_trigger, so t=
-he
-> > racy condition not exist.
-> Ah, it seems the hardware guys did their job. Nice.
->=20
-> Best regards
-> Uwe
->=20
+Eddie Huang (2):
+  mfd: provide RTC resource in MT6397 MFD
+  MAINTAINERS: add Mediatek RTC driver
+
+Tianping Fang (1):
+  rtc: mediatek: Add MT6397 RTC driver
+
+ MAINTAINERS               |   7 +
+ drivers/mfd/mt6397-core.c |  15 ++
+ drivers/rtc/Kconfig       |  10 +
+ drivers/rtc/Makefile      |   1 +
+ drivers/rtc/rtc-mt6397.c  | 454 ++++++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 487 insertions(+)
+ create mode 100644 drivers/rtc/rtc-mt6397.c
+
+-- 
+1.8.1.1.dirty
