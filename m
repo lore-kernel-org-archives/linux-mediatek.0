@@ -1,87 +1,45 @@
-From: Howard Chen <howard.chen@linaro.org>
-Subject: [RFC] ARM: dts: mt8173: Add psci-0.2 cpuidle support
-Date: Wed, 18 Mar 2015 14:00:32 +0800
-Message-ID: <1426658432-29333-1-git-send-email-howard.chen@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Howard Chen <howard.chen@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v2 3/4] cpufreq: mediatek: add Mediatek cpufreq driver
+Date: Wed, 18 Mar 2015 12:29:43 +0530
+Message-ID: <CAKohpon8kXzfeKUUwrRhuei0cY9iVbMHfBjDwXW=M2SAYHdtYQ@mail.gmail.com>
+References: <1425458956-20665-1-git-send-email-pi-cheng.chen@linaro.org>
+	<1425458956-20665-4-git-send-email-pi-cheng.chen@linaro.org>
+	<CAKohpo=c2t4_2hdPP-vQM7xewK5SXaHBGNA9PhvTwDv3++pSTg@mail.gmail.com>
+	<CALx668VypyWbVuph0ir0SRt4kqASvYzwBuyc_r5tFeoHi+HieA@mail.gmail.com>
+	<CAKohpomxXTP6NdPoSmB=eq2sFqqgskS5vYtDNAT6a0VL5K6dCg@mail.gmail.com>
+	<CALx668VFRdeWcK_gKhJrJehnaH5uDpA0m2OfHLqPVUq8oocXaw@mail.gmail.com>
+	<CAKohpokT7fSniPGX2BfM61AtMoMCxEP8WDtbZ34bozUXscEWyg@mail.gmail.com>
+	<20150311105307.GW28806@sirena.org.uk>
+	<CAKohpom4riOhzc3hK8B2tiSwGx0zG96C7QNeQB0yZaPMd_OpLw@mail.gmail.com>
+	<20150311124555.GB28806@sirena.org.uk>
+	<CAKohpok=8vU6Nr21n49MHoyk=REEMkuibVk9L+0L7uLnFj==AQ@mail.gmail.com>
+	<CALx668U7EoiMB8D0Num5w9oC0zZkC55uKaSOLrrBhKnLXUtoOQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CALx668U7EoiMB8D0Num5w9oC0zZkC55uKaSOLrrBhKnLXUtoOQ@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Chen Fan <fan.chen@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, linux-arm-kernel@li
 List-Id: linux-mediatek@lists.infradead.org
 
-add device tree for psci-0.2 on mt8173 platform
-add device tree for cupidle-arm64 on mt8173 platform
+On 12 March 2015 at 16:45, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+> The voltages of the two regulators need to be always under a limitation:
+> 100mV < Vsram - Vproc < 200mV
+> For now, I just calculate the OPPs of Vsram from OPPs of Vproc.
+>
+> Another thing I should mention, if the voltage difference of two adjacent
+> OPPs is greater than 100mV, we need to set the regulator to some
+> voltages which are not in OPP table considering the limitation above.
+> I think that will make it more difficult to model such flow in a generic
+> framework.
 
-Signed-off-by: Howard Chen <howard.chen@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 30 ++++++++++++++++++++++++++----
- 1 file changed, 26 insertions(+), 4 deletions(-)
+Actually the problem is that OPP tables are insufficient for such cases,
+and we are adding work-arounds to fix that. Though it will get fixed
+with the new bindings we are adding.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 8554ec3..96dff1e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -48,6 +48,8 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x000>;
-+			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -55,6 +57,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu2: cpu@100 {
-@@ -62,6 +65,7 @@
- 			compatible = "arm,cortex-a57";
- 			reg = <0x100>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
- 		};
- 
- 		cpu3: cpu@101 {
-@@ -69,15 +73,33 @@
- 			compatible = "arm,cortex-a57";
- 			reg = <0x101>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
- 		};
-+
-+		idle-states {
-+			entry-method = "arm,psci-0.2";
-+
-+			CPU_SLEEP_0_0: cpu-sleep-0-0 {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x0010000>;
-+				entry-latency-us = <600>;
-+				exit-latency-us = <600>;
-+				min-residency-us = <1200>;
-+			};
-+
-+			CLUSTER_SLEEP_0: cluster-sleep-0 {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x1010000>;
-+				entry-latency-us = <800>;
-+				exit-latency-us = <1000>;
-+				min-residency-us = <2000>;
-+				wakeup-latency-us = <1000>;
-+			};
- 	};
- 
- 	psci {
--		compatible = "arm,psci";
-+		compatible = "arm,psci-0.2";
- 		method = "smc";
--		cpu_suspend   = <0x84000001>;
--		cpu_off	      = <0x84000002>;
--		cpu_on	      = <0x84000003>;
- 	};
- 
- 	uart_clk: dummy26m {
--- 
-1.9.1
+I am confused on what we should be doing here. Even if you write
+your own driver, you will be abusing DT with incorrect information.
+
+Even if you go around adding a new driver, I would like you to fallback
+to cpufreq-dt ones the new OPP bindings are in place.
