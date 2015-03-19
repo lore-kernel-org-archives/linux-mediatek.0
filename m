@@ -1,156 +1,44 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 3/6] clk: mediatek: Add reset controller support
-Date: Thu, 19 Mar 2015 09:42:07 +0100
-Message-ID: <1426754530-3137-4-git-send-email-s.hauer@pengutronix.de>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+	<u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 1/6] clk: make strings in parent name arrays const
+Date: Thu, 19 Mar 2015 09:48:41 +0100
+Message-ID: <20150319084841.GT10068@pengutronix.de>
 References: <1426754530-3137-1-git-send-email-s.hauer@pengutronix.de>
+ <1426754530-3137-2-git-send-email-s.hauer@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1426754530-3137-1-git-send-email-s.hauer@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <1426754530-3137-2-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mike Turquette <mturquette@linaro.org>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The pericfg and infracfg units also provide reset lines to several
-other SoC internal units. Add support for the reset controller.
+Hello,
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- drivers/clk/mediatek/Makefile  |  1 +
- drivers/clk/mediatek/clk-mtk.h | 10 +++++
- drivers/clk/mediatek/reset.c   | 99 ++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 110 insertions(+)
- create mode 100644 drivers/clk/mediatek/reset.c
+On Thu, Mar 19, 2015 at 09:42:05AM +0100, Sascha Hauer wrote:
+> The clk functions and structs declare the parent_name arrays as
+> 'const char **parent_names' which means the parent name strings
+> are const, but the array itself is not. Use
+> 'const char * const * parent_names' instead which also makes
+> the array const. This allows us to put the parent_name arrays into
+> the __initconst section.
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+looks sensible:
 
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index c384e97..0b6f1c3 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -1 +1,2 @@
- obj-y += clk-mtk.o clk-pll.o clk-gate.o
-+obj-$(CONFIG_RESET_CONTROLLER) += reset.o
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 5aaba81..5a6b5dd 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -152,4 +152,14 @@ void __init mtk_clk_register_plls(struct device_node *node,
- 		const struct mtk_pll_data *plls, int num_plls,
- 		struct clk_onecell_data *clk_data);
- 
-+#ifdef CONFIG_RESET_CONTROLLER
-+void mtk_register_reset_controller(struct device_node *np,
-+			unsigned int num_regs, int regofs);
-+#else
-+static inline void mtk_register_reset_controller(struct device_node *np,
-+			unsigned int num_regs, int regofs)
-+{
-+}
-+#endif
-+
- #endif /* __DRV_CLK_MTK_H */
-diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-new file mode 100644
-index 0000000..3a85a53
---- /dev/null
-+++ b/drivers/clk/mediatek/reset.c
-@@ -0,0 +1,99 @@
-+/*
-+ * Copyright (c) 2014 MediaTek Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-+
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/reset-controller.h>
-+#include <linux/slab.h>
-+
-+#include "clk-mtk.h"
-+
-+struct mtk_reset {
-+	struct regmap *regmap;
-+	int regofs;
-+	struct reset_controller_dev rcdev;
-+};
-+
-+static int mtk_reset_assert(struct reset_controller_dev *rcdev,
-+			      unsigned long id)
-+{
-+	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
-+
-+	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
-+			BIT(id % 32), ~0);
-+}
-+
-+static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
-+				unsigned long id)
-+{
-+	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
-+
-+	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
-+			BIT(id % 32), 0);
-+}
-+
-+static int mtk_reset(struct reset_controller_dev *rcdev,
-+			      unsigned long id)
-+{
-+	int ret;
-+
-+	ret = mtk_reset_assert(rcdev, id);
-+	if (ret)
-+		return ret;
-+
-+	return mtk_reset_deassert(rcdev, id);
-+}
-+
-+static struct reset_control_ops mtk_reset_ops = {
-+	.assert = mtk_reset_assert,
-+	.deassert = mtk_reset_deassert,
-+	.reset = mtk_reset,
-+};
-+
-+void mtk_register_reset_controller(struct device_node *np,
-+			unsigned int num_regs, int regofs)
-+{
-+	struct mtk_reset *data;
-+	int ret;
-+	struct regmap *regmap;
-+
-+	regmap = syscon_node_to_regmap(np);
-+	if (IS_ERR(regmap)) {
-+		pr_err("Cannot find regmap for %s: %ld\n", np->full_name,
-+				PTR_ERR(regmap));
-+		return;
-+	}
-+
-+	data = kzalloc(sizeof(*data), GFP_KERNEL);
-+	if (!data)
-+		return;
-+
-+	data->regmap = regmap;
-+	data->regofs = regofs;
-+	data->rcdev.owner = THIS_MODULE;
-+	data->rcdev.nr_resets = num_regs * 32;
-+	data->rcdev.ops = &mtk_reset_ops;
-+	data->rcdev.of_node = np;
-+
-+	ret = reset_controller_register(&data->rcdev);
-+	if (ret) {
-+		pr_err("could not register reset controller: %d\n", ret);
-+		kfree(data);
-+		return;
-+	}
-+}
--- 
-2.1.4
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+It would be nice to have this for more clock types (which of course
+shouldn't delay this patch).
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
+    |
+Industrial Linux Solutions                 | http://www.pengutronix.de/=
+  |
