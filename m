@@ -1,63 +1,33 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v1] Mediatek SCPSYS power domain support
-Date: Thu, 26 Mar 2015 10:45:41 +0100
-Message-ID: <20150326094541.GD4946@pengutronix.de>
-References: <1426002063-25713-1-git-send-email-s.hauer@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1426002063-25713-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH 02/13] thermal: trivial: fix typo in comment
+Date: Thu, 26 Mar 2015 16:53:49 +0100
+Message-ID: <1427385240-6086-3-git-send-email-s.hauer@pengutronix.de>
+References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-pm@vger.kernel.org
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Kevin,
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/thermal/thermal_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-since you have reviewed the first version of this series, could you give
-a reviewed-by or acked-by?
-
-Thanks
- Sascha
-
-On Tue, Mar 10, 2015 at 04:40:59PM +0100, Sascha Hauer wrote:
-> This series adds support for the MediaTek SCPSYS unit.
-> 
-> The SCPSYS unit handles several power management related tasks such
-> as thermal measurement, DVFS, interrupt filter and low level sleep
-> control.
-> 
-> The initial support only contains the generic power domain handling.
-> This is needed to turn on power to the different power domains.
-> 
-> The driver is quite straight forward now. Due to the lack of a better
-> place I have put it to drivers/soc/mediatek. As the SCPSYS unit has
-> several other tasks that also do not fit into some specific subsystem
-> this probably is a good place for this driver.
-> 
-> Please review, any input welcome.
-> 
-> Sascha
-> 
-> changes since RFC:
-> 
-> - add a commit log to driver patch
-> - drop manipulating infracfg registers for now, can be added (properly)
->   later
-> - Add warning messages when errors occur
-> - add NULL pointer check for kmalloc
-> - Enable all power domains when PM is disabled to allow consumers to work
-> 
-> 
-> 
-
+diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+index 0e4ad7c..c735ac4c 100644
+--- a/drivers/thermal/thermal_core.c
++++ b/drivers/thermal/thermal_core.c
+@@ -402,7 +402,7 @@ static void handle_thermal_trip(struct thermal_zone_device *tz, int trip)
+ }
+ 
+ /**
+- * thermal_zone_get_temp() - returns its the temperature of thermal zone
++ * thermal_zone_get_temp() - returns the temperature of a thermal zone
+  * @tz: a valid pointer to a struct thermal_zone_device
+  * @temp: a valid pointer to where to store the resulting temperature.
+  *
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.1.4
+
