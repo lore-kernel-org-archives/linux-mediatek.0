@@ -1,41 +1,83 @@
-From: Punit Agrawal <punit.agrawal@arm.com>
-Subject: Re: [PATCH 01/13] thermal: Make temperatures consistently unsigned long
-Date: Fri, 27 Mar 2015 10:18:14 +0000
-Message-ID: <9hhzj6y217d.fsf@e105922-lin.cambridge.arm.com>
-References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
-	<1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 3/6] clk: mediatek: Add reset controller support
+Date: Fri, 27 Mar 2015 14:32:16 +0100
+Message-ID: <55155BE0.8060601@gmail.com>
+References: <1426754530-3137-1-git-send-email-s.hauer@pengutronix.de> <1426754530-3137-4-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de> (Sascha
-	Hauer's message of "Thu, 26 Mar 2015 16:53:48 +0100")
-Sender: linux-pm-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1426754530-3137-4-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>, Mike Turquette <mturquette@linaro.org>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
 
-Sascha Hauer <s.hauer@pengutronix.de> writes:
 
-> The thermal framework uses int, long and unsigned long for temperatures
-> in millicelsius. The majority of functions uses unsigned long, so change
-> the remaining functions to use this type aswell.
->
+On 19/03/15 09:42, Sascha Hauer wrote:
+> The pericfg and infracfg units also provide reset lines to several
+> other SoC internal units. Add support for the reset controller.
+
+This messages is a bit confusing, could you explain better what the patch does and how this interacts with pericfg and infracfg?
+
+> 
 > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-
-I'd suggest changing to long instead. It would allow the use of the
-thermal framework in environments where temperatures are below 0C -
-quite easily reached in many parts of the world.
-
-Regards,
-Punit
-
 > ---
->  drivers/thermal/thermal_core.c | 10 +++++-----
->  include/linux/thermal.h        |  6 +++---
->  2 files changed, 8 insertions(+), 8 deletions(-)
->
+>  drivers/clk/mediatek/Makefile  |  1 +
+>  drivers/clk/mediatek/clk-mtk.h | 10 +++++
+>  drivers/clk/mediatek/reset.c   | 99 ++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 110 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/reset.c
+> 
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index c384e97..0b6f1c3 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -1 +1,2 @@
+>  obj-y += clk-mtk.o clk-pll.o clk-gate.o
+> +obj-$(CONFIG_RESET_CONTROLLER) += reset.o
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 5aaba81..5a6b5dd 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -152,4 +152,14 @@ void __init mtk_clk_register_plls(struct device_node *node,
+>  		const struct mtk_pll_data *plls, int num_plls,
+>  		struct clk_onecell_data *clk_data);
+>  
+> +#ifdef CONFIG_RESET_CONTROLLER
+> +void mtk_register_reset_controller(struct device_node *np,
+> +			unsigned int num_regs, int regofs);
+> +#else
+> +static inline void mtk_register_reset_controller(struct device_node *np,
+> +			unsigned int num_regs, int regofs)
+> +{
+> +}
+> +#endif
+> +
+>  #endif /* __DRV_CLK_MTK_H */
+> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> new file mode 100644
+> index 0000000..3a85a53
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/reset.c
+> @@ -0,0 +1,99 @@
+> +/*
+> + * Copyright (c) 2014 MediaTek Inc.
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
-[...]
+Do we need this?
 
+Cheers,
+Matthias
