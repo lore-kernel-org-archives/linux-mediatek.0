@@ -1,28 +1,59 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 35/35 linux-next] pinctrl: constify of_device_id array
-Date: Fri, 27 Mar 2015 10:00:31 +0100
-Message-ID: <CACRpkdZbvHxtupVsXJwK8-XZ-dOScgpWFJWPExQ5U44FRXZymw@mail.gmail.com>
-References: <1426533469-25458-1-git-send-email-fabf@skynet.be>
-	<1426535949-26107-1-git-send-email-fabf@skynet.be>
-	<1426535949-26107-4-git-send-email-fabf@skynet.be>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1426535949-26107-4-git-send-email-fabf@skynet.be>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Fabian Frederick <fabf@skynet.be>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, kernel@stlinux.com, linux-mediatek@lists.infradead.org
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v9]: clk: Add common clock support for Mediatek MT8135 and MT8173
+Date: Fri, 27 Mar 2015 10:18:39 +0100
+Message-ID: <1427447925-18030-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Mar 16, 2015 at 8:59 PM, Fabian Frederick <fabf@skynet.be> wrote:
+This patchset contains the initial common clock support for Mediatek SoCs.
+Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+and clock gates.
 
-> of_device_id is always used as const.
-> (See driver.of_match_table and open firmware functions)
->
-> Signed-off-by: Fabian Frederick <fabf@skynet.be>
+Changes in v9:
+- rename 'lock' to 'mt81xx_clk_lock' to get better lockdep output
 
-Patch applied with the ACKs. Had to do some fixup on some
-MTK controllers, no big deal.
+Changes in v8:
+- add patch to allow to put parent_name arrays in __initconst
+- put parent_name arrays into __initconst
 
-Yours,
-Linus Walleij
+Changes in v7:
+- fix duplicate definition/declaration of mtk_register_reset_controller
+- fix pd_reg offset of tvdpll
+- make clk initialization arrays const
+
+Changes in v6:
+- rework PLL support, only a fraction of original size now
+- Move binding docs to Documentation/devicetree/bindings/arm/mediatek since
+  the units are not really clock specific (they contain reset controllers)
+
+Changes in v5:
+- Add reset controller support for pericfg/infracfg
+- Use regmap for the gates
+- remove now unnecessary spinlock for the gates
+- Add PMIC wrapper support as of v3
+
+Changes in v4:
+- Support MT8173 platform.
+- Re-ordered patchset. driver/clk/Makefile in 2nd patch.
+- Extract the common part definition(mtk_gate/mtk_pll/mtk_mux) from
+  clk-mt8135.c/clk-mt8173.c to clk-mtk.c.
+- Refine code. Rmove unnessacary debug information and unsed defines,
+  add prefix "mtk_" for static functions.
+- Remove flag CLK_IGNORE_UNUSED and set flag CLK_SET_RATE_PARENT on
+  gate/mux/fixed-factor.
+- Use spin_lock_irqsave(&clk_ops_lock, flags) instead of mtk_clk_lock.
+- Example above include a node for the clock controller itself, followed
+  by the i2c controller example above.
+
+Changes in v3:
+- Rebase to 3.19-rc1.
+- Refine code. Remove unneed functions, debug logs and comments, and fine tune
+  error logs.
+
+Changes in v2:
+- Re-ordered patchset. Fold include/dt-bindings and DT document in 1st patch.
+
+Sascha
