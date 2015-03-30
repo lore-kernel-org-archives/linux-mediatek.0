@@ -1,82 +1,162 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v5 2/3] I2C: mediatek: Add driver for MediaTek I2C
- controller
-Date: Mon, 30 Mar 2015 19:23:09 +0200
-Message-ID: <20150330172309.GB9742@pengutronix.de>
-References: <1426917922-61356-1-git-send-email-eddie.huang@mediatek.com>
- <1426917922-61356-3-git-send-email-eddie.huang@mediatek.com>
- <20150323084237.GG9742@pengutronix.de>
- <1427703252.26464.14.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1427703252.26464.14.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Uwe =?iso-8859-15?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel@li
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH 3/6] clk: mediatek: Add reset controller support
+Date: Mon, 30 Mar 2015 19:40:42 +0200
+Message-ID: <1427737245-4064-4-git-send-email-s.hauer@pengutronix.de>
+References: <1427737245-4064-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1427737245-4064-1-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Mar 30, 2015 at 04:14:12PM +0800, Eddie Huang wrote:
-> Hi Sascha,
-> 
-> > 
-> > [...]
-> > 
-> > > +	if (i2c->speed_hz > 400000)
-> > > +		control_reg |= I2C_CONTROL_RS;
-> > > +	if (i2c->op == I2C_MASTER_WRRD)
-> > > +		control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
-> > > +	mtk_i2c_writew(control_reg, i2c, OFFSET_CONTROL);
-> > > +
-> > > +	/* set start condition */
-> > > +	if (i2c->speed_hz <= 100000)
-> > > +		mtk_i2c_writew(I2C_ST_START_CON, i2c, OFFSET_EXT_CONF);
-> > > +	else
-> > > +		mtk_i2c_writew(I2C_FS_START_CON, i2c, OFFSET_EXT_CONF);
-> > > +
-> > > +	if (~control_reg & I2C_CONTROL_RS)
-> > > +		mtk_i2c_writew(I2C_DELAY_LEN, i2c, OFFSET_DELAY_LEN);
-> > 
-> > speed <= 400000 here to make this more obvious?
-> There are two cases, not only speed<=400000, but I2C_MASTER_WRRD. I tend
-> to keep it.
+The pericfg and infracfg units also provide reset lines to several
+other SoC internal units. This adds a function which can be called
+from the pericfg and infracfg initialization functions which will
+register the reset controller using reset_controller_register. The
+reset controller will provide support for resetting the units
+connected to the pericfg and infracfg controller. The units resetted
+by this controller can use the standard reset device tree binding
+to gain access to the reset lines.
 
-Still it looks strange. You only ever write this default value to the
-register. Putting this register write under an if() seems bogus since
-the same value will be in the register the next time this code is
-executed. It looks like you should move this register write to some
-initialization function.
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/clk/mediatek/Makefile  |  1 +
+ drivers/clk/mediatek/clk-mtk.h | 10 +++++
+ drivers/clk/mediatek/reset.c   | 99 ++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 110 insertions(+)
+ create mode 100644 drivers/clk/mediatek/reset.c
 
-> > > +
-> > > +	/* Enable interrupt */
-> > > +	mtk_i2c_writew(I2C_HS_NACKERR | I2C_ACKERR | I2C_TRANSAC_COMP,
-> > > +		i2c, OFFSET_INTR_MASK);
-> > 
-> > Why do you enable/disable interrupts for each transfer? Enabling them
-> > once and just acknowledge them in the interrupt handler should be
-> > enough.
-> This can avoid unwanted I2C interrupt. For example, I2C transfer error,
-> and cause timeout, I2C driver report error to caller. Then I2C error
-> interrupt happen.
-
-So isn't the same unwanted interrupt then just delayed until you enable
-the interrupts again? Is this something that really happens or just
-something you think that might happen?
-
-Sascha
-
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index c384e97..0b6f1c3 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -1 +1,2 @@
+ obj-y += clk-mtk.o clk-pll.o clk-gate.o
++obj-$(CONFIG_RESET_CONTROLLER) += reset.o
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 5aaba81..5a6b5dd 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -152,4 +152,14 @@ void __init mtk_clk_register_plls(struct device_node *node,
+ 		const struct mtk_pll_data *plls, int num_plls,
+ 		struct clk_onecell_data *clk_data);
+ 
++#ifdef CONFIG_RESET_CONTROLLER
++void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs);
++#else
++static inline void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs)
++{
++}
++#endif
++
+ #endif /* __DRV_CLK_MTK_H */
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+new file mode 100644
+index 0000000..3a85a53
+--- /dev/null
++++ b/drivers/clk/mediatek/reset.c
+@@ -0,0 +1,99 @@
++/*
++ * Copyright (c) 2014 MediaTek Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/reset-controller.h>
++#include <linux/slab.h>
++
++#include "clk-mtk.h"
++
++struct mtk_reset {
++	struct regmap *regmap;
++	int regofs;
++	struct reset_controller_dev rcdev;
++};
++
++static int mtk_reset_assert(struct reset_controller_dev *rcdev,
++			      unsigned long id)
++{
++	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
++
++	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
++			BIT(id % 32), ~0);
++}
++
++static int mtk_reset_deassert(struct reset_controller_dev *rcdev,
++				unsigned long id)
++{
++	struct mtk_reset *data = container_of(rcdev, struct mtk_reset, rcdev);
++
++	return regmap_update_bits(data->regmap, data->regofs + ((id / 32) << 2),
++			BIT(id % 32), 0);
++}
++
++static int mtk_reset(struct reset_controller_dev *rcdev,
++			      unsigned long id)
++{
++	int ret;
++
++	ret = mtk_reset_assert(rcdev, id);
++	if (ret)
++		return ret;
++
++	return mtk_reset_deassert(rcdev, id);
++}
++
++static struct reset_control_ops mtk_reset_ops = {
++	.assert = mtk_reset_assert,
++	.deassert = mtk_reset_deassert,
++	.reset = mtk_reset,
++};
++
++void mtk_register_reset_controller(struct device_node *np,
++			unsigned int num_regs, int regofs)
++{
++	struct mtk_reset *data;
++	int ret;
++	struct regmap *regmap;
++
++	regmap = syscon_node_to_regmap(np);
++	if (IS_ERR(regmap)) {
++		pr_err("Cannot find regmap for %s: %ld\n", np->full_name,
++				PTR_ERR(regmap));
++		return;
++	}
++
++	data = kzalloc(sizeof(*data), GFP_KERNEL);
++	if (!data)
++		return;
++
++	data->regmap = regmap;
++	data->regofs = regofs;
++	data->rcdev.owner = THIS_MODULE;
++	data->rcdev.nr_resets = num_regs * 32;
++	data->rcdev.ops = &mtk_reset_ops;
++	data->rcdev.of_node = np;
++
++	ret = reset_controller_register(&data->rcdev);
++	if (ret) {
++		pr_err("could not register reset controller: %d\n", ret);
++		kfree(data);
++		return;
++	}
++}
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.1.4
