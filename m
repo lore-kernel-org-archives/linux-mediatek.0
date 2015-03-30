@@ -1,48 +1,82 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH v2 1/3] mfd: provide RTC resource in MT6397 MFD
-Date: Mon, 30 Mar 2015 16:17:03 +0800
-Message-ID: <1427703423.26464.16.camel@mtksdaap41>
-References: <1426657537-41414-1-git-send-email-eddie.huang@mediatek.com>
-	 <1426657537-41414-2-git-send-email-eddie.huang@mediatek.com>
-	 <20150318073045.GE3318@x1>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 3/6] clk: mediatek: Add reset controller support
+Date: Mon, 30 Mar 2015 12:12:52 +0200
+Message-ID: <CABuKBe+4mQ+gmEgBudpwMYLo7NLX1uJXx37nW1UtzOsY2x_WnQ@mail.gmail.com>
+References: <1427447925-18030-1-git-send-email-s.hauer@pengutronix.de>
+	<1427447925-18030-4-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=ISO-8859-1
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150318073045.GE3318@x1>
+In-Reply-To: <1427447925-18030-4-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Andrew Morton <akpm@linux-foundation.org>, "David S. Miller" <davem@davemloft.net>, Greg KH <gregkh@linuxfoundation.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Joe Perches <joe@perches.com>, Tejun Heo <tj@kernel.org>, Jingoo Han <jg1.han@samsung.com>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Uwe =?ISO-8859-1?Q?Kleine-K=C3=B6nig?= <kernel@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Lee,
+2015-03-27 10:18 GMT+01:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> The pericfg and infracfg units also provide reset lines to several
+> other SoC internal units. Add support for the reset controller.
 
-On Wed, 2015-03-18 at 07:30 +0000, Lee Jones wrote:
-> On Wed, 18 Mar 2015, Eddie Huang wrote:
-> 
-> > Provide MT6397 RTC interrupt, base address, and register in
-> > MT6397 MFD.
-> > 
-> > Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> > ---
-> >  drivers/mfd/mt6397-core.c | 15 +++++++++++++++
-> >  1 file changed, 15 insertions(+)
-> > 
-> > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> > index b61c4eb..ef431d8 100644
-> > --- a/drivers/mfd/mt6397-core.c
-> > +++ b/drivers/mfd/mt6397-core.c
-> > @@ -21,9 +21,24 @@
-> >  #include <linux/mfd/mt6397/core.h>
-> >  #include <linux/mfd/mt6397/registers.h>
-> >  
-> > +static const struct resource mt6397_rtc_resources[] = {
-> > +	{
-> > +		.start = 0xe000,
-> > +		.end   = 0xe03e,
-> 
-> I'd like to see these defined please.
-> 
-Sure, will change to use define next round.
+This messages is a bit confusing, could you explain better what the
+patch does and how this interacts with pericfg and infracfg?
 
-Eddie
+>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  drivers/clk/mediatek/Makefile  |  1 +
+>  drivers/clk/mediatek/clk-mtk.h | 10 +++++
+>  drivers/clk/mediatek/reset.c   | 99 ++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 110 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/reset.c
+>
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index c384e97..0b6f1c3 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -1 +1,2 @@
+>  obj-y += clk-mtk.o clk-pll.o clk-gate.o
+> +obj-$(CONFIG_RESET_CONTROLLER) += reset.o
+> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 5aaba81..5a6b5dd 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -152,4 +152,14 @@ void __init mtk_clk_register_plls(struct device_node *node,
+>                 const struct mtk_pll_data *plls, int num_plls,
+>                 struct clk_onecell_data *clk_data);
+>
+> +#ifdef CONFIG_RESET_CONTROLLER
+> +void mtk_register_reset_controller(struct device_node *np,
+> +                       unsigned int num_regs, int regofs);
+> +#else
+> +static inline void mtk_register_reset_controller(struct device_node *np,
+> +                       unsigned int num_regs, int regofs)
+> +{
+> +}
+> +#endif
+> +
+>  #endif /* __DRV_CLK_MTK_H */
+> diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+> new file mode 100644
+> index 0000000..3a85a53
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/reset.c
+> @@ -0,0 +1,99 @@
+> +/*
+> + * Copyright (c) 2014 MediaTek Inc.
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+Do we need this? Seems that it isn't used at all.
+
+Cheers,
+Matthias
