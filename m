@@ -1,145 +1,65 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 2/3] rtc: mediatek: Add MT6397 RTC driver
-Date: Tue, 31 Mar 2015 20:01:38 +0900
-Message-ID: <CAAFQd5AHcFi-NhQ5ogbqRR-mdhoELBaKD0JgLu9v462JD6JBRw@mail.gmail.com>
-References: <1426657537-41414-1-git-send-email-eddie.huang@mediatek.com>
- <1426657537-41414-3-git-send-email-eddie.huang@mediatek.com>
- <CAAFQd5ADCaKhP=3BmJsVimvo-uXZB3pobVAUST-b5kU+98Rt+A@mail.gmail.com>
- <1427795066.14023.64.camel@mtksdaap41>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH v5 2/3] I2C: mediatek: Add driver for MediaTek I2C
+ controller
+Date: Tue, 31 Mar 2015 19:50:58 +0800
+Message-ID: <1427802658.32196.8.camel@mtksdaap41>
+References: <1426917922-61356-1-git-send-email-eddie.huang@mediatek.com>
+	 <1426917922-61356-3-git-send-email-eddie.huang@mediatek.com>
+	 <20150323084237.GG9742@pengutronix.de>
+	 <1427703252.26464.14.camel@mtksdaap41>
+	 <20150330172309.GB9742@pengutronix.de>
+	 <1427785715.3500.16.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1427795066.14023.64.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Eddie Huang <eddie.huang@mediatek.com>, Lee Jones <lee.jones@linaro.org>
-Cc: Alessandro Zummo <a.zummo@towertech.it>, Joe Perches <joe@perches.com>, Samuel Ortiz <sameo@linux.intel.com>, rtc-linux@googlegroups.com, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Greg KH <gregkh@linuxfoundation.org>, Jingoo Han <jg1.han@samsung.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Tianping Fang <tianping.fang@mediatek.com>, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, =?UTF-8?B?VXdlIEtsZWluZS1Lw4PCtm5pZw==?= <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Tejun Heo <tj@kernel.org>, Andrew Morton <akpm@linux-foundation.org>, "David S. Miller" <davem@davemloft.net>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1427785715.3500.16.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, Wolfram Sang <wsa@the-dreams.de>, Doug Anderson <dianders@chromium.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, David Box <david.e.box@linux.intel.com>, Lee Jones <lee.jones@linaro.org>, Jean Delvare <jdelvare@suse.de>, Xudong Chen =?UTF-8?Q?=28=E9=99=88=E6=97=AD=E4=B8=9C=29?= <Xudong.Chen@mediatek.com>, Boris BREZILLON <boris.brezillon@free-electrons.com>, Pawel Moll <pawel.moll@arm.com>, Liguo Zhang =?UTF-8?Q?=28=E5=BC=A0=E7=AB=8B=E5=9B=BD=29?= <Liguo.Zhang@mediatek.com>, Wei Yan <sledge.yanwei@huawei.com>, Bjorn Andersson <bjorn.andersson@sonymobile.com>, Uwe Kleine-Konig <u.kleine-koenig@pengutronix.de>, Neelesh Gupta <neelegup@linux.vnet.ibm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Beniamino Galvani <b.ga>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Eddie,
+Hi Sascha,
 
-Please see my response inline.
+On Tue, 2015-03-31 at 15:08 +0800, Eddie Huang wrote:
+> Hi Sascha,
+> 
+> On Mon, 2015-03-30 at 19:23 +0200, Sascha Hauer wrote:
+> > On Mon, Mar 30, 2015 at 04:14:12PM +0800, Eddie Huang wrote:
+> > > Hi Sascha,
+> > >
+> > > >
+> > > > [...]
+> > > >
+> > > > > +       if (i2c->speed_hz > 400000)
+> > > > > +               control_reg |= I2C_CONTROL_RS;
+> > > > > +       if (i2c->op == I2C_MASTER_WRRD)
+> > > > > +               control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
+> > > > > +       mtk_i2c_writew(control_reg, i2c, OFFSET_CONTROL);
+> > > > > +
+> > > > > +       /* set start condition */
+> > > > > +       if (i2c->speed_hz <= 100000)
+> > > > > +               mtk_i2c_writew(I2C_ST_START_CON, i2c, OFFSET_EXT_CONF);
+> > > > > +       else
+> > > > > +               mtk_i2c_writew(I2C_FS_START_CON, i2c, OFFSET_EXT_CONF);
+> > > > > +
+> > > > > +       if (~control_reg & I2C_CONTROL_RS)
+> > > > > +               mtk_i2c_writew(I2C_DELAY_LEN, i2c, OFFSET_DELAY_LEN);
+> > > >
+> > > > speed <= 400000 here to make this more obvious?
+> > > There are two cases, not only speed<=400000, but I2C_MASTER_WRRD. I tend
+> > > to keep it.
+> >
+> > Still it looks strange. You only ever write this default value to the
+> > register. Putting this register write under an if() seems bogus since
+> > the same value will be in the register the next time this code is
+> > executed. It looks like you should move this register write to some
+> > initialization function.
+> OK, move to mtk_i2c_init_hw function
+> 
+Sorry for my negligence. Write-then-read (I2C_MASTER_WRRD) decides
+according to each I2C transfer, so I still need to judge whether set
+I2C_CONTROL_RS and DELAY_LEN here. Other control setting can move to
+init function.
 
-On Tue, Mar 31, 2015 at 6:44 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
-
-[snip]
-
->> > +       ret = mtk_rtc_read(rtc, RTC_BBPU, &data);
->> > +       if (ret < 0)
->> > +               goto exit;
->> > +
->> > +       while (data & RTC_BBPU_CBUSY) {
->> > +               cpu_relax();
->> > +               ret = mtk_rtc_read(rtc, RTC_BBPU, &data);
->> > +               if (ret < 0)
->> > +                       goto exit;
->> > +       }
->>
->> The initial read and the loop could be folded into a do {} while loop?
->> Also it would be safer to have a timeout here.
-> Because I need to check return value, so not put initial read in do { }.
-
-Hmm, inside the loop you also check return value. Considering the fact
-that cpu_relax() doesn't do anything interesting besides issuing a
-memory barrier (and probably could be omitted here) I don't see why
-this couldn't be made a do {} while loop. (Obviously this is a bit of
-bikeshedding, but by the way of other changes this could be changed as
-well.)
-
-[snip]
-
->>
->> Also shouldn't the unused bits be masked out?
-> Hardware return zero in unused bits. So I think it not necessary to add
-> mask.
->
-
-OK. Thanks for explaining this.
-
->>
->> > +
->> > +exit:
->> > +       mutex_unlock(&rtc->lock);
->> > +       return ret;
->> > +}
->> > +
->> > +static int mtk_rtc_read_time(struct device *dev, struct rtc_time *tm)
->> > +{
->> > +       time64_t time;
->> > +       struct mt6397_rtc *rtc = dev_get_drvdata(dev);
->> > +       int sec, ret;
->> > +
->> > +       do {
->> > +               ret = __mtk_rtc_read_time(rtc, tm, &sec);
->> > +               if (ret < 0)
->> > +                       goto exit;
->> > +       } while (sec < tm->tm_sec);
->>
->> Shouldn't this be while (sec > tm->tm_sec)?
-> No, it should keep it as is, this is used to check whether second
-> overflow (from 59 to 0). If yes, read time again.
->
-
-Ah, right, of course, an overlooking on my side. Thanks for clarifying this.
-
-[snip]
-
->> > +       mutex_lock(&rtc->lock);
->> > +       if (alm->enabled) {
->>
->> Is this possible that an alarm was already set? Is it okay to keep it
->> enabled while changing the alarm time to new one?
-> It's ok because all alarm time register set to hardware after call
-> mtk_rtc_write_trigger.
->
-
-Fair enough. Thanks for explanation. Could you maybe add a comment
-here saying that the new alarm setting will be committed after calling
-mtk_rtc_write_trigger()?
-
-[snip]
-
->> > +       res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
->> > +       rtc->irq = irq_create_mapping(mt6397_chip->irq_domain, res->start);
->> > +       if (rtc->irq <= 0)
->> > +               goto out_rtc;
->>
->> Just return an error code here directly. Which one is actually a good
->> question. Looks like existing code is using -EINVAL or -ENXIO. Any
->> ideas?
-> I tend to use -EINVAL
-
-SGTM.
-
-[snip]
-
->> > +
->> > +out_rtc:
->> > +       rtc_device_unregister(rtc->rtc_dev);
->>
->> All references to this label are actually before rtc_device_register()
->> is even called. The proper thing to do here is to dispose the created
->> IRQ mapping.
-> OK, will call irq_dispose_mapping and free_irq
->
-
-OK, thanks. Please note that this will also mean changing
-devm_request_threaded_irq() to normal request_threaded_irq().
-
-Still, now as I think of it, I'm not sure if this driver is the right
-place to call irq_create_mapping(). Instead, shouldn't the parent MFD
-driver create the mapping and pass the final virtual IRQ number to
-this driver through resources?
-
-Lee, could you comment on this, please?
-
-Best regards,
-Tomasz
+Eddie
