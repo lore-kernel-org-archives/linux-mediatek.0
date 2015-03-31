@@ -1,125 +1,61 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: Re: [PATCH] ARM: dts: mt8173: support arm64 cpuidle-dt
-Date: Tue, 31 Mar 2015 16:33:23 +0100
-Message-ID: <20150331153323.GA24851@red-moon>
-References: <1427772277-2414-1-git-send-email-howard.chen@linaro.org>
+From: Kevin Hilman <khilman@kernel.org>
+Subject: Re: [PATCH 2/4] soc: Mediatek: Add SCPSYS power domain driver
+Date: Tue, 31 Mar 2015 09:27:53 -0700
+Message-ID: <7hbnj9b08m.fsf@deeprootsystems.com>
+References: <1426002063-25713-1-git-send-email-s.hauer@pengutronix.de>
+	<1426002063-25713-3-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1427772277-2414-1-git-send-email-howard.chen@linaro.org>
+In-Reply-To: <1426002063-25713-3-git-send-email-s.hauer@pengutronix.de>
+	(Sascha Hauer's message of "Tue, 10 Mar 2015 16:41:01 +0100")
 Sender: linux-kernel-owner@vger.kernel.org
-To: Howard Chen <howard.chen@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <Pawel.Moll@arm.com>, Mark Rutland <Mark.Rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <Catalin.Marinas@arm.com>, Will Deacon <Will.Deacon@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@pengutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 31, 2015 at 04:24:37AM +0100, Howard Chen wrote:
-> add an idle-states node to describe the mt8173 cpu idle
-> add a reference to the idle-states node in each CPU node
+Hi Sascha,
 
-You are also changing the PSCI version in this patch, but
-I think it is acceptable to have multiple changes at once
-to avoid churning out dts changes.
+Sascha Hauer <s.hauer@pengutronix.de> writes:
 
-Commit log should be rewritten, lack of punctuation,
-missing capitalization, etc; in short, please rewrite it.
+> This adds a power domain driver for the Mediatek SCPSYS unit.
+>
+> The System Control Processor System (SCPSYS) has several power
+> management related tasks in the system. The tasks include thermal
+> measurement, dynamic voltage frequency scaling (DVFS), interrupt
+> filter and lowlevel sleep control. The System Power Manager (SPM)
+> inside the SCPSYS is for the MTCMOS power domain control.
+>
+> For now this driver only adds power domain support, the more
+> advanced features are not yet supported. The driver implements
+> the generic PM domain device tree bindings, the first user will
+> most likely be the Mediatek AFE audio driver.
+>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-> Signed-off-by: Howard Chen <howard.chen@linaro.org>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 30 ++++++++++++++++++++++++++----
->  1 file changed, 26 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 8554ec3..96dff1e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -48,6 +48,8 @@
->  			device_type = "cpu";
->  			compatible = "arm,cortex-a53";
->  			reg = <0x000>;
-> +			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
+Sorry for the lag, was travelling last week at ELC and not keeping up
+with reviews.
 
-You are free to use the labels you want, but you tell me why
-CPU_SLEEP_0_0 is used where eg CPU_SLEEP_0 would be sufficient
-and clearer (comment valid for all cpu nodes). Copy'n'paste ?
+This version looks pretty good to me, but had one minor
+comment/question...
 
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -55,6 +57,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x001>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
->  		};
->  
->  		cpu2: cpu@100 {
-> @@ -62,6 +65,7 @@
->  			compatible = "arm,cortex-a57";
->  			reg = <0x100>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
->  		};
->  
->  		cpu3: cpu@101 {
-> @@ -69,15 +73,33 @@
->  			compatible = "arm,cortex-a57";
->  			reg = <0x101>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
->  		};
+[...]
+
+> +#define NUM_DOMAINS	ARRAY_SIZE(scp_domain_data)
 > +
-> +		idle-states {
-> +			entry-method = "arm,psci-0.2";
-
-"arm,psci"
-
+> +struct scp;
 > +
-> +			CPU_SLEEP_0_0: cpu-sleep-0-0 {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x0010000>;
-> +				entry-latency-us = <600>;
-> +				exit-latency-us = <600>;
-> +				min-residency-us = <1200>;
-> +			};
+> +struct scp_domain {
+> +	struct generic_pm_domain pmd;
+> +	struct scp_domain_data *data;
+> +	struct scp *scp;
+> +};
 > +
-> +			CLUSTER_SLEEP_0: cluster-sleep-0 {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x1010000>;
-> +				entry-latency-us = <800>;
-> +				exit-latency-us = <1000>;
-> +				min-residency-us = <2000>;
-> +				wakeup-latency-us = <1000>;
-> +			};
+> +struct scp {
+> +	struct scp_domain domains[NUM_DOMAINS];
+> +	struct generic_pm_domain *pmd[NUM_DOMAINS];
 
-You tested these latency values right ?
+Why is this genpd pointer needed?  It's just a pointer to the
+.domains.pmd[i] anyways, and IMO makes the code a bit hard to follow.
 
->  	};
->  
->  	psci {
-> -		compatible = "arm,psci";
-> +		compatible = "arm,psci-0.2";
-
-See my comment in the commit log, this change is independent of idle
-states changes.
-
-Thanks,
-Lorenzo
-
->  		method = "smc";
-> -		cpu_suspend   = <0x84000001>;
-> -		cpu_off	      = <0x84000002>;
-> -		cpu_on	      = <0x84000003>;
->  	};
->  
->  	uart_clk: dummy26m {
-> -- 
-> 1.9.1
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
-> 
+Kevin
