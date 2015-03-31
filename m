@@ -1,61 +1,55 @@
-From: Kevin Hilman <khilman@kernel.org>
-Subject: Re: [PATCH 2/4] soc: Mediatek: Add SCPSYS power domain driver
-Date: Tue, 31 Mar 2015 09:27:53 -0700
-Message-ID: <7hbnj9b08m.fsf@deeprootsystems.com>
-References: <1426002063-25713-1-git-send-email-s.hauer@pengutronix.de>
-	<1426002063-25713-3-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v5 2/3] I2C: mediatek: Add driver for MediaTek I2C
+ controller
+Date: Tue, 31 Mar 2015 19:52:34 +0200
+Message-ID: <20150331175234.GK9742@pengutronix.de>
+References: <1426917922-61356-1-git-send-email-eddie.huang@mediatek.com>
+ <1426917922-61356-3-git-send-email-eddie.huang@mediatek.com>
+ <20150323084237.GG9742@pengutronix.de>
+ <1427703252.26464.14.camel@mtksdaap41>
+ <20150330172309.GB9742@pengutronix.de>
+ <1427785715.3500.16.camel@mtksdaap41>
+ <1427802658.32196.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1426002063-25713-3-git-send-email-s.hauer@pengutronix.de>
-	(Sascha Hauer's message of "Tue, 10 Mar 2015 16:41:01 +0100")
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@pengutronix.de
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1427802658.32196.8.camel@mtksdaap41>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, Xudong Chen =?utf-8?B?KOmZiOaXreS4nCk=?= <Xudong.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Liguo Zhang =?utf-8?B?KOW8oOeri+WbvSk=?= <Liguo.Zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Uwe Kleine-Konig <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <ro>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
+On Tue, Mar 31, 2015 at 07:50:58PM +0800, Eddie Huang wrote:
+> Hi Sascha,
+> 
+> On Tue, 2015-03-31 at 15:08 +0800, Eddie Huang wrote:
+> > Hi Sascha,
+> > 
+> > > > > speed <= 400000 here to make this more obvious?
+> > > > There are two cases, not only speed<=400000, but I2C_MASTER_WRRD. I tend
+> > > > to keep it.
+> > >
+> > > Still it looks strange. You only ever write this default value to the
+> > > register. Putting this register write under an if() seems bogus since
+> > > the same value will be in the register the next time this code is
+> > > executed. It looks like you should move this register write to some
+> > > initialization function.
+> > OK, move to mtk_i2c_init_hw function
+> > 
+> Sorry for my negligence. Write-then-read (I2C_MASTER_WRRD) decides
+> according to each I2C transfer, so I still need to judge whether set
+> I2C_CONTROL_RS and DELAY_LEN here. Other control setting can move to
+> init function.
 
-Sascha Hauer <s.hauer@pengutronix.de> writes:
+You need to decide whether you have to set the I2C_CONTROL_RS bit, but
+you don't need to write the same value to the DELAY_LEN register each
+time. It won't change under your hood.
 
-> This adds a power domain driver for the Mediatek SCPSYS unit.
->
-> The System Control Processor System (SCPSYS) has several power
-> management related tasks in the system. The tasks include thermal
-> measurement, dynamic voltage frequency scaling (DVFS), interrupt
-> filter and lowlevel sleep control. The System Power Manager (SPM)
-> inside the SCPSYS is for the MTCMOS power domain control.
->
-> For now this driver only adds power domain support, the more
-> advanced features are not yet supported. The driver implements
-> the generic PM domain device tree bindings, the first user will
-> most likely be the Mediatek AFE audio driver.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Sascha
 
-Sorry for the lag, was travelling last week at ELC and not keeping up
-with reviews.
-
-This version looks pretty good to me, but had one minor
-comment/question...
-
-[...]
-
-> +#define NUM_DOMAINS	ARRAY_SIZE(scp_domain_data)
-> +
-> +struct scp;
-> +
-> +struct scp_domain {
-> +	struct generic_pm_domain pmd;
-> +	struct scp_domain_data *data;
-> +	struct scp *scp;
-> +};
-> +
-> +struct scp {
-> +	struct scp_domain domains[NUM_DOMAINS];
-> +	struct generic_pm_domain *pmd[NUM_DOMAINS];
-
-Why is this genpd pointer needed?  It's just a pointer to the
-.domains.pmd[i] anyways, and IMO makes the code a bit hard to follow.
-
-Kevin
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
