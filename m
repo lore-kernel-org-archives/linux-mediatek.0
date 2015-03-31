@@ -1,145 +1,87 @@
-From: Michael Turquette <mturquette@linaro.org>
-Subject: Re: [PATCH v10]: clk: Add common clock support for Mediatek MT8135 and MT8173
-Date: Mon, 30 Mar 2015 18:33:27 -0700
-Message-ID: <20150331013327.25195.2077@quantum>
-References: <1427737245-4064-1-git-send-email-s.hauer@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
+From: Howard Chen <howard.chen@linaro.org>
+Subject: [PATCH] ARM: dts: mt8173: support arm64 cpuidle-dt
+Date: Tue, 31 Mar 2015 11:24:37 +0800
+Message-ID: <1427772277-2414-1-git-send-email-howard.chen@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1427737245-4064-1-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Howard Chen <howard.chen@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Sascha Hauer (2015-03-30 10:40:39)
-> The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
-> 
->   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
-> 
-> are available in the git repository at:
-> 
->   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v10
+add an idle-states node to describe the mt8173 cpu idle
+add a reference to the idle-states node in each CPU node
 
-Hi Sascha et al,
+Signed-off-by: Howard Chen <howard.chen@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 30 ++++++++++++++++++++++++++----
+ 1 file changed, 26 insertions(+), 4 deletions(-)
 
-This series looks good to me. I had an incredibly petty nitpick about
-some magic numbers, but otherwise this series is good to go and I can
-pick it up once those are fixed.
-
-Regards,
-Mike
-
-> 
-> for you to fetch changes up to 6c36b94751bb2830388c0cc11440f3056db65b6f:
-> 
->   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-30 19:37:46 +0200)
-> 
-> ----------------------------------------------------------------
-> This patchset contains the initial common clock support for Mediatek SoCs.
-> Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-> and clock gates.
-> 
-> Changes in v10:
-> - polish some commit messages
-> 
-> Changes in v9:
-> - rename 'lock' to 'mt81xx_clk_lock' to get better lockdep output
-> 
-> Changes in v8:
-> - add patch to allow to put parent_name arrays in __initconst
-> - put parent_name arrays into __initconst
-> 
-> Changes in v7:
-> - fix duplicate definition/declaration of mtk_register_reset_controller
-> - fix pd_reg offset of tvdpll
-> - make clk initialization arrays const
-> 
-> Changes in v6:
-> - rework PLL support, only a fraction of original size now
-> - Move binding docs to Documentation/devicetree/bindings/arm/mediatek since
->   the units are not really clock specific (they contain reset controllers)
-> 
-> Changes in v5:
-> - Add reset controller support for pericfg/infracfg
-> - Use regmap for the gates
-> - remove now unnecessary spinlock for the gates
-> - Add PMIC wrapper support as of v3
-> 
-> Changes in v4:
-> - Support MT8173 platform.
-> - Re-ordered patchset. driver/clk/Makefile in 2nd patch.
-> - Extract the common part definition(mtk_gate/mtk_pll/mtk_mux) from
->   clk-mt8135.c/clk-mt8173.c to clk-mtk.c.
-> - Refine code. Rmove unnessacary debug information and unsed defines,
->   add prefix "mtk_" for static functions.
-> - Remove flag CLK_IGNORE_UNUSED and set flag CLK_SET_RATE_PARENT on
->   gate/mux/fixed-factor.
-> - Use spin_lock_irqsave(&clk_ops_lock, flags) instead of mtk_clk_lock.
-> - Example above include a node for the clock controller itself, followed
->   by the i2c controller example above.
-> 
-> Changes in v3:
-> - Rebase to 3.19-rc1.
-> - Refine code. Remove unneed functions, debug logs and comments, and fine tune
->   error logs.
-> 
-> Changes in v2:
-> - Re-ordered patchset. Fold include/dt-bindings and DT document in 1st patch.
-> 
-> ----------------------------------------------------------------
-> James Liao (3):
->       clk: mediatek: Add initial common clock support for Mediatek SoCs.
->       clk: mediatek: Add basic clocks for Mediatek MT8135.
->       clk: mediatek: Add basic clocks for Mediatek MT8173.
-> 
-> Sascha Hauer (3):
->       clk: make strings in parent name arrays const
->       clk: mediatek: Add reset controller support
->       dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers
-> 
->  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  23 +
->  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  30 +
->  .../bindings/arm/mediatek/mediatek,pericfg.txt     |  30 +
->  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  23 +
->  drivers/clk/Makefile                               |   1 +
->  drivers/clk/clk-composite.c                        |   2 +-
->  drivers/clk/clk-mux.c                              |   4 +-
->  drivers/clk/mediatek/Makefile                      |   4 +
->  drivers/clk/mediatek/clk-gate.c                    | 137 ++++
->  drivers/clk/mediatek/clk-gate.h                    |  49 ++
->  drivers/clk/mediatek/clk-mt8135.c                  | 640 ++++++++++++++++
->  drivers/clk/mediatek/clk-mt8173.c                  | 826 +++++++++++++++++++++
->  drivers/clk/mediatek/clk-mtk.c                     | 197 +++++
->  drivers/clk/mediatek/clk-mtk.h                     | 165 ++++
->  drivers/clk/mediatek/clk-pll.c                     | 325 ++++++++
->  drivers/clk/mediatek/reset.c                       |  99 +++
->  include/dt-bindings/clock/mt8135-clk.h             | 190 +++++
->  include/dt-bindings/clock/mt8173-clk.h             | 231 ++++++
->  .../dt-bindings/reset-controller/mt8135-resets.h   |  64 ++
->  .../dt-bindings/reset-controller/mt8173-resets.h   |  63 ++
->  include/linux/clk-provider.h                       |   8 +-
->  21 files changed, 3104 insertions(+), 7 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
->  create mode 100644 drivers/clk/mediatek/Makefile
->  create mode 100644 drivers/clk/mediatek/clk-gate.c
->  create mode 100644 drivers/clk/mediatek/clk-gate.h
->  create mode 100644 drivers/clk/mediatek/clk-mt8135.c
->  create mode 100644 drivers/clk/mediatek/clk-mt8173.c
->  create mode 100644 drivers/clk/mediatek/clk-mtk.c
->  create mode 100644 drivers/clk/mediatek/clk-mtk.h
->  create mode 100644 drivers/clk/mediatek/clk-pll.c
->  create mode 100644 drivers/clk/mediatek/reset.c
->  create mode 100644 include/dt-bindings/clock/mt8135-clk.h
->  create mode 100644 include/dt-bindings/clock/mt8173-clk.h
->  create mode 100644 include/dt-bindings/reset-controller/mt8135-resets.h
->  create mode 100644 include/dt-bindings/reset-controller/mt8173-resets.h
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 8554ec3..96dff1e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -48,6 +48,8 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x000>;
++			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -55,6 +57,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x001>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
+ 		};
+ 
+ 		cpu2: cpu@100 {
+@@ -62,6 +65,7 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
+ 		};
+ 
+ 		cpu3: cpu@101 {
+@@ -69,15 +73,33 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x101>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0_0 &CLUSTER_SLEEP_0>;
+ 		};
++
++		idle-states {
++			entry-method = "arm,psci-0.2";
++
++			CPU_SLEEP_0_0: cpu-sleep-0-0 {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x0010000>;
++				entry-latency-us = <600>;
++				exit-latency-us = <600>;
++				min-residency-us = <1200>;
++			};
++
++			CLUSTER_SLEEP_0: cluster-sleep-0 {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x1010000>;
++				entry-latency-us = <800>;
++				exit-latency-us = <1000>;
++				min-residency-us = <2000>;
++				wakeup-latency-us = <1000>;
++			};
+ 	};
+ 
+ 	psci {
+-		compatible = "arm,psci";
++		compatible = "arm,psci-0.2";
+ 		method = "smc";
+-		cpu_suspend   = <0x84000001>;
+-		cpu_off	      = <0x84000002>;
+-		cpu_on	      = <0x84000003>;
+ 	};
+ 
+ 	uart_clk: dummy26m {
+-- 
+1.9.1
