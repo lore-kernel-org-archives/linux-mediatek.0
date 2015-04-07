@@ -1,104 +1,79 @@
 From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH 13/13] thermal: of: implement .set_trips for device tree
- thermal zones
-Date: Mon, 6 Apr 2015 19:43:08 -0700
-Message-ID: <20150407024307.GH4648@localhost.localdomain>
+Subject: Re: [PATCH 03/13] thermal: remove useless call to
+ thermal_zone_device_set_polling
+Date: Mon, 6 Apr 2015 19:56:32 -0700
+Message-ID: <20150407025630.GJ4648@localhost.localdomain>
 References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
- <1427385240-6086-14-git-send-email-s.hauer@pengutronix.de>
+ <1427385240-6086-4-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="/9ZOS6odDaRI+0hI"
+	protocol="application/pgp-signature"; boundary="ELVYuRnMxQ5nnKRy"
 Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1427385240-6086-14-git-send-email-s.hauer@pengutronix.de>
+In-Reply-To: <1427385240-6086-4-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-pm-owner@vger.kernel.org
 To: Sascha Hauer <s.hauer@pengutronix.de>
 Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---/9ZOS6odDaRI+0hI
+--ELVYuRnMxQ5nnKRy
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Mar 26, 2015 at 04:54:00PM +0100, Sascha Hauer wrote:
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/thermal/of-thermal.c | 12 ++++++++++++
->  include/linux/thermal.h      |  1 +
->  2 files changed, 13 insertions(+)
-
-Can you please include at least one user of this call back in your patch
-series?
-
+On Thu, Mar 26, 2015 at 04:53:50PM +0100, Sascha Hauer wrote:
+> When the thermal zone has no get_temp callback then thermal_zone_device_r=
+egister()
+> calls thermal_zone_device_set_polling() with a polling delay of 0. This
+> only cancels the poll_queue. Since the poll_queue hasn't been scheduled t=
+his
+> is a no-op. Remove it.
 >=20
-> diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-thermal.c
-> index 9b63193..a3de5de 100644
-> --- a/drivers/thermal/of-thermal.c
-> +++ b/drivers/thermal/of-thermal.c
-> @@ -97,6 +97,17 @@ static int of_thermal_get_temp(struct thermal_zone_dev=
-ice *tz,
->  	return data->ops->get_temp(data->sensor_data, temp);
->  }
-> =20
-> +static int of_thermal_set_trips(struct thermal_zone_device *tz,
-> +			       unsigned long low, unsigned long high)
-> +{
-> +	struct __thermal_zone *data =3D tz->devdata;
-> +
-> +	if (!data->ops || !data->ops->set_trips)
-> +		return -ENOSYS;
-> +
-> +	return data->ops->set_trips(data->sensor_data, low, high);
-> +}
-> +
->  /**
->   * of_thermal_get_ntrips - function to export number of available trip
->   *			   points.
-> @@ -367,6 +378,7 @@ static int of_thermal_get_crit_temp(struct thermal_zo=
-ne_device *tz,
-> =20
->  static const struct thermal_zone_device_ops of_thermal_ops =3D {
->  	.get_temp =3D of_thermal_get_temp,
-> +	.set_trips =3D of_thermal_set_trips,
->  	.get_trend =3D of_thermal_get_trend,
->  	.set_emul_temp =3D of_thermal_set_emul_temp,
-> =20
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index b870702..84a5b5d 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -276,6 +276,7 @@ struct thermal_genl_event {
->   */
->  struct thermal_zone_of_device_ops {
->  	int (*get_temp)(void *, unsigned long *);
-> +	int (*set_trips)(void *, unsigned long, unsigned long);
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Could you please keep the kernel doc entry up to date? I know we donot
-have entries for all structs, but I am working in improving this.
+This seams reasonable to me:
 
->  	int (*get_trend)(void *, int trend, enum thermal_trend *);
->  	int (*set_emul_temp)(void *, unsigned long);
->  };
+Acked-by: Eduardo Valentin <edubezval@gmail.com>
+
+> ---
+>  drivers/thermal/thermal_core.c | 3 ---
+>  1 file changed, 3 deletions(-)
+>=20
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_cor=
+e.c
+> index c735ac4c..dcea909 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -1571,9 +1571,6 @@ struct thermal_zone_device *thermal_zone_device_reg=
+ister(const char *type,
+> =20
+>  	INIT_DELAYED_WORK(&(tz->poll_queue), thermal_zone_device_check);
+> =20
+> -	if (!tz->ops->get_temp)
+> -		thermal_zone_device_set_polling(tz, 0);
+> -
+>  	thermal_zone_device_update(tz);
+> =20
+>  	return tz;
 > --=20
 > 2.1.4
 >=20
 
---/9ZOS6odDaRI+0hI
+--ELVYuRnMxQ5nnKRy
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: Digital signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.12 (GNU/Linux)
 
-iQEcBAEBAgAGBQJVI0Q4AAoJEMLUO4d9pOJW5UcH/01txPxO8jBRWLK1cVn8m66T
-hQkmPAZba9scUBJUD40Ez1dY2RVO9Fp61Szd2CZed8sYCljaPQ69K5gQHceGdZPN
-ry/jq9YZlLvnRJ2tsIvHaNWkhrUU5OS2YRefqeSeaLIVpTHhv9dm4kF8t90DOy6K
-YEw9hhFRn/hl0XYYTMhSrrs/cFU6UtnkG8IAzxbFd6p+a/EhLZ+SoBpMxMEW2avl
-sRsuM21JmUD2FsP+XqRHcQ2U8ydZPM+HHnM3V+NEpGtZhmyshY2TBzLhm476e2cf
-r1kpE6uYvc9f2/51PhvJ+9UjM+ZqwLTdLPcTJyBRjkV4ZZgZm+YizI95NkKUGX0=
-=DHYs
+iQEcBAEBAgAGBQJVI0dbAAoJEMLUO4d9pOJWyJUH/3UW3Qgs/KAdwlNTi/tyznph
+IGl/Ga/Un738jNoPn2LQXhSjRho+XGGaDQ1wCk7SDaaujp3FYsmU5coordDbPMsi
+YBN4kmGJQeBIzt5hXLVw1Ex7Q4gY+K7bo5bCqX5dvu4pLIwjBBK3SOHq/8PUe9RM
+2jOR8FFBH/Nvfqg99sWrtvetHAcM9A8bAwQQlo6zwNO+A/BbnS/YSvQr+CmNbcMv
+aXiXugniDaugitUhcGpoXQ33i+lKjivCHJ5lf+sABr8z8ibKktkmujNLeIKfePbs
+AtvkYqZJIgOsEgbdF8rH4AbKxz7K79/J9xnri6fE7s9GvU942MtSBeSUutmad4o=
+=YAEk
 -----END PGP SIGNATURE-----
 
---/9ZOS6odDaRI+0hI--
+--ELVYuRnMxQ5nnKRy--
