@@ -1,69 +1,46 @@
-From: Howard Chen <howard.chen@linaro.org>
-Subject: [PATCH v2] ARM: dts: mt8173: support arm64 cpuidle-dt
-Date: Tue,  7 Apr 2015 16:05:05 +0800
-Message-ID: <1428393905-32166-1-git-send-email-howard.chen@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
+ and MT8173
+Date: Tue, 7 Apr 2015 13:47:58 +0200
+Message-ID: <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
+References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ISO-8859-1
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Howard Chen <howard.chen@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds an idle-states node to describe the mt8173 idle states and
-also adds references to the idle-states node in all CPU nodes.
+Hi Sascha,
 
-Signed-off-by: Howard Chen <howard.chen@linaro.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 8554ec3..0d31a34 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -48,6 +48,8 @@
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x000>;
-+			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -55,6 +57,7 @@
- 			compatible = "arm,cortex-a53";
- 			reg = <0x001>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0>;
- 		};
- 
- 		cpu2: cpu@100 {
-@@ -62,6 +65,7 @@
- 			compatible = "arm,cortex-a57";
- 			reg = <0x100>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0>;
- 		};
- 
- 		cpu3: cpu@101 {
-@@ -69,6 +73,19 @@
- 			compatible = "arm,cortex-a57";
- 			reg = <0x101>;
- 			enable-method = "psci";
-+			cpu-idle-states = <&CPU_SLEEP_0>;
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+
-+			CPU_SLEEP_0: cpu-sleep-0 {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x0010000>;
-+				entry-latency-us = <639>;
-+				exit-latency-us = <328>;
-+				min-residency-us = <1088>;
-+			};
- 		};
- 	};
- 
--- 
-1.9.1
+2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+>
+> The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
+>
+>   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
+>
+> are available in the git repository at:
+>
+>   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
+>
+> for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
+>
+>   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
+>
+> ----------------------------------------------------------------
+> This patchset contains the initial common clock support for Mediatek SoCs.
+> Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+> and clock gates.
+
+I tried the patch set on my mt8135 eval board. I used the dts bindings
+from a former version of this set [1], but it does not boot the board
+(based on v4.0-rc7).
+Do you have any hint, what is happening, or are the bindings wrong?
+
+Best regards,
+Matthias
+
+[1] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-February/322813.html
