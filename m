@@ -1,239 +1,229 @@
-From: =?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
-	<Chaotian.Jing@mediatek.com>
-Subject: =?utf-8?B?562U5aSNOiBbUEFUQ0ggdjIgMy81XSBtbWM6IG1lZGlhdGVrOiBBZGQgUE0g?=
- =?utf-8?Q?support_for_MMC_driver?=
-Date: Fri, 3 Apr 2015 08:27:45 +0000
-Message-ID: <B077351396223C4F8FE8C4C13672A9CA609796EC@mtkmbs33n1>
-References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
-	<1426562035-16709-4-git-send-email-chaotian.jing@mediatek.com>
- <CAPDyKFqA=9mgzGkeBjkMxr3jhqxnEYov_4rf=OfdQ7_rAHicyw@mail.gmail.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH 01/13] thermal: Make temperatures consistently unsigned
+ long
+Date: Mon, 6 Apr 2015 18:45:48 -0700
+Message-ID: <20150407014546.GA4648@localhost.localdomain>
+References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
+ <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFqA=9mgzGkeBjkMxr3jhqxnEYov_4rf=OfdQ7_rAHicyw@mail.gmail.com>
-Content-Language: zh-CN
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, =?utf-8?B?SmFtZXNKSiBMaWFvICjlu5blu7rmmbop?= <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, HONGZHOU Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, =?utf-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>, =?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, =?utf-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@me>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ew6BAiZeqk4r7MaW"
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RGVhciBVbGYsDQoNClRoYW5rcyBmb3IgeW91ciByZXZpZXcsDQpQbGVhc2UgaGVscCB0byBjaGVj
-ayBteSBjb21tZW50czoNCg0KPiAtLS0tLemCruS7tuWOn+S7ti0tLS0tDQo+IOWPkeS7tuS6ujog
-VWxmIEhhbnNzb24gW21haWx0bzp1bGYuaGFuc3NvbkBsaW5hcm8ub3JnXQ0KPiDlj5HpgIHml7bp
-l7Q6IDIwMTXlubQz5pyIMzHml6UgMjI6NDcNCj4g5pS25Lu25Lq6OiBDaGFvdGlhbiBKaW5nICjk
-upXmnJ3lpKkpDQo+IOaKhOmAgTogUm9iIEhlcnJpbmc7IE1hdHRoaWFzIEJydWdnZXI7IENocmlz
-IEJhbGw7IE1hcmsgUnV0bGFuZDsgSmFtZXNKSiBMaWFvDQo+ICjlu5blu7rmmbopOyBzcnZfaGV1
-cHN0cmVhbTsgQXJuZCBCZXJnbWFubjsgZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmc7DQo+IEhP
-TkdaSE9VIFlhbmc7IENhdGFsaW4gTWFyaW5hczsgbGludXgtbW1jOyBXaWxsIERlYWNvbjsNCj4g
-bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgbGludXgtZ3Bpb0B2Z2VyLmtlcm5lbC5vcmc7
-IFNhc2NoYSBIYXVlcjsNCj4gWWluZ2pvZSBDaGVuICjpmbPoi7HmtLIpOyBFZGRpZSBIdWFuZyAo
-6buD5pm65YKRKTsgQmluIFpoYW5nICjnq6DmlowpOw0KPiBsaW51eC1hcm0ta2VybmVsQGxpc3Rz
-LmluZnJhZGVhZC5vcmc7IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcNCj4g5Li7
-6aKYOiBSZTogW1BBVENIIHYyIDMvNV0gbW1jOiBtZWRpYXRlazogQWRkIFBNIHN1cHBvcnQgZm9y
-IE1NQyBkcml2ZXINCj4gDQo+IE9uIDE3IE1hcmNoIDIwMTUgYXQgMDQ6MTMsIENoYW90aWFuIEpp
-bmcgPGNoYW90aWFuLmppbmdAbWVkaWF0ZWsuY29tPg0KPiB3cm90ZToNCj4gPiBBZGQgUE0gc3Vw
-cG9ydCBmb3IgTWVkaWF0ZWsgTU1DIGRyaXZlcg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogQ2hh
-b3RpYW4gSmluZyA8Y2hhb3RpYW4uamluZ0BtZWRpYXRlay5jb20+DQo+ID4gLS0tDQo+ID4gIGRy
-aXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMgfCA5NA0KPiA+ICsrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKystDQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA5MyBpbnNlcnRp
-b25zKCspLCAxIGRlbGV0aW9uKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMv
-aG9zdC9tdGstc2QuYyBiL2RyaXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMNCj4gPiBpbmRleCA4NmM5
-OTliLi5lMDJmNmE2IDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3QvbXRrLXNkLmMN
-Cj4gPiArKysgYi9kcml2ZXJzL21tYy9ob3N0L210ay1zZC5jDQo+ID4gQEAgLTIxLDYgKzIxLDcg
-QEANCj4gPiAgI2luY2x1ZGUgPGxpbnV4L29mX2lycS5oPg0KPiA+ICAjaW5jbHVkZSA8bGludXgv
-b2ZfZ3Bpby5oPg0KPiA+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+DQo+ID4g
-KyNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+DQo+ID4gICNpbmNsdWRlIDxsaW51eC9yZWd1
-bGF0b3IvY29uc3VtZXIuaD4gICNpbmNsdWRlIDxsaW51eC9zcGlubG9jay5oPg0KPiA+DQo+ID4g
-QEAgLTIyMyw2ICsyMjQsNyBAQA0KPiA+ICAjZGVmaW5lIE1TRENfT0NSX0FWQUlMICAgICAgKE1N
-Q19WRERfMjhfMjkgfCBNTUNfVkREXzI5XzMwDQo+IFwNCj4gPiAgICAgICAgICAgICAgICAgfCBN
-TUNfVkREXzMwXzMxIHwgTU1DX1ZERF8zMV8zMiB8DQo+IE1NQ19WRERfMzJfMzMpDQo+ID4NCj4g
-PiArI2RlZmluZSBNVEtfTU1DX0FVVE9TVVNQRU5EX0RFTEFZICAgICAgNTAwDQo+ID4gICNkZWZp
-bmUgQ01EX1RJTUVPVVQgICAgICAgICAoSFovMTAgKiA1KSAgICAgICAgLyogMTAwbXMgeDUgKi8N
-Cj4gPiAgI2RlZmluZSBEQVRfVElNRU9VVCAgICAgICAgIChIWiAgICAqIDUpICAgICAgICAvKiAx
-MDAwbXMgeDUgKi8NCj4gPg0KPiA+IEBAIC01MzUsNiArNTM3LDM4IEBAIHN0YXRpYyB2b2lkIG1z
-ZGNfc2V0X21jbGsoc3RydWN0IG1zZGNfaG9zdCAqaG9zdCwNCj4gaW50IGRkciwgdTMyIGh6KQ0K
-PiA+ICAgICAgICAgZGV2X2RiZyhob3N0LT5kZXYsICJzY2xrOiAlZCwgZGRyOiAlZFxuIiwgaG9z
-dC0+c2NsaywgZGRyKTsgIH0NCj4gPg0KPiA+ICsjaWZkZWYgQ09ORklHX1BNDQo+IA0KPiBJIHN1
-Z2dlc3QgeW91IG1vdmUgdGhpcyBjb21wbGV0ZSBjb2RlIHNuaXBwZXRzIHdpdGhpbiB0aGUgaWZk
-ZWZzIGZvciB3aGVyZSB0aGUNCj4gcnVudGltZSBQTSBjYWxsYmFja3MgaXMgaW1wbGVtZW50ZWQu
-DQo+IA0KSSB3aWxsIHJlbW92ZSB0aGUgQ09ORklHX1BNLCBiZWNhdXNlIHRoYXQgaWYgdGhlIGtl
-cm5lbCBjb25maWcgZG8gbm90IGVuYWJsZSBDT05GSUdfUE0sIGl0IHN0aWxsIG5lZWQgZG8gZ2F0
-ZS91bmdhdGUgY2xvY2suDQo+ID4gK3N0YXRpYyBpbnQgbXNkY19nYXRlX2Nsb2NrKHN0cnVjdCBt
-c2RjX2hvc3QgKmhvc3QpIHsNCj4gPiArICAgICAgIGludCByZXQgPSAwOw0KPiA+ICsgICAgICAg
-dW5zaWduZWQgbG9uZyBmbGFnczsNCj4gPiArDQo+ID4gKyAgICAgICBzcGluX2xvY2tfaXJxc2F2
-ZSgmaG9zdC0+bG9jaywgZmxhZ3MpOw0KPiA+ICsgICAgICAgLyogZGlzYWJsZSBTRC9NTUMvU0RJ
-TyBidXMgY2xvY2sgKi8NCj4gPiArICAgICAgIHNkcl9zZXRfZmllbGQoaG9zdC0+YmFzZSArIE1T
-RENfQ0ZHLCBNU0RDX0NGR19NT0RFLA0KPiBNU0RDX01TKTsNCj4gDQo+IFRoaXMgc2VlbXMgbGlr
-ZSBpdCBhbHNvIGJlbG9uZ3MgaW4gdGhlIC0+c2V0X2lvcygpIGZ1bmN0aW9uLCB3aGVuIHRoZSBy
-YXRlDQo+IHJlcXVlc3RlZCBieSB0aGUgY29yZSBpcyB6ZXJvIT8gTWF5YmUgdGhhdCdzIGFscmVh
-ZHkgZGVhbHQgd2l0aD8NClllcywgYnV0IGl0IGlzIG5vdCB0aGUgc2FtZSwgdGhlIHNldF9pb3Mo
-KSBzZXQgdGhlIGJ1cyBjbG9jayB0byAwLCBvbmx5IG5lZWQgc2V0IHRoZSBNT0RFIHRvIE1TRENf
-TVMuDQpCdXQgdGhlIGdhdGUgY2xvY2sgd2lsbCBnYXRlIHRoZSBzb3VyY2UgY2xvY2sgb2YgTVNE
-QyBob3N0LCB3aGVuIHRoZSBob3N0IGlzIGlkbGUsIHJ1bnRpbWUgcG0gd2lsbCBnYXRlIGl0LCBi
-dXQgdGhlIGlvcy0+Y2xvY2sgaXMgbm90IDAuDQo+IA0KPiA+ICsgICAgICAgLyogdHVybiBvZmYg
-U0RIQyBmdW5jdGlvbmFsIGNsb2NrICovDQo+ID4gKyAgICAgICBjbGtfZGlzYWJsZShob3N0LT5z
-cmNfY2xrKTsNCj4gDQo+IENoYW5nZSB0byBjbGtfZGlzYWJsZV91bnByZXBhcmUoKSBhbmQgbW92
-ZSBpdCBvdXRzaWRlIHRoZSBzcGluX2xvY2suDQo+IA0KT0ssIHdpbGwgZml4IGl0IGF0IG5leHQg
-cmV2aXNpb24uDQo+ID4gKyAgICAgICBzcGluX3VubG9ja19pcnFyZXN0b3JlKCZob3N0LT5sb2Nr
-LCBmbGFncyk7DQo+ID4gKyAgICAgICByZXR1cm4gcmV0Ow0KPiA+ICt9DQo+ID4gKw0KPiA+ICtz
-dGF0aWMgdm9pZCBtc2RjX3VuZ2F0ZV9jbG9jayhzdHJ1Y3QgbXNkY19ob3N0ICpob3N0KSB7DQo+
-ID4gKyAgICAgICB1bnNpZ25lZCBsb25nIGZsYWdzOw0KPiA+ICsNCj4gPiArICAgICAgIHNwaW5f
-bG9ja19pcnFzYXZlKCZob3N0LT5sb2NrLCBmbGFncyk7DQo+ID4gKyAgICAgICBjbGtfZW5hYmxl
-KGhvc3QtPnNyY19jbGspOw0KPiANCj4gQ2hhbmdlIHRvIGNsa19wcmVwYXJlX2VuYWJsZSgpIGFu
-ZCBtb3ZlIGl0IG91dHNpZGUgdGhlIHNwaW5fbG9jay4NCj4gDQpPSywgd2lsbCBmaXggaXQgYXQg
-bmV4dCByZXZpc2lvbiwNCj4gPiArICAgICAgIC8qIGVuYWJsZSBTRC9NTUMvU0RJTyBidXMgY2xv
-Y2s6DQo+ID4gKyAgICAgICAgKiBpdCB3aWxsIGJlIGF1dG9tYXRpY2FsbHkgZ2F0ZWQgd2hlbiB0
-aGUgYnVzIGlzIGlkbGUNCj4gPiArICAgICAgICAqIChzZXQgTVNEQ19DRkdfQ0tQRE4gYml0IHRv
-IGhhdmUgaXQgYWx3YXlzIG9uKQ0KPiA+ICsgICAgICAgICovDQo+ID4gKyAgICAgICBzZHJfc2V0
-X2ZpZWxkKGhvc3QtPmJhc2UgKyBNU0RDX0NGRywgTVNEQ19DRkdfTU9ERSwNCj4gTVNEQ19TRE1N
-Qyk7DQo+ID4gKyAgICAgICB3aGlsZSAoIShyZWFkbChob3N0LT5iYXNlICsgTVNEQ19DRkcpICYg
-TVNEQ19DRkdfQ0tTVEIpKQ0KPiA+ICsgICAgICAgICAgICAgICBjcHVfcmVsYXgoKTsNCj4gDQo+
-IEkgZ3Vlc3MgeW91IGFscmVhZHkgaGF2ZSB0aGlzIHBpZWNlIG9mIGNvZGUgaW4gLT5zZXRfaW9z
-KCkgaW4gc29tZSBmb3JtIT8NCj4gDQo+IFdoYXQncyBtaXNzaW5nIGhlcmUgaXMgYSBraW5kIG9m
-IGEgc2F2ZS9yZXN0b3JlIG1lY2hhbmlzbSBvZiB0aGUgY2xvY2suIFlvdQ0KPiBuZWVkIHRvIHNh
-dmUgdGhlIHZhbHVlIGZvciB0aGUgY2xvY2sgaW4gbXNkY191bmdhdGVfY2xvY2soKSBhbmQgcmVz
-dG9yZSB0aGUNCj4gY2xvY2sgaGVyZS4gRWxzZSB5b3UgbWlnaHQgZW5kIHVwIHVuZ2F0aW5nIHRo
-ZSBjbG9jayB3aGVuIGl0IGFjdHVhbGx5IHNob3VsZA0KPiByZW1haW4gZ2F0ZWQuDQo+IA0KV2hl
-biB3ZSB1bmdhdGUgdGhlIGNsb2NrIG9yIGNoYW5nZSB0aGUgZnJlcXVlbmN5IG9mIHRoZSBjbG9j
-aywgYm90aCBuZWVkIHdhaXQgdGhlIGNsb2NrIHN0YWJsZS4NCg0KPiA+ICsgICAgICAgc3Bpbl91
-bmxvY2tfaXJxcmVzdG9yZSgmaG9zdC0+bG9jaywgZmxhZ3MpOyB9ICNlbmRpZg0KPiA+ICsNCj4g
-PiAgc3RhdGljIGlubGluZSB1MzIgbXNkY19jbWRfZmluZF9yZXNwKHN0cnVjdCBtc2RjX2hvc3Qg
-Kmhvc3QsDQo+ID4gICAgICAgICAgICAgICAgIHN0cnVjdCBtbWNfcmVxdWVzdCAqbXJxLCBzdHJ1
-Y3QgbW1jX2NvbW1hbmQgKmNtZCkNCj4gew0KPiA+IEBAIC03MDIsNiArNzM2LDkgQEAgc3RhdGlj
-IHZvaWQgbXNkY19yZXF1ZXN0X2RvbmUoc3RydWN0IG1zZGNfaG9zdA0KPiAqaG9zdCwgc3RydWN0
-IG1tY19yZXF1ZXN0ICptcnEpDQo+ID4gICAgICAgICBpZiAobXJxLT5kYXRhKQ0KPiA+ICAgICAg
-ICAgICAgICAgICBtc2RjX3VucHJlcGFyZV9kYXRhKGhvc3QsIG1ycSk7DQo+ID4gICAgICAgICBt
-bWNfcmVxdWVzdF9kb25lKGhvc3QtPm1tYywgbXJxKTsNCj4gPiArDQo+ID4gKyAgICAgICBwbV9y
-dW50aW1lX21hcmtfbGFzdF9idXN5KGhvc3QtPmRldik7DQo+ID4gKyAgICAgICBwbV9ydW50aW1l
-X3B1dF9hdXRvc3VzcGVuZChob3N0LT5kZXYpOw0KPiA+ICB9DQo+ID4NCj4gPiAgLyogcmV0dXJu
-cyB0cnVlIGlmIGNvbW1hbmQgaXMgZnVsbHkgaGFuZGxlZDsgcmV0dXJucyBmYWxzZSBvdGhlcndp
-c2UNCj4gPiAqLyBAQCAtODYzLDYgKzkwMCw4IEBAIHN0YXRpYyB2b2lkIG1zZGNfb3BzX3JlcXVl
-c3Qoc3RydWN0IG1tY19ob3N0DQo+ICptbWMsIHN0cnVjdCBtbWNfcmVxdWVzdCAqbXJxKQ0KPiA+
-ICAgICAgICAgfQ0KPiA+ICAgICAgICAgc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmaG9zdC0+bG9j
-aywgZmxhZ3MpOw0KPiA+DQo+ID4gKyAgICAgICBwbV9ydW50aW1lX2dldF9zeW5jKGhvc3QtPmRl
-dik7DQo+ID4gKw0KPiA+ICAgICAgICAgaWYgKG1ycS0+ZGF0YSkNCj4gPiAgICAgICAgICAgICAg
-ICAgbXNkY19wcmVwYXJlX2RhdGEoaG9zdCwgbXJxKTsNCj4gPg0KPiA+IEBAIC0xMDAzLDYgKzEw
-NDIsOCBAQCBzdGF0aWMgaW50IG1zZGNfb3BzX3N3aXRjaF92b2x0KHN0cnVjdCBtbWNfaG9zdA0K
-PiA+ICptbWMsIHN0cnVjdCBtbWNfaW9zICppb3MpDQo+ID4NCj4gPiAgICAgICAgIGlmICghSVNf
-RVJSKG1tYy0+c3VwcGx5LnZxbW1jKSkgew0KPiA+DQo+ID4gKyAgICAgICAgICAgICAgIHBtX3J1
-bnRpbWVfZ2V0X3N5bmMoaG9zdC0+ZGV2KTsNCj4gPiArDQo+ID4gICAgICAgICAgICAgICAgIGlm
-IChpb3MtPnNpZ25hbF92b2x0YWdlID09IE1NQ19TSUdOQUxfVk9MVEFHRV8zMzApIHsNCj4gPiAg
-ICAgICAgICAgICAgICAgICAgICAgICBtaW5fdXYgPSAzMzAwMDAwOw0KPiA+ICAgICAgICAgICAg
-ICAgICAgICAgICAgIG1heF91diA9IDMzMDAwMDA7IEBAIC0xMDExLDYgKzEwNTIsOSBAQA0KPiBz
-dGF0aWMNCj4gPiBpbnQgbXNkY19vcHNfc3dpdGNoX3ZvbHQoc3RydWN0IG1tY19ob3N0ICptbWMs
-IHN0cnVjdCBtbWNfaW9zICppb3MpDQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgbWF4X3V2
-ID0gMTgwMDAwMDsNCj4gPiAgICAgICAgICAgICAgICAgfSBlbHNlIHsNCj4gPiAgICAgICAgICAg
-ICAgICAgICAgICAgICBkZXZfZXJyKGhvc3QtPmRldiwgIlVuc3VwcG9ydGVkIHNpZ25hbA0KPiA+
-IHZvbHRhZ2UhXG4iKTsNCj4gPiArDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgcG1fcnVu
-dGltZV9tYXJrX2xhc3RfYnVzeShob3N0LT5kZXYpOw0KPiA+ICsgICAgICAgICAgICAgICAgICAg
-ICAgIHBtX3J1bnRpbWVfcHV0X2F1dG9zdXNwZW5kKGhvc3QtPmRldik7DQo+ID4gICAgICAgICAg
-ICAgICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7DQo+IA0KPiBJIHN1Z2dlc3QgdG8gYXNzaWdu
-IGEgbG9jYWwgInJldCIgdmFyaWFibGUgd2hpY2ggdmFsdWUgeW91IGNhbiByZXR1cm4gYXQgdGhl
-IGVuZA0KPiBvZiB0aGlzIGZ1bmN0aW9uLiBUaHVzIHlvdSB3b24ndCBuZWVkIHRvIGR1cGxpY2F0
-ZSB0aGUNCj4gcG1fcnVudGltZSooKSBjYWxscy4NCj4gDQpPSywgd2lsbCBmaXggYXQgbmV4dCBy
-ZXZpc2lvbi4NCj4gPiAgICAgICAgICAgICAgICAgfQ0KPiA+DQo+ID4gQEAgLTEwMjIsNiArMTA2
-Niw4IEBAIHN0YXRpYyBpbnQgbXNkY19vcHNfc3dpdGNoX3ZvbHQoc3RydWN0IG1tY19ob3N0DQo+
-ICptbWMsIHN0cnVjdCBtbWNfaW9zICppb3MpDQo+ID4gICAgICAgICAgICAgICAgIH0NCj4gPiAg
-ICAgICAgIH0NCj4gPg0KPiA+ICsgICAgICAgcG1fcnVudGltZV9tYXJrX2xhc3RfYnVzeShob3N0
-LT5kZXYpOw0KPiA+ICsgICAgICAgcG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQoaG9zdC0+ZGV2
-KTsNCj4gPiAgICAgICAgIHJldHVybiByZXQ7DQo+ID4gIH0NCj4gPg0KPiA+IEBAIC0xMTg2LDYg
-KzEyMzIsOCBAQCBzdGF0aWMgdm9pZCBtc2RjX29wc19zZXRfaW9zKHN0cnVjdCBtbWNfaG9zdA0K
-PiAqbW1jLCBzdHJ1Y3QgbW1jX2lvcyAqaW9zKQ0KPiA+ICAgICAgICAgaW50IHJldDsNCj4gPiAg
-ICAgICAgIHUzMiBkZHIgPSAwOw0KPiA+DQo+ID4gKyAgICAgICBwbV9ydW50aW1lX2dldF9zeW5j
-KGhvc3QtPmRldik7DQo+ID4gKw0KPiA+ICAgICAgICAgaWYgKGlvcy0+dGltaW5nID09IE1NQ19U
-SU1JTkdfVUhTX0REUjUwKQ0KPiA+ICAgICAgICAgICAgICAgICBkZHIgPSAxOw0KPiA+DQo+ID4g
-QEAgLTEyMzAsNiArMTI3OCw5IEBAIHN0YXRpYyB2b2lkIG1zZGNfb3BzX3NldF9pb3Moc3RydWN0
-IG1tY19ob3N0DQo+ID4gKm1tYywgc3RydWN0IG1tY19pb3MgKmlvcykNCj4gPg0KPiA+ICAgICAg
-ICAgaWYgKGhvc3QtPm1jbGsgIT0gaW9zLT5jbG9jayB8fCBob3N0LT5kZHIgIT0gZGRyKQ0KPiA+
-ICAgICAgICAgICAgICAgICBtc2RjX3NldF9tY2xrKGhvc3QsIGRkciwgaW9zLT5jbG9jayk7DQo+
-ID4gKw0KPiA+ICsgICAgICAgcG1fcnVudGltZV9tYXJrX2xhc3RfYnVzeShob3N0LT5kZXYpOw0K
-PiA+ICsgICAgICAgcG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQoaG9zdC0+ZGV2KTsNCj4gPiAg
-fQ0KPiA+DQo+ID4gIHN0YXRpYyBzdHJ1Y3QgbW1jX2hvc3Rfb3BzIG10X21zZGNfb3BzID0geyBA
-QCAtMTM0MSw2ICsxMzkyLDExIEBADQo+ID4gc3RhdGljIGludCBtc2RjX2Rydl9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+ICAgICAgICAgcGxhdGZvcm1fc2V0X2RydmRh
-dGEocGRldiwgbW1jKTsNCj4gPiAgICAgICAgIGNsa19wcmVwYXJlKGhvc3QtPnNyY19jbGspOw0K
-PiA+DQo+ID4gKyAgICAgICBwbV9ydW50aW1lX2VuYWJsZShob3N0LT5kZXYpOw0KPiA+ICsgICAg
-ICAgcG1fcnVudGltZV9nZXRfc3luYyhob3N0LT5kZXYpOw0KPiA+ICsgICAgICAgcG1fcnVudGlt
-ZV9zZXRfYXV0b3N1c3BlbmRfZGVsYXkoaG9zdC0+ZGV2LA0KPiBNVEtfTU1DX0FVVE9TVVNQRU5E
-X0RFTEFZKTsNCj4gPiArICAgICAgIHBtX3J1bnRpbWVfdXNlX2F1dG9zdXNwZW5kKGhvc3QtPmRl
-dik7DQo+IA0KPiBUaGlzIHNoYWxsIGJlIGNoYW5nZWQgdG8gdGhlIGZvbGxvd2luZzoNCj4gDQpP
-aywgd2lsbCBmaXggaXQuDQo+IHBtX3J1bnRpbWVfc2V0X2FjdGl2ZSgpOw0KPiBwbV9ydW50aW1l
-X3NldF9hdXRvc3VzcGVuZF9kZWxheShob3N0LT5kZXYsDQo+IE1US19NTUNfQVVUT1NVU1BFTkRf
-REVMQVkpOw0KPiBwbV9ydW50aW1lX3VzZV9hdXRvc3VzcGVuZChob3N0LT5kZXYpOw0KPiBwbV9y
-dW50aW1lX2VuYWJsZShob3N0LT5kZXYpOw0KPiANCj4gLi4uIGFuZCB0byBzaW1wbGlmeSBlcnJv
-ciBoYW5kbGluZywgbW92ZSBpdCBqdXN0IHByaW9yIG1tY19hZGRfaG9zdCgpLg0KPiAJDQpXaWxs
-IGZpeCBpdCBhdCBuZXh0IHJldmlzaW9uLg0KPiA+ICsNCj4gPiAgICAgICAgIHJldCA9IGRldm1f
-cmVxdWVzdF9pcnEoJnBkZXYtPmRldiwgKHVuc2lnbmVkIGludCkgaG9zdC0+aXJxLA0KPiBtc2Rj
-X2lycSwNCj4gPiAgICAgICAgICAgICAgICAgSVJRRl9UUklHR0VSX0xPVyB8IElSUUZfT05FU0hP
-VCwgcGRldi0+bmFtZSwNCj4gaG9zdCk7DQo+ID4gICAgICAgICBpZiAocmV0KQ0KPiA+IEBAIC0x
-MzQ4LDEwICsxNDA0LDE1IEBAIHN0YXRpYyBpbnQgbXNkY19kcnZfcHJvYmUoc3RydWN0DQo+ID4g
-cGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiA+DQo+ID4gICAgICAgICByZXQgPSBtbWNfYWRkX2hv
-c3QobW1jKTsNCj4gPiAgICAgICAgIGlmIChyZXQpDQo+ID4gLSAgICAgICAgICAgICAgIGdvdG8g
-cmVsZWFzZTsNCj4gPiArICAgICAgICAgICAgICAgZ290byBlbmQ7DQo+ID4NCj4gPiArICAgICAg
-IHBtX3J1bnRpbWVfbWFya19sYXN0X2J1c3koaG9zdC0+ZGV2KTsNCj4gPiArICAgICAgIHBtX3J1
-bnRpbWVfcHV0X2F1dG9zdXNwZW5kKGhvc3QtPmRldik7DQo+IA0KPiBBY2NvcmRpbmcgdG8gYWJv
-dmUsIHJlbW92ZSB0aGVzZSBwbV9ydW50aW1lXyooKSBjYWxscy4NCj4gDQpPa2F5Lg0KPiA+ICAg
-ICAgICAgcmV0dXJuIDA7DQo+ID4NCj4gPiArZW5kOg0KPiA+ICsgICAgICAgcG1fcnVudGltZV9w
-dXRfc3luYyhob3N0LT5kZXYpOw0KPiANCj4gQWNjb3JkaW5nIHRvIGFib3ZlLCByZW1vdmUgdGhl
-IHBtX3J1bnRpbWVfcHV0X3N5bmMoKS4NCj4gV2lsbCByZW1vdmUgaXQgYXQgbmV4dCByZXZpc2lv
-biwNCj4gPiArICAgICAgIHBtX3J1bnRpbWVfZGlzYWJsZShob3N0LT5kZXYpOw0KPiA+ICByZWxl
-YXNlOg0KPiA+ICAgICAgICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgTlVMTCk7DQo+ID4g
-ICAgICAgICBtc2RjX2RlaW5pdF9odyhob3N0KTsNCj4gPiBAQCAtMTM2NCw2ICsxNDI1LDcgQEAg
-cmVsZWFzZV9tZW06DQo+ID4gICAgICAgICAgICAgICAgIGRtYV9mcmVlX2NvaGVyZW50KCZwZGV2
-LT5kZXYsDQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgTUFYX0JEX05VTSAqIHNpemVvZihz
-dHJ1Y3QNCj4gbXRfYmRtYV9kZXNjKSwNCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBob3N0
-LT5kbWEuYmQsIGhvc3QtPmRtYS5iZF9hZGRyKTsNCj4gPiArDQo+ID4gIGhvc3RfZnJlZToNCj4g
-PiAgICAgICAgIG1tY19mcmVlX2hvc3QobW1jKTsNCj4gPg0KPiA+IEBAIC0xMzc4LDEwICsxNDQw
-LDE0IEBAIHN0YXRpYyBpbnQgbXNkY19kcnZfcmVtb3ZlKHN0cnVjdA0KPiBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpDQo+ID4gICAgICAgICBtbWMgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsN
-Cj4gPiAgICAgICAgIGhvc3QgPSBtbWNfcHJpdihtbWMpOw0KPiA+DQo+ID4gKyAgICAgICBwbV9y
-dW50aW1lX2dldF9zeW5jKGhvc3QtPmRldik7DQo+ID4gKw0KPiA+ICAgICAgICAgcGxhdGZvcm1f
-c2V0X2RydmRhdGEocGRldiwgTlVMTCk7DQo+ID4gICAgICAgICBtbWNfcmVtb3ZlX2hvc3QoaG9z
-dC0+bW1jKTsNCj4gPiAgICAgICAgIG1zZGNfZGVpbml0X2h3KGhvc3QpOw0KPiA+DQo+ID4gKyAg
-ICAgICBwbV9ydW50aW1lX3B1dF9zeW5jKGhvc3QtPmRldik7DQo+IA0KPiBDaGFuZ2UgdG8gcG1f
-cnVudGltZV9wdXRfbm9pZGxlKCkgYW5kIHJldmVyc2UgdGhlIG9yZGVyIG9mIHRoZSBjYWxsIHRv
-DQo+IHBtX3J1bnRpbWVfZGlzYWJsZSgpLg0KPiANCk9rLiBXaWxsIGZpeCBpdCBhdCBuZXh0IHJl
-dmlzaW9uLA0KPiA+ICsgICAgICAgcG1fcnVudGltZV9kaXNhYmxlKGhvc3QtPmRldik7DQo+ID4g
-ICAgICAgICBkbWFfZnJlZV9jb2hlcmVudCgmcGRldi0+ZGV2LA0KPiA+ICAgICAgICAgICAgICAg
-ICAgICAgICAgIE1BWF9HUERfTlVNICogc2l6ZW9mKHN0cnVjdA0KPiBtdF9ncGRtYV9kZXNjKSwN
-Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBob3N0LT5kbWEuZ3BkLCBob3N0LT5kbWEuZ3Bk
-X2FkZHIpOyBAQA0KPiAtMTM5Myw2DQo+ID4gKzE0NTksMzEgQEAgc3RhdGljIGludCBtc2RjX2Ry
-dl9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gPiAgICAgICAgIHJldHVy
-biAwOw0KPiA+ICB9DQo+ID4NCj4gPiArI2lmZGVmIENPTkZJR19QTQ0KPiA+ICtzdGF0aWMgaW50
-IG1zZGNfcnVudGltZV9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikgew0KPiA+ICsgICAgICAg
-aW50IHJldCA9IDA7DQo+ID4gKyAgICAgICBzdHJ1Y3QgbW1jX2hvc3QgKm1tYyA9IGRldl9nZXRf
-ZHJ2ZGF0YShkZXYpOw0KPiA+ICsgICAgICAgc3RydWN0IG1zZGNfaG9zdCAqaG9zdCA9IG1tY19w
-cml2KG1tYyk7DQo+ID4gKw0KPiA+ICsgICAgICAgcmV0ID0gbXNkY19nYXRlX2Nsb2NrKGhvc3Qp
-Ow0KPiA+ICsgICAgICAgcmV0dXJuIHJldDsNCj4gPiArfQ0KPiA+ICsNCj4gPiArc3RhdGljIGlu
-dCBtc2RjX3J1bnRpbWVfcmVzdW1lKHN0cnVjdCBkZXZpY2UgKmRldikgew0KPiA+ICsgICAgICAg
-c3RydWN0IG1tY19ob3N0ICptbWMgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsNCj4gPiArICAgICAg
-IHN0cnVjdCBtc2RjX2hvc3QgKmhvc3QgPSBtbWNfcHJpdihtbWMpOw0KPiA+ICsNCj4gPiArICAg
-ICAgIG1zZGNfdW5nYXRlX2Nsb2NrKGhvc3QpOw0KPiA+ICsgICAgICAgcmV0dXJuIDA7DQo+ID4g
-K30NCj4gPiArI2VuZGlmDQo+ID4gKw0KPiA+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGRldl9wbV9v
-cHMgbXNkY19kZXZfcG1fb3BzID0gew0KPiA+ICsgICAgICAgU0VUX1JVTlRJTUVfUE1fT1BTKG1z
-ZGNfcnVudGltZV9zdXNwZW5kLA0KPiBtc2RjX3J1bnRpbWVfcmVzdW1lLA0KPiA+ICtOVUxMKSB9
-Ow0KPiA+ICsNCj4gPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXNkY19vZl9p
-ZHNbXSA9IHsNCj4gPiAgICAgICAgIHsgICAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxMzUt
-bW1jIiwgfSwNCj4gPiAgICAgICAgIHt9DQo+ID4gQEAgLTE0MDQsNiArMTQ5NSw3IEBAIHN0YXRp
-YyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10X21zZGNfZHJpdmVyID0gew0KPiA+ICAgICAgICAg
-LmRyaXZlciA9IHsNCj4gPiAgICAgICAgICAgICAgICAgLm5hbWUgPSAibXRrLW1zZGMiLA0KPiA+
-ICAgICAgICAgICAgICAgICAub2ZfbWF0Y2hfdGFibGUgPSBtc2RjX29mX2lkcywNCj4gPiArICAg
-ICAgICAgICAgICAgLnBtID0gJm1zZGNfZGV2X3BtX29wcywNCj4gPiAgICAgICAgIH0sDQo+ID4g
-IH07DQo+ID4NCj4gPiAtLQ0KPiA+IDEuOC4xLjEuZGlydHkNCj4gPg0KPiANCj4gS2luZCByZWdh
-cmRzDQo+IFVmZmUNCg0KKioqKioqKioqKioqKiBFbWFpbCBDb25maWRlbnRpYWxpdHkgTm90aWNl
-ICoqKioqKioqKioqKioqKioqKioqDQpUaGUgaW5mb3JtYXRpb24gY29udGFpbmVkIGluIHRoaXMg
-ZS1tYWlsIG1lc3NhZ2UgKGluY2x1ZGluZyBhbnkgDQphdHRhY2htZW50cykgbWF5IGJlIGNvbmZp
-ZGVudGlhbCwgcHJvcHJpZXRhcnksIHByaXZpbGVnZWQsIG9yIG90aGVyd2lzZQ0KZXhlbXB0IGZy
-b20gZGlzY2xvc3VyZSB1bmRlciBhcHBsaWNhYmxlIGxhd3MuIEl0IGlzIGludGVuZGVkIHRvIGJl
-IA0KY29udmV5ZWQgb25seSB0byB0aGUgZGVzaWduYXRlZCByZWNpcGllbnQocykuIEFueSB1c2Us
-IGRpc3NlbWluYXRpb24sIA0KZGlzdHJpYnV0aW9uLCBwcmludGluZywgcmV0YWluaW5nIG9yIGNv
-cHlpbmcgb2YgdGhpcyBlLW1haWwgKGluY2x1ZGluZyBpdHMgDQphdHRhY2htZW50cykgYnkgdW5p
-bnRlbmRlZCByZWNpcGllbnQocykgaXMgc3RyaWN0bHkgcHJvaGliaXRlZCBhbmQgbWF5IA0KYmUg
-dW5sYXdmdWwuIElmIHlvdSBhcmUgbm90IGFuIGludGVuZGVkIHJlY2lwaWVudCBvZiB0aGlzIGUt
-bWFpbCwgb3IgYmVsaWV2ZSANCnRoYXQgeW91IGhhdmUgcmVjZWl2ZWQgdGhpcyBlLW1haWwgaW4g
-ZXJyb3IsIHBsZWFzZSBub3RpZnkgdGhlIHNlbmRlciANCmltbWVkaWF0ZWx5IChieSByZXBseWlu
-ZyB0byB0aGlzIGUtbWFpbCksIGRlbGV0ZSBhbnkgYW5kIGFsbCBjb3BpZXMgb2YgDQp0aGlzIGUt
-bWFpbCAoaW5jbHVkaW5nIGFueSBhdHRhY2htZW50cykgZnJvbSB5b3VyIHN5c3RlbSwgYW5kIGRv
-IG5vdA0KZGlzY2xvc2UgdGhlIGNvbnRlbnQgb2YgdGhpcyBlLW1haWwgdG8gYW55IG90aGVyIHBl
-cnNvbi4gVGhhbmsgeW91IQ0K
+
+--ew6BAiZeqk4r7MaW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Mar 26, 2015 at 04:53:48PM +0100, Sascha Hauer wrote:
+> The thermal framework uses int, long and unsigned long for temperatures
+> in millicelsius. The majority of functions uses unsigned long, so change
+> the remaining functions to use this type aswell.
+
+I believe it make sense to change all to be int. int covers for the
+required temperature range.=20
+
+Rui is just introducing the concept of invalid temp, which is below 0 K.
+
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  drivers/thermal/thermal_core.c | 10 +++++-----
+>  include/linux/thermal.h        |  6 +++---
+
+This change is not that straight forward as it looks like.=20
+
+In order to standardize this, apart from the thermal core
+we will need to make drivers aware of the change too.
+That will require changing the thermal zone device ops and all its
+users, for the trip temperature, temperature, and hysteresis cases.
+
+>  2 files changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_cor=
+e.c
+> index 174d3bc..0e4ad7c 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -378,7 +378,7 @@ static void handle_critical_trips(struct thermal_zone=
+_device *tz,
+> =20
+>  	if (trip_type =3D=3D THERMAL_TRIP_CRITICAL) {
+>  		dev_emerg(&tz->device,
+> -			  "critical temperature reached(%d C),shutting down\n",
+> +			  "critical temperature reached(%lu C),shutting down\n",
+>  			  tz->temperature / 1000);
+>  		orderly_poweroff(true);
+>  	}
+> @@ -453,7 +453,7 @@ EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
+> =20
+>  static void update_temperature(struct thermal_zone_device *tz)
+>  {
+> -	long temp;
+> +	unsigned long temp;
+>  	int ret;
+> =20
+>  	ret =3D thermal_zone_get_temp(tz, &temp);
+> @@ -469,7 +469,7 @@ static void update_temperature(struct thermal_zone_de=
+vice *tz)
+>  	mutex_unlock(&tz->lock);
+> =20
+>  	trace_thermal_temperature(tz);
+> -	dev_dbg(&tz->device, "last_temperature=3D%d, current_temperature=3D%d\n=
+",
+> +	dev_dbg(&tz->device, "last_temperature=3D%lu, current_temperature=3D%lu=
+\n",
+>  				tz->last_temperature, tz->temperature);
+>  }
+> =20
+> @@ -512,7 +512,7 @@ static ssize_t
+>  temp_show(struct device *dev, struct device_attribute *attr, char *buf)
+>  {
+>  	struct thermal_zone_device *tz =3D to_thermal_zone(dev);
+> -	long temperature;
+> +	unsigned long temperature;
+>  	int ret;
+> =20
+>  	ret =3D thermal_zone_get_temp(tz, &temperature);
+> @@ -520,7 +520,7 @@ temp_show(struct device *dev, struct device_attribute=
+ *attr, char *buf)
+>  	if (ret)
+>  		return ret;
+> =20
+> -	return sprintf(buf, "%ld\n", temperature);
+> +	return sprintf(buf, "%lu\n", temperature);
+>  }
+> =20
+>  static ssize_t
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index 5eac316..db6c12b 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -180,9 +180,9 @@ struct thermal_zone_device {
+>  	int trips;
+>  	int passive_delay;
+>  	int polling_delay;
+> -	int temperature;
+> -	int last_temperature;
+> -	int emul_temperature;
+> +	unsigned long temperature;
+> +	unsigned long last_temperature;
+> +	unsigned long emul_temperature;
+>  	int passive;
+>  	unsigned int forced_passive;
+>  	struct thermal_zone_device_ops *ops;
+
+Something like the following would be required to do a standardization.
+Of course, the code below requires changing drivers too:
+
+diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+index 6bbe11c..84c9777 100644
+--- a/include/linux/thermal.h
++++ b/include/linux/thermal.h
+@@ -92,7 +92,7 @@ struct thermal_zone_device_ops {
+ 		     struct thermal_cooling_device *);
+ 	int (*unbind) (struct thermal_zone_device *,
+ 		       struct thermal_cooling_device *);
+-	int (*get_temp) (struct thermal_zone_device *, unsigned long *);
++	int (*get_temp) (struct thermal_zone_device *, int *);
+ 	int (*get_mode) (struct thermal_zone_device *,
+ 			 enum thermal_device_mode *);
+ 	int (*set_mode) (struct thermal_zone_device *,
+@@ -100,15 +100,15 @@ struct thermal_zone_device_ops {
+ 	int (*get_trip_type) (struct thermal_zone_device *, int,
+ 		enum thermal_trip_type *);
+ 	int (*get_trip_temp) (struct thermal_zone_device *, int,
+-			      unsigned long *);
++			      int *);
+ 	int (*set_trip_temp) (struct thermal_zone_device *, int,
+-			      unsigned long);
++			      int);
+ 	int (*get_trip_hyst) (struct thermal_zone_device *, int,
+-			      unsigned long *);
++			      int *);
+ 	int (*set_trip_hyst) (struct thermal_zone_device *, int,
+-			      unsigned long);
+-	int (*get_crit_temp) (struct thermal_zone_device *, unsigned long *);
+-	int (*set_emul_temp) (struct thermal_zone_device *, unsigned long);
++			      int);
++	int (*get_crit_temp) (struct thermal_zone_device *, int *);
++	int (*set_emul_temp) (struct thermal_zone_device *, int);
+ 	int (*get_trend) (struct thermal_zone_device *, int,
+ 			  enum thermal_trend *);
+ 	int (*notify) (struct thermal_zone_device *, int,
+@@ -321,9 +321,9 @@ struct thermal_genl_event {
+  *		   temperature.
+  */
+ struct thermal_zone_of_device_ops {
+-	int (*get_temp)(void *, long *);
+-	int (*get_trend)(void *, long *);
+-	int (*set_emul_temp)(void *, unsigned long);
++	int (*get_temp)(void *, int *);
++	int (*get_trend)(void *, int *);
++	int (*set_emul_temp)(void *, int);
+ };
+=20
+ /**
+@@ -336,8 +336,8 @@ struct thermal_zone_of_device_ops {
+=20
+ struct thermal_trip {
+ 	struct device_node *np;
+-	unsigned long int temperature;
+-	unsigned long int hysteresis;
++	int temperature;
++	int hysteresis;
+ 	enum thermal_trip_type type;
+ };
+=20
+@@ -395,7 +395,7 @@ thermal_of_cooling_device_register(struct device_node *=
+np, char *, void *,
+ 				   const struct thermal_cooling_device_ops *);
+ void thermal_cooling_device_unregister(struct thermal_cooling_device *);
+ struct thermal_zone_device *thermal_zone_get_zone_by_name(const char *name=
+);
+-int thermal_zone_get_temp(struct thermal_zone_device *tz, unsigned long *t=
+emp);
++int thermal_zone_get_temp(struct thermal_zone_device *tz, int *temp);
+=20
+ int get_tz_trend(struct thermal_zone_device *, int);
+ struct thermal_instance *get_thermal_instance(struct thermal_zone_device *,
+@@ -446,7 +446,7 @@ static inline struct thermal_zone_device *thermal_zone_=
+get_zone_by_name(
+ 		const char *name)
+ { return ERR_PTR(-ENODEV); }
+ static inline int thermal_zone_get_temp(
+-		struct thermal_zone_device *tz, unsigned long *temp)
++		struct thermal_zone_device *tz, int *temp)
+ { return -ENODEV; }
+ static inline int get_tz_trend(struct thermal_zone_device *tz, int trip)
+ { return -ENODEV; }
+
+
+> --=20
+> 2.1.4
+>=20
+
+--ew6BAiZeqk4r7MaW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQEcBAEBAgAGBQJVIzbDAAoJEMLUO4d9pOJWSCEIAIy1adw+hp4ohsSKNUOhn4cS
+8I3V7txCDCCq3lrK7Cc2kR1ttMjJ2uJ/GmZLjXWscuyLMjKdqIBqOTLEorckV/+j
+Y0CdNSyaTheVztY+Pm2JdhF4dUCzaSM9S5EjhbcBID0KYDIH/4xncPdV2f/ZAeCO
+scJenFeTMsoXooQnd+hdO2dRAjNn7STDiACUcYLDTE7Fmc7hyK0b/bN/TsuHDr8d
+RihYx97nnx0dCqPag/TBHoh5d1iYDCI5FdXKXJe/vN0pFf1aH6w61+9kyy7bA7eV
+Y76b9rpTMK9d2i/63dxOP/s7/IM5rT9EsYNTxTxjAUzmpf1+1Jysl3TW+cJuePY=
+=45zT
+-----END PGP SIGNATURE-----
+
+--ew6BAiZeqk4r7MaW--
