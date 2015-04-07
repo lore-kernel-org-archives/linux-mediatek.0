@@ -1,109 +1,69 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH 10/13] thermal: Make struct thermal_zone_device_ops const
-Date: Mon, 6 Apr 2015 20:29:49 -0700
-Message-ID: <20150407032948.GN4648@localhost.localdomain>
-References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
- <1427385240-6086-11-git-send-email-s.hauer@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="nRwNdQxTdQ7rZk9A"
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1427385240-6086-11-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Howard Chen <howard.chen@linaro.org>
+Subject: [PATCH v2] ARM: dts: mt8173: support arm64 cpuidle-dt
+Date: Tue,  7 Apr 2015 16:05:05 +0800
+Message-ID: <1428393905-32166-1-git-send-email-howard.chen@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Howard Chen <howard.chen@linaro.org>, Eddie Huang <eddie.huang@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
+This patch adds an idle-states node to describe the mt8173 idle states and
+also adds references to the idle-states node in all CPU nodes.
 
---nRwNdQxTdQ7rZk9A
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Howard Chen <howard.chen@linaro.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-On Thu, Mar 26, 2015 at 04:53:57PM +0100, Sascha Hauer wrote:
-> Now that the of thermal support no longer changes the
-> thermal_zone_device_ops it can be const again.
->=20
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/thermal/thermal_core.c | 2 +-
->  include/linux/thermal.h        | 6 +++---
-
-I believe this change deserves to be done together with the required driver=
-=20
-updates on those parts that calls this function.
-
->  2 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_cor=
-e.c
-> index acf00b5..dcdf45e 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -1455,7 +1455,7 @@ static void remove_trip_attrs(struct thermal_zone_d=
-evice *tz)
->   */
->  struct thermal_zone_device *thermal_zone_device_register(const char *typ=
-e,
->  	int trips, int mask, void *devdata,
-> -	struct thermal_zone_device_ops *ops,
-> +	const struct thermal_zone_device_ops *ops,
->  	const struct thermal_zone_params *tzp,
->  	int passive_delay, int polling_delay)
->  {
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index 2f77091..ac2897c 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -185,7 +185,7 @@ struct thermal_zone_device {
->  	unsigned long emul_temperature;
->  	int passive;
->  	unsigned int forced_passive;
-> -	struct thermal_zone_device_ops *ops;
-> +	const struct thermal_zone_device_ops *ops;
->  	const struct thermal_zone_params *tzp;
->  	struct thermal_governor *governor;
->  	struct list_head thermal_instances;
-> @@ -317,7 +317,7 @@ void thermal_zone_of_sensor_unregister(struct device =
-*dev,
-> =20
->  #if IS_ENABLED(CONFIG_THERMAL)
->  struct thermal_zone_device *thermal_zone_device_register(const char *, i=
-nt, int,
-> -		void *, struct thermal_zone_device_ops *,
-> +		void *, const struct thermal_zone_device_ops *,
->  		const struct thermal_zone_params *, int, int);
->  void thermal_zone_device_unregister(struct thermal_zone_device *);
-> =20
-> @@ -345,7 +345,7 @@ void thermal_notify_framework(struct thermal_zone_dev=
-ice *, int);
->  #else
->  static inline struct thermal_zone_device *thermal_zone_device_register(
->  	const char *type, int trips, int mask, void *devdata,
-> -	struct thermal_zone_device_ops *ops,
-> +	const struct thermal_zone_device_ops *ops,
->  	const struct thermal_zone_params *tzp,
->  	int passive_delay, int polling_delay)
->  { return ERR_PTR(-ENODEV); }
-> --=20
-> 2.1.4
->=20
-
---nRwNdQxTdQ7rZk9A
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
-
-iQEcBAEBAgAGBQJVI08lAAoJEMLUO4d9pOJWyJQH/i4Ih5803Oj9REwGKmScmdcR
-yClv35cFFhn12178CUHWl1nOHq6uLXWLfTQ6YusGwWYKQTLhFCV3ezFII9DQX7Mb
-zqVYKow9LvFNbj9HMS+8h1UlNTr5RaSazZaXHdenUR39C3YVtqQE1OEuOLbOAQdy
-mzkUZT6ytU2zwMYqgMdk7b7Byqh71+LxDth8RIsDP8aMAG2QcKPk4OZssqShYGK6
-jBxDI+4CmAXW2iM7z1ibwGKihtb82uHaEgrWsIHr8+pnVkjq4zsVwKdPAfDieWSw
-8lP/JpZQREwho3zzo0vbk/RNZVaiJ58b6kBBK81R1sVk2AlNm8ZRwng6QksNnsY=
-=dKXq
------END PGP SIGNATURE-----
-
---nRwNdQxTdQ7rZk9A--
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 8554ec3..0d31a34 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -48,6 +48,8 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x000>;
++			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -55,6 +57,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x001>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu2: cpu@100 {
+@@ -62,6 +65,7 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu3: cpu@101 {
+@@ -69,6 +73,19 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x101>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
++		};
++
++		idle-states {
++			entry-method = "arm,psci";
++
++			CPU_SLEEP_0: cpu-sleep-0 {
++				compatible = "arm,idle-state";
++				arm,psci-suspend-param = <0x0010000>;
++				entry-latency-us = <639>;
++				exit-latency-us = <328>;
++				min-residency-us = <1088>;
++			};
+ 		};
+ 	};
+ 
+-- 
+1.9.1
