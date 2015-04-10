@@ -1,134 +1,240 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 4/6] clk: mediatek: Add basic clocks for Mediatek MT8135.
-Date: Thu, 9 Apr 2015 19:05:22 +0200
-Message-ID: <CABuKBeJKrDMR+xHSk_WvppGE7KftMy-QL8ATFi081++C3vaKEg@mail.gmail.com>
-References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
-	<1427825817-26773-5-git-send-email-s.hauer@pengutronix.de>
+From: chaotian.jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: =?UTF-8?Q?=E7=AD=94=E5=A4=8D=3A?= [PATCH v2 2/5] mmc: mediatek:
+ Add Mediatek MMC driver
+Date: Fri, 10 Apr 2015 11:17:20 +0800
+Message-ID: <1428635840.16027.1.camel@mhfsdcap03>
+References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
+ <1426562035-16709-3-git-send-email-chaotian.jing@mediatek.com>
+ <CAPDyKFoUg1snXeOwCiKPF_daxAAfcWE0nUbRAj23Z=k9z5FCyA@mail.gmail.com>
+ <B077351396223C4F8FE8C4C13672A9CA609795F3@mtkmbs33n1>
+ <CAPDyKFrM94E8xXN_q0OqciOHC8WBC+fTOroSnnm+HDTOmWg6Gw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1427825817-26773-5-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPDyKFrM94E8xXN_q0OqciOHC8WBC+fTOroSnnm+HDTOmWg6Gw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, JamesJJ Liao =?UTF-8?Q?=28=E5=BB=96=E5=BB=BA=E6=99=BA=29?= <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, HONGZHOU Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Bin Zhang =?UTF-8?Q?=28=E7=AB=A0=E6=96=8C=29?= <bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> From: James Liao <jamesjj.liao@mediatek.com>
->
-> This patch adds basic clocks for MT8135, including TOPCKGEN, PLLs,
-> INFRA and PERI clocks.
->
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/clk/mediatek/Makefile                      |   1 +
->  drivers/clk/mediatek/clk-mt8135.c                  | 640 +++++++++++++++++++++
->  include/dt-bindings/clock/mt8135-clk.h             | 190 ++++++
->  .../dt-bindings/reset-controller/mt8135-resets.h   |  64 +++
->  4 files changed, 895 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt8135.c
->  create mode 100644 include/dt-bindings/clock/mt8135-clk.h
->  create mode 100644 include/dt-bindings/reset-controller/mt8135-resets.h
->
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 0b6f1c3..12ce576 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,2 +1,3 @@
->  obj-y += clk-mtk.o clk-pll.o clk-gate.o
->  obj-$(CONFIG_RESET_CONTROLLER) += reset.o
-> +obj-y += clk-mt8135.o
-> diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-> new file mode 100644
-> index 0000000..a08f2fe
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8135.c
-> @@ -0,0 +1,640 @@
-> +/*
-> + * Copyright (c) 2014 MediaTek Inc.
-> + * Author: James Liao <jamesjj.liao@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/of.h>
-> +#include <linux/of_address.h>
-> +#include <linux/slab.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <dt-bindings/clock/mt8135-clk.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-gate.h"
-> +
-> +static DEFINE_SPINLOCK(mt8135_clk_lock);
-> +
-> +static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
-> +       FACTOR(TOP_DSI0_LNTC_DSICLK, "dsi0_lntc_dsiclk", "clk_null", 1, 1),
-> +       FACTOR(TOP_HDMITX_CLKDIG_CTS, "hdmitx_clkdig_cts", "clk_null", 1, 1),
-> +       FACTOR(TOP_CLKPH_MCK, "clkph_mck", "clk_null", 1, 1),
-> +       FACTOR(TOP_CPUM_TCK_IN, "cpum_tck_in", "clk_null", 1, 1),
-> +};
-> +
-> +static const struct mtk_fixed_factor top_divs[] __initconst = {
-> +       FACTOR(TOP_MAINPLL_806M, "mainpll_806m", "mainpll", 1, 2),
-> +       FACTOR(TOP_MAINPLL_537P3M, "mainpll_537p3m", "mainpll", 1, 3),
-> +       FACTOR(TOP_MAINPLL_322P4M, "mainpll_322p4m", "mainpll", 1, 5),
-> +       FACTOR(TOP_MAINPLL_230P3M, "mainpll_230p3m", "mainpll", 1, 7),
-> +
-> +       FACTOR(TOP_UNIVPLL_624M, "univpll_624m", "univpll", 1, 2),
-> +       FACTOR(TOP_UNIVPLL_416M, "univpll_416m", "univpll", 1, 3),
-> +       FACTOR(TOP_UNIVPLL_249P6M, "univpll_249p6m", "univpll", 1, 5),
-> +       FACTOR(TOP_UNIVPLL_178P3M, "univpll_178p3m", "univpll", 1, 7),
-> +       FACTOR(TOP_UNIVPLL_48M, "univpll_48m", "univpll", 1, 26),
-> +
-> +       FACTOR(TOP_MMPLL_D2, "mmpll_d2", "mmpll", 1, 2),
-> +       FACTOR(TOP_MMPLL_D3, "mmpll_d3", "mmpll", 1, 3),
-> +       FACTOR(TOP_MMPLL_D5, "mmpll_d5", "mmpll", 1, 5),
-> +       FACTOR(TOP_MMPLL_D7, "mmpll_d7", "mmpll", 1, 7),
-> +       FACTOR(TOP_MMPLL_D4, "mmpll_d4", "mmpll_d2", 1, 2),
-> +       FACTOR(TOP_MMPLL_D6, "mmpll_d6", "mmpll_d3", 1, 2),
-> +
-> +       FACTOR(TOP_SYSPLL_D2, "syspll_d2", "mainpll_806m", 1, 1),
-> +       FACTOR(TOP_SYSPLL_D4, "syspll_d4", "mainpll_806m", 1, 2),
-> +       FACTOR(TOP_SYSPLL_D6, "syspll_d6", "mainpll_806m", 1, 3),
-> +       FACTOR(TOP_SYSPLL_D8, "syspll_d8", "mainpll_806m", 1, 4),
-> +       FACTOR(TOP_SYSPLL_D10, "syspll_d10", "mainpll_806m", 1, 5),
-> +       FACTOR(TOP_SYSPLL_D12, "syspll_d12", "mainpll_806m", 1, 6),
-> +       FACTOR(TOP_SYSPLL_D16, "syspll_d16", "mainpll_806m", 1, 8),
-> +       FACTOR(TOP_SYSPLL_D24, "syspll_d24", "mainpll_806m", 1, 12),
-> +
-> +       FACTOR(TOP_SYSPLL_D3, "syspll_d3", "mainpll_537p3m", 1, 1),
-> +
-> +       FACTOR(TOP_SYSPLL_D2P5, "syspll_d2p5", "mainpll_322p4m", 2, 1),
-> +       FACTOR(TOP_SYSPLL_D5, "syspll_d5", "mainpll_322p4m", 1, 1),
-> +
-> +       FACTOR(TOP_SYSPLL_D3P5, "syspll_d3p5", "mainpll_230p3m", 2, 1),
-> +
-> +       FACTOR(TOP_UNIVPLL1_D2, "univpll1_d2", "univpll_624m", 1, 2),
-> +       FACTOR(TOP_UNIVPLL1_D4, "univpll1_d4", "univpll_624m", 1, 4),
-> +       FACTOR(TOP_UNIVPLL1_D6, "univpll1_d6", "univpll_624m", 1, 6),
-> +       FACTOR(TOP_UNIVPLL1_D8, "univpll1_d8", "univpll_624m", 1, 8),
-> +       FACTOR(TOP_UNIVPLL1_D10, "univpll1_d10", "univpll_624m", 1, 10),
-> +
-> +       FACTOR(TOP_UNIVPLL2_D2, "univpll2_d2", "univpll_416m", 1, 2),
-> +       FACTOR(TOP_UNIVPLL2_D4, "univpll2_d4", "univpll_416m", 1, 4),
-> +       FACTOR(TOP_UNIVPLL2_D6, "univpll2_d6", "univpll_416m", 1, 6),
-> +       FACTOR(TOP_UNIVPLL2_D8, "univpll2_d8", "univpll_416m", 1, 8),
-> +
-> +       FACTOR(TOP_UNIVPLL_D3, "univpll_d3", "univpll_416m", 1, 1),
-> +       FACTOR(TOP_UNIVPLL_D5, "univpll_d5", "univpll_249p6m", 1, 1),
-> +       FACTOR(TOP_UNIVPLL_D7, "univpll_d7", "univpll_178p3m", 1, 1),
-> +       FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 5),
+Dear Ulf,
 
-shouldn't that be
-FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 2),
-as univpll_249p6m is univpll divided by 5?
+Thanks!
+please help to check my comment:
+
+On Wed, 2015-04-08 at 12:38 +0200, Ulf Hansson wrote:
+> [...]
+> 
+> >> > +
+> >> > +struct mt_bdma_desc {
+> >> > +       u32 first_u32;
+> >> > +#define BDMA_DESC_EOL          (1 << 0)
+> >> > +#define BDMA_DESC_CHECKSUM     (0xff << 8) /* bit8 ~ bit15 */
+> >> > +#define BDMA_DESC_BLKPAD       (1 << 17)
+> >> > +#define BDMA_DESC_DWPAD                (1 << 18)
+> >> > +       u32 next;
+> >> > +       u32 ptr;
+> >> > +       u32 second_u32;
+> >> > +#define BDMA_DESC_BUFLEN       (0xffff) /* bit0 ~ bit15 */
+> >> > +};
+> >> > +
+> >> > +struct msdc_dma {
+> >> > +       struct scatterlist *sg; /* I/O scatter list */
+> >> > +       struct mt_gpdma_desc *gpd;              /* pointer to gpd
+> >> array */
+> >> > +       struct mt_bdma_desc *bd;                /* pointer to bd
+> >> array */
+> >> > +       dma_addr_t gpd_addr;    /* the physical address of gpd array */
+> >> > +       dma_addr_t bd_addr;     /* the physical address of bd array */
+> >> > +};
+> >>
+> >> This looks weird from DMA perspective. Can you elaborate on why you
+> >> can't use the dmaengine API?
+> >>
+> > The gpd and bd structure are determined by the MSDC hw, and, the DMA controller is a part of the MSDC hw, different with the chain dma implemented by the kernel.
+> 
+> Hmm. I haven't reviewed the DMA related parts in detail. I will do
+> that when you have sent the next version.
+> 
+> >> > +
+> >> > +struct msdc_host {
+> >> > +       struct device *dev;
+> >> > +       struct mmc_host *mmc;   /* mmc structure */
+> >> > +       int cmd_rsp;
+> >> > +
+> >> > +       spinlock_t lock;
+> >> > +       struct mmc_request *mrq;
+> >> > +       struct mmc_command *cmd;
+> >> > +       struct mmc_data *data;
+> >> > +       int error;
+> >> > +
+> >> > +       void __iomem *base;             /* host base address */
+> >> > +
+> >> > +       struct msdc_dma dma;    /* dma channel */
+> >> > +
+> >> > +       u32 timeout_ns;         /* data timeout ns */
+> >> > +       u32 timeout_clks;       /* data timeout clks */
+> >> > +
+> >> > +       struct pinctrl *pinctrl;
+> >> > +       struct pinctrl_state *pins_default;
+> >> > +       struct pinctrl_state *pins_uhs;
+> >> > +       struct delayed_work req_timeout;
+> >> > +       int irq;                /* host interrupt */
+> >> > +
+> >> > +       struct clk *src_clk;    /* msdc source clock */
+> >> > +       u32 mclk;               /* mmc subsystem clock */
+> >> > +       u32 hclk;               /* host clock speed */
+> >> > +       u32 sclk;               /* SD/MS clock speed */
+> >> > +       bool ddr;
+> >> > +};
+> >> > +
+> >> > +static void sdr_set_bits(void __iomem *reg, u32 bs)
+> >> > +{
+> >> > +       u32 val = readl(reg);
+> >> > +
+> >> > +       val |= bs;
+> >> > +       writel(val, reg);
+> >> > +}
+> >> > +
+> >> > +static void sdr_clr_bits(void __iomem *reg, u32 bs)
+> >> > +{
+> >> > +       u32 val = readl(reg);
+> >> > +
+> >> > +       val &= ~(u32)bs;
+> >> > +       writel(val, reg);
+> >> > +}
+> >> > +
+> >> > +static void sdr_set_field(void __iomem *reg, u32 field, u32 val)
+> >> > +{
+> >> > +       unsigned int tv = readl(reg);
+> >> > +
+> >> > +       tv &= ~field;
+> >> > +       tv |= ((val) << (ffs((unsigned int)field) - 1));
+> >> > +       writel(tv, reg);
+> >> > +}
+> >>
+> >> A common thought for all the three above functions:
+> >>
+> >> Have you considered using a cache variable for those registers that
+> >> often gets updated? In that way you would have to read the register
+> >> value every time when you want to write to it. It should improve
+> >> performance a bit.
+> >>
+> > These register can be modified by the MSDC hw, cannot cache it.
+> 
+> Is that true for all registers?
+> 
+> Anyway, let's leave this as is.
+> 
+> >> > +
+> >> > +static void sdr_get_field(void __iomem *reg, u32 field, u32 *val)
+> >> > +{
+> >> > +       unsigned int tv = readl(reg);
+> >> > +
+> >> > +       *val = ((tv & field) >> (ffs((unsigned int)field) - 1));
+> >> > +}
+> >> > +
+> >> > +static void msdc_reset_hw(struct msdc_host *host)
+> >> > +{
+> >> > +       u32 val;
+> >> > +
+> >> > +       sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
+> >> > +       while (readl(host->base + MSDC_CFG) & MSDC_CFG_RST)
+> >> > +               cpu_relax();
+> >> > +
+> >> > +       sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
+> >> > +       while (readl(host->base + MSDC_FIFOCS) & MSDC_FIFOCS_CLR)
+> >> > +               cpu_relax();
+> >> > +
+> >> > +       val = readl(host->base + MSDC_INT);
+> >> > +       writel(val, host->base + MSDC_INT);
+> >> > +}
+> >> > +
+> >> > +static void msdc_cmd_next(struct msdc_host *host,
+> >> > +               struct mmc_request *mrq, struct mmc_command *cmd);
+> >>
+> >> Please investigate whether you can move around the code to prevent
+> >> this static declaration of the function.
+> >>
+> > It is hard to do it, because the first cmd may be CMD23, and do the next is send the mrq->cmd, so, there is a loop here, at least on method need do static declaration,
+> 
+> Okay.
+> 
+> [...]
+> 
+> >> > +/* clock control primitives */
+> >> > +static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
+> >> > +{
+> >> > +       u32 timeout, clk_ns;
+> >> > +       u32 mode = 0;
+> >> > +
+> >> > +       host->timeout_ns = ns;
+> >> > +       host->timeout_clks = clks;
+> >> > +       if (host->sclk == 0) {
+> >> > +               timeout = 0;
+> >> > +       } else {
+> >> > +               clk_ns  = 1000000000UL / host->sclk;
+> >> > +               timeout = (ns + clk_ns - 1) / clk_ns + clks;
+> >> > +               /* in 1048576 sclk cycle unit */
+> >> > +               timeout = (timeout + (1 << 20) - 1) >> 20;
+> >> > +               sdr_get_field(host->base + MSDC_CFG,
+> >> MSDC_CFG_CKMOD, &mode);
+> >> > +               /*DDR mode will double the clk cycles for data timeout */
+> >>
+> >> How do you know you will be using DDR at this point? Don't you need to
+> >> check for that?
+> >>
+> > The MSDC_CFG_CKMODE can show current mode(DDR or SDR).
+> 
+> Ah, thanks. Got it.
+> 
+> [...]
+> 
+> >> > +static void msdc_request_done(struct msdc_host *host, struct
+> >> mmc_request *mrq)
+> >> > +{
+> >> > +       unsigned long flags;
+> >> > +
+> >> > +       spin_lock_irqsave(&host->lock, flags);
+> >> > +       cancel_delayed_work(&host->req_timeout);
+> >>
+> >> This looks racy.
+> >>
+> >> Don't you need a cancel_delayed_work_sync() from somewhere, to be sure
+> >> that work isn't preemted after the "host->mrq" has been reset here? Or
+> >> maybe there is another way!? Of course that can't be done with the
+> >> spin_locks held, but I asume you get my point.
+> > Yes, I get your point, actually, we set a 5s timeout for each request, and, if the work already pending(means that some error happens), we do not wait it,
+> > And the work will set the event to timeout and return,
+> > So, maybe a good solution is that need check the return value of the cancel_delayed_work(), if it is pending, directly return, and do not set the host->mrq to 0 to avoid the race condition,
+> 
+> That should work.
+> 
+> [...]
+> 
+> >>
+> >> "ocr_avail" should be fetched from the vmmc regulator, when you invoke
+> >> mmc_regulator_get_supply() above.
+> > Yes, I also want to remove it, but, Not all devices use regulator, our SDIO device which connected on MSDC3, it's power is controlled by gpio.
+> > This because the regulator of the PMU is not enough.
+> 
+> So could you perhaps use a "gpio regulator" for this GPIO pin? There
+> is already support to easily describe such in DT.
+> 
+> Or it is a "reset GPIO" you are talking about?
+> 
+Will use fixedregulator for sdio case.
+Thx!
+> [...]
+> 
+> Kind regards
+> Uffe
