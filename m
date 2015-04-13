@@ -1,52 +1,38 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: mediatek: soc fixes for v4.1
-Date: Mon, 13 Apr 2015 10:51:42 +0200
-Message-ID: <CABuKBeKGjaySn=X-M-9aG22Kr1y=voA8e7ndjuXBGekmO3Rzvw@mail.gmail.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 4/6] clk: mediatek: Add basic clocks for Mediatek MT8135.
+Date: Mon, 13 Apr 2015 11:53:06 +0200
+Message-ID: <20150413095306.GM9742@pengutronix.de>
+References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
+ <1427825817-26773-5-git-send-email-s.hauer@pengutronix.de>
+ <CABuKBeJKrDMR+xHSk_WvppGE7KftMy-QL8ATFi081++C3vaKEg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CABuKBeJKrDMR+xHSk_WvppGE7KftMy-QL8ATFi081++C3vaKEg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
+On Thu, Apr 09, 2015 at 07:05:22PM +0200, Matthias Brugger wrote:
+> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> > +
+> > +       FACTOR(TOP_UNIVPLL_D3, "univpll_d3", "univpll_416m", 1, 1),
+> > +       FACTOR(TOP_UNIVPLL_D5, "univpll_d5", "univpll_249p6m", 1, 1),
+> > +       FACTOR(TOP_UNIVPLL_D7, "univpll_d7", "univpll_178p3m", 1, 1),
+> > +       FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 5),
+> 
+> shouldn't that be
+> FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 2),
+> as univpll_249p6m is univpll divided by 5?
 
-Please pull the following fix for v4.1.
+Yes, fixed.
 
-Thanks,
-Matthias
+Sascha
 
----
-
-The following changes since commit 1f022d84bd193ec88b01c6d2cb5b6647cb20a02f:
-
-  soc: mediatek: Add PMIC wrapper for MT8135 and MT8173 SoCs
-(2015-03-30 12:25:40 +0200)
-
-are available in the git repository at:
-
-  https://github.com/mbgg/linux-mediatek.git tags/v4.0-next-soc-fix
-
-for you to fetch changes up to 7a4261d5d35362d1c9ec4f80ba01ad417ca467b7:
-
-  soc/mediatek: Remove unused variables (2015-04-13 10:35:53 +0200)
-
-----------------------------------------------------------------
-- fix unused variable warning for pmic-wrapper
-
-----------------------------------------------------------------
-Thierry Reding (1):
-      soc/mediatek: Remove unused variables
-
- drivers/soc/mediatek/mtk-pmic-wrap.c | 2 --
- 1 file changed, 2 deletions(-)
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
