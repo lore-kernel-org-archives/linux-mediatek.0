@@ -1,33 +1,49 @@
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 4/6] clk: mediatek: Add basic clocks for Mediatek MT8135.
-Date: Mon, 13 Apr 2015 11:53:06 +0200
-Message-ID: <20150413095306.GM9742@pengutronix.de>
+Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
+ and MT8173
+Date: Mon, 13 Apr 2015 11:58:51 +0200
+Message-ID: <20150413095851.GN9742@pengutronix.de>
 References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
- <1427825817-26773-5-git-send-email-s.hauer@pengutronix.de>
- <CABuKBeJKrDMR+xHSk_WvppGE7KftMy-QL8ATFi081++C3vaKEg@mail.gmail.com>
+ <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CABuKBeJKrDMR+xHSk_WvppGE7KftMy-QL8ATFi081++C3vaKEg@mail.gmail.com>
+In-Reply-To: <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, James Liao <jamesjj.liao@mediatek.com>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Apr 09, 2015 at 07:05:22PM +0200, Matthias Brugger wrote:
-> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> > +
-> > +       FACTOR(TOP_UNIVPLL_D3, "univpll_d3", "univpll_416m", 1, 1),
-> > +       FACTOR(TOP_UNIVPLL_D5, "univpll_d5", "univpll_249p6m", 1, 1),
-> > +       FACTOR(TOP_UNIVPLL_D7, "univpll_d7", "univpll_178p3m", 1, 1),
-> > +       FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 5),
+On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
+> Hi Sascha,
 > 
-> shouldn't that be
-> FACTOR(TOP_UNIVPLL_D10, "univpll_d10", "univpll_249p6m", 1, 2),
-> as univpll_249p6m is univpll divided by 5?
+> 
+> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >
+> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
+> >
+> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
+> >
+> > are available in the git repository at:
+> >
+> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
+> >
+> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
+> >
+> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
+> >
+> > ----------------------------------------------------------------
+> > This patchset contains the initial common clock support for Mediatek SoCs.
+> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+> > and clock gates.
+> 
+> I tried the patch set on my mt8135 eval board. I used the dts bindings
+> from a former version of this set [1], but it does not boot the board
+> (based on v4.0-rc7).
+> Do you have any hint, what is happening, or are the bindings wrong?
 
-Yes, fixed.
+I can give this a test tomorrow.
 
 Sascha
 
