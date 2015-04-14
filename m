@@ -1,57 +1,42 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
- and MT8173
-Date: Tue, 14 Apr 2015 12:08:10 +0200
-Message-ID: <20150414100810.GH4946@pengutronix.de>
-References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
- <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH 05/13] thermal: inline only once used function
+Date: Tue, 14 Apr 2015 12:44:47 +0200
+Message-ID: <20150414104447.GI4946@pengutronix.de>
+References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
+ <1427385240-6086-6-git-send-email-s.hauer@pengutronix.de>
+ <20150407022307.GE4648@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <20150407022307.GE4648-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mikko Perttunen <mikko.perttunen-/1wQRMveznE@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
-
-On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
-> Hi Sascha,
+On Mon, Apr 06, 2015 at 07:23:08PM -0700, Eduardo Valentin wrote:
+> On Thu, Mar 26, 2015 at 04:53:52PM +0100, Sascha Hauer wrote:
+> > Inline update_temperature into its only caller to make the code
+> > more readable.
 > 
-> 
-> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> >
-> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
-> >
-> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
-> >
-> > are available in the git repository at:
-> >
-> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
-> >
-> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
-> >
-> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
-> >
-> > ----------------------------------------------------------------
-> > This patchset contains the initial common clock support for Mediatek SoCs.
-> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-> > and clock gates.
-> 
-> I tried the patch set on my mt8135 eval board. I used the dts bindings
-> from a former version of this set [1], but it does not boot the board
-> (based on v4.0-rc7).
-> Do you have any hint, what is happening, or are the bindings wrong?
+> I am not sure I understand how this is improving readability, can you
+> please elaborate?
 
-I just tried on a v4.0 with
-- this series applied
-- the dts patch applied (which is still up-to-date)
-- multi_v7_defconfig
-
-And it still works. What do you mean with "does not boot the board"? No
-console output? Could you try with earlyprintk?
+It improves readability because the reader does not have to lookup the
+definition of update_temperature but can instead just read through. The
+function name "update_temperature" does not give new information either,
+so I thought inlining the code is a good idea. Anyway, I can skip this
+patch if you want.
 
 Sascha
 
