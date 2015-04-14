@@ -1,71 +1,82 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
 Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
  and MT8173
-Date: Tue, 14 Apr 2015 13:01:30 +0200
-Message-ID: <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
+Date: Tue, 14 Apr 2015 13:57:02 +0200
+Message-ID: <20150414115702.GX9742@pengutronix.de>
 References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
-	<CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
-	<20150414100810.GH4946@pengutronix.de>
+ <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
+ <20150414100810.GH4946@pengutronix.de>
+ <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150414100810.GH4946@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
+On Tue, Apr 14, 2015 at 01:01:30PM +0200, Matthias Brugger wrote:
+> Hi Sascha,
+> 
+> 2015-04-14 12:08 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> > Hi Matthias,
+> >
+> > On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
+> >> Hi Sascha,
+> >>
+> >>
+> >> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >> >
+> >> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
+> >> >
+> >> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
+> >> >
+> >> > are available in the git repository at:
+> >> >
+> >> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
+> >> >
+> >> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
+> >> >
+> >> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
+> >> >
+> >> > ----------------------------------------------------------------
+> >> > This patchset contains the initial common clock support for Mediatek SoCs.
+> >> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+> >> > and clock gates.
+> >>
+> >> I tried the patch set on my mt8135 eval board. I used the dts bindings
+> >> from a former version of this set [1], but it does not boot the board
+> >> (based on v4.0-rc7).
+> >> Do you have any hint, what is happening, or are the bindings wrong?
+> >
+> > I just tried on a v4.0 with
+> > - this series applied
+> > - the dts patch applied (which is still up-to-date)
+> > - multi_v7_defconfig
+> >
+> > And it still works. What do you mean with "does not boot the board"? No
+> > console output? Could you try with earlyprintk?
+> 
+> The probelms I see is, that with the clock patches, I'm not able to
+> boot into a initramfs [1].
+> Whereas if I just comment topckgen and preicfg in the dts, I'm able to
+> get the a serial console of my initramfs [2].
+> 
+> I wonder if you are able to get serial console from the initramfs with
+> the clock patches + dts patch?
 
-2015-04-14 12:08 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> Hi Matthias,
->
-> On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
->> Hi Sascha,
->>
->>
->> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
->> >
->> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
->> >
->> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
->> >
->> > are available in the git repository at:
->> >
->> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
->> >
->> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
->> >
->> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
->> >
->> > ----------------------------------------------------------------
->> > This patchset contains the initial common clock support for Mediatek SoCs.
->> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
->> > and clock gates.
->>
->> I tried the patch set on my mt8135 eval board. I used the dts bindings
->> from a former version of this set [1], but it does not boot the board
->> (based on v4.0-rc7).
->> Do you have any hint, what is happening, or are the bindings wrong?
->
-> I just tried on a v4.0 with
-> - this series applied
-> - the dts patch applied (which is still up-to-date)
-> - multi_v7_defconfig
->
-> And it still works. What do you mean with "does not boot the board"? No
-> console output? Could you try with earlyprintk?
+So you get kernel messages but no output from initramfs? In this case
+the kernel disables the unused clocks in a late_initcall. The UART
+driver still uses the dummy clock provided in the dtsi, so the real
+UART clk gets disabled in the initcall. Try passing clk_ignore_unused to
+the kernel
 
-The probelms I see is, that with the clock patches, I'm not able to
-boot into a initramfs [1].
-Whereas if I just comment topckgen and preicfg in the dts, I'm able to
-get the a serial console of my initramfs [2].
+Sascha
 
-I wonder if you are able to get serial console from the initramfs with
-the clock patches + dts patch?
-
-Cheers,
-Matthias
-
-[1] http://pastebin.com/wmmsbdNp
-[2] http://pastebin.com/jZHrxmmT
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
