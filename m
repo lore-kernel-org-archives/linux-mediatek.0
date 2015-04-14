@@ -1,82 +1,142 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
- and MT8173
-Date: Tue, 14 Apr 2015 13:57:02 +0200
-Message-ID: <20150414115702.GX9742@pengutronix.de>
-References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
- <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
- <20150414100810.GH4946@pengutronix.de>
- <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/5] dt-bindings: mediatek: Add smi dts binding
+Date: Tue, 14 Apr 2015 21:49:49 +0800
+Message-ID: <1429019389.16264.5.camel@mhfsdcap03>
+References: <1425638900-24989-1-git-send-email-yong.wu@mediatek.com>
+	 <1425638900-24989-4-git-send-email-yong.wu@mediatek.com>
+	 <20150306111338.GD8700@leverpostej> <1429002474.14855.7.camel@mhfsdcap03>
+	 <20150414100657.GB28709@leverpostej>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150414100657.GB28709@leverpostej>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <Robin.Murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <Will.Deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Apr 14, 2015 at 01:01:30PM +0200, Matthias Brugger wrote:
-> Hi Sascha,
-> 
-> 2015-04-14 12:08 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> > Hi Matthias,
-> >
-> > On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
-> >> Hi Sascha,
-> >>
-> >>
-> >> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> >> >
-> >> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
-> >> >
-> >> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
-> >> >
-> >> > are available in the git repository at:
-> >> >
-> >> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
-> >> >
-> >> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
-> >> >
-> >> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
-> >> >
-> >> > ----------------------------------------------------------------
-> >> > This patchset contains the initial common clock support for Mediatek SoCs.
-> >> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-> >> > and clock gates.
-> >>
-> >> I tried the patch set on my mt8135 eval board. I used the dts bindings
-> >> from a former version of this set [1], but it does not boot the board
-> >> (based on v4.0-rc7).
-> >> Do you have any hint, what is happening, or are the bindings wrong?
-> >
-> > I just tried on a v4.0 with
-> > - this series applied
-> > - the dts patch applied (which is still up-to-date)
-> > - multi_v7_defconfig
-> >
-> > And it still works. What do you mean with "does not boot the board"? No
-> > console output? Could you try with earlyprintk?
-> 
-> The probelms I see is, that with the clock patches, I'm not able to
-> boot into a initramfs [1].
-> Whereas if I just comment topckgen and preicfg in the dts, I'm able to
-> get the a serial console of my initramfs [2].
-> 
-> I wonder if you are able to get serial console from the initramfs with
-> the clock patches + dts patch?
+Hi Mark,
 
-So you get kernel messages but no output from initramfs? In this case
-the kernel disables the unused clocks in a late_initcall. The UART
-driver still uses the dummy clock provided in the dtsi, so the real
-UART clk gets disabled in the initcall. Try passing clk_ignore_unused to
-the kernel
+On Tue, 2015-04-14 at 11:06 +0100, Mark Rutland wrote:
+> On Tue, Apr 14, 2015 at 10:07:54AM +0100, Yong Wu wrote:
+> > Hi Mark,
+> >     Thanks very much for review.=20
+> >     About the clock name should be the PoV of _this_ device. Could =
+you
+> > help check below?
+> >=20
+> > On Fri, 2015-03-06 at 11:13 +0000, Mark Rutland wrote:
+> > > On Fri, Mar 06, 2015 at 10:48:18AM +0000, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wr=
+ote:
+> > > > From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > >=20
+> > > > This patch add smi binding document.
+> > >=20
+> > > Please move binding documents to the start of the series. It make=
+s
+> > > things far easier to review.
+> > > =20
+> > > What does "larb" mean? It would be nice for the intorductory para=
+graph
+> > > in this file to explain.
+> > >=20
+> > > > +- reg : the register of each local arbiter
+> > > > +- clocks : the clocks of each local arbiter
+> > > > +- clock-name: larb_sub*(3 clockes at most)
+> > >=20
+> > > The names required _must_ be specified here, or clock-names is
+> > > pointless.
+> > >=20
+> > > The clock names should be from the PoV of _this_ device (i.e. the=
+y
+> > > should be the names of the inputs) not from the PoV of the provid=
+er
+> > > (i.e. they should not be the names of the outputs from the provid=
+er).
+> > >=20
+> > > Mark.
+> > >=20
+> >      After we check with our SMI Designer. Every SMI local arbiter =
+need
+> > two clocks, which is called  APB clocks and SMI clock.
+> >      APB clock : Advanced Peripheral Bus Clock. It is the clock for
+> > setting the register of local arbiter.
+> >      SMI clock : Smart Multimedia Interface Clock, It is the clock =
+for
+> > transfering the data and command.=20
+> >=20
+> >      And all the local arbiters need the smi common clock, so we
+> > separate it.=20
+> >=20
+> >      Then I prepare to design the smi the dtsi like this:=20
+> >=20
+> >       smi_common:smi@14022000 {
+> >                  compatible =3D =E2=80=9Cmediate, mt8173-smi=E2=80=9D=
+;
+> >                  reg =3D <0 0x14022000 0 0x1000>;
+> >                  clocks =3D <&mmsys MM_SMI_COMMON>;
+> >                  clocks-names =3D =E2=80=9Csmi_common=E2=80=9D;
+> >       };
+> >=20
+> >       larb0: larb@14021000 {
+> >                  compatible =3D =E2=80=9Cmediate, mt8173-smi-larb=E2=
+=80=9D;
+> >                  reg =3D <0 0x14021000 0 0x1000>;
+> >                  smi =3D <&smi_common>;
+> >                  clocks =3D <&mmsys MM_SMI_LARB0>,=20
+> > 		 	<&mmsys MM_SMI_LARB0>;
+> >                  clocks-names =3D =E2=80=9Capb_clk=E2=80=9D, =E2=80=
+=9Csmi_clk=E2=80=9D;
+> >      };
+> >=20
+> >      larb1: larb@16010000 {
+> >                  compatible =3D =E2=80=9Cmediate, mt8173-smi-larb=E2=
+=80=9D;
+> >                  reg =3D <0 0x16010000 0 0x1000>;
+> >                  smi =3D <&smi_common>;
+> >                  clocks =3D <&vdecsys VDEC_CKEN>,=20
+> > 			 <&mmsys VDEC_LARB_CKEN>;
+> >                  clocks-names =3D =E2=80=9Capb_clk=E2=80=9D, =E2=80=
+=9Csmi_clk=E2=80=9D;
+> >       };
+> >       =E2=80=A6=20
+> >      In some local arbiter, the source clock of the APB clock and t=
+he
+> > SMI clock may be the same, like larb0. so the two clocks are the sa=
+me.
+> > And they may be different in other local arbiteres, like larb1.    =
+ =20
+> >=20
+> >      If it is designed like this, is it ok?
+>=20
+> That looks pretty good; the clocks and names on the larb nodes seem
+> sensible.
+>=20
+> The naming of the "smi_common" clock on the smi_common node looks a b=
+it
+> odd though. Is that really what the clock input is called?
+>=20
+> Mark.
+     After check with DE, the smi_common clock also have its APB clock
+and the smi clock(they have the same clock source).
+    And I prepare to delete "_clk" in all the clock-names.
+    So it may be like this:
+         smi_common:smi@14022000 {
+                 compatible =3D =E2=80=9Cmediate, mt8173-smi=E2=80=9D;
+                    reg =3D <0 0x14022000 0 0x1000>;
+                  clocks =3D <&mmsys MM_SMI_COMMON>,=20
+			   <&mmsys MM_SMI_COMMON>;
+                  clocks-names =3D =E2=80=9Capk=E2=80=9D,"smi";
+        };
+     How about this?
+  =20
 
-Sascha
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
