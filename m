@@ -1,146 +1,109 @@
-From: Brian Norris <computersforpeace@gmail.com>
-Subject: Re: [PATCH 12/13] thermal: Add support for hardware-tracked trip
- points
-Date: Wed, 15 Apr 2015 11:06:48 -0700
-Message-ID: <20150415180648.GS32500@ld-irv-0074>
-References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
- <1427385240-6086-13-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
+ and MT8173
+Date: Thu, 16 Apr 2015 15:36:35 +0200
+Message-ID: <20150416133635.GS9742@pengutronix.de>
+References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
+ <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
+ <20150414100810.GH4946@pengutronix.de>
+ <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
+ <20150414115702.GX9742@pengutronix.de>
+ <CABuKBe+MnmL47FB2FhN=RRKEZV4tR3OyVTTpWfkTYQ4zSZP22Q@mail.gmail.com>
+ <CABuKBeLaUfseZU84vNmVFR3EeUhNrbrXnKeN=N6PP=abPcnjDQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1427385240-6086-13-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CABuKBeLaUfseZU84vNmVFR3EeUhNrbrXnKeN=N6PP=abPcnjDQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
+On Wed, Apr 15, 2015 at 05:48:08PM +0200, Matthias Brugger wrote:
+> 2015-04-15 17:11 GMT+02:00 Matthias Brugger <matthias.bgg@gmail.com>:
+> > 2015-04-14 13:57 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >> On Tue, Apr 14, 2015 at 01:01:30PM +0200, Matthias Brugger wrote:
+> >>> Hi Sascha,
+> >>>
+> >>> 2015-04-14 12:08 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >>> > Hi Matthias,
+> >>> >
+> >>> > On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
+> >>> >> Hi Sascha,
+> >>> >>
+> >>> >>
+> >>> >> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >>> >> >
+> >>> >> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
+> >>> >> >
+> >>> >> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
+> >>> >> >
+> >>> >> > are available in the git repository at:
+> >>> >> >
+> >>> >> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
+> >>> >> >
+> >>> >> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
+> >>> >> >
+> >>> >> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
+> >>> >> >
+> >>> >> > ----------------------------------------------------------------
+> >>> >> > This patchset contains the initial common clock support for Mediatek SoCs.
+> >>> >> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
+> >>> >> > and clock gates.
+> >>> >>
+> >>> >> I tried the patch set on my mt8135 eval board. I used the dts bindings
+> >>> >> from a former version of this set [1], but it does not boot the board
+> >>> >> (based on v4.0-rc7).
+> >>> >> Do you have any hint, what is happening, or are the bindings wrong?
+> >>> >
+> >>> > I just tried on a v4.0 with
+> >>> > - this series applied
+> >>> > - the dts patch applied (which is still up-to-date)
+> >>> > - multi_v7_defconfig
+> >>> >
+> >>> > And it still works. What do you mean with "does not boot the board"? No
+> >>> > console output? Could you try with earlyprintk?
+> >>>
+> >>> The probelms I see is, that with the clock patches, I'm not able to
+> >>> boot into a initramfs [1].
+> >>> Whereas if I just comment topckgen and preicfg in the dts, I'm able to
+> >>> get the a serial console of my initramfs [2].
+> >>>
+> >>> I wonder if you are able to get serial console from the initramfs with
+> >>> the clock patches + dts patch?
+> >>
+> >> So you get kernel messages but no output from initramfs? In this case
+> >> the kernel disables the unused clocks in a late_initcall. The UART
+> >> driver still uses the dummy clock provided in the dtsi, so the real
+> >> UART clk gets disabled in the initcall. Try passing clk_ignore_unused to
+> >> the kernel
+> >
+> > OK, I can boot to the initramfs with this kernel parameter, but it
+> > fails to boot, when I change the uart clock. I suppose that PERI_UART3
+> > for debug port uart3 should be fine, but it looks like it doesn't
+> > work.
+> > I can see on the mt6589 datasheet that you have a register
+> > PERI_UART_CK_SOURCE_SEL where you can decide if you want a 26 MHz or a
+> > 52 MHz clock for the UART block.
+> > Does this register exists on mt8135? If so, why is it not implemented?
+> 
+> I found that PERI_UARTx_CK is connected to axi_sel but should be
+> connected to uart_sel. Like this I'm able to reach to initramfs
+> console, but the baud rate values are screwed up.
+> As uart_sel is at 52 MHz, I suppose we need to change the entries in
+> PERI_UART_CK_SOURCE_SEL.
 
-On Thu, Mar 26, 2015 at 04:53:59PM +0100, Sascha Hauer wrote:
-> This adds support for hardware-tracked trip points to the device tree
-> thermal sensor framework.
-> 
-> The framework supports an arbitrary number of trip points. Whenever
-> the current temperature is updated, the trip points immediately
-> below and above the current temperature are found. A .set_trips
-> callback is then called with the temperatures. If there is no trip
-> point above or below the current temperature, the passed trip
-> temperature will be ULONG_MAX or 0 respectively. In this callback,
-> the driver should program the hardware such that it is notified
-> when either of these trip points are triggered. When a trip point
-> is triggered, the driver should call `thermal_zone_device_update'
-> for the respective thermal zone. This will cause the trip points
-> to be updated again.
-> 
-> If .set_trips is not implemented, the framework behaves as before.
-> 
-> This patch is based on an earlier version from Mikko Perttunen
-> <mikko.perttunen@kapsi.fi>
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/thermal/thermal_core.c | 41 +++++++++++++++++++++++++++++++++++++++++
->  include/linux/thermal.h        |  3 +++
->  2 files changed, 44 insertions(+)
-> 
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> index dcdf45e..7138f8f 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -434,6 +434,45 @@ int thermal_zone_get_temp(struct thermal_zone_device *tz, unsigned long *temp)
->  }
->  EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
->  
-> +static void thermal_zone_set_trips(struct thermal_zone_device *tz)
-> +{
-> +	unsigned long low = 0;
-> +	unsigned long high = ULONG_MAX;
-> +	unsigned long trip_temp, hysteresis;
-> +	unsigned long temp = tz->temperature;
-> +	int i;
-> +
-> +	if (!tz->ops->set_trips)
-> +		return;
-> +
-> +	/* No need to change trip points */
-> +	if (temp > tz->prev_low_trip && temp < tz->prev_high_trip)
-> +		return;
+I just asked the Mediatek guys for clarification, lets see what they
+tell me. There is a PERI_UART_CK_SOURCE_SEL on MT8135/MT8173, I have no
+idea why this is not implemented. I also don't know where the clocks I
+can select in the PERI_UART_CK_SOURCE_SEL register are derived from.
+It's also unclear to me how the real UART clock topology looks like.
 
-I see that you don't actually initialize prev_{low,high}_trip during
-device initialization, so they both start out as zero. I suppose that
-works here, mostly by coincidence, because it means we'll still always
-recalculate trip points the first time, but might it make sense to
-explicitly initialize them to:
-  low = ULONG_MAX
-  high = 0
-at init time? (Or, if these change to integer: INT_MAX and -INT_MAX?)
+Sascha
 
-Thanks,
-Brian
-
-> +
-> +	for (i = 0; i < tz->trips; i++) {
-> +		unsigned long trip_low;
-> +
-> +		tz->ops->get_trip_temp(tz, i, &trip_temp);
-> +		tz->ops->get_trip_hyst(tz, i, &hysteresis);
-> +
-> +		trip_low = trip_temp - hysteresis;
-> +
-> +		if (trip_low < temp && trip_low > low)
-> +			low = trip_low;
-> +
-> +		if (trip_temp > temp && trip_temp < high)
-> +			high = trip_temp;
-> +	}
-> +
-> +	tz->prev_low_trip = low;
-> +	tz->prev_high_trip = high;
-> +
-> +	dev_dbg(&tz->device, "new temperature boundaries: %lu < x < %lu\n",
-> +			low, high);
-> +
-> +	tz->ops->set_trips(tz, low, high);
-> +}
-> +
->  void thermal_zone_device_update(struct thermal_zone_device *tz)
->  {
->  	int count;
-> @@ -460,6 +499,8 @@ void thermal_zone_device_update(struct thermal_zone_device *tz)
->  	dev_dbg(&tz->device, "last_temperature=%lu, current_temperature=%lu\n",
->  				tz->last_temperature, tz->temperature);
->  
-> +	thermal_zone_set_trips(tz);
-> +
->  	for (count = 0; count < tz->trips; count++)
->  		handle_thermal_trip(tz, count);
->  }
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index ac2897c..b870702 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -87,6 +87,7 @@ struct thermal_zone_device_ops {
->  	int (*unbind) (struct thermal_zone_device *,
->  		       struct thermal_cooling_device *);
->  	int (*get_temp) (struct thermal_zone_device *, unsigned long *);
-> +	int (*set_trips) (struct thermal_zone_device *, unsigned long, unsigned long);
->  	int (*get_mode) (struct thermal_zone_device *,
->  			 enum thermal_device_mode *);
->  	int (*set_mode) (struct thermal_zone_device *,
-> @@ -183,6 +184,8 @@ struct thermal_zone_device {
->  	unsigned long temperature;
->  	unsigned long last_temperature;
->  	unsigned long emul_temperature;
-> +	unsigned long prev_low_trip;
-> +	unsigned long prev_high_trip;
->  	int passive;
->  	unsigned int forced_passive;
->  	const struct thermal_zone_device_ops *ops;
-> -- 
-> 2.1.4
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-pm" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
