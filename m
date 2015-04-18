@@ -1,55 +1,67 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v2 2/5] mmc: mediatek: Add Mediatek MMC driver
-Date: Fri, 17 Apr 2015 15:45:47 +0200
-Message-ID: <20150417134547.GN4946@pengutronix.de>
-References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
- <1426562035-16709-3-git-send-email-chaotian.jing@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
+ AFE driver
+Date: Sat, 18 Apr 2015 18:34:07 +0100
+Message-ID: <20150418173407.GE26185@sirena.org.uk>
+References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
+ <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mmc-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="yUw0eFUXHKnFujKq"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1426562035-16709-3-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, bin.zhang@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Koro Chen <koro.chen@mediatek.com>
+Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, galak@codeaurora.org, lgirdwood@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Chaotian,
 
-On Tue, Mar 17, 2015 at 11:13:52AM +0800, Chaotian Jing wrote:
-> Add Mediatek MMC driver code
-> 
+--yUw0eFUXHKnFujKq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-[...]
+On Fri, Apr 10, 2015 at 04:14:07PM +0800, Koro Chen wrote:
 
-> +	host->dev = &pdev->dev;
-> +	host->mmc = mmc;
-> +	/* Set host parameters to mmc */
-> +	mmc->ops = &mt_msdc_ops;
-> +	mmc->f_min = 260000;
-> +	mmc->ocr_avail = MMC_VDD_30_31 | MMC_VDD_31_32 | MMC_VDD_32_33;
-> +
-> +	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
-> +	/* MMC core transfer sizes tunable parameters */
-> +	mmc->max_segs = MAX_BD_NUM;
-> +	mmc->max_seg_size = 64 * 1024;
+> +Each external interface (called "IO" in this driver) is presented as a
+> +DAI to ASoC. An IO must be connected via the interconnect to a memif.
+> +The connection paths are configured through the device tree.
 
-Earlier versions of this driver had 64 * 1024 - 512 here. Using 64k
-breaks SD card support here. Reading the partition table still works
-fine, but the next transfers fail with messages like:
+Why are these connection paths configured via device tree?  I would
+expect that either there would be runtime configurability of these
+things (particularly if loopback configurations within the hardware are
+possible) or we'd just allocate memory interfaces to DAIs automatically
+as DAIs come into use.
 
-mtk-msdc 11240000.mmc: msdc_request_timeout: aborting cmd/data/mrq
-mtk-msdc 11240000.mmc: msdc_request_timeout: aborting mrq=ffffffc06e586860 cmd=18
-mtk-msdc 11240000.mmc: msdc_request_timeout: abort data: cmd18; 136 blocks
-mmcblk1: error -110 transferring data, sector 338488, nr 136, cmd response 0x900, card status 0xb00
-mtk-msdc 11240000.mmc: set mclk to 0 mmc1: tried to reset card
+> +- mem-interface-playback:
+> +  mem-interface-capture: property of memif, format is: <memif irq use_sram>;
+> +	                 memif: which memif to be used
+> +			        (defined in include/dt-bindings/sound/mtk-afe.h)
+> +		         irq: which irq to be used
+> +			      (defined in include/dt-bindings/sound/mtk-afe.h)
+> +		         use_sram: 1 is yes, 0 is no
 
-Can you confirm this?
+Again, this looks like stuff we should be able to figure out at runtime
+- the use of SRAM in particular looks like something we might want to
+change depending on use case.  Assuming it adds buffering then for a
+VoIP application we might not want to use SRAM to minimize latency but
+during music playback we might want to enable SRAM to minimize power
+consumption.
 
-Sascha
+--yUw0eFUXHKnFujKq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVMpWOAAoJECTWi3JdVIfQuWwH/08PJh1EXixYY1yYRWtSNW45
+JXWlvj8FAyKmtS7RkFz8osufXvfrNtsfc8J1Q9wHlNZ1eRKqXsj1x6HnfRHnJpF2
+oRU/p4BE0vWDS3tlBSJH+yLs+GXlyn5DYHREq6hSsLguYgvusTYi3zhqcF9fKNDB
+42gO5vVD/ZfN/Wp0qHC5D9ZPZAnPXF6yfih63PraSBSYRkf9EkEL7V30Y1xESO+z
+x645zIeZSecuvsX1J/rtusRzT9Fro/Lzi+rLwscUZNmeIaFksywmwcAmtj3xb7xt
+gLJde1efCvsMcPTx15WIcVzykiBP/iRSRhEmOgkO4AYKdIGXIQrp/ktbH3K8Hno=
+=GAGs
+-----END PGP SIGNATURE-----
+
+--yUw0eFUXHKnFujKq--
