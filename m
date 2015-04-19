@@ -1,119 +1,65 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RESEND RFC PATCH 3/3] ASoC: mediatek: Add AFE platform driver
-Date: Sat, 18 Apr 2015 18:51:39 +0100
-Message-ID: <20150418175139.GG26185@sirena.org.uk>
-References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
- <1428653649-38200-4-git-send-email-koro.chen@mediatek.com>
+From: chaotian.jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 2/5] mmc: mediatek: Add Mediatek MMC driver
+Date: Sun, 19 Apr 2015 11:22:41 +0800
+Message-ID: <1429413761.16027.2.camel@mhfsdcap03>
+References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
+ <1426562035-16709-3-git-send-email-chaotian.jing@mediatek.com>
+ <20150417134547.GN4946@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="lqtP4FxvQo6hb6bg"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1428653649-38200-4-git-send-email-koro.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, galak@codeaurora.org, lgirdwood@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150417134547.GN4946-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Dear Sascha,
 
---lqtP4FxvQo6hb6bg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Fri, Apr 10, 2015 at 04:14:09PM +0800, Koro Chen wrote:
-
-> +	if (memif->use_sram) {
-> +		struct snd_dma_buffer *dma_buf = &substream->dma_buffer;
-> +		int size = params_buffer_bytes(params);
-> +
-> +		memif->buffer_size = size;
-> +		memif->phys_buf_addr = afe->sram_phy_address;
-> +
-> +		dma_buf->bytes = size;
-> +		dma_buf->area = (unsigned char *)afe->sram_address;
-> +		dma_buf->addr = afe->sram_phy_address;
-> +		dma_buf->dev.type = SNDRV_DMA_TYPE_DEV;
-> +		dma_buf->dev.dev = substream->pcm->card->dev;
-> +		snd_pcm_set_runtime_buffer(substream, dma_buf);
-> +	} else {
-> +		ret = snd_pcm_lib_malloc_pages(substream,
-> +					       params_buffer_bytes(params));
-> +		if (ret < 0)
-> +			return ret;
-> +
-> +		memif->phys_buf_addr = substream->runtime->dma_addr;
-> +		memif->buffer_size = substream->runtime->dma_bytes;
-> +	}
-
-Ah, so the SRAM is directly memory mappable.  Nice.  But we have a
-limited amount of it so need to allocate it to a device somehow based on
-some factor I guess?
-
-> +static int mtk_afe_set_adda_dac_out(struct mtk_afe *afe, uint32_t rate)
-> +{
-> +	u32 audio_i2s_dac = 0;
-> +	u32 con0, con1;
-> +
-> +	/* set dl src2 */
-> +	con0 = (mtk_afe_adda_fs(rate) << 28) | (0x03 << 24) | (0x03 << 11);
-> +
-> +	/* 8k or 16k voice mode */
-> +	if (con0 == 0 || con0 == 3)
-> +		con0 |= 0x01 << 5;
-
-This all looks a bit magic, some defines would not go amiss here.
-
-> +	/* SA suggests to apply -0.3db to audio/speech path */
-> +	con0 = con0 | (0x01 << 1);
-> +	con1 = 0xf74f0000;
-
-More magic numbers!  This also suggests that there is a volume control
-lurking in here which could usefully be exposed to applications?
-
-> +static void mtk_afe_pmic_shutdown(struct mtk_afe *afe,
-> +				  struct snd_pcm_substream *substream)
-> +{
-> +	/* output */
-> +	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, 1, 0);
-> +	regmap_update_bits(afe->regmap, AFE_I2S_CON1, 1, 0);
-> +
-> +	/* input */
-> +	regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0, 1, 0);
-> +	/* disable ADDA */
-> +	regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0, 1, false);
-> +}
-
-This is looking like exposing the routing and using DAPM might save a
-bunch of code?  Overall my main thought looking at the code here and
-what the hardware was described as doing is that it'd all be simpler if
-it were a DPCM based thing using DAPM for power.  I think I'd like to
-see a strong reason for not using at least DPCM.
-
-> +		if (rate == MTK_AFE_I2S_RATE_8K)
-> +			voice_mode = 0;
-> +		else if (rate == MTK_AFE_I2S_RATE_16K)
-> +			voice_mode = 1;
-> +		else if (rate == MTK_AFE_I2S_RATE_32K)
-> +			voice_mode = 2;
-> +		else if (rate == MTK_AFE_I2S_RATE_48K)
-> +			voice_mode = 3;
-
-This should be a switch statement.
-
---lqtP4FxvQo6hb6bg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVMpmqAAoJECTWi3JdVIfQxkMIAIOmwoRG6X4SxeJtWoZoEC8J
-e9A2G0l0MdxHVtikI7EvTm4OddGaSM4HkeaVpxkOXo+YiA4soQESsF7Z6wgMdeDd
-u3yJKnvC/4mn2fo2TDkA+ndhPbLw8MRdGfdlU8FFPNujwnDTHC0KTh/LNk9ucYqN
-RUnN1hnjF5jAzb5JuNaDQJt5WYpQs6Ay9RK9dGtV0GLm1GHtt1lRZZKtTVs3Y2u+
-et3NHiHJ/E0yi/kiOGWzFYwqvq0DbgIHIg7E7ZiijVSGbiE0KCYtSbL8j/KdPzp9
-rtXl4SJQmrJ51ZluXJRs2GLGcvALz/xygKjgn1wL6IceNPZN0tPfAUS++GZkPSE=
-=1W03
------END PGP SIGNATURE-----
-
---lqtP4FxvQo6hb6bg--
+On Fri, 2015-04-17 at 15:45 +0200, Sascha Hauer wrote:
+> Hi Chaotian,
+> 
+> On Tue, Mar 17, 2015 at 11:13:52AM +0800, Chaotian Jing wrote:
+> > Add Mediatek MMC driver code
+> > 
+> 
+> [...]
+> 
+> > +	host->dev = &pdev->dev;
+> > +	host->mmc = mmc;
+> > +	/* Set host parameters to mmc */
+> > +	mmc->ops = &mt_msdc_ops;
+> > +	mmc->f_min = 260000;
+> > +	mmc->ocr_avail = MMC_VDD_30_31 | MMC_VDD_31_32 | MMC_VDD_32_33;
+> > +
+> > +	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
+> > +	/* MMC core transfer sizes tunable parameters */
+> > +	mmc->max_segs = MAX_BD_NUM;
+> > +	mmc->max_seg_size = 64 * 1024;
+> 
+> Earlier versions of this driver had 64 * 1024 - 512 here. Using 64k
+> breaks SD card support here. Reading the partition table still works
+> fine, but the next transfers fail with messages like:
+> 
+> mtk-msdc 11240000.mmc: msdc_request_timeout: aborting cmd/data/mrq
+> mtk-msdc 11240000.mmc: msdc_request_timeout: aborting mrq=ffffffc06e586860 cmd=18
+> mtk-msdc 11240000.mmc: msdc_request_timeout: abort data: cmd18; 136 blocks
+> mmcblk1: error -110 transferring data, sector 338488, nr 136, cmd response 0x900, card status 0xb00
+> mtk-msdc 11240000.mmc: set mclk to 0 mmc1: tried to reset card
+> 
+> Can you confirm this?
+> 
+Yes, it will be fixed at next revision.
+Thx!
+> Sascha
+> 
