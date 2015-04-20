@@ -1,15 +1,17 @@
-From: chaotian.jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 2/5] mmc: mediatek: Add Mediatek MMC driver
-Date: Sun, 19 Apr 2015 11:22:41 +0800
-Message-ID: <1429413761.16027.2.camel@mhfsdcap03>
-References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
- <1426562035-16709-3-git-send-email-chaotian.jing@mediatek.com>
- <20150417134547.GN4946@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
+ AFE driver
+Date: Mon, 20 Apr 2015 06:37:47 +0200
+Message-ID: <20150420043747.GH6325@pengutronix.de>
+References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
+ <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
+ <20150418173407.GE26185@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150417134547.GN4946-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20150418173407.GE26185-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,47 +21,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Sascha,
+On Sat, Apr 18, 2015 at 06:34:07PM +0100, Mark Brown wrote:
+> On Fri, Apr 10, 2015 at 04:14:07PM +0800, Koro Chen wrote:
+> 
+> > +Each external interface (called "IO" in this driver) is presented as a
+> > +DAI to ASoC. An IO must be connected via the interconnect to a memif.
+> > +The connection paths are configured through the device tree.
+> 
+> Why are these connection paths configured via device tree?  I would
+> expect that either there would be runtime configurability of these
+> things (particularly if loopback configurations within the hardware are
+> possible) or we'd just allocate memory interfaces to DAIs automatically
+> as DAIs come into use.
 
+There is a crossbar switch between the memory interfaces and the DAIs.
+Not every connection is possible, so not every memory interface can be
+used for every DAI. An algorithm choosing a suitable memory interface
+must be quite clever, complicated and also SoC dependent (the same but
+different hardware is used on MT8135 aswell), so I thought offering a
+static configuration via device tree is a good start. Should there be
+runtime configuration possible later the device tree settings could
+provide a good default.
 
-On Fri, 2015-04-17 at 15:45 +0200, Sascha Hauer wrote:
-> Hi Chaotian,
 > 
-> On Tue, Mar 17, 2015 at 11:13:52AM +0800, Chaotian Jing wrote:
-> > Add Mediatek MMC driver code
-> > 
+> > +- mem-interface-playback:
+> > +  mem-interface-capture: property of memif, format is: <memif irq use_sram>;
+> > +	                 memif: which memif to be used
+> > +			        (defined in include/dt-bindings/sound/mtk-afe.h)
+> > +		         irq: which irq to be used
+> > +			      (defined in include/dt-bindings/sound/mtk-afe.h)
+> > +		         use_sram: 1 is yes, 0 is no
 > 
-> [...]
-> 
-> > +	host->dev = &pdev->dev;
-> > +	host->mmc = mmc;
-> > +	/* Set host parameters to mmc */
-> > +	mmc->ops = &mt_msdc_ops;
-> > +	mmc->f_min = 260000;
-> > +	mmc->ocr_avail = MMC_VDD_30_31 | MMC_VDD_31_32 | MMC_VDD_32_33;
-> > +
-> > +	mmc->caps |= MMC_CAP_ERASE | MMC_CAP_CMD23;
-> > +	/* MMC core transfer sizes tunable parameters */
-> > +	mmc->max_segs = MAX_BD_NUM;
-> > +	mmc->max_seg_size = 64 * 1024;
-> 
-> Earlier versions of this driver had 64 * 1024 - 512 here. Using 64k
-> breaks SD card support here. Reading the partition table still works
-> fine, but the next transfers fail with messages like:
-> 
-> mtk-msdc 11240000.mmc: msdc_request_timeout: aborting cmd/data/mrq
-> mtk-msdc 11240000.mmc: msdc_request_timeout: aborting mrq=ffffffc06e586860 cmd=18
-> mtk-msdc 11240000.mmc: msdc_request_timeout: abort data: cmd18; 136 blocks
-> mmcblk1: error -110 transferring data, sector 338488, nr 136, cmd response 0x900, card status 0xb00
-> mtk-msdc 11240000.mmc: set mclk to 0 mmc1: tried to reset card
-> 
-> Can you confirm this?
-> 
-Yes, it will be fixed at next revision.
-Thx!
-> Sascha
-> 
+> Again, this looks like stuff we should be able to figure out at runtime
+> - the use of SRAM in particular looks like something we might want to
+> change depending on use case.  Assuming it adds buffering then for a
+> VoIP application we might not want to use SRAM to minimize latency but
+> during music playback we might want to enable SRAM to minimize power
+> consumption.
+
+That's exactly the usecase. How could such a runtime configurability
+look like? sysfs? Or something based on the buffer sizes?
+
+Sascha
+
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
