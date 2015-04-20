@@ -1,44 +1,56 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] pinctrl: mediatek: mtk-common: initialize unmask
-Date: Mon, 20 Apr 2015 06:15:16 -0500
-Message-ID: <1429528516-9245-1-git-send-email-colin.king@canonical.com>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH] pinctrl: mediatek: mtk-common: initialize unmask
+Date: Mon, 20 Apr 2015 15:32:51 +0300
+Message-ID: <5534F1F3.9060802@cogentembedded.com>
+References: <1429528516-9245-1-git-send-email-colin.king@canonical.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1429528516-9245-1-git-send-email-colin.king@canonical.com>
 Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Maoguang Meng <maoguang.meng@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Colin King <colin.king@canonical.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Maoguang Meng <maoguang.meng@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+Hello.
 
-cppcheck detected an unitialized variable:
+On 04/20/2015 02:15 PM, Colin King wrote:
 
-[drivers/pinctrl/mediatek/pinctrl-mtk-common.c:897]:
-  (error) Uninitialized variable: unmask
+> From: Colin Ian King <colin.king@canonical.com>
 
-unmask should be initialized to zero to ensure unmasking
-only occurs if a previous mask occurred. The current situation
-is that the unmask variable could contain any random garbage
-causing random unexpected unmasking.
+> cppcheck detected an unitialized variable:
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+    Uninitialized.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 493294c..3173125 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -881,7 +881,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
- 	if (!mtk_eint_get_mask(pctl, eint_num)) {
- 		mtk_eint_mask(d);
- 		unmask = 1;
--	}
-+	} else
-+		unmask = 0;
- 
- 	clr_bit = 0xff << eint_offset;
- 	writel(clr_bit, pctl->eint_reg_base + clr_offset);
--- 
-2.1.4
+> [drivers/pinctrl/mediatek/pinctrl-mtk-common.c:897]:
+>    (error) Uninitialized variable: unmask
+
+> unmask should be initialized to zero to ensure unmasking
+> only occurs if a previous mask occurred. The current situation
+> is that the unmask variable could contain any random garbage
+> causing random unexpected unmasking.
+
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 493294c..3173125 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -881,7 +881,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
+>   	if (!mtk_eint_get_mask(pctl, eint_num)) {
+>   		mtk_eint_mask(d);
+>   		unmask = 1;
+> -	}
+> +	} else
+> +		unmask = 0;
+
+    The CodingStyle dictates that there should be {} around *else* branch too.
+
+[...]
+
+WBR, Sergei
 
