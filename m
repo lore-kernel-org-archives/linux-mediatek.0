@@ -1,115 +1,63 @@
-From: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC PATCH 3/3] ASoC: mediatek: Add AFE platform driver
-Date: Mon, 20 Apr 2015 14:22:24 +0800
-Message-ID: <1429510944.30743.36.camel@mtksdaap41>
-References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
-	 <1428653649-38200-4-git-send-email-koro.chen@mediatek.com>
-	 <20150418175139.GG26185@sirena.org.uk>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v2 3/5] mmc: mediatek: Add PM support for MMC driver
+Date: Mon, 20 Apr 2015 08:49:10 +0200
+Message-ID: <20150420064910.GO4946@pengutronix.de>
+References: <1426562035-16709-1-git-send-email-chaotian.jing@mediatek.com>
+ <1426562035-16709-4-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150418175139.GG26185-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1426562035-16709-4-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, bin.zhang@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2015-04-18 at 18:51 +0100, Mark Brown wrote:
-> On Fri, Apr 10, 2015 at 04:14:09PM +0800, Koro Chen wrote:
+On Tue, Mar 17, 2015 at 11:13:53AM +0800, Chaotian Jing wrote:
+> Add PM support for Mediatek MMC driver
 > 
-> > +	if (memif->use_sram) {
-> > +		struct snd_dma_buffer *dma_buf = &substream->dma_buffer;
-> > +		int size = params_buffer_bytes(params);
-> > +
-> > +		memif->buffer_size = size;
-> > +		memif->phys_buf_addr = afe->sram_phy_address;
-> > +
-> > +		dma_buf->bytes = size;
-> > +		dma_buf->area = (unsigned char *)afe->sram_address;
-> > +		dma_buf->addr = afe->sram_phy_address;
-> > +		dma_buf->dev.type = SNDRV_DMA_TYPE_DEV;
-> > +		dma_buf->dev.dev = substream->pcm->card->dev;
-> > +		snd_pcm_set_runtime_buffer(substream, dma_buf);
-> > +	} else {
-> > +		ret = snd_pcm_lib_malloc_pages(substream,
-> > +					       params_buffer_bytes(params));
-> > +		if (ret < 0)
-> > +			return ret;
-> > +
-> > +		memif->phys_buf_addr = substream->runtime->dma_addr;
-> > +		memif->buffer_size = substream->runtime->dma_bytes;
-> > +	}
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 94 ++++++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 93 insertions(+), 1 deletion(-)
 > 
-> Ah, so the SRAM is directly memory mappable.  Nice.  But we have a
-> limited amount of it so need to allocate it to a device somehow based on
-> some factor I guess?
-Yes, actually SRAM is only used for the main playback path (which is
-memif "DL1") to achieve low power in real use case. Maybe you think it's
-better to not describe this in the device tree, but to choose SRAM
-automatically if memif "DL1" is chosen?
-> 
-> > +static int mtk_afe_set_adda_dac_out(struct mtk_afe *afe, uint32_t rate)
-> > +{
-> > +	u32 audio_i2s_dac = 0;
-> > +	u32 con0, con1;
-> > +
-> > +	/* set dl src2 */
-> > +	con0 = (mtk_afe_adda_fs(rate) << 28) | (0x03 << 24) | (0x03 << 11);
-> > +
-> > +	/* 8k or 16k voice mode */
-> > +	if (con0 == 0 || con0 == 3)
-> > +		con0 |= 0x01 << 5;
-> 
-> This all looks a bit magic, some defines would not go amiss here.
-> 
-> > +	/* SA suggests to apply -0.3db to audio/speech path */
-> > +	con0 = con0 | (0x01 << 1);
-> > +	con1 = 0xf74f0000;
-> 
-> More magic numbers!  This also suggests that there is a volume control
-> lurking in here which could usefully be exposed to applications?
-> 
-Sorry, I will fix these magic numbers.
-It is actually not a real volume control and not that suitable for
-application control because it cannot be changed in runtime; its value
-is fixed and was decided off-lined by experiment that can have best
-audio quality when using with our proprietary codec (not for I2S)
+> @@ -1003,6 +1042,8 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
+>  
+>  	if (!IS_ERR(mmc->supply.vqmmc)) {
+>  
+> +		pm_runtime_get_sync(host->dev);
+> +
+>  		if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_330) {
+>  			min_uv = 3300000;
+>  			max_uv = 3300000;
+> @@ -1011,6 +1052,9 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
+>  			max_uv = 1800000;
+>  		} else {
+>  			dev_err(host->dev, "Unsupported signal voltage!\n");
+> +
+> +			pm_runtime_mark_last_busy(host->dev);
+> +			pm_runtime_put_autosuspend(host->dev);
+>  			return -EINVAL;
+>  		}
+>  
+> @@ -1022,6 +1066,8 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
+>  		}
+>  	}
+>  
+> +	pm_runtime_mark_last_busy(host->dev);
+> +	pm_runtime_put_autosuspend(host->dev);
 
-> > +static void mtk_afe_pmic_shutdown(struct mtk_afe *afe,
-> > +				  struct snd_pcm_substream *substream)
-> > +{
-> > +	/* output */
-> > +	regmap_update_bits(afe->regmap, AFE_ADDA_DL_SRC2_CON0, 1, 0);
-> > +	regmap_update_bits(afe->regmap, AFE_I2S_CON1, 1, 0);
-> > +
-> > +	/* input */
-> > +	regmap_update_bits(afe->regmap, AFE_ADDA_UL_SRC_CON0, 1, 0);
-> > +	/* disable ADDA */
-> > +	regmap_update_bits(afe->regmap, AFE_ADDA_UL_DL_CON0, 1, false);
-> > +}
-> 
-> This is looking like exposing the routing and using DAPM might save a
-> bunch of code?  Overall my main thought looking at the code here and
-> what the hardware was described as doing is that it'd all be simpler if
-> it were a DPCM based thing using DAPM for power.  I think I'd like to
-> see a strong reason for not using at least DPCM.
-Thank you very much for mentioning the DPCM. I didn't know much about
-DPCM and I will definitely study and check if it is suitable for our HW.
-> 
-> > +		if (rate == MTK_AFE_I2S_RATE_8K)
-> > +			voice_mode = 0;
-> > +		else if (rate == MTK_AFE_I2S_RATE_16K)
-> > +			voice_mode = 1;
-> > +		else if (rate == MTK_AFE_I2S_RATE_32K)
-> > +			voice_mode = 2;
-> > +		else if (rate == MTK_AFE_I2S_RATE_48K)
-> > +			voice_mode = 3;
-> 
-> This should be a switch statement.
+This is unbalanced. You do a pm_runtime_get_sync() depending on
+!IS_ERR(mmc->supply.vqmmc), but you call pm_runtime_put_autosuspend()
+unconditionally. Besides, I don't see that the pm_ops are necessary here
+at all. This function does nothing on the controller.
+
+Sascha
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
