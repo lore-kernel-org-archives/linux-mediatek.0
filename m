@@ -1,43 +1,58 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH][V2] pinctrl: mediatek: mtk-common: initialize unmask
-Date: Mon, 20 Apr 2015 10:59:17 -0500
-Message-ID: <1429545557-3404-1-git-send-email-colin.king@canonical.com>
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, sergei.shtylyov@cogentembedded.com
+From: Paul Bolle <pebolle@tiscali.nl>
+Subject: Re: [PATCH 1/2] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Mon, 20 Apr 2015 20:28:37 +0200
+Message-ID: <1429554517.14597.38.camel@x220>
+References: <1429522047-16675-1-git-send-email-pi-cheng.chen@linaro.org>
+	 <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, fan.chen@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
-
-cppcheck detected an uninitialized variable:
-
-[drivers/pinctrl/mediatek/pinctrl-mtk-common.c:897]:
-  (error) Uninitialized variable: unmask
-
-unmask should be initialized to zero to ensure unmasking
-only occurs if a previous mask occurred. The current situation
-is that the unmask variable could contain any random garbage
-causing random unexpected unmasking.
-
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 493294c..474812e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -881,6 +881,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
- 	if (!mtk_eint_get_mask(pctl, eint_num)) {
- 		mtk_eint_mask(d);
- 		unmask = 1;
-+	} else {
-+		unmask = 0;
- 	}
+On Mon, 2015-04-20 at 17:27 +0800, pi-cheng.chen wrote:
+> --- a/drivers/cpufreq/Kconfig.arm
+> +++ b/drivers/cpufreq/Kconfig.arm
  
- 	clr_bit = 0xff << eint_offset;
--- 
-2.1.4
+> +config ARM_MT8173_CPUFREQ
+> +	bool "Mediatek MT8173 CPUFreq support"
+> +	depends on ARCH_MEDIATEK && REGULATOR
+> +	help
+> +	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
 
+> --- a/drivers/cpufreq/Makefile
+> +++ b/drivers/cpufreq/Makefile
+
+> +obj-$(CONFIG_ARM_MT8173_CPUFREQ)	+= mt8173-cpufreq.o
+
+ARM_MT8173_CPUFREQ is a bool symbol, so mt8173-cpufreq.o will never be
+part of a module.
+
+(If that's incorrect you can stop reading here.)
+
+> --- /dev/null
+> +++ b/drivers/cpufreq/mt8173-cpufreq.c
+
+> +#include <linux/module.h>
+
+I guess this include is not needed. And, for what it's worth,
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnu- drivers/cpufreq/mt8173-cpufreq.o
+
+compiles silently even if it's dropped.
+
+> +module_init(mt8173_cpufreq_driver_init);
+
+According to include/linux/init.h, for built-in only code, this is
+equivalent to device_initcall([...]). And two runs of
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnu- drivers/cpufreq/mt8173-cpufreq.i
+
+confirm that.
+
+Thanks,
+
+
+Paul Bolle
