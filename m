@@ -1,58 +1,50 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
- AFE driver
-Date: Tue, 21 Apr 2015 11:56:23 +0100
-Message-ID: <20150421105623.GG22845@sirena.org.uk>
-References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
- <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
- <20150418173407.GE26185@sirena.org.uk>
- <20150420043747.GH6325@pengutronix.de>
- <20150420204849.GJ14892@sirena.org.uk>
- <20150421094926.GU6325@pengutronix.de>
- <1429611306.23823.52.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Question about checking rate_spi in pwrap_init_reg_clock
+Date: Tue, 21 Apr 2015 13:43:19 +0200
+Message-ID: <CABuKBeJqgWHWNYaFXS-BwEayHEtiYGt+56LLXs3QaO3MHUk0bQ@mail.gmail.com>
+References: <1429581487.5994.1.camel@ingics.com>
+ <20150421103155.GX6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ahP6B03r4gLOj5uD"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1429611306.23823.52.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, robh+dt@kernel.org, matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, galak@codeaurora.org, lgirdwood@gmail.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150421103155.GX6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "fan. chen" <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+2015-04-21 12:31 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+> On Tue, Apr 21, 2015 at 09:58:07AM +0800, Axel Lin wrote:
+>> hi,
+>> The implementation in pwrap_init_reg_clock seems has off-by-one bug.
+>> If rate_spi is 26000000, current code set ck_mhz to 18 rather than 26.
+>>
+>> I guess it needs below fix, but I'm not 100% sure as I don't have the datasheet.
+>> Can someone confirm if this is a bug or not?
+>
+> Yes, seems to be a bug. Thanks for noting. Will you send a formal patch
+> or should I do it?
 
---ahP6B03r4gLOj5uD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Did you have a look on both datasheets/reference kernels, mt8135 and mt8173?
+Reading the datasheet and reference kernel code for mt6589 this SPI
+waveform configuration looks like magic.
 
-On Tue, Apr 21, 2015 at 06:15:06PM +0800, Koro Chen wrote:
-> On Tue, 2015-04-21 at 11:49 +0200, Sascha Hauer wrote:
+But reading the clock frequency which can have clk_spi in mt8135, they
+are 0 MHz, 26 MHz and bigger then 26 MHz, which leads me to the
+conclusion that the code is correct. Otherwise the check for bigger
+then 18 MHz is useless and should be deleted, if we have a similar
+clock distribution in mt8173.
 
-> > there are two programmable hardware gain blocks which can be inserted to
-> > the digital audio path using the crossbar switch. There must be some
-> > mechanism to configure them into different places.
+So maybe someone from Mediatek can shed light on this issue.
 
-> Maybe in DPCM, they can be "widgets", and we can define "routes" and
-> corresponding controls for them.=20
-
-Yes, exactly - it's basically just like a CODEC.
-
---ahP6B03r4gLOj5uD
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVNizXAAoJECTWi3JdVIfQThcH/inMRPhH27+o4/rXhIl3j7DX
-gCQNfqI0DC2iXXQfU7WagXj/4NBeoe7Zv/3I17RnSvMzf0vzpEoSbeLpKiFuY0PX
-REGyKvt1WPyrzKuZhXZe3Kc4lWe+XpBGqjNW1MUBWMyjWZYdOeKcrqJyL+XWUYGF
-nH4wOtLwwHiGAYWmUdYRWcNUWHhe3NL+VYjDNDvI4zRRCvdcckk5Z71k3boduGDQ
-gauqxEyThK9GaSg6sh9oEOWeC2G3jTPlOZA8q/qABNvI5ySBMGsqRVjlbcwBXjrO
-hoq0zfVUOaBA3i9W445hLHClJl+dfpSYdd+nVkN9Zaf3ujSIBT+tWclK20pWmXM=
-=d1vG
------END PGP SIGNATURE-----
-
---ahP6B03r4gLOj5uD--
+Thanks,
+Matthias
