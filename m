@@ -1,18 +1,19 @@
 From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [RESEND RFC PATCH 2/3] ASoC: mediatek: Add AFE connection control
-Date: Tue, 21 Apr 2015 07:50:41 +0200
-Message-ID: <20150421055041.GQ6325@pengutronix.de>
+Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
+ AFE driver
+Date: Tue, 21 Apr 2015 11:49:26 +0200
+Message-ID: <20150421094926.GU6325@pengutronix.de>
 References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
- <1428653649-38200-3-git-send-email-koro.chen@mediatek.com>
- <20150418173740.GF26185@sirena.org.uk>
- <20150420045017.GI6325@pengutronix.de>
- <20150420205230.GK14892@sirena.org.uk>
+ <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
+ <20150418173407.GE26185@sirena.org.uk>
+ <20150420043747.GH6325@pengutronix.de>
+ <20150420204849.GJ14892@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20150420205230.GK14892-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+In-Reply-To: <20150420204849.GJ14892-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -26,39 +27,47 @@ To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 20, 2015 at 09:52:30PM +0100, Mark Brown wrote:
-> On Mon, Apr 20, 2015 at 06:50:17AM +0200, Sascha Hauer wrote:
-> > On Sat, Apr 18, 2015 at 06:37:40PM +0100, Mark Brown wrote:
-> > > On Fri, Apr 10, 2015 at 04:14:08PM +0800, Koro Chen wrote:
+On Mon, Apr 20, 2015 at 09:48:49PM +0100, Mark Brown wrote:
+> On Mon, Apr 20, 2015 at 06:37:47AM +0200, Sascha Hauer wrote:
+> > On Sat, Apr 18, 2015 at 06:34:07PM +0100, Mark Brown wrote:
+> > > On Fri, Apr 10, 2015 at 04:14:07PM +0800, Koro Chen wrote:
 > 
-> > > > +	[0][0] =   { .creg = 0x020, .cshift =  0, .sreg = 0x020, .sshift = 10},
-> > > > +	[0][1] =   { .creg = 0x020, .cshift = 16, .sreg = 0x020, .sshift = 26},
+> > > > +Each external interface (called "IO" in this driver) is presented as a
+> > > > +DAI to ASoC. An IO must be connected via the interconnect to a memif.
+> > > > +The connection paths are configured through the device tree.
 > 
-> > > It'd also be nice to have less magic numbers in the table, at least for
-> > > the indexes (which I guess correspond to some of the defines in the
-> > > headers)?
+> > > Why are these connection paths configured via device tree?  I would
+> > > expect that either there would be runtime configurability of these
+> > > things (particularly if loopback configurations within the hardware are
+> > > possible) or we'd just allocate memory interfaces to DAIs automatically
+> > > as DAIs come into use.
 > 
-> > With defines the above two lines would become something like:
+> > There is a crossbar switch between the memory interfaces and the DAIs.
+> > Not every connection is possible, so not every memory interface can be
+> > used for every DAI. An algorithm choosing a suitable memory interface
+> > must be quite clever, complicated and also SoC dependent (the same but
+> > different hardware is used on MT8135 aswell), so I thought offering a
+> > static configuration via device tree is a good start. Should there be
+> > runtime configuration possible later the device tree settings could
+> > provide a good default.
 > 
-> > [0][0] = { .creg = AFE_CONN0, .cshift = CONN0_I00_O00_S, .sreg = AFE_CONN0, .sshift = CONN0_I00_O00_R },
-> > [0][1] = { .creg = AFE_CONN0, .cshift = CONN0_I00_O01_S, .sreg = AFE_CONN0, .sshift = CONN0_I00_O01_S },
-> 
-> > For the registers we could use defines, but I think using defines for
-> > the shifts doesn't add much value given they are only used once.
-> 
-> By indexes I actually meant the [0][0] and so on - they seem the more
-> magic bit.
+> What exactly do the restrictions look like and how often do they vary in
+> practice (can we get away with just doing a single static setup in the
+> driver)? I'd have thought it should be fairly straightforward to have a
+> table of valid mappings and just pick the first free memory interface?
 
-Oh, that's not magic at all, the crossbar switch has inputs and outputs
-numbered from 0 to MTK_AFE_INTERCONN_NUM_INPUT /
-MTK_AFE_INTERCONN_NUM_OUTPUT (they have the same numbers in the
-datasheet. To connect input x with output y look at index [x][y] in the
-table and write the register values found at that place. If .creg is 0x0
-then it's not possible to connect the given input with the given output.
+I think this could be done. I checked the possible connections in the
+crossbar switch and it seems all memory interfaces can be connected with
+all relevant external interfaces. So indeed the memory interfaces could
+be dynamically allocated instead of statically associated to an
+external interface. There are two problems I see: Some memory interfaces
+are limited in the rates they support, they can only do 8k/16k/32k (for
+speech). How can we know such memory interface should be used? Also
+there are two programmable hardware gain blocks which can be inserted to
+the digital audio path using the crossbar switch. There must be some
+mechanism to configure them into different places.
 
 Sascha
-
-
 
 -- 
 Pengutronix e.K.                           |                             |
