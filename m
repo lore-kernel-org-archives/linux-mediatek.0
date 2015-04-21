@@ -1,14 +1,16 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] soc: mediatek: Fix off-by-one checking for rate_spi
-Date: Tue, 21 Apr 2015 13:46:51 +0200
-Message-ID: <CABuKBeL+YTZz4jkMwozm4SbtP_4N8kBiqgeEHh1htoK6StpK_w@mail.gmail.com>
-References: <1429613612.5644.1.camel@ingics.com>
- <20150421105953.GY6325@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: Question about checking rate_spi in pwrap_init_reg_clock
+Date: Tue, 21 Apr 2015 14:52:23 +0200
+Message-ID: <20150421125223.GB6325@pengutronix.de>
+References: <1429581487.5994.1.camel@ingics.com>
+ <20150421103155.GX6325@pengutronix.de>
+ <CABuKBeJqgWHWNYaFXS-BwEayHEtiYGt+56LLXs3QaO3MHUk0bQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150421105953.GY6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CABuKBeJqgWHWNYaFXS-BwEayHEtiYGt+56LLXs3QaO3MHUk0bQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,26 +20,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "fan. chen" <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
+On Tue, Apr 21, 2015 at 01:43:19PM +0200, Matthias Brugger wrote:
+> 2015-04-21 12:31 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+> > On Tue, Apr 21, 2015 at 09:58:07AM +0800, Axel Lin wrote:
+> >> hi,
+> >> The implementation in pwrap_init_reg_clock seems has off-by-one bug.
+> >> If rate_spi is 26000000, current code set ck_mhz to 18 rather than 26.
+> >>
+> >> I guess it needs below fix, but I'm not 100% sure as I don't have the datasheet.
+> >> Can someone confirm if this is a bug or not?
+> >
+> > Yes, seems to be a bug. Thanks for noting. Will you send a formal patch
+> > or should I do it?
+> 
+> Did you have a look on both datasheets/reference kernels, mt8135 and mt8173?
+> Reading the datasheet and reference kernel code for mt6589 this SPI
+> waveform configuration looks like magic.
+> 
+> But reading the clock frequency which can have clk_spi in mt8135, they
+> are 0 MHz, 26 MHz and bigger then 26 MHz, which leads me to the
+> conclusion that the code is correct. Otherwise the check for bigger
+> then 18 MHz is useless and should be deleted, if we have a similar
+> clock distribution in mt8173.
 
-2015-04-21 12:59 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
-> On Tue, Apr 21, 2015 at 06:53:32PM +0800, Axel Lin wrote:
->> If rate_spi is 26000000, current code set ck_mhz to 18 rather than 26.
->> Fix the off-by-one checking for rate_spi.
->>
->> Signed-off-by: Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>
->
-> Acked-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
->
+The CSHEXT and CSLEXT registers extend the time the chipselect stays
+high after a SPI transfer or low before a new transfer by the given
+number of spi clk cycles.
+Looking at the code maybe the real question is not whether the border is
+at 25999999Hz or at 26000000Hz, but why the transfers are throttled with
+slower clock frequencies. I would assume the other way round makes
+sense.
 
-Can you please explain why you think this is a bug? Please see my
-concerns here [1].
+Sascha
 
-Best regards,
-Matthias
-
-[1] http://lists.infradead.org/pipermail/linux-mediatek/2015-April/000419.html
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
