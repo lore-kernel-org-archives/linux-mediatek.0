@@ -1,102 +1,171 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 1/6] clk: make strings in parent name arrays const
-Date: Thu, 23 Apr 2015 10:35:38 +0200
-Message-ID: <1429778143-2074-2-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH 6/6] dt-bindings: ARM: Mediatek: Document devicetree bindings
+ for clock/reset controllers
+Date: Thu, 23 Apr 2015 10:35:43 +0200
+Message-ID: <1429778143-2074-7-git-send-email-s.hauer@pengutronix.de>
 References: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429778143-2074-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, YH Chen <yh.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The clk functions and structs declare the parent_name arrays as
-'const char **parent_names' which means the parent name strings
-are const, but the array itself is not. Use
-'const char * const * parent_names' instead which also makes
-the array const. This allows us to put the parent_name arrays into
-the __initconst section.
+This adds the binding documentation for the apmixedsys, perisys and
+infracfg controllers found on Mediatek SoCs.
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Reviewed-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Tested-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 ---
- drivers/clk/clk-composite.c  | 2 +-
- drivers/clk/clk-mux.c        | 4 ++--
- include/linux/clk-provider.h | 8 ++++----
- 3 files changed, 7 insertions(+), 7 deletions(-)
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  | 23 +++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    | 30 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     | 30 ++++++++++++++++++++++
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    | 23 +++++++++++++++++
+ 4 files changed, 106 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
 
-diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
-index 956b7e5..077f4c714 100644
---- a/drivers/clk/clk-composite.c
-+++ b/drivers/clk/clk-composite.c
-@@ -188,7 +188,7 @@ static void clk_composite_disable(struct clk_hw *hw)
- }
- 
- struct clk *clk_register_composite(struct device *dev, const char *name,
--			const char **parent_names, int num_parents,
-+			const char * const *parent_names, int num_parents,
- 			struct clk_hw *mux_hw, const struct clk_ops *mux_ops,
- 			struct clk_hw *rate_hw, const struct clk_ops *rate_ops,
- 			struct clk_hw *gate_hw, const struct clk_ops *gate_ops,
-diff --git a/drivers/clk/clk-mux.c b/drivers/clk/clk-mux.c
-index 69a094c..1fa2a8d 100644
---- a/drivers/clk/clk-mux.c
-+++ b/drivers/clk/clk-mux.c
-@@ -114,7 +114,7 @@ const struct clk_ops clk_mux_ro_ops = {
- EXPORT_SYMBOL_GPL(clk_mux_ro_ops);
- 
- struct clk *clk_register_mux_table(struct device *dev, const char *name,
--		const char **parent_names, u8 num_parents, unsigned long flags,
-+		const char * const *parent_names, u8 num_parents, unsigned long flags,
- 		void __iomem *reg, u8 shift, u32 mask,
- 		u8 clk_mux_flags, u32 *table, spinlock_t *lock)
- {
-@@ -166,7 +166,7 @@ struct clk *clk_register_mux_table(struct device *dev, const char *name,
- EXPORT_SYMBOL_GPL(clk_register_mux_table);
- 
- struct clk *clk_register_mux(struct device *dev, const char *name,
--		const char **parent_names, u8 num_parents, unsigned long flags,
-+		const char * const *parent_names, u8 num_parents, unsigned long flags,
- 		void __iomem *reg, u8 shift, u8 width,
- 		u8 clk_mux_flags, spinlock_t *lock)
- {
-diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-index 5591ea7..410684d 100644
---- a/include/linux/clk-provider.h
-+++ b/include/linux/clk-provider.h
-@@ -209,7 +209,7 @@ struct clk_ops {
- struct clk_init_data {
- 	const char		*name;
- 	const struct clk_ops	*ops;
--	const char		**parent_names;
-+	const char		* const *parent_names;
- 	u8			num_parents;
- 	unsigned long		flags;
- };
-@@ -426,12 +426,12 @@ extern const struct clk_ops clk_mux_ops;
- extern const struct clk_ops clk_mux_ro_ops;
- 
- struct clk *clk_register_mux(struct device *dev, const char *name,
--		const char **parent_names, u8 num_parents, unsigned long flags,
-+		const char * const *parent_names, u8 num_parents, unsigned long flags,
- 		void __iomem *reg, u8 shift, u8 width,
- 		u8 clk_mux_flags, spinlock_t *lock);
- 
- struct clk *clk_register_mux_table(struct device *dev, const char *name,
--		const char **parent_names, u8 num_parents, unsigned long flags,
-+		const char * const *parent_names, u8 num_parents, unsigned long flags,
- 		void __iomem *reg, u8 shift, u32 mask,
- 		u8 clk_mux_flags, u32 *table, spinlock_t *lock);
- 
-@@ -518,7 +518,7 @@ struct clk_composite {
- };
- 
- struct clk *clk_register_composite(struct device *dev, const char *name,
--		const char **parent_names, int num_parents,
-+		const char * const *parent_names, int num_parents,
- 		struct clk_hw *mux_hw, const struct clk_ops *mux_ops,
- 		struct clk_hw *rate_hw, const struct clk_ops *rate_ops,
- 		struct clk_hw *gate_hw, const struct clk_ops *gate_ops,
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+new file mode 100644
+index 0000000..5af6d73
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+@@ -0,0 +1,23 @@
++Mediatek apmixedsys controller
++==============================
++
++The Mediatek apmixedsys controller provides the PLLs to the system.
++
++Required Properties:
++
++- compatible: Should be:
++	- "mediatek,mt8135-apmixedsys"
++	- "mediatek,mt8173-apmixedsys"
++- #clock-cells: Must be 1
++
++The apmixedsys controller uses the common clk binding from
++Documentation/devicetree/bindings/clock/clock-bindings.txt
++The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++
++Example:
++
++apmixedsys: apmixedsys@10209000 {
++	compatible = "mediatek,mt8173-apmixedsys";
++	reg = <0 0x10209000 0 0x1000>;
++	#clock-cells = <1>;
++};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+new file mode 100644
+index 0000000..684da473
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+@@ -0,0 +1,30 @@
++Mediatek infracfg controller
++============================
++
++The Mediatek infracfg controller provides various clocks and reset
++outputs to the system.
++
++Required Properties:
++
++- compatible: Should be:
++	- "mediatek,mt8135-infracfg", "syscon"
++	- "mediatek,mt8173-infracfg", "syscon"
++- #clock-cells: Must be 1
++- #reset-cells: Must be 1
++
++The infracfg controller uses the common clk binding from
++Documentation/devicetree/bindings/clock/clock-bindings.txt
++The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++Also it uses the common reset controller binding from
++Documentation/devicetree/bindings/reset/reset.txt.
++The available reset outputs are defined in
++dt-bindings/reset-controller/mt*-resets.h
++
++Example:
++
++infracfg: infracfg@10001000 {
++	compatible = "mediatek,mt8173-infracfg", "syscon";
++	reg = <0 0x10001000 0 0x1000>;
++	#clock-cells = <1>;
++	#reset-cells = <1>;
++};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+new file mode 100644
+index 0000000..fdb45c6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+@@ -0,0 +1,30 @@
++Mediatek pericfg controller
++===========================
++
++The Mediatek pericfg controller provides various clocks and reset
++outputs to the system.
++
++Required Properties:
++
++- compatible: Should be:
++	- "mediatek,mt8135-pericfg", "syscon"
++	- "mediatek,mt8173-pericfg", "syscon"
++- #clock-cells: Must be 1
++- #reset-cells: Must be 1
++
++The pericfg controller uses the common clk binding from
++Documentation/devicetree/bindings/clock/clock-bindings.txt
++The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++Also it uses the common reset controller binding from
++Documentation/devicetree/bindings/reset/reset.txt.
++The available reset outputs are defined in
++dt-bindings/reset-controller/mt*-resets.h
++
++Example:
++
++pericfg: pericfg@10003000 {
++	compatible = "mediatek,mt8173-pericfg", "syscon";
++	reg = <0 0x10003000 0 0x1000>;
++	#clock-cells = <1>;
++	#reset-cells = <1>;
++};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+new file mode 100644
+index 0000000..a425248
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+@@ -0,0 +1,23 @@
++Mediatek topckgen controller
++============================
++
++The Mediatek topckgen controller provides various clocks to the system.
++
++Required Properties:
++
++- compatible: Should be:
++	- "mediatek,mt8135-topckgen"
++	- "mediatek,mt8173-topckgen"
++- #clock-cells: Must be 1
++
++The topckgen controller uses the common clk binding from
++Documentation/devicetree/bindings/clock/clock-bindings.txt
++The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++
++Example:
++
++topckgen: topckgen@10000000 {
++	compatible = "mediatek,mt8173-topckgen";
++	reg = <0 0x10000000 0 0x1000>;
++	#clock-cells = <1>;
++};
 -- 
 2.1.4
