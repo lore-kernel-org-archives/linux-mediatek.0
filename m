@@ -1,150 +1,41 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH v12] clk: Add common clock support for Mediatek MT8135 and
- MT8173
-Date: Thu, 23 Apr 2015 10:35:37 +0200
-Message-ID: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+	<u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 1/6] clk: make strings in parent name arrays const
+Date: Thu, 23 Apr 2015 10:48:17 +0200
+Message-ID: <20150423084817.GB19431@pengutronix.de>
+References: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
+ <1429778143-2074-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: YH Chen <yh.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1429778143-2074-2-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The following changes since commit 39a8804455fb23f09157341d3ba7db6d7ae6ee76:
+Halli,
 
-  Linux 4.0 (2015-04-12 15:12:50 -0700)
+On Thu, Apr 23, 2015 at 10:35:38AM +0200, Sascha Hauer wrote:
+> The clk functions and structs declare the parent_name arrays as
+> 'const char **parent_names' which means the parent name strings
+> are const, but the array itself is not. Use
+> 'const char * const * parent_names' instead which also makes
+> the array const. This allows us to put the parent_name arrays into
+> the __initconst section.
+>=20
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Reviewed-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> Tested-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-are available in the git repository at:
+Best regards
+Uwe
 
-  git://git.pengutronix.de/git/sha/linux-2.6.git tags/v4.0-clk-mediatek-v12
-
-for you to fetch changes up to e0ebeaa8a3f4a762cb9c2780170445aad15915d1:
-
-  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-04-23 10:22:34 +0200)
-
-----------------------------------------------------------------
-This patchset contains the initial common clock support for Mediatek SoCs.
-Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-and clock gates.
-
-Changes in v12:
-- Fix UART clocks: Add clocks providing the baudrate
-- enable necessary but unused clocks for surviving the disabling
-  of unused clocks
-- cleanup clock define names: remove _CK suffix and consistently
-  add a CLK_ prefix
-- add and use mtk_clk_register_composites() for registering multiple
-  composite clocks
-
-Changes in v11:
-- Use more defines in PLL code
-- drop unused pr_fmt
-- use i++ instead of ++i in two places
-
-Changes in v10:
-- polish some commit messages
-
-Changes in v9:
-- rename 'lock' to 'mt81xx_clk_lock' to get better lockdep output
-
-Changes in v8:
-- add patch to allow to put parent_name arrays in __initconst
-- put parent_name arrays into __initconst
-
-Changes in v7:
-- fix duplicate definition/declaration of mtk_register_reset_controller
-- fix pd_reg offset of tvdpll
-- make clk initialization arrays const
-
-Changes in v6:
-- rework PLL support, only a fraction of original size now
-- Move binding docs to Documentation/devicetree/bindings/arm/mediatek since
-  the units are not really clock specific (they contain reset controllers)
-
-Changes in v5:
-- Add reset controller support for pericfg/infracfg
-- Use regmap for the gates
-- remove now unnecessary spinlock for the gates
-- Add PMIC wrapper support as of v3
-
-Changes in v4:
-- Support MT8173 platform.
-- Re-ordered patchset. driver/clk/Makefile in 2nd patch.
-- Extract the common part definition(mtk_gate/mtk_pll/mtk_mux) from
-  clk-mt8135.c/clk-mt8173.c to clk-mtk.c.
-- Refine code. Rmove unnessacary debug information and unsed defines,
-  add prefix "mtk_" for static functions.
-- Remove flag CLK_IGNORE_UNUSED and set flag CLK_SET_RATE_PARENT on
-  gate/mux/fixed-factor.
-- Use spin_lock_irqsave(&clk_ops_lock, flags) instead of mtk_clk_lock.
-- Example above include a node for the clock controller itself, followed
-  by the i2c controller example above.
-
-Changes in v3:
-- Rebase to 3.19-rc1.
-- Refine code. Remove unneed functions, debug logs and comments, and fine tune
-  error logs.
-
-Changes in v2:
-- Re-ordered patchset. Fold include/dt-bindings and DT document in 1st patch.
-
-----------------------------------------------------------------
-James Liao (3):
-      clk: mediatek: Add initial common clock support for Mediatek SoCs.
-      clk: mediatek: Add basic clocks for Mediatek MT8135.
-      clk: mediatek: Add basic clocks for Mediatek MT8173.
-
-Sascha Hauer (3):
-      clk: make strings in parent name arrays const
-      clk: mediatek: Add reset controller support
-      dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers
-
- .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  23 +
- .../bindings/arm/mediatek/mediatek,infracfg.txt    |  30 +
- .../bindings/arm/mediatek/mediatek,pericfg.txt     |  30 +
- .../bindings/arm/mediatek/mediatek,topckgen.txt    |  23 +
- drivers/clk/Makefile                               |   1 +
- drivers/clk/clk-composite.c                        |   2 +-
- drivers/clk/clk-mux.c                              |   4 +-
- drivers/clk/mediatek/Makefile                      |   4 +
- drivers/clk/mediatek/clk-gate.c                    | 137 ++++
- drivers/clk/mediatek/clk-gate.h                    |  49 ++
- drivers/clk/mediatek/clk-mt8135.c                  | 644 ++++++++++++++++
- drivers/clk/mediatek/clk-mt8173.c                  | 830 +++++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.c                     | 220 ++++++
- drivers/clk/mediatek/clk-mtk.h                     | 169 +++++
- drivers/clk/mediatek/clk-pll.c                     | 332 +++++++++
- drivers/clk/mediatek/reset.c                       |  97 +++
- include/dt-bindings/clock/mt8135-clk.h             | 194 +++++
- include/dt-bindings/clock/mt8173-clk.h             | 235 ++++++
- .../dt-bindings/reset-controller/mt8135-resets.h   |  64 ++
- .../dt-bindings/reset-controller/mt8173-resets.h   |  63 ++
- include/linux/clk-provider.h                       |   8 +-
- 21 files changed, 3152 insertions(+), 7 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
- create mode 100644 drivers/clk/mediatek/Makefile
- create mode 100644 drivers/clk/mediatek/clk-gate.c
- create mode 100644 drivers/clk/mediatek/clk-gate.h
- create mode 100644 drivers/clk/mediatek/clk-mt8135.c
- create mode 100644 drivers/clk/mediatek/clk-mt8173.c
- create mode 100644 drivers/clk/mediatek/clk-mtk.c
- create mode 100644 drivers/clk/mediatek/clk-mtk.h
- create mode 100644 drivers/clk/mediatek/clk-pll.c
- create mode 100644 drivers/clk/mediatek/reset.c
- create mode 100644 include/dt-bindings/clock/mt8135-clk.h
- create mode 100644 include/dt-bindings/clock/mt8173-clk.h
- create mode 100644 include/dt-bindings/reset-controller/mt8135-resets.h
- create mode 100644 include/dt-bindings/reset-controller/mt8173-resets.h
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
+    |
+Industrial Linux Solutions                 | http://www.pengutronix.de/=
+  |
