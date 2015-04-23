@@ -1,41 +1,68 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-	<u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 1/6] clk: make strings in parent name arrays const
-Date: Thu, 23 Apr 2015 10:48:17 +0200
-Message-ID: <20150423084817.GB19431@pengutronix.de>
-References: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
- <1429778143-2074-2-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH 2/4] tty: serial: 8250_mtk: remove unnecessary test
+Date: Thu, 23 Apr 2015 10:51:04 +0200
+Message-ID: <1429779066-21406-3-git-send-email-s.hauer@pengutronix.de>
+References: <1429779066-21406-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1429778143-2074-2-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429779066-21406-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Alan Cox <alan-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Halli,
+When the driver has probed successfully the clk pointer is always valid,
+so no need to test for it.
 
-On Thu, Apr 23, 2015 at 10:35:38AM +0200, Sascha Hauer wrote:
-> The clk functions and structs declare the parent_name arrays as
-> 'const char **parent_names' which means the parent name strings
-> are const, but the array itself is not. Use
-> 'const char * const * parent_names' instead which also makes
-> the array const. This allows us to put the parent_name arrays into
-> the __initconst section.
->=20
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Reviewed-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-> Tested-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+ drivers/tty/serial/8250/8250_mtk.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
-    |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index c6901dc..bcfaa8dc 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -212,9 +212,7 @@ static int mtk8250_remove(struct platform_device *pdev)
+ 	pm_runtime_get_sync(&pdev->dev);
+ 
+ 	serial8250_unregister_port(data->line);
+-	if (!IS_ERR(data->uart_clk)) {
+-		clk_disable_unprepare(data->uart_clk);
+-	}
++	clk_disable_unprepare(data->uart_clk);
+ 
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
+@@ -246,8 +244,7 @@ static int mtk8250_runtime_suspend(struct device *dev)
+ {
+ 	struct mtk8250_data *data = dev_get_drvdata(dev);
+ 
+-	if (!IS_ERR(data->uart_clk))
+-		clk_disable_unprepare(data->uart_clk);
++	clk_disable_unprepare(data->uart_clk);
+ 
+ 	return 0;
+ }
+@@ -256,8 +253,7 @@ static int mtk8250_runtime_resume(struct device *dev)
+ {
+ 	struct mtk8250_data *data = dev_get_drvdata(dev);
+ 
+-	if (!IS_ERR(data->uart_clk))
+-		clk_prepare_enable(data->uart_clk);
++	clk_prepare_enable(data->uart_clk);
+ 
+ 	return 0;
+ }
+-- 
+2.1.4
