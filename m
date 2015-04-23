@@ -1,60 +1,101 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Mediatek MT8135 dts updates
-Date: Thu, 23 Apr 2015 11:21:11 +0200
-Message-ID: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH 1/4] ARM: dts: mediatek: Enable clock support for Mediatek
+ MT8135.
+Date: Thu, 23 Apr 2015 11:21:12 +0200
+Message-ID: <1429780875-29096-2-git-send-email-s.hauer@pengutronix.de>
+References: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429780875-29096-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This series contains the Mediatek MT8135 dts updates for the clock
-support and UART support. This needs these two series:
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-[PATCH v12] clk: Add common clock support for Mediatek MT8135 and MT8173
-tty: serial: 8250_mtk: Add support for second clock
+This patch adds MT8135 clock controllers into device tree.
 
-Also this adds the PMIC wrapper nodes to the dtsi file and PMIC node to
-the mt8135-evbp1 board. Support for the PMIC wrapper was merged during
-the v4.1 merge window.
+Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+ arch/arm/boot/dts/mt8135.dtsi | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-This series is meant for testing the new features, not (yet) for inclusion.
-
-----------------------------------------------------------------
-
-The following changes since commit 39a8804455fb23f09157341d3ba7db6d7ae6ee76:
-
-  Linux 4.0 (2015-04-12 15:12:50 -0700)
-
-are available in the git repository at:
-
-  git://git.pengutronix.de/git/sha/linux-2.6.git tags/v4.0-mtk-arm-dts
-
-for you to fetch changes up to 5fcd75a6aeded756c24d9581f49e0859b85fb3a0:
-
-  ARM: dts: mediatek mt8135: Use real UART clocks (2015-04-23 11:02:27 +0200)
-
-----------------------------------------------------------------
-
-James Liao (1):
-      ARM: dts: mediatek: Enable clock support for Mediatek MT8135.
-
-Sascha Hauer (3):
-      ARM: dts: mt8135: Add pmic wrapper nodes
-      ARM: dts: mt8135-evbp1: Add PMIC support
-      ARM: dts: mediatek mt8135: Use real UART clocks
-
- arch/arm/boot/dts/mt8135-evbp1.dts | 193 +++++++++++++++++++++++++++++++++++++
- arch/arm/boot/dts/mt8135.dtsi      |  58 ++++++++++-
- 2 files changed, 247 insertions(+), 4 deletions(-)
+diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+index a161e99..b4017e2 100644
+--- a/arch/arm/boot/dts/mt8135.dtsi
++++ b/arch/arm/boot/dts/mt8135.dtsi
+@@ -12,6 +12,7 @@
+  * GNU General Public License for more details.
+  */
+ 
++#include <dt-bindings/clock/mt8135-clk.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include "skeleton64.dtsi"
+@@ -93,6 +94,11 @@
+ 			#clock-cells = <0>;
+ 		};
+ 
++		clk26m: clk26m {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency = <26000000>;
++		};
+ 	};
+ 
+ 	soc {
+@@ -101,6 +107,26 @@
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		topckgen: topckgen@10000000 {
++			compatible = "mediatek,mt8135-topckgen";
++			reg = <0 0x10000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		infracfg: infracfg@10001000 {
++			#reset-cells = <1>;
++			#clock-cells = <1>;
++			compatible = "mediatek,mt8135-infracfg", "syscon";
++			reg = <0 0x10001000 0 0x1000>;
++		};
++
++		pericfg: pericfg@10003000 {
++			#reset-cells = <1>;
++			#clock-cells = <1>;
++			compatible = "mediatek,mt8135-pericfg", "syscon";
++			reg = <0 0x10003000 0 0x1000>;
++		};
++
+ 		timer: timer@10008000 {
+ 			compatible = "mediatek,mt8135-timer",
+ 					"mediatek,mt6577-timer";
+@@ -119,6 +145,12 @@
+ 			reg = <0 0x10200030 0 0x1c>;
+ 		};
+ 
++		apmixedsys: apmixedsys@10209000 {
++			compatible = "mediatek,mt8135-apmixedsys";
++			reg = <0 0x10209000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
+ 		gic: interrupt-controller@10211000 {
+ 			compatible = "arm,cortex-a15-gic";
+ 			interrupt-controller;
+-- 
+2.1.4
