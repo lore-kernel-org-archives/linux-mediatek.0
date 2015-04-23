@@ -1,104 +1,569 @@
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v11]: clk: Add common clock support for Mediatek MT8135
- and MT8173
-Date: Thu, 23 Apr 2015 11:25:03 +0200
-Message-ID: <20150423092503.GL6325@pengutronix.de>
-References: <1427825817-26773-1-git-send-email-s.hauer@pengutronix.de>
- <CABuKBeJ256HBLP+3WB+acNbMonGknQJgWBnGjEx1VWecWc-Y5g@mail.gmail.com>
- <20150414100810.GH4946@pengutronix.de>
- <CABuKBeLxcCcfcunwX7q=hSHRrrHd5-EMgRzSwhx9eSdvNKum=A@mail.gmail.com>
- <20150414115702.GX9742@pengutronix.de>
- <CABuKBe+MnmL47FB2FhN=RRKEZV4tR3OyVTTpWfkTYQ4zSZP22Q@mail.gmail.com>
- <CABuKBeLaUfseZU84vNmVFR3EeUhNrbrXnKeN=N6PP=abPcnjDQ@mail.gmail.com>
+Subject: Re: [PATCH 1/2] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Thu, 23 Apr 2015 14:01:52 +0200
+Message-ID: <20150423120152.GM6325@pengutronix.de>
+References: <1429522047-16675-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CABuKBeLaUfseZU84vNmVFR3EeUhNrbrXnKeN=N6PP=abPcnjDQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, YH Chen <yh.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, fan.chen@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Apr 15, 2015 at 05:48:08PM +0200, Matthias Brugger wrote:
-> 2015-04-15 17:11 GMT+02:00 Matthias Brugger <matthias.bgg@gmail.com>:
-> > 2015-04-14 13:57 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> >> On Tue, Apr 14, 2015 at 01:01:30PM +0200, Matthias Brugger wrote:
-> >>> Hi Sascha,
-> >>>
-> >>> 2015-04-14 12:08 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> >>> > Hi Matthias,
-> >>> >
-> >>> > On Tue, Apr 07, 2015 at 01:47:58PM +0200, Matthias Brugger wrote:
-> >>> >> Hi Sascha,
-> >>> >>
-> >>> >>
-> >>> >> 2015-03-31 20:16 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> >>> >> >
-> >>> >> > The following changes since commit 9eccca0843205f87c00404b663188b88eb248051:
-> >>> >> >
-> >>> >> >   Linux 4.0-rc3 (2015-03-08 16:09:09 -0700)
-> >>> >> >
-> >>> >> > are available in the git repository at:
-> >>> >> >
-> >>> >> >   git://git.pengutronix.de/git/imx/linux-2.6.git tags/v4.0-clk-mediatek-v11
-> >>> >> >
-> >>> >> > for you to fetch changes up to ae9129219143cfdefe8b3a463deb8c5cb8955525:
-> >>> >> >
-> >>> >> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-03-31 20:08:46 +0200)
-> >>> >> >
-> >>> >> > ----------------------------------------------------------------
-> >>> >> > This patchset contains the initial common clock support for Mediatek SoCs.
-> >>> >> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-> >>> >> > and clock gates.
-> >>> >>
-> >>> >> I tried the patch set on my mt8135 eval board. I used the dts bindings
-> >>> >> from a former version of this set [1], but it does not boot the board
-> >>> >> (based on v4.0-rc7).
-> >>> >> Do you have any hint, what is happening, or are the bindings wrong?
-> >>> >
-> >>> > I just tried on a v4.0 with
-> >>> > - this series applied
-> >>> > - the dts patch applied (which is still up-to-date)
-> >>> > - multi_v7_defconfig
-> >>> >
-> >>> > And it still works. What do you mean with "does not boot the board"? No
-> >>> > console output? Could you try with earlyprintk?
-> >>>
-> >>> The probelms I see is, that with the clock patches, I'm not able to
-> >>> boot into a initramfs [1].
-> >>> Whereas if I just comment topckgen and preicfg in the dts, I'm able to
-> >>> get the a serial console of my initramfs [2].
-> >>>
-> >>> I wonder if you are able to get serial console from the initramfs with
-> >>> the clock patches + dts patch?
-> >>
-> >> So you get kernel messages but no output from initramfs? In this case
-> >> the kernel disables the unused clocks in a late_initcall. The UART
-> >> driver still uses the dummy clock provided in the dtsi, so the real
-> >> UART clk gets disabled in the initcall. Try passing clk_ignore_unused to
-> >> the kernel
-> >
-> > OK, I can boot to the initramfs with this kernel parameter, but it
-> > fails to boot, when I change the uart clock. I suppose that PERI_UART3
-> > for debug port uart3 should be fine, but it looks like it doesn't
-> > work.
-> > I can see on the mt6589 datasheet that you have a register
-> > PERI_UART_CK_SOURCE_SEL where you can decide if you want a 26 MHz or a
-> > 52 MHz clock for the UART block.
-> > Does this register exists on mt8135? If so, why is it not implemented?
+On Mon, Apr 20, 2015 at 05:27:26PM +0800, pi-cheng.chen wrote:
+> This patch implements MT8173 specific cpufreq driver with OPP table defined
+> in the driver code.
 > 
-> I found that PERI_UARTx_CK is connected to axi_sel but should be
-> connected to uart_sel. Like this I'm able to reach to initramfs
-> console, but the baud rate values are screwed up.
-> As uart_sel is at 52 MHz, I suppose we need to change the entries in
-> PERI_UART_CK_SOURCE_SEL.
+> Signed-off-by: pi-cheng.chen <pi-cheng.chen@linaro.org>
+> ---
+>  drivers/cpufreq/Kconfig.arm      |   6 +
+>  drivers/cpufreq/Makefile         |   1 +
+>  drivers/cpufreq/mt8173-cpufreq.c | 509 +++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 516 insertions(+)
+>  create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
+> 
+> diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+> index 1b06fc4..25643c7 100644
+> --- a/drivers/cpufreq/Kconfig.arm
+> +++ b/drivers/cpufreq/Kconfig.arm
+> @@ -132,6 +132,12 @@ config ARM_KIRKWOOD_CPUFREQ
+>  	  This adds the CPUFreq driver for Marvell Kirkwood
+>  	  SoCs.
+>  
+> +config ARM_MT8173_CPUFREQ
+> +	bool "Mediatek MT8173 CPUFreq support"
+> +	depends on ARCH_MEDIATEK && REGULATOR
+> +	help
+> +	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
+> +
+>  config ARM_OMAP2PLUS_CPUFREQ
+>  	bool "TI OMAP2+"
+>  	depends on ARCH_OMAP2PLUS
+> diff --git a/drivers/cpufreq/Makefile b/drivers/cpufreq/Makefile
+> index 82a1821..da9d616 100644
+> --- a/drivers/cpufreq/Makefile
+> +++ b/drivers/cpufreq/Makefile
+> @@ -62,6 +62,7 @@ obj-$(CONFIG_ARM_HIGHBANK_CPUFREQ)	+= highbank-cpufreq.o
+>  obj-$(CONFIG_ARM_IMX6Q_CPUFREQ)		+= imx6q-cpufreq.o
+>  obj-$(CONFIG_ARM_INTEGRATOR)		+= integrator-cpufreq.o
+>  obj-$(CONFIG_ARM_KIRKWOOD_CPUFREQ)	+= kirkwood-cpufreq.o
+> +obj-$(CONFIG_ARM_MT8173_CPUFREQ)	+= mt8173-cpufreq.o
+>  obj-$(CONFIG_ARM_OMAP2PLUS_CPUFREQ)	+= omap-cpufreq.o
+>  obj-$(CONFIG_ARM_PXA2xx_CPUFREQ)	+= pxa2xx-cpufreq.o
+>  obj-$(CONFIG_PXA3xx)			+= pxa3xx-cpufreq.o
+> diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
+> new file mode 100644
+> index 0000000..a310e72
+> --- /dev/null
+> +++ b/drivers/cpufreq/mt8173-cpufreq.c
+> @@ -0,0 +1,509 @@
+> +/*
+> +* Copyright (c) 2015 Linaro Ltd.
+> +* Author: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+> +*
+> +* This program is free software; you can redistribute it and/or modify
+> +* it under the terms of the GNU General Public License version 2 as
+> +* published by the Free Software Foundation.
+> +*
+> +* This program is distributed in the hope that it will be useful,
+> +* but WITHOUT ANY WARRANTY; without even the implied warranty of
+> +* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> +* GNU General Public License for more details.
+> +*/
+> +
+> +#include <linux/clk.h>
+> +#include <linux/cpu.h>
+> +#include <linux/cpufreq.h>
+> +#include <linux/cpumask.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/slab.h>
+> +
+> +#define MIN_VOLT_SHIFT		100000
+> +#define MAX_VOLT_SHIFT		200000
+> +
+> +#define OPP(f, vp, vs) {		\
+> +		.freq	= f,		\
+> +		.vproc	= vp,		\
+> +		.vsram	= vs,		\
+> +	}
+> +
+> +struct mtk_cpu_opp {
+> +	unsigned int freq;
+> +	int vproc;
+> +	int vsram;
+> +};
+> +
+> +/*
+> + * The struct cpu_dvfs_info holds necessary information for doing CPU DVFS of
+> + * each cluster. For Mediatek SoCs, each CPU cluster in SoC has two voltage
+> + * inputs, Vproc and Vsram. For some cluster in SoC, the two voltage inputs are
+> + * supplied by different PMICs. In this case, when scaling up/down the voltage
+> + * of Vsram and Vproc, the two voltage inputs need to be controlled under a
+> + * hardware limitation: 100mV < Vsram - Vproc < 200mV
+> + * When scaling up/down the clock frequency of a cluster, the clock source need
+> + * to be switched to another stable PLL clock temporarily, and switched back to
+> + * the original PLL after the it becomes stable at target frequency.
+> + * Hence the voltage inputs of cluster need to be set to an intermediate voltage
+> + * before the clock frequency being scaled up/down.
+> + */
+> +
+> +struct cpu_dvfs_info {
+> +	cpumask_t cpus;
+> +
+> +	struct mtk_cpu_opp *opp_tbl;
+> +	struct mtk_cpu_opp *intermediate_opp;
+> +	int nr_opp;
+> +
+> +	struct regulator *proc_reg;
+> +	struct regulator *sram_reg;
+> +	struct clk *cpu_clk;
+> +	struct clk *inter_pll;
+> +};
+> +
+> +/*
+> + * This is a temporary solution until we have new OPPv2 bindings. Therefore we
+> + * could describe the OPPs with (freq, volt, volt) tuple properly in device
+> + * tree.
+> + */
+> +
+> +/* OPP table for LITTLE cores of MT8173 */
+> +struct mtk_cpu_opp mt8173_l_opp[] = {
+> +	OPP(507000000, 859000, 0),
+> +	OPP(702000000, 908000, 0),
+> +	OPP(1001000000, 983000, 0),
+> +	OPP(1105000000, 1009000, 0),
+> +	OPP(1183000000, 1028000, 0),
+> +	OPP(1404000000, 1083000, 0),
+> +	OPP(1508000000, 1109000, 0),
+> +	OPP(1573000000, 1125000, 0),
+> +};
+> +
+> +/* OPP table for big cores of MT8173 */
+> +struct mtk_cpu_opp mt8173_b_opp[] = {
+> +	OPP(507000000, 828000, 928000),
+> +	OPP(702000000, 867000, 967000),
+> +	OPP(1001000000, 927000, 1027000),
+> +	OPP(1209000000, 968000, 1068000),
+> +	OPP(1404000000, 1007000, 1107000),
+> +	OPP(1612000000, 1049000, 1149000),
+> +	OPP(1807000000, 1089000, 1150000),
+> +	OPP(1989000000, 1125000, 1150000),
+> +};
 
-I sorted the UART clock stuff out. I sent out three series, with all of
-them merged together you should get UART + common clock support working
-properly on MT835.
+Do you really need the SRAM voltages? Isn't the SRAM voltage just CPU
+core voltage + 100mV +- tolerance?
+
+> +
+> +static inline int need_voltage_trace(struct cpu_dvfs_info *info)
+> +{
+> +	return (!IS_ERR_OR_NULL(info->proc_reg) &&
+> +		!IS_ERR_OR_NULL(info->sram_reg));
+> +}
+> +
+> +static struct mtk_cpu_opp *cpu_opp_find_freq_ceil(struct mtk_cpu_opp *opp_tbl,
+> +						  int nr_opp,
+> +						  unsigned long rate)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < nr_opp; i++)
+> +		if (opp_tbl[i].freq >= rate)
+> +			return &opp_tbl[i];
+> +
+> +	return NULL;
+> +}
+> +
+> +/*
+> + * Query the exact voltage value that is largest previous to the input voltage
+> + * value supported by the regulator
+> + */
+> +static int get_regulator_voltage_ceil(struct regulator *regulator, int voltage)
+> +{
+> +	int cnt, i, volt = -1;
+> +
+> +	if (IS_ERR_OR_NULL(regulator))
+> +		return -EINVAL;
+> +
+> +	cnt = regulator_count_voltages(regulator);
+> +	for (i = 0; i < cnt && volt < voltage; i++)
+> +		volt = regulator_list_voltage(regulator, i);
+> +
+> +	return (i >= cnt) ? -EINVAL : volt;
+> +}
+> +
+> +/*
+> + * Query the exact voltage value that is smallest following to the input voltage
+> + * value supported by the regulator
+> + */
+> +static int get_regulator_voltage_floor(struct regulator *regulator, int voltage)
+> +{
+> +	int cnt, i, volt = -1;
+> +
+> +	if (IS_ERR_OR_NULL(regulator))
+> +		return -EINVAL;
+> +
+> +	cnt = regulator_count_voltages(regulator);
+> +	/* skip all trailing 0s in the list of supported voltages */
+> +	for (i = cnt - 1; i >= 0 && volt <= 0; i--)
+> +		volt = regulator_list_voltage(regulator, i);
+> +
+> +	for (; i >= 0; i--) {
+> +		volt = regulator_list_voltage(regulator, i);
+> +		if (volt <= voltage)
+> +			return volt;
+> +	}
+> +
+> +	return -EINVAL;
+> +}
+> +
+> +static int mtk_cpufreq_voltage_trace(struct cpu_dvfs_info *info,
+> +				     struct mtk_cpu_opp *opp)
+> +{
+> +	struct regulator *proc_reg = info->proc_reg;
+> +	struct regulator *sram_reg = info->sram_reg;
+> +	int old_vproc, new_vproc, old_vsram, new_vsram, vsram, vproc, ret;
+> +
+> +	old_vproc = regulator_get_voltage(proc_reg);
+> +	old_vsram = regulator_get_voltage(sram_reg);
+> +
+> +	new_vproc = opp->vproc;
+> +	new_vsram = opp->vsram;
+> +
+> +	/*
+> +	 * In the case the voltage is going to be scaled up, Vsram and Vproc
+> +	 * need to be scaled up step by step. In each step, Vsram needs to be
+> +	 * set to (Vproc + 200mV) first, then Vproc is set to (Vsram - 100mV).
+> +	 * Repeat the step until Vsram and Vproc are set to target voltage.
+> +	 */
+> +	if (old_vproc < new_vproc) {
+> +next_up_step:
+> +		old_vsram = regulator_get_voltage(sram_reg);
+> +
+> +		vsram = (new_vsram - old_vproc < MAX_VOLT_SHIFT) ?
+> +			new_vsram : old_vproc + MAX_VOLT_SHIFT;
+> +		vsram = get_regulator_voltage_floor(sram_reg, vsram);
+> +
+> +		ret = regulator_set_voltage(sram_reg, vsram, vsram);
+> +		if (ret)
+> +			return ret;
+
+This introspecting the regulators for possible voltages looks hacky and
+unnecessary. regulator_set_voltage() can be passed minimum and maximum
+values, why don't you use it to increase the voltage within sensible
+limit, like
+
+	regulator_set_voltage(sram_reg, old_vsram + 100000, old_vsram + 200000);
+
+or similar?
+
+> +
+> +		vproc = (new_vsram == vsram) ?
+> +			new_vproc : vsram - MIN_VOLT_SHIFT;
+> +		vproc = get_regulator_voltage_ceil(proc_reg, vproc);
+> +
+> +		ret = regulator_set_voltage(proc_reg, vproc, vproc);
+> +		if (ret) {
+> +			regulator_set_voltage(sram_reg, old_vsram, old_vsram);
+> +			return ret;
+> +		}
+> +
+> +		if (new_vproc == vproc && new_vsram == vsram)
+> +			return 0;
+
+Here you assume that the voltages can be exactly reached. That does not
+need to be the case, for example with a different PMIC.
+
+> +
+> +		old_vproc = vproc;
+> +		goto next_up_step;
+
+Use C loop instructions to create loops. Using gotos for loops creates
+readable code only in very rare cases (and this is not one of those)
+
+> +
+> +	/*
+> +	 * In the case the voltage is going to be scaled down, Vsram and Vproc
+> +	 * need to be scaled down step by step. In each step, Vproc needs to be
+> +	 * set to (Vsram - 200mV) first, then Vproc is set to (Vproc + 100mV).
+> +	 * Repeat the step until Vsram and Vproc are set to target voltage.
+> +	 */
+> +	} else if (old_vproc > new_vproc) {
+> +next_down_step:
+> +		old_vproc = regulator_get_voltage(proc_reg);
+> +
+> +		vproc = (old_vsram - new_vproc < MAX_VOLT_SHIFT) ?
+> +			new_vproc : old_vsram - MAX_VOLT_SHIFT;
+> +		vproc = get_regulator_voltage_ceil(proc_reg, vproc);
+> +
+> +		ret = regulator_set_voltage(proc_reg, vproc, vproc);
+> +		if (ret)
+> +			return ret;
+> +
+> +		vsram = (new_vproc == vproc) ?
+> +			new_vsram : vproc + MIN_VOLT_SHIFT;
+> +		vsram = get_regulator_voltage_floor(sram_reg, vsram);
+> +
+> +		ret = regulator_set_voltage(sram_reg, vsram, vsram);
+> +		if (ret) {
+> +			regulator_set_voltage(proc_reg, old_vproc, old_vproc);
+> +			return ret;
+> +		}
+> +
+> +		if (new_vproc == vproc && new_vsram == vsram)
+> +			return 0;
+> +
+> +		old_vsram = vsram;
+> +		goto next_down_step;
+> +	}
+> +
+> +	WARN_ON(1);
+
+Why warn? You have nothing to do and that should be just fine.
+
+> +	return 0;
+> +}
+> +
+> +static int mt8173_cpufreq_set_voltage(struct cpu_dvfs_info *info,
+> +				      struct mtk_cpu_opp *opp)
+> +{
+> +	if (need_voltage_trace(info))
+> +		return mtk_cpufreq_voltage_trace(info, opp);
+> +	else
+> +		return regulator_set_voltage(info->proc_reg, opp->vproc,
+> +					     opp->vproc);
+> +}
+> +
+> +static int mt8173_cpufreq_set_target(struct cpufreq_policy *policy,
+> +				     unsigned int index)
+> +{
+> +	struct cpufreq_frequency_table *freq_table = policy->freq_table;
+> +	struct clk *cpu_clk = policy->clk;
+> +	struct clk *armpll = clk_get_parent(cpu_clk);
+> +	struct cpu_dvfs_info *info;
+> +	struct mtk_cpu_opp *new_opp, *target_opp, *inter_opp, *orig_opp;
+> +	long freq_hz, orig_freq_hz;
+> +	int old_vproc, ret;
+> +
+> +	info = (struct cpu_dvfs_info *)policy->driver_data;
+> +	inter_opp = info->intermediate_opp;
+> +	orig_freq_hz = clk_get_rate(cpu_clk);
+> +	orig_opp = cpu_opp_find_freq_ceil(info->opp_tbl, info->nr_opp,
+> +					  orig_freq_hz);
+> +	if (!orig_opp)
+> +		return -EINVAL;
+> +
+> +	old_vproc = regulator_get_voltage(info->proc_reg);
+> +	freq_hz = freq_table[index].frequency * 1000;
+> +	new_opp = cpu_opp_find_freq_ceil(info->opp_tbl, info->nr_opp, freq_hz);
+
+Since the frequency table and the opp_tbl have the same indices:
+
+	new_opp = info->opp_tbl[index];
+
+> +	target_opp = new_opp;
+> +
+> +	if (!new_opp)
+> +		return -EINVAL;
+> +
+> +	if (target_opp->vproc < inter_opp->vproc)
+> +		target_opp = info->intermediate_opp;
+> +
+> +	if (old_vproc < target_opp->vproc) {
+
+old_vproc is used only once, so using regulator_get_voltage(info->proc_reg)
+directly here make the code clearer.
+
+> +		ret = mt8173_cpufreq_set_voltage(info, target_opp);
+> +		if (ret) {
+> +			pr_err("cpu%d: failed to scale up voltage!\n",
+> +			       policy->cpu);
+> +			mt8173_cpufreq_set_voltage(info, orig_opp);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = clk_set_parent(cpu_clk, info->inter_pll);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to re-parent cpu clock!\n",
+> +		       policy->cpu);
+> +		mt8173_cpufreq_set_voltage(info, orig_opp);
+> +		WARN_ON(1);
+> +		return ret;
+> +	}
+> +
+> +	ret = clk_set_rate(armpll, freq_hz);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to scale cpu clock rate!\n",
+> +		       policy->cpu);
+> +		clk_set_parent(cpu_clk, armpll);
+> +		mt8173_cpufreq_set_voltage(info, orig_opp);
+> +		return ret;
+> +	}
+> +
+> +	ret = clk_set_parent(cpu_clk, armpll);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to re-parent cpu clock!\n",
+> +		       policy->cpu);
+> +		mt8173_cpufreq_set_voltage(info, inter_opp);
+> +		WARN_ON(1);
+> +		return ret;
+> +	}
+> +
+> +	if (new_opp->vproc < inter_opp->vproc) {
+> +		ret = mt8173_cpufreq_set_voltage(info, new_opp);
+> +		if (ret) {
+> +			pr_err("cpu%d: failed to scale down voltage!\n",
+> +			       policy->cpu);
+> +			clk_set_parent(cpu_clk, info->inter_pll);
+> +			clk_set_rate(armpll, orig_freq_hz);
+> +			clk_set_parent(cpu_clk, armpll);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt8173_cpufreq_cpu_opp_fixup(struct cpu_dvfs_info *info)
+> +{
+> +	struct mtk_cpu_opp *opp_tbl = info->opp_tbl;
+> +	struct regulator *proc_reg = info->proc_reg;
+> +	struct regulator *sram_reg = info->sram_reg;
+> +	int vproc, vsram, i;
+> +
+> +	for (i = 0; i < info->nr_opp; i++) {
+> +		vproc = opp_tbl[i].vproc;
+> +		vsram = opp_tbl[i].vsram;
+> +
+> +		vproc = get_regulator_voltage_ceil(proc_reg, vproc);
+> +
+> +		if (!IS_ERR_OR_NULL(sram_reg))
+> +			vsram = get_regulator_voltage_ceil(sram_reg, vsram);
+> +
+> +		if (vproc < 0 || (!IS_ERR_OR_NULL(sram_reg) && vsram < 0)) {
+> +			pr_err("%s: Failed to get voltage setting of OPPs\n",
+> +			       __func__);
+> +			return -EINVAL;
+> +		}
+> +
+> +		opp_tbl[i].vproc = vproc;
+> +		opp_tbl[i].vsram = vsram;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt8173_cpufreq_dvfs_init(struct cpu_dvfs_info *info)
+> +{
+> +	struct device *cpu_dev;
+> +	struct regulator *proc_reg, *sram_reg;
+> +	struct clk *cpu_clk, *inter_pll;
+> +	unsigned long rate;
+> +	int cpu, ret;
+> +
+> +	cpu = cpumask_first(&info->cpus);
+> +
+> +try_next_cpu:
+> +	cpu_dev = get_cpu_device(cpu);
+> +	proc_reg = regulator_get_exclusive(cpu_dev, "proc");
+> +	sram_reg = regulator_get_exclusive(cpu_dev, "sram");
+> +	cpu_clk = clk_get(cpu_dev, "cpu");
+> +	inter_pll = clk_get(cpu_dev, "intermediate");
+> +
+> +	if (IS_ERR_OR_NULL(proc_reg) || IS_ERR_OR_NULL(cpu_clk) ||
+> +	    IS_ERR_OR_NULL(inter_pll)) {
+> +		cpu = cpumask_next(cpu, &info->cpus);
+> +		if (cpu >= nr_cpu_ids)
+> +			return -ENODEV;
+> +
+> +		goto try_next_cpu;
+> +	}
+
+Use a loop.
+
+> +
+> +	/* Both PROC and SRAM regulators are present. This is a big
+> +	 * cluster, and needs to do voltage tracing. */
+> +	if (!(IS_ERR_OR_NULL(proc_reg) || IS_ERR_OR_NULL(sram_reg))) {
+> +		info->opp_tbl = mt8173_b_opp;
+> +		info->nr_opp = sizeof(mt8173_b_opp) / sizeof(mt8173_b_opp[0]);
+> +	} else {
+> +		info->opp_tbl = mt8173_l_opp;
+> +		info->nr_opp = sizeof(mt8173_l_opp) / sizeof(mt8173_l_opp[0]);
+> +	}
+> +
+> +	info->proc_reg = proc_reg;
+> +	info->sram_reg = sram_reg;
+> +	info->cpu_clk = cpu_clk;
+> +	info->inter_pll = inter_pll;
+> +
+> +	ret = mt8173_cpufreq_cpu_opp_fixup(info);
+> +	if (ret) {
+> +		pr_err("%s: Failed to fixup opp table: %d\n", __func__, ret);
+> +		return ret;
+> +	}
+> +
+> +	rate = clk_get_rate(info->inter_pll);
+> +	info->intermediate_opp = cpu_opp_find_freq_ceil(info->opp_tbl,
+> +							info->nr_opp,
+> +							rate);
+> +	if (!info->intermediate_opp) {
+> +		pr_err("%s: Failed to setup intermediate opp\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void mt8173_cpufreq_dvfs_release(struct cpu_dvfs_info *info)
+> +{
+> +	regulator_put(info->proc_reg);
+> +	regulator_put(info->sram_reg);
+> +	clk_put(info->cpu_clk);
+> +	clk_put(info->inter_pll);
+> +
+> +	kfree(info);
+> +}
+> +
+> +static int mt8173_cpufreq_init(struct cpufreq_policy *policy)
+> +{
+> +	struct cpu_dvfs_info *info;
+> +	struct cpufreq_frequency_table *freq_table;
+> +	int ret, i;
+> +
+> +	info = kzalloc(sizeof(*info), GFP_KERNEL);
+> +	if (!info)
+> +		return -ENOMEM;
+> +
+> +	cpumask_copy(&info->cpus, &cpu_topology[policy->cpu].core_sibling);
+> +	ret = mt8173_cpufreq_dvfs_init(info);
+> +	if (ret) {
+> +		pr_err("%s: Failed to initialize DVFS info: %d\n", __func__,
+> +		       ret);
+> +		goto out_dvfs_release;
+> +	}
+> +
+> +	freq_table = kcalloc(info->nr_opp, sizeof(*freq_table), GFP_KERNEL);
+> +	if (!freq_table) {
+> +		ret = -ENOMEM;
+> +		goto out_dvfs_release;
+> +	}
+> +
+> +	for (i = 0; i < info->nr_opp; i++)
+> +		freq_table[i].frequency = info->opp_tbl[i].freq / 1000;
+> +
+> +	freq_table[i].frequency = CPUFREQ_TABLE_END;
+
+You are corrupting memory here.
 
 Sascha
+
 
 -- 
 Pengutronix e.K.                           |                             |
