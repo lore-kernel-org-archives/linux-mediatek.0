@@ -1,51 +1,63 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 4/4] ARM: dts: mediatek mt8135: Use real UART clocks
-Date: Fri, 24 Apr 2015 09:58:08 +0200
-Message-ID: <CABuKBeKoxAdW3VdrF229VAm+eB8Rku=_QF9bu-nCXfj+T=dMvg@mail.gmail.com>
-References: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
- <1429780875-29096-5-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/4] tty: serial: 8250_mtk: Use devm_clk_get
+Date: Fri, 24 Apr 2015 12:28:33 +0200
+Message-ID: <CABuKBe+bACg_5uDQc3BF4BaBUG1-CQ3mH199o3nMsaMfH3ad3w@mail.gmail.com>
+References: <1429779066-21406-1-git-send-email-s.hauer@pengutronix.de>
+	<1429779066-21406-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1429780875-29096-5-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1429779066-21406-2-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-serial@vger.kernel.org, Alan Cox <alan@linux.intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-04-23 11:21 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
-> We used to provide dummy clocks for the UART. Now that we have
-> common clock support we can provide the real clocks to the UART.
+2015-04-23 10:51 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> Just because of_clk_get() doesn't mean it should be used. Use devm_clk_get
+> which is the correct function when a struct device * is available. Also
+> since it's a devm function we can drop the calls to clk_put(). While at
+> it also fix a wrong debug message.
 >
-> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  arch/arm/boot/dts/mt8135.dtsi | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
+>  drivers/tty/serial/8250/8250_mtk.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 >
-> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
-> index b0f20fc..4d1ddd9 100644
-> --- a/arch/arm/boot/dts/mt8135.dtsi
-> +++ b/arch/arm/boot/dts/mt8135.dtsi
-> @@ -180,7 +180,8 @@
->                         compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
->                         reg = <0 0x11006000 0 0x400>;
->                         interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-> -                       clocks = <&uart_clk>;
-> +                       clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
-> +                       clock-names = "baud", "bus";
->                         status = "disabled";
->                 };
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index 7a11fac..c6901dc 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -131,18 +131,16 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+>                            struct mtk8250_data *data)
+>  {
+>         int err;
+> -       struct device_node *np = pdev->dev.of_node;
+>
+> -       data->uart_clk = of_clk_get(np, 0);
+> +       data->uart_clk = devm_clk_get(&pdev->dev, NULL);
+>         if (IS_ERR(data->uart_clk)) {
+> -               dev_warn(&pdev->dev, "Can't get timer clock\n");
+> +               dev_warn(&pdev->dev, "Can't get uart clock\n");
+>                 return PTR_ERR(data->uart_clk);
+>         }
+>
+>         err = clk_prepare_enable(data->uart_clk);
+>         if (err) {
+>                 dev_warn(&pdev->dev, "Can't prepare clock\n");
+> -               clk_put(data->uart_clk);
+>                 return err;
+>         }
+>         p->uartclk = clk_get_rate(data->uart_clk);
+> @@ -216,7 +214,6 @@ static int mtk8250_remove(struct platform_device *pdev)
+>         serial8250_unregister_port(data->line);
+>         if (!IS_ERR(data->uart_clk)) {
+>                 clk_disable_unprepare(data->uart_clk);
+> -               clk_put(data->uart_clk);
+>         }
 
-We can delete the dummy uart_clk, as it is not needed any more.
+Please delete the braces.
+
 
 -- 
 motzblog.wordpress.com
