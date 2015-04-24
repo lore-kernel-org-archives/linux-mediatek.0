@@ -1,117 +1,101 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 4/4] tty: serial: 8250_mtk: Add support for bus clock
-Date: Fri, 24 Apr 2015 13:18:07 +0200
-Message-ID: <CABuKBe+ebskWHVRtcfei9hZVvt5oHA0wij0WuLCkYqJo0Hzm=Q@mail.gmail.com>
-References: <1429779066-21406-1-git-send-email-s.hauer@pengutronix.de>
-	<1429779066-21406-5-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 1/2] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Fri, 24 Apr 2015 14:55:21 +0200
+Message-ID: <20150424125521.GU6325@pengutronix.de>
+References: <1429522047-16675-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
+ <20150423120152.GM6325@pengutronix.de>
+ <CALx668VsT60+kx7o-ZM5Wxk7Nn-rXS21O5SDYr++EeY-zEJ6ew@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1429779066-21406-5-git-send-email-s.hauer@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <CALx668VsT60+kx7o-ZM5Wxk7Nn-rXS21O5SDYr++EeY-zEJ6ew@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Greg KH <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-serial@vger.kernel.org, Alan Cox <alan@linux.intel.com>
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Chen Fan <fan.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-04-23 10:51 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> The mtk 8250 needs two clocks, one for providing the baudrate and
-> one that needs to be enabled for register accesses. The latter has
-> not been supported, this patch adds support for it. It is optional
-> for now since not all SoCs provide a bus clock.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  Documentation/devicetree/bindings/serial/mtk-uart.txt |  9 +++++++--
->  drivers/tty/serial/8250/8250_mtk.c                    | 14 +++++++++++++-
->  2 files changed, 20 insertions(+), 3 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> index 4415226..369b5c3 100644
-> --- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> +++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> @@ -14,7 +14,11 @@ Required properties:
->
->  - interrupts: A single interrupt specifier.
->
-> -- clocks: Clock driving the hardware.
-> +- clocks : Must contain an entry for each entry in clock-names.
-> +  See ../clocks/clock-bindings.txt for details.
-> +- clock-names:
-> +  - "baud": The clock the baudrate is derived from
-> +  - "bus": The bus clock for register accesses (optional)
->
->  Example:
->
-> @@ -22,5 +26,6 @@ Example:
->                 compatible = "mediatek,mt6589-uart", "mediatek,mt6577-uart";
->                 reg = <0x11006000 0x400>;
->                 interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-> -               clocks = <&uart_clk>;
-> +               clocks = <&uart_clk>, <&bus_clk>;
-> +               clock-names = "baud", "bus";
->         };
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index 2f28bd0..20c27f0 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -34,6 +34,7 @@
->  struct mtk8250_data {
->         int                     line;
->         struct clk              *uart_clk;
-> +       struct clk              *bus_clk;
->  };
->
->  static void
-> @@ -120,6 +121,7 @@ static int mtk8250_runtime_suspend(struct device *dev)
->         struct mtk8250_data *data = dev_get_drvdata(dev);
->
->         clk_disable_unprepare(data->uart_clk);
-> +       clk_disable_unprepare(data->bus_clk);
->
->         return 0;
->  }
-> @@ -135,6 +137,12 @@ static int mtk8250_runtime_resume(struct device *dev)
->                 return err;
->         }
->
-> +       err = clk_prepare_enable(data->bus_clk);
-> +       if (err) {
-> +               dev_warn(dev, "Can't enable bus clock\n");
-> +               return err;
-> +       }
-> +
->         return 0;
->  }
->
-> @@ -153,7 +161,7 @@ mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
->  static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
->                            struct mtk8250_data *data)
->  {
-> -       data->uart_clk = devm_clk_get(&pdev->dev, NULL);
-> +       data->uart_clk = devm_clk_get(&pdev->dev, "baud");
->         if (IS_ERR(data->uart_clk)) {
->                 dev_warn(&pdev->dev, "Can't get uart clock\n");
->                 return PTR_ERR(data->uart_clk);
-> @@ -161,6 +169,10 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
->
->         p->uartclk = clk_get_rate(data->uart_clk);
->
-> +       data->bus_clk = devm_clk_get(&pdev->dev, "bus");
-> +       if (IS_ERR(data->bus_clk))
-> +               data->bus_clk = NULL;
-> +
+On Fri, Apr 24, 2015 at 02:46:25PM +0800, Pi-Cheng Chen wrote:
+> Hi Sascha,
+> 
+> Thanks for reviewing.
+> 
+> On Thu, Apr 23, 2015 at 8:01 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
+> > On Mon, Apr 20, 2015 at 05:27:26PM +0800, pi-cheng.chen wrote:
+> >> This patch implements MT8173 specific cpufreq driver with OPP table defined
+> >> in the driver code.
+> >>
+> >> Signed-off-by: pi-cheng.chen <pi-cheng.chen@linaro.org>
+> >> ---
+> >>  drivers/cpufreq/Kconfig.arm      |   6 +
+> >>  drivers/cpufreq/Makefile         |   1 +
+> >>  drivers/cpufreq/mt8173-cpufreq.c | 509 +++++++++++++++++++++++++++++++++++++++
+> >>  3 files changed, 516 insertions(+)
+> >>  create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
+> >>
+> >> +static int mtk_cpufreq_voltage_trace(struct cpu_dvfs_info *info,
+> >> +                                  struct mtk_cpu_opp *opp)
+> >> +{
+> >> +     struct regulator *proc_reg = info->proc_reg;
+> >> +     struct regulator *sram_reg = info->sram_reg;
+> >> +     int old_vproc, new_vproc, old_vsram, new_vsram, vsram, vproc, ret;
+> >> +
+> >> +     old_vproc = regulator_get_voltage(proc_reg);
+> >> +     old_vsram = regulator_get_voltage(sram_reg);
+> >> +
+> >> +     new_vproc = opp->vproc;
+> >> +     new_vsram = opp->vsram;
+> >> +
+> >> +     /*
+> >> +      * In the case the voltage is going to be scaled up, Vsram and Vproc
+> >> +      * need to be scaled up step by step. In each step, Vsram needs to be
+> >> +      * set to (Vproc + 200mV) first, then Vproc is set to (Vsram - 100mV).
+> >> +      * Repeat the step until Vsram and Vproc are set to target voltage.
+> >> +      */
+> >> +     if (old_vproc < new_vproc) {
+> >> +next_up_step:
+> >> +             old_vsram = regulator_get_voltage(sram_reg);
+> >> +
+> >> +             vsram = (new_vsram - old_vproc < MAX_VOLT_SHIFT) ?
+> >> +                     new_vsram : old_vproc + MAX_VOLT_SHIFT;
+> >> +             vsram = get_regulator_voltage_floor(sram_reg, vsram);
+> >> +
+> >> +             ret = regulator_set_voltage(sram_reg, vsram, vsram);
+> >> +             if (ret)
+> >> +                     return ret;
+> >
+> > This introspecting the regulators for possible voltages looks hacky and
+> > unnecessary. regulator_set_voltage() can be passed minimum and maximum
+> > values, why don't you use it to increase the voltage within sensible
+> > limit, like
+> >
+> >         regulator_set_voltage(sram_reg, old_vsram + 100000, old_vsram + 200000);
+> >
+> > or similar?
+> 
+> I am sorry I don't understand how could I do it. Would you elaborate?
 
-We have to take into account the old DTS definition. This means, that
-if devm_clk_get(&pdev->dev, "baud") fails, we have to look for
-devm_clk_get(&pdev->dev, NULL).
-Only in the case I when clock "baud" does exist, do we check for clock
-"bus". Does this make sense?
+You try to set the OPPs to the exact voltages, then next use functions
+to determine the next exact higher voltage and set the regulator voltage
+to an exact value. Instead of doing this you can let the ability to
+specify a voltage range work for you, something like:
 
-The backwards compatibility should be reflected in the bindings
-documentation as well.
+	int tolerance = 50000;
 
-Cheers,
-Matthias
+	while (vproc < new_vproc) {
+		int next = min(new_vproc - vproc, 200000);
+		int next_sram = next + 100000;
+
+		regulator_set_voltage(sram_reg, next_sram - tolerance, next_sram + tolerance);
+		regulator_set_voltage(vproc_reg, next - tolerance, next + tolerance);
+		vproc = regulator_get_voltage(vproc_reg);
+	}
+
+Sascha
 
 -- 
-motzblog.wordpress.com
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
