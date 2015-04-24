@@ -1,107 +1,51 @@
-From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: Re: [PATCH 2/2] ARM64: mt8173: dts Add MT8173 cpufreq driver support
-Date: Fri, 24 Apr 2015 15:09:23 +0800
-Message-ID: <CALx668UiU73HAwGdezrXDxTm_4_N0HUJQFYa1E_Guv_j3NG00g@mail.gmail.com>
-References: <1429522047-16675-1-git-send-email-pi-cheng.chen@linaro.org>
-	<1429522047-16675-3-git-send-email-pi-cheng.chen@linaro.org>
-	<20150423125358.GA29702@leverpostej>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 4/4] ARM: dts: mediatek mt8135: Use real UART clocks
+Date: Fri, 24 Apr 2015 09:58:08 +0200
+Message-ID: <CABuKBeKoxAdW3VdrF229VAm+eB8Rku=_QF9bu-nCXfj+T=dMvg@mail.gmail.com>
+References: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
+ <1429780875-29096-5-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20150423125358.GA29702@leverpostej>
-Sender: linux-pm-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, "fan.chen@mediatek.com" <fan.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linaro-kernel@lists.linaro.org" <linaro-kernel@lists.linaro.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429780875-29096-5-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
-
-Thanks for reviewing.
-
-On Thu, Apr 23, 2015 at 8:53 PM, Mark Rutland <mark.rutland@arm.com> wrote:
-> On Mon, Apr 20, 2015 at 10:27:27AM +0100, pi-cheng.chen wrote:
->> This patch adds voltage supplies and clocks used by MT8173 cpufreq driver.
->>
->> Signed-off-by: pi-cheng.chen <pi-cheng.chen@linaro.org>
+2015-04-23 11:21 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+> We used to provide dummy clocks for the UART. Now that we have
+> common clock support we can provide the real clocks to the UART.
 >
-> This series has no bindings for these properties.
-
-Will add documents for these.
-
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt8135.dtsi | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
 >
->> ---
->>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 9 +++++++++
->>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 6 ++++++
->>  2 files changed, 15 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> index 96e141c..7a00cfe 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> @@ -330,3 +330,12 @@
->>       status = "okay";
->>       clock-frequency = <100000>;
->>  };
->> +
->> +&cpu0 {
->> +     proc-supply = <&mt6397_vpca15_reg>;
->> +};
->> +
->> +&cpu2 {
->> +     proc-supply = <&da9211_vcpu_reg>;
->> +     sram-supply = <&mt6397_vsramca7_reg>;
->> +};
->
->
-> Why do only two CPUs have these properties, and why does one need an
-> sram-supply?
+> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+> index b0f20fc..4d1ddd9 100644
+> --- a/arch/arm/boot/dts/mt8135.dtsi
+> +++ b/arch/arm/boot/dts/mt8135.dtsi
+> @@ -180,7 +180,8 @@
+>                         compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
+>                         reg = <0 0x11006000 0 0x400>;
+>                         interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+> -                       clocks = <&uart_clk>;
+> +                       clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
+> +                       clock-names = "baud", "bus";
+>                         status = "disabled";
+>                 };
 
-For better description of hardware, I think putting these properties in all CPUs
-share the same supplies is logical.
+We can delete the dummy uart_clk, as it is not needed any more.
 
-For each cluster of MT8173, we have both PROC and SRAM supplies. But only
-on one cluster (cpu2 and cpu3) we need to control both voltage supplies. The
-SRAM supply on cpu0 cluster is controlled by hardware automatically. Therefore
-I put sram-supply only on cpu2. For better description of hardware, it
-might be a
-good idea to put the SRAM supply in cpu0 also though we don't use it in the
-driver, right?
-
->
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> index d9cc84e..b8a5454 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> @@ -51,6 +51,9 @@
->>                       device_type = "cpu";
->>                       compatible = "arm,cortex-a53";
->>                       reg = <0x000>;
->> +                     clocks = <&infracfg INFRA_CA53SEL>,
->> +                              <&apmixedsys APMIXED_MAINPLL>;
->> +                     clock-names = "cpu", "intermediate";
->>               };
->>
->>               cpu1: cpu@1 {
->> @@ -65,6 +68,9 @@
->>                       compatible = "arm,cortex-a57";
->>                       reg = <0x100>;
->>                       enable-method = "psci";
->> +                     clocks = <&infracfg INFRA_CA57SEL>,
->> +                              <&apmixedsys APMIXED_MAINPLL>;
->> +                     clock-names = "cpu", "intermediate";
->>               };
->
-> We should really describe this information per-cpu rather than assuming
-> that it's the same for siblings. Arbitrarily making one CPU in each
-> cluster (or other arbitrary grouping) special for the binding is silly.
-
-Yes, I agree with you and same above. I did these because most of the
-platforms in kernel did these. So should I do it the way you suggest?
-
-Thanks.
-
-Best Regards,
-Pi-Cheng
-
->
-> Mark.
+-- 
+motzblog.wordpress.com
