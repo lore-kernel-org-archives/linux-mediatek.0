@@ -1,226 +1,37 @@
-From: Krzysztof Kozlowski <k.kozlowski.k@gmail.com>
-Subject: [PATCH 2/2] irqchip: Constify irq_domain_ops
-Date: Mon, 27 Apr 2015 21:54:24 +0900
-Message-ID: <1430139264-4362-2-git-send-email-k.kozlowski.k@gmail.com>
-References: <1430139264-4362-1-git-send-email-k.kozlowski.k@gmail.com>
+From: Pavel Machek <pavel@ucw.cz>
+Subject: Re: [PATCH 01/13] thermal: Make temperatures consistently unsigned
+ long
+Date: Mon, 27 Apr 2015 22:36:08 +0200
+Message-ID: <20150427203608.GD29351@xo-6d-61-c0.localdomain>
+References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
+ <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430139264-4362-1-git-send-email-k.kozlowski.k@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Kukjin Kim <kgene@kernel.org>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <k.kozlowski.k@gmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The irq_domain_ops are not modified by the driver and the irqdomain core
-code accepts pointer to a const data.
+On Thu 2015-03-26 16:53:48, Sascha Hauer wrote:
+> The thermal framework uses int, long and unsigned long for temperatures
+> in millicelsius. The majority of functions uses unsigned long, so change
+> the remaining functions to use this type aswell.
 
-Signed-off-by: Krzysztof Kozlowski <k.kozlowski.k@gmail.com>
----
- drivers/irqchip/exynos-combiner.c         | 2 +-
- drivers/irqchip/irq-armada-370-xp.c       | 2 +-
- drivers/irqchip/irq-bcm2835.c             | 2 +-
- drivers/irqchip/irq-keystone.c            | 2 +-
- drivers/irqchip/irq-mips-gic.c            | 2 +-
- drivers/irqchip/irq-mtk-sysirq.c          | 2 +-
- drivers/irqchip/irq-mxs.c                 | 2 +-
- drivers/irqchip/irq-renesas-intc-irqpin.c | 2 +-
- drivers/irqchip/irq-renesas-irqc.c        | 2 +-
- drivers/irqchip/irq-s3c24xx.c             | 4 ++--
- drivers/irqchip/irq-sun4i.c               | 2 +-
- drivers/irqchip/irq-versatile-fpga.c      | 2 +-
- drivers/irqchip/irq-vic.c                 | 2 +-
- drivers/irqchip/irq-vt8500.c              | 2 +-
- 14 files changed, 15 insertions(+), 15 deletions(-)
+Maybe millicelsius_t should be introduced, so that readers immediately know
+what type it is? Some parts of kernel also use decicelsius and decikelvin, IIRC (ACPI).
 
-diff --git a/drivers/irqchip/exynos-combiner.c b/drivers/irqchip/exynos-combiner.c
-index 5945223b73fa..a57a3a1f339f 100644
---- a/drivers/irqchip/exynos-combiner.c
-+++ b/drivers/irqchip/exynos-combiner.c
-@@ -164,7 +164,7 @@ static int combiner_irq_domain_map(struct irq_domain *d, unsigned int irq,
- 	return 0;
- }
- 
--static struct irq_domain_ops combiner_irq_domain_ops = {
-+static const struct irq_domain_ops combiner_irq_domain_ops = {
- 	.xlate	= combiner_irq_domain_xlate,
- 	.map	= combiner_irq_domain_map,
- };
-diff --git a/drivers/irqchip/irq-armada-370-xp.c b/drivers/irqchip/irq-armada-370-xp.c
-index daccc8bdbb42..0d3b0fe2f175 100644
---- a/drivers/irqchip/irq-armada-370-xp.c
-+++ b/drivers/irqchip/irq-armada-370-xp.c
-@@ -409,7 +409,7 @@ static struct notifier_block mpic_cascaded_cpu_notifier = {
- };
- #endif /* CONFIG_SMP */
- 
--static struct irq_domain_ops armada_370_xp_mpic_irq_ops = {
-+static const struct irq_domain_ops armada_370_xp_mpic_irq_ops = {
- 	.map = armada_370_xp_mpic_irq_map,
- 	.xlate = irq_domain_xlate_onecell,
- };
-diff --git a/drivers/irqchip/irq-bcm2835.c b/drivers/irqchip/irq-bcm2835.c
-index 5916d6cdafa1..e68c3b60a681 100644
---- a/drivers/irqchip/irq-bcm2835.c
-+++ b/drivers/irqchip/irq-bcm2835.c
-@@ -135,7 +135,7 @@ static int armctrl_xlate(struct irq_domain *d, struct device_node *ctrlr,
- 	return 0;
- }
- 
--static struct irq_domain_ops armctrl_ops = {
-+static const struct irq_domain_ops armctrl_ops = {
- 	.xlate = armctrl_xlate
- };
- 
-diff --git a/drivers/irqchip/irq-keystone.c b/drivers/irqchip/irq-keystone.c
-index 78e8b3ce5252..5dc61655055a 100644
---- a/drivers/irqchip/irq-keystone.c
-+++ b/drivers/irqchip/irq-keystone.c
-@@ -131,7 +131,7 @@ static int keystone_irq_map(struct irq_domain *h, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops keystone_irq_ops = {
-+static const struct irq_domain_ops keystone_irq_ops = {
- 	.map	= keystone_irq_map,
- 	.xlate	= irq_domain_xlate_onecell,
- };
-diff --git a/drivers/irqchip/irq-mips-gic.c b/drivers/irqchip/irq-mips-gic.c
-index 57f09cb54464..44d2d106e818 100644
---- a/drivers/irqchip/irq-mips-gic.c
-+++ b/drivers/irqchip/irq-mips-gic.c
-@@ -739,7 +739,7 @@ static int gic_irq_domain_xlate(struct irq_domain *d, struct device_node *ctrlr,
- 	return 0;
- }
- 
--static struct irq_domain_ops gic_irq_domain_ops = {
-+static const struct irq_domain_ops gic_irq_domain_ops = {
- 	.map = gic_irq_domain_map,
- 	.xlate = gic_irq_domain_xlate,
- };
-diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-index eaf0a710e98a..04de2d4ca70f 100644
---- a/drivers/irqchip/irq-mtk-sysirq.c
-+++ b/drivers/irqchip/irq-mtk-sysirq.c
-@@ -111,7 +111,7 @@ static int mtk_sysirq_domain_alloc(struct irq_domain *domain, unsigned int virq,
- 	return irq_domain_alloc_irqs_parent(domain, virq, nr_irqs, &gic_data);
- }
- 
--static struct irq_domain_ops sysirq_domain_ops = {
-+static const struct irq_domain_ops sysirq_domain_ops = {
- 	.xlate = mtk_sysirq_domain_xlate,
- 	.alloc = mtk_sysirq_domain_alloc,
- 	.free = irq_domain_free_irqs_common,
-diff --git a/drivers/irqchip/irq-mxs.c b/drivers/irqchip/irq-mxs.c
-index e4acf1e3f8e3..04bf97b289cf 100644
---- a/drivers/irqchip/irq-mxs.c
-+++ b/drivers/irqchip/irq-mxs.c
-@@ -90,7 +90,7 @@ static int icoll_irq_domain_map(struct irq_domain *d, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops icoll_irq_domain_ops = {
-+static const struct irq_domain_ops icoll_irq_domain_ops = {
- 	.map = icoll_irq_domain_map,
- 	.xlate = irq_domain_xlate_onecell,
- };
-diff --git a/drivers/irqchip/irq-renesas-intc-irqpin.c b/drivers/irqchip/irq-renesas-intc-irqpin.c
-index 9a0767b9c89d..0670ab4e3897 100644
---- a/drivers/irqchip/irq-renesas-intc-irqpin.c
-+++ b/drivers/irqchip/irq-renesas-intc-irqpin.c
-@@ -347,7 +347,7 @@ static int intc_irqpin_irq_domain_map(struct irq_domain *h, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops intc_irqpin_irq_domain_ops = {
-+static const struct irq_domain_ops intc_irqpin_irq_domain_ops = {
- 	.map	= intc_irqpin_irq_domain_map,
- 	.xlate  = irq_domain_xlate_twocell,
- };
-diff --git a/drivers/irqchip/irq-renesas-irqc.c b/drivers/irqchip/irq-renesas-irqc.c
-index cdf80b7794cd..df5bf21a701f 100644
---- a/drivers/irqchip/irq-renesas-irqc.c
-+++ b/drivers/irqchip/irq-renesas-irqc.c
-@@ -168,7 +168,7 @@ static int irqc_irq_domain_map(struct irq_domain *h, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops irqc_irq_domain_ops = {
-+static const struct irq_domain_ops irqc_irq_domain_ops = {
- 	.map	= irqc_irq_domain_map,
- 	.xlate  = irq_domain_xlate_twocell,
- };
-diff --git a/drivers/irqchip/irq-s3c24xx.c b/drivers/irqchip/irq-s3c24xx.c
-index c8d373fcd823..e96717f45ea1 100644
---- a/drivers/irqchip/irq-s3c24xx.c
-+++ b/drivers/irqchip/irq-s3c24xx.c
-@@ -502,7 +502,7 @@ err:
- 	return -EINVAL;
- }
- 
--static struct irq_domain_ops s3c24xx_irq_ops = {
-+static const struct irq_domain_ops s3c24xx_irq_ops = {
- 	.map = s3c24xx_irq_map,
- 	.xlate = irq_domain_xlate_twocell,
- };
-@@ -1228,7 +1228,7 @@ static int s3c24xx_irq_xlate_of(struct irq_domain *d, struct device_node *n,
- 	return 0;
- }
- 
--static struct irq_domain_ops s3c24xx_irq_ops_of = {
-+static const struct irq_domain_ops s3c24xx_irq_ops_of = {
- 	.map = s3c24xx_irq_map_of,
- 	.xlate = s3c24xx_irq_xlate_of,
- };
-diff --git a/drivers/irqchip/irq-sun4i.c b/drivers/irqchip/irq-sun4i.c
-index 64155b686081..83d6aa6464ee 100644
---- a/drivers/irqchip/irq-sun4i.c
-+++ b/drivers/irqchip/irq-sun4i.c
-@@ -89,7 +89,7 @@ static int sun4i_irq_map(struct irq_domain *d, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops sun4i_irq_ops = {
-+static const struct irq_domain_ops sun4i_irq_ops = {
- 	.map = sun4i_irq_map,
- 	.xlate = irq_domain_xlate_onecell,
- };
-diff --git a/drivers/irqchip/irq-versatile-fpga.c b/drivers/irqchip/irq-versatile-fpga.c
-index 1ab451729a5c..888111b76ea0 100644
---- a/drivers/irqchip/irq-versatile-fpga.c
-+++ b/drivers/irqchip/irq-versatile-fpga.c
-@@ -132,7 +132,7 @@ static int fpga_irqdomain_map(struct irq_domain *d, unsigned int irq,
- 	return 0;
- }
- 
--static struct irq_domain_ops fpga_irqdomain_ops = {
-+static const struct irq_domain_ops fpga_irqdomain_ops = {
- 	.map = fpga_irqdomain_map,
- 	.xlate = irq_domain_xlate_onetwocell,
- };
-diff --git a/drivers/irqchip/irq-vic.c b/drivers/irqchip/irq-vic.c
-index 54089debf2dc..d4ce331ea4a0 100644
---- a/drivers/irqchip/irq-vic.c
-+++ b/drivers/irqchip/irq-vic.c
-@@ -256,7 +256,7 @@ static void __exception_irq_entry vic_handle_irq(struct pt_regs *regs)
- 	} while (handled);
- }
- 
--static struct irq_domain_ops vic_irqdomain_ops = {
-+static const struct irq_domain_ops vic_irqdomain_ops = {
- 	.map = vic_irqdomain_map,
- 	.xlate = irq_domain_xlate_onetwocell,
- };
-diff --git a/drivers/irqchip/irq-vt8500.c b/drivers/irqchip/irq-vt8500.c
-index b7af816f2769..0b297009b856 100644
---- a/drivers/irqchip/irq-vt8500.c
-+++ b/drivers/irqchip/irq-vt8500.c
-@@ -173,7 +173,7 @@ static int vt8500_irq_map(struct irq_domain *h, unsigned int virq,
- 	return 0;
- }
- 
--static struct irq_domain_ops vt8500_irq_domain_ops = {
-+static const struct irq_domain_ops vt8500_irq_domain_ops = {
- 	.map = vt8500_irq_map,
- 	.xlate = irq_domain_xlate_onecell,
- };
+									Pavel
+
+>  	if (trip_type == THERMAL_TRIP_CRITICAL) {
+>  		dev_emerg(&tz->device,
+> -			  "critical temperature reached(%d C),shutting down\n",
+> +			  "critical temperature reached(%lu C),shutting down\n",
+
+space after , ?
+
 -- 
-2.1.0
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
