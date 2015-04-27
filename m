@@ -1,98 +1,90 @@
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 1/2] cpufreq: mediatek: Add MT8173 cpufreq driver
-Date: Fri, 24 Apr 2015 14:55:21 +0200
-Message-ID: <20150424125521.GU6325@pengutronix.de>
-References: <1429522047-16675-1-git-send-email-pi-cheng.chen@linaro.org>
- <1429522047-16675-2-git-send-email-pi-cheng.chen@linaro.org>
- <20150423120152.GM6325@pengutronix.de>
- <CALx668VsT60+kx7o-ZM5Wxk7Nn-rXS21O5SDYr++EeY-zEJ6ew@mail.gmail.com>
+Subject: Re: [PATCH 1/4] tty: serial: 8250_mtk: Use devm_clk_get
+Date: Mon, 27 Apr 2015 08:33:01 +0200
+Message-ID: <20150427063301.GW6325@pengutronix.de>
+References: <1429779066-21406-1-git-send-email-s.hauer@pengutronix.de>
+ <1429779066-21406-2-git-send-email-s.hauer@pengutronix.de>
+ <CABuKBe+bACg_5uDQc3BF4BaBUG1-CQ3mH199o3nMsaMfH3ad3w@mail.gmail.com>
+ <20150424103151.GP6325@pengutronix.de>
+ <CABuKBeLEui7ufMZ1=wz2kss4Q8yuK2VYt=wDWam6ZkCfd1G+7Q@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CALx668VsT60+kx7o-ZM5Wxk7Nn-rXS21O5SDYr++EeY-zEJ6ew@mail.gmail.com>
+In-Reply-To: <CABuKBeLEui7ufMZ1=wz2kss4Q8yuK2VYt=wDWam6ZkCfd1G+7Q@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Chen Fan <fan.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Greg KH <gregkh@linuxfoundation.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Alan Cox <alan@linux.intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Apr 24, 2015 at 02:46:25PM +0800, Pi-Cheng Chen wrote:
-> Hi Sascha,
-> 
-> Thanks for reviewing.
-> 
-> On Thu, Apr 23, 2015 at 8:01 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> > On Mon, Apr 20, 2015 at 05:27:26PM +0800, pi-cheng.chen wrote:
-> >> This patch implements MT8173 specific cpufreq driver with OPP table defined
-> >> in the driver code.
+On Fri, Apr 24, 2015 at 12:53:08PM +0200, Matthias Brugger wrote:
+> 2015-04-24 12:31 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> > On Fri, Apr 24, 2015 at 12:28:33PM +0200, Matthias Brugger wrote:
+> >> 2015-04-23 10:51 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >> > Just because of_clk_get() doesn't mean it should be used. Use devm_clk_get
+> >> > which is the correct function when a struct device * is available. Also
+> >> > since it's a devm function we can drop the calls to clk_put(). While at
+> >> > it also fix a wrong debug message.
+> >> >
+> >> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> >> > ---
+> >> >  drivers/tty/serial/8250/8250_mtk.c | 7 ++-----
+> >> >  1 file changed, 2 insertions(+), 5 deletions(-)
+> >> >
+> >> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> >> > index 7a11fac..c6901dc 100644
+> >> > --- a/drivers/tty/serial/8250/8250_mtk.c
+> >> > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> >> > @@ -131,18 +131,16 @@ static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+> >> >                            struct mtk8250_data *data)
+> >> >  {
+> >> >         int err;
+> >> > -       struct device_node *np = pdev->dev.of_node;
+> >> >
+> >> > -       data->uart_clk = of_clk_get(np, 0);
+> >> > +       data->uart_clk = devm_clk_get(&pdev->dev, NULL);
+> >> >         if (IS_ERR(data->uart_clk)) {
+> >> > -               dev_warn(&pdev->dev, "Can't get timer clock\n");
+> >> > +               dev_warn(&pdev->dev, "Can't get uart clock\n");
+> >> >                 return PTR_ERR(data->uart_clk);
+> >> >         }
+> >> >
+> >> >         err = clk_prepare_enable(data->uart_clk);
+> >> >         if (err) {
+> >> >                 dev_warn(&pdev->dev, "Can't prepare clock\n");
+> >> > -               clk_put(data->uart_clk);
+> >> >                 return err;
+> >> >         }
+> >> >         p->uartclk = clk_get_rate(data->uart_clk);
+> >> > @@ -216,7 +214,6 @@ static int mtk8250_remove(struct platform_device *pdev)
+> >> >         serial8250_unregister_port(data->line);
+> >> >         if (!IS_ERR(data->uart_clk)) {
+> >> >                 clk_disable_unprepare(data->uart_clk);
+> >> > -               clk_put(data->uart_clk);
+> >> >         }
 > >>
-> >> Signed-off-by: pi-cheng.chen <pi-cheng.chen@linaro.org>
-> >> ---
-> >>  drivers/cpufreq/Kconfig.arm      |   6 +
-> >>  drivers/cpufreq/Makefile         |   1 +
-> >>  drivers/cpufreq/mt8173-cpufreq.c | 509 +++++++++++++++++++++++++++++++++++++++
-> >>  3 files changed, 516 insertions(+)
-> >>  create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
-> >>
-> >> +static int mtk_cpufreq_voltage_trace(struct cpu_dvfs_info *info,
-> >> +                                  struct mtk_cpu_opp *opp)
-> >> +{
-> >> +     struct regulator *proc_reg = info->proc_reg;
-> >> +     struct regulator *sram_reg = info->sram_reg;
-> >> +     int old_vproc, new_vproc, old_vsram, new_vsram, vsram, vproc, ret;
-> >> +
-> >> +     old_vproc = regulator_get_voltage(proc_reg);
-> >> +     old_vsram = regulator_get_voltage(sram_reg);
-> >> +
-> >> +     new_vproc = opp->vproc;
-> >> +     new_vsram = opp->vsram;
-> >> +
-> >> +     /*
-> >> +      * In the case the voltage is going to be scaled up, Vsram and Vproc
-> >> +      * need to be scaled up step by step. In each step, Vsram needs to be
-> >> +      * set to (Vproc + 200mV) first, then Vproc is set to (Vsram - 100mV).
-> >> +      * Repeat the step until Vsram and Vproc are set to target voltage.
-> >> +      */
-> >> +     if (old_vproc < new_vproc) {
-> >> +next_up_step:
-> >> +             old_vsram = regulator_get_voltage(sram_reg);
-> >> +
-> >> +             vsram = (new_vsram - old_vproc < MAX_VOLT_SHIFT) ?
-> >> +                     new_vsram : old_vproc + MAX_VOLT_SHIFT;
-> >> +             vsram = get_regulator_voltage_floor(sram_reg, vsram);
-> >> +
-> >> +             ret = regulator_set_voltage(sram_reg, vsram, vsram);
-> >> +             if (ret)
-> >> +                     return ret;
+> >> Please delete the braces.
 > >
-> > This introspecting the regulators for possible voltages looks hacky and
-> > unnecessary. regulator_set_voltage() can be passed minimum and maximum
-> > values, why don't you use it to increase the voltage within sensible
-> > limit, like
-> >
-> >         regulator_set_voltage(sram_reg, old_vsram + 100000, old_vsram + 200000);
-> >
-> > or similar?
+> > The if() is removed completly in the next patch anyway.
 > 
-> I am sorry I don't understand how could I do it. Would you elaborate?
+> You are right. I propose to merge patch 2 and 3, so you get a clean code.
 
-You try to set the OPPs to the exact voltages, then next use functions
-to determine the next exact higher voltage and set the regulator voltage
-to an exact value. Instead of doing this you can let the ability to
-specify a voltage range work for you, something like:
+Patches 1 and 2 are different topics, I see no reason merging them. I
+changed the order of the two patches, maybe this makes it better
+readable.
 
-	int tolerance = 50000;
+> On the way, can you have a look on the commit message? For me it is
+> not clear what you want to say.
 
-	while (vproc < new_vproc) {
-		int next = min(new_vproc - vproc, 200000);
-		int next_sram = next + 100000;
+Changed to:
 
-		regulator_set_voltage(sram_reg, next_sram - tolerance, next_sram + tolerance);
-		regulator_set_voltage(vproc_reg, next - tolerance, next + tolerance);
-		vproc = regulator_get_voltage(vproc_reg);
-	}
+    When a struct device * is present clk_get should be used rather
+    than of_clk_get. Use the devm variant of this function to be able to
+    drop the clk_put in the error and remove pathes. While at it fix
+    a wrong error message.
 
 Sascha
+
 
 -- 
 Pengutronix e.K.                           |                             |
