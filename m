@@ -1,52 +1,65 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 01/13] thermal: Make temperatures consistently unsigned
- long
-Date: Tue, 28 Apr 2015 09:42:24 +0200
-Message-ID: <20150428074224.GI6325@pengutronix.de>
-References: <1427385240-6086-1-git-send-email-s.hauer@pengutronix.de>
- <1427385240-6086-2-git-send-email-s.hauer@pengutronix.de>
- <20150427203608.GD29351@xo-6d-61-c0.localdomain>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+	<u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH v3 1/3] mfd: provide RTC resource in MT6397 MFD
+Date: Tue, 28 Apr 2015 09:45:54 +0200
+Message-ID: <20150428074554.GZ19431@pengutronix.de>
+References: <1430206556-18254-1-git-send-email-eddie.huang@mediatek.com>
+ <1430206556-18254-2-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150427203608.GD29351@xo-6d-61-c0.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Pavel Machek <pavel@ucw.cz>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1430206556-18254-2-git-send-email-eddie.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Tomasz Figa <tfiga@google.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <kernel@pengutronix.de>, Samuel Ortiz <sameo@linux.intel.com>, rtc-linux@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Joe Perches <joe@perches.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 27, 2015 at 10:36:08PM +0200, Pavel Machek wrote:
-> On Thu 2015-03-26 16:53:48, Sascha Hauer wrote:
-> > The thermal framework uses int, long and unsigned long for temperatures
-> > in millicelsius. The majority of functions uses unsigned long, so change
-> > the remaining functions to use this type aswell.
-> 
-> Maybe millicelsius_t should be introduced, so that readers immediately know
-> what type it is? Some parts of kernel also use decicelsius and decikelvin, IIRC (ACPI).
+Hello,
 
-I have no strong opinion on this. I'll send out the next version without
-typedef for now. Since in my patch I identified most places which need a
-type change anyway it might be a good opportunity to change to a typedef
-if we want to. Any other opinions on this?
+On Tue, Apr 28, 2015 at 03:35:54PM +0800, Eddie Huang wrote:
+> Provide MT6397 RTC interrupt, base address, and register in
+> MT6397 MFD.
+>=20
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> ---
+>  drivers/mfd/mt6397-core.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>=20
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 09bc780..08cfbd1 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -21,9 +21,27 @@
+>  #include <linux/mfd/mt6397/core.h>
+>  #include <linux/mfd/mt6397/registers.h>
+> =20
+> +#define MT6397_RTC_BASE		0xe000
+> +#define MT6397_RTC_SIZE		0x3e
+> +
+> +static const struct resource mt6397_rtc_resources[] =3D {
+> +	{
+> +		.start =3D MT6397_RTC_BASE,
+> +		.end   =3D MT6397_RTC_BASE + MT6397_RTC_SIZE,
+> +		.flags  =3D IORESOURCE_MEM,
+It's definitly a matter of taste if you align the rhs here, but if you
+do, do it consitently. That is, either make sure that all equal signs
+are in a single column (at least per struct resource), or use a single
+space between variable name and =3D.
 
-> 
-> 									Pavel
-> 
-> >  	if (trip_type == THERMAL_TRIP_CRITICAL) {
-> >  		dev_emerg(&tz->device,
-> > -			  "critical temperature reached(%d C),shutting down\n",
-> > +			  "critical temperature reached(%lu C),shutting down\n",
-> 
-> space after , ?
+If you want to hear my personal preference: I always use a single space=
+=2E
+As if you have to add
+	.somelongvariablename =3D somevalue
 
-Turns out that in the new version of this series I don't have to modify
-this line anymore. Made this a separate patch.
+you have to touch all other lines, too, which is ugly.
 
-Sascha
+Best regards
+Uwe
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
+    |
+Industrial Linux Solutions                 | http://www.pengutronix.de/=
+  |
