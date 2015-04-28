@@ -1,65 +1,34 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-	<u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v3 1/3] mfd: provide RTC resource in MT6397 MFD
-Date: Tue, 28 Apr 2015 09:45:54 +0200
-Message-ID: <20150428074554.GZ19431@pengutronix.de>
-References: <1430206556-18254-1-git-send-email-eddie.huang@mediatek.com>
- <1430206556-18254-2-git-send-email-eddie.huang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1430206556-18254-2-git-send-email-eddie.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Tomasz Figa <tfiga@google.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <kernel@pengutronix.de>, Samuel Ortiz <sameo@linux.intel.com>, rtc-linux@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Joe Perches <joe@perches.com>, linux-arm-kernel@lists.infradead.org
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v2] Thermal cleanups and hardware trip points
+Date: Tue, 28 Apr 2015 10:25:50 +0200
+Message-ID: <1430209563-647-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-pm@vger.kernel.org
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+This series adds support for hardware trip points. It picks up earlier
+work from Mikko Perttunen. Mikko implemented hardware trip points as part
+of the device tree support. It was suggested back then to move the
+functionality to the thermal core instead of putting more code into the
+device tree support. This series does exactly that.
 
-On Tue, Apr 28, 2015 at 03:35:54PM +0800, Eddie Huang wrote:
-> Provide MT6397 RTC interrupt, base address, and register in
-> MT6397 MFD.
->=20
-> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> ---
->  drivers/mfd/mt6397-core.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->=20
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 09bc780..08cfbd1 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -21,9 +21,27 @@
->  #include <linux/mfd/mt6397/core.h>
->  #include <linux/mfd/mt6397/registers.h>
-> =20
-> +#define MT6397_RTC_BASE		0xe000
-> +#define MT6397_RTC_SIZE		0x3e
-> +
-> +static const struct resource mt6397_rtc_resources[] =3D {
-> +	{
-> +		.start =3D MT6397_RTC_BASE,
-> +		.end   =3D MT6397_RTC_BASE + MT6397_RTC_SIZE,
-> +		.flags  =3D IORESOURCE_MEM,
-It's definitly a matter of taste if you align the rhs here, but if you
-do, do it consitently. That is, either make sure that all equal signs
-are in a single column (at least per struct resource), or use a single
-space between variable name and =3D.
+The majority of the patches are cleanups and fixes. Only the last two
+patches actually implement the hardware trip points.
 
-If you want to hear my personal preference: I always use a single space=
-=2E
-As if you have to add
-	.somelongvariablename =3D somevalue
+Note that the hardware trip points are not very well tested currently
+and I still have no ready-to-post driver using them. However, Brian
+Norris showed interest in these patches, so I am including the patches
+in this series nevertheless.
 
-you have to touch all other lines, too, which is ugly.
+All comments welcome
 
-Best regards
-Uwe
+Changes since v1:
+- Use int instead of unsigned long consistently for temperatures
+- Instead of misfixing the emulation code add a comment how the
+  code is meant
+- Add doc entry for .set_trips callback
+- initialize prev_low_trip/prev_high_trip properly
+- get tz->lock before calling thermal_zone_set_trips()
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
-    |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
