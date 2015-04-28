@@ -1,146 +1,79 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 10/13] thermal: of: always set sensor related callbacks
-Date: Tue, 28 Apr 2015 10:26:00 +0200
-Message-ID: <1430209563-647-11-git-send-email-s.hauer@pengutronix.de>
-References: <1430209563-647-1-git-send-email-s.hauer@pengutronix.de>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v6 1/3] dt-bindings: Add I2C bindings for mt65xx/mt81xx.
+Date: Tue, 28 Apr 2015 16:31:07 +0800
+Message-ID: <1430209869-6631-2-git-send-email-eddie.huang@mediatek.com>
+References: <1430209869-6631-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1430209563-647-1-git-send-email-s.hauer@pengutronix.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-pm@vger.kernel.org
-Cc: Stephen Warren <swarren@wwwdotorg.org>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Zhang Rui <rui.zhang@intel.com>, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1430209869-6631-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Anders Berg <anders.berg-1wcpHE2jlwO1Z/+hSey0Gg@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jim Cromie <jim.cromie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Now that the thermal core treats -ENOSYS like the callbacks were
-not present at all we no longer have to overwrite the ops during
-runtime but instead can always set them and return -ENOSYS if no
-sensor is registered.
+From: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Add devicetree bindings for Mediatek Soc I2C driver.
+
+Signed-off-by: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/thermal/of-thermal.c | 33 +++++++++++++--------------------
- 1 file changed, 13 insertions(+), 20 deletions(-)
+ .../devicetree/bindings/i2c/i2c-mt6577.txt         | 41 ++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
 
-diff --git a/drivers/thermal/of-thermal.c b/drivers/thermal/of-thermal.c
-index c84404d..b9c35bd 100644
---- a/drivers/thermal/of-thermal.c
-+++ b/drivers/thermal/of-thermal.c
-@@ -91,7 +91,7 @@ static int of_thermal_get_temp(struct thermal_zone_device *tz,
- {
- 	struct __thermal_zone *data = tz->devdata;
- 
--	if (!data->ops->get_temp)
-+	if (!data->ops)
- 		return -EINVAL;
- 
- 	return data->ops->get_temp(data->sensor_data, temp);
-@@ -178,7 +178,7 @@ static int of_thermal_set_emul_temp(struct thermal_zone_device *tz,
- 	struct __thermal_zone *data = tz->devdata;
- 
- 	if (!data->ops || !data->ops->set_emul_temp)
--		return -EINVAL;
-+		return -ENOSYS;
- 
- 	return data->ops->set_emul_temp(data->sensor_data, temp);
- }
-@@ -189,8 +189,8 @@ static int of_thermal_get_trend(struct thermal_zone_device *tz, int trip,
- 	struct __thermal_zone *data = tz->devdata;
- 	int r;
- 
--	if (!data->ops->get_trend)
--		return -EINVAL;
-+	if (!data->ops || !data->ops->get_trend)
-+		return -ENOSYS;
- 
- 	r = data->ops->get_trend(data->sensor_data, trip, trend);
- 	if (r)
-@@ -366,6 +366,10 @@ static int of_thermal_get_crit_temp(struct thermal_zone_device *tz,
- }
- 
- static struct thermal_zone_device_ops of_thermal_ops = {
-+	.get_temp = of_thermal_get_temp,
-+	.get_trend = of_thermal_get_trend,
-+	.set_emul_temp = of_thermal_set_emul_temp,
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+new file mode 100644
+index 0000000..0ce6fa3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+@@ -0,0 +1,41 @@
++* Mediatek's I2C controller
 +
- 	.get_mode = of_thermal_get_mode,
- 	.set_mode = of_thermal_set_mode,
- 
-@@ -399,13 +403,13 @@ thermal_zone_of_add_sensor(struct device_node *zone,
- 	if (!ops)
- 		return ERR_PTR(-EINVAL);
- 
-+	if (!ops->get_temp)
-+		return ERR_PTR(-EINVAL);
++The Mediatek's I2C controller is used to interface with I2C devices.
 +
- 	mutex_lock(&tzd->lock);
- 	tz->ops = ops;
- 	tz->sensor_data = data;
- 
--	tzd->ops->get_temp = of_thermal_get_temp;
--	tzd->ops->get_trend = of_thermal_get_trend;
--	tzd->ops->set_emul_temp = of_thermal_set_emul_temp;
- 	mutex_unlock(&tzd->lock);
- 
- 	return tzd;
-@@ -535,9 +539,6 @@ void thermal_zone_of_sensor_unregister(struct device *dev,
- 		return;
- 
- 	mutex_lock(&tzd->lock);
--	tzd->ops->get_temp = NULL;
--	tzd->ops->get_trend = NULL;
--	tzd->ops->set_emul_temp = NULL;
- 
- 	tz->ops = NULL;
- 	tz->sensor_data = NULL;
-@@ -845,7 +846,6 @@ int __init of_parse_thermal_zones(void)
- {
- 	struct device_node *np, *child;
- 	struct __thermal_zone *tz;
--	struct thermal_zone_device_ops *ops;
- 
- 	np = of_find_node_by_name(NULL, "thermal-zones");
- 	if (!np) {
-@@ -869,29 +869,22 @@ int __init of_parse_thermal_zones(void)
- 			continue;
- 		}
- 
--		ops = kmemdup(&of_thermal_ops, sizeof(*ops), GFP_KERNEL);
--		if (!ops)
--			goto exit_free;
--
- 		tzp = kzalloc(sizeof(*tzp), GFP_KERNEL);
--		if (!tzp) {
--			kfree(ops);
-+		if (!tzp)
- 			goto exit_free;
--		}
- 
- 		/* No hwmon because there might be hwmon drivers registering */
- 		tzp->no_hwmon = true;
- 
- 		zone = thermal_zone_device_register(child->name, tz->ntrips,
- 						    0, tz,
--						    ops, tzp,
-+						    &of_thermal_ops, tzp,
- 						    tz->passive_delay,
- 						    tz->polling_delay);
- 		if (IS_ERR(zone)) {
- 			pr_err("Failed to build %s zone %ld\n", child->name,
- 			       PTR_ERR(zone));
- 			kfree(tzp);
--			kfree(ops);
- 			of_thermal_free_zone(tz);
- 			/* attempting to build remaining zones still */
- 		}
++Required properties:
++  - compatible: value should be either of the following.
++      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
++      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
++      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
++      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
++      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
++  - reg: physical base address of the controller and dma base, length of memory
++    mapped region.
++  - interrupts: interrupt number to the cpu.
++  - clock-div: the fixed value for frequency divider of clock source in i2c
++    module. Each IC may be different.
++  - clocks: clock name from clock manager
++  - clock-names: Must include "main" and "dma", if enable have-pmic need include
++    "pmic" extra.
++
++Optional properties:
++  - clock-frequency: Frequency in Hz of the bus when transfer, the default value
++    is 100000.
++  - mediatek,have-pmic: platform can control i2c form special pmic side.
++    Only mt6589 and mt8135 support this feature.
++  - mediatek,use-push-pull: IO config use push-pull mode.
++
++Example:
++
++	i2c0: i2c@1100d000 {
++			compatible = "mediatek,mt6577-i2c";
++			reg = <0x1100d000 0x70>,
++			      <0x11000300 0x80>;
++			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
++			clock-frequency = <400000>;
++			mediatek,have-pmic;
++			clock-div = <16>;
++			clocks = <&i2c0_ck>, <&ap_dma_ck>;
++			clock-names = "main", "dma";
++	};
++
 -- 
-2.1.4
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
