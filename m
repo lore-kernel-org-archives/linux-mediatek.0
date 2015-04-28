@@ -1,69 +1,65 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: mt8173: Fixup pinctrl nodes
-Date: Tue, 28 Apr 2015 17:23:57 +0800
-Message-ID: <1430213037-23831-2-git-send-email-yingjoe.chen@mediatek.com>
-References: <1430213037-23831-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 0/7] Add Mediatek MMC driver
+Date: Tue, 28 Apr 2015 17:48:38 +0800
+Message-ID: <1430214525-19198-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1430213037-23831-1-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The 8173 pinctrl node doesn't follow dts convention. Fix them.
-Also add a comment to explain pinctrl register usage to make it
-more clear.
+This series enables MMC support on the MT8135/MT8173 platform.
+MT8135 has 5 MMC controllers and MT8173 has 4 MMC controllers.
 
-Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+Changes base on Ulf and Sascha's comments
+Remove useless macros and use hex value
+Remove setting for ocr_avail
+Modify the flow of "set clock to 0"
+Fix the race condition of cancel_delayed_work
+Replace some dev_err to WARN_ON()
+Remove useless "ACCESS_ONCE"	
+Use clk_disable_unprepare() to instead of clk_disable() and clk_unprepare()
+Use clk_prepare_enable() to instead  of clk_prepare() and clk_enable()
+Fix the judgment of 1.8V IO
+Fix the judgment of DDR mode
+Make the enable/disable of vqmmc balanced
+Fix runtime pm flow by Ulf and Sascha's comments
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 8346c0f..e4a30cd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -128,6 +128,7 @@
- 		compatible = "simple-bus";
- 		ranges;
- 
-+		/* Provide regmap for pinctrl driver */
- 		syscfg_pctl_a: syscfg_pctl_a@10005000 {
- 			compatible = "mediatek,mt8173-pctl-a-syscfg", "syscon";
- 			reg = <0 0x10005000 0 0x1000>;
-@@ -159,9 +160,13 @@
- 			#reset-cells = <1>;
- 		};
- 
--		pio: pinctrl@0x10005000 {
-+		/*
-+		 * Pinctrl access register at 0x10005000 through regmap.
-+		 * Register 0x1000b000 is used by EINT.
-+		 */
-+		pio: pinctrl@10005000 {
- 			compatible = "mediatek,mt8173-pinctrl";
--			reg = <0 0x1000B000 0 0x1000>;
-+			reg = <0 0x1000b000 0 0x1000>;
- 			mediatek,pctl-regmap = <&syscfg_pctl_a>;
- 			pins-are-numbered;
- 			gpio-controller;
-@@ -169,8 +174,8 @@
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
- 			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
--						<GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
--						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+				     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
- 		};
- 
- 		sysirq: intpol-controller@10200620 {
--- 
-1.8.1.1.dirty
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Chaotian Jing (3):
+  mmc: dt-bindings: add Mediatek MMC bindings
+  mmc: mediatek: Add Mediatek MMC driver
+  mmc: mediatek: Add PM support for MMC driver
+
+Eddie Huang (2):
+  arm64: dts: mediatek: Add MT8173 MMC dts
+  arm64: mediatek: Add Mediatek MMC support in defconfig
+
+Yingjoe Chen (2):
+  ARM: mediatek: dts: Add emmc support to mt8135
+  ARM: multi_v7_defconfig: Enable Mediatek MMC support multi-v7
+
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |   33 +
+ arch/arm/boot/dts/mt8135-evbp1.dts               |  141 +++
+ arch/arm/boot/dts/mt8135.dtsi                    |   26 +
+ arch/arm/configs/multi_v7_defconfig              |    1 +
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  115 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi         |   22 +-
+ arch/arm64/configs/defconfig                     |    1 +
+ drivers/mmc/host/Kconfig                         |    8 +
+ drivers/mmc/host/Makefile                        |    1 +
+ drivers/mmc/host/mtk-sd.c                        | 1464 ++++++++++++++++++++++
+ 10 files changed, 1811 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
+ create mode 100644 drivers/mmc/host/mtk-sd.c
