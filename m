@@ -1,50 +1,72 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH v3 2/3] tty: serial: 8250_mtk: Add earlycon
-Date: Tue, 28 Apr 2015 21:40:33 +0800
-Message-ID: <1430228434-31779-3-git-send-email-eddie.huang@mediatek.com>
-References: <1430228434-31779-1-git-send-email-eddie.huang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/4] ARM: dts: mt8135: Add pmic wrapper nodes
+Date: Tue, 28 Apr 2015 22:10:20 +0800
+Message-ID: <1430230220.32537.3.camel@mtksdaap41>
+References: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
+ <1429780875-29096-3-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430228434-31779-1-git-send-email-eddie.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Jiri Slaby <jslaby@suse.cz>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Ashwin Chaugule <ashwin.chaugule@linaro.org>, Peter Hurley <peter@hurleysoftware.com>, Wang Long <long.wanglong@huawei.com>, Kevin Cernekee <cernekee@gmail.com>, Vineet Gupta <Vineet.Gupta1@synopsys.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Alan Cox <alan@linux.intel.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.orgSascha Hauer <kern>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1429780875-29096-3-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add 8250 MTK UART driver to support earlycon device tree.
-Earlycon take effect by
-  add "earlycon" in kernel boot argument
-  add "linux,sdtout-path" property in device tree file
+On Thu, 2015-04-23 at 11:21 +0200, Sascha Hauer wrote:
+> This adds the pmic wrapper node to the MediaTek MT8135 dtsi file.
+> 
+> This unit is used to access the PMIC on MediaTek boards.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt8135.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+> index b4017e2..b0f20fc 100644
+> --- a/arch/arm/boot/dts/mt8135.dtsi
+> +++ b/arch/arm/boot/dts/mt8135.dtsi
+> @@ -15,6 +15,7 @@
+>  #include <dt-bindings/clock/mt8135-clk.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/reset-controller/mt8135-resets.h>
+>  #include "skeleton64.dtsi"
+>  
+>  / {
+> @@ -127,6 +128,19 @@
+>  			reg = <0 0x10003000 0 0x1000>;
+>  		};
+>  
+> +		pwrap: pwrap@1000f000 {
+> +			compatible = "mediatek,mt8135-pwrap";
+> +			reg = <0 0x1000f000 0 0x1000>,
+> +				<0 0x11017000 0 0x1000>;
+> +			reg-names = "pwrap", "pwrap-bridge";
+> +			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>;
+> +			resets = <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
+> +					<&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
+> +			reset-names = "pwrap", "pwrap-bridge";
+> +			clocks = <&clk26m>, <&clk26m>;
+> +			clock-names = "spi", "wrap";
+> +		};
+> +
+>  		timer: timer@10008000 {
 
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
----
- drivers/tty/serial/8250/8250_mtk.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Hi Sascha,
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 7a11fac..8b2a666 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -289,6 +289,19 @@ static struct platform_driver mtk8250_platform_driver = {
- };
- module_platform_driver(mtk8250_platform_driver);
- 
-+static int __init early_mtk8250_setup(struct earlycon_device *device,
-+					const char *options)
-+{
-+	if (!device->port.membase)
-+		return -ENODEV;
-+
-+	device->port.iotype = UPIO_MEM32;
-+
-+	return early_serial8250_setup(device, NULL);
-+}
-+
-+OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
-+
- MODULE_AUTHOR("Matthias Brugger");
- MODULE_LICENSE("GPL");
- MODULE_DESCRIPTION("Mediatek 8250 serial port driver");
--- 
-1.8.1.1.dirty
+It seems we have many 8135 dtsi updates recently.
+Please sort according to node instance address so it will be easier to
+merge or resolve conflict.
+
+Joe.C
