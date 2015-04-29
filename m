@@ -1,72 +1,88 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/4] ARM: dts: mt8135: Add pmic wrapper nodes
-Date: Tue, 28 Apr 2015 22:10:20 +0800
-Message-ID: <1430230220.32537.3.camel@mtksdaap41>
-References: <1429780875-29096-1-git-send-email-s.hauer@pengutronix.de>
- <1429780875-29096-3-git-send-email-s.hauer@pengutronix.de>
+From: rajeev kumar <rajeevkumar.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v6 1/3] dt-bindings: Add I2C bindings for mt65xx/mt81xx.
+Date: Wed, 29 Apr 2015 10:48:25 +0530
+Message-ID: <CAA7nrtgcAU8RpUO=GPAWQH5hrsMg5jDzOJ-NqN_c19t_GPmTjw@mail.gmail.com>
+References: <1430209869-6631-1-git-send-email-eddie.huang@mediatek.com>
+	<1430209869-6631-2-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1429780875-29096-3-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1430209869-6631-2-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Anders Berg <anders.berg-1wcpHE2jlwO1Z/+hSey0Gg@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jim Cromie <jim.cromie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-04-23 at 11:21 +0200, Sascha Hauer wrote:
-> This adds the pmic wrapper node to the MediaTek MT8135 dtsi file.
-> 
-> This unit is used to access the PMIC on MediaTek boards.
-> 
-> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+On Tue, Apr 28, 2015 at 2:01 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> From: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>
+> Add devicetree bindings for Mediatek Soc I2C driver.
+>
+> Signed-off-by: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  arch/arm/boot/dts/mt8135.dtsi | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
-> index b4017e2..b0f20fc 100644
-> --- a/arch/arm/boot/dts/mt8135.dtsi
-> +++ b/arch/arm/boot/dts/mt8135.dtsi
-> @@ -15,6 +15,7 @@
->  #include <dt-bindings/clock/mt8135-clk.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/reset-controller/mt8135-resets.h>
->  #include "skeleton64.dtsi"
->  
->  / {
-> @@ -127,6 +128,19 @@
->  			reg = <0 0x10003000 0 0x1000>;
->  		};
->  
-> +		pwrap: pwrap@1000f000 {
-> +			compatible = "mediatek,mt8135-pwrap";
-> +			reg = <0 0x1000f000 0 0x1000>,
-> +				<0 0x11017000 0 0x1000>;
-> +			reg-names = "pwrap", "pwrap-bridge";
-> +			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>;
-> +			resets = <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
-> +					<&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
-> +			reset-names = "pwrap", "pwrap-bridge";
-> +			clocks = <&clk26m>, <&clk26m>;
-> +			clock-names = "spi", "wrap";
-> +		};
+>  .../devicetree/bindings/i2c/i2c-mt6577.txt         | 41 ++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+>
+> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+> new file mode 100644
+> index 0000000..0ce6fa3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+> @@ -0,0 +1,41 @@
+> +* Mediatek's I2C controller
 > +
->  		timer: timer@10008000 {
+> +The Mediatek's I2C controller is used to interface with I2C devices.
+> +
+> +Required properties:
+> +  - compatible: value should be either of the following.
+> +      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
+> +      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
+> +      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
+> +      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
+> +      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
+> +  - reg: physical base address of the controller and dma base, length of memory
+> +    mapped region.
+> +  - interrupts: interrupt number to the cpu.
+> +  - clock-div: the fixed value for frequency divider of clock source in i2c
+> +    module. Each IC may be different.
+> +  - clocks: clock name from clock manager
+> +  - clock-names: Must include "main" and "dma", if enable have-pmic need include
+> +    "pmic" extra.
+> +
+> +Optional properties:
+> +  - clock-frequency: Frequency in Hz of the bus when transfer, the default value
+> +    is 100000.
 
-Hi Sascha,
+100000 HZ ...
 
-It seems we have many 8135 dtsi updates recently.
-Please sort according to node instance address so it will be easier to
-merge or resolve conflict.
-
-Joe.C
+> +  - mediatek,have-pmic: platform can control i2c form special pmic side.
+> +    Only mt6589 and mt8135 support this feature.
+> +  - mediatek,use-push-pull: IO config use push-pull mode.
+> +
+> +Example:
+> +
+> +       i2c0: i2c@1100d000 {
+> +                       compatible = "mediatek,mt6577-i2c";
+> +                       reg = <0x1100d000 0x70>,
+> +                             <0x11000300 0x80>;
+> +                       interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-frequency = <400000>;
+> +                       mediatek,have-pmic;
+> +                       clock-div = <16>;
+> +                       clocks = <&i2c0_ck>, <&ap_dma_ck>;
+> +                       clock-names = "main", "dma";
+> +       };
+> +
+> --
+> 1.8.1.1.dirty
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-i2c" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
