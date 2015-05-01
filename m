@@ -1,67 +1,46 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: [PATCH v2 2/2] arm64: dts: mt8173: Fixup pinctrl nodes
-Date: Fri, 1 May 2015 14:49:31 +0800
-Message-ID: <1430462971-28195-2-git-send-email-yingjoe.chen@mediatek.com>
-References: <1430462971-28195-1-git-send-email-yingjoe.chen@mediatek.com>
+Subject: [PATCH 0/7] Add SMP bringup support for mt65xx socs
+Date: Fri, 1 May 2015 15:43:23 +0800
+Message-ID: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430462971-28195-1-git-send-email-yingjoe.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>
+To: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Russell King <linux@arm.linux.org.uk>, Daniel Lezcano <daniel.lezcano@linaro.org>, Jason Cooper <jason@lakedaemon.net>, Catalin Marinas <catalin.marinas@arm.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Marc Carino <marc.ceeeee@gmail.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-The 8173 pinctrl node doesn't follow dts convention. Fix them.
-Also add a comment to explain pinctrl register usage to make it
-more clear.
+This series add SMP brinup support for mediatek SoCs. This is based
+on v4.1-rc1.
 
-Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 22 +++++++++++++---------
- 1 file changed, 13 insertions(+), 9 deletions(-)
+There are 2 similar but different SMP bringup up methods on Mediatek
+mt65xx and mt81xx. On MT8135 & MT8127, system boots with a trustzone
+firmware. Others, like MT6589, doesn't have trustzone, and run kernel
+directly in secure world.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 924fdb6..4595196 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -106,14 +106,13 @@
- 		compatible = "simple-bus";
- 		ranges;
- 
--		syscfg_pctl_a: syscfg_pctl_a@10005000 {
--			compatible = "mediatek,mt8173-pctl-a-syscfg", "syscon";
--			reg = <0 0x10005000 0 0x1000>;
--		};
--
--		pio: pinctrl@0x10005000 {
-+		/*
-+		 * Pinctrl access register at 0x10005000 through regmap.
-+		 * Register 0x1000b000 is used by EINT.
-+		 */
-+		pio: pinctrl@10005000 {
- 			compatible = "mediatek,mt8173-pinctrl";
--			reg = <0 0x1000B000 0 0x1000>;
-+			reg = <0 0x1000b000 0 0x1000>;
- 			mediatek,pctl-regmap = <&syscfg_pctl_a>;
- 			pins-are-numbered;
- 			gpio-controller;
-@@ -121,8 +120,13 @@
- 			interrupt-controller;
- 			#interrupt-cells = <2>;
- 			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
--						<GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
--						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+				     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+		};
-+
-+		syscfg_pctl_a: syscfg_pctl_a@10005000 {
-+			compatible = "mediatek,mt8173-pctl-a-syscfg", "syscon";
-+			reg = <0 0x10005000 0 0x1000>;
- 		};
- 
- 		sysirq: intpol-controller@10200620 {
--- 
-1.8.1.1.dirty
+Patch 1~3 fix issues in mtk_timer(GPT) and enable arch timer support.
+Patch 4,5 add support for cpu enable-method "mediatek,mt65xx-smp" and
+"mediatek,mt81xx-tz-smp", which support Mediatek SMP bringup for non-TZ
+and TZ platform.
+Patch 6,7 finally enable SMP bringup for mt8135 and mt8127.
+
+Matthias Brugger (1):
+  arm: mediatek: enable gpt6 on boot up to make arch timer working
+
+Yingjoe Chen (6):
+  clocksource: mediatek: Don't run event_handler if it is NULL
+  clocksource: mediatek: Use GPT as sched clock source
+  devicetree: bindings: add new SMP enable method Mediatek SoC
+  ARM: mediatek: add smp bringup code
+  ARM: dts: mt8135: enable basic SMP bringup for mt8135
+  ARM: dts: mt8127: enable basic SMP bringup for mt8127
+
+ Documentation/devicetree/bindings/arm/cpus.txt |   2 +
+ arch/arm/boot/dts/mt8127.dtsi                  |  16 +++
+ arch/arm/boot/dts/mt8135.dtsi                  |  16 +++
+ arch/arm/mach-mediatek/Makefile                |   3 +
+ arch/arm/mach-mediatek/mediatek.c              |  29 +++++
+ arch/arm/mach-mediatek/platsmp.c               | 145 +++++++++++++++++++++++++
+ drivers/clocksource/mtk_timer.c                |  13 ++-
+ 7 files changed, 223 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/mach-mediatek/platsmp.c
