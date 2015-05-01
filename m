@@ -1,64 +1,184 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
- AFE driver
-Date: Thu, 30 Apr 2015 21:12:07 +0100
-Message-ID: <20150430201207.GK22845@sirena.org.uk>
-References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
- <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
- <20150418173407.GE26185@sirena.org.uk>
- <20150420043747.GH6325@pengutronix.de>
- <20150420204849.GJ14892@sirena.org.uk>
- <1429672640.14162.55.camel@mtksdaap41>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 6/6] dt-bindings: ARM: Mediatek: Document devicetree
+ bindings for clock/reset controllers
+Date: Thu, 30 Apr 2015 18:20:39 -0700
+Message-ID: <20150501012039.GG32407@codeaurora.org>
+References: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
+ <1429778143-2074-7-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Zc0AcwaKuEyWL+br"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1429672640.14162.55.camel@mtksdaap41>
+In-Reply-To: <1429778143-2074-7-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, YH Chen <yh.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On 04/23, Sascha Hauer wrote:
+> This adds the binding documentation for the apmixedsys, perisys and
+> infracfg controllers found on Mediatek SoCs.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 
---Zc0AcwaKuEyWL+br
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Please Cc devicetree reviewers on bindings (CCed now).
 
-On Wed, Apr 22, 2015 at 11:17:20AM +0800, Koro Chen wrote:
+> ---
+>  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  | 23 +++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,infracfg.txt    | 30 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,pericfg.txt     | 30 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,topckgen.txt    | 23 +++++++++++++++++
+>  4 files changed, 106 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> new file mode 100644
+> index 0000000..5af6d73
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> @@ -0,0 +1,23 @@
+> +Mediatek apmixedsys controller
+> +==============================
+> +
+> +The Mediatek apmixedsys controller provides the PLLs to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +	- "mediatek,mt8135-apmixedsys"
+> +	- "mediatek,mt8173-apmixedsys"
+> +- #clock-cells: Must be 1
+> +
+> +The apmixedsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +apmixedsys: apmixedsys@10209000 {
 
-> If using DPCM, it seems the most suitable FE DAIs will be memif, and
-> external interface like I2S should be BE DAIs. Do you think it is
-> suitable for our memif to be FE DAIs? Then which memif to used can be
-> described in a machine driver's FE DAIs. But I think this has a problem
-> that our memif is one-direction, playback or capture. So the binded pcm
-> device cannot have playback and capture capability together. May it
-> cause trouble for user space apps that assumes there will be pcmC0D0p,
-> pcmC0D0c?
+apmixedsys: clock-controller@10209000 {
 
-I think the only userspace application you really have to worry about
-here is PulseAudio which (at least with UCM) should be able to cope
-since it needs to handle things like USB microphones.  I think
-everything else I can think of can either cope or has to handle the same
-use cases as PulseAudio does so should have support.
+would be more standard. The same comment applies throughout this
+patch. Otherwise it looks good to me.
 
---Zc0AcwaKuEyWL+br
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+-Stephen
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+> +	compatible = "mediatek,mt8173-apmixedsys";
+> +	reg = <0 0x10209000 0 0x1000>;
+> +	#clock-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+> new file mode 100644
+> index 0000000..684da473
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
+> @@ -0,0 +1,30 @@
+> +Mediatek infracfg controller
+> +============================
+> +
+> +The Mediatek infracfg controller provides various clocks and reset
+> +outputs to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +	- "mediatek,mt8135-infracfg", "syscon"
+> +	- "mediatek,mt8173-infracfg", "syscon"
+> +- #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+> +
+> +The infracfg controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +Also it uses the common reset controller binding from
+> +Documentation/devicetree/bindings/reset/reset.txt.
+> +The available reset outputs are defined in
+> +dt-bindings/reset-controller/mt*-resets.h
+> +
+> +Example:
+> +
+> +infracfg: infracfg@10001000 {
+> +	compatible = "mediatek,mt8173-infracfg", "syscon";
+> +	reg = <0 0x10001000 0 0x1000>;
+> +	#clock-cells = <1>;
+> +	#reset-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+> new file mode 100644
+> index 0000000..fdb45c6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
+> @@ -0,0 +1,30 @@
+> +Mediatek pericfg controller
+> +===========================
+> +
+> +The Mediatek pericfg controller provides various clocks and reset
+> +outputs to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +	- "mediatek,mt8135-pericfg", "syscon"
+> +	- "mediatek,mt8173-pericfg", "syscon"
+> +- #clock-cells: Must be 1
+> +- #reset-cells: Must be 1
+> +
+> +The pericfg controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +Also it uses the common reset controller binding from
+> +Documentation/devicetree/bindings/reset/reset.txt.
+> +The available reset outputs are defined in
+> +dt-bindings/reset-controller/mt*-resets.h
+> +
+> +Example:
+> +
+> +pericfg: pericfg@10003000 {
+> +	compatible = "mediatek,mt8173-pericfg", "syscon";
+> +	reg = <0 0x10003000 0 0x1000>;
+> +	#clock-cells = <1>;
+> +	#reset-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+> new file mode 100644
+> index 0000000..a425248
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
+> @@ -0,0 +1,23 @@
+> +Mediatek topckgen controller
+> +============================
+> +
+> +The Mediatek topckgen controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +	- "mediatek,mt8135-topckgen"
+> +	- "mediatek,mt8173-topckgen"
+> +- #clock-cells: Must be 1
+> +
+> +The topckgen controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +topckgen: topckgen@10000000 {
+> +	compatible = "mediatek,mt8173-topckgen";
+> +	reg = <0 0x10000000 0 0x1000>;
+> +	#clock-cells = <1>;
+> +};
+> -- 
+> 2.1.4
+> 
 
-iQEcBAEBCAAGBQJVQoyWAAoJECTWi3JdVIfQ39IH/0AcULgyvIUMLo5A+Zi5EOD2
-8LdacMZp5UHIr7/EeNyssa6C3uzrFPxZ95YAbq1wCOtKYtEZbw9XYh2EzzocEvRk
-C+RyzqX1yNs8IxkPsTFRQU7Upo+W3Q1SzjaVcTnJBYlrB5tAsYGuODhW51LQZZgf
-M9BH9hQ0sBKm6SJkshpE7i3D/AJDHSSW54ntIJIV+7PkLJYZ3LIEQAGPOzQZoYNj
-2BCtSg0LzuZKLzbBEbjgMKIgyzdtFsbXsr7mBpjsQuNpgR6+YjXYimWWhVJTqQdx
-qm713NAaJA0bYH1cE55JJ1j0KAwUA58a1lGRZYuiVgBSP77wylnvsdPsi5hNQR0=
-=go0X
------END PGP SIGNATURE-----
-
---Zc0AcwaKuEyWL+br--
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
