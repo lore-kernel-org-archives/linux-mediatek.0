@@ -1,34 +1,71 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH][V2] pinctrl: mediatek: mtk-common: initialize unmask
-Date: Mon, 4 May 2015 15:20:47 +0200
-Message-ID: <CACRpkdY8CX2aErL8jSGYwZrBn45QQo7jeND3xwMNm9g7Lh-UMg@mail.gmail.com>
-References: <1429545557-3404-1-git-send-email-colin.king@canonical.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 6/7] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Mon, 4 May 2015 16:31:05 +0200
+Message-ID: <20150504143105.GK4946@pengutronix.de>
+References: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
+ <1430466210-22963-7-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1429545557-3404-1-git-send-email-colin.king@canonical.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1430466210-22963-7-git-send-email-yingjoe.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Russell King <linux@arm.linux.org.uk>, Jason Cooper <jason@lakedaemon.net>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Marc Carino <marc.ceeeee@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 20, 2015 at 5:59 PM, Colin King <colin.king@canonical.com> wrote:
+On Fri, May 01, 2015 at 03:43:29PM +0800, Yingjoe Chen wrote:
+> Add arch timer node to enable arch-timer support. MT8135 firmware
+> doesn't correctly setup arch-timer frequency and CNTVOFF, add
+> properties to workaround this.
+> 
+> This also set cpu enable-method to enable SMP.
+> 
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt8135.dtsi | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+> index 612bd22..eb5e06f 100644
+> --- a/arch/arm/boot/dts/mt8135.dtsi
+> +++ b/arch/arm/boot/dts/mt8135.dtsi
+> @@ -46,6 +46,7 @@
+>  	cpus {
+>  		#address-cells = <1>;
+>  		#size-cells = <0>;
+> +		enable-method = "mediatek,mt81xx-tz-smp";
+>  
+>  		cpu0: cpu@0 {
+>  			device_type = "cpu";
+> @@ -103,6 +104,21 @@
+>  		};
+>  	};
+>  
+> +	timer {
+> +		compatible = "arm,armv7-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
+> +					  IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
+> +					  IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
+> +					  IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
+> +					  IRQ_TYPE_LEVEL_LOW)>;
+> +		clock-frequency = <13000000>;
+> +		arm,cpu-registers-not-fw-configured;
+> +	};
 
-> From: Colin Ian King <colin.king@canonical.com>
->
-> cppcheck detected an uninitialized variable:
->
-> [drivers/pinctrl/mediatek/pinctrl-mtk-common.c:897]:
->   (error) Uninitialized variable: unmask
->
-> unmask should be initialized to zero to ensure unmasking
-> only occurs if a previous mask occurred. The current situation
-> is that the unmask variable could contain any random garbage
-> causing random unexpected unmasking.
->
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+This is the SoC dtsi file. What you say here is that all MT8135
+present and future firmwares on all boards do this wrong.
+Shouldn't you fix the firmware instead? Shouldn't this property be board
+specific?
 
-Patch applied for fixes.
+Sascha
 
-Yours,
-Linus Walleij
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
