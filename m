@@ -1,46 +1,66 @@
-From: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC PATCH 1/3] ASoC: mediatek: Add binding support for
- AFE driver
-Date: Mon, 4 May 2015 09:57:19 +0800
-Message-ID: <1430704639.4497.6.camel@mtksdaap41>
-References: <1428653649-38200-1-git-send-email-koro.chen@mediatek.com>
-	 <1428653649-38200-2-git-send-email-koro.chen@mediatek.com>
-	 <20150418173407.GE26185@sirena.org.uk>
-	 <20150420043747.GH6325@pengutronix.de>
-	 <20150420204849.GJ14892@sirena.org.uk>
-	 <1429672640.14162.55.camel@mtksdaap41>
-	 <20150430201207.GK22845@sirena.org.uk>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 6/7] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Mon, 4 May 2015 09:08:24 +0200
+Message-ID: <CABuKBeLXjKYXyPTtR=C887PKfiF-a5dB306zoZsya4s0ir_DVQ@mail.gmail.com>
+References: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
+	<1430466210-22963-7-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=ISO-8859-1
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150430201207.GK22845-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+In-Reply-To: <1430466210-22963-7-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Marc Carino <marc.ceeeee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-04-30 at 21:12 +0100, Mark Brown wrote:
-> On Wed, Apr 22, 2015 at 11:17:20AM +0800, Koro Chen wrote:
-> 
-> > If using DPCM, it seems the most suitable FE DAIs will be memif, and
-> > external interface like I2S should be BE DAIs. Do you think it is
-> > suitable for our memif to be FE DAIs? Then which memif to used can be
-> > described in a machine driver's FE DAIs. But I think this has a problem
-> > that our memif is one-direction, playback or capture. So the binded pcm
-> > device cannot have playback and capture capability together. May it
-> > cause trouble for user space apps that assumes there will be pcmC0D0p,
-> > pcmC0D0c?
-> 
-> I think the only userspace application you really have to worry about
-> here is PulseAudio which (at least with UCM) should be able to cope
-> since it needs to handle things like USB microphones.  I think
-> everything else I can think of can either cope or has to handle the same
-> use cases as PulseAudio does so should have support.
-Thank you very much for the feedback, I will try DPCM.
-  
+2015-05-01 9:43 GMT+02:00 Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+> Add arch timer node to enable arch-timer support. MT8135 firmware
+> doesn't correctly setup arch-timer frequency and CNTVOFF, add
+> properties to workaround this.
+>
+> This also set cpu enable-method to enable SMP.
+>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt8135.dtsi | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+> index 612bd22..eb5e06f 100644
+> --- a/arch/arm/boot/dts/mt8135.dtsi
+> +++ b/arch/arm/boot/dts/mt8135.dtsi
+> @@ -46,6 +46,7 @@
+>         cpus {
+>                 #address-cells = <1>;
+>                 #size-cells = <0>;
+> +               enable-method = "mediatek,mt81xx-tz-smp";
+>
+>                 cpu0: cpu@0 {
+>                         device_type = "cpu";
+> @@ -103,6 +104,21 @@
+>                 };
+>         };
+>
+> +       timer {
+> +               compatible = "arm,armv7-timer";
+> +               interrupt-parent = <&gic>;
+> +               interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
+> +                                         IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
+> +                                         IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
+> +                                         IRQ_TYPE_LEVEL_LOW)>,
+> +                            <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
+> +                                         IRQ_TYPE_LEVEL_LOW)>;
+> +               clock-frequency = <13000000>;
+> +               arm,cpu-registers-not-fw-configured;
+> +       };
+> +
 
+This does not apply cleanly on v4.1-rc1, please rebase.
 
+Thanks,
+Matthias
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
