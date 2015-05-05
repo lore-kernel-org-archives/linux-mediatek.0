@@ -1,222 +1,129 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 3/7] mmc: mediatek: Add PM support for MMC driver
-Date: Tue, 5 May 2015 14:57:14 +0200
-Message-ID: <CAPDyKFpC5XKOykCBp_JgcP7UAWoS-m5uFvb+QhqrNBwkZNJ6Ow@mail.gmail.com>
-References: <1430214525-19198-1-git-send-email-chaotian.jing@mediatek.com>
-	<1430214525-19198-4-git-send-email-chaotian.jing@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 3/4] tty: serial: 8250_mtk: use pm_runtime callbacks for
+ enabling
+Date: Tue, 5 May 2015 17:29:21 +0200
+Message-ID: <CABuKBeJ8v9LzL0XXoC66N9kh-xv==0paBZGyPG6f4Nn-_ya6vQ@mail.gmail.com>
+References: <1430117397-13517-1-git-send-email-s.hauer@pengutronix.de>
+ <1430117397-13517-4-git-send-email-s.hauer@pengutronix.de>
+ <CABuKBeJwduxLuyXcy7Ho+k+_Ye3+nHiGvdr8vTFsJzdHDBQPSA@mail.gmail.com>
+ <20150504120651.GR6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1430214525-19198-4-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150504120651.GR6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Alan Cox <alan-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 28 April 2015 at 11:48, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> Add PM support for Mediatek MMC driver
+2015-05-04 14:06 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+> On Mon, May 04, 2015 at 01:05:27PM +0200, Matthias Brugger wrote:
+>> 2015-04-27 8:49 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+>> > The pm_runtime callbacks already enable and disable the device.
+>> > Use them in probe() and remove() instead of duplicating the
+>> > code. This allows us to concentrate more code for enabling/disabling
+>> > the UART in a single place.
+>> >
+>> > Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>> > ---
+>> >  drivers/tty/serial/8250/8250_mtk.c | 69 ++++++++++++++++++++------------------
+>> >  1 file changed, 36 insertions(+), 33 deletions(-)
+>> >
+>> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+>> > index bcfaa8dc..2f28bd0 100644
+>> > --- a/drivers/tty/serial/8250/8250_mtk.c
+>> > +++ b/drivers/tty/serial/8250/8250_mtk.c
+>> > @@ -115,6 +115,29 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
+>> >                 tty_termios_encode_baud_rate(termios, baud, baud);
+>> >  }
+>> >
+>> > +static int mtk8250_runtime_suspend(struct device *dev)
+>> > +{
+>> > +       struct mtk8250_data *data = dev_get_drvdata(dev);
+>> > +
+>> > +       clk_disable_unprepare(data->uart_clk);
+>> > +
+>> > +       return 0;
+>> > +}
+>> > +
+>> > +static int mtk8250_runtime_resume(struct device *dev)
+>> > +{
+>> > +       struct mtk8250_data *data = dev_get_drvdata(dev);
+>> > +       int err;
+>> > +
+>> > +       err = clk_prepare_enable(data->uart_clk);
+>> > +       if (err) {
+>> > +               dev_warn(dev, "Can't enable clock\n");
+>> > +               return err;
+>> > +       }
+>> > +
+>> > +       return 0;
+>> > +}
+>> > +
+>> >  static void
+>> >  mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
+>> >  {
+>> > @@ -130,19 +153,12 @@ mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
+>> >  static int mtk8250_probe_of(struct platform_device *pdev, struct uart_port *p,
+>> >                            struct mtk8250_data *data)
+>> >  {
+>> > -       int err;
+>> > -
+>> >         data->uart_clk = devm_clk_get(&pdev->dev, NULL);
+>> >         if (IS_ERR(data->uart_clk)) {
+>> >                 dev_warn(&pdev->dev, "Can't get uart clock\n");
+>> >                 return PTR_ERR(data->uart_clk);
+>> >         }
+>> >
+>> > -       err = clk_prepare_enable(data->uart_clk);
+>> > -       if (err) {
+>> > -               dev_warn(&pdev->dev, "Can't prepare clock\n");
+>> > -               return err;
+>> > -       }
+>> >         p->uartclk = clk_get_rate(data->uart_clk);
+>> >
+>> >         return 0;
+>> > @@ -193,14 +209,18 @@ static int mtk8250_probe(struct platform_device *pdev)
+>> >         writel(0x0, uart.port.membase +
+>> >                         (MTK_UART_RATE_FIX << uart.port.regshift));
+>> >
+>> > -       data->line = serial8250_register_8250_port(&uart);
+>> > -       if (data->line < 0)
+>> > -               return data->line;
+>> > -
+>> >         platform_set_drvdata(pdev, data);
+>> >
+>> > -       pm_runtime_set_active(&pdev->dev);
+>> >         pm_runtime_enable(&pdev->dev);
+>> > +       if (!pm_runtime_enabled(&pdev->dev)) {
+>> > +               err = mtk8250_runtime_resume(&pdev->dev);
+>> > +               if (err)
+>> > +                       return err;
+>> > +       }
+>> > +
+>> > +       data->line = serial8250_register_8250_port(&uart);
+>> > +       if (data->line < 0)
+>> > +               return data->line;
+>>
+>> Why do you delete pm_runtime_set_active here?
 >
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 58 +++++++++++++++++++++++++++++++++++++++++++----
->  1 file changed, 53 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 30e688d..79177d9 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -22,6 +22,7 @@
->  #include <linux/of_gpio.h>
->  #include <linux/pinctrl/consumer.h>
->  #include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
->  #include <linux/regulator/consumer.h>
->  #include <linux/spinlock.h>
->
-> @@ -215,6 +216,7 @@
->  #define MSDC_ASYNC_FLAG (0x1 << 1)
->  #define MSDC_MMAP_FLAG (0x1 << 2)
->
-> +#define MTK_MMC_AUTOSUSPEND_DELAY      500
+> pm_runtime_set_active() communicates the initial state of the device to
+> the pm core. Previously the driver activated the device manually by
+> directly calling clk_prepare_enable(). Since this manual enabling of
+> the clock is removed in this patch, the device is no longer active,
+> hence pm_runtime_set_active() has to be removed.
 
-Most other mmc host drivers use 50ms, any reason to why this driver
-wants a different value?
+Sounds resonable.
+Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
->  #define CMD_TIMEOUT         (HZ/10 * 5)        /* 100ms x5 */
->  #define DAT_TIMEOUT         (HZ    * 5)        /* 1000ms x5 */
->
-> @@ -706,6 +708,9 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
->         if (mrq->data)
->                 msdc_unprepare_data(host, mrq);
->         mmc_request_done(host->mmc, mrq);
-> +
-> +       pm_runtime_mark_last_busy(host->dev);
-> +       pm_runtime_put_autosuspend(host->dev);
->  }
->
->  /* returns true if command is fully handled; returns false otherwise */
-> @@ -862,6 +867,8 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
->                 WARN_ON(host->mrq);
->         spin_unlock_irqrestore(&host->lock, flags);
->
-> +       pm_runtime_get_sync(host->dev);
-> +
->         if (mrq->data)
->                 msdc_prepare_data(host, mrq);
->
-> @@ -999,7 +1006,6 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
->         int ret = 0;
->
->         if (!IS_ERR(mmc->supply.vqmmc)) {
-> -
-
-White space.
-
->                 if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_330) {
->                         min_uv = 3300000;
->                         max_uv = 3300000;
-> @@ -1018,7 +1024,6 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
->                                         ret, min_uv, max_uv);
->                 }
->         }
-> -
-
-White space.
-
->         return ret;
->  }
->
-> @@ -1176,8 +1181,10 @@ static void msdc_ops_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
->         int ret;
->         u32 ddr = 0;
->
-> +       pm_runtime_get_sync(host->dev);
-> +
->         if (ios->timing == MMC_TIMING_UHS_DDR50 ||
-> -               ios->timing == MMC_TIMING_MMC_DDR52)
-> +                       ios->timing == MMC_TIMING_MMC_DDR52)
-
-White space.
-
->                 ddr = 1;
->
->         msdc_set_buswidth(host, ios->bus_width);
-> @@ -1191,7 +1198,7 @@ static void msdc_ops_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
->                                         ios->vdd);
->                         if (ret) {
->                                 dev_err(host->dev, "Failed to set vmmc power!\n");
-> -                               return;
-> +                               goto end;
->                         }
->                 }
->                 break;
-> @@ -1227,6 +1234,10 @@ static void msdc_ops_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
->
->         if (host->mclk != ios->clock || host->ddr != ddr)
->                 msdc_set_mclk(host, ddr, ios->clock);
-> +
-> +end:
-> +       pm_runtime_mark_last_busy(host->dev);
-> +       pm_runtime_put_autosuspend(host->dev);
->  }
->
->  static struct mmc_host_ops mt_msdc_ops = {
-> @@ -1350,12 +1361,19 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         if (ret)
->                 goto release;
->
-> +       pm_runtime_set_active(host->dev);
-> +       pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
-> +       pm_runtime_use_autosuspend(host->dev);
-> +       pm_runtime_enable(host->dev);
->         ret = mmc_add_host(mmc);
-> +
->         if (ret)
-> -               goto release;
-> +               goto end;
->
->         return 0;
->
-> +end:
-> +       pm_runtime_disable(host->dev);
->  release:
->         platform_set_drvdata(pdev, NULL);
->         msdc_deinit_hw(host);
-> @@ -1368,6 +1386,7 @@ release_mem:
->                 dma_free_coherent(&pdev->dev,
->                         MAX_BD_NUM * sizeof(struct mt_bdma_desc),
->                         host->dma.bd, host->dma.bd_addr);
-> +
-
-White space.
-
->  host_free:
->         mmc_free_host(mmc);
->
-> @@ -1382,10 +1401,14 @@ static int msdc_drv_remove(struct platform_device *pdev)
->         mmc = platform_get_drvdata(pdev);
->         host = mmc_priv(mmc);
->
-> +       pm_runtime_get_sync(host->dev);
-> +
->         platform_set_drvdata(pdev, NULL);
->         mmc_remove_host(host->mmc);
->         msdc_deinit_hw(host);
->
-> +       pm_runtime_disable(host->dev);
-> +       pm_runtime_put_noidle(host->dev);
->         dma_free_coherent(&pdev->dev,
->                         sizeof(struct mt_gpdma_desc),
->                         host->dma.gpd, host->dma.gpd_addr);
-> @@ -1397,6 +1420,30 @@ static int msdc_drv_remove(struct platform_device *pdev)
->         return 0;
->  }
->
-> +#ifdef CONFIG_PM
-> +static int msdc_runtime_suspend(struct device *dev)
-> +{
-> +       struct mmc_host *mmc = dev_get_drvdata(dev);
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       msdc_gate_clock(host);
-
-According to comments to patch2, I would think we should be able to
-handle both the "hclk" and the "source" clock from the runtime PM
-callbacks. Let's see.
-
-It should anyway not affect this patch that much. Overall it looks good!
-
-> +       return 0;
-> +}
-> +
-> +static int msdc_runtime_resume(struct device *dev)
-> +{
-> +       struct mmc_host *mmc = dev_get_drvdata(dev);
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       msdc_ungate_clock(host);
-> +       return 0;
-> +}
-> +#endif
-> +
-> +static const struct dev_pm_ops msdc_dev_pm_ops = {
-> +       SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
-> +};
-> +
->  static const struct of_device_id msdc_of_ids[] = {
->         {   .compatible = "mediatek,mt8135-mmc", },
->         {}
-> @@ -1408,6 +1455,7 @@ static struct platform_driver mt_msdc_driver = {
->         .driver = {
->                 .name = "mtk-msdc",
->                 .of_match_table = msdc_of_ids,
-> +               .pm = &msdc_dev_pm_ops,
->         },
->  };
->
-> --
-> 1.8.1.1.dirty
->
-
-Kind regards
-Uffe
+-- 
+motzblog.wordpress.com
