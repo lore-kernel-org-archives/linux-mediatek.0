@@ -1,50 +1,49 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [RFC PATCH] iommu: add ARM short descriptor page table allocator.
-Date: Tue, 5 May 2015 18:05:41 +0100
-Message-ID: <20150505170541.GN1550@arm.com>
-References: <1430206881-18294-1-git-send-email-yong.wu@mediatek.com>
-	<20150505161802.GA20611@8bytes.org>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [rtc-linux] [PATCH v3 2/3] rtc: mediatek: Add MT6397 RTC driver
+Date: Tue, 5 May 2015 22:00:10 +0200
+Message-ID: <20150505200010.GP4276@piout.net>
+References: <1430206556-18254-1-git-send-email-eddie.huang@mediatek.com>
+ <1430206556-18254-3-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150505161802.GA20611-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+In-Reply-To: <1430206556-18254-3-git-send-email-eddie.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Tomasz Figa <tfiga@google.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <kernel@pengutronix.de>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Greg KH <gregkh@linuxfoundation.org>, Joe Perches <joe@perches.com>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Tianping Fang <tianping.fang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 05, 2015 at 05:18:02PM +0100, Joerg Roedel wrote:
-> On Tue, Apr 28, 2015 at 03:41:21PM +0800, Yong Wu wrote:
-> > This patch is for ARM Short Descriptor Format.It has 2-levels
-> > pagetable and the allocator supports 4K/64K/1M/16M.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/iommu/Kconfig                |   7 +
-> >  drivers/iommu/Makefile               |   1 +
-> >  drivers/iommu/io-pgtable-arm-short.c | 489 +++++++++++++++++++++++++++++++++++
-> >  drivers/iommu/io-pgtable.c           |   4 +
-> >  drivers/iommu/io-pgtable.h           |   6 +
-> >  5 files changed, 507 insertions(+)
-> >  create mode 100644 drivers/iommu/io-pgtable-arm-short.c
-> 
-> What is the context of this, where will it be used?
+Hi,
 
-I think the MT8173 IOMMU [1] uses this format and, since it's part of
-the ARM architecture, the ARM SMMU can make use of it too if the
-implementation supports it.
+This looks mostly good. Could you align the wrapped function parameters
+to the open parenthesis (use checkpatch --strict)?
 
-Will
+On 28/04/2015 at 15:35:55 +0800, Eddie Huang wrote :
+> +static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+> +{
+> +	unsigned long timeout = jiffies + HZ;
+> +	int ret;
+> +	u32 data;
+> +
+> +	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	do {
+> +		cpu_relax();
+> +		ret = regmap_read(rtc->regmap, rtc->addr_base + RTC_BBPU,
+> +				&data);
+> +		if (ret < 0)
+> +			goto exit;
+> +	} while ((data & RTC_BBPU_CBUSY) && time_after(timeout, jiffies));
+> +
 
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2015-March/000058.html
+Shouldn't you return -ETIMEDOUT if the loop breaks because of time_after?
+
+Thanks,
+
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
