@@ -1,50 +1,47 @@
 From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [rtc-linux] [PATCH v3 2/3] rtc: mediatek: Add MT6397 RTC driver
-Date: Wed, 6 May 2015 11:32:31 +0800
-Message-ID: <1430883151.28521.1.camel@mtksdaap41>
+Subject: Re: [rtc-linux] [PATCH v3 3/3] MAINTAINERS: add Mediatek RTC driver
+Date: Wed, 6 May 2015 11:36:47 +0800
+Message-ID: <1430883407.28521.4.camel@mtksdaap41>
 References: <1430206556-18254-1-git-send-email-eddie.huang@mediatek.com>
-	 <1430206556-18254-3-git-send-email-eddie.huang@mediatek.com>
-	 <20150505200010.GP4276@piout.net> <1430858661.9365.20.camel@perches.com>
-	 <20150505210131.GR4276@piout.net>
+	 <1430206556-18254-4-git-send-email-eddie.huang@mediatek.com>
+	 <20150505200352.GQ4276@piout.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150505210131.GR4276@piout.net>
+In-Reply-To: <20150505200352.GQ4276@piout.net>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: Joe Perches <joe@perches.com>, Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Tomasz Figa <tfiga@google.com>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <kernel@pengutronix.de>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Tianping Fang <tianping.fang@mediatek.com>
+Cc: Alessandro Zummo <a.zummo@towertech.it>, Samuel Ortiz <sameo@linux.intel.com>, srv_heupstream@mediatek.com, rtc-linux@googlegroups.com, Greg KH <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@google.com>, linux-mediatek@lists.infradead.org, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Joe and Alexandre,
+Hi Alexandre,
 
-On Tue, 2015-05-05 at 23:01 +0200, Alexandre Belloni wrote:
-> On 05/05/2015 at 13:44:21 -0700, Joe Perches wrote :
-> > I suggest moving the time_after() test into the loop,
-> > use break; and remove the exit label too.
-> > 
-> > Maybe something like:
-> > 
-> > 	while (1) {
-> > 		ret = regmap_read(rtc->regmap, rtc->addr_base + RTC_BBPU,
-> > 				  &data);
-> > 		if (ret < 0)
-> > 			break;
-> > 		if (!(data & RTC_BBPU_CBUSY))
-> > 			break;
-> > 		if (time_after(jiffies, timeout)) {
-> > 			ret = -ETIMEDOUT;
-> > 			break;
-> > 		}
-> > 		cpu_relax();
-> > 	}
-> > 
-> > 	return ret;
+On Tue, 2015-05-05 at 22:03 +0200, Alexandre Belloni wrote:
+> Hi,
 > 
-> That certainly looks more readable.
+> On 28/04/2015 at 15:35:56 +0800, Eddie Huang wrote :
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 2e5bbc0..eb80610 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -1223,6 +1223,13 @@ W:	http://www.digriz.org.uk/ts78xx/kernel
+> >  S:	Maintained
+> >  F:	arch/arm/mach-orion5x/ts78xx-*
+> >  
+> > +ARM/Mediatek RTC DRIVER
+> > +M:	Eddie Huang <eddie.huang@mediatek.com>
+> > +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+> > +L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+> > +S:	Maintained
+> > +F:	drivers/rtc/rtc-mt*
 > 
-
-Thanks correct me that I put wrong paramters in time_after, and give me
-good example. I will adopt your suggestion in next round.
+> I feel like this is a bit broad. Unless you want to really maintain
+> rtc-mt* which I guess may not be only Mediatek in the future, I would
+> use the full filename here. You will probably remember to update it if
+> you add more, that may not be the case for other developers.
+> 
+Yes, you are right, the rtc-mt* is too broad, use full filename is a
+better choice right now.
 
 Eddie
