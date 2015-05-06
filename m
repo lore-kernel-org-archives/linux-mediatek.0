@@ -1,85 +1,64 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/7] Add SMP bringup support for mt65xx socs
-Date: Wed, 6 May 2015 13:04:03 +0200
-Message-ID: <CABuKBeKLtgs56PDO3tEftWNv58-RwtDR2cyxzs4FLX1AFZSKbg@mail.gmail.com>
-References: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
-	<CABuKBeJ406DUFoVs2p3-u6sW58Dm7XDd6uxCc==Mkq3dMhhd5Q@mail.gmail.com>
-	<1430896766.15346.13.camel@mtksdaap41>
-	<1430899182.4930.2.camel@mtksdaap41>
-	<CABuKBeLT8-sjPY6ZQXacMZZ_3iKX-g82AB0gPhsi7VW=WdjTTw@mail.gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 2/7] mmc: mediatek: Add Mediatek MMC driver
+Date: Wed, 6 May 2015 18:31:07 +0200
+Message-ID: <CAPDyKFr+FTXAzYVn3F41dmw2zW01pSbSHPfGJHXbUFLJfvQ5CA@mail.gmail.com>
+References: <1430214525-19198-1-git-send-email-chaotian.jing@mediatek.com>
+	<1430214525-19198-3-git-send-email-chaotian.jing@mediatek.com>
+	<CAPDyKFq=R9B6ZHHgmDcSg-TNSfqQKAUKc2NjACvpwxFpmk954g@mail.gmail.com>
+	<1430895299.15154.9.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABuKBeLT8-sjPY6ZQXacMZZ_3iKX-g82AB0gPhsi7VW=WdjTTw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Marc Carino <marc.ceeeee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1430895299.15154.9.camel@mhfsdcap03>
+Sender: linux-gpio-owner@vger.kernel.org
+To: "chaotian.jing" <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Joe,
-
-2015-05-06 10:29 GMT+02:00 Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
-> 2015-05-06 9:59 GMT+02:00 Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
->> On Wed, 2015-05-06 at 15:19 +0800, Yingjoe Chen wrote:
->>> Hi Matthias,
->> <...>
->>> > I tried on the mt8135 eval board but it fails to bring up the CPU.
->>> >
->>> > When booting:
->>> > [    1.048588] CPU1: failed to come online
->>> > [    2.049914] CPU2: failed to come online
->>> > [    3.051245] CPU3: failed to come online
->>>
->>>
->>> Thanks for testing, and the config file you provided.
->>> It seems you are running THUMB2 kernel, unfortunately mt8135 trustzone
->>> firmware doesn't support jump to THUMB2 code directly.
->>>
->>> I can workaround this with the following patch. I'll include it in my
->>> next round.
->>>
->>> Joe.C
->>>
->>> -----8<----------------
->>> diff --git a/arch/arm/mach-mediatek/platsmp.c
->>> b/arch/arm/mach-mediatek/platsmp.c
->>> index e266b3d..5dea55a 100644
->>> --- a/arch/arm/mach-mediatek/platsmp.c
->>> +++ b/arch/arm/mach-mediatek/platsmp.c
->>> @@ -57,6 +57,18 @@ static const struct of_device_id mtk_smp_boot_infos[]
->>> __initconst = {
->>>  static void __iomem *mtk_smp_base;
->>>  static const struct mtk_smp_boot_info *mtk_smp_info;
->>>
->>> +#ifdef CONFIG_THUMB2_KERNEL
->>> +__asm__(
->>> +     ".arm\n"
->>> +     "mtk_secondary_startup_fixup:\n"
->>> +     "       b secondary_startup\n"
->>> +     ".thumb\n"
->>> +);
->>> +
->>> +void mtk_secondary_startup_fixup(void);
->>> +#define secondary_startup mtk_secondary_startup_fixup
->>> +#endif
->>
->>
->> Replying myself.
->>
->> It seems kernel already have secondary_startup_arm which support this
->> usage. I'll use that in my next version instead.
+On 6 May 2015 at 08:54, chaotian.jing <chaotian.jing@mediatek.com> wrote:
+> Dear Ulf,
 >
-> With this I was able to get the board up and running. I will try mt6589 ASAP.
+> Thanks for your review.
+> I must do a explain of our MMC host:
+> Source clock is source clock of the MMC bus, MMC host has a divider to
+> get different bus clock frequency. now the runtime suspend is gating
+> this clock.
+>
+> Hclk is the power domain of the MMC host, if Hclk is gated, the MMC host
+> cannot work(all registers readout is zero). and, all registers would be
+> reset to default value if Hclk is gated/ungated.
+> At MT8173, MSDC0 and MSDC2 has independent Hclk, MSDC1 and MSDC3's Hclk
+> was controlled by "Infra module".
 
-I just realized, that your aforementioned patch for the THUMB2 kernel
-breaks SMP on mt6589. Strangely without this patch it works fine.
+Thanks for clarifying!
 
-Regrads,
-Matthias
+I don't have enough knowledge about your SoC to understand the detail,
+but it seems like we are mixing clocks and power domains. I would
+rather keep this separate - if the HW allows it.
 
--- 
-motzblog.wordpress.com
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I guess the key question I have is the following:
+1) Is it hardware wise possible to gate the hclk, but without gating
+the power domain?
+2) At what level is the reference counting done for each device in the
+power domain? In HW or in sofftware?
+
+>
+> And, our MMC host has ability to control the gate/ungate of bus clock
+> automatically, in MSDC_CFG bit 1, if this bit is set to 0, then "bus
+> clock is gated to 0 if no command or data is transmitted".
+> So, if the runtime PM do not control the Source clock, Hclk, then the
+> runtime PM is needless.
+>
+> if runtime PM do gate/ungate Hclk, then need do save/restore the
+> registers meanwhile.
+
+Yes agree, that's a common thing to deal with from runtime PM callbacks.
+
+>
+> So, how about your suggestion ?
+> do we still need runtime PM ?
+
+Yes, I definitely think you need it!
+
+Kind regards
+Uffe
