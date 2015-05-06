@@ -1,60 +1,41 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 0/3] Add Mediatek SoC RTC driver
-Date: Wed, 6 May 2015 15:23:39 +0800
-Message-ID: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: [PATCH v4 3/3] MAINTAINERS: add Mediatek RTC driver
+Date: Wed, 6 May 2015 15:23:42 +0800
+Message-ID: <1430897022-63357-4-git-send-email-eddie.huang@mediatek.com>
+References: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: Samuel Ortiz <sameo-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, Greg KH <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tejun Heo <tj-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, "David S.
- Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Cc: srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Greg KH <gregkh@linuxfoundation.org>, "David S. Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Joe Perches <joe@perches.com>, Tejun Heo <tj@kernel.org>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Tomasz Figa <tfiga@google.com>, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-UlRDIGlzIG9uZSBzdWJtb2R1bGUgb2YgTWVkaWF0ZWsgTVQ2Mzk3IFBNSUMgY2hpcFsxXS4gVGhp
-cyBzZXJpZXMKc3VwcG9ydCBSVEMgZHJpdmVyIHRoYXQgd29yayB3aXRoIE1lZGlhdGVrIFNvQyBs
-aWtlIE1UODEzNSwgTVQ4MTczLgpJdCBpbXBsZW1lbnRzIHNlY29uZCBjb3VudGVyIGFuZCBhbHNv
-IHByb3ZpZGUgYWxhcm0gZnVuY3Rpb24uCgpUaGlzIHNlcmllcyBiYXNlIG9uIDQuMS1yYzEsIFRl
-c3Qgb2sgb24gTVQ4MTczIHBsYXRmb3JtLgoKWzFdIGh0dHBzOi8vbGttbC5vcmcvbGttbC8yMDE1
-LzEvMjMvMzI1CgpDaGFuZ2UgaW4gdjQ6CjEuIEFsaWduIG10NjM5Ny1jb3JlLmMgcmVzb3VyY2Ug
-aW4gc3RyYWlnaHQgbGluZXMuCjIuIE1vZGlmeSBtdGtfcnRjX3dyaXRlX3RyaWdnZXIgYWNjb3Jk
-aW5nIEpvZSBQZXJjaGVzIGFuZAogICBBbGV4YW5kcmUgQmVsbG9uaSBzdWdnZXN0aW9uLgozLiBB
-bGlnbiBmdW5jdGlvbiBwYXJhbWV0ZXJzIHRvIHRoZSBvcGVuIHBhcmVudGhlc2lzLgo0LiBNb2Rp
-ZnkgTUFJTlRBSU5FUiB0byB1c2UgZmlsZSBmdWxsIG5hbWUuCgpDaGFuZ2UgaW4gdjM6CjEuIFJl
-cGxhY2UgbWFnaWMgbnVtYmVyIGluIG10NjM5Ny1jb3JlLmMKMi4gQWRkIGNvbW1lbnQgZm9yIHNv
-bWUgZXF1YXRpb24gYW5kIHdyaXRlIHRyaWdnZXIuCjMuIFVzZSByZWdtYXBfYnVsa19yZWFkIGFu
-ZCByZWdtYXBfYnVsa193cml0ZSB0byBhdm9pZCBtdWxpcGxlIHJlZ21hcF9yZWFkCiAgIGFuZCBy
-ZWdtYXBfd3JpdGUKNC4gUmVwbGFjZSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxIHdpdGggcmVx
-dWVzdF90aHJlYWRlZF9pcnEgYW5kIGFkZAogICBpcnFfZGlzcG9zZV9tYXBwaW5nCjUuIEZpeCBU
-b21hc3ogRmlnYSByZXZpZXcgY29tbWVudC4KCkNoYW5nZSBpbiB2MjoKMS4gTW92ZSBSVEMgYWRk
-cmVzcyBhbmQgaW50ZXJydXB0IHRvIG10NjM5Ny1jb3JlLmMsIGFuZCByZWdpc3RlcgogICB0aGVz
-ZSByZXNvdXJjZSBpbiBtZmRfY2VsbC4KICAgaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvcGlw
-ZXJtYWlsL2xpbnV4LWFybS1rZXJuZWwvMjAxNS1GZWJydWFyeS8zMjMyMzkuaHRtbAoyLiBSZW1v
-dmUgZHQtYmluZGluZyBkb2N1bWVudCBkdWUgdG8gcmVnaXN0ZXIgcmVzb3VjZSBpbiBtZmRfY2Vs
-bCwgbm90IGZyb20KICAgZGV2aWNlIHRyZWUuCjMuIFVwZGF0ZSBNQUlOVEFJTkVSIGZpbGUgdG8g
-YWRkIE1lZGlhdGVrIFJUQyBtYWluYWludGVyLgo0LiBBZGQgcHJlZml4IG10a18gdG8gc29tZSBp
-bnRlcm5hbCBmdW5jdGlvbnMuCjUuIEZpeCByYWN5IGNvbmRpdGlvbgo2LiBDaGVjayByZXR1cm4g
-dmFsdWUgb2YgcmVnbWFwX3JlYWQgYW5kIHJlZ21hcF93cml0ZQo3LiBSZW1vdmUgc29tZSB1bm5l
-Y2Vzc2FyeSByZWdpc3RlciByZWFkYmFjaywgY2xlYXIsIHRoZW4gd3JpdGUuCjguIEFkZCBkaXNh
-YmxlIGFsYXJtIGluIG10a19ydGNfc2V0X2FsYXJtIGZ1bmN0aW9uCjkuIEZpeCBVd2UgS2xlaW5l
-LUvDtm5pZyByZXZpZXcgY29tbWVudAoKRWRkaWUgSHVhbmcgKDIpOgogIG1mZDogcHJvdmlkZSBS
-VEMgcmVzb3VyY2UgaW4gTVQ2Mzk3IE1GRAogIE1BSU5UQUlORVJTOiBhZGQgTWVkaWF0ZWsgUlRD
-IGRyaXZlcgoKVGlhbnBpbmcgRmFuZyAoMSk6CiAgcnRjOiBtZWRpYXRlazogQWRkIE1UNjM5NyBS
-VEMgZHJpdmVyCgogTUFJTlRBSU5FUlMgICAgICAgICAgICAgICB8ICAgNyArCiBkcml2ZXJzL21m
-ZC9tdDYzOTctY29yZS5jIHwgIDE4ICsrKwogZHJpdmVycy9ydGMvS2NvbmZpZyAgICAgICB8ICAx
-MCArKwogZHJpdmVycy9ydGMvTWFrZWZpbGUgICAgICB8ICAgMSArCiBkcml2ZXJzL3J0Yy9ydGMt
-bXQ2Mzk3LmMgIHwgMzk0ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysKIDUgZmlsZXMgY2hhbmdlZCwgNDMwIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL3J0Yy9ydGMtbXQ2Mzk3LmMKCi0tCjEuOC4xLjEuZGlydHkKCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
-bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Add Mediatek RTC driver to maintainer entry.
+
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+---
+ MAINTAINERS | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2e5bbc0..b36a86e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1223,6 +1223,13 @@ W:	http://www.digriz.org.uk/ts78xx/kernel
+ S:	Maintained
+ F:	arch/arm/mach-orion5x/ts78xx-*
+ 
++ARM/Mediatek RTC DRIVER
++M:	Eddie Huang <eddie.huang@mediatek.com>
++L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
++L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
++S:	Maintained
++F:	drivers/rtc/rtc-mt6397.c
++
+ ARM/Mediatek SoC support
+ M:	Matthias Brugger <matthias.bgg@gmail.com>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+-- 
+1.8.1.1.dirty
