@@ -1,33 +1,67 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH v4 2/3] rtc: mediatek: Add MT6397 RTC driver
-Date: Wed, 06 May 2015 00:44:59 -0700
-Message-ID: <1430898299.9365.74.camel@perches.com>
-References: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
-	 <1430897022-63357-3-git-send-email-eddie.huang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH 0/7] Add SMP bringup support for mt65xx socs
+Date: Wed, 6 May 2015 15:59:42 +0800
+Message-ID: <1430899182.4930.2.camel@mtksdaap41>
+References: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
+	 <CABuKBeJ406DUFoVs2p3-u6sW58Dm7XDd6uxCc==Mkq3dMhhd5Q@mail.gmail.com>
+	 <1430896766.15346.13.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1430897022-63357-3-git-send-email-eddie.huang@mediatek.com>
+In-Reply-To: <1430896766.15346.13.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Greg KH <gregkh@linuxfoundation.org>, "David S. Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tejun Heo <tj@kernel.org>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Tomasz Figa <tfiga@google.com>, Tianping Fang <tianping.fang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Russell King <linux@arm.linux.org.uk>, Arnd Bergmann <arnd@arndb.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Marc Carino <marc.ceeeee@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, Thomas Gleixner <tglx@linutronix.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Jason Cooper <jason@lakedaemon.net>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-05-06 at 15:23 +0800, Eddie Huang wrote:
-> From: Tianping Fang <tianping.fang@mediatek.com>
+On Wed, 2015-05-06 at 15:19 +0800, Yingjoe Chen wrote:
+> Hi Matthias,
+<...>
+> > I tried on the mt8135 eval board but it fails to bring up the CPU.
+> > 
+> > When booting:
+> > [    1.048588] CPU1: failed to come online
+> > [    2.049914] CPU2: failed to come online
+> > [    3.051245] CPU3: failed to come online
+> 
+> 
+> Thanks for testing, and the config file you provided.
+> It seems you are running THUMB2 kernel, unfortunately mt8135 trustzone
+> firmware doesn't support jump to THUMB2 code directly.
+> 
+> I can workaround this with the following patch. I'll include it in my
+> next round.
+> 
+> Joe.C
+> 
+> -----8<----------------
+> diff --git a/arch/arm/mach-mediatek/platsmp.c
+> b/arch/arm/mach-mediatek/platsmp.c
+> index e266b3d..5dea55a 100644
+> --- a/arch/arm/mach-mediatek/platsmp.c
+> +++ b/arch/arm/mach-mediatek/platsmp.c
+> @@ -57,6 +57,18 @@ static const struct of_device_id mtk_smp_boot_infos[]
+> __initconst = {
+>  static void __iomem *mtk_smp_base;
+>  static const struct mtk_smp_boot_info *mtk_smp_info;
+>  
+> +#ifdef CONFIG_THUMB2_KERNEL
+> +__asm__(
+> +	".arm\n"
+> +	"mtk_secondary_startup_fixup:\n"
+> +	"	b secondary_startup\n"
+> +	".thumb\n"
+> +);
+> +
+> +void mtk_secondary_startup_fixup(void);
+> +#define secondary_startup mtk_secondary_startup_fixup
+> +#endif
 
-trivia: no need to resend now, maybe in a future patch.
 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-[]
-> +static int mtk_rtc_probe(struct platform_device *pdev)
-> +{
-[]
-> +	ret = request_threaded_irq(rtc->irq, NULL,
-> +				   mtk_rtc_irq_handler_thread,
-> +				   IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> +			"mt6397-rtc", rtc);
+Replying myself.
 
-It'd be nicer to align all the statement lines
-to that open parenthesis
+It seems kernel already have secondary_startup_arm which support this
+usage. I'll use that in my next version instead.
+
+Joe.C
