@@ -1,256 +1,97 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v7 3/3] I2C: mediatek: Add driver for MediaTek MT8173 I2C controller
-Date: Wed, 6 May 2015 16:37:07 +0800
-Message-ID: <1430901427-65146-4-git-send-email-eddie.huang@mediatek.com>
-References: <1430901427-65146-1-git-send-email-eddie.huang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 5/7] ARM: mediatek: add smp bringup code
+Date: Wed, 6 May 2015 10:38:21 +0200
+Message-ID: <CABuKBeLbyzHfDqfdTh4Nh1ymg3=evKoQenLQ=VKhUkj55gGdVw@mail.gmail.com>
+References: <1430466210-22963-1-git-send-email-yingjoe.chen@mediatek.com>
+ <1430466210-22963-6-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1430901427-65146-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Zhangfei Gao <zhangfei.gao-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Anders Berg <anders.berg-1wcpHE2jlwO1Z/+hSey0Gg@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>li
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1430466210-22963-6-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Marc Carino <marc.ceeeee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add mediatek MT8173 I2C controller driver. Compare to I2C controller
-of earlier mediatek SoC, MT8173 fix write-then-read limitation, and
-also increase message size to 64kb.
+2015-05-01 9:43 GMT+02:00 Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+> Add support for booting secondary CPUs on mt6589, mt8127
+> and mt8135.
+>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/mach-mediatek/Makefile  |   3 +
+>  arch/arm/mach-mediatek/platsmp.c | 145 +++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 148 insertions(+)
+>  create mode 100644 arch/arm/mach-mediatek/platsmp.c
+>
+> diff --git a/arch/arm/mach-mediatek/Makefile b/arch/arm/mach-mediatek/Makefile
+> index 43e619f..2116460 100644
+> --- a/arch/arm/mach-mediatek/Makefile
+> +++ b/arch/arm/mach-mediatek/Makefile
+> @@ -1 +1,4 @@
+> +ifeq ($(CONFIG_SMP),y)
+> +obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o
+> +endif
+>  obj-$(CONFIG_ARCH_MEDIATEK) += mediatek.o
+> diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+> new file mode 100644
+> index 0000000..e266b3d
+> --- /dev/null
+> +++ b/arch/arm/mach-mediatek/platsmp.c
+> @@ -0,0 +1,145 @@
+> +/*
+> + * arch/arm/mach-mediatek/platsmp.c
+> + *
+> + * Copyright (c) 2014 Mediatek Inc.
+> + * Author: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *         Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + */
+> +#include <linux/io.h>
+> +#include <linux/memblock.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/string.h>
+> +#include <linux/threads.h>
+> +
+> +#define MTK_MAX_CPU            8
+> +#define MTK_SMP_REG_SIZE       0x1000
+> +
+> +struct mtk_smp_boot_info {
+> +       unsigned long smp_base;
+> +       unsigned int jump_reg;
+> +       unsigned int boot_reg;
 
-Signed-off-by: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/i2c/busses/i2c-mt65xx.c | 104 +++++++++++++++++++++++++++++-----------
- 1 file changed, 76 insertions(+), 28 deletions(-)
+This variable is not used, right?
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index faecf7e..c501421 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -33,10 +33,13 @@
- #include <linux/clk.h>
- #include <linux/completion.h>
- 
-+#define I2C_RS_TRANSFER			(1 << 4)
- #define I2C_HS_NACKERR			(1 << 2)
- #define I2C_ACKERR			(1 << 1)
- #define I2C_TRANSAC_COMP		(1 << 0)
- #define I2C_TRANSAC_START		(1 << 0)
-+#define I2C_RS_MUL_CNFG			(1 << 15)
-+#define I2C_RS_MUL_TRIG			(1 << 14)
- #define I2C_TIMING_STEP_DIV_MASK	(0x3f << 0)
- #define I2C_TIMING_SAMPLE_COUNT_MASK	(0x7 << 0)
- #define I2C_TIMING_SAMPLE_DIV_MASK	(0x7 << 8)
-@@ -67,6 +70,9 @@
- #define MAX_MSG_NUM_MT6577		1
- #define MAX_DMA_TRANS_SIZE_MT6577	255
- #define MAX_WRRD_TRANS_SIZE_MT6577	31
-+#define MAX_MSG_NUM_MT8173		65535
-+#define MAX_DMA_TRANS_SIZE_MT8173	65535
-+#define MAX_WRRD_TRANS_SIZE_MT8173	65535
- #define MAX_SAMPLE_CNT_DIV		8
- #define MAX_STEP_CNT_DIV		64
- #define MAX_HS_STEP_CNT_DIV		8
-@@ -139,6 +145,7 @@ struct mtk_i2c_compatible {
- 	const struct i2c_adapter_quirks *quirks;
- 	unsigned char pmic_i2c;
- 	unsigned char dcm;
-+	unsigned char auto_restart;
- };
- 
- struct mtk_i2c {
-@@ -172,21 +179,39 @@ static const struct i2c_adapter_quirks mt6577_i2c_quirks = {
- 	.max_comb_2nd_msg_len = MAX_WRRD_TRANS_SIZE_MT6577,
- };
- 
-+static const struct i2c_adapter_quirks mt8173_i2c_quirks = {
-+	.max_num_msgs = MAX_MSG_NUM_MT8173,
-+	.max_write_len = MAX_DMA_TRANS_SIZE_MT8173,
-+	.max_read_len = MAX_DMA_TRANS_SIZE_MT8173,
-+	.max_comb_1st_msg_len = MAX_DMA_TRANS_SIZE_MT8173,
-+	.max_comb_2nd_msg_len = MAX_WRRD_TRANS_SIZE_MT8173,
-+};
-+
- static const struct mtk_i2c_compatible mt6577_compat = {
- 	.quirks = &mt6577_i2c_quirks,
- 	.pmic_i2c = 0,
- 	.dcm = 1,
-+	.auto_restart = 0,
- };
- 
- static const struct mtk_i2c_compatible mt6589_compat = {
- 	.quirks = &mt6577_i2c_quirks,
- 	.pmic_i2c = 1,
- 	.dcm = 0,
-+	.auto_restart = 0,
-+};
-+
-+static const struct mtk_i2c_compatible mt8173_compat = {
-+	.quirks = &mt8173_i2c_quirks,
-+	.pmic_i2c = 0,
-+	.dcm = 1,
-+	.auto_restart = 1,
- };
- 
- static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt6577-i2c", .data = (void *)&mt6577_compat },
- 	{ .compatible = "mediatek,mt6589-i2c", .data = (void *)&mt6589_compat },
-+	{ .compatible = "mediatek,mt8173-i2c", .data = (void *)&mt8173_compat },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
-@@ -343,9 +368,11 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int clk_src_in_hz)
- 	return 0;
- }
- 
--static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
-+static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
-+					int num, int left_num)
- {
- 	u16 addr_reg;
-+	u16 start_reg;
- 	u16 control_reg;
- 	dma_addr_t rpaddr = 0;
- 	dma_addr_t wpaddr = 0;
-@@ -361,6 +388,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
- 		control_reg |= I2C_CONTROL_RS;
- 	if (i2c->op == I2C_MASTER_WRRD)
- 		control_reg |= I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS;
-+	if (left_num >= 1)
-+		control_reg |= I2C_CONTROL_RS;
- 	mtk_i2c_writew(control_reg, i2c, OFFSET_CONTROL);
- 
- 	/* set start condition */
-@@ -375,13 +404,13 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
- 	mtk_i2c_writew(addr_reg, i2c, OFFSET_SLAVE_ADDR);
- 
- 	/* Clear interrupt status */
--	mtk_i2c_writew(I2C_HS_NACKERR | I2C_ACKERR | I2C_TRANSAC_COMP,
--		i2c, OFFSET_INTR_STAT);
-+	mtk_i2c_writew(I2C_RS_TRANSFER | I2C_HS_NACKERR | I2C_ACKERR
-+			| I2C_TRANSAC_COMP, i2c, OFFSET_INTR_STAT);
- 	mtk_i2c_writew(I2C_FIFO_ADDR_CLR, i2c, OFFSET_FIFO_ADDR_CLR);
- 
- 	/* Enable interrupt */
--	mtk_i2c_writew(I2C_HS_NACKERR | I2C_ACKERR | I2C_TRANSAC_COMP,
--		i2c, OFFSET_INTR_MASK);
-+	mtk_i2c_writew(I2C_RS_TRANSFER | I2C_HS_NACKERR | I2C_ACKERR
-+			| I2C_TRANSAC_COMP, i2c, OFFSET_INTR_MASK);
- 
- 	/* Set transfer and transaction len */
- 	if (i2c->op == I2C_MASTER_WRRD) {
-@@ -390,7 +419,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
- 		mtk_i2c_writew(I2C_WRRD_TRANAC_VALUE, i2c, OFFSET_TRANSAC_LEN);
- 	} else {
- 		mtk_i2c_writew(msgs->len, i2c, OFFSET_TRANSFER_LEN);
--		mtk_i2c_writew(I2C_RD_TRANAC_VALUE, i2c, OFFSET_TRANSAC_LEN);
-+		mtk_i2c_writew(num, i2c, OFFSET_TRANSAC_LEN);
- 	}
- 
- 	/* Prepare buffer data to start transfer */
-@@ -436,13 +465,23 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
- 	/* flush before sending start */
- 	mb();
- 	mtk_i2c_writel_dma(I2C_DMA_START_EN, i2c, OFFSET_EN);
--	mtk_i2c_writew(I2C_TRANSAC_START, i2c, OFFSET_START);
-+
-+	if (!i2c->dev_comp->auto_restart) {
-+		start_reg = I2C_TRANSAC_START;
-+	} else {
-+		if (left_num >= 1)
-+			start_reg = I2C_TRANSAC_START | I2C_RS_MUL_CNFG
-+					| I2C_RS_MUL_TRIG;
-+		else
-+			start_reg = I2C_TRANSAC_START | I2C_RS_MUL_TRIG;
-+	}
-+	mtk_i2c_writew(start_reg, i2c, OFFSET_START);
- 
- 	ret = wait_for_completion_timeout(&i2c->msg_complete,
- 				i2c->adap.timeout);
- 
- 	/* Clear interrupt mask */
--	mtk_i2c_writew(~(I2C_HS_NACKERR | I2C_ACKERR
-+	mtk_i2c_writew(~(I2C_RS_TRANSFER | I2C_HS_NACKERR | I2C_ACKERR
- 			| I2C_TRANSAC_COMP), i2c, OFFSET_INTR_MASK);
- 
- 	if (i2c->op == I2C_MASTER_WR) {
-@@ -472,6 +511,10 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs)
- 		return -EREMOTEIO;
- 	}
- 
-+	if (i2c->irq_stat & I2C_RS_TRANSFER)
-+		dev_dbg(i2c->dev, "addr: %x, restart transfer interrupt.\n",
-+				msgs->addr);
-+
- 	return 0;
- }
- 
-@@ -486,28 +529,33 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 	if (ret)
- 		return ret;
- 
--	if (msgs->buf == NULL) {
--		dev_dbg(i2c->dev, "data buffer is NULL.\n");
--		ret = -EINVAL;
--		goto err_exit;
--	}
--
--	if (msgs->flags & I2C_M_RD)
--		i2c->op = I2C_MASTER_RD;
--	else
--		i2c->op = I2C_MASTER_WR;
-+	while (left_num--) {
-+		if (msgs->buf == NULL) {
-+			dev_dbg(i2c->dev, "data buffer is NULL.\n");
-+			ret = -EINVAL;
-+			goto err_exit;
-+		}
- 
--	if (num > 1) {
--		/* combined two messages into one transaction */
--		i2c->op = I2C_MASTER_WRRD;
--		left_num--;
--	}
-+		if (msgs->flags & I2C_M_RD)
-+			i2c->op = I2C_MASTER_RD;
-+		else
-+			i2c->op = I2C_MASTER_WR;
-+
-+		if (!i2c->dev_comp->auto_restart) {
-+			if (num > 1) {
-+				/* combined two messages into one transaction */
-+				i2c->op = I2C_MASTER_WRRD;
-+				left_num--;
-+			}
-+		}
- 
--	/* always use DMA mode. */
--	ret = mtk_i2c_do_transfer(i2c, msgs);
--	if (ret < 0)
--		goto err_exit;
-+		/* always use DMA mode. */
-+		ret = mtk_i2c_do_transfer(i2c, msgs, num, left_num);
-+		if (ret < 0)
-+			goto err_exit;
- 
-+		msgs++;
-+	}
- 	/* the return value is number of executed messages */
- 	ret = num;
- 
-@@ -521,7 +569,7 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	struct mtk_i2c *i2c = dev_id;
- 
- 	i2c->irq_stat = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
--	mtk_i2c_writew(I2C_HS_NACKERR | I2C_ACKERR
-+	mtk_i2c_writew(I2C_RS_TRANSFER | I2C_HS_NACKERR | I2C_ACKERR
- 			| I2C_TRANSAC_COMP, i2c, OFFSET_INTR_STAT);
- 
- 	complete(&i2c->msg_complete);
+> +       unsigned int core_keys[MTK_MAX_CPU - 1];
+> +       unsigned int core_regs[MTK_MAX_CPU - 1];
+> +};
+> +
+> +static const struct mtk_smp_boot_info mtk_mt8135_tz_boot = {
+> +       0x80002000, 1020, 1012,
+> +       { 0x534c4131, 0x4c415332, 0x41534c33 },
+> +       { 1016, 1016, 1016},
+
+Please convert to hex values.
+
 -- 
-1.8.1.1.dirty
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+motzblog.wordpress.com
