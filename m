@@ -1,46 +1,31 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH v4 2/3] rtc: mediatek: Add MT6397 RTC driver
-Date: Thu, 7 May 2015 23:06:27 +0800
-Message-ID: <1431011187.16884.0.camel@mtksdaap41>
-References: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
-	 <1430897022-63357-3-git-send-email-eddie.huang@mediatek.com>
-	 <1430898299.9365.74.camel@perches.com> <20150507120601.GH3465@piout.net>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: ARM: Mediatek: use more generic node name
+ in examples
+Date: Thu, 7 May 2015 15:29:07 -0700
+Message-ID: <20150507222906.GA23003@codeaurora.org>
+References: <1430986498-7747-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150507120601.GH3465@piout.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Cc: Joe Perches <joe@perches.com>, Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Greg KH <gregkh@linuxfoundation.org>, "David S. Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tejun Heo <tj@kernel.org>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Tomasz Figa <tfiga@google.com>, Tianping Fang <tianping.fang@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1430986498-7747-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Alexandre,
-
-On Thu, 2015-05-07 at 14:06 +0200, Alexandre Belloni wrote:
-> On 06/05/2015 at 00:44:59 -0700, Joe Perches wrote :
-> > On Wed, 2015-05-06 at 15:23 +0800, Eddie Huang wrote:
-> > > From: Tianping Fang <tianping.fang@mediatek.com>
-> > 
-> > trivia: no need to resend now, maybe in a future patch.
-> > 
-> > > diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> > []
-> > > +static int mtk_rtc_probe(struct platform_device *pdev)
-> > > +{
-> > []
-> > > +	ret = request_threaded_irq(rtc->irq, NULL,
-> > > +				   mtk_rtc_irq_handler_thread,
-> > > +				   IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-> > > +			"mt6397-rtc", rtc);
-> > 
-> > It'd be nicer to align all the statement lines
-> > to that open parenthesis
-> > 
-> > 
+On 05/07, Sascha Hauer wrote:
+> Use 'clock-controller' and 'power-controller' as node names in the
+> examples rather than the specific names of the units.
 > 
-> I'll fix it up when applying.
-> 
-Thanks your great help
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 
-Eddie
+Thanks. Applied to clk-next.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
