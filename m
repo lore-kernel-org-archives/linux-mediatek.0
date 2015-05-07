@@ -1,48 +1,61 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v12] clk: Add common clock support for Mediatek MT8135
- and MT8173
-Date: Thu, 7 May 2015 10:15:42 +0200
-Message-ID: <20150507081542.GQ6325@pengutronix.de>
-References: <1429778143-2074-1-git-send-email-s.hauer@pengutronix.de>
- <20150506055410.GC10871@codeaurora.org>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v7 0/3] ARM: mediatek: Add driver for Mediatek I2C
+Date: Thu, 7 May 2015 09:27:00 +0100
+Message-ID: <20150507082700.GE12484@x1>
+References: <1430901427-65146-1-git-send-email-eddie.huang@mediatek.com>
+ <20150507073900.GC12484@x1>
+ <1430985284.22615.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150506055410.GC10871@codeaurora.org>
+In-Reply-To: <1430985284.22615.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Mike Turquette <mturquette@linaro.org>, YH Chen <yh.chen@mediatek.com>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <Yingjoe.Chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Wolfram Sang <wsa@the-dreams.de>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, David Box <david.e.box@linux.intel.com>, Jean Delvare <jdelvare@suse.de>, Xudong Chen <xudong.chen@mediatek.com>, Boris BREZILLON <boris.brezillon@free-electrons.com>, Arnd Bergmann <arnd@arndb.de>, Liguo Zhang <liguo.zhang@mediatek.com>, Wei Yan <sledge.yanwei@huawei.com>, Neelesh Gupta <neelegup@linux.vnet.ibm.com>, Zhangfei Gao <zhangfei.gao@linaro.org>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Ray Jui <rjui@broadcom.com>, Beniamino Galvani <b.galvani@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, Anders Berg <anders.berg@avagote>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 05, 2015 at 10:54:10PM -0700, Stephen Boyd wrote:
-> On 04/23, Sascha Hauer wrote:
-> > The following changes since commit 39a8804455fb23f09157341d3ba7db6d7ae6ee76:
-> > 
-> >   Linux 4.0 (2015-04-12 15:12:50 -0700)
-> > 
-> > are available in the git repository at:
-> > 
-> >   git://git.pengutronix.de/git/sha/linux-2.6.git tags/v4.0-clk-mediatek-v12
-> > 
-> > for you to fetch changes up to e0ebeaa8a3f4a762cb9c2780170445aad15915d1:
-> > 
-> >   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock/reset controllers (2015-04-23 10:22:34 +0200)
-> > 
-> > ----------------------------------------------------------------
-> > This patchset contains the initial common clock support for Mediatek SoCs.
-> > Mediatek SoC's clock architecture comprises of various PLLs, dividers, muxes
-> > and clock gates.
-> 
-> Applied to clk-next.
+On Thu, 07 May 2015, Eddie Huang wrote:
+> On Thu, 2015-05-07 at 08:39 +0100, Lee Jones wrote:
+> > On Wed, 06 May 2015, Eddie Huang wrote:
+> >=20
+> > >=20
+> > > Eddie Huang (1):
+> > >   I2C: mediatek: Add driver for MediaTek MT8173 I2C controller
+> > >=20
+> > > Xudong Chen (2):
+> > >   dt-bindings: Add I2C bindings for mt65xx/mt81xx.
+> > >   I2C: mediatek: Add driver for MediaTek I2C controller
+> > >=20
+> > >  .../devicetree/bindings/i2c/i2c-mt6577.txt         |  41 ++
+> > >  drivers/i2c/busses/Kconfig                         |   9 +
+> > >  drivers/i2c/busses/Makefile                        |   1 +
+> > >  drivers/i2c/busses/i2c-mt65xx.c                    | 748 +++++++=
+++++++++++++++
+> > >  4 files changed, 799 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6=
+577.txt
+> > >  create mode 100644 drivers/i2c/busses/i2c-mt65xx.c
+> >=20
+> > Again, you've sent me a patch-set that has absolutely nothing to do
+> > with me.  Can you please stop doing that, my inbox is full enough
+> > already!
+> >=20
+>=20
+> Sorry, I use "scripts/get_maintainer.pl" to get mail receiver, and yo=
+u
+> are on list.
 
-Thanks Stephen. I just sent a followup patch for the node names in the
-examples.
+Yes, the "Commit Signer" entry is the bane of my life.  It's best not
+to Cc everyone who has every touched a file in a given subsystem.
 
-Sascha
+> I will narrow down receiver next time.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Thanks.
+
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
