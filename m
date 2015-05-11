@@ -1,32 +1,52 @@
-From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
-Subject: Re: [PATCH v4 0/3] Add Mediatek SoC RTC driver
-Date: Sat, 9 May 2015 15:08:46 +0200
-Message-ID: <20150509130846.GD3338@piout.net>
-References: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [PATCH] ASoC: dapm: Modify widget stream name according to prefix
+Date: Mon, 11 May 2015 10:36:53 +0800
+Message-ID: <1431311813-37430-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1430897022-63357-1-git-send-email-eddie.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Alessandro Zummo <a.zummo@towertech.it>, srv_heupstream@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, Greg KH <gregkh@linuxfoundation.org>, "David S. Miller" <davem@davemloft.net>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Joe Perches <joe@perches.com>, Tejun Heo <tj@kernel.org>, linux-kernel@vger.kernel.org, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Tomasz Figa <tfiga@google.com>
+To: matthias.bgg@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/05/2015 at 15:23:39 +0800, Eddie Huang wrote :
-> RTC is one submodule of Mediatek MT6397 PMIC chip[1]. This series
-> support RTC driver that work with Mediatek SoC like MT8135, MT8173.
-> It implements second counter and also provide alarm function.
-> 
-> This series base on 4.1-rc1, Test ok on MT8173 platform.
-> 
-> [1] https://lkml.org/lkml/2015/1/23/325
-> 
+When there is prefix specified, currently we will add this prefix in
+widget->name, but not in widget->sname.
+it causes failure at snd_soc_dapm_link_dai_widgets:
 
-All applied, thanks!
+if (!w->sname || !strstr(w->sname, dai_w->name))
 
+because dai_w->name has prefix added, but w->sname does not.
+We should also add prefix for stream name
 
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+---
+ sound/soc/soc-dapm.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/sound/soc/soc-dapm.c b/sound/soc/soc-dapm.c
+index defe0f0..158204d 100644
+--- a/sound/soc/soc-dapm.c
++++ b/sound/soc/soc-dapm.c
+@@ -3100,11 +3100,16 @@ snd_soc_dapm_new_control(struct snd_soc_dapm_context *dapm,
+ 	}
+ 
+ 	prefix = soc_dapm_prefix(dapm);
+-	if (prefix)
++	if (prefix) {
+ 		w->name = kasprintf(GFP_KERNEL, "%s %s", prefix, widget->name);
+-	else
++		if (widget->sname)
++			w->sname = kasprintf(GFP_KERNEL, "%s %s", prefix,
++					     widget->sname);
++	} else {
+ 		w->name = kasprintf(GFP_KERNEL, "%s", widget->name);
+-
++		if (widget->sname)
++			w->sname = kasprintf(GFP_KERNEL, "%s", widget->sname);
++	}
+ 	if (w->name == NULL) {
+ 		kfree(w);
+ 		return NULL;
 -- 
-Alexandre Belloni, Free Electrons
-Embedded Linux, Kernel and Android engineering
-http://free-electrons.com
+1.8.1.1.dirty
