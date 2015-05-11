@@ -1,44 +1,51 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 4/4] ARM64: MediaTek MT8173: Add SCPSYS device node
-Date: Mon, 11 May 2015 15:11:22 +0200
-Message-ID: <1431349882-12260-5-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger_0 <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] Mediatek SCPSYS power domain support
+Date: Mon, 11 May 2015 18:05:20 +0200
+Message-ID: <2471388.4xC5mv0cE3@ubix>
 References: <1431349882-12260-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1431349882-12260-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1431349882-12260-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the SCPSYS device node to the MT8173 dtsi file.
+On Monday, May 11, 2015 03:11:18 PM Sascha Hauer wrote:
+> This series adds support for the MediaTek SCPSYS unit.
+> 
+> The SCPSYS unit handles several power management related tasks such
+> as thermal measurement, DVFS, interrupt filter and low level sleep
+> control.
+> 
+> The initial support only contains the generic power domain handling.
+> This is needed to turn on power to the different power domains.
+> 
+> The driver is quite straight forward now. Due to the lack of a better
+> place I have put it to drivers/soc/mediatek. As the SCPSYS unit has
+> several other tasks that also do not fit into some specific subsystem
+> this probably is a good place for this driver.
+> 
+> Please review, any input welcome.
+> 
+> Sascha
+> 
+> changes since v1:
+> - make MFG_ASYNC a subdomain of MFG_2D and MFG_2D a subdomain of MFG
+> - Add (now hopefully properly) infracfg register handling again
+> - Add clock handling
+> - Fix on/off mixup in error message
+> - Make readonly data const
+> - Fix MODULE_LICENSE to GPL v2
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+I can't find this changes. It looks like you send the wrong patches. 
+Please resend.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 924fdb6..3c569b5 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -125,6 +125,18 @@
- 						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
- 		};
- 
-+		scpsys: scpsys@10006000 {
-+			compatible = "mediatek,mt8173-scpsys";
-+			#power-domain-cells = <1>;
-+			reg = <0 0x10006000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-+				<&topckgen CLK_TOP_MFG_SEL>,
-+				<&topckgen CLK_TOP_VENC_SEL>,
-+				<&topckgen CLK_TOP_MM_SEL>,
-+				<&topckgen CLK_TOP_VENC_LT_SEL>;
-+			clock-names = "vdec", "mfg", "venc", "disp", "ven2";
-+		};
-+
- 		sysirq: intpol-controller@10200620 {
- 			compatible = "mediatek,mt8173-sysirq",
- 					"mediatek,mt6577-sysirq";
--- 
-2.1.4
+Cheers,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
