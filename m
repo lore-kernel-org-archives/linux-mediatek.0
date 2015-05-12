@@ -1,95 +1,73 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
-Date: Tue, 12 May 2015 13:52:06 +0200
-Message-ID: <CABuKBe+cuE=NVjm8UOC9=z2rgxR8_fmn_UEMSQbK8ywCGvskTg@mail.gmail.com>
-References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
-	<1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
+Date: Tue, 12 May 2015 14:37:22 +0200
+Message-ID: <CABuKBeJz_=Nxcen9QU_KHds6UJwUJL0yNpYDhvT3eFoV_EY5xA@mail.gmail.com>
+References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
+	<1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=ISO-8859-1
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1431336382-13167-3-git-send-email-yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-05-11 21:23 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> This adds a power domain driver for the Mediatek SCPSYS unit.
+Hi YH,
+
+2015-05-11 11:26 GMT+02:00 YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+> Add display PWM driver support to modify backlight for MT8173/MT6595.
 >
-> The System Control Processor System (SCPSYS) has several power
-> management related tasks in the system. The tasks include thermal
-> measurement, dynamic voltage frequency scaling (DVFS), interrupt
-> filter and lowlevel sleep control. The System Power Manager (SPM)
-> inside the SCPSYS is for the MTCMOS power domain control.
->
-> For now this driver only adds power domain support, the more
-> advanced features are not yet supported. The driver implements
-> the generic PM domain device tree bindings, the first user will
-> most likely be the Mediatek AFE audio driver.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   2 +
->  drivers/soc/mediatek/Kconfig                       |   8 +
->  drivers/soc/mediatek/Makefile                      |   1 +
->  drivers/soc/mediatek/mtk-scpsys.c                  | 416 +++++++++++++++++++++
->  include/dt-bindings/power/mt8173-power.h           |  15 +
->  5 files changed, 442 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mtk-scpsys.c
->  create mode 100644 include/dt-bindings/power/mt8173-power.h
+>  drivers/pwm/Kconfig             |   9 ++
+>  drivers/pwm/Makefile            |   1 +
+>  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 235 insertions(+)
+>  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
 >
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index 4764a03..87f2091 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -15,6 +15,7 @@ Required properties:
->  - compatible: Must be "mediatek,mt8173-scpsys"
->  - #power-domain-cells: Must be 1
->  - reg: Address range of the SCPSYS unit
-> +- infracfg: must contain a phandle to the infracfg controller
+> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+> index b1541f4..9edbb5a 100644
+> --- a/drivers/pwm/Kconfig
+> +++ b/drivers/pwm/Kconfig
+> @@ -111,6 +111,15 @@ config PWM_CLPS711X
+>           To compile this driver as a module, choose M here: the module
+>           will be called pwm-clps711x.
 >
->  Example:
->
-> @@ -22,6 +23,7 @@ Example:
->                 #power-domain-cells = <1>;
->                 compatible = "mediatek,mt8173-scpsys";
->                 reg = <0 0x10006000 0 0x1000>;
-> +               infracfg = <&infracfg>;
->         };
->
->  Example consumer:
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index 6fae66f..1386c79 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -18,3 +18,11 @@ config MTK_INFRACFG
->           Say yes here to add support for the MediaTek INFRACFG controller. The
->           INFRACFG controller contains various infrastructure registers not
->           directly associated to any device.
-> +
-> +config MTK_SCPSYS
-> +       tristate "MediaTek SCPSYS Support"
-> +       depends on MTK_INFRACFG
-> +       select REGMAP
+> +config PWM_DISP_MEDIATEK
+> +       tristate "MEDIATEK display PWM driver"
+> +       depends on OF
 > +       help
-> +         Say yes here to add support for the MediaTek SCPSYS power domain
-> +         driver.
-> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> index ce39119..f8eebab 100644
-> --- a/drivers/soc/mediatek/Makefile
-> +++ b/drivers/soc/mediatek/Makefile
-> @@ -1,2 +1,3 @@
->  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->  obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
-> +obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> +         Generic PWM framework driver for mediatek disp-pwm device.
+> +
+> +         To compile this driver as a module, choose M here: the module
+> +         will be called pwm-disp-mediatek.
+> +
+>  config PWM_EP93XX
+>         tristate "Cirrus Logic EP93xx PWM support"
+>         depends on ARCH_EP93XX
+> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+> index ec50eb5..c5ff72a 100644
+> --- a/drivers/pwm/Makefile
+> +++ b/drivers/pwm/Makefile
+> @@ -8,6 +8,7 @@ obj-$(CONFIG_PWM_BCM_KONA)      += pwm-bcm-kona.o
+>  obj-$(CONFIG_PWM_BCM2835)      += pwm-bcm2835.o
+>  obj-$(CONFIG_PWM_BFIN)         += pwm-bfin.o
+>  obj-$(CONFIG_PWM_CLPS711X)     += pwm-clps711x.o
+> +obj-$(CONFIG_PWM_DISP_MEDIATEK)        += pwm-disp-mediatek.o
+>  obj-$(CONFIG_PWM_EP93XX)       += pwm-ep93xx.o
+>  obj-$(CONFIG_PWM_FSL_FTM)      += pwm-fsl-ftm.o
+>  obj-$(CONFIG_PWM_IMG)          += pwm-img.o
+> diff --git a/drivers/pwm/pwm-disp-mediatek.c b/drivers/pwm/pwm-disp-mediatek.c
 > new file mode 100644
-> index 0000000..c42c7f1
+> index 0000000..38293af
 > --- /dev/null
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -0,0 +1,416 @@
+> +++ b/drivers/pwm/pwm-disp-mediatek.c
+> @@ -0,0 +1,225 @@
 > +/*
-> + * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
+> + * Mediatek display pulse-width-modulation controller driver.
+> + * Copyright (c) 2015 MediaTek Inc.
+> + * Author: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > + *
 > + * This program is free software; you can redistribute it and/or modify
 > + * it under the terms of the GNU General Public License version 2 as
@@ -100,396 +78,167 @@ List-Id: linux-mediatek@lists.infradead.org
 > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 > + * GNU General Public License for more details.
 > + */
+> +
 > +#include <linux/clk.h>
+> +#include <linux/err.h>
 > +#include <linux/io.h>
-> +#include <linux/kernel.h>
 > +#include <linux/module.h>
-> +#include <linux/of_device.h>
+> +#include <linux/of.h>
+> +#include <linux/pwm.h>
 > +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/pm_domain.h>
-> +#include <linux/delay.h>
-> +#include <linux/soc/mediatek/infracfg.h>
-> +#include <dt-bindings/power/mt8173-power.h>
-> +#include <linux/mfd/syscon.h>
+> +#include <linux/slab.h>
 > +
-> +#define SPM_VDE_PWR_CON                        0x0210
-> +#define SPM_MFG_PWR_CON                        0x0214
-> +#define SPM_VEN_PWR_CON                        0x0230
-> +#define SPM_ISP_PWR_CON                        0x0238
-> +#define SPM_DIS_PWR_CON                        0x023c
-> +#define SPM_VEN2_PWR_CON               0x0298
-> +#define SPM_AUDIO_PWR_CON              0x029c
-> +#define SPM_MFG_2D_PWR_CON             0x02c0
-> +#define SPM_MFG_ASYNC_PWR_CON          0x02c4
-> +#define SPM_USB_PWR_CON                        0x02cc
-> +#define SPM_PWR_STATUS                 0x060c
-> +#define SPM_PWR_STATUS_2ND             0x0610
+> +#define DISP_PWM_EN_OFF                        (0x0)
+> +#define PWM_ENABLE_SHIFT               (0x0)
+> +#define PWM_ENABLE_MASK                        (0x1 << PWM_ENABLE_SHIFT)
+
+Get rid of the _SHIFT which are actually zero, it will make the code
+more readable.
+
 > +
-> +#define PWR_RST_B_BIT                  BIT(0)
-> +#define PWR_ISO_BIT                    BIT(1)
-> +#define PWR_ON_BIT                     BIT(2)
-> +#define PWR_ON_2ND_BIT                 BIT(3)
-> +#define PWR_CLK_DIS_BIT                        BIT(4)
+> +#define DISP_PWM_COMMIT_OFF            (0x08)
+> +#define PWM_COMMIT_SHIFT               (0x0)
+> +#define PWM_COMMIT_MASK                        (0x1 << PWM_COMMIT_SHIFT)
 > +
-> +#define DIS_PWR_STA_MASK               BIT(3)
-> +#define MFG_PWR_STA_MASK               BIT(4)
-> +#define ISP_PWR_STA_MASK               BIT(5)
-> +#define VDE_PWR_STA_MASK               BIT(7)
-> +#define VEN2_PWR_STA_MASK              BIT(20)
-> +#define VEN_PWR_STA_MASK               BIT(21)
-> +#define MFG_2D_PWR_STA_MASK            BIT(22)
-> +#define MFG_ASYNC_PWR_STA_MASK         BIT(23)
-> +#define AUDIO_PWR_STA_MASK             BIT(24)
-> +#define USB_PWR_STA_MASK               BIT(25)
+> +#define DISP_PWM_CON_0_OFF             (0x10)
+> +#define PWM_CLKDIV_SHIFT               (0x10)
+> +#define PWM_CLKDIV_MASK                        (0x3ff << PWM_CLKDIV_SHIFT)
+> +#define PWM_CLKDIV_MAX                 (0x000003ff)
 > +
-> +struct scp_domain_data {
-> +       const char *name;
-> +       u32 sta_mask;
-> +       int ctl_offs;
-> +       u32 sram_pdn_bits;
-> +       u32 sram_pdn_ack_bits;
-> +       u32 bus_prot_mask;
-> +       int id;
-> +       const char *clk_name;
+> +#define DISP_PWM_CON_1_OFF             (0x14)
+> +#define PWM_PERIOD_SHIFT               (0x0)
+> +#define PWM_PERIOD_MASK                        (0xfff << PWM_PERIOD_SHIFT)
+> +#define PWM_PERIOD_MAX                 (0x00000fff)
+> +/* Shift log2(PWM_PERIOD_MAX + 1) as divisor */
+> +#define PWM_PERIOD_BIT_SHIFT           12
+> +
+> +#define PWM_HIGH_WIDTH_SHIFT           (0x10)
+> +#define PWM_HIGH_WIDTH_MASK            (0x1fff << PWM_HIGH_WIDTH_SHIFT)
+> +
+> +#define NUM_PWM 1
+> +
+> +struct mtk_disp_pwm_chip {
+> +       struct pwm_chip chip;
+> +       struct device   *dev;
+> +       struct clk      *clk_main;
+> +       struct clk      *clk_mm;
+> +       void __iomem    *mmio_base;
 > +};
 > +
-> +static const struct scp_domain_data scp_domain_data[] = {
-> +       {
-> +               .id = MT8173_POWER_DOMAIN_VDE,
-> +               .name = "vde",
-> +               .sta_mask = VDE_PWR_STA_MASK,
-> +               .ctl_offs = SPM_VDE_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(12, 12),
-> +               .clk_name = "vdec",
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_VEN,
-> +               .name = "ven",
-> +               .sta_mask = VEN_PWR_STA_MASK,
-> +               .ctl_offs = SPM_VEN_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(15, 12),
-> +               .clk_name = "venc",
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_ISP,
-> +               .name = "isp",
-> +               .sta_mask = ISP_PWR_STA_MASK,
-> +               .ctl_offs = SPM_ISP_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(13, 12),
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_DIS,
-> +               .name = "disp",
-> +               .sta_mask = DIS_PWR_STA_MASK,
-> +               .ctl_offs = SPM_DIS_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(12, 12),
-> +               .clk_name = "disp",
-> +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> +                       MT8173_TOP_AXI_PROT_EN_MM_M1,
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_VEN2,
-> +               .name = "ven2",
-> +               .sta_mask = VEN2_PWR_STA_MASK,
-> +               .ctl_offs = SPM_VEN2_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(15, 12),
-> +               .clk_name = "ven2",
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_AUDIO,
-> +               .name = "audio",
-> +               .sta_mask = AUDIO_PWR_STA_MASK,
-> +               .ctl_offs = SPM_AUDIO_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(15, 12),
-> +       },  {
-> +               .id = MT8173_POWER_DOMAIN_MFG_ASYNC,
-> +               .name = "mfg_async",
-> +               .sta_mask = MFG_ASYNC_PWR_STA_MASK,
-> +               .ctl_offs = SPM_MFG_ASYNC_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = 0,
-> +               .clk_name = "mfg",
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_MFG_2D,
-> +               .name = "mfg_2d",
-> +               .sta_mask = MFG_2D_PWR_STA_MASK,
-> +               .ctl_offs = SPM_MFG_2D_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(13, 12),
-> +               .clk_name = "mfg",
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_MFG,
-> +               .name = "mfg",
-> +               .sta_mask = MFG_PWR_STA_MASK,
-> +               .ctl_offs = SPM_MFG_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(13, 8),
-> +               .sram_pdn_ack_bits = GENMASK(21, 16),
-> +               .clk_name = "mfg",
-> +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
-> +                       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> +                       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> +                       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
-> +       }, {
-> +               .id = MT8173_POWER_DOMAIN_USB,
-> +               .name = "usb",
-> +               .sta_mask = USB_PWR_STA_MASK,
-> +               .ctl_offs = SPM_USB_PWR_CON,
-> +               .sram_pdn_bits = GENMASK(11, 8),
-> +               .sram_pdn_ack_bits = GENMASK(15, 12),
-> +       },
-> +};
-> +
-> +#define NUM_DOMAINS    ARRAY_SIZE(scp_domain_data)
-> +
-> +struct scp;
-> +
-> +struct scp_domain {
-> +       struct generic_pm_domain pmd;
-> +       const struct scp_domain_data *data;
-> +       struct scp *scp;
-> +       struct clk *clk;
-> +};
-> +
-> +struct scp {
-> +       struct scp_domain domains[NUM_DOMAINS];
-> +       struct genpd_onecell_data pd_data;
-> +       struct device *dev;
-> +       void __iomem *base;
-> +       struct regmap *infracfg;
-> +};
-> +
-> +static int scpsys_power_on(struct generic_pm_domain *genpd)
+> +static void mtk_disp_pwm_setting(void __iomem *address, u32 value, u32 mask)
 > +{
-> +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, pmd);
-> +       struct scp *scp = scpd->scp;
-> +       const struct scp_domain_data *data = scpd->data;
-> +       unsigned long expired;
-> +       void __iomem *ctl_addr = scpd->scp->base + data->ctl_offs;
-> +       u32 sram_pdn_ack = data->sram_pdn_ack_bits;
 > +       u32 val;
-> +       int ret;
 > +
-> +       if (scpd->clk) {
-> +               ret = clk_prepare_enable(scpd->clk);
-> +               if (ret)
-> +                       return ret;
-> +       }
+> +       val = readl(address);
+> +       val &= ~mask;
+> +       val |= value;
+> +       writel(val, address);
+> +}
 > +
-> +       val = readl(ctl_addr);
-> +       val |= PWR_ON_BIT;
-> +       writel(val, ctl_addr);
-> +       val |= PWR_ON_2ND_BIT;
-> +       writel(val, ctl_addr);
+> +static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+> +                              int duty_ns, int period_ns)
+> +{
+> +       struct mtk_disp_pwm_chip *mpc;
+> +       u64 div, rate;
+> +       u32 clk_div, period, high_width, rem;
 > +
-> +       /* wait until PWR_ACK = 1 */
-> +       expired = jiffies + HZ;
-> +       while (!(readl(scp->base + SPM_PWR_STATUS) & data->sta_mask) ||
-> +                       !(readl(scp->base + SPM_PWR_STATUS_2ND) & data->sta_mask)) {
+> +       /*
+> +        * Find period, high_width and clk_div to suit duty_ns and period_ns.
+> +        * Calculate proper div value to keep period value in the bound.
+> +        *
+> +        * period_ns = 10^9 * (clk_div + 1) * (period +1) / PWM_CLK_RATE
+> +        * duty_ns = 10^9 * (clk_div + 1) * (high_width + 1) / PWM_CLK_RATE
+> +        *
+> +        * period = (PWM_CLK_RATE * period_ns) / (10^9 * (clk_div + 1)) - 1
+> +        * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1)) - 1
+> +        */
+> +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
+> +       rate = clk_get_rate(mpc->clk_main);
+> +       clk_div = div_u64_rem(rate * period_ns, NSEC_PER_SEC, &rem) >>
+> +                               PWM_PERIOD_BIT_SHIFT;
 
-Nit pick, line over 80 characters.
+You never use the remainder, so better use div_u64 to make the code cleaner.
 
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired)) {
-> +                       ret = -EIO;
-> +                       goto out;
-> +               }
-> +       }
+> +       if (clk_div > PWM_CLKDIV_MAX)
+> +               return -EINVAL;
 > +
-> +       val &= ~PWR_CLK_DIS_BIT;
-> +       writel(val, ctl_addr);
+> +       div = clk_div + 1;
+> +       period = div64_u64(rate * period_ns, NSEC_PER_SEC * div);
+> +       if (period > 0)
+> +               period--;
+> +       high_width = div64_u64(rate * duty_ns, NSEC_PER_SEC * div);
+> +       if (high_width > 0)
+> +               high_width--;
 > +
-> +       val &= ~PWR_ISO_BIT;
-> +       writel(val, ctl_addr);
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_0_OFF,
+> +                            clk_div << PWM_CLKDIV_SHIFT, PWM_CLKDIV_MASK);
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_1_OFF,
+> +                            (period << PWM_PERIOD_SHIFT) |
+> +                       (high_width << PWM_HIGH_WIDTH_SHIFT),
+> +                       PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK);
 > +
-> +       val |= PWR_RST_B_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       val &= ~data->sram_pdn_bits;
-> +       writel(val, ctl_addr);
-> +
-> +       /* wait until SRAM_PDN_ACK all 0 */
-> +       expired = jiffies + HZ;
-> +       while (sram_pdn_ack && (readl(ctl_addr) & sram_pdn_ack)) {
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired)) {
-> +                       ret = -EIO;
-> +                       goto out;
-> +               }
-> +       }
-> +
-> +       if (data->bus_prot_mask) {
-> +               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
-> +                               data->bus_prot_mask);
-> +               if (ret)
-> +                       return ret;
-> +       }
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
+> +                            1 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
+> +                            0 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
 > +
 > +       return 0;
-> +out:
-> +       dev_err(scp->dev, "Failed to power on domain %s\n", scpd->data->name);
-> +
-> +       return ret;
 > +}
 > +
-> +static int scpsys_power_off(struct generic_pm_domain *genpd)
+> +static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
 > +{
-> +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, pmd);
-> +       struct scp *scp = scpd->scp;
-> +       const struct scp_domain_data *data = scpd->data;
-> +       unsigned long expired;
-> +       void __iomem *ctl_addr = scpd->scp->base + data->ctl_offs;
-> +       u32 sram_pdn_ack = data->sram_pdn_ack_bits;
-> +       u32 val;
-> +       int ret;
+> +       struct mtk_disp_pwm_chip *mpc;
 > +
-> +       if (data->bus_prot_mask) {
-> +               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
-> +                               data->bus_prot_mask);
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +
-> +       val = readl(ctl_addr);
-> +       val |= data->sram_pdn_bits;
-> +       writel(val, ctl_addr);
-> +
-> +       /* wait until SRAM_PDN_ACK all 1 */
-> +       expired = jiffies + HZ;
-> +       while ((readl(ctl_addr) & sram_pdn_ack) != sram_pdn_ack) {
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired)) {
-> +                       ret = -EIO;
-> +                       goto out;
-> +               }
-> +       }
-> +
-> +       val |= PWR_ISO_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       val &= ~PWR_RST_B_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       val |= PWR_CLK_DIS_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       val &= ~PWR_ON_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       val &= ~PWR_ON_2ND_BIT;
-> +       writel(val, ctl_addr);
-> +
-> +       /* wait until PWR_ACK = 0 */
-> +       expired = jiffies + HZ;
-> +       while ((readl(scp->base + SPM_PWR_STATUS) & data->sta_mask) ||
-> +                       (readl(scp->base + SPM_PWR_STATUS_2ND) & data->sta_mask)) {
-
-Same here.
-
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired)) {
-> +                       ret = -EIO;
-> +                       goto out;
-> +               }
-> +       }
-> +
-> +       if (scpd->clk)
-> +               clk_disable_unprepare(scpd->clk);
+> +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
+> +                            1 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
 > +
 > +       return 0;
-> +
-> +out:
-> +       dev_err(scp->dev, "Failed to power off domain %s\n", scpd->data->name);
-> +
-> +       return ret;
 > +}
 > +
-> +static int scpsys_probe(struct platform_device *pdev)
+> +static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
 > +{
-> +       struct genpd_onecell_data *pd_data;
-> +       struct resource *res;
-> +       int i;
-> +       struct scp *scp;
+> +       struct mtk_disp_pwm_chip *mpc;
 > +
-> +       scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
-> +       if (!scp)
-> +               return -ENOMEM;
-> +
-> +       scp->dev = &pdev->dev;
-> +
-> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +       scp->base = devm_ioremap_resource(&pdev->dev, res);
-> +       if (IS_ERR(scp->base))
-> +               return PTR_ERR(scp->base);
-> +
-> +       pd_data = &scp->pd_data;
-> +
-> +       pd_data->domains = devm_kzalloc(&pdev->dev,
-> +                       sizeof(*pd_data->domains) * NUM_DOMAINS, GFP_KERNEL);
-> +       if (!pd_data->domains)
-> +               return -ENOMEM;
-> +
-> +       scp->infracfg = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-> +                       "infracfg");
-> +       if (IS_ERR(scp->infracfg)) {
-> +               dev_err(&pdev->dev, "Cannot find infracfg controller: %ld\n",
-> +                               PTR_ERR(scp->infracfg));
-> +               return PTR_ERR(scp->infracfg);
-> +       }
-> +
-> +       pd_data->num_domains = NUM_DOMAINS;
-> +
-> +       for (i = 0; i < NUM_DOMAINS; i++) {
-> +               struct scp_domain *scpd = &scp->domains[i];
-> +
-> +               if (scp_domain_data[i].clk_name) {
-> +                       const char *name = scp_domain_data[i].clk_name;
-> +
-> +                       scpd->clk = devm_clk_get(&pdev->dev, name);
-> +                       if (IS_ERR(scpd->clk)) {
-> +                               dev_err(&pdev->dev, "Failed to get %s clk: %ld\n",
-> +                                               name, PTR_ERR(scpd->clk));
-> +                               return PTR_ERR(scpd->clk);
-> +                       }
-> +               }
-> +       }
-> +
-> +       for (i = 0; i < NUM_DOMAINS; i++) {
-
-Why two for loops?
-
-> +               struct scp_domain *scpd = &scp->domains[i];
-> +               struct generic_pm_domain *pmd = &scpd->pmd;
-> +
-> +               pd_data->domains[scp_domain_data[i].id] = pmd;
-> +               scpd->data = &scp_domain_data[i];
-> +               scpd->scp = scp;
-> +
-> +               pmd->name = scp_domain_data[i].name;
-> +               pmd->power_off = scpsys_power_off;
-> +               pmd->power_on = scpsys_power_on;
-> +               pmd->power_off_latency_ns = 20000;
-> +               pmd->power_on_latency_ns = 20000;
-> +
-> +               pm_genpd_init(pmd, NULL, true);
-> +
-> +               /*
-> +                * If PM is disabled turn on all domains by default so that
-> +                * consumers can work.
-> +                */
-> +               if (!IS_ENABLED(CONFIG_PM))
-> +                       pmd->power_on(pmd);
-> +       }
-> +
-> +       pm_genpd_add_subdomain(&scp->domains[MT8173_POWER_DOMAIN_MFG_ASYNC].pmd,
-> +               &scp->domains[MT8173_POWER_DOMAIN_MFG_2D].pmd);
-> +       pm_genpd_add_subdomain(&scp->domains[MT8173_POWER_DOMAIN_MFG_2D].pmd,
-> +               &scp->domains[MT8173_POWER_DOMAIN_MFG].pmd);
-> +
-> +       return of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
+> +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
+> +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
+> +                            0 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
 > +}
 > +
-> +static struct of_device_id of_scpsys_match_tbl[] = {
+> +static const struct pwm_ops mtk_disp_pwm_ops = {
+> +       .config = mtk_disp_pwm_config,
+> +       .enable = mtk_disp_pwm_enable,
+> +       .disable = mtk_disp_pwm_disable,
+> +       .owner = THIS_MODULE,
+> +};
+> +
+> +static int mtk_disp_pwm_probe(struct platform_device *pdev)
+> +{
+> +       struct mtk_disp_pwm_chip *pwm;
+> +       struct resource *r;
+> +       int ret;
+> +
+> +       pwm = devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
+> +       if (!pwm)
+> +               return -ENOMEM;
+> +
+> +       pwm->dev = &pdev->dev;
+> +
+> +       r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +       pwm->mmio_base = devm_ioremap_resource(&pdev->dev, r);
+> +       if (IS_ERR(pwm->mmio_base))
+> +               return PTR_ERR(pwm->mmio_base);
+> +
+> +       pwm->clk_main = devm_clk_get(&pdev->dev, "main");
+> +       if (IS_ERR(pwm->clk_main))
+> +               return PTR_ERR(pwm->clk_main);
 
-static const?
+I prefer to have a newline after the if-then-ese block, which makes it
+(at least for me) easier to read the code.
+
+Thanks,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
