@@ -1,57 +1,43 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v2] Mediatek SCPSYS power domain support
-Date: Mon, 11 May 2015 21:24:27 +0200
-Message-ID: <20150511192427.GM6325@pengutronix.de>
-References: <1431349882-12260-1-git-send-email-s.hauer@pengutronix.de>
- <2471388.4xC5mv0cE3@ubix>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RFC PATCH] iommu: add ARM short descriptor page table allocator.
+Date: Tue, 12 May 2015 13:30:37 +0800
+Message-ID: <1431408637.31603.4.camel@mhfsdcap03>
+References: <1430206881-18294-1-git-send-email-yong.wu@mediatek.com>
+	<20150505161802.GA20611@8bytes.org> <20150505170541.GN1550@arm.com>
+	<20150511101309.GH20611@8bytes.org> <20150511104030.GA4795@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <2471388.4xC5mv0cE3@ubix>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger_0 <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20150511104030.GA4795-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 11, 2015 at 06:05:20PM +0200, Matthias Brugger_0 wrote:
-> On Monday, May 11, 2015 03:11:18 PM Sascha Hauer wrote:
-> > This series adds support for the MediaTek SCPSYS unit.
+On Mon, 2015-05-11 at 11:40 +0100, Will Deacon wrote:
+> On Mon, May 11, 2015 at 11:13:09AM +0100, Joerg Roedel wrote:
+> > On Tue, May 05, 2015 at 06:05:41PM +0100, Will Deacon wrote:
+> > > I think the MT8173 IOMMU [1] uses this format and, since it's part of
+> > > the ARM architecture, the ARM SMMU can make use of it too if the
+> > > implementation supports it.
 > > 
-> > The SCPSYS unit handles several power management related tasks such
-> > as thermal measurement, DVFS, interrupt filter and low level sleep
-> > control.
-> > 
-> > The initial support only contains the generic power domain handling.
-> > This is needed to turn on power to the different power domains.
-> > 
-> > The driver is quite straight forward now. Due to the lack of a better
-> > place I have put it to drivers/soc/mediatek. As the SCPSYS unit has
-> > several other tasks that also do not fit into some specific subsystem
-> > this probably is a good place for this driver.
-> > 
-> > Please review, any input welcome.
-> > 
-> > Sascha
-> > 
-> > changes since v1:
-> > - make MFG_ASYNC a subdomain of MFG_2D and MFG_2D a subdomain of MFG
-> > - Add (now hopefully properly) infracfg register handling again
-> > - Add clock handling
-> > - Fix on/off mixup in error message
-> > - Make readonly data const
-> > - Fix MODULE_LICENSE to GPL v2
+> > I think it makes more sense to merge this with a driver actually using
+> > it. I guess a driver for the above mentioned IOMMU will be submitted
+> > soon?
 > 
-> I can't find this changes. It looks like you send the wrong patches. 
-> Please resend.
-
-Damn, I just proved that changelogs are useful ;)
-I have just resent this series.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> I completely agree; since there are already patches floating around for
+> that IOMMU, it's probably worth them being put into a single series.
+> 
+> Will
+Hi Joerg, Will, 
+     Thanks. We will put this into the mtk-iommu patch series and
+prepare to send in this week.
