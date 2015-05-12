@@ -1,88 +1,114 @@
-From: wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org
-Subject: Re: [PATCH v7 1/3] dt-bindings: Add I2C bindings for mt65xx/mt81xx.
-Date: Tue, 12 May 2015 14:37:09 +0200
-Message-ID: <20150512123709.GA4447@schokonusskuchen.bad>
-References: <1430901427-65146-1-git-send-email-eddie.huang@mediatek.com>
- <1430901427-65146-2-git-send-email-eddie.huang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
+Date: Tue, 12 May 2015 14:44:20 +0200
+Message-ID: <CABuKBeJc3Kvdoejyi0XFbQMU2saztzV5S7jiXCg-09juYeh4pg@mail.gmail.com>
+References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
+	<1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
+	<CABuKBeJz_=Nxcen9QU_KHds6UJwUJL0yNpYDhvT3eFoV_EY5xA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1430901427-65146-2-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>, David Box <david.e.box-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Zhangfei Gao <zhangfei.gao-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Max Schwarz <max.schwarz-BGeptl67XyCzQB+pC5nmwQ@public.gmane.org>, Boris BREZILLON <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Anders Berg <anders.berg-1wcpHE2jlwO1Z/+hSey0Gg@public.gmane.org>, Neelesh Gupta <neelegup-23VcF4HTsmIX0ybBhKVfKdBPR1lH4CV8@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ray Jui <rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Wei Yan <sledge.yanwei-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Beniamino Galvani <b.galvani-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo
+Content-Type: text/plain; charset=ISO-8859-1
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <CABuKBeJz_=Nxcen9QU_KHds6UJwUJL0yNpYDhvT3eFoV_EY5xA@mail.gmail.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, May 06, 2015 at 04:37:05PM +0800, Eddie Huang wrote:
-> From: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add devicetree bindings for Mediatek Soc I2C driver.
-> 
-> Signed-off-by: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+2015-05-12 14:37 GMT+02:00 Matthias Brugger <matthias.bgg@gmail.com>:
+> Hi YH,
+>
+> 2015-05-11 11:26 GMT+02:00 YH Huang <yh.huang@mediatek.com>:
+>> Add display PWM driver support to modify backlight for MT8173/MT6595.
+>>
+>> Signed-off-by: YH Huang <yh.huang@mediatek.com>
+>> ---
+>>  drivers/pwm/Kconfig             |   9 ++
+>>  drivers/pwm/Makefile            |   1 +
+>>  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 235 insertions(+)
+>>  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
+>>
+>> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+>> index b1541f4..9edbb5a 100644
+>> --- a/drivers/pwm/Kconfig
+>> +++ b/drivers/pwm/Kconfig
+>> @@ -111,6 +111,15 @@ config PWM_CLPS711X
+>>           To compile this driver as a module, choose M here: the module
+>>           will be called pwm-clps711x.
+>>
+>> +config PWM_DISP_MEDIATEK
+>> +       tristate "MEDIATEK display PWM driver"
+>> +       depends on OF
+>> +       help
+>> +         Generic PWM framework driver for mediatek disp-pwm device.
+>> +
+>> +         To compile this driver as a module, choose M here: the module
+>> +         will be called pwm-disp-mediatek.
+>> +
+>>  config PWM_EP93XX
+>>         tristate "Cirrus Logic EP93xx PWM support"
+>>         depends on ARCH_EP93XX
+>> diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
+>> index ec50eb5..c5ff72a 100644
+>> --- a/drivers/pwm/Makefile
+>> +++ b/drivers/pwm/Makefile
+>> @@ -8,6 +8,7 @@ obj-$(CONFIG_PWM_BCM_KONA)      += pwm-bcm-kona.o
+>>  obj-$(CONFIG_PWM_BCM2835)      += pwm-bcm2835.o
+>>  obj-$(CONFIG_PWM_BFIN)         += pwm-bfin.o
+>>  obj-$(CONFIG_PWM_CLPS711X)     += pwm-clps711x.o
+>> +obj-$(CONFIG_PWM_DISP_MEDIATEK)        += pwm-disp-mediatek.o
+>>  obj-$(CONFIG_PWM_EP93XX)       += pwm-ep93xx.o
+>>  obj-$(CONFIG_PWM_FSL_FTM)      += pwm-fsl-ftm.o
+>>  obj-$(CONFIG_PWM_IMG)          += pwm-img.o
+>> diff --git a/drivers/pwm/pwm-disp-mediatek.c b/drivers/pwm/pwm-disp-mediatek.c
+>> new file mode 100644
+>> index 0000000..38293af
+>> --- /dev/null
+>> +++ b/drivers/pwm/pwm-disp-mediatek.c
+>> @@ -0,0 +1,225 @@
+>> +/*
+>> + * Mediatek display pulse-width-modulation controller driver.
+>> + * Copyright (c) 2015 MediaTek Inc.
+>> + * Author: YH Huang <yh.huang@mediatek.com>
+>> + *
+>> + * This program is free software; you can redistribute it and/or modify
+>> + * it under the terms of the GNU General Public License version 2 as
+>> + * published by the Free Software Foundation.
+>> + *
+>> + * This program is distributed in the hope that it will be useful,
+>> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+>> + * GNU General Public License for more details.
+>> + */
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/err.h>
+>> +#include <linux/io.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/pwm.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/slab.h>
+>> +
+>> +#define DISP_PWM_EN_OFF                        (0x0)
+>> +#define PWM_ENABLE_SHIFT               (0x0)
+>> +#define PWM_ENABLE_MASK                        (0x1 << PWM_ENABLE_SHIFT)
+>
+> Get rid of the _SHIFT which are actually zero, it will make the code
+> more readable.
+>
+>> +
+>> +#define DISP_PWM_COMMIT_OFF            (0x08)
+>> +#define PWM_COMMIT_SHIFT               (0x0)
+>> +#define PWM_COMMIT_MASK                        (0x1 << PWM_COMMIT_SHIFT)
+>> +
+>> +#define DISP_PWM_CON_0_OFF             (0x10)
+>> +#define PWM_CLKDIV_SHIFT               (0x10)
 
-Sascha, Uwe: Can you ack these patches if you are fine with them?
-Would be nice since you did quite some review and were involved in the
-"have-pmic" binding discussion.
+I prefer to have the shift values in decimal instead of hex, as it
+makes it easier to see which bits in the registers are the relevant
+ones.
+Sorry forgot that one.
 
-Thanks,
-
-   Wolfram
-
-> ---
->  .../devicetree/bindings/i2c/i2c-mt6577.txt         | 41 ++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> new file mode 100644
-> index 0000000..0ce6fa3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
-> @@ -0,0 +1,41 @@
-> +* Mediatek's I2C controller
-> +
-> +The Mediatek's I2C controller is used to interface with I2C devices.
-> +
-> +Required properties:
-> +  - compatible: value should be either of the following.
-> +      (a) "mediatek,mt6577-i2c", for i2c compatible with mt6577 i2c.
-> +      (b) "mediatek,mt6589-i2c", for i2c compatible with mt6589 i2c.
-> +      (c) "mediatek,mt8127-i2c", for i2c compatible with mt8127 i2c.
-> +      (d) "mediatek,mt8135-i2c", for i2c compatible with mt8135 i2c.
-> +      (e) "mediatek,mt8173-i2c", for i2c compatible with mt8173 i2c.
-> +  - reg: physical base address of the controller and dma base, length of memory
-> +    mapped region.
-> +  - interrupts: interrupt number to the cpu.
-> +  - clock-div: the fixed value for frequency divider of clock source in i2c
-> +    module. Each IC may be different.
-> +  - clocks: clock name from clock manager
-> +  - clock-names: Must include "main" and "dma", if enable have-pmic need include
-> +    "pmic" extra.
-> +
-> +Optional properties:
-> +  - clock-frequency: Frequency in Hz of the bus when transfer, the default value
-> +    is 100000.
-> +  - mediatek,have-pmic: platform can control i2c form special pmic side.
-> +    Only mt6589 and mt8135 support this feature.
-> +  - mediatek,use-push-pull: IO config use push-pull mode.
-> +
-> +Example:
-> +
-> +	i2c0: i2c@1100d000 {
-> +			compatible = "mediatek,mt6577-i2c";
-> +			reg = <0x1100d000 0x70>,
-> +			      <0x11000300 0x80>;
-> +			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> +			clock-frequency = <400000>;
-> +			mediatek,have-pmic;
-> +			clock-div = <16>;
-> +			clocks = <&i2c0_ck>, <&ap_dma_ck>;
-> +			clock-names = "main", "dma";
-> +	};
-> +
-> -- 
-> 1.8.1.1.dirty
-> 
+Cheers,
+Matthias
