@@ -1,74 +1,45 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
-Date: Tue, 12 May 2015 17:05:40 +0100
-Message-ID: <20150512160540.GB3066@sirena.org.uk>
-References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
- <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
- <20150508175306.GG2761@sirena.org.uk>
- <1431434356.2128.9.camel@mhfsdcap03>
+Subject: Re: [PATCH] ASoC: dapm: Modify widget stream name according to prefix
+Date: Tue, 12 May 2015 19:07:39 +0100
+Message-ID: <20150512180738.GN3066@sirena.org.uk>
+References: <1431311813-37430-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ZfOjI3PrQbgiZnxM"
+	protocol="application/pgp-signature"; boundary="N/GrjenRD+RJfyz+"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1431434356.2128.9.camel@mhfsdcap03>
+In-Reply-To: <1431311813-37430-1-git-send-email-koro.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: leilk liu <leilk.liu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+To: Koro Chen <koro.chen@mediatek.com>
+Cc: matthias.bgg@gmail.com, perex@perex.cz, tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---ZfOjI3PrQbgiZnxM
+--N/GrjenRD+RJfyz+
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, May 12, 2015 at 08:39:16PM +0800, leilk liu wrote:
-> On Fri, 2015-05-08 at 18:53 +0100, Mark Brown wrote:
-> > On Fri, May 08, 2015 at 04:55:42PM +0800, leilk.liu@mediatek.com wrote:
+On Mon, May 11, 2015 at 10:36:53AM +0800, Koro Chen wrote:
+> When there is prefix specified, currently we will add this prefix in
+> widget->name, but not in widget->sname.
+> it causes failure at snd_soc_dapm_link_dai_widgets:
 
-> Could you tell me more details about "You should also be using the core
-> helpers for DMA mapping"?
+Applied, thanks.
 
-Implement can_dma() - look for drivers providing that for examples.
-
-> > > +static const struct of_device_id mtk_spi_of_match[] =3D {
-> > > +	{ .compatible =3D "mediatek,mt6589-spi", .data =3D (void *)COMPAT_M=
-T6589},
-> > > +	{ .compatible =3D "mediatek,mt8173-spi", .data =3D (void *)COMPAT_M=
-T8173},
-> > > +	{}
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, mtk_spi_of_match);
-
-> > There were three compatible strings listed in the DT binding but only
-> > two here.
-
-> MT6589 and MT8135 is compatible;=20
-> For MT8135 IC, it can use the follow way in dts to probe:
->   compatible =3D "mediatek,mt8135-spi",=20
-> 	       "mediatek,mt6589-spi";
-
-> And I test it's ok on MT8135 platform. So I add struct of_device_id
-> mtk_spi_of_match like this in spi driver code.
-
-You should list all the compatibles documented in the binding here, if
-some of them are the same just have them map to a single constant.
-
---ZfOjI3PrQbgiZnxM
+--N/GrjenRD+RJfyz+
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: Digital signature
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJVUiTUAAoJECTWi3JdVIfQyRsH/RIfXC/axE4Vnj/fc10xN1sA
-ouHn1R2VNR2a22+BW2TiEV50STna+tHzOd/O3jbnLzt8PFwQhFzQEiWJnkm0l1ZP
-zi+fFz48mMUuCuzEuW5qKyyw6jI2zXrngAE3Pn/dDIbhxNQJOGmNxsZbShNF0Gf9
-3/KSrnI8lter1xWXJojNkfA8BYPy0PHDCECqIVBEWpd4BaOf0RKnZTeDUW3fU9ZB
-73zwIKWNCWvPjdx7igOPi2Th6fICK8wfVEW2ByR1pEEsHclbTCYAT08+jzzAU1Vp
-SP70datG78Pi/ttBJuh3fgZ9UCGy/pJjb0gnTj6gD+DCyuTrW62WIf/faTtT5NA=
-=2z4G
+iQEcBAEBCAAGBQJVUkFqAAoJECTWi3JdVIfQs+0H/RZvf/6+FqJqf/33naIp/cf3
+DMD1iuPlxCJUxezEMofeoZXxSwGZP87bBrBjaZPJThOKtV2Cs9SgejcnQS38HCDB
+kMdxrn0yXlt/vQG77mqVYnVJ6NJ+ivEOlaOdNPJAIVCi2QmZPGp9c5GNUN8kcRBi
+xjED0aO37G7W6/XKwN/uyFK8qfEXIwg2Mm4K01llrQ7x/imAU92FG1dkGRw2tIXn
+cGqjcFNfyTt+5lLQUzng3tW8xALBqo/Bv/hZWIsDqBqVjMhim1x1/7HgJ5uuNH9Z
+w9ku5bEX9SCDZ/engev68pY4HH4AOsqGheDS3fGu0dYNVz8LumXsi4X+p+GM+gE=
+=16xX
 -----END PGP SIGNATURE-----
 
---ZfOjI3PrQbgiZnxM--
+--N/GrjenRD+RJfyz+--
