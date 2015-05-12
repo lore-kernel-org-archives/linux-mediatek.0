@@ -1,102 +1,75 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
-Date: Tue, 12 May 2015 15:47:37 +0200
-Message-ID: <20150512134737.GW6325@pengutronix.de>
-References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
- <1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
- <CABuKBe+cuE=NVjm8UOC9=z2rgxR8_fmn_UEMSQbK8ywCGvskTg@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
+Date: Tue, 12 May 2015 16:34:16 +0200
+Message-ID: <CABuKBe+e2pjFmQ9Ne7XAeVwJzS8KOXa09CUUZPbYG=oVmP3ikA@mail.gmail.com>
+References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
+	<1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
+	<20150512133202.GA24684@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CABuKBe+cuE=NVjm8UOC9=z2rgxR8_fmn_UEMSQbK8ywCGvskTg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, =Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=ISO-8859-1
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150512133202.GA24684-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 12, 2015 at 01:52:06PM +0200, Matthias Brugger wrote:
-> 2015-05-11 21:23 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> > This adds a power domain driver for the Mediatek SCPSYS unit.
-> >
-> > The System Control Processor System (SCPSYS) has several power
-> > management related tasks in the system. The tasks include thermal
-> > measurement, dynamic voltage frequency scaling (DVFS), interrupt
-> > filter and lowlevel sleep control. The System Power Manager (SPM)
-> > inside the SCPSYS is for the MTCMOS power domain control.
-> >
-> > For now this driver only adds power domain support, the more
-> > advanced features are not yet supported. The driver implements
-> > the generic PM domain device tree bindings, the first user will
-> > most likely be the Mediatek AFE audio driver.
-> >
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   2 +
-> >  drivers/soc/mediatek/Kconfig                       |   8 +
-> >  drivers/soc/mediatek/Makefile                      |   1 +
-> >  drivers/soc/mediatek/mtk-scpsys.c                  | 416 +++++++++++++++++++++
-> >  include/dt-bindings/power/mt8173-power.h           |  15 +
-> >  5 files changed, 442 insertions(+)
-> >  create mode 100644 drivers/soc/mediatek/mtk-scpsys.c
-> >  create mode 100644 include/dt-bindings/power/mt8173-power.h
-> >
-> > diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > index 4764a03..87f2091 100644
-> > --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > @@ -15,6 +15,7 @@ Required properties:
-> >  - compatible: Must be "mediatek,mt8173-scpsys"
-> >  - #power-domain-cells: Must be 1
-> >  - reg: Address range of the SCPSYS unit
-> > +- infracfg: must contain a phandle to the infracfg controller
-> >
-> >  Example:
-> >
-> > @@ -22,6 +23,7 @@ Example:
-> >                 #power-domain-cells = <1>;
-> >                 compatible = "mediatek,mt8173-scpsys";
-> >                 reg = <0 0x10006000 0 0x1000>;
-> > +               infracfg = <&infracfg>;
-> >         };
+2015-05-12 15:32 GMT+02:00 Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
+> On Mon, May 11, 2015 at 05:26:22PM +0800, YH Huang wrote:
+>> Add display PWM driver support to modify backlight for MT8173/MT6595.
+>>
+>> Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>  drivers/pwm/Kconfig             |   9 ++
+>>  drivers/pwm/Makefile            |   1 +
+>>  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 235 insertions(+)
+>>  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
+>>
+>> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
+>> index b1541f4..9edbb5a 100644
+>> --- a/drivers/pwm/Kconfig
+>> +++ b/drivers/pwm/Kconfig
+>> @@ -111,6 +111,15 @@ config PWM_CLPS711X
+>>         To compile this driver as a module, choose M here: the module
+>>         will be called pwm-clps711x.
+>>
+>> +config PWM_DISP_MEDIATEK
+>
+> Please make this "PWM_MEDIATEK_DISP" so we can keep everything sorted by
+> vendor.
+>
+>> +     tristate "MEDIATEK display PWM driver"
+>
+> "MediaTek"?
+>
+>> +     depends on OF
+>
+> Technically I think you need depends on HAS_IOMEM here to avoid breakage
+> on randconfig builds.
+>
+>> +     help
+>> +       Generic PWM framework driver for mediatek disp-pwm device.
+>
+> "MediaTek"? Also perhaps this should describe what this PWM is instead
+> of just the "disp-pwm" which leaves everyone guessing what it is. From
+> the name I'd expect it to be the PWM that is used to control the
+> backlight brightness for display, but I think this description should
+> say that explicitly.
+>
+>> +
+>> +       To compile this driver as a module, choose M here: the module
+>> +       will be called pwm-disp-mediatek.
+>
+> pwm-mediatek-disp
 
-This hunk shouldn't be here btw, fixed.
+I would prefert pwm-mtk-disp which is in line with the other drivers.
+Also I have to admit that unfortunately the naming is not uniformly
+throughout the kernel.
 
-> > +       pd_data->num_domains = NUM_DOMAINS;
-> > +
-> > +       for (i = 0; i < NUM_DOMAINS; i++) {
-> > +               struct scp_domain *scpd = &scp->domains[i];
-> > +
-> > +               if (scp_domain_data[i].clk_name) {
-> > +                       const char *name = scp_domain_data[i].clk_name;
-> > +
-> > +                       scpd->clk = devm_clk_get(&pdev->dev, name);
-> > +                       if (IS_ERR(scpd->clk)) {
-> > +                               dev_err(&pdev->dev, "Failed to get %s clk: %ld\n",
-> > +                                               name, PTR_ERR(scpd->clk));
-> > +                               return PTR_ERR(scpd->clk);
-> > +                       }
-> > +               }
-> > +       }
-> > +
-> > +       for (i = 0; i < NUM_DOMAINS; i++) {
-> 
-> Why two for loops?
-
-I'm sure there was a reason in earlier versions, but now it seems rather
-useless. I'll make this a single loop.
-
-> 
-> static const?
-
-Yes.
-
-Thanks for reviewing.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Thanks,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
