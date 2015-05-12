@@ -1,75 +1,74 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
-Date: Tue, 12 May 2015 16:34:16 +0200
-Message-ID: <CABuKBe+e2pjFmQ9Ne7XAeVwJzS8KOXa09CUUZPbYG=oVmP3ikA@mail.gmail.com>
-References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
-	<1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
-	<20150512133202.GA24684@ulmo.nvidia.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Tue, 12 May 2015 17:05:40 +0100
+Message-ID: <20150512160540.GB3066@sirena.org.uk>
+References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
+ <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
+ <20150508175306.GG2761@sirena.org.uk>
+ <1431434356.2128.9.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150512133202.GA24684-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ZfOjI3PrQbgiZnxM"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1431434356.2128.9.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: leilk liu <leilk.liu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Eddie Huang <eddie.huang@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-05-12 15:32 GMT+02:00 Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
-> On Mon, May 11, 2015 at 05:26:22PM +0800, YH Huang wrote:
->> Add display PWM driver support to modify backlight for MT8173/MT6595.
->>
->> Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>  drivers/pwm/Kconfig             |   9 ++
->>  drivers/pwm/Makefile            |   1 +
->>  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
->>  3 files changed, 235 insertions(+)
->>  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
->>
->> diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
->> index b1541f4..9edbb5a 100644
->> --- a/drivers/pwm/Kconfig
->> +++ b/drivers/pwm/Kconfig
->> @@ -111,6 +111,15 @@ config PWM_CLPS711X
->>         To compile this driver as a module, choose M here: the module
->>         will be called pwm-clps711x.
->>
->> +config PWM_DISP_MEDIATEK
->
-> Please make this "PWM_MEDIATEK_DISP" so we can keep everything sorted by
-> vendor.
->
->> +     tristate "MEDIATEK display PWM driver"
->
-> "MediaTek"?
->
->> +     depends on OF
->
-> Technically I think you need depends on HAS_IOMEM here to avoid breakage
-> on randconfig builds.
->
->> +     help
->> +       Generic PWM framework driver for mediatek disp-pwm device.
->
-> "MediaTek"? Also perhaps this should describe what this PWM is instead
-> of just the "disp-pwm" which leaves everyone guessing what it is. From
-> the name I'd expect it to be the PWM that is used to control the
-> backlight brightness for display, but I think this description should
-> say that explicitly.
->
->> +
->> +       To compile this driver as a module, choose M here: the module
->> +       will be called pwm-disp-mediatek.
->
-> pwm-mediatek-disp
 
-I would prefert pwm-mtk-disp which is in line with the other drivers.
-Also I have to admit that unfortunately the naming is not uniformly
-throughout the kernel.
+--ZfOjI3PrQbgiZnxM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Tue, May 12, 2015 at 08:39:16PM +0800, leilk liu wrote:
+> On Fri, 2015-05-08 at 18:53 +0100, Mark Brown wrote:
+> > On Fri, May 08, 2015 at 04:55:42PM +0800, leilk.liu@mediatek.com wrote:
+
+> Could you tell me more details about "You should also be using the core
+> helpers for DMA mapping"?
+
+Implement can_dma() - look for drivers providing that for examples.
+
+> > > +static const struct of_device_id mtk_spi_of_match[] =3D {
+> > > +	{ .compatible =3D "mediatek,mt6589-spi", .data =3D (void *)COMPAT_M=
+T6589},
+> > > +	{ .compatible =3D "mediatek,mt8173-spi", .data =3D (void *)COMPAT_M=
+T8173},
+> > > +	{}
+> > > +};
+> > > +MODULE_DEVICE_TABLE(of, mtk_spi_of_match);
+
+> > There were three compatible strings listed in the DT binding but only
+> > two here.
+
+> MT6589 and MT8135 is compatible;=20
+> For MT8135 IC, it can use the follow way in dts to probe:
+>   compatible =3D "mediatek,mt8135-spi",=20
+> 	       "mediatek,mt6589-spi";
+
+> And I test it's ok on MT8135 platform. So I add struct of_device_id
+> mtk_spi_of_match like this in spi driver code.
+
+You should list all the compatibles documented in the binding here, if
+some of them are the same just have them map to a single constant.
+
+--ZfOjI3PrQbgiZnxM
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVUiTUAAoJECTWi3JdVIfQyRsH/RIfXC/axE4Vnj/fc10xN1sA
+ouHn1R2VNR2a22+BW2TiEV50STna+tHzOd/O3jbnLzt8PFwQhFzQEiWJnkm0l1ZP
+zi+fFz48mMUuCuzEuW5qKyyw6jI2zXrngAE3Pn/dDIbhxNQJOGmNxsZbShNF0Gf9
+3/KSrnI8lter1xWXJojNkfA8BYPy0PHDCECqIVBEWpd4BaOf0RKnZTeDUW3fU9ZB
+73zwIKWNCWvPjdx7igOPi2Th6fICK8wfVEW2ByR1pEEsHclbTCYAT08+jzzAU1Vp
+SP70datG78Pi/ttBJuh3fgZ9UCGy/pJjb0gnTj6gD+DCyuTrW62WIf/faTtT5NA=
+=2z4G
+-----END PGP SIGNATURE-----
+
+--ZfOjI3PrQbgiZnxM--
