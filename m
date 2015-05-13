@@ -1,62 +1,34 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RFC PATCH] iommu: add ARM short descriptor page table allocator.
-Date: Wed, 13 May 2015 10:52:43 +0800
-Message-ID: <1431485563.4799.2.camel@mhfsdcap03>
-References: <1430206881-18294-1-git-send-email-yong.wu@mediatek.com>
- <CABuKBeKupM0zmWu6T3g5omH7PRo9Oxp85bfpQVhC1ur16_dzvg@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABuKBeKupM0zmWu6T3g5omH7PRo9Oxp85bfpQVhC1ur16_dzvg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v3] Thermal hardware trip points and Mediatek thermal driver
+Date: Wed, 13 May 2015 10:52:28 +0200
+Message-ID: <1431507163-19933-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-pm@vger.kernel.org
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-05-12 at 11:15 +0200, Matthias Brugger wrote:
-> 2015-04-28 9:41 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
-> > This patch is for ARM Short Descriptor Format.It has 2-levels
-> > pagetable and the allocator supports 4K/64K/1M/16M.
-> >
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-[snip]
-> > +static phys_addr_t arm_short_iova_to_phys(struct io_pgtable_ops *ops,
-> > +                                         unsigned long iova)
-> > +{
-> > +       struct arm_short_io_pgtable *data = io_pgtable_short_ops_to_data(ops);
-> > +       arm_short_iopte *pte, *pgd = data->pgd;
-> > +       phys_addr_t pa = 0;
-> > +
-> > +       pgd += ARM_SHORT_PGD_IDX(iova);
-> > +
-> > +       if (ARM_SHORT_F_PGD_TYPE_IS_PAGE(*pgd)) {
-> > +               pte = arm_short_get_pte_in_pgd(*pgd, iova);
-> > +
-> > +               if (ARM_SHORT_F_PTE_TYPE_GET(*pte)
-> > +                   == ARM_SHORT_F_PTE_TYPE_LARGE) {
-> > +                       pa = (*pte) & ARM_SHORT_F_PTE_PA_LARGE_MSK;
-> > +                       pa |= iova & (~ARM_SHORT_F_PTE_PA_LARGE_MSK);
-> > +               } else if (ARM_SHORT_F_PTE_TYPE_GET(*pte)
-> > +                          == ARM_SHORT_F_PTE_TYPE_SMALL) {
-> 
-> Would make it easier to read:
-> u8 pte_type;
-> 
-> [...]
-> 
-> pte_type = ARM_SHORT_F_PTE_TYPE_GET(*pte)
-> if (pte_type == ARM_SHORT_F_PTE_TYPE_LARGE) {
-> [...]
-> } else if (pte_type == ARM_SHORT_F_PTE_TYPE_SMALL) {
-> [...]
-Hi Matthias,
-	Thanks for your review.I will fix this in next version.
+This series adds support for hardware trip points. It picks up earlier
+work from Mikko Perttunen. Mikko implemented hardware trip points as part
+of the device tree support. It was suggested back then to move the
+functionality to the thermal core instead of putting more code into the
+device tree support. This series does exactly that.
+
+The majority of the patches are cleanups and fixes. Patch 11 introduces
+hardware tracked trip points and finally a driver for the Mediatek
+thermal controller is introduced as the first user is added.
+
+All comments welcome
+
+Changes since v2:
+- Add Mediatek thermal controller driver as first user for hardware trip
+  points
+
+Changes since v1:
+- Use int instead of unsigned long consistently for temperatures
+- Instead of misfixing the emulation code add a comment how the
+  code is meant
+- Add doc entry for .set_trips callback
+- initialize prev_low_trip/prev_high_trip properly
+- get tz->lock before calling thermal_zone_set_trips()
+
