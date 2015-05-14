@@ -1,74 +1,67 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH 05/10] pinctrl: mediatek: Add Pinctrl/GPIO driver for
- mt6397.
-Date: Thu, 14 May 2015 08:22:28 +0100
-Message-ID: <20150514072228.GB20358@x1>
-References: <1431567346-33780-1-git-send-email-hongzhou.yang@mediatek.com>
- <1431567346-33780-6-git-send-email-hongzhou.yang@mediatek.com>
+From: Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>
+Subject: Re: [RFC][PATCH 2/2] drm/mediatek: Add DRM Driver for Mediatek SoC
+ MT8173.
+Date: Thu, 14 May 2015 11:16:54 +0200
+Message-ID: <1431595014.2650.50.camel@x220>
+References: <1431530626-31493-1-git-send-email-ck.hu@mediatek.com>
+	 <1431530626-31493-3-git-send-email-ck.hu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1431567346-33780-6-git-send-email-hongzhou.yang@mediatek.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Samuel Ortiz <sameo@linux.intel.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Ashwin Chaugule <ashwin.chaugule@linaro.org>, "Joe.C" <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.orgl
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-api-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1431530626-31493-3-git-send-email-ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-api-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ashwin Chaugule <ashwin.chaugule-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Grant Likely <grant.likely-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Graeme Gregory <graeme.gregory-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-api-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 13 May 2015, Hongzhou Yang wrote:
+A naive question and a nit follow. That's probably not what you'd like
+to see for an RFC, but the patch got tangled up in my mail filter
+anyhow.
 
-> Add mt6397 support using mediatek common pinctrl driver.
->=20
-> mt6397 is a PMIC, and pinctrl/GPIO is part of 6397 chip.
-> Pinctrl/GPIO driver should obtain regmap from PMIC,
-> so adding this support to common code.
->=20
-> Also, mt6397 is no need to support interrupt controller,
-> so changing common code to skip it.
->=20
-> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-> ---
->  drivers/mfd/mt6397-core.c                     |    3 +
+On Wed, 2015-05-13 at 23:23 +0800, CK Hu wrote:
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/Kconfig
 
-Please break this out into a separate patch that I can take through my
-tree.  There is no need for you to bind up changes in multiple
-subsystems here.
+> +config DRM_MEDIATEK_FBDEV
+> +	bool "Enable legacy fbdev support for Mediatek DRM"
+> +	depends on DRM_MEDIATEK
+> +	select FB_SYS_FILLRECT
+> +	select FB_SYS_COPYAREA
+> +	select FB_SYS_IMAGEBLIT
+> +	select DRM_KMS_FB_HELPER
+> +	help
+> +	  Choose this option if you have a need for the legacy
+> +	  fbdev support.  Note that this support also provides
+> +	  the Linux console on top of the Mediatek DRM mode
+> +	  setting driver.
 
->  drivers/pinctrl/mediatek/Kconfig              |    6 +
->  drivers/pinctrl/mediatek/Makefile             |    1 +
->  drivers/pinctrl/mediatek/pinctrl-mt6397.c     |   78 +++++
->  drivers/pinctrl/mediatek/pinctrl-mt8135.c     |    2 +-
->  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |    2 +-
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   13 +-
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    3 +-
->  drivers/pinctrl/mediatek/pinctrl-mtk-mt6397.h |  424 +++++++++++++++=
-++++++++++
->  9 files changed, 527 insertions(+), 5 deletions(-)
->  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6397.c
->  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6397.h
->=20
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 09bc780..012c620 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -34,6 +34,9 @@ static const struct mfd_cell mt6397_devs[] =3D {
->  	}, {
->  		.name =3D "mt6397-clk",
->  		.of_compatible =3D "mediatek,mt6397-clk",
-> +	}, {
-> +		.name =3D "mediatek-mt6397-pinctrl",
-> +		.of_compatible =3D "mediatek,mt6397-pinctrl",
->  	},
->  };
+Naive question, as I know next to nothing about drivers/gpu/drm.
+DRM_MEDIATEK_FBDEV isn't used anywhere, as far as I can see. So all that
+setting this Kconfig symbol does is selecting four other Kconfig
+symbols. Is selecting those four symbols enough to get fbdev support?
+Taking the Cargo Cult approach of looking at similar symbols
+(DRM_I915_FBDEV, DRM_MSM_FBDEV, DRM_STI_FBDEV, and DRM_TEGRA_FBDEV) I
+noticed that they all do a bit more than just selecting other symbols.
 
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
---
-To unsubscribe from this list: send the line "unsubscribe linux-gpio" i=
-n
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/mediatek_drm_drv.c
+
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+
+This states the license of this driver is GPL v2. (Identical comments
+seem to be part of all files added in this patch.)
+
+> +MODULE_LICENSE("GPL");
+
+And, according to include/linux/module.h, this states the license is GPL
+v2 or later. So I think that either the comment at the top of these
+files or the ident used in the MODULE_LICENSE() macro needs to be
+changed.
+
+Thanks,
+
+
+Paul Bolle
