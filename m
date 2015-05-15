@@ -1,70 +1,61 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 4/4] ARM64: MediaTek MT8173: Add SCPSYS device node
-Date: Fri, 15 May 2015 22:17:43 +0800
-Message-ID: <CAGS+omAWBHMgY45qrqU-ERDEniscoJ+NgVWVjT=kTKMHPdWyEw@mail.gmail.com>
-References: <1431349882-12260-1-git-send-email-s.hauer@pengutronix.de> <1431349882-12260-5-git-send-email-s.hauer@pengutronix.de>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: Mediatek pinctrl driver optimize and add Mediatek SoC
+ Pinctrl/GPIO/EINT driver for mt6397/mt8127.
+Date: Fri, 15 May 2015 23:09:13 +0800
+Message-ID: <1431702553.21788.9.camel@mtksdaap41>
+References: <1431567346-33780-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1431349882-12260-5-git-send-email-s.hauer@pengutronix.de>
+In-Reply-To: <1431567346-33780-1-git-send-email-hongzhou.yang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Samuel Ortiz <sameo@linux.intel.com>, Lee Jones <lee.jones@linaro.org>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Ashwin Chaugule <ashwin.chaugule@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infr
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 11, 2015 at 9:11 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> This adds the SCPSYS device node to the MT8173 dtsi file.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 924fdb6..3c569b5 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -125,6 +125,18 @@
->                                                 <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
->                 };
->
-> +               scpsys: scpsys@10006000 {
-> +                       compatible = "mediatek,mt8173-scpsys";
-> +                       #power-domain-cells = <1>;
-> +                       reg = <0 0x10006000 0 0x1000>;
-> +                       clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> +                               <&topckgen CLK_TOP_MFG_SEL>,
-> +                               <&topckgen CLK_TOP_VENC_SEL>,
-> +                               <&topckgen CLK_TOP_MM_SEL>,
-> +                               <&topckgen CLK_TOP_VENC_LT_SEL>;
-> +                       clock-names = "vdec", "mfg", "venc", "disp", "ven2";
+On Wed, 2015-05-13 at 18:35 -0700, Hongzhou Yang wrote:
+> This series patches include below changes:
+>   - Data struct optimize and remove unused member.
+>   - Since several mediatek soc use similiar input enable/smt/pull setting, add those settings into common code.
+>   - The first version of adding Mediatek SoC Pinctrl/GPIO driver for mt6397, mt6397 has 41 pins.
+>   - The first version of adding Mediatek SoC Pinctrl/GPIO/EINT driver for mt8127, mt8127 has 143 pins.
+> 
+> 
+> Hongzhou Yang (6):
+>   pinctrl: mediatek: add ies/smt control to common code.
+>   dt-bindings: mediatek: Modify pinctrl bindings for mt6397.
+>   pinctrl: mediatek: Add Pinctrl/GPIO driver for mt6397.
+>   pinctrl: dt bindings: mt6397: Add pinfunc header file for mt6397.
+>   arm64: dts: mt8173-evb: Add pinctrl/GPIO node for mt6397.
+>   ARM: dts: mt8135-evbp1: Add pinctrl/GPIO node for mt6397.
+> 
+> Yingjoe Chen (4):
+>   pinctrl: mediatek: data struct optimize and remove unused member
+>   pinctrl: mediatek: add mtk_pctrl_spec_pull_set_samereg common code
+>   pinctrl: mediatek: add pinctrl/GPIO/EINT driver for mt8127
+>   ARM: dts: mt8127: add pinctrl/GPIO/EINT node for mt8127
 
-(1) I think people like to align multi-line dts field values, so there
-should be one more ' ' before each <&topckgen ...>.
 
-(2) it is a bit awkward that these names do not match their clock
-names.  This seems more straightforward:
+Hi,
 
-  clock-names = "vdec", "mfg", "venc", "mm", "venc_lt";
+There are several patches in this series, and they should go to
+different trees. Will it be easier for maintainers if we rearrange
+patches in the following order?
 
-(3) the scpsys binding patch does not list the clock fields.
+  dt-bindings: mediatek: Modify pinctrl bindings for mt6397.
+  pinctrl: dt bindings: mt6397: Add pinfunc header file for mt6397.
+  pinctrl: mediatek: data struct optimize and remove unused member
+  pinctrl: mediatek: add mtk_pctrl_spec_pull_set_samereg common code
+  pinctrl: mediatek: add ies/smt control to common code.
+  pinctrl: mediatek: add Pinctrl/GPIO driver for mt6397.
+  pinctrl: mediatek: add pinctrl/GPIO/EINT driver for mt8127
+  mfd: mediatek: add GPIO sub module support into mfd.
+  ARM: dts: mt8127: add pinctrl/GPIO/EINT node for mt8127
+  arm64: dts: mt8173-evb: add pinctrl/GPIO node for mt6397.
+  ARM: dts: mt8135-evbp1: add pinctrl/GPIO node for mt6397.
 
-(4) I don't think a patch with these CLK_TOP_* has been sent to the
-list for review yet.
+To avoid build fail, the last 2 should not be merged until the second
+one is merged into mainline.
 
-Thanks,
--Dan
-
-> +               };
-> +
->                 sysirq: intpol-controller@10200620 {
->                         compatible = "mediatek,mt8173-sysirq",
->                                         "mediatek,mt6577-sysirq";
-> --
-> 2.1.4
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+Joe.C
