@@ -1,38 +1,64 @@
-From: Ricky Liang <jcliang@chromium.org>
-Subject: [PATCH] clk: mediatek: Initialize clk flags
-Date: Fri, 15 May 2015 14:22:45 +0800
-Message-ID: <1431670969-1996-1-git-send-email-jcliang@chromium.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: Ricky Liang <jcliang@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
-	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+From: leilk liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Fri, 15 May 2015 15:38:42 +0800
+Message-ID: <1431675522.2128.13.camel@mhfsdcap03>
+References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
+	 <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
+	 <20150508175306.GG2761@sirena.org.uk> <1431434356.2128.9.camel@mhfsdcap03>
+	 <20150512160540.GB3066@sirena.org.uk>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150512160540.GB3066-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The variable init (struct clk_init_data) is allocated on the stack.
-We weren't initializing the .flags field, so it contains random junk,
-which can cause all kinds of interesting issues when the flags are
-parsed by clk_register.
+Dear Mark,
 
-The best solution seems to just pass on the flags passed in to our
-clk_register wrappers.
+Thanks for your reply.
 
-Signed-off-by: Ricky Liang <jcliang@chromium.org>
----
- drivers/clk/mediatek/clk-pll.c | 1 +
- 1 file changed, 1 insertion(+)
+On Tue, 2015-05-12 at 17:05 +0100, Mark Brown wrote:
+> On Tue, May 12, 2015 at 08:39:16PM +0800, leilk liu wrote:
+> > On Fri, 2015-05-08 at 18:53 +0100, Mark Brown wrote:
+> > > On Fri, May 08, 2015 at 04:55:42PM +0800, leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> 
+> > Could you tell me more details about "You should also be using the core
+> > helpers for DMA mapping"?
+> 
+> Implement can_dma() - look for drivers providing that for examples.
+> 
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 66154ca..72fe307 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -289,6 +289,7 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 	init.ops = &mtk_pll_ops;
- 	init.parent_names = &parent_name;
- 	init.num_parents = 1;
-+	init.flags = data->flags;
- 
- 	clk = clk_register(NULL, &pll->hw);
- 
--- 
-2.1.2
+MTK spi hardware uses the dmaengine in spi controller. According to
+datasheet, spi driver just need to enable dma register bit and write a
+physical address to relevant dma address register, so I think it may be
+complex while the driver supports can_dma.
+
+> > > > +static const struct of_device_id mtk_spi_of_match[] = {
+> > > > +	{ .compatible = "mediatek,mt6589-spi", .data = (void *)COMPAT_MT6589},
+> > > > +	{ .compatible = "mediatek,mt8173-spi", .data = (void *)COMPAT_MT8173},
+> > > > +	{}
+> > > > +};
+> > > > +MODULE_DEVICE_TABLE(of, mtk_spi_of_match);
+> 
+> > > There were three compatible strings listed in the DT binding but only
+> > > two here.
+> 
+> > MT6589 and MT8135 is compatible; 
+> > For MT8135 IC, it can use the follow way in dts to probe:
+> >   compatible = "mediatek,mt8135-spi", 
+> > 	       "mediatek,mt6589-spi";
+> 
+> > And I test it's ok on MT8135 platform. So I add struct of_device_id
+> > mtk_spi_of_match like this in spi driver code.
+> 
+> You should list all the compatibles documented in the binding here, if
+> some of them are the same just have them map to a single constant.
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
