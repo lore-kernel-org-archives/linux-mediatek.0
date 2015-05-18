@@ -1,42 +1,50 @@
 From: Ricky Liang <jcliang@chromium.org>
-Subject: Re: [PATCH v2] clk: mediatek: Initialize clk_init_data
-Date: Mon, 18 May 2015 21:57:11 +0800
-Message-ID: <CAAJzSMdFJZwx5E7d9jC2VFeujfsoTNy4SieUQjiWYLUrKajKgA@mail.gmail.com>
-References: <1431920513-1491-1-git-send-email-jcliang@chromium.org>
-	<20150518055421.GL6325@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Subject: [PATCH v3] clk: mediatek: Initialize clk_init_data
+Date: Mon, 18 May 2015 22:00:26 +0800
+Message-ID: <1431957632-2182-1-git-send-email-jcliang@chromium.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150518055421.GL6325@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>, "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+To: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Ricky Liang <jcliang@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Henry Chen <henryc.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
+The variable init (struct clk_init_data) is allocated on the stack.
+We weren't initializing the .flags field, so it contains random junk,
+which can cause all kinds of interesting issues when the flags are
+parsed by clk_register.
 
-Sure. I can fix clk-gate.c as well. New patch on the way...
+Signed-off-by: Ricky Liang <jcliang@chromium.org>
+---
+ drivers/clk/mediatek/clk-gate.c | 2 +-
+ drivers/clk/mediatek/clk-pll.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
--Ricky
-
-On Mon, May 18, 2015 at 1:54 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> Hi Ricky,
->
-> On Mon, May 18, 2015 at 11:41:49AM +0800, Ricky Liang wrote:
->> The variable init (struct clk_init_data) is allocated on the stack.
->> We weren't initializing the .flags field, so it contains random junk,
->> which can cause all kinds of interesting issues when the flags are
->> parsed by clk_register.
->
-> It seems we have the same problem in clk-gate.c aswell. We do initialize
-> do .flags field there, so this is no urgent problem, but we might get a
-> real problem when additional fields are added to struct clk_init_data.
-> Care to fix that aswell along with this patch?
->
-> Sascha
->
-> --
-> Pengutronix e.K.                           |                             |
-> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-> Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index 9d77ee3..5702036 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -109,7 +109,7 @@ struct clk *mtk_clk_register_gate(
+ {
+ 	struct mtk_clk_gate *cg;
+ 	struct clk *clk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 
+ 	cg = kzalloc(sizeof(*cg), GFP_KERNEL);
+ 	if (!cg)
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 66154ca..44409e9 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -268,7 +268,7 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 		void __iomem *base)
+ {
+ 	struct mtk_clk_pll *pll;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+ 	const char *parent_name = "clk26m";
+ 
+-- 
+2.1.2
