@@ -1,95 +1,111 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [RFC v2 PATCH 0/6] MT8173 IOMMU SUPPORT
-Date: Mon, 18 May 2015 14:09:16 +0200
-Message-ID: <CABuKBe+3EOx1viFJzXKirY_J9g7ChN+TOZceBvnvff3PdKe7Aw@mail.gmail.com>
-References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 11/15] thermal: thermal: Add support for hardware-tracked
+ trip points
+Date: Mon, 18 May 2015 14:09:44 +0200
+Message-ID: <20150518120944.GQ6325@pengutronix.de>
+References: <1431507163-19933-1-git-send-email-s.hauer@pengutronix.de>
+ <1431507163-19933-12-git-send-email-s.hauer@pengutronix.de>
+ <5559ABAA.6040001@kapsi.fi>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1431683009-18158-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5559ABAA.6040001@kapsi.fi>
+Sender: linux-pm-owner@vger.kernel.org
+To: Mikko Perttunen <mikko.perttunen@kapsi.fi>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Yong,
+Hi Mikko,
 
-2015-05-15 11:43 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
->   This patch adds support for m4u(Multimedia Memory Management Unit),
-> Currently it only support the m4u with 2 levels of page table on mt8173.
->
->   It is based on Robin Murphy's arm64: IOMMU-backed DMA mapping[1].
->
->   Please check the hardware block diagram of Mediatek IOMMU.
->
->               EMI (External Memory Interface)
->                |
->               m4u (Multimedia Memory Management Unit)
->                |
->               smi (Smart Multimedia Interface)
->                |
->         +---------------+-------
->         |               |
->         |               |
->     vdec larb       disp larb      ... SoCs have different local arbiter(larb).
->         |               |
->         |               |
->    +----+----+    +-----+-----+
->    |    |    |    |     |     |    ...
->    |    |    |    |     |     |    ...
->    |    |    |    |     |     |    ...
->   MC   PP   VLD  OVL0 RDMA0 WDMA0  ... There are different ports in each larb.
->
->   Normally we specify a local arbiter(larb) for each multimedia hardware like
-> display, video decode, video encode and camera. And there are different ports in
-> each larb. Take a example, there are some ports like MC, PP, UFO, VLD, AVC_MV,
-> PRED_RD, PRED_WR in video larb, all the ports are according to the video hardware.
->
->   From the diagram, all the multimedia module connect with m4u via smi.
-> SMI is responsible to enable/disable iommu and control the clocks for each local
-> arbiter. If we should enable the iommu of video decode, it should config the
-> video's ports. And if the video hardware work wether enable/disable iommu,
-> it should enable the clock of its larb's clock. So we add a special driver for smi.
->
-> [1] http://lists.linuxfoundation.org/pipermail/iommu/2015-February/012236.html
->
-> v2:
-> -add arm short descriptor support.
-> -seperate smi common from smi and change the clock-names according
->  to smi HW.
-> -delete the hardcode of the port-names in mt8173.
->  replace this with larb-portes-nr in dtsi.
-> -fix some coding style issues.
->
-> v1:
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-March/000058.html
->
-> Yong Wu (6):
->   dt-bindings: iommu: Add binding for mediatek IOMMU
->   dt-bindings: mediatek: Add smi dts binding
->   iommu: add ARM short descriptor page table allocator.
->   iommu/mediatek: Add mt8173 IOMMU driver
->   soc: mediatek: Add SMI driver
->   dts: mt8173: Add iommu/smi nodes for mt8173
->
+On Mon, May 18, 2015 at 12:06:50PM +0300, Mikko Perttunen wrote:
+> > +	for (i =3D 0; i < tz->trips; i++) {
+> > +		int trip_low;
+> > +
+> > +		tz->ops->get_trip_temp(tz, i, &trip_temp);
+> > +		tz->ops->get_trip_hyst(tz, i, &hysteresis);
+> > +
+> > +		trip_low =3D trip_temp - hysteresis;
+> > +
+> > +		if (trip_low < temp && trip_low > low)
+> > +			low =3D trip_low;
+> > +
+> > +		if (trip_temp > temp && trip_temp < high)
+> > +			high =3D trip_temp;
+> > +	}
+> > +
+> > +	tz->prev_low_trip =3D low;
+> > +	tz->prev_high_trip =3D high;
+> > +
+> > +	dev_dbg(&tz->device, "new temperature boundaries: %d < x < %d\n",
+> > +			low, high);
+> > +
+> > +	tz->ops->set_trips(tz, low, high);
+>=20
+> This should probably do something if set_trips returns an error
+> code; at least an error message, perhaps enable polling? I'm not
+> exactly sure what safety features the thermal framework has in
+> general if errors happen..
 
-Some general comments.
-It seems that your patches are not based on v4.1.-rc1, can you please
-fix this in the next version, they don't apply cleanly.
-Please use the checkpatch script before sending the next version, I
-had some whitespace errors reported when applying the series.
+Currently a thermal zone has the passive_delay and polling_delay
+variables. If these are nonzero the thermal core will always poll. A
+purely interrupt driven thermal zone would set these values to zero.
+In this case the thermal core has no basis for polling, so we would
+have to make up polling intervals when set_trips fails. Another
+possibility would be to interpret the *_delay variables as 'when
+set_trips is available, do not poll. When something goes wrong, use
+*_delay as polling intervals'
 
-Thanks,
-Matthias
+>=20
+> One interesting thing I noticed was that at least the bang-bang
+> governor only acts if the temperature is properly smaller than (trip
+> temp - hysteresis). So perhaps we should specify the non-tripping
+> range as [low, high)? Or we could change bang-bang.
 
--- 
-motzblog.wordpress.com
+I wonder how we can protect against such off-by-one errors anyway.
+Generally a hardware might operate on raw values rather than directly
+in temperature values in =B0C. This means a driver for this must have
+celsius_to_raw and raw_to_celsius conversion functions. Now it can
+happen that due to rounding errors celsius_to_raw(Tcrit) returns a raw
+value that when converted back to celsius is different from the
+original value in =B0C. This would mean the hardware triggers an interr=
+upt
+for a trip point and the thermal core does not react because get_temp
+actually returns a different temperature than previously programmed as
+interrupt trigger. This way we would lose hot (or cold) events.
+
+>=20
+> > +}
+> > +
+> >  void thermal_zone_device_update(struct thermal_zone_device *tz)
+> >  {
+> >  	int temp, ret, count;
+> > @@ -479,6 +518,8 @@ void thermal_zone_device_update(struct
+> thermal_zone_device *tz)
+> >  	dev_dbg(&tz->device, "last_temperature=3D%d, current_temperature=3D=
+%d\n",
+> >  				tz->last_temperature, tz->temperature);
+> >
+> > +	thermal_zone_set_trips(tz);
+> > +
+> >  	for (count =3D 0; count < tz->trips; count++)
+> >  		handle_thermal_trip(tz, count);
+> >  }
+>=20
+> set_trips should also be called from temp_store and other places
+> that modify values that affect the trip points.
+
+Good point.
+
+Sascha
+
+--=20
+Pengutronix e.K.                           |                           =
+  |
+Industrial Linux Solutions                 | http://www.pengutronix.de/=
+  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0  =
+  |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-555=
+5 |
