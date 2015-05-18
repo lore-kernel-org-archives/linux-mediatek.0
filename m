@@ -1,59 +1,156 @@
-From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
-Subject: Re: [PATCH v7 2/3] I2C: mediatek: Add driver for MediaTek I2C
- controller
-Date: Mon, 18 May 2015 11:05:23 +0200
-Message-ID: <20150518090523.GA5825@schokonusskuchen.bad>
-References: <1430901427-65146-1-git-send-email-eddie.huang@mediatek.com>
- <1430901427-65146-3-git-send-email-eddie.huang@mediatek.com>
- <20150512125832.GB4447@schokonusskuchen.bad>
- <1431928701.22349.22.camel@mtksdaap41>
- <20150518063742.GA1545@katana>
- <1431934936.14340.17.camel@mtksdaap41>
+From: Mikko Perttunen <mikko.perttunen@kapsi.fi>
+Subject: Re: [PATCH 11/15] thermal: thermal: Add support for hardware-tracked
+ trip points
+Date: Mon, 18 May 2015 12:06:50 +0300
+Message-ID: <5559ABAA.6040001@kapsi.fi>
+References: <1431507163-19933-1-git-send-email-s.hauer@pengutronix.de> <1431507163-19933-12-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="0F1p//8PRICkK4MW"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1431934936.14340.17.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1431507163-19933-12-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Thanks for picking up this patch :)
 
---0F1p//8PRICkK4MW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Sorry for being late with these, but here's a few comments..
 
-> sh_mobile already implement dmaengine, so its I2C driver can use dma
-> channel.
+On 05/13/2015 11:52 AM, Sascha Hauer wrote:
+ > This adds support for hardware-tracked trip points to the device tree
+ > thermal sensor framework.
+ >
+ > The framework supports an arbitrary number of trip points. Whenever
+ > the current temperature is updated, the trip points immediately
+ > below and above the current temperature are found. A .set_trips
+ > callback is then called with the temperatures. If there is no trip
+ > point above or below the current temperature, the passed trip
+ > temperature will be -INT_MAX or INT_MAX respectively. In this callback,
+ > the driver should program the hardware such that it is notified
+ > when either of these trip points are triggered. When a trip point
+ > is triggered, the driver should call `thermal_zone_device_update'
+ > for the respective thermal zone. This will cause the trip points
+ > to be updated again.
+ >
+ > If .set_trips is not implemented, the framework behaves as before.
+ >
+ > This patch is based on an earlier version from Mikko Perttunen
+ > <mikko.perttunen@kapsi.fi>
+ >
+ > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+ > ---
+ >  drivers/thermal/thermal_core.c | 43 
+++++++++++++++++++++++++++++++++++++++++++
+ >  include/linux/thermal.h        |  3 +++
+ >  2 files changed, 46 insertions(+)
+ >
+ > diff --git a/drivers/thermal/thermal_core.c 
+b/drivers/thermal/thermal_core.c
+ > index 6bbf61f..3ae1795 100644
+ > --- a/drivers/thermal/thermal_core.c
+ > +++ b/drivers/thermal/thermal_core.c
+ > @@ -453,6 +453,45 @@ int thermal_zone_get_temp(struct 
+thermal_zone_device *tz, int *temp)
+ >  }
+ >  EXPORT_SYMBOL_GPL(thermal_zone_get_temp);
+ >
+ > +static void thermal_zone_set_trips(struct thermal_zone_device *tz)
+ > +{
+ > +	int low = -INT_MAX;
+ > +	int high = INT_MAX;
+ > +	int trip_temp, hysteresis;
+ > +	int temp = tz->temperature;
+ > +	int i;
+ > +
+ > +	if (!tz->ops->set_trips)
+ > +		return;
+ > +
+ > +	/* No need to change trip points */
+ > +	if (temp > tz->prev_low_trip && temp < tz->prev_high_trip)
+ > +		return;
+ > +
+ > +	for (i = 0; i < tz->trips; i++) {
+ > +		int trip_low;
+ > +
+ > +		tz->ops->get_trip_temp(tz, i, &trip_temp);
+ > +		tz->ops->get_trip_hyst(tz, i, &hysteresis);
+ > +
+ > +		trip_low = trip_temp - hysteresis;
+ > +
+ > +		if (trip_low < temp && trip_low > low)
+ > +			low = trip_low;
+ > +
+ > +		if (trip_temp > temp && trip_temp < high)
+ > +			high = trip_temp;
+ > +	}
+ > +
+ > +	tz->prev_low_trip = low;
+ > +	tz->prev_high_trip = high;
+ > +
+ > +	dev_dbg(&tz->device, "new temperature boundaries: %d < x < %d\n",
+ > +			low, high);
+ > +
+ > +	tz->ops->set_trips(tz, low, high);
 
-OK.
+This should probably do something if set_trips returns an error code; at 
+least an error message, perhaps enable polling? I'm not exactly sure 
+what safety features the thermal framework has in general if errors happen..
 
---0F1p//8PRICkK4MW
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
+One interesting thing I noticed was that at least the bang-bang governor 
+only acts if the temperature is properly smaller than (trip temp - 
+hysteresis). So perhaps we should specify the non-tripping range as 
+[low, high)? Or we could change bang-bang.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.12 (GNU/Linux)
+ > +}
+ > +
+ >  void thermal_zone_device_update(struct thermal_zone_device *tz)
+ >  {
+ >  	int temp, ret, count;
+ > @@ -479,6 +518,8 @@ void thermal_zone_device_update(struct 
+thermal_zone_device *tz)
+ >  	dev_dbg(&tz->device, "last_temperature=%d, current_temperature=%d\n",
+ >  				tz->last_temperature, tz->temperature);
+ >
+ > +	thermal_zone_set_trips(tz);
+ > +
+ >  	for (count = 0; count < tz->trips; count++)
+ >  		handle_thermal_trip(tz, count);
+ >  }
 
-iQIcBAEBAgAGBQJVWatSAAoJEBQN5MwUoCm2suIP/RRuj68gpAtHT9+i3K+tn99e
-9o303/lMY/cgumH/+R9En62tjBnVESp60yOob2kmRTrPhyGVIjSDpAgPAUK4AWDm
-fTY8PDOp6zXn5DwYNzrznDsNjs7kosCF9ELOPjv2zK49fW05YEoH70dtGoeDzxK9
-JrSKaXx9LB4xctWYHitkXxMN38qnMa6dCwuArCJ7tOfxCTZecPC0TaCZ+Iqlpq3U
-ZVm5CqIPckK6Ug5v7i59tFgTmjU30aDFGNCUK03D57PpN0JdTANnJK0m//9Gq6WJ
-7IXfD82AroEawnqa76eX68N8Zw6UXx9NnJKvN+7O/K8ljwfbdWdPULBSlTTelr7k
-K8G6ma6ee15ajwHpWYeBfeY0ROOXygd7DdHw3JJZXQ5pmHHf1tLtBM6o2z7KApR6
-cVKd2F7/p5CDGcxJnZ24Y6lUwoj/cPRQShDNCZCR4T0x5/ktvxcvKphgJ9v0MB0q
-TCnLKsnmgGakrgzNgX0q/ZACmsPayT4uQX+45qDt518CCJKUV47yBfTnVMiDjmYa
-i61jYWgY6gHB58gRMzXQmR6kg1JI2syO/KwJmLObvu9XywfktKimVrrm57AtqwK5
-b8O2MJQ7NvAJDOS/2KCjO1X2AExSQlHc2kYc0CM+agBQ0P+lGqBJ5TGGC56s3+ox
-N9Va6K5GTepdXuJc+YjS
-=TSrq
------END PGP SIGNATURE-----
+set_trips should also be called from temp_store and other places that 
+modify values that affect the trip points.
 
---0F1p//8PRICkK4MW--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+ > @@ -1494,6 +1535,8 @@ struct thermal_zone_device 
+*thermal_zone_device_register(const char *type,
+ >  	tz->trips = trips;
+ >  	tz->passive_delay = passive_delay;
+ >  	tz->polling_delay = polling_delay;
+ > +	tz->prev_low_trip = INT_MAX;
+ > +	tz->prev_high_trip = -INT_MAX;
+ >
+ >  	dev_set_name(&tz->device, "thermal_zone%d", tz->id);
+ >  	result = device_register(&tz->device);
+ > diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+ > index 07bd5e8..aef6e13 100644
+ > --- a/include/linux/thermal.h
+ > +++ b/include/linux/thermal.h
+ > @@ -87,6 +87,7 @@ struct thermal_zone_device_ops {
+ >  	int (*unbind) (struct thermal_zone_device *,
+ >  		       struct thermal_cooling_device *);
+ >  	int (*get_temp) (struct thermal_zone_device *, int *);
+ > +	int (*set_trips) (struct thermal_zone_device *, int, int);
+ >  	int (*get_mode) (struct thermal_zone_device *,
+ >  			 enum thermal_device_mode *);
+ >  	int (*set_mode) (struct thermal_zone_device *,
+ > @@ -180,6 +181,8 @@ struct thermal_zone_device {
+ >  	int last_temperature;
+ >  	int emul_temperature;
+ >  	int passive;
+ > +	int prev_low_trip;
+ > +	int prev_high_trip;
+ >  	unsigned int forced_passive;
+ >  	const struct thermal_zone_device_ops *ops;
+ >  	const struct thermal_zone_params *tzp;
+ >
