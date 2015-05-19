@@ -1,50 +1,78 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v2 08/11] mfd: mediatek: Add GPIO sub module support into
- mfd.
-Date: Tue, 19 May 2015 10:34:26 +0100
-Message-ID: <20150519093426.GS22418@x1>
-References: <1432015882-8646-1-git-send-email-hongzhou.yang@mediatek.com>
- <1432015882-8646-9-git-send-email-hongzhou.yang@mediatek.com>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/7] mmc: dt-bindings: add Mediatek MMC bindings
+Date: Tue, 19 May 2015 11:41:46 +0200
+Message-ID: <CAPDyKFq+YAz2pt1820YnqWaVKO6sn5eB+NxuM2dhP236FSKa9g@mail.gmail.com>
+References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
+	<1432017411-2996-2-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432015882-8646-9-git-send-email-hongzhou.yang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Samuel Ortiz <sameo@linux.intel.com>, Sascha Hauer <s.hauer@pengutronix.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, dandan.he@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1432017411-2996-2-git-send-email-chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 18 May 2015, Hongzhou Yang wrote:
-
-> Register pinctrl subnode into 6397 mfd cell.
->=20
-> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+On 19 May 2015 at 08:36, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> Document the device-tree binding of Mediatek MMC host
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  drivers/mfd/mt6397-core.c |    3 +++
->  1 file changed, 3 insertions(+)
->=20
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 09bc780..012c620 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -34,6 +34,9 @@ static const struct mfd_cell mt6397_devs[] =3D {
->  	}, {
->  		.name =3D "mt6397-clk",
->  		.of_compatible =3D "mediatek,mt6397-clk",
-> +	}, {
-> +		.name =3D "mediatek-mt6397-pinctrl",
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 33 ++++++++++++++++++++++++
+>  1 file changed, 33 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> new file mode 100644
+> index 0000000..ba6d668
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> @@ -0,0 +1,33 @@
+> +* MTK MMC controller
+> +
+> +The MTK  MSDC can act as a MMC controller
+> +to support MMC, SD, and SDIO types of memory cards.
+> +
+> +This file documents differences between the core properties in mmc.txt
+> +and the properties used by the msdc driver.
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,mt8173-mmc","mediatek,mt8135-mmc".
+> +- interrupts: Should contain MSDC interrupt number
+> +- clocks: MSDC source clock, HCLK, HCLK is mandatory when it is not controlled by Infra
 
-I think the "mediatek-" part should be removed, no?
+This seems strange. Either it's mandatory since it's under the
+"Required properties" section or it should be moved to the "Optional
+properties" section.
 
-> +		.of_compatible =3D "mediatek,mt6397-pinctrl",
->  	},
->  };
-> =20
+> +- clock-names: "source", "hclk"
+> +- pinctrl-names: should be "default", "state_uhs"
+> +- pinctrl-0: should contain default/high speed pin ctrl
+> +- pinctrl-1: should contain uhs mode pin ctrl
+> +- vmmc-supply: power to the Core
+> +
+> +Optional properties:
+> +- vqmmc-supply: power to the IO(for SD/SDIO)
+> +
+> +Examples:
+> +mmc0: mmc@11230000 {
+> +       compatible = "mediatek,mt8173-mmc", "mediatek,mt8135-mmc";
+> +       reg = <0 0x11230000 0 0x108>;
+> +       interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
+> +       vmmc-supply = <&mt6397_vemc_3v3_reg>;
+> +       clocks = <&pericfg CLK_PERI_MSDC30_0>, <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
+> +       clock-names = "source", "hclk";
+> +       pinctrl-names = "default", "state_uhs";
+> +       pinctrl-0 = <&mmc0_pins_default>;
+> +       pinctrl-1 = <&mmc0_pins_uhs>;
+> +};
+> --
+> 1.8.1.1.dirty
+>
 
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+Kind regards
+Uffe
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
