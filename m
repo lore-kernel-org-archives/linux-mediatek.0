@@ -1,575 +1,358 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
-Date: Tue, 19 May 2015 13:06:10 +0200
-Message-ID: <CABuKBeKiw8MkG5kWaUBqfDzopwvrX8Kh8XpNfRiC_uJD67OcEg@mail.gmail.com>
-References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
-	<1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
-	<CAGS+omDJ-7+L_46vwMyewHMkMNj69odhp=JY5i6Xj3-Loe6UNA@mail.gmail.com>
-	<20150519103010.GA6325@pengutronix.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 4/6] soc: mediatek: Add SMI driver
+Date: Tue, 19 May 2015 13:14:24 +0200
+Message-ID: <CABuKBeJvh2PGi3i6O0uu-7ggdBzKMb3tPE_XKhT1i-+tkKc5gg@mail.gmail.com>
+References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
+	<1431683009-18158-5-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150519103010.GA6325@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1431683009-18158-5-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-05-19 12:30 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
-> On Fri, May 15, 2015 at 10:17:21PM +0800, Daniel Kurtz wrote:
->> On Tue, May 12, 2015 at 3:23 AM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
->> > This adds a power domain driver for the Mediatek SCPSYS unit.
->> >
->> > The System Control Processor System (SCPSYS) has several power
->> > management related tasks in the system. The tasks include thermal
->> > measurement, dynamic voltage frequency scaling (DVFS), interrupt
->> > filter and lowlevel sleep control. The System Power Manager (SPM)
->> > inside the SCPSYS is for the MTCMOS power domain control.
->> >
->> > For now this driver only adds power domain support, the more
->> > advanced features are not yet supported. The driver implements
->> > the generic PM domain device tree bindings, the first user will
->> > most likely be the Mediatek AFE audio driver.
->> >
->> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->> > ---
->> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    |   2 +
->> >  drivers/soc/mediatek/Kconfig                       |   8 +
->> >  drivers/soc/mediatek/Makefile                      |   1 +
->> >  drivers/soc/mediatek/mtk-scpsys.c                  | 416 +++++++++++++++++++++
->> >  include/dt-bindings/power/mt8173-power.h           |  15 +
->> >  5 files changed, 442 insertions(+)
->> >  create mode 100644 drivers/soc/mediatek/mtk-scpsys.c
->> >  create mode 100644 include/dt-bindings/power/mt8173-power.h
->> >
->> > diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
->> > index 4764a03..87f2091 100644
->> > --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
->> > +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
->> > @@ -15,6 +15,7 @@ Required properties:
->> >  - compatible: Must be "mediatek,mt8173-scpsys"
->> >  - #power-domain-cells: Must be 1
->> >  - reg: Address range of the SCPSYS unit
->> > +- infracfg: must contain a phandle to the infracfg controller
->> >
->> >  Example:
->> >
->> > @@ -22,6 +23,7 @@ Example:
->> >                 #power-domain-cells = <1>;
->> >                 compatible = "mediatek,mt8173-scpsys";
->> >                 reg = <0 0x10006000 0 0x1000>;
->> > +               infracfg = <&infracfg>;
->> >         };
->> >
->> >  Example consumer:
->> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
->> > index 6fae66f..1386c79 100644
->> > --- a/drivers/soc/mediatek/Kconfig
->> > +++ b/drivers/soc/mediatek/Kconfig
->> > @@ -18,3 +18,11 @@ config MTK_INFRACFG
->> >           Say yes here to add support for the MediaTek INFRACFG controller. The
->> >           INFRACFG controller contains various infrastructure registers not
->> >           directly associated to any device.
->> > +
->> > +config MTK_SCPSYS
->> > +       tristate "MediaTek SCPSYS Support"
->> > +       depends on MTK_INFRACFG
->>
->> Should this be:
->>   depends on ARCH_MEDIATEK || COMPILE_TEST
->>   selects MTK_INFRACFG
->>
->> > +       select REGMAP
->> > +       help
->> > +         Say yes here to add support for the MediaTek SCPSYS power domain
->> > +         driver.
->> > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
->> > index ce39119..f8eebab 100644
->> > --- a/drivers/soc/mediatek/Makefile
->> > +++ b/drivers/soc/mediatek/Makefile
->> > @@ -1,2 +1,3 @@
->> >  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->> >  obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->> > +obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
->> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
->> > new file mode 100644
->> > index 0000000..c42c7f1
->> > --- /dev/null
->> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
->> > @@ -0,0 +1,416 @@
->> > +/*
->> > + * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel@pengutronix.de>
->> > + *
->> > + * This program is free software; you can redistribute it and/or modify
->> > + * it under the terms of the GNU General Public License version 2 as
->> > + * published by the Free Software Foundation.
->> > + *
->> > + * This program is distributed in the hope that it will be useful,
->> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> > + * GNU General Public License for more details.
->> > + */
->> > +#include <linux/clk.h>
->> > +#include <linux/io.h>
->> > +#include <linux/kernel.h>
->> > +#include <linux/module.h>
->> > +#include <linux/of_device.h>
->> > +#include <linux/platform_device.h>
->> > +#include <linux/regmap.h>
->> > +#include <linux/pm_domain.h>
->> > +#include <linux/delay.h>
->> > +#include <linux/soc/mediatek/infracfg.h>
->> > +#include <dt-bindings/power/mt8173-power.h>
->> > +#include <linux/mfd/syscon.h>
->> > +
->> > +#define SPM_VDE_PWR_CON                        0x0210
->> > +#define SPM_MFG_PWR_CON                        0x0214
->> > +#define SPM_VEN_PWR_CON                        0x0230
->> > +#define SPM_ISP_PWR_CON                        0x0238
->> > +#define SPM_DIS_PWR_CON                        0x023c
->> > +#define SPM_VEN2_PWR_CON               0x0298
->> > +#define SPM_AUDIO_PWR_CON              0x029c
->> > +#define SPM_MFG_2D_PWR_CON             0x02c0
->> > +#define SPM_MFG_ASYNC_PWR_CON          0x02c4
->> > +#define SPM_USB_PWR_CON                        0x02cc
->> > +#define SPM_PWR_STATUS                 0x060c
->> > +#define SPM_PWR_STATUS_2ND             0x0610
->> > +
->> > +#define PWR_RST_B_BIT                  BIT(0)
->> > +#define PWR_ISO_BIT                    BIT(1)
->> > +#define PWR_ON_BIT                     BIT(2)
->> > +#define PWR_ON_2ND_BIT                 BIT(3)
->> > +#define PWR_CLK_DIS_BIT                        BIT(4)
->> > +
->> > +#define DIS_PWR_STA_MASK               BIT(3)
->> > +#define MFG_PWR_STA_MASK               BIT(4)
->> > +#define ISP_PWR_STA_MASK               BIT(5)
->> > +#define VDE_PWR_STA_MASK               BIT(7)
->> > +#define VEN2_PWR_STA_MASK              BIT(20)
->> > +#define VEN_PWR_STA_MASK               BIT(21)
->> > +#define MFG_2D_PWR_STA_MASK            BIT(22)
->> > +#define MFG_ASYNC_PWR_STA_MASK         BIT(23)
->> > +#define AUDIO_PWR_STA_MASK             BIT(24)
->> > +#define USB_PWR_STA_MASK               BIT(25)
->> > +
->> > +struct scp_domain_data {
->> > +       const char *name;
->> > +       u32 sta_mask;
->> > +       int ctl_offs;
->> > +       u32 sram_pdn_bits;
->> > +       u32 sram_pdn_ack_bits;
->> > +       u32 bus_prot_mask;
->> > +       int id;
->> > +       const char *clk_name;
->> > +};
->>
->> These fields are only used at init time:
->>  name (the pointer, the actual string is pointed to by genpd->name)
->>  id
->>  clk_name
->>
->> You could split those off into a separate __initconst struct.
+2015-05-15 11:43 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+>     This patch add SMI(Smart Multimedia Interface) driver. This driver is
+> responsible to enable/disable iommu and control the clocks of each local arbiter.
 >
-> Is this really worth it?
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/soc/mediatek/Kconfig      |   6 +
+>  drivers/soc/mediatek/Makefile     |   1 +
+>  drivers/soc/mediatek/mt8173-smi.c | 298 ++++++++++++++++++++++++++++++++++++++
+>  include/linux/mtk-smi.h           |  39 +++++
+>  4 files changed, 344 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mt8173-smi.c
+>  create mode 100644 include/linux/mtk-smi.h
 >
->>
->> > +
->> > +static const struct scp_domain_data scp_domain_data[] = {
->> > +       {
->> > +               .id = MT8173_POWER_DOMAIN_VDE,
->> > +               .name = "vde",
->> > +               .sta_mask = VDE_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_VDE_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(12, 12),
->> > +               .clk_name = "vdec",
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_VEN,
->>
->> Is there any reason you do not keep these in ".id" order:
->> VDE,  MFG, VEN, ISP, DIS, VEN2, AUDIO, MFG_2D, MFG_ASYNC, USB
->
-> The reason is simply that with CONFIG_PM disabled we have to turn on the
-> domains in the correct order, otherwise the system hangs. I can renumber
-> the defines though if you like.
->
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_ISP,
->> > +               .name = "isp",
->> > +               .sta_mask = ISP_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_ISP_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(13, 12),
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_DIS,
->> > +               .name = "disp",
->>
->> Perhaps .id/.name/.clk should be "MM" to match the corresponding clock
->> define (CLK_TOP_MM_SEL) & prot bits.
->
->
->>
->> > +               .sta_mask = DIS_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_DIS_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(12, 12),
->> > +               .clk_name = "disp",
->> > +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
->> > +                       MT8173_TOP_AXI_PROT_EN_MM_M1,
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_VEN2,
->> > +               .name = "ven2",
->>
->> Perhaps .id/.name/.clk should be "VENC_LT"/"venc_lt" to match the
->> corresponding clock define (CLK_TOP_VENC_LT_SEL).
->>
->> > +               .sta_mask = VEN2_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_VEN2_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(15, 12),
->> > +               .clk_name = "ven2",
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_AUDIO,
->> > +               .name = "audio",
->> > +               .sta_mask = AUDIO_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_AUDIO_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(15, 12),
->> > +       },  {
->> > +               .id = MT8173_POWER_DOMAIN_MFG_ASYNC,
->> > +               .name = "mfg_async",
->> > +               .sta_mask = MFG_ASYNC_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_MFG_ASYNC_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = 0,
->> > +               .clk_name = "mfg",
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_MFG_2D,
->> > +               .name = "mfg_2d",
->> > +               .sta_mask = MFG_2D_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_MFG_2D_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(13, 12),
->> > +               .clk_name = "mfg",
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_MFG,
->> > +               .name = "mfg",
->> > +               .sta_mask = MFG_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_MFG_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(13, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(21, 16),
->> > +               .clk_name = "mfg",
->> > +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
->> > +                       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
->> > +                       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
->> > +                       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
->> > +       }, {
->> > +               .id = MT8173_POWER_DOMAIN_USB,
->> > +               .name = "usb",
->> > +               .sta_mask = USB_PWR_STA_MASK,
->> > +               .ctl_offs = SPM_USB_PWR_CON,
->> > +               .sram_pdn_bits = GENMASK(11, 8),
->> > +               .sram_pdn_ack_bits = GENMASK(15, 12),
->> > +       },
->> > +};
->> > +
->> > +#define NUM_DOMAINS    ARRAY_SIZE(scp_domain_data)
->> > +
->> > +struct scp;
->> > +
->> > +struct scp_domain {
->> > +       struct generic_pm_domain pmd;
->>
->> Could you name this "genpd"... that seems to be what most other drivers use.
->
-> ok
->
->>
->> > +       const struct scp_domain_data *data;
->> > +       struct scp *scp;
->> > +       struct clk *clk;
->> > +};
->> > +
->> > +struct scp {
->> > +       struct scp_domain domains[NUM_DOMAINS];
->> > +       struct genpd_onecell_data pd_data;
->>
->> After probe() you don't use pd_data.
->> Why do we need it in this struct?
->
-> Just to save another extra allocation for it.
->
->>
->> > +       struct device *dev;
->> > +       void __iomem *base;
->> > +       struct regmap *infracfg;
->> > +};
->> > +
->> > +static int scpsys_power_on(struct generic_pm_domain *genpd)
->> > +{
->> > +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, pmd);
->> > +       struct scp *scp = scpd->scp;
->> > +       const struct scp_domain_data *data = scpd->data;
->> > +       unsigned long expired;
->> > +       void __iomem *ctl_addr = scpd->scp->base + data->ctl_offs;
->> > +       u32 sram_pdn_ack = data->sram_pdn_ack_bits;
->> > +       u32 val;
->> > +       int ret;
->> > +
->> > +       if (scpd->clk) {
->> > +               ret = clk_prepare_enable(scpd->clk);
->> > +               if (ret)
->> > +                       return ret;
->> > +       }
->> > +
->> > +       val = readl(ctl_addr);
->> > +       val |= PWR_ON_BIT;
->> > +       writel(val, ctl_addr);
->> > +       val |= PWR_ON_2ND_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       /* wait until PWR_ACK = 1 */
->> > +       expired = jiffies + HZ;
->> > +       while (!(readl(scp->base + SPM_PWR_STATUS) & data->sta_mask) ||
->> > +                       !(readl(scp->base + SPM_PWR_STATUS_2ND) & data->sta_mask)) {
->> > +               cpu_relax();
->> > +               if (time_after(jiffies, expired)) {
->> > +                       ret = -EIO;
->> > +                       goto out;
->> > +               }
->> > +       }
->> > +
->> > +       val &= ~PWR_CLK_DIS_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val &= ~PWR_ISO_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val |= PWR_RST_B_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val &= ~data->sram_pdn_bits;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       /* wait until SRAM_PDN_ACK all 0 */
->> > +       expired = jiffies + HZ;
->> > +       while (sram_pdn_ack && (readl(ctl_addr) & sram_pdn_ack)) {
->> > +               cpu_relax();
->> > +               if (time_after(jiffies, expired)) {
->> > +                       ret = -EIO;
->> > +                       goto out;
->> > +               }
->> > +       }
->> > +
->> > +       if (data->bus_prot_mask) {
->> > +               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
->> > +                               data->bus_prot_mask);
->> > +               if (ret)
->> > +                       return ret;
->> > +       }
->> > +
->> > +       return 0;
->> > +out:
->> > +       dev_err(scp->dev, "Failed to power on domain %s\n", scpd->data->name);
->>
->> genpd->name should be sufficient
->
-> ok
->
->>
->> > +
->> > +       return ret;
->> > +}
->> > +
->> > +static int scpsys_power_off(struct generic_pm_domain *genpd)
->> > +{
->> > +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, pmd);
->> > +       struct scp *scp = scpd->scp;
->> > +       const struct scp_domain_data *data = scpd->data;
->> > +       unsigned long expired;
->> > +       void __iomem *ctl_addr = scpd->scp->base + data->ctl_offs;
->> > +       u32 sram_pdn_ack = data->sram_pdn_ack_bits;
->> > +       u32 val;
->> > +       int ret;
->> > +
->> > +       if (data->bus_prot_mask) {
->> > +               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
->> > +                               data->bus_prot_mask);
->> > +               if (ret)
->> > +                       return ret;
->> > +       }
->> > +
->> > +       val = readl(ctl_addr);
->> > +       val |= data->sram_pdn_bits;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       /* wait until SRAM_PDN_ACK all 1 */
->> > +       expired = jiffies + HZ;
->> > +       while ((readl(ctl_addr) & sram_pdn_ack) != sram_pdn_ack) {
->> > +               cpu_relax();
->> > +               if (time_after(jiffies, expired)) {
->> > +                       ret = -EIO;
->> > +                       goto out;
->> > +               }
->> > +       }
->> > +
->> > +       val |= PWR_ISO_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val &= ~PWR_RST_B_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val |= PWR_CLK_DIS_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val &= ~PWR_ON_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       val &= ~PWR_ON_2ND_BIT;
->> > +       writel(val, ctl_addr);
->> > +
->> > +       /* wait until PWR_ACK = 0 */
->> > +       expired = jiffies + HZ;
->> > +       while ((readl(scp->base + SPM_PWR_STATUS) & data->sta_mask) ||
->> > +                       (readl(scp->base + SPM_PWR_STATUS_2ND) & data->sta_mask)) {
->> > +               cpu_relax();
->> > +               if (time_after(jiffies, expired)) {
->> > +                       ret = -EIO;
->> > +                       goto out;
->> > +               }
->> > +       }
->> > +
->> > +       if (scpd->clk)
->> > +               clk_disable_unprepare(scpd->clk);
->> > +
->> > +       return 0;
->> > +
->> > +out:
->> > +       dev_err(scp->dev, "Failed to power off domain %s\n", scpd->data->name);
->> > +
->> > +       return ret;
->> > +}
->> > +
->> > +static int scpsys_probe(struct platform_device *pdev)
->> > +{
->> > +       struct genpd_onecell_data *pd_data;
->> > +       struct resource *res;
->> > +       int i;
->> > +       struct scp *scp;
->> > +
->> > +       scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
->> > +       if (!scp)
->> > +               return -ENOMEM;
->> > +
->> > +       scp->dev = &pdev->dev;
->> > +
->> > +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> > +       scp->base = devm_ioremap_resource(&pdev->dev, res);
->> > +       if (IS_ERR(scp->base))
->> > +               return PTR_ERR(scp->base);
->> > +
->> > +       pd_data = &scp->pd_data;
->> > +
->> > +       pd_data->domains = devm_kzalloc(&pdev->dev,
->> > +                       sizeof(*pd_data->domains) * NUM_DOMAINS, GFP_KERNEL);
->> > +       if (!pd_data->domains)
->> > +               return -ENOMEM;
->> > +
->> > +       scp->infracfg = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
->> > +                       "infracfg");
->> > +       if (IS_ERR(scp->infracfg)) {
->> > +               dev_err(&pdev->dev, "Cannot find infracfg controller: %ld\n",
->> > +                               PTR_ERR(scp->infracfg));
->> > +               return PTR_ERR(scp->infracfg);
->> > +       }
->> > +
->> > +       pd_data->num_domains = NUM_DOMAINS;
->> > +
->> > +       for (i = 0; i < NUM_DOMAINS; i++) {
->> > +               struct scp_domain *scpd = &scp->domains[i];
->> > +
->> > +               if (scp_domain_data[i].clk_name) {
->> > +                       const char *name = scp_domain_data[i].clk_name;
->> > +
->> > +                       scpd->clk = devm_clk_get(&pdev->dev, name);
->> > +                       if (IS_ERR(scpd->clk)) {
->> > +                               dev_err(&pdev->dev, "Failed to get %s clk: %ld\n",
->> > +                                               name, PTR_ERR(scpd->clk));
->> > +                               return PTR_ERR(scpd->clk);
->> > +                       }
->> > +               }
->> > +       }
->> > +
->> > +       for (i = 0; i < NUM_DOMAINS; i++) {
->> > +               struct scp_domain *scpd = &scp->domains[i];
->> > +               struct generic_pm_domain *pmd = &scpd->pmd;
->> > +
->> > +               pd_data->domains[scp_domain_data[i].id] = pmd;
->> > +               scpd->data = &scp_domain_data[i];
->> > +               scpd->scp = scp;
->> > +
->> > +               pmd->name = scp_domain_data[i].name;
->> > +               pmd->power_off = scpsys_power_off;
->> > +               pmd->power_on = scpsys_power_on;
->> > +               pmd->power_off_latency_ns = 20000;
->> > +               pmd->power_on_latency_ns = 20000;
->>
->> Where did these latency values come from?
->
-> From reducing them to 0 and seeing where the end results end up being.
-> The power domain code increases the times automatically when the values
-> are exceeded.
->
->>
->> > +
->> > +               pm_genpd_init(pmd, NULL, true);
->>
->> I'm not sure how this works...  does this mean that all power domains
->> initially off?
->
-> Some are off, others are on. I'll change that to:
->
-> - call scpsys_power_on for all domains so I know they are turned on
-> - call pm_genpd_init(pmd, NULL, false);
-> - Let the pm core disable the unused domains in the late_initcall
->
-> That's the only way I found to properly sync the hardware state with the
-> software state also with regard to the clocks.
->
->>
->> > +
->> > +               /*
->> > +                * If PM is disabled turn on all domains by default so that
->> > +                * consumers can work.
->> > +                */
->> > +               if (!IS_ENABLED(CONFIG_PM))
->> > +                       pmd->power_on(pmd);
->> > +       }
->> > +
->> > +       pm_genpd_add_subdomain(&scp->domains[MT8173_POWER_DOMAIN_MFG_ASYNC].pmd,
->> > +               &scp->domains[MT8173_POWER_DOMAIN_MFG_2D].pmd);
->> > +       pm_genpd_add_subdomain(&scp->domains[MT8173_POWER_DOMAIN_MFG_2D].pmd,
->> > +               &scp->domains[MT8173_POWER_DOMAIN_MFG].pmd);
->> > +
->>
->> (1) nit: the continuation lines needs 1 more indent.
->>
->> (2) Why aren't you checking for errors?
->
-> I'll check for errors next round. However, I cannot bail out in this
-> case since once pm_genpd_init() is called the domain cannot be
-> unregistered anymore.
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index 1d34819..5935ead 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -15,3 +15,9 @@ config MTK_SCPSYS
+>         help
+>           Say yes here to add support for the MediaTek SCPSYS power domain
+>           driver.
+> +
+> +config MTK_SMI
+> +       bool
+> +       help
+> +         Smi help enable/disable iommu in MediaTek SoCs and control the clock
+> +         for each local arbiter.
+> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> index ce88693..c086261 100644
+> --- a/drivers/soc/mediatek/Makefile
+> +++ b/drivers/soc/mediatek/Makefile
+> @@ -1,2 +1,3 @@
+>  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+>  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+> +obj-$(CONFIG_MTK_SMI) += mt8173-smi.o
+> diff --git a/drivers/soc/mediatek/mt8173-smi.c b/drivers/soc/mediatek/mt8173-smi.c
+> new file mode 100644
+> index 0000000..67bccec
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mt8173-smi.c
+> @@ -0,0 +1,298 @@
+> +/*
+> + * Copyright (c) 2014-2015 MediaTek Inc.
+> + * Author: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#include <linux/io.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/clk.h>
+> +#include <linux/err.h>
+> +#include <linux/mm.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/mtk-smi.h>
+> +
+> +#define SMI_LARB_MMU_EN                (0xf00)
+> +#define F_SMI_MMU_EN(port)     (1 << (port))
+> +
+> +enum {
+> +       MTK_CLK_APB,
+> +       MTK_CLK_SMI,
+> +       MTK_CLK_MAX,
 
-We should think of implementing this.
-I had a quick look on it, and from what I understand as long as you
-don't have any subdomains, devices and masters added, it's just
-deleting an element from a linked list.
-Maybe we should split this in pm_genpd_prepare and pm_genpd_add, with
-the last one actually adding the generic_pm_domain to gpd_list.
+Maybe add something like:
+MTK_CLK_FIRST = MTK_CLK_APB,
+to make the for loops better readable.
 
-This way we could also get rid of the two for loops.
+> +};
+> +
+> +struct mtk_smi_common {
+> +       void __iomem            *base;
 
-Regrads,
+That seems to be never used. Please delete it.
+
+> +       struct clk              *clk[MTK_CLK_MAX];
+> +};
+> +
+> +struct mtk_smi_larb {
+> +       void __iomem            *base;
+> +       spinlock_t              portlock; /* lock for config port */
+> +       struct clk              *clk[MTK_CLK_MAX];
+> +       struct device           *smi;
+> +};
+> +
+> +static const char * const mtk_smi_clk_name[MTK_CLK_MAX] = {
+> +       "apb", "smi"
+> +};
+> +
+> +static int mtk_smi_common_get(struct device *smidev)
+> +{
+> +       struct mtk_smi_common *smipriv = dev_get_drvdata(smidev);
+> +       int i, ret;
+> +
+> +       for (i = MTK_CLK_APB; i < MTK_CLK_MAX; i++) {
+> +               ret = clk_enable(smipriv->clk[i]);
+> +               if (ret) {
+> +                       dev_err(smidev,
+> +                               "Failed to enable the clock of smi_common\n");
+> +                       goto err_smi_clk;
+> +               }
+> +       }
+> +       return ret;
+> +
+> +err_smi_clk:
+> +       if (i == MTK_CLK_SMI)
+> +               clk_disable(smipriv->clk[MTK_CLK_APB]);
+> +       return ret;
+> +}
+> +
+> +static void mtk_smi_common_put(struct device *smidev)
+> +{
+> +       struct mtk_smi_common *smipriv = dev_get_drvdata(smidev);
+> +       int i;
+> +
+> +       for (i = MTK_CLK_SMI; i >= MTK_CLK_APB; i--)
+> +               clk_disable(smipriv->clk[i]);
+> +}
+> +
+> +int mtk_smi_larb_get(struct device *larbdev)
+> +{
+> +       struct mtk_smi_larb *larbpriv = dev_get_drvdata(larbdev);
+> +       int i, ret = 0;
+> +
+> +       ret = mtk_smi_common_get(larbpriv->smi);
+> +       if (ret)
+> +               return ret;
+> +
+> +       for (i = MTK_CLK_APB; i < MTK_CLK_MAX; i++) {
+> +               ret = clk_enable(larbpriv->clk[i]);
+> +               if (ret) {
+> +                       dev_err(larbdev,
+> +                               "Failed to enable larb clock%d. ret 0x%x\n",
+> +                               i, ret);
+> +                       goto err_larb_clk;
+> +               }
+> +       }
+> +
+> +       return ret;
+> +
+> +err_larb_clk:
+> +       if (i == MTK_CLK_SMI)
+> +               clk_disable(larbpriv->clk[MTK_CLK_APB]);
+> +       mtk_smi_common_put(larbpriv->smi);
+> +       return ret;
+> +}
+> +
+> +void mtk_smi_larb_put(struct device *larbdev)
+
+You can pass mtk_smi_larb as parameter instead of struct device
+
+> +{
+> +       struct mtk_smi_larb *larbpriv = dev_get_drvdata(larbdev);
+> +       int i;
+> +
+> +       for (i = MTK_CLK_SMI; i >= MTK_CLK_APB; i--)
+> +               clk_disable(larbpriv->clk[i]);
+> +
+> +       mtk_smi_common_put(larbpriv->smi);
+> +}
+> +
+> +int mtk_smi_config_port(struct device *larbdev,        unsigned int larbportid,
+> +                       bool iommuen)
+> +{
+> +       struct mtk_smi_larb *larbpriv = dev_get_drvdata(larbdev);
+> +       unsigned long flags;
+> +       int ret;
+> +       u32 reg;
+> +
+> +       ret = mtk_smi_larb_get(larbdev);
+> +       if (ret)
+> +               return ret;
+> +
+> +       spin_lock_irqsave(&larbpriv->portlock, flags);
+> +       reg = readl(larbpriv->base + SMI_LARB_MMU_EN);
+> +       reg &= ~F_SMI_MMU_EN(larbportid);
+> +       if (iommuen)
+> +               reg |= F_SMI_MMU_EN(larbportid);
+> +       writel(reg, larbpriv->base + SMI_LARB_MMU_EN);
+> +       spin_unlock_irqrestore(&larbpriv->portlock, flags);
+> +
+> +       mtk_smi_larb_put(larbdev);
+> +
+> +       return 0;
+> +}
+> +
+> +static int mtk_smi_larb_probe(struct platform_device *pdev)
+> +{
+> +       struct mtk_smi_larb *larbpriv;
+> +       struct resource *res;
+> +       struct device *dev = &pdev->dev;
+> +       struct device_node *smi_node;
+> +       struct platform_device *smi_pdev;
+> +       int i, ret;
+> +
+> +       larbpriv = devm_kzalloc(dev, sizeof(struct mtk_smi_larb), GFP_KERNEL);
+> +       if (!larbpriv)
+> +               return -ENOMEM;
+> +
+> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +       larbpriv->base = devm_ioremap_resource(dev, res);
+> +       if (IS_ERR(larbpriv->base)) {
+> +               dev_err(dev, "Failed to get the larbbase (0x%lx)\n",
+> +                       PTR_ERR(larbpriv->base));
+> +               return PTR_ERR(larbpriv->base);
+> +       }
+> +
+> +       for (i = MTK_CLK_APB; i < MTK_CLK_MAX; i++) {
+> +               larbpriv->clk[i] = devm_clk_get(dev, mtk_smi_clk_name[i]);
+> +
+> +               if (IS_ERR(larbpriv->clk[i])) {
+
+Please delete the blank line before the if.
+
+> +                       ret = PTR_ERR(larbpriv->clk[i]);
+> +                       dev_err(dev, "Failed to get larb%d clock (0x%x)\n",
+> +                               i, ret);
+> +                       goto fail_larb_clk;
+> +               } else {
+> +                       ret = clk_prepare(larbpriv->clk[i]);
+> +                       if (ret) {
+> +                               dev_err(dev, "Failed to prepare larb clock%d (0x%x)\n",
+> +                                       i, ret);
+> +                               goto fail_larb_clk;
+> +                       }
+> +               }
+> +       }
+> +
+> +       smi_node = of_parse_phandle(dev->of_node, "smi", 0);
+> +       if (!smi_node) {
+> +               dev_err(dev, "Failed to get smi node\n");
+> +               ret = -EINVAL;
+> +               goto fail_larb_clk;
+> +       }
+> +
+> +       smi_pdev = of_find_device_by_node(smi_node);
+> +       of_node_put(smi_node);
+> +       if (smi_pdev) {
+> +               larbpriv->smi = &smi_pdev->dev;
+> +       } else {
+> +               dev_err(dev, "Failed to get the smi_common device\n");
+> +               ret = -EINVAL;
+> +               goto fail_larb_clk;
+> +       }
+> +
+> +       spin_lock_init(&larbpriv->portlock);
+> +       dev_set_drvdata(dev, larbpriv);
+> +       return 0;
+> +
+> +fail_larb_clk:
+> +       while (--i >= MTK_CLK_APB)
+> +               clk_unprepare(larbpriv->clk[i]);
+> +       return ret;
+> +}
+> +
+> +static const struct of_device_id mtk_smi_larb_of_ids[] = {
+> +       { .compatible = "mediatek,mt8173-smi-larb",
+> +       },
+> +       {}
+> +};
+> +
+> +static struct platform_driver mtk_smi_larb_driver = {
+> +       .probe  = mtk_smi_larb_probe,
+> +       .driver = {
+> +               .name = "mtksmilarb",
+
+Huh, what about something more readable like mtk-smi-larb?
+
+> +               .of_match_table = mtk_smi_larb_of_ids,
+> +       }
+> +};
+> +
+> +static int mtk_smi_probe(struct platform_device *pdev)
+> +{
+> +       struct device *dev = &pdev->dev;
+> +       struct mtk_smi_common *smipriv;
+> +       int ret, i;
+> +
+> +       smipriv = devm_kzalloc(dev, sizeof(*smipriv), GFP_KERNEL);
+> +       if (!smipriv)
+> +               return -ENOMEM;
+> +
+> +       for (i = MTK_CLK_APB; i < MTK_CLK_MAX; i++) {
+> +               smipriv->clk[i] = devm_clk_get(dev, mtk_smi_clk_name[i]);
+> +
+> +               if (IS_ERR(smipriv->clk[i])) {
+> +                       ret = PTR_ERR(smipriv->clk[i]);
+> +                       dev_err(dev, "Failed to get smi-%s clock (0x%x)\n",
+> +                               mtk_smi_clk_name[i], ret);
+> +                       goto fail_smi_clk;
+> +               } else {
+> +                       ret = clk_prepare(smipriv->clk[i]);
+> +                       if (ret) {
+> +                               dev_err(dev, "Failed to prepare smi%d clock 0x%x\n",
+> +                                       i, ret);
+> +                               goto fail_smi_clk;
+> +                       }
+> +               }
+> +       }
+> +
+> +       dev_set_drvdata(dev, smipriv);
+> +       return ret;
+> +
+> +fail_smi_clk:
+> +       if (i == MTK_CLK_SMI)
+> +               clk_unprepare(smipriv->clk[MTK_CLK_APB]);
+> +       return ret;
+> +}
+> +
+> +static const struct of_device_id mtk_smi_of_ids[] = {
+> +       { .compatible = "mediatek,mt8173-smi",
+> +       },
+> +       {}
+> +};
+> +
+> +static struct platform_driver mtk_smi_driver = {
+> +       .probe  = mtk_smi_probe,
+> +       .driver = {
+> +               .name = "mtksmi",
+
+Same here.
+
+Thanks,
 Matthias
--- 
-motzblog.wordpress.com
