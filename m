@@ -1,99 +1,46 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 1/5] soc: mediatek: Add infracfg misc driver support
-Date: Tue, 19 May 2015 09:45:35 +0200
-Message-ID: <20150519074535.GY6325@pengutronix.de>
-References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
- <1431372206-1237-2-git-send-email-s.hauer@pengutronix.de>
- <CAGS+omADXpnBnLvuH+xNmatL+89kLBELz6KqMFid7SOx=veiAg@mail.gmail.com>
- <20150518081625.GO6325@pengutronix.de>
- <CAGS+omD-0bPeQqau9mm4pTqOhtPW=ecR5ibB8==pifRMgSKrjg@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 01/10] pinctrl: mediatek: data struct optimize and remove
+ unused member
+Date: Tue, 19 May 2015 10:49:19 +0200
+Message-ID: <CACRpkdZhxAxOMCwvMz2BWqND053kZ0taVstQn8n2emN=wktF-Q@mail.gmail.com>
+References: <1431567346-33780-1-git-send-email-hongzhou.yang@mediatek.com>
+	<1431567346-33780-2-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omD-0bPeQqau9mm4pTqOhtPW=ecR5ibB8==pifRMgSKrjg@mail.gmail.com>
+In-Reply-To: <1431567346-33780-2-git-send-email-hongzhou.yang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Samuel Ortiz <sameo@linux.intel.com>, Lee Jones <lee.jones@linaro.org>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Howard Chen <ibanezchen@gmail.com>, Ashwin Chaugule <ashwin.chaugule@linaro.org>, "Joe.C" <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@v>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 19, 2015 at 02:54:41PM +0800, Daniel Kurtz wrote:
-> >> > +       while (1) {
-> >> > +               ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-> >> > +               if (ret)
-> >> > +                       return ret;
-> >> > +
-> >> > +               if ((val & mask) == mask)
-> >> > +                       break;
-> >> > +
-> >> > +               cpu_relax();
-> >> > +               if (time_after(jiffies, expired))
-> >> > +                       return -EIO;
-> >>
-> >> I think we should check for timeout first, and then cpu_relax() if
-> >> there is still time left (here and in
-> >> mtk_infracfg_clear_bus_protection()).  Otherwise we end up doing one
-> >> final cpu_relax() without rechecking the register we are polling
-> >> (again, I have the same comment for the timeout loops in mtk-scpsys).
-> >
-> > I think cpu_relax() delays execution in the order of microseconds (I
-> > don't actually know, just a guess), so if the timeout is a second the
-> > order doesn't really matter. What can happen though is an interrupt
-> > after the (val & mask) test but before the timeout check. So to be
-> > truly correct we have to repeat the (val & mask) test after the
-> > time_after() check. Is that what you want?
-> 
-> I'm not following, why would you need to repeat (val & mask) test
-> after time_after?
-> What does an interrupt have to do with it?
-> Can you show a code snippet with what exactly you are proposing?
+On Thu, May 14, 2015 at 3:35 AM, Hongzhou Yang
+<hongzhou.yang@mediatek.com> wrote:
 
-Consider you have this timeout loop:
+> From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>
+> struct mtk_desc_pin.chip, mtk_pinctrl_devdata.invser_offset
+> and mtk_pinctrl_devdata.chip_type are never used in code.
+> Remove them.
+>
+> Some per-pin data are using int for pin number and offsets.
+> Change to short and rearrange to reduce const data size.
+>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
 
-	while (1) {
-		if (success())
-			break;
+Patch applied.
 
-		if (time_after(jiffies, expired))
-			return -ETIMEDOUT;
-	}
+However I suggest you use:
 
-Now when an interupt comes in between success() and time_after() then it
-can happen that the delay caused by the interrupt makes the code timeout
-even though success() might have become true in the meantime. So to be
-correct you have to:
+unsigned int => u32
+unsigned short => u16
+unsigned char => u8
 
-	while (1) {
-		if (success())
-			break;
+These kernel-specific types are more to the point,
+you immediately see how many bits they use, so a
+patch chaning all of the types to u32/u16/u8 would
+be welcome.
 
-		if (time_after(jiffies, expired)) {
-			if (success())
-				break;
-			return -ETIMEDOUT;
-	}
-
-Or, if you don't want to repeat the termination condition:
-
-	bool timeout = false;
-
-	while (1) {
-		if (success())
-			break;
-
-		if (timeout)
-			return -ETIMEDOUT;
-
-		if (time_after(jiffies, expired))
-			timeout = true;
-	}
-
-Anyway, with the timeout of one second used here this is all academic.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Yours,
+Linus Walleij
