@@ -1,39 +1,57 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 03/16] thermal: remove useless call to thermal_zone_device_set_polling
-Date: Wed, 20 May 2015 15:20:33 +0200
-Message-ID: <1432128046-12921-4-git-send-email-s.hauer@pengutronix.de>
-References: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-pm@vger.kernel.org
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Mikko Perttunen <mikko.perttunen@kapsi.fi>, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH 3/3] arm64: dts: mt8173: Add PMIC wrapper device node
+Date: Wed, 20 May 2015 15:32:46 +0200
+Message-ID: <1432128766-4445-4-git-send-email-s.hauer@pengutronix.de>
+References: <1432128766-4445-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1432128766-4445-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-When the thermal zone has no get_temp callback then thermal_zone_device_register()
-calls thermal_zone_device_set_polling() with a polling delay of 0. This
-only cancels the poll_queue. Since the poll_queue hasn't been scheduled this
-is a no-op. Remove it.
+This adds the device node for the PMIC wrapper.
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Acked-by: Eduardo Valentin <edubezval@gmail.com>
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 ---
- drivers/thermal/thermal_core.c | 3 ---
- 1 file changed, 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-index 244784f..1b68d20 100644
---- a/drivers/thermal/thermal_core.c
-+++ b/drivers/thermal/thermal_core.c
-@@ -1571,9 +1571,6 @@ struct thermal_zone_device *thermal_zone_device_register(const char *type,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 02088a6..a97b2aa 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -14,6 +14,7 @@
+ #include <dt-bindings/clock/mt8173-clk.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/reset-controller/mt8173-resets.h>
+ #include "mt8173-pinfunc.h"
  
- 	INIT_DELAYED_WORK(&(tz->poll_queue), thermal_zone_device_check);
+ / {
+@@ -158,6 +159,17 @@
+ 			reg = <0 0x10005000 0 0x1000>;
+ 		};
  
--	if (!tz->ops->get_temp)
--		thermal_zone_device_set_polling(tz, 0);
--
- 	thermal_zone_device_update(tz);
- 
- 	return tz;
++		pwrap: pwrap@1000d000 {
++			compatible = "mediatek,mt8173-pwrap";
++			reg = <0 0x1000d000 0 0x1000>;
++			reg-names = "pwrap";
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_HIGH>;
++			resets = <&infracfg MT8173_INFRA_PMIC_WRAP_RST>;
++			reset-names = "pwrap";
++			clocks = <&infracfg CLK_INFRA_PMICSPI>, <&infracfg CLK_INFRA_PMICWRAP>;
++			clock-names = "spi", "wrap";
++		};
++
+ 		sysirq: intpol-controller@10200620 {
+ 			compatible = "mediatek,mt8173-sysirq",
+ 					"mediatek,mt6577-sysirq";
 -- 
 2.1.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
