@@ -1,74 +1,56 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
-	<u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v8 2/3] I2C: mediatek: Add driver for MediaTek I2C
- controller
-Date: Wed, 20 May 2015 17:37:28 +0200
-Message-ID: <20150520153728.GT24769@pengutronix.de>
-References: <1431967209-5261-1-git-send-email-eddie.huang@mediatek.com>
- <1431967209-5261-3-git-send-email-eddie.huang@mediatek.com>
- <20150520085715.GA17078@pengutronix.de>
- <1432127020.20394.15.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
+Date: Wed, 20 May 2015 18:06:45 +0200
+Message-ID: <CABuKBeLuNdVjuy81egtfhwdLKtje_Ff8vz3EGgRy6ZcrfFX8AA@mail.gmail.com>
+References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
+	<1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
+	<CAGS+omDJ-7+L_46vwMyewHMkMNj69odhp=JY5i6Xj3-Loe6UNA@mail.gmail.com>
+	<20150519103010.GA6325@pengutronix.de>
+	<CABuKBeKiw8MkG5kWaUBqfDzopwvrX8Kh8XpNfRiC_uJD67OcEg@mail.gmail.com>
+	<20150520140325.GN6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset=ISO-8859-1
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432127020.20394.15.camel@mtksdaap41>
+In-Reply-To: <20150520140325.GN6325@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Xudong Chen <xudong.chen@mediatek.com>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Wolfram Sang <wsa@the-dreams.de>, Liguo Zhang <liguo.zhang@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+2015-05-20 16:03 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> On Tue, May 19, 2015 at 01:06:10PM +0200, Matthias Brugger wrote:
+>> 2015-05-19 12:30 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+>> >
+>> > I'll check for errors next round. However, I cannot bail out in this
+>> > case since once pm_genpd_init() is called the domain cannot be
+>> > unregistered anymore.
+>>
+>> We should think of implementing this.
+>> I had a quick look on it, and from what I understand as long as you
+>> don't have any subdomains, devices and masters added, it's just
+>> deleting an element from a linked list.
+>
+> In my error path I would have subdomains added though, so I would need
+> that to be handled.
 
-On Wed, May 20, 2015 at 09:03:40PM +0800, Yingjoe Chen wrote:
-> On Wed, 2015-05-20 at 10:57 +0200, Uwe Kleine-K=F6nig wrote:
-> > On Tue, May 19, 2015 at 12:40:08AM +0800, Eddie Huang wrote:
-> > > +	if (i2c->speed_hz > MAX_HS_MODE_SPEED)
-> > > +		return -EINVAL;
-> > According to the plan to tune for the highest possible rate <=3D
-> > i2c->speed_hz, you should handle the case (i2c->speed_hz >
-> > MAX_HS_MODE_SPEED) like i2c->speed_hz =3D=3D MAX_HS_MODE_SPEED.
-> > Well, you might want to prevent an overflow in the calculation belo=
-w
-> > however.
->=20
-> The check here means we don't support speed > MAX_HS_MODE_SPEED. This=
- is
-> different then slightly slower bus speed due to rounding error.
-Well from outside there no difference between asking for 100 with
-getting 98 or asking for 405 with getting 400. IMHO the expectation is
-that you set the maximal possible rate when something too big for you i=
-s
-requested. Consider a communication with a i2c device that supports 600
-kHz. You have the choice to communicate with 400 kHz with that or not a=
-t
-all.
+Well we could bail out, when pm_genpd_add_subdomain fails. But the
+actual implementations don't do that neither at the moment.
 
-> > > +	best_mul =3D MAX_SAMPLE_CNT_DIV * max_step_cnt;
-> > > +
-> > > +	for (sample_cnt =3D 1; sample_cnt <=3D MAX_SAMPLE_CNT_DIV; samp=
-le_cnt++) {
-> > > +		step_cnt =3D (min_div + sample_cnt - 1) / sample_cnt;
-> > DIV_ROUND_UP
-> >=20
-> > > +		cnt_mul =3D step_cnt * sample_cnt;
-> > > +		if (step_cnt > max_step_cnt)
-> > > +			continue;
-> > I think it can happen that you have step_cnt > max_step_cnt here, b=
-ut
-> > that (sample_cnt, max_step_cnt) still is a good pair to consider. S=
-o:
->=20
-> If step_cnt > max_step_cnt, then sample_cnt * max_step_cnt < min_div.
-> This means (sample_cnt, max_step_cnt) is not a valid.
-You're right.
+>
+>> Maybe we should split this in pm_genpd_prepare and pm_genpd_add, with
+>> the last one actually adding the generic_pm_domain to gpd_list.
+>>
+>> This way we could also get rid of the two for loops.
+>
+> Well, with pm_genpd_prepare and pm_genpd_add I would still need two
+> loops, one for preparing and one for adding.
+>
+> I'm not sure how useful it really is to be able to unregister power
+> domains. For now I suggest to continue with the domains that are
+> successfully registered. I'll look into it should the pm domain
+> maintainers request it.
 
-Best regards
-Uwe
+Alright.
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig        =
-    |
-Industrial Linux Solutions                 | http://www.pengutronix.de/=
-  |
+-- 
+motzblog.wordpress.com
