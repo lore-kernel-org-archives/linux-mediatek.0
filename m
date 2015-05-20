@@ -1,36 +1,92 @@
-From: Ingo Molnar <mingo@kernel.org>
-Subject: Re: [RFC v1 00/25] Optimize irq flow handler
-Date: Wed, 20 May 2015 12:16:16 +0200
-Message-ID: <20150520101616.GA20163@gmail.com>
-References: <1432116013-25902-1-git-send-email-jiang.liu@linux.intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432116013-25902-1-git-send-email-jiang.liu@linux.intel.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Jiang Liu <jiang.liu@linux.intel.com>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Ingo Molnar <mingo@redhat.com>, "H. Peter Anvin" <hpa@zytor.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Randy Dunlap <rdunlap@infradead.org>, Yinghai Lu <yinghai@kernel.org>, Borislav Petkov <bp@alien8.de>, Matthias Brugger <matthias.bgg@gmail.com>, Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>, Tony Luck <tony.luck@intel.com>, x86@kernel.org, linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: [PATCH] arm64: dts: mt8173: fix some indentation
+Date: Wed, 20 May 2015 18:20:07 +0800
+Message-ID: <1432117261-8884-1-git-send-email-djkurtz@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Fix indentation nits to make mt8173.dtsi more consistent.
 
-* Jiang Liu <jiang.liu@linux.intel.com> wrote:
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
->   genirq: Kill the first parameter 'irq' of irq_flow_handler_t
-
-Those kinds of identical titles are not acceptable.
-
-Thanks,
-
-	Ingo
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 924fdb6..56a371f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -91,13 +91,13 @@
+ 		compatible = "arm,armv8-timer";
+ 		interrupt-parent = <&gic>;
+ 		interrupts = <GIC_PPI 13
+-			(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+ 			     <GIC_PPI 14
+-			(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+ 			     <GIC_PPI 11
+-			(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+ 			     <GIC_PPI 10
+-			(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
++			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+ 	};
+ 
+ 	soc {
+@@ -127,7 +127,7 @@
+ 
+ 		sysirq: intpol-controller@10200620 {
+ 			compatible = "mediatek,mt8173-sysirq",
+-					"mediatek,mt6577-sysirq";
++				     "mediatek,mt6577-sysirq";
+ 			interrupt-controller;
+ 			#interrupt-cells = <3>;
+ 			interrupt-parent = <&gic>;
+@@ -149,7 +149,7 @@
+ 
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt8173-uart",
+-					"mediatek,mt6577-uart";
++				     "mediatek,mt6577-uart";
+ 			reg = <0 0x11002000 0 0x400>;
+ 			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -158,7 +158,7 @@
+ 
+ 		uart1: serial@11003000 {
+ 			compatible = "mediatek,mt8173-uart",
+-					"mediatek,mt6577-uart";
++				     "mediatek,mt6577-uart";
+ 			reg = <0 0x11003000 0 0x400>;
+ 			interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -167,7 +167,7 @@
+ 
+ 		uart2: serial@11004000 {
+ 			compatible = "mediatek,mt8173-uart",
+-					"mediatek,mt6577-uart";
++				     "mediatek,mt6577-uart";
+ 			reg = <0 0x11004000 0 0x400>;
+ 			interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+@@ -176,13 +176,12 @@
+ 
+ 		uart3: serial@11005000 {
+ 			compatible = "mediatek,mt8173-uart",
+-					"mediatek,mt6577-uart";
++				     "mediatek,mt6577-uart";
+ 			reg = <0 0x11005000 0 0x400>;
+ 			interrupts = <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&uart_clk>;
+ 			status = "disabled";
+ 		};
+ 	};
+-
+ };
+ 
+-- 
+2.2.0.rc0.207.ga3a616c
