@@ -1,102 +1,54 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 1/3] arm64: dts: mt8173: Add clock controller device nodes
-Date: Wed, 20 May 2015 15:32:44 +0200
-Message-ID: <1432128766-4445-2-git-send-email-s.hauer@pengutronix.de>
-References: <1432128766-4445-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1432128766-4445-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
+Date: Wed, 20 May 2015 16:03:25 +0200
+Message-ID: <20150520140325.GN6325@pengutronix.de>
+References: <1431372206-1237-1-git-send-email-s.hauer@pengutronix.de>
+ <1431372206-1237-4-git-send-email-s.hauer@pengutronix.de>
+ <CAGS+omDJ-7+L_46vwMyewHMkMNj69odhp=JY5i6Xj3-Loe6UNA@mail.gmail.com>
+ <20150519103010.GA6325@pengutronix.de>
+ <CABuKBeKiw8MkG5kWaUBqfDzopwvrX8Kh8XpNfRiC_uJD67OcEg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CABuKBeKiw8MkG5kWaUBqfDzopwvrX8Kh8XpNfRiC_uJD67OcEg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Ulf Hansson <ulf.hansson@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the device nodes providing clocks on the Mediatek MT8173.
-These are: topckgen, infracfg, pericfg and apmixedsys. These are
-fed by two oscillators also added by this patch.
+On Tue, May 19, 2015 at 01:06:10PM +0200, Matthias Brugger wrote:
+> 2015-05-19 12:30 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> >
+> > I'll check for errors next round. However, I cannot bail out in this
+> > case since once pm_genpd_init() is called the domain cannot be
+> > unregistered anymore.
+> 
+> We should think of implementing this.
+> I had a quick look on it, and from what I understand as long as you
+> don't have any subdomains, devices and masters added, it's just
+> deleting an element from a linked list.
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 41 ++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+In my error path I would have subdomains added though, so I would need
+that to be handled.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 4595196..ef1d92f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -11,6 +11,7 @@
-  * GNU General Public License for more details.
-  */
- 
-+#include <dt-bindings/clock/mt8173-clk.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include "mt8173-pinfunc.h"
-@@ -87,6 +88,20 @@
- 		#clock-cells = <0>;
- 	};
- 
-+	clk26m: oscillator@0 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <26000000>;
-+		clock-output-names = "clk26m";
-+	};
-+
-+	clk32k: oscillator@1 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <32000>;
-+		clock-output-names = "clk32k";
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
-@@ -106,6 +121,26 @@
- 		compatible = "simple-bus";
- 		ranges;
- 
-+		topckgen: clock-controller@10000000 {
-+			compatible = "mediatek,mt8173-topckgen";
-+			reg = <0 0x10000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		infracfg: power-controller@10001000 {
-+			compatible = "mediatek,mt8173-infracfg", "syscon";
-+			reg = <0 0x10001000 0 0x1000>;
-+			#clock-cells = <1>;
-+			#reset-cells = <1>;
-+		};
-+
-+		pericfg: power-controller@10003000 {
-+			compatible = "mediatek,mt8173-pericfg", "syscon";
-+			reg = <0 0x10003000 0 0x1000>;
-+			#clock-cells = <1>;
-+			#reset-cells = <1>;
-+		};
-+
- 		/*
- 		 * Pinctrl access register at 0x10005000 through regmap.
- 		 * Register 0x1000b000 is used by EINT.
-@@ -138,6 +173,12 @@
- 			reg = <0 0x10200620 0 0x20>;
- 		};
- 
-+		apmixedsys: clock-controller@10209000 {
-+			compatible = "mediatek,mt8173-apmixedsys";
-+			reg = <0 0x10209000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		gic: interrupt-controller@10220000 {
- 			compatible = "arm,gic-400";
- 			#interrupt-cells = <3>;
+> Maybe we should split this in pm_genpd_prepare and pm_genpd_add, with
+> the last one actually adding the generic_pm_domain to gpd_list.
+> 
+> This way we could also get rid of the two for loops.
+
+Well, with pm_genpd_prepare and pm_genpd_add I would still need two
+loops, one for preparing and one for adding.
+
+I'm not sure how useful it really is to be able to unregister power
+domains. For now I suggest to continue with the domains that are
+successfully registered. I'll look into it should the pm domain
+maintainers request it.
+
+Sascha
+
 -- 
-2.1.4
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
