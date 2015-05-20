@@ -1,58 +1,29 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH] tty: serial/8250: remove console dependency for mediatek
-Date: Wed, 20 May 2015 09:34:39 +0800
-Message-ID: <1432085679.18194.1.camel@mtksdaap41>
-References: <2421682.546VBfrkgn@wuerfel>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v3] clk: mediatek: Initialize clk_init_data
+Date: Tue, 19 May 2015 18:41:33 -0700
+Message-ID: <20150520014133.GE31054@codeaurora.org>
+References: <1431957632-2182-1-git-send-email-jcliang@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <2421682.546VBfrkgn@wuerfel>
+Content-Disposition: inline
+In-Reply-To: <1431957632-2182-1-git-send-email-jcliang@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Jiri Slaby <jslaby@suse.cz>, linux-kernel@vger.kernel.org
+To: Ricky Liang <jcliang@chromium.org>
+Cc: Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Henry Chen <henryc.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd,
+On 05/18, Ricky Liang wrote:
+> The variable init (struct clk_init_data) is allocated on the stack.
+> We weren't initializing the .flags field, so it contains random junk,
+> which can cause all kinds of interesting issues when the flags are
+> parsed by clk_register.
+> 
+> Signed-off-by: Ricky Liang <jcliang@chromium.org>
+> ---
 
-On Tue, 2015-05-19 at 22:11 +0200, Arnd Bergmann wrote:
-> If the mediatek serial port driver is built-in, but serial
-> console is disabled in Kconfig (e.g. when the serial driver
-> itself is a loadable module), we get this build error:
-> 
-> drivers/built-in.o: In function `early_mtk8250_setup':
-> undefined reference to `early_serial8250_setup'
-> 
-> To avoid that problem, this patch encloses the early_mtk8250_setup
-> function in #ifdef CONFIG_SERIAL_8250_CONSOLE, the same symbol
-> that guards the early_serial8250_setup function.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index 4488c2bdb7ba..78883ca64ddd 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -305,6 +305,7 @@ static struct platform_driver mtk8250_platform_driver = {
->  };
->  module_platform_driver(mtk8250_platform_driver);
->  
-> +#ifdef CONFIG_SERIAL_8250_CONSOLE
->  static int __init early_mtk8250_setup(struct earlycon_device *device,
->  					const char *options)
->  {
-> @@ -317,6 +318,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
->  }
->  
->  OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
-> +#endif
->  
->  MODULE_AUTHOR("Matthias Brugger");
->  MODULE_LICENSE("GPL");
-> 
+Applied to clk-next
 
-Acked-by: Eddie Huang <eddie.huang@mediatek.com>
-
-Thanks your correction.
-
-Eddie
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
