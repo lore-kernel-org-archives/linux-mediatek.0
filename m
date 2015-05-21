@@ -1,75 +1,135 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 4/6] soc: mediatek: Add SMI driver
-Date: Thu, 21 May 2015 14:16:30 +0800
-Message-ID: <1432188990.5092.12.camel@mhfsdcap03>
-References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
-	<1431683009-18158-5-git-send-email-yong.wu@mediatek.com>
-	<CABuKBeJvh2PGi3i6O0uu-7ggdBzKMb3tPE_XKhT1i-+tkKc5gg@mail.gmail.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH v8 2/3] I2C: mediatek: Add driver for MediaTek I2C
+ controller
+Date: Thu, 21 May 2015 15:01:29 +0800
+Message-ID: <1432191689.28646.11.camel@mtksdaap41>
+References: <1431967209-5261-1-git-send-email-eddie.huang@mediatek.com>
+	 <1431967209-5261-3-git-send-email-eddie.huang@mediatek.com>
+	 <20150520085715.GA17078@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CABuKBeJvh2PGi3i6O0uu-7ggdBzKMb3tPE_XKhT1i-+tkKc5gg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150520085715.GA17078@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Mark Rutland <mark.rutland@arm.com>, Xudong Chen <xudong.chen@mediatek.com>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Liguo Zhang <liguo.zhang@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
-     Thanks very much for your suggestion.
-     Abort the smi clock name, Could you help check below.
-     The others I will improve in next time.
+Hi,
 
-On Tue, 2015-05-19 at 13:14 +0200, Matthias Brugger wrote:
-> 2015-05-15 11:43 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
-> >     This patch add SMI(Smart Multimedia Interface) driver. This driver is
-> > responsible to enable/disable iommu and control the clocks of each local arbiter.
-> >
-[snip]
+Please see my reply below (I skip comments that already reply in anothe=
+r
+mail).
+
+On Wed, 2015-05-20 at 10:57 +0200, Uwe Kleine-K=C3=B6nig wrote:
+> Hello,
+>=20
+> now that I understood the formula some more comments to the calculati=
+on.
+>=20
+> On Tue, May 19, 2015 at 12:40:08AM +0800, Eddie Huang wrote:
+> > +#define I2C_DEFAUT_SPEED		100000	/* hz */
+> DEFAULT?
+>=20
+Yes, will fix.
+
+> > +#define MAX_FS_MODE_SPEED		400000
+> > +#define MAX_HS_MODE_SPEED		3400000
+> > +#define MAX_SAMPLE_CNT_DIV		8
+> > +#define MAX_STEP_CNT_DIV		64
+> > +#define MAX_HS_STEP_CNT_DIV		8
+> > [...]
+> > +/* calculate i2c port speed */
+> > +static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int clk=
+_src_in_hz)
+> > +{
+> add a comment here, that clk_src_in_hz is the parent clock already
+> divided by clock-div.
+>=20
+We move parent_clk div clock-div in mtk_i2c_set_speed function, I think
+this is more clear.
+
+> > +	step_div =3D max_step_cnt;
+> > +	/* Find the best combination */
+> > +	khz =3D i2c->speed_hz / 1000;
+> > +	hclk =3D clk_src_in_hz / 1000;
+> Why are you dividing here? There shouldn't be an overflow problem and
+> you're loosing precision.
+OK, will remove div 1000.
+
+>=20
+> > +	min_div =3D ((hclk >> 1) + khz - 1) / khz;
+> The shift accounts for the fixed divider 2 in
+>=20
+> 	i2c_bus_freq =3D parent_clk / (clock-div * 2 * sample_cnt * step_cnt
+>=20
+> ? Maybe better call this opt_div instead of min_div?=20
+OK
+
+>=20
+> > +	best_mul =3D MAX_SAMPLE_CNT_DIV * max_step_cnt;
 > > +
-> > +#define SMI_LARB_MMU_EN                (0xf00)
-> > +#define F_SMI_MMU_EN(port)     (1 << (port))
+> > +	for (sample_cnt =3D 1; sample_cnt <=3D MAX_SAMPLE_CNT_DIV; sample=
+_cnt++) {
+> > +		step_cnt =3D (min_div + sample_cnt - 1) / sample_cnt;
+> DIV_ROUND_UP
+OK
+
 > > +
-> > +enum {
-> > +       MTK_CLK_APB,
-> > +       MTK_CLK_SMI,
-> > +       MTK_CLK_MAX,
-> 
-> Maybe add something like:
-> MTK_CLK_FIRST = MTK_CLK_APB,
-> to make the for loops better readable.
-> 
-Then, Is it like this? : 
- enum {
-        MTK_CLK_FIRST = MTK_CLK_APB,
-        MTK_CLK_SMI,
-        MTK_CLK_MAX,
- }
-or the CLK_SMI also need MTK_CLK_SECOND = MTK_CLK_SMI.
-> > +};
+> > +		if (cnt_mul < best_mul) {
+> > +			best_mul =3D cnt_mul;
+> > +			sample_div =3D sample_cnt;
+> > +			step_div =3D step_cnt;
+> I'd call these best_sample_cnt and best_step_cnt instead of sample_di=
+v
+> and step_div.
+OK
+
+>=20
+> > +			if (best_mul =3D=3D min_div)
+> > +				break;
+> > +		}
+> > +	}
 > > +
-> > +struct mtk_smi_common {
-> > +       void __iomem            *base;
-> 
-> That seems to be never used. Please delete it.
-> 
-> > +       struct clk              *clk[MTK_CLK_MAX];
-> > +};
+> > +	sample_cnt =3D sample_div;
+> > +	step_cnt =3D step_div;
+> > +	sclk =3D hclk / (2 * sample_cnt * step_cnt);
+> > +	if (sclk > khz) {
+> Can this happen? A better name for "sclk" would be "bus_freq"?
+Yes, if i2c->speed_hz is too small, not able to get target_speed using
+hardware div.=20
+
+>=20
+> > +		dev_dbg(i2c->dev, "%s mode: unsupported speed (%ldkhz)\n",
+> > +			(i2c->speed_hz > MAX_HS_MODE_SPEED) ? "HS" : "ST/FT",
+> What is ST/FR? I would have expected FS here.
+Please skip it.The debug message is too lousy.
+
+>=20
+> > +			(long int)khz);
+> > +		return -EINVAL;
+> > +	}
 > > +
-> > +struct mtk_smi_larb {
-> > +       void __iomem            *base;
-> > +       spinlock_t              portlock; /* lock for config port */
-> > +       struct clk              *clk[MTK_CLK_MAX];
-> > +       struct device           *smi;
-> > +};
+> > +	step_cnt--;
+> > +	sample_cnt--;
 > > +
-> Thanks,
-> Matthias
+> > +	if (i2c->speed_hz > MAX_FS_MODE_SPEED) {
+> > +		/* Set the hign speed mode register */
+> > +		i2c->timing_reg =3D I2C_FS_TIME_INIT_VALUE;
+> > +		i2c->high_speed_reg =3D I2C_TIME_DEFAULT_VALUE |
+> > +			(sample_cnt & I2C_TIMING_SAMPLE_COUNT_MASK) << 12 |
+> > +			(step_cnt & I2C_TIMING_SAMPLE_COUNT_MASK) << 8;
+> > +	} else {
+> > +		i2c->timing_reg =3D
+> > +			(sample_cnt & I2C_TIMING_SAMPLE_COUNT_MASK) << 8 |
+> > +			(step_cnt & I2C_TIMING_STEP_DIV_MASK) << 0;
+> > +		/* Disable the high speed transaction */
+> > +		i2c->high_speed_reg =3D I2C_TIME_CLR_VALUE;
+> > +	}
+> Would it be sensible to write these values directly into hardware her=
+e?
+No.In some error cases, we want to reinitialize hardware, keep these
+values to avoid calculate again.
+
+Eddie
