@@ -1,315 +1,95 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
-Date: Thu, 21 May 2015 16:22:31 +0800
-Message-ID: <1432196551.15653.2.camel@mtksdaap41>
-References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
-	 <1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
-	 <CAGS+omBX1fMBHa-4GLTjQUq5VPR2JRvhJRJ4qBX8hvDF9ihbLA@mail.gmail.com>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v9 0/3] ARM: mediatek: Add driver for Mediatek I2C
+Date: Thu, 21 May 2015 16:53:27 +0800
+Message-ID: <1432198410-6576-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omBX1fMBHa-4GLTjQUq5VPR2JRvhJRJ4qBX8hvDF9ihbLA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yh.huang@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-05-18 at 11:42 +0800, Daniel Kurtz wrote:
-> On Mon, May 11, 2015 at 5:26 PM, YH Huang <yh.huang@mediatek.com> wrote:
-> > Add display PWM driver support to modify backlight for MT8173/MT6595.
-> >
-> > Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> > ---
-> >  drivers/pwm/Kconfig             |   9 ++
-> >  drivers/pwm/Makefile            |   1 +
-> >  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 235 insertions(+)
-> >  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
-> >
-> > diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-> > index b1541f4..9edbb5a 100644
-> > --- a/drivers/pwm/Kconfig
-> > +++ b/drivers/pwm/Kconfig
-> > @@ -111,6 +111,15 @@ config PWM_CLPS711X
-> >           To compile this driver as a module, choose M here: the module
-> >           will be called pwm-clps711x.
-> >
-> > +config PWM_DISP_MEDIATEK
-> > +       tristate "MEDIATEK display PWM driver"
-> > +       depends on OF
-> > +       help
-> > +         Generic PWM framework driver for mediatek disp-pwm device.
-> > +
-> > +         To compile this driver as a module, choose M here: the module
-> > +         will be called pwm-disp-mediatek.
-> > +
-> >  config PWM_EP93XX
-> >         tristate "Cirrus Logic EP93xx PWM support"
-> >         depends on ARCH_EP93XX
-> > diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-> > index ec50eb5..c5ff72a 100644
-> > --- a/drivers/pwm/Makefile
-> > +++ b/drivers/pwm/Makefile
-> > @@ -8,6 +8,7 @@ obj-$(CONFIG_PWM_BCM_KONA)      += pwm-bcm-kona.o
-> >  obj-$(CONFIG_PWM_BCM2835)      += pwm-bcm2835.o
-> >  obj-$(CONFIG_PWM_BFIN)         += pwm-bfin.o
-> >  obj-$(CONFIG_PWM_CLPS711X)     += pwm-clps711x.o
-> > +obj-$(CONFIG_PWM_DISP_MEDIATEK)        += pwm-disp-mediatek.o
-> >  obj-$(CONFIG_PWM_EP93XX)       += pwm-ep93xx.o
-> >  obj-$(CONFIG_PWM_FSL_FTM)      += pwm-fsl-ftm.o
-> >  obj-$(CONFIG_PWM_IMG)          += pwm-img.o
-> > diff --git a/drivers/pwm/pwm-disp-mediatek.c b/drivers/pwm/pwm-disp-mediatek.c
-> > new file mode 100644
-> > index 0000000..38293af
-> > --- /dev/null
-> > +++ b/drivers/pwm/pwm-disp-mediatek.c
-> > @@ -0,0 +1,225 @@
-> > +/*
-> > + * Mediatek display pulse-width-modulation controller driver.
-> > + * Copyright (c) 2015 MediaTek Inc.
-> > + * Author: YH Huang <yh.huang@mediatek.com>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> > +#include <linux/err.h>
-> > +#include <linux/io.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/pwm.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/slab.h>
-> > +
-> > +#define DISP_PWM_EN_OFF                        (0x0)
-> > +#define PWM_ENABLE_SHIFT               (0x0)
-> > +#define PWM_ENABLE_MASK                        (0x1 << PWM_ENABLE_SHIFT)
-> > +
-> > +#define DISP_PWM_COMMIT_OFF            (0x08)
-> > +#define PWM_COMMIT_SHIFT               (0x0)
-> > +#define PWM_COMMIT_MASK                        (0x1 << PWM_COMMIT_SHIFT)
-> > +
-> > +#define DISP_PWM_CON_0_OFF             (0x10)
-> > +#define PWM_CLKDIV_SHIFT               (0x10)
-> > +#define PWM_CLKDIV_MASK                        (0x3ff << PWM_CLKDIV_SHIFT)
-> > +#define PWM_CLKDIV_MAX                 (0x000003ff)
-> > +
-> > +#define DISP_PWM_CON_1_OFF             (0x14)
-> > +#define PWM_PERIOD_SHIFT               (0x0)
-> > +#define PWM_PERIOD_MASK                        (0xfff << PWM_PERIOD_SHIFT)
-> > +#define PWM_PERIOD_MAX                 (0x00000fff)
-> > +/* Shift log2(PWM_PERIOD_MAX + 1) as divisor */
-> > +#define PWM_PERIOD_BIT_SHIFT           12
-> > +
-> > +#define PWM_HIGH_WIDTH_SHIFT           (0x10)
-> > +#define PWM_HIGH_WIDTH_MASK            (0x1fff << PWM_HIGH_WIDTH_SHIFT)
-> > +
-> > +#define NUM_PWM 1
-> > +
-> > +struct mtk_disp_pwm_chip {
-> > +       struct pwm_chip chip;
-> > +       struct device   *dev;
-> > +       struct clk      *clk_main;
-> > +       struct clk      *clk_mm;
-> > +       void __iomem    *mmio_base;
-> > +};
-> > +
-> > +static void mtk_disp_pwm_setting(void __iomem *address, u32 value, u32 mask)
-> > +{
-> > +       u32 val;
-> > +
-> > +       val = readl(address);
-> > +       val &= ~mask;
-> > +       val |= value;
-> > +       writel(val, address);
-> > +}
-> > +
-> > +static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> > +                              int duty_ns, int period_ns)
-> > +{
-> > +       struct mtk_disp_pwm_chip *mpc;
-> > +       u64 div, rate;
-> > +       u32 clk_div, period, high_width, rem;
-> > +
-> > +       /*
-> > +        * Find period, high_width and clk_div to suit duty_ns and period_ns.
-> > +        * Calculate proper div value to keep period value in the bound.
-> > +        *
-> > +        * period_ns = 10^9 * (clk_div + 1) * (period +1) / PWM_CLK_RATE
-> > +        * duty_ns = 10^9 * (clk_div + 1) * (high_width + 1) / PWM_CLK_RATE
-> > +        *
-> > +        * period = (PWM_CLK_RATE * period_ns) / (10^9 * (clk_div + 1)) - 1
-> > +        * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1)) - 1
-> > +        */
-> > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > +       rate = clk_get_rate(mpc->clk_main);
-> > +       clk_div = div_u64_rem(rate * period_ns, NSEC_PER_SEC, &rem) >>
-> > +                               PWM_PERIOD_BIT_SHIFT;
-> > +       if (clk_div > PWM_CLKDIV_MAX)
-> > +               return -EINVAL;
-> > +
-> > +       div = clk_div + 1;
-> > +       period = div64_u64(rate * period_ns, NSEC_PER_SEC * div);
-> > +       if (period > 0)
-> > +               period--;
-> > +       high_width = div64_u64(rate * duty_ns, NSEC_PER_SEC * div);
-> > +       if (high_width > 0)
-> > +               high_width--;
-> > +
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_0_OFF,
-> > +                            clk_div << PWM_CLKDIV_SHIFT, PWM_CLKDIV_MASK);
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_1_OFF,
-> > +                            (period << PWM_PERIOD_SHIFT) |
-> > +                       (high_width << PWM_HIGH_WIDTH_SHIFT),
-> > +                       PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK);
-> > +
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
-> > +                            1 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
-> > +                            0 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
-> > +
-> > +       return 0;
-> > +}
-> > +
-> > +static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-> > +{
-> > +       struct mtk_disp_pwm_chip *mpc;
-> > +
-> > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
-> > +                            1 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
-> > +
-> > +       return 0;
-> > +}
-> > +
-> > +static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> > +{
-> > +       struct mtk_disp_pwm_chip *mpc;
-> > +
-> > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
-> > +                            0 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
-> > +}
-> > +
-> > +static const struct pwm_ops mtk_disp_pwm_ops = {
-> > +       .config = mtk_disp_pwm_config,
-> > +       .enable = mtk_disp_pwm_enable,
-> > +       .disable = mtk_disp_pwm_disable,
-> > +       .owner = THIS_MODULE,
-> > +};
-> > +
-> > +static int mtk_disp_pwm_probe(struct platform_device *pdev)
-> > +{
-> > +       struct mtk_disp_pwm_chip *pwm;
-> > +       struct resource *r;
-> > +       int ret;
-> > +
-> > +       pwm = devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
-> > +       if (!pwm)
-> > +               return -ENOMEM;
-> > +
-> > +       pwm->dev = &pdev->dev;
-> > +
-> > +       r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +       pwm->mmio_base = devm_ioremap_resource(&pdev->dev, r);
-> > +       if (IS_ERR(pwm->mmio_base))
-> > +               return PTR_ERR(pwm->mmio_base);
-> > +
-> > +       pwm->clk_main = devm_clk_get(&pdev->dev, "main");
-> > +       if (IS_ERR(pwm->clk_main))
-> > +               return PTR_ERR(pwm->clk_main);
-> > +       pwm->clk_mm = devm_clk_get(&pdev->dev, "mm");
-> > +       if (IS_ERR(pwm->clk_mm))
-> > +               return PTR_ERR(pwm->clk_mm);
-> > +
-> > +       ret = clk_prepare_enable(pwm->clk_main);
-> > +       if (ret < 0)
-> > +               return ret;
-> > +       ret = clk_prepare_enable(pwm->clk_mm);
-> > +       if (ret < 0) {
-> > +               clk_disable_unprepare(pwm->clk_main);
-> > +               return ret;
-> > +       }
-> > +
-> > +       platform_set_drvdata(pdev, pwm);
-> > +
-> > +       pwm->chip.dev = &pdev->dev;
-> > +       pwm->chip.ops = &mtk_disp_pwm_ops;
-> > +       pwm->chip.base = -1;
-> > +       pwm->chip.npwm = NUM_PWM;
-> > +
-> > +       ret = pwmchip_add(&pwm->chip);
-> > +       if (ret < 0) {
-> > +               dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
-> > +               return ret;
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> > +
-> > +static int mtk_disp_pwm_remove(struct platform_device *pdev)
-> > +{
-> > +       struct mtk_disp_pwm_chip *pc = platform_get_drvdata(pdev);
-> > +
-> > +       if (WARN_ON(!pc))
-> > +               return -ENODEV;
-> > +
-> > +       clk_disable_unprepare(pc->clk_main);
-> > +       clk_disable_unprepare(pc->clk_mm);
-> > +
-> > +       return pwmchip_remove(&pc->chip);
-> > +}
-> > +
-> > +static const struct of_device_id mtk_disp_pwm_of_match[] = {
-> > +       { .compatible = "mediatek,mt6595-disp-pwm" },
-> 
-> Does this driver support the PWM in mt8173?
-> If so, don't you need this, too:
-> 
->   { .compatible = "mediatek,mt8173-disp-pwm" },
+This series is for Mediatek SoCs I2C controller common bus driver.
 
-Yes, it supports mt8173.
-I will add it.
+Earlier MTK SoC (for example, MT6589, MT8135) I2C HW has some limitations.
+New generation SoC like MT8173 fix following limitations:
 
-> 
-> > +       { }
-> > +};
-> > +
-> > +MODULE_DEVICE_TABLE(of, mtk_disp_pwm_of_match);
-> > +
-> > +static struct platform_driver mtk_disp_pwm_driver = {
-> > +       .driver = {
-> > +               .name = "mediatek-disp-pwm",
-> > +               .owner = THIS_MODULE,
-> > +               .of_match_table = mtk_disp_pwm_of_match,
-> > +       },
-> > +       .probe = mtk_disp_pwm_probe,
-> > +       .remove = mtk_disp_pwm_remove,
-> > +};
-> > +
-> > +module_platform_driver(mtk_disp_pwm_driver);
-> > +
-> > +MODULE_AUTHOR("YH Huang <yh.huang@mediatek.com>");
-> > +MODULE_DESCRIPTION("MediaTek SoC display PWM driver");
-> > +MODULE_LICENSE("GPL v2");
-> > --
-> > 1.8.1.1.dirty
-> >
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at  http://www.tux.org/lkml/
+1. Only support one i2c_msg number. One exception is WRRD (write then read)
+mode. WRRD can have two i2c_msg numbers.
 
-Thank for your suggestion.
+2. Mediatek I2C controller support WRRD(write then read) mode, in WRRD
+mode the Repeat Start will be issued between 2 messages.
+In this driver if 2 messages is first write then read, the driver will
+combine 2 messages using Write-Read mode so the RS will be issued between
+the 2 messages.
 
-Regards,
-YH Huang
+3. The max transfer data length is 255 in one message. In WRRD mode, the
+max data length of second msg is 31.
+
+MT8135 and MT6589 can control I2C pins on PMIC(MT6397) by setting the i2c
+registers in MT8135 side. In this case, driver should set OFFSET_PATH_DIR
+bit first, the operation on other registers are still the same.
+For now MT6589/MT8135 support this, MT6577/MT6595/MT8127 do not support.
+For example, If want to use I2C4/5/6 pins on MT8135 just need to enable
+the pinmux, else if want to use I2C pins on PMIC(MT6397) need to add
+"mediatek,have-pmic" property in the .dts file of each platform.
+
+This driver is based on 4.1-rc1.
+
+Change in v9:
+Fix Uwe and Matthias review comment: optimize calculate speed function, avoid
+write I2C_RS_TRANSFER to unsupport SoC, and do some code clean up.
+
+Change in v8:
+Fix Wolfram's review comments like sort include file order, remove thin
+wrapper functions, remove define number that only use once, and revise
+error return value.
+
+Change in v7:
+Fix mtk_i2c_of_match in wrong patch bug.
+
+Change in v6:
+1. Update binding document not use default clock-frequency as example.
+2. Add mtk_i2c_compatible struct and pass hardware capabilities
+   through of_device_id
+3. Remove some hardware setting in mtk_i2c_do_transfer to mtk_i2c_init_hw
+   so just init one time.
+4. Correct mtk_i2c_parse_dt don't set default clock bug.
+
+Change in v5:
+Apply new i2c_adapter_quirks patch [2]. Change to use dam_map_single to map
+dma buffer. Add spinlock to fix race condition. Check of_property_read_u32
+return value. Remove I2C_FUNC_10BIT_ADDR capability due to driver not implement.
+Add MT8173 I2C driver.
+
+Change in v4:
+Modify to support i2c_adapter_quirks base on Wolfram's patch [1].
+Remove check transfer size and WRRD combine code. Instead, fill quirk
+property and let i2c_check_for_quirks to do the filter.
+
+[1] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-January/314804.html
+[2] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-February/325744.html
+
+Eddie Huang (1):
+  I2C: mediatek: Add driver for MediaTek MT8173 I2C controller
+
+Xudong Chen (2):
+  dt-bindings: Add I2C bindings for mt65xx/mt81xx.
+  I2C: mediatek: Add driver for MediaTek I2C controller
+
+ .../devicetree/bindings/i2c/i2c-mt6577.txt         |  41 ++
+ drivers/i2c/busses/Kconfig                         |   9 +
+ drivers/i2c/busses/Makefile                        |   1 +
+ drivers/i2c/busses/i2c-mt65xx.c                    | 731 +++++++++++++++++++++
+ 4 files changed, 782 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt6577.txt
+ create mode 100644 drivers/i2c/busses/i2c-mt65xx.c
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
