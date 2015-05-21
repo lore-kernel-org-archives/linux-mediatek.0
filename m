@@ -1,96 +1,100 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH 2/5] clk: mediatek: mt8173: Fix enabling of critical clocks
-Date: Thu, 21 May 2015 15:12:53 +0800
-Message-ID: <1432192376-6712-3-git-send-email-jamesjj.liao@mediatek.com>
-References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 4/6] soc: mediatek: Add SMI driver
+Date: Thu, 21 May 2015 09:30:19 +0200
+Message-ID: <CABuKBe+FmAzr_Cu=fUDwDHYzH4mW_2p4z1SYmp7+W=Tu-MLEuA@mail.gmail.com>
+References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
+	<1431683009-18158-5-git-send-email-yong.wu@mediatek.com>
+	<CABuKBeJvh2PGi3i6O0uu-7ggdBzKMb3tPE_XKhT1i-+tkKc5gg@mail.gmail.com>
+	<1432188990.5092.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1432188990.5092.12.camel@mhfsdcap03>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sascha Hauer <s.hauer@pengutronix.de>
+2015-05-21 8:16 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+> Hi Matthias,
+>      Thanks very much for your suggestion.
+>      Abort the smi clock name, Could you help check below.
+>      The others I will improve in next time.
+>
+> On Tue, 2015-05-19 at 13:14 +0200, Matthias Brugger wrote:
+>> 2015-05-15 11:43 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+>> >     This patch add SMI(Smart Multimedia Interface) driver. This driver is
+>> > responsible to enable/disable iommu and control the clocks of each local arbiter.
+>> >
+> [snip]
+>> > +
+>> > +#define SMI_LARB_MMU_EN                (0xf00)
+>> > +#define F_SMI_MMU_EN(port)     (1 << (port))
+>> > +
+>> > +enum {
+>> > +       MTK_CLK_APB,
+>> > +       MTK_CLK_SMI,
+>> > +       MTK_CLK_MAX,
+>>
+>> Maybe add something like:
+>> MTK_CLK_FIRST = MTK_CLK_APB,
+>> to make the for loops better readable.
+>>
+> Then, Is it like this? :
+>  enum {
+>         MTK_CLK_FIRST = MTK_CLK_APB,
+>         MTK_CLK_SMI,
+>         MTK_CLK_MAX,
+>  }
+> or the CLK_SMI also need MTK_CLK_SECOND = MTK_CLK_SMI.
 
-On the MT8173 the clocks are provided by different units. To enable
-the critical clocks we must be sure that all parent clocks are already
-registered, otherwise the parents of the critical clocks end up being
-unused and get disabled later. To find a place where all parents are
-registered we try each time after we've registered some clocks if
-all known providers are present now and only then we enable the critical
-clocks
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
----
- drivers/clk/mediatek/clk-mt8173.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+something like:
+enum {
+         MTK_CLK_FIRST,
+         MTK_CLK_APB = MTK_CLK_FIRST,
+         MTK_CLK_SMI,
+         MTK_CLK_LAST,
+}
 
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 4b9e04c..eb175ac 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -700,6 +700,20 @@ static const struct mtk_composite peri_clks[] __initconst = {
- 	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
- };
- 
-+static struct clk_onecell_data *mt8173_top_clk_data;
-+static struct clk_onecell_data *mt8173_pll_clk_data;
-+
-+static void mtk_clk_enable_critical(void)
-+{
-+	if (!mt8173_top_clk_data || !mt8173_pll_clk_data)
-+		return;
-+
-+	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_MEM_SEL]);
-+	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_DDRPHYCFG_SEL]);
-+	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_CCI400_SEL]);
-+	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_RTC_SEL]);
-+}
-+
- static void __init mtk_topckgen_init(struct device_node *node)
- {
- 	struct clk_onecell_data *clk_data;
-@@ -712,19 +726,19 @@ static void __init mtk_topckgen_init(struct device_node *node)
- 		return;
- 	}
- 
--	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+	mt8173_top_clk_data = clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
- 
- 	mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
- 	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
- 	mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
- 			&mt8173_clk_lock, clk_data);
- 
--	clk_prepare_enable(clk_data->clks[CLK_TOP_CCI400_SEL]);
--
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
- 		pr_err("%s(): could not register clock provider: %d\n",
- 			__func__, r);
-+
-+	mtk_clk_enable_critical();
- }
- CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt8173-topckgen", mtk_topckgen_init);
- 
-@@ -818,13 +832,13 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
- {
- 	struct clk_onecell_data *clk_data;
- 
--	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-+	mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
- 	if (!clk_data)
- 		return;
- 
- 	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
- 
--	clk_prepare_enable(clk_data->clks[CLK_APMIXED_ARMCA15PLL]);
-+	mtk_clk_enable_critical();
- }
- CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8173-apmixedsys",
- 		mtk_apmixedsys_init);
+So you can rewrite the for loop:
+if (i = MTK_CLK_FIRST; i < MTK_CLK_LAST; i++)
+
+Regards,
+Matthias
+
+>> > +};
+>> > +
+>> > +struct mtk_smi_common {
+>> > +       void __iomem            *base;
+>>
+>> That seems to be never used. Please delete it.
+>>
+>> > +       struct clk              *clk[MTK_CLK_MAX];
+>> > +};
+>> > +
+>> > +struct mtk_smi_larb {
+>> > +       void __iomem            *base;
+>> > +       spinlock_t              portlock; /* lock for config port */
+>> > +       struct clk              *clk[MTK_CLK_MAX];
+>> > +       struct device           *smi;
+>> > +};
+>> > +
+>> Thanks,
+>> Matthias
+>
+>
+
+
+
 -- 
-1.8.1.1.dirty
+motzblog.wordpress.com
