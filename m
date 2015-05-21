@@ -1,93 +1,64 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 4/6] soc: mediatek: Add SMI driver
-Date: Thu, 21 May 2015 17:20:55 +0200
-Message-ID: <CABuKBeJgmwtH4KjfxwPXgvO9Nwaz3o3ha7h99-VdtSNmQ80N5A@mail.gmail.com>
-References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
-	<1431683009-18158-5-git-send-email-yong.wu@mediatek.com>
-	<CABuKBeJvh2PGi3i6O0uu-7ggdBzKMb3tPE_XKhT1i-+tkKc5gg@mail.gmail.com>
-	<1432188990.5092.12.camel@mhfsdcap03>
-	<CABuKBe+FmAzr_Cu=fUDwDHYzH4mW_2p4z1SYmp7+W=Tu-MLEuA@mail.gmail.com>
-	<CAGS+omARc60i+8vO6V1ccnSnXkjAGNjMjRB1+5kg_EHrrS1NOw@mail.gmail.com>
-	<1432219778.5092.44.camel@mhfsdcap03>
+Subject: Re: [PATCH 5/5] ARM64: MediaTek MT8173: Add SCPSYS device node
+Date: Thu, 21 May 2015 17:34:06 +0200
+Message-ID: <CABuKBeKmdjhmUprdibJHsKo4JfQ4vzX2SsCnobfpKSQn_PsGHw@mail.gmail.com>
+References: <1432131540-2523-1-git-send-email-s.hauer@pengutronix.de>
+	<1432131540-2523-6-git-send-email-s.hauer@pengutronix.de>
+	<CAGS+omDHEY54TzhNTJcFOeHkGbXAQwiTh9gxc=PsbzjwmpHEDA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1432219778.5092.44.camel@mhfsdcap03>
+In-Reply-To: <CAGS+omDHEY54TzhNTJcFOeHkGbXAQwiTh9gxc=PsbzjwmpHEDA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-05-21 16:49 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
-> On Thu, 2015-05-21 at 22:33 +0800, Daniel Kurtz wrote:
->> On Thu, May 21, 2015 at 3:30 PM, Matthias Brugger
->> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> > 2015-05-21 8:16 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
->> >> Hi Matthias,
->> >>      Thanks very much for your suggestion.
->> >>      Abort the smi clock name, Could you help check below.
->> >>      The others I will improve in next time.
->> >>
->> >> On Tue, 2015-05-19 at 13:14 +0200, Matthias Brugger wrote:
->> >>> 2015-05-15 11:43 GMT+02:00 Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
->> >>> >     This patch add SMI(Smart Multimedia Interface) driver. This driver is
->> >>> > responsible to enable/disable iommu and control the clocks of each local arbiter.
->> >>> >
->> >> [snip]
->> >>> > +
->> >>> > +#define SMI_LARB_MMU_EN                (0xf00)
->> >>> > +#define F_SMI_MMU_EN(port)     (1 << (port))
->> >>> > +
->> >>> > +enum {
->> >>> > +       MTK_CLK_APB,
->> >>> > +       MTK_CLK_SMI,
->> >>> > +       MTK_CLK_MAX,
->> >>>
->> >>> Maybe add something like:
->> >>> MTK_CLK_FIRST = MTK_CLK_APB,
->> >>> to make the for loops better readable.
->> >>>
->> >> Then, Is it like this? :
->> >>  enum {
->> >>         MTK_CLK_FIRST = MTK_CLK_APB,
->> >>         MTK_CLK_SMI,
->> >>         MTK_CLK_MAX,
->> >>  }
->> >> or the CLK_SMI also need MTK_CLK_SECOND = MTK_CLK_SMI.
->> >
->> >
->> > something like:
->> > enum {
->> >          MTK_CLK_FIRST,
->> >          MTK_CLK_APB = MTK_CLK_FIRST,
->> >          MTK_CLK_SMI,
->> >          MTK_CLK_LAST,
->> > }
->> >
->> > So you can rewrite the for loop:
->> > if (i = MTK_CLK_FIRST; i < MTK_CLK_LAST; i++)
+2015-05-21 16:32 GMT+02:00 Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>:
+> On Wed, May 20, 2015 at 10:19 PM, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+>> This adds the SCPSYS device node to the MT8173 dtsi file.
 >>
->> Actually, do we ever plan to add more clks per smi node?
-> No.
->> If not, perhaps the whole driver would be simpler if you just
->> explicitly handle the apb & smi clocks:
+>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
 >>
->> struct mtk_smi_larb {
->>        void __iomem            *base;
->>        spinlock_t              portlock; /* lock for config port */
->>        struct device           *smi;
->>        struct clk              *clk_apb;
->>        struct clk              *clk_smi;
->> };
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> index 924fdb6..12430f0 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> @@ -125,6 +125,16 @@
+>>                                                 <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
+>>                 };
 >>
->> And then all of the loops become just a pair of clock operations.
-> Thanks. I will try this and compare whether it will add many lines.
+>> +               scpsys: scpsys@10006000 {
+>> +                       compatible = "mediatek,mt8173-scpsys";
+>> +                       #power-domain-cells = <1>;
+>> +                       reg = <0 0x10006000 0 0x1000>;
+>> +                       clocks = <&clk26m>,
+>
+> Why is mfg using <&clk26m> and not <&topckgen CLK_TOP_MFG_SEL>?
+> I saw another patch set on the list today from James Liao that adds more clocks.
+> Perhaps we can move the SCPSYS set on top of that one and include more clocks?
+>
+>> +                                <&topckgen CLK_TOP_MM_SEL>;
+>
+> FYI: the devicetree changes in this set depend on your other patch set
+> starting with:
+>
+> https://patchwork.kernel.org/patch/6446341/
+> "arm64: dts: mt8173: Add clock controller device nodes"
+>
+> This patch isn't based on top of the other set, though, so it may lead
+> to a small merge conflict when folding in the .dtsi device nodes (ie,
+> placing scpsys@10006000 after pwrap@1000d000).
+>
+> I'm not sure how people usually resolve this or manage the ordering of
+> co-dependent patch sets upstream.
 
-If you don't plan to add more clocks in the future, then I think the
-suggestion Dan made is the best one.
+At the moment I suppose that patch-sets are based on -rc1 if not
+stated different.
 
-Regards,
-Matthias
 -- 
 motzblog.wordpress.com
 --
