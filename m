@@ -1,56 +1,94 @@
-From: tip-bot for Axel Lin <tipbot@zytor.com>
-Subject: [tip:irq/core] irqchip: mtk-sysirq:
-  Make mtk_sysirq_of_init return error if ioremap fails
-Date: Fri, 22 May 2015 02:10:06 -0700
-Message-ID: <tip-e1a96fb861b0781c8ef66a76d0fc6fb6f628f84c@git.kernel.org>
-References: <1432220254.29544.1.camel@ingics.com>
-Reply-To: jason@lakedaemon.net, linux-kernel@vger.kernel.org,
-	  tglx@linutronix.de, hpa@zytor.com,
-	  linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com,
-	  mingo@kernel.org, axel.lin@ingics.com, matthias.bgg@gmail.com
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 2/7] mmc: mediatek: Add Mediatek MMC driver
+Date: Fri, 22 May 2015 14:51:56 +0200
+Message-ID: <CAPDyKFpWCvJXL-W5P83ucBM2-b5cDFEtSLnN6J6WLyR_9CuvWw@mail.gmail.com>
+References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
+	<1432017411-2996-3-git-send-email-chaotian.jing@mediatek.com>
+	<CAPDyKFo5788uRqAaXUZ-OiS1XF8NPmg4tn2ipZNJdx4dci+KMQ@mail.gmail.com>
+	<1432284000.23435.38.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432220254.29544.1.camel@ingics.com>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-tip-commits@vger.kernel.org
-Cc: jason@lakedaemon.net, tglx@linutronix.de, linux-kernel@vger.kernel.org, axel.lin@ingics.com, mingo@kernel.org, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, linux-mediatek@lists.infradead.org, hpa@zytor.com
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1432284000.23435.38.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek
 List-Id: linux-mediatek@lists.infradead.org
 
-Commit-ID:  e1a96fb861b0781c8ef66a76d0fc6fb6f628f84c
-Gitweb:     http://git.kernel.org/tip/e1a96fb861b0781c8ef66a76d0fc6fb6f628f84c
-Author:     Axel Lin <axel.lin@ingics.com>
-AuthorDate: Thu, 21 May 2015 22:57:34 +0800
-Committer:  Thomas Gleixner <tglx@linutronix.de>
-CommitDate: Fri, 22 May 2015 11:06:47 +0200
+[...]
 
-irqchip: mtk-sysirq: Make mtk_sysirq_of_init return error if ioremap fails
+>> You are invoking msdc_gate_clock() and msdc_ungate_clock() in a
+>> balanced manner, thus hclk_enabled is redundant. Please remove it.
+>
+> on drv->probe(), already invoke the msdc_ungate_clock(), so, when the
+> runtime pm resume invoke the msdc_ungate_clock(), the hclk already
+> enabled.
 
-PTR_ERR(NULL) returns 0 so current code returns 0 if ioremap fails, fix it.
 
-Signed-off-by: Axel Lin <axel.lin@ingics.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org <linux-mediatek@lists.infradead.org>
-Cc: Jason Cooper <jason@lakedaemon.net>
-Link: http://lkml.kernel.org/r/1432220254.29544.1.camel@ingics.com
-Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
----
- drivers/irqchip/irq-mtk-sysirq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+That's why you invoke pm_runtime_set_active() during ->probe() when
+deploying PM support in patch3. It's not an issue then.
 
-diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-index 04de2d4..15c1303 100644
---- a/drivers/irqchip/irq-mtk-sysirq.c
-+++ b/drivers/irqchip/irq-mtk-sysirq.c
-@@ -144,7 +144,7 @@ static int __init mtk_sysirq_of_init(struct device_node *node,
- 	chip_data->intpol_base = ioremap(res.start, size);
- 	if (!chip_data->intpol_base) {
- 		pr_err("mtk_sysirq: unable to map sysirq register\n");
--		ret = PTR_ERR(chip_data->intpol_base);
-+		ret = -ENXIO;
- 		goto out_free;
- 	}
- 
+[...]
+
+>> I assume it's possible to gate the clock by updating a MSDC register
+>> instead!? That would be prefereable since then you can leave clock
+>> gating/ungating via the clk API, to be dealt from runtime PM. That
+>> would also make "sclk_enabled" in the struct msdc_host redundant.
+>>
+>> Adopting to above, obviously requires MSDC to be able to ungate the
+>> clock by also updating a MSDC register. I assume that's possible as
+>> well!?
+>>
+> We can set the bit1 of MSDC_CFG, when this bit is 0, the bus clock was
+> gated to 0 if no command or data is transmitted.
+> And, from our designer, when we operate the MSDC register, we need make
+> sure both HCLK and source are enabled, if source clock was disabled,
+> write some MSDC registers will have no effect(eg. send CMD, without
+> source clock, not only cannot send CMD, but also cannot get CMD timeout
+> interrupt.)
+
+Thanks, that answered my question. As I understand it you should be
+able to adopt to my propsual.
+
+[...]
+
+>> > +{
+>> > +       unsigned long tmo = jiffies + msecs_to_jiffies(20);
+>> > +
+>> > +       while ((readl(host->base + SDC_STS) & SDC_STS_CMDBUSY)
+>> > +                       && time_before(jiffies, tmo))
+>> > +               continue;
+>> > +
+>> > +       if (readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) {
+>> > +               dev_err(host->dev, "CMD bus busy detected\n");
+>> > +               host->error |= REQ_CMD_BUSY;
+>> > +               msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
+>> > +               return false;
+>> > +       }
+>> > +
+>> > +       if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
+>> > +               /* R1B or with data, should check SDCBUSY */
+>> > +               while (readl(host->base + SDC_STS) & SDC_STS_SDCBUSY)
+>> > +                       cpu_relax();
+>> > +       }
+>>
+>> MSDC seems to be handling card busy detection in HW, right?
+>>
+> Do not have this ability, HW only know if CMD/DAT is low, but do not
+> have any interrupt for it,
+
+I see, but doesn't the above polling mean that msdc will not propagate
+the response until the card have stopped signal busy? That's what
+MMC_CAP_WAIT_WHILE_BUSY shall be used for.
+
+Perhaps you should remove the above polling, and rely on the MMC core
+to poll with CMD13 instead?
+
+>> If so, you should enable MMC_CAP_WAIT_WHILE_BUSY and set
+>> "max_busy_timeout" to DAT_TIMEOUT to inform the mmc core about it.
+>>
+
+[...]
+
+Kind regards
+Uffe
