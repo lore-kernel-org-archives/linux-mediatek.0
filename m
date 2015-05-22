@@ -1,73 +1,53 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
+From: James Liao <jamesjj.liao@mediatek.com>
 Subject: Re: [PATCH 5/5] ARM64: MediaTek MT8173: Add SCPSYS device node
-Date: Thu, 21 May 2015 19:49:16 +0200
-Message-ID: <20150521174916.GQ6325@pengutronix.de>
+Date: Fri, 22 May 2015 10:41:43 +0800
+Message-ID: <1432262503.14396.14.camel@mtksdaap41>
 References: <1432131540-2523-1-git-send-email-s.hauer@pengutronix.de>
- <1432131540-2523-6-git-send-email-s.hauer@pengutronix.de>
- <CAGS+omDHEY54TzhNTJcFOeHkGbXAQwiTh9gxc=PsbzjwmpHEDA@mail.gmail.com>
+	 <1432131540-2523-6-git-send-email-s.hauer@pengutronix.de>
+	 <CAGS+omDHEY54TzhNTJcFOeHkGbXAQwiTh9gxc=PsbzjwmpHEDA@mail.gmail.com>
+	 <20150521174916.GQ6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omDHEY54TzhNTJcFOeHkGbXAQwiTh9gxc=PsbzjwmpHEDA@mail.gmail.com>
+In-Reply-To: <20150521174916.GQ6325@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 21, 2015 at 10:32:40PM +0800, Daniel Kurtz wrote:
-> On Wed, May 20, 2015 at 10:19 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> > This adds the SCPSYS device node to the MT8173 dtsi file.
-> >
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index 924fdb6..12430f0 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -125,6 +125,16 @@
-> >                                                 <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-> >                 };
-> >
-> > +               scpsys: scpsys@10006000 {
-> > +                       compatible = "mediatek,mt8173-scpsys";
-> > +                       #power-domain-cells = <1>;
-> > +                       reg = <0 0x10006000 0 0x1000>;
-> > +                       clocks = <&clk26m>,
-> 
-> Why is mfg using <&clk26m> and not <&topckgen CLK_TOP_MFG_SEL>?
+Hi Daniel,
 
-Because James Liao said to me that it is derived from clk26m and not
-from mfg_sel.
+On Thu, 2015-05-21 at 19:49 +0200, Sascha Hauer wrote:
+> On Thu, May 21, 2015 at 10:32:40PM +0800, Daniel Kurtz wrote:
+> > > +               scpsys: scpsys@10006000 {
+> > > +                       compatible = "mediatek,mt8173-scpsys";
+> > > +                       #power-domain-cells = <1>;
+> > > +                       reg = <0 0x10006000 0 0x1000>;
+> > > +                       clocks = <&clk26m>,
+> > 
+> > Why is mfg using <&clk26m> and not <&topckgen CLK_TOP_MFG_SEL>?
+> 
+> Because James Liao said to me that it is derived from clk26m and not
+> from mfg_sel.
 
-> I saw another patch set on the list today from James Liao that adds more clocks.
-> Perhaps we can move the SCPSYS set on top of that one and include more clocks?
-> 
-> > +                                <&topckgen CLK_TOP_MM_SEL>;
-> 
-> FYI: the devicetree changes in this set depend on your other patch set
-> starting with:
-> 
-> https://patchwork.kernel.org/patch/6446341/
-> "arm64: dts: mt8173: Add clock controller device nodes"
-> 
-> This patch isn't based on top of the other set, though, so it may lead
-> to a small merge conflict when folding in the .dtsi device nodes (ie,
-> placing scpsys@10006000 after pwrap@1000d000).
-> 
-> I'm not sure how people usually resolve this or manage the ordering of
-> co-dependent patch sets upstream.
+Sascha is right. I had confirmed with our designer that MFG on MT8173
+uses clk26m to check state. I also tested MFG domain power on/off with
+CLK_TOP_MFG_SEL off and it worked correctly.
 
-This merge conflict should be easy to solve. However, I can rebase this
-on Matthias' dts branch if desired.
+> > I saw another patch set on the list today from James Liao that adds more clocks.
+> > Perhaps we can move the SCPSYS set on top of that one and include more clocks?
+> > 
+> > > +                                <&topckgen CLK_TOP_MM_SEL>;
 
-Sascha
+The clocks used by scpsys driver are subsystem bus clocks that need to
+be on before power on these domains. On MT8173, subsystem bus clocks are
+come from topckgen.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+My patch set yesterday add subsystem clocks, which are not needed by
+power domain on/off. So I think these 2 patch set are independent.
+
+
+Best regards,
+
+James
