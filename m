@@ -1,94 +1,103 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v4 2/7] mmc: mediatek: Add Mediatek MMC driver
-Date: Fri, 22 May 2015 14:51:56 +0200
-Message-ID: <CAPDyKFpWCvJXL-W5P83ucBM2-b5cDFEtSLnN6J6WLyR_9CuvWw@mail.gmail.com>
-References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
-	<1432017411-2996-3-git-send-email-chaotian.jing@mediatek.com>
-	<CAPDyKFo5788uRqAaXUZ-OiS1XF8NPmg4tn2ipZNJdx4dci+KMQ@mail.gmail.com>
-	<1432284000.23435.38.camel@mhfsdcap03>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v9 0/3] ARM: mediatek: Add driver for Mediatek I2C
+Date: Mon, 25 May 2015 00:09:12 +0800
+Message-ID: <1432483752.8089.10.camel@mtksdaap41>
+References: <1432198410-6576-1-git-send-email-eddie.huang@mediatek.com>
+	 <CAGS+omB7UMrEdZiJXVK78ENEqH6fL_25-Q5Fj1Z0Buzjwp60JA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1432284000.23435.38.camel@mhfsdcap03>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omB7UMrEdZiJXVK78ENEqH6fL_25-Q5Fj1Z0Buzjwp60JA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linux I2C <linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-[...]
+Hi Dan,
 
->> You are invoking msdc_gate_clock() and msdc_ungate_clock() in a
->> balanced manner, thus hclk_enabled is redundant. Please remove it.
->
-> on drv->probe(), already invoke the msdc_ungate_clock(), so, when the
-> runtime pm resume invoke the msdc_ungate_clock(), the hclk already
-> enabled.
+On Thu, 2015-05-21 at 22:39 +0800, Daniel Kurtz wrote:
+> On Thu, May 21, 2015 at 4:53 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > This series is for Mediatek SoCs I2C controller common bus driver.
+> >
+> > Earlier MTK SoC (for example, MT6589, MT8135) I2C HW has some limitations.
+> > New generation SoC like MT8173 fix following limitations:
+> >
+> > 1. Only support one i2c_msg number. One exception is WRRD (write then read)
+> > mode. WRRD can have two i2c_msg numbers.
+> >
+> > 2. Mediatek I2C controller support WRRD(write then read) mode, in WRRD
+> > mode the Repeat Start will be issued between 2 messages.
+> > In this driver if 2 messages is first write then read, the driver will
+> > combine 2 messages using Write-Read mode so the RS will be issued between
+> > the 2 messages.
+> >
+> > 3. The max transfer data length is 255 in one message. In WRRD mode, the
+> > max data length of second msg is 31.
+> >
+> > MT8135 and MT6589 can control I2C pins on PMIC(MT6397) by setting the i2c
+> > registers in MT8135 side. In this case, driver should set OFFSET_PATH_DIR
+> > bit first, the operation on other registers are still the same.
+> > For now MT6589/MT8135 support this, MT6577/MT6595/MT8127 do not support.
+> > For example, If want to use I2C4/5/6 pins on MT8135 just need to enable
+> > the pinmux, else if want to use I2C pins on PMIC(MT6397) need to add
+> > "mediatek,have-pmic" property in the .dts file of each platform.
+> >
+> > This driver is based on 4.1-rc1.
+> >
+> > Change in v9:
+> > Fix Uwe and Matthias review comment: optimize calculate speed function, avoid
+> > write I2C_RS_TRANSFER to unsupport SoC, and do some code clean up.
+> >
+> > Change in v8:
+> > Fix Wolfram's review comments like sort include file order, remove thin
+> > wrapper functions, remove define number that only use once, and revise
+> > error return value.
+> >
+> > Change in v7:
+> > Fix mtk_i2c_of_match in wrong patch bug.
+> >
+> > Change in v6:
+> > 1. Update binding document not use default clock-frequency as example.
+> > 2. Add mtk_i2c_compatible struct and pass hardware capabilities
+> >    through of_device_id
+> > 3. Remove some hardware setting in mtk_i2c_do_transfer to mtk_i2c_init_hw
+> >    so just init one time.
+> > 4. Correct mtk_i2c_parse_dt don't set default clock bug.
+> >
+> > Change in v5:
+> > Apply new i2c_adapter_quirks patch [2]. Change to use dam_map_single to map
+> > dma buffer. Add spinlock to fix race condition. Check of_property_read_u32
+> > return value. Remove I2C_FUNC_10BIT_ADDR capability due to driver not implement.
+> > Add MT8173 I2C driver.
+> >
+> > Change in v4:
+> > Modify to support i2c_adapter_quirks base on Wolfram's patch [1].
+> > Remove check transfer size and WRRD combine code. Instead, fill quirk
+> > property and let i2c_check_for_quirks to do the filter.
+> >
+> > [1] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-January/314804.html
+> > [2] http://lists.infradead.org/pipermail/linux-arm-kernel/2015-February/325744.html
+> >
+> > Eddie Huang (1):
+> >   I2C: mediatek: Add driver for MediaTek MT8173 I2C controller
+> >
+> > Xudong Chen (2):
+> >   dt-bindings: Add I2C bindings for mt65xx/mt81xx.
+> >   I2C: mediatek: Add driver for MediaTek I2C controller
+> 
+> Hi Eddie,
+> Is there a reason why this series does not include a patch to add i2c
+> nodes and i2c pinctrl nodes for mt8173.dtsi?
+> 
+> Thanks,
+> -Dan
 
+This series already reviewed in public more than six months. In the
+early version, 8173 CCF and Pinctrl not be accepted yet, so we don't put
+device node with this series. Now both CCF and pinctrl have been
+accepted, maybe it's time to add device node.I am glad that if this I2C
+version can be accepted, If not, I will send new series with device node
+in next round.
 
-That's why you invoke pm_runtime_set_active() during ->probe() when
-deploying PM support in patch3. It's not an issue then.
-
-[...]
-
->> I assume it's possible to gate the clock by updating a MSDC register
->> instead!? That would be prefereable since then you can leave clock
->> gating/ungating via the clk API, to be dealt from runtime PM. That
->> would also make "sclk_enabled" in the struct msdc_host redundant.
->>
->> Adopting to above, obviously requires MSDC to be able to ungate the
->> clock by also updating a MSDC register. I assume that's possible as
->> well!?
->>
-> We can set the bit1 of MSDC_CFG, when this bit is 0, the bus clock was
-> gated to 0 if no command or data is transmitted.
-> And, from our designer, when we operate the MSDC register, we need make
-> sure both HCLK and source are enabled, if source clock was disabled,
-> write some MSDC registers will have no effect(eg. send CMD, without
-> source clock, not only cannot send CMD, but also cannot get CMD timeout
-> interrupt.)
-
-Thanks, that answered my question. As I understand it you should be
-able to adopt to my propsual.
-
-[...]
-
->> > +{
->> > +       unsigned long tmo = jiffies + msecs_to_jiffies(20);
->> > +
->> > +       while ((readl(host->base + SDC_STS) & SDC_STS_CMDBUSY)
->> > +                       && time_before(jiffies, tmo))
->> > +               continue;
->> > +
->> > +       if (readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) {
->> > +               dev_err(host->dev, "CMD bus busy detected\n");
->> > +               host->error |= REQ_CMD_BUSY;
->> > +               msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
->> > +               return false;
->> > +       }
->> > +
->> > +       if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
->> > +               /* R1B or with data, should check SDCBUSY */
->> > +               while (readl(host->base + SDC_STS) & SDC_STS_SDCBUSY)
->> > +                       cpu_relax();
->> > +       }
->>
->> MSDC seems to be handling card busy detection in HW, right?
->>
-> Do not have this ability, HW only know if CMD/DAT is low, but do not
-> have any interrupt for it,
-
-I see, but doesn't the above polling mean that msdc will not propagate
-the response until the card have stopped signal busy? That's what
-MMC_CAP_WAIT_WHILE_BUSY shall be used for.
-
-Perhaps you should remove the above polling, and rely on the MMC core
-to poll with CMD13 instead?
-
->> If so, you should enable MMC_CAP_WAIT_WHILE_BUSY and set
->> "max_busy_timeout" to DAT_TIMEOUT to inform the mmc core about it.
->>
-
-[...]
-
-Kind regards
-Uffe
+Eddie
