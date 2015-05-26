@@ -1,14 +1,18 @@
 From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 2/2] soc: mediatek: PMIC wrap: Fix register state machine
- handling
-Date: Tue, 26 May 2015 11:37:44 +0200
-Message-ID: <1432633064-16839-3-git-send-email-s.hauer@pengutronix.de>
-References: <1432633064-16839-1-git-send-email-s.hauer@pengutronix.de>
+Subject: Re: [PATCH 5/5] clk: mediatek: Add USB clock support in MT8173
+ APMIXEDSYS
+Date: Tue, 26 May 2015 11:41:40 +0200
+Message-ID: <20150526094140.GH6325@pengutronix.de>
+References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1432192376-6712-6-git-send-email-jamesjj.liao@mediatek.com>
+ <20150526080516.GG6325@pengutronix.de>
+ <1432631475.15597.29.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1432633064-16839-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1432631475.15597.29.camel@mtksdaap41>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,61 +22,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: =?UTF-8?q?HenryC=20Chen=20=28=E9=99=B3=E5=BB=BA=E8=B1=AA=29?= <HenryC.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When the PMIC wrapper state machine has read a register it goes into the
-"wait for valid clear" (vldclr) state. The state machine stays in this
-state until the VLDCLR bit is written to. We should write this bit after
-reading a register because the SCPSYS won't let the system go into
-suspend as long as the state machine waits for valid clear.
+On Tue, May 26, 2015 at 05:11:15PM +0800, James Liao wrote:
+> Hi Sascha,
+> 
+> On Tue, 2015-05-26 at 10:05 +0200, Sascha Hauer wrote:
+> > On Thu, May 21, 2015 at 03:12:56PM +0800, James Liao wrote:
+> > > +static void __init mtk_clk_register_apmixedsys_special(struct device_node *node,
+> > > +			struct clk_onecell_data *clk_data)
+> > > +{
+> > > +	void __iomem *base;
+> > > +	struct clk *clk;
+> > > +
+> > > +	base = of_iomap(node, 0);
+> > > +	if (!base) {
+> > > +		pr_err("%s(): ioremap failed\n", __func__);
+> > > +		return;
+> > > +	}
+> > > +
+> > > +	clk = mtk_clk_register_ref2usb_tx("ref2usb_tx", base + 0x8);
+> > 
+> > The function seems to be for one special clock only. Why do you pass the
+> > name to it? They will never be called with another name, right?
+> 
+> This function decides clock name and associates clock ID for special
+> clocks. In fact there may be another "special clocks" need to add into
+> apmixedsys. I think it's a better way to group clock names and clock IDs
+> in the same function for maintenance.
 
-Since now we never leave the state machine in vldclr state we no longer
-have to check for this state on pwrap_read/pwrap_write entry and can
-remove the corresponding code.
+How can a function with ref2usb_tx in its name ever register a clock
+with another name? Then it seems the function name is wrong.
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 12 ++----------
- 1 file changed, 2 insertions(+), 10 deletions(-)
+Sascha
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 642d6a1..f432291 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -443,11 +443,6 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
- static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
- {
- 	int ret;
--	u32 val;
--
--	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
--	if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
--		pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
- 
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
- 	if (ret)
-@@ -462,11 +457,6 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
- static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
- {
- 	int ret;
--	u32 val;
--
--	val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
--	if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
--		pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
- 
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
- 	if (ret)
-@@ -480,6 +470,8 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
- 
- 	*rdata = PWRAP_GET_WACS_RDATA(pwrap_readl(wrp, PWRAP_WACS2_RDATA));
- 
-+	pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-+
- 	return 0;
- }
- 
 -- 
-2.1.4
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
