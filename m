@@ -1,293 +1,116 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/2] pwm: add Mediatek display PWM driver support
-Date: Tue, 26 May 2015 08:05:33 +0200
-Message-ID: <20150526060533.GW6325@pengutronix.de>
-References: <1431336382-13167-1-git-send-email-yh.huang@mediatek.com>
- <1431336382-13167-3-git-send-email-yh.huang@mediatek.com>
- <CAGS+omBX1fMBHa-4GLTjQUq5VPR2JRvhJRJ4qBX8hvDF9ihbLA@mail.gmail.com>
- <1432196551.15653.2.camel@mtksdaap41>
+From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/7] mmc: mediatek: Add Mediatek MMC driver
+Date: Tue, 26 May 2015 14:16:31 +0800
+Message-ID: <1432620991.647.6.camel@mhfsdcap03>
+References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
+ <1432017411-2996-3-git-send-email-chaotian.jing@mediatek.com>
+ <CAPDyKFo5788uRqAaXUZ-OiS1XF8NPmg4tn2ipZNJdx4dci+KMQ@mail.gmail.com>
+ <1432284000.23435.38.camel@mhfsdcap03>
+ <CAPDyKFpWCvJXL-W5P83ucBM2-b5cDFEtSLnN6J6WLyR_9CuvWw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432196551.15653.2.camel@mtksdaap41>
-Sender: linux-pwm-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Mark Rutland <mark.rutland@arm.com>, linux-pwm@vger.kernel.org, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAPDyKFpWCvJXL-W5P83ucBM2-b5cDFEtSLnN6J6WLyR_9CuvWw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Bin Zhang =?UTF-8?Q?=28=E7=AB=A0=E6=96=8C=29?= <bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kern>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 21, 2015 at 04:22:31PM +0800, YH Huang wrote:
-> On Mon, 2015-05-18 at 11:42 +0800, Daniel Kurtz wrote:
-> > On Mon, May 11, 2015 at 5:26 PM, YH Huang <yh.huang@mediatek.com> wrote:
-> > > Add display PWM driver support to modify backlight for MT8173/MT6595.
-> > >
-> > > Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> > > ---
-> > >  drivers/pwm/Kconfig             |   9 ++
-> > >  drivers/pwm/Makefile            |   1 +
-> > >  drivers/pwm/pwm-disp-mediatek.c | 225 ++++++++++++++++++++++++++++++++++++++++
-> > >  3 files changed, 235 insertions(+)
-> > >  create mode 100644 drivers/pwm/pwm-disp-mediatek.c
-> > >
-> > > diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-> > > index b1541f4..9edbb5a 100644
-> > > --- a/drivers/pwm/Kconfig
-> > > +++ b/drivers/pwm/Kconfig
-> > > @@ -111,6 +111,15 @@ config PWM_CLPS711X
-> > >           To compile this driver as a module, choose M here: the module
-> > >           will be called pwm-clps711x.
-> > >
-> > > +config PWM_DISP_MEDIATEK
-> > > +       tristate "MEDIATEK display PWM driver"
-> > > +       depends on OF
-> > > +       help
-> > > +         Generic PWM framework driver for mediatek disp-pwm device.
-> > > +
-> > > +         To compile this driver as a module, choose M here: the module
-> > > +         will be called pwm-disp-mediatek.
-> > > +
-> > >  config PWM_EP93XX
-> > >         tristate "Cirrus Logic EP93xx PWM support"
-> > >         depends on ARCH_EP93XX
-> > > diff --git a/drivers/pwm/Makefile b/drivers/pwm/Makefile
-> > > index ec50eb5..c5ff72a 100644
-> > > --- a/drivers/pwm/Makefile
-> > > +++ b/drivers/pwm/Makefile
-> > > @@ -8,6 +8,7 @@ obj-$(CONFIG_PWM_BCM_KONA)      += pwm-bcm-kona.o
-> > >  obj-$(CONFIG_PWM_BCM2835)      += pwm-bcm2835.o
-> > >  obj-$(CONFIG_PWM_BFIN)         += pwm-bfin.o
-> > >  obj-$(CONFIG_PWM_CLPS711X)     += pwm-clps711x.o
-> > > +obj-$(CONFIG_PWM_DISP_MEDIATEK)        += pwm-disp-mediatek.o
-> > >  obj-$(CONFIG_PWM_EP93XX)       += pwm-ep93xx.o
-> > >  obj-$(CONFIG_PWM_FSL_FTM)      += pwm-fsl-ftm.o
-> > >  obj-$(CONFIG_PWM_IMG)          += pwm-img.o
-> > > diff --git a/drivers/pwm/pwm-disp-mediatek.c b/drivers/pwm/pwm-disp-mediatek.c
-> > > new file mode 100644
-> > > index 0000000..38293af
-> > > --- /dev/null
-> > > +++ b/drivers/pwm/pwm-disp-mediatek.c
-> > > @@ -0,0 +1,225 @@
-> > > +/*
-> > > + * Mediatek display pulse-width-modulation controller driver.
-> > > + * Copyright (c) 2015 MediaTek Inc.
-> > > + * Author: YH Huang <yh.huang@mediatek.com>
-> > > + *
-> > > + * This program is free software; you can redistribute it and/or modify
-> > > + * it under the terms of the GNU General Public License version 2 as
-> > > + * published by the Free Software Foundation.
-> > > + *
-> > > + * This program is distributed in the hope that it will be useful,
-> > > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > > + * GNU General Public License for more details.
-> > > + */
-> > > +
-> > > +#include <linux/clk.h>
-> > > +#include <linux/err.h>
-> > > +#include <linux/io.h>
-> > > +#include <linux/module.h>
-> > > +#include <linux/of.h>
-> > > +#include <linux/pwm.h>
-> > > +#include <linux/platform_device.h>
-> > > +#include <linux/slab.h>
-> > > +
-> > > +#define DISP_PWM_EN_OFF                        (0x0)
-> > > +#define PWM_ENABLE_SHIFT               (0x0)
-> > > +#define PWM_ENABLE_MASK                        (0x1 << PWM_ENABLE_SHIFT)
-> > > +
-> > > +#define DISP_PWM_COMMIT_OFF            (0x08)
-> > > +#define PWM_COMMIT_SHIFT               (0x0)
-> > > +#define PWM_COMMIT_MASK                        (0x1 << PWM_COMMIT_SHIFT)
-> > > +
-> > > +#define DISP_PWM_CON_0_OFF             (0x10)
-> > > +#define PWM_CLKDIV_SHIFT               (0x10)
-> > > +#define PWM_CLKDIV_MASK                        (0x3ff << PWM_CLKDIV_SHIFT)
-> > > +#define PWM_CLKDIV_MAX                 (0x000003ff)
-> > > +
-> > > +#define DISP_PWM_CON_1_OFF             (0x14)
-> > > +#define PWM_PERIOD_SHIFT               (0x0)
-> > > +#define PWM_PERIOD_MASK                        (0xfff << PWM_PERIOD_SHIFT)
-> > > +#define PWM_PERIOD_MAX                 (0x00000fff)
-> > > +/* Shift log2(PWM_PERIOD_MAX + 1) as divisor */
-> > > +#define PWM_PERIOD_BIT_SHIFT           12
-> > > +
-> > > +#define PWM_HIGH_WIDTH_SHIFT           (0x10)
-> > > +#define PWM_HIGH_WIDTH_MASK            (0x1fff << PWM_HIGH_WIDTH_SHIFT)
-> > > +
-> > > +#define NUM_PWM 1
-> > > +
-> > > +struct mtk_disp_pwm_chip {
-> > > +       struct pwm_chip chip;
-> > > +       struct device   *dev;
-> > > +       struct clk      *clk_main;
-> > > +       struct clk      *clk_mm;
-> > > +       void __iomem    *mmio_base;
-> > > +};
-> > > +
-> > > +static void mtk_disp_pwm_setting(void __iomem *address, u32 value, u32 mask)
-> > > +{
-> > > +       u32 val;
-> > > +
-> > > +       val = readl(address);
-> > > +       val &= ~mask;
-> > > +       val |= value;
-> > > +       writel(val, address);
-> > > +}
-> > > +
-> > > +static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> > > +                              int duty_ns, int period_ns)
-> > > +{
-> > > +       struct mtk_disp_pwm_chip *mpc;
-> > > +       u64 div, rate;
-> > > +       u32 clk_div, period, high_width, rem;
-> > > +
-> > > +       /*
-> > > +        * Find period, high_width and clk_div to suit duty_ns and period_ns.
-> > > +        * Calculate proper div value to keep period value in the bound.
-> > > +        *
-> > > +        * period_ns = 10^9 * (clk_div + 1) * (period +1) / PWM_CLK_RATE
-> > > +        * duty_ns = 10^9 * (clk_div + 1) * (high_width + 1) / PWM_CLK_RATE
-> > > +        *
-> > > +        * period = (PWM_CLK_RATE * period_ns) / (10^9 * (clk_div + 1)) - 1
-> > > +        * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1)) - 1
-> > > +        */
-> > > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > > +       rate = clk_get_rate(mpc->clk_main);
-> > > +       clk_div = div_u64_rem(rate * period_ns, NSEC_PER_SEC, &rem) >>
-> > > +                               PWM_PERIOD_BIT_SHIFT;
-> > > +       if (clk_div > PWM_CLKDIV_MAX)
-> > > +               return -EINVAL;
-> > > +
-> > > +       div = clk_div + 1;
-> > > +       period = div64_u64(rate * period_ns, NSEC_PER_SEC * div);
-> > > +       if (period > 0)
-> > > +               period--;
-> > > +       high_width = div64_u64(rate * duty_ns, NSEC_PER_SEC * div);
-> > > +       if (high_width > 0)
-> > > +               high_width--;
-> > > +
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_0_OFF,
-> > > +                            clk_div << PWM_CLKDIV_SHIFT, PWM_CLKDIV_MASK);
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_CON_1_OFF,
-> > > +                            (period << PWM_PERIOD_SHIFT) |
-> > > +                       (high_width << PWM_HIGH_WIDTH_SHIFT),
-> > > +                       PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK);
-> > > +
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
-> > > +                            1 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_COMMIT_OFF,
-> > > +                            0 << PWM_COMMIT_SHIFT, PWM_COMMIT_MASK);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-> > > +{
-> > > +       struct mtk_disp_pwm_chip *mpc;
-> > > +
-> > > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
-> > > +                            1 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> > > +{
-> > > +       struct mtk_disp_pwm_chip *mpc;
-> > > +
-> > > +       mpc = container_of(chip, struct mtk_disp_pwm_chip, chip);
-> > > +       mtk_disp_pwm_setting(mpc->mmio_base + DISP_PWM_EN_OFF,
-> > > +                            0 << PWM_ENABLE_SHIFT, PWM_ENABLE_MASK);
-> > > +}
-> > > +
-> > > +static const struct pwm_ops mtk_disp_pwm_ops = {
-> > > +       .config = mtk_disp_pwm_config,
-> > > +       .enable = mtk_disp_pwm_enable,
-> > > +       .disable = mtk_disp_pwm_disable,
-> > > +       .owner = THIS_MODULE,
-> > > +};
-> > > +
-> > > +static int mtk_disp_pwm_probe(struct platform_device *pdev)
-> > > +{
-> > > +       struct mtk_disp_pwm_chip *pwm;
-> > > +       struct resource *r;
-> > > +       int ret;
-> > > +
-> > > +       pwm = devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
-> > > +       if (!pwm)
-> > > +               return -ENOMEM;
-> > > +
-> > > +       pwm->dev = &pdev->dev;
-> > > +
-> > > +       r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > > +       pwm->mmio_base = devm_ioremap_resource(&pdev->dev, r);
-> > > +       if (IS_ERR(pwm->mmio_base))
-> > > +               return PTR_ERR(pwm->mmio_base);
-> > > +
-> > > +       pwm->clk_main = devm_clk_get(&pdev->dev, "main");
-> > > +       if (IS_ERR(pwm->clk_main))
-> > > +               return PTR_ERR(pwm->clk_main);
-> > > +       pwm->clk_mm = devm_clk_get(&pdev->dev, "mm");
-> > > +       if (IS_ERR(pwm->clk_mm))
-> > > +               return PTR_ERR(pwm->clk_mm);
-> > > +
-> > > +       ret = clk_prepare_enable(pwm->clk_main);
-> > > +       if (ret < 0)
-> > > +               return ret;
-> > > +       ret = clk_prepare_enable(pwm->clk_mm);
-> > > +       if (ret < 0) {
-> > > +               clk_disable_unprepare(pwm->clk_main);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       platform_set_drvdata(pdev, pwm);
-> > > +
-> > > +       pwm->chip.dev = &pdev->dev;
-> > > +       pwm->chip.ops = &mtk_disp_pwm_ops;
-> > > +       pwm->chip.base = -1;
-> > > +       pwm->chip.npwm = NUM_PWM;
-> > > +
-> > > +       ret = pwmchip_add(&pwm->chip);
-> > > +       if (ret < 0) {
-> > > +               dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
-> > > +               return ret;
-> > > +       }
-> > > +
-> > > +       return 0;
-> > > +}
-> > > +
-> > > +static int mtk_disp_pwm_remove(struct platform_device *pdev)
-> > > +{
-> > > +       struct mtk_disp_pwm_chip *pc = platform_get_drvdata(pdev);
-> > > +
-> > > +       if (WARN_ON(!pc))
-> > > +               return -ENODEV;
-> > > +
-> > > +       clk_disable_unprepare(pc->clk_main);
-> > > +       clk_disable_unprepare(pc->clk_mm);
-> > > +
-> > > +       return pwmchip_remove(&pc->chip);
-> > > +}
-> > > +
-> > > +static const struct of_device_id mtk_disp_pwm_of_match[] = {
-> > > +       { .compatible = "mediatek,mt6595-disp-pwm" },
-> > 
-> > Does this driver support the PWM in mt8173?
-> > If so, don't you need this, too:
-> > 
-> >   { .compatible = "mediatek,mt8173-disp-pwm" },
+On Fri, 2015-05-22 at 14:51 +0200, Ulf Hansson wrote:
+> [...]
 > 
-> Yes, it supports mt8173.
-> I will add it.
+> >> You are invoking msdc_gate_clock() and msdc_ungate_clock() in a
+> >> balanced manner, thus hclk_enabled is redundant. Please remove it.
+> >
+> > on drv->probe(), already invoke the msdc_ungate_clock(), so, when the
+> > runtime pm resume invoke the msdc_ungate_clock(), the hclk already
+> > enabled.
+> 
+> 
+> That's why you invoke pm_runtime_set_active() during ->probe() when
+> deploying PM support in patch3. It's not an issue then.
+OK, then I can remove the hclk_enabled and sclk_enabled.
+> 
+> [...]
+> 
+> >> I assume it's possible to gate the clock by updating a MSDC register
+> >> instead!? That would be prefereable since then you can leave clock
+> >> gating/ungating via the clk API, to be dealt from runtime PM. That
+> >> would also make "sclk_enabled" in the struct msdc_host redundant.
+> >>
+> >> Adopting to above, obviously requires MSDC to be able to ungate the
+> >> clock by also updating a MSDC register. I assume that's possible as
+> >> well!?
+> >>
+> > We can set the bit1 of MSDC_CFG, when this bit is 0, the bus clock was
+> > gated to 0 if no command or data is transmitted.
+> > And, from our designer, when we operate the MSDC register, we need make
+> > sure both HCLK and source are enabled, if source clock was disabled,
+> > write some MSDC registers will have no effect(eg. send CMD, without
+> > source clock, not only cannot send CMD, but also cannot get CMD timeout
+> > interrupt.)
+> 
+> Thanks, that answered my question. As I understand it you should be
+> able to adopt to my propsual.
+> 
+> [...]
+> 
+> >> > +{
+> >> > +       unsigned long tmo = jiffies + msecs_to_jiffies(20);
+> >> > +
+> >> > +       while ((readl(host->base + SDC_STS) & SDC_STS_CMDBUSY)
+> >> > +                       && time_before(jiffies, tmo))
+> >> > +               continue;
+> >> > +
+> >> > +       if (readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) {
+> >> > +               dev_err(host->dev, "CMD bus busy detected\n");
+> >> > +               host->error |= REQ_CMD_BUSY;
+> >> > +               msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
+> >> > +               return false;
+> >> > +       }
+> >> > +
+> >> > +       if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
+> >> > +               /* R1B or with data, should check SDCBUSY */
+> >> > +               while (readl(host->base + SDC_STS) & SDC_STS_SDCBUSY)
+> >> > +                       cpu_relax();
+> >> > +       }
+> >>
+> >> MSDC seems to be handling card busy detection in HW, right?
+> >>
+> > Do not have this ability, HW only know if CMD/DAT is low, but do not
+> > have any interrupt for it,
+> 
+> I see, but doesn't the above polling mean that msdc will not propagate
+> the response until the card have stopped signal busy? That's what
+> MMC_CAP_WAIT_WHILE_BUSY shall be used for.
+> 
+As you see, we only check the "busy state" BEFORE issue a R1B command or
+with data command, but do not check if AFTER the request was done, that
+would do not match the "MMC_CAP_WAIT_WHILE_BUSY"(eg. CMD5 to sleep)
+In addition, about CMD5, I find that the suspend/resume flow of EMMC is
+stranger in new kernel version, when suspend, it may issue CMD5 to enter
+sleep mode, then power off MMC, but when resume, it will
+re-initialization, So that why need do the redundant CMD5 in suspend ?
 
-If both yre compatible you don't need to add it since you have a
-"mediatek,mt6595-disp-pwm" in the mt8173 device tree.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> Perhaps you should remove the above polling, and rely on the MMC core
+> to poll with CMD13 instead?
+before any read/write command, core will issue CMD13 to confirm card
+status, here is just only do double confirm to avoid HW issue.
+> 
+> >> If so, you should enable MMC_CAP_WAIT_WHILE_BUSY and set
+> >> "max_busy_timeout" to DAT_TIMEOUT to inform the mmc core about it.
+> >>
+> 
+> [...]
+> 
+> Kind regards
+> Uffe
