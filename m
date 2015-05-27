@@ -1,59 +1,59 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH] mfd: mediatek: Add GPIO sub module support into mfd.
-Date: Wed, 27 May 2015 11:28:44 +0200
-Message-ID: <20150527092844.GV6325@pengutronix.de>
-References: <1432717835-16398-1-git-send-email-hongzhou.yang@mediatek.com>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: [PATCH 1/2] pinctrl: mediatek: Fix bug of ies/smt setting for mt8173.
+Date: Wed, 27 May 2015 02:43:54 -0700
+Message-ID: <1432719835-18939-2-git-send-email-hongzhou.yang@mediatek.com>
+References: <1432719835-18939-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432717835-16398-1-git-send-email-hongzhou.yang@mediatek.com>
+In-Reply-To: <1432719835-18939-1-git-send-email-hongzhou.yang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, dandan.he@mediatek.com, Samuel Ortiz <sameo@linux.intel.com>, srv_heupstream@mediatek.com, Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, eddie.huang@mediatek.com, dandan.he@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The subject lacks the mt6397 keyword. In the subject you say this is
-about GPIO, but the patch seems to be about pinctrl.
+Add ies/smt support for MSDC3.
+Also fix ies bug for pin 106 and 107.
 
-On Wed, May 27, 2015 at 02:10:35AM -0700, Hongzhou Yang wrote:
-> Base on Lee Jones' comment, change pinctrl subnode name.
+Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-This is the changelog, should be below the three --- so that git am
-doesn't add this to the commit message
-
-> 
-> ---
-> Register pinctrl subnode into 6397 mfd cell.
-
-This is the commit message, should be above the three ---
-
-> 
-> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-> Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> ---
->  drivers/mfd/mt6397-core.c |    3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 09bc780..e50a9bc 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -34,6 +34,9 @@ static const struct mfd_cell mt6397_devs[] = {
->  	}, {
->  		.name = "mt6397-clk",
->  		.of_compatible = "mediatek,mt6397-clk",
-> +	}, {
-> +		.name = "mt6397-pinctrl",
-> +		.of_compatible = "mediatek,mt6397-pinctrl",
->  	},
->  };
->  
-
-Sascha
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index cf4ed6e..d0c811d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -84,6 +84,10 @@ static const struct mtk_pin_ies_smt_set mt8173_smt_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(16, 16, 0x930, 0),
+ 	MTK_PIN_IES_SMT_SPEC(17, 17, 0x950, 2),
+ 	MTK_PIN_IES_SMT_SPEC(18, 21, 0x940, 3),
++	MTK_PIN_IES_SMT_SPEC(22, 25, 0xce0, 13),
++	MTK_PIN_IES_SMT_SPEC(26, 26, 0xcc0, 13),
++	MTK_PIN_IES_SMT_SPEC(27, 27, 0xcd0, 13),
++	MTK_PIN_IES_SMT_SPEC(28, 28, 0xd70, 13),
+ 	MTK_PIN_IES_SMT_SPEC(29, 32, 0x930, 3),
+ 	MTK_PIN_IES_SMT_SPEC(33, 33, 0x930, 4),
+ 	MTK_PIN_IES_SMT_SPEC(34, 36, 0x930, 5),
+@@ -133,6 +137,10 @@ static const struct mtk_pin_ies_smt_set mt8173_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(16, 16, 0x900, 0),
+ 	MTK_PIN_IES_SMT_SPEC(17, 17, 0x920, 2),
+ 	MTK_PIN_IES_SMT_SPEC(18, 21, 0x910, 3),
++	MTK_PIN_IES_SMT_SPEC(22, 25, 0xce0, 14),
++	MTK_PIN_IES_SMT_SPEC(26, 26, 0xcc0, 14),
++	MTK_PIN_IES_SMT_SPEC(27, 27, 0xcd0, 14),
++	MTK_PIN_IES_SMT_SPEC(28, 28, 0xd70, 14),
+ 	MTK_PIN_IES_SMT_SPEC(29, 32, 0x900, 3),
+ 	MTK_PIN_IES_SMT_SPEC(33, 33, 0x900, 4),
+ 	MTK_PIN_IES_SMT_SPEC(34, 36, 0x900, 5),
+@@ -161,7 +169,7 @@ static const struct mtk_pin_ies_smt_set mt8173_ies_set[] = {
+ 	MTK_PIN_IES_SMT_SPEC(100, 103, 0xca0, 14),
+ 	MTK_PIN_IES_SMT_SPEC(104, 104, 0xc80, 14),
+ 	MTK_PIN_IES_SMT_SPEC(105, 105, 0xc90, 14),
+-	MTK_PIN_IES_SMT_SPEC(106, 107, 0x91, 4),
++	MTK_PIN_IES_SMT_SPEC(106, 107, 0x910, 4),
+ 	MTK_PIN_IES_SMT_SPEC(108, 112, 0x910, 1),
+ 	MTK_PIN_IES_SMT_SPEC(113, 116, 0x910, 2),
+ 	MTK_PIN_IES_SMT_SPEC(117, 118, 0x910, 5),
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+1.7.9.5
