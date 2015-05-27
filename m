@@ -1,43 +1,43 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] soc: mediatek: Add compile dependency to pmic-wrapper
-Date: Wed, 27 May 2015 14:31:05 +0200
-Message-ID: <1432729865-32319-1-git-send-email-matthias.bgg@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/2] soc: mediatek: PMIC wrap: Fix clock rate handling
+Date: Wed, 27 May 2015 14:31:46 +0200
+Message-ID: <CABuKBeJWB-ih=ukjf_S7VovNmDvVBfqpEJ0FQCpmWyE+_+ybGQ@mail.gmail.com>
+References: <1432633064-16839-1-git-send-email-s.hauer@pengutronix.de>
+ <1432633064-16839-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, s.hauer@pengutronix.de, flora.fu@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1432633064-16839-2-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: =?UTF-8?B?SGVucnlDIENoZW4gKOmZs+W7uuixqik=?= <HenryC.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The pmic-wrapper calls the reset controller. If CONFIG_RESET_CONTROLLER
-is not set, compilation fails with:
-drivers/soc/mediatek/mtk-pmic-wrap.c: In function =E2=80=98pwrap_probe=E2=
-=80=99:
-drivers/soc/mediatek/mtk-pmic-wrap.c:836:2: error: implicit declaration=
- of function =E2=80=98devm_reset_control_get=E2=80=99 [-Werror=3Dimplic=
-it-function-declaration]
+2015-05-26 11:37 GMT+02:00 Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>:
+> replace chipselect extension values based on SPI clock with hardcoded SoC
+> specific values.
+>
+> The PMIC wrapper has the ability of extending the chipselects by configurable
+> amounts of time. We configured the values based on the rate of SPI clock, but
+> this is wrong. The delays should be configured based on the internal PMIC clock
+> that latches the values from the SPI bus to the internal PMIC registers. By
+> default this clock is 24MHz. Other clock frequencies are for debugging only
+> and can be removed from the driver.
+>
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 42 ++++++------------------------------
+>  1 file changed, 7 insertions(+), 35 deletions(-)
+>
 
-This patch sets the dependency in the Kconfig file.
-
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/soc/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfi=
-g
-index bcdb22d..3c18503 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -4,6 +4,7 @@
- config MTK_PMIC_WRAP
- 	tristate "MediaTek PMIC Wrapper Support"
- 	depends on ARCH_MEDIATEK
-+	depends on RESET_CONTROLLER
- 	select REGMAP
- 	help
- 	  Say yes here to add support for MediaTek PMIC Wrapper found
---=20
-1.9.1
+Applied, thanks.
+Matthias
