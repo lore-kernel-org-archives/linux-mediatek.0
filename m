@@ -1,38 +1,27 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: Re: [PATCH] mfd: mediatek: Add GPIO sub module support into mfd.
-Date: Wed, 27 May 2015 13:07:16 -0700
-Message-ID: <1432757236.19707.1.camel@mussux00.eus.mediatek.inc>
-References: <1432717835-16398-1-git-send-email-hongzhou.yang@mediatek.com>
-	 <20150527103210.GI11677@x1>
+From: Axel Lin <axel.lin@ingics.com>
+Subject: Re: [PATCH 2/2] pinctrl: mediatek: Fix pinctrl register irq fail bug.
+Date: Thu, 28 May 2015 09:11:43 +0800
+Message-ID: <CAFRkauDrWCme5WDxsEW-HSGrNmJRVftVBP6qPLq3Lux-09BHbA@mail.gmail.com>
+References: <1432719835-18939-1-git-send-email-hongzhou.yang@mediatek.com>
+	<1432719835-18939-3-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150527103210.GI11677@x1>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Samuel Ortiz <sameo@linux.intel.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, dandan.he@mediatek.com, Linus Walleij <linus.walleij@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1432719835-18939-3-git-send-email-hongzhou.yang@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, eddie.huang@mediatek.com, dandan.he@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-05-27 at 11:32 +0100, Lee Jones wrote:
-> On Wed, 27 May 2015, Hongzhou Yang wrote:
-> 
-> > Base on Lee Jones' comment, change pinctrl subnode name.
-> > 
-> > ---
-> > Register pinctrl subnode into 6397 mfd cell.
-> 
-> Sascha already mentioned what's wrong here, so I'll not labour the
-> point.
-> 
-> I'm feeling generous, I'll apply this and make the necessary changes
-> myself.  Please bear the points in mind for next time however.
-> 
-> Applied, thanks.
-> 
-
-Ok, I will pay more attention to it next time.
-Thank you very much.
-
-Yours,
-Hongzhou
+2015-05-27 17:43 GMT+08:00 Hongzhou Yang <hongzhou.yang@mediatek.com>:
+> Since mt6397 is no need to support interrupt controller,
+> I judged "interrupt-controller" property to skip it last patch.
+> But the if judgement should on the contrary, this is a bug.
+>
+> And find of_property_read_bool is better for this case.
+> So using of_property_read_bool instead of of_find_property.
+>
+> Also fix bug of misuse pointer.
+>
+> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Reviewed-by: Axel Lin <axel.lin@ingics.com>
