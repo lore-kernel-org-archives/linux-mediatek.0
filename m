@@ -1,108 +1,46 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 2/3] clk: mediatek: Add support for clk-mux using regmap
-Date: Fri, 29 May 2015 18:01:27 +0200
-Message-ID: <1432915288-14034-3-git-send-email-matthias.bgg@gmail.com>
-References: <1432915288-14034-1-git-send-email-matthias.bgg@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432915288-14034-1-git-send-email-matthias.bgg@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@linaro.org, sboyd@codeaurora.org, matthias.bgg@gmail.com
-Cc: henryc.chen@mediatek.com, s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, manabian@gmail.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [GIT PULL] ARM: mediatek: soc updates for v4.2
+Date: Fri, 29 May 2015 18:20:36 +0200
+Message-ID: <CABuKBe+2H8wFgaM+S-LAMm2B7DCXZKGetOOb9rkgTO4TjD7X=A@mail.gmail.com>
+References: <CABuKBe+y5Em77WbKUu3YHAuwdc7n_ybLe-Eii8G1H-EQ0xZrRg@mail.gmail.com>
+ <2169528.AHb4teykcE@wuerfel>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <2169528.AHb4teykcE@wuerfel>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patches adds support for the mediatek clocks to be able to register
-and use a clk-mux wich relies on regmap.
+Hi Arnd,
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/clk/mediatek/clk-mtk.c | 37 +++++++++++++++++++++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.h | 26 ++++++++++++++++++++++++++
- 2 files changed, 63 insertions(+)
+2015-05-29 14:56 GMT+02:00 Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>:
+> On Wednesday 27 May 2015 17:09:43 Matthias Brugger wrote:
+>> - pmic wrapper: fix clock handling
+>> - pmic wrapper: fix state machine
+>> - pmic wrapper: fix compile dependency
+>>
+>
+> Merged into next/drivers now.
+>
+> It looks like these are all bug fixes, and I wonder if they
+> should be merged for 4.1 and possibly backports instead.
+> Can you clarify?
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 18444ae..cf953a8 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -111,6 +111,43 @@ int mtk_clk_register_gates(struct device_node *node, const struct mtk_gate *clks
- 	return 0;
- }
- 
-+int mtk_clk_regm_register_mux(struct device_node *node,
-+		const struct mtk_regm_mux *clks, int num,
-+		struct clk_onecell_data *clk_data)
-+{
-+	int i;
-+	struct clk *clk;
-+	struct regmap *regmap;
-+
-+	if (!clk_data)
-+		return -ENOMEM;
-+
-+	regmap = syscon_node_to_regmap(node);
-+	if (IS_ERR(regmap)) {
-+		pr_err("Cannot find regmap for %s: %ld\n", node->full_name,
-+				PTR_ERR(regmap));
-+		return PTR_ERR(regmap);
-+	}
-+
-+	for (i = 0; i < num; i++) {
-+		const struct mtk_regm_mux *mux = &clks[i];
-+
-+		clk = clk_regm_register_mux(NULL, mux->name, mux->parent_names,
-+					mux->num_parents, 0, regmap,
-+					mux->mux_offset, mux->mux_shift,
-+					mux->mux_width, mux->flags, NULL);
-+		if (IS_ERR(clk)) {
-+			pr_err("Failed to register clk mux %s: %ld\n",
-+					mux->name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		clk_data->clks[mux->id] = clk;
-+	}
-+
-+	return 0;
-+}
-+
- struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
- 		void __iomem *base, spinlock_t *lock)
- {
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 61035b9..3f41725 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -156,6 +156,32 @@ void __init mtk_clk_register_plls(struct device_node *node,
- 		const struct mtk_pll_data *plls, int num_plls,
- 		struct clk_onecell_data *clk_data);
- 
-+struct mtk_regm_mux {
-+	int id;
-+	const char *name;
-+	const char * const *parent_names;
-+	u8 num_parents;
-+	unsigned flags;
-+	uint32_t mux_offset;
-+	uint32_t mux_shift;
-+	uint32_t mux_width;
-+};
-+
-+int __init mtk_clk_regm_register_mux(struct device_node *node,
-+		const struct mtk_regm_mux *clks, int num,
-+		struct clk_onecell_data *clk_data);
-+
-+#define MUX_REGMAP(_id, _name, _parents, _offset, _shift, _width) {	\
-+		.id = _id,						\
-+		.name = _name,						\
-+		.parent_names = _parents,				\
-+		.num_parents = ARRAY_SIZE(_parents),			\
-+		.flags = CLK_SET_RATE_PARENT,				\
-+		.mux_offset = _offset,					\
-+		.mux_shift = _shift,					\
-+		.mux_width = _width,					\
-+	}
-+
- #ifdef CONFIG_RESET_CONTROLLER
- void mtk_register_reset_controller(struct device_node *np,
- 			unsigned int num_regs, int regofs);
+Yes, they should be merged for 4.1.
+I forgot about that.
+Sorry.
+
+Matthias
 -- 
-1.9.1
+motzblog.wordpress.com
