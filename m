@@ -1,103 +1,93 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v3] ARM: dts: mt8173: support arm64 cpuidle-dt
-Date: Fri, 29 May 2015 15:55:52 +0100
-Message-ID: <20150529145552.GD18512@red-moon>
-References: <1432882906-7940-1-git-send-email-howard.chen@linaro.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/3] clk: mux: Add regmap support for simple mux
+Date: Fri, 29 May 2015 17:24:58 +0200
+Message-ID: <CABuKBeL3U2kdVCVHDKJp+K91K3CUF=XEuDUhfwjqWVEhFNFVcA@mail.gmail.com>
+References: <1432838508-5184-1-git-send-email-matthias.bgg@gmail.com>
+	<1432838508-5184-2-git-send-email-matthias.bgg@gmail.com>
+	<20150529064055.GA6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1432882906-7940-1-git-send-email-howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <Pawel.Moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <Will.Deacon-5wv7dgnIgG8@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Bobby Batacharia <Bobby.Batacharia-5wv7dgnIgG8@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Amit Kucheria <amit.kucheria-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150529064055.GA6325@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, HenryC Chen <henryc.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 29, 2015 at 08:01:46AM +0100, Howard Chen wrote:
-> This patch adds an idle-states node to describe the mt8173 idle states and
-> also adds references to the idle-states node in all CPU nodes.
-> 
-> Signed-off-by: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> ---
-You should have added a list of incremental changes (v1->v2->v3) here
-otherwise there is no point in adding a patch version, we are not
-supposed to remember what you have changed.
+2015-05-29 8:40 GMT+02:00 Sascha Hauer <s.hauer@pengutronix.de>:
+> On Thu, May 28, 2015 at 08:41:46PM +0200, Matthias Brugger wrote:
+>> Some devices like SoCs from Mediatek need to use the clock muxes
+>> through a regmap interface.
+>> This patch adds regmap support for simple the simple multiplexer
+>> clock code.
+>>
+>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>> ---
+>>  drivers/clk/clk-mux.c        | 103 ++++++++++++++++++++++++++++++++++++++-----
+>>  include/linux/clk-provider.h |  40 +++++++++++++++++
+>>  2 files changed, 132 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/clk/clk-mux.c b/drivers/clk/clk-mux.c
+>> index 1fa2a8d..c7c692a 100644
+>> --- a/drivers/clk/clk-mux.c
+>> +++ b/drivers/clk/clk-mux.c
+>> @@ -29,6 +29,26 @@
+>>
+>>  #define to_clk_mux(_hw) container_of(_hw, struct clk_mux, hw)
+>>
+>> +static void clk_mux_writel(struct clk_mux *mux, u32 val)
+>> +{
+>> +     if (mux->flags && CLK_MUX_USE_REGMAP)
+>> +             regmap_write(mux->regmap, mux->offset, val);
+>> +     else
+>> +             clk_writel(val, mux->reg);
+>> +}
+>> +
+>> +static u32 clk_mux_readl(struct clk_mux *mux)
+>> +{
+>> +     u32 val;
+>> +
+>> +     if (mux->flags && CLK_MUX_USE_REGMAP)
+>> +             regmap_read(mux->regmap, mux->offset, &val);
+>> +     else
+>> +             val = clk_readl(mux->reg);
+>> +
+>> +     return val;
+>> +}
+>> +
+>>  static u8 clk_mux_get_parent(struct clk_hw *hw)
+>>  {
+>>       struct clk_mux *mux = to_clk_mux(hw);
+>> @@ -42,7 +62,10 @@ static u8 clk_mux_get_parent(struct clk_hw *hw)
+>>        * OTOH, pmd_trace_clk_mux_ck uses a separate bit for each clock, so
+>>        * val = 0x4 really means "bit 2, index starts at bit 0"
+>>        */
+>> -     val = clk_readl(mux->reg) >> mux->shift;
+>> +
+>> +     val = clk_mux_readl(mux);
+>> +
+>> +     val >>= mux->shift;
+>>       val &= mux->mask;
+>>
+>>       if (mux->table) {
+>> @@ -89,11 +112,11 @@ static int clk_mux_set_parent(struct clk_hw *hw, u8 index)
+>>       if (mux->flags & CLK_MUX_HIWORD_MASK) {
+>>               val = mux->mask << (mux->shift + 16);
+>>       } else {
+>> -             val = clk_readl(mux->reg);
+>> +             val = clk_mux_readl(mux);
+>>               val &= ~(mux->mask << mux->shift);
+>>       }
+>>       val |= index << mux->shift;
+>> -     clk_writel(val, mux->reg);
+>> +     clk_mux_writel(mux, val);
+>
+> With regmap the register lock is inside the regmap, you must hold it
+> during read/modify/write operations which means you have to use
+> regmap_update_bits rather than regmap_read followed by regmap_write.
 
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 924fdb6..47e8d56 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -49,6 +49,8 @@
->  			device_type = "cpu";
->  			compatible = "arm,cortex-a53";
->  			reg = <0x000>;
-> +			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -56,6 +58,7 @@
->  			compatible = "arm,cortex-a53";
->  			reg = <0x001>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0>;
->  		};
->  
->  		cpu2: cpu@100 {
-> @@ -63,6 +66,7 @@
->  			compatible = "arm,cortex-a57";
->  			reg = <0x100>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0>;
->  		};
->  
->  		cpu3: cpu@101 {
-> @@ -70,6 +74,20 @@
->  			compatible = "arm,cortex-a57";
->  			reg = <0x101>;
->  			enable-method = "psci";
-> +			cpu-idle-states = <&CPU_SLEEP_0>;
-> +		};
-> +
-> +		idle-states {
-> +			entry-method = "arm,psci";
-> +
-> +			CPU_SLEEP_0: cpu-sleep-0 {
-> +				compatible = "arm,idle-state";
+Fixed in next version.
+Thanks for reviewing.
 
-UltraNit: please move local-timer-stop here to keep the property ordering
-as in the bindings.
-
-More importantly, IIRC the idle state was not local-timer-stop in v2,
-what changed in the interim ? v1->v2 the cluster idle state disappeared,
-now the local timer seems to stop when it was not before (and that is
-the same HW), I hope things are settled now.
-
-https://lkml.org/lkml/2015/4/7/76
-
-> +				arm,psci-suspend-param = <0x0010000>;
-
-Move this property as last on the list, let's keep the generic
-properties first.
-
-> +				entry-latency-us = <639>;
-> +				exit-latency-us = <680>;
-> +				min-residency-us = <1088>;
-> +				local-timer-stop;
-> +			};
->  		};
->  	};
-
-I guess there is no hope of seeing the cluster state restored (?).
-
-I would like some explanation regarding local-timer-stop change, apart
-from that you can add:
-
-Acked-by: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+motzblog.wordpress.com
