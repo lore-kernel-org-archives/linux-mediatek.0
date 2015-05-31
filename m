@@ -1,124 +1,79 @@
-From: Joachim Eastwood <manabian@gmail.com>
-Subject: Re: [PATCH v2 1/3] clk: mux: Add regmap support for simple mux
-Date: Fri, 29 May 2015 18:54:20 +0200
-Message-ID: <CAGhQ9Vzny3VLbs8ZFE1--nbGguqk=JH4hYpdOHcd=+Vu8tqibQ@mail.gmail.com>
-References: <1432915288-14034-1-git-send-email-matthias.bgg@gmail.com>
-	<1432915288-14034-2-git-send-email-matthias.bgg@gmail.com>
+From: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Subject: Re: [PATCH v9 0/3] ARM: mediatek: Add driver for Mediatek I2C
+Date: Mon, 1 Jun 2015 08:34:26 +0900
+Message-ID: <20150531233424.GA17308@katana>
+References: <1432198410-6576-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432915288-14034-2-git-send-email-matthias.bgg@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, henryc.chen@mediatek.com, s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="BOKacYhQ+x31HxR3"
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1432198410-6576-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 29 May 2015 at 18:01, Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> Some devices like SoCs from Mediatek need to use the clock muxes
-> through a regmap interface.
-> This patch adds regmap support for the simple multiplexer
-> clock code.
->
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  drivers/clk/clk-mux.c        | 134 ++++++++++++++++++++++++++++++++++++++-----
->  include/linux/clk-provider.h |  44 +++++++++++++-
->  2 files changed, 162 insertions(+), 16 deletions(-)
 
-What is this patch generated against?
+--BOKacYhQ+x31HxR3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I can't seem to apply it to either clk-next, next or Linus master.
+On Thu, May 21, 2015 at 04:53:27PM +0800, Eddie Huang wrote:
+> This series is for Mediatek SoCs I2C controller common bus driver.
+>=20
+> Earlier MTK SoC (for example, MT6589, MT8135) I2C HW has some limitations.
+> New generation SoC like MT8173 fix following limitations:
+>=20
+> 1. Only support one i2c_msg number. One exception is WRRD (write then rea=
+d)
+> mode. WRRD can have two i2c_msg numbers.
+>=20
+> 2. Mediatek I2C controller support WRRD(write then read) mode, in WRRD
+> mode the Repeat Start will be issued between 2 messages.
+> In this driver if 2 messages is first write then read, the driver will
+> combine 2 messages using Write-Read mode so the RS will be issued between
+> the 2 messages.
+>=20
+> 3. The max transfer data length is 255 in one message. In WRRD mode, the
+> max data length of second msg is 31.
+>=20
+> MT8135 and MT6589 can control I2C pins on PMIC(MT6397) by setting the i2c
+> registers in MT8135 side. In this case, driver should set OFFSET_PATH_DIR
+> bit first, the operation on other registers are still the same.
+> For now MT6589/MT8135 support this, MT6577/MT6595/MT8127 do not support.
+> For example, If want to use I2C4/5/6 pins on MT8135 just need to enable
+> the pinmux, else if want to use I2C pins on PMIC(MT6397) need to add
+> "mediatek,have-pmic" property in the .dts file of each platform.
+>=20
+> This driver is based on 4.1-rc1.
 
-
-> diff --git a/drivers/clk/clk-mux.c b/drivers/clk/clk-mux.c
-> index 1fa2a8d..6f75116 100644
-> --- a/drivers/clk/clk-mux.c
-> +++ b/drivers/clk/clk-mux.c
-> @@ -29,6 +29,43 @@
->
->  #define to_clk_mux(_hw) container_of(_hw, struct clk_mux, hw)
->
-> +static void clk_mux_writel(struct clk_mux *mux, u32 val)
-> +{
-> +       if (mux->flags & CLK_MUX_USE_REGMAP)
-> +               regmap_write(mux->regmap, mux->offset, val);
-> +       else
-> +               clk_writel(val, mux->reg);
-> +}
-> +
-> +static u32 clk_mux_readl(struct clk_mux *mux)
-> +{
-> +       u32 val;
-> +
-> +       if (mux->flags & CLK_MUX_USE_REGMAP)
-> +               regmap_read(mux->regmap, mux->offset, &val);
-> +       else
-> +               val = clk_readl(mux->reg);
-> +
-> +       return val;
-> +}
-> +
-> +static int clk_mux_update_bits(struct clk_mux *mux, u32 mask, u32 val)
-> +{
-> +       unsigned int ret;
-> +
-> +       if (mux->flags & CLK_MUX_USE_REGMAP) {
-> +               ret = regmap_update_bits(mux->regmap, mux->offset, mask, val);
-
-If you just do a "return regmap_update_bits(...)" here you can drop
-the else below and also remove the ret variable.
-
-> +       } else {
-> +               ret = clk_readl(mux->reg);
-> +               ret &= ~mask;
-> +               ret |= val;
-> +               clk_writel(ret, mux->reg);
-> +               ret = 0;
-> +       }
-> +
-> +       return ret;
-> +}
-
-The three functions above seems pretty generic and should be usable in
-both gate and divider as well. Maybe we could figure out a way to
-share them across the mux, gate and divider clk drivers.
+Applied to for-next, thanks! Especially for being an early adaptor of
+the quirk framework and for keeping at this during this thorough review
+=66rom all sides. Thanks to the reviewers as well!
 
 
-> diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
-> index ec609e5..c7487ad 100644
-> --- a/include/linux/clk-provider.h
-> +++ b/include/linux/clk-provider.h
-> @@ -14,6 +14,7 @@
->  #include <linux/clk.h>
->  #include <linux/io.h>
->  #include <linux/of.h>
-> +#include <linux/regmap.h>
->
->  #ifdef CONFIG_COMMON_CLK
->
-> @@ -408,8 +409,12 @@ void clk_unregister_divider(struct clk *clk);
->   */
->  struct clk_mux {
->         struct clk_hw   hw;
-> -       void __iomem    *reg;
-> +       union {
-> +               void __iomem    *reg;
-> +               struct regmap   *regmap;
-> +       };
->         u32             *table;
-> +       u32             offset;
->         u32             mask;
->         u8              shift;
->         u8              flags;
-> @@ -421,6 +426,7 @@ struct clk_mux {
->  #define CLK_MUX_HIWORD_MASK            BIT(2)
->  #define CLK_MUX_READ_ONLY              BIT(3) /* mux can't be changed */
->  #define CLK_MUX_ROUND_CLOSEST          BIT(4)
-> +#define CLK_MUX_USE_REGMAP             BIT(5)
+--BOKacYhQ+x31HxR3
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
-Since you are adding both fields and a flag to struct clk_mux it would
-be nice if you could update the documentation above the struct
-definition in clk-provider.h also.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
 
-regards,
-Joachim Eastwood
+iQIcBAEBAgAGBQJVa5qAAAoJEBQN5MwUoCm2LFkP/Rw1K1M0asHTFf4j/sXyQcxO
+YTuzPCkAiL5pOgRevp+z0pILNvShESb/s4DqlwdzwpyQGVlp2xjiJe9VpqNl0hKw
+JwxdeH/pBhkhHIk1RcKDooKW9sfmFK/18RQ+arG/HkFjNLpuCNpSE9x+PmKwZPCC
+Ck7SSUHnhgtLnRy6HLfiahiN2OXJMHRB45sehEMLvmxX+6PhMLt9sQjjPEydBkAN
+myBzRwSTf7jQE0NQs66O2BcSF4jk4JrGQrQB+SPxb02N9innoL/5sTnJZyInPNMM
+eNozGlWwT2pw2hrJ2hlQJwXBzu2n16LaO9F3jDhJ67VWqEfV1Ovw71k28YS5SZtS
+/Nlu98jG4vIf/+HidkVp83Ebt4k591A+wSk1VhjcyOQCkiciaIchZptdgpatGgW1
+3M+f58MDmipKqTSF7zy0LXTnvJUmqmxLKEk9HRkhy46xT7PnNudPNTZ6S5RKJ2nD
+gFN/v86CNGLAgMbVRJRNoCpvgGhcbnkwDMI3xHUFer7OHgOEJc2yBO3uNJh3uAyw
+TXjL7O2QyyYQwZVqLfB3PkD+BVxpphu2J3dFmnPd87/1SzQnZgeZaTB0lb6K4DxM
+/Wal4q68ixYuzVQVEgSd22qlmPJ0zBLsqDXjUvTQd5DRTpGAEG0gEViMBqWe/zwN
+X8SbUrLKbnKdZlZ2Xczx
+=PGuI
+-----END PGP SIGNATURE-----
+
+--BOKacYhQ+x31HxR3--
