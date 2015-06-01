@@ -1,108 +1,39 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: mt8173: Add I2C device node
-Date: Mon, 1 Jun 2015 14:25:41 +0200
-Message-ID: <CABuKBeLBzeibaUWT9S-tpa-JqKDW2gWLUAcJjuMWOaw5SSkEig@mail.gmail.com>
-References: <1433140153-22436-1-git-send-email-eddie.huang@mediatek.com>
-	<1433140153-22436-3-git-send-email-eddie.huang@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [RFC v1 06/25] pinctrl: Use irq_desc_get_xxx() to avoid redundant
+ lookup of irq_desc
+Date: Mon, 1 Jun 2015 14:46:34 +0200
+Message-ID: <CACRpkdazXuq7WZZPiObRNFBTokazUN9yisU7VNobS4ezgZTHJw@mail.gmail.com>
+References: <1432116013-25902-1-git-send-email-jiang.liu@linux.intel.com>
+ <1432116013-25902-7-git-send-email-jiang.liu@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1433140153-22436-3-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1432116013-25902-7-git-send-email-jiang.liu@linux.intel.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jiang Liu <jiang.liu@linux.intel.com>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Tomasz Figa <tomasz.figa@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Maoguang Meng <maoguang.meng@mediatek.com>, "H. Peter Anvin" <hpa@zytor.com>, kernel@stlinux.com, linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, Axel Lin <axel.lin@ingics.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yinghai Lu <yinghai@kernel.org>, x86@kernel.org, ACPI Devel Maling List <linux-acpi@vger.kernel.org>, Chen-Yu Tsai <wens@csie.org>, Ingo Molnar <mingo@redhat.com>, Thomas Abraham <thomas.abraham@linaro.org>, Bjorn Andersson <bjorn.andersson@sonymobile.com>lin
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-06-01 8:29 GMT+02:00 Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
-> Add MT8173 I2C device nodes, include I2C controllers and pins.
-> MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
-> The 6th I2C controller register base doesn't next to 5th I2C,
-> and there is a hardware between 5th and 6th I2C controller. So
-> SoC designer name 6th controller as "i2c6", not "i2c5".
->
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 119 +++++++++++++++++++++++++++++++
->  1 file changed, 119 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index b52ec43..72d9ab1 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -158,6 +158,53 @@
->                         interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
->                                                 <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
->                                                 <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-> +                       i2c0_pins_a: i2c0@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
-> +                                                <MT8173_PIN_46_SCL0__FUNC_SCL0>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
-> +
-> +                       i2c1_pins_a: i2c1@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_125_SDA1__FUNC_SDA1>,
-> +                                                <MT8173_PIN_126_SCL1__FUNC_SCL1>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
-> +
-> +                       i2c2_pins_a: i2c2@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_43_SDA2__FUNC_SDA2>,
-> +                                                <MT8173_PIN_44_SCL2__FUNC_SCL2>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
-> +
-> +                       i2c3_pins_a: i2c3@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_106_SDA3__FUNC_SDA3>,
-> +                                                <MT8173_PIN_107_SCL3__FUNC_SCL3>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
-> +
-> +                       i2c4_pins_a: i2c4@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_133_SDA4__FUNC_SDA4>,
-> +                                                <MT8173_PIN_134_SCL4__FUNC_SCL4>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
-> +
-> +                       i2c6_pins_a: i2c6@0 {
-> +                               pins1 {
-> +                                       pinmux = <MT8173_PIN_100_MSDC2_DAT0__FUNC_SDA5>,
-> +                                                <MT8173_PIN_101_MSDC2_DAT1__FUNC_SCL5>;
-> +                                       bias-disable;
-> +                               };
-> +                       };
->                 };
->
->                 watchdog: watchdog@10007000 {
-> @@ -194,6 +241,78 @@
->                                 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
->                 };
->
-> +               i2c0: i2c@11007000 {
-> +                       compatible = "mediatek,mt8173-i2c";
-> +                       reg = <0 0x11007000 0 0x70>,
-> +                             <0 0x11000100 0 0x80>;
-> +                       interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_LOW>;
-> +                       clock-div = <16>;
-> +                       clocks = <&pericfg CLK_PERI_I2C0>,
-> +                                <&pericfg CLK_PERI_AP_DMA>;
-> +                       clock-names = "main", "dma";
-> +                       status = "disabled";
+On Wed, May 20, 2015 at 11:59 AM, Jiang Liu <jiang.liu@linux.intel.com> wrote:
 
-Please order nodes by their register address.
+> Use irq_desc_get_xxx() to avoid redundant lookup of irq_desc while we
+> already have a pointer to corresponding irq_desc.
+>
+> Signed-off-by: Jiang Liu <jiang.liu@linux.intel.com>
 
-Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+
+Are there dependencies on this patch or can I just apply it
+directly to the GPIO tree?
+
+Yours,
+Linus Walleij
