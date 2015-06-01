@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: mediatek: Fix for v4.1
-Date: Mon, 1 Jun 2015 12:17:40 +0200
-Message-ID: <CABuKBeKkvikUSvZCZNn5_RSHs-ENX9gqDCwhS5h2Py9EQwdYpg@mail.gmail.com>
+Subject: [GIT PULL] ARM: mediatek: arm64 updates for v4.2
+Date: Mon, 1 Jun 2015 12:30:24 +0200
+Message-ID: <CABuKBeL1mq_Q3fxQtWeSGV-vHWqiVr1wTVKzj_KA1c27oKxMcQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,12 +16,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Arnd and Olof,
 
-please pull the following fix.
+Please pull the following updates for v4.2.
 
 Thanks,
 Matthias
@@ -34,18 +34,22 @@ The following changes since commit b787f68c36d49bb1d9236f403813641efa74a031:
 
 are available in the git repository at:
 
-  https://github.com/mbgg/linux-mediatek.git tags/v4.1-next-arm64-fixes
+  https://github.com/mbgg/linux-mediatek.git tags/v4.1-next-arm64
 
-for you to fetch changes up to 692ef3ee36833b6098a352c079d3cea8fc6ed3ef:
+for you to fetch changes up to e881ad1bc6e46fc933fef77cfe587625e30478e9:
 
-  arm64: dts: mt8173-evb: fix model name (2015-06-01 11:29:15 +0200)
-
-----------------------------------------------------------------
-- dts: mt8173: fix compatible string
+  arm64: dts: mt8173: fix some indentation (2015-06-01 10:06:12 +0200)
 
 ----------------------------------------------------------------
+- dts: mt8173: fix style convention for pinctrl node
+- dts: mt8173: fix indentation for some nodes
+
+----------------------------------------------------------------
+Daniel Kurtz (1):
+      arm64: dts: mt8173: fix some indentation
+
 Yingjoe Chen (1):
-      arm64: dts: mt8173-evb: fix model name
+      arm64: dts: mt8173: Fixup pinctrl nodes
 
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 41 +++++++++++++++++---------------
+ 1 file changed, 22 insertions(+), 19 deletions(-)
