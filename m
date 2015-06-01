@@ -1,41 +1,55 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: mediatek: arm64 updates for v4.2
-Date: Mon, 01 Jun 2015 16:32:17 +0200
-Message-ID: <1461817.ARd56COj2q@wuerfel>
-References: <CABuKBeLhFR=94cF301wL7J8hJVTtyseoD7g45PLE6znQkPAFGQ@mail.gmail.com>
- <2507882.daayE1Zgb4@wuerfel>
- <CABuKBeK+LT4UDKe0P=vswEXTUevcSNTf2Gn0cdMQ7r=tj2JmOA@mail.gmail.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 3/6] xhci: probe phy before add usb_hcd
+Date: Mon, 1 Jun 2015 22:52:17 +0800
+Message-ID: <1433170337.12128.18.camel@mtksdaap41>
+References: <1432727283-20303-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <1432727283-20303-4-git-send-email-chunfeng.yun@mediatek.com>
+	 <20150527121843.GA8611@saruman.tx.rr.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABuKBeK+LT4UDKe0P=vswEXTUevcSNTf2Gn0cdMQ7r=tj2JmOA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150527121843.GA8611-HgARHv6XitJaoMGHk7MhZQC/G2K4zDHf@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: balbi-l0cyMroinI0@public.gmane.org
+Cc: chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday 01 June 2015 10:56:35 Matthias Brugger wrote:
-> 2015-06-01 10:11 GMT+02:00 Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>:
-> >
-> > If you put the same file in two branches, please use the same commit
-> > ID. While git can figure it out when everything goes right, it will
-> > fail horribly if one of the branches later gets a patch on top that
-> > modifies the file, before the two branches get merged.
+On Wed, 2015-05-27 at 07:18 -0500, Felipe Balbi wrote:
+> On Wed, May 27, 2015 at 07:48:00PM +0800, chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> > From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > find the phy driver before add primary usb_hcd to avoid acessing
+> > xHCI register which may hangup the system when the phy is not loaded
+> > yet and the related powers or clocks put in phy driver are not
+> > enabled.
 > 
-> I just saw, that the commit in question has dependencies to other commits.
-> So I decided I will drop the patches which cause problems. They should
-> go into the next merge window.
-> 
+> it seems like the same clock is needed by PHY and XHCI. This patch looks
+> incorrect.
 
-Ok, thanks. That will make it simpler for me.
 
-	Arnd
+Hi,
+
+I agree that the driver should enable clock it used by itself and not
+depends on init order. This should be fixed.
+
+But in general, I think it make sense to only add hcd after all required
+resource are ready. At least it remove unnecessary calls to
+usb_add_hcd/usb_remove_hcd. Is it better if the commit message is
+changed to something like the below?
+
+Currently xhci_plat_probe() call usb_add_hcd before trying to init the
+phy. However if the phy is not ready at the moment, it have to remove
+the hcd and probe again later 
+
+Change the init order so we only add hcd when all required resource are
+ready.
+
+Joe.C
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
