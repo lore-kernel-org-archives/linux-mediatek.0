@@ -1,215 +1,66 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
-Date: Wed, 3 Jun 2015 16:18:53 +0800
-Message-ID: <1433319533-24803-3-git-send-email-mars.cheng@mediatek.com>
-References: <1433319533-24803-1-git-send-email-mars.cheng@mediatek.com>
+From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/7] mmc: mediatek: Add Mediatek MMC driver
+Date: Thu, 4 Jun 2015 10:54:03 +0800
+Message-ID: <1433386443.3304.2.camel@mhfsdcap03>
+References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
+ <1432017411-2996-3-git-send-email-chaotian.jing@mediatek.com>
+ <20150519111558.GD6325@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433319533-24803-1-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.or, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, MY Chuang <my.chuang@mediatek.com>, Scott Shu <scott.shu@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20150519111558.GD6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This enables mt6580 basic support: interrupt, timer & uart.
+On Tue, 2015-05-19 at 13:15 +0200, Sascha Hauer wrote:
+> On Tue, May 19, 2015 at 02:36:46PM +0800, Chaotian Jing wrote:
+> > Add Mediatek MMC driver code
+> > Support eMMC/SD/SDIO
+> > 
+> > Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/mmc/host/Kconfig  |    8 +
+> >  drivers/mmc/host/Makefile |    1 +
+> >  drivers/mmc/host/mtk-sd.c | 1422 +++++++++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 1431 insertions(+)
+> >  create mode 100644 drivers/mmc/host/mtk-sd.c
+> > 
+> > +
+> > +	host->src_clk = devm_clk_get(&pdev->dev, "source");
+> > +	if (IS_ERR(host->src_clk)) {
+> > +		ret = PTR_ERR(host->src_clk);
+> > +		goto host_free;
+> > +	}
+> > +
+> > +	host->h_clk = devm_clk_get(&pdev->dev, "hclk");
+> > +	if (IS_ERR(host->h_clk)) {
+> > +		/* host->h_clk is optional, Only for MSDC0/3 at MT8173 */
+> > +		dev_dbg(&pdev->dev,
+> > +				"Invalied hclk from the device tree!\n");
+> > +	}
+> 
+> s/Invalied/Invalid/
+> 
+> According to my reference manual the controller always needs a hclk. It
+> seems on some controllers it is just not software controllable. If
+> that's the case you should always provide a hclk to the driver and make
+> this clock mandatory.
+For MT8173, MSDC1, MSDC2's HCLK are in Infra, software cannot control
+it. So just set the HCLK to clk_null ?
 
-Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
----
- arch/arm/boot/dts/Makefile         |   1 +
- arch/arm/boot/dts/mt6580-evbp1.dts |  34 ++++++++++
- arch/arm/boot/dts/mt6580.dtsi      | 130 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 165 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
- create mode 100644 arch/arm/boot/dts/mt6580.dtsi
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 86217db..9298531 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -656,6 +656,7 @@ dtb-$(CONFIG_MACH_DOVE) += \
- 	dove-d3plug.dtb \
- 	dove-dove-db.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += \
-+	mt6580-evbp1.dtb \
- 	mt6589-aquaris5.dtb \
- 	mt6592-evb.dtb \
- 	mt8127-moose.dtb \
-diff --git a/arch/arm/boot/dts/mt6580-evbp1.dts b/arch/arm/boot/dts/mt6580-evbp1.dts
-new file mode 100644
-index 0000000..fbc0e10
---- /dev/null
-+++ b/arch/arm/boot/dts/mt6580-evbp1.dts
-@@ -0,0 +1,34 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Mars.C <mars.cheng@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+/dts-v1/;
-+#include "mt6580.dtsi"
-+
-+/ {
-+	model = "MediaTek MT6580 evaluation board";
-+	compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-+
-+	chosen {
-+		bootargs = "console=ttyS0,921600n8 root=/dev/ram initrd=0x88000000,0x400000 earlyprintk";
-+	};
-+
-+	memory {
-+		reg = <0x80000000 0x20000000>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-new file mode 100644
-index 0000000..de669e2
---- /dev/null
-+++ b/arch/arm/boot/dts/mt6580.dtsi
-@@ -0,0 +1,130 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Mars.C <mars.cheng@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include "skeleton.dtsi"
-+
-+/ {
-+	compatible = "mediatek,mt6580";
-+	interrupt-parent = <&sysirq>;
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x0>;
-+		};
-+		cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x1>;
-+		};
-+		cpu@2 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x2>;
-+		};
-+		cpu@3 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x3>;
-+		};
-+
-+	};
-+
-+	clocks {
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		system_clk: dummy13m {
-+			compatible = "fixed-clock";
-+			clock-frequency = <13000000>;
-+			#clock-cells = <0>;
-+		};
-+
-+		rtc_clk: dummy32k {
-+			compatible = "fixed-clock";
-+			clock-frequency = <32000>;
-+			#clock-cells = <0>;
-+		};
-+
-+		uart_clk: dummy26m {
-+			compatible = "fixed-clock";
-+			clock-frequency = <26000000>;
-+			#clock-cells = <0>;
-+		};
-+	};
-+
-+	soc {
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		timer: timer@10008000 {
-+			compatible = "mediatek,mt6580-timer",
-+				     "mediatek,mt6577-timer";
-+			reg = <0x10008000 0x80>;
-+			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&system_clk>, <&rtc_clk>;
-+			clock-names = "system-clk", "rtc-clk";
-+		};
-+
-+		sysirq: interrupt-controller@10200100 {
-+			compatible = "mediatek,mt6580-sysirq",
-+				     "mediatek,mt6577-sysirq";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0x10200100 0x1c>;
-+		};
-+
-+		gic: interrupt-controller@10211000 {
-+			compatible = "arm,cortex-a7-gic";
-+			interrupt-controller;
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			reg = <0x10211000 0x1000>,
-+			      <0x10212000 0x1000>,
-+			      <0x10214000 0x2000>,
-+			      <0x10216000 0x2000>;
-+		};
-+
-+		uart0: serial@11005000 {
-+			compatible = "mediatek,mt6580-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11005000 0x400>;
-+			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			clock-names = "baud";
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11006000 {
-+			compatible = "mediatek,mt6580-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0x11006000 0x400>;
-+			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&uart_clk>;
-+			clock-names = "baud";
-+			status = "disabled";
-+		};
-+	};
-+};
--- 
-1.8.1.1.dirty
+If it is, will set HCLK to clk_null at next revision, and the same
+changes will make for MT8135.
+> 
+> Sascha
+> 
