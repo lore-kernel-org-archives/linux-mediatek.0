@@ -1,64 +1,79 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v4 2/7] mmc: mediatek: Add Mediatek MMC driver
-Date: Thu, 4 Jun 2015 11:02:12 +0200
-Message-ID: <20150604090212.GY6325@pengutronix.de>
-References: <1432017411-2996-1-git-send-email-chaotian.jing@mediatek.com>
- <1432017411-2996-3-git-send-email-chaotian.jing@mediatek.com>
- <20150519111558.GD6325@pengutronix.de>
- <1433386443.3304.2.camel@mhfsdcap03>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
+Date: Thu, 4 Jun 2015 14:02:12 -0700
+Message-ID: <20150604210212.GM676@codeaurora.org>
+References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
+ <20150528132452.GI26575@pengutronix.de>
+ <1432867649.15597.46.camel@mtksdaap41>
+ <20150529062345.GY6325@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-gpio-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1433386443.3304.2.camel@mhfsdcap03>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, bin.zhang@mediatek.com, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, Will Deacon <will.deacon@arm.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20150529062345.GY6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 04, 2015 at 10:54:03AM +0800, Chaotian Jing wrote:
-> On Tue, 2015-05-19 at 13:15 +0200, Sascha Hauer wrote:
-> > On Tue, May 19, 2015 at 02:36:46PM +0800, Chaotian Jing wrote:
-> > > Add Mediatek MMC driver code
-> > > Support eMMC/SD/SDIO
-> > > 
-> > > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> > > ---
-> > >  drivers/mmc/host/Kconfig  |    8 +
-> > >  drivers/mmc/host/Makefile |    1 +
-> > >  drivers/mmc/host/mtk-sd.c | 1422 +++++++++++++++++++++++++++++++++++++++++++++
-> > >  3 files changed, 1431 insertions(+)
-> > >  create mode 100644 drivers/mmc/host/mtk-sd.c
-> > > 
-> > > +
-> > > +	host->src_clk = devm_clk_get(&pdev->dev, "source");
-> > > +	if (IS_ERR(host->src_clk)) {
-> > > +		ret = PTR_ERR(host->src_clk);
-> > > +		goto host_free;
-> > > +	}
-> > > +
-> > > +	host->h_clk = devm_clk_get(&pdev->dev, "hclk");
-> > > +	if (IS_ERR(host->h_clk)) {
-> > > +		/* host->h_clk is optional, Only for MSDC0/3 at MT8173 */
-> > > +		dev_dbg(&pdev->dev,
-> > > +				"Invalied hclk from the device tree!\n");
-> > > +	}
+On 05/29, Sascha Hauer wrote:
+> On Fri, May 29, 2015 at 10:47:29AM +0800, James Liao wrote:
+> > Hi Sascha,
 > > 
-> > s/Invalied/Invalid/
+> > > And really the driver matching "mediatek,mt8173-vencsys" should register
+> > > the necessary clocks and reset lines and call of_platform_populate on
+> > > the subnodes. The driver should also be a real driver, not something
+> > > matched by CLK_OF_DECLARE. The "mediatek,mt8173-vencsys" driver now has
+> > > the possibility to manage the toplevel vencsys unit, do runtime pm, turn
+> > > the whole thing off and on. Using CCF for abstracting these clocks may
+> > > be the right thing, but I believe that we should keep the code for the
+> > > toplevel vencsys register space together in a single file and not put
+> > > the clk bits in drivers/clk/mediatek/mt8173.c, the reset bits in
+> > > drivers/reset/ and the remaining misc stuff in drivers/soc/mediatek/.
+> > > 
+> > > So I think we should have a drivers/soc/mediatek/mtk-vencsys.c which
+> > > is a regular driver, calls clk_register() for its clocks, calls
+> > > reset_controller_register() for the reset bits, provides plain functions
+> > > for the remaining bits which are not handled by any Linux framework.
+> > > Finally of_platform_populate will register the child devices.
+> > > 
+> > > I showed this using the vencsys example, but it's the same for vdecsys,
+> > > vencltsys, imgsys and mmsys.
 > > 
-> > According to my reference manual the controller always needs a hclk. It
-> > seems on some controllers it is just not software controllable. If
-> > that's the case you should always provide a hclk to the driver and make
-> > this clock mandatory.
-> For MT8173, MSDC1, MSDC2's HCLK are in Infra, software cannot control
-> it. So just set the HCLK to clk_null ?
+> > So you agree to manage these subsystem clocks in CCF, but they should be
+> > provided by their own (globalcon) drivers, right?
+> 
+> Yes. I previously got the impression that the subsystem clocks are not
+> directly associated to the larbs, but needed to be handled by the larb
+> code due to some side effect. Now that I saw that the larbs are directly
+> in the subsystem register space it all makes sense.
+> 
+> Note that the way Mediatek SoCs are designed around sub modules is bit
+> unusual and does not fit very well in the Linux directory structure.
+> Normally SoCs have a single clocks controller which controls all clocks
+> in the SoC. Then you often have a reset controller providing reset lines
+> in the SoC. In this case it's clear that the clk driver goes to
+> drivers/clk/, the reset controller driver to drivers/reset/. Mediatek
+> SoCs instead have several blocks, each with its own clock and reset
+> controller. Splitting each block up into parts in drivers/clk/ and
+> drivers/reset/ leads to quite a code fragmentation.
+> This is my opinion, it would be great to hear something from others.
+> Matthias? I'd like to avoid running into a direction that is not
+> acceptable in the end.
 
-Yes, please.
-
-Sascha
+We already have drivers registering clocks and resets under
+drivers/clk, so it's not unheard of. An alternative solution is
+to make child devices for the clock part and the reset part at
+runtime in the toplevel driver for the vencsys device (don't do
+any sort of DT description for this) and use regmap to mediate
+the register accesses and locking. That way we can put the clk
+driver in drivers/clk/, the reset driver in drivers/reset, etc.
+so that logically related code is grouped.
 
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
