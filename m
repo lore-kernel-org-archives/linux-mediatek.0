@@ -1,49 +1,89 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [RFT v2 00/48] Refine irq interfaces to reduce number of parameters
-Date: Thu, 4 Jun 2015 08:59:37 +0200
-Message-ID: <CAMuHMdUfGMU3m35xWD9vE1RNW80jjHx_KLM3a4GWq=JfuGcGBw@mail.gmail.com>
-References: <1433391238-19471-1-git-send-email-jiang.liu@linux.intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-acpi-owner@vger.kernel.org>
-In-Reply-To: <1433391238-19471-1-git-send-email-jiang.liu@linux.intel.com>
-Sender: linux-acpi-owner@vger.kernel.org
-To: Jiang Liu <jiang.liu@linux.intel.com>, Wu Fengguang <fengguang.wu@intel.com>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Ingo Molnar <mingo@redhat.com>, "H. Peter Anvin" <hpa@zytor.com>, Randy Dunlap <rdunlap@infradead.org>, Yinghai Lu <yinghai@kernel.org>, Borislav Petkov <bp@alien8.de>, Matthias Brugger <matthias.bgg@gmail.com>, Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>, Tony Luck <tony.luck@intel.com>, the arch/x86 maintainers <x86@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-pci <linux-pci@vger.kernel.org>, ACPI Devel Maling List <linux-acpi@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+From: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [PATCH v4] ARM: dts: mt8173: support arm64 cpuidle-dt
+Date: Thu,  4 Jun 2015 15:13:37 +0800
+Message-ID: <1433402017-7711-1-git-send-email-howard.chen@linaro.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, Bobby Batacharia <bobby.batacharia-5wv7dgnIgG8@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Amit Kucheria <amit.kucheria-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Gerry,
+This patch adds an idle-states node to describe the mt8173 idle states and
+also adds references to the idle-states node in all CPU nodes.
 
-On Thu, Jun 4, 2015 at 6:13 AM, Jiang Liu <jiang.liu@linux.intel.com> wrote:
-> You may get the patch set from:
+Changes:
 
-Missing link?
+v4:
+- Refine the property ordering.
 
-> The patch set passes Fengguang's 0day test suites as below. And tests
-> with other platforms and configurations will be appreciated:)
-> ----------------------------------------------------------
-> configs tested: 95
+v3:
+- Add the local-timer-stop property.
 
-[...]
+v2:
+- Remove the change to the PSCI version.
+- Remove the cluster idle state.
+- Fine tune the latency properties of the idle state.
 
-> m68k                          amiga_defconfig
-> m68k                       m5475evb_defconfig
-> m68k                          multi_defconfig
+Signed-off-by: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Acked-by: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-For Fengguang: amiga_defconfig is a subset of multi_defconfig.
-But sun3_defconfig is distinct, as Sun-3 has a different MMU and thus support
-for it cannot be included in multi-platform kernels.
-So I think you better replace amiga_defconfig by sun3_defconfig for build tests.
-
-Thanks!
-
-Gr{oetje,eeting}s,
-
-                        Geert
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 27237a1..5587375 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -49,6 +49,8 @@
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x000>;
++			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -56,6 +58,7 @@
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x001>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu2: cpu@100 {
+@@ -63,6 +66,7 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x100>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
+ 		};
+ 
+ 		cpu3: cpu@101 {
+@@ -70,6 +74,20 @@
+ 			compatible = "arm,cortex-a57";
+ 			reg = <0x101>;
+ 			enable-method = "psci";
++			cpu-idle-states = <&CPU_SLEEP_0>;
++		};
++
++		idle-states {
++			entry-method = "arm,psci";
++
++			CPU_SLEEP_0: cpu-sleep-0 {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				entry-latency-us = <639>;
++				exit-latency-us = <680>;
++				min-residency-us = <1088>;
++				arm,psci-suspend-param = <0x0010000>;
++			};
+ 		};
+ 	};
+ 
+-- 
+1.9.1
 
 --
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
