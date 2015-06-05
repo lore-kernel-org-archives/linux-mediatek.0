@@ -1,37 +1,53 @@
-From: Fengguang Wu <fengguang.wu@intel.com>
-Subject: Re: [RFT v2 00/48] Refine irq interfaces to reduce number of
- parameters
-Date: Fri, 5 Jun 2015 11:53:13 +0800
-Message-ID: <20150605035313.GA7707@wfg-t540p.sh.intel.com>
-References: <1433391238-19471-1-git-send-email-jiang.liu@linux.intel.com>
- <CAMuHMdUfGMU3m35xWD9vE1RNW80jjHx_KLM3a4GWq=JfuGcGBw@mail.gmail.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v2 0/2] Add MediaTek display PWM driver
+Date: Fri, 5 Jun 2015 14:15:29 +0800
+Message-ID: <1433484929.17376.17.camel@mtksdaap41>
+References: <1432214964-40644-1-git-send-email-yh.huang@mediatek.com>
+	 <1432520091.23308.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdUfGMU3m35xWD9vE1RNW80jjHx_KLM3a4GWq=JfuGcGBw@mail.gmail.com>
+In-Reply-To: <1432520091.23308.5.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Jiang Liu <jiang.liu@linux.intel.com>, Thomas Gleixner <tglx@linutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Ingo Molnar <mingo@redhat.com>, "H. Peter Anvin" <hpa@zytor.com>, Randy Dunlap <rdunlap@infradead.org>, Yinghai Lu <yinghai@kernel.org>, Borislav Petkov <bp@alien8.de>, Matthias Brugger <matthias.bgg@gmail.com>, Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>, Tony Luck <tony.luck@intel.com>, the arch/x86 maintainers <x86@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-pci <linux-pci@vger.kernel.org>, ACPI Devel Maling List <linux-acpi@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>
+Cc: "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-> > The patch set passes Fengguang's 0day test suites as below. And tests
-> > with other platforms and configurations will be appreciated:)
-> > ----------------------------------------------------------
-> > configs tested: 95
-> 
-> [...]
-> 
-> > m68k                          amiga_defconfig
-> > m68k                       m5475evb_defconfig
-> > m68k                          multi_defconfig
-> 
-> For Fengguang: amiga_defconfig is a subset of multi_defconfig.
-> But sun3_defconfig is distinct, as Sun-3 has a different MMU and thus support
-> for it cannot be included in multi-platform kernels.
-> So I think you better replace amiga_defconfig by sun3_defconfig for build tests.
+On Mon, 2015-05-25 at 10:14 +0800, Yingjoe Chen wrote:
+> On Thu, 2015-05-21 at 21:29 +0800, YH Huang wrote:
 
-Got it and changed the code accordingly, thank you for the suggestion!
+This patch series add the use of display PWM driver and documentation 
+for Mediatek SoCs. The driver is used to support the backlight of 
+the panel. This is based on v4.1-rc1. 
 
-Thanks,
-Fengguang
+> > YH Huang (2):
+> >   dt-bindings: pwm: add MediaTek display PWM bindings
+> >   pwm: add MediaTek display PWM driver support
+> > 
+> >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |  25 +++
+> >  drivers/pwm/Kconfig                                |  10 +
+> >  drivers/pwm/Makefile                               |   1 +
+> >  drivers/pwm/pwm-mtk-disp.c                         | 228 +++++++++++++++++++++
+> >  4 files changed, 264 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> >  create mode 100644 drivers/pwm/pwm-mtk-disp.c
+> 
+> Hi YH,
+> 
+> It would be easier for reviewer if you have a summary here on what you
+> have changed compare to last version.
+> Also, please add patch series summary even for v2, it remind reviewer
+> what this series is about.
+> 
+> Joe.C
+> 
+
+The patch v2 is refined with everybody's suggestions.
+It is much readable and consistent.
+
+If anyone has any suggestions, please just let me know.
+Thank you.
+
+Regards,
+YH Huang
