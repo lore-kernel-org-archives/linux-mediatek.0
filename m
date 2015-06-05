@@ -1,53 +1,62 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: Re: [PATCH v2 0/2] Add MediaTek display PWM driver
-Date: Fri, 5 Jun 2015 14:15:29 +0800
-Message-ID: <1433484929.17376.17.camel@mtksdaap41>
-References: <1432214964-40644-1-git-send-email-yh.huang@mediatek.com>
-	 <1432520091.23308.5.camel@mtksdaap41>
+From: Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RFT v2 44/48] genirq,
+ pinctrl: Kill the first parameter 'irq' of irq_flow_handler_t
+Date: Fri, 5 Jun 2015 12:08:06 +0900
+Message-ID: <CA+Ln22EHa-Bnybf2bd2-U1QvNOBThjpjj_uuz95aBAzniN2f1Q@mail.gmail.com>
+References: <1433391238-19471-1-git-send-email-jiang.liu@linux.intel.com>
+ <1433391238-19471-45-git-send-email-jiang.liu@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1432520091.23308.5.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>
-Cc: "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1433391238-19471-45-git-send-email-jiang.liu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jiang Liu <jiang.liu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "H. Peter Anvin" <hpa-YMNOUZJC4hwAvxtiuMwx3w@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yinghai Lu <yinghai-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, x86-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, ACPI Devel Maling List <linux-acpi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Ingo Molnar <mingo-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Thomas Abraham <thomas.abraham-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson@sonymobile>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-05-25 at 10:14 +0800, Yingjoe Chen wrote:
-> On Thu, 2015-05-21 at 21:29 +0800, YH Huang wrote:
+Hi,
 
-This patch series add the use of display PWM driver and documentation 
-for Mediatek SoCs. The driver is used to support the backlight of 
-the panel. This is based on v4.1-rc1. 
+2015-06-04 13:13 GMT+09:00 Jiang Liu <jiang.liu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>:
+> Now most IRQ flow handlers make no use of the first parameter 'irq'.
+> And for those who do make use of 'irq', we could easily get the irq
+> number through irq_desc->irq_data->irq. So kill the first parameter
+> 'irq' of irq_flow_handler_t.
+>
+> To ease review, I have split the changes into several parts, though
+> they should be merge as one to support bisecting.
+>
+> Signed-off-by: Jiang Liu <jiang.liu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+> ---
+>  drivers/pinctrl/bcm/pinctrl-cygnus-gpio.c     |    2 +-
+>  drivers/pinctrl/intel/pinctrl-baytrail.c      |    2 +-
+>  drivers/pinctrl/intel/pinctrl-cherryview.c    |    2 +-
+>  drivers/pinctrl/intel/pinctrl-intel.c         |    2 +-
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    2 +-
+>  drivers/pinctrl/nomadik/pinctrl-nomadik.c     |    4 ++--
+>  drivers/pinctrl/pinctrl-adi2.c                |    3 +--
+>  drivers/pinctrl/pinctrl-amd.c                 |    4 ++--
+>  drivers/pinctrl/pinctrl-at91.c                |    2 +-
+>  drivers/pinctrl/pinctrl-coh901.c              |    2 +-
+>  drivers/pinctrl/pinctrl-rockchip.c            |    2 +-
+>  drivers/pinctrl/pinctrl-single.c              |    2 +-
+>  drivers/pinctrl/pinctrl-st.c                  |    4 ++--
+>  drivers/pinctrl/qcom/pinctrl-msm.c            |    4 ++--
+>  drivers/pinctrl/samsung/pinctrl-exynos.c      |    4 ++--
+>  drivers/pinctrl/samsung/pinctrl-s3c24xx.c     |    8 ++++----
+>  drivers/pinctrl/samsung/pinctrl-s3c64xx.c     |   10 +++++-----
 
-> > YH Huang (2):
-> >   dt-bindings: pwm: add MediaTek display PWM bindings
-> >   pwm: add MediaTek display PWM driver support
-> > 
-> >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |  25 +++
-> >  drivers/pwm/Kconfig                                |  10 +
-> >  drivers/pwm/Makefile                               |   1 +
-> >  drivers/pwm/pwm-mtk-disp.c                         | 228 +++++++++++++++++++++
-> >  4 files changed, 264 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> >  create mode 100644 drivers/pwm/pwm-mtk-disp.c
-> 
-> Hi YH,
-> 
-> It would be easier for reviewer if you have a summary here on what you
-> have changed compare to last version.
-> Also, please add patch series summary even for v2, it remind reviewer
-> what this series is about.
-> 
-> Joe.C
-> 
+Assuming that it was properly compile tested, for Samsung stuff:
 
-The patch v2 is refined with everybody's suggestions.
-It is much readable and consistent.
+Acked-by: Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-If anyone has any suggestions, please just let me know.
-Thank you.
-
-Regards,
-YH Huang
+Best regards,
+Tomasz
