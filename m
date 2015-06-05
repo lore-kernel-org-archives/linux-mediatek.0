@@ -1,65 +1,46 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
-Date: Fri, 5 Jun 2015 09:45:37 +0800
-Message-ID: <1433468737.14416.7.camel@mtksdaap41>
-References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <20150528132452.GI26575@pengutronix.de>
-	 <1432867649.15597.46.camel@mtksdaap41>
-	 <20150529062345.GY6325@pengutronix.de>
-	 <20150604210212.GM676@codeaurora.org>
+From: Tomasz Figa <tomasz.figa@gmail.com>
+Subject: Re: [RFT v2 06/48] pinctrl: Use irq_desc_get_xxx() to avoid redundant
+ lookup of irq_desc
+Date: Fri, 5 Jun 2015 12:06:06 +0900
+Message-ID: <CA+Ln22Euot24co7qKLTej43j3Z2BS-p5WhjRq9WgRb-+U=Tyqw@mail.gmail.com>
+References: <1433391238-19471-1-git-send-email-jiang.liu@linux.intel.com>
+	<1433391238-19471-7-git-send-email-jiang.liu@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150604210212.GM676-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433391238-19471-7-git-send-email-jiang.liu@linux.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jiang Liu <jiang.liu@linux.intel.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>, Bjorn Helgaas <bhelgaas@google.com>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Ingo Molnar <mingo@redhat.com>, "H. Peter Anvin" <hpa@zytor.com>, Randy Dunlap <rdunlap@infradead.org>, Yinghai Lu <yinghai@kernel.org>, Borislav Petkov <bp@alien8.de>, Mika Westerberg <mika.westerberg@linux.intel.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Alessandro Rubini <rubini@unipv.it>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Heiko Stuebner <heiko@sntech.de>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Thomas Abraham <thomas.abraham@linaro.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Barry
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stephen,
+Hi,
 
-On Thu, 2015-06-04 at 14:02 -0700, Stephen Boyd wrote:
-> On 05/29, Sascha Hauer wrote:
-> > Yes. I previously got the impression that the subsystem clocks are not
-> > directly associated to the larbs, but needed to be handled by the larb
-> > code due to some side effect. Now that I saw that the larbs are directly
-> > in the subsystem register space it all makes sense.
-> > 
-> > Note that the way Mediatek SoCs are designed around sub modules is bit
-> > unusual and does not fit very well in the Linux directory structure.
-> > Normally SoCs have a single clocks controller which controls all clocks
-> > in the SoC. Then you often have a reset controller providing reset lines
-> > in the SoC. In this case it's clear that the clk driver goes to
-> > drivers/clk/, the reset controller driver to drivers/reset/. Mediatek
-> > SoCs instead have several blocks, each with its own clock and reset
-> > controller. Splitting each block up into parts in drivers/clk/ and
-> > drivers/reset/ leads to quite a code fragmentation.
-> > This is my opinion, it would be great to hear something from others.
-> > Matthias? I'd like to avoid running into a direction that is not
-> > acceptable in the end.
-> 
-> We already have drivers registering clocks and resets under
-> drivers/clk, so it's not unheard of. An alternative solution is
-> to make child devices for the clock part and the reset part at
-> runtime in the toplevel driver for the vencsys device (don't do
-> any sort of DT description for this) and use regmap to mediate
-> the register accesses and locking. That way we can put the clk
-> driver in drivers/clk/, the reset driver in drivers/reset, etc.
-> so that logically related code is grouped.
+2015-06-04 13:13 GMT+09:00 Jiang Liu <jiang.liu@linux.intel.com>:
+> Use irq_desc_get_xxx() to avoid redundant lookup of irq_desc while we
+> already have a pointer to corresponding irq_desc.
+>
+> Signed-off-by: Jiang Liu <jiang.liu@linux.intel.com>
+> Acked-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
+>  drivers/pinctrl/intel/pinctrl-cherryview.c    |    2 +-
+>  drivers/pinctrl/intel/pinctrl-intel.c         |    2 +-
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    4 ++--
+>  drivers/pinctrl/nomadik/pinctrl-nomadik.c     |   12 +++++-------
+>  drivers/pinctrl/pinctrl-amd.c                 |    2 +-
+>  drivers/pinctrl/pinctrl-at91.c                |    2 +-
+>  drivers/pinctrl/pinctrl-coh901.c              |    4 ++--
+>  drivers/pinctrl/pinctrl-rockchip.c            |    4 ++--
+>  drivers/pinctrl/pinctrl-single.c              |    2 +-
+>  drivers/pinctrl/pinctrl-st.c                  |    6 +++---
+>  drivers/pinctrl/qcom/pinctrl-msm.c            |    2 +-
+>  drivers/pinctrl/samsung/pinctrl-exynos.c      |    8 ++++----
+>  drivers/pinctrl/samsung/pinctrl-s3c24xx.c     |   18 +++++++++---------
+>  drivers/pinctrl/samsung/pinctrl-s3c64xx.c     |   22 ++++++++++------------
 
-I have a question about the alternative way you mentioned. Currently
-clock providers and consumers describe what clocks they will provide /
-consume in device tree. If we don't describe vencsys clocks in device
-tree, how to get vencsys clocks for drivers that need to control them?
+For Samsung stuff:
 
+Acked-by: Tomasz Figa <tomasz.figa@gmail.com>
 
 Best regards,
-
-James
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Tomasz
