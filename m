@@ -1,86 +1,117 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v2 5/6] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Fri, 5 Jun 2015 14:30:41 +0100
-Message-ID: <20150605133040.GH1198@arm.com>
-References: <1431683009-18158-1-git-send-email-yong.wu@mediatek.com>
- <1431683009-18158-6-git-send-email-yong.wu@mediatek.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
+Date: Fri, 5 Jun 2015 17:59:12 -0700
+Message-ID: <20150606005912.GC29237@codeaurora.org>
+References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
+ <20150528132452.GI26575@pengutronix.de>
+ <1432867649.15597.46.camel@mtksdaap41>
+ <20150529062345.GY6325@pengutronix.de>
+ <20150604210212.GM676@codeaurora.org>
+ <1433468737.14416.7.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1431683009-18158-6-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <Robin.Murphy-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, mitchelh-sgV2jX0FEOJiIJoWrK/4GQ@public.gmane.org
+In-Reply-To: <1433468737.14416.7.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, May 15, 2015 at 10:43:28AM +0100, Yong Wu wrote:
-> This patch adds support for mediatek m4u (MultiMedia Memory Management Unit).
+On 06/05, James Liao wrote:
+> Hi Stephen,
+> 
+> On Thu, 2015-06-04 at 14:02 -0700, Stephen Boyd wrote:
+> > On 05/29, Sascha Hauer wrote:
+> > > Yes. I previously got the impression that the subsystem clocks are not
+> > > directly associated to the larbs, but needed to be handled by the larb
+> > > code due to some side effect. Now that I saw that the larbs are directly
+> > > in the subsystem register space it all makes sense.
+> > > 
+> > > Note that the way Mediatek SoCs are designed around sub modules is bit
+> > > unusual and does not fit very well in the Linux directory structure.
+> > > Normally SoCs have a single clocks controller which controls all clocks
+> > > in the SoC. Then you often have a reset controller providing reset lines
+> > > in the SoC. In this case it's clear that the clk driver goes to
+> > > drivers/clk/, the reset controller driver to drivers/reset/. Mediatek
+> > > SoCs instead have several blocks, each with its own clock and reset
+> > > controller. Splitting each block up into parts in drivers/clk/ and
+> > > drivers/reset/ leads to quite a code fragmentation.
+> > > This is my opinion, it would be great to hear something from others.
+> > > Matthias? I'd like to avoid running into a direction that is not
+> > > acceptable in the end.
+> > 
+> > We already have drivers registering clocks and resets under
+> > drivers/clk, so it's not unheard of. An alternative solution is
+> > to make child devices for the clock part and the reset part at
+> > runtime in the toplevel driver for the vencsys device (don't do
+> > any sort of DT description for this) and use regmap to mediate
+> > the register accesses and locking. That way we can put the clk
+> > driver in drivers/clk/, the reset driver in drivers/reset, etc.
+> > so that logically related code is grouped.
+> 
+> I have a question about the alternative way you mentioned. Currently
+> clock providers and consumers describe what clocks they will provide /
+> consume in device tree. If we don't describe vencsys clocks in device
+> tree, how to get vencsys clocks for drivers that need to control them?
+> 
 
-After looking at the page table code, I thought I'd come and check your
-TLB invalidate code here.
+Perhaps an example would be best. In DT we would have:
 
-> +static void mtk_iommu_tlb_flush_all(void *cookie)
-> +{
-> +       struct mtk_iommu_domain *domain = cookie;
-> +       u32 val;
-> +
-> +       val = F_INVLD_EN1 | F_INVLD_EN0;
-> +       writel(val, domain->imuinfo->base + REG_MMU_INV_SEL);
-> +       writel(F_ALL_INVLD, domain->imuinfo->base + REG_MMU_INVALIDATE);
-> +}
-> +
-> +static void mtk_iommu_tlb_add_flush(unsigned long iova, size_t size,
-> +                                   bool leaf, void *cookie)
-> +{
-> +       struct mtk_iommu_domain *domain = cookie;
-> +       void __iomem *m4u_base = domain->imuinfo->base;
-> +       unsigned int iova_start = iova, iova_end = iova + size - 1;
-> +       int ret;
-> +       u32 val;
-> +
-> +       val = F_INVLD_EN1 | F_INVLD_EN0;
-> +       writel(val, m4u_base + REG_MMU_INV_SEL);
-> +
-> +       writel(iova_start, m4u_base + REG_MMU_INVLD_START_A);
-> +       writel(iova_end, m4u_base + REG_MMU_INVLD_END_A);
-> +       writel(F_MMU_INV_RANGE, m4u_base + REG_MMU_INVALIDATE);
-> +
-> +       ret = readl_poll_timeout_atomic(m4u_base + REG_MMU_CPE_DONE, val,
-> +                                       val != 0, 10, 1000000);
-> +       if (ret) {
-> +               dev_warn(domain->imuinfo->dev, "Invalid tlb don't done\n");
-> +               mtk_iommu_tlb_flush_all(cookie);
-> +       }
-> +       writel(0, m4u_base + REG_MMU_CPE_DONE);
-> +}
+	vencsys: vencsys@10000 {
+		compatible = "mtk,vencsys";
+		reg = <0x10000 0x1000>;
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
 
-You don't need to wait for completion here if you can implement a proper
-->tlb_sync callback.
+	myconsumer@12000 {
+		compatible = "mtk,vencsys";
+		reg = <0x12000 0x100>;
+		clocks = <&vencsys 10>;
+		clock-names = "core";
+	};
 
-> +static void mtk_iommu_flush_pgtable(void *ptr, size_t size, void *cookie)
-> +{
-> +       /*
-> +        * After delete arch_setup_dma_ops,
-> +        * This will be replaced with dma_map_page
-> +        */
-> +        __dma_flush_range(ptr, ptr + size);
-> +}
+	(Or are the consumers only children of the subsystem?
+	It's not clear to me)
 
-This should give you the necessary barriers to ensure visibility of the
-updated page tables, so you can use the _relaxed io accessors for the
-other TLB functions.
+And then in the mtk,vencsys driver we would create a platform
+device named something like "mtk-vencsys-clk" and assign the
+of_node of the device to be the of_node that is assigned to the
+mtk,vencsys device.
 
-> +static struct iommu_gather_ops mtk_iommu_gather_ops = {
-> +       .tlb_flush_all = mtk_iommu_tlb_flush_all,
-> +       .tlb_add_flush = mtk_iommu_tlb_add_flush,
-> +       .tlb_sync = mtk_iommu_tlb_flush_all,
+	static int vencsys_probe(struct platform_device *pdev)
+	{
+		int ret;
+		struct device_node *np = pdev->dev.of_node;
+		struct platform_device *clk_pdev;
 
-sync isn't required to flush anything; it's just supposed to wait for
-any outstanding invalidation (i.e. from tlb_add_flush) to complete.
+		clk_pdev = platform_device_alloc("mtk-vencsys-clk", -1);
+		clk_pdev->dev.of_node = of_node;
+		ret = platform_device_add(clk_pdev);
+		if (ret)
+			return ret;
+	}
 
-Will
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Then we could put a mtk-vencsys-clk driver in drivers/clk/ that
+does the clk driver part...
+
+	static int clk_vencsys_probe(struct platform_device *pdev)
+	{
+		int ret;
+		struct device_node *np = pdev->dev.of_node;
+		struct regmap *regmap;
+
+		ret = of_clk_add_provider(np, of_clk_src_onecell_get, ..);
+		if (ret)
+			return ret;
+
+		regmap = dev_get_regmap(pdev->dev.parent, NULL);
+
+	}
+
+And similar things could be done for the reset driver.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
