@@ -1,139 +1,55 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
-Date: Mon, 8 Jun 2015 09:48:58 +0200
-Message-ID: <20150608074858.GK6325@pengutronix.de>
-References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
- <20150528132452.GI26575@pengutronix.de>
- <1432867649.15597.46.camel@mtksdaap41>
- <20150529062345.GY6325@pengutronix.de>
- <20150604210212.GM676@codeaurora.org>
- <1433468737.14416.7.camel@mtksdaap41>
- <20150606005912.GC29237@codeaurora.org>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Mon, 8 Jun 2015 18:15:46 +0800
+Message-ID: <1433758546.19786.16.camel@mtksdaap41>
+References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
+	 <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
+	 <20150508175306.GG2761@sirena.org.uk> <1431434356.2128.9.camel@mhfsdcap03>
+	 <20150512160540.GB3066@sirena.org.uk> <1431675522.2128.13.camel@mhfsdcap03>
+	 <20150515092543.GY2761@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20150606005912.GC29237-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150515092543.GY2761-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Leilk Liu =?UTF-8?Q?=28=E5=88=98=E7=A3=8A=29?= <Leilk.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, HongZhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel@pengutroni>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 05, 2015 at 05:59:12PM -0700, Stephen Boyd wrote:
-> On 06/05, James Liao wrote:
-> > Hi Stephen,
-> > 
-> > On Thu, 2015-06-04 at 14:02 -0700, Stephen Boyd wrote:
-> > > On 05/29, Sascha Hauer wrote:
-> > > > Yes. I previously got the impression that the subsystem clocks are not
-> > > > directly associated to the larbs, but needed to be handled by the larb
-> > > > code due to some side effect. Now that I saw that the larbs are directly
-> > > > in the subsystem register space it all makes sense.
-> > > > 
-> > > > Note that the way Mediatek SoCs are designed around sub modules is bit
-> > > > unusual and does not fit very well in the Linux directory structure.
-> > > > Normally SoCs have a single clocks controller which controls all clocks
-> > > > in the SoC. Then you often have a reset controller providing reset lines
-> > > > in the SoC. In this case it's clear that the clk driver goes to
-> > > > drivers/clk/, the reset controller driver to drivers/reset/. Mediatek
-> > > > SoCs instead have several blocks, each with its own clock and reset
-> > > > controller. Splitting each block up into parts in drivers/clk/ and
-> > > > drivers/reset/ leads to quite a code fragmentation.
-> > > > This is my opinion, it would be great to hear something from others.
-> > > > Matthias? I'd like to avoid running into a direction that is not
-> > > > acceptable in the end.
-> > > 
-> > > We already have drivers registering clocks and resets under
-> > > drivers/clk, so it's not unheard of. An alternative solution is
-> > > to make child devices for the clock part and the reset part at
-> > > runtime in the toplevel driver for the vencsys device (don't do
-> > > any sort of DT description for this) and use regmap to mediate
-> > > the register accesses and locking. That way we can put the clk
-> > > driver in drivers/clk/, the reset driver in drivers/reset, etc.
-> > > so that logically related code is grouped.
-> > 
-> > I have a question about the alternative way you mentioned. Currently
-> > clock providers and consumers describe what clocks they will provide /
-> > consume in device tree. If we don't describe vencsys clocks in device
-> > tree, how to get vencsys clocks for drivers that need to control them?
-> > 
-> 
-> Perhaps an example would be best. In DT we would have:
-> 
-> 	vencsys: vencsys@10000 {
-> 		compatible = "mtk,vencsys";
-> 		reg = <0x10000 0x1000>;
-> 		#clock-cells = <1>;
-> 		#reset-cells = <1>;
-> 	};
-> 
-> 	myconsumer@12000 {
-> 		compatible = "mtk,vencsys";
-> 		reg = <0x12000 0x100>;
-> 		clocks = <&vencsys 10>;
-> 		clock-names = "core";
-> 	};
-> 
-> 	(Or are the consumers only children of the subsystem?
-> 	It's not clear to me)
-> 
-> And then in the mtk,vencsys driver we would create a platform
-> device named something like "mtk-vencsys-clk" and assign the
-> of_node of the device to be the of_node that is assigned to the
-> mtk,vencsys device.
-> 
-> 	static int vencsys_probe(struct platform_device *pdev)
-> 	{
-> 		int ret;
-> 		struct device_node *np = pdev->dev.of_node;
-> 		struct platform_device *clk_pdev;
-> 
-> 		clk_pdev = platform_device_alloc("mtk-vencsys-clk", -1);
-> 		clk_pdev->dev.of_node = of_node;
-> 		ret = platform_device_add(clk_pdev);
-> 		if (ret)
-> 			return ret;
-> 	}
-> 
-> Then we could put a mtk-vencsys-clk driver in drivers/clk/ that
-> does the clk driver part...
-> 
-> 	static int clk_vencsys_probe(struct platform_device *pdev)
-> 	{
-> 		int ret;
-> 		struct device_node *np = pdev->dev.of_node;
-> 		struct regmap *regmap;
-> 
-> 		ret = of_clk_add_provider(np, of_clk_src_onecell_get, ..);
-> 		if (ret)
-> 			return ret;
-> 
-> 		regmap = dev_get_regmap(pdev->dev.parent, NULL);
-> 
-> 	}
-> 
-> And similar things could be done for the reset driver.
+Hi Mark,
 
-The problem I see with this approach is that we scatter the code for a
-otherwise simple driver over a bunch of directories. We would have
+On Fri, 2015-05-15 at 17:25 +0800, Mark Brown wrote:
+> On Fri, May 15, 2015 at 03:38:42PM +0800, leilk liu wrote:
+> > On Tue, 2015-05-12 at 17:05 +0100, Mark Brown wrote:
+> 
+> > > Implement can_dma() - look for drivers providing that for examples.
+> 
+> > MTK spi hardware uses the dmaengine in spi controller. According to
+> > datasheet, spi driver just need to enable dma register bit and write a
+> > physical address to relevant dma address register, so I think it may be
+> > complex while the driver supports can_dma.
+> 
+> That's how a very large proportion of devices that work with DMA are
+> done - why would this be complicated?  All can_dma() does is report if
+> DMA is possible.
 
-drivers/clk/mediatek/vencsys.c
-drivers/reset/mediatek/vencsys.c
-drivers/soc/mediatek/vencsys.c
+In include/linux/spi/spi.h, it describes if can_dma() exists and returns
+true, dma_tx and dma_rx must be set.But Medaitek SPI controller has its
+own dma hardware, which means this dma resides in the same base address
+range with SPI controller, and only used by SPI, so we don't implement
+generic DMA driver, such that can't provide dma channel and assign to
+dmx_tx, dmx_rx parameter. We think it's strange to implement generic dma
+driver for dma that only used by specific hardware.Can we just provide
+can_dma() function and return false ? But I think it's a little odd that
+there actually has dma. So can we just skip can_dma() function let it be
+NULL ?
 
-The same must be added for vdecsys, imgsys and vencltsys. That will make
-12 drivers and three maintainers for 12 registers.  I think this will be
-a pain to maintain, hence my suggestion to put the vencsys code into a
-single file and not split this up into more subsystem specific files.
+Eddie
+Thanks
+ 
 
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
