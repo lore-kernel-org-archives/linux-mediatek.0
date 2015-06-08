@@ -1,117 +1,64 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
-Date: Fri, 5 Jun 2015 17:59:12 -0700
-Message-ID: <20150606005912.GC29237@codeaurora.org>
-References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
- <20150528132452.GI26575@pengutronix.de>
- <1432867649.15597.46.camel@mtksdaap41>
- <20150529062345.GY6325@pengutronix.de>
- <20150604210212.GM676@codeaurora.org>
- <1433468737.14416.7.camel@mtksdaap41>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v4] Thermal cleanups and hardware trip points
+Date: Mon, 8 Jun 2015 08:56:57 +0200
+Message-ID: <20150608065657.GL26575@pengutronix.de>
+References: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1433468737.14416.7.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
+Cc: linux-pm@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-kernel@vger.kernel.org, Mikko Perttunen <mikko.perttunen@kapsi.fi>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/05, James Liao wrote:
-> Hi Stephen,
+Eduardo, Rui,
+
+Any feedback to this series?
+
+Thanks
+  Sascha
+
+On Wed, May 20, 2015 at 03:20:30PM +0200, Sascha Hauer wrote:
+> This series adds support for hardware trip points. It picks up earlier
+> work from Mikko Perttunen. Mikko implemented hardware trip points as part
+> of the device tree support. It was suggested back then to move the
+> functionality to the thermal core instead of putting more code into the
+> device tree support. This series does exactly that.
 > 
-> On Thu, 2015-06-04 at 14:02 -0700, Stephen Boyd wrote:
-> > On 05/29, Sascha Hauer wrote:
-> > > Yes. I previously got the impression that the subsystem clocks are not
-> > > directly associated to the larbs, but needed to be handled by the larb
-> > > code due to some side effect. Now that I saw that the larbs are directly
-> > > in the subsystem register space it all makes sense.
-> > > 
-> > > Note that the way Mediatek SoCs are designed around sub modules is bit
-> > > unusual and does not fit very well in the Linux directory structure.
-> > > Normally SoCs have a single clocks controller which controls all clocks
-> > > in the SoC. Then you often have a reset controller providing reset lines
-> > > in the SoC. In this case it's clear that the clk driver goes to
-> > > drivers/clk/, the reset controller driver to drivers/reset/. Mediatek
-> > > SoCs instead have several blocks, each with its own clock and reset
-> > > controller. Splitting each block up into parts in drivers/clk/ and
-> > > drivers/reset/ leads to quite a code fragmentation.
-> > > This is my opinion, it would be great to hear something from others.
-> > > Matthias? I'd like to avoid running into a direction that is not
-> > > acceptable in the end.
-> > 
-> > We already have drivers registering clocks and resets under
-> > drivers/clk, so it's not unheard of. An alternative solution is
-> > to make child devices for the clock part and the reset part at
-> > runtime in the toplevel driver for the vencsys device (don't do
-> > any sort of DT description for this) and use regmap to mediate
-> > the register accesses and locking. That way we can put the clk
-> > driver in drivers/clk/, the reset driver in drivers/reset, etc.
-> > so that logically related code is grouped.
+> The majority of the patches are cleanups and fixes. Patch 11 introduces
+> hardware tracked trip points and finally a driver for the Mediatek
+> thermal controller is introduced as the first user.
 > 
-> I have a question about the alternative way you mentioned. Currently
-> clock providers and consumers describe what clocks they will provide /
-> consume in device tree. If we don't describe vencsys clocks in device
-> tree, how to get vencsys clocks for drivers that need to control them?
+> All comments welcome
 > 
-
-Perhaps an example would be best. In DT we would have:
-
-	vencsys: vencsys@10000 {
-		compatible = "mtk,vencsys";
-		reg = <0x10000 0x1000>;
-		#clock-cells = <1>;
-		#reset-cells = <1>;
-	};
-
-	myconsumer@12000 {
-		compatible = "mtk,vencsys";
-		reg = <0x12000 0x100>;
-		clocks = <&vencsys 10>;
-		clock-names = "core";
-	};
-
-	(Or are the consumers only children of the subsystem?
-	It's not clear to me)
-
-And then in the mtk,vencsys driver we would create a platform
-device named something like "mtk-vencsys-clk" and assign the
-of_node of the device to be the of_node that is assigned to the
-mtk,vencsys device.
-
-	static int vencsys_probe(struct platform_device *pdev)
-	{
-		int ret;
-		struct device_node *np = pdev->dev.of_node;
-		struct platform_device *clk_pdev;
-
-		clk_pdev = platform_device_alloc("mtk-vencsys-clk", -1);
-		clk_pdev->dev.of_node = of_node;
-		ret = platform_device_add(clk_pdev);
-		if (ret)
-			return ret;
-	}
-
-Then we could put a mtk-vencsys-clk driver in drivers/clk/ that
-does the clk driver part...
-
-	static int clk_vencsys_probe(struct platform_device *pdev)
-	{
-		int ret;
-		struct device_node *np = pdev->dev.of_node;
-		struct regmap *regmap;
-
-		ret = of_clk_add_provider(np, of_clk_src_onecell_get, ..);
-		if (ret)
-			return ret;
-
-		regmap = dev_get_regmap(pdev->dev.parent, NULL);
-
-	}
-
-And similar things could be done for the reset driver.
+> Changes since v3:
+> - Fix some missing function type changes in int3400_thermal.c,
+>   processor_thermal_device.c, kirkwood_thermal.c and exynos_tmu.c
+> - Add better description for set_trips callback
+> - update the interrupt triggers also when the trip points change
+> - Add missing MODULE_* tags
+> - Broaden temperature range in the Mediatek driver so that we can be sure
+>   the measured temperatures are really out of the desired range
+> 
+> Changes since v2:
+> - Add Mediatek thermal controller driver as first user for hardware trip
+>   points
+> 
+> Changes since v1:
+> - Use int instead of unsigned long consistently for temperatures
+> - Instead of misfixing the emulation code add a comment how the
+>   code is meant
+> - Add doc entry for .set_trips callback
+> - initialize prev_low_trip/prev_high_trip properly
+> - get tz->lock before calling thermal_zone_set_trips()
+> 
+> 
+> 
 
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
