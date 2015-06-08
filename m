@@ -1,64 +1,59 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v4] Thermal cleanups and hardware trip points
-Date: Mon, 8 Jun 2015 08:56:57 +0200
-Message-ID: <20150608065657.GL26575@pengutronix.de>
-References: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] arm64: dts: mt8173: Add I2C device node
+Date: Mon, 8 Jun 2015 09:27:25 +0200
+Message-ID: <20150608072725.GJ6325@pengutronix.de>
+References: <1433164107-26568-1-git-send-email-eddie.huang@mediatek.com>
+ <1433164107-26568-3-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
-Cc: linux-pm@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-kernel@vger.kernel.org, Mikko Perttunen <mikko.perttunen@kapsi.fi>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1433164107-26568-3-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Eduardo, Rui,
+Hi Eddie,
 
-Any feedback to this series?
+On Mon, Jun 01, 2015 at 09:08:27PM +0800, Eddie Huang wrote:
+> Add MT8173 I2C device nodes, include I2C controllers and pins.
+> MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
+> The 6th I2C controller register base doesn't next to 5th I2C,
+> and there is a hardware between 5th and 6th I2C controller. So
+> SoC designer name 6th controller as "i2c6", not "i2c5".
+> 
+> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 119 +++++++++++++++++++++++++++++++
+>  1 file changed, 119 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index b52ec43..7003ed2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -158,6 +158,53 @@
+>  			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
+>  						<GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
+>  						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
+> +			i2c0_pins_a: i2c0@0 {
+> +				pins1 {
+> +					pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
+> +						 <MT8173_PIN_46_SCL0__FUNC_SCL0>;
+> +					bias-disable;
+> +				};
+> +			};
 
-Thanks
-  Sascha
+The pinmux nodes should be in the board dts, not in the SoC dtsi.
 
-On Wed, May 20, 2015 at 03:20:30PM +0200, Sascha Hauer wrote:
-> This series adds support for hardware trip points. It picks up earlier
-> work from Mikko Perttunen. Mikko implemented hardware trip points as part
-> of the device tree support. It was suggested back then to move the
-> functionality to the thermal core instead of putting more code into the
-> device tree support. This series does exactly that.
-> 
-> The majority of the patches are cleanups and fixes. Patch 11 introduces
-> hardware tracked trip points and finally a driver for the Mediatek
-> thermal controller is introduced as the first user.
-> 
-> All comments welcome
-> 
-> Changes since v3:
-> - Fix some missing function type changes in int3400_thermal.c,
->   processor_thermal_device.c, kirkwood_thermal.c and exynos_tmu.c
-> - Add better description for set_trips callback
-> - update the interrupt triggers also when the trip points change
-> - Add missing MODULE_* tags
-> - Broaden temperature range in the Mediatek driver so that we can be sure
->   the measured temperatures are really out of the desired range
-> 
-> Changes since v2:
-> - Add Mediatek thermal controller driver as first user for hardware trip
->   points
-> 
-> Changes since v1:
-> - Use int instead of unsigned long consistently for temperatures
-> - Instead of misfixing the emulation code add a comment how the
->   code is meant
-> - Add doc entry for .set_trips callback
-> - initialize prev_low_trip/prev_high_trip properly
-> - get tz->lock before calling thermal_zone_set_trips()
-> 
-> 
-> 
+Sascha
 
 -- 
 Pengutronix e.K.                           |                             |
 Industrial Linux Solutions                 | http://www.pengutronix.de/  |
 Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
 Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
