@@ -1,62 +1,40 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 2/5] dt-bindings: soc: Add documentation for the MediaTek SCPSYS unit
-Date: Tue,  9 Jun 2015 10:47:00 +0200
-Message-ID: <1433839623-10804-3-git-send-email-s.hauer@pengutronix.de>
-References: <1433839623-10804-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433839623-10804-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+From: Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Tue, 09 Jun 2015 11:17:29 +0200
+Message-ID: <1433841449.16887.58.camel@x220>
+References: <1433766561-1330-1-git-send-email-pi-cheng.chen@linaro.org>
+	 <1433766561-1330-3-git-send-email-pi-cheng.chen@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1433766561-1330-3-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds documentation for the MediaTek SCPSYS unit found in MT8173 SoCs.
+On Mon, 2015-06-08 at 20:29 +0800, Pi-Cheng Chen wrote:
+> --- /dev/null
+> +++ b/drivers/cpufreq/mt8173-cpufreq.c
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- .../devicetree/bindings/soc/mediatek/scpsys.txt    | 34 ++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> +#include <linux/module.h>
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-new file mode 100644
-index 0000000..87f2091
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -0,0 +1,34 @@
-+MediaTek SCPSYS
-+===============
-+
-+The System Control Processor System (SCPSYS) has several power management
-+related tasks in the system. The tasks include thermal measurement, dynamic
-+voltage frequency scaling (DVFS), interrupt filter and lowlevel sleep control.
-+The System Power Manager (SPM) inside the SCPSYS is for the MTCMOS power
-+domain control.
-+
-+The driver implements the Generic PM domain bindings described in
-+power/power_domain.txt. It provides the power domains defined in
-+include/dt-bindings/power/mt8173-power.h.
-+
-+Required properties:
-+- compatible: Must be "mediatek,mt8173-scpsys"
-+- #power-domain-cells: Must be 1
-+- reg: Address range of the SCPSYS unit
-+- infracfg: must contain a phandle to the infracfg controller
-+
-+Example:
-+
-+	scpsys: scpsys@10006000 {
-+		#power-domain-cells = <1>;
-+		compatible = "mediatek,mt8173-scpsys";
-+		reg = <0 0x10006000 0 0x1000>;
-+		infracfg = <&infracfg>;
-+	};
-+
-+Example consumer:
-+
-+	afe: mt8173-afe-pcm@11220000 {
-+		compatible = "mediatek,mt8173-afe-pcm";
-+		power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
-+	};
--- 
-2.1.4
+Weren't you going to drop this include?
+
+> +module_init(mt8173_cpufreq_driver_init);
+
+For built-in code this is equivalent to, speaking from memory:
+    device_initcall(mt8173_cpufreq_driver_init);
+
+Why don't you just use that directly?
+
+Thanks,
+
+
+Paul Bolle
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
