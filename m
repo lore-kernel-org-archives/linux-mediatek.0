@@ -1,44 +1,62 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: make pinctrl_register() return proper error code
-Date: Tue, 09 Jun 2015 10:03:56 +0200
-Message-ID: <4295512.HNTlNbYsVh@diego>
-References: <1433822476-26531-1-git-send-email-yamada.masahiro@socionext.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
+Date: Tue, 9 Jun 2015 10:42:07 +0200
+Message-ID: <20150609084207.GN26575@pengutronix.de>
+References: <1432131540-2523-1-git-send-email-s.hauer@pengutronix.de>
+ <1432131540-2523-4-git-send-email-s.hauer@pengutronix.de>
+ <1432196527.21715.130.camel@x220>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1433822476-26531-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Alessandro Rubini <rubini-9wsNiZum9E8@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jason Uy <jasonuy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rickard Strandqvist <rickard_strandqvist-IW2WV5XWFqGZkjO+N0TKoMugMpMbD5Xr@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Varka Bhadram <varkabhadram-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1432196527.21715.130.camel@x220>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Dienstag, 9. Juni 2015, 13:01:16 schrieb Masahiro Yamada:
-> Currently, pinctrl_register() just returns NULL on error, so the
-> callers can not know the exact reason of the failure.
+On Thu, May 21, 2015 at 10:22:07AM +0200, Paul Bolle wrote:
+> On Wed, 2015-05-20 at 16:18 +0200, Sascha Hauer wrote:
+> > --- a/drivers/soc/mediatek/Kconfig
+> > +++ b/drivers/soc/mediatek/Kconfig
 > 
-> Some of the pinctrl drivers return -EINVAL, some -ENODEV, and some
-> -ENOMEM on error of pinctrl_register(), although the error code
-> might be different from the real cause of the error.
+> > +config MTK_SCPSYS
+> > +	bool "MediaTek SCPSYS Support"
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	select REGMAP
+> > +	select MTK_INFRACFG
+> > +	help
+> > +	  Say yes here to add support for the MediaTek SCPSYS power domain
+> > +	  driver.
 > 
-> This commit reworks pinctrl_register() to return the appropriate
-> error code and modifies all of the pinctrl drivers to use IS_ERR()
-> for the error checking and PTR_ERR() for getting the error code.
+> > +obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
 > 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
+> > --- /dev/null
+> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
 > 
+> > +#include <linux/module.h>
+> 
+> > +MODULE_DEVICE_TABLE(of, of_scpsys_match_tbl);
+> > +
+> > +static struct platform_driver scpsys_drv = {
+> 
+> > +		.owner = THIS_MODULE,
+> 
+> > +};
+> > +
+> > +module_platform_driver_probe(scpsys_drv, scpsys_probe);
+> 
+> (A patch was recently submitted that would allow built-in only code to
+> use builtin_platform_driver_probe(), see
+> https://lkml.org/lkml/2015/5/10/125 .)
 
-for
+I'll switch to this when it's available. Right now I don't want to have
+this as an additional dependency.
 
->  drivers/pinctrl/pinctrl-rockchip.c            |  4 ++--
+Sascha
 
-Acked-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
