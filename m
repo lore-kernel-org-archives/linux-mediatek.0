@@ -1,70 +1,69 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 0/3] clk: Add regmap support for basic clocks
-Date: Tue,  9 Jun 2015 17:38:00 +0200
-Message-ID: <1433864283-25490-1-git-send-email-matthias.bgg@gmail.com>
+Subject: [PATCH v3 3/3] clk: mediatek: Use regmap clk-mux for mt8135
+Date: Tue,  9 Jun 2015 17:38:03 +0200
+Message-ID: <1433864283-25490-4-git-send-email-matthias.bgg@gmail.com>
+References: <1433864283-25490-1-git-send-email-matthias.bgg@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1433864283-25490-1-git-send-email-matthias.bgg@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: mturquette@linaro.org, sboyd@codeaurora.org, matthias.bgg@gmail.com
 Cc: s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, henryc.chen@mediatek.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, manabian@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch set adds regmap support for the simple clock multiplexer,
-the divider clock and the clock gate.
-Regmap use, apart from a pointer to the regmap struct needs an
-offset value to know where in the regmap it has to read/write.
-We add both fields to the corresponding structs.
+The pericfg controller is used by various device drivers, so that it
+is implemented via a regmap. In the actual clk implementation for
+mt8135, some clk-mux use the traditional register approach which
+acceses the register via iomem.
+This patch changes the use from iomem to the needed regmap.
 
-The driver will distinguish between a clock which is based on regmap or not
-through a flag specified in the clock hardware struct.
-The approach does not break the existing clock framework API but adds
-new functions for registering regmap clocks. Unregistering the clocks is
-independent of the use of regmap or not, so that no new functions were
-implemented.
-
-As an example user of the regmap clock multiplexer, it was implemented on
-the mt8135. When accepted it will also be applied to the other Mediatek SoCs.
-Other possible user are Qualcomm SoCs which up to now implement their own
-regmap based clock multiplexer.
-
-This patch set is based on linux next.
-To get the mt8135 eval board up and running, we need to enable the clock
-support [1] and use the two clocks for the uart port [2].
-
-Any comments welcome.
-
-[1] https://patchwork.kernel.org/patch/6261141/
-[2] https://patchwork.kernel.org/patch/6261151/
-
-Changes for v3:
-- rebase against linux-next
-- provide regmap access to all three clock types in a unified way
-
-Changes for v2:
-- use regmap_update_bits instead of read-write
-- fix flag check
-- add union in struct clk_mux
-- fix typo in commit message
-
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
+ drivers/clk/mediatek/clk-mt8135.c | 21 +++++++--------------
+ 1 file changed, 7 insertions(+), 14 deletions(-)
 
-Matthias Brugger (3):
-  clk: Add regmap support
-  clk: mediatek: Add support for clk-mux using regmap
-  clk: mediatek: Use regmap clk-mux for mt8135
-
- drivers/clk/Makefile              |   1 +
- drivers/clk/clk-divider.c         |  71 ++++++++++++++++++-----
- drivers/clk/clk-gate.c            |  60 ++++++++++++++++----
- drivers/clk/clk-io.c              |  62 ++++++++++++++++++++
- drivers/clk/clk-io.h              |  13 +++++
- drivers/clk/clk-mux.c             |  94 ++++++++++++++++++++++++++-----
- drivers/clk/mediatek/clk-mt8135.c |  21 +++----
- drivers/clk/mediatek/clk-mtk.c    |  37 ++++++++++++
- drivers/clk/mediatek/clk-mtk.h    |  26 +++++++++
- include/linux/clk-provider.h      | 115 +++++++++++++++++++++++++++++++++++++-
- 10 files changed, 443 insertions(+), 57 deletions(-)
- create mode 100644 drivers/clk/clk-io.c
- create mode 100644 drivers/clk/clk-io.h
-
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 08b4b84..c28a9d4 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -513,11 +513,11 @@ static const char * const uart_ck_sel_parents[] __initconst = {
+ 	"uart_sel",
+ };
+ 
+-static const struct mtk_composite peri_clks[] __initconst = {
+-	MUX(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents, 0x40c, 0, 1),
+-	MUX(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents, 0x40c, 1, 1),
+-	MUX(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents, 0x40c, 2, 1),
+-	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
++static const struct mtk_regm_mux peri_clks[] __initconst = {
++	MUX_REGMAP(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents, 0x40c, 0, 1),
++	MUX_REGMAP(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents, 0x40c, 1, 1),
++	MUX_REGMAP(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents, 0x40c, 2, 1),
++	MUX_REGMAP(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
+ };
+ 
+ static void __init mtk_topckgen_init(struct device_node *node)
+@@ -573,20 +573,13 @@ static void __init mtk_pericfg_init(struct device_node *node)
+ {
+ 	struct clk_onecell_data *clk_data;
+ 	int r;
+-	void __iomem *base;
+-
+-	base = of_iomap(node, 0);
+-	if (!base) {
+-		pr_err("%s(): ioremap failed\n", __func__);
+-		return;
+-	}
+ 
+ 	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
+ 
+ 	mtk_clk_register_gates(node, peri_gates, ARRAY_SIZE(peri_gates),
+ 						clk_data);
+-	mtk_clk_register_composites(peri_clks, ARRAY_SIZE(peri_clks), base,
+-			&mt8135_clk_lock, clk_data);
++	mtk_clk_regm_register_mux(node, peri_clks, ARRAY_SIZE(peri_clks),
++			clk_data);
+ 
+ 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+ 	if (r)
 -- 
 1.9.1
