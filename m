@@ -1,50 +1,93 @@
-From: Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: make pinctrl_register() return proper error code
-Date: Tue, 9 Jun 2015 10:52:41 +0100
-Message-ID: <20150609095241.GO2982@x1>
-References: <1433822476-26531-1-git-send-email-yamada.masahiro@socionext.com>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Tue, 9 Jun 2015 18:05:21 +0800
+Message-ID: <1433844321.16178.6.camel@mtksdaap41>
+References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
+	 <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
+	 <20150508175306.GG2761@sirena.org.uk> <1431434356.2128.9.camel@mhfsdcap03>
+	 <20150512160540.GB3066@sirena.org.uk> <1431675522.2128.13.camel@mhfsdcap03>
+	 <20150515092543.GY2761@sirena.org.uk>
+	 <1433758546.19786.16.camel@mtksdaap41>
+	 <20150608175927.GO14071@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1433822476-26531-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Alessandro Rubini <rubini-9wsNiZum9E8@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jason Uy <jasonuy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tomasz.figa-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rickard Strandqvist <rickard_strandqvist-IW2WV5XWFqGZkjO+N0TKoMugMpMbD5Xr@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Varka Bhadram <varkabhadram@gmail>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150608175927.GO14071-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Leilk Liu =?UTF-8?Q?=28=E5=88=98=E7=A3=8A=29?= <Leilk.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, HongZhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel@pengutroni>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 09 Jun 2015, Masahiro Yamada wrote:
+Hi Mark,
 
-> Currently, pinctrl_register() just returns NULL on error, so the
-> callers can not know the exact reason of the failure.
+On Mon, 2015-06-08 at 18:59 +0100, Mark Brown wrote:
+> On Mon, Jun 08, 2015 at 06:15:46PM +0800, Eddie Huang wrote:
+> > On Fri, 2015-05-15 at 17:25 +0800, Mark Brown wrote:
 > 
-> Some of the pinctrl drivers return -EINVAL, some -ENODEV, and some
-> -ENOMEM on error of pinctrl_register(), although the error code
-> might be different from the real cause of the error.
+> > > That's how a very large proportion of devices that work with DMA are
+> > > done - why would this be complicated?  All can_dma() does is report if
+> > > DMA is possible.
 > 
-> This commit reworks pinctrl_register() to return the appropriate
-> error code and modifies all of the pinctrl drivers to use IS_ERR()
-> for the error checking and PTR_ERR() for getting the error code.
+> > In include/linux/spi/spi.h, it describes if can_dma() exists and returns
+> > true, dma_tx and dma_rx must be set.But Medaitek SPI controller has its
+> > own dma hardware, which means this dma resides in the same base address
+> > range with SPI controller, and only used by SPI, so we don't implement
+> > generic DMA driver, such that can't provide dma channel and assign to
+> > dmx_tx, dmx_rx parameter. We think it's strange to implement generic dma
+> > driver for dma that only used by specific hardware.Can we just provide
+> > can_dma() function and return false ? But I think it's a little odd that
+> > there actually has dma. So can we just skip can_dma() function let it be
+> > NULL ?
 > 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
-> 
-> This patch is based on linux-pinctrl/devel
-> (Commit 7164873e7c69d6bab74726debc3b495a86332b1f).
-> 
-> I think I converted all of the pinctrl drivers, but just in case,
-> I'd like the driver maintainers to check this patch out.
-> 
+> If it's simply the unavailbility of a struct dma_chan we must be able to
+> get a better solution than just open coding all the DMA mapping and
+> unmapping in the driver.  The only thing we actually use the channel for
+> is to get the device we need to use to do the mapping and unmapping,
+> either we need a way for devices to provide their own channels easily or
+> a way for SPI drivers to specify a device here instead of a channel.
+> The latter seems easier if a bit clunky (with having to work with both).
 
->  drivers/pinctrl/bcm/pinctrl-bcm2835.c         |  4 ++--
+I list two ways you mention.
+Pesudo code of your first suggestion:
 
-Acked-by: Lee Jones <lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+static int mtk_spi_probe(struct platform_device *pdev) {
+  struct dma_chan *tx_chan;
+  struct dma_device *tx_dma;
+
+  tx_chan = devm_kzalloc(&pdev->dev, sizeof(*tx_chan), GFP_KERNEL);
+  tx_dma = devm_kzalloc(&pdev->dev, sizeof(*tx_dma), GFP_KERNEL);
+
+  tx_dma->dev = &pdev->dev;
+  tx_chan->device = tx_dma;
+  master->dma_tx = tx_chan;
+  ...
+}
+
+Modification of your second suggestion:
+
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -539,8 +539,8 @@ static int __spi_map_msg(struct spi_master *master,
+struct spi_message *msg)
+        if (!master->can_dma)
+                return 0;
+
+-       tx_dev = master->dma_tx->device->dev;
+-       rx_dev = master->dma_rx->device->dev;
++       tx_dev = master->dma_tx ? master->dma_tx->device->dev :
+master->dev;
++       rx_dev = master->dma_rx ? master->dma_rx->device->dev : master-
+
+
+Is this what you want ? Actually, I don't like first one at all.
+
+
+Eddie
+Thanks
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
