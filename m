@@ -1,389 +1,619 @@
-From: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 3/3] ASoC: mediatek: Add machine driver for rt5650 rt5676 codec
-Date: Wed, 10 Jun 2015 22:24:36 +0800
-Message-ID: <1433946276-25969-4-git-send-email-koro.chen@mediatek.com>
-References: <1433946276-25969-1-git-send-email-koro.chen@mediatek.com>
+From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 3/5] soc: Mediatek: Add SCPSYS power domain driver
+Date: Wed, 10 Jun 2015 16:47:01 +0200
+Message-ID: <CAPDyKFpY+agi_JyuP2iGB+7HPoTuwHi2iC1D2YCsGnNfZhevNw@mail.gmail.com>
+References: <1433839623-10804-1-git-send-email-s.hauer@pengutronix.de>
+	<1433839623-10804-4-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1433946276-25969-1-git-send-email-koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1433839623-10804-4-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This is the DPCM based machine driver with rt5650 and rt5676
+On 9 June 2015 at 10:47, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
+> This adds a power domain driver for the Mediatek SCPSYS unit.
+>
+> The System Control Processor System (SCPSYS) has several power
+> management related tasks in the system. The tasks include thermal
+> measurement, dynamic voltage frequency scaling (DVFS), interrupt
+> filter and lowlevel sleep control. The System Power Manager (SPM)
+> inside the SCPSYS is for the MTCMOS power domain control.
+>
+> For now this driver only adds power domain support, the more
+> advanced features are not yet supported. The driver implements
+> the generic PM domain device tree bindings, the first user will
+> most likely be the Mediatek AFE audio driver.
+>
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
+>  drivers/soc/mediatek/Kconfig             |   9 +
+>  drivers/soc/mediatek/Makefile            |   1 +
+>  drivers/soc/mediatek/mtk-scpsys.c        | 490 +++++++++++++++++++++++++++++++
+>  include/dt-bindings/power/mt8173-power.h |  15 +
+>  4 files changed, 515 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mtk-scpsys.c
+>  create mode 100644 include/dt-bindings/power/mt8173-power.h
+>
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index e4f37a3..9a61b54 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -18,3 +18,12 @@ config MTK_PMIC_WRAP
+>           Say yes here to add support for MediaTek PMIC Wrapper found
+>           on different MediaTek SoCs. The PMIC wrapper is a proprietary
+>           hardware to connect the PMIC.
+> +
+> +config MTK_SCPSYS
+> +       bool "MediaTek SCPSYS Support"
+> +       depends on ARCH_MEDIATEK || COMPILE_TEST
 
-Signed-off-by: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- .../bindings/sound/mt8173-rt5650-rt5676.txt        |  15 ++
- sound/soc/mediatek/Kconfig                         |  12 +
- sound/soc/mediatek/Makefile                        |   1 +
- sound/soc/mediatek/mt8173-rt5650-rt5676.c          | 300 +++++++++++++++++++++
- 4 files changed, 328 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
- create mode 100644 sound/soc/mediatek/mt8173-rt5650-rt5676.c
+How about also depending on "PM" and selecting PM_GENERIC_DOMAINS,
+would that work?
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
-new file mode 100644
-index 0000000..5fbdf39
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
-@@ -0,0 +1,15 @@
-+MT8173 with RT5650 RT5676 CODECS
-+
-+Required properties:
-+- compatible : "mediatek,mt8173-rt5650-rt5676"
-+- mediatek,audio-codec: the phandles of rt5650 and rt5676 codecs
-+- avdd-supply : the phandle of regulator to supply 1.8V
-+
-+Example:
-+
-+	sound {
-+		compatible = "mediatek,mt8173-rt5650-rt5676";
-+		mediatek,audio-codec = <&rt5650 &rt5676>;
-+		avdd-supply = <&mt6397_vgp1_reg>;
-+	};
-+
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 6fb337e..6f03e26 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -18,3 +18,15 @@ config SND_SOC_MT8173_MAX98090
- 	  Select Y if you have such device.
- 	  If unsure select "N".
- 
-+config SND_SOC_MT8173_RT5650_RT5676
-+	bool "ASoC Audio driver for MT8173 with RT5650 RT5676 codecs"
-+	depends on ARCH_MEDIATEK
-+	select SND_SOC_MEDIATEK
-+	select SND_SOC_RT5645
-+	select SND_SOC_RT5677
-+	help
-+	  This adds ASoC driver for Mediatek MT8173 boards
-+	  with the RT5650 and RT5676 codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index 08fa765..75effbe 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -2,3 +2,4 @@
- obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
- # Machine support
- obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
-+obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
-diff --git a/sound/soc/mediatek/mt8173-rt5650-rt5676.c b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-new file mode 100644
-index 0000000..ceff158
---- /dev/null
-+++ b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-@@ -0,0 +1,300 @@
-+/*
-+ * mt8173-rt5650-rt5676.c  --  MT8173 machine driver with RT5650/5676 codecs
-+ *
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/gpio.h>
-+#include <linux/of_gpio.h>
-+#include <linux/regulator/consumer.h>
-+#include <sound/soc.h>
-+#include <sound/jack.h>
-+#include "../codecs/rt5645.h"
-+#include "../codecs/rt5677.h"
-+
-+#define MCLK_FOR_CODECS		12288000
-+
-+static const struct snd_soc_dapm_widget mt8173_rt5650_rt5676_widgets[] = {
-+	SND_SOC_DAPM_SPK("Speaker", NULL),
-+	SND_SOC_DAPM_MIC("Int Mic", NULL),
-+	SND_SOC_DAPM_HP("Headphone", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-+};
-+
-+static const struct snd_soc_dapm_route mt8173_rt5650_rt5676_routes[] = {
-+	{"Speaker", NULL, "SPOL"},
-+	{"Speaker", NULL, "SPOR"},
-+	{"Speaker", NULL, "Sub AIF2TX"}, /* IF2 ADC to 5650  */
-+	{"Sub DMIC L1", NULL, "Int Mic"}, /* DMIC from 5676 */
-+	{"Sub DMIC R1", NULL, "Int Mic"},
-+	{"Headphone", NULL, "HPOL"},
-+	{"Headphone", NULL, "HPOR"},
-+	{"Headphone", NULL, "Sub AIF2TX"}, /* IF2 ADC to 5650  */
-+	{"Headset Mic", NULL, "micbias1"},
-+	{"Headset Mic", NULL, "micbias2"},
-+	{"IN1P", NULL, "Headset Mic"},
-+	{"IN1N", NULL, "Headset Mic"},
-+	{"Sub AIF2RX", NULL, "Headset Mic"}, /* IF2 DAC from 5650  */
-+};
-+
-+static const struct snd_kcontrol_new mt8173_rt5650_rt5676_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Speaker"),
-+	SOC_DAPM_PIN_SWITCH("Int Mic"),
-+	SOC_DAPM_PIN_SWITCH("Headphone"),
-+	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-+};
-+
-+static int mt8173_rt5650_rt5676_hw_params(struct snd_pcm_substream *substream,
-+					  struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	int i, ret;
-+
-+	for (i = 0; i < rtd->num_codecs; i++) {
-+		struct snd_soc_dai *codec_dai = rtd->codec_dais[i];
-+
-+		/* pll from mclk 12.288M */
-+		ret = snd_soc_dai_set_pll(codec_dai, 0, 0, MCLK_FOR_CODECS,
-+					  params_rate(params) * 512);
-+		if (ret)
-+			return ret;
-+
-+		/* sysclk from pll */
-+		ret = snd_soc_dai_set_sysclk(codec_dai, 1,
-+					     params_rate(params) * 512,
-+					     SND_SOC_CLOCK_IN);
-+		if (ret)
-+			return ret;
-+	}
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt8173_rt5650_rt5676_ops = {
-+	.hw_params = mt8173_rt5650_rt5676_hw_params,
-+};
-+
-+static struct snd_soc_jack mt8173_rt5650_rt5676_jack;
-+
-+static int mt8173_rt5650_rt5676_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-+	struct snd_soc_codec *codec_sub = runtime->codec_dais[1]->codec;
-+	int ret;
-+
-+	rt5645_sel_asrc_clk_src(codec,
-+				RT5645_DA_STEREO_FILTER |
-+				RT5645_AD_STEREO_FILTER,
-+				RT5645_CLK_SEL_I2S1_ASRC);
-+	rt5677_sel_asrc_clk_src(codec_sub,
-+				RT5677_DA_STEREO_FILTER |
-+				RT5677_AD_STEREO1_FILTER,
-+				RT5677_CLK_SEL_I2S1_ASRC);
-+	rt5677_sel_asrc_clk_src(codec_sub,
-+				RT5677_AD_STEREO2_FILTER |
-+				RT5677_I2S2_SOURCE,
-+				RT5677_CLK_SEL_I2S2_ASRC);
-+
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "Headset Jack",
-+				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
-+				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
-+				    &mt8173_rt5650_rt5676_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new Headset Jack %d\n", ret);
-+		return ret;
-+	}
-+
-+	return rt5645_set_jack_detect(codec,
-+				      &mt8173_rt5650_rt5676_jack,
-+				      &mt8173_rt5650_rt5676_jack,
-+				      &mt8173_rt5650_rt5676_jack);
-+}
-+
-+static struct snd_soc_dai_link_component mt8173_rt5650_rt5676_codecs[] = {
-+	{
-+		.dai_name = "rt5645-aif1",
-+	},
-+	{
-+		.dai_name = "rt5677-aif1",
-+	},
-+};
-+
-+/* Digital audio interface glue - connects codec <---> CPU */
-+static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
-+	/* Front End DAI links */
-+	{
-+		.name = "rt5650_rt5676 Playback",
-+		.stream_name = "rt5650_rt5676 Playback",
-+		.cpu_dai_name = "DL1",
-+		.platform_name = "11220000.mt8173-afe-pcm",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	{
-+		.name = "rt5650_rt5676 Capture",
-+		.stream_name = "rt5650_rt5676 Capture",
-+		.cpu_dai_name = "VUL",
-+		.platform_name = "11220000.mt8173-afe-pcm",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+
-+	/* Back End DAI links */
-+	{
-+		.name = "Codec",
-+		.cpu_dai_name = "I2S",
-+		.platform_name = "11220000.mt8173-afe-pcm",
-+		.no_pcm = 1,
-+		.codecs = mt8173_rt5650_rt5676_codecs,
-+		.num_codecs = 2,
-+		.init = mt8173_rt5650_rt5676_init,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			   SND_SOC_DAIFMT_CBS_CFS,
-+		.ops = &mt8173_rt5650_rt5676_ops,
-+		.ignore_pmdown_time = 1,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	{ /* rt5676 <-> rt5650 intercodec link: Sets rt5676 I2S2 as master */
-+		.name = "rt5650_rt5676 intercodec",
-+		.stream_name = "rt5650_rt5676 intercodec",
-+		.cpu_dai_name = "snd-soc-dummy-dai",
-+		.platform_name = "snd-soc-dummy",
-+		.no_pcm = 1,
-+		.codec_dai_name = "rt5677-aif2",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			   SND_SOC_DAIFMT_CBM_CFM,
-+	},
-+
-+};
-+
-+static struct snd_soc_codec_conf mt8173_rt5650_rt5676_codec_conf[] = {
-+	{
-+		.name_prefix = "Sub",
-+	},
-+};
-+
-+static struct snd_soc_card mt8173_rt5650_rt5676_card = {
-+	.name = "mtk-rt5650-rt5676",
-+	.dai_link = mt8173_rt5650_rt5676_dais,
-+	.num_links = ARRAY_SIZE(mt8173_rt5650_rt5676_dais),
-+	.codec_conf = mt8173_rt5650_rt5676_codec_conf,
-+	.num_configs = ARRAY_SIZE(mt8173_rt5650_rt5676_codec_conf),
-+	.controls = mt8173_rt5650_rt5676_controls,
-+	.num_controls = ARRAY_SIZE(mt8173_rt5650_rt5676_controls),
-+	.dapm_widgets = mt8173_rt5650_rt5676_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt8173_rt5650_rt5676_widgets),
-+	.dapm_routes = mt8173_rt5650_rt5676_routes,
-+	.num_dapm_routes = ARRAY_SIZE(mt8173_rt5650_rt5676_routes),
-+};
-+
-+static int mt8173_rt5650_rt5676_dev_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt8173_rt5650_rt5676_card;
-+	struct regulator *reg_avdd;
-+	int ret;
-+
-+	mt8173_rt5650_rt5676_codecs[0].of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 0);
-+	if (!mt8173_rt5650_rt5676_codecs[0].of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	mt8173_rt5650_rt5676_codecs[1].of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 1);
-+	if (!mt8173_rt5650_rt5676_codecs[1].of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	mt8173_rt5650_rt5676_codec_conf[0].of_node =
-+		mt8173_rt5650_rt5676_codecs[1].of_node;
-+
-+	mt8173_rt5650_rt5676_dais[3].codec_of_node =
-+		mt8173_rt5650_rt5676_codecs[1].of_node;
-+
-+	/* set 5650 codec AVDD/DACREF/CPVDD/DBVDD voltage */
-+	reg_avdd = devm_regulator_get(&pdev->dev, "avdd");
-+	if (IS_ERR(reg_avdd)) {
-+		dev_err(&pdev->dev, "failed to get avdd\n");
-+		return PTR_ERR(reg_avdd);
-+	}
-+	ret = regulator_set_voltage(reg_avdd, 1800000, 1800000);
-+	if (ret != 0) {
-+		dev_err(&pdev->dev, "Failed to set avdd: %d\n", ret);
-+		return ret;
-+	}
-+	dev_info(&pdev->dev, "avdd = %d uv\n",
-+		 regulator_get_voltage(reg_avdd));
-+
-+	ret = regulator_enable(reg_avdd);
-+	if (ret != 0) {
-+		dev_err(&pdev->dev, "Failed to enable avdd: %d\n", ret);
-+		return ret;
-+	}
-+
-+	card->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, card);
-+
-+	ret = snd_soc_register_card(card);
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+	return ret;
-+}
-+
-+static int mt8173_rt5650_rt5676_dev_remove(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = platform_get_drvdata(pdev);
-+
-+	snd_soc_unregister_card(card);
-+	return 0;
-+}
-+
-+static const struct of_device_id mt8173_rt5650_rt5676_dt_match[] = {
-+	{ .compatible = "mediatek,mt8173-rt5650-rt5676", },
-+	{ }
-+};
-+
-+static struct platform_driver mt8173_rt5650_rt5676_driver = {
-+	.driver = {
-+		   .name = "mtk-rt5650-rt5676",
-+		   .owner = THIS_MODULE,
-+		   .of_match_table = mt8173_rt5650_rt5676_dt_match,
-+#ifdef CONFIG_PM
-+		   .pm = &snd_soc_pm_ops,
-+#endif
-+	},
-+	.probe = mt8173_rt5650_rt5676_dev_probe,
-+	.remove = mt8173_rt5650_rt5676_dev_remove,
-+};
-+
-+module_platform_driver(mt8173_rt5650_rt5676_driver);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT8173 RT5650 and RT5676 SoC machine driver");
-+MODULE_AUTHOR("Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:mtk-rt5650-rt5676");
-+MODULE_DEVICE_TABLE(of, mt8173_rt5650_rt5676_dt_match);
-+
--- 
-1.8.1.1.dirty
+> +       select REGMAP
+> +       select MTK_INFRACFG
+> +       help
+> +         Say yes here to add support for the MediaTek SCPSYS power domain
+> +         driver.
+> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> index 3fa940f..12998b0 100644
+> --- a/drivers/soc/mediatek/Makefile
+> +++ b/drivers/soc/mediatek/Makefile
+> @@ -1,2 +1,3 @@
+>  obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+>  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+> +obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> new file mode 100644
+> index 0000000..b9eed37
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -0,0 +1,490 @@
+> +/*
+> + * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+> +#include <linux/regmap.h>
+> +#include <linux/soc/mediatek/infracfg.h>
+> +#include <dt-bindings/power/mt8173-power.h>
+> +
+> +#define SPM_VDE_PWR_CON                        0x0210
+> +#define SPM_MFG_PWR_CON                        0x0214
+> +#define SPM_VEN_PWR_CON                        0x0230
+> +#define SPM_ISP_PWR_CON                        0x0238
+> +#define SPM_DIS_PWR_CON                        0x023c
+> +#define SPM_VEN2_PWR_CON               0x0298
+> +#define SPM_AUDIO_PWR_CON              0x029c
+> +#define SPM_MFG_2D_PWR_CON             0x02c0
+> +#define SPM_MFG_ASYNC_PWR_CON          0x02c4
+> +#define SPM_USB_PWR_CON                        0x02cc
+> +#define SPM_PWR_STATUS                 0x060c
+> +#define SPM_PWR_STATUS_2ND             0x0610
+> +
+> +#define PWR_RST_B_BIT                  BIT(0)
+> +#define PWR_ISO_BIT                    BIT(1)
+> +#define PWR_ON_BIT                     BIT(2)
+> +#define PWR_ON_2ND_BIT                 BIT(3)
+> +#define PWR_CLK_DIS_BIT                        BIT(4)
+> +
+> +#define PWR_STATUS_DISP                        BIT(3)
+> +#define PWR_STATUS_MFG                 BIT(4)
+> +#define PWR_STATUS_ISP                 BIT(5)
+> +#define PWR_STATUS_VDEC                        BIT(7)
+> +#define PWR_STATUS_VENC_LT             BIT(20)
+> +#define PWR_STATUS_VENC                        BIT(21)
+> +#define PWR_STATUS_MFG_2D              BIT(22)
+> +#define PWR_STATUS_MFG_ASYNC           BIT(23)
+> +#define PWR_STATUS_AUDIO               BIT(24)
+> +#define PWR_STATUS_USB                 BIT(25)
+> +
+> +enum clk_id {
+> +       MT8173_CLK_NONE,
+> +       MT8173_CLK_MM,
+> +       MT8173_CLK_MFG,
+> +       MT8173_CLK_MAX = MT8173_CLK_MFG,
+> +};
+> +
+> +struct scp_domain_data {
+> +       const char *name;
+> +       u32 sta_mask;
+> +       int ctl_offs;
+> +       u32 sram_pdn_bits;
+> +       u32 sram_pdn_ack_bits;
+> +       u32 bus_prot_mask;
+> +       enum clk_id clk_id;
+> +};
+> +
+> +static const struct scp_domain_data scp_domain_data[] __initconst = {
+> +       [MT8173_POWER_DOMAIN_VDEC] = {
+> +               .name = "vdec",
+> +               .sta_mask = PWR_STATUS_VDEC,
+> +               .ctl_offs = SPM_VDE_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(12, 12),
+> +               .clk_id = MT8173_CLK_MM,
+> +       },
+> +       [MT8173_POWER_DOMAIN_VENC] = {
+> +               .name = "venc",
+> +               .sta_mask = PWR_STATUS_VENC,
+> +               .ctl_offs = SPM_VEN_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(15, 12),
+> +               .clk_id = MT8173_CLK_MM,
+> +       },
+> +       [MT8173_POWER_DOMAIN_ISP] = {
+> +               .name = "isp",
+> +               .sta_mask = PWR_STATUS_ISP,
+> +               .ctl_offs = SPM_ISP_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(13, 12),
+> +               .clk_id = MT8173_CLK_MM,
+> +       },
+> +       [MT8173_POWER_DOMAIN_MM] = {
+> +               .name = "mm",
+> +               .sta_mask = PWR_STATUS_DISP,
+> +               .ctl_offs = SPM_DIS_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(12, 12),
+> +               .clk_id = MT8173_CLK_MM,
+> +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
+> +                       MT8173_TOP_AXI_PROT_EN_MM_M1,
+> +       },
+> +       [MT8173_POWER_DOMAIN_VENC_LT] = {
+> +               .name = "venc_lt",
+> +               .sta_mask = PWR_STATUS_VENC_LT,
+> +               .ctl_offs = SPM_VEN2_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(15, 12),
+> +               .clk_id = MT8173_CLK_MM,
+> +       },
+> +       [MT8173_POWER_DOMAIN_AUDIO] = {
+> +               .name = "audio",
+> +               .sta_mask = PWR_STATUS_AUDIO,
+> +               .ctl_offs = SPM_AUDIO_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(15, 12),
+> +               .clk_id = MT8173_CLK_NONE,
+> +       },
+> +       [MT8173_POWER_DOMAIN_USB] = {
+> +               .name = "usb",
+> +               .sta_mask = PWR_STATUS_USB,
+> +               .ctl_offs = SPM_USB_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(15, 12),
+> +               .clk_id = MT8173_CLK_NONE,
+> +       },
+> +       [MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+> +               .name = "mfg_async",
+> +               .sta_mask = PWR_STATUS_MFG_ASYNC,
+> +               .ctl_offs = SPM_MFG_ASYNC_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = 0,
+> +               .clk_id = MT8173_CLK_MFG,
+> +       },
+> +       [MT8173_POWER_DOMAIN_MFG_2D] = {
+> +               .name = "mfg_2d",
+> +               .sta_mask = PWR_STATUS_MFG_2D,
+> +               .ctl_offs = SPM_MFG_2D_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(11, 8),
+> +               .sram_pdn_ack_bits = GENMASK(13, 12),
+> +               .clk_id = MT8173_CLK_NONE,
+> +       },
+> +       [MT8173_POWER_DOMAIN_MFG] = {
+> +               .name = "mfg",
+> +               .sta_mask = PWR_STATUS_MFG,
+> +               .ctl_offs = SPM_MFG_PWR_CON,
+> +               .sram_pdn_bits = GENMASK(13, 8),
+> +               .sram_pdn_ack_bits = GENMASK(21, 16),
+> +               .clk_id = MT8173_CLK_NONE,
+> +               .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
+> +                       MT8173_TOP_AXI_PROT_EN_MFG_M0 |
+> +                       MT8173_TOP_AXI_PROT_EN_MFG_M1 |
+> +                       MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
+> +       },
+> +};
+> +
+> +#define NUM_DOMAINS    ARRAY_SIZE(scp_domain_data)
+> +
+> +struct scp;
+> +
+> +struct scp_domain {
+> +       struct generic_pm_domain genpd;
+> +       struct scp *scp;
+> +       struct clk *clk;
+> +       u32 sta_mask;
+> +       void __iomem *ctl_addr;
+> +       u32 sram_pdn_bits;
+> +       u32 sram_pdn_ack_bits;
+> +       u32 bus_prot_mask;
+> +};
+> +
+> +struct scp {
+> +       struct scp_domain domains[NUM_DOMAINS];
+> +       struct genpd_onecell_data pd_data;
+> +       struct device *dev;
+> +       void __iomem *base;
+> +       struct regmap *infracfg;
+> +       struct clk *clk[MT8173_CLK_MAX];
+> +};
+> +
+> +static int scpsys_domain_is_on(struct scp_domain *scpd)
+> +{
+> +       struct scp *scp = scpd->scp;
+> +
+> +       u32 status = readl(scp->base + SPM_PWR_STATUS) & scpd->sta_mask;
+> +       u32 status2 = readl(scp->base + SPM_PWR_STATUS_2ND) & scpd->sta_mask;
+> +
+> +       /*
+> +        * A domain is on when both status bits are set. If only one is set
+> +        * return an error. This happens while powering up a domain
+> +        */
+> +
+> +       if (status && status2)
+> +               return true;
+> +       if (!status && !status2)
+> +               return false;
+> +
+> +       return -EINVAL;
+> +}
+> +
+> +static int scpsys_power_on(struct generic_pm_domain *genpd)
+> +{
+> +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> +       struct scp *scp = scpd->scp;
+> +       unsigned long timeout;
+> +       bool expired;
+> +       void __iomem *ctl_addr = scpd->ctl_addr;
+> +       u32 sram_pdn_ack = scpd->sram_pdn_ack_bits;
+> +       u32 val;
+> +       int ret;
+> +
+> +       if (scpd->clk) {
 
+Shouldn't you check for !IS_ERR(scpd->clk) instead?
+
+> +               ret = clk_prepare_enable(scpd->clk);
+> +               if (ret)
+> +                       return ret;
+> +       }
+> +
+> +       val = readl(ctl_addr);
+> +       val |= PWR_ON_BIT;
+> +       writel(val, ctl_addr);
+> +       val |= PWR_ON_2ND_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       /* wait until PWR_ACK = 1 */
+> +       timeout = jiffies + HZ;
+> +       expired = false;
+> +       while (1) {
+> +               ret = scpsys_domain_is_on(scpd);
+> +               if (ret > 0)
+> +                       break;
+> +
+> +               if (expired) {
+> +                       ret = -ETIMEDOUT;
+> +                       goto out;
+> +               }
+> +
+> +               cpu_relax();
+> +
+> +               if (time_after(jiffies, timeout))
+> +                       expired = true;
+> +       }
+> +
+> +       val &= ~PWR_CLK_DIS_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val &= ~PWR_ISO_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val |= PWR_RST_B_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val &= ~scpd->sram_pdn_bits;
+> +       writel(val, ctl_addr);
+> +
+> +       /* wait until SRAM_PDN_ACK all 0 */
+> +       timeout = jiffies + HZ;
+> +       expired = false;
+> +       while (sram_pdn_ack && (readl(ctl_addr) & sram_pdn_ack)) {
+> +
+> +               if (expired) {
+> +                       ret = -ETIMEDOUT;
+> +                       goto out;
+> +               }
+> +
+> +               cpu_relax();
+> +
+> +               if (time_after(jiffies, timeout))
+> +                       expired = true;
+> +       }
+> +
+> +       if (scpd->bus_prot_mask) {
+> +               ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+> +                               scpd->bus_prot_mask);
+> +               if (ret)
+> +                       return ret;
+> +       }
+> +
+> +       return 0;
+> +out:
+
+There are no error handling. Especially the clock should be gated.
+
+> +       dev_err(scp->dev, "Failed to power on domain %s\n", genpd->name);
+> +
+> +       return ret;
+> +}
+> +
+> +static int scpsys_power_off(struct generic_pm_domain *genpd)
+> +{
+> +       struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
+> +       struct scp *scp = scpd->scp;
+> +       unsigned long timeout;
+> +       bool expired;
+> +       void __iomem *ctl_addr = scpd->ctl_addr;
+> +       u32 pdn_ack = scpd->sram_pdn_ack_bits;
+> +       u32 val;
+> +       int ret;
+> +
+> +       if (scpd->bus_prot_mask) {
+> +               ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+> +                               scpd->bus_prot_mask);
+> +               if (ret)
+> +                       return ret;
+> +       }
+> +
+> +       val = readl(ctl_addr);
+> +       val |= scpd->sram_pdn_bits;
+> +       writel(val, ctl_addr);
+> +
+> +       /* wait until SRAM_PDN_ACK all 1 */
+> +       timeout = jiffies + HZ;
+> +       expired = false;
+> +       while (pdn_ack && (readl(ctl_addr) & pdn_ack) != pdn_ack) {
+> +               if (expired) {
+> +                       ret = -ETIMEDOUT;
+> +                       goto out;
+> +               }
+> +
+> +               cpu_relax();
+> +
+> +               if (time_after(jiffies, timeout))
+> +                       expired = true;
+> +       }
+> +
+> +       val |= PWR_ISO_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val &= ~PWR_RST_B_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val |= PWR_CLK_DIS_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val &= ~PWR_ON_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       val &= ~PWR_ON_2ND_BIT;
+> +       writel(val, ctl_addr);
+> +
+> +       /* wait until PWR_ACK = 0 */
+> +       timeout = jiffies + HZ;
+> +       expired = false;
+> +       while (1) {
+> +               ret = scpsys_domain_is_on(scpd);
+> +               if (ret == 0)
+> +                       break;
+> +
+> +               if (expired) {
+> +                       ret = -ETIMEDOUT;
+> +                       goto out;
+> +               }
+> +
+> +               cpu_relax();
+> +
+> +               if (time_after(jiffies, timeout))
+> +                       expired = true;
+> +       }
+> +
+> +       if (scpd->clk)
+
+Shouldn't you check for !IS_ERR(scpd->clk) instead?
+
+> +               clk_disable_unprepare(scpd->clk);
+> +
+> +       return 0;
+> +
+> +out:
+
+There are no error handling, isn't that needed?
+
+> +       dev_err(scp->dev, "Failed to power off domain %s\n", genpd->name);
+> +
+> +       return ret;
+> +}
+> +
+> +static int __init scpsys_probe(struct platform_device *pdev)
+> +{
+> +       struct genpd_onecell_data *pd_data;
+> +       struct resource *res;
+> +       int i, ret;
+> +       struct scp *scp;
+> +
+> +       scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
+> +       if (!scp)
+> +               return -ENOMEM;
+> +
+> +       scp->dev = &pdev->dev;
+> +
+> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +       scp->base = devm_ioremap_resource(&pdev->dev, res);
+> +       if (IS_ERR(scp->base))
+> +               return PTR_ERR(scp->base);
+> +
+> +       pd_data = &scp->pd_data;
+> +
+> +       pd_data->domains = devm_kzalloc(&pdev->dev,
+> +                       sizeof(*pd_data->domains) * NUM_DOMAINS, GFP_KERNEL);
+> +       if (!pd_data->domains)
+> +               return -ENOMEM;
+> +
+> +       scp->clk[MT8173_CLK_MM] = devm_clk_get(&pdev->dev, "mm");
+> +       if (IS_ERR(scp->clk[MT8173_CLK_MM])) {
+> +               dev_err(&pdev->dev, "Failed to get mm clk: %ld\n",
+> +                               PTR_ERR(scp->clk[MT8173_CLK_MM]));
+
+I think a similar error message is already printed by the common clk framework!?
+
+> +               return PTR_ERR(scp->clk[MT8173_CLK_MM]);
+> +       }
+> +
+> +       scp->clk[MT8173_CLK_MFG] = devm_clk_get(&pdev->dev, "mfg");
+> +       if (IS_ERR(scp->clk[MT8173_CLK_MFG])) {
+> +               dev_err(&pdev->dev, "Failed to get mfg clk: %ld\n",
+> +                               PTR_ERR(scp->clk[MT8173_CLK_MFG]));
+
+I think a similar error message is already printed by the common clk framework!?
+
+> +               return PTR_ERR(scp->clk[MT8173_CLK_MFG]);
+> +       }
+> +
+> +       scp->infracfg = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
+> +                       "infracfg");
+> +       if (IS_ERR(scp->infracfg)) {
+> +               dev_err(&pdev->dev, "Cannot find infracfg controller: %ld\n",
+> +                               PTR_ERR(scp->infracfg));
+> +               return PTR_ERR(scp->infracfg);
+> +       }
+> +
+> +       pd_data->num_domains = NUM_DOMAINS;
+> +
+> +       for (i = 0; i < NUM_DOMAINS; i++) {
+> +               struct scp_domain *scpd = &scp->domains[i];
+> +               struct generic_pm_domain *genpd = &scpd->genpd;
+> +               const struct scp_domain_data *data = &scp_domain_data[i];
+> +
+> +               pd_data->domains[i] = genpd;
+> +               scpd->scp = scp;
+> +
+> +               scpd->sta_mask = data->sta_mask;
+> +               scpd->ctl_addr = scp->base + data->ctl_offs;
+> +               scpd->sram_pdn_bits = data->sram_pdn_bits;
+> +               scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
+> +               scpd->bus_prot_mask = data->bus_prot_mask;
+> +               if (data->clk_id != MT8173_CLK_NONE)
+> +                       scpd->clk = scp->clk[data->clk_id];
+
+This seems odd. Why do you need to have an array of clocks to deal
+with this assignment?
+
+I don't find that the struct scp->clk pointer is used but from this
+place. Couldn't you just fetch a reference to the clock to a local
+struct *clk, without caching it in the struct scp->clk?
+
+> +
+> +               genpd->name = data->name;
+> +               genpd->power_off = scpsys_power_off;
+> +               genpd->power_on = scpsys_power_on;
+> +
+> +               /*
+> +                * Initially turn on all domains to make the domains usable
+> +                * with !CONFIG_PM and to get the hardware in sync with the
+> +                * software.  The unused domains will be switched off during
+> +                * late_init time.
+> +                */
+> +               genpd->power_on(genpd);
+> +
+> +               pm_genpd_init(genpd, NULL, false);
+> +       }
+> +
+> +       /*
+> +        * We are not allowed to fail here since there is no way to unregister
+> +        * a power domain. Once registered above we have to keep the domains
+> +        * valid.
+> +        */
+> +
+> +       ret = pm_genpd_add_subdomain(pd_data->domains[MT8173_POWER_DOMAIN_MFG_ASYNC],
+> +               pd_data->domains[MT8173_POWER_DOMAIN_MFG_2D]);
+> +       if (ret && IS_ENABLED(CONFIG_PM))
+> +               dev_err(&pdev->dev, "Failed to add subdomain: %d\n", ret);
+> +
+> +       ret = pm_genpd_add_subdomain(pd_data->domains[MT8173_POWER_DOMAIN_MFG_2D],
+> +               pd_data->domains[MT8173_POWER_DOMAIN_MFG]);
+> +       if (ret && IS_ENABLED(CONFIG_PM))
+> +               dev_err(&pdev->dev, "Failed to add subdomain: %d\n", ret);
+> +
+> +       ret = of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
+> +       if (ret)
+> +               dev_err(&pdev->dev, "Failed to add OF provider: %d\n", ret);
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct of_device_id of_scpsys_match_tbl[] = {
+> +       {
+> +               .compatible = "mediatek,mt8173-scpsys",
+> +       }, {
+> +               /* sentinel */
+> +       }
+> +};
+> +
+> +static struct platform_driver scpsys_drv = {
+> +       .driver = {
+> +               .name = "mtk-scpsys",
+> +               .owner = THIS_MODULE,
+> +               .of_match_table = of_match_ptr(of_scpsys_match_tbl),
+> +       },
+> +};
+> +
+> +module_platform_driver_probe(scpsys_drv, scpsys_probe);
+> diff --git a/include/dt-bindings/power/mt8173-power.h b/include/dt-bindings/power/mt8173-power.h
+> new file mode 100644
+> index 0000000..b34cee9
+> --- /dev/null
+> +++ b/include/dt-bindings/power/mt8173-power.h
+> @@ -0,0 +1,15 @@
+> +#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
+> +#define _DT_BINDINGS_POWER_MT8183_POWER_H
+> +
+> +#define MT8173_POWER_DOMAIN_VDEC       0
+> +#define MT8173_POWER_DOMAIN_VENC       1
+> +#define MT8173_POWER_DOMAIN_ISP                2
+> +#define MT8173_POWER_DOMAIN_MM         3
+> +#define MT8173_POWER_DOMAIN_VENC_LT    4
+> +#define MT8173_POWER_DOMAIN_AUDIO      5
+> +#define MT8173_POWER_DOMAIN_USB                6
+> +#define MT8173_POWER_DOMAIN_MFG_ASYNC  7
+> +#define MT8173_POWER_DOMAIN_MFG_2D     8
+> +#define MT8173_POWER_DOMAIN_MFG                9
+> +
+> +#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
+> --
+> 2.1.4
+
+Kind regards
+Uffe
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
