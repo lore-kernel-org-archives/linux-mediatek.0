@@ -1,56 +1,121 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH 0/5] Add Mediatek MT8173 subsystem clocks support
-Date: Thu, 11 Jun 2015 16:52:12 -0700
-Message-ID: <20150611235212.GI29640@codeaurora.org>
-References: <1432192376-6712-1-git-send-email-jamesjj.liao@mediatek.com>
- <20150528132452.GI26575@pengutronix.de>
- <1432867649.15597.46.camel@mtksdaap41>
- <20150529062345.GY6325@pengutronix.de>
- <20150604210212.GM676@codeaurora.org>
- <1433468737.14416.7.camel@mtksdaap41>
- <20150606005912.GC29237@codeaurora.org>
- <20150608074858.GK6325@pengutronix.de>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: Re: [alsa-devel] [PATCH 1/3] ASoC: mediatek: Add AFE platform driver
+Date: Fri, 12 Jun 2015 09:55:58 +0800
+Message-ID: <1434074158.10969.5.camel@mtksdaap41>
+References: <1433946276-25969-1-git-send-email-koro.chen@mediatek.com>
+	 <1433946276-25969-2-git-send-email-koro.chen@mediatek.com>
+	 <1434006187.24094.40.camel@x220>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20150608074858.GK6325-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1434006187.24094.40.camel@x220>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, s.hauer@pengutronix.de, lgirdwood@gmail.com, robh+dt@kernel.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, galak@codeaurora.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/08, Sascha Hauer wrote:
-> On Fri, Jun 05, 2015 at 05:59:12PM -0700, Stephen Boyd wrote:
-> > 
-> > And similar things could be done for the reset driver.
+On Thu, 2015-06-11 at 09:03 +0200, Paul Bolle wrote:
+> On Wed, 2015-06-10 at 22:24 +0800, Koro Chen wrote:
+> > --- /dev/null
+> > +++ b/sound/soc/mediatek/Kconfig
 > 
-> The problem I see with this approach is that we scatter the code for a
-> otherwise simple driver over a bunch of directories. We would have
+> > +config SND_SOC_MEDIATEK
+> > +	bool "ASoC support for Mediatek chip"
+> > +	depends on ARCH_MEDIATEK
+> > +	help
+> > +	  This adds ASoC platform driver support for Mediatek chip
+> > +	  that can be used with other codecs.
+> > +	  Select Y if you have such device.
+> > +	  Ex: MT8173
 > 
-> drivers/clk/mediatek/vencsys.c
-> drivers/reset/mediatek/vencsys.c
-> drivers/soc/mediatek/vencsys.c
+> > --- /dev/null
+> > +++ b/sound/soc/mediatek/Makefile
 > 
-> The same must be added for vdecsys, imgsys and vencltsys. That will make
-> 12 drivers and three maintainers for 12 registers.  I think this will be
-> a pain to maintain, hence my suggestion to put the vencsys code into a
-> single file and not split this up into more subsystem specific files.
+> > +obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
 > 
+> > --- /dev/null
+> > +++ b/sound/soc/mediatek/mtk-afe-pcm.c
+> 
+> > +#include <linux/module.h>
+> 
+> > +static void mtk_afe_set_i2s_enable(struct mtk_afe *afe, bool enable)
+> > +{
+> > +	unsigned int val;
+> > +
+> > +	regmap_read(afe->regmap, AFE_I2S_CON2, &val);
+> > +	if (!!(val & AFE_I2S_CON2_EN) == !!enable)
+> 
+> (What does negating a bool twice do?)
+> 
+Because bool actually can be unsigned char, although actually in this
+driver, the caller always passes "true" or "false" to this function.
+Do you think if this is the case, should I still need to do !!?
 
-I probably don't have enough information here, but why is it a
-pain to maintain? It seems more like a pain to setup the first
-time and then little to no pain to maintain because we clearly
-split functionality based on subsystem. No merge conflicts, clear
-division of functionality, etc. But again, I don't think it
-matters much either way given that reset and clk drivers are
-combined sometimes and don't always reside in drivers/clk or
-drivers/reset either.
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > +		return; /* must skip soft reset */
+> > +
+> > +	/* I2S soft reset begin */
+> > +	regmap_update_bits(afe->regmap, AUDIO_TOP_CON1, 0x4, 0x4);
+> > +
+> > +	/* input */
+> > +	regmap_update_bits(afe->regmap, AFE_I2S_CON2, 0x1, !!enable);
+> 
+> Ditto.
+> 
+> > +
+> > +	/* output */
+> > +	regmap_update_bits(afe->regmap, AFE_I2S_CON1, 0x1, !!enable);
+> 
+> Ditto.
+> 
+> > +
+> > +	/* I2S soft reset end */
+> > +	udelay(1);
+> > +	regmap_update_bits(afe->regmap, AUDIO_TOP_CON1, 0x4, 0);
+> > +}
+> 
+> > +static const struct of_device_id mtk_afe_pcm_dt_match[] = {
+> > +	{ .compatible = "mediatek,mt8173-afe-pcm", },
+> > +	{ }
+> > +}; 
+> 
+> > +static struct platform_driver mtk_afe_pcm_driver = {
+> > +	.driver = {
+> > +		   .name = "mtk-afe-pcm",
+> > +		   .owner = THIS_MODULE,
+> > +		   .of_match_table = mtk_afe_pcm_dt_match,
+> > +		   .pm = &mtk_afe_pm_ops,
+> > +	},
+> > +	.probe = mtk_afe_pcm_dev_probe,
+> > +	.remove = mtk_afe_pcm_dev_remove,
+> > +};
+> 
+> > +MODULE_DESCRIPTION("Mediatek ALSA SoC AFE platform driver");
+> > +MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
+> > +MODULE_LICENSE("GPL v2");
+> > +MODULE_DEVICE_TABLE(of, mtk_afe_pcm_dt_match);
+> 
+> (The common pattern is to have MODULE_DEVICE_TABLE() directly follow
+> that table.)
+> 
+Thank you for mentioning this, I will fix it.
+> SND_SOC_MEDIATEK is a bool symbol and mtk-afe-pcm.o is built-in only.
+> But the code uses a few module specific constructs. I spotted
+> THIS_MODULE, MODULE_DESCRIPTION, MODULE_AUTHOR, MODULE_LICENSE, and
+> MODULE_DEVICE_TABLE.
+> 
+> Is SND_SOC_MEDIATEK perhaps meant to be bool?
+> 
+> Likewise for SND_SOC_MT8173_MAX98090 (in 2/3) and
+> SND_SOC_MT8173_RT5650_RT5676 (in 3/3).
+> 
+OK, yes, I think I should replace it by tristate, thank you!
+> Thanks,
+> 
+> 
+> Paul Bolle
+> 
+> _______________________________________________
+> Alsa-devel mailing list
+> Alsa-devel@alsa-project.org
+> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
