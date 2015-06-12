@@ -1,54 +1,259 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v2 2/2] pwm: add MediaTek display PWM driver support
-Date: Fri, 12 Jun 2015 12:25:30 +0200
-Message-ID: <20150612102529.GH19400@ulmo.nvidia.com>
-References: <1432214964-40644-1-git-send-email-yh.huang@mediatek.com>
- <1432214964-40644-3-git-send-email-yh.huang@mediatek.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] arm64: dts: mt8173: Add I2C device node
+Date: Fri, 12 Jun 2015 20:28:51 +0800
+Message-ID: <CAGS+omB1UadXeKZLmMdhSamsPpipQLmoH_PhbUPvszrYTq68fA@mail.gmail.com>
+References: <1434101229-32695-1-git-send-email-eddie.huang@mediatek.com> <1434101229-32695-3-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nqkreNcslJAfgyzk"
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1432214964-40644-3-git-send-email-yh.huang@mediatek.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1434101229-32695-3-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Eddie,
 
---nqkreNcslJAfgyzk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Fri, Jun 12, 2015 at 5:27 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>
+> Add MT8173 I2C device nodes, include I2C controllers and pins.
+> MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
+> The 6th I2C controller register base doesn't next to 5th I2C,
+> and there is a hardware between 5th and 6th I2C controller. So
+> SoC designer name 6th controller as "i2c6", not "i2c5".
 
-On Thu, May 21, 2015 at 09:29:24PM +0800, YH Huang wrote:
-> Add display PWM driver support to modify backlight for MT8173.
 
-The driver also claims compatibility with MT6595, so you should mention
-that here as well. Also please be more verbose in the commit message.
-You should mention things like how many channels the PWM has or typical
-use-cases.
+This is slightly misleading.  There are in fact 7 I2C controllers, but
+"i2c5" is dedicated for use by HDMI for ddc & hdcp.
+Is there a reason why the HDMI I2C port cannot be controlled by the
+generic i2c driver?
 
-Thierry
+Of course the hdmiddc / i2c5 node can always be added in a later
+patch, so this is no reason to hold up this patch.
 
---nqkreNcslJAfgyzk
-Content-Type: application/pgp-signature
+> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 50 ++++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 72 +++++++++++++++++++++++++++++
+>  2 files changed, 122 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> index 43d5401..2e01988 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> @@ -33,6 +33,56 @@
+>         chosen { };
+>  };
+>
+> +&pio {
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+I don't think we needed to move these i2c pinmux descriptions from
+mt8173.dtsi to the board .dts file.
 
-iQIcBAABCAAGBQJVerOZAAoJEN0jrNd/PrOh6wcP/jaTZsgetm8oNboheRoNnTni
-3mjo0OwpdpGa8FS4lGWmMjkoeAlznmcUkL8HZPjEHC2RW/rm52OpNquBI6Jjpu/L
-DLS+3w221liR1aFsKmT5FdH7p/cr0GjVe+NxMunyqh5kpNyROJKVozmKvQWoCS5v
-EQeA4DJ/F8KQjyHWNVQPPU8nURhZ7LcGA70dPoQefBU0zuAPDvnd6o6Pb9FPfkm4
-uiCZR7+9UMTusLDdFUaIpTn+OrTlhtm90W10vAd0qHvNXaQpiSJrUVL2D8ah/pTW
-YTD2ovTEfaouxjAu9gWis3rDGwYMiiljtpJdzesIs5YK0HFWTtKq4ZeQpcW/Ma/W
-Dx7eN8pGsh1u2rOrxuptHl5Mfn/BKzeft63ErU6OurZzVLcSU2vvvupnTAhrrWwo
-uQGt6XRMo2s10/33BBPlGyJK4O2WE5eNRAdWyMS6cgoZtiUPhEZtva6Yk+KM8AMr
-xyNc3P8SbtDofEA4xnjzH4CAHhoi8G62tnBr3Wbf8JQ/ragog23UfqAPdDCfavCV
-N7ZcT5H49zWRHuzTMao7QdHiocJAn2YJPNH0gCMJojOe5CbpB6TJhMerrEp89Z5c
-1i1rRVfg/pL+FCxTS/iXsdZGcxi4JZYqlF5NwDAehZvvDCaIMrk9AtxyYbThEyIF
-4dZYsphUJiBuOTdPtE/u
-=2npt
------END PGP SIGNATURE-----
+AFAICT, the "i2cN_pins_a" nodes defined here are the pinctl
+configuration that the corresponding enabled i2c nodes would choose.
+Thus, they are generic to the MT8173 SoC, not specific to any board.
+By themselves, these nodes do not actually select a pin configuration.
 
---nqkreNcslJAfgyzk--
+It is the nodes that *enable* the individual i2c nodes, and hence
+activate those pin settings, which is board specific.
+
+Hence, if your intent is to have the evb enable all i2c nodes, it
+would have a set of nodes like this:
+
+
+&i2c0 {
+  pinctrl-names = "default";
+  pinctrl-0 = <&i2c0_pins_a>;
+  status = "okay";
+};
+
+&i2c1 {
+ pinctrl-names = "default";
+ pinctrl-0 = <&i2c1_pins_a>;
+ status = "okay";
+};
+
+...
+
+
+> +       i2c0_pins_a: i2c0@0 {
+
+Do these nodes need the "@0"?
+
+>
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
+> +                                <MT8173_PIN_46_SCL0__FUNC_SCL0>;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+> +       i2c1_pins_a: i2c1@0 {
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_125_SDA1__FUNC_SDA1>,
+> +                                <MT8173_PIN_126_SCL1__FUNC_SCL1>;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+> +       i2c2_pins_a: i2c2@0 {
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_43_SDA2__FUNC_SDA2>,
+> +                                <MT8173_PIN_44_SCL2__FUNC_SCL2>;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+> +       i2c3_pins_a: i2c3@0 {
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_106_SDA3__FUNC_SDA3>,
+> +                                <MT8173_PIN_107_SCL3__FUNC_SCL3>;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+> +       i2c4_pins_a: i2c4@0 {
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_133_SDA4__FUNC_SDA4>,
+> +                                <MT8173_PIN_134_SCL4__FUNC_SCL4>;
+> +                       bias-disable;
+> +               };
+> +       };
+> +
+> +       i2c6_pins_a: i2c6@0 {
+> +               pins1 {
+> +                       pinmux = <MT8173_PIN_100_MSDC2_DAT0__FUNC_SDA5>,
+> +                                <MT8173_PIN_101_MSDC2_DAT1__FUNC_SCL5>;
+
+These are the SDA/SCL pins for i2c port 6, so they should really be
+_SDA6 / _SCL6.
+However... I checked, and these settings are labeled "SDA5 & SCL5" in
+the datasheet.
+I recommend marking them correctly as 6 here and fixing the datasheet :-).
+
+>
+> +                       bias-disable;
+> +               };
+> +       };
+> +};
+> +
+>  &uart0 {
+>         status = "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index b52ec43..6d3dbbdd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -229,6 +229,78 @@
+>                         clocks = <&uart_clk>;
+>                         status = "disabled";
+>                 };
+> +
+> +               i2c0: i2c@11007000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11007000 0 0x70>,
+> +                             <0 0x11000100 0 0x80>;
+> +                       interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C0>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+
+The following fields must also be selected by the i2c nodes when they
+are enabled:
+
+clock-frequency = <100000>;
+pinctrl-names = "default";
+pinctrl-0 = <&i2c0_pins_a>;
+#address-cells = <1>;
+#size-cells = <0>;
+
+So, is there any reason not to also include them here in mt8173.dtsi
+so we can use them as defaults?
+This would simplify the i2c nodes in the board specific .dts files.
+The only field that might be board specific would be clock-frequency,
+but that is trivial to override on a port-by-port basis in board files
+as necessary.
+
+Thanks,
+-Dan
+
+>
+> +                       status = "disabled";
+> +               };
+> +
+> +               i2c1: i2c@11008000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11008000 0 0x70>,
+> +                             <0 0x11000180 0 0x80>;
+> +                       interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C1>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+> +                       status = "disabled";
+> +               };
+> +
+> +               i2c2: i2c@11009000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11009000 0 0x70>,
+> +                             <0 0x11000200 0 0x80>;
+> +                       interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C2>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+> +                       status = "disabled";
+> +               };
+> +
+> +               i2c3: i2c3@11010000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11010000 0 0x70>,
+> +                             <0 0x11000280 0 0x80>;
+> +                       interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C3>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+> +                       status = "disabled";
+> +               };
+> +
+> +               i2c4: i2c4@11011000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11011000 0 0x70>,
+> +                             <0 0x11000300 0 0x80>;
+> +                       interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C4>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+> +                       status = "disabled";
+> +               };
+> +
+> +               i2c6: i2c6@11013000 {
+> +                       compatible = "mediatek,mt8173-i2c";
+> +                       reg = <0 0x11013000 0 0x70>,
+> +                             <0 0x11000080 0 0x80>;
+> +                       interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
+> +                       clock-div = <16>;
+> +                       clocks = <&pericfg CLK_PERI_I2C6>,
+> +                                <&pericfg CLK_PERI_AP_DMA>;
+> +                       clock-names = "main", "dma";
+> +                       status = "disabled";
+> +               };
+>         };
+>
+>  };
+> --
+> 1.8.1.1.dirty
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
