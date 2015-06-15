@@ -1,198 +1,34 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] arm64: dts: mt8173: Add I2C device node
-Date: Fri, 12 Jun 2015 19:13:53 +0200
-Message-ID: <1863259.t4daGE7nbQ@ubix>
-References: <1434101229-32695-1-git-send-email-eddie.huang@mediatek.com> <1434101229-32695-3-git-send-email-eddie.huang@mediatek.com> <CAGS+omB1UadXeKZLmMdhSamsPpipQLmoH_PhbUPvszrYTq68fA@mail.gmail.com>
+From: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 1/3] ASoC: mediatek: Add AFE platform driver
+Date: Mon, 15 Jun 2015 10:06:41 +0800
+Message-ID: <1434334001.14980.3.camel@mtksdaap41>
+References: <1433946276-25969-1-git-send-email-koro.chen@mediatek.com>
+	 <1433946276-25969-2-git-send-email-koro.chen@mediatek.com>
+	 <20150612130638.GZ1921@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omB1UadXeKZLmMdhSamsPpipQLmoH_PhbUPvszrYTq68fA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20150612130638.GZ1921-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, perex-/Fr2/VpizcU@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Friday, June 12, 2015 08:28:51 PM Daniel Kurtz wrote:
-> Hi Eddie,
-> 
-> On Fri, Jun 12, 2015 at 5:27 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> 
-wrote:
-> > Add MT8173 I2C device nodes, include I2C controllers and pins.
-> > MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
-> > The 6th I2C controller register base doesn't next to 5th I2C,
-> > and there is a hardware between 5th and 6th I2C controller. So
-> > SoC designer name 6th controller as "i2c6", not "i2c5".
-> 
-> This is slightly misleading.  There are in fact 7 I2C controllers, but
-> "i2c5" is dedicated for use by HDMI for ddc & hdcp.
-> Is there a reason why the HDMI I2C port cannot be controlled by the
-> generic i2c driver?
-> 
-> Of course the hdmiddc / i2c5 node can always be added in a later
-> patch, so this is no reason to hold up this patch.
-> 
-> > Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
+On Fri, 2015-06-12 at 14:06 +0100, Mark Brown wrote:
+> On Wed, Jun 10, 2015 at 10:24:34PM +0800, Koro Chen wrote:
+> > This is the DPCM based platform driver of AFE (Audio Front End) unit.
 > > 
-> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 50 ++++++++++++++++++++
-> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 72
-> >  +++++++++++++++++++++++++++++ 2 files changed, 122 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts index 43d5401..2e01988
-> > 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > @@ -33,6 +33,56 @@
-> > 
-> >         chosen { };
-> >  
-> >  };
-> > 
-> > +&pio {
+> > Signed-off-by: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 > 
-> I don't think we needed to move these i2c pinmux descriptions from
-> mt8173.dtsi to the board .dts file.
-> 
-> AFAICT, the "i2cN_pins_a" nodes defined here are the pinctl
-> configuration that the corresponding enabled i2c nodes would choose.
-> Thus, they are generic to the MT8173 SoC, not specific to any board.
-> By themselves, these nodes do not actually select a pin configuration.
-> 
-> It is the nodes that *enable* the individual i2c nodes, and hence
-> activate those pin settings, which is board specific.
-> 
-> Hence, if your intent is to have the evb enable all i2c nodes, it
-> would have a set of nodes like this:
-> 
-> 
-> &i2c0 {
->   pinctrl-names = "default";
->   pinctrl-0 = <&i2c0_pins_a>;
->   status = "okay";
-> };
-> 
-> &i2c1 {
->  pinctrl-names = "default";
->  pinctrl-0 = <&i2c1_pins_a>;
->  status = "okay";
-> };
-> 
-> ...
-> 
-> > +       i2c0_pins_a: i2c0@0 {
-> 
-> Do these nodes need the "@0"?
-> 
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
-> > +                                <MT8173_PIN_46_SCL0__FUNC_SCL0>;
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +
-> > +       i2c1_pins_a: i2c1@0 {
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_125_SDA1__FUNC_SDA1>,
-> > +                                <MT8173_PIN_126_SCL1__FUNC_SCL1>;
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +
-> > +       i2c2_pins_a: i2c2@0 {
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_43_SDA2__FUNC_SDA2>,
-> > +                                <MT8173_PIN_44_SCL2__FUNC_SCL2>;
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +
-> > +       i2c3_pins_a: i2c3@0 {
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_106_SDA3__FUNC_SDA3>,
-> > +                                <MT8173_PIN_107_SCL3__FUNC_SCL3>;
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +
-> > +       i2c4_pins_a: i2c4@0 {
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_133_SDA4__FUNC_SDA4>,
-> > +                                <MT8173_PIN_134_SCL4__FUNC_SCL4>;
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +
-> > +       i2c6_pins_a: i2c6@0 {
-> > +               pins1 {
-> > +                       pinmux = <MT8173_PIN_100_MSDC2_DAT0__FUNC_SDA5>,
-> > +                                <MT8173_PIN_101_MSDC2_DAT1__FUNC_SCL5>;
-> 
-> These are the SDA/SCL pins for i2c port 6, so they should really be
-> _SDA6 / _SCL6.
-> However... I checked, and these settings are labeled "SDA5 & SCL5" in
-> the datasheet.
-> I recommend marking them correctly as 6 here and fixing the datasheet :-).
-> 
-> > +                       bias-disable;
-> > +               };
-> > +       };
-> > +};
-> > +
-> > 
-> >  &uart0 {
-> >  
-> >         status = "okay";
-> >  
-> >  };
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8173.dtsi index b52ec43..6d3dbbdd 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -229,6 +229,78 @@
-> > 
-> >                         clocks = <&uart_clk>;
-> >                         status = "disabled";
-> >                 
-> >                 };
-> > 
-> > +
-> > +               i2c0: i2c@11007000 {
-> > +                       compatible = "mediatek,mt8173-i2c";
-> > +                       reg = <0 0x11007000 0 0x70>,
-> > +                             <0 0x11000100 0 0x80>;
-> > +                       interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_LOW>;
-> > +                       clock-div = <16>;
-> > +                       clocks = <&pericfg CLK_PERI_I2C0>,
-> > +                                <&pericfg CLK_PERI_AP_DMA>;
-> > +                       clock-names = "main", "dma";
-> 
-> The following fields must also be selected by the i2c nodes when they
-> are enabled:
-> 
-> clock-frequency = <100000>;
-> pinctrl-names = "default";
-> pinctrl-0 = <&i2c0_pins_a>;
-> #address-cells = <1>;
-> #size-cells = <0>;
-> 
-> So, is there any reason not to also include them here in mt8173.dtsi
-> so we can use them as defaults?
-> This would simplify the i2c nodes in the board specific .dts files.
-> The only field that might be board specific would be clock-frequency,
-> but that is trivial to override on a port-by-port basis in board files
-> as necessary.
+> Your signoff should be last if you're the one sending the patch.
+> Otherwise this seems basically fine, but you said you were going to send
+> a new version so not applying.
+Thank you, I will fix this in the next version of patch along with
+fixups of Paul's comments.
 
-The problem is, that most of the pins have several modes (up to eight).
-In the future when all the device drivers are implemented, this gets you a 
-really huge dtsi. AFAIK this can cause a somewhat long parsing time of the dtb 
-when booting the system.
-Sascha, please correct me, if I'm wrong.
 
-Thanks,
-Matthias
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
