@@ -1,69 +1,119 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4 3/3] clk: mediatek: Use regmap clk-mux for mt8135
-Date: Tue, 16 Jun 2015 16:23:35 +0200
-Message-ID: <1434464615-9080-4-git-send-email-matthias.bgg@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v4 2/3] clk: mediatek: Add support for clk-mux using regmap
+Date: Tue, 16 Jun 2015 16:23:34 +0200
+Message-ID: <1434464615-9080-3-git-send-email-matthias.bgg@gmail.com>
 References: <1434464615-9080-1-git-send-email-matthias.bgg@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434464615-9080-1-git-send-email-matthias.bgg@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: mturquette@gmail.com, sboyd@codeaurora.org, matthias.bgg@gmail.com
-Cc: henryc.chen@mediatek.com, s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, manabian@gmail.com, heiko@sntech.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1434464615-9080-1-git-send-email-matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mturquette-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The pericfg controller is used by various device drivers, so that it
-is implemented via a regmap. In the actual clk implementation for
-mt8135, some clk-mux use the traditional register approach which
-acceses the register via iomem.
-This patch changes the use from iomem to the needed regmap.
+This patches adds support for the mediatek clocks to be able to register
+and use a clk-mux wich relies on regmap.
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/clk/mediatek/clk-mt8135.c | 21 +++++++--------------
- 1 file changed, 7 insertions(+), 14 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c | 37 +++++++++++++++++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h | 26 ++++++++++++++++++++++++++
+ 2 files changed, 63 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
-index 08b4b84..c28a9d4 100644
---- a/drivers/clk/mediatek/clk-mt8135.c
-+++ b/drivers/clk/mediatek/clk-mt8135.c
-@@ -513,11 +513,11 @@ static const char * const uart_ck_sel_parents[] __initconst = {
- 	"uart_sel",
- };
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 18444ae..cf953a8 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -111,6 +111,43 @@ int mtk_clk_register_gates(struct device_node *node, const struct mtk_gate *clks
+ 	return 0;
+ }
  
--static const struct mtk_composite peri_clks[] __initconst = {
--	MUX(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents, 0x40c, 0, 1),
--	MUX(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents, 0x40c, 1, 1),
--	MUX(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents, 0x40c, 2, 1),
--	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
-+static const struct mtk_regm_mux peri_clks[] __initconst = {
-+	MUX_REGMAP(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents, 0x40c, 0, 1),
-+	MUX_REGMAP(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents, 0x40c, 1, 1),
-+	MUX_REGMAP(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents, 0x40c, 2, 1),
-+	MUX_REGMAP(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
- };
- 
- static void __init mtk_topckgen_init(struct device_node *node)
-@@ -573,20 +573,13 @@ static void __init mtk_pericfg_init(struct device_node *node)
++int mtk_clk_regm_register_mux(struct device_node *node,
++		const struct mtk_regm_mux *clks, int num,
++		struct clk_onecell_data *clk_data)
++{
++	int i;
++	struct clk *clk;
++	struct regmap *regmap;
++
++	if (!clk_data)
++		return -ENOMEM;
++
++	regmap = syscon_node_to_regmap(node);
++	if (IS_ERR(regmap)) {
++		pr_err("Cannot find regmap for %s: %ld\n", node->full_name,
++				PTR_ERR(regmap));
++		return PTR_ERR(regmap);
++	}
++
++	for (i = 0; i < num; i++) {
++		const struct mtk_regm_mux *mux = &clks[i];
++
++		clk = clk_regm_register_mux(NULL, mux->name, mux->parent_names,
++					mux->num_parents, 0, regmap,
++					mux->mux_offset, mux->mux_shift,
++					mux->mux_width, mux->flags, NULL);
++		if (IS_ERR(clk)) {
++			pr_err("Failed to register clk mux %s: %ld\n",
++					mux->name, PTR_ERR(clk));
++			continue;
++		}
++
++		clk_data->clks[mux->id] = clk;
++	}
++
++	return 0;
++}
++
+ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		void __iomem *base, spinlock_t *lock)
  {
- 	struct clk_onecell_data *clk_data;
- 	int r;
--	void __iomem *base;
--
--	base = of_iomap(node, 0);
--	if (!base) {
--		pr_err("%s(): ioremap failed\n", __func__);
--		return;
--	}
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 9dda9d8..6fe85ca 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -156,6 +156,32 @@ void __init mtk_clk_register_plls(struct device_node *node,
+ 		const struct mtk_pll_data *plls, int num_plls,
+ 		struct clk_onecell_data *clk_data);
  
- 	clk_data = mtk_alloc_clk_data(CLK_PERI_NR_CLK);
- 
- 	mtk_clk_register_gates(node, peri_gates, ARRAY_SIZE(peri_gates),
- 						clk_data);
--	mtk_clk_register_composites(peri_clks, ARRAY_SIZE(peri_clks), base,
--			&mt8135_clk_lock, clk_data);
-+	mtk_clk_regm_register_mux(node, peri_clks, ARRAY_SIZE(peri_clks),
-+			clk_data);
- 
- 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
- 	if (r)
++struct mtk_regm_mux {
++	int id;
++	const char *name;
++	const char * const *parent_names;
++	u8 num_parents;
++	unsigned flags;
++	uint32_t mux_offset;
++	uint32_t mux_shift;
++	uint32_t mux_width;
++};
++
++int __init mtk_clk_regm_register_mux(struct device_node *node,
++		const struct mtk_regm_mux *clks, int num,
++		struct clk_onecell_data *clk_data);
++
++#define MUX_REGMAP(_id, _name, _parents, _offset, _shift, _width) {	\
++		.id = _id,						\
++		.name = _name,						\
++		.parent_names = _parents,				\
++		.num_parents = ARRAY_SIZE(_parents),			\
++		.flags = CLK_SET_RATE_PARENT,				\
++		.mux_offset = _offset,					\
++		.mux_shift = _shift,					\
++		.mux_width = _width,					\
++	}
++
+ #ifdef CONFIG_RESET_CONTROLLER
+ void mtk_register_reset_controller(struct device_node *np,
+ 			unsigned int num_regs, int regofs);
 -- 
 1.9.1
