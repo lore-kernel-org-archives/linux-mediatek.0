@@ -1,111 +1,75 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 1/3] clk: Add regmap support
-Date: Tue, 16 Jun 2015 16:13:15 +0200
-Message-ID: <CABuKBe+7wk=-PsvzkTLpcc3HX_b3NGXabwR9ckOWvGLH_vjS9g@mail.gmail.com>
-References: <1433864283-25490-1-git-send-email-matthias.bgg@gmail.com>
-	<1433864283-25490-2-git-send-email-matthias.bgg@gmail.com>
-	<CAGhQ9VwDQZ77OCOKKd4nFipqRhfa3GVWVMeWC3eiEoh2x9E_CA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Subject: [PATCH v4 0/3] clk: Add regmap support for clk mulitplexer
+Date: Tue, 16 Jun 2015 16:23:32 +0200
+Message-ID: <1434464615-9080-1-git-send-email-matthias.bgg@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGhQ9VwDQZ77OCOKKd4nFipqRhfa3GVWVMeWC3eiEoh2x9E_CA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joachim Eastwood <manabian@gmail.com>
-Cc: Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, HenryC Chen <henryc.chen@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+To: mturquette@gmail.com, sboyd@codeaurora.org, matthias.bgg@gmail.com
+Cc: henryc.chen@mediatek.com, s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, p.zabel@pengutronix.de, manabian@gmail.com, heiko@sntech.de, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-06-16 12:23 GMT+02:00 Joachim  Eastwood <manabian@gmail.com>:
-> On 9 June 2015 at 17:38, Matthias Brugger <matthias.bgg@gmail.com> wrote:
->> Some devices like SoCs from Mediatek need to use the clock
->> through a regmap interface.
->> This patch adds regmap support for the simple multiplexer clock,
->> the divider clock and the clock gate code.
->>
->> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
->> ---
->>  drivers/clk/Makefile         |   1 +
->>  drivers/clk/clk-divider.c    |  71 ++++++++++++++++++++------
->>  drivers/clk/clk-gate.c       |  60 +++++++++++++++++-----
->>  drivers/clk/clk-io.c         |  62 +++++++++++++++++++++++
->>  drivers/clk/clk-io.h         |  13 +++++
->>  drivers/clk/clk-mux.c        |  94 +++++++++++++++++++++++++++++------
->>  include/linux/clk-provider.h | 115 +++++++++++++++++++++++++++++++++++++++++--
->>  7 files changed, 373 insertions(+), 43 deletions(-)
->>  create mode 100644 drivers/clk/clk-io.c
->>  create mode 100644 drivers/clk/clk-io.h
-> [...]
->> diff --git a/include/linux/clk-provider.h b/include/linux/clk-provider.h
->> index 2e5df06..22acfd5 100644
->> --- a/include/linux/clk-provider.h
->> +++ b/include/linux/clk-provider.h
->> @@ -14,6 +14,7 @@
->>  #include <linux/clk.h>
->>  #include <linux/io.h>
->>  #include <linux/of.h>
->> +#include <linux/regmap.h>
->>
->>  #ifdef CONFIG_COMMON_CLK
->>
->> @@ -31,6 +32,7 @@
->>  #define CLK_GET_RATE_NOCACHE   BIT(6) /* do not use the cached clk rate */
->>  #define CLK_SET_RATE_NO_REPARENT BIT(7) /* don't re-parent on rate change */
->>  #define CLK_GET_ACCURACY_NOCACHE BIT(8) /* do not use the cached clk accuracy */
->> +#define CLK_USE_REGMAP BIT(9) /* clock uses regmap to access its registers */
->>
->>  struct clk_hw;
->>  struct clk_core;
->> @@ -271,6 +273,8 @@ void of_fixed_clk_setup(struct device_node *np);
->>   *
->>   * @hw:                handle between common and hardware-specific interfaces
->>   * @reg:       register controlling gate
->> + * @regmap:    regmap used to control the gate
->> + * @offset:    offset inside the regmap
->>   * @bit_idx:   single bit controlling gate
->>   * @flags:     hardware-specific flags
->>   * @lock:      register lock
->> @@ -288,7 +292,11 @@ void of_fixed_clk_setup(struct device_node *np);
->>   */
->>  struct clk_gate {
->>         struct clk_hw hw;
->> -       void __iomem    *reg;
->> +       union {
->> +               void __iomem    *reg;
->> +               struct regmap   *regmap;
->> +       };
->> +       u32             offset;
->
-> Maybe using a named union here would be nice here. Something like:
-> union clk_io {
->                void __iomem    *reg;
->                struct regmap   *regmap;
-> };
->
-> And you could use this in the clk_gate, clk_mux, and clk_div
-> structures as well as your clk_io_* functions.
-> Having both void __iomem *reg and struct regmap *regmap as function
-> parameters seems a bit awkward to me.
->
-> Or maybe even as a structure:
-> struct clk_io {
->                union {
->                               void __iomem    *reg;
->                               struct regmap   *regmap;
->                };
->                u32 offset;
-> }
->
-> What do you think?
->
+This patch set adds regmap support for the simple clock multiplexer,
+the divider clock and the clock gate.
+Regmap use, apart from a pointer to the regmap struct, needs an
+offset value to know where in the regmap it has to read/write.
+We add both fields to the corresponding structs.
 
-The problem with this approach is, that I would have to change all
-clocks which use clk_mux, clk_gate or clk_divider.
-Up to now, i tried to find a solution which does not change the
-existing interface.
-So I would pretty much prefer to hear the opinion from the clk
-maintainers first before starting the crusade. :)
+The driver will distinguish between a clock which is based on regmap or not
+through a flag specified in the clock hardware struct.
+The approach does not break the existing clock framework API but adds
+new functions for registering regmap clocks. Unregistering the clocks is
+independent of the use of regmap or not, so that no new functions were
+implemented.
 
-Thanks,
-Matthias
+As an example user of the regmap clock multiplexer, it was implemented on
+the mt8135. When accepted it will also be applied to the other Mediatek SoCs.
+Other possible user are Qualcomm SoCs which up to now implement their own
+regmap based clock multiplexer.
+
+This patch set is based on linux next.
+To get the mt8135 eval board up and running, we need to enable the clock
+support [1] and use the two clocks for the uart port [2].
+
+Any comments welcome.
+
+[1] https://patchwork.kernel.org/patch/6261141/
+[2] https://patchwork.kernel.org/patch/6261151/
+
+Changes for v4:
+- fix style issues
+- use __clk_get_flags
+- delete #ifdef CONFIG_REGMAP
+
+Changes for v3:
+- rebase against linux-next
+- provide regmap access to all three clock types in a unified way
+
+Changes for v2:
+- use regmap_update_bits instead of read-write
+- fix flag check
+- add union in struct clk_mux
+- fix typo in commit message
+
+---
+
+Matthias Brugger (3):
+  clk: Add regmap support
+  clk: mediatek: Add support for clk-mux using regmap
+  clk: mediatek: Use regmap clk-mux for mt8135
+
+ drivers/clk/Makefile              |  1 +
+ drivers/clk/clk-divider.c         | 68 ++++++++++++++++++++++------
+ drivers/clk/clk-gate.c            | 57 +++++++++++++++++++-----
+ drivers/clk/clk-io.c              | 48 ++++++++++++++++++++
+ drivers/clk/clk-io.h              | 22 +++++++++
+ drivers/clk/clk-mux.c             | 94 ++++++++++++++++++++++++++++++++-------
+ drivers/clk/mediatek/clk-mt8135.c | 21 +++------
+ drivers/clk/mediatek/clk-mtk.c    | 37 +++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h    | 26 +++++++++++
+ include/linux/clk-provider.h      | 54 ++++++++++++++++++++--
+ 10 files changed, 370 insertions(+), 58 deletions(-)
+ create mode 100644 drivers/clk/clk-io.c
+ create mode 100644 drivers/clk/clk-io.h
 
 -- 
-motzblog.wordpress.com
+1.9.1
