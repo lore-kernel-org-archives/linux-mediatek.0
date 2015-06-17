@@ -1,189 +1,85 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH v4 2/2] arm64: dts: mt8173: Add I2C device node
-Date: Wed, 17 Jun 2015 23:08:03 +0800
-Message-ID: <1434553683-11651-3-git-send-email-eddie.huang@mediatek.com>
-References: <1434553683-11651-1-git-send-email-eddie.huang@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Wed, 17 Jun 2015 17:35:31 +0100
+Message-ID: <20150617163531.GU14071@sirena.org.uk>
+References: <1431675522.2128.13.camel@mhfsdcap03>
+ <20150515092543.GY2761@sirena.org.uk>
+ <1433758546.19786.16.camel@mtksdaap41>
+ <20150608175927.GO14071@sirena.org.uk>
+ <1433844321.16178.6.camel@mtksdaap41>
+ <20150609103951.GA14071@sirena.org.uk>
+ <1433923569.22080.1.camel@mtksdaap41>
+ <1434532083.19346.27.camel@mtksdaap41>
+ <20150617124758.GE3214@sirena.org.uk>
+ <1434550251.23617.38.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="TMj/TYF/hpk1GcbO"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434553683-11651-1-git-send-email-eddie.huang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1434550251.23617.38.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, HongZhou Yang <hongzhou.yang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add MT8173 I2C device nodes, include I2C controllers and pins.
-MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
-The 6th I2C controller register base doesn't next to 5th I2C,
-and there is a hardware between 5th and 6th I2C controller. So
-SoC designer name 6th controller as "i2c6", not "i2c5".
 
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 144 +++++++++++++++++++++++++++++++
- 1 file changed, 144 insertions(+)
+--TMj/TYF/hpk1GcbO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index b52ec43..1816c8f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -158,6 +158,54 @@
- 			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH>,
- 						<GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
- 						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			i2c0_pins_a: i2c0 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
-+						 <MT8173_PIN_46_SCL0__FUNC_SCL0>;
-+					bias-disable;
-+				};
-+			};
-+
-+			i2c1_pins_a: i2c1 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_125_SDA1__FUNC_SDA1>,
-+						 <MT8173_PIN_126_SCL1__FUNC_SCL1>;
-+					bias-disable;
-+				};
-+			};
-+
-+			i2c2_pins_a: i2c2 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_43_SDA2__FUNC_SDA2>,
-+						 <MT8173_PIN_44_SCL2__FUNC_SCL2>;
-+					bias-disable;
-+				};
-+			};
-+
-+			i2c3_pins_a: i2c3 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_106_SDA3__FUNC_SDA3>,
-+						 <MT8173_PIN_107_SCL3__FUNC_SCL3>;
-+					bias-disable;
-+				};
-+			};
-+
-+			i2c4_pins_a: i2c4 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_133_SDA4__FUNC_SDA4>,
-+						 <MT8173_PIN_134_SCL4__FUNC_SCL4>;
-+					bias-disable;
-+				};
-+			};
-+
-+			i2c6_pins_a: i2c6 {
-+				pins1 {
-+					pinmux = <MT8173_PIN_100_MSDC2_DAT0__FUNC_SDA5>,
-+						 <MT8173_PIN_101_MSDC2_DAT1__FUNC_SCL5>;
-+					bias-disable;
-+				};
-+			};
- 		};
- 
- 		watchdog: watchdog@10007000 {
-@@ -229,6 +277,102 @@
- 			clocks = <&uart_clk>;
- 			status = "disabled";
- 		};
-+
-+		i2c0: i2c@11007000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11007000 0 0x70>,
-+			      <0 0x11000100 0 0x80>;
-+			interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C0>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c0_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c1: i2c@11008000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11008000 0 0x70>,
-+			      <0 0x11000180 0 0x80>;
-+			interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C1>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c1_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c2: i2c@11009000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11009000 0 0x70>,
-+			      <0 0x11000200 0 0x80>;
-+			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C2>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c2_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c3: i2c3@11010000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11010000 0 0x70>,
-+			      <0 0x11000280 0 0x80>;
-+			interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C3>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c3_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c4: i2c4@11011000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11011000 0 0x70>,
-+			      <0 0x11000300 0 0x80>;
-+			interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C4>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c4_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		i2c6: i2c6@11013000 {
-+			compatible = "mediatek,mt8173-i2c";
-+			reg = <0 0x11013000 0 0x70>,
-+			      <0 0x11000080 0 0x80>;
-+			interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
-+			clock-div = <16>;
-+			clocks = <&pericfg CLK_PERI_I2C6>,
-+				 <&pericfg CLK_PERI_AP_DMA>;
-+			clock-names = "main", "dma";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&i2c6_pins_a>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+		};
- 	};
- 
- };
--- 
-1.8.1.1.dirty
+On Wed, Jun 17, 2015 at 10:10:51PM +0800, Eddie Huang wrote:
+
+> Our hardware limitation is: we don't have separate dma tx, rx channel
+> with transfer finish interrupt, only have spi trigger operation.So the
+> mediatek SPI dma full duplex operation steps are:
+> 1. Set TX DMA address.
+> 2. Set RX DMA address.
+> 3. Set length (this step assume TX, RX are the same size).
+> 4. Set TX DMA enable, RX DMA enable bit in spi config register. (not
+> trigger DMA, just told spi use dma)
+> 5. Trigger spi operations.
+> 6. Wait spi operations finish interrupt.
+
+Sure, that's what I understood.
+
+> If tx scatterlist per list data size are 128, 4096, 256. rx scatterlist
+> per list data size are 128, 4096, 256. So we need to go through above
+> steps three times. If tx scatterlists per list data size are 128, 4096,
+> 256. rx scatterlists per list data size are 256, 4096, 128. If we start
+> sending first entry, tx size is 128, rx size is 256, this will cause
+> hardware malfunction because tx, rx data length are not the same.
+
+> The solution I think is copy scatterlist data into one single buffer in
+> mediatek spi transfer function, but I think this is odd because
+> __spi_map_msg() map single buffer into scatterlist, then our driver map
+> scatterlist into single buffer again. I hope this explaination is more
+> clear than before.
+
+To repeat what I said in my last mail: there's no need to use the
+scatterlists as-is, your driver can do whatever set of DMA transfers it
+likes to keep the lengths of each transfer the same.  Attempting to
+linearise the transfers in memory isn't going to work unless you
+allocate physically contiguous memory (which could get painful) and will
+add substantial overhead.
+
+For example with your above example you could split the transfers up to
+be 128, 128, 3968, 128, 128.
+
+--TMj/TYF/hpk1GcbO
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVgaHQAAoJECTWi3JdVIfQAksH/jIeZwEfqVtwT6EEhUEl2nAf
+2mB4U8etaTNL8MrkztPeU3zQFQKlCJkoF+YGK4IypF1kToaUgLkDDpFf04aEEAdK
+E+jMMLgkCY2Ba1DJtxZ4FCnnSqLIcFIHmcnLPjtd2sU3UjAnPnFDctuzjCtlJy4V
+Oovc3xO9fEPznpo28DR2UFf/SZMjQntjS9Rj4aOn8EpPvA/A92r6TKiTY14JE0bn
+3RHpsQ17x9LReKEuv/rcnVZsB6ONqolEPMTmOxtRTEAJQvEQsj2F6+11d80kdj9g
+6icITaTDIF6yBwyzDQ5xiY6F23RW4w/aLBSFyslLZK3rQnYyJcyA0ecJbh3/C28=
+=vCVN
+-----END PGP SIGNATURE-----
+
+--TMj/TYF/hpk1GcbO--
