@@ -1,85 +1,95 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
-Date: Wed, 17 Jun 2015 17:35:31 +0100
-Message-ID: <20150617163531.GU14071@sirena.org.uk>
-References: <1431675522.2128.13.camel@mhfsdcap03>
- <20150515092543.GY2761@sirena.org.uk>
- <1433758546.19786.16.camel@mtksdaap41>
- <20150608175927.GO14071@sirena.org.uk>
- <1433844321.16178.6.camel@mtksdaap41>
- <20150609103951.GA14071@sirena.org.uk>
- <1433923569.22080.1.camel@mtksdaap41>
- <1434532083.19346.27.camel@mtksdaap41>
- <20150617124758.GE3214@sirena.org.uk>
- <1434550251.23617.38.camel@mtksdaap41>
+From: Paul Gortmaker <paul.gortmaker@windriver.com>
+Subject: Re: [PATCH v6 0/7] Add Mediatek MMC driver
+Date: Wed, 17 Jun 2015 17:01:33 -0400
+Message-ID: <CAP=VYLpBymmAVY7LoFJR5+QTxL4CN7t+PrLFCxaoAN_a9S4Jbw@mail.gmail.com>
+References: <1434367253-26577-1-git-send-email-chaotian.jing@mediatek.com> <CAPDyKFrAbAFR7_p5O4bPh6FZEBVhGZ2rq3htCKcF2QgQuCEf2g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="TMj/TYF/hpk1GcbO"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1434550251.23617.38.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, HongZhou Yang <hongzhou.yang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-spi@vger.kernel.org" <linux-spi@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrAbAFR7_p5O4bPh6FZEBVhGZ2rq3htCKcF2QgQuCEf2g@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, Jun 16, 2015 at 4:03 AM, Ulf Hansson <ulf.hansson@linaro.org> wrote:
+> On 15 June 2015 at 13:20, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>> This series enables MMC support on the MT8135/MT8173 platform.
+>> MT8135 has 5 MMC controllers and MT8173 has 4 MMC controllers.
+>>
+>> Changes base on Ulf's comments
+>> Make hclk mandatory in the driver code
+>> Change host->hclk to host->src_clk_freq
+>> Add linux/pm.h
+>>
+>> Chaotian Jing (3):
+>>   mmc: dt-bindings: add Mediatek MMC bindings
+>>   mmc: mediatek: Add Mediatek MMC driver.
 
---TMj/TYF/hpk1GcbO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+This commit breaks when merged to linux-next since it gets
+exposed as an implicit module.h user that does not include
+that header:
 
-On Wed, Jun 17, 2015 at 10:10:51PM +0800, Eddie Huang wrote:
+   drivers/mmc/host/mtk-sd.c:1459:1: note: in expansion of macro
+'module_platform_driver'
+    module_platform_driver(mt_msdc_driver);
+    ^
+   include/linux/device.h:1296:1: error: type defaults to 'int' in
+declaration of 'module_init' [-Werror=implicit-int]
+    module_init(__driver##_init); \
+    ^
 
-> Our hardware limitation is: we don't have separate dma tx, rx channel
-> with transfer finish interrupt, only have spi trigger operation.So the
-> mediatek SPI dma full duplex operation steps are:
-> 1. Set TX DMA address.
-> 2. Set RX DMA address.
-> 3. Set length (this step assume TX, RX are the same size).
-> 4. Set TX DMA enable, RX DMA enable bit in spi config register. (not
-> trigger DMA, just told spi use dma)
-> 5. Trigger spi operations.
-> 6. Wait spi operations finish interrupt.
+Since the code doesn't exist in mainline, I can't fix it from
+within my header cleanup series, so can you please add
+an appropriate include of module.h to the above?
 
-Sure, that's what I understood.
+Also, I noticed the Makefile addition from this commit
+is whitespace mangled; might as well fix that too if
+rebasing to fix the include problem.
 
-> If tx scatterlist per list data size are 128, 4096, 256. rx scatterlist
-> per list data size are 128, 4096, 256. So we need to go through above
-> steps three times. If tx scatterlists per list data size are 128, 4096,
-> 256. rx scatterlists per list data size are 256, 4096, 128. If we start
-> sending first entry, tx size is 128, rx size is 256, this will cause
-> hardware malfunction because tx, rx data length are not the same.
+Thanks,
+Paul.
+--
 
-> The solution I think is copy scatterlist data into one single buffer in
-> mediatek spi transfer function, but I think this is odd because
-> __spi_map_msg() map single buffer into scatterlist, then our driver map
-> scatterlist into single buffer again. I hope this explaination is more
-> clear than before.
-
-To repeat what I said in my last mail: there's no need to use the
-scatterlists as-is, your driver can do whatever set of DMA transfers it
-likes to keep the lengths of each transfer the same.  Attempting to
-linearise the transfers in memory isn't going to work unless you
-allocate physically contiguous memory (which could get painful) and will
-add substantial overhead.
-
-For example with your above example you could split the transfers up to
-be 128, 128, 3968, 128, 128.
-
---TMj/TYF/hpk1GcbO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVgaHQAAoJECTWi3JdVIfQAksH/jIeZwEfqVtwT6EEhUEl2nAf
-2mB4U8etaTNL8MrkztPeU3zQFQKlCJkoF+YGK4IypF1kToaUgLkDDpFf04aEEAdK
-E+jMMLgkCY2Ba1DJtxZ4FCnnSqLIcFIHmcnLPjtd2sU3UjAnPnFDctuzjCtlJy4V
-Oovc3xO9fEPznpo28DR2UFf/SZMjQntjS9Rj4aOn8EpPvA/A92r6TKiTY14JE0bn
-3RHpsQ17x9LReKEuv/rcnVZsB6ONqolEPMTmOxtRTEAJQvEQsj2F6+11d80kdj9g
-6icITaTDIF6yBwyzDQ5xiY6F23RW4w/aLBSFyslLZK3rQnYyJcyA0ecJbh3/C28=
-=vCVN
------END PGP SIGNATURE-----
-
---TMj/TYF/hpk1GcbO--
+>>   mmc: mediatek: Add PM support for MMC driver
+>>
+>> Eddie Huang (2):
+>>   arm64: dts: mediatek: Add MT8173 MMC dts
+>>   arm64: mediatek: Add Mediatek MMC support in defconfig
+>>
+>> Yingjoe Chen (2):
+>>   ARM: mediatek: dts: Add emmc support to mt8135
+>>   ARM: multi_v7_defconfig: Enable Mediatek MMC support multi-v7
+>>
+>>  Documentation/devicetree/bindings/mmc/mtk-sd.txt |   32 +
+>>  arch/arm/boot/dts/mt8135-evbp1.dts               |  158 +++
+>>  arch/arm/boot/dts/mt8135.dtsi                    |   55 +
+>>  arch/arm/configs/multi_v7_defconfig              |    1 +
+>>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  126 ++
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi         |   45 +-
+>>  arch/arm64/configs/defconfig                     |    1 +
+>>  drivers/mmc/host/Kconfig                         |    8 +
+>>  drivers/mmc/host/Makefile                        |    1 +
+>>  drivers/mmc/host/mtk-sd.c                        | 1461 ++++++++++++++++++++++
+>>  include/linux/mmc/core.h                         |    1 +
+>>  11 files changed, 1888 insertions(+), 1 deletion(-)
+>>  create mode 100644 Documentation/devicetree/bindings/mmc/mtk-sd.txt
+>>  create mode 100644 drivers/mmc/host/mtk-sd.c
+>>
+>> --
+>> 1.8.1.1.dirty
+>>
+>
+> Hi Chaotian,
+>
+> I have applied patch 1->3 for my next branch, which thus includes the
+> mmc driver parts. I could potentially also pick the ARM patches, but
+> then those needs to be acked from the ARM SoC folks.
+>
+> Kind regards
+> Uffe
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
