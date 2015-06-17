@@ -1,63 +1,87 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 5/5] ARM64: MediaTek MT8173: Add SCPSYS device node
-Date: Wed, 17 Jun 2015 09:56:47 +0200
-Message-ID: <20150617075647.GG6325@pengutronix.de>
-References: <1433839623-10804-1-git-send-email-s.hauer@pengutronix.de>
- <1433839623-10804-6-git-send-email-s.hauer@pengutronix.de>
- <7hlhfjy0tq.fsf@deeprootsystems.com>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
+Date: Wed, 17 Jun 2015 17:08:03 +0800
+Message-ID: <1434532083.19346.27.camel@mtksdaap41>
+References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
+	 <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
+	 <20150508175306.GG2761@sirena.org.uk> <1431434356.2128.9.camel@mhfsdcap03>
+	 <20150512160540.GB3066@sirena.org.uk> <1431675522.2128.13.camel@mhfsdcap03>
+	 <20150515092543.GY2761@sirena.org.uk>
+	 <1433758546.19786.16.camel@mtksdaap41>
+	 <20150608175927.GO14071@sirena.org.uk>
+	 <1433844321.16178.6.camel@mtksdaap41>
+	 <20150609103951.GA14071@sirena.org.uk>
+	 <1433923569.22080.1.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <7hlhfjy0tq.fsf@deeprootsystems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1433923569.22080.1.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Leilk Liu =?UTF-8?Q?=28=E5=88=98=E7=A3=8A=29?= <Leilk.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, HongZhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer@pengutron>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 16, 2015 at 11:17:53AM -0700, Kevin Hilman wrote:
-> Sascha Hauer <s.hauer@pengutronix.de> writes:
+Hi Mark,
+
+On Wed, 2015-06-10 at 16:06 +0800, Eddie Huang wrote:
+> On Tue, 2015-06-09 at 11:39 +0100, Mark Brown wrote:
+> > On Tue, Jun 09, 2015 at 06:05:21PM +0800, Eddie Huang wrote:
+> > 
+> > > --- a/drivers/spi/spi.c
+> > > +++ b/drivers/spi/spi.c
+> > > @@ -539,8 +539,8 @@ static int __spi_map_msg(struct spi_master *master,
+> > > struct spi_message *msg)
+> > >         if (!master->can_dma)
+> > >                 return 0;
+> > 
+> > > -       tx_dev = master->dma_tx->device->dev;
+> > > -       rx_dev = master->dma_rx->device->dev;
+> > > +       tx_dev = master->dma_tx ? master->dma_tx->device->dev :
+> > > master->dev;
+> > > +       rx_dev = master->dma_rx ? master->dma_rx->device->dev : master-
+> > 
+> > > Is this what you want ? Actually, I don't like first one at all.
+> > 
+> > Not quite what I'd been thinking of - we can't just pick the device in
+> > the core safely, the device might be a MFD or have some other
+> > restriction that needs us to use a separate struct device.  However most
+> > of those cases are likely to point towards implementing a dmaengine
+> > device so probably the above will work for most cases and is fine.  Can
+> > you send a proper patch please?
 > 
-> > This adds the SCPSYS device node to the MT8173 dtsi file.
-> >
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index 924fdb6..12430f0 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -125,6 +125,16 @@
-> >  						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
-> >  		};
-> >  
-> > +		scpsys: scpsys@10006000 {
-> > +			compatible = "mediatek,mt8173-scpsys";
-> > +			#power-domain-cells = <1>;
-> > +			reg = <0 0x10006000 0 0x1000>;
-> > +			clocks = <&clk26m>,
-> > +				 <&topckgen CLK_TOP_MM_SEL>;
-> 
-> Neither your binding doc (nor the generic one) mentions these clock
-> properties or what they are used for.  They appear to define a clock
-> that must be enabled in order to for the power domain to be on.
 
-Ok, will add documentation for this.
+After further investigate, we found problem when use can_dma() to
+implement spi driver.
 
-> 
-> Also the order here seems rather important and probably needs
-> documenting in the binding (e.g. the clk_id order is hard-coded in the
-> driver.)
+If can_dma() return true in __spi_map_msg() function, it will map data
+buffer to sg_table, then pass this sg_table to transfer function. In
+transfer function, spi hardware can do tx and rx at the same time (full
+duplex), and the data size must be the same.
 
-The order is not important, the clock-names property defines which clock
-is which.
+Here comes the problem, although total length of tx, rx is the same,
+each entry in rx and tx scatterlist may not be the same (in the case
+data buffer allocate from vmalloc). Other vendor have dmaengine driver
+to send entry-by-entry automatically, so it is ok due to total length is
+the same.But mediatek hw can only send tx and rx scatterlist entry one
+by on, which means in full duplex, mediatek SPI hardware need send each
+entry separately, will cause full duplex fail because tx/rx entry size
+or entry number may not be the same.
 
-Sascha
+The problem is not dma map discuss earlier, it is mediatek spi hardware
+limitation that can't support scatterlist dma transfer in full-duplex
+mode. We can only support both tx and rx has the same size continuous
+memory data in full-duplex mode. I don't know whether should modify
+spi.c to support mediatek spi, or we just return can_dma() false and do
+transfer one continuous data in transfer function.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+By the way, I think maybe it is better to change can_dma() to
+can_dma_sg().
+
+Eddie
+Thanks
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
