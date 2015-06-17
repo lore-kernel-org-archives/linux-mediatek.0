@@ -1,87 +1,84 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH 2/3] spi: mediatek: Add spi bus for Mediatek MT8173
-Date: Wed, 17 Jun 2015 17:08:03 +0800
-Message-ID: <1434532083.19346.27.camel@mtksdaap41>
-References: <1431075343-7887-1-git-send-email-leilk.liu@mediatek.com>
-	 <1431075343-7887-3-git-send-email-leilk.liu@mediatek.com>
-	 <20150508175306.GG2761@sirena.org.uk> <1431434356.2128.9.camel@mhfsdcap03>
-	 <20150512160540.GB3066@sirena.org.uk> <1431675522.2128.13.camel@mhfsdcap03>
-	 <20150515092543.GY2761@sirena.org.uk>
-	 <1433758546.19786.16.camel@mtksdaap41>
-	 <20150608175927.GO14071@sirena.org.uk>
-	 <1433844321.16178.6.camel@mtksdaap41>
-	 <20150609103951.GA14071@sirena.org.uk>
-	 <1433923569.22080.1.camel@mtksdaap41>
+Date: Wed, 17 Jun 2015 13:47:58 +0100
+Message-ID: <20150617124758.GE3214@sirena.org.uk>
+References: <1431434356.2128.9.camel@mhfsdcap03>
+ <20150512160540.GB3066@sirena.org.uk>
+ <1431675522.2128.13.camel@mhfsdcap03>
+ <20150515092543.GY2761@sirena.org.uk>
+ <1433758546.19786.16.camel@mtksdaap41>
+ <20150608175927.GO14071@sirena.org.uk>
+ <1433844321.16178.6.camel@mtksdaap41>
+ <20150609103951.GA14071@sirena.org.uk>
+ <1433923569.22080.1.camel@mtksdaap41>
+ <1434532083.19346.27.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1433923569.22080.1.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Leilk Liu =?UTF-8?Q?=28=E5=88=98=E7=A3=8A=29?= <Leilk.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, HongZhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer@pengutron>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="FN+gV9K+162wdwwF"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1434532083.19346.27.camel@mtksdaap41>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Leilk Liu =?utf-8?B?KOWImOejiik=?= <Leilk.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, HongZhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
 
-On Wed, 2015-06-10 at 16:06 +0800, Eddie Huang wrote:
-> On Tue, 2015-06-09 at 11:39 +0100, Mark Brown wrote:
-> > On Tue, Jun 09, 2015 at 06:05:21PM +0800, Eddie Huang wrote:
-> > 
-> > > --- a/drivers/spi/spi.c
-> > > +++ b/drivers/spi/spi.c
-> > > @@ -539,8 +539,8 @@ static int __spi_map_msg(struct spi_master *master,
-> > > struct spi_message *msg)
-> > >         if (!master->can_dma)
-> > >                 return 0;
-> > 
-> > > -       tx_dev = master->dma_tx->device->dev;
-> > > -       rx_dev = master->dma_rx->device->dev;
-> > > +       tx_dev = master->dma_tx ? master->dma_tx->device->dev :
-> > > master->dev;
-> > > +       rx_dev = master->dma_rx ? master->dma_rx->device->dev : master-
-> > 
-> > > Is this what you want ? Actually, I don't like first one at all.
-> > 
-> > Not quite what I'd been thinking of - we can't just pick the device in
-> > the core safely, the device might be a MFD or have some other
-> > restriction that needs us to use a separate struct device.  However most
-> > of those cases are likely to point towards implementing a dmaengine
-> > device so probably the above will work for most cases and is fine.  Can
-> > you send a proper patch please?
-> 
+--FN+gV9K+162wdwwF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-After further investigate, we found problem when use can_dma() to
-implement spi driver.
+On Wed, Jun 17, 2015 at 05:08:03PM +0800, Eddie Huang wrote:
 
-If can_dma() return true in __spi_map_msg() function, it will map data
-buffer to sg_table, then pass this sg_table to transfer function. In
-transfer function, spi hardware can do tx and rx at the same time (full
-duplex), and the data size must be the same.
+> Here comes the problem, although total length of tx, rx is the same,
+> each entry in rx and tx scatterlist may not be the same (in the case
+> data buffer allocate from vmalloc). Other vendor have dmaengine driver
+> to send entry-by-entry automatically, so it is ok due to total length is
+> the same.But mediatek hw can only send tx and rx scatterlist entry one
+> by on, which means in full duplex, mediatek SPI hardware need send each
+> entry separately, will cause full duplex fail because tx/rx entry size
+> or entry number may not be the same.
 
-Here comes the problem, although total length of tx, rx is the same,
-each entry in rx and tx scatterlist may not be the same (in the case
-data buffer allocate from vmalloc). Other vendor have dmaengine driver
-to send entry-by-entry automatically, so it is ok due to total length is
-the same.But mediatek hw can only send tx and rx scatterlist entry one
-by on, which means in full duplex, mediatek SPI hardware need send each
-entry separately, will cause full duplex fail because tx/rx entry size
-or entry number may not be the same.
+I don't see why this is a problem - your driver is going to have to do
+more work to overcome the limitations of the hardware but surely it's
+just a question of how you parse the scatterlists (or rewriting them if
+that's appropriate)?
 
-The problem is not dma map discuss earlier, it is mediatek spi hardware
-limitation that can't support scatterlist dma transfer in full-duplex
-mode. We can only support both tx and rx has the same size continuous
-memory data in full-duplex mode. I don't know whether should modify
-spi.c to support mediatek spi, or we just return can_dma() false and do
-transfer one continuous data in transfer function.
+> The problem is not dma map discuss earlier, it is mediatek spi hardware
+> limitation that can't support scatterlist dma transfer in full-duplex
+> mode. We can only support both tx and rx has the same size continuous
+> memory data in full-duplex mode. I don't know whether should modify
+> spi.c to support mediatek spi, or we just return can_dma() false and do
+> transfer one continuous data in transfer function.
 
-By the way, I think maybe it is better to change can_dma() to
-can_dma_sg().
+> By the way, I think maybe it is better to change can_dma() to
+> can_dma_sg().
 
-Eddie
-Thanks
+Don't you just need to handle the scatterlists in page sized chunks
+here?  There's nothing about passing information about the memory that
+was mapped around in a scatterlist that means you have to pass the whole
+list to the hardware at once - at heart the scatterlist is just a
+convenient structure for passing around where the data to be transferred
+is.
 
+--FN+gV9K+162wdwwF
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVgWx9AAoJECTWi3JdVIfQBdUH/AyU6p9yHwPc9+PIeaahmBge
+YetLo1UVBEOo4IiKelnOwc1UXfr6MQBF8Ho2MQtEBgEjLofZgakkmJjK2hJvR3rl
+iM98AOKLXBUyfpGn/mB7FCPypctGY8N76oED59XD00BnCDcHUIKIfj3dpv2mxTkz
+rNbTonLKgetC6HHNojO5+cDPZDcHCqHCuHGs8fN1ius0IDDMvlsev0Wwy9FU7iZI
+FqlLtVJ1MOjMC27sz4Rhiq0KkJ07nflmXtMWYJX/03che9SI0PS4BqyXumpfIvov
++6rZTvzpDCHUblsU2dqckmFWQeIUvC1HaWPkWivsN+hRKaYNYzcZorb6jMyuS7w=
+=5Xa9
+-----END PGP SIGNATURE-----
+
+--FN+gV9K+162wdwwF--
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
