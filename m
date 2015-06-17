@@ -1,62 +1,63 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] arm64: dts: symlink cros-ec-keyboard from arm to arm64
-Date: Wed, 17 Jun 2015 12:13:41 +0800
-Message-ID: <CAGS+omD=gJ_pezJbfZN6Yi+X07r+yv-uUAohigPRKUPBRkR-nA@mail.gmail.com>
-References: <1434465343-29124-1-git-send-email-djkurtz@chromium.org> <20150616145552.GH30522@arm.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 5/5] ARM64: MediaTek MT8173: Add SCPSYS device node
+Date: Wed, 17 Jun 2015 09:56:47 +0200
+Message-ID: <20150617075647.GG6325@pengutronix.de>
+References: <1433839623-10804-1-git-send-email-s.hauer@pengutronix.de>
+ <1433839623-10804-6-git-send-email-s.hauer@pengutronix.de>
+ <7hlhfjy0tq.fsf@deeprootsystems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150616145552.GH30522@arm.com>
+Content-Disposition: inline
+In-Reply-To: <7hlhfjy0tq.fsf@deeprootsystems.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Will Deacon <will.deacon@arm.com>
-Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Nicolas Boichat <drinkcat@chromium.org>, Olof Johansson <olofj@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <Pawel.Moll@arm.com>, Mark Rutland <Mark.Rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <Catalin.Marinas@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
+To: Kevin Hilman <khilman@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 16, 2015 at 10:55 PM, Will Deacon <will.deacon@arm.com> wrote:
-> On Tue, Jun 16, 2015 at 03:35:41PM +0100, Daniel Kurtz wrote:
->> The cros-ec-keyboard.dtsi snippet is useful for both arm and arm64 boards.
->> Create a link between the two.
->>
->> This may not be the most scalable solution, so consider it temporary until
->> we find a more central repository for such shared .dtsi snippets.
->
-> I don't have strong opinions either way, but we should be consistent as
-> to whether we use relative paths:
->
->   http://lists.infradead.org/pipermail/linux-arm-kernel/2015-June/350267.html
->
-> or symlinks, like below.
->
-> Does anybody have some technical arguments one way or the other?
+On Tue, Jun 16, 2015 at 11:17:53AM -0700, Kevin Hilman wrote:
+> Sascha Hauer <s.hauer@pengutronix.de> writes:
+> 
+> > This adds the SCPSYS device node to the MT8173 dtsi file.
+> >
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > index 924fdb6..12430f0 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > @@ -125,6 +125,16 @@
+> >  						<GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
+> >  		};
+> >  
+> > +		scpsys: scpsys@10006000 {
+> > +			compatible = "mediatek,mt8173-scpsys";
+> > +			#power-domain-cells = <1>;
+> > +			reg = <0 0x10006000 0 0x1000>;
+> > +			clocks = <&clk26m>,
+> > +				 <&topckgen CLK_TOP_MM_SEL>;
+> 
+> Neither your binding doc (nor the generic one) mentions these clock
+> properties or what they are used for.  They appear to define a clock
+> that must be enabled in order to for the power domain to be on.
 
- /include/ "../../../../arm/boot/dts/cros-ec-keyboard.dtsi"
+Ok, will add documentation for this.
 
-Directly embedding the relative path to .dtsi in /arm/ from .dts in
-/arm64/ is more straightforward and does not require maintaining extra
-symlink .dtsi files.
+> 
+> Also the order here seems rather important and probably needs
+> documenting in the binding (e.g. the clk_id order is hard-coded in the
+> driver.)
 
-I actually like it better than the symlink that I proposed :-).
-Consider my patch abandoned, unless someone else feels strongly.
+The order is not important, the clock-names property defines which clock
+is which.
 
--Dan
+Sascha
 
->
-> Will
->
->> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
->> ---
->>  arch/arm64/boot/dts/cros-ec-keyboard.dtsi | 1 +
->>  1 file changed, 1 insertion(+)
->>  create mode 120000 arch/arm64/boot/dts/cros-ec-keyboard.dtsi
->>
->> diff --git a/arch/arm64/boot/dts/cros-ec-keyboard.dtsi b/arch/arm64/boot/dts/cros-ec-keyboard.dtsi
->> new file mode 120000
->> index 0000000..42220ac
->> --- /dev/null
->> +++ b/arch/arm64/boot/dts/cros-ec-keyboard.dtsi
->> @@ -0,0 +1 @@
->> +../../../arm/boot/dts/cros-ec-keyboard.dtsi
->> \ No newline at end of file
->> --
->> 2.2.0.rc0.207.ga3a616c
->>
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
