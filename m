@@ -1,71 +1,55 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Thu, 18 Jun 2015 18:15:03 +0200
-Message-ID: <2333431.ttvjElY3ps@phil>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com>
+From: Sudip Mukherjee <sudipm.mukherjee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 5/7] samples: kdbus: disable for mn10300
+Date: Thu, 18 Jun 2015 21:49:05 +0530
+Message-ID: <20150618161905.GB21198@sudip-PC>
+References: <1434629873-11668-1-git-send-email-sudipm.mukherjee@gmail.com>
+ <1434629873-11668-6-git-send-email-sudipm.mukherjee@gmail.com>
+ <20150618143958.GA8830@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1434605351-64592-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20150618143958.GA8830-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-am33-list-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Donnerstag, 18. Juni 2015, 13:29:11 schrieb Eddie Huang:
-> Add clk_null, which represents clocks that can not / need not
-> controlled by software.
-> There are many clocks' parent set to clk_null.
-
-Devicetree is supposed to describe hardware, and ideally not what software 
-does with it. If the clock simply cannot be controlled by software, it will 
-still have a rate and I think it should probably be modelled - similarly we 
-sometimes have fixed regulators that also are not software controllable.
-
-
-While it might be ok to define dummy clocks as a temporary stopgap, these 
-should definitly be marked as such. This clk_null at least sounds like there is 
-no plan to replace this with a real solution at some point.
-
-And of course a bit of context would be cool, to know which type of clocks 
-this actually replaces.
-
-
-Heiko
-
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-> Base on 4.1-rc1
+On Thu, Jun 18, 2015 at 07:39:58AM -0700, Greg Kroah-Hartman wrote:
+> On Thu, Jun 18, 2015 at 05:47:51PM +0530, Sudip Mukherjee wrote:
+> > While building it failed with:
+> > In function 'prime_new':
+> > error: '__NR_memfd_create' undeclared (first use in this function)
+> > 
+> > memfd_create syscall has not yet been implemented for mn10300.
+> > so disable compilation of samples/kdbus for now with mn10300.
+> > 
+> > Signed-off-by: Sudip Mukherjee <sudip-ofJRbWXBVFamYgehrs7/Lw@public.gmane.org>
+> > ---
+> >  samples/Kconfig | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/samples/Kconfig b/samples/Kconfig
+> > index a4c6b2f..20c55af 100644
+> > --- a/samples/Kconfig
+> > +++ b/samples/Kconfig
+> > @@ -57,7 +57,7 @@ config SAMPLE_KDB
+> >  
+> >  config SAMPLE_KDBUS
+> >  	bool "Build kdbus API example"
+> > -	depends on KDBUS
+> > +	depends on KDBUS && !MN10300
 > 
-> Change-Id: I4db9b40d07e28f54f7bae9b676316cbd6a962124
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8173.dtsi index 924fdb6..4798f44 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -81,6 +81,12 @@
->  		cpu_on	      = <0x84000003>;
->  	};
-> 
-> +	clk_null: clk_null {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <0>;
-> +		#clock-cells = <0>;
-> +	};
-> +
->  	uart_clk: dummy26m {
->  		compatible = "fixed-clock";
->  		clock-frequency = <26000000>;
+> Why not just add the memfd syscall to this arch?
+Yes, I intend to. But for now this will fix allmodconfig.
+>I thought someone had already sent such a patch in a while ago.
+Then it is still not merged. :(
+I will try to find that patch adding memfd syscall. And if i find it whom
+shall I forward it to?
+
+regards
+sudip
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
