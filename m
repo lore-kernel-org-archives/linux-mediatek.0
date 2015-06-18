@@ -1,50 +1,84 @@
 From: Scott Shu <scott.shu@mediatek.com>
-Subject: [RESEND PATCH 0/6] This series adds SMP support for the MediaTek MT6580.
-Date: Fri, 19 Jun 2015 02:01:15 +0800
-Message-ID: <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+Subject: [RESEND PATCH 6/6] ARM: dts: mt6580: enable basic SMP bringup for mt6580
+Date: Fri, 19 Jun 2015 02:01:21 +0800
+Message-ID: <1434650481-39421-7-git-send-email-scott.shu@mediatek.com>
 References: <Scott Shu <srv_scott.shu@mediatek.com>
+ <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <Scott Shu <srv_scott.shu@mediatek.com>
+In-Reply-To: <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org
-Cc: srv_wsdupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: srv_wsdupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Scott Shu <scott.shu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patchset adds support SMP on MediaTek MT6580 Cortex-A7 qual core SoC.
+Add arch timer node to enable arch-timer support. MT6580 firmware
+doesn't correctly setup arch-timer frequency and CNTVOFF, add
+properties to workaround this.
 
-This is based on v4.1-rc1 and following patch series:
-(1) Yingjoe Chen's "Add SMP bringup support for mt65xx socs" [1]
-(2) Mars Cheng's "Add mt6580 basic chip support" [2]
-(3) Sascha Hauer's "Mediatek SCPSYS power domain support" [3]
+This set cpu enable-method to enable SMP.
+---
+ arch/arm/boot/dts/mt6580.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-The secondary cores are power off as default on MT6580, this change adds
-a new enable-method to turn on power to the cores during booting process.
-
-The System Power Manager (SPM) inside the SCPSYS is for the CPU MTCMOS
-power domain control. Please check [3] for more information about SCPSYS.
-
-[1] https://lkml.org/lkml/2015/5/16/33
-[2] https://lkml.org/lkml/2015/6/3/113
-[3] https://lkml.org/lkml/2015/6/9/172
-
-
-Scott Shu (6):
-  Document: bindings: DT: Add SMP enable method for MT6580 SoC platform
-  soc: Mediatek: Add SCPSYS CPU power domain driver
-  ARM: mediatek: add smp bringup code
-  ARM: Mediatek: enable GPT6 on boot up to make arch timer working for MT6580
-  ARM: dts: mt6580: Add device nodes to the MT6580 dtsi file.
-  ARM: dts: mt6580: enable basic SMP bringup for MT6580
-
- Documentation/devicetree/bindings/arm/cpus.txt |   1 +
- arch/arm/boot/dts/mt6580.dtsi                  |  25 +++
- arch/arm/mach-mediatek/Makefile                |   2 +-
- arch/arm/mach-mediatek/generic.h               |  24 +++
- arch/arm/mach-mediatek/hotplug.c               | 229 +++++++++++++++++++++++++
- arch/arm/mach-mediatek/mediatek.c              |   4 +-
- arch/arm/mach-mediatek/platsmp.c               | 113 +++++++++++-
- 7 files changed, 395 insertions(+), 3 deletions(-)
- create mode 100644 arch/arm/mach-mediatek/generic.h
- create mode 100644 arch/arm/mach-mediatek/hotplug.c
+diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
+index a974830..a7071b38 100644
+--- a/arch/arm/boot/dts/mt6580.dtsi
++++ b/arch/arm/boot/dts/mt6580.dtsi
+@@ -23,26 +23,31 @@
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
++		enable-method = "mediatek,mt6580-smp";
+ 
+ 		cpu@0 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x0>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@1 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x1>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@2 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x2>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@3 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x3>;
++			clock-frequency = <1700000000>;
+ 		};
+ 
+ 	};
+@@ -72,6 +77,21 @@
+ 		};
+ 	};
+ 
++	timer {
++		compatible = "arm,armv7-timer";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>;
++		clock-frequency = <13000000>;
++		arm,cpu-registers-not-fw-configured;
++	};
++
+ 	soc {
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+-- 
+1.8.1.1.dirty
