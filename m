@@ -1,51 +1,51 @@
-From: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 3/7] mmc: mediatek: build as module
-Date: Thu, 18 Jun 2015 15:10:10 +0200
-Message-ID: <CAPDyKFq-s+xFY0zxVP7SEEEWVLh83VQiMPjJseRXkparmQY7fg@mail.gmail.com>
-References: <1434629873-11668-1-git-send-email-sudipm.mukherjee@gmail.com>
-	<1434629873-11668-4-git-send-email-sudipm.mukherjee@gmail.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v2 2/2] pwm: add MediaTek display PWM driver support
+Date: Thu, 18 Jun 2015 21:58:59 +0800
+Message-ID: <1434635939.22029.7.camel@mtksdaap41>
+References: <1432214964-40644-1-git-send-email-yh.huang@mediatek.com>
+	 <1432214964-40644-3-git-send-email-yh.huang@mediatek.com>
+	 <20150612102046.GF19400@ulmo.nvidia.com>
+	 <1434622784.18278.39.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1434629873-11668-4-git-send-email-sudipm.mukherjee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sudip Mukherjee <sudipm.mukherjee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: David Howells <dhowells-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-am33-list-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1434622784.18278.39.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 18 June 2015 at 14:17, Sudip Mukherjee <sudipm.mukherjee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> while building as module with mn10300 it failed with:
->
-> warning: data definition has no type or storage class
->         module_init(__driver##_init);
->
-> Signed-off-by: Sudip Mukherjee <sudip-ofJRbWXBVFamYgehrs7/Lw@public.gmane.org>
+On Thu, 2015-06-18 at 18:19 +0800, YH Huang wrote:
+> On Fri, 2015-06-12 at 12:20 +0200, Thierry Reding wrote:
+> > > +/* Shift log2(PWM_PERIOD_MAX + 1) as divisor */
+> > > +#define PWM_PERIOD_BIT_SHIFT	12
+> > 
+> > I wasn't very clear about this in my earlier review, so let me try to
+> > explain why I think this is confusing. You use this as a divisor, but
+> > you encode it as a shift. It's also PWM_PERIOD_MAX + 1, so I think it
+> > would make more sense to drop this, keep PWM_PERIOD_MAX as above and
+> > then replace the
+> > 
+> > 	>> PWM_PERIOD_BIT_SHIFT
+> > 	
+> > below by
+> > 
+> > 	/ (PWM_PERIOD_MAX + 1)
+> > 
+> 
+> Maybe I can change in this way:
+> Remove this: #define PWM_PERIOD_MAX		0x00000fff
+> Using ">> PWM_PERIOD_BIT_SHIFT" is faster than "/ (PWM_PERIOD_MAX + 1)"
+> Is this right?
 
-Thanks for the patch. It's although already been fixed on my next branch.
 
-Kind regards
-Uffe
+The place which use this shift is:
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 7c20f28..ea6ae36 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -33,6 +33,7 @@
->  #include <linux/mmc/mmc.h>
->  #include <linux/mmc/sd.h>
->  #include <linux/mmc/sdio.h>
-> +#include <linux/module.h>
->
->  #define MAX_BD_NUM          1024
->
-> --
-> 1.8.1.2
->
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	clk_div = div_u64(rate * period_ns, NSEC_PER_SEC) >> 
+			  PWM_PERIOD_BIT_SHIFT;
+
+div_u64 return u64. If we change >> to /, and somehow compiler didn't
+optimize that div into shift, it will cause build error.
+
+Joe.C
