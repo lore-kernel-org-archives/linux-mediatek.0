@@ -1,8 +1,7 @@
 From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/6] Document: bindings: DT: Add SMP enable method for MT6580
- SoC platform
-Date: Thu, 18 Jun 2015 10:46:22 +0800
-Message-ID: <1434595587-25466-2-git-send-email-scott.shu@mediatek.com>
+Subject: [PATCH 6/6] ARM: dts: mt6580: enable basic SMP bringup for mt6580
+Date: Thu, 18 Jun 2015 10:46:27 +0800
+Message-ID: <1434595587-25466-7-git-send-email-scott.shu@mediatek.com>
 References: <Scott Shu <srv_scott.shu@mediatek.com>
  <1434595587-25466-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
@@ -23,25 +22,72 @@ To: yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 Cc: scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Miles.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, MY.Chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-For MT6580 SoC platform, the secondary cores are in powered off state
-as default, so compared with MT65xx series SoC, one new enable method
-is needed. This method using the SPM (System Power Manager) inside
-the SCYSYS to control the CPU power.
----
- Documentation/devicetree/bindings/arm/cpus.txt | 1 +
- 1 file changed, 1 insertion(+)
+Add arch timer node to enable arch-timer support. MT6580 firmware
+doesn't correctly setup arch-timer frequency and CNTVOFF, add
+properties to workaround this.
 
-diff --git a/Documentation/devicetree/bindings/arm/cpus.txt b/Documentation/devicetree/bindings/arm/cpus.txt
-index ac2903d..fb80b2e 100644
---- a/Documentation/devicetree/bindings/arm/cpus.txt
-+++ b/Documentation/devicetree/bindings/arm/cpus.txt
-@@ -194,6 +194,7 @@ nodes to be present and contain the properties described below.
- 			    "marvell,armada-380-smp"
- 			    "marvell,armada-390-smp"
- 			    "marvell,armada-xp-smp"
-+			    "mediatek,mt6580-smp"
- 			    "mediatek,mt65xx-smp"
- 			    "mediatek,mt81xx-tz-smp"
- 			    "qcom,gcc-msm8660"
+This set cpu enable-method to enable SMP.
+---
+ arch/arm/boot/dts/mt6580.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
+index a974830..a7071b38 100644
+--- a/arch/arm/boot/dts/mt6580.dtsi
++++ b/arch/arm/boot/dts/mt6580.dtsi
+@@ -23,26 +23,31 @@
+ 	cpus {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
++		enable-method = "mediatek,mt6580-smp";
+ 
+ 		cpu@0 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x0>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@1 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x1>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@2 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x2>;
++			clock-frequency = <1700000000>;
+ 		};
+ 		cpu@3 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x3>;
++			clock-frequency = <1700000000>;
+ 		};
+ 
+ 	};
+@@ -72,6 +77,21 @@
+ 		};
+ 	};
+ 
++	timer {
++		compatible = "arm,armv7-timer";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
++					  IRQ_TYPE_LEVEL_LOW)>;
++		clock-frequency = <13000000>;
++		arm,cpu-registers-not-fw-configured;
++	};
++
+ 	soc {
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
 -- 
 1.8.1.1.dirty
