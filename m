@@ -1,33 +1,39 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [Linux-am33-list] [PATCH v2 0/7] fix build failure of mn10300
-Date: Thu, 18 Jun 2015 16:44:41 +0100
-Message-ID: <20150618154441.GP7557@n2100.arm.linux.org.uk>
-References: <1434629873-11668-1-git-send-email-sudipm.mukherjee@gmail.com>
- <20150618145138.GN7557@n2100.arm.linux.org.uk>
- <CAA0PaPGMtePS+fmpi1QBZi8uHtuU3Z7_Y+9f0+O38o+8xfo+1Q@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/6] This series adds SMP support for the MediaTek MT6580.
+Date: Thu, 18 Jun 2015 18:12:18 +0200
+Message-ID: <CABuKBeK-WLFnrOnPYmGR1cTfecHhq+_QyAqQjJpYfuA_MNW1aw@mail.gmail.com>
+References: <srv_scott.shu@mediatek.com>
+ <1434595587-25466-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAA0PaPGMtePS+fmpi1QBZi8uHtuU3Z7_Y+9f0+O38o+8xfo+1Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Jay C. Polmar" <speedreadamerica-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sudip Mukherjee <sudipm.mukherjee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-am33-list-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1434595587-25466-1-git-send-email-scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, =?UTF-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?= <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Miles.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, MY.Chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 18, 2015 at 10:31:07AM -0500, Jay C. Polmar wrote:
-> I am on this list by mistake and 5/15/2011 we requested to be removed,
-> can someone remove me from this list?
+Hi Scott,
 
-There are six mailing lists in the Cc line.  For all of the lists
-present there, I can't help you, but you should be able to unsubscribe
-yourself.  Look at the footer on any message you receive from the list
-and it should tell you how to get more information on that subject.
+2015-06-18 4:46 GMT+02:00 Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>:
+> This patchset adds support SMP on MediaTek MT6580 Cortex-A7 qual core SoC.
 
--- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+It's nice to see a new SoC.
+For now just one comment (more to follow): I got this series twice,
+but in neither the recipients seem to be done right.
+Please use scripts/get_maintainer.pl on the whole series to see to
+whom you should send the series. Maybe you can just resend it (mark it
+in the subject) so that the discussion can happen between all
+interested people.
+
+Cheers,
+Matthias
