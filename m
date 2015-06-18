@@ -1,7 +1,8 @@
 From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 5/6] ARM: dts: mt6580: Add device nodes to the MT6580 dtsi file
-Date: Thu, 18 Jun 2015 10:46:26 +0800
-Message-ID: <1434595587-25466-6-git-send-email-scott.shu@mediatek.com>
+Subject: [PATCH 4/6] ARM: Mediatek: enable GPT6 on boot up to make arch timer
+ working for MT6580
+Date: Thu, 18 Jun 2015 10:46:25 +0800
+Message-ID: <1434595587-25466-5-git-send-email-scott.shu@mediatek.com>
 References: <Scott Shu <srv_scott.shu@mediatek.com>
  <1434595587-25466-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
@@ -22,26 +23,32 @@ To: yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 Cc: scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Miles.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, MY.Chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the SCPSYS device node to the MT6580 dtsi file.
+We enable GTP6 which ungates the arch timer clock.
 ---
- arch/arm/boot/dts/mt6580.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm/mach-mediatek/mediatek.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-index ae3cdb6..a974830 100644
---- a/arch/arm/boot/dts/mt6580.dtsi
-+++ b/arch/arm/boot/dts/mt6580.dtsi
-@@ -78,6 +78,11 @@
- 		compatible = "simple-bus";
- 		ranges;
+diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+index 6b38d67..469d332 100644
+--- a/arch/arm/mach-mediatek/mediatek.c
++++ b/arch/arm/mach-mediatek/mediatek.c
+@@ -28,7 +28,8 @@ static void __init mediatek_timer_init(void)
+ {
+ 	void __iomem *gpt_base = 0;
  
-+		scpsys: scpsys@10006000 {
-+			compatible = "mediatek,mt6580-scpsys";
-+			reg = <0x10006000 0x1000>;
-+		};
-+
- 		timer: timer@10008000 {
- 			compatible = "mediatek,mt6580-timer", "mediatek,mt6577-timer";
- 			reg = <0x10008000 0x80>;
+-	if (of_machine_is_compatible("mediatek,mt6589") ||
++	if (of_machine_is_compatible("mediatek,mt6580") ||
++	    of_machine_is_compatible("mediatek,mt6589") ||
+ 	    of_machine_is_compatible("mediatek,mt8135") ||
+ 	    of_machine_is_compatible("mediatek,mt8127")) {
+ 		/* turn on GPT6 which ungates arch timer clocks */
+@@ -46,6 +47,7 @@ static void __init mediatek_timer_init(void)
+ };
+ 
+ static const char * const mediatek_board_dt_compat[] = {
++	"mediatek,mt6580",
+ 	"mediatek,mt6589",
+ 	"mediatek,mt6592",
+ 	"mediatek,mt8127",
 -- 
 1.8.1.1.dirty
