@@ -1,52 +1,50 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 5/7] samples: kdbus: disable for mn10300
-Date: Thu, 18 Jun 2015 09:25:05 -0700
-Message-ID: <20150618162505.GA25500@kroah.com>
-References: <1434629873-11668-1-git-send-email-sudipm.mukherjee@gmail.com>
- <1434629873-11668-6-git-send-email-sudipm.mukherjee@gmail.com>
- <20150618143958.GA8830@kroah.com>
- <20150618161905.GB21198@sudip-PC>
+From: Scott Shu <scott.shu@mediatek.com>
+Subject: [RESEND PATCH 0/6] This series adds SMP support for the MediaTek MT6580.
+Date: Fri, 19 Jun 2015 02:01:15 +0800
+Message-ID: <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+References: <Scott Shu <srv_scott.shu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20150618161905.GB21198@sudip-PC>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: David Howells <dhowells@redhat.com>, Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, linux-am33-list@redhat.com, linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <Scott Shu <srv_scott.shu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org
+Cc: srv_wsdupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 18, 2015 at 09:49:05PM +0530, Sudip Mukherjee wrote:
-> On Thu, Jun 18, 2015 at 07:39:58AM -0700, Greg Kroah-Hartman wrote:
-> > On Thu, Jun 18, 2015 at 05:47:51PM +0530, Sudip Mukherjee wrote:
-> > > While building it failed with:
-> > > In function 'prime_new':
-> > > error: '__NR_memfd_create' undeclared (first use in this function)
-> > > 
-> > > memfd_create syscall has not yet been implemented for mn10300.
-> > > so disable compilation of samples/kdbus for now with mn10300.
-> > > 
-> > > Signed-off-by: Sudip Mukherjee <sudip@vectorindia.org>
-> > > ---
-> > >  samples/Kconfig | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > 
-> > > diff --git a/samples/Kconfig b/samples/Kconfig
-> > > index a4c6b2f..20c55af 100644
-> > > --- a/samples/Kconfig
-> > > +++ b/samples/Kconfig
-> > > @@ -57,7 +57,7 @@ config SAMPLE_KDB
-> > >  
-> > >  config SAMPLE_KDBUS
-> > >  	bool "Build kdbus API example"
-> > > -	depends on KDBUS
-> > > +	depends on KDBUS && !MN10300
-> > 
-> > Why not just add the memfd syscall to this arch?
-> Yes, I intend to. But for now this will fix allmodconfig.
-> >I thought someone had already sent such a patch in a while ago.
-> Then it is still not merged. :(
-> I will try to find that patch adding memfd syscall. And if i find it whom
-> shall I forward it to?
+This patchset adds support SMP on MediaTek MT6580 Cortex-A7 qual core SoC.
 
-The maintainers of this arch.
+This is based on v4.1-rc1 and following patch series:
+(1) Yingjoe Chen's "Add SMP bringup support for mt65xx socs" [1]
+(2) Mars Cheng's "Add mt6580 basic chip support" [2]
+(3) Sascha Hauer's "Mediatek SCPSYS power domain support" [3]
+
+The secondary cores are power off as default on MT6580, this change adds
+a new enable-method to turn on power to the cores during booting process.
+
+The System Power Manager (SPM) inside the SCPSYS is for the CPU MTCMOS
+power domain control. Please check [3] for more information about SCPSYS.
+
+[1] https://lkml.org/lkml/2015/5/16/33
+[2] https://lkml.org/lkml/2015/6/3/113
+[3] https://lkml.org/lkml/2015/6/9/172
+
+
+Scott Shu (6):
+  Document: bindings: DT: Add SMP enable method for MT6580 SoC platform
+  soc: Mediatek: Add SCPSYS CPU power domain driver
+  ARM: mediatek: add smp bringup code
+  ARM: Mediatek: enable GPT6 on boot up to make arch timer working for MT6580
+  ARM: dts: mt6580: Add device nodes to the MT6580 dtsi file.
+  ARM: dts: mt6580: enable basic SMP bringup for MT6580
+
+ Documentation/devicetree/bindings/arm/cpus.txt |   1 +
+ arch/arm/boot/dts/mt6580.dtsi                  |  25 +++
+ arch/arm/mach-mediatek/Makefile                |   2 +-
+ arch/arm/mach-mediatek/generic.h               |  24 +++
+ arch/arm/mach-mediatek/hotplug.c               | 229 +++++++++++++++++++++++++
+ arch/arm/mach-mediatek/mediatek.c              |   4 +-
+ arch/arm/mach-mediatek/platsmp.c               | 113 +++++++++++-
+ 7 files changed, 395 insertions(+), 3 deletions(-)
+ create mode 100644 arch/arm/mach-mediatek/generic.h
+ create mode 100644 arch/arm/mach-mediatek/hotplug.c
