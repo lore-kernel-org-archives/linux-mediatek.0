@@ -1,8 +1,8 @@
 From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RESEND PATCH 1/6] Document: bindings: DT: Add SMP enable method for
- MT6580 SoC platform
-Date: Fri, 19 Jun 2015 02:01:16 +0800
-Message-ID: <1434650481-39421-2-git-send-email-scott.shu@mediatek.com>
+Subject: [RESEND PATCH 5/6] ARM: dts: mt6580: Add device nodes to the MT6580
+ dtsi file
+Date: Fri, 19 Jun 2015 02:01:20 +0800
+Message-ID: <1434650481-39421-6-git-send-email-scott.shu@mediatek.com>
 References: <Scott Shu <srv_scott.shu@mediatek.com>
  <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
@@ -23,25 +23,26 @@ To: yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm
 Cc: srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-For MT6580 SoC platform, the secondary cores are in powered off state
-as default, so compared with MT65xx series SoC, one new enable method
-is needed. This method using the SPM (System Power Manager) inside
-the SCYSYS to control the CPU power.
+This adds the SCPSYS device node to the MT6580 dtsi file.
 ---
- Documentation/devicetree/bindings/arm/cpus.txt | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/mt6580.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/cpus.txt b/Documentation/devicetree/bindings/arm/cpus.txt
-index ac2903d..fb80b2e 100644
---- a/Documentation/devicetree/bindings/arm/cpus.txt
-+++ b/Documentation/devicetree/bindings/arm/cpus.txt
-@@ -194,6 +194,7 @@ nodes to be present and contain the properties described below.
- 			    "marvell,armada-380-smp"
- 			    "marvell,armada-390-smp"
- 			    "marvell,armada-xp-smp"
-+			    "mediatek,mt6580-smp"
- 			    "mediatek,mt65xx-smp"
- 			    "mediatek,mt81xx-tz-smp"
- 			    "qcom,gcc-msm8660"
+diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
+index ae3cdb6..a974830 100644
+--- a/arch/arm/boot/dts/mt6580.dtsi
++++ b/arch/arm/boot/dts/mt6580.dtsi
+@@ -78,6 +78,11 @@
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		scpsys: scpsys@10006000 {
++			compatible = "mediatek,mt6580-scpsys";
++			reg = <0x10006000 0x1000>;
++		};
++
+ 		timer: timer@10008000 {
+ 			compatible = "mediatek,mt6580-timer", "mediatek,mt6577-timer";
+ 			reg = <0x10008000 0x80>;
 -- 
 1.8.1.1.dirty
