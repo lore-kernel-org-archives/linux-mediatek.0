@@ -1,60 +1,33 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Fri, 19 Jun 2015 13:36:40 +0200
-Message-ID: <8371528.SNAmOgosfF@phil>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com> <2333431.ttvjElY3ps@phil>
+From: Joachim Eastwood <manabian@gmail.com>
+Subject: Re: [PATCH v4 1/3] clk: Add regmap support
+Date: Fri, 19 Jun 2015 18:01:27 +0200
+Message-ID: <CAGhQ9Vx3qxvawiUYtEjr7z=o6mS3TirCzRd9-UZ0FP=equWEaQ@mail.gmail.com>
+References: <1434464615-9080-1-git-send-email-matthias.bgg@gmail.com>
+	<1434464615-9080-2-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2333431.ttvjElY3ps@phil>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1434464615-9080-2-git-send-email-matthias.bgg@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: mturquette@gmail.com, Stephen Boyd <sboyd@codeaurora.org>, henryc.chen@mediatek.com, s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-clk@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Donnerstag, 18. Juni 2015, 18:15:03 schrieb Heiko Stuebner:
-> Am Donnerstag, 18. Juni 2015, 13:29:11 schrieb Eddie Huang:
-> > Add clk_null, which represents clocks that can not / need not
-> > controlled by software.
-> > There are many clocks' parent set to clk_null.
-> 
-> Devicetree is supposed to describe hardware, and ideally not what software
-> does with it. If the clock simply cannot be controlled by software, it will
-> still have a rate and I think it should probably be modelled - similarly we
-> sometimes have fixed regulators that also are not software controllable.
-> 
-> 
-> While it might be ok to define dummy clocks as a temporary stopgap, these
-> should definitly be marked as such. This clk_null at least sounds like there
-> is no plan to replace this with a real solution at some point.
-> 
-> And of course a bit of context would be cool, to know which type of clocks
-> this actually replaces.
+Hi Matthias,
 
-After looking a bit more into this, I'm feel that the clk_null approach is 
-wrong.
+On 16 June 2015 at 16:23, Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> Some devices like SoCs from Mediatek need to use the clock
+> through a regmap interface.
+> This patch adds regmap support for the simple multiplexer clock,
+> the divider clock and the clock gate code.
+>
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-For one, even if the clk_null stuff would be ok, the binding doc of the clock 
-controller does not describe the need of this specific clock at all.
+I think it looks fine now and I have no further comments, so:
+Acked-by: Joachim Eastwood <manabian@gmail.com>
+
+Hope this can go in for 4.3.
 
 
-The other more important point, looking at clk-mt8173 I see at least these 
-clocks being set as children of "clk_null":
-
-static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
-	FACTOR(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk_null", 1, 1),
-	FACTOR(CLK_TOP_DPI, "dpi_ck", "clk_null", 1, 1),
-	FACTOR(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk_null", 1, 1),
-	FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "clk_null", 1, 1),
-};
-
-
-These look more like they are fed from some external source to the clock 
-controller? I did ask Matthias but he also couldn't find anything describing 
-where these clocks actually come from.
-
-
-Heiko
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+regards,
+Joachim Eastwood
