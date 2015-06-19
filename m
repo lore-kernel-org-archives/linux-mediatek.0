@@ -1,49 +1,60 @@
-From: Alexey Klimov <klimov.linux@gmail.com>
-Subject: Re: [RESEND PATCH 0/6] This series adds SMP support for the MediaTek MT6580.
-Date: Thu, 18 Jun 2015 21:23:04 +0300
-Message-ID: <CALW4P++UdJ_G2vm0+gLxdB3P6t+WP7mLw0P=fT9DLf7FU=C3bw@mail.gmail.com>
-References: <srv_scott.shu@mediatek.com>
-	<1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
+Date: Fri, 19 Jun 2015 13:36:40 +0200
+Message-ID: <8371528.SNAmOgosfF@phil>
+References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com> <2333431.ttvjElY3ps@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Scott Shu <scott.shu@mediatek.com>
-Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <2333431.ttvjElY3ps@phil>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 18, 2015 at 9:01 PM, Scott Shu <scott.shu@mediatek.com> wrote:
-> This patchset adds support SMP on MediaTek MT6580 Cortex-A7 qual core SoC.
+Am Donnerstag, 18. Juni 2015, 18:15:03 schrieb Heiko Stuebner:
+> Am Donnerstag, 18. Juni 2015, 13:29:11 schrieb Eddie Huang:
+> > Add clk_null, which represents clocks that can not / need not
+> > controlled by software.
+> > There are many clocks' parent set to clk_null.
+> 
+> Devicetree is supposed to describe hardware, and ideally not what software
+> does with it. If the clock simply cannot be controlled by software, it will
+> still have a rate and I think it should probably be modelled - similarly we
+> sometimes have fixed regulators that also are not software controllable.
+> 
+> 
+> While it might be ok to define dummy clocks as a temporary stopgap, these
+> should definitly be marked as such. This clk_null at least sounds like there
+> is no plan to replace this with a real solution at some point.
+> 
+> And of course a bit of context would be cool, to know which type of clocks
+> this actually replaces.
 
-quad?
+After looking a bit more into this, I'm feel that the clk_null approach is 
+wrong.
 
-> This is based on v4.1-rc1 and following patch series:
-> (1) Yingjoe Chen's "Add SMP bringup support for mt65xx socs" [1]
-> (2) Mars Cheng's "Add mt6580 basic chip support" [2]
-> (3) Sascha Hauer's "Mediatek SCPSYS power domain support" [3]
->
-> The secondary cores are power off as default on MT6580, this change adds
-> a new enable-method to turn on power to the cores during booting process.
->
-> The System Power Manager (SPM) inside the SCPSYS is for the CPU MTCMOS
-> power domain control. Please check [3] for more information about SCPSYS.
->
-> [1] https://lkml.org/lkml/2015/5/16/33
-> [2] https://lkml.org/lkml/2015/6/3/113
-> [3] https://lkml.org/lkml/2015/6/9/172
->
->
-> Scott Shu (6):
->   Document: bindings: DT: Add SMP enable method for MT6580 SoC platform
->   soc: Mediatek: Add SCPSYS CPU power domain driver
->   ARM: mediatek: add smp bringup code
->   ARM: Mediatek: enable GPT6 on boot up to make arch timer working for MT6580
->   ARM: dts: mt6580: Add device nodes to the MT6580 dtsi file.
->   ARM: dts: mt6580: enable basic SMP bringup for MT6580
-
-Most of your patches are missing Signed-off-by.
+For one, even if the clk_null stuff would be ok, the binding doc of the clock 
+controller does not describe the need of this specific clock at all.
 
 
--- 
-Best regards, Klimov Alexey
+The other more important point, looking at clk-mt8173 I see at least these 
+clocks being set as children of "clk_null":
+
+static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
+	FACTOR(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk_null", 1, 1),
+	FACTOR(CLK_TOP_DPI, "dpi_ck", "clk_null", 1, 1),
+	FACTOR(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk_null", 1, 1),
+	FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "clk_null", 1, 1),
+};
+
+
+These look more like they are fed from some external source to the clock 
+controller? I did ask Matthias but he also couldn't find anything describing 
+where these clocks actually come from.
+
+
+Heiko
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
