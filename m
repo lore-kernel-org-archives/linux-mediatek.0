@@ -1,84 +1,377 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v4] Thermal cleanups and hardware trip points
-Date: Mon, 22 Jun 2015 08:38:32 +0200
-Message-ID: <20150622063832.GS26575@pengutronix.de>
-References: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
- <20150608065657.GL26575@pengutronix.de>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 2/2] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Mon, 22 Jun 2015 17:15:11 +0530
+Message-ID: <20150622114511.GA28340@linux>
+References: <1433766561-1330-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1433766561-1330-3-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150608065657.GL26575@pengutronix.de>
+In-Reply-To: <1433766561-1330-3-git-send-email-pi-cheng.chen@linaro.org>
 Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
-Cc: Stephen Warren <swarren@wwwdotorg.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Mikko Perttunen <mikko.perttunen@kapsi.fi>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Eduardo, Rui,
+On 08-06-15, 20:29, Pi-Cheng Chen wrote:
 
-Is there anything I can do to get this series forward? Should I split it
-up more into separate topics? Is there anything that I should drop from
-this series to get at least the rest mainline?
+Sorry for the delay, I have been quite busy recently.
 
-Sascha
+> +++ b/drivers/cpufreq/mt8173-cpufreq.c
+> +static LIST_HEAD(cpu_dvfs_info_list);
+> +
+> +static inline struct mtk_cpu_dvfs_info *to_mtk_cpu_dvfs_info(
+> +			struct list_head *list)
+> +{
+> +	return list_entry(list, struct mtk_cpu_dvfs_info, node);
+> +}
+> +
+> +static inline void mtk_cpu_dvfs_info_add(struct mtk_cpu_dvfs_info *info)
+> +{
+> +	list_add(&info->node, &cpu_dvfs_info_list);
+> +}
 
-On Mon, Jun 08, 2015 at 08:56:57AM +0200, Sascha Hauer wrote:
-> Eduardo, Rui,
-> 
-> Any feedback to this series?
-> 
-> Thanks
->   Sascha
-> 
-> On Wed, May 20, 2015 at 03:20:30PM +0200, Sascha Hauer wrote:
-> > This series adds support for hardware trip points. It picks up earlier
-> > work from Mikko Perttunen. Mikko implemented hardware trip points as part
-> > of the device tree support. It was suggested back then to move the
-> > functionality to the thermal core instead of putting more code into the
-> > device tree support. This series does exactly that.
-> > 
-> > The majority of the patches are cleanups and fixes. Patch 11 introduces
-> > hardware tracked trip points and finally a driver for the Mediatek
-> > thermal controller is introduced as the first user.
-> > 
-> > All comments welcome
-> > 
-> > Changes since v3:
-> > - Fix some missing function type changes in int3400_thermal.c,
-> >   processor_thermal_device.c, kirkwood_thermal.c and exynos_tmu.c
-> > - Add better description for set_trips callback
-> > - update the interrupt triggers also when the trip points change
-> > - Add missing MODULE_* tags
-> > - Broaden temperature range in the Mediatek driver so that we can be sure
-> >   the measured temperatures are really out of the desired range
-> > 
-> > Changes since v2:
-> > - Add Mediatek thermal controller driver as first user for hardware trip
-> >   points
-> > 
-> > Changes since v1:
-> > - Use int instead of unsigned long consistently for temperatures
-> > - Instead of misfixing the emulation code add a comment how the
-> >   code is meant
-> > - Add doc entry for .set_trips callback
-> > - initialize prev_low_trip/prev_high_trip properly
-> > - get tz->lock before calling thermal_zone_set_trips()
-> > 
-> > 
-> > 
-> 
-> -- 
-> Pengutronix e.K.                           |                             |
-> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-> Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-> 
-> 
+No stupid wrappers please. Doesn't make anything better.
+
+> +
+> +static struct mtk_cpu_dvfs_info *mtk_cpu_dvfs_info_get(int cpu)
+
+A very bad name to a routine with very specific functionality.
+
+> +{
+> +	struct mtk_cpu_dvfs_info *info;
+> +	struct list_head *list;
+> +
+> +	list_for_each(list, &cpu_dvfs_info_list) {
+> +		info = to_mtk_cpu_dvfs_info(list);
+> +
+> +		if (cpumask_test_cpu(cpu, info->cpus))
+> +			return info;
+> +	}
+> +
+> +	return NULL;
+> +}
+> +
+> +static void mtk_cpu_dvfs_info_release(void)
+> +{
+> +	struct list_head *list, *tmp;
+> +	struct mtk_cpu_dvfs_info *info;
+> +
+> +	list_for_each_safe(list, tmp, &cpu_dvfs_info_list) {
+> +		info = to_mtk_cpu_dvfs_info(list);
+> +
+> +		dev_pm_opp_free_cpufreq_table(info->cpu_dev,
+> +					      &info->freq_table);
+> +
+> +		if (!IS_ERR(info->proc_reg))
+> +			regulator_put(info->proc_reg);
+> +		if (!IS_ERR(info->sram_reg))
+> +			regulator_put(info->sram_reg);
+> +		if (!IS_ERR(info->cpu_clk))
+> +			clk_put(info->cpu_clk);
+> +		if (!IS_ERR(info->inter_clk))
+> +			clk_put(info->inter_clk);
+> +
+> +		of_free_opp_table(info->cpu_dev);
+> +
+> +		list_del(list);
+> +		kfree(info);
+> +	}
+> +}
+> +
+> +#define MIN(a, b) ((a) < (b) ? (a) : (b))
+> +#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+Look for these in kernel.h
+
+> +static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info, int vproc)
+> +{
+> +	if (info->need_voltage_trace)
+> +		return mtk_cpufreq_voltage_trace(info, vproc);
+> +	else
+> +		return regulator_set_voltage(info->proc_reg, vproc,
+> +					     vproc + VOLT_TOL);
+> +}
+> +
+> +static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
+> +				  unsigned int index)
+> +{
+> +	struct cpufreq_frequency_table *freq_table = policy->freq_table;
+> +	struct clk *cpu_clk = policy->clk;
+> +	struct clk *armpll = clk_get_parent(cpu_clk);
+> +	struct mtk_cpu_dvfs_info *info = policy->driver_data;
+> +	struct device *cpu_dev = info->cpu_dev;
+> +	struct dev_pm_opp *opp;
+> +	long freq_hz, old_freq_hz;
+> +	int vproc, old_vproc, inter_vproc, target_vproc, ret;
+> +
+> +	inter_vproc = info->intermediate_voltage;
+> +
+> +	old_freq_hz = clk_get_rate(cpu_clk);
+> +	old_vproc = regulator_get_voltage(info->proc_reg);
+> +
+> +	freq_hz = freq_table[index].frequency * 1000;
+
+A blank line here.
+
+> +	rcu_read_lock();
+> +	opp = dev_pm_opp_find_freq_ceil(cpu_dev, &freq_hz);
+> +	if (IS_ERR(opp)) {
+> +		rcu_read_unlock();
+> +		pr_err("cpu%d: failed to find OPP for %ld\n",
+> +		       policy->cpu, freq_hz);
+> +		return PTR_ERR(opp);
+> +	}
+> +	vproc = dev_pm_opp_get_voltage(opp);
+> +	rcu_read_unlock();
+> +
+> +	/*
+> +	 * If the new voltage or the intermediate voltage is higher than the
+> +	 * current voltage, scale up voltage first.
+> +	 */
+> +	target_vproc = (inter_vproc > vproc) ? inter_vproc : vproc;
+> +	if (old_vproc < target_vproc) {
+> +		ret = mtk_cpufreq_set_voltage(info, target_vproc);
+> +		if (ret) {
+> +			pr_err("cpu%d: failed to scale up voltage!\n",
+> +			       policy->cpu);
+> +			mtk_cpufreq_set_voltage(info, old_vproc);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	/* Reparent the CPU clock to intermediate clock. */
+> +	ret = clk_set_parent(cpu_clk, info->inter_clk);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to re-parent cpu clock!\n",
+> +		       policy->cpu);
+> +		mtk_cpufreq_set_voltage(info, old_vproc);
+> +		WARN_ON(1);
+> +		return ret;
+> +	}
+> +
+> +	/* Set the original PLL to target rate. */
+> +	ret = clk_set_rate(armpll, freq_hz);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to scale cpu clock rate!\n",
+> +		       policy->cpu);
+> +		clk_set_parent(cpu_clk, armpll);
+> +		mtk_cpufreq_set_voltage(info, old_vproc);
+> +		return ret;
+> +	}
+> +
+> +	/* Set parent of CPU clock back to the original PLL. */
+> +	ret = clk_set_parent(cpu_clk, armpll);
+> +	if (ret) {
+> +		pr_err("cpu%d: failed to re-parent cpu clock!\n",
+> +		       policy->cpu);
+> +		mtk_cpufreq_set_voltage(info, inter_vproc);
+> +		WARN_ON(1);
+> +		return ret;
+> +	}
+> +
+> +	/*
+> +	 * If the new voltage is lower than the intermediate voltage or the
+> +	 * original voltage, scale down to the new voltage.
+> +	 */
+> +	if (vproc < inter_vproc || vproc < old_vproc) {
+> +		ret = mtk_cpufreq_set_voltage(info, vproc);
+> +		if (ret) {
+> +			pr_err("cpu%d: failed to scale down voltage!\n",
+> +			       policy->cpu);
+> +			clk_set_parent(cpu_clk, info->inter_clk);
+> +			clk_set_rate(armpll, old_freq_hz);
+> +			clk_set_parent(cpu_clk, armpll);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+> +{
+> +	struct mtk_cpu_dvfs_info *info;
+> +	int ret;
+> +
+> +	info = mtk_cpu_dvfs_info_get(policy->cpu);
+> +	if (!info) {
+> +		pr_err("%s: mtk cpu dvfs info for cpu%d is not initialized\n",
+> +		       __func__, policy->cpu);
+> +		return -ENODEV;
+> +	}
+> +
+> +	ret = cpufreq_table_validate_and_show(policy, info->freq_table);
+> +	if (ret) {
+> +		pr_err("%s: invalid frequency table: %d\n", __func__, ret);
+> +		return ret;
+> +	}
+> +
+> +	cpumask_copy(policy->cpus, info->cpus);
+> +	policy->driver_data = info;
+> +	policy->clk = info->cpu_clk;
+> +
+> +	return 0;
+> +}
+> +
+> +static struct cpufreq_driver mt8173_cpufreq_driver = {
+> +	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
+> +	.verify = cpufreq_generic_frequency_table_verify,
+> +	.target_index = mtk_cpufreq_set_target,
+> +	.get = cpufreq_generic_get,
+> +	.init = mtk_cpufreq_init,
+> +	.name = "mtk-cpufreq",
+> +	.attr = cpufreq_generic_attr,
+> +};
+> +
+> +static int mtk_cpu_dvfs_info_init(int cpu)
+> +{
+> +	struct device *cpu_dev;
+> +	struct regulator *proc_reg = ERR_PTR(-ENODEV);
+> +	struct regulator *sram_reg = ERR_PTR(-ENODEV);
+> +	struct clk *cpu_clk = ERR_PTR(-ENODEV);
+> +	struct clk *inter_clk = ERR_PTR(-ENODEV);
+> +	struct mtk_cpu_dvfs_info *info;
+> +	struct cpufreq_frequency_table *freq_table;
+> +	struct dev_pm_opp *opp;
+> +	unsigned long rate;
+> +	int ret;
+> +
+> +	cpu_dev = get_cpu_device(cpu);
+> +	if (!cpu_dev) {
+> +		pr_err("failed to get cpu%d device\n", cpu);
+> +		return -ENODEV;
+> +	}
+> +
+> +	ret = of_init_opp_table(cpu_dev);
+> +	if (ret) {
+> +		pr_warn("no OPP table for cpu%d\n", cpu);
+> +		return ret;
+> +	}
+> +
+> +	cpu_clk = clk_get(cpu_dev, "cpu");
+> +	if (IS_ERR(cpu_clk)) {
+> +		if (PTR_ERR(cpu_clk) == -EPROBE_DEFER)
+> +			pr_warn("cpu clk for cpu%d not ready, retry.\n", cpu);
+> +		else
+> +			pr_err("failed to get cpu clk for cpu%d\n", cpu);
+> +
+> +		ret = PTR_ERR(cpu_clk);
+> +		goto out_free_opp_table;
+> +	}
+> +
+> +	inter_clk = clk_get(cpu_dev, "intermediate");
+> +	if (IS_ERR(inter_clk)) {
+> +		if (PTR_ERR(inter_clk) == -EPROBE_DEFER)
+> +			pr_warn("intermediate clk for cpu%d not ready, retry.\n",
+> +				cpu);
+> +		else
+> +			pr_err("failed to get intermediate clk for cpu%d\n",
+> +			       cpu);
+> +
+> +		ret = PTR_ERR(cpu_clk);
+> +		goto out_free_resources;
+> +	}
+> +
+> +	proc_reg = regulator_get_exclusive(cpu_dev, "proc");
+> +	if (IS_ERR(proc_reg)) {
+> +		if (PTR_ERR(proc_reg) == -EPROBE_DEFER)
+> +			pr_warn("proc regulator for cpu%d not ready, retry.\n",
+> +				cpu);
+> +		else
+> +			pr_err("failed to get proc regulator for cpu%d\n",
+> +			       cpu);
+> +
+> +		ret = PTR_ERR(proc_reg);
+> +		goto out_free_resources;
+> +	}
+> +
+> +	/* Both presence and absence of sram regulator are valid cases. */
+> +	sram_reg = regulator_get_exclusive(cpu_dev, "sram");
+> +
+> +	info = kzalloc(sizeof(*info), GFP_KERNEL);
+> +	if (!info) {
+> +		ret = -ENOMEM;
+> +		goto out_free_resources;
+> +	}
+> +
+> +	ret = dev_pm_opp_init_cpufreq_table(cpu_dev, &freq_table);
+> +	if (ret) {
+> +		pr_err("failed to init cpufreq table for cpu%d: %d\n",
+> +		       cpu, ret);
+> +		goto out_free_mtk_cpu_dvfs_info;
+> +	}
+> +
+> +	if (!alloc_cpumask_var(&info->cpus, GFP_KERNEL))
+
+Why getting into such trouble? What about just saving policy's pointer
+in info and use it for freq_table, cpus mask, etc ?
+
+> +		goto out_free_cpufreq_table;
+> +
+
+> +}
+> +
+> +static int mt8173_cpufreq_probe(struct platform_device *pdev)
+> +{
+> +	int cpu, ret;
+> +
+> +	for_each_possible_cpu(cpu) {
+> +		/*
+> +		 * If the struct mtk_cpu_dvfs_info for the cpu power domain
+> +		 * is already initialized, skip this CPU.
+> +		 */
+> +		if (!mtk_cpu_dvfs_info_get(cpu)) {
+> +			ret = mtk_cpu_dvfs_info_init(cpu);
+> +			if (ret) {
+> +				if (ret != -EPROBE_DEFER)
+> +					pr_err("%s probe fail\n", __func__);
+> +
+> +				mtk_cpu_dvfs_info_release();
+> +				return ret;
+> +			}
+> +		}
+> +	}
+> +
+> +	ret = cpufreq_register_driver(&mt8173_cpufreq_driver);
+> +	if (ret) {
+> +		pr_err("failed to register mtk cpufreq driver\n");
+> +		mtk_cpu_dvfs_info_release();
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static struct platform_driver mt8173_cpufreq_platdrv = {
+> +	.driver = {
+> +		.name	= "mt8173-cpufreq",
+> +	},
+> +	.probe		= mt8173_cpufreq_probe,
+> +};
+> +module_platform_driver(mt8173_cpufreq_platdrv);
+> +
+> +static int mt8173_cpufreq_driver_init(void)
+> +{
+> +	struct platform_device *pdev;
+> +
+> +	if (!of_machine_is_compatible("mediatek,mt8173"))
+> +		return -ENODEV;
+> +
+> +	pdev = platform_device_register_simple("mt8173-cpufreq", -1, NULL, 0);
+> +	if (IS_ERR(pdev)) {
+> +		pr_err("failed to register mtk-cpufreq platform device\n");
+> +		return PTR_ERR(pdev);
+> +	}
+> +
+> +	return 0;
+> +}
+> +module_init(mt8173_cpufreq_driver_init);
+
+Can this driver be built as module? Why this module* crap all over the
+place?
 
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+viresh
 --
 To unsubscribe from this list: send the line "unsubscribe linux-pm" in
