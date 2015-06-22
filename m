@@ -1,196 +1,84 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 1/4] soc: mediatek: Add infracfg misc driver support
-Date: Mon, 22 Jun 2015 08:35:39 +0200
-Message-ID: <1434954942-30179-2-git-send-email-s.hauer@pengutronix.de>
-References: <1434954942-30179-1-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v4] Thermal cleanups and hardware trip points
+Date: Mon, 22 Jun 2015 08:38:32 +0200
+Message-ID: <20150622063832.GS26575@pengutronix.de>
+References: <1432128046-12921-1-git-send-email-s.hauer@pengutronix.de>
+ <20150608065657.GL26575@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1434954942-30179-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20150608065657.GL26575@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>, Zhang Rui <rui.zhang@intel.com>
+Cc: Stephen Warren <swarren@wwwdotorg.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Mikko Perttunen <mikko.perttunen@kapsi.fi>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Brian Norris <computersforpeace@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds support for some miscellaneous bits of the infracfg controller.
-The mtk_infracfg_set/clear_bus_protection functions are necessary for
-the scpsys power domain driver to handle the bus protection bits which
-are contained in the infacfg register space.
+Eduardo, Rui,
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
----
- drivers/soc/mediatek/Kconfig          |  9 ++++
- drivers/soc/mediatek/Makefile         |  1 +
- drivers/soc/mediatek/mtk-infracfg.c   | 91 +++++++++++++++++++++++++++++++++++
- include/linux/soc/mediatek/infracfg.h | 26 ++++++++++
- 4 files changed, 127 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-infracfg.c
- create mode 100644 include/linux/soc/mediatek/infracfg.h
+Is there anything I can do to get this series forward? Should I split it
+up more into separate topics? Is there anything that I should drop from
+this series to get at least the rest mainline?
 
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index bcdb22d..e4f37a3 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -1,6 +1,15 @@
- #
- # MediaTek SoC drivers
- #
-+config MTK_INFRACFG
-+	bool "MediaTek INFRACFG Support"
-+	depends on ARCH_MEDIATEK
-+	select REGMAP
-+	help
-+	  Say yes here to add support for the MediaTek INFRACFG controller. The
-+	  INFRACFG controller contains various infrastructure registers not
-+	  directly associated to any device.
-+
- config MTK_PMIC_WRAP
- 	tristate "MediaTek PMIC Wrapper Support"
- 	depends on ARCH_MEDIATEK
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index ecaf4de..3fa940f 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -1 +1,2 @@
-+obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-new file mode 100644
-index 0000000..ca786e0
---- /dev/null
-+++ b/drivers/soc/mediatek/mtk-infracfg.c
-@@ -0,0 +1,91 @@
-+/*
-+ * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/export.h>
-+#include <linux/jiffies.h>
-+#include <linux/regmap.h>
-+#include <linux/soc/mediatek/infracfg.h>
-+#include <asm/processor.h>
-+
-+#define INFRA_TOPAXI_PROTECTEN		0x0220
-+#define INFRA_TOPAXI_PROTECTSTA1	0x0228
-+
-+/**
-+ * mtk_infracfg_set_bus_protection - enable bus protection
-+ * @regmap: The infracfg regmap
-+ * @mask: The mask containing the protection bits to be enabled.
-+ *
-+ * This function enables the bus protection bits for disabled power
-+ * domains so that the system does not hanf when some unit accesses the
-+ * bus while in power down.
-+ */
-+int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-+{
-+	unsigned long expired;
-+	u32 val;
-+	int ret;
-+
-+	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, mask);
-+
-+	expired = jiffies + HZ;
-+
-+	while (1) {
-+		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-+		if (ret)
-+			return ret;
-+
-+		if ((val & mask) == mask)
-+			break;
-+
-+		cpu_relax();
-+		if (time_after(jiffies, expired))
-+			return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * mtk_infracfg_clear_bus_protection - disable bus protection
-+ * @regmap: The infracfg regmap
-+ * @mask: The mask containing the protection bits to be disabled.
-+ *
-+ * This function disables the bus protection bits previously enabled with
-+ * mtk_infracfg_set_bus_protection.
-+ */
-+int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
-+{
-+	unsigned long expired;
-+	int ret;
-+
-+	regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-+
-+	expired = jiffies + HZ;
-+
-+	while (1) {
-+		u32 val;
-+
-+		ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-+		if (ret)
-+			return ret;
-+
-+		if (!(val & mask))
-+			break;
-+
-+		cpu_relax();
-+		if (time_after(jiffies, expired))
-+			return -EIO;
-+	}
-+
-+	return 0;
-+}
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-new file mode 100644
-index 0000000..a5714e9
---- /dev/null
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -0,0 +1,26 @@
-+#ifndef __SOC_MEDIATEK_INFRACFG_H
-+#define __SOC_MEDIATEK_INFRACFG_H
-+
-+#define MT8173_TOP_AXI_PROT_EN_MCI_M2		BIT(0)
-+#define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
-+#define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
-+#define MT8173_TOP_AXI_PROT_EN_MMAPB_S		BIT(6)
-+#define MT8173_TOP_AXI_PROT_EN_L2C_M2		BIT(9)
-+#define MT8173_TOP_AXI_PROT_EN_L2SS_SMI		BIT(11)
-+#define MT8173_TOP_AXI_PROT_EN_L2SS_ADD		BIT(12)
-+#define MT8173_TOP_AXI_PROT_EN_CCI_M2		BIT(13)
-+#define MT8173_TOP_AXI_PROT_EN_MFG_S		BIT(14)
-+#define MT8173_TOP_AXI_PROT_EN_PERI_M0		BIT(15)
-+#define MT8173_TOP_AXI_PROT_EN_PERI_M1		BIT(16)
-+#define MT8173_TOP_AXI_PROT_EN_DEBUGSYS		BIT(17)
-+#define MT8173_TOP_AXI_PROT_EN_CQ_DMA		BIT(18)
-+#define MT8173_TOP_AXI_PROT_EN_GCPU		BIT(19)
-+#define MT8173_TOP_AXI_PROT_EN_IOMMU		BIT(20)
-+#define MT8173_TOP_AXI_PROT_EN_MFG_M0		BIT(21)
-+#define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
-+#define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
-+
-+int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
-+int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-+
-+#endif /* __SOC_MEDIATEK_INFRACFG_H */
+Sascha
+
+On Mon, Jun 08, 2015 at 08:56:57AM +0200, Sascha Hauer wrote:
+> Eduardo, Rui,
+> 
+> Any feedback to this series?
+> 
+> Thanks
+>   Sascha
+> 
+> On Wed, May 20, 2015 at 03:20:30PM +0200, Sascha Hauer wrote:
+> > This series adds support for hardware trip points. It picks up earlier
+> > work from Mikko Perttunen. Mikko implemented hardware trip points as part
+> > of the device tree support. It was suggested back then to move the
+> > functionality to the thermal core instead of putting more code into the
+> > device tree support. This series does exactly that.
+> > 
+> > The majority of the patches are cleanups and fixes. Patch 11 introduces
+> > hardware tracked trip points and finally a driver for the Mediatek
+> > thermal controller is introduced as the first user.
+> > 
+> > All comments welcome
+> > 
+> > Changes since v3:
+> > - Fix some missing function type changes in int3400_thermal.c,
+> >   processor_thermal_device.c, kirkwood_thermal.c and exynos_tmu.c
+> > - Add better description for set_trips callback
+> > - update the interrupt triggers also when the trip points change
+> > - Add missing MODULE_* tags
+> > - Broaden temperature range in the Mediatek driver so that we can be sure
+> >   the measured temperatures are really out of the desired range
+> > 
+> > Changes since v2:
+> > - Add Mediatek thermal controller driver as first user for hardware trip
+> >   points
+> > 
+> > Changes since v1:
+> > - Use int instead of unsigned long consistently for temperatures
+> > - Instead of misfixing the emulation code add a comment how the
+> >   code is meant
+> > - Add doc entry for .set_trips callback
+> > - initialize prev_low_trip/prev_high_trip properly
+> > - get tz->lock before calling thermal_zone_set_trips()
+> > 
+> > 
+> > 
+> 
+> -- 
+> Pengutronix e.K.                           |                             |
+> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+> Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> 
+> 
+
 -- 
-2.1.4
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe linux-pm" in
