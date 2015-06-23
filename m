@@ -1,203 +1,44 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 1/4] soc: mediatek: Add infracfg misc driver support
-Date: Mon, 22 Jun 2015 21:57:58 +0800
-Message-ID: <CAGS+omAJvpUQRGbeRcAAvZw+1HfEokkfV2XBy2LsuP7rdfHJvA@mail.gmail.com>
-References: <1434954942-30179-1-git-send-email-s.hauer@pengutronix.de> <1434954942-30179-2-git-send-email-s.hauer@pengutronix.de>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
+ driver
+Date: Tue, 23 Jun 2015 07:53:51 +0200
+Message-ID: <20150623055351.GA22419@pengutronix.de>
+References: <srv_scott.shu@mediatek.com>
+ <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+ <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1434954942-30179-2-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Scott Shu <scott.shu@mediatek.com>
+Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jun 22, 2015 at 2:35 PM, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> This adds support for some miscellaneous bits of the infracfg controller.
-> The mtk_infracfg_set/clear_bus_protection functions are necessary for
-> the scpsys power domain driver to handle the bus protection bits which
-> are contained in the infacfg register space.
->
-> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> ---
->  drivers/soc/mediatek/Kconfig          |  9 ++++
->  drivers/soc/mediatek/Makefile         |  1 +
->  drivers/soc/mediatek/mtk-infracfg.c   | 91 +++++++++++++++++++++++++++++++++++
->  include/linux/soc/mediatek/infracfg.h | 26 ++++++++++
->  4 files changed, 127 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mtk-infracfg.c
->  create mode 100644 include/linux/soc/mediatek/infracfg.h
->
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index bcdb22d..e4f37a3 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -1,6 +1,15 @@
->  #
->  # MediaTek SoC drivers
->  #
-> +config MTK_INFRACFG
-> +       bool "MediaTek INFRACFG Support"
-> +       depends on ARCH_MEDIATEK
-> +       select REGMAP
-> +       help
-> +         Say yes here to add support for the MediaTek INFRACFG controller. The
-> +         INFRACFG controller contains various infrastructure registers not
-> +         directly associated to any device.
-> +
->  config MTK_PMIC_WRAP
->         tristate "MediaTek PMIC Wrapper Support"
->         depends on ARCH_MEDIATEK
-> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> index ecaf4de..3fa940f 100644
-> --- a/drivers/soc/mediatek/Makefile
-> +++ b/drivers/soc/mediatek/Makefile
-> @@ -1 +1,2 @@
-> +obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-> diff --git a/drivers/soc/mediatek/mtk-infracfg.c b/drivers/soc/mediatek/mtk-infracfg.c
-> new file mode 100644
-> index 0000000..ca786e0
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mtk-infracfg.c
-> @@ -0,0 +1,91 @@
-> +/*
-> + * Copyright (c) 2015 Pengutronix, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/export.h>
-> +#include <linux/jiffies.h>
-> +#include <linux/regmap.h>
-> +#include <linux/soc/mediatek/infracfg.h>
-> +#include <asm/processor.h>
-> +
-> +#define INFRA_TOPAXI_PROTECTEN         0x0220
-> +#define INFRA_TOPAXI_PROTECTSTA1       0x0228
-> +
-> +/**
-> + * mtk_infracfg_set_bus_protection - enable bus protection
-> + * @regmap: The infracfg regmap
-> + * @mask: The mask containing the protection bits to be enabled.
-> + *
-> + * This function enables the bus protection bits for disabled power
-> + * domains so that the system does not hanf when some unit accesses the
+Hi Scott,
 
-typo: hanf -> hang
+On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
+> This adds a CPU power domain driver for the Mediatek SCPSYS unit on
+> MT6580.
 
-Other than that tiny nit, this one is:
+This seems to be support for the very same hardware as I am posting
+here:
 
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+https://lkml.org/lkml/2015/6/22/41
 
-> + * bus while in power down.
-> + */
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask)
-> +{
-> +       unsigned long expired;
-> +       u32 val;
-> +       int ret;
-> +
-> +       regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, mask);
-> +
-> +       expired = jiffies + HZ;
-> +
-> +       while (1) {
-> +               ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-> +               if (ret)
-> +                       return ret;
-> +
-> +               if ((val & mask) == mask)
-> +                       break;
-> +
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired))
-> +                       return -EIO;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +/**
-> + * mtk_infracfg_clear_bus_protection - disable bus protection
-> + * @regmap: The infracfg regmap
-> + * @mask: The mask containing the protection bits to be disabled.
-> + *
-> + * This function disables the bus protection bits previously enabled with
-> + * mtk_infracfg_set_bus_protection.
-> + */
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask)
-> +{
-> +       unsigned long expired;
-> +       int ret;
-> +
-> +       regmap_update_bits(infracfg, INFRA_TOPAXI_PROTECTEN, mask, 0);
-> +
-> +       expired = jiffies + HZ;
-> +
-> +       while (1) {
-> +               u32 val;
-> +
-> +               ret = regmap_read(infracfg, INFRA_TOPAXI_PROTECTSTA1, &val);
-> +               if (ret)
-> +                       return ret;
-> +
-> +               if (!(val & mask))
-> +                       break;
-> +
-> +               cpu_relax();
-> +               if (time_after(jiffies, expired))
-> +                       return -EIO;
-> +       }
-> +
-> +       return 0;
-> +}
-> diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-> new file mode 100644
-> index 0000000..a5714e9
-> --- /dev/null
-> +++ b/include/linux/soc/mediatek/infracfg.h
-> @@ -0,0 +1,26 @@
-> +#ifndef __SOC_MEDIATEK_INFRACFG_H
-> +#define __SOC_MEDIATEK_INFRACFG_H
-> +
-> +#define MT8173_TOP_AXI_PROT_EN_MCI_M2          BIT(0)
-> +#define MT8173_TOP_AXI_PROT_EN_MM_M0           BIT(1)
-> +#define MT8173_TOP_AXI_PROT_EN_MM_M1           BIT(2)
-> +#define MT8173_TOP_AXI_PROT_EN_MMAPB_S         BIT(6)
-> +#define MT8173_TOP_AXI_PROT_EN_L2C_M2          BIT(9)
-> +#define MT8173_TOP_AXI_PROT_EN_L2SS_SMI                BIT(11)
-> +#define MT8173_TOP_AXI_PROT_EN_L2SS_ADD                BIT(12)
-> +#define MT8173_TOP_AXI_PROT_EN_CCI_M2          BIT(13)
-> +#define MT8173_TOP_AXI_PROT_EN_MFG_S           BIT(14)
-> +#define MT8173_TOP_AXI_PROT_EN_PERI_M0         BIT(15)
-> +#define MT8173_TOP_AXI_PROT_EN_PERI_M1         BIT(16)
-> +#define MT8173_TOP_AXI_PROT_EN_DEBUGSYS                BIT(17)
-> +#define MT8173_TOP_AXI_PROT_EN_CQ_DMA          BIT(18)
-> +#define MT8173_TOP_AXI_PROT_EN_GCPU            BIT(19)
-> +#define MT8173_TOP_AXI_PROT_EN_IOMMU           BIT(20)
-> +#define MT8173_TOP_AXI_PROT_EN_MFG_M0          BIT(21)
-> +#define MT8173_TOP_AXI_PROT_EN_MFG_M1          BIT(22)
-> +#define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT   BIT(23)
-> +
-> +int mtk_infracfg_set_bus_protection(struct regmap *infracfg, u32 mask);
-> +int mtk_infracfg_clear_bus_protection(struct regmap *infracfg, u32 mask);
-> +
-> +#endif /* __SOC_MEDIATEK_INFRACFG_H */
-> --
-> 2.1.4
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+We should consolidate this.
+
+My driver is currently handles all power domains except the CPUs while
+yours handles only the CPUs.
+I currently haven't looked whether CPUs can just be part of a power
+domain aswell, but if that works this would probably be the way to go.
+
+Sascha
+
+
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
