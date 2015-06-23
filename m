@@ -1,51 +1,36 @@
-From: Johan Hovold <johan@kernel.org>
-Subject: Re: [PATCH v2 4/7] USB: mos7720: rename DCR
-Date: Tue, 23 Jun 2015 12:09:18 +0200
-Message-ID: <20150623100918.GG28202@localhost>
-References: <1434629873-11668-1-git-send-email-sudipm.mukherjee@gmail.com>
- <1434629873-11668-5-git-send-email-sudipm.mukherjee@gmail.com>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Fix unbalanced calls to runtime suspend/resume
+Date: Tue, 23 Jun 2015 19:01:20 +0800
+Message-ID: <1435057280-21316-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1434629873-11668-5-git-send-email-sudipm.mukherjee@gmail.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Cc: David Howells <dhowells@redhat.com>, Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Hovold <johan@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-am33-list@redhat.com, linux-kernel@vger.kernel.org, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-usb@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: matthias.bgg@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jun 18, 2015 at 05:47:50PM +0530, Sudip Mukherjee wrote:
-> While building with mn10300 it failed with:
-> error: expected identifier before '(' token
->  #define __SYSREG(ADDR, TYPE) (*(volatile TYPE *)(ADDR))
-> note: in expansion of macro '__SYSREG'
->  #define DCR   __SYSREG(0xc0000030, u16) /* Debug control register */
-> 
-> mn10300 has a register named as DCR, so when this driver used an enum
-> named as DCR, build failed.
-> Just rename the DCR in the driver to parport_DCR.
-> 
-> Signed-off-by: Sudip Mukherjee <sudip@vectorindia.org>
-> ---
->  drivers/usb/serial/mos7720.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/usb/serial/mos7720.c b/drivers/usb/serial/mos7720.c
-> index 4f70df3..3263125 100644
-> --- a/drivers/usb/serial/mos7720.c
-> +++ b/drivers/usb/serial/mos7720.c
-> @@ -135,7 +135,7 @@ enum mos_regs {
->  	DLM,
->  	DPR,              /* parallel port regs */
->  	DSR,
-> -	DCR,
-> +	parport_DCR,
->  	ECR,
->  	SP1_REG,          /* device control regs */
->  	SP2_REG,          /* serial port 2 (7720 only) */
+This adds call to runtime suspend in dev remove. It fixs the problem that
+suspend is not called in the case of CONFIG_PM=n. It also fixs build
+warning when CONFIG_PM=n.
 
-Please use a MOS_ (or MOS7720_) prefix instead and add it to all the
-registers.
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+---
+ sound/soc/mediatek/mtk-afe-pcm.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thanks,
-Johan
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index cc228db..9863da7 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -1199,6 +1199,8 @@ err_pm_disable:
+ static int mtk_afe_pcm_dev_remove(struct platform_device *pdev)
+ {
+ 	pm_runtime_disable(&pdev->dev);
++	if (!pm_runtime_status_suspended(&pdev->dev))
++		mtk_afe_runtime_suspend(&pdev->dev);
+ 	snd_soc_unregister_component(&pdev->dev);
+ 	snd_soc_unregister_platform(&pdev->dev);
+ 	return 0;
+-- 
+1.8.1.1.dirty
