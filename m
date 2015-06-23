@@ -1,226 +1,31 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
-Date: Tue, 23 Jun 2015 12:29:07 -0700 (PDT)
-Message-ID: <2095356.mBfrh10yW4@ubix>
-References: <1433319533-24803-1-git-send-email-mars.cheng@mediatek.com> <1433319533-24803-3-git-send-email-mars.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] arm64: dts: mt8173: Add clock controller device nodes
+Date: Tue, 23 Jun 2015 21:36:32 +0200
+Message-ID: <7038138.YVtZV1WZ5z@ubix>
+References: <1432128766-4445-1-git-send-email-s.hauer@pengutronix.de> <1432128766-4445-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1433319533-24803-3-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.or, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, MY Chuang <my.chuang@mediatek.com>, Scott Shu <scott.shu@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1432128766-4445-2-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wednesday, June 03, 2015 04:18:53 PM Mars Cheng wrote:
-> This enables mt6580 basic support: interrupt, timer & uart.
+On Wednesday, May 20, 2015 03:32:44 PM Sascha Hauer wrote:
+> This adds the device nodes providing clocks on the Mediatek MT8173.
+> These are: topckgen, infracfg, pericfg and apmixedsys. These are
+> fed by two oscillators also added by this patch.
 > 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > ---
->  arch/arm/boot/dts/Makefile         |   1 +
->  arch/arm/boot/dts/mt6580-evbp1.dts |  34 ++++++++++
->  arch/arm/boot/dts/mt6580.dtsi      | 130
-> +++++++++++++++++++++++++++++++++++++ 3 files changed, 165 insertions(+)
->  create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
->  create mode 100644 arch/arm/boot/dts/mt6580.dtsi
-> 
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 86217db..9298531 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -656,6 +656,7 @@ dtb-$(CONFIG_MACH_DOVE) += \
->  	dove-d3plug.dtb \
->  	dove-dove-db.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += \
-> +	mt6580-evbp1.dtb \
->  	mt6589-aquaris5.dtb \
->  	mt6592-evb.dtb \
->  	mt8127-moose.dtb \
-> diff --git a/arch/arm/boot/dts/mt6580-evbp1.dts
-> b/arch/arm/boot/dts/mt6580-evbp1.dts new file mode 100644
-> index 0000000..fbc0e10
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/mt6580-evbp1.dts
-> @@ -0,0 +1,34 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +/dts-v1/;
-> +#include "mt6580.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT6580 evaluation board";
-> +	compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-> +
-> +	chosen {
-> +		bootargs = "console=ttyS0,921600n8 root=/dev/ram
-> initrd=0x88000000,0x400000 earlyprintk"; +	};
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 41
+> ++++++++++++++++++++++++++++++++ 1 file changed, 41 insertions(+)
 
-the root and initrd parameters seems really specific for your way you boot the 
-board, but are not necessary to boot e.g. with a initramfs.
-Please delete this two parameters.
-
-Apart instead of console please use stdout-path to specify to which uart the 
-console should be connected.
-
-Thanks,
-Matthias
-
-> +
-> +	memory {
-> +		reg = <0x80000000 0x20000000>;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-> new file mode 100644
-> index 0000000..de669e2
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/mt6580.dtsi
-> @@ -0,0 +1,130 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include "skeleton.dtsi"
-> +
-> +/ {
-> +	compatible = "mediatek,mt6580";
-> +	interrupt-parent = <&sysirq>;
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x0>;
-> +		};
-> +		cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x1>;
-> +		};
-> +		cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x2>;
-> +		};
-> +		cpu@3 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x3>;
-> +		};
-> +
-> +	};
-> +
-> +	clocks {
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		system_clk: dummy13m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <13000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		rtc_clk: dummy32k {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <32000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		uart_clk: dummy26m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <26000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		timer: timer@10008000 {
-> +			compatible = "mediatek,mt6580-timer",
-> +				     "mediatek,mt6577-timer";
-> +			reg = <0x10008000 0x80>;
-> +			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&system_clk>, <&rtc_clk>;
-> +			clock-names = "system-clk", "rtc-clk";
-> +		};
-> +
-> +		sysirq: interrupt-controller@10200100 {
-> +			compatible = "mediatek,mt6580-sysirq",
-> +				     "mediatek,mt6577-sysirq";
-> +			interrupt-controller;
-> +			#interrupt-cells = <3>;
-> +			interrupt-parent = <&gic>;
-> +			reg = <0x10200100 0x1c>;
-> +		};
-> +
-> +		gic: interrupt-controller@10211000 {
-> +			compatible = "arm,cortex-a7-gic";
-> +			interrupt-controller;
-> +			#interrupt-cells = <3>;
-> +			interrupt-parent = <&gic>;
-> +			reg = <0x10211000 0x1000>,
-> +			      <0x10212000 0x1000>,
-> +			      <0x10214000 0x2000>,
-> +			      <0x10216000 0x2000>;
-> +		};
-> +
-> +		uart0: serial@11005000 {
-> +			compatible = "mediatek,mt6580-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0x11005000 0x400>;
-> +			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&uart_clk>;
-> +			clock-names = "baud";
-> +			status = "disabled";
-> +		};
-> +
-> +		uart1: serial@11006000 {
-> +			compatible = "mediatek,mt6580-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0x11006000 0x400>;
-> +			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&uart_clk>;
-> +			clock-names = "baud";
-> +			status = "disabled";
-> +		};
-> +	};
-> +};
+Applied now to v4.2-next/arm64
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
