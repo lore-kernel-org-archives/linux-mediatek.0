@@ -1,43 +1,28 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: mt8173: Add I2C device node
-Date: Wed, 24 Jun 2015 21:47:51 +0200
-Message-ID: <CABuKBeJesxK2_tFwxkbFi8w2Tb3p=RQpehLp2nNmM_VWz-rOGg@mail.gmail.com>
-References: <1433164107-26568-1-git-send-email-eddie.huang@mediatek.com>
-	<1433164107-26568-3-git-send-email-eddie.huang@mediatek.com>
-	<5279457.I1q8kC8mJN@ubix>
-	<CAGS+omC0n1eADRCy58a4C=w9LikPvQv=bHopNTE1XXW3h7zRLA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] soc: mediatek: Add infracfg misc driver support
+Date: Wed, 24 Jun 2015 13:13:03 -0700 (PDT)
+Message-ID: <6508444.knfrqRFL7c@ubix>
+References: <1435126625-9634-1-git-send-email-s.hauer@pengutronix.de> <1435126625-9634-2-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omC0n1eADRCy58a4C=w9LikPvQv=bHopNTE1XXW3h7zRLA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1435126625-9634-2-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-06-24 13:00 GMT+02:00 Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>:
-> Hi Matthias,
->
-> On Wed, Jun 24, 2015 at 4:04 AM, Matthias Brugger
-> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> On Monday, June 01, 2015 09:08:27 PM Eddie Huang wrote:
->>> Add MT8173 I2C device nodes, include I2C controllers and pins.
->>> MT8173 has six I2C controllers, from i2c0 to i2c6, exclude i2c5.
->>> The 6th I2C controller register base doesn't next to 5th I2C,
->>> and there is a hardware between 5th and 6th I2C controller. So
->>> SoC designer name 6th controller as "i2c6", not "i2c5".
->>>
->>> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>
->> applied to v4.2-next/arm64
->
-> It looks like [0] has the pinctrl changes, but lost the actual i2c nodes.
+On Wednesday, June 24, 2015 08:17:02 AM Sascha Hauer wrote:
+> This adds support for some miscellaneous bits of the infracfg controller.
+> The mtk_infracfg_set/clear_bus_protection functions are necessary for
+> the scpsys power domain driver to handle the bus protection bits which
+> are contained in the infacfg register space.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
 
-Huh, thanks for noting that. I just fixed it.
-
-Regards,
-Matthias
+Applied to v4.2-next/soc
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
