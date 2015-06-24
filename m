@@ -1,26 +1,35 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 4/4] ARM64: MediaTek MT8173: Add SCPSYS device node
-Date: Wed, 24 Jun 2015 22:13:53 +0200
-Message-ID: <1847352.ZmZUcgYQZ1@ubix>
-References: <1435126625-9634-1-git-send-email-s.hauer@pengutronix.de> <1435126625-9634-5-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
+Date: Wed, 24 Jun 2015 22:25:56 +0200
+Message-ID: <2753320.5M4yQIm8Im@ubix>
+References: <1433319533-24803-1-git-send-email-mars.cheng@mediatek.com> <3799922.TWv12CPu81@ubix> <1435147153.3792.9.camel@mtkswgap22>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1435126625-9634-5-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1435147153.3792.9.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, MY Chuang <my.chuang@mediatek.com>, Scott Shu <scott.shu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wednesday, June 24, 2015 08:17:05 AM Sascha Hauer wrote:
-> This adds the SCPSYS device node to the MT8173 dtsi file.
+On Wednesday, June 24, 2015 07:59:13 PM Mars Cheng wrote:
+> On Tue, 2015-06-23 at 21:45 +0200, Matthias Brugger wrote:
+> > > +	soc {
+> > 
+> > Please drop the soc node as well and just add the components directly.
+> > 
+> > Thanks,
+> > Matthias
 > 
-> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> ---
+> May I know the reason to remove the soc node? I follow other xxxx.dtsi
+> to add this node.
 
-Applied to v4.2-next/arm64
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+The device tree is reflecting the hardware, if you add a soc node like this, it 
+is seen like a bus, but there is not really a bus.
+
+I think point of view about this has change over time and nowadays it is 
+preferred not to add a soc node.
+
+Regards,
+Matthias
