@@ -1,162 +1,65 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH 1/2] dt-bindings: mediatek: Add MT8173 cpufreq driver
- binding
-Date: Wed, 24 Jun 2015 06:36:21 +0530
-Message-ID: <20150624010621.GB6424@linux>
-References: <1433766561-1330-1-git-send-email-pi-cheng.chen@linaro.org>
- <1433766561-1330-2-git-send-email-pi-cheng.chen@linaro.org>
- <CALx668UShfd3HW1ptzHnMr9xAUVyLGt=q2CmYHn3vqASZug6kw@mail.gmail.com>
+From: =?utf-8?B?U2NvdHQgU2h1ICjoiJLnpZbopYQp?= <Scott.Shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: RE: [PATCH 0/6] This series adds SMP support for the MediaTek MT6580.
+Date: Wed, 24 Jun 2015 05:56:01 +0000
+Message-ID: <82F4265CA74ED64FB0A5D0D7A91978B901C104B9@mtkmbs08n1>
+References: <srv_scott.shu@mediatek.com>
+ <1434595587-25466-1-git-send-email-scott.shu@mediatek.com>
+ <CABuKBeK-WLFnrOnPYmGR1cTfecHhq+_QyAqQjJpYfuA_MNW1aw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CALx668UShfd3HW1ptzHnMr9xAUVyLGt=q2CmYHn3vqASZug6kw@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, mturquette@baylibre.com
-Cc: Mike Turquette <mturquette@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CABuKBeK-WLFnrOnPYmGR1cTfecHhq+_QyAqQjJpYfuA_MNW1aw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, wsd_upstream <wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?utf-8?B?TWFycyBDaGVuZyAo6YSt5qOu5Y+LKQ==?= <Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?utf-8?B?SmFkZXMgU2hpaCAo5pa95ZCR546oKQ==?= <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?utf-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <Miles.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?utf-8?B?TVkgQ2h1YW5nICjojormmI7ouo0p?= <MY.Chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?utf-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Adding Mike's new email address..
-
-On 23-06-15, 23:31, Pi-Cheng Chen wrote:
-> On Mon, Jun 8, 2015 at 8:29 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
-> > This patch adds device tree binding document for MT8173 cpufreq driver.
-> >
-> > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-> > ---
-> >  .../devicetree/bindings/cpufreq/cpufreq-mt8173.txt | 127 +++++++++++++++++++++
-> >  1 file changed, 127 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> >
-> > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> > new file mode 100644
-> > index 0000000..7708a65
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> > @@ -0,0 +1,127 @@
-> > +
-> > +Mediatek MT8173 cpufreq driver
-> > +-------------------
-
-Few more ---- required.
-
-> > +
-> > +Mediatek MT8173 cpufreq driver for CPU frequency scaling.
-> > +
-> > +Required properties:
-> > +- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
-> > +- clock-names: Should contain the following:
-> > +       "cpu"           - The multiplexer for clock input of CPU cluster.
-> > +       "intermediate"  - A parent of "cpu" clock which is used as "intermediate" clock
-> > +                         source (usually MAINPLL) when the original CPU PLL is under
-> > +                         transition and not stable yet.
-
-These belong to Mike.
-
-> > +- operating-points: Table of frequencies and voltage CPU could be transitioned into,
-> > +                   Frequency should be in KHz units and voltage should be in microvolts.
-
-That's not complete. You should just mention the path to opp bindings
-here. And that's it.
-
-> > +- proc-supply: Regulator for Vproc of CPU cluster.
-> > +
-> > +Optional properties:
-> > +- sram-supply: Regulator for Vsram of CPU cluster. When present, the cpufreq driver
-> > +              needs to do "voltage trace" to step by step scale up/down Vproc and
-> > +              Vsram to fit SoC specific needs. When absent, the voltage scaling
-> > +              flow is handled by hardware, hence no software "voltage trace" is
-> > +              needed.
-> > +
-> > +Example:
-> > +--------
-> > +       cpu0: cpu@0 {
-> > +               device_type = "cpu";
-> > +               compatible = "arm,cortex-a53";
-> > +               reg = <0x000>;
-> > +               enable-method = "psci";
-> > +               cpu-idle-states = <&CPU_SLEEP_0>;
-> > +               clocks = <&infracfg CLK_INFRA_CA53SEL>,
-> > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
-> > +               clock-names = "cpu", "intermediate";
-> > +               operating-points = <
-> > +                       507000  859000
-> > +                       702000  908000
-> > +                       1001000 983000
-> > +                       1105000 1009000
-> > +                       1183000 1028000
-> > +                       1404000 1083000
-> > +                       1508000 1109000
-> > +                       1573000 1125000
-> > +               >;
-> > +       };
-> > +
-> > +       cpu1: cpu@1 {
-> > +               device_type = "cpu";
-> > +               compatible = "arm,cortex-a53";
-> > +               reg = <0x001>;
-> > +               enable-method = "psci";
-> > +               cpu-idle-states = <&CPU_SLEEP_0>;
-> > +               clocks = <&infracfg CLK_INFRA_CA53SEL>,
-> > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
-> > +               clock-names = "cpu", "intermediate";
-> > +               operating-points = <
-> > +                       507000  859000
-> > +                       702000  908000
-> > +                       1001000 983000
-> > +                       1105000 1009000
-> > +                       1183000 1028000
-> > +                       1404000 1083000
-> > +                       1508000 1109000
-> > +                       1573000 1125000
-> > +               >;
-> > +       };
-> > +
-> > +       cpu2: cpu@100 {
-> > +               device_type = "cpu";
-> > +               compatible = "arm,cortex-a57";
-> > +               reg = <0x100>;
-> > +               enable-method = "psci";
-> > +               cpu-idle-states = <&CPU_SLEEP_0>;
-> > +               clocks = <&infracfg CLK_INFRA_CA57SEL>,
-> > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
-> > +               clock-names = "cpu", "intermediate";
-> > +               operating-points = <
-> > +                       507000  828000
-> > +                       702000  867000
-> > +                       1001000 927000
-> > +                       1209000 968000
-> > +                       1404000 1007000
-> > +                       1612000 1049000
-> > +                       1807000 1089000
-> > +                       1989000 1125000
-> > +               >;
-> > +       };
-> > +
-> > +       cpu3: cpu@101 {
-> > +               device_type = "cpu";
-> > +               compatible = "arm,cortex-a57";
-> > +               reg = <0x101>;
-> > +               enable-method = "psci";
-> > +               cpu-idle-states = <&CPU_SLEEP_0>;
-> > +               clocks = <&infracfg CLK_INFRA_CA57SEL>,
-> > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
-> > +               clock-names = "cpu", "intermediate";
-> > +               operating-points = <
-> > +                       507000  828000
-> > +                       702000  867000
-> > +                       1001000 927000
-> > +                       1209000 968000
-> > +                       1404000 1007000
-> > +                       1612000 1049000
-> > +                       1807000 1089000
-> > +                       1989000 1125000
-> > +               >;
-> > +       };
-
-I remember Mark Rutland asking you about the replicated stuff for all
-CPUs, but happened to his comments later on ? Were you asked to put
-these for all the CPUs ?
-
--- 
-viresh
+SGkgTWF0dGhpYXMsDQogIFRoYW5rIHlvdSB2ZXJ5IG11Y2guIFRoZSB2MSBwYXRjaHNldCBpcyBz
+dWJtaXR0ZWQuIFdlIGdvdCBzb21lIHN1Z2dlc3Rpb24sIHNvIHdlIHdpbGwgc3VibWl0IG91ciAy
+bmQgdmVyc2lvbiBzb29uLg0KDQpUaGFua3MgYW5kIEJlc3QgUmVnYXJkcywNClNjb3R0IFNodQ0K
+IzIzOTMxDQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBNYXR0aGlhcyBCcnVn
+Z2VyIFttYWlsdG86bWF0dGhpYXMuYmdnQGdtYWlsLmNvbV0gDQpTZW50OiBGcmlkYXksIEp1bmUg
+MTksIDIwMTUgMTI6MTIgQU0NClRvOiBTY290dCBTaHUgKOiIkuelluilhCkNCkNjOiBZaW5nam9l
+IENoZW4gKOmZs+iLsea0sik7IHNjb3R0LnNodUBnbWFpbC5jb207IG1vZGVyYXRlZCBsaXN0OkFS
+TS9NZWRpYXRlayBTb0MuLi47IEphZGVzIFNoaWggKOaWveWQkeeOqCk7IHNydl93c2R1cHN0cmVh
+bUBtZWRpYXRlay5jb207IE1pbGVzIENoZW4gKOmZs+awkeaouik7IE1hcnMgQ2hlbmcgKOmEreaj
+ruWPiyk7IE1ZIENodWFuZyAo6I6K5piO6LqNKQ0KU3ViamVjdDogUmU6IFtQQVRDSCAwLzZdIFRo
+aXMgc2VyaWVzIGFkZHMgU01QIHN1cHBvcnQgZm9yIHRoZSBNZWRpYVRlayBNVDY1ODAuDQoNCkhp
+IFNjb3R0LA0KDQoyMDE1LTA2LTE4IDQ6NDYgR01UKzAyOjAwIFNjb3R0IFNodSA8c2NvdHQuc2h1
+QG1lZGlhdGVrLmNvbT46DQo+IFRoaXMgcGF0Y2hzZXQgYWRkcyBzdXBwb3J0IFNNUCBvbiBNZWRp
+YVRlayBNVDY1ODAgQ29ydGV4LUE3IHF1YWwgY29yZSBTb0MuDQoNCkl0J3MgbmljZSB0byBzZWUg
+YSBuZXcgU29DLg0KRm9yIG5vdyBqdXN0IG9uZSBjb21tZW50IChtb3JlIHRvIGZvbGxvdyk6IEkg
+Z290IHRoaXMgc2VyaWVzIHR3aWNlLCBidXQgaW4gbmVpdGhlciB0aGUgcmVjaXBpZW50cyBzZWVt
+IHRvIGJlIGRvbmUgcmlnaHQuDQpQbGVhc2UgdXNlIHNjcmlwdHMvZ2V0X21haW50YWluZXIucGwg
+b24gdGhlIHdob2xlIHNlcmllcyB0byBzZWUgdG8gd2hvbSB5b3Ugc2hvdWxkIHNlbmQgdGhlIHNl
+cmllcy4gTWF5YmUgeW91IGNhbiBqdXN0IHJlc2VuZCBpdCAobWFyayBpdCBpbiB0aGUgc3ViamVj
+dCkgc28gdGhhdCB0aGUgZGlzY3Vzc2lvbiBjYW4gaGFwcGVuIGJldHdlZW4gYWxsIGludGVyZXN0
+ZWQgcGVvcGxlLg0KDQpDaGVlcnMsDQpNYXR0aGlhcw0KDQoqKioqKioqKioqKioqIEVtYWlsIENv
+bmZpZGVudGlhbGl0eSBOb3RpY2UgKioqKioqKioqKioqKioqKioqKioNClRoZSBpbmZvcm1hdGlv
+biBjb250YWluZWQgaW4gdGhpcyBlLW1haWwgbWVzc2FnZSAoaW5jbHVkaW5nIGFueSANCmF0dGFj
+aG1lbnRzKSBtYXkgYmUgY29uZmlkZW50aWFsLCBwcm9wcmlldGFyeSwgcHJpdmlsZWdlZCwgb3Ig
+b3RoZXJ3aXNlDQpleGVtcHQgZnJvbSBkaXNjbG9zdXJlIHVuZGVyIGFwcGxpY2FibGUgbGF3cy4g
+SXQgaXMgaW50ZW5kZWQgdG8gYmUgDQpjb252ZXllZCBvbmx5IHRvIHRoZSBkZXNpZ25hdGVkIHJl
+Y2lwaWVudChzKS4gQW55IHVzZSwgZGlzc2VtaW5hdGlvbiwgDQpkaXN0cmlidXRpb24sIHByaW50
+aW5nLCByZXRhaW5pbmcgb3IgY29weWluZyBvZiB0aGlzIGUtbWFpbCAoaW5jbHVkaW5nIGl0cyAN
+CmF0dGFjaG1lbnRzKSBieSB1bmludGVuZGVkIHJlY2lwaWVudChzKSBpcyBzdHJpY3RseSBwcm9o
+aWJpdGVkIGFuZCBtYXkgDQpiZSB1bmxhd2Z1bC4gSWYgeW91IGFyZSBub3QgYW4gaW50ZW5kZWQg
+cmVjaXBpZW50IG9mIHRoaXMgZS1tYWlsLCBvciBiZWxpZXZlIA0KdGhhdCB5b3UgaGF2ZSByZWNl
+aXZlZCB0aGlzIGUtbWFpbCBpbiBlcnJvciwgcGxlYXNlIG5vdGlmeSB0aGUgc2VuZGVyIA0KaW1t
+ZWRpYXRlbHkgKGJ5IHJlcGx5aW5nIHRvIHRoaXMgZS1tYWlsKSwgZGVsZXRlIGFueSBhbmQgYWxs
+IGNvcGllcyBvZiANCnRoaXMgZS1tYWlsIChpbmNsdWRpbmcgYW55IGF0dGFjaG1lbnRzKSBmcm9t
+IHlvdXIgc3lzdGVtLCBhbmQgZG8gbm90DQpkaXNjbG9zZSB0aGUgY29udGVudCBvZiB0aGlzIGUt
+bWFpbCB0byBhbnkgb3RoZXIgcGVyc29uLiBUaGFuayB5b3UhCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
