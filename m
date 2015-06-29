@@ -1,113 +1,48 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 4/7] arm64: dts: mediatek: Add MT8173 MMC dts
-Date: Mon, 29 Jun 2015 19:47:45 +0800
-Message-ID: <1435578465.12509.4.camel@mtksdaap41>
-References: <1434367253-26577-1-git-send-email-chaotian.jing@mediatek.com>
- <1434367253-26577-5-git-send-email-chaotian.jing@mediatek.com>
- <CAGS+omCwxH5vTTKNOEcN9C9s=1yBpYEqbMz1NygYoLY9OFKchg@mail.gmail.com>
- <CAGS+omDMprTvjwpXfdh7mg9i=WXdzO_Fv-oEop3z6AEVCG=DFQ@mail.gmail.com>
- <1434593063.23303.3.camel@mtksdaap41> <1434594513.26032.6.camel@mtksdaap41>
- <CAGS+omBi88UtEcyyUX6N4OfO9Frwxbsr1Aap1b6uRBKvB=zsrg@mail.gmail.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/4] Add Mediatek SPI bus driver
+Date: Mon, 29 Jun 2015 21:04:26 +0800
+Message-ID: <1435583070-9600-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGS+omBi88UtEcyyUX6N4OfO9Frwxbsr1Aap1b6uRBKvB=zsrg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open
- list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dan,
+Mediatek SPI BUS controller has 3 hardware restrictions:
+1. Hw has the restriction that in one transfer, length must be a multiple of
+   1024, when it's greater than 1024bytes.
+2. Hw tx/rx have 4bytes aligned restriction.
+3. For MT8173 IC: RX must enable TX, then TX transfer dummy data; TX don't need
+   to enable RX.
+Some workarounds are done in SPI driver code base on v4.1-rc1.
 
-On Mon, 2015-06-29 at 19:24 +0800, Daniel Kurtz wrote:
-> On Thu, Jun 18, 2015 at 10:28 AM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> On Thu, 2015-06-18 at 10:04 +0800, Eddie Huang wrote:
-> > > On Tue, 2015-06-16 at 20:20 +0800, Daniel Kurtz wrote:
-> > > > On Tue, Jun 16, 2015 at 7:39 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > > > > On Mon, Jun 15, 2015 at 7:20 PM, Chaotian Jing
-> > > > > <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > > > >> From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > >>
-> > > > >> Add node mmc0 ~ mmc3 for mt8173.dtsi
-> > > > >> Add node mmc0, mmc1 for mt8173-evb.dts
-> > > > >>
-> > > > >> Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > >> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > >> ---
-> > > > >>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 126 ++++++++++++++++++++++++++++
-> > > > >>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    |  45 +++++++++-
-> > > > >>  2 files changed, 170 insertions(+), 1 deletion(-)
-> > > > >>
-> > > > >> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > > >> index b1560c9..762ec61 100644
-> > > > >> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > > >> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > > >> @@ -33,6 +33,132 @@
-> > > > >>         chosen { };
-> > > > >>  };
-> > > > >>
-> > > > >> +&mmc0 {
-> > > > >> +       pinctrl-names = "default", "state_uhs";
-> > > > >> +       pinctrl-0 = <&mmc0_pins_default>;
-> > > > >> +       pinctrl-1 = <&mmc0_pins_uhs>;
-> > > > >> +       status = "okay";
-> > > > >> +       bus-width = <8>;
-> > > > >> +       max-frequency = <50000000>;
-> > > > >> +       cap-mmc-highspeed;
-> > > > >> +       vmmc-supply = <&mt6397_vemc_3v3_reg>;
-> > > > >> +       vqmmc-supply = <&mt6397_vio18_reg>;
-> > > >
-> > > > I also can't find phandles for these regulators.
-> > > >
-> > > > >> +       non-removable;
-> > > > >> +};
-> > > > >> +
-> > > > >> +&mmc1 {
-> > > > >> +       pinctrl-names = "default", "state_uhs";
-> > > > >> +       pinctrl-0 = <&mmc1_pins_default>;
-> > > > >> +       pinctrl-1 = <&mmc1_pins_uhs>;
-> > > > >> +       status = "okay";
-> > > > >> +       bus-width = <4>;
-> > > > >> +       max-frequency = <50000000>;
-> > > > >> +       cap-sd-highspeed;
-> > > > >> +       sd-uhs-sdr25;
-> > > > >> +       cd-gpios = <&pio 132 0>;
-> > > > >> +       vmmc-supply = <&mt6397_vmch_reg>;
-> > > > >> +       vqmmc-supply = <&mt6397_vmc_reg>;
-> > > >
-> > > > nor these regulators.
-> > > >
-> > > > Which kernel branch are you basing your patch set on?
-> > > >
-> > > It is based on 4.1-rc1, and Sascha's regulator dts patch.
-> > > [3/4] ARM: dts: mt8135-evbp1: Add PMIC support:
-> > > https://patchwork.kernel.org/patch/6261161/
-> > >
-> > My mistake, we only sent mt8135-evbp1.dts, but this patch need
-> > mt8173-evb.dts, we will send this.
-> 
-> 
-> Hi Eddie,
-> 
-> When do you plan to send an updated mmc patch set?
-> 
+Change in v2:
+1. Remove spi bitbang framwork, use can_dma() and transfer_one().
+2. Add PM functions.
+3. Fix Mark Brown review comment.
 
-This patch depends on clock_null patch [0] that James still working on
-it. We will send new patch after [0] clarify.
+Leilk Liu (4):
+  spi: support spi without dma channel to use can_dma()
+  dt-bindings: ARM: Mediatek: Document devicetree bindings for spi bus
+  spi: mediatek: Add spi bus for Mediatek MT8173
+  arm64: dts: Add spi bus dts
 
-[0]:
-http://lists.infradead.org/pipermail/linux-arm-kernel/2015-June/351255.html
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |  32 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   9 +
+ drivers/spi/Kconfig                                |   9 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-mt65xx.c                           | 656 +++++++++++++++++++++
+ drivers/spi/spi.c                                  |  22 +-
+ 6 files changed, 725 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+ create mode 100644 drivers/spi/spi-mt65xx.c
 
+--
+1.8.1.1.dirty
 
-Thanks
-Eddie
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
