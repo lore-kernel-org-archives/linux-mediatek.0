@@ -1,57 +1,85 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4] ARM: dts: mt8173: support arm64 cpuidle-dt
-Date: Mon, 29 Jun 2015 10:18:36 +0200
-Message-ID: <5590FF5C.10408@linaro.org>
-References: <1433402017-7711-1-git-send-email-howard.chen@linaro.org>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH v2 2/2] pwm: add MediaTek display PWM driver support
+Date: Mon, 29 Jun 2015 11:21:47 +0200
+Message-ID: <20150629092145.GF5431@ulmo>
+References: <1432214964-40644-1-git-send-email-yh.huang@mediatek.com>
+ <1432214964-40644-3-git-send-email-yh.huang@mediatek.com>
+ <20150612102046.GF19400@ulmo.nvidia.com>
+ <1434622784.18278.39.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1433402017-7711-1-git-send-email-howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, Bobby Batacharia <bobby.batacharia-5wv7dgnIgG8@public.gmane.org>, Amit Kucheria <amit.kucheria-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pyE8wggRBhVBcj8z"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1434622784.18278.39.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 06/04/2015 09:13 AM, Howard Chen wrote:
-> This patch adds an idle-states node to describe the mt8173 idle state=
-s and
-> also adds references to the idle-states node in all CPU nodes.
->
-> Changes:
->
-> v4:
-> - Refine the property ordering.
->
-> v3:
-> - Add the local-timer-stop property.
->
-> v2:
-> - Remove the change to the PSCI version.
-> - Remove the cluster idle state.
-> - Fine tune the latency properties of the idle state.
->
-> Signed-off-by: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> Acked-by: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
 
-A bit late but ...
+--pyE8wggRBhVBcj8z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Sounds good.
+On Thu, Jun 18, 2015 at 06:19:44PM +0800, YH Huang wrote:
+> On Fri, 2015-06-12 at 12:20 +0200, Thierry Reding wrote:
+> > On Thu, May 21, 2015 at 09:29:24PM +0800, YH Huang wrote:
+[...]
+> > > +#define DISP_PWM_CON_1		0x14
+> > > +#define PWM_PERIOD_MASK		0xfff
+> > > +#define PWM_PERIOD_MAX		0x00000fff
+> >=20
+> > Same here. PWM_PERIOD_MAX isn't actually used anywhere, so perhaps just
+> > drop it altogether. But see also below...
+> >=20
+> > > +/* Shift log2(PWM_PERIOD_MAX + 1) as divisor */
+> > > +#define PWM_PERIOD_BIT_SHIFT	12
+> >=20
+> > I wasn't very clear about this in my earlier review, so let me try to
+> > explain why I think this is confusing. You use this as a divisor, but
+> > you encode it as a shift. It's also PWM_PERIOD_MAX + 1, so I think it
+> > would make more sense to drop this, keep PWM_PERIOD_MAX as above and
+> > then replace the
+> >=20
+> > 	>> PWM_PERIOD_BIT_SHIFT
+> > =09
+> > below by
+> >=20
+> > 	/ (PWM_PERIOD_MAX + 1)
+> >=20
+>=20
+> Maybe I can change in this way:
+> Remove this: #define PWM_PERIOD_MAX		0x00000fff
+> Using ">> PWM_PERIOD_BIT_SHIFT" is faster than "/ (PWM_PERIOD_MAX + 1)"
+> Is this right?
 
-Acked-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+The compiler should be able to optimize the division to a shift, so both
+will likely result in the same code. But I don't mind much either way as
+long as we don't define two symbols for essentially the same value.
 
+Thierry
 
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
+--pyE8wggRBhVBcj8z
+Content-Type: application/pgp-signature
 
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+iQIcBAABCAAGBQJVkQ4pAAoJEN0jrNd/PrOhjSwP/RS1ryK0VhT9VEZShzxu0nS7
+tOMIoRRVrNW82+eXR8ibapKtrpAzBJzaEiJBnBdV3Ht5KEA5EQ5Oc9SNbvgaRYcF
++3Zn2mB2HHGDMAf3QwVubPk2Yit5lcC4Z4IXXDBQgr5JOJLY5XuF5jdGpCakg/qD
+rjf2+c76PC27VTE9MaSp0gewHjVIlB71tuTeU3aNbo5DLYJffvzCRzrOA/jTvwiA
+jFwOrF1JvJ7WPjHI4sJUOteGuJBk+ZxOUx4zx+MrT4kQie95okbLidkSxYOhH/jb
+9DhzbWf3nlJS2eJZCb5eEGh6OS9n1ZPdPEh/msm6PYqCgoozhrLsM0Y6JVpWJLqF
+xv0L/HLhyW2BG2SHkqzkDGJTcGRjfWk2dZxTp/RirfVPG08Cgx8oeZdmX0yUr0hE
+TTITHzHOZtg+c2rDlodCQ99yv7PXeIRaU4GORzUm0EgFd9VwuXOG3zmFX6VzxduF
+J6Kua+jROEvNkZ2x7ULhyIcuAnUGKwi6L8b1dzZEXKA6XSBpHv9zWV6/dGPsX8jz
+o0+3C3p5EEKOzH+ssh487+pFICDDZe8EuqJinTcWgnUyM6+SQ0pfj/yQnNACC6Fc
+AR7bMyiF+EbWI6lpDEgiOCjG63jk3Jt1TTk07YASpTBPwlYlpAdpQWjn6ji+YWKb
+HXYmoN2GQvgONLO1fAso
+=PyV4
+-----END PGP SIGNATURE-----
+
+--pyE8wggRBhVBcj8z--
