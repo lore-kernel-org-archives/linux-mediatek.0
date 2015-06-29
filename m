@@ -1,66 +1,178 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: pwm: add MediaTek display PWM
- bindings
-Date: Mon, 29 Jun 2015 23:24:43 +0800
-Message-ID: <1435591483.21804.2.camel@mtksdaap41>
-References: <1435590211-38854-1-git-send-email-yh.huang@mediatek.com>
-	 <1435590211-38854-2-git-send-email-yh.huang@mediatek.com>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH 1/2] dt-bindings: mediatek: Add MT8173 cpufreq driver binding
+Date: Mon, 29 Jun 2015 14:53:40 -0700
+Message-ID: <20150629215340.9112.43917@quantum>
+References: <1433766561-1330-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1433766561-1330-2-git-send-email-pi-cheng.chen@linaro.org>
+ <CALx668UShfd3HW1ptzHnMr9xAUVyLGt=q2CmYHn3vqASZug6kw@mail.gmail.com>
+ <20150624010621.GB6424@linux>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435590211-38854-2-git-send-email-yh.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, yh.huang@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20150624010621.GB6424@linux>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-I am sorry for forgetting to remove Change-Id in [PATCH v3 1/2] and
-[PATCH v3 1/2].
-
-Regards,
-YH Huang
-
-On Mon, 2015-06-29 at 23:03 +0800, YH Huang wrote:
-> Document the device-tree binding of MediatTek display PWM.
-> The clock "main" and "mm" are used to generate PWM signals.
-> The PWM has one channel to control the backlight brightness for display.
-> It supports MT8173 and MT6595.
+Quoting Viresh Kumar (2015-06-23 18:06:21)
+> Adding Mike's new email address..
 > 
-> Change-Id: I194ca88b4e4cd01a28b8701e07e86ea6941e5292
-> Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> ---
->  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       | 24 ++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> On 23-06-15, 23:31, Pi-Cheng Chen wrote:
+> > On Mon, Jun 8, 2015 at 8:29 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+> > > This patch adds device tree binding document for MT8173 cpufreq driver.
+> > >
+> > > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+> > > ---
+> > >  .../devicetree/bindings/cpufreq/cpufreq-mt8173.txt | 127 +++++++++++++++++++++
+> > >  1 file changed, 127 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
+> > > new file mode 100644
+> > > index 0000000..7708a65
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
+> > > @@ -0,0 +1,127 @@
+> > > +
+> > > +Mediatek MT8173 cpufreq driver
+> > > +-------------------
 > 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> new file mode 100644
-> index 0000000..355b755
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> @@ -0,0 +1,24 @@
-> +MediaTek display PWM controller
-> +
-> +Required properties:
-> + - compatible: should be "mediatek,<name>-disp-pwm"
-> +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC
-> +   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC
-> + - reg: physical base address and length of the controller's registers
-> + - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
-> +   the cell format
-> + - clocks: phandle and clock specifier of the PWM reference clock
-> + - clock-names: must contain the following
-> +   - "main": clock used to generate PWM signals
-> +   - "mm": sync signals from the modules of mmsys
-> +
-> +Example:
-> +	pwm0: pwm@1401e000 {
-> +		compatible = "mediatek,mt8173-disp-pwm",
-> +			     "mediatek,mt6595-disp-pwm";
-> +		reg = <0 0x1401e000 0 0x1000>;
-> +		#pwm-cells = <2>;
-> +		clocks = <&mmsys MM_DISP_PWM026M>,
-> +			 <&mmsys MM_DISP_PWM0MM>;
-> +		clock-names = "main", "mm";
-> +	};
+> Few more ---- required.
+> 
+> > > +
+> > > +Mediatek MT8173 cpufreq driver for CPU frequency scaling.
+> > > +
+> > > +Required properties:
+> > > +- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
+> > > +- clock-names: Should contain the following:
+> > > +       "cpu"           - The multiplexer for clock input of CPU cluster.
+> > > +       "intermediate"  - A parent of "cpu" clock which is used as "intermediate" clock
+> > > +                         source (usually MAINPLL) when the original CPU PLL is under
+> > > +                         transition and not stable yet.
+> 
+> These belong to Mike.
+
+Everything looks good. This is a typical clock consumer based on the
+generic clock-binding. You might want to reference that this cpufreq
+binding uses the "Clock consumers" portion of the clock binding and
+reference its location:
+
+Documentation/devicetree/bindings/clock/clock-bindings.txt
+
+Please add,
+
+Reviewed-by: Michael Turquette <mturquette@baylibre.com>
+
+Thanks,
+Mike
+
+> 
+> > > +- operating-points: Table of frequencies and voltage CPU could be transitioned into,
+> > > +                   Frequency should be in KHz units and voltage should be in microvolts.
+> 
+> That's not complete. You should just mention the path to opp bindings
+> here. And that's it.
+> 
+> > > +- proc-supply: Regulator for Vproc of CPU cluster.
+> > > +
+> > > +Optional properties:
+> > > +- sram-supply: Regulator for Vsram of CPU cluster. When present, the cpufreq driver
+> > > +              needs to do "voltage trace" to step by step scale up/down Vproc and
+> > > +              Vsram to fit SoC specific needs. When absent, the voltage scaling
+> > > +              flow is handled by hardware, hence no software "voltage trace" is
+> > > +              needed.
+> > > +
+> > > +Example:
+> > > +--------
+> > > +       cpu0: cpu@0 {
+> > > +               device_type = "cpu";
+> > > +               compatible = "arm,cortex-a53";
+> > > +               reg = <0x000>;
+> > > +               enable-method = "psci";
+> > > +               cpu-idle-states = <&CPU_SLEEP_0>;
+> > > +               clocks = <&infracfg CLK_INFRA_CA53SEL>,
+> > > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
+> > > +               clock-names = "cpu", "intermediate";
+> > > +               operating-points = <
+> > > +                       507000  859000
+> > > +                       702000  908000
+> > > +                       1001000 983000
+> > > +                       1105000 1009000
+> > > +                       1183000 1028000
+> > > +                       1404000 1083000
+> > > +                       1508000 1109000
+> > > +                       1573000 1125000
+> > > +               >;
+> > > +       };
+> > > +
+> > > +       cpu1: cpu@1 {
+> > > +               device_type = "cpu";
+> > > +               compatible = "arm,cortex-a53";
+> > > +               reg = <0x001>;
+> > > +               enable-method = "psci";
+> > > +               cpu-idle-states = <&CPU_SLEEP_0>;
+> > > +               clocks = <&infracfg CLK_INFRA_CA53SEL>,
+> > > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
+> > > +               clock-names = "cpu", "intermediate";
+> > > +               operating-points = <
+> > > +                       507000  859000
+> > > +                       702000  908000
+> > > +                       1001000 983000
+> > > +                       1105000 1009000
+> > > +                       1183000 1028000
+> > > +                       1404000 1083000
+> > > +                       1508000 1109000
+> > > +                       1573000 1125000
+> > > +               >;
+> > > +       };
+> > > +
+> > > +       cpu2: cpu@100 {
+> > > +               device_type = "cpu";
+> > > +               compatible = "arm,cortex-a57";
+> > > +               reg = <0x100>;
+> > > +               enable-method = "psci";
+> > > +               cpu-idle-states = <&CPU_SLEEP_0>;
+> > > +               clocks = <&infracfg CLK_INFRA_CA57SEL>,
+> > > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
+> > > +               clock-names = "cpu", "intermediate";
+> > > +               operating-points = <
+> > > +                       507000  828000
+> > > +                       702000  867000
+> > > +                       1001000 927000
+> > > +                       1209000 968000
+> > > +                       1404000 1007000
+> > > +                       1612000 1049000
+> > > +                       1807000 1089000
+> > > +                       1989000 1125000
+> > > +               >;
+> > > +       };
+> > > +
+> > > +       cpu3: cpu@101 {
+> > > +               device_type = "cpu";
+> > > +               compatible = "arm,cortex-a57";
+> > > +               reg = <0x101>;
+> > > +               enable-method = "psci";
+> > > +               cpu-idle-states = <&CPU_SLEEP_0>;
+> > > +               clocks = <&infracfg CLK_INFRA_CA57SEL>,
+> > > +                        <&apmixedsys CLK_APMIXED_MAINPLL>;
+> > > +               clock-names = "cpu", "intermediate";
+> > > +               operating-points = <
+> > > +                       507000  828000
+> > > +                       702000  867000
+> > > +                       1001000 927000
+> > > +                       1209000 968000
+> > > +                       1404000 1007000
+> > > +                       1612000 1049000
+> > > +                       1807000 1089000
+> > > +                       1989000 1125000
+> > > +               >;
+> > > +       };
+> 
+> I remember Mark Rutland asking you about the replicated stuff for all
+> CPUs, but happened to his comments later on ? Were you asked to put
+> these for all the CPUs ?
+> 
+> -- 
+> viresh
