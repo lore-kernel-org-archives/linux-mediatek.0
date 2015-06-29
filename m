@@ -1,61 +1,57 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [RESEND PATCH 1/6] Document: bindings: DT: Add SMP enable
- method for MT6580 SoC platform
-Date: Mon, 29 Jun 2015 11:03:39 +0800
-Message-ID: <1435547019.20584.13.camel@mtksdaap41>
-References: <Scott Shu <srv_scott.shu@mediatek.com>
-	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
-	 <1434650481-39421-2-git-send-email-scott.shu@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4] ARM: dts: mt8173: support arm64 cpuidle-dt
+Date: Mon, 29 Jun 2015 10:18:36 +0200
+Message-ID: <5590FF5C.10408@linaro.org>
+References: <1433402017-7711-1-git-send-email-howard.chen@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1434650481-39421-2-git-send-email-scott.shu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Scott Shu <scott.shu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Arnd Bergmann <arnd@arndb.de>, ibanezchen@gmail.com
-Cc: robh+dt@kernel.org, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1433402017-7711-1-git-send-email-howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, Bobby Batacharia <bobby.batacharia-5wv7dgnIgG8@public.gmane.org>, Amit Kucheria <amit.kucheria-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-06-19 at 02:01 +0800, Scott Shu wrote:
-> For MT6580 SoC platform, the secondary cores are in powered off state
-> as default, so compared with MT65xx series SoC, one new enable method
-> is needed. This method using the SPM (System Power Manager) inside
-> the SCYSYS to control the CPU power.
-> ---
->  Documentation/devicetree/bindings/arm/cpus.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/cpus.txt b/Documentation/devicetree/bindings/arm/cpus.txt
-> index ac2903d..fb80b2e 100644
-> --- a/Documentation/devicetree/bindings/arm/cpus.txt
-> +++ b/Documentation/devicetree/bindings/arm/cpus.txt
-> @@ -194,6 +194,7 @@ nodes to be present and contain the properties described below.
->  			    "marvell,armada-380-smp"
->  			    "marvell,armada-390-smp"
->  			    "marvell,armada-xp-smp"
-> +			    "mediatek,mt6580-smp"
->  			    "mediatek,mt65xx-smp"
->  			    "mediatek,mt81xx-tz-smp"
->  			    "qcom,gcc-msm8660"
+On 06/04/2015 09:13 AM, Howard Chen wrote:
+> This patch adds an idle-states node to describe the mt8173 idle state=
+s and
+> also adds references to the idle-states node in all CPU nodes.
+>
+> Changes:
+>
+> v4:
+> - Refine the property ordering.
+>
+> v3:
+> - Add the local-timer-stop property.
+>
+> v2:
+> - Remove the change to the PSCI version.
+> - Remove the cluster idle state.
+> - Fine tune the latency properties of the idle state.
+>
+> Signed-off-by: Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Acked-by: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
 
-Hi
+A bit late but ...
 
-It seems we have 3 different kinds of cpu enable method now, and
-mt65xx-smp doesn't cover all mt65xx series. So maybe it make sense to
-change naming before it got merged.
+Sounds good.
 
-Short summary for these methods:
+Acked-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
-mt65xx-smp:    	For mt65xx socs which wakeup all cores at boot.
-		Tested on mt6589 by Matthias.
-mt6580-smp:     Only first core is alive at boot, so need to wakeup
-		other cores using SPM. AFAIK only for mt6580 now.
-mt81xx-tz-smp:  For soc which wakeup all cores at boot, and have
-		trustzone firmware. Suitable for mt8127, mt8135.
 
-I'm not sure about smp for mt6592, maybe Howard or Scott can comment on
-it.
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
 
-Any suggestion on how we should organize these methods?
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
-Joe.C
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
