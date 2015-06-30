@@ -1,212 +1,60 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: [PATCH v2 2/2] ARM: dts: mediatek: add 6580 support
-Date: Tue, 30 Jun 2015 15:02:31 +0800
-Message-ID: <1435647751-20422-3-git-send-email-mars.cheng@mediatek.com>
-References: <1435647751-20422-1-git-send-email-mars.cheng@mediatek.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 4/4] arm64: dts: Add spi bus dts
+Date: Tue, 30 Jun 2015 15:55:33 +0800
+Message-ID: <CAGS+omAyzGpZE2SDN45dD1PrLr00d=3Tu8BCAL09N8ih6W+yiA@mail.gmail.com>
+References: <1435583070-9600-1-git-send-email-leilk.liu@mediatek.com> <1435583070-9600-5-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435647751-20422-1-git-send-email-mars.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: srv_wsdupstream@mediatek.com, cc.hwang@mediatek.com, linux-kernel@vger.kernel.org, jades.shih@mediatek.com, scott.shu@mediatek.com, miles.chen@mediatek.com, linux-mediatek@lists.infradead.org, my.chung@mediatek.com, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, Mars Cheng <mars.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1435583070-9600-5-git-send-email-leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds basic chip support for Mediatek 6580.
+Hi Leilk,
 
-Change-Id: Ic5c93eb5d1e6e23503dabd28d41c30a7f02e9c18
-Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
----
- arch/arm/boot/dts/Makefile         |   1 +
- arch/arm/boot/dts/mt6580-evbp1.dts |  35 +++++++++++
- arch/arm/boot/dts/mt6580.dtsi      | 125 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 161 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
- create mode 100644 arch/arm/boot/dts/mt6580.dtsi
+On Mon, Jun 29, 2015 at 9:04 PM, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> This patch adds MT8173 spi bus controllers into device tree.
+>
+> Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 512e4eb..923d2eb 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -259,6 +259,15 @@
+>                         status = "disabled";
+>                 };
+>
+> +               spi: spi@1100a000 {
+> +                       compatible = "mediatek,mt8173-spi";
+> +                       reg = <0 0x1100a000 0 0x1000>;
+> +                       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
+> +                       clocks = <&pericfg CLK_PERI_SPI0>;
+> +                       clock-names = "main";
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 86217db..9298531 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -656,6 +656,7 @@ dtb-$(CONFIG_MACH_DOVE) += \
- 	dove-d3plug.dtb \
- 	dove-dove-db.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += \
-+	mt6580-evbp1.dtb \
- 	mt6589-aquaris5.dtb \
- 	mt6592-evb.dtb \
- 	mt8127-moose.dtb \
-diff --git a/arch/arm/boot/dts/mt6580-evbp1.dts b/arch/arm/boot/dts/mt6580-evbp1.dts
-new file mode 100644
-index 0000000..8c42335
---- /dev/null
-+++ b/arch/arm/boot/dts/mt6580-evbp1.dts
-@@ -0,0 +1,35 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Mars.C <mars.cheng@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+/dts-v1/;
-+#include "mt6580.dtsi"
-+
-+/ {
-+	model = "MediaTek MT6580 evaluation board";
-+	compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-+
-+	chosen {
-+		bootargs = "console=ttyS0,921600n8 earlyprintk";
-+		stdout-path = &uart0;
-+	};
-+
-+	memory {
-+		reg = <0x80000000 0x20000000>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-new file mode 100644
-index 0000000..ac97d64
---- /dev/null
-+++ b/arch/arm/boot/dts/mt6580.dtsi
-@@ -0,0 +1,125 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Mars.C <mars.cheng@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include "skeleton.dtsi"
-+
-+/ {
-+	compatible = "mediatek,mt6580";
-+	#address-cells = <1>;
-+	#size-cells = <1>;
-+	interrupt-parent = <&sysirq>;
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x0>;
-+		};
-+		cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x1>;
-+		};
-+		cpu@2 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x2>;
-+		};
-+		cpu@3 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x3>;
-+		};
-+
-+	};
-+
-+	clocks {
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		system_clk: dummy13m {
-+			compatible = "fixed-clock";
-+			clock-frequency = <13000000>;
-+			#clock-cells = <0>;
-+		};
-+
-+		rtc_clk: dummy32k {
-+			compatible = "fixed-clock";
-+			clock-frequency = <32000>;
-+			#clock-cells = <0>;
-+		};
-+
-+		uart_clk: dummy26m {
-+			compatible = "fixed-clock";
-+			clock-frequency = <26000000>;
-+			#clock-cells = <0>;
-+		};
-+	};
-+
-+	timer: timer@10008000 {
-+		compatible = "mediatek,mt6580-timer",
-+			     "mediatek,mt6577-timer";
-+		reg = <0x10008000 0x80>;
-+		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&system_clk>, <&rtc_clk>;
-+		clock-names = "system-clk", "rtc-clk";
-+	};
-+
-+	sysirq: interrupt-controller@10200100 {
-+		compatible = "mediatek,mt6580-sysirq",
-+			     "mediatek,mt6577-sysirq";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		interrupt-parent = <&gic>;
-+		reg = <0x10200100 0x1c>;
-+	};
-+
-+	gic: interrupt-controller@10211000 {
-+		compatible = "arm,cortex-a7-gic";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		interrupt-parent = <&gic>;
-+		reg = <0x10211000 0x1000>,
-+		      <0x10212000 0x1000>,
-+		      <0x10214000 0x2000>,
-+		      <0x10216000 0x2000>;
-+	};
-+
-+	uart0: serial@11005000 {
-+		compatible = "mediatek,mt6580-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0x11005000 0x400>;
-+		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		clock-names = "baud";
-+		status = "disabled";
-+	};
-+
-+	uart1: serial@11006000 {
-+		compatible = "mediatek,mt6580-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0x11006000 0x400>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		clock-names = "baud";
-+		status = "disabled";
-+	};
-+};
--- 
-1.8.1.1.dirty
+Please also add the spi pinctl node, and set it as the default pinctl
+for this spi node.
+
+> +                       status = "disabled";
+> +               };
+> +
+>                 mmsys: mmsys@14000000 {
+>                         compatible = "mediatek,mt8173-mmsys", "syscon";
+>                         reg = <0 0x14000000 0 0x1000>;
+> --
+> 1.8.1.1.dirty
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
