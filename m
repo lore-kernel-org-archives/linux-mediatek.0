@@ -1,119 +1,191 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Wed, 1 Jul 2015 19:54:09 +0800
-Message-ID: <CAGS+omBdz2df7ykYpx5Gh1B2Ym+XhpOPOOUu0a_qg7tJKqOy6A@mail.gmail.com>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com>
- <8860488.JuX1EN5tWB@diego> <1435132455.28866.21.camel@mtksdaap41>
- <1510058.fTE6dlSRsH@diego> <1435655229.19330.15.camel@mtksdaap41> <20150701064935.GC18611@pengutronix.de>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: ARM: Mediatek: Document devicetree
+ bindings for clock controllers
+Date: Wed, 1 Jul 2015 21:47:11 +0800
+Message-ID: <CAGS+omD9Mvz0-RQMc5TsWCPct80S5fyqMn3+-zR7HB9yb7KoDQ@mail.gmail.com>
+References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com> <1435633127-31952-3-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150701064935.GC18611@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: James Liao <jamesjj.liao@mediatek.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, ted.lin@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1435633127-31952-3-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 1, 2015 at 2:49 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
+On Tue, Jun 30, 2015 at 10:58 AM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 >
-> On Tue, Jun 30, 2015 at 05:07:09PM +0800, James Liao wrote:
-> > Hi Heiko,
-> >
-> > There are 4 clocks which are derived from clk_null directly in current
-> > topckgen implementation:
-> >
-> >       clkph_mck_o, dpi_ck, usb_syspll_125m, hdmitx_dig_cts
-> >
-> > Our designer mentioned 2 things about external clocks:
-> >
-> > 1. These 4 clocks come from analog macro, not from PLL, nor from
-> > external clocks directly.
+> This adds the binding documentation for the mmsys, imgsys, vdecsys,
+> vencsys and vencltsys controllers found on Mediatek SoCs.
 >
-> Ok, this means there actually are clocks. We can't control these clock and
-> they have some known or unknown rate. This makes them fixed clocks. Just
-> specify them in the device tree and you are done. Give them reasonable
-> names and the rate if you know it, 0 otherwise.
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,vencltsys.txt   | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     | 22 ++++++++++++++++++++++
+>  5 files changed, 110 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
 >
-> The problem is not that you use fixed clocks for non software
-> controllable clocks of unknwown rates, but that you try to use a single
-> clock for all of them and name it 'dummy' or 'null'. Name it
->
-> dpi_ck {
->         compatible = "fixed-clock";
->         rate = <0>; /* unknown, generated by some Analog block */
-> };
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+> new file mode 100644
+> index 0000000..7612bac
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek imgsys controller
+> +============================
+> +
+> +The Mediatek imgsys controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +       - "mediatek,mt8173-imgsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The imgsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +imgsys: imgsys@15000000 {
 
-It would be nice, though, to use the real clock rates.
-Otherwise, we end up with a bunch of unknown clock rates, like this:
+Since these nodes will be supplying clocks to the rest of the system,
+I think the "name" part of each of these should all be
+"clock-controller", like topckgen and apmixedsys:
 
-   clock                         enable_cnt  prepare_cnt        rate
-accuracy   phase
-----------------------------------------------------------------------------------------
- clk_null                                 2            2           0
-       0 0
-    mm_lvds_cts                           0            0           0
-       0 0
-    mm_lvds_pixel                         0            0           0
-       0 0
-    mm_dpi1_pixel                         0            0           0
-       0 0
-    mm_dsi1_digital                       0            0           0
-       0 0
-    mm_dsi0_digital                       1            1           0
-       0 0
-    infra_cpum                            0            0           0
-       0 0
-    hdmitx_dig_cts                        0            0           0
-       0 0
-       hdmi_sel                           0            0           0
-       0 0
-          mm_hdmi_pllck                   0            0           0
-       0 0
-       hdmitxpll_d3                       0            0           0
-       0 0
-       hdmitxpll_d2                       0            0           0
-       0 0
-    usb_syspll_125m                       0            0           0
-       0 0
-    dpi_ck                                0            0           0
-       0 0
-    clkph_mck_o                           1            1           0
-       0 0
-       dmpll_d16                          0            0           0
-       0 0
-       dmpll_d8                           0            0           0
-       0 0
-       dmpll_d4                           0            0           0
-       0 0
-       dmpll_d2                           0            0           0
-       0 0
-       dmpll_ck                           1            1           0
-       0 0
-          mem_sel                         2            2           0
-       0 0
-             infra_m4u                    1            1           0
-       0 0
-
-Furthermore, at least some of these children clocks are possible
-source clocks for other clocks for which we do want to know the
-resulting frequency.  For example, the "dmpll_*" clocks are mux inputs
-for many of the subsystem clocks.
+  imgsys: clock-controller@15000000 {
 
 -Dan
 
 >
-> Technically it's the same, but it sounds much more professional and like
-> you know what you are doing ;)
->
-> Sascha
->
+> +       compatible = "mediatek,mt8173-imgsys", "syscon";
+> +       reg = <0 0x15000000 0 0x1000>;
+> +       #clock-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> new file mode 100644
+> index 0000000..b51e417
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek mmsys controller
+> +============================
+> +
+> +The Mediatek mmsys controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +       - "mediatek,mt8173-mmsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The mmsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +mmsys: mmsys@14000000 {
+> +       compatible = "mediatek,mt8173-mmsys", "syscon";
+> +       reg = <0 0x14000000 0 0x1000>;
+> +       #clock-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+> new file mode 100644
+> index 0000000..a5b94a7
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek vdecsys controller
+> +============================
+> +
+> +The Mediatek vdecsys controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +       - "mediatek,mt8173-vdecsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The vdecsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +vdecsys: vdecsys@16000000 {
+> +       compatible = "mediatek,mt8173-vdecsys", "syscon";
+> +       reg = <0 0x16000000 0 0x1000>;
+> +       #clock-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+> new file mode 100644
+> index 0000000..3d4e8d8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek vencltsys controller
+> +============================
+> +
+> +The Mediatek vencltsys controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +       - "mediatek,mt8173-vencltsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The vencltsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +vencltsys: vencltsys@19000000 {
+> +       compatible = "mediatek,mt8173-vencltsys", "syscon";
+> +       reg = <0 0x19000000 0 0x1000>;
+> +       #clock-cells = <1>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+> new file mode 100644
+> index 0000000..e5b72f5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek vencsys controller
+> +============================
+> +
+> +The Mediatek vencsys controller provides various clocks to the system.
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +       - "mediatek,mt8173-vencsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The vencsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
+> +Example:
+> +
+> +vencsys: vencsys@18000000 {
+> +       compatible = "mediatek,mt8173-vencsys", "syscon";
+> +       reg = <0 0x18000000 0 0x1000>;
+> +       #clock-cells = <1>;
+> +};
 > --
-> Pengutronix e.K.                           |                             |
-> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-> Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+> 1.8.1.1.dirty
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
