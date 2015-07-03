@@ -1,68 +1,94 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: MT7623 Wifi SoC support questions
-Date: Fri, 03 Jul 2015 15:44:43 +0200
-Message-ID: <14968847.0a6uI5oGvX@ubix>
-References: <5593C939.1020004@openwrt.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 4/9] clocksource: mediatek: Use GPT as sched clock source
+Date: Fri, 03 Jul 2015 17:51:34 +0200
+Message-ID: <1551938.VHQvCCENeg@ubix>
+References: <1431763110-443-1-git-send-email-yingjoe.chen@mediatek.com> <CABuKBeJhdRBBw1v1kj8J0YFVWZ27vzx5W=XU8jiwePVgL_7g_g@mail.gmail.com> <CAGS+omDa4X7daAYD6SDuEM6bMQwojNUCnGMGiUwnJ6M_yBTRLg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5593C939.1020004-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omDa4X7daAYD6SDuEM6bMQwojNUCnGMGiUwnJ6M_yBTRLg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Russell King <linux@arm.linux.org.uk>, Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, Pawel Moll <pawel.moll@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Marc Carino <marc.ceeeee@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wednesday, July 01, 2015 01:04:25 PM John Crispin wrote:
-> Hi all,
+On Friday, July 03, 2015 09:48:42 PM Daniel Kurtz wrote:
+> On Wed, May 20, 2015 at 7:02 PM, Matthias Brugger
 > 
-> I am currently busy making the linux-mediatek support work on the MT7623
-> made by Mediatek/Ralink so we can add support to OpenWrt.
+> <matthias.bgg@gmail.com> wrote:
+> > 2015-05-16 9:58 GMT+02:00 Yingjoe Chen <yingjoe.chen@mediatek.com>:
+> >> When cpu is in deep idle, arch timer will stop counting. Setup GPT as
+> >> sched clock source so it can keep counting in idle.
+> >> 
+> >> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> >> ---
+> >> 
+> >>  drivers/clocksource/mtk_timer.c | 10 ++++++++++
+> >>  1 file changed, 10 insertions(+)
+> >> 
+> >> diff --git a/drivers/clocksource/mtk_timer.c
+> >> b/drivers/clocksource/mtk_timer.c index 91206f9..fe7cf72 100644
+> >> --- a/drivers/clocksource/mtk_timer.c
+> >> +++ b/drivers/clocksource/mtk_timer.c
+> >> @@ -24,6 +24,7 @@
+> >> 
+> >>  #include <linux/of.h>
+> >>  #include <linux/of_address.h>
+> >>  #include <linux/of_irq.h>
+> >> 
+> >> +#include <linux/sched_clock.h>
+> >> 
+> >>  #include <linux/slab.h>
+> >>  
+> >>  #define GPT_IRQ_EN_REG         0x00
+> >> 
+> >> @@ -59,6 +60,13 @@ struct mtk_clock_event_device {
+> >> 
+> >>         struct clock_event_device dev;
+> >>  
+> >>  };
+> >> 
+> >> +static void __iomem *gpt_base __read_mostly;
+> >> +
+> >> +static u64 notrace mtk_read_sched_clock(void)
+> >> +{
+> >> +       return readl_relaxed(gpt_base + TIMER_CNT_REG(GPT_CLK_SRC));
+> >> +}
+> >> +
+> >> 
+> >>  static inline struct mtk_clock_event_device *to_mtk_clk(
+> >>  
+> >>                                 struct clock_event_device *c)
+> >>  
+> >>  {
+> >> 
+> >> @@ -243,6 +251,8 @@ static void __init mtk_timer_init(struct device_node
+> >> *node)>> 
+> >>         mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN, 1);
+> >>         clocksource_mmio_init(evt->gpt_base + TIMER_CNT_REG(GPT_CLK_SRC),
+> >>         
+> >>                         node->name, rate, 300, 32,
+> >>                         clocksource_mmio_readl_up);
+> >> 
+> >> +       gpt_base = evt->gpt_base;
+> > 
+> > This is really hacky. We should clean up the code and provide
+> > mtk_clock_event_device globally.
+> > Please add the patch below, which does exactly this.
 > 
-> This SoC looks very similar to the MT8127. The main differences are that
-> it uses a MT6232 pmic and has pcie/ethernet.
-> 
-> I already managed to get lots of drivers up and running based on what
-> has been posted on this list. If do however have a few questions.
-
-It's good to hear, that you can take profit out of this effort. It clearly shows 
-the value of getting a SoC mainline.
-
-> 
-> * I noticed that ARM_ARCH_TIMER is not selected in v4.1 If I only
-> register the mtk_timer, SMP comes up but the 3 extra cores seem to get
-> no timer irqs and the whole system seems to run very slow. Selecting
-> ARM_ARCH_TIMER makes the system boot fine. Is mtk_timer enough for other
-> MTK SoCs to work ?
-
-I think the basic problem, at least with mt6589 was, that the cntfreq register 
-was not set correctly by the bootloader, which made the ARM_ARCH_TIMER 
-unusable.
-
-Apart from that I think, the ARM_ARCH_TIMER will get turned off in some deep 
-idle state, so that you need mtk_timer (I'm not sure if this holds for mt7623 
-as well).
-
-> 
-> * The MT7623 has a 7 port PWM that looks different to the display-pwm
-> driver that was posted. This PWM has an old and new mode. Oldmode looks
-> like classic period/duty cyle config, while the new mode has lots of
-> complexe features. the kernel PWM subsystem can only handle oldmode
-> style config right now so i was going to add a driver. is anyone working
-> on this already ? is this core mt7623 specific or do other SoCs have it
-> aswell ? The registers i have here are called PWMX_CON, PWMX_HDURATION,
-> PWMX_LDURATION, PWMX_GDURATION ....
+> I don't think this is so hacky.
+> In light of Stephen's comment about the benefit of using
+> container_of() to extract gpt_base from the passed in struct
+> clock_event_device in the other routines, what is the benefit of
+> making more of mtk_clock_event_device global?
+> I think what Yingjoe has implemented is short and sweet.
 > 
 
-I it seems that this PWM is present in other SoCs as well.
+Huh, this patch got somehow forgotten.
+Ok, just one comment. I would prefer to rename the global gpt_base to 
+gpt_sched_base or something similar and set the pointer + offset directly 
+mtk_timer_init.
 
-Best regards,
+Thanks,
 Matthias
