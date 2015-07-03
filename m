@@ -1,59 +1,49 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] clk: mediatek: Add USB clock support in MT8173
- APMIXEDSYS
-Date: Fri, 3 Jul 2015 13:38:47 +0800
-Message-ID: <1435901927.3526.48.camel@mtksdaap41>
-References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1435633127-31952-5-git-send-email-jamesjj.liao@mediatek.com>
-	 <CAGS+omBRAJVN3uPYn9YdKZ3VBj61c-rpY_cNgnK6x9U0uJBPYw@mail.gmail.com>
-	 <CAGS+omBsu3zkBf0C_QECBP7NShFhkMih36z1vynvVQ5wCLfZ8w@mail.gmail.com>
+From: Scott Shu <scott.shu@mediatek.com>
+Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
+ driver
+Date: Fri, 3 Jul 2015 13:58:31 +0800
+Message-ID: <1435903111.5056.18.camel@mtkswgap22>
+References: <srv_scott.shu@mediatek.com>
+	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+	 <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
+	 <20150623055351.GA22419@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omBsu3zkBf0C_QECBP7NShFhkMih36z1vynvVQ5wCLfZ8w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150623055351.GA22419@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel,
+Hi Sascha,
+   I just wonder can we separate the MTCMOS into cpu and non-cpu part? 
+Just like qcom's xcc driver, they put cpu related code under
+"arch/arm/mach-xxx" but put the others under "driver".
 
-On Wed, 2015-07-01 at 23:22 +0800, Daniel Kurtz wrote:
-> This looks like 3 separate gate clocks in a chain, with a timing
-> constraint: USB_LPF must be enabled 100 us after USB_TX.
+Thanks,
+Scott  
+
+On Tue, 2015-06-23 at 07:53 +0200, Sascha Hauer wrote:
+> Hi Scott,
 > 
->   26MHz--> [GATE] --USB_TX--> [LPF] --USB_LPF--> [GATE] --USB_OUT-->
->             ^                  ^                  ^
->             +--------------+   |                  |
-> AP_PLL_CON2.REF2USB_TX_EN -+   |                  |
-> AP_PLL_CON2.REF2USB_TX_LPF_EN -+                  |
-> AP_PLL_CON2.REF2USB_TX_OUT_EN --------------------+
+> On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
+> > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
+> > MT6580.
+> 
+> This seems to be support for the very same hardware as I am posting
+> here:
+> 
+> https://lkml.org/lkml/2015/6/22/41
+> 
+> We should consolidate this.
+> 
+> My driver is currently handles all power domains except the CPUs while
+> yours handles only the CPUs.
+> I currently haven't looked whether CPUs can just be part of a power
+> domain aswell, but if that works this would probably be the way to go.
+> 
+> Sascha
 > 
 > 
-> I think we can model the gate parts using a proper clock tree model
-> and the existing clock gate semantics.
-> I'm not sure the best way to model the delay; but in theory that could
-> be handled by the clock user (USB driver).
-
-Do you mean to create 3 hierarchical clocks (may be clock gates) to
-model these clocks as the following ?
-
-EN -- LPF -- OUT_EN
-
-(EN is the parent of LPF, and LPF is the parent of EN)
-
-If we model these 3 clocks like above, we can't prevent clock users to
-enable OUT_EN directly, and there will be no delay between EN and LPF.
-
-Or you have other suggestions to model these 3 clcoks?
-
-
-Best regards,
-
-James
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
