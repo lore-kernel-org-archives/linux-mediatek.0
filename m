@@ -1,70 +1,106 @@
-From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] dts: mt8173-evb: Add da9211 to i2c1
-Date: Fri, 3 Jul 2015 10:28:26 +0800
-Message-ID: <1435890506-25425-1-git-send-email-henryc.chen@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH v2 3/4] clk: mediatek: Add subsystem clocks of MT8173
+Date: Fri, 3 Jul 2015 13:15:31 +0800
+Message-ID: <1435900531.3526.41.camel@mtksdaap41>
+References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1435633127-31952-4-git-send-email-jamesjj.liao@mediatek.com>
+	 <CAGS+omDJtTcVvcL925LFxUSeunWONp188OOP-H42uQ=6BaY9FQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omDJtTcVvcL925LFxUSeunWONp188OOP-H42uQ=6BaY9FQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, srv_heupstream <srv_heupstream@mediatek.com>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a DA9211 dual-channel BUCK regulator to i2c1.
-This regulator supplies GPU and DVFS1 voltages.
+On Wed, 2015-07-01 at 22:54 +0800, Daniel Kurtz wrote:
+> On Tue, Jun 30, 2015 at 10:58 AM, James Liao <jamesjj.liao@mediatek.com> wrote:
+> >
+> > +static struct mtk_gate_regs cg_regs_4_8_0 = {
+> 
+> These should all be:
+> 
+> static const struct mtk_gate_regs ...
 
-Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-This patch based on https://github.com/mbgg/linux-mediatek.git branch/v4.2-next/arm64
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 30 +++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+OK, I'll fix it.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index d0ab012..7f583bd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -34,6 +34,36 @@
- 	chosen { };
- };
- 
-+&i2c1 {
-+	status = "okay";
-+
-+	buck: da9211@68 {
-+		compatible = "dlg,da9211";
-+		reg = <0x68>;
-+
-+		regulators {
-+			da9211_vcpu_reg: BUCKA {
-+				regulator-name = "VBUCKA";
-+				regulator-min-microvolt = < 700000>;
-+				regulator-max-microvolt = <1310000>;
-+				regulator-min-microamp	= <2000000>;
-+				regulator-max-microamp	= <4400000>;
-+				regulator-ramp-delay = <10000>;
-+				regulator-always-on;
-+			};
-+
-+			da9211_vgpu_reg: BUCKB {
-+				regulator-name = "VBUCKB";
-+				regulator-min-microvolt = < 700000>;
-+				regulator-max-microvolt = <1310000>;
-+				regulator-min-microamp	= <2000000>;
-+				regulator-max-microamp	= <3000000>;
-+				regulator-ramp-delay = <10000>;
-+			};
-+		};
-+	};
-+};
-+
- &uart0 {
- 	status = "okay";
- };
--- 
-1.8.1.1.dirty
+> > +       .set_ofs = 0x0004,
+> > +       .clr_ofs = 0x0008,
+> > +       .sta_ofs = 0x0000,
+> > +};
+> > +
+> > +#define GATE_IMG(_id, _name, _parent, _shift) {                        \
+> > +               .id = _id,                                      \
+> > +               .name = _name,                                  \
+> > +               .parent_name = _parent,                         \
+> > +               .regs = &cg_regs_4_8_0,                         \
+> > +               .shift = _shift,                                \
+> > +               .ops = &mtk_clk_gate_ops_setclr,                \
+> > +       }
+> > +
+> > +static struct mtk_gate img_clks[] __initdata = {
+> 
+> These should all be:
+> 
+> static const ... __initconst = {
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+OK, I'll fix it.
+
+> > +
+> > +static void __init mtk_imgsys_init(struct device_node *node)
+> > +{
+> > +       struct clk_onecell_data *clk_data;
+> > +       void __iomem *base;
+> 
+> I don't think you need base for any of these.
+> mtk_clk_register_gates() will use syscon_node_to_regmap() to lookup
+> the regmap by itself.
+
+OK, I'll remove it.
+
+> > +       int r;
+> > +
+> > +       base = of_iomap(node, 0);
+> > +       if (!base) {
+> > +               pr_err("%s(): ioremap failed\n", __func__);
+> > +               return;
+> > +       }
+> > +
+> > +       clk_data = mtk_alloc_clk_data(CLK_IMG_NR_CLK);
+> 
+> Unrelated to this patch, but:
+> I think each clock node should statically declare its
+> clk_onecell_data, and pass it to mtk_alloc_clk_data().
+> mtk_alloc_clk_data() should then just allocate and initialize the clks array.
+
+Is there any different from allocating clk_onecell_data and clks arary
+dynamically?
+
+
+> >  /* APMIXED_SYS */
+> >
+> > -#define CLK_APMIXED_ARMCA15PLL 1
+> > -#define CLK_APMIXED_ARMCA7PLL  2
+> > +#define CLK_APMIXED_ARMCA15PLL         1
+> > +#define CLK_APMIXED_ARMCA7PLL          2
+> >  #define CLK_APMIXED_MAINPLL            3
+> >  #define CLK_APMIXED_UNIVPLL            4
+> >  #define CLK_APMIXED_MMPLL              5
+> > @@ -232,4 +232,91 @@
+> >  #define CLK_PERI_UART3_SEL             39
+> >  #define CLK_PERI_NR_CLK                        40
+> 
+> Why do we count up from 1 instead of 0?
+> This means that for each clock-controller:
+>   clk_onecell_data->clk[0] == ERR_PTR(-ENOENT)
+
+It's a legacy implementation. I think it doesn't matter for function or
+size in this implementation. We may change clock index to start from 0
+in next SoC clock implementation.
+
+
+Best regards,
+
+James
