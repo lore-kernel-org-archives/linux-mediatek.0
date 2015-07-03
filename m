@@ -1,100 +1,118 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Fri, 03 Jul 2015 10:38:09 +0200
-Message-ID: <4128666.7Kmsrhssyu@diego>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com> <CAGS+omCk50Q5b=ey5v1z2gha5Ybc+Fus0Ls+S=5n08xu7Svacw@mail.gmail.com> <1435909512.3526.71.camel@mtksdaap41>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: ARM: Mediatek: Document devicetree
+ bindings for clock controllers
+Date: Fri, 3 Jul 2015 18:46:33 +0800
+Message-ID: <CAGS+omAo-d_bK=2HDu98xHvqhnVgJUBy4jbYVGKqsfWRX-EfDA@mail.gmail.com>
+References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1435633127-31952-3-git-send-email-jamesjj.liao@mediatek.com>
+ <CAGS+omD9Mvz0-RQMc5TsWCPct80S5fyqMn3+-zR7HB9yb7KoDQ@mail.gmail.com>
+ <1435805534.3526.23.camel@mtksdaap41> <CAGS+omCgNstb+NPmRdbngnLm754hDPLO28KRc4RanCD2Myv7dQ@mail.gmail.com>
+ <5595CBDC.7090101@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1435909512.3526.71.camel@mtksdaap41>
+In-Reply-To: <5595CBDC.7090101-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ted.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Freitag, 3. Juli 2015, 15:45:12 schrieb James Liao:
-> On Thu, 2015-07-02 at 12:23 +0800, Daniel Kurtz wrote:
-> > On Thu, Jul 2, 2015 at 11:06 AM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> 
-wrote:
-> > > These clocks such as clkph_mck_o are configured by other modules before
-> > > kernel init, and their rates may different among platforms.
-> > 
-> > What other modules?
-> > Do you mean the rates are configured by firmware?
-> > How are the rates set?
-> > Are there registers that configure its rate?
-> > If so, why can't the kernel read these registers and compute the current
-> > rate?
-> CLKPH_MCK_O for example, it's a DRAM related clock, and initialized in
-> preloader (before kernel init). It's setting may be different because
-> using different DRAM module. And the setting may be changed dynamically
-> in runtime.
+On Fri, Jul 3, 2015 at 7:40 AM, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+> On 07/01/2015 09:26 PM, Daniel Kurtz wrote:
+>> On Thu, Jul 2, 2015 at 10:52 AM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>>> Hi Daniel,
+>>>
+>>>>> +Required Properties:
+>>>>> +
+>>>>> +- compatible: Should be:
+>>>>> +       - "mediatek,mt8173-imgsys", "syscon"
+>>>>> +- #clock-cells: Must be 1
+>>>>> +
+>>>>> +The imgsys controller uses the common clk binding from
+>>>>> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+>>>>> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+>>>>> +
+>>>>> +Example:
+>>>>> +
+>>>>> +imgsys: imgsys@15000000 {
+>>>> Since these nodes will be supplying clocks to the rest of the system,
+>>>> I think the "name" part of each of these should all be
+>>>> "clock-controller", like topckgen and apmixedsys:
+>>>>
+>>>>   imgsys: clock-controller@15000000 {
+>>> These subsystems (and topckgen also) also contains other functions such
+>>> as reset controller, which may be implemented in clk/mediatek/ in the
+>>> future. It is suitable to use "clock-controller" as their name?
+>> Hmm,
+>>
+>> I don't know the "right way" to do this either.
+>> Pardon me if you've already had these discussions.
+>> I only recently started looking at these clock nodes in detail :-).
+>>
+>> I think what we really have in register space is a "syscon", as
+>> described in [0]:
+>> [0] Documentation/devicetree/bindings/mfd/syscon.txt
+>>
+>> So, we can define this block of registers as a syscon:
+>>
+>> mmsys_syscon: syscon@14000000 {
+>>        compatible = "mediatek,mt8173-mmsys", "syscon";
+>>        reg = <0 0x14000000 0 0x1000>;
+>> };
+>>
+>>
+>> Then for the clock controller functionality, we create a node with a
+>> "clock-controller" name and a "-clock" compatible, like this:
+>>
+>> mmsys_clock: clock-controller {
+>>        compatible = "mediatek,mt8173-mmsys-clock";
+>>        #clock-cells = <1>;
+>>        mediatek,syscon = <&mmsys_syscon>;
+>> };
+>>
+>> You could then do:
+>> CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt8173-mmsys-clock", mtk_mmsys_init);
+>>
+>>
+>> If you want to reuse the same register range for some other
+>> functionality, we could then use a different node, with a different
+>> compatible:
+>>
+>> mmsys: reset-controller {
+>>        compatible = "mediatek,mt8173-mmsys-reset";
+>>        mediatek,syscon = <&mmsys_syscon>;
+>> };
+>>
+>> What do you think of this approach?
+>
+> DT nodes typically have a reg property. Not having a reg property is a
+> good indicator of a problem with the binding. A syscon is used when you
+> have a DT node with a reg property and some driver attached to it, but
+> you need to poke some bits in another register region that isn't part of
+> the reg property. Instead of having multiple nodes with two reg
+> properties where the second one is the same, we use a phandle and a syscon.
+>
+> If clock-controller isn't acceptable maybe clock-reset-contoller would
+> work? Or "power-controller"? We certainly shouldn't be making up
+> multiple nodes for one hardware block. Of course, the subject of the
+> patch is "bindings for clock controllers", so it may be that the
+> registers are predominantly clock related and so the name is appropriate
+> already.
 
-If it's set in the preloader (and maybe changed at runtime) this means, its 
-setting can also be read back to determine its current clock rate, so this is 
-a non-argument here ;-)
+Using "clock-controller" seems to fit best with the bindings
+introduced by this patch.
 
+However, if these bindings are for hardware blocks that contain a grab
+bag of various functionality that will be added in later patches, then
+I think "syscon" might be best.
 
-> We don't care CLKPH_MCK_O's rate in CCF because we don't need to change
-> mem_sel's setting in kernel, and there is not driver need to know
-> mem_sel's rate.
+-Dan
 
-As Daniel said, some of these clocks may be parents of other clocks, and not 
-knowing their rate might hurt in the future - especially when it's easy after 
-all to get its actual value like in your CLKPH_MCK_O example above.
-
-
-Heiko
-
-
-> > For mt8173, we are essentially discussing the following clocks (whose
-> > sole parent is clk_null):
-> > 
-> > FACTOR(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk_null", 1, 1),
-> > FACTOR(CLK_TOP_DPI, "dpi_ck", "clk_null", 1, 1),
-> > FACTOR(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk_null", 1, 1),
-> > FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "clk_null", 1, 1),
-> > GATE_ICG(CLK_INFRA_CPUM, "infra_cpum", "clk_null", 15),
-> > GATE_MM1(CLK_MM_DSI0_DIGITAL, "mm_dsi0_digital", "clk_null", 5),
-> > GATE_MM1(CLK_MM_DSI1_DIGITAL, "mm_dsi1_digital", "clk_null", 7),
-> > GATE_MM1(CLK_MM_DPI1_PIXEL, "mm_dpi1_pixel", "clk_null", 10),
-> > GATE_MM1(CLK_MM_LVDS_PIXEL, "mm_lvds_pixel", "clk_null", 16),
-> > GATE_MM1(CLK_MM_LVDS_CTS, "mm_lvds_cts", "clk_null", 17),
-> > 
-> > clkph_mck_o - This is the parent for dmpll_*, which are themselves
-> > (potential) parent clocks for nearly every subsystem.
-> > In fact, as shown above, the dmpll_* is the selected parent for
-> > several other clocks, which all end up with an unknown rate.
-> > So, I think it is worth investigating a little more how to properly
-> > read or otherwise specify the rate for clkph_mck_o.
-> 
-> Please see above.
-> 
-> > dpi_ck, infra_cpum, mm_dsi0_digital, mm_dsi1_digital, mm_lvds_cts -
-> > These are a dead-end (internal?) clock.
-> > It is probably fine if their rates are unknown (0 Hz).
-> > 
-> > usb_syspll_125m - This sounds like a fixed 125 MHz clock.  It is also
-> > a possible parent usb30 clock, so its value will propagate.
-> > 
-> > hdmitx_dig_cts - This is the root clock for the tree leading to
-> > mm_hdmi_pllck, which includes hdmitxpll_d* and hdmi_sel.
-> > However, I don't know how "mm_hdmi_pllck" is used.
-> > 
-> > mm_dpi1_pixel, mm_lvds_pixel - These two look very suspicious.  The
-> > similar "mm_dpi0_pixel" and "mm_hdmi_pixel" have parent dpi0_sel.
-> > It looks like maybe they should have "dpi1_sel" or "dpilvds_sel" as
-> > parents, but the _sel are not hooked up.
-> 
-> Subsystem clocks with parent clk_null may have different reasons. I'll
-> get back to you later.
-> 
-> 
-> Best regards,
-> 
-> James
-
+>
+> --
+> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+> a Linux Foundation Collaborative Project
+>
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
