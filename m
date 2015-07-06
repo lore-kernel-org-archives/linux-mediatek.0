@@ -1,76 +1,57 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8173-evb: Add PMIC support
-Date: Mon, 06 Jul 2015 18:39:59 +0200
-Message-ID: <1727643.5AqCaKisXT@ubix>
-References: <1434979177-7575-1-git-send-email-henryc.chen@mediatek.com> <1436168637.6986.6.camel@mtksdaap41>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/4] clk: mediatek: mt8173: Fix enabling of critical
+ clocks
+Date: Mon, 06 Jul 2015 15:52:55 -0700
+Message-ID: <559B06C7.80209@codeaurora.org>
+References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com> <1435633127-31952-2-git-send-email-jamesjj.liao@mediatek.com> <20150702230300.GO4301@codeaurora.org> <CAGS+omCwxLNha7EJ2nZ1++E-D5G1d-oRmh1C=m3OQWtbX0SH4w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436168637.6986.6.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <kernel@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omCwxLNha7EJ2nZ1++E-D5G1d-oRmh1C=m3OQWtbX0SH4w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday, July 06, 2015 03:43:57 PM Eddie Huang wrote:
-> Hi Matthias,
-> 
-> On Mon, 2015-06-22 at 21:19 +0800, Henry Chen wrote:
-> > From: Eddie Huang <eddie.huang@mediatek.com>
-> > 
-> > The MT8173 eval board contains a MT6397 PMIC. This adds the
-> > corresponding device node to the dts file.
-> > 
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> > ---
-> > Base on 4.1-rc1 and commit as following,
-> > ARM64: dts: Mediatek: MT8173 updates [1] and
-> > clk: Add common clock support for Mediatek MT8135 and MT8173 [2] patch
-> > 
-> > [1]
-> > http://lists.infradead.org/pipermail/linux-arm-kernel/2015-May/344751.htm
-> > l [2]
-> > http://lists.infradead.org/pipermail/linux-arm-kernel/2015-April/338763.h
-> > tml ---
-> > 
-> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 174
-> >  ++++++++++++++++++++++++++++ 1 file changed, 174 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts index 43d5401..b967914
-> > 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > @@ -33,6 +33,180 @@
-> > 
-> >  	chosen { };
-> >  
-> >  };
-> > 
-> > +&pwrap {
-> > +	pmic: mt6397 {
-> > +		compatible = "mediatek,mt6397";
-> > +		interrupt-parent = <&pio>;
-> > +		interrupts = <11 IRQ_TYPE_LEVEL_HIGH>;
-> > +		interrupt-controller;
-> > +		#interrupt-cells = <2>;
-> > +
-> > +		mt6397regulator: mt6397regulator {
-> > +			compatible = "mediatek,mt6397-regulator";
-> > +			mt6397_vpca15_reg: buck_vpca15 {
-> > +				regulator-compatible = "buck_vpca15";
-> > +				regulator-name = "vpca15";
-> > +				regulator-min-microvolt = < 700000>;
-> > +				regulator-max-microvolt = <1350000>;
-> > +				regulator-ramp-delay = <12500>;
-> > +				regulator-always-on;
-> 
-> I see you pull da9211 regulator dts patch, but not this one. How about
-> this patch ?
+On 07/02/2015 11:29 PM, Daniel Kurtz wrote:
+> Hi Stephen,
+>
+> On Fri, Jul 3, 2015 at 7:03 AM, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> wrote:
+>> On 06/30, James Liao wrote:
+>>> From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>>>
+>>> On the MT8173 the clocks are provided by different units. To enable
+>>> the critical clocks we must be sure that all parent clocks are already
+>>> registered, otherwise the parents of the critical clocks end up being
+>>> unused and get disabled later. To find a place where all parents are
+>>> registered we try each time after we've registered some clocks if
+>>> all known providers are present now and only then we enable the critical
+>>> clocks
+>>>
+>>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>>> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>> Applied to clk-fixes
+> I think James plans to send an updated version of this patch.
+>
+>
 
-I inserted some new-lines and added it to v4.2-next/arm64
+Oh right. Well those comments are minor so I'll just fold them in given
+that I'm rewinding clk-fixes today. I see that comment in init.h about
+uninitialized variables and __initdata too. I found this 10 year old
+thread about that [1]. At least with my gcc-4.9 arm compiler I don't see
+uninitialized __initdata moved to bss. A workaround seems to be to
+initialize it to NULL in this case, but maybe that doesn't matter
+because compilers don't have that problem anymore.
 
-Thanks,
-Matthias
+[1] http://lkml.iu.edu/hypermail/linux/kernel/0512.0/1366.html
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
