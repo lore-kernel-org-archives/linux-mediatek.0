@@ -1,64 +1,103 @@
-From: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 0/2] Add MediaTek display PWM driver
-Date: Mon, 6 Jul 2015 20:43:31 +0800
-Message-ID: <1436186611.32512.3.camel@mtksdaap41>
-References: <1435590211-38854-1-git-send-email-yh.huang@mediatek.com>
-	 <CAGS+omANeUxcRdY-qQzxjtBY5Yhx56mSneuuXh+bGjbahKhDeA@mail.gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mt8173: Add afe device node
+Date: Mon, 6 Jul 2015 21:00:28 +0800
+Message-ID: <CAGS+omCtfCUQEczX+OCLa7jfOnxE=jFq8os0m2LCi87ELMTK9g@mail.gmail.com>
+References: <1436165530-41963-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omANeUxcRdY-qQzxjtBY5Yhx56mSneuuXh+bGjbahKhDeA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1436165530-41963-1-git-send-email-koro.chen@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Koro Chen <koro.chen@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, alsa-devel@alsa-project.org, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel,
+On Mon, Jul 6, 2015 at 2:52 PM, Koro Chen <koro.chen@mediatek.com> wrote:
 
-I will add PWM dtsi in the next patch and also fix the code with your
-suggestions in other mails.
+> This adds afe (audio front end) device node to the MT8173 dtsi file.
+>
+> This patch is based on Matthias's tree:
+> https://github.com/mbgg/linux-mediatek
+> branch: v4.2-next/arm64
+>
+> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 32
+> ++++++++++++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 0696f8f..f8afab4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -14,6 +14,7 @@
+>  #include <dt-bindings/clock/mt8173-clk.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/power/mt8173-power.h>
+>  #include <dt-bindings/reset-controller/mt8173-resets.h>
+>  #include "mt8173-pinfunc.h"
+>
+> @@ -393,6 +394,37 @@
+>                         #size-cells = <0>;
+>                         status = "disabled";
+>                 };
+> +
+> +               afe: mt8173-afe-pcm@11220000  {
+>
 
-Regards,
-YH Huang
+I believe this should be something generic, like:
 
-On Tue, 2015-06-30 at 14:35 +0800, Daniel Kurtz wrote:
-> Hi YH,
-> 
-> Please also include a patch that adds PWM bindings to mt8173.dtsi.
-> The clock definitions (CLK_MM_DISP_PWM*) are added by James LIao's patch:
->   clk: mediatek: Add subsystem clocks of MT8173
-> 
-> I think it is ok to mention in the cover-letter that the PWM .dtsi
-> change depends on that other patch.
-> 
-> Also, cover-letters usually contain a "shortlog" and diffstatm that
-> gives summary of patches and changed files, generated along with the
-> patches using:
->  git format-patch --cover-letter
-> 
-> Thanks,
-> -Daniel
-> 
-> On Mon, Jun 29, 2015 at 11:03 PM, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > This patch series add the use of display PWM driver and documentation
-> > for Mediatek SoCs. The driver is used to support the backlight of
-> > the panel. This is based on v4.1-rc1.
-> >
-> > Change in v3:
-> > 1. Add suspend/resume function
-> > 2. Fix the formula for high_width calculation
-> > 3. Rewrite some code to make it easier to read
-> > 4. Add more information in the commit message
-> >
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> > the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at  http://www.tux.org/lkml/
+  afe: audio-controller@11220000
+
+Thanks!
+-Dan
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +                       compatible = "mediatek,mt8173-afe-pcm";
+> +                       reg = <0 0x11220000 0 0x1000>;
+> +                       interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
+> +                       power-domains = <&scpsys
+> MT8173_POWER_DOMAIN_AUDIO>;
+> +                       clocks = <&infracfg CLK_INFRA_AUDIO>,
+> +                                <&topckgen CLK_TOP_AUDIO_SEL>,
+> +                                <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
+> +                                <&topckgen CLK_TOP_APLL1_DIV0>,
+> +                                <&topckgen CLK_TOP_APLL2_DIV0>,
+> +                                <&topckgen CLK_TOP_I2S0_M_SEL>,
+> +                                <&topckgen CLK_TOP_I2S1_M_SEL>,
+> +                                <&topckgen CLK_TOP_I2S2_M_SEL>,
+> +                                <&topckgen CLK_TOP_I2S3_M_SEL>,
+> +                                <&topckgen CLK_TOP_I2S3_B_SEL>;
+> +                       clock-names = "infra_sys_audio_clk",
+> +                                     "top_pdn_audio",
+> +                                     "top_pdn_aud_intbus",
+> +                                     "bck0",
+> +                                     "bck1",
+> +                                     "i2s0_m",
+> +                                     "i2s1_m",
+> +                                     "i2s2_m",
+> +                                     "i2s3_m",
+> +                                     "i2s3_b";
+> +                       assigned-clocks = <&topckgen CLK_TOP_AUD_1_SEL>,
+> +                                         <&topckgen CLK_TOP_AUD_2_SEL>;
+> +                       assigned-clock-parents = <&topckgen CLK_TOP_APLL1>,
+> +                                                <&topckgen CLK_TOP_APLL2>;
+> +               };
+>         };
+>  };
+>
+> --
+> 1.8.1.1.dirty
+>
+>
