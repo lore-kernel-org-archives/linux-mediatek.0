@@ -1,87 +1,46 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: Add afe device node
-Date: Mon, 6 Jul 2015 21:02:38 +0800
-Message-ID: <CAGS+omCOzJs=VWboU_7doUum6BEfmh1hV88HmJiin2c-A_n_Mw@mail.gmail.com>
-References: <1436165530-41963-1-git-send-email-koro.chen@mediatek.com>
+From: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/3] Add MediaTek display PWM driver
+Date: Mon, 6 Jul 2015 21:29:25 +0800
+Message-ID: <1436189368-1826-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436165530-41963-1-git-send-email-koro.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, alsa-devel@alsa-project.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 6, 2015 at 2:52 PM, Koro Chen <koro.chen@mediatek.com> wrote:
-> This adds afe (audio front end) device node to the MT8173 dtsi file.
->
-> This patch is based on Matthias's tree:
-> https://github.com/mbgg/linux-mediatek
-> branch: v4.2-next/arm64
->
-> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 32 ++++++++++++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 0696f8f..f8afab4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -14,6 +14,7 @@
->  #include <dt-bindings/clock/mt8173-clk.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/power/mt8173-power.h>
->  #include <dt-bindings/reset-controller/mt8173-resets.h>
->  #include "mt8173-pinfunc.h"
->
-> @@ -393,6 +394,37 @@
->                         #size-cells = <0>;
->                         status = "disabled";
->                 };
-> +
-> +               afe: mt8173-afe-pcm@11220000  {
+This patch series add the use of display PWM driver, documentation 
+and device tree for Mediatek SoCs. The driver is used to support 
+the backlight of the panel. This is based on v4.2-rc1.
 
-I believe this should be something generic, like:
+The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch: 
+clk: mediatek: Add subsystem clocks of MT8173
 
-  afe: audio-controller@11220000
+Change in v4:
+1. Codebase is on v4.2-rc1
+2. Add the PWM node in dtsi 
+3. Change the dependency in Kconfig
+4. Rewrite some code for readability 
 
-Thanks!
--Dan
+YH Huang (3):
+  dt-bindings: pwm: add MediaTek display PWM bindings
+  pwm: add MediaTek display PWM driver support
+  arm64: dts: mt8173: add MT8173 display PWM driver support dtsi
 
-> +                       compatible = "mediatek,mt8173-afe-pcm";
-> +                       reg = <0 0x11220000 0 0x1000>;
-> +                       interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
-> +                       power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
-> +                       clocks = <&infracfg CLK_INFRA_AUDIO>,
-> +                                <&topckgen CLK_TOP_AUDIO_SEL>,
-> +                                <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-> +                                <&topckgen CLK_TOP_APLL1_DIV0>,
-> +                                <&topckgen CLK_TOP_APLL2_DIV0>,
-> +                                <&topckgen CLK_TOP_I2S0_M_SEL>,
-> +                                <&topckgen CLK_TOP_I2S1_M_SEL>,
-> +                                <&topckgen CLK_TOP_I2S2_M_SEL>,
-> +                                <&topckgen CLK_TOP_I2S3_M_SEL>,
-> +                                <&topckgen CLK_TOP_I2S3_B_SEL>;
-> +                       clock-names = "infra_sys_audio_clk",
-> +                                     "top_pdn_audio",
-> +                                     "top_pdn_aud_intbus",
-> +                                     "bck0",
-> +                                     "bck1",
-> +                                     "i2s0_m",
-> +                                     "i2s1_m",
-> +                                     "i2s2_m",
-> +                                     "i2s3_m",
-> +                                     "i2s3_b";
-> +                       assigned-clocks = <&topckgen CLK_TOP_AUD_1_SEL>,
-> +                                         <&topckgen CLK_TOP_AUD_2_SEL>;
-> +                       assigned-clock-parents = <&topckgen CLK_TOP_APLL1>,
-> +                                                <&topckgen CLK_TOP_APLL2>;
-> +               };
->         };
->  };
->
-> --
-> 1.8.1.1.dirty
->
+ .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |  24 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  22 ++
+ drivers/pwm/Kconfig                                |  10 +
+ drivers/pwm/Makefile                               |   1 +
+ drivers/pwm/pwm-mtk-disp.c                         | 256 +++++++++++++++++++++
+ 5 files changed, 313 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+ create mode 100644 drivers/pwm/pwm-mtk-disp.c
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
