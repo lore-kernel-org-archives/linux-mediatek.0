@@ -1,66 +1,68 @@
 From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 2/4] ARM: dts: mt8135: Add pmic wrapper nodes
-Date: Tue,  7 Jul 2015 14:45:11 +0200
-Message-ID: <1436273113-25472-3-git-send-email-s.hauer@pengutronix.de>
-References: <1436273113-25472-1-git-send-email-s.hauer@pengutronix.de>
+Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
+Date: Tue, 7 Jul 2015 15:07:32 +0200
+Message-ID: <20150707130732.GD18561@pengutronix.de>
+References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1436273113-25472-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1434605351-64592-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the pmic wrapper node to the MediaTek MT8135 dtsi file.
+On Thu, Jun 18, 2015 at 01:29:11PM +0800, Eddie Huang wrote:
+> Add clk_null, which represents clocks that can not / need not
+> controlled by software.
+> There are many clocks' parent set to clk_null.
+> 
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+> Base on 4.1-rc1
+> 
+> Change-Id: I4db9b40d07e28f54f7bae9b676316cbd6a962124
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 924fdb6..4798f44 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -81,6 +81,12 @@
+>  		cpu_on	      = <0x84000003>;
+>  	};
+>  
+> +	clk_null: clk_null {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <0>;
+> +		#clock-cells = <0>;
+> +	};
 
-This unit is used to access the PMIC on MediaTek boards.
+The discussion around this patch shows that we don't want to have this
+clock in the device tree as it is not a hardware description.
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
----
- arch/arm/boot/dts/mt8135.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Ok, fine. Eddie, you told us that the rate of the current clk_null children
+is not interesting. What's the motivation to send this patch anyway
+then? Why can't you keep its children on the orphan list where they are
+already now?
 
-diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
-index b99e488..36ff82a 100644
---- a/arch/arm/boot/dts/mt8135.dtsi
-+++ b/arch/arm/boot/dts/mt8135.dtsi
-@@ -15,6 +15,7 @@
- #include <dt-bindings/clock/mt8135-clk.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/reset-controller/mt8135-resets.h>
- #include "skeleton64.dtsi"
- #include "mt8135-pinfunc.h"
- 
-@@ -160,6 +161,19 @@
- 			clock-names = "system-clk", "rtc-clk";
- 		};
- 
-+		pwrap: pwrap@1000f000 {
-+			compatible = "mediatek,mt8135-pwrap";
-+			reg = <0 0x1000f000 0 0x1000>,
-+				<0 0x11017000 0 0x1000>;
-+			reg-names = "pwrap", "pwrap-bridge";
-+			interrupts = <GIC_SPI 128 IRQ_TYPE_LEVEL_HIGH>;
-+			resets = <&infracfg MT8135_INFRA_PMIC_WRAP_RST>,
-+					<&pericfg MT8135_PERI_PWRAP_BRIDGE_SW_RST>;
-+			reset-names = "pwrap", "pwrap-bridge";
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "spi", "wrap";
-+		};
-+
- 		sysirq: interrupt-controller@10200030 {
- 			compatible = "mediatek,mt8135-sysirq",
- 				     "mediatek,mt6577-sysirq";
+Another possibility would be to instantiate the clk_null clock from C
+code rather than from the device tree. This way we wouldn't put any
+wrong descriptions into the device tree and still can implement the
+support for the real parent clocks when we actually need them.
+
+Sascha
+
 -- 
-2.1.4
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
