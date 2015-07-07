@@ -1,62 +1,76 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH] arm64: dts: mt8173-evb: Add PMIC support
-Date: Tue, 7 Jul 2015 11:09:50 +0800
-Message-ID: <1436238590.19228.4.camel@mtksdaap41>
-References: <1434979177-7575-1-git-send-email-henryc.chen@mediatek.com>
-	 <1436168637.6986.6.camel@mtksdaap41> <1727643.5AqCaKisXT@ubix>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH v2 2/4] dt-bindings: ARM: Mediatek: Document devicetree
+ bindings for clock controllers
+Date: Tue, 7 Jul 2015 14:56:46 +0800
+Message-ID: <1436252206.3526.80.camel@mtksdaap41>
+References: <1435633127-31952-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1435633127-31952-3-git-send-email-jamesjj.liao@mediatek.com>
+	 <CAGS+omD9Mvz0-RQMc5TsWCPct80S5fyqMn3+-zR7HB9yb7KoDQ@mail.gmail.com>
+	 <1435805534.3526.23.camel@mtksdaap41>
+	 <CAGS+omCgNstb+NPmRdbngnLm754hDPLO28KRc4RanCD2Myv7dQ@mail.gmail.com>
+	 <5595CBDC.7090101@codeaurora.org>
+	 <CAGS+omAo-d_bK=2HDu98xHvqhnVgJUBy4jbYVGKqsfWRX-EfDA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1727643.5AqCaKisXT@ubix>
+In-Reply-To: <CAGS+omAo-d_bK=2HDu98xHvqhnVgJUBy4jbYVGKqsfWRX-EfDA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <kernel@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Mike Turquette <mturquette@linaro.org>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-07-06 at 18:39 +0200, Matthias Brugger wrote:
-> On Monday, July 06, 2015 03:43:57 PM Eddie Huang wrote:
-> > On Mon, 2015-06-22 at 21:19 +0800, Henry Chen wrote:
-> > > From: Eddie Huang <eddie.huang@mediatek.com>
-> > > 
-[...]
-> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts index 43d5401..b967914
-> > > 100644
-> > > --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> > > @@ -33,6 +33,180 @@
-> > > 
-> > >  	chosen { };
-> > >  
-> > >  };
-> > > 
-> > > +&pwrap {
-> > > +	pmic: mt6397 {
-> > > +		compatible = "mediatek,mt6397";
-> > > +		interrupt-parent = <&pio>;
-> > > +		interrupts = <11 IRQ_TYPE_LEVEL_HIGH>;
-> > > +		interrupt-controller;
-> > > +		#interrupt-cells = <2>;
-> > > +
-> > > +		mt6397regulator: mt6397regulator {
-> > > +			compatible = "mediatek,mt6397-regulator";
-> > > +			mt6397_vpca15_reg: buck_vpca15 {
-> > > +				regulator-compatible = "buck_vpca15";
-> > > +				regulator-name = "vpca15";
-> > > +				regulator-min-microvolt = < 700000>;
-> > > +				regulator-max-microvolt = <1350000>;
-> > > +				regulator-ramp-delay = <12500>;
-> > > +				regulator-always-on;
-> > 
-> > I see you pull da9211 regulator dts patch, but not this one. How about
-> > this patch ?
-> 
-> I inserted some new-lines and added it to v4.2-next/arm64
-> 
-Thanks the pull. Normally we put alias node in alphabetical order, make
-later merge more easily. I think you can do the modification and squeeze
-into the same commit.
+Hi Daniel,
 
-Thanks
-Eddie
+On Fri, 2015-07-03 at 18:46 +0800, Daniel Kurtz wrote:
+> On Fri, Jul 3, 2015 at 7:40 AM, Stephen Boyd <sboyd@codeaurora.org> wrote:
+> > DT nodes typically have a reg property. Not having a reg property is a
+> > good indicator of a problem with the binding. A syscon is used when you
+> > have a DT node with a reg property and some driver attached to it, but
+> > you need to poke some bits in another register region that isn't part of
+> > the reg property. Instead of having multiple nodes with two reg
+> > properties where the second one is the same, we use a phandle and a syscon.
+> >
+> > If clock-controller isn't acceptable maybe clock-reset-contoller would
+> > work? Or "power-controller"? We certainly shouldn't be making up
+> > multiple nodes for one hardware block. Of course, the subject of the
+> > patch is "bindings for clock controllers", so it may be that the
+> > registers are predominantly clock related and so the name is appropriate
+> > already.
+> 
+> Using "clock-controller" seems to fit best with the bindings
+> introduced by this patch.
+> 
+> However, if these bindings are for hardware blocks that contain a grab
+> bag of various functionality that will be added in later patches, then
+> I think "syscon" might be best.
+
+I referred some dt-binding documents that contain clock and reset
+controller in the same unit:
+
+qcom,gcc.txt:
+
+	clock-controller@900000 {
+		compatible = "qcom,gcc-msm8960";
+
+nvidia,tegra124-car.txt:
+
+	tegra_car: clock {
+		compatible = "nvidia,tegra124-car";
+
+rockchip,rk3188-cru.txt:
+
+	cru: cru@20000000 {
+		compatible = "rockchip,rk3188-cru";
+
+Rockchip use "Clock and Reset Unit" as their controller's name. The
+other two use "clock" or "clock-controller" as their controller's name.
+
+It looks like "clock-controller" is also an acceptable name for
+clock/reset controllers. So I would like to keep this name in next
+patch.
+
+
+Best regards,
+
+James
