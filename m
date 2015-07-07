@@ -1,224 +1,232 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
-Date: Tue, 7 Jul 2015 16:10:52 +0800
-Message-ID: <1436256652.6444.2.camel@mtkswgap22>
-References: <1436255771-5367-1-git-send-email-mars.cheng@mediatek.com>
-	 <1436255771-5367-3-git-send-email-mars.cheng@mediatek.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] clk: mediatek: Add MT8173 MMPLL change rate support
+Date: Tue, 07 Jul 2015 10:58:45 +0200
+Message-ID: <57452978.oOaMP89yJM@diego>
+References: <1433222760-5924-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1436255771-5367-3-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1433222760-5924-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi all
+Hi James,
 
-Sorry for this title of mail. It should be:
-[PATCH v3 2/2] ARM: dts: mediatek: add mt6580 basic support
-
-Thanks.
-
-On Tue, 2015-07-07 at 15:56 +0800, mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Am Dienstag, 2. Juni 2015, 13:26:00 schrieb James Liao:
+> MT8173 MMPLL frequency settings are different from common PLLs.
+> It needs different post divider settings for some ranges of frequency.
+> This patch add support for MT8173 MMPLL frequency setting, includes:
 > 
-> This adds basic chip support for Mediatek 6580.
+> 1. Add div-rate table for PLLs.
+> 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
+> 3. Write postdiv and pcw settings at the same time.
 > 
-> Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->  arch/arm/boot/dts/Makefile         |   1 +
->  arch/arm/boot/dts/mt6580-evbp1.dts |  35 +++++++++++
->  arch/arm/boot/dts/mt6580.dtsi      | 123 +++++++++++++++++++++++++++++++++++++
->  3 files changed, 159 insertions(+)
->  create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
->  create mode 100644 arch/arm/boot/dts/mt6580.dtsi
+>  drivers/clk/mediatek/clk-mt8173.c | 24 +++++++++++++++++++++---
+>  drivers/clk/mediatek/clk-mtk.h    |  1 +
+>  drivers/clk/mediatek/clk-pll.c    | 37
+> +++++++++++++++++++++++++------------ 3 files changed, 47 insertions(+), 15
+> deletions(-)
 > 
-> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-> index 246473a..919e7c6 100644
-> --- a/arch/arm/boot/dts/Makefile
-> +++ b/arch/arm/boot/dts/Makefile
-> @@ -705,6 +705,7 @@ dtb-$(CONFIG_MACH_DOVE) += \
->  	dove-dove-db.dtb \
->  	dove-sbc-a510.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += \
-> +	mt6580-evbp1.dtb \
->  	mt6589-aquaris5.dtb \
->  	mt6592-evb.dtb \
->  	mt8127-moose.dtb \
-> diff --git a/arch/arm/boot/dts/mt6580-evbp1.dts b/arch/arm/boot/dts/mt6580-evbp1.dts
-> new file mode 100644
-> index 0000000..8c42335
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/mt6580-evbp1.dts
-> @@ -0,0 +1,35 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
+> diff --git a/drivers/clk/mediatek/clk-mt8173.c
+> b/drivers/clk/mediatek/clk-mt8173.c index 357b080..821de7d 100644
+> --- a/drivers/clk/mediatek/clk-mt8173.c
+> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> @@ -779,8 +779,9 @@ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8173-pericfg",
+> mtk_pericfg_init);
+> 
+>  #define CON0_MT8173_RST_BAR	BIT(24)
+> 
+> -#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,
+> _pd_reg, _pd_shift, \ -			_tuner_reg, _pcw_reg, _pcw_shift) { \
+> +#define PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+> +			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+> +			_pcw_shift, _div_rate) {			\
+>  		.id = _id,						\
+>  		.name = _name,						\
+>  		.reg = _reg,						\
+> @@ -795,14 +796,31 @@ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8173-pericfg",
+> mtk_pericfg_init); .tuner_reg = _tuner_reg,				\
+>  		.pcw_reg = _pcw_reg,					\
+>  		.pcw_shift = _pcw_shift,				\
+> +		.div_rate = _div_rate,					\
+>  	}
+> 
+> +#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,	\
+> +			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg,	\
+> +			_pcw_shift)					\
+> +		PLL_B(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, \
+> +			_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, \
+> +			NULL)
 > +
-> +/dts-v1/;
-> +#include "mt6580.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT6580 evaluation board";
-> +	compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-> +
-> +	chosen {
-> +		bootargs = "console=ttyS0,921600n8 earlyprintk";
-> +		stdout-path = &uart0;
-> +	};
-> +
-> +	memory {
-> +		reg = <0x80000000 0x20000000>;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-> new file mode 100644
-> index 0000000..09852cd
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/mt6580.dtsi
-> @@ -0,0 +1,123 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include "skeleton.dtsi"
-> +
-> +/ {
-> +	compatible = "mediatek,mt6580";
-> +	#address-cells = <1>;
-> +	#size-cells = <1>;
-> +	interrupt-parent = <&sysirq>;
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x0>;
-> +		};
-> +		cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x1>;
-> +		};
-> +		cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x2>;
-> +		};
-> +		cpu@3 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a7";
-> +			reg = <0x3>;
-> +		};
-> +
-> +	};
-> +
-> +	clocks {
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		system_clk: dummy13m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <13000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		rtc_clk: dummy32k {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <32000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		uart_clk: dummy26m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <26000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +	};
-> +
-> +	timer: timer@10008000 {
-> +		compatible = "mediatek,mt6580-timer",
-> +			     "mediatek,mt6577-timer";
-> +		reg = <0x10008000 0x80>;
-> +		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&system_clk>, <&rtc_clk>;
-> +		clock-names = "system-clk", "rtc-clk";
-> +	};
-> +
-> +	sysirq: interrupt-controller@10200100 {
-> +		compatible = "mediatek,mt6580-sysirq",
-> +			     "mediatek,mt6577-sysirq";
-> +		interrupt-controller;
-> +		#interrupt-cells = <3>;
-> +		interrupt-parent = <&gic>;
-> +		reg = <0x10200100 0x1c>;
-> +	};
-> +
-> +	gic: interrupt-controller@10211000 {
-> +		compatible = "arm,cortex-a7-gic";
-> +		interrupt-controller;
-> +		#interrupt-cells = <3>;
-> +		interrupt-parent = <&gic>;
-> +		reg = <0x10211000 0x1000>,
-> +		      <0x10212000 0x1000>,
-> +		      <0x10214000 0x2000>,
-> +		      <0x10216000 0x2000>;
-> +	};
-> +
-> +	uart0: serial@11005000 {
-> +		compatible = "mediatek,mt6580-uart",
-> +			     "mediatek,mt6577-uart";
-> +		reg = <0x11005000 0x400>;
-> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&uart_clk>;
-> +		status = "disabled";
-> +	};
-> +
-> +	uart1: serial@11006000 {
-> +		compatible = "mediatek,mt6580-uart",
-> +			     "mediatek,mt6577-uart";
-> +		reg = <0x11006000 0x400>;
-> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&uart_clk>;
-> +		status = "disabled";
-> +	};
-> +};
+> +const unsigned long mmpll_div_rate[] = {
+
+static?
+
+> +	MT8173_PLL_FMAX,
+> +	1000000000,
+> +	702000000,
+> +	253500000,
+> +	126750000,
+> +	0,
+
+it's more common to label sentinel entries (the 0 marking the end) with
+	/* sentinel */
+instead of value 0.
 
 
+If I'm reading the code correctly, this is a mapping divider -> frequency, 
+right? So it may be nice to make this a bit more explicit, like:
+
+struct mtk_pll_div_table {
+	unsigned int    freq;
+	unsigned int    div;
+};
+
+static const struct mtk_pll_div_table mmpll_div_rate[] = {
+	{ .freq = MT8173_PLL_FMAX, .div = 0 },
+	{ .freq = 1000000000, .div = 1 },
+	{ .freq = 702000000, .div = 2 },
+	{ .freq = 253500000, .div = 3 },
+	{ .freq = 126750000, .div = 4 },
+	{ /* sentinel */ },
+};
+
+
+> +};
+> +
+>  static const struct mtk_pll_data plls[] = {
+>  	PLL(CLK_APMIXED_ARMCA15PLL, "armca15pll", 0x200, 0x20c, 0x00000001, 0, 
+21,
+> 0x204, 24, 0x0, 0x204, 0), PLL(CLK_APMIXED_ARMCA7PLL, "armca7pll", 0x210,
+> 0x21c, 0x00000001, 0, 21, 0x214, 24, 0x0, 0x214, 0),
+> PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x220, 0x22c, 0xf0000101, HAVE_RST_BAR,
+> 21, 0x220, 4, 0x0, 0x224, 0), PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x230,
+> 0x23c, 0xfe000001, HAVE_RST_BAR, 7, 0x230, 4, 0x0, 0x234, 14),
+> -	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c, 0x00000001, 0, 21, 0x244,
+> 24, 0x0, 0x244, 0), +	PLL_B(CLK_APMIXED_MMPLL, "mmpll", 0x240, 0x24c,
+> 0x00000001, 0, 21, 0x244, 24, 0x0, 0x244, 0, mmpll_div_rate),
+> PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x250, 0x25c, 0x00000001, 0, 21, 0x250,
+> 4, 0x0, 0x254, 0), PLL(CLK_APMIXED_VENCPLL, "vencpll", 0x260, 0x26c,
+> 0x00000001, 0, 21, 0x260, 4, 0x0, 0x264, 0), PLL(CLK_APMIXED_TVDPLL,
+> "tvdpll", 0x270, 0x27c, 0x00000001, 0, 21, 0x270, 4, 0x0, 0x274, 0), diff
+> --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+> index 61035b9..645af7c 100644
+> --- a/drivers/clk/mediatek/clk-mtk.h
+> +++ b/drivers/clk/mediatek/clk-mtk.h
+> @@ -150,6 +150,7 @@ struct mtk_pll_data {
+>  	int pcwbits;
+>  	uint32_t pcw_reg;
+>  	int pcw_shift;
+> +	const unsigned long *div_rate;
+>  };
+> 
+>  void __init mtk_clk_register_plls(struct device_node *node,
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index 44409e9..4680a09 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -90,20 +90,23 @@ static unsigned long __mtk_pll_recalc_rate(struct
+> mtk_clk_pll *pll, u32 fin, static void mtk_pll_set_rate_regs(struct
+> mtk_clk_pll *pll, u32 pcw, int postdiv)
+>  {
+
+-------------
+
+> -	u32 con1, pd, val;
+> +	u32 con1, val;
+>  	int pll_en;
+> 
+> -	/* set postdiv */
+> -	pd = readl(pll->pd_addr);
+> -	pd &= ~(POSTDIV_MASK << pll->data->pd_shift);
+> -	pd |= (ffs(postdiv) - 1) << pll->data->pd_shift;
+> -	writel(pd, pll->pd_addr);
+> -
+>  	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+> 
+> -	/* set pcw */
+> -	val = readl(pll->pcw_addr);
+> +	/* set postdiv */
+> +	val = readl(pll->pd_addr);
+> +	val &= ~(POSTDIV_MASK << pll->data->pd_shift);
+> +	val |= (ffs(postdiv) - 1) << pll->data->pd_shift;
+> +
+> +	/* postdiv and pcw need to set at the same time if on same register */
+> +	if (pll->pd_addr != pll->pcw_addr) {
+> +		writel(val, pll->pd_addr);
+> +		val = readl(pll->pcw_addr);
+> +	}
+> 
+> +	/* set pcw */
+>  	val &= ~GENMASK(pll->data->pcw_shift + pll->data->pcwbits - 1,
+>  			pll->data->pcw_shift);
+>  	val |= pcw << pll->data->pcw_shift;
+
+This whole block probably wants to be a separate patch ;-) .
+
+While it may not affect previous pll implementations, it changes how register 
+accesses are handled and should not hide in another patch.
+
+
+
+> @@ -135,16 +138,26 @@ static void mtk_pll_calc_values(struct mtk_clk_pll
+> *pll, u32 *pcw, u32 *postdiv, u32 freq, u32 fin)
+>  {
+>  	unsigned long fmin = 1000 * MHZ;
+> +	const unsigned long *div_rate = pll->data->div_rate;
+>  	u64 _pcw;
+>  	u32 val;
+> 
+>  	if (freq > pll->data->fmax)
+>  		freq = pll->data->fmax;
+> 
+> -	for (val = 0; val < 4; val++) {
+> +	if (div_rate) {
+> +		for (val = 1; div_rate[val] != 0; val++) {
+> +			if (freq > div_rate[val])
+> +				break;
+> +		}
+> +		val--;
+
+if you're changing the table struct, this of course also would need to be 
+adapted.
+
+
+Hmm, what I don't understand is, what does MT8173_PLL_FMAX in the table, if 
+you ignore it here all the time?
+
+So the table should probably look more like [when using the concept from 
+above]
+
+static const struct mtk_pll_div_table mmpll_div_rate[] = {
+	{ .freq = 1000000000, .div = 0 },
+	{ .freq = 702000000, .div = 1 },
+	{ .freq = 253500000, .div = 2 },
+	{ .freq = 126750000, .div = 3 },
+	{ /* sentinel */ },
+};
+
+
+>  		*postdiv = 1 << val;
+> -		if (freq * *postdiv >= fmin)
+> -			break;
+> +	} else {
+> +		for (val = 0; val < 5; val++) {
+> +			*postdiv = 1 << val;
+> +			if ((u64)freq * *postdiv >= fmin)
+> +				break;
+> +		}
+>  	}
+> 
+>  	/* _pcw = freq * postdiv / fin * 2^pcwfbits */
+
+
+Heiko
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
