@@ -1,8 +1,7 @@
 From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 1/4] ARM: dts: mediatek: Enable clock support for Mediatek
- MT8135.
-Date: Tue,  7 Jul 2015 14:45:10 +0200
-Message-ID: <1436273113-25472-2-git-send-email-s.hauer@pengutronix.de>
+Subject: [PATCH 4/4] ARM: dts: mediatek mt8135: Use real UART clocks
+Date: Tue,  7 Jul 2015 14:45:13 +0200
+Message-ID: <1436273113-25472-5-git-send-email-s.hauer@pengutronix.de>
 References: <1436273113-25472-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,83 +18,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+We used to provide dummy clocks for the UART. Now that we have
+common clock support we can provide the real clocks to the UART.
 
-This patch adds MT8135 clock controllers into device tree.
-
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 ---
- arch/arm/boot/dts/mt8135.dtsi | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ arch/arm/boot/dts/mt8135.dtsi | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
 diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
-index 0aba9eb..b99e488 100644
+index 36ff82a..08371db 100644
 --- a/arch/arm/boot/dts/mt8135.dtsi
 +++ b/arch/arm/boot/dts/mt8135.dtsi
-@@ -12,6 +12,7 @@
-  * GNU General Public License for more details.
-  */
- 
-+#include <dt-bindings/clock/mt8135-clk.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include "skeleton64.dtsi"
-@@ -94,6 +95,11 @@
+@@ -90,12 +90,6 @@
  			#clock-cells = <0>;
  		};
  
-+		clk26m: clk26m {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <26000000>;
-+		};
- 	};
- 
- 	soc {
-@@ -102,6 +108,26 @@
- 		compatible = "simple-bus";
- 		ranges;
- 
-+		topckgen: topckgen@10000000 {
-+			compatible = "mediatek,mt8135-topckgen";
-+			reg = <0 0x10000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		infracfg: infracfg@10001000 {
-+			#reset-cells = <1>;
-+			#clock-cells = <1>;
-+			compatible = "mediatek,mt8135-infracfg", "syscon";
-+			reg = <0 0x10001000 0 0x1000>;
-+		};
-+
-+		pericfg: pericfg@10003000 {
-+			#reset-cells = <1>;
-+			#clock-cells = <1>;
-+			compatible = "mediatek,mt8135-pericfg", "syscon";
-+			reg = <0 0x10003000 0 0x1000>;
-+		};
-+
- 		/*
- 		 * Pinctrl access register at 0x10005000 and 0x1020c000 through
- 		 * regmap. Register 0x1000b000 is used by EINT.
-@@ -143,6 +169,12 @@
- 			reg = <0 0x10200030 0 0x1c>;
+-		uart_clk: dummy26m {
+-			compatible = "fixed-clock";
+-			clock-frequency = <26000000>;
+-			#clock-cells = <0>;
+-		};
+-
+ 		clk26m: clk26m {
+ 			compatible = "fixed-clock";
+ 			#clock-cells = <0>;
+@@ -209,7 +203,8 @@
+ 			compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
+ 			reg = <0 0x11006000 0 0x400>;
+ 			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+-			clocks = <&uart_clk>;
++			clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
++			clock-names = "baud", "bus";
+ 			status = "disabled";
  		};
  
-+		apmixedsys: apmixedsys@10209000 {
-+			compatible = "mediatek,mt8135-apmixedsys";
-+			reg = <0 0x10209000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		syscfg_pctl_b: syscfg_pctl_b@1020c000 {
- 			compatible = "mediatek,mt8135-pctl-b-syscfg", "syscon";
- 			reg = <0 0x1020c000 0 0x1000>;
+@@ -217,7 +212,8 @@
+ 			compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
+ 			reg = <0 0x11007000 0 0x400>;
+ 			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
+-			clocks = <&uart_clk>;
++			clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
++			clock-names = "baud", "bus";
+ 			status = "disabled";
+ 		};
+ 
+@@ -225,7 +221,8 @@
+ 			compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
+ 			reg = <0 0x11008000 0 0x400>;
+ 			interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
+-			clocks = <&uart_clk>;
++			clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
++			clock-names = "baud", "bus";
+ 			status = "disabled";
+ 		};
+ 
+@@ -233,7 +230,8 @@
+ 			compatible = "mediatek,mt8135-uart","mediatek,mt6577-uart";
+ 			reg = <0 0x11009000 0 0x400>;
+ 			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
+-			clocks = <&uart_clk>;
++			clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
++			clock-names = "baud", "bus";
+ 			status = "disabled";
+ 		};
+ 
 -- 
 2.1.4
