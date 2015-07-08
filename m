@@ -1,209 +1,67 @@
-From: Mark Rutland <mark.rutland@arm.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6795 support
-Date: Wed, 8 Jul 2015 11:23:43 +0100
-Message-ID: <20150708102343.GC7025@leverpostej>
-References: <1436350480-17276-1-git-send-email-mars.cheng@mediatek.com>
- <1436350480-17276-3-git-send-email-mars.cheng@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v5 1/2] dt-bindings: mediatek: Add MT8173 cpufreq driver
+ binding
+Date: Wed, 8 Jul 2015 16:49:00 +0530
+Message-ID: <20150708111900.GD1805@linux>
+References: <1435717005-20012-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1435717005-20012-2-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1436350480-17276-3-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <1435717005-20012-2-git-send-email-pi-cheng.chen@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, MY Chuang <my.chuang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 08, 2015 at 11:14:40AM +0100, Mars Cheng wrote:
-> This adds basic chip support for MT6795 SoC
+On 01-07-15, 10:16, Pi-Cheng Chen wrote:
+> This patch adds device tree binding document for MT8173 cpufreq driver.
 > 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+> Reviewed-by: Michael Turquette <mturquette@baylibre.com>
 > ---
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt6795-evb.dts |  34 ++++++
->  arch/arm64/boot/dts/mediatek/mt6795.dtsi    | 164 ++++++++++++++++++++++++++++
->  3 files changed, 199 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt6795.dtsi
+>  .../devicetree/bindings/cpufreq/cpufreq-mt8173.txt | 145 +++++++++++++++++++++
+>  1 file changed, 145 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 3ce2462..e0a4bff 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -1,3 +1,4 @@
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
->  
->  always		:= $(dtb-y)
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-evb.dts b/arch/arm64/boot/dts/mediatek/mt6795-evb.dts
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
 > new file mode 100644
-> index 0000000..3a43c860
+> index 0000000..65701c5
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795-evb.dts
-> @@ -0,0 +1,34 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
+> @@ -0,0 +1,145 @@
 > +
-> +/dts-v1/;
-> +#include "mt6795.dtsi"
+> +Mediatek MT8173 cpufreq driver
+> +------------------------------
 > +
-> +/ {
-> +	model = "MediaTek MT6795 Evaluation Board";
+> +Mediatek MT8173 cpufreq driver for CPU frequency scaling.
 > +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x1e800000>;
-> +	};
-> +
-> +	chosen {
-> +		bootargs = "console=ttyS0,921600n8 earlyprintk";
+> +Required properties:
+> +- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
+> +- clock-names: Should contain the following:
+> +	"cpu"		- The multiplexer for clock input of CPU cluster.
+> +	"intermediate"	- A parent of "cpu" clock which is used as "intermediate" clock
+> +			  source (usually MAINPLL) when the original CPU PLL is under
+> +			  transition and not stable yet.
+> +	Please refer to Documentation/devicetree/bindings/clk/clock-bindings.txt for
+> +	generic clock consumer properties.
 
-PLease get rid of bootargs here; earlyprintk doesn't do anything on
-arm64 (it's earlycon these days), and you can specify the serial
-configuration in stdout-path, so please use that instead.
+Don't have any intentions to halt this series anymore, I have
+irritated you enough already :)
 
-> +		stdout-path = &uart0;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> new file mode 100644
-> index 0000000..832be20
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> @@ -0,0 +1,164 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Mars.C <mars.cheng@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt6795";
-> +	interrupt-parent = <&sysirq>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x000>;
-> +		};
-> +
-> +		cpu1: cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x001>;
-> +		};
+But, what about moving these bindings in something like a clock
+driver?
 
-No enable-method? Does your FW patch that in?
+@Mike: ?
 
-> +
-> +		cpu2: cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x002>;
-> +		};
-> +
-> +		cpu3: cpu@3 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x003>;
-> +		};
-> +
-> +		cpu4: cpu@4 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x100>;
-> +		};
+I am asking because these really belong to the clock driver, as I
+understood it from Mike. And clearly asked me to not take care of such
+things in cpufreq core/drivers.
 
-The unit-address should match the reg (e.g. this should be cpu@100).
+Another reason is that, later you will kill this driver one day and
+use cpufreq-dt. And then you will be required to move these bindings
+to a clock driver, as these will stay.
 
-> +
-> +		cpu5: cpu@5 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x101>;
-> +		};
-> +
-> +		cpu6: cpu@6 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x102>;
-> +		};
-> +
-> +		cpu7: cpu@7 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x103>;
-> +		};
-> +	};
-> +
-> +	clocks {
-> +		system_clk: dummy13m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <13000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		rtc_clk: dummy32k {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <32000>;
-> +			#clock-cells = <0>;
-> +		};
-> +
-> +		uart_clk: dummy26m {
-> +			compatible = "fixed-clock";
-> +			clock-frequency = <26000000>;
-> +			#clock-cells = <0>;
-> +		};
-> +	};
-
-Get rid of the clocks node and place these directly under the root node.
-
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13
-> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 14
-> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 11
-> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 10
-> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
-> +	};
-
-The mask is wrong.
-
-Thanks,
-Mark.
+-- 
+viresh
