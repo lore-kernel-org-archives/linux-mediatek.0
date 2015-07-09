@@ -1,66 +1,41 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v4 1/3] dt-bindings: pwm: add MediaTek display PWM bindings
-Date: Wed, 8 Jul 2015 20:11:09 +0800
-Message-ID: <CAGS+omAWNwk_PRy-eeC4bgHQ-ZC2Kvh0sqpF47VD1sfJOhHWUw@mail.gmail.com>
-References: <1436189368-1826-1-git-send-email-yh.huang@mediatek.com> <1436189368-1826-2-git-send-email-yh.huang@mediatek.com>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 0/2] Add MT8173 MMPLL change rate support
+Date: Wed, 08 Jul 2015 17:44:31 -0700
+Message-ID: <559DC3EF.90401@codeaurora.org>
+References: <1436344666-25645-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436189368-1826-2-git-send-email-yh.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1436344666-25645-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 6, 2015 at 9:29 PM, YH Huang <yh.huang@mediatek.com> wrote:
-> Document the device-tree binding of MediatTek display PWM.
-> The PWM has one channel to control the backlight brightness for display.
-> It supports MT8173 and MT6595.
+On 07/08/2015 01:37 AM, James Liao wrote:
+> MT8173 MMPLL frequency settings are different from common PLLs.
+> It needs different post divider settings for some ranges of frequency.
+> This patch add support for MT8173 MMPLL frequency setting, includes:
 >
-> Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> ---
->  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       | 24 ++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> 1. Add div-rate table for PLLs.
+> 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
+> 3. Write postdiv and pcw settings at the same time.
 >
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> new file mode 100644
-> index 0000000..757b974
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> @@ -0,0 +1,24 @@
-> +MediaTek display PWM controller
-> +
-> +Required properties:
-> + - compatible: should be "mediatek,<name>-disp-pwm"
-> +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC
-> +   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC
-> + - reg: physical base address and length of the controller's registers
-> + - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
-> +   the cell format
-> + - clocks: phandle and clock specifier of the PWM reference clock
-> + - clock-names: must contain the following
-> +   - "main": clock used to generate PWM signals
-> +   - "mm": sync signals from the modules of mmsys
-> +
-> +Example:
-> +       pwm0: pwm@1401e000 {
-> +               compatible = "mediatek,mt8173-disp-pwm",
-> +                            "mediatek,mt6595-disp-pwm";
-> +               reg = <0 0x1401e000 0 0x1000>;
-> +               #pwm-cells = <2>;
-> +               clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-> +                        <&mmsys CLK_MM_DISP_PWM0MM>;
-> +               clock-names = "main", "mm";
+> James Liao (2):
+>   clk: mediatek: Fix PLL registers setting flow
+>   clk: mediatek: Add MT8173 MMPLL change rate support
+>
 
-Should we include the pinctrl settings here to enable the PWM output?
+Are these fixing regressions in 4.2-rc1? I don't see any "Fixes:" tag so
+it's not clear and makes me want to defer these until v4.3. Furthermore,
+the subject starts with "Add" so it sounds like a new feature.
 
-> +       };
-> --
-> 1.8.1.1.dirty
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
