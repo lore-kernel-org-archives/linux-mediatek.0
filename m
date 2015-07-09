@@ -1,174 +1,124 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6795 support
-Date: Thu, 9 Jul 2015 13:47:36 +0800
-Message-ID: <1436420856.16651.11.camel@mtkswgap22>
-References: <1436350480-17276-1-git-send-email-mars.cheng@mediatek.com>
-	 <1436350480-17276-3-git-send-email-mars.cheng@mediatek.com>
-	 <20150708102343.GC7025@leverpostej>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: pwm: add MediaTek display PWM
+ bindings
+Date: Thu, 9 Jul 2015 14:36:16 +0800
+Message-ID: <1436423776.32314.9.camel@mtksdaap41>
+References: <1436189368-1826-1-git-send-email-yh.huang@mediatek.com>
+	 <1436189368-1826-2-git-send-email-yh.huang@mediatek.com>
+	 <CAGS+omAWNwk_PRy-eeC4bgHQ-ZC2Kvh0sqpF47VD1sfJOhHWUw@mail.gmail.com>
+	 <1436409944.4915.6.camel@mtksdaap41>
+	 <CAGS+omAZismuEYXsUkHEAec4xF+KRWm62AuCUmrmso6p+DKQ4Q@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150708102343.GC7025@leverpostej>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, MY Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omAZismuEYXsUkHEAec4xF+KRWm62AuCUmrmso6p+DKQ4Q@mail.gmail.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>, yh.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-> > +	chosen {
-> > +		bootargs = "console=ttyS0,921600n8 earlyprintk";
-> 
-> PLease get rid of bootargs here; earlyprintk doesn't do anything on
-> arm64 (it's earlycon these days), and you can specify the serial
-> configuration in stdout-path, so please use that instead.
-> 
-Got it. Will remove bootargs & use stdout-path only.
-> > +		stdout-path = &uart0;
-> > +	};
-> > +};
-> > +
-> > +&uart0 {
-> > +	status = "okay";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> > new file mode 100644
-> > index 0000000..832be20
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> > @@ -0,0 +1,164 @@
-> > +/*
-> > + * Copyright (c) 2015 MediaTek Inc.
-> > + * Author: Mars.C <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +
-> > +#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +
-> > +/ {
-> > +	compatible = "mediatek,mt6795";
-> > +	interrupt-parent = <&sysirq>;
-> > +	#address-cells = <2>;
-> > +	#size-cells = <2>;
-> > +
-> > +	cpus {
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +
-> > +		cpu0: cpu@0 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x000>;
-> > +		};
-> > +
-> > +		cpu1: cpu@1 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x001>;
-> > +		};
-> 
-> No enable-method? Does your FW patch that in?
-This patch only provides single core to boot.The proper enable-method
-for SMP boot is under discussion in our site. Will complete
-enable-method when providing our solution to SMP boot in the other patch
-set.
-> 
-> > +
-> > +		cpu2: cpu@2 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x002>;
-> > +		};
-> > +
-> > +		cpu3: cpu@3 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x003>;
-> > +		};
-> > +
-> > +		cpu4: cpu@4 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x100>;
-> > +		};
-> 
-> The unit-address should match the reg (e.g. this should be cpu@100).
-Got it. Will fix this.
-> 
-> > +
-> > +		cpu5: cpu@5 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x101>;
-> > +		};
-> > +
-> > +		cpu6: cpu@6 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x102>;
-> > +		};
-> > +
-> > +		cpu7: cpu@7 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x103>;
-> > +		};
-> > +	};
-> > +
-> > +	clocks {
-> > +		system_clk: dummy13m {
-> > +			compatible = "fixed-clock";
-> > +			clock-frequency = <13000000>;
-> > +			#clock-cells = <0>;
-> > +		};
-> > +
-> > +		rtc_clk: dummy32k {
-> > +			compatible = "fixed-clock";
-> > +			clock-frequency = <32000>;
-> > +			#clock-cells = <0>;
-> > +		};
-> > +
-> > +		uart_clk: dummy26m {
-> > +			compatible = "fixed-clock";
-> > +			clock-frequency = <26000000>;
-> > +			#clock-cells = <0>;
-> > +		};
-> > +	};
-> 
-> Get rid of the clocks node and place these directly under the root node.
-Got it. Will fix it.
-> 
-> > +
-> > +	timer {
-> > +		compatible = "arm,armv8-timer";
-> > +		interrupt-parent = <&gic>;
-> > +		interrupts = <GIC_PPI 13
-> > +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 14
-> > +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 11
-> > +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 10
-> > +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
-> > +	};
-> 
-> The mask is wrong.
-They should be GIC_CPU_MASK_SIMPLE(8). Will fix these.
+On Thu, 2015-07-09 at 12:47 +0800, Daniel Kurtz wrote:
+> On Thu, Jul 9, 2015 at 10:45 AM, YH Huang <yh.huang@mediatek.com> wrote:
+> >
+> > On Wed, 2015-07-08 at 20:11 +0800, Daniel Kurtz wrote:
+> > > On Mon, Jul 6, 2015 at 9:29 PM, YH Huang <yh.huang@mediatek.com> wrote:
+> > > > Document the device-tree binding of MediatTek display PWM.
+> > > > The PWM has one channel to control the backlight brightness for display.
+> > > > It supports MT8173 and MT6595.
+> > > >
+> > > > Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       | 24 ++++++++++++++++++++++
+> > > >  1 file changed, 24 insertions(+)
+> > > >  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> > > >
+> > > > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> > > > new file mode 100644
+> > > > index 0000000..757b974
+> > > > --- /dev/null
+> > > > +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> > > > @@ -0,0 +1,24 @@
+> > > > +MediaTek display PWM controller
+> > > > +
+> > > > +Required properties:
+> > > > + - compatible: should be "mediatek,<name>-disp-pwm"
+> > > > +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC
+> > > > +   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC
+> > > > + - reg: physical base address and length of the controller's registers
+> > > > + - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
+> > > > +   the cell format
+> > > > + - clocks: phandle and clock specifier of the PWM reference clock
+> > > > + - clock-names: must contain the following
+> > > > +   - "main": clock used to generate PWM signals
+> > > > +   - "mm": sync signals from the modules of mmsys
 
-Thanks for your suggestions.
+- pinctrl-names: Must contain a "default" entry.
+- pinctrl-0: One property must exist for each entry in pinctrl-names.
+  See pinctrl/pinctrl-bindings.txt for details of the property values.
+
+> > > > +
+> > > > +Example:
+> > > > +       pwm0: pwm@1401e000 {
+> > > > +               compatible = "mediatek,mt8173-disp-pwm",
+> > > > +                            "mediatek,mt6595-disp-pwm";
+> > > > +               reg = <0 0x1401e000 0 0x1000>;
+> > > > +               #pwm-cells = <2>;
+> > > > +               clocks = <&mmsys CLK_MM_DISP_PWM026M>,
+> > > > +                        <&mmsys CLK_MM_DISP_PWM0MM>;
+> > > > +               clock-names = "main", "mm";
+
+pio: pinctrl@10005000 {
+...
+
+   disp_pwm0_pins: disp_pwm0_pins {
+	pins1 {
+		pinmux = <MT8173_PIN_87_DISP_PWM0__FUNC_DISP_PWM0>;
+        	bias-pull-up;
+        };
+   };
+
+...
+}
+
+pwm0: pwm@1401e000 {
+	compatible = "mediatek,mt8173-disp-pwm";
+	reg = <0 0x1401e000 0 0x1000>;
+	#pwm-cells = <2>;
+	clocks = <&mmsys CLK_MM_DISP_PWM0MM>,
+		 <&mmsys CLK_MM_DISP_PWM026M>;
+	clock-names = "mm", "main";
+	pinctrl-names = "default";
+	pinctrl-0 = <&disp_pwm0_pins>;
+	status = "disabled";
+};
+
+So should I change dtsi like this?
+
+Regards,
+YH Huang
+
+> > >
+> > > Should we include the pinctrl settings here to enable the PWM output?
+> > >
+> >
+> > Since we use pwm-backlight driver to control backlight, we should enable
+> > PWM output in the backlight node.
+> >
+> > Ref:
+> > https://www.kernel.org/doc/Documentation/devicetree/bindings/video/backlight/pwm-backlight.txt
+> >
 > 
-> Thanks,
-> Mark.
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> The pwm-backlight binding specifies which pwm the backlight driver
+> should use, and how to use it.
+> 
+> I believe actually configuring the output pin for the pwm via pinctl
+> belongs to the pwm binding.
+> 
+> Regards,
+> 0Dan
+> 
+> >
+> > Regards,
+> > YH Huang
+> >
