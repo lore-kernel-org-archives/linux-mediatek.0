@@ -1,155 +1,84 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Fri, 10 Jul 2015 16:11:00 +0800
-Message-ID: <CAGS+omB2CsiYVXSGXo=Y_6xMDNRVC6AsFdv=SxOVh5t-fT7E_w@mail.gmail.com>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com>
- <20150707130732.GD18561@pengutronix.de> <CAGS+omCgSjLZ2Ae5DqfmEm-2BrxQqw2ztxUCxBSngNSXxabtbg@mail.gmail.com>
- <20150707143621.GW18700@pengutronix.de> <CAGS+omChOC-EYsmA5ytT+ho0UXvcL1-mjK4Z8=EgboKzwWmtyw@mail.gmail.com>
- <1436323041.27396.23.camel@mtksdaap41> <20150708054430.GY18700@pengutronix.de>
- <1436513238.10997.12.camel@mtksdaap41>
+From: Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Subject: Re: [PATCH v2 2/5] dt-bindings: Add a binding for Mediatek xHCI host
+ controller
+Date: Fri, 10 Jul 2015 11:31:03 +0300
+Message-ID: <559F82C7.5010202@ti.com>
+References: <1436348468-4126-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1436348468-4126-3-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436513238.10997.12.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, "heiko@sntech.de" <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?SmFtZXNKSiBMaWFvICjlu5blu7rmmbop?= <jamesjj.liao@mediatek.com>, "mturquette@gmail.com" <mturquette@gmail.com>, "sboyd@codeaurora.org" <sboyd@codeaurora.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1436348468-4126-3-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 10, 2015 at 3:27 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
-> Hi all,
->
-> On Wed, 2015-07-08 at 13:44 +0800, Sascha Hauer wrote:
->> On Wed, Jul 08, 2015 at 10:37:21AM +0800, Eddie Huang wrote:
->> > On Tue, 2015-07-07 at 23:10 +0800, Daniel Kurtz wrote:
->> > > On Tue, Jul 7, 2015 at 10:36 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
->> > > > On Tue, Jul 07, 2015 at 10:15:29PM +0800, Daniel Kurtz wrote:
->> > > >> On Tue, Jul 7, 2015 at 9:07 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
->> > > >> > On Thu, Jun 18, 2015 at 01:29:11PM +0800, Eddie Huang wrote:
->> > > >> >> Add clk_null, which represents clocks that can not / need not
->> > > >> >> controlled by software.
->> > > >> >> There are many clocks' parent set to clk_null.
->> > > >> >>
->> > > >> >> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
->> > > >> >> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
->> > > >> >> ---
->> > > >> >> Base on 4.1-rc1
->> > > >> >>
->> > > >> >> Change-Id: I4db9b40d07e28f54f7bae9b676316cbd6a962124
->> > > >> >> ---
->> > > >> >>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++++++
->> > > >> >>  1 file changed, 6 insertions(+)
->> > > >> >>
->> > > >> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> > > >> >> index 924fdb6..4798f44 100644
->> > > >> >> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> > > >> >> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> > > >> >> @@ -81,6 +81,12 @@
->> > > >> >>               cpu_on        = <0x84000003>;
->> > > >> >>       };
->> > > >> >>
->> > > >> >> +     clk_null: clk_null {
->> > > >> >> +             compatible = "fixed-clock";
->> > > >> >> +             clock-frequency = <0>;
->> > > >> >> +             #clock-cells = <0>;
->> > > >> >> +     };
->> > > >> >
->> > > >> > The discussion around this patch shows that we don't want to have this
->> > > >> > clock in the device tree as it is not a hardware description.
->> > > >> >
->> > > >> > Ok, fine. Eddie, you told us that the rate of the current clk_null children
->> > > >> > is not interesting. What's the motivation to send this patch anyway
->> > > >> > then? Why can't you keep its children on the orphan list where they are
->> > > >> > already now?
->> > > >> >
->> > > >> > Another possibility would be to instantiate the clk_null clock from C
->> > > >> > code rather than from the device tree. This way we wouldn't put any
->> > > >> > wrong descriptions into the device tree and still can implement the
->> > > >> > support for the real parent clocks when we actually need them.
->> > > >>
->> > > >> Some device nodes, like mmc, use a clk_null phandle as one of their clocks:
->> > > >>
->> > > >> mmc1: mmc@11240000 {
->> > > >>         compatible = "mediatek,mt8173-mmc",
->> > > >>                      "mediatek,mt8135-mmc";
->> > > >>         reg = <0 0x11240000 0 0x1000>;
->> > > >>         interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
->> > > >>         clocks = <&pericfg CLK_PERI_MSDC30_1>,
->> > > >>                  <&clk_null>;
->> > > >>         clock-names = "source", "hclk";
->> > > >>         status = "disabled";
->> > > >> };
->> > > >
->> > > > This is another case than the one we discussed about. In the case above
->> > > > I motivated using a dummy clock since the clock exists in the system,
->> > > > but is not software controllable. To abstract this from the driver
->> > > > (which needs this clock since it exists) we here have the dummy clock.
->> > > > However, of course I can't prove the clock is indeed not software
->> > > > controllable; that's only the information I have.
->> > >
->> > > I was trying to answer your question "What's the motivation to send
->> > > this patch anyway?".
->> > > The motivation is to send follow on patches that use the clk_null
->> > > phandle.  We need to provide some clock as the mmc1's hclk.  I do not
->> > > understand why this has to be "clk_null", though.  It seems like this
->> > > should be a real clock coming from one of the real clock_controller
->> > > nodes.  After all, the mmc driver is going to be enabling/disabling
->> > > this clock for power savings at runtime.  What does that even mean for
->> > > clk_null ?
->> >
->> > The original purpose of this patch is to provide a common dummy clock
->> > for both software don't care clock and clock that is not software
->> > controllable.I got comments that device tree should describe hardware
->> > and should put exact clock in device tree. I think this is true. So we
->> > will remove this clock_null patch, and:
->> >
->> > 1. For Mediatek SoC CCF driver, James will clarify clock usage further.
->> > Actually, we still think it's not necessary to describe whole tree that
->> > software don't care, James will deal this in clock driver.
->>
->> I think that aswell since the device tree is not affected in this case.
->> Should we realize later that we indeed need the missing clocks we can
->> still implement them without modifying the device tree.
->>
->> >
->> > 2. For other module that use SW not controllable clock (mmc case
->> > mentioned by Dan), because this is a real clock, we will put a dummy
->> > clock in device tree, like
->> >
->> > clk_mmchclk: dummyhclk {
->> >     compatible = "fixed-clock";
->> >     clock-frequency = <0>;
->> >     #clock-cells = <0>;
->> > };
->> >
->> > How about this modification ?
->>
->> I wouldn't name it 'dummy', this will again raise some eyebrows.
->>
->
-> I got mmc hclk from our designer. HCLK is from AXI Bus directly (sorry,
-> I gave wrong information to Dan and Sascha yesterday). Because there is
-> no any mux or gate register to control this HCLK, so current
-> clk-mt8173.c didn't model it. Since I know where this clock comes from,
-> I will abandon this stupid dummy clock device tree patch. But there are
-> two alternative ways:
->
-> 1. In MMC device tree, use parent clock, like
->      <&topckgen CLK_TOP_AXI_SEL>
->
-> 2. In clk-mt8173.c, add fix factor clock, like apll case
->    FACTOR(CLK_TOP_APLL1, "apll1_ck", "apll1", 1, 1),
->
-> Either way works, but have different meaning. Any suggestion to handle
-> thing like this.
+Hi,
 
-I like (1), it seems more straightforward.
-What is the advantage of (2)?
+On 08/07/15 12:41, Chunfeng Yun wrote:
+> add a DT binding documentation of xHCI host controller for the
+> MT8173 SoC from Mediatek.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/usb/mt8173-xhci.txt        | 27 ++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> new file mode 100644
+> index 0000000..94cec94
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> @@ -0,0 +1,27 @@
+> +MT65XX xhci
+> +
+> +The device node for Mediatek SOC usb3.0 host controller
+> +
+> +Required properties:
+> + - compatible : supports "mediatek,mt8173-xhci"
+> + - reg        : Offset and length of registers
+> + - interrupts : Interrupt mode, number and trigger mode
+> + - reg-vusb33-supply:  regulator of usb avdd3.3v
+> + - reg-vbus-supply : regulator of vbus;
 
-Thanks,
--Dan
+General trend is to use <supply-name>-supply.
+We already know it is a regulator so no need to add "reg-"
 
-> Thanks
-> Eddie
->
->
+So those two can be
+
+vusb33-supply:
+vbus-supply:
+
+
+> + - usb-phy : the phy that xhci will bind
+> + - usb3-lpm-capable: supports USB3 LPM
+> + - clocks     : must support all clocks that xhci needs
+> + - clock-names: should be "sys_mac" for sys and mac clocks
+> +
+> +Example:
+> +usb: usb30@11270000 {
+> +	compatible = "mediatek,mt8173-xhci";
+> +	reg = <0 0x11270000 0 0x1000>;
+> +	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+> +	reg-vusb33-supply = <&mt6397_vusb_reg>;
+> +	reg-vbus-supply = <&usb_p1_vbus>;
+> +	usb-phy = <&u3phy>;
+> +	usb3-lpm-capable;
+> +	clocks = <&topckgen CLK_TOP_USB30_SEL>;
+> +	clock-names = "sys_mac";
+> +};
+> 
+
+cheers,
+-roger
