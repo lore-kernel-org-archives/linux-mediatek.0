@@ -1,26 +1,41 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] soc: mediatek: Drop owner assignment from platform_driver
-Date: Fri, 10 Jul 2015 16:39:41 +0200
-Message-ID: <2465585.M6dBSSGdRG@ubix>
-References: <1436509789-27361-1-git-send-email-k.kozlowski@samsung.com> <20150710071524.GW18700@pengutronix.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
+Date: Fri, 10 Jul 2015 17:01:34 +0200
+Message-ID: <2315308.OGuGlIy214@ubix>
+References: <1436255771-5367-1-git-send-email-mars.cheng@mediatek.com> <1436255771-5367-3-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150710071524.GW18700@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1436255771-5367-3-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Friday, July 10, 2015 09:15:24 AM Sascha Hauer wrote:
-> On Fri, Jul 10, 2015 at 03:29:45PM +0900, Krzysztof Kozlowski wrote:
-> > platform_driver does not need to set an owner because
-> > platform_driver_register() will set it.
-> > 
-> > Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+On Tuesday, July 07, 2015 03:56:11 PM mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
+> This adds basic chip support for Mediatek 6580.
 > 
+> Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/Makefile         |   1 +
+>  arch/arm/boot/dts/mt6580-evbp1.dts |  35 +++++++++++
+>  arch/arm/boot/dts/mt6580.dtsi      | 123
+> +++++++++++++++++++++++++++++++++++++ 3 files changed, 159 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
+>  create mode 100644 arch/arm/boot/dts/mt6580.dtsi
 
-applied, thanks.
+Please take into account the comments Mark made on your mt6795 patch set [1].
+
+Apart from that, it looks good to me.
+
+Thanks,
+Matthias
+
+[1] https://patchwork.kernel.org/patch/6743921/
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
