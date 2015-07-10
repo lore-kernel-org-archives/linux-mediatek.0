@@ -1,41 +1,49 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: dts: mediatek: add mt6580 basic support
-Date: Fri, 10 Jul 2015 17:01:34 +0200
-Message-ID: <2315308.OGuGlIy214@ubix>
-References: <1436255771-5367-1-git-send-email-mars.cheng@mediatek.com> <1436255771-5367-3-git-send-email-mars.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 5/5] arm64: dts: mt8173: Add subsystem clock controller
+ device nodes
+Date: Fri, 10 Jul 2015 17:58:02 +0200
+Message-ID: <CABuKBe+oLmRRHZKnBsfU8icf2r2f3+XrPNMVw_QaGPE9vVxGFw@mail.gmail.com>
+References: <1436522405-13923-1-git-send-email-jamesjj.liao@mediatek.com>
+	<1436522405-13923-6-git-send-email-jamesjj.liao@mediatek.com>
+	<CAGS+omC7274iPDdfXpKuM0HvCcEscUE5e5jrDH4DhW4j_Ykt2A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1436255771-5367-3-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omC7274iPDdfXpKuM0HvCcEscUE5e5jrDH4DhW4j_Ykt2A@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Mike Turquette <mturquette@baylibre.com>, Heiko Stubner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Ricky Liang <jcliang@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tuesday, July 07, 2015 03:56:11 PM mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> This adds basic chip support for Mediatek 6580.
-> 
-> Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/Makefile         |   1 +
->  arch/arm/boot/dts/mt6580-evbp1.dts |  35 +++++++++++
->  arch/arm/boot/dts/mt6580.dtsi      | 123
-> +++++++++++++++++++++++++++++++++++++ 3 files changed, 159 insertions(+)
->  create mode 100644 arch/arm/boot/dts/mt6580-evbp1.dts
->  create mode 100644 arch/arm/boot/dts/mt6580.dtsi
+2015-07-10 17:02 GMT+02:00 Daniel Kurtz <djkurtz@chromium.org>:
+>
+> On Jul 10, 2015 18:00, "James Liao" <jamesjj.liao@mediatek.com> wrote:
+>>
+>> This patch adds device nodes providing subsystem clocks on MT8173,
+>> includes mmsys, imgsys, vdecsys, vencsys and vencltsys.
+>>
+>> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 30
+>> ++++++++++++++++++++++++++++++
+>>  1 file changed, 30 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> index a2f63e4..9d74ce5 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> @@ -227,6 +227,36 @@
+>>                         clocks = <&uart_clk>;
+>>                         status = "disabled";
+>>                 };
+>> +
+>> +               mmsys: mmsys@14000000 {
+>
+> I think we agreed previously that these should all be clock-controller@.
+>
 
-Please take into account the comments Mark made on your mt6795 patch set [1].
+I did understand the same.
+Please change that.
 
-Apart from that, it looks good to me.
-
-Thanks,
-Matthias
-
-[1] https://patchwork.kernel.org/patch/6743921/
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks.
