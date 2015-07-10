@@ -1,94 +1,71 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [PATCH v5 1/2] dt-bindings: mediatek: Add MT8173 cpufreq driver binding
-Date: Thu, 09 Jul 2015 08:04:13 -0700
-Message-ID: <20150709150413.9112.90660@quantum>
-References: <1435717005-20012-1-git-send-email-pi-cheng.chen@linaro.org>
- <1435717005-20012-2-git-send-email-pi-cheng.chen@linaro.org>
- <20150708111900.GD1805@linux>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
+ SoCs
+Date: Fri, 10 Jul 2015 07:10:18 +0200
+Message-ID: <20150710051018.GU18700@pengutronix.de>
+References: <1436348468-4126-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1436348468-4126-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20150708111900.GD1805@linux>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1436348468-4126-2-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting Viresh Kumar (2015-07-08 04:19:00)
-> On 01-07-15, 10:16, Pi-Cheng Chen wrote:
-> > This patch adds device tree binding document for MT8173 cpufreq driver.
-> > 
-> > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-> > Reviewed-by: Michael Turquette <mturquette@baylibre.com>
-> > ---
-> >  .../devicetree/bindings/cpufreq/cpufreq-mt8173.txt | 145 +++++++++++++++++++++
-> >  1 file changed, 145 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> > new file mode 100644
-> > index 0000000..65701c5
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mt8173.txt
-> > @@ -0,0 +1,145 @@
-> > +
-> > +Mediatek MT8173 cpufreq driver
-> > +------------------------------
-> > +
-> > +Mediatek MT8173 cpufreq driver for CPU frequency scaling.
-> > +
-> > +Required properties:
-> > +- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
-> > +- clock-names: Should contain the following:
-> > +     "cpu"           - The multiplexer for clock input of CPU cluster.
-> > +     "intermediate"  - A parent of "cpu" clock which is used as "intermediate" clock
-> > +                       source (usually MAINPLL) when the original CPU PLL is under
-> > +                       transition and not stable yet.
-> > +     Please refer to Documentation/devicetree/bindings/clk/clock-bindings.txt for
-> > +     generic clock consumer properties.
+On Wed, Jul 08, 2015 at 05:41:03PM +0800, Chunfeng Yun wrote:
+> add a DT binding documentation of usb3.0 phy for MT65xx
+> SoCs from Mediatek.
 > 
-> Don't have any intentions to halt this series anymore, I have
-> irritated you enough already :)
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/usb/mt65xx-u3phy.txt       | 34 ++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
 > 
-> But, what about moving these bindings in something like a clock
-> driver?
-> 
-> @Mike: ?
+> diff --git a/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
+> new file mode 100644
+> index 0000000..056b2aa
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
+> @@ -0,0 +1,34 @@
+> +MT65xx U3PHY
+> +
+> +The device node for Mediatek SOC usb3.0 phy
+> +
+> +Required properties:
+> + - compatible : Should be "mediatek,mt8173-u3phy"
+> + - reg        : Offset and length of registers, the first is for mac domain,
+> +	another for phy domain
+> + - power-domains: to enable usb's mtcmos
+> + - usb-wakeup-ctrl : to access usb wakeup control register
+> + - wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup mode; others
+> +	means don't enable wakeup source of usb
+> + - u2port-num : number of usb2.0 ports to support which should be 1 or 2
+> + - clocks     : must support all clocks that phy need
+> + - clock-names: should be "wakeup_deb_p0", "wakeup_deb_p1" for wakeup
+> +	debounce control clocks, and "u3phya_ref" for u3phya reference clock.
+> +
+> +Example:
+> +
+> +u3phy: usb-phy@11271000 {
+> +	compatible = "mediatek,mt8173-u3phy";
+> +	reg = <0 0x11271000 0 0x3000>,
+> +	      <0 0x11280000 0 0x20000>;
 
-Viresh,
+0x11271000 is the register space the xhci controller takes. You should
+not expose the same register space to two different drivers.
 
-Pi-Cheng is using the consumer portion of the clock binding, and he is
-using it correctly. You can see this type of thing sprinkled all over.
-For instance, many I/O controller do this exact same thing.
+Sascha
 
-> 
-> I am asking because these really belong to the clock driver, as I
-> understood it from Mike. And clearly asked me to not take care of such
-> things in cpufreq core/drivers.
-
-The clock driver is the "provider" and it is separate. This binding is
-the "consumer".
-
-> 
-> Another reason is that, later you will kill this driver one day and
-> use cpufreq-dt. And then you will be required to move these bindings
-> to a clock driver, as these will stay.
-
-I'm not sure I follow. Again, the use of the consumer side of the clock
-binding is absolutely correct.
-
-Take a quick look at clock-bindings.txt and search for  the section
-titled, "==Clock consumers==" for more info.
-
-Regards,
-Mike
-
-> 
-> -- 
-> viresh
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
