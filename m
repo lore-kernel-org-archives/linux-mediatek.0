@@ -1,65 +1,53 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: [PATCH 2/2] ASoC: Drop owner assignment from platform_driver
-Date: Fri, 10 Jul 2015 14:30:31 +0900
-Message-ID: <1436506231-8980-3-git-send-email-k.kozlowski@samsung.com>
-References: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-reply-to: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, Brian Austin <brian.austin@cirrus.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Support Opensource <support.opensource@diasemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Bard Liao <bardliao@realtek.com>, Oder Chiou <oder_chiou@realtek.com>, Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 0/2] Add MT8173 MMPLL change rate support
+Date: Fri, 10 Jul 2015 13:44:46 +0800
+Message-ID: <1436507086.3526.117.camel@mtksdaap41>
+References: <1436344666-25645-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <559DC3EF.90401@codeaurora.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <559DC3EF.90401-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-platform_driver does not need to set an owner because
-platform_driver_register() will set it.
+Hi Stephen,
 
-Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+On Wed, 2015-07-08 at 17:44 -0700, Stephen Boyd wrote:
+> On 07/08/2015 01:37 AM, James Liao wrote:
+> > MT8173 MMPLL frequency settings are different from common PLLs.
+> > It needs different post divider settings for some ranges of frequency.
+> > This patch add support for MT8173 MMPLL frequency setting, includes:
+> >
+> > 1. Add div-rate table for PLLs.
+> > 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
+> > 3. Write postdiv and pcw settings at the same time.
+> >
+> > James Liao (2):
+> >   clk: mediatek: Fix PLL registers setting flow
+> >   clk: mediatek: Add MT8173 MMPLL change rate support
+> >
+> 
+> Are these fixing regressions in 4.2-rc1? I don't see any "Fixes:" tag so
+> it's not clear and makes me want to defer these until v4.3. Furthermore,
+> the subject starts with "Add" so it sounds like a new feature.
 
----
+This patchset is based on 4.1-rc1 but it had been tested on 4.2-rc1.
+I'll send a new patch which based on 4.2-rc1.
 
-The coccinelle script which generated the patch was sent here:
-http://www.spinics.net/lists/kernel/msg2029903.html
----
- sound/soc/mediatek/mt8173-max98090.c      | 1 -
- sound/soc/mediatek/mt8173-rt5650-rt5676.c | 1 -
- sound/soc/mediatek/mtk-afe-pcm.c          | 1 -
- 3 files changed, 3 deletions(-)
+This patchset contains some general PLL fixes and MMPLL set rate
+support. We can say the last one is also a fix because changing some
+specific rate on MMPLL may fail in current implementation.
 
-diff --git a/sound/soc/mediatek/mt8173-max98090.c b/sound/soc/mediatek/mt8173-max98090.c
-index 4d44b5803e55..6311f31fa669 100644
---- a/sound/soc/mediatek/mt8173-max98090.c
-+++ b/sound/soc/mediatek/mt8173-max98090.c
-@@ -193,7 +193,6 @@ MODULE_DEVICE_TABLE(of, mt8173_max98090_dt_match);
- static struct platform_driver mt8173_max98090_driver = {
- 	.driver = {
- 		   .name = "mt8173-max98090",
--		   .owner = THIS_MODULE,
- 		   .of_match_table = mt8173_max98090_dt_match,
- #ifdef CONFIG_PM
- 		   .pm = &snd_soc_pm_ops,
-diff --git a/sound/soc/mediatek/mt8173-rt5650-rt5676.c b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-index 094055323059..4fd7dff15fe7 100644
---- a/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-+++ b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-@@ -258,7 +258,6 @@ MODULE_DEVICE_TABLE(of, mt8173_rt5650_rt5676_dt_match);
- static struct platform_driver mt8173_rt5650_rt5676_driver = {
- 	.driver = {
- 		   .name = "mtk-rt5650-rt5676",
--		   .owner = THIS_MODULE,
- 		   .of_match_table = mt8173_rt5650_rt5676_dt_match,
- #ifdef CONFIG_PM
- 		   .pm = &snd_soc_pm_ops,
-diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
-index 9863da73dfe0..de38d2e8ef91 100644
---- a/sound/soc/mediatek/mtk-afe-pcm.c
-+++ b/sound/soc/mediatek/mtk-afe-pcm.c
-@@ -1220,7 +1220,6 @@ static const struct dev_pm_ops mtk_afe_pm_ops = {
- static struct platform_driver mtk_afe_pcm_driver = {
- 	.driver = {
- 		   .name = "mtk-afe-pcm",
--		   .owner = THIS_MODULE,
- 		   .of_match_table = mtk_afe_pcm_dt_match,
- 		   .pm = &mtk_afe_pm_ops,
- 	},
--- 
-1.9.1
+
+Best regards,
+
+James
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
