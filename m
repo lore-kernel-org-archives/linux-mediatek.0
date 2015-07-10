@@ -1,95 +1,104 @@
 From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/2] clk: mediatek: Add root clocks support for Mediatek SoC.
-Date: Fri, 10 Jul 2015 17:16:02 +0800
-Message-ID: <1436519763-3195-2-git-send-email-jamesjj.liao@mediatek.com>
-References: <1436519763-3195-1-git-send-email-jamesjj.liao@mediatek.com>
+Subject: [PATCH v3 1/5] clk: mediatek: mt8173: Fix enabling of critical clocks
+Date: Fri, 10 Jul 2015 18:00:01 +0800
+Message-ID: <1436522405-13923-2-git-send-email-jamesjj.liao@mediatek.com>
+References: <1436522405-13923-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1436519763-3195-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1436522405-13923-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds root clocks support by using CCF fixed-rate
-clock implementation.
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 
+On the MT8173 the clocks are provided by different units. To enable
+the critical clocks we must be sure that all parent clocks are already
+registered, otherwise the parents of the critical clocks end up being
+unused and get disabled later.
+
+On MT8173, for example, it is the CLK_TOP clocks that have CLK_APMIXED
+PLLs as their parents, so we cannot enable the CLK_TOP critical clocks
+until the CLK_APMIXED clocks have all been registered.
+
+To find a place where all parents are registered we try each time
+after we've registered some clocks if all known providers are present
+now and only then we enable the critical clocks.
+
+Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/clk/mediatek/clk-mtk.c | 23 +++++++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.h | 17 ++++++++++++++++-
- 2 files changed, 39 insertions(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-mt8173.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 18444ae..4ac80d3 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -49,6 +49,29 @@ err_out:
- 	return NULL;
- }
+diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+index 4b9e04c..b3d91ee 100644
+--- a/drivers/clk/mediatek/clk-mt8173.c
++++ b/drivers/clk/mediatek/clk-mt8173.c
+@@ -700,6 +700,22 @@ static const struct mtk_composite peri_clks[] __initconst = {
+ 	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents, 0x40c, 3, 1),
+ };
  
-+void mtk_clk_register_root_clks(const struct mtk_root_clk *clks, int num,
-+		struct clk_onecell_data *clk_data)
++static struct clk_onecell_data *mt8173_top_clk_data;
++static struct clk_onecell_data *mt8173_pll_clk_data;
++
++static void __init mtk_clk_enable_critical(void)
 +{
-+	int i;
-+	struct clk *clk;
++	if (!mt8173_top_clk_data || !mt8173_pll_clk_data)
++		return;
 +
-+	for (i = 0; i < num; i++) {
-+		const struct mtk_root_clk *rc = &clks[i];
-+
-+		clk = clk_register_fixed_rate(NULL, rc->name, NULL,
-+				CLK_IS_ROOT, rc->rate);
-+
-+		if (IS_ERR(clk)) {
-+			pr_err("Failed to register clk %s: %ld\n",
-+					rc->name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		if (clk_data)
-+			clk_data->clks[rc->id] = clk;
-+	}
++	clk_prepare_enable(mt8173_pll_clk_data->clks[CLK_APMIXED_ARMCA15PLL]);
++	clk_prepare_enable(mt8173_pll_clk_data->clks[CLK_APMIXED_ARMCA7PLL]);
++	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_MEM_SEL]);
++	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_DDRPHYCFG_SEL]);
++	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_CCI400_SEL]);
++	clk_prepare_enable(mt8173_top_clk_data->clks[CLK_TOP_RTC_SEL]);
 +}
 +
- void mtk_clk_register_factors(const struct mtk_fixed_factor *clks, int num,
- 		struct clk_onecell_data *clk_data)
+ static void __init mtk_topckgen_init(struct device_node *node)
  {
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 9dda9d8..d8d8b06 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -25,6 +25,21 @@
- 
- #define MHZ (1000 * 1000)
- 
-+struct mtk_root_clk {
-+	int id;
-+	const char *name;
-+	unsigned long rate;
-+};
-+
-+#define ROOT_CLK(_id, _name, _rate) {			\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.rate = _rate,				\
-+	}
-+
-+void mtk_clk_register_root_clks(const struct mtk_root_clk *clks,
-+		int num, struct clk_onecell_data *clk_data);
-+
- struct mtk_fixed_factor {
- 	int id;
- 	const char *name;
-@@ -41,7 +56,7 @@ struct mtk_fixed_factor {
- 		.div = _div,				\
+ 	struct clk_onecell_data *clk_data;
+@@ -712,19 +728,19 @@ static void __init mtk_topckgen_init(struct device_node *node)
+ 		return;
  	}
  
--extern void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
-+void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
- 		int num, struct clk_onecell_data *clk_data);
+-	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
++	mt8173_top_clk_data = clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
  
- struct mtk_composite {
+ 	mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
+ 	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+ 	mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
+ 			&mt8173_clk_lock, clk_data);
+ 
+-	clk_prepare_enable(clk_data->clks[CLK_TOP_CCI400_SEL]);
+-
+ 	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
++
++	mtk_clk_enable_critical();
+ }
+ CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt8173-topckgen", mtk_topckgen_init);
+ 
+@@ -818,13 +834,13 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
+ {
+ 	struct clk_onecell_data *clk_data;
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
++	mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+ 	if (!clk_data)
+ 		return;
+ 
+ 	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+ 
+-	clk_prepare_enable(clk_data->clks[CLK_APMIXED_ARMCA15PLL]);
++	mtk_clk_enable_critical();
+ }
+ CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt8173-apmixedsys",
+ 		mtk_apmixedsys_init);
 -- 
 1.8.1.1.dirty
 
