@@ -1,165 +1,340 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: mt8173: add clock_null
-Date: Fri, 10 Jul 2015 18:29:32 +0800
-Message-ID: <1436524172.18917.4.camel@mtksdaap41>
-References: <1434605351-64592-1-git-send-email-eddie.huang@mediatek.com>
-	 <20150707130732.GD18561@pengutronix.de>
-	 <CAGS+omCgSjLZ2Ae5DqfmEm-2BrxQqw2ztxUCxBSngNSXxabtbg@mail.gmail.com>
-	 <20150707143621.GW18700@pengutronix.de>
-	 <CAGS+omChOC-EYsmA5ytT+ho0UXvcL1-mjK4Z8=EgboKzwWmtyw@mail.gmail.com>
-	 <1436323041.27396.23.camel@mtksdaap41>
-	 <20150708054430.GY18700@pengutronix.de>
-	 <1436513238.10997.12.camel@mtksdaap41>
-	 <CAGS+omB2CsiYVXSGXo=Y_6xMDNRVC6AsFdv=SxOVh5t-fT7E_w@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] soc: Mediatek: Add SCPSYS CPU power domain driver
+Date: Fri, 10 Jul 2015 16:31:54 +0200
+Message-ID: <1480643.lE6oTr5Rlh@ubix>
+References: <1436508249-49338-3-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omB2CsiYVXSGXo=Y_6xMDNRVC6AsFdv=SxOVh5t-fT7E_w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1436508249-49338-3-git-send-email-scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, JamesJJ Liao =?UTF-8?Q?=28=E5=BB=96=E5=BB=BA=E6=99=BA=29?= <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "mturquette-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org" <mturquette-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org" <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+To: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marc Carino <marc.ceeeee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Radha Mohan Chintakuntla <rchintakuntla-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-07-10 at 16:11 +0800, Daniel Kurtz wrote:
-> On Fri, Jul 10, 2015 at 3:27 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Hi all,
-> >
-> > On Wed, 2015-07-08 at 13:44 +0800, Sascha Hauer wrote:
-> >> On Wed, Jul 08, 2015 at 10:37:21AM +0800, Eddie Huang wrote:
-> >> > On Tue, 2015-07-07 at 23:10 +0800, Daniel Kurtz wrote:
-> >> > > On Tue, Jul 7, 2015 at 10:36 PM, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> >> > > > On Tue, Jul 07, 2015 at 10:15:29PM +0800, Daniel Kurtz wrote:
-> >> > > >> On Tue, Jul 7, 2015 at 9:07 PM, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> >> > > >> > On Thu, Jun 18, 2015 at 01:29:11PM +0800, Eddie Huang wrote:
-> >> > > >> >> Add clk_null, which represents clocks that can not / need not
-> >> > > >> >> controlled by software.
-> >> > > >> >> There are many clocks' parent set to clk_null.
-> >> > > >> >>
-> >> > > >> >> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> > > >> >> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> > > >> >> ---
-> >> > > >> >> Base on 4.1-rc1
-> >> > > >> >>
-> >> > > >> >> Change-Id: I4db9b40d07e28f54f7bae9b676316cbd6a962124
-> >> > > >> >> ---
-> >> > > >> >>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 ++++++
-> >> > > >> >>  1 file changed, 6 insertions(+)
-> >> > > >> >>
-> >> > > >> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >> > > >> >> index 924fdb6..4798f44 100644
-> >> > > >> >> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >> > > >> >> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> >> > > >> >> @@ -81,6 +81,12 @@
-> >> > > >> >>               cpu_on        = <0x84000003>;
-> >> > > >> >>       };
-> >> > > >> >>
-> >> > > >> >> +     clk_null: clk_null {
-> >> > > >> >> +             compatible = "fixed-clock";
-> >> > > >> >> +             clock-frequency = <0>;
-> >> > > >> >> +             #clock-cells = <0>;
-> >> > > >> >> +     };
-> >> > > >> >
-> >> > > >> > The discussion around this patch shows that we don't want to have this
-> >> > > >> > clock in the device tree as it is not a hardware description.
-> >> > > >> >
-> >> > > >> > Ok, fine. Eddie, you told us that the rate of the current clk_null children
-> >> > > >> > is not interesting. What's the motivation to send this patch anyway
-> >> > > >> > then? Why can't you keep its children on the orphan list where they are
-> >> > > >> > already now?
-> >> > > >> >
-> >> > > >> > Another possibility would be to instantiate the clk_null clock from C
-> >> > > >> > code rather than from the device tree. This way we wouldn't put any
-> >> > > >> > wrong descriptions into the device tree and still can implement the
-> >> > > >> > support for the real parent clocks when we actually need them.
-> >> > > >>
-> >> > > >> Some device nodes, like mmc, use a clk_null phandle as one of their clocks:
-> >> > > >>
-> >> > > >> mmc1: mmc@11240000 {
-> >> > > >>         compatible = "mediatek,mt8173-mmc",
-> >> > > >>                      "mediatek,mt8135-mmc";
-> >> > > >>         reg = <0 0x11240000 0 0x1000>;
-> >> > > >>         interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
-> >> > > >>         clocks = <&pericfg CLK_PERI_MSDC30_1>,
-> >> > > >>                  <&clk_null>;
-> >> > > >>         clock-names = "source", "hclk";
-> >> > > >>         status = "disabled";
-> >> > > >> };
-> >> > > >
-> >> > > > This is another case than the one we discussed about. In the case above
-> >> > > > I motivated using a dummy clock since the clock exists in the system,
-> >> > > > but is not software controllable. To abstract this from the driver
-> >> > > > (which needs this clock since it exists) we here have the dummy clock.
-> >> > > > However, of course I can't prove the clock is indeed not software
-> >> > > > controllable; that's only the information I have.
-> >> > >
-> >> > > I was trying to answer your question "What's the motivation to send
-> >> > > this patch anyway?".
-> >> > > The motivation is to send follow on patches that use the clk_null
-> >> > > phandle.  We need to provide some clock as the mmc1's hclk.  I do not
-> >> > > understand why this has to be "clk_null", though.  It seems like this
-> >> > > should be a real clock coming from one of the real clock_controller
-> >> > > nodes.  After all, the mmc driver is going to be enabling/disabling
-> >> > > this clock for power savings at runtime.  What does that even mean for
-> >> > > clk_null ?
-> >> >
-> >> > The original purpose of this patch is to provide a common dummy clock
-> >> > for both software don't care clock and clock that is not software
-> >> > controllable.I got comments that device tree should describe hardware
-> >> > and should put exact clock in device tree. I think this is true. So we
-> >> > will remove this clock_null patch, and:
-> >> >
-> >> > 1. For Mediatek SoC CCF driver, James will clarify clock usage further.
-> >> > Actually, we still think it's not necessary to describe whole tree that
-> >> > software don't care, James will deal this in clock driver.
-> >>
-> >> I think that aswell since the device tree is not affected in this case.
-> >> Should we realize later that we indeed need the missing clocks we can
-> >> still implement them without modifying the device tree.
-> >>
-> >> >
-> >> > 2. For other module that use SW not controllable clock (mmc case
-> >> > mentioned by Dan), because this is a real clock, we will put a dummy
-> >> > clock in device tree, like
-> >> >
-> >> > clk_mmchclk: dummyhclk {
-> >> >     compatible = "fixed-clock";
-> >> >     clock-frequency = <0>;
-> >> >     #clock-cells = <0>;
-> >> > };
-> >> >
-> >> > How about this modification ?
-> >>
-> >> I wouldn't name it 'dummy', this will again raise some eyebrows.
-> >>
-> >
-> > I got mmc hclk from our designer. HCLK is from AXI Bus directly (sorry,
-> > I gave wrong information to Dan and Sascha yesterday). Because there is
-> > no any mux or gate register to control this HCLK, so current
-> > clk-mt8173.c didn't model it. Since I know where this clock comes from,
-> > I will abandon this stupid dummy clock device tree patch. But there are
-> > two alternative ways:
-> >
-> > 1. In MMC device tree, use parent clock, like
-> >      <&topckgen CLK_TOP_AXI_SEL>
-> >
-> > 2. In clk-mt8173.c, add fix factor clock, like apll case
-> >    FACTOR(CLK_TOP_APLL1, "apll1_ck", "apll1", 1, 1),
-> >
-> > Either way works, but have different meaning. Any suggestion to handle
-> > thing like this.
+On Friday, July 10, 2015 02:04:05 PM Scott Shu wrote:
+> This adds a CPU power domain driver for the Mediatek SCPSYS unit on
+> MT6580.
 > 
-> I like (1), it seems more straightforward.
-> What is the advantage of (2)?
+> Signed-off-by: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/mach-mediatek/Makefile  |   2 +-
+>  arch/arm/mach-mediatek/generic.h |  23 ++++
+>  arch/arm/mach-mediatek/hotplug.c | 267
+> +++++++++++++++++++++++++++++++++++++++ 3 files changed, 291 insertions(+),
+> 1 deletion(-)
+>  create mode 100644 arch/arm/mach-mediatek/generic.h
+>  create mode 100644 arch/arm/mach-mediatek/hotplug.c
 > 
+> diff --git a/arch/arm/mach-mediatek/Makefile
+> b/arch/arm/mach-mediatek/Makefile index 2116460..b2e4ef5 100644
+> --- a/arch/arm/mach-mediatek/Makefile
+> +++ b/arch/arm/mach-mediatek/Makefile
+> @@ -1,4 +1,4 @@
+>  ifeq ($(CONFIG_SMP),y)
+> -obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o
+> +obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o hotplug.o
+>  endif
+>  obj-$(CONFIG_ARCH_MEDIATEK) += mediatek.o
+> diff --git a/arch/arm/mach-mediatek/generic.h
+> b/arch/arm/mach-mediatek/generic.h new file mode 100644
+> index 0000000..376f183
+> --- /dev/null
+> +++ b/arch/arm/mach-mediatek/generic.h
+> @@ -0,0 +1,23 @@
+> +/*
+> + * Copyright (c) 2015 Mediatek Inc.
+> + * Author: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#ifndef __MACH_GENERIC_H
+> +#define __MACH_GENERIC_H
+> +
+> +#include <linux/kernel.h>
+> +
+> +int spm_cpu_mtcmos_init(void);
+> +int spm_cpu_mtcmos_on(int cpu);
+> +int spm_cpu_mtcmos_off(int cpu, bool wfi);
+> +
+> +#endif
+> diff --git a/arch/arm/mach-mediatek/hotplug.c
+> b/arch/arm/mach-mediatek/hotplug.c new file mode 100644
+> index 0000000..bd97f2e
+> --- /dev/null
+> +++ b/arch/arm/mach-mediatek/hotplug.c
+> @@ -0,0 +1,267 @@
+> +/*
+> + * Copyright (c) 2015 Mediatek Inc.
+> + * Author: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +#include <linux/init.h>
+> +#include <linux/module.h>
+> +#include <linux/kernel.h>
+> +#include <linux/spinlock.h>
+> +#include <linux/delay.h>
+> +#include <linux/of.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/of_address.h>
+> +
+> +/* SCPSYS registers */
+> +#define SPM_POWERON_CONFIG_SET		0x0000
+> +
+> +#define SPM_CA7_CPU0_PWR_CON		0x0200
+> +#define SPM_CA7_CPU1_PWR_CON		0x0218
+> +#define SPM_CA7_CPU2_PWR_CON		0x021c
+> +#define SPM_CA7_CPU3_PWR_CON		0x0220
+> +
+> +#define SPM_CA7_CPU0_L1_PDN		0x025c
+> +#define SPM_CA7_CPU1_L1_PDN		0x0264
+> +#define SPM_CA7_CPU2_L1_PDN		0x026c
+> +#define SPM_CA7_CPU3_L1_PDN		0x0274
+> +
+> +#define SPM_PWR_STATUS			0x060c
+> +#define SPM_PWR_STATUS_2ND		0x0610
+> +#define SPM_SLEEP_TIMER_STA		0x0720
+> +
+> +/* bit definition in SPM_CA7_CPUx_PWR_CON */
+> +#define SRAM_ISOINT_B		BIT(6)
+> +#define SRAM_CKISO		BIT(5)
+> +#define PWR_CLK_DIS		BIT(4)
+> +#define PWR_ON_2ND		BIT(3)
+> +#define PWR_ON			BIT(2)
+> +#define PWR_ISO			BIT(1)
+> +#define PWR_RST_B		BIT(0)
+> +
+> +/* bit definition in SPM_CA7_CPUx_L1_PDN */
+> +#define L1_PDN_ACK		BIT(8)
+> +#define L1_PDN			BIT(0)
+> +
+> +#define MT6580_MAX_CPUS		4
+> +
+> +static DEFINE_SPINLOCK(spm_cpu_lock);
+> +
+> +void __iomem *spm_cpu_base;
+> +
+> +u32 spm_cpu_pwr_con[MT6580_MAX_CPUS] = {
+> +	SPM_CA7_CPU0_PWR_CON,
+> +	SPM_CA7_CPU1_PWR_CON,
+> +	SPM_CA7_CPU2_PWR_CON,
+> +	SPM_CA7_CPU3_PWR_CON,
+> +};
+> +
+> +u32 spm_cpu_l1_pdn[MT6580_MAX_CPUS] = {
+> +	SPM_CA7_CPU0_L1_PDN,
+> +	SPM_CA7_CPU1_L1_PDN,
+> +	SPM_CA7_CPU2_L1_PDN,
+> +	SPM_CA7_CPU3_L1_PDN,
+> +};
+> +
+> +#define SPM_REGWR_EN		BIT(0)
+> +#define SPM_PROJECT_CODE	0x0B16
+> +
+> +int spm_cpu_mtcmos_on(int cpu)
+> +{
+> +	unsigned long flags;
+> +	static u32 spmcpu_pwr_con, spmcpu_l1_pdn;
+> +	unsigned int temp;
+> +	int timeout = 10;
+> +	int ret = -ENOSYS;
+> +
+> +	temp = (SPM_PROJECT_CODE << 16) | SPM_REGWR_EN;
+> +	writel_relaxed(temp, spm_cpu_base + SPM_POWERON_CONFIG_SET);
+> +
+> +	spmcpu_pwr_con = spm_cpu_pwr_con[cpu];
+> +	spmcpu_l1_pdn = spm_cpu_l1_pdn[cpu];
+> +
+> +	spin_lock_irqsave(&spm_cpu_lock, flags);
+> +
+> +	/* Set PWR_ON */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= PWR_ON;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Wait for charging core power */
+> +	udelay(1);
+> +
+> +	/* Set PWR_ON_2ND */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= PWR_ON_2ND;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Wait for the power-ack */
+> +	while (((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS) &
+> +		(1U << (13 - cpu))) != (1U << (13 - cpu))) ||
+> +		((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS_2ND) &
+> +		(1U << (13 - cpu))) != (1U << (13 - cpu)))) {
+> +		if (--timeout == 0)
+> +			goto fail;
+> +		udelay(1);
+> +	}
+> +
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~PWR_ISO;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* L1 power on */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_l1_pdn);
+> +	temp &= ~L1_PDN;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_l1_pdn);
+> +	timeout = 10;
+> +	while ((readl_relaxed(spm_cpu_base + spmcpu_l1_pdn) &
+> +		L1_PDN_ACK) != 0) {
+> +		if (--timeout == 0)
+> +			goto fail;
+> +		udelay(1);
+> +	}
+> +
+> +	/* Wait for memory power ready */
+> +	udelay(1);
+> +
+> +	/* Set SRAM_ISOINT_B */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= SRAM_ISOINT_B;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Clear SRAM_CKISO */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~SRAM_CKISO;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Clear PWR_CLK_DIS */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~PWR_CLK_DIS;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Set PWR_RST_B to finish power on and reset sequences */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= PWR_RST_B;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	ret = 0;
+> +fail:
+> +	spin_unlock_irqrestore(&spm_cpu_lock, flags);
+> +
+> +	return ret;
+> +}
+> +
+> +int spm_cpu_mtcmos_off(int cpu, bool wfi)
+> +{
+> +	unsigned long flags;
+> +	static u32 spmcpu_pwr_con, spmcpu_l1_pdn;
+> +	unsigned int temp;
+> +	int timeout = 10;
+> +	int ret = -ENOSYS;
+> +
+> +	temp = (SPM_PROJECT_CODE << 16) | SPM_REGWR_EN;
+> +	writel_relaxed(temp, spm_cpu_base + SPM_POWERON_CONFIG_SET);
+> +
+> +	spmcpu_pwr_con = spm_cpu_pwr_con[cpu];
+> +	spmcpu_l1_pdn = spm_cpu_l1_pdn[cpu];
+> +
+> +	if (wfi) {
+> +		while ((readl_relaxed(spm_cpu_base + SPM_SLEEP_TIMER_STA) &
+> +			(1U << (16 + cpu))) == 0) {
+> +			if (--timeout == 0)
+> +				return ret;
+> +			udelay(1);
+> +		}
+> +	}
+> +
+> +	spin_lock_irqsave(&spm_cpu_lock, flags);
+> +
+> +	/* Set PWR_ISO */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= PWR_ISO;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Set SRAM_CKISO */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= SRAM_CKISO;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Clear SRAM_ISOINT_B */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~SRAM_ISOINT_B;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* L1 power off */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_l1_pdn);
+> +	temp |= L1_PDN;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_l1_pdn);
+> +	timeout = 10;
+> +	while ((readl_relaxed(spm_cpu_base + spmcpu_l1_pdn) &
+> +		L1_PDN_ACK) != L1_PDN_ACK) {
+> +		if (--timeout == 0)
+> +			goto fail;
+> +		udelay(1);
+> +	}
+> +
+> +	/* Clear PWR_RST_B */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~PWR_RST_B;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Set PWR_CLK_DIS */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp |= PWR_CLK_DIS;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Clear PWR_ON */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~PWR_ON;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	/* Clear PWR_ON_2ND */
+> +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> +	temp &= ~PWR_ON_2ND;
+> +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> +
+> +	timeout = 10;
+> +	while (((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS) &
+> +		(1U << (13 - cpu))) != 0) ||
+> +	       ((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS_2ND) &
+> +		(1U << (13 - cpu))) != 0)) {
+> +		if (--timeout == 0)
+> +			goto fail;
+> +		udelay(1);
+> +	}
+> +
+> +	ret = 0;
+> +fail:
+> +	spin_unlock_irqrestore(&spm_cpu_lock, flags);
+> +
+> +	return ret;
+> +}
+> +
+> +int spm_cpu_mtcmos_init(void)
+> +{
+> +	struct device_node *node;
+> +
+> +	node = of_find_compatible_node(NULL, NULL, "mediatek,mt6580-scpsys");
 
-Actually no, it can't even guarantee HCLK parent clock reference count
-neither. We will resend mmc device tree patch base on this solution.
+This looks pretty much as if it should go in 
+drivers/soc/mediatek/mtk-scpsys.c
 
-Thanks
-Eddie
+AFAIR Sascha already mentioned that in v1.
+Why do you want/need to implement this mach-mediatek?
 
-
+Thanks,
+Matthias
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
