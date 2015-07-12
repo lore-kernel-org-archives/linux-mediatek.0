@@ -1,63 +1,162 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [RESEND PATCH 1/6] Document: bindings: DT: Add SMP enable
- method for MT6580 SoC platform
-Date: Sat, 11 Jul 2015 18:38:06 +0800
-Message-ID: <1436611086.17661.3.camel@mtksdaap41>
-References: <Scott Shu <srv_scott.shu@mediatek.com>
-	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
-	 <1434650481-39421-2-git-send-email-scott.shu@mediatek.com>
-	 <1435547019.20584.13.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Rob Herring <robh@kernel.org>
+Subject: [PATCH v2 10/13] pinctrl: kill off set_irq_flags usage
+Date: Sun, 12 Jul 2015 09:26:48 -0500
+Message-ID: <1436711211-18223-11-git-send-email-robh@kernel.org>
+References: <1436711211-18223-1-git-send-email-robh@kernel.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1435547019.20584.13.camel@mtksdaap41>
+In-Reply-To: <1436711211-18223-1-git-send-email-robh@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Arnd Bergmann <arnd@arndb.de>, ibanezchen@gmail.com, lorenzo.pieralisi@arm.com, linux@arm.linux.org.uk, heiko@sntech.de, catalin.marinas@arm.com, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, marc.ceeeee@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, galak@codeaurora.org, rchintakuntla@cavium.com, linux-arm-kernel@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org, Russell King <linux@arm.linux.org.uk>
+Cc: linux-kernel@vger.kernel.org, arm@kernel.org, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tomasz.figa@gmail.com>, Thomas Abraham <thomas.abraham@linaro.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-06-29 at 11:03 +0800, Yingjoe Chen wrote:
-> On Fri, 2015-06-19 at 02:01 +0800, Scott Shu wrote:
-> > For MT6580 SoC platform, the secondary cores are in powered off state
-> > as default, so compared with MT65xx series SoC, one new enable method
-> > is needed. This method using the SPM (System Power Manager) inside
-> > the SCYSYS to control the CPU power.
-> > ---
-> >  Documentation/devicetree/bindings/arm/cpus.txt | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/arm/cpus.txt b/Documentation/devicetree/bindings/arm/cpus.txt
-> > index ac2903d..fb80b2e 100644
-> > --- a/Documentation/devicetree/bindings/arm/cpus.txt
-> > +++ b/Documentation/devicetree/bindings/arm/cpus.txt
-> > @@ -194,6 +194,7 @@ nodes to be present and contain the properties described below.
-> >  			    "marvell,armada-380-smp"
-> >  			    "marvell,armada-390-smp"
-> >  			    "marvell,armada-xp-smp"
-> > +			    "mediatek,mt6580-smp"
-> >  			    "mediatek,mt65xx-smp"
-> >  			    "mediatek,mt81xx-tz-smp"
-> >  			    "qcom,gcc-msm8660"
-> 
-> Hi
-> 
-> It seems we have 3 different kinds of cpu enable method now, and
-> mt65xx-smp doesn't cover all mt65xx series. So maybe it make sense to
-> change naming before it got merged.
-> 
-> Short summary for these methods:
-> 
-> mt65xx-smp:    	For mt65xx socs which wakeup all cores at boot.
-> 		Tested on mt6589 by Matthias.
-> mt6580-smp:     Only first core is alive at boot, so need to wakeup
-> 		other cores using SPM. AFAIK only for mt6580 now.
-> mt81xx-tz-smp:  For soc which wakeup all cores at boot, and have
-> 		trustzone firmware. Suitable for mt8127, mt8135.
+set_irq_flags is ARM specific with custom flags which have genirq
+equivalents. Convert drivers to use the genirq interfaces directly, so we
+can kill off set_irq_flags. The translation of flags is as follows:
 
+IRQF_VALID -> !IRQ_NOREQUEST
+IRQF_PROBE -> !IRQ_NOPROBE
+IRQF_NOAUTOEN -> IRQ_NOAUTOEN
 
-Hi Matthias, Arnd,
+For IRQs managed by an irqdomain, the irqdomain core code handles clearing
+and setting IRQ_NOREQUEST already, so there is no need to do this in
+.map() functions and we can simply remove the set_irq_flags calls. Some
+users also set IRQ_NOPROBE and this has been maintained although it is not
+clear that is really needed. There appears to be a great deal of blind
+copy and paste of this code.
 
-Any suggestion on the naming? Is it ok if I just rename mt65xx-smp to
-mt6589-smp since that's the only one we tested?
+Signed-off-by: Rob Herring <robh@kernel.org>
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+Cc: Stephen Warren <swarren@wwwdotorg.org>
+Cc: Lee Jones <lee@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Tomasz Figa <tomasz.figa@gmail.com>
+Cc: Thomas Abraham <thomas.abraham@linaro.org>
+Cc: Kukjin Kim <kgene@kernel.org>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: linux-gpio@vger.kernel.org
+Cc: linux-rpi-kernel@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-samsung-soc@vger.kernel.org
+---
+ drivers/pinctrl/bcm/pinctrl-bcm2835.c         | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 --
+ drivers/pinctrl/pinctrl-single.c              | 5 -----
+ drivers/pinctrl/samsung/pinctrl-exynos.c      | 1 -
+ drivers/pinctrl/samsung/pinctrl-exynos5440.c  | 1 -
+ drivers/pinctrl/samsung/pinctrl-s3c24xx.c     | 2 --
+ drivers/pinctrl/samsung/pinctrl-s3c64xx.c     | 2 --
+ 7 files changed, 14 deletions(-)
 
-Joe.C
+diff --git a/drivers/pinctrl/bcm/pinctrl-bcm2835.c b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
+index efcf2a2..0cfdbb5 100644
+--- a/drivers/pinctrl/bcm/pinctrl-bcm2835.c
++++ b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
+@@ -987,7 +987,6 @@ static int bcm2835_pinctrl_probe(struct platform_device *pdev)
+ 		irq_set_chip_and_handler(irq, &bcm2835_gpio_irq_chip,
+ 				handle_level_irq);
+ 		irq_set_chip_data(irq, pc);
+-		set_irq_flags(irq, IRQF_VALID);
+ 	}
+ 
+ 	for (i = 0; i < BCM2835_NUM_BANKS; i++) {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..661677c 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1348,11 +1348,9 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 		irq_set_chip_and_handler(virq, &mtk_pinctrl_irq_chip,
+ 			handle_level_irq);
+ 		irq_set_chip_data(virq, pctl);
+-		set_irq_flags(virq, IRQF_VALID);
+ 	};
+ 
+ 	irq_set_chained_handler_and_data(irq, mtk_eint_irq_handler, pctl);
+-	set_irq_flags(irq, IRQF_VALID);
+ 	return 0;
+ 
+ chip_error:
+diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+index b2de09d..d00a990 100644
+--- a/drivers/pinctrl/pinctrl-single.c
++++ b/drivers/pinctrl/pinctrl-single.c
+@@ -1716,12 +1716,7 @@ static int pcs_irqdomain_map(struct irq_domain *d, unsigned int irq,
+ 	irq_set_chip_data(irq, pcs_soc);
+ 	irq_set_chip_and_handler(irq, &pcs->chip,
+ 				 handle_level_irq);
+-
+-#ifdef CONFIG_ARM
+-	set_irq_flags(irq, IRQF_VALID);
+-#else
+ 	irq_set_noprobe(irq);
+-#endif
+ 
+ 	return 0;
+ }
+diff --git a/drivers/pinctrl/samsung/pinctrl-exynos.c b/drivers/pinctrl/samsung/pinctrl-exynos.c
+index b18dabb..0e8add9 100644
+--- a/drivers/pinctrl/samsung/pinctrl-exynos.c
++++ b/drivers/pinctrl/samsung/pinctrl-exynos.c
+@@ -256,7 +256,6 @@ static int exynos_eint_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_data(virq, b);
+ 	irq_set_chip_and_handler(virq, &b->irq_chip->chip,
+ 					handle_level_irq);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pinctrl/samsung/pinctrl-exynos5440.c b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
+index f5619fb..e7d1c9e 100644
+--- a/drivers/pinctrl/samsung/pinctrl-exynos5440.c
++++ b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
+@@ -929,7 +929,6 @@ static int exynos5440_gpio_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_data(virq, d);
+ 	irq_set_chip_and_handler(virq, &exynos5440_gpio_irq_chip,
+ 					handle_level_irq);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
+index 01b43db..f218be7 100644
+--- a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
++++ b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
+@@ -437,7 +437,6 @@ static int s3c24xx_gpf_irq_map(struct irq_domain *h, unsigned int virq,
+ 					 handle_edge_irq);
+ 	}
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+ 
+@@ -457,7 +456,6 @@ static int s3c24xx_gpg_irq_map(struct irq_domain *h, unsigned int virq,
+ 
+ 	irq_set_chip_and_handler(virq, &s3c24xx_eint_chip, handle_edge_irq);
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+ 
+diff --git a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
+index ec8cc3b..1a4dd01 100644
+--- a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
++++ b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
+@@ -395,7 +395,6 @@ static int s3c64xx_gpio_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_and_handler(virq,
+ 				&s3c64xx_gpio_irq_chip, handle_level_irq);
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+ 
+ 	return 0;
+ }
+@@ -673,7 +672,6 @@ static int s3c64xx_eint0_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_and_handler(virq,
+ 				&s3c64xx_eint0_irq_chip, handle_level_irq);
+ 	irq_set_chip_data(virq, ddata);
+-	set_irq_flags(virq, IRQF_VALID);
+ 
+ 	return 0;
+ }
+-- 
+2.1.0
