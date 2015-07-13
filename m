@@ -1,102 +1,40 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8173: Add afe device node
-Date: Mon, 13 Jul 2015 15:19:29 +0800
-Message-ID: <1436771969.15768.6.camel@mtksdaap41>
-References: <1436412725-55129-1-git-send-email-koro.chen@mediatek.com>
-	 <CAGS+omBqO6Zcw9KuN6p9YDvRD=UfmOnokUPeRo-iv6ruTBChwg@mail.gmail.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: [PATCH v5 0/3] Add MediaTek display PWM driver
+Date: Mon, 13 Jul 2015 17:04:51 +0800
+Message-ID: <1436778294-47635-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omBqO6Zcw9KuN6p9YDvRD=UfmOnokUPeRo-iv6ruTBChwg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, alsa-devel@alsa-project.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-07-09 at 18:45 +0800, Daniel Kurtz wrote:
-> On Thu, Jul 9, 2015 at 11:32 AM, Koro Chen <koro.chen@mediatek.com> wrote:
-> > This adds afe (audio front end) device node to the MT8173 dtsi file.
-> >
-> > Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-> 
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> I believe this patch depends on the fix in:
-> https://patchwork.kernel.org/patch/6752521/  
-> 
-> If so, I think it would have been better to upload them together and
-> mention the dependency in the cover letter.
-> However, now that they are both on the list, we just need to ensure
-> they are merged together.
+This patch series add the use of display PWM driver, documentation 
+and device tree for Mediatek SoCs. The driver is used to support 
+the backlight of the panel. This is based on v4.2-rc1.
 
-The above patch was already merged, so now it is OK to merge this one
-(If there is no problem for this patch, of course)
-> 
-> -Dan
-> 
-> 
-> > ---
-> > This patch is based on Matthias's tree:
-> > https://github.com/mbgg/linux-mediatek
-> > branch: v4.2-next/arm64
-> >
-> > Changes since v1:
-> > - change node name to afe: audio-controller@11220000
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 32 ++++++++++++++++++++++++++++++++
-> >  1 file changed, 32 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index 0696f8f..ce9255a 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -14,6 +14,7 @@
-> >  #include <dt-bindings/clock/mt8173-clk.h>
-> >  #include <dt-bindings/interrupt-controller/irq.h>
-> >  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +#include <dt-bindings/power/mt8173-power.h>
-> >  #include <dt-bindings/reset-controller/mt8173-resets.h>
-> >  #include "mt8173-pinfunc.h"
-> >
-> > @@ -393,6 +394,37 @@
-> >                         #size-cells = <0>;
-> >                         status = "disabled";
-> >                 };
-> > +
-> > +               afe: audio-controller@11220000  {
-> > +                       compatible = "mediatek,mt8173-afe-pcm";
-> > +                       reg = <0 0x11220000 0 0x1000>;
-> > +                       interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
-> > +                       power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
-> > +                       clocks = <&infracfg CLK_INFRA_AUDIO>,
-> > +                                <&topckgen CLK_TOP_AUDIO_SEL>,
-> > +                                <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
-> > +                                <&topckgen CLK_TOP_APLL1_DIV0>,
-> > +                                <&topckgen CLK_TOP_APLL2_DIV0>,
-> > +                                <&topckgen CLK_TOP_I2S0_M_SEL>,
-> > +                                <&topckgen CLK_TOP_I2S1_M_SEL>,
-> > +                                <&topckgen CLK_TOP_I2S2_M_SEL>,
-> > +                                <&topckgen CLK_TOP_I2S3_M_SEL>,
-> > +                                <&topckgen CLK_TOP_I2S3_B_SEL>;
-> > +                       clock-names = "infra_sys_audio_clk",
-> > +                                     "top_pdn_audio",
-> > +                                     "top_pdn_aud_intbus",
-> > +                                     "bck0",
-> > +                                     "bck1",
-> > +                                     "i2s0_m",
-> > +                                     "i2s1_m",
-> > +                                     "i2s2_m",
-> > +                                     "i2s3_m",
-> > +                                     "i2s3_b";
-> > +                       assigned-clocks = <&topckgen CLK_TOP_AUD_1_SEL>,
-> > +                                         <&topckgen CLK_TOP_AUD_2_SEL>;
-> > +                       assigned-clock-parents = <&topckgen CLK_TOP_APLL1>,
-> > +                                                <&topckgen CLK_TOP_APLL2>;
-> > +               };
-> >         };
-> >  };
-> >
-> > --
-> > 1.8.1.1.dirty
-> >
+The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch: 
+clk: mediatek: Add subsystem clocks of MT8173
+
+Change in v5:
+1. Configure PWM output via pinctrl
+2. Fix the parameter name in dtsi
+
+YH Huang (3):
+  dt-bindings: pwm: add MediaTek display PWM bindings
+  pwm: add MediaTek display PWM driver support
+  arm64: dts: mt8173: add MT8173 display PWM driver support node
+
+ .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |  29 +++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  15 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  22 ++
+ drivers/pwm/Kconfig                                |  10 +
+ drivers/pwm/Makefile                               |   1 +
+ drivers/pwm/pwm-mtk-disp.c                         | 256 +++++++++++++++++++++
+ 6 files changed, 333 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+ create mode 100644 drivers/pwm/pwm-mtk-disp.c
+
+--
+1.8.1.1.dirty
