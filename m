@@ -1,83 +1,37 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: [PATCH v5 3/3] arm64: dts: mt8173: add MT8173 display PWM driver support node
-Date: Mon, 13 Jul 2015 17:04:54 +0800
-Message-ID: <1436778294-47635-4-git-send-email-yh.huang@mediatek.com>
-References: <1436778294-47635-1-git-send-email-yh.huang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: [PATCH 0/5] add GPT timer support for mt8173
+Date: Mon, 13 Jul 2015 17:32:44 +0800
+Message-ID: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436778294-47635-1-git-send-email-yh.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, YH Huang <yh.huang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>
+Cc: Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, Yingjoe Chen <yingjoe.chen@mediatek.com>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add display PWM node in mt8173-evb.dts and mt8173.dtsi.
+This series add GPT timer support for mt8173. This is based on v4.2-rc1
+and Matthias' next branch (for dts parts).
 
-Signed-off-by: YH Huang <yh.huang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 15 +++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 22 ++++++++++++++++++++++
- 2 files changed, 37 insertions(+)
+The first 2 patches comes from 'Add SMP bringup support for mt65xx socs'
+series [1]. I decide to move these 2 patches to this series, since it
+is more relevent here. They are changed based on Matthias' and Daniel's
+comments.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index f433c21..b7c1d9f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -34,6 +34,21 @@
- 	chosen { };
- };
- 
-+&pio {
-+	disp_pwm0_pins: disp_pwm0_pins {
-+		pins1 {
-+			pinmux = <MT8173_PIN_87_DISP_PWM0__FUNC_DISP_PWM0>;
-+			bias-pull-up;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&disp_pwm0_pins>;
-+	status = "okay";
-+};
-+
- &pwrap {
- 	pmic: mt6397 {
- 		compatible = "mediatek,mt6397";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 0696f8f..44cab19 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -393,6 +393,28 @@
- 			#size-cells = <0>;
- 			status = "disabled";
- 		};
-+
-+		pwm0: pwm@1401e000 {
-+			compatible = "mediatek,mt8173-disp-pwm",
-+				     "mediatek,mt6595-disp-pwm";
-+			reg = <0 0x1401e000 0 0x1000>;
-+			#pwm-cells = <2>;
-+			clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-+				 <&mmsys CLK_MM_DISP_PWM0MM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
-+
-+		pwm1: pwm@1401f000 {
-+			compatible = "mediatek,mt8173-disp-pwm",
-+				     "mediatek,mt6595-disp-pwm";
-+			reg = <0 0x1401f000 0 0x1000>;
-+			#pwm-cells = <2>;
-+			clocks = <&mmsys CLK_MM_DISP_PWM126M>,
-+				 <&mmsys CLK_MM_DISP_PWM1MM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
- 	};
- };
- 
--- 
-1.8.1.1.dirty
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000714.html
+
+Daniel Kurtz (1):
+  arm64: dts: mt8173: add timer node
+
+Yingjoe Chen (4):
+  clocksource: mediatek: do not enable GPT_CLK_EVT when setup
+  clocksource: mediatek: Use GPT as sched clock source
+  arm64: mediatek: enable MTK_TIMER
+  clk: mediatek: add 13mhz clock for MT8173
+
+ arch/arm64/Kconfig                       |  1 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |  9 +++++++++
+ drivers/clk/mediatek/clk-mt8173.c        |  5 +++++
+ drivers/clocksource/mtk_timer.c          | 26 ++++++++++++++++++++------
+ include/dt-bindings/clock/mt8173-clk.h   |  3 ++-
+ 5 files changed, 37 insertions(+), 7 deletions(-)
