@@ -1,62 +1,35 @@
-From: Tomasz Figa <tomasz.figa@gmail.com>
-Subject: Re: [PATCH v2 10/13] pinctrl: kill off set_irq_flags usage
-Date: Mon, 13 Jul 2015 00:45:58 +0900
-Message-ID: <CA+Ln22He4_LAsZeGbQ+BuZYfhPAQa-JbzgX85-4m0Gay3ikEqg@mail.gmail.com>
-References: <1436711211-18223-1-git-send-email-robh@kernel.org>
-	<1436711211-18223-11-git-send-email-robh@kernel.org>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: Re: [PATCH 2/2] ASoC: Drop owner assignment from
+	platform_driver
+Date: Mon, 13 Jul 2015 10:59:55 +0800
+Message-ID: <1436756395.2090.2.camel@mtksdaap41>
+References: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
+ <1436506231-8980-3-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1436711211-18223-11-git-send-email-robh@kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Russell King <linux@arm.linux.org.uk>, linux-kernel <linux-kernel@vger.kernel.org>, "arm@kernel.org" <arm@kernel.org>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Abraham <thomas.abraham@linaro.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1436506231-8980-3-git-send-email-k.kozlowski@samsung.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Oder Chiou <oder_chiou@realtek.com>, Brian Austin <brian.austin@cirrus.com>, Lars-Peter Clausen <lars@metafoo.de>, Support Opensource <support.opensource@diasemi.com>, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.de>, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, Liam Girdwood <lgirdwood@gmail.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, M R Swami Reddy <mr.swami.reddy@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Bard Liao <bardliao@realtek.com>, Peter Rosin <peda@axentia.se>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Fri, 2015-07-10 at 14:30 +0900, Krzysztof Kozlowski wrote:
+> platform_driver does not need to set an owner because
+> platform_driver_register() will set it.
+> 
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> 
 
-2015-07-12 23:26 GMT+09:00 Rob Herring <robh@kernel.org>:
-> set_irq_flags is ARM specific with custom flags which have genirq
-> equivalents. Convert drivers to use the genirq interfaces directly, so we
-> can kill off set_irq_flags. The translation of flags is as follows:
->
-> IRQF_VALID -> !IRQ_NOREQUEST
-> IRQF_PROBE -> !IRQ_NOPROBE
-> IRQF_NOAUTOEN -> IRQ_NOAUTOEN
->
-> For IRQs managed by an irqdomain, the irqdomain core code handles clearing
-> and setting IRQ_NOREQUEST already, so there is no need to do this in
-> .map() functions and we can simply remove the set_irq_flags calls. Some
-> users also set IRQ_NOPROBE and this has been maintained although it is not
-> clear that is really needed. There appears to be a great deal of blind
-> copy and paste of this code.
->
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> Acked-by: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Stephen Warren <swarren@wwwdotorg.org>
-> Cc: Lee Jones <lee@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Tomasz Figa <tomasz.figa@gmail.com>
-> Cc: Thomas Abraham <thomas.abraham@linaro.org>
-> Cc: Kukjin Kim <kgene@kernel.org>
-> Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-rpi-kernel@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-samsung-soc@vger.kernel.org
-> ---
->  drivers/pinctrl/bcm/pinctrl-bcm2835.c         | 1 -
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 --
->  drivers/pinctrl/pinctrl-single.c              | 5 -----
->  drivers/pinctrl/samsung/pinctrl-exynos.c      | 1 -
->  drivers/pinctrl/samsung/pinctrl-exynos5440.c  | 1 -
->  drivers/pinctrl/samsung/pinctrl-s3c24xx.c     | 2 --
->  drivers/pinctrl/samsung/pinctrl-s3c64xx.c     | 2 --
+Acked-by: Koro Chen <koro.chen@mediatek.com>
 
-For drivers/pinctrl/samsung:
-
-Acked-by: Tomasz Figa <tomasz.figa@gmail.com>
-
-Best regards,
-Tomasz
+Thank you!
