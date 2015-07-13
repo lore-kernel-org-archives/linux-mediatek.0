@@ -1,45 +1,351 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 5/5] arm64: dts: mt8173: Add subsystem clock
- controller device nodes
-Date: Mon, 13 Jul 2015 11:34:57 +0800
-Message-ID: <1436758497.9416.1.camel@mtksdaap41>
-References: <1436522405-13923-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1436522405-13923-6-git-send-email-jamesjj.liao@mediatek.com>
-	 <CAGS+omC7274iPDdfXpKuM0HvCcEscUE5e5jrDH4DhW4j_Ykt2A@mail.gmail.com>
+From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] soc: Mediatek: Add SCPSYS CPU power domain driver
+Date: Mon, 13 Jul 2015 12:18:38 +0800
+Message-ID: <1436761118.4845.18.camel@mtkswgap22>
+References: <1436508249-49338-3-git-send-email-scott.shu@mediatek.com>
+	 <1480643.lE6oTr5Rlh@ubix>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omC7274iPDdfXpKuM0HvCcEscUE5e5jrDH4DhW4j_Ykt2A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1480643.lE6oTr5Rlh@ubix>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marc Carino <marc.ceeeee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Radha Mohan Chintakuntla <rchintakuntla-YGCgFSpz5w/QT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel,
 
-On Fri, 2015-07-10 at 23:02 +0800, Daniel Kurtz wrote:
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index a2f63e4..9d74ce5 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -227,6 +227,36 @@
-> >                         clocks = <&uart_clk>;
-> >                         status = "disabled";
-> >                 };
+For some platform, the code for controlling CPU power is located in
+arch/arm/mach-xxxx. (i.e., mach-hisi and mach-qcom). The framework is
+clear and easy to maintain. 	In addition, the code will be called in
+very early stage during system boot up.Is the platform driver ready for
+the moment?
+
+
+On Fri, 2015-07-10 at 16:31 +0200, Matthias Brugger wrote:
+> On Friday, July 10, 2015 02:04:05 PM Scott Shu wrote:
+> > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
+> > MT6580.
+> > 
+> > Signed-off-by: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  arch/arm/mach-mediatek/Makefile  |   2 +-
+> >  arch/arm/mach-mediatek/generic.h |  23 ++++
+> >  arch/arm/mach-mediatek/hotplug.c | 267
+> > +++++++++++++++++++++++++++++++++++++++ 3 files changed, 291 insertions(+),
+> > 1 deletion(-)
+> >  create mode 100644 arch/arm/mach-mediatek/generic.h
+> >  create mode 100644 arch/arm/mach-mediatek/hotplug.c
+> > 
+> > diff --git a/arch/arm/mach-mediatek/Makefile
+> > b/arch/arm/mach-mediatek/Makefile index 2116460..b2e4ef5 100644
+> > --- a/arch/arm/mach-mediatek/Makefile
+> > +++ b/arch/arm/mach-mediatek/Makefile
+> > @@ -1,4 +1,4 @@
+> >  ifeq ($(CONFIG_SMP),y)
+> > -obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o
+> > +obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o hotplug.o
+> >  endif
+> >  obj-$(CONFIG_ARCH_MEDIATEK) += mediatek.o
+> > diff --git a/arch/arm/mach-mediatek/generic.h
+> > b/arch/arm/mach-mediatek/generic.h new file mode 100644
+> > index 0000000..376f183
+> > --- /dev/null
+> > +++ b/arch/arm/mach-mediatek/generic.h
+> > @@ -0,0 +1,23 @@
+> > +/*
+> > + * Copyright (c) 2015 Mediatek Inc.
+> > + * Author: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +#ifndef __MACH_GENERIC_H
+> > +#define __MACH_GENERIC_H
 > > +
-> > +               mmsys: mmsys@14000000 {
+> > +#include <linux/kernel.h>
+> > +
+> > +int spm_cpu_mtcmos_init(void);
+> > +int spm_cpu_mtcmos_on(int cpu);
+> > +int spm_cpu_mtcmos_off(int cpu, bool wfi);
+> > +
+> > +#endif
+> > diff --git a/arch/arm/mach-mediatek/hotplug.c
+> > b/arch/arm/mach-mediatek/hotplug.c new file mode 100644
+> > index 0000000..bd97f2e
+> > --- /dev/null
+> > +++ b/arch/arm/mach-mediatek/hotplug.c
+> > @@ -0,0 +1,267 @@
+> > +/*
+> > + * Copyright (c) 2015 Mediatek Inc.
+> > + * Author: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +#include <linux/init.h>
+> > +#include <linux/module.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/spinlock.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_irq.h>
+> > +#include <linux/of_address.h>
+> > +
+> > +/* SCPSYS registers */
+> > +#define SPM_POWERON_CONFIG_SET		0x0000
+> > +
+> > +#define SPM_CA7_CPU0_PWR_CON		0x0200
+> > +#define SPM_CA7_CPU1_PWR_CON		0x0218
+> > +#define SPM_CA7_CPU2_PWR_CON		0x021c
+> > +#define SPM_CA7_CPU3_PWR_CON		0x0220
+> > +
+> > +#define SPM_CA7_CPU0_L1_PDN		0x025c
+> > +#define SPM_CA7_CPU1_L1_PDN		0x0264
+> > +#define SPM_CA7_CPU2_L1_PDN		0x026c
+> > +#define SPM_CA7_CPU3_L1_PDN		0x0274
+> > +
+> > +#define SPM_PWR_STATUS			0x060c
+> > +#define SPM_PWR_STATUS_2ND		0x0610
+> > +#define SPM_SLEEP_TIMER_STA		0x0720
+> > +
+> > +/* bit definition in SPM_CA7_CPUx_PWR_CON */
+> > +#define SRAM_ISOINT_B		BIT(6)
+> > +#define SRAM_CKISO		BIT(5)
+> > +#define PWR_CLK_DIS		BIT(4)
+> > +#define PWR_ON_2ND		BIT(3)
+> > +#define PWR_ON			BIT(2)
+> > +#define PWR_ISO			BIT(1)
+> > +#define PWR_RST_B		BIT(0)
+> > +
+> > +/* bit definition in SPM_CA7_CPUx_L1_PDN */
+> > +#define L1_PDN_ACK		BIT(8)
+> > +#define L1_PDN			BIT(0)
+> > +
+> > +#define MT6580_MAX_CPUS		4
+> > +
+> > +static DEFINE_SPINLOCK(spm_cpu_lock);
+> > +
+> > +void __iomem *spm_cpu_base;
+> > +
+> > +u32 spm_cpu_pwr_con[MT6580_MAX_CPUS] = {
+> > +	SPM_CA7_CPU0_PWR_CON,
+> > +	SPM_CA7_CPU1_PWR_CON,
+> > +	SPM_CA7_CPU2_PWR_CON,
+> > +	SPM_CA7_CPU3_PWR_CON,
+> > +};
+> > +
+> > +u32 spm_cpu_l1_pdn[MT6580_MAX_CPUS] = {
+> > +	SPM_CA7_CPU0_L1_PDN,
+> > +	SPM_CA7_CPU1_L1_PDN,
+> > +	SPM_CA7_CPU2_L1_PDN,
+> > +	SPM_CA7_CPU3_L1_PDN,
+> > +};
+> > +
+> > +#define SPM_REGWR_EN		BIT(0)
+> > +#define SPM_PROJECT_CODE	0x0B16
+> > +
+> > +int spm_cpu_mtcmos_on(int cpu)
+> > +{
+> > +	unsigned long flags;
+> > +	static u32 spmcpu_pwr_con, spmcpu_l1_pdn;
+> > +	unsigned int temp;
+> > +	int timeout = 10;
+> > +	int ret = -ENOSYS;
+> > +
+> > +	temp = (SPM_PROJECT_CODE << 16) | SPM_REGWR_EN;
+> > +	writel_relaxed(temp, spm_cpu_base + SPM_POWERON_CONFIG_SET);
+> > +
+> > +	spmcpu_pwr_con = spm_cpu_pwr_con[cpu];
+> > +	spmcpu_l1_pdn = spm_cpu_l1_pdn[cpu];
+> > +
+> > +	spin_lock_irqsave(&spm_cpu_lock, flags);
+> > +
+> > +	/* Set PWR_ON */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= PWR_ON;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Wait for charging core power */
+> > +	udelay(1);
+> > +
+> > +	/* Set PWR_ON_2ND */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= PWR_ON_2ND;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Wait for the power-ack */
+> > +	while (((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS) &
+> > +		(1U << (13 - cpu))) != (1U << (13 - cpu))) ||
+> > +		((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS_2ND) &
+> > +		(1U << (13 - cpu))) != (1U << (13 - cpu)))) {
+> > +		if (--timeout == 0)
+> > +			goto fail;
+> > +		udelay(1);
+> > +	}
+> > +
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~PWR_ISO;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* L1 power on */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_l1_pdn);
+> > +	temp &= ~L1_PDN;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_l1_pdn);
+> > +	timeout = 10;
+> > +	while ((readl_relaxed(spm_cpu_base + spmcpu_l1_pdn) &
+> > +		L1_PDN_ACK) != 0) {
+> > +		if (--timeout == 0)
+> > +			goto fail;
+> > +		udelay(1);
+> > +	}
+> > +
+> > +	/* Wait for memory power ready */
+> > +	udelay(1);
+> > +
+> > +	/* Set SRAM_ISOINT_B */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= SRAM_ISOINT_B;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Clear SRAM_CKISO */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~SRAM_CKISO;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Clear PWR_CLK_DIS */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~PWR_CLK_DIS;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Set PWR_RST_B to finish power on and reset sequences */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= PWR_RST_B;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	ret = 0;
+> > +fail:
+> > +	spin_unlock_irqrestore(&spm_cpu_lock, flags);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +int spm_cpu_mtcmos_off(int cpu, bool wfi)
+> > +{
+> > +	unsigned long flags;
+> > +	static u32 spmcpu_pwr_con, spmcpu_l1_pdn;
+> > +	unsigned int temp;
+> > +	int timeout = 10;
+> > +	int ret = -ENOSYS;
+> > +
+> > +	temp = (SPM_PROJECT_CODE << 16) | SPM_REGWR_EN;
+> > +	writel_relaxed(temp, spm_cpu_base + SPM_POWERON_CONFIG_SET);
+> > +
+> > +	spmcpu_pwr_con = spm_cpu_pwr_con[cpu];
+> > +	spmcpu_l1_pdn = spm_cpu_l1_pdn[cpu];
+> > +
+> > +	if (wfi) {
+> > +		while ((readl_relaxed(spm_cpu_base + SPM_SLEEP_TIMER_STA) &
+> > +			(1U << (16 + cpu))) == 0) {
+> > +			if (--timeout == 0)
+> > +				return ret;
+> > +			udelay(1);
+> > +		}
+> > +	}
+> > +
+> > +	spin_lock_irqsave(&spm_cpu_lock, flags);
+> > +
+> > +	/* Set PWR_ISO */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= PWR_ISO;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Set SRAM_CKISO */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= SRAM_CKISO;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Clear SRAM_ISOINT_B */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~SRAM_ISOINT_B;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* L1 power off */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_l1_pdn);
+> > +	temp |= L1_PDN;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_l1_pdn);
+> > +	timeout = 10;
+> > +	while ((readl_relaxed(spm_cpu_base + spmcpu_l1_pdn) &
+> > +		L1_PDN_ACK) != L1_PDN_ACK) {
+> > +		if (--timeout == 0)
+> > +			goto fail;
+> > +		udelay(1);
+> > +	}
+> > +
+> > +	/* Clear PWR_RST_B */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~PWR_RST_B;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Set PWR_CLK_DIS */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp |= PWR_CLK_DIS;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Clear PWR_ON */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~PWR_ON;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	/* Clear PWR_ON_2ND */
+> > +	temp = readl_relaxed(spm_cpu_base + spmcpu_pwr_con);
+> > +	temp &= ~PWR_ON_2ND;
+> > +	writel_relaxed(temp, spm_cpu_base + spmcpu_pwr_con);
+> > +
+> > +	timeout = 10;
+> > +	while (((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS) &
+> > +		(1U << (13 - cpu))) != 0) ||
+> > +	       ((readl_relaxed(spm_cpu_base + SPM_PWR_STATUS_2ND) &
+> > +		(1U << (13 - cpu))) != 0)) {
+> > +		if (--timeout == 0)
+> > +			goto fail;
+> > +		udelay(1);
+> > +	}
+> > +
+> > +	ret = 0;
+> > +fail:
+> > +	spin_unlock_irqrestore(&spm_cpu_lock, flags);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +int spm_cpu_mtcmos_init(void)
+> > +{
+> > +	struct device_node *node;
+> > +
+> > +	node = of_find_compatible_node(NULL, NULL, "mediatek,mt6580-scpsys");
 > 
-> I think we agreed previously that these should all be
-> clock-controller@.
+> This looks pretty much as if it should go in 
+> drivers/soc/mediatek/mtk-scpsys.c
 > 
-You're right. I'll change it in next patch.
+> AFAIR Sascha already mentioned that in v1.
+> Why do you want/need to implement this mach-mediatek?
+> 
+> Thanks,
+> Matthias
 
-
-Best regards,
-
-James
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
