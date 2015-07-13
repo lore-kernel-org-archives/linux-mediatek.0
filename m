@@ -1,55 +1,260 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 3/3] ARM64: dts: mt8173: Add thermal/auxadc device nodes
-Date: Mon, 13 Jul 2015 12:34:54 +0200
-Message-ID: <1436783694-30717-4-git-send-email-s.hauer@pengutronix.de>
-References: <1436783694-30717-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436783694-30717-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-pm@vger.kernel.org
-Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 4/5] clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+Date: Mon, 13 Jul 2015 22:46:22 +0800
+Message-ID: <CAGS+omBryA6f6gYje5RvF2XcJiebogYCHpyWNeN9K4B-MiHf1Q@mail.gmail.com>
+References: <1436522405-13923-1-git-send-email-jamesjj.liao@mediatek.com> <1436522405-13923-5-git-send-email-jamesjj.liao@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1436522405-13923-5-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Hi James,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 27237a1..8cd114a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -151,6 +151,11 @@
- 				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 		};
- 
-+		auxadc: auxadc@11001000 {
-+			compatible = "mediatek,mt8173-auxadc";
-+			reg = <0 0x11001000 0 0x1000>;
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt8173-uart",
- 				     "mediatek,mt6577-uart";
-@@ -186,6 +191,19 @@
- 			clocks = <&uart_clk>;
- 			status = "disabled";
- 		};
-+
-+		thermal: thermal@1100b000 {
-+			#thermal-sensor-cells = <1>;
-+			compatible = "mediatek,mt8173-thermal";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
-+			clock-names = "therm", "auxadc";
-+			resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
-+			reset-names = "therm";
-+			auxadc = <&auxadc>;
-+			apmixedsys = <&apmixedsys>;
-+		};
- 	};
- };
- 
--- 
-2.1.4
+
+On Fri, Jul 10, 2015 at 6:00 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> Add REF2USB_TX clock support into MT8173 APMIXEDSYS. This clock
+> is needed by USB 3.0.
+>
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/clk/mediatek/clk-mt8173.c      | 143 +++++++++++++++++++++++++++++++++
+>  drivers/clk/mediatek/clk-pll.c         |   7 +-
+>  include/dt-bindings/clock/mt8173-clk.h |   3 +-
+>  3 files changed, 146 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> index 1d21e26..11f82cb 100644
+> --- a/drivers/clk/mediatek/clk-mt8173.c
+> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> @@ -12,6 +12,7 @@
+>   * GNU General Public License for more details.
+>   */
+>
+> +#include <linux/delay.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+>  #include <linux/slab.h>
+> @@ -968,6 +969,141 @@ static void __init mtk_pericfg_init(struct device_node *node)
+>  }
+>  CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt8173-pericfg", mtk_pericfg_init);
+>
+> +#define REF2USB_TX_EN          BIT(0)
+> +#define REF2USB_TX_LPF_EN      BIT(1)
+> +#define REF2USB_TX_OUT_EN      BIT(2)
+> +#define REF2USB_EN_MASK                (REF2USB_TX_EN | REF2USB_TX_LPF_EN | \
+> +                                REF2USB_TX_OUT_EN)
+> +
+> +struct mtk_ref2usb_tx {
+> +       struct clk_hw   hw;
+> +       void __iomem    *base_addr;
+> +};
+> +
+> +static inline struct mtk_ref2usb_tx *to_mtk_ref2usb_tx(struct clk_hw *hw)
+> +{
+> +       return container_of(hw, struct mtk_ref2usb_tx, hw);
+> +}
+> +
+> +static int mtk_ref2usb_tx_is_prepared(struct clk_hw *hw)
+> +{
+> +       struct mtk_ref2usb_tx *tx = to_mtk_ref2usb_tx(hw);
+> +
+> +       return (readl(tx->base_addr) & REF2USB_EN_MASK) == REF2USB_EN_MASK;
+> +}
+> +
+> +static int mtk_ref2usb_tx_prepare(struct clk_hw *hw)
+> +{
+> +       struct mtk_ref2usb_tx *tx = to_mtk_ref2usb_tx(hw);
+> +       u32 val;
+> +
+> +       val = readl(tx->base_addr);
+> +
+> +       val |= REF2USB_TX_EN;
+> +       writel(val, tx->base_addr);
+> +       udelay(100);
+> +
+> +       val |= REF2USB_TX_LPF_EN;
+> +       writel(val, tx->base_addr);
+> +
+> +       val |= REF2USB_TX_OUT_EN;
+> +       writel(val, tx->base_addr);
+> +
+> +       return 0;
+> +}
+> +
+> +static void mtk_ref2usb_tx_unprepare(struct clk_hw *hw)
+> +{
+> +       struct mtk_ref2usb_tx *tx = to_mtk_ref2usb_tx(hw);
+> +       u32 val;
+> +
+> +       val = readl(tx->base_addr);
+> +       val &= ~REF2USB_EN_MASK;
+> +       writel(val, tx->base_addr);
+> +}
+> +
+> +static const struct clk_ops mtk_ref2usb_tx_ops = {
+> +       .is_prepared    = mtk_ref2usb_tx_is_prepared,
+> +       .prepare        = mtk_ref2usb_tx_prepare,
+> +       .unprepare      = mtk_ref2usb_tx_unprepare,
+> +};
+
+Burying the implementation of this special "mtk_ref2usb" clock in
+clk-mt8173,c seems a bit awkward.
+Can you please move it to its own file, like mediatek/clk-usb.c?
+
+
+> +
+> +static struct clk *mtk_clk_register_ref2usb_tx(const char *name,
+> +                       const char *parent_name, void __iomem *reg)
+> +{
+> +       struct mtk_ref2usb_tx *tx;
+> +       struct clk_init_data init = {};
+> +       struct clk *clk;
+> +
+> +       tx = kzalloc(sizeof(*tx), GFP_KERNEL);
+> +       if (!tx)
+> +               return ERR_PTR(-ENOMEM);
+> +
+> +       tx->base_addr = reg;
+> +       tx->hw.init = &init;
+> +
+> +       init.name = name;
+> +       init.ops = &mtk_ref2usb_tx_ops;
+> +       init.parent_names = &parent_name;
+> +       init.num_parents = 1;
+> +
+> +       clk = clk_register(NULL, &tx->hw);
+> +
+> +       if (IS_ERR(clk)) {
+> +               pr_err("Failed to register clk %s: %ld\n", name, PTR_ERR(clk));
+> +               kfree(tx);
+> +       }
+> +
+> +       return clk;
+> +}
+> +
+> +struct mtk_apmixed_ex {
+> +       int id;
+> +       const char *name;
+> +       const char *parent;
+> +       u32 reg_ofs;
+> +};
+> +
+> +#define APMIXED_EX(_id, _name, _parent, _reg_ofs) {                    \
+> +               .id = _id,                                              \
+> +               .name = _name,                                          \
+> +               .parent = _parent,                                      \
+> +               .reg_ofs = _reg_ofs,                                    \
+> +       }
+> +
+> +static const struct mtk_apmixed_ex apmixed_ex[] = {
+
+__initconst
+
+> +       APMIXED_EX(CLK_APMIXED_REF2USB_TX, "ref2usb_tx", "clk26m", 0x8),
+> +};
+> +
+> +static void __init mtk_clk_register_apmixedsys_special(struct device_node *node,
+> +                       struct clk_onecell_data *clk_data)
+> +{
+> +       void __iomem *base;
+> +       struct clk *clk;
+> +       int i;
+> +
+> +       base = of_iomap(node, 0);
+> +       if (!base) {
+> +               pr_err("%s(): ioremap failed\n", __func__);
+> +               return;
+> +       }
+> +
+> +       for (i = 0; i < ARRAY_SIZE(apmixed_ex); i++) {
+> +               const struct mtk_apmixed_ex *ape = &apmixed_ex[i];
+> +
+> +               clk = mtk_clk_register_ref2usb_tx(ape->name, ape->parent,
+> +                                                       base + ape->reg_ofs);
+> +
+> +               if (IS_ERR(clk)) {
+> +                       pr_err("Failed to register clk %s: %ld\n", ape->name,
+> +                                       PTR_ERR(clk));
+> +                       continue;
+> +               }
+> +
+> +               clk_data->clks[CLK_APMIXED_REF2USB_TX] = clk;
+
+This works assuming ARRAY_SIZE(apmixed_ex) == 1.
+Either remove the loop since it is unnecessary, or do:
+  clk_data->clks[ape->id] = clk;
+
+> +       }
+> +}
+> +
+>  #define MT8173_PLL_FMAX                (3000UL * MHZ)
+>
+>  #define CON0_MT8173_RST_BAR    BIT(24)
+> @@ -1010,12 +1146,19 @@ static const struct mtk_pll_data plls[] = {
+>  static void __init mtk_apmixedsys_init(struct device_node *node)
+>  {
+>         struct clk_onecell_data *clk_data;
+> +       int r;
+>
+>         mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+>         if (!clk_data)
+>                 return;
+>
+>         mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+> +       mtk_clk_register_apmixedsys_special(node, clk_data);
+> +
+> +       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +       if (r)
+> +               pr_err("%s(): could not register clock provider: %d\n",
+> +                       __func__, r);
+>
+>         mtk_clk_enable_critical();
+>  }
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index 44409e9..813f0c7 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -302,7 +302,7 @@ void __init mtk_clk_register_plls(struct device_node *node,
+>                 const struct mtk_pll_data *plls, int num_plls, struct clk_onecell_data *clk_data)
+>  {
+>         void __iomem *base;
+> -       int r, i;
+> +       int i;
+>         struct clk *clk;
+>
+>         base = of_iomap(node, 0);
+> @@ -324,9 +324,4 @@ void __init mtk_clk_register_plls(struct device_node *node,
+>
+>                 clk_data->clks[pll->id] = clk;
+>         }
+> -
+> -       r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> -       if (r)
+> -               pr_err("%s(): could not register clock provider: %d\n",
+> -                       __func__, r);
+>  }
+> diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
+> index 6ce88bf..7b7c555 100644
+> --- a/include/dt-bindings/clock/mt8173-clk.h
+> +++ b/include/dt-bindings/clock/mt8173-clk.h
+> @@ -172,7 +172,8 @@
+>  #define CLK_APMIXED_APLL2              12
+>  #define CLK_APMIXED_LVDSPLL            13
+>  #define CLK_APMIXED_MSDCPLL2           14
+> -#define CLK_APMIXED_NR_CLK             15
+> +#define CLK_APMIXED_REF2USB_TX         15
+> +#define CLK_APMIXED_NR_CLK             16
+>
+>  /* INFRA_SYS */
+>
+> --
+> 1.8.1.1.dirty
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
