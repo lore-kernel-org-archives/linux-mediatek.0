@@ -1,40 +1,45 @@
-From: Nathan Lynch <Nathan_Lynch@mentor.com>
-Subject: Re: [PATCH v3 4/5] ARM: dts: mt8135: enable basic SMP bringup for
- mt8135
-Date: Tue, 14 Jul 2015 09:19:00 -0500
-Message-ID: <55A51A54.7000208@mentor.com>
-References: <1436851111-2369-1-git-send-email-yingjoe.chen@mediatek.com> <1436851111-2369-5-git-send-email-yingjoe.chen@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 1/2] ASoC: Drop owner assignment from i2c_driver
+Date: Tue, 14 Jul 2015 17:57:58 +0100
+Message-ID: <20150714165758.GF11162@sirena.org.uk>
+References: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
+ <1436506231-8980-2-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="UI7gKp310iCrxvPC"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436851111-2369-5-git-send-email-yingjoe.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1436506231-8980-2-git-send-email-k.kozlowski@samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, Brian Austin <brian.austin@cirrus.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Support Opensource <support.opensource@diasemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Bard Liao <bardliao@realtek.com>, Oder Chiou <oder_chiou@realtek.com>, Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/14/2015 12:18 AM, Yingjoe Chen wrote:
-> Add arch timer node to enable arch-timer support. MT8135 firmware
-> doesn't correctly setup arch-timer frequency and CNTVOFF, add
-> properties to workaround this.
 
-[...]
+--UI7gKp310iCrxvPC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->  
-> +	timer {
-> +		compatible = "arm,armv7-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
-> +					  IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
-> +					  IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
-> +					  IRQ_TYPE_LEVEL_LOW)>,
-> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
-> +					  IRQ_TYPE_LEVEL_LOW)>;
-> +		clock-frequency = <13000000>;
-> +		arm,cpu-registers-not-fw-configured;
+On Fri, Jul 10, 2015 at 02:30:30PM +0900, Krzysztof Kozlowski wrote:
+> i2c_driver does not need to set an owner because i2c_register_driver()
+> will set it.
 
-It's disappointing to see this property in new DTS submissions.  It
-prevents taking advantage of the VDSO for gettimeofday/clock_gettime.
+This doesn't apply against current code, please check and resend.
+
+--UI7gKp310iCrxvPC
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVpT+WAAoJECTWi3JdVIfQW5YH+QFSbzDjPD4wqWS9XJ9x8ckt
+BEo5AsegihRvEBuMQwXS5/GGnp+RdrmWAmbuMYDQNWQP8g8h0wTgvs8J70Gr3xys
+oNeAaqIknRUjadgfvSizQw0EwWlF1JV76yHqCFV6J0LO/0G0Ttx/FSV1g+yS2JSa
+f4m86a7vHkyD6NOY7QxsnNn4pGGk5Ftk47X3sFV9LdjeH3WTt429ZIA3nK9Mi5/L
+hbyc49RuwVzRhLSVn/vjqSUfE6QWyohQMdxeVQ4DY1wcdRua/2/YvDNHELUFCPBH
+FEvi5P+JL3OTjO12//8pswMoOF4S9IOyAw4t2YfRJ2XSQRnbGStSqYEmBmfy8DA=
+=Ctux
+-----END PGP SIGNATURE-----
+
+--UI7gKp310iCrxvPC--
