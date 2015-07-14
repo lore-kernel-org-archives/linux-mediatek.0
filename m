@@ -1,74 +1,94 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
- SoCs
-Date: Tue, 14 Jul 2015 14:19:51 +0800
-Message-ID: <1436854791.11289.11.camel@mhfsdcap03>
-References: <1436348468-4126-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1436348468-4126-2-git-send-email-chunfeng.yun@mediatek.com>
-	 <20150710051018.GU18700@pengutronix.de>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH v2 1/2] Document: DT: Add bindings for mediatek MT6795 SoC Platform
+Date: Tue, 14 Jul 2015 14:58:12 +0800
+Message-ID: <1436857093-18637-2-git-send-email-mars.cheng@mediatek.com>
+References: <1436857093-18637-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150710051018.GU18700@pengutronix.de>
+In-Reply-To: <1436857093-18637-1-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, Mars Cheng <mars.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-hi,
-On Fri, 2015-07-10 at 07:10 +0200, Sascha Hauer wrote:
-> On Wed, Jul 08, 2015 at 05:41:03PM +0800, Chunfeng Yun wrote:
-> > add a DT binding documentation of usb3.0 phy for MT65xx
-> > SoCs from Mediatek.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/usb/mt65xx-u3phy.txt       | 34 ++++++++++++++++++++++
-> >  1 file changed, 34 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > new file mode 100644
-> > index 0000000..056b2aa
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > @@ -0,0 +1,34 @@
-> > +MT65xx U3PHY
-> > +
-> > +The device node for Mediatek SOC usb3.0 phy
-> > +
-> > +Required properties:
-> > + - compatible : Should be "mediatek,mt8173-u3phy"
-> > + - reg        : Offset and length of registers, the first is for mac domain,
-> > +	another for phy domain
-> > + - power-domains: to enable usb's mtcmos
-> > + - usb-wakeup-ctrl : to access usb wakeup control register
-> > + - wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup mode; others
-> > +	means don't enable wakeup source of usb
-> > + - u2port-num : number of usb2.0 ports to support which should be 1 or 2
-> > + - clocks     : must support all clocks that phy need
-> > + - clock-names: should be "wakeup_deb_p0", "wakeup_deb_p1" for wakeup
-> > +	debounce control clocks, and "u3phya_ref" for u3phya reference clock.
-> > +
-> > +Example:
-> > +
-> > +u3phy: usb-phy@11271000 {
-> > +	compatible = "mediatek,mt8173-u3phy";
-> > +	reg = <0 0x11271000 0 0x3000>,
-> > +	      <0 0x11280000 0 0x20000>;
-> 
-> 0x11271000 is the register space the xhci controller takes. You should
-> not expose the same register space to two different drivers.
-> 
+This adds DT binding documentation for Mediatek MT6795.
 
-usb: usb30@11270000 {
-   compatible = "mediatek,mt8173-xhci";
-   reg = <0 0x11270000 0 0x1000>;
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.txt               | 9 +++++++--
+ .../devicetree/bindings/arm/mediatek/mediatek,sysirq.txt         | 3 ++-
+ Documentation/devicetree/bindings/serial/mtk-uart.txt            | 5 +++--
+ 3 files changed, 12 insertions(+), 5 deletions(-)
 
-the size of xhci register space is 0x1000, and the range is
-[0x11270000, 0x11271000 - 1], so the address of 0x11271000 is not
-included.
-
-> Sascha
-> 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index 2daa424..618a919 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -1,6 +1,7 @@
+-MediaTek mt65xx & mt81xx Platforms Device Tree Bindings
++MediaTek mt65xx, mt67xx & mt81xx Platforms Device Tree Bindings
+ 
+-Boards with a MediaTek mt65xx/mt81xx SoC shall have the following property:
++Boards with a MediaTek mt65xx/mt67xx/mt81xx SoC shall have the
++following property:
+ 
+ Required root node property:
+ 
+@@ -8,6 +9,7 @@ compatible: Must contain one of
+    "mediatek,mt6580"
+    "mediatek,mt6589"
+    "mediatek,mt6592"
++   "mediatek,mt6795"
+    "mediatek,mt8127"
+    "mediatek,mt8135"
+    "mediatek,mt8173"
+@@ -24,6 +26,9 @@ Supported boards:
+ - Evaluation board for MT6592:
+     Required root node properties:
+       - compatible = "mediatek,mt6592-evb", "mediatek,mt6592";
++- Evaluation board for MT6795(Helio X10):
++    Required root node properties:
++      - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
+ - MTK mt8127 tablet moose EVB:
+     Required root node properties:
+       - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
+index 3c9c3a7..260cc1a 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
+@@ -1,4 +1,4 @@
+-Mediatek 65xx/81xx sysirq
++Mediatek 65xx/67xx/81xx sysirq
+ 
+ Mediatek SOCs sysirq support controllable irq inverter for each GIC SPI
+ interrupt.
+@@ -8,6 +8,7 @@ Required properties:
+ 	"mediatek,mt8173-sysirq"
+ 	"mediatek,mt8135-sysirq"
+ 	"mediatek,mt8127-sysirq"
++	"mediatek,mt6795-sysirq"
+ 	"mediatek,mt6592-sysirq"
+ 	"mediatek,mt6589-sysirq"
+ 	"mediatek,mt6582-sysirq"
+diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+index a875997..c0a70f2 100644
+--- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
++++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+@@ -5,11 +5,12 @@ Required properties:
+   * "mediatek,mt8135-uart" for MT8135 compatible UARTS
+   * "mediatek,mt8127-uart" for MT8127 compatible UARTS
+   * "mediatek,mt8173-uart" for MT8173 compatible UARTS
++  * "mediatek,mt6795-uart" for MT6795 compatible UARTS
+   * "mediatek,mt6589-uart" for MT6589 compatible UARTS
+   * "mediatek,mt6582-uart" for MT6582 compatible UARTS
+   * "mediatek,mt6580-uart" for MT6580 compatible UARTS
+-  * "mediatek,mt6577-uart" for all compatible UARTS (MT8173, MT6589, MT6582, 
+-	MT6580, MT6577)
++  * "mediatek,mt6577-uart" for all compatible UARTS (MT8173, MT6795, MT6589,
++	MT6582, MT6580, MT6577)
+ 
+ - reg: The base address of the UART register bank.
+ 
+-- 
+1.8.1.1.dirty
