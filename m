@@ -1,102 +1,307 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
- SoCs
-Date: Tue, 14 Jul 2015 09:45:55 +0200
-Message-ID: <20150714074555.GR18700@pengutronix.de>
-References: <1436348468-4126-1-git-send-email-chunfeng.yun@mediatek.com>
- <1436348468-4126-2-git-send-email-chunfeng.yun@mediatek.com>
- <20150710051018.GU18700@pengutronix.de>
- <1436854791.11289.11.camel@mhfsdcap03>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3] clk: mediatek: Export CPU mux clocks for CPU frequency control
+Date: Tue, 14 Jul 2015 16:00:54 +0800
+Message-ID: <CAGS+omBOJhNcLricr6dkpz7Dk=2X5M5QDiZWnhCAHMKZzV6ytA@mail.gmail.com>
+References: <1436176874-5729-1-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1436854791.11289.11.camel@mhfsdcap03>
+In-Reply-To: <1436176874-5729-1-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jul 14, 2015 at 02:19:51PM +0800, chunfeng yun wrote:
-> hi,
-> On Fri, 2015-07-10 at 07:10 +0200, Sascha Hauer wrote:
-> > On Wed, Jul 08, 2015 at 05:41:03PM +0800, Chunfeng Yun wrote:
-> > > add a DT binding documentation of usb3.0 phy for MT65xx
-> > > SoCs from Mediatek.
-> > > 
-> > > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > ---
-> > >  .../devicetree/bindings/usb/mt65xx-u3phy.txt       | 34 ++++++++++++++++++++++
-> > >  1 file changed, 34 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > new file mode 100644
-> > > index 0000000..056b2aa
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > @@ -0,0 +1,34 @@
-> > > +MT65xx U3PHY
-> > > +
-> > > +The device node for Mediatek SOC usb3.0 phy
-> > > +
-> > > +Required properties:
-> > > + - compatible : Should be "mediatek,mt8173-u3phy"
-> > > + - reg        : Offset and length of registers, the first is for mac domain,
-> > > +	another for phy domain
-> > > + - power-domains: to enable usb's mtcmos
-> > > + - usb-wakeup-ctrl : to access usb wakeup control register
-> > > + - wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup mode; others
-> > > +	means don't enable wakeup source of usb
-> > > + - u2port-num : number of usb2.0 ports to support which should be 1 or 2
-> > > + - clocks     : must support all clocks that phy need
-> > > + - clock-names: should be "wakeup_deb_p0", "wakeup_deb_p1" for wakeup
-> > > +	debounce control clocks, and "u3phya_ref" for u3phya reference clock.
-> > > +
-> > > +Example:
-> > > +
-> > > +u3phy: usb-phy@11271000 {
-> > > +	compatible = "mediatek,mt8173-u3phy";
-> > > +	reg = <0 0x11271000 0 0x3000>,
-> > > +	      <0 0x11280000 0 0x20000>;
-> > 
-> > 0x11271000 is the register space the xhci controller takes. You should
-> > not expose the same register space to two different drivers.
-> > 
-> 
-> usb: usb30@11270000 {
->    compatible = "mediatek,mt8173-xhci";
->    reg = <0 0x11270000 0 0x1000>;
-> 
-> the size of xhci register space is 0x1000, and the range is
-> [0x11270000, 0x11271000 - 1], so the address of 0x11271000 is not
-> included.
+Hi Pi-Cheng,
 
-Indeed, you are right. Nevertheless my datasheet lists these resources:
+On Mon, Jul 6, 2015 at 6:01 PM, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+> From: "pi-cheng.chen" <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+>
+> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+> for intermediate clock source switching.
 
-0x11270000 - 0x1127ffff: SSUSB CSR
-0x11280000 - 0x1128ffff: SSUSB SIF
-0x11290000 - 0x1129ffff: SSUSB
+Hopefully we will some day have regmap support for mux basic clocks.
+Until then, this patch looks good, just some minor comments inline...
 
-It seems that with the current binding you are not modelling the
-hardware but something that reflects your current implementation. This
-is not a good sign. Normally I would expect device nodes that match the
-above resources, but your USB phy spans most of the SSUSB CSR register
-space and both the SSUSB SIF and SSUSB regster space. I think it would
-be good if you could give an overview over the USB hardware and explain
-why you have to violate the above resources.
+>
+> Changes in v3:
+> - Rebase to 4.2-rc1
+> - Fix some issues of v2
+>
+> Changes in v2:
+> - Remove use of .determine_rate callback
+>
+> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+>  drivers/clk/mediatek/Makefile          |   2 +-
+>  drivers/clk/mediatek/clk-cpumux.c      | 119 +++++++++++++++++++++++++++++++++
+>  drivers/clk/mediatek/clk-cpumux.h      |  30 +++++++++
+>  drivers/clk/mediatek/clk-mt8173.c      |  23 +++++++
+>  include/dt-bindings/clock/mt8173-clk.h |   4 +-
+>  5 files changed, 176 insertions(+), 2 deletions(-)
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+>
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index 8e4b2a4..299917a 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -1,4 +1,4 @@
+> -obj-y += clk-mtk.o clk-pll.o clk-gate.o
+> +obj-y += clk-mtk.o clk-pll.o clk-gate.o clk-cpumux.o
+>  obj-$(CONFIG_RESET_CONTROLLER) += reset.o
+>  obj-y += clk-mt8135.o
+>  obj-y += clk-mt8173.o
+> diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+> new file mode 100644
+> index 0000000..593df45
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-cpumux.c
+> @@ -0,0 +1,119 @@
+> +/*
+> + * Copyright (c) 2015 Linaro Ltd.
+> + * Author: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/slab.h>
+> +
+> +#include "clk-mtk.h"
+> +#include "clk-cpumux.h"
+> +
+> +static inline struct mtk_clk_cpumux *to_clk_mux(struct clk_hw *_hw)
+> +{
+> +       return container_of(_hw, struct mtk_clk_cpumux, hw);
+> +}
+> +
+> +static u8 clk_cpumux_get_parent(struct clk_hw *hw)
+> +{
+> +       struct mtk_clk_cpumux *mux = to_clk_mux(hw);
+> +       int num_parents = __clk_get_num_parents(hw->clk);
+> +       unsigned int val;
+> +
+> +       regmap_read(mux->regmap, mux->reg, &val);
+> +
+> +       val >>= mux->shift;
+> +       val &= mux->mask;
+> +
+> +       if (val >= num_parents)
+> +               return -EINVAL;
+> +
+> +       return val;
+> +}
+> +
+> +static int clk_cpumux_set_parent(struct clk_hw *hw, u8 index)
+> +{
+> +       struct mtk_clk_cpumux *mux = to_clk_mux(hw);
+> +       u32 mask, val;
+> +
+> +       val = index << mux->shift;
+> +       mask = mux->mask << mux->shift;
+> +
+> +       return regmap_update_bits(mux->regmap, mux->reg, mask, val);
+> +}
+> +
+> +static const struct clk_ops clk_cpumux_ops = {
+> +       .get_parent = clk_cpumux_get_parent,
+> +       .set_parent = clk_cpumux_set_parent,
+> +};
+> +
+> +static struct clk *mtk_clk_register_cpumux(const struct mtk_composite *mux,
+> +                                          struct regmap *regmap)
 
-Also something to consider: Is your binding suitable for adding OTG
-support later? You don't have to add OTG support to the Kernel now,
-but your binding should be suitable to add it later.
+__init
 
-Sascha
+> +{
+> +       struct mtk_clk_cpumux *cpumux;
+> +       struct clk *clk;
+> +       struct clk_init_data init;
+> +
+> +       cpumux = kzalloc(sizeof(*cpumux), GFP_KERNEL);
+> +       if (!cpumux)
+> +               return ERR_PTR(-ENOMEM);
+> +
+> +       init.name = mux->name;
+> +       init.ops = &clk_cpumux_ops;
+> +       init.parent_names = mux->parent_names;
+> +       init.num_parents = mux->num_parents;
+> +       init.flags = mux->flags;
+> +
+> +       cpumux->reg = mux->mux_reg;
+> +       cpumux->shift = mux->mux_shift;
+> +       cpumux->mask = BIT(mux->mux_width) - 1;
+> +       cpumux->regmap = regmap;
+> +       cpumux->hw.init = &init;
+> +
+> +       clk = clk_register(NULL, &cpumux->hw);
+> +       if (IS_ERR(clk))
+> +               kfree(cpumux);
+> +
+> +       return clk;
+> +}
+> +
+> +int mtk_clk_register_cpumuxes(struct device_node *node,
+> +                             const struct mtk_composite *clks, int num,
+> +                             struct clk_onecell_data *clk_data)
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+__init
+
+> +{
+> +       int i;
+> +       struct clk *clk;
+> +       struct regmap *regmap;
+> +
+> +       regmap = syscon_node_to_regmap(node);
+> +       if (IS_ERR(regmap)) {
+> +               pr_err("Cannot find regmap for %s: %d\n", node->full_name,
+> +                      PTR_ERR(regmap));
+> +               return PTR_ERR(regmap);
+> +       }
+> +
+> +       for (i = 0; i < num; i++) {
+> +               const struct mtk_composite *mux = &clks[i];
+> +
+> +               clk = mtk_clk_register_cpumux(mux, regmap);
+> +               if (IS_ERR(clk)) {
+> +                       pr_err("Failed to register clk %s: %ld\n",
+> +                              mux->name, PTR_ERR(clk));
+> +                       continue;
+> +               }
+> +
+> +               clk_data->clks[mux->id] = clk;
+> +       }
+> +
+> +       return 0;
+> +}
+> diff --git a/drivers/clk/mediatek/clk-cpumux.h b/drivers/clk/mediatek/clk-cpumux.h
+> new file mode 100644
+> index 0000000..dddaad5
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-cpumux.h
+> @@ -0,0 +1,30 @@
+> +/*
+> + * Copyright (c) 2015 Linaro Ltd.
+> + * Author: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#ifndef __DRV_CLK_CPUMUX_H
+> +#define __DRV_CLK_CPUMUX_H
+> +
+> +struct mtk_clk_cpumux {
+> +       struct clk_hw   hw;
+> +       struct regmap   *regmap;
+> +       u32             reg;
+> +       u32             mask;
+> +       u8              shift;
+> +};
+
+The struct definition can move inside clk-cpumux.c
+
+> +
+> +int mtk_clk_register_cpumuxes(struct device_node *node,
+> +                             const struct mtk_composite *clks, int num,
+> +                             struct clk_onecell_data *clk_data);
+> +
+> +#endif /* __DRV_CLK_CPUMUX_H */
+> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> index 4b9e04c..d14183b 100644
+> --- a/drivers/clk/mediatek/clk-mt8173.c
+> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> @@ -19,6 +19,7 @@
+>
+>  #include "clk-mtk.h"
+>  #include "clk-gate.h"
+> +#include "clk-cpumux.h"
+>
+>  #include <dt-bindings/clock/mt8173-clk.h>
+>
+> @@ -517,6 +518,25 @@ static const char * const i2s3_b_ck_parents[] __initconst = {
+>         "apll2_div5"
+>  };
+>
+> +static const char * const ca53_parents[] __initconst = {
+> +       "clk26m",
+> +       "armca7pll",
+> +       "mainpll",
+> +       "univpll"
+> +};
+> +
+> +static const char * const ca57_parents[] __initconst = {
+> +       "clk26m",
+> +       "armca15pll",
+> +       "mainpll",
+> +       "univpll"
+> +};
+> +
+> +static struct mtk_composite cpu_muxes[] __initdata = {
+
+static const struct mtk_composite cpu_muxes[] __initconst = {
+
+
+With the above small fixes, this one is:
+
+Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+
+> +       MUX(CLK_INFRA_CA53SEL, "infra_ca53_sel", ca53_parents, 0x0000, 0, 2),
+> +       MUX(CLK_INFRA_CA57SEL, "infra_ca57_sel", ca57_parents, 0x0000, 2, 2),
+> +};
+> +
+>  static const struct mtk_composite top_muxes[] __initconst = {
+>         /* CLK_CFG_0 */
+>         MUX(CLK_TOP_AXI_SEL, "axi_sel", axi_parents, 0x0040, 0, 3),
+> @@ -738,6 +758,9 @@ static void __init mtk_infrasys_init(struct device_node *node)
+>         mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
+>                                                 clk_data);
+>
+> +       mtk_clk_register_cpumuxes(node, cpu_muxes, ARRAY_SIZE(cpu_muxes),
+> +                                               clk_data);
+> +
+>         r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+>         if (r)
+>                 pr_err("%s(): could not register clock provider: %d\n",
+> diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
+> index 4ad76ed..5501cec 100644
+> --- a/include/dt-bindings/clock/mt8173-clk.h
+> +++ b/include/dt-bindings/clock/mt8173-clk.h
+> @@ -187,7 +187,9 @@
+>  #define CLK_INFRA_CEC                  9
+>  #define CLK_INFRA_PMICSPI              10
+>  #define CLK_INFRA_PMICWRAP             11
+> -#define CLK_INFRA_NR_CLK               12
+> +#define CLK_INFRA_CA53SEL              12
+> +#define CLK_INFRA_CA57SEL              13
+> +#define CLK_INFRA_NR_CLK               14
+>
+>  /* PERI_SYS */
+>
+> --
+> 1.9.1
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
