@@ -1,45 +1,55 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 1/2] ASoC: Drop owner assignment from i2c_driver
-Date: Tue, 14 Jul 2015 17:57:58 +0100
-Message-ID: <20150714165758.GF11162@sirena.org.uk>
-References: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
- <1436506231-8980-2-git-send-email-k.kozlowski@samsung.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH 0/2] Add MT8173 MMPLL change rate support
+Date: Tue, 14 Jul 2015 15:13:19 -0700
+Message-ID: <20150714221319.GQ30412@codeaurora.org>
+References: <1436344666-25645-1-git-send-email-jamesjj.liao@mediatek.com>
+ <559DC3EF.90401@codeaurora.org>
+ <1436507086.3526.117.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="UI7gKp310iCrxvPC"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1436506231-8980-2-git-send-email-k.kozlowski@samsung.com>
+In-Reply-To: <1436507086.3526.117.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, Brian Austin <brian.austin@cirrus.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Support Opensource <support.opensource@diasemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Bard Liao <bardliao@realtek.com>, Oder Chiou <oder_chiou@realtek.com>, Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Heiko Stubner <heiko@sntech.de>, srv_heupstream@mediatek.com, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On 07/10, James Liao wrote:
+> Hi Stephen,
+> 
+> On Wed, 2015-07-08 at 17:44 -0700, Stephen Boyd wrote:
+> > On 07/08/2015 01:37 AM, James Liao wrote:
+> > > MT8173 MMPLL frequency settings are different from common PLLs.
+> > > It needs different post divider settings for some ranges of frequency.
+> > > This patch add support for MT8173 MMPLL frequency setting, includes:
+> > >
+> > > 1. Add div-rate table for PLLs.
+> > > 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
+> > > 3. Write postdiv and pcw settings at the same time.
+> > >
+> > > James Liao (2):
+> > >   clk: mediatek: Fix PLL registers setting flow
+> > >   clk: mediatek: Add MT8173 MMPLL change rate support
+> > >
+> > 
+> > Are these fixing regressions in 4.2-rc1? I don't see any "Fixes:" tag so
+> > it's not clear and makes me want to defer these until v4.3. Furthermore,
+> > the subject starts with "Add" so it sounds like a new feature.
+> 
+> This patchset is based on 4.1-rc1 but it had been tested on 4.2-rc1.
+> I'll send a new patch which based on 4.2-rc1.
+> 
+> This patchset contains some general PLL fixes and MMPLL set rate
+> support. We can say the last one is also a fix because changing some
+> specific rate on MMPLL may fail in current implementation.
+> 
+> 
 
---UI7gKp310iCrxvPC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I'm seriously confused. The files these patches touch were never
+in v4.1, so they can't be based on v4.1-rc1 unless you're saying
+they were on top of clk-next when it was based on 4.1-rc1?
 
-On Fri, Jul 10, 2015 at 02:30:30PM +0900, Krzysztof Kozlowski wrote:
-> i2c_driver does not need to set an owner because i2c_register_driver()
-> will set it.
-
-This doesn't apply against current code, please check and resend.
-
---UI7gKp310iCrxvPC
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVpT+WAAoJECTWi3JdVIfQW5YH+QFSbzDjPD4wqWS9XJ9x8ckt
-BEo5AsegihRvEBuMQwXS5/GGnp+RdrmWAmbuMYDQNWQP8g8h0wTgvs8J70Gr3xys
-oNeAaqIknRUjadgfvSizQw0EwWlF1JV76yHqCFV6J0LO/0G0Ttx/FSV1g+yS2JSa
-f4m86a7vHkyD6NOY7QxsnNn4pGGk5Ftk47X3sFV9LdjeH3WTt429ZIA3nK9Mi5/L
-hbyc49RuwVzRhLSVn/vjqSUfE6QWyohQMdxeVQ4DY1wcdRua/2/YvDNHELUFCPBH
-FEvi5P+JL3OTjO12//8pswMoOF4S9IOyAw4t2YfRJ2XSQRnbGStSqYEmBmfy8DA=
-=Ctux
------END PGP SIGNATURE-----
-
---UI7gKp310iCrxvPC--
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
