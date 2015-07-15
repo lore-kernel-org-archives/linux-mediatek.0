@@ -1,50 +1,67 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 2/2] ASoC: Drop owner assignment from platform_driver
-Date: Wed, 15 Jul 2015 10:45:33 +0100
-Message-ID: <20150715094533.GL11162@sirena.org.uk>
-References: <1436934105-12700-1-git-send-email-k.kozlowski@samsung.com>
- <1436934105-12700-2-git-send-email-k.kozlowski@samsung.com>
- <55A60A54.7040004@samsung.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH 0/2] Add MT8173 MMPLL change rate support
+Date: Wed, 15 Jul 2015 17:51:03 +0800
+Message-ID: <1436953863.9416.23.camel@mtksdaap41>
+References: <1436344666-25645-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <559DC3EF.90401@codeaurora.org> <1436507086.3526.117.camel@mtksdaap41>
+	 <20150714221319.GQ30412@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="b0f+yOIoWb+ErSSH"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <55A60A54.7040004@samsung.com>
+In-Reply-To: <20150714221319.GQ30412@codeaurora.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Cc: Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, Brian Austin <brian.austin@cirrus.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Support Opensource <support.opensource@diasemi.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Bard Liao <bardliao@realtek.com>, Oder Chiou <oder_chiou@realtek.com>, Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Koro Chen <koro.chen@mediatek.com>
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: devicetree@vger.kernel.org, Heiko Stubner <heiko@sntech.de>, srv_heupstream@mediatek.com, Mike Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Stephen,
 
---b0f+yOIoWb+ErSSH
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Tue, 2015-07-14 at 15:13 -0700, Stephen Boyd wrote:
+> On 07/10, James Liao wrote:
+> > On Wed, 2015-07-08 at 17:44 -0700, Stephen Boyd wrote:
+> > > On 07/08/2015 01:37 AM, James Liao wrote:
+> > > > MT8173 MMPLL frequency settings are different from common PLLs.
+> > > > It needs different post divider settings for some ranges of frequency.
+> > > > This patch add support for MT8173 MMPLL frequency setting, includes:
+> > > >
+> > > > 1. Add div-rate table for PLLs.
+> > > > 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
+> > > > 3. Write postdiv and pcw settings at the same time.
+> > > >
+> > > > James Liao (2):
+> > > >   clk: mediatek: Fix PLL registers setting flow
+> > > >   clk: mediatek: Add MT8173 MMPLL change rate support
+> > > >
+> > > 
+> > > Are these fixing regressions in 4.2-rc1? I don't see any "Fixes:" tag so
+> > > it's not clear and makes me want to defer these until v4.3. Furthermore,
+> > > the subject starts with "Add" so it sounds like a new feature.
+> > 
+> > This patchset is based on 4.1-rc1 but it had been tested on 4.2-rc1.
+> > I'll send a new patch which based on 4.2-rc1.
+> > 
+> > This patchset contains some general PLL fixes and MMPLL set rate
+> > support. We can say the last one is also a fix because changing some
+> > specific rate on MMPLL may fail in current implementation.
+> > 
+> > 
+> 
+> I'm seriously confused. The files these patches touch were never
+> in v4.1, so they can't be based on v4.1-rc1 unless you're saying
+> they were on top of clk-next when it was based on 4.1-rc1?
+> 
 
-On Wed, Jul 15, 2015 at 04:23:00PM +0900, Krzysztof Kozlowski wrote:
+This is an old patch which based on 4.1-rc1 and basic clocks support
+[1].
 
-> > platform_driver does not need to set an owner because
-> > platform_driver_register() will set it.
+Please refer to the newer patch [2] and ignore this one.
 
-> D'oh! I forgot to include ack from Koro Chen given here:
-> https://lkml.org/lkml/2015/7/12/218
 
-That and the fact that it's already applied.
+[1] https://lkml.org/lkml/2015/4/23/92
+[2] https://lkml.org/lkml/2015/7/10/198
 
---b0f+yOIoWb+ErSSH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Best regards,
 
-iQEcBAEBCAAGBQJVpiu8AAoJECTWi3JdVIfQfoUH/3XH5eenWa68rvAa64fV1tJ9
-1TxAkso+cHESDqSiLquDHuN0awKawPb/Uo+/VJrw1CSgEDNNWIMG1qBugkZwCyCu
-2Zmbn3iQJqsUpppjBNlPPzNVYhF2TF7qIxOf1q5uTizFobgdelgaSMEomjzJut67
-pkUBIlz4drrodnyAheTILbsPbpS5zN5nrCCqxtKQn1BX67MDssq328zAn0DYz0m+
-RC5WuOzHWpaEiyjmZOjCBuPNRzNUuQo0zZoUmN7bfeA0RTGQXd05jmLidtfFJpuW
-sYcWTTX3kow0XprjhrMtp+l88SutFXtiMh4ETf6fmknZMWN7lAR+Flfmfu5syNI=
-=ezZK
------END PGP SIGNATURE-----
-
---b0f+yOIoWb+ErSSH--
+James
