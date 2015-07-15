@@ -1,55 +1,31 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH 0/2] Add MT8173 MMPLL change rate support
-Date: Tue, 14 Jul 2015 15:13:19 -0700
-Message-ID: <20150714221319.GQ30412@codeaurora.org>
-References: <1436344666-25645-1-git-send-email-jamesjj.liao@mediatek.com>
- <559DC3EF.90401@codeaurora.org>
- <1436507086.3526.117.camel@mtksdaap41>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: Re: [PATCH 1/2] ASoC: Drop owner assignment from i2c_driver
+Date: Wed, 15 Jul 2015 10:15:41 +0900
+Message-ID: <55A5B43D.9020601@samsung.com>
+References: <1436506231-8980-1-git-send-email-k.kozlowski@samsung.com>
+ <1436506231-8980-2-git-send-email-k.kozlowski@samsung.com>
+ <20150714165758.GF11162@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1436507086.3526.117.camel@mtksdaap41>
+In-reply-to: <20150714165758.GF11162@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Heiko Stubner <heiko@sntech.de>, srv_heupstream@mediatek.com, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.de>, Brian Austin <brian.austin@cirrus.com>, Paul Handrigan <Paul.Handrigan@cirrus.com>, Support Opensource <support.opensource@diasemi.com>, M R Swami Reddy <mr.swami.reddy@ti.com>, Vishwas A Deshpande <vishwas.a.deshpande@ti.com>, Bard Liao <bardliao@realtek.com>, Oder Chiou <oder_chiou@realtek.com>, Peter Rosin <peda@axentia.se>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, patches@opensource.wolfsonmicro.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/10, James Liao wrote:
-> Hi Stephen,
+On 15.07.2015 01:57, Mark Brown wrote:
+> On Fri, Jul 10, 2015 at 02:30:30PM +0900, Krzysztof Kozlowski wrote:
+>> i2c_driver does not need to set an owner because i2c_register_driver()
+>> will set it.
 > 
-> On Wed, 2015-07-08 at 17:44 -0700, Stephen Boyd wrote:
-> > On 07/08/2015 01:37 AM, James Liao wrote:
-> > > MT8173 MMPLL frequency settings are different from common PLLs.
-> > > It needs different post divider settings for some ranges of frequency.
-> > > This patch add support for MT8173 MMPLL frequency setting, includes:
-> > >
-> > > 1. Add div-rate table for PLLs.
-> > > 2. Increase the max ost divider setting from 3 (/8) to 4 (/16).
-> > > 3. Write postdiv and pcw settings at the same time.
-> > >
-> > > James Liao (2):
-> > >   clk: mediatek: Fix PLL registers setting flow
-> > >   clk: mediatek: Add MT8173 MMPLL change rate support
-> > >
-> > 
-> > Are these fixing regressions in 4.2-rc1? I don't see any "Fixes:" tag so
-> > it's not clear and makes me want to defer these until v4.3. Furthermore,
-> > the subject starts with "Add" so it sounds like a new feature.
-> 
-> This patchset is based on 4.1-rc1 but it had been tested on 4.2-rc1.
-> I'll send a new patch which based on 4.2-rc1.
-> 
-> This patchset contains some general PLL fixes and MMPLL set rate
-> support. We can say the last one is also a fix because changing some
-> specific rate on MMPLL may fail in current implementation.
-> 
-> 
+> This doesn't apply against current code, please check and resend.
 
-I'm seriously confused. The files these patches touch were never
-in v4.1, so they can't be based on v4.1-rc1 unless you're saying
-they were on top of clk-next when it was based on 4.1-rc1?
+Indeed, I rebased it on linux-next from 8th of July but the release
+included changes in the same place in ts3a227e.c.
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+I'll rebase and resend.
+
+Best regards,
+Krzysztof
