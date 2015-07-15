@@ -1,109 +1,99 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
- SoCs
-Date: Wed, 15 Jul 2015 20:33:22 +0800
-Message-ID: <1436963602.11289.17.camel@mhfsdcap03>
-References: <1436348468-4126-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1436348468-4126-2-git-send-email-chunfeng.yun@mediatek.com>
-	 <20150710051018.GU18700@pengutronix.de>
-	 <1436854791.11289.11.camel@mhfsdcap03>
-	 <20150714074555.GR18700@pengutronix.de>
+From: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 1/3] dt-bindings: pwm: add MediaTek display PWM
+ bindings
+Date: Wed, 15 Jul 2015 23:37:14 +0800
+Message-ID: <1436974634.15774.8.camel@mtksdaap41>
+References: <1436778294-47635-1-git-send-email-yh.huang@mediatek.com>
+	 <1436778294-47635-2-git-send-email-yh.huang@mediatek.com>
+	 <CAGS+omCdLbNu03c2DdiLEqNmGVkEoGu3972-YDp8ne5G9WZJ0g@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150714074555.GR18700-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+In-Reply-To: <CAGS+omCdLbNu03c2DdiLEqNmGVkEoGu3972-YDp8ne5G9WZJ0g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-07-14 at 09:45 +0200, Sascha Hauer wrote:
-> On Tue, Jul 14, 2015 at 02:19:51PM +0800, chunfeng yun wrote:
-> > hi,
-> > On Fri, 2015-07-10 at 07:10 +0200, Sascha Hauer wrote:
-> > > On Wed, Jul 08, 2015 at 05:41:03PM +0800, Chunfeng Yun wrote:
-> > > > add a DT binding documentation of usb3.0 phy for MT65xx
-> > > > SoCs from Mediatek.
-> > > > 
-> > > > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > ---
-> > > >  .../devicetree/bindings/usb/mt65xx-u3phy.txt       | 34 ++++++++++++++++++++++
-> > > >  1 file changed, 34 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > > 
-> > > > diff --git a/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > > new file mode 100644
-> > > > index 0000000..056b2aa
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/usb/mt65xx-u3phy.txt
-> > > > @@ -0,0 +1,34 @@
-> > > > +MT65xx U3PHY
-> > > > +
-> > > > +The device node for Mediatek SOC usb3.0 phy
-> > > > +
-> > > > +Required properties:
-> > > > + - compatible : Should be "mediatek,mt8173-u3phy"
-> > > > + - reg        : Offset and length of registers, the first is for mac domain,
-> > > > +	another for phy domain
-> > > > + - power-domains: to enable usb's mtcmos
-> > > > + - usb-wakeup-ctrl : to access usb wakeup control register
-> > > > + - wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup mode; others
-> > > > +	means don't enable wakeup source of usb
-> > > > + - u2port-num : number of usb2.0 ports to support which should be 1 or 2
-> > > > + - clocks     : must support all clocks that phy need
-> > > > + - clock-names: should be "wakeup_deb_p0", "wakeup_deb_p1" for wakeup
-> > > > +	debounce control clocks, and "u3phya_ref" for u3phya reference clock.
-> > > > +
-> > > > +Example:
-> > > > +
-> > > > +u3phy: usb-phy@11271000 {
-> > > > +	compatible = "mediatek,mt8173-u3phy";
-> > > > +	reg = <0 0x11271000 0 0x3000>,
-> > > > +	      <0 0x11280000 0 0x20000>;
-> > > 
-> > > 0x11271000 is the register space the xhci controller takes. You should
-> > > not expose the same register space to two different drivers.
-> > > 
-> > 
-> > usb: usb30@11270000 {
-> >    compatible = "mediatek,mt8173-xhci";
-> >    reg = <0 0x11270000 0 0x1000>;
-> > 
-> > the size of xhci register space is 0x1000, and the range is
-> > [0x11270000, 0x11271000 - 1], so the address of 0x11271000 is not
-> > included.
+On Mon, 2015-07-13 at 18:20 +0800, Daniel Kurtz wrote:
+> On Mon, Jul 13, 2015 at 5:04 PM, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Document the device-tree binding of MediatTek display PWM.
+> > The PWM has one channel to control the backlight brightness for display.
+> > It supports MT8173 and MT6595.
+> >
+> > Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       | 29 ++++++++++++++++++++++
+> >  1 file changed, 29 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> > new file mode 100644
+> > index 0000000..aac29dc
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> > @@ -0,0 +1,29 @@
+> > +MediaTek display PWM controller
+> > +
+> > +Required properties:
+> > + - compatible: should be "mediatek,<name>-disp-pwm":
+> > +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
+> > +   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
+> > + - reg: physical base address and length of the controller's registers.
+> > + - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
+> > +   the cell format.
+> > + - clocks: phandle and clock specifier of the PWM reference clock.
+> > + - clock-names: must contain the following:
+> > +   - "main": clock used to generate PWM signals.
+> > +   - "mm": sync signals from the modules of mmsys.
+> > + - pinctrl-names: Must contain a "default" entry.
+> > + - pinctrl-0: One property must exist for each entry in pinctrl-names.
+> > +   See pinctrl/pinctrl-bindings.txt for details of the property values.
+> > +
+> > +Example:
+> > +       pwm0: pwm@1401e000 {
+> > +               compatible = "mediatek,mt8173-disp-pwm",
+> > +                            "mediatek,mt6595-disp-pwm";
+> > +               reg = <0 0x1401e000 0 0x1000>;
+> > +               #pwm-cells = <2>;
+> > +               clocks = <&mmsys CLK_MM_DISP_PWM026M>,
+> > +                        <&mmsys CLK_MM_DISP_PWM0MM>;
+> > +               clock-names = "main", "mm";
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&disp_pwm0_pins>;
+> > +       };
 > 
-> Indeed, you are right. Nevertheless my datasheet lists these resources:
+> Please show an example consumer of the pwm phandle to show how to set
+> the two properties required by the #pwm-cells.
+> Although the pwm-specifier typically encodes the chip-relative PWM
+> number and the PWM period in nanoseconds, it is technically controller
+> specific.
 > 
-> 0x11270000 - 0x1127ffff: SSUSB CSR
-> 0x11280000 - 0x1128ffff: SSUSB SIF
-> 0x11290000 - 0x1129ffff: SSUSB
-> 
-> It seems that with the current binding you are not modelling the
-> hardware but something that reflects your current implementation. This
-> is not a good sign. Normally I would expect device nodes that match the
-> above resources, but your USB phy spans most of the SSUSB CSR register
-> space and both the SSUSB SIF and SSUSB regster space. I think it would
-> be good if you could give an overview over the USB hardware and explain
-> why you have to violate the above resources.
-> 
-> Also something to consider: Is your binding suitable for adding OTG
-> support later? You don't have to add OTG support to the Kernel now,
-> but your binding should be suitable to add it later.
-> 
-> Sascha
-> 
+> In fact, since the mtk-disp-pwm does not have a chip-relative PWM
+> number, could we in fact set #pwm-cells = <1>, and only specify the
+> requested PWM period?
+OK. I will add the example like the following.
 
-I agree with you, but timing parameter settings of super speed port are
-put in [0x11272400 - 0x11272800], which is not included by xhci register
-space. SSUSB SIF includes some control and status registers of each
-ports and also OTG etc. It is better to put them into the node of gadget
-device node which is not supported now, so put them into phy device
-node.
+backlight_lcd: backlight_lcd {
+	compatible = "pwm-backlight";
+	pwms = <&pwm0 0 1000000>;
+	brightness-levels = <
+		  0  16  32  48  64  80  96 112
+		128 144 160 176 192 208 224 240
+		255
+	>;
+	default-brightness-level = <9>;
+	power-supply = <&mt6397_vio18_reg>;
+	enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
+};
 
-Do you have any good idea to deal with the special case?
+The core in PWM driver can only take two or three cells.
+In our case, we don't need to set polarity of PWM.
+So it should be 2.
 
+Regards,
+YH Huang
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
