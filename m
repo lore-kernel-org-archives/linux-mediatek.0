@@ -1,51 +1,155 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v3 4/5] ARM: dts: mt8135: enable basic SMP bringup for
- mt8135
-Date: Thu, 16 Jul 2015 22:44:11 +0800
-Message-ID: <1437057851.19585.2.camel@mtksdaap41>
-References: <1436851111-2369-1-git-send-email-yingjoe.chen@mediatek.com>
-	 <1436851111-2369-5-git-send-email-yingjoe.chen@mediatek.com>
-	 <55A51A54.7000208@mentor.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: Add MT8173 MMC dts
+Date: Thu, 16 Jul 2015 23:16:59 +0800
+Message-ID: <CAGS+omBxP5LBMZuayRUDYW3bBrRe17up2E559YJFL6Sq4tx5Jg@mail.gmail.com>
+References: <1437046580-10809-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55A51A54.7000208@mentor.com>
+In-Reply-To: <1437046580-10809-1-git-send-email-chaotian.jing@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Nathan Lynch <Nathan_Lynch@mentor.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>, Sascha Hauer <kernel@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, HenryC Chen <henryc.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-07-14 at 09:19 -0500, Nathan Lynch wrote:
-> On 07/14/2015 12:18 AM, Yingjoe Chen wrote:
-> > Add arch timer node to enable arch-timer support. MT8135 firmware
-> > doesn't correctly setup arch-timer frequency and CNTVOFF, add
-> > properties to workaround this.
-> 
-> [...]
-> 
-> >  
-> > +	timer {
-> > +		compatible = "arm,armv7-timer";
-> > +		interrupt-parent = <&gic>;
-> > +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
-> > +					  IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
-> > +					  IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
-> > +					  IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
-> > +					  IRQ_TYPE_LEVEL_LOW)>;
-> > +		clock-frequency = <13000000>;
-> > +		arm,cpu-registers-not-fw-configured;
-> 
-> It's disappointing to see this property in new DTS submissions.  It
-> prevents taking advantage of the VDSO for gettimeofday/clock_gettime.
-> 
+Hi Chaotian,
 
-Hi,
+On Thu, Jul 16, 2015 at 7:36 PM, Chaotian Jing
+<chaotian.jing@mediatek.com> wrote:
+> From: Eddie Huang <eddie.huang@mediatek.com>
+>
+> Add node mmc0 ~ mmc3 for mt8173.dtsi
+> Add node mmc0, mmc1 for mt8173-evb.dts
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> ---
+> Remove clk_null
+> Base on 4.2-rc1, and  https://github.com/mbgg/linux-mediatek/tree/v4.2-next/arm64 commit 16ea61fc  arm64: dts: mt8173-evb: Add PMIC support
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 126 ++++++++++++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    |  44 ++++++++++
+>  2 files changed, 170 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> index 986f25f..f76c99b 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> @@ -64,6 +64,132 @@
+>         };
+>  };
+>
+> +&mmc0 {
+> +       status = "okay";
+> +       pinctrl-names = "default", "state_uhs";
+> +       pinctrl-0 = <&mmc0_pins_default>;
+> +       pinctrl-1 = <&mmc0_pins_uhs>;
+> +       bus-width = <8>;
+> +       max-frequency = <50000000>;
+> +       cap-mmc-highspeed;
+> +       vmmc-supply = <&mt6397_vemc_3v3_reg>;
+> +       vqmmc-supply = <&mt6397_vio18_reg>;
+> +       non-removable;
+> +};
+> +
+> +&mmc1 {
+> +       status = "okay";
+> +       pinctrl-names = "default", "state_uhs";
+> +       pinctrl-0 = <&mmc1_pins_default>;
+> +       pinctrl-1 = <&mmc1_pins_uhs>;
+> +       bus-width = <4>;
+> +       max-frequency = <50000000>;
+> +       cap-sd-highspeed;
+> +       sd-uhs-sdr25;
+> +       cd-gpios = <&pio 132 0>;
+> +       vmmc-supply = <&mt6397_vmch_reg>;
+> +       vqmmc-supply = <&mt6397_vmc_reg>;
+> +};
+> +
+> +&pio {
+> +       mmc0_pins_default: mmc0default {
+> +               pins_cmd_dat {
+> +                       pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
+> +                                <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
+> +                                <MT8173_PIN_59_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
+> +                                <MT8173_PIN_60_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
+> +                                <MT8173_PIN_61_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
+> +                                <MT8173_PIN_62_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
+> +                                <MT8173_PIN_63_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
+> +                                <MT8173_PIN_64_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
+> +                                <MT8173_PIN_66_MSDC0_CMD__FUNC_MSDC0_CMD>;
+> +                       input-enable;
+> +                       bias-pull-up;
+> +               };
+> +
+> +               pins_clk {
+> +                       pinmux = <MT8173_PIN_65_MSDC0_CLK__FUNC_MSDC0_CLK>;
+> +                       bias-pull-down;
+> +               };
+> +
+> +               pins_rst {
+> +                       pinmux = <MT8173_PIN_68_MSDC0_RST___FUNC_MSDC0_RSTB>;
+> +                       bias-pull-up;
+> +               };
+> +       };
+> +
+> +       mmc1_pins_default: mmc1default {
+> +               pins_cmd_dat {
+> +                       pinmux = <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>,
+> +                                <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>,
+> +                                <MT8173_PIN_75_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
+> +                                <MT8173_PIN_76_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
+> +                                <MT8173_PIN_78_MSDC1_CMD__FUNC_MSDC1_CMD>;
+> +                       input-enable;
+> +                       drive-strength = <MTK_DRIVE_4mA>;
+> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+> +               };
+> +
+> +               pins_clk {
+> +                       pinmux = <MT8173_PIN_77_MSDC1_CLK__FUNC_MSDC1_CLK>;
+> +                       bias-pull-down;
+> +                       drive-strength = <MTK_DRIVE_4mA>;
+> +               };
+> +
+> +               pins_insert {
+> +                       pinmux = <MT8173_PIN_132_I2S0_DATA1__FUNC_GPIO132>;
+> +                       bias-pull-up;
+> +               };
+> +       };
+> +
+> +       mmc0_pins_uhs: mmc0@0{
 
-I know. But unfortunately this is a more then 1 year SoC, so I can't do
-anything to change this :(
+(1) I don't think these "@0" are needed (here and for mmc1_pins_uhs)
+(2) A space before the '{' would be nice.
 
-Joe.C
+Other than these tiny nits, this one is:
+
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+> +               pins_cmd_dat {
+> +                       pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
+> +                                <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>,
+> +                                <MT8173_PIN_59_MSDC0_DAT2__FUNC_MSDC0_DAT2>,
+> +                                <MT8173_PIN_60_MSDC0_DAT3__FUNC_MSDC0_DAT3>,
+> +                                <MT8173_PIN_61_MSDC0_DAT4__FUNC_MSDC0_DAT4>,
+> +                                <MT8173_PIN_62_MSDC0_DAT5__FUNC_MSDC0_DAT5>,
+> +                                <MT8173_PIN_63_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
+> +                                <MT8173_PIN_64_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
+> +                                <MT8173_PIN_66_MSDC0_CMD__FUNC_MSDC0_CMD>;
+> +                       input-enable;
+> +                       drive-strength = <MTK_DRIVE_2mA>;
+> +                       bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+> +               };
+> +
+> +               pins_clk {
+> +                       pinmux = <MT8173_PIN_65_MSDC0_CLK__FUNC_MSDC0_CLK>;
+> +                       drive-strength = <MTK_DRIVE_2mA>;
+> +                       bias-pull-down = <MTK_PUPD_SET_R1R0_01>;
+> +               };
+> +
+> +               pins_rst {
+> +                       pinmux = <MT8173_PIN_68_MSDC0_RST___FUNC_MSDC0_RSTB>;
+> +                       bias-pull-up;
+> +               };
+> +       };
+> +
+> +       mmc1_pins_uhs: mmc1@0 {
