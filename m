@@ -1,31 +1,27 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8173: Add afe device node
-Date: Fri, 17 Jul 2015 23:42:25 +0200
-Message-ID: <1607394.WYm4U533YM@ubix>
-References: <1436412725-55129-1-git-send-email-koro.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/5] clocksource: mediatek: Use GPT as sched clock source
+Date: Fri, 17 Jul 2015 23:49:40 +0200
+Message-ID: <1649653.yGMEJPDvvi@ubix>
+References: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com> <1436779969-18610-3-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436412725-55129-1-git-send-email-koro.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, djkurtz@chromium.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, devicetree@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1436779969-18610-3-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thursday, July 09, 2015 11:32:05 AM Koro Chen wrote:
-> This adds afe (audio front end) device node to the MT8173 dtsi file.
+On Monday, July 13, 2015 05:32:46 PM Yingjoe Chen wrote:
+> When cpu is in deep idle, arch timer will stop counting. Setup GPT as
+> sched clock source so it can keep counting in idle.
 > 
-> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
-> This patch is based on Matthias's tree:
-> https://github.com/mbgg/linux-mediatek
-> branch: v4.2-next/arm64
-> 
-> Changes since v1:
-> - change node name to afe: audio-controller@11220000
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 32
-> ++++++++++++++++++++++++++++++++ 1 file changed, 32 insertions(+)
 
-Applied, thanks.
+Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
