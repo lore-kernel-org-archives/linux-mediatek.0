@@ -1,71 +1,151 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH 1/6] Document: bindings: DT: Add SMP enable method for MT6580 SoC platform
-Date: Sat, 18 Jul 2015 00:04:18 +0200
-Message-ID: <7449891.najJl8C2om@ubix>
-References: <1436611086.17661.3.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: Add MT8173 MMC dts
+Date: Sat, 18 Jul 2015 00:16:26 +0200
+Message-ID: <2095363.Eo4NFi8jHO@ubix>
+References: <1437046580-10809-1-git-send-email-chaotian.jing@mediatek.com> <CAGS+omBxP5LBMZuayRUDYW3bBrRe17up2E559YJFL6Sq4tx5Jg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436611086.17661.3.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, ibanezchen@gmail.com, lorenzo.pieralisi@arm.com, linux@arm.linux.org.uk, heiko@sntech.de, catalin.marinas@arm.com, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, marc.ceeeee@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, galak@codeaurora.org, rchintakuntla@cavium.com, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omBxP5LBMZuayRUDYW3bBrRe17up2E559YJFL6Sq4tx5Jg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Saturday, July 11, 2015 06:38:06 PM Yingjoe Chen wrote:
-> On Mon, 2015-06-29 at 11:03 +0800, Yingjoe Chen wrote:
-> > On Fri, 2015-06-19 at 02:01 +0800, Scott Shu wrote:
-> > > For MT6580 SoC platform, the secondary cores are in powered off state
-> > > as default, so compared with MT65xx series SoC, one new enable method
-> > > is needed. This method using the SPM (System Power Manager) inside
-> > > the SCYSYS to control the CPU power.
-> > > ---
-> > > 
-> > >  Documentation/devicetree/bindings/arm/cpus.txt | 1 +
-> > >  1 file changed, 1 insertion(+)
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/arm/cpus.txt
-> > > b/Documentation/devicetree/bindings/arm/cpus.txt index ac2903d..fb80b2e
-> > > 100644
-> > > --- a/Documentation/devicetree/bindings/arm/cpus.txt
-> > > +++ b/Documentation/devicetree/bindings/arm/cpus.txt
-> > > @@ -194,6 +194,7 @@ nodes to be present and contain the properties
-> > > described below.> > 
-> > >  			    "marvell,armada-380-smp"
-> > >  			    "marvell,armada-390-smp"
-> > >  			    "marvell,armada-xp-smp"
-> > > 
-> > > +			    "mediatek,mt6580-smp"
-> > > 
-> > >  			    "mediatek,mt65xx-smp"
-> > >  			    "mediatek,mt81xx-tz-smp"
-> > >  			    "qcom,gcc-msm8660"
-> > 
-> > Hi
-> > 
-> > It seems we have 3 different kinds of cpu enable method now, and
-> > mt65xx-smp doesn't cover all mt65xx series. So maybe it make sense to
-> > change naming before it got merged.
-> > 
-> > Short summary for these methods:
-> > 
-> > mt65xx-smp:    	For mt65xx socs which wakeup all cores at boot.
-> > 
-> > 		Tested on mt6589 by Matthias.
-> > 
-> > mt6580-smp:     Only first core is alive at boot, so need to wakeup
-> > 
-> > 		other cores using SPM. AFAIK only for mt6580 now.
-> > 
-> > mt81xx-tz-smp:  For soc which wakeup all cores at boot, and have
-> > 
-> > 		trustzone firmware. Suitable for mt8127, mt8135.
+On Thursday, July 16, 2015 11:16:59 PM Daniel Kurtz wrote:
+> Hi Chaotian,
 > 
-> Hi Matthias, Arnd,
+> On Thu, Jul 16, 2015 at 7:36 PM, Chaotian Jing
 > 
-> Any suggestion on the naming? Is it ok if I just rename mt65xx-smp to
-> mt6589-smp since that's the only one we tested?
+> <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > Add node mmc0 ~ mmc3 for mt8173.dtsi
+> > Add node mmc0, mmc1 for mt8173-evb.dts
+> > 
+> > Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> > Remove clk_null
+> > Base on 4.2-rc1, and 
+> > https://github.com/mbgg/linux-mediatek/tree/v4.2-next/arm64 commit
+> > 16ea61fc  arm64: dts: mt8173-evb: Add PMIC support> 
+> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 126
+> >  ++++++++++++++++++++++++++++ arch/arm64/boot/dts/mediatek/mt8173.dtsi   
+> >  |  44 ++++++++++
+> >  2 files changed, 170 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts index 986f25f..f76c99b
+> > 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > @@ -64,6 +64,132 @@
+> > 
+> >         };
+> >  
+> >  };
+> > 
+> > +&mmc0 {
+> > +       status = "okay";
+> > +       pinctrl-names = "default", "state_uhs";
+> > +       pinctrl-0 = <&mmc0_pins_default>;
+> > +       pinctrl-1 = <&mmc0_pins_uhs>;
+> > +       bus-width = <8>;
+> > +       max-frequency = <50000000>;
+> > +       cap-mmc-highspeed;
+> > +       vmmc-supply = <&mt6397_vemc_3v3_reg>;
+> > +       vqmmc-supply = <&mt6397_vio18_reg>;
+> > +       non-removable;
+> > +};
+> > +
+> > +&mmc1 {
+> > +       status = "okay";
+> > +       pinctrl-names = "default", "state_uhs";
+> > +       pinctrl-0 = <&mmc1_pins_default>;
+> > +       pinctrl-1 = <&mmc1_pins_uhs>;
+> > +       bus-width = <4>;
+> > +       max-frequency = <50000000>;
+> > +       cap-sd-highspeed;
+> > +       sd-uhs-sdr25;
+> > +       cd-gpios = <&pio 132 0>;
+> > +       vmmc-supply = <&mt6397_vmch_reg>;
+> > +       vqmmc-supply = <&mt6397_vmc_reg>;
+> > +};
+> > +
+> > +&pio {
+> > +       mmc0_pins_default: mmc0default {
+> > +               pins_cmd_dat {
+> > +                       pinmux =
+> > <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>, +                           
+> >     <MT8173_PIN_58_MSDC0_DAT1__FUNC_MSDC0_DAT1>, +                       
+> >         <MT8173_PIN_59_MSDC0_DAT2__FUNC_MSDC0_DAT2>, +                   
+> >             <MT8173_PIN_60_MSDC0_DAT3__FUNC_MSDC0_DAT3>, +               
+> >                 <MT8173_PIN_61_MSDC0_DAT4__FUNC_MSDC0_DAT4>, +           
+> >                     <MT8173_PIN_62_MSDC0_DAT5__FUNC_MSDC0_DAT5>, +       
+> >                         <MT8173_PIN_63_MSDC0_DAT6__FUNC_MSDC0_DAT6>, +   
+> >                             <MT8173_PIN_64_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
+> > +                               
+> > <MT8173_PIN_66_MSDC0_CMD__FUNC_MSDC0_CMD>; +                      
+> > input-enable;
+> > +                       bias-pull-up;
+> > +               };
+> > +
+> > +               pins_clk {
+> > +                       pinmux =
+> > <MT8173_PIN_65_MSDC0_CLK__FUNC_MSDC0_CLK>;
+> > +                       bias-pull-down;
+> > +               };
+> > +
+> > +               pins_rst {
+> > +                       pinmux =
+> > <MT8173_PIN_68_MSDC0_RST___FUNC_MSDC0_RSTB>; +                      
+> > bias-pull-up;
+> > +               };
+> > +       };
+> > +
+> > +       mmc1_pins_default: mmc1default {
+> > +               pins_cmd_dat {
+> > +                       pinmux =
+> > <MT8173_PIN_73_MSDC1_DAT0__FUNC_MSDC1_DAT0>, +                           
+> >     <MT8173_PIN_74_MSDC1_DAT1__FUNC_MSDC1_DAT1>, +                       
+> >         <MT8173_PIN_75_MSDC1_DAT2__FUNC_MSDC1_DAT2>, +                   
+> >             <MT8173_PIN_76_MSDC1_DAT3__FUNC_MSDC1_DAT3>, +               
+> >                 <MT8173_PIN_78_MSDC1_CMD__FUNC_MSDC1_CMD>; +             
+> >          input-enable;
+> > +                       drive-strength = <MTK_DRIVE_4mA>;
+> > +                       bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+> > +               };
+> > +
+> > +               pins_clk {
+> > +                       pinmux =
+> > <MT8173_PIN_77_MSDC1_CLK__FUNC_MSDC1_CLK>;
+> > +                       bias-pull-down;
+> > +                       drive-strength = <MTK_DRIVE_4mA>;
+> > +               };
+> > +
+> > +               pins_insert {
+> > +                       pinmux =
+> > <MT8173_PIN_132_I2S0_DATA1__FUNC_GPIO132>;
+> > +                       bias-pull-up;
+> > +               };
+> > +       };
+> > +
+> > +       mmc0_pins_uhs: mmc0@0{
+> 
+> (1) I don't think these "@0" are needed (here and for mmc1_pins_uhs)
+> (2) A space before the '{' would be nice.
+> 
+> Other than these tiny nits, this one is:
+> 
+> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > 
 
-Yes, that's fine for me.
+I fixed the nits mentioned by Dan and applied the patch to v4.2-next/arm64
+
+Thanks
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
