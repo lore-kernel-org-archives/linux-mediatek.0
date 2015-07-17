@@ -1,45 +1,71 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 0/2] Add mt6580 basic chip support
-Date: Sat, 18 Jul 2015 00:01:01 +0200
-Message-ID: <1668730.VCkj7kaOSH@ubix>
-References: <1436854029-16599-1-git-send-email-mars.cheng@mediatek.com>
+Subject: Re: [RESEND PATCH 1/6] Document: bindings: DT: Add SMP enable method for MT6580 SoC platform
+Date: Sat, 18 Jul 2015 00:04:18 +0200
+Message-ID: <7449891.najJl8C2om@ubix>
+References: <1436611086.17661.3.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436854029-16599-1-git-send-email-mars.cheng@mediatek.com>
+In-Reply-To: <1436611086.17661.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>
-Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, ibanezchen@gmail.com, lorenzo.pieralisi@arm.com, linux@arm.linux.org.uk, heiko@sntech.de, catalin.marinas@arm.com, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, marc.ceeeee@gmail.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, galak@codeaurora.org, rchintakuntla@cavium.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tuesday, July 14, 2015 02:07:07 PM Mars Cheng wrote:
-> Changes in v4:
-> 1. Remove clocks node
-> 2. Remove bootargs
-> 3. Refine stdout-path setting
+On Saturday, July 11, 2015 06:38:06 PM Yingjoe Chen wrote:
+> On Mon, 2015-06-29 at 11:03 +0800, Yingjoe Chen wrote:
+> > On Fri, 2015-06-19 at 02:01 +0800, Scott Shu wrote:
+> > > For MT6580 SoC platform, the secondary cores are in powered off state
+> > > as default, so compared with MT65xx series SoC, one new enable method
+> > > is needed. This method using the SPM (System Power Manager) inside
+> > > the SCYSYS to control the CPU power.
+> > > ---
+> > > 
+> > >  Documentation/devicetree/bindings/arm/cpus.txt | 1 +
+> > >  1 file changed, 1 insertion(+)
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/arm/cpus.txt
+> > > b/Documentation/devicetree/bindings/arm/cpus.txt index ac2903d..fb80b2e
+> > > 100644
+> > > --- a/Documentation/devicetree/bindings/arm/cpus.txt
+> > > +++ b/Documentation/devicetree/bindings/arm/cpus.txt
+> > > @@ -194,6 +194,7 @@ nodes to be present and contain the properties
+> > > described below.> > 
+> > >  			    "marvell,armada-380-smp"
+> > >  			    "marvell,armada-390-smp"
+> > >  			    "marvell,armada-xp-smp"
+> > > 
+> > > +			    "mediatek,mt6580-smp"
+> > > 
+> > >  			    "mediatek,mt65xx-smp"
+> > >  			    "mediatek,mt81xx-tz-smp"
+> > >  			    "qcom,gcc-msm8660"
+> > 
+> > Hi
+> > 
+> > It seems we have 3 different kinds of cpu enable method now, and
+> > mt65xx-smp doesn't cover all mt65xx series. So maybe it make sense to
+> > change naming before it got merged.
+> > 
+> > Short summary for these methods:
+> > 
+> > mt65xx-smp:    	For mt65xx socs which wakeup all cores at boot.
+> > 
+> > 		Tested on mt6589 by Matthias.
+> > 
+> > mt6580-smp:     Only first core is alive at boot, so need to wakeup
+> > 
+> > 		other cores using SPM. AFAIK only for mt6580 now.
+> > 
+> > mt81xx-tz-smp:  For soc which wakeup all cores at boot, and have
+> > 
+> > 		trustzone firmware. Suitable for mt8127, mt8135.
 > 
-> Changes in v3:
-> 1. Remove useless Change-Id
-> 2. Add complete device tree binding in Documentation
+> Hi Matthias, Arnd,
 > 
-> Changes in v2:
-> 1. Use stdout-path in device tree to indicate console
-> 2. Remove board-specific bootargs
+> Any suggestion on the naming? Is it ok if I just rename mt65xx-smp to
+> mt6589-smp since that's the only one we tested?
 > 
-> Mars Cheng (2):
->   Document: DT: Add bindings for mediatek MT6580 SoC Platform
->   ARM: dts: mediatek: add mt6580 basic support
-> 
->  Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
->  .../bindings/arm/mediatek/mediatek,sysirq.txt      |   1 +
->  .../devicetree/bindings/serial/mtk-uart.txt        |   3 +-
->  .../bindings/timer/mediatek,mtk-timer.txt          |   6 +-
->  arch/arm/boot/dts/Makefile                         |   1 +
->  arch/arm/boot/dts/mt6580-evbp1.dts                 |  39 +++++++
->  arch/arm/boot/dts/mt6580.dtsi                      | 116
-> +++++++++++++++++++++ 7 files changed, 168 insertions(+), 2 deletions(-)
 
-Whole series applied to v4.2-next/dts
-
-Thanks a lot.
+Yes, that's fine for me.
