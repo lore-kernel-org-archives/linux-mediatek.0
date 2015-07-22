@@ -1,66 +1,81 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] watchdog: add wdt shutdown callback to disable wdt
- if enabled
-Date: Tue, 21 Jul 2015 20:48:21 -0700
-Message-ID: <55AF1285.9000404@roeck-us.net>
-References: <1437535610-51314-1-git-send-email-eddie.huang@mediatek.com> <1437535610-51314-3-git-send-email-eddie.huang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT when setup
+Date: Wed, 22 Jul 2015 16:14:38 +0800
+Message-ID: <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
+References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1437535610-51314-3-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, " linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, " linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/21/2015 08:26 PM, Eddie Huang wrote:
-> From: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> Without .shutdown(), watchdog might reset the system during power off.
-> For example, if watchdog's timeout is set to 30s, then it is reset to
-> zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
-> but watchdog is still running and may trigger reset.
->
-> Signed-off-by: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   drivers/watchdog/mtk_wdt.c | 9 +++++++++
->   1 file changed, 9 insertions(+)
->
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 5ef3910..c6741a5 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -217,6 +217,14 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->   	return 0;
->   }
->
-> +static void mtk_wdt_shutdown(struct platform_device *pdev)
-> +{
-> +	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> +
-> +	if (mtk_wdt->started)
+Spurious mtk timer interrupt is noticed at boot and cause kernel
+crash. It seems if GPT is enabled, it will latch irq status even
+when its IRQ is disabled. When irq is enabled afterward, we see
+spurious interrupt.
+Change init flow to only enable GPT_CLK_SRC at mtk_timer_init.
 
-watchdog_active() ?
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+---
 
-> +		mtk_wdt_stop(&mtk_wdt->wdt_dev);
-> +}
-> +
->   static int mtk_wdt_remove(struct platform_device *pdev)
->   {
->   	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> @@ -266,6 +274,7 @@ MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
->   static struct platform_driver mtk_wdt_driver = {
->   	.probe		= mtk_wdt_probe,
->   	.remove		= mtk_wdt_remove,
-> +	.shutdown	= mtk_wdt_shutdown,
->   	.suspend	= mtk_wdt_suspend,
->   	.resume		= mtk_wdt_resume,
->   	.driver		= {
->
+Update to my patch [1], added __init as Daniel suggest. This is the
+only patch that need to change in that series, so I only sent this one.
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001545.html
+
+ drivers/clocksource/mtk_timer.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 68ab423..2ba5b66 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -156,9 +156,11 @@ static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
+ 	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+ }
+ 
+-static void
+-mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
++static void __init mtk_timer_setup(struct mtk_clock_event_device *evt,
++				   u8 timer, u8 option, bool enable)
+ {
++	u32 val;
++
+ 	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+ 		evt->gpt_base + TIMER_CTRL_REG(timer));
+ 
+@@ -167,8 +169,10 @@ mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+ 
+ 	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
+ 
+-	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
+-			evt->gpt_base + TIMER_CTRL_REG(timer));
++	val = TIMER_CTRL_OP(option);
++	if (enable)
++		val |= TIMER_CTRL_ENABLE;
++	writel(val, evt->gpt_base + TIMER_CTRL_REG(timer));
+ }
+ 
+ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+@@ -235,12 +239,12 @@ static void __init mtk_timer_init(struct device_node *node)
+ 	evt->ticks_per_jiffy = DIV_ROUND_UP(rate, HZ);
+ 
+ 	/* Configure clock source */
+-	mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN);
++	mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN, true);
+ 	clocksource_mmio_init(evt->gpt_base + TIMER_CNT_REG(GPT_CLK_SRC),
+ 			node->name, rate, 300, 32, clocksource_mmio_readl_up);
+ 
+ 	/* Configure clock event */
+-	mtk_timer_setup(evt, GPT_CLK_EVT, TIMER_CTRL_OP_REPEAT);
++	mtk_timer_setup(evt, GPT_CLK_EVT, TIMER_CTRL_OP_REPEAT, false);
+ 	clockevents_config_and_register(&evt->dev, rate, 0x3,
+ 					0xffffffff);
+ 
+-- 
+1.8.1.1.dirty
