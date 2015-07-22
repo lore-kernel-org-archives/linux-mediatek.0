@@ -1,25 +1,57 @@
 From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 0/2] Add Mediatek watchdog suspend resume and shutdown
-Date: Wed, 22 Jul 2015 11:26:48 +0800
-Message-ID: <1437535610-51314-1-git-send-email-eddie.huang@mediatek.com>
+Subject: [PATCH 2/2] watchdog: add wdt shutdown callback to disable wdt if enabled
+Date: Wed, 22 Jul 2015 11:26:50 +0800
+Message-ID: <1437535610-51314-3-git-send-email-eddie.huang@mediatek.com>
+References: <1437535610-51314-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1437535610-51314-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This series add Mediatek watchdog suspend, resume and shutdown support.
-These patches are based on v4.2-rc1
+From: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Greta Zhang (2):
-  watchdog: add wdt suspend/resume support
-  watchdog: add wdt shutdown callback to disable wdt if enabled
+Without .shutdown(), watchdog might reset the system during power off.
+For example, if watchdog's timeout is set to 30s, then it is reset to
+zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
+but watchdog is still running and may trigger reset.
 
- drivers/watchdog/mtk_wdt.c | 47 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+Signed-off-by: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/watchdog/mtk_wdt.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 5ef3910..c6741a5 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -217,6 +217,14 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
++static void mtk_wdt_shutdown(struct platform_device *pdev)
++{
++	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
++
++	if (mtk_wdt->started)
++		mtk_wdt_stop(&mtk_wdt->wdt_dev);
++}
++
+ static int mtk_wdt_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
+@@ -266,6 +274,7 @@ MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
+ static struct platform_driver mtk_wdt_driver = {
+ 	.probe		= mtk_wdt_probe,
+ 	.remove		= mtk_wdt_remove,
++	.shutdown	= mtk_wdt_shutdown,
+ 	.suspend	= mtk_wdt_suspend,
+ 	.resume		= mtk_wdt_resume,
+ 	.driver		= {
 -- 
 1.8.1.1.dirty
 
