@@ -1,56 +1,43 @@
 From: Henry Chen <HenryC.Chen@mediatek.com>
-Subject: Re: [PATCH] regmap: Add function check before called format_val
-Date: Wed, 22 Jul 2015 22:31:34 +0800
-Message-ID: <1437575494.30329.80.camel@mtksdaap41>
-References: <1437396110-5192-1-git-send-email-henryc.chen@mediatek.com>
-	 <20150720150254.GC11162@sirena.org.uk>
-	 <1437458845.30329.51.camel@mtksdaap41>
-	 <20150721172550.GY11162@sirena.org.uk>
+Subject: Re: [PATCH v2 2/2] regulator: mt6311: Add support for mt6311
+ regulator
+Date: Wed, 22 Jul 2015 22:42:54 +0800
+Message-ID: <1437576174.30329.84.camel@mtksdaap41>
+References: <1437566453-13117-1-git-send-email-henryc.chen@mediatek.com>
+	 <1437566453-13117-3-git-send-email-henryc.chen@mediatek.com>
+	 <CABxcv=ncxfeqo1vfz6XzJWYUOGeFGAbDmz2M_PzM+8PBQvXjgw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150721172550.GY11162@sirena.org.uk>
+In-Reply-To: <CABxcv=ncxfeqo1vfz6XzJWYUOGeFGAbDmz2M_PzM+8PBQvXjgw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
+To: Javier Martinez Canillas <javier@dowhile0.org>
+Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-07-21 at 18:25 +0100, Mark Brown wrote:
-> On Tue, Jul 21, 2015 at 02:07:25PM +0800, Henry Chen wrote:
-> 
-> > Then in driver rtc-mt6397.c, it used regmap_bulk_read() to get the time
-> > of PMIC, and hit the null function of format_val(), because the
-> > regmap_bus was null.
-> 
-> > It skipped the initialization of format_val() because bus == null, but
-> > called the format_val() at regmap_bulk_read() if bus == null.
-> 
-> OK, so the issue here is that when we fall back to regmap_read() we may
-> do so because we have reg_read() and reg_write() functions which in turn
-> imply no formatting.  The expectation here is that val must be an array
-> of int.  The code doesn't completely take that into account though and
-> the user you're pointing at is assuming it's an array of 16 bit values
-> which isn't totally unreasonable if it did specify val_bits (we don't
-> check for that).
-So, could I call regmap_bulk_read() on rtc-mt6307.c, should I need to
-change it ?
-> 
-> > Maybe it was not the good fix for this, but should be a problem need to
-> > be reported, or should I need to give the regmap_bus on mtk_pmic_wrap.c?
-> 
-> That file isn't in mainline...
+On Wed, 2015-07-22 at 14:50 +0200, Javier Martinez Canillas wrote:
 
-oh...it's mtk-pmic-wrap.c, sorry about that.
+> > +
+> > +struct mt6311 {
+> > +       struct device *dev;
+> > +       struct regmap *regmap;
+> > +       struct regulator_dev *rdev[MT6311_MAX_REGULATORS];
+> > +       int num_regulator;
+> > +       int chip_cid;
+> > +};
 > 
-> memcpy() is definitely not a safe way to move from an unsigned int to a
-> u16 which is what your specific use case is trying to do.  I'll need to
-> do an audit of existing users (or someone else will!) to figure out what
-> people are doing with .val_bits in drivers using reg_read() and
-> reg_write() but I think what we should be doing here is probably
-> providing appropriate conversion functions based on val_bits on init.
+> It seems this struct can be removed, the rdev, num_regulator and
+> chip_cid fields are set but not used and dev and regmap are only used
+> to set the struct regulator_config fields in mt6311_regulator_init().
+> But that won't be necessary if you just remove the
+> mt6311_regulator_init() function and move the regulator registration
+> logic to mt6311_i2c_probe().
 
-Ok, got it, memcpy() should not be used here anymore.
+Yes, it should be removed, thanks for the advise.
 
-Thanks,
-Henry
+Henry 
+
+> 
+> Best regards,
+> Javier
