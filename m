@@ -1,81 +1,79 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] regmap: Add function check before called format_val
-Date: Wed, 22 Jul 2015 18:00:23 +0100
-Message-ID: <20150722170023.GZ11162@sirena.org.uk>
-References: <1437396110-5192-1-git-send-email-henryc.chen@mediatek.com>
- <20150720150254.GC11162@sirena.org.uk>
- <1437458845.30329.51.camel@mtksdaap41>
- <20150721172550.GY11162@sirena.org.uk>
- <1437575494.30329.80.camel@mtksdaap41>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH v3 5/5] arm64: dts: mediatek: add xHCI & usb phy for
+ mt8173
+Date: Wed, 22 Jul 2015 21:11:50 +0300
+Message-ID: <55AFDCE6.2060608@cogentembedded.com>
+References: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1437573945-31586-6-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="lxO5ObTDWtTXup1c"
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1437575494.30329.80.camel@mtksdaap41>
+In-Reply-To: <1437573945-31586-6-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <HenryC.Chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hello.
 
---lxO5ObTDWtTXup1c
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On 07/22/2015 05:05 PM, Chunfeng Yun wrote:
 
-On Wed, Jul 22, 2015 at 10:31:34PM +0800, Henry Chen wrote:
-> On Tue, 2015-07-21 at 18:25 +0100, Mark Brown wrote:
+> add xHCI and phy drivers for MT8173-EVB
 
-> > OK, so the issue here is that when we fall back to regmap_read() we may
-> > do so because we have reg_read() and reg_write() functions which in turn
-> > imply no formatting.  The expectation here is that val must be an array
-> > of int.  The code doesn't completely take that into account though and
-> > the user you're pointing at is assuming it's an array of 16 bit values
-> > which isn't totally unreasonable if it did specify val_bits (we don't
-> > check for that).
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 15 ++++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 31 +++++++++++++++++++++++++++++
+>   2 files changed, 46 insertions(+)
 
-> So, could I call regmap_bulk_read() on rtc-mt6307.c, should I need to
-> change it ?
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> index f433c21..202b2b9 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> @@ -13,6 +13,7 @@
+>    */
+>
+>   /dts-v1/;
+> +#include <dt-bindings/gpio/gpio.h>
+>   #include "mt8173.dtsi"
+>
+>   / {
+> @@ -32,6 +33,15 @@
+>   	};
+>
+>   	chosen { };
+> +
+> +	usb_p1_vbus: fixedregulator@0 {
 
-It should be fine but you may need to change to pass an array of
-unsigned int instead of an array of u16 in.
+    Just "regulator@0" please. This is more in line with what ePAPR requires 
+from the node names.
 
-> > > Maybe it was not the good fix for this, but should be a problem need to
-> > > be reported, or should I need to give the regmap_bus on mtk_pmic_wrap.c?
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "usb_vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		gpio = <&pio 130 GPIO_ACTIVE_HIGH>;
+> +		enable-active-high;
+> +	};
+>   };
+>
+>   &pwrap {
+[...]
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 0696f8f..aa1ecc7 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+[...]
+> @@ -393,6 +394,36 @@
+>   			#size-cells = <0>;
+>   			status = "disabled";
+>   		};
+> +
+> +		usb: usb30@11270000 {
 
-> > That file isn't in mainline...
+    ePAPR standardizes the name "usb" for such nodes, please fix.
 
-> oh...it's mtk-pmic-wrap.c, sorry about that.
+[...]
 
-Found it - thanks.
-
-> > memcpy() is definitely not a safe way to move from an unsigned int to a
-> > u16 which is what your specific use case is trying to do.  I'll need to
-> > do an audit of existing users (or someone else will!) to figure out what
-> > people are doing with .val_bits in drivers using reg_read() and
-> > reg_write() but I think what we should be doing here is probably
-> > providing appropriate conversion functions based on val_bits on init.
-
-> Ok, got it, memcpy() should not be used here anymore.
-
-Right.  We just need to do a survey of existing users and figure out
-what the least disruptive format function to provide is.  That way we
-don't have to special case other code that uses formatting.
-
---lxO5ObTDWtTXup1c
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJVr8wmAAoJECTWi3JdVIfQJoQH/j83QCjShnEpMc0TrqcJljQX
-bAoTmvntMPCQiL+jSQ31zIvI8IfjgaV576CD/NS/xp7YRvXpw3rXHNc8FT0owKkX
-/jZMtu3VadzR8WRkL/N/zNIpF6cPNeqoryeja751L/Uu1EnQiC48LBmOdddi1sFt
-RFHZyq7dfztF01NOsFXPa55PPo5l2gA/fOELmEl314zTQMN4idp/TlEu7+wr2Gpg
-7qH1FgcHZ5KZuK8ydynnETrLSWs3MDAO3/oAaIwX91BOsdv5JtzCMxmw80KfKm6j
-c0wZ+J5hK3C/yPt219oaE5/BMW5SXeWmB4lDm9dCd6T5tvS9jE8eq9lF/TyWzPA=
-=+5e2
------END PGP SIGNATURE-----
-
---lxO5ObTDWtTXup1c--
+MBR, Sergei
