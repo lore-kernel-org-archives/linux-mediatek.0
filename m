@@ -1,119 +1,81 @@
-From: Javier Martinez Canillas <javier@dowhile0.org>
-Subject: Re: [PATCH v2 2/2] regulator: mt6311: Add support for mt6311 regulator
-Date: Wed, 22 Jul 2015 14:50:31 +0200
-Message-ID: <CABxcv=ncxfeqo1vfz6XzJWYUOGeFGAbDmz2M_PzM+8PBQvXjgw@mail.gmail.com>
-References: <1437566453-13117-1-git-send-email-henryc.chen@mediatek.com>
-	<1437566453-13117-3-git-send-email-henryc.chen@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 2/5] dt-bindings: Add a binding for Mediatek xHCI host controller
+Date: Wed, 22 Jul 2015 22:05:42 +0800
+Message-ID: <1437573945-31586-3-git-send-email-chunfeng.yun@mediatek.com>
+References: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437566453-13117-3-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Henry,
+add a DT binding documentation of xHCI host controller for the
+MT8173 SoC from Mediatek.
 
-On Wed, Jul 22, 2015 at 2:00 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
-> Add regulator support for mt6311.
-> It has 2 regulaotrs - Buck and LDO, provide the related buck/ldo voltage
-> data to the driver, and creates the regulator_desc table. Supported
-> operations for Buck are enabled/disabled and voltage change, only
-> enabled/disabled for LDO.
->
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  drivers/regulator/Kconfig            |   9 ++
->  drivers/regulator/Makefile           |   1 +
->  drivers/regulator/mt6311-regulator.c | 208 +++++++++++++++++++++++++++++++++++
->  drivers/regulator/mt6311-regulator.h |  65 +++++++++++
->  include/linux/regulator/mt6311.h     |  29 +++++
->  5 files changed, 312 insertions(+)
->  create mode 100644 drivers/regulator/mt6311-regulator.c
->  create mode 100644 drivers/regulator/mt6311-regulator.h
->  create mode 100644 include/linux/regulator/mt6311.h
->
-> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-> index bef3bde..aab09ac 100644
-> --- a/drivers/regulator/Kconfig
-> +++ b/drivers/regulator/Kconfig
-> @@ -451,6 +451,15 @@ config REGULATOR_MC13892
->           Say y here to support the regulators found on the Freescale MC13892
->           PMIC.
->
-> +config REGULATOR_MT6311
-> +       tristate "MediaTek MT6311 PMIC"
-> +       depends on I2C
-> +       help
-> +         Say y here to select this option to enable the power regulator of
-> +         MediaTek MT6311 PMIC.
-> +         This driver supports the control of different power rails of device
-> +         through regulator interface.
-> +
->  config REGULATOR_MT6397
->         tristate "MediaTek MT6397 PMIC"
->         depends on MFD_MT6397
-> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-> index 91bf762..45e790f 100644
-> --- a/drivers/regulator/Makefile
-> +++ b/drivers/regulator/Makefile
-> @@ -60,6 +60,7 @@ obj-$(CONFIG_REGULATOR_MAX77843) += max77843.o
->  obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
->  obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
->  obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
-> +obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6397) += mt6397-regulator.o
->  obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
->  obj-$(CONFIG_REGULATOR_QCOM_SPMI) += qcom_spmi-regulator.o
-> diff --git a/drivers/regulator/mt6311-regulator.c b/drivers/regulator/mt6311-regulator.c
-> new file mode 100644
-> index 0000000..d990dc9
-> --- /dev/null
-> +++ b/drivers/regulator/mt6311-regulator.c
-> @@ -0,0 +1,208 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Henry Chen <henryc.chen@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/err.h>
-> +#include <linux/gpio.h>
-> +#include <linux/i2c.h>
-> +#include <linux/init.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/regulator/of_regulator.h>
-> +#include <linux/regulator/mt6311.h>
-> +#include <linux/slab.h>
-> +#include "mt6311-regulator.h"
-> +
-> +struct mt6311 {
-> +       struct device *dev;
-> +       struct regmap *regmap;
-> +       struct regulator_dev *rdev[MT6311_MAX_REGULATORS];
-> +       int num_regulator;
-> +       int chip_cid;
-> +};
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../devicetree/bindings/usb/mt8173-xhci.txt        | 50 ++++++++++++++++++++++
+ 1 file changed, 50 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
 
-It seems this struct can be removed, the rdev, num_regulator and
-chip_cid fields are set but not used and dev and regmap are only used
-to set the struct regulator_config fields in mt6311_regulator_init().
-But that won't be necessary if you just remove the
-mt6311_regulator_init() function and move the regulator registration
-logic to mt6311_i2c_probe().
-
-Best regards,
-Javier
+diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+new file mode 100644
+index 0000000..444494d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+@@ -0,0 +1,50 @@
++MT65XX xhci
++
++The device node for Mediatek SOC usb3.0 host controller
++
++Required properties:
++ - compatible : supports "mediatek,mt8173-xhci"
++ - reg        : Offset and length of registers
++ - interrupts : Interrupt mode, number and trigger mode
++ - power-domains: to enable usb's mtcmos
++ - vusb33-supply:  regulator of usb avdd3.3v
++ - clocks     : must support all clocks that xhci needs
++ - clock-names: should be "sys_mac" for sys and mac clocks, and
++	"wakeup_deb_p0", "wakeup_deb_p1" for wakeup debounce control
++	clocks
++ - phys	: the phys that xhci will bind, currently supports up to two
++	phys, so phy index should not greater than one.
++ - phy-names : should be "phy-X" format, X equals to 0 or 1
++ - usb3-lpm-capable: supports USB3 LPM
++ - mediatek,usb-wakeup: to access usb wakeup control register
++ - mediatek,wakeup-src: 1: ip sleep wakeup mode; 2: line state wakeup
++	mode; others means don't enable wakeup source of usb
++ - mediatek,u2port-num: the number should not greater than the number
++	of phys
++
++Optional properties:
++ - vbus-supply : reference to the VBUS regulator;
++
++Example:
++usb: usb30@11270000 {
++	compatible = "mediatek,mt8173-xhci";
++	reg = <0 0x11270000 0 0x4000>,
++	      <0 0x11280000 0 0x0800>;
++	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
++	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++	clocks = <&topckgen CLK_TOP_USB30_SEL>,
++		 <&pericfg CLK_PERI_USB0>,
++		 <&pericfg CLK_PERI_USB1>;
++	clock-names = "sys_mac",
++		      "wakeup_deb_p0",
++		      "wakeup_deb_p1";
++	phys = <&u3phy 0>, <&u3phy 1>;
++	phy-names = "phy-0", "phy-1";
++	vusb33-supply = <&mt6397_vusb_reg>;
++	vbus-supply = <&usb_p1_vbus>;
++	usb3-lpm-capable;
++	mediatek,usb-wakeup = <&pericfg>;
++	mediatek,wakeup-src = <1>;
++	mediatek,u2port-num = <2>;
++	status = "okay";
++};
+-- 
+1.8.1.1.dirty
