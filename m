@@ -1,61 +1,160 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 2/2] watchdog: add wdt shutdown callback to disable wdt if enabled
-Date: Thu, 23 Jul 2015 13:49:11 +0800
-Message-ID: <1437630551-39650-3-git-send-email-eddie.huang@mediatek.com>
-References: <1437630551-39650-1-git-send-email-eddie.huang@mediatek.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: [PATCH] soc: mediatek: add scpsys support active_wakeup
+Date: Thu, 23 Jul 2015 14:00:49 +0800
+Message-ID: <1437631249-706-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1437630551-39650-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Register gpd_dev_ops.active_wakeup function to support keep power
+during suspend state. And add flag to each power domain to
+decide whether keep power during suspend or not.
 
-Without .shutdown(), watchdog might reset the system during power off.
-For example, if watchdog's timeout is set to 30s, then it is reset to
-zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
-but watchdog is still running and may trigger reset.
-
-Signed-off-by: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
 ---
- drivers/watchdog/mtk_wdt.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 056412c..6ad9df9 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -210,6 +210,14 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	return 0;
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 43a79ed..fc78b70 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -67,6 +67,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id;
++	bool active_wakeup;
+ };
+ 
+ static const struct scp_domain_data scp_domain_data[] __initconst = {
+@@ -77,6 +78,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = MT8173_CLK_MM,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_VENC] = {
+ 		.name = "venc",
+@@ -85,6 +87,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_MM,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_ISP] = {
+ 		.name = "isp",
+@@ -93,6 +96,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.clk_id = MT8173_CLK_MM,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MM] = {
+ 		.name = "mm",
+@@ -101,6 +105,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.clk_id = MT8173_CLK_MM,
++		.active_wakeup = false,
+ 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
+ 			MT8173_TOP_AXI_PROT_EN_MM_M1,
+ 	},
+@@ -111,6 +116,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_MM,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_AUDIO] = {
+ 		.name = "audio",
+@@ -119,6 +125,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_USB] = {
+ 		.name = "usb",
+@@ -127,6 +134,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = true,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+@@ -135,6 +143,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = 0,
+ 		.clk_id = MT8173_CLK_MFG,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_2D] = {
+ 		.name = "mfg_2d",
+@@ -143,6 +152,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = false,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG] = {
+ 		.name = "mfg",
+@@ -151,6 +161,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(13, 8),
+ 		.sram_pdn_ack_bits = GENMASK(21, 16),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = false,
+ 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
+ 			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
+ 			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
+@@ -171,6 +182,7 @@ struct scp_domain {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
++	bool active_wakeup;
+ };
+ 
+ struct scp {
+@@ -370,6 +382,20 @@ out:
+ 	return ret;
  }
  
-+static void mtk_wdt_shutdown(struct platform_device *pdev)
++static bool scpsys_active_wakeup(struct device *dev)
 +{
-+	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
++	struct generic_pm_domain *genpd;
++	struct scp_domain *scpd;
 +
-+	if (watchdog_active(&mtk_wdt->wdt_dev))
-+		mtk_wdt_stop(&mtk_wdt->wdt_dev);
++	if (IS_ERR_OR_NULL(dev->pm_domain))
++		return false;
++
++	genpd = pd_to_genpd(dev->pm_domain);
++	scpd = container_of(genpd, struct scp_domain, genpd);
++
++	return scpd->active_wakeup;
 +}
 +
- static int mtk_wdt_remove(struct platform_device *pdev)
+ static int __init scpsys_probe(struct platform_device *pdev)
  {
- 	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-@@ -259,6 +267,7 @@ static const struct dev_pm_ops mtk_wdt_pm_ops = {
- static struct platform_driver mtk_wdt_driver = {
- 	.probe		= mtk_wdt_probe,
- 	.remove		= mtk_wdt_remove,
-+	.shutdown	= mtk_wdt_shutdown,
- 	.driver		= {
- 		.name		= DRV_NAME,
- 		.pm		= &mtk_wdt_pm_ops,
+ 	struct genpd_onecell_data *pd_data;
+@@ -427,12 +453,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
+ 		scpd->sram_pdn_bits = data->sram_pdn_bits;
+ 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
+ 		scpd->bus_prot_mask = data->bus_prot_mask;
++		scpd->active_wakeup = data->active_wakeup;
+ 		if (data->clk_id != MT8173_CLK_NONE)
+ 			scpd->clk = clk[data->clk_id];
+ 
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
++		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
+ 
+ 		/*
+ 		 * Initially turn on all domains to make the domains usable
 -- 
 1.8.1.1.dirty
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
