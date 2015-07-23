@@ -1,85 +1,43 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v3 0/5] Mediatek xHCI support
-Date: Thu, 23 Jul 2015 09:18:35 +0800
-Message-ID: <1437614315.3040.3.camel@mhfsdcap03>
-References: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH v3] regulator: mt6311: Add support for MT6311 regulator
+Date: Thu, 23 Jul 2015 11:39:57 +0800
+Message-ID: <1437622799-28115-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Sascha Hauer <kernel@pengutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, henryc.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Sorry, add a title
+This patch set adds support for the MediaTek PMIC mt6311 regulator driver,
+ which adds mt6311 related buck/ldo voltage data to the driver,
+ and creates the regulator_desc table.
 
-On Wed, 2015-07-22 at 22:05 +0800, Chunfeng Yun wrote:
-> From ac1e8724bfa47494223bad0af450c1a63cd2fe0c Mon Sep 17 00:00:00 2001
-> From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Date: Wed, 22 Jul 2015 21:15:15 +0800
-> Subject: [PATCH 0/5] *** SUBJECT HERE ***
-> 
-> The patch supports MediaTek's xHCI controller.
-> 
-> There are some differences from xHCI spec:
-> 1. The interval is specified in 250 * 8ns increments for Interrupt Moderation
-> Interval(IMODI) of the Interrupter Moderation(IMOD) register, it is 8 times as
-> much as that defined in xHCI spec.
-> 
-> 2. For the value of TD Size in Normal TRB, MTK's xHCI controller defines a
-> number of packets that remain to be transferred for a TD after processing all
-> Max packets in all previous TRBs,that means don't include the current TRB's,
-> but in xHCI spec it includes the current ones.
-> 
-> 3. To minimize the scheduling effort for synchronous endpoints in xHC, the MTK
-> architecture defines some extra SW scheduling parameters for HW. According to
-> these parameters provided by SW, the xHC can easily decide whether a
-> synchronous endpoint should be scheduled in a specific uFrame. The extra SW
-> scheduling parameters are put into reserved DWs in Slot and Endpoint Context.
-> And a bandwidth scheduler algorithm is added to support such feature.
-> 
-> A usb3.0 phy driver is also added which used by mt65xx SoCs platform, it
-> supports two usb2.0 ports and one usb3.0 port.
-> 
-> Change in v3:
-> 1. implement generic phy
-> 2. move opperations for IPPC and wakeup from phy driver to xHCI driver
-> 3. seperate quirk functions into a single C file to fix up dependence issue
-> 
-> Chunfeng Yun (5):
->   dt-bindings: Add usb3.0 phy binding for MT65xx SoCs
->   dt-bindings: Add a binding for Mediatek xHCI host controller
->   usb: phy: add usb3.0 phy driver for mt65xx SoCs
->   xhci: mediatek: support MTK xHCI host controller
->   arm64: dts: mediatek: add xHCI & usb phy for mt8173
-> 
->  .../devicetree/bindings/phy/phy-mt65xx-u3.txt      |  21 +
->  .../devicetree/bindings/usb/mt8173-xhci.txt        |  50 ++
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  15 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  31 +
->  drivers/phy/Kconfig                                |   9 +
->  drivers/phy/Makefile                               |   1 +
->  drivers/phy/phy-mt65xx-usb3.c                      | 426 +++++++++++
->  drivers/usb/host/Kconfig                           |   9 +
->  drivers/usb/host/Makefile                          |   4 +
->  drivers/usb/host/xhci-mtk-sch.c                    | 436 +++++++++++
->  drivers/usb/host/xhci-mtk.c                        | 836 +++++++++++++++++++++
->  drivers/usb/host/xhci-mtk.h                        | 135 ++++
->  drivers/usb/host/xhci-ring.c                       |  35 +-
->  drivers/usb/host/xhci.c                            |  19 +-
->  drivers/usb/host/xhci.h                            |   1 +
->  15 files changed, 2021 insertions(+), 7 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-u3.txt
->  create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
->  create mode 100644 drivers/phy/phy-mt65xx-usb3.c
->  create mode 100644 drivers/usb/host/xhci-mtk-sch.c
->  create mode 100644 drivers/usb/host/xhci-mtk.c
->  create mode 100644 drivers/usb/host/xhci-mtk.h
-> 
-> --
-> 1.8.1.1.dirty
-> 
-> In-Reply-To: 
-> 
+Changes in v3:
+- Removed the struct mt6311 since the members of mt6311 were not be necessary.
+
+Changes in v2:
+- Re-ordered the sequence of makefile and Kconfig.
+- Specifying the regulator DT bindings by providing of_match and 
+regulators_node in the regulator_desc and delete the DT handling code.
+
+
+Henry Chen (2):
+  dt-bindings: regulator: mt6311: Add document for mt6311 regulator
+  regulator: mt6311: Add support for mt6311 regulator
+
+ .../bindings/regulator/mt6311-regulator.txt        |  35 ++++
+ drivers/regulator/Kconfig                          |   9 +
+ drivers/regulator/Makefile                         |   1 +
+ drivers/regulator/mt6311-regulator.c               | 183 +++++++++++++++++++++
+ drivers/regulator/mt6311-regulator.h               |  65 ++++++++
+ include/linux/regulator/mt6311.h                   |  29 ++++
+ 6 files changed, 322 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+ create mode 100644 drivers/regulator/mt6311-regulator.c
+ create mode 100644 drivers/regulator/mt6311-regulator.h
+ create mode 100644 include/linux/regulator/mt6311.h
+
+-- 
+1.8.1.1.dirty
