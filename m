@@ -1,383 +1,43 @@
-From: Javier Martinez Canillas <javier@dowhile0.org>
-Subject: Re: [PATCH v3 2/2] regulator: mt6311: Add support for mt6311 regulator
-Date: Thu, 23 Jul 2015 11:07:56 +0200
-Message-ID: <CABxcv=kgvCtHxuu0RDbFWEim+HYX74wEYXh8K7a6tT74R5YSuA@mail.gmail.com>
-References: <1437622799-28115-1-git-send-email-henryc.chen@mediatek.com>
-	<1437622799-28115-3-git-send-email-henryc.chen@mediatek.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH  v3 0/4] Add Mediatek SPI bus driver
+Date: Thu, 23 Jul 2015 17:10:39 +0800
+Message-ID: <1437642643-11966-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437622799-28115-3-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Henry,
+Change in v3:
+1. support fifo mode function.
+2. support any non-prime length transfer in dma mode.
+3. use interrupt to handle scatterlist.
+4. fix review comment.
 
-Driver looks mostly good for me now but I just found some things I
-missed in the last revision.
+Leilk Liu (4):
+  spi: support spi without dma channel to use can_dma()
+  dt-bindings: ARM: Mediatek: Document devicetree bindings for spi bus
+  spi: mediatek: Add spi bus for Mediatek MT8173
+  arm64: dts: Add spi bus dts
 
-On Thu, Jul 23, 2015 at 5:39 AM, Henry Chen <henryc.chen@mediatek.com> wrote:
-> Add regulator support for mt6311.
-> It has 2 regulaotrs - Buck and LDO, provide the related buck/ldo voltage
-> data to the driver, and creates the regulator_desc table. Supported
-> operations for Buck are enabled/disabled and voltage change, only
-> enabled/disabled for LDO.
->
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  drivers/regulator/Kconfig            |   9 ++
->  drivers/regulator/Makefile           |   1 +
->  drivers/regulator/mt6311-regulator.c | 183 +++++++++++++++++++++++++++++++++++
->  drivers/regulator/mt6311-regulator.h |  65 +++++++++++++
->  include/linux/regulator/mt6311.h     |  29 ++++++
->  5 files changed, 287 insertions(+)
->  create mode 100644 drivers/regulator/mt6311-regulator.c
->  create mode 100644 drivers/regulator/mt6311-regulator.h
->  create mode 100644 include/linux/regulator/mt6311.h
->
-> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-> index bef3bde..aab09ac 100644
-> --- a/drivers/regulator/Kconfig
-> +++ b/drivers/regulator/Kconfig
-> @@ -451,6 +451,15 @@ config REGULATOR_MC13892
->           Say y here to support the regulators found on the Freescale MC13892
->           PMIC.
->
-> +config REGULATOR_MT6311
-> +       tristate "MediaTek MT6311 PMIC"
-> +       depends on I2C
-> +       help
-> +         Say y here to select this option to enable the power regulator of
-> +         MediaTek MT6311 PMIC.
-> +         This driver supports the control of different power rails of device
-> +         through regulator interface.
-> +
->  config REGULATOR_MT6397
->         tristate "MediaTek MT6397 PMIC"
->         depends on MFD_MT6397
-> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-> index 91bf762..45e790f 100644
-> --- a/drivers/regulator/Makefile
-> +++ b/drivers/regulator/Makefile
-> @@ -60,6 +60,7 @@ obj-$(CONFIG_REGULATOR_MAX77843) += max77843.o
->  obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
->  obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
->  obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
-> +obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6397) += mt6397-regulator.o
->  obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
->  obj-$(CONFIG_REGULATOR_QCOM_SPMI) += qcom_spmi-regulator.o
-> diff --git a/drivers/regulator/mt6311-regulator.c b/drivers/regulator/mt6311-regulator.c
-> new file mode 100644
-> index 0000000..3c926a2
-> --- /dev/null
-> +++ b/drivers/regulator/mt6311-regulator.c
-> @@ -0,0 +1,183 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Henry Chen <henryc.chen@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/err.h>
-> +#include <linux/gpio.h>
-> +#include <linux/i2c.h>
-> +#include <linux/init.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/regulator/of_regulator.h>
-> +#include <linux/regulator/mt6311.h>
-> +#include <linux/slab.h>
-> +#include "mt6311-regulator.h"
-> +
-> +static const struct regmap_config mt6311_regmap_config = {
-> +       .reg_bits = 8,
-> +       .val_bits = 8,
-> +       .max_register = MT6311_FQMTR_CON4,
-> +};
-> +
-> +/* Default limits measured in millivolts and milliamps */
-> +#define MT6311_MIN_UV          600000
-> +#define MT6311_MAX_UV          1400000
-> +#define MT6311_STEP_UV         6250
-> +
-> +static const struct regulator_linear_range buck_volt_range[] = {
-> +       REGULATOR_LINEAR_RANGE(MT6311_MIN_UV, 0, 0x7f, MT6311_STEP_UV),
-> +};
-> +
-> +static struct regulator_ops mt6311_buck_ops = {
-> +       .list_voltage = regulator_list_voltage_linear_range,
-> +       .map_voltage = regulator_map_voltage_linear_range,
-> +       .set_voltage_sel = regulator_set_voltage_sel_regmap,
-> +       .get_voltage_sel = regulator_get_voltage_sel_regmap,
-> +       .set_voltage_time_sel = regulator_set_voltage_time_sel,
-> +       .enable = regulator_enable_regmap,
-> +       .disable = regulator_disable_regmap,
-> +       .is_enabled = regulator_is_enabled_regmap,
-> +};
-> +
-> +static struct regulator_ops mt6311_ldo_ops = {
-> +       .enable = regulator_enable_regmap,
-> +       .disable = regulator_disable_regmap,
-> +       .is_enabled = regulator_is_enabled_regmap,
-> +};
-> +
-> +#define MT6311_BUCK(_id) \
-> +{\
-> +       .name = #_id,\
-> +       .ops = &mt6311_buck_ops,\
-> +       .of_match = of_match_ptr(#_id),\
-> +       .regulators_node = of_match_ptr("regulators"),\
-> +       .type = REGULATOR_VOLTAGE,\
-> +       .id = MT6311_ID_##_id,\
-> +       .n_voltages = (MT6311_MAX_UV - MT6311_MIN_UV) / MT6311_STEP_UV + 1,\
-> +       .min_uV = MT6311_MIN_UV,\
-> +       .uV_step = MT6311_STEP_UV,\
-> +       .owner = THIS_MODULE,\
-> +       .linear_ranges = buck_volt_range, \
-> +       .n_linear_ranges = ARRAY_SIZE(buck_volt_range), \
-> +       .enable_reg = MT6311_VDVFS11_CON9,\
-> +       .enable_mask = MT6311_PMIC_VDVFS11_EN_MASK,\
-> +       .vsel_reg = MT6311_VDVFS11_CON12,\
-> +       .vsel_mask = MT6311_PMIC_VDVFS11_VOSEL_MASK,\
-> +}
-> +
-> +#define MT6311_LDO(_id) \
-> +{\
-> +       .name = #_id,\
-> +       .ops = &mt6311_ldo_ops,\
-> +       .of_match = of_match_ptr(#_id),\
-> +       .regulators_node = of_match_ptr("regulators"),\
-> +       .type = REGULATOR_VOLTAGE,\
-> +       .id = MT6311_ID_##_id,\
-> +       .owner = THIS_MODULE,\
-> +       .enable_reg = MT6311_LDO_CON3,\
-> +       .enable_mask = MT6311_PMIC_RG_VBIASN_EN_MASK,\
-> +}
-> +
-> +static struct regulator_desc mt6311_regulators[] = {
-> +       MT6311_BUCK(VDVFS),
-> +       MT6311_LDO(VBIASN),
-> +};
-> +
-> +/*
-> + * I2C driver interface functions
-> + */
-> +static int mt6311_i2c_probe(struct i2c_client *i2c,
-> +               const struct i2c_device_id *id)
-> +{
-> +       struct regulator_config config = { };
-> +       struct regulator_dev *rdev;
-> +       struct regmap *regmap;
-> +       int error, i, ret;
-> +       unsigned int data;
-> +
-> +       regmap = devm_regmap_init_i2c(i2c, &mt6311_regmap_config);
-> +       if (IS_ERR(regmap)) {
-> +               error = PTR_ERR(regmap);
-> +               dev_err(&i2c->dev, "Failed to allocate register map: %d\n",
-> +                       error);
-> +               return error;
-> +       }
-> +
-> +       ret = regmap_read(regmap, MT6311_SWCID, &data);
-> +       if (ret < 0) {
-> +               dev_err(&i2c->dev, "Failed to read DEVICE_ID reg: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       switch (data) {
-> +       case MT6311_E1_CID_CODE:
-> +       case MT6311_E2_CID_CODE:
-> +       case MT6311_E3_CID_CODE:
-> +               break;
-> +       default:
-> +               dev_err(&i2c->dev, "Unsupported device id = 0x%x.\n", data);
-> +               return -ENODEV;
-> +       }
-> +
-> +       for (i = 0; i < MT6311_MAX_REGULATORS; i++) {
-> +               config.dev = &i2c->dev;
-> +               config.regmap = regmap;
-> +
-> +               rdev = devm_regulator_register(&i2c->dev,
-> +                       &mt6311_regulators[i], &config);
-> +               if (IS_ERR(rdev)) {
-> +                       dev_err(&i2c->dev,
-> +                               "Failed to register MT6311 regulator\n");
-> +                       return PTR_ERR(rdev);
-> +               }
-> +       }
-> +
-> +       if (ret < 0)
-> +               dev_err(&i2c->dev, "Failed to initialize regulator: %d\n", ret);
-> +
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |  38 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  23 +
+ drivers/spi/Kconfig                                |   9 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-mt65xx.c                           | 817 +++++++++++++++++++++
+ drivers/spi/spi.c                                  |  22 +-
+ include/linux/platform_data/spi-mt65xx.h           |  22 +
+ 7 files changed, 928 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+ create mode 100644 drivers/spi/spi-mt65xx.c
+ create mode 100644 include/linux/platform_data/spi-mt65xx.h
 
-I don't think this is necessary, you are already adding logs for all
-the error conditions.
+--
+1.8.1.1.dirty
 
-> +       return ret;
-> +}
-> +
-> +static const struct i2c_device_id mt6311_i2c_id[] = {
-> +       {"mt6311", 0},
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(i2c, mt6311_i2c_id);
-> +
-> +#ifdef CONFIG_OF
-> +static const struct of_device_id mt6311_dt_ids[] = {
-> +       { .compatible = "mediatek,mt6311-regulator",
-> +         .data = &mt6311_i2c_id[0] },
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6311_dt_ids);
-> +#endif
-> +
-> +static struct i2c_driver mt6311_regulator_driver = {
-> +       .driver = {
-> +               .name = "mt6311",
-> +               .owner = THIS_MODULE,
-> +               .of_match_table = of_match_ptr(mt6311_dt_ids),
-
-of_match_ptr() is NULL when CONFIG_OF is not defined so you don't need
-the additional #ifdef
-CONFIG_OF around mt6311_dt_ids.
-
-> +       },
-> +       .probe = mt6311_i2c_probe,
-> +       .id_table = mt6311_i2c_id,
-> +};
-> +
-> +module_i2c_driver(mt6311_regulator_driver);
-> +
-> +MODULE_AUTHOR("Henry Chen <henryc.chen@mediatek.com>");
-> +MODULE_DESCRIPTION("Regulator device driver for Mediatek MT6311");
-> +MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/regulator/mt6311-regulator.h b/drivers/regulator/mt6311-regulator.h
-> new file mode 100644
-> index 0000000..5218db4
-> --- /dev/null
-> +++ b/drivers/regulator/mt6311-regulator.h
-> @@ -0,0 +1,65 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Henry Chen <henryc.chen@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#ifndef __MT6311_REGULATOR_H__
-> +#define __MT6311_REGULATOR_H__
-> +
-> +#define MT6311_SWCID              0x01
-> +
-> +#define MT6311_TOP_INT_CON        0x18
-> +#define MT6311_TOP_INT_MON        0x19
-> +
-> +#define MT6311_VDVFS11_CON0       0x87
-> +#define MT6311_VDVFS11_CON7       0x88
-> +#define MT6311_VDVFS11_CON8       0x89
-> +#define MT6311_VDVFS11_CON9       0x8A
-> +#define MT6311_VDVFS11_CON10      0x8B
-> +#define MT6311_VDVFS11_CON11      0x8C
-> +#define MT6311_VDVFS11_CON12      0x8D
-> +#define MT6311_VDVFS11_CON13      0x8E
-> +#define MT6311_VDVFS11_CON14      0x8F
-> +#define MT6311_VDVFS11_CON15      0x90
-> +#define MT6311_VDVFS11_CON16      0x91
-> +#define MT6311_VDVFS11_CON17      0x92
-> +#define MT6311_VDVFS11_CON18      0x93
-> +#define MT6311_VDVFS11_CON19      0x94
-> +
-> +#define MT6311_LDO_CON0           0xCC
-> +#define MT6311_LDO_OCFB0          0xCD
-> +#define MT6311_LDO_CON2           0xCE
-> +#define MT6311_LDO_CON3           0xCF
-> +#define MT6311_LDO_CON4           0xD0
-> +#define MT6311_FQMTR_CON0         0xD1
-> +#define MT6311_FQMTR_CON1         0xD2
-> +#define MT6311_FQMTR_CON2         0xD3
-> +#define MT6311_FQMTR_CON3         0xD4
-> +#define MT6311_FQMTR_CON4         0xD5
-> +
-> +#define MT6311_PMIC_RG_INT_POL_MASK                      0x1
-> +#define MT6311_PMIC_RG_INT_EN_MASK                       0x2
-> +#define MT6311_PMIC_RG_BUCK_OC_INT_STATUS_MASK           0x10
-> +
-> +#define MT6311_PMIC_VDVFS11_EN_CTRL_MASK                 0x1
-> +#define MT6311_PMIC_VDVFS11_VOSEL_CTRL_MASK              0x2
-> +#define MT6311_PMIC_VDVFS11_EN_SEL_MASK                  0x3
-> +#define MT6311_PMIC_VDVFS11_VOSEL_SEL_MASK               0xc
-> +#define MT6311_PMIC_VDVFS11_EN_MASK                      0x1
-> +#define MT6311_PMIC_VDVFS11_VOSEL_MASK                   0x7F
-> +#define MT6311_PMIC_VDVFS11_VOSEL_ON_MASK                0x7F
-> +#define MT6311_PMIC_VDVFS11_VOSEL_SLEEP_MASK             0x7F
-> +#define MT6311_PMIC_NI_VDVFS11_VOSEL_MASK                0x7F
-> +
-> +#define MT6311_PMIC_RG_VBIASN_EN_MASK                    0x1
-> +
-> +#endif
-> diff --git a/include/linux/regulator/mt6311.h b/include/linux/regulator/mt6311.h
-> new file mode 100644
-> index 0000000..8473259
-> --- /dev/null
-> +++ b/include/linux/regulator/mt6311.h
-> @@ -0,0 +1,29 @@
-> +/*
-> + * Copyright (c) 2015 MediaTek Inc.
-> + * Author: Henry Chen <henryc.chen@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#ifndef __LINUX_REGULATOR_MT6311_H
-> +#define __LINUX_REGULATOR_MT6311_H
-> +
-> +#define MT6311_MAX_REGULATORS  2
-> +
-> +enum {
-> +       MT6311_ID_VDVFS = 0,
-> +       MT6311_ID_VBIASN,
-> +};
-> +
-> +#define MT6311_E1_CID_CODE    0x10
-> +#define MT6311_E2_CID_CODE    0x20
-> +#define MT6311_E3_CID_CODE    0x30
-> +
-> +#endif /* __LINUX_REGULATOR_MT6311_H */
-> --
-
-Besides those comments, it looks good to me now.
-
-Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
-
-Best regards,
-Javier
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
