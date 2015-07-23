@@ -1,160 +1,87 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH] soc: mediatek: add scpsys support active_wakeup
-Date: Thu, 23 Jul 2015 14:00:49 +0800
-Message-ID: <1437631249-706-1-git-send-email-eddie.huang@mediatek.com>
+From: Javier Martinez Canillas <javier@dowhile0.org>
+Subject: Re: [PATCH v3 1/2] dt-bindings: regulator: mt6311: Add document for
+ mt6311 regulator
+Date: Thu, 23 Jul 2015 10:43:14 +0200
+Message-ID: <CABxcv==6R46AqkTBHPfHdWc8gJZigQdREieZMVkLY9AEvevtUw@mail.gmail.com>
+References: <1437622799-28115-1-git-send-email-henryc.chen@mediatek.com>
+	<1437622799-28115-2-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1437622799-28115-2-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Register gpd_dev_ops.active_wakeup function to support keep power
-during suspend state. And add flag to each power domain to
-decide whether keep power during suspend or not.
+Hello Henry,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+On Thu, Jul 23, 2015 at 5:39 AM, Henry Chen <henryc.chen@mediatek.com> wrote:
+> This patch adds a list of supported regulator names to the devicetree
+> binding documentation for Mediatek MT6311 PMIC.
+>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+>  .../bindings/regulator/mt6311-regulator.txt        | 35 ++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+>
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> new file mode 100644
+> index 0000000..9387d6d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> @@ -0,0 +1,35 @@
+> +Mediatek MT6311 Regulator Driver
+> +
+> +Required properties:
+> +- compatible: "mediatek,mt6311-regulator"
+> +- reg: I2C slave address, usually 0x6b.
+> +- regulators: List of regulators provided by this controller. It is named
+> +  to VDVFS and VBIASN.
+> +  The definition for each of these nodes is defined using the standard binding
+> +  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
+> +
+> +The valid names for regulators are:
+> +BUCK:
+> +  VDVFS
+> +LDO:
+> +  VBIASN
+> +
+> +Example:
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 43a79ed..fc78b70 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -67,6 +67,7 @@ struct scp_domain_data {
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
- 	enum clk_id clk_id;
-+	bool active_wakeup;
- };
- 
- static const struct scp_domain_data scp_domain_data[] __initconst = {
-@@ -77,6 +78,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
- 		.clk_id = MT8173_CLK_MM,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_VENC] = {
- 		.name = "venc",
-@@ -85,6 +87,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_MM,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_ISP] = {
- 		.name = "isp",
-@@ -93,6 +96,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
- 		.clk_id = MT8173_CLK_MM,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_MM] = {
- 		.name = "mm",
-@@ -101,6 +105,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
- 		.clk_id = MT8173_CLK_MM,
-+		.active_wakeup = false,
- 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
- 			MT8173_TOP_AXI_PROT_EN_MM_M1,
- 	},
-@@ -111,6 +116,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_MM,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_AUDIO] = {
- 		.name = "audio",
-@@ -119,6 +125,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_USB] = {
- 		.name = "usb",
-@@ -127,6 +134,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = true,
- 	},
- 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
- 		.name = "mfg_async",
-@@ -135,6 +143,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = 0,
- 		.clk_id = MT8173_CLK_MFG,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_MFG_2D] = {
- 		.name = "mfg_2d",
-@@ -143,6 +152,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = false,
- 	},
- 	[MT8173_POWER_DOMAIN_MFG] = {
- 		.name = "mfg",
-@@ -151,6 +161,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(13, 8),
- 		.sram_pdn_ack_bits = GENMASK(21, 16),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = false,
- 		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
- 			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
- 			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-@@ -171,6 +182,7 @@ struct scp_domain {
- 	u32 sram_pdn_bits;
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
-+	bool active_wakeup;
- };
- 
- struct scp {
-@@ -370,6 +382,20 @@ out:
- 	return ret;
- }
- 
-+static bool scpsys_active_wakeup(struct device *dev)
-+{
-+	struct generic_pm_domain *genpd;
-+	struct scp_domain *scpd;
-+
-+	if (IS_ERR_OR_NULL(dev->pm_domain))
-+		return false;
-+
-+	genpd = pd_to_genpd(dev->pm_domain);
-+	scpd = container_of(genpd, struct scp_domain, genpd);
-+
-+	return scpd->active_wakeup;
-+}
-+
- static int __init scpsys_probe(struct platform_device *pdev)
- {
- 	struct genpd_onecell_data *pd_data;
-@@ -427,12 +453,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
- 		scpd->sram_pdn_bits = data->sram_pdn_bits;
- 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
- 		scpd->bus_prot_mask = data->bus_prot_mask;
-+		scpd->active_wakeup = data->active_wakeup;
- 		if (data->clk_id != MT8173_CLK_NONE)
- 			scpd->clk = clk[data->clk_id];
- 
- 		genpd->name = data->name;
- 		genpd->power_off = scpsys_power_off;
- 		genpd->power_on = scpsys_power_on;
-+		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
- 
- 		/*
- 		 * Initially turn on all domains to make the domains usable
--- 
-1.8.1.1.dirty
+Sorry, I missed this in the previous revision but the ePAPR document
+says "the name of a node should be somewhat generic, reflecting the
+function of the device and not its precise programming model."
+
+> +       pmic: mt6311@6B {
+
+So this should be:
+
+mt6311: pmic@
+
+> +               compatible = "mediatek,mt6311-regulator";
+> +               reg = <0x6B>;
+> +
+> +               regulators {
+> +                       mt6311_vcpu_reg: VDVFS {
+> +                               regulator-name = "VDVFS";
+> +                               regulator-min-microvolt = < 600000>;
+> +                               regulator-max-microvolt = <1400000>;
+> +                               regulator-ramp-delay = <10000>;
+> +                       };
+> +                       mt6311_ldo_reg: VBIASN {
+> +                               regulator-name = "VBIASN";
+> +                               regulator-min-microvolt = <200000>;
+> +                               regulator-max-microvolt = <800000>;
+> +                       };
+> +               };
+> +       };
+> --
+
+Besides the comment above, it looks good to me.
+
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
+
+Best regards,
+Javier
