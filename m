@@ -1,31 +1,55 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] ARM: mediatek: Add regmap to mediatek Kconfig
-Date: Thu, 23 Jul 2015 20:02:19 +0200
-Message-ID: <1437677861.d66HCIve0i@ubix>
-References: <1437166406-14233-1-git-send-email-matthias.bgg@gmail.com>
+From: Scott Shu <scott.shu@mediatek.com>
+Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
+ driver
+Date: Fri, 24 Jul 2015 10:02:03 +0800
+Message-ID: <1437703323.11272.12.camel@mtkswgap22>
+References: <srv_scott.shu@mediatek.com>
+	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
+	 <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
+	 <20150623055351.GA22419@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437166406-14233-1-git-send-email-matthias.bgg@gmail.com>
+In-Reply-To: <20150623055351.GA22419@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux@arm.linux.org.uk
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, loda.chou@mediatek.com, jades.shih@mediatek.com, scott.shu@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Friday, July 17, 2015 10:53:26 PM Matthias Brugger wrote:
-> Mediatek SoC needs the regmap/syscon infrastructure.
-> The infrastructure is used by the clock and pinctrl driver.
-> This patch adds MD_SYSCON to Kconfig for all Mediatek devices.
+On Tue, 2015-06-23 at 07:53 +0200, Sascha Hauer wrote:
+> Hi Scott,
 > 
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  arch/arm/mach-mediatek/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+> On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
+> > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
+> > MT6580.
 > 
-> diff --git a/arch/arm/mach-mediatek/Kconfig b/arch/arm/mach-mediatek/Kconfig
-> index 9f59e58..aeece17 100644
-> --- a/arch/arm/mach-mediatek/Kconfig
-> +++ b/arch/arm/mach-mediatek/Kconfig
+> This seems to be support for the very same hardware as I am posting
+> here:
+> 
+> https://lkml.org/lkml/2015/6/22/41
+> 
+> We should consolidate this.
+> 
+> My driver is currently handles all power domains except the CPUs while
+> yours handles only the CPUs.
+> I currently haven't looked whether CPUs can just be part of a power
+> domain aswell, but if that works this would probably be the way to go.
+> 
+> Sascha
+> 
+> 
+Hi Sascga,
 
-applied to v4.2-next/soc
+We had posted new patch set in following link, but still keep our
+original framework.
+http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001498.html
+
+As we mentioned in the new email thread, the SMP operations (smp_boot_secondary)
+will be executed before registering the scpsys_drv driver, so the CPUs power
+domain is controlled on arch/arm/mach-$(MACHINE) directory. 
+
+Please kindly provide your comments and suggestion. Thank you very much. 
+
+Best Regards,
+Scott Shu
