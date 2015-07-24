@@ -1,92 +1,96 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v4 2/7] clk: mediatek: Fix rate and dependency of MT8173 clocks
-Date: Fri, 24 Jul 2015 11:02:00 +0800
-Message-ID: <1437706925-3222-3-git-send-email-jamesjj.liao@mediatek.com>
-References: <1437706925-3222-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Henry Chen <HenryC.Chen@mediatek.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: regulator: mt6311: Add document for
+ mt6311 regulator
+Date: Fri, 24 Jul 2015 11:35:51 +0800
+Message-ID: <1437708951.30329.92.camel@mtksdaap41>
+References: <1437622799-28115-1-git-send-email-henryc.chen@mediatek.com>
+	 <1437622799-28115-2-git-send-email-henryc.chen@mediatek.com>
+	 <CABxcv==6R46AqkTBHPfHdWc8gJZigQdREieZMVkLY9AEvevtUw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1437706925-3222-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CABxcv==6R46AqkTBHPfHdWc8gJZigQdREieZMVkLY9AEvevtUw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Javier Martinez Canillas <javier@dowhile0.org>
+Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Remove the dependency from clk_null, and give all root clocks a
-typical rate, include clkph_mck_o, usb_syspll_125m and hdmitx_dig_cts.
+Hi Javier,
 
-dpi_ck was removed due to no clock reference to it.
+On Thu, 2015-07-23 at 10:43 +0200, Javier Martinez Canillas wrote:
+> Hello Henry,
+> 
+> On Thu, Jul 23, 2015 at 5:39 AM, Henry Chen <henryc.chen@mediatek.com> wrote:
+> > This patch adds a list of supported regulator names to the devicetree
+> > binding documentation for Mediatek MT6311 PMIC.
+> >
+> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > ---
+> >  .../bindings/regulator/mt6311-regulator.txt        | 35 ++++++++++++++++++++++
+> >  1 file changed, 35 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> > new file mode 100644
+> > index 0000000..9387d6d
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/regulator/mt6311-regulator.txt
+> > @@ -0,0 +1,35 @@
+> > +Mediatek MT6311 Regulator Driver
+> > +
+> > +Required properties:
+> > +- compatible: "mediatek,mt6311-regulator"
+> > +- reg: I2C slave address, usually 0x6b.
+> > +- regulators: List of regulators provided by this controller. It is named
+> > +  to VDVFS and VBIASN.
+> > +  The definition for each of these nodes is defined using the standard binding
+> > +  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
+> > +
+> > +The valid names for regulators are:
+> > +BUCK:
+> > +  VDVFS
+> > +LDO:
+> > +  VBIASN
+> > +
+> > +Example:
+> 
+> Sorry, I missed this in the previous revision but the ePAPR document
+> says "the name of a node should be somewhat generic, reflecting the
+> function of the device and not its precise programming model."
+> 
+> > +       pmic: mt6311@6B {
+> 
+> So this should be:
+> 
+> mt6311: pmic@
 
-Replace parent clock of infra_cpum with cpum_ck, which is an external
-clock and can be defined in the deivce tree.
+Ok, I will change it, thanks for reviewing.
 
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/clk/mediatek/clk-mt8173.c      | 13 ++++++-------
- include/dt-bindings/clock/mt8173-clk.h |  1 -
- 2 files changed, 6 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-index 4b9e04c..50b3266 100644
---- a/drivers/clk/mediatek/clk-mt8173.c
-+++ b/drivers/clk/mediatek/clk-mt8173.c
-@@ -24,11 +24,9 @@
- 
- static DEFINE_SPINLOCK(mt8173_clk_lock);
- 
--static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
--	FACTOR(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk_null", 1, 1),
--	FACTOR(CLK_TOP_DPI, "dpi_ck", "clk_null", 1, 1),
--	FACTOR(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk_null", 1, 1),
--	FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "clk_null", 1, 1),
-+static const struct mtk_fixed_clk fixed_clks[] __initconst = {
-+	FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk26m", 400 * MHZ),
-+	FIXED_CLK(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk26m", 125 * MHZ),
- };
- 
- static const struct mtk_fixed_factor top_divs[] __initconst = {
-@@ -53,6 +51,7 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
- 	FACTOR(CLK_TOP_CLKRTC_INT, "clkrtc_int", "clk26m", 1, 793),
- 	FACTOR(CLK_TOP_FPC, "fpc_ck", "clk26m", 1, 1),
- 
-+	FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "tvdpll_445p5m", 1, 3),
- 	FACTOR(CLK_TOP_HDMITXPLL_D2, "hdmitxpll_d2", "hdmitx_dig_cts", 1, 2),
- 	FACTOR(CLK_TOP_HDMITXPLL_D3, "hdmitxpll_d3", "hdmitx_dig_cts", 1, 3),
- 
-@@ -611,7 +610,7 @@ static const struct mtk_gate infra_clks[] __initconst = {
- 	GATE_ICG(CLK_INFRA_GCE, "infra_gce", "axi_sel", 6),
- 	GATE_ICG(CLK_INFRA_L2C_SRAM, "infra_l2c_sram", "axi_sel", 7),
- 	GATE_ICG(CLK_INFRA_M4U, "infra_m4u", "mem_sel", 8),
--	GATE_ICG(CLK_INFRA_CPUM, "infra_cpum", "clk_null", 15),
-+	GATE_ICG(CLK_INFRA_CPUM, "infra_cpum", "cpum_ck", 15),
- 	GATE_ICG(CLK_INFRA_KP, "infra_kp", "axi_sel", 16),
- 	GATE_ICG(CLK_INFRA_CEC, "infra_cec", "clk26m", 18),
- 	GATE_ICG(CLK_INFRA_PMICSPI, "infra_pmicspi", "pmicspi_sel", 22),
-@@ -714,7 +713,7 @@ static void __init mtk_topckgen_init(struct device_node *node)
- 
- 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
- 
--	mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
-+	mtk_clk_register_fixed_clks(fixed_clks, ARRAY_SIZE(fixed_clks), clk_data);
- 	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
- 	mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
- 			&mt8173_clk_lock, clk_data);
-diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-index 4ad76ed..7230c38 100644
---- a/include/dt-bindings/clock/mt8173-clk.h
-+++ b/include/dt-bindings/clock/mt8173-clk.h
-@@ -18,7 +18,6 @@
- /* TOPCKGEN */
- 
- #define CLK_TOP_CLKPH_MCK_O		1
--#define CLK_TOP_DPI			2
- #define CLK_TOP_USB_SYSPLL_125M		3
- #define CLK_TOP_HDMITX_DIG_CTS		4
- #define CLK_TOP_ARMCA7PLL_754M		5
--- 
-1.8.1.1.dirty
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Henry
+> 
+> > +               compatible = "mediatek,mt6311-regulator";
+> > +               reg = <0x6B>;
+> > +
+> > +               regulators {
+> > +                       mt6311_vcpu_reg: VDVFS {
+> > +                               regulator-name = "VDVFS";
+> > +                               regulator-min-microvolt = < 600000>;
+> > +                               regulator-max-microvolt = <1400000>;
+> > +                               regulator-ramp-delay = <10000>;
+> > +                       };
+> > +                       mt6311_ldo_reg: VBIASN {
+> > +                               regulator-name = "VBIASN";
+> > +                               regulator-min-microvolt = <200000>;
+> > +                               regulator-max-microvolt = <800000>;
+> > +                       };
+> > +               };
+> > +       };
+> > --
+> 
+> Besides the comment above, it looks good to me.
+> 
+> Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> 
+> Best regards,
+> Javier
