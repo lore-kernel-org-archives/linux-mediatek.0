@@ -1,50 +1,47 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Fri, 24 Jul 2015 17:55:10 +0100
-Message-ID: <20150724165509.GD21177@arm.com>
-References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com>
-	<1437037475-9065-6-git-send-email-yong.wu@mediatek.com>
-	<20150721145910.GG31095@arm.com>
-	<1437716593.23932.73.camel@mhfsdcap03>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: ARM: Mediatek: Document devicetree
+ bindings for spi bus
+Date: Fri, 24 Jul 2015 18:34:46 +0100
+Message-ID: <20150724173446.GS11162@sirena.org.uk>
+References: <1437642643-11966-1-git-send-email-leilk.liu@mediatek.com>
+ <1437642643-11966-3-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="tEhStdZb4uHHcvbt"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1437716593.23932.73.camel@mhfsdcap03>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel@pen>
+In-Reply-To: <1437642643-11966-3-git-send-email-leilk.liu@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 24, 2015 at 06:43:13AM +0100, Yong Wu wrote:
-> On Tue, 2015-07-21 at 15:59 +0100, Will Deacon wrote:
-> > On Thu, Jul 16, 2015 at 10:04:34AM +0100, Yong Wu wrote:
-> > > +static void mtk_iommu_tlb_flush_all(void *cookie)
-> > > +{
-> > > +       struct mtk_iommu_domain *domain = cookie;
-> > > +       void __iomem *base;
-> > > +
-> > > +       base = domain->data->base;
-> > > +       writel(F_INVLD_EN1 | F_INVLD_EN0, base + REG_MMU_INV_SEL);
-> > > +       writel(F_ALL_INVLD, base + REG_MMU_INVALIDATE);
-> > 
-> > This needs to be synchronous, so you probably want to call
-> > mtk_iommu_tlb_sync at the end.
-> 
-> From our spec, we have to wait until HW done after tlb flush range.
-> But it don't need wait after tlb flush all.
-> so It isn't necessary to add mtk_iommu_tlb_sync in tlb_flush_all here.
 
-Okey doke, but I'm surprised you don't need a subsequent DSB or read-back.
-What if the writel is buffered on the way to the IOMMU?
+--tEhStdZb4uHHcvbt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Will
+On Thu, Jul 23, 2015 at 05:10:41PM +0800, Leilk Liu wrote:
+> Change-Id: I6cadbf2e51d2cc4eacd518a24d5a9a1da93d4db5
+> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+
+Please don't include noise like Change-Id in upstream commits and please
+use subject lines reflecting the style for the subsystem.
+
+--tEhStdZb4uHHcvbt
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJVsnc1AAoJECTWi3JdVIfQcS4H/RtCqCU+j0B8j6piCFxox3A8
+44uznNQzA0AChxWYSwxFPA3Hs49AB+iO2jY+UVH6ZYFAKXEVHHLy7hi62pjpiskA
+74MTNEKvb75BqE9q8bYDTN5yLFtJKC7OOyXiiziQ9n4mcbHgBL/p4s1DVaBiOHJj
+j1PpYOGlfjUegxkJVOUnbDxM4yDb3w05/vTMdoF1v2imrnr7ei1la7pNgcFVm+2Y
+I5S6FfQr/2+AyRk/zaLIkpf/GnFHAywr7y5nQCd0Z1DpKtvzqUz+pFiieTgtqHNx
+li1k/zhOX504p4X002TaIMqJUfb7qYxMBgdYxg1oTaE7X9vrk4MbAbCzryXsJUA=
+=bG3V
+-----END PGP SIGNATURE-----
+
+--tEhStdZb4uHHcvbt--
