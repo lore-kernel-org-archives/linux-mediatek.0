@@ -1,75 +1,26 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
- driver
-Date: Fri, 24 Jul 2015 07:50:38 +0200
-Message-ID: <20150724055038.GJ18700@pengutronix.de>
-References: <srv_scott.shu@mediatek.com>
- <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
- <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
- <20150623055351.GA22419@pengutronix.de>
- <1437703323.11272.12.camel@mtkswgap22>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 0/2] Add Mediatek watchdog suspend resume and shutdown
+Date: Fri, 24 Jul 2015 15:28:44 +0800
+Message-ID: <1437722926-54509-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1437703323.11272.12.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Scott Shu <scott.shu@mediatek.com>
-Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, loda.chou@mediatek.com, jades.shih@mediatek.com, scott.shu@gmail.com
+Content-Type: text/plain
+Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jul 24, 2015 at 10:02:03AM +0800, Scott Shu wrote:
-> On Tue, 2015-06-23 at 07:53 +0200, Sascha Hauer wrote:
-> > Hi Scott,
-> > 
-> > On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
-> > > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
-> > > MT6580.
-> > 
-> > This seems to be support for the very same hardware as I am posting
-> > here:
-> > 
-> > https://lkml.org/lkml/2015/6/22/41
-> > 
-> > We should consolidate this.
-> > 
-> > My driver is currently handles all power domains except the CPUs while
-> > yours handles only the CPUs.
-> > I currently haven't looked whether CPUs can just be part of a power
-> > domain aswell, but if that works this would probably be the way to go.
-> > 
-> > Sascha
-> > 
-> > 
-> Hi Sascga,
-> 
-> We had posted new patch set in following link, but still keep our
-> original framework.
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001498.html
-> 
-> As we mentioned in the new email thread, the SMP operations (smp_boot_secondary)
-> will be executed before registering the scpsys_drv driver, so the CPUs power
-> domain is controlled on arch/arm/mach-$(MACHINE) directory. 
-> 
-> Please kindly provide your comments and suggestion. Thank you very much.
+This series add Mediatek watchdog suspend, resume and shutdown support.
+These patches are based on v4.2-rc1
 
-I think that instead of explaining why have to duplicate the code you
-should rather search for ways how the code can be shared. Yes, we'll
-need a second (early) entry point to the driver. Maybe we even have to
-create the shared code which is then called from the driver and your
-early architecture code.
-You'll probably have to do this separation between early code and
-regular driver code in your driver anyway, since I bet the MT6580 also
-has some power domains which shall be controlled by the regular Linux
-power domain code later. Also we probably could control the CPU power
-domains for the MT8173 in the SCPSYS driver aswell, we just don't have
-to because we use PSCI there. You see we are approaching the same
-problem from two different corners. Let's find a way to share the code.
+Change in v3:
+Add mtk_wdt in subject line
 
-Sascha
+Change in v2:
+Use watchdog_active() to check whether watchdog been active.
+Change to register suspend,resume function to dev_pm_ops
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
