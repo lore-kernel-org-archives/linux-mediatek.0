@@ -1,58 +1,43 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH v3 2/2] watchdog: mtk_wdt: add wdt shutdown callback to disable wdt if enabled
-Date: Fri, 24 Jul 2015 15:28:46 +0800
-Message-ID: <1437722926-54509-3-git-send-email-eddie.huang@mediatek.com>
-References: <1437722926-54509-1-git-send-email-eddie.huang@mediatek.com>
+From: Javier Martinez Canillas <javier@dowhile0.org>
+Subject: Re: [PATCH v4 1/2] dt-bindings: regulator: mt6311: Add document for
+ mt6311 regulator
+Date: Fri, 24 Jul 2015 10:32:59 +0200
+Message-ID: <CABxcv=kuUbDyzFR2bU7vcvvsqg_yQuqBn5S20=uaH9iBCL_xBQ@mail.gmail.com>
+References: <1437715481-31528-1-git-send-email-henryc.chen@mediatek.com>
+	<1437715481-31528-2-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437722926-54509-1-git-send-email-eddie.huang@mediatek.com>
+In-Reply-To: <1437715481-31528-2-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wim Van Sebroeck <wim@iguana.be>, Guenter Roeck <linux@roeck-us.net>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Greta Zhang <greta.zhang@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Greta Zhang <greta.zhang@mediatek.com>
+Hello Henry,
 
-Without .shutdown(), watchdog might reset the system during power off.
-For example, if watchdog's timeout is set to 30s, then it is reset to
-zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
-but watchdog is still running and may trigger reset.
+I believe Mark asked you to use a subject lines reflecting the style
+for the subsystem, so the subject should had been something like:
 
-Signed-off-by: Greta Zhang <greta.zhang@mediatek.com>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
----
- drivers/watchdog/mtk_wdt.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+regulators: mt6311: Add DT binding document
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 056412c..6ad9df9 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -210,6 +210,14 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static void mtk_wdt_shutdown(struct platform_device *pdev)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-+
-+	if (watchdog_active(&mtk_wdt->wdt_dev))
-+		mtk_wdt_stop(&mtk_wdt->wdt_dev);
-+}
-+
- static int mtk_wdt_remove(struct platform_device *pdev)
- {
- 	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-@@ -259,6 +267,7 @@ static const struct dev_pm_ops mtk_wdt_pm_ops = {
- static struct platform_driver mtk_wdt_driver = {
- 	.probe		= mtk_wdt_probe,
- 	.remove		= mtk_wdt_remove,
-+	.shutdown	= mtk_wdt_shutdown,
- 	.driver		= {
- 		.name		= DRV_NAME,
- 		.pm		= &mtk_wdt_pm_ops,
--- 
-1.8.1.1.dirty
+On Fri, Jul 24, 2015 at 7:24 AM, Henry Chen <henryc.chen@mediatek.com> wrote:
+> This patch adds a list of supported regulator names to the devicetree
+> binding documentation for Mediatek MT6311 PMIC.
+>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+
+I know is in your cover letter, but usually is good to also include a
+history log of the changes for each patch so people know what changed.
+Everything between the '---' and the diff are omitted by tools like
+git am so you can add there.  You can use tools like patman that do
+this automatically for you.
+
+Also, I said that you could add my Reviewed-by after the node name
+change so you should had carried that. So again:
+
+Reviewed-by: Javier Martinez Canillas <javier@osg.samsung.com>
+
+Best regards,
+Javier
