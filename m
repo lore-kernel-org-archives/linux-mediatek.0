@@ -1,55 +1,83 @@
-From: Scott Shu <scott.shu@mediatek.com>
-Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
- driver
-Date: Fri, 24 Jul 2015 10:02:03 +0800
-Message-ID: <1437703323.11272.12.camel@mtkswgap22>
-References: <srv_scott.shu@mediatek.com>
-	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
-	 <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
-	 <20150623055351.GA22419@pengutronix.de>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/7] Add Mediatek MT8173 subsystem clocks support
+Date: Fri, 24 Jul 2015 11:01:58 +0800
+Message-ID: <1437706925-3222-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150623055351.GA22419@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, loda.chou@mediatek.com, jades.shih@mediatek.com, scott.shu@gmail.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-06-23 at 07:53 +0200, Sascha Hauer wrote:
-> Hi Scott,
-> 
-> On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
-> > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
-> > MT6580.
-> 
-> This seems to be support for the very same hardware as I am posting
-> here:
-> 
-> https://lkml.org/lkml/2015/6/22/41
-> 
-> We should consolidate this.
-> 
-> My driver is currently handles all power domains except the CPUs while
-> yours handles only the CPUs.
-> I currently haven't looked whether CPUs can just be part of a power
-> domain aswell, but if that works this would probably be the way to go.
-> 
-> Sascha
-> 
-> 
-Hi Sascga,
+This patchset is based on 4.2-rc1 and [1], and contains subsystem
+clocks support for Mediatek MT8173.
 
-We had posted new patch set in following link, but still keep our
-original framework.
-http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001498.html
+Previous reviews can be found in [2][3]. This patchset merge the 2
+patchsets because of the dependency.
 
-As we mentioned in the new email thread, the SMP operations (smp_boot_secondary)
-will be executed before registering the scpsys_drv driver, so the CPUs power
-domain is controlled on arch/arm/mach-$(MACHINE) directory. 
+The most different from previous patchset are removing clk_null and
+split usb clock support into a separated source file.
 
-Please kindly provide your comments and suggestion. Thank you very much. 
+changes since v3:
+- Remove clk_null dependency from root clocks.
+- Use fixed-rate clocks with typical rate to replace clk_null.
+- Add clk-apmixed.c to implement ref2usb_tx.
+- Use clock-controller as the name of clock providers.
 
-Best Regards,
-Scott Shu
+changes since v2:
+- Rebase to 4.2-rc1.
+- Add device tree nodes for subsystem clocks.
+- Fine tune comments of patches.
+- Add __init, __initconst and const to init data and functions.
+- Removed unused code from init functions of subsystem clocks.
+
+changes since v1:
+- Add CA7PLL and CA15PLL as critical clocks.
+- Use the same register descriptor for imgsys, vensys and vencltsys.
+- Generalize apmixedsys special clocks registration.
+
+[1] https://patchwork.kernel.org/patch/6446341/
+[2] https://lkml.org/lkml/2015/7/10/254
+[3] https://lkml.org/lkml/2015/7/10/230
+
+James Liao (6):
+  clk: mediatek: Add fixed clocks support for Mediatek SoC.
+  clk: mediatek: Fix rate and dependency of MT8173 clocks
+  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
+    controllers
+  clk: mediatek: Add subsystem clocks of MT8173
+  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+  arm64: dts: mt8173: Add subsystem clock controller device nodes
+
+Sascha Hauer (1):
+  clk: mediatek: mt8173: Fix enabling of critical clocks
+
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |  22 ++
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |  22 ++
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  22 ++
+ .../bindings/arm/mediatek/mediatek,vencltsys.txt   |  22 ++
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |  22 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  37 +++
+ drivers/clk/mediatek/Makefile                      |   2 +-
+ drivers/clk/mediatek/clk-apmixed.c                 | 137 +++++++++
+ drivers/clk/mediatek/clk-mt8173.c                  | 321 ++++++++++++++++++++-
+ drivers/clk/mediatek/clk-mtk.c                     |  23 ++
+ drivers/clk/mediatek/clk-mtk.h                     |  45 ++-
+ drivers/clk/mediatek/clk-pll.c                     |   7 +-
+ include/dt-bindings/clock/mt8173-clk.h             | 101 ++++++-
+ 13 files changed, 756 insertions(+), 27 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+ create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
