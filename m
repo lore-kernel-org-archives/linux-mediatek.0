@@ -1,78 +1,91 @@
-From: Scott Shu <scott.shu@mediatek.com>
-Subject: Re: [RESEND PATCH 2/6] soc: Mediatek: Add SCPSYS CPU power domain
- driver
-Date: Sat, 25 Jul 2015 17:13:00 +0800
-Message-ID: <1437815580.4505.14.camel@mtkswgap22>
-References: <srv_scott.shu@mediatek.com>
-	 <1434650481-39421-1-git-send-email-scott.shu@mediatek.com>
-	 <1434650481-39421-3-git-send-email-scott.shu@mediatek.com>
-	 <20150623055351.GA22419@pengutronix.de>
-	 <1437703323.11272.12.camel@mtkswgap22>
-	 <20150724055038.GJ18700@pengutronix.de>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 5/5] arm64: dts: mediatek: add xHCI & usb phy for
+ mt8173
+Date: Sun, 26 Jul 2015 10:41:22 +0800
+Message-ID: <1437878482.3040.6.camel@mhfsdcap03>
+References: <1437573945-31586-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <1437573945-31586-6-git-send-email-chunfeng.yun@mediatek.com>
+	 <55AFDCE6.2060608@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150724055038.GJ18700@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: yingjoe.chen@mediatek.com, robh+dt@kernel.org, matthias.bgg@gmail.com, linux@arm.linux.org.uk, rchintakuntla@cavium.com, lorenzo.pieralisi@arm.com, marc.ceeeee@gmail.com, heiko@sntech.de, catalin.marinas@arm.com, arnd@arndb.de, galak@codeaurora.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, loda.chou@mediatek.com, jades.shih@mediatek.com, scott.shu@gmail.com
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <55AFDCE6.2060608-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-07-24 at 07:50 +0200, Sascha Hauer wrote:
-> On Fri, Jul 24, 2015 at 10:02:03AM +0800, Scott Shu wrote:
-> > On Tue, 2015-06-23 at 07:53 +0200, Sascha Hauer wrote:
-> > > Hi Scott,
-> > > 
-> > > On Fri, Jun 19, 2015 at 02:01:17AM +0800, Scott Shu wrote:
-> > > > This adds a CPU power domain driver for the Mediatek SCPSYS unit on
-> > > > MT6580.
-> > > 
-> > > This seems to be support for the very same hardware as I am posting
-> > > here:
-> > > 
-> > > https://lkml.org/lkml/2015/6/22/41
-> > > 
-> > > We should consolidate this.
-> > > 
-> > > My driver is currently handles all power domains except the CPUs while
-> > > yours handles only the CPUs.
-> > > I currently haven't looked whether CPUs can just be part of a power
-> > > domain aswell, but if that works this would probably be the way to go.
-> > > 
-> > > Sascha
-> > > 
-> > > 
-> > Hi Sascga,
-> > 
-> > We had posted new patch set in following link, but still keep our
-> > original framework.
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001498.html
-> > 
-> > As we mentioned in the new email thread, the SMP operations (smp_boot_secondary)
-> > will be executed before registering the scpsys_drv driver, so the CPUs power
-> > domain is controlled on arch/arm/mach-$(MACHINE) directory. 
-> > 
-> > Please kindly provide your comments and suggestion. Thank you very much.
+hi
+On Wed, 2015-07-22 at 21:11 +0300, Sergei Shtylyov wrote:
+> Hello.
 > 
-> I think that instead of explaining why have to duplicate the code you
-> should rather search for ways how the code can be shared. Yes, we'll
-> need a second (early) entry point to the driver. Maybe we even have to
-> create the shared code which is then called from the driver and your
-> early architecture code.
-> You'll probably have to do this separation between early code and
-> regular driver code in your driver anyway, since I bet the MT6580 also
-> has some power domains which shall be controlled by the regular Linux
-> power domain code later. Also we probably could control the CPU power
-> domains for the MT8173 in the SCPSYS driver aswell, we just don't have
-> to because we use PSCI there. You see we are approaching the same
-> problem from two different corners. Let's find a way to share the code.
+> On 07/22/2015 05:05 PM, Chunfeng Yun wrote:
 > 
-> Sascha
+> > add xHCI and phy drivers for MT8173-EVB
 > 
-Hi Sascha,
-   Thanks. OK, we move all CPU MTCMOS driver from hotplug.c to
-mtk-scpsys.c and the test is passed. Next, we need spend some time to
-integrate the code better.
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 15 ++++++++++++++
+> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 31 +++++++++++++++++++++++++++++
+> >   2 files changed, 46 insertions(+)
+> 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > index f433c21..202b2b9 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> > @@ -13,6 +13,7 @@
+> >    */
+> >
+> >   /dts-v1/;
+> > +#include <dt-bindings/gpio/gpio.h>
+> >   #include "mt8173.dtsi"
+> >
+> >   / {
+> > @@ -32,6 +33,15 @@
+> >   	};
+> >
+> >   	chosen { };
+> > +
+> > +	usb_p1_vbus: fixedregulator@0 {
+> 
+>     Just "regulator@0" please. This is more in line with what ePAPR requires 
+> from the node names.
+> 
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "usb_vbus";
+> > +		regulator-min-microvolt = <5000000>;
+> > +		regulator-max-microvolt = <5000000>;
+> > +		gpio = <&pio 130 GPIO_ACTIVE_HIGH>;
+> > +		enable-active-high;
+> > +	};
+> >   };
+> >
+> >   &pwrap {
+> [...]
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > index 0696f8f..aa1ecc7 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> [...]
+> > @@ -393,6 +394,36 @@
+> >   			#size-cells = <0>;
+> >   			status = "disabled";
+> >   		};
+> > +
+> > +		usb: usb30@11270000 {
+> 
+>     ePAPR standardizes the name "usb" for such nodes, please fix.
+> 
+> [...]
+> 
+ok, I'll revise it, thanks a lot
 
-Scott
+> MBR, Sergei
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
