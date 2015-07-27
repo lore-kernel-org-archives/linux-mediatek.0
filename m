@@ -1,56 +1,109 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Mon, 27 Jul 2015 12:24:31 +0800
-Message-ID: <1437971071.25925.24.camel@mhfsdcap03>
-References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com>
-	 <1437037475-9065-6-git-send-email-yong.wu@mediatek.com>
-	 <20150721145910.GG31095@arm.com> <1437716593.23932.73.camel@mhfsdcap03>
-	 <20150724165509.GD21177@arm.com>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v4 2/7] clk: mediatek: Fix rate and dependency of MT8173
+ clocks
+Date: Mon, 27 Jul 2015 07:52:32 +0200
+Message-ID: <20150727055232.GW18700@pengutronix.de>
+References: <1437706925-3222-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1437706925-3222-3-git-send-email-jamesjj.liao@mediatek.com>
+ <CAGS+omC=84oWFcv1Eumsj6FHzSQc+Ba9zVOn6USS9ymQS3mTSQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150724165509.GD21177-5wv7dgnIgG8@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAGS+omC=84oWFcv1Eumsj6FHzSQc+Ba9zVOn6USS9ymQS3mTSQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <Robin.Murphy-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>"arnd-r2nGTMty4D4@public.gmane.org" <a>
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-07-24 at 17:55 +0100, Will Deacon wrote:
-> On Fri, Jul 24, 2015 at 06:43:13AM +0100, Yong Wu wrote:
-> > On Tue, 2015-07-21 at 15:59 +0100, Will Deacon wrote:
-> > > On Thu, Jul 16, 2015 at 10:04:34AM +0100, Yong Wu wrote:
-> > > > +static void mtk_iommu_tlb_flush_all(void *cookie)
-> > > > +{
-> > > > +       struct mtk_iommu_domain *domain = cookie;
-> > > > +       void __iomem *base;
-> > > > +
-> > > > +       base = domain->data->base;
-> > > > +       writel(F_INVLD_EN1 | F_INVLD_EN0, base + REG_MMU_INV_SEL);
-> > > > +       writel(F_ALL_INVLD, base + REG_MMU_INVALIDATE);
-> > > 
-> > > This needs to be synchronous, so you probably want to call
-> > > mtk_iommu_tlb_sync at the end.
-> > 
-> > From our spec, we have to wait until HW done after tlb flush range.
-> > But it don't need wait after tlb flush all.
-> > so It isn't necessary to add mtk_iommu_tlb_sync in tlb_flush_all here.
+On Fri, Jul 24, 2015 at 07:10:14PM +0800, Daniel Kurtz wrote:
+> On Fri, Jul 24, 2015 at 11:02 AM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Remove the dependency from clk_null, and give all root clocks a
+> > typical rate, include clkph_mck_o, usb_syspll_125m and hdmitx_dig_cts.
+> >
+> > dpi_ck was removed due to no clock reference to it.
+> >
+> > Replace parent clock of infra_cpum with cpum_ck, which is an external
+> > clock and can be defined in the deivce tree.
+> >
+> > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/clk/mediatek/clk-mt8173.c      | 13 ++++++-------
+> >  include/dt-bindings/clock/mt8173-clk.h |  1 -
+> >  2 files changed, 6 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> > index 4b9e04c..50b3266 100644
+> > --- a/drivers/clk/mediatek/clk-mt8173.c
+> > +++ b/drivers/clk/mediatek/clk-mt8173.c
+> > @@ -24,11 +24,9 @@
+> >
+> >  static DEFINE_SPINLOCK(mt8173_clk_lock);
+> >
+> > -static const struct mtk_fixed_factor root_clk_alias[] __initconst = {
+> > -       FACTOR(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk_null", 1, 1),
+> > -       FACTOR(CLK_TOP_DPI, "dpi_ck", "clk_null", 1, 1),
+> > -       FACTOR(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk_null", 1, 1),
+> > -       FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "clk_null", 1, 1),
+> > +static const struct mtk_fixed_clk fixed_clks[] __initconst = {
+> > +       FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk26m", 400 * MHZ),
+> > +       FIXED_CLK(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk26m", 125 * MHZ),
+> >  };
+> >
+> >  static const struct mtk_fixed_factor top_divs[] __initconst = {
+> > @@ -53,6 +51,7 @@ static const struct mtk_fixed_factor top_divs[] __initconst = {
+> >         FACTOR(CLK_TOP_CLKRTC_INT, "clkrtc_int", "clk26m", 1, 793),
+> >         FACTOR(CLK_TOP_FPC, "fpc_ck", "clk26m", 1, 1),
+> >
+> > +       FACTOR(CLK_TOP_HDMITX_DIG_CTS, "hdmitx_dig_cts", "tvdpll_445p5m", 1, 3),
+> >         FACTOR(CLK_TOP_HDMITXPLL_D2, "hdmitxpll_d2", "hdmitx_dig_cts", 1, 2),
+> >         FACTOR(CLK_TOP_HDMITXPLL_D3, "hdmitxpll_d3", "hdmitx_dig_cts", 1, 3),
+> >
+> > @@ -611,7 +610,7 @@ static const struct mtk_gate infra_clks[] __initconst = {
+> >         GATE_ICG(CLK_INFRA_GCE, "infra_gce", "axi_sel", 6),
+> >         GATE_ICG(CLK_INFRA_L2C_SRAM, "infra_l2c_sram", "axi_sel", 7),
+> >         GATE_ICG(CLK_INFRA_M4U, "infra_m4u", "mem_sel", 8),
+> > -       GATE_ICG(CLK_INFRA_CPUM, "infra_cpum", "clk_null", 15),
+> > +       GATE_ICG(CLK_INFRA_CPUM, "infra_cpum", "cpum_ck", 15),
+> >         GATE_ICG(CLK_INFRA_KP, "infra_kp", "axi_sel", 16),
+> >         GATE_ICG(CLK_INFRA_CEC, "infra_cec", "clk26m", 18),
+> >         GATE_ICG(CLK_INFRA_PMICSPI, "infra_pmicspi", "pmicspi_sel", 22),
+> > @@ -714,7 +713,7 @@ static void __init mtk_topckgen_init(struct device_node *node)
+> >
+> >         clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+> >
+> > -       mtk_clk_register_factors(root_clk_alias, ARRAY_SIZE(root_clk_alias), clk_data);
+> > +       mtk_clk_register_fixed_clks(fixed_clks, ARRAY_SIZE(fixed_clks), clk_data);
+> >         mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
+> >         mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
+> >                         &mt8173_clk_lock, clk_data);
+> > diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
+> > index 4ad76ed..7230c38 100644
+> > --- a/include/dt-bindings/clock/mt8173-clk.h
+> > +++ b/include/dt-bindings/clock/mt8173-clk.h
+> > @@ -18,7 +18,6 @@
+> >  /* TOPCKGEN */
+> >
+> >  #define CLK_TOP_CLKPH_MCK_O            1
+> > -#define CLK_TOP_DPI                    2
+> >  #define CLK_TOP_USB_SYSPLL_125M                3
 > 
-> Okey doke, but I'm surprised you don't need a subsequent DSB or read-back.
-> What if the writel is buffered on the way to the IOMMU?
+> I think we should renumber the rest of the CLK_TOP_*
 
-Then I change to this:
- //==========
-    writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0, base + REG_MMU_INV_SEL);
-    writel_relaxed(F_ALL_INVLD, base + REG_MMU_INVALIDATE);    
-    dsb(ishst);
-//===========
-    dsb or mb(). which one is better here?
+They shouldn't be renumbered at all as this makes all binary device
+trees out there useless. That may not be a big issue with the MT8173
+at the moment as there are hardly any binary device trees with the
+mainline device trees shipped, but still we should get used to not
+break existing device trees without need.
 
-> 
-> Will
+Sascha
 
 
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
