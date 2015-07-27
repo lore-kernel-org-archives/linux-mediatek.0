@@ -1,49 +1,167 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Mon, 27 Jul 2015 16:49:30 +0100
-Message-ID: <55B6530A.9050903@arm.com>
-References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com> <1437037475-9065-6-git-send-email-yong.wu@mediatek.com> <55B630CE.4050803@arm.com> <20150727153148.GJ7557@n2100.arm.linux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150727153148.GJ7557@n2100.arm.linux.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Thierry Reding <treding@nvidia.com>, Mark Rutland <Mark.Rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "pebolle@tiscali.nl" <pebolle@tiscali.nl>, "arnd@arndb.de" <arnd@arndb.de>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, Catalin Marinas <Catalin.Marinas@arm.com>, Will Deacon <Will.Deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@google.com>, "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@google.com>, Sasha Hauer <kernel@pengutronix.de>, "cloud.chou@mediatek.com" <cloud.chou@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, frederic.chen@mediat
+From: Rob Herring <robh@kernel.org>
+Subject: [PATCH v3] pinctrl: kill off set_irq_flags usage
+Date: Mon, 27 Jul 2015 15:55:22 -0500
+Message-ID: <1438030523-15853-10-git-send-email-robh@kernel.org>
+References: <1438030523-15853-1-git-send-email-robh@kernel.org>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1438030523-15853-1-git-send-email-robh@kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tomasz.figa@gmail.com>, Thomas Abraham <thomas.abraham@linaro.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 27/07/15 16:31, Russell King - ARM Linux wrote:
-> On Mon, Jul 27, 2015 at 02:23:26PM +0100, Robin Murphy wrote:
->> On 16/07/15 10:04, Yong Wu wrote:
->>> This patch adds support for mediatek m4u (MultiMedia Memory Management
->>> Unit).
->>>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->> [...]
->>> +static void mtk_iommu_flush_pgtable(void *ptr, size_t size, void *cookie)
->>> +{
->>> +       struct mtk_iommu_domain *domain = cookie;
->>> +       unsigned long offset = (unsigned long)ptr & ~PAGE_MASK;
->>> +
->>> +       dma_map_page(domain->data->dev, virt_to_page(ptr), offset,
->>> +                    size, DMA_TO_DEVICE);
->>
->> Nit: this looks like it may as well be dma_map_single.
->>
->> It would probably be worth following it with a matching unmap too, just to
->> avoid any possible leakage bugs (especially if this M4U ever appears in a
->> SoC supporting RAM above the 32-bit boundary).
->
-> Why not do the job properly?  Take a look at how I implemented the
-> streaming DMA API on Tegra SMMU (patch set recently sent out earlier
-> today).
->
-> There's no need for hacks like dma_map_page() (and discarding it's
-> return value) or dma_map_page() followed by dma_unmap_page().
+set_irq_flags is ARM specific with custom flags which have genirq
+equivalents. Convert drivers to use the genirq interfaces directly, so we
+can kill off set_irq_flags. The translation of flags is as follows:
 
-Indeed, as it happens I do have a branch where I prototyped that for the 
-long-descriptor io-pgtable-arm code a while ago; this discussion has 
-prompted me to dig it up again. Stay tuned, folks...
+IRQF_VALID -> !IRQ_NOREQUEST
+IRQF_PROBE -> !IRQ_NOPROBE
+IRQF_NOAUTOEN -> IRQ_NOAUTOEN
 
-Robin.
+For IRQs managed by an irqdomain, the irqdomain core code handles clearing
+and setting IRQ_NOREQUEST already, so there is no need to do this in
+.map() functions and we can simply remove the set_irq_flags calls. Some
+users also modify IRQ_NOPROBE and this has been maintained although it
+is not clear that is really needed. There appears to be a great deal of
+blind copy and paste of this code.
+
+Signed-off-by: Rob Herring <robh@kernel.org>
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
+Cc: Stephen Warren <swarren@wwwdotorg.org>
+Cc: Lee Jones <lee@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Tomasz Figa <tomasz.figa@gmail.com>
+Cc: Thomas Abraham <thomas.abraham@linaro.org>
+Cc: Kukjin Kim <kgene@kernel.org>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: linux-gpio@vger.kernel.org
+Cc: linux-rpi-kernel@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-samsung-soc@vger.kernel.org
+---
+Thomas asked that this be merged thru subsystem trees instead of arm-soc,
+so please apply this to your tree.
+
+Rob
+
+ drivers/pinctrl/bcm/pinctrl-bcm2835.c         | 1 -
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 --
+ drivers/pinctrl/pinctrl-single.c              | 5 -----
+ drivers/pinctrl/samsung/pinctrl-exynos.c      | 1 -
+ drivers/pinctrl/samsung/pinctrl-exynos5440.c  | 1 -
+ drivers/pinctrl/samsung/pinctrl-s3c24xx.c     | 2 --
+ drivers/pinctrl/samsung/pinctrl-s3c64xx.c     | 2 --
+ 7 files changed, 14 deletions(-)
+
+diff --git a/drivers/pinctrl/bcm/pinctrl-bcm2835.c b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
+index 6177315..29e2203 100644
+--- a/drivers/pinctrl/bcm/pinctrl-bcm2835.c
++++ b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
+@@ -989,7 +989,6 @@ static int bcm2835_pinctrl_probe(struct platform_device *pdev)
+ 		irq_set_chip_and_handler(irq, &bcm2835_gpio_irq_chip,
+ 				handle_level_irq);
+ 		irq_set_chip_data(irq, pc);
+-		set_irq_flags(irq, IRQF_VALID);
+ 	}
+
+ 	for (i = 0; i < BCM2835_NUM_BANKS; i++) {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..661677c 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1348,11 +1348,9 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 		irq_set_chip_and_handler(virq, &mtk_pinctrl_irq_chip,
+ 			handle_level_irq);
+ 		irq_set_chip_data(virq, pctl);
+-		set_irq_flags(virq, IRQF_VALID);
+ 	};
+
+ 	irq_set_chained_handler_and_data(irq, mtk_eint_irq_handler, pctl);
+-	set_irq_flags(irq, IRQF_VALID);
+ 	return 0;
+
+ chip_error:
+diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
+index 0b8d480..123a9ff 100644
+--- a/drivers/pinctrl/pinctrl-single.c
++++ b/drivers/pinctrl/pinctrl-single.c
+@@ -1716,12 +1716,7 @@ static int pcs_irqdomain_map(struct irq_domain *d, unsigned int irq,
+ 	irq_set_chip_data(irq, pcs_soc);
+ 	irq_set_chip_and_handler(irq, &pcs->chip,
+ 				 handle_level_irq);
+-
+-#ifdef CONFIG_ARM
+-	set_irq_flags(irq, IRQF_VALID);
+-#else
+ 	irq_set_noprobe(irq);
+-#endif
+
+ 	return 0;
+ }
+diff --git a/drivers/pinctrl/samsung/pinctrl-exynos.c b/drivers/pinctrl/samsung/pinctrl-exynos.c
+index b18dabb..0e8add9 100644
+--- a/drivers/pinctrl/samsung/pinctrl-exynos.c
++++ b/drivers/pinctrl/samsung/pinctrl-exynos.c
+@@ -256,7 +256,6 @@ static int exynos_eint_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_data(virq, b);
+ 	irq_set_chip_and_handler(virq, &b->irq_chip->chip,
+ 					handle_level_irq);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+
+diff --git a/drivers/pinctrl/samsung/pinctrl-exynos5440.c b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
+index f5619fb..e7d1c9e 100644
+--- a/drivers/pinctrl/samsung/pinctrl-exynos5440.c
++++ b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
+@@ -929,7 +929,6 @@ static int exynos5440_gpio_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_data(virq, d);
+ 	irq_set_chip_and_handler(virq, &exynos5440_gpio_irq_chip,
+ 					handle_level_irq);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+
+diff --git a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
+index 01b43db..f218be7 100644
+--- a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
++++ b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
+@@ -437,7 +437,6 @@ static int s3c24xx_gpf_irq_map(struct irq_domain *h, unsigned int virq,
+ 					 handle_edge_irq);
+ 	}
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+
+@@ -457,7 +456,6 @@ static int s3c24xx_gpg_irq_map(struct irq_domain *h, unsigned int virq,
+
+ 	irq_set_chip_and_handler(virq, &s3c24xx_eint_chip, handle_edge_irq);
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+ 	return 0;
+ }
+
+diff --git a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
+index ec8cc3b..1a4dd01 100644
+--- a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
++++ b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
+@@ -395,7 +395,6 @@ static int s3c64xx_gpio_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_and_handler(virq,
+ 				&s3c64xx_gpio_irq_chip, handle_level_irq);
+ 	irq_set_chip_data(virq, bank);
+-	set_irq_flags(virq, IRQF_VALID);
+
+ 	return 0;
+ }
+@@ -673,7 +672,6 @@ static int s3c64xx_eint0_irq_map(struct irq_domain *h, unsigned int virq,
+ 	irq_set_chip_and_handler(virq,
+ 				&s3c64xx_eint0_irq_chip, handle_level_irq);
+ 	irq_set_chip_data(virq, ddata);
+-	set_irq_flags(virq, IRQF_VALID);
+
+ 	return 0;
+ }
+--
+2.1.0
