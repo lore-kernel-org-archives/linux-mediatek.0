@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PULL REQUEST] ARM: mediatek: soc updates for v4.3
-Date: Tue, 28 Jul 2015 14:09:43 +0200
-Message-ID: <CABuKBeL8e1eZ3LNYWkKg38qJk+XZ-+Oy+112rLMvkMuwKtL-JA@mail.gmail.com>
+Subject: [GIT PULL] ARM: mediatek: arm64 updates for v4.3
+Date: Tue, 28 Jul 2015 14:24:29 +0200
+Message-ID: <CABuKBeJTfRnJ_+5rLZw3-SWgXpfv+3+UR2jOBhADTbi1Sz1Axg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,17 +16,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Krzysztof_Koz=C5=82owski?= <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Howard Chen <howard.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Cheng Mars <Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi all,
 
-Please take the following patches.
+Please take the following changes into account.
+In the last mail I screwed up the subject, these patches are naturally for v4.3.
 
 Thanks,
 Matthias
 
---
+---
 
 The following changes since commit d770e558e21961ad6cfdf0ff7df0eb5d7d4f0754:
 
@@ -34,46 +35,61 @@ The following changes since commit d770e558e21961ad6cfdf0ff7df0eb5d7d4f0754:
 
 are available in the git repository at:
 
-  https://github.com/mbgg/linux-mediatek.git tags/v4.2-next-soc
+  https://github.com/mbgg/linux-mediatek.git tags/v4.2-next-arm64
 
-for you to fetch changes up to 3e0452d27a784d50f09bec9de8ac673849b9e303:
+for you to fetch changes up to e26945245e414eff42ee1ffeaedf198911bf1d77:
 
-  ARM: mediatek: Add regmap to mediatek Kconfig (2015-07-23 20:01:42 +0200)
-
-----------------------------------------------------------------
-- ARM: mediatek: Add regmap to mediatek Kconfig
-- soc: mediatek: Drop owner assignment from platform_driver
-- soc: Mediatek: Add SCPSYS power domain driver
-- dt-bindings: soc: Add documentation for the MediaTek SCPSYS unit
-- soc: mediatek: Add infracfg misc driver support
+  arm64: dts: mediatek: add mt6795 support (2015-07-23 19:55:55 +0200)
 
 ----------------------------------------------------------------
-Krzysztof Kozlowski (1):
-      soc: mediatek: Drop owner assignment from platform_driver
+- arm64: dts: mediatek: add mt6795 support
+- Document: DT: Add bindings for mediatek MT6795 SoC Platform
+- arm64: dts: mediatek: Add MT8173 MMC dts
+- arm64: dts: mt8173: Add afe device node
+- arm64: dts: mt8173-evb: Add PMIC support
+- dts: mt8173-evb: Add da9211 to i2c1
+- ARM: dts: mt8173: support arm64 cpuidle-dt
+- ARM64: MediaTek MT8173: Add SCPSYS device node
+- arm64: dts: mt8173: Add I2C device node
+- arm64: dts: mt8173: Add watchdog device node
+- arm64: dts: mt8173: Add PMIC wrapper device node
+- arm64: dts: mt8173: Use real clock for UARTs
+- arm64: dts: mt8173: Add clock controller device nodes
 
-Matthias Brugger (1):
-      ARM: mediatek: Add regmap to mediatek Kconfig
+----------------------------------------------------------------
+Eddie Huang (4):
+      arm64: dts: mt8173: Add watchdog device node
+      arm64: dts: mt8173: Add I2C device node
+      arm64: dts: mt8173-evb: Add PMIC support
+      arm64: dts: mediatek: Add MT8173 MMC dts
 
-Sascha Hauer (3):
-      soc: mediatek: Add infracfg misc driver support
-      dt-bindings: soc: Add documentation for the MediaTek SCPSYS unit
-      soc: Mediatek: Add SCPSYS power domain driver
+Henry Chen (1):
+      dts: mt8173-evb: Add da9211 to i2c1
 
- .../devicetree/bindings/soc/mediatek/scpsys.txt    |  41 ++
- arch/arm/mach-mediatek/Kconfig                     |   1 +
- drivers/soc/mediatek/Kconfig                       |  19 +
- drivers/soc/mediatek/Makefile                      |   2 +
- drivers/soc/mediatek/mtk-infracfg.c                |  91 ++++
- drivers/soc/mediatek/mtk-pmic-wrap.c               |   1 -
- drivers/soc/mediatek/mtk-scpsys.c                  | 487 +++++++++++++++++++++
- include/dt-bindings/power/mt8173-power.h           |  15 +
- include/linux/soc/mediatek/infracfg.h              |  26 ++
- 9 files changed, 682 insertions(+), 1 deletion(-)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
- create mode 100644 drivers/soc/mediatek/mtk-infracfg.c
- create mode 100644 drivers/soc/mediatek/mtk-scpsys.c
- create mode 100644 include/dt-bindings/power/mt8173-power.h
- create mode 100644 include/linux/soc/mediatek/infracfg.h
+Howard Chen (1):
+      ARM: dts: mt8173: support arm64 cpuidle-dt
 
--- 
-motzblog.wordpress.com
+Koro Chen (1):
+      arm64: dts: mt8173: Add afe device node
+
+Mars Cheng (2):
+      Document: DT: Add bindings for mediatek MT6795 SoC Platform
+      arm64: dts: mediatek: add mt6795 support
+
+Sascha Hauer (4):
+      arm64: dts: mt8173: Add clock controller device nodes
+      arm64: dts: mt8173: Use real clock for UARTs
+      arm64: dts: mt8173: Add PMIC wrapper device node
+      ARM64: MediaTek MT8173: Add SCPSYS device node
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |   9 +-
+ .../bindings/arm/mediatek/mediatek,sysirq.txt      |   3 +-
+ .../devicetree/bindings/serial/mtk-uart.txt        |   5 +-
+ arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+ arch/arm64/boot/dts/mediatek/mt6795-evb.dts        |  41 +++
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi           | 162 ++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        | 353 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           | 327 ++++++++++++++++++-
+ 8 files changed, 883 insertions(+), 18 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6795-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6795.dtsi
