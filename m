@@ -1,167 +1,36 @@
-From: Rob Herring <robh@kernel.org>
-Subject: [PATCH v3] pinctrl: kill off set_irq_flags usage
-Date: Mon, 27 Jul 2015 15:55:22 -0500
-Message-ID: <1438030523-15853-10-git-send-email-robh@kernel.org>
-References: <1438030523-15853-1-git-send-email-robh@kernel.org>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1438030523-15853-1-git-send-email-robh@kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tomasz.figa@gmail.com>, Thomas Abraham <thomas.abraham@linaro.org>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 5/7] clk: mediatek: Add subsystem clocks of MT8173
+Date: Tue, 28 Jul 2015 10:14:12 +0800
+Message-ID: <1438049652.17770.1.camel@mtksdaap41>
+References: <1437706925-3222-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1437706925-3222-6-git-send-email-jamesjj.liao@mediatek.com>
+	 <CAGS+omB6LpttP_67iJsGrgLv6=B28FHq7RGbcRw_LaOd4LzCLQ@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omB6LpttP_67iJsGrgLv6=B28FHq7RGbcRw_LaOd4LzCLQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-set_irq_flags is ARM specific with custom flags which have genirq
-equivalents. Convert drivers to use the genirq interfaces directly, so we
-can kill off set_irq_flags. The translation of flags is as follows:
+Hi Daniel,
 
-IRQF_VALID -> !IRQ_NOREQUEST
-IRQF_PROBE -> !IRQ_NOPROBE
-IRQF_NOAUTOEN -> IRQ_NOAUTOEN
+On Fri, 2015-07-24 at 19:18 +0800, Daniel Kurtz wrote:
+> On Fri, Jul 24, 2015 at 11:02 AM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > +static const struct mtk_gate_regs cg_regs_4_8_0 = {
+> 
+> All of these regs tables can be __initconst.
 
-For IRQs managed by an irqdomain, the irqdomain core code handles clearing
-and setting IRQ_NOREQUEST already, so there is no need to do this in
-.map() functions and we can simply remove the set_irq_flags calls. Some
-users also modify IRQ_NOPROBE and this has been maintained although it
-is not clear that is really needed. There appears to be a great deal of
-blind copy and paste of this code.
+It will be added in next patch.
 
-Signed-off-by: Rob Herring <robh@kernel.org>
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
-Cc: Stephen Warren <swarren@wwwdotorg.org>
-Cc: Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Tomasz Figa <tomasz.figa@gmail.com>
-Cc: Thomas Abraham <thomas.abraham@linaro.org>
-Cc: Kukjin Kim <kgene@kernel.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Cc: linux-gpio@vger.kernel.org
-Cc: linux-rpi-kernel@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-samsung-soc@vger.kernel.org
----
-Thomas asked that this be merged thru subsystem trees instead of arm-soc,
-so please apply this to your tree.
 
-Rob
+Best regards,
 
- drivers/pinctrl/bcm/pinctrl-bcm2835.c         | 1 -
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 --
- drivers/pinctrl/pinctrl-single.c              | 5 -----
- drivers/pinctrl/samsung/pinctrl-exynos.c      | 1 -
- drivers/pinctrl/samsung/pinctrl-exynos5440.c  | 1 -
- drivers/pinctrl/samsung/pinctrl-s3c24xx.c     | 2 --
- drivers/pinctrl/samsung/pinctrl-s3c64xx.c     | 2 --
- 7 files changed, 14 deletions(-)
+James
 
-diff --git a/drivers/pinctrl/bcm/pinctrl-bcm2835.c b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
-index 6177315..29e2203 100644
---- a/drivers/pinctrl/bcm/pinctrl-bcm2835.c
-+++ b/drivers/pinctrl/bcm/pinctrl-bcm2835.c
-@@ -989,7 +989,6 @@ static int bcm2835_pinctrl_probe(struct platform_device *pdev)
- 		irq_set_chip_and_handler(irq, &bcm2835_gpio_irq_chip,
- 				handle_level_irq);
- 		irq_set_chip_data(irq, pc);
--		set_irq_flags(irq, IRQF_VALID);
- 	}
-
- 	for (i = 0; i < BCM2835_NUM_BANKS; i++) {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index ad1ea16..661677c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1348,11 +1348,9 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 		irq_set_chip_and_handler(virq, &mtk_pinctrl_irq_chip,
- 			handle_level_irq);
- 		irq_set_chip_data(virq, pctl);
--		set_irq_flags(virq, IRQF_VALID);
- 	};
-
- 	irq_set_chained_handler_and_data(irq, mtk_eint_irq_handler, pctl);
--	set_irq_flags(irq, IRQF_VALID);
- 	return 0;
-
- chip_error:
-diff --git a/drivers/pinctrl/pinctrl-single.c b/drivers/pinctrl/pinctrl-single.c
-index 0b8d480..123a9ff 100644
---- a/drivers/pinctrl/pinctrl-single.c
-+++ b/drivers/pinctrl/pinctrl-single.c
-@@ -1716,12 +1716,7 @@ static int pcs_irqdomain_map(struct irq_domain *d, unsigned int irq,
- 	irq_set_chip_data(irq, pcs_soc);
- 	irq_set_chip_and_handler(irq, &pcs->chip,
- 				 handle_level_irq);
--
--#ifdef CONFIG_ARM
--	set_irq_flags(irq, IRQF_VALID);
--#else
- 	irq_set_noprobe(irq);
--#endif
-
- 	return 0;
- }
-diff --git a/drivers/pinctrl/samsung/pinctrl-exynos.c b/drivers/pinctrl/samsung/pinctrl-exynos.c
-index b18dabb..0e8add9 100644
---- a/drivers/pinctrl/samsung/pinctrl-exynos.c
-+++ b/drivers/pinctrl/samsung/pinctrl-exynos.c
-@@ -256,7 +256,6 @@ static int exynos_eint_irq_map(struct irq_domain *h, unsigned int virq,
- 	irq_set_chip_data(virq, b);
- 	irq_set_chip_and_handler(virq, &b->irq_chip->chip,
- 					handle_level_irq);
--	set_irq_flags(virq, IRQF_VALID);
- 	return 0;
- }
-
-diff --git a/drivers/pinctrl/samsung/pinctrl-exynos5440.c b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
-index f5619fb..e7d1c9e 100644
---- a/drivers/pinctrl/samsung/pinctrl-exynos5440.c
-+++ b/drivers/pinctrl/samsung/pinctrl-exynos5440.c
-@@ -929,7 +929,6 @@ static int exynos5440_gpio_irq_map(struct irq_domain *h, unsigned int virq,
- 	irq_set_chip_data(virq, d);
- 	irq_set_chip_and_handler(virq, &exynos5440_gpio_irq_chip,
- 					handle_level_irq);
--	set_irq_flags(virq, IRQF_VALID);
- 	return 0;
- }
-
-diff --git a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
-index 01b43db..f218be7 100644
---- a/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
-+++ b/drivers/pinctrl/samsung/pinctrl-s3c24xx.c
-@@ -437,7 +437,6 @@ static int s3c24xx_gpf_irq_map(struct irq_domain *h, unsigned int virq,
- 					 handle_edge_irq);
- 	}
- 	irq_set_chip_data(virq, bank);
--	set_irq_flags(virq, IRQF_VALID);
- 	return 0;
- }
-
-@@ -457,7 +456,6 @@ static int s3c24xx_gpg_irq_map(struct irq_domain *h, unsigned int virq,
-
- 	irq_set_chip_and_handler(virq, &s3c24xx_eint_chip, handle_edge_irq);
- 	irq_set_chip_data(virq, bank);
--	set_irq_flags(virq, IRQF_VALID);
- 	return 0;
- }
-
-diff --git a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
-index ec8cc3b..1a4dd01 100644
---- a/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
-+++ b/drivers/pinctrl/samsung/pinctrl-s3c64xx.c
-@@ -395,7 +395,6 @@ static int s3c64xx_gpio_irq_map(struct irq_domain *h, unsigned int virq,
- 	irq_set_chip_and_handler(virq,
- 				&s3c64xx_gpio_irq_chip, handle_level_irq);
- 	irq_set_chip_data(virq, bank);
--	set_irq_flags(virq, IRQF_VALID);
-
- 	return 0;
- }
-@@ -673,7 +672,6 @@ static int s3c64xx_eint0_irq_map(struct irq_domain *h, unsigned int virq,
- 	irq_set_chip_and_handler(virq,
- 				&s3c64xx_eint0_irq_chip, handle_level_irq);
- 	irq_set_chip_data(virq, ddata);
--	set_irq_flags(virq, IRQF_VALID);
-
- 	return 0;
- }
 --
-2.1.0
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
