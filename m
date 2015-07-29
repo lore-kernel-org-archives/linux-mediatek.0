@@ -1,64 +1,34 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v4 3/3] arm64: dts: Add spi bus dts
-Date: Wed, 29 Jul 2015 19:04:34 +0800
-Message-ID: <1438167874-1305-4-git-send-email-leilk.liu@mediatek.com>
-References: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] soc: mediatek: Fix SCPSYS compilation
+Date: Wed, 29 Jul 2015 20:03:08 +0200
+Message-ID: <1438192988-17115-1-git-send-email-matthias.bgg@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
+To: s.hauer@pengutronix.de
+Cc: matthias.bgg@gmail.com, djkurtz@chromium.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds MT8173 spi bus controllers into device tree.
+SCPSYS driver misses the module.h include which makes it fail
+when compiling with allmodconf.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+This patch fixes this.
+
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index d18ee42..2a88d93 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -220,6 +220,15 @@
- 					bias-disable;
- 				};
- 			};
-+
-+			spi_pins_a: spi0 {
-+				pins_spi {
-+					pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
-+						<MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
-+						<MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
-+						<MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
-+				};
-+			};
- 		};
- 
- 		scpsys: scpsys@10006000 {
-@@ -365,6 +374,20 @@
- 			status = "disabled";
- 		};
- 
-+		spi: spi@1100a000 {
-+			compatible = "mediatek,mt8173-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_SPI0>;
-+			clock-names = "main";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&spi_pins_a>;
-+			pad-select = <0>;
-+			status = "disabled";
-+		};
-+
- 		i2c3: i2c3@11010000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11010000 0 0x70>,
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 43a79ed..164a7d8 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -15,6 +15,7 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
 -- 
-1.8.1.1.dirty
+1.9.1
