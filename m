@@ -1,74 +1,86 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: Re: [PATCH v6 0/3] Add MediaTek display PWM driver
-Date: Wed, 29 Jul 2015 11:01:21 +0800
-Message-ID: <1438138881.16608.6.camel@mtksdaap41>
-References: <1437380237-28961-1-git-send-email-yh.huang@mediatek.com>
-	 <2181696.fQcvS98Cqx@ubix> <1437729058.11386.4.camel@mtksdaap41>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Wed, 29 Jul 2015 13:41:31 +0800
+Message-ID: <1438148491.25925.89.camel@mhfsdcap03>
+References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com>
+	<1437037475-9065-6-git-send-email-yong.wu@mediatek.com>
+	<55B630CE.4050803@arm.com>
+	<20150727153148.GJ7557@n2100.arm.linux.org.uk>
+	<55B6530A.9050903@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1437729058.11386.4.camel@mtksdaap41>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, yh.huang@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <55B6530A.9050903-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+Cc: Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <Will.Deacon-5wv7dgnIgG8@public.gmane.org>, "cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-07-24 at 17:10 +0800, YH Huang wrote:
-> On Fri, 2015-07-24 at 10:42 +0200, Matthias Brugger wrote:
-> > On Monday, July 20, 2015 04:17:14 PM YH Huang wrote:
-> > > This patch series add the use of display PWM driver, documentation
-> > > and device tree for Mediatek SoCs. The driver is used to support
-> > > the backlight of the panel. This is based on v4.2-rc1.
-> > > 
-> > > The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch:
-> > > clk: mediatek: Add subsystem clocks of MT8173
-> > > 
-> > > Change in v6:
-> > > 1. Enable clocks in the pwm_enable function
-> > > 2. Remove suspend/resume code since pwm-backlight driver has done the same
-> > > things 3. Revise some code to make it easier to read
-> > > 
-> > 
-> > Can you please provide the whole change log for all versions the next time.
-> > It's easier this way to understand the evolution of the series.
+On Mon, 2015-07-27 at 16:49 +0100, Robin Murphy wrote:
+> On 27/07/15 16:31, Russell King - ARM Linux wrote:
+> > On Mon, Jul 27, 2015 at 02:23:26PM +0100, Robin Murphy wrote:
+> >> On 16/07/15 10:04, Yong Wu wrote:
+> >>> This patch adds support for mediatek m4u (MultiMedia Memory Management
+> >>> Unit).
+> >>>
+> >>> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> [...]
+> >>> +static void mtk_iommu_flush_pgtable(void *ptr, size_t size, void *cookie)
+> >>> +{
+> >>> +       struct mtk_iommu_domain *domain = cookie;
+> >>> +       unsigned long offset = (unsigned long)ptr & ~PAGE_MASK;
+> >>> +
+> >>> +       dma_map_page(domain->data->dev, virt_to_page(ptr), offset,
+> >>> +                    size, DMA_TO_DEVICE);
+> >>
+> >> Nit: this looks like it may as well be dma_map_single.
+> >>
+> >> It would probably be worth following it with a matching unmap too, just to
+> >> avoid any possible leakage bugs (especially if this M4U ever appears in a
+> >> SoC supporting RAM above the 32-bit boundary).
+> >
+> > Why not do the job properly?  Take a look at how I implemented the
+> > streaming DMA API on Tegra SMMU (patch set recently sent out earlier
+> > today).
+> >
+> > There's no need for hacks like dma_map_page() (and discarding it's
+> > return value) or dma_map_page() followed by dma_unmap_page().
 > 
-> Change in v6:
-> 1. Enable clocks in the pwm_enable function.
-> 2. Remove suspend/resume code since pwm-backlight driver has done the
-> same things.
-> 3. Revise some code to make it easier to read.
-> 
-> Change in v5:
-> 1. Configure PWM output via pinctrl.
-> 2. Fix the parameter name in dtsi.
-> 
-> Change in v4:
-> 1. Codebase is on v4.2-rc1.
-> 2. Add the PWM node in dtsi.
-> 3. Change the dependency in Kconfig.
-> 4. Rewrite some code for readability.
-> 
-> Change in v3:
-> 1. Add suspend/resume function.
-> 2. Fix the formula for high_width calculation.
-> 3. Rewrite some code to make it easier to read.
-> 4. Add more information in the commit message.
-> 
-> Change in v2:
-> 1. Rewrite descriptions for driver in kconfig to make it much clear.
-> 2. Rename the driver from "pwm-mediatek-disp" to "pwm-mtk-disp".
-> 3. Disable clocks in the error path.
-> 4. Change the shift values in decimal instead of hex.
-> 5. Rename and add some variables or function name for consistency and
-> readability.
-> 6. Drop unnecessary parentheses, spaces, variables and add newlines to
-> make the code easiler to read.
+> Indeed, as it happens I do have a branch where I prototyped that for the 
+> long-descriptor io-pgtable-arm code a while ago; this discussion has 
+> prompted me to dig it up again. Stay tuned, folks...
 
-Hi all,
+Hi Russell, Robin,
 
-If you have any suggestions, please let me know.
-Perhaps we can apply the patch?
+     From I see in arm-smmu-v3.c in v4.2-rc1, 
+     
+     The flush_pgtable seems like this:
+//==========
+	dma_addr_t dma_addr;
 
-Regards,
-YH Huang
+	dma_addr = dma_map_page(dev, ptr, size, DMA_TO_DEVICE);
+
+	if (dma_mapping_error(dev, dma_addr))
+		dev_err(dev, "failed to flush pgtable at %p\n", ptr);
+	else
+		dma_unmap_page(dev, dma_addr, size, DMA_TO_DEVICE);
+//==========
+       I will change map like this and use dma_map_single instead.
+
+       Is this also seems to be not proper?
+
+       Then how to do it?  add this before unmap? :
+       dma_sync_single_for_device(dev, dma_addr, size, DMA_TO_DEVICE);
+
+> 
+> Robin.
+> 
