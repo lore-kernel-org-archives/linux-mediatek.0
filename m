@@ -1,70 +1,93 @@
-From: <maoguang.meng@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: Implement pictrl irq wake handler
-Date: Wed, 29 Jul 2015 17:36:40 +0800
-Message-ID: <1438162601-448-1-git-send-email-maoguang.meng@mediatek.com>
+From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Wed, 29 Jul 2015 11:31:50 +0100
+Message-ID: <20150729103150.GB4797@arm.com>
+References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com>
+	<1437037475-9065-6-git-send-email-yong.wu@mediatek.com>
+	<55B630CE.4050803@arm.com>
+	<20150727153148.GJ7557@n2100.arm.linux.org.uk>
+	<55B6530A.9050903@arm.com> <1438148491.25925.89.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Maoguang Meng <maoguang.meng@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1438148491.25925.89.camel@mhfsdcap03>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, "frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm77oxUfYCNXn@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Maoguang Meng <maoguang.meng@mediatek.com>
+On Wed, Jul 29, 2015 at 06:41:31AM +0100, Yong Wu wrote:
+> On Mon, 2015-07-27 at 16:49 +0100, Robin Murphy wrote:
+> > On 27/07/15 16:31, Russell King - ARM Linux wrote:
+> > > On Mon, Jul 27, 2015 at 02:23:26PM +0100, Robin Murphy wrote:
+> > >> On 16/07/15 10:04, Yong Wu wrote:
+> > >>> This patch adds support for mediatek m4u (MultiMedia Memory Management
+> > >>> Unit).
+> > >>>
+> > >>> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > >> [...]
+> > >>> +static void mtk_iommu_flush_pgtable(void *ptr, size_t size, void *cookie)
+> > >>> +{
+> > >>> +       struct mtk_iommu_domain *domain = cookie;
+> > >>> +       unsigned long offset = (unsigned long)ptr & ~PAGE_MASK;
+> > >>> +
+> > >>> +       dma_map_page(domain->data->dev, virt_to_page(ptr), offset,
+> > >>> +                    size, DMA_TO_DEVICE);
+> > >>
+> > >> Nit: this looks like it may as well be dma_map_single.
+> > >>
+> > >> It would probably be worth following it with a matching unmap too, just to
+> > >> avoid any possible leakage bugs (especially if this M4U ever appears in a
+> > >> SoC supporting RAM above the 32-bit boundary).
+> > >
+> > > Why not do the job properly?  Take a look at how I implemented the
+> > > streaming DMA API on Tegra SMMU (patch set recently sent out earlier
+> > > today).
+> > >
+> > > There's no need for hacks like dma_map_page() (and discarding it's
+> > > return value) or dma_map_page() followed by dma_unmap_page().
+> > 
+> > Indeed, as it happens I do have a branch where I prototyped that for the 
+> > long-descriptor io-pgtable-arm code a while ago; this discussion has 
+> > prompted me to dig it up again. Stay tuned, folks...
+> 
+> Hi Russell, Robin,
+> 
+>      From I see in arm-smmu-v3.c in v4.2-rc1, 
+>      
+>      The flush_pgtable seems like this:
+> //==========
+> 	dma_addr_t dma_addr;
+> 
+> 	dma_addr = dma_map_page(dev, ptr, size, DMA_TO_DEVICE);
+> 
+> 	if (dma_mapping_error(dev, dma_addr))
+> 		dev_err(dev, "failed to flush pgtable at %p\n", ptr);
+> 	else
+> 		dma_unmap_page(dev, dma_addr, size, DMA_TO_DEVICE);
+> //==========
+>        I will change map like this and use dma_map_single instead.
+> 
+>        Is this also seems to be not proper?
+> 
+>        Then how to do it?  add this before unmap? :
+>        dma_sync_single_for_device(dev, dma_addr, size, DMA_TO_DEVICE);
 
-This patch implement irq_set_wake for suspend resume.
+Robin's proposed a series fixing this in the io-pgtable code:
 
-Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+  http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013821.html
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index ad1ea16..a3d137e 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1,7 +1,9 @@
- /*
-  * mt65xx pinctrl driver based on Allwinner A1X pinctrl driver.
-  * Copyright (c) 2014 MediaTek Inc.
-- * Author: Hongzhou.Yang <hongzhou.yang@mediatek.com>
-+ * Author:
-+ *  Hongzhou.Yang <hongzhou.yang@mediatek.com>
-+ *  Maoguang.Meng <maoguang.meng@mediatek.com>
-  *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License version 2 as
-@@ -1062,6 +1064,16 @@ static int mtk_eint_set_type(struct irq_data *d,
- 	return 0;
- }
- 
-+static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
-+{
-+	if (on)
-+		d->chip->flags |= IRQF_NO_SUSPEND;
-+	else
-+		d->chip->flags &= ~IRQF_NO_SUSPEND;
-+
-+	return 0;
-+}
-+
- static void mtk_eint_ack(struct irq_data *d)
- {
- 	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
-@@ -1075,11 +1087,13 @@ static void mtk_eint_ack(struct irq_data *d)
- }
- 
- static struct irq_chip mtk_pinctrl_irq_chip = {
--	.name = "mt-eint",
-+	.name = "mtk-eint",
-+	.irq_disable = mtk_eint_mask,
- 	.irq_mask = mtk_eint_mask,
- 	.irq_unmask = mtk_eint_unmask,
- 	.irq_ack = mtk_eint_ack,
- 	.irq_set_type = mtk_eint_set_type,
-+	.irq_set_wake = mtk_eint_irq_set_wake,
- 	.irq_request_resources = mtk_pinctrl_irq_request_resources,
- 	.irq_release_resources = mtk_pinctrl_irq_release_resources,
- };
--- 
-1.8.1.1.dirty
+which is currently under review. Please take a look and give comments!
+Once merged, the code you cite above will be removed.
+
+Will
