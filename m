@@ -1,93 +1,50 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Wed, 29 Jul 2015 11:31:50 +0100
-Message-ID: <20150729103150.GB4797@arm.com>
-References: <1437037475-9065-1-git-send-email-yong.wu@mediatek.com>
-	<1437037475-9065-6-git-send-email-yong.wu@mediatek.com>
-	<55B630CE.4050803@arm.com>
-	<20150727153148.GJ7557@n2100.arm.linux.org.uk>
-	<55B6530A.9050903@arm.com> <1438148491.25925.89.camel@mhfsdcap03>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/3] Add Mediatek SPI bus driver
+Date: Wed, 29 Jul 2015 19:04:31 +0800
+Message-ID: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1438148491.25925.89.camel@mhfsdcap03>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <cloud.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, "frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm77oxUfYCNXn@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 29, 2015 at 06:41:31AM +0100, Yong Wu wrote:
-> On Mon, 2015-07-27 at 16:49 +0100, Robin Murphy wrote:
-> > On 27/07/15 16:31, Russell King - ARM Linux wrote:
-> > > On Mon, Jul 27, 2015 at 02:23:26PM +0100, Robin Murphy wrote:
-> > >> On 16/07/15 10:04, Yong Wu wrote:
-> > >>> This patch adds support for mediatek m4u (MultiMedia Memory Management
-> > >>> Unit).
-> > >>>
-> > >>> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > >> [...]
-> > >>> +static void mtk_iommu_flush_pgtable(void *ptr, size_t size, void *cookie)
-> > >>> +{
-> > >>> +       struct mtk_iommu_domain *domain = cookie;
-> > >>> +       unsigned long offset = (unsigned long)ptr & ~PAGE_MASK;
-> > >>> +
-> > >>> +       dma_map_page(domain->data->dev, virt_to_page(ptr), offset,
-> > >>> +                    size, DMA_TO_DEVICE);
-> > >>
-> > >> Nit: this looks like it may as well be dma_map_single.
-> > >>
-> > >> It would probably be worth following it with a matching unmap too, just to
-> > >> avoid any possible leakage bugs (especially if this M4U ever appears in a
-> > >> SoC supporting RAM above the 32-bit boundary).
-> > >
-> > > Why not do the job properly?  Take a look at how I implemented the
-> > > streaming DMA API on Tegra SMMU (patch set recently sent out earlier
-> > > today).
-> > >
-> > > There's no need for hacks like dma_map_page() (and discarding it's
-> > > return value) or dma_map_page() followed by dma_unmap_page().
-> > 
-> > Indeed, as it happens I do have a branch where I prototyped that for the 
-> > long-descriptor io-pgtable-arm code a while ago; this discussion has 
-> > prompted me to dig it up again. Stay tuned, folks...
-> 
-> Hi Russell, Robin,
-> 
->      From I see in arm-smmu-v3.c in v4.2-rc1, 
->      
->      The flush_pgtable seems like this:
-> //==========
-> 	dma_addr_t dma_addr;
-> 
-> 	dma_addr = dma_map_page(dev, ptr, size, DMA_TO_DEVICE);
-> 
-> 	if (dma_mapping_error(dev, dma_addr))
-> 		dev_err(dev, "failed to flush pgtable at %p\n", ptr);
-> 	else
-> 		dma_unmap_page(dev, dma_addr, size, DMA_TO_DEVICE);
-> //==========
->        I will change map like this and use dma_map_single instead.
-> 
->        Is this also seems to be not proper?
-> 
->        Then how to do it?  add this before unmap? :
->        dma_sync_single_for_device(dev, dma_addr, size, DMA_TO_DEVICE);
+Change in v4:
+1. fix Mark Brown review comment.
 
-Robin's proposed a series fixing this in the io-pgtable code:
+Change in v3:
+1. support fifo mode function.
+2. support any non-prime length transfer in dma mode.
+3. use interrupt to handle scatterlist.
+4. fix review comment.
 
-  http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013821.html
 
-which is currently under review. Please take a look and give comments!
-Once merged, the code you cite above will be removed.
+Change in v2:
+1. Remove spi bitbang framwork, use can_dma() and transfer_one().
+2. Add PM functions.
+3. Fix Mark Brown review comment.
 
-Will
+Leilk Liu (3):
+  dt-binding: spi: Mediatek: Document devicetree bindings for spi bus
+  spi: mediatek: Add spi bus for Mediatek MT8173
+  arm64: dts: Add spi bus dts
+
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |  38 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  23 +
+ drivers/spi/Kconfig                                |   9 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-mt65xx.c                           | 732 +++++++++++++++++++++
+ include/linux/platform_data/spi-mt65xx.h           |  22 +
+ 6 files changed, 825 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+ create mode 100644 drivers/spi/spi-mt65xx.c
+ create mode 100644 include/linux/platform_data/spi-mt65xx.h
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
