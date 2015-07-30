@@ -1,34 +1,43 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH] soc: mediatek: Fix SCPSYS compilation
-Date: Wed, 29 Jul 2015 20:03:08 +0200
-Message-ID: <1438192988-17115-1-git-send-email-matthias.bgg@gmail.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v5 06/10] clk: mediatek: mt8173: Fix enabling of critical
+ clocks
+Date: Wed, 29 Jul 2015 17:27:54 -0700
+Message-ID: <20150730002754.GG3159@codeaurora.org>
+References: <1438152754-11970-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1438152754-11970-7-git-send-email-jamesjj.liao@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1438152754-11970-7-git-send-email-jamesjj.liao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: s.hauer@pengutronix.de
-Cc: matthias.bgg@gmail.com, djkurtz@chromium.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Heiko Stubner <heiko@sntech.de>, srv_heupstream@mediatek.com, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-SCPSYS driver misses the module.h include which makes it fail
-when compiling with allmodconf.
+On 07/29, James Liao wrote:
+> From: Sascha Hauer <s.hauer@pengutronix.de>
+> 
+> On the MT8173 the clocks are provided by different units. To enable
+> the critical clocks we must be sure that all parent clocks are already
+> registered, otherwise the parents of the critical clocks end up being
+> unused and get disabled later.
+> 
+> On MT8173, for example, it is the CLK_TOP clocks that have CLK_APMIXED
+> PLLs as their parents, so we cannot enable the CLK_TOP critical clocks
+> until the CLK_APMIXED clocks have all been registered.
+> 
+> To find a place where all parents are registered we try each time
+> after we've registered some clocks if all known providers are present
+> now and only then we enable the critical clocks.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> ---
 
-This patch fixes this.
+Please move up to v4.2-rc2 so that this patch can be dropped. I
+already applied this and sent it off to Linus so it's in -rc2.
 
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 43a79ed..164a7d8 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -15,6 +15,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
 -- 
-1.9.1
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
