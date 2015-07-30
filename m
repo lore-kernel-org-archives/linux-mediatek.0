@@ -1,86 +1,83 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v5 01/10] clk: mediatek: Removed unused dpi_ck clock from
- MT8173
-Date: Thu, 30 Jul 2015 20:04:57 +0200
-Message-ID: <1450634.BBmUdb8ZLk@diego>
-References: <1438152754-11970-1-git-send-email-jamesjj.liao@mediatek.com>
- <1438154233.17770.39.camel@mtksdaap41> <20150730173643.GH3159@codeaurora.org>
+From: Jonas Gorski <jogo-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: Re: [PATCH v4 1/3] dt-binding: spi: Mediatek: Document devicetree
+ bindings for spi bus
+Date: Thu, 30 Jul 2015 21:27:33 +0200
+Message-ID: <CAOiHx=k_0vdE=_gYO7v+-dSNJ+OsxHAjoPNs0esRuOYo6gUcmA@mail.gmail.com>
+References: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com> <1438167874-1305-2-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150730173643.GH3159-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1438167874-1305-2-git-send-email-leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Donnerstag, 30. Juli 2015, 10:36:43 schrieb Stephen Boyd:
-> On 07/29, James Liao wrote:
-> > Hi Stephen,
-> > =
+Hi,
 
-> > Could you help to apply this patch into 4.2?
-> > =
+On Wed, Jul 29, 2015 at 1:04 PM, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/spi/spi-mt65xx.txt         | 38 ++++++++++++++++++++++
+>  1 file changed, 38 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+>
+> diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+> new file mode 100644
+> index 0000000..f8005d6
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+> @@ -0,0 +1,38 @@
+> +MTK SPI device
 
-> > =
+You are calling it "MediaTek SPI controller" in the Kconfig entry, so
+you should call it that here as well.
 
-> > Best regards,
-> > =
+> +
+> +Required properties:
+> +- compatible: should be one of the following.
+> +    - mediatek,mt8173-spi: for mt8173 platforms
+> +    - mediatek,mt8135-spi: for mt8135 platforms
+> +    - mediatek,mt6589-spi: for mt6589 platforms
+> +
+> +- #address-cells: should be 1.
+> +
+> +- #size-cells: should be 0.
+> +
+> +- reg: Address and length of the register set for the device
+> +
+> +- interrupts: Should contain spi interrupt
+> +
+> +- clocks: phandles to input clocks.
+> +
+> +- clock-names: tuple listing input clock names.
+> +       Required elements: "main"
+> +
+> +- pad-select: should specify spi pad used, only required for MT8173.
+> +        This value should be 0~3.
 
-> > James
-> > =
+As already commented on the v3, this is a vendor property, and must
+have a vendor prefix, so it must be called "mediatek,pad-select".
 
-> > On Wed, 2015-07-29 at 09:05 +0200, Heiko St=FCbner wrote:
-> > > Am Mittwoch, 29. Juli 2015, 14:52:25 schrieb James Liao:
-> > > > The dpi_ck clock can be removed because it not actually used
-> > > > in topckgen and subsystems.
-> > > > =
-
-> > > > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > =
-
-> > > From our past discussions this change looks about right, and should
-> > > still
-> > > become _part of 4.2_, to not have the CLK_TOP_DPI become part of the
-> > > devicetree CLK_TOP_DPI.
-> =
-
-> Did you mean ABI?
-
-yep, sorry
-
-> =
-
-> > > Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> =
-
-> Is it being used in DT right now and causing regressions on
-> v4.2-rcX? Sorry, I'm trying to understand why this patch matters
-> for the 4.2 release.
-
-it's not been used in an actual devicetree file, but as far as I understand=
- it, =
-
-the dt-binding headers themself are also part of the ABI.
-
-And it is new in 4.2, so has not been part of an official release yet.
-
-The reason for the removal from what I understand is that the removed clock=
- is =
-
-not documented at all (it's source, what it does), which got it the "clk_nu=
-ll" =
-
-parent in the first place.
+> +
+> +Example:
+> +
+> +- SoC Specific Portion:
+> +spi: spi@1100a000 {
+> +       compatible = "mediatek,mt8173-spi";
+> +       #address-cells = <1>;
+> +       #size-cells = <0>;
+> +       reg = <0 0x1100a000 0 0x1000>;
+> +       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
+> +       clocks = <&pericfg CLK_PERI_SPI0>;
+> +       clock-names = "main";
+> +       pad-select = <0>;
+> +       status = "disabled";
+> +};
 
 
-Heiko
+Jonas
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
