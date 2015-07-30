@@ -1,130 +1,61 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] mfd: mt6397: Implement wake handler and suspend/resume for mt6397-core.c
-Date: Thu, 30 Jul 2015 23:07:26 +0800
-Message-ID: <1438268846-22451-1-git-send-email-henryc.chen@mediatek.com>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v5 01/10] clk: mediatek: Removed unused dpi_ck clock from
+ MT8173
+Date: Thu, 30 Jul 2015 10:36:43 -0700
+Message-ID: <20150730173643.GH3159@codeaurora.org>
+References: <1438152754-11970-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1438152754-11970-2-git-send-email-jamesjj.liao@mediatek.com>
+ <6282882.pftQBj38E3@diego>
+ <1438154233.17770.39.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Samuel Ortiz <sameo@linux.intel.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Henry Chen <henryc.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1438154233.17770.39.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Register mt6393_irq as wake up source to pinctrl by flag "IRQF_NO_SUSPEND".
-Implement .irq_set_wake() function of pmic to keep who is wakeup source,
-and enable irq on .suspend()and restore irq on .resume().
+On 07/29, James Liao wrote:
+> Hi Stephen,
+>=20
+> Could you help to apply this patch into 4.2?
+>=20
+>=20
+> Best regards,
+>=20
+> James
+>=20
+> On Wed, 2015-07-29 at 09:05 +0200, Heiko St=FCbner wrote:
+> > Am Mittwoch, 29. Juli 2015, 14:52:25 schrieb James Liao:
+> > > The dpi_ck clock can be removed because it not actually used
+> > > in topckgen and subsystems.
+> > >=20
+> > > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >=20
+> > From our past discussions this change looks about right, and should=
+ still=20
+> > become _part of 4.2_, to not have the CLK_TOP_DPI become part of th=
+e=20
+> > devicetree CLK_TOP_DPI.
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/mfd/mt6397-core.c       | 49 ++++++++++++++++++++++++++++++++++++++++-
- include/linux/mfd/mt6397/core.h |  1 +
- 2 files changed, 49 insertions(+), 1 deletion(-)
+Did you mean ABI?
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 03929a6..aebdee5 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -93,12 +93,31 @@ static void mt6397_irq_enable(struct irq_data *data)
- 	mt6397->irq_masks_cur[reg] |= BIT(shift);
- }
- 
-+#ifdef CONFIG_PM_SLEEP
-+static int mt6397_irq_set_wake(struct irq_data *irq_data, unsigned int on)
-+{
-+	struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(irq_data);
-+	int shift = irq_data->hwirq & 0xf;
-+	int reg = irq_data->hwirq >> 4;
-+
-+	if (on)
-+		mt6397->wake_mask[reg] |= BIT(shift);
-+	else
-+		mt6397->wake_mask[reg] &= ~BIT(shift);
-+
-+	return 0;
-+}
-+#else
-+#define mt6397_irq_set_wake NULL
-+#endif
-+
- static struct irq_chip mt6397_irq_chip = {
- 	.name = "mt6397-irq",
- 	.irq_bus_lock = mt6397_irq_lock,
- 	.irq_bus_sync_unlock = mt6397_irq_sync_unlock,
- 	.irq_enable = mt6397_irq_enable,
- 	.irq_disable = mt6397_irq_disable,
-+	.irq_set_wake = mt6397_irq_set_wake,
- };
- 
- static void mt6397_irq_handle_reg(struct mt6397_chip *mt6397, int reg,
-@@ -142,6 +161,7 @@ static int mt6397_irq_domain_map(struct irq_domain *d, unsigned int irq,
- 	irq_set_chip_data(irq, mt6397);
- 	irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
- 	irq_set_nested_thread(irq, 1);
-+
- #ifdef CONFIG_ARM
- 	set_irq_flags(irq, IRQF_VALID);
- #else
-@@ -173,7 +193,8 @@ static int mt6397_irq_init(struct mt6397_chip *mt6397)
- 	}
- 
- 	ret = devm_request_threaded_irq(mt6397->dev, mt6397->irq, NULL,
--		mt6397_irq_thread, IRQF_ONESHOT, "mt6397-pmic", mt6397);
-+		mt6397_irq_thread, IRQF_ONESHOT | IRQF_NO_SUSPEND,
-+		"mt6397-pmic", mt6397);
- 	if (ret) {
- 		dev_err(mt6397->dev, "failed to register irq=%d; err: %d\n",
- 			mt6397->irq, ret);
-@@ -183,6 +204,31 @@ static int mt6397_irq_init(struct mt6397_chip *mt6397)
- 	return 0;
- }
- 
-+#ifdef CONFIG_PM_SLEEP
-+static int mt6397_irq_suspend(struct device *dev)
-+{
-+	struct mt6397_chip *chip = dev_get_drvdata(dev);
-+
-+	regmap_write(chip->regmap, MT6397_INT_CON0, chip->wake_mask[0]);
-+	regmap_write(chip->regmap, MT6397_INT_CON1, chip->wake_mask[1]);
-+
-+	return 0;
-+}
-+
-+static int mt6397_irq_resume(struct device *dev)
-+{
-+	struct mt6397_chip *chip = dev_get_drvdata(dev);
-+
-+	regmap_write(chip->regmap, MT6397_INT_CON0, chip->irq_masks_cur[0]);
-+	regmap_write(chip->regmap, MT6397_INT_CON1, chip->irq_masks_cur[1]);
-+
-+	return 0;
-+}
-+#endif
-+
-+static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
-+			mt6397_irq_resume);
-+
- static int mt6397_probe(struct platform_device *pdev)
- {
- 	int ret;
-@@ -237,6 +283,7 @@ static struct platform_driver mt6397_driver = {
- 	.driver = {
- 		.name = "mt6397",
- 		.of_match_table = of_match_ptr(mt6397_of_match),
-+		.pm = &mt6397_pm_ops,
- 	},
- };
- 
-diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
-index cf5265b..45b8e8a 100644
---- a/include/linux/mfd/mt6397/core.h
-+++ b/include/linux/mfd/mt6397/core.h
-@@ -57,6 +57,7 @@ struct mt6397_chip {
- 	int irq;
- 	struct irq_domain *irq_domain;
- 	struct mutex irqlock;
-+	u16 wake_mask[2];
- 	u16 irq_masks_cur[2];
- 	u16 irq_masks_cache[2];
- };
--- 
-1.8.1.1.dirty
+> >=20
+> > Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> >=20
+
+Is it being used in DT right now and causing regressions on
+v4.2-rcX? Sorry, I'm trying to understand why this patch matters
+for the 4.2 release.
+
+--=20
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
