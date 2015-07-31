@@ -1,72 +1,97 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH] rtc: mt6397: implement suspend/resume function in
- rtc-mt6397 driver
-Date: Fri, 31 Jul 2015 09:32:52 +0800
-Message-ID: <1438306372.26690.2.camel@mtksdaap41>
-References: <1438267994-13934-1-git-send-email-henryc.chen@mediatek.com>
+From: leilk liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/3] dt-binding: spi: Mediatek: Document devicetree
+ bindings for spi bus
+Date: Fri, 31 Jul 2015 10:41:11 +0800
+Message-ID: <1438310471.24722.4.camel@mhfsdcap03>
+References: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com>
+	 <1438167874-1305-2-git-send-email-leilk.liu@mediatek.com>
+	 <CAOiHx=k_0vdE=_gYO7v+-dSNJ+OsxHAjoPNs0esRuOYo6gUcmA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438267994-13934-1-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Alexandre Belloni <alexandre.belloni@free-electrons.com>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, rtc-linux@googlegroups.com, linux-kernel@vger.kernel.org
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAOiHx=k_0vdE=_gYO7v+-dSNJ+OsxHAjoPNs0esRuOYo6gUcmA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jonas Gorski <jogo-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-07-30 at 22:53 +0800, Henry Chen wrote:
-> Implement the suspend/resume function in order to control rtc's irq_wake flag and handle as wakeup source.
-> 
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  drivers/rtc/rtc-mt6397.c | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
-> 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index c0090b6..9f6c9f8 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -373,6 +373,31 @@ static int mtk_rtc_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> +#ifdef CONFIG_PM_SLEEP
-> +static int mt6397_rtc_suspend(struct device *dev)
-> +{
-> +	struct mt6397_rtc *rtc = dev_get_drvdata(dev);
-> +
-> +	if (device_may_wakeup(dev))
-> +		enable_irq_wake(rtc->irq);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6397_rtc_resume(struct device *dev)
-> +{
-> +	struct mt6397_rtc *rtc = dev_get_drvdata(dev);
-> +
-> +	if (device_may_wakeup(dev))
-> +		disable_irq_wake(rtc->irq);
-> +
-> +	return 0;
-> +}
-> +#endif
-> +
-> +static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
-> +			mt6397_rtc_resume);
-> +
->  static const struct of_device_id mt6397_rtc_of_match[] = {
->  	{ .compatible = "mediatek,mt6397-rtc", },
->  	{ }
-> @@ -382,6 +407,7 @@ static struct platform_driver mtk_rtc_driver = {
->  	.driver = {
->  		.name = "mt6397-rtc",
->  		.of_match_table = mt6397_rtc_of_match,
-> +		.pm = &mt6397_pm_ops,
->  	},
->  	.probe	= mtk_rtc_probe,
->  	.remove = mtk_rtc_remove,
+Hi Jonas,
 
-It looks good to me.
+On Thu, 2015-07-30 at 21:27 +0200, Jonas Gorski wrote:
+> Hi,
+> 
+> On Wed, Jul 29, 2015 at 1:04 PM, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/spi/spi-mt65xx.txt         | 38 ++++++++++++++++++++++
+> >  1 file changed, 38 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+> > new file mode 100644
+> > index 0000000..f8005d6
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+> > @@ -0,0 +1,38 @@
+> > +MTK SPI device
+> 
+> You are calling it "MediaTek SPI controller" in the Kconfig entry, so
+> you should call it that here as well.
+> 
 
-Acked-by: Eddie Huang <eddie.huang@mediatek.com>
+OK, I will fix it.
+
+> > +
+> > +Required properties:
+> > +- compatible: should be one of the following.
+> > +    - mediatek,mt8173-spi: for mt8173 platforms
+> > +    - mediatek,mt8135-spi: for mt8135 platforms
+> > +    - mediatek,mt6589-spi: for mt6589 platforms
+> > +
+> > +- #address-cells: should be 1.
+> > +
+> > +- #size-cells: should be 0.
+> > +
+> > +- reg: Address and length of the register set for the device
+> > +
+> > +- interrupts: Should contain spi interrupt
+> > +
+> > +- clocks: phandles to input clocks.
+> > +
+> > +- clock-names: tuple listing input clock names.
+> > +       Required elements: "main"
+> > +
+> > +- pad-select: should specify spi pad used, only required for MT8173.
+> > +        This value should be 0~3.
+> 
+> As already commented on the v3, this is a vendor property, and must
+> have a vendor prefix, so it must be called "mediatek,pad-select".
+> 
+
+OK, I will fix it on the next version.
+
+> > +
+> > +Example:
+> > +
+> > +- SoC Specific Portion:
+> > +spi: spi@1100a000 {
+> > +       compatible = "mediatek,mt8173-spi";
+> > +       #address-cells = <1>;
+> > +       #size-cells = <0>;
+> > +       reg = <0 0x1100a000 0 0x1000>;
+> > +       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
+> > +       clocks = <&pericfg CLK_PERI_SPI0>;
+> > +       clock-names = "main";
+> > +       pad-select = <0>;
+> > +       status = "disabled";
+> > +};
+> 
+> 
+> Jonas
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
