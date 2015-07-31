@@ -1,55 +1,72 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v5 01/10] clk: mediatek: Removed unused dpi_ck clock from MT8173
-Date: Thu, 30 Jul 2015 22:07:55 +0200
-Message-ID: <2512315.QAADqjoYKs@diego>
-References: <1438152754-11970-1-git-send-email-jamesjj.liao@mediatek.com> <1450634.BBmUdb8ZLk@diego> <55BA7E34.2050206@codeaurora.org>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH] rtc: mt6397: implement suspend/resume function in
+ rtc-mt6397 driver
+Date: Fri, 31 Jul 2015 09:32:52 +0800
+Message-ID: <1438306372.26690.2.camel@mtksdaap41>
+References: <1438267994-13934-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55BA7E34.2050206@codeaurora.org>
+In-Reply-To: <1438267994-13934-1-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, srv_heupstream@mediatek.com, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Alexandre Belloni <alexandre.belloni@free-electrons.com>, Alessandro Zummo <a.zummo@towertech.it>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, rtc-linux@googlegroups.com, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Donnerstag, 30. Juli 2015, 12:42:44 schrieb Stephen Boyd:
-> On 07/30/2015 11:04 AM, Heiko St=FCbner wrote:
-> > Am Donnerstag, 30. Juli 2015, 10:36:43 schrieb Stephen Boyd:
-> >> Is it being used in DT right now and causing regressions on
-> >> v4.2-rcX? Sorry, I'm trying to understand why this patch matters
-> >> for the 4.2 release.
-> >=20
-> > it's not been used in an actual devicetree file, but as far as I
-> > understand it, the dt-binding headers themself are also part of the=
- ABI.
-> >=20
-> > And it is new in 4.2, so has not been part of an official release y=
-et.
-> >=20
-> > The reason for the removal from what I understand is that the remov=
-ed
-> > clock is not documented at all (it's source, what it does), which g=
-ot it
-> > the "clk_null" parent in the first place.
->=20
-> Right, so my understanding of the DT ABI thing is that newer kernels
-> should keep working with older DTs. If there isn't any DT using the
-> binding, then we don't have a problem because the only thing that cou=
-ld
-> happen would be a newer DT working with an older kernel, which doesn'=
-t
-> make any sense from a backwards incompatible standpoint.
->=20
-> If you feel strongly that some sort of DT ABI rule would be broken an=
-d
-> you want to make sure that doesn't happen I guess we can queue this u=
-p
-> to be sent off to Linus, but if you aren't worried (and I'm obviously
-> not worried) then I'd prefer we just queue it up for 4.3.
+On Thu, 2015-07-30 at 22:53 +0800, Henry Chen wrote:
+> Implement the suspend/resume function in order to control rtc's irq_wake flag and handle as wakeup source.
+> 
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+>  drivers/rtc/rtc-mt6397.c | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index c0090b6..9f6c9f8 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -373,6 +373,31 @@ static int mtk_rtc_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +#ifdef CONFIG_PM_SLEEP
+> +static int mt6397_rtc_suspend(struct device *dev)
+> +{
+> +	struct mt6397_rtc *rtc = dev_get_drvdata(dev);
+> +
+> +	if (device_may_wakeup(dev))
+> +		enable_irq_wake(rtc->irq);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mt6397_rtc_resume(struct device *dev)
+> +{
+> +	struct mt6397_rtc *rtc = dev_get_drvdata(dev);
+> +
+> +	if (device_may_wakeup(dev))
+> +		disable_irq_wake(rtc->irq);
+> +
+> +	return 0;
+> +}
+> +#endif
+> +
+> +static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
+> +			mt6397_rtc_resume);
+> +
+>  static const struct of_device_id mt6397_rtc_of_match[] = {
+>  	{ .compatible = "mediatek,mt6397-rtc", },
+>  	{ }
+> @@ -382,6 +407,7 @@ static struct platform_driver mtk_rtc_driver = {
+>  	.driver = {
+>  		.name = "mt6397-rtc",
+>  		.of_match_table = mt6397_rtc_of_match,
+> +		.pm = &mt6397_pm_ops,
+>  	},
+>  	.probe	= mtk_rtc_probe,
+>  	.remove = mtk_rtc_remove,
 
-I don't feel strongly, it was only based on what I remember about all t=
-he dt-
-ABI talk :-) . Aka if you're ok with it simply going into 4.3 that shou=
-ld be=20
-ok too from my pov.
+It looks good to me.
+
+Acked-by: Eddie Huang <eddie.huang@mediatek.com>
