@@ -1,33 +1,35 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v6 0/4] Add Mediatek MT8173 cpufreq driver
-Date: Sun, 2 Aug 2015 12:57:08 +0530
-Message-ID: <CAKohpo=jnXkcbE-2N7BVPnuNBQz=zX97Eydc0NwFXSaCcZZJLg@mail.gmail.com>
-References: <1436437661-17606-1-git-send-email-pi-cheng.chen@linaro.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] pinctrl/mediatek: fix spelling mistake in dev_err error message
+Date: Mon,  3 Aug 2015 00:10:45 +0100
+Message-ID: <1438557045-3590-1-git-send-email-colin.king@canonical.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436437661-17606-1-git-send-email-pi-cheng.chen@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Cc: Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 9 July 2015 at 15:57, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
-> MT8173 is a ARMv8 based SoC with 2 clusters. All CPUs in a single cluster
-> share the same power and clock domain. This series tries to add cpufreq support
-> for MT8173 SoC.
->
-> changes in v6:
-> - Move clock and regulator consumer properties document to the device tree
->   bindings documents of MT8173 CPU DVFS clock driver
-> - Add change log to describe what is implemented in the MT8173 cpufreq driver
-> - Add missed rcu_read_unlock() in the error path
-> - Move of_init_opp_table() call to make sure all required hardware resources
->   are already there before it is called
-> - Add comments to describe why both platform driver and deivce registration
->   codes are put in the initcall function
-> - Use the term "voltage tracking" instead of "voltage trace" according to an
->   internal SoC document
->
+From: Colin Ian King <colin.king@canonical.com>
 
-@Rafael: Can you please apply these patches [1,3,4] for 4.3?
+Trivial change, fix spelling mistake 'invaild' -> 'invalid' in
+dev_err message.
+
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..5af5441 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -702,7 +702,7 @@ static int mtk_pmx_set_mux(struct pinctrl_dev *pctldev,
+ 
+ 	ret = mtk_pctrl_is_function_valid(pctl, g->pin, function);
+ 	if (!ret) {
+-		dev_err(pctl->dev, "invaild function %d on group %d .\n",
++		dev_err(pctl->dev, "invalid function %d on group %d .\n",
+ 				function, group);
+ 		return -EINVAL;
+ 	}
+-- 
+2.5.0
