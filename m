@@ -1,35 +1,76 @@
-From: Colin King <colin.king@canonical.com>
-Subject: [PATCH] pinctrl/mediatek: fix spelling mistake in dev_err error message
-Date: Mon,  3 Aug 2015 00:10:45 +0100
-Message-ID: <1438557045-3590-1-git-send-email-colin.king@canonical.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v6 0/3] Add MediaTek display PWM driver
+Date: Mon, 3 Aug 2015 14:21:32 +0800
+Message-ID: <1438582892.19953.4.camel@mtksdaap41>
+References: <1437380237-28961-1-git-send-email-yh.huang@mediatek.com>
+	 <2181696.fQcvS98Cqx@ubix> <1437729058.11386.4.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1437729058.11386.4.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+On Fri, 2015-07-24 at 17:10 +0800, YH Huang wrote:
+> On Fri, 2015-07-24 at 10:42 +0200, Matthias Brugger wrote:
+> > On Monday, July 20, 2015 04:17:14 PM YH Huang wrote:
+> > > This patch series add the use of display PWM driver, documentation
+> > > and device tree for Mediatek SoCs. The driver is used to support
+> > > the backlight of the panel. This is based on v4.2-rc1.
+> > > 
+> > > The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch:
+> > > clk: mediatek: Add subsystem clocks of MT8173
+> > > 
+> > > Change in v6:
+> > > 1. Enable clocks in the pwm_enable function
+> > > 2. Remove suspend/resume code since pwm-backlight driver has done the same
+> > > things 3. Revise some code to make it easier to read
+> > > 
+> > 
+> > Can you please provide the whole change log for all versions the next time.
+> > It's easier this way to understand the evolution of the series.
+> 
+> Change in v6:
+> 1. Enable clocks in the pwm_enable function.
+> 2. Remove suspend/resume code since pwm-backlight driver has done the
+> same things.
+> 3. Revise some code to make it easier to read.
+> 
+> Change in v5:
+> 1. Configure PWM output via pinctrl.
+> 2. Fix the parameter name in dtsi.
+> 
+> Change in v4:
+> 1. Codebase is on v4.2-rc1.
+> 2. Add the PWM node in dtsi.
+> 3. Change the dependency in Kconfig.
+> 4. Rewrite some code for readability.
+> 
+> Change in v3:
+> 1. Add suspend/resume function.
+> 2. Fix the formula for high_width calculation.
+> 3. Rewrite some code to make it easier to read.
+> 4. Add more information in the commit message.
+> 
+> Change in v2:
+> 1. Rewrite descriptions for driver in kconfig to make it much clear.
+> 2. Rename the driver from "pwm-mediatek-disp" to "pwm-mtk-disp".
+> 3. Disable clocks in the error path.
+> 4. Change the shift values in decimal instead of hex.
+> 5. Rename and add some variables or function name for consistency and
+> readability.
+> 6. Drop unnecessary parentheses, spaces, variables and add newlines to
+> make the code easiler to read.
+> 
+> Thanks for your suggestion.
 
-Trivial change, fix spelling mistake 'invaild' -> 'invalid' in
-dev_err message.
+Hi Thierry,
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Do you have any suggestions?
+Maybe we could apply the patch?
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index ad1ea16..5af5441 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -702,7 +702,7 @@ static int mtk_pmx_set_mux(struct pinctrl_dev *pctldev,
- 
- 	ret = mtk_pctrl_is_function_valid(pctl, g->pin, function);
- 	if (!ret) {
--		dev_err(pctl->dev, "invaild function %d on group %d .\n",
-+		dev_err(pctl->dev, "invalid function %d on group %d .\n",
- 				function, group);
- 		return -EINVAL;
- 	}
--- 
-2.5.0
+Regards,
+YH Huang
