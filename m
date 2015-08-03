@@ -1,36 +1,33 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] regulator: mt6311: Modify the maximum voltage of buck.
-Date: Mon, 3 Aug 2015 22:15:51 +0800
-Message-ID: <1438611351-4245-1-git-send-email-henryc.chen@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 4/9] clocksource: mediatek: Use GPT as sched clock
+ source
+Date: Mon, 03 Aug 2015 17:51:35 +0200
+Message-ID: <55BF8E07.7090308@linaro.org>
+References: <1431763110-443-1-git-send-email-yingjoe.chen@mediatek.com> <1431763110-443-5-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1431763110-443-5-git-send-email-yingjoe.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Axel Lin <axel.lin@ingics.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Henry Chen <henryc.chen@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Russell King <linux@arm.linux.org.uk>
+Cc: devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Pawel Moll <pawel.moll@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Marc Carino <marc.ceeeee@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The maximum voltage of buck should be 1.39375V.
-1.39375V = 0.6V + 0.00625V * 127, 127 is the max_sel of linear range.
+On 05/16/2015 09:58 AM, Yingjoe Chen wrote:
+> When cpu is in deep idle, arch timer will stop counting. Setup GPT as
+> sched clock source so it can keep counting in idle.
+>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> ---
 
-Reported-by: Axel Lin <axel.lin@ingics.com>
-signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/regulator/mt6311-regulator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 
-diff --git a/drivers/regulator/mt6311-regulator.c b/drivers/regulator/mt6311-regulator.c
-index 096e620..b140da0 100644
---- a/drivers/regulator/mt6311-regulator.c
-+++ b/drivers/regulator/mt6311-regulator.c
-@@ -34,7 +34,7 @@ static const struct regmap_config mt6311_regmap_config = {
- 
- /* Default limits measured in millivolts and milliamps */
- #define MT6311_MIN_UV		600000
--#define MT6311_MAX_UV		1400000
-+#define MT6311_MAX_UV		1393750
- #define MT6311_STEP_UV		6250
- 
- static const struct regulator_linear_range buck_volt_range[] = {
--- 
-1.8.1.1.dirty
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
