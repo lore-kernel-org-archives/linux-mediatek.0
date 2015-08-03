@@ -1,306 +1,36 @@
-From: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] clk: mediatek: Export CPU mux clocks for CPU frequency
- control
-Date: Mon, 3 Aug 2015 19:13:36 +0800
-Message-ID: <20150803111335.GA5165@gmail.com>
-References: <CAGS+omAa=3W+SZLmFaDD6uJuhXtu2zX12TsvL2etDif+mKkoVA@mail.gmail.com>
- <1436942326-19747-1-git-send-email-pi-cheng.chen@linaro.org>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH] regulator: mt6311: Modify the maximum voltage of buck.
+Date: Mon, 3 Aug 2015 22:15:51 +0800
+Message-ID: <1438611351-4245-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1436942326-19747-1-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Javier Martinez Canillas <javier@osg.samsung.com>, Axel Lin <axel.lin@ingics.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Henry Chen <henryc.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jul 15, 2015 at 02:38:46PM +0800, Pi-Cheng Chen wrote:
-> From: "pi-cheng.chen" <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> 
-> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
-> for intermediate clock source switching.
+The maximum voltage of buck should be 1.39375V.
+1.39375V = 0.6V + 0.00625V * 127, 127 is the max_sel of linear range.
 
-Hi Mike and Stephen,
+Reported-by: Axel Lin <axel.lin@ingics.com>
+signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+ drivers/regulator/mt6311-regulator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-since the MT8173 cpufreq driver is likely going to be merged[1] and we still
-need the CPU MUX clocks consumed by MT8173 cpufreq driver, may I have some
-comments from you to get this patch moving forwards so that MT8173 cpufreq
-driver could work completely?
-
-Or the regmap supported basic clock type[2] is the prefered way?
-Thanks.
-
-Best Regards,
-Pi-Cheng
-
-[1] http://marc.info/?l=linux-pm&m=143850044118837&w=2
-[2] http://marc.info/?l=linux-kernel&m=143835585905028&w=2
-
-> 
-> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
-> Changes in v4:
-> - Address comments for v3
-> - Rebase to the patch that adds 13mhz clock for MT8173[1]
-> 
-> Changes in v3:
-> - Rebase to 4.2-rc1
-> - Fix some issues of v2
-> 
-> Changes in v2:
-> - Remove use of .determine_rate callback
-> 
-> [1] http://patchwork.kernerl.xyz/patch/6777041/
-> ---
->  drivers/clk/mediatek/Makefile          |   2 +-
->  drivers/clk/mediatek/clk-cpumux.c      | 127 +++++++++++++++++++++++++++++++++
->  drivers/clk/mediatek/clk-cpumux.h      |  22 ++++++
->  drivers/clk/mediatek/clk-mt8173.c      |  23 ++++++
->  include/dt-bindings/clock/mt8173-clk.h |   4 +-
->  5 files changed, 176 insertions(+), 2 deletions(-)
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
-> 
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 8e4b2a4..299917a 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -1,4 +1,4 @@
-> -obj-y += clk-mtk.o clk-pll.o clk-gate.o
-> +obj-y += clk-mtk.o clk-pll.o clk-gate.o clk-cpumux.o
->  obj-$(CONFIG_RESET_CONTROLLER) += reset.o
->  obj-y += clk-mt8135.o
->  obj-y += clk-mt8173.o
-> diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
-> new file mode 100644
-> index 0000000..fb04fe1
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-cpumux.c
-> @@ -0,0 +1,127 @@
-> +/*
-> + * Copyright (c) 2015 Linaro Ltd.
-> + * Author: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/clk-provider.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/slab.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-cpumux.h"
-> +
-> +struct mtk_clk_cpumux {
-> +	struct clk_hw	hw;
-> +	struct regmap	*regmap;
-> +	u32		reg;
-> +	u32		mask;
-> +	u8		shift;
-> +};
-> +
-> +static inline struct mtk_clk_cpumux *to_clk_mux(struct clk_hw *_hw)
-> +{
-> +	return container_of(_hw, struct mtk_clk_cpumux, hw);
-> +}
-> +
-> +static u8 clk_cpumux_get_parent(struct clk_hw *hw)
-> +{
-> +	struct mtk_clk_cpumux *mux = to_clk_mux(hw);
-> +	int num_parents = __clk_get_num_parents(hw->clk);
-> +	unsigned int val;
-> +
-> +	regmap_read(mux->regmap, mux->reg, &val);
-> +
-> +	val >>= mux->shift;
-> +	val &= mux->mask;
-> +
-> +	if (val >= num_parents)
-> +		return -EINVAL;
-> +
-> +	return val;
-> +}
-> +
-> +static int clk_cpumux_set_parent(struct clk_hw *hw, u8 index)
-> +{
-> +	struct mtk_clk_cpumux *mux = to_clk_mux(hw);
-> +	u32 mask, val;
-> +
-> +	val = index << mux->shift;
-> +	mask = mux->mask << mux->shift;
-> +
-> +	return regmap_update_bits(mux->regmap, mux->reg, mask, val);
-> +}
-> +
-> +static const struct clk_ops clk_cpumux_ops = {
-> +	.get_parent = clk_cpumux_get_parent,
-> +	.set_parent = clk_cpumux_set_parent,
-> +};
-> +
-> +static struct clk __init *mtk_clk_register_cpumux(const struct mtk_composite *mux,
-> +					   struct regmap *regmap)
-> +{
-> +	struct mtk_clk_cpumux *cpumux;
-> +	struct clk *clk;
-> +	struct clk_init_data init;
-> +
-> +	cpumux = kzalloc(sizeof(*cpumux), GFP_KERNEL);
-> +	if (!cpumux)
-> +		return ERR_PTR(-ENOMEM);
-> +
-> +	init.name = mux->name;
-> +	init.ops = &clk_cpumux_ops;
-> +	init.parent_names = mux->parent_names;
-> +	init.num_parents = mux->num_parents;
-> +	init.flags = mux->flags;
-> +
-> +	cpumux->reg = mux->mux_reg;
-> +	cpumux->shift = mux->mux_shift;
-> +	cpumux->mask = BIT(mux->mux_width) - 1;
-> +	cpumux->regmap = regmap;
-> +	cpumux->hw.init = &init;
-> +
-> +	clk = clk_register(NULL, &cpumux->hw);
-> +	if (IS_ERR(clk))
-> +		kfree(cpumux);
-> +
-> +	return clk;
-> +}
-> +
-> +int __init mtk_clk_register_cpumuxes(struct device_node *node,
-> +			      const struct mtk_composite *clks, int num,
-> +			      struct clk_onecell_data *clk_data)
-> +{
-> +	int i;
-> +	struct clk *clk;
-> +	struct regmap *regmap;
-> +
-> +	regmap = syscon_node_to_regmap(node);
-> +	if (IS_ERR(regmap)) {
-> +		pr_err("Cannot find regmap for %s: %ld\n", node->full_name,
-> +		       PTR_ERR(regmap));
-> +		return PTR_ERR(regmap);
-> +	}
-> +
-> +	for (i = 0; i < num; i++) {
-> +		const struct mtk_composite *mux = &clks[i];
-> +
-> +		clk = mtk_clk_register_cpumux(mux, regmap);
-> +		if (IS_ERR(clk)) {
-> +			pr_err("Failed to register clk %s: %ld\n",
-> +			       mux->name, PTR_ERR(clk));
-> +			continue;
-> +		}
-> +
-> +		clk_data->clks[mux->id] = clk;
-> +	}
-> +
-> +	return 0;
-> +}
-> diff --git a/drivers/clk/mediatek/clk-cpumux.h b/drivers/clk/mediatek/clk-cpumux.h
-> new file mode 100644
-> index 0000000..52c769f
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-cpumux.h
-> @@ -0,0 +1,22 @@
-> +/*
-> + * Copyright (c) 2015 Linaro Ltd.
-> + * Author: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#ifndef __DRV_CLK_CPUMUX_H
-> +#define __DRV_CLK_CPUMUX_H
-> +
-> +int mtk_clk_register_cpumuxes(struct device_node *node,
-> +			      const struct mtk_composite *clks, int num,
-> +			      struct clk_onecell_data *clk_data);
-> +
-> +#endif /* __DRV_CLK_CPUMUX_H */
-> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-> index 540c5c3..053ca27 100644
-> --- a/drivers/clk/mediatek/clk-mt8173.c
-> +++ b/drivers/clk/mediatek/clk-mt8173.c
-> @@ -19,6 +19,7 @@
->  
->  #include "clk-mtk.h"
->  #include "clk-gate.h"
-> +#include "clk-cpumux.h"
->  
->  #include <dt-bindings/clock/mt8173-clk.h>
->  
-> @@ -517,6 +518,25 @@ static const char * const i2s3_b_ck_parents[] __initconst = {
->  	"apll2_div5"
->  };
->  
-> +static const char * const ca53_parents[] __initconst = {
-> +	"clk26m",
-> +	"armca7pll",
-> +	"mainpll",
-> +	"univpll"
-> +};
-> +
-> +static const char * const ca57_parents[] __initconst = {
-> +	"clk26m",
-> +	"armca15pll",
-> +	"mainpll",
-> +	"univpll"
-> +};
-> +
-> +static const struct mtk_composite cpu_muxes[] __initconst = {
-> +	MUX(CLK_INFRA_CA53SEL, "infra_ca53_sel", ca53_parents, 0x0000, 0, 2),
-> +	MUX(CLK_INFRA_CA57SEL, "infra_ca57_sel", ca57_parents, 0x0000, 2, 2),
-> +};
-> +
->  static const struct mtk_composite top_muxes[] __initconst = {
->  	/* CLK_CFG_0 */
->  	MUX(CLK_TOP_AXI_SEL, "axi_sel", axi_parents, 0x0040, 0, 3),
-> @@ -743,6 +763,9 @@ static void __init mtk_infrasys_init(struct device_node *node)
->  						clk_data);
->  	mtk_clk_register_factors(infra_divs, ARRAY_SIZE(infra_divs), clk_data);
->  
-> +	mtk_clk_register_cpumuxes(node, cpu_muxes, ARRAY_SIZE(cpu_muxes),
-> +						clk_data);
-> +
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->  	if (r)
->  		pr_err("%s(): could not register clock provider: %d\n",
-> diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-> index fa2a2bb..a17cbaa 100644
-> --- a/include/dt-bindings/clock/mt8173-clk.h
-> +++ b/include/dt-bindings/clock/mt8173-clk.h
-> @@ -188,7 +188,9 @@
->  #define CLK_INFRA_PMICSPI		10
->  #define CLK_INFRA_PMICWRAP		11
->  #define CLK_INFRA_CLK_13M		12
-> -#define CLK_INFRA_NR_CLK		13
-> +#define CLK_INFRA_CA53SEL		13
-> +#define CLK_INFRA_CA57SEL		14
-> +#define CLK_INFRA_NR_CLK		15
->  
->  /* PERI_SYS */
->  
-> -- 
-> 1.9.1
-> 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/regulator/mt6311-regulator.c b/drivers/regulator/mt6311-regulator.c
+index 096e620..b140da0 100644
+--- a/drivers/regulator/mt6311-regulator.c
++++ b/drivers/regulator/mt6311-regulator.c
+@@ -34,7 +34,7 @@ static const struct regmap_config mt6311_regmap_config = {
+ 
+ /* Default limits measured in millivolts and milliamps */
+ #define MT6311_MIN_UV		600000
+-#define MT6311_MAX_UV		1400000
++#define MT6311_MAX_UV		1393750
+ #define MT6311_STEP_UV		6250
+ 
+ static const struct regulator_linear_range buck_volt_range[] = {
+-- 
+1.8.1.1.dirty
