@@ -1,31 +1,102 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [PATCH v3 5/8] ARM: mediatek: add smp bringup code for MT6580
-Date: Wed, 5 Aug 2015 10:44:30 +0100
-Message-ID: <20150805094429.GU7557@n2100.arm.linux.org.uk>
-References: <1438696464-59858-1-git-send-email-scott.shu@mediatek.com>
- <1438696464-59858-6-git-send-email-scott.shu@mediatek.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Wed, 5 Aug 2015 12:20:39 +0200
+Message-ID: <20150805102039.GH18700@pengutronix.de>
+References: <1437465566-16299-1-git-send-email-s.hauer@pengutronix.de>
+ <1437465566-16299-3-git-send-email-s.hauer@pengutronix.de>
+ <CAGS+omAsTBMhfLPs5V68Ou1E5WXnQzZ3_E5+9qCCbAja3dgY-w@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1438696464-59858-6-git-send-email-scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <CAGS+omAsTBMhfLPs5V68Ou1E5WXnQzZ3_E5+9qCCbAja3dgY-w@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: "Hanyi.Wu" <hanyi.wu@mediatek.com>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sasha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 04, 2015 at 09:54:21PM +0800, Scott Shu wrote:
-> Add support for cpu enable-method "mediatek,mt6580-smp" for booting
-> secondary CPUs on MT6580.
+On Tue, Jul 21, 2015 at 11:13:22PM +0800, Daniel Kurtz wrote:
+> Hi Sascha,
+> 
+> Review comments inline...
+> 
+> > + *
+> > + * This converts the raw ADC value to mcelsius using the SoC specific
+> > + * calibration constants
+> > + */
+> > +static int raw_to_mcelsius(struct mtk_thermal *mt, u32 raw)
+> > +{
+> > +       s32 format_1, format_2, format_3, format_4;
+> 
+> The formula would be easier to follow with better variable names than
+> "format_X".
+> 
+> > +       s32 xtoomt;
+> 
+> What does "xtoomt" mean?
+> 
+> > +       s32 gain;
+> > +
+> > +       raw &= 0xfff;
+> > +
+> > +       gain = (10000 + mt->adc_ge);
+> 
+> no outer ()
+> 
+> > +
+> > +       xtoomt = ((((mt->vts + 3350 - mt->adc_oe) * 10000) / 4096) * 10000) /
+> > +               gain;
+> > +
+> > +       format_1 = ((mt->degc_cali * 10) >> 1);
+> 
+> When doing computations, I think "A / 2" is preferred over "A >> 1".
+> Also, no outer ().
+> 
+> > +       format_2 = (raw - mt->adc_oe);
+> > +       format_3 = (((((format_2) * 10000) >> 12) * 10000) / gain) - xtoomt;
+> 
+> This is just:
+>   format_3 = ((((raw - mt->vts - 3350) * 10000) / 4096) * 10000) / gain;
+> 
+> No wonder mt->adc_oe = 512-512 = 0... it just cancels itself out here, anyway.
+> 
+> > +       format_3 = format_3 * 15 / 18;
+> 
+> Of course we should multiply by 15/18!
+> What is going on here?  Why this magic 5/6 ratio?
+> 
+> > +       format_4 = ((format_3 * 100) / (165 + mt->o_slope));
+> 
+> no outer ()
+> 
+> > +       format_4 = format_4 - (format_4 << 1);
+> 
+> Hmm...
+>  A = X - 2*X;
+> otherwise known as:
+>  A = -X;
+> 
+> > +       return (format_1 + format_4) * 100;
+> 
+> Or just:
+>   return (format_1 - format_4) * 100;
 
-If you have CPU power domain support, and you power up and power down the
-CPUs, why do you need the boot_lock and pen_release stuff?  Isn't keeping
-the power off on a CPU sufficient to prevent it entering the kernel?
+I must admit I took this calculation from the original driver and never
+looked at it. Simplifying this further this goes down to:
+
+static int raw_to_mcelsius(struct mtk_thermal *mt, u32 raw)
+{
+	return mt->calib_b + mt->calib_a * (raw & 0xfff);
+}
+
+with calib_a = -123 and calib_b = 465124.
+
+I'll address this and the other comments in v2.
+
+Sascha
 
 -- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
