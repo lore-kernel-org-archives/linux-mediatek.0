@@ -1,93 +1,56 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v3 0/5] Add SMP bringup support for mt65xx socs
-Date: Wed, 5 Aug 2015 23:31:15 +0100
-Message-ID: <20150805223115.GD7557@n2100.arm.linux.org.uk>
-References: <1436851111-2369-1-git-send-email-yingjoe.chen@mediatek.com>
- <4831607.pyCH8elj8i@ubix>
+From: leilk liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/3] dt-binding: spi: Mediatek: Document devicetree
+ bindings for spi bus
+Date: Thu, 6 Aug 2015 09:45:40 +0800
+Message-ID: <1438825540.2163.5.camel@mhfsdcap03>
+References: <1438167874-1305-1-git-send-email-leilk.liu@mediatek.com>
+	 <1438167874-1305-2-git-send-email-leilk.liu@mediatek.com>
+	 <20150804174226.GE20873@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4831607.pyCH8elj8i@ubix>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150804174226.GE20873-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 05, 2015 at 08:44:11PM +0200, Matthias Brugger wrote:
-> On Tuesday, July 14, 2015 01:18:26 PM Yingjoe Chen wrote:
-> > This series add SMP brinup support for MediaTek SoCs. This is based
-> > on v4.2-rc1 and Matthias' next branch (for dts parts).
-> > 
-> > There are similar but different SMP bringup up methods on MediaTek
-> > mt65xx and mt81xx. On MT8135 & MT8127, system boots with a trustzone
-> > firmware. Others, like MT6589, doesn't have trustzone, and run kernel
-> > directly in secure world.
-> > 
-> > Patch 1 enable arch timer support.
-> > Patch 2,3 add support for cpu enable-method "mediatek,mt6589-smp" and
-> > "mediatek,mt81xx-tz-smp", which support Mediatek SMP bringup for non-TZ
-> > and TZ platform.
-> > Patch 4,5 finally enable SMP bringup for mt8135 and mt8127.
-> > 
-> > Changes in v3:
-> > - The first 2 patches in v2 are merged in v4.2-rc1.
-> > - Patch 3~4 in v2 are moved to another series [1]
-> > - platsmp.c changes based on Stephen's suggestion
-> > - Change cpu enable-method name to "mediatek,mt6589-smp"
-> > 
-> > Changes in v2:
-> > - Fix boot issue for THUMB2 kernel.
-> > - Not enable GPT_CLK_EVT when setup to fix GPT spurious interrupt issue
-> > - Change platsmp.c according to Matthias' suggestion
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000714.html
-> > 
-> > v1:
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000528.html
-> > 
-> > [1]
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001544.html
-> > 
-> > Matthias Brugger (1):
-> >   ARM: mediatek: enable gpt6 on boot up to make arch timer working
-> > 
-> > Yingjoe Chen (4):
-> >   devicetree: bindings: add new SMP enable method Mediatek SoC
-> >   ARM: mediatek: add smp bringup code
-> >   ARM: dts: mt8135: enable basic SMP bringup for mt8135
-> >   ARM: dts: mt8127: enable basic SMP bringup for mt8127
-> > 
-> >  Documentation/devicetree/bindings/arm/cpus.txt |   2 +
-> >  arch/arm/boot/dts/mt8127.dtsi                  |  16 +++
-> >  arch/arm/boot/dts/mt8135.dtsi                  |  16 +++
-> >  arch/arm/mach-mediatek/Makefile                |   3 +
-> >  arch/arm/mach-mediatek/mediatek.c              |  27 +++++
-> >  arch/arm/mach-mediatek/platsmp.c               | 144
-> > +++++++++++++++++++++++++ 6 files changed, 208 insertions(+)
-> >  create mode 100644 arch/arm/mach-mediatek/platsmp.c
+On Tue, 2015-08-04 at 18:42 +0100, Mark Brown wrote:
+> On Wed, Jul 29, 2015 at 07:04:32PM +0800, Leilk Liu wrote:
+> > Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> Applied to v4.2-next/soc-2 and v4.2-next/dts-2 
+> Please use subject lines reflecting the style for the subsystem so
+> people can spot if patches are relevant to them.
+> 
 
-I've just NAK'd one of the patches in this set; I don't tend to even see
-mediatek patches normally, as they all head into my junk mailfolder
-because mediatek's mail server setup is truely abysmal (it has broken
-reverse DNS - the DNS positively says that the mail server is not a
-legit owner of the name it claims to be.)
+OK, I will change the title to "spi: Mediatek: Document devicetree
+bindings for spi bus".
 
-The problem is that this patch series uses memblock_reserve() way after
-the memory has been transitioned out of memblock's control, so actually
-this has no effect.
+> > +- clocks: phandles to input clocks.
+> > +
+> > +- clock-names: tuple listing input clock names.
+> > +	Required elements: "main"
+> 
+> ...and there are no optional values?
+> 
 
-I've seen a number of patches doing this.  I'm not sure what's soo friggin
-hard for people to understand: memblock is about the EARLY stages of
-getting the system up and running.  Once the memory has been handed
-over to the kernel's memory management, memblock MUST NOT BE USED to
-reserve memory.
+clock tree provides some source clocks, CLK_PERI_SPI0 is the default
+one. I will support optional values on the next version.
 
-There is one place, and one place only in the ARM kernel where
-memblock_reserve() is possible, and that's in the ->reserve machine
-callback.  NOWHERE ELSE is permissible.
+> > +- pad-select: should specify spi pad used, only required for MT8173.
+> > +        This value should be 0~3.
+> 
+> What do the values 0-3 mean?  I guess it's the value for some register
+> or other part of the device, the binding should say so people can go and
+> check the datasheet, schematic or whatever to figure out what to set.
+> 
+> This property should be optional, not required
 
--- 
-FTTC broadband for 0.8mile line: currently at 10.5Mbps down 400kbps up
-according to speedtest.net.
+OK, I will explain what the values 0-3 mean.
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
