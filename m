@@ -1,101 +1,221 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v6 7/9] clk: mediatek: Add subsystem clocks of MT8173
-Date: Thu, 6 Aug 2015 12:20:59 +0200
-Message-ID: <20150806102059.GQ18700@pengutronix.de>
-References: <1438676218-11310-1-git-send-email-jamesjj.liao@mediatek.com>
- <1438676218-11310-8-git-send-email-jamesjj.liao@mediatek.com>
- <20150805064605.GZ18700@pengutronix.de>
- <1438849431.27884.9.camel@mtksdaap41>
- <20150806085354.GN18700@pengutronix.de>
- <1438851644.27884.21.camel@mtksdaap41>
- <CAGS+omAAYZyZJ4+eSdu2jmwThvHg1YpVoehui_cqNp4A5fURWg@mail.gmail.com>
+From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 5/8] ARM: mediatek: add smp bringup code for MT6580
+Date: Thu, 6 Aug 2015 22:00:37 +0800
+Message-ID: <1438869637.1900.6.camel@mtkswgap22>
+References: <1438696464-59858-1-git-send-email-scott.shu@mediatek.com>
+	 <1438696464-59858-6-git-send-email-scott.shu@mediatek.com>
+	 <1801910.hz53dYUgta@ubix>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omAAYZyZJ4+eSdu2jmwThvHg1YpVoehui_cqNp4A5fURWg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1801910.hz53dYUgta@ubix>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 06, 2015 at 05:13:21PM +0800, Daniel Kurtz wrote:
-> On Thu, Aug 6, 2015 at 5:00 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Hi Sascha,
-> >
-> > On Thu, 2015-08-06 at 10:53 +0200, Sascha Hauer wrote:
-> >> On Thu, Aug 06, 2015 at 04:23:51PM +0800, James Liao wrote:
-> >> > On Wed, 2015-08-05 at 08:46 +0200, Sascha Hauer wrote:
-> >> > > On Tue, Aug 04, 2015 at 04:16:56PM +0800, James Liao wrote:
-> >> > > >  static const struct mtk_fixed_clk fixed_clks[] __initconst = {
-> >> > > >         FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk26m", 400 * MHZ),
-> >> > > >         FIXED_CLK(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk26m", 125 * MHZ),
-> >> > > > +       FIXED_CLK(CLK_TOP_DSI0_DIG, "dsi0_dig", "clk26m", 130 * MHZ),
-> >> > > > +       FIXED_CLK(CLK_TOP_DSI1_DIG, "dsi1_dig", "clk26m", 130 * MHZ),
-> >> > > > +       FIXED_CLK(CLK_TOP_LVDS_PXL, "lvds_pxl", "lvdspll", 148.5 * MHZ),
-> >> > > > +       FIXED_CLK(CLK_TOP_LVDS_CTS, "lvds_cts", "lvdspll", 51.975 * MHZ),
-> >> > >
-> >> > > I would expect 51975 * KHZ here to avoid fractional numbers. Probably
-> >> > > gcc calculates that during compile time so this will work as expected,
-> >> > > still I'm not sure this is good style to use fractional numbers here.
-> >> >
-> >> > As I know all constants will be calculated in compile time, so there
-> >> > should be no difference between 51.975 * MHZ and 51975 * KHz.
-> >> >
-> >> > > Anyway, on my system lvdspll is running at 150MHz. Are you sure there is
-> >> > > a clock derived from this running at 148.5MHz? Is it really correct to
-> >> > > use a fixed clock here or should it rather be lvdspll directly?
-> >> >
-> >> > Here is the clock hierarchy between lvdspll and lvds_pxl:
-> >> >
-> >> >             --------       AD_VPLL_DPIX_CK  --------   lvds_pxl  -----
-> >> >            |        |--------------------->|        |---------->|
-> >> >            |        |                      | cksys  |           |
-> >> > LVDSPLL -->| LVDSTX |                      | buffer |           | MMSYS
-> >> >            |        | AD_LVDSTX_CLKDIG_CTS | test   |  lvds_cts |
-> >> >            |        |--------------------->|        |---------->|
-> >> >             --------                        --------             -----
-> >> >
-> >> > Some clocks and blocks are not modeled into CCF. But we prefer to enable
-> >> > lvdspll before enabling lvds_pxl. So I modeled lvds_pxl (and lvds_cts)
-> >> > as a fixed-rate clock with a source from lvdspll.
-> >> >
-> >> > The frequency of these fixed-rate clocks (such as 148.5 MHz) are typical
-> >> > rate. In fact, we don't care about the actual rate of these clocks. We
-> >> > just care about the enable / disable sequence of them.
-> >>
-> >> Please either use the real rate or 0 (along with a explaining why). Using
-> >> a frequency with four to five significant digits makes me think that the
-> >> actual rate is very important.
-> >
-> > Oops, your suggestion is much different from Daniel's.
-> >
-> > Daniel, could you help to comment about how we model these clocks?
+On Wed, 2015-08-05 at 18:47 +0200, Matthias Brugger wrote:
+> On Tuesday, August 04, 2015 09:54:21 PM Scott Shu wrote:
+> > Add support for cpu enable-method "mediatek,mt6580-smp" for booting
+> > secondary CPUs on MT6580.
+> > 
+> > Signed-off-by: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  arch/arm/mach-mediatek/platsmp.c |  137
+> > ++++++++++++++++++++++++++++++++++++++ 1 file changed, 137 insertions(+)
+> > 
+> > diff --git a/arch/arm/mach-mediatek/platsmp.c
+> > b/arch/arm/mach-mediatek/platsmp.c index a5bc108..94f7865 100644
+> > --- a/arch/arm/mach-mediatek/platsmp.c
+> > +++ b/arch/arm/mach-mediatek/platsmp.c
+> > @@ -21,10 +21,16 @@
+> >  #include <linux/of_address.h>
+> >  #include <linux/string.h>
+> >  #include <linux/threads.h>
+> > +#include <linux/delay.h>
+> > +#include <asm/cacheflush.h>
+> > +
+> > +#include <linux/soc/mediatek/scpsys.h>
+> > 
+> >  #define MTK_MAX_CPU		8
+> >  #define MTK_SMP_REG_SIZE	0x1000
+> > 
+> > +static DEFINE_SPINLOCK(boot_lock);
+> > +
+> >  struct mtk_smp_boot_info {
+> >  	unsigned long smp_base;
+> >  	unsigned int jump_reg;
+> > @@ -56,6 +62,126 @@ static const struct of_device_id mtk_smp_boot_infos[]
+> > __initconst = { static void __iomem *mtk_smp_base;
+> >  static const struct mtk_smp_boot_info *mtk_smp_info;
+> > 
+> > +#ifdef CONFIG_HOTPLUG_CPU
+> > +static int mt6580_cpu_kill(unsigned cpu)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = spm_cpu_mtcmos_off(cpu, 1);
 > 
-> First of all, for clocks where the rate doesn't matter, it doesn't
-> matters to what rate we set the clock.
+> is this function ever called with wfi == 0?
+
+Yes, wfi == 0 at MT6582 "special" dual-core platform, but for MT6580,
+wfi is always 1.
+
+> > +	if (ret < 0)
+> > +		return 0;
+> > +
+> > +	return 1;
+> > +}
+> > +
+> > +static void mt6580_cpu_die(unsigned int cpu)
+> > +{
+> > +	for (;;)
+> > +		cpu_do_idle();
+> > +}
+> > +#endif
+> > +
+> > +static void write_pen_release(int val)
+> > +{
+> > +	pen_release = val;
+> > +	/* Make sure this is visible to other CPUs */
+> > +	smp_wmb();
+> > +	sync_cache_w(&pen_release);
+> > +}
+> > +
+> > +/*
+> > + * Refer common "pen" secondary release method
+> > + */
+> > +static int mt6580_boot_secondary(unsigned int cpu, struct task_struct
+> > *idle) +{
+> > +	unsigned long timeout;
+> > +	int ret;
+> > +
+> > +	/*
+> > +	 * Set synchronisation state between this boot processor
+> > +	 * and the secondary one
+> > +	 */
+> > +	spin_lock(&boot_lock);
+> > +
+> > +	/*
+> > +	 * The secondary processor is waiting to be released from
+> > +	 * the holding pen - release it, then wait for it to flag
+> > +	 * that it has been released by resetting pen_release.
+> > +	 *
+> > +	 * Note that "pen_release" is the hardware CPU ID, whereas
+> > +	 * "cpu" is Linux's internal ID.
+> > +	 */
+> > +	write_pen_release(cpu);
+> > +
+> > +	/*
+> > +	 * CPU power on control by SPM
+> > +	 */
+> > +	ret = spm_cpu_mtcmos_on(cpu);
+> > +	if (ret < 0) {
+> > +		spin_unlock(&boot_lock);
+> > +		return -ENXIO;
+> > +	}
+> > +
+> > +	timeout = jiffies + (1 * HZ);
+> > +	while (time_before(jiffies, timeout)) {
+> > +		/* Read barrier */
+> > +		smp_rmb();
+> > +
+> > +		if (pen_release == -1)
+> > +			break;
+> > +
+> > +		udelay(10);
+> > +	}
+> > +
+> > +	/*
+> > +	 * Now the secondary core is starting up let it run its
+> > +	 * calibrations, then wait for it to finish
+> > +	 */
+> > +	spin_unlock(&boot_lock);
+> > +
+> > +	return (pen_release != -1 ? -ENXIO : 0);
+> > +}
+> > +
+> > +static void mt6580_secondary_init(unsigned int cpu)
+> > +{
+> > +	/*
+> > +	 * Let the primary processor know we're out of the
+> > +	 * pen, then head off into the C entry point
+> > +	 */
+> > +	write_pen_release(-1);
+> > +
+> > +	/*
+> > +	 * Synchronise with the boot thread.
+> > +	 */
+> > +	spin_lock(&boot_lock);
+> > +	spin_unlock(&boot_lock);
+> > +}
+> > +
+> > +#define MT6580_INFRACFG_AO	0x10001000
+> > +#define SW_ROM_PD		BIT(31)
 > 
-> As for the color of our shed, "the designer says these are the typical
-> rates" sounds good enough to me for a "real rate", so I prefer using
-> the rates in James' patch.
+> Please put the defines on the beginning of the file.
+> SW_ROM_PD bit is the same on other SoCs? I wasn't able to reveal that from the 
+> data sheets. If this is MT6580 only, the define should be renamed.
 > 
-> If not sure what Sascha's concern is, but if he insists on 0, I'm fine
-> with that too.
 
-I only find it confusing. I'd expect either the correct rate or an
-obviously dummy rate. Whatever we choose a comment explaining the
-background would really help here. Otherwise we won't know later
-whether this 148.5 MHz rate was introduced because a) The consumers
-depend on this rate being reported, b) It really is the correct rate or
-c) we don't care about the rate.
+OK, fixed in next version. 
 
-Sascha
+> > +
+> > +static void __init mt6580_smp_prepare_cpus(unsigned int max_cpus)
+> > +{
+> > +	static void __iomem *infracfg_ao_base;
+> > +
+> > +	infracfg_ao_base = ioremap(MT6580_INFRACFG_AO, 0x1000);
+> > +	if (!infracfg_ao_base) {
+> > +		pr_err("%s: Unable to map I/O memory\n", __func__);
+> > +		return;
+> > +	}
+> > +
+> > +	/* Enable bootrom power down mode */
+> > +	writel_relaxed(readl(infracfg_ao_base + 0x804) | SW_ROM_PD,
+> > +		       infracfg_ao_base + 0x804);
+> 
+> Please use a define for the offset.
+> I prefer to not cascade reads and writes but to use a temporary variable. But 
+> if this is fine with the kernel coding style (I doubt, but I'm not sure) then 
+> this is fine.
+> 
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+OK, fixed in next version. 
+
+Thanks,
+Scott
+> > +
+> > +	/* Write the address of slave startup into boot address
+> > +	   register for bootrom power down mode */
+> > +	writel_relaxed(virt_to_phys(secondary_startup_arm),
+> > +		       infracfg_ao_base + 0x800);
+> > +
+> > +	iounmap(infracfg_ao_base);
+> > +}
+> > +
+> >  static int mtk_boot_secondary(unsigned int cpu, struct task_struct *idle)
+> >  {
+> >  	if (!mtk_smp_base)
+> > @@ -142,3 +268,14 @@ static struct smp_operations mt6589_smp_ops __initdata
+> > = { .smp_boot_secondary = mtk_boot_secondary,
+> >  };
+> >  CPU_METHOD_OF_DECLARE(mt6589_smp, "mediatek,mt6589-smp", &mt6589_smp_ops);
+> > +
+> > +static struct smp_operations mt6580_smp_ops __initdata = {
+> > +	.smp_prepare_cpus = mt6580_smp_prepare_cpus,
+> > +	.smp_secondary_init = mt6580_secondary_init,
+> > +	.smp_boot_secondary = mt6580_boot_secondary,
+> > +#ifdef CONFIG_HOTPLUG_CPU
+> > +	.cpu_kill = mt6580_cpu_kill,
+> > +	.cpu_die = mt6580_cpu_die,
+> > +#endif
+> > +};
+> > +CPU_METHOD_OF_DECLARE(mt6580_smp, "mediatek,mt6580-smp", &mt6580_smp_ops);
+> 
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
