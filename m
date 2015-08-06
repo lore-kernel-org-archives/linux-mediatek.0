@@ -1,132 +1,62 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Thu, 6 Aug 2015 10:10:11 +0200
-Message-ID: <20150806081011.GM18700@pengutronix.de>
-References: <1438777538-1269-1-git-send-email-s.hauer@pengutronix.de>
- <1438777538-1269-3-git-send-email-s.hauer@pengutronix.de>
- <CAGS+omBvkS4tZirsPp2L=vQaV7aWheEL0Nov1Yvu81dVbWdz-g@mail.gmail.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH v6 7/9] clk: mediatek: Add subsystem clocks of MT8173
+Date: Thu, 6 Aug 2015 16:23:51 +0800
+Message-ID: <1438849431.27884.9.camel@mtksdaap41>
+References: <1438676218-11310-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1438676218-11310-8-git-send-email-jamesjj.liao@mediatek.com>
+	 <20150805064605.GZ18700@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omBvkS4tZirsPp2L=vQaV7aWheEL0Nov1Yvu81dVbWdz-g@mail.gmail.com>
+In-Reply-To: <20150805064605.GZ18700@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 06, 2015 at 02:02:30AM +0800, Daniel Kurtz wrote:
-> 
-> > +
-> > +#define THERMAL_NAME    "mtk-thermal"
-> > +
-> > +struct mtk_thermal;
-> > +
-> > +struct mtk_thermal_bank {
-> > +       struct mtk_thermal *mt;
-> > +       struct thermal_zone_device *tz;
-> 
-> A better name for this field is "tzd" - that is what is used in
-> drivers/thermal/of-thermal.c.
-> 
-> > +       int id;
-> 
-> nit: we don't need both *mt and id, since "id" here is always just the
-> index into the mtk_thermal->banks[] array, given either mt or id and
-> our bank pointer, we can derive the other.
-> 
-> I think something like this would work:
-> 
-> static inline struct mtk_thermal *to_mtk_thermal(struct mtk_thermal_bank* bank)
-> {
->   struct mtk_thermal_bank *banks = bank - bank->id;
->   return container_of(banks, struct mtk_thermal_bank, banks);
-> }
-> 
-> or:
-> 
-> static inline int mtk_thermal_bank_id(struct mtk_thermal_bank* bank)
-> {
->   return bank - bank->mt->banks;
-> }
+Hi Sascha,
 
-Yes, probably both work. I don't think though that any of these makes
-the code clearer.
-
-> > +static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
-> > +               u32 apmixed_phys_base, u32 auxadc_phys_base)
-> > +{
-> > +       struct mtk_thermal_bank *bank = &mt->banks[num];
-> > +       const struct mtk_thermal_bank_cfg *cfg = &bank_data[num];
-> > +       int i;
-> > +
-> > +       bank->id = num;
-> > +       bank->mt = mt;
-> > +
-> > +       mtk_thermal_get_bank(bank);
-> > +
-> > +       /* bus clock 66M counting unit is 12 * 15.15ns * 256 = 46.540us */
-> > +       writel(TEMP_MONCTL1_PERIOD_UNIT(12), mt->thermal_base + TEMP_MONCTL1);
-> > +
+On Wed, 2015-08-05 at 08:46 +0200, Sascha Hauer wrote:
+> On Tue, Aug 04, 2015 at 04:16:56PM +0800, James Liao wrote:
+> >  static const struct mtk_fixed_clk fixed_clks[] __initconst = {
+> >  	FIXED_CLK(CLK_TOP_CLKPH_MCK_O, "clkph_mck_o", "clk26m", 400 * MHZ),
+> >  	FIXED_CLK(CLK_TOP_USB_SYSPLL_125M, "usb_syspll_125m", "clk26m", 125 * MHZ),
+> > +	FIXED_CLK(CLK_TOP_DSI0_DIG, "dsi0_dig", "clk26m", 130 * MHZ),
+> > +	FIXED_CLK(CLK_TOP_DSI1_DIG, "dsi1_dig", "clk26m", 130 * MHZ),
+> > +	FIXED_CLK(CLK_TOP_LVDS_PXL, "lvds_pxl", "lvdspll", 148.5 * MHZ),
+> > +	FIXED_CLK(CLK_TOP_LVDS_CTS, "lvds_cts", "lvdspll", 51.975 * MHZ),
 > 
-> The only things that look zone specific here are the following:
-> 
->   mtk_thermal_get_bank(bank);
->   for (i = 0; i < cfg->num_sensors; i++)
->     writel(sensor_mux_values[cfg->sensors[i]], mt->thermal_base +
-> sensing_points[i].adcpnp);
->   writel((1 << cfg->num_sensors) - 1, mt->thermal_base + TEMP_MONCTL0);
->   mtk_thermal_put_bank(bank);
-> 
-> The rest is just rewriting the same constants to the same fixed
-> register addresses.
-> 
-> But maybe that get/put zone thing does some magic shadow register selecting?
+> I would expect 51975 * KHZ here to avoid fractional numbers. Probably
+> gcc calculates that during compile time so this will work as expected,
+> still I'm not sure this is good style to use fractional numbers here.
 
-Yes. The comment above mtk_thermal_get_bank() explains that.
+As I know all constants will be calculated in compile time, so there
+should be no difference between 51.975 * MHZ and 51975 * KHz. 
 
-> > +
-> > +       ret = clk_prepare_enable(mt->clk_peri_therm);
-> > +       if (ret) {
-> > +               dev_err(&pdev->dev, "Can't enable peri clk: %d\n", ret);
-> > +               goto err_disable_clk_auxadc;
-> > +       }
-> > +
-> > +       /*
-> > +        * These calibration values should finally be provided by the
-> > +        * firmware or fuses. For now use default values.
-> > +        */
-> > +       mt->calib_a = -123;
-> > +       mt->calib_b = 465124;
-> > +
-> > +       for (i = 0; i < MT8173_NUM_BANKS; i++)
-> > +               mtk_thermal_init_bank(mt, i, apmixed_phys_base, auxadc_phys_base);
-> > +
-> > +       platform_set_drvdata(pdev, mt);
-> > +
-> > +       for (i = 0; i < MT8173_NUM_BANKS; i++) {
-> > +               struct mtk_thermal_bank *bank = &mt->banks[i];
-> > +
-> > +               bank->tz = thermal_zone_of_sensor_register(&pdev->dev, i, bank,
-> > +                               &mtk_thermal_ops);
-> 
-> Hmm..  the 'i' passed here to thermal_zone_of_sensor_register is the
-> id that a .dts thermal-zone will use to select one of the sensors
-> provided by our "mediatek,mt8173-thermal" compatible thermal node.
-> So, I think it is really ABI and should be some label defined in a
-> header file as part of the of binding for the sensor node.  Each label
-> would then be encoded somehow in mtk_thermal_bank_cfg[] (or perhaps
-> used as the index when initializing the array, like you did for scpsys
-> in
+> Anyway, on my system lvdspll is running at 150MHz. Are you sure there is
+> a clock derived from this running at 148.5MHz? Is it really correct to
+> use a fixed clock here or should it rather be lvdspll directly?
 
-Makes sense. I'll add that for the next version.
+Here is the clock hierarchy between lvdspll and lvds_pxl:
 
-Thanks for reviewing,
+            --------       AD_VPLL_DPIX_CK  --------   lvds_pxl  -----
+           |        |--------------------->|        |---------->|
+           |        |                      | cksys  |           |
+LVDSPLL -->| LVDSTX |                      | buffer |           | MMSYS
+           |        | AD_LVDSTX_CLKDIG_CTS | test   |  lvds_cts |
+           |        |--------------------->|        |---------->|
+            --------                        --------             -----
 
-Sascha
+Some clocks and blocks are not modeled into CCF. But we prefer to enable
+lvdspll before enabling lvds_pxl. So I modeled lvds_pxl (and lvds_cts)
+as a fixed-rate clock with a source from lvdspll.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+The frequency of these fixed-rate clocks (such as 148.5 MHz) are typical
+rate. In fact, we don't care about the actual rate of these clocks. We
+just care about the enable / disable sequence of them.
+
+
+Best regards,
+
+James
