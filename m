@@ -1,35 +1,57 @@
-From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 5/8] ARM: mediatek: add smp bringup code for MT6580
-Date: Fri, 7 Aug 2015 10:28:14 +0800
-Message-ID: <1438914494.1900.38.camel@mtkswgap22>
-References: <1438696464-59858-1-git-send-email-scott.shu@mediatek.com>
-	 <1438696464-59858-6-git-send-email-scott.shu@mediatek.com>
-	 <20150805094429.GU7557@n2100.arm.linux.org.uk>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5 0/3] Add Mediatek SPI bus driver
+Date: Fri, 7 Aug 2015 15:19:48 +0800
+Message-ID: <1438931991-17044-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150805094429.GU7557-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-08-05 at 10:44 +0100, Russell King - ARM Linux wrote:
-> On Tue, Aug 04, 2015 at 09:54:21PM +0800, Scott Shu wrote:
-> > Add support for cpu enable-method "mediatek,mt6580-smp" for booting
-> > secondary CPUs on MT6580.
-> 
-> If you have CPU power domain support, and you power up and power down the
-> CPUs, why do you need the boot_lock and pen_release stuff?  Isn't keeping
-> the power off on a CPU sufficient to prevent it entering the kernel?
-> 
-Thanks Russell. Yes, the system works well after removing boot_lock and
-pen_release. Will be fixed in next version. 
+This series are based on 4.2-rc1 and provide three patches to add mediatek spi driver.
 
-Scott
+Change in v5:
+1. add changelogs in the individual patches.
+2. modify clk relevant implement.
+3. describe dt-binding document in more detail.
+
+Change in v4:
+1. fix Mark Brown review comment.
+
+Change in v3:
+1. support fifo mode function.
+2. support any non-prime length transfer in dma mode.
+3. use interrupt to handle scatterlist.
+4. fix review comment.
+
+Change in v2:
+1. Remove spi bitbang framwork, use can_dma() and transfer_one().
+2. Add PM functions.
+3. Fix Mark Brown review comment.
+
+Leilk Liu (3):
+  spi: Mediatek: Document devicetree bindings for spi bus
+  spi: mediatek: Add spi bus for Mediatek MT8173
+  arm64: dts: Add spi bus dts
+
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |  51 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  23 +
+ drivers/spi/Kconfig                                |   9 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-mt65xx.c                           | 749 +++++++++++++++++++++
+ include/linux/platform_data/spi-mt65xx.h           |  22 +
+ 6 files changed, 855 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+ create mode 100644 drivers/spi/spi-mt65xx.c
+ create mode 100644 include/linux/platform_data/spi-mt65xx.h
 
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
+1.8.1.1.dirty
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
