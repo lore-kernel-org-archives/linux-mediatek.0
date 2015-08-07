@@ -1,222 +1,80 @@
-From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 5/8] ARM: mediatek: add smp bringup code for MT6580
-Date: Thu, 6 Aug 2015 22:00:37 +0800
-Message-ID: <1438869637.1900.6.camel@mtkswgap22>
+From: Scott Shu <scott.shu@mediatek.com>
+Subject: Re: [PATCH v3 3/8] soc: Mediatek: Add SCPSYS CPU power domain driver
+Date: Fri, 7 Aug 2015 09:56:58 +0800
+Message-ID: <1438912618.1900.31.camel@mtkswgap22>
 References: <1438696464-59858-1-git-send-email-scott.shu@mediatek.com>
-	 <1438696464-59858-6-git-send-email-scott.shu@mediatek.com>
-	 <1801910.hz53dYUgta@ubix>
+	 <1438696464-59858-4-git-send-email-scott.shu@mediatek.com>
+	 <20150805085034.GG18700@pengutronix.de>
+	 <1438829942.9435.24.camel@mtkswgap22>
+	 <20150806100311.GP18700@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1801910.hz53dYUgta@ubix>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mars.Cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150806100311.GP18700@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, loda.chou@mediatek.com, jades.shih@mediatek.com, Mars.Cheng@mediatek.com, scott.shu@gmail.com, djkurtz@chromium.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-08-05 at 18:47 +0200, Matthias Brugger wrote:
-> On Tuesday, August 04, 2015 09:54:21 PM Scott Shu wrote:
-> > Add support for cpu enable-method "mediatek,mt6580-smp" for booting
-> > secondary CPUs on MT6580.
+On Thu, 2015-08-06 at 12:03 +0200, Sascha Hauer wrote:
+> On Thu, Aug 06, 2015 at 10:59:02AM +0800, Scott Shu wrote:
+> > On Wed, 2015-08-05 at 10:50 +0200, Sascha Hauer wrote:
+> > > don't do this then it indeed doesn't make much sense to put it into the
+> > > same file.
+> > > 
+> > > From what I see we would need to change the prototype to something like
+> > > 
+> > > static int __scpsys_power_on(struct scp_domain_data *)
+> > > 
+> > > (maybe with some additional base addresses and stuff)
+> > > 
+> > > struct scp_domain_data would additionally need sram_isoint_b and sram_ckiso
+> > > members.
+> > > 
+> > > Sascha
+> > > 
+> > Hi Sascha,
+> >    The CPU power sequence is quite different with the others, as
+> > described below.
 > > 
-> > Signed-off-by: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  arch/arm/mach-mediatek/platsmp.c |  137
-> > ++++++++++++++++++++++++++++++++++++++ 1 file changed, 137 insertions(+)
+> > * Non-CPU
+> >    1) Set PWR_ON_BIT, PWR_ON_2ND_BIT
+> >    2) Wait PWR_ACK
+> >    3) Clear PWR_CLK_DIS_BIT
+> >    4) Clear PWR_ISO_BIT
+> >    5) Set PWR_RST_B_BIT
+> >    6) Clear SRAM_PDN
+> >    7) Wait SRAM_PDN_ACK
+> > * CPU
+> >    1) Set PWR_ON_BIT, PWR_ON_2ND_BIT
+> >    2) Wait PWR_ACK
+> >    3) Clear PWR_ISO_BIT
+> >    4) Clear L1_PDN to power on L1
+> >    5) Wait L1_PDN_ACK
+> >    6) Set SRAM_ISOINT_B
+> >    7) Clear SRAM_CKISO
+> >    8) Clear PWR_CLK_DIS
+> >    9) Set PWR_RST_B
+> > For multi-cluster SoC, the cluster power sequence is also different.
 > > 
-> > diff --git a/arch/arm/mach-mediatek/platsmp.c
-> > b/arch/arm/mach-mediatek/platsmp.c index a5bc108..94f7865 100644
-> > --- a/arch/arm/mach-mediatek/platsmp.c
-> > +++ b/arch/arm/mach-mediatek/platsmp.c
-> > @@ -21,10 +21,16 @@
-> >  #include <linux/of_address.h>
-> >  #include <linux/string.h>
-> >  #include <linux/threads.h>
-> > +#include <linux/delay.h>
-> > +#include <asm/cacheflush.h>
-> > +
-> > +#include <linux/soc/mediatek/scpsys.h>
-> > 
-> >  #define MTK_MAX_CPU		8
-> >  #define MTK_SMP_REG_SIZE	0x1000
-> > 
-> > +static DEFINE_SPINLOCK(boot_lock);
-> > +
-> >  struct mtk_smp_boot_info {
-> >  	unsigned long smp_base;
-> >  	unsigned int jump_reg;
-> > @@ -56,6 +62,126 @@ static const struct of_device_id mtk_smp_boot_infos[]
-> > __initconst = { static void __iomem *mtk_smp_base;
-> >  static const struct mtk_smp_boot_info *mtk_smp_info;
-> > 
-> > +#ifdef CONFIG_HOTPLUG_CPU
-> > +static int mt6580_cpu_kill(unsigned cpu)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = spm_cpu_mtcmos_off(cpu, 1);
+> > Please think if this is a good idea if we integrate the CPU support into
+> > the scpsys_power_on()? Based on the readability and compatible
+> > considerations, we provide this patch.
 > 
-> is this function ever called with wfi == 0?
-
-Yes, wfi == 0 at MT6582 "special" dual-core platform, but for MT6580,
-wfi is always 1.
-
-> > +	if (ret < 0)
-> > +		return 0;
-> > +
-> > +	return 1;
-> > +}
-> > +
-> > +static void mt6580_cpu_die(unsigned int cpu)
-> > +{
-> > +	for (;;)
-> > +		cpu_do_idle();
-> > +}
-> > +#endif
-> > +
-> > +static void write_pen_release(int val)
-> > +{
-> > +	pen_release = val;
-> > +	/* Make sure this is visible to other CPUs */
-> > +	smp_wmb();
-> > +	sync_cache_w(&pen_release);
-> > +}
-> > +
-> > +/*
-> > + * Refer common "pen" secondary release method
-> > + */
-> > +static int mt6580_boot_secondary(unsigned int cpu, struct task_struct
-> > *idle) +{
-> > +	unsigned long timeout;
-> > +	int ret;
-> > +
-> > +	/*
-> > +	 * Set synchronisation state between this boot processor
-> > +	 * and the secondary one
-> > +	 */
-> > +	spin_lock(&boot_lock);
-> > +
-> > +	/*
-> > +	 * The secondary processor is waiting to be released from
-> > +	 * the holding pen - release it, then wait for it to flag
-> > +	 * that it has been released by resetting pen_release.
-> > +	 *
-> > +	 * Note that "pen_release" is the hardware CPU ID, whereas
-> > +	 * "cpu" is Linux's internal ID.
-> > +	 */
-> > +	write_pen_release(cpu);
-> > +
-> > +	/*
-> > +	 * CPU power on control by SPM
-> > +	 */
-> > +	ret = spm_cpu_mtcmos_on(cpu);
-> > +	if (ret < 0) {
-> > +		spin_unlock(&boot_lock);
-> > +		return -ENXIO;
-> > +	}
-> > +
-> > +	timeout = jiffies + (1 * HZ);
-> > +	while (time_before(jiffies, timeout)) {
-> > +		/* Read barrier */
-> > +		smp_rmb();
-> > +
-> > +		if (pen_release == -1)
-> > +			break;
-> > +
-> > +		udelay(10);
-> > +	}
-> > +
-> > +	/*
-> > +	 * Now the secondary core is starting up let it run its
-> > +	 * calibrations, then wait for it to finish
-> > +	 */
-> > +	spin_unlock(&boot_lock);
-> > +
-> > +	return (pen_release != -1 ? -ENXIO : 0);
-> > +}
-> > +
-> > +static void mt6580_secondary_init(unsigned int cpu)
-> > +{
-> > +	/*
-> > +	 * Let the primary processor know we're out of the
-> > +	 * pen, then head off into the C entry point
-> > +	 */
-> > +	write_pen_release(-1);
-> > +
-> > +	/*
-> > +	 * Synchronise with the boot thread.
-> > +	 */
-> > +	spin_lock(&boot_lock);
-> > +	spin_unlock(&boot_lock);
-> > +}
-> > +
-> > +#define MT6580_INFRACFG_AO	0x10001000
-> > +#define SW_ROM_PD		BIT(31)
+> Maybe it's best if you go back to the v1 layout and put your scpsys code
+> to arch/arm/mach-mediatek/. While I think it's possible to share some
+> more code I am not sure anymore if this buys us something. We'll know in
+> the future.
 > 
-> Please put the defines on the beginning of the file.
-> SW_ROM_PD bit is the same on other SoCs? I wasn't able to reveal that from the 
-> data sheets. If this is MT6580 only, the define should be renamed.
+> Sascha
 > 
-
-OK, fixed in next version. 
-
-> > +
-> > +static void __init mt6580_smp_prepare_cpus(unsigned int max_cpus)
-> > +{
-> > +	static void __iomem *infracfg_ao_base;
-> > +
-> > +	infracfg_ao_base = ioremap(MT6580_INFRACFG_AO, 0x1000);
-> > +	if (!infracfg_ao_base) {
-> > +		pr_err("%s: Unable to map I/O memory\n", __func__);
-> > +		return;
-> > +	}
-> > +
-> > +	/* Enable bootrom power down mode */
-> > +	writel_relaxed(readl(infracfg_ao_base + 0x804) | SW_ROM_PD,
-> > +		       infracfg_ao_base + 0x804);
 > 
-> Please use a define for the offset.
-> I prefer to not cascade reads and writes but to use a temporary variable. But 
-> if this is fine with the kernel coding style (I doubt, but I'm not sure) then 
-> this is fine.
-> 
+Thanks Sascha. If you agree, we prefer to keep v3 layout. It's good to
+put all scpsys related code and definitions in the same place (your
+driver) and limit the CPU MTCMOS code are all located in button half of
+the file. We may also change the function name, for example, rename
+spm_cpu_mtcmos_on/off to scpsys_cpu_power_on/off, to make a better
+overall sense. 
 
-OK, fixed in next version. 
-
-Thanks,
 Scott
-> > +
-> > +	/* Write the address of slave startup into boot address
-> > +	   register for bootrom power down mode */
-> > +	writel_relaxed(virt_to_phys(secondary_startup_arm),
-> > +		       infracfg_ao_base + 0x800);
-> > +
-> > +	iounmap(infracfg_ao_base);
-> > +}
-> > +
-> >  static int mtk_boot_secondary(unsigned int cpu, struct task_struct *idle)
-> >  {
-> >  	if (!mtk_smp_base)
-> > @@ -142,3 +268,14 @@ static struct smp_operations mt6589_smp_ops __initdata
-> > = { .smp_boot_secondary = mtk_boot_secondary,
-> >  };
-> >  CPU_METHOD_OF_DECLARE(mt6589_smp, "mediatek,mt6589-smp", &mt6589_smp_ops);
-> > +
-> > +static struct smp_operations mt6580_smp_ops __initdata = {
-> > +	.smp_prepare_cpus = mt6580_smp_prepare_cpus,
-> > +	.smp_secondary_init = mt6580_secondary_init,
-> > +	.smp_boot_secondary = mt6580_boot_secondary,
-> > +#ifdef CONFIG_HOTPLUG_CPU
-> > +	.cpu_kill = mt6580_cpu_kill,
-> > +	.cpu_die = mt6580_cpu_die,
-> > +#endif
-> > +};
-> > +CPU_METHOD_OF_DECLARE(mt6580_smp, "mediatek,mt6580-smp", &mt6580_smp_ops);
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
