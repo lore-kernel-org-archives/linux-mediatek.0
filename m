@@ -1,87 +1,97 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH v7 4/9] clk: mediatek: Add fixed clocks support for Mediatek SoC.
-Date: Mon, 10 Aug 2015 17:50:23 +0800
-Message-ID: <1439200228-318-5-git-send-email-jamesjj.liao@mediatek.com>
-References: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [PATCH 22/74] clockevents/drivers/mtk: Migrate to new 'set-state'
+ interface
+Date: Mon, 10 Aug 2015 11:51:39 +0200
+Message-ID: <1439200352-26767-22-git-send-email-daniel.lezcano@linaro.org>
+References: <55C87382.4070309@linaro.org>
+ <1439200352-26767-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stubner <heiko@sntech.de>
-Cc: srv_heupstream@mediatek.com, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1439200352-26767-1-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds fixed clocks support by using CCF fixed-rate
-clock implementation.
+From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Migrate mtk driver to the new 'set-state' interface provided by
+clockevents core, the earlier 'set-mode' interface is marked obsolete
+now.
+
+This also enables us to implement callbacks for new states of clockevent
+devices, for example: ONESHOT_STOPPED.
+
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 ---
- drivers/clk/mediatek/clk-mtk.c | 23 +++++++++++++++++++++++
- drivers/clk/mediatek/clk-mtk.h | 17 +++++++++++++++++
- 2 files changed, 40 insertions(+)
+ drivers/clocksource/mtk_timer.c | 32 ++++++++++++++------------------
+ 1 file changed, 14 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 268b6ff..cf08db6 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -49,6 +49,29 @@ err_out:
- 	return NULL;
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 68ab423..50f0641 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -102,27 +102,20 @@ static void mtk_clkevt_time_start(struct mtk_clock_event_device *evt,
+ 	       evt->gpt_base + TIMER_CTRL_REG(timer));
  }
  
-+void __init mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
-+		int num, struct clk_onecell_data *clk_data)
+-static void mtk_clkevt_mode(enum clock_event_mode mode,
+-				struct clock_event_device *clk)
++static int mtk_clkevt_shutdown(struct clock_event_device *clk)
 +{
-+	int i;
-+	struct clk *clk;
-+
-+	for (i = 0; i < num; i++) {
-+		const struct mtk_fixed_clk *rc = &clks[i];
-+
-+		clk = clk_register_fixed_rate(NULL, rc->name, rc->parent,
-+				rc->parent ? 0 : CLK_IS_ROOT, rc->rate);
-+
-+		if (IS_ERR(clk)) {
-+			pr_err("Failed to register clk %s: %ld\n",
-+					rc->name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		if (clk_data)
-+			clk_data->clks[rc->id] = clk;
-+	}
++	mtk_clkevt_time_stop(to_mtk_clk(clk), GPT_CLK_EVT);
++	return 0;
 +}
 +
- void __init mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
- 		int num, struct clk_onecell_data *clk_data)
++static int mtk_clkevt_set_periodic(struct clock_event_device *clk)
  {
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 740fe5e..32d4f55 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -25,6 +25,23 @@
+ 	struct mtk_clock_event_device *evt = to_mtk_clk(clk);
  
- #define MHZ (1000 * 1000)
+ 	mtk_clkevt_time_stop(evt, GPT_CLK_EVT);
+-
+-	switch (mode) {
+-	case CLOCK_EVT_MODE_PERIODIC:
+-		mtk_clkevt_time_setup(evt, evt->ticks_per_jiffy, GPT_CLK_EVT);
+-		mtk_clkevt_time_start(evt, true, GPT_CLK_EVT);
+-		break;
+-	case CLOCK_EVT_MODE_ONESHOT:
+-		/* Timer is enabled in set_next_event */
+-		break;
+-	case CLOCK_EVT_MODE_UNUSED:
+-	case CLOCK_EVT_MODE_SHUTDOWN:
+-	default:
+-		/* No more interrupts will occur as source is disabled */
+-		break;
+-	}
++	mtk_clkevt_time_setup(evt, evt->ticks_per_jiffy, GPT_CLK_EVT);
++	mtk_clkevt_time_start(evt, true, GPT_CLK_EVT);
++	return 0;
+ }
  
-+struct mtk_fixed_clk {
-+	int id;
-+	const char *name;
-+	const char *parent;
-+	unsigned long rate;
-+};
-+
-+#define FIXED_CLK(_id, _name, _parent, _rate) {		\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent = _parent,			\
-+		.rate = _rate,				\
-+	}
-+
-+void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
-+		int num, struct clk_onecell_data *clk_data);
-+
- struct mtk_fixed_factor {
- 	int id;
- 	const char *name;
+ static int mtk_clkevt_next_event(unsigned long event,
+@@ -196,7 +189,10 @@ static void __init mtk_timer_init(struct device_node *node)
+ 	evt->dev.name = "mtk_tick";
+ 	evt->dev.rating = 300;
+ 	evt->dev.features = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT;
+-	evt->dev.set_mode = mtk_clkevt_mode;
++	evt->dev.set_state_shutdown = mtk_clkevt_shutdown;
++	evt->dev.set_state_periodic = mtk_clkevt_set_periodic;
++	evt->dev.set_state_oneshot = mtk_clkevt_shutdown;
++	evt->dev.tick_resume = mtk_clkevt_shutdown;
+ 	evt->dev.set_next_event = mtk_clkevt_next_event;
+ 	evt->dev.cpumask = cpu_possible_mask;
+ 
 -- 
-1.8.1.1.dirty
+1.9.1
