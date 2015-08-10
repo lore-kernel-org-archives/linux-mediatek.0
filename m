@@ -1,57 +1,26 @@
-From: Henry Chen <HenryC.Chen@mediatek.com>
-Subject: Re: [PATCH] mfd: mt6397: Implement wake handler and suspend/resume
- for mt6397-core.c
-Date: Mon, 10 Aug 2015 20:23:21 +0800
-Message-ID: <1439209401.32674.16.camel@mtksdaap41>
-References: <1438268846-22451-1-git-send-email-henryc.chen@mediatek.com>
-	 <20150810114224.GD3249@x1>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: mediatek: Implement pictrl irq wake handler
+Date: Mon, 10 Aug 2015 14:43:13 +0200
+Message-ID: <CACRpkdZ1RjjSh5J=K724CpbXDXwdHJSdXOTLS8fSOO-34zn=9A@mail.gmail.com>
+References: <1438162601-448-1-git-send-email-maoguang.meng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150810114224.GD3249@x1>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1438162601-448-1-git-send-email-maoguang.meng@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: maoguang meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jones,
+On Wed, Jul 29, 2015 at 11:36 AM,  <maoguang.meng@mediatek.com> wrote:
 
-On Mon, 2015-08-10 at 12:42 +0100, Lee Jones wrote:
-> No need to mention the filename in the subject line.  You already
-> mentioned which driver is effected by the change.
-Ok, it will be changed.
+> From: Maoguang Meng <maoguang.meng@mediatek.com>
+>
+> This patch implement irq_set_wake for suspend resume.
+>
+> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
 
-> 
-> > Register mt6393_irq as wake up source to pinctrl by flag "IRQF_NO_SUSPEND".
-> > Implement .irq_set_wake() function of pmic to keep who is wakeup source,
-> > and enable irq on .suspend()and restore irq on .resume().
-> > 
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > ---
-> >  drivers/mfd/mt6397-core.c       | 49 ++++++++++++++++++++++++++++++++++++++++-
-> >  include/linux/mfd/mt6397/core.h |  1 +
-> >  2 files changed, 49 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> > index 03929a6..aebdee5 100644
-> > --- a/drivers/mfd/mt6397-core.c
-> > +++ b/drivers/mfd/mt6397-core.c
-> 
-> [...]
-> 
-> > @@ -142,6 +161,7 @@ static int mt6397_irq_domain_map(struct irq_domain *d, unsigned int irq,
-> >  	irq_set_chip_data(irq, mt6397);
-> >  	irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
-> >  	irq_set_nested_thread(irq, 1);
-> > +
-> 
-> Remainder of the patch looks okay, but this irrelevant change, which
-> has nothing to do with the remainder of the patch will cause issues if
-> I attempt to apply it.  Please remove and re-submit.
-> 
-Sorry, I will remove it, thanks.
-Henry
+Hongzhou/Yingjoe: are you OK with this patch? Can I have your ACKs?
 
-> [...]
-> 
+Yours,
+Linus Walleij
