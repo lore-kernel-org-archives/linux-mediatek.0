@@ -1,58 +1,57 @@
-From: Lee Jones <lee.jones@linaro.org>
+From: Henry Chen <HenryC.Chen@mediatek.com>
 Subject: Re: [PATCH] mfd: mt6397: Implement wake handler and suspend/resume
  for mt6397-core.c
-Date: Mon, 10 Aug 2015 12:42:24 +0100
-Message-ID: <20150810114224.GD3249@x1>
+Date: Mon, 10 Aug 2015 20:23:21 +0800
+Message-ID: <1439209401.32674.16.camel@mtksdaap41>
 References: <1438268846-22451-1-git-send-email-henryc.chen@mediatek.com>
+	 <20150810114224.GD3249@x1>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1438268846-22451-1-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <20150810114224.GD3249@x1>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
+To: Lee Jones <lee.jones@linaro.org>
 Cc: Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-No need to mention the filename in the subject line.  You already
-mentioned which driver is effected by the change.
+Hi Jones,
 
-> Register mt6393_irq as wake up source to pinctrl by flag "IRQF_NO_SUS=
-PEND".
-> Implement .irq_set_wake() function of pmic to keep who is wakeup sour=
-ce,
-> and enable irq on .suspend()and restore irq on .resume().
->=20
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  drivers/mfd/mt6397-core.c       | 49 +++++++++++++++++++++++++++++++=
-+++++++++-
->  include/linux/mfd/mt6397/core.h |  1 +
->  2 files changed, 49 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 03929a6..aebdee5 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
+On Mon, 2015-08-10 at 12:42 +0100, Lee Jones wrote:
+> No need to mention the filename in the subject line.  You already
+> mentioned which driver is effected by the change.
+Ok, it will be changed.
 
-[...]
+> 
+> > Register mt6393_irq as wake up source to pinctrl by flag "IRQF_NO_SUSPEND".
+> > Implement .irq_set_wake() function of pmic to keep who is wakeup source,
+> > and enable irq on .suspend()and restore irq on .resume().
+> > 
+> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > ---
+> >  drivers/mfd/mt6397-core.c       | 49 ++++++++++++++++++++++++++++++++++++++++-
+> >  include/linux/mfd/mt6397/core.h |  1 +
+> >  2 files changed, 49 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> > index 03929a6..aebdee5 100644
+> > --- a/drivers/mfd/mt6397-core.c
+> > +++ b/drivers/mfd/mt6397-core.c
+> 
+> [...]
+> 
+> > @@ -142,6 +161,7 @@ static int mt6397_irq_domain_map(struct irq_domain *d, unsigned int irq,
+> >  	irq_set_chip_data(irq, mt6397);
+> >  	irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
+> >  	irq_set_nested_thread(irq, 1);
+> > +
+> 
+> Remainder of the patch looks okay, but this irrelevant change, which
+> has nothing to do with the remainder of the patch will cause issues if
+> I attempt to apply it.  Please remove and re-submit.
+> 
+Sorry, I will remove it, thanks.
+Henry
 
-> @@ -142,6 +161,7 @@ static int mt6397_irq_domain_map(struct irq_domai=
-n *d, unsigned int irq,
->  	irq_set_chip_data(irq, mt6397);
->  	irq_set_chip_and_handler(irq, &mt6397_irq_chip, handle_level_irq);
->  	irq_set_nested_thread(irq, 1);
-> +
-
-Remainder of the patch looks okay, but this irrelevant change, which
-has nothing to do with the remainder of the patch will cause issues if
-I attempt to apply it.  Please remove and re-submit.
-
-[...]
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+> [...]
+> 
