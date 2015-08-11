@@ -1,57 +1,87 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2 1/2] i2c: mediatek: Reset DMA engine in hardware init
- function
-Date: Tue, 11 Aug 2015 16:55:12 +0200
-Message-ID: <20150811145512.GA1525@katana>
-References: <1438845731-17805-1-git-send-email-eddie.huang@mediatek.com>
- <1438845731-17805-2-git-send-email-eddie.huang@mediatek.com>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 4/6] memory: mediatek: Add SMI driver
+Date: Tue, 11 Aug 2015 16:56:33 +0200
+Message-ID: <20150811145633.GE14980@8bytes.org>
+References: <1438597279-2937-1-git-send-email-yong.wu@mediatek.com>
+	<1438597279-2937-5-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="2oS5YaxWCcQjTEyO"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1438845731-17805-2-git-send-email-eddie.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Liguo Zhang <liguo.zhang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1438597279-2937-5-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, Aug 03, 2015 at 06:21:17PM +0800, Yong Wu wrote:
+> +static int mtk_smi_common_get(struct device *smidev)
+> +{
+> +	struct mtk_smi_common *smipriv = dev_get_drvdata(smidev);
+> +	int ret;
+> +
+> +	ret = pm_runtime_get_sync(smidev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	ret = clk_prepare_enable(smipriv->clk_apb);
+> +	if (ret) {
+> +		dev_err(smidev, "Failed to enable the apb clock\n");
+> +		goto err_put_pm;
+> +	}
+> +	ret = clk_prepare_enable(smipriv->clk_smi);
+> +	if (ret) {
+> +		dev_err(smidev, "Failed to enable the smi clock\n");
+> +		goto err_disable_apb;
+> +	}
+> +	return ret;
+> +
+> +err_disable_apb:
+> +	clk_disable_unprepare(smipriv->clk_apb);
+> +err_put_pm:
+> +	pm_runtime_put(smidev);
+> +	return ret;
+> +}
 
---2oS5YaxWCcQjTEyO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[...]
 
-On Thu, Aug 06, 2015 at 03:22:10PM +0800, Eddie Huang wrote:
-> Reset DMA in hardware init function to avoid unknown hardware state
-> before do any I2C operation.
->=20
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> +int mtk_smi_larb_get(struct device *larbdev)
+> +{
+> +	struct mtk_smi_larb *larbpriv = dev_get_drvdata(larbdev);
+> +	struct mtk_larb_mmu *mmucfg = larbdev->archdata.iommu;
+> +	int ret;
+> +
+> +	ret = mtk_smi_common_get(larbpriv->smi);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = pm_runtime_get_sync(larbdev);
+> +	if (ret < 0)
+> +		goto err_put_smicommon;
+> +
+> +	ret = clk_prepare_enable(larbpriv->clk_apb);
+> +	if (ret) {
+> +		dev_err(larbdev, "Failed to enable the apb clock\n");
+> +		goto err_put_pm;
+> +	}
+> +
+> +	ret = clk_prepare_enable(larbpriv->clk_smi);
+> +	if (ret) {
+> +		dev_err(larbdev, "Failed to enable the smi clock\n");
+> +		goto err_disable_apb;
+> +	}
 
-Applied to for-next, thanks!
+The clock enablement looks similar to the function above, maybe move it
+to a helper function?
 
 
---2oS5YaxWCcQjTEyO
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJVygzQAAoJEBQN5MwUoCm2iOQP/0P6kBsLxAJN5DP7UQcedmqH
-3WIUVqbV8lYRkgo54gQvrrgsN5aGl/LsKd/wCbLZdf+uIEcmkB3ZQ3EpC8GeCAfF
-zPiTfjKHGSlYC2mD4+Nl7CJpkfXtD7VA9KSOX/uXrECZC74ncVmC3kfymFpdVaNW
-sy3PnKdbU27MNDtD7/u/bX/KN2tr1eAb/7Lsf4sS9YnMdmzqxR4NwrATqEcANPzx
-kRG2mmdD/CilIWlZQqsaXGL85Jo8daGCx91VQMh9iwetqBIb/sTEI4OnAOz8StNd
-dNtb7eLyp7CqZmJkGu0wRjJh3NrgbyoiIjuLHitex1UefqV93v5RVhHwdubjY+f3
-/D9LIV+W/5H8ax5v9IQkCOjFLmWtSo7XK22Jeo2w3NOVPTKicaP4ST9+jV313kUK
-d0uZfF2XsOxNGANEQDpVuRGIJlXhIsvg4/hMrCxM60ADHjuZADrXjmC+IFOPq8ZV
-iyLxI+pyjrrUy5TZVSZp/hkC0KC7cGfBkAMRxRkccKuZsG7BuQ/6L2g8//oAY6U7
-3a0oP1gE8C+SuOkzLeXIGhYh5aw5NMS8kRfPFcX+sac1jahuyJT0pishaa/B91Pf
-fTe/oNeOCjkBzGXjZu1RVbqfBQeLK2d7TR40+FDtu2S+XH81+8i2/mG14ctSdEcc
-nywRlXMhWewVx1tJdEYe
-=r+y6
------END PGP SIGNATURE-----
-
---2oS5YaxWCcQjTEyO--
+	Joerg
