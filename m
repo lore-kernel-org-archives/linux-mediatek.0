@@ -1,56 +1,66 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Implement pictrl irq wake handler
-Date: Tue, 11 Aug 2015 15:50:47 +0800
-Message-ID: <CAGS+omA+yhcSSMPq_Pvc+v9UjwLz8wJNKr9ezcuxnYHAUwNXfQ@mail.gmail.com>
-References: <1438162601-448-1-git-send-email-maoguang.meng@mediatek.com>
- <CACRpkdZ1RjjSh5J=K724CpbXDXwdHJSdXOTLS8fSOO-34zn=9A@mail.gmail.com> <1439257910.38706.1.camel@mussux00.eus.mediatek.inc>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] i2c: mediatek: Reset DMA engine in hardware init function
+Date: Tue, 11 Aug 2015 16:32:38 +0800
+Message-ID: <CAGS+omAXRz5obq3si1tOdT5JSLB6m8XcdaN2VGpaLbuqMyqVGw@mail.gmail.com>
+References: <1438845731-17805-1-git-send-email-eddie.huang@mediatek.com> <1438845731-17805-2-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439257910.38706.1.camel@mussux00.eus.mediatek.inc>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, maoguang meng <maoguang.meng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1438845731-17805-2-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Linux I2C <linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Aug 11, 2015 at 9:51 AM, Hongzhou Yang
-<hongzhou.yang@mediatek.com> wrote:
-> On Mon, 2015-08-10 at 14:43 +0200, Linus Walleij wrote:
->> On Wed, Jul 29, 2015 at 11:36 AM,  <maoguang.meng@mediatek.com> wrote:
->>
->> > From: Maoguang Meng <maoguang.meng@mediatek.com>
->> >
->> > This patch implement irq_set_wake for suspend resume.
->> >
->> > Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
->>
->> Hongzhou/Yingjoe: are you OK with this patch? Can I have your ACKs?
->>
->> Yours,
->> Linus Walleij
+On Thu, Aug 6, 2015 at 3:22 PM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> Reset DMA in hardware init function to avoid unknown hardware state
+> before do any I2C operation.
 >
-> Hi Linus,
+> Signed-off-by: Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c |    6 ++++++
+>  1 file changed, 6 insertions(+)
 >
-> Yes, you can. Thank you.
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 9920eef..e28ad4c 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -59,6 +59,7 @@
+>  #define I2C_DMA_START_EN               0x0001
+>  #define I2C_DMA_INT_FLAG_NONE          0x0000
+>  #define I2C_DMA_CLR_FLAG               0x0000
+> +#define I2C_DMA_HARD_RST               0x0002
 >
-> Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-
-NAK.
-
-maoguang removes almost all of this patch in what I think is v2 of
-this same patch:
-https://patchwork.kernel.org/patch/6967441/
-
-maoguang, please squash the two version of this patch together, and
-upload a separate, correct patch.
-
--Dan
-
+>  #define I2C_DEFAULT_SPEED              100000  /* hz */
+>  #define MAX_FS_MODE_SPEED              400000
+> @@ -81,6 +82,7 @@ enum DMA_REGS_OFFSET {
+>         OFFSET_INT_FLAG = 0x0,
+>         OFFSET_INT_EN = 0x04,
+>         OFFSET_EN = 0x08,
+> +       OFFSET_RST = 0x0c,
+>         OFFSET_CON = 0x18,
+>         OFFSET_TX_MEM_ADDR = 0x1c,
+>         OFFSET_RX_MEM_ADDR = 0x20,
+> @@ -262,6 +264,10 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+>                       I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN;
+>         writew(control_reg, i2c->base + OFFSET_CONTROL);
+>         writew(I2C_DELAY_LEN, i2c->base + OFFSET_DELAY_LEN);
+> +
+> +       writel(I2C_DMA_HARD_RST, i2c->pdmabase + OFFSET_RST);
+> +       udelay(50);
+> +       writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
+>  }
 >
-> Hongzhou
+>  /*
+> --
+> 1.7.9.5
 >
 > --
 > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at  http://www.tux.org/lkml/
