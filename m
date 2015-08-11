@@ -1,54 +1,101 @@
-From: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] watchdog: add wdt shutdown callback to disable
- wdt if enabled
-Date: Mon, 10 Aug 2015 21:42:20 -0700
-Message-ID: <55C97D2C.6090505@roeck-us.net>
-References: <1437630551-39650-1-git-send-email-eddie.huang@mediatek.com> <1437630551-39650-3-git-send-email-eddie.huang@mediatek.com> <1488521.5eJqASov2O@ubix> <CAGS+omD1UYSTfJ4-vZSE_BYuvGcTvpbC7T4ukaV10xuQxkCChg@mail.gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v7 0/9] Fixes and new clocks support for Mediatek MT8173
+Date: Tue, 11 Aug 2015 12:43:25 +0800
+Message-ID: <CAGS+omCya_0djzoVGhJchmaTtzo2z+JdnJHDjLipNMsZKV=MLQ@mail.gmail.com>
+References: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omD1UYSTfJ4-vZSE_BYuvGcTvpbC7T4ukaV10xuQxkCChg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Heiko Stubner <heiko@sntech.de>, srv_heupstream <srv_heupstream@mediatek.com>, Ricky Liang <jcliang@chromium.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/10/2015 09:28 PM, Daniel Kurtz wrote:
-> Hi Guenter, Matthias,
+Hi James,
+
+On Mon, Aug 10, 2015 at 5:50 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
+> This patchset is based on 4.2-rc2 and [1], and contains minor fixes and
+> subsystem clocks support for Mediatek MT8173.
 >
-> On Fri, Jul 24, 2015 at 1:37 AM, Matthias Brugger
-> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->> On Thursday, July 23, 2015 01:49:11 PM Eddie Huang wrote:
->>> From: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>>
->>> Without .shutdown(), watchdog might reset the system during power off.
->>> For example, if watchdog's timeout is set to 30s, then it is reset to
->>> zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
->>> but watchdog is still running and may trigger reset.
->>>
->>> Signed-off-by: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>>   drivers/watchdog/mtk_wdt.c | 9 +++++++++
->>>   1 file changed, 9 insertions(+)
->>
->> Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> The previous reviews can be found in [2].
 >
-> is the plan to land these two patches via Guenter's watchdog tree [0]?
-> [0] git://www.linux-watchdog.org/linux-watchdog.git
+> changes since v6:
+> - Use DUMMY_RATE (0) instead of typical rate for clocks that we don't care
+>   and not controlled in CCF.
+
+For the whole series:
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
 >
-That is Wim's tree, and Wim is the maintainer ;-).
-
-I have the patches queued in my tree [1], and I plan to send a pull request
-to Wim this week or early next week.
-
-Guenter
-
----
-[1] https://git.kernel.org/cgit/linux/kernel/git/groeck/linux-staging.git/log/?h=watchdog-next
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> changes since v5:
+> - Rebase to 4.2-rc2.
+> - Patch "Fix enabling of critical clocks" had been included in 4.2-rc2,
+>   so it need not be included in this patchset.
+>
+> changes since v4:
+> - Add a separated patch to remove unused dpi_ck.
+> - Add separated patches to fix clk/mediatek in release 4.2-rc1.
+> - Add __init* for initialization data and functions.
+> - Rename dummy_clk with oscillator in DT.
+> - Remove mtk_clk_register_apmixed_ex(), call mtk_clk_register_ref2usb_tx()
+>   directly to register USB clock.
+>
+> changes since v3:
+> - Remove clk_null dependency from root clocks.
+> - Use fixed-rate clocks with typical rate to replace clk_null.
+> - Separate ref2usb_tx implementation to clk-apmixed.c
+> - Use clock-controller as the name of clock providers.
+>
+> changes since v2:
+> - Rebase to 4.2-rc1.
+> - Add device tree nodes for subsystem clocks.
+> - Fine tune comments of patches.
+> - Add __init, __initconst and const to init data and functions.
+> - Removed unused code from init functions of subsystem clocks.
+>
+> changes since v1:
+> - Add CA7PLL and CA15PLL as critical clocks.
+> - Use the same register descriptor for imgsys, vensys and vencltsys.
+> - Generalize apmixedsys special clocks registration.
+>
+> [1] https://patchwork.kernel.org/patch/6446341/
+> [2] https://lkml.org/lkml/2015/8/4/111
+>
+> James Liao (9):
+>   clk: mediatek: Removed unused dpi_ck clock from MT8173
+>   clk: mediatek: Remove unused code from MT8173.
+>   clk: mediatek: Add __initdata and __init for data and functions
+>   clk: mediatek: Add fixed clocks support for Mediatek SoC.
+>   clk: mediatek: Fix rate and dependency of MT8173 clocks
+>   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
+>     controllers
+>   clk: mediatek: Add subsystem clocks of MT8173
+>   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+>   arm64: dts: mt8173: Add subsystem clock controller device nodes
+>
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  22 ++
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  22 ++
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  22 ++
+>  .../bindings/arm/mediatek/mediatek,vencltsys.txt   |  22 ++
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |  22 ++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  37 +++
+>  drivers/clk/mediatek/Makefile                      |   2 +-
+>  drivers/clk/mediatek/clk-apmixed.c                 | 107 +++++++
+>  drivers/clk/mediatek/clk-gate.c                    |   2 +-
+>  drivers/clk/mediatek/clk-mt8173.c                  | 342 ++++++++++++++++++++-
+>  drivers/clk/mediatek/clk-mtk.c                     |  36 ++-
+>  drivers/clk/mediatek/clk-mtk.h                     |  24 +-
+>  drivers/clk/mediatek/clk-pll.c                     |   7 +-
+>  include/dt-bindings/clock/mt8173-clk.h             | 101 +++++-
+>  14 files changed, 735 insertions(+), 33 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+>  create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+>
+> --
+> 1.8.1.1.dirty
+>
