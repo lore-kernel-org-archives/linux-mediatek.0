@@ -1,90 +1,60 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v6 0/3] Add MediaTek display PWM driver
-Date: Tue, 11 Aug 2015 11:38:29 +0800
-Message-ID: <CAGS+omA6NCM_uwrXqz5W+m-dh9r7S_uSmb=Z8JAakQDTXY7pHQ@mail.gmail.com>
-References: <1437380237-28961-1-git-send-email-yh.huang@mediatek.com>
- <2181696.fQcvS98Cqx@ubix> <1437729058.11386.4.camel@mtksdaap41> <1438582892.19953.4.camel@mtksdaap41>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] watchdog: add wdt shutdown callback to disable wdt
+ if enabled
+Date: Tue, 11 Aug 2015 12:28:41 +0800
+Message-ID: <CAGS+omD1UYSTfJ4-vZSE_BYuvGcTvpbC7T4ukaV10xuQxkCChg@mail.gmail.com>
+References: <1437630551-39650-1-git-send-email-eddie.huang@mediatek.com>
+ <1437630551-39650-3-git-send-email-eddie.huang@mediatek.com> <1488521.5eJqASov2O@ubix>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438582892.19953.4.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, YH Huang <yh.huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1488521.5eJqASov2O@ubix>
+Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Thierry,
+Hi Guenter, Matthias,
 
-I think these patches are ready.
-Will you please consider picking up in your pwm tree?
+On Fri, Jul 24, 2015 at 1:37 AM, Matthias Brugger
+<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> On Thursday, July 23, 2015 01:49:11 PM Eddie Huang wrote:
+>> From: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>
+>> Without .shutdown(), watchdog might reset the system during power off.
+>> For example, if watchdog's timeout is set to 30s, then it is reset to
+>> zero by mtk_wdt_ping(). During power off, no app will ping watchdog,
+>> but watchdog is still running and may trigger reset.
+>>
+>> Signed-off-by: Greta Zhang <greta.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>  drivers/watchdog/mtk_wdt.c | 9 +++++++++
+>>  1 file changed, 9 insertions(+)
+>
+> Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+is the plan to land these two patches via Guenter's watchdog tree [0]?
+[0] git://www.linux-watchdog.org/linux-watchdog.git
+
+In fact, though, I don't see any new patches in that repository.
+The only branches I see are:
+  remotes/wdog/master                                      b953c0d Linux 4.1
+  remotes/wdog/winbond-superio                             dc89871
+Sample Winbond Super-I/O MFD device consisting out of a lowel-level
+driver that does the detection and creates the platform-data and a
+watchdog driver.
+
+Am I looking in the wrong place?
 
 -Dan
 
-
-On Mon, Aug 3, 2015 at 2:21 PM, YH Huang <yh.huang@mediatek.com> wrote:
-> On Fri, 2015-07-24 at 17:10 +0800, YH Huang wrote:
->> On Fri, 2015-07-24 at 10:42 +0200, Matthias Brugger wrote:
->> > On Monday, July 20, 2015 04:17:14 PM YH Huang wrote:
->> > > This patch series add the use of display PWM driver, documentation
->> > > and device tree for Mediatek SoCs. The driver is used to support
->> > > the backlight of the panel. This is based on v4.2-rc1.
->> > >
->> > > The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch:
->> > > clk: mediatek: Add subsystem clocks of MT8173
->> > >
->> > > Change in v6:
->> > > 1. Enable clocks in the pwm_enable function
->> > > 2. Remove suspend/resume code since pwm-backlight driver has done the same
->> > > things 3. Revise some code to make it easier to read
->> > >
->> >
->> > Can you please provide the whole change log for all versions the next time.
->> > It's easier this way to understand the evolution of the series.
->>
->> Change in v6:
->> 1. Enable clocks in the pwm_enable function.
->> 2. Remove suspend/resume code since pwm-backlight driver has done the
->> same things.
->> 3. Revise some code to make it easier to read.
->>
->> Change in v5:
->> 1. Configure PWM output via pinctrl.
->> 2. Fix the parameter name in dtsi.
->>
->> Change in v4:
->> 1. Codebase is on v4.2-rc1.
->> 2. Add the PWM node in dtsi.
->> 3. Change the dependency in Kconfig.
->> 4. Rewrite some code for readability.
->>
->> Change in v3:
->> 1. Add suspend/resume function.
->> 2. Fix the formula for high_width calculation.
->> 3. Rewrite some code to make it easier to read.
->> 4. Add more information in the commit message.
->>
->> Change in v2:
->> 1. Rewrite descriptions for driver in kconfig to make it much clear.
->> 2. Rename the driver from "pwm-mediatek-disp" to "pwm-mtk-disp".
->> 3. Disable clocks in the error path.
->> 4. Change the shift values in decimal instead of hex.
->> 5. Rename and add some variables or function name for consistency and
->> readability.
->> 6. Drop unnecessary parentheses, spaces, variables and add newlines to
->> make the code easiler to read.
->>
->> Thanks for your suggestion.
->
-> Hi Thierry,
->
-> Do you have any suggestions?
-> Maybe we could apply the patch?
->
-> Regards,
-> YH Huang
->
 > --
 > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at  http://www.tux.org/lkml/
+--
+To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
