@@ -1,68 +1,45 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: Fixup i2c ack error interrupt handling
-Date: Tue, 11 Aug 2015 16:32:54 +0800
-Message-ID: <CAGS+omDgCr7Ap3qBsav5AG-1g=+UjCM4ayRP-S0DKPbuKUH=Eg@mail.gmail.com>
-References: <1438845731-17805-1-git-send-email-eddie.huang@mediatek.com> <1438845731-17805-3-git-send-email-eddie.huang@mediatek.com>
+From: Leilk Liu <leilk.liu@mediatek.com>
+Subject: [PATCH] spi: Mediatek: fix endian warnings
+Date: Tue, 11 Aug 2015 18:43:09 +0800
+Message-ID: <1439289789-29026-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438845731-17805-3-git-send-email-eddie.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Liguo Zhang <liguo.zhang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 6, 2015 at 3:22 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
-> When occur i2c ack error, i2c controller generate two interrupts,
-> first is the ack error interrupt, then the complete interrupt.
-> i2c interrupt handler should keep the two interrupt value, and only
-> call complete() for the complete interrupt.
->
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+This patch fixes endian warnings detected by sparse:
+- sparse: incorrect type in argument 1 (different base types)
+	  expected unsigned int [unsigned] val
+	  got restricted __le32 [usertype] <noident>
+- sparse: incorrect type in argument 1 (different base types)
+	  expected unsigned int [unsigned] val
+	  got restricted __le32 [usertype] <noident>
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+---
+ drivers/spi/spi-mt65xx.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c |   15 +++++++++++----
->  1 file changed, 11 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index e28ad4c..c02e6c0 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -557,15 +557,22 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
->  {
->         struct mtk_i2c *i2c = dev_id;
->         u16 restart_flag = 0;
-> +       u16 intr_stat;
->
->         if (i2c->dev_comp->auto_restart)
->                 restart_flag = I2C_RS_TRANSFER;
->
-> -       i2c->irq_stat = readw(i2c->base + OFFSET_INTR_STAT);
-> -       writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR
-> -               | I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_STAT);
-> +       intr_stat = readw(i2c->base + OFFSET_INTR_STAT);
-> +       writew(intr_stat, i2c->base + OFFSET_INTR_STAT);
->
-> -       complete(&i2c->msg_complete);
-> +       /*
-> +        * when occurs ack error, i2c controller generate two interrupts
-> +        * first is the ack error interrupt, then the complete interrupt
-> +        * i2c->irq_stat need keep the two interrupt value.
-> +        */
-> +       i2c->irq_stat |= intr_stat;
-> +       if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
-> +               complete(&i2c->msg_complete);
->
->         return IRQ_HANDLED;
->  }
-> --
-> 1.7.9.5
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 4676b01..ae645fa 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -359,9 +359,11 @@ static void mtk_spi_setup_dma_addr(struct spi_master *master,
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 
+ 	if (mdata->tx_sgl)
+-		writel(cpu_to_le32(xfer->tx_dma), mdata->base + SPI_TX_SRC_REG);
++		writel((__force u32)cpu_to_le32(xfer->tx_dma),
++		       mdata->base + SPI_TX_SRC_REG);
+ 	if (mdata->rx_sgl)
+-		writel(cpu_to_le32(xfer->rx_dma), mdata->base + SPI_RX_DST_REG);
++		writel((__force u32)cpu_to_le32(xfer->rx_dma),
++		       mdata->base + SPI_RX_DST_REG);
+ }
+ 
+ static int mtk_spi_fifo_transfer(struct spi_master *master,
+-- 
+1.8.1.1.dirty
