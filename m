@@ -1,50 +1,37 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 0/5] add GPT timer support for mt8173
-Date: Tue, 11 Aug 2015 23:54:02 +0800
-Message-ID: <CAGS+omAeYhXDpBueG-F_gYBccqeaejN9k5bRKC78aDLfvHfnBA@mail.gmail.com>
-References: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] i2c: mediatek: Fixup i2c ack error interrupt handling
+Date: Wed, 12 Aug 2015 09:32:40 +0800
+Message-ID: <CAGS+omBrDWd7hwn=0qYBLK=6L-hORwrKQ9ecL4k3wSSGEPZ64g@mail.gmail.com>
+References: <1438845731-17805-1-git-send-email-eddie.huang@mediatek.com>
+ <1438845731-17805-3-git-send-email-eddie.huang@mediatek.com> <20150811145521.GB1525@katana>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Michael Turquette <mturquette@baylibre.com>, Thomas Gleixner <tglx@linutronix.de>, Russell King <linux@arm.linux.org.uk>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-clk@vger.kernel.org
+Return-path: <linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150811145521.GB1525@katana>
+Sender: linux-i2c-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Linux I2C <linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jul 13, 2015 at 5:32 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
-> This series add GPT timer support for mt8173. This is based on v4.2-rc1
-> and Matthias' next branch (for dts parts).
->
-> The first 2 patches comes from 'Add SMP bringup support for mt65xx socs'
-> series [1]. I decide to move these 2 patches to this series, since it
-> is more relevent here. They are changed based on Matthias' and Daniel's
-> comments.
->
-> [1] http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000714.html
->
-> Daniel Kurtz (1):
->   arm64: dts: mt8173: add timer node
->
-> Yingjoe Chen (4):
->   clocksource: mediatek: do not enable GPT_CLK_EVT when setup
->   clocksource: mediatek: Use GPT as sched clock source
->   arm64: mediatek: enable MTK_TIMER
->   clk: mediatek: add 13mhz clock for MT8173
+Hi Wolfram,
 
-Was this mediatek clocksource patch set get forgotten again?
-All 5 patches have have been reviewed, and I think the ones that need
-it have been Ack'ed by Matthias and/or Stephen.
-What is the plan for merging them?
+On Tue, Aug 11, 2015 at 10:55 PM, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org> wrote:
+> On Thu, Aug 06, 2015 at 03:22:11PM +0800, Eddie Huang wrote:
+>> When occur i2c ack error, i2c controller generate two interrupts,
+>> first is the ack error interrupt, then the complete interrupt.
+>> i2c interrupt handler should keep the two interrupt value, and only
+>> call complete() for the complete interrupt.
+>>
+>> Signed-off-by: Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>
+> Applied to for-next, thanks!
 
-Thanks,
+I don't see them in [0].
+[0] https://git.kernel.org/cgit/linux/kernel/git/wsa/linux.git/log/?h=i2c/for-next
+
+Am I not looking in the right place?
+Or, did I not wait long enough?
+
+Thanks!
 -Dan
-
->
->  arch/arm64/Kconfig                       |  1 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi |  9 +++++++++
->  drivers/clk/mediatek/clk-mt8173.c        |  5 +++++
->  drivers/clocksource/mtk_timer.c          | 26 ++++++++++++++++++++------
->  include/dt-bindings/clock/mt8173-clk.h   |  3 ++-
->  5 files changed, 37 insertions(+), 7 deletions(-)
->
