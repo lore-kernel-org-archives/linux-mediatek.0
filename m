@@ -1,84 +1,90 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH v4 4/6] memory: mediatek: Add SMI driver
-Date: Wed, 12 Aug 2015 20:39:34 +0800
-Message-ID: <1439383174.7382.24.camel@mhfsdcap03>
-References: <1438597279-2937-1-git-send-email-yong.wu@mediatek.com>
-	 <1438597279-2937-5-git-send-email-yong.wu@mediatek.com>
-	 <20150811145633.GE14980@8bytes.org>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] regmap: Add function check before called format_val
+Date: Wed, 12 Aug 2015 22:20:57 +0800
+Message-ID: <CAGS+omDa+FhKD2u_VwBG3cWvN+ZiHneqFVz=mtdYuPsiQu4JEQ@mail.gmail.com>
+References: <1437396110-5192-1-git-send-email-henryc.chen@mediatek.com>
+ <20150720150254.GC11162@sirena.org.uk> <1437458845.30329.51.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150811145633.GE14980@8bytes.org>
+In-Reply-To: <1437458845.30329.51.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>
-Cc: Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Lucas Stach <l.stach@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, pebolle@tiscali.nl, arnd@arndb.de, mitchelh@codeaurora.org, youhua.li@mediatek.com, k.zhang@mediatek.com, frederic.chen@mediatek.com
+To: Henry Chen <HenryC.Chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, Kevin Hilman <khilman@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-08-11 at 16:56 +0200, Joerg Roedel wrote:
-> On Mon, Aug 03, 2015 at 06:21:17PM +0800, Yong Wu wrote:
-> > +static int mtk_smi_common_get(struct device *smidev)
-> > +{
-> > +	struct mtk_smi_common *smipriv = dev_get_drvdata(smidev);
-> > +	int ret;
-> > +
-> > +	ret = pm_runtime_get_sync(smidev);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	ret = clk_prepare_enable(smipriv->clk_apb);
-> > +	if (ret) {
-> > +		dev_err(smidev, "Failed to enable the apb clock\n");
-> > +		goto err_put_pm;
-> > +	}
-> > +	ret = clk_prepare_enable(smipriv->clk_smi);
-> > +	if (ret) {
-> > +		dev_err(smidev, "Failed to enable the smi clock\n");
-> > +		goto err_disable_apb;
-> > +	}
-> > +	return ret;
-> > +
-> > +err_disable_apb:
-> > +	clk_disable_unprepare(smipriv->clk_apb);
-> > +err_put_pm:
-> > +	pm_runtime_put(smidev);
-> > +	return ret;
-> > +}
-> 
-> [...]
-> 
-> > +int mtk_smi_larb_get(struct device *larbdev)
-> > +{
-> > +	struct mtk_smi_larb *larbpriv = dev_get_drvdata(larbdev);
-> > +	struct mtk_larb_mmu *mmucfg = larbdev->archdata.iommu;
-> > +	int ret;
-> > +
-> > +	ret = mtk_smi_common_get(larbpriv->smi);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret = pm_runtime_get_sync(larbdev);
-> > +	if (ret < 0)
-> > +		goto err_put_smicommon;
-> > +
-> > +	ret = clk_prepare_enable(larbpriv->clk_apb);
-> > +	if (ret) {
-> > +		dev_err(larbdev, "Failed to enable the apb clock\n");
-> > +		goto err_put_pm;
-> > +	}
-> > +
-> > +	ret = clk_prepare_enable(larbpriv->clk_smi);
-> > +	if (ret) {
-> > +		dev_err(larbdev, "Failed to enable the smi clock\n");
-> > +		goto err_disable_apb;
-> > +	}
-> 
-> The clock enablement looks similar to the function above, maybe move it
-> to a helper function?
+Hi Henry & Mark,
 
-Thanks. I will improve it in next version.
+On Tue, Jul 21, 2015 at 2:07 PM, Henry Chen <HenryC.Chen@mediatek.com> wrote:
+> On Mon, 2015-07-20 at 16:02 +0100, Mark Brown wrote:
+>> On Mon, Jul 20, 2015 at 08:41:50PM +0800, Henry Chen wrote:
+>> > The regmap_format will not be initialize since regmap_bus is not assgined
+>> > on regmap_init(). It should has a function check before using
+>> > format_val() to avoid null function called on regmap_bulk_read().
+>>
+>> > -                   map->format.format_val(val + (i * val_bytes), ival, 0);
+>> > +                   if (map->format.format_val)
+>> > +                           map->format.format_val(val + (i * val_bytes), ival, 0);
+>> > +                   else
+>> > +                           memcpy(val + (i * val_bytes), &ival, val_bytes);
+>>
+>> Your changelog doesn't explan why we are in this code path in the first
+>> place without a format_val() and why a memcpy() is an appropriate
+>> replacement.  It should, it's not clear to me that this is a good fix
+>> but I don't feel I fully understand the problem.
+>
+> Sorry for being unclear for issue, the call flow as following,
+>
+> First, in drivers/mfd/mtk_pmic_wrap.c which registered regmap without
+> rebmap_bus.
+> devm_regmap_init(wrp->dev, NULL, wrp, &pwrap_regmap_config);
+>
+> It call to regmap_init() and go to "skip_format_initialization" because
+> regmap_bus didn't assign by driver.
+>
+> if (!bus) {
+>         map->reg_read  = config->reg_read;
+>         map->reg_write = config->reg_write;
+>
+>         map->defer_caching = false;
+>         goto skip_format_initialization;"
+>
+> Then in driver rtc-mt6397.c, it used regmap_bulk_read() to get the time
+> of PMIC, and hit the null function of format_val(), because the
+> regmap_bus was null.
+>
+> It skipped the initialization of format_val() because bus == null, but
+> called the format_val() at regmap_bulk_read() if bus == null.
+>
+> Maybe it was not the good fix for this, but should be a problem need to
+> be reported, or should I need to give the regmap_bus on mtk_pmic_wrap.c?
 
-> 
-> 
-> 	Joerg
-> 
+I ran into this bug when testing Matthias' v4.2-next/for-next branch
+on mt8173.  It now crashes on boot.
+
+Since I didn't see it elsewhere in this discussion, I'll point out
+that the "regression" here was introduced by commit [0], which added
+the call to map->format.format_val from regmap_bulk_read() when
+map->bus == NULL.
+
+[0] commit 15b8d2c41fe5839582029f65c5f7004db451cc2b
+  Author: Arun Chandran <achandran@mvista.com>
+  regmap: Fix regmap_bulk_read in BE mode
+
+Perhaps the easiest work around to unbreak v4.2 is, as Henry mentions,
+for mtk_pmic_wrap to define its own regmap_bus, with .read() &
+.write() handlers.  This way they will inherit the default built-in
+format_val() from the regmap core.
+
+Making mtk_pmic-wrap into a regmap_bus makes a bit of sense
+architecturally, too, since it is essentially just a bus for accessing
+the registers of an off-chip PMIC.  The CPU sees a platform bus, but
+the registers of the remote PMIC are accessed over a dedicated SPI
+bus.
+
+WDYT?
+
+Henry, can you try to implement this?
+
+Thanks,
+-Dan
