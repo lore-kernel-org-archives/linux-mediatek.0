@@ -1,208 +1,120 @@
-From: <maoguang.meng@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: Implement wake handler and suspend resume
-Date: Thu, 13 Aug 2015 16:18:56 +0800
-Message-ID: <1439453936-8315-1-git-send-email-maoguang.meng@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
+ when setup
+Date: Thu, 13 Aug 2015 10:35:16 +0200
+Message-ID: <55CC56C4.8080201@linaro.org>
+References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com> <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Maoguang Meng <maoguang.meng@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Maoguang Meng <maoguang.meng@mediatek.com>
+On 07/22/2015 10:14 AM, Yingjoe Chen wrote:
+> Spurious mtk timer interrupt is noticed at boot and cause kernel
+> crash. It seems if GPT is enabled, it will latch irq status even
+> when its IRQ is disabled. When irq is enabled afterward, we see
+> spurious interrupt.
+> Change init flow to only enable GPT_CLK_SRC at mtk_timer_init.
+>
+> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> ---
+>
+> Update to my patch [1], added __init as Daniel suggest. This is the
+> only patch that need to change in that series, so I only sent this on=
+e.
+>
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001545.=
+html
+>
+>   drivers/clocksource/mtk_timer.c | 16 ++++++++++------
+>   1 file changed, 10 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mt=
+k_timer.c
+> index 68ab423..2ba5b66 100644
+> --- a/drivers/clocksource/mtk_timer.c
+> +++ b/drivers/clocksource/mtk_timer.c
+> @@ -156,9 +156,11 @@ static void mtk_timer_global_reset(struct mtk_cl=
+ock_event_device *evt)
+>   	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+>   }
+>
+> -static void
+> -mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 opt=
+ion)
+> +static void __init mtk_timer_setup(struct mtk_clock_event_device *ev=
+t,
+> +				   u8 timer, u8 option, bool enable)
+>   {
+> +	u32 val;
+> +
+>   	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+>   		evt->gpt_base + TIMER_CTRL_REG(timer));
+>
+> @@ -167,8 +169,10 @@ mtk_timer_setup(struct mtk_clock_event_device *e=
+vt, u8 timer, u8 option)
+>
+>   	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
+>
+> -	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
+> -			evt->gpt_base + TIMER_CTRL_REG(timer));
+> +	val =3D TIMER_CTRL_OP(option);
+> +	if (enable)
+> +		val |=3D TIMER_CTRL_ENABLE;
+> +	writel(val, evt->gpt_base + TIMER_CTRL_REG(timer));
 
-This patch implement irq_set_wake to get who is wakeup source and
-setup on suspend resume.
+Instead of the 'enable' new option, I prefer a test with 'timer' with a=
+=20
+comment:
 
-Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+	/*
+	 * the timer hw is broken in that way ... bla bla, so we only
+	 * enable the clocksource ...
+	 */
+	if (timer =3D=3D GPT_CLK_SRC)
+		val |=3D TIMER_CTRL_ENABLE;
 
----
-changes since v2:
--modify irq_wake to handle irq wakeup source.
--allocate two buffers separately.
--fix some codestyle.
+That said, can you have a look at commit 1096be08 ?
+"clockevents: sun5i: Fix setup_irq init sequence"
 
-Changes since v1:
--implement irq_wake handler.
----
- drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 94 ++++++++++++++++++++++++++-
- drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
- 3 files changed, 97 insertions(+), 2 deletions(-)
+first and check if moving the interrupt request after the=20
+clockevents_config_and_register could fix your issue.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-index d0c811d..ad27184 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-@@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	.driver = {
- 		.name = "mediatek-mt8173-pinctrl",
- 		.of_match_table = mt8173_pctrl_match,
-+		.pm = &mtk_eint_pm_ops,
- 	},
- };
- 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index ad1ea16..7d4ba926 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -33,6 +33,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/delay.h>
- #include <linux/interrupt.h>
-+#include <linux/pm.h>
- #include <dt-bindings/pinctrl/mt65xx.h>
- 
- #include "../core.h"
-@@ -1062,11 +1063,82 @@ static int mtk_eint_set_type(struct irq_data *d,
- 	return 0;
- }
- 
-+static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
-+{
-+	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
-+	int shift = d->hwirq & 0x1f;
-+	int reg = d->hwirq >> 5;
-+
-+	if (on)
-+		pctl->wake_mask[reg] |= BIT(shift);
-+	else
-+		pctl->wake_mask[reg] &= ~BIT(shift);
-+
-+	return 0;
-+}
-+
-+static void mtk_eint_chip_write_mask(const struct mtk_eint_offsets *chip,
-+		void __iomem *eint_reg_base, u32 *buf)
-+{
-+	int port;
-+	void __iomem *reg;
-+
-+	for (port = 0; port < chip->ports; port++) {
-+		reg = eint_reg_base + (port << 2);
-+		writel_relaxed(~buf[port], reg + chip->mask_set);
-+		writel_relaxed(buf[port], reg + chip->mask_clr);
-+	}
-+}
-+
-+static void mtk_eint_chip_read_mask(const struct mtk_eint_offsets *chip,
-+		void __iomem *eint_reg_base, u32 *buf)
-+{
-+	int port;
-+	void __iomem *reg;
-+
-+	for (port = 0; port < chip->ports; port++) {
-+		reg = eint_reg_base + chip->mask + (port << 2);
-+		buf[port] = ~readl_relaxed(reg);
-+	}
-+}
-+
-+static int mtk_eint_suspend(struct device *device)
-+{
-+	void __iomem *reg;
-+	struct mtk_pinctrl *pctl = dev_get_drvdata(device);
-+	const struct mtk_eint_offsets *eint_offsets =
-+			&pctl->devdata->eint_offsets;
-+
-+	reg = pctl->eint_reg_base;
-+	mtk_eint_chip_read_mask(eint_offsets, reg, pctl->cur_mask);
-+	mtk_eint_chip_write_mask(eint_offsets, reg, pctl->wake_mask);
-+
-+	return 0;
-+}
-+
-+static int mtk_eint_resume(struct device *device)
-+{
-+	struct platform_device *pdev = to_platform_device(device);
-+	struct mtk_pinctrl *pctl = platform_get_drvdata(pdev);
-+	const struct mtk_eint_offsets *eint_offsets =
-+			&pctl->devdata->eint_offsets;
-+
-+	mtk_eint_chip_write_mask(eint_offsets,
-+			pctl->eint_reg_base, pctl->cur_mask);
-+
-+	return 0;
-+}
-+
-+const struct dev_pm_ops mtk_eint_pm_ops = {
-+	.suspend = mtk_eint_suspend,
-+	.resume = mtk_eint_resume,
-+};
-+
- static void mtk_eint_ack(struct irq_data *d)
- {
- 	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
- 	const struct mtk_eint_offsets *eint_offsets =
--		&pctl->devdata->eint_offsets;
-+			&pctl->devdata->eint_offsets;
- 	u32 mask = BIT(d->hwirq & 0x1f);
- 	void __iomem *reg = mtk_eint_get_offset(pctl, d->hwirq,
- 			eint_offsets->ack);
-@@ -1076,10 +1148,12 @@ static void mtk_eint_ack(struct irq_data *d)
- 
- static struct irq_chip mtk_pinctrl_irq_chip = {
- 	.name = "mt-eint",
-+	.irq_disable = mtk_eint_mask,
- 	.irq_mask = mtk_eint_mask,
- 	.irq_unmask = mtk_eint_unmask,
- 	.irq_ack = mtk_eint_ack,
- 	.irq_set_type = mtk_eint_set_type,
-+	.irq_set_wake = mtk_eint_irq_set_wake,
- 	.irq_request_resources = mtk_pinctrl_irq_request_resources,
- 	.irq_release_resources = mtk_pinctrl_irq_release_resources,
- };
-@@ -1217,7 +1291,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 	struct device_node *np = pdev->dev.of_node, *node;
- 	struct property *prop;
- 	struct resource *res;
--	int i, ret, irq;
-+	int i, ret, irq, ports_buf;
- 
- 	pctl = devm_kzalloc(&pdev->dev, sizeof(*pctl), GFP_KERNEL);
- 	if (!pctl)
-@@ -1319,6 +1393,22 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 		goto chip_error;
- 	}
- 
-+	ports_buf = ALIGN(pctl->devdata->eint_offsets.ports,
-+			sizeof(long)/sizeof(u32));
-+	pctl->wake_mask = devm_kcalloc(&pdev->dev, ports_buf,
-+					sizeof(*pctl->wake_mask), GFP_KERNEL);
-+	if (!pctl->wake_mask) {
-+		ret = -ENOMEM;
-+		goto chip_error;
-+	}
-+
-+	pctl->cur_mask = devm_kcalloc(&pdev->dev, ports_buf,
-+					sizeof(*pctl->cur_mask), GFP_KERNEL);
-+	if (!pctl->cur_mask) {
-+		ret = -ENOMEM;
-+		goto chip_error;
-+	}
-+
- 	pctl->eint_dual_edges = devm_kcalloc(&pdev->dev, pctl->devdata->ap_num,
- 					     sizeof(int), GFP_KERNEL);
- 	if (!pctl->eint_dual_edges) {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-index 30213e5..f1be8e8 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-@@ -266,6 +266,8 @@ struct mtk_pinctrl {
- 	void __iomem		*eint_reg_base;
- 	struct irq_domain	*domain;
- 	int			*eint_dual_edges;
-+	u32 *wake_mask;
-+	u32 *cur_mask;
- };
- 
- int mtk_pctrl_init(struct platform_device *pdev,
-@@ -281,4 +283,6 @@ int mtk_pconf_spec_set_ies_smt_range(struct regmap *regmap,
- 		const struct mtk_pin_ies_smt_set *ies_smt_infos, unsigned int info_num,
- 		unsigned int pin, unsigned char align, int value);
- 
-+extern const struct dev_pm_ops mtk_eint_pm_ops;
-+
- #endif /* __PINCTRL_MTK_COMMON_H */
--- 
-1.8.1.1.dirty
+>   }
+>
+>   static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt=
+, u8 timer)
+> @@ -235,12 +239,12 @@ static void __init mtk_timer_init(struct device=
+_node *node)
+>   	evt->ticks_per_jiffy =3D DIV_ROUND_UP(rate, HZ);
+>
+>   	/* Configure clock source */
+> -	mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN);
+> +	mtk_timer_setup(evt, GPT_CLK_SRC, TIMER_CTRL_OP_FREERUN, true);
+>   	clocksource_mmio_init(evt->gpt_base + TIMER_CNT_REG(GPT_CLK_SRC),
+>   			node->name, rate, 300, 32, clocksource_mmio_readl_up);
+>
+>   	/* Configure clock event */
+> -	mtk_timer_setup(evt, GPT_CLK_EVT, TIMER_CTRL_OP_REPEAT);
+> +	mtk_timer_setup(evt, GPT_CLK_EVT, TIMER_CTRL_OP_REPEAT, false);
+>   	clockevents_config_and_register(&evt->dev, rate, 0x3,
+>   					0xffffffff);
+
+
+
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
