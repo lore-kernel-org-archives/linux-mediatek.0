@@ -1,36 +1,58 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Implement wake handler and suspend resume
-Date: Thu, 13 Aug 2015 14:58:59 +0200
-Message-ID: <CACRpkdYKsUd4OSLJTPYZPmnLZfKQhj_UXmKtrBjKj5N4E8od2Q@mail.gmail.com>
-References: <1439453936-8315-1-git-send-email-maoguang.meng@mediatek.com>
+From: Henry Chen <HenryC.Chen@mediatek.com>
+Subject: Re: [PATCH] regmap: Add function check before called format_val
+Date: Thu, 13 Aug 2015 23:25:05 +0800
+Message-ID: <1439479505.32674.43.camel@mtksdaap41>
+References: <1437396110-5192-1-git-send-email-henryc.chen@mediatek.com>
+	 <20150720150254.GC11162@sirena.org.uk>
+	 <1437458845.30329.51.camel@mtksdaap41>
+	 <CAGS+omDa+FhKD2u_VwBG3cWvN+ZiHneqFVz=mtdYuPsiQu4JEQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439453936-8315-1-git-send-email-maoguang.meng@mediatek.com>
+In-Reply-To: <CAGS+omDa+FhKD2u_VwBG3cWvN+ZiHneqFVz=mtdYuPsiQu4JEQ@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: maoguang meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang@mediatek.com>, Kevin Hilman <khilman@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 13, 2015 at 10:18 AM,  <maoguang.meng@mediatek.com> wrote:
+On Wed, 2015-08-12 at 22:20 +0800, Daniel Kurtz wrote:
 
-> From: Maoguang Meng <maoguang.meng@mediatek.com>
->
-> This patch implement irq_set_wake to get who is wakeup source and
-> setup on suspend resume.
->
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
->
-> ---
-> changes since v2:
-> -modify irq_wake to handle irq wakeup source.
-> -allocate two buffers separately.
-> -fix some codestyle.
->
-> Changes since v1:
-> -implement irq_wake handler.
+> 
+> Since I didn't see it elsewhere in this discussion, I'll point out
+> that the "regression" here was introduced by commit [0], which added
+> the call to map->format.format_val from regmap_bulk_read() when
+> map->bus == NULL.
+> 
+> [0] commit 15b8d2c41fe5839582029f65c5f7004db451cc2b
+>   Author: Arun Chandran <achandran@mvista.com>
+>   regmap: Fix regmap_bulk_read in BE mode
+> 
+> Perhaps the easiest work around to unbreak v4.2 is, as Henry mentions,
+> for mtk_pmic_wrap to define its own regmap_bus, with .read() &
+> .write() handlers.  This way they will inherit the default built-in
+> format_val() from the regmap core.
+> 
+> Making mtk_pmic-wrap into a regmap_bus makes a bit of sense
+> architecturally, too, since it is essentially just a bus for accessing
+> the registers of an off-chip PMIC.  The CPU sees a platform bus, but
+> the registers of the remote PMIC are accessed over a dedicated SPI
+> bus.
+> 
+> WDYT?
+> 
+> Henry, can you try to implement this?
 
-Waiting for Hongzhu's ACK on this patch.
+Hi Daniel,
+I can try to create a regmap_bus for pmic wrap. But I'm not sure if it
+was the good solution for this problem.
 
-Yours,
-Linus Walleij
+Hi Mark,
+Sorry, I'm afraid that I cannot do this right on init as you said last
+time. What do you think about regmap_bus, can you accept that way?
+
+Thanks,
+Henry
+> 
+> Thanks,
+> -Dan
