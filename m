@@ -1,132 +1,59 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
- suspend resume
-Date: Mon, 17 Aug 2015 14:45:49 -0700
-Message-ID: <1439847949.12863.0.camel@mussux00.eus.mediatek.inc>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
-	 <1439797974.22004.2.camel@mtksdaap41>
-	 <CAGS+omCQN65pCP7mYFCj8sDOihLNc15GgELw1u7fTXuq=KBXnw@mail.gmail.com>
-	 <1439817953.3414.4.camel@mtksdaap41>
+From: Michael Turquette <mturquette@linaro.org>
+Subject: Re: [PATCH v4 RESEND 1/3] clk: Add regmap support
+Date: Mon, 17 Aug 2015 16:22:35 -0700
+Message-ID: <20150817232235.31346.30218@quantum>
+References: <1438355659-21558-1-git-send-email-matthias.bgg@gmail.com>
+ <1438355659-21558-2-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439817953.3414.4.camel@mtksdaap41>
+In-Reply-To: <1438355659-21558-2-git-send-email-matthias.bgg@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, maoguang meng <maoguang.meng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, sboyd@codeaurora.orgmatthias.bgg@gmail.com
+Cc: s.hauer@pengutronix.de, jamesjj.liao@mediatek.com, henryc.chen@mediatek.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, manabian@gmail.com, p.zabel@pengutronix.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-08-17 at 21:25 +0800, Yingjoe Chen wrote:
-> On Mon, 2015-08-17 at 17:09 +0800, Daniel Kurtz wrote:
-> > On Mon, Aug 17, 2015 at 3:52 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
-> > > On Fri, 2015-08-14 at 16:38 +0800, maoguang.meng@mediatek.com wrote:
-> > >> From: Maoguang Meng <maoguang.meng@mediatek.com>
-> > >>
-> > >> This patch implement irq_set_wake to get who is wakeup source and
-> > >> setup on suspend resume.
-> > >>
-> > >> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> > >>
-> > >> ---
-> > >> changes since v3:
-> > >> -add a comment in mtk_eint_chip_read_mask.
-> > >> -delete ALIGN when allocate eint_offsets.ports.
-> > >> -fix unrelated change.
-> > >>
-> > >> changes since v2:
-> > >> -modify irq_wake to handle irq wakeup source.
-> > >> -allocate two buffers separately.
-> > >> -fix some codestyle.
-> > >>
-> > >> Changes since v1:
-> > >> -implement irq_wake handler.
-> > >> ---
-> > >>
-> > >>  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
-> > >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
-> > >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
-> > >>  3 files changed, 95 insertions(+), 1 deletion(-)
-> > >>
-> > >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> > >> index d0c811d..ad27184 100644
-> > >> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> > >> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> > >> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
-> > >>       .driver = {
-> > >>               .name = "mediatek-mt8173-pinctrl",
-> > >>               .of_match_table = mt8173_pctrl_match,
-> > >> +             .pm = &mtk_eint_pm_ops,
-> > >>       },
-> > >>  };
-> > >>
-> > >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > >> index ad1ea16..fe34ce9 100644
-> > >> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > >> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > >> @@ -33,6 +33,7 @@
-> > >>  #include <linux/mfd/syscon.h>
-> > >>  #include <linux/delay.h>
-> > >>  #include <linux/interrupt.h>
-> > >> +#include <linux/pm.h>
-> > >>  #include <dt-bindings/pinctrl/mt65xx.h>
-> > >>
-> > >>  #include "../core.h"
-> > >> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
-> > >>       return 0;
-> > >>  }
-> > >>
-> > >> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
-> > >> +{
-> > >> +     struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
-> > >> +     int shift = d->hwirq & 0x1f;
-> > >> +     int reg = d->hwirq >> 5;
-> > >> +
-> > >> +     if (on)
-> > >> +             pctl->wake_mask[reg] |= BIT(shift);
-> > >> +     else
-> > >> +             pctl->wake_mask[reg] &= ~BIT(shift);
-> > >> +
-> > >> +     return 0;
-> > >> +}
-> > >
-> > > Hi Maoguang,
-> > >
-> > > You changed from set_bit/clear_bit to this, but didn't add any locking.
-> > > Since this is basic read/modify/write, is it OK to do it without
-> > > locking?
-> > 
-> > I believe calling .irq_set_wake() concurrently with itself is
-> > protected by irq_get_desc_buslock():
-> > 
-> >  int irq_set_irq_wake(unsigned int irq, unsigned int on)
-> >  {
-> >          unsigned long flags;
-> >          struct irq_desc *desc = irq_get_desc_buslock(irq, &flags,
-> > IRQ_GET_DESC_CHECK_GLOBAL);
-> >          int ret = 0;
-> > ...
-> >                          ret = set_irq_wake_real(irq, on);
-> > ...
-> >          irq_put_desc_busunlock(desc, flags);
-> >          return ret;
-> >  }
-> 
-> Hi Dan,
-> 
-> You are right, irq_get_desc_buslock will acquire desc lock even when
-> irq_chip didn't provide irq_bus_lock callback. So this should be OK.
-> Sorry for the noise.
-> 
-> For this patch:
-> 
-> Acked-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> 
-> Joe.C
-> 
+Quoting Matthias Brugger (2015-07-31 08:14:17)
+> diff --git a/drivers/clk/clk-io.c b/drivers/clk/clk-io.c
+> new file mode 100644
+> index 0000000..9630ef5
+> --- /dev/null
+> +++ b/drivers/clk/clk-io.c
+> @@ -0,0 +1,48 @@
+> +/*
+> + * Copyright (C) 2015 Matthias Brugger <matthias.bgg@gmail.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + */
+> +
+> +#include <linux/clk-provider.h>
+> +
+> +void clk_io_writel(struct clk_hw *hw, void __iomem *reg, struct regmap *regmap,
+> +                       u32 offset, u32 val)
+> +{
+> +       if (__clk_get_flags(hw->clk) & CLK_USE_REGMAP)
+> +               regmap_write(regmap, offset, val);
+> +       else
+> +               clk_writel(val, reg);
+> +}
 
+So we have clk_writel, which already wraps direct io accesses depending
+on arch/platform, and then this patch adds regmap support, and both of
+those are wrapped in clk_io_writel? :-/
 
-Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+I agree that we should merge some unified regmap support into the clock
+framework for the basic clocks, but I do not think that this is the
+right way to do it. This patch simply adds more code to already crowded
+basic clock types.
 
-Thanks.
-Hongzhou
+Replacing the basic clock types by separating policy and machine-driver
+code into separate, modular pieces is a high priority on my todo list.
+I'd like to do that first and then revisit regmap clocks instead of
+merging this series as-is.
+
+Regards,
+Mike
