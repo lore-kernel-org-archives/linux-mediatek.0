@@ -1,205 +1,95 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH v5 3/5] usb: phy: add usb3.0 phy driver for mt65xx SoCs
-Date: Mon, 17 Aug 2015 10:59:33 +0530
-Message-ID: <55D1713D.9070107@ti.com>
-References: <1438950644-27290-1-git-send-email-chunfeng.yun@mediatek.com> <1438950644-27290-4-git-send-email-chunfeng.yun@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
+ suspend resume
+Date: Mon, 17 Aug 2015 15:52:54 +0800
+Message-ID: <1439797974.22004.2.camel@mtksdaap41>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1438950644-27290-4-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: maoguang.meng@mediatek.com
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-On Friday 07 August 2015 06:00 PM, Chunfeng Yun wrote:
-> support usb3.0 phy of mt65xx SoCs
+On Fri, 2015-08-14 at 16:38 +0800, maoguang.meng@mediatek.com wrote:
+> From: Maoguang Meng <maoguang.meng@mediatek.com>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-
-change $subject to phy:
+> This patch implement irq_set_wake to get who is wakeup source and
+> setup on suspend resume.
+> 
+> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+> 
 > ---
->  drivers/phy/Kconfig           |   9 +
->  drivers/phy/Makefile          |   1 +
->  drivers/phy/phy-mt65xx-usb3.c | 467 ++++++++++++++++++++++++++++++++++++++++++
->  3 files changed, 477 insertions(+)
->  create mode 100644 drivers/phy/phy-mt65xx-usb3.c
+> changes since v3:
+> -add a comment in mtk_eint_chip_read_mask.
+> -delete ALIGN when allocate eint_offsets.ports.
+> -fix unrelated change.
 > 
-> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> index c0e6ede..019cf8b 100644
-> --- a/drivers/phy/Kconfig
-> +++ b/drivers/phy/Kconfig
-> @@ -193,6 +193,15 @@ config PHY_HIX5HD2_SATA
->  	help
->  	  Support for SATA PHY on Hisilicon hix5hd2 Soc.
+> changes since v2:
+> -modify irq_wake to handle irq wakeup source.
+> -allocate two buffers separately.
+> -fix some codestyle.
+> 
+> Changes since v1:
+> -implement irq_wake handler.
+> ---
+> 
+>  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
+>  3 files changed, 95 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> index d0c811d..ad27184 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+>  	.driver = {
+>  		.name = "mediatek-mt8173-pinctrl",
+>  		.of_match_table = mt8173_pctrl_match,
+> +		.pm = &mtk_eint_pm_ops,
+>  	},
+>  };
 >  
-> +config PHY_MT65XX_USB3
-> +	tristate "Mediatek USB3.0 PHY Driver"
-> +	depends on ARCH_MEDIATEK && OF
-> +	select GENERIC_PHY
-> +	help
-> +	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver
-> +	  for mt65xx SoCs. it supports two usb2.0 ports and
-> +	  one usb3.0 port.
-> +
->  config PHY_SUN4I_USB
->  	tristate "Allwinner sunxi SoC USB PHY driver"
->  	depends on ARCH_SUNXI && HAS_IOMEM && OF
-> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-> index f344e1b..3ceff2a 100644
-> --- a/drivers/phy/Makefile
-> +++ b/drivers/phy/Makefile
-> @@ -22,6 +22,7 @@ obj-$(CONFIG_TI_PIPE3)			+= phy-ti-pipe3.o
->  obj-$(CONFIG_TWL4030_USB)		+= phy-twl4030-usb.o
->  obj-$(CONFIG_PHY_EXYNOS5250_SATA)	+= phy-exynos5250-sata.o
->  obj-$(CONFIG_PHY_HIX5HD2_SATA)		+= phy-hix5hd2-sata.o
-> +obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
->  obj-$(CONFIG_PHY_SUN4I_USB)		+= phy-sun4i-usb.o
->  obj-$(CONFIG_PHY_SUN9I_USB)		+= phy-sun9i-usb.o
->  obj-$(CONFIG_PHY_SAMSUNG_USB2)		+= phy-exynos-usb2.o
-> diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-> new file mode 100644
-> index 0000000..6835bff
-> --- /dev/null
-> +++ b/drivers/phy/phy-mt65xx-usb3.c
-.
-.
-<snip>
-.
-.
-> +static struct phy *mt65xx_phy_xlate(struct device *dev,
-> +					struct of_phandle_args *args)
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index ad1ea16..fe34ce9 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -33,6 +33,7 @@
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/delay.h>
+>  #include <linux/interrupt.h>
+> +#include <linux/pm.h>
+>  #include <dt-bindings/pinctrl/mt65xx.h>
+>  
+>  #include "../core.h"
+> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
+>  	return 0;
+>  }
+>  
+> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
 > +{
-> +	struct mt65xx_u3phy *u3phy = dev_get_drvdata(dev);
-> +	struct mt65xx_phy_instance *instance = NULL;
-> +	struct device_node *phy_np = args->np;
-> +	struct resource res;
-> +	int index;
-> +	int ret;
+> +	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
+> +	int shift = d->hwirq & 0x1f;
+> +	int reg = d->hwirq >> 5;
 > +
-> +	if (args->args_count != 1) {
-> +		dev_err(dev, "invalid number of cells in 'phy' property\n");
-> +		return ERR_PTR(-EINVAL);
-> +	}
+> +	if (on)
+> +		pctl->wake_mask[reg] |= BIT(shift);
+> +	else
+> +		pctl->wake_mask[reg] &= ~BIT(shift);
 > +
-> +	for (index = 0; index < u3phy->nphys; index++)
-> +		if (phy_np == u3phy->phys[index]->phy->dev.of_node) {
-> +			instance = u3phy->phys[index];
-> +			break;
-> +		}
-> +
-> +	if (!instance) {
-> +		dev_err(dev, "failed to find appropriate phy\n");
-> +		return ERR_PTR(-EINVAL);
-> +	}
-> +
-> +	instance->type = args->args[0];
-> +
-> +	if (!(instance->type == PHY_TYPE_USB2 ||
-> +	      instance->type == PHY_TYPE_USB3)) {
-> +		dev_err(dev, "unsupported device type: %d\n", instance->type);
-> +		return ERR_PTR(-EINVAL);
-> +	}
-> +
-> +	ret = of_address_to_resource(phy_np, 0, &res);
-> +	if (ret) {
-> +		dev_err(dev, "failed to get address resource, err-%d (index-%d)\n",
-> +			ret, instance->index);
-> +		return ERR_PTR(-EINVAL);
-> +	}
-
-This should be done in probe itself.
-> +
-> +	instance->port_base = devm_ioremap_resource(&instance->phy->dev, &res);
-> +	if (IS_ERR(instance->port_base)) {
-> +		dev_err(dev, "failed to remap sif regs\n");
-> +		return instance->port_base;
-> +	}
-
-This too should be done in probe.
-> +
-> +	return instance->phy;
+> +	return 0;
 > +}
-> +
-> +static struct phy_ops mt65xx_u3phy_ops = {
-> +	.init		= mt65xx_phy_init,
-> +	.power_on	= mt65xx_phy_power_on,
-> +	.power_off	= mt65xx_phy_power_off,
-> +	.owner		= THIS_MODULE,
-> +};
-> +
-> +static int mt65xx_u3phy_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev->of_node;
-> +	struct device_node *child_np;
-> +	struct phy_provider *phy_provider;
-> +	struct resource *sif_res;
-> +	struct mt65xx_u3phy *u3phy;
-> +	int port;
-> +
-> +	u3phy = devm_kzalloc(dev, sizeof(*u3phy), GFP_KERNEL);
-> +	if (!u3phy)
-> +		return -ENOMEM;
-> +
-> +	u3phy->nphys = of_get_child_count(np);
-> +	u3phy->phys = devm_kcalloc(dev, u3phy->nphys,
-> +				       sizeof(*u3phy->phys), GFP_KERNEL);
-> +	if (!u3phy->phys)
-> +		return -ENOMEM;
-> +
-> +	u3phy->dev = dev;
-> +	platform_set_drvdata(pdev, u3phy);
-> +
-> +	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	u3phy->sif_base = devm_ioremap_resource(dev, sif_res);
-> +	if (IS_ERR(u3phy->sif_base)) {
-> +		dev_err(dev, "failed to remap sif regs\n");
-> +		return PTR_ERR(u3phy->sif_base);
-> +	}
-> +
-> +	u3phy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
-> +	if (IS_ERR(u3phy->u3phya_ref)) {
-> +		dev_err(dev, "error to get u3phya_ref\n");
-> +		return PTR_ERR(u3phy->u3phya_ref);
-> +	}
-> +
-> +	port = 0;
-> +	for_each_child_of_node(np, child_np) {
-> +		struct mt65xx_phy_instance *instance;
-> +		struct phy *phy;
-> +
-> +		instance = devm_kzalloc(dev, sizeof(*instance), GFP_KERNEL);
-> +		if (!instance)
-> +			return -ENOMEM;
-> +
-> +		u3phy->phys[port] = instance;
-> +
-> +		phy = devm_phy_create(dev, child_np, &mt65xx_u3phy_ops);
-> +		if (IS_ERR(phy)) {
-> +			dev_err(dev, "failed to create phy\n");
-> +			return PTR_ERR(phy);
-> +		}
-> +		instance->phy = phy;
-> +		instance->index = port;
 
-'index' here is not used anywhere.
-> +		phy_set_drvdata(phy, instance);
-> +		port++;
-> +	}
-> +
-> +	phy_provider = devm_of_phy_provider_register(dev, mt65xx_phy_xlate);
-> +	if (IS_ERR(phy_provider)) {
-> +		dev_err(dev, "Failed to register phy provider\n");
-> +		return PTR_ERR(phy_provider);
-> +	}
-> +
-> +	return u3phy_clk_enable(u3phy);
+Hi Maoguang,
 
-Can't we clk enable in phy_init or phy-power_on where it is actually needed.
+You changed from set_bit/clear_bit to this, but didn't add any locking.
+Since this is basic read/modify/write, is it OK to do it without
+locking?
 
-Thanks
-Kishon
+Joe.C
+
+
