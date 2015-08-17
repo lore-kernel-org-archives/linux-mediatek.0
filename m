@@ -1,102 +1,132 @@
-From: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Subject: Re: [PATCH v5 4/5] xhci: mediatek: support MTK xHCI host controller
-Date: Mon, 17 Aug 2015 18:07:35 +0300
-Message-ID: <55D1F8B7.9060306@linux.intel.com>
-References: <1438950644-27290-1-git-send-email-chunfeng.yun@mediatek.com>
- <1438950644-27290-5-git-send-email-chunfeng.yun@mediatek.com>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
+ suspend resume
+Date: Mon, 17 Aug 2015 14:45:49 -0700
+Message-ID: <1439847949.12863.0.camel@mussux00.eus.mediatek.inc>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+	 <1439797974.22004.2.camel@mtksdaap41>
+	 <CAGS+omCQN65pCP7mYFCj8sDOihLNc15GgELw1u7fTXuq=KBXnw@mail.gmail.com>
+	 <1439817953.3414.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1438950644-27290-5-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439817953.3414.4.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, maoguang meng <maoguang.meng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-gpio@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+On Mon, 2015-08-17 at 21:25 +0800, Yingjoe Chen wrote:
+> On Mon, 2015-08-17 at 17:09 +0800, Daniel Kurtz wrote:
+> > On Mon, Aug 17, 2015 at 3:52 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+> > > On Fri, 2015-08-14 at 16:38 +0800, maoguang.meng@mediatek.com wrote:
+> > >> From: Maoguang Meng <maoguang.meng@mediatek.com>
+> > >>
+> > >> This patch implement irq_set_wake to get who is wakeup source and
+> > >> setup on suspend resume.
+> > >>
+> > >> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+> > >>
+> > >> ---
+> > >> changes since v3:
+> > >> -add a comment in mtk_eint_chip_read_mask.
+> > >> -delete ALIGN when allocate eint_offsets.ports.
+> > >> -fix unrelated change.
+> > >>
+> > >> changes since v2:
+> > >> -modify irq_wake to handle irq wakeup source.
+> > >> -allocate two buffers separately.
+> > >> -fix some codestyle.
+> > >>
+> > >> Changes since v1:
+> > >> -implement irq_wake handler.
+> > >> ---
+> > >>
+> > >>  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
+> > >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
+> > >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
+> > >>  3 files changed, 95 insertions(+), 1 deletion(-)
+> > >>
+> > >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> > >> index d0c811d..ad27184 100644
+> > >> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> > >> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> > >> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+> > >>       .driver = {
+> > >>               .name = "mediatek-mt8173-pinctrl",
+> > >>               .of_match_table = mt8173_pctrl_match,
+> > >> +             .pm = &mtk_eint_pm_ops,
+> > >>       },
+> > >>  };
+> > >>
+> > >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > >> index ad1ea16..fe34ce9 100644
+> > >> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > >> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> > >> @@ -33,6 +33,7 @@
+> > >>  #include <linux/mfd/syscon.h>
+> > >>  #include <linux/delay.h>
+> > >>  #include <linux/interrupt.h>
+> > >> +#include <linux/pm.h>
+> > >>  #include <dt-bindings/pinctrl/mt65xx.h>
+> > >>
+> > >>  #include "../core.h"
+> > >> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
+> > >>       return 0;
+> > >>  }
+> > >>
+> > >> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
+> > >> +{
+> > >> +     struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
+> > >> +     int shift = d->hwirq & 0x1f;
+> > >> +     int reg = d->hwirq >> 5;
+> > >> +
+> > >> +     if (on)
+> > >> +             pctl->wake_mask[reg] |= BIT(shift);
+> > >> +     else
+> > >> +             pctl->wake_mask[reg] &= ~BIT(shift);
+> > >> +
+> > >> +     return 0;
+> > >> +}
+> > >
+> > > Hi Maoguang,
+> > >
+> > > You changed from set_bit/clear_bit to this, but didn't add any locking.
+> > > Since this is basic read/modify/write, is it OK to do it without
+> > > locking?
+> > 
+> > I believe calling .irq_set_wake() concurrently with itself is
+> > protected by irq_get_desc_buslock():
+> > 
+> >  int irq_set_irq_wake(unsigned int irq, unsigned int on)
+> >  {
+> >          unsigned long flags;
+> >          struct irq_desc *desc = irq_get_desc_buslock(irq, &flags,
+> > IRQ_GET_DESC_CHECK_GLOBAL);
+> >          int ret = 0;
+> > ...
+> >                          ret = set_irq_wake_real(irq, on);
+> > ...
+> >          irq_put_desc_busunlock(desc, flags);
+> >          return ret;
+> >  }
+> 
+> Hi Dan,
+> 
+> You are right, irq_get_desc_buslock will acquire desc lock even when
+> irq_chip didn't provide irq_bus_lock callback. So this should be OK.
+> Sorry for the noise.
+> 
+> For this patch:
+> 
+> Acked-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> 
+> Joe.C
+> 
 
-On 07.08.2015 15:30, Chunfeng Yun wrote:
-> MTK xhci host controller defines some extra SW scheduling
-> parameters for HW to minimize the scheduling effort for
-> synchronous and interrupt endpoints. The parameters are
-> put into reseved DWs of slot context and endpoint context
->
->
 
-...
+Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
 
-> + * The TD size is the number of max packet sized packets remaining in the TD
-> + * (including this TRB), right shifted by 10.
-> + * It must fit in bits 21:17, so it can't be bigger than 31.
-> + */
-> +u32 xhci_mtk_td_remainder_quirk(unsigned int td_running_total,
-> +	unsigned trb_buffer_length, struct urb *urb)
-> +{
-> +	u32 max = 31;
-> +	int remainder, td_packet_count, packet_transferred;
-> +	unsigned int td_transfer_size = urb->transfer_buffer_length;
-> +	unsigned int maxp;
-> +
-> +	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-> +
-> +	/* 0 for the last TRB */
-> +	if (td_running_total + trb_buffer_length == td_transfer_size)
-> +		return 0;
-> +
-> +	packet_transferred = td_running_total / maxp;
-> +	td_packet_count = DIV_ROUND_UP(td_transfer_size, maxp);
-> +	remainder = td_packet_count - packet_transferred;
-> +
-> +	if (remainder > max)
-> +		return max << 17;
-> +	else
-> +		return remainder << 17;
-> +}
-
-I started looking at this xhci_mtk_td_remainder() function, one
-of the places this patch touches the existing xhci code.
-
-The remainder functions in xhci are already bit too messy, and
-adding one more function which does almost the same thing makes
-it even messier.
-
-For example queuing a bulk transfer will end up like this:
-
->   		/* Set the TRB length, TD size, and interrupter fields. */
->   		if (xhci->hci_version < 0x100) {
-> -			remainder = xhci_td_remainder(
-> +			if (xhci->quirks & XHCI_MTK_HOST) {
-> +				remainder = xhci_mtk_td_remainder_quirk(
-> +					running_total, trb_buff_len, urb);
-> +			} else {
-> +				remainder = xhci_td_remainder(
->   					urb->transfer_buffer_length -
->   					running_total);
-> +			}
->   		} else {
->   			remainder = xhci_v1_0_td_remainder(running_total,
->   					trb_buff_len, total_packet_count, urb,
-
-and similar for isoc and control transfers.
-
-I'll see if I can simplify the existing remainder calculations into one function, then it should
-be enough to just add something like this into it:
-
-if (xhci->quirks & XHCI_MTK_HOST)
-	trb_buff_len = 0;
-  	
-This way we can skip all the extra hassle that comes with a new exported quirk function
-
-Is the Mediatek xhci really a xHCI 0.96 or older controller? (hci_version < 0x100)
-Not a xHCI 1.0 or 1.1 ?
-
--Mathias
+Thanks.
+Hongzhou
