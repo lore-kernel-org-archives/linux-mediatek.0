@@ -1,135 +1,71 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend
- resume
-Date: Mon, 17 Aug 2015 17:09:32 +0800
-Message-ID: <CAGS+omCQN65pCP7mYFCj8sDOihLNc15GgELw1u7fTXuq=KBXnw@mail.gmail.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
- <1439797974.22004.2.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1439797974.22004.2.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: maoguang meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+From: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
+Date: Mon, 17 Aug 2015 17:24:22 +0800
+Message-ID: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 17, 2015 at 3:52 PM, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Fri, 2015-08-14 at 16:38 +0800, maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->> From: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> This patch implement irq_set_wake to get who is wakeup source and
->> setup on suspend resume.
->>
->> Signed-off-by: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> ---
->> changes since v3:
->> -add a comment in mtk_eint_chip_read_mask.
->> -delete ALIGN when allocate eint_offsets.ports.
->> -fix unrelated change.
->>
->> changes since v2:
->> -modify irq_wake to handle irq wakeup source.
->> -allocate two buffers separately.
->> -fix some codestyle.
->>
->> Changes since v1:
->> -implement irq_wake handler.
->> ---
->>
->>  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
->>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
->>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
->>  3 files changed, 95 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
->> index d0c811d..ad27184 100644
->> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
->> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
->> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
->>       .driver = {
->>               .name = "mediatek-mt8173-pinctrl",
->>               .of_match_table = mt8173_pctrl_match,
->> +             .pm = &mtk_eint_pm_ops,
->>       },
->>  };
->>
->> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> index ad1ea16..fe34ce9 100644
->> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> @@ -33,6 +33,7 @@
->>  #include <linux/mfd/syscon.h>
->>  #include <linux/delay.h>
->>  #include <linux/interrupt.h>
->> +#include <linux/pm.h>
->>  #include <dt-bindings/pinctrl/mt65xx.h>
->>
->>  #include "../core.h"
->> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
->>       return 0;
->>  }
->>
->> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
->> +{
->> +     struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
->> +     int shift = d->hwirq & 0x1f;
->> +     int reg = d->hwirq >> 5;
->> +
->> +     if (on)
->> +             pctl->wake_mask[reg] |= BIT(shift);
->> +     else
->> +             pctl->wake_mask[reg] &= ~BIT(shift);
->> +
->> +     return 0;
->> +}
->
-> Hi Maoguang,
->
-> You changed from set_bit/clear_bit to this, but didn't add any locking.
-> Since this is basic read/modify/write, is it OK to do it without
-> locking?
+MT8173 is a ARMv8 based SoC with 2 clusters. All CPUs in a single cluster
+share the same power and clock domain. This series tries to add cpufreq support
+for MT8173 SoC. The v6 of this series is resent with Acks added.
 
-I believe calling .irq_set_wake() concurrently with itself is
-protected by irq_get_desc_buslock():
+changes in v6:
+- Move clock and regulator consumer properties document to the device tree
+  bindings documents of MT8173 CPU DVFS clock driver
+- Add change log to describe what is implemented in the MT8173 cpufreq driver
+- Add missed rcu_read_unlock() in the error path
+- Move of_init_opp_table() call to make sure all required hardware resources
+  are already there before it is called
+- Add comments to describe why both platform driver and deivce registration
+  codes are put in the initcall function
+- Use the term "voltage tracking" instead of "voltage trace" according to an
+  internal SoC document
 
- int irq_set_irq_wake(unsigned int irq, unsigned int on)
- {
-         unsigned long flags;
-         struct irq_desc *desc = irq_get_desc_buslock(irq, &flags,
-IRQ_GET_DESC_CHECK_GLOBAL);
-         int ret = 0;
-...
-                         ret = set_irq_wake_real(irq, on);
-...
-         irq_put_desc_busunlock(desc, flags);
-         return ret;
- }
+changes in v5:
+- Move resource allocation code from init() into probe() and remove some unused
+  functions due to this change
+- Fix descriptions for device tree binding document
+- Address review comments for last version
+- Register CPU cooling device
 
+Changes in v4:
+- Add bindings for MT8173 cpufreq driver
+- Move OPP table back into device tree
+- Address comments for last version
 
-I'm not 100% sure about the .suspend/.resume paths, but I don't think
-they can occur during .irq_set_wake(), either.
-Nor were they protected by the set_bit/clear_bit implementation.
+Changes in v3:
+- Implement MT8173 specific standalone cpufreq driver instead of using
+  cpufreq-dt driver
+- Define OPP table in the driver source code until new OPP binding is ready
 
--Dan
+Changes in v2:
+- Add intermediate frequency support in cpufreq-dt driver
+- Use voltage scaling code of cpufreq-dt for little cluster instead of
+  implementaion in notifier of mtk-cpufreq driver
+- Code refinement for mtk-cpufreq driver
 
+Pi-Cheng Chen (3):
+  dt-bindings: mediatek: Add MT8173 CPU DVFS clock bindings
+  cpufreq: mediatek: Add MT8173 cpufreq driver
+  arm64: dts: mt8173: Add mt8173 cpufreq driver support
 
->
-> Joe.C
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+ .../devicetree/bindings/clock/mt8173-cpu-dvfs.txt  |  83 ++++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  18 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  64 +++
+ drivers/cpufreq/Kconfig.arm                        |   7 +
+ drivers/cpufreq/Makefile                           |   1 +
+ drivers/cpufreq/mt8173-cpufreq.c                   | 524 +++++++++++++++++++++
+ 6 files changed, 697 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
+ create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
