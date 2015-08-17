@@ -1,52 +1,126 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v6 1/3] dt-bindings: pwm: add MediaTek display PWM
- bindings
-Date: Mon, 17 Aug 2015 15:23:59 +0200
-Message-ID: <20150817132358.GN8453@ulmo.nvidia.com>
-References: <1437380237-28961-1-git-send-email-yh.huang@mediatek.com>
- <1437380237-28961-2-git-send-email-yh.huang@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
+ suspend resume
+Date: Mon, 17 Aug 2015 21:25:53 +0800
+Message-ID: <1439817953.3414.4.camel@mtksdaap41>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+	 <1439797974.22004.2.camel@mtksdaap41>
+	 <CAGS+omCQN65pCP7mYFCj8sDOihLNc15GgELw1u7fTXuq=KBXnw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/JIF1IJL1ITjxcV4"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1437380237-28961-2-git-send-email-yh.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omCQN65pCP7mYFCj8sDOihLNc15GgELw1u7fTXuq=KBXnw@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: maoguang meng <maoguang.meng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-gpio@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, 2015-08-17 at 17:09 +0800, Daniel Kurtz wrote:
+> On Mon, Aug 17, 2015 at 3:52 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+> > On Fri, 2015-08-14 at 16:38 +0800, maoguang.meng@mediatek.com wrote:
+> >> From: Maoguang Meng <maoguang.meng@mediatek.com>
+> >>
+> >> This patch implement irq_set_wake to get who is wakeup source and
+> >> setup on suspend resume.
+> >>
+> >> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+> >>
+> >> ---
+> >> changes since v3:
+> >> -add a comment in mtk_eint_chip_read_mask.
+> >> -delete ALIGN when allocate eint_offsets.ports.
+> >> -fix unrelated change.
+> >>
+> >> changes since v2:
+> >> -modify irq_wake to handle irq wakeup source.
+> >> -allocate two buffers separately.
+> >> -fix some codestyle.
+> >>
+> >> Changes since v1:
+> >> -implement irq_wake handler.
+> >> ---
+> >>
+> >>  drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
+> >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
+> >>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
+> >>  3 files changed, 95 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> >> index d0c811d..ad27184 100644
+> >> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> >> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> >> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
+> >>       .driver = {
+> >>               .name = "mediatek-mt8173-pinctrl",
+> >>               .of_match_table = mt8173_pctrl_match,
+> >> +             .pm = &mtk_eint_pm_ops,
+> >>       },
+> >>  };
+> >>
+> >> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> >> index ad1ea16..fe34ce9 100644
+> >> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> >> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> >> @@ -33,6 +33,7 @@
+> >>  #include <linux/mfd/syscon.h>
+> >>  #include <linux/delay.h>
+> >>  #include <linux/interrupt.h>
+> >> +#include <linux/pm.h>
+> >>  #include <dt-bindings/pinctrl/mt65xx.h>
+> >>
+> >>  #include "../core.h"
+> >> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
+> >>       return 0;
+> >>  }
+> >>
+> >> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
+> >> +{
+> >> +     struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
+> >> +     int shift = d->hwirq & 0x1f;
+> >> +     int reg = d->hwirq >> 5;
+> >> +
+> >> +     if (on)
+> >> +             pctl->wake_mask[reg] |= BIT(shift);
+> >> +     else
+> >> +             pctl->wake_mask[reg] &= ~BIT(shift);
+> >> +
+> >> +     return 0;
+> >> +}
+> >
+> > Hi Maoguang,
+> >
+> > You changed from set_bit/clear_bit to this, but didn't add any locking.
+> > Since this is basic read/modify/write, is it OK to do it without
+> > locking?
+> 
+> I believe calling .irq_set_wake() concurrently with itself is
+> protected by irq_get_desc_buslock():
+> 
+>  int irq_set_irq_wake(unsigned int irq, unsigned int on)
+>  {
+>          unsigned long flags;
+>          struct irq_desc *desc = irq_get_desc_buslock(irq, &flags,
+> IRQ_GET_DESC_CHECK_GLOBAL);
+>          int ret = 0;
+> ...
+>                          ret = set_irq_wake_real(irq, on);
+> ...
+>          irq_put_desc_busunlock(desc, flags);
+>          return ret;
+>  }
 
---/JIF1IJL1ITjxcV4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hi Dan,
 
-On Mon, Jul 20, 2015 at 04:17:15PM +0800, YH Huang wrote:
-> Document the device-tree binding of MediatTek display PWM.
+You are right, irq_get_desc_buslock will acquire desc lock even when
+irq_chip didn't provide irq_bus_lock callback. So this should be OK.
+Sorry for the noise.
 
-I already mentioned this a while back: s/MediatTek/MediaTek/.
+For this patch:
 
-Thierry
+Acked-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 
---/JIF1IJL1ITjxcV4
-Content-Type: application/pgp-signature; name="signature.asc"
+Joe.C
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
 
-iQIcBAABCAAGBQJV0eBuAAoJEN0jrNd/PrOhGtYP/AricVRsogXqd12afmgvYABj
-HkaVHgXh/N9yOf1g3ycZo+Aw5dM1dHOcZfehAvES3y8fo8jqn5tM+XsZCARmBZ2Y
-GqC1uULM1zArLCKIKkQldbwSgeHVYYDRJ+qnXhzLAnfhs3uNGjLNMQZry/0kWxL3
-cP1PDlC/pmN3xN7vfQF0szLm+lezq9JQ9CwWaFtQR0qONz1GQL7Q2IPOa98mfA5t
-L3yYiqeKYrJ7bJWi3A96ivHppSP8OlmV6gfoW2BOL1Dx7Qv/4OEF8erITTPgRY1U
-BGD5UOcn2Ajz05GPzZHP8sSYIujzqYyeHOwdqNDJEO/wXQvorf9o+otvJfgqTxDW
-kpuHyHr0E6hB8Lax+xY5I5noq55NYCKQjt3Tpo5KJ4hZyDJ6WqB4J1CwjKRvYah2
-YO7OWCOlj05NW8tTRBe3bqBNT8ILHJuQ5qoFChpVu0d05pnO6hAvziMVOxzedzmU
-gzKVvc2A942NgQ+Jhj5NmZIjxW90rglViobQ0jhCp/vMHZd2hpVhC5LXJ2S5sP7I
-wH6xwoZHXo+ltNCwvnUwMaddT4n+F+Z1sSU4XnGKusRFAOdM14AlIMX0PVpDGNYC
-yrcq2DKxwnbnuPWTN8PEfxdqua4P/ZbL8X6Z1HpRdmpZ9SekQKsqSepezJHFw2Ej
-TVrT+e2ID9278GZrR3CC
-=EMUd
------END PGP SIGNATURE-----
 
---/JIF1IJL1ITjxcV4--
