@@ -1,82 +1,53 @@
-From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v6] arm64: dts: Add spi bus dts
-Date: Mon, 17 Aug 2015 11:29:58 +0800
-Message-ID: <1439782198-32396-1-git-send-email-leilk.liu@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] spi: Mediatek: fix endian warnings
+Date: Sun, 16 Aug 2015 20:30:47 -0700
+Message-ID: <20150817033047.GM10748@sirena.org.uk>
+References: <1439289789-29026-1-git-send-email-leilk.liu@mediatek.com>
+ <1871097.B3YgX5rNy0@wuerfel>
+ <20150816140639.GE7557@n2100.arm.linux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="jvwwc3lboJHenLjr"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20150816140639.GE7557-l+eeeJia6m9vn6HldHNs0ANdhmdF6hFW@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds MT8173 spi bus controllers into device tree.
 
-Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-Change in this patch:
-pinctl and pad-select fields are board specific, so move to
-mt8173-evb.dtsi, and status = "okay".
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 12 ++++++++++++
- 2 files changed, 30 insertions(+)
+--jvwwc3lboJHenLjr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 4be66ca..811cb76 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -387,6 +387,24 @@
- 	};
- };
- 
-+&pio {
-+	spi_pins_a: spi0 {
-+		pins_spi {
-+			pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
-+				<MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
-+				<MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
-+				<MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
-+		};
-+	};
-+};
-+
-+&spi {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi_pins_a>;
-+	mediatek,pad-select = <0>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index d18ee42..3dfb6ed 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -365,6 +365,18 @@
- 			status = "disabled";
- 		};
- 
-+		spi: spi@1100a000 {
-+			compatible = "mediatek,mt8173-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&topckgen CLK_TOP_SYSPLL3_D2>;
-+			clock-names = "spi-clk", "parent-clk";
-+			status = "disabled";
-+		};
-+
- 		i2c3: i2c3@11010000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11010000 0 0x70>,
--- 
-1.8.1.1.dirty
+On Sun, Aug 16, 2015 at 03:06:39PM +0100, Russell King - ARM Linux wrote:
 
+> All writel() implementations take a CPU number and write it in little
+> endian format.  Hence, writel() almost always uses cpu_to_le32()
+> internally.
+
+I think the reason this keeps coming up is that people aren't expecting
+writel() to be doing endianness conversion, it's easy to get caught out
+by it.
+
+--jvwwc3lboJHenLjr
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV0VViAAoJECTWi3JdVIfQx5QH/jLWJxe/sJWv1Wr/womw+fEJ
+yssGpSdtxY8i7EL5o8PTPGPRk40C3ciLmzqCLjm8O7EmKxh1cRnNmkhaadLbE10I
+xroHJM9jct4t+fnnFVlpp8vL13rP9+i3QKfdxSL1yPYpKQh3cHAB8xbJk6EDRiZY
+KcrbsZ4eSpv7W2fIbfeFulMRrmx3AVNXpwRldMXFia0Cp3UUFnUNPPPPxIrq18b+
+MItZdtJKEMuQl38HRvPr1rckJZ/+WTLv7Gg6xCFIq8DgOI0mbk9z2NtSWLWUDB/y
+tdWVTWEjHtx7CZ1mhm7i7hV1Oa5yqsY+JhBJt3Ix6Ae+LA/0O4HLVSfPpYguJ6s=
+=RpzB
+-----END PGP SIGNATURE-----
+
+--jvwwc3lboJHenLjr--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
