@@ -1,83 +1,100 @@
-From: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v7 1/3] dt-bindings: pwm: add MediaTek display PWM bindings
-Date: Tue, 18 Aug 2015 15:27:53 +0800
-Message-ID: <1439882875-19596-2-git-send-email-yh.huang@mediatek.com>
-References: <1439882875-19596-1-git-send-email-yh.huang@mediatek.com>
+From: Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [RESEND PATCH 2/3 v6] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Tue, 18 Aug 2015 12:09:54 +0200
+Message-ID: <18468574.WHJNqYO5N4@amdc1976>
+References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org>
+ <1439803465-19683-3-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1439882875-19596-1-git-send-email-yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-reply-to: <1439803465-19683-3-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Document the device-tree binding of MediaTek display PWM.
-The PWM has one channel to control the backlight brightness for display.
-It supports MT8173 and MT6595.
 
-Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |   42 ++++++++++++++++++++
- 1 file changed, 42 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+Hi,
 
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-new file mode 100644
-index 0000000..f8f59ba
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-@@ -0,0 +1,42 @@
-+MediaTek display PWM controller
-+
-+Required properties:
-+ - compatible: should be "mediatek,<name>-disp-pwm":
-+   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
-+   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
-+ - reg: physical base address and length of the controller's registers.
-+ - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
-+   the cell format.
-+ - clocks: phandle and clock specifier of the PWM reference clock.
-+ - clock-names: must contain the following:
-+   - "main": clock used to generate PWM signals.
-+   - "mm": sync signals from the modules of mmsys.
-+ - pinctrl-names: Must contain a "default" entry.
-+ - pinctrl-0: One property must exist for each entry in pinctrl-names.
-+   See pinctrl/pinctrl-bindings.txt for details of the property values.
-+
-+Example:
-+	pwm0: pwm@1401e000 {
-+		compatible = "mediatek,mt8173-disp-pwm",
-+			     "mediatek,mt6595-disp-pwm";
-+		reg = <0 0x1401e000 0 0x1000>;
-+		#pwm-cells = <2>;
-+		clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-+			 <&mmsys CLK_MM_DISP_PWM0MM>;
-+		clock-names = "main", "mm";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&disp_pwm0_pins>;
-+	};
-+
-+	backlight_lcd: backlight_lcd {
-+		compatible = "pwm-backlight";
-+		pwms = <&pwm0 0 1000000>;
-+		brightness-levels = <
-+			  0  16  32  48  64  80  96 112
-+			128 144 160 176 192 208 224 240
-+			255
-+		>;
-+		default-brightness-level = <9>;
-+		power-supply = <&mt6397_vio18_reg>;
-+		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
-+	};
--- 
-1.7.9.5
+On Monday, August 17, 2015 05:24:24 PM Pi-Cheng Chen wrote:
+> Mediatek MT8173 is an ARMv8 based quad-core (2*Cortex-A53 and
+> 2*Cortex-A72) SoC with duall clusters. For each cluster, two voltage
+> inputs, Vproc and Vsram are supplied by two regulators. For the big
+> cluster, two regulators come from different PMICs. In this case, when
+> scaling voltage inputs of the cluster, the voltages of two regulator
+> inputs need to be controlled by software explicitly under the SoC
+> specific limitation:
+> 
+> 	100mV < Vsram - Vproc < 200mV
+> 
+> which is called 'voltage tracking' mechanism. And when scaling the
+> frequency of cluster clock input, the input MUX need to be parented to
+> another "intermediate" stable PLL first and reparented to the original
+> PLL once the original PLL is stable at the target frequency. This patch
+> implements those mechanisms to enable CPU DVFS support for Mediatek
+> MT8173 SoC.
+> 
+> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+>  drivers/cpufreq/Kconfig.arm      |   7 +
+>  drivers/cpufreq/Makefile         |   1 +
+>  drivers/cpufreq/mt8173-cpufreq.c | 524 +++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 532 insertions(+)
+>  create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
+
+[...]
+
+> +static struct platform_driver mt8173_cpufreq_platdrv = {
+> +	.driver = {
+> +		.name	= "mt8173-cpufreq",
+> +	},
+> +	.probe		= mt8173_cpufreq_probe,
+> +};
+> +
+> +static int mt8173_cpufreq_driver_init(void)
+> +{
+> +	struct platform_device *pdev;
+> +	int err;
+> +
+> +	err = platform_driver_register(&mt8173_cpufreq_platdrv);
+> +	if (err)
+> +		return err;
+> +
+> +	/*
+> +	 * Since there's no place to hold device registration code and no
+> +	 * device tree based way to match cpufreq driver yet, both the driver
+> +	 * and the device registration codes are put here to handle defer
+> +	 * probing.
+> +	 */
+> +	pdev = platform_device_register_simple("mt8173-cpufreq", -1, NULL, 0);
+
+This is not very friendly for multiplatform support
+(mt8173_cpufreq_driver_init() can be called on other platforms,
+i.e. Samsung Exynos7 one if ARCH_EXYNOS7 is also enabled in
+the kernel config).
+
+Why can't it be fixed with checking Device Tree with
+of_machine_is_compatible("mediatek,mt8173")
+(assuming that it can be used on arm64 like on arm32)?
+
+> +	if (IS_ERR(pdev)) {
+> +		pr_err("failed to register mtk-cpufreq platform device\n");
+> +		return PTR_ERR(pdev);
+> +	}
+> +
+> +	return 0;
+> +}
+> +device_initcall(mt8173_cpufreq_driver_init);
+
+Best regards,
+--
+Bartlomiej Zolnierkiewicz
+Samsung R&D Institute Poland
+Samsung Electronics
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
