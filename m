@@ -1,78 +1,49 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [GIT PULL] clk: mediatek: New clocks support and fixes
-Date: Wed, 19 Aug 2015 12:00:26 +0800
-Message-ID: <1439956826.26894.8.camel@mtksdaap41>
+From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 2/3] cpufreq: mediatek: Add MT8173 cpufreq driver
+Date: Wed, 19 Aug 2015 11:11:20 +0530
+Message-ID: <20150819054120.GA3258@linux>
+References: <20150818102428.GD31148@linux>
+ <1439949906-22177-1-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1439949906-22177-1-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This is a collection of new Mediatek clocks support and fixes. These
-patches come from Joe [1], Pi-cheng [2] and me [3], including clock
-support for subsystems, CPU, GPT and some minor fixes.
+On 19-08-15, 10:05, Pi-Cheng Chen wrote:
+> Mediatek MT8173 is an ARMv8 based quad-core (2*Cortex-A53 and
+> 2*Cortex-A72) SoC with duall clusters. For each cluster, two voltage
+> inputs, Vproc and Vsram are supplied by two regulators. For the big
+> cluster, two regulators come from different PMICs. In this case, when
+> scaling voltage inputs of the cluster, the voltages of two regulator
+> inputs need to be controlled by software explicitly under the SoC
+> specific limitation:
+> 
+> 	100mV < Vsram - Vproc < 200mV
+> 
+> which is called 'voltage tracking' mechanism. And when scaling the
+> frequency of cluster clock input, the input MUX need to be parented to
+> another "intermediate" stable PLL first and reparented to the original
+> PLL once the original PLL is stable at the target frequency. This patch
+> implements those mechanisms to enable CPU DVFS support for Mediatek
+> MT8173 SoC.
+> 
+> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+> 
+> Changes in v7:
+> - add of_machine_is_compatible() check to be multiplatform friendly
 
-[1] https://patchwork.kernel.org/patch/6777041/
-[2] https://patchwork.kernel.org/patch/7023951/
-[3] https://lkml.org/lkml/2015/8/10/194
+Looks fine, thanks.
 
-----------------------------------------------------------------
-
-The following changes since commit bc0195aad0daa2ad5b0d76cce22b167bc3435590:
-
-  Linux 4.2-rc2 (2015-07-12 15:10:30 -0700)
-
-are available in the git repository at:
-
-  https://github.com/jamesjjliao/linux.git v4.2-rc2-clk
-
-for you to fetch changes up to f4f5326e99f951c8dfed9c3f4d027a3246cb7a8b:
-
-  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS (2015-05-20 15:59:21 +0800)
-
-----------------------------------------------------------------
-
-James Liao (8):
-  clk: mediatek: Removed unused dpi_ck clock from MT8173
-  clk: mediatek: Remove unused code from MT8173.
-  clk: mediatek: Add __initdata and __init for data and functions
-  clk: mediatek: Add fixed clocks support for Mediatek SoC.
-  clk: mediatek: Fix rate and dependency of MT8173 clocks
-  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
-    controllers
-  clk: mediatek: Add subsystem clocks of MT8173
-  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
-
-Joe.C (1):
-  clk: mediatek: add 13mhz clock for MT8173
-
-pi-cheng.chen (1):
-  clk: mediatek: Export CPU mux clocks for CPU frequency control
-
- .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
- .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
- .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
- .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
- .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
- drivers/clk/mediatek/Makefile                      |    2 +-
- drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
- drivers/clk/mediatek/clk-cpumux.c                  |  127 +++++++
- drivers/clk/mediatek/clk-cpumux.h                  |   22 ++
- drivers/clk/mediatek/clk-gate.c                    |    2 +-
- drivers/clk/mediatek/clk-mt8173.c                  |  370 +++++++++++++++++++-
- drivers/clk/mediatek/clk-mtk.c                     |   36 +-
- drivers/clk/mediatek/clk-mtk.h                     |   24 +-
- drivers/clk/mediatek/clk-pll.c                     |    7 +-
- include/dt-bindings/clock/mt8173-clk.h             |  106 +++++-
- 15 files changed, 879 insertions(+), 34 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
- create mode 100644 drivers/clk/mediatek/clk-apmixed.c
- create mode 100644 drivers/clk/mediatek/clk-cpumux.c
- create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+-- 
+viresh
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
