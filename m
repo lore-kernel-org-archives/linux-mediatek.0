@@ -1,54 +1,51 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v7 0/9] Fixes and new clocks support for Mediatek MT8173
-Date: Wed, 19 Aug 2015 16:50:35 +0200
-Message-ID: <20150819145035.GN18700@pengutronix.de>
-References: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
- <CAGS+omCya_0djzoVGhJchmaTtzo2z+JdnJHDjLipNMsZKV=MLQ@mail.gmail.com>
- <CAGS+omAj=BZXYXChJwC2Heq+2KVEV2EoRrhiQhtXZRHGaZ9tEw@mail.gmail.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 3/3] spi: mediatek: fix spi incorrect endian usage
+Date: Wed, 19 Aug 2015 10:26:26 -0700
+Message-ID: <20150819172626.GV10748@sirena.org.uk>
+References: <1439955478-2733-1-git-send-email-leilk.liu@mediatek.com>
+ <1439955478-2733-4-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="D7NAS2w8UwTm8YEa"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <CAGS+omAj=BZXYXChJwC2Heq+2KVEV2EoRrhiQhtXZRHGaZ9tEw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <1439955478-2733-4-git-send-email-leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Dan,
 
-On Fri, Aug 14, 2015 at 12:01:06PM +0800, Daniel Kurtz wrote:
-> On Tue, Aug 11, 2015 at 12:43 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> > Hi James,
-> >
-> > On Mon, Aug 10, 2015 at 5:50 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> This patchset is based on 4.2-rc2 and [1], and contains minor fixes and
-> >> subsystem clocks support for Mediatek MT8173.
-> >>
-> >> The previous reviews can be found in [2].
-> >>
-> >> changes since v6:
-> >> - Use DUMMY_RATE (0) instead of typical rate for clocks that we don't care
-> >>   and not controlled in CCF.
-> >
-> > For the whole series:
-> > Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> 
-> Hi Sascha,
-> 
-> Are you happy with these patches now?
+--D7NAS2w8UwTm8YEa
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Yes.
+On Wed, Aug 19, 2015 at 11:37:58AM +0800, Leilk Liu wrote:
+> TX_ENDIAN/RX_ENDIAN bits define whether to reverse the endian
+> order of the data DMA from/to memory. The endian order should
+> keep the same with cpu endian.
 
-Acked-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+This doesn't apply, probably because it depends on your stylistic
+changes patch - this is an example of the issues I was mentioning with
+stylistic changes getting in the waty of fixes :(
 
-Sascha
+--D7NAS2w8UwTm8YEa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV1Lw9AAoJECTWi3JdVIfQLI4H/1GLBPDiEigCLfVZ1wvQdxf/
+HzcqaSmFryw1IDmnLV1qt0s40T6VDsPOFfO1f+tFZeKd3zNZ0BYjgYiysf178SFj
+ZBvUZWC2aIQVouWXJh6Y/SLV45L2EYKdmci7ZNH5ylag/u0pmJlCVsaIjb9SfImq
+vNBA8FoJE7nNYpTvxd3bZLG8VJQIy8rDviKcAxnmsNswqgMtirnE1VAMftYuVuVd
+3NsiSlitYEdyKbU18hI5njm8j987NsdZC9gpVKlC1VzTS/gXxX67xuj15C7wu6Io
++Lp31atq2vxhYNTaXQw52Gfn117odMHBL/YsfEInMJZHnaFUtrWlSABgvhcNk0Q=
+=gKBx
+-----END PGP SIGNATURE-----
+
+--D7NAS2w8UwTm8YEa--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
