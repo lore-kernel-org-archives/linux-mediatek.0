@@ -1,221 +1,54 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 3/5] usb: phy: add usb3.0 phy driver for mt65xx SoCs
-Date: Wed, 19 Aug 2015 19:29:21 +0800
-Message-ID: <1439983761.11157.5.camel@mhfsdcap03>
-References: <1438950644-27290-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1438950644-27290-4-git-send-email-chunfeng.yun@mediatek.com>
-	 <55D1713D.9070107@ti.com>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH v7 0/9] Fixes and new clocks support for Mediatek MT8173
+Date: Wed, 19 Aug 2015 16:50:35 +0200
+Message-ID: <20150819145035.GN18700@pengutronix.de>
+References: <1439200228-318-1-git-send-email-jamesjj.liao@mediatek.com>
+ <CAGS+omCya_0djzoVGhJchmaTtzo2z+JdnJHDjLipNMsZKV=MLQ@mail.gmail.com>
+ <CAGS+omAj=BZXYXChJwC2Heq+2KVEV2EoRrhiQhtXZRHGaZ9tEw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <55D1713D.9070107-l0cyMroinI0@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAGS+omAj=BZXYXChJwC2Heq+2KVEV2EoRrhiQhtXZRHGaZ9tEw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stubner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
-On Mon, 2015-08-17 at 10:59 +0530, Kishon Vijay Abraham I wrote:
-> Hi,
-> 
-> On Friday 07 August 2015 06:00 PM, Chunfeng Yun wrote:
-> > support usb3.0 phy of mt65xx SoCs
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> change $subject to phy:
-> > ---
-> >  drivers/phy/Kconfig           |   9 +
-> >  drivers/phy/Makefile          |   1 +
-> >  drivers/phy/phy-mt65xx-usb3.c | 467 ++++++++++++++++++++++++++++++++++++++++++
-> >  3 files changed, 477 insertions(+)
-> >  create mode 100644 drivers/phy/phy-mt65xx-usb3.c
-> > 
-> > diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> > index c0e6ede..019cf8b 100644
-> > --- a/drivers/phy/Kconfig
-> > +++ b/drivers/phy/Kconfig
-> > @@ -193,6 +193,15 @@ config PHY_HIX5HD2_SATA
-> >  	help
-> >  	  Support for SATA PHY on Hisilicon hix5hd2 Soc.
-> >  
-> > +config PHY_MT65XX_USB3
-> > +	tristate "Mediatek USB3.0 PHY Driver"
-> > +	depends on ARCH_MEDIATEK && OF
-> > +	select GENERIC_PHY
-> > +	help
-> > +	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver
-> > +	  for mt65xx SoCs. it supports two usb2.0 ports and
-> > +	  one usb3.0 port.
-> > +
-> >  config PHY_SUN4I_USB
-> >  	tristate "Allwinner sunxi SoC USB PHY driver"
-> >  	depends on ARCH_SUNXI && HAS_IOMEM && OF
-> > diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-> > index f344e1b..3ceff2a 100644
-> > --- a/drivers/phy/Makefile
-> > +++ b/drivers/phy/Makefile
-> > @@ -22,6 +22,7 @@ obj-$(CONFIG_TI_PIPE3)			+= phy-ti-pipe3.o
-> >  obj-$(CONFIG_TWL4030_USB)		+= phy-twl4030-usb.o
-> >  obj-$(CONFIG_PHY_EXYNOS5250_SATA)	+= phy-exynos5250-sata.o
-> >  obj-$(CONFIG_PHY_HIX5HD2_SATA)		+= phy-hix5hd2-sata.o
-> > +obj-$(CONFIG_PHY_MT65XX_USB3)		+= phy-mt65xx-usb3.o
-> >  obj-$(CONFIG_PHY_SUN4I_USB)		+= phy-sun4i-usb.o
-> >  obj-$(CONFIG_PHY_SUN9I_USB)		+= phy-sun9i-usb.o
-> >  obj-$(CONFIG_PHY_SAMSUNG_USB2)		+= phy-exynos-usb2.o
-> > diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-> > new file mode 100644
-> > index 0000000..6835bff
-> > --- /dev/null
-> > +++ b/drivers/phy/phy-mt65xx-usb3.c
-> .
-> .
-> <snip>
-> .
-> .
-> > +static struct phy *mt65xx_phy_xlate(struct device *dev,
-> > +					struct of_phandle_args *args)
-> > +{
-> > +	struct mt65xx_u3phy *u3phy = dev_get_drvdata(dev);
-> > +	struct mt65xx_phy_instance *instance = NULL;
-> > +	struct device_node *phy_np = args->np;
-> > +	struct resource res;
-> > +	int index;
-> > +	int ret;
-> > +
-> > +	if (args->args_count != 1) {
-> > +		dev_err(dev, "invalid number of cells in 'phy' property\n");
-> > +		return ERR_PTR(-EINVAL);
-> > +	}
-> > +
-> > +	for (index = 0; index < u3phy->nphys; index++)
-> > +		if (phy_np == u3phy->phys[index]->phy->dev.of_node) {
-> > +			instance = u3phy->phys[index];
-> > +			break;
-> > +		}
-> > +
-> > +	if (!instance) {
-> > +		dev_err(dev, "failed to find appropriate phy\n");
-> > +		return ERR_PTR(-EINVAL);
-> > +	}
-> > +
-> > +	instance->type = args->args[0];
-> > +
-> > +	if (!(instance->type == PHY_TYPE_USB2 ||
-> > +	      instance->type == PHY_TYPE_USB3)) {
-> > +		dev_err(dev, "unsupported device type: %d\n", instance->type);
-> > +		return ERR_PTR(-EINVAL);
-> > +	}
-> > +
-> > +	ret = of_address_to_resource(phy_np, 0, &res);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to get address resource, err-%d (index-%d)\n",
-> > +			ret, instance->index);
-> > +		return ERR_PTR(-EINVAL);
-> > +	}
-> 
-> This should be done in probe itself.
-> > +
-> > +	instance->port_base = devm_ioremap_resource(&instance->phy->dev, &res);
-> > +	if (IS_ERR(instance->port_base)) {
-> > +		dev_err(dev, "failed to remap sif regs\n");
-> > +		return instance->port_base;
-> > +	}
-> 
-> This too should be done in probe.
-Ok, I'll revise it later.
+Hi Dan,
 
-> > +
-> > +	return instance->phy;
-> > +}
-> > +
-> > +static struct phy_ops mt65xx_u3phy_ops = {
-> > +	.init		= mt65xx_phy_init,
-> > +	.power_on	= mt65xx_phy_power_on,
-> > +	.power_off	= mt65xx_phy_power_off,
-> > +	.owner		= THIS_MODULE,
-> > +};
-> > +
-> > +static int mt65xx_u3phy_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev = &pdev->dev;
-> > +	struct device_node *np = dev->of_node;
-> > +	struct device_node *child_np;
-> > +	struct phy_provider *phy_provider;
-> > +	struct resource *sif_res;
-> > +	struct mt65xx_u3phy *u3phy;
-> > +	int port;
-> > +
-> > +	u3phy = devm_kzalloc(dev, sizeof(*u3phy), GFP_KERNEL);
-> > +	if (!u3phy)
-> > +		return -ENOMEM;
-> > +
-> > +	u3phy->nphys = of_get_child_count(np);
-> > +	u3phy->phys = devm_kcalloc(dev, u3phy->nphys,
-> > +				       sizeof(*u3phy->phys), GFP_KERNEL);
-> > +	if (!u3phy->phys)
-> > +		return -ENOMEM;
-> > +
-> > +	u3phy->dev = dev;
-> > +	platform_set_drvdata(pdev, u3phy);
-> > +
-> > +	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +	u3phy->sif_base = devm_ioremap_resource(dev, sif_res);
-> > +	if (IS_ERR(u3phy->sif_base)) {
-> > +		dev_err(dev, "failed to remap sif regs\n");
-> > +		return PTR_ERR(u3phy->sif_base);
-> > +	}
-> > +
-> > +	u3phy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
-> > +	if (IS_ERR(u3phy->u3phya_ref)) {
-> > +		dev_err(dev, "error to get u3phya_ref\n");
-> > +		return PTR_ERR(u3phy->u3phya_ref);
-> > +	}
-> > +
-> > +	port = 0;
-> > +	for_each_child_of_node(np, child_np) {
-> > +		struct mt65xx_phy_instance *instance;
-> > +		struct phy *phy;
-> > +
-> > +		instance = devm_kzalloc(dev, sizeof(*instance), GFP_KERNEL);
-> > +		if (!instance)
-> > +			return -ENOMEM;
-> > +
-> > +		u3phy->phys[port] = instance;
-> > +
-> > +		phy = devm_phy_create(dev, child_np, &mt65xx_u3phy_ops);
-> > +		if (IS_ERR(phy)) {
-> > +			dev_err(dev, "failed to create phy\n");
-> > +			return PTR_ERR(phy);
-> > +		}
-> > +		instance->phy = phy;
-> > +		instance->index = port;
+On Fri, Aug 14, 2015 at 12:01:06PM +0800, Daniel Kurtz wrote:
+> On Tue, Aug 11, 2015 at 12:43 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> > Hi James,
+> >
+> > On Mon, Aug 10, 2015 at 5:50 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >> This patchset is based on 4.2-rc2 and [1], and contains minor fixes and
+> >> subsystem clocks support for Mediatek MT8173.
+> >>
+> >> The previous reviews can be found in [2].
+> >>
+> >> changes since v6:
+> >> - Use DUMMY_RATE (0) instead of typical rate for clocks that we don't care
+> >>   and not controlled in CCF.
+> >
+> > For the whole series:
+> > Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 > 
-> 'index' here is not used anywhere.
-It's used by phy_instance_xx() functions
-
-> > +		phy_set_drvdata(phy, instance);
-> > +		port++;
-> > +	}
-> > +
-> > +	phy_provider = devm_of_phy_provider_register(dev, mt65xx_phy_xlate);
-> > +	if (IS_ERR(phy_provider)) {
-> > +		dev_err(dev, "Failed to register phy provider\n");
-> > +		return PTR_ERR(phy_provider);
-> > +	}
-> > +
-> > +	return u3phy_clk_enable(u3phy);
+> Hi Sascha,
 > 
-> Can't we clk enable in phy_init or phy-power_on where it is actually needed.
-Yes, I'll test it.
+> Are you happy with these patches now?
 
-Thanks a lot.
-> 
-> Thanks
-> Kishon
+Yes.
 
+Acked-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 
+Sascha
+
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
