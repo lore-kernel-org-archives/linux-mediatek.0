@@ -1,94 +1,147 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v2 3/4] spi: mediatek: use BIT() to instead of SPI_CMD_*_OFFSET
-Date: Thu, 20 Aug 2015 17:19:08 +0800
-Message-ID: <1440062349-25513-4-git-send-email-leilk.liu@mediatek.com>
-References: <1440062349-25513-1-git-send-email-leilk.liu@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
+ when setup
+Date: Thu, 20 Aug 2015 16:28:26 +0200
+Message-ID: <55D5E40A.6080904@linaro.org>
+References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>	 <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>	 <55CC56C4.8080201@linaro.org> <1439820602.3414.12.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440062349-25513-1-git-send-email-leilk.liu@mediatek.com>
+In-Reply-To: <1439820602.3414.12.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch removes SPI_CMD_*_OFFSET defines, and uses the BIT(x)
-defines instead.
+On 08/17/2015 04:10 PM, Yingjoe Chen wrote:
+> On Thu, 2015-08-13 at 10:35 +0200, Daniel Lezcano wrote:
+>> On 07/22/2015 10:14 AM, Yingjoe Chen wrote:
+>>> Spurious mtk timer interrupt is noticed at boot and cause kernel
+>>> crash. It seems if GPT is enabled, it will latch irq status even
+>>> when its IRQ is disabled.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
- drivers/spi/spi-mt65xx.c | 37 ++++++++++++++++++++-----------------
- 1 file changed, 20 insertions(+), 17 deletions(-)
+It "seems" ?
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 4fa4332..43c1dd5 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -48,15 +48,8 @@
- #define SPI_CFG1_PACKET_LOOP_MASK         0xff00
- #define SPI_CFG1_PACKET_LENGTH_MASK       0x3ff0000
- 
--#define SPI_CMD_ACT_OFFSET                0
--#define SPI_CMD_RESUME_OFFSET             1
--#define SPI_CMD_CPHA_OFFSET               8
--#define SPI_CMD_CPOL_OFFSET               9
--#define SPI_CMD_TXMSBF_OFFSET             12
--#define SPI_CMD_RXMSBF_OFFSET             13
--#define SPI_CMD_RX_ENDIAN_OFFSET          14
--#define SPI_CMD_TX_ENDIAN_OFFSET          15
--
-+#define SPI_CMD_ACT                  BIT(0)
-+#define SPI_CMD_RESUME               BIT(1)
- #define SPI_CMD_RST                  BIT(2)
- #define SPI_CMD_PAUSE_EN             BIT(4)
- #define SPI_CMD_DEASSERT             BIT(5)
-@@ -143,9 +136,14 @@ static void mtk_spi_config(struct mtk_spi *mdata,
- 	reg_val = readl(mdata->base + SPI_CMD_REG);
- 
- 	/* set the mlsbx and mlsbtx */
--	reg_val &= ~(SPI_CMD_TXMSBF | SPI_CMD_RXMSBF);
--	reg_val |= (chip_config->tx_mlsb << SPI_CMD_TXMSBF_OFFSET);
--	reg_val |= (chip_config->rx_mlsb << SPI_CMD_RXMSBF_OFFSET);
-+	if (chip_config->tx_mlsb)
-+		reg_val |= SPI_CMD_TXMSBF;
-+	else
-+		reg_val &= ~SPI_CMD_TXMSBF;
-+	if (chip_config->rx_mlsb)
-+		reg_val |= SPI_CMD_RXMSBF;
-+	else
-+		reg_val &= ~SPI_CMD_RXMSBF;
- 
- 	/* set the tx/rx endian */
- #ifdef __LITTLE_ENDIAN
-@@ -201,9 +199,14 @@ static int mtk_spi_prepare_message(struct spi_master *master,
- 	cpol = spi->mode & SPI_CPOL ? 1 : 0;
- 
- 	reg_val = readl(mdata->base + SPI_CMD_REG);
--	reg_val &= ~(SPI_CMD_CPHA | SPI_CMD_CPOL);
--	reg_val |= (cpha << SPI_CMD_CPHA_OFFSET);
--	reg_val |= (cpol << SPI_CMD_CPOL_OFFSET);
-+	if (cpha)
-+		reg_val |= SPI_CMD_CPHA;
-+	else
-+		reg_val &= ~SPI_CMD_CPHA;
-+	if (cpol)
-+		reg_val |= SPI_CMD_CPOL;
-+	else
-+		reg_val &= ~SPI_CMD_CPOL;
- 	writel(reg_val, mdata->base + SPI_CMD_REG);
- 
- 	chip_config = spi->controller_data;
-@@ -282,9 +285,9 @@ static void mtk_spi_enable_transfer(struct spi_master *master)
- 
- 	cmd = readl(mdata->base + SPI_CMD_REG);
- 	if (mdata->state == MTK_SPI_IDLE)
--		cmd |= 1 << SPI_CMD_ACT_OFFSET;
-+		cmd |= SPI_CMD_ACT;
- 	else
--		cmd |= 1 << SPI_CMD_RESUME_OFFSET;
-+		cmd |= SPI_CMD_RESUME;
- 	writel(cmd, mdata->base + SPI_CMD_REG);
- }
- 
--- 
-1.8.1.1.dirty
+>>> When irq is enabled afterward, we see
+>>> spurious interrupt.
+
+Doesn't have the firmware something to do with that ?
+
+I have a mtk 8173 board I can use next week. How do you reproduce the=20
+issue ?
+
+>>> Change init flow to only enable GPT_CLK_SRC at mtk_timer_init.
+>>>
+>>> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+>>> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>>> ---
+>>>
+>>> Update to my patch [1], added __init as Daniel suggest. This is the
+>>> only patch that need to change in that series, so I only sent this =
+one.
+>>>
+>>> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/00154=
+5.html
+>>>
+>>>    drivers/clocksource/mtk_timer.c | 16 ++++++++++------
+>>>    1 file changed, 10 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/=
+mtk_timer.c
+>>> index 68ab423..2ba5b66 100644
+>>> --- a/drivers/clocksource/mtk_timer.c
+>>> +++ b/drivers/clocksource/mtk_timer.c
+>>> @@ -156,9 +156,11 @@ static void mtk_timer_global_reset(struct mtk_=
+clock_event_device *evt)
+>>>    	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+>>>    }
+>>>
+>>> -static void
+>>> -mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 o=
+ption)
+>>> +static void __init mtk_timer_setup(struct mtk_clock_event_device *=
+evt,
+>>> +				   u8 timer, u8 option, bool enable)
+>>>    {
+>>> +	u32 val;
+>>> +
+>>>    	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+>>>    		evt->gpt_base + TIMER_CTRL_REG(timer));
+>>>
+>>> @@ -167,8 +169,10 @@ mtk_timer_setup(struct mtk_clock_event_device =
+*evt, u8 timer, u8 option)
+>>>
+>>>    	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
+>>>
+>>> -	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
+>>> -			evt->gpt_base + TIMER_CTRL_REG(timer));
+>>> +	val =3D TIMER_CTRL_OP(option);
+>>> +	if (enable)
+>>> +		val |=3D TIMER_CTRL_ENABLE;
+>>> +	writel(val, evt->gpt_base + TIMER_CTRL_REG(timer));
+>>
+>> Instead of the 'enable' new option, I prefer a test with 'timer' wit=
+h a
+>> comment:
+>>
+>> 	/*
+>> 	 * the timer hw is broken in that way ... bla bla, so we only
+>> 	 * enable the clocksource ...
+>> 	 */
+>> 	if (timer =3D=3D GPT_CLK_SRC)
+>> 		val |=3D TIMER_CTRL_ENABLE;
+>
+> Hi Daniel,
+>
+> Thanks for your review.
+> Since this bug happens to anyone using interrupt,
+
+Can you elaborate ? I don't get the point.
+
+> I'm not sure checking
+> timer and only enable it for GPT_CLK_SRC is easier to read. Anyway, I=
+'ll
+> change to this in next version.
+>> That said, can you have a look at commit 1096be08 ?
+>> "clockevents: sun5i: Fix setup_irq init sequence"
+>>
+>> first and check if moving the interrupt request after the
+>> clockevents_config_and_register could fix your issue.
+>
+> I've tested this before, see:
+>
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000539.h=
+tml
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000551.h=
+tml
+
+I could take or ack this patch trusting it fixes the issue but there ar=
+e=20
+some points that need clarifications.
+
+  - Does the spurious interrupt occurs *every* time ? at each boot ?
+
+The previous patches were supposed to fix the issue but they actually=20
+didn't. So how is tested the patch ?
+
+Regarding the different fixes for this problem, it sounds like you are=20
+proceeding by trial and error.
+
+Please give a more detailed analysis of the problem and especially chec=
+k=20
+the timer is not altered by the firmware leaving it in a transient stat=
+e=20
+or whatever.
+
+   -- Daniel
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
