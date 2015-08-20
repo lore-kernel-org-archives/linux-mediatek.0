@@ -1,54 +1,91 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/3] spi: mediatek: revise coding style
-Date: Wed, 19 Aug 2015 09:53:16 -0700
-Message-ID: <20150819165316.GU10748@sirena.org.uk>
-References: <1439955478-2733-1-git-send-email-leilk.liu@mediatek.com>
- <1439955478-2733-2-git-send-email-leilk.liu@mediatek.com>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: [PATCH v2] pinctrl: mediatek: Fix multiple registration issue.
+Date: Wed, 19 Aug 2015 20:38:51 -0700
+Message-ID: <1440041931-38278-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="H7iji7vV8C4tfdBP"
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1439955478-2733-2-git-send-email-leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, biao.huang@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+Since our common driver need support main chip and PMU
+at the same time, that means it will register two
+pinctrl device, and the pinctrl_desc structure should
+be used two times.
 
---H7iji7vV8C4tfdBP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+But pinctrl_desc use global static definition, then
+the latest registered pinctrl device will overwrite
+the old one's, all members in pinctrl_desc will set to
+the new one's, such as name, pins and pins numbers, etc.
+This is a bug. Changing to use devm_kzalloc to fix it.
 
-On Wed, Aug 19, 2015 at 11:37:56AM +0800, Leilk Liu wrote:
-> This patch revises mediatek spi driver coding styles.
+Cc: stable@vger.kernel.org # v4.1+
+Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+---
+ Use dynamic allocation to fix multiple registration issue.
 
-Two problems here.  One is that it's best practice to make purely
-stylistic changes after any substantial ones, that way people can pick
-up bug fixes without needing the stylistic changes.  The other is that
-this just isn't an adequate changelog - what are the revisions that are
-being made to the coding style and why are they being made?  This is a
-very large change and there seem to be many different and unrelated
-changes being made here.
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   26 ++++++++++++++-----------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    1 +
+ 2 files changed, 16 insertions(+), 11 deletions(-)
 
---H7iji7vV8C4tfdBP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV1LR3AAoJECTWi3JdVIfQunUIAIXfYzovROdkwQ4hrInx3Y2F
-2/hDkd4YvSF7Botajaig607K9sHnROc10OTfnysfooyE6o2H/rzc1wxlV5g31uVW
-IebShDhZgWy930UqD/UNmv19vpBgoERZZWi7VDis7To3iExrbqoj8eLzIRaDQ6EG
-/RrqMjtu5Uw4rclPx4nfyvgBRBkNQcN0a8z+dEqNN1AznAh8WjG7PI0kw8ACGjlw
-UP1ity51Z7Jj9oYzoCkqYgGCYYrWkYpHEQHBDounvogcbXFa7GW+I797S6TQ568r
-3siAIe+9/UsSbmrGBoXYUMWAJNC/zjDXHEWCzAXth9GRkEKVjEUS1OsVw3p/o/I=
-=AkDi
------END PGP SIGNATURE-----
-
---H7iji7vV8C4tfdBP--
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..911c736 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1202,12 +1202,6 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct pinctrl_desc mtk_pctrl_desc = {
+-	.confops	= &mtk_pconf_ops,
+-	.pctlops	= &mtk_pctrl_ops,
+-	.pmxops		= &mtk_pmx_ops,
+-};
+-
+ int mtk_pctrl_init(struct platform_device *pdev,
+ 		const struct mtk_pinctrl_devdata *data,
+ 		struct regmap *regmap)
+@@ -1265,12 +1259,22 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	for (i = 0; i < pctl->devdata->npins; i++)
+ 		pins[i] = pctl->devdata->pins[i].pin;
+-	mtk_pctrl_desc.name = dev_name(&pdev->dev);
+-	mtk_pctrl_desc.owner = THIS_MODULE;
+-	mtk_pctrl_desc.pins = pins;
+-	mtk_pctrl_desc.npins = pctl->devdata->npins;
++
++	pctl->pctl_desc = devm_kzalloc(&pdev->dev, sizeof(*pctl->pctl_desc),
++				GFP_KERNEL);
++	if (!pctl->pctl_desc)
++		return -ENOMEM;
++
++	pctl->pctl_desc->name = dev_name(&pdev->dev);
++	pctl->pctl_desc->owner = THIS_MODULE;
++	pctl->pctl_desc->pins = pins;
++	pctl->pctl_desc->npins = pctl->devdata->npins;
++	pctl->pctl_desc->confops = &mtk_pconf_ops;
++	pctl->pctl_desc->pctlops = &mtk_pctrl_ops;
++	pctl->pctl_desc->pmxops = &mtk_pmx_ops;
+ 	pctl->dev = &pdev->dev;
+-	pctl->pctl_dev = pinctrl_register(&mtk_pctrl_desc, &pdev->dev, pctl);
++
++	pctl->pctl_dev = pinctrl_register(pctl->pctl_desc, &pdev->dev, pctl);
+ 	if (IS_ERR(pctl->pctl_dev)) {
+ 		dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
+ 		return PTR_ERR(pctl->pctl_dev);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index 30213e5..93d6f5b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -256,6 +256,7 @@ struct mtk_pinctrl_devdata {
+ struct mtk_pinctrl {
+ 	struct regmap	*regmap1;
+ 	struct regmap	*regmap2;
++	struct pinctrl_desc *pctl_desc;
+ 	struct device           *dev;
+ 	struct gpio_chip	*chip;
+ 	struct mtk_pinctrl_group	*groups;
+-- 
+1.7.9.5
