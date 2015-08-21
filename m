@@ -1,46 +1,36 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Fri, 21 Aug 2015 07:06:28 +0200
-Message-ID: <20150821050628.GU18700@pengutronix.de>
-References: <1440057962-13373-1-git-send-email-s.hauer@pengutronix.de>
- <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
- <20150820222039.GA6708@localhost.localdomain>
+From: Axel Lin <axel.lin@ingics.com>
+Subject: Re: [PATCH v3] pinctrl: mediatek: Fix multiple registration issue.
+Date: Fri, 21 Aug 2015 13:08:24 +0800
+Message-ID: <CAFRkauDR_XuMrihptQu1=Oq4nzOqcmne89LwsOHPzQrWCQQgMA@mail.gmail.com>
+References: <1440132404-27749-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20150820222039.GA6708@localhost.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1440132404-27749-1-git-send-email-hongzhou.yang@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 20, 2015 at 03:20:52PM -0700, Eduardo Valentin wrote:
-> On Thu, Aug 20, 2015 at 10:06:01AM +0200, Sascha Hauer wrote:
-> > +
-> > +	/*
-> > +	 * These calibration values should finally be provided by the
-> > +	 * firmware or fuses. For now use default values.
-> > +	 */
-> > +	mt->calib_slope = -123;
-> > +	mt->calib_offset = 465124;
-> 
-> Would it make sense to use the coefficients device tree property to
-> describe the sensor slope and offset?
-> 
+2015-08-21 12:46 GMT+08:00 Hongzhou Yang <hongzhou.yang@mediatek.com>:
+> Since our common driver need support main chip and PMU
+> at the same time, that means it will register two
+> pinctrl device, and the pinctrl_desc structure should
+> be used two times.
+>
+> But pinctrl_desc use global static definition, then
+> the latest registered pinctrl device will overwrite
+> the old one's, all members in pinctrl_desc will set to
+> the new one's, such as name, pins and pins numbers, etc.
+> This is a bug. Changing to use devm_kzalloc to fix it.
+>
+> Cc: stable@vger.kernel.org # v4.1+
+> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+> ---
+>  Use dynamic allocation to fix multiple registration issue.
 
-The values shall ultimately be stored in fuses in the SoC. The current
-bootloader cannot convert these values into device tree properties. Also
-there is the new nvmem framework landing. This will allow us to put a
-description into the device tree where in the fuses the calibration
-values are found, rather than putting the calibration values themselves
-into the device tree. This all needs some discussion and work, so I left
-this topic for later.
+The code looks good to me but the commit log needs fix.
+You don't use devm_kzalloc now.
+Just embedded struct pinctrl_desc pctl_desc to struct mtk_pinctrl.
 
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Reviewed-by: Axel Lin <axel.lin@ingics.com>
