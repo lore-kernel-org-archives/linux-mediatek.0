@@ -1,115 +1,87 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Fri, 21 Aug 2015 01:12:23 +0200
-Message-ID: <55D65ED7.7010102@linaro.org>
-References: <1440057962-13373-1-git-send-email-s.hauer@pengutronix.de> <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: [PATCH v3] pinctrl: mediatek: Fix multiple registration issue.
+Date: Thu, 20 Aug 2015 21:46:44 -0700
+Message-ID: <1440132404-27749-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Axel Lin <axel.lin@ingics.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/20/2015 10:06 AM, Sascha Hauer wrote:
-> This adds support for the Mediatek thermal controller found on MT8173
-> and likely other SoCs.
-> The controller is a bit special. It does not have its own ADC, instea=
-d
-> it controls the on-SoC AUXADC via AHB bus accesses. For this reason
-> we need the physical address of the AUXADC. Also it controls a mux
-> using AHB bus accesses, so we need the APMIXEDSYS physical address as=
-well.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
+Since our common driver need support main chip and PMU
+at the same time, that means it will register two
+pinctrl device, and the pinctrl_desc structure should
+be used two times.
 
-[ ... ]
+But pinctrl_desc use global static definition, then
+the latest registered pinctrl device will overwrite
+the old one's, all members in pinctrl_desc will set to
+the new one's, such as name, pins and pins numbers, etc.
+This is a bug. Changing to use devm_kzalloc to fix it.
 
-> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_ther=
-mal.c
-> new file mode 100644
-> index 0000000..06d52ef
-> --- /dev/null
-> +++ b/drivers/thermal/mtk_thermal.c
-> @@ -0,0 +1,582 @@
-> +/*
-> + * Copyright (c) 2014 MediaTek Inc.
+Cc: stable@vger.kernel.org # v4.1+
+Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+---
+ Use dynamic allocation to fix multiple registration issue.
 
-2015 ?
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   21 ++++++++++-----------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    1 +
+ 2 files changed, 11 insertions(+), 11 deletions(-)
 
-> + * Author: Hanyi.Wu <hanyi.wu@mediatek.com>
-
-Hanyi Wu ?
-
-[ ... ]
-
--->
-
-> +#define TEMP_MONINTSTS		0x010
-> +#define TEMP_MONIDET0		0x014
-> +#define TEMP_MONIDET1		0x018
-> +#define TEMP_MONIDET2		0x01c
-> +#define TEMP_H2NTHRE		0x024
-> +#define TEMP_HTHRE		0x028
-> +#define TEMP_CTHRE		0x02c
-> +#define TEMP_OFFSETH		0x030
-> +#define TEMP_OFFSETL		0x034
-> +#define TEMP_MSRCTL1		0x03c
-> +#define TEMP_ADCEXT		0x058
-> +#define TEMP_ADCEXT1		0x05c
-> +#define TEMP_ADCEXTADDR		0x06c
-> +#define TEMP_ADCEXT1ADDR	0x070
-> +#define TEMP_IMMD0		0x0a0
-> +#define TEMP_IMMD1		0x0a4
-> +#define TEMP_IMMD2		0x0a8
-> +#define TEMP_PROTCTL		0x0c0
-> +#define TEMP_PROTTA		0x0c4
-> +#define TEMP_PROTTB		0x0c8
-> +#define TEMP_PROTTC		0x0cc
-> +#define TEMP_SPARE1		0x0f4
-> +#define TEMP_SPARE2		0x0f8
-> +#define TEMP_SPARE3		0x0fc
-> +#define THERMINTST		0x404
-> +#define PTPODINTST		0x408
-> +#define THSTAGE0ST		0x40c
-> +#define THSTAGE1ST		0x410
-> +#define THSTAGE2ST		0x414
-> +#define THAHBST0		0x418
-> +#define THAHBST1		0x41c	/* Only for DE debug */
-> +#define PTPSPARE0		0x420
-> +#define PTPSPARE1		0x424
-> +#define PTPSPARE2		0x428
-> +#define PTPSPARE3		0x42c
-> +#define THSLPEVEB		0x430
-> +#define TEMP_MONINT_COLD(sp)			(BIT(0) << ((sp) * 5))
-> +#define TEMP_MONINT_HOT(sp)			(BIT(1) << ((sp) * 5))
-> +#define TEMP_MONINT_LOW_OFS(sp)			(BIT(2) << ((sp) * 5))
-> +#define TEMP_MONINT_HIGH_OFS(sp)		(BIT(3) << ((sp) * 5))
-> +#define TEMP_MONINT_HOT_TO_NORM(sp)		(BIT(4) << ((sp) * 5))
-> +#define TEMP_MONINT_TIMEOUT			BIT(15)
-> +#define TEMP_MONINT_IMMEDIATE_SENSE(sp)		BIT(16 + (sp))
-> +#define TEMP_MONINT_FILTER_SENSE(sp)		BIT(19 + (sp))
-> +#define TEMP_ADCWRITECTRL_ADC_EXTRA_WRITE	BIT(2)
-> +#define TEMP_ADCWRITECTRL_ADC_EXTRA1_WRITE	BIT(3)
-> +#define TEMP_PROTCTL_AVERAGE			(0 << 16)
-> +#define TEMP_PROTCTL_MAXIMUM			(1 << 16)
-> +#define TEMP_PROTCTL_SELECTED			(2 << 16)
-
-<-- Not used.
-
-
-   -- Daniel
-
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..4a52072 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1202,12 +1202,6 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct pinctrl_desc mtk_pctrl_desc = {
+-	.confops	= &mtk_pconf_ops,
+-	.pctlops	= &mtk_pctrl_ops,
+-	.pmxops		= &mtk_pmx_ops,
+-};
+-
+ int mtk_pctrl_init(struct platform_device *pdev,
+ 		const struct mtk_pinctrl_devdata *data,
+ 		struct regmap *regmap)
+@@ -1265,12 +1259,17 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	for (i = 0; i < pctl->devdata->npins; i++)
+ 		pins[i] = pctl->devdata->pins[i].pin;
+-	mtk_pctrl_desc.name = dev_name(&pdev->dev);
+-	mtk_pctrl_desc.owner = THIS_MODULE;
+-	mtk_pctrl_desc.pins = pins;
+-	mtk_pctrl_desc.npins = pctl->devdata->npins;
++
++	pctl->pctl_desc.name = dev_name(&pdev->dev);
++	pctl->pctl_desc.owner = THIS_MODULE;
++	pctl->pctl_desc.pins = pins;
++	pctl->pctl_desc.npins = pctl->devdata->npins;
++	pctl->pctl_desc.confops = &mtk_pconf_ops;
++	pctl->pctl_desc.pctlops = &mtk_pctrl_ops;
++	pctl->pctl_desc.pmxops = &mtk_pmx_ops;
+ 	pctl->dev = &pdev->dev;
+-	pctl->pctl_dev = pinctrl_register(&mtk_pctrl_desc, &pdev->dev, pctl);
++
++	pctl->pctl_dev = pinctrl_register(&pctl->pctl_desc, &pdev->dev, pctl);
+ 	if (IS_ERR(pctl->pctl_dev)) {
+ 		dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
+ 		return PTR_ERR(pctl->pctl_dev);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index 30213e5..c532c23 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -256,6 +256,7 @@ struct mtk_pinctrl_devdata {
+ struct mtk_pinctrl {
+ 	struct regmap	*regmap1;
+ 	struct regmap	*regmap2;
++	struct pinctrl_desc pctl_desc;
+ 	struct device           *dev;
+ 	struct gpio_chip	*chip;
+ 	struct mtk_pinctrl_group	*groups;
+-- 
+1.7.9.5
 
