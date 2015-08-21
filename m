@@ -1,87 +1,46 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: [PATCH v3] pinctrl: mediatek: Fix multiple registration issue.
-Date: Thu, 20 Aug 2015 21:46:44 -0700
-Message-ID: <1440132404-27749-1-git-send-email-hongzhou.yang@mediatek.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Fri, 21 Aug 2015 07:06:28 +0200
+Message-ID: <20150821050628.GU18700@pengutronix.de>
+References: <1440057962-13373-1-git-send-email-s.hauer@pengutronix.de>
+ <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
+ <20150820222039.GA6708@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Axel Lin <axel.lin@ingics.com>
-Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20150820222039.GA6708@localhost.localdomain>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eduardo Valentin <edubezval@gmail.com>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Since our common driver need support main chip and PMU
-at the same time, that means it will register two
-pinctrl device, and the pinctrl_desc structure should
-be used two times.
+On Thu, Aug 20, 2015 at 03:20:52PM -0700, Eduardo Valentin wrote:
+> On Thu, Aug 20, 2015 at 10:06:01AM +0200, Sascha Hauer wrote:
+> > +
+> > +	/*
+> > +	 * These calibration values should finally be provided by the
+> > +	 * firmware or fuses. For now use default values.
+> > +	 */
+> > +	mt->calib_slope = -123;
+> > +	mt->calib_offset = 465124;
+> 
+> Would it make sense to use the coefficients device tree property to
+> describe the sensor slope and offset?
+> 
 
-But pinctrl_desc use global static definition, then
-the latest registered pinctrl device will overwrite
-the old one's, all members in pinctrl_desc will set to
-the new one's, such as name, pins and pins numbers, etc.
-This is a bug. Changing to use devm_kzalloc to fix it.
+The values shall ultimately be stored in fuses in the SoC. The current
+bootloader cannot convert these values into device tree properties. Also
+there is the new nvmem framework landing. This will allow us to put a
+description into the device tree where in the fuses the calibration
+values are found, rather than putting the calibration values themselves
+into the device tree. This all needs some discussion and work, so I left
+this topic for later.
 
-Cc: stable@vger.kernel.org # v4.1+
-Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
----
- Use dynamic allocation to fix multiple registration issue.
+Sascha
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   21 ++++++++++-----------
- drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    1 +
- 2 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index ad1ea16..4a52072 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1202,12 +1202,6 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
- 	return 0;
- }
- 
--static struct pinctrl_desc mtk_pctrl_desc = {
--	.confops	= &mtk_pconf_ops,
--	.pctlops	= &mtk_pctrl_ops,
--	.pmxops		= &mtk_pmx_ops,
--};
--
- int mtk_pctrl_init(struct platform_device *pdev,
- 		const struct mtk_pinctrl_devdata *data,
- 		struct regmap *regmap)
-@@ -1265,12 +1259,17 @@ int mtk_pctrl_init(struct platform_device *pdev,
- 
- 	for (i = 0; i < pctl->devdata->npins; i++)
- 		pins[i] = pctl->devdata->pins[i].pin;
--	mtk_pctrl_desc.name = dev_name(&pdev->dev);
--	mtk_pctrl_desc.owner = THIS_MODULE;
--	mtk_pctrl_desc.pins = pins;
--	mtk_pctrl_desc.npins = pctl->devdata->npins;
-+
-+	pctl->pctl_desc.name = dev_name(&pdev->dev);
-+	pctl->pctl_desc.owner = THIS_MODULE;
-+	pctl->pctl_desc.pins = pins;
-+	pctl->pctl_desc.npins = pctl->devdata->npins;
-+	pctl->pctl_desc.confops = &mtk_pconf_ops;
-+	pctl->pctl_desc.pctlops = &mtk_pctrl_ops;
-+	pctl->pctl_desc.pmxops = &mtk_pmx_ops;
- 	pctl->dev = &pdev->dev;
--	pctl->pctl_dev = pinctrl_register(&mtk_pctrl_desc, &pdev->dev, pctl);
-+
-+	pctl->pctl_dev = pinctrl_register(&pctl->pctl_desc, &pdev->dev, pctl);
- 	if (IS_ERR(pctl->pctl_dev)) {
- 		dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
- 		return PTR_ERR(pctl->pctl_dev);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-index 30213e5..c532c23 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
-@@ -256,6 +256,7 @@ struct mtk_pinctrl_devdata {
- struct mtk_pinctrl {
- 	struct regmap	*regmap1;
- 	struct regmap	*regmap2;
-+	struct pinctrl_desc pctl_desc;
- 	struct device           *dev;
- 	struct gpio_chip	*chip;
- 	struct mtk_pinctrl_group	*groups;
 -- 
-1.7.9.5
-
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
