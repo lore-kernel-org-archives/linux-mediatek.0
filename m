@@ -1,94 +1,164 @@
-From: <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm64: dts: mt8173: Add thermal zone node for mt8173.
-Date: Fri, 21 Aug 2015 20:29:21 +0800
-Message-ID: <1440160161-28354-1-git-send-email-dawei.chien@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
+ when setup
+Date: Fri, 21 Aug 2015 22:39:10 +0800
+Message-ID: <1440167950.20169.29.camel@mtksdaap41>
+References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>
+		 <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
+		 <55CC56C4.8080201@linaro.org> <1439820602.3414.12.camel@mtksdaap41>
+	 <55D5E40A.6080904@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "Dawei.Chien" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55D5E40A.6080904@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: "Dawei.Chien" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Thu, 2015-08-20 at 16:28 +0200, Daniel Lezcano wrote:
+> On 08/17/2015 04:10 PM, Yingjoe Chen wrote:
+> > On Thu, 2015-08-13 at 10:35 +0200, Daniel Lezcano wrote:
+> >> On 07/22/2015 10:14 AM, Yingjoe Chen wrote:
+> >>> Spurious mtk timer interrupt is noticed at boot and cause kernel
+> >>> crash. It seems if GPT is enabled, it will latch irq status even
+> >>> when its IRQ is disabled.
+> 
+> It "seems" ?
 
-Add thermal zone node to mt8173.dtsi.
+Hi,
 
-Change-Id: I2d3a5d2edd0847f15e54d54233680a6d999bf340
-Signed-off-by: Dawei.Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+Datasheet doesn't mention detail. So I did some experiments, playing
+around with registers. Based on my observation, I think this is what
+happens:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 924fdb6..dc7761f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -14,6 +14,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include "mt8173-pinfunc.h"
-+#include <dt-bindings/thermal/thermal.h>
- 
- / {
- 	compatible = "mediatek,mt8173";
-@@ -87,6 +88,49 @@
- 		#clock-cells = <0>;
- 	};
- 
-+	thermal-zones {
-+		cpu_thermal: cpu_thermal {
-+			polling-delay-passive = <1000>; /* milliseconds */
-+			polling-delay = <1000>; /* milliseconds */
-+
-+			thermal-sensors = <&thermal MT8173_THERMAL_ZONE_CA57>;
-+			sustainable-power = <1500>;
-+
-+			trips {
-+				threshold: trip-point@0 {
-+					temperature = <68000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+
-+				target: trip-point@1 {
-+					temperature = <85000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "passive";
-+				};
-+
-+				cpu_crit: cpu_crit@0 {
-+					temperature = <115000>; /* millicelsius */
-+					hysteresis = <2000>; /* millicelsius */
-+					type = "critical";
-+				};
-+			};
-+
-+			cooling-maps {
-+				map@0 {
-+					trip = <&target>;
-+					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					contribution = <1024>;
-+				};
-+				map@1 {
-+					trip = <&target>;
-+					cooling-device = <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					contribution = <2048>;
-+				};
-+			};
-+		};
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
--- 
-1.7.9.5
+For each GPT timer, it has ENABLE, IRQ_EN, IRQ status, IRQ_ACK, counter
+& compare.
+
+When mtk_timer_init calls mtk_timer_setup to setup GPT_CLK_EVT, it
+enable the timer but didn't set counter or compare. Both counter &
+compare is zero on reset, so GPT immediately raise IRQ status. IRQ_EN is
+still disabled now, so it didn't trigger interrupt right away.
+
+At end of mtk_timer_init, it calls mtk_timer_enable_irq to enable irq.
+Since IRQ status is 1 now, GPT trigger interrupt immediately. The
+interrupt is serviced by mtk_timer_interrupt. Since this is not an
+expected event, evt->dev.event_handler will be NULL and system crashed
+in the handler.
+
+> >>> When irq is enabled afterward, we see
+> >>> spurious interrupt.
+> 
+> Doesn't have the firmware something to do with that ?
+
+We have 6 GPT on mt8173, mtk timer use 2 of them. The spurious interrupt
+only happens on GPT_CLK_EVT (GPT1). Our firmware didn't touch that one,
+so it is in reset default when mtk timer driver try to enable it.
+
+> I have a mtk 8173 board I can use next week. How do you reproduce the 
+> issue ?
+>
+> >>> Change init flow to only enable GPT_CLK_SRC at mtk_timer_init.
+> >>>
+> >>> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+> >>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> >>> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> >>> ---
+> >>>
+> >>> Update to my patch [1], added __init as Daniel suggest. This is the
+> >>> only patch that need to change in that series, so I only sent this one.
+> >>>
+> >>> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001545.html
+> >>>
+> >>>    drivers/clocksource/mtk_timer.c | 16 ++++++++++------
+> >>>    1 file changed, 10 insertions(+), 6 deletions(-)
+> >>>
+> >>> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+> >>> index 68ab423..2ba5b66 100644
+> >>> --- a/drivers/clocksource/mtk_timer.c
+> >>> +++ b/drivers/clocksource/mtk_timer.c
+> >>> @@ -156,9 +156,11 @@ static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
+> >>>    	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+> >>>    }
+> >>>
+> >>> -static void
+> >>> -mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+> >>> +static void __init mtk_timer_setup(struct mtk_clock_event_device *evt,
+> >>> +				   u8 timer, u8 option, bool enable)
+> >>>    {
+> >>> +	u32 val;
+> >>> +
+> >>>    	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+> >>>    		evt->gpt_base + TIMER_CTRL_REG(timer));
+> >>>
+> >>> @@ -167,8 +169,10 @@ mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+> >>>
+> >>>    	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
+> >>>
+> >>> -	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
+> >>> -			evt->gpt_base + TIMER_CTRL_REG(timer));
+> >>> +	val = TIMER_CTRL_OP(option);
+> >>> +	if (enable)
+> >>> +		val |= TIMER_CTRL_ENABLE;
+> >>> +	writel(val, evt->gpt_base + TIMER_CTRL_REG(timer));
+> >>
+> >> Instead of the 'enable' new option, I prefer a test with 'timer' with a
+> >> comment:
+> >>
+> >> 	/*
+> >> 	 * the timer hw is broken in that way ... bla bla, so we only
+> >> 	 * enable the clocksource ...
+> >> 	 */
+> >> 	if (timer == GPT_CLK_SRC)
+> >> 		val |= TIMER_CTRL_ENABLE;
+> >
+> > Hi Daniel,
+> >
+> > Thanks for your review.
+> > Since this bug happens to anyone using interrupt,
+> 
+> Can you elaborate ? I don't get the point.
+> 
+> > I'm not sure checking
+> > timer and only enable it for GPT_CLK_SRC is easier to read. Anyway, I'll
+> > change to this in next version.
+> >> That said, can you have a look at commit 1096be08 ?
+> >> "clockevents: sun5i: Fix setup_irq init sequence"
+> >>
+> >> first and check if moving the interrupt request after the
+> >> clockevents_config_and_register could fix your issue.
+> >
+> > I've tested this before, see:
+> >
+> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000539.html
+> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000551.html
+> 
+> I could take or ack this patch trusting it fixes the issue but there are 
+> some points that need clarifications.
+> 
+>   - Does the spurious interrupt occurs *every* time ? at each boot ?
+
+Yes. If you applied this series to enable mtk timer without this fix on
+mt8173 or mt8135 you can reproduce it. It occurs for every boot.
+
+It crash before uart driver is ready, so you'll have to use earlycon to
+see the crash log.
+
+> The previous patches were supposed to fix the issue but they actually 
+> didn't. So how is tested the patch ?
+
+I'm not sure. I believe Matthias test that one on mt6589, maybe it have
+different behavior, or different timing.
+
+> Regarding the different fixes for this problem, it sounds like you are 
+> proceeding by trial and error.
+> 
+> Please give a more detailed analysis of the problem and especially check 
+> the timer is not altered by the firmware leaving it in a transient state 
+> or whatever.
+
+See above for my analysis.
+Thanks.
+
+Joe.C
