@@ -1,164 +1,103 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
- when setup
-Date: Fri, 21 Aug 2015 22:39:10 +0800
-Message-ID: <1440167950.20169.29.camel@mtksdaap41>
-References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>
-		 <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
-		 <55CC56C4.8080201@linaro.org> <1439820602.3414.12.camel@mtksdaap41>
-	 <55D5E40A.6080904@linaro.org>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Mediatek xHCI support
+Date: Sat, 22 Aug 2015 09:45:06 +0800
+Message-ID: <1440207911-17666-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55D5E40A.6080904@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-08-20 at 16:28 +0200, Daniel Lezcano wrote:
-> On 08/17/2015 04:10 PM, Yingjoe Chen wrote:
-> > On Thu, 2015-08-13 at 10:35 +0200, Daniel Lezcano wrote:
-> >> On 07/22/2015 10:14 AM, Yingjoe Chen wrote:
-> >>> Spurious mtk timer interrupt is noticed at boot and cause kernel
-> >>> crash. It seems if GPT is enabled, it will latch irq status even
-> >>> when its IRQ is disabled.
-> 
-> It "seems" ?
+>From 4cab60015fd73f37b7c970ba56c2625fe346fcf3 Mon Sep 17 00:00:00 2001
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Sat, 22 Aug 2015 09:35:14 +0800
+Subject: [PATCH v6 0/5] Mediatek xHCI support
 
-Hi,
+The patch supports MediaTek's xHCI controller.
 
-Datasheet doesn't mention detail. So I did some experiments, playing
-around with registers. Based on my observation, I think this is what
-happens:
+There are some differences from xHCI spec:
+1. The interval is specified in 250 * 8ns increments for Interrupt Moderation
+Interval(IMODI) of the Interrupter Moderation(IMOD) register, it is 8 times as
+much as that defined in xHCI spec.
 
-For each GPT timer, it has ENABLE, IRQ_EN, IRQ status, IRQ_ACK, counter
-& compare.
+2. For the value of TD Size in Normal TRB, MTK's xHCI controller defines a
+number of packets that remain to be transferred for a TD after processing all
+Max packets in all previous TRBs,that means don't include the current TRB's,
+but in xHCI spec it includes the current ones.
 
-When mtk_timer_init calls mtk_timer_setup to setup GPT_CLK_EVT, it
-enable the timer but didn't set counter or compare. Both counter &
-compare is zero on reset, so GPT immediately raise IRQ status. IRQ_EN is
-still disabled now, so it didn't trigger interrupt right away.
+3. To minimize the scheduling effort for synchronous endpoints in xHC, the MTK
+architecture defines some extra SW scheduling parameters for HW. According to
+these parameters provided by SW, the xHC can easily decide whether a
+synchronous endpoint should be scheduled in a specific uFrame. The extra SW
+scheduling parameters are put into reserved DWs in Slot and Endpoint Context.
+And a bandwidth scheduler algorithm is added to support such feature.
 
-At end of mtk_timer_init, it calls mtk_timer_enable_irq to enable irq.
-Since IRQ status is 1 now, GPT trigger interrupt immediately. The
-interrupt is serviced by mtk_timer_interrupt. Since this is not an
-expected event, evt->dev.event_handler will be NULL and system crashed
-in the handler.
+A usb3.0 phy driver is also added which used by mt65xx SoCs platform, it
+supports two usb2.0 ports and one usb3.0 port.
 
-> >>> When irq is enabled afterward, we see
-> >>> spurious interrupt.
-> 
-> Doesn't have the firmware something to do with that ?
+Change in v6:
+1. get register base address of port in probe instead of of_xlate
+2. enable clock in phy_init instead of probe
 
-We have 6 GPT on mt8173, mtk timer use 2 of them. The spurious interrupt
-only happens on GPT_CLK_EVT (GPT1). Our firmware didn't touch that one,
-so it is in reset default when mtk timer driver try to enable it.
+Change in v5:
+1. descripte more exactly for each specifiers in xHCI binding
+2. make use of new multi-phy feature for phy driver
 
-> I have a mtk 8173 board I can use next week. How do you reproduce the 
-> issue ?
->
-> >>> Change init flow to only enable GPT_CLK_SRC at mtk_timer_init.
-> >>>
-> >>> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-> >>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> >>> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> >>> ---
-> >>>
-> >>> Update to my patch [1], added __init as Daniel suggest. This is the
-> >>> only patch that need to change in that series, so I only sent this one.
-> >>>
-> >>> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001545.html
-> >>>
-> >>>    drivers/clocksource/mtk_timer.c | 16 ++++++++++------
-> >>>    1 file changed, 10 insertions(+), 6 deletions(-)
-> >>>
-> >>> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-> >>> index 68ab423..2ba5b66 100644
-> >>> --- a/drivers/clocksource/mtk_timer.c
-> >>> +++ b/drivers/clocksource/mtk_timer.c
-> >>> @@ -156,9 +156,11 @@ static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
-> >>>    	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
-> >>>    }
-> >>>
-> >>> -static void
-> >>> -mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
-> >>> +static void __init mtk_timer_setup(struct mtk_clock_event_device *evt,
-> >>> +				   u8 timer, u8 option, bool enable)
-> >>>    {
-> >>> +	u32 val;
-> >>> +
-> >>>    	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
-> >>>    		evt->gpt_base + TIMER_CTRL_REG(timer));
-> >>>
-> >>> @@ -167,8 +169,10 @@ mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
-> >>>
-> >>>    	writel(0x0, evt->gpt_base + TIMER_CMP_REG(timer));
-> >>>
-> >>> -	writel(TIMER_CTRL_OP(option) | TIMER_CTRL_ENABLE,
-> >>> -			evt->gpt_base + TIMER_CTRL_REG(timer));
-> >>> +	val = TIMER_CTRL_OP(option);
-> >>> +	if (enable)
-> >>> +		val |= TIMER_CTRL_ENABLE;
-> >>> +	writel(val, evt->gpt_base + TIMER_CTRL_REG(timer));
-> >>
-> >> Instead of the 'enable' new option, I prefer a test with 'timer' with a
-> >> comment:
-> >>
-> >> 	/*
-> >> 	 * the timer hw is broken in that way ... bla bla, so we only
-> >> 	 * enable the clocksource ...
-> >> 	 */
-> >> 	if (timer == GPT_CLK_SRC)
-> >> 		val |= TIMER_CTRL_ENABLE;
-> >
-> > Hi Daniel,
-> >
-> > Thanks for your review.
-> > Since this bug happens to anyone using interrupt,
-> 
-> Can you elaborate ? I don't get the point.
-> 
-> > I'm not sure checking
-> > timer and only enable it for GPT_CLK_SRC is easier to read. Anyway, I'll
-> > change to this in next version.
-> >> That said, can you have a look at commit 1096be08 ?
-> >> "clockevents: sun5i: Fix setup_irq init sequence"
-> >>
-> >> first and check if moving the interrupt request after the
-> >> clockevents_config_and_register could fix your issue.
-> >
-> > I've tested this before, see:
-> >
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000539.html
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000551.html
-> 
-> I could take or ack this patch trusting it fixes the issue but there are 
-> some points that need clarifications.
-> 
->   - Does the spurious interrupt occurs *every* time ? at each boot ?
+Change in v4:
+1. descripte more exactly for each specifiers in binding file
+2. use BIT() to define a bit mask mcro
 
-Yes. If you applied this series to enable mtk timer without this fix on
-mt8173 or mt8135 you can reproduce it. It occurs for every boot.
+Change in v3:
+1. implement generic phy
+2. move opperations for IPPC and wakeup from phy driver to xHCI driver
+3. seperate quirk functions into a single C file to fix up dependence issue
 
-It crash before uart driver is ready, so you'll have to use earlycon to
-see the crash log.
+Change in v2:
+1. Rebase to 4.2-rc1
+2. Remove probe phy before add usb_hcd patch from this series due to 4.2-rc1
+   already fix this issue
+3. add xhci mac clocks
+4. add suspend/resume
+5. support remote wakeup
 
-> The previous patches were supposed to fix the issue but they actually 
-> didn't. So how is tested the patch ?
 
-I'm not sure. I believe Matthias test that one on mt6589, maybe it have
-different behavior, or different timing.
+Chunfeng Yun (5):
+  dt-bindings: Add usb3.0 phy binding for MT65xx SoCs
+  dt-bindings: Add a binding for Mediatek xHCI host controller
+  usb: phy: add usb3.0 phy driver for mt65xx SoCs
+  xhci: mediatek: support MTK xHCI host controller
+  arm64: dts: mediatek: add xHCI & usb phy for mt8173
 
-> Regarding the different fixes for this problem, it sounds like you are 
-> proceeding by trial and error.
-> 
-> Please give a more detailed analysis of the problem and especially check 
-> the timer is not altered by the firmware leaving it in a transient state 
-> or whatever.
+ .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |  69 ++
+ .../devicetree/bindings/usb/mt8173-xhci.txt        |  52 ++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  16 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  44 ++
+ drivers/phy/Kconfig                                |   9 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-mt65xx-usb3.c                      | 456 +++++++++++
+ drivers/usb/host/Kconfig                           |   9 +
+ drivers/usb/host/Makefile                          |   4 +
+ drivers/usb/host/xhci-mtk-sch.c                    | 436 +++++++++++
+ drivers/usb/host/xhci-mtk.c                        | 831 +++++++++++++++++++++
+ drivers/usb/host/xhci-mtk.h                        | 133 ++++
+ drivers/usb/host/xhci-ring.c                       |  35 +-
+ drivers/usb/host/xhci.c                            |  19 +-
+ drivers/usb/host/xhci.h                            |   1 +
+ 15 files changed, 2108 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+ create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+ create mode 100644 drivers/phy/phy-mt65xx-usb3.c
+ create mode 100644 drivers/usb/host/xhci-mtk-sch.c
+ create mode 100644 drivers/usb/host/xhci-mtk.c
+ create mode 100644 drivers/usb/host/xhci-mtk.h
 
-See above for my analysis.
-Thanks.
+--
+1.8.1.1.dirty
 
-Joe.C
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
