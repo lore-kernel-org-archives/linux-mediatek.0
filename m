@@ -1,77 +1,54 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH v6 2/5] dt-bindings: Add a binding for Mediatek xHCI host
- controller
-Date: Sat, 22 Aug 2015 16:23:41 +0300
-Message-ID: <55D877DD.3010400@cogentembedded.com>
-References: <1440207911-17666-1-git-send-email-chunfeng.yun@mediatek.com>
- <1440207911-17666-3-git-send-email-chunfeng.yun@mediatek.com>
+From: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 2/8] dt-bindings: soc: Add SCPSYS compatible support for mt6580
+Date: Sun, 23 Aug 2015 17:01:01 +0800
+Message-ID: <1440320467-26118-3-git-send-email-scott.shu@mediatek.com>
+References: <1440320467-26118-1-git-send-email-scott.shu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440207911-17666-3-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1440320467-26118-1-git-send-email-scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, scott.shu-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello.
+This adds "mediatek,mt6580-scpsys" in the compatible properties of
+SCPSYS node for MT6580 SoC.
 
-On 8/22/2015 4:45 AM, Chunfeng Yun wrote:
+Signed-off-by: Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/soc/mediatek/scpsys.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> add a DT binding documentation of xHCI host controller for the
-> MT8173 SoC from Mediatek.
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index c051114..7998bc2 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -12,7 +12,7 @@ power/power_domain.txt. It provides the power domains defined in
+ include/dt-bindings/power/mt8173-power.h.
+ 
+ Required properties:
+-- compatible: Must be "mediatek,mt8173-scpsys"
++- compatible: Must be "mediatek,mt6580-scpsys" or "mediatek,mt8173-scpsys"
+ - #power-domain-cells: Must be 1
+ - reg: Address range of the SCPSYS unit
+ - infracfg: must contain a phandle to the infracfg controller
+-- 
+1.9.1
 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   .../devicetree/bindings/usb/mt8173-xhci.txt        | 52 ++++++++++++++++++++++
->   1 file changed, 52 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
->
-> diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-> new file mode 100644
-> index 0000000..8e6e463
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-> @@ -0,0 +1,52 @@
-> +mt65XX xHCI
-
-    The file is called mt8173-xhci.txt. Are you sure MT65xx should be here?
-
-> +
-> +The device node for Mediatek SOC usb3.0 host controller
-> +
-> +Required properties:
-> + - compatible : should contain "mediatek,mt8173-xhci"
-> + - reg : specifies physical base address and size of the registers,
-> +	the first one for MAC, the second for IPPC
-> + - interrupts : interrupt used by the controller
-> + - power-domains : a phandle to USB power domain node to control usb's
-
-    USB's -- be consistent, please.
-
-> +	mtcmos
-> + - vusb33-supply : regulator of usb avdd3.3v
-> +
-> + - clocks : a list of phandle + clock-specifier pairs, one for each
-> +	entry in clock-names
-> + - clock-names : must contain
-> +	"sys_ck": for clock of xHCI MAC
-> +	"wakeup_deb_p0": for usb wakeup debounce clock of port0
-> +	"wakeup_deb_p0": for usb wakeup debounce clock of port1
-
-    USB.
-
-> +
-> + - phys : a list of phandle + phy specifier pairs
-> + - usb3-lpm-capable : supports USB3 LPM
-> + - mediatek,syscon-wakeup : phandle to syscon used to access usb wakeup
-> +	control register
-> + - mediatek,wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup
-> +	mode; others means don't enable wakeup source of usb
-
-    "Others mean" and "USB".
-
-[...]
-
-MBR, Sergei
+************* Email Confidentiality Notice ********************
+The information contained in this e-mail message (including any 
+attachments) may be confidential, proprietary, privileged, or otherwise
+exempt from disclosure under applicable laws. It is intended to be 
+conveyed only to the designated recipient(s). Any use, dissemination, 
+distribution, printing, retaining or copying of this e-mail (including its 
+attachments) by unintended recipient(s) is strictly prohibited and may 
+be unlawful. If you are not an intended recipient of this e-mail, or believe 
+that you have received this e-mail in error, please notify the sender 
+immediately (by replying to this e-mail), delete any and all copies of 
+this e-mail (including any attachments) from your system, and do not
+disclose the content of this e-mail to any other person. Thank you!
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
