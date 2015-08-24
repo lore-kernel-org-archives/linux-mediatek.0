@@ -1,67 +1,64 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH] soc: mediatek: add scpsys support active_wakeup
-Date: Mon, 24 Aug 2015 12:59:56 +0200
-Message-ID: <20150824105956.GT5161@pengutronix.de>
-References: <1437631249-706-1-git-send-email-eddie.huang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1437631249-706-1-git-send-email-eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH] clockevents/drivers/mtk: Fix spurious interrupt leading to crash
+Date: Mon, 24 Aug 2015 15:30:44 +0200
+Message-ID: <1440423045-7883-1-git-send-email-daniel.lezcano@linaro.org>
+References: <1440167950.20169.29.camel@mtksdaap41>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1440167950.20169.29.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yingjoe.chen@mediatek.com
+Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, matthias.bgg@gmail.com, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jul 23, 2015 at 02:00:49PM +0800, Eddie Huang wrote:
-> Register gpd_dev_ops.active_wakeup function to support keep power
-> during suspend state. And add flag to each power domain to
-> decide whether keep power during suspend or not.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 28 ++++++++++++++++++++++++++++
->  1 file changed, 28 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 43a79ed..fc78b70 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -67,6 +67,7 @@ struct scp_domain_data {
->  	u32 sram_pdn_ack_bits;
->  	u32 bus_prot_mask;
->  	enum clk_id clk_id;
-> +	bool active_wakeup;
->  };
->  
->  static const struct scp_domain_data scp_domain_data[] __initconst = {
-> @@ -77,6 +78,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->  		.sram_pdn_bits = GENMASK(11, 8),
->  		.sram_pdn_ack_bits = GENMASK(12, 12),
->  		.clk_id = MT8173_CLK_MM,
-> +		.active_wakeup = false,
+After analysis done by Yingjoe Chen, the timer appears to have a pending
+interrupt when it is enabled.
 
-You can drop the .active_wakeup = false lines.
+Fix this by acknowledging the pending interrupt when enabling the timer
+interrupt.
 
-Otherwise:
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ drivers/clocksource/mtk_timer.c | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
 
-Acked-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-
-Sascha
-
-
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 4cd16fb..13543a8 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -156,14 +156,6 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
+-{
+-	/* Disable all interrupts */
+-	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
+-	/* Acknowledge all interrupts */
+-	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+-}
+-
+ static void
+ mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+ {
+@@ -183,6 +175,9 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+ {
+ 	u32 val;
+ 
++        /* Acknowledge all spurious pending interrupts */
++        writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
++
+ 	val = readl(evt->gpt_base + GPT_IRQ_EN_REG);
+ 	writel(val | GPT_IRQ_ENABLE(timer),
+ 			evt->gpt_base + GPT_IRQ_EN_REG);
+@@ -232,8 +227,6 @@ static void __init mtk_timer_init(struct device_node *node)
+ 	}
+ 	rate = clk_get_rate(clk);
+ 
+-	mtk_timer_global_reset(evt);
+-
+ 	if (request_irq(evt->dev.irq, mtk_timer_interrupt,
+ 			IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
+ 		pr_warn("failed to setup irq %d\n", evt->dev.irq);
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+1.9.1
