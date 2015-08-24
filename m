@@ -1,53 +1,48 @@
-From: Scott Shu <scott.shu@mediatek.com>
-Subject: [PATCH v4 7/8] ARM: dts: mt6580: Add device nodes to the MT6580 dtsi file
-Date: Sun, 23 Aug 2015 17:01:06 +0800
-Message-ID: <1440320467-26118-8-git-send-email-scott.shu@mediatek.com>
-References: <1440320467-26118-1-git-send-email-scott.shu@mediatek.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCHi v3 0/4] Fixup mediatek spi driver
+Date: Mon, 24 Aug 2015 11:45:14 +0800
+Message-ID: <1440387918-22191-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440320467-26118-1-git-send-email-scott.shu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, loda.chou@mediatek.com, jades.shih@mediatek.com, scott.shu@gmail.com, Scott Shu <scott.shu@mediatek.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the SCPSYS device node to the MT6580 dtsi file.
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Scott Shu <scott.shu@mediatek.com>
----
- arch/arm/boot/dts/mt6580.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+This series are based on 4.2-rc1 and provide four patches to fix mediatek spi driver.
 
-diff --git a/arch/arm/boot/dts/mt6580.dtsi b/arch/arm/boot/dts/mt6580.dtsi
-index 06fdf6c..40957d3 100644
---- a/arch/arm/boot/dts/mt6580.dtsi
-+++ b/arch/arm/boot/dts/mt6580.dtsi
-@@ -67,6 +67,12 @@
- 		#clock-cells = <0>;
- 	};
- 
-+	scpsys: scpsys@10006000 {
-+		#power-domain-cells = <1>;
-+		compatible = "mediatek,mt6580-scpsys";
-+		reg = <0x10006000 0x1000>;
-+	};
-+
- 	timer: timer@10008000 {
- 		compatible = "mediatek,mt6580-timer",
- 			     "mediatek,mt6577-timer";
--- 
-1.9.1
+Change in v3:
+1. The follow patches are applied, so remove them from series:
+  - spi: mediatek: fix spi incorrect endian usage
+  - spi: medaitek: revise quirks compatibility style
+  - spi: mediatek: use BIT() to instead of SPI_CMD_*_OFFSET
+2. The patch "spi: mediatek: revise coding style" title is not clear, so split it to four patches.
 
-************* Email Confidentiality Notice ********************
-The information contained in this e-mail message (including any 
-attachments) may be confidential, proprietary, privileged, or otherwise
-exempt from disclosure under applicable laws. It is intended to be 
-conveyed only to the designated recipient(s). Any use, dissemination, 
-distribution, printing, retaining or copying of this e-mail (including its 
-attachments) by unintended recipient(s) is strictly prohibited and may 
-be unlawful. If you are not an intended recipient of this e-mail, or believe 
-that you have received this e-mail in error, please notify the sender 
-immediately (by replying to this e-mail), delete any and all copies of 
-this e-mail (including any attachments) from your system, and do not
-disclose the content of this e-mail to any other person. Thank you!
+Change in v2:
+1. The patch "spi: mediatek: remove redundant clock in prepare_hardware/unprepare_hardware" 
+   is applied, so remove it from series.
+2. fix incorrect endian usage to support little-endian and big-endian system.
+3. revise quirks style to bool.
+4. use BIT() to instead of SPI_CMD_*_OFFSET.
+5. revise coding style, such as time name, and variable type. 
+
+Leilk Liu (4):
+  spi: mediatek: add linux/io.h include file
+  spi: mediatek: replace int with u32, delete TAB and define
+    MTK_SPI_PAUSE_INT_STATUS marco
+  spi: mediatek: add PM clk_prepare_enable fail flow
+  spi: mediatek: replace *_time name
+
+ drivers/spi/spi-mt65xx.c | 52 ++++++++++++++++++++++++++++--------------------
+ 1 file changed, 30 insertions(+), 22 deletions(-)
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
