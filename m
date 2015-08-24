@@ -1,172 +1,51 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH] soc: mediatek: add scpsys support active_wakeup
-Date: Mon, 24 Aug 2015 13:50:26 +0800
-Message-ID: <1440395426.7245.2.camel@mtksdaap41>
-References: <1437631249-706-1-git-send-email-eddie.huang@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
+ when setup
+Date: Mon, 24 Aug 2015 09:51:11 +0200
+Message-ID: <55DACCEF.8040004@linaro.org>
+References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>		 <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>		 <55CC56C4.8080201@linaro.org> <1439820602.3414.12.camel@mtksdaap41>	 <55D5E40A.6080904@linaro.org> <1440167950.20169.29.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1437631249-706-1-git-send-email-eddie.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Chunfeng Yun =?UTF-8?Q?=28=E4=BA=91=E6=98=A5=E5=B3=B0=29?= <Chunfeng.Yun@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1440167950.20169.29.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-07-23 at 14:00 +0800, Eddie Huang wrote:
-> Register gpd_dev_ops.active_wakeup function to support keep power
-> during suspend state. And add flag to each power domain to
-> decide whether keep power during suspend or not.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 28 ++++++++++++++++++++++++++++
->  1 file changed, 28 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 43a79ed..fc78b70 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -67,6 +67,7 @@ struct scp_domain_data {
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
->         enum clk_id clk_id;
-> +       bool active_wakeup;
->  };
-> 
->  static const struct scp_domain_data scp_domain_data[] __initconst = {
-> @@ -77,6 +78,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(12, 12),
->                 .clk_id = MT8173_CLK_MM,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_VENC] = {
->                 .name = "venc",
-> @@ -85,6 +87,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->                 .clk_id = MT8173_CLK_MM,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_ISP] = {
->                 .name = "isp",
-> @@ -93,6 +96,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(13, 12),
->                 .clk_id = MT8173_CLK_MM,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_MM] = {
->                 .name = "mm",
-> @@ -101,6 +105,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(12, 12),
->                 .clk_id = MT8173_CLK_MM,
-> +               .active_wakeup = false,
->                 .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
->                         MT8173_TOP_AXI_PROT_EN_MM_M1,
->         },
-> @@ -111,6 +116,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->                 .clk_id = MT8173_CLK_MM,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_AUDIO] = {
->                 .name = "audio",
-> @@ -119,6 +125,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->                 .clk_id = MT8173_CLK_NONE,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_USB] = {
->                 .name = "usb",
-> @@ -127,6 +134,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->                 .clk_id = MT8173_CLK_NONE,
-> +               .active_wakeup = true,
->         },
->         [MT8173_POWER_DOMAIN_MFG_ASYNC] = {
->                 .name = "mfg_async",
-> @@ -135,6 +143,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = 0,
->                 .clk_id = MT8173_CLK_MFG,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_MFG_2D] = {
->                 .name = "mfg_2d",
-> @@ -143,6 +152,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(13, 12),
->                 .clk_id = MT8173_CLK_NONE,
-> +               .active_wakeup = false,
->         },
->         [MT8173_POWER_DOMAIN_MFG] = {
->                 .name = "mfg",
-> @@ -151,6 +161,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(13, 8),
->                 .sram_pdn_ack_bits = GENMASK(21, 16),
->                 .clk_id = MT8173_CLK_NONE,
-> +               .active_wakeup = false,
->                 .bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
->                         MT8173_TOP_AXI_PROT_EN_MFG_M0 |
->                         MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> @@ -171,6 +182,7 @@ struct scp_domain {
->         u32 sram_pdn_bits;
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
-> +       bool active_wakeup;
->  };
-> 
->  struct scp {
-> @@ -370,6 +382,20 @@ out:
->         return ret;
->  }
-> 
-> +static bool scpsys_active_wakeup(struct device *dev)
-> +{
-> +       struct generic_pm_domain *genpd;
-> +       struct scp_domain *scpd;
-> +
-> +       if (IS_ERR_OR_NULL(dev->pm_domain))
-> +               return false;
-> +
-> +       genpd = pd_to_genpd(dev->pm_domain);
-> +       scpd = container_of(genpd, struct scp_domain, genpd);
-> +
-> +       return scpd->active_wakeup;
-> +}
-> +
->  static int __init scpsys_probe(struct platform_device *pdev)
->  {
->         struct genpd_onecell_data *pd_data;
-> @@ -427,12 +453,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
->                 scpd->sram_pdn_bits = data->sram_pdn_bits;
->                 scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
->                 scpd->bus_prot_mask = data->bus_prot_mask;
-> +               scpd->active_wakeup = data->active_wakeup;
->                 if (data->clk_id != MT8173_CLK_NONE)
->                         scpd->clk = clk[data->clk_id];
-> 
->                 genpd->name = data->name;
->                 genpd->power_off = scpsys_power_off;
->                 genpd->power_on = scpsys_power_on;
-> +               genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
-> 
->                 /*
->                  * Initially turn on all domains to make the domains usable
-> --
-> 1.8.1.1.dirty
-> 
+On 08/21/2015 04:39 PM, Yingjoe Chen wrote:
 
-Hi Sascha, Matthias,
+[ ... ]
 
-Any comment about this patch ?
+>>    - Does the spurious interrupt occurs *every* time ? at each boot =
+?
+>
+> Yes. If you applied this series to enable mtk timer without this fix =
+on
+> mt8173 or mt8135 you can reproduce it. It occurs for every boot.
+>
+> It crash before uart driver is ready, so you'll have to use earlycon =
+to
+> see the crash log.
 
-Eddie
-Thanks
+Can you give me the earlycon params ?
+
+Thanks.
+
+  -- Daniel
+
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
+
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
