@@ -1,44 +1,81 @@
 From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/5] clocksource: mediatek: do not enable GPT_CLK_EVT
- when setup
-Date: Mon, 24 Aug 2015 22:22:20 +0800
-Message-ID: <1440426140.17418.1.camel@mtksdaap41>
-References: <CAGS+omD8k_Cfxv3bYyjmjtLbiavo-WmJPn0Z-CBhN_nnv65Tag@mail.gmail.com>
-			 <1437552878-3684-1-git-send-email-yingjoe.chen@mediatek.com>
-			 <55CC56C4.8080201@linaro.org> <1439820602.3414.12.camel@mtksdaap41>
-		 <55D5E40A.6080904@linaro.org> <1440167950.20169.29.camel@mtksdaap41>
-	 <55DACCEF.8040004@linaro.org>
+Subject: Re: [PATCH] clockevents/drivers/mtk: Fix spurious interrupt leading
+ to crash
+Date: Mon, 24 Aug 2015 22:35:24 +0800
+Message-ID: <1440426924.17418.11.camel@mtksdaap41>
+References: <1440167950.20169.29.camel@mtksdaap41>
+	 <1440423045-7883-1-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55DACCEF.8040004@linaro.org>
+In-Reply-To: <1440423045-7883-1-git-send-email-daniel.lezcano@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, Thomas Gleixner <tglx@linutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Russell King <linux@arm.linux.org.uk>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Michael Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, matthias.bgg@gmail.com, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-08-24 at 09:51 +0200, Daniel Lezcano wrote:
-> On 08/21/2015 04:39 PM, Yingjoe Chen wrote:
-> 
-> [ ... ]
-> 
-> >>    - Does the spurious interrupt occurs *every* time ? at each boot ?
-> >
-> > Yes. If you applied this series to enable mtk timer without this fix on
-> > mt8173 or mt8135 you can reproduce it. It occurs for every boot.
-> >
-> > It crash before uart driver is ready, so you'll have to use earlycon to
-> > see the crash log.
-> 
-> Can you give me the earlycon params ?
+On Mon, 2015-08-24 at 15:30 +0200, Daniel Lezcano wrote:
+> After analysis done by Yingjoe Chen, the timer appears to have a pending
+> interrupt when it is enabled.
+>
+> Fix this by acknowledging the pending interrupt when enabling the timer
+> interrupt.
+>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 
 Hi Daniel,
 
-You probably already figure this out. anyway I'm using this to enable
-earlycon:
 
-Add 'earlycon' in bootargs, and in device tree chosen part, add
-"linux,stdout-path=&uart0;"
+Thanks for your patch, this can fix the boot issue.
+Tested-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+
+> ---
+>  drivers/clocksource/mtk_timer.c | 13 +++----------
+>  1 file changed, 3 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+> index 4cd16fb..13543a8 100644
+> --- a/drivers/clocksource/mtk_timer.c
+> +++ b/drivers/clocksource/mtk_timer.c
+> @@ -156,14 +156,6 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
+>  	return IRQ_HANDLED;
+>  }
+>  
+> -static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
+> -{
+> -	/* Disable all interrupts */
+> -	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
+> -	/* Acknowledge all interrupts */
+> -	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+> -}
+> -
+>  static void
+>  mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+>  {
+> @@ -183,6 +175,9 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+>  {
+>  	u32 val;
+>  
+> +        /* Acknowledge all spurious pending interrupts */
+> +        writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+
+This should use tab to indent.
+
+> +
+>  	val = readl(evt->gpt_base + GPT_IRQ_EN_REG);
+>  	writel(val | GPT_IRQ_ENABLE(timer),
+>  			evt->gpt_base + GPT_IRQ_EN_REG);
+> @@ -232,8 +227,6 @@ static void __init mtk_timer_init(struct device_node *node)
+>  	}
+>  	rate = clk_get_rate(clk);
+>  
+> -	mtk_timer_global_reset(evt);
+> -
+
+I think we should keep this one, or at least disable irq first in
+mtk_timer_enable_irq. MT8173 firmware didn't use this GPT, but I think
+it is a good ideat to do it just in case firmware in some other platform
+use it.
 
 Joe.C
