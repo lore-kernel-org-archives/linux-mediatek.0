@@ -1,107 +1,67 @@
-From: Sudeep Holla <sudeep.holla@arm.com>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend
- resume
-Date: Mon, 24 Aug 2015 17:27:53 +0100
-Message-ID: <55DB4609.5040904@arm.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH V2] clockevents/drivers/mtk: Fix spurious interrupt leading to crash
+Date: Mon, 24 Aug 2015 23:57:30 +0200
+Message-ID: <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
+References: <1440426924.17418.11.camel@mtksdaap41>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+In-Reply-To: <1440426924.17418.11.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "maoguang.meng@mediatek.com" <maoguang.meng@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Daniel Kurtz <djkurtz@chromium.org>
+To: yingjoe.chen@mediatek.com
+Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, matthias.bgg@gmail.com, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+After analysis done by Yingjoe Chen, the timer appears to have a pending
+interrupt when it is enabled.
 
+Fix this by acknowledging the pending interrupt when enabling the timer
+interrupt.
 
-On 14/08/15 09:38, maoguang.meng@mediatek.com wrote:
-> From: Maoguang Meng <maoguang.meng@mediatek.com>
->
-> This patch implement irq_set_wake to get who is wakeup source and
-> setup on suspend resume.
->
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
->
-> ---
-> changes since v3:
-> -add a comment in mtk_eint_chip_read_mask.
-> -delete ALIGN when allocate eint_offsets.ports.
-> -fix unrelated change.
->
-> changes since v2:
-> -modify irq_wake to handle irq wakeup source.
-> -allocate two buffers separately.
-> -fix some codestyle.
->
-> Changes since v1:
-> -implement irq_wake handler.
-> ---
->
->   drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  1 +
->   drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 91 ++++++++++++++++++++++++++-
->   drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  4 ++
->   3 files changed, 95 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> index d0c811d..ad27184 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-> @@ -385,6 +385,7 @@ static struct platform_driver mtk_pinctrl_driver = {
->   	.driver = {
->   		.name = "mediatek-mt8173-pinctrl",
->   		.of_match_table = mt8173_pctrl_match,
-> +		.pm = &mtk_eint_pm_ops,
->   	},
->   };
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index ad1ea16..fe34ce9 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -33,6 +33,7 @@
->   #include <linux/mfd/syscon.h>
->   #include <linux/delay.h>
->   #include <linux/interrupt.h>
-> +#include <linux/pm.h>
->   #include <dt-bindings/pinctrl/mt65xx.h>
->
->   #include "../core.h"
-> @@ -1062,6 +1063,77 @@ static int mtk_eint_set_type(struct irq_data *d,
->   	return 0;
->   }
->
-> +static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
-> +{
-> +	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
-> +	int shift = d->hwirq & 0x1f;
-> +	int reg = d->hwirq >> 5;
-> +
-> +	if (on)
-> +		pctl->wake_mask[reg] |= BIT(shift);
-> +	else
-> +		pctl->wake_mask[reg] &= ~BIT(shift);
-> +
-> +	return 0;
-> +}
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ drivers/clocksource/mtk_timer.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
-Does this pinmux controller:
-
-1. Support wake-up configuration ? If not, you need to use
-    IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
-    mask_{set,clear} if the same registers are used for {en,dis}able
-
-2. Is in always on domain ? If not, you need save/restore only to
-    resume back the functionality. Generally we can set 	
-    IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
-    disabled during suspend and re-enabled in resume path. You just
-    save/restore raw values without tracking the wake-up source.
-
-Also I see that no care is taken to set the port irq as wake enable
-source. It may work with current mainline, but won't with -next. Please
-ensure the port irq to the parent interrupt controller remains
-enabled(i.e set as wake).
-
-Regards,
-Sudeep
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 4cd16fb..505f53d 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -156,14 +156,6 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
+-{
+-	/* Disable all interrupts */
+-	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
+-	/* Acknowledge all interrupts */
+-	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
+-}
+-
+ static void
+ mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+ {
+@@ -183,6 +175,12 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+ {
+ 	u32 val;
+ 
++	/* Disable all interrupts */
++	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
++
++	/* Acknowledge all spurious pending interrupts */
++	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
++
+ 	val = readl(evt->gpt_base + GPT_IRQ_EN_REG);
+ 	writel(val | GPT_IRQ_ENABLE(timer),
+ 			evt->gpt_base + GPT_IRQ_EN_REG);
+@@ -232,8 +230,6 @@ static void __init mtk_timer_init(struct device_node *node)
+ 	}
+ 	rate = clk_get_rate(clk);
+ 
+-	mtk_timer_global_reset(evt);
+-
+ 	if (request_irq(evt->dev.irq, mtk_timer_interrupt,
+ 			IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
+ 		pr_warn("failed to setup irq %d\n", evt->dev.irq);
+-- 
+1.9.1
