@@ -1,94 +1,71 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH v2] soc: mediatek: add scpsys support active_wakeup
-Date: Tue, 25 Aug 2015 14:00:40 +0800
-Message-ID: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 1/4] mmc: mediatek: Add online-tuning support of EMMC/SD
+Date: Tue, 25 Aug 2015 14:07:00 +0200
+Message-ID: <CAPDyKFpGk9gcLLjBnN=+BD5WP-7dZ0+XHC1bcEEGGLvLbTyKHw@mail.gmail.com>
+References: <1439367845-5891-1-git-send-email-chaotian.jing@mediatek.com>
+	<1439367845-5891-2-git-send-email-chaotian.jing@mediatek.com>
+	<CAPDyKFpX4Pp1+U9eNBuGd83sBeBgLU17qysAJ-2V-ABZZHYAGQ@mail.gmail.com>
+	<1439812888.5627.9.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439812888.5627.9.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Chris Ball <chris@printf.net>, Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, linux-mmc <linux-mmc@vger.kernel.org>, Will Deacon <will.deacon@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "Joe.C" <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, =?UTF-8?B?QmluIFpoYW5nICjnq6Dmlowp?= <bin.zhang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek
 List-Id: linux-mediatek@lists.infradead.org
 
-Register gpd_dev_ops.active_wakeup function to support keep power
-during suspend state. And add flag to each power domain to
-decide whether keep power during suspend or not.
+On 17 August 2015 at 14:01, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> Hi Ulf,
+> Thanks, please see my comment:
+> On Mon, 2015-08-17 at 13:31 +0200, Ulf Hansson wrote:
+>> On 12 August 2015 at 10:24, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>> > Schedule a workqueue to do tuning when CRC error
+>> > Call mmc_hw_reset to re-init card when data timeout
+>>
+>> Thanks to Adrian Hunter, the mmc core already supports re-tuning for
+>> the above scenarios through the mmc_retune_*() APIs.
+>>
+>> SDHCI driver has already adopted to use that feature, you should do
+>> that for the mtk-sd driver as well.
+>>
+>> Kind regards
+>> Uffe
+>>
+> I also noticed that the mmc core already supports re-tuning, but it is
+> not suitable for our host.
+> For EMMC, the CMD21 only support HS200/HS400 mode, for SD card, CMD19
+> only support SDR50/SDR104 mode, but in our host, even 50Mhz clock
+> frequency may also occur CRC error, Cannot find a parameter that can
+> cover all SD cards which running at 50Mhz, even 25Mhz, will occur CRC
+> error for stress test, DDR50 mode is worse.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
+I don't follow. You may run for example HS200 in lower speed, nothing
+will prevent tuning and re-tuning from happen for these scenarios.
 
----
-Change in v2:
-Drop .active_wakeup = false lines in scp_domain_data[] array
+Or you are talking about other speed modes than HS200/400 and
+SDR50/104? If so, which speed modes are these?
 
----
- drivers/soc/mediatek/mtk-scpsys.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+BTW, there are currently a patch being discussed which is about adding
+tuning for DDR mode. Please have look.
+http://www.spinics.net/lists/arm-kernel/msg438434.html
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 43a79ed..df2f288 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -67,6 +67,7 @@ struct scp_domain_data {
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
- 	enum clk_id clk_id;
-+	bool active_wakeup;
- };
- 
- static const struct scp_domain_data scp_domain_data[] __initconst = {
-@@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = true,
- 	},
- 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
- 		.name = "mfg_async",
-@@ -171,6 +173,7 @@ struct scp_domain {
- 	u32 sram_pdn_bits;
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
-+	bool active_wakeup;
- };
- 
- struct scp {
-@@ -370,6 +373,20 @@ out:
- 	return ret;
- }
- 
-+static bool scpsys_active_wakeup(struct device *dev)
-+{
-+	struct generic_pm_domain *genpd;
-+	struct scp_domain *scpd;
-+
-+	if (IS_ERR_OR_NULL(dev->pm_domain))
-+		return false;
-+
-+	genpd = pd_to_genpd(dev->pm_domain);
-+	scpd = container_of(genpd, struct scp_domain, genpd);
-+
-+	return scpd->active_wakeup;
-+}
-+
- static int __init scpsys_probe(struct platform_device *pdev)
- {
- 	struct genpd_onecell_data *pd_data;
-@@ -427,12 +444,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
- 		scpd->sram_pdn_bits = data->sram_pdn_bits;
- 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
- 		scpd->bus_prot_mask = data->bus_prot_mask;
-+		scpd->active_wakeup = data->active_wakeup;
- 		if (data->clk_id != MT8173_CLK_NONE)
- 			scpd->clk = clk[data->clk_id];
- 
- 		genpd->name = data->name;
- 		genpd->power_off = scpsys_power_off;
- 		genpd->power_on = scpsys_power_on;
-+		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
- 
- 		/*
- 		 * Initially turn on all domains to make the domains usable
--- 
-1.9.1
+Regarding re-tuning on CRC errors, that's already supported by the mmc
+core. More precisely when a host driver returns -EILSEQ for a request.
+
+> By the way,there are too many tune parameters need try for response,
+> read data, write crc status CRC error, these parameters are
+> multidimensional, it is hard to find a best parameter, and, try
+> thousands of parameters will take long time.
+
+As I see, it's your responsibility from the host driver to propagate
+the proper error code towards the mmc core. If you encounter an error
+that you want to trigger a retune, just return -EILSEQ.
+
+Moreover, if you see a need to extend the tuning/re-tuning support in
+the mmc core to suit your need - I am definitely open to look into
+that. More importantly, I don't want to see host specific hacks trying
+to deal with this.
+
+Kind regards
+Uffe
