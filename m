@@ -1,52 +1,102 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/4] spi: mediatek: replace int with u32, delete TAB
- and define MTK_SPI_PAUSE_INT_STATUS marco
-Date: Tue, 25 Aug 2015 18:47:21 +0100
-Message-ID: <20150825174721.GH12878@sirena.org.uk>
-References: <1440387918-22191-1-git-send-email-leilk.liu@mediatek.com>
- <1440387918-22191-3-git-send-email-leilk.liu@mediatek.com>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
+Date: Tue, 25 Aug 2015 12:10:08 -0700
+Message-ID: <20150825191008.31346.65592@quantum>
+References: <1439956826.26894.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="jaoouwwPWoQSJZYp"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1440387918-22191-3-git-send-email-leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1439956826.26894.8.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Quoting James Liao (2015-08-18 21:00:26)
+> This is a collection of new Mediatek clocks support and fixes. These
+> patches come from Joe [1], Pi-cheng [2] and me [3], including clock
+> support for subsystems, CPU, GPT and some minor fixes.
+> 
+> [1] https://patchwork.kernel.org/patch/6777041/
+> [2] https://patchwork.kernel.org/patch/7023951/
+> [3] https://lkml.org/lkml/2015/8/10/194
 
---jaoouwwPWoQSJZYp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hi James,
 
-On Mon, Aug 24, 2015 at 11:45:16AM +0800, Leilk Liu wrote:
+This came in after -rc7. We typically don't take PRs after -rc6 (though
+there are always exceptions). It will be applied towards 4.4 as soon as
+the merge window closes and -rc1 drops.
 
-> this patch replaces int with u32, deletes TAB, and defines
-> MTK_SPI_PAUSE_INT_STATUS marco.
+One other small nitpick, I see that many of the mediatek clk patches do
+not Cc linux-clk@vger.kernel.org. It would be great to include that list
+in future patch submissions.
 
-You've listed three changes in one patch and they're not obviously
-interrelated.  As has been said before one change per patch please :(
+Thanks,
+Mike
 
---jaoouwwPWoQSJZYp
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV3KooAAoJECTWi3JdVIfQL1gH/1IAlVcjXNIUSJBhRaJaHA2W
-MPy4v5ahSC45/5zayi9jMUlU6fG/owD105MDTsHaROhL1roFLo3AEbs9RVfj6P0z
-bTAk7/SM8wS7C5iwCUbmEljmRZSFMBr1N+Y1/aNHB51o6CpOijkEN44hjVzN7TCO
-tFxIoo1UCynOkWjTtCyLm3RnNOvhBxZLKM0Wt1Pm0wC0CDsY6Q/Fv9jzVC91iHBG
-g1T5eSA+XXs75iZA68GNoBrUb75J3IU8wVZCakVuD3t+qskzsMr8PjnLBu/VahCS
-2hztij7BnEKFM7FFkeqhEi2P8UK7e4+Auuk1pO2bndJHiTb3uVqHR4lmjLFAgwA=
-=9cGh
------END PGP SIGNATURE-----
-
---jaoouwwPWoQSJZYp--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> ----------------------------------------------------------------
+> 
+> The following changes since commit bc0195aad0daa2ad5b0d76cce22b167bc3435590:
+> 
+>   Linux 4.2-rc2 (2015-07-12 15:10:30 -0700)
+> 
+> are available in the git repository at:
+> 
+>   https://github.com/jamesjjliao/linux.git v4.2-rc2-clk
+> 
+> for you to fetch changes up to f4f5326e99f951c8dfed9c3f4d027a3246cb7a8b:
+> 
+>   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS (2015-05-20 15:59:21 +0800)
+> 
+> ----------------------------------------------------------------
+> 
+> James Liao (8):
+>   clk: mediatek: Removed unused dpi_ck clock from MT8173
+>   clk: mediatek: Remove unused code from MT8173.
+>   clk: mediatek: Add __initdata and __init for data and functions
+>   clk: mediatek: Add fixed clocks support for Mediatek SoC.
+>   clk: mediatek: Fix rate and dependency of MT8173 clocks
+>   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
+>     controllers
+>   clk: mediatek: Add subsystem clocks of MT8173
+>   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+> 
+> Joe.C (1):
+>   clk: mediatek: add 13mhz clock for MT8173
+> 
+> pi-cheng.chen (1):
+>   clk: mediatek: Export CPU mux clocks for CPU frequency control
+> 
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
+>  drivers/clk/mediatek/Makefile                      |    2 +-
+>  drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
+>  drivers/clk/mediatek/clk-cpumux.c                  |  127 +++++++
+>  drivers/clk/mediatek/clk-cpumux.h                  |   22 ++
+>  drivers/clk/mediatek/clk-gate.c                    |    2 +-
+>  drivers/clk/mediatek/clk-mt8173.c                  |  370 +++++++++++++++++++-
+>  drivers/clk/mediatek/clk-mtk.c                     |   36 +-
+>  drivers/clk/mediatek/clk-mtk.h                     |   24 +-
+>  drivers/clk/mediatek/clk-pll.c                     |    7 +-
+>  include/dt-bindings/clock/mt8173-clk.h             |  106 +++++-
+>  15 files changed, 879 insertions(+), 34 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+>  create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+> 
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
