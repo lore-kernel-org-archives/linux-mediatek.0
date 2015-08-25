@@ -1,88 +1,35 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v2] soc: mediatek: add scpsys support active_wakeup
-Date: Wed, 26 Aug 2015 05:11:47 +0800
-Message-ID: <CAGS+omBqTbcJk-6QvupV4tkB5WQm97zpb5NzZ-S2ivR-UEWF4g@mail.gmail.com>
-References: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
+Date: Wed, 26 Aug 2015 01:01:37 +0200
+Message-ID: <1617873.VRHfat3V76@vostro.rjw.lan>
+References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org> <CALx668VWg2xVxzy8P7f5QFWRzm+TDJXUghL-_rbvRLsLYjtnng@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CALx668VWg2xVxzy8P7f5QFWRzm+TDJXUghL-_rbvRLsLYjtnng@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Eddie,
+On Tuesday, August 25, 2015 10:10:44 AM Pi-Cheng Chen wrote:
+> On Mon, Aug 17, 2015 at 5:24 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+> > MT8173 is a ARMv8 based SoC with 2 clusters. All CPUs in a single cluster
+> > share the same power and clock domain. This series tries to add cpufreq support
+> > for MT8173 SoC. The v6 of this series is resent with Acks added.
+> 
+> Hi Rafael,
+> 
+> Not sure if I has missed the merge window.
+> Do I have chance to have this series merged for 4.3?
 
-On Tue, Aug 25, 2015 at 2:00 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
-> Register gpd_dev_ops.active_wakeup function to support keep power
-> during suspend state. And add flag to each power domain to
-> decide whether keep power during suspend or not.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
->
-> ---
-> Change in v2:
-> Drop .active_wakeup = false lines in scp_domain_data[] array
->
-> ---
->  drivers/soc/mediatek/mtk-scpsys.c | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
->
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 43a79ed..df2f288 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -67,6 +67,7 @@ struct scp_domain_data {
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
->         enum clk_id clk_id;
-> +       bool active_wakeup;
->  };
->
->  static const struct scp_domain_data scp_domain_data[] __initconst = {
-> @@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
->                 .sram_pdn_bits = GENMASK(11, 8),
->                 .sram_pdn_ack_bits = GENMASK(15, 12),
->                 .clk_id = MT8173_CLK_NONE,
-> +               .active_wakeup = true,
->         },
->         [MT8173_POWER_DOMAIN_MFG_ASYNC] = {
->                 .name = "mfg_async",
-> @@ -171,6 +173,7 @@ struct scp_domain {
->         u32 sram_pdn_bits;
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
-> +       bool active_wakeup;
->  };
->
->  struct scp {
-> @@ -370,6 +373,20 @@ out:
->         return ret;
->  }
->
-> +static bool scpsys_active_wakeup(struct device *dev)
-> +{
-> +       struct generic_pm_domain *genpd;
-> +       struct scp_domain *scpd;
-> +
-> +       if (IS_ERR_OR_NULL(dev->pm_domain))
-> +               return false;
+Yes, it should make it.
 
-Is it really possible to get here w/ pm_domain as an ERR or NULL?
-If the power core can ensure this cannot happen, then this function
-could be a bit simpler.
+> Would you please take [1,2] of this series?
 
-Other than that, this patch is:
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+I'm not sure what you mean.  Are you withdrawing the [3/3]?
 
--Dan
+Thanks,
+Rafael
 
-> +
-> +       genpd = pd_to_genpd(dev->pm_domain);
-> +       scpd = container_of(genpd, struct scp_domain, genpd);
-> +
-> +       return scpd->active_wakeup;
-> +}
