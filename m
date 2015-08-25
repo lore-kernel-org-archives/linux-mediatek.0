@@ -1,87 +1,94 @@
-From: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
-Date: Tue, 25 Aug 2015 10:10:44 +0800
-Message-ID: <CALx668VWg2xVxzy8P7f5QFWRzm+TDJXUghL-_rbvRLsLYjtnng@mail.gmail.com>
-References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: [PATCH v2] soc: mediatek: add scpsys support active_wakeup
+Date: Tue, 25 Aug 2015 14:00:40 +0800
+Message-ID: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1439803465-19683-1-git-send-email-pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>
-Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linaro Kernel Mailman List <linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 17, 2015 at 5:24 PM, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
-> MT8173 is a ARMv8 based SoC with 2 clusters. All CPUs in a single cluster
-> share the same power and clock domain. This series tries to add cpufreq support
-> for MT8173 SoC. The v6 of this series is resent with Acks added.
+Register gpd_dev_ops.active_wakeup function to support keep power
+during suspend state. And add flag to each power domain to
+decide whether keep power during suspend or not.
 
-Hi Rafael,
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Not sure if I has missed the merge window.
-Do I have chance to have this series merged for 4.3?
-Would you please take [1,2] of this series?
-Thanks.
+---
+Change in v2:
+Drop .active_wakeup = false lines in scp_domain_data[] array
 
-Best Regards,
-Pi-Cheng
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
->
-> changes in v6:
-> - Move clock and regulator consumer properties document to the device tree
->   bindings documents of MT8173 CPU DVFS clock driver
-> - Add change log to describe what is implemented in the MT8173 cpufreq driver
-> - Add missed rcu_read_unlock() in the error path
-> - Move of_init_opp_table() call to make sure all required hardware resources
->   are already there before it is called
-> - Add comments to describe why both platform driver and deivce registration
->   codes are put in the initcall function
-> - Use the term "voltage tracking" instead of "voltage trace" according to an
->   internal SoC document
->
-> changes in v5:
-> - Move resource allocation code from init() into probe() and remove some unused
->   functions due to this change
-> - Fix descriptions for device tree binding document
-> - Address review comments for last version
-> - Register CPU cooling device
->
-> Changes in v4:
-> - Add bindings for MT8173 cpufreq driver
-> - Move OPP table back into device tree
-> - Address comments for last version
->
-> Changes in v3:
-> - Implement MT8173 specific standalone cpufreq driver instead of using
->   cpufreq-dt driver
-> - Define OPP table in the driver source code until new OPP binding is ready
->
-> Changes in v2:
-> - Add intermediate frequency support in cpufreq-dt driver
-> - Use voltage scaling code of cpufreq-dt for little cluster instead of
->   implementaion in notifier of mtk-cpufreq driver
-> - Code refinement for mtk-cpufreq driver
->
-> Pi-Cheng Chen (3):
->   dt-bindings: mediatek: Add MT8173 CPU DVFS clock bindings
->   cpufreq: mediatek: Add MT8173 cpufreq driver
->   arm64: dts: mt8173: Add mt8173 cpufreq driver support
->
->  .../devicetree/bindings/clock/mt8173-cpu-dvfs.txt  |  83 ++++
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  18 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  64 +++
->  drivers/cpufreq/Kconfig.arm                        |   7 +
->  drivers/cpufreq/Makefile                           |   1 +
->  drivers/cpufreq/mt8173-cpufreq.c                   | 524 +++++++++++++++++++++
->  6 files changed, 697 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
->  create mode 100644 drivers/cpufreq/mt8173-cpufreq.c
->
-> --
-> 1.9.1
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 43a79ed..df2f288 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -67,6 +67,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id;
++	bool active_wakeup;
+ };
+ 
+ static const struct scp_domain_data scp_domain_data[] __initconst = {
+@@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = true,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+@@ -171,6 +173,7 @@ struct scp_domain {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
++	bool active_wakeup;
+ };
+ 
+ struct scp {
+@@ -370,6 +373,20 @@ out:
+ 	return ret;
+ }
+ 
++static bool scpsys_active_wakeup(struct device *dev)
++{
++	struct generic_pm_domain *genpd;
++	struct scp_domain *scpd;
++
++	if (IS_ERR_OR_NULL(dev->pm_domain))
++		return false;
++
++	genpd = pd_to_genpd(dev->pm_domain);
++	scpd = container_of(genpd, struct scp_domain, genpd);
++
++	return scpd->active_wakeup;
++}
++
+ static int __init scpsys_probe(struct platform_device *pdev)
+ {
+ 	struct genpd_onecell_data *pd_data;
+@@ -427,12 +444,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
+ 		scpd->sram_pdn_bits = data->sram_pdn_bits;
+ 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
+ 		scpd->bus_prot_mask = data->bus_prot_mask;
++		scpd->active_wakeup = data->active_wakeup;
+ 		if (data->clk_id != MT8173_CLK_NONE)
+ 			scpd->clk = clk[data->clk_id];
+ 
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
++		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
+ 
+ 		/*
+ 		 * Initially turn on all domains to make the domains usable
+-- 
+1.9.1
