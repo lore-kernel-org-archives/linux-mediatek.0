@@ -1,79 +1,30 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH V2] clockevents/drivers/mtk: Fix spurious interrupt
- leading to crash
-Date: Tue, 25 Aug 2015 21:21:11 +0800
-Message-ID: <1440508871.29634.1.camel@mtksdaap41>
-References: <1440426924.17418.11.camel@mtksdaap41>
-	 <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Wed, 26 Aug 2015 01:41:03 +0800
+Message-ID: <CAGS+omA9g7u+VswqTLoJw=Hmz1Lh2TYgrK_BBQHKsa1ktnp-XQ@mail.gmail.com>
+References: <1440057962-13373-1-git-send-email-s.hauer@pengutronix.de> <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
+In-Reply-To: <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, matthias.bgg@gmail.com, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-08-24 at 23:57 +0200, Daniel Lezcano wrote:
-> After analysis done by Yingjoe Chen, the timer appears to have a pending
-> interrupt when it is enabled.
-> 
-> Fix this by acknowledging the pending interrupt when enabling the timer
-> interrupt.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  drivers/clocksource/mtk_timer.c | 16 ++++++----------
->  1 file changed, 6 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-> index 4cd16fb..505f53d 100644
-> --- a/drivers/clocksource/mtk_timer.c
-> +++ b/drivers/clocksource/mtk_timer.c
-> @@ -156,14 +156,6 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
->  	return IRQ_HANDLED;
->  }
->  
-> -static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
-> -{
-> -	/* Disable all interrupts */
-> -	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
-> -	/* Acknowledge all interrupts */
-> -	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
-> -}
-> -
->  static void
->  mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
->  {
-> @@ -183,6 +175,12 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
->  {
->  	u32 val;
->  
-> +	/* Disable all interrupts */
-> +	writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
-> +
-> +	/* Acknowledge all spurious pending interrupts */
-> +	writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
-> +
->  	val = readl(evt->gpt_base + GPT_IRQ_EN_REG);
->  	writel(val | GPT_IRQ_ENABLE(timer),
->  			evt->gpt_base + GPT_IRQ_EN_REG);
-> @@ -232,8 +230,6 @@ static void __init mtk_timer_init(struct device_node *node)
->  	}
->  	rate = clk_get_rate(clk);
->  
-> -	mtk_timer_global_reset(evt);
-> -
->  	if (request_irq(evt->dev.irq, mtk_timer_interrupt,
->  			IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
->  		pr_warn("failed to setup irq %d\n", evt->dev.irq);
+Hi Sascha,
 
+On Thu, Aug 20, 2015 at 4:06 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
+> This adds support for the Mediatek thermal controller found on MT8173
+> and likely other SoCs.
+> The controller is a bit special. It does not have its own ADC, instead
+> it controls the on-SoC AUXADC via AHB bus accesses. For this reason
+> we need the physical address of the AUXADC. Also it controls a mux
+> using AHB bus accesses, so we need the APMIXEDSYS physical address aswell.
+>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Hi Daniel,
+Please respond to Daniel Lezcano's comments too.
+But beyond that, all three patches in this set are:
 
-
-Thanks for your patch, tested on mt8173
-Tested-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-
-Joe.C
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
