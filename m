@@ -1,102 +1,88 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
-Date: Tue, 25 Aug 2015 12:10:08 -0700
-Message-ID: <20150825191008.31346.65592@quantum>
-References: <1439956826.26894.8.camel@mtksdaap41>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v2] soc: mediatek: add scpsys support active_wakeup
+Date: Wed, 26 Aug 2015 05:11:47 +0800
+Message-ID: <CAGS+omBqTbcJk-6QvupV4tkB5WQm97zpb5NzZ-S2ivR-UEWF4g@mail.gmail.com>
+References: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1439956826.26894.8.camel@mtksdaap41>
+In-Reply-To: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting James Liao (2015-08-18 21:00:26)
-> This is a collection of new Mediatek clocks support and fixes. These
-> patches come from Joe [1], Pi-cheng [2] and me [3], including clock
-> support for subsystems, CPU, GPT and some minor fixes.
-> 
-> [1] https://patchwork.kernel.org/patch/6777041/
-> [2] https://patchwork.kernel.org/patch/7023951/
-> [3] https://lkml.org/lkml/2015/8/10/194
+Hi Eddie,
 
-Hi James,
+On Tue, Aug 25, 2015 at 2:00 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
+> Register gpd_dev_ops.active_wakeup function to support keep power
+> during suspend state. And add flag to each power domain to
+> decide whether keep power during suspend or not.
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
+>
+> ---
+> Change in v2:
+> Drop .active_wakeup = false lines in scp_domain_data[] array
+>
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
+>
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index 43a79ed..df2f288 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -67,6 +67,7 @@ struct scp_domain_data {
+>         u32 sram_pdn_ack_bits;
+>         u32 bus_prot_mask;
+>         enum clk_id clk_id;
+> +       bool active_wakeup;
+>  };
+>
+>  static const struct scp_domain_data scp_domain_data[] __initconst = {
+> @@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+>                 .sram_pdn_bits = GENMASK(11, 8),
+>                 .sram_pdn_ack_bits = GENMASK(15, 12),
+>                 .clk_id = MT8173_CLK_NONE,
+> +               .active_wakeup = true,
+>         },
+>         [MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+>                 .name = "mfg_async",
+> @@ -171,6 +173,7 @@ struct scp_domain {
+>         u32 sram_pdn_bits;
+>         u32 sram_pdn_ack_bits;
+>         u32 bus_prot_mask;
+> +       bool active_wakeup;
+>  };
+>
+>  struct scp {
+> @@ -370,6 +373,20 @@ out:
+>         return ret;
+>  }
+>
+> +static bool scpsys_active_wakeup(struct device *dev)
+> +{
+> +       struct generic_pm_domain *genpd;
+> +       struct scp_domain *scpd;
+> +
+> +       if (IS_ERR_OR_NULL(dev->pm_domain))
+> +               return false;
 
-This came in after -rc7. We typically don't take PRs after -rc6 (though
-there are always exceptions). It will be applied towards 4.4 as soon as
-the merge window closes and -rc1 drops.
+Is it really possible to get here w/ pm_domain as an ERR or NULL?
+If the power core can ensure this cannot happen, then this function
+could be a bit simpler.
 
-One other small nitpick, I see that many of the mediatek clk patches do
-not Cc linux-clk@vger.kernel.org. It would be great to include that list
-in future patch submissions.
+Other than that, this patch is:
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
 
-Thanks,
-Mike
+-Dan
 
-> 
-> ----------------------------------------------------------------
-> 
-> The following changes since commit bc0195aad0daa2ad5b0d76cce22b167bc3435590:
-> 
->   Linux 4.2-rc2 (2015-07-12 15:10:30 -0700)
-> 
-> are available in the git repository at:
-> 
->   https://github.com/jamesjjliao/linux.git v4.2-rc2-clk
-> 
-> for you to fetch changes up to f4f5326e99f951c8dfed9c3f4d027a3246cb7a8b:
-> 
->   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS (2015-05-20 15:59:21 +0800)
-> 
-> ----------------------------------------------------------------
-> 
-> James Liao (8):
->   clk: mediatek: Removed unused dpi_ck clock from MT8173
->   clk: mediatek: Remove unused code from MT8173.
->   clk: mediatek: Add __initdata and __init for data and functions
->   clk: mediatek: Add fixed clocks support for Mediatek SoC.
->   clk: mediatek: Fix rate and dependency of MT8173 clocks
->   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
->     controllers
->   clk: mediatek: Add subsystem clocks of MT8173
->   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
-> 
-> Joe.C (1):
->   clk: mediatek: add 13mhz clock for MT8173
-> 
-> pi-cheng.chen (1):
->   clk: mediatek: Export CPU mux clocks for CPU frequency control
-> 
->  .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
->  .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
->  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
->  .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
->  .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
->  drivers/clk/mediatek/Makefile                      |    2 +-
->  drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
->  drivers/clk/mediatek/clk-cpumux.c                  |  127 +++++++
->  drivers/clk/mediatek/clk-cpumux.h                  |   22 ++
->  drivers/clk/mediatek/clk-gate.c                    |    2 +-
->  drivers/clk/mediatek/clk-mt8173.c                  |  370 +++++++++++++++++++-
->  drivers/clk/mediatek/clk-mtk.c                     |   36 +-
->  drivers/clk/mediatek/clk-mtk.h                     |   24 +-
->  drivers/clk/mediatek/clk-pll.c                     |    7 +-
->  include/dt-bindings/clock/mt8173-clk.h             |  106 +++++-
->  15 files changed, 879 insertions(+), 34 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
->  create mode 100644 drivers/clk/mediatek/clk-apmixed.c
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
-> 
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+> +
+> +       genpd = pd_to_genpd(dev->pm_domain);
+> +       scpd = container_of(genpd, struct scp_domain, genpd);
+> +
+> +       return scpd->active_wakeup;
+> +}
