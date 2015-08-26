@@ -1,118 +1,77 @@
-From: Markus Pargmann <mpa@pengutronix.de>
-Subject: Re: [PATCH] regmap: Fix the null function of format_val on
- regmap_bulk_read.
-Date: Wed, 26 Aug 2015 15:22:46 +0200
-Message-ID: <20150826132246.GR706@pengutronix.de>
-References: <1440589396-696-1-git-send-email-henryc.chen@mediatek.com>
- <20150826123556.GB2977@sirena.org.uk>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Wed, 26 Aug 2015 15:54:21 +0200
+Message-ID: <20150826135421.GV18700@pengutronix.de>
+References: <1440057962-13373-1-git-send-email-s.hauer@pengutronix.de>
+ <1440057962-13373-3-git-send-email-s.hauer@pengutronix.de>
+ <55D65ED7.7010102@linaro.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="6eUvXotnMb6+obQB"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20150826123556.GB2977@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Henry Chen <henryc.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <55D65ED7.7010102@linaro.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Aug 21, 2015 at 01:12:23AM +0200, Daniel Lezcano wrote:
+> On 08/20/2015 10:06 AM, Sascha Hauer wrote:
+> >This adds support for the Mediatek thermal controller found on MT8173
+> >and likely other SoCs.
+> >The controller is a bit special. It does not have its own ADC, instead
+> >it controls the on-SoC AUXADC via AHB bus accesses. For this reason
+> >we need the physical address of the AUXADC. Also it controls a mux
+> >using AHB bus accesses, so we need the APMIXEDSYS physical address aswell.
+> >
+> >Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> >---
+> 
+> [ ... ]
+> 
+> >diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> >new file mode 100644
+> >index 0000000..06d52ef
+> >--- /dev/null
+> >+++ b/drivers/thermal/mtk_thermal.c
+> >@@ -0,0 +1,582 @@
+> >+/*
+> >+ * Copyright (c) 2014 MediaTek Inc.
+> 
+> 2015 ?
 
---6eUvXotnMb6+obQB
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Can change to 2015
 
-On Wed, Aug 26, 2015 at 01:35:56PM +0100, Mark Brown wrote:
-> On Wed, Aug 26, 2015 at 07:43:16PM +0800, Henry Chen wrote:
-> > The regmap_format will not be initialize if device driver not declare t=
-he regmap_bus
-> > when registering the regmap. To avoid the null function of format_val w=
-hen
-> > called regmap_bulk_read(). It need to give a format function when regma=
-p init.
->=20
-> > Call trace:
-> > [<          (null)>]           (null)
-> > [<ffffffc0004cbdd0>] mtk_rtc_read_time+0x9c/0x134
-> > [<ffffffc0004c9618>] __rtc_read_time.isra.3+0x40/0x7c
-> > [<ffffffc0004c9688>] rtc_read_time+0x34/0x58
->=20
-> Please don't paste entire backtraces in, they're enormous and tend to
-> obscure the actual content while adding little value.  If needed then
-> edited highlights work better.  I'm fairly sure I've mentioned this
-> before...
->=20
-> > @@ -783,8 +783,22 @@ struct regmap *regmap_init(struct device *dev,
-> >  		map->defer_caching =3D true;
-> >  		map->reg_write =3D _regmap_bus_raw_write;
-> >  	}
-> > +/*
-> > + * For bulk read, need to hook the format function.
-> > + */
-> > +simple_format_initialization:
->=20
-> The indentation is all messed up here, we're misssing a blank line and
-> the comment is not indented.
->=20
-> > -skip_format_initialization:
-> > +	switch (config->val_bits) {
-> > +		case 8:
-> > +			map->format.format_val =3D regmap_format_8;
-> > +			break;
-> > +		case 16:
-> > +			map->format.format_val =3D regmap_format_16_native;
-> > +			break;
-> > +		case 32:
-> > +			map->format.format_val =3D regmap_format_32_native;
-> > +			break;
-> > +	}
->=20
-> Why are these format functions sensible?  Converting a null pointer
-> dereference into data corruption wouldn't be ideal.  The commit message
-> should really cover this.
+> 
+> >+ * Author: Hanyi.Wu <hanyi.wu@mediatek.com>
+> 
+> Hanyi Wu ?
 
-The regmap_bulk_read() function worked before the following patch:
-	15b8d2c41fe5 (regmap: Fix regmap_bulk_read in BE mode)
+It's the original author of this code.
 
-As far as I can see this patch fixes this issue by using simple format
-functions. Before the above mentioned patch, the code used memcpy. Now
-regmap_format_*_native is used which should result in the same behaviour
-but fixes the null pointer.
+> >+#define TEMP_MONINT_COLD(sp)			(BIT(0) << ((sp) * 5))
+> >+#define TEMP_MONINT_HOT(sp)			(BIT(1) << ((sp) * 5))
+> >+#define TEMP_MONINT_LOW_OFS(sp)			(BIT(2) << ((sp) * 5))
+> >+#define TEMP_MONINT_HIGH_OFS(sp)		(BIT(3) << ((sp) * 5))
+> >+#define TEMP_MONINT_HOT_TO_NORM(sp)		(BIT(4) << ((sp) * 5))
+> >+#define TEMP_MONINT_TIMEOUT			BIT(15)
+> >+#define TEMP_MONINT_IMMEDIATE_SENSE(sp)		BIT(16 + (sp))
+> >+#define TEMP_MONINT_FILTER_SENSE(sp)		BIT(19 + (sp))
+> >+#define TEMP_ADCWRITECTRL_ADC_EXTRA_WRITE	BIT(2)
+> >+#define TEMP_ADCWRITECTRL_ADC_EXTRA1_WRITE	BIT(3)
+> >+#define TEMP_PROTCTL_AVERAGE			(0 << 16)
+> >+#define TEMP_PROTCTL_MAXIMUM			(1 << 16)
+> >+#define TEMP_PROTCTL_SELECTED			(2 << 16)
+> 
+> <-- Not used.
 
-I am not sure if there are other locations in the code where format_val
-is used in this setup so I don't know if this would change behavior in a
-different codepath.
+Will remove.
 
-Best regards,
+Sascha
 
-Markus
 
---=20
+-- 
 Pengutronix e.K.                           |                             |
 Industrial Linux Solutions                 | http://www.pengutronix.de/  |
 Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
 Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
---6eUvXotnMb6+obQB
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJV3b2mAAoJEEpcgKtcEGQQ83UQALyspSqpZAAiI550NPMdaUYB
-XZRKuAbrmPPr4EYvYjeQY61+IEsRDc4y+f0c1yNeGWmbosRcjOTDUbHgWM3rSiYK
-tjHwEU/o8m7OVsFEn07souRKRnsFceZQYyecgvIbz259SMcdirnO7gLr1Hbex0w2
-rRRF/aOK9/2GlntNhuHFWPE/UtMdImiDEN3xrDKvHebgHxJXHAf6OAHrUE8Dw+8O
-jjDf+iterX4mMHPKAhPsM9XORJnzYUQ5Jf40XBq62ssHmfqhDpf5bdRn4i9Av6si
-9lDI5IJB0labwJnWxmEHVmy/FdybSYAO9qO+eQ1MKKAvi98kVFjISNoXYqa4WvJ9
-aaqPImwFzmUXM3LSbXMPEgikS0YPw/hREmLrSEVW50vsCJXTJS9zxrGejw+MMTfu
-Xi2QRiET6WGXe20sln+rA9Fp1ZmBBAVfZx+moa14jHBkOBMCBH5PUQIQZj0hfdLv
-fsUnvkrwuovygeVmrpGMJxkyx+d04psYxomZy+rc7pqg6vhDqg86/EJBZ5Vi9JMc
-qPDPA9XFU6JXnDRgT1jAoWz28msBg8le7aAq1Sk16aAWEg/BahjpNtzj+jnId9FF
-1M+U3llatvyP17BGPNeJhiPs0uufJ8gnjA6RDo2FFOeMq30skLGL7mSKLdoTt2f4
-wHMLY1J/qA+jwbvxFKlq
-=FX9t
------END PGP SIGNATURE-----
-
---6eUvXotnMb6+obQB--
