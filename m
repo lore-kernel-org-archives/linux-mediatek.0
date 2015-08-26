@@ -1,97 +1,98 @@
-From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/4] mmc: mediatek: Add online-tuning support of EMMC/SD
-Date: Wed, 26 Aug 2015 16:40:16 +0800
-Message-ID: <1440578416.26912.12.camel@mhfsdcap03>
-References: <1439367845-5891-1-git-send-email-chaotian.jing@mediatek.com>
- <1439367845-5891-2-git-send-email-chaotian.jing@mediatek.com>
- <CAPDyKFpX4Pp1+U9eNBuGd83sBeBgLU17qysAJ-2V-ABZZHYAGQ@mail.gmail.com>
- <1439812888.5627.9.camel@mhfsdcap03>
- <CAPDyKFpGk9gcLLjBnN=+BD5WP-7dZ0+XHC1bcEEGGLvLbTyKHw@mail.gmail.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH] regmap: Fix the null function of format_val on regmap_bulk_read.
+Date: Wed, 26 Aug 2015 19:43:16 +0800
+Message-ID: <1440589396-696-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAPDyKFpGk9gcLLjBnN=+BD5WP-7dZ0+XHC1bcEEGGLvLbTyKHw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Wenbin Mei <sin_wenbinmei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Chris Ball <chris-OsFVWbfNK3isTnJN9+BGXg@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Joe.C" <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Bin Zhang =?UTF-8?Q?=28=E7=AB=A0=E6=96=8C=29?= <bin.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Liuquan Ji <liuquan.ji-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstrea>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, henryc.chen@mediatek.com, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-08-25 at 14:07 +0200, Ulf Hansson wrote:
-> On 17 August 2015 at 14:01, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Hi Ulf,
-> > Thanks, please see my comment:
-> > On Mon, 2015-08-17 at 13:31 +0200, Ulf Hansson wrote:
-> >> On 12 August 2015 at 10:24, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> > Schedule a workqueue to do tuning when CRC error
-> >> > Call mmc_hw_reset to re-init card when data timeout
-> >>
-> >> Thanks to Adrian Hunter, the mmc core already supports re-tuning for
-> >> the above scenarios through the mmc_retune_*() APIs.
-> >>
-> >> SDHCI driver has already adopted to use that feature, you should do
-> >> that for the mtk-sd driver as well.
-> >>
-> >> Kind regards
-> >> Uffe
-> >>
-> > I also noticed that the mmc core already supports re-tuning, but it is
-> > not suitable for our host.
-> > For EMMC, the CMD21 only support HS200/HS400 mode, for SD card, CMD19
-> > only support SDR50/SDR104 mode, but in our host, even 50Mhz clock
-> > frequency may also occur CRC error, Cannot find a parameter that can
-> > cover all SD cards which running at 50Mhz, even 25Mhz, will occur CRC
-> > error for stress test, DDR50 mode is worse.
-> 
-> I don't follow. You may run for example HS200 in lower speed, nothing
-> will prevent tuning and re-tuning from happen for these scenarios.
-> 
-> Or you are talking about other speed modes than HS200/400 and
-> SDR50/104? If so, which speed modes are these?
-> 
-Yes, I am talking about other speed modes.
-For SD card, the speed mode is High Speed, for EMMC, the speed may be
-High Speed or DDR mode.
-If CRC error occurs at these speed modes, the MMC core layer will never
-handler it. even propagate the -EILSEQ towards to the mmc core, it will
-not start mmc_retune.
-> BTW, there are currently a patch being discussed which is about adding
-> tuning for DDR mode. Please have look.
-> http://www.spinics.net/lists/arm-kernel/msg438434.html
-> 
-> Regarding re-tuning on CRC errors, that's already supported by the mmc
-> core. More precisely when a host driver returns -EILSEQ for a request.
-> 
-> > By the way,there are too many tune parameters need try for response,
-> > read data, write crc status CRC error, these parameters are
-> > multidimensional, it is hard to find a best parameter, and, try
-> > thousands of parameters will take long time.
-> 
-> As I see, it's your responsibility from the host driver to propagate
-> the proper error code towards the mmc core. If you encounter an error
-> that you want to trigger a retune, just return -EILSEQ.
-> 
-> Moreover, if you see a need to extend the tuning/re-tuning support in
-> the mmc core to suit your need - I am definitely open to look into
-> that. More importantly, I don't want to see host specific hacks trying
-> to deal with this.
-> 
-In addition, the CMD21 is only valid for HS200 mode, do not support
-HS400, So that there is no chance to tune the HS400 read/write data with
-current mmc core layer codes.
-As you see, in our platform, tune of HS200 and HS400 is different, but
-if use the CMD21, it will never work at HS400 mode, even with
-"prepare_hs400_tuning", but it prepare what ? what we need is that
-running at HS400 mode and tune the read/write parameters, but not HS200,
-because for data Rx path, the tune result of HS200 is meaningless for
-HS400.
-> Kind regards
-> Uffe
+The regmap_format will not be initialize if device driver not declare the regmap_bus
+when registering the regmap. To avoid the null function of format_val when
+called regmap_bulk_read(). It need to give a format function when regmap init.
+
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+I ran into this bug when testing Matthias' v4.2-next/for-next branch on mt8173.
+It now crashes on boot. The commit [0], which added the call to
+map->format.format_val from regmap_bulk_read() when map->bus == NULL.
+
+[0] commit 15b8d2c41fe5839582029f65c5f7004db451cc2b
+  Author: Arun Chandran <achandran <at> mvista.com>
+  regmap: Fix regmap_bulk_read in BE mode
+
+Please see the error below, thanks.
+
+Call trace:
+[<          (null)>]           (null)
+[<ffffffc0004cbdd0>] mtk_rtc_read_time+0x9c/0x134
+[<ffffffc0004c9618>] __rtc_read_time.isra.3+0x40/0x7c
+[<ffffffc0004c9688>] rtc_read_time+0x34/0x58
+[<ffffffc0004c9e64>] __rtc_read_alarm+0x20/0x37c
+[<ffffffc0004c8d2c>] rtc_device_register+0x194/0x2e0
+[<ffffffc0004cbf60>] mtk_rtc_probe+0xf8/0x18c
+[<ffffffc0003fb5e0>] platform_drv_probe+0x48/0xc4
+[<ffffffc0003f99e0>] driver_probe_device+0x188/0x29c
+[<ffffffc0003f9b8c>] __driver_attach+0x98/0xa0
+[<ffffffc0003f7ce0>] bus_for_each_dev+0x54/0x98
+[<ffffffc0003f94c8>] driver_attach+0x1c/0x28
+[<ffffffc0003f9164>] bus_add_driver+0x1c0/0x228
+[<ffffffc0003fa45c>] driver_register+0x64/0x130
+[<ffffffc0003fb514>] __platform_driver_register+0x5c/0x68
+[<ffffffc0008639a4>] mtk_rtc_driver_init+0x14/0x20
+[<ffffffc000082864>] do_one_initcall+0x88/0x1ac
+[<ffffffc000842b10>] kernel_init_freeable+0x158/0x1fc
+[<ffffffc0005f45fc>] kernel_init+0xc/0xd8
+---
+ drivers/base/regmap/regmap.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/base/regmap/regmap.c b/drivers/base/regmap/regmap.c
+index 7111d04..9357186 100644
+--- a/drivers/base/regmap/regmap.c
++++ b/drivers/base/regmap/regmap.c
+@@ -607,13 +607,13 @@ struct regmap *regmap_init(struct device *dev,
+ 		map->reg_write = config->reg_write;
+ 
+ 		map->defer_caching = false;
+-		goto skip_format_initialization;
++		goto simple_format_initialization;
+ 	} else if (!bus->read || !bus->write) {
+ 		map->reg_read = _regmap_bus_reg_read;
+ 		map->reg_write = _regmap_bus_reg_write;
+ 
+ 		map->defer_caching = false;
+-		goto skip_format_initialization;
++		goto simple_format_initialization;
+ 	} else {
+ 		map->reg_read  = _regmap_bus_read;
+ 	}
+@@ -783,8 +783,22 @@ struct regmap *regmap_init(struct device *dev,
+ 		map->defer_caching = true;
+ 		map->reg_write = _regmap_bus_raw_write;
+ 	}
++/*
++ * For bulk read, need to hook the format function.
++ */
++simple_format_initialization:
+ 
+-skip_format_initialization:
++	switch (config->val_bits) {
++		case 8:
++			map->format.format_val = regmap_format_8;
++			break;
++		case 16:
++			map->format.format_val = regmap_format_16_native;
++			break;
++		case 32:
++			map->format.format_val = regmap_format_32_native;
++			break;
++	}
+ 
+ 	map->range_tree = RB_ROOT;
+ 	for (i = 0; i < config->num_ranges; i++) {
+-- 
+1.8.1.1.dirty
