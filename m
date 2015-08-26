@@ -1,91 +1,95 @@
 From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH v2] soc: mediatek: add scpsys support active_wakeup
-Date: Wed, 26 Aug 2015 14:55:08 +0800
-Message-ID: <1440572108.28149.4.camel@mtksdaap41>
-References: <1440482440-28700-1-git-send-email-eddie.huang@mediatek.com>
-	 <CAGS+omBqTbcJk-6QvupV4tkB5WQm97zpb5NzZ-S2ivR-UEWF4g@mail.gmail.com>
+Subject: [PATCH v3] soc: mediatek: add scpsys support active_wakeup
+Date: Wed, 26 Aug 2015 15:14:41 +0800
+Message-ID: <1440573281-28952-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omBqTbcJk-6QvupV4tkB5WQm97zpb5NzZ-S2ivR-UEWF4g@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-08-26 at 05:11 +0800, Daniel Kurtz wrote:
-> Hi Eddie,
-> 
-> On Tue, Aug 25, 2015 at 2:00 PM, Eddie Huang <eddie.huang@mediatek.com> wrote:
-> > Register gpd_dev_ops.active_wakeup function to support keep power
-> > during suspend state. And add flag to each power domain to
-> > decide whether keep power during suspend or not.
-> >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-> > Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
-> >
-> > ---
-> > Change in v2:
-> > Drop .active_wakeup = false lines in scp_domain_data[] array
-> >
-> > ---
-> >  drivers/soc/mediatek/mtk-scpsys.c | 19 +++++++++++++++++++
-> >  1 file changed, 19 insertions(+)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> > index 43a79ed..df2f288 100644
-> > --- a/drivers/soc/mediatek/mtk-scpsys.c
-> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> > @@ -67,6 +67,7 @@ struct scp_domain_data {
-> >         u32 sram_pdn_ack_bits;
-> >         u32 bus_prot_mask;
-> >         enum clk_id clk_id;
-> > +       bool active_wakeup;
-> >  };
-> >
-> >  static const struct scp_domain_data scp_domain_data[] __initconst = {
-> > @@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
-> >                 .sram_pdn_bits = GENMASK(11, 8),
-> >                 .sram_pdn_ack_bits = GENMASK(15, 12),
-> >                 .clk_id = MT8173_CLK_NONE,
-> > +               .active_wakeup = true,
-> >         },
-> >         [MT8173_POWER_DOMAIN_MFG_ASYNC] = {
-> >                 .name = "mfg_async",
-> > @@ -171,6 +173,7 @@ struct scp_domain {
-> >         u32 sram_pdn_bits;
-> >         u32 sram_pdn_ack_bits;
-> >         u32 bus_prot_mask;
-> > +       bool active_wakeup;
-> >  };
-> >
-> >  struct scp {
-> > @@ -370,6 +373,20 @@ out:
-> >         return ret;
-> >  }
-> >
-> > +static bool scpsys_active_wakeup(struct device *dev)
-> > +{
-> > +       struct generic_pm_domain *genpd;
-> > +       struct scp_domain *scpd;
-> > +
-> > +       if (IS_ERR_OR_NULL(dev->pm_domain))
-> > +               return false;
-> 
-> Is it really possible to get here w/ pm_domain as an ERR or NULL?
-> If the power core can ensure this cannot happen, then this function
-> could be a bit simpler.
-> 
-> Other than that, this patch is:
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> -Dan
-> 
+Register gpd_dev_ops.active_wakeup function to support keep power
+during suspend state. And add flag to each power domain to
+decide whether keep power during suspend or not.
 
-After checking drivers/base/power/domain.c, I believe check
-dev->pm_domain here is redundant, I will remove it.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
 
-Eddie
-Thanks
+---
+Change in v3:
+Remove check dev->power_domain NULL or ERR. This will not happen
+when call scpsys_active_wakeup function
+
+Change in v2:
+Drop .active_wakeup = false lines in scp_domain_data[] array
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 43a79ed..3a00975 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -67,6 +67,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
+ 	enum clk_id clk_id;
++	bool active_wakeup;
+ };
+ 
+ static const struct scp_domain_data scp_domain_data[] __initconst = {
+@@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.clk_id = MT8173_CLK_NONE,
++		.active_wakeup = true,
+ 	},
+ 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+ 		.name = "mfg_async",
+@@ -171,6 +173,7 @@ struct scp_domain {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	u32 bus_prot_mask;
++	bool active_wakeup;
+ };
+ 
+ struct scp {
+@@ -370,6 +373,17 @@ out:
+ 	return ret;
+ }
+ 
++static bool scpsys_active_wakeup(struct device *dev)
++{
++	struct generic_pm_domain *genpd;
++	struct scp_domain *scpd;
++
++	genpd = pd_to_genpd(dev->pm_domain);
++	scpd = container_of(genpd, struct scp_domain, genpd);
++
++	return scpd->active_wakeup;
++}
++
+ static int __init scpsys_probe(struct platform_device *pdev)
+ {
+ 	struct genpd_onecell_data *pd_data;
+@@ -427,12 +441,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
+ 		scpd->sram_pdn_bits = data->sram_pdn_bits;
+ 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
+ 		scpd->bus_prot_mask = data->bus_prot_mask;
++		scpd->active_wakeup = data->active_wakeup;
+ 		if (data->clk_id != MT8173_CLK_NONE)
+ 			scpd->clk = clk[data->clk_id];
+ 
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
++		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
+ 
+ 		/*
+ 		 * Initially turn on all domains to make the domains usable
+-- 
+1.9.1
