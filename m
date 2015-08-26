@@ -1,35 +1,89 @@
-From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
-Date: Wed, 26 Aug 2015 01:01:37 +0200
-Message-ID: <1617873.VRHfat3V76@vostro.rjw.lan>
-References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org> <CALx668VWg2xVxzy8P7f5QFWRzm+TDJXUghL-_rbvRLsLYjtnng@mail.gmail.com>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: [PATCH v4] pinctrl: mediatek: Fix multiple registration issue.
+Date: Tue, 25 Aug 2015 17:16:10 -0700
+Message-ID: <1440548170-10174-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CALx668VWg2xVxzy8P7f5QFWRzm+TDJXUghL-_rbvRLsLYjtnng@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Axel Lin <axel.lin@ingics.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tuesday, August 25, 2015 10:10:44 AM Pi-Cheng Chen wrote:
-> On Mon, Aug 17, 2015 at 5:24 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
-> > MT8173 is a ARMv8 based SoC with 2 clusters. All CPUs in a single cluster
-> > share the same power and clock domain. This series tries to add cpufreq support
-> > for MT8173 SoC. The v6 of this series is resent with Acks added.
-> 
-> Hi Rafael,
-> 
-> Not sure if I has missed the merge window.
-> Do I have chance to have this series merged for 4.3?
+Since our common driver need support main chip and PMU
+at the same time, that means it will register two
+pinctrl device, and the pinctrl_desc structure should
+be used two times.
 
-Yes, it should make it.
+But pinctrl_desc use global static definition, then
+the latest registered pinctrl device will overwrite
+the old one's, all members in pinctrl_desc will set to
+the new one's, such as name, pins and pins numbers, etc.
+This is a bug. Changing to use devm_kzalloc to fix it.
 
-> Would you please take [1,2] of this series?
+Cc: stable@vger.kernel.org # v4.1+
+Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Reviewed-by: Axel Lin <axel.lin@ingics.com>
+---
+ Adding pinctrl_desc into mtk_pinctrl, assign new value for each 
+ pinctrl device.
 
-I'm not sure what you mean.  Are you withdrawing the [3/3]?
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   21 ++++++++++-----------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    1 +
+ 2 files changed, 11 insertions(+), 11 deletions(-)
 
-Thanks,
-Rafael
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index ad1ea16..4a52072 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1202,12 +1202,6 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static struct pinctrl_desc mtk_pctrl_desc = {
+-	.confops	= &mtk_pconf_ops,
+-	.pctlops	= &mtk_pctrl_ops,
+-	.pmxops		= &mtk_pmx_ops,
+-};
+-
+ int mtk_pctrl_init(struct platform_device *pdev,
+ 		const struct mtk_pinctrl_devdata *data,
+ 		struct regmap *regmap)
+@@ -1265,12 +1259,17 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	for (i = 0; i < pctl->devdata->npins; i++)
+ 		pins[i] = pctl->devdata->pins[i].pin;
+-	mtk_pctrl_desc.name = dev_name(&pdev->dev);
+-	mtk_pctrl_desc.owner = THIS_MODULE;
+-	mtk_pctrl_desc.pins = pins;
+-	mtk_pctrl_desc.npins = pctl->devdata->npins;
++
++	pctl->pctl_desc.name = dev_name(&pdev->dev);
++	pctl->pctl_desc.owner = THIS_MODULE;
++	pctl->pctl_desc.pins = pins;
++	pctl->pctl_desc.npins = pctl->devdata->npins;
++	pctl->pctl_desc.confops = &mtk_pconf_ops;
++	pctl->pctl_desc.pctlops = &mtk_pctrl_ops;
++	pctl->pctl_desc.pmxops = &mtk_pmx_ops;
+ 	pctl->dev = &pdev->dev;
+-	pctl->pctl_dev = pinctrl_register(&mtk_pctrl_desc, &pdev->dev, pctl);
++
++	pctl->pctl_dev = pinctrl_register(&pctl->pctl_desc, &pdev->dev, pctl);
+ 	if (IS_ERR(pctl->pctl_dev)) {
+ 		dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
+ 		return PTR_ERR(pctl->pctl_dev);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index 30213e5..c532c23 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -256,6 +256,7 @@ struct mtk_pinctrl_devdata {
+ struct mtk_pinctrl {
+ 	struct regmap	*regmap1;
+ 	struct regmap	*regmap2;
++	struct pinctrl_desc pctl_desc;
+ 	struct device           *dev;
+ 	struct gpio_chip	*chip;
+ 	struct mtk_pinctrl_group	*groups;
+-- 
+1.7.9.5
 
