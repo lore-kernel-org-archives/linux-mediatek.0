@@ -1,98 +1,101 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] regmap: Fix the null function of format_val on regmap_bulk_read.
-Date: Wed, 26 Aug 2015 19:43:16 +0800
-Message-ID: <1440589396-696-1-git-send-email-henryc.chen@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2] pinctrl: mediatek: Fix multiple registration issue.
+Date: Wed, 26 Aug 2015 14:11:28 +0200
+Message-ID: <CACRpkdY-W+=Eq2nsabqULcFZCi1bLd3eyBDY8yQmyCLwEz1RSA@mail.gmail.com>
+References: <1440041931-38278-1-git-send-email-hongzhou.yang@mediatek.com>
+	<CAFRkauDE4QRnZP4q61JyX+t8rn3zOtokiESJTV4uak71zM0kTg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFRkauDE4QRnZP4q61JyX+t8rn3zOtokiESJTV4uak71zM0kTg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, henryc.chen@mediatek.com, eddie.huang@mediatek.com
+To: Axel Lin <axel.lin@ingics.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Antoine Tenart <antoine.tenart@free-electrons.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, Chaotian Jing <chaotian.jing@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, biao.huang@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The regmap_format will not be initialize if device driver not declare the regmap_bus
-when registering the regmap. To avoid the null function of format_val when
-called regmap_bulk_read(). It need to give a format function when regmap init.
+On Thu, Aug 20, 2015 at 5:49 AM, Axel Lin <axel.lin@ingics.com> wrote:
+> 2015-08-20 11:38 GMT+08:00 Hongzhou Yang <hongzhou.yang@mediatek.com>:
+>> Since our common driver need support main chip and PMU
+>> at the same time, that means it will register two
+>> pinctrl device, and the pinctrl_desc structure should
+>> be used two times.
+>>
+>> But pinctrl_desc use global static definition, then
+>> the latest registered pinctrl device will overwrite
+>> the old one's, all members in pinctrl_desc will set to
+>> the new one's, such as name, pins and pins numbers, etc.
+>> This is a bug. Changing to use devm_kzalloc to fix it.
+>>
+>> Cc: stable@vger.kernel.org # v4.1+
+>> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+>> ---
+>>  Use dynamic allocation to fix multiple registration issue.
+>>
+>>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   26 ++++++++++++++-----------
+>>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |    1 +
+>>  2 files changed, 16 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+>> index ad1ea16..911c736 100644
+>> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+>> @@ -1202,12 +1202,6 @@ static int mtk_pctrl_build_state(struct platform_device *pdev)
+>>         return 0;
+>>  }
+>>
+>> -static struct pinctrl_desc mtk_pctrl_desc = {
+>> -       .confops        = &mtk_pconf_ops,
+>> -       .pctlops        = &mtk_pctrl_ops,
+>> -       .pmxops         = &mtk_pmx_ops,
+>> -};
+>> -
+>>  int mtk_pctrl_init(struct platform_device *pdev,
+>>                 const struct mtk_pinctrl_devdata *data,
+>>                 struct regmap *regmap)
+>> @@ -1265,12 +1259,22 @@ int mtk_pctrl_init(struct platform_device *pdev,
+>>
+>>         for (i = 0; i < pctl->devdata->npins; i++)
+>>                 pins[i] = pctl->devdata->pins[i].pin;
+>> -       mtk_pctrl_desc.name = dev_name(&pdev->dev);
+>> -       mtk_pctrl_desc.owner = THIS_MODULE;
+>> -       mtk_pctrl_desc.pins = pins;
+>> -       mtk_pctrl_desc.npins = pctl->devdata->npins;
+>> +
+>> +       pctl->pctl_desc = devm_kzalloc(&pdev->dev, sizeof(*pctl->pctl_desc),
+>> +                               GFP_KERNEL);
+>> +       if (!pctl->pctl_desc)
+>> +               return -ENOMEM;
+>> +
+>> +       pctl->pctl_desc->name = dev_name(&pdev->dev);
+>> +       pctl->pctl_desc->owner = THIS_MODULE;
+>> +       pctl->pctl_desc->pins = pins;
+>> +       pctl->pctl_desc->npins = pctl->devdata->npins;
+>> +       pctl->pctl_desc->confops = &mtk_pconf_ops;
+>> +       pctl->pctl_desc->pctlops = &mtk_pctrl_ops;
+>> +       pctl->pctl_desc->pmxops = &mtk_pmx_ops;
+>>         pctl->dev = &pdev->dev;
+>> -       pctl->pctl_dev = pinctrl_register(&mtk_pctrl_desc, &pdev->dev, pctl);
+>> +
+>> +       pctl->pctl_dev = pinctrl_register(pctl->pctl_desc, &pdev->dev, pctl);
+>>         if (IS_ERR(pctl->pctl_dev)) {
+>>                 dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
+>>                 return PTR_ERR(pctl->pctl_dev);
+>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+>> index 30213e5..93d6f5b 100644
+>> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+>> @@ -256,6 +256,7 @@ struct mtk_pinctrl_devdata {
+>>  struct mtk_pinctrl {
+>>         struct regmap   *regmap1;
+>>         struct regmap   *regmap2;
+>> +       struct pinctrl_desc *pctl_desc;
+> Use
+> struct pinctrl_desc pctl_desc;
+>
+> Then you can remove the devm_kzalloc.
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
-I ran into this bug when testing Matthias' v4.2-next/for-next branch on mt8173.
-It now crashes on boot. The commit [0], which added the call to
-map->format.format_val from regmap_bulk_read() when map->bus == NULL.
+I agree with Axel, use a true member instead of a pointer
+and you get something simpler.
 
-[0] commit 15b8d2c41fe5839582029f65c5f7004db451cc2b
-  Author: Arun Chandran <achandran <at> mvista.com>
-  regmap: Fix regmap_bulk_read in BE mode
-
-Please see the error below, thanks.
-
-Call trace:
-[<          (null)>]           (null)
-[<ffffffc0004cbdd0>] mtk_rtc_read_time+0x9c/0x134
-[<ffffffc0004c9618>] __rtc_read_time.isra.3+0x40/0x7c
-[<ffffffc0004c9688>] rtc_read_time+0x34/0x58
-[<ffffffc0004c9e64>] __rtc_read_alarm+0x20/0x37c
-[<ffffffc0004c8d2c>] rtc_device_register+0x194/0x2e0
-[<ffffffc0004cbf60>] mtk_rtc_probe+0xf8/0x18c
-[<ffffffc0003fb5e0>] platform_drv_probe+0x48/0xc4
-[<ffffffc0003f99e0>] driver_probe_device+0x188/0x29c
-[<ffffffc0003f9b8c>] __driver_attach+0x98/0xa0
-[<ffffffc0003f7ce0>] bus_for_each_dev+0x54/0x98
-[<ffffffc0003f94c8>] driver_attach+0x1c/0x28
-[<ffffffc0003f9164>] bus_add_driver+0x1c0/0x228
-[<ffffffc0003fa45c>] driver_register+0x64/0x130
-[<ffffffc0003fb514>] __platform_driver_register+0x5c/0x68
-[<ffffffc0008639a4>] mtk_rtc_driver_init+0x14/0x20
-[<ffffffc000082864>] do_one_initcall+0x88/0x1ac
-[<ffffffc000842b10>] kernel_init_freeable+0x158/0x1fc
-[<ffffffc0005f45fc>] kernel_init+0xc/0xd8
----
- drivers/base/regmap/regmap.c | 20 +++++++++++++++++---
- 1 file changed, 17 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/base/regmap/regmap.c b/drivers/base/regmap/regmap.c
-index 7111d04..9357186 100644
---- a/drivers/base/regmap/regmap.c
-+++ b/drivers/base/regmap/regmap.c
-@@ -607,13 +607,13 @@ struct regmap *regmap_init(struct device *dev,
- 		map->reg_write = config->reg_write;
- 
- 		map->defer_caching = false;
--		goto skip_format_initialization;
-+		goto simple_format_initialization;
- 	} else if (!bus->read || !bus->write) {
- 		map->reg_read = _regmap_bus_reg_read;
- 		map->reg_write = _regmap_bus_reg_write;
- 
- 		map->defer_caching = false;
--		goto skip_format_initialization;
-+		goto simple_format_initialization;
- 	} else {
- 		map->reg_read  = _regmap_bus_read;
- 	}
-@@ -783,8 +783,22 @@ struct regmap *regmap_init(struct device *dev,
- 		map->defer_caching = true;
- 		map->reg_write = _regmap_bus_raw_write;
- 	}
-+/*
-+ * For bulk read, need to hook the format function.
-+ */
-+simple_format_initialization:
- 
--skip_format_initialization:
-+	switch (config->val_bits) {
-+		case 8:
-+			map->format.format_val = regmap_format_8;
-+			break;
-+		case 16:
-+			map->format.format_val = regmap_format_16_native;
-+			break;
-+		case 32:
-+			map->format.format_val = regmap_format_32_native;
-+			break;
-+	}
- 
- 	map->range_tree = RB_ROOT;
- 	for (i = 0; i < config->num_ranges; i++) {
--- 
-1.8.1.1.dirty
+Yours,
+Linus Walleij
