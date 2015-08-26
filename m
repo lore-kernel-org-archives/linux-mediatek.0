@@ -1,95 +1,58 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: [PATCH v3] soc: mediatek: add scpsys support active_wakeup
-Date: Wed, 26 Aug 2015 15:14:41 +0800
-Message-ID: <1440573281-28952-1-git-send-email-eddie.huang@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH 0/5] add GPT timer support for mt8173
+Date: Wed, 26 Aug 2015 09:37:40 +0200
+Message-ID: <55DD6CC4.6010708@linaro.org>
+References: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8;
+	format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1436779969-18610-1-git-send-email-yingjoe.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>
+Cc: Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Register gpd_dev_ops.active_wakeup function to support keep power
-during suspend state. And add flag to each power domain to
-decide whether keep power during suspend or not.
+On 07/13/2015 11:32 AM, Yingjoe Chen wrote:
+> This series add GPT timer support for mt8173. This is based on v4.2-r=
+c1
+> and Matthias' next branch (for dts parts).
+>
+> The first 2 patches comes from 'Add SMP bringup support for mt65xx so=
+cs'
+> series [1]. I decide to move these 2 patches to this series, since it
+> is more relevent here. They are changed based on Matthias' and Daniel=
+'s
+> comments.
+>
+> [1] http://lists.infradead.org/pipermail/linux-mediatek/2015-May/0007=
+14.html
+>
+> Daniel Kurtz (1):
+>    arm64: dts: mt8173: add timer node
+>
+> Yingjoe Chen (4):
+>    clocksource: mediatek: do not enable GPT_CLK_EVT when setup
+>    clocksource: mediatek: Use GPT as sched clock source
+>    arm64: mediatek: enable MTK_TIMER
+>    clk: mediatek: add 13mhz clock for MT8173
+>
+>   arch/arm64/Kconfig                       |  1 +
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi |  9 +++++++++
+>   drivers/clk/mediatek/clk-mt8173.c        |  5 +++++
+>   drivers/clocksource/mtk_timer.c          | 26 ++++++++++++++++++++-=
+-----
+>   include/dt-bindings/clock/mt8173-clk.h   |  3 ++-
+>   5 files changed, 37 insertions(+), 7 deletions(-)
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
-Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+Who will take this patchset ? I can take the patch 2 if needed.
 
----
-Change in v3:
-Remove check dev->power_domain NULL or ERR. This will not happen
-when call scpsys_active_wakeup function
 
-Change in v2:
-Drop .active_wakeup = false lines in scp_domain_data[] array
----
- drivers/soc/mediatek/mtk-scpsys.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+--=20
+  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
+r ARM SoCs
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 43a79ed..3a00975 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -67,6 +67,7 @@ struct scp_domain_data {
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
- 	enum clk_id clk_id;
-+	bool active_wakeup;
- };
- 
- static const struct scp_domain_data scp_domain_data[] __initconst = {
-@@ -127,6 +128,7 @@ static const struct scp_domain_data scp_domain_data[] __initconst = {
- 		.sram_pdn_bits = GENMASK(11, 8),
- 		.sram_pdn_ack_bits = GENMASK(15, 12),
- 		.clk_id = MT8173_CLK_NONE,
-+		.active_wakeup = true,
- 	},
- 	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
- 		.name = "mfg_async",
-@@ -171,6 +173,7 @@ struct scp_domain {
- 	u32 sram_pdn_bits;
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
-+	bool active_wakeup;
- };
- 
- struct scp {
-@@ -370,6 +373,17 @@ out:
- 	return ret;
- }
- 
-+static bool scpsys_active_wakeup(struct device *dev)
-+{
-+	struct generic_pm_domain *genpd;
-+	struct scp_domain *scpd;
-+
-+	genpd = pd_to_genpd(dev->pm_domain);
-+	scpd = container_of(genpd, struct scp_domain, genpd);
-+
-+	return scpd->active_wakeup;
-+}
-+
- static int __init scpsys_probe(struct platform_device *pdev)
- {
- 	struct genpd_onecell_data *pd_data;
-@@ -427,12 +441,14 @@ static int __init scpsys_probe(struct platform_device *pdev)
- 		scpd->sram_pdn_bits = data->sram_pdn_bits;
- 		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
- 		scpd->bus_prot_mask = data->bus_prot_mask;
-+		scpd->active_wakeup = data->active_wakeup;
- 		if (data->clk_id != MT8173_CLK_NONE)
- 			scpd->clk = clk[data->clk_id];
- 
- 		genpd->name = data->name;
- 		genpd->power_off = scpsys_power_off;
- 		genpd->power_on = scpsys_power_on;
-+		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
- 
- 		/*
- 		 * Initially turn on all domains to make the domains usable
--- 
-1.9.1
+=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
