@@ -1,141 +1,40 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH] rtc: Fix module autoload for OF platform drivers
-Date: Thu, 27 Aug 2015 14:09:58 +0200
-Message-ID: <20150827120958.GD8094@lunn.ch>
-References: <1440676322-19870-1-git-send-email-javier@osg.samsung.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] spi: mediatek: fix SPI_CMD_PAUSE_IE macro error
+Date: Thu, 27 Aug 2015 21:09:04 +0800
+Message-ID: <1440680944-32537-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1440676322-19870-1-git-send-email-javier@osg.samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>
-Cc: linux-kernel@vger.kernel.org, Luis de Bethencourt <luis.bg@samsung.com>, Gregory Clement <gregory.clement@free-electrons.com>, Alessandro Zummo <a.zummo@towertech.it>, Support Opensource <support.opensource@diasemi.com>, Linus Walleij <linus.walleij@linaro.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Tony Prisk <linux@prisktech.co.nz>, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 27, 2015 at 01:52:02PM +0200, Javier Martinez Canillas wrote:
-> These platform drivers have a OF device ID table but the OF module
-> alias information is not created so module autoloading won't work.
-> 
-> Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+enable pause interrupt should use SPI_CMD_PAUSE_IE MACRO,
+so fix it.
 
-Hi Javier
+Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/spi/spi-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Acked-by: Andrew Lunn <andrew@lunn.ch>
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index eaadc7e..d882261 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -158,7 +158,7 @@ static void mtk_spi_config(struct mtk_spi *mdata,
+ #endif
+ 
+ 	/* set finish and pause interrupt always enable */
+-	reg_val |= SPI_CMD_FINISH_IE | SPI_CMD_PAUSE_EN;
++	reg_val |= SPI_CMD_FINISH_IE | SPI_CMD_PAUSE_IE;
+ 
+ 	/* disable dma mode */
+ 	reg_val &= ~(SPI_CMD_TX_DMA | SPI_CMD_RX_DMA);
+-- 
+1.8.1.1.dirty
 
-for mv and armada38x.
-
-Thanks
-	Andrew
-> 
-> ---
-> 
->  drivers/rtc/rtc-armada38x.c | 1 +
->  drivers/rtc/rtc-coh901331.c | 1 +
->  drivers/rtc/rtc-da9063.c    | 1 +
->  drivers/rtc/rtc-moxart.c    | 1 +
->  drivers/rtc/rtc-mpc5121.c   | 1 +
->  drivers/rtc/rtc-mt6397.c    | 1 +
->  drivers/rtc/rtc-mv.c        | 1 +
->  drivers/rtc/rtc-vt8500.c    | 1 +
->  8 files changed, 8 insertions(+)
-> 
-> diff --git a/drivers/rtc/rtc-armada38x.c b/drivers/rtc/rtc-armada38x.c
-> index 06c6bd5eab41..9a3f2a6f512e 100644
-> --- a/drivers/rtc/rtc-armada38x.c
-> +++ b/drivers/rtc/rtc-armada38x.c
-> @@ -295,6 +295,7 @@ static const struct of_device_id armada38x_rtc_of_match_table[] = {
->  	{ .compatible = "marvell,armada-380-rtc", },
->  	{}
->  };
-> +MODULE_DEVICE_TABLE(of, armada38x_rtc_of_match_table);
->  #endif
->  
->  static struct platform_driver armada38x_rtc_driver = {
-> diff --git a/drivers/rtc/rtc-coh901331.c b/drivers/rtc/rtc-coh901331.c
-> index 56343b2fbc68..101b7a240e0f 100644
-> --- a/drivers/rtc/rtc-coh901331.c
-> +++ b/drivers/rtc/rtc-coh901331.c
-> @@ -263,6 +263,7 @@ static const struct of_device_id coh901331_dt_match[] = {
->  	{ .compatible = "stericsson,coh901331" },
->  	{},
->  };
-> +MODULE_DEVICE_TABLE(of, coh901331_dt_match);
->  
->  static struct platform_driver coh901331_driver = {
->  	.driver = {
-> diff --git a/drivers/rtc/rtc-da9063.c b/drivers/rtc/rtc-da9063.c
-> index 5f38a5c84b56..00a8f7f4f87c 100644
-> --- a/drivers/rtc/rtc-da9063.c
-> +++ b/drivers/rtc/rtc-da9063.c
-> @@ -169,6 +169,7 @@ static const struct of_device_id da9063_compatible_reg_id_table[] = {
->  	{ .compatible = "dlg,da9062-rtc", .data = &da9062_aa_regs },
->  	{ },
->  };
-> +MODULE_DEVICE_TABLE(of, da9063_compatible_reg_id_table);
->  
->  static void da9063_data_to_tm(u8 *data, struct rtc_time *tm,
->  			      struct da9063_compatible_rtc *rtc)
-> diff --git a/drivers/rtc/rtc-moxart.c b/drivers/rtc/rtc-moxart.c
-> index 73759c9a4527..07b30a373a92 100644
-> --- a/drivers/rtc/rtc-moxart.c
-> +++ b/drivers/rtc/rtc-moxart.c
-> @@ -312,6 +312,7 @@ static const struct of_device_id moxart_rtc_match[] = {
->  	{ .compatible = "moxa,moxart-rtc" },
->  	{ },
->  };
-> +MODULE_DEVICE_TABLE(of, moxart_rtc_match);
->  
->  static struct platform_driver moxart_rtc_driver = {
->  	.probe	= moxart_rtc_probe,
-> diff --git a/drivers/rtc/rtc-mpc5121.c b/drivers/rtc/rtc-mpc5121.c
-> index 1767e18d5bd4..4ca4daa0b8f3 100644
-> --- a/drivers/rtc/rtc-mpc5121.c
-> +++ b/drivers/rtc/rtc-mpc5121.c
-> @@ -406,6 +406,7 @@ static const struct of_device_id mpc5121_rtc_match[] = {
->  	{ .compatible = "fsl,mpc5200-rtc", },
->  	{},
->  };
-> +MODULE_DEVICE_TABLE(of, mpc5121_rtc_match);
->  #endif
->  
->  static struct platform_driver mpc5121_rtc_driver = {
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 30c926b36361..06a5c52b292f 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -402,6 +402,7 @@ static const struct of_device_id mt6397_rtc_of_match[] = {
->  	{ .compatible = "mediatek,mt6397-rtc", },
->  	{ }
->  };
-> +MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
->  
->  static struct platform_driver mtk_rtc_driver = {
->  	.driver = {
-> diff --git a/drivers/rtc/rtc-mv.c b/drivers/rtc/rtc-mv.c
-> index 7f50d2ef7f6e..79bb28617d45 100644
-> --- a/drivers/rtc/rtc-mv.c
-> +++ b/drivers/rtc/rtc-mv.c
-> @@ -324,6 +324,7 @@ static const struct of_device_id rtc_mv_of_match_table[] = {
->  	{ .compatible = "marvell,orion-rtc", },
->  	{}
->  };
-> +MODULE_DEVICE_TABLE(of, rtc_mv_of_match_table);
->  #endif
->  
->  static struct platform_driver mv_rtc_driver = {
-> diff --git a/drivers/rtc/rtc-vt8500.c b/drivers/rtc/rtc-vt8500.c
-> index a58b6d17e6f0..27e896995e9b 100644
-> --- a/drivers/rtc/rtc-vt8500.c
-> +++ b/drivers/rtc/rtc-vt8500.c
-> @@ -271,6 +271,7 @@ static const struct of_device_id wmt_dt_ids[] = {
->  	{ .compatible = "via,vt8500-rtc", },
->  	{}
->  };
-> +MODULE_DEVICE_TABLE(of, wmt_dt_ids);
->  
->  static struct platform_driver vt8500_rtc_driver = {
->  	.probe		= vt8500_rtc_probe,
-> -- 
-> 2.4.3
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
