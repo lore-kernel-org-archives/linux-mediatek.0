@@ -1,118 +1,105 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 1/3] dt-bindings: thermal: Add binding document for
- Mediatek thermal controller
-Date: Fri, 28 Aug 2015 10:23:15 +0800
-Message-ID: <CAGS+omD4_uvpb-FOqpFbx=84unYjBSZajAKQ+4ek+QqSd-P28A@mail.gmail.com>
-References: <1440657677-2890-1-git-send-email-s.hauer@pengutronix.de>
- <1440657677-2890-2-git-send-email-s.hauer@pengutronix.de> <9hh1tepj6i4.fsf@e105922-lin.cambridge.arm.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v6] arm64: dts: Add spi bus dts
+Date: Fri, 28 Aug 2015 11:02:29 +0800
+Message-ID: <CAGS+omBBGmMzo6WeOdasMT9c-4BhKGJz1iPJjxF5vzJJ0J=Pug@mail.gmail.com>
+References: <1439782198-32396-1-git-send-email-leilk.liu@mediatek.com> <CAGS+omCFQRoH3ft2O5qPLBgngCuLPaminTys5OU6QcKmRXTyNw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <9hh1tepj6i4.fsf@e105922-lin.cambridge.arm.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Punit Agrawal <punit.agrawal@arm.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omCFQRoH3ft2O5qPLBgngCuLPaminTys5OU6QcKmRXTyNw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 27, 2015 at 7:49 PM, Punit Agrawal <punit.agrawal@arm.com> wrote:
-> [ + device tree folks ]
->
-> Hi Sascha,
->
-> When introducing a new binding, it is a good idea to get reviews from
-> the device tree maintainers. I've added a few folks here. Please keep
-> them in the loop for future postings.
->
-> Sascha Hauer <s.hauer@pengutronix.de> writes:
->
->> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
->
-> Please add a commit log.
->
->> ---
->>  .../bindings/thermal/mediatek-thermal.txt          | 38 ++++++++++++++++++++++
->>  include/dt-bindings/thermal/mt8173.h               | 13 ++++++++
->>  2 files changed, 51 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
->>  create mode 100644 include/dt-bindings/thermal/mt8173.h
+Matthias,
+
+On Mon, Aug 17, 2015 at 12:32 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> On Mon, Aug 17, 2015 at 11:29 AM, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 >>
->> diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
->> new file mode 100644
->> index 0000000..1697375
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
->> @@ -0,0 +1,38 @@
->> +* Mediatek Thermal
->> +
->> +This describes the device tree binding for the Mediatek thermal controller
->> +which measures the on-SoC temperatures. This device does not have its own ADC,
->> +instead it directly controls the AUXADC via AHB bus accesses. For this reason
->> +this device needs phandles to the AUXADC. Also it controls a mux in the
->> +apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
->> +is also needed.
->> +
->> +Required properties:
->> +- compatible: "mediatek,mt8173-thermal"
->> +- reg: Address range of the thermal controller
->> +- interrupts: IRQ for the thermal controller
->> +- clocks, clock-names: Clocks needed for the thermal controller. required
->> +                       clocks are:
->> +                    "therm":  Main clock needed for register access
->> +                    "auxadc": The AUXADC clock
->> +- resets: Reference to the reset controller controlling the thermal controller.
->> +- mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
->> +- mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
->> +- #thermal-sensor-cells : Should be 1. See ./thermal.txt for a description. See
->> +                       include/dt-bindings/thermal/mt8173.h for valid sensor
->> +                       numbers.
->> +
->> +Example:
->> +
->> +     thermal: thermal@1100b000 {
->> +             #thermal-sensor-cells = <1>;
->> +             compatible = "mediatek,mt8173-thermal";
->> +             reg = <0 0x1100b000 0 0x1000>;
->> +             interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
->> +             clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
->> +             clock-names = "therm", "auxadc";
->> +             resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
->> +             reset-names = "therm";
->> +             mediatek,auxadc = <&auxadc>;
->> +             mediatek,apmixedsys = <&apmixedsys>;
->> +     };
->> diff --git a/include/dt-bindings/thermal/mt8173.h b/include/dt-bindings/thermal/mt8173.h
->> new file mode 100644
->> index 0000000..692e74c
->> --- /dev/null
->> +++ b/include/dt-bindings/thermal/mt8173.h
->> @@ -0,0 +1,13 @@
->> +/*
->> + * This header provides constants for mediatek,mt8173-thermal
->> + */
->> +
->> +#ifndef _DT_BINDINGS_THERMAL_MEDIATEK_MT8173_H
->> +#define _DT_BINDINGS_THERMAL_MEDIATEK_MT8173_H
->> +
->> +#define MT8173_THERMAL_ZONE_CA53     0
->> +#define MT8173_THERMAL_ZONE_CA57     1
->> +#define MT8173_THERMAL_ZONE_GPU              2
->> +#define MT8173_THERMAL_ZONE_CORE     3
->> +
->> +#endif /* _DT_BINDINGS_THERMAL_MEDIATEK_MT8173_H */
+>> This patch adds MT8173 spi bus controllers into device tree.
+>>
+>> Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 >
-> The constants in this include are not used in the patchset. Please drop
-> this hunk and introduce it when you use it.
+> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-These constants are part of the devicetree ABI, and I believe they
-should be included with the binding.
-To make this more concrete, I think these constants could be used as
-array indices when initializing the corresponding banks of "bank_data"
-in patch 2 (like you do when initializing scp_domain_data in the
-scpsys driver).
+The other SPI patches have already been picked up in broonie's spi tree.
+Can you pick this one into your mediatek tree?
 
+Thanks.
 -Dan
 
 >
-> Thanks,
-> Punit
+>> ---
+>> Change in this patch:
+>> pinctl and pad-select fields are board specific, so move to
+>> mt8173-evb.dtsi, and status = "okay".
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++++++++++++++
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 12 ++++++++++++
+>>  2 files changed, 30 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> index 4be66ca..811cb76 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> @@ -387,6 +387,24 @@
+>>         };
+>>  };
+>>
+>> +&pio {
+>> +       spi_pins_a: spi0 {
+>> +               pins_spi {
+>> +                       pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
+>> +                               <MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
+>> +                               <MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
+>> +                               <MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
+>> +               };
+>> +       };
+>> +};
+>> +
+>> +&spi {
+>> +       pinctrl-names = "default";
+>> +       pinctrl-0 = <&spi_pins_a>;
+>> +       mediatek,pad-select = <0>;
+>> +       status = "okay";
+>> +};
+>> +
+>>  &uart0 {
+>>         status = "okay";
+>>  };
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> index d18ee42..3dfb6ed 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> @@ -365,6 +365,18 @@
+>>                         status = "disabled";
+>>                 };
+>>
+>> +               spi: spi@1100a000 {
+>> +                       compatible = "mediatek,mt8173-spi";
+>> +                       #address-cells = <1>;
+>> +                       #size-cells = <0>;
+>> +                       reg = <0 0x1100a000 0 0x1000>;
+>> +                       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
+>> +                       clocks = <&topckgen CLK_TOP_SPI_SEL>,
+>> +                                <&topckgen CLK_TOP_SYSPLL3_D2>;
+>> +                       clock-names = "spi-clk", "parent-clk";
+>> +                       status = "disabled";
+>> +               };
+>> +
+>>                 i2c3: i2c3@11010000 {
+>>                         compatible = "mediatek,mt8173-i2c";
+>>                         reg = <0 0x11010000 0 0x70>,
+>> --
+>> 1.8.1.1.dirty
+>>
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+>> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> Please read the FAQ at  http://www.tux.org/lkml/
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
