@@ -1,105 +1,39 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v6] arm64: dts: Add spi bus dts
-Date: Fri, 28 Aug 2015 11:02:29 +0800
-Message-ID: <CAGS+omBBGmMzo6WeOdasMT9c-4BhKGJz1iPJjxF5vzJJ0J=Pug@mail.gmail.com>
-References: <1439782198-32396-1-git-send-email-leilk.liu@mediatek.com> <CAGS+omCFQRoH3ft2O5qPLBgngCuLPaminTys5OU6QcKmRXTyNw@mail.gmail.com>
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
+Date: Fri, 28 Aug 2015 16:06:16 +0200
+Message-ID: <22538895.vrRgZUmQTV@vostro.rjw.lan>
+References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org> <20150826021659.GD8784@linux> <CALx668V2herrp6XOtCDR7nNvFhd7DLLMjXmr86cjfCOQ_cgmrw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omCFQRoH3ft2O5qPLBgngCuLPaminTys5OU6QcKmRXTyNw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CALx668V2herrp6XOtCDR7nNvFhd7DLLMjXmr86cjfCOQ_cgmrw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Matthias,
+On Wednesday, August 26, 2015 02:53:39 PM Pi-Cheng Chen wrote:
+> On Wed, Aug 26, 2015 at 10:16 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+> > On 26-08-15, 09:25, Pi-Cheng Chen wrote:
+> >> The [3/3] is based on Mediatek SoC maintainer tree[1] and the patch which
+> >> introduce a new clock type[2] consumed by MT8173 cpufreq driver. So it will
+> >> cause some conflicts if it goes through your tree. I am not sure how this
+> >> should be handled, but should it be merged through Mediatek SoC maintainer
+> >> tree?
+> >
+> > Just get that applied to MTK tree, it doesn't have any dependency on
+> > rest of the patches for build/boot. The only thing is that cpufreq
+> > wouldn't work and it will work as soon as Rafael's and MTK's trees are
+> > merged by Linus.
+> 
+> Thanks for your explanation.
+> 
+> @Rafael, Would you please apply [1,2] to your tree?
 
-On Mon, Aug 17, 2015 at 12:32 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> On Mon, Aug 17, 2015 at 11:29 AM, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->>
->> This patch adds MT8173 spi bus controllers into device tree.
->>
->> Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Applied, thanks!
 
-The other SPI patches have already been picked up in broonie's spi tree.
-Can you pick this one into your mediatek tree?
 
-Thanks.
--Dan
-
->
->> ---
->> Change in this patch:
->> pinctl and pad-select fields are board specific, so move to
->> mt8173-evb.dtsi, and status = "okay".
->> ---
->>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++++++++++++++
->>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 12 ++++++++++++
->>  2 files changed, 30 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> index 4be66ca..811cb76 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
->> @@ -387,6 +387,24 @@
->>         };
->>  };
->>
->> +&pio {
->> +       spi_pins_a: spi0 {
->> +               pins_spi {
->> +                       pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
->> +                               <MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
->> +                               <MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
->> +                               <MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
->> +               };
->> +       };
->> +};
->> +
->> +&spi {
->> +       pinctrl-names = "default";
->> +       pinctrl-0 = <&spi_pins_a>;
->> +       mediatek,pad-select = <0>;
->> +       status = "okay";
->> +};
->> +
->>  &uart0 {
->>         status = "okay";
->>  };
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> index d18ee42..3dfb6ed 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> @@ -365,6 +365,18 @@
->>                         status = "disabled";
->>                 };
->>
->> +               spi: spi@1100a000 {
->> +                       compatible = "mediatek,mt8173-spi";
->> +                       #address-cells = <1>;
->> +                       #size-cells = <0>;
->> +                       reg = <0 0x1100a000 0 0x1000>;
->> +                       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
->> +                       clocks = <&topckgen CLK_TOP_SPI_SEL>,
->> +                                <&topckgen CLK_TOP_SYSPLL3_D2>;
->> +                       clock-names = "spi-clk", "parent-clk";
->> +                       status = "disabled";
->> +               };
->> +
->>                 i2c3: i2c3@11010000 {
->>                         compatible = "mediatek,mt8173-i2c";
->>                         reg = <0 0x11010000 0 0x70>,
->> --
->> 1.8.1.1.dirty
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
->> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at  http://www.tux.org/lkml/
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+I speak only for myself.
+Rafael J. Wysocki, Intel Open Source Technology Center.
