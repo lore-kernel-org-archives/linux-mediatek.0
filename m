@@ -1,78 +1,39 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v7] arm64: dts: Add spi bus dts
-Date: Mon, 31 Aug 2015 21:44:19 +0800
-Message-ID: <1441028659-19068-1-git-send-email-leilk.liu@mediatek.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH] rtc: Fix module autoload for OF platform drivers
+Date: Mon, 31 Aug 2015 22:15:23 +0200
+Message-ID: <20150831201523.GB3409@piout.net>
+References: <1440676322-19870-1-git-send-email-javier@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1440676322-19870-1-git-send-email-javier@osg.samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
+To: Javier Martinez Canillas <javier@osg.samsung.com>
+Cc: linux-kernel@vger.kernel.org, Luis de Bethencourt <luis.bg@samsung.com>, Gregory Clement <gregory.clement@free-electrons.com>, Alessandro Zummo <a.zummo@towertech.it>, Support Opensource <support.opensource@diasemi.com>, Linus Walleij <linus.walleij@linaro.org>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Tony Prisk <linux@prisktech.co.nz>, rtc-linux@googlegroups.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds MT8173 spi bus controllers into device tree.
+On 27/08/2015 at 13:52:02 +0200, Javier Martinez Canillas wrote :
+> These platform drivers have a OF device ID table but the OF module
+> alias information is not created so module autoloading won't work.
+> 
+> Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> 
+> ---
+> 
+>  drivers/rtc/rtc-armada38x.c | 1 +
+>  drivers/rtc/rtc-coh901331.c | 1 +
+>  drivers/rtc/rtc-da9063.c    | 1 +
+>  drivers/rtc/rtc-moxart.c    | 1 +
+>  drivers/rtc/rtc-mpc5121.c   | 1 +
+>  drivers/rtc/rtc-mt6397.c    | 1 +
+>  drivers/rtc/rtc-mv.c        | 1 +
+>  drivers/rtc/rtc-vt8500.c    | 1 +
+>  8 files changed, 8 insertions(+)
+> 
+Applied, thanks.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
----
-Change in this patch:
-1. fix spi clock flow usage error.
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 13 +++++++++++++
- 2 files changed, 31 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 4be66ca..811cb76 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -387,6 +387,24 @@
- 	};
- };
- 
-+&pio {
-+	spi_pins_a: spi0 {
-+		pins_spi {
-+			pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
-+				<MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
-+				<MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
-+				<MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
-+		};
-+	};
-+};
-+
-+&spi {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&spi_pins_a>;
-+	mediatek,pad-select = <0>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index d18ee42..fcb4860 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -365,6 +365,19 @@
- 			status = "disabled";
- 		};
- 
-+		spi: spi@1100a000 {
-+			compatible = "mediatek,mt8173-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1100a000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_SYSPLL3_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&pericfg CLK_PERI_SPI0>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
- 		i2c3: i2c3@11010000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11010000 0 0x70>,
 -- 
-1.8.1.1.dirty
+Alexandre Belloni, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
