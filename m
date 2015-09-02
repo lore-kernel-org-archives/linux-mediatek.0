@@ -1,52 +1,49 @@
 From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend resume
-Date: Wed, 2 Sep 2015 14:02:44 +0800
-Message-ID: <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com> <55DB4609.5040904@arm.com>
+Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
+Date: Wed, 2 Sep 2015 14:45:56 +0800
+Message-ID: <CAGS+omAtiALWTjVJS4wNatXVLqZRSOk3m29QQvW=fQWs7Hs5ng@mail.gmail.com>
+References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org>
+ <20150826021659.GD8784@linux> <CALx668V2herrp6XOtCDR7nNvFhd7DLLMjXmr86cjfCOQ_cgmrw@mail.gmail.com>
+ <22538895.vrRgZUmQTV@vostro.rjw.lan>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <55DB4609.5040904@arm.com>
+In-Reply-To: <22538895.vrRgZUmQTV@vostro.rjw.lan>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: "maoguang.meng@mediatek.com" <maoguang.meng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Michael Turquette <mturquette@baylibre.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi maoguang,
+Matthias,
 
-On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+On Fri, Aug 28, 2015 at 10:06 PM, Rafael J. Wysocki <rjw@rjwysocki.net> wrote:
+> On Wednesday, August 26, 2015 02:53:39 PM Pi-Cheng Chen wrote:
+>> On Wed, Aug 26, 2015 at 10:16 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>> > On 26-08-15, 09:25, Pi-Cheng Chen wrote:
+>> >> The [3/3] is based on Mediatek SoC maintainer tree[1] and the patch which
+>> >> introduce a new clock type[2] consumed by MT8173 cpufreq driver. So it will
+>> >> cause some conflicts if it goes through your tree. I am not sure how this
+>> >> should be handled, but should it be merged through Mediatek SoC maintainer
+>> >> tree?
+>> >
+>> > Just get that applied to MTK tree, it doesn't have any dependency on
+>> > rest of the patches for build/boot. The only thing is that cpufreq
+>> > wouldn't work and it will work as soon as Rafael's and MTK's trees are
+>> > merged by Linus.
+>>
+>> Thanks for your explanation.
+>>
+>> @Rafael, Would you please apply [1,2] to your tree?
 >
->
-> On 14/08/15 09:38, maoguang.meng@mediatek.com wrote:
->>
->> From: Maoguang Meng <maoguang.meng@mediatek.com>
->>
->> This patch implement irq_set_wake to get who is wakeup source and
->> setup on suspend resume.
->>
->> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
->>
-[snip]
+> Applied, thanks!
 
-Can you please respond to Sudeep's questions:
+Can you please apply [3] from this set to your dts tree?
 
-> Does this pinmux controller:
->
-> 1. Support wake-up configuration ? If not, you need to use
->    IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
->    mask_{set,clear} if the same registers are used for {en,dis}able
->
-> 2. Is in always on domain ? If not, you need save/restore only to
->    resume back the functionality. Generally we can set
->    IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
->    disabled during suspend and re-enabled in resume path. You just
->    save/restore raw values without tracking the wake-up source.
->
-> Also I see that no care is taken to set the port irq as wake enable
-> source. It may work with current mainline, but won't with -next. Please
-> ensure the port irq to the parent interrupt controller remains
-> enabled(i.e set as wake).
-
->
-> Regards,
-> Sudeep
+> --
+> I speak only for myself.
+> Rafael J. Wysocki, Intel Open Source Technology Center.
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
