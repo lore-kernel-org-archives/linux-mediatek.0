@@ -1,13 +1,13 @@
-From: Clemens Ladisch <clemens@ladisch.de>
-Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check
-	condition	in snd_pcm_sw_params_set_avail_min
-Date: Thu, 3 Sep 2015 10:14:03 +0200
-Message-ID: <55E8014B.8030800@ladisch.de>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check condition
+ in snd_pcm_sw_params_set_avail_min
+Date: Thu, 3 Sep 2015 10:38:10 +0100
+Message-ID: <20150903093810.GE5313@sirena.org.uk>
 References: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
- <s5hfv2wvv35.wl-tiwai@suse.de> <1441266346.32609.18.camel@mtksdaap41>
+ <s5hfv2wvv35.wl-tiwai@suse.de>
+ <1441266346.32609.18.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9180223265360703298=="
 Return-path: <alsa-devel-bounces@alsa-project.org>
 In-Reply-To: <1441266346.32609.18.camel@mtksdaap41>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
@@ -19,52 +19,63 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Koro Chen <koro.chen@mediatek.com>, Takashi Iwai <tiwai@suse.de>
-Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
+To: Koro Chen <koro.chen@mediatek.com>
+Cc: Takashi Iwai <tiwai@suse.de>, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Koro Chen wrote:
+
+--===============9180223265360703298==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="JSVXQxoTSdH0Ya++"
+Content-Disposition: inline
+
+
+--JSVXQxoTSdH0Ya++
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Sep 03, 2015 at 03:45:46PM +0800, Koro Chen wrote:
 > On Thu, 2015-09-03 at 09:08 +0200, Takashi Iwai wrote:
->> On Thu, 03 Sep 2015 05:20:54 +0200,
->> Koro Chen wrote:
->>> When we use a ping-ping buffer in capture, and if hw_ptr reported
->>> at IRQ is a little smaller than period_size:
->>>
->>> |xxxxxxxxxxxxxxxxxxxxxxxxxxxx--|-----------------------------|
->>>                             hw_ptr < period_size
->>
->> How this happens?  The period size is the size where irq (or wakeup)
->> wakes up for read/write.  Why the driver wakes up even if there is no
->> enough data?
->
+
+> > How this happens?  The period size is the size where irq (or wakeup)
+> > wakes up for read/write.  Why the driver wakes up even if there is no
+> > enough data?
+
 > Yes it is odd to what we would normally expect. Due to our HW design,
 > when irq comes, audio HW actually has collected a full period of data,
 > but there is a buffer between the audio HW and memory, so at that moment
-> some samples are still in the buffer, not on the memory.
+> some samples are still in the buffer, not on the memory. Add a small
+> delay between triggering capture HW and enabling IRQ can also fix this,
+> although I think changing the avail_min should be better.=20
 
-Please note that ALSA (both the kernel and the userspace API) requires
-that after a period interrupt, the _complete_ period has been read from/
-written to the memory buffer.  This is needed because the interrupt is
-the mechanism that synchronizes software and the DMA controller.
-(Except when using the NO_PERIOD_WAKUP flag, but you cannot rely on the
-software using it.)
+This does sound like something that should be handled in the kernel -
+one thing we should be doing is providing a uniform interface to
+userspace.
+
+--JSVXQxoTSdH0Ya++
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJV6BUBAAoJECTWi3JdVIfQ9zkH/0q5H5DSezFfF1ym7xiheckM
+xQn7xhzQe6EUSmuZ1nlAduA+4zS4UADPuPa5YBT7RppKKzgGZIiHGN+lfWb46jDd
+/vluDrWYBhqFNWgu/VASCwQMLa7zAAA08PDhGKrBtw48m5SWkirDnTJYqQ3mhlic
+9xx8Gcm0nHUJQhFufspoj8M9ibZH30ZJIx2cKKJq1KDzMGhPBPGZnpRsAKW2QhAa
+mgZxXIw8FvO5I6MlCsJwbL/d+/AOoAlMjEiHAxE8q4WGKdGfvmbtMg1nfzK5Vyqt
+wzW2InMjLUIOdgmVzErRlQW2lcSjHHwmwXRjzWIi/oRXCAZYg6uFoDkWMJQR3Zs=
+=OfFT
+-----END PGP SIGNATURE-----
+
+--JSVXQxoTSdH0Ya++--
+
+--===============9180223265360703298==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 
-Typically, any buffering is done inside the DMA controller, which also
-issues interrupts, so this problem should not happen with correctly
-working hardware.
-
-(On PCI systems, writes to system memory can be buffered, but if the
-interrupt handler does a read from a device register, the PCI memory
-ordering rules ensure that all DMA accesses started before the interrupt
-are finished before the read.)
-
-
-How does your hardware work?  I guess that whatever component does the
-buffering is independent of the component that generates interrupts, and
-it does not enforce any memory ordering either?  And there isn't
-a mechanism to flush the buffer?
-
-
-Regards,
-Clemens
+--===============9180223265360703298==--
