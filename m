@@ -1,50 +1,50 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH] cpufreq: Add ARM_MT8173_CPUFREQ dependencyon THERMAL
-Date: Thu, 3 Sep 2015 21:20:29 +0530
-Message-ID: <20150903155029.GB5332@linux>
-References: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: linux-pm@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Subject: [PATCH] spi: mediatek: fix wrong error return value on probe
+Date: Fri,  4 Sep 2015 00:50:56 +0200
+Message-ID: <1441320656-8666-1-git-send-email-javier@osg.samsung.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 03-09-15, 08:20, Guenter Roeck wrote:
-> If ARM_MT8173_CPUFREQ is configured, and THERMAL is configured as module,
-> the following build error is seen for arm:allmodconfig and
-> arm64:allmodconfig.
-> 
-> drivers/built-in.o: In function `mtk_cpufreq_ready':
-> :(.text+0x32a20c): undefined reference to `of_cpufreq_cooling_register'
-> drivers/built-in.o: In function `mtk_cpufreq_exit':
-> :(.text+0x32a420): undefined reference to `cpufreq_cooling_unregister'
-> 
-> The fix is similar to CPUFREQ_DT, but more restrictive since
-> ARM_MT8173_CPUFREQ can not be built as module.
-> 
-> Fixes: 1453863fb02a ("cpufreq: mediatek: Add MT8173 cpufreq driver")
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> It might also make sense to declare ARM_MT8173_CPUFREQ as tristate
-> and relax the conditions, but I don't know if that is feasible.
-> 
->  drivers/cpufreq/Kconfig.arm | 1 +
->  1 file changed, 1 insertion(+)
+Commit adcbcfea15d62 ("spi: mediatek: fix spi clock usage error")
+added a new sel_clk but introduced bugs in the error paths since
+the wrong struct clk pointers are passed to PTR_ERR().
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Fixes: adcbcfea15d62 ("spi: mediatek: fix spi clock usage error")
+Signed-off-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
 
+---
+
+ drivers/spi/spi-mt65xx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 6fbb5e5132b0..e9839a4e0175 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -585,14 +585,14 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 
+ 	mdata->sel_clk = devm_clk_get(&pdev->dev, "sel-clk");
+ 	if (IS_ERR(mdata->sel_clk)) {
+-		ret = PTR_ERR(mdata->spi_clk);
++		ret = PTR_ERR(mdata->sel_clk);
+ 		dev_err(&pdev->dev, "failed to get sel-clk: %d\n", ret);
+ 		goto err_put_master;
+ 	}
+ 
+ 	mdata->spi_clk = devm_clk_get(&pdev->dev, "spi-clk");
+ 	if (IS_ERR(mdata->spi_clk)) {
+-		ret = PTR_ERR(mdata->parent_clk);
++		ret = PTR_ERR(mdata->spi_clk);
+ 		dev_err(&pdev->dev, "failed to get spi-clk: %d\n", ret);
+ 		goto err_put_master;
+ 	}
 -- 
-viresh
+2.4.3
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
