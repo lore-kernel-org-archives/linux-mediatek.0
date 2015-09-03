@@ -1,81 +1,88 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check condition
- in snd_pcm_sw_params_set_avail_min
-Date: Thu, 3 Sep 2015 10:38:10 +0100
-Message-ID: <20150903093810.GE5313@sirena.org.uk>
-References: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
- <s5hfv2wvv35.wl-tiwai@suse.de>
- <1441266346.32609.18.camel@mtksdaap41>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: The default value of enable_gpio in pwm-backlight driver?
+Date: Thu, 3 Sep 2015 21:08:24 +0800
+Message-ID: <1441285704.27600.26.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============9180223265360703298=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1441266346.32609.18.camel@mtksdaap41>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: Takashi Iwai <tiwai@suse.de>, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Alexandre Courbot <acourbot@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>
+Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org, djkurtz@chromium.org, yingjoe.chen@mediatek.com, yh.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi all,
 
---===============9180223265360703298==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="JSVXQxoTSdH0Ya++"
-Content-Disposition: inline
+I have a problem while using the pwm-backlight driver.
+I want to match the panel power sequence timing but fail in the probe
+function. I think it is right to set the gpio "inactive" at
+initialization. For now, the probe function always pulls high
+enable_gpio although I set it as GPIO_ACTIVE_HIGH in dts.
+I find the change and excerpt part of it. I am not sure if it is right.
+If I misunderstanding something, please let me know.
 
-
---JSVXQxoTSdH0Ya++
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 03, 2015 at 03:45:46PM +0800, Koro Chen wrote:
-> On Thu, 2015-09-03 at 09:08 +0200, Takashi Iwai wrote:
-
-> > How this happens?  The period size is the size where irq (or wakeup)
-> > wakes up for read/write.  Why the driver wakes up even if there is no
-> > enough data?
-
-> Yes it is odd to what we would normally expect. Due to our HW design,
-> when irq comes, audio HW actually has collected a full period of data,
-> but there is a buffer between the audio HW and memory, so at that moment
-> some samples are still in the buffer, not on the memory. Add a small
-> delay between triggering capture HW and enabling IRQ can also fix this,
-> although I think changing the avail_min should be better.=20
-
-This does sound like something that should be handled in the kernel -
-one thing we should be doing is providing a uniform interface to
-userspace.
-
---JSVXQxoTSdH0Ya++
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV6BUBAAoJECTWi3JdVIfQ9zkH/0q5H5DSezFfF1ym7xiheckM
-xQn7xhzQe6EUSmuZ1nlAduA+4zS4UADPuPa5YBT7RppKKzgGZIiHGN+lfWb46jDd
-/vluDrWYBhqFNWgu/VASCwQMLa7zAAA08PDhGKrBtw48m5SWkirDnTJYqQ3mhlic
-9xx8Gcm0nHUJQhFufspoj8M9ibZH30ZJIx2cKKJq1KDzMGhPBPGZnpRsAKW2QhAa
-mgZxXIw8FvO5I6MlCsJwbL/d+/AOoAlMjEiHAxE8q4WGKdGfvmbtMg1nfzK5Vyqt
-wzW2InMjLUIOdgmVzErRlQW2lcSjHHwmwXRjzWIi/oRXCAZYg6uFoDkWMJQR3Zs=
-=OfFT
------END PGP SIGNATURE-----
-
---JSVXQxoTSdH0Ya++--
-
---===============9180223265360703298==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Regards,
+YH Huang
 
 
---===============9180223265360703298==--
+From	Alexandre Courbot <>
+Subject	[PATCH 2/2] pwm-backlight: switch to gpiod interface
+Date	Thu, 27 Feb 2014 14:53:34 +0900
+
+Switch to the new gpiod interface, which allows to handle GPIO
+properties such as active low transparently and removes a whole bunch of
+code.
+
+There are still a couple of users of this driver that rely on passing
+the enable GPIO number through platform data, so a fallback mechanism
+using a GPIO number is still available to avoid breaking them. It will
+be removed once current users have switched to the GPIO lookup tables
+provided by the gpiod interface.
+
+--- a/drivers/video/backlight/pwm_bl.c
++++ b/drivers/video/backlight/pwm_bl.c
+
+@@ -265,26 +245,39 @@ static int pwm_backlight_probe(struct
+platform_device *pdev)
+ 	pb->dev = &pdev->dev;
+ 	pb->enabled = false;
+ 
+-	if (gpio_is_valid(pb->enable_gpio)) {
+-		unsigned long flags;
+-
+-		if (pb->enable_gpio_flags & PWM_BACKLIGHT_GPIO_ACTIVE_LOW)
+-			flags = GPIOF_OUT_INIT_HIGH;
+-		else
+-			flags = GPIOF_OUT_INIT_LOW;
++	pb->enable_gpio = devm_gpiod_get(&pdev->dev, "enable");
++	if (IS_ERR(pb->enable_gpio)) {
++		ret = PTR_ERR(pb->enable_gpio);
++		if (ret == -ENOENT) {
++			pb->enable_gpio = NULL;
++			ret = 0;
++		} else {
++			goto err_alloc;
++		}
++	}
+ 
+-		ret = gpio_request_one(pb->enable_gpio, flags, "enable");
++	/*
++	 * Compatibility fallback for drivers still using the integer GPIO
++	 * platform data. Must go away soon.
++	 */
++	if (pb->enable_gpio == NULL && gpio_is_valid(data->enable_gpio)) {
++		ret = devm_gpio_request_one(&pdev->dev, data->enable_gpio,
++					    GPIOF_OUT_INIT_HIGH, "enable");
+ 		if (ret < 0) {
+ 			dev_err(&pdev->dev, "failed to request GPIO#%d: %d\n",
+-				pb->enable_gpio, ret);
++				data->enable_gpio, ret);
+ 			goto err_alloc;
+ 		}
++		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
+ 	}
+ 
++	if (pb->enable_gpio)
++		gpiod_direction_output(pb->enable_gpio, 1);
+	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	Is here right?
