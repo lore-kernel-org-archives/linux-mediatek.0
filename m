@@ -1,15 +1,15 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check condition
- in snd_pcm_sw_params_set_avail_min
-Date: Thu, 3 Sep 2015 15:45:46 +0800
-Message-ID: <1441266346.32609.18.camel@mtksdaap41>
+From: Clemens Ladisch <clemens@ladisch.de>
+Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check
+	condition	in snd_pcm_sw_params_set_avail_min
+Date: Thu, 3 Sep 2015 10:14:03 +0200
+Message-ID: <55E8014B.8030800@ladisch.de>
 References: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
- <s5hfv2wvv35.wl-tiwai@suse.de>
+ <s5hfv2wvv35.wl-tiwai@suse.de> <1441266346.32609.18.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <s5hfv2wvv35.wl-tiwai@suse.de>
+In-Reply-To: <1441266346.32609.18.camel@mtksdaap41>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -19,81 +19,52 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Takashi Iwai <tiwai@suse.de>
+To: Koro Chen <koro.chen@mediatek.com>, Takashi Iwai <tiwai@suse.de>
 Cc: alsa-devel@alsa-project.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-09-03 at 09:08 +0200, Takashi Iwai wrote:
-> On Thu, 03 Sep 2015 05:20:54 +0200,
-> Koro Chen wrote:
-> > 
-> > When we use a ping-ping buffer in capture, and if hw_ptr reported
-> > at IRQ is a little smaller than period_size:
-> > 
-> > |xxxxxxxxxxxxxxxxxxxxxxxxxxxx--|-----------------------------|
-> >                             hw_ptr < period_size
-> 
-> How this happens?  The period size is the size where irq (or wakeup)
-> wakes up for read/write.  Why the driver wakes up even if there is no
-> enough data?
-> 
-Yes it is odd to what we would normally expect. Due to our HW design,
-when irq comes, audio HW actually has collected a full period of data,
-but there is a buffer between the audio HW and memory, so at that moment
-some samples are still in the buffer, not on the memory. Add a small
-delay between triggering capture HW and enabling IRQ can also fix this,
-although I think changing the avail_min should be better. 
+Koro Chen wrote:
+> On Thu, 2015-09-03 at 09:08 +0200, Takashi Iwai wrote:
+>> On Thu, 03 Sep 2015 05:20:54 +0200,
+>> Koro Chen wrote:
+>>> When we use a ping-ping buffer in capture, and if hw_ptr reported
+>>> at IRQ is a little smaller than period_size:
+>>>
+>>> |xxxxxxxxxxxxxxxxxxxxxxxxxxxx--|-----------------------------|
+>>>                             hw_ptr < period_size
+>>
+>> How this happens?  The period size is the size where irq (or wakeup)
+>> wakes up for read/write.  Why the driver wakes up even if there is no
+>> enough data?
+>
+> Yes it is odd to what we would normally expect. Due to our HW design,
+> when irq comes, audio HW actually has collected a full period of data,
+> but there is a buffer between the audio HW and memory, so at that moment
+> some samples are still in the buffer, not on the memory.
 
-> > This available buffer will not be read since its size is smaller than
-> > avail_min (which is set to be period_size), and read thread continues
-> > to sleep. If the next hw_ptr is just a little larger than buffer_size,
-> > overrun occurs.
-> > 
-> > This could be resolved by setting a small avail_min to kernel,
-> > for example, 1, so read thread wakes up and reads every data at IRQ.
-> > But current alsa-lib only allows avail_min to be at least period_size.
-> > Remove the constraint and only check for zero case.
-> 
-> The restriction was introduced for avoiding CPU hogs with rate plugin
-> in many years ago.  avail_min=1 *might* work now because of the later
-> fix for rate plugin, but this must be verified.
-> 
-Sounds a little dangerous...How should I verify this? It this problem
-platform dependent?
-> 
-> thanks,
-> 
-> Takashi
-> 
-> > 
-> > Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-> > ---
-> >  src/pcm/pcm.c |    8 ++------
-> >  1 file changed, 2 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/src/pcm/pcm.c b/src/pcm/pcm.c
-> > index f5fc728..8492689 100644
-> > --- a/src/pcm/pcm.c
-> > +++ b/src/pcm/pcm.c
-> > @@ -5958,12 +5958,8 @@ int snd_pcm_sw_params_set_avail_min(snd_pcm_t *pcm, snd_pcm_sw_params_t *params,
-> >  #endif
-> >  {
-> >  	assert(pcm && params);
-> > -	/* Fix avail_min if it's below period size.  The period_size
-> > -	 * defines the minimal wake-up timing accuracy, so it doesn't
-> > -	 * make sense to set below that.
-> > -	 */
-> > -	if (val < pcm->period_size)
-> > -		val = pcm->period_size;
-> > +	if (!val)
-> > +		val = 1;
-> >  	params->avail_min = val;
-> >  	return 0;
-> >  }
-> > -- 
-> > 1.7.9.5
-> > 
-> _______________________________________________
-> Alsa-devel mailing list
-> Alsa-devel@alsa-project.org
-> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+Please note that ALSA (both the kernel and the userspace API) requires
+that after a period interrupt, the _complete_ period has been read from/
+written to the memory buffer.  This is needed because the interrupt is
+the mechanism that synchronizes software and the DMA controller.
+(Except when using the NO_PERIOD_WAKUP flag, but you cannot rely on the
+software using it.)
+
+
+Typically, any buffering is done inside the DMA controller, which also
+issues interrupts, so this problem should not happen with correctly
+working hardware.
+
+(On PCI systems, writes to system memory can be buffered, but if the
+interrupt handler does a read from a device register, the PCI memory
+ordering rules ensure that all DMA accesses started before the interrupt
+are finished before the read.)
+
+
+How does your hardware work?  I guess that whatever component does the
+buffering is independent of the component that generates interrupts, and
+it does not enforce any memory ordering either?  And there isn't
+a mechanism to flush the buffer?
+
+
+Regards,
+Clemens
