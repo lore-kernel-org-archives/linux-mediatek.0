@@ -1,88 +1,46 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: The default value of enable_gpio in pwm-backlight driver?
-Date: Thu, 3 Sep 2015 21:08:24 +0800
-Message-ID: <1441285704.27600.26.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Alexandre Courbot <acourbot@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>
-Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org, djkurtz@chromium.org, yingjoe.chen@mediatek.com, yh.huang@mediatek.com
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH] cpufreq: Add ARM_MT8173_CPUFREQ dependencyon THERMAL
+Date: Thu,  3 Sep 2015 08:20:58 -0700
+Message-ID: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Guenter Roeck <linux@roeck-us.net>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi all,
+If ARM_MT8173_CPUFREQ is configured, and THERMAL is configured as module,
+the following build error is seen for arm:allmodconfig and
+arm64:allmodconfig.
 
-I have a problem while using the pwm-backlight driver.
-I want to match the panel power sequence timing but fail in the probe
-function. I think it is right to set the gpio "inactive" at
-initialization. For now, the probe function always pulls high
-enable_gpio although I set it as GPIO_ACTIVE_HIGH in dts.
-I find the change and excerpt part of it. I am not sure if it is right.
-If I misunderstanding something, please let me know.
+drivers/built-in.o: In function `mtk_cpufreq_ready':
+:(.text+0x32a20c): undefined reference to `of_cpufreq_cooling_register'
+drivers/built-in.o: In function `mtk_cpufreq_exit':
+:(.text+0x32a420): undefined reference to `cpufreq_cooling_unregister'
 
-Regards,
-YH Huang
+The fix is similar to CPUFREQ_DT, but more restrictive since
+ARM_MT8173_CPUFREQ can not be built as module.
 
+Fixes: 1453863fb02a ("cpufreq: mediatek: Add MT8173 cpufreq driver")
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+It might also make sense to declare ARM_MT8173_CPUFREQ as tristate
+and relax the conditions, but I don't know if that is feasible.
 
-From	Alexandre Courbot <>
-Subject	[PATCH 2/2] pwm-backlight: switch to gpiod interface
-Date	Thu, 27 Feb 2014 14:53:34 +0900
+ drivers/cpufreq/Kconfig.arm | 1 +
+ 1 file changed, 1 insertion(+)
 
-Switch to the new gpiod interface, which allows to handle GPIO
-properties such as active low transparently and removes a whole bunch of
-code.
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index 77aa34eae92c..c4c6200be435 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -133,6 +133,7 @@ config ARM_KIRKWOOD_CPUFREQ
+ config ARM_MT8173_CPUFREQ
+ 	bool "Mediatek MT8173 CPUFreq support"
+ 	depends on ARCH_MEDIATEK && REGULATOR
++	depends on !CPU_THERMAL || THERMAL=y
+ 	select PM_OPP
+ 	help
+ 	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
+-- 
+2.1.4
 
-There are still a couple of users of this driver that rely on passing
-the enable GPIO number through platform data, so a fallback mechanism
-using a GPIO number is still available to avoid breaking them. It will
-be removed once current users have switched to the GPIO lookup tables
-provided by the gpiod interface.
-
---- a/drivers/video/backlight/pwm_bl.c
-+++ b/drivers/video/backlight/pwm_bl.c
-
-@@ -265,26 +245,39 @@ static int pwm_backlight_probe(struct
-platform_device *pdev)
- 	pb->dev = &pdev->dev;
- 	pb->enabled = false;
- 
--	if (gpio_is_valid(pb->enable_gpio)) {
--		unsigned long flags;
--
--		if (pb->enable_gpio_flags & PWM_BACKLIGHT_GPIO_ACTIVE_LOW)
--			flags = GPIOF_OUT_INIT_HIGH;
--		else
--			flags = GPIOF_OUT_INIT_LOW;
-+	pb->enable_gpio = devm_gpiod_get(&pdev->dev, "enable");
-+	if (IS_ERR(pb->enable_gpio)) {
-+		ret = PTR_ERR(pb->enable_gpio);
-+		if (ret == -ENOENT) {
-+			pb->enable_gpio = NULL;
-+			ret = 0;
-+		} else {
-+			goto err_alloc;
-+		}
-+	}
- 
--		ret = gpio_request_one(pb->enable_gpio, flags, "enable");
-+	/*
-+	 * Compatibility fallback for drivers still using the integer GPIO
-+	 * platform data. Must go away soon.
-+	 */
-+	if (pb->enable_gpio == NULL && gpio_is_valid(data->enable_gpio)) {
-+		ret = devm_gpio_request_one(&pdev->dev, data->enable_gpio,
-+					    GPIOF_OUT_INIT_HIGH, "enable");
- 		if (ret < 0) {
- 			dev_err(&pdev->dev, "failed to request GPIO#%d: %d\n",
--				pb->enable_gpio, ret);
-+				data->enable_gpio, ret);
- 			goto err_alloc;
- 		}
-+		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
- 	}
- 
-+	if (pb->enable_gpio)
-+		gpiod_direction_output(pb->enable_gpio, 1);
-	^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-	Is here right?
