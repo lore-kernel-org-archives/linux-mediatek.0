@@ -1,49 +1,64 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH 0/3 v6] Add Mediatek MT8173 cpufreq driver
-Date: Wed, 2 Sep 2015 19:23:03 +0200
-Message-ID: <55E73077.8060106@gmail.com>
-References: <1439803465-19683-1-git-send-email-pi-cheng.chen@linaro.org>
- <20150826021659.GD8784@linux>
- <CALx668V2herrp6XOtCDR7nNvFhd7DLLMjXmr86cjfCOQ_cgmrw@mail.gmail.com>
- <22538895.vrRgZUmQTV@vostro.rjw.lan>
- <CAGS+omAtiALWTjVJS4wNatXVLqZRSOk3m29QQvW=fQWs7Hs5ng@mail.gmail.com>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [RFC PATCH (alsa-lib)] pcm: Modify check condition in
+	snd_pcm_sw_params_set_avail_min
+Date: Thu, 3 Sep 2015 11:20:54 +0800
+Message-ID: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omAtiALWTjVJS4wNatXVLqZRSOk3m29QQvW=fQWs7Hs5ng@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Michael Turquette <mturquette@baylibre.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, linux-mediatek@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org, tiwai@suse.de, lgirdwood@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, Koro Chen <koro.chen@mediatek.com>, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+When we use a ping-ping buffer in capture, and if hw_ptr reported
+at IRQ is a little smaller than period_size:
 
+|xxxxxxxxxxxxxxxxxxxxxxxxxxxx--|-----------------------------|
+                            hw_ptr < period_size
 
-On 02/09/15 08:45, Daniel Kurtz wrote:
-> Matthias,
->
-> On Fri, Aug 28, 2015 at 10:06 PM, Rafael J. Wysocki <rjw@rjwysocki.net> wrote:
->> On Wednesday, August 26, 2015 02:53:39 PM Pi-Cheng Chen wrote:
->>> On Wed, Aug 26, 2015 at 10:16 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
->>>> On 26-08-15, 09:25, Pi-Cheng Chen wrote:
->>>>> The [3/3] is based on Mediatek SoC maintainer tree[1] and the patch which
->>>>> introduce a new clock type[2] consumed by MT8173 cpufreq driver. So it will
->>>>> cause some conflicts if it goes through your tree. I am not sure how this
->>>>> should be handled, but should it be merged through Mediatek SoC maintainer
->>>>> tree?
->>>>
->>>> Just get that applied to MTK tree, it doesn't have any dependency on
->>>> rest of the patches for build/boot. The only thing is that cpufreq
->>>> wouldn't work and it will work as soon as Rafael's and MTK's trees are
->>>> merged by Linus.
->>>
->>> Thanks for your explanation.
->>>
->>> @Rafael, Would you please apply [1,2] to your tree?
->>
->> Applied, thanks!
->
-> Can you please apply [3] from this set to your dts tree?
->
+This available buffer will not be read since its size is smaller than
+avail_min (which is set to be period_size), and read thread continues
+to sleep. If the next hw_ptr is just a little larger than buffer_size,
+overrun occurs.
 
-I will as soon as v4.3-rc1 shows up.
+This could be resolved by setting a small avail_min to kernel,
+for example, 1, so read thread wakes up and reads every data at IRQ.
+But current alsa-lib only allows avail_min to be at least period_size.
+Remove the constraint and only check for zero case.
+
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+---
+ src/pcm/pcm.c |    8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/src/pcm/pcm.c b/src/pcm/pcm.c
+index f5fc728..8492689 100644
+--- a/src/pcm/pcm.c
++++ b/src/pcm/pcm.c
+@@ -5958,12 +5958,8 @@ int snd_pcm_sw_params_set_avail_min(snd_pcm_t *pcm, snd_pcm_sw_params_t *params,
+ #endif
+ {
+ 	assert(pcm && params);
+-	/* Fix avail_min if it's below period size.  The period_size
+-	 * defines the minimal wake-up timing accuracy, so it doesn't
+-	 * make sense to set below that.
+-	 */
+-	if (val < pcm->period_size)
+-		val = pcm->period_size;
++	if (!val)
++		val = 1;
+ 	params->avail_min = val;
+ 	return 0;
+ }
+-- 
+1.7.9.5
