@@ -1,34 +1,53 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [RFC PATCH 2/3] clocksource: mtk_timer: change pr_warn()s to
- pr_err()s in mtk_timer_init
-Date: Thu, 03 Sep 2015 20:40:06 -0700
-Message-ID: <1441338006.9666.38.camel@perches.com>
-References: <1441336900-15095-1-git-send-email-alexey.klimov@linaro.org>
-	 <1441336900-15095-2-git-send-email-alexey.klimov@linaro.org>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH] soc: mediatek: Move the initial setting of pmic wrap interrupt before requesting irq.
+Date: Fri, 4 Sep 2015 12:05:12 +0800
+Message-ID: <1441339512-15510-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441336900-15095-2-git-send-email-alexey.klimov@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alexey Klimov <alexey.klimov@linaro.org>
-Cc: daniel.lezcano@linaro.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, yingjoe.chen@mediatek.com, tglx@linutronix.de, linux-kernel@vger.kernel.org, klimov.linux@gmail.com
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-09-04 at 06:21 +0300, Alexey Klimov wrote:
-> These messages are actually errors and not warnings.
-> Use pr_err() macro for them and add missing \n.
-[]
-> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-[]
-> @@ -184,7 +184,7 @@ static void __init mtk_timer_init(struct device_node *node)
->  
->  	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
->  	if (!evt) {
-> -		pr_warn("Can't allocate mtk clock event driver struct");
-> +		pr_err("Can't allocate mtk clock event driver struct\n");
->  		return;
->  	}
+Seperate the initialization of pmic wrap interrupt from pmic wrap init to make sure setting is correct before requesting irq.
 
-Might as well remove this one as there's
-a generic stack_dump() on alloc failures.
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index f432291..c91d629 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -725,10 +725,6 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x1, PWRAP_WACS2_EN);
+ 	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+ 	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
+-	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+-	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+-	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+-	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
+ 
+ 	if (pwrap_is_mt8135(wrp)) {
+ 		/* enable pwrap events and pwrap bridge in AP side */
+@@ -896,6 +892,16 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	/*
++	 * watch dog@pwrap,
++	 * The bootloader may not initial the wdt/interrupt setting of pwrap,
++	 * set it before reguesting the irq.
++	 */
++	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
++	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
++	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
++	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
++
+ 	irq = platform_get_irq(pdev, 0);
+ 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
+ 			"mt-pmic-pwrap", wrp);
+-- 
+1.8.1.1.dirty
