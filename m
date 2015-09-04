@@ -1,53 +1,40 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] soc: mediatek: Move the initial setting of pmic wrap interrupt before requesting irq.
-Date: Fri, 4 Sep 2015 12:05:12 +0800
-Message-ID: <1441339512-15510-1-git-send-email-henryc.chen@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH V2] clockevents/drivers/mtk: Fix spurious interrupt
+ leading to crash
+Date: Fri, 4 Sep 2015 15:15:53 +0800
+Message-ID: <1441350953.12270.6.camel@mtksdaap41>
+References: <1440426924.17418.11.camel@mtksdaap41>
+		 <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
+	 <1440508871.29634.1.camel@mtksdaap41> <55DDCC4B.7010203@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <55DDCC4B.7010203@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, matthias.bgg@gmail.com, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Seperate the initialization of pmic wrap interrupt from pmic wrap init to make sure setting is correct before requesting irq.
+On Wed, 2015-08-26 at 16:25 +0200, Daniel Lezcano wrote:
+> On 08/25/2015 03:21 PM, Yingjoe Chen wrote:
+> > Tested-by: Yingjoe Chen<yingjoe.chen@mediatek.com>
+> 
+> Applied to my tree for 4.4.
+> 
+>    -- Daniel
+> 
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+Hi Daniel,
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index f432291..c91d629 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -725,10 +725,6 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 0x1, PWRAP_WACS2_EN);
- 	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
- 	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
--	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
--	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
--	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
--	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
- 
- 	if (pwrap_is_mt8135(wrp)) {
- 		/* enable pwrap events and pwrap bridge in AP side */
-@@ -896,6 +892,16 @@ static int pwrap_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	/*
-+	 * watch dog@pwrap,
-+	 * The bootloader may not initial the wdt/interrupt setting of pwrap,
-+	 * set it before reguesting the irq.
-+	 */
-+	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-+	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
-+	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-+	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
-+
- 	irq = platform_get_irq(pdev, 0);
- 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
- 			"mt-pmic-pwrap", wrp);
--- 
-1.8.1.1.dirty
+I can't find this patch in
+https://git.linaro.org/people/daniel.lezcano/linux.git
+Is this tree public now? Where can I see it?
+
+Also, will you take patch[1] "clocksource: mediatek: Use GPT as sched
+clock source" in your tree?
+
+Joe.C
+
+[1]:
+http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001547.html
