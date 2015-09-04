@@ -1,48 +1,34 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check condition
- in snd_pcm_sw_params_set_avail_min
-Date: Fri, 4 Sep 2015 10:49:35 +0800
-Message-ID: <1441334975.32609.30.camel@mtksdaap41>
-References: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
- <s5hfv2wvv35.wl-tiwai@suse.de> <1441266346.32609.18.camel@mtksdaap41>
- <20150903093810.GE5313@sirena.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20150903093810.GE5313@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Takashi Iwai <tiwai@suse.de>, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
+From: Alexey Klimov <alexey.klimov@linaro.org>
+Subject: [RFC PATCH 1/3] clocksource: mtk_timer: add pr_fmt define
+Date: Fri,  4 Sep 2015 06:21:38 +0300
+Message-ID: <1441336900-15095-1-git-send-email-alexey.klimov@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: daniel.lezcano@linaro.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
+Cc: yingjoe.chen@mediatek.com, tglx@linutronix.de, linux-kernel@vger.kernel.org, klimov.linux@gmail.com, Alexey Klimov <alexey.klimov@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-09-03 at 10:38 +0100, Mark Brown wrote:
-> On Thu, Sep 03, 2015 at 03:45:46PM +0800, Koro Chen wrote:
-> > On Thu, 2015-09-03 at 09:08 +0200, Takashi Iwai wrote:
-> 
-> > > How this happens?  The period size is the size where irq (or wakeup)
-> > > wakes up for read/write.  Why the driver wakes up even if there is no
-> > > enough data?
-> 
-> > Yes it is odd to what we would normally expect. Due to our HW design,
-> > when irq comes, audio HW actually has collected a full period of data,
-> > but there is a buffer between the audio HW and memory, so at that moment
-> > some samples are still in the buffer, not on the memory. Add a small
-> > delay between triggering capture HW and enabling IRQ can also fix this,
-> > although I think changing the avail_min should be better. 
-> 
-> This does sound like something that should be handled in the kernel -
-> one thing we should be doing is providing a uniform interface to
-> userspace.
-Hmm, I thought those param settings are used to handle different HW
-behavior like my case, but maybe I am wrong. It is more important to let
-a single driver to be used under many different cases. I will find
-solution in my driver, thank you!
+It's a bit uncler what subsystem/driver emits some messages
+to dmesg in function mtk_init_timer().
+Use pr_fmt to auto-prefix the messages appropriately.
+
+Signed-off-by: Alexey Klimov <alexey.klimov@linaro.org>
+---
+ drivers/clocksource/mtk_timer.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 50f0641..ca5ea9e 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -16,6 +16,8 @@
+  * GNU General Public License for more details.
+  */
+ 
++#define pr_fmt(fmt)	KBUILD_MODNAME ": " fmt
++
+ #include <linux/clk.h>
+ #include <linux/clockchips.h>
+ #include <linux/interrupt.h>
+-- 
+2.1.4
