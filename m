@@ -1,19 +1,22 @@
-From: Guenter Roeck <linux@roeck-us.net>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
 Subject: Re: [PATCH] cpufreq: Add ARM_MT8173_CPUFREQ dependencyon THERMAL
-Date: Fri, 04 Sep 2015 12:40:51 -0700
-Message-ID: <55E9F3C3.9000407@roeck-us.net>
-References: <1441293658-18199-1-git-send-email-linux@roeck-us.net>	<20150903155029.GB5332@linux> <CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
+Date: Sat, 5 Sep 2015 00:27:42 +0200
+Message-ID: <CAJZ5v0hzcbprjy_NHihbe-rbP7OxR1pmcU_Xxx_rTM2SQ5yL5A@mail.gmail.com>
+References: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
+	<20150903155029.GB5332@linux>
+	<CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-pm-owner@vger.kernel.org>
 In-Reply-To: <CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
 Sender: linux-pm-owner@vger.kernel.org
-To: Olof Johansson <olof@lixom.net>, Viresh Kumar <viresh.kumar@linaro.org>
-Cc: "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: Olof Johansson <olof@lixom.net>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Guenter Roeck <linux@roeck-us.net>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/04/2015 12:01 PM, Olof Johansson wrote:
+Hi,
+
+On Fri, Sep 4, 2015 at 9:01 PM, Olof Johansson <olof@lixom.net> wrote:
 > On Thu, Sep 3, 2015 at 8:50 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
 >> On 03-09-15, 08:20, Guenter Roeck wrote:
 >>> If ARM_MT8173_CPUFREQ is configured, and THERMAL is configured as module,
@@ -34,22 +37,14 @@ On 09/04/2015 12:01 PM, Olof Johansson wrote:
 >>> It might also make sense to declare ARM_MT8173_CPUFREQ as tristate
 >>> and relax the conditions, but I don't know if that is feasible.
 >>>
->>>   drivers/cpufreq/Kconfig.arm | 1 +
->>>   1 file changed, 1 insertion(+)
+>>>  drivers/cpufreq/Kconfig.arm | 1 +
+>>>  1 file changed, 1 insertion(+)
 >>
 >> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 >
 > Who's applying and sending this up to avoid extended period of build breakage?
->
 
-Good question.
+I'll queue up this particular one.
 
-This one isn't really bad (yet), but there are other build and qemu test breakages
-which have been in -next, sometimes for a long period of time, with patches
-submitted but ignored by the maintainers. Those are creeping into mainline now.
-
-Wonder if I (or someone else) should just collect those patches and send
-a pull request to Linus right after (or even before) -rc1.
-
-Guenter
-
+Thanks,
+Rafael
