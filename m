@@ -1,83 +1,44 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC PATCH (alsa-lib)] pcm: Modify check condition
- in snd_pcm_sw_params_set_avail_min
-Date: Fri, 4 Sep 2015 16:15:29 +0100
-Message-ID: <20150904151529.GM5313@sirena.org.uk>
-References: <1441250454-38271-1-git-send-email-koro.chen@mediatek.com>
- <s5hfv2wvv35.wl-tiwai@suse.de>
- <1441266346.32609.18.camel@mtksdaap41>
- <20150903093810.GE5313@sirena.org.uk>
- <1441334975.32609.30.camel@mtksdaap41>
+From: Olof Johansson <olof@lixom.net>
+Subject: Re: [PATCH] cpufreq: Add ARM_MT8173_CPUFREQ dependencyon THERMAL
+Date: Fri, 4 Sep 2015 12:01:40 -0700
+Message-ID: <CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
+References: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
+	<20150903155029.GB5332@linux>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============6024732592107240175=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1441334975.32609.30.camel@mtksdaap41>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: Takashi Iwai <tiwai@suse.de>, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20150903155029.GB5332@linux>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: Guenter Roeck <linux@roeck-us.net>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Sep 3, 2015 at 8:50 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+> On 03-09-15, 08:20, Guenter Roeck wrote:
+>> If ARM_MT8173_CPUFREQ is configured, and THERMAL is configured as module,
+>> the following build error is seen for arm:allmodconfig and
+>> arm64:allmodconfig.
+>>
+>> drivers/built-in.o: In function `mtk_cpufreq_ready':
+>> :(.text+0x32a20c): undefined reference to `of_cpufreq_cooling_register'
+>> drivers/built-in.o: In function `mtk_cpufreq_exit':
+>> :(.text+0x32a420): undefined reference to `cpufreq_cooling_unregister'
+>>
+>> The fix is similar to CPUFREQ_DT, but more restrictive since
+>> ARM_MT8173_CPUFREQ can not be built as module.
+>>
+>> Fixes: 1453863fb02a ("cpufreq: mediatek: Add MT8173 cpufreq driver")
+>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>> ---
+>> It might also make sense to declare ARM_MT8173_CPUFREQ as tristate
+>> and relax the conditions, but I don't know if that is feasible.
+>>
+>>  drivers/cpufreq/Kconfig.arm | 1 +
+>>  1 file changed, 1 insertion(+)
+>
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
---===============6024732592107240175==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="7H0CdmT9ysYyfjsg"
-Content-Disposition: inline
-
-
---7H0CdmT9ysYyfjsg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Sep 04, 2015 at 10:49:35AM +0800, Koro Chen wrote:
-> On Thu, 2015-09-03 at 10:38 +0100, Mark Brown wrote:
-
-> > This does sound like something that should be handled in the kernel -
-> > one thing we should be doing is providing a uniform interface to
-> > userspace.
-
-> Hmm, I thought those param settings are used to handle different HW
-> behavior like my case, but maybe I am wrong. It is more important to let
-> a single driver to be used under many different cases. I will find
-> solution in my driver, thank you!
-
-Yes, the params do generally handle things that differ between systems
-(mostly things like buffer sizes, formats and so on) but there's a few
-things that are pretty much required, one of them being delivering the
-period elapsed notifiations when a period has actually elapsed rather
-than before then.  Setting a very small period size will tend to mask
-problems but it's not great.
-
---7H0CdmT9ysYyfjsg
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV6bWQAAoJECTWi3JdVIfQgkwH/2SWnPJ26U/oBwX0faTWShm9
-eMujy82WA/XsSqXXZ4ec96ntA5Ds/MKOTlPTC2dua6pcBC98khBRgCzEmbX64co+
-ZQWeQuOfBfF+pb/jdgoXYR3A3hIuogDbJk49fVV1FGWWFe4Wzh+pzoFLlj7SzW8K
-vsoK29NIvhMJnBH2Glucbbtlk+yVaIX2ACPM3xbETf3CekAVE2mpJM3TAdNuUvFv
-2bv+3jsXGt3YShbs+0Tnj8s13pdFzgVQ5H6V5lzOvnbClfnKTQf5CYNgLdscvYr3
-qoebyNVfS2hVdUOpNHlt5p0CbDjFKmYprnB+P0r5EXL3O6/Hr6XDZN0y/0cxbeU=
-=I8tv
------END PGP SIGNATURE-----
-
---7H0CdmT9ysYyfjsg--
-
---===============6024732592107240175==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Who's applying and sending this up to avoid extended period of build breakage?
 
 
---===============6024732592107240175==--
+-Olof
