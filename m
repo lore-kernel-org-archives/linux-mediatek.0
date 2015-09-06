@@ -1,50 +1,85 @@
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Subject: Re: [PATCH] cpufreq: Add ARM_MT8173_CPUFREQ dependencyon THERMAL
-Date: Sat, 5 Sep 2015 00:27:42 +0200
-Message-ID: <CAJZ5v0hzcbprjy_NHihbe-rbP7OxR1pmcU_Xxx_rTM2SQ5yL5A@mail.gmail.com>
-References: <1441293658-18199-1-git-send-email-linux@roeck-us.net>
-	<20150903155029.GB5332@linux>
-	<CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
+From: maoguang meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
+ suspend resume
+Date: Sun, 6 Sep 2015 18:39:32 +0800
+Message-ID: <1441535972.22230.5.camel@mhfsdcap03>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+ <55DB4609.5040904@arm.com>
+ <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAOesGMgcSjNdRCe6i994F=unLLXG3-JJeiV-mLBnOHfbUd0DDw@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Olof Johansson <olof@lixom.net>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Guenter Roeck <linux@roeck-us.net>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Wed, 2015-09-02 at 14:02 +0800, Daniel Kurtz wrote:
+> Hi maoguang,
+> 
+> On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org> wrote:
+> >
+> >
+> > On 14/08/15 09:38, maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> >>
+> >> From: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>
+> >> This patch implement irq_set_wake to get who is wakeup source and
+> >> setup on suspend resume.
+> >>
+> >> Signed-off-by: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>
+> [snip]
+> 
+> Can you please respond to Sudeep's questions:
+> 
+> > Does this pinmux controller:
+> >
+> > 1. Support wake-up configuration ? If not, you need to use
+> >    IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
+> >    mask_{set,clear} if the same registers are used for {en,dis}able
 
-On Fri, Sep 4, 2015 at 9:01 PM, Olof Johansson <olof@lixom.net> wrote:
-> On Thu, Sep 3, 2015 at 8:50 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
->> On 03-09-15, 08:20, Guenter Roeck wrote:
->>> If ARM_MT8173_CPUFREQ is configured, and THERMAL is configured as module,
->>> the following build error is seen for arm:allmodconfig and
->>> arm64:allmodconfig.
->>>
->>> drivers/built-in.o: In function `mtk_cpufreq_ready':
->>> :(.text+0x32a20c): undefined reference to `of_cpufreq_cooling_register'
->>> drivers/built-in.o: In function `mtk_cpufreq_exit':
->>> :(.text+0x32a420): undefined reference to `cpufreq_cooling_unregister'
->>>
->>> The fix is similar to CPUFREQ_DT, but more restrictive since
->>> ARM_MT8173_CPUFREQ can not be built as module.
->>>
->>> Fixes: 1453863fb02a ("cpufreq: mediatek: Add MT8173 cpufreq driver")
->>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->>> ---
->>> It might also make sense to declare ARM_MT8173_CPUFREQ as tristate
->>> and relax the conditions, but I don't know if that is feasible.
->>>
->>>  drivers/cpufreq/Kconfig.arm | 1 +
->>>  1 file changed, 1 insertion(+)
->>
->> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
->
-> Who's applying and sending this up to avoid extended period of build breakage?
+  YES.
+  we can call enable_irq_wake(irq) to config this irq as a wake-up
+source.
 
-I'll queue up this particular one.
+> >
+> > 2. Is in always on domain ? If not, you need save/restore only to
+> >    resume back the functionality. Generally we can set
+> >    IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
+> >    disabled during suspend and re-enabled in resume path. You just
+> >    save/restore raw values without tracking the wake-up source.
 
-Thanks,
-Rafael
+  YES.
+
+> >
+> > Also I see that no care is taken to set the port irq as wake enable
+> > source. It may work with current mainline, but won't with -next. Please
+> > ensure the port irq to the parent interrupt controller remains
+> > enabled(i.e set as wake).
+
+As you know, we do not care the port irq as wake enbale source,
+when enter suspend we think no matter what the port irq is
+enabled/disabled which are not affected as a wake-up source,
+Because eint has a line to receive SPM.
+
+For example,after suspend,press power key(use eint5) will generate an
+electrical signal which is send to spm by eint.
+and then spm wake cpu.
+  
+> >
+> > Regards,
+> > Sudeep
+
+Regards,
+Maoguang
