@@ -1,85 +1,105 @@
-From: maoguang meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
- suspend resume
-Date: Sun, 6 Sep 2015 18:39:32 +0800
-Message-ID: <1441535972.22230.5.camel@mhfsdcap03>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
- <55DB4609.5040904@arm.com>
- <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 2/2] arm64: dts: mt8173: Add thermal zone node for mt8173.
+Date: Mon, 7 Sep 2015 12:00:25 +0800
+Message-ID: <CAGS+omAxWDj+fHsJQhJ-KhFdWPZ-ymcVr63v5Q7ho2bAL_7PBQ@mail.gmail.com>
+References: <1441357309-61669-1-git-send-email-dawei.chien@mediatek.com> <1441357309-61669-3-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1441357309-61669-3-git-send-email-dawei.chien@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dawei Chien <dawei.chien@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Howard Chen <howard.chen@linaro.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream <srv>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-09-02 at 14:02 +0800, Daniel Kurtz wrote:
-> Hi maoguang,
-> 
-> On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org> wrote:
-> >
-> >
-> > On 14/08/15 09:38, maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> >>
-> >> From: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>
-> >> This patch implement irq_set_wake to get who is wakeup source and
-> >> setup on suspend resume.
-> >>
-> >> Signed-off-by: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>
-> [snip]
-> 
-> Can you please respond to Sudeep's questions:
-> 
-> > Does this pinmux controller:
-> >
-> > 1. Support wake-up configuration ? If not, you need to use
-> >    IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
-> >    mask_{set,clear} if the same registers are used for {en,dis}able
+Hi Dawei,
 
-  YES.
-  we can call enable_irq_wake(irq) to config this irq as a wake-up
-source.
+On Fri, Sep 4, 2015 at 5:01 PM, Dawei Chien <dawei.chien@mediatek.com> wrote:
+> Add thermal zone node to mt8173.dtsi.
+>
+> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+> ---
+> This patch is base on following patches
+> https://patchwork.kernel.org/patch/6969581/
+> https://patchwork.kernel.org/patch/6969571/
+> https://patchwork.kernel.org/patch/6969381/
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 208051a..6493bfd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -17,6 +17,7 @@
+>  #include <dt-bindings/power/mt8173-power.h>
+>  #include <dt-bindings/reset-controller/mt8173-resets.h>
+>  #include "mt8173-pinfunc.h"
+> +#include <dt-bindings/thermal/thermal.h>
 
-> >
-> > 2. Is in always on domain ? If not, you need save/restore only to
-> >    resume back the functionality. Generally we can set
-> >    IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
-> >    disabled during suspend and re-enabled in resume path. You just
-> >    save/restore raw values without tracking the wake-up source.
+This include is not necessary, however...
 
-  YES.
+>
+>  / {
+>         compatible = "mediatek,mt8173";
+> @@ -116,6 +117,49 @@
+>                 clock-output-names = "clk32k";
+>         };
+>
+> +       thermal-zones {
+> +               cpu_thermal: cpu_thermal {
+> +                       polling-delay-passive = <1000>; /* milliseconds */
+> +                       polling-delay = <1000>; /* milliseconds */
+> +
+> +                       thermal-sensors = <&thermal MT8173_THERMAL_ZONE_CA57>;
 
-> >
-> > Also I see that no care is taken to set the port irq as wake enable
-> > source. It may work with current mainline, but won't with -next. Please
-> > ensure the port irq to the parent interrupt controller remains
-> > enabled(i.e set as wake).
+this fails to compile, because MT8173_THERMAL_ZONE_CA57 is defined in:
 
-As you know, we do not care the port irq as wake enbale source,
-when enter suspend we think no matter what the port irq is
-enabled/disabled which are not affected as a wake-up source,
-Because eint has a line to receive SPM.
+include/dt-bindings/thermal/mt8173.h
 
-For example,after suspend,press power key(use eint5) will generate an
-electrical signal which is send to spm by eint.
-and then spm wake cpu.
-  
-> >
-> > Regards,
-> > Sudeep
+-Dan
 
-Regards,
-Maoguang
+
+> +                       sustainable-power = <1500>;
+> +
+> +                       trips {
+> +                               threshold: trip-point@0 {
+> +                                       temperature = <68000>;
+> +                                       hysteresis = <2000>;
+> +                                       type = "passive";
+> +                               };
+> +
+> +                               target: trip-point@1 {
+> +                                       temperature = <85000>;
+> +                                       hysteresis = <2000>;
+> +                                       type = "passive";
+> +                               };
+> +
+> +                               cpu_crit: cpu_crit@0 {
+> +                                       temperature = <115000>;
+> +                                       hysteresis = <2000>;
+> +                                       type = "critical";
+> +                               };
+> +                       };
+> +
+> +                       cooling-maps {
+> +                               map@0 {
+> +                                       trip = <&target>;
+> +                                       cooling-device = <&cpu0 0 0>;
+> +                                       contribution = <1024>;
+> +                               };
+> +                               map@1 {
+> +                                       trip = <&target>;
+> +                                       cooling-device = <&cpu2 0 0>;
+> +                                       contribution = <2048>;
+> +                               };
+> +                       };
+> +               };
+> +       };
+> +
+>         timer {
+>                 compatible = "arm,armv8-timer";
+>                 interrupt-parent = <&gic>;
+> --
+> 1.7.9.5
+>
