@@ -1,32 +1,83 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: thermal: mediatek: Add cpu power cooling model
-Date: Mon, 7 Sep 2015 11:39:31 +0530
-Message-ID: <20150907060931.GF26760@linux>
-References: <1441357309-61669-1-git-send-email-dawei.chien@mediatek.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] spi: mediatek: fix spi cs polarity error
+Date: Mon, 7 Sep 2015 19:37:57 +0800
+Message-ID: <1441625877-583-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1441357309-61669-1-git-send-email-dawei.chien@mediatek.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Dawei Chien <dawei.chien@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Howard Chen <howard.chen@linaro.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04-09-15, 17:01, Dawei Chien wrote:
-> Use Intelligent Power Allocation (IPA) technical to add
-> static/dynamic power model for binding CPU thermal zone.
-> The power allocator governor allocates power budget to control
-> CPU temperature.
+Mediatek spi HW can't set cs inactive(keep cs high) directly.
+Instead, it supplies pause mode to do it indirectly. If driver
+unsets SPI_CMD_PAUSE_MODE in CMD_REG, it also needs to reset
+internal state machine to let cs inactive at once.
 
-Sorry but this isn't enough really.. I don't have time to go through
-the code and understand the purpose of the series.
+Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/spi/spi-mt65xx.c | 27 +++++++--------------------
+ 1 file changed, 7 insertions(+), 20 deletions(-)
 
-Please explain here in detail:
-- Why this is needed.
-- What/How you are doing it.
-
-(Don't resend, just reply to this email :) )
-
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 401e2e0..ba0fc10 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -173,22 +173,6 @@ static void mtk_spi_config(struct mtk_spi *mdata,
+ 		writel(mdata->pad_sel, mdata->base + SPI_PAD_SEL_REG);
+ }
+ 
+-static int mtk_spi_prepare_hardware(struct spi_master *master)
+-{
+-	struct spi_transfer *trans;
+-	struct mtk_spi *mdata = spi_master_get_devdata(master);
+-	struct spi_message *msg = master->cur_msg;
+-
+-	trans = list_first_entry(&msg->transfers, struct spi_transfer,
+-				 transfer_list);
+-	if (!trans->cs_change) {
+-		mdata->state = MTK_SPI_IDLE;
+-		mtk_spi_reset(mdata);
+-	}
+-
+-	return 0;
+-}
+-
+ static int mtk_spi_prepare_message(struct spi_master *master,
+ 				   struct spi_message *msg)
+ {
+@@ -228,11 +212,15 @@ static void mtk_spi_set_cs(struct spi_device *spi, bool enable)
+ 	struct mtk_spi *mdata = spi_master_get_devdata(spi->master);
+ 
+ 	reg_val = readl(mdata->base + SPI_CMD_REG);
+-	if (!enable)
++	if (!enable) {
+ 		reg_val |= SPI_CMD_PAUSE_EN;
+-	else
++		writel(reg_val, mdata->base + SPI_CMD_REG);
++	} else {
+ 		reg_val &= ~SPI_CMD_PAUSE_EN;
+-	writel(reg_val, mdata->base + SPI_CMD_REG);
++		writel(reg_val, mdata->base + SPI_CMD_REG);
++		mdata->state = MTK_SPI_IDLE;
++		mtk_spi_reset(mdata);
++	}
+ }
+ 
+ static void mtk_spi_prepare_transfer(struct spi_master *master,
+@@ -509,7 +497,6 @@ static int mtk_spi_probe(struct platform_device *pdev)
+ 	master->mode_bits = SPI_CPOL | SPI_CPHA;
+ 
+ 	master->set_cs = mtk_spi_set_cs;
+-	master->prepare_transfer_hardware = mtk_spi_prepare_hardware;
+ 	master->prepare_message = mtk_spi_prepare_message;
+ 	master->transfer_one = mtk_spi_transfer_one;
+ 	master->can_dma = mtk_spi_can_dma;
 -- 
-viresh
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
