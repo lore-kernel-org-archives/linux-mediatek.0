@@ -1,100 +1,93 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v7 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx SoCs
-Date: Tue, 8 Sep 2015 14:17:59 +0800
-Message-ID: <1441693083-8440-2-git-send-email-chunfeng.yun@mediatek.com>
-References: <1441693083-8440-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Subject: Re: [PATCH v7] arm64: dts: Add spi bus dts
+Date: Tue, 8 Sep 2015 16:59:05 +0800
+Message-ID: <CANMq1KBhg4j15=ik7F2MwgmyAQZgSz3QYWLivOhd8ZFuDfjHGA@mail.gmail.com>
+References: <1441028659-19068-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441693083-8440-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1441028659-19068-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Leilk Liu <leilk.liu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-add a DT binding documentation of usb3.0 phy for MT65xx
-SoCs from Mediatek.
+On Mon, Aug 31, 2015 at 9:44 PM, Leilk Liu <leilk.liu@mediatek.com> wrote:
+> This patch adds MT8173 spi bus controllers into device tree.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- .../devicetree/bindings/phy/phy-mt65xx-usb.txt     | 69 ++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+The corresponding SPI driver has already been merged in
+git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git .
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-new file mode 100644
-index 0000000..5812d20
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-@@ -0,0 +1,69 @@
-+mt65xx USB3.0 PHY binding
-+--------------------------
-+
-+This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
-+
-+Required properties (controller (parent) node):
-+ - compatible	: should be "mediatek,mt8173-u3phy"
-+ - reg		: offset and length of register for phy, exclude port's
-+		  register.
-+ - clocks	: a list of phandle + clock-specifier pairs, one for each
-+		  entry in clock-names
-+ - clock-names	: must contain
-+		  "u3phya_ref": for reference clock of usb3.0 analog phy.
-+
-+Required nodes	: a sub-node is required for each port the controller
-+		  provides. Address range information including the usual
-+		  'reg' property is used inside these nodes to describe
-+		  the controller's topology. These nodes are translated
-+		  by the driver's .xlate() function.
-+
-+Required properties (port (child) node):
-+- reg		: address and length of the register set for the port.
-+- #phy-cells	: should be 1 (See second example)
-+		  cell after port phandle is phy type from:
-+			- PHY_TYPE_USB2
-+			- PHY_TYPE_USB3
-+
-+Example:
-+
-+u3phy: usb-phy@11290000 {
-+	compatible = "mediatek,mt8173-u3phy";
-+	reg = <0 0x11290000 0 0x800>;
-+	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-+	clock-names = "u3phya_ref";
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+	ranges;
-+	status = "okay";
-+
-+	phy_port0: port@11290800 {
-+		reg = <0 0x11290800 0 0x800>;
-+		#phy-cells = <1>;
-+		status = "okay";
-+	};
-+
-+	phy_port1: port@11291000 {
-+		reg = <0 0x11291000 0 0x800>;
-+		#phy-cells = <1>;
-+		status = "okay";
-+	};
-+};
-+
-+Specifying phy control of devices
-+---------------------------------
-+
-+Device nodes should specify the configuration required in their "phys"
-+property, containing a phandle to the phy port node and a device type;
-+phy-names for each port are optional.
-+
-+Example:
-+
-+#include <dt-bindings/phy/phy.h>
-+
-+usb30: usb@11270000 {
-+	...
-+	phys = <&phy_port0 PHY_TYPE_USB3>;
-+	phy-names = "usb3-0";
-+	...
-+};
--- 
-1.8.1.1.dirty
+> Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+
+Reviewed-and-Tested-by: Nicolas Boichat <drinkcat@chromium.org>
+
+> ---
+> Change in this patch:
+> 1. fix spi clock flow usage error.
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 13 +++++++++++++
+>  2 files changed, 31 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> index 4be66ca..811cb76 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> @@ -387,6 +387,24 @@
+>         };
+>  };
+>
+> +&pio {
+> +       spi_pins_a: spi0 {
+> +               pins_spi {
+> +                       pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
+> +                               <MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
+> +                               <MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
+> +                               <MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
+> +               };
+> +       };
+> +};
+> +
+> +&spi {
+> +       pinctrl-names = "default";
+> +       pinctrl-0 = <&spi_pins_a>;
+> +       mediatek,pad-select = <0>;
+> +       status = "okay";
+> +};
+> +
+>  &uart0 {
+>         status = "okay";
+>  };
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index d18ee42..fcb4860 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -365,6 +365,19 @@
+>                         status = "disabled";
+>                 };
+>
+> +               spi: spi@1100a000 {
+> +                       compatible = "mediatek,mt8173-spi";
+> +                       #address-cells = <1>;
+> +                       #size-cells = <0>;
+> +                       reg = <0 0x1100a000 0 0x1000>;
+> +                       interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
+> +                       clocks = <&topckgen CLK_TOP_SYSPLL3_D2>,
+> +                                <&topckgen CLK_TOP_SPI_SEL>,
+> +                                <&pericfg CLK_PERI_SPI0>;
+> +                       clock-names = "parent-clk", "sel-clk", "spi-clk";
+> +                       status = "disabled";
+> +               };
+> +
+>                 i2c3: i2c3@11010000 {
+>                         compatible = "mediatek,mt8173-i2c";
+>                         reg = <0 0x11010000 0 0x70>,
+> --
+> 1.8.1.1.dirty
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
