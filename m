@@ -1,43 +1,228 @@
-From: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v7 4/5] xhci: mediatek: support MTK xHCI host controller
-Date: Tue, 08 Sep 2015 13:45:07 +0300
-Message-ID: <55EEBC33.5030906@intel.com>
-References: <1441693083-8440-1-git-send-email-chunfeng.yun@mediatek.com> <1441693083-8440-5-git-send-email-chunfeng.yun@mediatek.com>
+From: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: [PATCH] xhci: create one unified function to calculate TRB TD
+ remainder.
+Date: Tue,  8 Sep 2015 14:09:50 +0300
+Message-ID: <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
+References: <55EEBC33.5030906@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441693083-8440-5-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <55EEBC33.5030906-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi
+xhci versions 1.0 and later report the untransferred data remaining in a
+TD a bit differently than older hosts.
 
-On 08.09.2015 09:18, Chunfeng Yun wrote:
-> There some vendor quirks for MTK xhci host controller:
-> 1. It defines some extra SW scheduling parameters for HW
->    to minimize the scheduling effort for synchronous and
->    interrupt endpoints. The parameters are put into reseved
->    DWs of slot context and endpoint context.
-> 2. Its IMODI unit for Interrupter Moderation register is
->    8 times as much as that defined in xHCI spec.
-> 3. Its TDS in  Normal TRB defines a number of packets that
->    remains to be transferred for a TD after processing all
->    Max packets in all previous TRBs.
->
+We used to have separate functions for these, and needed to check host
+ version before calling the right function.
 
-I just rewrote and unified the the xhci TD remainder functions,
-now we got only one xhci_td_remainder() function which should
-be more suitable for quirks.
+Now Mediatek host has an additional quirk on how it uses the TD Size
+field for remaining data. To prevent yet another function for calculating
+remainder we instead want to make one quirk friendly unified function.
 
-You can add the quirk directly to it, no need to duplicate the
-whole function.
+Signed-off-by: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+---
+ drivers/usb/host/xhci-ring.c | 106 ++++++++++++++++++-------------------------
+ drivers/usb/host/xhci.h      |   2 +
+ 2 files changed, 46 insertions(+), 62 deletions(-)
 
--Mathias
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+index a47a1e8..57f40a1 100644
+--- a/drivers/usb/host/xhci-ring.c
++++ b/drivers/usb/host/xhci-ring.c
+@@ -3020,21 +3020,6 @@ int xhci_queue_intr_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ }
+ 
+ /*
+- * The TD size is the number of bytes remaining in the TD (including this TRB),
+- * right shifted by 10.
+- * It must fit in bits 21:17, so it can't be bigger than 31.
+- */
+-static u32 xhci_td_remainder(unsigned int remainder)
+-{
+-	u32 max = (1 << (21 - 17 + 1)) - 1;
+-
+-	if ((remainder >> 10) >= max)
+-		return max << 17;
+-	else
+-		return (remainder >> 10) << 17;
+-}
+-
+-/*
+  * For xHCI 1.0 host controllers, TD size is the number of max packet sized
+  * packets remaining in the TD (*not* including this TRB).
+  *
+@@ -3046,30 +3031,36 @@ static u32 xhci_td_remainder(unsigned int remainder)
+  *
+  * TD size = total_packet_count - packets_transferred
+  *
+- * It must fit in bits 21:17, so it can't be bigger than 31.
++ * For xHCI 0.96 and older, TD size field should be the remaining bytes
++ * including this TRB, right shifted by 10
++ *
++ * For all hosts it must fit in bits 21:17, so it can't be bigger than 31.
++ * This is taken care of in the TRB_TD_SIZE() macro
++ *
+  * The last TRB in a TD must have the TD size set to zero.
+  */
+-static u32 xhci_v1_0_td_remainder(int running_total, int trb_buff_len,
+-		unsigned int total_packet_count, struct urb *urb,
+-		unsigned int num_trbs_left)
++static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
++			      int trb_buff_len, unsigned int td_total_len,
++			      struct urb *urb, unsigned int num_trbs_left)
+ {
+-	int packets_transferred;
++	u32 maxp, total_packet_count;
++
++	if (xhci->hci_version < 0x100)
++		return ((td_total_len - transferred) >> 10);
++
++	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
++	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
+ 
+ 	/* One TRB with a zero-length data packet. */
+-	if (num_trbs_left == 0 || (running_total == 0 && trb_buff_len == 0))
++	if (num_trbs_left == 0 || (transferred == 0 && trb_buff_len == 0) ||
++	    trb_buff_len == td_total_len)
+ 		return 0;
+ 
+-	/* All the TRB queueing functions don't count the current TRB in
+-	 * running_total.
+-	 */
+-	packets_transferred = (running_total + trb_buff_len) /
+-		GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
+-
+-	if ((total_packet_count - packets_transferred) > 31)
+-		return 31 << 17;
+-	return (total_packet_count - packets_transferred) << 17;
++	/* Queueing functions don't count the current TRB into transferred */
++	return (total_packet_count - ((transferred + trb_buff_len) / maxp));
+ }
+ 
++
+ static int queue_bulk_sg_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 		struct urb *urb, int slot_id, unsigned int ep_index)
+ {
+@@ -3191,17 +3182,12 @@ static int queue_bulk_sg_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 		}
+ 
+ 		/* Set the TRB length, TD size, and interrupter fields. */
+-		if (xhci->hci_version < 0x100) {
+-			remainder = xhci_td_remainder(
+-					urb->transfer_buffer_length -
+-					running_total);
+-		} else {
+-			remainder = xhci_v1_0_td_remainder(running_total,
+-					trb_buff_len, total_packet_count, urb,
+-					num_trbs - 1);
+-		}
++		remainder = xhci_td_remainder(xhci, running_total, trb_buff_len,
++					   urb->transfer_buffer_length,
++					   urb, num_trbs - 1);
++
+ 		length_field = TRB_LEN(trb_buff_len) |
+-			remainder |
++			TRB_TD_SIZE(remainder) |
+ 			TRB_INTR_TARGET(0);
+ 
+ 		if (num_trbs > 1)
+@@ -3364,17 +3350,12 @@ int xhci_queue_bulk_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 			field |= TRB_ISP;
+ 
+ 		/* Set the TRB length, TD size, and interrupter fields. */
+-		if (xhci->hci_version < 0x100) {
+-			remainder = xhci_td_remainder(
+-					urb->transfer_buffer_length -
+-					running_total);
+-		} else {
+-			remainder = xhci_v1_0_td_remainder(running_total,
+-					trb_buff_len, total_packet_count, urb,
+-					num_trbs - 1);
+-		}
++		remainder = xhci_td_remainder(xhci, running_total, trb_buff_len,
++					   urb->transfer_buffer_length,
++					   urb, num_trbs - 1);
++
+ 		length_field = TRB_LEN(trb_buff_len) |
+-			remainder |
++			TRB_TD_SIZE(remainder) |
+ 			TRB_INTR_TARGET(0);
+ 
+ 		if (num_trbs > 1)
+@@ -3412,7 +3393,7 @@ int xhci_queue_ctrl_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 	struct usb_ctrlrequest *setup;
+ 	struct xhci_generic_trb *start_trb;
+ 	int start_cycle;
+-	u32 field, length_field;
++	u32 field, length_field, remainder;
+ 	struct urb_priv *urb_priv;
+ 	struct xhci_td *td;
+ 
+@@ -3485,9 +3466,15 @@ int xhci_queue_ctrl_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 	else
+ 		field = TRB_TYPE(TRB_DATA);
+ 
++	remainder = xhci_td_remainder(xhci, 0,
++				   urb->transfer_buffer_length,
++				   urb->transfer_buffer_length,
++				   urb, 1);
++
+ 	length_field = TRB_LEN(urb->transfer_buffer_length) |
+-		xhci_td_remainder(urb->transfer_buffer_length) |
++		TRB_TD_SIZE(remainder) |
+ 		TRB_INTR_TARGET(0);
++
+ 	if (urb->transfer_buffer_length > 0) {
+ 		if (setup->bRequestType & USB_DIR_IN)
+ 			field |= TRB_DIR_IN;
+@@ -3816,17 +3803,12 @@ static int xhci_queue_isoc_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+ 				trb_buff_len = td_remain_len;
+ 
+ 			/* Set the TRB length, TD size, & interrupter fields. */
+-			if (xhci->hci_version < 0x100) {
+-				remainder = xhci_td_remainder(
+-						td_len - running_total);
+-			} else {
+-				remainder = xhci_v1_0_td_remainder(
+-						running_total, trb_buff_len,
+-						total_packet_count, urb,
+-						(trbs_per_td - j - 1));
+-			}
++			remainder = xhci_td_remainder(xhci, running_total,
++						   trb_buff_len, td_len,
++						   urb, trbs_per_td - j - 1);
++
+ 			length_field = TRB_LEN(trb_buff_len) |
+-				remainder |
++				TRB_TD_SIZE(remainder) |
+ 				TRB_INTR_TARGET(0);
+ 
+ 			queue_trb(xhci, ep_ring, more_trbs_coming,
+diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
+index dbda41e..ea8b904 100644
+--- a/drivers/usb/host/xhci.h
++++ b/drivers/usb/host/xhci.h
+@@ -1136,6 +1136,8 @@ enum xhci_setup_dev {
+ /* Normal TRB fields */
+ /* transfer_len bitmasks - bits 0:16 */
+ #define	TRB_LEN(p)		((p) & 0x1ffff)
++/* TD Size, packets remaining in this TD, bits 21:17 (5 bits, so max 31) */
++#define TRB_TD_SIZE(p)          (min((p), (u32)31) << 17)
+ /* Interrupter Target - which MSI-X vector to target the completion event at */
+ #define TRB_INTR_TARGET(p)	(((p) & 0x3ff) << 22)
+ #define GET_INTR_TARGET(p)	(((p) >> 22) & 0x3ff)
+-- 
+1.9.1
