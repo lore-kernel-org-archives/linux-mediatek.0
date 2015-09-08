@@ -1,83 +1,35 @@
-From: Jagan Teki <jteki@openedev.com>
-Subject: Re: [PATCH 1/3] doc: dt: add documentation for Mediatek spi-nor controller
-Date: Tue, 8 Sep 2015 17:04:04 +0530
-Message-ID: <CAD6G_RR5W8_4d_gcTD=h9EBhwWUzsEmyNK+pYGq82GEHDV4=ig@mail.gmail.com>
-References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
-	<1441705796-11365-2-git-send-email-bayi.cheng@mediatek.com>
+From: Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>
+Subject: Re: [PATCH] xhci: create one unified function to calculate TRB TD
+ remainder.
+Date: Tue, 08 Sep 2015 13:46:38 +0200
+Message-ID: <1441712798.26994.41.camel@suse.com>
+References: <55EEBC33.5030906@intel.com>
+	 <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441705796-11365-2-git-send-email-bayi.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bayi Cheng <bayi.cheng@mediatek.com>
-Cc: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1441710591-4267-1-git-send-email-mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 8 September 2015 at 15:19, Bayi Cheng <bayi.cheng@mediatek.com> wrote:
-> Add device tree binding documentation for serial flash with
-> Mediatek serial flash controller
->
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mtd/mtk_nor.txt | 25 +++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/mtk_nor.txt
->
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk_nor.txt b/Documentation/devicetree/bindings/mtd/mtk_nor.txt
-> new file mode 100644
-> index 0000000..0eca0cd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mtd/mtk_nor.txt
+On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
+> Now Mediatek host has an additional quirk on how it uses the TD Size
+> field for remaining data. To prevent yet another function for
+> calculating
+> remainder we instead want to make one quirk friendly unified function.
 
-IMHO - looks like the name of the driver file not resembles controller
-driver, usually spi-nor framework has a name include 'nor' and related
-controller drivers uses simple notion with vendor/soc_name-quadspi or
-something similar.
+Could you clarify whether this replaces an existing quirk
+or renders unnecessary the introduction of a new quirk,
+because that decides whether this patch must go into stable.
 
-cadence-quadspi.c
-fsl-quadspi.c
+	Regards
+		Oliver
 
-Simple suggestion - mtk-quadspi.c (since it supports quad)
 
-> @@ -0,0 +1,25 @@
-> +* MTD SPI nor driver for MTK MT81xx (and similar) serial flash controller
-> +
-> +MTK MT81xx serial flash controller is designed for serial Flash device.
-> +It supports one Flash device with signal mode, dual mode and quad mode.
-> +
-> +Required properties:
-> +- compatible: should be "mediatek,mt8173-nor";
-> +- reg: physical base address and length of the controller's register
-> +- clocks: spi nor source clock
-> +- clock-names: "spi_clk", "axi_clk", "mux_clk", "sf_clk"
-> +
-> +See Documentation/devicetree/bindings/clock/clock-bindings.txt
-
-As this related to clock-names, just add this line in-continuous with
-clock-name property description.
-
-> +and Documentation/mtd/spi-nor.txt for details.
-
-This explicit mentioning about spi-nor documentation is may not
-required as this .txt will describe how spi-nor works and not related
-to bindings.
-
-> +
-> +Example:
-> +nor_flash: nor@1100d000 {
-> +       compatible = "mediatek,mt8173-nor";
-> +       reg = <0 0x1100d000 0 0xe0>;
-> +       clocks = <&pericfg CLK_PERI_SPI>,
-> +                <&topckgen CLK_TOP_AXI_SEL>,
-> +                <&topckgen CLK_TOP_UNIVPLL2_D8>,
-> +                <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> +       clock-names = "spi_clk", "axi_clk", "mux_clk", "sf_clk";
-> +};
-> +
-> --
-> 1.8.1.1.dirty
->
-
-thanks!
--- 
-Jagan | openedev.
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
