@@ -1,103 +1,56 @@
-From: Sudeep Holla <sudeep.holla@arm.com>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend
- resume
-Date: Tue, 08 Sep 2015 10:28:04 +0100
-Message-ID: <55EEAA24.6080706@arm.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>	 <55DB4609.5040904@arm.com>	 <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com> <1441535972.22230.5.camel@mhfsdcap03>
+From: Bayi Cheng <bayi.cheng@mediatek.com>
+Subject: [PATCH 1/3] doc: dt: add documentation for Mediatek spi-nor controller
+Date: Tue, 8 Sep 2015 17:49:54 +0800
+Message-ID: <1441705796-11365-2-git-send-email-bayi.cheng@mediatek.com>
+References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1441535972.22230.5.camel@mhfsdcap03>
-Sender: linux-gpio-owner@vger.kernel.org
-To: maoguang meng <maoguang.meng@mediatek.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sudeep Holla <sudeep.holla@arm.com>, Linus Walleij <linus.walleij@linaro.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, Bayi Cheng <bayi.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Add device tree binding documentation for serial flash with
+Mediatek serial flash controller
 
+Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
+---
+ Documentation/devicetree/bindings/mtd/mtk_nor.txt | 25 +++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/mtk_nor.txt
 
-On 06/09/15 11:39, maoguang meng wrote:
-> On Wed, 2015-09-02 at 14:02 +0800, Daniel Kurtz wrote:
->> Hi maoguang,
->>
->> On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
->>>
->>>
->>> On 14/08/15 09:38, maoguang.meng@mediatek.com wrote:
->>>>
->>>> From: Maoguang Meng <maoguang.meng@mediatek.com>
->>>>
->>>> This patch implement irq_set_wake to get who is wakeup source and
->>>> setup on suspend resume.
->>>>
->>>> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
->>>>
->> [snip]
->>
->> Can you please respond to Sudeep's questions:
->>
->>> Does this pinmux controller:
->>>
->>> 1. Support wake-up configuration ? If not, you need to use
->>>     IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
->>>     mask_{set,clear} if the same registers are used for {en,dis}able
->
->    YES.
->    we can call enable_irq_wake(irq) to config this irq as a wake-up
-> source.
->
-
-No that doesn't answer my question. Yes you can always call
-enable_irq_wake(irq) as along as you have irq_set_wake implemented.
-But my question was does this pinmux controller support wake-up
-configuration.
-
-IMHO, by looking at the implementation I can confirm *NO*, it doesn't.
-So please stop copy-pasting the implementation from other drivers.
-The reason is you operate on the same mask_{set,clear} which you use
-to {en,dis}able the interrupts which means you don't have to do anything
-to configure an interrupt as a wakeup source other than just keeping
-them enabled. Hopefully this clarifies.
-
->>>
->>> 2. Is in always on domain ? If not, you need save/restore only to
->>>     resume back the functionality. Generally we can set
->>>     IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
->>>     disabled during suspend and re-enabled in resume path. You just
->>>     save/restore raw values without tracking the wake-up source.
->
->    YES.
->
-
-Again *YES* for what part of my question. If it's always-on, then you
-don't need this suspend/resume callbacks at all, so I assume the answer
-is *NO*.
-
->>>
->>> Also I see that no care is taken to set the port irq as wake enable
->>> source. It may work with current mainline, but won't with -next. Please
->>> ensure the port irq to the parent interrupt controller remains
->>> enabled(i.e set as wake).
->
-> As you know, we do not care the port irq as wake enbale source,
-> when enter suspend we think no matter what the port irq is
-> enabled/disabled which are not affected as a wake-up source,
-> Because eint has a line to receive SPM.
->
-
-I understand that, but for proper wakeup functionality you need to do
-configure the parent if you want to identify and handle that wakeup
-interrupt. If you don't care then it should be fine.
-
-> For example,after suspend,press power key(use eint5) will generate an
-> electrical signal which is send to spm by eint.
-> and then spm wake cpu.
-
-Yes I got that, as I mentioned above, I think you don't need to identify
-and handle the wakeup interrupt. E.g. if it's a keyboard key press, you
-may need to identify the key pressed, so it needs to be handled
-properly. In your case, I assume it's just power button whose main
-function is to wake/boot and that's already achieved when you are woken up.
-
-Regards,
-Sudeep
+diff --git a/Documentation/devicetree/bindings/mtd/mtk_nor.txt b/Documentation/devicetree/bindings/mtd/mtk_nor.txt
+new file mode 100644
+index 0000000..0eca0cd
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/mtk_nor.txt
+@@ -0,0 +1,25 @@
++* MTD SPI nor driver for MTK MT81xx (and similar) serial flash controller
++
++MTK MT81xx serial flash controller is designed for serial Flash device.
++It supports one Flash device with signal mode, dual mode and quad mode.
++
++Required properties:
++- compatible: should be "mediatek,mt8173-nor";
++- reg: physical base address and length of the controller's register
++- clocks: spi nor source clock
++- clock-names: "spi_clk", "axi_clk", "mux_clk", "sf_clk"
++
++See Documentation/devicetree/bindings/clock/clock-bindings.txt
++and Documentation/mtd/spi-nor.txt for details.
++
++Example:
++nor_flash: nor@1100d000 {
++	compatible = "mediatek,mt8173-nor";
++	reg = <0 0x1100d000 0 0xe0>;
++	clocks = <&pericfg CLK_PERI_SPI>,
++		 <&topckgen CLK_TOP_AXI_SEL>,
++		 <&topckgen CLK_TOP_UNIVPLL2_D8>,
++		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
++	clock-names = "spi_clk", "axi_clk", "mux_clk", "sf_clk";
++};
++
+-- 
+1.8.1.1.dirty
