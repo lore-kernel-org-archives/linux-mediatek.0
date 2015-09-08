@@ -1,46 +1,56 @@
-From: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Subject: Re: [PATCH] xhci: create one unified function to calculate TRB TD
- remainder.
-Date: Tue, 08 Sep 2015 15:21:43 +0300
-Message-ID: <55EED2D7.6090308@linux.intel.com>
-References: <55EEBC33.5030906@intel.com>	 <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com> <1441712798.26994.41.camel@suse.com>
+From: Ezequiel Garcia <ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org>
+Subject: Re: [PATCH 3/3] arm64: dts: mt8173: Add nor flash node
+Date: Tue, 8 Sep 2015 12:18:27 -0300
+Message-ID: <CAAEAJfCg+O=b9pfndG2WfxKVk9gvcqHUL0MV4fDpHj_9CaCBbQ@mail.gmail.com>
+References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
+	<1441705796-11365-4-git-send-email-bayi.cheng@mediatek.com>
+	<CAD6G_RTR2r8ETMQ14uGosRn-85sssvVsFT4BjK9SkVSfMkG8Dw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441712798.26994.41.camel-IBi9RG/b67k@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>
-Cc: chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAD6G_RTR2r8ETMQ14uGosRn-85sssvVsFT4BjK9SkVSfMkG8Dw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jagan Teki <jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08.09.2015 14:46, Oliver Neukum wrote:
-> On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
->> Now Mediatek host has an additional quirk on how it uses the TD Size
->> field for remaining data. To prevent yet another function for
->> calculating
->> remainder we instead want to make one quirk friendly unified function.
+On 8 September 2015 at 08:53, Jagan Teki <jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org> wrote:
+> On 8 September 2015 at 15:19, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wr=
+ote:
+>> Add Mediatek nor flash node
+>>
+>> Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/b=
+oot/dts/mediatek/mt8173.dtsi
+>> index d18ee42..a14f005 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+>> @@ -365,6 +365,16 @@
+>>                         status =3D "disabled";
+>>                 };
+>>
+>> +               nor_flash: nor@1100d000 {
 >
-> Could you clarify whether this replaces an existing quirk
-> or renders unnecessary the introduction of a new quirk,
-> because that decides whether this patch must go into stable.
+> Based on the comments from 1/3 - this notation needs to be change som=
+ething like
+> qspi0: quadspi@1100d000
 >
 
-Neither :)
+Actually, to follow ePAPR recomendations it should be named as flash@11=
+00d000.
+(See ePAPR, 2.2.2 Generic Names Recommendation).
 
-This patch will simplify the quirk Mediatek wants to include in their patchseries.
-
-After this patch the TD size part of the mediatek quirk can be reduced to maybe
-a couple lines in total.
-Yet another version of the Mediatek patcheries will be needed after this, but it will
-be 50 - 100 lines shorter.
-
-This patch is basically just code refactoring, enabling easier quirking.
-
-It seems I need to do some rewording of the commit message of this patch as well
-
--Mathias
+I believe the phandle name choice can be more descriptive.
+--=20
+Ezequiel Garc=C3=ADa, VanguardiaSur
+www.vanguardiasur.com.ar
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" i=
+n
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
