@@ -1,111 +1,75 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
- SoCs
-Date: Wed, 9 Sep 2015 08:58:26 -0500
-Message-ID: <55F03B02.5000604@kernel.org>
-References: <1441693083-8440-1-git-send-email-chunfeng.yun@mediatek.com>
- <1441693083-8440-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Henry Chen <HenryC.Chen@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: Move the initial setting of pmic wrap
+ interrupt before requesting irq.
+Date: Wed, 9 Sep 2015 22:04:56 +0800
+Message-ID: <1441807496.23717.4.camel@mtksdaap41>
+References: <1441339512-15510-1-git-send-email-henryc.chen@mediatek.com>
+	 <20150907053920.GW18700@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441693083-8440-2-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150907053920.GW18700@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/08/2015 01:17 AM, Chunfeng Yun wrote:
-> add a DT binding documentation of usb3.0 phy for MT65xx
-> SoCs from Mediatek.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Sascha,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-
-> ---
->  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     | 69 ++++++++++++++++++++++
->  1 file changed, 69 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+On Mon, 2015-09-07 at 07:39 +0200, Sascha Hauer wrote:
+> On Fri, Sep 04, 2015 at 12:05:12PM +0800, Henry Chen wrote:
+> > Seperate the initialization of pmic wrap interrupt from pmic wrap init to make sure setting is correct before requesting irq.
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> new file mode 100644
-> index 0000000..5812d20
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> @@ -0,0 +1,69 @@
-> +mt65xx USB3.0 PHY binding
-> +--------------------------
-> +
-> +This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
-> +
-> +Required properties (controller (parent) node):
-> + - compatible	: should be "mediatek,mt8173-u3phy"
-> + - reg		: offset and length of register for phy, exclude port's
-> +		  register.
-> + - clocks	: a list of phandle + clock-specifier pairs, one for each
-> +		  entry in clock-names
-> + - clock-names	: must contain
-> +		  "u3phya_ref": for reference clock of usb3.0 analog phy.
-> +
-> +Required nodes	: a sub-node is required for each port the controller
-> +		  provides. Address range information including the usual
-> +		  'reg' property is used inside these nodes to describe
-> +		  the controller's topology. These nodes are translated
-> +		  by the driver's .xlate() function.
-> +
-> +Required properties (port (child) node):
-> +- reg		: address and length of the register set for the port.
-> +- #phy-cells	: should be 1 (See second example)
-> +		  cell after port phandle is phy type from:
-> +			- PHY_TYPE_USB2
-> +			- PHY_TYPE_USB3
-> +
-> +Example:
-> +
-> +u3phy: usb-phy@11290000 {
-> +	compatible = "mediatek,mt8173-u3phy";
-> +	reg = <0 0x11290000 0 0x800>;
-> +	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> +	clock-names = "u3phya_ref";
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +	ranges;
-> +	status = "okay";
-> +
-> +	phy_port0: port@11290800 {
-> +		reg = <0 0x11290800 0 0x800>;
-> +		#phy-cells = <1>;
-> +		status = "okay";
-> +	};
-> +
-> +	phy_port1: port@11291000 {
-> +		reg = <0 0x11291000 0 0x800>;
-> +		#phy-cells = <1>;
-> +		status = "okay";
-> +	};
-> +};
-> +
-> +Specifying phy control of devices
-> +---------------------------------
-> +
-> +Device nodes should specify the configuration required in their "phys"
-> +property, containing a phandle to the phy port node and a device type;
-> +phy-names for each port are optional.
-> +
-> +Example:
-> +
-> +#include <dt-bindings/phy/phy.h>
-> +
-> +usb30: usb@11270000 {
-> +	...
-> +	phys = <&phy_port0 PHY_TYPE_USB3>;
-> +	phy-names = "usb3-0";
-> +	...
-> +};
+> It seems the problem this patch solves is the missing watchdog
+> initialization when the pwrap is already initialized but the watchdog is
+> not, so how about a commit log like:
+> 
+> "The watchdog may not be initialized by the bootloader, even if the rest
+> of the pwrap is. Move the watchdog initialization out of pwrap_init()
+> to make sure the watchdog is always initialized and not only when the
+> pwrap is uninitialized."
+> 
+> Also please add linebreaks to the commit log.
 > 
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Yes, thanks for explanation, I will add this on commit log make it more
+clearly to understand.
+
+Henry
+
+> > 
+> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 14 ++++++++++----
+> >  1 file changed, 10 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index f432291..c91d629 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -725,10 +725,6 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+> >  	pwrap_writel(wrp, 0x1, PWRAP_WACS2_EN);
+> >  	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+> >  	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
+> > -	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> > -	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+> > -	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+> > -	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
+> >  
+> >  	if (pwrap_is_mt8135(wrp)) {
+> >  		/* enable pwrap events and pwrap bridge in AP side */
+> > @@ -896,6 +892,16 @@ static int pwrap_probe(struct platform_device *pdev)
+> >  		return -ENODEV;
+> >  	}
+> >  
+> > +	/*
+> > +	 * watch dog@pwrap,
+> > +	 * The bootloader may not initial the wdt/interrupt setting of pwrap,
+> > +	 * set it before reguesting the irq.
+> > +	 */
+> 
+> /* initialize watchdog, may not be done by the bootloader */
+> 
+> Sascha
+> 
