@@ -1,71 +1,111 @@
-From: Lothar =?UTF-8?B?V2HDn21hbm4=?= <LW-bxm8fMRDkQLDiMYJYoSAnRvVK+yQ3ZXh@public.gmane.org>
-Subject: Re: [PATCH 2/3] mtd: mtk-nor: mtk serial flash controller driver
-Date: Wed, 9 Sep 2015 15:00:50 +0200
-Message-ID: <20150909150050.44d2b197@ipc1.ka-ro>
-References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
-	<1441705796-11365-3-git-send-email-bayi.cheng@mediatek.com>
-	<20150909063701.GD18700@pengutronix.de>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
+ SoCs
+Date: Wed, 9 Sep 2015 08:58:26 -0500
+Message-ID: <55F03B02.5000604@kernel.org>
+References: <1441693083-8440-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1441693083-8440-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20150909063701.GD18700-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1441693083-8440-2-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On 09/08/2015 01:17 AM, Chunfeng Yun wrote:
+> add a DT binding documentation of usb3.0 phy for MT65xx
+> SoCs from Mediatek.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-> > +	writeb(len, mt8173_nor->base + MTK_NOR_CNT_REG);
-> > +	return mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PRG_CMD);
-> > +}
-> > +
-> > +static int mt8173_nor_get_para(struct mt8173_nor *mt8173_nor, u8 *=
-buf, int len)
-> > +{
-> > +	if (len > 1) {
-> > +		/* read JEDEC ID need 4 bytes commands */
-> > +		mt8173_nor_set_cmd(mt8173_nor, 0, 32, SPINOR_OP_RDID);
-> > +		buf[2] =3D readb(mt8173_nor->base + MTK_NOR_SHREG0_REG);
-> > +		buf[1] =3D readb(mt8173_nor->base + MTK_NOR_SHREG1_REG);
-> > +		buf[0] =3D readb(mt8173_nor->base + MTK_NOR_SHREG2_REG);
-> > +	} else {
-> > +		if (mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_RDSR_CMD)) {
-> > +			dev_err(mt8173_nor->dev, "read status failed!\n");
-> > +			return -EINVAL;
-> > +		}
-> > +		*buf =3D readb(mt8173_nor->base + MTK_NOR_RDSR_REG);
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> > +/* cmd1 sent to nor flash, cmd2 write to nor controller */
-> > +static int mt8173_nor_set_para(struct mt8173_nor *mt8173_nor, int =
-cmd1,
-> > +			       int cmd2)
-> > +{
-> > +	if (mt8173_nor_set_cmd(mt8173_nor, 0, 8, SPINOR_OP_WREN)) {
-> > +		dev_err(mt8173_nor->dev,
-> > +			"write enable failed in write protect!\n");
-> > +		return -EINVAL;
-> > +	}
-> > +	writeb(cmd1, mt8173_nor->base + MTK_NOR_PRGDATA5_REG);
-> > +	writeb(8, mt8173_nor->base + MTK_NOR_CNT_REG);
-> > +	if (mt8173_nor_execute_cmd(mt8173_nor, cmd2)) {
-> > +		dev_err(mt8173_nor->dev, "execute cmd failed!\n");
->=20
-> mt8173_nor_execute_cmd() will already have printed an error message.
->=20
-And mt8173_nor_execute_cmd()/mt8173_nor_set_cmd() returned an error
-code which should be promoted to the caller rather than
-inventing a new one.
-The same for other instances of this code fragment.
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
+> ---
+>  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     | 69 ++++++++++++++++++++++
+>  1 file changed, 69 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> new file mode 100644
+> index 0000000..5812d20
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> @@ -0,0 +1,69 @@
+> +mt65xx USB3.0 PHY binding
+> +--------------------------
+> +
+> +This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+> +
+> +Required properties (controller (parent) node):
+> + - compatible	: should be "mediatek,mt8173-u3phy"
+> + - reg		: offset and length of register for phy, exclude port's
+> +		  register.
+> + - clocks	: a list of phandle + clock-specifier pairs, one for each
+> +		  entry in clock-names
+> + - clock-names	: must contain
+> +		  "u3phya_ref": for reference clock of usb3.0 analog phy.
+> +
+> +Required nodes	: a sub-node is required for each port the controller
+> +		  provides. Address range information including the usual
+> +		  'reg' property is used inside these nodes to describe
+> +		  the controller's topology. These nodes are translated
+> +		  by the driver's .xlate() function.
+> +
+> +Required properties (port (child) node):
+> +- reg		: address and length of the register set for the port.
+> +- #phy-cells	: should be 1 (See second example)
+> +		  cell after port phandle is phy type from:
+> +			- PHY_TYPE_USB2
+> +			- PHY_TYPE_USB3
+> +
+> +Example:
+> +
+> +u3phy: usb-phy@11290000 {
+> +	compatible = "mediatek,mt8173-u3phy";
+> +	reg = <0 0x11290000 0 0x800>;
+> +	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
+> +	clock-names = "u3phya_ref";
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +	ranges;
+> +	status = "okay";
+> +
+> +	phy_port0: port@11290800 {
+> +		reg = <0 0x11290800 0 0x800>;
+> +		#phy-cells = <1>;
+> +		status = "okay";
+> +	};
+> +
+> +	phy_port1: port@11291000 {
+> +		reg = <0 0x11291000 0 0x800>;
+> +		#phy-cells = <1>;
+> +		status = "okay";
+> +	};
+> +};
+> +
+> +Specifying phy control of devices
+> +---------------------------------
+> +
+> +Device nodes should specify the configuration required in their "phys"
+> +property, containing a phandle to the phy port node and a device type;
+> +phy-names for each port are optional.
+> +
+> +Example:
+> +
+> +#include <dt-bindings/phy/phy.h>
+> +
+> +usb30: usb@11270000 {
+> +	...
+> +	phys = <&phy_port0 PHY_TYPE_USB3>;
+> +	phy-names = "usb3-0";
+> +	...
+> +};
+> 
 
-Lothar Wa=C3=9Fmann
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
