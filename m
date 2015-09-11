@@ -1,222 +1,217 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] xhci: create one unified function to calculate TRB TD
- remainder.
-Date: Fri, 11 Sep 2015 17:54:42 +0800
-Message-ID: <1441965282.25974.20.camel@mhfsdcap03>
-References: <55EEBC33.5030906@intel.com>
-	 <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
+From: =?UTF-8?B?Q2h1bmctWWloIFdhbmcgKOeOi+W0h+aHvyk=?=
+	<cywang@google.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend resume
+Date: Fri, 11 Sep 2015 19:22:41 +0800
+Message-ID: <CAM2ehZaDwQtckXcDQQh+XkYKXvVzy-6Tp+kdvRku0w2xVibPtQ@mail.gmail.com>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+ <55DB4609.5040904@arm.com> <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
+ <1441535972.22230.5.camel@mhfsdcap03> <55EEAA24.6080706@arm.com> <55EF11E6.7030307@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@linux.intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, gregkh@linuxfoundation.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <55EF11E6.7030307@arm.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: maoguang meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
-> xhci versions 1.0 and later report the untransferred data remaining in a
-> TD a bit differently than older hosts.
-> 
-> We used to have separate functions for these, and needed to check host
->  version before calling the right function.
-> 
-> Now Mediatek host has an additional quirk on how it uses the TD Size
-> field for remaining data. To prevent yet another function for calculating
-> remainder we instead want to make one quirk friendly unified function.
-> 
-> Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
-> ---
-Tested-by:Chunfeng Yun <chunfeng.yun@mediatek.com> 
+Hi Sudeep and Maoguang,
 
->  drivers/usb/host/xhci-ring.c | 106 ++++++++++++++++++-------------------------
->  drivers/usb/host/xhci.h      |   2 +
->  2 files changed, 46 insertions(+), 62 deletions(-)
-> 
-> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-> index a47a1e8..57f40a1 100644
-> --- a/drivers/usb/host/xhci-ring.c
-> +++ b/drivers/usb/host/xhci-ring.c
-> @@ -3020,21 +3020,6 @@ int xhci_queue_intr_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
+   Please correct me if I am wrong. I think the wake_mask Maoguang
+implemented is the wake-up configuration and it is how he disabled
+other unwanted interrupt sources(e.g. audio jacket insertion) during
+suspend.
+
+  With Sudeep's patch which we had similar one before, the system got
+waken up by audio jack insertion which we don't want. Maoguang tried
+to implement wake_mask as the wake-up configuration to keep track of
+effective wakeup sources(i.e. those who makes enable_irq_wake) and
+write the wake-up configuration in mtk_eint_suspend(). What is your
+suggestion to address this issue? Thanks!
+
+On Wed, Sep 9, 2015 at 12:50 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+>
+>
+> On 08/09/15 10:28, Sudeep Holla wrote:
+>>
+>>
+>>
+>> On 06/09/15 11:39, maoguang meng wrote:
+>>>
+>>> On Wed, 2015-09-02 at 14:02 +0800, Daniel Kurtz wrote:
+>>>>
+>>>> Hi maoguang,
+>>>>
+>>>> On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla@arm.com>
+>>>> wrote:
+>>>>>
+>>>>>
+>>>>>
+>>>>> On 14/08/15 09:38, maoguang.meng@mediatek.com wrote:
+>>>>>>
+>>>>>>
+>>>>>> From: Maoguang Meng <maoguang.meng@mediatek.com>
+>>>>>>
+>>>>>> This patch implement irq_set_wake to get who is wakeup source and
+>>>>>> setup on suspend resume.
+>>>>>>
+>>>>>> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+>>>>>>
+>>>> [snip]
+>>>>
+>>>> Can you please respond to Sudeep's questions:
+>>>>
+>>>>> Does this pinmux controller:
+>>>>>
+>>>>> 1. Support wake-up configuration ? If not, you need to use
+>>>>>      IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
+>>>>>      mask_{set,clear} if the same registers are used for {en,dis}able
+>>>
+>>>
+>>>     YES.
+>>>     we can call enable_irq_wake(irq) to config this irq as a wake-up
+>>> source.
+>>>
+>>
+>> No that doesn't answer my question. Yes you can always call
+>> enable_irq_wake(irq) as along as you have irq_set_wake implemented.
+>> But my question was does this pinmux controller support wake-up
+>> configuration.
+>>
+>> IMHO, by looking at the implementation I can confirm *NO*, it doesn't.
+>> So please stop copy-pasting the implementation from other drivers.
+>> The reason is you operate on the same mask_{set,clear} which you use
+>> to {en,dis}able the interrupts which means you don't have to do anything
+>> to configure an interrupt as a wakeup source other than just keeping
+>> them enabled. Hopefully this clarifies.
+>>
+>>>>>
+>>>>> 2. Is in always on domain ? If not, you need save/restore only to
+>>>>>      resume back the functionality. Generally we can set
+>>>>>      IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
+>>>>>      disabled during suspend and re-enabled in resume path. You just
+>>>>>      save/restore raw values without tracking the wake-up source.
+>>>
+>>>
+>>>     YES.
+>>>
+>>
+>> Again *YES* for what part of my question. If it's always-on, then you
+>> don't need this suspend/resume callbacks at all, so I assume the answer
+>> is *NO*.
+>>
+>
+> IIUC this pinmux controller, something like below should work.
+>
+>
+> ---->8
+>
+> From 7c26992bce047efb66a6ba8d2ffec2b272499df7 Mon Sep 17 00:00:00 2001
+> From: Sudeep Holla <sudeep.holla@arm.com>
+> Date: Tue, 8 Sep 2015 17:35:38 +0100
+> Subject: [PATCH] pinctrl: mediatek: Enable SKIP_SET_WAKE and MASK_ON_SUSPEND
+>
+> The mediatek pinmux controller doesn't provides any facility to configure
+> the wakeup sources. So instead of providing redundant irq_set_wake
+> functionality, SKIP_SET_WAKE could be set to it. Also there's no need to
+> maintain 2 sets of masks.
+>
+> This patch enables IRQCHIP_SKIP_SET_WAKE and IRQCHIP_MASK_ON_SUSPEND and
+> also removes wake_mask.
+>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>
+> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> Cc: Maoguang Meng <maoguang.meng@mediatek.com>
+> Cc: Chaotian Jing <chaotian.jing@mediatek.com>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Sudeep Holla <sudeep.holla@arm.com>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 24 +-----------------------
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  1 -
+>  2 files changed, 1 insertion(+), 24 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 7726c6caaf83..d8e194a5bb31 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -1063,20 +1063,6 @@ static int mtk_eint_set_type(struct irq_data *d,
+>         return 0;
 >  }
->  
->  /*
-> - * The TD size is the number of bytes remaining in the TD (including this TRB),
-> - * right shifted by 10.
-> - * It must fit in bits 21:17, so it can't be bigger than 31.
-> - */
-> -static u32 xhci_td_remainder(unsigned int remainder)
+>
+> -static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
 > -{
-> -	u32 max = (1 << (21 - 17 + 1)) - 1;
+> -       struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
+> -       int shift = d->hwirq & 0x1f;
+> -       int reg = d->hwirq >> 5;
 > -
-> -	if ((remainder >> 10) >= max)
-> -		return max << 17;
-> -	else
-> -		return (remainder >> 10) << 17;
+> -       if (on)
+> -               pctl->wake_mask[reg] |= BIT(shift);
+> -       else
+> -               pctl->wake_mask[reg] &= ~BIT(shift);
+> -
+> -       return 0;
 > -}
 > -
-> -/*
->   * For xHCI 1.0 host controllers, TD size is the number of max packet sized
->   * packets remaining in the TD (*not* including this TRB).
->   *
-> @@ -3046,30 +3031,36 @@ static u32 xhci_td_remainder(unsigned int remainder)
->   *
->   * TD size = total_packet_count - packets_transferred
->   *
-> - * It must fit in bits 21:17, so it can't be bigger than 31.
-> + * For xHCI 0.96 and older, TD size field should be the remaining bytes
-> + * including this TRB, right shifted by 10
-> + *
-> + * For all hosts it must fit in bits 21:17, so it can't be bigger than 31.
-> + * This is taken care of in the TRB_TD_SIZE() macro
-> + *
->   * The last TRB in a TD must have the TD size set to zero.
->   */
-> -static u32 xhci_v1_0_td_remainder(int running_total, int trb_buff_len,
-> -		unsigned int total_packet_count, struct urb *urb,
-> -		unsigned int num_trbs_left)
-> +static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
-> +			      int trb_buff_len, unsigned int td_total_len,
-> +			      struct urb *urb, unsigned int num_trbs_left)
+>  static void mtk_eint_chip_write_mask(const struct mtk_eint_offsets *chip,
+>                 void __iomem *eint_reg_base, u32 *buf)
 >  {
-> -	int packets_transferred;
-> +	u32 maxp, total_packet_count;
-> +
-> +	if (xhci->hci_version < 0x100)
-> +		return ((td_total_len - transferred) >> 10);
-> +
-> +	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-> +	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
->  
->  	/* One TRB with a zero-length data packet. */
-> -	if (num_trbs_left == 0 || (running_total == 0 && trb_buff_len == 0))
-> +	if (num_trbs_left == 0 || (transferred == 0 && trb_buff_len == 0) ||
-> +	    trb_buff_len == td_total_len)
->  		return 0;
->  
-> -	/* All the TRB queueing functions don't count the current TRB in
-> -	 * running_total.
-> -	 */
-> -	packets_transferred = (running_total + trb_buff_len) /
-> -		GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-> -
-> -	if ((total_packet_count - packets_transferred) > 31)
-> -		return 31 << 17;
-> -	return (total_packet_count - packets_transferred) << 17;
-> +	/* Queueing functions don't count the current TRB into transferred */
-> +	return (total_packet_count - ((transferred + trb_buff_len) / maxp));
+> @@ -1112,7 +1098,6 @@ static int mtk_eint_suspend(struct device *device)
+>
+>         reg = pctl->eint_reg_base;
+>         mtk_eint_chip_read_mask(eint_offsets, reg, pctl->cur_mask);
+> -       mtk_eint_chip_write_mask(eint_offsets, reg, pctl->wake_mask);
+>
+>         return 0;
 >  }
->  
-> +
->  static int queue_bulk_sg_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  		struct urb *urb, int slot_id, unsigned int ep_index)
->  {
-> @@ -3191,17 +3182,12 @@ static int queue_bulk_sg_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  		}
->  
->  		/* Set the TRB length, TD size, and interrupter fields. */
-> -		if (xhci->hci_version < 0x100) {
-> -			remainder = xhci_td_remainder(
-> -					urb->transfer_buffer_length -
-> -					running_total);
-> -		} else {
-> -			remainder = xhci_v1_0_td_remainder(running_total,
-> -					trb_buff_len, total_packet_count, urb,
-> -					num_trbs - 1);
-> -		}
-> +		remainder = xhci_td_remainder(xhci, running_total, trb_buff_len,
-> +					   urb->transfer_buffer_length,
-> +					   urb, num_trbs - 1);
-> +
->  		length_field = TRB_LEN(trb_buff_len) |
-> -			remainder |
-> +			TRB_TD_SIZE(remainder) |
->  			TRB_INTR_TARGET(0);
->  
->  		if (num_trbs > 1)
-> @@ -3364,17 +3350,12 @@ int xhci_queue_bulk_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  			field |= TRB_ISP;
->  
->  		/* Set the TRB length, TD size, and interrupter fields. */
-> -		if (xhci->hci_version < 0x100) {
-> -			remainder = xhci_td_remainder(
-> -					urb->transfer_buffer_length -
-> -					running_total);
-> -		} else {
-> -			remainder = xhci_v1_0_td_remainder(running_total,
-> -					trb_buff_len, total_packet_count, urb,
-> -					num_trbs - 1);
-> -		}
-> +		remainder = xhci_td_remainder(xhci, running_total, trb_buff_len,
-> +					   urb->transfer_buffer_length,
-> +					   urb, num_trbs - 1);
-> +
->  		length_field = TRB_LEN(trb_buff_len) |
-> -			remainder |
-> +			TRB_TD_SIZE(remainder) |
->  			TRB_INTR_TARGET(0);
->  
->  		if (num_trbs > 1)
-> @@ -3412,7 +3393,7 @@ int xhci_queue_ctrl_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  	struct usb_ctrlrequest *setup;
->  	struct xhci_generic_trb *start_trb;
->  	int start_cycle;
-> -	u32 field, length_field;
-> +	u32 field, length_field, remainder;
->  	struct urb_priv *urb_priv;
->  	struct xhci_td *td;
->  
-> @@ -3485,9 +3466,15 @@ int xhci_queue_ctrl_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  	else
->  		field = TRB_TYPE(TRB_DATA);
->  
-> +	remainder = xhci_td_remainder(xhci, 0,
-> +				   urb->transfer_buffer_length,
-> +				   urb->transfer_buffer_length,
-> +				   urb, 1);
-> +
->  	length_field = TRB_LEN(urb->transfer_buffer_length) |
-> -		xhci_td_remainder(urb->transfer_buffer_length) |
-> +		TRB_TD_SIZE(remainder) |
->  		TRB_INTR_TARGET(0);
-> +
->  	if (urb->transfer_buffer_length > 0) {
->  		if (setup->bRequestType & USB_DIR_IN)
->  			field |= TRB_DIR_IN;
-> @@ -3816,17 +3803,12 @@ static int xhci_queue_isoc_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
->  				trb_buff_len = td_remain_len;
->  
->  			/* Set the TRB length, TD size, & interrupter fields. */
-> -			if (xhci->hci_version < 0x100) {
-> -				remainder = xhci_td_remainder(
-> -						td_len - running_total);
-> -			} else {
-> -				remainder = xhci_v1_0_td_remainder(
-> -						running_total, trb_buff_len,
-> -						total_packet_count, urb,
-> -						(trbs_per_td - j - 1));
-> -			}
-> +			remainder = xhci_td_remainder(xhci, running_total,
-> +						   trb_buff_len, td_len,
-> +						   urb, trbs_per_td - j - 1);
-> +
->  			length_field = TRB_LEN(trb_buff_len) |
-> -				remainder |
-> +				TRB_TD_SIZE(remainder) |
->  				TRB_INTR_TARGET(0);
->  
->  			queue_trb(xhci, ep_ring, more_trbs_coming,
-> diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-> index dbda41e..ea8b904 100644
-> --- a/drivers/usb/host/xhci.h
-> +++ b/drivers/usb/host/xhci.h
-> @@ -1136,6 +1136,8 @@ enum xhci_setup_dev {
->  /* Normal TRB fields */
->  /* transfer_len bitmasks - bits 0:16 */
->  #define	TRB_LEN(p)		((p) & 0x1ffff)
-> +/* TD Size, packets remaining in this TD, bits 21:17 (5 bits, so max 31) */
-> +#define TRB_TD_SIZE(p)          (min((p), (u32)31) << 17)
->  /* Interrupter Target - which MSI-X vector to target the completion event at */
->  #define TRB_INTR_TARGET(p)	(((p) & 0x3ff) << 22)
->  #define GET_INTR_TARGET(p)	(((p) >> 22) & 0x3ff)
+> @@ -1153,9 +1138,9 @@ static struct irq_chip mtk_pinctrl_irq_chip = {
+>         .irq_unmask = mtk_eint_unmask,
+>         .irq_ack = mtk_eint_ack,
+>         .irq_set_type = mtk_eint_set_type,
+> -       .irq_set_wake = mtk_eint_irq_set_wake,
+>         .irq_request_resources = mtk_pinctrl_irq_request_resources,
+>         .irq_release_resources = mtk_pinctrl_irq_release_resources,
+> +       .flags = IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
+>  };
+>
+>  static unsigned int mtk_eint_init(struct mtk_pinctrl *pctl)
+> @@ -1393,13 +1378,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+>         }
+>
+>         ports_buf = pctl->devdata->eint_offsets.ports;
+> -       pctl->wake_mask = devm_kcalloc(&pdev->dev, ports_buf,
+> -                                       sizeof(*pctl->wake_mask),
+> GFP_KERNEL);
+> -       if (!pctl->wake_mask) {
+> -               ret = -ENOMEM;
+> -               goto chip_error;
+> -       }
+> -
+>         pctl->cur_mask = devm_kcalloc(&pdev->dev, ports_buf,
+>                                         sizeof(*pctl->cur_mask),
+> GFP_KERNEL);
+>         if (!pctl->cur_mask) {
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> index 55a534338931..acd804a945d8 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> @@ -267,7 +267,6 @@ struct mtk_pinctrl {
+>         void __iomem            *eint_reg_base;
+>         struct irq_domain       *domain;
+>         int                     *eint_dual_edges;
+> -       u32 *wake_mask;
+>         u32 *cur_mask;
+>  };
+>
+> --
+> 1.9.1
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
