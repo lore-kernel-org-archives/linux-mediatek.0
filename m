@@ -1,21 +1,26 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
 Subject: Re: [PATCH] xhci: create one unified function to calculate TRB TD
  remainder.
-Date: Fri, 11 Sep 2015 12:08:05 +0800
-Message-ID: <1441944485.25974.8.camel@mhfsdcap03>
+Date: Fri, 11 Sep 2015 12:30:08 +0800
+Message-ID: <1441945808.25974.18.camel@mhfsdcap03>
 References: <55EEBC33.5030906@intel.com>
 	 <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1441710591-4267-1-git-send-email-mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1441710591-4267-1-git-send-email-mathias.nyman@linux.intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mathias Nyman <mathias.nyman@linux.intel.com>
+Cc: linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, gregkh@linuxfoundation.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi,
+
+It works ok when I add MTK's quirk into xhci_td_remainder(), and test it
+by usb camera, udisk, usb ethernet adapter, and hub.
+
+
 On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
 > xhci versions 1.0 and later report the untransferred data remaining in a
 > TD a bit differently than older hosts.
@@ -27,7 +32,7 @@ On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
 > field for remaining data. To prevent yet another function for calculating
 > remainder we instead want to make one quirk friendly unified function.
 > 
-> Signed-off-by: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+> Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
 > ---
 >  drivers/usb/host/xhci-ring.c | 106 ++++++++++++++++++-------------------------
 >  drivers/usb/host/xhci.h      |   2 +
@@ -94,9 +99,6 @@ On Tue, 2015-09-08 at 14:09 +0300, Mathias Nyman wrote:
 > +	    trb_buff_len == td_total_len)
 >  		return 0;
 >  
-I think when trb_buff_len == td_total_len, the TD only needs one trb, so
-num_trbs_left will equal to 0; that means no need add this condition.
-
 > -	/* All the TRB queueing functions don't count the current TRB in
 > -	 * running_total.
 > -	 */
@@ -222,9 +224,3 @@ num_trbs_left will equal to 0; that means no need add this condition.
 >  /* Interrupter Target - which MSI-X vector to target the completion event at */
 >  #define TRB_INTR_TARGET(p)	(((p) & 0x3ff) << 22)
 >  #define GET_INTR_TARGET(p)	(((p) >> 22) & 0x3ff)
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
