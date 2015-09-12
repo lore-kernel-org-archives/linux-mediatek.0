@@ -1,80 +1,234 @@
-From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 3/3] arm64: dts: mt8173: Add nor flash node
-Date: Fri, 11 Sep 2015 14:56:34 -0700
-Message-ID: <20150911215634.GF11487@google.com>
-References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
- <1441705796-11365-4-git-send-email-bayi.cheng@mediatek.com>
- <CAD6G_RTR2r8ETMQ14uGosRn-85sssvVsFT4BjK9SkVSfMkG8Dw@mail.gmail.com>
- <CAAEAJfCg+O=b9pfndG2WfxKVk9gvcqHUL0MV4fDpHj_9CaCBbQ@mail.gmail.com>
- <55EF7346.5040607@kernel.org>
- <1441965076.23394.7.camel@mhfsdcap03>
+From: maoguang meng <maoguang.meng@mediatek.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and
+ suspend resume
+Date: Sat, 12 Sep 2015 17:50:54 +0800
+Message-ID: <1442051454.5661.12.camel@mhfsdcap03>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+	 <55DB4609.5040904@arm.com>
+	 <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
+	 <1441535972.22230.5.camel@mhfsdcap03> <55EEAA24.6080706@arm.com>
+	 <55EF11E6.7030307@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1441965076.23394.7.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "bayi.cheng" <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org>, Jagan Teki <jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <55EF11E6.7030307@arm.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Linus Walleij <linus.walleij@linaro.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen =?iso-2022-jp?Q?=28=1B=24BDD1Q=3D=27=1B=28B=29?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 11, 2015 at 05:51:16PM +0800, bayi.cheng wrote:
-> On Tue, 2015-09-08 at 18:46 -0500, Rob Herring wrote:
-> > On 09/08/2015 10:18 AM, Ezequiel Garcia wrote:
-> > > On 8 September 2015 at 08:53, Jagan Teki <jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org> wrote:
-> > >> On 8 September 2015 at 15:19, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > >>> Add Mediatek nor flash node
-> > >>>
-> > >>> Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > >>> ---
-> > >>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
-> > >>>  1 file changed, 10 insertions(+)
-> > >>>
-> > >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > >>> index d18ee42..a14f005 100644
-> > >>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > >>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > >>> @@ -365,6 +365,16 @@
-> > >>>                         status = "disabled";
-> > >>>                 };
-> > >>>
-> > >>> +               nor_flash: nor@1100d000 {
-> > >>
-> > >> Based on the comments from 1/3 - this notation needs to be change something like
-> > >> qspi0: quadspi@1100d000
-> > >>
-> > > 
-> > > Actually, to follow ePAPR recomendations it should be named as flash@1100d000.
-> > > (See ePAPR, 2.2.2 Generic Names Recommendation).
-> > 
-> > The flash device node should, but this is the controller which should be
-> > "spi" IMO even if this is not a general purpose controller.
-> > 
-> > Rob
-> > 
-> HI Rob, Thanks for your instruct! I will fix it !
+hi Sudeep:
 
-OK, so given there are several cooks in the kitchen, and I just read
-these replies after replying independently to the binding doc, I'll try
-to summarize the consensus, flavored with my own opinion:
+I test flowlling your blow suggestions,but the system can not be woken.
 
- * the node name should not be 'nor'; it should be something more along
-   the lines of ePAPR. So 'flash' or 'spi'
- * the phandle name is less important, and can be more descriptive
- * there should be a subnode to represent the flash separately from the
-   controller
+beacuse,mtk_eint_suspend will mask it.As we know if eint wakeup system
+it must be unmasked before enter suspend flow.
 
-So we might put this together to:
+e.x
 
-	whatever_name_you_like: spi@1100d000 {
-		...
-		flash@0 {
-			...
-		};
-	};
+static int __maybe_unused elan_suspend(struct device *dev)
+{
+	struct i2c_client *client = to_i2c_client(dev);
+	struct elan_tp_data *data = i2c_get_clientdata(client);
+	int ret;
 
-Brian
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	/*
+	 * We are taking the mutex to make sure sysfs operations are
+	 * complete before we attempt to bring the device into low[er]
+	 * power mode.
+	 */
+	ret = mutex_lock_interruptible(&data->sysfs_mutex);
+	if (ret)
+		return ret;
+
+	disable_irq(client->irq);
+
+	if (device_may_wakeup(dev)) {
+		ret = elan_sleep(data);
+		/* Enable wake from IRQ */
+		data->irq_wake = (enable_irq_wake(client->irq) == 0);
+	} else {
+		ret = elan_disable_power(data);
+	}
+
+	mutex_unlock(&data->sysfs_mutex);
+	return ret;
+}
+
+thanks
+
+Best Regards,
+
+Maoguang
+
+On Wed, 2015-09-09 at 00:50 +0800, Sudeep Holla wrote:
+> 
+> On 08/09/15 10:28, Sudeep Holla wrote:
+> >
+> >
+> > On 06/09/15 11:39, maoguang meng wrote:
+> >> On Wed, 2015-09-02 at 14:02 +0800, Daniel Kurtz wrote:
+> >>> Hi maoguang,
+> >>>
+> >>> On Tue, Aug 25, 2015 at 12:27 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+> >>>>
+> >>>>
+> >>>> On 14/08/15 09:38, maoguang.meng@mediatek.com wrote:
+> >>>>>
+> >>>>> From: Maoguang Meng <maoguang.meng@mediatek.com>
+> >>>>>
+> >>>>> This patch implement irq_set_wake to get who is wakeup source and
+> >>>>> setup on suspend resume.
+> >>>>>
+> >>>>> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
+> >>>>>
+> >>> [snip]
+> >>>
+> >>> Can you please respond to Sudeep's questions:
+> >>>
+> >>>> Does this pinmux controller:
+> >>>>
+> >>>> 1. Support wake-up configuration ? If not, you need to use
+> >>>>      IRQCHIP_SKIP_SET_WAKE. I don't see any value in writing the
+> >>>>      mask_{set,clear} if the same registers are used for {en,dis}able
+> >>
+> >>     YES.
+> >>     we can call enable_irq_wake(irq) to config this irq as a wake-up
+> >> source.
+> >>
+> >
+> > No that doesn't answer my question. Yes you can always call
+> > enable_irq_wake(irq) as along as you have irq_set_wake implemented.
+> > But my question was does this pinmux controller support wake-up
+> > configuration.
+> >
+> > IMHO, by looking at the implementation I can confirm *NO*, it doesn't.
+> > So please stop copy-pasting the implementation from other drivers.
+> > The reason is you operate on the same mask_{set,clear} which you use
+> > to {en,dis}able the interrupts which means you don't have to do anything
+> > to configure an interrupt as a wakeup source other than just keeping
+> > them enabled. Hopefully this clarifies.
+> >
+> >>>>
+> >>>> 2. Is in always on domain ? If not, you need save/restore only to
+> >>>>      resume back the functionality. Generally we can set
+> >>>>      IRQCHIP_MASK_ON_SUSPEND to ensure non-wake-up interrupts are
+> >>>>      disabled during suspend and re-enabled in resume path. You just
+> >>>>      save/restore raw values without tracking the wake-up source.
+> >>
+> >>     YES.
+> >>
+> >
+> > Again *YES* for what part of my question. If it's always-on, then you
+> > don't need this suspend/resume callbacks at all, so I assume the answer
+> > is *NO*.
+> >
+> 
+> IIUC this pinmux controller, something like below should work.
+> 
+> 
+> ---->8
+> 
+>  From 7c26992bce047efb66a6ba8d2ffec2b272499df7 Mon Sep 17 00:00:00 2001
+> From: Sudeep Holla <sudeep.holla@arm.com>
+> Date: Tue, 8 Sep 2015 17:35:38 +0100
+> Subject: [PATCH] pinctrl: mediatek: Enable SKIP_SET_WAKE and MASK_ON_SUSPEND
+> 
+> The mediatek pinmux controller doesn't provides any facility to configure
+> the wakeup sources. So instead of providing redundant irq_set_wake
+> functionality, SKIP_SET_WAKE could be set to it. Also there's no need to
+> maintain 2 sets of masks.
+> 
+> This patch enables IRQCHIP_SKIP_SET_WAKE and IRQCHIP_MASK_ON_SUSPEND and
+> also removes wake_mask.
+> 
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>
+> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> Cc: Maoguang Meng <maoguang.meng@mediatek.com>
+> Cc: Chaotian Jing <chaotian.jing@mediatek.com>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Sudeep Holla <sudeep.holla@arm.com>
+> ---
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 24 
+> +-----------------------
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  1 -
+>   2 files changed, 1 insertion(+), 24 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c 
+> b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 7726c6caaf83..d8e194a5bb31 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -1063,20 +1063,6 @@ static int mtk_eint_set_type(struct irq_data *d,
+>   	return 0;
+>   }
+> 
+> -static int mtk_eint_irq_set_wake(struct irq_data *d, unsigned int on)
+> -{
+> -	struct mtk_pinctrl *pctl = irq_data_get_irq_chip_data(d);
+> -	int shift = d->hwirq & 0x1f;
+> -	int reg = d->hwirq >> 5;
+> -
+> -	if (on)
+> -		pctl->wake_mask[reg] |= BIT(shift);
+> -	else
+> -		pctl->wake_mask[reg] &= ~BIT(shift);
+> -
+> -	return 0;
+> -}
+> -
+>   static void mtk_eint_chip_write_mask(const struct mtk_eint_offsets *chip,
+>   		void __iomem *eint_reg_base, u32 *buf)
+>   {
+> @@ -1112,7 +1098,6 @@ static int mtk_eint_suspend(struct device *device)
+> 
+>   	reg = pctl->eint_reg_base;
+>   	mtk_eint_chip_read_mask(eint_offsets, reg, pctl->cur_mask);
+> -	mtk_eint_chip_write_mask(eint_offsets, reg, pctl->wake_mask);
+> 
+>   	return 0;
+>   }
+> @@ -1153,9 +1138,9 @@ static struct irq_chip mtk_pinctrl_irq_chip = {
+>   	.irq_unmask = mtk_eint_unmask,
+>   	.irq_ack = mtk_eint_ack,
+>   	.irq_set_type = mtk_eint_set_type,
+> -	.irq_set_wake = mtk_eint_irq_set_wake,
+>   	.irq_request_resources = mtk_pinctrl_irq_request_resources,
+>   	.irq_release_resources = mtk_pinctrl_irq_release_resources,
+> +	.flags = IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
+>   };
+> 
+>   static unsigned int mtk_eint_init(struct mtk_pinctrl *pctl)
+> @@ -1393,13 +1378,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
+>   	}
+> 
+>   	ports_buf = pctl->devdata->eint_offsets.ports;
+> -	pctl->wake_mask = devm_kcalloc(&pdev->dev, ports_buf,
+> -					sizeof(*pctl->wake_mask), GFP_KERNEL);
+> -	if (!pctl->wake_mask) {
+> -		ret = -ENOMEM;
+> -		goto chip_error;
+> -	}
+> -
+>   	pctl->cur_mask = devm_kcalloc(&pdev->dev, ports_buf,
+>   					sizeof(*pctl->cur_mask), GFP_KERNEL);
+>   	if (!pctl->cur_mask) {
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h 
+> b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> index 55a534338931..acd804a945d8 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+> @@ -267,7 +267,6 @@ struct mtk_pinctrl {
+>   	void __iomem		*eint_reg_base;
+>   	struct irq_domain	*domain;
+>   	int			*eint_dual_edges;
+> -	u32 *wake_mask;
+>   	u32 *cur_mask;
+>   };
+> 
+
+
