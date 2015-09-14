@@ -1,89 +1,59 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: The default value of enable_gpio in pwm-backlight driver?
-Date: Mon, 14 Sep 2015 11:24:23 +0800
-Message-ID: <1442201063.1076.9.camel@mtksdaap41>
-References: <1441285704.27600.26.camel@mtksdaap41>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Increase periods_min in capture
+Date: Mon, 14 Sep 2015 14:51:17 +0800
+Message-ID: <1442213477-63721-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1441285704.27600.26.camel@mtksdaap41>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, Alexandre Courbot <acourbot@nvidia.com>
-Cc: YH Huang <yh.huang@mediatek.com>, linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org, djkurtz@chromium.org, lee.jones@linaro.org, jingoohan1@gmail.com, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: matthias.bgg@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+In capture, there is chance that hw_ptr reported at IRQ is
+a little smaller than period_size due to internal AFE buffer.
+In the case of ping-pong buffer:
 
-Hi Alexandre, Thierry,
+|xxxxxxxxxxxxxxxxxxxxxxxxxxxx--|-----------------------------|
+                            hw_ptr < period_size
 
+This available buffer will not be read since its size is smaller than
+avail_min (which is period_size by default), and read thread continues
+to sleep. If the next hw_ptr is just a little larger than buffer_size,
+overrun occurs. One more period can hold the possible unread buffer.
 
-On Thu, 2015-09-03 at 21:08 +0800, YH Huang wrote:
-<...>
-> From	Alexandre Courbot <>
-> Subject	[PATCH 2/2] pwm-backlight: switch to gpiod interface
-> Date	Thu, 27 Feb 2014 14:53:34 +0900
-> 
-> Switch to the new gpiod interface, which allows to handle GPIO
-> properties such as active low transparently and removes a whole bunch of
-> code.
-> 
-> There are still a couple of users of this driver that rely on passing
-> the enable GPIO number through platform data, so a fallback mechanism
-> using a GPIO number is still available to avoid breaking them. It will
-> be removed once current users have switched to the GPIO lookup tables
-> provided by the gpiod interface.
-> 
-> --- a/drivers/video/backlight/pwm_bl.c
-> +++ b/drivers/video/backlight/pwm_bl.c
-> 
-> @@ -265,26 +245,39 @@ static int pwm_backlight_probe(struct
-> platform_device *pdev)
->  	pb->dev = &pdev->dev;
->  	pb->enabled = false;
->  
-> -	if (gpio_is_valid(pb->enable_gpio)) {
-> -		unsigned long flags;
-> -
-> -		if (pb->enable_gpio_flags & PWM_BACKLIGHT_GPIO_ACTIVE_LOW)
-> -			flags = GPIOF_OUT_INIT_HIGH;
-> -		else
-> -			flags = GPIOF_OUT_INIT_LOW;
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+---
+ sound/soc/mediatek/mtk-afe-pcm.c |   17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-In commit 257462dbf3ed ("pwm-backlight: switch to gpiod interface").
-It seems to me the original code is trying to make it default disable...
-
-> +	pb->enable_gpio = devm_gpiod_get(&pdev->dev, "enable");
-> +	if (IS_ERR(pb->enable_gpio)) {
-> +		ret = PTR_ERR(pb->enable_gpio);
-> +		if (ret == -ENOENT) {
-> +			pb->enable_gpio = NULL;
-> +			ret = 0;
-> +		} else {
-> +			goto err_alloc;
-> +		}
-> +	}
->  
-> -		ret = gpio_request_one(pb->enable_gpio, flags, "enable");
-> +	/*
-> +	 * Compatibility fallback for drivers still using the integer GPIO
-> +	 * platform data. Must go away soon.
-> +	 */
-> +	if (pb->enable_gpio == NULL && gpio_is_valid(data->enable_gpio)) {
-> +		ret = devm_gpio_request_one(&pdev->dev, data->enable_gpio,
-> +					    GPIOF_OUT_INIT_HIGH, "enable");
->  		if (ret < 0) {
->  			dev_err(&pdev->dev, "failed to request GPIO#%d: %d\n",
-> -				pb->enable_gpio, ret);
-> +				data->enable_gpio, ret);
->  			goto err_alloc;
->  		}
-> +		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
->  	}
->  
-> +	if (pb->enable_gpio)
-> +		gpiod_direction_output(pb->enable_gpio, 1);
-
-But the new code here set it to enable. Is this on purpose, or am I miss
-read anything?
-
-Joe.C
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index d190fe0..f5baf3c 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -549,6 +549,23 @@ static int mtk_afe_dais_startup(struct snd_pcm_substream *substream,
+ 	memif->substream = substream;
+ 
+ 	snd_soc_set_runtime_hwparams(substream, &mtk_afe_hardware);
++
++	/*
++	 * Capture cannot use ping-pong buffer since hw_ptr at IRQ may be
++	 * smaller than period_size due to AFE's internal buffer.
++	 * This easily leads to overrun when avail_min is period_size.
++	 * One more period can hold the possible unread buffer.
++	 */
++	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
++		ret = snd_pcm_hw_constraint_minmax(runtime,
++						   SNDRV_PCM_HW_PARAM_PERIODS,
++						   3,
++						   mtk_afe_hardware.periods_max);
++		if (ret < 0) {
++			dev_err(afe->dev, "hw_constraint_minmax failed\n");
++			return ret;
++		}
++	}
+ 	ret = snd_pcm_hw_constraint_integer(runtime,
+ 					    SNDRV_PCM_HW_PARAM_PERIODS);
+ 	if (ret < 0)
+-- 
+1.7.9.5
