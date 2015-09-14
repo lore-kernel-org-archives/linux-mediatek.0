@@ -1,55 +1,86 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Mon, 14 Sep 2015 15:32:56 +0800
-Message-ID: <CAGS+omCHAGrRPwM8Wghver+o5ky3MG2+JJqKiwWzHtDTQkaD4g@mail.gmail.com>
-References: <1441006446-4558-1-git-send-email-s.hauer@pengutronix.de> <1441006446-4558-3-git-send-email-s.hauer@pengutronix.de>
+From: Sudeep Holla <sudeep.holla@arm.com>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend
+ resume
+Date: Mon, 14 Sep 2015 12:16:23 +0100
+Message-ID: <55F6AC87.4040301@arm.com>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+ <55DB4609.5040904@arm.com>
+ <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
+ <1441535972.22230.5.camel@mhfsdcap03> <55EEAA24.6080706@arm.com>
+ <55EF11E6.7030307@arm.com> <1442051454.5661.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1441006446-4558-3-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1442051454.5661.12.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: maoguang meng <maoguang.meng@mediatek.com>
+Cc: Sudeep Holla <sudeep.holla@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, Linus Walleij <linus.walleij@linaro.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
 
-On Mon, Aug 31, 2015 at 3:34 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> This adds support for the Mediatek thermal controller found on MT8173
-> and likely other SoCs.
-> The controller is a bit special. It does not have its own ADC, instead
-> it controls the on-SoC AUXADC via AHB bus accesses. For this reason
-> we need the physical address of the AUXADC. Also it controls a mux
-> using AHB bus accesses, so we need the APMIXEDSYS physical address aswell.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
 
-[snip...]
+On 12/09/15 10:50, maoguang meng wrote:
+> hi Sudeep:
+> 
+> I test flowlling your blow suggestions,but the system can not be woken.
+> 
+> beacuse,mtk_eint_suspend will mask it.As we know if eint wakeup system
+> it must be unmasked before enter suspend flow.
+> 
+> e.x
+> 
+> static int __maybe_unused elan_suspend(struct device *dev)
+> {
+> 	struct i2c_client *client = to_i2c_client(dev);
+> 	struct elan_tp_data *data = i2c_get_clientdata(client);
+> 	int ret;
+> 
+> 	/*
+> 	 * We are taking the mutex to make sure sysfs operations are
+> 	 * complete before we attempt to bring the device into low[er]
+> 	 * power mode.
+> 	 */
+> 	ret = mutex_lock_interruptible(&data->sysfs_mutex);
+> 	if (ret)
+> 		return ret;
+> 
+> 	disable_irq(client->irq);
+> 
+> 	if (device_may_wakeup(dev)) {
+> 		ret = elan_sleep(data);
+> 		/* Enable wake from IRQ */
+> 		data->irq_wake = (enable_irq_wake(client->irq) == 0);
 
-> +static int mtk_read_temp(void *data, long *temp)
-> +{
-> +       struct mtk_thermal_bank *bank = data;
-> +
-> +       mtk_thermal_get_bank(bank);
-> +
-> +       *temp = mtk_thermal_bank_temperature(bank);
-> +
-> +       mtk_thermal_put_bank(bank);
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
-> +       .get_temp = mtk_read_temp,
+This is wrong assumption in the driver. enable_irq_wake doesn't
+implicitly enable the IRQ. So the disable_irq should be moved to else.
+And the resume patch also needs to be fixed accordingly, otherwise you
+may get unbalanced irq. But this should not be the reason for fixing the
+pinctrl suspend/resume.
 
-On v4.3-rc1, this now causes a compile warning, since the prototype
-for get_temp was changed to:
+Regards,
+Sudeep
 
-       int (*get_temp)(void *, int *);
+--->8
 
-by:
-commit 17e8351a77397e8a83727eb17e3a3e9b8ab5257a
-    thermal: consistently use int for temperatures
+diff --git a/drivers/input/mouse/elan_i2c_core.c
+b/drivers/input/mouse/elan_i2c_core.c
+index fa945304b9a5..7de26b04f45c 100644
+--- a/drivers/input/mouse/elan_i2c_core.c
++++ b/drivers/input/mouse/elan_i2c_core.c
+@@ -1117,13 +1117,13 @@ static int __maybe_unused elan_suspend(struct
+device *dev)
+        if (ret)
+                return ret;
 
--Dan
+-       disable_irq(client->irq);
+-
+        if (device_may_wakeup(dev)) {
+                ret = elan_sleep(data);
+                /* Enable wake from IRQ */
+                data->irq_wake = (enable_irq_wake(client->irq) == 0);
+        } else {
++               disable_irq(client->irq);
++
+                ret = elan_disable_power(data);
+        }
