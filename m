@@ -1,49 +1,86 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] spi: mediatek: fix wrong error return value on probe
-Date: Mon, 14 Sep 2015 19:39:25 +0100
-Message-ID: <20150914183925.GG12027@sirena.org.uk>
-References: <1441320656-8666-1-git-send-email-javier@osg.samsung.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend resume
+Date: Tue, 15 Sep 2015 10:43:59 +0800
+Message-ID: <CAGS+omBP1B_xTJC1SNi6Hjsrr3-TBcKgHTonGky901CUPmp+bA@mail.gmail.com>
+References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
+ <55DB4609.5040904@arm.com> <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
+ <1441535972.22230.5.camel@mhfsdcap03> <55EEAA24.6080706@arm.com>
+ <55EF11E6.7030307@arm.com> <1442051454.5661.12.camel@mhfsdcap03> <55F6AC87.4040301@arm.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="LtWARj4qtdVynAWs"
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1441320656-8666-1-git-send-email-javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-input-owner@vger.kernel.org>
+In-Reply-To: <55F6AC87.4040301@arm.com>
+Sender: linux-input-owner@vger.kernel.org
+To: Sudeep Holla <sudeep.holla@arm.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: maoguang meng <maoguang.meng@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Input <linux-input@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Adding dtor & linux-input as we are now discussing the elan trackpad driver...
 
---LtWARj4qtdVynAWs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Sep 04, 2015 at 12:50:56AM +0200, Javier Martinez Canillas wrote:
-> Commit adcbcfea15d62 ("spi: mediatek: fix spi clock usage error")
-> added a new sel_clk but introduced bugs in the error paths since
-> the wrong struct clk pointers are passed to PTR_ERR().
-
-This doesn't apply against current code, please check and resend.
-
---LtWARj4qtdVynAWs
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJV9xRdAAoJECTWi3JdVIfQLRgH/ipV2zUmDs25fKLE4ye6VLy6
-243cS/Z/IetZ5fsRvMUfJFrnV4vNRmjrigQwt46K4qojvPFIySmVWcuQm1rXgmrn
-fihTRV9XeHnvd2Ho8FGvS7SK1LngYTNnvOSy27fQS0cIUhw3DZhMki5sQE20jIo/
-CpP7BAeO41d49zkfxAdN8BwtLwr6aWF5LbNAdIqeESCOHvlbEYCG4/R9FzCPnPID
-A0To4nxNgbUzwmEzROtUF3mCopcmW/awHLn+kA4SzI6OBx2Rx+n6ILz/yRjOwwHX
-p2JrcPbD5FEpKPhNaJShai7FcnprqqC4iWMEbQBHGKTEG6KgngXnQOsXK8/59a8=
-=GEC0
------END PGP SIGNATURE-----
-
---LtWARj4qtdVynAWs--
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Mon, Sep 14, 2015 at 7:16 PM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+>
+>
+> On 12/09/15 10:50, maoguang meng wrote:
+>> hi Sudeep:
+>>
+>> I test flowlling your blow suggestions,but the system can not be woken.
+>>
+>> beacuse,mtk_eint_suspend will mask it.As we know if eint wakeup system
+>> it must be unmasked before enter suspend flow.
+>>
+>> e.x
+>>
+>> static int __maybe_unused elan_suspend(struct device *dev)
+>> {
+>>       struct i2c_client *client = to_i2c_client(dev);
+>>       struct elan_tp_data *data = i2c_get_clientdata(client);
+>>       int ret;
+>>
+>>       /*
+>>        * We are taking the mutex to make sure sysfs operations are
+>>        * complete before we attempt to bring the device into low[er]
+>>        * power mode.
+>>        */
+>>       ret = mutex_lock_interruptible(&data->sysfs_mutex);
+>>       if (ret)
+>>               return ret;
+>>
+>>       disable_irq(client->irq);
+>>
+>>       if (device_may_wakeup(dev)) {
+>>               ret = elan_sleep(data);
+>>               /* Enable wake from IRQ */
+>>               data->irq_wake = (enable_irq_wake(client->irq) == 0);
+>
+> This is wrong assumption in the driver. enable_irq_wake doesn't
+> implicitly enable the IRQ. So the disable_irq should be moved to else.
+> And the resume patch also needs to be fixed accordingly, otherwise you
+> may get unbalanced irq. But this should not be the reason for fixing the
+> pinctrl suspend/resume.
+>
+> Regards,
+> Sudeep
+>
+> --->8
+>
+> diff --git a/drivers/input/mouse/elan_i2c_core.c
+> b/drivers/input/mouse/elan_i2c_core.c
+> index fa945304b9a5..7de26b04f45c 100644
+> --- a/drivers/input/mouse/elan_i2c_core.c
+> +++ b/drivers/input/mouse/elan_i2c_core.c
+> @@ -1117,13 +1117,13 @@ static int __maybe_unused elan_suspend(struct
+> device *dev)
+>         if (ret)
+>                 return ret;
+>
+> -       disable_irq(client->irq);
+> -
+>         if (device_may_wakeup(dev)) {
+>                 ret = elan_sleep(data);
+>                 /* Enable wake from IRQ */
+>                 data->irq_wake = (enable_irq_wake(client->irq) == 0);
+>         } else {
+> +               disable_irq(client->irq);
+> +
+>                 ret = elan_disable_power(data);
+>         }
