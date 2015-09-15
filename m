@@ -1,76 +1,90 @@
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend resume
-Date: Mon, 14 Sep 2015 19:52:41 -0700
-Message-ID: <CAKdAkRSFE2KJOzbUarxAQMNwHOkkyGHXmRLGhn55VTvG-SJ4Kg@mail.gmail.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
-	<55DB4609.5040904@arm.com>
-	<CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
-	<1441535972.22230.5.camel@mhfsdcap03>
-	<55EEAA24.6080706@arm.com>
-	<55EF11E6.7030307@arm.com>
-	<1442051454.5661.12.camel@mhfsdcap03>
-	<55F6AC87.4040301@arm.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v7 0/3] Add MediaTek display PWM driver
+Date: Tue, 15 Sep 2015 11:52:53 +0800
+Message-ID: <1442289173.11445.5.camel@mtksdaap41>
+References: <1439882875-19596-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <55F6AC87.4040301@arm.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: maoguang meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1439882875-19596-1-git-send-email-yh.huang@mediatek.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "linux-pwm@vger.kernel.org" <linux-pwm@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Sep 14, 2015 at 4:16 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
->
->
-> On 12/09/15 10:50, maoguang meng wrote:
->> hi Sudeep:
->>
->> I test flowlling your blow suggestions,but the system can not be woken.
->>
->> beacuse,mtk_eint_suspend will mask it.As we know if eint wakeup system
->> it must be unmasked before enter suspend flow.
->>
->> e.x
->>
->> static int __maybe_unused elan_suspend(struct device *dev)
->> {
->>       struct i2c_client *client = to_i2c_client(dev);
->>       struct elan_tp_data *data = i2c_get_clientdata(client);
->>       int ret;
->>
->>       /*
->>        * We are taking the mutex to make sure sysfs operations are
->>        * complete before we attempt to bring the device into low[er]
->>        * power mode.
->>        */
->>       ret = mutex_lock_interruptible(&data->sysfs_mutex);
->>       if (ret)
->>               return ret;
->>
->>       disable_irq(client->irq);
->>
->>       if (device_may_wakeup(dev)) {
->>               ret = elan_sleep(data);
->>               /* Enable wake from IRQ */
->>               data->irq_wake = (enable_irq_wake(client->irq) == 0);
->
-> This is wrong assumption in the driver. enable_irq_wake doesn't
-> implicitly enable the IRQ. So the disable_irq should be moved to else.
-> And the resume patch also needs to be fixed accordingly, otherwise you
-> may get unbalanced irq. But this should not be the reason for fixing the
-> pinctrl suspend/resume.
->
+On Tue, 2015-08-18 at 15:27 +0800, YH Huang wrote:
+> This patch series add the use of display PWM driver, documentation
+> and device tree for Mediatek SoCs. The driver is used to support
+> the backlight of the panel. This is based on v4.2-rc1.
+> 
+> The clock definitions (CLK_MM_DISP_PWM*) are added by James Liao's patch:
+> clk: mediatek: Add subsystem clocks of MT8173
+> 
+> Change in v7:
+> 1. Add the dependency HAS_IOMEM in Kconfig.
+> 2. Revise misprints and coding style for readability.
+> 
+> Change in v6:
+> 1. Enable clocks in the pwm_enable function.
+> 2. Remove suspend/resume code since pwm-backlight driver has done the
+> same things.
+> 3. Revise some code to make it easier to read.
+> 
+> Change in v5:
+> 1. Configure PWM output via pinctrl.
+> 2. Fix the parameter name in dtsi.
+> 
+> Change in v4:
+> 1. Codebase is on v4.2-rc1.
+> 2. Add the PWM node in dtsi.
+> 3. Change the dependency in Kconfig.
+> 4. Rewrite some code for readability.
+> 
+> Change in v3:
+> 1. Add suspend/resume function.
+> 2. Fix the formula for high_width calculation.
+> 3. Rewrite some code to make it easier to read.
+> 4. Add more information in the commit message.
+> 
+> Change in v2:
+> 1. Rewrite descriptions for driver in kconfig to make it much clear.
+> 2. Rename the driver from "pwm-mediatek-disp" to "pwm-mtk-disp".
+> 3. Disable clocks in the error path.
+> 4. Change the shift values in decimal instead of hex.
+> 5. Rename and add some variables or function name for consistency and
+> readability.
+> 6. Drop unnecessary parentheses, spaces, variables and add newlines to
+> make the code easiler to read.
+> 
+> YH Huang (3):
+>   dt-bindings: pwm: add MediaTek display PWM bindings
+>   pwm: add MediaTek display PWM driver support
+>   arm64: dts: mt8173: add MT8173 display PWM driver support node
+> 
+>  .../devicetree/bindings/pwm/pwm-mtk-disp.txt       |   42 ++++
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   13 ++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   22 ++
+>  drivers/pwm/Kconfig                                |   11 +
+>  drivers/pwm/Makefile                               |    1 +
+>  drivers/pwm/pwm-mtk-disp.c                         |  232 ++++++++++++++++++++
+>  6 files changed, 321 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+>  create mode 100644 drivers/pwm/pwm-mtk-disp.c
+> 
+> --
+> 1.7.9.5
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
-Elan driver does not want to enable servicing IRQs, it just wants to
-configure them as wakeup sources. Hence the current elan_suspend() is
-fine. When system wakes up and the device is resumed and the driver is
-ready to service interrupts it will enable IRQ again.
+Hi Thierry,
 
-IOW enable_irq_wake() and enable_irq() are 2 completely different
-calls and it is perfectly fine to disable IRQ and then ebale it as a
-wakeup source.
+Will you please pick up these patches in your pwm tree?
+Should I rebase to 4.3-rc1?
 
-Thanks.
-
--- 
-Dmitry
+Regards,
+YH Huang
