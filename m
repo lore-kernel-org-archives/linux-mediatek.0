@@ -1,54 +1,37 @@
-From: bayi.cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/3] doc: dt: add documentation for Mediatek spi-nor
- controller
-Date: Tue, 15 Sep 2015 14:53:41 +0800
-Message-ID: <1442300021.27250.10.camel@mhfsdcap03>
-References: <1441705796-11365-1-git-send-email-bayi.cheng@mediatek.com>
- <1441705796-11365-2-git-send-email-bayi.cheng@mediatek.com>
- <20150911214907.GE11487@google.com>
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: Re: [PATCH] spi: mediatek: fix wrong error return value on probe
+Date: Tue, 15 Sep 2015 13:49:11 +0200
+Message-ID: <55F805B7.7020706@osg.samsung.com>
+References: <1441320656-8666-1-git-send-email-javier@osg.samsung.com>
+ <20150914183925.GG12027@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20150911214907.GE11487-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20150914183925.GG12027@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-09-11 at 14:49 -0700, Brian Norris wrote:
-> One more thing:
+Hello Mark,
+
+On 09/14/2015 08:39 PM, Mark Brown wrote:
+> On Fri, Sep 04, 2015 at 12:50:56AM +0200, Javier Martinez Canillas wrote:
+>> Commit adcbcfea15d62 ("spi: mediatek: fix spi clock usage error")
+>> added a new sel_clk but introduced bugs in the error paths since
+>> the wrong struct clk pointers are passed to PTR_ERR().
 > 
-> On Tue, Sep 08, 2015 at 05:49:54PM +0800, Bayi Cheng wrote:
-> > +- clocks: spi nor source clock
+> This doesn't apply against current code, please check and resend.
 > 
-> ^^ you only list one clock here
-> 
-Ok, I will add other clocks
-> > +- clock-names: "spi_clk", "axi_clk", "mux_clk", "sf_clk"
-> 
-> But you have 4 names here.
-> 
-> ...
-> > +	clocks = <&pericfg CLK_PERI_SPI>,
-> > +		 <&topckgen CLK_TOP_AXI_SEL>,
-> > +		 <&topckgen CLK_TOP_UNIVPLL2_D8>,
-> > +		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> 
-> And you provide 4 clocks.
-> 
-> > +	clock-names = "spi_clk", "axi_clk", "mux_clk", "sf_clk";
-> 
-> Please list all 4 under the "clocks" property, not just under the
-> "clock-names" property.
-> 
-OK,  Thanks for your remind!
-> Brian
+
+Which branch should I use as a baseline then? The patch applies cleanly
+on both today's linux-next (next-20150915) and your for-linus branch:
+
+https://git.kernel.org/cgit/linux/kernel/git/broonie/spi.git/log/?h=for-linus
+
+Best regards,
+-- 
+Javier Martinez Canillas
+Open Source Group
+Samsung Research America
