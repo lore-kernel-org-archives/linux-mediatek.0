@@ -1,61 +1,35 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm64: mt8173.dtsi: correct i2c node names
-Date: Wed, 16 Sep 2015 09:35:25 +0800
-Message-ID: <1442367325-55819-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: [PATCH 1/2] arm64: mediatek: enable MTK_TIMER
+Date: Wed, 16 Sep 2015 10:04:54 +0800
+Message-ID: <1442369095-1094-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, linux-clk@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Node name in device tree should describe general class of the
-device. Correct incorrect i2c node names.
+Enable MTK_TIMER for MediaTek plaform, which will be used as
+schedule clock.
 
-Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Change-Id: Ib77a0bf01193102c755077b6e72e73e477b18e5f
+Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 ---
-This is based on v4.3-rc1.
-All the other i2c node names are correct.
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/Kconfig.platforms | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index d18ee42..7f360b7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -365,7 +365,7 @@
- 			status = "disabled";
- 		};
+diff --git a/arch/arm64/Kconfig.platforms b/arch/arm64/Kconfig.platforms
+index 23800a1..8176455 100644
+--- a/arch/arm64/Kconfig.platforms
++++ b/arch/arm64/Kconfig.platforms
+@@ -42,6 +42,7 @@ config ARCH_MEDIATEK
+ 	bool "Mediatek MT65xx & MT81xx ARMv8 SoC"
+ 	select ARM_GIC
+ 	select PINCTRL
++	select MTK_TIMER
+ 	help
+ 	  Support for Mediatek MT65xx & MT81xx ARMv8 SoCs
  
--		i2c3: i2c3@11010000 {
-+		i2c3: i2c@11010000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11010000 0 0x70>,
- 			      <0 0x11000280 0 0x80>;
-@@ -381,7 +381,7 @@
- 			status = "disabled";
- 		};
- 
--		i2c4: i2c4@11011000 {
-+		i2c4: i2c@11011000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11011000 0 0x70>,
- 			      <0 0x11000300 0 0x80>;
-@@ -397,7 +397,7 @@
- 			status = "disabled";
- 		};
- 
--		i2c6: i2c6@11013000 {
-+		i2c6: i2c@11013000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11013000 0 0x70>,
- 			      <0 0x11000080 0 0x80>;
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
