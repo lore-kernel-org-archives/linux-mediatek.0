@@ -1,38 +1,46 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: [PATCH 0/6] pinctrl: Remove unneded semicolons in drivers
-Date: Wed, 16 Sep 2015 10:28:25 +0200
-Message-ID: <1442392111-8448-1-git-send-email-javier@osg.samsung.com>
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Javier Martinez Canillas <javier@osg.samsung.com>, Axel Lin <axel.lin@ingics.com>, Thierry Reding <treding@nvidia.com>, Shawn Guo <shawn.guo@linaro.org>, Linus Walleij <linus.walleij@linaro.org>, Wei Chen <Wei.Chen@csr.com>, Tomasz Figa <tomasz.figa@gmail.com>, linux-samsung-soc@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Hans de Goede <hdegoede@redhat.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Colin Ian King <colin.king@canonical.com>, Matthias Brugger <matthias.bgg@gmail.com>, Kukjin Kim <kgene@kernel.org>, Jiang Liu <jiang.liu@linux.intel.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Masahiro Yamada <yamada.masahiro@socionext.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>
+From: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Subject: [PATCH 5/6] pinctrl: mediatek: Remove unneded semicolon
+Date: Wed, 16 Sep 2015 10:28:30 +0200
+Message-ID: <1442392111-8448-6-git-send-email-javier@osg.samsung.com>
+References: <1442392111-8448-1-git-send-email-javier@osg.samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1442392111-8448-1-git-send-email-javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Maoguang Meng <maoguang.meng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Axel Lin <axel.lin-8E1dMatC8ynQT0dZR+AlfA@public.gmane.org>, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Linus,
+It's not needed an is just creating a null statement, so remove it.
 
-This series contains trivial patches that removes unneeded
-semicolons in pinctrl drivers. These are clearly typo errors
-and are just creating null statements.
+Signed-off-by: Javier Martinez Canillas <javier-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+---
 
-Best regards,
-Javier
-
-
-Javier Martinez Canillas (6):
-  pinctrl: tz1090: Remove unneded semicolons
-  pinctrl: tz1090-pdc: Remove unneded semicolons
-  pinctrl: mxs: Remove unneded semicolon
-  pinctrl: sunxi: Remove unneeded semicolon
-  pinctrl: mediatek: Remove unneded semicolon
-  pinctrl: samsung: Remove unneded semicolon
-
- drivers/pinctrl/freescale/pinctrl-mxs.c       | 2 +-
  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
- drivers/pinctrl/pinctrl-tz1090-pdc.c          | 4 ++--
- drivers/pinctrl/pinctrl-tz1090.c              | 4 ++--
- drivers/pinctrl/samsung/pinctrl-exynos5440.c  | 2 +-
- drivers/pinctrl/sunxi/pinctrl-sunxi.c         | 2 +-
- 6 files changed, 8 insertions(+), 8 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 7726c6caaf83..652ec125adb3 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1436,7 +1436,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 		irq_set_chip_and_handler(virq, &mtk_pinctrl_irq_chip,
+ 			handle_level_irq);
+ 		irq_set_chip_data(virq, pctl);
+-	};
++	}
+ 
+ 	irq_set_chained_handler_and_data(irq, mtk_eint_irq_handler, pctl);
+ 	return 0;
 -- 
 2.4.3
