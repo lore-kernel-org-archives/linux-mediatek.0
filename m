@@ -1,63 +1,61 @@
-From: Sudeep Holla <sudeep.holla@arm.com>
-Subject: Re: [PATCH v4] pinctrl: mediatek: Implement wake handler and suspend
- resume
-Date: Tue, 15 Sep 2015 18:48:07 +0100
-Message-ID: <55F859D7.1000803@arm.com>
-References: <1439541486-22203-1-git-send-email-maoguang.meng@mediatek.com>
- <55DB4609.5040904@arm.com>
- <CAGS+omBnoitju07KQ1Y7JHTbce6+DO4WqWHTaKz5D+T157zEJA@mail.gmail.com>
- <1441535972.22230.5.camel@mhfsdcap03> <55EEAA24.6080706@arm.com>
- <55EF11E6.7030307@arm.com> <1442051454.5661.12.camel@mhfsdcap03>
- <55F6AC87.4040301@arm.com>
- <CAKdAkRSFE2KJOzbUarxAQMNwHOkkyGHXmRLGhn55VTvG-SJ4Kg@mail.gmail.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] arm64: mt8173.dtsi: correct i2c node names
+Date: Wed, 16 Sep 2015 09:35:25 +0800
+Message-ID: <1442367325-55819-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAKdAkRSFE2KJOzbUarxAQMNwHOkkyGHXmRLGhn55VTvG-SJ4Kg@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Sudeep Holla <sudeep.holla@arm.com>, maoguang meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Node name in device tree should describe general class of the
+device. Correct incorrect i2c node names.
 
+Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+This is based on v4.3-rc1.
+All the other i2c node names are correct.
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On 15/09/15 03:52, Dmitry Torokhov wrote:
-> On Mon, Sep 14, 2015 at 4:16 AM, Sudeep Holla <sudeep.holla@arm.com> wrote:
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index d18ee42..7f360b7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -365,7 +365,7 @@
+ 			status = "disabled";
+ 		};
+ 
+-		i2c3: i2c3@11010000 {
++		i2c3: i2c@11010000 {
+ 			compatible = "mediatek,mt8173-i2c";
+ 			reg = <0 0x11010000 0 0x70>,
+ 			      <0 0x11000280 0 0x80>;
+@@ -381,7 +381,7 @@
+ 			status = "disabled";
+ 		};
+ 
+-		i2c4: i2c4@11011000 {
++		i2c4: i2c@11011000 {
+ 			compatible = "mediatek,mt8173-i2c";
+ 			reg = <0 0x11011000 0 0x70>,
+ 			      <0 0x11000300 0 0x80>;
+@@ -397,7 +397,7 @@
+ 			status = "disabled";
+ 		};
+ 
+-		i2c6: i2c6@11013000 {
++		i2c6: i2c@11013000 {
+ 			compatible = "mediatek,mt8173-i2c";
+ 			reg = <0 0x11013000 0 0x70>,
+ 			      <0 0x11000080 0 0x80>;
+-- 
+1.9.1
 
-[...]
-
->>
->> This is wrong assumption in the driver. enable_irq_wake doesn't
->> implicitly enable the IRQ. So the disable_irq should be moved to else.
->> And the resume patch also needs to be fixed accordingly, otherwise you
->> may get unbalanced irq. But this should not be the reason for fixing the
->> pinctrl suspend/resume.
->>
->
-> Elan driver does not want to enable servicing IRQs, it just wants to
-> configure them as wakeup sources. Hence the current elan_suspend() is
-> fine. When system wakes up and the device is resumed and the driver is
-> ready to service interrupts it will enable IRQ again.
->
-
-Fair enough. But I am struggling to understand how this fits into
-existing IRQ infrastructure. Few controllers that don't have wakeup
-source configuration facility can set IRQCHIP_SKIP_SET_WAKE and just
-leave the interrupts enabled in suspend path to wake it up. So IMO,
-the above strategy might not work on such controllers.
-
-> IOW enable_irq_wake() and enable_irq() are 2 completely different
-> calls and it is perfectly fine to disable IRQ and then ebale it as a
-> wakeup source.
-
-I agree that they are entirely different APIs, I am not sure if we can
-support different interrupt controller with such strategy.
-
-Since the irq/pm core handle disabling device IRQs and section "System
-Wakeup Interrupts, enable_irq_wake() and disable_irq_wake()" in
-Documentation/power/suspend-and-interrupts.txt gives me different
-understanding, we can check with tglx on how to handle this.
-
-Regards,
-Sudeep
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
