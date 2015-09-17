@@ -1,64 +1,63 @@
-From: bayi.cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/3] doc: dt: add documentation for Mediatek spi-nor
- controller
-Date: Thu, 17 Sep 2015 17:02:53 +0800
-Message-ID: <1442480573.27250.28.camel@mhfsdcap03>
-References: <1442478994-12467-1-git-send-email-bayi.cheng@mediatek.com>
+From: Sudeep Holla <sudeep.holla@arm.com>
+Subject: Re: [PATCH 2/2] arm64: dts: mt8173: add timer node
+Date: Thu, 17 Sep 2015 14:51:44 +0100
+Message-ID: <55FAC570.8040307@arm.com>
+References: <1442369095-1094-1-git-send-email-yingjoe.chen@mediatek.com>
+ <1442369095-1094-2-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1442478994-12467-1-git-send-email-bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1442369095-1094-2-git-send-email-yingjoe.chen@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sudeep Holla <sudeep.holla@arm.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <Catalin.Marinas@arm.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Daniel Kurtz <djkurtz@chromium.org>, "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>, Eddie Huang <eddie.huan>
 List-Id: linux-mediatek@lists.infradead.org
 
-Sorry, Please ignore this mail, and I will publish new one.
 
 
+On 16/09/15 03:04, Yingjoe Chen wrote:
+> From: Daniel Kurtz <djkurtz@chromium.org>
+>
+> Add device node to enable GPT timer. This timer will be
+> used as sched clock source.
+>
 
+Interesting any known issues with or advantage over the arch timers
+to prefer it as sched clock source. I see even arch timers are present
+in DT, hence the question. Or is it just a incorrect commit log ?
 
-On Thu, 2015-09-17 at 16:36 +0800, Bayi Cheng wrote:
-> Add device tree binding documentation for serial flash with
-> Mediatek serial flash controller
-> 
-> Change-Id: Iaecd0bb7ba1b224f1e27bd7063f0b8d7ea30175a
-> Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+How does this get selected as sched clock source ? I don't see
+sched_clock_register in mtk_timer.c
+
+To be clear, I am not against adding this timer support, but just want
+to know is it preferred for sched clock source ? if yes why ? better
+resolution ?
+
+> Change-Id: Idc4e3f0ee80b5c36cae6f0f2328f94aafcca1253
+
+^ Should be dropped
+
+> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/mtd/mtk_quadspi.txt | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
-> new file mode 100644
-> index 0000000..6153227
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
-> @@ -0,0 +1,18 @@
-> +* MTD SPI nor driver for MTK MT81xx (and similar) serial flash controller
-> +
-> +Required properties:
-> +- compatible: Should be "mediatek,mt8173-nor";
-> +- reg: Physical base address and length of the controller's register
-> +- clocks: spi source clock amd serial flash controller's clock
-> +- clock-names: "spi", "sf"
-> +  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> +
-> +Example:
-> +nor_flash: nor@1100d000 {
-> +	compatible = "mediatek,mt8173-nor";
-> +	reg = <0 0x1100D000 0 0xE0>;
-> +	clocks = <&pericfg CLK_PERI_SPI>,
-> +			 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> +	clock-names = "spi", "sf";
-> +};
-> +
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 9 +++++++++
+>   1 file changed, 9 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index d18ee42..d763803 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -238,6 +238,15 @@
+>   			reg = <0 0x10007000 0 0x100>;
+>   		};
+>
+> +		timer: timer@10008000 {
+> +			compatible = "mediatek,mt8173-timer",
+
+Missing documentation ? I am referring upstream and it might be in some 
+patches already queued perhaps ?
+
+Regards,
+Sudeep
