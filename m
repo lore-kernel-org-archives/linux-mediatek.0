@@ -1,93 +1,66 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [RESEND PATCH] media: vb2: Fix vb2_dc_prepare do not correct sync
- data to device
-Date: Mon, 21 Sep 2015 15:13:55 +0200
-Message-ID: <56000293.9000802@xs4all.nl>
-References: <1442838371-21484-1-git-send-email-tiffany.lin@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/3] doc: dt: add documentation for Mediatek spi-nor
+ controller
+Date: Mon, 21 Sep 2015 08:52:02 -0500
+Message-ID: <56000B82.9060607@kernel.org>
+References: <1442559533-17552-1-git-send-email-bayi.cheng@mediatek.com>
+ <1442559533-17552-2-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1442838371-21484-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1442559533-17552-2-git-send-email-bayi.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bayi Cheng <bayi.cheng@mediatek.com>
+Cc: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanduardiasur.com.ar
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Tiffany!
-
-On 21-09-15 14:26, Tiffany Lin wrote:
-> vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
-> But in dma_sync_sg_for_device, it use lengths of each SG entries
-> before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
-> SGs until dma length > dma seg bundary. sgt->nents will less than
-> sgt->orig_nents. Using SG entries after dma_map_sg_attrs
-> in vb2_dc_prepare will make some SGs are not sync to device.
-> After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
-> sync data to device twice. Device randomly get incorrect data because
-> some SGs are not sync to device. Change to use number of SG entries
-> before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
+On 09/18/2015 01:58 AM, Bayi Cheng wrote:
+> Add device tree binding documentation for serial flash with
+> Mediatek serial flash controller
 > 
-> Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
 > ---
->  drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  .../devicetree/bindings/mtd/mtk_quadspi.txt        | 27 ++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
 > 
-> diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> index 2397ceb..c5d00bd 100644
-> --- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> +++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> @@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
->  	if (!sgt || buf->db_attach)
->  		return;
->  
-> -	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> +	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
->  }
->  
->  static void vb2_dc_finish(void *buf_priv)
-> @@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
->  	if (!sgt || buf->db_attach)
->  		return;
->  
-> -	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> +	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
->  }
+> diff --git a/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
+> new file mode 100644
+> index 0000000..380b907
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mtd/mtk_quadspi.txt
+> @@ -0,0 +1,27 @@
+> +* MTD SPI nor driver for MTK MT81xx (and similar) serial flash controller
+> +
+> +Required properties:
+> +- compatible: 	  should be "mediatek,mt8173-nor";
+> +- reg: 		  physical base address and length of the controller's register
+> +- clocks: 	  the phandle of the clock needed by the QuadSPI controller
 
-I don't really understand it. I am assuming that this happens on an arm and that
-the dma_map_sg_attrs and dma_sync_sg_* functions used are arm_iommu_map_sg() and
-arm_iommu_sync_sg_* as implemented in arch/arm/mm/dma-mapping.c.
+QuadSPI?
 
-Now, as I understand it (and my understanding may very well be flawed!) the map_sg
-function concatenates SG entries if possible, so it may return fewer entries. But
-the dma_sync_sg functions use those updated SG entries, so the full buffer should
-be covered by this. Using orig_nents will actually sync parts of the buffer twice!
-The first nents entries already cover the full buffer so any remaining entries up
-to orig_nents will just duplicate parts of the buffer.
+Please document number of clocks and their use/function.
 
-So this patch makes no sense in the current code.
-
-If I understand your log text correctly this patch goes on top of Sakari Ailus' vb2
-sync patch series. So if it wasn't needed before, but it is needed after his patch
-series, then the problem is in that patch series.
-
-In any case, I need some help understanding this patch.
-
-And *if* this patch is correct, then the same thing should likely be done for
-videobuf2-dma-sg.c.
-
-Regards,
-
-	Hans
-
->  
->  /*********************************************/
+> +- clock-names: 	  the name of the clocks
+> +		  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> +- #address-cells: should be <1>
+> +- #size-cells:	  should be <0>
+> +
+> +Example:
+> +
+> +nor_flash: spi@1100d000 {
+> +	compatible = "mediatek,mt8173-nor";
+> +	reg = <0 0x1100d000 0 0xe0>;
+> +	clocks = <&pericfg CLK_PERI_SPI>,
+> +		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
+> +	clock-names = "spi", "sf";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	flash@0 {
+> +		....
+> +	};
+> +};
+> +
 > 
