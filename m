@@ -1,96 +1,52 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC v2 1/4] dt-bindings: drm/mediatek: Add Mediatek display
- subsystem dts binding
-Date: Mon, 21 Sep 2015 10:11:07 +0200
-Message-ID: <1442823067.3277.35.camel@pengutronix.de>
-References: <1442592722-29004-1-git-send-email-p.zabel@pengutronix.de>
- <1442592722-29004-2-git-send-email-p.zabel@pengutronix.de>
- <CAL_JsqLZQXMoKxGZ6c56e6d1UuLiJKzVB=sH15ihTvwpOgSU8Q@mail.gmail.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [RESEND PATCH] media: vb2: Fix vb2_dc_prepare do not correct sync data to device
+Date: Mon, 21 Sep 2015 20:26:11 +0800
+Message-ID: <1442838371-21484-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAL_JsqLZQXMoKxGZ6c56e6d1UuLiJKzVB=sH15ihTvwpOgSU8Q@mail.gmail.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, "kernel@pengutronix.de" <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Pawel Osciak <pawel@osciak.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>
+Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUm9iLAoKdGhhbmsgeW91IGZvciB0aGUgY29tbWVudHMuCgpBbSBGcmVpdGFnLCBkZW4gMTgu
-MDkuMjAxNSwgMTU6MzMgLTA1MDAgc2NocmllYiBSb2IgSGVycmluZzoKWy4uLl0KPiA+ICtUaGUg
-ZGlzcGxheS1zdWJzeXN0ZW0gbm9kZSBiaW5kcyB0b2dldGhlciBhbGwgaW5kaXZpZHVhbCBkZXZp
-Y2Ugbm9kZXMgdGhhdAo+ID4gK2NvbXByaXNlIHRoZSBESVNQIHN1YnN5c3RlbS4KPiA+ICsKPiA+
-ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ID4gKwo+ID4gKy0gY29tcGF0aWJsZTogIm1lZGlhdGVr
-LDxjaGlwPi1kaXNwIgo+IAo+ID4gKy0gY29tcG9uZW50czogU2hvdWxkIGNvbnRhaW4gYSBsaXN0
-IG9mIHBoYW5kbGVzIHBvaW50aW5nIHRvIHRoZSBESVNQIGZ1bmN0aW9uCj4gPiArICBibG9jayBk
-ZXZpY2Ugbm9kZXMuCj4gPiArLSBjb21wb25lbnQtbmFtZXM6IFNob3VsZCBjb250YWluIHRoZSBu
-YW1lIG9mIHRoZSBmdW5jdGlvbiBibG9jayBwb2ludGVkIHRvCj4gPiArICBieSB0aGUgY29tcG9u
-ZW50cyBwaGFuZGxlIG9mIHRoZSBzYW1lIGluZGV4Lgo+IAo+IE5BSy4gR3JvdXAgdGhlc2Ugbm9k
-ZXMgdW5kZXIgYSBwYXJlbnQgbm9kZSwgdXNlIG9mLWdyYXBoIG9yIGp1c3QgZG9uJ3QKPiBwdXQg
-dGhpcyBpbnRvIERULiBEb24ndCBpbnZlbnQgYSBuZXcgd2F5LgoKT2suIFRoZSByZWFzb24gSSBo
-YXZlbid0IGdyb3VwZWQgYWxsIHRoZSBkaXNwbGF5IG5vZGVzIHRvZ2V0aGVyIGluIHRoZQpmaXJz
-dCBwbGFjZSBpcyB0aGF0IHRoZXkgYXJlbid0IGNvbnRpZ3VvdXMgaW4gdGhlIHJlZ2lzdGVyIHNw
-YWNlLiBTbwppbnN0ZWFkIG9mOgoKCW92bEAxNDAwYzAwMCB7CgkJY29tcGF0aWJsZSA9ICJtZWRp
-YXRlayxtdDgxNzMtZGlzcC1vdmwiOwoJfTsKCS4uLgoJdWZvZUAxNDAxYTAwMCB7CgkJY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC11Zm9lIjsKCX07CgoJcHdtQDE0MDFlMDAwIHsK
-CQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLXB3bSI7Cgl9OwoKCWxhcmJAMTQw
-MjEwMDAgewoJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLXNtaS1sYXJiIjsKCX07CgoJ
-b2RAMTQwMjMwMDAgewoJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRpc3Atb2QiOwoJ
-fTsKCldlJ2QgaGF2ZToKCglkaXNwbGF5LXN1YnN5c3RlbUAxNDAwYzAwIHsKCQljb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10ODE3My1kaXNwIiwgInNpbXBsZS1idXMiOwoKCQlvdmxAMTQwMGMwMDAg
-ewoJCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLW92bCI7CgkJfTsKCQkuLi4K
-CQl1Zm9lQDE0MDFhMDAwIHsKCQkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC11
-Zm9lIjsKCQl9OwoKCQlvZEAxNDAyMzAwMCB7CgkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
-MTczLWRpc3Atb2QiOwoJCX07Cgl9OwoKCXB3bUAxNDAxZTAwMCB7CgkJY29tcGF0aWJsZSA9ICJt
-ZWRpYXRlayxtdDgxNzMtZGlzcC1wd20iOwoJfTsKCglsYXJiQDE0MDIxMDAwIHsKCQljb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10ODE3My1zbWktbGFyYiI7Cgl9OwoKTm90ZSBob3cgdGhlIGRpc3Bs
-YXktc3Vic3lzdGVtIG5vZGUgb3ZlcmxhcHMgdGhlIGxhcmIgbm9kZS4gSXMgdGhhdAphY2NlcHRh
-YmxlPwoKWy4uLl0KPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvZHJtL21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZHJtL21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQKPiA+IG5ldyBmaWxl
-IG1vZGUgMTAwNjQ0Cj4gPiBpbmRleCAwMDAwMDAwLi5lODkyZWYxCj4gPiAtLS0gL2Rldi9udWxs
-Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZHJtL21lZGlhdGVr
-L21lZGlhdGVrLGRzaS50eHQKPiA+IEBAIC0wLDAgKzEsMjkgQEAKPiA+ICtNZWRpYXRlayBEU0kg
-RGV2aWNlCj4gPiArPT09PT09PT09PT09PT09PT09PQo+ID4gKwo+ID4gK1RoZSBNZWRpYXRlayBE
-U0kgZnVuY3Rpb24gYmxvY2sgaXMgYSBzaW5rIG9mIHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBhbmQg
-Y2FuCj4gPiArZHJpdmUgdXAgdG8gNC1sYW5lIE1JUEkgRFNJIG91dHB1dC4gVHdvIERTSXMgY2Fu
-IGJlIHN5bmNocm9uaXplZCBmb3IgZHVhbC0KPiA+ICtjaGFubmVsIG91dHB1dC4KPiA+ICsKPiA+
-ICtSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ID4gKy0gY29tcGF0aWJsZTogIm1lZGlhdGVrLDxjaGlw
-Pi1kc2kiCj4gPiArLSByZWc6IFBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRo
-ZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJzCj4gPiArLSBjbG9ja3M6IGRldmljZSBjbG9ja3MKPiA+
-ICsgIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svY2xvY2stYmlu
-ZGluZ3MudHh0IGZvciBkZXRhaWxzLgo+ID4gKy0gY2xvY2stbmFtZXM6IG11c3QgY29udGFpbiAi
-ZW5naW5lIiBhbmQgImRpZ2l0YWwiLgo+IAo+IFRoaXMgbGVhdmVzIHdvbmRlcmluZyB3aGljaCBv
-bmUgaXMgdXNlZCBmb3IgRFNJIGJpdCBjbG9jay4KClRoZSBNSVBJX1RYMCBtb2R1bGUgY29udHJv
-bHMgdGhlIE1JUEkgRC1QSFkuIEl0IGNvbnRhaW5zIGEgUExMIHRoYXQKcHJvdmlkZXMgdGhlIGJp
-dCBjbG9jayB0byB0aGUgRFNJIG1vZHVsZS4KCkZyb20gdGhlIGRvY3VtZW50YXRpb24sIGl0IGxv
-b2tzIHRvIG1lIGxpa2UgdGhlIEFQX1BMTF9DT04wWzZdIGJpdCBpbgp0aGUgbWVkaWF0ZWssbXQ4
-MTczLWFwbWl4ZWRzeXMgcmVnaW9uIGdhdGVzIHRoZSAyNiBNSHogcmVmZXJlbmNlIGNsb2NrCnRv
-IE1JUElfVFguIEl0IGlzIGVuYWJsZWQgYnkgZGVmYXVsdC4gQ3VycmVudGx5IHRoZXJlIGlzIG5v
-IGdhdGUgY2xvY2sKcmVnaXN0ZXJlZCBmb3IgdGhhdCBiaXQuCkNhbiBzb21lYm9keSBjb25maXJt
-IHRoYXQgdGhpcyBnYXRlIGNsb2NrIHNob3VsZCBiZSBhZGRlZCB0byB0aGUKbWVkaWF0ZWssbXQ4
-MTczLWFwbWl4ZWRzeXMgYmluZGluZ3M/Cgo+ID4gKwo+ID4gK0V4YW1wbGU6Cj4gPiArCj4gPiAr
-ZHNpMDogZHNpQDE0MDFiMDAwIHsKPiA+ICsgICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
-dDgxNzMtZHNpIjsKPiA+ICsgICAgICAgcmVnID0gPDAgMHgxNDAxYjAwMCAwIDB4MTAwMD4sICAv
-KiBEU0kwICovCj4gPiArICAgICAgICAgICAgIDwwIDB4MTAyMTUwMDAgMCAweDEwMDA+OyAgLyog
-TUlQSV9UWDAgKi8KClRoaW5raW5nIGFib3V0IGl0LCBNSVBJX1RYMCBpcyBmb3IgUEhZIGNvbnRy
-b2wuIFNob3VsZCB0aGlzIGJlIG1vdmVkCmludG8gaXRzIG93biBub2RlIGFuZCB0aGUgcGh5IGJp
-bmRpbmdzIHVzZWQgdG8gbGV0IHRoZSBEU0kgZHJpdmVyIGZpbmQKaXQ/Cgo+ID4gKyAgICAgICBj
-bG9ja3MgPSA8Jm1tc3lzIE1NX0RTSTBfRU5HSU5FPiwgPCZtbXN5cyBNTV9EU0kwX0RJR0lUQUw+
-Owo+ID4gKyAgICAgICBjbG9jay1uYW1lcyA9ICJlbmdpbmUiLCAiZGlnaXRhbCI7Cj4gPiArCj4g
-PiArICAgICAgIHBvcnQgewo+IAo+IE1pc3NpbmcgZnJvbSB0aGUgYmluZGluZyBkZXNjcmlwdGlv
-bi4KClRoYW5rcywgSSdsbCBmaXggdGhhdCBuZXh0IHJvdW5kLgoKPiA+ICsgICAgICAgICAgICAg
-ICBkc2kwX291dDogZW5kcG9pbnQgewo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgcmVtb3Rl
-LWVuZHBvaW50ID0gPCZwYW5lbF9pbj47Cj4gPiArICAgICAgICAgICAgICAgfTsKPiA+ICsgICAg
-ICAgfTsKPiA+ICt9OwoKYmVzdCByZWdhcmRzClBoaWxpcHAKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21h
-aWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
+But in dma_sync_sg_for_device, it use lengths of each SG entries
+before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
+SGs until dma length > dma seg bundary. sgt->nents will less than
+sgt->orig_nents. Using SG entries after dma_map_sg_attrs
+in vb2_dc_prepare will make some SGs are not sync to device.
+After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
+sync data to device twice. Device randomly get incorrect data because
+some SGs are not sync to device. Change to use number of SG entries
+before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
+
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
+index 2397ceb..c5d00bd 100644
+--- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
++++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
+@@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
+ 	if (!sgt || buf->db_attach)
+ 		return;
+ 
+-	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
++	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
+ }
+ 
+ static void vb2_dc_finish(void *buf_priv)
+@@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
+ 	if (!sgt || buf->db_attach)
+ 		return;
+ 
+-	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
++	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
+ }
+ 
+ /*********************************************/
+-- 
+1.8.1.1.dirty
