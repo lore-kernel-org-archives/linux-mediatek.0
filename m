@@ -1,161 +1,216 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [RESEND PATCH] media: vb2: Fix vb2_dc_prepare do not correct
- sync data to device
-Date: Tue, 22 Sep 2015 21:35:59 +0800
-Message-ID: <1442928959.20006.40.camel@mtksdaap41>
-References: <1442838371-21484-1-git-send-email-tiffany.lin@mediatek.com>
-	 <56000293.9000802@xs4all.nl> <1442917165.20006.30.camel@mtksdaap41>
-	 <20150922120724.GQ3175@valkosipuli.retiisi.org.uk>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v4 3/6] iommu: add ARM short descriptor page table
+ allocator.
+Date: Tue, 22 Sep 2015 22:12:47 +0800
+Message-ID: <1442931167.17514.39.camel@mhfsdcap03>
+References: <1438597279-2937-1-git-send-email-yong.wu@mediatek.com>
+	 <1438597279-2937-4-git-send-email-yong.wu@mediatek.com>
+	 <20150916155824.GM28771@arm.com> <1442501662.8145.151.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20150922120724.GQ3175@valkosipuli.retiisi.org.uk>
+In-Reply-To: <1442501662.8145.151.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Sakari Ailus <sakari.ailus@iki.fi>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Pawel Osciak <pawel@osciak.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Will Deacon <will.deacon@arm.com>, Robin Murphy <Robin.Murphy@arm.com>
+Cc: Mark Rutland <Mark.Rutland@arm.com>, Catalin Marinas <Catalin.Marinas@arm.com>, "youhua.li@mediatek.com" <youhua.li@mediatek.com>, Thierry Reding <treding@nvidia.com>, "k.zhang@mediatek.com" <k.zhang@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "arnd@arndb.de" <arnd@arndb.de>, Tomasz Figa <tfiga@google.com>, Rob Herring <robh+dt@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "pebolle@tiscali.nl" <pebolle@tiscali.nl>, "frederic.chen@mediatek.com" <frederic.chen@mediatek.com>, "srv_heupstream@mediatek.com" <srv_heupstream@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>, Daniel
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sakari,
+> > > +static int arm_short_unmap(struct io_pgtable_ops *ops,
+> > > +                          unsigned long iova,
+> > > +                          size_t size)
+> > > +{
+> > > +       struct arm_short_io_pgtable *data = io_pgtable_ops_to_data(ops);
+> > > +       struct io_pgtable_cfg *cfg = &data->iop.cfg;
+> > > +       arm_short_iopte *pgd, *pte = NULL;
+> > > +       arm_short_iopte curpgd, curpte = 0;
+> > > +       phys_addr_t paddr;
+> > > +       unsigned int iova_base, blk_size = 0;
+> > > +       void *cookie = data->iop.cookie;
+> > > +       bool pgtablefree = false;
+> > > +
+> > > +       pgd = (arm_short_iopte *)data->pgd + ARM_SHORT_PGD_IDX(iova);
+> > > +
+> > > +       /* Get block size */
+> > > +       if (ARM_SHORT_PGD_TYPE_IS_PGTABLE(*pgd)) {
+> > > +               pte = arm_short_get_pte_in_pgd(*pgd, iova);
+> > > +
+> > > +               if (ARM_SHORT_PTE_TYPE_IS_SMALLPAGE(*pte))
+> > > +                       blk_size = SZ_4K;
+> > > +               else if (ARM_SHORT_PTE_TYPE_IS_LARGEPAGE(*pte))
+> > > +                       blk_size = SZ_64K;
+> > > +               else
+> > > +                       WARN_ON(1);
+> 
+> > > +       } else if (ARM_SHORT_PGD_TYPE_IS_SECTION(*pgd)) {
+> > > +               blk_size = SZ_1M;
+> > > +       } else if (ARM_SHORT_PGD_TYPE_IS_SUPERSECTION(*pgd)) {
+> > > +               blk_size = SZ_16M;
+> > > +       } else {
+> > > +               WARN_ON(1); 
+> > > +       }
+> > > +
+> > > +       iova_base = iova & ~(blk_size - 1);
+> > > +       pgd = (arm_short_iopte *)data->pgd + ARM_SHORT_PGD_IDX(iova_base);
+> > > +       paddr = arm_short_iova_to_phys(ops, iova_base);
+> > > +       curpgd = *pgd;
+> > > +
+> > > +       if (blk_size == SZ_4K || blk_size == SZ_64K) {
+> > > +               pte = arm_short_get_pte_in_pgd(*pgd, iova_base);
+> > > +               curpte = *pte;
+> > > +               __arm_short_set_pte(pte, 0, blk_size / SZ_4K, cfg);
+> > > +
+> > > +            pgtablefree = _arm_short_whether_free_pgtable(pgd);
+> > > +            if (pgtablefree)
+> > > +                 __arm_short_set_pte(pgd, 0, 1, cfg);
+> > > +       } else if (blk_size == SZ_1M || blk_size == SZ_16M) {
+> > > +               __arm_short_set_pte(pgd, 0, blk_size / SZ_1M, cfg);
+> > > +       }
+> > > +
+> > > +    cfg->tlb->tlb_add_flush(iova_base, blk_size, true, cookie);
+> > > +    cfg->tlb->tlb_sync(cookie);
+> > > +
+> > > +       if (pgtablefree)/* Free pgtable after tlb-flush */
+> > > +              __arm_short_free_pgtable(ARM_SHORT_GET_PGTABLE_VA(curpgd),
+> > > +                                        ARM_SHORT_BYTES_PER_PTE, false, cfg);
+> > > +
+> > > +       if (blk_size > size) { /* Split the block */
+> > > +               return arm_short_split_blk_unmap(
+> > > +                               ops, iova, paddr, size,
+> > > +                               ARM_SHORT_PGD_GET_PROT(curpgd),
+> > > +                               ARM_SHORT_PTE_LARGE_GET_PROT(curpte),
+> > > +                               blk_size);
+> > > +       } else if (blk_size < size) {
+> > > +               /* Unmap the block while remap partial again after split */
+> > > +               return blk_size +
+> > > +                       arm_short_unmap(ops, iova + blk_size, size - blk_size);
 
-On Tue, 2015-09-22 at 15:07 +0300, Sakari Ailus wrote:
-> Hi Tiffany,
-> 
-> On Tue, Sep 22, 2015 at 06:19:25PM +0800, tiffany lin wrote:
-> > Hi Hans,
-> > 
-> > On Mon, 2015-09-21 at 15:13 +0200, Hans Verkuil wrote:
-> > > Hi Tiffany!
-> > > 
-> > > On 21-09-15 14:26, Tiffany Lin wrote:
-> > > > vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
-> > > > But in dma_sync_sg_for_device, it use lengths of each SG entries
-> > > > before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
-> > > > SGs until dma length > dma seg bundary. sgt->nents will less than
-> > > > sgt->orig_nents. Using SG entries after dma_map_sg_attrs
-> > > > in vb2_dc_prepare will make some SGs are not sync to device.
-> > > > After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
-> > > > sync data to device twice. Device randomly get incorrect data because
-> > > > some SGs are not sync to device. Change to use number of SG entries
-> > > > before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
-> > > > 
-> > > > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > > > ---
-> > > >  drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > > > index 2397ceb..c5d00bd 100644
-> > > > --- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > > > +++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > > > @@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
-> > > >  	if (!sgt || buf->db_attach)
-> > > >  		return;
-> > > >  
-> > > > -	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> > > > +	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
-> > > >  }
-> > > >  
-> > > >  static void vb2_dc_finish(void *buf_priv)
-> > > > @@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
-> > > >  	if (!sgt || buf->db_attach)
-> > > >  		return;
-> > > >  
-> > > > -	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> > > > +	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
-> > > >  }
-> > > 
-> > > I don't really understand it. I am assuming that this happens on an arm and that
-> > > the dma_map_sg_attrs and dma_sync_sg_* functions used are arm_iommu_map_sg() and
-> > > arm_iommu_sync_sg_* as implemented in arch/arm/mm/dma-mapping.c.
-> > > 
-> > 
-> > We are using __iommu_* implemented in "arch/arm64/mm/dma-mapping.c" in
-> > review patch
-> > http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013898.html
-> > Without patch "[media] vb2: use dma_map_sg_attrs to prevent unnecessary
-> > sync", vb2 will sync data to device twice.
-> > One is from "dma_map_sg" in "vb2_dc_get_userptr", the other is from
-> > "dma_sync_sg_for_device" in "vb2_dc_prepare". dma_map_sg use orig_nents,
-> > and dma_sync_sg_for_device use nents."
-> > 
-> > We do not run in 32bits mode, but check "arm_dma_sync_sg_for_device" in
-> > "arch/arm/mm/dma-mapping.c", 
-> > ops->sync_single_for_device(dev, sg_dma_address(s), s->length, dir);
-> > It looks like has same issue.
-> > 
-> > > Now, as I understand it (and my understanding may very well be flawed!) the map_sg
-> > > function concatenates SG entries if possible, so it may return fewer entries. But
-> > > the dma_sync_sg functions use those updated SG entries, so the full buffer should
-> > > be covered by this. Using orig_nents will actually sync parts of the buffer twice!
-> > > The first nents entries already cover the full buffer so any remaining entries up
-> > > to orig_nents will just duplicate parts of the buffer.
-> > > 
-> > I found that in __iommu_sync_sg_for_device, it use sg->length , do not
-> > cover full buffer.
-> > By adding log in " __iommu_sync_sg_for_device" without patch "[media]
-> > vb2: use dma_map_sg_attrs to prevent unnecessary sync", we could see
-> > total synced size are different between called from dma_map_sg and
-> > dma_sync_sg_for_device.
-> 
-> I had the same question Hans did, but I still fail to understand where in
-> the code things are going wrong the way you described at the moment ---
-> after dma_map_sg() there are nents entries in the scatterlist. But.
-> sg_dma_len() should be used instead of the length field to get the size of
-> the entry. If something is wrong, then it's this AFAICT.
-> 
-> Could you try whether changing this fixes it?
-> 
-Do you mean try to change to use sg_dma_len in
-__iommu_sync_sg_for_device?
+Hi Will, Robin,
+     I would like to show you a problem I met, The recursion here may
+lead to stack overflow while we test FHD video decode.
 
-I tried to change using sg_dam_len() in __iommu_sync_sg_for_device
-	for_each_sg(sgl, sg, nelems, i) {
-		//__dma_map_area(sg_virt(sg), sg->length, dir);
-		__dma_map_area(sg_virt(sg), sg_dma_len(sg), dir);
-	}
+    From the log, I get the internal variable in the error case: the
+"size" is 0x100000, the "iova" is 0xfea00000, but at that time the
+"blk_size" is 0x1000 as it was the map of small-page. so it enter the
+recursion here.
+    
+    After check the unmap flow, there is only a iommu_unmap in
+__iommu_dma_unmap, and it won't check the physical address align in
+iommu_unmap.
+so if the iova and size both are SZ_16M or SZ_1M align by chance, it
+also enter the arm_short_unmap even though it was the map of small-page.
 
-I still see the issue. Probably there are some other issue in
-iommu_dma_map_sg.
+    So.
+    a) Do we need unmap each sg item while iommu_dma_unmap?, like below:
 
-The __iommu_sync_sg_for_device could be called before and after
-iommu_dma_map_sg called.
-I am not sure whether there is any side effect change it to
-sg_dma_len(sg)
+//===============
+static void __iommu_dma_unmap(struct iommu_domain *domain, dma_addr_t
+dma_addr)
+{
+	/* ...and if we can't, then something is horribly, horribly wrong */
++       for_each_sg(sg, s, nents, i)
+		BUG_ON(iommu_unmap(domain, pfn << shift, size) < size);
+	__free_iova(iovad, iova);
+}
+//===============
+ 
+    b). I need to add do-while which was suggested to delete from [1] in
+arm_short_unmap for this case.
 
-> > __iommu_sync_sg_for_device called from dma_sync_sg_for_device got
-> > updated SG entries number but it use un-updated sg length.
-> > After using "DMA_ATTR_SKIP_CPU_SYNC" to skip sync in vb2_dc_get_userptr,
-> > we got some part of the buffer not sync.
-> > 
-> > > So this patch makes no sense in the current code.
-> > > 
-> > > If I understand your log text correctly this patch goes on top of Sakari Ailus' vb2
-> > > sync patch series. So if it wasn't needed before, but it is needed after his patch
-> > > series, then the problem is in that patch series.
-> > > 
-> > This patch goes on top of these two patchs
-> > https://www.mail-archive.com/linux-media%40vger.kernel.org/msg82143.html
-> 
-> This patch has been merged long time ago.
-> 
-> > http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013898.html
-> > 
-> > 
-> > > In any case, I need some help understanding this patch.
-> > > 
-> > > And *if* this patch is correct, then the same thing should likely be done for
-> > > videobuf2-dma-sg.c.
-> > > 
-> > Yes, if this patch correct, same thing should be done for
-> > videobuf2-dma-sg.c
-> > > Regards,
-> > > 
-> > > 	Hans
-> > > 
-> > > >  
-> > > >  /*********************************************/
-> > > > 
-> > 
-> > 
-> 
+     After I test locally, I prepare to add the do-while like below:
+     
+//==============================
+static int arm_short_unmap(struct io_pgtable_ops *ops,
+			   unsigned long iova,
+			   size_t size)
+{
+	struct arm_short_io_pgtable *data = io_pgtable_ops_to_data(ops);
+	struct io_pgtable_cfg *cfg = &data->iop.cfg;
+	arm_short_iopte *pgd, *pte = NULL;
+	arm_short_iopte curpgd, curpte = 0;
+	unsigned int blk_base, blk_size;
+	int unmap_size = 0;
+	bool pgtempty;
+
+	do {
+		pgd = (arm_short_iopte *)data->pgd + ARM_SHORT_PGD_IDX(iova);
+		blk_size = 0;
+		pgtempty = false;
+
+		/* Get block size */
+		if (ARM_SHORT_PGD_TYPE_IS_PGTABLE(*pgd)) {
+			pte = arm_short_get_pte_in_pgd(*pgd, iova);
+
+			if (ARM_SHORT_PTE_TYPE_IS_SMALLPAGE(*pte))
+				blk_size = SZ_4K;
+			else if (ARM_SHORT_PTE_TYPE_IS_LARGEPAGE(*pte))
+				blk_size = SZ_64K;
+		} else if (ARM_SHORT_PGD_TYPE_IS_SECTION(*pgd)) {
+			blk_size = SZ_1M;
+		} else if (ARM_SHORT_PGD_TYPE_IS_SUPERSECTION(*pgd)) {
+			blk_size = SZ_16M;
+		}
+
+		if (WARN_ON(!blk_size))
+			return 0;
+
+		blk_base = iova & ~(blk_size - 1);
+		pgd = (arm_short_iopte *)data->pgd + ARM_SHORT_PGD_IDX(blk_base);
+		curpgd = *pgd;
+
+		if (blk_size == SZ_4K || blk_size == SZ_64K) {
+			pte = arm_short_get_pte_in_pgd(*pgd, blk_base);
+			curpte = *pte;
+			__arm_short_set_pte(pte, 0, blk_size / SZ_4K, cfg);
+
+			pgtempty = __arm_short_pgtable_empty(pgd);
+			if (pgtempty)
+				__arm_short_set_pte(pgd, 0, 1, cfg);
+		} else if (blk_size == SZ_1M || blk_size == SZ_16M) {
+			__arm_short_set_pte(pgd, 0, blk_size / SZ_1M, cfg);
+		}
+
+		cfg->tlb->tlb_add_flush(blk_base, blk_size, true, data->iop.cookie);
+		cfg->tlb->tlb_sync(data->iop.cookie);
+
+		if (pgtempty)/* Free lvl2 pgtable after tlb-flush */
+			__arm_short_free_pgtable(
+					ARM_SHORT_GET_PGTABLE_VA(curpgd),
+					ARM_SHORT_BYTES_PER_PTE, false, cfg);
+
+		/*
+		 * If the unmap size which is from the pgsize_bitmap is more
+		 * than the current blk_size, unmap it continuously.
+		 */
+		if (blk_size <= size) {
+			iova += blk_size;
+			size -= blk_size;
+			unmap_size += blk_size;
+			continue;
+		} else { /* Split this block */
+			return arm_short_split_blk_unmap(
+					ops, iova, size, blk_size,
+					ARM_SHORT_PGD_GET_PROT(curpgd),
+					ARM_SHORT_PTE_GET_PROT_LARGE(curpte));
+		}
+	}while (size);
+
+	return unmap_size;
+}
+//=============================
+
+    Is there any other suggestion?
+    Thanks very much.
+
+
+[1]:http://lists.linuxfoundation.org/pipermail/iommu/2015-June/013322.html
+
+> > > +       }
+> > > +
+> > > +       return size;
+> > > +}
+> > > +
+> _______________________________________________
+> iommu mailing list
+> iommu@lists.linux-foundation.org
+> https://lists.linuxfoundation.org/mailman/listinfo/iommu
