@@ -1,122 +1,55 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [RESEND PATCH] media: vb2: Fix vb2_dc_prepare do not correct
- sync data to device
-Date: Tue, 22 Sep 2015 18:19:25 +0800
-Message-ID: <1442917165.20006.30.camel@mtksdaap41>
-References: <1442838371-21484-1-git-send-email-tiffany.lin@mediatek.com>
-	 <56000293.9000802@xs4all.nl>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [RFC v2 4/4] drm/mediatek: Add DRM-based framebuffer device
+Date: Tue, 22 Sep 2015 12:35:14 +0200
+Message-ID: <1442918114.3128.19.camel@pengutronix.de>
+References: <1442592722-29004-1-git-send-email-p.zabel@pengutronix.de>
+	 <1442592722-29004-5-git-send-email-p.zabel@pengutronix.de>
+	 <20150922092951.GD3383@phenom.ffwll.local>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56000293.9000802@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Pawel Osciak <pawel@osciak.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20150922092951.GD3383-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+Hi Daniel,
 
-On Mon, 2015-09-21 at 15:13 +0200, Hans Verkuil wrote:
-> Hi Tiffany!
-> 
-> On 21-09-15 14:26, Tiffany Lin wrote:
-> > vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
-> > But in dma_sync_sg_for_device, it use lengths of each SG entries
-> > before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
-> > SGs until dma length > dma seg bundary. sgt->nents will less than
-> > sgt->orig_nents. Using SG entries after dma_map_sg_attrs
-> > in vb2_dc_prepare will make some SGs are not sync to device.
-> > After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
-> > sync data to device twice. Device randomly get incorrect data because
-> > some SGs are not sync to device. Change to use number of SG entries
-> > before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > ---
-> >  drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > index 2397ceb..c5d00bd 100644
-> > --- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > +++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> > @@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
-> >  	if (!sgt || buf->db_attach)
-> >  		return;
+Am Dienstag, den 22.09.2015, 11:29 +0200 schrieb Daniel Vetter:
+> > diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+> > index 5343cf1..fa581fb 100644
+> > --- a/drivers/gpu/drm/mediatek/Kconfig
+> > +++ b/drivers/gpu/drm/mediatek/Kconfig
+> > @@ -14,3 +14,15 @@ config DRM_MEDIATEK
+> >  	  This driver provides kernel mode setting and
+> >  	  buffer management to userspace.
 > >  
-> > -	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> > +	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
-> >  }
-> >  
-> >  static void vb2_dc_finish(void *buf_priv)
-> > @@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
-> >  	if (!sgt || buf->db_attach)
-> >  		return;
-> >  
-> > -	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> > +	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
-> >  }
+> > +config DRM_MEDIATEK_FBDEV
+> > +	bool "Enable legacy fbdev support for Mediatek DRM"
+> > +	depends on DRM_MEDIATEK
+> > +	select FB_SYS_FILLRECT
+> > +	select FB_SYS_COPYAREA
+> > +	select FB_SYS_IMAGEBLIT
+> > +	select DRM_KMS_FB_HELPER
+> > +	help
+> > +	  Choose this option if you have a need for the legacy
+> > +	  fbdev support.  Note that this support also provides
+> > +	  the Linux console on top of the Mediatek DRM mode
+> > +	  setting driver.
 > 
-> I don't really understand it. I am assuming that this happens on an arm and that
-> the dma_map_sg_attrs and dma_sync_sg_* functions used are arm_iommu_map_sg() and
-> arm_iommu_sync_sg_* as implemented in arch/arm/mm/dma-mapping.c.
-> 
+> With the new Kconfig for fbdev emulation in 4.3 and the module option to
+> disable it queued up for 4.4 driver-private Kconfig entries for fbdev
+> aren't needed any more.
+> -Daniel
 
-We are using __iommu_* implemented in "arch/arm64/mm/dma-mapping.c" in
-review patch
-http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013898.html
-Without patch "[media] vb2: use dma_map_sg_attrs to prevent unnecessary
-sync", vb2 will sync data to device twice.
-One is from "dma_map_sg" in "vb2_dc_get_userptr", the other is from
-"dma_sync_sg_for_device" in "vb2_dc_prepare". dma_map_sg use orig_nents,
-and dma_sync_sg_for_device use nents."
+I'll drop it for the next patch submission, thanks.
 
-We do not run in 32bits mode, but check "arm_dma_sync_sg_for_device" in
-"arch/arm/mm/dma-mapping.c", 
-ops->sync_single_for_device(dev, sg_dma_address(s), s->length, dir);
-It looks like has same issue.
+regards
+Philipp
 
-> Now, as I understand it (and my understanding may very well be flawed!) the map_sg
-> function concatenates SG entries if possible, so it may return fewer entries. But
-> the dma_sync_sg functions use those updated SG entries, so the full buffer should
-> be covered by this. Using orig_nents will actually sync parts of the buffer twice!
-> The first nents entries already cover the full buffer so any remaining entries up
-> to orig_nents will just duplicate parts of the buffer.
-> 
-I found that in __iommu_sync_sg_for_device, it use sg->length , do not
-cover full buffer.
-By adding log in " __iommu_sync_sg_for_device" without patch "[media]
-vb2: use dma_map_sg_attrs to prevent unnecessary sync", we could see
-total synced size are different between called from dma_map_sg and
-dma_sync_sg_for_device.
-__iommu_sync_sg_for_device called from dma_sync_sg_for_device got
-updated SG entries number but it use un-updated sg length.
-After using "DMA_ATTR_SKIP_CPU_SYNC" to skip sync in vb2_dc_get_userptr,
-we got some part of the buffer not sync.
-
-> So this patch makes no sense in the current code.
-> 
-> If I understand your log text correctly this patch goes on top of Sakari Ailus' vb2
-> sync patch series. So if it wasn't needed before, but it is needed after his patch
-> series, then the problem is in that patch series.
-> 
-This patch goes on top of these two patchs
-https://www.mail-archive.com/linux-media%40vger.kernel.org/msg82143.html
-http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013898.html
-
-
-> In any case, I need some help understanding this patch.
-> 
-> And *if* this patch is correct, then the same thing should likely be done for
-> videobuf2-dma-sg.c.
-> 
-Yes, if this patch correct, same thing should be done for
-videobuf2-dma-sg.c
-> Regards,
-> 
-> 	Hans
-> 
-> >  
-> >  /*********************************************/
-> > 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
