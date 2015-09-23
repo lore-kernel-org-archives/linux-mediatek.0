@@ -1,121 +1,164 @@
-From: Sakari Ailus <sakari.ailus@iki.fi>
-Subject: Re: [RESEND PATCH] media: vb2: Fix vb2_dc_prepare do not correct
- sync data to device
-Date: Wed, 23 Sep 2015 13:07:13 +0300
-Message-ID: <20150923100712.GU3175@valkosipuli.retiisi.org.uk>
-References: <1442838371-21484-1-git-send-email-tiffany.lin@mediatek.com>
- <20150922211015.GT3175@valkosipuli.retiisi.org.uk>
- <6A2D1ECE-40A4-441C-910B-6EEB3D99D8FA@xs4all.nl>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6A2D1ECE-40A4-441C-910B-6EEB3D99D8FA@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Pawel Osciak <pawel@osciak.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, robin.murphy@arm.com
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v9] Add Mediatek thermal support
+Date: Wed, 23 Sep 2015 15:37:40 +0200
+Message-ID: <1443015463-23639-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, mark.rutland@arm.com, robh+dt@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+This series adds support for the thermal sensors included in the
+MT8173 SoC. Currently only basic temperature reading is supported
+without any interrupt support.
 
-On Wed, Sep 23, 2015 at 10:40:56AM +0200, Hans Verkuil wrote:
-> Resent, hopefully without html this time.
-> 
-> On September 22, 2015 11:10:15 PM GMT+02:00, Sakari Ailus <sakari.ailus@iki.fi> wrote:
-> >Hi Tiffany,
-> >
-> >(Robin and Hans cc'd.)
-> >
-> >On Mon, Sep 21, 2015 at 08:26:11PM +0800, Tiffany Lin wrote:
-> >> vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
-> >> But in dma_sync_sg_for_device, it use lengths of each SG entries
-> >> before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
-> >> SGs until dma length > dma seg bundary. sgt->nents will less than
-> >> sgt->orig_nents. Using SG entries after dma_map_sg_attrs
-> >> in vb2_dc_prepare will make some SGs are not sync to device.
-> >> After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
-> >> sync data to device twice. Device randomly get incorrect data because
-> >> some SGs are not sync to device. Change to use number of SG entries
-> >> before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
-> >> 
-> >> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> >> ---
-> >>  drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
-> >>  1 file changed, 2 insertions(+), 2 deletions(-)
-> >> 
-> >> diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> >b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> >> index 2397ceb..c5d00bd 100644
-> >> --- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> >> +++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-> >> @@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
-> >>  	if (!sgt || buf->db_attach)
-> >>  		return;
-> >>  
-> >> -	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents,
-> >buf->dma_dir);
-> >> +	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents,
-> >buf->dma_dir);
-> >>  }
-> >>  
-> >>  static void vb2_dc_finish(void *buf_priv)
-> >> @@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
-> >>  	if (!sgt || buf->db_attach)
-> >>  		return;
-> >>  
-> >> -	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-> >> +	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents,
-> >buf->dma_dir);
-> >>  }
-> >>  
-> >>  /*********************************************/
-> >
-> >Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> >
-> >Could you post a similar patch for videobuf2-dma-sg as well, please?
-> >This
-> >should probably go to stable (since when?).
-> >
-> >videobuf-dma-sg appears to be broken, too, but the fix is more changes
-> >than one or two lines.
-> >
-> >-- 
-> >Kind regards,
-> >
-> >Sakari Ailus
-> >e-mail: sakari.ailus@iki.fi	XMPP: sailus@retiisi.org.uk
-> 
-> Sakari, can you take a careful look at the vb2 code? If I remember
-> correctly, the nents field receives the result of the map_sg function. I
-> have no idea if that's correct.
+The cpufreq driver for MT8173 is currently under review, so there's no
+real cooling device available in mainline. Until this is available the
+thermal driver can be tested with the following dts snippet. It creates
+a fake gpio fan and a fake trip point which is so low that it can easily
+be reached with a "cat /dev/zero > /dev/null" on the command line.
 
-As far as I can tell, it is. According to a comment in the definition of
-struct sg_table in include/linux/scatterlist.h, this is the number of
-*mapped* entries in the table. Although a number of drivers construct the
-table by themselves use nents only, __sg_alloc_table() assigns the same
-number to both. The videobuf2 bug appears to be one of its kind --- I
-checked the other users of struct sg_table for the purpose.
-drivers/spi/spi.c has the same pattern except that it does not involve
-syncing the cache.
+Please review and let me know what's missing to be included in mainline.
 
-There could be other users of dma_map_sg() that get this wrong though.
+changes since v8:
+- Add commit description to binding patch
+- rebase on v4.3-rc2
 
-Perhaps the comment on the sg_table shouldn't be added to the documentation
-as most of the users appear to be using it differently, even if it appears
-to be in a conflict with the intended usage.
+changes since v7:
+- re-add some used defines removed in v5
+- Use MT8173_THERMAL_ZONE_* defines as array indices in static initializers
 
-As far as I understand, what we need a similar fix for dma-sg allocator.
+changes since v6:
+- remove dot in Hanyi Wus name
 
-> 
-> BTW, don't spend too much time on vb1, nobody cares about that old
-> framework, and vb1 drivers are rarely used on arm platforms.
+changes since v5:
+- update copyright
+- remove unused defines
 
-In that case the wrong number of sglist entries is also passed to
-dma_unmap_sg(). Although in most cases it still works. I think the BTTV
-driver is using it, for instance.
+Changes since v4:
+- give calibration constants more meaningful names (offset, slope)
+- Use define instead of 0x00c for register access.
 
--- 
-Kind regards,
+Changes since v3:
+- add include/dt-bindings/thermal/mt8173.h for to be able to use sensor names
+  in dts files
+- fix disabling wrong clock in error path
+- remove now unused reset-names property from binding document
+- rename MT8173_NUM_BANKS -> MT8173_NUM_ZONES
+- rename MT8173_NUM_SENSING_POINTS -> MT8173_NUM_SENSORS_PER_ZONE
+- rename struct thermal_zone_device *tz -> struct thermal_zone_device *tzd
 
-Sakari Ailus
-e-mail: sakari.ailus@iki.fi	XMPP: sailus@retiisi.org.uk
+Changes since v2:
+- sort #includes alphabetically
+- Add prefix to register defines
+- drop some members from struct mtk_thermal
+- simplify raw_to_mcelsius()
+- add and use more register bit defines
+- use device_reset() instead of devm_reset_control_get()/reset_control_reset()
+- misc other stuff
+
+Changes since v1:
+- Use "mediatek," prefix for custom properties
+- Drop "thermal: consistently use int for temperatures" dependency
+
+Sascha
+
+        fan: gpio_fan {
+                compatible = "gpio-fan";
+                gpios = <&pio 24 0>;
+                gpio-fan,speed-map = <0    0
+                                      4500 1>;
+                #cooling-cells = <2>;
+        };
+
+        thermal-zones {
+                cpu_thermal: cpu_thermal {
+                        polling-delay-passive = <1000>; /* milliseconds */
+                        polling-delay = <1000>; /* milliseconds */
+
+                        thermal-sensors = <&thermal 0>;
+
+                        trips {
+                                cpu_passive: cpu_passive {
+                                        temperature = <47000>; /* millicelsius */
+                                        hysteresis = <2000>; /* millicelsius */
+                                        type = "passive";
+                                };
+
+                                cpu_crit {
+                                        temperature = <90000>; /* millicelsius */
+                                        hysteresis = <2000>; /* millicelsius */
+                                        type = "critical";
+                                };
+                        };
+
+                        cooling-maps {
+                                map0 {
+                                        trip = <&cpu_passive>;
+                                        cooling-device = <&fan THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+                                };
+                        };
+                };
+        };
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAABCAAGBQJWAqrzAAoJEPFlmONMx+ezud4QAK3BODYyBYKDPHRF3M6bwcRR
+Hc5gO9RuA3asA9eyxS+BCIyo9kuJW1Usb1xAE/YL8ryrXlMHMAGBxJH6jnlkuDTS
+hNZRXdjIfCSLypWOxOLotDuH8RlRQVW4faNHjGYFxflXSL3YNGQlNPjxS2LLAKdU
+flLSvwg9aWvtdeIwOyIL/tWbpMgF3sluLIz1K2iElqGKDFSDzwBfYEMlf27d6CKw
+B3PoqDI0rRR6iDiMBoZFJLYzjyyNSKz9Xqqe9y6osOfPnlC7SRmwbBQ19df/Sqxl
++Cd4VsuWedqDmP5WD1MCr5SzYqocUnM54t7aarz5TmVf1Ehd3Z+hBW8ItGJsFPDp
+Itn75HHiIDxm2GrIIkVs82dr3dUpw3v1vThEke3JqfrOvOi2H0bZ2C5jXCqbFr6M
+bLKVADmyNDHfP/av+v224zMffmJVqRIedfnBKMV6nDLbTzzjlKVf2n1KeBKjwntS
+PfEY/E4Qg/PM95E/G1qZCuInAN7w53dNZCGMnm+KCNVAcdkMsEwpNWT1lf8+18ng
+brXWYXcDCniwr1Ye31NuakGdkWLzSolbpmWS5ValUtA/K9flfZBcnqJ5obF8ooD1
+cMnyq4FMpYozhgRYoPVD3pooIBl+yqKNmNtphBftyozZKgPfdOjhPkoCx0hlpBuH
+270RN+jva0dOJWk+FXGR
+=bcx6
+-----END PGP SIGNATURE-----
+
+commit de42d22304311e6d5d711b85e66a281fe1035ba2
+Author: Sascha Hauer <s.hauer@pengutronix.de>
+Date:   Tue May 12 09:22:29 2015 +0200
+
+    ARM64: dts: mt8173: Add thermal/auxadc device nodes
+    
+    Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+    Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index d18ee42..3b18f37 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -277,6 +277,11 @@
+ 				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+ 		};
+ 
++		auxadc: auxadc@11001000 {
++			compatible = "mediatek,mt8173-auxadc";
++			reg = <0 0x11001000 0 0x1000>;
++		};
++
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt8173-uart",
+ 				     "mediatek,mt6577-uart";
+@@ -487,6 +492,18 @@
+ 			clock-names = "source", "hclk";
+ 			status = "disabled";
+ 		};
++
++		thermal: thermal@1100b000 {
++			#thermal-sensor-cells = <1>;
++			compatible = "mediatek,mt8173-thermal";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
++			clock-names = "therm", "auxadc";
++			resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
++			mediatek,auxadc = <&auxadc>;
++			mediatek,apmixedsys = <&apmixedsys>;
++		};
+ 	};
+ };
+ 
