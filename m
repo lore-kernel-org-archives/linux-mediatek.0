@@ -1,82 +1,77 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v2] media: vb2: Fix vb2_dc_prepare do not correct sync data to device
-Date: Thu, 24 Sep 2015 17:02:36 +0800
-Message-ID: <1443085356-1010-2-git-send-email-tiffany.lin@mediatek.com>
-References: <1443085356-1010-1-git-send-email-tiffany.lin@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/5] Add SMP bringup support for mt65xx socs
+Date: Thu, 24 Sep 2015 23:38:55 +0800
+Message-ID: <1443109140-5406-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1443085356-1010-1-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sakari Ailus <sakari.ailus@iki.fi>, Hans Verkuil <hverkuil@xs4all.nl>, Robin Murphy <robin.murphy@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <pawel@osciak.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>
-Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Tiffany Lin <tiffany.lin@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-vb2_dc_prepare use the number of SG entries dma_map_sg_attrs return.
-But in dma_sync_sg_for_device, it use lengths of each SG entries
-before dma_map_sg_attrs. dma_map_sg_attrs will concatenate
-SGs until dma length > dma seg bundary. sgt->nents will less than
-sgt->orig_nents. Using SG entries after dma_map_sg_attrs
-in vb2_dc_prepare will make some SGs are not sync to device.
-After add DMA_ATTR_SKIP_CPU_SYNC in vb2_dc_get_userptr to remove
-sync data to device twice. Device randomly get incorrect data because
-some SGs are not sync to device. Change to use number of SG entries
-before dma_map_sg_attrs in vb2_dc_prepare to prevent this issue.
+This series add SMP brinup support for MediaTek SoCs. This is v4 and
+is based on v4.3-rc1.
 
-Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
----
- drivers/media/v4l2-core/videobuf2-dma-contig.c | 4 ++--
- drivers/media/v4l2-core/videobuf2-dma-sg.c     | 5 ++---
- 2 files changed, 4 insertions(+), 5 deletions(-)
+There are similar but different SMP bringup up methods on MediaTek
+mt65xx and mt81xx. On MT8135 & MT8127, system boots with a trustzone
+firmware. Others, like MT6589, doesn't have trustzone, and run kernel
+directly in secure world.
 
-diff --git a/drivers/media/v4l2-core/videobuf2-dma-contig.c b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-index 2397ceb..c5d00bd 100644
---- a/drivers/media/v4l2-core/videobuf2-dma-contig.c
-+++ b/drivers/media/v4l2-core/videobuf2-dma-contig.c
-@@ -100,7 +100,7 @@ static void vb2_dc_prepare(void *buf_priv)
- 	if (!sgt || buf->db_attach)
- 		return;
- 
--	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-+	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
- }
- 
- static void vb2_dc_finish(void *buf_priv)
-@@ -112,7 +112,7 @@ static void vb2_dc_finish(void *buf_priv)
- 	if (!sgt || buf->db_attach)
- 		return;
- 
--	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-+	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
- }
- 
- /*********************************************/
-diff --git a/drivers/media/v4l2-core/videobuf2-dma-sg.c b/drivers/media/v4l2-core/videobuf2-dma-sg.c
-index be7bd65..a09f7fd 100644
---- a/drivers/media/v4l2-core/videobuf2-dma-sg.c
-+++ b/drivers/media/v4l2-core/videobuf2-dma-sg.c
-@@ -1,4 +1,3 @@
--/*
-  * videobuf2-dma-sg.c - dma scatter/gather memory allocator for videobuf2
-  *
-  * Copyright (C) 2010 Samsung Electronics
-@@ -210,7 +209,7 @@ static void vb2_dma_sg_prepare(void *buf_priv)
- 	if (buf->db_attach)
- 		return;
- 
--	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-+	dma_sync_sg_for_device(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
- }
- 
- static void vb2_dma_sg_finish(void *buf_priv)
-@@ -222,7 +221,7 @@ static void vb2_dma_sg_finish(void *buf_priv)
- 	if (buf->db_attach)
- 		return;
- 
--	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
-+	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->orig_nents, buf->dma_dir);
- }
- 
- static void *vb2_dma_sg_get_userptr(void *alloc_ctx, unsigned long vaddr,
+Patch 1 enable arch timer support.
+Patch 2,3 add support for cpu enable-method "mediatek,mt6589-smp" and
+"mediatek,mt81xx-tz-smp", which support Mediatek SMP bringup for non-TZ
+and TZ platform.
+Patch 4,5 finally enable SMP bringup for mt8135 and mt8127.
+
+Changes in v4:
+- rebase to v4.3-rc1
+- Reserve trustzone bootinfo memory area in device tree.
+
+Changes in v3:
+- v3 in [1]
+- The first 2 patches in v2 are merged in v4.2-rc1.
+- Patch 3~4 in v2 are moved to another series [2]
+- platsmp.c changes based on Stephen's suggestion
+- Change cpu enable-method name to "mediatek,mt6589-smp"
+
+Changes in v2:
+- Fix boot issue for THUMB2 kernel.
+- Not enable GPT_CLK_EVT when setup to fix GPT spurious interrupt issue
+- Change platsmp.c according to Matthias' suggestion
+http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000714.html
+
+v1:
+http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000528.html
+
+[1]
+http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001570.html
+
+[2]
+http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001544.html
+
+Matthias Brugger (1):
+  ARM: mediatek: enable gpt6 on boot up to make arch timer working
+
+Yingjoe Chen (4):
+  devicetree: bindings: add new SMP enable method Mediatek SoC
+  ARM: mediatek: add smp bringup code
+  ARM: dts: mt8135: enable basic SMP bringup for mt8135
+  ARM: dts: mt8127: enable basic SMP bringup for mt8127
+
+ Documentation/devicetree/bindings/arm/cpus.txt |   2 +
+ arch/arm/boot/dts/mt8127.dtsi                  |  27 +++++
+ arch/arm/boot/dts/mt8135.dtsi                  |  27 +++++
+ arch/arm/mach-mediatek/Makefile                |   3 +
+ arch/arm/mach-mediatek/mediatek.c              |  27 +++++
+ arch/arm/mach-mediatek/platsmp.c               | 141 +++++++++++++++++++++++++
+ 6 files changed, 227 insertions(+)
+ create mode 100644 arch/arm/mach-mediatek/platsmp.c
+
 -- 
-1.8.1.1.dirty
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
