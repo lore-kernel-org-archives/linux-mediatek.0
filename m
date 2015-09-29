@@ -1,141 +1,104 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
-Date: Tue, 29 Sep 2015 18:25:44 +0800
-Message-ID: <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
-References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
- <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
+From: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v9 1/5] dt-bindings: Add usb3.0 phy binding for MT65xx
+ SoCs
+Date: Tue, 29 Sep 2015 17:43:10 +0300
+Message-ID: <560AA37E.2090106@cogentembedded.com>
+References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1443495698-32233-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5607D224.4050801@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Lucas Stach <l.stach@pengutronix.de>, Sascha Hauer <kernel@pengutronix.de>
-Cc: James Liao <jamesjj.liao@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1443495698-32233-2-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias & Lucas,
+Hello.
 
-On Sun, Sep 27, 2015 at 7:25 PM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
+On 09/29/2015 06:01 AM, Chunfeng Yun wrote:
+
+> add a DT binding documentation of usb3.0 phy for MT65xx
+> SoCs from Mediatek.
 >
+> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   .../devicetree/bindings/phy/phy-mt65xx-usb.txt     | 68 ++++++++++++++++++++++
+>   1 file changed, 68 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
 >
->
-> On 25/09/15 10:26, Lucas Stach wrote:
->>
->> Am Freitag, den 25.09.2015, 14:31 +0800 schrieb James Liao:
->>>
->>> In kernel late init, it turns off all unused clocks, which
->>> needs to access subsystem registers such as VENC and VENC_LT.
->>>
->>> Accessing MT8173 VENC registers needs two top clocks, mm_sel and
->>> venc_sel. Accessing VENC_LT registers needs mm_sel and venclt_sel.
->>> So we need to keep these clocks on before accessing their registers.
->>>
->>> This patch keeps venc_sel / venclt_sel clock on when
->>> VENC / VENC_LT's power is on, to prevent system hang up while
->>> accessing its registeres.
->>>
->> This changes the binding of an existing driver, so it needs some more
->> consideration. Are VENC_SEL and VENC_LT_SEL really direct clock inputs
->> to the VENC module, or are they some kind of parent clock for one of the
->> existing clocks used by the old VENC binding?
->>
->> If they are direct clock inputs to the VENC module, changing the binding
->> might be still ok at that point, as there shouldn't be many users of
->> that yet.
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> new file mode 100644
+> index 0000000..00100cf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> @@ -0,0 +1,68 @@
+> +mt65xx USB3.0 PHY binding
+> +--------------------------
+> +
+> +This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+> +
+> +Required properties (controller (parent) node):
+> + - compatible	: should be "mediatek,mt8173-u3phy"
+> + - reg		: offset and length of register for phy, exclude port's
+> +		  register.
+> + - clocks	: a list of phandle + clock-specifier pairs, one for each
+> +		  entry in clock-names
+> + - clock-names	: must contain
+> +		  "u3phya_ref": for reference clock of usb3.0 analog phy.
+> +
+> +Required nodes	: a sub-node is required for each port the controller
+> +		  provides. Address range information including the usual
+> +		  'reg' property is used inside these nodes to describe
+> +		  the controller's topology.
+> +
+> +Required properties (port (child) node):
+> +- reg		: address and length of the register set for the port.
+> +- #phy-cells	: should be 1 (See second example)
+> +		  cell after port phandle is phy type from:
+> +			- PHY_TYPE_USB2
+> +			- PHY_TYPE_USB3
+> +
+> +Example:
+> +
+> +u3phy: usb-phy@11290000 {
+> +	compatible = "mediatek,mt8173-u3phy";
+> +	reg = <0 0x11290000 0 0x800>;
+> +	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
+> +	clock-names = "u3phya_ref";
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +	ranges;
 
-The MT8173 VENC subsystem clock registers are modeled by the vencsys
-clock-controller node:
+    You don't describe the above 3 props neither as mandatory nor optional.
 
-vencsys: clock-controller@18000000 {
-  compatible = "mediatek,mt8173-vencsys", "syscon";
-  reg = <0 0x18000000 0 0x1000>;
-  #clock-cells = <1>;
-};
+[...]
+> +Specifying phy control of devices
+> +---------------------------------
+> +
+> +Device nodes should specify the configuration required in their "phys"
+> +property, containing a phandle to the phy port node and a device type;
+> +phy-names for each port are optional.
+> +
+> +Example:
+> +
+> +#include <dt-bindings/phy/phy.h>
+> +
+> +usb30: usb@11270000 {
+> +	...
+> +	phys = <&phy_port0 PHY_TYPE_USB3>;
+> +	phy-names = "usb3-0";
+> +	...
+> +};
 
-These registers, however, are only accessible if:
-  (a) the VENC power domain is enabled, and
-  (b) the "venc_sel" clock is enabled.
+    Isn't the above already described in 
+Documentation/devicetree/bindings/phy/phy-bindings.txt?
 
-According to James, venc_sel is a direct clock input the VENC module,
-and it is an ancestor to some, but not all, of the subsystem clocks, in
-particular it is not an ancestor to "venc_cke0":
+MBR, Sergei
 
- static const struct mtk_gate venc_clks[] __initconst = {
-         GATE_VENC(CLK_VENC_CKE0, "venc_cke0", "mm_sel", 0),
-         GATE_VENC(CLK_VENC_CKE1, "venc_cke1", "venc_sel", 4),
-         GATE_VENC(CLK_VENC_CKE2, "venc_cke2", "venc_sel", 8),
-         GATE_VENC(CLK_VENC_CKE3, "venc_cke3", "venc_sel", 12),
- };
-
-If the VENC power domain is disabled, then accesses to the vencsys
-registers just silently fail (i.e., reads probably
-return all 0s).  However, if the power domain is ON but venc_sel is
-disabled, then accessing the clock-controller registers results in a
-system hang (until the power domain is disabled).
-
-At boot the VENC power domain is forced on by scpsys (like all other
-power domains).  Later both unused clocks and power domains get
-disabled. If clocks are disabled first, and venc_sel is disabled
-before venc_cke0, then when unused_clock tries to disable venc_cke0,
-the system will hang when it reads the vencsys "is clock enabled" bit
-since:
-  (a) VENC power domain is still enabled, and
-  (b) venc_sel is already disabled
-
-In theory, we could add "clocks=<&topckgen CLK_TOP_VENC_SEL>;" to the
-vencsys clock-controller node.  On initialization, mtk_vencsys_init()
-could then pass venc_sel to the generic MT8173 gate clock driver, and
-it would then clk_enable(venc_sel)/_disable(venc_sel) around any
-access to the clock-controller registers.  James, however, thinks
-this is a lot of extra overhead, and instead has proposed the fix in this patch,
-where venc_sel is forced on whenever the VENC power domain is enabled.
-
-So, this patch is a bit of a hack, but the mtk scpsys driver already
-does something similar for the MM & MFG clocks - these clocks are
-always enabled whenever certain power domains are enabled, and they
-are only disabled when all such power domains are disabled.  I'm not
-100% why these clocks must always be kept on whenever these power
-domains are enabled, but probably to solve a similar problem where
-these clocks are needed to access some registers at a time when these
-clocks would not otherwise be explicitly enabled.
-
-Is the above clear?
-
->> But then we at least need a corresponding change to the binding documentation.
-
-Agreed.
-
-> Yes, we will need a really good reason to change the bindings.
-
-There is a race where the system can sometimes hang at boot with the
-existing implementation & bindings.
-This seems like a really good reason to change the bindings, if the
-proposed solution is acceptable (it may be possible to fix the hang
-without changing the bindings).
-
-> Apart from that we would need to find a solution which works with the old (and wrong bindings) as well.
-
-Why do we need to support the old bindings?
-This patch fixes a problem in MT8173, for which the mainline kernel is
-still under active bringup.
-If the existing bindings are not used anywhere yet (*), it seems like
-unnecessary overhead to enforce backwards compatibility at this stage.
-
-(*) I don't actually know if this is true, perhaps only Mediatek can
-answer this.
-
-> Apart from that, please send the dtsi part as a seperate patch.
-
-Agreed.
-
-Thanks,
--Dan
-
->
-> Thanks,
-> Matthias
->
->
->> Regards,
->> Lucas
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
