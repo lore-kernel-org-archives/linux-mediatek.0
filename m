@@ -1,83 +1,141 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v9 2/5] dt-bindings: Add a binding for Mediatek xHCI host controller
-Date: Tue, 29 Sep 2015 11:01:35 +0800
-Message-ID: <1443495698-32233-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
+Date: Tue, 29 Sep 2015 18:25:44 +0800
+Message-ID: <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
+References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <5607D224.4050801@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Lucas Stach <l.stach@pengutronix.de>, Sascha Hauer <kernel@pengutronix.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-add a DT binding documentation of xHCI host controller for the
-MT8173 SoC from Mediatek.
+Hi Matthias & Lucas,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- .../devicetree/bindings/usb/mt8173-xhci.txt        | 52 ++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+On Sun, Sep 27, 2015 at 7:25 PM, Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 25/09/15 10:26, Lucas Stach wrote:
+>>
+>> Am Freitag, den 25.09.2015, 14:31 +0800 schrieb James Liao:
+>>>
+>>> In kernel late init, it turns off all unused clocks, which
+>>> needs to access subsystem registers such as VENC and VENC_LT.
+>>>
+>>> Accessing MT8173 VENC registers needs two top clocks, mm_sel and
+>>> venc_sel. Accessing VENC_LT registers needs mm_sel and venclt_sel.
+>>> So we need to keep these clocks on before accessing their registers.
+>>>
+>>> This patch keeps venc_sel / venclt_sel clock on when
+>>> VENC / VENC_LT's power is on, to prevent system hang up while
+>>> accessing its registeres.
+>>>
+>> This changes the binding of an existing driver, so it needs some more
+>> consideration. Are VENC_SEL and VENC_LT_SEL really direct clock inputs
+>> to the VENC module, or are they some kind of parent clock for one of the
+>> existing clocks used by the old VENC binding?
+>>
+>> If they are direct clock inputs to the VENC module, changing the binding
+>> might be still ok at that point, as there shouldn't be many users of
+>> that yet.
 
-diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-new file mode 100644
-index 0000000..0c96273
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-@@ -0,0 +1,52 @@
-+MT8173 xHCI
-+
-+The device node for Mediatek SOC USB3.0 host controller
-+
-+Required properties:
-+ - compatible : should contain "mediatek,mt8173-xhci"
-+ - reg : specifies physical base address and size of the registers,
-+	the first one for MAC, the second for IPPC
-+ - interrupts : interrupt used by the controller
-+ - power-domains : a phandle to USB power domain node to control USB's
-+	mtcmos
-+ - vusb33-supply : regulator of USB avdd3.3v
-+
-+ - clocks : a list of phandle + clock-specifier pairs, one for each
-+	entry in clock-names
-+ - clock-names : must contain
-+	"sys_ck": for clock of xHCI MAC
-+	"wakeup_deb_p0": for USB wakeup debounce clock of port0
-+	"wakeup_deb_p0": for USB wakeup debounce clock of port1
-+
-+ - phys : a list of phandle + phy specifier pairs
-+ - usb3-lpm-capable : supports USB3.0 LPM
-+
-+Optional properties:
-+ - mediatek,wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup
-+	mode;
-+ - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
-+	control register, it depends on "mediatek,wakeup-src".
-+ - vbus-supply : reference to the VBUS regulator;
-+
-+Example:
-+usb30: usb@11270000 {
-+	compatible = "mediatek,mt8173-xhci";
-+	reg = <0 0x11270000 0 0x1000>,
-+	      <0 0x11280700 0 0x0100>;
-+	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-+	clocks = <&topckgen CLK_TOP_USB30_SEL>,
-+		 <&pericfg CLK_PERI_USB0>,
-+		 <&pericfg CLK_PERI_USB1>;
-+	clock-names = "sys_ck",
-+		      "wakeup_deb_p0",
-+		      "wakeup_deb_p1";
-+	phys = <&phy_port0 PHY_TYPE_USB3>,
-+	       <&phy_port1 PHY_TYPE_USB2>;
-+	vusb33-supply = <&mt6397_vusb_reg>;
-+	vbus-supply = <&usb_p1_vbus>;
-+	usb3-lpm-capable;
-+	mediatek,syscon-wakeup = <&pericfg>;
-+	mediatek,wakeup-src = <1>;
-+	status = "okay";
-+};
--- 
-1.8.1.1.dirty
+The MT8173 VENC subsystem clock registers are modeled by the vencsys
+clock-controller node:
+
+vencsys: clock-controller@18000000 {
+  compatible = "mediatek,mt8173-vencsys", "syscon";
+  reg = <0 0x18000000 0 0x1000>;
+  #clock-cells = <1>;
+};
+
+These registers, however, are only accessible if:
+  (a) the VENC power domain is enabled, and
+  (b) the "venc_sel" clock is enabled.
+
+According to James, venc_sel is a direct clock input the VENC module,
+and it is an ancestor to some, but not all, of the subsystem clocks, in
+particular it is not an ancestor to "venc_cke0":
+
+ static const struct mtk_gate venc_clks[] __initconst = {
+         GATE_VENC(CLK_VENC_CKE0, "venc_cke0", "mm_sel", 0),
+         GATE_VENC(CLK_VENC_CKE1, "venc_cke1", "venc_sel", 4),
+         GATE_VENC(CLK_VENC_CKE2, "venc_cke2", "venc_sel", 8),
+         GATE_VENC(CLK_VENC_CKE3, "venc_cke3", "venc_sel", 12),
+ };
+
+If the VENC power domain is disabled, then accesses to the vencsys
+registers just silently fail (i.e., reads probably
+return all 0s).  However, if the power domain is ON but venc_sel is
+disabled, then accessing the clock-controller registers results in a
+system hang (until the power domain is disabled).
+
+At boot the VENC power domain is forced on by scpsys (like all other
+power domains).  Later both unused clocks and power domains get
+disabled. If clocks are disabled first, and venc_sel is disabled
+before venc_cke0, then when unused_clock tries to disable venc_cke0,
+the system will hang when it reads the vencsys "is clock enabled" bit
+since:
+  (a) VENC power domain is still enabled, and
+  (b) venc_sel is already disabled
+
+In theory, we could add "clocks=<&topckgen CLK_TOP_VENC_SEL>;" to the
+vencsys clock-controller node.  On initialization, mtk_vencsys_init()
+could then pass venc_sel to the generic MT8173 gate clock driver, and
+it would then clk_enable(venc_sel)/_disable(venc_sel) around any
+access to the clock-controller registers.  James, however, thinks
+this is a lot of extra overhead, and instead has proposed the fix in this patch,
+where venc_sel is forced on whenever the VENC power domain is enabled.
+
+So, this patch is a bit of a hack, but the mtk scpsys driver already
+does something similar for the MM & MFG clocks - these clocks are
+always enabled whenever certain power domains are enabled, and they
+are only disabled when all such power domains are disabled.  I'm not
+100% why these clocks must always be kept on whenever these power
+domains are enabled, but probably to solve a similar problem where
+these clocks are needed to access some registers at a time when these
+clocks would not otherwise be explicitly enabled.
+
+Is the above clear?
+
+>> But then we at least need a corresponding change to the binding documentation.
+
+Agreed.
+
+> Yes, we will need a really good reason to change the bindings.
+
+There is a race where the system can sometimes hang at boot with the
+existing implementation & bindings.
+This seems like a really good reason to change the bindings, if the
+proposed solution is acceptable (it may be possible to fix the hang
+without changing the bindings).
+
+> Apart from that we would need to find a solution which works with the old (and wrong bindings) as well.
+
+Why do we need to support the old bindings?
+This patch fixes a problem in MT8173, for which the mainline kernel is
+still under active bringup.
+If the existing bindings are not used anywhere yet (*), it seems like
+unnecessary overhead to enforce backwards compatibility at this stage.
+
+(*) I don't actually know if this is true, perhaps only Mediatek can
+answer this.
+
+> Apart from that, please send the dtsi part as a seperate patch.
+
+Agreed.
+
+Thanks,
+-Dan
+
+>
+> Thanks,
+> Matthias
+>
+>
+>> Regards,
+>> Lucas
