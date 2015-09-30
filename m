@@ -1,64 +1,121 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Wed, 30 Sep 2015 08:14:59 +0200
-Message-ID: <20150930061459.GW7858@pengutronix.de>
-References: <1443015463-23639-1-git-send-email-s.hauer@pengutronix.de>
- <1443015463-23639-3-git-send-email-s.hauer@pengutronix.de>
- <5602EFF0.8040207@mentor.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH] mmc: core: Fix init_card in 52Mhz
+Date: Wed, 30 Sep 2015 11:24:04 +0300
+Message-ID: <560B9C24.3090209@intel.com>
+References: <1443583688-1952-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5602EFF0.8040207@mentor.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Vladimir Zapolskiy <vladimir_zapolskiy@mentor.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, mark.rutland@arm.com, robh+dt@kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1443583688-1952-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Vladimir,
+On 30/09/15 06:28, Chaotian Jing wrote:
+> Suppose that we got a data crc error, and it triggers the mmc_reset.
+> mmc_reset will call mmc_send_status to see if HW reset was supported.
+> before issue CMD13, it will do retune, and if EMMC was in HS400 mode,
+> it will reduce frequency to 52Mhz firstly, that results in card init
+> was doing at 52Mhz, So need ensure frequency is lower than 400Khz when
+> re-init card.
 
-On Wed, Sep 23, 2015 at 09:31:12PM +0300, Vladimir Zapolskiy wrote:
-> Hi Sascha,
-> 
-> in case of OF_DYNAMIC enabled of_parse_phandle() requires of_node_put(),
-> which is fine to place right here.
-> 
-> > +	if (auxadc_phys_base == OF_BAD_ADDR) {
-> > +		dev_err(&pdev->dev, "Can't get auxadc phys address\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> 
-> [snip]
-> 
-> > +
-> > +	/*
-> > +	 * These calibration values should finally be provided by the
-> > +	 * firmware or fuses. For now use default values.
-> > +	 */
-> > +	mt->calib_slope = -123;
-> > +	mt->calib_offset = 465124;
-> > +
-> > +	for (i = 0; i < MT8173_NUM_ZONES; i++)
-> > +		mtk_thermal_init_bank(mt, i, apmixed_phys_base, auxadc_phys_base);
-> > +
-> > +	platform_set_drvdata(pdev, mt);
-> > +
-> > +	for (i = 0; i < MT8173_NUM_ZONES; i++) {
-> > +		struct mtk_thermal_bank *bank = &mt->banks[i];
-> > +
-> > +		bank->tzd = thermal_zone_of_sensor_register(&pdev->dev, i, bank,
-> > +				&mtk_thermal_ops);
-> 
-> I would propose to add return value checks here, otherwise there might
-> be an oops in mtk_thermal_remove(), if something goes wrong.
+The call to mmc_send_status() was originally only done for mmc_test and
+doesn't belong in a real reset.  However the test parameter was removed
+to simplify the code by:
 
-Thanks for the input. I'll fix that in the next round.
+commit 83533ab28380f6957af39a7b322e639e42dbdaf1
+Author: Johan Rudholm <johan.rudholm@axis.com>
+Date:   Mon Jan 12 15:38:04 2015 +0100
 
-Sascha
+    mmc: core: always check status after reset
+    
+    Always check if the card is alive after a successful reset. This allows
+    us to remove mmc_hw_reset_check(), leaving mmc_hw_reset() as the only
+    card reset interface.
+    
+    Signed-off-by: Johan Rudholm <johanru@axis.com>
+    Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+IMHO having a test to check whether hw reset actually did reset the card
+is useful, so I would suggest putting back mmc_hw_reset_check() and
+removing the check from the non-test path.
+
+An alternative is to recognize that we don't want retuning here, and it is
+unlikely to be needed in the mmc_test case.  So if retuning is needed, just
+skip the call to mmc_send_status() i.e.
+
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index f2d0c2ae85b1..c3749ba42739 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1938,7 +1938,7 @@ static int mmc_reset(struct mmc_host *host)
+ 	host->ops->hw_reset(host);
+ 
+ 	/* If the reset has happened, then a status command will fail */
+-	if (!mmc_send_status(card, &status)) {
++	if (!host->need_retune && !mmc_send_status(card, &status)) {
+ 		mmc_host_clk_release(host);
+ 		return -ENOSYS;
+ 	}
+
+Could then make mmc_test aware of that:
+
+diff --git a/drivers/mmc/card/mmc_test.c b/drivers/mmc/card/mmc_test.c
+index b78cf5d403a3..7b105b97be78 100644
+--- a/drivers/mmc/card/mmc_test.c
++++ b/drivers/mmc/card/mmc_test.c
+@@ -2272,6 +2272,16 @@ static int mmc_test_hw_reset(struct mmc_test_card *test)
+ 	if (!mmc_card_mmc(card) || !mmc_can_reset(card))
+ 		return RESULT_UNSUP_CARD;
+ 
++	err = mmc_send_status(card, NULL);
++	if (err)
++		return err;
++
++	if (host->need_retune) {
++		pr_info("%s: cannot test hw reset because retune needed\n",
++			mmc_hostname(test->card->host));
++		return RESULT_FAIL;
++	}
++
+ 	err = mmc_hw_reset(host);
+ 	if (!err)
+ 		return RESULT_OK;
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index f2d0c2ae85b1..c3749ba42739 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1938,7 +1938,7 @@ static int mmc_reset(struct mmc_host *host)
+ 	host->ops->hw_reset(host);
+ 
+ 	/* If the reset has happened, then a status command will fail */
+-	if (!mmc_send_status(card, &status)) {
++	if (!host->need_retune && !mmc_send_status(card, &status)) {
+ 		mmc_host_clk_release(host);
+ 		return -ENOSYS;
+ 	}
+
+
+
+
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/core/mmc.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index e726903..f2d0c2a 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -1945,6 +1945,7 @@ static int mmc_reset(struct mmc_host *host)
+>  
+>  	/* Set initial state and call mmc_set_ios */
+>  	mmc_set_initial_state(host);
+> +	mmc_set_clock(host, host->f_init);
+>  	mmc_host_clk_release(host);
+>  
+>  	return mmc_init_card(host, card->ocr, card);
+> 
