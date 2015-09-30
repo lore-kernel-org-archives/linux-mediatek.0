@@ -1,44 +1,62 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH] mmc: core: fix dead loop of mmc_retune
-Date: Wed, 30 Sep 2015 17:37:18 +0800
-Message-ID: <1443605838-5948-1-git-send-email-chaotian.jing@mediatek.com>
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Wed, 30 Sep 2015 12:37:04 +0200
+Message-ID: <20150930103704.GA7858@pengutronix.de>
+References: <1443015463-23639-1-git-send-email-s.hauer@pengutronix.de>
+ <1443015463-23639-3-git-send-email-s.hauer@pengutronix.de>
+ <9hhpp105jw1.fsf@e105922-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Johan Rudholm <johan.rudholm@axis.com>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, Shawn Lin <shawn.lin@rock-chips.com>, Andrew Gabbasov <andrew_gabbasov@mentor.com>, David Jander <david@protonic.nl>, Sascha Hauer <s.hauer@pengutronix.de>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Chaotian Jing <chaotian.jing@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <9hhpp105jw1.fsf@e105922-lin.cambridge.arm.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Punit Agrawal <punit.agrawal@arm.com>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, mark.rutland@arm.com, robh+dt@kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-When get a CRC error, start the mmc_retune, it will issue CMD19/CMD21
-to do tune, assume there were 10 clock phase need to try, phase 0 to
-phase 6 is ok, phase 7 to phase 9 is NG, we try it from 0 to 9, so
-the last CMD19/CMD21 will get CRC error, host->need_retune was set and
-cause mmc_retune was called, then dead loop of mmc_retune
+Hi Punit,
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/core/core.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+On Wed, Sep 30, 2015 at 10:36:14AM +0100, Punit Agrawal wrote:
+> Hi Sascha,
+> 
+> Re-posting a comment from v7. Perhaps you missed it...
 
-diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
-index 0520064..a3eb20b 100644
---- a/drivers/mmc/core/core.c
-+++ b/drivers/mmc/core/core.c
-@@ -134,9 +134,11 @@ void mmc_request_done(struct mmc_host *host, struct mmc_request *mrq)
- 	int err = cmd->error;
- 
- 	/* Flag re-tuning needed on CRC errors */
--	if (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
-+	if ((cmd->opcode != MMC_SEND_TUNING_BLOCK &&
-+	    cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200) &&
-+	    (err == -EILSEQ || (mrq->sbc && mrq->sbc->error == -EILSEQ) ||
- 	    (mrq->data && mrq->data->error == -EILSEQ) ||
--	    (mrq->stop && mrq->stop->error == -EILSEQ))
-+	    (mrq->stop && mrq->stop->error == -EILSEQ)))
- 		mmc_retune_needed(host);
- 
- 	if (err && cmd->retries && mmc_host_is_spi(host)) {
+Uh, sorry. In fact I didn't miss it and I thought I have answered it.
+Appearantly I haven't.
+
+> > +	struct mtk_thermal *mt = bank->mt;
+> > +	int temp, i, max;
+> > +	u32 raw;
+> > +
+> > +	temp = max = INT_MIN;
+> > +
+> > +	for (i = 0; i < bank_data[bank->id].num_sensors; i++) {
+> > +		raw = readl(mt->thermal_base + sensing_points[i].msr);
+> > +
+> > +		temp = raw_to_mcelsius(mt, raw);
+> > +
+> > +		/*
+> > +		 * The first read of a sensor often contains very high bogus
+> > +		 * temperature value. Filter these out so that the system does
+> > +		 * not immediately shut down.
+> > +		 */
+> > +		if (temp > 200000)
+> > +			temp = 0;
+> > +
+> 
+> If the bogus value is only the first time the sensor is read, instead of
+> filtering here, you could call mtk_thermal_bank_temperature at probe
+> time when you are initialising the banks and ignore the returned value.
+
+It seems that after initialization the hardware needs some time to
+settle before correct values can be read. Doing what you suggest would
+mean we have to delay the boot by several 100ms. I'd rather not do that.
+
+Sascha
+
 -- 
-1.8.1.1.dirty
-
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
