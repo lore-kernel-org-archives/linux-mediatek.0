@@ -1,137 +1,98 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH] mmc: core: Fix init_card in 52Mhz
-Date: Wed, 30 Sep 2015 16:01:11 +0300
-Message-ID: <560BDD17.4060102@intel.com>
-References: <1443583688-1952-1-git-send-email-chaotian.jing@mediatek.com>
- <560B9C24.3090209@intel.com> <1443603781.5148.0.camel@mhfsdcap03>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
+Date: Wed, 30 Sep 2015 22:47:42 +0800
+Message-ID: <CAGS+omDcsFXZ2AkS9tma_q+MRnsdDmit-nRXLWAcowRTNgXC=w@mail.gmail.com>
+References: <1442915603.24403.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1443603781.5148.0.camel@mhfsdcap03>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1442915603.24403.2.camel@mtksdaap41>
+Sender: linux-clk-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 30/09/15 12:03, Chaotian Jing wrote:
-> On Wed, 2015-09-30 at 11:24 +0300, Adrian Hunter wrote:
->> On 30/09/15 06:28, Chaotian Jing wrote:
->>> Suppose that we got a data crc error, and it triggers the mmc_reset.
->>> mmc_reset will call mmc_send_status to see if HW reset was supported.
->>> before issue CMD13, it will do retune, and if EMMC was in HS400 mode,
->>> it will reduce frequency to 52Mhz firstly, that results in card init
->>> was doing at 52Mhz, So need ensure frequency is lower than 400Khz when
->>> re-init card.
->>
->> The call to mmc_send_status() was originally only done for mmc_test and
->> doesn't belong in a real reset.  However the test parameter was removed
->> to simplify the code by:
->>
->> commit 83533ab28380f6957af39a7b322e639e42dbdaf1
->> Author: Johan Rudholm <johan.rudholm@axis.com>
->> Date:   Mon Jan 12 15:38:04 2015 +0100
->>
->>     mmc: core: always check status after reset
->>     
->>     Always check if the card is alive after a successful reset. This allows
->>     us to remove mmc_hw_reset_check(), leaving mmc_hw_reset() as the only
->>     card reset interface.
->>     
->>     Signed-off-by: Johan Rudholm <johanru@axis.com>
->>     Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
->>
->> IMHO having a test to check whether hw reset actually did reset the card
->> is useful, so I would suggest putting back mmc_hw_reset_check() and
->> removing the check from the non-test path.
->>
->> An alternative is to recognize that we don't want retuning here, and it is
->> unlikely to be needed in the mmc_test case.  So if retuning is needed, just
->> skip the call to mmc_send_status() i.e.
->>
->> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
->> index f2d0c2ae85b1..c3749ba42739 100644
->> --- a/drivers/mmc/core/mmc.c
->> +++ b/drivers/mmc/core/mmc.c
->> @@ -1938,7 +1938,7 @@ static int mmc_reset(struct mmc_host *host)
->>  	host->ops->hw_reset(host);
->>  
->>  	/* If the reset has happened, then a status command will fail */
->> -	if (!mmc_send_status(card, &status)) {
->> +	if (!host->need_retune && !mmc_send_status(card, &status)) {
->>  		mmc_host_clk_release(host);
->>  		return -ENOSYS;
->>  	}
->>
->> Could then make mmc_test aware of that:
->>  
-> 
->> This solution is better, please help to upstream it. Thx!
+Hi Mike,
 
-Then please, make it a patch, and test it and submit it.  You can add:
+On Tue, Sep 22, 2015 at 5:53 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
+> This is a collection of new Mediatek clocks support and fixes. These
+> patches come from Joe [1], Pi-cheng [2] and me [3], including clock
+> support for subsystems, CPU, GPT and some minor fixes.
+>
+> [1] https://patchwork.kernel.org/patch/6777041/
+> [2] https://patchwork.kernel.org/patch/7174721/
+> [3] https://lkml.org/lkml/2015/8/10/194
+>
+> ----------------------------------------------------------------
+>
+> The following changes since commit 1f93e4a96c9109378204c147b3eec0d0e8100fde:
+>
+>   Linux 4.3-rc2 (2015-09-20 14:32:34 -0700)
+>
+> are available in the git repository at:
+>
+>   https://github.com/jamesjjliao/linux.git v4.3-rc2-clk
+>
+> for you to fetch changes up to 74219612bb7e25e64409171acada05d9949228f2:
+>
+>   arm64: dts: mt8173: Add subsystem clock controller device nodes (2015-07-09 12:58:14 +0800)
+>
 
-Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
+Will this be pulled for 4.3, or is it now destined for 4.4?
+(sorry if you are receiving a duplicate email, the previous had HTML
+and was rejected by the lists)
 
+-Dan
 
->> diff --git a/drivers/mmc/card/mmc_test.c b/drivers/mmc/card/mmc_test.c
->> index b78cf5d403a3..7b105b97be78 100644
->> --- a/drivers/mmc/card/mmc_test.c
->> +++ b/drivers/mmc/card/mmc_test.c
->> @@ -2272,6 +2272,16 @@ static int mmc_test_hw_reset(struct mmc_test_card *test)
->>  	if (!mmc_card_mmc(card) || !mmc_can_reset(card))
->>  		return RESULT_UNSUP_CARD;
->>  
->> +	err = mmc_send_status(card, NULL);
->> +	if (err)
->> +		return err;
->> +
->> +	if (host->need_retune) {
->> +		pr_info("%s: cannot test hw reset because retune needed\n",
->> +			mmc_hostname(test->card->host));
->> +		return RESULT_FAIL;
->> +	}
->> +
->>  	err = mmc_hw_reset(host);
->>  	if (!err)
->>  		return RESULT_OK;
->> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
->> index f2d0c2ae85b1..c3749ba42739 100644
->> --- a/drivers/mmc/core/mmc.c
->> +++ b/drivers/mmc/core/mmc.c
->> @@ -1938,7 +1938,7 @@ static int mmc_reset(struct mmc_host *host)
->>  	host->ops->hw_reset(host);
->>  
->>  	/* If the reset has happened, then a status command will fail */
->> -	if (!mmc_send_status(card, &status)) {
->> +	if (!host->need_retune && !mmc_send_status(card, &status)) {
->>  		mmc_host_clk_release(host);
->>  		return -ENOSYS;
->>  	}
->>
->>
->>
->>
->>>
->>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
->>> ---
->>>  drivers/mmc/core/mmc.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
->>> index e726903..f2d0c2a 100644
->>> --- a/drivers/mmc/core/mmc.c
->>> +++ b/drivers/mmc/core/mmc.c
->>> @@ -1945,6 +1945,7 @@ static int mmc_reset(struct mmc_host *host)
->>>  
->>>  	/* Set initial state and call mmc_set_ios */
->>>  	mmc_set_initial_state(host);
->>> +	mmc_set_clock(host, host->f_init);
->>>  	mmc_host_clk_release(host);
->>>  
->>>  	return mmc_init_card(host, card->ocr, card);
->>>
->>
-> 
-> 
-> 
-
+> ----------------------------------------------------------------
+>
+> James Liao (9):
+>   clk: mediatek: Removed unused dpi_ck clock from MT8173
+>   clk: mediatek: Remove unused code from MT8173.
+>   clk: mediatek: Add __initdata and __init for data and functions
+>   clk: mediatek: Add fixed clocks support for Mediatek SoC.
+>   clk: mediatek: Fix rate and dependency of MT8173 clocks
+>   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
+>     controllers
+>   clk: mediatek: Add subsystem clocks of MT8173
+>   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+>   arm64: dts: mt8173: Add subsystem clock controller device nodes
+>
+> Joe.C (1):
+>   clk: mediatek: add 13mhz clock for MT8173
+>
+> pi-cheng.chen (1):
+>   clk: mediatek: Export CPU mux clocks for CPU frequency control
+>
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
+>  .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   37 ++
+>  drivers/clk/mediatek/Makefile                      |    2 +-
+>  drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
+>  drivers/clk/mediatek/clk-cpumux.c                  |  127 +++++++
+>  drivers/clk/mediatek/clk-cpumux.h                  |   22 ++
+>  drivers/clk/mediatek/clk-gate.c                    |    2 +-
+>  drivers/clk/mediatek/clk-mt8173.c                  |  370 +++++++++++++++++++-
+>  drivers/clk/mediatek/clk-mtk.c                     |   36 +-
+>  drivers/clk/mediatek/clk-mtk.h                     |   24 +-
+>  drivers/clk/mediatek/clk-pll.c                     |    7 +-
+>  include/dt-bindings/clock/mt8173-clk.h             |  106 +++++-
+>  16 files changed, 916 insertions(+), 34 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+>  create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
+>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
