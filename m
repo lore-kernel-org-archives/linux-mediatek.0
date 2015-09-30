@@ -1,98 +1,101 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
-Date: Wed, 30 Sep 2015 22:47:42 +0800
-Message-ID: <CAGS+omDcsFXZ2AkS9tma_q+MRnsdDmit-nRXLWAcowRTNgXC=w@mail.gmail.com>
-References: <1442915603.24403.2.camel@mtksdaap41>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [RFC v3 5/7] dt-bindings: drm/mediatek: Add Mediatek HDMI dts binding
+Date: Wed, 30 Sep 2015 17:30:04 +0200
+Message-ID: <1443627006-15319-6-git-send-email-p.zabel@pengutronix.de>
+References: <1443627006-15319-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1442915603.24403.2.camel@mtksdaap41>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1443627006-15319-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@pengutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mike,
-
-On Tue, Sep 22, 2015 at 5:53 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
-> This is a collection of new Mediatek clocks support and fixes. These
-> patches come from Joe [1], Pi-cheng [2] and me [3], including clock
-> support for subsystems, CPU, GPT and some minor fixes.
->
-> [1] https://patchwork.kernel.org/patch/6777041/
-> [2] https://patchwork.kernel.org/patch/7174721/
-> [3] https://lkml.org/lkml/2015/8/10/194
->
-> ----------------------------------------------------------------
->
-> The following changes since commit 1f93e4a96c9109378204c147b3eec0d0e8100fde:
->
->   Linux 4.3-rc2 (2015-09-20 14:32:34 -0700)
->
-> are available in the git repository at:
->
->   https://github.com/jamesjjliao/linux.git v4.3-rc2-clk
->
-> for you to fetch changes up to 74219612bb7e25e64409171acada05d9949228f2:
->
->   arm64: dts: mt8173: Add subsystem clock controller device nodes (2015-07-09 12:58:14 +0800)
->
-
-Will this be pulled for 4.3, or is it now destined for 4.4?
-(sorry if you are receiving a duplicate email, the previous had HTML
-and was rejected by the lists)
-
--Dan
-
-> ----------------------------------------------------------------
->
-> James Liao (9):
->   clk: mediatek: Removed unused dpi_ck clock from MT8173
->   clk: mediatek: Remove unused code from MT8173.
->   clk: mediatek: Add __initdata and __init for data and functions
->   clk: mediatek: Add fixed clocks support for Mediatek SoC.
->   clk: mediatek: Fix rate and dependency of MT8173 clocks
->   dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
->     controllers
->   clk: mediatek: Add subsystem clocks of MT8173
->   clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
->   arm64: dts: mt8173: Add subsystem clock controller device nodes
->
-> Joe.C (1):
->   clk: mediatek: add 13mhz clock for MT8173
->
-> pi-cheng.chen (1):
->   clk: mediatek: Export CPU mux clocks for CPU frequency control
->
->  .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
->  .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
->  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
->  .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
->  .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   37 ++
->  drivers/clk/mediatek/Makefile                      |    2 +-
->  drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
->  drivers/clk/mediatek/clk-cpumux.c                  |  127 +++++++
->  drivers/clk/mediatek/clk-cpumux.h                  |   22 ++
->  drivers/clk/mediatek/clk-gate.c                    |    2 +-
->  drivers/clk/mediatek/clk-mt8173.c                  |  370 +++++++++++++++++++-
->  drivers/clk/mediatek/clk-mtk.c                     |   36 +-
->  drivers/clk/mediatek/clk-mtk.h                     |   24 +-
->  drivers/clk/mediatek/clk-pll.c                     |    7 +-
->  include/dt-bindings/clock/mt8173-clk.h             |  106 +++++-
->  16 files changed, 916 insertions(+), 34 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
->  create mode 100644 drivers/clk/mediatek/clk-apmixed.c
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
->  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
->
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+QWRkIHRoZSBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1lZGlhdGVrIEhE
+TUksCkhETUkgUEhZIGFuZCBIRE1JIEREQyBkZXZpY2VzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlw
+cCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tCiAuLi4vYmluZGluZ3MvZHJtL21l
+ZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0ICAgICAgICB8IDExNyArKysrKysrKysrKysrKysrKysr
+KysKIDEgZmlsZSBjaGFuZ2VkLCAxMTcgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0
+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kcm0vbWVkaWF0ZWsvbWVkaWF0ZWss
+aGRtaS50eHQKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
+ZHJtL21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2RybS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dApuZXcgZmlsZSBtb2RlIDEw
+MDY0NAppbmRleCAwMDAwMDAwLi45NmQwOWJmCi0tLSAvZGV2L251bGwKKysrIGIvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RybS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dApA
+QCAtMCwwICsxLDExNyBAQAorTWVkaWF0ZWsgSERNSSBFbmNvZGVyCis9PT09PT09PT09PT09PT09
+PT09PT0KKworVGhlIE1lZGlhdGVrIEhETUkgZW5jb2RlciBjYW4gZ2VuZXJhdGUgSERNSSAxLjRh
+IG9yIE1ITCAyLjAgc2lnbmFscyBmcm9tCitpdHMgcGFyYWxsZWwgaW5wdXQuCisKK1JlcXVpcmVk
+IHByb3BlcnRpZXM6CistIGNvbXBhdGlibGU6IFNob3VsZCBiZSAibWVkaWF0ZWssPGNoaXA+LWhk
+bWkiLgorLSByZWc6IFBoeXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250
+cm9sbGVyJ3MgcmVnaXN0ZXJzCistIHJlZy1uYW1lczogbXVzdCBjb250YWluICJncmwiLCAiY2Vj
+IiwgYW5kICJzeXMiLgorLSBpbnRlcnJ1cHRzOiBUaGUgaW50ZXJydXB0IHNpZ25hbCBmcm9tIHRo
+ZSBmdW5jdGlvbiBibG9jay4KKy0gY2xvY2tzOiBkZXZpY2UgY2xvY2tzCisgIFNlZSBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svY2xvY2stYmluZGluZ3MudHh0IGZvciBk
+ZXRhaWxzLgorLSBjbG9jay1uYW1lczogbXVzdCBjb250YWluICJjZWMiLCAiaGRtaV9zZWwiLCAi
+aGRtaV9kaXYxIiwgImhkbWlfZGl2MiIsCisgICJoZG1pX2RpdjMiLCAiaGRtaV9waXhlbCIsICJo
+ZG1pX3BsbCIsICJhdWRfYmNsayIsIGFuZCAiYXVkX3NwZGlmIi4KKy0gZGRjLWkyYy1idXM6IHBo
+YW5kbGUgbGluayB0byB0aGUgSTJDIGNvbnRyb2xsZXIgdXNlZCBmb3IgRERDIEVESUQgcHJvYmlu
+ZworLSBwaHlzOiBwaGFuZGxlIGxpbmsgdG8gdGhlIEhETUkgUEhZIG5vZGUuCisgIFNlZSBEb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1iaW5kaW5ncy50eHQgZm9yIGRl
+dGFpbHMuCistIHBoeS1uYW1lczogbXVzdCBjb250YWluICJoZG1pIgorLSBwb3J0czogQSBub2Rl
+IGNvbnRhaW5pbmcgaW5wdXQgYW5kIG91dHB1dCBwb3J0IG5vZGVzIHdpdGggZW5kcG9pbnQKKyAg
+ZGVmaW5pdGlvbnMgYXMgZG9jdW1lbnRlZCBpbiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZ3JhcGgudHh0LgorLSBwb3J0QDA6IFRoZSBpbnB1dCBwb3J0IGluIHRoZSBwb3J0cyBu
+b2RlIHNob3VsZCBiZSBjb25uZWN0ZWQgdG8gYSBEUEkgb3V0cHV0CisgIHBvcnQuCisKK09wdGlv
+bmFsIHByb3BlcnRpZXM6CistIHBvcnRAMTogVGhlIG91dHB1dCBwb3J0IGluIHRoZSBwb3J0cyBu
+b2RlIGNhbiBiZSBjb25uZWN0ZWQgdG8gdGhlIGlucHV0IHBvcnQKKyAgb2YgYW4gYXR0YWNoZWQg
+YnJpZGdlIGNoaXAsIHN1Y2ggYXMgYSBTbGltUG9ydCB0cmFuc21pdHRlci4KKworSERNSSBEREMK
+Kz09PT09PT09CisKK1RoZSBIRE1JIEREQyBpMmMgY29udHJvbGxlciBpcyB1c2VkIHRvIGludGVy
+ZmFjZSB3aXRoIHRoZSBIRE1JIEREQyBwaW5zLgorVGhlIE1lZGlhdGVrJ3MgSTJDIGNvbnRyb2xs
+ZXIgaXMgdXNlZCB0byBpbnRlcmZhY2Ugd2l0aCBJMkMgZGV2aWNlcy4KKworUmVxdWlyZWQgcHJv
+cGVydGllczoKKy0gY29tcGF0aWJsZTogU2hvdWxkIGJlICJtZWRpYXRlayw8Y2hpcD4taGRtaS1k
+ZGMiCistIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNvbnRy
+b2xsZXIncyByZWdpc3RlcnMKKy0gY2xvY2tzOiBkZXZpY2UgY2xvY2sKKy0gY2xvY2stbmFtZXM6
+IE11c3QgY29udGFpbiAiZGRjLWkyYyIuCisKK0hETUkgUEhZCis9PT09PT09PQorCitUaGUgSERN
+SSBQSFkgc2VyaWFsaXplcyB0aGUgSERNSSBlbmNvZGVyJ3MgdGhyZWUgY2hhbm5lbCAxMC1iaXQg
+cGFyYWxsZWwKK291dHB1dCBhbmQgZHJpdmVzIHRoZSBIRE1JIHBhZHMuCisKK1JlcXVpcmVkIHBy
+b3BlcnRpZXM6CistIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4taGRtaS1waHkiCistIHJl
+ZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIG1vZHVsZSdzIHJlZ2lz
+dGVycworLSAjcGh5LWNlbGxzOiBtdXN0IGJlIDwwPi4KKworT3B0aW9uYWwgcHJvcGVydGllczoK
+Ky0gaWJpYXM6IFRYIERSViBiaWFzIGN1cnJlbnQgZm9yIDwxLjY1R2JwcywgZGVmYXVsdHMgdG8g
+MHhhCistIGliaWFzX3VwOiBUWCBEUlYgYmlhcyBjdXJyZW50IGZvciA+MS42NUdicHMsIGRlZmF1
+bHRzIHRvIDB4MWMKKworRXhhbXBsZToKKworaGRtaV9waHk6IGhkbWktcGh5QDEwMjA5MTAwIHsK
+Kwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pLXBoeSI7CisJcmVnID0gPDAgMHgx
+MDIwOTEwMCAwIDB4MjQ+OworCWliaWFzID0gPDB4YT47CisJaWJpYXNfdXAgPSA8MHgxYz47CisJ
+I3BoeS1jZWxscyA9IDwwPjsKK307CisKK2hkbWlfZGRjMDogaTJjQDExMDEyMDAwIHsKKwljb21w
+YXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pLWRkYyI7CisJcmVnID0gPDAgMHgxMTAxMjAw
+MCAwIDB4MWM+OworCWludGVycnVwdHMgPSA8R0lDX1NQSSA4MSBJUlFfVFlQRV9MRVZFTF9MT1c+
+OworCWNsb2NrcyA9IDwmcGVyaWNmZyBDTEtfUEVSSV9JMkM1PjsKK307CisKK2hkbWkwOiBoZG1p
+QDE0MDI1MDAwIHsKKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pIjsKKwlyZWcg
+PSA8MCAweDE0MDI1MDAwIDAgMHg0MDA+LAkvKiBHUkwgKi8KKwkgICAgICA8MCAweDEwMDEzMDAw
+IDAgMHhiYz4sCS8qIENFQyAqLworCSAgICAgIDwwIDB4MTQwMDA5MDAgMCAweDg+OwkvKiBTWVMg
+Ki8KKwlyZWctbmFtZXMgPSAiZ3JsIiwgImNlYyIsICJzeXMiOworCWludGVycnVwdHMgPSA8R0lD
+X1NQSSAxNjcgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwljbG9ja3MgPSA8JmluZnJhY2ZnIENMS19J
+TkZSQV9DRUM+LAorCQkgPCZ0b3Bja2dlbiBDTEtfVE9QX0hETUlfU0VMPiwKKwkJIDwmdG9wY2tn
+ZW4gQ0xLX1RPUF9IRE1JVFhfRElHX0NUUz4sCisJCSA8JnRvcGNrZ2VuIENMS19UT1BfSERNSVRY
+UExMX0QyPiwKKwkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9IRE1JVFhQTExfRDM+LAorCQkgPCZtbXN5
+cyBDTEtfTU1fSERNSV9QSVhFTD4sCisJCSA8Jm1tc3lzIENMS19NTV9IRE1JX1BMTENLPiwKKwkJ
+IDwmbW1zeXMgQ0xLX01NX0hETUlfQVVESU8+LAorCQkgPCZtbXN5cyBDTEtfTU1fSERNSV9TUERJ
+Rj47CisJY2xvY2stbmFtZXMgPSAiY2VjIiwKKwkJICAgICAgImhkbWlfc2VsIiwKKwkJICAgICAg
+ImhkbWlfZGl2MSIsCisJCSAgICAgICJoZG1pX2RpdjIiLAorCQkgICAgICAiaGRtaV9kaXYzIiwK
+KwkJICAgICAgImhkbWlfcGl4ZWwiLAorCQkgICAgICAiaGRtaV9wbGwiLAorCQkgICAgICAiYXVk
+X2JjbGsiLAorCQkgICAgICAiYXVkX3NwZGlmIjsKKwlkZGMtaTJjLWJ1cyA9IDwmaGRtaV9kZGMw
+PjsKKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0cmwtMCA9IDwmaGRtaV9waW4+
+OworCXBoeXMgPSA8JmhkbWlfcGh5PjsKKwlwaHktbmFtZXMgPSAiaGRtaSI7CisJc3RhdHVzID0g
+ImRpc2FibGVkIjsKKworCXBvcnRzIHsKKwkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CisJCSNzaXpl
+LWNlbGxzID0gPDA+OworCisJCXBvcnRAMCB7CisJCQlyZWcgPSA8MD47CisKKwkJCWhkbWkwX2lu
+OiBlbmRwb2ludCB7CisJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkcGkwX291dD47CisJCQl9Owor
+CQl9OworCX07Cit9OwotLSAKMi41LjMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
