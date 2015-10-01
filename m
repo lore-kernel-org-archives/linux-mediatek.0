@@ -1,168 +1,98 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
-Date: Thu, 1 Oct 2015 18:08:31 +0800
-Message-ID: <CAGS+omCm2pKczooGkMf75HjQL=oF7Ufo6DsRCvvikt0QA1jx-g@mail.gmail.com>
-References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
- <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
- <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
- <1443604022.3185.17.camel@pengutronix.de> <1443683750.1714.25.camel@mtksdaap41>
- <CAGS+omCpWqtKPKoyjFb=q4BxmfUGGsfvQGEZas8g8VLZKPtKbQ@mail.gmail.com> <1443691590.1714.73.camel@mtksdaap41>
+From: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v9 4/5] xhci: mediatek: support MTK xHCI host controller
+Date: Thu, 1 Oct 2015 12:44:41 +0100
+Message-ID: <560D1CA9.1050009@linaro.org>
+References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1443495698-32233-5-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1443691590.1714.73.camel@mtksdaap41>
-Sender: linux-pm-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Lucas Stach <l.stach@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-pm@vger.kernel.org, rjw@sisk.pl
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1443495698-32233-5-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-+linux-clk +linux-pm and the genpd and clock gurus
+On 29/09/15 04:01, Chunfeng Yun wrote:
+> There some vendor quirks for MTK xhci host controller:
+> 1. It defines some extra SW scheduling parameters for HW
+>    to minimize the scheduling effort for synchronous and
+>    interrupt endpoints. The parameters are put into reseved
+>    DWs of slot context and endpoint context.
+> 2. Its IMODI unit for Interrupter Moderation register is
+>    8 times as much as that defined in xHCI spec.
+> 3. Its TDS in  Normal TRB defines a number of packets that
+>    remains to be transferred for a TD after processing all
+>    Max packets in all previous TRBs.
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Hi James,
+I've done some basic soak tests, both with a directly attached USB3 HDD 
+and, given the extra code to manage isochronous xfer, also with a hub, 
+disc and two audio interfaces.
 
-On Thu, Oct 1, 2015 at 5:26 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
-> Hi Daniel,
->
-> On Thu, 2015-10-01 at 16:07 +0800, Daniel Kurtz wrote:
->> Hmm... below is my current understanding.
->>
->> In the current software architecture, we have split the "venc"
->> subsystem register space into two parts (two dt nodes), with each node
->> handled instantiated as its own  platform device, and handled by a
->> different platform driver:
->>
->> vencsys: clock-controller@18000000 {
->>   compatible = "mediatek,mt8173-vencsys", "syscon";
->>   reg = <0 0x18000000 0 0x1000>;
->>   #clock-cells = <1>;
->> };
->>
->> /* TBD - a venc driver has not been posted to the list so I don't
->> really know yet what it will look like */
->>  venc: encoder@~18000000 {
->>    compatible = "mediatek,mt8173-venc?";
->>    reg = <0 ~0x18000000 0 ?>;
->>    clocks = <& <&vencsys CLK_VENC_CKE1>, <&vencsys CLK_VENC_CKE0>, ...;
->>    clock-names = "apb", "smi", ...;
->>    ...
->>  };
->>
->> Each independent driver must take appropriate independent action to
->> ensure that any clock required to access its associated registers is
->> enabled when accessing said registers.
->> In other words,
->>  * the venc *clock-controller* driver that must enable any clocks
->> required to access the *clock control* registers
->>  * the venc *encoder* driver must enable clocks any clocks required to
->> access the *encoder* registers
->
->> Actually, the situation is a little worse that this, since we also
->> have a 'larb' node in the same register space, whose driver must also
->> ensure that VENC_SEL is enabled before accessing its registers:
->>
->> larb3: larb@18001000 {
->>   compatible = "mediatek,mt8173-smi-larb";
->>   reg = <0 0x18001000 0 0x1000>;
->>   mediatek,smi = <&smi_common>;
->>   power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
->>   clocks = <&vencsys CLK_VENC_CKE1>, <&vencsys CLK_VENC_CKE0>;
->>   clock-names = "apb", "smi";
->> };
->>
->> Personally, I am not opposed to using the power-domain enable/disable
->> as a proxy for also enabling/disabling the "subsystem register bank"
->> clock as is done in this patch and by the scpsys driver in general.
->> However, it feels a bit like an abuse of the power domain api.
->>
->> > I preferred to keep venc_sel on during VENC power on because I'm not
->> > sure there is any other framework may control VENC's registers during
->> > kernel init.
->>
->> The misunderstanding here is the interpretation of "VENC's registers".
->> In this case, the registers in question are those owned by the
->> "vencsys: clock-controller@18000000" node, and the driver accessing
->> them is drivers/clk/mediatek/clk-gate.c.
->
-> The situation is more complex than you mentioned above. VENC (0x18000000
-> ~ 0x1800ffff) for example, if we want to avoid hanging up while
-> accessing registers, we need to:
->
->  - Prevent venc_sel off while VENC is powered on.
->  - Prevent mm_sel off while MM is powered on.
->
-> First, it's not worth to control power domains in clock control path
-> because it's too expensive. So we want to keep clock on before accessing
-> registers or during the domain is powered on.
->
-> Besides, modeling a clock controller as a consumer of power domain may
-> not a good idea, because there are power domains be consumers of clocks,
-> such as:
->
->         [MT8173_POWER_DOMAIN_MM] = {
->                 .name = "mm",
->                 [...]
->                 .clk_id = MT8173_CLK_MM,
->                 [...]
->         },
+Tested-by: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
-I see two cases where "a power domain is a consumer of a clock":
-  (a) the clock is needed to access the power domain control
-registers.  The clock must actually be in another power domain, since
-otherwise you could never turn *on* the power domain in question.
-  (b) the clock is needed to talk to the power domain that is about to
-turn off, or that was just turned on - these clocks are usually used
-to control some kind of bus arbitration, etc.  In this case, the
-clocks are only accessed when the power domain is on.
 
-I would argue that in both cases, the clock should in theory should
-only be enabled/disabled by the power on/off routine for the duration
-of time that is needed, and that it should not be "left enabled" by
-the power domain on/off function...  I can see how this might be a
-useful optimization - but it also seems like a way to burn extra power
-by leaving on a clock that is not necessarily being used.
-
-But - perhaps I am over thinking this, and it is standard practice to
-bundle power domains with the clocks that service components in the
-power domain.
-
-> Second, if we want to avoid hanging up by enabling related top clocks in
-> clock controllers, we need to clock on venc_sel and mm_sel before *each
-> clock operations*, and then clock off them after clock operations. That
-> means:
+> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+> index 57f40a1..243f696 100644
+> --- a/drivers/usb/host/xhci-ring.c
+> +++ b/drivers/usb/host/xhci-ring.c
+> @@ -68,6 +68,7 @@
+>   #include <linux/slab.h>
+>   #include "xhci.h"
+>   #include "xhci-trace.h"
+> +#include "xhci-mtk.h"
 >
-> - To check venc_cke0's state:
->  = clk_prepare mm_sel and venc_sel (where to prepare?)
->   - It may turn on related PLLs, and it can't be invoked in an atomic
-> context.
->  = clk_enable mm_sel and venc_sel.
->  = Read VENC's clock register.
->  = clk_disable mm_sel and venc_sel.
->  = clk_unprepare mm_sel and venc_sel (where to unprepare?)
->   - It may turn off PLLs, and it can't be invoked in an atomic context.
->  = Return venc_cke0's state.
->
-> Overhead is a reason. The clock framework's API flow (prepare - enable -
-> disable - unprepare) is another reason to reject the solution in clock
-> controllers, because prepare/unprepare is a non-atomic operation but
-> operations to access registers may be a atomic context.
+>   /*
+>    * Returns zero if the TRB isn't in this segment, otherwise it returns the DMA
+> @@ -3044,18 +3045,27 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
+>   			      struct urb *urb, unsigned int num_trbs_left)
+>   {
+>   	u32 maxp, total_packet_count;
+> +	u32 skip_current_trb = 0;
 
-Or, alternatively, just prepare venc_sel once during init, for each
-clock controller that needs it, when configuring the clock controller
-node (for example, in mtk_vencsys_init()). This is similar to how we
-set up 'critical clocks'.
-By just preparing the clock, you tell the common clock core:
- "my clock controller will need this clock later; please make sure
-that it can be enabled/disabled later during atomic context."
+A bit of a nitpick but why do we need skip_current_trb? Testing 
+(xhci->quirks & XHCI_MTK_HOST) twice would make what the code does, and 
+why, more obvious.
 
-Thanks!
--Dan
+Anyhow with that looked at, and the caveat that I'm not much of USB 
+expert, you're welcome to add my Reviewed-by: to v10.
 
 >
+> -	if (xhci->hci_version < 0x100)
+> -		return ((td_total_len - transferred) >> 10);
+> -
+> -	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
+> -	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
+> +	if (xhci->hci_version < 0x100) {
+> +		/* for MTK xHCI, TD size doesn't include this TRB */
+> +		if (xhci->quirks & XHCI_MTK_HOST)
+> +			skip_current_trb = 1;
+> +		else
+> +			return ((td_total_len - transferred) >> 10);
+> +	}
 >
+>   	/* One TRB with a zero-length data packet. */
+>   	if (num_trbs_left == 0 || (transferred == 0 && trb_buff_len == 0) ||
+>   	    trb_buff_len == td_total_len)
+>   		return 0;
 >
-> Best regards,
->
-> James
->
->
->
+> +	if (skip_current_trb)
+> +		trb_buff_len = 0;
+> +
+> +	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
+> +	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
+> +
+>   	/* Queueing functions don't count the current TRB into transferred */
+>   	return (total_packet_count - ((transferred + trb_buff_len) / maxp));
+>   }
+
+
+Daniel.
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
