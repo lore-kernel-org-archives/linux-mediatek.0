@@ -1,105 +1,72 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFC v2 1/4] dt-bindings: drm/mediatek: Add Mediatek display
- subsystem dts binding
-Date: Wed, 30 Sep 2015 12:13:41 -0500
-Message-ID: <CAL_JsqLcraiS+Yq48-m-xTksohU5wPSPrjtjV2GLzDTSDcUCUA@mail.gmail.com>
-References: <1442592722-29004-1-git-send-email-p.zabel@pengutronix.de>
- <1442592722-29004-2-git-send-email-p.zabel@pengutronix.de>
- <CAL_JsqLZQXMoKxGZ6c56e6d1UuLiJKzVB=sH15ihTvwpOgSU8Q@mail.gmail.com> <1442823067.3277.35.camel@pengutronix.de>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [GIT PULL] clk: mediatek: New clocks support and fixes
+Date: Thu, 1 Oct 2015 13:44:13 +0800
+Message-ID: <1443678253.1714.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1442823067.3277.35.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Dave Airlie <airlied-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Daniel Stone <daniel-rLtY4a/8tF1rovVCs/uTlw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org" <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Sep 21, 2015 at 3:11 AM, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> Hi Rob,
->
-> thank you for the comments.
->
-> Am Freitag, den 18.09.2015, 15:33 -0500 schrieb Rob Herring:
-> [...]
->> > +The display-subsystem node binds together all individual device nodes that
->> > +comprise the DISP subsystem.
->> > +
->> > +Required properties:
->> > +
->> > +- compatible: "mediatek,<chip>-disp"
->>
->> > +- components: Should contain a list of phandles pointing to the DISP function
->> > +  block device nodes.
->> > +- component-names: Should contain the name of the function block pointed to
->> > +  by the components phandle of the same index.
->>
->> NAK. Group these nodes under a parent node, use of-graph or just don't
->> put this into DT. Don't invent a new way.
->
-> Ok. The reason I haven't grouped all the display nodes together in the
-> first place is that they aren't contiguous in the register space. So
-> instead of:
->
->         ovl@1400c000 {
->                 compatible = "mediatek,mt8173-disp-ovl";
->         };
->         ...
->         ufoe@1401a000 {
->                 compatible = "mediatek,mt8173-disp-ufoe";
->         };
->
->         pwm@1401e000 {
->                 compatible = "mediatek,mt8173-disp-pwm";
->         };
->
->         larb@14021000 {
->                 compatible = "mediatek,mt8173-smi-larb";
->         };
->
->         od@14023000 {
->                 compatible = "mediatek,mt8173-disp-od";
->         };
->
-> We'd have:
->
->         display-subsystem@1400c00 {
->                 compatible = "mediatek,mt8173-disp", "simple-bus";
->
->                 ovl@1400c000 {
->                         compatible = "mediatek,mt8173-disp-ovl";
->                 };
->                 ...
->                 ufoe@1401a000 {
->                         compatible = "mediatek,mt8173-disp-ufoe";
->                 };
->
->                 od@14023000 {
->                         compatible = "mediatek,mt8173-disp-od";
->                 };
->         };
->
->         pwm@1401e000 {
->                 compatible = "mediatek,mt8173-disp-pwm";
->         };
->
->         larb@14021000 {
->                 compatible = "mediatek,mt8173-smi-larb";
->         };
->
-> Note how the display-subsystem node overlaps the larb node. Is that
-> acceptable?
+This is a collection of new Mediatek clocks support and fixes. These
+patches come from Joe [1] and me [2], including clock
+support for subsystems, GPT and some minor fixes.
 
-Given what the graph looks like, perhaps. However, do you really need
-a container node? It only serves to provide a list of nodes (e.g. all
-the children) to include as components. There are other ways to
-determine this list. You could find all nodes just searching
-compatible strings for each component. You just need to bind the drm
-driver to some other DT node. Is there no node you can pick as the
-master component?
+[1] https://patchwork.kernel.org/patch/6777041/
+[2] https://lkml.org/lkml/2015/8/10/194
 
-Rob
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+----------------------------------------------------------------
+
+The following changes since commit 9ffecb10283508260936b96022d4ee43a7798b4c:
+
+  Linux 4.3-rc3 (2015-09-27 07:50:08 -0400)
+
+are available in the git repository at:
+
+  https://github.com/jamesjjliao/linux.git v4.3-rc3-clk
+
+for you to fetch changes up to cdb2bab78aff97101da767b9643fbd692af4623b:
+
+  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS (2015-05-20 15:59:21 +0800)
+
+----------------------------------------------------------------
+
+James Liao (8):
+  clk: mediatek: Removed unused dpi_ck clock from MT8173
+  clk: mediatek: Remove unused code from MT8173.
+  clk: mediatek: Add __initdata and __init for data and functions
+  clk: mediatek: Add fixed clocks support for Mediatek SoC.
+  clk: mediatek: Fix rate and dependency of MT8173 clocks
+  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
+    controllers
+  clk: mediatek: Add subsystem clocks of MT8173
+  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
+
+Joe.C (1):
+  clk: mediatek: add 13mhz clock for MT8173
+
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
+ .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
+ drivers/clk/mediatek/Makefile                      |    2 +-
+ drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
+ drivers/clk/mediatek/clk-gate.c                    |    2 +-
+ drivers/clk/mediatek/clk-mt8173.c                  |  347 +++++++++++++++++++-
+ drivers/clk/mediatek/clk-mtk.c                     |   36 +-
+ drivers/clk/mediatek/clk-mtk.h                     |   24 +-
+ drivers/clk/mediatek/clk-pll.c                     |    7 +-
+ include/dt-bindings/clock/mt8173-clk.h             |  104 +++++-
+ 13 files changed, 705 insertions(+), 34 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
+ create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+
+
