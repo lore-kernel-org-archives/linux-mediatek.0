@@ -1,72 +1,55 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [GIT PULL] clk: mediatek: New clocks support and fixes
-Date: Thu, 1 Oct 2015 13:44:13 +0800
-Message-ID: <1443678253.1714.2.camel@mtksdaap41>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel
+ init
+Date: Thu, 1 Oct 2015 14:58:52 +0800
+Message-ID: <1443682732.1714.11.camel@mtksdaap41>
+References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
+	 <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-mediatek@lists.infradead.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This is a collection of new Mediatek clocks support and fixes. These
-patches come from Joe [1] and me [2], including clock
-support for subsystems, GPT and some minor fixes.
+Hi Daniel,
 
-[1] https://patchwork.kernel.org/patch/6777041/
-[2] https://lkml.org/lkml/2015/8/10/194
+Thanks for your help to explain the patch.
 
-----------------------------------------------------------------
+On Tue, 2015-09-29 at 18:25 +0800, Daniel Kurtz wrote:
+> On Sun, Sep 27, 2015 at 7:25 PM, Matthias Brugger
+> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >> But then we at least need a corresponding change to the binding documentation.
 
-The following changes since commit 9ffecb10283508260936b96022d4ee43a7798b4c:
+I'll send a new patch with changing binding document.
 
-  Linux 4.3-rc3 (2015-09-27 07:50:08 -0400)
+> If the existing bindings are not used anywhere yet (*), it seems like
+> unnecessary overhead to enforce backwards compatibility at this stage.
+> 
+> (*) I don't actually know if this is true, perhaps only Mediatek can
+> answer this.
 
-are available in the git repository at:
+What does the meaning of existing bindings are used anywhere? Do you
+mean this binding is used by other SoCs ?
 
-  https://github.com/jamesjjliao/linux.git v4.3-rc3-clk
+Currently scpsys driver can't be shared between different Mediatek SoCs
+because the power domains are different from each other. So I think it
+should no need to maintain backward compatibility on scpsys's binding.
 
-for you to fetch changes up to cdb2bab78aff97101da767b9643fbd692af4623b:
+> > Apart from that, please send the dtsi part as a seperate patch.
 
-  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS (2015-05-20 15:59:21 +0800)
-
-----------------------------------------------------------------
-
-James Liao (8):
-  clk: mediatek: Removed unused dpi_ck clock from MT8173
-  clk: mediatek: Remove unused code from MT8173.
-  clk: mediatek: Add __initdata and __init for data and functions
-  clk: mediatek: Add fixed clocks support for Mediatek SoC.
-  clk: mediatek: Fix rate and dependency of MT8173 clocks
-  dt-bindings: ARM: Mediatek: Document devicetree bindings for clock
-    controllers
-  clk: mediatek: Add subsystem clocks of MT8173
-  clk: mediatek: Add USB clock support in MT8173 APMIXEDSYS
-
-Joe.C (1):
-  clk: mediatek: add 13mhz clock for MT8173
-
- .../bindings/arm/mediatek/mediatek,imgsys.txt      |   22 ++
- .../bindings/arm/mediatek/mediatek,mmsys.txt       |   22 ++
- .../bindings/arm/mediatek/mediatek,vdecsys.txt     |   22 ++
- .../bindings/arm/mediatek/mediatek,vencltsys.txt   |   22 ++
- .../bindings/arm/mediatek/mediatek,vencsys.txt     |   22 ++
- drivers/clk/mediatek/Makefile                      |    2 +-
- drivers/clk/mediatek/clk-apmixed.c                 |  107 ++++++
- drivers/clk/mediatek/clk-gate.c                    |    2 +-
- drivers/clk/mediatek/clk-mt8173.c                  |  347 +++++++++++++++++++-
- drivers/clk/mediatek/clk-mtk.c                     |   36 +-
- drivers/clk/mediatek/clk-mtk.h                     |   24 +-
- drivers/clk/mediatek/clk-pll.c                     |    7 +-
- include/dt-bindings/clock/mt8173-clk.h             |  104 +++++-
- 13 files changed, 705 insertions(+), 34 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencltsys.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.txt
- create mode 100644 drivers/clk/mediatek/clk-apmixed.c
+OK.
 
 
+Best regards,
+
+James
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
