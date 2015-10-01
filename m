@@ -1,156 +1,67 @@
-From: kbuild test robot <lkp@intel.com>
-Subject: Re: [PATCH v3 2/3] mtd: mtk-nor: mtk serial flash controller driver
-Date: Thu, 1 Oct 2015 16:17:30 +0800
-Message-ID: <201510011630.yO6mbrG3%fengguang.wu@intel.com>
-References: <1443685492-9996-3-git-send-email-bayi.cheng@mediatek.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [RFC v3 0/7] MT8173 DRM support
+Date: Thu, 1 Oct 2015 16:55:36 +0800
+Message-ID: <CAGS+omCnpYxO1A1rAD+x6NURa9YEVBi6qg7sp6K2JWC6wuqaCg@mail.gmail.com>
+References: <1443627006-15319-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1443685492-9996-3-git-send-email-bayi.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: kbuild-all@01.org, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanguardiasur.com.ar, Bayi Cheng <bayi.cheng@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1443627006-15319-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sasha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bayi,
-
-[auto build test results on v4.3-rc3 -- if it's inappropriate base, please ignore]
-
-reproduce:
-        # apt-get install sparse
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF=-D__CHECK_ENDIAN__
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/mtd/spi-nor/mtk-quadspi.c:310:52: sparse: incorrect type in argument 4 (different modifiers)
-   drivers/mtd/spi-nor/mtk-quadspi.c:310:52:    expected unsigned char [usertype] *[assigned] data
-   drivers/mtd/spi-nor/mtk-quadspi.c:310:52:    got unsigned char const [usertype] *[assigned] buf
->> drivers/mtd/spi-nor/mtk-quadspi.c:391:18: sparse: incorrect type in assignment (different base types)
-   drivers/mtd/spi-nor/mtk-quadspi.c:391:18:    expected struct mtd_info *mtd
-   drivers/mtd/spi-nor/mtk-quadspi.c:391:18:    got struct mtd_info <noident>
-   drivers/mtd/spi-nor/mtk-quadspi.c:402:17: sparse: expected structure or union
-   drivers/mtd/spi-nor/mtk-quadspi.c:403:17: sparse: expected structure or union
-   drivers/mtd/spi-nor/mtk-quadspi.c: In function 'mt8173_nor_write':
-   drivers/mtd/spi-nor/mtk-quadspi.c:310:10: warning: passing argument 4 of 'mt8173_nor_write_single_byte' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-             buf);
-             ^
-   drivers/mtd/spi-nor/mtk-quadspi.c:246:12: note: expected 'u8 * {aka unsigned char *}' but argument is of type 'const u_char * {aka const unsigned char *}'
-    static int mt8173_nor_write_single_byte(struct mt8173_nor *mt8173_nor,
-               ^
-   drivers/mtd/spi-nor/mtk-quadspi.c: In function 'mtk_nor_init':
-   drivers/mtd/spi-nor/mtk-quadspi.c:391:11: error: incompatible types when assigning to type 'struct mtd_info *' from type 'struct mtd_info'
-     nor->mtd = *mtd;
-              ^
-   drivers/mtd/spi-nor/mtk-quadspi.c:402:10: error: request for member 'owner' in something not a structure or union
-     nor->mtd.owner = THIS_MODULE;
-             ^
-   drivers/mtd/spi-nor/mtk-quadspi.c:403:10: error: request for member 'name' in something not a structure or union
-     nor->mtd.name = "mtk_nor";
-             ^
-   drivers/mtd/spi-nor/mtk-quadspi.c:410:36: warning: passing argument 1 of 'mtd_device_parse_register' from incompatible pointer type [-Wincompatible-pointer-types]
-     return  mtd_device_parse_register(&nor->mtd, NULL, ppdata, NULL, 0);
-                                       ^
-   In file included from drivers/mtd/spi-nor/mtk-quadspi.c:24:0:
-   include/linux/mtd/mtd.h:372:12: note: expected 'struct mtd_info *' but argument is of type 'struct mtd_info **'
-    extern int mtd_device_parse_register(struct mtd_info *mtd,
-               ^
-
-vim +310 drivers/mtd/spi-nor/mtk-quadspi.c
-
-   304		ret = mt8173_nor_write_buffer_disable(mt8173_nor);
-   305		if (ret < 0)
-   306			dev_warn(mt8173_nor->dev, "write buffer disable failed!\n");
-   307	
-   308		if (len) {
-   309			ret = mt8173_nor_write_single_byte(mt8173_nor, to, (int)len,
- > 310							   buf);
-   311			if (ret < 0)
-   312				dev_warn(mt8173_nor->dev, "write single byte failed!\n");
-   313			(*retlen) += len;
-   314		}
-   315	}
-   316	
-   317	static int mt8173_nor_read_reg(struct spi_nor *nor, u8 opcode, u8 *buf, int len)
-   318	{
-   319		int ret;
-   320		struct mt8173_nor *mt8173_nor = nor->priv;
-   321	
-   322		/* mtk nor controller doesn't supoort SPINOR_OP_RDCR */
-   323		switch (opcode) {
-   324		case SPINOR_OP_RDID:
-   325			/* read JEDEC ID need 4 bytes commands */
-   326			ret = mt8173_nor_set_cmd(mt8173_nor, 0, 32, SPINOR_OP_RDID);
-   327			if (ret < 0)
-   328				return ret;
-   329	
-   330			/* mtk nor flash controller only support 3 bytes IDs */
-   331			buf[2] = readb(mt8173_nor->base + MTK_NOR_SHREG0_REG);
-   332			buf[1] = readb(mt8173_nor->base + MTK_NOR_SHREG1_REG);
-   333			buf[0] = readb(mt8173_nor->base + MTK_NOR_SHREG2_REG);
-   334			break;
-   335		case SPINOR_OP_RDSR:
-   336			ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_RDSR_CMD);
-   337			if (ret < 0)
-   338				return ret;
-   339			*buf = readb(mt8173_nor->base + MTK_NOR_RDSR_REG);
-   340			break;
-   341		default:
-   342			ret = -EINVAL;
-   343			break;
-   344		}
-   345		return ret;
-   346	}
-   347	
-   348	static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
-   349					int len, int write_enable)
-   350	{
-   351		int ret;
-   352		struct mt8173_nor *mt8173_nor = nor->priv;
-   353	
-   354		switch (opcode) {
-   355		case SPINOR_OP_WRSR:
-   356			ret = mt8173_nor_set_para(mt8173_nor, *buf,
-   357						  MTK_NOR_WRSR_CMD);
-   358			break;
-   359		case SPINOR_OP_CHIP_ERASE:
-   360			ret = mt8173_nor_set_para(mt8173_nor, opcode,
-   361						  MTK_NOR_PRG_CMD);
-   362			break;
-   363		case SPINOR_OP_WREN:
-   364			ret = mt8173_nor_set_cmd(mt8173_nor, 0, 8, opcode);
-   365			if (ret)
-   366				dev_warn(mt8173_nor->dev, "set write enable fail!\n");
-   367			break;
-   368		case SPINOR_OP_WRDI:
-   369			ret = mt8173_nor_set_cmd(mt8173_nor, 0, 8, opcode);
-   370			if (ret)
-   371				dev_warn(mt8173_nor->dev, "set write disable fail!\n");
-   372			break;
-   373		default:
-   374			dev_warn(mt8173_nor->dev, "doesn't support cmd %d\n", opcode);
-   375			ret = -EINVAL;
-   376			break;
-   377		}
-   378		return ret;
-   379	}
-   380	
-   381	static int __init mtk_nor_init(struct mt8173_nor *mt8173_nor,
-   382				       struct mtd_part_parser_data *ppdata)
-   383	{
-   384		int ret;
-   385		struct spi_nor *nor;
-   386		struct mtd_info *mtd;
-   387	
-   388		writel(MTK_NOR_ENABLE_SF_CMD, mt8173_nor->base + MTK_NOR_WRPROT_REG);
-   389		nor = &mt8173_nor->nor;
-   390		mtd = &mt8173_nor->mtd;
- > 391		nor->mtd = *mtd;
-   392		nor->dev = mt8173_nor->dev;
-   393		nor->priv = mt8173_nor;
-   394		mtd->priv = nor;
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+SGkgUGhpbGlwcCwKCk9uIFdlZCwgU2VwIDMwLCAyMDE1IGF0IDExOjI5IFBNLCBQaGlsaXBwIFph
+YmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiBIaSwKPgo+IHRoaXMgaXMgYW4g
+dXBkYXRlIHRvIHRoZSBNVDgxNzMgRFJNIHN1cHBvcnQgUkZDLiBUaGVzZSBwYXRjaGVzIGhhdmUK
+PiBhIGJ1aWxkIGRlcGVuZGVuY3kgb24gdHdvIG90aGVyIHBhdGNoZXMgb24gdG9wIG9mIHY0LjMt
+cmMxOgo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvNjkxNDk0MSAoImlvbW11
+OiBJbXBsZW1lbnQgY29tbW9uIElPTU1VCj4gb3BzIGZvciBETUEgbWFwcGluZyIpLCBhbmQKPiBo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzY5Mjg2MjEgKCJtZW1vcnk6IG1lZGlh
+dGVrOiBBZGQgU01JIGRyaXZlciIpLgo+Cj4gSSBoYXZlIGNoYW5nZWQgdGhlIGRldmljZSB0cmVl
+IGJpbmRpbmdzIHRvIGdyb3VwIHRoZSBkaXNwbGF5IGZ1bmN0aW9uIGJsb2Nrcwo+IHVuZGVyIGEg
+ZGlzcGxheS1zdWJzeXN0ZW0gbm9kZS4gSSdtIG5vdCBoYXBweSB3aXRoIHRoaXMgb3JnYW5pc2F0
+aW9uIGFzIHRoZQo+IGRpc3BsYXktc3Vic3lzdGVtIG5vZGUgaXMgbm90IHJlYWxseSBhIHBoeXNp
+Y2FsIGJ1cy4gSSdkIG11Y2ggcHJlZmVyIGNvbm5lY3RpbmcKPiB0aGUgZnVuY3Rpb24gYmxvY2tz
+IHdpdGggYW4gb2YtZ3JhcGgsIGlmIGl0IGlzIGFjY2VwdGFibGUgZm9yIGp1c3QgdGhlIGdyYXBo
+Cj4gdG8gY29zdCA+OCBLaUIgZHRiIHNpemUuCj4KPiBUaGUgYWRkZWQgSERNSSBkcml2ZXIgc3Rp
+bGwgZGlyZWN0bHkgYWNjZXNzZXMgYW4gdW5kb2N1bWVudGVkIHJlZ2lzdGVyIGluIHRoZQo+IGFw
+bWl4ZWRzeXMgKGNsb2NrLWNvbnRyb2xsZXIpIHJlZ2lzdGVyIHNwYWNlIHRvIHNldCBhIGRpdmlk
+ZXIgb2YgdGhlIFRWRFBMTC4KPiBUaGF0IHdpbGwgYmUgZml4ZWQgYXMgc29vbiBhcyBJIHVuZGVy
+c3RhbmQgd2hhdCB0aGlzIGNsb2NrIGlzIGNvbm5lY3RlZCB0by4KPgo+IENoYW5nZXMgc2luY2Ug
+djI6Cj4gIC0gR3JvdXBlZCBESVNQIGZ1bmN0aW9uIGJsb2NrIG5vZGVzIHVuZGVyIHRoZSBkaXNw
+bGF5LXN1YnN5c3RlbSBub2RlCj4gIC0gQWRkZWQgb2YtZ3JhcGggcG9ydHMgdG8gYmluZGluZyBk
+b2N1bWVudGF0aW9uCj4gIC0gRHJvcHBlZCBsZWdhY3kgZnJhbWVidWZmZXIgc3VwcG9ydAo+ICAt
+IERyb3BwZWQgcGxhbmUgenBvcyBwcm9wZXJ0eQo+ICAtIFVwZGF0ZSBwbGFuZS0+ZGlzcF9zaXpl
+IGluIGF0b21pY191cGRhdGUgaW5zdGVhZCBvZiBhdG9taWNfY2hlY2sKPiAgLSBBZGRlZCBhc3lu
+Y2hyb25vdXMgY29tbWl0IHN1cHBvcnQKPiAgLSBTcGxpdCBEU0kgYW5kIE1JUEkgVFggKE1JUEkg
+RC1QSFkpIGRyaXZlcnMKPiAgLSBBZGRlZCBEUEkgZHJpdmVyCj4gIC0gQWRkZWQgSERNSSBkcml2
+ZXIKPiAgLSBBZGRlZCBIRE1JIEREQyBJMkMgbWFzdGVyIGRyaXZlcgo+ICAtIEFkZGVkIEhETUkg
+UEhZIGRyaXZlcgo+Cj4gQ0sgSHUgKDMpOgo+ICAgZHQtYmluZGluZ3M6IGRybS9tZWRpYXRlazog
+QWRkIE1lZGlhdGVrIGRpc3BsYXkgc3Vic3lzdGVtIGR0cyBiaW5kaW5nCj4gICBkcm0vbWVkaWF0
+ZWs6IEFkZCBEUk0gRHJpdmVyIGZvciBNZWRpYXRlayBTb0MgTVQ4MTczLgo+ICAgZHJtL21lZGlh
+dGVrOiBBZGQgRFNJIHN1YiBkcml2ZXIKPgo+IERhbmllbCBLdXJ0eiAoMSk6Cj4gICBkcm0vbWVk
+aWF0ZWs6IEFkZCBIRE1JIHN1cHBvcnQKClRoYW5rcyBmb3IgdGhlIHNob3V0LW91dCwgYnV0IEkg
+cmVhbGx5IGNhbid0IHRha2UgYW55IGNyZWRpdCBmb3IgdGhpcyBwYXRjaCA6LSkKU29tZXdoZXJl
+IGFsb25nIHRoZSBsaWZlIG9mIHRoaXMgcGF0Y2ggaXRzIG93bmVyc2hpcCBjaGFuZ2VkLgpJdCBz
+aG91bGQgcHJvYmFibHkgYmUgSmllIFFpdSBhcyBwZXIgaXRzIFNPQi4KCj4KPiBKaWUgUWl1ICgy
+KToKPiAgIGRybS9tZWRpYXRlazogQWRkIERQSSBzdWIgZHJpdmVyCj4gICBkcm0vbWVkaWF0ZWs6
+IGVuYWJsZSBoZG1pIG91dHB1dCBjb250cm9sIGJpdAo+Cj4gUGhpbGlwcCBaYWJlbCAoMSk6Cj4g
+ICBkdC1iaW5kaW5nczogZHJtL21lZGlhdGVrOiBBZGQgTWVkaWF0ZWsgSERNSSBkdHMgYmluZGlu
+ZwoKQ2FuIHlvdSBhbHNvIGluY2x1ZGUgdGhlIGFjdHVhbCBtdDgxNzMuZHRzaSAoJiBtdDgxNzMt
+ZXZiLmR0cykgY2hhbmdlcwp0aGF0IHVzZSB0aGlzIGJpbmRpbmcgbmV4dCB0aW1lPwpUaGlzIHdp
+bGwgbWFrZSBpdCBwb3NzaWJsZSB0byBhY3R1YWxseSBidWlsZCBhbmQgdGVzdCB0aGUgZHJpdmVy
+LgoKVGhhbmtzLAotRGFuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
