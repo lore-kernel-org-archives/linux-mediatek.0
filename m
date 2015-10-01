@@ -1,98 +1,61 @@
-From: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v9 4/5] xhci: mediatek: support MTK xHCI host controller
-Date: Thu, 1 Oct 2015 12:44:41 +0100
-Message-ID: <560D1CA9.1050009@linaro.org>
-References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
- <1443495698-32233-5-git-send-email-chunfeng.yun@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC v2 1/4] dt-bindings: drm/mediatek: Add Mediatek display
+ subsystem dts binding
+Date: Thu, 1 Oct 2015 07:58:42 -0500
+Message-ID: <CAL_Jsq+aBxjvPyAR3nUtXny6JwgcopSCENrBaGzo7OKXFA1cvg@mail.gmail.com>
+References: <1442592722-29004-1-git-send-email-p.zabel@pengutronix.de>
+ <1442592722-29004-2-git-send-email-p.zabel@pengutronix.de>
+ <CAL_JsqLZQXMoKxGZ6c56e6d1UuLiJKzVB=sH15ihTvwpOgSU8Q@mail.gmail.com>
+ <1442823067.3277.35.camel@pengutronix.de>
+ <CAL_JsqLcraiS+Yq48-m-xTksohU5wPSPrjtjV2GLzDTSDcUCUA@mail.gmail.com>
+ <1443689957.3272.18.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1443495698-32233-5-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1443689957.3272.18.camel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, "kernel@pengutronix.de" <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 29/09/15 04:01, Chunfeng Yun wrote:
-> There some vendor quirks for MTK xhci host controller:
-> 1. It defines some extra SW scheduling parameters for HW
->    to minimize the scheduling effort for synchronous and
->    interrupt endpoints. The parameters are put into reseved
->    DWs of slot context and endpoint context.
-> 2. Its IMODI unit for Interrupter Moderation register is
->    8 times as much as that defined in xHCI spec.
-> 3. Its TDS in  Normal TRB defines a number of packets that
->    remains to be transferred for a TD after processing all
->    Max packets in all previous TRBs.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-I've done some basic soak tests, both with a directly attached USB3 HDD 
-and, given the extra code to manage isochronous xfer, also with a hub, 
-disc and two audio interfaces.
-
-Tested-by: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-
-
-> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-> index 57f40a1..243f696 100644
-> --- a/drivers/usb/host/xhci-ring.c
-> +++ b/drivers/usb/host/xhci-ring.c
-> @@ -68,6 +68,7 @@
->   #include <linux/slab.h>
->   #include "xhci.h"
->   #include "xhci-trace.h"
-> +#include "xhci-mtk.h"
->
->   /*
->    * Returns zero if the TRB isn't in this segment, otherwise it returns the DMA
-> @@ -3044,18 +3045,27 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
->   			      struct urb *urb, unsigned int num_trbs_left)
->   {
->   	u32 maxp, total_packet_count;
-> +	u32 skip_current_trb = 0;
-
-A bit of a nitpick but why do we need skip_current_trb? Testing 
-(xhci->quirks & XHCI_MTK_HOST) twice would make what the code does, and 
-why, more obvious.
-
-Anyhow with that looked at, and the caveat that I'm not much of USB 
-expert, you're welcome to add my Reviewed-by: to v10.
-
->
-> -	if (xhci->hci_version < 0x100)
-> -		return ((td_total_len - transferred) >> 10);
-> -
-> -	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-> -	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
-> +	if (xhci->hci_version < 0x100) {
-> +		/* for MTK xHCI, TD size doesn't include this TRB */
-> +		if (xhci->quirks & XHCI_MTK_HOST)
-> +			skip_current_trb = 1;
-> +		else
-> +			return ((td_total_len - transferred) >> 10);
-> +	}
->
->   	/* One TRB with a zero-length data packet. */
->   	if (num_trbs_left == 0 || (transferred == 0 && trb_buff_len == 0) ||
->   	    trb_buff_len == td_total_len)
->   		return 0;
->
-> +	if (skip_current_trb)
-> +		trb_buff_len = 0;
-> +
-> +	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-> +	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
-> +
->   	/* Queueing functions don't count the current TRB into transferred */
->   	return (total_packet_count - ((transferred + trb_buff_len) / maxp));
->   }
-
-
-Daniel.
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+T24gVGh1LCBPY3QgMSwgMjAxNSBhdCAzOjU5IEFNLCBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBl
+bmd1dHJvbml4LmRlPiB3cm90ZToKPiBBbSBNaXR0d29jaCwgZGVuIDMwLjA5LjIwMTUsIDEyOjEz
+IC0wNTAwIHNjaHJpZWIgUm9iIEhlcnJpbmc6Cj4+IE9uIE1vbiwgU2VwIDIxLCAyMDE1IGF0IDM6
+MTEgQU0sIFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+PiA+
+IE5vdGUgaG93IHRoZSBkaXNwbGF5LXN1YnN5c3RlbSBub2RlIG92ZXJsYXBzIHRoZSBsYXJiIG5v
+ZGUuIElzIHRoYXQKPj4gPiBhY2NlcHRhYmxlPwo+Pgo+PiBHaXZlbiB3aGF0IHRoZSBncmFwaCBs
+b29rcyBsaWtlLCBwZXJoYXBzLiBIb3dldmVyLCBkbyB5b3UgcmVhbGx5IG5lZWQKPj4gYSBjb250
+YWluZXIgbm9kZT8gSXQgb25seSBzZXJ2ZXMgdG8gcHJvdmlkZSBhIGxpc3Qgb2Ygbm9kZXMgKGUu
+Zy4gYWxsCj4+IHRoZSBjaGlsZHJlbikgdG8gaW5jbHVkZSBhcyBjb21wb25lbnRzLiBUaGVyZSBh
+cmUgb3RoZXIgd2F5cyB0bwo+PiBkZXRlcm1pbmUgdGhpcyBsaXN0LiBZb3UgY291bGQgZmluZCBh
+bGwgbm9kZXMganVzdCBzZWFyY2hpbmcKPj4gY29tcGF0aWJsZSBzdHJpbmdzIGZvciBlYWNoIGNv
+bXBvbmVudC4gWW91IGp1c3QgbmVlZCB0byBiaW5kIHRoZSBkcm0KPj4gZHJpdmVyIHRvIHNvbWUg
+b3RoZXIgRFQgbm9kZS4gSXMgdGhlcmUgbm8gbm9kZSB5b3UgY2FuIHBpY2sgYXMgdGhlCj4+IG1h
+c3RlciBjb21wb25lbnQ/Cj4KPiBUaGVyZSBpcyB0aGUgbW1zeXMgY2xvY2stY29udHJvbGxlciBu
+b2RlIGF0IHRoZSB0b3Agb2YgdGhlIE1NU1lTIGFkZHJlc3MKPiBzcGFjZSAoMHgxNDAwMDAwMC0w
+eDE0ZmZmZmZmKToKPgo+ICAgICAgICAgbW1zeXM6IGNsb2NrLWNvbnRyb2xsZXJAMTQwMDAwMDAg
+ewo+ICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1tbXN5cyIs
+ICJzeXNjb24iOwo+ICAgICAgICAgICAgICAgICByZWcgPSA8MCAweDE0MDAwMDAwIDAgMHgxMDAw
+PjsKPiAgICAgICAgICAgICAgICAgI2Nsb2NrLWNlbGxzID0gPDE+Owo+ICAgICAgICAgfTsKPgo+
+IEl0cyByZWdpc3RlciBzcGFjZSBhbHNvIGNvbnRhaW5zIHRoZSBNTVNZU19DT05GSUcgcmVnaW9u
+IHRoYXQgY29udHJvbHMKPiB0aGUgbXVsdGlwbGV4ZXJzIGJldHdlZW4gdGhlIGRpc3BsYXkgZnVu
+Y3Rpb24gYmxvY2tzLCBzbyB0aGF0IHdvdWxkIGJlIGEKPiBnb29kIGNhbmRpZGF0ZS4KPiBObyBk
+cml2ZXIgYmluZHMgdG8gdGhpcyBub2RlIHlldCwgdGhlIGNsb2NrcyBhcmUgcmVnaXN0ZXJlZCB3
+aXRoCj4gQ0xLX09GX0RFQ0xBUkUuCj4KPiBJJ2xsIHRyeSB0byBiaW5kIHRvIHRoaXMgbm9kZSBh
+bmQgaGF2ZSB0aGUgZHJpdmVyIGZpbmQgc2libGluZyBub2Rlcwo+IHVzaW5nIHRoZWlyIGNvbXBh
+dGlibGUgc3RyaW5ncy4KClRoYXQgZG9lc24ndCBzZWVtIGxpa2UgYSBnb29kIGNob2ljZSBzaW5j
+ZSB0aGVyZSBhcmUgb3RoZXIgZnVuY3Rpb25zCmluIHRoZSBibG9jay4gSSB3YXMgdGhpbmtpbmcg
+b25lIG9mIHRoZSBkaXNwbGF5IHJlbGF0ZWQgYmxvY2tzIGxpa2UKd2hhdGV2ZXIgYmxvY2sgcHJv
+dmlkZXMgdGhlIG1haW4gY3J0YyBmdW5jdGlvbnMuCgpSb2IKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2
+ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
