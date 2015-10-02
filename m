@@ -1,119 +1,101 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [RFC v2 1/4] dt-bindings: drm/mediatek: Add Mediatek display
- subsystem dts binding
-Date: Fri, 02 Oct 2015 09:40:28 +0200
-Message-ID: <1443771628.3445.33.camel@pengutronix.de>
-References: <1442592722-29004-1-git-send-email-p.zabel@pengutronix.de>
-	 <1442592722-29004-2-git-send-email-p.zabel@pengutronix.de>
-	 <CAL_JsqLZQXMoKxGZ6c56e6d1UuLiJKzVB=sH15ihTvwpOgSU8Q@mail.gmail.com>
-	 <1442823067.3277.35.camel@pengutronix.de>
-	 <CAL_JsqLcraiS+Yq48-m-xTksohU5wPSPrjtjV2GLzDTSDcUCUA@mail.gmail.com>
-	 <1443689957.3272.18.camel@pengutronix.de>
-	 <CAL_Jsq+aBxjvPyAR3nUtXny6JwgcopSCENrBaGzo7OKXFA1cvg@mail.gmail.com>
-	 <CAGS+omAs4Jvu7tKEMoNL9BSMQMwW=9UHzXW8_jS=5MbajaJzOg@mail.gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
+Date: Fri, 2 Oct 2015 17:25:29 +0800
+Message-ID: <CAGS+omBQLVGeWrNoD+8L_J0C9DjzkXO_cfph2tQgMGiPBJq2vw@mail.gmail.com>
+References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
+ <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
+ <1443604022.3185.17.camel@pengutronix.de> <1443683750.1714.25.camel@mtksdaap41>
+ <CAGS+omCpWqtKPKoyjFb=q4BxmfUGGsfvQGEZas8g8VLZKPtKbQ@mail.gmail.com>
+ <1443691590.1714.73.camel@mtksdaap41> <CAGS+omCm2pKczooGkMf75HjQL=oF7Ufo6DsRCvvikt0QA1jx-g@mail.gmail.com>
+ <1443754838.1714.94.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAGS+omAs4Jvu7tKEMoNL9BSMQMwW=9UHzXW8_jS=5MbajaJzOg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org" <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1443754838.1714.94.camel@mtksdaap41>
+Sender: linux-clk-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Lucas Stach <l.stach@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-pm@vger.kernel.org, rjw@sisk.pl
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Donnerstag, den 01.10.2015, 22:29 +0800 schrieb Daniel Kurtz:
-> On Thu, Oct 1, 2015 at 8:58 PM, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > I was thinking one of the display related blocks like
-> > whatever block provides the main crtc functions.
+On Fri, Oct 2, 2015 at 11:00 AM, James Liao <jamesjj.liao@mediatek.com> wrote:
+> Hi Daniel,
 >
-> The two "OVL" nodes correspond to the "crtc" functions of the two
-> display pipes in this SoC, we would setup the display-subsystem node
-> like this:
+> On Thu, 2015-10-01 at 18:08 +0800, Daniel Kurtz wrote:
+>> I see two cases where "a power domain is a consumer of a clock":
+>>   (a) the clock is needed to access the power domain control
+>> registers.  The clock must actually be in another power domain, since
+>> otherwise you could never turn *on* the power domain in question.
+>>   (b) the clock is needed to talk to the power domain that is about to
+>> turn off, or that was just turned on - these clocks are usually used
+>> to control some kind of bus arbitration, etc.  In this case, the
+>> clocks are only accessed when the power domain is on.
+>>
+>> I would argue that in both cases, the clock should in theory should
+>> only be enabled/disabled by the power on/off routine for the duration
+>> of time that is needed, and that it should not be "left enabled" by
+>> the power domain on/off function...  I can see how this might be a
+>> useful optimization - but it also seems like a way to burn extra power
+>> by leaving on a clock that is not necessarily being used.
+>>
+>> But - perhaps I am over thinking this, and it is standard practice to
+>> bundle power domains with the clocks that service components in the
+>> power domain.
 >
-> display-subsystem {
->   compatible = "mediatek,display-subsystem";
-
-Yes, the problem with the ovl nodes is that there are two equivalent
-ones. Having two equivalent ipu nodes on i.MX6 was the reason to
-introduce the display-subsystem node in the first place, but I'd very
-much prefer to avoid it, if possible.
-
-[...]
-> And, any node that needs to poke around in the mmsys_config area, like
-> an ovl, could access it using a phandle <&mmsys> to the common
-> "mediatek,mt8173-mmsys" device, like this:
-> 
-> ovl0: ovl@1400c000 {
->        compatible = "mediatek,mt8173-ovl";
->        reg = <0 0x1400c000 0 0x1000>;
->        interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
->        clocks = <&mmsys CLK_MM_DISP_OVL0>;
->        iommus = <&iommu M4U_LARB0_ID M4U_PORT_DISP_OVL0>;
->        mediatek,mmsys = <&mmsys>;
->        status = "disabled";
-> };
-
-I think the ovl node has no business linking to mmsys_config.
-It's the drm driver code that sets up the pipeline, including the crtc
--> encoder connections
-
-> One idea to reduce the size of the of_graph would be to just model the
-> entrance/exit points from the MM subsystem in dt.  So, instead of:
->   ovl0 -> color0 -> aal -> od -> ufoe -> dsi0 -> dsi-edp-bridge
->   ovl1 -> color1 -> gamma0 -> dpi0 -> hdmi
-> 
-> We can do something like this:
->   ovl0 -> dsi0 -> dsi-edp-bridge
->   ovl1 -> dpi0 -> hdmi
-> 
-> But ... this might be too limiting for some applications.
-
-I'm already worried about having left out the DISP_PATH0 and DISP_PATH1
-multiplexers from my DT graph example. There are so many ways to do this
-slightly wrong and then having to live with the stable bindings, that
-I'd rather not put an approximation of the real hardware into the device
-tree.
-Now that I've heard it is acceptable for one driver to look for its
-components by their compatible value, I'm leaning towards not describing
-the graph in the DT.
-
-> So, I think we should just live with the big graph.
-> I would, however, recommend that you move the graph to its own
-> mt8173-display-graph.dtsi file which would be #included into a board
-> specific .dts file.
-
-Separating the graph out into its own include file would help to make
-the main dtsi more readable, though.
-
-> If you let the board .dts include the graph, then we can possibly
-> shrink the resulting board specific device tree -
-> At first we would make the full graph in one .dtsi as above
-> "mt8173-display-graph.dtsi".
-> This is the full reference graph that will always work.
+> Yes, you are right. Power domain on/off operations need clocks to get
+> status of the subsystem. Keeping clocks on during power domain on is an
+> optimization.
 >
-> Then, if a particular board used a fixed configuration, the system
-> integrator could create a smaller graph with just the graph nodes that
-> they care about.
-> 
-> For example, if mt8173-evb only supports a single HDMI output, then
-> perhaps you would just
-> set up the endpoints for this single fixed function display pipe in
-> mt8173-evb-display-graph.dtsi:
-[...]
+> But to model a clock controller as a power domain consumer, or say we
+> need to control power domain before clock on/off, is not a good practice
+> because we always consider clock operations should be light weight.
+> Power domains should be controlled explicitly by subsystem drivers,
+> instead of hiding behind clock controls.
+>
+>> Or, alternatively, just prepare venc_sel once during init, for each
+>> clock controller that needs it, when configuring the clock controller
+>> node (for example, in mtk_vencsys_init()). This is similar to how we
+>> set up 'critical clocks'.
+>> By just preparing the clock, you tell the common clock core:
+>>  "my clock controller will need this clock later; please make sure
+>> that it can be enabled/disabled later during atomic context."
+>
+> In current implementation, PLLs will be turned on in clk_prepare(). So
+> if a clock is always prepared, its parent PLL will be kept on even if
+> the clock is not enabled. It consumes extra power, so we don't prefer
+> this kind of solution.
 
-Especially for development boards I'd rather keep all possibilites.
-Sure, if nothing is connected to the DSIs, disable them and drop thier
-possible connections, but I'd still keep ovl0 for example, because it
-could be connected to hdmi, even though the driver doesn't support it.
-I realize this was probably just an example, so yes, I think this is a
-valid method of reducing device tree size for a given board if
-necessary.
-
-regards
-Philipp
+Actually, I should have proposed adding prepare / unprepare callbacks
+to mtk_clk_gate_ops in which we prepare_enable/disable_unprepare
+venc_sel (& mm_sel).
+This should correctly track all of the clk reference counting needed
+to access the venc clock control registers.
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+However, this would not actually solve the issue that this patch is
+trying to fix, since nobody would have called the
+prepare_clk(venc_cke0) before clk_disable_unused_subtree(venc_cke0).
+Bummer.
+
+I think the crux of the original issue is that the mediatek/clk-gate.c
+is_enabled() callbacks may be called at a point in time when venc_sel
+is disabled but VENC PD is enabled.
+So, perhaps an easier, but still a little hacky way out is to keep the
+clk & PD problems separate, and just check __clk_is_enabled(venc_sel)
+before reading the venc clk status register.
+
+WDYT?
+
+By the way, I'm not really opposed to your current implementation
+either, I was just helping Matthias & Lucas understand in enough
+detail that they can help review.
+
+-Dan
+
+>
+>
+> Best regards,
+>
+> James
+>
+>
