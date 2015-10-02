@@ -1,79 +1,75 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for mt8135
-Date: Fri, 2 Oct 2015 23:19:40 +0800
-Message-ID: <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
-References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
+Date: Fri, 2 Oct 2015 11:11:42 -0700
+Message-ID: <20151002181142.GN12338@codeaurora.org>
+References: <1442915603.24403.2.camel@mtksdaap41>
+ <CAGS+omDcsFXZ2AkS9tma_q+MRnsdDmit-nRXLWAcowRTNgXC=w@mail.gmail.com>
+ <20151001192929.GJ19319@codeaurora.org>
+ <1443749391.7213.10.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1443749391.7213.10.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, linux-arm-kernel@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, James Liao <jamesjj.liao@mediatek.com>, Mike Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add arch timer node to enable arch-timer support. MT8135 firmware
-doesn't correctly setup arch-timer frequency and CNTVOFF, add
-properties to workaround this.
+On 10/02, Eddie Huang wrote:
+> On Thu, 2015-10-01 at 12:29 -0700, Stephen Boyd wrote:
+> > On 09/30, Daniel Kurtz wrote:
+> > > Hi Mike,
+> > > 
+> > > On Tue, Sep 22, 2015 at 5:53 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
+> > > > This is a collection of new Mediatek clocks support and fixes. These
+> > > > patches come from Joe [1], Pi-cheng [2] and me [3], including clock
+> > > > support for subsystems, CPU, GPT and some minor fixes.
+> > > >
+> > > > [1] https://patchwork.kernel.org/patch/6777041/
+> > > > [2] https://patchwork.kernel.org/patch/7174721/
+> > > > [3] https://lkml.org/lkml/2015/8/10/194
+> > > >
+> > > > ----------------------------------------------------------------
+> > > >
+> > > > The following changes since commit 1f93e4a96c9109378204c147b3eec0d0e8100fde:
+> > > >
+> > > >   Linux 4.3-rc2 (2015-09-20 14:32:34 -0700)
+> > > >
+> > > > are available in the git repository at:
+> > > >
+> > > >   https://github.com/jamesjjliao/linux.git v4.3-rc2-clk
+> > > >
+> > > > for you to fetch changes up to 74219612bb7e25e64409171acada05d9949228f2:
+> > > >
+> > > >   arm64: dts: mt8173: Add subsystem clock controller device nodes (2015-07-09 12:58:14 +0800)
+> > > >
+> > > 
+> > > Will this be pulled for 4.3, or is it now destined for 4.4?
+> > > (sorry if you are receiving a duplicate email, the previous had HTML
+> > > and was rejected by the lists)
+> > 
+> > This won't make v4.3. I see that there's a third pull request
+> > now, with slightly different contents. Why?
+> > 
+> 
+> Sorry not explain in pull request mail. Third pull request remove two
+> patches:
+> 
+> 1. arm64: dts: mt8173: Add subsystem clock controller device nodes
+>    I think this should pull by Matthias, so I suggest James remove this
+> patch.
+> 
+> 2. clk: mediatek: Export CPU mux clocks for CPU frequency control
+>    Mike said this patch is ok before
+> (http://lists.infradead.org/pipermail/linux-arm-kernel/2015-August/364886.html) 
+> But he told Pi-cheng recently he is working on coordinate clock rate, he
+> suggest Pi-cheng change this patch, other patches are ok. So James
+> remove this patch.
+> Thanks
 
-This also set cpu enable-method to enable SMP.
+Ok. Thanks!
 
-Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
----
- arch/arm/boot/dts/mt8135.dtsi | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
-index 08371db..cb99b02 100644
---- a/arch/arm/boot/dts/mt8135.dtsi
-+++ b/arch/arm/boot/dts/mt8135.dtsi
-@@ -46,6 +46,7 @@
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		enable-method = "mediatek,mt81xx-tz-smp";
- 
- 		cpu0: cpu@0 {
- 			device_type = "cpu";
-@@ -72,6 +73,17 @@
- 		};
- 	};
- 
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		trustzone-bootinfo@80002000 {
-+			compatible = "mediatek,trustzone-bootinfo";
-+			reg = <0 0x80002000 0 0x1000>;
-+		};
-+	};
-+
- 	clocks {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -97,6 +109,21 @@
- 		};
- 	};
- 
-+	timer {
-+		compatible = "arm,armv7-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
-+					  IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
-+					  IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
-+					  IRQ_TYPE_LEVEL_LOW)>,
-+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
-+					  IRQ_TYPE_LEVEL_LOW)>;
-+		clock-frequency = <13000000>;
-+		arm,cpu-registers-not-fw-configured;
-+	};
-+
- 	soc {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
 -- 
-1.9.1
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
