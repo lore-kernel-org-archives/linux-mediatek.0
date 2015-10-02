@@ -1,71 +1,75 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [GIT PULL] clk: mediatek: New clocks support and fixes
-Date: Fri, 2 Oct 2015 09:29:51 +0800
-Message-ID: <1443749391.7213.10.camel@mtksdaap41>
-References: <1442915603.24403.2.camel@mtksdaap41>
-	 <CAGS+omDcsFXZ2AkS9tma_q+MRnsdDmit-nRXLWAcowRTNgXC=w@mail.gmail.com>
-	 <20151001192929.GJ19319@codeaurora.org>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel
+ init
+Date: Fri, 2 Oct 2015 11:00:38 +0800
+Message-ID: <1443754838.1714.94.camel@mtksdaap41>
+References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1443169573.3135.9.camel@pengutronix.de> <5607D224.4050801@gmail.com>
+	 <CAGS+omCXMRf4bxWancSJSq2a1pc38TYYY46Os9ASWWCRp95_ig@mail.gmail.com>
+	 <1443604022.3185.17.camel@pengutronix.de>
+	 <1443683750.1714.25.camel@mtksdaap41>
+	 <CAGS+omCpWqtKPKoyjFb=q4BxmfUGGsfvQGEZas8g8VLZKPtKbQ@mail.gmail.com>
+	 <1443691590.1714.73.camel@mtksdaap41>
+	 <CAGS+omCm2pKczooGkMf75HjQL=oF7Ufo6DsRCvvikt0QA1jx-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20151001192929.GJ19319@codeaurora.org>
+In-Reply-To: <CAGS+omCm2pKczooGkMf75HjQL=oF7Ufo6DsRCvvikt0QA1jx-g@mail.gmail.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, James Liao <jamesjj.liao@mediatek.com>, Mike Turquette <mturquette@baylibre.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, linux-clk@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Lucas Stach <l.stach@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Mike Turquette <mturquette@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, linux-pm@vger.kernel.org, rjw@sisk.pl
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-10-01 at 12:29 -0700, Stephen Boyd wrote:
-> On 09/30, Daniel Kurtz wrote:
-> > Hi Mike,
-> > 
-> > On Tue, Sep 22, 2015 at 5:53 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
-> > > This is a collection of new Mediatek clocks support and fixes. These
-> > > patches come from Joe [1], Pi-cheng [2] and me [3], including clock
-> > > support for subsystems, CPU, GPT and some minor fixes.
-> > >
-> > > [1] https://patchwork.kernel.org/patch/6777041/
-> > > [2] https://patchwork.kernel.org/patch/7174721/
-> > > [3] https://lkml.org/lkml/2015/8/10/194
-> > >
-> > > ----------------------------------------------------------------
-> > >
-> > > The following changes since commit 1f93e4a96c9109378204c147b3eec0d0e8100fde:
-> > >
-> > >   Linux 4.3-rc2 (2015-09-20 14:32:34 -0700)
-> > >
-> > > are available in the git repository at:
-> > >
-> > >   https://github.com/jamesjjliao/linux.git v4.3-rc2-clk
-> > >
-> > > for you to fetch changes up to 74219612bb7e25e64409171acada05d9949228f2:
-> > >
-> > >   arm64: dts: mt8173: Add subsystem clock controller device nodes (2015-07-09 12:58:14 +0800)
-> > >
-> > 
-> > Will this be pulled for 4.3, or is it now destined for 4.4?
-> > (sorry if you are receiving a duplicate email, the previous had HTML
-> > and was rejected by the lists)
+Hi Daniel,
+
+On Thu, 2015-10-01 at 18:08 +0800, Daniel Kurtz wrote:
+> I see two cases where "a power domain is a consumer of a clock":
+>   (a) the clock is needed to access the power domain control
+> registers.  The clock must actually be in another power domain, since
+> otherwise you could never turn *on* the power domain in question.
+>   (b) the clock is needed to talk to the power domain that is about to
+> turn off, or that was just turned on - these clocks are usually used
+> to control some kind of bus arbitration, etc.  In this case, the
+> clocks are only accessed when the power domain is on.
 > 
-> This won't make v4.3. I see that there's a third pull request
-> now, with slightly different contents. Why?
+> I would argue that in both cases, the clock should in theory should
+> only be enabled/disabled by the power on/off routine for the duration
+> of time that is needed, and that it should not be "left enabled" by
+> the power domain on/off function...  I can see how this might be a
+> useful optimization - but it also seems like a way to burn extra power
+> by leaving on a clock that is not necessarily being used.
 > 
+> But - perhaps I am over thinking this, and it is standard practice to
+> bundle power domains with the clocks that service components in the
+> power domain.
 
-Sorry not explain in pull request mail. Third pull request remove two
-patches:
+Yes, you are right. Power domain on/off operations need clocks to get
+status of the subsystem. Keeping clocks on during power domain on is an
+optimization.
 
-1. arm64: dts: mt8173: Add subsystem clock controller device nodes
-   I think this should pull by Matthias, so I suggest James remove this
-patch.
+But to model a clock controller as a power domain consumer, or say we
+need to control power domain before clock on/off, is not a good practice
+because we always consider clock operations should be light weight.
+Power domains should be controlled explicitly by subsystem drivers,
+instead of hiding behind clock controls.
 
-2. clk: mediatek: Export CPU mux clocks for CPU frequency control
-   Mike said this patch is ok before
-(http://lists.infradead.org/pipermail/linux-arm-kernel/2015-August/364886.html) 
-But he told Pi-cheng recently he is working on coordinate clock rate, he
-suggest Pi-cheng change this patch, other patches are ok. So James
-remove this patch.
+> Or, alternatively, just prepare venc_sel once during init, for each
+> clock controller that needs it, when configuring the clock controller
+> node (for example, in mtk_vencsys_init()). This is similar to how we
+> set up 'critical clocks'.
+> By just preparing the clock, you tell the common clock core:
+>  "my clock controller will need this clock later; please make sure
+> that it can be enabled/disabled later during atomic context."
 
-Eddie
-Thanks
+In current implementation, PLLs will be turned on in clk_prepare(). So
+if a clock is always prepared, its parent PLL will be kept on even if
+the clock is not enabled. It consumes extra power, so we don't prefer
+this kind of solution.
+
+
+Best regards,
+
+James
 
 
