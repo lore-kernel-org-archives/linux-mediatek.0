@@ -1,86 +1,57 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: [PATCH] arm64: dts: mt8173: add MT8173 display PWM driver support node
-Date: Tue, 6 Oct 2015 15:40:43 +0800
-Message-ID: <1444117243-28391-1-git-send-email-yh.huang@mediatek.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: [PATCH] i2c: mediatek: add i2c resume support
+Date: Tue, 6 Oct 2015 17:22:56 +0800
+Message-ID: <1444123376-24448-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, YH Huang <yh.huang@mediatek.com>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Liguo Zhang <liguo.zhang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Xudong Chen <xudong.chen@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add display PWM node in mt8173-evb.dts and mt8173.dtsi.
+From: Liguo Zhang <liguo.zhang@mediatek.com>
 
-Signed-off-by: YH Huang <yh.huang@mediatek.com>
+mt65xx i2c controller initial setting will be cleared after system suspend,
+so we should init mt65xx i2c controller again when system resume.
+
+Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   13 +++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    |   22 ++++++++++++++++++++++
- 2 files changed, 35 insertions(+)
+ drivers/i2c/busses/i2c-mt65xx.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 811cb76..1b3fabd 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -92,6 +92,13 @@
- };
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index c02e6c0..9b86716 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -728,11 +728,27 @@ static int mtk_i2c_remove(struct platform_device *pdev)
+ 	return 0;
+ }
  
- &pio {
-+	disp_pwm0_pins: disp_pwm0_pins {
-+		pins1 {
-+			pinmux = <MT8173_PIN_87_DISP_PWM0__FUNC_DISP_PWM0>;
-+			output-low;
-+		};
-+	};
++#ifdef CONFIG_PM_SLEEP
++static int mtk_i2c_resume(struct device *dev)
++{
++	struct mtk_i2c *i2c = dev_get_drvdata(dev);
 +
- 	mmc0_pins_default: mmc0default {
- 		pins_cmd_dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
-@@ -190,6 +197,12 @@
- 	};
- };
- 
-+&pwm0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&disp_pwm0_pins>;
-+	status = "okay";
++	mtk_i2c_init_hw(i2c);
++
++	return 0;
++}
++#endif
++
++static const struct dev_pm_ops mtk_i2c_pm = {
++	SET_SYSTEM_SLEEP_PM_OPS(NULL, mtk_i2c_resume)
 +};
 +
- &pwrap {
- 	pmic: mt6397 {
- 		compatible = "mediatek,mt6397";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 4bce167..fd01134 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -500,6 +500,28 @@
- 			clock-names = "source", "hclk";
- 			status = "disabled";
- 		};
-+
-+		pwm0: pwm@1401e000 {
-+			compatible = "mediatek,mt8173-disp-pwm",
-+				     "mediatek,mt6595-disp-pwm";
-+			reg = <0 0x1401e000 0 0x1000>;
-+			#pwm-cells = <2>;
-+			clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-+				 <&mmsys CLK_MM_DISP_PWM0MM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
-+
-+		pwm1: pwm@1401f000 {
-+			compatible = "mediatek,mt8173-disp-pwm",
-+				     "mediatek,mt6595-disp-pwm";
-+			reg = <0 0x1401f000 0 0x1000>;
-+			#pwm-cells = <2>;
-+			clocks = <&mmsys CLK_MM_DISP_PWM126M>,
-+				 <&mmsys CLK_MM_DISP_PWM1MM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
-+		};
- 	};
+ static struct platform_driver mtk_i2c_driver = {
+ 	.probe = mtk_i2c_probe,
+ 	.remove = mtk_i2c_remove,
+ 	.driver = {
+ 		.name = I2C_DRV_NAME,
++		.pm = &mtk_i2c_pm,
+ 		.of_match_table = of_match_ptr(mtk_i2c_of_match),
+ 	},
  };
- 
 -- 
-1.7.9.5
+1.9.1
