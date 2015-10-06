@@ -1,38 +1,86 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
-Date: Tue, 6 Oct 2015 09:57:50 +0800
-Message-ID: <CAGS+omD0FSefd9vF0iUvFRXK1+m7YPEANpxngTibGwgR_rTNvg@mail.gmail.com>
-References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: [PATCH] arm64: dts: mt8173: add MT8173 display PWM driver support node
+Date: Tue, 6 Oct 2015 15:40:43 +0800
+Message-ID: <1444117243-28391-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1443162717-64831-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, YH Huang <yh.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 25, 2015 at 2:31 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> In kernel late init, it turns off all unused clocks, which
-> needs to access subsystem registers such as VENC and VENC_LT.
->
-> Accessing MT8173 VENC registers needs two top clocks, mm_sel and
-> venc_sel. Accessing VENC_LT registers needs mm_sel and venclt_sel.
-> So we need to keep these clocks on before accessing their registers.
->
-> This patch keeps venc_sel / venclt_sel clock on when
-> VENC / VENC_LT's power is on, to prevent system hang up while
-> accessing its registeres.
->
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Add display PWM node in mt8173-evb.dts and mt8173.dtsi.
 
-After the discussions with James here on the list, I'm happy with this fix.
-Compared to any proposed alternative, this patch seems just as
-effective and is also simpler and more maintainable and extensible (if
-other clocks/power domains need the same treatment).
+Signed-off-by: YH Huang <yh.huang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   13 +++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi    |   22 ++++++++++++++++++++++
+ 2 files changed, 35 insertions(+)
 
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+index 811cb76..1b3fabd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+@@ -92,6 +92,13 @@
+ };
+ 
+ &pio {
++	disp_pwm0_pins: disp_pwm0_pins {
++		pins1 {
++			pinmux = <MT8173_PIN_87_DISP_PWM0__FUNC_DISP_PWM0>;
++			output-low;
++		};
++	};
++
+ 	mmc0_pins_default: mmc0default {
+ 		pins_cmd_dat {
+ 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
+@@ -190,6 +197,12 @@
+ 	};
+ };
+ 
++&pwm0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&disp_pwm0_pins>;
++	status = "okay";
++};
++
+ &pwrap {
+ 	pmic: mt6397 {
+ 		compatible = "mediatek,mt6397";
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 4bce167..fd01134 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -500,6 +500,28 @@
+ 			clock-names = "source", "hclk";
+ 			status = "disabled";
+ 		};
++
++		pwm0: pwm@1401e000 {
++			compatible = "mediatek,mt8173-disp-pwm",
++				     "mediatek,mt6595-disp-pwm";
++			reg = <0 0x1401e000 0 0x1000>;
++			#pwm-cells = <2>;
++			clocks = <&mmsys CLK_MM_DISP_PWM026M>,
++				 <&mmsys CLK_MM_DISP_PWM0MM>;
++			clock-names = "main", "mm";
++			status = "disabled";
++		};
++
++		pwm1: pwm@1401f000 {
++			compatible = "mediatek,mt8173-disp-pwm",
++				     "mediatek,mt6595-disp-pwm";
++			reg = <0 0x1401f000 0 0x1000>;
++			#pwm-cells = <2>;
++			clocks = <&mmsys CLK_MM_DISP_PWM126M>,
++				 <&mmsys CLK_MM_DISP_PWM1MM>;
++			clock-names = "main", "mm";
++			status = "disabled";
++		};
+ 	};
+ };
+ 
+-- 
+1.7.9.5
