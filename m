@@ -1,64 +1,38 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v7 2/3] pwm: add MediaTek display PWM driver support
-Date: Mon, 5 Oct 2015 17:59:10 +0200
-Message-ID: <20151005155910.GE17612@ulmo>
-References: <1439882875-19596-1-git-send-email-yh.huang@mediatek.com>
- <1439882875-19596-3-git-send-email-yh.huang@mediatek.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] soc: mediatek: Fix random hang up issue while kernel init
+Date: Tue, 6 Oct 2015 09:57:50 +0800
+Message-ID: <CAGS+omD0FSefd9vF0iUvFRXK1+m7YPEANpxngTibGwgR_rTNvg@mail.gmail.com>
+References: <1443162717-64831-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="47eKBCiAZYFK5l32"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1439882875-19596-3-git-send-email-yh.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1443162717-64831-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Sep 25, 2015 at 2:31 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> In kernel late init, it turns off all unused clocks, which
+> needs to access subsystem registers such as VENC and VENC_LT.
+>
+> Accessing MT8173 VENC registers needs two top clocks, mm_sel and
+> venc_sel. Accessing VENC_LT registers needs mm_sel and venclt_sel.
+> So we need to keep these clocks on before accessing their registers.
+>
+> This patch keeps venc_sel / venclt_sel clock on when
+> VENC / VENC_LT's power is on, to prevent system hang up while
+> accessing its registeres.
+>
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
---47eKBCiAZYFK5l32
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+After the discussions with James here on the list, I'm happy with this fix.
+Compared to any proposed alternative, this patch seems just as
+effective and is also simpler and more maintainable and extensible (if
+other clocks/power domains need the same treatment).
 
-On Tue, Aug 18, 2015 at 03:27:54PM +0800, YH Huang wrote:
-> Add display PWM driver support to modify backlight for MT8173 and MT6595.
-> The PWM has one channel to control the brightness of the display.
-> When the (high_width / period) is closer to 1, the screen is brighter;
-> otherwise, it is darker.
->=20
-> Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> ---
->  drivers/pwm/Kconfig        |   11 +++
->  drivers/pwm/Makefile       |    1 +
->  drivers/pwm/pwm-mtk-disp.c |  232 ++++++++++++++++++++++++++++++++++++++=
-++++++
->  3 files changed, 244 insertions(+)
->  create mode 100644 drivers/pwm/pwm-mtk-disp.c
-
-Applied, thanks.
-
-Thierry
-
---47eKBCiAZYFK5l32
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJWEp5NAAoJEN0jrNd/PrOhCzMQAInzpcrS3//ZFr9i1iEqGduo
-i9i++ZavAePINtmjE3WvKNPd9ac7ypOTT5mWNEpUinvkWVog0SP1dLE8/fX3dPNu
-akG+pnrRuglhP3NnIK9/367S4fFuZLRXyFfjBpYAYICIzyHVX/4MVzvwKhQaVivN
-Ul3IN3H7gxlCFt4nSHDwLB/4h6AywrNZeemE9is8JL5DrNsJzdXLygpQZYacBCx6
-HaCAo5Lz0ZpvmN7pSBbodhgPVEH0LF+2TtgoIQeu6z+5OaCMC1xmUettmaIdIDyO
-mQVThdDqAZ5l9VSjS+o75wsLqHVFlX/mNVMhYPxi7wK99E5ENuMxuoTeNGEzL/HR
-5HwbaXdwTBHaaLytCOYj+1g252crdLdpAquvYMIVd+bCIntlwUbb7UIXDiOXVna0
-VcoeBnCRnkO6qBabH5yHGUsiaEdHRUCoh5/RPlUfhfEfY0jY7sT6za6SS19RAf5Z
-lwlwyG5+6beZQgMd4XybyhFg7mXQfihMHF2HSyEdA+qsKNC02XLp+POeUrrOfqNU
-nhP66TzENkMSGQzv19JAT0hya/7YeNpalOorKxNgyyCZQ2qlEr1qcf49uIdAiSM+
-3tEbZ+WKvCx48nj80S6MICogXUXKykzNpWTxgOhhcHWojX9FApIgkxF8qic3wJfj
-mqq48c1zucNhIWna5JdF
-=zGIF
------END PGP SIGNATURE-----
-
---47eKBCiAZYFK5l32--
+Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
