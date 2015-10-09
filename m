@@ -1,60 +1,40 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2] mmc: core: Fix init_card in 52Mhz
-Date: Fri, 9 Oct 2015 10:29:57 +0200
-Message-ID: <CAPDyKFpa4RZJaEEaVuhceOeOeQg_OWKwsXvFWf9ZLkyTgWfx7A@mail.gmail.com>
-References: <1444288147-24013-1-git-send-email-chaotian.jing@mediatek.com>
-	<CAPDyKFqrjP3-y+ucm5ybwXefsDLOYcPF9XqMciwhRkjD5NXLBg@mail.gmail.com>
-	<56166988.20900@intel.com>
-	<CAPDyKFoWWMXC-DECqhw=EXerid5toWKxr4uLq0WevPo8LrrDqw@mail.gmail.com>
-	<56177381.9020509@intel.com>
+From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v4 3/6] iommu: add ARM short descriptor page table
+ allocator.
+Date: Fri, 9 Oct 2015 16:57:50 +0100
+Message-ID: <20151009155750.GS26278@arm.com>
+References: <1438597279-2937-1-git-send-email-yong.wu@mediatek.com>
+ <1438597279-2937-4-git-send-email-yong.wu@mediatek.com>
+ <20150916155824.GM28771@arm.com>
+ <1442501662.8145.151.camel@mhfsdcap03>
+ <1442931167.17514.39.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56177381.9020509@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Fabio Estevam <fabio.estevam@freescale.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1442931167.17514.39.camel@mhfsdcap03>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Robin Murphy <Robin.Murphy-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <Mark.Rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <Catalin.Marinas-5wv7dgnIgG8@public.gmane.org>, "youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, "k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "arnd-r2nGTMty4D4@public.gmane.org" <arnd-r2nGTMty4D4@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org" <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, "frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <frederic.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org" <iommu@l>
 List-Id: linux-mediatek@lists.infradead.org
 
-[...]
+On Tue, Sep 22, 2015 at 03:12:47PM +0100, Yong Wu wrote:
+>      I would like to show you a problem I met, The recursion here may
+> lead to stack overflow while we test FHD video decode.
+> 
+>     From the log, I get the internal variable in the error case: the
+> "size" is 0x100000, the "iova" is 0xfea00000, but at that time the
+> "blk_size" is 0x1000 as it was the map of small-page. so it enter the
+> recursion here.
+>     
+>     After check the unmap flow, there is only a iommu_unmap in
+> __iommu_dma_unmap, and it won't check the physical address align in
+> iommu_unmap.
 
->>> Then you need to remove the hw_reset test from mmc_test.  Refer:
->>>
->>>         http://marc.info/?l=linux-mmc&m=144360165906544&w=2
->>>
->>
->> I realize that the test becomes a bit different, but I don't think it's useless.
->>
->> If we add a check for MMC_CAP_HW_RESET and verify that the
->> host->ops->hw_reset exists, then we can assume that the "hw_reset"
->> sequence has executed. And if mmc_init_card() fails, that would
->> probably mean that the reset also failed, right?
->
-> In the test case, the card is in a working state.  Generally I would then
-> expect reinitialization to work irrespective of whether or not the hardware
-> is actually reset.
+That sounds like a bug in __iommu_dma_unmap. Robin?
 
-That's not always the case. I have seen many strange things happening
-while trying to re-initialize/reset the card. :-)
-
->
-> Here are some other options:
->         1. have mmc_test hook the host->ops->hw_reset() fn and do the send_status
-> itself.
->         2. have mmc_test set a flag on the card that it is being tested
-> and only do the send_status if the flag is set
-
-I assume that both 1) and 2) still means we need to manage the
-scenario with re-tuning, which I rather would like us to prevent.
-
-Unless we find a way to call mmc_set_initial_state() before doing the
-reset, as that would disable re-tuning...
-
->         3. remove the send_status call and rename the mmc_test from "eMMC hardware
-> reset" to just "Reset test (doesn't check hw reset did reset)"
-
-That's would work and perhaps this is the best way to go as we would
-then also be able to use the test for SD-cards. Let's do this then!
-
-Kind regards
-Uffe
+Will
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
