@@ -1,90 +1,139 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v9 4/5] xhci: mediatek: support MTK xHCI host controller
-Date: Thu, 8 Oct 2015 22:42:16 +0800
-Message-ID: <1444315336.26198.18.camel@mhfsdcap03>
-References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1443495698-32233-5-git-send-email-chunfeng.yun@mediatek.com>
-	 <560D1CA9.1050009@linaro.org> <1444305958.26198.14.camel@mhfsdcap03>
-	 <5616616D.3080205@linaro.org> <561669FC.3030600@linux.intel.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5 0/6] MT8173 IOMMU SUPPORT
+Date: Fri, 9 Oct 2015 10:23:02 +0800
+Message-ID: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <561669FC.3030600@linux.intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@linux.intel.com>
-Cc: Daniel Thompson <daniel.thompson@linaro.org>, Mathias Nyman <mathias.nyman@intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Thu, 2015-10-08 at 16:05 +0300, Mathias Nyman wrote:
-> On 08.10.2015 15:28, Daniel Thompson wrote:
-> > On 08/10/15 13:05, chunfeng yun wrote:
-> >> Hi,
-> >> On Thu, 2015-10-01 at 12:44 +0100, Daniel Thompson wrote:
-> >>> On 29/09/15 04:01, Chunfeng Yun wrote:
-> >>>> There some vendor quirks for MTK xhci host controller:
-> >>>> 1. It defines some extra SW scheduling parameters for HW
-> >>>>     to minimize the scheduling effort for synchronous and
-> >>>>     interrupt endpoints. The parameters are put into reseved
-> >>>>     DWs of slot context and endpoint context.
-> >>>> 2. Its IMODI unit for Interrupter Moderation register is
-> >>>>     8 times as much as that defined in xHCI spec.
-> >>>> 3. Its TDS in  Normal TRB defines a number of packets that
-> >>>>     remains to be transferred for a TD after processing all
-> >>>>     Max packets in all previous TRBs.
-> >>>>
-> >>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> >>>
-> >>> I've done some basic soak tests, both with a directly attached USB3 HDD
-> >>> and, given the extra code to manage isochronous xfer, also with a hub,
-> >>> disc and two audio interfaces.
-> >>>
-> >>> Tested-by: Daniel Thompson <daniel.thompson@linaro.org>
-> >>>
-> >>>
-> >>>> diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-> >>>> index 57f40a1..243f696 100644
-> >>>> --- a/drivers/usb/host/xhci-ring.c
-> >>>> +++ b/drivers/usb/host/xhci-ring.c
-> >>>> @@ -68,6 +68,7 @@
-> >>>>    #include <linux/slab.h>
-> >>>>    #include "xhci.h"
-> >>>>    #include "xhci-trace.h"
-> >>>> +#include "xhci-mtk.h"
-> >>>>
-> >>>>    /*
-> >>>>     * Returns zero if the TRB isn't in this segment, otherwise it returns the DMA
-> >>>> @@ -3044,18 +3045,27 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
-> >>>>                      struct urb *urb, unsigned int num_trbs_left)
-> >>>>    {
-> >>>>        u32 maxp, total_packet_count;
-> >>>> +    u32 skip_current_trb = 0;
-> >>>
-> >>> A bit of a nitpick but why do we need skip_current_trb? Testing
-> >>> (xhci->quirks & XHCI_MTK_HOST) twice would make what the code does, and
-> >>> why, more obvious.
-> >>>
-> >> I am not sure which way it is better, so add variable of
-> >> skip_current_trb to reduce test times.
-> >
-> > I can't imagine either approach impacts performance. However introducing skip_current_trb makes the flow of the branches harder to follow.
-> >
-> > The first branch was a version check and can remain so; we only need to do something special with the quirks because the MTK controller is 0.97 but with a few bits added:
-> >
-> >      /* MTK xHCI is mostly 0.97 but contains some features from 1.0 */
-> >      if (xhci->hci_version < 0x100 && !(xhci->quirks & XHCI_MTK_HOST))
-> >          return ...
-> >
-> > Setting trb_buff_len to zero is accommodating a quirk and this is clearer when we have:
-> >
-> >      /* for MTK xHCI, TD size doesn't include this TRB */
-> >      if (xhci->quirks & XHCI_MTK_HOST)
-> >          trb_buff_len = 0;
-> 
-> Both will work, but I'd prefer this solution as well.
-> 
-Thanks for your suggestion as well
+  This patch set adds support for m4u(Multimedia Memory Management Unit),
+Currently it only support the m4u with 2 levels of pagetable on mt8173.
 
-> -Mathias
-> 
+  It's based on Robin Murphy's latest ARM64 DMA-v6[1]. The dsti is based
+on MTK clock patch[2].
+ 
+  Please check the hardware block diagram of Mediatek IOMMU.
+ 
+              EMI (External Memory Interface)
+               |
+              m4u (Multimedia Memory Management Unit)
+               |
+              smi (Smart Multimedia Interface)
+               |
+        +---------------+-------
+        |               |
+        |               |
+    vdec larb       disp larb      ... SoCs have different local arbiter(larb).
+        |               |
+        |               |
+   +----+----+    +-----+-----+
+   |    |    |    |     |     |    ...
+   |    |    |    |     |     |    ...
+   |    |    |    |     |     |    ...
+  MC   PP   VLD  OVL0 RDMA0 WDMA0  ... There are different ports in each larb.
+  
+  Normally we specify a local arbiter(larb) for each multimedia hardware like
+display, video decode, video encode and camera. And there are different ports in
+each larb. Take a example, there are some ports like MC, PP, UFO, VLD, AVC_MV,
+PRED_RD in video larb, all the ports are according to the video hardware.
+ 
+  From the diagram, all the multimedia module connect with m4u via smi.
+SMI is responsible to enable/disable iommu and control the clocks for each local
+arbiter. If we would like to enable the iommu of video decode, the video decode
+HW ports have to be configed. And if the video hardware work whether
+enable/disable iommu, it need enable the clock of its larb's clock. And smi also
+help bandwidth control for each local. So we add a special driver for smi and
+locate it drivers/memory.
+
+v5:
+-rebase onto v4.3-rc1.
+-About MTK iommu: don't return the same domain while domain_alloc, change the
+ domain's flow according to the M4U HW.
+-About Short-descriptor: Improve many error-handles, NO_PERMS quirk, and 
+ add TLBI_MAP quirk following Will's Suggestion; Add io-pgtable don't use 
+ dma_to_phys; Add a loop in arm_short_unmap since iommu_unmap don't care the 
+ physical address align.
+-About SMI driver: Add a help funcion for some similar code. Add PROPRE_DEFER
+ for power-domain as MTK SCPSYS is module_init currently.
+
+v4: http://lists.linuxfoundation.org/pipermail/iommu/2015-August/013903.html
+-use only one iommu domain here based on the Robin's DMA-v5:
+ http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013900.html
+-remove flush_pgtable.
+-change writel to writel_relaxed.
+-about Short-descriptor: move dma_map_single into io-pgtable-arm-short.
+ Improve the flow of free pgtable and add NO_XN+NO_PERMS quirk following
+ Will's suggestion.
+-Change two sytle issues in dtsi according to Daniel's suggestion.
+
+v3: http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013632.html
+-rebased onto v4.2-rc1
+-improve iommu flow based on the Robin's DMA v3:
+ http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013597.html
+-change mtk iommu-cells from 1 to 2.
+-about Short-descriptor: add split function; add self-test; add some other bits like nG,
+ XN according to the spec; add SUPERSECTION and MTK quirk; move io_pgtable_ops_to_pgtable
+ out from LPAE to the header file.
+-about SMI: move from driver/soc/mediatek to driver/memory; change the clocks from
+ clk[2] to clk_apb and clk_smi; add pm.
+-add iommu suspend/resume to backup/restore register.
+
+v2: http://lists.linuxfoundation.org/pipermail/iommu/2015-May/013028.html
+-add arm short descriptor support.
+-seperate smi common from smi and change the clock-names according
+ to smi HW.
+-delete the hardcode of the port-names in mt8173.
+ replace this with larb-portes-nr in dtsi.
+-fix some coding style issues.
+
+v1: http://lists.infradead.org/pipermail/linux-mediatek/2015-March/000058.html
+-initial version.
+
+[1]: http://lists.linuxfoundation.org/pipermail/iommu/2015-October/014504.html
+[2]: http://lists.infradead.org/pipermail/linux-mediatek/2015-August/001962.html
+
+Yong Wu (6):
+  dt-bindings: iommu: Add binding for mediatek IOMMU
+  dt-bindings: mediatek: Add smi dts binding
+  iommu: add ARM short descriptor page table allocator
+  memory: mediatek: Add SMI driver
+  iommu/mediatek: Add mt8173 IOMMU driver
+  dts: mt8173: Add iommu/smi nodes for mt8173
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |  61 ++
+ .../memory-controllers/mediatek,smi-larb.txt       |  25 +
+ .../bindings/memory-controllers/mediatek,smi.txt   |  24 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  81 ++
+ drivers/iommu/Kconfig                              |  33 +
+ drivers/iommu/Makefile                             |   2 +
+ drivers/iommu/io-pgtable-arm-short.c               | 827 +++++++++++++++++++++
+ drivers/iommu/io-pgtable-arm.c                     |   3 -
+ drivers/iommu/io-pgtable.c                         |   3 +
+ drivers/iommu/io-pgtable.h                         |  18 +-
+ drivers/iommu/mtk_iommu.c                          | 767 +++++++++++++++++++
+ drivers/memory/Kconfig                             |   8 +
+ drivers/memory/Makefile                            |   1 +
+ drivers/memory/mtk-smi.c                           | 274 +++++++
+ include/dt-bindings/memory/mt8173-larb-port.h      | 105 +++
+ include/soc/mediatek/smi.h                         |  60 ++
+ 16 files changed, 2288 insertions(+), 4 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi.txt
+ create mode 100644 drivers/iommu/io-pgtable-arm-short.c
+ create mode 100644 drivers/iommu/mtk_iommu.c
+ create mode 100644 drivers/memory/mtk-smi.c
+ create mode 100644 include/dt-bindings/memory/mt8173-larb-port.h
+ create mode 100644 include/soc/mediatek/smi.h
+
+-- 
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
