@@ -1,44 +1,88 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] MAINTAINERS: add Mediatek usb3 phy driver
-Date: Mon, 12 Oct 2015 10:41:57 +0800
-Message-ID: <1444617717-13706-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH v3] mmc: core: Fix init_card in 52Mhz
+Date: Mon, 12 Oct 2015 17:22:23 +0800
+Message-ID: <1444641743-15614-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>, Fabio Estevam <fabio.estevam@freescale.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Mediatek usb3 phy driver to maintainer entry.
+Suppose that we got a data crc error, and it triggers the mmc_reset.
+mmc_reset will call mmc_send_status to see if HW reset was supported.
+before issue CMD13, it will do retune, and if EMMC was in HS400 mode,
+it will reduce frequency to 52Mhz firstly, then results in card init
+was doing at 52Mhz.
+The mmc_send_status was originally only done for mmc_test, should drop
+it. And, rename the "eMMC hardware reset" to "Reset test", as we would
+also be able to use the test for SD-cards.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
 ---
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/mmc/card/mmc_test.c | 9 +++------
+ drivers/mmc/core/mmc.c      | 7 -------
+ 2 files changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7ba7ab7..be0055c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1291,6 +1291,13 @@ F:	arch/arm/mach-mediatek/
- N:	mtk
- K:	mediatek
+diff --git a/drivers/mmc/card/mmc_test.c b/drivers/mmc/card/mmc_test.c
+index b78cf5d..7fc9174 100644
+--- a/drivers/mmc/card/mmc_test.c
++++ b/drivers/mmc/card/mmc_test.c
+@@ -2263,15 +2263,12 @@ static int mmc_test_profile_sglen_r_nonblock_perf(struct mmc_test_card *test)
+ /*
+  * eMMC hardware reset.
+  */
+-static int mmc_test_hw_reset(struct mmc_test_card *test)
++static int mmc_test_reset(struct mmc_test_card *test)
+ {
+ 	struct mmc_card *card = test->card;
+ 	struct mmc_host *host = card->host;
+ 	int err;
  
-+ARM/Mediatek USB3 PHY DRIVER
-+M:	Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+L:	linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
-+L:	linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	drivers/phy/phy-mt65xx-usb3.c
-+
- ARM/MICREL KS8695 ARCHITECTURE
- M:	Greg Ungerer <gerg-JBU5SbJe1FlAfugRpC6u6w@public.gmane.org>
- L:	linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
+-	if (!mmc_card_mmc(card) || !mmc_can_reset(card))
+-		return RESULT_UNSUP_CARD;
+-
+ 	err = mmc_hw_reset(host);
+ 	if (!err)
+ 		return RESULT_OK;
+@@ -2605,8 +2602,8 @@ static const struct mmc_test_case mmc_test_cases[] = {
+ 	},
+ 
+ 	{
+-		.name = "eMMC hardware reset",
+-		.run = mmc_test_hw_reset,
++		.name = "Reset test",
++		.run = mmc_test_reset,
+ 	},
+ };
+ 
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index e726903..f6cd995 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -1924,7 +1924,6 @@ EXPORT_SYMBOL(mmc_can_reset);
+ static int mmc_reset(struct mmc_host *host)
+ {
+ 	struct mmc_card *card = host->card;
+-	u32 status;
+ 
+ 	if (!(host->caps & MMC_CAP_HW_RESET) || !host->ops->hw_reset)
+ 		return -EOPNOTSUPP;
+@@ -1937,12 +1936,6 @@ static int mmc_reset(struct mmc_host *host)
+ 
+ 	host->ops->hw_reset(host);
+ 
+-	/* If the reset has happened, then a status command will fail */
+-	if (!mmc_send_status(card, &status)) {
+-		mmc_host_clk_release(host);
+-		return -ENOSYS;
+-	}
+-
+ 	/* Set initial state and call mmc_set_ios */
+ 	mmc_set_initial_state(host);
+ 	mmc_host_clk_release(host);
 -- 
 1.8.1.1.dirty
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
