@@ -1,88 +1,99 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH v3] mmc: core: Fix init_card in 52Mhz
-Date: Mon, 12 Oct 2015 17:22:23 +0800
-Message-ID: <1444641743-15614-1-git-send-email-chaotian.jing@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: mt8173: add MT8173 display PWM driver support
+ node
+Date: Mon, 12 Oct 2015 18:04:54 +0200
+Message-ID: <561BDA26.5010203@gmail.com>
+References: <1444117243-28391-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>, Fabio Estevam <fabio.estevam@freescale.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1444117243-28391-1-git-send-email-yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Suppose that we got a data crc error, and it triggers the mmc_reset.
-mmc_reset will call mmc_send_status to see if HW reset was supported.
-before issue CMD13, it will do retune, and if EMMC was in HS400 mode,
-it will reduce frequency to 52Mhz firstly, then results in card init
-was doing at 52Mhz.
-The mmc_send_status was originally only done for mmc_test, should drop
-it. And, rename the "eMMC hardware reset" to "Reset test", as we would
-also be able to use the test for SD-cards.
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
----
- drivers/mmc/card/mmc_test.c | 9 +++------
- drivers/mmc/core/mmc.c      | 7 -------
- 2 files changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/mmc/card/mmc_test.c b/drivers/mmc/card/mmc_test.c
-index b78cf5d..7fc9174 100644
---- a/drivers/mmc/card/mmc_test.c
-+++ b/drivers/mmc/card/mmc_test.c
-@@ -2263,15 +2263,12 @@ static int mmc_test_profile_sglen_r_nonblock_perf(struct mmc_test_card *test)
- /*
-  * eMMC hardware reset.
-  */
--static int mmc_test_hw_reset(struct mmc_test_card *test)
-+static int mmc_test_reset(struct mmc_test_card *test)
- {
- 	struct mmc_card *card = test->card;
- 	struct mmc_host *host = card->host;
- 	int err;
- 
--	if (!mmc_card_mmc(card) || !mmc_can_reset(card))
--		return RESULT_UNSUP_CARD;
--
- 	err = mmc_hw_reset(host);
- 	if (!err)
- 		return RESULT_OK;
-@@ -2605,8 +2602,8 @@ static const struct mmc_test_case mmc_test_cases[] = {
- 	},
- 
- 	{
--		.name = "eMMC hardware reset",
--		.run = mmc_test_hw_reset,
-+		.name = "Reset test",
-+		.run = mmc_test_reset,
- 	},
- };
- 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index e726903..f6cd995 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1924,7 +1924,6 @@ EXPORT_SYMBOL(mmc_can_reset);
- static int mmc_reset(struct mmc_host *host)
- {
- 	struct mmc_card *card = host->card;
--	u32 status;
- 
- 	if (!(host->caps & MMC_CAP_HW_RESET) || !host->ops->hw_reset)
- 		return -EOPNOTSUPP;
-@@ -1937,12 +1936,6 @@ static int mmc_reset(struct mmc_host *host)
- 
- 	host->ops->hw_reset(host);
- 
--	/* If the reset has happened, then a status command will fail */
--	if (!mmc_send_status(card, &status)) {
--		mmc_host_clk_release(host);
--		return -ENOSYS;
--	}
--
- 	/* Set initial state and call mmc_set_ios */
- 	mmc_set_initial_state(host);
- 	mmc_host_clk_release(host);
--- 
-1.8.1.1.dirty
+On 06/10/15 09:40, YH Huang wrote:
+> Add display PWM node in mt8173-evb.dts and mt8173.dtsi.
+>
+> Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   13 +++++++++++++
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi    |   22 ++++++++++++++++++++++
+>   2 files changed, 35 insertions(+)
+>
 
+Applied, thanks.
+
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> index 811cb76..1b3fabd 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+> @@ -92,6 +92,13 @@
+>   };
+>
+>   &pio {
+> +	disp_pwm0_pins: disp_pwm0_pins {
+> +		pins1 {
+> +			pinmux = <MT8173_PIN_87_DISP_PWM0__FUNC_DISP_PWM0>;
+> +			output-low;
+> +		};
+> +	};
+> +
+>   	mmc0_pins_default: mmc0default {
+>   		pins_cmd_dat {
+>   			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
+> @@ -190,6 +197,12 @@
+>   	};
+>   };
+>
+> +&pwm0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&disp_pwm0_pins>;
+> +	status = "okay";
+> +};
+> +
+>   &pwrap {
+>   	pmic: mt6397 {
+>   		compatible = "mediatek,mt6397";
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 4bce167..fd01134 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -500,6 +500,28 @@
+>   			clock-names = "source", "hclk";
+>   			status = "disabled";
+>   		};
+> +
+> +		pwm0: pwm@1401e000 {
+> +			compatible = "mediatek,mt8173-disp-pwm",
+> +				     "mediatek,mt6595-disp-pwm";
+> +			reg = <0 0x1401e000 0 0x1000>;
+> +			#pwm-cells = <2>;
+> +			clocks = <&mmsys CLK_MM_DISP_PWM026M>,
+> +				 <&mmsys CLK_MM_DISP_PWM0MM>;
+> +			clock-names = "main", "mm";
+> +			status = "disabled";
+> +		};
+> +
+> +		pwm1: pwm@1401f000 {
+> +			compatible = "mediatek,mt8173-disp-pwm",
+> +				     "mediatek,mt6595-disp-pwm";
+> +			reg = <0 0x1401f000 0 0x1000>;
+> +			#pwm-cells = <2>;
+> +			clocks = <&mmsys CLK_MM_DISP_PWM126M>,
+> +				 <&mmsys CLK_MM_DISP_PWM1MM>;
+> +			clock-names = "main", "mm";
+> +			status = "disabled";
+> +		};
+>   	};
+>   };
+>
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
