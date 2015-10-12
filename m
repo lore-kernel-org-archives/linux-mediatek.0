@@ -1,53 +1,56 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 0/3] Fix random hang up issue while kernel init
-Date: Mon, 12 Oct 2015 18:32:27 +0200
-Message-ID: <561BE09B.3040702@gmail.com>
-References: <1444209281-25536-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 0/3] add GPT timer support for mt8173
+Date: Mon, 12 Oct 2015 18:35:07 +0200
+Message-ID: <561BE13B.5090202@gmail.com>
+References: <1443798319-45744-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1444209281-25536-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1443798319-45744-1-git-send-email-yingjoe.chen@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, linux-clk@vger.kernel.org, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/10/15 11:14, James Liao wrote:
-> This patch is based on v4.3-rc4, to fix system hanging up issue
-> while disabling unused clocks.
+On 02/10/15 17:05, Yingjoe Chen wrote:
+> This is based on v4.3-rc1 + clockevents-4.4[1] and James's mediatek-clk
+> tree[2].
 >
-> There is nothing different in mtk-scpsys.c and mt8173.dtsi from v1 [1].
+> Changes compare to previous version[3]:
+> - Add more MediaTek SoC to mtk-timer binding
+> - Update commit message to better describe the purpose.
 >
-> Changes since v1:
-> - Rebase to v4.3-rc4.
-> - Add a patch to change the corresponding binding document.
-> - Add a separated patch to change the dtsi.
+> Changes compare to v2[4]:
+> - the first two mtk_timer related changes are removed because they are
+> replaced/accepted in clockevents tree.
+> - Remove 'add 13mhz clock for MT8173' because it is accepted in
+> mediatek-clk tree.
+> - Kconfig.platforms path change.
 >
-> [1] https://patchwork.kernel.org/patch/7262411/
+> [1]
+> https://git.linaro.org/people/daniel.lezcano/linux.git clockevents/4.4
+> [2]
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-August/002069.html
+> [3]
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-September/002301.html
+> [4]
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001544.html
 >
-> James Liao (3):
->    dt-bindings: soc: Add clocks for Mediatek SCPSYS unit
->    soc: mediatek: Fix random hang up issue while kernel init
->    arm64: dts: mt8173: Add clocks for SCPSYS unit
 >
->   .../devicetree/bindings/soc/mediatek/scpsys.txt    | 10 ++--
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  6 +-
->   drivers/soc/mediatek/mtk-scpsys.c                  | 67 ++++++++++++++--------
->   3 files changed, 54 insertions(+), 29 deletions(-)
+> Daniel Kurtz (1):
+>    arm64: dts: mt8173: add timer node
 >
-> --
-> 1.9.1
+> Yingjoe Chen (2):
+>    dt-bindings: add more MediaTek SoC to mtk-timer binding
+>    arm64: mediatek: enable MTK_TIMER
 >
+>   Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt | 8 +++++---
+>   arch/arm64/Kconfig.platforms                                   | 1 +
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi                       | 9 +++++++++
+>   3 files changed, 15 insertions(+), 3 deletions(-)
 >
 
-Applied. Does this fix also needs to be applied to earlier kernel versions?
-
-Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Applied, thanks.
