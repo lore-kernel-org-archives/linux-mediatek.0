@@ -1,62 +1,36 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/3] Fix random hang up issue while kernel init
-Date: Tue, 13 Oct 2015 10:21:11 +0800
-Message-ID: <1444702871.31890.4.camel@mtksdaap41>
-References: <1444209281-25536-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <561BE09B.3040702@gmail.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH 0/4] Add tune support of Mediatek MMC driver
+Date: Tue, 13 Oct 2015 17:37:54 +0800
+Message-ID: <1444729078-26585-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <561BE09B.3040702-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Hans de Goede <hdegoede@redhat.com>, Lars-Peter Clausen <lars@metafoo.de>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Howard Chen <ibanezchen@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>, Kristina Martsenko <kristina.martsenko@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, srv_heup
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+Add DT bindings for eMMC hardware reset
+Add pinctrl of data strobe pin for HS400 mode
+Modify eMMC driving settings
+Add 400mhz source clock for HS400 mode
+Add eMMC HS200/HS400 mode support
+Add SD SDR50/SDR104 mode support
+Add implement of tune funtion with CMD19/CMD21
 
-On Mon, 2015-10-12 at 18:32 +0200, Matthias Brugger wrote:
-> 
-> On 07/10/15 11:14, James Liao wrote:
-> > This patch is based on v4.3-rc4, to fix system hanging up issue
-> > while disabling unused clocks.
-> >
-> > There is nothing different in mtk-scpsys.c and mt8173.dtsi from v1 [1].
-> >
-> > Changes since v1:
-> > - Rebase to v4.3-rc4.
-> > - Add a patch to change the corresponding binding document.
-> > - Add a separated patch to change the dtsi.
-> >
-> > [1] https://patchwork.kernel.org/patch/7262411/
-> >
-> > James Liao (3):
-> >    dt-bindings: soc: Add clocks for Mediatek SCPSYS unit
-> >    soc: mediatek: Fix random hang up issue while kernel init
-> >    arm64: dts: mt8173: Add clocks for SCPSYS unit
-> >
-> >   .../devicetree/bindings/soc/mediatek/scpsys.txt    | 10 ++--
-> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  6 +-
-> >   drivers/soc/mediatek/mtk-scpsys.c                  | 67 ++++++++++++++--------
-> >   3 files changed, 54 insertions(+), 29 deletions(-)
-> >
-> > --
-> > 1.9.1
-> >
-> >
-> 
-> Applied. Does this fix also needs to be applied to earlier kernel versions?
+Chaotian Jing (4):
+  mmc: core: Add DT bindings for eMMC hardware reset support
+  mmc: dt-bindings: update Mediatek MMC bindings
+  mmc: mediatek: Add tune support
+  arm64: dts: mediatek:: Add HS200/HS400/SDR50/SDR104 support
 
-No need, because venc and venc_lt clocks are not controlled by CCF
-before v4.2.
+ Documentation/devicetree/bindings/mmc/mmc.txt    |   1 +
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt |  12 +-
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  21 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi         |   5 +-
+ drivers/mmc/core/host.c                          |   2 +
+ drivers/mmc/host/mtk-sd.c                        | 359 +++++++++++++++++++++--
+ 6 files changed, 364 insertions(+), 36 deletions(-)
 
-
-Best regards,
-
-James
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.8.1.1.dirty
