@@ -1,89 +1,61 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v5 0/5] Add SMP bringup support for mt65xx socs
-Date: Mon, 12 Oct 2015 19:30:36 +0200
-Message-ID: <561BEE3C.3030807@gmail.com>
-References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 0/3] Fix random hang up issue while kernel init
+Date: Tue, 13 Oct 2015 10:21:11 +0800
+Message-ID: <1444702871.31890.4.camel@mtksdaap41>
+References: <1444209281-25536-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <561BE09B.3040702@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1443799181-50409-1-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <561BE09B.3040702-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Matthias,
+
+On Mon, 2015-10-12 at 18:32 +0200, Matthias Brugger wrote:
+> 
+> On 07/10/15 11:14, James Liao wrote:
+> > This patch is based on v4.3-rc4, to fix system hanging up issue
+> > while disabling unused clocks.
+> >
+> > There is nothing different in mtk-scpsys.c and mt8173.dtsi from v1 [1].
+> >
+> > Changes since v1:
+> > - Rebase to v4.3-rc4.
+> > - Add a patch to change the corresponding binding document.
+> > - Add a separated patch to change the dtsi.
+> >
+> > [1] https://patchwork.kernel.org/patch/7262411/
+> >
+> > James Liao (3):
+> >    dt-bindings: soc: Add clocks for Mediatek SCPSYS unit
+> >    soc: mediatek: Fix random hang up issue while kernel init
+> >    arm64: dts: mt8173: Add clocks for SCPSYS unit
+> >
+> >   .../devicetree/bindings/soc/mediatek/scpsys.txt    | 10 ++--
+> >   arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  6 +-
+> >   drivers/soc/mediatek/mtk-scpsys.c                  | 67 ++++++++++++++--------
+> >   3 files changed, 54 insertions(+), 29 deletions(-)
+> >
+> > --
+> > 1.9.1
+> >
+> >
+> 
+> Applied. Does this fix also needs to be applied to earlier kernel versions?
+
+No need, because venc and venc_lt clocks are not controlled by CCF
+before v4.2.
 
 
-On 02/10/15 17:19, Yingjoe Chen wrote:
-> This series add SMP brinup support for MediaTek SoCs. This is v5 and
-> is based on v4.3-rc1.
->
-> There are similar but different SMP bringup up methods on MediaTek
-> mt65xx and mt81xx. On MT8135 & MT8127, system boots with a trustzone
-> firmware. Others, like MT6589, doesn't have trustzone, and run kernel
-> directly in secure world.
->
-> Patch 1 enable arch timer support.
-> Patch 2,3 add support for cpu enable-method "mediatek,mt6589-smp" and
-> "mediatek,mt81xx-tz-smp", which support Mediatek SMP bringup for non-TZ
-> and TZ platform.
-> Patch 4,5 finally enable SMP bringup for mt8135 and mt8127.
->
-> Changes in v5:
-> - Fix dts error
-> - Add Rob's Ack tag.
->
-> Changes in v4[3]:
-> - rebase to v4.3-rc1
-> - Reserve trustzone bootinfo memory area in device tree.
->
-> Changes in v3:
-> - v3 in [1]
-> - The first 2 patches in v2 are merged in v4.2-rc1.
-> - Patch 3~4 in v2 are moved to another series [2]
-> - platsmp.c changes based on Stephen's suggestion
-> - Change cpu enable-method name to "mediatek,mt6589-smp"
->
-> Changes in v2:
-> - Fix boot issue for THUMB2 kernel.
-> - Not enable GPT_CLK_EVT when setup to fix GPT spurious interrupt issue
-> - Change platsmp.c according to Matthias' suggestion
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000714.html
->
-> v1:
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-May/000528.html
->
-> [1]
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001570.html
->
-> [2]
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-July/001544.html
->
-> [3]
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-September/002377.html
->
->
-> Matthias Brugger (1):
->    ARM: mediatek: enable gpt6 on boot up to make arch timer working
->
-> Yingjoe Chen (4):
->    devicetree: bindings: add new SMP enable method Mediatek SoC
->    ARM: mediatek: add smp bringup code
->    ARM: dts: mt8135: enable basic SMP bringup for mt8135
->    ARM: dts: mt8127: enable basic SMP bringup for mt8127
->
->   Documentation/devicetree/bindings/arm/cpus.txt |   2 +
->   arch/arm/boot/dts/mt8127.dtsi                  |  27 +++++
->   arch/arm/boot/dts/mt8135.dtsi                  |  27 +++++
->   arch/arm/mach-mediatek/Makefile                |   3 +
->   arch/arm/mach-mediatek/mediatek.c              |  27 +++++
->   arch/arm/mach-mediatek/platsmp.c               | 141 +++++++++++++++++++++++++
->   6 files changed, 227 insertions(+)
->   create mode 100644 arch/arm/mach-mediatek/platsmp.c
->
+Best regards,
 
-Applied, thanks.
+James
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
