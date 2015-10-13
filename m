@@ -1,61 +1,72 @@
-From: Bayi Cheng <bayi.cheng@mediatek.com>
-Subject: [PATCH v4 1/3] doc: dt: add documentation for Mediatek spi-nor controller
-Date: Tue, 13 Oct 2015 17:39:18 +0800
-Message-ID: <1444729160-26433-2-git-send-email-bayi.cheng@mediatek.com>
-References: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
+From: Mark Rutland <mark.rutland@arm.com>
+Subject: Re: [PATCH 2/4] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Tue, 13 Oct 2015 11:38:45 +0100
+Message-ID: <20151013103845.GA4189@leverpostej>
+References: <1444729078-26585-1-git-send-email-chaotian.jing@mediatek.com>
+ <1444729078-26585-3-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, Bayi Cheng <bayi.cheng@mediatek.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1444729078-26585-3-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-kernel@vger.kernel.org, Lars-Peter Clausen <lars@metafoo.de>, Howard Chen <ibanezchen@gmail.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Hans de Goede <hdegoede@redhat.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>, Kumar Gala <galak@codeaurora.org>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add device tree binding documentation for serial flash with
-Mediatek serial flash controller
+On Tue, Oct 13, 2015 at 05:37:56PM +0800, Chaotian Jing wrote:
+> Add 400Mhz clock source for HS400 mode
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> index a1adfa4..745bee2 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> @@ -17,6 +17,11 @@ Required properties:
+>  - vmmc-supply: power to the Core
+>  - vqmmc-supply: power to the IO
+>  
+> +Optional properties:
+> +- clocks: 400mhz clock source for HS400
+> +- clock-names: "400mhz"
 
-Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
----
- .../devicetree/bindings/mtd/mtk-quadspi.txt        | 30 ++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+Is that really what the input line is called?
 
-diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-new file mode 100644
-index 0000000..8fff0ed
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-@@ -0,0 +1,30 @@
-+* MTD SPI nor driver for MTK MT81xx (and similar) serial flash controller
-+
-+Required properties:
-+- compatible: 	  should be "mediatek,mt8173-nor";
-+- reg: 		  physical base address and length of the controller's register
-+- clocks: 	  the phandle of the clock needed by the nor controller
-+- clock-names: 	  the name of the clocks
-+		  the clocks needed "spi" and "sf". "spi" is used for spi bus,
-+		  and "sf" is used for controller, these are the clocks witch
-+		  hardware needs to enabling nor flash and nor flash controller.
-+		  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-+- #address-cells: should be <1>
-+- #size-cells:	  should be <0>
-+
-+Example:
-+
-+nor_flash: spi@1100d000 {
-+	compatible = "mediatek,mt8173-nor";
-+	reg = <0 0x1100d000 0 0xe0>;
-+	clocks = <&pericfg CLK_PERI_SPI>,
-+		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-+	clock-names = "spi", "sf";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	flash@0 {
-+		....
-+	};
-+};
-+
--- 
-1.8.1.1.dirty
+> +- hs400-ds-delay: HS400 DS delay setting
+
+What is the format of this? Where can I derive the correct value?
+
+Mark.
+
+> +
+>  Examples:
+>  mmc0: mmc@11230000 {
+>  	compatible = "mediatek,mt8173-mmc", "mediatek,mt8135-mmc";
+> @@ -24,9 +29,12 @@ mmc0: mmc@11230000 {
+>  	interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_LOW>;
+>  	vmmc-supply = <&mt6397_vemc_3v3_reg>;
+>  	vqmmc-supply = <&mt6397_vio18_reg>;
+> -	clocks = <&pericfg CLK_PERI_MSDC30_0>, <&topckgen CLK_TOP_MSDC50_0_H_SEL>;
+> -	clock-names = "source", "hclk";
+> +	clocks = <&pericfg CLK_PERI_MSDC30_0>,
+> +	         <&topckgen CLK_TOP_MSDC50_0_H_SEL>,
+> +		 <&topckgen CLK_TOP_MSDCPLL_D2> ;
+> +	clock-names = "source", "hclk", "400mhz";
+>  	pinctrl-names = "default", "state_uhs";
+>  	pinctrl-0 = <&mmc0_pins_default>;
+>  	pinctrl-1 = <&mmc0_pins_uhs>;
+> +	hs400-ds-delay = <0x14015>;
+>  };
+> -- 
+> 1.8.1.1.dirty
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> 
