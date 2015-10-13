@@ -1,60 +1,42 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH v4 3/3] arm64: dts: mt8173: Add nor flash node
-Date: Tue, 13 Oct 2015 17:33:38 +0300
-Message-ID: <561D1642.3070105@cogentembedded.com>
-References: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
- <1444729160-26433-4-git-send-email-bayi.cheng@mediatek.com>
+From: Lars-Peter Clausen <lars@metafoo.de>
+Subject: Re: [alsa-devel] [RFC PATCH] ASoC: Modify check condition of multiple
+ bindings of components
+Date: Tue, 13 Oct 2015 16:42:11 +0200
+Message-ID: <561D1843.1020007@metafoo.de>
+References: <1444743477-48819-1-git-send-email-koro.chen@mediatek.com>	 <561D0AA9.5080702@metafoo.de> <1444745902.26493.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444729160-26433-4-git-send-email-bayi.cheng@mediatek.com>
+In-Reply-To: <1444745902.26493.2.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bayi Cheng <bayi.cheng@mediatek.com>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Koro Chen <koro.chen@mediatek.com>
+Cc: broonie@kernel.org, perex@perex.cz, tiwai@suse.de, lgirdwood@gmail.com, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello.
+On 10/13/2015 04:18 PM, Koro Chen wrote:
+> On Tue, 2015-10-13 at 15:44 +0200, Lars-Peter Clausen wrote:
+>> On 10/13/2015 03:37 PM, Koro Chen wrote:
+>>> The patch "ASoC: Prevent components from being bound to multiple cards"
+>>> adds check to prevent multiple cards from using the same component.
+>>> However, snd_soc_register_platform() or snd_soc_register_codec() will
+>>> also create components, and sharing the same platform by multiple cards
+>>> is then refused. This happens with a platform having multiple
+>>> independent DAIs that share the same DMA controller.
+>>>
+>>> Relax the condition by checking component->registered_as_component,
+>>> which is only true in case of snd_soc_register_component() and
+>>> will be false for components created by snd_soc_register_platform()
+>>> or snd_soc_register_codec().
+>>
+>> Binding a component to multiple cards results in internal data structure
+>> corruption, regardless of whether it is a raw component, CODEC or platform,
+>> which is why the check was added. So the proposed change wont work.
+>>
+> Thanks for your comment. Is it possible to share an example of how the
+> data structure will be corrupted? So I can study into this further.
 
-On 10/13/2015 12:39 PM, Bayi Cheng wrote:
-
-> Add Mediatek nor flash node
->
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 15 +++++++++++++++
->   1 file changed, 15 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index d18ee42..385c2e4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -365,6 +365,21 @@
->   			status = "disabled";
->   		};
->
-> +		nor_flash: spi@1100d000 {
-
-    I don't think this is a good label name for a SPI controller.
-
-> +			compatible = "mediatek,mt8173-nor";
-> +			reg = <0 0x1100d000 0 0xe0>;
-> +			clocks = <&pericfg CLK_PERI_SPI>,
-> +				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-> +			clock-names = "spi", "sf";
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			flash@0 {
-> +				compatible = "jedec,spi-nor";
-> +				reg = <0>;
-> +			};
-> +		};
-> +
->   		i2c3: i2c3@11010000 {
-
-    Grr, the name should be "i2c@11010000".
-
-[...]
-
-MBR, Sergei
+Just look at soc_probe_component() and think about what happens if that runs
+twice for two different cards. Multiple calls to list_add() on the same
+list, controls are added multiple times, DAPM widgets are created multiple
+times, the card field will only point to the last card.
