@@ -1,64 +1,60 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: Re: [alsa-devel] [RFC PATCH] ASoC: Modify check condition of
- multiple bindings of components
-Date: Tue, 13 Oct 2015 22:18:22 +0800
-Message-ID: <1444745902.26493.2.camel@mtksdaap41>
-References: <1444743477-48819-1-git-send-email-koro.chen@mediatek.com>
-	 <561D0AA9.5080702@metafoo.de>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH v4 3/3] arm64: dts: mt8173: Add nor flash node
+Date: Tue, 13 Oct 2015 17:33:38 +0300
+Message-ID: <561D1642.3070105@cogentembedded.com>
+References: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
+ <1444729160-26433-4-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <561D0AA9.5080702@metafoo.de>
+In-Reply-To: <1444729160-26433-4-git-send-email-bayi.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lars-Peter Clausen <lars@metafoo.de>
-Cc: broonie@kernel.org, perex@perex.cz, tiwai@suse.de, lgirdwood@gmail.com, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, linux-arm-kernel@lists.infradead.org
+To: Bayi Cheng <bayi.cheng@mediatek.com>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-10-13 at 15:44 +0200, Lars-Peter Clausen wrote:
-> On 10/13/2015 03:37 PM, Koro Chen wrote:
-> > The patch "ASoC: Prevent components from being bound to multiple cards"
-> > adds check to prevent multiple cards from using the same component.
-> > However, snd_soc_register_platform() or snd_soc_register_codec() will
-> > also create components, and sharing the same platform by multiple cards
-> > is then refused. This happens with a platform having multiple
-> > independent DAIs that share the same DMA controller.
-> > 
-> > Relax the condition by checking component->registered_as_component,
-> > which is only true in case of snd_soc_register_component() and
-> > will be false for components created by snd_soc_register_platform()
-> > or snd_soc_register_codec().
-> 
-> Binding a component to multiple cards results in internal data structure
-> corruption, regardless of whether it is a raw component, CODEC or platform,
-> which is why the check was added. So the proposed change wont work.
-> 
-Thanks for your comment. Is it possible to share an example of how the
-data structure will be corrupted? So I can study into this further.
- 
-> > 
-> > Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-> > ---
-> >  sound/soc/soc-core.c |    3 ++-
-> >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/sound/soc/soc-core.c b/sound/soc/soc-core.c
-> > index 42575b0..eca169a 100644
-> > --- a/sound/soc/soc-core.c
-> > +++ b/sound/soc/soc-core.c
-> > @@ -1106,7 +1106,8 @@ static int soc_probe_component(struct snd_soc_card *card,
-> >  		return 0;
-> >  
-> >  	if (component->card) {
-> > -		if (component->card != card) {
-> > +		if (component->card != card &&
-> > +		    component->registered_as_component) {
-> >  			dev_err(component->dev,
-> >  				"Trying to bind component to card \"%s\" but is already bound to card \"%s\"\n",
-> >  				card->name, component->card->name);
-> > 
-> 
-> _______________________________________________
-> Alsa-devel mailing list
-> Alsa-devel@alsa-project.org
-> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+Hello.
+
+On 10/13/2015 12:39 PM, Bayi Cheng wrote:
+
+> Add Mediatek nor flash node
+>
+> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 15 +++++++++++++++
+>   1 file changed, 15 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index d18ee42..385c2e4 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -365,6 +365,21 @@
+>   			status = "disabled";
+>   		};
+>
+> +		nor_flash: spi@1100d000 {
+
+    I don't think this is a good label name for a SPI controller.
+
+> +			compatible = "mediatek,mt8173-nor";
+> +			reg = <0 0x1100d000 0 0xe0>;
+> +			clocks = <&pericfg CLK_PERI_SPI>,
+> +				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
+> +			clock-names = "spi", "sf";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			flash@0 {
+> +				compatible = "jedec,spi-nor";
+> +				reg = <0>;
+> +			};
+> +		};
+> +
+>   		i2c3: i2c3@11010000 {
+
+    Grr, the name should be "i2c@11010000".
+
+[...]
+
+MBR, Sergei
