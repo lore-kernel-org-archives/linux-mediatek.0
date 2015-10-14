@@ -1,68 +1,86 @@
-From: Lars-Peter Clausen <lars@metafoo.de>
-Subject: Re: [alsa-devel] [RFC PATCH] ASoC: Modify check condition of multiple
- bindings of components
-Date: Wed, 14 Oct 2015 11:00:01 +0200
-Message-ID: <561E1991.1050705@metafoo.de>
-References: <1444743477-48819-1-git-send-email-koro.chen@mediatek.com> <561D0AA9.5080702@metafoo.de> <1444745902.26493.2.camel@mtksdaap41> <561D1843.1020007@metafoo.de> <1444785549.26493.12.camel@mtksdaap41>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH] pwm-backlight: fix the panel power sequence
+Date: Wed, 14 Oct 2015 18:01:15 +0800
+Message-ID: <1444816875.31675.2.camel@mtksdaap41>
+References: <1442414556-32381-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444785549.26493.12.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1442414556-32381-1-git-send-email-yh.huang@mediatek.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, yh.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 10/14/2015 03:19 AM, Koro Chen wrote:
-> On Tue, 2015-10-13 at 16:42 +0200, Lars-Peter Clausen wrote:
->> On 10/13/2015 04:18 PM, Koro Chen wrote:
->>> On Tue, 2015-10-13 at 15:44 +0200, Lars-Peter Clausen wrote:
->>>> On 10/13/2015 03:37 PM, Koro Chen wrote:
->>>>> The patch "ASoC: Prevent components from being bound to multiple cards"
->>>>> adds check to prevent multiple cards from using the same component.
->>>>> However, snd_soc_register_platform() or snd_soc_register_codec() will
->>>>> also create components, and sharing the same platform by multiple cards
->>>>> is then refused. This happens with a platform having multiple
->>>>> independent DAIs that share the same DMA controller.
->>>>>
->>>>> Relax the condition by checking component->registered_as_component,
->>>>> which is only true in case of snd_soc_register_component() and
->>>>> will be false for components created by snd_soc_register_platform()
->>>>> or snd_soc_register_codec().
->>>>
->>>> Binding a component to multiple cards results in internal data structure
->>>> corruption, regardless of whether it is a raw component, CODEC or platform,
->>>> which is why the check was added. So the proposed change wont work.
->>>>
->>> Thanks for your comment. Is it possible to share an example of how the
->>> data structure will be corrupted? So I can study into this further.
->>
->> Just look at soc_probe_component() and think about what happens if that runs
->> twice for two different cards. Multiple calls to list_add() on the same
->> list, controls are added multiple times, DAPM widgets are created multiple
->> times, the card field will only point to the last card.
->>
-> When multiple binding happens, soc_probe_component() just returns zero
-> without doing anything after this patch (actually it also returned zero
-> before the patch "ASoC: Prevent components from being bound to multiple
-> cards"). So the component still binds to the first card. For this case I
-> think it should be fine?
+Hi all,
 
-Same answer as before more or less. There is a lot of card specific
-initialization happening in soc_probe_component(). The card field is
-initialized to the card the component is bound to, the DAPM widgets are
-created for the component in the cards DAPM graph, DAI link widgets are
-created and so on. If you bind the component to multiple cards the
-initialization will only be done for one card, the first one it was bound
-to, that doesn't make too much sense. If you look at the snd_soc_component
-data structure it should be obvious that it does not make sense to associate
-it with more than a single card.
+If you have any suggestion, please let me know.
+Thanks.
 
-It was never intended that it is possible to bind a component to multiple
-cards. That it was possible was a bug that was overlooked and some people
-tried to do it which caused apparently random crashes later on, caused by
-the data structure corruption. This is why we added the check to catch this
-kind of mistake early and to avoid the crashes.
+Regards,
+YH Huang
 
-- Lars
+On Wed, 2015-09-16 at 22:42 +0800, YH Huang wrote:
+> In order to match the panel power sequence, disable the enable_gpio
+> in the probe function. Also, reorder the code in the power_on and
+> power_off function to match the timing.
+> 
+> Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> ---
+>  drivers/video/backlight/pwm_bl.c |   15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
+> index eff379b..99eca1e 100644
+> --- a/drivers/video/backlight/pwm_bl.c
+> +++ b/drivers/video/backlight/pwm_bl.c
+> @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
+>  	if (err < 0)
+>  		dev_err(pb->dev, "failed to enable power supply\n");
+>  
+> +	pwm_enable(pb->pwm);
+> +
+>  	if (pb->enable_gpio)
+>  		gpiod_set_value(pb->enable_gpio, 1);
+>  
+> -	pwm_enable(pb->pwm);
+>  	pb->enabled = true;
+>  }
+>  
+> @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
+>  	if (!pb->enabled)
+>  		return;
+>  
+> -	pwm_config(pb->pwm, 0, pb->period);
+> -	pwm_disable(pb->pwm);
+> -
+>  	if (pb->enable_gpio)
+>  		gpiod_set_value(pb->enable_gpio, 0);
+>  
+> +	pwm_config(pb->pwm, 0, pb->period);
+> +	pwm_disable(pb->pwm);
+> +
+>  	regulator_disable(pb->power_supply);
+>  	pb->enabled = false;
+>  }
+> @@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_device *pdev)
+>  	pb->dev = &pdev->dev;
+>  	pb->enabled = false;
+>  
+> -	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
+> -						  GPIOD_OUT_HIGH);
+> +	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable");
+>  	if (IS_ERR(pb->enable_gpio)) {
+>  		ret = PTR_ERR(pb->enable_gpio);
+>  		goto err_alloc;
+> @@ -264,6 +264,9 @@ static int pwm_backlight_probe(struct platform_device *pdev)
+>  		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
+>  	}
+>  
+> +	if (pb->enable_gpio)
+> +		gpiod_direction_output(pb->enable_gpio, 0);
+> +
+>  	pb->power_supply = devm_regulator_get(&pdev->dev, "power");
+>  	if (IS_ERR(pb->power_supply)) {
+>  		ret = PTR_ERR(pb->power_supply);
