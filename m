@@ -1,73 +1,106 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v4 3/3] arm64: dts: mt8173: Add nor flash node
-Date: Wed, 14 Oct 2015 19:26:36 +0800
-Message-ID: <CAGS+omDQQ8UDM2pOtU-koz9tfag4SG3Sgf_LrtzsUxeutrTThA@mail.gmail.com>
-References: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
- <1444729160-26433-4-git-send-email-bayi.cheng@mediatek.com>
- <561D1642.3070105@cogentembedded.com> <CAGS+omDm=74d6cw7kXwkZ_Jy-faBz7z4-vJQX9ZFVNskQqSS-w@mail.gmail.com>
- <561E36ED.7090103@cogentembedded.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH] pwm-backlight: fix the panel power sequence
+Date: Wed, 14 Oct 2015 13:27:14 +0100
+Message-ID: <20151014122714.GI32409@x1>
+References: <1442414556-32381-1-git-send-email-yh.huang@mediatek.com>
+ <1444816875.31675.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <561E36ED.7090103@cogentembedded.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Cc: Bayi Cheng <bayi.cheng@mediatek.com>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1444816875.31675.2.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Sergei,
+On Wed, 14 Oct 2015, YH Huang wrote:
 
-On Wed, Oct 14, 2015 at 7:05 PM, Sergei Shtylyov
-<sergei.shtylyov@cogentembedded.com> wrote:
-> Hello.
->
-> On 10/14/2015 4:07 AM, Daniel Kurtz wrote:
->
->>>> Add Mediatek nor flash node
->>>>
->>>> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
->>>> ---
->>>>    arch/arm64/boot/dts/mediatek/mt8173.dtsi | 15 +++++++++++++++
->>>>    1 file changed, 15 insertions(+)
->>>>
->>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>> b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>> index d18ee42..385c2e4 100644
->>>> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->>>> @@ -365,6 +365,21 @@
->>>>                          status = "disabled";
->>>>                  };
->>>>
->>>> +               nor_flash: spi@1100d000 {
->>>
->>>
->>>     I don't think this is a good label name for a SPI controller.
->>
->>
->> You think "spi" is not a good name for SPI controller?
->> Or you mean the label "nor_flash"?
->
->
->    I think I said clearly: "label". :-)
->
->> Would you prefer:
->>
->>    spi_nor_flash: spi@1100d000
->
->
->    I'd prefer the "_nor_flash" part to be dropped, to be used for the real
-> flash device (if needed) which is a sub-node of this node.
+> Hi all,
+>=20
+> If you have any suggestion, please let me know.
+> Thanks.
 
-The dedicated nor_flash spi bus cannot just be labeled 'spi', as that
-would conflict with the general purpose 'spi' bus.  Instead, it is
-given a unique label that can be used as a phandle elsewhere (e.g., in
-a board file, to enable the bus).  The name "spi_nor_flash" makes it
-clear that this spi bus is only for use for accessing the nor_flash.
+Please don't do that.
 
-Bayi: Actually, this reminds me.  I'd prefer if the bus node was
-disabled by default, and only enabled by boards as required.  So, the
-node should include:
-   status = "disabled";
+If you think the patch has fallen through the gaps, please just RESEND
+it, like [RESEND vX] $subject.
 
--Dan
+> On Wed, 2015-09-16 at 22:42 +0800, YH Huang wrote:
+> > In order to match the panel power sequence, disable the enable_gpio
+> > in the probe function. Also, reorder the code in the power_on and
+> > power_off function to match the timing.
+> >=20
+> > Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> > ---
+> >  drivers/video/backlight/pwm_bl.c |   15 +++++++++------
+> >  1 file changed, 9 insertions(+), 6 deletions(-)
+> >=20
+> > diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backl=
+ight/pwm_bl.c
+> > index eff379b..99eca1e 100644
+> > --- a/drivers/video/backlight/pwm_bl.c
+> > +++ b/drivers/video/backlight/pwm_bl.c
+> > @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_b=
+l_data *pb, int brightness)
+> >  	if (err < 0)
+> >  		dev_err(pb->dev, "failed to enable power supply\n");
+> > =20
+> > +	pwm_enable(pb->pwm);
+> > +
+> >  	if (pb->enable_gpio)
+> >  		gpiod_set_value(pb->enable_gpio, 1);
+> > =20
+> > -	pwm_enable(pb->pwm);
+> >  	pb->enabled =3D true;
+> >  }
+> > =20
+> > @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_=
+bl_data *pb)
+> >  	if (!pb->enabled)
+> >  		return;
+> > =20
+> > -	pwm_config(pb->pwm, 0, pb->period);
+> > -	pwm_disable(pb->pwm);
+> > -
+> >  	if (pb->enable_gpio)
+> >  		gpiod_set_value(pb->enable_gpio, 0);
+> > =20
+> > +	pwm_config(pb->pwm, 0, pb->period);
+> > +	pwm_disable(pb->pwm);
+> > +
+> >  	regulator_disable(pb->power_supply);
+> >  	pb->enabled =3D false;
+> >  }
+> > @@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_=
+device *pdev)
+> >  	pb->dev =3D &pdev->dev;
+> >  	pb->enabled =3D false;
+> > =20
+> > -	pb->enable_gpio =3D devm_gpiod_get_optional(&pdev->dev, "enable",
+> > -						  GPIOD_OUT_HIGH);
+> > +	pb->enable_gpio =3D devm_gpiod_get_optional(&pdev->dev, "enable")=
+;
+> >  	if (IS_ERR(pb->enable_gpio)) {
+> >  		ret =3D PTR_ERR(pb->enable_gpio);
+> >  		goto err_alloc;
+> > @@ -264,6 +264,9 @@ static int pwm_backlight_probe(struct platform_=
+device *pdev)
+> >  		pb->enable_gpio =3D gpio_to_desc(data->enable_gpio);
+> >  	}
+> > =20
+> > +	if (pb->enable_gpio)
+> > +		gpiod_direction_output(pb->enable_gpio, 0);
+> > +
+> >  	pb->power_supply =3D devm_regulator_get(&pdev->dev, "power");
+> >  	if (IS_ERR(pb->power_supply)) {
+> >  		ret =3D PTR_ERR(pb->power_supply);
+>=20
+>=20
+
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
