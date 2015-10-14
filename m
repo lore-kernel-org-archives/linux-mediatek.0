@@ -1,106 +1,90 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH] pwm-backlight: fix the panel power sequence
-Date: Wed, 14 Oct 2015 13:27:14 +0100
-Message-ID: <20151014122714.GI32409@x1>
-References: <1442414556-32381-1-git-send-email-yh.huang@mediatek.com>
- <1444816875.31675.2.camel@mtksdaap41>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 5/6] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Wed, 14 Oct 2015 14:53:09 +0200
+Message-ID: <20151014125309.GO27420@8bytes.org>
+References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
+	<1444357388-30257-6-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1444816875.31675.2.camel@mtksdaap41>
-Sender: linux-pwm-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
+In-Reply-To: <1444357388-30257-6-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 14 Oct 2015, YH Huang wrote:
+On Fri, Oct 09, 2015 at 10:23:07AM +0800, Yong Wu wrote:
+> +	/*
+> +	 * There is a domain for each a iommu device in normal case.
+> +	 * But MTK only has one iommu domain called the m4u domain which all
+> +	 * the multimedia HW share. Here we reserve one as the m4u domain and
+> +	 * free the others.
+> +	 *
+> +	 * And the attach_device that from __iommu_setup_dma_ops
+> +	 * will be called earlier than probe.
+> +	 */
 
-> Hi all,
->=20
-> If you have any suggestion, please let me know.
-> Thanks.
+Okay, with this being the case, you need to put all devices behind one
+IOMMU into the same iommu-group, because the IOMMU can't really isolate
+the devices from each other.
 
-Please don't do that.
+> +static int mtk_iommu_add_device(struct device *dev)
+> +{
+> +	struct iommu_group *group;
+> +	struct mtk_iommu_client_priv *priv;
+> +	struct mtk_iommu_domain *m4udom;
+> +	struct iommu_domain *domain;
+> +	int ret;
+> +
+> +	if (!dev->archdata.iommu) /* Not a iommu client device */
+> +		return -ENODEV;
+> +
+> +	group = iommu_group_get(dev);
+> +	if (!group) {
+> +		group = iommu_group_alloc();
+> +		if (IS_ERR(group)) {
+> +			dev_err(dev, "Failed to allocate IOMMU group\n");
+> +			return PTR_ERR(group);
+> +		}
+> +	}
+> +
+> +	ret = iommu_group_add_device(group, dev);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to add IOMMU group\n");
+> +		goto err_group_put;
+> +	}
+> +
+> +	domain = iommu_get_domain_for_dev(dev);
+> +	if (!domain) {
+> +		/*
+> +		 * Get the m4u iommu domain from the m4u device.
+> +		 * Attach all the client devices into the m4u domain.
+> +		 */
+> +		priv = dev->archdata.iommu;
+> +		m4udom = dev_get_drvdata(priv->m4udev);
+> +		ret = iommu_attach_group(&m4udom->domain, group);
+> +		if (ret)
+> +			dev_err(dev, "Failed to attach IOMMU group\n");
+> +	}
+> +
+> +err_group_put:
+> +	iommu_group_put(group);
+> +	return ret;
+> +}
 
-If you think the patch has fallen through the gaps, please just RESEND
-it, like [RESEND vX] $subject.
+Here it looks like you are allocating one group for each device. As I
+said, all devices need to be in one group.
 
-> On Wed, 2015-09-16 at 22:42 +0800, YH Huang wrote:
-> > In order to match the panel power sequence, disable the enable_gpio
-> > in the probe function. Also, reorder the code in the power_on and
-> > power_off function to match the timing.
-> >=20
-> > Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> > ---
-> >  drivers/video/backlight/pwm_bl.c |   15 +++++++++------
-> >  1 file changed, 9 insertions(+), 6 deletions(-)
-> >=20
-> > diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backl=
-ight/pwm_bl.c
-> > index eff379b..99eca1e 100644
-> > --- a/drivers/video/backlight/pwm_bl.c
-> > +++ b/drivers/video/backlight/pwm_bl.c
-> > @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_b=
-l_data *pb, int brightness)
-> >  	if (err < 0)
-> >  		dev_err(pb->dev, "failed to enable power supply\n");
-> > =20
-> > +	pwm_enable(pb->pwm);
-> > +
-> >  	if (pb->enable_gpio)
-> >  		gpiod_set_value(pb->enable_gpio, 1);
-> > =20
-> > -	pwm_enable(pb->pwm);
-> >  	pb->enabled =3D true;
-> >  }
-> > =20
-> > @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_=
-bl_data *pb)
-> >  	if (!pb->enabled)
-> >  		return;
-> > =20
-> > -	pwm_config(pb->pwm, 0, pb->period);
-> > -	pwm_disable(pb->pwm);
-> > -
-> >  	if (pb->enable_gpio)
-> >  		gpiod_set_value(pb->enable_gpio, 0);
-> > =20
-> > +	pwm_config(pb->pwm, 0, pb->period);
-> > +	pwm_disable(pb->pwm);
-> > +
-> >  	regulator_disable(pb->power_supply);
-> >  	pb->enabled =3D false;
-> >  }
-> > @@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_=
-device *pdev)
-> >  	pb->dev =3D &pdev->dev;
-> >  	pb->enabled =3D false;
-> > =20
-> > -	pb->enable_gpio =3D devm_gpiod_get_optional(&pdev->dev, "enable",
-> > -						  GPIOD_OUT_HIGH);
-> > +	pb->enable_gpio =3D devm_gpiod_get_optional(&pdev->dev, "enable")=
-;
-> >  	if (IS_ERR(pb->enable_gpio)) {
-> >  		ret =3D PTR_ERR(pb->enable_gpio);
-> >  		goto err_alloc;
-> > @@ -264,6 +264,9 @@ static int pwm_backlight_probe(struct platform_=
-device *pdev)
-> >  		pb->enable_gpio =3D gpio_to_desc(data->enable_gpio);
-> >  	}
-> > =20
-> > +	if (pb->enable_gpio)
-> > +		gpiod_direction_output(pb->enable_gpio, 0);
-> > +
-> >  	pb->power_supply =3D devm_regulator_get(&pdev->dev, "power");
-> >  	if (IS_ERR(pb->power_supply)) {
-> >  		ret =3D PTR_ERR(pb->power_supply);
->=20
->=20
 
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+
+	Joerg
