@@ -1,69 +1,126 @@
-From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 3/4] mmc: mediatek: Add tune support
-Date: Thu, 15 Oct 2015 18:56:39 +0800
-Message-ID: <1444906599.8751.23.camel@mhfsdcap03>
-References: <1444729078-26585-1-git-send-email-chaotian.jing@mediatek.com>
- <1444729078-26585-4-git-send-email-chaotian.jing@mediatek.com>
- <20151015062958.GG7825@pengutronix.de>
- <1444898402.8751.21.camel@mhfsdcap03>
- <20151015085832.GV7858@pengutronix.de>
+From: dawei chien <dawei.chien@mediatek.com>
+Subject: Re: [PATCH v2 1/2] thermal: mediatek: Add cpu power cooling model.
+Date: Thu, 15 Oct 2015 19:31:47 +0800
+Message-ID: <1444908707.23970.6.camel@mtksdaap41>
+References: <1444220561-26139-1-git-send-email-dawei.chien@mediatek.com>
+	 <1444220561-26139-2-git-send-email-dawei.chien@mediatek.com>
+	 <20151007155745.GD28981@leverpostej>
+	 <9hhoag4dmlg.fsf@e105922-lin.cambridge.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20151015085832.GV7858-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <9hhoag4dmlg.fsf@e105922-lin.cambridge.arm.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Punit Agrawal <punit.agrawal@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-10-15 at 10:58 +0200, Sascha Hauer wrote:
-> On Thu, Oct 15, 2015 at 04:40:02PM +0800, Chaotian Jing wrote:
-> > On Thu, 2015-10-15 at 08:29 +0200, Sascha Hauer wrote:
-> > > Hi,
-> > > 
-> > > On Tue, Oct 13, 2015 at 05:37:57PM +0800, Chaotian Jing wrote:
-> > > > @@ -1260,6 +1547,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
-> > > >  		goto host_free;
-> > > >  	}
-> > > >  
-> > > > +	host->src_clk_parent = clk_get_parent(host->src_clk);
-> > > > +	host->hs400_src = devm_clk_get(&pdev->dev, "400mhz");
-> > > > +	if (IS_ERR(host->hs400_src)) {
-> > > > +		dev_dbg(&pdev->dev, "Cannot find 400mhz at dts!\n");
-> > > > +	} else if (clk_set_parent(host->src_clk_parent, host->hs400_src) < 0) {
-> > > > +		dev_err(host->dev, "Failed to set 400mhz source clock!\n");
-> > > > +		ret = -EINVAL;
-> > > > +		goto host_free;
-> > > > +	}
-> > > 
-> > > This is a static setup. We have device tree bindings for doing this.
-> > > Please look for assigned-clocks and assigned-clock-parents. Doing stuff
-> > > like this in the driver almost certainly leads to problems because the
-> > > next SoC will have different requirements here.
-> > > 
-> > 
-> > Sorry, I cannot understand it, could you help to give some sample code
-> > about this ?
+On Mon, 2015-10-12 at 18:26 +0100, Punit Agrawal wrote:
+> Mark Rutland <mark.rutland@arm.com> writes:
 > 
-> 	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>
-> 	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>
+> > On Wed, Oct 07, 2015 at 08:22:40PM +0800, Dawei Chien wrote:
+> >> From: "Dawei.Chien" <dawei.chien@mediatek.com>
+> >> 
+> >> This power model is base on Intelligent Power Allocation (IPA) technical,
+> >> requires that the operating-points of the CPUs are registered using the
+> >> kernel's opp library and the `cpufreq_frequency_table` is assigned to the
+> >> `struct device` of the cpu MT8173.
+> >> 
+> >> Signed-off-by: Dawei.Chien <dawei.chien@mediatek.com>
+> >> ---
+> >> This patch is base on
+> >> https://patchwork.kernel.org/patch/7034601/
+> >> ---
+> >>  drivers/cpufreq/mt8173-cpufreq.c |   97 +++++++++++++++++++++++++++++++++-----
+> >>  1 file changed, 86 insertions(+), 11 deletions(-)
+> >> 
+> >> diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
+> >> index 49caed2..9233ec5 100644
+> >> --- a/drivers/cpufreq/mt8173-cpufreq.c
+> >> +++ b/drivers/cpufreq/mt8173-cpufreq.c
+> >> @@ -28,7 +28,8 @@
+> >>  #define MAX_VOLT_SHIFT		(200000)
+> >>  #define MAX_VOLT_LIMIT		(1150000)
+> >>  #define VOLT_TOL		(10000)
+> >> -
+> >> +#define CAPACITANCE_CA53	(263)
+> >> +#define CAPACITANCE_CA57	(530)
+> >>  /*
+> >>   * The struct mtk_cpu_dvfs_info holds necessary information for doing CPU DVFS
+> >>   * on each CPU power/clock domain of Mediatek SoCs. Each CPU cluster in
+> >> @@ -51,6 +52,72 @@ struct mtk_cpu_dvfs_info {
+> >>  	bool need_voltage_tracking;
+> >>  };
+> >>  
+> >> +struct mtk_cpu_static_power {
+> >> +	unsigned long voltage;
+> >> +	unsigned int power;
+> >> +};
+> >> +
+> >> +/* measured by WA program. */
+> >> +static const struct mtk_cpu_static_power mtk_ca53_static_power[] = {
+> >> +	{859000, 43},
+> >> +	{908000, 52},
+> >> +	{983000, 86},
+> >> +	{1009000, 123},
+> >> +	{1028000, 138},
+> >> +	{1083000, 172},
+> >> +	{1109000, 180},
+> >> +	{1125000, 192},
+> >> +};
+> >> +
+> >> +/* measured by WA program. */
+> >> +static const struct mtk_cpu_static_power mtk_ca57_static_power[] = {
+> >> +	{828000, 72},
+> >> +	{867000, 90},
+> >> +	{927000, 156},
+> >> +	{968000, 181},
+> >> +	{1007000, 298},
+> >> +	{1049000, 435},
+> >> +	{1089000, 533},
+> >> +	{1125000, 533},
+> >> +};
+> >
+> > This should be described in the DT, rather than necessitating tonnes of
+> > these tables in the kernel.
 > 
-> Have a look at drivers/clk/clk-conf.c and
-> Documentation/devicetree/bindings/clock/clock-bindings.txt
+> The above table is a simplification that is tying the static power of a
+> device to a voltage (indirectly via frequency for ease of indexing
+> perhaps).
 > 
-> Sascha
+> We should definitely look at describing the static power model in the
+> device tree - but it is not entirely clear what is the best model to
+> use as basis for the device tree bindings.
 > 
+> Static power consumption depends on a few different parameters (silicon
+> process, voltage, temperature, etc.). The relationship between them
+> maybe non-linear and not all of these maybe significant for a given
+> platform. e.g., for Juno, we are using a regression based on voltage and
+> temperature which was deemed close enough (very subjective tbh).
+> 
+> On the other hand, dynamic power consumption is somewhat simpler and I
+> have patches[0][1][2] enabling it's description in device tree. Your comments
+> there would be very much appreciated.
+> 
+> As for this patch, I hope it can be moved to using the device tree when
+> the bindings for static power are agreed upon. Although sub-optimal, I
+> can't see any other way forward for now.
+> 
+> [0] http://thread.gmane.org/gmane.linux.kernel/2011466/focus=130373
+> [1] http://thread.gmane.org/gmane.linux.kernel/2011466/focus=2011465
+> [2] http://article.gmane.org/gmane.linux.drivers.sensors/37859
 
-Thanks! I tried and it works.
-and, it is better to put it at mt8173-evb.dts, as the
-assigned-clock-parents may not be CLK_TOP_MSDCPLL_D2 if we want to
-select other clock source.
+Hi Mark/Punit,
+Thank you for your nice comments. I will resend this patch with device tree for dynamic/static power model,
+and refer to Punit's patches, thank you.
+
+> >
+> > Mark.
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-pm" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+
+
