@@ -1,126 +1,215 @@
-From: dawei chien <dawei.chien@mediatek.com>
-Subject: Re: [PATCH v2 1/2] thermal: mediatek: Add cpu power cooling model.
-Date: Thu, 15 Oct 2015 19:31:47 +0800
-Message-ID: <1444908707.23970.6.camel@mtksdaap41>
-References: <1444220561-26139-1-git-send-email-dawei.chien@mediatek.com>
-	 <1444220561-26139-2-git-send-email-dawei.chien@mediatek.com>
-	 <20151007155745.GD28981@leverpostej>
-	 <9hhoag4dmlg.fsf@e105922-lin.cambridge.arm.com>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: Re: [PATCH 3/4] mmc: mediatek: Add tune support
+Date: Thu, 15 Oct 2015 19:43:47 +0800
+Message-ID: <1444909427.8751.30.camel@mhfsdcap03>
+References: <1444729078-26585-1-git-send-email-chaotian.jing@mediatek.com>
+	 <1444729078-26585-4-git-send-email-chaotian.jing@mediatek.com>
+	 <CAPDyKFqUFRZF2M4ichgqM2SeRQbh52e5U1oFG9AExsq0SkFj9w@mail.gmail.com>
+	 <1444877180.8751.15.camel@mhfsdcap03>
+	 <CAPDyKFq5fMDY3e1daCs380nPvNiZRDw9bWg8-x6C4fphBKm+Hw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <9hhoag4dmlg.fsf@e105922-lin.cambridge.arm.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Punit Agrawal <punit.agrawal@arm.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFq5fMDY3e1daCs380nPvNiZRDw9bWg8-x6C4fphBKm+Hw@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Hans de Goede <hdegoede@redhat.com>, Lars-Peter Clausen <lars@metafoo.de>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Howard Chen <ibanezchen@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Adrian Hunter <adrian.hunter@intel.com>, Kristina Martsenko <kristina.martsenko@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-10-12 at 18:26 +0100, Punit Agrawal wrote:
-> Mark Rutland <mark.rutland@arm.com> writes:
+On Thu, 2015-10-15 at 11:17 +0200, Ulf Hansson wrote:
+> [...]
 > 
-> > On Wed, Oct 07, 2015 at 08:22:40PM +0800, Dawei Chien wrote:
-> >> From: "Dawei.Chien" <dawei.chien@mediatek.com>
-> >> 
-> >> This power model is base on Intelligent Power Allocation (IPA) technical,
-> >> requires that the operating-points of the CPUs are registered using the
-> >> kernel's opp library and the `cpufreq_frequency_table` is assigned to the
-> >> `struct device` of the cpu MT8173.
-> >> 
-> >> Signed-off-by: Dawei.Chien <dawei.chien@mediatek.com>
-> >> ---
-> >> This patch is base on
-> >> https://patchwork.kernel.org/patch/7034601/
-> >> ---
-> >>  drivers/cpufreq/mt8173-cpufreq.c |   97 +++++++++++++++++++++++++++++++++-----
-> >>  1 file changed, 86 insertions(+), 11 deletions(-)
-> >> 
-> >> diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-> >> index 49caed2..9233ec5 100644
-> >> --- a/drivers/cpufreq/mt8173-cpufreq.c
-> >> +++ b/drivers/cpufreq/mt8173-cpufreq.c
-> >> @@ -28,7 +28,8 @@
-> >>  #define MAX_VOLT_SHIFT		(200000)
-> >>  #define MAX_VOLT_LIMIT		(1150000)
-> >>  #define VOLT_TOL		(10000)
-> >> -
-> >> +#define CAPACITANCE_CA53	(263)
-> >> +#define CAPACITANCE_CA57	(530)
-> >>  /*
-> >>   * The struct mtk_cpu_dvfs_info holds necessary information for doing CPU DVFS
-> >>   * on each CPU power/clock domain of Mediatek SoCs. Each CPU cluster in
-> >> @@ -51,6 +52,72 @@ struct mtk_cpu_dvfs_info {
-> >>  	bool need_voltage_tracking;
-> >>  };
-> >>  
-> >> +struct mtk_cpu_static_power {
-> >> +	unsigned long voltage;
-> >> +	unsigned int power;
-> >> +};
-> >> +
-> >> +/* measured by WA program. */
-> >> +static const struct mtk_cpu_static_power mtk_ca53_static_power[] = {
-> >> +	{859000, 43},
-> >> +	{908000, 52},
-> >> +	{983000, 86},
-> >> +	{1009000, 123},
-> >> +	{1028000, 138},
-> >> +	{1083000, 172},
-> >> +	{1109000, 180},
-> >> +	{1125000, 192},
-> >> +};
-> >> +
-> >> +/* measured by WA program. */
-> >> +static const struct mtk_cpu_static_power mtk_ca57_static_power[] = {
-> >> +	{828000, 72},
-> >> +	{867000, 90},
-> >> +	{927000, 156},
-> >> +	{968000, 181},
-> >> +	{1007000, 298},
-> >> +	{1049000, 435},
-> >> +	{1089000, 533},
-> >> +	{1125000, 533},
-> >> +};
-> >
-> > This should be described in the DT, rather than necessitating tonnes of
-> > these tables in the kernel.
+> >> >
+> >> >         struct clk *src_clk;    /* msdc source clock */
+> >> > +       struct clk *src_clk_parent; /* src_clk's parent */
+> >> > +       struct clk *hs400_src;  /* 400Mhz source clock */
+> >>
+> >> Hmm, so you need to control the upper level clocks. Can you elaborate
+> >> on why this is needed?
+> >>
+> > hs400 is DDR200, in our host design, if the mode is DDR(HS400), if want
+> > to get 200Mhz mmc bus clock frequency, the minimum source clock is
+> > double of the mmc bus clock, So, we need it for HS400 mode with 200Mhz
+> > bus clock.
 > 
-> The above table is a simplification that is tying the static power of a
-> device to a voltage (indirectly via frequency for ease of indexing
-> perhaps).
+> Thanks for clarifying.
 > 
-> We should definitely look at describing the static power model in the
-> device tree - but it is not entirely clear what is the best model to
-> use as basis for the device tree bindings.
+> [...]
 > 
-> Static power consumption depends on a few different parameters (silicon
-> process, voltage, temperature, etc.). The relationship between them
-> maybe non-linear and not all of these maybe significant for a given
-> platform. e.g., for Juno, we are using a regression based on voltage and
-> temperature which was deemed close enough (very subjective tbh).
+>  >         flags = readl(host->base + MSDC_INTEN);
+> >> >         sdr_clr_bits(host->base + MSDC_INTEN, flags);
+> >> > -       if (ddr) { /* may need to modify later */
+> >> > -               mode = 0x2; /* ddr mode and use divisor */
+> >> > +       sdr_clr_bits(host->base + MSDC_CFG, MSDC_CFG_HS400_CK_MODE);
+> >> > +       if (timing == MMC_TIMING_UHS_DDR50 ||
+> >> > +           timing == MMC_TIMING_MMC_DDR52 ||
+> >>
+> >> So, no support for HS200?
+> >>
+> > HS200 is the same with other SDR modes, so it will be handled at else..
 > 
-> On the other hand, dynamic power consumption is somewhat simpler and I
-> have patches[0][1][2] enabling it's description in device tree. Your comments
-> there would be very much appreciated.
+> Okay, nice!
 > 
-> As for this patch, I hope it can be moved to using the device tree when
-> the bindings for static power are agreed upon. Although sub-optimal, I
-> can't see any other way forward for now.
+> So, your the driver currently supports HS200, but without need for tuning!?
 > 
-> [0] http://thread.gmane.org/gmane.linux.kernel/2011466/focus=130373
-> [1] http://thread.gmane.org/gmane.linux.kernel/2011466/focus=2011465
-> [2] http://article.gmane.org/gmane.linux.drivers.sensors/37859
 
-Hi Mark/Punit,
-Thank you for your nice comments. I will resend this patch with device tree for dynamic/static power model,
-and refer to Punit's patches, thank you.
+It support and need tuning for HS200, but do not support tuning for
+HS400, that's why we fixed the hs400_ds_delay by project.
 
-> >
-> > Mark.
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-pm" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> [...]
+> 
+> >> > +static struct msdc_delay_phase get_best_delay(u32 delay)
+> >> > +{
+> >> > +       int start = 0, len = 0;
+> >> > +       int start_final = 0, len_final = 0;
+> >> > +       u8 final_phase = 0xff;
+> >> > +       struct msdc_delay_phase delay_phase;
+> >> > +
+> >> > +       if (delay == 0) {
+> >> > +               pr_err("phase error: [map:%x]\n", delay);
+> >>
+> >> Please use dev_err|warn|dbg|info instead.
+> >>
+> > As you know, this function is just only parse the argument "u32 delay",
+> > it do not bind with any device.
+> 
+> You may just add a msdc_host * as a parameter to the function, that
+> would solve this.
+> 
 
+Ok, will do it.
+
+> [...]
+> 
+> >> > +static int msdc_send_tuning(struct mmc_host *host, u32 opcode, int *cmd_error)
+> >>
+> >> I think you can remove this function and use mmc_send_tuning() instead.
+> > Hmm, I also noticed that there was a mmc_send_tuning, but, I need to get
+> > the cmd_error when tune cmd response, in this case, do not care the data
+> > error.
+> 
+> Well, if you need to extend the mmc_send_tuning() API to suite your
+> needs, let's do that instead of duplicating code.
+> 
+
+OK, will extend the mmc_send_tuning, but it need change other vendor's
+MMC driver, because it already use the mmc_send_tuning()
+
+> >>
+> >> > +{
+> >> > +       struct mmc_request mrq = {NULL};
+> >> > +       struct mmc_command cmd = {0};
+> >> > +       struct mmc_data data = {0};
+> >> > +       struct scatterlist sg;
+> >> > +       struct mmc_ios *ios = &host->ios;
+> >> > +       int size, err = 0;
+> >> > +       u8 *data_buf;
+> >> > +
+> >> > +       if (ios->bus_width == MMC_BUS_WIDTH_8)
+> >> > +               size = 128;
+> >> > +       else if (ios->bus_width == MMC_BUS_WIDTH_4)
+> >> > +               size = 64;
+> >> > +       else
+> >> > +               return -EINVAL;
+> >> > +
+> >> > +       data_buf = kzalloc(size, GFP_KERNEL);
+> >> > +       if (!data_buf)
+> >> > +               return -ENOMEM;
+> >> > +
+> >> > +       mrq.cmd = &cmd;
+> >> > +       mrq.data = &data;
+> >> > +
+> >> > +       cmd.opcode = opcode;
+> >> > +       cmd.flags = MMC_RSP_R1 | MMC_CMD_ADTC;
+> >> > +
+> >> > +       data.blksz = size;
+> >> > +       data.blocks = 1;
+> >> > +       data.flags = MMC_DATA_READ;
+> >> > +
+> >> > +       /*
+> >> > +        * According to the tuning specs, Tuning process
+> >> > +        * is normally shorter 40 executions of CMD19,
+> >> > +        * and timeout value should be shorter than 150 ms
+> >> > +        */
+> >> > +       data.timeout_ns = 150 * NSEC_PER_MSEC;
+> >> > +
+> >> > +       data.sg = &sg;
+> >> > +       data.sg_len = 1;
+> >> > +       sg_init_one(&sg, data_buf, size);
+> >> > +
+> >> > +       mmc_wait_for_req(host, &mrq);
+> >> > +
+> >> > +       if (cmd_error)
+> >> > +               *cmd_error = cmd.error;
+> >> > +
+> >> > +       if (cmd.error) {
+> >> > +               err = cmd.error;
+> >> > +               goto out;
+> >> > +       }
+> >> > +
+> >> > +       if (data.error) {
+> >> > +               err = data.error;
+> >> > +               goto out;
+> >> > +       }
+> >> > +
+> >> > +out:
+> >> > +       kfree(data_buf);
+> >> > +       return err;
+> >> > +}
+> >> > +
+> 
+> [...]
+> 
+> >> > +       host->src_clk_parent = clk_get_parent(host->src_clk);
+> >>
+> >> Don't you need to check the return value here?
+> >>
+> > will check it.
+> >> > +       host->hs400_src = devm_clk_get(&pdev->dev, "400mhz");
+> >>
+> >> That's a really weird conid for a clock. If it's not too late to
+> >> change, please do that!
+> >>
+> >> > +       if (IS_ERR(host->hs400_src)) {
+> >> > +               dev_dbg(&pdev->dev, "Cannot find 400mhz at dts!\n");
+> >> > +       } else if (clk_set_parent(host->src_clk_parent, host->hs400_src) < 0) {
+> >> > +               dev_err(host->dev, "Failed to set 400mhz source clock!\n");
+> >> > +               ret = -EINVAL;
+> >>
+> >> I think it seems more apropriate to use the return value from
+> >> clk_set_parent() instead of inventing your own return value.
+> >>
+> > OK.
+> >> > +               goto host_free;
+> >> > +       }
+> >>
+> >> It seems like you don't need to store the src_clk_parent and the
+> >> hs400_src in the host struct, as you are only using it during
+> >> ->probe().
+> > OK,will remove the member src_clk.
+> 
+> According to your earlier clarification about the clock source and
+> clock rate. I think a more proper solution would be to use the
+> clk_set_min_rate() or clk_set_rate_range() API, instead of dealing
+> with re-parenting of the clock as above.
+> 
+> FYI, a clock provider may implement the ->determine_rate() ops to deal
+> with re-parenting to find the requested clock rate.
+> 
+
+Actually,  at first, I use the clk_set_rate(), but our CCF owner
+suggests to use clk_set_parent, because the same clock frequency, may
+have several parent clock.
+by the way, Sascha suggests to use the "assigned-clocks" and
+"assigned-clock-parents", I tried and it works, and ,will move it from
+mt8173.dtsi to mt8173-evb.dts, because customer may want use other
+parent clock in it's projects.
+Thx!
+
+> [...]
+> 
+> Kind regards
+> Uffe
 
 
