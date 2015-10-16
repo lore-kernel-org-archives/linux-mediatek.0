@@ -1,97 +1,88 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3] mmc: core: Fix init_card in 52Mhz
-Date: Fri, 16 Oct 2015 10:25:52 +0200
-Message-ID: <CAPDyKFrATv2=ywT2-tCLCTgTuFeOr1odWQgsCk8-XpKjY0GnjA@mail.gmail.com>
-References: <1444641743-15614-1-git-send-email-chaotian.jing@mediatek.com>
+From: Lucas Stach <l.stach@pengutronix.de>
+Subject: Re: [RESEND PATCH] pwm-backlight: fix the panel power sequence
+Date: Fri, 16 Oct 2015 10:31:53 +0200
+Message-ID: <1444984313.3180.6.camel@pengutronix.de>
+References: <1444959454-1516-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1444641743-15614-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, Adrian Hunter <adrian.hunter@intel.com>, Fabio Estevam <fabio.estevam@freescale.com>, Johan Rudholm <johan.rudholm@axis.com>, Gwendal Grignou <gwendal@chromium.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1444959454-1516-1-git-send-email-yh.huang@mediatek.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12 October 2015 at 11:22, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> Suppose that we got a data crc error, and it triggers the mmc_reset.
-> mmc_reset will call mmc_send_status to see if HW reset was supported.
-> before issue CMD13, it will do retune, and if EMMC was in HS400 mode,
-> it will reduce frequency to 52Mhz firstly, then results in card init
-> was doing at 52Mhz.
-> The mmc_send_status was originally only done for mmc_test, should drop
-> it. And, rename the "eMMC hardware reset" to "Reset test", as we would
-> also be able to use the test for SD-cards.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> Suggested-by: Adrian Hunter <adrian.hunter@intel.com>
+Am Freitag, den 16.10.2015, 09:37 +0800 schrieb YH Huang:
+> In order to match the panel power sequence, disable the enable_gpio
+> in the probe function. Also, reorder the code in the power_on and
+> power_off function to match the timing.
+> 
+You aren't specifying which panels power sequence you are matching here.
+Are you sure you aren't breaking other panels with this patch?
 
-Thanks, applied for fixes!
+Regards,
+Lucas
 
-Kind regards
-Uffe
-
+> Signed-off-by: YH Huang <yh.huang@mediatek.com>
 > ---
->  drivers/mmc/card/mmc_test.c | 9 +++------
->  drivers/mmc/core/mmc.c      | 7 -------
->  2 files changed, 3 insertions(+), 13 deletions(-)
->
-> diff --git a/drivers/mmc/card/mmc_test.c b/drivers/mmc/card/mmc_test.c
-> index b78cf5d..7fc9174 100644
-> --- a/drivers/mmc/card/mmc_test.c
-> +++ b/drivers/mmc/card/mmc_test.c
-> @@ -2263,15 +2263,12 @@ static int mmc_test_profile_sglen_r_nonblock_perf(struct mmc_test_card *test)
->  /*
->   * eMMC hardware reset.
->   */
-> -static int mmc_test_hw_reset(struct mmc_test_card *test)
-> +static int mmc_test_reset(struct mmc_test_card *test)
->  {
->         struct mmc_card *card = test->card;
->         struct mmc_host *host = card->host;
->         int err;
->
-> -       if (!mmc_card_mmc(card) || !mmc_can_reset(card))
-> -               return RESULT_UNSUP_CARD;
+>  drivers/video/backlight/pwm_bl.c |   15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
+> index eff379b..99eca1e 100644
+> --- a/drivers/video/backlight/pwm_bl.c
+> +++ b/drivers/video/backlight/pwm_bl.c
+> @@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
+>  	if (err < 0)
+>  		dev_err(pb->dev, "failed to enable power supply\n");
+>  
+> +	pwm_enable(pb->pwm);
+> +
+>  	if (pb->enable_gpio)
+>  		gpiod_set_value(pb->enable_gpio, 1);
+>  
+> -	pwm_enable(pb->pwm);
+>  	pb->enabled = true;
+>  }
+>  
+> @@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
+>  	if (!pb->enabled)
+>  		return;
+>  
+> -	pwm_config(pb->pwm, 0, pb->period);
+> -	pwm_disable(pb->pwm);
 > -
->         err = mmc_hw_reset(host);
->         if (!err)
->                 return RESULT_OK;
-> @@ -2605,8 +2602,8 @@ static const struct mmc_test_case mmc_test_cases[] = {
->         },
->
->         {
-> -               .name = "eMMC hardware reset",
-> -               .run = mmc_test_hw_reset,
-> +               .name = "Reset test",
-> +               .run = mmc_test_reset,
->         },
->  };
->
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> index e726903..f6cd995 100644
-> --- a/drivers/mmc/core/mmc.c
-> +++ b/drivers/mmc/core/mmc.c
-> @@ -1924,7 +1924,6 @@ EXPORT_SYMBOL(mmc_can_reset);
->  static int mmc_reset(struct mmc_host *host)
->  {
->         struct mmc_card *card = host->card;
-> -       u32 status;
->
->         if (!(host->caps & MMC_CAP_HW_RESET) || !host->ops->hw_reset)
->                 return -EOPNOTSUPP;
-> @@ -1937,12 +1936,6 @@ static int mmc_reset(struct mmc_host *host)
->
->         host->ops->hw_reset(host);
->
-> -       /* If the reset has happened, then a status command will fail */
-> -       if (!mmc_send_status(card, &status)) {
-> -               mmc_host_clk_release(host);
-> -               return -ENOSYS;
-> -       }
-> -
->         /* Set initial state and call mmc_set_ios */
->         mmc_set_initial_state(host);
->         mmc_host_clk_release(host);
-> --
-> 1.8.1.1.dirty
->
+>  	if (pb->enable_gpio)
+>  		gpiod_set_value(pb->enable_gpio, 0);
+>  
+> +	pwm_config(pb->pwm, 0, pb->period);
+> +	pwm_disable(pb->pwm);
+> +
+>  	regulator_disable(pb->power_supply);
+>  	pb->enabled = false;
+>  }
+> @@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_device *pdev)
+>  	pb->dev = &pdev->dev;
+>  	pb->enabled = false;
+>  
+> -	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
+> -						  GPIOD_OUT_HIGH);
+> +	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable");
+>  	if (IS_ERR(pb->enable_gpio)) {
+>  		ret = PTR_ERR(pb->enable_gpio);
+>  		goto err_alloc;
+> @@ -264,6 +264,9 @@ static int pwm_backlight_probe(struct platform_device *pdev)
+>  		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
+>  	}
+>  
+> +	if (pb->enable_gpio)
+> +		gpiod_direction_output(pb->enable_gpio, 0);
+> +
+>  	pb->power_supply = devm_regulator_get(&pdev->dev, "power");
+>  	if (IS_ERR(pb->power_supply)) {
+>  		ret = PTR_ERR(pb->power_supply);
+
+-- 
+Pengutronix e.K.             | Lucas Stach                 |
+Industrial Linux Solutions   | http://www.pengutronix.de/  |
