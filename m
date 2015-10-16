@@ -1,36 +1,40 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [RESEND PATCH] pwm-backlight: fix the panel power sequence
-Date: Fri, 16 Oct 2015 10:36:16 +0200
-Message-ID: <20151016083616.GA7858@pengutronix.de>
-References: <1444959454-1516-1-git-send-email-yh.huang@mediatek.com>
+From: <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/3] Mediatek EFUSE Support
+Date: Fri, 16 Oct 2015 16:39:08 +0800
+Message-ID: <1444984751-4572-1-git-send-email-andrew-ct.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1444959454-1516-1-git-send-email-yh.huang@mediatek.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Oct 16, 2015 at 09:37:34AM +0800, YH Huang wrote:
-> In order to match the panel power sequence, disable the enable_gpio
-> in the probe function. Also, reorder the code in the power_on and
-> power_off function to match the timing.
-> @@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_device *pdev)
->  	pb->dev = &pdev->dev;
->  	pb->enabled = false;
->  
-> -	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
-> -						  GPIOD_OUT_HIGH);
-> +	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable");
+This patch adds EFUSE support driver which is used by other drivers
+like thermal sensor and HDMI impedance.
 
-Please actually test your patches. This change here won't compile.
+There are some efuses these fuses store things like calibration data,
+speed bins.. etc. Drivers like thermal sensor, HDMI impedance would
+read out this data for configuring the driver.
 
-Sascha
+Andrew-CT Chen (3):
+  dt-bindings: add document of mediatek efuse driver
+  nvmem: mediatek: Add Mediatek EFUSE driver
+  dts: arm64: Add EFUSE device node
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+ .../devicetree/bindings/nvmem/mtk-efuse.txt        | 36 +++++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  5 ++
+ drivers/nvmem/Kconfig                              | 11 +++
+ drivers/nvmem/Makefile                             |  1 +
+ drivers/nvmem/mtk-efuse.c                          | 89 ++++++++++++++++++++++
+ 5 files changed, 142 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+ create mode 100644 drivers/nvmem/mtk-efuse.c
+
+--
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
