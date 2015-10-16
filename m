@@ -1,85 +1,63 @@
-From: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RESEND PATCH] pwm-backlight: fix the panel power sequence
-Date: Fri, 16 Oct 2015 09:37:34 +0800
-Message-ID: <1444959454-1516-1-git-send-email-yh.huang@mediatek.com>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: Re: [RFC PATCH] ASoC: Modify check condition of
+ multiple bindings of components
+Date: Fri, 16 Oct 2015 10:31:53 +0800
+Message-ID: <1444962713.31246.6.camel@mtksdaap41>
+References: <1444743477-48819-1-git-send-email-koro.chen@mediatek.com>
+ <561D0AA9.5080702@metafoo.de> <1444745902.26493.2.camel@mtksdaap41>
+ <561D1843.1020007@metafoo.de> <1444785549.26493.12.camel@mtksdaap41>
+ <561E1991.1050705@metafoo.de> <20151015121035.GE14956@sirena.org.uk>
+ <561FA979.6030407@metafoo.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tomi Valkeinen <tomi.valkeinen-l0cyMroinI0@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Jean-Christophe Plagniol-Villard <plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <561FA979.6030407@metafoo.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Lars-Peter Clausen <lars@metafoo.de>
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, lgirdwood@gmail.com, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-In order to match the panel power sequence, disable the enable_gpio
-in the probe function. Also, reorder the code in the power_on and
-power_off function to match the timing.
-
-Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/video/backlight/pwm_bl.c |   15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/video/backlight/pwm_bl.c b/drivers/video/backlight/pwm_bl.c
-index eff379b..99eca1e 100644
---- a/drivers/video/backlight/pwm_bl.c
-+++ b/drivers/video/backlight/pwm_bl.c
-@@ -54,10 +54,11 @@ static void pwm_backlight_power_on(struct pwm_bl_data *pb, int brightness)
- 	if (err < 0)
- 		dev_err(pb->dev, "failed to enable power supply\n");
- 
-+	pwm_enable(pb->pwm);
-+
- 	if (pb->enable_gpio)
- 		gpiod_set_value(pb->enable_gpio, 1);
- 
--	pwm_enable(pb->pwm);
- 	pb->enabled = true;
- }
- 
-@@ -66,12 +67,12 @@ static void pwm_backlight_power_off(struct pwm_bl_data *pb)
- 	if (!pb->enabled)
- 		return;
- 
--	pwm_config(pb->pwm, 0, pb->period);
--	pwm_disable(pb->pwm);
--
- 	if (pb->enable_gpio)
- 		gpiod_set_value(pb->enable_gpio, 0);
- 
-+	pwm_config(pb->pwm, 0, pb->period);
-+	pwm_disable(pb->pwm);
-+
- 	regulator_disable(pb->power_supply);
- 	pb->enabled = false;
- }
-@@ -241,8 +242,7 @@ static int pwm_backlight_probe(struct platform_device *pdev)
- 	pb->dev = &pdev->dev;
- 	pb->enabled = false;
- 
--	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
--						  GPIOD_OUT_HIGH);
-+	pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable");
- 	if (IS_ERR(pb->enable_gpio)) {
- 		ret = PTR_ERR(pb->enable_gpio);
- 		goto err_alloc;
-@@ -264,6 +264,9 @@ static int pwm_backlight_probe(struct platform_device *pdev)
- 		pb->enable_gpio = gpio_to_desc(data->enable_gpio);
- 	}
- 
-+	if (pb->enable_gpio)
-+		gpiod_direction_output(pb->enable_gpio, 0);
-+
- 	pb->power_supply = devm_regulator_get(&pdev->dev, "power");
- 	if (IS_ERR(pb->power_supply)) {
- 		ret = PTR_ERR(pb->power_supply);
--- 
-1.7.9.5
+On Thu, 2015-10-15 at 15:26 +0200, Lars-Peter Clausen wrote:
+> On 10/15/2015 02:10 PM, Mark Brown wrote:
+> > On Wed, Oct 14, 2015 at 11:00:01AM +0200, Lars-Peter Clausen wrote:
+> > 
+> >> It was never intended that it is possible to bind a component to multiple
+> >> cards. That it was possible was a bug that was overlooked and some people
+> >> tried to do it which caused apparently random crashes later on, caused by
+> >> the data structure corruption. This is why we added the check to catch this
+> >> kind of mistake early and to avoid the crashes.
+> > 
+> > This is true, but I do think it's something that we should have some
+> > story on supporting for some of this hardware that has a bunch of
+> > channels in one IP block that can't really interact with each other.
+> > It's going to make it a lot easier for people to think about the
+> > hardware and how to describe it.
+> 
+> I'm not saying we shouldn't support it, just that we can't support it with
+> the current code. And adding support for it will require a fair bit of
+> restructuring.
+> 
+> If a hardware block as multiple independent channels the best approach in my
+> opinion is to register multiple components (Which we can't do at the moment,
+> because there can only be one component per device). From a framework point
+Yes... I have tried to register 2 platforms in my ASoC platform driver
+but alsa considered they are the same platform since they are from the
+same device.
+> of view there is no difference between a single device with multiple
+> independent channels and multiple independent devices with one channel each.
+> Both have the same logical topology.
+> 
+Yes, but in my case there is only one HW, one set of registers, and one
+set of clocks, it should be a single device node in the device tree. 
+> - Lars
+> 
+> 
