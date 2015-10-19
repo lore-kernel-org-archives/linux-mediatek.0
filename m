@@ -1,46 +1,45 @@
-From: Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH v2 1/3] clocksource: mtk_timer: add pr_fmt define
-Date: Mon, 19 Oct 2015 03:09:23 +0300
-Message-ID: <1445213365-24530-1-git-send-email-alexey.klimov@linaro.org>
+From: Joe Perches <joe@perches.com>
+Subject: Re: [PATCH v2 2/3] clocksource: mtk_timer: fix pr_warn() messages
+ in mtk_timer_init
+Date: Sun, 18 Oct 2015 17:23:24 -0700
+Message-ID: <1445214204.31899.36.camel@perches.com>
+References: <1445213365-24530-1-git-send-email-alexey.klimov@linaro.org>
+	 <1445213365-24530-2-git-send-email-alexey.klimov@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: klimov.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1445213365-24530-2-git-send-email-alexey.klimov@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alexey Klimov <alexey.klimov@linaro.org>
+Cc: daniel.lezcano@linaro.org, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, tglx@linutronix.de, klimov.linux@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-It's a bit unclear what subsystem/driver emits some messages
-to dmesg in function mtk_init_timer().
-Use pr_fmt to auto-prefix the messages appropriately.
+On Mon, 2015-10-19 at 03:09 +0300, Alexey Klimov wrote:
+> 1) Change pr_warn()s to pr_err()s. These messages are actually
+> errors and not warnings.
+> 2) Add missing \n.
+> 3) Error message for kzalloc() failure is removed per suggestion
+> by Joe Perches. There is generic stack_dump() for allocation issues.
 
-Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
----
- drivers/clocksource/mtk_timer.c | 2 ++
- 1 file changed, 2 insertions(+)
+Some of the braces around single statements
+could also be removed.
 
-diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-index 50f0641..ca5ea9e 100644
---- a/drivers/clocksource/mtk_timer.c
-+++ b/drivers/clocksource/mtk_timer.c
-@@ -16,6 +16,8 @@
-  * GNU General Public License for more details.
-  */
- 
-+#define pr_fmt(fmt)	KBUILD_MODNAME ": " fmt
-+
- #include <linux/clk.h>
- #include <linux/clockchips.h>
- #include <linux/interrupt.h>
--- 
-2.1.4
+> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+> index ca5ea9e..ac92ca2 100644
+
+> @@ -184,7 +184,6 @@ static void __init mtk_timer_init(struct device_node *node)
+>  
+>  	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
+>  	if (!evt) {
+> -		pr_warn("Can't allocate mtk clock event driver struct");
+>  		return;
+>  	}
+
+could be written:
+
+ 	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
+	if (!evt)
+		return;
+
+etc...
