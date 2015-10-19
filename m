@@ -1,7 +1,8 @@
 From: Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH v2 3/3] clocksource: mtk_timer: fix memleak in mtk_timer_init()
-Date: Mon, 19 Oct 2015 03:09:25 +0300
-Message-ID: <1445213365-24530-3-git-send-email-alexey.klimov@linaro.org>
+Subject: [PATCH v2 2/3] clocksource: mtk_timer: fix pr_warn() messages in
+ mtk_timer_init
+Date: Mon, 19 Oct 2015 03:09:24 +0300
+Message-ID: <1445213365-24530-2-git-send-email-alexey.klimov@linaro.org>
 References: <1445213365-24530-1-git-send-email-alexey.klimov@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,35 +22,66 @@ To: daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEe
 Cc: klimov.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org, Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add error path to clear evt struct allocated by kzalloc()
-in the beginning of function mtk_timer_init().
+1) Change pr_warn()s to pr_err()s. These messages are actually
+errors and not warnings.
+2) Add missing \n.
+3) Error message for kzalloc() failure is removed per suggestion
+by Joe Perches. There is generic stack_dump() for allocation issues.
 
-Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Signed-off-by: Alexey Klimov <alexey.klimov-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 ---
- drivers/clocksource/mtk_timer.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/clocksource/mtk_timer.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-index ac92ca2..a811e7c 100644
+index ca5ea9e..ac92ca2 100644
 --- a/drivers/clocksource/mtk_timer.c
 +++ b/drivers/clocksource/mtk_timer.c
-@@ -200,7 +200,7 @@ static void __init mtk_timer_init(struct device_node *node)
+@@ -184,7 +184,6 @@ static void __init mtk_timer_init(struct device_node *node)
+ 
+ 	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
+ 	if (!evt) {
+-		pr_warn("Can't allocate mtk clock event driver struct");
+ 		return;
+ 	}
+ 
+@@ -200,24 +199,24 @@ static void __init mtk_timer_init(struct device_node *node)
+ 
  	evt->gpt_base = of_io_request_and_map(node, 0, "mtk-timer");
  	if (IS_ERR(evt->gpt_base)) {
- 		pr_err("Can't get resource\n");
--		return;
-+		goto err_kzalloc;
+-		pr_warn("Can't get resource\n");
++		pr_err("Can't get resource\n");
+ 		return;
  	}
  
  	evt->dev.irq = irq_of_parse_and_map(node, 0);
-@@ -255,5 +255,7 @@ err_mem:
- 	iounmap(evt->gpt_base);
- 	of_address_to_resource(node, 0, &res);
- 	release_mem_region(res.start, resource_size(&res));
-+err_kzalloc:
-+	kfree(evt);
- }
- CLOCKSOURCE_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
+ 	if (evt->dev.irq <= 0) {
+-		pr_warn("Can't parse IRQ");
++		pr_err("Can't parse IRQ\n");
+ 		goto err_mem;
+ 	}
+ 
+ 	clk = of_clk_get(node, 0);
+ 	if (IS_ERR(clk)) {
+-		pr_warn("Can't get timer clock");
++		pr_err("Can't get timer clock\n");
+ 		goto err_irq;
+ 	}
+ 
+ 	if (clk_prepare_enable(clk)) {
+-		pr_warn("Can't prepare clock");
++		pr_err("Can't prepare clock\n");
+ 		goto err_clk_put;
+ 	}
+ 	rate = clk_get_rate(clk);
+@@ -226,7 +225,7 @@ static void __init mtk_timer_init(struct device_node *node)
+ 
+ 	if (request_irq(evt->dev.irq, mtk_timer_interrupt,
+ 			IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
+-		pr_warn("failed to setup irq %d\n", evt->dev.irq);
++		pr_err("failed to setup irq %d\n", evt->dev.irq);
+ 		goto err_clk_disable;
+ 	}
+ 
 -- 
 2.1.4
