@@ -1,48 +1,56 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 0/3] Mediatek EFUSE Support
-Date: Mon, 19 Oct 2015 08:49:25 +0200
-Message-ID: <20151019064925.GF14476@pengutronix.de>
-References: <1444984751-4572-1-git-send-email-andrew-ct.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 0/2] Add basic support for Mediatek MT2701 SoC
+Date: Mon, 19 Oct 2015 10:45:42 +0200
+Message-ID: <5624ADB6.7080504@gmail.com>
+References: <1444026469-24789-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1444984751-4572-1-git-send-email-andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1444026469-24789-1-git-send-email-erin.lo@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Erin,
 
-On Fri, Oct 16, 2015 at 04:39:08PM +0800, andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> This patch adds EFUSE support driver which is used by other drivers
-> like thermal sensor and HDMI impedance.
-> 
-> There are some efuses these fuses store things like calibration data,
-> speed bins.. etc. Drivers like thermal sensor, HDMI impedance would
-> read out this data for configuring the driver.
-> 
-> Andrew-CT Chen (3):
->   dt-bindings: add document of mediatek efuse driver
->   nvmem: mediatek: Add Mediatek EFUSE driver
->   dts: arm64: Add EFUSE device node
+On 05/10/15 08:27, Erin Lo wrote:
+> MT2701 is a SoC based on 32bit ARMv7 architecture. It contains 4 CA7 cores.
+> MT2701 share many HW IP with MT65xx series. This patchset was tested
+> on MT2701 evaluation board, and boot to shell ok.
+>
+> This series contains document bindings, device tree including
+> interrupt, uart, timer and wdt.
+>
+> Change in v2:
+> 1. Use one tab in stead of spaces in front of "mediatek,mt2701-sysirq" (mediatek,sysirq.txt)
+> 2. Sorting the compatible SoC and add back mt6595 since accidently deleted in previous version (mtk-uart.txt)
+> 3. Correct the mt2701-timer from mt6589-timer since the mistake in previous version (mediatek,mtk-timer.txt)
+>
+> Erin Lo (2):
+>    Document: DT: Add bindings for mediatek MT2701 SoC Platform
+>    ARM: dts: mediatek: add MT2701 basic support
+>
 
-Being the one who motivated using nvmem for the efuses and having
-reviewed the first internal version of this driver, this version looks
-ok to me.
+Sorry for the late reply.
 
-Reviewed-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+The patches look good, you just forgot to add the compatible string to 
+arch/arm/mach-mediatek/mediatek.c
+Please add it there and I will include them for v4.4.
 
-Sascha
+Regards,
+Matthias
 
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>   Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+>   .../bindings/arm/mediatek/mediatek,sysirq.txt      |   1 +
+>   .../devicetree/bindings/serial/mtk-uart.txt        |  14 +-
+>   .../bindings/timer/mediatek,mtk-timer.txt          |   5 +-
+>   .../devicetree/bindings/watchdog/mtk-wdt.txt       |   6 +-
+>   arch/arm/boot/dts/Makefile                         |   1 +
+>   arch/arm/boot/dts/mt2701-evb.dts                   |  29 ++++
+>   arch/arm/boot/dts/mt2701.dtsi                      | 146 +++++++++++++++++++++
+>   8 files changed, 196 insertions(+), 10 deletions(-)
+>   create mode 100644 arch/arm/boot/dts/mt2701-evb.dts
+>   create mode 100644 arch/arm/boot/dts/mt2701.dtsi
+>
