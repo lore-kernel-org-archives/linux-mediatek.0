@@ -1,175 +1,121 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v10 2/3] xhci: mediatek: support MTK xHCI host controller
-Date: Mon, 19 Oct 2015 14:02:27 +0800
-Message-ID: <1445234547.28324.17.camel@mhfsdcap03>
-References: <1445140279-18121-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1445140279-18121-3-git-send-email-chunfeng.yun@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v11 0/3] Mediatek xHCI support
+Date: Mon, 19 Oct 2015 14:21:12 +0800
+Message-ID: <1445235675-29312-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445140279-18121-3-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2015-10-18 at 11:51 +0800, Chunfeng Yun wrote:
-> There some vendor quirks for MTK xhci host controller:
-> 1. It defines some extra SW scheduling parameters for HW
->   to minimize the scheduling effort for synchronous and
->   interrupt endpoints. The parameters are put into reseved
->   DWs of slot context and endpoint context.
-> 2. Its IMODI unit for Interrupter Moderation register is
->   8 times as much as that defined in xHCI spec.
-> 3. Its TDS in  Normal TRB defines a number of packets that
->   remains to be transferred for a TD after processing all
->   Max packets in all previous TRBs.
-...
-> + *
-> + * This software is licensed under the terms of the GNU General Public
-> + * License version 2, as published by the Free Software Foundation, and
-> + * may be copied, distributed, and modified under those terms.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + *
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/kernel.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <linux/slab.h>
-> +#include <linux/usb/phy.h>
-> +#include <linux/usb/xhci_pdriver.h>
-above three header files no need anymore
+>From 1c6e0dd39074297ebb0714c1d44a3e0dc9af466c Mon Sep 17 00:00:00 2001
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Mon, 19 Oct 2015 14:13:45 +0800
+Subject: [PATCH v11 0/3] Mediatek xHCI support
 
-> +
-> +#include "xhci.h"
-> +#include "xhci-mtk.h"
-> +
-> +/* ip_pw_ctrl0 register */
-> +#define CTRL0_IP_SW_RST	BIT(0)
-> +
-> +/* ip_pw_ctrl1 register */
-> +#define CTRL1_IP_HOST_PDN	BIT(0)
-> +
-...
-> +/* called during probe() after chip reset completes */
-> +static int xhci_mtk_setup(struct usb_hcd *hcd)
-> +{
-> +	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-> +	int ret;
-> +
-> +	if (usb_hcd_is_primary_hcd(hcd)) {
-> +		ret = xhci_mtk_ssusb_config(mtk);
-> +		if (ret)
-> +			return ret;
-> +		ret = xhci_mtk_sch_init(mtk);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
-> +	return xhci_gen_setup(hcd, xhci_mtk_quirks);
-> +}
-> +
-> +static int xhci_mtk_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *node = dev->of_node;
-> +	struct xhci_hcd_mtk *mtk;
-> +	const struct hc_driver *driver;
-> +	struct xhci_hcd *xhci;
-> +	struct resource *res;
-> +	struct usb_hcd *hcd;
-> +	struct phy *phy;
-> +	int phy_num;
-> +	int ret = -ENODEV;
-...
-> +
-> +	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-> +		xhci->shared_hcd->can_do_streams = 1;
-> +
-> +	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
-> +	if (ret)
-> +		goto put_usb3_hcd;
-> +
-> +	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-> +	if (ret)
-> +		goto dealloc_usb2_hcd;
-> +
-> +	return 0;
-> +
-> +dealloc_usb2_hcd:
-> +	xhci_mtk_sch_exit(mtk);
-> +	usb_remove_hcd(hcd);
-> +
-> +put_usb3_hcd:
-> +	usb_put_hcd(xhci->shared_hcd);
-need call xhci_mtk_sch_exit() for some fail cases
+The patch supports MediaTek's xHCI controller.
 
-> +
-> +power_off_phys:
-> +	xhci_mtk_phy_power_off(mtk);
-> +	device_init_wakeup(dev, 0);
-use false instead of 0
+There are some differences from xHCI spec:
+1. The interval is specified in 250 * 8ns increments for Interrupt Moderation
+Interval(IMODI) of the Interrupter Moderation(IMOD) register, it is 8 times as
+much as that defined in xHCI spec.
 
-> +
-> +exit_phys:
-> +	xhci_mtk_phy_exit(mtk);
-> +
-> +put_usb2_hcd:
-> +	usb_put_hcd(hcd);
-> +
-> +disable_clk:
-> +	xhci_mtk_clks_disable(mtk);
-> +
-> +disable_ldos:
-> +	xhci_mtk_ldos_disable(mtk);
-> +
-> +disable_pm:
-> +	pm_runtime_put_sync(dev);
-> +	pm_runtime_disable(dev);
-> +	return ret;
-> +}
-> +
-> +static int xhci_mtk_remove(struct platform_device *dev)
-> +{
-> +	struct xhci_hcd_mtk *mtk = platform_get_drvdata(dev);
-> +	struct usb_hcd	*hcd = mtk->hcd;
-> +	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
-> +
-> +	usb_remove_hcd(xhci->shared_hcd);
-> +	xhci_mtk_phy_power_off(mtk);
-> +	xhci_mtk_phy_exit(mtk);
-> +	device_init_wakeup(&dev->dev, 0);
-use false instead of 0
+2. For the value of TD Size in Normal TRB, MTK's xHCI controller defines a
+number of packets that remain to be transferred for a TD after processing all
+Max packets in all previous TRBs,that means don't include the current TRB's,
+but in xHCI spec it includes the current ones.
 
-I will send v11 to fix up the problems caused by my carelessness.
+3. To minimize the scheduling effort for synchronous endpoints in xHC, the MTK
+architecture defines some extra SW scheduling parameters for HW. According to
+these parameters provided by SW, the xHC can easily decide whether a
+synchronous endpoint should be scheduled in a specific uFrame. The extra SW
+scheduling parameters are put into reserved DWs in Slot and Endpoint Context.
+And a bandwidth scheduler algorithm is added to support such feature.
 
-Sorry.
+A usb3.0 phy driver is also added which used by mt65xx SoCs platform, it
+supports two usb2.0 ports and one usb3.0 port.
 
-> +
-> +	usb_remove_hcd(hcd);
-> +	usb_put_hcd(xhci->shared_hcd);
-> +	usb_put_hcd(hcd);
-> +	xhci_mtk_sch_exit(mtk);
-> +	xhci_mtk_clks_disable(mtk);
-> +	xhci_mtk_ldos_disable(mtk);
-> +	pm_runtime_put_sync(&dev->dev);
-> +	pm_runtime_disable(&dev->dev);
-> +
-> +	return 0;
-> +}
-> +
+depend on the patch for TDS calculation:
+https://patchwork.kernel.org/patch/7140041/
+
+change in v11:
+1. remove some dummy header files
+2. call xhci_mtk_sch_exit() when primary hcd register fail
+3. use false instead of 0 for the second parameter of device_init_wakeup();
+
+Change in v10:
+1. simplify clock stability checks
+2. put MTK xHCI configuration from xhci_mtk_probe() to xhci_mtk_setup()
+
+Change in v9:
+1. fix up issue of FS out-iso when use single-TT hub
+2. improve RX sensitivity
+3. remove udelay(800) called by phy_instance_power_on/off
+
+Change in v8:
+1. use struct overlay for ippc register
+2. change usb wakeup as optional feature
+3. add TDS quirk into unified TDS calculation function
+
+Change in v7:
+1. remove xHCI timing setting which only for FPGA
+2. revise xHCI scheduler algorithms
+3. replace "usb" by "USB" in xHCI binding file
+
+Change in v6:
+1. get register base address of port in probe instead of of_xlate
+2. enable clock in phy_init instead of probe
+
+Change in v5:
+1. descripte more exactly for each specifiers in xHCI binding
+2. make use of new multi-phy feature for phy driver
+
+Change in v4:
+1. descripte more exactly for each specifiers in binding file
+2. use BIT() to define a bit mask macro
+
+Change in v3:
+1. implement generic phy
+2. move opperations of IPPC and wakeup from phy driver to xHCI driver
+3. seperate quirk functions into a single C file to fix up dependence issue
+
+Change in v2:
+1. Rebase to 4.2-rc1
+2. Remove probe phy before add usb_hcd patch from this series due to 4.2-rc1
+   already fix this issue
+3. add xhci mac clocks
+4. add suspend/resume
+5. support remote wakeup
+
+Chunfeng Yun (3):
+  dt-bindings: Add a binding for Mediatek xHCI host controller
+  xhci: mediatek: support MTK xHCI host controller
+  arm64: dts: mediatek: add xHCI & usb phy for mt8173
+
+ .../devicetree/bindings/usb/mt8173-xhci.txt        |  51 ++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |  16 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  42 ++
+ drivers/usb/host/Kconfig                           |   9 +
+ drivers/usb/host/Makefile                          |   4 +
+ drivers/usb/host/xhci-mtk-sch.c                    | 415 +++++++++++
+ drivers/usb/host/xhci-mtk.c                        | 762 +++++++++++++++++++++
+ drivers/usb/host/xhci-mtk.h                        | 162 +++++
+ drivers/usb/host/xhci-ring.c                       |  16 +-
+ drivers/usb/host/xhci.c                            |  19 +-
+ drivers/usb/host/xhci.h                            |   1 +
+ 11 files changed, 1491 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+ create mode 100644 drivers/usb/host/xhci-mtk-sch.c
+ create mode 100644 drivers/usb/host/xhci-mtk.c
+ create mode 100644 drivers/usb/host/xhci-mtk.h
+
+--
+1.8.1.1.dirty
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
