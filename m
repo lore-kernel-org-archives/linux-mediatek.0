@@ -1,98 +1,175 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v10 3/3] arm64: dts: mediatek: add xHCI & usb phy for
- mt8173
-Date: Mon, 19 Oct 2015 13:31:27 +0800
-Message-ID: <1445232687.28324.4.camel@mhfsdcap03>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v10 2/3] xhci: mediatek: support MTK xHCI host controller
+Date: Mon, 19 Oct 2015 14:02:27 +0800
+Message-ID: <1445234547.28324.17.camel@mhfsdcap03>
 References: <1445140279-18121-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1445140279-18121-4-git-send-email-chunfeng.yun@mediatek.com>
-	 <56237BF2.5070809@cogentembedded.com>
+	 <1445140279-18121-3-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56237BF2.5070809-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1445140279-18121-3-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2015-10-18 at 14:01 +0300, Sergei Shtylyov wrote:
-> Hello.
-> 
-> On 10/18/2015 6:51 AM, Chunfeng Yun wrote:
-> 
-> > add xHCI and phy drivers for MT8173-EVB
-> >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> [...]
-> 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > index d18ee42..46f5f50 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> [...]
-> > @@ -487,6 +488,47 @@
-> >   			clock-names = "source", "hclk";
-> >   			status = "disabled";
-> >   		};
-> > +
-> > +		usb30: usb@11270000 {
-> > +			compatible = "mediatek,mt8173-xhci";
-> > +			reg = <0 0x11270000 0 0x1000>,
-> > +			      <0 0x11280700 0 0x0100>;
-> > +			interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-> > +			power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-> > +			clocks = <&topckgen CLK_TOP_USB30_SEL>,
-> > +				 <&pericfg CLK_PERI_USB0>,
-> > +				 <&pericfg CLK_PERI_USB1>;
-> > +			clock-names = "sys_ck",
-> > +				      "wakeup_deb_p0",
-> > +				      "wakeup_deb_p1";
-> > +			phys = <&phy_port0 PHY_TYPE_USB3>,
-> > +			       <&phy_port1 PHY_TYPE_USB2>;
-> > +			mediatek,syscon-wakeup = <&pericfg>;
-> > +			status = "okay";
-> > +		};
-> > +
-> > +		u3phy: usb-phy@11290000 {
-> > +			compatible = "mediatek,mt8173-u3phy";
-> > +			reg = <0 0x11290000 0 0x800>;
-> > +			clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> > +			clock-names = "u3phya_ref";
-> > +			#address-cells = <2>;
-> > +			#size-cells = <2>;
-> > +			ranges;
-> > +			status = "okay";
-> 
->     Don't you need the "power-domains" prop here as well?
-No, the power-domains of MAC and PHY are separated, but PHY's can't be
-operated by software.
+On Sun, 2015-10-18 at 11:51 +0800, Chunfeng Yun wrote:
+> There some vendor quirks for MTK xhci host controller:
+> 1. It defines some extra SW scheduling parameters for HW
+>   to minimize the scheduling effort for synchronous and
+>   interrupt endpoints. The parameters are put into reseved
+>   DWs of slot context and endpoint context.
+> 2. Its IMODI unit for Interrupter Moderation register is
+>   8 times as much as that defined in xHCI spec.
+> 3. Its TDS in  Normal TRB defines a number of packets that
+>   remains to be transferred for a TD after processing all
+>   Max packets in all previous TRBs.
+...
+> + *
+> + * This software is licensed under the terms of the GNU General Public
+> + * License version 2, as published by the Free Software Foundation, and
+> + * may be copied, distributed, and modified under those terms.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + *
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/dma-mapping.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/slab.h>
+> +#include <linux/usb/phy.h>
+> +#include <linux/usb/xhci_pdriver.h>
+above three header files no need anymore
 
-Thanks.
-> 
-> > +
-> > +			phy_port0: port@11290800 {
-> > +				reg = <0 0x11290800 0 0x800>;
-> > +				#phy-cells = <1>;
-> > +				status = "okay";
-> > +			};
-> > +
-> > +			phy_port1: port@11291000 {
-> > +				reg = <0 0x11291000 0 0x800>;
-> > +				#phy-cells = <1>;
-> > +				status = "okay";
-> > +			};
-> > +		};
-> >   	};
-> >   };
-> >
-> 
-> MBR, Sergei
-> 
+> +
+> +#include "xhci.h"
+> +#include "xhci-mtk.h"
+> +
+> +/* ip_pw_ctrl0 register */
+> +#define CTRL0_IP_SW_RST	BIT(0)
+> +
+> +/* ip_pw_ctrl1 register */
+> +#define CTRL1_IP_HOST_PDN	BIT(0)
+> +
+...
+> +/* called during probe() after chip reset completes */
+> +static int xhci_mtk_setup(struct usb_hcd *hcd)
+> +{
+> +	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
+> +	int ret;
+> +
+> +	if (usb_hcd_is_primary_hcd(hcd)) {
+> +		ret = xhci_mtk_ssusb_config(mtk);
+> +		if (ret)
+> +			return ret;
+> +		ret = xhci_mtk_sch_init(mtk);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return xhci_gen_setup(hcd, xhci_mtk_quirks);
+> +}
+> +
+> +static int xhci_mtk_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *node = dev->of_node;
+> +	struct xhci_hcd_mtk *mtk;
+> +	const struct hc_driver *driver;
+> +	struct xhci_hcd *xhci;
+> +	struct resource *res;
+> +	struct usb_hcd *hcd;
+> +	struct phy *phy;
+> +	int phy_num;
+> +	int ret = -ENODEV;
+...
+> +
+> +	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
+> +		xhci->shared_hcd->can_do_streams = 1;
+> +
+> +	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
+> +	if (ret)
+> +		goto put_usb3_hcd;
+> +
+> +	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
+> +	if (ret)
+> +		goto dealloc_usb2_hcd;
+> +
+> +	return 0;
+> +
+> +dealloc_usb2_hcd:
+> +	xhci_mtk_sch_exit(mtk);
+> +	usb_remove_hcd(hcd);
+> +
+> +put_usb3_hcd:
+> +	usb_put_hcd(xhci->shared_hcd);
+need call xhci_mtk_sch_exit() for some fail cases
 
+> +
+> +power_off_phys:
+> +	xhci_mtk_phy_power_off(mtk);
+> +	device_init_wakeup(dev, 0);
+use false instead of 0
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +
+> +exit_phys:
+> +	xhci_mtk_phy_exit(mtk);
+> +
+> +put_usb2_hcd:
+> +	usb_put_hcd(hcd);
+> +
+> +disable_clk:
+> +	xhci_mtk_clks_disable(mtk);
+> +
+> +disable_ldos:
+> +	xhci_mtk_ldos_disable(mtk);
+> +
+> +disable_pm:
+> +	pm_runtime_put_sync(dev);
+> +	pm_runtime_disable(dev);
+> +	return ret;
+> +}
+> +
+> +static int xhci_mtk_remove(struct platform_device *dev)
+> +{
+> +	struct xhci_hcd_mtk *mtk = platform_get_drvdata(dev);
+> +	struct usb_hcd	*hcd = mtk->hcd;
+> +	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
+> +
+> +	usb_remove_hcd(xhci->shared_hcd);
+> +	xhci_mtk_phy_power_off(mtk);
+> +	xhci_mtk_phy_exit(mtk);
+> +	device_init_wakeup(&dev->dev, 0);
+use false instead of 0
+
+I will send v11 to fix up the problems caused by my carelessness.
+
+Sorry.
+
+> +
+> +	usb_remove_hcd(hcd);
+> +	usb_put_hcd(xhci->shared_hcd);
+> +	usb_put_hcd(hcd);
+> +	xhci_mtk_sch_exit(mtk);
+> +	xhci_mtk_clks_disable(mtk);
+> +	xhci_mtk_ldos_disable(mtk);
+> +	pm_runtime_put_sync(&dev->dev);
+> +	pm_runtime_disable(&dev->dev);
+> +
+> +	return 0;
+> +}
+> +
