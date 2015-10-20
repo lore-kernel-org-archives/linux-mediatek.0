@@ -1,239 +1,80 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH v3 2/2] ARM: dts: mediatek: add MT2701 basic support
-Date: Tue, 20 Oct 2015 14:34:31 +0800
-Message-ID: <1445322871-14134-3-git-send-email-erin.lo@mediatek.com>
-References: <1445322871-14134-1-git-send-email-erin.lo@mediatek.com>
+From: Mathias Nyman <mathias.nyman@intel.com>
+Subject: Re: [PATCH v9 4/5] xhci: mediatek: support MTK xHCI host controller
+Date: Tue, 20 Oct 2015 11:25:23 +0300
+Message-ID: <5625FA73.3050309@intel.com>
+References: <1443495698-32233-1-git-send-email-chunfeng.yun@mediatek.com>		 <1443495698-32233-5-git-send-email-chunfeng.yun@mediatek.com>		 <561FBC40.7020100@linux.intel.com> <1445131519.17024.10.camel@mhfsdcap03>	 <5624D33D.5090807@intel.com> <1445322554.4858.12.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445322871-14134-1-git-send-email-erin.lo@mediatek.com>
+In-Reply-To: <1445322554.4858.12.camel@mhfsdcap03>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Erin Lo <erin.lo@mediatek.com>
+To: chunfeng yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Kishon Vijay Abraham I <kishon@ti.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds basic chip support for Mediatek 2701.
+On 20.10.2015 09:29, chunfeng yun wrote:
+> hi,
+> On Mon, 2015-10-19 at 14:25 +0300, Mathias Nyman wrote:
+>>>>
+>>>> So basically we are trying to use as many microframes as possible with as few packets
+>>>> per microframe as possible.
+>>>>
+>>>> Did I understand this correctly?
+>>> Yes, you are right.
+>>>
+>>>> How will devices react if they expect to get 16 packets every 16th microframe,
+>>>> but they get one packet every microframe instead?
+>>> I think that the synchronous endpoint must specify its period by
+>>> bInterval, but can't specify how data should be transfered during the
+>>> period by the host, and it just only receives data passively. So the
+>>> device can receive data correctly in the case(bInterval is 5).
+>>>
+>>> quote from usb3_r1.0 section4.4.8 Isochronous Transfers:
+>>> "The host can request data from the device or send data to the device at
+>>> any time during the service interval for a particular endpoint on that
+>>> device"
+>>>
+>>
+>> As I understand the 4.4.8 section it just means the device can't assume a fixed
+>> time interval between transfers, meaning that the host can use the last microframe
+>> in one esit and the first microframe in the next esit, but still only use 1 microframe
+>> per esit.
+>>
+>> Section 8.12.6.1 describes how a 11 packet isoc transfer is allowed to be split
+>> to 1 burst of 11 packets, 2 burst (8 + 3),  3 burst (4+4+3) 6 bursts (2+2+2+2+2+1) or
+>> 11 bursts of 1. These are however all within the same microframe. Splitting the
+>> transfer into several microframes in a esit kind of makes the whole interval concept pointless.
+>>
+> It doesn't say that the packets should be transfered within the same
+> microframe (bus interval), as I understand it means service interval;
+>
+> The direct prove resides in figure 8-56/8-57.
+>
+> Term:
+> 1. BI, bus interval, a 125 us period that establishes the internal
+> boundary of service interval, aka uframe;
+> 2. SSI, Support Smart Isochronous;
+> 3. DBI, Data in this Bus Interval is done;
+> 4. NBI, Numbers of Bus Interval;
+>
+> As the figure shows, the service interval = 8 BI, that host distribute 2
+> packets @1st uframe, keep U1/U2 state for the next 3uframe, then
+> transmit 4 packets @4th uframe, and the remaining 3 packet in the last
+> frame.
+>
+> Please notice that this just is an example illustrated by spec, but we
+> can derive the conclusion that the distribution of packet in a service
+> interval is completely decided by host, and can split isoc transfers
+> across multiple uframes.
 
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
- arch/arm/boot/dts/Makefile        |   1 +
- arch/arm/boot/dts/mt2701-evb.dts  |  29 ++++++++
- arch/arm/boot/dts/mt2701.dtsi     | 146 ++++++++++++++++++++++++++++++++++++++
- arch/arm/mach-mediatek/mediatek.c |   1 +
- 4 files changed, 177 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt2701-evb.dts
- create mode 100644 arch/arm/boot/dts/mt2701.dtsi
+So it seems. You're right
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 233159d..aec787e 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -732,6 +732,7 @@ dtb-$(CONFIG_MACH_DOVE) += \
- 	dove-dove-db.dtb \
- 	dove-sbc-a510.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += \
-+	mt2701-evb.dtb \
- 	mt6580-evbp1.dtb \
- 	mt6589-aquaris5.dtb \
- 	mt6592-evb.dtb \
-diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-new file mode 100644
-index 0000000..082ca88
---- /dev/null
-+++ b/arch/arm/boot/dts/mt2701-evb.dts
-@@ -0,0 +1,29 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Erin Lo <erin.lo@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+/dts-v1/;
-+#include "mt2701.dtsi"
-+
-+/ {
-+	model = "MediaTek MT2701 evaluation board";
-+	compatible = "mediatek,mt2701-evb", "mediatek,mt2701";
-+
-+	memory {
-+		reg = <0 0x80000000 0 0x40000000>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-new file mode 100644
-index 0000000..69f240f
---- /dev/null
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -0,0 +1,146 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Erin.Lo <erin.lo@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include "skeleton64.dtsi"
-+
-+/ {
-+	compatible = "mediatek,mt2701";
-+	interrupt-parent = <&sysirq>;
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x0>;
-+		};
-+		cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x1>;
-+		};
-+		cpu@2 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x2>;
-+		};
-+		cpu@3 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0x3>;
-+		};
-+	};
-+
-+	system_clk: dummy13m {
-+		compatible = "fixed-clock";
-+		clock-frequency = <13000000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	rtc_clk: dummy32k {
-+		compatible = "fixed-clock";
-+		clock-frequency = <32000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	uart_clk: dummy26m {
-+		compatible = "fixed-clock";
-+		clock-frequency = <26000000>;
-+		#clock-cells = <0>;
-+	};
-+
-+	timer {
-+		compatible = "arm,armv7-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-+	};
-+
-+	watchdog: watchdog@10007000 {
-+		compatible = "mediatek,mt2701-wdt",
-+			     "mediatek,mt6589-wdt";
-+		reg = <0 0x10007000 0 0x100>;
-+	};
-+
-+	timer: timer@10008000 {
-+		compatible = "mediatek,mt2701-timer",
-+			     "mediatek,mt6577-timer";
-+		reg = <0x10008000 0x80>;
-+		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&system_clk>, <&rtc_clk>;
-+		clock-names = "system-clk", "rtc-clk";
-+	};
-+
-+	sysirq: interrupt-controller@10200100 {
-+		compatible = "mediatek,mt2701-sysirq",
-+			     "mediatek,mt6577-sysirq";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		interrupt-parent = <&gic>;
-+		reg = <0 0x10200100 0 0x1c>;
-+	};
-+
-+	gic: interrupt-controller@10211000 {
-+		compatible = "arm,cortex-a7-gic";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		interrupt-parent = <&gic>;
-+		reg = <0 0x10211000 0 0x1000>,
-+		      <0 0x10212000 0 0x1000>,
-+		      <0 0x10214000 0 0x2000>,
-+		      <0 0x10216000 0 0x2000>;
-+	};
-+
-+	uart0: serial@11002000 {
-+		compatible = "mediatek,mt2701-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0 0x11002000 0 0x400>;
-+		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		status = "disabled";
-+	};
-+
-+	uart1: serial@11003000 {
-+		compatible = "mediatek,mt2701-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0 0x11003000 0 0x400>;
-+		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		status = "disabled";
-+	};
-+
-+	uart2: serial@11004000 {
-+		compatible = "mediatek,mt2701-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0 0x11004000 0 0x400>;
-+		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		status = "disabled";
-+	};
-+
-+	uart3: serial@11005000 {
-+		compatible = "mediatek,mt2701-uart",
-+			     "mediatek,mt6577-uart";
-+		reg = <0 0x11005000 0 0x400>;
-+		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&uart_clk>;
-+		status = "disabled";
-+	};
-+};
-diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
-index a954900..1b98f7a 100644
---- a/arch/arm/mach-mediatek/mediatek.c
-+++ b/arch/arm/mach-mediatek/mediatek.c
-@@ -18,6 +18,7 @@
- #include <asm/mach/arch.h>
- 
- static const char * const mediatek_board_dt_compat[] = {
-+	"mediatek,mt2701",
- 	"mediatek,mt6589",
- 	"mediatek,mt6592",
- 	"mediatek,mt8127",
--- 
-1.9.1
+>
+> PS: as you can see, MTK implementation of schedule algorithms is an
+> implementation of Smart Isochronous of which the smart side resides in
+> software.
+
+Thanks for the clarification, I now understand how the implementation works
+
+-Mathias  
