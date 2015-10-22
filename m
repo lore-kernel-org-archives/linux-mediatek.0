@@ -1,97 +1,64 @@
-From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/9] Add tune support of Mediatek MMC driver
-Date: Thu, 22 Oct 2015 10:18:49 +0800
-Message-ID: <1445480329.1593.4.camel@mhfsdcap03>
-References: <1445332391-30530-1-git-send-email-chaotian.jing@mediatek.com>
-	 <CAPDyKFrTrR5U7QoXpiWj29bUD5SEp4ccbx8qNs9HF0cYxuqdBw@mail.gmail.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 0/6] MT8173 IOMMU SUPPORT
+Date: Thu, 22 Oct 2015 12:40:02 +0800
+Message-ID: <1445488802.27202.67.camel@mhfsdcap03>
+References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
+	<20151014125620.GQ27420@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAPDyKFrTrR5U7QoXpiWj29bUD5SEp4ccbx8qNs9HF0cYxuqdBw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Seungwon Jeon <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans de Goede <hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Javier Martinez Canillas <javier.martinez-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Howard Chen <ibanezchen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Kristina Martsenko <kristina.martsenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Stephen Boyd <sboyd@>
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <20151014125620.GQ27420-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-10-20 at 18:41 +0200, Ulf Hansson wrote:
-> On 20 October 2015 at 11:13, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Change in v2:
-> > Drop the 400mhz and use assigned-clock-parents to instead
-> > Split the original tune patch to several independent patches
-> > Re-write the mmc_send_tuning()
-> > Fix GPD checksum error
-> > Move the HS400 setting to ops->prepare_hs400_tuning()
-> > Modify SD driving settings
-> >
-> > Change in v1:
-> > Add DT bindings for eMMC hardware reset
-> > Add pinctrl of data strobe pin for HS400 mode
-> > Modify eMMC driving settings
-> > Add 400mhz source clock for HS400 mode
-> > Add eMMC HS200/HS400 mode support
-> > Add SD SDR50/SDR104 mode support
-> > Add implement of tune function with CMD19/CMD21
-> >
-> > Chaotian Jing (9):
-> >   mmc: core: Add DT bindings for eMMC hardware reset support
-> >   mmc: dt-bindings: update Mediatek MMC bindings
-> >   mmc: mediatek: make cmd_ints_mask to const
-> >   mmc: mediatek: change the argument "ddr" to "timing"
-> >   mmc: mediatek: fix got GPD checksum error interrupt when data transfer
-> >   mmc: mediatek: add implement of ops->hw_reset()
-> >   mmc: mmc: extend the mmc_send_tuning()
-> >   mmc: mediatek: add HS400 support
-> >   arm64: dts: mediatek: add HS200/HS400/SDR50/SDR104 support
-> >
-> >  Documentation/devicetree/bindings/mmc/mmc.txt    |   1 +
-> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt |  11 +-
-> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  27 ++-
-> >  drivers/mmc/core/host.c                          |   2 +
-> >  drivers/mmc/core/mmc_ops.c                       |   8 +-
-> >  drivers/mmc/host/dw_mmc-exynos.c                 |   4 +-
-> >  drivers/mmc/host/dw_mmc.c                        |   2 +-
-> >  drivers/mmc/host/dw_mmc.h                        |   2 +-
-> >  drivers/mmc/host/mtk-sd.c                        | 296 ++++++++++++++++++++---
-> >  drivers/mmc/host/sdhci-esdhc-imx.c               |   6 +-
-> >  drivers/mmc/host/sdhci-msm.c                     |   2 +-
-> >  drivers/mmc/host/sdhci-sirf.c                    |   2 +-
-> >  include/linux/mmc/core.h                         |   2 +-
-> >  13 files changed, 314 insertions(+), 51 deletions(-)
-> >
-> > --
-> > 1.8.1.1.dirty
+On Wed, 2015-10-14 at 14:56 +0200, Joerg Roedel wrote:
+> On Fri, Oct 09, 2015 at 10:23:02AM +0800, Yong Wu wrote:
+> > Yong Wu (6):
+> >   dt-bindings: iommu: Add binding for mediatek IOMMU
+> >   dt-bindings: mediatek: Add smi dts binding
+> >   iommu: add ARM short descriptor page table allocator
+> >   memory: mediatek: Add SMI driver
+> >   iommu/mediatek: Add mt8173 IOMMU driver
+> >   dts: mt8173: Add iommu/smi nodes for mt8173
+> > 
+> >  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  61 ++
+> >  .../memory-controllers/mediatek,smi-larb.txt       |  25 +
+> >  .../bindings/memory-controllers/mediatek,smi.txt   |  24 +
+> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  81 ++
+> >  drivers/iommu/Kconfig                              |  33 +
+> >  drivers/iommu/Makefile                             |   2 +
+> >  drivers/iommu/io-pgtable-arm-short.c               | 827 +++++++++++++++++++++
+> >  drivers/iommu/io-pgtable-arm.c                     |   3 -
+> >  drivers/iommu/io-pgtable.c                         |   3 +
+> >  drivers/iommu/io-pgtable.h                         |  18 +-
+> >  drivers/iommu/mtk_iommu.c                          | 767 +++++++++++++++++++
+> >  drivers/memory/Kconfig                             |   8 +
+> >  drivers/memory/Makefile                            |   1 +
+> >  drivers/memory/mtk-smi.c                           | 274 +++++++
+> >  include/dt-bindings/memory/mt8173-larb-port.h      | 105 +++
+> >  include/soc/mediatek/smi.h                         |  60 ++
 > 
-> I have reviewed the patches, I think they overall looks good! Some
-> comments though.
+> So this contains not only IOMMU code. Are the patches dependent on each
+> other or can the iommu parts be merged independently?
 > 
-> You need to split patch 9, the DT parts enabling hw reset shall go in
-> separately.
+> 	Joerg
 > 
-Ok, will separate it at next revision.
+Hi Joerg,
+     Sorry for reply late.
+     The ARM short descriptor is independent. This one can be merged
+independently.
 
-> Regarding the hw-reset changes in patch1, patch6 and patch9, I believe
-> I requested you to separate the HW reset changes from $subject
-> patchset as they are unrelated, please do this.
-> 
-As you know, the hw-reset is a part of mmc retune.
-so that I add it to this series.
-
-> Running checkpatch, it gave me warnings and errors for patch 8.
-> Patch7 didn't apply to my next branch.
-> 
-
-I will fix the checkpatch warnings and errors at next revision.
-by the way, I tried to use "git am
-0007-mmc-mmc-extend-the-mmc_send_tuning.patch" in your branch,
-there was no conflict, so why couldn't apply it ?
-Thx!
-
-> Kind regards
-> Uffe
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+     But the mtk-iommu depend on the drivers/memory/mtk-smi.c(mtk-iommu
+has called a function of the mtk-smi).
+     So if there is dependence here, How should we do to merge them?
