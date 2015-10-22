@@ -1,131 +1,96 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/2] Document: DT: Add bindings for mediatek MT2701 SoC Platform
-Date: Wed, 21 Oct 2015 20:25:20 -0500
-Message-ID: <CAL_JsqKPPXfXipARUrUyfk04LaV02AJcP-JUQ2jrxoUz9YCVTQ@mail.gmail.com>
-References: <1445322871-14134-1-git-send-email-erin.lo@mediatek.com> <1445322871-14134-2-git-send-email-erin.lo@mediatek.com>
+From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 0/9] Add tune support of Mediatek MMC driver
+Date: Thu, 22 Oct 2015 10:18:49 +0800
+Message-ID: <1445480329.1593.4.camel@mhfsdcap03>
+References: <1445332391-30530-1-git-send-email-chaotian.jing@mediatek.com>
+	 <CAPDyKFrTrR5U7QoXpiWj29bUD5SEp4ccbx8qNs9HF0cYxuqdBw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1445322871-14134-2-git-send-email-erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <CAPDyKFrTrR5U7QoXpiWj29bUD5SEp4ccbx8qNs9HF0cYxuqdBw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Seungwon Jeon <tgih.jun-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Barry Song <baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans de Goede <hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Javier Martinez Canillas <javier.martinez-ZGY8ohtN/8pPYcu2f3hruQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Howard Chen <ibanezchen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Kristina Martsenko <kristina.martsenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Stephen Boyd <sboyd@>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Oct 20, 2015 at 1:34 AM, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> This adds a DT binding documentation for the MT2701 SoC from Mediatek.
->
-> Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Tue, 2015-10-20 at 18:41 +0200, Ulf Hansson wrote:
+> On 20 October 2015 at 11:13, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Change in v2:
+> > Drop the 400mhz and use assigned-clock-parents to instead
+> > Split the original tune patch to several independent patches
+> > Re-write the mmc_send_tuning()
+> > Fix GPD checksum error
+> > Move the HS400 setting to ops->prepare_hs400_tuning()
+> > Modify SD driving settings
+> >
+> > Change in v1:
+> > Add DT bindings for eMMC hardware reset
+> > Add pinctrl of data strobe pin for HS400 mode
+> > Modify eMMC driving settings
+> > Add 400mhz source clock for HS400 mode
+> > Add eMMC HS200/HS400 mode support
+> > Add SD SDR50/SDR104 mode support
+> > Add implement of tune function with CMD19/CMD21
+> >
+> > Chaotian Jing (9):
+> >   mmc: core: Add DT bindings for eMMC hardware reset support
+> >   mmc: dt-bindings: update Mediatek MMC bindings
+> >   mmc: mediatek: make cmd_ints_mask to const
+> >   mmc: mediatek: change the argument "ddr" to "timing"
+> >   mmc: mediatek: fix got GPD checksum error interrupt when data transfer
+> >   mmc: mediatek: add implement of ops->hw_reset()
+> >   mmc: mmc: extend the mmc_send_tuning()
+> >   mmc: mediatek: add HS400 support
+> >   arm64: dts: mediatek: add HS200/HS400/SDR50/SDR104 support
+> >
+> >  Documentation/devicetree/bindings/mmc/mmc.txt    |   1 +
+> >  Documentation/devicetree/bindings/mmc/mtk-sd.txt |  11 +-
+> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  27 ++-
+> >  drivers/mmc/core/host.c                          |   2 +
+> >  drivers/mmc/core/mmc_ops.c                       |   8 +-
+> >  drivers/mmc/host/dw_mmc-exynos.c                 |   4 +-
+> >  drivers/mmc/host/dw_mmc.c                        |   2 +-
+> >  drivers/mmc/host/dw_mmc.h                        |   2 +-
+> >  drivers/mmc/host/mtk-sd.c                        | 296 ++++++++++++++++++++---
+> >  drivers/mmc/host/sdhci-esdhc-imx.c               |   6 +-
+> >  drivers/mmc/host/sdhci-msm.c                     |   2 +-
+> >  drivers/mmc/host/sdhci-sirf.c                    |   2 +-
+> >  include/linux/mmc/core.h                         |   2 +-
+> >  13 files changed, 314 insertions(+), 51 deletions(-)
+> >
+> > --
+> > 1.8.1.1.dirty
+> 
+> I have reviewed the patches, I think they overall looks good! Some
+> comments though.
+> 
+> You need to split patch 9, the DT parts enabling hw reset shall go in
+> separately.
+> 
+Ok, will separate it at next revision.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Regarding the hw-reset changes in patch1, patch6 and patch9, I believe
+> I requested you to separate the HW reset changes from $subject
+> patchset as they are unrelated, please do this.
+> 
+As you know, the hw-reset is a part of mmc retune.
+so that I add it to this series.
 
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.txt         |  4 ++++
->  .../devicetree/bindings/arm/mediatek/mediatek,sysirq.txt   |  1 +
->  Documentation/devicetree/bindings/serial/mtk-uart.txt      | 14 +++++++-------
->  .../devicetree/bindings/timer/mediatek,mtk-timer.txt       |  5 +++--
->  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt     |  6 +++++-
->  5 files changed, 20 insertions(+), 10 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
-> index 618a919..54f43bc 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.txt
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
-> @@ -6,6 +6,7 @@ following property:
->  Required root node property:
->
->  compatible: Must contain one of
-> +   "mediatek,mt2701"
->     "mediatek,mt6580"
->     "mediatek,mt6589"
->     "mediatek,mt6592"
-> @@ -17,6 +18,9 @@ compatible: Must contain one of
->
->  Supported boards:
->
-> +- Evaluation board for MT2701:
-> +    Required root node properties:
-> +      - compatible = "mediatek,mt2701-evb", "mediatek,mt2701";
->  - Evaluation board for MT6580:
->      Required root node properties:
->        - compatible = "mediatek,mt6580-evbp1", "mediatek,mt6580";
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
-> index afef6a8..b8e1674 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sysirq.txt
-> @@ -14,6 +14,7 @@ Required properties:
->         "mediatek,mt6582-sysirq"
->         "mediatek,mt6580-sysirq"
->         "mediatek,mt6577-sysirq"
-> +       "mediatek,mt2701-sysirq"
->  - interrupt-controller : Identifies the node as an interrupt controller
->  - #interrupt-cells : Use the same format as specified by GIC in
->    Documentation/devicetree/bindings/arm/gic.txt
-> diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> index 2d47add..a833a01 100644
-> --- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> +++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
-> @@ -2,15 +2,15 @@
->
->  Required properties:
->  - compatible should contain:
-> -  * "mediatek,mt8135-uart" for MT8135 compatible UARTS
-> +  * "mediatek,mt2701-uart" for MT2701 compatible UARTS
-> +  * "mediatek,mt6580-uart" for MT6580 compatible UARTS
-> +  * "mediatek,mt6582-uart" for MT6582 compatible UARTS
-> +  * "mediatek,mt6589-uart" for MT6589 compatible UARTS
-> +  * "mediatek,mt6795-uart" for MT6795 compatible UARTS
->    * "mediatek,mt8127-uart" for MT8127 compatible UARTS
-> +  * "mediatek,mt8135-uart" for MT8135 compatible UARTS
->    * "mediatek,mt8173-uart" for MT8173 compatible UARTS
-> -  * "mediatek,mt6795-uart" for MT6795 compatible UARTS
-> -  * "mediatek,mt6589-uart" for MT6589 compatible UARTS
-> -  * "mediatek,mt6582-uart" for MT6582 compatible UARTS
-> -  * "mediatek,mt6580-uart" for MT6580 compatible UARTS
-> -  * "mediatek,mt6577-uart" for all compatible UARTS (MT8173, MT6795,
-> -        MT6589, MT6582, MT6580, MT6577)
-> +  * "mediatek,mt6577-uart" for MT6577 and all of the above
->
->  - reg: The base address of the UART register bank.
->
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> index 53a3029..54f858c 100644
-> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> @@ -3,10 +3,11 @@ Mediatek MT6577, MT6572 and MT6589 Timers
->
->  Required properties:
->  - compatible should contain:
-> +       * "mediatek,mt2701-timer" for MT2701 compatible timers
->         * "mediatek,mt6589-timer" for MT6589 compatible timers
->         * "mediatek,mt6580-timer" for MT6580 compatible timers
-> -       * "mediatek,mt6577-timer" for all compatible timers (MT6589, MT6580,
-> -               MT6577)
-> +       * "mediatek,mt6577-timer" for all compatible timers (MT2701, MT6589,
-> +               MT6580, MT6577)
->  - reg: Should contain location and length for timers register.
->  - clocks: Clocks driving the timer hardware. This list should include two
->         clocks. The order is system clock and as second clock the RTC clock.
-> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> index af9eb5b..6a00939 100644
-> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> @@ -2,7 +2,11 @@ Mediatek SoCs Watchdog timer
->
->  Required properties:
->
-> -- compatible : should be "mediatek,mt6589-wdt"
-> +- compatible should contain:
-> +       * "mediatek,mt2701-wdt" for MT2701 compatible watchdog timers
-> +       * "mediatek,mt6589-wdt" for all compatible watchdog timers (MT2701,
-> +               MT6589)
-> +
->  - reg : Specifies base physical address and size of the registers.
->
->  Example:
-> --
-> 1.9.1
->
+> Running checkpatch, it gave me warnings and errors for patch 8.
+> Patch7 didn't apply to my next branch.
+> 
+
+I will fix the checkpatch warnings and errors at next revision.
+by the way, I tried to use "git am
+0007-mmc-mmc-extend-the-mmc_send_tuning.patch" in your branch,
+there was no conflict, so why couldn't apply it ?
+Thx!
+
+> Kind regards
+> Uffe
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
