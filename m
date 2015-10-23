@@ -1,45 +1,58 @@
-From: Rob Herring <robh+dt@kernel.org>
-Subject: Re: [RFC v4 01/11] dt-bindings: drm/mediatek: Add Mediatek display
- subsystem dts binding
-Date: Fri, 23 Oct 2015 07:38:07 -0500
-Message-ID: <CAL_Jsq+qcEsc-cCXzFOB_Kb_3XJObwAoK4-aTJab+=U04cBLVw@mail.gmail.com>
-References: <1445026333-17013-1-git-send-email-p.zabel@pengutronix.de>
- <1445026333-17013-2-git-send-email-p.zabel@pengutronix.de>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH] i2c: mediatek: add i2c resume support
+Date: Fri, 23 Oct 2015 21:59:11 +0200
+Message-ID: <20151023195911.GB1520@katana>
+References: <1444123376-24448-1-git-send-email-eddie.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1445026333-17013-2-git-send-email-p.zabel@pengutronix.de>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, "kernel@pengutronix.de" <kernel@pengutronix.de>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ftEhullJWpWg/VHq"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1444123376-24448-1-git-send-email-eddie.huang@mediatek.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Liguo Zhang <liguo.zhang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Xudong Chen <xudong.chen@mediatek.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCBPY3QgMTYsIDIwMTUgYXQgMzoxMiBQTSwgUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBw
-ZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gRnJvbTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4K
-Pgo+IEFkZCBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIHRoZSBkaXNwbGF5
-IHN1YnN5c3RlbSBpbgo+IE1lZGlhdGVrIE1UODE3MyBTb0NzLiBUaGUgZGlzcGxheSBmdW5jdGlv
-biBibG9jayBub2RlcyBhcmUgZ3JvdXBlZAo+IHVuZGVyIGEgZGlzcGxheS1zdWJzeXN0ZW0gbm9k
-ZS4KPgo+IFNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gU2lnbmVk
-LW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KPiAtLS0KPiBD
-aGFuZ2VzIHNpbmNlIHYzOgo+ICAtIE1vdmVkIERJU1AgZnVuY3Rpb24gYmxvY2tzIGJhY2sgb3V0
-IG9mIHRoZSBncm91cCBub2RlLCB1cGRhdGVkIGV4YW1wbGUKPiAgICBmcm9tIHRoZSBkZXZpY2Ug
-dHJlZSwgaW5jbHVkaW5nIHdkbWEgYmxvY2tzLgo+ICAtIFJlbW92ZWQgdGhlIGRpdmlkZXIgYW5k
-IG11eCBjbG9ja3MgZnJvbSB0aGUgRFBJIGJpbmRpbmdzLCB0aG9zZSBhcmUKPiAgICBub3QgZGly
-ZWN0IGlucHV0cyBhbmQgY2FuIGJlIHNldCBieSB0aGUgY2xvY2sgZnJhbWV3b3JrLgo+IC0tLQo+
-ICAuLi4vYmluZGluZ3MvZHJtL21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgICAgICB8IDE4
-MiArKysrKysrKysrKysrKysrKysrKysKPiAgLi4uL2JpbmRpbmdzL2RybS9tZWRpYXRlay9tZWRp
-YXRlayxkcGkudHh0ICAgICAgICAgfCAgMzUgKysrKwo+ICAuLi4vYmluZGluZ3MvZHJtL21lZGlh
-dGVrL21lZGlhdGVrLGRzaS50eHQgICAgICAgICB8ICA1MyArKysrKysKClRoaXMgYWxsIGxvb2tz
-IGdvb2QgdG8gbWUsIGJ1dCBwbGVhc2UgbW92ZSB0byBiaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVr
-LwoKUm9iCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--ftEhullJWpWg/VHq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Oct 06, 2015 at 05:22:56PM +0800, Eddie Huang wrote:
+> From: Liguo Zhang <liguo.zhang@mediatek.com>
+>=20
+> mt65xx i2c controller initial setting will be cleared after system suspen=
+d,
+> so we should init mt65xx i2c controller again when system resume.
+>=20
+> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+> Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
+
+Applied to for-next, thanks!
+
+
+--ftEhullJWpWg/VHq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: Digital signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJWKpGPAAoJEBQN5MwUoCm2CZcP/RwcU/qN3bTtgUwn3j8ThkYE
+fDaKp5Bch+qEe+L3BQSTUr0+n0R5F/bsVTEcidxS+rKEEipcqbRt4WbVImdIBjCZ
+ZgszU61iY0MG8T3VQ5hkUBo4XbCzP0bl17PU7s1PpkOJHXzZ6Uzlg1WMPLw/Qp8l
+cSHgdho8qjXzwsrx+rN8tzpp+p2b6NgmL4IdvVMedLeLwwbk1GDSI4iTGQxT3jj9
+7jq0eQAmAO5FIRDvrY8rUkNm9Ci9nzf1AZsoC/sc00mThReLpxPIs2KFjoTCfDHp
+PqI11sk2Uo+m9PkDfe+Epiq22IeTG4HMhk5wk9m72xAOJ2oOb4FZ8i53H3rSkEO0
+eNgM6i6hCSqfMhAdoEqD0CeH4L6wtF1BoQObiJbxGC57godZ+Qt+pk8HDxm9UcEi
+iYlg25zqUUmzVY/yJTxAqC5moI9hjjf4bi7QS7lOAZk9Cxwy4TADDT2NEi+F1IZ/
+oLW/lkBP0KSwjYBvOevg4vng+TBhxJF2OmBNJsGJu9850+l8xU2ajxDPyi6i/7y0
+RQzrz2BSdpinqMBNHg6p5RqFNYxb6mfuO0UwVENXxxMH5BMgluryqaUQMvvKvS1J
+Px3G5oyHtElq48H3hTq/bJNiz5W9SFZzRCXPUKz6HyVjyvmeS3PO6AMuM3nzO0JQ
+3PELMadl5wFS3PWujVll
+=Dwnu
+-----END PGP SIGNATURE-----
+
+--ftEhullJWpWg/VHq--
