@@ -1,81 +1,32 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/9] clockevents/drivers/mtk: Fix spurious interrupt
- leading to crash
-Date: Thu, 22 Oct 2015 21:50:54 +0200
-Message-ID: <CABuKBeJwpsM6szvPKYycfwW9kWgX1oweQy-dte4kyWAQbpRMow@mail.gmail.com>
-References: <56255943.6060807@linaro.org>
-	<1445288368-6440-1-git-send-email-daniel.lezcano@linaro.org>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 0/6] MT8173 IOMMU SUPPORT
+Date: Fri, 23 Oct 2015 11:26:37 +0200
+Message-ID: <20151023092636.GX27420@8bytes.org>
+References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
+ <20151014125620.GQ27420@8bytes.org>
+ <1445488802.27202.67.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445288368-6440-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, mingo@kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1445488802.27202.67.camel@mhfsdcap03>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2015-10-19 22:59 GMT+02:00 Daniel Lezcano <daniel.lezcano@linaro.org>:
-> After analysis done by Yingjoe Chen, the timer appears to have a pending
-> interrupt when it is enabled.
->
-> Fix this by acknowledging the pending interrupt when enabling the timer
-> interrupt.
->
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> Tested-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+On Thu, Oct 22, 2015 at 12:40:02PM +0800, Yong Wu wrote:
+>      But the mtk-iommu depend on the drivers/memory/mtk-smi.c(mtk-iommu
+> has called a function of the mtk-smi).
+>      So if there is dependence here, How should we do to merge them?
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->  drivers/clocksource/mtk_timer.c | 16 ++++++----------
->  1 file changed, 6 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-> index 50f0641..c8badc4 100644
-> --- a/drivers/clocksource/mtk_timer.c
-> +++ b/drivers/clocksource/mtk_timer.c
-> @@ -141,14 +141,6 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
->         return IRQ_HANDLED;
->  }
->
-> -static void mtk_timer_global_reset(struct mtk_clock_event_device *evt)
-> -{
-> -       /* Disable all interrupts */
-> -       writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
-> -       /* Acknowledge all interrupts */
-> -       writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
-> -}
-> -
->  static void
->  mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
->  {
-> @@ -168,6 +160,12 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
->  {
->         u32 val;
->
-> +       /* Disable all interrupts */
-> +       writel(0x0, evt->gpt_base + GPT_IRQ_EN_REG);
-> +
-> +       /* Acknowledge all spurious pending interrupts */
-> +       writel(0x3f, evt->gpt_base + GPT_IRQ_ACK_REG);
-> +
->         val = readl(evt->gpt_base + GPT_IRQ_EN_REG);
->         writel(val | GPT_IRQ_ENABLE(timer),
->                         evt->gpt_base + GPT_IRQ_EN_REG);
-> @@ -220,8 +218,6 @@ static void __init mtk_timer_init(struct device_node *node)
->         }
->         rate = clk_get_rate(clk);
->
-> -       mtk_timer_global_reset(evt);
-> -
->         if (request_irq(evt->dev.irq, mtk_timer_interrupt,
->                         IRQF_TIMER | IRQF_IRQPOLL, "mtk_timer", evt)) {
->                 pr_warn("failed to setup irq %d\n", evt->dev.irq);
-> --
-> 1.9.1
->
+I can surely merge mtk-smi too, if it gets proper Reviewed-by and
+Acked-by tags from the maintainer(s).
 
 
+	Joerg
 
--- 
-motzblog.wordpress.com
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
