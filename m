@@ -1,44 +1,50 @@
-From: Leilk Liu <leilk.liu@mediatek.com>
-Subject: [PATCH v2 5/5] arm64: dts: mt8173: spi bus dts support multiple devices
-Date: Mon, 26 Oct 2015 16:09:45 +0800
-Message-ID: <1445846985-26229-6-git-send-email-leilk.liu@mediatek.com>
-References: <1445846985-26229-1-git-send-email-leilk.liu@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Mon, 26 Oct 2015 17:46:37 +0800
+Message-ID: <1445852797-15549-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445846985-26229-1-git-send-email-leilk.liu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, Leilk Liu <leilk.liu@mediatek.com>
+To: linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, srv_heupstream@mediatek.com, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch support multiple devices for MT8173 board.
+Some power domain comsumers may init before module_init.
+So the power domain provider (scpsys) need to be initialized
+earlier too.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+This patch modify scpsys driver init level from module_init to
+subsys_initcall.
+
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 811cb76..e7a4416 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -393,7 +393,7 @@
- 			pinmux = <MT8173_PIN_69_SPI_CK__FUNC_SPI_CK_0_>,
- 				<MT8173_PIN_70_SPI_MI__FUNC_SPI_MI_0_>,
- 				<MT8173_PIN_71_SPI_MO__FUNC_SPI_MO_0_>,
--				<MT8173_PIN_72_SPI_CS__FUNC_SPI_CS_0_>;
-+				<MT8173_PIN_72_SPI_CS__FUNC_GPIO72>;
- 		};
- 	};
+This patch is based on v4.3-rc7.
+
+ drivers/soc/mediatek/mtk-scpsys.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 164a7d8..7d5d55d 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -485,4 +485,15 @@ static struct platform_driver scpsys_drv = {
+ 	},
  };
-@@ -401,6 +401,7 @@
- &spi {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&spi_pins_a>;
-+	cs-gpios = <&pio 72 0>;
- 	mediatek,pad-select = <0>;
- 	status = "okay";
- };
+ 
+-module_platform_driver_probe(scpsys_drv, scpsys_probe);
++static int __init scpsys_drv_init(void)
++{
++	return platform_driver_probe(&scpsys_drv, scpsys_probe);
++}
++
++static void __exit scpsys_drv_exit(void)
++{
++	platform_driver_unregister(&scpsys_drv);
++}
++
++subsys_initcall(scpsys_drv_init);
++module_exit(scpsys_drv_exit);
 -- 
-1.8.1.1.dirty
+1.9.1
