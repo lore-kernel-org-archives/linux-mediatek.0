@@ -1,50 +1,38 @@
-From: Alexey Klimov <alexey.klimov@linaro.org>
-Subject: [PATCH v3 3/3] clocksource: mtk_timer: fix memleak in mtk_timer_init()
-Date: Sun, 25 Oct 2015 23:21:24 +0000
-Message-ID: <1445815284-10425-3-git-send-email-alexey.klimov@linaro.org>
-References: <1445815284-10425-1-git-send-email-alexey.klimov@linaro.org>
+From: Kevin Hilman <khilman@kernel.org>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Mon, 26 Oct 2015 09:56:50 +0900
+Message-ID: <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+	<1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445815284-10425-1-git-send-email-alexey.klimov@linaro.org>
+In-Reply-To: <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.lezcano@linaro.org, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, joe@perches.com
-Cc: linux-mediatek@lists.infradead.org, yingjoe.chen@mediatek.com, tglx@linutronix.de, klimov.linux@gmail.com, Alexey Klimov <alexey.klimov@linaro.org>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Russell King - ARM Linux <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Stephen Boyd <sboyd@codeaurora.org>, lkml <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Olof Johansson <olof@lixom.net>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Tyler Baker <tyler.baker@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add error path to clear evt struct allocated by kzalloc()
-in the beginning of function mtk_timer_init().
+Hello,
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Alexey Klimov <alexey.klimov@linaro.org>
----
-Changes in v3:
-  -- none
+On Sat, Oct 3, 2015 at 12:19 AM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+> Add arch timer node to enable arch-timer support. MT8135 firmware
+> doesn't correctly setup arch-timer frequency and CNTVOFF, add
+> properties to workaround this.
+>
+> This also set cpu enable-method to enable SMP.
+>
+> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 
-Changes in v2:
-  -- added acked-by from Matthias
+kernelci.org started detecting new boot failures for the mt8135-evb in
+the arm-soc tree[1], and the boot failures were bisected down to this
+patch, which landed upstream in the form of commit d186a394bb98 (ARM:
+dts: mt8135: enable basic SMP bringup for mt8135)
 
- drivers/clocksource/mtk_timer.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Maybe this new SMP support requires updating the firmware on the board
+as well?  If so, the changelog should've been a bit more explicit
+about firmware dependencies.
 
-diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-index 4ddddf4..454c00e 100644
---- a/drivers/clocksource/mtk_timer.c
-+++ b/drivers/clocksource/mtk_timer.c
-@@ -199,7 +199,7 @@ static void __init mtk_timer_init(struct device_node *node)
- 	evt->gpt_base = of_io_request_and_map(node, 0, "mtk-timer");
- 	if (IS_ERR(evt->gpt_base)) {
- 		pr_err("Can't get resource\n");
--		return;
-+		goto err_kzalloc;
- 	}
- 
- 	evt->dev.irq = irq_of_parse_and_map(node, 0);
-@@ -254,5 +254,7 @@ err_mem:
- 	iounmap(evt->gpt_base);
- 	of_address_to_resource(node, 0, &res);
- 	release_mem_region(res.start, resource_size(&res));
-+err_kzalloc:
-+	kfree(evt);
- }
- CLOCKSOURCE_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
--- 
-2.1.4
+Kevin
+
+[1] http://kernelci.org/boot/mt8135-evbp1/job/arm-soc/kernel/v4.3-rc5-795-ga4b616012d2e/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=562b1cf959b5149e07111471
