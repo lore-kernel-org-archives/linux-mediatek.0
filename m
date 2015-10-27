@@ -1,65 +1,54 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH V2] clockevents/drivers/mtk: Fix spurious interrupt
- leading to crash
-Date: Tue, 27 Oct 2015 12:47:03 +0100
-Message-ID: <562F6437.1000507@linaro.org>
-References: <1440426924.17418.11.camel@mtksdaap41>
- <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
- <1440508871.29634.1.camel@mtksdaap41> <55DDCC4B.7010203@linaro.org>
- <562F5BE9.30200@gmail.com> <562F5EA8.2070507@linaro.org>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v5 4/6] memory: mediatek: Add SMI driver
+Date: Tue, 27 Oct 2015 13:24:34 +0000
+Message-ID: <562F7B12.7030201@arm.com>
+References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
+ <1444357388-30257-5-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <562F5EA8.2070507@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, tglx@linutronix.de
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, djkurtz@chromium.org, sboyd@codeaurora.org, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Kevin Hilman <khilman@kernel.org>
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1444357388-30257-5-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 10/27/2015 12:23 PM, Daniel Lezcano wrote:
-> On 10/27/2015 12:11 PM, Matthias Brugger wrote:
->> Hi Daniel,
->>
->> On 26/08/15 16:25, Daniel Lezcano wrote:
->>> On 08/25/2015 03:21 PM, Yingjoe Chen wrote:
->>>> Tested-by: Yingjoe Chen<yingjoe.chen@mediatek.com>
->>>
->>> Applied to my tree for 4.4.
->>>
->>>    -- Daniel
->>>
->>
->> Kevin found a regression in v4.3 which will need this patch to fix i=
-t
->> [1]. Can you apply it to your clockevents/4.3-fixes branch please.
->>
->> Thanks,
->> Matthias
->>
->> [1] https://lkml.org/lkml/2015/10/26/211
->
-> Hmm, I thought it wasn't impacting 4.3, so it went to 4.4.
->
-> Let me look how to backport this fix without introducing a conflict w=
-hen
-> tip/timers/urgent will be merged to tip/timers/core.
+On 09/10/15 03:23, Yong Wu wrote:
+[...]
+> +static int mtk_smi_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_smi_data *smidata;
+> +	int ret;
+> +
+> +	if (!dev->pm_domain)
+> +		return -EPROBE_DEFER;
+> +
+> +	smidata = devm_kzalloc(dev, sizeof(*smidata), GFP_KERNEL);
+> +	if (!smidata)
+> +		return -ENOMEM;
+> +
+> +	smidata->clk_apb = devm_clk_get(dev, "apb");
+> +	if (IS_ERR(smidata->clk_apb))
+> +		return PTR_ERR(smidata->clk_apb);
+> +
+> +	smidata->clk_smi = devm_clk_get(dev, "smi");
+> +	if (IS_ERR(smidata->clk_smi))
+> +		return PTR_ERR(smidata->clk_smi);
+> +
+> +	pm_runtime_enable(dev);
+> +	dev_set_drvdata(dev, smidata);
+> +	return ret;
 
-Thomas,
+ret is used uninitialised here, but you might as well just "return 0;" 
+and get rid of the variable entirely.
 
-do you think I can cherry-pick from tip/timers/core or clockevents/4.4=20
-directly the fix to be pulled into clockevents/4.3-fixes ? That will=20
-certainly raise a conflict when tip/timers/urgent will be merged to=20
-tip/timers/core (a trivial conflict actually).
+> +}
 
-   -- Daniel
+Robin.
 
-
---=20
-  <http://www.linaro.org/> Linaro.org =E2=94=82 Open source software fo=
-r ARM SoCs
-
-=46ollow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
