@@ -1,61 +1,36 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8173 PSCI-1.0 support
-Date: Tue, 27 Oct 2015 11:52:27 +0100
-Message-ID: <562F576B.2050108@gmail.com>
-References: <1440727919-34719-1-git-send-email-fan.chen@mediatek.com>
+Subject: Re: [PATCH V2] clockevents/drivers/mtk: Fix spurious interrupt
+ leading to crash
+Date: Tue, 27 Oct 2015 12:11:37 +0100
+Message-ID: <562F5BE9.30200@gmail.com>
+References: <1440426924.17418.11.camel@mtksdaap41>
+ <1440453450-21203-1-git-send-email-daniel.lezcano@linaro.org>
+ <1440508871.29634.1.camel@mtksdaap41> <55DDCC4B.7010203@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1440727919-34719-1-git-send-email-fan.chen@mediatek.com>
+In-Reply-To: <55DDCC4B.7010203@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: fan.chen@mediatek.com, Mark Rutland <mark.rutland@arm.com>
-Cc: srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Howard Chen <howard.chen@linaro.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sudeep Holla <sudeep.holla@arm.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: djkurtz@chromium.org, sboyd@codeaurora.org, tglx@linutronix.de, jamesjj.liao@mediatek.com, linux@arm.linux.org.uk, srv_heupstream@mediatek.com, arnd@arndb.de, catalin.marinas@arm.com, kernel@pengutronix.de, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Kevin Hilman <khilman@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Daniel,
 
-
-On 28/08/15 04:11, fan.chen@mediatek.com wrote:
-> From: Fan Chen <fan.chen@mediatek.com>
+On 26/08/15 16:25, Daniel Lezcano wrote:
+> On 08/25/2015 03:21 PM, Yingjoe Chen wrote:
+>> Tested-by: Yingjoe Chen<yingjoe.chen@mediatek.com>
 >
-> This patch adds psci comatible properties to support all mandatory
-> functions of PSCI-1.0, PSCI-0.2 and PSCI-0.1, and system suspend
-> can be supported in PSCI-1.0.
+> Applied to my tree for 4.4.
 >
-> Signed-off-by: Fan Chen <fan.chen@mediatek.com>
-> ---
+>    -- Daniel
+>
 
-Applied to v4.4-next/arm64
+Kevin found a regression in v4.3 which will need this patch to fix it 
+[1]. Can you apply it to your clockevents/4.3-fixes branch please.
 
 Thanks,
 Matthias
 
-> Because PSCI-1.0 patches hadn't landed on mainline, this patch is
-> based on three patch sets below:
-> [0] http://www.spinics.net/lists/arm-kernel/msg425793.html
->      PSCI: system suspend support
-> [1] git://git.kernel.org/pub/scm/linux/kernel/git/mark/linux.git
->      psci/unification
-> [2] http://www.spinics.net/lists/devicetree/msg82017.html
->      [PATCH 0/6] drivers: firmware: psci: add basic v1.0 support
->
-> Before they are merged in, this patch still works fine with psci-0.2
-> support in current mainline.
-> ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index d18ee42..b9b4205 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -95,7 +95,7 @@
->   	};
->
->   	psci {
-> -		compatible = "arm,psci";
-> +		compatible = "arm,psci-1.0", "arm,psci-0.2", "arm,psci";
->   		method = "smc";
->   		cpu_suspend   = <0x84000001>;
->   		cpu_off	      = <0x84000002>;
->
+[1] https://lkml.org/lkml/2015/10/26/211
