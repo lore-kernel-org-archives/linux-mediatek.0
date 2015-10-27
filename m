@@ -1,181 +1,81 @@
-From: andrew-ct chen <andrew-ct.chen@mediatek.com>
-Subject: Re: [PATCH 2/3] nvmem: mediatek: Add Mediatek EFUSE driver
-Date: Tue, 27 Oct 2015 17:28:04 +0800
-Message-ID: <1445938084.22398.4.camel@mtksdaap41>
-References: <1444984751-4572-1-git-send-email-andrew-ct.chen@mediatek.com>
-	 <1444984751-4572-3-git-send-email-andrew-ct.chen@mediatek.com>
-	 <562DF8C8.8060600@linaro.org> <1445923933.15900.14.camel@mtksdaap41>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 00/10] Add tune support of Mediatek MMC driver
+Date: Tue, 27 Oct 2015 10:54:04 +0100
+Message-ID: <CAPDyKFprx7UcZ6OypGZfEC_nLOd02bAFMdmxrOcig0ANVKGRwA@mail.gmail.com>
+References: <1445927070-5102-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1445923933.15900.14.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1445927070-5102-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Seungwon Jeon <tgih.jun@samsung.com>, Jaehoon Chung <jh80.chung@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Barry Song <baohua@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Lars-Peter Clausen <lars@metafoo.de>, Javier Martinez Canillas <javier.martinez@collabora.co.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Howard Chen <ibanezchen@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Kristina Martsenko <kristina.martsenko@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembe>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-10-27 at 13:32 +0800, andrew-ct chen wrote:
-> On Mon, 2015-10-26 at 09:56 +0000, Srinivas Kandagatla wrote:
-> > On 16/10/15 09:39, andrew-ct.chen@mediatek.com wrote:
-> > > From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> > >
-> > > Add Mediatek EFUSE driver to access hardware data like
-> > > thermal sensor calibration or HDMI impedance.
-> > >
-> > > Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> > 
-> > Dirver looks pretty simple, below are few minor nits.
-> > 
-> > Please rebase this patch on top of v4.4-rc1 once its released in few 
-> > weeks, so that I can queue this driver for v4.5.
-> 
-> We will rebase it.
-> 
-> > 
-> > > ---
-> > >   drivers/nvmem/Kconfig     | 11 ++++++
-> > >   drivers/nvmem/Makefile    |  1 +
-> > >   drivers/nvmem/mtk-efuse.c | 89 +++++++++++++++++++++++++++++++++++++++++++++++
-> > >   3 files changed, 101 insertions(+)
-> > >   create mode 100644 drivers/nvmem/mtk-efuse.c
-> > >
-> > > diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-> > > index 8db2978..1bd5badc 100644
-> > > --- a/drivers/nvmem/Kconfig
-> > > +++ b/drivers/nvmem/Kconfig
-> > > @@ -14,6 +14,17 @@ menuconfig NVMEM
-> > >
-> > >   if NVMEM
-> > >
-> > > +config MTK_EFUSE
-> > > +	tristate "Mediatek SoCs EFUSE support"
-> > > +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > > +	select REGMAP_MMIO
-> > > +	help
-> > > +	  This is a driver to access hardware related data like sensor
-> > > +	  calibration, HDMI impedance etc.
-> > > +
-> > > +	  This driver can also be built as a module. If so, the module
-> > > +	  will be called efuse-mtk.
-> > > +
-> > >   config QCOM_QFPROM
-> > >   	tristate "QCOM QFPROM Support"
-> > >   	depends on ARCH_QCOM || COMPILE_TEST
-> > > diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-> > > index 4328b93..916b727 100644
-> > > --- a/drivers/nvmem/Makefile
-> > > +++ b/drivers/nvmem/Makefile
-> > > @@ -6,6 +6,7 @@ obj-$(CONFIG_NVMEM)		+= nvmem_core.o
-> > >   nvmem_core-y			:= core.o
-> > >
-> > >   # Devices
-> > > +obj-$(CONFIG_MTK_EFUSE)		+= mtk-efuse.o
-> > 
-> > For consistency reasons, could you do this similar to other drivers.
+On 27 October 2015 at 07:24, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> Change in v3:
+> Fix checkpatch errors and warnings for patch 8
+> Split patch 9, make DT parts enabling hw reset separately
+>
+> Change in v2:
+> Drop the 400mhz and use assigned-clock-parents to instead
+> Split the original tune patch to several independent patches
+> Re-write the mmc_send_tuning()
+> Fix GPD checksum error
+> Move the HS400 setting to ops->prepare_hs400_tuning()
+> Modify SD driving settings
+>
+> Change in v1:
+> Add DT bindings for eMMC hardware reset
+> Add pinctrl of data strobe pin for HS400 mode
+> Modify eMMC driving settings
+> Add 400mhz source clock for HS400 mode
+> Add eMMC HS200/HS400 mode support
+> Add SD SDR50/SDR104 mode support
+> Add implement of tune function with CMD19/CMD21
+>
+> Chaotian Jing (10):
+>   mmc: core: Add DT bindings for eMMC hardware reset support
+>   mmc: dt-bindings: update Mediatek MMC bindings
+>   mmc: mediatek: make cmd_ints_mask to const
+>   mmc: mediatek: change the argument "ddr" to "timing"
+>   mmc: mediatek: fix got GPD checksum error interrupt when data transfer
+>   mmc: mediatek: add implement of ops->hw_reset()
+>   arm64: dts: mediatek: add eMMC hw reset support
+>   mmc: mmc: extend the mmc_send_tuning()
+>   mmc: mediatek: add HS400 support
+>   arm64: dts: mediatek: add HS200/HS400/SDR50/SDR104 support
+>
+>  Documentation/devicetree/bindings/mmc/mmc.txt    |   1 +
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt |  11 +-
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts      |  27 +-
+>  drivers/mmc/core/host.c                          |   2 +
+>  drivers/mmc/core/mmc_ops.c                       |   8 +-
+>  drivers/mmc/host/dw_mmc-exynos.c                 |   4 +-
+>  drivers/mmc/host/dw_mmc.c                        |   2 +-
+>  drivers/mmc/host/dw_mmc.h                        |   2 +-
+>  drivers/mmc/host/mtk-sd.c                        | 304 ++++++++++++++++++++---
+>  drivers/mmc/host/sdhci-esdhc-imx.c               |   6 +-
+>  drivers/mmc/host/sdhci-msm.c                     |   2 +-
+>  drivers/mmc/host/sdhci-sirf.c                    |   2 +-
+>  include/linux/mmc/core.h                         |   2 +-
+>  13 files changed, 322 insertions(+), 51 deletions(-)
+>
+> --
+> 1.8.1.1.dirty
+>
 
-We will do this for the consistency.
+Chaotian,
 
-> > 
-> > >   obj-$(CONFIG_QCOM_QFPROM)	+= nvmem_qfprom.o
-> > >   nvmem_qfprom-y			:= qfprom.o
-> > >   obj-$(CONFIG_NVMEM_SUNXI_SID)	+= nvmem_sunxi_sid.o
-> > > diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-> > > new file mode 100644
-> > > index 0000000..9021c0b
-> > > --- /dev/null
-> > > +++ b/drivers/nvmem/mtk-efuse.c
-> > > @@ -0,0 +1,89 @@
-> > > +/*
-> > > + * Copyright (c) 2015 MediaTek Inc.
-> > > + * Author: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> > > + *
-> > > + * This program is free software; you can redistribute it and/or modify
-> > > + * it under the terms of the GNU General Public License version 2 as
-> > > + * published by the Free Software Foundation.
-> > > + *
-> > > + * This program is distributed in the hope that it will be useful,
-> > > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > > + * GNU General Public License for more details.
-> > > + */
-> > > +
-> > > +#include <linux/device.h>
-> > > +#include <linux/module.h>
-> > > +#include <linux/nvmem-provider.h>
-> > > +#include <linux/platform_device.h>
-> > > +#include <linux/regmap.h>
-> > > +
-> > > +static struct regmap_config mtk_regmap_config = {
-> > > +	.reg_bits = 32,
-> > > +	.val_bits = 32,
-> > > +	.reg_stride = 4,
-> > > +};
-> > > +
-> > > +static int mtk_efuse_probe(struct platform_device *pdev)
-> > > +{
-> > > +	struct device *dev = &pdev->dev;
-> > > +	struct resource *res;
-> > > +	struct nvmem_device *nvmem;
-> > > +	struct nvmem_config *econfig;
-> > > +	struct regmap *regmap;
-> > > +	void __iomem *base;
-> > > +
-> > > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > > +	base = devm_ioremap_resource(dev, res);
-> > > +	if (IS_ERR(base))
-> > > +		return PTR_ERR(base);
-> > > +
-> > > +	econfig = devm_kzalloc(dev, sizeof(*econfig), GFP_KERNEL);
-> > > +	if (!econfig)
-> > > +		return -ENOMEM;
-> > Why not use static econfig variable?
-> > 
-> > > +
-> > > +	mtk_regmap_config.max_register = resource_size(res) - 1;
-> > > +
-> > > +	regmap = devm_regmap_init_mmio(dev, base, &mtk_regmap_config);
-> > > +	if (IS_ERR(regmap)) {
-> > > +		dev_err(dev, "regmap init failed\n");
-> > > +		return PTR_ERR(regmap);
-> > > +	}
-> > > +
-> > > +	econfig->dev = dev;
-> > > +	econfig->owner = THIS_MODULE;
-> > > +	nvmem = nvmem_register(econfig);
-> > > +	if (IS_ERR(nvmem))
-> > > +		return PTR_ERR(nvmem);
-> > > +
-> > > +	platform_set_drvdata(pdev, nvmem);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int mtk_efuse_remove(struct platform_device *pdev)
-> > > +{
-> > > +	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
-> > > +
-> > > +	return nvmem_unregister(nvmem);
-> > > +}
-> > > +
-> > > +static const struct of_device_id mtk_efuse_of_match[] = {
-> > > +	{ .compatible = "mediatek,mt8135-efuse",},
-> > > +	{ .compatible = "mediatek,mt8173-efuse",},
-> > > +	{/* sentinel */},
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, mtk_efuse_of_match);
-> > > +
-> > > +static struct platform_driver mtk_efuse_driver = {
-> > > +	.probe = mtk_efuse_probe,
-> > > +	.remove = mtk_efuse_remove,
-> > > +	.driver = {
-> > > +		.name = "mediatek,efuse",
-> > > +		.of_match_table = mtk_efuse_of_match,
-> > > +	},
-> > > +};
-> > > +module_platform_driver(mtk_efuse_driver);
-> > > +MODULE_AUTHOR("Andrew-CT Chen <andrew-ct.chen@mediatek.com>");
-> > > +MODULE_DESCRIPTION("Mediatek EFUSE driver");
-> > > +MODULE_LICENSE("GPL v2");
-> > >
-> 
+I have applied this except the ARM patches (patch7 and patch10) as I
+think those should go via ARM SoC (unless I get acks for them).
+
+Regarding patch8, it didn't apply since it needed a re-base. This time
+it was trivial to fix, so I decided to pick it up anyway.
+
+Future wise I also advise you to significantly trim the cc/to list
+when posting patches. Likely what happens when that many people are
+requested for input, is that *none* cares. :-)
+
+Thanks and kind regards!
+Uffe
