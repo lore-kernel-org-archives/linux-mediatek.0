@@ -1,64 +1,41 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH] phy: core: Get a refcount to phy in devm_of_phy_get_by_index()
-Date: Wed, 28 Oct 2015 11:28:45 +0800
-Message-ID: <1446002925-6149-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Liam Girdwood <liam.r.girdwood@linux.intel.com>
+Subject: Re: [PATCH] ASoC: dpcm: Make BE prepare possible in
+	suspend state
+Date: Wed, 28 Oct 2015 08:34:25 +0000
+Message-ID: <1446021265.2443.3.camel@loki>
+References: <1445998534-38246-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Arun Ramamurthy <arun.ramamurthy@broadcom.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1445998534-38246-1-git-send-email-koro.chen@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Koro Chen <koro.chen@mediatek.com>
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On driver detach, devm_phy_release() will put a refcount to
-the phy, so gets a refconut to it before return.
+On Wed, 2015-10-28 at 10:15 +0800, Koro Chen wrote:
+> During suspend/resume, there is a flow that if a driver does not support
+> SNDRV_PCM_INFO_RESUME, it will fail at snd_pcm_resume(), and user space
+> can then issue SNDRV_PCM_IOCTL_PREPARE to let audio continue to play.
+> 
+> However, in dpcm_be_dai_prepare() it only allows BEs to be prepared
+> in state SND_SOC_DPCM_STATE_HW_PARAMS or SND_SOC_DPCM_STATE_STOP.
+> The BE state will then stay in SND_SOC_DPCM_STATE_SUSPEND, consequently
+> dpcm_be_dai_shutdown() is skipped in the end of playback and
+> be_substream->runtime is not cleared while this runtime is actually freed
+> by snd_pcm_detach_substream(). If another suspend comes, a NULL pointer
+> dereference will happen in snd_pcm_suspend() when accessing
+> BE substream's runtime.
+> 
+> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/phy/phy-core.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index fc48fac..8c7f27d 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -636,8 +636,9 @@ EXPORT_SYMBOL_GPL(devm_of_phy_get);
-  * @np: node containing the phy
-  * @index: index of the phy
-  *
-- * Gets the phy using _of_phy_get(), and associates a device with it using
-- * devres. On driver detach, release function is invoked on the devres data,
-+ * Gets the phy using _of_phy_get(), then gets a refcount to it,
-+ * and associates a device with it using devres. On driver detach,
-+ * release function is invoked on the devres data,
-  * then, devres data is freed.
-  *
-  */
-@@ -651,13 +652,21 @@ struct phy *devm_of_phy_get_by_index(struct device *dev, struct device_node *np,
- 		return ERR_PTR(-ENOMEM);
- 
- 	phy = _of_phy_get(np, index);
--	if (!IS_ERR(phy)) {
--		*ptr = phy;
--		devres_add(dev, ptr);
--	} else {
-+	if (IS_ERR(phy)) {
- 		devres_free(ptr);
-+		return phy;
- 	}
- 
-+	if (!try_module_get(phy->ops->owner)) {
-+		devres_free(ptr);
-+		return ERR_PTR(-EPROBE_DEFER);
-+	}
-+
-+	get_device(&phy->dev);
-+
-+	*ptr = phy;
-+	devres_add(dev, ptr);
-+
- 	return phy;
- }
- EXPORT_SYMBOL_GPL(devm_of_phy_get_by_index);
--- 
-1.8.1.1.dirty
+Acked-by: Liam Girdwood <liam.r.girdwood@linux.intel.com>
