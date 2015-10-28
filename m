@@ -1,41 +1,68 @@
-From: Liam Girdwood <liam.r.girdwood@linux.intel.com>
-Subject: Re: [PATCH] ASoC: dpcm: Make BE prepare possible in
-	suspend state
-Date: Wed, 28 Oct 2015 08:34:25 +0000
-Message-ID: <1446021265.2443.3.camel@loki>
-References: <1445998534-38246-1-git-send-email-koro.chen@mediatek.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v3 2/2] arm64: dts: mt8173: Add thermal zone node for
+ mt8173.
+Date: Wed, 28 Oct 2015 21:09:44 +0530
+Message-ID: <20151028153944.GG3716@ubuntu>
+References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
+ <1445515359-8587-3-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1445998534-38246-1-git-send-email-koro.chen@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Koro Chen <koro.chen@mediatek.com>
-Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, broonie@kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1445515359-8587-3-git-send-email-dawei.chien@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dawei Chien <dawei.chien@mediatek.com>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-10-28 at 10:15 +0800, Koro Chen wrote:
-> During suspend/resume, there is a flow that if a driver does not support
-> SNDRV_PCM_INFO_RESUME, it will fail at snd_pcm_resume(), and user space
-> can then issue SNDRV_PCM_IOCTL_PREPARE to let audio continue to play.
+On 22-10-15, 20:02, Dawei Chien wrote:
+> Add thermal zone node to mt8173.dtsi.
 > 
-> However, in dpcm_be_dai_prepare() it only allows BEs to be prepared
-> in state SND_SOC_DPCM_STATE_HW_PARAMS or SND_SOC_DPCM_STATE_STOP.
-> The BE state will then stay in SND_SOC_DPCM_STATE_SUSPEND, consequently
-> dpcm_be_dai_shutdown() is skipped in the end of playback and
-> be_substream->runtime is not cleared while this runtime is actually freed
-> by snd_pcm_detach_substream(). If another suspend comes, a NULL pointer
-> dereference will happen in snd_pcm_suspend() when accessing
-> BE substream's runtime.
+> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+> ---
+> This patch is base on
+> https://patchwork.kernel.org/patch/7249821/
+> https://patchwork.kernel.org/patch/7249861/
+> https://patchwork.kernel.org/patch/7249891/
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   90 ++++++++++++++++++++++++++++++
+>  1 file changed, 90 insertions(+)
 > 
-> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 3b18f37..eaf12bf 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -16,6 +16,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/power/mt8173-power.h>
+>  #include <dt-bindings/reset-controller/mt8173-resets.h>
+> +#include <dt-bindings/thermal/mt8173.h>
+>  #include "mt8173-pinfunc.h"
+>  
+>  / {
+> @@ -54,6 +55,18 @@
+>  			reg = <0x000>;
+>  			enable-method = "psci";
+>  			cpu-idle-states = <&CPU_SLEEP_0>;
+> +			static-power-points = <
+> +				859000  43
+> +				908000  52
+> +				983000  86
+> +				1009000 123
+> +				1028000 138
+> +				1083000 172
+> +				1110900 180
+> +				1125000 192
 
-Acked-by: Liam Girdwood <liam.r.girdwood@linux.intel.com>
+What's the unit of power here? Is this power accurate? Or just a
+number representing the power ?
+
+> +			>;
+> +			dynamic-power-coefficient = <263>;
+> +			#cooling-cells = <2>;
+>  		};
+
+@Rob: Looks like another good candidate for the OPP-v2 table? Power.
+
+-- 
+viresh
