@@ -1,134 +1,86 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC v4 02/11] drm/mediatek: Add DRM Driver for Mediatek SoC
- MT8173.
-Date: Wed, 28 Oct 2015 18:14:41 +0100
-Message-ID: <1446052481.7190.0.camel@pengutronix.de>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [RFC v4 05/11] dt-bindings: drm/mediatek: Add Mediatek HDMI dts
+ binding
+Date: Wed, 28 Oct 2015 18:50:23 +0100
+Message-ID: <1446054623.7190.5.camel@pengutronix.de>
 References: <1445026333-17013-1-git-send-email-p.zabel@pengutronix.de>
- <1445026333-17013-3-git-send-email-p.zabel@pengutronix.de>
- <20151019085644.GO13786@phenom.ffwll.local>
+	 <1445026333-17013-6-git-send-email-p.zabel@pengutronix.de>
+	 <CAL_JsqJkhbvTSMzyKb=3d3301VLRmuAf-UchWyf236c3VOdiQA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20151019085644.GO13786@phenom.ffwll.local>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@pengutronix.de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAL_JsqJkhbvTSMzyKb=3d3301VLRmuAf-UchWyf236c3VOdiQA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Dave Airlie <airlied-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Daniel Stone <daniel-rLtY4a/8tF1rovVCs/uTlw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org" <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGFuaWVsLAoKQW0gTW9udGFnLCBkZW4gMTkuMTAuMjAxNSwgMTA6NTYgKzAyMDAgc2Nocmll
-YiBEYW5pZWwgVmV0dGVyOgo+IE9uIEZyaSwgT2N0IDE2LCAyMDE1IGF0IDEwOjEyOjA0UE0gKzAy
-MDAsIFBoaWxpcHAgWmFiZWwgd3JvdGU6Cj4gPiBGcm9tOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsu
-Y29tPgo+ID4gCj4gPiBUaGlzIHBhdGNoIGFkZHMgYW4gaW5pdGlhbCBEUk0gZHJpdmVyIGZvciB0
-aGUgTWVkaWF0ZWsgTVQ4MTczIERJU1AKPiA+IHN1YnN5c3RlbS4gSXQgY3VycmVudGx5IHN1cHBv
-cnRzIHR3byBmaXhlZCBvdXRwdXQgc3RyZWFtcyBmcm9tIHRoZQo+ID4gT1ZMMC9PVkwxIHNvdXJj
-ZXMgdG8gdGhlIERTSTAvRFBJMCBzaW5rcywgcmVzcGVjdGl2ZWx5Lgo+ID4gCj4gPiBTaWduZWQt
-b2ZmLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogWVQg
-U2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFph
-YmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IAo+IEJ1bmNoIG9mIGRyaXZlLWJ5IGNvbW1l
-bnRzIGJlbG93IHRvIHBvaW50IG91dCBkZXByZWNhdGVkIGZ1bmN0aW9ucyBhbmQKPiBtb3JlIGNv
-bW1vbiBhcHByb2FjaGVzIHVzZWQgYnkgb3RoZXIgZHJpdmVycy4gRG9uJ3QgY29uc2lkZXIgdGhp
-cyBhIGZ1bGwKPiByZXZpZXcgOy0pCgpNdWNoIGFwcHJlY2lhdGVkIGFsbCB0aGUgc2FtZS4KCj4g
-Q2hlZXJzLCBEYW5pZWwKPiAKPiA+IC0tLQo+ID4gQ2hhbmdlcyBzaW5jZSB2MzoKPiA+ICAtIFJl
-bW92ZWQgY3J0YyBlbmFibGluZy9kaXNhYmxpbmcgb24gYmluZC91bmJpbmQsIHRoZSBlbmFibGUv
-ZGlzYWJsZQo+ID4gICAgY2FsbGJhY2tzIHNob3VsZCBzdWZmaWNlLgo+ID4gIC0gRmluZCBzaWJs
-aW5nIGNvbXBvbmVudHMgaW4gdGhlIGRldmljZSB0cmVlIHZpYSBjb21wYXRpYmxlIHZhbHVlCj4g
-Cj4gYnR3IGZvciBEVCBjb21wb25lbnRzIHN0dWZmIHRoZXJlJ3MgcGlsZXMgb2YgUkZDcyBmbG9h
-dGluZyBhcm91bmQgdG8KPiBleHRyYWN0IHRoaXMgaW50byBoZWxwZXIgbGlicmFyaWVzLiBXb3Vs
-ZCBiZSBncmVhdCB3ZSBjb3VsZCBwdXNoIG9uZSBvZgo+IHRoZW0gZm9yd2FyZC4KClRoZSBub24t
-bWVkaWF0ZWstc3BlY2lmaWMgcGFydCBjdXJyZW50bHkgaXMgdGhlCgoJZm9yX2VhY2hfY2hpbGRf
-b2Zfbm9kZShidXNfbm9kZSwgbm9kZSkgewoJCW9mX2lkID0gb2ZfbWF0Y2hfbm9kZShkdF9pZHMs
-IG5vZGUpOwoJCWlmICghb2ZfaWQpCgkJCWNvbnRpbnVlOwoJCWlmICghb2ZfZGV2aWNlX2lzX2F2
-YWlsYWJsZShub2RlKSkKCQkJY29udGludWU7CgoJCS8qIC4uLiAqLwoJfQoKbG9vcC4gVGhpcyBp
-cyBzb21ld2hhdCBzaW1pbGFyIHRvIGEgY29tYmluYXRpb24gb2YKZm9yX2VhY2hfbWF0Y2hpbmdf
-bm9kZV9hbmRfbWF0Y2ggYW5kIGZvcl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2RlLgpmb3Jf
-ZWFjaF9hdmFpbGFibGVfbWF0Y2hpbmdfY2hpbGRfb2Zfbm9kZV9hbmRfbWF0Y2ggd291bGQgYmUg
-cXVpdGUgYQptb3V0aGZ1bCB0aG91Z2guCgpbLi4uXQo+ID4gK3N0cnVjdCBtdGtfZHJtX2NydGMg
-ewo+ID4gKwlzdHJ1Y3QgZHJtX2NydGMJCQkJYmFzZTsKPiA+ICsJdW5zaWduZWQgaW50CQkJCXBp
-cGU7Cj4gPiArCWJvb2wJCQkJCWVuYWJsZWQ7Cj4gPiArCXN0cnVjdCBtdGtfY3J0Y19kZHBfY29u
-dGV4dAkJKmN0eDsKPiA+ICsKPiA+ICsJc3RydWN0IGRybV9wZW5kaW5nX3ZibGFua19ldmVudAkJ
-KmV2ZW50Owo+ID4gKwlib29sCQkJCQlwZW5kaW5nX25lZWRzX3ZibGFuazsKPiA+ICt9Owo+ID4g
-Kwo+ID4gK3N0cnVjdCBtdGtfY3J0Y19kZHBfY29udGV4dCB7Cj4gPiArCXN0cnVjdCBkZXZpY2UJ
-CQkqZGV2Owo+ID4gKwlzdHJ1Y3QgZHJtX2RldmljZQkJKmRybV9kZXY7Cj4gPiArCXN0cnVjdCBt
-dGtfZHJtX2NydGMJCSpjcnRjOwo+ID4gKwlzdHJ1Y3QgbXRrX2RybV9wbGFuZQkJcGxhbmVzW09W
-TF9MQVlFUl9OUl07Cj4gPiArCWludAkJCQlwaXBlOwo+ID4gKwo+ID4gKwl2b2lkIF9faW9tZW0J
-CQkqY29uZmlnX3JlZ3M7Cj4gPiArCXN0cnVjdCBkZXZpY2UJCQkqbXV0ZXhfZGV2Owo+ID4gKwl1
-MzIJCQkJZGRwX2NvbXBfbnI7Cj4gPiArCXN0cnVjdCBtdGtfZGRwX2NvbXAJCSpkZHBfY29tcDsK
-PiAKPiBBbGwgdGhlIGFib3ZlIHByb2JhYmx5IHNob3VsZCBqdXN0IGJlIG1vdmVkIGludG8gbXRr
-X2RybV9jcnRjLiBBdCBsZWFzdCBJCj4gZG9uJ3QgdW5kZXJzdGFuZCB3aHkgeW91IG5lZWQgdGhp
-cyBpbmRpcmVjdGlvbi4KCkFncmVlZC4gVGhpcyB3YXMgbmVlZGVkIGZvciBhIGRlYnVnZnMgcGF0
-Y2ggdGhhdCBJIGhhdmUgbGVmdCBvdXQgZm9yCm5vdy4KCj4gPiArCj4gPiArCWJvb2wJCQkJcGVu
-ZGluZ19jb25maWc7Cj4gPiArCXVuc2lnbmVkIGludAkJCXBlbmRpbmdfd2lkdGg7Cj4gPiArCXVu
-c2lnbmVkIGludAkJCXBlbmRpbmdfaGVpZ2h0Owo+ID4gKwo+ID4gKwlib29sCQkJCXBlbmRpbmdf
-b3ZsX2NvbmZpZ1tPVkxfTEFZRVJfTlJdOwo+ID4gKwlib29sCQkJCXBlbmRpbmdfb3ZsX2VuYWJs
-ZVtPVkxfTEFZRVJfTlJdOwo+ID4gKwl1bnNpZ25lZCBpbnQJCQlwZW5kaW5nX292bF9hZGRyW09W
-TF9MQVlFUl9OUl07Cj4gPiArCXVuc2lnbmVkIGludAkJCXBlbmRpbmdfb3ZsX3BpdGNoW09WTF9M
-QVlFUl9OUl07Cj4gPiArCXVuc2lnbmVkIGludAkJCXBlbmRpbmdfb3ZsX2Zvcm1hdFtPVkxfTEFZ
-RVJfTlJdOwo+ID4gKwlpbnQJCQkJcGVuZGluZ19vdmxfeFtPVkxfTEFZRVJfTlJdOwo+ID4gKwlp
-bnQJCQkJcGVuZGluZ19vdmxfeVtPVkxfTEFZRVJfTlJdOwo+ID4gKwl1bnNpZ25lZCBpbnQJCQlw
-ZW5kaW5nX292bF9zaXplW09WTF9MQVlFUl9OUl07Cj4gPiArCWJvb2wJCQkJcGVuZGluZ19vdmxf
-ZGlydHlbT1ZMX0xBWUVSX05SXTsKPiAKPiBUaGlzIHdvcmtzIHNpbmNlIHlvdSBvbmx5IHRvdWNo
-IHRoZXNlIGluIHRoZSBhdG9taWNfY29tbWl0IHBoYXNlLCBidXQgdGhlCj4gcmVjb21tZW5kIHdh
-eSB0byBkbyB0aGlzIHdpdGggYXRvbWljIGlzIHRvIHN1YmNsYXNzIGRybV9jcnRjX3N0YXRlOgo+
-Cj4gc3RydWN0IG10a19jcnRjX3N0YXRlIHsKPiAJc3RydWN0IGRybV9jcnRjX3N0YXRlIGJhc2U7
-Cj4gCj4gCS8qIGFsbCB0aGUgcGVuZGluZ18gc3R1ZmYgYWJvdmUgKi8KPiB9Owo+IAo+IFRoZW4g
-eW91IGp1c3QgcGFzcyB0aGUgbXRrIHRvIHlvdXIgaXJxIGhhbmRsZXIgdG8gZG8gdGhlIHVwZGF0
-ZS4KCkknbGwgbW92ZSB0aGVzZSBpbnRvIG10a19jcnRjX3N0YXRlLCBidXQgSSdtIG5vdCBzdXJl
-IHdoYXQgeW91IG1lYW4gd2l0aAp0aGUgbGFzdCBzZW50ZW5jZS4gQ3VycmVudGx5IEkgcGFzcyB0
-aGUgbXRrX2NydGNfZGRwX2NvbnRleHQgdG8gdGhlIGlycQpoYW5kbGVyLiBJIGNhbiBnZXQgdG8g
-dGhlIG10a19jcnRjX3N0YXRlIGZyb20gdGhhdC4KCj4gPiArc3RhdGljIGludCBtdGtfZHJtX2Jp
-bmQoc3RydWN0IGRldmljZSAqZGV2KQo+ID4gK3sKPiA+ICsJcmV0dXJuIGRybV9wbGF0Zm9ybV9p
-bml0KCZtdGtfZHJtX2RyaXZlciwgdG9fcGxhdGZvcm1fZGV2aWNlKGRldikpOwo+IAo+IFRoaXMg
-aXMgZGVwcmVjYXRlZCwgcGxlYXNlIHVzZSBkcm1fZGV2X2FsbG9jL2RybV9kZXZfcmVnaXN0ZXIg
-aW5zdGVhZCBhbmQKPiByZW1vdmUgeW91ciAtPmxvYWQgZHJpdmVyIGNhbGxiYWNrLgoKV2lsbCBy
-ZXBsYWNlIGRybV9wbGF0Zm9ybV9pbml0IHdpdGggZHJtX2Rldl9hbGxvYy9kcm1fZGV2X3JlZ2lz
-dGVyIGFuZAppbnRlZ3JhdGUgbXRrX2RybV9sb2FkIGludG8gbXRrX2RybV9iaW5kLgoKPiA+ICtp
-bnQgbXRrX2RybV9nZW1fZHVtYl9tYXBfb2Zmc2V0KHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2
-LAo+ID4gKwkJCQlzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB1aW50MzJfdCBoYW5kbGUsCj4gPiAr
-CQkJCXVpbnQ2NF90ICpvZmZzZXQpCj4gPiArewo+ID4gKwlzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
-Km9iajsKPiA+ICsJaW50IHJldDsKPiA+ICsKPiA+ICsJbXV0ZXhfbG9jaygmZGV2LT5zdHJ1Y3Rf
-bXV0ZXgpOwo+IAo+IHN0cnVjdF9tdXRleCBpc24ndCBuZWVkZWQgaGVyZSAoZ2VtIG9iamVjdCBs
-b29rdXAgYW5kIHRoZSB2bWEgc3R1ZmYgYXJlCj4gYWxsIHByb3RlY3RlZCBieSBsb29rcyBhbHJl
-YWR5KS4gUGxlYXNlIGRyb3AgaXQuClsuLi5dCj4gPiArb3V0Ogo+ID4gKwlkcm1fZ2VtX29iamVj
-dF91bnJlZmVyZW5jZShvYmopOwo+IAo+IEJ1dCB0aGVuIHlvdSBuZWVkIHVucmVmZXJlbmNlX3Vu
-bG9ja2VkIGhlcmUuCgpPaywgZHJvcHBlZCB0aGUgbG9jay4KClsuLi5dCj4gPiAraW50IG10a19k
-cm1fZ2VtX21tYXBfYnVmKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCBzdHJ1Y3Qgdm1fYXJl
-YV9zdHJ1Y3QgKnZtYSkKPiAKPiBUaGlzIGZ1bmN0aW9uIHNlZW1zIHVudXNlZC4KCkN1cnJlbnRs
-eSB1bnVzZWQsIHllcy4gSSdsbCBtb3ZlIGl0IG91dCBvZiB0aGlzIHNlcmllcy4KCj4gPiArewo+
-ID4gKwlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gb2JqLT5kZXY7Cj4gPiArCWludCByZXQ7Cj4g
-PiArCj4gPiArCW11dGV4X2xvY2soJmRybS0+c3RydWN0X211dGV4KTsKPiA+ICsJcmV0ID0gZHJt
-X2dlbV9tbWFwX29iaihvYmosIG9iai0+c2l6ZSwgdm1hKTsKPiA+ICsJbXV0ZXhfdW5sb2NrKCZk
-cm0tPnN0cnVjdF9tdXRleCk7Cj4gCj4gVGhpcyBsb2NraW5nIGlzbid0IHJlcXVpcmVkIHdpdGgg
-bGF0ZXN0IGRybS1taXNjIGFueW1vcmUsIHBsZWFzZSByZWJhc2UKPiBvbnRvIGxhdGVzdCBsaW51
-eC1uZXh0IGFuZCBkcm9wIHN0cnVjdF9tdXRleC4KCldpbGwgZG8uCgpbLi4uXQo+ID4gK2ludCBt
-dGtfZHJtX2dlbV9tbWFwKHN0cnVjdCBmaWxlICpmaWxwLCBzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3Qg
-KnZtYSkKPiA+ICt7Cj4gPiArCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqOwo+ID4gKwlpbnQg
-cmV0Owo+ID4gKwo+ID4gKwlyZXQgPSBkcm1fZ2VtX21tYXAoZmlscCwgdm1hKTsKPiA+ICsJaWYg
-KHJldCkKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCj4gPiArCW9iaiA9IHZtYS0+dm1fcHJpdmF0
-ZV9kYXRhOwo+ID4gKwo+ID4gKwlyZXR1cm4gbXRrX2RybV9nZW1fb2JqZWN0X21tYXAob2JqLCB2
-bWEpOwo+IAo+IEFzaWRlOiBXaHkgY2FuJ3QgeW91IGp1c3QgdXNlIGNtYSBoZWxwZXJzIGZvciBn
-ZW0gb2JqZWN0cz8gQ01BIGp1c3QKPiBlc3NlbnRpYWxseSBtZWFucyBiYWNrZWQgYnkgZG1hX2Fs
-bG9jIG1lbW9yeS4gV291bGQgYXZvaWQgYSBsb3Qgb2YKPiBkdXBsaWNhdGVkIGNvZGUgSSB0aGlu
-ay4KCkkgc3VwcG9zZSB3ZSB3b24ndCBuZWVkIGRtYV9hbGxvYyBtZW1vcnkgZXZlbnR1YWxseSwg
-ZHVlIHRvIHRoZSBpb21tdS4KClsuLi5dCj4gPiArc3RhdGljIHZvaWQgbXRrX3BsYW5lX2F0b21p
-Y191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4gPiArCQkJCSAgICBzdHJ1Y3QgZHJt
-X3BsYW5lX3N0YXRlICpvbGRfc3RhdGUpCj4gPiArewpbLi4uXQo+ID4gKwlpZiAocGxhbmUtPmZi
-KQo+ID4gKwkJZHJtX2ZyYW1lYnVmZmVyX3VucmVmZXJlbmNlKHBsYW5lLT5mYik7Cj4gPiArCWlm
-IChzdGF0ZS0+ZmIpCj4gPiArCQlkcm1fZnJhbWVidWZmZXJfcmVmZXJlbmNlKHN0YXRlLT5mYik7
-Cj4gPiArCXBsYW5lLT5mYiA9IHN0YXRlLT5mYjsKPiAKPiBUaGVyZSBzaG91bGRuJ3QgYmUgYW55
-IG5lZWQgdG8gcmVmY291bnQgZnJhbWVidWZmZXJzIHlvdXJzZWxmLiBJZiB0aGF0J3MKPiB0aGUg
-Y2FzZSB0aGVuIHRoZXJlJ3MgYSBidWcgaW4gdGhlIGRybSBjb3JlL2hlbHBlcnMuCgpJIHdhcyBz
-dGlsbCB1c2luZyBwbGFuZS0+ZmIgaW4gbXRrX2RybV9jcnRjX3BsYW5lX2NvbmZpZy4gU3dpdGNo
-aW5nIHRvCnBsYW5lLT5zdGF0ZS0+ZmIgdGhlcmUgc2hvdWxkIGFsbG93IG1lIHRvIGRyb3AgdGhp
-cy4KCnRoYW5rcwpQaGlsaXBwCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9k
-cmktZGV2ZWwK
+Hi Rob,
+
+thank you for the comments.
+
+Am Freitag, den 23.10.2015, 07:29 -0500 schrieb Rob Herring:
+[...]
+> > +Mediatek HDMI Encoder
+> > +=====================
+> > +
+> > +The Mediatek HDMI encoder can generate HDMI 1.4a or MHL 2.0 signals from
+> > +its parallel input.
+> 
+> How do you know whether it is HDMI or MHL on a given board? You should
+> have a connector node perhaps.
+
+Sounds sensible. I haven't really thought about MHL, my test board has a
+slimport bridge. For HDMI we already have the "hdmi-connector"
+compatible. I suppose for MHL we'd have to add a new "usb-connector"?
+
+> > +
+> > +Required properties:
+> > +- compatible: Should be "mediatek,<chip>-hdmi".
+> > +- reg: Physical base address and length of the controller's registers
+> > +- interrupts: The interrupt signal from the function block.
+> > +- clocks: device clocks
+> > +  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> > +- clock-names: must contain "pixel", "pll", "bclk", and "spdif".
+> > +- mediatek,cec: phandle link to the HDMI CEC node.
+> 
+> Do you have more than 1 CEC block? If not, just find the compatible
+> node with of_find_compatible_node.
+
+MT8173 only has one CEC block, so I will drop this property again.
+
+> > +- ddc-i2c-bus: phandle link to the I2C controller used for DDC EDID probing
+> 
+> This really should be part of a connector node as I2C bus goes to the
+> connector, not the HDMI block.
+
+So I should add that as an optional property to the hdmi-connector
+binding. I'll have to check how DDC is handled for MHL.
+
+[...]
+> > +HDMI PHY
+> > +========
+> > +
+> > +The HDMI PHY serializes the HDMI encoder's three channel 10-bit parallel
+> > +output and drives the HDMI pads.
+> > +
+> > +Required properties:
+[...]
+> > +
+> > +Optional properties:
+> > +- ibias: TX DRV bias current for <1.65Gbps, defaults to 0xa
+> > +- ibias_up: TX DRV bias current for >1.65Gbps, defaults to 0x1c
+> 
+> prefix with "mediatek,"
+
+Will do.
+
+regards
+Philipp
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
