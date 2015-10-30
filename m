@@ -1,68 +1,69 @@
-From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 2/3] mtd: mtk-nor: mtk serial flash controller driver
-Date: Thu, 29 Oct 2015 22:02:49 -0700
-Message-ID: <20151030050249.GB31863@localhost>
-References: <1444729160-26433-1-git-send-email-bayi.cheng@mediatek.com>
- <1444729160-26433-3-git-send-email-bayi.cheng@mediatek.com>
- <20151016073959.GB28158@localhost>
- <1445178035.4832.23.camel@mhfsdcap03>
- <20151029015237.GE13239@google.com>
- <1446089334.25711.10.camel@mhfsdcap03>
- <1446126991.25711.23.camel@mhfsdcap03>
- <20151029160331.GA12954@localhost>
- <1446171159.25711.36.camel@mhfsdcap03>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
+Date: Fri, 30 Oct 2015 15:41:40 +0800
+Message-ID: <1446190900.17558.16.camel@mtksdaap41>
+References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
+ <1444988219.3541.3.camel@pengutronix.de>
+ <1445526750.27586.8.camel@mtksdaap41>
+ <1446133259.3274.52.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1446171159.25711.36.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: "bayi.cheng" <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1446133259.3274.52.camel@pengutronix.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bayi,
+Hi Hpilipp,
 
-On Fri, Oct 30, 2015 at 10:12:39AM +0800, bayi.cheng wrote:
-> Hi Brian,  The current station is as follows.
+On Thu, 2015-10-29 at 16:40 +0100, Philipp Zabel wrote:
+> Hi YH,
 > 
-> 1: put 0x9F to MTK_NOR_PRGDATA5_REG, and five 0x0 to
-> MTK_NOR_PRGDATA4_REG ~ MTK_NOR_PRGDATA0_REG, then set (1 + 5) * 8 
-> to MTK_NOR_CNT_REG, for this way, we can read five IDs.
+> Am Donnerstag, den 22.10.2015, 23:12 +0800 schrieb YH Huang:
+> > In the case of the panel disabled by the bootloader,
+> > your patch still has the following code and always enables the backlight
+> > in the probe function.
+> > pb->enable_gpio = devm_gpiod_get_optional(&pdev->dev, "enable",
+> > -						  GPIOD_OUT_HIGH);
 > 
-> 2: put 0x9F to MTK_NOR_PRGDATA5_REG, and five 0x0 to
-> MTK_NOR_PRGDATA4_REG ~ MTK_NOR_PRGDATA0_REG, then set (1 + 5 + 1) * 8
-> to MTK_NOR_CNT_REG, for this way, we can read six IDs.
-> In this case, nor flash IDs can be read from MTK_NOR_SHREG5_REG to
-> MTK_NOR_SHREG0_REG . Thanks!
+> You are right.
+> 
+> > What do you think if I remove these two lines in my patch?
+> > if (pb->enable_gpio)
+> > 	gpiod_direction_output(pb->enable_gpio, 0);
+> 
+> That won't work if the gpio is still configured as input. How about I
+> add the GPIOD_ASIS change to my patch you remove that and the above from
+> yours?
 
-Thanks for the update. Glad to hear you can read more bytes there; the
-extra number of Shift Registers *looked* to me like you should be able
-to read even more than 5...
+I revise these two lines 
+if (pb->enable_gpio)
+	gpiod_direction_output(pb->enable_gpio, 0);
+into
+if (pb->enable_gpio) {
+	if(gpiod_get_value(pb->enable_gpio) == 0)
+		gpiod_direction_output(pb->enable_gpio, 0);
+	else
+		gpiod_direction_output(pb->enable_gpio, 1);
+}
 
-So in my other email, I showed you how I generalized the TX/RX function,
-so it can handle most of both the write_reg() and read_reg() functions.
-I'm not 100% sure now that it has all of the RX path correct; it worked
-for the cases I could test, but it's confusing when reading the manual
-to figure out which SHREG register I should start from. But anyway, I
-think it should only take some small adjustments to my patch to make it
-handle things properly.
+I am not sure what "phandle" is working for.
+My change is like your patch but remove the "phandle related" and
+"gpiod_get_direction(pb->enable_gpio) == GPIOF_DIR_OUT".
+Do we really need these?
 
-I'd really appreciate it if you could incorporate my feedback and
-review/improve the ..._do_tx_rx() function I wrote, to make sure it
-handles reading any arbitrary number of bytes (at least up to 6). So,
-you might, for example, run some tests where you have spi-nor.c call
-
-	nor->read_reg(nor, SPINOR_OP_RDID, id, idlen)
-
-with varying values for 'idlen', and make sure they all work properly.
-
-Let me know if you have any questions about comments either here, or on
-v5.
+Also, do you think it is right that I do the "pwm_enable(pb->pwm);"
+before "gpiod_set_value(pb->enable_gpio, 1);" in power on function?
 
 Regards,
-Brian
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+YH Huang
