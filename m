@@ -1,34 +1,79 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH 0/2] Mediatek I2C driver fixup
-Date: Mon, 2 Nov 2015 14:35:06 +0800
-Message-ID: <1446446106.12497.6.camel@mtksdaap41>
-References: <1445936367-30141-1-git-send-email-liguo.zhang@mediatek.com>
+From: dawei chien <dawei.chien@mediatek.com>
+Subject: Re: [PATCH v3 0/2] thermal: mediatek: Add cpu power cooling model
+Date: Mon, 2 Nov 2015 18:46:21 +0800
+Message-ID: <1446461181.10039.28.camel@mtksdaap41>
+References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
+	 <20151028154449.GH3716@ubuntu>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1445936367-30141-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, Xudong Chen =?UTF-8?Q?=28=E9=99=88=E6=97=AD=E4=B8=9C=29?= <Xudong.Chen@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20151028154449.GH3716@ubuntu>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-10-27 at 16:59 +0800, Liguo Zhang wrote:
-> This series contain two patches, first is to optimize Mediatek I2C driver to use WRRD
-> if hardware support auto restart. Because auto restart will issue auto restart
-> interrupt, change to use WRRD can reduce interrupt latency. The second is to fix
-> multi transfer error in high speed mode. If hardware support auto restart, need driver
-> to send master code first.
-
-Please fix checkpatch warning in 2/2, then you get my reviewed-by for
-this series:
-
-Reviewed-by:Eddie Huang <eddie.huang@mediatek.com>
-
+Hi Viresh,
+On Wed, 2015-10-28 at 21:14 +0530, Viresh Kumar wrote:
+> On 22-10-15, 20:02, Dawei Chien wrote:
+> > Use Intelligent Power Allocation (IPA) technical to add static/dynamic power model for binding CPU thermal zone.
+> > The power allocator governor allocates power budget to control CPU temperature.
+> > 
+> > Power Allocator governor is able to keep SOC temperature within a defined temperature range to avoid SOC overheat and keep it's performance. mt8173-cpufreq.c need to register its' own power model with power allocator thermal governor, so that power allocator governor can allocates suitable power budget to control CPU temperature.
+> > 
+> > PATCH1 is base on
+> > https://patchwork.kernel.org/patch/7034601/
+> > 
+> > PATCH2 is base on Sascha's thermal driver V9
+> > https://patchwork.kernel.org/patch/7249821/
+> > https://patchwork.kernel.org/patch/7249861/
+> > https://patchwork.kernel.org/patch/7249891/
+> > 
+> > Change since V1:
+> > include mt8171.h and sort header file for mt8173.dtsi
+> > 
+> > Change since V2:
+> > Move dynamic/static power model in device tree
+> > 
+> > Dawei.Chien (2):
+> >   thermal: mediatek: Add cpu power cooling model.
+> >   arm64: dts: mt8173: Add thermal zone node for mt8173.
 > 
-> Liguo Zhang (2):
->   i2c: mediatek: add i2c first write then read optimization
->   i2c: mediatek: fix i2c multi transfer issue in high speed mode
+> Sorry for being extremely late in reviewing this stuff. You are
+> already on v3 and I haven't reviewed it once. Mostly due to bad timing
+> of my holidays and other work pressure.
+
+You're welcome, truly thank you for your kindly reviewing
+
+> Now, there are few things that I feel are not properly addressed here,
+> and I may be wrong:
+> - Where are the bindings for static-power-points and
+>   dynamic-power-coefficient. Sorry I failed to see them in this or
+>   other series you mentioned.
+
+Please refer to following document (2-1,2-2) for dynamic-power &
+static-power in detail. Besides, do I need to add another document for
+our own MT8173 IC.
+http://lxr.free-electrons.com/source/Documentation/thermal/cpu-cooling-api.txt
+
+> - Even then, why should we be adding another table into DT for
+>   voltage/power ? And not reuse and extend the opp-v2 stuff which is
+>   already mainlined now.
+
+We could reuse opp-v2 for static power points after OPPV2 back port to
+our currently branch.
+However, as far as I know, there is no "power" in opp.c (suck like
+opp-hz) as far, so I need to add something in opp.c for my purpose, suck
+like add power in _opp_add_static_v2, and add something for return
+"power", right? I may be wrong, please kindly give me your suggestion,
+thank you.
+
+Actually, I am considering to remove the part of static power point
+since it is optional for Power Model. Could you agree with this?
+> - There are few issues with the code as well, but I want to see where
+>   the bindings should go first. And then only discuss the code
+>   further.
 > 
->  drivers/i2c/busses/i2c-mt65xx.c | 77 +++++++++++++++++++++++++++++++++++++----
->  1 file changed, 71 insertions(+), 6 deletions(-)
+
+
