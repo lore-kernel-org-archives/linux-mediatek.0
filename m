@@ -1,31 +1,64 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v3 0/2] thermal: mediatek: Add cpu power cooling model
-Date: Mon, 2 Nov 2015 21:40:07 +0530
-Message-ID: <20151102161007.GI3639@ubuntu>
-References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
- <20151028154449.GH3716@ubuntu>
- <9hh4mh4bdoi.fsf@e105922-lin.cambridge.arm.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
+Date: Tue, 3 Nov 2015 16:11:39 +0800
+Message-ID: <1446538299.2449.8.camel@mtksdaap41>
+References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
+ <1444988219.3541.3.camel@pengutronix.de>
+ <1445526750.27586.8.camel@mtksdaap41>
+ <1446133259.3274.52.camel@pengutronix.de>
+ <1446190900.17558.16.camel@mtksdaap41>
+ <1446201271.3334.22.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <9hh4mh4bdoi.fsf@e105922-lin.cambridge.arm.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Punit Agrawal <punit.agrawal@arm.com>
-Cc: Dawei Chien <dawei.chien@mediatek.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1446201271.3334.22.camel@pengutronix.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Thierry Reding <thierry.reding@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02-11-15, 15:53, Punit Agrawal wrote:
-> For dynamic power, I had posted some patches[0][1][2] introducing the
-> binding as well as updating cooling device registration via cpufreq
-> driver. Now that the SCPI hwmon driver is merged, I should re-send the
-> remaining patches.
+On Fri, 2015-10-30 at 11:34 +0100, Philipp Zabel wrote:
+> Am Freitag, den 30.10.2015, 15:41 +0800 schrieb YH Huang:
+> > > That won't work if the gpio is still configured as input. How about I
+> > > add the GPIOD_ASIS change to my patch you remove that and the above from
+> > > yours?
+> > 
+> > I revise these two lines 
+> > if (pb->enable_gpio)
+> > 	gpiod_direction_output(pb->enable_gpio, 0);
+> > into
+> > if (pb->enable_gpio) {
+> > 	if(gpiod_get_value(pb->enable_gpio) == 0)
+> > 		gpiod_direction_output(pb->enable_gpio, 0);
+> > 	else
+> > 		gpiod_direction_output(pb->enable_gpio, 1);
+> > }
 > 
-> [0] http://lkml.iu.edu/hypermail/linux/kernel/1508.0/01020.html
-> [1] http://lkml.iu.edu/hypermail/linux/kernel/1508.0/01022.html
-> [3] http://lkml.iu.edu/hypermail/linux/kernel/1508.0/01031.html
+> If the GPIO is still configured as an input, the return value of
+> gpiod_get_value could be random.
+> 
+> > I am not sure what "phandle" is working for.
+> 
+> The reasoning is that devices where there is no phandle link pointing to
+> the backlight (for example from a simple-panel node), we should keep the
+> current default behaviour (enable during probe).
 
-Sure. Just that whatever can be merged with opp-v2 should be merged.
+I have a little problem for the current default behaviour.
+Should we enable during probe?
 
--- 
-viresh
+Before this patch ( http://patchwork.ozlabs.org/patch/324690/ ),
+we disable "enable-gpio" in the probe function.
+
+Do you have any idea of this?
+
+Regards,
+YH Huang
