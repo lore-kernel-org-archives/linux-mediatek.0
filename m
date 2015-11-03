@@ -1,64 +1,43 @@
-From: YH Huang <yh.huang@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
 Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
-Date: Tue, 3 Nov 2015 16:11:39 +0800
-Message-ID: <1446538299.2449.8.camel@mtksdaap41>
+Date: Tue, 03 Nov 2015 12:08:44 +0100
+Message-ID: <1446548924.3373.3.camel@pengutronix.de>
 References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
- <1444988219.3541.3.camel@pengutronix.de>
- <1445526750.27586.8.camel@mtksdaap41>
- <1446133259.3274.52.camel@pengutronix.de>
- <1446190900.17558.16.camel@mtksdaap41>
- <1446201271.3334.22.camel@pengutronix.de>
+	 <1444988219.3541.3.camel@pengutronix.de>
+	 <1445526750.27586.8.camel@mtksdaap41>
+	 <1446133259.3274.52.camel@pengutronix.de>
+	 <1446190900.17558.16.camel@mtksdaap41>
+	 <1446201271.3334.22.camel@pengutronix.de>
+	 <1446538299.2449.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1446201271.3334.22.camel@pengutronix.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, linux-kernel@vger.kernel.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Thierry Reding <thierry.reding@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1446538299.2449.8.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-10-30 at 11:34 +0100, Philipp Zabel wrote:
-> Am Freitag, den 30.10.2015, 15:41 +0800 schrieb YH Huang:
-> > > That won't work if the gpio is still configured as input. How about I
-> > > add the GPIOD_ASIS change to my patch you remove that and the above from
-> > > yours?
-> > 
-> > I revise these two lines 
-> > if (pb->enable_gpio)
-> > 	gpiod_direction_output(pb->enable_gpio, 0);
-> > into
-> > if (pb->enable_gpio) {
-> > 	if(gpiod_get_value(pb->enable_gpio) == 0)
-> > 		gpiod_direction_output(pb->enable_gpio, 0);
-> > 	else
-> > 		gpiod_direction_output(pb->enable_gpio, 1);
-> > }
+Hi YH,
+
+Am Dienstag, den 03.11.2015, 16:11 +0800 schrieb YH Huang:
+> > The reasoning is that devices where there is no phandle link pointing to
+> > the backlight (for example from a simple-panel node), we should keep the
+> > current default behaviour (enable during probe).
 > 
-> If the GPIO is still configured as an input, the return value of
-> gpiod_get_value could be random.
-> 
-> > I am not sure what "phandle" is working for.
-> 
-> The reasoning is that devices where there is no phandle link pointing to
-> the backlight (for example from a simple-panel node), we should keep the
-> current default behaviour (enable during probe).
+> I have a little problem for the current default behaviour.
+> Should we enable during probe?
 
-I have a little problem for the current default behaviour.
-Should we enable during probe?
+Here I mean enabling the backlight (at the end of the probe function),
+not enabling the GPIO already when requesting it.
 
-Before this patch ( http://patchwork.ozlabs.org/patch/324690/ ),
-we disable "enable-gpio" in the probe function.
+> Before this patch ( http://patchwork.ozlabs.org/patch/324690/ ),
+> we disable "enable-gpio" in the probe function.
 
-Do you have any idea of this?
+While before this patch the GPIO would be initialized in the disabled
+state, the call to backlight_update_status at the end of the probe
+function would still enable the backlight afterwards.
 
-Regards,
-YH Huang
+regards
+Philipp
