@@ -1,72 +1,115 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [PATCH v6 1/3] iommu: Implement common IOMMU ops for DMA mapping
-Date: Wed, 4 Nov 2015 10:50:57 +0000
-Message-ID: <20151104105057.GK8644@n2100.arm.linux.org.uk>
-References: <1445867094.30736.14.camel@mhfsdcap03> <562E5AE4.9070001@arm.com>
-	<CAGS+omAWCQsqk56iv0PW2ZhTJ1342GufUsJCP=VYSgCxZNLJpA@mail.gmail.com>
-	<56337E4D.1010304@arm.com>
-	<CAGS+omAmxbb4uVzaQh1xPmkFtcF6KP-HSV-40=sm1BRTdh+=OQ@mail.gmail.com>
-	<CAAFQd5C_dkWBZrQXtyO59ARw7q-0fg-Wk98yApC5VHdQ8-AmNw@mail.gmail.com>
-	<5638F1C4.3000900@arm.com>
-	<CAAFQd5A4TcvkDMFezqEpkfWL+7yO2v=Hm=twk=p-NpADPpvqEQ@mail.gmail.com>
-	<20151104092748.GI8644@n2100.arm.linux.org.uk>
-	<CAAFQd5ApSFC6Pm4tDhZbJOVZ7szCx=diKUtGXq=M9a5Y_4qzOQ@mail.gmail.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [RFC v5 05/12] dt-bindings: drm/mediatek: Add Mediatek HDMI dts
+ binding
+Date: Wed,  4 Nov 2015 12:45:02 +0100
+Message-ID: <1446637509-6418-6-git-send-email-p.zabel@pengutronix.de>
+References: <1446637509-6418-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAAFQd5ApSFC6Pm4tDhZbJOVZ7szCx=diKUtGXq=M9a5Y_4qzOQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Osciak <pawel-FA/gS7QP4orQT0dZR+AlfA@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "open list:IOMMU DRIVERS" <iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "Bobby Batacharia (via Google Docs)" <Bobby.Batacharia-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lin PoChun <pochun.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, thunder.leizhen-hv44wF8Li93QT0dZR+AlfA@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1446637509-6418-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@pengutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 04, 2015 at 06:48:50PM +0900, Tomasz Figa wrote:
-> There is no requirement, but shouldn't it be desired for the mapping
-> code to map them as such? Otherwise, how could the IOMMU use case you
-> described above (address translator for devices which don't have the
-> capability to address a scatterlist) be handled properly?
-
-It's up to the IOMMU code to respect the parameters that the device has
-supplied to it via the device_dma_parameters.  This doesn't currently
-allow a device to say "I want this scatterlist to be mapped as a
-contiguous device address", so really if a device has such a requirement,
-at the moment the device driver _must_ check the dma_map_sg() return
-value and act accordingly.
-
-While it's possible to say "an IOMMU should map as a single contiguous
-address" what happens when the IOMMU's device address space becomes
-fragmented?
-
-> Is the general conclusion now that dma_map_sg() should not be used to
-> create IOMMU mappings and we should make a step backwards making all
-> drivers (or frameworks, such as videobuf2) do that manually? That
-> would be really backwards, because code not aware of IOMMU existence
-> at all would have to become aware of it.
-
-No.  The DMA API has always had the responsibility for managing the
-IOMMU device, which may well be shared between multiple different
-devices.
-
-However, if the IOMMU is part of a device IP block (such as a GPU)
-then the decision on whether the DMA API should be used or not is up
-to the driver author.  If it has special management requirements,
-then it's probably appropriate for the device driver to manage it by
-itself.
-
-For example, a GPUs MMU may need something inserted into the GPUs
-command stream to flush the MMU TLBs.  Such cases are inappropriate
-to be using the DMA API for IOMMU management.
-
--- 
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+QWRkIHRoZSBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1lZGlhdGVrIEhE
+TUksCkhETUkgUEhZIGFuZCBIRE1JIEREQyBkZXZpY2VzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlw
+cCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tCkNoYW5nZXMgc2luY2UgdjQ6CiAt
+IFJlbW92ZSBtZWRpYXRlayxjZWMgYW5kIGRkYy1pMmMtYnVzIGZyb20gaGRtaSBub2RlCiAtIE1h
+a2Ugb3V0cHV0IHBvcnQgcmVxdWlyZWQKIC0gQWRkIG1lZGlhdGVrLCBwcmVmaXggdG8gcGh5IG5v
+ZGUgY3VycmVudCBiaWFzCiAgIHByb3BlcnRpZXMKLS0tCiAuLi4vYmluZGluZ3MvZGlzcGxheS9t
+ZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dCAgICB8IDE0MiArKysrKysrKysrKysrKysrKysrKysK
+IDEgZmlsZSBjaGFuZ2VkLCAxNDIgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVr
+LGhkbWkudHh0CgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS50eHQgYi9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dApuZXcgZmls
+ZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwLi5lM2RkZTI5Ci0tLSAvZGV2L251bGwKKysrIGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0
+ZWssaGRtaS50eHQKQEAgLTAsMCArMSwxNDIgQEAKK01lZGlhdGVrIEhETUkgRW5jb2RlcgorPT09
+PT09PT09PT09PT09PT09PT09CisKK1RoZSBNZWRpYXRlayBIRE1JIGVuY29kZXIgY2FuIGdlbmVy
+YXRlIEhETUkgMS40YSBvciBNSEwgMi4wIHNpZ25hbHMgZnJvbQoraXRzIHBhcmFsbGVsIGlucHV0
+LgorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBjb21wYXRpYmxlOiBTaG91bGQgYmUgIm1lZGlh
+dGVrLDxjaGlwPi1oZG1pIi4KKy0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0
+aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycworLSBpbnRlcnJ1cHRzOiBUaGUgaW50ZXJy
+dXB0IHNpZ25hbCBmcm9tIHRoZSBmdW5jdGlvbiBibG9jay4KKy0gY2xvY2tzOiBkZXZpY2UgY2xv
+Y2tzCisgIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svY2xvY2st
+YmluZGluZ3MudHh0IGZvciBkZXRhaWxzLgorLSBjbG9jay1uYW1lczogbXVzdCBjb250YWluICJw
+aXhlbCIsICJwbGwiLCAiYmNsayIsIGFuZCAic3BkaWYiLgorLSBwaHlzOiBwaGFuZGxlIGxpbmsg
+dG8gdGhlIEhETUkgUEhZIG5vZGUuCisgIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvcGh5L3BoeS1iaW5kaW5ncy50eHQgZm9yIGRldGFpbHMuCistIHBoeS1uYW1lczogbXVz
+dCBjb250YWluICJoZG1pIgorLSBtZWRpYXRlayxzeXNjb24taGRtaTogcGhhbmRsZSBsaW5rIGFu
+ZCByZWdpc3RlciBvZmZzZXQgdG8gdGhlIHN5c3RlbQorICBjb25maWd1cmF0aW9uIHJlZ2lzdGVy
+cy4gRm9yIG10ODE3MyB0aGlzIG11c3QgYmUgb2Zmc2V0IDB4OTAwIGludG8gdGhlCisgIE1NU1lT
+X0NPTkZJRyByZWdpb246IDwmbW1zeXMgMHg5MDA+LgorLSBwb3J0czogQSBub2RlIGNvbnRhaW5p
+bmcgaW5wdXQgYW5kIG91dHB1dCBwb3J0IG5vZGVzIHdpdGggZW5kcG9pbnQKKyAgZGVmaW5pdGlv
+bnMgYXMgZG9jdW1lbnRlZCBpbiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3Jh
+cGgudHh0LgorLSBwb3J0QDA6IFRoZSBpbnB1dCBwb3J0IGluIHRoZSBwb3J0cyBub2RlIHNob3Vs
+ZCBiZSBjb25uZWN0ZWQgdG8gYSBEUEkgb3V0cHV0CisgIHBvcnQuCistIHBvcnRAMTogVGhlIG91
+dHB1dCBwb3J0IGluIHRoZSBwb3J0cyBub2RlIHNob3VsZCBiZSBjb25uZWN0ZWQgdG8gdGhlIGlu
+cHV0CisgIHBvcnQgb2YgYSBjb25uZWN0b3Igbm9kZSB0aGF0IGNvbnRhaW5zIGEgZGRjLWkyYy1i
+dXMgcHJvcGVydHksIG9yIHRvIHRoZQorICBpbnB1dCBwb3J0IG9mIGFuIGF0dGFjaGVkIGJyaWRn
+ZSBjaGlwLCBzdWNoIGFzIGEgU2xpbVBvcnQgdHJhbnNtaXR0ZXIuCisKK0hETUkgQ0VDCis9PT09
+PT09PQorCitUaGUgSERNSSBDRUMgY29udHJvbGxlciBoYW5kbGVzIGhvdHBsdWcgZGV0ZWN0aW9u
+IGFuZCBDRUMgY29tbXVuaWNhdGlvbi4KKworUmVxdWlyZWQgcHJvcGVydGllczoKKy0gY29tcGF0
+aWJsZTogU2hvdWxkIGJlICJtZWRpYXRlayw8Y2hpcD4tY2VjIgorLSByZWc6IFBoeXNpY2FsIGJh
+c2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJzCistIGlu
+dGVycnVwdHM6IFRoZSBpbnRlcnJ1cHQgc2lnbmFsIGZyb20gdGhlIGZ1bmN0aW9uIGJsb2NrLgor
+LSBjbG9ja3M6IGRldmljZSBjbG9jaworCitIRE1JIEREQworPT09PT09PT0KKworVGhlIEhETUkg
+RERDIGkyYyBjb250cm9sbGVyIGlzIHVzZWQgdG8gaW50ZXJmYWNlIHdpdGggdGhlIEhETUkgRERD
+IHBpbnMuCitUaGUgTWVkaWF0ZWsncyBJMkMgY29udHJvbGxlciBpcyB1c2VkIHRvIGludGVyZmFj
+ZSB3aXRoIEkyQyBkZXZpY2VzLgorCitSZXF1aXJlZCBwcm9wZXJ0aWVzOgorLSBjb21wYXRpYmxl
+OiBTaG91bGQgYmUgIm1lZGlhdGVrLDxjaGlwPi1oZG1pLWRkYyIKKy0gcmVnOiBQaHlzaWNhbCBi
+YXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycworLSBj
+bG9ja3M6IGRldmljZSBjbG9jaworLSBjbG9jay1uYW1lczogU2hvdWxkIGJlICJkZGMtaTJjIi4K
+KworSERNSSBQSFkKKz09PT09PT09CisKK1RoZSBIRE1JIFBIWSBzZXJpYWxpemVzIHRoZSBIRE1J
+IGVuY29kZXIncyB0aHJlZSBjaGFubmVsIDEwLWJpdCBwYXJhbGxlbAorb3V0cHV0IGFuZCBkcml2
+ZXMgdGhlIEhETUkgcGFkcy4KKworUmVxdWlyZWQgcHJvcGVydGllczoKKy0gY29tcGF0aWJsZTog
+Im1lZGlhdGVrLDxjaGlwPi1oZG1pLXBoeSIKKy0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3Mg
+YW5kIGxlbmd0aCBvZiB0aGUgbW9kdWxlJ3MgcmVnaXN0ZXJzCistIGNsb2NrczogUExMIHJlZmVy
+ZW5jZSBjbG9jaworLSBjbG9jay1uYW1lczogbXVzdCBjb250YWluICJwbGxfcmVmIgorLSAjcGh5
+LWNlbGxzOiBtdXN0IGJlIDwwPi4KKworT3B0aW9uYWwgcHJvcGVydGllczoKKy0gbWVkaWF0ZWss
+aWJpYXM6IFRYIERSViBiaWFzIGN1cnJlbnQgZm9yIDwxLjY1R2JwcywgZGVmYXVsdHMgdG8gMHhh
+CistIG1lZGlhdGVrLGliaWFzX3VwOiBUWCBEUlYgYmlhcyBjdXJyZW50IGZvciA+MS42NUdicHMs
+IGRlZmF1bHRzIHRvIDB4MWMKKworRXhhbXBsZToKKworY2VjOiBjZWNAMTAwMTMwMDAgeworCWNv
+bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWNlYyI7CisJcmVnID0gPDAgMHgxMDAxMzAwMCAw
+IDB4YmM+OworCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNjcgSVJRX1RZUEVfTEVWRUxfTE9XPjsK
+KwljbG9ja3MgPSA8JmluZnJhY2ZnIENMS19JTkZSQV9DRUM+OworfTsKKworaGRtaV9waHk6IGhk
+bWktcGh5QDEwMjA5MTAwIHsKKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pLXBo
+eSI7CisJcmVnID0gPDAgMHgxMDIwOTEwMCAwIDB4MjQ+OworCWNsb2NrcyA9IDwmYXBtaXhlZHN5
+cyBDTEtfQVBNSVhFRF9IRE1JX1JFRj47CisJY2xvY2stbmFtZXMgPSAicGxsX3JlZiI7CisJbWVk
+aWF0ZWssaWJpYXMgPSA8MHhhPjsKKwltZWRpYXRlayxpYmlhc191cCA9IDwweDFjPjsKKwkjcGh5
+LWNlbGxzID0gPDA+OworfTsKKworaGRtaV9kZGMwOiBpMmNAMTEwMTIwMDAgeworCWNvbXBhdGli
+bGUgPSAibWVkaWF0ZWssbXQ4MTczLWhkbWktZGRjIjsKKwlyZWcgPSA8MCAweDExMDEyMDAwIDAg
+MHgxYz47CisJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDgxIElSUV9UWVBFX0xFVkVMX0xPVz47CisJ
+Y2xvY2tzID0gPCZwZXJpY2ZnIENMS19QRVJJX0kyQzU+OworCWNsb2NrLW5hbWVzID0gImRkYy1p
+MmMiOworfTsKKworaGRtaTA6IGhkbWlAMTQwMjUwMDAgeworCWNvbXBhdGlibGUgPSAibWVkaWF0
+ZWssbXQ4MTczLWhkbWkiOworCXJlZyA9IDwwIDB4MTQwMjUwMDAgMCAweDQwMD47CisJaW50ZXJy
+dXB0cyA9IDxHSUNfU1BJIDIwNiBJUlFfVFlQRV9MRVZFTF9MT1c+OworCWNsb2NrcyA9IDwmbW1z
+eXMgQ0xLX01NX0hETUlfUElYRUw+LAorCQkgPCZtbXN5cyBDTEtfTU1fSERNSV9QTExDSz4sCisJ
+CSA8Jm1tc3lzIENMS19NTV9IRE1JX0FVRElPPiwKKwkJIDwmbW1zeXMgQ0xLX01NX0hETUlfU1BE
+SUY+OworCWNsb2NrLW5hbWVzID0gInBpeGVsIiwgInBsbCIsICJiY2xrIiwgInNwZGlmIjsKKwlw
+aW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCXBpbmN0cmwtMCA9IDwmaGRtaV9waW4+OworCXBo
+eXMgPSA8JmhkbWlfcGh5PjsKKwlwaHktbmFtZXMgPSAiaGRtaSI7CisJbWVkaWF0ZWssc3lzY29u
+LWhkbWkgPSA8Jm1tc3lzIDB4OTAwPjsKKworCXBvcnRzIHsKKwkJI2FkZHJlc3MtY2VsbHMgPSA8
+MT47CisJCSNzaXplLWNlbGxzID0gPDA+OworCisJCXBvcnRAMCB7CisJCQlyZWcgPSA8MD47CisK
+KwkJCWhkbWkwX2luOiBlbmRwb2ludCB7CisJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkcGkwX291
+dD47CisJCQl9OworCQl9OworCisJCXBvcnRAMSB7CisJCQlyZWcgPSA8MT47CisKKwkJCWhkbWkw
+X291dDogZW5kcG9pbnQgeworCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmaGRtaV9jb25faW4+Owor
+CQkJfTsKKwkJfTsKKwl9OworfTsKKworY29ubmVjdG9yIHsKKwljb21wYXRpYmxlID0gImhkbWkt
+Y29ubmVjdG9yIjsKKwl0eXBlID0gImEiOworCWRkYy1pMmMtYnVzID0gPCZoZG1pZGRjMD47CisK
+Kwlwb3J0IHsKKwkJaGRtaV9jb25faW46IGVuZHBvaW50IHsKKwkJCXJlbW90ZS1lbmRwb2ludCA9
+IDwmaGRtaTBfb3V0PjsKKwkJfTsKKwl9OworfTsKLS0gCjIuNi4xCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
