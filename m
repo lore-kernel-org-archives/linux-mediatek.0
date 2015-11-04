@@ -1,60 +1,62 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH v6 1/3] iommu: Implement common IOMMU ops for DMA mapping
-Date: Tue, 3 Nov 2015 18:40:19 +0000
-Message-ID: <20151103184019.GD8644@n2100.arm.linux.org.uk>
-References: <cover.1443718557.git.robin.murphy@arm.com>
- <ab8e1caa40d6da1afa4a49f30242ef4e6e1f17df.1443718557.git.robin.murphy@arm.com>
- <1445867094.30736.14.camel@mhfsdcap03>
- <562E5AE4.9070001@arm.com>
- <CAGS+omAWCQsqk56iv0PW2ZhTJ1342GufUsJCP=VYSgCxZNLJpA@mail.gmail.com>
- <56337E4D.1010304@arm.com>
- <CAGS+omAmxbb4uVzaQh1xPmkFtcF6KP-HSV-40=sm1BRTdh+=OQ@mail.gmail.com>
- <CAAFQd5C_dkWBZrQXtyO59ARw7q-0fg-Wk98yApC5VHdQ8-AmNw@mail.gmail.com>
- <5638F1C4.3000900@arm.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
+Date: Wed, 4 Nov 2015 09:47:36 +0800
+Message-ID: <1446601656.15340.11.camel@mtksdaap41>
+References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
+	 <1444988219.3541.3.camel@pengutronix.de>
+	 <1445526750.27586.8.camel@mtksdaap41>
+	 <1446133259.3274.52.camel@pengutronix.de>
+	 <1446190900.17558.16.camel@mtksdaap41>
+	 <1446201271.3334.22.camel@pengutronix.de>
+	 <1446538299.2449.8.camel@mtksdaap41>
+	 <1446548924.3373.3.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5638F1C4.3000900@arm.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Tomasz Figa <tfiga@chromium.org>, Daniel Kurtz <djkurtz@chromium.org>, Lin PoChun <pochun.lin@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Will Deacon <will.deacon@arm.com>, linux-media@vger.kernel.org, Thierry Reding <treding@nvidia.com>, "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, "Bobby Batacharia (via Google Docs)" <Bobby.Batacharia@arm.com>, Kyungmin Park <kyungmin.park@samsung.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Yong Wu <yong.wu@mediatek.com>, Pawel Osciak <pawel@osciak.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Joerg Roedel <joro@8bytes.org>, thunder.leizhen@huawei.com, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1446548924.3373.3.camel@pengutronix.de>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 03, 2015 at 05:41:24PM +0000, Robin Murphy wrote:
-> Hi Tomasz,
+On Tue, 2015-11-03 at 12:08 +0100, Philipp Zabel wrote:
+> Hi YH,
 > 
-> On 02/11/15 13:43, Tomasz Figa wrote:
-> >Agreed. The dma_map_*() API is not guaranteed to return a single
-> >contiguous part of virtual address space for any given SG list.
-> >However it was understood to be able to map buffers contiguously
-> >mappable by the CPU into a single segment and users,
-> >videobuf2-dma-contig in particular, relied on this.
+> Am Dienstag, den 03.11.2015, 16:11 +0800 schrieb YH Huang:
+> > > The reasoning is that devices where there is no phandle link pointing to
+> > > the backlight (for example from a simple-panel node), we should keep the
+> > > current default behaviour (enable during probe).
+> > 
+> > I have a little problem for the current default behaviour.
+> > Should we enable during probe?
 > 
-> I don't follow that - _any_ buffer made of page-sized chunks is going to be
-> mappable contiguously by the CPU; it's clearly impossible for the streaming
-> DMA API itself to offer such a guarantee, because it's entirely orthogonal
-> to the presence or otherwise of an IOMMU.
+> Here I mean enabling the backlight (at the end of the probe function),
+> not enabling the GPIO already when requesting it.
+> 
+> > Before this patch ( http://patchwork.ozlabs.org/patch/324690/ ),
+> > we disable "enable-gpio" in the probe function.
+> 
+> While before this patch the GPIO would be initialized in the disabled
+> state, the call to backlight_update_status at the end of the probe
+> function would still enable the backlight afterwards.
 
-Tomasz's use of "virtual address space" above in combination with the
-DMA API is really confusing.
+Based on this, could we disable it initially and update in the
+backlight_update_status function?
 
-dma_map_sg() does *not* construct a CPU view of the passed scatterlist.
-The only thing dma_map_sg() might do with virtual addresses is to use
-them as a way to achieve cache coherence for one particular view of
-that memory, that being the kernel's own lowmem mapping and any kmaps.
-It doesn't extend to vmalloc() or userspace mappings of the memory.
+Like this,
 
-If the scatterlist is converted to an array of struct page pointers,
-it's possible to map it with vmap(), but it's implementation defined
-whether such a mapping will receive cache maintanence as part of the
-DMA API or not.  (If you have PIPT caches, it will, if they're VIPT
-caches, maybe not.)
+if (pb->enable_gpio) {
+	if (phandle &&
+	    gpiod_get_direction(pb->enable_gpio) == GPIOF_DIR_OUT &&
+	    gpiod_get_value(pb->enable_gpio) == 1)
+		gpiod_direction_output(pb->enable_gpio, 1);
+	else
+		gpiod_direction_output(pb->enable_gpio, 0);
+}
 
-There is a separate set of calls to deal with the flushing issues for
-vmap()'d memory in this case - see flush_kernel_vmap_range() and
-invalidate_kernel_vmap_range().
+And then update with props.brightness in backlight_update_status.
+I am not sure, maybe I miss something.
 
--- 
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+Regards,
+YH Huang
