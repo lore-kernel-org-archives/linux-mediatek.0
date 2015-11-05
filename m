@@ -1,463 +1,234 @@
-From: jitao shi <jitao.shi@mediatek.com>
-Subject: Re: [RFC v2 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Thu, 5 Nov 2015 09:22:40 +0800
-Message-ID: <1446686560.8671.6.camel@mszsdhlt06>
-References: <1446430166-7378-1-git-send-email-jitao.shi@mediatek.com>
-	 <1446430166-7378-2-git-send-email-jitao.shi@mediatek.com>
-	 <1446436496.8671.2.camel@mszsdhlt06>
-	 <1446464084.3442.36.camel@pengutronix.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC v5 01/12] dt-bindings: drm/mediatek: Add Mediatek display
+ subsystem dts binding
+Date: Wed, 4 Nov 2015 21:28:06 -0600
+Message-ID: <20151105032806.GA4368@rob-hp-laptop>
+References: <1446637509-6418-1-git-send-email-p.zabel@pengutronix.de>
+ <1446637509-6418-2-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1446464084.3442.36.camel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1446637509-6418-2-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, Pawel Moll <pawel.mo>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@pengutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Philipp
-
-I'll fixed those comments on V3.
-
-Thank you very much.
-
-Best Regards.
-
-On Mon, 2015-11-02 at 12:34 +0100, Philipp Zabel wrote:
-> Hi Jitao,
-> 
-> a few comments below.
-> 
-> Am Montag, den 02.11.2015, 11:54 +0800 schrieb jitao shi:
-> [...]
-> > > +static int ps8640_check_valid_id(struct ps8640 *ps_bridge)
-> 
-> This could be bool and return true/false.
-> 
-> > > +{
-> > > +	struct i2c_client *client = ps_bridge->client;
-> > > +	u8 rev_id_low, rev_id_high, chip_id_low, chip_id_high;
-> > > +	int retry_cnt = 0;
-> > > +
-> > > +	do {
-> > > +		ps8640_regr(client, ps_bridge->base_reg + 4, PAGE4_CHIP_H,
-> > > +			    &chip_id_high);
-> > > +		if (chip_id_high != 0x30)
-> > > +			DRM_INFO("chip_id_high = 0x%x\n", chip_id_high);
-> > > +	} while ((retry_cnt++ < 2) && (chip_id_high != 0x30));
-> > > +
-> > > +	ps8640_regr(client, ps_bridge->base_reg + 4, PAGE4_REV_L, &rev_id_low);
-> > > +	ps8640_regr(client, ps_bridge->base_reg + 4, PAGE4_REV_H, &rev_id_high);
-> > > +	ps8640_regr(client, ps_bridge->base_reg + 4, PAGE4_CHIP_L,
-> > > +		    &chip_id_low);
-> > > +
-> > > +	if ((rev_id_low == 0x00) && (rev_id_high == 0x0a) &&
-> > > +	    (chip_id_low == 0x00) && (chip_id_high == 0x30))
-> > > +		return 1;
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static void ps8640_show_mcu_fw_version(struct ps8640 *ps_bridge)
-> > > +{
-> > > +	struct i2c_client *client = ps_bridge->client;
-> > > +	u8 major_ver, minor_ver;
-> > > +
-> > > +	ps8640_regr(client, ps_bridge->base_reg + 5, 0x4, &major_ver);
-> > > +	ps8640_regr(client, ps_bridge->base_reg + 5, 0x5, &minor_ver);
-> > > +
-> > > +	DRM_INFO_ONCE("ps8640 rom fw version %d.%d\n", major_ver, minor_ver);
-> > > +}
-> > > +
-> > > +static int ps8640_bdg_enable(struct ps8640 *ps_bridge)
-> > > +{
-> > > +	struct i2c_client *client = ps_bridge->client;
-> > > +
-> > > +	if (ps8640_check_valid_id(ps_bridge)) {
-> > > +		ps8640_regw(client, ps_bridge->base_reg + 3, 0xfe, 0x13);
-> > > +		ps8640_regw(client, ps_bridge->base_reg + 3, 0xff, 0x18);
-> > > +		ps8640_regw(client, ps_bridge->base_reg + 3, 0xfe, 0x13);
-> > > +		ps8640_regw(client, ps_bridge->base_reg + 3, 0xff, 0x1c);
-> 
-> Can you introduce #defines with descriptive names for those magic
-> constants and register offsets, and maybe also i2c address offsets?
-> 
-> > > +
-> > > +		return 0;
-> > > +	}
-> > > +
-> > > +	return -1;
-> 
-> Never return -1 to signal a problem.
-> If there was an error, use a proper error code.
-> 
-> > > +}
-> > > +
-> > > +static void ps8640_prepare(struct ps8640 *ps_bridge)
-> > > +{
-> > > +	struct i2c_client *client = ps_bridge->client;
-> > > +	int err, retry_cnt = 0;
-> > > +	u8 set_vdo_done;
-> > > +
-> > > +	if (ps_bridge->enabled)
-> > > +		return;
-> > > +
-> > > +	if (drm_panel_prepare(ps_bridge->panel)) {
-> > > +		DRM_ERROR("failed to prepare panel\n");
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	err = regulator_enable(ps_bridge->pwr_1v2_supply);
-> > > +	if (err < 0) {
-> > > +		DRM_ERROR("failed to enable pwr_1v2_supply: %d\n", err);
-> 
-> Missing panel unprepare.
-> 
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	err = regulator_enable(ps_bridge->pwr_3v3_supply);
-> > > +	if (err < 0) {
-> > > +		DRM_ERROR("failed to enable pwr_3v3_supply: %d\n", err);
-> 
-> Missing panel unprepare and vdd12 regulator disable.
-> 
-> > > +		return;
-> > > +	}
-> > > +
-> > > +	gpiod_set_value(ps_bridge->gpio_slp_n, 1);
-> > > +	gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-> > > +	usleep_range(500, 700);
-> > > +	gpiod_set_value(ps_bridge->gpio_rst_n, 1);
-> > > +
-> > > +	do {
-> > > +		msleep(50);
-> > > +		ps8640_regr(client, ps_bridge->base_reg + 2, PAGE2_GPIO_H,
-> > > +			    &set_vdo_done);
-> > > +	} while ((retry_cnt++ < 70) && ((set_vdo_done & PS_GPIO9) != PS_GPIO9));
-> > > +
-> > > +	ps8640_show_mcu_fw_version(ps_bridge);
-> > > +	ps_bridge->enabled = true;
-> > > +}
-> > > +
-> > > +static void ps8640_pre_enable(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> > > +
-> > > +	ps8640_prepare(ps_bridge);
-> > > +}
-> > > +
-> > > +static void ps8640_enable(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> > > +
-> > > +	ps8640_bdg_enable(ps_bridge);
-> > > +
-> > > +	if (drm_panel_enable(ps_bridge->panel)) {
-> > > +		DRM_ERROR("failed to enable panel\n");
-> > > +		return;
-> 
-> The return is superfluous.
-> 
-> > > +	}
-> > > +}
-> > > +
-> > > +static void ps8640_disable(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> > > +
-> > > +	if (!ps_bridge->enabled)
-> > > +		return;
-> > > +
-> > > +	ps_bridge->enabled = false;
-> > > +
-> > > +	if (drm_panel_disable(ps_bridge->panel)) {
-> > > +		DRM_ERROR("failed to disable panel\n");
-> > > +		return;
-> 
-> Shouldn't we still disable the bridge, even if panel disable fails?
-> 
-> > > +	}
-> > > +
-> > > +	regulator_disable(ps_bridge->pwr_1v2_supply);
-> > > +	regulator_disable(ps_bridge->pwr_3v3_supply);
-> > > +	gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-> > > +	gpiod_set_value(ps_bridge->gpio_slp_n, 0);
-> > > +}
-> > > +
-> > > +static void ps8640_post_disable(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> > > +
-> > > +	if (drm_panel_unprepare(ps_bridge->panel)) {
-> > > +		DRM_ERROR("failed to unprepare panel\n");
-> > > +		return;
-> 
-> Drop the return.
-> 
-> > > +	}
-> > > +}
-> > > +
-> > > +static int ps8640_get_modes(struct drm_connector *connector)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = connector_to_ps8640(connector);
-> > > +	struct i2c_client *client = ps_bridge->client;
-> > > +
-> > > +	ps8640_prepare(ps_bridge);
-> > > +	ps8640_regw(client, ps_bridge->base_reg + 2, 0xea, 0xd0);
-> > > +
-> > > +	return drm_panel_get_modes(ps_bridge->panel);
-> > > +}
-> > > +
-> > > +static struct drm_encoder *ps8640_best_encoder(struct drm_connector *connector)
-> > > +{
-> > > +	struct ps8640 *ps_bridge;
-> > > +
-> > > +	ps_bridge = connector_to_ps8640(connector);
-> > > +	return ps_bridge->bridge.encoder;
-> > > +}
-> > > +
-> > > +static const struct drm_connector_helper_funcs
-> > > +	ps8640_connector_helper_funcs = {
-> > > +	.get_modes = ps8640_get_modes,
-> > > +	.best_encoder = ps8640_best_encoder,
-> > > +};
-> > > +
-> > > +static enum drm_connector_status ps8640_detect(struct drm_connector *connector,
-> > > +					       bool force)
-> > > +{
-> > > +	return connector_status_connected;
-> > > +}
-> > > +
-> > > +static void ps8640_connector_destroy(struct drm_connector *connector)
-> > > +{
-> > > +	drm_connector_unregister(connector);
-> > > +	drm_connector_cleanup(connector);
-> > > +}
-> > > +
-> > > +static const struct drm_connector_funcs ps8640_connector_funcs = {
-> > > +	.dpms = drm_atomic_helper_connector_dpms,
-> > > +	.fill_modes = drm_helper_probe_single_connector_modes,
-> > > +	.detect = ps8640_detect,
-> > > +	.destroy = ps8640_connector_destroy,
-> > > +	.reset = drm_atomic_helper_connector_reset,
-> > > +	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-> > > +	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
-> > > +};
-> > > +
-> > > +int ps8640_bridge_attach(struct drm_bridge *bridge)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> > > +	int ret;
-> > > +
-> > > +	if (!bridge->encoder) {
-> > > +		DRM_ERROR("Parent encoder object not found");
-> > > +		return -ENODEV;
-> > > +	}
-> > > +
-> > > +	ret = drm_connector_init(bridge->dev, &ps_bridge->connector,
-> > > +				 &ps8640_connector_funcs,
-> > > +				 DRM_MODE_CONNECTOR_eDP);
-> > > +
-> > > +	if (ret) {
-> > > +		DRM_ERROR("Failed to initialize connector with drm\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	drm_connector_helper_add(&ps_bridge->connector,
-> > > +				 &ps8640_connector_helper_funcs);
-> > > +	drm_connector_register(&ps_bridge->connector);
-> > > +
-> > > +	ps_bridge->connector.dpms = DRM_MODE_DPMS_ON;
-> > > +	drm_mode_connector_attach_encoder(&ps_bridge->connector,
-> > > +					  bridge->encoder);
-> > > +
-> > > +	if (ps_bridge->panel)
-> > > +		drm_panel_attach(ps_bridge->panel, &ps_bridge->connector);
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > > +static bool ps8640_bridge_mode_fixup(struct drm_bridge *bridge,
-> > > +				     const struct drm_display_mode *mode,
-> > > +				     struct drm_display_mode *adjusted_mode)
-> > > +{
-> > > +	return true;
-> > > +}
-> > > +
-> > > +static const struct drm_bridge_funcs ps8640_bridge_funcs = {
-> > > +	.attach = ps8640_bridge_attach,
-> > > +	.mode_fixup = ps8640_bridge_mode_fixup,
-> > > +	.disable = ps8640_disable,
-> > > +	.post_disable = ps8640_post_disable,
-> > > +	.pre_enable = ps8640_pre_enable,
-> > > +	.enable = ps8640_enable,
-> > > +};
-> > > +
-> > > +static int ps8640_probe(struct i2c_client *client,
-> > > +			const struct i2c_device_id *id)
-> > > +{
-> > > +	struct device *dev = &client->dev;
-> > > +	struct ps8640 *ps_bridge;
-> > > +	struct device_node *np = dev->of_node;
-> > > +	struct device_node *in_ep, *out_ep;
-> > > +	struct device_node *panel_node = NULL;
-> > > +	int ret;
-> > > +	u32 temp_reg;
-> > > +
-> > > +	ps_bridge = devm_kzalloc(dev, sizeof(*ps_bridge), GFP_KERNEL);
-> > > +	if (!ps_bridge)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	in_ep = of_graph_get_next_endpoint(np, NULL);
-> > > +	if (in_ep) {
-> > > +		out_ep = of_graph_get_next_endpoint(np, in_ep);
-> 
-> Better use:
-> 	port = of_graph_get_port_by_id(np, 1);
-> 	out_ep = of_get_child_by_name(port, "endpoint");
-> 
-> > > +		of_node_put(in_ep);
-> > > +		if (out_ep) {
-> > > +			panel_node = of_graph_get_remote_port_parent(out_ep);
-> > > +			of_node_put(out_ep);
-> > > +		}
-> > > +	}
-> > > +	if (panel_node) {
-> > > +		ps_bridge->panel = of_drm_find_panel(panel_node);
-> > > +		of_node_put(panel_node);
-> > > +		if (!ps_bridge->panel)
-> > > +			return -EPROBE_DEFER;
-> > > +	}
-> > > +
-> > > +	ps_bridge->client = client;
-> > > +
-> > > +	ps_bridge->pwr_3v3_supply = devm_regulator_get(dev, "vdd33-supply");
-> > > +	if (IS_ERR(ps_bridge->pwr_3v3_supply)) {
-> > > +		dev_err(dev, "cannot get ps_bridge->pwr_3v3_supply\n");
-> 
-> Instead of printing the variable name, just say "vdd3-supply". Also, it
-> is good practice to print the actual error value.
-> 
-> > > +		return PTR_ERR(ps_bridge->pwr_3v3_supply);
-> > > +	}
-> > > +
-> > > +	ps_bridge->pwr_1v2_supply = devm_regulator_get(dev, "vdd12-supply");
-> > > +	if (IS_ERR(ps_bridge->pwr_1v2_supply)) {
-> > > +		dev_err(dev, "cannot get ps_bridge->pwr_1v2_supply\n");
-> 
-> Same as above.
-> 
-> > > +		return PTR_ERR(ps_bridge->pwr_1v2_supply);
-> > > +	}
-> > > +
-> > > +	ps_bridge->gpio_mode_sel_n = devm_gpiod_get(&client->dev, "mode-sel",
-> > > +						    GPIOD_OUT_HIGH);
-> > > +	if (IS_ERR(ps_bridge->gpio_mode_sel_n)) {
-> > > +		ret = PTR_ERR(ps_bridge->gpio_mode_sel_n);
-> > > +		DRM_ERROR("cannot get gpio_mode_sel_n %d\n", ret);
-> 
-> It would be better to use dev_err instead of DRM_ERROR. The same applies
-> to the DRM_ERRORs below.
-> 
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = gpiod_direction_output(ps_bridge->gpio_mode_sel_n, 1);
-> > > +	if (ret) {
-> > > +		DRM_ERROR("cannot configure gpio_mode_sel_n\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ps_bridge->gpio_slp_n = devm_gpiod_get(&client->dev, "sleep-gpios",
-> > > +					       GPIOD_OUT_HIGH);
-> > > +	if (IS_ERR(ps_bridge->gpio_slp_n)) {
-> > > +		ret = PTR_ERR(ps_bridge->gpio_slp_n);
-> > > +		DRM_ERROR("cannot get gpio_slp_n %d\n", ret);
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = gpiod_direction_output(ps_bridge->gpio_slp_n, 1);
-> > > +	if (ret) {
-> > > +		DRM_ERROR("cannot configure gpio_slp_n\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ps_bridge->gpio_rst_n = devm_gpiod_get(&client->dev, "reset",
-> > > +					       GPIOD_OUT_HIGH);
-> > > +	if (IS_ERR(ps_bridge->gpio_rst_n)) {
-> > > +		ret = PTR_ERR(ps_bridge->gpio_rst_n);
-> > > +		DRM_ERROR("cannot get gpio_rst_n %d\n", ret);
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = gpiod_direction_output(ps_bridge->gpio_rst_n, 1);
-> > > +	if (ret) {
-> > > +		DRM_ERROR("cannot configure gpio_rst_n\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = of_property_read_u32(dev->of_node, "reg", &temp_reg);
-> > > +	if (ret) {
-> > > +		DRM_ERROR("Can't read base_reg value\n");
-> > > +		return ret;
-> > > +	}
-> > > +	ps_bridge->base_reg = temp_reg;
-> 
-> No need for this, the i2c address is already stored in client->addr.
-> 
-> > > +	ps_bridge->bridge.funcs = &ps8640_bridge_funcs;
-> > > +	ps_bridge->bridge.of_node = dev->of_node;
-> > > +	ret = drm_bridge_add(&ps_bridge->bridge);
-> > > +	if (ret) {
-> > > +		DRM_ERROR("Failed to add bridge\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	i2c_set_clientdata(client, ps_bridge);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int ps8640_remove(struct i2c_client *client)
-> > > +{
-> > > +	struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> > > +
-> > > +	drm_bridge_remove(&ps_bridge->bridge);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static const struct i2c_device_id ps8640_i2c_table[] = {
-> > > +	{"parade,ps8640", 0},
-> > > +	{},
-> > > +};
-> > > +MODULE_DEVICE_TABLE(i2c, ps8640_i2c_table);
-> > > +
-> > > +static const struct of_device_id ps8640_match[] = {
-> > > +	{ .compatible = "parade,ps8640" },
-> > > +	{},
-> > > +};
-> > > +MODULE_DEVICE_TABLE(of, ps8640_match);
-> > > +
-> > > +static struct i2c_driver ps8640_driver = {
-> > > +	.id_table = ps8640_i2c_table,
-> > > +	.probe = ps8640_probe,
-> > > +	.remove = ps8640_remove,
-> > > +	.driver = {
-> > > +		.name = "parade,ps8640",
-> > > +		.owner = THIS_MODULE,
-> > > +		.of_match_table = ps8640_match,
-> > > +	},
-> > > +};
-> > > +module_i2c_driver(ps8640_driver);
-> > > +
-> > > +MODULE_AUTHOR("Jitao Shi <jitao.shi@mediatek.com>");
-> > > +MODULE_AUTHOR("CK Hu <ck.hu@mediatek.com>");
-> > > +MODULE_DESCRIPTION("PARADE ps8640 DSI-eDP converter driver");
-> > > +MODULE_LICENSE("GPL v2");
-> 
-> best regards
-> Philipp
-> 
+T24gV2VkLCBOb3YgMDQsIDIwMTUgYXQgMTI6NDQ6NThQTSArMDEwMCwgUGhpbGlwcCBaYWJlbCB3
+cm90ZToKPiBGcm9tOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+IAo+IEFkZCBkZXZpY2Ug
+dHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBpbgo+
+IE1lZGlhdGVrIE1UODE3MyBTb0NzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBt
+ZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5n
+dXRyb25peC5kZT4KCklmIHRoaXMgd2Fzbid0IGFuIFJGQywgSSdkIGFjayBpdC4gOikgT25lIHRo
+aW5nIHlvdSBtaXNzZWQgYmVsb3cgdGhvdWdoLgoKPiAtLS0KPiBDaGFuZ2VzIHNpbmNlIHY0Ogo+
+ICAtIE1vdmUgZGV2aWNlIHRyZWUgYmluZGluZyBkb2N1bWVudGF0aW9uIHRvCj4gICAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsKPiAgLSBDbGFyaWZp
+ZWQgZGlzcGxheSBmdW5jdGlvbiBibG9jayBub2RlcyBhcmUgc2libGluZ3MgdG8gbW1zeXMKPiAt
+LS0KPiAgLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAg
+fCAxODMgKysrKysrKysrKysrKysrKysrKysrCj4gIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGRwaS50eHQgICAgIHwgIDM1ICsrKysKPiAgLi4uL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHNpLnR4dCAgICAgfCAgNTMgKysrKysrCj4gIDMgZmlsZXMg
+Y2hhbmdlZCwgMjcxIGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3Au
+dHh0Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkcGkudHh0Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
+YXRlayxkc2kudHh0Cj4gCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQK
+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAuLmNjM2Q4ODQKPiAtLS0gL2Rl
+di9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkv
+bWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiBAQCAtMCwwICsxLDE4MyBAQAo+ICtNZWRpYXRl
+ayBkaXNwbGF5IHN1YnN5c3RlbQo+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PQo+ICsKPiAr
+VGhlIE1lZGlhdGVrIGRpc3BsYXkgc3Vic3lzdGVtIGNvbnNpc3RzIG9mIHZhcmlvdXMgRElTUCBm
+dW5jdGlvbiBibG9ja3MgaW4gdGhlCj4gK01NU1lTIHJlZ2lzdGVyIHNwYWNlLiBUaGUgY29ubmVj
+dGlvbnMgYmV0d2VlbiB0aGVtIGNhbiBiZSBjb25maWd1cmVkIGJ5IG91dHB1dAo+ICthbmQgaW5w
+dXQgc2VsZWN0b3JzIGluIHRoZSBNTVNZU19DT05GSUcgcmVnaXN0ZXIgc3BhY2UgYW5kIHJlZ2lz
+dGVyIHVwZGF0ZXMgY2FuCj4gK2JlIHN5bmNocm9uaXplZCB0byB2aWRlbyBmcmFtZSBib3VuZGFy
+aWVzIHdpdGggaGVscCBvZiBhIERJU1BfTVVURVggZnVuY3Rpb24KPiArYmxvY2suCj4gKwo+ICtB
+bGwgRElTUCBkZXZpY2UgdHJlZSBub2RlcyBtdXN0IGJlIHNpYmxpbmdzIHRvIHRoZSBjZW50cmFs
+IE1NU1lTX0NPTkZJRyBub2RlLgo+ICtGb3IgYSBkZXNjcmlwdGlvbiBvZiB0aGUgTU1TWVNfQ09O
+RklHIGJpbmRpbmcsIHNlZQo+ICtEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJt
+L21lZGlhdGVrL21lZGlhdGVrLG1tc3lzLnR4dC4KPiArCj4gK0RJU1AgZnVuY3Rpb24gYmxvY2tz
+Cj4gKz09PT09PT09PT09PT09PT09PT09Cj4gKwo+ICtBIGRpc3BsYXkgc3RyZWFtIHN0YXJ0cyBh
+dCBhIHNvdXJjZSBmdW5jdGlvbiBibG9jayB0aGF0IHJlYWRzIHBpeGVsIGRhdGEgZnJvbQo+ICtt
+ZW1vcnkgYW5kIGVuZHMgd2l0aCBhIHNpbmsgZnVuY3Rpb24gYmxvY2sgdGhhdCBkcml2ZXMgcGl4
+ZWxzIG9uIGEgZGlzcGxheQo+ICtpbnRlcmZhY2UsIG9yIHdyaXRlcyBwaXhlbHMgYmFjayB0byBt
+ZW1vcnkuIEFsbCBESVNQIGZ1bmN0aW9uIGJsb2NrcyBoYXZlCj4gK3RoZWlyIG93biByZWdpc3Rl
+ciBzcGFjZSwgaW50ZXJydXB0LCBhbmQgY2xvY2sgZ2F0ZS4gVGhlIGJsb2NrcyB0aGF0IGNhbgo+
+ICthY2Nlc3MgbWVtb3J5IGFkZGl0aW9uYWxseSBoYXZlIHRvIGxpc3QgdGhlIElPTU1VIGFuZCBs
+b2NhbCBhcmJpdGVyIHRoZXkgYXJlCj4gK2Nvbm5lY3RlZCB0by4KPiArCj4gK0ZvciBhIGRlc2Ny
+aXB0aW9uIG9mIHRoZSBkaXNwbGF5IGludGVyZmFjZSBzaW5rIGZ1bmN0aW9uIGJsb2Nrcywgc2Vl
+Cj4gK0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kcm0vbWVkaWF0ZWsvbWVkaWF0
+ZWssZHNpLnR4dCBhbmQKPiArRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RybS9t
+ZWRpYXRlay9tZWRpYXRlayxkcGkudHh0LgoKTmVlZCB0byB1cGRhdGUgdGhlc2UgcGF0aHMuCgo+
+ICsKPiArUmVxdWlyZWQgcHJvcGVydGllcyAoYWxsIGZ1bmN0aW9uIGJsb2Nrcyk6Cj4gKy0gY29t
+cGF0aWJsZTogIm1lZGlhdGVrLDxjaGlwPi1kaXNwLTxmdW5jdGlvbj4iLCBvbmUgb2YKPiArCSJt
+ZWRpYXRlayw8Y2hpcD4tZGlzcC1vdmwiICAgLSBvdmVybGF5ICg0IGxheWVycywgYmxlbmRpbmcs
+IGNzYykKPiArCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1yZG1hIiAgLSByZWFkIERNQSAvIGxpbmUg
+YnVmZmVyCj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3Atd2RtYSIgIC0gd3JpdGUgRE1BCj4gKwki
+bWVkaWF0ZWssPGNoaXA+LWRpc3AtY29sb3IiIC0gY29sb3IgcHJvY2Vzc29yCj4gKwkibWVkaWF0
+ZWssPGNoaXA+LWRpc3AtYWFsIiAgIC0gYWRhcHRpdmUgYW1iaWVudCBsaWdodCBjb250cm9sbGVy
+Cj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3AtZ2FtbWEiIC0gZ2FtbWEgY29ycmVjdGlvbgo+ICsJ
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLXVmb2UiICAtIGRhdGEgY29tcHJlc3Npb24gZW5naW5lCj4g
+KwkibWVkaWF0ZWssPGNoaXA+LWRzaSIgICAgICAgIC0gRFNJIGNvbnRyb2xsZXIsIHNlZSBtZWRp
+YXRlayxkc2kudHh0Cj4gKwkibWVkaWF0ZWssPGNoaXA+LWRwaSIgICAgICAgIC0gRFBJIGNvbnRy
+b2xsZXIsIHNlZSBtZWRpYXRlayxkcGkudHh0Cj4gKwkibWVkaWF0ZWssPGNoaXA+LWRpc3AtbXV0
+ZXgiIC0gZGlzcGxheSBtdXRleAo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW9kIiAgICAtIG92
+ZXJkcml2ZQo+ICstIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhl
+IGZ1bmN0aW9uIGJsb2NrIHJlZ2lzdGVyIHNwYWNlCj4gKy0gaW50ZXJydXB0czogVGhlIGludGVy
+cnVwdCBzaWduYWwgZnJvbSB0aGUgZnVuY3Rpb24gYmxvY2suCj4gKy0gY2xvY2tzOiBkZXZpY2Ug
+Y2xvY2tzCj4gKyAgU2VlIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9j
+bG9jay1iaW5kaW5ncy50eHQgZm9yIGRldGFpbHMuCj4gKy0gY29tcGF0aWJsZTogIm1lZGlhdGVr
+LDxjaGlwPi1kZHAiCj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVzIChETUEgZnVuY3Rpb24gYmxv
+Y2tzKToKPiArLSBjb21wYXRpYmxlOiBTaG91bGQgYmUgb25lIG9mCj4gKwkibWVkaWF0ZWssPGNo
+aXA+LWRpc3Atb3ZsIgo+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXJkbWEiCj4gKwkibWVkaWF0
+ZWssPGNoaXA+LWRpc3Atd2RtYSIKPiArLSBsYXJiOiBTaG91bGQgY29udGFpbiBhIHBoYW5kbGUg
+cG9pbnRpbmcgdG8gdGhlIGxvY2FsIGFyYml0ZXIgZGV2aWNlIGFzIGRlZmluZWQKPiArICBpbiBE
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL21lZGlhdGVrL21lZGlhdGVrLHNt
+aS1sYXJiLnR4dAo+ICstIGlvbW11czogcmVxdWlyZWQgYSBpb21tdSBub2RlCj4gKwo+ICtFeGFt
+cGxlczoKPiArCj4gK21tc3lzOiBjbG9jay1jb250cm9sbGVyQDE0MDAwMDAwIHsKPiArCWNvbXBh
+dGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1tc3lzIiwgInN5c2NvbiI7Cj4gKwlyZWcgPSA8MCAw
+eDE0MDAwMDAwIDAgMHgxMDAwPjsKPiArCXBvd2VyLWRvbWFpbnMgPSA8JnNjcHN5cyBNVDgxNzNf
+UE9XRVJfRE9NQUlOX01NPjsKPiArCSNjbG9jay1jZWxscyA9IDwxPjsKPiArfTsKPiArCj4gK292
+bDA6IG92bEAxNDAwYzAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNw
+LW92bCI7Cj4gKwlyZWcgPSA8MCAweDE0MDBjMDAwIDAgMHgxMDAwPjsKPiArCWludGVycnVwdHMg
+PSA8R0lDX1NQSSAxODAgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiArCWNsb2NrcyA9IDwmbW1zeXMg
+Q0xLX01NX0RJU1BfT1ZMMD47Cj4gKwlpb21tdXMgPSA8JmlvbW11IE00VV9MQVJCMF9JRCBNNFVf
+UE9SVF9ESVNQX09WTDA+Owo+ICsJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+Owo+ICt9Owo+ICsK
+PiArb3ZsMTogb3ZsQDE0MDBkMDAwIHsKPiArCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTcz
+LWRpc3Atb3ZsIjsKPiArCXJlZyA9IDwwIDB4MTQwMGQwMDAgMCAweDEwMDA+Owo+ICsJaW50ZXJy
+dXB0cyA9IDxHSUNfU1BJIDE4MSBJUlFfVFlQRV9MRVZFTF9MT1c+Owo+ICsJY2xvY2tzID0gPCZt
+bXN5cyBDTEtfTU1fRElTUF9PVkwxPjsKPiArCWlvbW11cyA9IDwmaW9tbXUgTTRVX0xBUkI0X0lE
+IE00VV9QT1JUX0RJU1BfT1ZMMT47Cj4gKwltZWRpYXRlayxsYXJiID0gPCZsYXJiND47Cj4gK307
+Cj4gKwo+ICtyZG1hMDogcmRtYUAxNDAwZTAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVr
+LG10ODE3My1kaXNwLXJkbWEiOwo+ICsJcmVnID0gPDAgMHgxNDAwZTAwMCAwIDB4MTAwMD47Cj4g
+KwlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTgyIElSUV9UWVBFX0xFVkVMX0xPVz47Cj4gKwljbG9j
+a3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1JETUEwPjsKPiArCWlvbW11cyA9IDwmaW9tbXUgTTRV
+X0xBUkIwX0lEIE00VV9QT1JUX0RJU1BfUkRNQTA+Owo+ICsJbWVkaWF0ZWssbGFyYiA9IDwmbGFy
+YjA+Owo+ICt9Owo+ICsKPiArcmRtYTE6IHJkbWFAMTQwMGYwMDAgewo+ICsJY29tcGF0aWJsZSA9
+ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1yZG1hIjsKPiArCXJlZyA9IDwwIDB4MTQwMGYwMDAgMCAw
+eDEwMDA+Owo+ICsJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE4MyBJUlFfVFlQRV9MRVZFTF9MT1c+
+Owo+ICsJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9SRE1BMT47Cj4gKwlpb21tdXMgPSA8
+JmlvbW11IE00VV9MQVJCNF9JRCBNNFVfUE9SVF9ESVNQX1JETUExPjsKPiArCW1lZGlhdGVrLGxh
+cmIgPSA8JmxhcmI0PjsKPiArfTsKPiArCj4gK3JkbWEyOiByZG1hQDE0MDEwMDAwIHsKPiArCWNv
+bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRpc3AtcmRtYSI7Cj4gKwlyZWcgPSA8MCAweDE0
+MDEwMDAwIDAgMHgxMDAwPjsKPiArCWludGVycnVwdHMgPSA8R0lDX1NQSSAxODQgSVJRX1RZUEVf
+TEVWRUxfTE9XPjsKPiArCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfUkRNQTI+Owo+ICsJ
+aW9tbXVzID0gPCZpb21tdSBNNFVfTEFSQjRfSUQgTTRVX1BPUlRfRElTUF9SRE1BMj47Cj4gKwlt
+ZWRpYXRlayxsYXJiID0gPCZsYXJiND47Cj4gK307Cj4gKwo+ICt3ZG1hMDogd2RtYUAxNDAxMTAw
+MCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLXdkbWEiOwo+ICsJcmVn
+ID0gPDAgMHgxNDAxMTAwMCAwIDB4MTAwMD47Cj4gKwlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTg1
+IElSUV9UWVBFX0xFVkVMX0xPVz47Cj4gKwljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1dE
+TUEwPjsKPiArCWlvbW11cyA9IDwmaW9tbXUgTTRVX0xBUkIwX0lEIE00VV9QT1JUX0RJU1BfV0RN
+QTA+Owo+ICsJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+Owo+ICt9Owo+ICsKPiArd2RtYTE6IHdk
+bWFAMTQwMTIwMDAgewo+ICsJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC13ZG1h
+IjsKPiArCXJlZyA9IDwwIDB4MTQwMTIwMDAgMCAweDEwMDA+Owo+ICsJaW50ZXJydXB0cyA9IDxH
+SUNfU1BJIDE4NiBJUlFfVFlQRV9MRVZFTF9MT1c+Owo+ICsJY2xvY2tzID0gPCZtbXN5cyBDTEtf
+TU1fRElTUF9XRE1BMT47Cj4gKwlpb21tdXMgPSA8JmlvbW11IE00VV9MQVJCNF9JRCBNNFVfUE9S
+VF9ESVNQX1dETUExPjsKPiArCW1lZGlhdGVrLGxhcmIgPSA8JmxhcmI0PjsKPiArfTsKPiArCj4g
+K2NvbG9yMDogY29sb3JAMTQwMTMwMDAgewo+ICsJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgx
+NzMtZGlzcC1jb2xvciI7Cj4gKwlyZWcgPSA8MCAweDE0MDEzMDAwIDAgMHgxMDAwPjsKPiArCWlu
+dGVycnVwdHMgPSA8R0lDX1NQSSAxODcgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiArCWNsb2NrcyA9
+IDwmbW1zeXMgQ0xLX01NX0RJU1BfQ09MT1IwPjsKPiArfTsKPiArCj4gK2NvbG9yMTogY29sb3JA
+MTQwMTQwMDAgewo+ICsJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1jb2xvciI7
+Cj4gKwlyZWcgPSA8MCAweDE0MDE0MDAwIDAgMHgxMDAwPjsKPiArCWludGVycnVwdHMgPSA8R0lD
+X1NQSSAxODggSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiArCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01N
+X0RJU1BfQ09MT1IxPjsKPiArfTsKPiArCj4gK2FhbEAxNDAxNTAwMCB7Cj4gKwljb21wYXRpYmxl
+ID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLWFhbCI7Cj4gKwlyZWcgPSA8MCAweDE0MDE1MDAwIDAg
+MHgxMDAwPjsKPiArCWludGVycnVwdHMgPSA8R0lDX1NQSSAxODkgSVJRX1RZUEVfTEVWRUxfTE9X
+PjsKPiArCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfQUFMPjsKPiArfTsKPiArCj4gK2dh
+bW1hQDE0MDE2MDAwIHsKPiArCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRpc3AtZ2Ft
+bWEiOwo+ICsJcmVnID0gPDAgMHgxNDAxNjAwMCAwIDB4MTAwMD47Cj4gKwlpbnRlcnJ1cHRzID0g
+PEdJQ19TUEkgMTkwIElSUV9UWVBFX0xFVkVMX0xPVz47Cj4gKwljbG9ja3MgPSA8Jm1tc3lzIENM
+S19NTV9ESVNQX0dBTU1BPjsKPiArfTsKPiArCj4gK3Vmb2VAMTQwMWEwMDAgewo+ICsJY29tcGF0
+aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC11Zm9lIjsKPiArCXJlZyA9IDwwIDB4MTQwMWEw
+MDAgMCAweDEwMDA+Owo+ICsJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE5MSBJUlFfVFlQRV9MRVZF
+TF9MT1c+Owo+ICsJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9VRk9FPjsKPiArfTsKPiAr
+Cj4gK2RzaTA6IGRzaUAxNDAxYjAwMCB7Cj4gKwkvKiBTZWUgbWVkaWF0ZWssZHNpLnR4dCBmb3Ig
+ZGV0YWlscyAqLwo+ICt9Owo+ICsKPiArZHBpMDogZHBpQDE0MDFkMDAwIHsKPiArCS8qIFNlZSBt
+ZWRpYXRlayxkcGkudHh0IGZvciBkZXRhaWxzICovCj4gK307Cj4gKwo+ICttdXRleDogbXV0ZXhA
+MTQwMjAwMDAgewo+ICsJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1tdXRleCI7
+Cj4gKwlyZWcgPSA8MCAweDE0MDIwMDAwIDAgMHgxMDAwPjsKPiArCWludGVycnVwdHMgPSA8R0lD
+X1NQSSAxNjkgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiArCXBvd2VyLWRvbWFpbnMgPSA8JnNjcHN5
+cyBNVDgxNzNfUE9XRVJfRE9NQUlOX01NPjsKPiArCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX01V
+VEVYXzMySz47Cj4gK307Cj4gKwo+ICtvZEAxNDAyMzAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE3My1kaXNwLW9kIjsKPiArCXJlZyA9IDwwIDB4MTQwMjMwMDAgMCAweDEwMDA+
+Owo+ICsJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9PRD47Cj4gK307Cj4gZGlmZiAtLWdp
+dCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
+ZGlhdGVrLGRwaS50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9tZWRpYXRlay9tZWRpYXRlayxkcGkudHh0Cj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRl
+eCAwMDAwMDAwLi5iNmE3ZTczCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRwaS50eHQKPiBA
+QCAtMCwwICsxLDM1IEBACj4gK01lZGlhdGVrIERQSSBEZXZpY2UKPiArPT09PT09PT09PT09PT09
+PT09PQo+ICsKPiArVGhlIE1lZGlhdGVrIERQSSBmdW5jdGlvbiBibG9jayBpcyBhIHNpbmsgb2Yg
+dGhlIGRpc3BsYXkgc3Vic3lzdGVtIGFuZAo+ICtwcm92aWRlcyA4LWJpdCBSR0IvWVVWNDQ0IG9y
+IDgvMTAvMTAtYml0IFlVVjQyMiBwaXhlbCBkYXRhIG9uIGEgcGFyYWxsZWwKPiArb3V0cHV0IGJ1
+cy4KPiArCj4gK1JlcXVpcmVkIHByb3BlcnRpZXM6Cj4gKy0gY29tcGF0aWJsZTogIm1lZGlhdGVr
+LDxjaGlwPi1kcGkiCj4gKy0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBv
+ZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycwo+ICstIGludGVycnVwdHM6IFRoZSBpbnRlcnJ1
+cHQgc2lnbmFsIGZyb20gdGhlIGZ1bmN0aW9uIGJsb2NrLgo+ICstIGNsb2NrczogZGV2aWNlIGNs
+b2Nrcwo+ICsgIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svY2xv
+Y2stYmluZGluZ3MudHh0IGZvciBkZXRhaWxzLgo+ICstIGNsb2NrLW5hbWVzOiBtdXN0IGNvbnRh
+aW4gInBpeGVsIiwgImVuZ2luZSIsIGFuZCAicGxsIgo+ICstIHBvcnQ6IE91dHB1dCBwb3J0IG5v
+ZGUgd2l0aCBlbmRwb2ludCBkZWZpbml0aW9ucyBhcyBkZXNjcmliZWQgaW4KPiArICBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZ3JhcGgudHh0LiBUaGlzIHBvcnQgc2hvdWxkIGJl
+IGNvbm5lY3RlZAo+ICsgIHRvIHRoZSBpbnB1dCBwb3J0IG9mIGFuIGF0dGFjaGVkIEhETUkgb3Ig
+TFZEUyBlbmNvZGVyIGNoaXAuCj4gKwo+ICtFeGFtcGxlOgo+ICsKPiArZHBpMDogZHBpQDE0MDFk
+MDAwIHsKPiArCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRwaSI7Cj4gKwlyZWcgPSA8
+MCAweDE0MDFkMDAwIDAgMHgxMDAwPjsKPiArCWludGVycnVwdHMgPSA8R0lDX1NQSSAxOTQgSVJR
+X1RZUEVfTEVWRUxfTE9XPjsKPiArCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RQSV9QSVhFTD4s
+Cj4gKwkJIDwmbW1zeXMgQ0xLX01NX0RQSV9FTkdJTkU+LAo+ICsJCSA8JmFwbWl4ZWRzeXMgQ0xL
+X0FQTUlYRURfVFZEUExMPjsKPiArCWNsb2NrLW5hbWVzID0gInBpeGVsIiwgImVuZ2luZSIsICJw
+bGwiOwo+ICsKPiArCXBvcnQgewo+ICsJCWRwaTBfb3V0OiBlbmRwb2ludCB7Cj4gKwkJCXJlbW90
+ZS1lbmRwb2ludCA9IDwmaGRtaTBfaW4+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+IGRpZmYgLS1n
+aXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9t
+ZWRpYXRlayxkc2kudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHNpLnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5k
+ZXggMDAwMDAwMC4uYWZhN2FmYgo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkc2kudHh0Cj4g
+QEAgLTAsMCArMSw1MyBAQAo+ICtNZWRpYXRlayBEU0kgRGV2aWNlCj4gKz09PT09PT09PT09PT09
+PT09PT0KPiArCj4gK1RoZSBNZWRpYXRlayBEU0kgZnVuY3Rpb24gYmxvY2sgaXMgYSBzaW5rIG9m
+IHRoZSBkaXNwbGF5IHN1YnN5c3RlbSBhbmQgY2FuCj4gK2RyaXZlIHVwIHRvIDQtbGFuZSBNSVBJ
+IERTSSBvdXRwdXQuIFR3byBEU0lzIGNhbiBiZSBzeW5jaHJvbml6ZWQgZm9yIGR1YWwtCj4gK2No
+YW5uZWwgb3V0cHV0Lgo+ICsKPiArUmVxdWlyZWQgcHJvcGVydGllczoKPiArLSBjb21wYXRpYmxl
+OiAibWVkaWF0ZWssPGNoaXA+LWRzaSIKPiArLSByZWc6IFBoeXNpY2FsIGJhc2UgYWRkcmVzcyBh
+bmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJzCj4gKy0gaW50ZXJydXB0czog
+VGhlIGludGVycnVwdCBzaWduYWwgZnJvbSB0aGUgZnVuY3Rpb24gYmxvY2suCj4gKy0gY2xvY2tz
+OiBkZXZpY2UgY2xvY2tzCj4gKyAgU2VlIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9jbG9jay9jbG9jay1iaW5kaW5ncy50eHQgZm9yIGRldGFpbHMuCj4gKy0gY2xvY2stbmFtZXM6
+IG11c3QgY29udGFpbiAiZW5naW5lIiBhbmQgImRpZ2l0YWwiLgo+ICstIHBoeXM6IHBoYW5kbGUg
+bGluayB0byB0aGUgTUlQSSBELVBIWSBjb250cm9sbGVyLgo+ICstIHBoeS1uYW1lczogbXVzdCBj
+b250YWluICJkcGh5Igo+ICstIHBvcnQ6IE91dHB1dCBwb3J0IG5vZGUgd2l0aCBlbmRwb2ludCBk
+ZWZpbml0aW9ucyBhcyBkZXNjcmliZWQgaW4KPiArICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvZ3JhcGgudHh0LiBUaGlzIHBvcnQgc2hvdWxkIGJlIGNvbm5lY3RlZAo+ICsgIHRv
+IHRoZSBpbnB1dCBwb3J0IG9mIGFuIGF0dGFjaGVkIERTSSBwYW5lbCBvciBEU0ktdG8tZURQIGVu
+Y29kZXIgY2hpcC4KPiArCj4gK01JUEkgVFggQ29uZmlndXJhdGlvbiBNb2R1bGUKPiArPT09PT09
+PT09PT09PT09PT09PT09PT09PT09PQo+ICsKPiArVGhlIE1JUEkgVFggY29uZmlndXJhdGlvbiBt
+b2R1bGUgY29udHJvbHMgdGhlIE1JUEkgRC1QSFkuCj4gKwo+ICtSZXF1aXJlZCBwcm9wZXJ0aWVz
+Ogo+ICstIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4tbWlwaS10eCIKPiArLSByZWc6IFBo
+eXNpY2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0
+ZXJzCj4gKy0gI3BoeS1jZWxsczogbXVzdCBiZSA8MD4uCj4gKwo+ICtFeGFtcGxlOgo+ICsKPiAr
+bWlwaV90eDA6IG1pcGktZHBoeUAxMDIxNTAwMCB7Cj4gKwljb21wYXRpYmxlID0gIm1lZGlhdGVr
+LG10ODE3My1taXBpLXR4IjsKPiArCXJlZyA9IDwwIDB4MTAyMTUwMDAgMCAweDEwMDA+Owo+ICsJ
+I3BoeS1jZWxscyA9IDwwPjsKPiArfTsKPiArCj4gK2RzaTA6IGRzaUAxNDAxYjAwMCB7Cj4gKwlj
+b21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kc2kiOwo+ICsJcmVnID0gPDAgMHgxNDAxYjAw
+MCAwIDB4MTAwMD47Cj4gKwlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTkyIElSUV9UWVBFX0xFVkVM
+X0xPVz47Cj4gKwljbG9ja3MgPSA8Jm1tc3lzIE1NX0RTSTBfRU5HSU5FPiwgPCZtbXN5cyBNTV9E
+U0kwX0RJR0lUQUw+Owo+ICsJY2xvY2stbmFtZXMgPSAiZW5naW5lIiwgImRpZ2l0YWwiOwo+ICsJ
+cGh5cyA9IDwmbWlwaV90eDA+Owo+ICsJcGh5LW5hbWVzID0gImRwaHkiOwo+ICsKPiArCXBvcnQg
+ewo+ICsJCWRzaTBfb3V0OiBlbmRwb2ludCB7Cj4gKwkJCXJlbW90ZS1lbmRwb2ludCA9IDwmcGFu
+ZWxfaW4+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+IC0tIAo+IDIuNi4xCj4gCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
+c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
