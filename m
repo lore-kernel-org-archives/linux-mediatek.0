@@ -1,96 +1,64 @@
-From: Andy Shevchenko <andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] spi: mediatek: single device does not require cs_gpios
-Date: Thu, 5 Nov 2015 11:16:16 +0200
-Message-ID: <CAHp75VfAHyTOpWcTh6w2EhEy73xfUYX5T3tpXbUbBiU-tjaZnQ@mail.gmail.com>
-References: <1446702633-14019-1-git-send-email-drinkcat@chromium.org>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
+Date: Thu, 05 Nov 2015 10:40:30 +0100
+Message-ID: <1446716430.3894.12.camel@pengutronix.de>
+References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
+	 <1444988219.3541.3.camel@pengutronix.de>
+	 <1445526750.27586.8.camel@mtksdaap41>
+	 <1446133259.3274.52.camel@pengutronix.de>
+	 <1446190900.17558.16.camel@mtksdaap41>
+	 <1446201271.3334.22.camel@pengutronix.de>
+	 <1446538299.2449.8.camel@mtksdaap41>
+	 <1446548924.3373.3.camel@pengutronix.de>
+	 <1446601656.15340.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1446702633-14019-1-git-send-email-drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm Mailing List <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pwm-owner@vger.kernel.org>
+In-Reply-To: <1446601656.15340.11.camel@mtksdaap41>
+Sender: linux-pwm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 5, 2015 at 7:50 AM, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> When only one device is present, it is not necessary to specify
-> cs_gpios, as the CS line can be controlled by the hardware
-> module.
->
-> Without this patch, older device tree bindings used before
-> 37457607 "spi: mediatek: mt8173 spi multiple devices support"
-> would cause a panic on boot. This fixes the crash, and
-> re-introduces backward compatibility.
->
-> Signed-off-by: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> ---
->
-> Applies on top of broonie/spi.git topic/mtk. Thanks!
->
->  drivers/spi/spi-mt65xx.c | 26 ++++++++++++++++++--------
->  1 file changed, 18 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-> index 563954a..f694031 100644
-> --- a/drivers/spi/spi-mt65xx.c
-> +++ b/drivers/spi/spi-mt65xx.c
-> @@ -410,7 +410,7 @@ static int mtk_spi_setup(struct spi_device *spi)
->         if (!spi->controller_data)
->                 spi->controller_data = (void *)&mtk_default_chip_info;
->
-> -       if (mdata->dev_comp->need_pad_sel)
-> +       if (mdata->dev_comp->need_pad_sel && spi->cs_gpio >= 0)
+Am Mittwoch, den 04.11.2015, 09:47 +0800 schrieb YH Huang:
+> On Tue, 2015-11-03 at 12:08 +0100, Philipp Zabel wrote:
+> > Hi YH,
+> > 
+> > Am Dienstag, den 03.11.2015, 16:11 +0800 schrieb YH Huang:
+> > > > The reasoning is that devices where there is no phandle link pointing to
+> > > > the backlight (for example from a simple-panel node), we should keep the
+> > > > current default behaviour (enable during probe).
+> > > 
+> > > I have a little problem for the current default behaviour.
+> > > Should we enable during probe?
+> > 
+> > Here I mean enabling the backlight (at the end of the probe function),
+> > not enabling the GPIO already when requesting it.
+> > 
+> > > Before this patch ( http://patchwork.ozlabs.org/patch/324690/ ),
+> > > we disable "enable-gpio" in the probe function.
+> > 
+> > While before this patch the GPIO would be initialized in the disabled
+> > state, the call to backlight_update_status at the end of the probe
+> > function would still enable the backlight afterwards.
+> 
+> Based on this, could we disable it initially and update in the
+> backlight_update_status function?
+> 
+> Like this,
+> 
+> if (pb->enable_gpio) {
+> 	if (phandle &&
+> 	    gpiod_get_direction(pb->enable_gpio) == GPIOF_DIR_OUT &&
+> 	    gpiod_get_value(pb->enable_gpio) == 1)
+> 		gpiod_direction_output(pb->enable_gpio, 1);
 
-gpio_is_valid() ?
+The gpiod_direction_output call is a no-op, since the direction is
+already output and the value is already 1.
+Also, I propose to set initial blanking to FB_BLANK_POWERDOWN in this
+case, and wait for the panel driver to enable the backlight at the
+appropriate time.
 
->                 gpio_direction_output(spi->cs_gpio, !(spi->mode & SPI_CS_HIGH));
->
->         return 0;
-> @@ -632,13 +632,23 @@ static int mtk_spi_probe(struct platform_device *pdev)
->                         goto err_put_master;
->                 }
->
-> -               for (i = 0; i < master->num_chipselect; i++) {
-> -                       ret = devm_gpio_request(&pdev->dev, master->cs_gpios[i],
-> -                                               dev_name(&pdev->dev));
-> -                       if (ret) {
-> -                               dev_err(&pdev->dev,
-> -                                       "can't get CS GPIO %i\n", i);
-> -                               goto err_put_master;
-> +               if (!master->cs_gpios && master->num_chipselect > 1) {
-> +                       dev_err(&pdev->dev,
-> +                               "cs_gpios not specified and num_chipselect > 1\n");
-> +                       ret = -EINVAL;
-> +                       goto err_put_master;
-> +               }
-> +
-> +               if (master->cs_gpios) {
-> +                       for (i = 0; i < master->num_chipselect; i++) {
-> +                               ret = devm_gpio_request(&pdev->dev,
-> +                                                       master->cs_gpios[i],
-> +                                                       dev_name(&pdev->dev));
-> +                               if (ret) {
-> +                                       dev_err(&pdev->dev,
-> +                                               "can't get CS GPIO %i\n", i);
-> +                                       goto err_put_master;
-> +                               }
->                         }
->                 }
->         }
-> --
-> 2.6.0.rc2.230.g3dd15c0
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-
-
-
--- 
-With Best Regards,
-Andy Shevchenko
---
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+regards
+Philipp
