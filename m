@@ -1,84 +1,66 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC] ASoC: Add mediatek HDMI codec driver
-Date: Thu, 5 Nov 2015 15:52:08 +0000
-Message-ID: <20151105155208.GQ18409@sirena.org.uk>
-References: <1446638053-12143-1-git-send-email-p.zabel@pengutronix.de>
- <20151104120343.GZ20228@sirena.org.uk>
- <1446736519.3894.113.camel@pengutronix.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [RFC v2 1/2] Documentation: bridge: Add documentation for ps8640
+ DT properties
+Date: Thu, 5 Nov 2015 20:02:51 -0600
+Message-ID: <20151106020251.GA3234@rob-hp-laptop>
+References: <1446430166-7378-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============8444521185517841476=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1446736519.3894.113.camel@pengutronix.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+In-Reply-To: <1446430166-7378-1-git-send-email-jitao.shi@mediatek.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============8444521185517841476==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="QVgWX4+QEldMe/r9"
-Content-Disposition: inline
-
-
---QVgWX4+QEldMe/r9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Nov 05, 2015 at 04:15:19PM +0100, Philipp Zabel wrote:
-> Am Mittwoch, den 04.11.2015, 12:03 +0000 schrieb Mark Brown:
-> > On Wed, Nov 04, 2015 at 12:54:13PM +0100, Philipp Zabel wrote:
-
-> > As I keep saying I really want to see some collaboration and consensus
-> > here with the goal of sharing code and achieving a consistent userspace
-> > interface rather than a lot of individual independently implemented
-> > drivers.
-
-> For eld updates and jack handling I could try to go forward with
-> Russell's notification prototype from the "[RFC,V2,0/5] another generic
-> audio hdmi codec proposal" thread:
-> https://patchwork.kernel.org/patch/7339011/
-
-> Or are you saying there shouldn't be a Mediatek specific HDMI sound
-> driver at all and this should be handled by generic code?
-
-Well, now I take a glance at the code I'm not seeing any actual hardware
-interaction here so it certainly seems like there's nothing MediaTek
-specific going on.  I've not actually looked at the code beyond a brief
-glance and doing a search for the helpers, like I say I'm really looking
-for collaboration and consensus among the people working on HDMI here
-rather than a specific solution.
-
---QVgWX4+QEldMe/r9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWO3sjAAoJECTWi3JdVIfQCgYH/0NxMtD4+qpVp6Fv2VWpnH8s
-0NZ6i6QvJRfICX+8QhAk/C+clbXyd46neR0EJjr8M+tSyZRpIMNcOPmJKmZSlEfD
-7mkLmrM2Sm49K2GVGFvMJtbqWbj6dXOAdXSOwvh0LUFwBbdytjgs4vOUPSpjaSL1
-0EsyxBDSaboO+RcJ71uvXALhXfxIH9w472fpOlDjsH1IiXHEjIuNLAtgSmbcw0dw
-DFC2WPO82FEq3W0p4/nuc+fiA7jbiHINQ6alp2AV1x5dwOD6tU7myMpKkB7W/NRA
-HDC1uDuBeUy4GY0cE71xXGsEIQ0j2ZQE4UvWxZyhAGE3reJIxORCNyPkKtzCyvc=
-=1b5Q
------END PGP SIGNATURE-----
-
---QVgWX4+QEldMe/r9--
-
---===============8444521185517841476==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============8444521185517841476==--
+T24gTW9uLCBOb3YgMDIsIDIwMTUgYXQgMTA6MDk6MjVBTSArMDgwMCwgSml0YW8gU2hpIHdyb3Rl
+Ogo+IEFkZCBkb2N1bWVudGF0aW9uIGZvciBEVCBwcm9wZXJ0aWVzIHN1cHBvcnRlZCBieQo+IHBz
+ODY0MCBEU0ktZURQIGNvbnZlcnRlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGpp
+dGFvLnNoaUBtZWRpYXRlay5jb20+CgpBY2tlZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVs
+Lm9yZz4KCj4gLS0tCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3Bz
+ODY0MC50eHQgIHwgICA0MyArKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwg
+NDMgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0MC50eHQKPiAKPiBkaWZmIC0tZ2l0
+IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0
+MC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2Uv
+cHM4NjQwLnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4uN2VkYzU0
+Nwo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9icmlkZ2UvcHM4NjQwLnR4dAo+IEBAIC0wLDAgKzEsNDMgQEAKPiArcHM4NjQw
+LWJyaWRnZSBiaW5kaW5ncwo+ICsKPiArUmVxdWlyZWQgcHJvcGVydGllczoKPiArCS0gY29tcGF0
+aWJsZTogInBhcmFkZSxwczg2NDAiCj4gKwktIHJlZzogZmlyc3QgcGFnZSBhZGRyZXNzIG9mIHRo
+ZSBicmlkZ2UuCj4gKwktIHNsZWVwLWdwaW9zOiBPRiBkZXZpY2UtdHJlZSBncGlvIHNwZWNpZmlj
+YXRpb24gZm9yIFBEXyBwaW4uCj4gKwktIHJlc2V0LWdwaW9zOiBPRiBkZXZpY2UtdHJlZSBncGlv
+IHNwZWNpZmljYXRpb24gZm9yIHJlc2V0IHBpbi4KPiArCS0gbW9kZS1zZWwtZ3Bpb3M6IE9GIGRl
+dmljZS10cmVlIGdwaW8gc3BlY2lmaWNhdGlvbiBmb3IgbW9kZS1zZWwgcGluLgo+ICsJLSB2ZGQx
+Mi1zdXBwbHk6IE9GIGRldmljZS10cmVlIHJlZ3VsYXRvciBzcGVjaWZpY2F0aW9uIGZvciAxLjJW
+IHBvd2VyLgo+ICsJLSB2ZGQzMy1zdXBwbHk6IE9GIGRldmljZS10cmVlIHJlZ3VsYXRvciBzcGVj
+aWZpY2F0aW9uIGZvciAzLjNWIHBvd2VyLgo+ICsJLSBwb3J0czogVGhlIGRldmljZSBub2RlIGNh
+biBjb250YWluIHZpZGVvIGludGVyZmFjZSBwb3J0IG5vZGVzIHBlcgo+ICsJCSB0aGUgdmlkZW8t
+aW50ZXJmYWNlcyBiaW5kWzFdLiBGb3IgcG9ydEAwLHNldCB0aGUgcmVnID0gPDA+IGFzCj4gKwkJ
+IHBzODY0MCBkc2kgaW4gYW5kIHBvcnRAMSxzZXQgdGhlIHJlZyA9IDwxPiBhcyBwczg2NDAgZURQ
+IG91dC4KPiArCj4gK1sxXTogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlh
+L3ZpZGVvLWludGVyZmFjZXMudHh0Cj4gKwo+ICtFeGFtcGxlOgo+ICsJZWRwLWJyaWRnZUAxOCB7
+Cj4gKwkJY29tcGF0aWJsZSA9ICJwYXJhZGUscHM4NjQwIjsKPiArCQlyZWcgPSA8MHgxOD47Cj4g
+KwkJc2xlZXAtZ3Bpb3MgPSA8JnBpbyAxMTYgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJcmVzZXQt
+Z3Bpb3MgPSA8JnBpbyAxMTUgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJbW9kZS1zZWwtZ3Bpb3Mg
+PSA8JnBpbyA5MiBHUElPX0FDVElWRV9ISUdIPjsKPiArCQlwczg2NDAtMXYyLXN1cHBseSA9IDwm
+cHM4NjQwX2ZpeGVkXzF2Mj47Cj4gKwkJcHM4NjQwLTN2My1zdXBwbHkgPSA8Jm10NjM5N192Z3Ay
+X3JlZz47Cj4gKwo+ICsJCXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkJ
+CSNzaXplLWNlbGxzID0gPDA+Owo+ICsJCQlwb3J0QDAgewo+ICsJCQkJcmVnID0gPDA+Owo+ICsJ
+CQkJcHM4NjQwX2luOiBlbmRwb2ludCB7Cj4gKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkc2kw
+X291dD47Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCQlwb3J0QDEgewo+ICsJCQkJcmVnID0gPDE+
+Owo+ICsJCQkJcHM4NjQwX291dDogZW5kcG9pbnQgewo+ICsJCQkJCXJlbW90ZS1lbmRwb2ludCA9
+IDwmcGFuZWxfaW4+Owo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiAtLSAKPiAx
+LjcuOS41Cj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
