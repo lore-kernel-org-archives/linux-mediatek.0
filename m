@@ -1,66 +1,66 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RFC v2 1/2] Documentation: bridge: Add documentation for ps8640
- DT properties
-Date: Thu, 5 Nov 2015 20:02:51 -0600
-Message-ID: <20151106020251.GA3234@rob-hp-laptop>
-References: <1446430166-7378-1-git-send-email-jitao.shi@mediatek.com>
+From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 0/2] thermal: mediatek: Add cpu power cooling model
+Date: Fri, 6 Nov 2015 08:50:46 +0530
+Message-ID: <20151106032046.GK3773@ubuntu>
+References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
+ <20151028154449.GH3716@ubuntu>
+ <1446461181.10039.28.camel@mtksdaap41>
+ <20151102121034.GA3639@ubuntu>
+ <1446721761.4016.56.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1446430166-7378-1-git-send-email-jitao.shi@mediatek.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, yingjoe.chen@mediatek.com, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-mediatek@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>
+In-Reply-To: <1446721761.4016.56.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: dawei chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBOb3YgMDIsIDIwMTUgYXQgMTA6MDk6MjVBTSArMDgwMCwgSml0YW8gU2hpIHdyb3Rl
-Ogo+IEFkZCBkb2N1bWVudGF0aW9uIGZvciBEVCBwcm9wZXJ0aWVzIHN1cHBvcnRlZCBieQo+IHBz
-ODY0MCBEU0ktZURQIGNvbnZlcnRlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGpp
-dGFvLnNoaUBtZWRpYXRlay5jb20+CgpBY2tlZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVs
-Lm9yZz4KCj4gLS0tCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3Bz
-ODY0MC50eHQgIHwgICA0MyArKysrKysrKysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwg
-NDMgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0MC50eHQKPiAKPiBkaWZmIC0tZ2l0
-IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvYnJpZGdlL3BzODY0
-MC50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9icmlkZ2Uv
-cHM4NjQwLnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4uN2VkYzU0
-Nwo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvZGlzcGxheS9icmlkZ2UvcHM4NjQwLnR4dAo+IEBAIC0wLDAgKzEsNDMgQEAKPiArcHM4NjQw
-LWJyaWRnZSBiaW5kaW5ncwo+ICsKPiArUmVxdWlyZWQgcHJvcGVydGllczoKPiArCS0gY29tcGF0
-aWJsZTogInBhcmFkZSxwczg2NDAiCj4gKwktIHJlZzogZmlyc3QgcGFnZSBhZGRyZXNzIG9mIHRo
-ZSBicmlkZ2UuCj4gKwktIHNsZWVwLWdwaW9zOiBPRiBkZXZpY2UtdHJlZSBncGlvIHNwZWNpZmlj
-YXRpb24gZm9yIFBEXyBwaW4uCj4gKwktIHJlc2V0LWdwaW9zOiBPRiBkZXZpY2UtdHJlZSBncGlv
-IHNwZWNpZmljYXRpb24gZm9yIHJlc2V0IHBpbi4KPiArCS0gbW9kZS1zZWwtZ3Bpb3M6IE9GIGRl
-dmljZS10cmVlIGdwaW8gc3BlY2lmaWNhdGlvbiBmb3IgbW9kZS1zZWwgcGluLgo+ICsJLSB2ZGQx
-Mi1zdXBwbHk6IE9GIGRldmljZS10cmVlIHJlZ3VsYXRvciBzcGVjaWZpY2F0aW9uIGZvciAxLjJW
-IHBvd2VyLgo+ICsJLSB2ZGQzMy1zdXBwbHk6IE9GIGRldmljZS10cmVlIHJlZ3VsYXRvciBzcGVj
-aWZpY2F0aW9uIGZvciAzLjNWIHBvd2VyLgo+ICsJLSBwb3J0czogVGhlIGRldmljZSBub2RlIGNh
-biBjb250YWluIHZpZGVvIGludGVyZmFjZSBwb3J0IG5vZGVzIHBlcgo+ICsJCSB0aGUgdmlkZW8t
-aW50ZXJmYWNlcyBiaW5kWzFdLiBGb3IgcG9ydEAwLHNldCB0aGUgcmVnID0gPDA+IGFzCj4gKwkJ
-IHBzODY0MCBkc2kgaW4gYW5kIHBvcnRAMSxzZXQgdGhlIHJlZyA9IDwxPiBhcyBwczg2NDAgZURQ
-IG91dC4KPiArCj4gK1sxXTogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlh
-L3ZpZGVvLWludGVyZmFjZXMudHh0Cj4gKwo+ICtFeGFtcGxlOgo+ICsJZWRwLWJyaWRnZUAxOCB7
-Cj4gKwkJY29tcGF0aWJsZSA9ICJwYXJhZGUscHM4NjQwIjsKPiArCQlyZWcgPSA8MHgxOD47Cj4g
-KwkJc2xlZXAtZ3Bpb3MgPSA8JnBpbyAxMTYgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJcmVzZXQt
-Z3Bpb3MgPSA8JnBpbyAxMTUgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJbW9kZS1zZWwtZ3Bpb3Mg
-PSA8JnBpbyA5MiBHUElPX0FDVElWRV9ISUdIPjsKPiArCQlwczg2NDAtMXYyLXN1cHBseSA9IDwm
-cHM4NjQwX2ZpeGVkXzF2Mj47Cj4gKwkJcHM4NjQwLTN2My1zdXBwbHkgPSA8Jm10NjM5N192Z3Ay
-X3JlZz47Cj4gKwo+ICsJCXBvcnRzIHsKPiArCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkJ
-CSNzaXplLWNlbGxzID0gPDA+Owo+ICsJCQlwb3J0QDAgewo+ICsJCQkJcmVnID0gPDA+Owo+ICsJ
-CQkJcHM4NjQwX2luOiBlbmRwb2ludCB7Cj4gKwkJCQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkc2kw
-X291dD47Cj4gKwkJCQl9Owo+ICsJCQl9Owo+ICsJCQlwb3J0QDEgewo+ICsJCQkJcmVnID0gPDE+
-Owo+ICsJCQkJcHM4NjQwX291dDogZW5kcG9pbnQgewo+ICsJCQkJCXJlbW90ZS1lbmRwb2ludCA9
-IDwmcGFuZWxfaW4+Owo+ICsJCQkJfTsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiAtLSAKPiAx
-LjcuOS41Cj4gCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 05-11-15, 19:09, dawei chien wrote:
+> Thank you for your kindly explaining, now I could understand what I
+> miss, I will send device tree binding on next version such like
+> following description.
+> 
+> --- a/Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
+> +++ b/Documentation/devicetree/bindings/clock/mt8173-cpu-dvfs.txt
+> @@ -10,6 +10,17 @@ Required properties:
+>         Please refer to
+> Documentation/devicetree/bindings/clk/clock-bindings.txt for
+>         generic clock consumer properties.
+>  - proc-supply: Regulator for Vproc of CPU cluster.
+> +- dynamic-power-coefficient:
+> +       Usage: optional
+> +       Value type: <prop-encoded-array>
+> +       Definition: A u32 value that represents an indicative
+> +       running time dynamic power coefficient in
+> +       fundamental units of mW/MHz/uVolt^2.
+> +       The dynamic energy consumption of the CPU
+> +       is proportional to the square of the
+> +       Voltage (V) and the clock frequency (f).
+> +       Pdyn = dynamic-power-coefficient * V^2 * f
+> +       where voltage is in uV, frequency is in MHz.
+
+Please check with Punit if he is planning to add the same..
+
+> Thank you for your kindly explaining, Now I know I should develop and
+> test on mainline branch since this is where I try to add code.
+> 
+> However, please understanding currently mt8173_cpufreq.c is not ready
+> for OPPV2 in mainline as far, that's the reason why currently I can't
+> reuse OPPV2 and extend for static power table. My propose is for adding
+> CPU cooling device for our own product.
+
+Firstly, we don't care. You are pushing something to mainline, you
+have to get it tested someway on mainline.
+
+Secondly, there are *almost* no changes required to the mtk cpufreq
+driver for OPPV2. Just update your DT in a similar way it is done for
+one of the exynos platforms and it should just work fine.
+
+-- 
+viresh
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
