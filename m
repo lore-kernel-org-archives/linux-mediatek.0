@@ -1,48 +1,32 @@
-From: YH Huang <yh.huang@mediatek.com>
-Subject: Re: [PATCH v2] pwm-backlight: fix the panel power sequence
-Date: Fri, 6 Nov 2015 16:31:30 +0800
-Message-ID: <1446798690.6203.3.camel@mtksdaap41>
-References: <1444987060-48202-1-git-send-email-yh.huang@mediatek.com>
-	 <1444988219.3541.3.camel@pengutronix.de>
-	 <1445526750.27586.8.camel@mtksdaap41>
-	 <1446133259.3274.52.camel@pengutronix.de>
-	 <1446190900.17558.16.camel@mtksdaap41>
-	 <1446201271.3334.22.camel@pengutronix.de>
-	 <1446538299.2449.8.camel@mtksdaap41>
-	 <1446548924.3373.3.camel@pengutronix.de>
-	 <1446601656.15340.11.camel@mtksdaap41>
-	 <1446716430.3894.12.camel@pengutronix.de>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 3/6] iommu: add ARM short descriptor page table
+ allocator
+Date: Fri, 6 Nov 2015 16:42:52 +0800
+Message-ID: <1446799372.6400.28.camel@mhfsdcap03>
+References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
+	 <1444357388-30257-4-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1446716430.3894.12.camel@pengutronix.de>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-pwm@vger.kernel.org, linux-fbdev@vger.kernel.org, Jingoo Han <jingoohan1@gmail.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Jean-Christophe Plagniol-Villard <plagnioj@jcrosoft.com>, linux-kernel@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1444357388-30257-4-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, k.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-11-05 at 10:40 +0100, Philipp Zabel wrote:
-> > 
-> > Based on this, could we disable it initially and update in the
-> > backlight_update_status function?
-> > 
-> > Like this,
-> > 
-> > if (pb->enable_gpio) {
-> > 	if (phandle &&
-> > 	    gpiod_get_direction(pb->enable_gpio) == GPIOF_DIR_OUT &&
-> > 	    gpiod_get_value(pb->enable_gpio) == 1)
-> > 		gpiod_direction_output(pb->enable_gpio, 1);
+On Fri, 2015-10-09 at 10:23 +0800, Yong Wu wrote:
+> This patch is for ARM Short Descriptor Format.
 > 
-> The gpiod_direction_output call is a no-op, since the direction is
-> already output and the value is already 1.
-> Also, I propose to set initial blanking to FB_BLANK_POWERDOWN in this
-> case, and wait for the panel driver to enable the backlight at the
-> appropriate time.
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
 
-Thanks your kindly reply.
-Your patch looks good to me.
+Hi Will, Robin,
+   Is there any comment about this patch?
+   As our project request, We are going to prepare the next version.
+Thanks very much.
 
-Regards,
-YH Huang
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
