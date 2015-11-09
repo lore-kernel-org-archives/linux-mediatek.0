@@ -1,85 +1,55 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH 1/3] dt-bindings: thermal: Add binding document for Mediatek
- thermal controller
-Date: Mon,  9 Nov 2015 11:13:31 +0100
-Message-ID: <1447064013-13026-2-git-send-email-s.hauer@pengutronix.de>
-References: <1447064013-13026-1-git-send-email-s.hauer@pengutronix.de>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: mediatek: Preinitialize delay_phase in get_best_delay()
+Date: Mon, 9 Nov 2015 13:44:24 +0100
+Message-ID: <CAPDyKFrcFMOZia1oJf=cK739ueJKGUs1wDF_tzZb7hNCM10GyA@mail.gmail.com>
+References: <1446808928-25648-1-git-send-email-geert@linux-m68k.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447064013-13026-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1446808928-25648-1-git-send-email-geert@linux-m68k.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc <linux-mmc@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the device tree binding documentation for the mediatek thermal
-controller found on Mediatek MT8173 and other SoCs.
+On 6 November 2015 at 12:22, Geert Uytterhoeven <geert@linux-m68k.org> =
+wrote:
+> drivers/mmc/host/mtk-sd.c: In function =E2=80=98get_best_delay=E2=80=99=
+:
+> drivers/mmc/host/mtk-sd.c:1284: warning: =E2=80=98delay_phase.start=E2=
+=80=99 is used uninitialized in this function
+> drivers/mmc/host/mtk-sd.c:1284: warning: =E2=80=98delay_phase.maxlen=E2=
+=80=99 is used uninitialized in this function
+>
+> If delay is zero, these fields are indeed not initialized.
+> Let the compiler preinitialize the whole struct to fix this.
+>
+> Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
 
-Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- .../bindings/thermal/mediatek-thermal.txt          | 43 ++++++++++++++++++++++
- 1 file changed, 43 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+Thanks, applied for fixes!
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-new file mode 100644
-index 0000000..81f9a51
---- /dev/null
-+++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-@@ -0,0 +1,43 @@
-+* Mediatek Thermal
-+
-+This describes the device tree binding for the Mediatek thermal controller
-+which measures the on-SoC temperatures. This device does not have its own ADC,
-+instead it directly controls the AUXADC via AHB bus accesses. For this reason
-+this device needs phandles to the AUXADC. Also it controls a mux in the
-+apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
-+is also needed.
-+
-+Required properties:
-+- compatible: "mediatek,mt8173-thermal"
-+- reg: Address range of the thermal controller
-+- interrupts: IRQ for the thermal controller
-+- clocks, clock-names: Clocks needed for the thermal controller. required
-+                       clocks are:
-+		       "therm":	 Main clock needed for register access
-+		       "auxadc": The AUXADC clock
-+- resets: Reference to the reset controller controlling the thermal controller.
-+- mediatek,auxadc: A phandle to the AUXADC which the thermal controller uses
-+- mediatek,apmixedsys: A phandle to the APMIXEDSYS controller.
-+- #thermal-sensor-cells : Should be 0. See ./thermal.txt for a description.
-+
-+Optional properties:
-+- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
-+               unspecified default values shall be used.
-+- nvmem-cell-names: Should be "calibration-data"
-+
-+Example:
-+
-+	thermal: thermal@1100b000 {
-+		#thermal-sensor-cells = <1>;
-+		compatible = "mediatek,mt8173-thermal";
-+		reg = <0 0x1100b000 0 0x1000>;
-+		interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
-+		clock-names = "therm", "auxadc";
-+		resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
-+		reset-names = "therm";
-+		mediatek,auxadc = <&auxadc>;
-+		mediatek,apmixedsys = <&apmixedsys>;
-+		nvmem-cells = <&thermal_calibration_data>;
-+		nvmem-cell-names = "calibration-data";
-+	};
--- 
-2.6.1
+Kind regards
+Uffe
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 39568cc29a2a18cf..33dfd7e72516c392 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1276,7 +1276,7 @@ static struct msdc_delay_phase get_best_delay(s=
+truct msdc_host *host, u32 delay)
+>         int start =3D 0, len =3D 0;
+>         int start_final =3D 0, len_final =3D 0;
+>         u8 final_phase =3D 0xff;
+> -       struct msdc_delay_phase delay_phase;
+> +       struct msdc_delay_phase delay_phase =3D { 0, };
+>
+>         if (delay =3D=3D 0) {
+>                 dev_err(host->dev, "phase error: [map:%x]\n", delay);
+> --
+> 1.9.1
+>
