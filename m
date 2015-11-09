@@ -1,98 +1,120 @@
-From: Liguo Zhang <liguo.zhang@mediatek.com>
-Subject: [PATCH v2 2/2] i2c: mediatek: fix i2c multi transfer issue in high speed mode
-Date: Mon, 9 Nov 2015 13:43:59 +0800
-Message-ID: <1447047839-5223-3-git-send-email-liguo.zhang@mediatek.com>
-References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH v10] Add Mediatek thermal support
+Date: Mon,  9 Nov 2015 11:13:30 +0100
+Message-ID: <1447064013-13026-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-For platform with auto restart support, when doing i2c multi transfer
-in high speed, for example, doing write-then-read transfer, the master
-code will occupy the first transfer, and the second transfer will be
-the read transfer, the write transfer will be discarded. So we should
-first send the master code, and then start i2c multi transfer.
 
-Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 45 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+This series adds support for the thermal sensors included in the
+MT8173 SoC. Currently only basic temperature reading is supported
+without any interrupt support.
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index dc4aac6..249df86 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -53,6 +53,8 @@
- #define I2C_FS_TIME_INIT_VALUE		0x1303
- #define I2C_WRRD_TRANAC_VALUE		0x0002
- #define I2C_RD_TRANAC_VALUE		0x0001
-+#define I2C_TRAN_DEFAULT_VALUE		0x0001
-+#define I2C_TRANAC_DEFAULT_VALUE	0x0001
- 
- #define I2C_DMA_CON_TX			0x0000
- #define I2C_DMA_CON_RX			0x0001
-@@ -365,6 +367,43 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
- 	return 0;
- }
- 
-+static int mtk_i2c_send_master_code(struct mtk_i2c *i2c)
-+{
-+	int ret = 0;
-+
-+	reinit_completion(&i2c->msg_complete);
-+
-+	writew(I2C_CONTROL_RS | I2C_CONTROL_ACKERR_DET_EN |
-+	       I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN,
-+	       i2c->base + OFFSET_CONTROL);
-+
-+	/* Clear interrupt status */
-+	writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP | I2C_HS_NACKERR | I2C_ACKERR,
-+	       i2c->base + OFFSET_INTR_STAT);
-+
-+	/* Enable interrupt */
-+	writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP, i2c->base +
-+	       OFFSET_INTR_MASK);
-+
-+	writew(I2C_TRAN_DEFAULT_VALUE, i2c->base + OFFSET_TRANSFER_LEN);
-+	writew(I2C_TRANAC_DEFAULT_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
-+
-+	writew(I2C_TRANSAC_START | I2C_RS_MUL_CNFG, i2c->base + OFFSET_START);
-+
-+	ret = wait_for_completion_timeout(&i2c->msg_complete,
-+					  i2c->adap.timeout);
-+
-+	completion_done(&i2c->msg_complete);
-+
-+	if (ret == 0) {
-+		dev_dbg(i2c->dev, "send master code timeout.\n");
-+		mtk_i2c_init_hw(i2c);
-+		return -ETIMEDOUT;
-+	}
-+
-+	return 0;
-+}
-+
- static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 			       int num, int left_num)
- {
-@@ -539,6 +578,12 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 		}
- 	}
- 
-+	if (i2c->auto_restart && i2c->speed_hz > 400000) {
-+		ret = mtk_i2c_send_master_code(i2c);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	while (left_num--) {
- 		if (!msgs->buf) {
- 			dev_dbg(i2c->dev, "data buffer is NULL.\n");
--- 
-1.8.1.1.dirty
+The cpufreq driver for MT8173 is currently under review, so there's no
+real cooling device available in mainline. Until this is available the
+thermal driver can be tested with the following dts snippet. It creates
+a fake gpio fan and a fake trip point which is so low that it can easily
+be reached with a "cat /dev/zero > /dev/null" on the command line.
+
+Sascha
+
+changes since v9:
+- rebase on v4.3
+- Add support for reading the calibration values from nvmem fuses
+- Only register a single thermal zone instead of four as it seems
+  that's everything needed
+
+changes since v8:
+- Add commit description to binding patch
+- rebase on v4.3-rc2
+
+changes since v7:
+- re-add some used defines removed in v5
+- Use MT8173_THERMAL_ZONE_* defines as array indices in static initializers
+
+changes since v6:
+- remove dot in Hanyi Wus name
+
+changes since v5:
+- update copyright
+- remove unused defines
+
+Changes since v4:
+- give calibration constants more meaningful names (offset, slope)
+- Use define instead of 0x00c for register access.
+
+Changes since v3:
+- add include/dt-bindings/thermal/mt8173.h for to be able to use sensor names
+  in dts files
+- fix disabling wrong clock in error path
+- remove now unused reset-names property from binding document
+- rename MT8173_NUM_BANKS -> MT8173_NUM_ZONES
+- rename MT8173_NUM_SENSING_POINTS -> MT8173_NUM_SENSORS_PER_ZONE
+- rename struct thermal_zone_device *tz -> struct thermal_zone_device *tzd
+
+Changes since v2:
+- sort #includes alphabetically
+- Add prefix to register defines
+- drop some members from struct mtk_thermal
+- simplify raw_to_mcelsius()
+- add and use more register bit defines
+- use device_reset() instead of devm_reset_control_get()/reset_control_reset()
+- misc other stuff
+
+Changes since v1:
+- Use "mediatek," prefix for custom properties
+- Drop "thermal: consistently use int for temperatures" dependency
+
+-------------
+
+	fan: gpio_fan {
+		compatible = "gpio-fan";
+		gpios = <&pio 24 0>;
+		gpio-fan,speed-map = <0    0
+				      4500 1>;
+		#cooling-cells = <2>;
+	};
+
+	thermal-zones {
+			cpu_thermal: cpu_thermal {
+			polling-delay-passive = <1000>; /* milliseconds */
+			polling-delay = <1000>; /* milliseconds */
+
+			thermal-sensors = <&thermal>;
+
+			trips {
+				cpu_passive: cpu_passive {
+					temperature = <47000>; /* millicelsius */
+					hysteresis = <2000>; /* millicelsius */
+					type = "passive";
+				};
+
+				cpu_crit {
+					temperature = <90000>; /* millicelsius */
+					hysteresis = <2000>; /* millicelsius */
+					type = "critical";
+				};
+			};
+
+			cooling-maps {
+				map0 {
+					trip = <&cpu_passive>;
+					cooling-device = <&fan THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+				};
+			};
+		};
+	};
