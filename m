@@ -1,68 +1,64 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: Move 22M/24M clock control into I2S ops
-Date: Tue, 10 Nov 2015 15:26:12 +0800
-Message-ID: <1447140372-10048-1-git-send-email-koro.chen@mediatek.com>
+From: Javi Merino <javi.merino@arm.com>
+Subject: Re: [PATCH v3 1/2] thermal: mediatek: Add cpu power cooling model.
+Date: Tue, 10 Nov 2015 11:20:18 +0000
+Message-ID: <20151110112017.GA3551@e104805>
+References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
+ <1445515359-8587-2-git-send-email-dawei.chien@mediatek.com>
+ <20151104193958.GC14127@localhost.localdomain>
+ <1446721837.4016.57.camel@mtksdaap41>
+ <20151106032433.GL3773@ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, lgirdwood@gmail.com
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20151106032433.GL3773@ubuntu>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: dawei chien <dawei.chien@mediatek.com>, Eduardo Valentin <edubezval@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-22M/24M clocks are only required for I2S, so move the control to
-I2S DAI ops.
+On Fri, Nov 06, 2015 at 08:54:33AM +0530, Viresh Kumar wrote:
+> Cc'ing Javi (which you should have as he wrote the power-thing for
+> cpu-cooling).
+> 
+> On 05-11-15, 19:10, dawei chien wrote:
+> > This is because our platform currently only support mt8173_cpufreq.c, so
+> > that I only add static power model for our owner IC.
+> 
+> Bindings are (normally) supposed to be general than a platform
+> specific.
+> 
+> > Please understanding that I wouldn't give a DT binding document since I
+> > will remove static power table on next version, but I can try to explain
+> > it.
+> 
+> Then just don't add things in the first place.
+> 
+> > As far as I know, static power is somewhat leakage of CPU clusters, so
+> > that we hardly to find a formula, which can suitable all kinds of CPUs
+> > since leakage is different. In ARM IPA framework, static power only need
+> > to be defined by who register cpufreq_power_cooling_register. The
+> > voltage/power table is just one way to present leakage power of CPUs.
+> 
+> The bindings don't fix the values for static power, but just provides
+> a field for platforms to use. Everyone can then send its own power
+> figures. Why do you thing it can't be generalized?
 
-Signed-off-by: Koro Chen <koro.chen@mediatek.com>
----
- sound/soc/mediatek/mtk-afe-pcm.c |   13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+The way they are described here is useful only for this platform, but
+it's not generic.  It only takes into account voltage as (I assume)
+it's the only variable that affects it in this implementation.  A
+generalized version of the static power should take into account the
+temperature and the idle state.
 
-diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
-index f5baf3c..7f71343 100644
---- a/sound/soc/mediatek/mtk-afe-pcm.c
-+++ b/sound/soc/mediatek/mtk-afe-pcm.c
-@@ -299,8 +299,6 @@ static int mtk_afe_dais_enable_clks(struct mtk_afe *afe,
- 			dev_err(afe->dev, "Failed to enable m_ck\n");
- 			return ret;
- 		}
--		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
--				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M, 0);
- 	}
- 
- 	if (b_ck) {
-@@ -340,12 +338,8 @@ static int mtk_afe_dais_set_clks(struct mtk_afe *afe,
- static void mtk_afe_dais_disable_clks(struct mtk_afe *afe,
- 				      struct clk *m_ck, struct clk *b_ck)
- {
--	if (m_ck) {
--		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
--				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
--				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
-+	if (m_ck)
- 		clk_disable_unprepare(m_ck);
--	}
- 	if (b_ck)
- 		clk_disable_unprepare(b_ck);
- }
-@@ -360,6 +354,8 @@ static int mtk_afe_i2s_startup(struct snd_pcm_substream *substream,
- 		return 0;
- 
- 	mtk_afe_dais_enable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M, 0);
- 	return 0;
- }
- 
-@@ -373,6 +369,9 @@ static void mtk_afe_i2s_shutdown(struct snd_pcm_substream *substream,
- 		return;
- 
- 	mtk_afe_set_i2s_enable(afe, false);
-+	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
-+			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
-+			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
- 	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
- 
- 	/* disable AFE */
--- 
-1.7.9.5
+> > Actually, static power is optional since dynamic power is much more than
+> > static power.
+> 
+> Maybe, we should still capture it.
+> 
+> @Javi ?
+
+It really depends on the platform.  If dawei says that for their
+platform static power is negligible then it is ok to not capture it.
+
+Cheers,
+Javi
