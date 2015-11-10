@@ -1,48 +1,76 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/2] i2c: mediatek: add i2c first write then read
- optimization
-Date: Tue, 10 Nov 2015 08:50:53 +0800
-Message-ID: <1447116653.24760.1.camel@mtksdaap41>
-References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
-	 <1447047839-5223-2-git-send-email-liguo.zhang@mediatek.com>
-	 <CAHp75VfutRR0N0bGDYMjFr+nQGFnmuoiA2afvYfuZ2aOy=2qbQ@mail.gmail.com>
+From: Brian Norris <computersforpeace@gmail.com>
+Subject: Re: [PATCH v6 0/3] Mediatek SPI-NOR flash driver
+Date: Mon, 9 Nov 2015 18:46:11 -0800
+Message-ID: <20151110024611.GL12143@google.com>
+References: <1446824889-16144-1-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <CAHp75VfutRR0N0bGDYMjFr+nQGFnmuoiA2afvYfuZ2aOy=2qbQ@mail.gmail.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Liguo Zhang <liguo.zhang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, srv_heupstream@mediatek.com, Wolfram Sang <wsa@the-dreams.de>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1446824889-16144-1-git-send-email-bayi.cheng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bayi Cheng <bayi.cheng@mediatek.com>
+Cc: David Woodhouse <dwmw2@infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanguardiasur.com.ar
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-11-09 at 16:25 +0200, Andy Shevchenko wrote:
-> On Mon, Nov 9, 2015 at 7:43 AM, Liguo Zhang <liguo.zhang@mediatek.com> wrote:
-> > For platform with auto restart support, between every transfer,
-> > i2c controller will trigger an interrupt and SW need to handle
-> > it to start new transfer. When doing write-then-read transfer,
-> > instead of restart mechanism, using WRRD mode to have controller
-> > send both transfer in one request to reduce latency.
-> 
-> 
-> > @@ -518,6 +529,16 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
-> >         if (ret)
-> >                 return ret;
-> >
-> > +       i2c->auto_restart = i2c->dev_comp->auto_restart;
-> > +
-> > +       /* checking if we can skip restart and optimize using WRRD mode */
-> > +       if (i2c->auto_restart && num == 2) {
-> > +               if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
-> > +                   msgs[0].addr == msgs[1].addr) {
-> 
-> Nitpick (optional):
-> 
-> ((msgs[0].flags & msgs[1].flags) & I2C_M_RD)
-> ?
+Hi Bayi,
 
-These 2 check for different conditions.
-The original one check the first one must NOT set I2C_M_RD, but second
-one must set I2C_M_RD.
+On Fri, Nov 06, 2015 at 11:48:06PM +0800, Bayi Cheng wrote:
+> This series is based on v4.3-rc1 and l2-mtd.git [0] and erase_sector
+> implementation patch [1]
+> 
+> [0]: git://git.infradead.org/l2-mtd.git
+> [1]: http://lists.infradead.org/pipermail/linux-mtd/2015-October//062959.html
+> 
+> Change in v6:
+> 1: delete mt8173_nor_do_rx
+> 2: delete mt8173_nor_do_rx
+> 3: add mt8173_nor_do_tx_rx for general usage
+> 4: support nor flash with 6 IDs
+> 5: delete mt8173_nor_erase_sector and use "nor->erase_opcode"
+> 6: add mt8173_nor_set_addr to programming the address register
+> 7: initialize the ppdata in mtk_nor_init
 
-Joe.C
+This series is looking a lot better to me. Thanks for incorporating (and
+I hope fully reviewing and testing!) my suggested changes. I have a just
+a few small comments that I might post to the driver patch, and if
+that's all that's outstanding, I can fix them up myself before applying.
+
+I believe you didn't completely answer all my questions from v5 though.
+I'll repeat a bit here. Particularly, refer to [1].
+I'll summarize; I understand that your common transmit/receive operation
+works something like this:
+
+Quoting from [1]:
+> (1) total number of bits to send/receive goes in the COUNT register (so
+>     far, as many as 7*8=56?)
+> (2) opcode is written to PRGDATA5
+> (3) other "transmit" data (like addresses), if any, are placed on PRGDATA4..0
+> (4) command is sent (execute_cmd())
+> (5) data is read back in SHREG{X..0}, if needed
+
+My questions were:
+
+(a) Why does mt8173_nor_set_read_mode() use PRGDATA3? That's not
+    mentioned in the SoC manual, and it doesn't really match any of the
+    steps above. Perhaps it's just a quirk of the controller's
+    programming model?
+
+(b) How do you determine X from step (5)?
+
+Right now, your code seems to answer that X is "rxlen - 1". Correct?
+
+If that's correct and if I put all of my understanding together
+correctly, this means that you can actually shift out (in PRGDATA) up to
+6 bytes (that is, 1 opcode and 5 tx bytes) and shift in (in SHREG) up to
+7 bytes, except that the first byte is received during the opcode cycle,
+and so it is discarded, and we effectively receive only 6 bytes.
+
+Is that all correct? If so, then I think you still need to adjust the
+boundary conditions in your do_tx_rx() function. (I'll comment on the
+driver to point out the specifics.)
+
+Regards,
+Brian
+
+[1] http://lists.infradead.org/pipermail/linux-mtd/2015-October/062951.html
