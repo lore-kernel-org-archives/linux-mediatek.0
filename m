@@ -1,170 +1,95 @@
-From: Brian Norris <computersforpeace@gmail.com>
-Subject: Re: [PATCH v6 2/3] mtd: mtk-nor: mtk serial flash controller driver
-Date: Mon, 9 Nov 2015 19:01:15 -0800
-Message-ID: <20151110030115.GM12143@google.com>
-References: <1446824889-16144-1-git-send-email-bayi.cheng@mediatek.com>
- <1446824889-16144-3-git-send-email-bayi.cheng@mediatek.com>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for
+ mt8135
+Date: Tue, 10 Nov 2015 14:11:07 +0800
+Message-ID: <1447135867.14454.9.camel@mtksdaap41>
+References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+	 <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+	 <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+	 <1445843717.23888.1.camel@mtksdaap41>
+	 <CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
+	 <1445859610.26723.4.camel@mtksdaap41>
+	 <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1446824889-16144-3-git-send-email-bayi.cheng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bayi Cheng <bayi.cheng@mediatek.com>
-Cc: David Woodhouse <dwmw2@infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanguardiasur.com.ar
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Bayi,
-
-A few small comments.
-
-On Fri, Nov 06, 2015 at 11:48:08PM +0800, Bayi Cheng wrote:
-> add spi nor flash driver for mediatek controller
+On Mon, 2015-11-09 at 09:59 -0800, Kevin Hilman wrote:
+> On Mon, Oct 26, 2015 at 4:40 AM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Hi Kevin,
+> >
+> > On Mon, 2015-10-26 at 17:06 +0900, Kevin Hilman wrote:
+> >> On Mon, Oct 26, 2015 at 4:15 PM, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >> > On Mon, 2015-10-26 at 09:56 +0900, Kevin Hilman wrote:
+> >> >> Hello,
+> >> >>
+> >> >> On Sat, Oct 3, 2015 at 12:19 AM, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >> >> > Add arch timer node to enable arch-timer support. MT8135 firmware
+> >> >> > doesn't correctly setup arch-timer frequency and CNTVOFF, add
+> >> >> > properties to workaround this.
+> >> >> >
+> >> >> > This also set cpu enable-method to enable SMP.
+> >> >> >
+> >> >> > Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >> >>
+> >> >> kernelci.org started detecting new boot failures for the mt8135-evb in
+> >> >> the arm-soc tree[1], and the boot failures were bisected down to this
+> >> >> patch, which landed upstream in the form of commit d186a394bb98 (ARM:
+> >> >> dts: mt8135: enable basic SMP bringup for mt8135)
+> >> >>
+> >> >> Maybe this new SMP support requires updating the firmware on the board
+> >> >> as well?  If so, the changelog should've been a bit more explicit
+> >> >> about firmware dependencies.
+> >> >
+> >> > Kevin,
+> >> >
+> >> > Thanks for testing.
+> >> >
+> >> > No, it doesn't need new firmware. Will test to see what's going wrong.
+> >>
+> >> Thanks for following up.  I'll be glad to test any patches if you have
+> >> anything you'd like me to test.
+> >
+> > You need "clockevents/drivers/mtk: Fix spurious interrupt leading to
+> > crash" (https://lkml.org/lkml/2015/8/24/803)
+> >
+> > Daniel Lezcano already applied this patch in his tree for 4.4.
+> > (https://git.linaro.org/people/daniel.lezcano/linux.git)
 > 
-> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-> ---
->  drivers/mtd/spi-nor/Kconfig       |   7 +
->  drivers/mtd/spi-nor/Makefile      |   1 +
->  drivers/mtd/spi-nor/mtk-quadspi.c | 475 ++++++++++++++++++++++++++++++++++++++
->  3 files changed, 483 insertions(+)
->  create mode 100644 drivers/mtd/spi-nor/mtk-quadspi.c
+> The mt8135-evp board is still failing to boot in linux-next[1] (and
+> has been since next-20151022.)  It appears the dependencies are not
+> quite correct in linux-next either.
+> 
+> Kevin
+> 
+> [1]
+> http://kernelci.org/boot/mt8135-evbp1/job/next/kernel/next-20151109/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=564037fe59b514b2f6091909
+
+Hi Kevin,
+
+I check the log [0], it seems first time mt8135-evbp1 boot to kernel
+shell successfully, then boot again. In the second time, mt8135 stay in
+fastboot mode, waiting host send boot image, then timeout.
+
+I download zImage and dtb in [1], and kernel run to shell successfully
+on my platform.
+
+I don't know whether this issue caused by test environment or not.
+
+[0]
+http://storage.kernelci.org/next/next-20151109/arm-multi_v7_defconfig/lab-khilman/boot-mt8135-evbp1.txt
+[1]
+http://kernelci.org/boot/mt8135-evbp1/job/next/kernel/next-20151109/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=564037fe59b514b2f6091909#bisect-content
 
 
-> diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-> index e53333e..0bf3a7f8 100644
-> --- a/drivers/mtd/spi-nor/Makefile
-> +++ b/drivers/mtd/spi-nor/Makefile
-> @@ -1,3 +1,4 @@
->  obj-$(CONFIG_MTD_SPI_NOR)	+= spi-nor.o
->  obj-$(CONFIG_SPI_FSL_QUADSPI)	+= fsl-quadspi.o
-> +obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
->  obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
-> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-> new file mode 100644
-> index 0000000..6582811
-> --- /dev/null
-> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-> @@ -0,0 +1,475 @@
 
-...
-
-> +/* Can shift up to 48 bits (6 bytes) of TX/RX */
-> +#define MTK_NOR_MAX_SHIFT		6
-
-...
-
-> +static int mt8173_nor_do_tx_rx(struct mt8173_nor *mt8173_nor, u8 op,
-> +			       u8 *tx, int txlen, u8 *rx, int rxlen)
-> +{
-> +	int len = 1 + txlen + rxlen;
-> +	int i, ret, idx;
-> +
-> +	if (len > MTK_NOR_MAX_SHIFT + 1)
-> +		return -EINVAL;
-
-So I see you adjusted these bounds to add 1, which inspired one of my
-questions on the cover letter.
-
-Why do you allow len=7, which means you'd program 7*8 to the COUNT
-register, when the SoC manual says it has a max of 48? Is the manual
-wrong?
-
-I notice you added the '+ 1' to your driver, so it allows:
-
-	do_tx_rx( txlen = 0 , rxlen = 6) /* e.g., for READ ID */
-
-but that means your driver also allows:
-
-	do_tx_rx( txlen = 6, rxlen = 0) /* ERROR: this will allow out of
-					   bounds write on PRGDATA
-					   register -1 */
-
-If I understand correctly, the following constraints are more correct:
-
-	/* Can only transmit 1 opcode and 5 other bytes */
-	if (1 + txlen > MTK_NOR_MAX_SHIFT)
-		return -EINVAL;
-
-	/* Can only receive 6 bytes after the opcode */
-	if (rxlen > MTK_NOR_MAX_SHIFT)
-		return -EINVAL;
-
-	/* Can only handle XXX bytes total */
-	/* How many bytes is the max for register MTK_NOR_CNT_REG ? */
-	if (len > XXX)
-		return -EINVAL;
-
-> +
-> +	writeb(len * 8, mt8173_nor->base + MTK_NOR_CNT_REG);
-> +
-> +	/* start at PRGDATA5, go down to PRGDATA0 */
-> +	idx = MTK_NOR_MAX_SHIFT - 1;
-> +
-> +	/* opcode */
-> +	writeb(op, mt8173_nor->base + MTK_NOR_PRG_REG(idx));
-> +	idx--;
-> +
-> +	/* program TX data */
-> +	for (i = 0; i < txlen; i++, idx--)
-> +		writeb(tx[i], mt8173_nor->base + MTK_NOR_PRG_REG(idx));
-> +
-> +	/* clear out rest of TX registers */
-> +	while (idx >= 0) {
-> +		writeb(0, mt8173_nor->base + MTK_NOR_PRG_REG(idx));
-> +		idx--;
-> +	}
-> +
-> +	ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PRG_CMD);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* restart at first RX byte */
-> +	idx = rxlen - 1;
-> +
-> +	/* read out RX data */
-> +	for (i = 0; i < rxlen; i++, idx--)
-> +		rx[i] = readb(mt8173_nor->base + MTK_NOR_SHREG(idx));
-> +
-> +	return 0;
-> +}
-> +
-
-...
-
-> +static int __init mtk_nor_init(struct mt8173_nor *mt8173_nor,
-> +			       struct device_node *flash_node)
-> +{
-> +	struct mtd_part_parser_data ppdata = {
-> +		.of_node = flash_node,
-> +	};
-> +	int ret;
-> +	struct spi_nor *nor;
-
-Normally we'd have a blank line here.
-
-> +	/* initialize controller to accept commands */
-> +	writel(MTK_NOR_ENABLE_SF_CMD, mt8173_nor->base + MTK_NOR_WRPROT_REG);
-> +
-> +	nor = &mt8173_nor->nor;
-> +	nor->dev = mt8173_nor->dev;
-> +	nor->priv = mt8173_nor;
-> +	nor->flash_node = flash_node;
-> +
-> +	/* fill the hooks to spi nor */
-> +	nor->read = mt8173_nor_read;
-> +	nor->read_reg = mt8173_nor_read_reg;
-> +	nor->write = mt8173_nor_write;
-> +	nor->write_reg = mt8173_nor_write_reg;
-> +	nor->mtd.owner = THIS_MODULE;
-> +	nor->mtd.name = "mtk_nor";
-> +	/* initialized with NULL */
-> +	ret = spi_nor_scan(nor, NULL, SPI_NOR_DUAL);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return mtd_device_parse_register(&nor->mtd, NULL, &ppdata, NULL, 0);
-> +}
-
-...
-
-Brian
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
