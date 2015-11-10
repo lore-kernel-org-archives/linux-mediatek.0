@@ -1,95 +1,68 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for
- mt8135
-Date: Tue, 10 Nov 2015 14:11:07 +0800
-Message-ID: <1447135867.14454.9.camel@mtksdaap41>
-References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
-	 <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
-	 <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
-	 <1445843717.23888.1.camel@mtksdaap41>
-	 <CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
-	 <1445859610.26723.4.camel@mtksdaap41>
-	 <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Move 22M/24M clock control into I2S ops
+Date: Tue, 10 Nov 2015 15:26:12 +0800
+Message-ID: <1447140372-10048-1-git-send-email-koro.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, lgirdwood@gmail.com
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, Koro Chen <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-11-09 at 09:59 -0800, Kevin Hilman wrote:
-> On Mon, Oct 26, 2015 at 4:40 AM, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > Hi Kevin,
-> >
-> > On Mon, 2015-10-26 at 17:06 +0900, Kevin Hilman wrote:
-> >> On Mon, Oct 26, 2015 at 4:15 PM, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> > On Mon, 2015-10-26 at 09:56 +0900, Kevin Hilman wrote:
-> >> >> Hello,
-> >> >>
-> >> >> On Sat, Oct 3, 2015 at 12:19 AM, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> >> > Add arch timer node to enable arch-timer support. MT8135 firmware
-> >> >> > doesn't correctly setup arch-timer frequency and CNTVOFF, add
-> >> >> > properties to workaround this.
-> >> >> >
-> >> >> > This also set cpu enable-method to enable SMP.
-> >> >> >
-> >> >> > Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> >>
-> >> >> kernelci.org started detecting new boot failures for the mt8135-evb in
-> >> >> the arm-soc tree[1], and the boot failures were bisected down to this
-> >> >> patch, which landed upstream in the form of commit d186a394bb98 (ARM:
-> >> >> dts: mt8135: enable basic SMP bringup for mt8135)
-> >> >>
-> >> >> Maybe this new SMP support requires updating the firmware on the board
-> >> >> as well?  If so, the changelog should've been a bit more explicit
-> >> >> about firmware dependencies.
-> >> >
-> >> > Kevin,
-> >> >
-> >> > Thanks for testing.
-> >> >
-> >> > No, it doesn't need new firmware. Will test to see what's going wrong.
-> >>
-> >> Thanks for following up.  I'll be glad to test any patches if you have
-> >> anything you'd like me to test.
-> >
-> > You need "clockevents/drivers/mtk: Fix spurious interrupt leading to
-> > crash" (https://lkml.org/lkml/2015/8/24/803)
-> >
-> > Daniel Lezcano already applied this patch in his tree for 4.4.
-> > (https://git.linaro.org/people/daniel.lezcano/linux.git)
-> 
-> The mt8135-evp board is still failing to boot in linux-next[1] (and
-> has been since next-20151022.)  It appears the dependencies are not
-> quite correct in linux-next either.
-> 
-> Kevin
-> 
-> [1]
-> http://kernelci.org/boot/mt8135-evbp1/job/next/kernel/next-20151109/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=564037fe59b514b2f6091909
+22M/24M clocks are only required for I2S, so move the control to
+I2S DAI ops.
 
-Hi Kevin,
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+---
+ sound/soc/mediatek/mtk-afe-pcm.c |   13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-I check the log [0], it seems first time mt8135-evbp1 boot to kernel
-shell successfully, then boot again. In the second time, mt8135 stay in
-fastboot mode, waiting host send boot image, then timeout.
-
-I download zImage and dtb in [1], and kernel run to shell successfully
-on my platform.
-
-I don't know whether this issue caused by test environment or not.
-
-[0]
-http://storage.kernelci.org/next/next-20151109/arm-multi_v7_defconfig/lab-khilman/boot-mt8135-evbp1.txt
-[1]
-http://kernelci.org/boot/mt8135-evbp1/job/next/kernel/next-20151109/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=564037fe59b514b2f6091909#bisect-content
-
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index f5baf3c..7f71343 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -299,8 +299,6 @@ static int mtk_afe_dais_enable_clks(struct mtk_afe *afe,
+ 			dev_err(afe->dev, "Failed to enable m_ck\n");
+ 			return ret;
+ 		}
+-		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
+-				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M, 0);
+ 	}
+ 
+ 	if (b_ck) {
+@@ -340,12 +338,8 @@ static int mtk_afe_dais_set_clks(struct mtk_afe *afe,
+ static void mtk_afe_dais_disable_clks(struct mtk_afe *afe,
+ 				      struct clk *m_ck, struct clk *b_ck)
+ {
+-	if (m_ck) {
+-		regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
+-				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
+-				   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
++	if (m_ck)
+ 		clk_disable_unprepare(m_ck);
+-	}
+ 	if (b_ck)
+ 		clk_disable_unprepare(b_ck);
+ }
+@@ -360,6 +354,8 @@ static int mtk_afe_i2s_startup(struct snd_pcm_substream *substream,
+ 		return 0;
+ 
+ 	mtk_afe_dais_enable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M, 0);
+ 	return 0;
+ }
+ 
+@@ -373,6 +369,9 @@ static void mtk_afe_i2s_shutdown(struct snd_pcm_substream *substream,
+ 		return;
+ 
+ 	mtk_afe_set_i2s_enable(afe, false);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
++			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
+ 	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
+ 
+ 	/* disable AFE */
+-- 
+1.7.9.5
