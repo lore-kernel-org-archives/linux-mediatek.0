@@ -1,64 +1,63 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH v3 1/2] thermal: mediatek: Add cpu power cooling model.
-Date: Tue, 10 Nov 2015 10:41:22 -0800
-Message-ID: <20151110184121.GC5240@localhost.localdomain>
-References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
- <1445515359-8587-2-git-send-email-dawei.chien@mediatek.com>
- <20151104193958.GC14127@localhost.localdomain>
- <1446721837.4016.57.camel@mtksdaap41>
- <20151106032433.GL3773@ubuntu>
- <20151110112017.GA3551@e104805>
+From: Kevin Hilman <khilman@kernel.org>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Tue, 10 Nov 2015 17:16:42 -0800
+Message-ID: <7h1tbx1gjp.fsf@deeprootsystems.com>
+References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+	<1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+	<CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+	<1445843717.23888.1.camel@mtksdaap41>
+	<CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
+	<1445859610.26723.4.camel@mtksdaap41>
+	<CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
+	<1447135867.14454.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20151110112017.GA3551@e104805>
-Sender: linux-pm-owner@vger.kernel.org
-To: Javi Merino <javi.merino@arm.com>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, dawei chien <dawei.chien@mediatek.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447135867.14454.9.camel@mtksdaap41> (Eddie Huang's message of
+	"Tue, 10 Nov 2015 14:11:07 +0800")
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Tyler Baker <tyler.baker@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, lkml <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 10, 2015 at 11:20:18AM +0000, Javi Merino wrote:
-> On Fri, Nov 06, 2015 at 08:54:33AM +0530, Viresh Kumar wrote:
-> > Cc'ing Javi (which you should have as he wrote the power-thing for
-> > cpu-cooling).
-> > 
-> > On 05-11-15, 19:10, dawei chien wrote:
-> > > This is because our platform currently only support mt8173_cpufreq.c, so
-> > > that I only add static power model for our owner IC.
-> > 
-> > Bindings are (normally) supposed to be general than a platform
-> > specific.
-> > 
-> > > Please understanding that I wouldn't give a DT binding document since I
-> > > will remove static power table on next version, but I can try to explain
-> > > it.
-> > 
-> > Then just don't add things in the first place.
-> > 
-> > > As far as I know, static power is somewhat leakage of CPU clusters, so
-> > > that we hardly to find a formula, which can suitable all kinds of CPUs
-> > > since leakage is different. In ARM IPA framework, static power only need
-> > > to be defined by who register cpufreq_power_cooling_register. The
-> > > voltage/power table is just one way to present leakage power of CPUs.
-> > 
-> > The bindings don't fix the values for static power, but just provides
-> > a field for platforms to use. Everyone can then send its own power
-> > figures. Why do you thing it can't be generalized?
-> 
-> The way they are described here is useful only for this platform, but
-> it's not generic.  It only takes into account voltage as (I assume)
-> it's the only variable that affects it in this implementation.  A
-> generalized version of the static power should take into account the
-> temperature and the idle state.
+Hi Eddie,
 
-Still, why would we have one binding to describe static power per platform?
+[...]
 
-I would prefer we go towards a generalized binding description.
+> I check the log [0],
 
-If temperature is not needed on all platforms, make it an optional
-property.
+Thanks for checking into this boot failure.
 
-BR,
+> it seems first time mt8135-evbp1 boot to kernel
+> shell successfully, then boot again. In the second time, mt8135 stay in
+> fastboot mode, waiting host send boot image, then timeout.
 
-Eduardo Valentin
+Actually, it never gets to a shell the first time.  If you look closely,
+the target reboots as soon as userspace starts.   Look for the PYBOOT
+line which says "finished booting, starting userspace"
+
+Later on, pyboot thinks it finds a root shell due to finding '#'
+characters, but clearly it never got to a shell.
+
+> I download zImage and dtb in [1], and kernel run to shell successfully
+> on my platform.
+
+Are you can you try using a ramdisk as well?  You can use the pre-built
+one here:
+http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
+
+Please check my boot logs to see how I'm generating the boot.img file
+(search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
+that the kernel image size with a ramdisk is breaking some of the
+assumptions in the fastboot mode.  I've seen problems like this on other
+platforms due to hard-coded sizes/addresses in the boot firmware.
+
+> I don't know whether this issue caused by test environment or not.
+
+I do not think it is the test environment, since as you can see from
+[1], it's booting just fine with mainline kernel, and was working fine
+until next-20151102.
+
+Kevin
+
+[1] http://kernelci.org/boot/mt8135-evbp1/job/next/kernel/next-20151110/defconfig/multi_v7_defconfig/lab/lab-khilman/?_id=5642652759b5149878091908
