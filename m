@@ -1,99 +1,69 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Wed, 11 Nov 2015 08:27:47 +0100
-Message-ID: <20151111072747.GI8526@pengutronix.de>
-References: <1447064013-13026-1-git-send-email-s.hauer@pengutronix.de>
- <1447064013-13026-3-git-send-email-s.hauer@pengutronix.de>
- <20151110120554.GB3551@e104805>
- <20151110182629.GA5240@localhost.localdomain>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for
+ mt8135
+Date: Wed, 11 Nov 2015 15:55:57 +0800
+Message-ID: <1447228557.20886.10.camel@mtksdaap41>
+References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+	 <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+	 <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+	 <1445843717.23888.1.camel@mtksdaap41>
+	 <CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
+	 <1445859610.26723.4.camel@mtksdaap41>
+	 <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
+	 <1447135867.14454.9.camel@mtksdaap41> <7h1tbx1gjp.fsf@deeprootsystems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20151110182629.GA5240@localhost.localdomain>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>
-Cc: Javi Merino <javi.merino@arm.com>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <7h1tbx1gjp.fsf@deeprootsystems.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kevin Hilman <khilman@kernel.org>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Tyler Baker <tyler.baker@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, lkml <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 10, 2015 at 10:26:30AM -0800, Eduardo Valentin wrote:
-> On Tue, Nov 10, 2015 at 12:05:54PM +0000, Javi Merino wrote:
-> > On Mon, Nov 09, 2015 at 11:13:32AM +0100, Sascha Hauer wrote:
+Hi Kevin,
+
+On Tue, 2015-11-10 at 17:16 -0800, Kevin Hilman wrote:
+> Hi Eddie,
 > 
-> <cut>
+> [...]
 > 
-> > > +
-> > > +/*
-> > > + * The MT8173 thermal controller has four banks. Each bank can read up to
-> > > + * four temperature sensors simultaneously. The MT8173 has a total of 5
-> > > + * temperature sensors. We use each bank to measure a certain area of the
-> > > + * SoC. Since TS2 is located centrally in the SoC it is influenced by multiple
-> > > + * areas, hence is used in different banks.
-> > > + */
-> > > +static const struct mtk_thermal_bank_cfg bank_data[] = {
-> > > +	{
-> > > +		.num_sensors = 2,
-> > > +		.sensors = { MT8173_TS2, MT8173_TS3 },
-> > > +	}, {
-> > > +		.num_sensors = 2,
-> > > +		.sensors = { MT8173_TS2, MT8173_TS4 },
-> > > +	}, {
-> > > +		.num_sensors = 3,
-> > > +		.sensors = { MT8173_TS1, MT8173_TS2, MT8173_TSABB },
-> > > +	}, {
-> > > +		.num_sensors = 1,
-> > > +		.sensors = { MT8173_TS2 },
-> > > +	},
-> > > +};
+> > I check the log [0],
 > 
-> Would it make sense to simply expose all sensors and let the
-> configuration of their aggregation be done by DT?
-
-This particular layout has been chosen because there's also the Smart
-Voltage Scaler (SVS) in the SoC. The SVS uses the same banks for
-measuring temperatures. I don't know the details yet, I just asked the
-Mediatek guys.
-
+> Thanks for checking into this boot failure.
 > 
-> There is already ongoing effort to get aggregation functions
-> generalized.
-
-Do you have any pointers? I haven't seen these efforts yet.
-
-> > > +static int mtk_read_temp(void *data, int *temperature)
-> > > +{
-> > > +	struct mtk_thermal *mt = data;
-> > > +	int i;
-> > > +	int tempmax = INT_MIN;
-> > > +
-> > > +	for (i = 0; i < MT8173_NUM_ZONES; i++) {
-> > > +		struct mtk_thermal_bank *bank = &mt->banks[i];
-> > > +		int t;
-> > > +
-> > > +		mtk_thermal_get_bank(bank);
-> > > +
-> > > +		t = mtk_thermal_bank_temperature(bank);
-> > 
-> > IIUIC, when you had multiple thermal zones
-> > mtk_thermal_bank_temperature() made sense, but now it looks like
-> > you're just doing the maximum of all sensors.  Why bother with the
-> > banks any more?  Aren't you just calculating the maximum of all
-> > sensors?  As TS2 is present in all banks, there's no point in reading
-> > it four times just to get the maximum of all sensors.
-> > 
+> > it seems first time mt8135-evbp1 boot to kernel
+> > shell successfully, then boot again. In the second time, mt8135 stay in
+> > fastboot mode, waiting host send boot image, then timeout.
 > 
-> Yeah, agreed here. If that is your intention, maybe read each sensor one
-> time, then compute the max of each subset from memory instead.
+> Actually, it never gets to a shell the first time.  If you look closely,
+> the target reboots as soon as userspace starts.   Look for the PYBOOT
+> line which says "finished booting, starting userspace"
+> 
+> Later on, pyboot thinks it finds a root shell due to finding '#'
+> characters, but clearly it never got to a shell.
+> 
+> > I download zImage and dtb in [1], and kernel run to shell successfully
+> > on my platform.
+> 
+> Are you can you try using a ramdisk as well?  You can use the pre-built
+> one here:
+> http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
+> 
 
-I would have done that if there wasn't this SVS engine. I'll ask
-internally what the constraint of this SVS engine actually are and let
-you know.
+Yes, I tried this ramdisk, and I can reproduce fail issue.
 
-Sascha
+> Please check my boot logs to see how I'm generating the boot.img file
+> (search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
+> that the kernel image size with a ramdisk is breaking some of the
+> assumptions in the fastboot mode.  I've seen problems like this on other
+> platforms due to hard-coded sizes/addresses in the boot firmware.
+> 
 
+MT8135 allocate 10MB for BOOT partition, but the test boot.img is 11MB,
+thus cause user space fail. I will prepare new firmware that extend BOOT
+partition to 16MB. and put new firmware on Howard's github. I will mail
+to you when I am ready..
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Eddie
+Thanks
