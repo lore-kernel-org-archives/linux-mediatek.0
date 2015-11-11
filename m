@@ -1,69 +1,69 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for
- mt8135
-Date: Wed, 11 Nov 2015 15:55:57 +0800
-Message-ID: <1447228557.20886.10.camel@mtksdaap41>
-References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
-	 <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
-	 <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
-	 <1445843717.23888.1.camel@mtksdaap41>
-	 <CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
-	 <1445859610.26723.4.camel@mtksdaap41>
-	 <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
-	 <1447135867.14454.9.camel@mtksdaap41> <7h1tbx1gjp.fsf@deeprootsystems.com>
+From: Javi Merino <javi.merino-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v3 1/2] thermal: mediatek: Add cpu power cooling model.
+Date: Wed, 11 Nov 2015 09:36:57 +0000
+Message-ID: <20151111093656.GA2781@e104805>
+References: <1445515359-8587-1-git-send-email-dawei.chien@mediatek.com>
+ <1445515359-8587-2-git-send-email-dawei.chien@mediatek.com>
+ <20151104193958.GC14127@localhost.localdomain>
+ <1446721837.4016.57.camel@mtksdaap41>
+ <20151106032433.GL3773@ubuntu>
+ <20151110112017.GA3551@e104805>
+ <20151110184121.GC5240@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7h1tbx1gjp.fsf@deeprootsystems.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kevin Hilman <khilman@kernel.org>
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Tyler Baker <tyler.baker@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, lkml <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20151110184121.GC5240-bi+AKbBUZKY6gyzm1THtWbp2dZbC/Bob@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, dawei chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Kevin,
+On Tue, Nov 10, 2015 at 10:41:22AM -0800, Eduardo Valentin wrote:
+> On Tue, Nov 10, 2015 at 11:20:18AM +0000, Javi Merino wrote:
+> > On Fri, Nov 06, 2015 at 08:54:33AM +0530, Viresh Kumar wrote:
+> > > Cc'ing Javi (which you should have as he wrote the power-thing for
+> > > cpu-cooling).
+> > > 
+> > > On 05-11-15, 19:10, dawei chien wrote:
+> > > > This is because our platform currently only support mt8173_cpufreq.c, so
+> > > > that I only add static power model for our owner IC.
+> > > 
+> > > Bindings are (normally) supposed to be general than a platform
+> > > specific.
+> > > 
+> > > > Please understanding that I wouldn't give a DT binding document since I
+> > > > will remove static power table on next version, but I can try to explain
+> > > > it.
+> > > 
+> > > Then just don't add things in the first place.
+> > > 
+> > > > As far as I know, static power is somewhat leakage of CPU clusters, so
+> > > > that we hardly to find a formula, which can suitable all kinds of CPUs
+> > > > since leakage is different. In ARM IPA framework, static power only need
+> > > > to be defined by who register cpufreq_power_cooling_register. The
+> > > > voltage/power table is just one way to present leakage power of CPUs.
+> > > 
+> > > The bindings don't fix the values for static power, but just provides
+> > > a field for platforms to use. Everyone can then send its own power
+> > > figures. Why do you thing it can't be generalized?
+> > 
+> > The way they are described here is useful only for this platform, but
+> > it's not generic.  It only takes into account voltage as (I assume)
+> > it's the only variable that affects it in this implementation.  A
+> > generalized version of the static power should take into account the
+> > temperature and the idle state.
+> 
+> Still, why would we have one binding to describe static power per platform?
+> 
+> I would prefer we go towards a generalized binding description.
 
-On Tue, 2015-11-10 at 17:16 -0800, Kevin Hilman wrote:
-> Hi Eddie,
-> 
-> [...]
-> 
-> > I check the log [0],
-> 
-> Thanks for checking into this boot failure.
-> 
-> > it seems first time mt8135-evbp1 boot to kernel
-> > shell successfully, then boot again. In the second time, mt8135 stay in
-> > fastboot mode, waiting host send boot image, then timeout.
-> 
-> Actually, it never gets to a shell the first time.  If you look closely,
-> the target reboots as soon as userspace starts.   Look for the PYBOOT
-> line which says "finished booting, starting userspace"
-> 
-> Later on, pyboot thinks it finds a root shell due to finding '#'
-> characters, but clearly it never got to a shell.
-> 
-> > I download zImage and dtb in [1], and kernel run to shell successfully
-> > on my platform.
-> 
-> Are you can you try using a ramdisk as well?  You can use the pre-built
-> one here:
-> http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
-> 
+Sure, I wasn't saying that we want one binding per platform.  I was
+just saying that this binding can't be made generic because it's not.
 
-Yes, I tried this ramdisk, and I can reproduce fail issue.
-
-> Please check my boot logs to see how I'm generating the boot.img file
-> (search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
-> that the kernel image size with a ramdisk is breaking some of the
-> assumptions in the fastboot mode.  I've seen problems like this on other
-> platforms due to hard-coded sizes/addresses in the boot firmware.
-> 
-
-MT8135 allocate 10MB for BOOT partition, but the test boot.img is 11MB,
-thus cause user space fail. I will prepare new firmware that extend BOOT
-partition to 16MB. and put new firmware on Howard's github. I will mail
-to you when I am ready..
-
-Eddie
-Thanks
+Cheers,
+Javi
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
