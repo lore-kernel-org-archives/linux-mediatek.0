@@ -1,92 +1,88 @@
-From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v6 2/3] mtd: mtk-nor: mtk serial flash controller driver
-Date: Wed, 11 Nov 2015 13:41:46 -0800
-Message-ID: <20151111214146.GL12143@google.com>
-References: <1446824889-16144-1-git-send-email-bayi.cheng@mediatek.com>
- <1446824889-16144-3-git-send-email-bayi.cheng@mediatek.com>
+From: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Wed, 11 Nov 2015 15:50:05 -0800
+Message-ID: <7hpozgyu36.fsf@deeprootsystems.com>
+References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
+	<1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+	<CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+	<1445843717.23888.1.camel@mtksdaap41>
+	<CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
+	<1445859610.26723.4.camel@mtksdaap41>
+	<CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
+	<1447135867.14454.9.camel@mtksdaap41>
+	<7h1tbx1gjp.fsf@deeprootsystems.com>
+	<1447228557.20886.10.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1446824889-16144-3-git-send-email-bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1447228557.20886.10.camel@mtksdaap41> (Eddie Huang's message of
+	"Wed, 11 Nov 2015 15:55:57 +0800")
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org, ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree@vger.kernel.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-One more small comment, since you're respinning this:
+Hi Eddie,
 
-On Fri, Nov 06, 2015 at 11:48:08PM +0800, Bayi Cheng wrote:
-> diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-> new file mode 100644
-> index 0000000..6582811
-> --- /dev/null
-> +++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-> @@ -0,0 +1,475 @@
+Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
 
-...
+> On Tue, 2015-11-10 at 17:16 -0800, Kevin Hilman wrote:
+>> Hi Eddie,
+>> 
+>> [...]
+>> 
+>> > I check the log [0],
+>> 
+>> Thanks for checking into this boot failure.
+>> 
+>> > it seems first time mt8135-evbp1 boot to kernel
+>> > shell successfully, then boot again. In the second time, mt8135 stay in
+>> > fastboot mode, waiting host send boot image, then timeout.
+>> 
+>> Actually, it never gets to a shell the first time.  If you look closely,
+>> the target reboots as soon as userspace starts.   Look for the PYBOOT
+>> line which says "finished booting, starting userspace"
+>> 
+>> Later on, pyboot thinks it finds a root shell due to finding '#'
+>> characters, but clearly it never got to a shell.
+>> 
+>> > I download zImage and dtb in [1], and kernel run to shell successfully
+>> > on my platform.
+>> 
+>> Are you can you try using a ramdisk as well?  You can use the pre-built
+>> one here:
+>> http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
+>> 
+>
+> Yes, I tried this ramdisk, and I can reproduce fail issue.
+>
 
-> +static int mtk_nor_drv_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *flash_np;
-> +	struct resource *res;
-> +	int ret;
-> +	struct mt8173_nor *mt8173_nor;
-> +
-> +	if (!pdev->dev.of_node) {
-> +		dev_err(&pdev->dev, "No DT found\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	mt8173_nor = devm_kzalloc(&pdev->dev, sizeof(*mt8173_nor), GFP_KERNEL);
-> +	if (!mt8173_nor)
-> +		return -ENOMEM;
-> +	platform_set_drvdata(pdev, mt8173_nor);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	mt8173_nor->base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(mt8173_nor->base))
-> +		return PTR_ERR(mt8173_nor->base);
-> +
-> +	mt8173_nor->spi_clk = devm_clk_get(&pdev->dev, "spi");
-> +	if (IS_ERR(mt8173_nor->spi_clk)) {
-> +		ret = PTR_ERR(mt8173_nor->spi_clk);
-> +		goto nor_free;
-> +	}
-> +
-> +	mt8173_nor->nor_clk = devm_clk_get(&pdev->dev, "sf");
-> +	if (IS_ERR(mt8173_nor->nor_clk)) {
-> +		ret = PTR_ERR(mt8173_nor->nor_clk);
-> +		goto nor_free;
-> +	}
-> +
-> +	mt8173_nor->dev = &pdev->dev;
-> +	clk_prepare_enable(mt8173_nor->spi_clk);
-> +	clk_prepare_enable(mt8173_nor->nor_clk);
+OK, good.   Thanks for looking into it.
 
-You enable the clocks here, but...
+>> Please check my boot logs to see how I'm generating the boot.img file
+>> (search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
+>> that the kernel image size with a ramdisk is breaking some of the
+>> assumptions in the fastboot mode.  I've seen problems like this on other
+>> platforms due to hard-coded sizes/addresses in the boot firmware.
+>> 
+>
+> MT8135 allocate 10MB for BOOT partition, but the test boot.img is 11MB,
+> thus cause user space fail.
 
-> +
-> +	/* only support one attached flash */
-> +	flash_np = of_get_next_available_child(pdev->dev.of_node, NULL);
-> +	if (!flash_np) {
+Aha, I was right!  ;)
 
-... you might bail out here if there is no available flash node, and you
-never disable the clocks. (Same is true if we fail to detect the flash;
-you leave the no-longer-needed clocks enabled.) Seems like maybe you
-should disable clocks on failure.
+> I will prepare new firmware that extend BOOT
+> partition to 16MB. and put new firmware on Howard's github. I will mail
+> to you when I am ready..
 
-> +		dev_err(&pdev->dev, "no SPI flash device to configure\n");
-> +		ret = -ENODEV;
-> +		goto nor_free;
-> +	}
-> +	ret = mtk_nor_init(mt8173_nor, flash_np);
-> +
-> +nor_free:
-> +	return ret;
-> +}
+Great, thanks for working on this.
 
-Brian
+Any chance of making it even bigger?  We're working on running some more
+automated testing from a ramdisk, and those ramdisks will be easily
+30-50 Mb with modules included and a rootfs with extra tests.
+
+Kevin
+
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
