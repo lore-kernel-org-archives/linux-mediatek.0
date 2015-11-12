@@ -1,99 +1,103 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for
- mt8135
-Date: Thu, 12 Nov 2015 20:46:19 +0800
-Message-ID: <1447332379.4156.5.camel@mtksdaap41>
+From: Kevin Hilman <khilman@kernel.org>
+Subject: Re: [PATCH v5 4/5] ARM: dts: mt8135: enable basic SMP bringup for mt8135
+Date: Thu, 12 Nov 2015 15:56:26 -0800
+Message-ID: <7hd1vedb6d.fsf@deeprootsystems.com>
 References: <1443799181-50409-1-git-send-email-yingjoe.chen@mediatek.com>
-	 <1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
-	 <CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
-	 <1445843717.23888.1.camel@mtksdaap41>
-	 <CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
-	 <1445859610.26723.4.camel@mtksdaap41>
-	 <CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
-	 <1447135867.14454.9.camel@mtksdaap41> <7h1tbx1gjp.fsf@deeprootsystems.com>
-	 <1447228557.20886.10.camel@mtksdaap41> <7hpozgyu36.fsf@deeprootsystems.com>
-	 <7hwptnddhs.fsf@deeprootsystems.com>
+	<1443799181-50409-5-git-send-email-yingjoe.chen@mediatek.com>
+	<CAMAWPa-Ed2FJY2pW67EHHKBH3_eBZx0+oWfMJwc_DhEjrf7aMg@mail.gmail.com>
+	<1445843717.23888.1.camel@mtksdaap41>
+	<CAMAWPa_Gyq7H0qUJ32PAJh_ELdHeKWMPyHud4gaT8=Ootcu1+g@mail.gmail.com>
+	<1445859610.26723.4.camel@mtksdaap41>
+	<CAMAWPa_13j88SMBbYEBg2WHFEhkhR_gVZkkU_x-U5NJay05AxA@mail.gmail.com>
+	<1447135867.14454.9.camel@mtksdaap41>
+	<7h1tbx1gjp.fsf@deeprootsystems.com>
+	<1447228557.20886.10.camel@mtksdaap41>
+	<7hpozgyu36.fsf@deeprootsystems.com>
+	<7hwptnddhs.fsf@deeprootsystems.com>
+	<1447332379.4156.5.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <7hwptnddhs.fsf-1D3HCaltpLuhEniVeURVKkEOCMrvLtNR@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, lkml <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447332379.4156.5.camel@mtksdaap41> (Eddie Huang's message of
+	"Thu, 12 Nov 2015 20:46:19 +0800")
+Sender: linux-kernel-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Russell King - ARM Linux <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Arnd Bergmann <arnd@arndb.de>, Tyler Baker <tyler.baker@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, lkml <linux-kernel@vger.kernel.org>, Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-11-11 at 20:54 -0800, Kevin Hilman wrote:
-> Hi Eddie,
-> 
-> Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> writes:
-> 
-> > Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
-> >
-> >> On Tue, 2015-11-10 at 17:16 -0800, Kevin Hilman wrote:
-> >>> Hi Eddie,
-> >>> 
-> >>> [...]
-> >>> 
-> >>> > I check the log [0],
-> >>> 
-> >>> Thanks for checking into this boot failure.
-> >>> 
-> >>> > it seems first time mt8135-evbp1 boot to kernel
-> >>> > shell successfully, then boot again. In the second time, mt8135 stay in
-> >>> > fastboot mode, waiting host send boot image, then timeout.
-> >>> 
-> >>> Actually, it never gets to a shell the first time.  If you look closely,
-> >>> the target reboots as soon as userspace starts.   Look for the PYBOOT
-> >>> line which says "finished booting, starting userspace"
-> >>> 
-> >>> Later on, pyboot thinks it finds a root shell due to finding '#'
-> >>> characters, but clearly it never got to a shell.
-> >>> 
-> >>> > I download zImage and dtb in [1], and kernel run to shell successfully
-> >>> > on my platform.
-> >>> 
-> >>> Are you can you try using a ramdisk as well?  You can use the pre-built
-> >>> one here:
-> >>> http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
-> >>> 
-> >>
-> >> Yes, I tried this ramdisk, and I can reproduce fail issue.
-> >>
-> >
-> > OK, good.   Thanks for looking into it.
-> >
-> >>> Please check my boot logs to see how I'm generating the boot.img file
-> >>> (search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
-> >>> that the kernel image size with a ramdisk is breaking some of the
-> >>> assumptions in the fastboot mode.  I've seen problems like this on other
-> >>> platforms due to hard-coded sizes/addresses in the boot firmware.
-> >>> 
-> >>
-> >> MT8135 allocate 10MB for BOOT partition, but the test boot.img is 11MB,
-> >> thus cause user space fail.
-> >
-> > Aha, I was right!  ;)
-> 
-> Also notice in kernelci.org that the mt8173 board has also been failing
-> to boot in mainline[1].  I wonder if this same limitation exists in the
-> mt8173 boot firmware?
-> 
+Eddie Huang <eddie.huang@mediatek.com> writes:
 
-MT8173 is another case, the failure is due to following commit:
-67e56c5 arm64: dts: mt8173: Add subsystem clock controller device nodes
+> On Wed, 2015-11-11 at 20:54 -0800, Kevin Hilman wrote:
+>> Hi Eddie,
+>> 
+>> Kevin Hilman <khilman@kernel.org> writes:
+>> 
+>> > Eddie Huang <eddie.huang@mediatek.com> writes:
+>> >
+>> >> On Tue, 2015-11-10 at 17:16 -0800, Kevin Hilman wrote:
+>> >>> Hi Eddie,
+>> >>> 
+>> >>> [...]
+>> >>> 
+>> >>> > I check the log [0],
+>> >>> 
+>> >>> Thanks for checking into this boot failure.
+>> >>> 
+>> >>> > it seems first time mt8135-evbp1 boot to kernel
+>> >>> > shell successfully, then boot again. In the second time, mt8135 stay in
+>> >>> > fastboot mode, waiting host send boot image, then timeout.
+>> >>> 
+>> >>> Actually, it never gets to a shell the first time.  If you look closely,
+>> >>> the target reboots as soon as userspace starts.   Look for the PYBOOT
+>> >>> line which says "finished booting, starting userspace"
+>> >>> 
+>> >>> Later on, pyboot thinks it finds a root shell due to finding '#'
+>> >>> characters, but clearly it never got to a shell.
+>> >>> 
+>> >>> > I download zImage and dtb in [1], and kernel run to shell successfully
+>> >>> > on my platform.
+>> >>> 
+>> >>> Are you can you try using a ramdisk as well?  You can use the pre-built
+>> >>> one here:
+>> >>> http://storage.kernelci.org/images/rootfs/buildroot/armel/rootfs.cpio.gz
+>> >>> 
+>> >>
+>> >> Yes, I tried this ramdisk, and I can reproduce fail issue.
+>> >>
+>> >
+>> > OK, good.   Thanks for looking into it.
+>> >
+>> >>> Please check my boot logs to see how I'm generating the boot.img file
+>> >>> (search for mkbootimg) with a kernel/dtb/ramdisk.  It may be possible
+>> >>> that the kernel image size with a ramdisk is breaking some of the
+>> >>> assumptions in the fastboot mode.  I've seen problems like this on other
+>> >>> platforms due to hard-coded sizes/addresses in the boot firmware.
+>> >>> 
+>> >>
+>> >> MT8135 allocate 10MB for BOOT partition, but the test boot.img is 11MB,
+>> >> thus cause user space fail.
+>> >
+>> > Aha, I was right!  ;)
+>> 
+>> Also notice in kernelci.org that the mt8173 board has also been failing
+>> to boot in mainline[1].  I wonder if this same limitation exists in the
+>> mt8173 boot firmware?
+>> 
+>
+> MT8173 is another case, the failure is due to following commit:
+> 67e56c5 arm64: dts: mt8173: Add subsystem clock controller device nodes
+>
+> It is because this commit register MM subsystem clock, but kernel don't
+> use MM clock yet, then CCF disable it. (My internal platform kernel
+> command include clk_ignore_unused parameter, so don't have this
+> problem).I will do further checking and release solution later. Thanks
+> your testing.
 
-It is because this commit register MM subsystem clock, but kernel don't
-use MM clock yet, then CCF disable it. (My internal platform kernel
-command include clk_ignore_unused parameter, so don't have this
-problem).I will do further checking and release solution later. Thanks
-your testing.
+OK, thanks for looking into it.
 
-Eddie
-Thanks
+However, since the merge window is very close to closing, unless you can
+git a fix out soon (and one that doesn't introduce other bugs),
+probablly the right solution is to just revert the above patch so things
+are fixed for mainline ASAP.
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Kevin
