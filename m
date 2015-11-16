@@ -1,153 +1,74 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: fix i2c multi transfer issue in
- high speed mode
-Date: Sat, 14 Nov 2015 22:38:42 +0800
-Message-ID: <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
-References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
- <1447047839-5223-3-git-send-email-liguo.zhang@mediatek.com>
+From: <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Subject: RE: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Mon, 16 Nov 2015 10:32:51 +0000
+Message-ID: <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+ <4171977.M1BLuS2ZzP@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447047839-5223-3-git-send-email-liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Xudong Chen <xudong.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux I2C <linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <4171977.M1BLuS2ZzP@wuerfel>
+Content-Language: ja-JP
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: arnd-r2nGTMty4D4@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mmarek-IBi9RG/b67k@public.gmane.org, olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org, linux-kbuild-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org, agross-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tsahee-IEYhy/pPZWng2XuLRlxkFAC/G2K4zDHf@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, plagnioj-sclMFOaUSTBWk0Htik3J/w@public.gmane.org, dinguyen-yzvPICuk2ABMcg4IHK0kFoH6Mc4MB0Vx@public.gmane.org, baohua-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, shiraz.linux.kernel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, patrice.chotard-qxv4g6HH51o@public.gmane.org, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, soren.brinkmann-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org, michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, davidb-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, mappyland78@g
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 9, 2015 at 1:43 PM, Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> For platform with auto restart support, when doing i2c multi transfer
-> in high speed, for example, doing write-then-read transfer, the master
-> code will occupy the first transfer, and the second transfer will be
-> the read transfer, the write transfer will be discarded. So we should
-> first send the master code, and then start i2c multi transfer.
->
-> Signed-off-by: Liguo Zhang <liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Reviewed-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 45 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 45 insertions(+)
->
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index dc4aac6..249df86 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -53,6 +53,8 @@
->  #define I2C_FS_TIME_INIT_VALUE         0x1303
->  #define I2C_WRRD_TRANAC_VALUE          0x0002
->  #define I2C_RD_TRANAC_VALUE            0x0001
-> +#define I2C_TRAN_DEFAULT_VALUE         0x0001
-> +#define I2C_TRANAC_DEFAULT_VALUE       0x0001
-
-"TRAN" and "TRANAC" are not good names; this should be "TRANSFER_LEN"
-and "TRANSAC", based on the names of the registers to which you write
-these constants.
-
-Furthermore, these are not "default" values, they are the transfer
-length and number of transactions for sending the "master code", so:
-
-#define I2C_TRANSFER_LEN_MASTER_CODE         0x0001
-#define I2C_TRANSAC_LEN_MASTER_CODE       0x0001
-
-Similarly, I think the "TRANAC" in I2C_WRRD_TRANAC_VALUE and
-I2C_RD_TRANAC_VALUE should also be TRANSAC.
-
->
->  #define I2C_DMA_CON_TX                 0x0000
->  #define I2C_DMA_CON_RX                 0x0001
-> @@ -365,6 +367,43 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
->         return 0;
->  }
->
-> +static int mtk_i2c_send_master_code(struct mtk_i2c *i2c)
-> +{
-> +       int ret = 0;
-> +
-> +       reinit_completion(&i2c->msg_complete);
-> +
-> +       writew(I2C_CONTROL_RS | I2C_CONTROL_ACKERR_DET_EN |
-> +              I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN,
-> +              i2c->base + OFFSET_CONTROL);
-> +
-> +       /* Clear interrupt status */
-> +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP | I2C_HS_NACKERR | I2C_ACKERR,
-> +              i2c->base + OFFSET_INTR_STAT);
-> +
-> +       /* Enable interrupt */
-> +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP, i2c->base +
-> +              OFFSET_INTR_MASK);
-> +
-> +       writew(I2C_TRAN_DEFAULT_VALUE, i2c->base + OFFSET_TRANSFER_LEN);
-> +       writew(I2C_TRANAC_DEFAULT_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
-> +
-> +       writew(I2C_TRANSAC_START | I2C_RS_MUL_CNFG, i2c->base + OFFSET_START);
-> +
-> +       ret = wait_for_completion_timeout(&i2c->msg_complete,
-> +                                         i2c->adap.timeout);
-
-How does the hardware know that this transaction should be a "master code"?
-Do you have to tell the hardware what value ('00001XXX') to use as the
-master code?
-The Master Code must be sent at <= 400 kHz, not the target clock.  How
-does the hardware know what rate to use?
-When sending the master code, arbitration is supposed to occur, such
-that only one winning master can proceed with the following high speed
-transaction.
-Where do you check that you won this arbitration?
-If this is not implemented, adding a "TODO" would be helpful.
-
-> +
-> +       completion_done(&i2c->msg_complete);
-
-This completion_done() is only useful if you check the return value.
-You should check it too, since we should only check for timeout if the
-message hasn't completed.
-
-> +
-> +       if (ret == 0) {
-> +               dev_dbg(i2c->dev, "send master code timeout.\n");
-> +               mtk_i2c_init_hw(i2c);
-> +               return -ETIMEDOUT;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                int num, int left_num)
->  {
-> @@ -539,6 +578,12 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
->                 }
->         }
->
-> +       if (i2c->auto_restart && i2c->speed_hz > 400000) {
-
-Don't we need to send the master code for *every* HS transaction, not
-just "auto_restart"?
-
-"400000" => You already have a macro for this: MAX_FS_MODE_SPEED
-
-> +               ret = mtk_i2c_send_master_code(i2c);
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +
->         while (left_num--) {
->                 if (!msgs->buf) {
->                         dev_dbg(i2c->dev, "data buffer is NULL.\n");
-> --
-> 1.8.1.1.dirty
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+SGkgQXJuZCwNCg0KIA0KPiBPbiBNb25kYXkgMTYgTm92ZW1iZXIgMjAxNSAxMjowNjoxMCBNYXNh
+aGlybyBZYW1hZGEgd3JvdGU6DQo+ID4gTWFueSBBUk0gc3ViLWFyY2hpdGVjdHVyZXMgdXNlIHBy
+b21wdHMgZm9sbG93ZWQgYnkgImlmIiBjb25kaXRpb25hbCwNCj4gPiBidXQgaXQgaXMgd3Jvbmcu
+DQo+ID4NCj4gPiBQbGVhc2Ugbm90aWNlIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4NCj4gPg0KPiA+
+ICAgICBjb25maWcgQVJDSF9GT08NCj4gPiAgICAgICAgICAgICBib29sICJGb28gU29DcyIgaWYg
+QVJDSF9NVUxUSV9WNw0KPiA+DQo+ID4gYW5kDQo+ID4NCj4gPiAgICAgY29uZmlnIEFSQ0hfRk9P
+DQo+ID4gICAgICAgICAgICAgYm9vbCAiRm9vIFNvQ3MiDQo+ID4gICAgICAgICAgICAgZGVwZW5k
+cyBvbiBBUkNIX01VTFRJX1Y3DQo+ID4NCj4gPiBUaGVzZSB0d28gYXJlICpub3QqIGVxdWl2YWxl
+bnQhDQo+ID4NCj4gPiBJbiB0aGUgZm9ybWVyIHN0YXRlbWVudCwgaXQgaXMgbm90IEFSQ0hfRk9P
+LCBidXQgaXRzIHByb21wdCB0aGF0DQo+ID4gZGVwZW5kcyBvbiBBUkNIX01VTFRJX1Y3LiAgU28s
+IGl0IGlzIGNvbXBsZXRlbHkgdmFsaWQgdGhhdCBBUkNIX0ZPTyBpcw0KPiA+IHNlbGVjdGVkIGJ5
+IGFub3RoZXIsIGJ1dCBBUkNIX01VTFRJX1Y3IGlzIHN0aWxsIGRpc2FibGVkLiBBcyBpdCBpcyBu
+b3QNCj4gPiB1bm1ldCBkZXBlbmRlbmN5LCBLY29uZmlnIG5ldmVyIHdhcm5zLiAgVGhpcyBpcyBw
+cm9iYWJseSBub3Qgd2hhdCB5b3UNCj4gPiB3YW50Lg0KPiANCj4gRGlkIHlvdSBlbmNvdW50ZXIg
+YSBjYXNlIHdoZXJlIHNvbWVvbmUgYWN0dWFsbHkgZGlkIGEgJ3NlbGVjdCcgb24gb25lIG9mDQo+
+IHRob3NlIHN5bWJvbHM/IEkgcHJvYmFibHkgaW50cm9kdWNlZCBhIGxvdCBvZiB0aGVtIGFuZCBk
+aWQgbm90IGV4cGVjdCB0aGF0DQo+IHRvIGhhcHBlbi4NCg0KTm8sIGZvciBBUk0gc3ViLWFyY2hp
+dGVjdHVyZXMuDQpCdXQsIHllcyBmb3IgdGhlIEFSTSBjb3JlIHBhcnQuDQoNCg0KRm9yIGV4YW1w
+bGUsIHRoZSBmb2xsb3dpbmcgZW50cnkgaW4gYXJjaC9hcm0vS2NvbmZpZyBpcyBzdXNwaWNvdXMu
+DQoNCmNvbmZpZyBQQ0kNCiAgICAgICAgYm9vbCAiUENJIHN1cHBvcnQiIGlmIE1JR0hUX0hBVkVf
+UENJDQogICAgICAgIGhlbHANCiAgICAgICAgICBGaW5kIG91dCB3aGV0aGVyIHlvdSBoYXZlIGEg
+UENJIG1vdGhlcmJvYXJkLiBQQ0kgaXMgdGhlIG5hbWUgb2YgYQ0KICAgICAgICAgIGJ1cyBzeXN0
+ZW0sIGkuZS4gdGhlIHdheSB0aGUgQ1BVIHRhbGtzIHRvIHRoZSBvdGhlciBzdHVmZiBpbnNpZGUN
+CiAgICAgICAgICB5b3VyIGJveC4gT3RoZXIgYnVzIHN5c3RlbXMgYXJlIElTQSwgRUlTQSwgTWlj
+cm9DaGFubmVsIChNQ0EpIG9yDQogICAgICAgICAgVkVTQS4gSWYgeW91IGhhdmUgUENJLCBzYXkg
+WSwgb3RoZXJ3aXNlIE4uDQoNCg0KDQoNClRyeSAibWFrZSBBUkNIPWFybSBmb290YnJpZGdlX2Rl
+ZmNvbmZpZyIgYW5kIGNoZWNrIHRoZSAuY29uZmlnIGZpbGUuDQoNCkl0IGRlZmluZXMgQ09ORklH
+X1BDST15LCBidXQgbm90IENPTkZJR19NSUdIVF9IQVZFX1BDSS4NCkkgYW0gbm90IHN1cmUgdGhp
+cyBpcyBhIHNhbmUgLmNvbmZpZyBvciBub3QuDQoNCkJ1dCwgYW55d2F5LCBLY29uZmlnIGRvZXMg
+bm90IGNvbXBsYWluIGFib3V0IGl0Lg0KDQoNCldlIGhhdmUgc2ltaWxhciBpc3N1ZXMgZm9yIENQ
+VV9WNiwgQ1BVX1Y2SywgQ1BVX1Y3LCBldGMuDQpUaGUgY29uZmlnIGlzIHNlbGVjdGVkLCBidXQg
+dGhlICJpZiIgY29uZGl0aW9uYWwgaXMgdW5tZXQuDQooSSBkZWNpZGVkIHRvIHBvc3Rwb25lIHRo
+aXMgcHJvYmxlbSBiZWNhdXNlIGl0IHdvdWxkIHRha2Ugc29tZSB0aW1lIHRvIHVuZGVyc3RhbmQN
+CmNvbXBsaWNhdGVkIGRlcGVuZGVuY3kuKQ0KDQpUaGUgdXNlIG9mIGEgcHJvbXB0IGZvbGxvd2Vk
+IGJ5ICJpZiIgd2l0aG91dCBjb3JyZWN0IHVuZGVyc3RhbmRpbmcgaXMgZGFuZ2Vyb3VzDQpiZWNh
+dXNlIGl0IGNvdWxkIGhpZGUgdGhlIHVubWV0IGRlcGVuZGVuY3kgcHJvYmxlbS4NCg0KSSB3YW50
+IHRvIGVsaW1pbmF0ZSB0aGUgcG90ZW50aWFsIHByb2JsZW0gYnkgdGhpcyBwYXRjaA0KYmVmb3Jl
+IHNvbWVib2R5IGludHJvZHVjZSBpbnNhbmUgZGVwZW5kZW5jeS4NCg0KDQo+IA0KPiA+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybS9tYWNoLWludGVncmF0b3IvS2NvbmZpZw0KPiA+IGIvYXJjaC9hcm0v
+bWFjaC1pbnRlZ3JhdG9yL0tjb25maWcNCj4gPiBpbmRleCAwMmQwODM0Li4yZmE5ZDExIDEwMDY0
+NA0KPiA+IC0tLSBhL2FyY2gvYXJtL21hY2gtaW50ZWdyYXRvci9LY29uZmlnDQo+ID4gKysrIGIv
+YXJjaC9hcm0vbWFjaC1pbnRlZ3JhdG9yL0tjb25maWcNCj4gPiBAQCAtMSw1ICsxLDYgQEANCj4g
+PiAgY29uZmlnIEFSQ0hfSU5URUdSQVRPUg0KPiA+IC0JYm9vbCAiQVJNIEx0ZC4gSW50ZWdyYXRv
+ciBmYW1pbHkiIGlmIChBUkNIX01VTFRJX1Y0VCB8fA0KPiBBUkNIX01VTFRJX1Y1IHx8IEFSQ0hf
+TVVMVElfVjYpDQo+ID4gKwlib29sICJBUk0gTHRkLiBJbnRlZ3JhdG9yIGZhbWlseSINCj4gPiAr
+CWRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNFQgfHwgQVJDSF9NVUxUSV9WNSB8fCBBUkNIX01VTFRJ
+X1Y2DQo+ID4gIAlzZWxlY3QgQVJNX0FNQkENCj4gPiAgCXNlbGVjdCBBUk1fUEFUQ0hfUEhZU19W
+SVJUIGlmIE1NVQ0KPiA+ICAJc2VsZWN0IEFVVE9fWlJFTEFERFINCj4gDQo+IFRoZXJlIGlzIG9u
+ZSByZWxhdGVkIGNoYW5nZSB0aGF0IEkgd291bGQgbGlrZSB0byBzZWUsIGFuZCB0aGF0IGlzIHRv
+IGNvbnZlcnQNCj4gYWxsIHRvcC1sZXZlbCAnY29uZmlnJyBzdGF0ZW1lbnRzIHRoYXQgaGF2ZSBz
+dWItb3B0aW9ucyBpbnRvICdtZW51Y29uZmlnJw0KPiBzdGF0ZW1lbnRzIGZvciBjb25zaXN0ZW5j
+eS4gQXQgdGhlIG1vbWVudCwgdGhlIHBsYXRmb3JtIG1lbnUgaGFzIGEgbWl4IG9mDQo+IHBsYXRm
+b3JtLXNlbGVjdGlvbiBhbmQgcGxhdGZvcm0tc3BlY2lmaWMgb3B0aW9ucywgYW5kIEknZCBsaWtl
+IHRvIG1ha2UgdGhhdA0KPiBtb3JlIGNvbnNpc3RlbnQuDQoNCkkgYWdyZWUsIGJ1dCBpbiBhbm90
+aGVyIHBhdGNoIChvciBzZXJpZXMpPw0KDQoNCg0KQmVzdCBSZWdhcmRzDQpNYXNoYWlybyBZYW1h
+ZGENCg0K
