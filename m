@@ -1,79 +1,132 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Mon, 16 Nov 2015 11:06:22 +0000
-Message-ID: <20151116110622.GL8644@n2100.arm.linux.org.uk>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
- <4171977.M1BLuS2ZzP@wuerfel>
- <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <d5271606263b496c841abd62647f9db0@SOC-EX02V.e01.socionext.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: yamada.masahiro@socionext.com
-Cc: arnd@arndb.de, linux-arm-kernel@lists.infradead.org, arm@kernel.org, mmarek@suse.com, olof@lixom.net, linux-kbuild@vger.kernel.org, jamie@jamieiles.com, agross@codeaurora.org, kernel@pengutronix.de, gregory.clement@free-electrons.com, linux-sh@vger.kernel.org, tsahee@annapurnalabs.com, linux-arm-msm@vger.kernel.org, linus.walleij@linaro.org, galak@codeaurora.org, plagnioj@jcrosoft.com, dinguyen@opensource.altera.com, baohua@kernel.org, shiraz.linux.kernel@gmail.com, rjui@broadcom.com, patrice.chotard@st.com, kernel@stlinux.com, soren.brinkmann@xilinx.com, horms@verge.net.au, michal.simek@xilinx.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-soc@vger.kernel.org, davidb@codeaurora.org, sbranden@broadcom.com, vireshk@kernel.org, alexandre.belloni@free-electrons.com, kyungmin.park@samsung.com, mappyland78@gmail.com, k.kozlowski@samsung.com, bcm-kernel-fee
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 0/7] add missing of_node_put
+Date: Mon, 16 Nov 2015 12:33:13 +0100
+Message-ID: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 16, 2015 at 10:32:51AM +0000, yamada.masahiro@socionext.com wrote:
-> Hi Arnd,
-> 
->  
-> > On Monday 16 November 2015 12:06:10 Masahiro Yamada wrote:
-> > > Many ARM sub-architectures use prompts followed by "if" conditional,
-> > > but it is wrong.
-> > >
-> > > Please notice the difference between
-> > >
-> > >     config ARCH_FOO
-> > >             bool "Foo SoCs" if ARCH_MULTI_V7
-> > >
-> > > and
-> > >
-> > >     config ARCH_FOO
-> > >             bool "Foo SoCs"
-> > >             depends on ARCH_MULTI_V7
-> > >
-> > > These two are *not* equivalent!
-> > >
-> > > In the former statement, it is not ARCH_FOO, but its prompt that
-> > > depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO is
-> > > selected by another, but ARCH_MULTI_V7 is still disabled. As it is not
-> > > unmet dependency, Kconfig never warns.  This is probably not what you
-> > > want.
-> > 
-> > Did you encounter a case where someone actually did a 'select' on one of
-> > those symbols? I probably introduced a lot of them and did not expect that
-> > to happen.
-> 
-> No, for ARM sub-architectures.
-> But, yes for the ARM core part.
-> 
-> 
-> For example, the following entry in arch/arm/Kconfig is suspicous.
-> 
-> config PCI
->         bool "PCI support" if MIGHT_HAVE_PCI
->         help
->           Find out whether you have a PCI motherboard. PCI is the name of a
->           bus system, i.e. the way the CPU talks to the other stuff inside
->           your box. Other bus systems are ISA, EISA, MicroChannel (MCA) or
->           VESA. If you have PCI, say Y, otherwise N.
-> 
-> 
-> 
-> 
-> Try "make ARCH=arm footbridge_defconfig" and check the .config file.
-> 
-> It defines CONFIG_PCI=y, but not CONFIG_MIGHT_HAVE_PCI.
-> I am not sure this is a sane .config or not.
+The various for_each device_node iterators performs an of_node_get on each
+iteration, so a break out of the loop requires an of_node_put.
 
-It's correct.  "MIGHT_HAVE_PCI" is used by platforms which _might_ _have_
-_PCI_, not by platforms which _do_ _have_ _PCI_.  Platforms which _do_
-_have_ _PCI_ select PCI directly, and because "MIGHT_HAVE_PCI" is not
-set, users are not offered an option that they can never disable.
+The complete semantic patch that finds this problem is
+(http://coccinelle.lip6.fr):
 
--- 
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+// <smpl>
+@r@
+local idexpression n;
+expression e1,e2;
+iterator name for_each_node_by_name, for_each_node_by_type,
+for_each_compatible_node, for_each_matching_node,
+for_each_matching_node_and_match, for_each_child_of_node,
+for_each_available_child_of_node, for_each_node_with_property;
+iterator i;
+statement S;
+expression list [n1] es;
+@@
+
+(
+(
+for_each_node_by_name(n,e1) S
+|
+for_each_node_by_type(n,e1) S
+|
+for_each_compatible_node(n,e1,e2) S
+|
+for_each_matching_node(n,e1) S
+|
+for_each_matching_node_and_match(n,e1,e2) S
+|
+for_each_child_of_node(e1,n) S
+|
+for_each_available_child_of_node(e1,n) S
+|
+for_each_node_with_property(n,e1) S
+)
+&
+i(es,n,...) S
+)
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
+   return n;
+|
++  of_node_put(n);
+?  return ...;
+)
+   ...
+ }
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
++  of_node_put(n);
+?  break;
+)
+   ...
+ }
+... when != n
+
+@@
+local idexpression r.n;
+iterator r.i;
+expression e;
+identifier l;
+expression list [r.n1] es;
+@@
+
+ i(es,n,...) {
+   ...
+(
+   of_node_put(n);
+|
+   e = n
+|
++  of_node_put(n);
+?  goto l;
+)
+   ...
+ }
+...
+l: ... when != n
+// </smpl>
+
+This semantic patch puts an of_node_put before a return, but in each of
+these patches, we have grouped the multiple resulting of_node_puts into a
+single call at an error exit label.
+
+---
+
+ drivers/phy/phy-bcm-cygnus-pcie.c |   16 ++++++++++++----
+ drivers/phy/phy-berlin-sata.c     |   20 ++++++++++++++------
+ drivers/phy/phy-brcmstb-sata.c    |   17 ++++++++++++-----
+ drivers/phy/phy-miphy28lp.c       |   16 +++++++++++-----
+ drivers/phy/phy-miphy365x.c       |   16 +++++++++++-----
+ drivers/phy/phy-mt65xx-usb3.c     |   20 +++++++++++++-------
+ drivers/phy/phy-rockchip-usb.c    |   17 ++++++++++++-----
+ 7 files changed, 85 insertions(+), 37 deletions(-)
