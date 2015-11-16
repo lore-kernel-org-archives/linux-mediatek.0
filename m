@@ -1,15 +1,11 @@
-From: Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Mon, 16 Nov 2015 12:59:33 +0000
-Message-ID: <20151116125933.GO963@e106497-lin.cambridge.arm.com>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: [PATCH] cpufreq: mediatek: fix build error
+Date: Mon, 16 Nov 2015 22:27:55 +0100
+Message-ID: <3905943.jgsUmEgmnP@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,46 +15,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Nicolas Ferre <nicolas.ferre-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.orgChen-Yu Tsai <we>
+To: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gTW9uLCBOb3YgMTYsIDIwMTUgYXQgMTI6MDY6MTBQTSArMDkwMCwgTWFzYWhpcm8gWWFtYWRh
-IHdyb3RlOgo+IE1hbnkgQVJNIHN1Yi1hcmNoaXRlY3R1cmVzIHVzZSBwcm9tcHRzIGZvbGxvd2Vk
-IGJ5ICJpZiIgY29uZGl0aW9uYWwsCj4gYnV0IGl0IGlzIHdyb25nLgo+IAo+IFBsZWFzZSBub3Rp
-Y2UgdGhlIGRpZmZlcmVuY2UgYmV0d2Vlbgo+IAo+ICAgICBjb25maWcgQVJDSF9GT08KPiAgICAg
-ICAgICAgICBib29sICJGb28gU29DcyIgaWYgQVJDSF9NVUxUSV9WNwo+IAo+IGFuZAo+IAo+ICAg
-ICBjb25maWcgQVJDSF9GT08KPiAgICAgICAgICAgICBib29sICJGb28gU29DcyIKPiAgICAgICAg
-ICAgICBkZXBlbmRzIG9uIEFSQ0hfTVVMVElfVjcKPiAKPiBUaGVzZSB0d28gYXJlICpub3QqIGVx
-dWl2YWxlbnQhCj4gCj4gSW4gdGhlIGZvcm1lciBzdGF0ZW1lbnQsIGl0IGlzIG5vdCBBUkNIX0ZP
-TywgYnV0IGl0cyBwcm9tcHQgdGhhdAo+IGRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNy4gIFNvLCBp
-dCBpcyBjb21wbGV0ZWx5IHZhbGlkIHRoYXQgQVJDSF9GT08KPiBpcyBzZWxlY3RlZCBieSBhbm90
-aGVyLCBidXQgQVJDSF9NVUxUSV9WNyBpcyBzdGlsbCBkaXNhYmxlZC4gQXMgaXQgaXMKPiBub3Qg
-dW5tZXQgZGVwZW5kZW5jeSwgS2NvbmZpZyBuZXZlciB3YXJucy4gIFRoaXMgaXMgcHJvYmFibHkg
-bm90IHdoYXQKPiB5b3Ugd2FudC4KPiAKPiBUaGUgZm9ybWVyIHNob3VsZCBiZSB1c2VkIG9ubHkg
-d2hlbiB5b3UgbmVlZCB0byBkbyBzbywgYW5kIHlvdSByZWFsbHkKPiB1bmRlcnN0YW5kIHdoYXQg
-eW91IGFyZSBkb2luZy4gIChJbiBtb3N0IGNhc2VzLCBpdCBzaG91bGQgYmUgd3JvbmchKQo+IAo+
-IEZvciBlbmFibGluZy9kaXNhYmxpbmcgc3ViLWFyY2hpdGVjdHVyZXMsIHRoZSBsYXR0ZXIgaXMg
-YWx3YXlzIGNvcnJlY3QuCj4gCj4gQXMgYSBnb29kIHNpZGUgZWZmZWN0LCB0aGlzIGNvbW1pdCBm
-aXhlcyBzb21lIGVudHJpZXMgb3ZlciA4MCBjb2x1bW5zCj4gKG1hY2gtaW14LCBtYWNoLWludGVn
-cmF0b3IsIG1hY2gtbWJldnUpLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hc2FoaXJvIFlhbWFkYSA8
-eWFtYWRhLm1hc2FoaXJvQHNvY2lvbmV4dC5jb20+Cj4gLS0tCj4gCj4gSSBob3BlIHRoaXMgcGF0
-Y2ggaXMgYXBwbGllZCB0byBBUk0tU09DLCBidXQgYW0gQ0NpbmcgS2J1aWxkIE1MCj4gYmVjYXVz
-ZSB0aGUgY29ycmVjdCB1bmRlcnN0YW5kaW5nIG9mIEtjb25maWcgaXMgcmVxdWlyZWQgZm9yIHRo
-aXMgcGF0Y2guCj4gCj4gCj4gIGFyY2gvYXJtL21hY2gtdmV4cHJlc3MvS2NvbmZpZyAgIHwgIDMg
-KystCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC12ZXhwcmVzcy9LY29uZmlnIGIvYXJj
-aC9hcm0vbWFjaC12ZXhwcmVzcy9LY29uZmlnCj4gaW5kZXggMTBmOTM4OS4uMzk4YTI5NyAxMDA2
-NDQKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXZleHByZXNzL0tjb25maWcKPiArKysgYi9hcmNoL2Fy
-bS9tYWNoLXZleHByZXNzL0tjb25maWcKPiBAQCAtMSw1ICsxLDYgQEAKPiAgbWVudWNvbmZpZyBB
-UkNIX1ZFWFBSRVNTCj4gLQlib29sICJBUk0gTHRkLiBWZXJzYXRpbGUgRXhwcmVzcyBmYW1pbHki
-IGlmIEFSQ0hfTVVMVElfVjcKPiArCWJvb2wgIkFSTSBMdGQuIFZlcnNhdGlsZSBFeHByZXNzIGZh
-bWlseSIKPiArCWRlcGVuZHMgb24gQVJDSF9NVUxUSV9WNwo+ICAJc2VsZWN0IEFSQ0hfUkVRVUlS
-RV9HUElPTElCCj4gIAlzZWxlY3QgQVJDSF9TVVBQT1JUU19CSUdfRU5ESUFOCj4gIAlzZWxlY3Qg
-QVJNX0FNQkEKCkZvciB0aGUgdmV4cHJlc3MgcGFydDoKCkFja2VkLWJ5OiBMaXZpdSBEdWRhdSA8
-TGl2aXUuRHVkYXVAYXJtLmNvbT4KCi0tIAo9PT09PT09PT09PT09PT09PT09PQp8IEkgd291bGQg
-bGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdyZSBub3QgfAp8IGdpdmlu
-ZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0tLS0tLS0tLQogICAgwq9c
-Xyjjg4QpXy/CrwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1tZWRpYXRlawo=
+The recently added mt8173 cpufreq driver relies on the cpu topology
+that is always present on ARM64 but optional on ARM32:
+
+drivers/cpufreq/mt8173-cpufreq.c: In function 'mtk_cpufreq_init':
+drivers/cpufreq/mt8173-cpufreq.c:441:30: error: 'cpu_topology' undeclared (first use in this function)
+  cpumask_copy(policy->cpus, &cpu_topology[policy->cpu].core_sibling);
+
+This refines the Kconfig dependencies so that we can still build on
+ARM32, but only if COMPILE_TEST is selected and the CPU topology
+code is present.
+
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index 1582c1c016b0..8014c2307332 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -84,6 +84,7 @@ config ARM_KIRKWOOD_CPUFREQ
+ config ARM_MT8173_CPUFREQ
+ 	bool "Mediatek MT8173 CPUFreq support"
+ 	depends on ARCH_MEDIATEK && REGULATOR
++	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
+ 	depends on !CPU_THERMAL || THERMAL=y
+ 	select PM_OPP
+ 	help
