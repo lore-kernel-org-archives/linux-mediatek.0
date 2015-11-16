@@ -1,132 +1,106 @@
 From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 0/7] add missing of_node_put
-Date: Mon, 16 Nov 2015 12:33:13 +0100
-Message-ID: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
+Subject: [PATCH 2/7] phy: mt65xx-usb3: add missing of_node_put
+Date: Mon, 16 Nov 2015 12:33:15 +0100
+Message-ID: <1447673600-8881-3-git-send-email-Julia.Lawall@lip6.fr>
+References: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447673600-8881-1-git-send-email-Julia.Lawall@lip6.fr>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: kernel-janitors@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Russell King - ARM Linux <linux@arm.linux.org.uk>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Andrew Lunn <andrew@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>, Jason Cooper <jason@lakedaemon.net>
 List-Id: linux-mediatek@lists.infradead.org
 
-The various for_each device_node iterators performs an of_node_get on each
-iteration, so a break out of the loop requires an of_node_put.
+for_each_child_of_node performs an of_node_get on each iteration,
+so a return from the middle of the loop requires an of_node_put.
 
-The complete semantic patch that finds this problem is
-(http://coccinelle.lip6.fr):
+A simplified version of the semantic patch that finds this problem is as
+follows (http://coccinelle.lip6.fr):
 
 // <smpl>
-@r@
-local idexpression n;
-expression e1,e2;
-iterator name for_each_node_by_name, for_each_node_by_type,
-for_each_compatible_node, for_each_matching_node,
-for_each_matching_node_and_match, for_each_child_of_node,
-for_each_available_child_of_node, for_each_node_with_property;
-iterator i;
-statement S;
-expression list [n1] es;
+@@
+expression root,e;
+local idexpression child;
 @@
 
+ for_each_child_of_node(root, child) {
+   ... when != of_node_put(child)
+       when != e = child
 (
-(
-for_each_node_by_name(n,e1) S
+   return child;
 |
-for_each_node_by_type(n,e1) S
-|
-for_each_compatible_node(n,e1,e2) S
-|
-for_each_matching_node(n,e1) S
-|
-for_each_matching_node_and_match(n,e1,e2) S
-|
-for_each_child_of_node(e1,n) S
-|
-for_each_available_child_of_node(e1,n) S
-|
-for_each_node_with_property(n,e1) S
-)
-&
-i(es,n,...) S
-)
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-   return n;
-|
-+  of_node_put(n);
-?  return ...;
+*  return ...;
 )
    ...
  }
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-+  of_node_put(n);
-?  break;
-)
-   ...
- }
-... when != n
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-identifier l;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-+  of_node_put(n);
-?  goto l;
-)
-   ...
- }
-...
-l: ... when != n
 // </smpl>
 
-This semantic patch puts an of_node_put before a return, but in each of
-these patches, we have grouped the multiple resulting of_node_puts into a
-single call at an error exit label.
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
 
 ---
+ drivers/phy/phy-mt65xx-usb3.c |   20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
 
- drivers/phy/phy-bcm-cygnus-pcie.c |   16 ++++++++++++----
- drivers/phy/phy-berlin-sata.c     |   20 ++++++++++++++------
- drivers/phy/phy-brcmstb-sata.c    |   17 ++++++++++++-----
- drivers/phy/phy-miphy28lp.c       |   16 +++++++++++-----
- drivers/phy/phy-miphy365x.c       |   16 +++++++++++-----
- drivers/phy/phy-mt65xx-usb3.c     |   20 +++++++++++++-------
- drivers/phy/phy-rockchip-usb.c    |   17 ++++++++++++-----
- 7 files changed, 85 insertions(+), 37 deletions(-)
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index f30b28b..e427c3b 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -415,7 +415,7 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 	struct resource *sif_res;
+ 	struct mt65xx_u3phy *u3phy;
+ 	struct resource res;
+-	int port;
++	int port, retval;
+ 
+ 	u3phy = devm_kzalloc(dev, sizeof(*u3phy), GFP_KERNEL);
+ 	if (!u3phy)
+@@ -447,31 +447,34 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 	for_each_child_of_node(np, child_np) {
+ 		struct mt65xx_phy_instance *instance;
+ 		struct phy *phy;
+-		int retval;
+ 
+ 		instance = devm_kzalloc(dev, sizeof(*instance), GFP_KERNEL);
+-		if (!instance)
+-			return -ENOMEM;
++		if (!instance) {
++			retval = -ENOMEM;
++			goto put_child;
++		}
+ 
+ 		u3phy->phys[port] = instance;
+ 
+ 		phy = devm_phy_create(dev, child_np, &mt65xx_u3phy_ops);
+ 		if (IS_ERR(phy)) {
+ 			dev_err(dev, "failed to create phy\n");
+-			return PTR_ERR(phy);
++			retval = PTR_ERR(phy);
++			goto put_child;
+ 		}
+ 
+ 		retval = of_address_to_resource(child_np, 0, &res);
+ 		if (retval) {
+ 			dev_err(dev, "failed to get address resource(id-%d)\n",
+ 				port);
+-			return retval;
++			goto put_child;
+ 		}
+ 
+ 		instance->port_base = devm_ioremap_resource(&phy->dev, &res);
+ 		if (IS_ERR(instance->port_base)) {
+ 			dev_err(dev, "failed to remap phy regs\n");
+-			return PTR_ERR(instance->port_base);
++			retval = PTR_ERR(instance->port_base);
++			goto put_child;
+ 		}
+ 
+ 		instance->phy = phy;
+@@ -483,6 +486,9 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 	provider = devm_of_phy_provider_register(dev, mt65xx_phy_xlate);
+ 
+ 	return PTR_ERR_OR_ZERO(provider);
++put_child:
++	of_node_put(child_np);
++	return retval;
+ }
+ 
+ static const struct of_device_id mt65xx_u3phy_id_table[] = {
