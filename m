@@ -1,53 +1,49 @@
-From: Bayi Cheng <bayi.cheng@mediatek.com>
-Subject: [PATCH v7 2/2] arm64: dts: mt8173: Add nor flash node
-Date: Tue, 17 Nov 2015 17:46:16 +0800
-Message-ID: <1447753576-28528-3-git-send-email-bayi.cheng@mediatek.com>
-References: <1447753576-28528-1-git-send-email-bayi.cheng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] regulator: mt6311: MT6311_REGULATOR needs to select
+ REGMAP_I2C
+Date: Tue, 17 Nov 2015 11:09:12 +0100
+Message-ID: <564AFCC8.6000604@gmail.com>
+References: <1447749409-19900-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447753576-28528-1-git-send-email-bayi.cheng@mediatek.com>
+In-Reply-To: <1447749409-19900-1-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanguardiasur.com.ar, Bayi Cheng <bayi.cheng@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>, Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Mediatek nor flash node
 
-Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
-Acked-by: Brian Norris <computersforpeace@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 4dd5f93..7988656 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -387,7 +387,23 @@
- 			status = "disabled";
- 		};
- 
--		i2c3: i2c@11010000 {
-+		nor_flash: spi@1100d000 {
-+			compatible = "mediatek,mt8173-nor";
-+			reg = <0 0x1100d000 0 0xe0>;
-+			clocks = <&pericfg CLK_PERI_SPI>,
-+				 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
-+			clock-names = "spi", "sf";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			status = "disabled";
-+
-+			flash@0 {
-+				compatible = "jedec,spi-nor";
-+				reg = <0>;
-+			};
-+		};
-+
-+		i2c3: i2c3@11010000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11010000 0 0x70>,
- 			      <0 0x11000280 0 0x80>;
--- 
-1.8.1.1.dirty
+On 17/11/15 09:36, Henry Chen wrote:
+> This patch fix the below build error:
+> drivers/regulator/mt6311-regulator.c:111: undefined reference to `__devm_regmap_init_i2c'
+>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+>   drivers/regulator/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+> index 8df0b0e..0067620 100644
+> --- a/drivers/regulator/Kconfig
+> +++ b/drivers/regulator/Kconfig
+> @@ -446,6 +446,7 @@ config REGULATOR_MC13892
+>   config REGULATOR_MT6311
+>   	tristate "MediaTek MT6311 PMIC"
+>   	depends on I2C
+> +	select REGMAP_I2C
+>   	help
+>   	  Say y here to select this option to enable the power regulator of
+>   	  MediaTek MT6311 PMIC.
+>
+
+This should also be added to v4.3
+I propose that you resend it adding the tag:
+Cc: stable@vger.kernel.org
+
+as explained in Documentation/stable_kernel_rules.txt
+
+Regards,
+Matthias
