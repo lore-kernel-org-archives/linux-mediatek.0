@@ -1,1555 +1,542 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v12 2/3] xhci: mediatek: support MTK xHCI host controller
-Date: Tue, 17 Nov 2015 17:18:40 +0800
-Message-ID: <1447751921-26746-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1447751921-26746-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Bayi Cheng <bayi.cheng@mediatek.com>
+Subject: [PATCH v7 1/2] mtd: mtk-nor: mtk serial flash controller driver
+Date: Tue, 17 Nov 2015 17:46:15 +0800
+Message-ID: <1447753576-28528-2-git-send-email-bayi.cheng@mediatek.com>
+References: <1447753576-28528-1-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447751921-26746-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1447753576-28528-1-git-send-email-bayi.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, srv_heupstream@mediatek.com, jteki@openedev.com, ezequiel@vanguardiasur.com.ar, Bayi Cheng <bayi.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-There some vendor quirks for MTK xhci host controller:
-1. It defines some extra SW scheduling parameters for HW
-  to minimize the scheduling effort for synchronous and
-  interrupt endpoints. The parameters are put into reseved
-  DWs of slot context and endpoint context.
-2. Its IMODI unit for Interrupter Moderation register is
-  8 times as much as that defined in xHCI spec.
-3. Its TDS in  Normal TRB defines a number of packets that
-  remains to be transferred for a TD after processing all
-  Max packets in all previous TRBs.
+add spi nor flash driver for mediatek controller
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Tested-by: Daniel Thompson <daniel.thompson@linaro.org>
-Reviewed-by: Daniel Thompson <daniel.thompson@linaro.org>
+Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
 ---
- drivers/usb/host/Kconfig        |   9 +
- drivers/usb/host/Makefile       |   4 +
- drivers/usb/host/xhci-mtk-sch.c | 415 ++++++++++++++++++++++
- drivers/usb/host/xhci-mtk.c     | 763 ++++++++++++++++++++++++++++++++++++++++
- drivers/usb/host/xhci-mtk.h     | 162 +++++++++
- drivers/usb/host/xhci-ring.c    |  16 +-
- drivers/usb/host/xhci.c         |  19 +-
- drivers/usb/host/xhci.h         |   1 +
- 8 files changed, 1383 insertions(+), 6 deletions(-)
- create mode 100644 drivers/usb/host/xhci-mtk-sch.c
- create mode 100644 drivers/usb/host/xhci-mtk.c
- create mode 100644 drivers/usb/host/xhci-mtk.h
+ drivers/mtd/spi-nor/Kconfig       |   7 +
+ drivers/mtd/spi-nor/Makefile      |   1 +
+ drivers/mtd/spi-nor/mtk-quadspi.c | 483 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 491 insertions(+)
+ create mode 100644 drivers/mtd/spi-nor/mtk-quadspi.c
 
-diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
-index 3bb0887..daa563f 100644
---- a/drivers/usb/host/Kconfig
-+++ b/drivers/usb/host/Kconfig
-@@ -41,6 +41,15 @@ config USB_XHCI_PLATFORM
+diff --git a/drivers/mtd/spi-nor/Kconfig b/drivers/mtd/spi-nor/Kconfig
+index 2fe2a7e..0dc9275 100644
+--- a/drivers/mtd/spi-nor/Kconfig
++++ b/drivers/mtd/spi-nor/Kconfig
+@@ -7,6 +7,13 @@ menuconfig MTD_SPI_NOR
  
- 	  If unsure, say N.
+ if MTD_SPI_NOR
  
-+config USB_XHCI_MTK
-+	tristate "xHCI support for Mediatek MT65xx"
-+	select MFD_SYSCON
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	---help---
-+	  Say 'Y' to enable the support for the xHCI host controller
-+	  found in Mediatek MT65xx SoCs.
-+	  If unsure, say N.
++config MTD_MT81xx_NOR
++	tristate "Mediatek MT81xx SPI NOR flash controller"
++	help
++	  This enables access to SPI NOR flash, using MT81xx SPI NOR flash
++	  controller. This controller does not support generic SPI BUS, it only
++	  supports SPI NOR Flash.
 +
- config USB_XHCI_MVEBU
- 	tristate "xHCI support for Marvell Armada 375/38x"
- 	select USB_XHCI_PLATFORM
-diff --git a/drivers/usb/host/Makefile b/drivers/usb/host/Makefile
-index e7558ab..65a06b4 100644
---- a/drivers/usb/host/Makefile
-+++ b/drivers/usb/host/Makefile
-@@ -13,6 +13,9 @@ fhci-$(CONFIG_FHCI_DEBUG) += fhci-dbg.o
- xhci-hcd-y := xhci.o xhci-mem.o
- xhci-hcd-y += xhci-ring.o xhci-hub.o xhci-dbg.o
- xhci-hcd-y += xhci-trace.o
-+ifneq ($(CONFIG_USB_XHCI_MTK), )
-+	xhci-hcd-y += xhci-mtk-sch.o
-+endif
- 
- xhci-plat-hcd-y := xhci-plat.o
- ifneq ($(CONFIG_USB_XHCI_MVEBU), )
-@@ -64,6 +67,7 @@ obj-$(CONFIG_USB_FHCI_HCD)	+= fhci.o
- obj-$(CONFIG_USB_XHCI_HCD)	+= xhci-hcd.o
- obj-$(CONFIG_USB_XHCI_PCI)	+= xhci-pci.o
- obj-$(CONFIG_USB_XHCI_PLATFORM) += xhci-plat-hcd.o
-+obj-$(CONFIG_USB_XHCI_MTK)	+= xhci-mtk.o
- obj-$(CONFIG_USB_SL811_HCD)	+= sl811-hcd.o
- obj-$(CONFIG_USB_SL811_CS)	+= sl811_cs.o
- obj-$(CONFIG_USB_U132_HCD)	+= u132-hcd.o
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+ config MTD_SPI_NOR_USE_4K_SECTORS
+ 	bool "Use small 4096 B erase sectors"
+ 	default y
+diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
+index e53333e..0bf3a7f8 100644
+--- a/drivers/mtd/spi-nor/Makefile
++++ b/drivers/mtd/spi-nor/Makefile
+@@ -1,3 +1,4 @@
+ obj-$(CONFIG_MTD_SPI_NOR)	+= spi-nor.o
+ obj-$(CONFIG_SPI_FSL_QUADSPI)	+= fsl-quadspi.o
++obj-$(CONFIG_MTD_MT81xx_NOR)    += mtk-quadspi.o
+ obj-$(CONFIG_SPI_NXP_SPIFI)	+= nxp-spifi.o
+diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
 new file mode 100644
-index 0000000..c30de7c
+index 0000000..c12bb66
 --- /dev/null
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -0,0 +1,415 @@
++++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+@@ -0,0 +1,483 @@
 +/*
 + * Copyright (c) 2015 MediaTek Inc.
-+ * Author:
-+ *  Zhigang.Wei <zhigang.wei@mediatek.com>
-+ *  Chunfeng.Yun <chunfeng.yun@mediatek.com>
++ * Author: Bayi Cheng <bayi.cheng@mediatek.com>
 + *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
 + *
 + * This program is distributed in the hope that it will be useful,
 + * but WITHOUT ANY WARRANTY; without even the implied warranty of
 + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 + * GNU General Public License for more details.
-+ *
-+ */
-+
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/slab.h>
-+
-+#include "xhci.h"
-+#include "xhci-mtk.h"
-+
-+#define SS_BW_BOUNDARY	51000
-+/* table 5-5. High-speed Isoc Transaction Limits in usb_20 spec */
-+#define HS_BW_BOUNDARY	6144
-+/* usb2 spec section11.18.1: at most 188 FS bytes per microframe */
-+#define FS_PAYLOAD_MAX 188
-+
-+/* mtk scheduler bitmasks */
-+#define EP_BPKTS(p)	((p) & 0x3f)
-+#define EP_BCSCOUNT(p)	(((p) & 0x7) << 8)
-+#define EP_BBM(p)	((p) << 11)
-+#define EP_BOFFSET(p)	((p) & 0x3fff)
-+#define EP_BREPEAT(p)	(((p) & 0x7fff) << 16)
-+
-+static int is_fs_or_ls(enum usb_device_speed speed)
-+{
-+	return speed == USB_SPEED_FULL || speed == USB_SPEED_LOW;
-+}
-+
-+/*
-+* get the index of bandwidth domains array which @ep belongs to.
-+*
-+* the bandwidth domain array is saved to @sch_array of struct xhci_hcd_mtk,
-+* each HS root port is treated as a single bandwidth domain,
-+* but each SS root port is treated as two bandwidth domains, one for IN eps,
-+* one for OUT eps.
-+* @real_port value is defined as follow according to xHCI spec:
-+* 1 for SSport0, ..., N+1 for SSportN, N+2 for HSport0, N+3 for HSport1, etc
-+* so the bandwidth domain array is organized as follow for simplification:
-+* SSport0-OUT, SSport0-IN, ..., SSportX-OUT, SSportX-IN, HSport0, ..., HSportY
-+*/
-+static int get_bw_index(struct xhci_hcd *xhci, struct usb_device *udev,
-+	struct usb_host_endpoint *ep)
-+{
-+	struct xhci_virt_device *virt_dev;
-+	int bw_index;
-+
-+	virt_dev = xhci->devs[udev->slot_id];
-+
-+	if (udev->speed == USB_SPEED_SUPER) {
-+		if (usb_endpoint_dir_out(&ep->desc))
-+			bw_index = (virt_dev->real_port - 1) * 2;
-+		else
-+			bw_index = (virt_dev->real_port - 1) * 2 + 1;
-+	} else {
-+		/* add one more for each SS port */
-+		bw_index = virt_dev->real_port + xhci->num_usb3_ports - 1;
-+	}
-+
-+	return bw_index;
-+}
-+
-+static void setup_sch_info(struct usb_device *udev,
-+		struct xhci_ep_ctx *ep_ctx, struct mu3h_sch_ep_info *sch_ep)
-+{
-+	u32 ep_type;
-+	u32 ep_interval;
-+	u32 max_packet_size;
-+	u32 max_burst;
-+	u32 mult;
-+	u32 esit_pkts;
-+
-+	ep_type = CTX_TO_EP_TYPE(le32_to_cpu(ep_ctx->ep_info2));
-+	ep_interval = CTX_TO_EP_INTERVAL(le32_to_cpu(ep_ctx->ep_info));
-+	max_packet_size = MAX_PACKET_DECODED(le32_to_cpu(ep_ctx->ep_info2));
-+	max_burst = CTX_TO_MAX_BURST(le32_to_cpu(ep_ctx->ep_info2));
-+	mult = CTX_TO_EP_MULT(le32_to_cpu(ep_ctx->ep_info));
-+
-+	sch_ep->esit = 1 << ep_interval;
-+	sch_ep->offset = 0;
-+	sch_ep->burst_mode = 0;
-+
-+	if (udev->speed == USB_SPEED_HIGH) {
-+		sch_ep->cs_count = 0;
-+
-+		/*
-+		 * usb_20 spec section5.9
-+		 * a single microframe is enough for HS synchromous endpoints
-+		 * in a interval
-+		 */
-+		sch_ep->num_budget_microframes = 1;
-+		sch_ep->repeat = 0;
-+
-+		/*
-+		 * xHCI spec section6.2.3.4
-+		 * @max_burst is the number of additional transactions
-+		 * opportunities per microframe
-+		 */
-+		sch_ep->pkts = max_burst + 1;
-+		sch_ep->bw_cost_per_microframe = max_packet_size * sch_ep->pkts;
-+	} else if (udev->speed == USB_SPEED_SUPER) {
-+		/* usb3_r1 spec section4.4.7 & 4.4.8 */
-+		sch_ep->cs_count = 0;
-+		esit_pkts = (mult + 1) * (max_burst + 1);
-+		if (ep_type == INT_IN_EP || ep_type == INT_OUT_EP) {
-+			sch_ep->pkts = esit_pkts;
-+			sch_ep->num_budget_microframes = 1;
-+			sch_ep->repeat = 0;
-+		}
-+
-+		if (ep_type == ISOC_IN_EP || ep_type == ISOC_OUT_EP) {
-+			if (esit_pkts <= sch_ep->esit)
-+				sch_ep->pkts = 1;
-+			else
-+				sch_ep->pkts = roundup_pow_of_two(esit_pkts)
-+					/ sch_ep->esit;
-+
-+			sch_ep->num_budget_microframes =
-+				DIV_ROUND_UP(esit_pkts, sch_ep->pkts);
-+
-+			if (sch_ep->num_budget_microframes > 1)
-+				sch_ep->repeat = 1;
-+			else
-+				sch_ep->repeat = 0;
-+		}
-+		sch_ep->bw_cost_per_microframe = max_packet_size * sch_ep->pkts;
-+	} else if (is_fs_or_ls(udev->speed)) {
-+
-+		/*
-+		 * usb_20 spec section11.18.4
-+		 * assume worst cases
-+		 */
-+		sch_ep->repeat = 0;
-+		sch_ep->pkts = 1; /* at most one packet for each microframe */
-+		if (ep_type == INT_IN_EP || ep_type == INT_OUT_EP) {
-+			sch_ep->cs_count = 3; /* at most need 3 CS*/
-+			/* one for SS and one for budgeted transaction */
-+			sch_ep->num_budget_microframes = sch_ep->cs_count + 2;
-+			sch_ep->bw_cost_per_microframe = max_packet_size;
-+		}
-+		if (ep_type == ISOC_OUT_EP) {
-+
-+			/*
-+			 * the best case FS budget assumes that 188 FS bytes
-+			 * occur in each microframe
-+			 */
-+			sch_ep->num_budget_microframes = DIV_ROUND_UP(
-+				max_packet_size, FS_PAYLOAD_MAX);
-+			sch_ep->bw_cost_per_microframe = FS_PAYLOAD_MAX;
-+			sch_ep->cs_count = sch_ep->num_budget_microframes;
-+		}
-+		if (ep_type == ISOC_IN_EP) {
-+			/* at most need additional two CS. */
-+			sch_ep->cs_count = DIV_ROUND_UP(
-+				max_packet_size, FS_PAYLOAD_MAX) + 2;
-+			sch_ep->num_budget_microframes = sch_ep->cs_count + 2;
-+			sch_ep->bw_cost_per_microframe = FS_PAYLOAD_MAX;
-+		}
-+	}
-+}
-+
-+/* Get maximum bandwidth when we schedule at offset slot. */
-+static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
-+	struct mu3h_sch_ep_info *sch_ep, u32 offset)
-+{
-+	u32 num_esit;
-+	u32 max_bw = 0;
-+	int i;
-+	int j;
-+
-+	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
-+	for (i = 0; i < num_esit; i++) {
-+		u32 base = offset + i * sch_ep->esit;
-+
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-+			if (sch_bw->bus_bw[base + j] > max_bw)
-+				max_bw = sch_bw->bus_bw[base + j];
-+		}
-+	}
-+	return max_bw;
-+}
-+
-+static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
-+	struct mu3h_sch_ep_info *sch_ep, int bw_cost)
-+{
-+	u32 num_esit;
-+	u32 base;
-+	int i;
-+	int j;
-+
-+	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
-+	for (i = 0; i < num_esit; i++) {
-+		base = sch_ep->offset + i * sch_ep->esit;
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++)
-+			sch_bw->bus_bw[base + j] += bw_cost;
-+	}
-+}
-+
-+static int check_sch_bw(struct usb_device *udev,
-+	struct mu3h_sch_bw_info *sch_bw, struct mu3h_sch_ep_info *sch_ep)
-+{
-+	u32 offset;
-+	u32 esit;
-+	u32 num_budget_microframes;
-+	u32 min_bw;
-+	u32 min_index;
-+	u32 worst_bw;
-+	u32 bw_boundary;
-+
-+	if (sch_ep->esit > XHCI_MTK_MAX_ESIT)
-+		sch_ep->esit = XHCI_MTK_MAX_ESIT;
-+
-+	esit = sch_ep->esit;
-+	num_budget_microframes = sch_ep->num_budget_microframes;
-+
-+	/*
-+	 * Search through all possible schedule microframes.
-+	 * and find a microframe where its worst bandwidth is minimum.
-+	 */
-+	min_bw = ~0;
-+	min_index = 0;
-+	for (offset = 0; offset < esit; offset++) {
-+		if ((offset + num_budget_microframes) > sch_ep->esit)
-+			break;
-+
-+		/*
-+		 * usb_20 spec section11.18:
-+		 * must never schedule Start-Split in Y6
-+		 */
-+		if (is_fs_or_ls(udev->speed) && (offset % 8 == 6))
-+			continue;
-+
-+		worst_bw = get_max_bw(sch_bw, sch_ep, offset);
-+		if (min_bw > worst_bw) {
-+			min_bw = worst_bw;
-+			min_index = offset;
-+		}
-+		if (min_bw == 0)
-+			break;
-+	}
-+	sch_ep->offset = min_index;
-+
-+	bw_boundary = (udev->speed == USB_SPEED_SUPER)
-+				? SS_BW_BOUNDARY : HS_BW_BOUNDARY;
-+
-+	/* check bandwidth */
-+	if (min_bw + sch_ep->bw_cost_per_microframe > bw_boundary)
-+		return -ERANGE;
-+
-+	/* update bus bandwidth info */
-+	update_bus_bw(sch_bw, sch_ep, sch_ep->bw_cost_per_microframe);
-+
-+	return 0;
-+}
-+
-+static bool need_bw_sch(struct usb_host_endpoint *ep,
-+	enum usb_device_speed speed, int has_tt)
-+{
-+	/* only for periodic endpoints */
-+	if (usb_endpoint_xfer_control(&ep->desc)
-+		|| usb_endpoint_xfer_bulk(&ep->desc))
-+		return false;
-+
-+	/*
-+	 * for LS & FS periodic endpoints which its device don't attach
-+	 * to TT are also ignored, root-hub will schedule them directly
-+	 */
-+	if (is_fs_or_ls(speed) && !has_tt)
-+		return false;
-+
-+	return true;
-+}
-+
-+int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
-+{
-+	struct mu3h_sch_bw_info *sch_array;
-+	int num_usb_bus;
-+	int i;
-+
-+	/* ss IN and OUT are separated */
-+	num_usb_bus = mtk->num_u3_ports * 2 + mtk->num_u2_ports;
-+
-+	sch_array = kcalloc(num_usb_bus, sizeof(*sch_array), GFP_KERNEL);
-+	if (sch_array == NULL)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < num_usb_bus; i++)
-+		INIT_LIST_HEAD(&sch_array[i].bw_ep_list);
-+
-+	mtk->sch_array = sch_array;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_sch_init);
-+
-+void xhci_mtk_sch_exit(struct xhci_hcd_mtk *mtk)
-+{
-+	kfree(mtk->sch_array);
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_sch_exit);
-+
-+int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-+		struct usb_host_endpoint *ep)
-+{
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	struct xhci_hcd *xhci;
-+	struct xhci_ep_ctx *ep_ctx;
-+	struct xhci_slot_ctx *slot_ctx;
-+	struct xhci_virt_device *virt_dev;
-+	struct mu3h_sch_bw_info *sch_bw;
-+	struct mu3h_sch_ep_info *sch_ep;
-+	struct mu3h_sch_bw_info *sch_array;
-+	unsigned int ep_index;
-+	int bw_index;
-+	int ret = 0;
-+
-+	xhci = hcd_to_xhci(hcd);
-+	virt_dev = xhci->devs[udev->slot_id];
-+	ep_index = xhci_get_endpoint_index(&ep->desc);
-+	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
-+	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
-+	sch_array = mtk->sch_array;
-+
-+	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpkt:%d, dir:%d, ep:%p\n",
-+		__func__, usb_endpoint_type(&ep->desc), udev->speed,
-+		GET_MAX_PACKET(usb_endpoint_maxp(&ep->desc)),
-+		usb_endpoint_dir_in(&ep->desc), ep);
-+
-+	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT))
-+		return 0;
-+
-+	bw_index = get_bw_index(xhci, udev, ep);
-+	sch_bw = &sch_array[bw_index];
-+
-+	sch_ep = kzalloc(sizeof(struct mu3h_sch_ep_info), GFP_NOIO);
-+	if (!sch_ep)
-+		return -ENOMEM;
-+
-+	setup_sch_info(udev, ep_ctx, sch_ep);
-+
-+	ret = check_sch_bw(udev, sch_bw, sch_ep);
-+	if (ret) {
-+		xhci_err(xhci, "Not enough bandwidth!\n");
-+		kfree(sch_ep);
-+		return -ENOSPC;
-+	}
-+
-+	list_add_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
-+	sch_ep->ep = ep;
-+
-+	ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(sch_ep->pkts)
-+		| EP_BCSCOUNT(sch_ep->cs_count) | EP_BBM(sch_ep->burst_mode));
-+	ep_ctx->reserved[1] |= cpu_to_le32(EP_BOFFSET(sch_ep->offset)
-+		| EP_BREPEAT(sch_ep->repeat));
-+
-+	xhci_dbg(xhci, " PKTS:%x, CSCOUNT:%x, BM:%x, OFFSET:%x, REPEAT:%x\n",
-+			sch_ep->pkts, sch_ep->cs_count, sch_ep->burst_mode,
-+			sch_ep->offset, sch_ep->repeat);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_add_ep_quirk);
-+
-+void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-+		struct usb_host_endpoint *ep)
-+{
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	struct xhci_hcd *xhci;
-+	struct xhci_slot_ctx *slot_ctx;
-+	struct xhci_virt_device *virt_dev;
-+	struct mu3h_sch_bw_info *sch_array;
-+	struct mu3h_sch_bw_info *sch_bw;
-+	struct mu3h_sch_ep_info *sch_ep;
-+	int bw_index;
-+
-+	xhci = hcd_to_xhci(hcd);
-+	virt_dev = xhci->devs[udev->slot_id];
-+	slot_ctx = xhci_get_slot_ctx(xhci, virt_dev->in_ctx);
-+	sch_array = mtk->sch_array;
-+
-+	xhci_dbg(xhci, "%s() type:%d, speed:%d, mpks:%d, dir:%d, ep:%p\n",
-+		__func__, usb_endpoint_type(&ep->desc), udev->speed,
-+		GET_MAX_PACKET(usb_endpoint_maxp(&ep->desc)),
-+		usb_endpoint_dir_in(&ep->desc), ep);
-+
-+	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT))
-+		return;
-+
-+	bw_index = get_bw_index(xhci, udev, ep);
-+	sch_bw = &sch_array[bw_index];
-+
-+	list_for_each_entry(sch_ep, &sch_bw->bw_ep_list, endpoint) {
-+		if (sch_ep->ep == ep) {
-+			update_bus_bw(sch_bw, sch_ep,
-+				-sch_ep->bw_cost_per_microframe);
-+			list_del(&sch_ep->endpoint);
-+			kfree(sch_ep);
-+			break;
-+		}
-+	}
-+}
-+EXPORT_SYMBOL_GPL(xhci_mtk_drop_ep_quirk);
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-new file mode 100644
-index 0000000..c9ab6a4
---- /dev/null
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -0,0 +1,763 @@
-+/*
-+ * MediaTek xHCI Host Controller Driver
-+ *
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author:
-+ *  Chunfeng Yun <chunfeng.yun@mediatek.com>
-+ *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
 + */
 +
 +#include <linux/clk.h>
-+#include <linux/dma-mapping.h>
++#include <linux/delay.h>
++#include <linux/device.h>
++#include <linux/init.h>
++#include <linux/io.h>
 +#include <linux/iopoll.h>
-+#include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
++#include <linux/ioport.h>
++#include <linux/math64.h>
 +#include <linux/module.h>
++#include <linux/mtd/mtd.h>
++#include <linux/mutex.h>
 +#include <linux/of.h>
-+#include <linux/phy/phy.h>
++#include <linux/of_device.h>
++#include <linux/pinctrl/consumer.h>
 +#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
++#include <linux/slab.h>
++#include <linux/mtd/mtd.h>
++#include <linux/mtd/partitions.h>
++#include <linux/mtd/spi-nor.h>
 +
-+#include "xhci.h"
-+#include "xhci-mtk.h"
++#define MTK_NOR_CMD_REG			0x00
++#define MTK_NOR_CNT_REG			0x04
++#define MTK_NOR_RDSR_REG		0x08
++#define MTK_NOR_RDATA_REG		0x0c
++#define MTK_NOR_RADR0_REG		0x10
++#define MTK_NOR_RADR1_REG		0x14
++#define MTK_NOR_RADR2_REG		0x18
++#define MTK_NOR_WDATA_REG		0x1c
++#define MTK_NOR_PRGDATA0_REG		0x20
++#define MTK_NOR_PRGDATA1_REG		0x24
++#define MTK_NOR_PRGDATA2_REG		0x28
++#define MTK_NOR_PRGDATA3_REG		0x2c
++#define MTK_NOR_PRGDATA4_REG		0x30
++#define MTK_NOR_PRGDATA5_REG		0x34
++#define MTK_NOR_SHREG0_REG		0x38
++#define MTK_NOR_SHREG1_REG		0x3c
++#define MTK_NOR_SHREG2_REG		0x40
++#define MTK_NOR_SHREG3_REG		0x44
++#define MTK_NOR_SHREG4_REG		0x48
++#define MTK_NOR_SHREG5_REG		0x4c
++#define MTK_NOR_SHREG6_REG		0x50
++#define MTK_NOR_SHREG7_REG		0x54
++#define MTK_NOR_SHREG8_REG		0x58
++#define MTK_NOR_SHREG9_REG		0x5c
++#define MTK_NOR_CFG1_REG		0x60
++#define MTK_NOR_CFG2_REG		0x64
++#define MTK_NOR_CFG3_REG		0x68
++#define MTK_NOR_STATUS0_REG		0x70
++#define MTK_NOR_STATUS1_REG		0x74
++#define MTK_NOR_STATUS2_REG		0x78
++#define MTK_NOR_STATUS3_REG		0x7c
++#define MTK_NOR_FLHCFG_REG		0x84
++#define MTK_NOR_TIME_REG		0x94
++#define MTK_NOR_PP_DATA_REG		0x98
++#define MTK_NOR_PREBUF_STUS_REG		0x9c
++#define MTK_NOR_DELSEL0_REG		0xa0
++#define MTK_NOR_DELSEL1_REG		0xa4
++#define MTK_NOR_INTRSTUS_REG		0xa8
++#define MTK_NOR_INTREN_REG		0xac
++#define MTK_NOR_CHKSUM_CTL_REG		0xb8
++#define MTK_NOR_CHKSUM_REG		0xbc
++#define MTK_NOR_CMD2_REG		0xc0
++#define MTK_NOR_WRPROT_REG		0xc4
++#define MTK_NOR_RADR3_REG		0xc8
++#define MTK_NOR_DUAL_REG		0xcc
++#define MTK_NOR_DELSEL2_REG		0xd0
++#define MTK_NOR_DELSEL3_REG		0xd4
++#define MTK_NOR_DELSEL4_REG		0xd8
 +
-+/* ip_pw_ctrl0 register */
-+#define CTRL0_IP_SW_RST	BIT(0)
++/* commands for mtk nor controller */
++#define MTK_NOR_READ_CMD		0x0
++#define MTK_NOR_RDSR_CMD		0x2
++#define MTK_NOR_PRG_CMD			0x4
++#define MTK_NOR_WR_CMD			0x10
++#define MTK_NOR_PIO_WR_CMD		0x90
++#define MTK_NOR_WRSR_CMD		0x20
++#define MTK_NOR_PIO_READ_CMD		0x81
++#define MTK_NOR_WR_BUF_ENABLE		0x1
++#define MTK_NOR_WR_BUF_DISABLE		0x0
++#define MTK_NOR_ENABLE_SF_CMD		0x30
++#define MTK_NOR_DUAD_ADDR_EN		0x8
++#define MTK_NOR_QUAD_READ_EN		0x4
++#define MTK_NOR_DUAL_ADDR_EN		0x2
++#define MTK_NOR_DUAL_READ_EN		0x1
++#define MTK_NOR_DUAL_DISABLE		0x0
++#define MTK_NOR_FAST_READ		0x1
 +
-+/* ip_pw_ctrl1 register */
-+#define CTRL1_IP_HOST_PDN	BIT(0)
++#define SFLASH_WRBUF_SIZE		128
 +
-+/* ip_pw_ctrl2 register */
-+#define CTRL2_IP_DEV_PDN	BIT(0)
++/* Can shift up to 48 bits (6 bytes) of TX/RX */
++#define MTK_NOR_MAX_SHIFT		6
++/* Helpers for accessing the program data / shift data registers */
++#define MTK_NOR_PRG_REG(n)		(MTK_NOR_PRGDATA0_REG + 4 * (n))
++#define MTK_NOR_SHREG(n)		(MTK_NOR_SHREG0_REG + 4 * (n))
 +
-+/* ip_pw_sts1 register */
-+#define STS1_IP_SLEEP_STS	BIT(30)
-+#define STS1_XHCI_RST		BIT(11)
-+#define STS1_SYS125_RST	BIT(10)
-+#define STS1_REF_RST		BIT(8)
-+#define STS1_SYSPLL_STABLE	BIT(0)
-+
-+/* ip_xhci_cap register */
-+#define CAP_U3_PORT_NUM(p)	((p) & 0xff)
-+#define CAP_U2_PORT_NUM(p)	(((p) >> 8) & 0xff)
-+
-+/* u3_ctrl_p register */
-+#define CTRL_U3_PORT_HOST_SEL	BIT(2)
-+#define CTRL_U3_PORT_PDN	BIT(1)
-+#define CTRL_U3_PORT_DIS	BIT(0)
-+
-+/* u2_ctrl_p register */
-+#define CTRL_U2_PORT_HOST_SEL	BIT(2)
-+#define CTRL_U2_PORT_PDN	BIT(1)
-+#define CTRL_U2_PORT_DIS	BIT(0)
-+
-+/* u2_phy_pll register */
-+#define CTRL_U2_FORCE_PLL_STB	BIT(28)
-+
-+#define PERI_WK_CTRL0		0x400
-+#define UWK_CTR0_0P_LS_PE	BIT(8)  /* posedge */
-+#define UWK_CTR0_0P_LS_NE	BIT(7)  /* negedge for 0p linestate*/
-+#define UWK_CTL1_1P_LS_C(x)	(((x) & 0xf) << 1)
-+#define UWK_CTL1_1P_LS_E	BIT(0)
-+
-+#define PERI_WK_CTRL1		0x404
-+#define UWK_CTL1_IS_C(x)	(((x) & 0xf) << 26)
-+#define UWK_CTL1_IS_E		BIT(25)
-+#define UWK_CTL1_0P_LS_C(x)	(((x) & 0xf) << 21)
-+#define UWK_CTL1_0P_LS_E	BIT(20)
-+#define UWK_CTL1_IDDIG_C(x)	(((x) & 0xf) << 11)  /* cycle debounce */
-+#define UWK_CTL1_IDDIG_E	BIT(10) /* enable debounce */
-+#define UWK_CTL1_IDDIG_P	BIT(9)  /* polarity */
-+#define UWK_CTL1_0P_LS_P	BIT(7)
-+#define UWK_CTL1_IS_P		BIT(6)  /* polarity for ip sleep */
-+
-+enum ssusb_wakeup_src {
-+	SSUSB_WK_IP_SLEEP = 1,
-+	SSUSB_WK_LINE_STATE = 2,
++struct mt8173_nor {
++	struct spi_nor nor;
++	struct device *dev;
++	void __iomem *base;	/* nor flash base address */
++	struct clk *spi_clk;
++	struct clk *nor_clk;
 +};
 +
-+static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
++static void mt8173_nor_set_read_mode(struct mt8173_nor *mt8173_nor)
 +{
-+	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
-+	u32 value, check_val;
-+	int ret;
-+	int i;
++	struct spi_nor *nor = &mt8173_nor->nor;
 +
-+	/* power on host ip */
-+	value = readl(&ippc->ip_pw_ctr1);
-+	value &= ~CTRL1_IP_HOST_PDN;
-+	writel(value, &ippc->ip_pw_ctr1);
++	switch (nor->flash_read) {
++	case SPI_NOR_FAST:
++		writeb(nor->read_opcode, mt8173_nor->base +
++		       MTK_NOR_PRGDATA3_REG);
++		writeb(MTK_NOR_FAST_READ, mt8173_nor->base +
++		       MTK_NOR_CFG1_REG);
++		break;
++	case SPI_NOR_DUAL:
++		writeb(nor->read_opcode, mt8173_nor->base +
++		       MTK_NOR_PRGDATA3_REG);
++		writeb(MTK_NOR_DUAL_READ_EN, mt8173_nor->base +
++		       MTK_NOR_DUAL_REG);
++		break;
++	case SPI_NOR_QUAD:
++		writeb(nor->read_opcode, mt8173_nor->base +
++		       MTK_NOR_PRGDATA4_REG);
++		writeb(MTK_NOR_QUAD_READ_EN, mt8173_nor->base +
++		       MTK_NOR_DUAL_REG);
++		break;
++	default:
++		writeb(MTK_NOR_DUAL_DISABLE, mt8173_nor->base +
++		       MTK_NOR_DUAL_REG);
++		break;
++	}
++}
 +
-+	/* power on and enable all u3 ports */
-+	for (i = 0; i < mtk->num_u3_ports; i++) {
-+		value = readl(&ippc->u3_ctrl_p[i]);
-+		value &= ~(CTRL_U3_PORT_PDN | CTRL_U3_PORT_DIS);
-+		value |= CTRL_U3_PORT_HOST_SEL;
-+		writel(value, &ippc->u3_ctrl_p[i]);
++static int mt8173_nor_execute_cmd(struct mt8173_nor *mt8173_nor, u8 cmdval)
++{
++	int reg;
++	u8 val = cmdval & 0x1f;
++
++	writeb(cmdval, mt8173_nor->base + MTK_NOR_CMD_REG);
++	return readl_poll_timeout(mt8173_nor->base + MTK_NOR_CMD_REG, reg,
++				  !(reg & val), 100, 10000);
++}
++
++static int mt8173_nor_do_tx_rx(struct mt8173_nor *mt8173_nor, u8 op,
++			       u8 *tx, int txlen, u8 *rx, int rxlen)
++{
++	int len = 1 + txlen + rxlen;
++	int i, ret, idx;
++
++	if (len > MTK_NOR_MAX_SHIFT + 1)
++		return -EINVAL;
++
++	writeb(len * 8, mt8173_nor->base + MTK_NOR_CNT_REG);
++
++	/* start at PRGDATA5, go down to PRGDATA0 */
++	idx = MTK_NOR_MAX_SHIFT - 1;
++
++	/* opcode */
++	writeb(op, mt8173_nor->base + MTK_NOR_PRG_REG(idx));
++	idx--;
++
++	/* program TX data */
++	for (i = 0; i < txlen; i++, idx--)
++		writeb(tx[i], mt8173_nor->base + MTK_NOR_PRG_REG(idx));
++
++	/* clear out rest of TX registers */
++	while (idx >= 0) {
++		writeb(0, mt8173_nor->base + MTK_NOR_PRG_REG(idx));
++		idx--;
 +	}
 +
-+	/* power on and enable all u2 ports */
-+	for (i = 0; i < mtk->num_u2_ports; i++) {
-+		value = readl(&ippc->u2_ctrl_p[i]);
-+		value &= ~(CTRL_U2_PORT_PDN | CTRL_U2_PORT_DIS);
-+		value |= CTRL_U2_PORT_HOST_SEL;
-+		writel(value, &ippc->u2_ctrl_p[i]);
-+	}
-+
-+	/*
-+	 * wait for clocks to be stable, and clock domains reset to
-+	 * be inactive after power on and enable ports
-+	 */
-+	check_val = STS1_SYSPLL_STABLE | STS1_REF_RST |
-+			STS1_SYS125_RST | STS1_XHCI_RST;
-+
-+	ret = readl_poll_timeout(&ippc->ip_pw_sts1, value,
-+			  (check_val == (value & check_val)), 100, 20000);
-+	if (ret) {
-+		dev_err(mtk->dev, "clocks are not stable (0x%x)\n", value);
++	ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PRG_CMD);
++	if (ret)
 +		return ret;
-+	}
++
++	/* restart at first RX byte */
++	idx = rxlen - 1;
++
++	/* read out RX data */
++	for (i = 0; i < rxlen; i++, idx--)
++		rx[i] = readb(mt8173_nor->base + MTK_NOR_SHREG(idx));
 +
 +	return 0;
 +}
 +
-+static int xhci_mtk_host_disable(struct xhci_hcd_mtk *mtk)
++/* Do a WRSR (Write Status Register) command */
++static int mt8173_nor_wr_sr(struct mt8173_nor *mt8173_nor, u8 sr)
 +{
-+	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
-+	u32 value;
-+	int ret;
-+	int i;
-+
-+	/* power down all u3 ports */
-+	for (i = 0; i < mtk->num_u3_ports; i++) {
-+		value = readl(&ippc->u3_ctrl_p[i]);
-+		value |= CTRL_U3_PORT_PDN;
-+		writel(value, &ippc->u3_ctrl_p[i]);
-+	}
-+
-+	/* power down all u2 ports */
-+	for (i = 0; i < mtk->num_u2_ports; i++) {
-+		value = readl(&ippc->u2_ctrl_p[i]);
-+		value |= CTRL_U2_PORT_PDN;
-+		writel(value, &ippc->u2_ctrl_p[i]);
-+	}
-+
-+	/* power down host ip */
-+	value = readl(&ippc->ip_pw_ctr1);
-+	value |= CTRL1_IP_HOST_PDN;
-+	writel(value, &ippc->ip_pw_ctr1);
-+
-+	/* wait for host ip to sleep */
-+	ret = readl_poll_timeout(&ippc->ip_pw_sts1, value,
-+			  (value & STS1_IP_SLEEP_STS), 100, 100000);
-+	if (ret) {
-+		dev_err(mtk->dev, "ip sleep failed!!!\n");
-+		return ret;
-+	}
-+	return 0;
++	writeb(sr, mt8173_nor->base + MTK_NOR_PRGDATA5_REG);
++	writeb(8, mt8173_nor->base + MTK_NOR_CNT_REG);
++	return mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_WRSR_CMD);
 +}
 +
-+static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
++static int mt8173_nor_write_buffer_enable(struct mt8173_nor *mt8173_nor)
 +{
-+	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
-+	u32 value;
++	u8 reg;
 +
-+	/* reset whole ip */
-+	value = readl(&ippc->ip_pw_ctr0);
-+	value |= CTRL0_IP_SW_RST;
-+	writel(value, &ippc->ip_pw_ctr0);
-+	udelay(1);
-+	value = readl(&ippc->ip_pw_ctr0);
-+	value &= ~CTRL0_IP_SW_RST;
-+	writel(value, &ippc->ip_pw_ctr0);
-+
-+	/*
-+	 * device ip is default power-on in fact
-+	 * power down device ip, otherwise ip-sleep will fail
++	/* the bit0 of MTK_NOR_CFG2_REG is pre-fetch buffer
++	 * 0: pre-fetch buffer use for read
++	 * 1: pre-fetch buffer use for page program
 +	 */
-+	value = readl(&ippc->ip_pw_ctr2);
-+	value |= CTRL2_IP_DEV_PDN;
-+	writel(value, &ippc->ip_pw_ctr2);
-+
-+	value = readl(&ippc->ip_xhci_cap);
-+	mtk->num_u3_ports = CAP_U3_PORT_NUM(value);
-+	mtk->num_u2_ports = CAP_U2_PORT_NUM(value);
-+	dev_dbg(mtk->dev, "%s u2p:%d, u3p:%d\n", __func__,
-+			mtk->num_u2_ports, mtk->num_u3_ports);
-+
-+	return xhci_mtk_host_enable(mtk);
++	writel(MTK_NOR_WR_BUF_ENABLE, mt8173_nor->base + MTK_NOR_CFG2_REG);
++	return readb_poll_timeout(mt8173_nor->base + MTK_NOR_CFG2_REG, reg,
++				  0x01 == (reg & 0x01), 100, 10000);
 +}
 +
-+static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
++static int mt8173_nor_write_buffer_disable(struct mt8173_nor *mt8173_nor)
 +{
-+	int ret;
++	u8 reg;
 +
-+	ret = clk_prepare_enable(mtk->sys_clk);
-+	if (ret) {
-+		dev_err(mtk->dev, "failed to enable sys_clk\n");
-+		goto sys_clk_err;
-+	}
-+
-+	if (mtk->wakeup_src) {
-+		ret = clk_prepare_enable(mtk->wk_deb_p0);
-+		if (ret) {
-+			dev_err(mtk->dev, "failed to enable wk_deb_p0\n");
-+			goto usb_p0_err;
-+		}
-+
-+		ret = clk_prepare_enable(mtk->wk_deb_p1);
-+		if (ret) {
-+			dev_err(mtk->dev, "failed to enable wk_deb_p1\n");
-+			goto usb_p1_err;
-+		}
-+	}
-+	return 0;
-+
-+usb_p1_err:
-+	clk_disable_unprepare(mtk->wk_deb_p0);
-+usb_p0_err:
-+	clk_disable_unprepare(mtk->sys_clk);
-+sys_clk_err:
-+	return -EINVAL;
++	writel(MTK_NOR_WR_BUF_DISABLE, mt8173_nor->base + MTK_NOR_CFG2_REG);
++	return readb_poll_timeout(mt8173_nor->base + MTK_NOR_CFG2_REG, reg,
++				  MTK_NOR_WR_BUF_DISABLE == (reg & 0x1), 100,
++				  10000);
 +}
 +
-+static void xhci_mtk_clks_disable(struct xhci_hcd_mtk *mtk)
-+{
-+	if (mtk->wakeup_src) {
-+		clk_disable_unprepare(mtk->wk_deb_p1);
-+		clk_disable_unprepare(mtk->wk_deb_p0);
-+	}
-+	clk_disable_unprepare(mtk->sys_clk);
-+}
-+
-+/* only clocks can be turn off for ip-sleep wakeup mode */
-+static void usb_wakeup_ip_sleep_en(struct xhci_hcd_mtk *mtk)
-+{
-+	u32 tmp;
-+	struct regmap *pericfg = mtk->pericfg;
-+
-+	regmap_read(pericfg, PERI_WK_CTRL1, &tmp);
-+	tmp &= ~UWK_CTL1_IS_P;
-+	tmp &= ~(UWK_CTL1_IS_C(0xf));
-+	tmp |= UWK_CTL1_IS_C(0x8);
-+	regmap_write(pericfg, PERI_WK_CTRL1, tmp);
-+	regmap_write(pericfg, PERI_WK_CTRL1, tmp | UWK_CTL1_IS_E);
-+
-+	regmap_read(pericfg, PERI_WK_CTRL1, &tmp);
-+	dev_dbg(mtk->dev, "%s(): WK_CTRL1[P6,E25,C26:29]=%#x\n",
-+		__func__, tmp);
-+}
-+
-+static void usb_wakeup_ip_sleep_dis(struct xhci_hcd_mtk *mtk)
-+{
-+	u32 tmp;
-+
-+	regmap_read(mtk->pericfg, PERI_WK_CTRL1, &tmp);
-+	tmp &= ~UWK_CTL1_IS_E;
-+	regmap_write(mtk->pericfg, PERI_WK_CTRL1, tmp);
-+}
-+
-+/*
-+* for line-state wakeup mode, phy's power should not power-down
-+* and only support cable plug in/out
-+*/
-+static void usb_wakeup_line_state_en(struct xhci_hcd_mtk *mtk)
-+{
-+	u32 tmp;
-+	struct regmap *pericfg = mtk->pericfg;
-+
-+	/* line-state of u2-port0 */
-+	regmap_read(pericfg, PERI_WK_CTRL1, &tmp);
-+	tmp &= ~UWK_CTL1_0P_LS_P;
-+	tmp &= ~(UWK_CTL1_0P_LS_C(0xf));
-+	tmp |= UWK_CTL1_0P_LS_C(0x8);
-+	regmap_write(pericfg, PERI_WK_CTRL1, tmp);
-+	regmap_read(pericfg, PERI_WK_CTRL1, &tmp);
-+	regmap_write(pericfg, PERI_WK_CTRL1, tmp | UWK_CTL1_0P_LS_E);
-+
-+	/* line-state of u2-port1 */
-+	regmap_read(pericfg, PERI_WK_CTRL0, &tmp);
-+	tmp &= ~(UWK_CTL1_1P_LS_C(0xf));
-+	tmp |= UWK_CTL1_1P_LS_C(0x8);
-+	regmap_write(pericfg, PERI_WK_CTRL0, tmp);
-+	regmap_write(pericfg, PERI_WK_CTRL0, tmp | UWK_CTL1_1P_LS_E);
-+}
-+
-+static void usb_wakeup_line_state_dis(struct xhci_hcd_mtk *mtk)
-+{
-+	u32 tmp;
-+	struct regmap *pericfg = mtk->pericfg;
-+
-+	/* line-state of u2-port0 */
-+	regmap_read(pericfg, PERI_WK_CTRL1, &tmp);
-+	tmp &= ~UWK_CTL1_0P_LS_E;
-+	regmap_write(pericfg, PERI_WK_CTRL1, tmp);
-+
-+	/* line-state of u2-port1 */
-+	regmap_read(pericfg, PERI_WK_CTRL0, &tmp);
-+	tmp &= ~UWK_CTL1_1P_LS_E;
-+	regmap_write(pericfg, PERI_WK_CTRL0, tmp);
-+}
-+
-+static void usb_wakeup_enable(struct xhci_hcd_mtk *mtk)
-+{
-+	if (mtk->wakeup_src == SSUSB_WK_IP_SLEEP)
-+		usb_wakeup_ip_sleep_en(mtk);
-+	else if (mtk->wakeup_src == SSUSB_WK_LINE_STATE)
-+		usb_wakeup_line_state_en(mtk);
-+}
-+
-+static void usb_wakeup_disable(struct xhci_hcd_mtk *mtk)
-+{
-+	if (mtk->wakeup_src == SSUSB_WK_IP_SLEEP)
-+		usb_wakeup_ip_sleep_dis(mtk);
-+	else if (mtk->wakeup_src == SSUSB_WK_LINE_STATE)
-+		usb_wakeup_line_state_dis(mtk);
-+}
-+
-+static int usb_wakeup_of_property_parse(struct xhci_hcd_mtk *mtk,
-+				struct device_node *dn)
-+{
-+	struct device *dev = mtk->dev;
-+
-+	/*
-+	* wakeup function is optional, so it is not an error if this property
-+	* does not exist, and in such case, no need to get relative
-+	* properties anymore.
-+	*/
-+	of_property_read_u32(dn, "mediatek,wakeup-src", &mtk->wakeup_src);
-+	if (!mtk->wakeup_src)
-+		return 0;
-+
-+	mtk->wk_deb_p0 = devm_clk_get(dev, "wakeup_deb_p0");
-+	if (IS_ERR(mtk->wk_deb_p0)) {
-+		dev_err(dev, "fail to get wakeup_deb_p0\n");
-+		return PTR_ERR(mtk->wk_deb_p0);
-+	}
-+
-+	mtk->wk_deb_p1 = devm_clk_get(dev, "wakeup_deb_p1");
-+	if (IS_ERR(mtk->wk_deb_p1)) {
-+		dev_err(dev, "fail to get wakeup_deb_p1\n");
-+		return PTR_ERR(mtk->wk_deb_p1);
-+	}
-+
-+	mtk->pericfg = syscon_regmap_lookup_by_phandle(dn,
-+						"mediatek,syscon-wakeup");
-+	if (IS_ERR(mtk->pericfg)) {
-+		dev_err(dev, "fail to get pericfg regs\n");
-+		return PTR_ERR(mtk->pericfg);
-+	}
-+
-+	return 0;
-+}
-+
-+static int xhci_mtk_setup(struct usb_hcd *hcd);
-+static const struct xhci_driver_overrides xhci_mtk_overrides __initconst = {
-+	.extra_priv_size = sizeof(struct xhci_hcd),
-+	.reset = xhci_mtk_setup,
-+};
-+
-+static struct hc_driver __read_mostly xhci_mtk_hc_driver;
-+
-+static int xhci_mtk_phy_init(struct xhci_hcd_mtk *mtk)
++static void mt8173_nor_set_addr(struct mt8173_nor *mt8173_nor, u32 addr)
 +{
 +	int i;
-+	int ret;
 +
-+	for (i = 0; i < mtk->num_phys; i++) {
-+		ret = phy_init(mtk->phys[i]);
-+		if (ret)
-+			goto exit_phy;
++	for (i = 0; i < 3; i++) {
++		writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR0_REG + i * 4);
++		addr >>= 8;
++	}
++	/* Last register is non-contiguous */
++	writeb(addr & 0xff, mt8173_nor->base + MTK_NOR_RADR3_REG);
++}
++
++static int mt8173_nor_read(struct spi_nor *nor, loff_t from, size_t length,
++			   size_t *retlen, u_char *buffer)
++{
++	int i, ret;
++	int addr = (int)from;
++	u8 *buf = (u8 *)buffer;
++	struct mt8173_nor *mt8173_nor = nor->priv;
++
++	/* set mode for fast read mode ,dual mode or quad mode */
++	mt8173_nor_set_read_mode(mt8173_nor);
++	mt8173_nor_set_addr(mt8173_nor, addr);
++
++	for (i = 0; i < length; i++, (*retlen)++) {
++		ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PIO_READ_CMD);
++		if (ret < 0)
++			return ret;
++		buf[i] = readb(mt8173_nor->base + MTK_NOR_RDATA_REG);
 +	}
 +	return 0;
++}
 +
-+exit_phy:
-+	for (; i > 0; i--)
-+		phy_exit(mtk->phys[i - 1]);
++static int mt8173_nor_write_single_byte(struct mt8173_nor *mt8173_nor,
++					int addr, int length, u8 *data)
++{
++	int i, ret;
 +
++	mt8173_nor_set_addr(mt8173_nor, addr);
++
++	for (i = 0; i < length; i++) {
++		ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PIO_WR_CMD);
++		if (ret < 0)
++			return ret;
++		writeb(*data++, mt8173_nor->base + MTK_NOR_WDATA_REG);
++	}
++	return 0;
++}
++
++static int mt8173_nor_write_buffer(struct mt8173_nor *mt8173_nor, int addr,
++				   const u8 *buf)
++{
++	int i, bufidx, data;
++
++	mt8173_nor_set_addr(mt8173_nor, addr);
++
++	bufidx = 0;
++	for (i = 0; i < SFLASH_WRBUF_SIZE; i += 4) {
++		data = buf[bufidx + 3]<<24 | buf[bufidx + 2]<<16 |
++		       buf[bufidx + 1]<<8 | buf[bufidx];
++		bufidx += 4;
++		writel(data, mt8173_nor->base + MTK_NOR_PP_DATA_REG);
++	}
++	return mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_WR_CMD);
++}
++
++static void mt8173_nor_write(struct spi_nor *nor, loff_t to, size_t len,
++			     size_t *retlen, const u_char *buf)
++{
++	int ret;
++	struct mt8173_nor *mt8173_nor = nor->priv;
++
++	ret = mt8173_nor_write_buffer_enable(mt8173_nor);
++	if (ret < 0)
++		dev_warn(mt8173_nor->dev, "write buffer enable failed!\n");
++
++	while (len >= SFLASH_WRBUF_SIZE) {
++		ret = mt8173_nor_write_buffer(mt8173_nor, to, buf);
++		if (ret < 0)
++			dev_err(mt8173_nor->dev, "write buffer failed!\n");
++		len -= SFLASH_WRBUF_SIZE;
++		to += SFLASH_WRBUF_SIZE;
++		buf += SFLASH_WRBUF_SIZE;
++		(*retlen) += SFLASH_WRBUF_SIZE;
++	}
++	ret = mt8173_nor_write_buffer_disable(mt8173_nor);
++	if (ret < 0)
++		dev_warn(mt8173_nor->dev, "write buffer disable failed!\n");
++
++	if (len) {
++		ret = mt8173_nor_write_single_byte(mt8173_nor, to, (int)len,
++						   (u8 *)buf);
++		if (ret < 0)
++			dev_err(mt8173_nor->dev, "write single byte failed!\n");
++		(*retlen) += len;
++	}
++}
++
++static int mt8173_nor_read_reg(struct spi_nor *nor, u8 opcode, u8 *buf, int len)
++{
++	int ret;
++	struct mt8173_nor *mt8173_nor = nor->priv;
++
++	switch (opcode) {
++	case SPINOR_OP_RDSR:
++		ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_RDSR_CMD);
++		if (ret < 0)
++			return ret;
++		if (len == 1)
++			*buf = readb(mt8173_nor->base + MTK_NOR_RDSR_REG);
++		else
++			dev_err(mt8173_nor->dev, "len should be 1 for read status!\n");
++		break;
++	default:
++		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, NULL, 0, buf, len);
++		break;
++	}
 +	return ret;
 +}
 +
-+static int xhci_mtk_phy_exit(struct xhci_hcd_mtk *mtk)
++static int mt8173_nor_write_reg(struct spi_nor *nor, u8 opcode, u8 *buf,
++				int len)
 +{
-+	int i;
-+
-+	for (i = 0; i < mtk->num_phys; i++)
-+		phy_exit(mtk->phys[i]);
-+
-+	return 0;
-+}
-+
-+static int xhci_mtk_phy_power_on(struct xhci_hcd_mtk *mtk)
-+{
-+	int i;
 +	int ret;
++	struct mt8173_nor *mt8173_nor = nor->priv;
 +
-+	for (i = 0; i < mtk->num_phys; i++) {
-+		ret = phy_power_on(mtk->phys[i]);
++	switch (opcode) {
++	case SPINOR_OP_WRSR:
++		/* We only handle 1 byte */
++		ret = mt8173_nor_wr_sr(mt8173_nor, *buf);
++		break;
++	default:
++		ret = mt8173_nor_do_tx_rx(mt8173_nor, opcode, buf, len, NULL, 0);
 +		if (ret)
-+			goto power_off_phy;
++			dev_warn(mt8173_nor->dev, "write reg failure!\n");
++		break;
 +	}
-+	return 0;
-+
-+power_off_phy:
-+	for (; i > 0; i--)
-+		phy_power_off(mtk->phys[i - 1]);
-+
 +	return ret;
 +}
 +
-+static void xhci_mtk_phy_power_off(struct xhci_hcd_mtk *mtk)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < mtk->num_phys; i++)
-+		phy_power_off(mtk->phys[i]);
-+}
-+
-+static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
++static int __init mtk_nor_init(struct mt8173_nor *mt8173_nor,
++			       struct device_node *flash_node)
 +{
 +	int ret;
++	struct spi_nor *nor;
 +
-+	ret = regulator_enable(mtk->vbus);
-+	if (ret) {
-+		dev_err(mtk->dev, "failed to enable vbus\n");
++	/* initialize controller to accept commands */
++	writel(MTK_NOR_ENABLE_SF_CMD, mt8173_nor->base + MTK_NOR_WRPROT_REG);
++
++	nor = &mt8173_nor->nor;
++	nor->dev = mt8173_nor->dev;
++	nor->priv = mt8173_nor;
++	spi_nor_set_flash_node(nor, flash_node);
++
++	/* fill the hooks to spi nor */
++	nor->read = mt8173_nor_read;
++	nor->read_reg = mt8173_nor_read_reg;
++	nor->write = mt8173_nor_write;
++	nor->write_reg = mt8173_nor_write_reg;
++	nor->mtd.owner = THIS_MODULE;
++	nor->mtd.name = "mtk_nor";
++	/* initialized with NULL */
++	ret = spi_nor_scan(nor, NULL, SPI_NOR_DUAL);
++	if (ret)
 +		return ret;
-+	}
 +
-+	ret = regulator_enable(mtk->vusb33);
-+	if (ret) {
-+		dev_err(mtk->dev, "failed to enable vusb33\n");
-+		regulator_disable(mtk->vbus);
-+		return ret;
-+	}
-+	return 0;
++	return mtd_device_register(&nor->mtd, NULL, 0);
 +}
 +
-+static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
++static int mtk_nor_drv_probe(struct platform_device *pdev)
 +{
-+	regulator_disable(mtk->vbus);
-+	regulator_disable(mtk->vusb33);
-+}
-+
-+static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
-+{
-+	struct usb_hcd *hcd = xhci_to_hcd(xhci);
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+
-+	/*
-+	 * As of now platform drivers don't provide MSI support so we ensure
-+	 * here that the generic code does not try to make a pci_dev from our
-+	 * dev struct in order to setup MSI
-+	 */
-+	xhci->quirks |= XHCI_PLAT;
-+	xhci->quirks |= XHCI_MTK_HOST;
-+	/*
-+	 * MTK host controller gives a spurious successful event after a
-+	 * short transfer. Ignore it.
-+	 */
-+	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
-+	if (mtk->lpm_support)
-+		xhci->quirks |= XHCI_LPM_SUPPORT;
-+}
-+
-+/* called during probe() after chip reset completes */
-+static int xhci_mtk_setup(struct usb_hcd *hcd)
-+{
-+	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
-+	int ret;
-+
-+	if (usb_hcd_is_primary_hcd(hcd)) {
-+		ret = xhci_mtk_ssusb_config(mtk);
-+		if (ret)
-+			return ret;
-+		ret = xhci_mtk_sch_init(mtk);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return xhci_gen_setup(hcd, xhci_mtk_quirks);
-+}
-+
-+static int xhci_mtk_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->of_node;
-+	struct xhci_hcd_mtk *mtk;
-+	const struct hc_driver *driver;
-+	struct xhci_hcd *xhci;
++	struct device_node *flash_np;
 +	struct resource *res;
-+	struct usb_hcd *hcd;
-+	struct phy *phy;
-+	int phy_num;
-+	int ret = -ENODEV;
-+	int irq;
++	int ret;
++	struct mt8173_nor *mt8173_nor;
 +
-+	if (usb_disabled())
-+		return -ENODEV;
++	if (!pdev->dev.of_node) {
++		dev_err(&pdev->dev, "No DT found\n");
++		return -EINVAL;
++	}
 +
-+	driver = &xhci_mtk_hc_driver;
-+	mtk = devm_kzalloc(dev, sizeof(*mtk), GFP_KERNEL);
-+	if (!mtk)
++	mt8173_nor = devm_kzalloc(&pdev->dev, sizeof(*mt8173_nor), GFP_KERNEL);
++	if (!mt8173_nor)
 +		return -ENOMEM;
-+
-+	mtk->dev = dev;
-+	mtk->vbus = devm_regulator_get(dev, "vbus");
-+	if (IS_ERR(mtk->vbus)) {
-+		dev_err(dev, "fail to get vbus\n");
-+		return PTR_ERR(mtk->vbus);
-+	}
-+
-+	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
-+	if (IS_ERR(mtk->vusb33)) {
-+		dev_err(dev, "fail to get vusb33\n");
-+		return PTR_ERR(mtk->vusb33);
-+	}
-+
-+	mtk->sys_clk = devm_clk_get(dev, "sys_ck");
-+	if (IS_ERR(mtk->sys_clk)) {
-+		dev_err(dev, "fail to get sys_ck\n");
-+		return PTR_ERR(mtk->sys_clk);
-+	}
-+
-+	mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
-+
-+	ret = usb_wakeup_of_property_parse(mtk, node);
-+	if (ret)
-+		return ret;
-+
-+	mtk->num_phys = of_count_phandle_with_args(node,
-+			"phys", "#phy-cells");
-+	if (mtk->num_phys > 0) {
-+		mtk->phys = devm_kcalloc(dev, mtk->num_phys,
-+					sizeof(*mtk->phys), GFP_KERNEL);
-+		if (!mtk->phys)
-+			return -ENOMEM;
-+	} else {
-+		mtk->num_phys = 0;
-+	}
-+	pm_runtime_enable(dev);
-+	pm_runtime_get_sync(dev);
-+	device_enable_async_suspend(dev);
-+
-+	ret = xhci_mtk_ldos_enable(mtk);
-+	if (ret)
-+		goto disable_pm;
-+
-+	ret = xhci_mtk_clks_enable(mtk);
-+	if (ret)
-+		goto disable_ldos;
-+
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		goto disable_clk;
-+
-+	/* Initialize dma_mask and coherent_dma_mask to 32-bits */
-+	ret = dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
-+	if (ret)
-+		goto disable_clk;
-+
-+	if (!dev->dma_mask)
-+		dev->dma_mask = &dev->coherent_dma_mask;
-+	else
-+		dma_set_mask(dev, DMA_BIT_MASK(32));
-+
-+	hcd = usb_create_hcd(driver, dev, dev_name(dev));
-+	if (!hcd) {
-+		ret = -ENOMEM;
-+		goto disable_clk;
-+	}
-+
-+	/*
-+	 * USB 2.0 roothub is stored in the platform_device.
-+	 * Swap it with mtk HCD.
-+	 */
-+	mtk->hcd = platform_get_drvdata(pdev);
-+	platform_set_drvdata(pdev, mtk);
++	platform_set_drvdata(pdev, mt8173_nor);
 +
 +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	hcd->regs = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(hcd->regs)) {
-+		ret = PTR_ERR(hcd->regs);
-+		goto put_usb2_hcd;
-+	}
-+	hcd->rsrc_start = res->start;
-+	hcd->rsrc_len = resource_size(res);
++	mt8173_nor->base = devm_ioremap_resource(&pdev->dev, res);
++	if (IS_ERR(mt8173_nor->base))
++		return PTR_ERR(mt8173_nor->base);
 +
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-+	mtk->ippc_regs = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(mtk->ippc_regs)) {
-+		ret = PTR_ERR(mtk->ippc_regs);
-+		goto put_usb2_hcd;
-+	}
++	mt8173_nor->spi_clk = devm_clk_get(&pdev->dev, "spi");
++	if (IS_ERR(mt8173_nor->spi_clk))
++		return PTR_ERR(mt8173_nor->spi_clk);
 +
-+	for (phy_num = 0; phy_num < mtk->num_phys; phy_num++) {
-+		phy = devm_of_phy_get_by_index(dev, node, phy_num);
-+		if (IS_ERR(phy)) {
-+			ret = PTR_ERR(phy);
-+			goto put_usb2_hcd;
-+		}
-+		mtk->phys[phy_num] = phy;
-+	}
++	mt8173_nor->nor_clk = devm_clk_get(&pdev->dev, "sf");
++	if (IS_ERR(mt8173_nor->nor_clk))
++		return PTR_ERR(mt8173_nor->nor_clk);
 +
-+	ret = xhci_mtk_phy_init(mtk);
++	mt8173_nor->dev = &pdev->dev;
++	ret = clk_prepare_enable(mt8173_nor->spi_clk);
 +	if (ret)
-+		goto put_usb2_hcd;
++		return ret;
 +
-+	ret = xhci_mtk_phy_power_on(mtk);
-+	if (ret)
-+		goto exit_phys;
-+
-+	device_init_wakeup(dev, true);
-+
-+	xhci = hcd_to_xhci(hcd);
-+	xhci->main_hcd = hcd;
-+	xhci->shared_hcd = usb_create_shared_hcd(driver, dev,
-+			dev_name(dev), hcd);
-+	if (!xhci->shared_hcd) {
-+		ret = -ENOMEM;
-+		goto power_off_phys;
++	ret = clk_prepare_enable(mt8173_nor->nor_clk);
++	if (ret) {
++		clk_disable_unprepare(mt8173_nor->spi_clk);
++		return ret;
 +	}
++	/* only support one attached flash */
++	flash_np = of_get_next_available_child(pdev->dev.of_node, NULL);
++	if (!flash_np) {
++		dev_err(&pdev->dev, "no SPI flash device to configure\n");
++		ret = -ENODEV;
++		goto nor_free;
++	}
++	ret = mtk_nor_init(mt8173_nor, flash_np);
 +
-+	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-+		xhci->shared_hcd->can_do_streams = 1;
-+
-+	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
-+	if (ret)
-+		goto put_usb3_hcd;
-+
-+	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
-+	if (ret)
-+		goto dealloc_usb2_hcd;
-+
-+	return 0;
-+
-+dealloc_usb2_hcd:
-+	usb_remove_hcd(hcd);
-+
-+put_usb3_hcd:
-+	xhci_mtk_sch_exit(mtk);
-+	usb_put_hcd(xhci->shared_hcd);
-+
-+power_off_phys:
-+	xhci_mtk_phy_power_off(mtk);
-+	device_init_wakeup(dev, false);
-+
-+exit_phys:
-+	xhci_mtk_phy_exit(mtk);
-+
-+put_usb2_hcd:
-+	usb_put_hcd(hcd);
-+
-+disable_clk:
-+	xhci_mtk_clks_disable(mtk);
-+
-+disable_ldos:
-+	xhci_mtk_ldos_disable(mtk);
-+
-+disable_pm:
-+	pm_runtime_put_sync(dev);
-+	pm_runtime_disable(dev);
++nor_free:
++	if (ret) {
++		clk_disable_unprepare(mt8173_nor->spi_clk);
++		clk_disable_unprepare(mt8173_nor->nor_clk);
++	}
 +	return ret;
 +}
 +
-+static int xhci_mtk_remove(struct platform_device *dev)
++static int mtk_nor_drv_remove(struct platform_device *pdev)
 +{
-+	struct xhci_hcd_mtk *mtk = platform_get_drvdata(dev);
-+	struct usb_hcd	*hcd = mtk->hcd;
-+	struct xhci_hcd	*xhci = hcd_to_xhci(hcd);
++	struct mt8173_nor *mt8173_nor = platform_get_drvdata(pdev);
 +
-+	usb_remove_hcd(xhci->shared_hcd);
-+	xhci_mtk_phy_power_off(mtk);
-+	xhci_mtk_phy_exit(mtk);
-+	device_init_wakeup(&dev->dev, false);
-+
-+	usb_remove_hcd(hcd);
-+	usb_put_hcd(xhci->shared_hcd);
-+	usb_put_hcd(hcd);
-+	xhci_mtk_sch_exit(mtk);
-+	xhci_mtk_clks_disable(mtk);
-+	xhci_mtk_ldos_disable(mtk);
-+	pm_runtime_put_sync(&dev->dev);
-+	pm_runtime_disable(&dev->dev);
-+
++	clk_disable_unprepare(mt8173_nor->spi_clk);
++	clk_disable_unprepare(mt8173_nor->nor_clk);
 +	return 0;
 +}
 +
-+#ifdef CONFIG_PM_SLEEP
-+static int xhci_mtk_suspend(struct device *dev)
-+{
-+	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+
-+	xhci_mtk_host_disable(mtk);
-+	xhci_mtk_phy_power_off(mtk);
-+	xhci_mtk_clks_disable(mtk);
-+	usb_wakeup_enable(mtk);
-+	return 0;
-+}
-+
-+static int xhci_mtk_resume(struct device *dev)
-+{
-+	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+
-+	usb_wakeup_disable(mtk);
-+	xhci_mtk_clks_enable(mtk);
-+	xhci_mtk_phy_power_on(mtk);
-+	xhci_mtk_host_enable(mtk);
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops xhci_mtk_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(xhci_mtk_suspend, xhci_mtk_resume)
++static const struct of_device_id mtk_nor_of_ids[] = {
++	{ .compatible = "mediatek,mt8173-nor"},
++	{ /* sentinel */ }
 +};
-+#define DEV_PM_OPS	(&xhci_mtk_pm_ops)
-+#else
-+#define DEV_PM_OPS	NULL
-+#endif /* CONFIG_PM */
++MODULE_DEVICE_TABLE(of, mtk_nor_of_ids);
 +
-+#ifdef CONFIG_OF
-+static const struct of_device_id mtk_xhci_of_match[] = {
-+	{ .compatible = "mediatek,mt8173-xhci"},
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(of, mtk_xhci_of_match);
-+#endif
-+
-+static struct platform_driver mtk_xhci_driver = {
-+	.probe	= xhci_mtk_probe,
-+	.remove	= xhci_mtk_remove,
-+	.driver	= {
-+		.name = "xhci-mtk",
-+		.pm = DEV_PM_OPS,
-+		.of_match_table = of_match_ptr(mtk_xhci_of_match),
++static struct platform_driver mtk_nor_driver = {
++	.probe = mtk_nor_drv_probe,
++	.remove = mtk_nor_drv_remove,
++	.driver = {
++		.name = "mtk-nor",
++		.of_match_table = mtk_nor_of_ids,
 +	},
 +};
-+MODULE_ALIAS("platform:xhci-mtk");
 +
-+static int __init xhci_mtk_init(void)
-+{
-+	xhci_init_driver(&xhci_mtk_hc_driver, &xhci_mtk_overrides);
-+	return platform_driver_register(&mtk_xhci_driver);
-+}
-+module_init(xhci_mtk_init);
-+
-+static void __exit xhci_mtk_exit(void)
-+{
-+	platform_driver_unregister(&mtk_xhci_driver);
-+}
-+module_exit(xhci_mtk_exit);
-+
-+MODULE_AUTHOR("Chunfeng Yun <chunfeng.yun@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek xHCI Host Controller Driver");
++module_platform_driver(mtk_nor_driver);
 +MODULE_LICENSE("GPL v2");
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-new file mode 100644
-index 0000000..7da677c
---- /dev/null
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -0,0 +1,162 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author:
-+ *  Zhigang.Wei <zhigang.wei@mediatek.com>
-+ *  Chunfeng.Yun <chunfeng.yun@mediatek.com>
-+ *
-+ * This software is licensed under the terms of the GNU General Public
-+ * License version 2, as published by the Free Software Foundation, and
-+ * may be copied, distributed, and modified under those terms.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ */
-+
-+#ifndef _XHCI_MTK_H_
-+#define _XHCI_MTK_H_
-+
-+#include "xhci.h"
-+
-+/**
-+ * To simplify scheduler algorithm, set a upper limit for ESIT,
-+ * if a synchromous ep's ESIT is larger than @XHCI_MTK_MAX_ESIT,
-+ * round down to the limit value, that means allocating more
-+ * bandwidth to it.
-+ */
-+#define XHCI_MTK_MAX_ESIT	64
-+
-+/**
-+ * struct mu3h_sch_bw_info: schedule information for bandwidth domain
-+ *
-+ * @bus_bw: array to keep track of bandwidth already used at each uframes
-+ * @bw_ep_list: eps in the bandwidth domain
-+ *
-+ * treat a HS root port as a bandwidth domain, but treat a SS root port as
-+ * two bandwidth domains, one for IN eps and another for OUT eps.
-+ */
-+struct mu3h_sch_bw_info {
-+	u32 bus_bw[XHCI_MTK_MAX_ESIT];
-+	struct list_head bw_ep_list;
-+};
-+
-+/**
-+ * struct mu3h_sch_ep_info: schedule information for endpoint
-+ *
-+ * @esit: unit is 125us, equal to 2 << Interval field in ep-context
-+ * @num_budget_microframes: number of continuous uframes
-+ *		(@repeat==1) scheduled within the interval
-+ * @bw_cost_per_microframe: bandwidth cost per microframe
-+ * @endpoint: linked into bandwidth domain which it belongs to
-+ * @ep: address of usb_host_endpoint struct
-+ * @offset: which uframe of the interval that transfer should be
-+ *		scheduled first time within the interval
-+ * @repeat: the time gap between two uframes that transfers are
-+ *		scheduled within a interval. in the simple algorithm, only
-+ *		assign 0 or 1 to it; 0 means using only one uframe in a
-+ *		interval, and 1 means using @num_budget_microframes
-+ *		continuous uframes
-+ * @pkts: number of packets to be transferred in the scheduled uframes
-+ * @cs_count: number of CS that host will trigger
-+ * @burst_mode: burst mode for scheduling. 0: normal burst mode,
-+ *		distribute the bMaxBurst+1 packets for a single burst
-+ *		according to @pkts and @repeat, repeate the burst multiple
-+ *		times; 1: distribute the (bMaxBurst+1)*(Mult+1) packets
-+ *		according to @pkts and @repeat. normal mode is used by
-+ *		default
-+ */
-+struct mu3h_sch_ep_info {
-+	u32 esit;
-+	u32 num_budget_microframes;
-+	u32 bw_cost_per_microframe;
-+	struct list_head endpoint;
-+	void *ep;
-+	/*
-+	 * mtk xHCI scheduling information put into reserved DWs
-+	 * in ep context
-+	 */
-+	u32 offset;
-+	u32 repeat;
-+	u32 pkts;
-+	u32 cs_count;
-+	u32 burst_mode;
-+};
-+
-+#define MU3C_U3_PORT_MAX 4
-+#define MU3C_U2_PORT_MAX 5
-+
-+/**
-+ * struct mu3c_ippc_regs: MTK ssusb ip port control registers
-+ * @ip_pw_ctr0~3: ip power and clock control registers
-+ * @ip_pw_sts1~2: ip power and clock status registers
-+ * @ip_xhci_cap: ip xHCI capability register
-+ * @u3_ctrl_p[x]: ip usb3 port x control register, only low 4bytes are used
-+ * @u2_ctrl_p[x]: ip usb2 port x control register, only low 4bytes are used
-+ * @u2_phy_pll: usb2 phy pll control register
-+ */
-+struct mu3c_ippc_regs {
-+	__le32 ip_pw_ctr0;
-+	__le32 ip_pw_ctr1;
-+	__le32 ip_pw_ctr2;
-+	__le32 ip_pw_ctr3;
-+	__le32 ip_pw_sts1;
-+	__le32 ip_pw_sts2;
-+	__le32 reserved0[3];
-+	__le32 ip_xhci_cap;
-+	__le32 reserved1[2];
-+	__le64 u3_ctrl_p[MU3C_U3_PORT_MAX];
-+	__le64 u2_ctrl_p[MU3C_U2_PORT_MAX];
-+	__le32 reserved2;
-+	__le32 u2_phy_pll;
-+	__le32 reserved3[33]; /* 0x80 ~ 0xff */
-+};
-+
-+struct xhci_hcd_mtk {
-+	struct device *dev;
-+	struct usb_hcd *hcd;
-+	struct mu3h_sch_bw_info *sch_array;
-+	struct mu3c_ippc_regs __iomem *ippc_regs;
-+	int num_u2_ports;
-+	int num_u3_ports;
-+	struct regulator *vusb33;
-+	struct regulator *vbus;
-+	struct clk *sys_clk;	/* sys and mac clock */
-+	struct clk *wk_deb_p0;	/* port0's wakeup debounce clock */
-+	struct clk *wk_deb_p1;
-+	struct regmap *pericfg;
-+	struct phy **phys;
-+	int num_phys;
-+	int wakeup_src;
-+	bool lpm_support;
-+};
-+
-+static inline struct xhci_hcd_mtk *hcd_to_mtk(struct usb_hcd *hcd)
-+{
-+	return dev_get_drvdata(hcd->self.controller);
-+}
-+
-+#if IS_ENABLED(CONFIG_USB_XHCI_MTK)
-+int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk);
-+void xhci_mtk_sch_exit(struct xhci_hcd_mtk *mtk);
-+int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-+		struct usb_host_endpoint *ep);
-+void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
-+		struct usb_host_endpoint *ep);
-+
-+#else
-+static inline int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd,
-+	struct usb_device *udev, struct usb_host_endpoint *ep)
-+{
-+	return 0;
-+}
-+
-+static inline void xhci_mtk_drop_ep_quirk(struct usb_hcd *hcd,
-+	struct usb_device *udev, struct usb_host_endpoint *ep)
-+{
-+}
-+
-+#endif
-+
-+#endif		/* _XHCI_MTK_H_ */
-diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
-index fa83625..564e8ce 100644
---- a/drivers/usb/host/xhci-ring.c
-+++ b/drivers/usb/host/xhci-ring.c
-@@ -68,6 +68,7 @@
- #include <linux/slab.h>
- #include "xhci.h"
- #include "xhci-trace.h"
-+#include "xhci-mtk.h"
- 
- /*
-  * Returns zero if the TRB isn't in this segment, otherwise it returns the DMA
-@@ -3074,17 +3075,22 @@ static u32 xhci_td_remainder(struct xhci_hcd *xhci, int transferred,
- {
- 	u32 maxp, total_packet_count;
- 
--	if (xhci->hci_version < 0x100)
-+	/* MTK xHCI is mostly 0.97 but contains some features from 1.0 */
-+	if (xhci->hci_version < 0x100 && !(xhci->quirks & XHCI_MTK_HOST))
- 		return ((td_total_len - transferred) >> 10);
- 
--	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
--	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
--
- 	/* One TRB with a zero-length data packet. */
- 	if (num_trbs_left == 0 || (transferred == 0 && trb_buff_len == 0) ||
- 	    trb_buff_len == td_total_len)
- 		return 0;
- 
-+	/* for MTK xHCI, TD size doesn't include this TRB */
-+	if (xhci->quirks & XHCI_MTK_HOST)
-+		trb_buff_len = 0;
-+
-+	maxp = GET_MAX_PACKET(usb_endpoint_maxp(&urb->ep->desc));
-+	total_packet_count = DIV_ROUND_UP(td_total_len, maxp);
-+
- 	/* Queueing functions don't count the current TRB into transferred */
- 	return (total_packet_count - ((transferred + trb_buff_len) / maxp));
- }
-@@ -3472,7 +3478,7 @@ int xhci_queue_ctrl_tx(struct xhci_hcd *xhci, gfp_t mem_flags,
- 		field |= 0x1;
- 
- 	/* xHCI 1.0/1.1 6.4.1.2.1: Transfer Type field */
--	if (xhci->hci_version >= 0x100) {
-+	if ((xhci->hci_version >= 0x100) || (xhci->quirks & XHCI_MTK_HOST)) {
- 		if (urb->transfer_buffer_length > 0) {
- 			if (setup->bRequestType & USB_DIR_IN)
- 				field |= TRB_TX_TYPE(TRB_DATA_IN);
-diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-index 6e7dc6f..6cbcd1e 100644
---- a/drivers/usb/host/xhci.c
-+++ b/drivers/usb/host/xhci.c
-@@ -31,6 +31,7 @@
- 
- #include "xhci.h"
- #include "xhci-trace.h"
-+#include "xhci-mtk.h"
- 
- #define DRIVER_AUTHOR "Sarah Sharp"
- #define DRIVER_DESC "'eXtensible' Host Controller (xHC) Driver"
-@@ -624,7 +625,11 @@ int xhci_run(struct usb_hcd *hcd)
- 			"// Set the interrupt modulation register");
- 	temp = readl(&xhci->ir_set->irq_control);
- 	temp &= ~ER_IRQ_INTERVAL_MASK;
--	temp |= (u32) 160;
-+	/*
-+	 * the increment interval is 8 times as much as that defined
-+	 * in xHCI spec on MTK's controller
-+	 */
-+	temp |= (u32) ((xhci->quirks & XHCI_MTK_HOST) ? 20 : 160);
- 	writel(temp, &xhci->ir_set->irq_control);
- 
- 	/* Set the HCD state before we enable the irqs */
-@@ -1688,6 +1693,9 @@ int xhci_drop_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
- 
- 	xhci_endpoint_zero(xhci, xhci->devs[udev->slot_id], ep);
- 
-+	if (xhci->quirks & XHCI_MTK_HOST)
-+		xhci_mtk_drop_ep_quirk(hcd, udev, ep);
-+
- 	xhci_dbg(xhci, "drop ep 0x%x, slot id %d, new drop flags = %#x, new add flags = %#x\n",
- 			(unsigned int) ep->desc.bEndpointAddress,
- 			udev->slot_id,
-@@ -1783,6 +1791,15 @@ int xhci_add_endpoint(struct usb_hcd *hcd, struct usb_device *udev,
- 		return -ENOMEM;
- 	}
- 
-+	if (xhci->quirks & XHCI_MTK_HOST) {
-+		ret = xhci_mtk_add_ep_quirk(hcd, udev, ep);
-+		if (ret < 0) {
-+			xhci_free_or_cache_endpoint_ring(xhci,
-+				virt_dev, ep_index);
-+			return ret;
-+		}
-+	}
-+
- 	ctrl_ctx->add_flags |= cpu_to_le32(added_ctxs);
- 	new_add_flags = le32_to_cpu(ctrl_ctx->add_flags);
- 
-diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-index 0b94512..40cf36e 100644
---- a/drivers/usb/host/xhci.h
-+++ b/drivers/usb/host/xhci.h
-@@ -1630,6 +1630,7 @@ struct xhci_hcd {
- /* For controllers with a broken beyond repair streams implementation */
- #define XHCI_BROKEN_STREAMS	(1 << 19)
- #define XHCI_PME_STUCK_QUIRK	(1 << 20)
-+#define XHCI_MTK_HOST		(1 << 21)
- 	unsigned int		num_active_eps;
- 	unsigned int		limit_active_eps;
- 	/* There are two roothubs to keep track of bus suspend info for */
++MODULE_DESCRIPTION("MediaTek SPI NOR Flash Driver");
 -- 
 1.8.1.1.dirty
