@@ -1,100 +1,65 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: fix a memleak when do dt maps.
-Date: Mon, 16 Nov 2015 20:22:57 -0800
-Message-ID: <1447734177-17258-1-git-send-email-hongzhou.yang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [RESEND] phy: core: Get a refcount to phy in devm_of_phy_get_by_index()
+Date: Tue, 17 Nov 2015 13:56:48 +0800
+Message-ID: <1447739808-29472-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Arun Ramamurthy <arun.ramamurthy@broadcom.com>, Alan Stern <stern@rowland.harvard.edu>
 List-Id: linux-mediatek@lists.infradead.org
 
-configs will kmemdup to dup_configs in pictrl util function.
-So configs need to be freed.
+On driver detach, devm_phy_release() will put a refcount to
+the phy, so gets a refconut to it before return.
 
-Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Change-Id: I56fe428bf945f19c38d56245978c8ca17340eb2c
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- Fix a memleak issue.
+ drivers/phy/phy-core.c | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   24 ++++++++++++++----------
- 1 file changed, 14 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index bbf0230..0f9e416 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -520,21 +520,23 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 	if (has_config && num_pins >= 1)
- 		maps_per_pin++;
+diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+index fc48fac..8c7f27d 100644
+--- a/drivers/phy/phy-core.c
++++ b/drivers/phy/phy-core.c
+@@ -636,8 +636,9 @@ EXPORT_SYMBOL_GPL(devm_of_phy_get);
+  * @np: node containing the phy
+  * @index: index of the phy
+  *
+- * Gets the phy using _of_phy_get(), and associates a device with it using
+- * devres. On driver detach, release function is invoked on the devres data,
++ * Gets the phy using _of_phy_get(), then gets a refcount to it,
++ * and associates a device with it using devres. On driver detach,
++ * release function is invoked on the devres data,
+  * then, devres data is freed.
+  *
+  */
+@@ -651,13 +652,21 @@ struct phy *devm_of_phy_get_by_index(struct device *dev, struct device_node *np,
+ 		return ERR_PTR(-ENOMEM);
  
--	if (!num_pins || !maps_per_pin)
--		return -EINVAL;
-+	if (!num_pins || !maps_per_pin) {
-+		err = -EINVAL;
-+		goto exit;
-+	}
- 
- 	reserve = num_pins * maps_per_pin;
- 
- 	err = pinctrl_utils_reserve_map(pctldev, map,
- 			reserved_maps, num_maps, reserve);
- 	if (err < 0)
--		goto fail;
-+		goto exit;
- 
- 	for (i = 0; i < num_pins; i++) {
- 		err = of_property_read_u32_index(node, "pinmux",
- 				i, &pinfunc);
- 		if (err)
--			goto fail;
-+			goto exit;
- 
- 		pin = MTK_GET_PIN_NO(pinfunc);
- 		func = MTK_GET_PIN_FUNC(pinfunc);
-@@ -543,20 +545,21 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 				func >= ARRAY_SIZE(mtk_gpio_functions)) {
- 			dev_err(pctl->dev, "invalid pins value.\n");
- 			err = -EINVAL;
--			goto fail;
-+			goto exit;
- 		}
- 
- 		grp = mtk_pctrl_find_group_by_pin(pctl, pin);
- 		if (!grp) {
- 			dev_err(pctl->dev, "unable to match pin %d to group\n",
- 					pin);
--			return -EINVAL;
-+			err = -EINVAL;
-+			goto exit;
- 		}
- 
- 		err = mtk_pctrl_dt_node_to_map_func(pctl, pin, func, grp, map,
- 				reserved_maps, num_maps);
- 		if (err < 0)
--			goto fail;
-+			goto exit;
- 
- 		if (has_config) {
- 			err = pinctrl_utils_add_map_configs(pctldev, map,
-@@ -564,13 +567,14 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 					configs, num_configs,
- 					PIN_MAP_TYPE_CONFIGS_GROUP);
- 			if (err < 0)
--				goto fail;
-+				goto exit;
- 		}
+ 	phy = _of_phy_get(np, index);
+-	if (!IS_ERR(phy)) {
+-		*ptr = phy;
+-		devres_add(dev, ptr);
+-	} else {
++	if (IS_ERR(phy)) {
+ 		devres_free(ptr);
++		return phy;
  	}
  
--	return 0;
-+	err = 0;
- 
--fail:
-+exit:
-+	kfree(configs);
- 	return err;
++	if (!try_module_get(phy->ops->owner)) {
++		devres_free(ptr);
++		return ERR_PTR(-EPROBE_DEFER);
++	}
++
++	get_device(&phy->dev);
++
++	*ptr = phy;
++	devres_add(dev, ptr);
++
+ 	return phy;
  }
- 
+ EXPORT_SYMBOL_GPL(devm_of_phy_get_by_index);
 -- 
-1.7.9.5
-
+1.8.1.1.dirty
