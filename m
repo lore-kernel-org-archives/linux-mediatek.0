@@ -1,119 +1,50 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: fix a memleak when do dt maps.
-Date: Tue, 17 Nov 2015 11:50:38 +0100
-Message-ID: <564B067E.2010000@gmail.com>
-References: <1447734177-17258-1-git-send-email-hongzhou.yang@mediatek.com>
- <CAGS+omCiaD-JJdvL77Y4HuvWjgC5tvLDLspsAgXPtD5AP3JA7w@mail.gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] regulator: mt6311: MT6311_REGULATOR needs to select
+ REGMAP_I2C
+Date: Tue, 17 Nov 2015 10:55:19 +0000
+Message-ID: <20151117105519.GN31303@sirena.org.uk>
+References: <1447749409-19900-1-git-send-email-henryc.chen@mediatek.com>
+ <564AFCC8.6000604@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omCiaD-JJdvL77Y4HuvWjgC5tvLDLspsAgXPtD5AP3JA7w@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="nb8zVy0QMK3AA1xu"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <564AFCC8.6000604@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Henry Chen <henryc.chen@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
+--nb8zVy0QMK3AA1xu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 17/11/15 09:25, Daniel Kurtz wrote:
-> On Tue, Nov 17, 2015 at 12:22 PM, Hongzhou Yang
-> <hongzhou.yang@mediatek.com> wrote:
->> configs will kmemdup to dup_configs in pictrl util function.
->> So configs need to be freed.
->>
->> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
->
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+On Tue, Nov 17, 2015 at 11:09:12AM +0100, Matthias Brugger wrote:
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->
->> ---
->>   Fix a memleak issue.
->>
->>   drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   24 ++++++++++++++----------
->>   1 file changed, 14 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> index bbf0230..0f9e416 100644
->> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
->> @@ -520,21 +520,23 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->>          if (has_config && num_pins >= 1)
->>                  maps_per_pin++;
->>
->> -       if (!num_pins || !maps_per_pin)
->> -               return -EINVAL;
->> +       if (!num_pins || !maps_per_pin) {
->> +               err = -EINVAL;
->> +               goto exit;
->> +       }
->>
->>          reserve = num_pins * maps_per_pin;
->>
->>          err = pinctrl_utils_reserve_map(pctldev, map,
->>                          reserved_maps, num_maps, reserve);
->>          if (err < 0)
->> -               goto fail;
->> +               goto exit;
->>
->>          for (i = 0; i < num_pins; i++) {
->>                  err = of_property_read_u32_index(node, "pinmux",
->>                                  i, &pinfunc);
->>                  if (err)
->> -                       goto fail;
->> +                       goto exit;
->>
->>                  pin = MTK_GET_PIN_NO(pinfunc);
->>                  func = MTK_GET_PIN_FUNC(pinfunc);
->> @@ -543,20 +545,21 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->>                                  func >= ARRAY_SIZE(mtk_gpio_functions)) {
->>                          dev_err(pctl->dev, "invalid pins value.\n");
->>                          err = -EINVAL;
->> -                       goto fail;
->> +                       goto exit;
->>                  }
->>
->>                  grp = mtk_pctrl_find_group_by_pin(pctl, pin);
->>                  if (!grp) {
->>                          dev_err(pctl->dev, "unable to match pin %d to group\n",
->>                                          pin);
->> -                       return -EINVAL;
->> +                       err = -EINVAL;
->> +                       goto exit;
->>                  }
->>
->>                  err = mtk_pctrl_dt_node_to_map_func(pctl, pin, func, grp, map,
->>                                  reserved_maps, num_maps);
->>                  if (err < 0)
->> -                       goto fail;
->> +                       goto exit;
->>
->>                  if (has_config) {
->>                          err = pinctrl_utils_add_map_configs(pctldev, map,
->> @@ -564,13 +567,14 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->>                                          configs, num_configs,
->>                                          PIN_MAP_TYPE_CONFIGS_GROUP);
->>                          if (err < 0)
->> -                               goto fail;
->> +                               goto exit;
->>                  }
->>          }
->>
->> -       return 0;
->> +       err = 0;
->>
->> -fail:
->> +exit:
->> +       kfree(configs);
->>          return err;
->>   }
->>
->> --
->> 1.7.9.5
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at  http://www.tux.org/lkml/
+> This should also be added to v4.3
+> I propose that you resend it adding the tag:
+> Cc: stable@vger.kernel.org
+
+> as explained in Documentation/stable_kernel_rules.txt
+
+Please don't, that just makes more work for me having to deal with two
+copies of the mail.
+
+--nb8zVy0QMK3AA1xu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWSweWAAoJECTWi3JdVIfQmdEH/jkb1LcXOCje8jiuxMiDQDKw
+P6J2TkYcHUhhJX5jH0Qq0CGsZb2WmvXYTu0q2YrYRg9k7o/Lzu+yK0rQIF7nca1x
+g4aXqRnGid3GftrulgJVR8MX5u6xDz8Vp+vxsXF/6edno1CECl3DYv3aFXJKYi37
+8qiKkGXr1crWTfv4MWINCjDtMdebtvY8pPZRgicGf3gka88+3iNZsPfAoW6WUIsL
+33U+Wi7dJ1Fp2jumBVy2ynrOaC5RFFEl+k8wQWKJ6dz5658IL1en+YNsYkQpIGyx
+zbXC8YLsr8HALYvP45ViaNlfY91JIBFzNzG3pc4EVFawphJWEjJUKHzHfVL5wRM=
+=v1ih
+-----END PGP SIGNATURE-----
+
+--nb8zVy0QMK3AA1xu--
