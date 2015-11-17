@@ -1,50 +1,85 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH] phy: phy-mt65xx-usb3: fix test fail of HS receiver sensitivity
-Date: Tue, 17 Nov 2015 14:02:58 +0800
-Message-ID: <1447740178-29588-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Jisheng Zhang <jszhang-eYqpPyKDWXRBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [RESEND] phy: core: Get a refcount to phy in
+ devm_of_phy_get_by_index()
+Date: Tue, 17 Nov 2015 14:00:26 +0800
+Message-ID: <20151117140026.270a408e@xhacker>
+References: <1447739808-29472-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447739808-29472-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Arun Ramamurthy <arun.ramamurthy-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-when use the default value 8 of RG_USB20_SQTH, the HS receiver
-sensitivity test of HQA will fail, set it as 2 to fix up the
-issue.
+Hi,
 
-Change-Id: Ia5bdbbfc8ebb170d3ef26007e665b7350b6d28ab
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/phy/phy-mt65xx-usb3.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+On Tue, 17 Nov 2015 13:56:48 +0800
+Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index f30b28b..dc480d3 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -49,6 +49,8 @@
- #define PA6_RG_U2_ISO_EN		BIT(31)
- #define PA6_RG_U2_BC11_SW_EN		BIT(23)
- #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
-+#define PA6_RG_U2_SQTH		GENMASK(3, 0)
-+#define PA6_RG_U2_SQTH_VAL(x)	(0xf & (x))
- 
- #define U3P_U2PHYACR4		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0020)
- #define P2C_RG_USB20_GPIO_CTL		BIT(9)
-@@ -165,9 +167,10 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 		writel(tmp, port_base + U3P_U2PHYDTM0);
- 	}
- 
--	/* DP/DM BC1.1 path Disable */
- 	tmp = readl(port_base + U3P_USBPHYACR6);
--	tmp &= ~PA6_RG_U2_BC11_SW_EN;
-+	tmp &= ~PA6_RG_U2_BC11_SW_EN;	/* DP/DM BC1.1 path Disable */
-+	tmp &= ~PA6_RG_U2_SQTH;
-+	tmp |= PA6_RG_U2_SQTH_VAL(2);
- 	writel(tmp, port_base + U3P_USBPHYACR6);
- 
- 	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
--- 
-1.8.1.1.dirty
+> On driver detach, devm_phy_release() will put a refcount to
+> the phy, so gets a refconut to it before return.
+> 
+> Change-Id: I56fe428bf945f19c38d56245978c8ca17340eb2c
+
+This line need to be removed
+
+
+
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/phy/phy-core.c | 21 +++++++++++++++------
+>  1 file changed, 15 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+> index fc48fac..8c7f27d 100644
+> --- a/drivers/phy/phy-core.c
+> +++ b/drivers/phy/phy-core.c
+> @@ -636,8 +636,9 @@ EXPORT_SYMBOL_GPL(devm_of_phy_get);
+>   * @np: node containing the phy
+>   * @index: index of the phy
+>   *
+> - * Gets the phy using _of_phy_get(), and associates a device with it using
+> - * devres. On driver detach, release function is invoked on the devres data,
+> + * Gets the phy using _of_phy_get(), then gets a refcount to it,
+> + * and associates a device with it using devres. On driver detach,
+> + * release function is invoked on the devres data,
+>   * then, devres data is freed.
+>   *
+>   */
+> @@ -651,13 +652,21 @@ struct phy *devm_of_phy_get_by_index(struct device *dev, struct device_node *np,
+>  		return ERR_PTR(-ENOMEM);
+>  
+>  	phy = _of_phy_get(np, index);
+> -	if (!IS_ERR(phy)) {
+> -		*ptr = phy;
+> -		devres_add(dev, ptr);
+> -	} else {
+> +	if (IS_ERR(phy)) {
+>  		devres_free(ptr);
+> +		return phy;
+>  	}
+>  
+> +	if (!try_module_get(phy->ops->owner)) {
+> +		devres_free(ptr);
+> +		return ERR_PTR(-EPROBE_DEFER);
+> +	}
+> +
+> +	get_device(&phy->dev);
+> +
+> +	*ptr = phy;
+> +	devres_add(dev, ptr);
+> +
+>  	return phy;
+>  }
+>  EXPORT_SYMBOL_GPL(devm_of_phy_get_by_index);
