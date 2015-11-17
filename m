@@ -1,100 +1,67 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [RESEND RFC/PATCH 4/8] dt-bindings: Add a binding for Mediatek
- Video Encoder
-Date: Tue, 17 Nov 2015 13:41:00 -0600
-Message-ID: <20151117194100.GA3028@rob-hp-laptop>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
- <1447764885-23100-5-git-send-email-tiffany.lin@mediatek.com>
+From: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Subject: [PATCH] pinctrl: mediatek: Add get_direction support.
+Date: Tue, 17 Nov 2015 14:17:13 -0800
+Message-ID: <1447798633-24586-1-git-send-email-hongzhou.yang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1447764885-23100-5-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Geert Uytterhoeven <geert@linux-m68k.org>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew->
+Content-Type: text/plain
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 17, 2015 at 08:54:41PM +0800, Tiffany Lin wrote:
-> add a DT binding documentation of Video Encoder for the
-> MT8173 SoC from Mediatek.
-> 
-> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> ---
->  .../devicetree/bindings/media/mediatek-vcodec.txt  |   58 ++++++++++++++++++++
->  1 file changed, 58 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> new file mode 100644
-> index 0000000..fea4d7c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> @@ -0,0 +1,58 @@
-> +Mediatek Video Codec
-> +
-> +Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
-> +supports high resolution encoding functionalities.
-> +
-> +Required properties:
-> +- compatible : "mediatek,mt8173-vcodec-enc" for encoder
-> +- reg : Physical base address of the video codec registers and length of
-> +  memory mapped region.
-> +- interrupts : interrupt number to the cpu.
-> +- larb : must contain the larbes of current platform
+Since Linux gpio framework return 0 for output, 1 for input.
+But HW use 0 stands for input, and 1 stands for output.
+So use negative to correct it.
 
-What is this?
+And gpio_chip.get is used to get input value, no need to get
+output value, so removing it.
 
-> +- clocks : list of clock specifiers, corresponding to entries in
-> +  the clock-names property;
-> +- clock-names: must contain "vencpll", "venc_lt_sel", "vcodecpll_370p5_ck"
-> +- iommus : list of iommus specifiers should be enabled for hw encode.
-> +  There are 2 cells needed to enable/disable iommu.
-> +  The first one is local arbiter index(larbid), and the other is port
-> +  index(portid) within local arbiter. Specifies the larbid and portid
-> +  as defined in dt-binding/memory/mt8173-larb-port.h.
-> +- vpu : the node of video processor unit
+Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+---
+ Base on v4.4-rc1, resend it.
+ Add get direction support.
+ Remove gpio_chip.get value for output direction.
 
-This should be prefixed with mediatek.
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-> +
-> +Example:
-> +vcodec_enc: vcodec@0x18002000 {
-> +    compatible = "mediatek,mt8173-vcodec-enc";
-> +    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
-> +          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
-> +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
-> +           <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> +    larb = <&larb3>,
-> +           <&larb5>;
-> +    iommus = <&iommu M4U_LARB3_ID M4U_PORT_VENC_RCPU>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REC>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_BSDMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_SV_COMV>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_RD_COMV>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_LUMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_CHROMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_LUMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_CHROMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_RDMA>,
-> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_WDMA>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RCPU_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_FRM_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_BSDMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_SV_COMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RD_COMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_LUMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_CHROMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REF_LUMA_SET2>,
-> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_CHROMA_SET2>;
-> +    vpu = <&vpu>;
-> +    clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
-> +             <&topckgen CLK_TOP_VENC_LT_SEL>,
-> +             <&topckgen CLK_TOP_VCODECPLL_370P5>;
-> +    clock-names = "vencpll",
-> +                  "venc_lt_sel",
-> +                  "vcodecpll_370p5_ck";
-> +  };
-> -- 
-> 1.7.9.5
-> 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index f307f1d..5c71727 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -747,7 +747,7 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
+ 	reg_addr =  mtk_get_port(pctl, offset) + pctl->devdata->dir_offset;
+ 	bit = BIT(offset & 0xf);
+ 	regmap_read(pctl->regmap1, reg_addr, &read_val);
+-	return !!(read_val & bit);
++	return !(read_val & bit);
+ }
+ 
+ static int mtk_gpio_get(struct gpio_chip *chip, unsigned offset)
+@@ -757,12 +757,8 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned offset)
+ 	unsigned int read_val = 0;
+ 	struct mtk_pinctrl *pctl = dev_get_drvdata(chip->dev);
+ 
+-	if (mtk_gpio_get_direction(chip, offset))
+-		reg_addr = mtk_get_port(pctl, offset) +
+-			pctl->devdata->dout_offset;
+-	else
+-		reg_addr = mtk_get_port(pctl, offset) +
+-			pctl->devdata->din_offset;
++	reg_addr = mtk_get_port(pctl, offset) +
++		pctl->devdata->din_offset;
+ 
+ 	bit = BIT(offset & 0xf);
+ 	regmap_read(pctl->regmap1, reg_addr, &read_val);
+@@ -997,6 +993,7 @@ static struct gpio_chip mtk_gpio_chip = {
+ 	.owner			= THIS_MODULE,
+ 	.request		= gpiochip_generic_request,
+ 	.free			= gpiochip_generic_free,
++	.get_direction		= mtk_gpio_get_direction,
+ 	.direction_input	= mtk_gpio_direction_input,
+ 	.direction_output	= mtk_gpio_direction_output,
+ 	.get			= mtk_gpio_get,
+-- 
+1.7.9.5
+
