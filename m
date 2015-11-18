@@ -1,44 +1,125 @@
-From: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM: use const and __initconst for smp_operations
-Date: Wed, 18 Nov 2015 11:06:36 +0530
-Message-ID: <20151118053636.GD7336@ubuntu>
-References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
- <1447551593-22246-3-git-send-email-yamada.masahiro@socionext.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND RFC/PATCH 4/8] dt-bindings: Add a binding for Mediatek
+ Video Encoder
+Date: Wed, 18 Nov 2015 15:09:48 +0800
+Message-ID: <1447830588.22499.25.camel@mtksdaap41>
+References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1447764885-23100-5-git-send-email-tiffany.lin@mediatek.com>
+	 <20151117194100.GA3028@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1447551593-22246-3-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Emilio =?iso-8859-1?Q?L=F3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20151117194100.GA3028@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <edd>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 15-11-15, 10:39, Masahiro Yamada wrote:
-> These smp_operations structures are not over-written, so add "const"
-> qualifier and replace __initdata with __initconst.
-> 
-> Also, add "static" where it is possible.
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> Acked-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> Acked-by: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-> Acked-by: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
-> ---
-> 
->  arch/arm/mach-spear/generic.h        | 2 +-
->  arch/arm/mach-spear/platsmp.c        | 2 +-
+Hi Rob,
 
-Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+On Tue, 2015-11-17 at 13:41 -0600, Rob Herring wrote:
+> On Tue, Nov 17, 2015 at 08:54:41PM +0800, Tiffany Lin wrote:
+> > add a DT binding documentation of Video Encoder for the
+> > MT8173 SoC from Mediatek.
+> > 
+> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/media/mediatek-vcodec.txt  |   58 ++++++++++++++++++++
+> >  1 file changed, 58 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> > new file mode 100644
+> > index 0000000..fea4d7c
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> > @@ -0,0 +1,58 @@
+> > +Mediatek Video Codec
+> > +
+> > +Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
+> > +supports high resolution encoding functionalities.
+> > +
+> > +Required properties:
+> > +- compatible : "mediatek,mt8173-vcodec-enc" for encoder
+> > +- reg : Physical base address of the video codec registers and length of
+> > +  memory mapped region.
+> > +- interrupts : interrupt number to the cpu.
+> > +- larb : must contain the larbes of current platform
+> 
+> What is this?
+Resend due to previous mail has html format and reject by some mail
+servers.
 
--- 
-viresh
+This is SMI (Smart Multimedia Interface) Local Arbiter.
+MT8173 has different local arbiters (larb).
+Please see
+http://lists.linuxfoundation.org/pipermail/iommu/2015-October/014587.html
+
+Video Encoder HW has it's local arbiter (larb), by configure ports in
+this larb, we can have encoder HW go through the m4u to talk with EMI.
+We will change it to mediatek,larb in next version.
+
+> 
+> > +- clocks : list of clock specifiers, corresponding to entries in
+> > +  the clock-names property;
+> > +- clock-names: must contain "vencpll", "venc_lt_sel", "vcodecpll_370p5_ck"
+> > +- iommus : list of iommus specifiers should be enabled for hw encode.
+> > +  There are 2 cells needed to enable/disable iommu.
+> > +  The first one is local arbiter index(larbid), and the other is port
+> > +  index(portid) within local arbiter. Specifies the larbid and portid
+> > +  as defined in dt-binding/memory/mt8173-larb-port.h.
+> > +- vpu : the node of video processor unit
+> 
+> This should be prefixed with mediatek.
+We will prefix it with mediatek in next version.
+
+> 
+> > +
+> > +Example:
+> > +vcodec_enc: vcodec@0x18002000 {
+> > +    compatible = "mediatek,mt8173-vcodec-enc";
+> > +    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
+> > +          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
+> > +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
+> > +           <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+> > +    larb = <&larb3>,
+> > +           <&larb5>;
+> > +    iommus = <&iommu M4U_LARB3_ID M4U_PORT_VENC_RCPU>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REC>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_BSDMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_SV_COMV>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_RD_COMV>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_LUMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_CHROMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_LUMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_CHROMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_RDMA>,
+> > +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_WDMA>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RCPU_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_FRM_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_BSDMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_SV_COMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RD_COMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_LUMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_CHROMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REF_LUMA_SET2>,
+> > +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_CHROMA_SET2>;
+> > +    vpu = <&vpu>;
+> > +    clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
+> > +             <&topckgen CLK_TOP_VENC_LT_SEL>,
+> > +             <&topckgen CLK_TOP_VCODECPLL_370P5>;
+> > +    clock-names = "vencpll",
+> > +                  "venc_lt_sel",
+> > +                  "vcodecpll_370p5_ck";
+> > +  };
+> > -- 
+> > 1.7.9.5
+> > 
+best regards,
+Tiffany
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
