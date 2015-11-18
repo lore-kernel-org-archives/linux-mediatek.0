@@ -1,113 +1,42 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: fix a memleak when do dt maps.
-Date: Tue, 17 Nov 2015 14:33:41 -0800
-Message-ID: <1447799622-3340-1-git-send-email-hongzhou.yang@mediatek.com>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: use const and __initconst for smp_operations
+Date: Tue, 17 Nov 2015 17:30:46 -0800
+Message-ID: <20151118013046.GA32672@codeaurora.org>
+References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
+ <1447551593-22246-3-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1447551593-22246-3-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Emilio =?iso-8859-1?Q?L=F3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-configs will kmemdup to dup_configs in pictrl util function.
-So configs need to be freed.
+On 11/15, Masahiro Yamada wrote:
+> These smp_operations structures are not over-written, so add "const"
+> qualifier and replace __initdata with __initconst.
+> 
+> Also, add "static" where it is possible.
+> 
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Acked-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+> Acked-by: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> Acked-by: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
+> ---
 
-Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- Fix a memleak issue.
- According to Yingjoe's comment, add return checek for pinconf_generic_parse_dt_config.
+Acked-by: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org> # qcom part
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   27 ++++++++++++++++---------
- 1 file changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 5c71727..8db7cdf 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -509,6 +509,9 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 
- 	err = pinconf_generic_parse_dt_config(node, pctldev, &configs,
- 		&num_configs);
-+	if (err)
-+		return err;
-+
- 	if (num_configs)
- 		has_config = 1;
- 
-@@ -520,21 +523,23 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 	if (has_config && num_pins >= 1)
- 		maps_per_pin++;
- 
--	if (!num_pins || !maps_per_pin)
--		return -EINVAL;
-+	if (!num_pins || !maps_per_pin) {
-+		err = -EINVAL;
-+		goto exit;
-+	}
- 
- 	reserve = num_pins * maps_per_pin;
- 
- 	err = pinctrl_utils_reserve_map(pctldev, map,
- 			reserved_maps, num_maps, reserve);
- 	if (err < 0)
--		goto fail;
-+		goto exit;
- 
- 	for (i = 0; i < num_pins; i++) {
- 		err = of_property_read_u32_index(node, "pinmux",
- 				i, &pinfunc);
- 		if (err)
--			goto fail;
-+			goto exit;
- 
- 		pin = MTK_GET_PIN_NO(pinfunc);
- 		func = MTK_GET_PIN_FUNC(pinfunc);
-@@ -543,20 +548,21 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 				func >= ARRAY_SIZE(mtk_gpio_functions)) {
- 			dev_err(pctl->dev, "invalid pins value.\n");
- 			err = -EINVAL;
--			goto fail;
-+			goto exit;
- 		}
- 
- 		grp = mtk_pctrl_find_group_by_pin(pctl, pin);
- 		if (!grp) {
- 			dev_err(pctl->dev, "unable to match pin %d to group\n",
- 					pin);
--			return -EINVAL;
-+			err = -EINVAL;
-+			goto exit;
- 		}
- 
- 		err = mtk_pctrl_dt_node_to_map_func(pctl, pin, func, grp, map,
- 				reserved_maps, num_maps);
- 		if (err < 0)
--			goto fail;
-+			goto exit;
- 
- 		if (has_config) {
- 			err = pinctrl_utils_add_map_configs(pctldev, map,
-@@ -564,13 +570,14 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
- 					configs, num_configs,
- 					PIN_MAP_TYPE_CONFIGS_GROUP);
- 			if (err < 0)
--				goto fail;
-+				goto exit;
- 		}
- 	}
- 
--	return 0;
-+	err = 0;
- 
--fail:
-+exit:
-+	kfree(configs);
- 	return err;
- }
- 
 -- 
-1.7.9.5
-
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
