@@ -1,38 +1,118 @@
-From: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH] watchdog: mtk_wdt: Use MODE_KEY when stopping the watchdog
-Date: Wed, 18 Nov 2015 10:45:01 +0800
-Message-ID: <1447814701-23504-1-git-send-email-drinkcat@chromium.org>
-Return-path: <linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-watchdog-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Wim Van Sebroeck <wim-IQzOog9fTRqzQB+pC5nmwQ@public.gmane.org>, linux-watchdog-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH] pinctrl: mediatek: fix a memleak when do dt maps.
+Date: Wed, 18 Nov 2015 11:22:09 +0800
+Message-ID: <1447816929.14382.0.camel@mtksdaap41>
+References: <1447799622-3340-1-git-send-email-hongzhou.yang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1447799622-3340-1-git-send-email-hongzhou.yang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-WDT_MODE value need to be or-ed with MODE_KEY when setting
-watchdog mode. Add it to mtk_wdt_stop function, so that the
-watchdog can be stopped (e.g. during suspend).
+On Tue, 2015-11-17 at 14:33 -0800, Hongzhou Yang wrote:
+> configs will kmemdup to dup_configs in pictrl util function.
+> So configs need to be freed.
+> 
+> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  Fix a memleak issue.
+>  According to Yingjoe's comment, add return checek for pinconf_generic_parse_dt_config.
 
-Signed-off-by: Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- drivers/watchdog/mtk_wdt.c | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 6ad9df9..b751f43 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -123,6 +123,7 @@ static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
- 
- 	reg = readl(wdt_base + WDT_MODE);
- 	reg &= ~WDT_MODE_EN;
-+	reg |= WDT_MODE_KEY;
- 	iowrite32(reg, wdt_base + WDT_MODE);
- 
- 	return 0;
--- 
-2.6.0.rc2.230.g3dd15c0
+Joe.C
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-watchdog" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   27 ++++++++++++++++---------
+>  1 file changed, 17 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 5c71727..8db7cdf 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -509,6 +509,9 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  
+>  	err = pinconf_generic_parse_dt_config(node, pctldev, &configs,
+>  		&num_configs);
+> +	if (err)
+> +		return err;
+> +
+>  	if (num_configs)
+>  		has_config = 1;
+>  
+> @@ -520,21 +523,23 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  	if (has_config && num_pins >= 1)
+>  		maps_per_pin++;
+>  
+> -	if (!num_pins || !maps_per_pin)
+> -		return -EINVAL;
+> +	if (!num_pins || !maps_per_pin) {
+> +		err = -EINVAL;
+> +		goto exit;
+> +	}
+>  
+>  	reserve = num_pins * maps_per_pin;
+>  
+>  	err = pinctrl_utils_reserve_map(pctldev, map,
+>  			reserved_maps, num_maps, reserve);
+>  	if (err < 0)
+> -		goto fail;
+> +		goto exit;
+>  
+>  	for (i = 0; i < num_pins; i++) {
+>  		err = of_property_read_u32_index(node, "pinmux",
+>  				i, &pinfunc);
+>  		if (err)
+> -			goto fail;
+> +			goto exit;
+>  
+>  		pin = MTK_GET_PIN_NO(pinfunc);
+>  		func = MTK_GET_PIN_FUNC(pinfunc);
+> @@ -543,20 +548,21 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  				func >= ARRAY_SIZE(mtk_gpio_functions)) {
+>  			dev_err(pctl->dev, "invalid pins value.\n");
+>  			err = -EINVAL;
+> -			goto fail;
+> +			goto exit;
+>  		}
+>  
+>  		grp = mtk_pctrl_find_group_by_pin(pctl, pin);
+>  		if (!grp) {
+>  			dev_err(pctl->dev, "unable to match pin %d to group\n",
+>  					pin);
+> -			return -EINVAL;
+> +			err = -EINVAL;
+> +			goto exit;
+>  		}
+>  
+>  		err = mtk_pctrl_dt_node_to_map_func(pctl, pin, func, grp, map,
+>  				reserved_maps, num_maps);
+>  		if (err < 0)
+> -			goto fail;
+> +			goto exit;
+>  
+>  		if (has_config) {
+>  			err = pinctrl_utils_add_map_configs(pctldev, map,
+> @@ -564,13 +570,14 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+>  					configs, num_configs,
+>  					PIN_MAP_TYPE_CONFIGS_GROUP);
+>  			if (err < 0)
+> -				goto fail;
+> +				goto exit;
+>  		}
+>  	}
+>  
+> -	return 0;
+> +	err = 0;
+>  
+> -fail:
+> +exit:
+> +	kfree(configs);
+>  	return err;
+>  }
+>  
