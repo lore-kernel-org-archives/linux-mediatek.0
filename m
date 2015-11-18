@@ -1,118 +1,85 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH] pinctrl: mediatek: fix a memleak when do dt maps.
-Date: Wed, 18 Nov 2015 11:22:09 +0800
-Message-ID: <1447816929.14382.0.camel@mtksdaap41>
-References: <1447799622-3340-1-git-send-email-hongzhou.yang@mediatek.com>
+From: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v8 0/2] Mediatek SPI-NOR flash driver
+Date: Wed, 18 Nov 2015 11:30:01 +0800
+Message-ID: <1447817403-16631-1-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447799622-3340-1-git-send-email-hongzhou.yang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Axel Lin <axel.lin@ingics.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Colin Ian King <colin.king@canonical.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, biao.huang@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org, ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-11-17 at 14:33 -0800, Hongzhou Yang wrote:
-> configs will kmemdup to dup_configs in pictrl util function.
-> So configs need to be freed.
-> 
-> Signed-off-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  Fix a memleak issue.
->  According to Yingjoe's comment, add return checek for pinconf_generic_parse_dt_config.
+This series is based on v4.4-rc1 and l2-mtd.git [0] and erase_sector
+implementation patch [1]
 
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+[0]: git://git.infradead.org/l2-mtd.git
+[1]: http://lists.infradead.org/pipermail/linux-mtd/2015-October//062959.html
 
-Joe.C
+Change in v8:
+1: rewrite the macro MTK_NOR_MAX_SHIFT from 6 to 7
+2: add a new macro MTK_NOR_MAX_RX_TX_SHIFT for max len of TX&RX
 
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   27 ++++++++++++++++---------
->  1 file changed, 17 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 5c71727..8db7cdf 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -509,6 +509,9 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->  
->  	err = pinconf_generic_parse_dt_config(node, pctldev, &configs,
->  		&num_configs);
-> +	if (err)
-> +		return err;
-> +
->  	if (num_configs)
->  		has_config = 1;
->  
-> @@ -520,21 +523,23 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->  	if (has_config && num_pins >= 1)
->  		maps_per_pin++;
->  
-> -	if (!num_pins || !maps_per_pin)
-> -		return -EINVAL;
-> +	if (!num_pins || !maps_per_pin) {
-> +		err = -EINVAL;
-> +		goto exit;
-> +	}
->  
->  	reserve = num_pins * maps_per_pin;
->  
->  	err = pinctrl_utils_reserve_map(pctldev, map,
->  			reserved_maps, num_maps, reserve);
->  	if (err < 0)
-> -		goto fail;
-> +		goto exit;
->  
->  	for (i = 0; i < num_pins; i++) {
->  		err = of_property_read_u32_index(node, "pinmux",
->  				i, &pinfunc);
->  		if (err)
-> -			goto fail;
-> +			goto exit;
->  
->  		pin = MTK_GET_PIN_NO(pinfunc);
->  		func = MTK_GET_PIN_FUNC(pinfunc);
-> @@ -543,20 +548,21 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->  				func >= ARRAY_SIZE(mtk_gpio_functions)) {
->  			dev_err(pctl->dev, "invalid pins value.\n");
->  			err = -EINVAL;
-> -			goto fail;
-> +			goto exit;
->  		}
->  
->  		grp = mtk_pctrl_find_group_by_pin(pctl, pin);
->  		if (!grp) {
->  			dev_err(pctl->dev, "unable to match pin %d to group\n",
->  					pin);
-> -			return -EINVAL;
-> +			err = -EINVAL;
-> +			goto exit;
->  		}
->  
->  		err = mtk_pctrl_dt_node_to_map_func(pctl, pin, func, grp, map,
->  				reserved_maps, num_maps);
->  		if (err < 0)
-> -			goto fail;
-> +			goto exit;
->  
->  		if (has_config) {
->  			err = pinctrl_utils_add_map_configs(pctldev, map,
-> @@ -564,13 +570,14 @@ static int mtk_pctrl_dt_subnode_to_map(struct pinctrl_dev *pctldev,
->  					configs, num_configs,
->  					PIN_MAP_TYPE_CONFIGS_GROUP);
->  			if (err < 0)
-> -				goto fail;
-> +				goto exit;
->  		}
->  	}
->  
-> -	return 0;
-> +	err = 0;
->  
-> -fail:
-> +exit:
-> +	kfree(configs);
->  	return err;
->  }
->  
+Change in v7:
+1: change PRGDATA3 to PRGDATA4 for quad mode
+2: drop  PRGDATA3 for signal read mode
+3: drop unnecessary partition parser data
+4: convert mtd_device_parse_register to mtd_device_register
+5: disable clocks on failure
+
+Change in v6:
+1: delete mt8173_nor_do_rx
+2: delete mt8173_nor_do_rx
+3: add mt8173_nor_do_tx_rx for general usage
+4: support nor flash with 6 IDs
+5: delete mt8173_nor_erase_sector and use "nor->erase_opcode"
+6: add mt8173_nor_set_addr to programming the address register
+7: initialize the ppdata in mtk_nor_init
+
+Change in v5:
+1: add "status = "disable"" to device tree
+2: add document "flash" node
+3: fix some statement error in Kconfig file
+4: fix alphabetical order error in makefile
+5: delete the parament "mtd_info *mtd" in mt8173_nor structure
+6: delete SPINOR_OP_WREN repeated calls
+7: add mt8173_nor_do_tx & mt8173_nor_do_rx for them full potential
+8: use a subnode to represent the flash
+
+Change in v4:
+1: delete the parament "write_enable" for mt8173_nor_write_reg
+2: fix the build warning for calling mt8173_nor_write_single_byte
+
+Change in v3:
+1: use switch() to replace some if-else statement
+2: use shifts to replace endianness statement
+3: delete some unused macros
+4: use auto-increment mechanism for single write
+5: write address added to 32bytes
+
+Change in v2:
+1. Rebase to 4.3-rc1
+2. propagate error code
+3. delete mux clock and axi clock in dts file
+4. descripts more exactly for binding file
+5. change file names from mtk-nor.c to mtk_quadspi.c
+6. delete some functions witch were used once time
+
+Bayi Cheng (2):
+  mtd: mtk-nor: mtk serial flash controller driver
+  arm64: dts: mt8173: Add nor flash node
+
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |  18 +-
+ drivers/mtd/spi-nor/Kconfig              |   7 +
+ drivers/mtd/spi-nor/Makefile             |   1 +
+ drivers/mtd/spi-nor/mtk-quadspi.c        | 483 +++++++++++++++++++++++++++++++
+ 4 files changed, 508 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/mtd/spi-nor/mtk-quadspi.c
+
+--
+1.8.1.1.dirty
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
