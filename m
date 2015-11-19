@@ -1,83 +1,87 @@
-From: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC/PATCH 1/8] dt-bindings: Add a binding for Mediatek
- Video Processor Unit
-Date: Thu, 19 Nov 2015 10:47:10 +0800
-Message-ID: <1447901230.6731.3.camel@mtksdaap41>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1447764885-23100-2-git-send-email-tiffany.lin@mediatek.com>
-	 <20151117141320.GJ12586@leverpostej>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v12 1/3] dt-bindings: Add a binding for Mediatek xHCI
+ host controller
+Date: Thu, 19 Nov 2015 11:36:51 +0800
+Message-ID: <1447904211.18917.12.camel@mhfsdcap03>
+References: <1447751921-26746-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <1447751921-26746-2-git-send-email-chunfeng.yun@mediatek.com>
+	 <564B085B.7060706@cogentembedded.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20151117141320.GJ12586@leverpostej>
+In-Reply-To: <564B085B.7060706-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parr
+To: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
+Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Roger Quadros <rogerq-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-11-17 at 14:13 +0000, Mark Rutland wrote:
-> On Tue, Nov 17, 2015 at 08:54:38PM +0800, Tiffany Lin wrote:
-> > From: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > Add a DT binding documentation of Video Processor Unit for the
+Hi,
+On Tue, 2015-11-17 at 13:58 +0300, Sergei Shtylyov wrote:
+> Hello.
+> 
+> On 11/17/2015 12:18 PM, Chunfeng Yun wrote:
+> 
+> > add a DT binding documentation of xHCI host controller for the
 > > MT8173 SoC from Mediatek.
-> > 
-> > Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > ---
-> >  .../devicetree/bindings/media/mediatek-vpu.txt     |   27 ++++++++++++++++++++
-> >  1 file changed, 27 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek-vpu.txt b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+> >   .../devicetree/bindings/usb/mt8173-xhci.txt        | 51 ++++++++++++++++++++++
+> >   1 file changed, 51 insertions(+)
+> >   create mode 100644 Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
 > > new file mode 100644
-> > index 0000000..99a4e5e
+> > index 0000000..a78f20b
 > > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
-> > @@ -0,0 +1,27 @@
-> > +* Mediatek Video Processor Unit
+> > +++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> > @@ -0,0 +1,51 @@
+> > +MT8173 xHCI
 > > +
-> > +Video Processor Unit is a HW video controller. It controls HW Codec including
-> > +H.264/VP8/VP9 Decode, H.264/VP8 Encode and Image Processor (scale/rotate/color convert).
+> > +The device node for Mediatek SOC USB3.0 host controller
 > > +
 > > +Required properties:
-> > +  - compatible: "mediatek,mt8173-vpu"
-> > +  - reg: Must contain an entry for each entry in reg-names.
-> > +  - reg-names: Must include the following entries:
-> > +    "sram": SRAM base
-> > +    "cfg_reg": Main configuration registers base
-> > +  - interrupts: interrupt number to the cpu.
-> > +  - clocks : clock name from clock manager
-> > +  - clock-names: the clocks of the VPU H/W
+> > + - compatible : should contain "mediatek,mt8173-xhci"
+> > + - reg : specifies physical base address and size of the registers,
+> > +	the first one for MAC, the second for IPPC
+> > + - interrupts : interrupt used by the controller
+> > + - power-domains : a phandle to USB power domain node to control USB's
+> > +	mtcmos
 > 
-> You need to explicitly define the set of clock-names you expect here.
+>     What's that?
+It works as a gateway in fact which can turn on/off usb power
 > 
-> Mark.
-
-Sorry, only one clock to enable VPU hardware.
-We will modify to
-- clocks : must contain one entry for each clock-names.
-- clock-names : must be "main", It is the main clock of VPU.
-
-Thanks..
-
-> 
-> > +  - iommus : phandle and IOMMU spcifier for the IOMMU that serves the VPU.
+> > + - vusb33-supply : regulator of USB avdd3.3v
 > > +
-> > +Example:
-> > +	vpu: vpu@10020000 {
-> > +		compatible = "mediatek,mt8173-vpu";
-> > +		reg = <0 0x10020000 0 0x30000>,
-> > +		      <0 0x10050000 0 0x100>;
-> > +		reg-names = "sram", "cfg_reg";
-> > +		interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>;
-> > +		clocks = <&topckgen TOP_SCP_SEL>;
-> > +		clock-names = "main";
-> > +		iommus = <&iommu M4U_PORT_VENC_RCPU>;
-> > +	};
-> > -- 
-> > 1.7.9.5
-> > 
+> > + - clocks : a list of phandle + clock-specifier pairs, one for each
+> > +	entry in clock-names
+> > + - clock-names : must contain
+> > +	"sys_ck": for clock of xHCI MAC
+> > +	"wakeup_deb_p0": for USB wakeup debounce clock of port0
+> > +	"wakeup_deb_p0": for USB wakeup debounce clock of port1
+> 
+>     "wakeup_deb_p1"?
+Yes, it's a typo
+> 
+> > +
+> > + - phys : a list of phandle + phy specifier pairs
+> > +
+> > +Optional properties:
+> > + - mediatek,wakeup-src : 1: ip sleep wakeup mode; 2: line state wakeup
+>                                 ^^ IP?
+Ok
+> 
+> > +	mode;
+> > + - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+> > +	control register, it depends on "mediatek,wakeup-src".
+> > + - vbus-supply : reference to the VBUS regulator;
+> > + - usb3-lpm-capable : supports USB3.0 LPM
+> 
+> [...]
+> 
+> MBR, Sergei
+> 
 
 
 --
