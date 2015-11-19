@@ -1,157 +1,34 @@
-From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Subject: [PATCH v2 2/3] nvmem: mediatek: Add Mediatek EFUSE driver
-Date: Thu, 19 Nov 2015 18:46:53 +0800
-Message-ID: <1447930014-19579-3-git-send-email-andrew-ct.chen@mediatek.com>
-References: <1447930014-19579-1-git-send-email-andrew-ct.chen@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1447930014-19579-1-git-send-email-andrew-ct.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH 0/2] MT8173 clock changes for DRM
+Date: Thu, 19 Nov 2015 16:59:46 +0100
+Message-ID: <1447948788-21105-1-git-send-email-p.zabel@pengutronix.de>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, "Joe.C" <yingjoe.chen@mediatek.com>, kernel@pengutronix.de, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Mediatek EFUSE driver to access hardware data like
-thermal sensor calibration or HDMI impedance.
+Hi,
 
-Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
----
- drivers/nvmem/Kconfig     | 11 ++++++
- drivers/nvmem/Makefile    |  2 ++
- drivers/nvmem/mtk-efuse.c | 89 +++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 102 insertions(+)
- create mode 100644 drivers/nvmem/mtk-efuse.c
+I have sent these two as part of the MT8173 DRM/KMS driver patch series [1],
+but not yet to the clock list. I'd be happy to get some review and
+suggestions on how to best merge them, given the dependency of the DRM/KMS
+driver on these changes.
 
-diff --git a/drivers/nvmem/Kconfig b/drivers/nvmem/Kconfig
-index bc4ea58..ea7ec17 100644
---- a/drivers/nvmem/Kconfig
-+++ b/drivers/nvmem/Kconfig
-@@ -36,6 +36,17 @@ config NVMEM_MXS_OCOTP
- 	  This driver can also be built as a module. If so, the module
- 	  will be called nvmem-mxs-ocotp.
- 
-+config MTK_EFUSE
-+	tristate "Mediatek SoCs EFUSE support"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	select REGMAP_MMIO
-+	help
-+	  This is a driver to access hardware related data like sensor
-+	  calibration, HDMI impedance etc.
-+
-+	  This driver can also be built as a module. If so, the module
-+	  will be called efuse-mtk.
-+
- config QCOM_QFPROM
- 	tristate "QCOM QFPROM Support"
- 	depends on ARCH_QCOM || COMPILE_TEST
-diff --git a/drivers/nvmem/Makefile b/drivers/nvmem/Makefile
-index 95dde3f..a59b069 100644
---- a/drivers/nvmem/Makefile
-+++ b/drivers/nvmem/Makefile
-@@ -10,6 +10,8 @@ obj-$(CONFIG_NVMEM_IMX_OCOTP)	+= nvmem-imx-ocotp.o
- nvmem-imx-ocotp-y		:= imx-ocotp.o
- obj-$(CONFIG_NVMEM_MXS_OCOTP)	+= nvmem-mxs-ocotp.o
- nvmem-mxs-ocotp-y		:= mxs-ocotp.o
-+obj-$(CONFIG_MTK_EFUSE)		+= nvmem_mtk-efuse.o
-+nvmem_mtk-efuse-y		:= mtk-efuse.o
- obj-$(CONFIG_QCOM_QFPROM)	+= nvmem_qfprom.o
- nvmem_qfprom-y			:= qfprom.o
- obj-$(CONFIG_ROCKCHIP_EFUSE)	+= nvmem_rockchip_efuse.o
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-new file mode 100644
-index 0000000..7b35f5b
---- /dev/null
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -0,0 +1,89 @@
-+/*
-+ * Copyright (c) 2015 MediaTek Inc.
-+ * Author: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/module.h>
-+#include <linux/nvmem-provider.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+static struct regmap_config mtk_regmap_config = {
-+	.reg_bits = 32,
-+	.val_bits = 32,
-+	.reg_stride = 4,
-+};
-+
-+static int mtk_efuse_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct resource *res;
-+	struct nvmem_device *nvmem;
-+	struct nvmem_config *econfig;
-+	struct regmap *regmap;
-+	void __iomem *base;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	base = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(base))
-+		return PTR_ERR(base);
-+
-+	econfig = devm_kzalloc(dev, sizeof(*econfig), GFP_KERNEL);
-+	if (!econfig)
-+		return -ENOMEM;
-+
-+	mtk_regmap_config.max_register = resource_size(res) - 1;
-+
-+	regmap = devm_regmap_init_mmio(dev, base, &mtk_regmap_config);
-+	if (IS_ERR(regmap)) {
-+		dev_err(dev, "regmap init failed\n");
-+		return PTR_ERR(regmap);
-+	}
-+
-+	econfig->dev = dev;
-+	econfig->owner = THIS_MODULE;
-+	nvmem = nvmem_register(econfig);
-+	if (IS_ERR(nvmem))
-+		return PTR_ERR(nvmem);
-+
-+	platform_set_drvdata(pdev, nvmem);
-+
-+	return 0;
-+}
-+
-+static int mtk_efuse_remove(struct platform_device *pdev)
-+{
-+	struct nvmem_device *nvmem = platform_get_drvdata(pdev);
-+
-+	return nvmem_unregister(nvmem);
-+}
-+
-+static const struct of_device_id mtk_efuse_of_match[] = {
-+	{ .compatible = "mediatek,mt8173-efuse",},
-+	{ .compatible = "mediatek,efuse",},
-+	{/* sentinel */},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_efuse_of_match);
-+
-+static struct platform_driver mtk_efuse_driver = {
-+	.probe = mtk_efuse_probe,
-+	.remove = mtk_efuse_remove,
-+	.driver = {
-+		.name = "mediatek,efuse",
-+		.of_match_table = mtk_efuse_of_match,
-+	},
-+};
-+module_platform_driver(mtk_efuse_driver);
-+MODULE_AUTHOR("Andrew-CT Chen <andrew-ct.chen@mediatek.com>");
-+MODULE_DESCRIPTION("Mediatek EFUSE driver");
-+MODULE_LICENSE("GPL v2");
+[1] http://www.spinics.net/lists/dri-devel/msg94500.html
+
+best regards
+Philipp
+
+Philipp Zabel (2):
+  clk: mediatek: make dpi0_sel and hdmi_sel not propagate rate changes
+  clk: mediatek: Add hdmi_ref HDMI PHY PLL reference clock output
+
+ drivers/clk/mediatek/clk-mt8173.c      | 9 +++++++--
+ drivers/clk/mediatek/clk-mtk.h         | 7 +++++--
+ include/dt-bindings/clock/mt8173-clk.h | 3 ++-
+ 3 files changed, 14 insertions(+), 5 deletions(-)
+
 -- 
-1.9.1
+2.6.2
+
