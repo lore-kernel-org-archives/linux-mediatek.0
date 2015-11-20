@@ -1,80 +1,40 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 1/2] clk: mediatek: make dpi0_sel and hdmi_sel not
- propagate rate changes
-Date: Fri, 20 Nov 2015 08:56:47 +0800
-Message-ID: <CAGS+omC=ygnAHKzN7w3O6ZH-9rwFpYqrngY89pJ=-tmm-8XZQg@mail.gmail.com>
-References: <1447948788-21105-1-git-send-email-p.zabel@pengutronix.de> <1447948788-21105-2-git-send-email-p.zabel@pengutronix.de>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 1/4] spi: mediatek: update document devicetree bindings to fix syntax error
+Date: Fri, 20 Nov 2015 10:21:16 +0800
+Message-ID: <1447986080-31410-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1447948788-21105-2-git-send-email-p.zabel@pengutronix.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>, Douglas Anderson <dianders@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, "Joe.C" <yingjoe.chen@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-+Heiko and +dianders who worked so hard to get the multi-stage HDMI
-clocks behaving well for the rk3288.
+This patch updates document devicetree bindings
+to fix syntax error.
 
-On Thu, Nov 19, 2015 at 11:59 PM, Philipp Zabel <p.zabel@pengutronix.de> wrote:
-> These muxes are supposed to select a fitting divider after the PLL
-> is already set to the correct rate.
->
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-> ---
->  drivers/clk/mediatek/clk-mt8173.c | 4 ++--
->  drivers/clk/mediatek/clk-mtk.h    | 7 +++++--
->  2 files changed, 7 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-> index 227e356..b305fa2 100644
-> --- a/drivers/clk/mediatek/clk-mt8173.c
-> +++ b/drivers/clk/mediatek/clk-mt8173.c
-> @@ -558,7 +558,7 @@ static const struct mtk_composite top_muxes[] __initconst = {
->         MUX_GATE(CLK_TOP_ATB_SEL, "atb_sel", atb_parents, 0x0090, 16, 2, 23),
->         MUX_GATE(CLK_TOP_VENC_LT_SEL, "venclt_sel", venc_lt_parents, 0x0090, 24, 4, 31),
->         /* CLK_CFG_6 */
-> -       MUX_GATE(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents, 0x00a0, 0, 3, 7),
-> +       MUX_GATE_FLAGS(CLK_TOP_DPI0_SEL, "dpi0_sel", dpi0_parents, 0x00a0, 0, 3, 7, 0),
->         MUX_GATE(CLK_TOP_IRDA_SEL, "irda_sel", irda_parents, 0x00a0, 8, 2, 15),
->         MUX_GATE(CLK_TOP_CCI400_SEL, "cci400_sel", cci400_parents, 0x00a0, 16, 3, 23),
->         MUX_GATE(CLK_TOP_AUD_1_SEL, "aud_1_sel", aud_1_parents, 0x00a0, 24, 2, 31),
-> @@ -569,7 +569,7 @@ static const struct mtk_composite top_muxes[] __initconst = {
->         MUX_GATE(CLK_TOP_SCAM_SEL, "scam_sel", scam_parents, 0x00b0, 24, 2, 31),
->         /* CLK_CFG_12 */
->         MUX_GATE(CLK_TOP_SPINFI_IFR_SEL, "spinfi_ifr_sel", spinfi_ifr_parents, 0x00c0, 0, 3, 7),
-> -       MUX_GATE(CLK_TOP_HDMI_SEL, "hdmi_sel", hdmi_parents, 0x00c0, 8, 2, 15),
-> +       MUX_GATE_FLAGS(CLK_TOP_HDMI_SEL, "hdmi_sel", hdmi_parents, 0x00c0, 8, 2, 15, 0),
->         MUX_GATE(CLK_TOP_DPILVDS_SEL, "dpilvds_sel", dpilvds_parents, 0x00c0, 24, 3, 31),
->         /* CLK_CFG_13 */
->         MUX_GATE(CLK_TOP_MSDC50_2_H_SEL, "msdc50_2_h_sel", msdc50_2_h_parents, 0x00d0, 0, 3, 7),
-> diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-> index 32d2e45..b607996 100644
-> --- a/drivers/clk/mediatek/clk-mtk.h
-> +++ b/drivers/clk/mediatek/clk-mtk.h
-> @@ -83,7 +83,7 @@ struct mtk_composite {
->         signed char num_parents;
->  };
->
-> -#define MUX_GATE(_id, _name, _parents, _reg, _shift, _width, _gate) {  \
-> +#define MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width, _gate, _flags) {    \
->                 .id = _id,                                              \
->                 .name = _name,                                          \
->                 .mux_reg = _reg,                                        \
-> @@ -94,9 +94,12 @@ struct mtk_composite {
->                 .divider_shift = -1,                                    \
->                 .parent_names = _parents,                               \
->                 .num_parents = ARRAY_SIZE(_parents),                    \
-> -               .flags = CLK_SET_RATE_PARENT,                           \
-> +               .flags = _flags,                                        \
->         }
->
-> +#define MUX_GATE(_id, _name, _parents, _reg, _shift, _width, _gate)    \
-> +       MUX_GATE_FLAGS(_id, _name, _parents, _reg, _shift, _width, _gate, CLK_SET_RATE_PARENT)
-> +
->  #define MUX(_id, _name, _parents, _reg, _shift, _width) {              \
->                 .id = _id,                                              \
->                 .name = _name,                                          \
-> --
-> 2.6.2
->
+Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+index ce363c923f..fba8334 100644
+--- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
++++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
+@@ -32,7 +32,7 @@ Optional properties:
+ -cs-gpios: see spi-bus.txt, only required for MT8173.
+ 
+ - mediatek,pad-select: specify which pins group(ck/mi/mo/cs) spi
+-  controller used. This is a array, the element value should be 0~3,
++  controller used. This is an array, the element value should be 0~3,
+   only required for MT8173.
+     0: specify GPIO69,70,71,72 for spi pins.
+     1: specify GPIO102,103,104,105 for spi pins.
+-- 
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
