@@ -1,38 +1,54 @@
-From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v8 1/2] mtd: mtk-nor: mtk serial flash controller driver
-Date: Fri, 20 Nov 2015 17:36:03 -0800
-Message-ID: <20151121013603.GG64635@google.com>
-References: <1447817403-16631-1-git-send-email-bayi.cheng@mediatek.com>
- <1447817403-16631-2-git-send-email-bayi.cheng@mediatek.com>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v12 0/3] Mediatek xHCI support
+Date: Sat, 21 Nov 2015 10:42:37 +0800
+Message-ID: <1448073757.18917.14.camel@mhfsdcap03>
+References: <1447751921-26746-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <564F0211.3090605@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1447817403-16631-2-git-send-email-bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, jteki-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, ezequiel-30ULvvUtt6G51wMPkGsGjgyUoB5FGQPZ@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <564F0211.3090605@intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Quadros <rogerq@ti.com>, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 18, 2015 at 11:30:02AM +0800, Bayi Cheng wrote:
-> add spi nor flash driver for mediatek controller
+Hi,
+On Fri, 2015-11-20 at 13:20 +0200, Mathias Nyman wrote:
+> On 17.11.2015 11:18, Chunfeng Yun wrote:
+> >  From 577f68d9c0ca1531d5f9cae0dcbea2ba116c8551 Mon Sep 17 00:00:00 2001
+> > From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Date: Tue, 17 Nov 2015 17:09:05 +0800
+> > Subject: [PATCH v12 0/3] Mediatek xHCI support
+> >
+> > The patch supports MediaTek's xHCI controller.
+> >
+> > There are some differences from xHCI spec:
+> > 1. The interval is specified in 250 * 8ns increments for Interrupt Moderation
+> > Interval(IMODI) of the Interrupter Moderation(IMOD) register, it is 8 times as
+> > much as that defined in xHCI spec.
+> >
+> > 2. For the value of TD Size in Normal TRB, MTK's xHCI controller defines a
+> > number of packets that remain to be transferred for a TD after processing all
+> > Max packets in all previous TRBs,that means don't include the current TRB's,
+> > but in xHCI spec it includes the current ones.
+> >
+> > 3. To minimize the scheduling effort for synchronous endpoints in xHC, the MTK
+> > architecture defines some extra SW scheduling parameters for HW. According to
+> > these parameters provided by SW, the xHC can easily decide whether a
+> > synchronous endpoint should be scheduled in a specific uFrame. The extra SW
+> > scheduling parameters are put into reserved DWs in Slot and Endpoint Context.
+> > And a bandwidth scheduler algorithm is added to support such feature.
+> >
+> > A usb3.0 phy driver is also added which used by mt65xx SoCs platform, it
+> > supports two usb2.0 ports and one usb3.0 port.
+> >
 > 
-> Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/mtd/spi-nor/Kconfig       |   7 +
->  drivers/mtd/spi-nor/Makefile      |   1 +
->  drivers/mtd/spi-nor/mtk-quadspi.c | 486 ++++++++++++++++++++++++++++++++++++++
->  3 files changed, 494 insertions(+)
->  create mode 100644 drivers/mtd/spi-nor/mtk-quadspi.c
-
-Looks good now. Thanks! Applied to l2-mtd.git, with a trivial whitespace
-fixup.
+> Added to my tree, I'll send it forward to Greg shortly
+> 
+> Fixed the documentation "wakeup_deb_p0" -> "wakeup_deb_p1" typo as well
+Thank you very much.
+> 
+> -Mathias  
+> 
