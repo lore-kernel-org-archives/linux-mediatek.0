@@ -1,77 +1,57 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v5 1/2] Documentation: bridge: Add documentation for ps8640 DT properties
-Date: Mon, 23 Nov 2015 17:59:52 +0800
-Message-ID: <1448272793-27232-1-git-send-email-jitao.shi@mediatek.com>
+From: Gregory CLEMENT <gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: use const and __initconst for smp_operations
+Date: Mon, 23 Nov 2015 18:02:05 +0100
+Message-ID: <87bnakfy42.fsf@free-electrons.com>
+References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
+ <1447551593-22246-3-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com, ck.hu@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447551593-22246-3-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+ (Masahiro Yamada's message of "Sun, 15 Nov 2015 10:39:53 +0900")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Emilio =?utf-8?Q?L=C3=B3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Maxime
 List-Id: linux-mediatek@lists.infradead.org
 
-Add documentation for DT properties supported by
-ps8640 DSI-eDP converter.
+Hi Masahiro Yamada,
+ 
+ On dim., nov. 15 2015, Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org> wrote:
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
----
-Changes since v4
--no change
----
- .../devicetree/bindings/display/bridge/ps8640.txt  |   43 ++++++++++++++++++++
- 1 file changed, 43 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
+> These smp_operations structures are not over-written, so add "const"
+> qualifier and replace __initdata with __initconst.
+>
+> Also, add "static" where it is possible.
+>
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Acked-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+> Acked-by: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> Acked-by: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
+> ---
+>
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
-new file mode 100644
-index 0000000..a3e0971
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
-@@ -0,0 +1,43 @@
-+ps8640-bridge bindings
-+
-+Required properties:
-+	- compatible: "parade,ps8640"
-+	- reg: first page address of the bridge.
-+	- sleep-gpios: OF device-tree gpio specification for PD_ pin.
-+	- reset-gpios: OF device-tree gpio specification for reset pin.
-+	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
-+	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
-+	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
-+	- ports: The device node can contain video interface port nodes per
-+		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
-+		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
-+
-+[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
-+
-+Example:
-+	edp-bridge@18 {
-+		compatible = "parade,ps8640";
-+		reg = <0x18>;
-+		sleep-gpios = <&pio 116 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&pio 115 GPIO_ACTIVE_HIGH>;
-+		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
-+		vdd12-supply = <&ps8640_fixed_1v2>;
-+		vdd33-supply = <&mt6397_vgp2_reg>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			port@0 {
-+				reg = <0>;
-+				ps8640_in: endpoint {
-+					remote-endpoint = <&dsi0_out>;
-+				};
-+			};
-+			port@1 {
-+				reg = <1>;
-+				ps8640_out: endpoint {
-+					remote-endpoint = <&panel_in>;
-+				};
-+			};
-+		};
-+	};
+>  arch/arm/mach-mvebu/armada-370-xp.h  | 2 +-
+>  arch/arm/mach-mvebu/platsmp-a9.c     | 4 ++--
+>  arch/arm/mach-mvebu/platsmp.c        | 2 +-
+
+For mvebu:
+Acked-by: Gregory CLEMENT <gregory.clement-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+
+Thanks,
+
+Gregory
+
 -- 
-1.7.9.5
+Gregory Clement, Free Electrons
+Kernel, drivers, real-time and embedded Linux
+development, consulting, training and support.
+http://free-electrons.com
