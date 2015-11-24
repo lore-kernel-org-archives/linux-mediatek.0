@@ -1,62 +1,77 @@
-From: Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Tue, 24 Nov 2015 17:30:08 +0800
-Message-ID: <20151124093007.GV11999@tiger>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v6 01/12] dt-bindings: drm/mediatek: Add Mediatek
+ display subsystem dts binding
+Date: Tue, 24 Nov 2015 11:11:27 +0100
+Message-ID: <1448359887.3346.32.camel@pengutronix.de>
+References: <1447868060-11620-1-git-send-email-p.zabel@pengutronix.de>
+ <1447868060-11620-2-git-send-email-p.zabel@pengutronix.de>
+ <CAAFQd5BPSWGDUJTihZyWpy3T6kpmdqtn0v9g_7g-YzMgpgiaJQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens@csie>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAAFQd5BPSWGDUJTihZyWpy3T6kpmdqtn0v9g_7g-YzMgpgiaJQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Jie Qiu <jie.qiu@mediatek.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, YT Shen <yt.shen@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 16, 2015 at 12:06:10PM +0900, Masahiro Yamada wrote:
-> Many ARM sub-architectures use prompts followed by "if" conditional,
-> but it is wrong.
-> 
-> Please notice the difference between
-> 
->     config ARCH_FOO
->             bool "Foo SoCs" if ARCH_MULTI_V7
-> 
-> and
-> 
->     config ARCH_FOO
->             bool "Foo SoCs"
->             depends on ARCH_MULTI_V7
-> 
-> These two are *not* equivalent!
-> 
-> In the former statement, it is not ARCH_FOO, but its prompt that
-> depends on ARCH_MULTI_V7.  So, it is completely valid that ARCH_FOO
-> is selected by another, but ARCH_MULTI_V7 is still disabled. As it is
-> not unmet dependency, Kconfig never warns.  This is probably not what
-> you want.
-> 
-> The former should be used only when you need to do so, and you really
-> understand what you are doing.  (In most cases, it should be wrong!)
-> 
-> For enabling/disabling sub-architectures, the latter is always correct.
-> 
-> As a good side effect, this commit fixes some entries over 80 columns
-> (mach-imx, mach-integrator, mach-mbevu).
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
-...
->  arch/arm/mach-imx/Kconfig        |  6 ++++--
-
-Acked-by: Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+SGkgVG9tYXN6LAoKQW0gRGllbnN0YWcsIGRlbiAyNC4xMS4yMDE1LCAxNDozMiArMDkwMCBzY2hy
+aWViIFRvbWFzeiBGaWdhOgo+IEhpIFBoaWxpcHAsIENLLAo+IAo+IFBsZWFzZSBzZWUgbXkgY29t
+bWVudHMgaW5saW5lLgo+IAo+IE9uIFRodSwgTm92IDE5LCAyMDE1IGF0IDI6MzQgQU0sIFBoaWxp
+cHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgpbLi4uXQo+ID4gK1JlcXVp
+cmVkIHByb3BlcnRpZXMgKGFsbCBmdW5jdGlvbiBibG9ja3MpOgo+ID4gKy0gY29tcGF0aWJsZTog
+Im1lZGlhdGVrLDxjaGlwPi1kaXNwLTxmdW5jdGlvbj4iLCBvbmUgb2YKPiA+ICsgICAgICAgIm1l
+ZGlhdGVrLDxjaGlwPi1kaXNwLW92bCIgICAtIG92ZXJsYXkgKDQgbGF5ZXJzLCBibGVuZGluZywg
+Y3NjKQo+ID4gKyAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRpc3AtcmRtYSIgIC0gcmVhZCBETUEg
+LyBsaW5lIGJ1ZmZlcgo+ID4gKyAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRpc3Atd2RtYSIgIC0g
+d3JpdGUgRE1BCj4gPiArICAgICAgICJtZWRpYXRlayw8Y2hpcD4tZGlzcC1jb2xvciIgLSBjb2xv
+ciBwcm9jZXNzb3IKPiA+ICsgICAgICAgIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWFhbCIgICAtIGFk
+YXB0aXZlIGFtYmllbnQgbGlnaHQgY29udHJvbGxlcgo+ID4gKyAgICAgICAibWVkaWF0ZWssPGNo
+aXA+LWRpc3AtZ2FtbWEiIC0gZ2FtbWEgY29ycmVjdGlvbgo+ID4gKyAgICAgICAibWVkaWF0ZWss
+PGNoaXA+LWRpc3AtdWZvZSIgIC0gZGF0YSBjb21wcmVzc2lvbiBlbmdpbmUKPiA+ICsgICAgICAg
+Im1lZGlhdGVrLDxjaGlwPi1kc2kiICAgICAgICAtIERTSSBjb250cm9sbGVyLCBzZWUgbWVkaWF0
+ZWssZHNpLnR4dAo+ID4gKyAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRwaSIgICAgICAgIC0gRFBJ
+IGNvbnRyb2xsZXIsIHNlZSBtZWRpYXRlayxkcGkudHh0Cj4gPiArICAgICAgICJtZWRpYXRlayw8
+Y2hpcD4tZGlzcC1tdXRleCIgLSBkaXNwbGF5IG11dGV4Cj4gPiArICAgICAgICJtZWRpYXRlayw8
+Y2hpcD4tZGlzcC1vZCIgICAgLSBvdmVyZHJpdmUKPiA+ICstIHJlZzogUGh5c2ljYWwgYmFzZSBh
+ZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGZ1bmN0aW9uIGJsb2NrIHJlZ2lzdGVyIHNwYWNlCj4g
+PiArLSBpbnRlcnJ1cHRzOiBUaGUgaW50ZXJydXB0IHNpZ25hbCBmcm9tIHRoZSBmdW5jdGlvbiBi
+bG9jay4KPiAKPiBEbyBhbGwgdGhlIGJsb2NrcyBoYXZlIG9ubHkgb25lIGludGVycnVwdCBzaWdu
+YWw/CgpBcyBmYXIgYXMgSSBhbSBhd2FyZSwgeWVzLiBUaGV5IGFsbCBoYXZlIHRoZWlyIG93biBt
+dWx0aXBsZXhlciwgd2l0aApzaW5nbGUgb3V0cHV0IHRvIHRoZSBHSUMgZWFjaC4KCj4gPiArLSBj
+bG9ja3M6IGRldmljZSBjbG9ja3MKPiA+ICsgIFNlZSBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvY2xvY2svY2xvY2stYmluZGluZ3MudHh0IGZvciBkZXRhaWxzLgo+IAo+IFdoYXQg
+YWJvdXQgY2xvY2stbmFtZXM/IEFsc28gYWxsIHJlcXVpcmVkIGNsb2NrcyBmb3IgcGFydGljdWxh
+cgo+IGNvbXBhdGlibGUgc3RyaW5ncyBzaG91bGQgYmUgbGlzdGVkIGluIGRvY3VtZW50YXRpb24s
+CgpBbGwgdGhlIGludGVybmFsIGJsb2NrcyBqdXN0IGhhdmUgYSBzaW5nbGUgY2xvY2sgZ2F0ZS4g
+VGhlIGV4Y2VwdGlvbnMKYXJlIHRoZSBEU0kgYW5kIERQSSBjb250cm9sbGVycywgd2hpY2ggYXJl
+IGRvY3VtZW50ZWQgc2VwYXJhdGVseS4gSSdsbAphZGQgYSBub3RlLgoKPiA+ICstIGNvbXBhdGli
+bGU6ICJtZWRpYXRlayw8Y2hpcD4tZGRwIgo+IAo+IElzIHRoaXMgYSByZWJhc2UgZXJyb3I/IGNv
+bXBhdGlibGUgcHJvcGVydHkgd2FzIGFscmVhZHkgZGVzY3JpYmVkIGZldwo+IGxpbmVzIGFib3Zl
+IGFuZCBhbHNvIG1pc3NpbmcgZGVzY3JpcHRpb24uCgpZZXMsIEknbGwgZHJvcCB0aGlzIGxpbmUu
+Cgo+ID4gKwo+ID4gK1JlcXVpcmVkIHByb3BlcnRpZXMgKERNQSBmdW5jdGlvbiBibG9ja3MpOgo+
+ID4gKy0gY29tcGF0aWJsZTogU2hvdWxkIGJlIG9uZSBvZgo+ID4gKyAgICAgICAibWVkaWF0ZWss
+PGNoaXA+LWRpc3Atb3ZsIgo+ID4gKyAgICAgICAibWVkaWF0ZWssPGNoaXA+LWRpc3AtcmRtYSIK
+PiA+ICsgICAgICAgIm1lZGlhdGVrLDxjaGlwPi1kaXNwLXdkbWEiCj4gCj4gUGVyaGFwcyB0aGVz
+ZSAzIGNvdWxkIGFsc28gaGF2ZSBzb21lIHNob3J0IGRlc2NyaXB0aW9uIGxpa2UgdGhlIG9uZXMK
+PiBsaXN0ZWQgYWJvdmU/CgpUaGVzZSB0aHJlZSBhcmUgYWxyZWFkeSBpbmNsdWRlZCBpbiB0aGUg
+bGlzdCBhYm92ZS4gU2hvdWxkIEkgbWFrZSB0aGlzCiJBZGRpdGlvbmFsIHJlcXVpcmVkIHByb3Bl
+cnRpZXMgKERNQSBmdW5jdGlvbiBibG9ja3MpOiIgdG8gY2xhcmlmeT8KCj4gPiArLSBsYXJiOiBT
+aG91bGQgY29udGFpbiBhIHBoYW5kbGUgcG9pbnRpbmcgdG8gdGhlIGxvY2FsIGFyYml0ZXIgZGV2
+aWNlIGFzIGRlZmluZWQKPiA+ICsgIGluIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9zb2MvbWVkaWF0ZWsvbWVkaWF0ZWssc21pLWxhcmIudHh0Cj4gPiArLSBpb21tdXM6IHJlcXVp
+cmVkIGEgaW9tbXUgbm9kZQo+IAo+IE1heWJlIHJld3JpdGUgdG86ICJTaG91bGQgcG9pbnQgdG8g
+cmVzcGVjdGl2ZSBJT01NVSBibG9jayBhcyBkZWZpbmVkCj4gaW4gPHBhdGggdG8gSU9NTVUgYmlu
+ZGluZyBkb2N1bWVudGF0aW9uPiI/CgpJJ2xsIGNoYW5nZSB0aGlzLgoKdGhhbmsgeW91ClBoaWxp
+cHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1k
+ZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
