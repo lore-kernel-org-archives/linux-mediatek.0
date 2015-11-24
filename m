@@ -1,80 +1,58 @@
-From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v5 0/6] MT8173 IOMMU SUPPORT
-Date: Tue, 24 Nov 2015 11:38:21 +0100
-Message-ID: <20151124103819.GE17658@ulmo.nvidia.com>
-References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
- <20151014125620.GQ27420@8bytes.org>
- <1445488802.27202.67.camel@mhfsdcap03>
- <20151023092636.GX27420@8bytes.org>
- <1448344693.13079.6.camel@mhfsdcap03>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 4/4] spi: mediatek: revise mtk_spi_probe() failure flow
+Date: Tue, 24 Nov 2015 13:04:26 +0000
+Message-ID: <20151124130426.GL1929@sirena.org.uk>
+References: <1447986080-31410-1-git-send-email-leilk.liu@mediatek.com>
+ <1447986080-31410-4-git-send-email-leilk.liu@mediatek.com>
+ <20151121133949.GH26072@sirena.org.uk>
+ <1448332404.27169.4.camel@mhfsdcap03>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="s9fJI615cBHmzTOP"
+	protocol="application/pgp-signature"; boundary="7vAdt9JsdkkzRPKN"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1448344693.13079.6.camel@mhfsdcap03>
 Content-Disposition: inline
+In-Reply-To: <1448332404.27169.4.camel@mhfsdcap03>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: lei liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
---s9fJI615cBHmzTOP
+
+--7vAdt9JsdkkzRPKN
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, Nov 24, 2015 at 01:58:13PM +0800, Yong Wu wrote:
-> On Fri, 2015-10-23 at 11:26 +0200, Joerg Roedel wrote:
-> > On Thu, Oct 22, 2015 at 12:40:02PM +0800, Yong Wu wrote:
-> > >      But the mtk-iommu depend on the drivers/memory/mtk-smi.c(mtk-iom=
-mu
-> > > has called a function of the mtk-smi).
-> > >      So if there is dependence here, How should we do to merge them?
-> >=20
-> > I can surely merge mtk-smi too, if it gets proper Reviewed-by and
-> > Acked-by tags from the maintainer(s).
-> >=20
-> >=20
-> > 	Joerg
-> >=20
-> Hi Joerg,
->=20
->    About the driver/memory/, We don't know who is his maintainer.
-> MAINTAINERS file don't have drivers/memory maintainer.
-> From the history in drivers/memory/ it looks like most of the
-> drivers land with an ack from the architecture maintainer.
-> And Matthias Brugger is our "ARM/Mediatek SoC support" maintainer.
->=20
-> Then do you mean that we need Matthias's ACK or whom others?
+On Tue, Nov 24, 2015 at 10:33:24AM +0800, lei liu wrote:
+> On Sat, 2015-11-21 at 13:39 +0000, Mark Brown wrote:
+> > On Fri, Nov 20, 2015 at 10:21:19AM +0800, Leilk Liu wrote:
 
-Yes, I think the sub-architecture maintainer's ACK is probably going to
-be as good as it gets. Historically drivers/memory hasn't had enough of
-a common ground to instate a framework.
+> > > This patch revises failure flow while pm_runtime_enable().
 
-Thierry
+> > Why?  This also doesn't apply against current code, please check and
+> > resend.
 
---s9fJI615cBHmzTOP
+> I don't know. I can git am this patch to spi/for-next. I will resend it,
+> please help to apply it again, thanks.
+
+If you don't know why we should make this change then we may as well
+just not make it?
+
+--7vAdt9JsdkkzRPKN
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAABCAAGBQJWVD4bAAoJEN0jrNd/PrOhBwoQAJGexJ6rJpgdiD9zXboXiLXA
-fLx/1lLSKXdRUI4ydNnPiIn+AI/ZY+zZZPyt5PGu7f0JopfKj+cg93laYyHkTpJ4
-YBIICNEnbgWEy1nETxovQj1sa662y8eR+CV/18eXDGAz4h2lNo51lVQG8N2RlIA3
-xgPvzpfpAVHPliGxVS7YI87sVq2bs3JPqnWD4+ja52nuTjSuDAL1Ch+P8KcwbiW+
-k6TPbEZ6qOWVnoImfpaDped7m924r4s+iw33wMAfHN8WjnPqtqdO1SmiEt+c9geW
-rrT7QF4FH7We7heYiRK8lgb4wZH9td6e1tv4r/iuiWrlyOOzuSwag94RTkakB2sx
-BkTwN+TnQ+b6ofycpJGZNVsSRTaTQeHfa7dFkt8E0BlzdTqgYMGAN6EYg6up/uxg
-nDnq3WxiwvgJF1tsa+1DPmUf/IPp9YRx3BtGmhQrGAgiP4suT0ZXUwMp0iH+SUvi
-VINzMZwa0K172iTZQYD6HMkNTdczqvLiuHNyPjJj/yyIJnPeM+k6Q8lTxrgAh5K6
-aOl2oicQeiATbpwF2wY4J2l9L5Lw78+BN17w/zoNZuCU8ESsU0QdCZw3/bPzSJv2
-w6w66VNemFB6Vnks8rZj1d4sVcgatNbMiHuDj3ajIetKo7/mjvETgGSnyqBnuUYL
-dydJyvIuQVZUflXlejxm
-=+/cW
+iQEcBAEBCAAGBQJWVGBaAAoJECTWi3JdVIfQZvwH/3DJ6eln8FeT4HhERJ+140uy
+d6a2V6ewkSaYfSQ/ryXUO4gY9Ngz0OqhgxiGE1J6ytGqb86oiMexiFsIvvHU8P16
+dEP5UeZZrjKf4mJq3JbuQsyca33Hi3ntTeiwprHLKpvK6zqXZb56mOkCzg8dNo90
+xBFsvqw9XDIIqF4JoCrRG1BmRBi+a7iamUtTrxuqZvWo04JDm9odAAyClPMCnv6d
+UzvF0l5yvRUFn2aNFkAO22MAbzLQSigJHCwvxs8h5GKm1YMeKJcwCjdvtJ0xWMG8
+3niZqvhb9VdHb1Wc1nJGOr0wShZMspKogSOEioKrv61TlgQ2of64kIyqVzRvJ+8=
+=OdyF
 -----END PGP SIGNATURE-----
 
---s9fJI615cBHmzTOP--
+--7vAdt9JsdkkzRPKN--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
