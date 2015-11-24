@@ -1,66 +1,151 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Tue, 24 Nov 2015 08:53:07 +0100
-Message-ID: <20151124075307.GZ11966@pengutronix.de>
-References: <1447835066-10482-1-git-send-email-s.hauer@pengutronix.de>
- <1447835066-10482-3-git-send-email-s.hauer@pengutronix.de>
- <1448345169.2421.20.camel@mtksdaap41>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v6 02/12] drm/mediatek: Add DRM Driver for Mediatek SoC
+ MT8173.
+Date: Tue, 24 Nov 2015 17:27:13 +0900
+Message-ID: <CAAFQd5BHaaj6Y7N6fzmQ-55NaW9Y0RNj8sbEHvTJai0x6zrxpw@mail.gmail.com>
+References: <1447868060-11620-1-git-send-email-p.zabel@pengutronix.de>
+ <1447868060-11620-3-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1448345169.2421.20.camel@mtksdaap41>
-Sender: linux-pm-owner@vger.kernel.org
-To: dawei chien <dawei.chien@mediatek.com>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1447868060-11620-3-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Jie Qiu <jie.qiu@mediatek.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, YT Shen <yt.shen@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 24, 2015 at 02:06:09PM +0800, dawei chien wrote:
-> Hi Sascha,
-> 
-> > +static int mtk_thermal_get_calibration_data(struct device *dev, struct mtk_thermal *mt)
-> > +{
-> > +	struct nvmem_cell *cell;
-> > +	u32 *buf;
-> > +	size_t len;
-> > +	int i, ret;
-> > +	/* Start with default values */
-> > +	mt->adc_ge = 512;
-> > +	for (i = 0; i < MT8173_NUM_SENSORS; i++)
-> > +		mt->vts[i] = 260;
-> > +	mt->degc_cali = 40;
-> > +	mt->o_slope = 0;
-> > +
-> > +	cell = nvmem_cell_get(dev, "calibration-data");
-> > +	if (IS_ERR(cell)) {
-> > +		if (PTR_ERR(cell) == -EPROBE_DEFER)
-> > +			return PTR_ERR(cell);
-> > +		return 0;
-> > +	}
-> > +
-> > +	buf = (u32 *)nvmem_cell_read(cell, &len);
-> > +
-> > +	nvmem_cell_put(cell);
-> > +
-> > +	if (IS_ERR(buf))
-> > +		return PTR_ERR(buf);
-> > +
-> > +	if (len < 3 * sizeof(u32)) {
-> > +		dev_warn(dev, "invalid calibration data\n");
-> > +		ret = -EINVAL;
-> > +		goto out;
-> > +	}
-> 
-> ret would not be assigned if the length of calibration data is correct.
-> Otherwise,
-
-gcc does a increasingly bad job when it comes to warn about
-uninitialized variables :(
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+SGkgUGhpbGlwcCwgQ0ssCgpQbGVhc2Ugc2VlIG15IGNvbW1lbnRzIGlubGluZS4KCk9uIFRodSwg
+Tm92IDE5LCAyMDE1IGF0IDI6MzQgQU0sIFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9u
+aXguZGU+IHdyb3RlOgpbc25pcF0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0
+Yy5jCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwLi41MDhjOGYzCj4gLS0t
+IC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMu
+Ywo+IEBAIC0wLDAgKzEsNTk2IEBACltzbmlwXQo+ICsjaW5jbHVkZSAibXRrX2RybV9kcnYuaCIK
+PiArI2luY2x1ZGUgIm10a19kcm1fY3J0Yy5oIgo+ICsjaW5jbHVkZSAibXRrX2RybV9kZHAuaCIK
+PiArI2luY2x1ZGUgIm10a19kcm1fZGRwX2NvbXAuaCIKPiArI2luY2x1ZGUgIm10a19kcm1fZ2Vt
+LmgiCj4gKyNpbmNsdWRlICJtdGtfZHJtX3BsYW5lLmgiCj4gKwo+ICtzdHJ1Y3QgbXRrX2NydGNf
+ZGRwX2NvbnRleHQ7CgpJcyB0aGlzIGZvcndhcmQgZGVjbGFyYXRpb24gcmVhbGx5IG5lY2Vzc2Fy
+eT8KCj4gKwo+ICsvKgo+ICsgKiBNZWRpYVRlayBzcGVjaWZpYyBjcnRjIHN0cnVjdHVyZS4KPiAr
+ICoKPiArICogQGJhc2U6IGNydGMgb2JqZWN0Lgo+ICsgKiBAcGlwZTogYSBjcnRjIGluZGV4IGNy
+ZWF0ZWQgYXQgbG9hZCgpIHdpdGggYSBuZXcgY3J0YyBvYmplY3QgY3JlYXRpb24KPiArICogICAg
+IGFuZCB0aGUgY3J0YyBvYmplY3Qgd291bGQgYmUgc2V0IHRvIHByaXZhdGUtPmNydGMgYXJyYXkK
+PiArICogICAgIHRvIGdldCBhIGNydGMgb2JqZWN0IGNvcnJlc3BvbmRpbmcgdG8gdGhpcyBwaXBl
+IGZyb20gcHJpdmF0ZS0+Y3J0Ywo+ICsgKiAgICAgYXJyYXkgd2hlbiBpcnEgaW50ZXJydXB0IG9j
+Y3VycmVkLiB0aGUgcmVhc29uIG9mIHVzaW5nIHRoaXMgcGlwZSBpcyB0aGF0Cj4gKyAqICAgICBk
+cm0gZnJhbWV3b3JrIGRvZXNuJ3Qgc3VwcG9ydCBtdWx0aXBsZSBpcnEgeWV0Lgo+ICsgKiAgICAg
+d2UgY2FuIHJlZmVyIHRvIHRoZSBjcnRjIHRvIGN1cnJlbnQgaGFyZHdhcmUgaW50ZXJydXB0IG9j
+Y3VycmVkIHRocm91Z2gKPiArICogICAgIHRoaXMgcGlwZSB2YWx1ZS4KCk9ubHkgZmlyc3QgdHdv
+IGZpZWxkcyBkb2N1bWVudGVkPyBBbHNvIHRoaXMgaXNuJ3QgcHJvcGVyIGtlcm5lbGRvYwpzeW50
+YXggKHNlZSBEb2N1bWVudGF0aW9uL2tlcm5lbC1kb2MtbmFuby1IT1dUTy50eHQpLgoKPiArICov
+Cj4gK3N0cnVjdCBtdGtfZHJtX2NydGMgewo+ICsgICAgICAgc3RydWN0IGRybV9jcnRjICAgICAg
+ICAgICAgICAgICBiYXNlOwo+ICsgICAgICAgdW5zaWduZWQgaW50ICAgICAgICAgICAgICAgICAg
+ICBwaXBlOwo+ICsKPiArICAgICAgIGJvb2wgICAgICAgICAgICAgICAgICAgICAgICAgICAgZG9f
+Zmx1c2g7Cj4gKwo+ICsgICAgICAgc3RydWN0IG10a19kcm1fcGxhbmUgICAgICAgICAgICBwbGFu
+ZXNbT1ZMX0xBWUVSX05SXTsKPiArCj4gKyAgICAgICB2b2lkIF9faW9tZW0gICAgICAgICAgICAg
+ICAgICAgICpjb25maWdfcmVnczsKPiArICAgICAgIHN0cnVjdCBtdGtfZGlzcF9tdXRleCAgICAg
+ICAgICAgKm11dGV4Owo+ICsgICAgICAgdTMyICAgICAgICAgICAgICAgICAgICAgICAgICAgICBk
+ZHBfY29tcF9ucjsKCkkgYXNzdW1lIHRoaXMgaXMgc2l6ZSBvZiBkZHBfY29tcCBhcnJheT8gV2h5
+IG5vdCBqdXN0IHVuc2lnbmVkIGludCB0aGVuPwoKPiArICAgICAgIHN0cnVjdCBtdGtfZGRwX2Nv
+bXAgICAgICAgICAgICAgKipkZHBfY29tcDsKPiArfTsKW3NuaXBdCj4gK3N0YXRpYyBib29sIG10
+a19kcm1fY3J0Y19tb2RlX2ZpeHVwKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiArICAgICAgICAg
+ICAgICAgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUsCj4gKyAgICAgICAgICAg
+ICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQo+ICt7Cj4gKyAgICAg
+ICAvKiBkcm0gZnJhbWV3b3JrIGRvZXNuJ3QgY2hlY2sgTlVMTCAqLwoKTWF5YmUgcmVwaHJhc2Ug
+dGhlIGNvbW1lbnQgdG8gIk5vdGhpbmcgdG8gZG8gaGVyZSwgYnV0IHRoZSBjYWxsYmFjayBpcwpt
+YW5kYXRvcnkuIj8KCj4gKyAgICAgICByZXR1cm4gdHJ1ZTsKPiArfQpbc25pcF0KPiArc3RhdGlj
+IHZvaWQgbXRrX2NydGNfZGRwX3Bvd2VyX29uKHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRj
+KQo+ICt7Cj4gKyAgICAgICBpbnQgcmV0Owo+ICsgICAgICAgaW50IGk7Cj4gKwo+ICsgICAgICAg
+RFJNX0lORk8oIm10a19jcnRjX2RkcF9wb3dlcl9vblxuIik7CgpEUk1fREVCVUdfRFJJVkVSKCkK
+Cj4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yOyBpKyspIHsK
+PiArICAgICAgICAgICAgICAgcmV0ID0gY2xrX2VuYWJsZShtdGtfY3J0Yy0+ZGRwX2NvbXBbaV0t
+PmNsayk7Cj4gKyAgICAgICAgICAgICAgIGlmIChyZXQpCj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgRFJNX0VSUk9SKCJGYWlsZWQgdG8gZW5hYmxlIGNsb2NrICVkOiAlZFxuIiwgaSwgcmV0KTsK
+ClRoaXMgaXMgdW5zYWZlLCBiZWNhdXNlIGV2ZW4gaWYgd2UgZmFpbCBoZXJlLCBtdGtfY3J0Y19k
+ZHBfcG93ZXJfb2ZmKCkKd2lsbCB0cnkgdG8gZGlzYWJsZSB0aGUgY2xvY2tzIGFueXdheSwgd2hp
+Y2ggd2lsbCBsZWFkIHRvIG5lZ2F0aXZlCmVuYWJsZSBjb3VudHMgKGFuZCBhIFdBUk4oKSBpbiBi
+ZXN0IGNhc2UpLiBDYW4gd2UgYWRkIHByb3BlciBlcnJvcgpoYW5kbGluZyB0byB0aGlzIGZ1bmN0
+aW9uIGFuZCBvdGhlciBmdW5jdGlvbnMgaW4gdGhlIGNhbGwgc3RhY2s/Cgo+ICsgICAgICAgfQo+
+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfY3J0Y19kZHBfcG93ZXJfb2ZmKHN0cnVjdCBtdGtf
+ZHJtX2NydGMgKm10a19jcnRjKQo+ICt7Cj4gKyAgICAgICBpbnQgaTsKPiArCj4gKyAgICAgICBE
+Uk1fSU5GTygibXRrX2NydGNfZGRwX3Bvd2VyX29mZlxuIik7CgpEUk1fREVCVUdfRFJJVkVSKCkK
+Cj4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yOyBpKyspCj4g
+KyAgICAgICAgICAgICAgIGNsa19kaXNhYmxlKG10a19jcnRjLT5kZHBfY29tcFtpXS0+Y2xrKTsK
+PiArfQo+ICsKPiArc3RhdGljIHZvaWQgbXRrX2NydGNfZGRwX2h3X2luaXQoc3RydWN0IG10a19k
+cm1fY3J0YyAqbXRrX2NydGMpCj4gK3sKPiArICAgICAgIHN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9
+ICZtdGtfY3J0Yy0+YmFzZTsKPiArICAgICAgIHVuc2lnbmVkIGludCB3aWR0aCwgaGVpZ2h0LCB2
+cmVmcmVzaDsKPiArICAgICAgIGludCByZXQ7Cj4gKyAgICAgICBpbnQgaTsKPiArCj4gKyAgICAg
+ICBpZiAoY3J0Yy0+c3RhdGUpIHsKPiArICAgICAgICAgICAgICAgd2lkdGggPSBjcnRjLT5zdGF0
+ZS0+YWRqdXN0ZWRfbW9kZS5oZGlzcGxheTsKPiArICAgICAgICAgICAgICAgaGVpZ2h0ID0gY3J0
+Yy0+c3RhdGUtPmFkanVzdGVkX21vZGUudmRpc3BsYXk7Cj4gKyAgICAgICAgICAgICAgIHZyZWZy
+ZXNoID0gY3J0Yy0+c3RhdGUtPmFkanVzdGVkX21vZGUudnJlZnJlc2g7Cj4gKyAgICAgICB9IGVs
+c2Ugewo+ICsgICAgICAgICAgICAgICBXQVJOX09OKHRydWUpOwo+ICsgICAgICAgICAgICAgICB3
+aWR0aCA9IDE5MjA7Cj4gKyAgICAgICAgICAgICAgIGhlaWdodCA9IDEwODA7Cj4gKyAgICAgICAg
+ICAgICAgIHZyZWZyZXNoID0gNjA7CgpXaGVuIGNhbiBjcnRjLT5zdGF0ZSBiZSBOVUxMPyBBbHNv
+IHNob3VsZG4ndCB3ZSBqdXN0IGZhaWwgaGVyZSBpbnN0ZWFkCm9mIGNhcnJ5aW5nIG9uPwoKPiAr
+ICAgICAgIH0KCm5pdDogVGhlIGlmIGFib3ZlIGNhbiBiZSByZXBsYWNlZCB3aXRoIHRoZSBmb2xs
+b3dpbmcuCgppZiAoV0FSTl9PTighY3J0Yy0+c3RhdGUpKSB7CiAgICAgLy8gZG8gdGhlIGVycm9y
+IGhhbmRsaW5nCn0gZWxzZSB7CiAgICAvLyBkZXJlZmVyZW5jZSBjcnRjLT5zdGF0ZQp9CgpUaGlz
+IGlzIGJldHRlciBiZWNhdXNlIHRoZSB3YXJuaW5nIGNvbmRpdGlvbiBzaG93cyB3aGF0J3Mgd3Jv
+bmcuCgo+ICsKPiArICAgICAgIERSTV9JTkZPKCJtdGtfY3J0Y19kZHBfaHdfaW5pdFxuIik7CgpE
+Uk1fREVCVUdfRFJJVkVSKCkKCj4gKwo+ICsgICAgICAgLyogZGlzcF9tdGNtb3MgKi8KPiArICAg
+ICAgIHJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmMoY3J0Yy0+ZGV2LT5kZXYpOwo+ICsgICAgICAg
+aWYgKHJldCA8IDApCj4gKyAgICAgICAgICAgICAgIERSTV9FUlJPUigiRmFpbGVkIHRvIGVuYWJs
+ZSBwb3dlciBkb21haW46ICVkXG4iLCByZXQpOwoKQ2Fycnlpbmcgb24gaGVyZSBhZnRlciBwbSBy
+dW50aW1lIGVycm9yIGlzIGF0IGxlYXN0IGluYXBwcm9wcmlhdGUgYW5kCmluIHByYWN0aWNlIGlz
+IGEgZ29vZCB3YXkgdG8gbG9jayB0aGUgc3lzdGVtIHVwLi4uCgo+ICsKPiArICAgICAgIG10a19k
+aXNwX211dGV4X3ByZXBhcmUobXRrX2NydGMtPm11dGV4KTsKPiArICAgICAgIG10a19jcnRjX2Rk
+cF9wb3dlcl9vbihtdGtfY3J0Yyk7Cj4gKwo+ICsgICAgICAgRFJNX0lORk8oIm1lZGlhdGVrX2Rk
+cF9kZHBfcGF0aF9zZXR1cFxuIik7CgpEUk1fREVCVUdfRFJJVkVSKCkKCj4gKyAgICAgICBmb3Ig
+KGkgPSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yIC0gMTsgaSsrKSB7Cj4gKyAgICAgICAg
+ICAgICAgIG10a19kZHBfYWRkX2NvbXBfdG9fcGF0aChtdGtfY3J0Yy0+Y29uZmlnX3JlZ3MsCj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtdGtfY3J0Yy0+ZGRwX2Nv
+bXBbaV0tPmlkLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbXRr
+X2NydGMtPmRkcF9jb21wW2kgKyAxXS0+aWQpOwo+ICsgICAgICAgICAgICAgICBtdGtfZGlzcF9t
+dXRleF9hZGRfY29tcChtdGtfY3J0Yy0+bXV0ZXgsCj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIG10a19jcnRjLT5kZHBfY29tcFtpXS0+aWQpOwo+ICsgICAgICAgfQo+
+ICsgICAgICAgbXRrX2Rpc3BfbXV0ZXhfYWRkX2NvbXAobXRrX2NydGMtPm11dGV4LCBtdGtfY3J0
+Yy0+ZGRwX2NvbXBbaV0tPmlkKTsKPiArICAgICAgIG10a19kaXNwX211dGV4X2VuYWJsZShtdGtf
+Y3J0Yy0+bXV0ZXgpOwo+ICsKPiArICAgICAgIERSTV9JTkZPKCJkZHBfZGlzcF9wYXRoX3Bvd2Vy
+X29uICVkeCVkXG4iLCB3aWR0aCwgaGVpZ2h0KTsKCkRSTV9ERUJVR19EUklWRVIoKQoKPiArICAg
+ICAgIGZvciAoaSA9IDA7IGkgPCBtdGtfY3J0Yy0+ZGRwX2NvbXBfbnI7IGkrKykgewo+ICsgICAg
+ICAgICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wID0gbXRrX2NydGMtPmRkcF9jb21w
+W2ldOwo+ICsKPiArICAgICAgICAgICAgICAgbXRrX2RkcF9jb21wX2NvbmZpZyhjb21wLCB3aWR0
+aCwgaGVpZ2h0LCB2cmVmcmVzaCk7Cj4gKyAgICAgICAgICAgICAgIG10a19kZHBfY29tcF9wb3dl
+cl9vbihjb21wKTsKPiArICAgICAgIH0KPiArfQo+ICsKPiArc3RhdGljIHZvaWQgbXRrX2NydGNf
+ZGRwX2h3X2Zpbmkoc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMpCj4gK3sKPiArICAgICAg
+IHN0cnVjdCBkcm1fZGV2aWNlICpkcm0gPSBtdGtfY3J0Yy0+YmFzZS5kZXY7Cj4gKyAgICAgICBp
+bnQgaTsKPiArCj4gKyAgICAgICBEUk1fSU5GTygibXRrX2NydGNfZGRwX2h3X2ZpbmlcbiIpOwoK
+RFJNX0RFQlVHX0RSSVZFUigpCgo+ICsgICAgICAgbXRrX2NydGNfZGRwX3Bvd2VyX29mZihtdGtf
+Y3J0Yyk7Cj4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yOyBp
+KyspCj4gKyAgICAgICAgICAgICAgIG10a19kaXNwX211dGV4X3JlbW92ZV9jb21wKG10a19jcnRj
+LT5tdXRleCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbXRr
+X2NydGMtPmRkcF9jb21wW2ldLT5pZCk7Cj4gKyAgICAgICBtdGtfZGlzcF9tdXRleF9kaXNhYmxl
+KG10a19jcnRjLT5tdXRleCk7Cj4gKyAgICAgICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmRk
+cF9jb21wX25yIC0gMTsgaSsrKSB7Cj4gKyAgICAgICAgICAgICAgIG10a19kZHBfcmVtb3ZlX2Nv
+bXBfZnJvbV9wYXRoKG10a19jcnRjLT5jb25maWdfcmVncywKPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgbXRrX2NydGMtPmRkcF9jb21wW2ldLT5pZCwKPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbXRrX2NydGMtPmRk
+cF9jb21wW2kgKyAxXS0+aWQpOwo+ICsgICAgICAgICAgICAgICBtdGtfZGlzcF9tdXRleF9yZW1v
+dmVfY29tcChtdGtfY3J0Yy0+bXV0ZXgsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIG10a19jcnRjLT5kZHBfY29tcFtpXS0+aWQpOwo+ICsgICAgICAgfQo+ICsg
+ICAgICAgbXRrX2Rpc3BfbXV0ZXhfcmVtb3ZlX2NvbXAobXRrX2NydGMtPm11dGV4LCBtdGtfY3J0
+Yy0+ZGRwX2NvbXBbaV0tPmlkKTsKPiArICAgICAgIG10a19kaXNwX211dGV4X3VucHJlcGFyZSht
+dGtfY3J0Yy0+bXV0ZXgpOwo+ICsgICAgICAgbXRrX2NydGMtPm11dGV4ID0gTlVMTDsKCm10a19j
+cnRjLT5tdXRleCB3YXMgYWNxdWlyZWQgYnkgbXRrX2Rpc3BfbXV0ZXhfZ2V0KCkuIFNob3VsZG4n
+dCBpdCBiZQpyZWxlYXNlZCB3aXRoIG10a19kaXNwX211dGV4X3B1dCgpPyAoSW4gZmFjdCBJIGNh
+biBzZWUKbXRrX2Rpc3Bfb3ZsX3VuYmluZCgpIGFscmVhZHkgZG9pbmcgdGhhdCkuCgo+ICsKPiAr
+ICAgICAgIC8qIGRpc3BfbXRjbW9zICovCgpUaGlzIGNvbW1lbnQgZG9lc24ndCBzZWVtIHRvIGJl
+IHZlcnkgbWVhbmluZ2Z1bC4KCj4gKyAgICAgICBwbV9ydW50aW1lX3B1dChkcm0tPmRldik7Cj4g
+K30KClRvIGJlIGNvbnRpbnVlZC4KCkJlc3QgcmVnYXJkcywKVG9tYXN6Cl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
+ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
