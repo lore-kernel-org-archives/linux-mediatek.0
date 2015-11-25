@@ -1,65 +1,55 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 0/6] MT8173 IOMMU SUPPORT
-Date: Wed, 25 Nov 2015 09:30:54 +0800
-Message-ID: <1448415054.13079.9.camel@mhfsdcap03>
-References: <1444357388-30257-1-git-send-email-yong.wu@mediatek.com>
-	<20151014125620.GQ27420@8bytes.org>
-	<1445488802.27202.67.camel@mhfsdcap03>
-	<20151023092636.GX27420@8bytes.org>
-	<1448344693.13079.6.camel@mhfsdcap03>
-	<20151124103819.GE17658@ulmo.nvidia.com>
+From: <yamada.masahiro@socionext.com>
+Subject: RE: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
+ after prompt
+Date: Wed, 25 Nov 2015 02:09:46 +0000
+Message-ID: <4da749fb0cb34349babe18dc3c0d585a@SOC-EX02V.e01.socionext.com>
+References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+ <20151124155857.GB32623@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20151124103819.GE17658-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sricharan R <sricharan-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kbuild-owner@vger.kernel.org>
+In-Reply-To: <20151124155857.GB32623@ulmo.nvidia.com>
+Content-Language: ja-JP
+Sender: linux-kbuild-owner@vger.kernel.org
+To: thierry.reding@gmail.com, arnd@arndb.de, arm@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, mmarek@suse.com, olof@lixom.net, linux-kbuild@vger.kernel.org, jamie@jamieiles.com, agross@codeaurora.org, kernel@pengutronix.de, gregory.clement@free-electrons.com, linux-sh@vger.kernel.org, tsahee@annapurnalabs.com, linux-arm-msm@vger.kernel.org, linus.walleij@linaro.org, galak@codeaurora.org, plagnioj@jcrosoft.com, dinguyen@opensource.altera.com, baohua@kernel.org, shiraz.linux.kernel@gmail.com, rjui@broadcom.com, patrice.chotard@st.com, kernel@stlinux.com, soren.brinkmann@xilinx.com, horms@verge.net.au, michal.simek@xilinx.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-soc@vger.kernel.org, davidb@codeaurora.org, sbranden@broadcom.com, vireshk@kernel.org, alexandre.belloni@free-electrons.com, kyungmin.park@samsung.com, k.kozlowski@samsung.com, bcm
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-11-24 at 11:38 +0100, Thierry Reding wrote:
-> On Tue, Nov 24, 2015 at 01:58:13PM +0800, Yong Wu wrote:
-> > On Fri, 2015-10-23 at 11:26 +0200, Joerg Roedel wrote:
-> > > On Thu, Oct 22, 2015 at 12:40:02PM +0800, Yong Wu wrote:
-> > > >      But the mtk-iommu depend on the drivers/memory/mtk-smi.c(mtk-iommu
-> > > > has called a function of the mtk-smi).
-> > > >      So if there is dependence here, How should we do to merge them?
-> > > 
-> > > I can surely merge mtk-smi too, if it gets proper Reviewed-by and
-> > > Acked-by tags from the maintainer(s).
-> > > 
-> > > 
-> > > 	Joerg
-> > > 
-> > Hi Joerg,
-> > 
-> >    About the driver/memory/, We don't know who is his maintainer.
-> > MAINTAINERS file don't have drivers/memory maintainer.
-> > From the history in drivers/memory/ it looks like most of the
-> > drivers land with an ack from the architecture maintainer.
-> > And Matthias Brugger is our "ARM/Mediatek SoC support" maintainer.
-> > 
-> > Then do you mean that we need Matthias's ACK or whom others?
-> 
-> Yes, I think the sub-architecture maintainer's ACK is probably going to
-> be as good as it gets. Historically drivers/memory hasn't had enough of
-> a common ground to instate a framework.
-> 
-> Thierry
-
-Got it.
-Thanks very much for your reply.
-
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQXJuZCwNCg0KQ291bGQgeW91IGFwcGx5IHRoaXMgcGF0Y2ggd2l0aCBBY2tlZC1ieSBzdG9y
+bQ0Kc28gdGhhdCBvdGhlciBzdWJhcmNodGVjdHVyZXMgY2FuIGJhc2Ugb24gaXQ/DQoNCkFsc28s
+IHRoZSBmb2xsb3dpbmcgc2VyaWVzOg0KDQoxLzI6IEFSTTogaGlzaTogZG8gbm90IGV4cG9ydCBz
+bXBfb3BlcmF0aW9ucyBzdHJ1Y3R1cmVzDQoyLzI6IEFSTTogdXNlIGNvbnN0IGFuZCBfX2luaXRj
+b25zdCBmb3Igc21wX29wZXJhdGlvbnMNCg0KDQoNCg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2Fn
+ZS0tLS0tDQo+IEZyb206IFRoaWVycnkgUmVkaW5nIFttYWlsdG86dGhpZXJyeS5yZWRpbmdAZ21h
+aWwuY29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVtYmVyIDI1LCAyMDE1IDEyOjU5IEFNDQo+
+IFRvOiBZYW1hZGEsIE1hc2FoaXJvDQo+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
+ZGVhZC5vcmc7IGFybUBrZXJuZWwub3JnOyBNaWNoYWwgTWFyZWs7DQo+IEFybmQgQmVyZ21hbm47
+IE9sb2YgSm9oYW5zc29uOyBsaW51eC1rYnVpbGRAdmdlci5rZXJuZWwub3JnOyBKYW1pZSBJbGVz
+Ow0KPiBBbmR5IEdyb3NzOyBTYXNjaGEgSGF1ZXI7IEdyZWdvcnkgQ2xlbWVudDsgbGludXgtc2hA
+dmdlci5rZXJuZWwub3JnOw0KPiBUc2FoZWUgWmlkZW5iZXJnOyBsaW51eC1hcm0tbXNtQHZnZXIu
+a2VybmVsLm9yZzsgTGludXMgV2FsbGVpajsgS3VtYXINCj4gR2FsYTsgSmVhbi1DaHJpc3RvcGhl
+IFBsYWduaW9sLVZpbGxhcmQ7IERpbmggTmd1eWVuOyBCYXJyeSBTb25nOyBTaGlyYXoNCj4gSGFz
+aGltOyBSYXkgSnVpOyBQYXRyaWNlIENob3RhcmQ7IGtlcm5lbEBzdGxpbnV4LmNvbTsgU8O2cmVu
+IEJyaW5rbWFubjsNCj4gU2ltb24gSG9ybWFuOyBNaWNoYWwgU2ltZWs7IEhlaWtvIFN0dWVibmVy
+Ow0KPiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1zb2NAdmdlci5r
+ZXJuZWwub3JnOyBEYXZpZA0KPiBCcm93bjsgU2NvdHQgQnJhbmRlbjsgVmlyZXNoIEt1bWFyOyBB
+bGV4YW5kcmUgQmVsbG9uaTsgS3l1bmdtaW4gUGFyazsNCj4gS3J6eXN6dG9mIEtvemxvd3NraTsg
+YmNtLWtlcm5lbC1mZWVkYmFjay1saXN0QGJyb2FkY29tLmNvbTsgRmxvcmlhbg0KPiBGYWluZWxs
+aTsgQWxleGFuZHJlIENvdXJib3Q7IE1hdHRoaWFzIEJydWdnZXI7IEt1a2ppbiBLaW07IFJvYiBI
+ZXJyaW5nOw0KPiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyBzcGVhci1kZXZlbEBsaXN0
+LnN0LmNvbTsgU2ViYXN0aWFuDQo+IEhlc3NlbGJhcnRoOyBTdWRlZXAgSG9sbGE7IEFuZHJldyBM
+dW5uOyBSdXNzZWxsIEtpbmc7DQo+IGxpbnV4LXNhbXN1bmctc29jQHZnZXIua2VybmVsLm9yZzsg
+bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZzsNCj4gbGludXgtdGVncmFAdmdlci5r
+ZXJuZWwub3JnOyBNYXhpbWUgQ29xdWVsaW47IFNyaW5pdmFzIEthbmRhZ2F0bGE7IFNoYXduDQo+
+IEd1bzsgTGl2aXUgRHVkYXU7IEp1biBOaWU7IExvcmVuem8gUGllcmFsaXNpOyBOaWNvbGFzIEZl
+cnJlOyBKYXNvbiBDb29wZXI7DQo+IFN0ZXBoZW4gV2FycmVuOyBLcnp5c3p0b2YgSGFsYXNhOyBX
+ZWkgWHU7IE1hZ251cyBEYW1tOyBDaGVuLVl1IFRzYWk7IE1heGltZQ0KPiBSaXBhcmQNCj4gU3Vi
+amVjdDogUmU6IFtQQVRDSF0gQVJNOiB1c2UgImRlcGVuZHMgb24iIGZvciBTb0MgY29uZmlncyBp
+bnN0ZWFkIG9mICJpZiINCj4gYWZ0ZXIgcHJvbXB0DQo+IA0KPiBPbiBNb24sIE5vdiAxNiwgMjAx
+NSBhdCAxMjowNjoxMFBNICswOTAwLCBNYXNhaGlybyBZYW1hZGEgd3JvdGU6DQo+IFsuLi5dDQo+
+ID4gIGFyY2gvYXJtL21hY2gtdGVncmEvS2NvbmZpZyAgICAgIHwgIDMgKystDQo+IA0KPiBUaGVy
+ZSB3aWxsIGJlIGEgc2xpZ2h0IGNvbmZsaWN0IGJldHdlZW4gdGhpcyBhbmQgYSBwYXRjaCBpbiB0
+aGUgdGVncmEgdHJlZSwNCj4gYnV0IG5vdGhpbmcgdGhhdCB0aGUgQVJNIFNvQyBtYWludGFpbmVy
+cyBjYW4ndCBoYW5kbGUsIHNvOg0KPiANCj4gQWNrZWQtYnk6IFRoaWVycnkgUmVkaW5nIDx0cmVk
+aW5nQG52aWRpYS5jb20+DQo=
