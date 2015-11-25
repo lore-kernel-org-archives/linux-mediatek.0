@@ -1,55 +1,98 @@
-From: <yamada.masahiro@socionext.com>
-Subject: RE: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Wed, 25 Nov 2015 02:09:46 +0000
-Message-ID: <4da749fb0cb34349babe18dc3c0d585a@SOC-EX02V.e01.socionext.com>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
- <20151124155857.GB32623@ulmo.nvidia.com>
+From: lei liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] spi: mediatek: revise mtk_spi_probe() failure flow
+Date: Wed, 25 Nov 2015 17:14:50 +0800
+Message-ID: <1448442890.27169.5.camel@mhfsdcap03>
+References: <1448332712-29039-1-git-send-email-leilk.liu@mediatek.com>
+	 <5654A89A.3090202@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-kbuild-owner@vger.kernel.org>
-In-Reply-To: <20151124155857.GB32623@ulmo.nvidia.com>
-Content-Language: ja-JP
-Sender: linux-kbuild-owner@vger.kernel.org
-To: thierry.reding@gmail.com, arnd@arndb.de, arm@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, mmarek@suse.com, olof@lixom.net, linux-kbuild@vger.kernel.org, jamie@jamieiles.com, agross@codeaurora.org, kernel@pengutronix.de, gregory.clement@free-electrons.com, linux-sh@vger.kernel.org, tsahee@annapurnalabs.com, linux-arm-msm@vger.kernel.org, linus.walleij@linaro.org, galak@codeaurora.org, plagnioj@jcrosoft.com, dinguyen@opensource.altera.com, baohua@kernel.org, shiraz.linux.kernel@gmail.com, rjui@broadcom.com, patrice.chotard@st.com, kernel@stlinux.com, soren.brinkmann@xilinx.com, horms@verge.net.au, michal.simek@xilinx.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-soc@vger.kernel.org, davidb@codeaurora.org, sbranden@broadcom.com, vireshk@kernel.org, alexandre.belloni@free-electrons.com, kyungmin.park@samsung.com, k.kozlowski@samsung.com, bcm
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5654A89A.3090202-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQXJuZCwNCg0KQ291bGQgeW91IGFwcGx5IHRoaXMgcGF0Y2ggd2l0aCBBY2tlZC1ieSBzdG9y
-bQ0Kc28gdGhhdCBvdGhlciBzdWJhcmNodGVjdHVyZXMgY2FuIGJhc2Ugb24gaXQ/DQoNCkFsc28s
-IHRoZSBmb2xsb3dpbmcgc2VyaWVzOg0KDQoxLzI6IEFSTTogaGlzaTogZG8gbm90IGV4cG9ydCBz
-bXBfb3BlcmF0aW9ucyBzdHJ1Y3R1cmVzDQoyLzI6IEFSTTogdXNlIGNvbnN0IGFuZCBfX2luaXRj
-b25zdCBmb3Igc21wX29wZXJhdGlvbnMNCg0KDQoNCg0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2Fn
-ZS0tLS0tDQo+IEZyb206IFRoaWVycnkgUmVkaW5nIFttYWlsdG86dGhpZXJyeS5yZWRpbmdAZ21h
-aWwuY29tXQ0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVtYmVyIDI1LCAyMDE1IDEyOjU5IEFNDQo+
-IFRvOiBZYW1hZGEsIE1hc2FoaXJvDQo+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJh
-ZGVhZC5vcmc7IGFybUBrZXJuZWwub3JnOyBNaWNoYWwgTWFyZWs7DQo+IEFybmQgQmVyZ21hbm47
-IE9sb2YgSm9oYW5zc29uOyBsaW51eC1rYnVpbGRAdmdlci5rZXJuZWwub3JnOyBKYW1pZSBJbGVz
-Ow0KPiBBbmR5IEdyb3NzOyBTYXNjaGEgSGF1ZXI7IEdyZWdvcnkgQ2xlbWVudDsgbGludXgtc2hA
-dmdlci5rZXJuZWwub3JnOw0KPiBUc2FoZWUgWmlkZW5iZXJnOyBsaW51eC1hcm0tbXNtQHZnZXIu
-a2VybmVsLm9yZzsgTGludXMgV2FsbGVpajsgS3VtYXINCj4gR2FsYTsgSmVhbi1DaHJpc3RvcGhl
-IFBsYWduaW9sLVZpbGxhcmQ7IERpbmggTmd1eWVuOyBCYXJyeSBTb25nOyBTaGlyYXoNCj4gSGFz
-aGltOyBSYXkgSnVpOyBQYXRyaWNlIENob3RhcmQ7IGtlcm5lbEBzdGxpbnV4LmNvbTsgU8O2cmVu
-IEJyaW5rbWFubjsNCj4gU2ltb24gSG9ybWFuOyBNaWNoYWwgU2ltZWs7IEhlaWtvIFN0dWVibmVy
-Ow0KPiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1zb2NAdmdlci5r
-ZXJuZWwub3JnOyBEYXZpZA0KPiBCcm93bjsgU2NvdHQgQnJhbmRlbjsgVmlyZXNoIEt1bWFyOyBB
-bGV4YW5kcmUgQmVsbG9uaTsgS3l1bmdtaW4gUGFyazsNCj4gS3J6eXN6dG9mIEtvemxvd3NraTsg
-YmNtLWtlcm5lbC1mZWVkYmFjay1saXN0QGJyb2FkY29tLmNvbTsgRmxvcmlhbg0KPiBGYWluZWxs
-aTsgQWxleGFuZHJlIENvdXJib3Q7IE1hdHRoaWFzIEJydWdnZXI7IEt1a2ppbiBLaW07IFJvYiBI
-ZXJyaW5nOw0KPiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyBzcGVhci1kZXZlbEBsaXN0
-LnN0LmNvbTsgU2ViYXN0aWFuDQo+IEhlc3NlbGJhcnRoOyBTdWRlZXAgSG9sbGE7IEFuZHJldyBM
-dW5uOyBSdXNzZWxsIEtpbmc7DQo+IGxpbnV4LXNhbXN1bmctc29jQHZnZXIua2VybmVsLm9yZzsg
-bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZzsNCj4gbGludXgtdGVncmFAdmdlci5r
-ZXJuZWwub3JnOyBNYXhpbWUgQ29xdWVsaW47IFNyaW5pdmFzIEthbmRhZ2F0bGE7IFNoYXduDQo+
-IEd1bzsgTGl2aXUgRHVkYXU7IEp1biBOaWU7IExvcmVuem8gUGllcmFsaXNpOyBOaWNvbGFzIEZl
-cnJlOyBKYXNvbiBDb29wZXI7DQo+IFN0ZXBoZW4gV2FycmVuOyBLcnp5c3p0b2YgSGFsYXNhOyBX
-ZWkgWHU7IE1hZ251cyBEYW1tOyBDaGVuLVl1IFRzYWk7IE1heGltZQ0KPiBSaXBhcmQNCj4gU3Vi
-amVjdDogUmU6IFtQQVRDSF0gQVJNOiB1c2UgImRlcGVuZHMgb24iIGZvciBTb0MgY29uZmlncyBp
-bnN0ZWFkIG9mICJpZiINCj4gYWZ0ZXIgcHJvbXB0DQo+IA0KPiBPbiBNb24sIE5vdiAxNiwgMjAx
-NSBhdCAxMjowNjoxMFBNICswOTAwLCBNYXNhaGlybyBZYW1hZGEgd3JvdGU6DQo+IFsuLi5dDQo+
-ID4gIGFyY2gvYXJtL21hY2gtdGVncmEvS2NvbmZpZyAgICAgIHwgIDMgKystDQo+IA0KPiBUaGVy
-ZSB3aWxsIGJlIGEgc2xpZ2h0IGNvbmZsaWN0IGJldHdlZW4gdGhpcyBhbmQgYSBwYXRjaCBpbiB0
-aGUgdGVncmEgdHJlZSwNCj4gYnV0IG5vdGhpbmcgdGhhdCB0aGUgQVJNIFNvQyBtYWludGFpbmVy
-cyBjYW4ndCBoYW5kbGUsIHNvOg0KPiANCj4gQWNrZWQtYnk6IFRoaWVycnkgUmVkaW5nIDx0cmVk
-aW5nQG52aWRpYS5jb20+DQo=
+On Tue, 2015-11-24 at 19:12 +0100, Matthias Brugger wrote:
+> 
+> On 24/11/15 03:38, Leilk Liu wrote:
+> > This patch revises failure flow while pm_runtime_enable().
+> 
+> Please write a proper commit message explaining what this patch does.
+> 
+OK, thanks!
+
+> >
+> > Signed-off-by: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   drivers/spi/spi-mt65xx.c |   15 ++++++++-------
+> >   1 file changed, 8 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+> > index 6c1a96e..00a36da 100644
+> > --- a/drivers/spi/spi-mt65xx.c
+> > +++ b/drivers/spi/spi-mt65xx.c
+> > @@ -607,7 +607,8 @@ static int mtk_spi_probe(struct platform_device *pdev)
+> >   	ret = clk_set_parent(mdata->sel_clk, mdata->parent_clk);
+> >   	if (ret < 0) {
+> >   		dev_err(&pdev->dev, "failed to clk_set_parent (%d)\n", ret);
+> > -		goto err_disable_clk;
+> > +		clk_disable_unprepare(mdata->spi_clk);
+> > +		goto err_put_master;
+> >   	}
+> >
+> >   	clk_disable_unprepare(mdata->spi_clk);
+> > @@ -617,7 +618,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
+> >   	ret = devm_spi_register_master(&pdev->dev, master);
+> >   	if (ret) {
+> >   		dev_err(&pdev->dev, "failed to register master (%d)\n", ret);
+> > -		goto err_put_master;
+> > +		goto err_disable_runtime_pm;
+> >   	}
+> >
+> >   	if (mdata->dev_comp->need_pad_sel) {
+> > @@ -626,14 +627,14 @@ static int mtk_spi_probe(struct platform_device *pdev)
+> >   				"pad_num does not match num_chipselect(%d != %d)\n",
+> >   				mdata->pad_num, master->num_chipselect);
+> >   			ret = -EINVAL;
+> > -			goto err_put_master;
+> > +			goto err_disable_runtime_pm;
+> >   		}
+> >
+> >   		if (!master->cs_gpios && master->num_chipselect > 1) {
+> >   			dev_err(&pdev->dev,
+> >   				"cs_gpios not specified and num_chipselect > 1\n");
+> >   			ret = -EINVAL;
+> > -			goto err_put_master;
+> > +			goto err_disable_runtime_pm;
+> >   		}
+> >
+> >   		if (master->cs_gpios) {
+> > @@ -644,7 +645,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
+> >   				if (ret) {
+> >   					dev_err(&pdev->dev,
+> >   						"can't get CS GPIO %i\n", i);
+> > -					goto err_put_master;
+> > +					goto err_disable_runtime_pm;
+> >   				}
+> >   			}
+> >   		}
+> > @@ -652,8 +653,8 @@ static int mtk_spi_probe(struct platform_device *pdev)
+> >
+> >   	return 0;
+> >
+> > -err_disable_clk:
+> > -	clk_disable_unprepare(mdata->spi_clk);
+> > +err_disable_runtime_pm:
+> > +	pm_runtime_disable(&pdev->dev);
+> >   err_put_master:
+> >   	spi_master_put(master);
+> >
+> >
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
