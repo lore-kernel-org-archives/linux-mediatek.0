@@ -1,67 +1,41 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 11/12] clk: mediatek: Add hdmi_ref HDMI PHY PLL
- reference clock output
-Date: Thu, 26 Nov 2015 14:02:04 +0800
-Message-ID: <1448517724.16568.1.camel@mtksdaap41>
-References: <1447868060-11620-1-git-send-email-p.zabel@pengutronix.de>
-	 <1447868060-11620-12-git-send-email-p.zabel@pengutronix.de>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [PATCH 0/5] pinctrl: mediatek: add pinctrl/GPIO/EINT driver for mt2701
+Date: Thu, 26 Nov 2015 16:44:27 +0800
+Message-ID: <1448527472-20651-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1447868060-11620-12-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Stone <daniel-rLtY4a/8tF1rovVCs/uTlw@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Dave Airlie <airlied-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-11-18 at 18:34 +0100, Philipp Zabel wrote:
-> The configurable hdmi_ref output of the PLL block is derived from
-> the tvdpll_594m clock signal via a configurable PLL post-divider.
-> It is used as the PLL reference input to the HDMI PHY module.
-> 
-> Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+MT2701 pinctrl/eint are similar to mt8127, mt8135 and mt8173,
+add support for mt2701 using mediatek common pinctrl driver.
 
-Acked-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Biao Huang (4):
+  dt-bindings: mediatek: Modify pinctrl bindings for mt2701
+  pinctrl: dt bindings: Add pinfunc header file for mt2701
+  pinctrl: mediatek: Add Pinctrl/GPIO/EINT driver for mt2701
+  arm: dts: Add pinctrl/GPIO/EINT node for mt2701
 
-> ---
->  drivers/clk/mediatek/clk-mt8173.c      | 5 +++++
->  include/dt-bindings/clock/mt8173-clk.h | 3 ++-
->  2 files changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-> index b305fa2..d7eadda 100644
-> --- a/drivers/clk/mediatek/clk-mt8173.c
-> +++ b/drivers/clk/mediatek/clk-mt8173.c
-> @@ -1091,6 +1091,11 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
->  		clk_data->clks[cku->id] = clk;
->  	}
->  
-> +	clk = clk_register_divider(NULL, "hdmi_ref", "tvdpll_594m", 0,
-> +				   base + 0x40, 16, 3, CLK_DIVIDER_POWER_OF_TWO,
-> +				   NULL);
-> +	clk_data->clks[CLK_APMIXED_HDMI_REF] = clk;
-> +
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->  	if (r)
->  		pr_err("%s(): could not register clock provider: %d\n",
-> diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-> index 7956ba1..6094bf7 100644
-> --- a/include/dt-bindings/clock/mt8173-clk.h
-> +++ b/include/dt-bindings/clock/mt8173-clk.h
-> @@ -176,7 +176,8 @@
->  #define CLK_APMIXED_LVDSPLL		13
->  #define CLK_APMIXED_MSDCPLL2		14
->  #define CLK_APMIXED_REF2USB_TX		15
-> -#define CLK_APMIXED_NR_CLK		16
-> +#define CLK_APMIXED_HDMI_REF		16
-> +#define CLK_APMIXED_NR_CLK		17
->  
->  /* INFRA_SYS */
->  
+Erin Lo (1):
+  ARM: mediatek: Add MT2701 config options for mediatek SoCs.
 
+ .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    9 +-
+ arch/arm/boot/dts/mt2701-pinfunc.h                 |  713 ++++++
+ arch/arm/boot/dts/mt2701.dtsi                      |   19 +
+ arch/arm/mach-mediatek/Kconfig                     |    4 +
+ drivers/pinctrl/mediatek/Kconfig                   |    6 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c          |  571 +++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c      |    7 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h      |    3 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h      | 2323 ++++++++++++++++++++
+ 10 files changed, 3652 insertions(+), 4 deletions(-)
+ create mode 100644 arch/arm/boot/dts/mt2701-pinfunc.h
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2701.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.7.9.5
