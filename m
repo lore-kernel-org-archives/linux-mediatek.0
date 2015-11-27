@@ -1,64 +1,84 @@
-From: Daniel Thompson <daniel.thompson@linaro.org>
-Subject: Re: [RESEND RFC/PATCH 3/8] media: platform: mtk-vpu: Support Mediatek
- VPU
-Date: Fri, 27 Nov 2015 12:21:25 +0000
-Message-ID: <56584AC5.7020704@linaro.org>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
- <1447764885-23100-4-git-send-email-tiffany.lin@mediatek.com>
- <5655DDB4.2080002@linaro.org> <1448626209.7734.26.camel@mtksdaap41>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3] mmc: core: fix __mmc_switch timeout caused by preempt
+Date: Fri, 27 Nov 2015 15:00:30 +0100
+Message-ID: <CAPDyKFpLZn9t8ODE3_-6=QbaiC4Br+w98MDaqE3DTPmSRXw2xw@mail.gmail.com>
+References: <1448588498-28652-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1448626209.7734.26.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: andrew-ct chen <andrew-ct.chen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, Darren Etheridge <detheridge@ti.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Eddie Huang <eddie.huang@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Fabien Dessenne <fabien.dessenne@st.com>, Peter Griffin <peter.griffin@linaro.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Benoit Parrot <bparrot@ti.com>, Rob
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1448588498-28652-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Minda Chen <Minda.Chen@csr.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 27/11/15 12:10, andrew-ct chen wrote:
->>> +
->>> > >+	memcpy((void *)send_obj->share_buf, buf, len);
->>> > >+	send_obj->len = len;
->>> > >+	send_obj->id = id;
->>> > >+	vpu_cfg_writel(vpu, 0x1, HOST_TO_VPU);
->>> > >+
->>> > >+	/* Wait until VPU receives the command */
->>> > >+	timeout = jiffies + msecs_to_jiffies(IPI_TIMEOUT_MS);
->>> > >+	do {
->>> > >+		if (time_after(jiffies, timeout)) {
->>> > >+			dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
->>> > >+			return -EIO;
->>> > >+		}
->>> > >+	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
->> >
->> >Do we need to busy wait every time we communicate with the co-processor?
->> >Couldn't we put this wait*before*  we write to HOST_TO_VPU above.
->> >
->> >That way we only spin when there is a need to.
->> >
-> Since the hardware VPU only allows that one client sends the command to
-> it each time.
-> We need the wait to make sure VPU accepted the command and cleared the
-> interrupt and then the next command would be served.
+On 27 November 2015 at 02:41, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> there is a time window between __mmc_send_status() and time_afer(),
+> on some eMMC chip, the timeout_ms is only 10ms, if this thread was
+> scheduled out during this period, then, even card has already changes
+> to transfer state by the result of CMD13, this part of code also treat
+> it to timeout error.
+> So, need calculate timeout first, then call __mmc_send_status(), if
+> already timeout and card still in programing state, then treat it to
+> the real timeout error.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/core/mmc_ops.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
+> index 1f44426..371aa4b 100644
+> --- a/drivers/mmc/core/mmc_ops.c
+> +++ b/drivers/mmc/core/mmc_ops.c
+> @@ -489,6 +489,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>         unsigned long timeout;
+>         u32 status = 0;
+>         bool use_r1b_resp = use_busy_signal;
+> +       bool expired = false;
+>
+>         mmc_retune_hold(host);
+>
+> @@ -544,6 +545,12 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>         /* Must check status to be sure of no errors. */
+>         timeout = jiffies + msecs_to_jiffies(timeout_ms);
+>         do {
+> +               /*
+> +                * Due to the possibility of being preempted after sending the
+> +                * status command, check the expiration time first.
+> +                */
+> +               expired = time_after(jiffies, timeout);
 
-I understand that the VPU  can only have on message outstanding at once.
+The update of "expired" should have remained within the "if (send_status) {"
 
-I just wonder why we busy wait *after* sending the first command rather 
-than *before* sending the second one.
+Please change that.
 
-Streamed decode/encode typically ends up being rate controlled by 
-capture or display meaning that in these cases we don't need to busy 
-wait at all (because by the time we send the next frame the VPU has 
-already accepted the previous message).
+I realize that the entire __mmc_switch() function deserves a round of
+re-factoring, as it's just too complicated to understand all what goes
+on in here. That's another task though. :-)
 
+> +
+>                 if (send_status) {
+>                         err = __mmc_send_status(card, &status, ignore_crc);
+>                         if (err)
+> @@ -565,12 +572,13 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>                 }
+>
+>                 /* Timeout if the device never leaves the program state. */
+> -               if (time_after(jiffies, timeout)) {
+> +               if (expired && R1_CURRENT_STATE(status) == R1_STATE_PRG) {
+>                         pr_err("%s: Card stuck in programming state! %s\n",
+>                                 mmc_hostname(host), __func__);
+>                         err = -ETIMEDOUT;
+>                         goto out;
+>                 }
+> +
+>         } while (R1_CURRENT_STATE(status) == R1_STATE_PRG);
+>
+>         err = mmc_switch_status_error(host, status);
+> --
+> 1.8.1.1.dirty
+>
 
-Daniel.
+Kind regards
+Uffe
