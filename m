@@ -1,77 +1,50 @@
-From: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] mmc: core: fix __mmc_switch timeout caused by preempt
-Date: Fri, 27 Nov 2015 09:41:38 +0800
-Message-ID: <1448588498-28652-1-git-send-email-chaotian.jing@mediatek.com>
+From: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 0/3] thermal: mediatek: Add cpu power cooling model
+Date: Fri, 27 Nov 2015 17:32:04 +0800
+Message-ID: <1448616727-29367-1-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Adrian Hunter <adrian.hunter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Minda Chen <Minda.Chen-kQvG35nSl+M@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Punit Agrawal <punit.agrawal-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-there is a time window between __mmc_send_status() and time_afer(),
-on some eMMC chip, the timeout_ms is only 10ms, if this thread was
-scheduled out during this period, then, even card has already changes
-to transfer state by the result of CMD13, this part of code also treat
-it to timeout error.
-So, need calculate timeout first, then call __mmc_send_status(), if
-already timeout and card still in programing state, then treat it to
-the real timeout error.
+Use Intelligent Power Allocation (IPA) technical to add dynamic power model
+for binding CPU thermal zone. The power allocator governor allocates power
+budget to control CPU temperature.
 
-Signed-off-by: Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/mmc/core/mmc_ops.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+Power Allocator governor is able to keep SOC temperature within a defined
+temperature range to avoid SOC overheat and keep it's performance.
+mt8173-cpufreq.c need to register its' own power model with power allocator
+thermal governor, so that power allocator governor can allocates suitable
+power budget to control CPU temperature.
 
-diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
-index 1f44426..371aa4b 100644
---- a/drivers/mmc/core/mmc_ops.c
-+++ b/drivers/mmc/core/mmc_ops.c
-@@ -489,6 +489,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 	unsigned long timeout;
- 	u32 status = 0;
- 	bool use_r1b_resp = use_busy_signal;
-+	bool expired = false;
- 
- 	mmc_retune_hold(host);
- 
-@@ -544,6 +545,12 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 	/* Must check status to be sure of no errors. */
- 	timeout = jiffies + msecs_to_jiffies(timeout_ms);
- 	do {
-+		/*
-+		 * Due to the possibility of being preempted after sending the
-+		 * status command, check the expiration time first.
-+		 */
-+		expired = time_after(jiffies, timeout);
-+
- 		if (send_status) {
- 			err = __mmc_send_status(card, &status, ignore_crc);
- 			if (err)
-@@ -565,12 +572,13 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 		}
- 
- 		/* Timeout if the device never leaves the program state. */
--		if (time_after(jiffies, timeout)) {
-+		if (expired && R1_CURRENT_STATE(status) == R1_STATE_PRG) {
- 			pr_err("%s: Card stuck in programming state! %s\n",
- 				mmc_hostname(host), __func__);
- 			err = -ETIMEDOUT;
- 			goto out;
- 		}
-+
- 	} while (R1_CURRENT_STATE(status) == R1_STATE_PRG);
- 
- 	err = mmc_switch_status_error(host, status);
--- 
-1.8.1.1.dirty
+Binging document is refer to this patchset
+https://lkml.org/lkml/2015/11/17/251
+
+Change since V1:
+1. Include mt8171.h and sort header file for mt8173.dtsi
+
+Change since V2:
+1. Move dynamic/static power model in device tree
+
+Change since V3:
+1. Remove static power model.
+2. Split V3's device tree in two for thermal zones and dynamic power models respectively.
+
+Dawei Chien (3):
+  arm64: dts: mt8173: Add thermal zone node for mt8173 platform.
+  arm64: dts: mt8173: Add dynamic power node for mt8173 platform.
+  thermal: mediatek: Add cpu dynamic power cooling model.
+
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   47 ++++++++++++++++++++++++++++++
+ drivers/cpufreq/mt8173-cpufreq.c         |   28 +++++++++++++-----
+ 2 files changed, 67 insertions(+), 8 deletions(-)
+
+--
+1.7.9.5
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
