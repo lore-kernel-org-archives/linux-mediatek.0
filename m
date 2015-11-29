@@ -1,53 +1,36 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 2/5] dt-bindings: mediatek: Modify pinctrl bindings for
- mt2701
-Date: Fri, 27 Nov 2015 14:38:00 -0600
-Message-ID: <20151127203800.GA9092@rob-hp-laptop>
-References: <1448527472-20651-1-git-send-email-biao.huang@mediatek.com>
- <1448527472-20651-3-git-send-email-biao.huang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1448527472-20651-3-git-send-email-biao.huang@mediatek.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com
+From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Subject: [PATCH 2/4] cpufreq: mt8173: remove redundant regulator_get_voltage() call
+Date: Sun, 29 Nov 2015 16:31:36 +0800
+Message-ID: <1448785898-17838-2-git-send-email-pi-cheng.chen@linaro.org>
+References: <1448785898-17838-1-git-send-email-pi-cheng.chen@linaro.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1448785898-17838-1-git-send-email-pi-cheng.chen@linaro.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 26, 2015 at 04:44:29PM +0800, Biao Huang wrote:
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
-> index 0480bc3..ca6a27a 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
-> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
-> @@ -4,10 +4,11 @@ The Mediatek's Pin controller is used to control SoC pins.
->  
->  Required properties:
->  - compatible: value should be one of the following.
-> -    (a) "mediatek,mt8135-pinctrl", compatible with mt8135 pinctrl.
-> -    (b) "mediatek,mt8173-pinctrl", compatible with mt8173 pinctrl.
-> -    (c) "mediatek,mt6397-pinctrl", compatible with mt6397 pinctrl.
-> -    (d) "mediatek,mt8127-pinctrl", compatible with mt8127 pinctrl.
-> +    (a) "mediatek,mt2701-pinctrl", compatible with mt2701 pinctrl.
-> +    (b) "mediatek,mt6397-pinctrl", compatible with mt6397 pinctrl.
-> +    (c) "mediatek,mt8135-pinctrl", compatible with mt8135 pinctrl.
-> +    (d) "mediatek,mt8173-pinctrl", compatible with mt8173 pinctrl.
-> +    (e) "mediatek,mt8127-pinctrl", compatible with mt8127 pinctrl.
+Remove redundant regulator_get_voltage() call to get Vsram value
+since it will be obtained later at the beginning of voltage tracking
+loop.
 
-If you were trying to sort these, they still aren't quite sorted. There 
-is no point in sorting if you number (or letter) them because you will 
-have to update many lines on any change. So drop the (a), (b), (c), etc.
+Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+---
+ drivers/cpufreq/mt8173-cpufreq.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Rob
+diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
+index c438109..750cda7 100644
+--- a/drivers/cpufreq/mt8173-cpufreq.c
++++ b/drivers/cpufreq/mt8173-cpufreq.c
+@@ -59,7 +59,6 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
+ 	int old_vproc, old_vsram, new_vsram, vsram, vproc, ret;
+ 
+ 	old_vproc = regulator_get_voltage(proc_reg);
+-	old_vsram = regulator_get_voltage(sram_reg);
+ 	/* Vsram should not exceed the maximum allowed voltage of SoC. */
+ 	new_vsram = min(new_vproc + MIN_VOLT_SHIFT, MAX_VOLT_LIMIT);
+ 
+-- 
+1.9.1
 
->  - pins-are-numbered: Specify the subnodes are using numbered pinmux to
->    specify pins.
->  - gpio-controller : Marks the device node as a gpio controller.
-> -- 
-> 1.7.9.5
-> 
