@@ -1,86 +1,35 @@
 From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: [PATCH 3/4] cpufreq: mt8173: check return value of regulator_get_voltage() call
-Date: Sun, 29 Nov 2015 16:31:37 +0800
-Message-ID: <1448785898-17838-3-git-send-email-pi-cheng.chen@linaro.org>
-References: <1448785898-17838-1-git-send-email-pi-cheng.chen@linaro.org>
+Subject: [PATCH 1/4] cpufreq: mt8173: add CPUFREQ_HAVE_GOVERNOR_PER_POLICY flag
+Date: Sun, 29 Nov 2015 16:31:35 +0800
+Message-ID: <1448785898-17838-1-git-send-email-pi-cheng.chen@linaro.org>
 Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1448785898-17838-1-git-send-email-pi-cheng.chen@linaro.org>
 Sender: linux-pm-owner@vger.kernel.org
 To: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Sometimes regulator_get_voltage() call returns negative values for
-reasons(e.g. underlying I2C bus timeout). Add check for the return
-values and fail out early.
+Add CPUFREQ_HAVE_GOVERNOR_PER_POLICY to have individual set of tunables
+for each cluster of MT8173.
 
 Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
 ---
- drivers/cpufreq/mt8173-cpufreq.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ drivers/cpufreq/mt8173-cpufreq.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-index 750cda7..9d0fe37 100644
+index 83001dc..c438109 100644
 --- a/drivers/cpufreq/mt8173-cpufreq.c
 +++ b/drivers/cpufreq/mt8173-cpufreq.c
-@@ -59,6 +59,10 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 	int old_vproc, old_vsram, new_vsram, vsram, vproc, ret;
+@@ -469,7 +469,8 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
+ }
  
- 	old_vproc = regulator_get_voltage(proc_reg);
-+	if (old_vproc < 0) {
-+		pr_err("%s: invalid Vproc value: %d\n", __func__, old_vproc);
-+		return old_vproc;
-+	}
- 	/* Vsram should not exceed the maximum allowed voltage of SoC. */
- 	new_vsram = min(new_vproc + MIN_VOLT_SHIFT, MAX_VOLT_LIMIT);
- 
-@@ -71,7 +75,17 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		 */
- 		do {
- 			old_vsram = regulator_get_voltage(sram_reg);
-+			if (old_vsram < 0) {
-+				pr_err("%s: invalid Vsram value: %d\n",
-+				       __func__, old_vsram);
-+				return old_vsram;
-+			}
- 			old_vproc = regulator_get_voltage(proc_reg);
-+			if (old_vproc < 0) {
-+				pr_err("%s: invalid Vproc value: %d\n",
-+				       __func__, old_vproc);
-+				return old_vproc;
-+			}
- 
- 			vsram = min(new_vsram, old_vproc + MAX_VOLT_SHIFT);
- 
-@@ -116,7 +130,17 @@ static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 		 */
- 		do {
- 			old_vproc = regulator_get_voltage(proc_reg);
-+			if (old_vproc < 0) {
-+				pr_err("%s: invalid Vproc value: %d\n",
-+				       __func__, old_vproc);
-+				return old_vproc;
-+			}
- 			old_vsram = regulator_get_voltage(sram_reg);
-+			if (old_vsram < 0) {
-+				pr_err("%s: invalid Vsram value: %d\n",
-+				       __func__, old_vsram);
-+				return old_vsram;
-+			}
- 
- 			vproc = max(new_vproc, old_vsram - MAX_VOLT_SHIFT);
- 			ret = regulator_set_voltage(proc_reg, vproc,
-@@ -184,6 +208,10 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 
- 	old_freq_hz = clk_get_rate(cpu_clk);
- 	old_vproc = regulator_get_voltage(info->proc_reg);
-+	if (old_vproc < 0) {
-+		pr_err("%s: invalid Vproc value: %d\n", __func__, old_vproc);
-+		return old_vproc;
-+	}
- 
- 	freq_hz = freq_table[index].frequency * 1000;
- 
+ static struct cpufreq_driver mt8173_cpufreq_driver = {
+-	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK,
++	.flags = CPUFREQ_STICKY | CPUFREQ_NEED_INITIAL_FREQ_CHECK |
++		 CPUFREQ_HAVE_GOVERNOR_PER_POLICY,
+ 	.verify = cpufreq_generic_frequency_table_verify,
+ 	.target_index = mtk_cpufreq_set_target,
+ 	.get = cpufreq_generic_get,
 -- 
 1.9.1
 
