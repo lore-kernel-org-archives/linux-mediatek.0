@@ -1,59 +1,87 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 3/3] ARM64: dts: mt8173: Add thermal/auxadc device nodes
-Date: Mon, 30 Nov 2015 12:42:33 +0100
-Message-ID: <1448883753-19068-4-git-send-email-s.hauer@pengutronix.de>
-References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
-Cc: linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+From: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND RFC/PATCH 3/8] media: platform: mtk-vpu: Support
+ Mediatek VPU
+Date: Mon, 30 Nov 2015 19:43:39 +0800
+Message-ID: <1448883819.15961.7.camel@mtksdaap41>
+References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1447764885-23100-4-git-send-email-tiffany.lin@mediatek.com>
+	 <5655DDB4.2080002@linaro.org> <1448626209.7734.26.camel@mtksdaap41>
+	 <56584AC5.7020704@linaro.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56584AC5.7020704-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This adds the thermal controller and auxadc nodes to the Mediatek MT8173
-dtsi file.
+On Fri, 2015-11-27 at 12:21 +0000, Daniel Thompson wrote:
+> On 27/11/15 12:10, andrew-ct chen wrote:
+> >>> +
+> >>> > >+	memcpy((void *)send_obj->share_buf, buf, len);
+> >>> > >+	send_obj->len = len;
+> >>> > >+	send_obj->id = id;
+> >>> > >+	vpu_cfg_writel(vpu, 0x1, HOST_TO_VPU);
+> >>> > >+
+> >>> > >+	/* Wait until VPU receives the command */
+> >>> > >+	timeout = jiffies + msecs_to_jiffies(IPI_TIMEOUT_MS);
+> >>> > >+	do {
+> >>> > >+		if (time_after(jiffies, timeout)) {
+> >>> > >+			dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
+> >>> > >+			return -EIO;
+> >>> > >+		}
+> >>> > >+	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
+> >> >
+> >> >Do we need to busy wait every time we communicate with the co-processor?
+> >> >Couldn't we put this wait*before*  we write to HOST_TO_VPU above.
+> >> >
+> >> >That way we only spin when there is a need to.
+> >> >
+> > Since the hardware VPU only allows that one client sends the command to
+> > it each time.
+> > We need the wait to make sure VPU accepted the command and cleared the
+> > interrupt and then the next command would be served.
+> 
+> I understand that the VPU  can only have on message outstanding at once.
+> 
+> I just wonder why we busy wait *after* sending the first command rather 
+> than *before* sending the second one.
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+No other special reasons. Just send one command and wait until VPU gets
+the command. Then, I think this wait also can be put before we write to
+HOST_TO_VPU.Is this better than former? May I know the reason?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 06a1564..e2ddd03 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -277,6 +277,11 @@
- 				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 		};
- 
-+		auxadc: auxadc@11001000 {
-+			compatible = "mediatek,mt8173-auxadc";
-+			reg = <0 0x11001000 0 0x1000>;
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt8173-uart",
- 				     "mediatek,mt6577-uart";
-@@ -487,6 +492,18 @@
- 			clock-names = "source", "hclk";
- 			status = "disabled";
- 		};
-+
-+		thermal: thermal@1100b000 {
-+			#thermal-sensor-cells = <0>;
-+			compatible = "mediatek,mt8173-thermal";
-+			reg = <0 0x1100b000 0 0x1000>;
-+			interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
-+			clock-names = "therm", "auxadc";
-+			resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
-+			mediatek,auxadc = <&auxadc>;
-+			mediatek,apmixedsys = <&apmixedsys>;
-+		};
- 	};
- };
- 
--- 
-2.6.2
 
+> 
+> Streamed decode/encode typically ends up being rate controlled by 
+> capture or display meaning that in these cases we don't need to busy 
+> wait at all (because by the time we send the next frame the VPU has 
+> already accepted the previous message).
+
+For now, only one device "encoder" exists, it is true.
+But, we'll have encoder and decoder devices, the decode and encode
+requested to VPU are simultaneous.
+Is this supposed to be removed for this patches and we can add it back
+if the another device(decoder) is ready for review?
+
+
+Andrew
+
+
+> 
+> 
+> Daniel.
+> 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
