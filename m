@@ -1,91 +1,113 @@
-From: Daniel Thompson <daniel.thompson@linaro.org>
-Subject: Re: [RESEND RFC/PATCH 3/8] media: platform: mtk-vpu: Support Mediatek VPU
-Date: Mon, 30 Nov 2015 15:36:07 +0000
-Message-ID: <CAMTL27G8WRTTGCtU9pXpp1-inyzZE9Jat1SkOiX5HMG5E-eFzw@mail.gmail.com>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
-	<1447764885-23100-4-git-send-email-tiffany.lin@mediatek.com>
-	<5655DDB4.2080002@linaro.org>
-	<1448626209.7734.26.camel@mtksdaap41>
-	<56584AC5.7020704@linaro.org>
-	<1448883819.15961.7.camel@mtksdaap41>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v7 05/14] dt-bindings: drm/mediatek: Add Mediatek HDMI dts
+ binding
+Date: Mon, 30 Nov 2015 22:07:47 +0100
+Message-ID: <1448917676-25584-6-git-send-email-p.zabel@pengutronix.de>
+References: <1448917676-25584-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1448883819.15961.7.camel@mtksdaap41>
-Sender: linux-media-owner@vger.kernel.org
-To: andrew-ct chen <andrew-ct.chen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, James Liao <jamesjj.liao@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Darren Etheridge <detheridge@ti.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Eddie Huang <eddie.huang@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Fabien Dessenne <fabien.dessenne@st.com>, Peter Griffin <peter.griffin@linaro.org>, Geert Uytterhoeven <geert@linux-m68k.org>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sascha Hauer <s.hauer@pengutronix.de>, Benoit Parrot <bparrot@ti.com>, Rob
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1448917676-25584-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, YT Shen <yt.shen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, Tomasz Figa <tfiga@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@pengutronix.de
 List-Id: linux-mediatek@lists.infradead.org
 
-On 30 November 2015 at 11:43, andrew-ct chen
-<andrew-ct.chen@mediatek.com> wrote:
-> On Fri, 2015-11-27 at 12:21 +0000, Daniel Thompson wrote:
->> On 27/11/15 12:10, andrew-ct chen wrote:
->> >>> +
->> >>> > >+      memcpy((void *)send_obj->share_buf, buf, len);
->> >>> > >+      send_obj->len = len;
->> >>> > >+      send_obj->id = id;
->> >>> > >+      vpu_cfg_writel(vpu, 0x1, HOST_TO_VPU);
->> >>> > >+
->> >>> > >+      /* Wait until VPU receives the command */
->> >>> > >+      timeout = jiffies + msecs_to_jiffies(IPI_TIMEOUT_MS);
->> >>> > >+      do {
->> >>> > >+              if (time_after(jiffies, timeout)) {
->> >>> > >+                      dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
->> >>> > >+                      return -EIO;
->> >>> > >+              }
->> >>> > >+      } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
->> >> >
->> >> >Do we need to busy wait every time we communicate with the co-processor?
->> >> >Couldn't we put this wait*before*  we write to HOST_TO_VPU above.
->> >> >
->> >> >That way we only spin when there is a need to.
->> >> >
->> > Since the hardware VPU only allows that one client sends the command to
->> > it each time.
->> > We need the wait to make sure VPU accepted the command and cleared the
->> > interrupt and then the next command would be served.
->>
->> I understand that the VPU  can only have on message outstanding at once.
->>
->> I just wonder why we busy wait *after* sending the first command rather
->> than *before* sending the second one.
->
-> No other special reasons. Just send one command and wait until VPU gets
-> the command. Then, I think this wait also can be put before we write to
-> HOST_TO_VPU.Is this better than former? May I know the reason?
-
-Busy waiting is bad; it is a waste of host CPU processor time and/or power.
-
-When the busy wait occurs after queuing then we will busy wait for
-every command we send.
-
-If busy wait occurs before next queuing then we will wait for a
-shorter time in total because we have the chance to do something
-useful on the host before we have to wait.
-
-
->> Streamed decode/encode typically ends up being rate controlled by
->> capture or display meaning that in these cases we don't need to busy
->> wait at all (because by the time we send the next frame the VPU has
->> already accepted the previous message).
->
-> For now, only one device "encoder" exists, it is true.
-> But, we'll have encoder and decoder devices, the decode and encode
-> requested to VPU are simultaneous.
-
-Sure, I accept that lock and busy-wait is an appropriate way to ensure
-safety (assuming the VPU is fairly quick clearing the HOST_TO_VPU
-flag).
-
-
-> Is this supposed to be removed for this patches and we can add it back
-> if the another device(decoder) is ready for review?
-
-No I'm not suggesting that.
-
-I only recommend moving the busy wait *before* end sending of command
-(for efficiency reasons mentioned above).
-
-
-Daniel.
+QWRkIHRoZSBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1lZGlhdGVrIEhE
+TUksCkhETUkgUEhZIGFuZCBIRE1JIEREQyBkZXZpY2VzLgoKU2lnbmVkLW9mZi1ieTogUGhpbGlw
+cCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxy
+b2JoQGtlcm5lbC5vcmc+Ci0tLQogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0
+ZWssaGRtaS50eHQgICAgfCAxNDIgKysrKysrKysrKysrKysrKysrKysrCiAxIGZpbGUgY2hhbmdl
+ZCwgMTQyIGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dAoKZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGhkbWkudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS50eHQKbmV3IGZpbGUgbW9kZSAxMDA2NDQK
+aW5kZXggMDAwMDAwMC4uZTNkZGUyOQotLS0gL2Rldi9udWxsCisrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0CkBA
+IC0wLDAgKzEsMTQyIEBACitNZWRpYXRlayBIRE1JIEVuY29kZXIKKz09PT09PT09PT09PT09PT09
+PT09PQorCitUaGUgTWVkaWF0ZWsgSERNSSBlbmNvZGVyIGNhbiBnZW5lcmF0ZSBIRE1JIDEuNGEg
+b3IgTUhMIDIuMCBzaWduYWxzIGZyb20KK2l0cyBwYXJhbGxlbCBpbnB1dC4KKworUmVxdWlyZWQg
+cHJvcGVydGllczoKKy0gY29tcGF0aWJsZTogU2hvdWxkIGJlICJtZWRpYXRlayw8Y2hpcD4taGRt
+aSIuCistIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2YgdGhlIGNvbnRy
+b2xsZXIncyByZWdpc3RlcnMKKy0gaW50ZXJydXB0czogVGhlIGludGVycnVwdCBzaWduYWwgZnJv
+bSB0aGUgZnVuY3Rpb24gYmxvY2suCistIGNsb2NrczogZGV2aWNlIGNsb2NrcworICBTZWUgRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL2Nsb2NrLWJpbmRpbmdzLnR4dCBm
+b3IgZGV0YWlscy4KKy0gY2xvY2stbmFtZXM6IG11c3QgY29udGFpbiAicGl4ZWwiLCAicGxsIiwg
+ImJjbGsiLCBhbmQgInNwZGlmIi4KKy0gcGh5czogcGhhbmRsZSBsaW5rIHRvIHRoZSBIRE1JIFBI
+WSBub2RlLgorICBTZWUgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHkt
+YmluZGluZ3MudHh0IGZvciBkZXRhaWxzLgorLSBwaHktbmFtZXM6IG11c3QgY29udGFpbiAiaGRt
+aSIKKy0gbWVkaWF0ZWssc3lzY29uLWhkbWk6IHBoYW5kbGUgbGluayBhbmQgcmVnaXN0ZXIgb2Zm
+c2V0IHRvIHRoZSBzeXN0ZW0KKyAgY29uZmlndXJhdGlvbiByZWdpc3RlcnMuIEZvciBtdDgxNzMg
+dGhpcyBtdXN0IGJlIG9mZnNldCAweDkwMCBpbnRvIHRoZQorICBNTVNZU19DT05GSUcgcmVnaW9u
+OiA8Jm1tc3lzIDB4OTAwPi4KKy0gcG9ydHM6IEEgbm9kZSBjb250YWluaW5nIGlucHV0IGFuZCBv
+dXRwdXQgcG9ydCBub2RlcyB3aXRoIGVuZHBvaW50CisgIGRlZmluaXRpb25zIGFzIGRvY3VtZW50
+ZWQgaW4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dyYXBoLnR4dC4KKy0gcG9y
+dEAwOiBUaGUgaW5wdXQgcG9ydCBpbiB0aGUgcG9ydHMgbm9kZSBzaG91bGQgYmUgY29ubmVjdGVk
+IHRvIGEgRFBJIG91dHB1dAorICBwb3J0LgorLSBwb3J0QDE6IFRoZSBvdXRwdXQgcG9ydCBpbiB0
+aGUgcG9ydHMgbm9kZSBzaG91bGQgYmUgY29ubmVjdGVkIHRvIHRoZSBpbnB1dAorICBwb3J0IG9m
+IGEgY29ubmVjdG9yIG5vZGUgdGhhdCBjb250YWlucyBhIGRkYy1pMmMtYnVzIHByb3BlcnR5LCBv
+ciB0byB0aGUKKyAgaW5wdXQgcG9ydCBvZiBhbiBhdHRhY2hlZCBicmlkZ2UgY2hpcCwgc3VjaCBh
+cyBhIFNsaW1Qb3J0IHRyYW5zbWl0dGVyLgorCitIRE1JIENFQworPT09PT09PT0KKworVGhlIEhE
+TUkgQ0VDIGNvbnRyb2xsZXIgaGFuZGxlcyBob3RwbHVnIGRldGVjdGlvbiBhbmQgQ0VDIGNvbW11
+bmljYXRpb24uCisKK1JlcXVpcmVkIHByb3BlcnRpZXM6CistIGNvbXBhdGlibGU6IFNob3VsZCBi
+ZSAibWVkaWF0ZWssPGNoaXA+LWNlYyIKKy0gcmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5k
+IGxlbmd0aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycworLSBpbnRlcnJ1cHRzOiBUaGUg
+aW50ZXJydXB0IHNpZ25hbCBmcm9tIHRoZSBmdW5jdGlvbiBibG9jay4KKy0gY2xvY2tzOiBkZXZp
+Y2UgY2xvY2sKKworSERNSSBEREMKKz09PT09PT09CisKK1RoZSBIRE1JIEREQyBpMmMgY29udHJv
+bGxlciBpcyB1c2VkIHRvIGludGVyZmFjZSB3aXRoIHRoZSBIRE1JIEREQyBwaW5zLgorVGhlIE1l
+ZGlhdGVrJ3MgSTJDIGNvbnRyb2xsZXIgaXMgdXNlZCB0byBpbnRlcmZhY2Ugd2l0aCBJMkMgZGV2
+aWNlcy4KKworUmVxdWlyZWQgcHJvcGVydGllczoKKy0gY29tcGF0aWJsZTogU2hvdWxkIGJlICJt
+ZWRpYXRlayw8Y2hpcD4taGRtaS1kZGMiCistIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFu
+ZCBsZW5ndGggb2YgdGhlIGNvbnRyb2xsZXIncyByZWdpc3RlcnMKKy0gY2xvY2tzOiBkZXZpY2Ug
+Y2xvY2sKKy0gY2xvY2stbmFtZXM6IFNob3VsZCBiZSAiZGRjLWkyYyIuCisKK0hETUkgUEhZCis9
+PT09PT09PQorCitUaGUgSERNSSBQSFkgc2VyaWFsaXplcyB0aGUgSERNSSBlbmNvZGVyJ3MgdGhy
+ZWUgY2hhbm5lbCAxMC1iaXQgcGFyYWxsZWwKK291dHB1dCBhbmQgZHJpdmVzIHRoZSBIRE1JIHBh
+ZHMuCisKK1JlcXVpcmVkIHByb3BlcnRpZXM6CistIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hp
+cD4taGRtaS1waHkiCistIHJlZzogUGh5c2ljYWwgYmFzZSBhZGRyZXNzIGFuZCBsZW5ndGggb2Yg
+dGhlIG1vZHVsZSdzIHJlZ2lzdGVycworLSBjbG9ja3M6IFBMTCByZWZlcmVuY2UgY2xvY2sKKy0g
+Y2xvY2stbmFtZXM6IG11c3QgY29udGFpbiAicGxsX3JlZiIKKy0gI3BoeS1jZWxsczogbXVzdCBi
+ZSA8MD4uCisKK09wdGlvbmFsIHByb3BlcnRpZXM6CistIG1lZGlhdGVrLGliaWFzOiBUWCBEUlYg
+YmlhcyBjdXJyZW50IGZvciA8MS42NUdicHMsIGRlZmF1bHRzIHRvIDB4YQorLSBtZWRpYXRlayxp
+Ymlhc191cDogVFggRFJWIGJpYXMgY3VycmVudCBmb3IgPjEuNjVHYnBzLCBkZWZhdWx0cyB0byAw
+eDFjCisKK0V4YW1wbGU6CisKK2NlYzogY2VjQDEwMDEzMDAwIHsKKwljb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE3My1jZWMiOworCXJlZyA9IDwwIDB4MTAwMTMwMDAgMCAweGJjPjsKKwlpbnRl
+cnJ1cHRzID0gPEdJQ19TUEkgMTY3IElSUV9UWVBFX0xFVkVMX0xPVz47CisJY2xvY2tzID0gPCZp
+bmZyYWNmZyBDTEtfSU5GUkFfQ0VDPjsKK307CisKK2hkbWlfcGh5OiBoZG1pLXBoeUAxMDIwOTEw
+MCB7CisJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtaGRtaS1waHkiOworCXJlZyA9IDww
+IDB4MTAyMDkxMDAgMCAweDI0PjsKKwljbG9ja3MgPSA8JmFwbWl4ZWRzeXMgQ0xLX0FQTUlYRURf
+SERNSV9SRUY+OworCWNsb2NrLW5hbWVzID0gInBsbF9yZWYiOworCW1lZGlhdGVrLGliaWFzID0g
+PDB4YT47CisJbWVkaWF0ZWssaWJpYXNfdXAgPSA8MHgxYz47CisJI3BoeS1jZWxscyA9IDwwPjsK
+K307CisKK2hkbWlfZGRjMDogaTJjQDExMDEyMDAwIHsKKwljb21wYXRpYmxlID0gIm1lZGlhdGVr
+LG10ODE3My1oZG1pLWRkYyI7CisJcmVnID0gPDAgMHgxMTAxMjAwMCAwIDB4MWM+OworCWludGVy
+cnVwdHMgPSA8R0lDX1NQSSA4MSBJUlFfVFlQRV9MRVZFTF9MT1c+OworCWNsb2NrcyA9IDwmcGVy
+aWNmZyBDTEtfUEVSSV9JMkM1PjsKKwljbG9jay1uYW1lcyA9ICJkZGMtaTJjIjsKK307CisKK2hk
+bWkwOiBoZG1pQDE0MDI1MDAwIHsKKwljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1p
+IjsKKwlyZWcgPSA8MCAweDE0MDI1MDAwIDAgMHg0MDA+OworCWludGVycnVwdHMgPSA8R0lDX1NQ
+SSAyMDYgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9IRE1J
+X1BJWEVMPiwKKwkJIDwmbW1zeXMgQ0xLX01NX0hETUlfUExMQ0s+LAorCQkgPCZtbXN5cyBDTEtf
+TU1fSERNSV9BVURJTz4sCisJCSA8Jm1tc3lzIENMS19NTV9IRE1JX1NQRElGPjsKKwljbG9jay1u
+YW1lcyA9ICJwaXhlbCIsICJwbGwiLCAiYmNsayIsICJzcGRpZiI7CisJcGluY3RybC1uYW1lcyA9
+ICJkZWZhdWx0IjsKKwlwaW5jdHJsLTAgPSA8JmhkbWlfcGluPjsKKwlwaHlzID0gPCZoZG1pX3Bo
+eT47CisJcGh5LW5hbWVzID0gImhkbWkiOworCW1lZGlhdGVrLHN5c2Nvbi1oZG1pID0gPCZtbXN5
+cyAweDkwMD47CisKKwlwb3J0cyB7CisJCSNhZGRyZXNzLWNlbGxzID0gPDE+OworCQkjc2l6ZS1j
+ZWxscyA9IDwwPjsKKworCQlwb3J0QDAgeworCQkJcmVnID0gPDA+OworCisJCQloZG1pMF9pbjog
+ZW5kcG9pbnQgeworCQkJCXJlbW90ZS1lbmRwb2ludCA9IDwmZHBpMF9vdXQ+OworCQkJfTsKKwkJ
+fTsKKworCQlwb3J0QDEgeworCQkJcmVnID0gPDE+OworCisJCQloZG1pMF9vdXQ6IGVuZHBvaW50
+IHsKKwkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWlfY29uX2luPjsKKwkJCX07CisJCX07CisJ
+fTsKK307CisKK2Nvbm5lY3RvciB7CisJY29tcGF0aWJsZSA9ICJoZG1pLWNvbm5lY3RvciI7CisJ
+dHlwZSA9ICJhIjsKKwlkZGMtaTJjLWJ1cyA9IDwmaGRtaWRkYzA+OworCisJcG9ydCB7CisJCWhk
+bWlfY29uX2luOiBlbmRwb2ludCB7CisJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkwX291dD47
+CisJCX07CisJfTsKK307Ci0tIAoyLjYuMgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
