@@ -1,85 +1,68 @@
-From: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC/PATCH 3/8] media: platform: mtk-vpu: Support
- Mediatek VPU
-Date: Mon, 30 Nov 2015 19:43:39 +0800
-Message-ID: <1448883819.15961.7.camel@mtksdaap41>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1447764885-23100-4-git-send-email-tiffany.lin@mediatek.com>
-	 <5655DDB4.2080002@linaro.org> <1448626209.7734.26.camel@mtksdaap41>
-	 <56584AC5.7020704@linaro.org>
+From: dawei chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 3/3] thermal: mediatek: Add cpu dynamic power cooling
+ model.
+Date: Mon, 30 Nov 2015 20:16:34 +0800
+Message-ID: <1448885794.29031.78.camel@mtksdaap41>
+References: <1448616727-29367-1-git-send-email-dawei.chien@mediatek.com>
+	 <1448616727-29367-4-git-send-email-dawei.chien@mediatek.com>
+	 <20151130053845.GM3373@ubuntu> <1448875581.29031.14.camel@mtksdaap41>
+	 <20151130093042.GA8556@ubuntu> <1448878884.29031.49.camel@mtksdaap41>
+	 <20151130103422.GA4899@ubuntu>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56584AC5.7020704-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+In-Reply-To: <20151130103422.GA4899@ubuntu>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Punit Agrawal <punit.agrawal-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2015-11-27 at 12:21 +0000, Daniel Thompson wrote:
-> On 27/11/15 12:10, andrew-ct chen wrote:
-> >>> +
-> >>> > >+	memcpy((void *)send_obj->share_buf, buf, len);
-> >>> > >+	send_obj->len = len;
-> >>> > >+	send_obj->id = id;
-> >>> > >+	vpu_cfg_writel(vpu, 0x1, HOST_TO_VPU);
-> >>> > >+
-> >>> > >+	/* Wait until VPU receives the command */
-> >>> > >+	timeout = jiffies + msecs_to_jiffies(IPI_TIMEOUT_MS);
-> >>> > >+	do {
-> >>> > >+		if (time_after(jiffies, timeout)) {
-> >>> > >+			dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
-> >>> > >+			return -EIO;
-> >>> > >+		}
-> >>> > >+	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
-> >> >
-> >> >Do we need to busy wait every time we communicate with the co-processor?
-> >> >Couldn't we put this wait*before*  we write to HOST_TO_VPU above.
-> >> >
-> >> >That way we only spin when there is a need to.
-> >> >
-> > Since the hardware VPU only allows that one client sends the command to
-> > it each time.
-> > We need the wait to make sure VPU accepted the command and cleared the
-> > interrupt and then the next command would be served.
+On Mon, 2015-11-30 at 16:04 +0530, Viresh Kumar wrote:
+> On 30-11-15, 18:21, dawei chien wrote:
+> > As far as I know, user or shell script has the right for using command online/offline cpu.
 > 
-> I understand that the VPU  can only have on message outstanding at once.
+> Right.
 > 
-> I just wonder why we busy wait *after* sending the first command rather 
-> than *before* sending the second one.
-
-No other special reasons. Just send one command and wait until VPU gets
-the command. Then, I think this wait also can be put before we write to
-HOST_TO_VPU.Is this better than former? May I know the reason?
-
-
+> > Either user by console or shell script could make cpu2 online even cpu2 already onlined.
 > 
-> Streamed decode/encode typically ends up being rate controlled by 
-> capture or display meaning that in these cases we don't need to busy 
-> wait at all (because by the time we send the next frame the VPU has 
-> already accepted the previous message).
-
-For now, only one device "encoder" exists, it is true.
-But, we'll have encoder and decoder devices, the decode and encode
-requested to VPU are simultaneous.
-Is this supposed to be removed for this patches and we can add it back
-if the another device(decoder) is ready for review?
-
-
-Andrew
-
-
+> Hey, no. You can't online that is already online. You can write '1' to
+> the file /sys/devices/system/cpu/cpuX/online, but it wouldn't have any
+> affect.
 > 
+> > That could cause of_cpufreq_cooling_register execute many times for the
+> > same cooling device.
 > 
-> Daniel.
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> No.
+You are right. certainly no, it's my misunderstand.
 
+> > "echo 1 > /sys/devices/system/cpu/cpu2/online"
+> > 
+> > With above hotplug command, mtk_cpufreq_ready will register cooling
+> > device again as well, but fail since the cooling device already created,
+> > so we might need not register cooling device again on this case.
+> 
+> Have you tested this yourself ?
+
+Truly sorry for misunderstanding, so we don't need to add error checking
+code there.
+
+(It seems whole of cluster offline, the cooling device unregister as
+well. If just one cpu online, cooling device register as well)
+
+Three months ago, Once I used following command, cooling device can't
+create any more. err message will show once I echo online command.
+However, this bug already fixed in mainline by you. 
+
+echo 0 > /sys/devices/system/cpu/cpu2/online
+echo 0 > /sys/devices/system/cpu/cpu3/online
+echo 1 > /sys/devices/system/cpu/cpu2/online
+
+commit 528464eaa46ae1bd319882e4dd3495802e55b8c4
+Author: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Date:   Thu Jul 23 14:32:32 2015 +0530
+
+    thermal: remove dangling 'weight_attr' device file
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
