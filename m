@@ -1,109 +1,78 @@
-From: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC/PATCH 3/8] media: platform: mtk-vpu: Support
- Mediatek VPU
-Date: Tue, 1 Dec 2015 22:31:12 +0800
-Message-ID: <1448980272.25447.6.camel@mtksdaap41>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1447764885-23100-4-git-send-email-tiffany.lin@mediatek.com>
-	 <5655DDB4.2080002@linaro.org> <1448626209.7734.26.camel@mtksdaap41>
-	 <56584AC5.7020704@linaro.org> <1448883819.15961.7.camel@mtksdaap41>
-	 <CAMTL27G8WRTTGCtU9pXpp1-inyzZE9Jat1SkOiX5HMG5E-eFzw@mail.gmail.com>
+From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency control
+Date: Tue, 1 Dec 2015 23:09:49 +0800
+Message-ID: <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
+References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
+	<CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAMTL27G8WRTTGCtU9pXpp1-inyzZE9Jat1SkOiX5HMG5E-eFzw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Ro
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>, Michael Turquette <mturquette@baylibre.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-11-30 at 15:36 +0000, Daniel Thompson wrote:
-> On 30 November 2015 at 11:43, andrew-ct chen
-> <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> > On Fri, 2015-11-27 at 12:21 +0000, Daniel Thompson wrote:
-> >> On 27/11/15 12:10, andrew-ct chen wrote:
-> >> >>> +
-> >> >>> > >+      memcpy((void *)send_obj->share_buf, buf, len);
-> >> >>> > >+      send_obj->len = len;
-> >> >>> > >+      send_obj->id = id;
-> >> >>> > >+      vpu_cfg_writel(vpu, 0x1, HOST_TO_VPU);
-> >> >>> > >+
-> >> >>> > >+      /* Wait until VPU receives the command */
-> >> >>> > >+      timeout = jiffies + msecs_to_jiffies(IPI_TIMEOUT_MS);
-> >> >>> > >+      do {
-> >> >>> > >+              if (time_after(jiffies, timeout)) {
-> >> >>> > >+                      dev_err(vpu->dev, "vpu_ipi_send: IPI timeout!\n");
-> >> >>> > >+                      return -EIO;
-> >> >>> > >+              }
-> >> >>> > >+      } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
-> >> >> >
-> >> >> >Do we need to busy wait every time we communicate with the co-processor?
-> >> >> >Couldn't we put this wait*before*  we write to HOST_TO_VPU above.
-> >> >> >
-> >> >> >That way we only spin when there is a need to.
-> >> >> >
-> >> > Since the hardware VPU only allows that one client sends the command to
-> >> > it each time.
-> >> > We need the wait to make sure VPU accepted the command and cleared the
-> >> > interrupt and then the next command would be served.
-> >>
-> >> I understand that the VPU  can only have on message outstanding at once.
-> >>
-> >> I just wonder why we busy wait *after* sending the first command rather
-> >> than *before* sending the second one.
-> >
-> > No other special reasons. Just send one command and wait until VPU gets
-> > the command. Then, I think this wait also can be put before we write to
-> > HOST_TO_VPU.Is this better than former? May I know the reason?
-> 
-> Busy waiting is bad; it is a waste of host CPU processor time and/or power.
-> 
-> When the busy wait occurs after queuing then we will busy wait for
-> every command we send.
-> 
-> If busy wait occurs before next queuing then we will wait for a
-> shorter time in total because we have the chance to do something
-> useful on the host before we have to wait.
-> 
+On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> Hi Pi-Cheng and Michael,
+>
+> On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+>> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+>>
+>> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+>> for intermediate clock source switching.
+>
+> It looks like this patch was never picked up.
+> It is required for MT8173 cpufreq.
+>
+> What is the plan to get this one merged?
 
-Got it. Thanks a lot for the explanation.
-I'll put the busy wait before next queuing in next version. 
+Hi Dan,
+Mike is working on a new CCF feature called "coordinated clock rate changes"
+which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
+driver, and I am working with him to port MT8173 clock driver on the new
+feature. So I think that's why this patch was not picked since it will
+be migrated to new implementation once the new feature's ready.
 
-> 
-> >> Streamed decode/encode typically ends up being rate controlled by
-> >> capture or display meaning that in these cases we don't need to busy
-> >> wait at all (because by the time we send the next frame the VPU has
-> >> already accepted the previous message).
-> >
-> > For now, only one device "encoder" exists, it is true.
-> > But, we'll have encoder and decoder devices, the decode and encode
-> > requested to VPU are simultaneous.
-> 
-> Sure, I accept that lock and busy-wait is an appropriate way to ensure
-> safety (assuming the VPU is fairly quick clearing the HOST_TO_VPU
-> flag).
-> 
+@Mike:
+Are you plannig to post those patches on the mailing list ?
+Or is it fine for you to take this first and then I will refine it for
+the new feature later?
 
-The busy wait time is less than 1ms in average.
+Best Regards,
+Pi-Cheng
 
-> 
-> > Is this supposed to be removed for this patches and we can add it back
-> > if the another device(decoder) is ready for review?
-> 
-> No I'm not suggesting that.
-> 
-> I only recommend moving the busy wait *before* end sending of command
-> (for efficiency reasons mentioned above).
-
-Ok. Thanks.
-
-> 
-> 
-> Daniel.
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
+> -Dan
+>
+>>
+>> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+>> ---
+>> Changes in v6:
+>> - Relace __clk_get_num_parents with clk_hw_get_num_parents to reflect
+>>   API change
+>>
+>> Changes in v5:
+>> - Replace __initdata with __initconst to fix compiling error
+>>
+>> Changes in v4:
+>> - Fix some minor issues for v3
+>> - Rebase to the patch that adds 13mhz clock for MT8173[1]
+>>
+>> Changes in v3:
+>> - Rebase to 4.2-rc1
+>> - Fix some issues of v2
+>>
+>> Changes in v2:
+>> - Remove use of .determine_rate callback
+>> ---
+>>  drivers/clk/mediatek/Makefile          |   2 +-
+>>  drivers/clk/mediatek/clk-cpumux.c      | 127 +++++++++++++++++++++++++++++++++
+>>  drivers/clk/mediatek/clk-cpumux.h      |  22 ++++++
+>>  drivers/clk/mediatek/clk-mt8173.c      |  23 ++++++
+>>  include/dt-bindings/clock/mt8173-clk.h |   4 +-
+>>  5 files changed, 176 insertions(+), 2 deletions(-)
+>>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
+>>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+>
+> [snip]
