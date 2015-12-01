@@ -1,558 +1,154 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND RFC/PATCH 6/8] media: platform: mtk-vcodec: Add
- Mediatek V4L2 Video Encoder Driver
-Date: Tue, 1 Dec 2015 18:42:30 +0800
-Message-ID: <1448966550.7534.95.camel@mtksdaap41>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1447764885-23100-7-git-send-email-tiffany.lin@mediatek.com>
-	 <56588622.8060600@linaro.org>	<1448883594.25093.45.camel@mtksdaap41>
-	 <CAMTL27FchgtJZS4YpVge-x+TstnVHmG1aAnaOV32qCU3zMUbAQ@mail.gmail.com>
+From: =?utf-8?B?TGlndW8gWmhhbmcgKOW8oOeri+WbvSk=?=
+	<Liguo.Zhang@mediatek.com>
+Subject: RE: [PATCH v2 2/2] i2c: mediatek: fix i2c multi transfer issue in
+ high speed mode
+Date: Tue, 1 Dec 2015 11:24:18 +0000
+Message-ID: <B92A980A447EF9479F8F2A8FDA9DC1C0BAF4B19E@mtkmbs31n1>
+References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
+ <1447047839-5223-3-git-send-email-liguo.zhang@mediatek.com>
+ <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAMTL27FchgtJZS4YpVge-x+TstnVHmG1aAnaOV32qCU3zMUbAQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Andrew-CT
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-i2c-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, =?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, =?utf-8?B?WHVkb25nIENoZW4gKOmZiOaXreS4nCk=?= <Xudong.Chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?utf-8?B?SnVuIEdhbyAo6auY5L+KKQ==?= <Jun.Gao@mediatek.com>, =?utf-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2015-11-30 at 22:58 +0800, Daniel Thompson wrote:
-> On 30 November 2015 at 11:39, tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >> > diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
-> >> > new file mode 100644
-> >> > index 0000000..c7f7174
-> >> > --- /dev/null
-> >> > +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> >> > @@ -0,0 +1,12 @@
-> >> > +obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk_vcodec_intr.o \
-> >> > +                                  mtk_vcodec_util.o \
-> >> > +                                  mtk_vcodec_enc_drv.o \
-> >> > +                                  mtk_vcodec_enc.o \
-> >> > +                                  mtk_vcodec_enc_pm.o
-> >> > +
-> >> > +obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += common/
-> >> > +
-> >> > +ccflags-y += -I$(srctree)/drivers/media/platform/mtk-vcodec/include \
-> >> > +        -I$(srctree)/drivers/media/platform/mtk-vcodec \
-> >> > +        -I$(srctree)/drivers/media/platform/mtk-vpu
-> >>
-> >> Seems like there's a lot of directories here. Are these files
-> >> (framework, common, vcodec, etc) so unrelated they really need to live
-> >> in separate directories?
-> >>
-> >> Why not just drivers/media/platform/mediatek?
-> > This is because VPU and Vcodec are two different drivers.
-> > Driver in mtk-vpu is for controlling VPU device and provide
-> > communication API to VPU.
-> > Driver in mtk-vcodec is for control different encoder (vp8, h264), it
-> > include v4l2 driver layer, glue layer between encoders and vp8 and h264
-> > encoder.
-> 
-> They may be separate pieces of hardware the drivers for them are very
-> clearly interlinked. This is obvious because the Makefiles are having
-> to set ccflags to pick up the headers of the other drivers.
-> 
-> No other V4L2 driver uses ccflags-y in this manner.
-> 
-Got it.
-We will remove -I from Makefile and put VPU header file in
-include/soc/mediatek
-
-> 
-> >> > diff --git a/drivers/media/platform/mtk-vcodec/common/Makefile b/drivers/media/platform/mtk-vcodec/common/Makefile
-> >> > new file mode 100644
-> >> > index 0000000..477ab80
-> >> > --- /dev/null
-> >> > +++ b/drivers/media/platform/mtk-vcodec/common/Makefile
-> >> > @@ -0,0 +1,8 @@
-> >> > +obj-y += \
-> >> > +    venc_drv_if.o
-> >> > +
-> >> > +ccflags-y += \
-> >> > +    -I$(srctree)/include/ \
-> >> > +    -I$(srctree)/drivers/media/platform/mtk-vcodec \
-> >> > +    -I$(srctree)/drivers/media/platform/mtk-vcodec/include \
-> >> > +    -I$(srctree)/drivers/media/platform/mtk-vpu
-> >>
-> >> As above, this appears to be a directory to hold just one file.
-> >>
-> > Sorry, I didn't get it. Could you explain more?
-> 
-> Just that this is another example of the excessive directory structure.
-> 
-> A directory that contains only one source file is a strong indication
-> that the splitting of the V4L2 implementation into directories is
-> excessive.
-> 
-The directory that contains only one source file is because now we only
-upstream encoder patches. We have decoder patches in future.
-We will remove "common", "include" two directories and put files in
-mtk-vcodec in next version.
-
-> 
-> >>  > diff --git a/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
-> >> b/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
-> >>  > new file mode 100644
-> >>  > index 0000000..9b3f025
-> >>  > --- /dev/null
-> >>  > +++ b/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
-> >>  > @@ -0,0 +1,152 @@
-> >>  > +/*
-> >>  > + * Copyright (c) 2015 MediaTek Inc.
-> >>  > + * Author: Daniel Hsiao <daniel.hsiao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>  > + *         Jungchang Tsao <jungchang.tsao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >>  > + *
-> >>  > + * This program is free software; you can redistribute it and/or
-> >>  > + * modify
-> >>  > + * it under the terms of the GNU General Public License version 2 as
-> >>  > + * published by the Free Software Foundation.
-> >>  > + *
-> >>  > + * This program is distributed in the hope that it will be useful,
-> >>  > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >>  > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >>  > + * GNU General Public License for more details.
-> >>  > + */
-> >>  > +
-> >>  > +#include <linux/interrupt.h>
-> >>  > +#include <linux/kernel.h>
-> >>  > +#include <linux/slab.h>
-> >>  > +
-> >>  > +#include "mtk_vcodec_drv.h"
-> >>  > +#include "mtk_vcodec_enc.h"
-> >>  > +#include "mtk_vcodec_pm.h"
-> >>  > +#include "mtk_vcodec_util.h"
-> >>  > +#include "mtk_vpu_core.h"
-> >>  > +
-> >>  > +#include "venc_drv_if.h"
-> >>  > +#include "venc_drv_base.h"
-> >>  > +
-> >>  > +
-> >>  > +int venc_if_create(void *ctx, unsigned int fourcc, unsigned long
-> >> *handle)
-> >>  > +{
-> >>  > +  struct venc_handle *h;
-> >>  > +  char str[10];
-> >>  > +
-> >>  > +  mtk_vcodec_fmt2str(fourcc, str);
-> >>  > +
-> >>  > +  h = kzalloc(sizeof(*h), GFP_KERNEL);
-> >>  > +  if (!h)
-> >>  > +          return -ENOMEM;
-> >>  > +
-> >>  > +  h->fourcc = fourcc;
-> >>  > +  h->ctx = ctx;
-> >>  > +  mtk_vcodec_debug(h, "fmt = %s handle = %p", str, h);
-> >>  > +
-> >>  > +  switch (fourcc) {
-> >>  > +  default:
-> >>  > +          mtk_vcodec_err(h, "invalid format %s", str);
-> >>  > +          goto err_out;
-> >>  > +  }
-> >>  > +
-> >>  > +  *handle = (unsigned long)h;
-> >>  > +  return 0;
-> >>  > +
-> >>  > +err_out:
-> >>  > +  kfree(h);
-> >>  > +  return -EINVAL;
-> >>  > +}
-> >>  > +
-> >>  > +int venc_if_init(unsigned long handle)
-> >>  > +{
-> >>  > +  int ret = 0;
-> >>  > +  struct venc_handle *h = (struct venc_handle *)handle;
-> >>  > +
-> >>  > +  mtk_vcodec_debug_enter(h);
-> >>  > +
-> >>  > +  mtk_venc_lock(h->ctx);
-> >>  > +  mtk_vcodec_enc_clock_on();
-> >>  > +  vpu_enable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
-> >>  > +  ret = h->enc_if->init(h->ctx, (unsigned long *)&h->drv_handle);
-> >>  > +  vpu_disable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
-> >>  > +  mtk_vcodec_enc_clock_off();
-> >>  > +  mtk_venc_unlock(h->ctx);
-> >>  > +
-> >>  > +  return ret;
-> >>  > +}
-> >>
-> >> To me this looks more like an obfuscation layer rather than a
-> >> abstraction layer. I don't understand why we need to hide things from
-> >> the V4L2 implementation that this code forms part of.
-> >>
-> >> More importantly, if this code was included somewhere where it could be
-> >> properly integrated with the device model you might be able to use the
-> >> pm_runtime system to avoid this sort of "heroics" to manage the clocks
-> >> anyway.
-> >>
-> > We want to abstract common part from encoder driver.
-> > Every encoder driver follow same calling flow and only need to take care
-> > about how to communicate with vpu to encode specific format.
-> > Encoder driver do not need to take care clock and multiple instance
-> > issue.
-> 
-> Looking at each of those stages:
-> 
-> mtk_venc_lock():
-> Why isn't one of the existing V4L2 locking strategies ok for you?
-> 
-We only has one encoder hw.
-To support multiple encode instances.
-When one encoder ctx access encoder hw, it need to get lock first.
-
-> mtk_vcodec_enc_clock_on():
-> This does seem like something a sub-driver *should* be doing for itself
-This is for enabling encoder hw related clock.
-To support multiple instances, one encode ctx must get hw lock first
-then clock on/off hw relate clock.
-
-> vpu_enable_clock():
-> Why can't the VPU driver manage this internally using pm_runtime?
-> 
-Our VPU do not have power domain.
-We will remove VPU clock on/off and let vpu control it in next version.
-
-> 
-> That is why I described this as an obfuscation layer. It is collecting
-> a bunch of stuff that can be handled using the kernel driver model and
-> clumping them together in a special middle layer.
-> 
-We do use kernel driver model, but we put it in
-mtk_vcodec_enc_clock_on/mtk_vcodec_enc_clock_off.
-Every sub-driver has no need to write the same code.
-And once clock configuration change or porting to other chips, we don't
-need to change sub-driver one-by-one, just change abstract layer.
-
-> 
-> >> > +/**
-> >> > + * enum mtk_instance_type - The type of an MTK Vcodec instance.
-> >> > + */
-> >> > +enum mtk_instance_type {
-> >> > +   MTK_INST_DECODER                = 0,
-> >> > +   MTK_INST_ENCODER                = 1,
-> >> > +};
-> >> > +
-> >> > +/**
-> >> > + * enum mtk_instance_state - The state of an MTK Vcodec instance.
-> >> > + * @MTK_STATE_FREE - default state when instance create
-> >> > + * @MTK_STATE_CREATE - vdec instance is create
-> >> > + * @MTK_STATE_INIT - vdec instance is init
-> >> > + * @MTK_STATE_CONFIG - reserved for encoder
-> >> > + * @MTK_STATE_HEADER - vdec had sps/pps header parsed
-> >> > + * @MTK_STATE_RUNNING - vdec is decoding
-> >> > + * @MTK_STATE_FLUSH - vdec is flushing
-> >> > + * @MTK_STATE_RES_CHANGE - vdec detect resolution change
-> >> > + * @MTK_STATE_FINISH - ctx instance is stopped streaming
-> >> > + * @MTK_STATE_DEINIT - before release ctx instance
-> >> > + * @MTK_STATE_ERROR - vdec has something wrong
-> >> > + * @MTK_STATE_ABORT - abort work in working thread
-> >> > + */
-> >> > +enum mtk_instance_state {
-> >> > +   MTK_STATE_FREE          = 0,
-> >> > +   MTK_STATE_CREATE        = (1 << 0),
-> >> > +   MTK_STATE_INIT          = (1 << 1),
-> >> > +   MTK_STATE_CONFIG        = (1 << 2),
-> >> > +   MTK_STATE_HEADER        = (1 << 3),
-> >> > +   MTK_STATE_RUNNING       = (1 << 4),
-> >> > +   MTK_STATE_FLUSH         = (1 << 5),
-> >> > +   MTK_STATE_RES_CHANGE    = (1 << 6),
-> >> > +   MTK_STATE_FINISH        = (1 << 7),
-> >> > +   MTK_STATE_DEINIT        = (1 << 8),
-> >> > +   MTK_STATE_ERROR         = (1 << 9),
-> >> > +   MTK_STATE_ABORT         = (1 << 10),
-> >>
-> >> This looks like it started as a state machine and somehow turned into
-> >> flags, resulting in a state machine with 2048 states or, to give it a
-> >> different name, a debugging nightmare.
-> >>
-> > It's define some state happened rather than state machine.
-> > Though some states are for v4l2 decoder driver and not used in encoder
-> > driver.
-> 
-> Saying the flags track when "something happened" doesn't stop this
-> from being an extremely complex (and poorly documented) state machine.
-> 
-> There are way too many states compared to what is needed to implement
-> V4L2 correctly. To make clear why I am raising this point: with the
-> current driver state management code it is close to impossible to
-> properly review the error paths in this driver. The cause of error and
-> the recovery after error are too decoupled.
-Some state defines are shared with decoder that we will upstream in
-future.
-We will review if each state is really needed and reduce state that
-encoder need in next version.
-
-> 
-> >> If the start streaming operation implemented cleanup-on-error properly
-> >> then there would only be two useful states: Started and stopped. Even
-> >> the "sticky" error behavior looks unnecessary to me (meaning we don't
-> >> need to track its state).
-> >>
-> > We cannot guaranteed that IOCTLs called from the user space follow
-> > required sequence.
-> > We need states to know if our driver could accept IOCTL command.
-> 
-> I believe that knowing whether the streaming is started or stopped
-> (e.g. two states) is sufficient for a driver to correctly handle
-> abitrary ioctls from userspace and even then, the core code tracks
-> this state for you so there's no need for you do it.
-> 
-> The queue/dequeue ioctls succeed or fail based on the length of the
-> queue (i.e. is the buffer queue overflowing or not) and have no need
-> to check the streaming state.
-
-> If you are absolutely sure that the other states are needed then
-> please provide an example of an ioctl() sequence where the additional
-> state is needed.
-> 
-I know your point that we have too many state changes in start_streaming
-and stop_streaming function.
-We will refine these two functions in next version.
-
-For the example, we need MTK_STATE_HEADER state, to make sure before
-encode start, driver already get information to set encode parameters.
-We need MTK_STATE_ABORT to inform encoder thread (mtk_venc_worker) that
-stop encodeing job from stopped ctx instance.
-When user space qbuf, we need to make sure everything is ready to sent
-buf to encode.
-
-
-> 
-> >> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> >> > new file mode 100644
-> >> > index 0000000..8e1b6f0
-> >> > --- /dev/null
-> >> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> >> > @@ -0,0 +1,1773 @@
-> >> > [...]
-> >> > +static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
-> >> > +{
-> >> > +   struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(q);
-> >> > +   struct v4l2_device *v4l2_dev = &ctx->dev->v4l2_dev;
-> >> > +   int ret;
-> >> > +#if MTK_V4L2_BENCHMARK
-> >> > +   struct timeval begin, end;
-> >> > +
-> >> > +   do_gettimeofday(&begin);
-> >> > +#endif
-> >> > +
-> >> > +   if (!(vb2_start_streaming_called(&ctx->m2m_ctx->out_q_ctx.q) &
-> >> > +         vb2_start_streaming_called(&ctx->m2m_ctx->cap_q_ctx.q))) {
-> >> > +           mtk_v4l2_debug(1, "[%d]-> out=%d cap=%d",
-> >> > +            ctx->idx,
-> >> > +            vb2_start_streaming_called(&ctx->m2m_ctx->out_q_ctx.q),
-> >> > +            vb2_start_streaming_called(&ctx->m2m_ctx->cap_q_ctx.q));
-> >> > +           return 0;
-> >> > +   }
-> >> > +
-> >> > +   if ((ctx->state & (MTK_STATE_ERROR | MTK_STATE_ABORT)))
-> >> > +           return -EINVAL;
-> >>
-> >> This is the sort of thing I mean.
-> >>
-> >> This sticky error behaviour means that every subsequent call to
-> >> vb2ops_venc_start_streaming() will fail. Note also that the user will
-> >> never try to stop streaming (which can clear the error state) because
-> >> according to the return code it got when it tried to start streaming we
-> >> never actually started.
-> >>
-> >> This is what I mean about having two many states. From the user's
-> >> perspective there are only two states. There needs to be a good reason
-> >> for the driver to manage so many extra secret states internally.
-> >>
-> > For my understanding, that vb2ops_venc_start_streaming cannot fail.
-> 
-> I disagree: See
-> http://lxr.free-electrons.com/source/include/media/videobuf2-core.h#L288
-> 
-> How did you confirm your understanding before replying?
-> 
-Sorry that I did not explain well.
-What I want to said about "cannot fail" is that once start streaming
-fail, all subsequent calls will fail.
-The only recover step is close this instance and open instance again.
-
-> When this function returns an error the simplest (and easiest to
-> review) error recovery strategy is simply to undo any actions which
-> have already been performed (like resource allocation) and return an
-> error code.#
-> 
-> There is no need for the driver to remember that it has already
-> reported an error. If the userspace tries again then its OK for us to
-> fail again.
-> 
-Our original though is that when start_streaming fail, user space will
-close this instance. And if user space called start_streaming again, it
-just return fail.
-I got what you means now, we will try to reduce state changes and remove
-state check in start_streaming/stop_streaming in next version.
-
-> 
-> > If it fail, user space will close and release this encoder instance
-> > (fd).
-> 
-> The userspace is not required to do this and the driver must not
-> assume that it will. It could attempt some kind of reconfiguration and
-> retry.
-> 
-> 
-> > We really need to state driver to see what it should do when receive
-> > current IOCTL.
-> 
-> I think you'll find that the v4l2-core does this for you.
-> 
-We will review each state and make sure if it really need for encoder in
-next version.
-> 
-> >> > +
-> >> > +   if (ctx->state == MTK_STATE_FREE) {
-> >> > +           ret = venc_if_create(ctx,
-> >> > +                                ctx->q_data[MTK_Q_DATA_DST].fmt->fourcc,
-> >> > +                                &ctx->h_enc);
-> >> > +
-> >> > +           if (ret != 0) {
-> >> > +                   ctx->state |= MTK_STATE_ERROR;
-> >> > +                   v4l2_err(v4l2_dev, "invalid codec type=%x\n",
-> >> > +                            ctx->q_data[MTK_Q_DATA_DST].fmt->fourcc);
-> >> > +                   v4l2_err(v4l2_dev, "venc_if_create failed=%d\n", ret);
-> >> > +                   return -EINVAL;
-> >> > +           }
-> >> > +
-> >> > +           if (ctx->q_data[MTK_Q_DATA_DST].fmt->fourcc ==
-> >> > +                   V4L2_PIX_FMT_H264)
-> >> > +                   ctx->hdr = 1;
-> >> > +
-> >> > +           ctx->state |= MTK_STATE_CREATE;
-> >> > +   }
-> >> > +
-> >> > +   if ((ctx->state & MTK_STATE_CREATE) && !(ctx->state & MTK_STATE_INIT)) {
-> >> > +           ret = venc_if_init(ctx->h_enc);
-> >> > +           if (ret != 0) {
-> >> > +                   ctx->state |= MTK_STATE_ERROR;
-> >> > +                   v4l2_err(v4l2_dev, "venc_if_init failed=%d\n", ret);
-> >> > +                   return -EINVAL;
-> >>
-> >> This error path leaves the encoder partially constructed and relies on
-> >> something else to tidy things up. It would be much better to tidy things
-> >> up from this function and
-> >>
-> >> Also I don't think both venc_if_create and venc_if_init are needed. They
-> >> are only ever called one after the other and thus they only serve to
-> >> complicate the error handling code.
-> >>
-> > venc_if_create is for creating instance in arm side and base on encode
-> > format hook corresponding encoder driver interface.
-> > venc_if_init is trying to init encoder instance in VPU side.
-> > Failures from two functions should have different error handling.
-> > We will enhance this part in next version.
-> 
-> As mentioned above, I'm very uncomfortable about this API in its
-> entirety and think it should be reconsidered.
-> 
-> So whilst I disagree here (the caller does not have any significant
-> difference in error handling so using -ENOMEM/-EINVAL/-EIO should be
-> quite sufficient to distringuish between errors) I rather you spent
-> some time trying to eliminate this API.
-I got it. We will merge venc_if_create and venc_if_init in next
-version. 
-
-> 
-> >> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-> >> > new file mode 100644
-> >> > index 0000000..a8e683a
-> >> > --- /dev/null
-> >> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-> >> > @@ -0,0 +1,66 @@
-> >> > +/*
-> >> > +* Copyright (c) 2015 MediaTek Inc.
-> >> > +* Author: PC Chen <pc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> > +*         Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >> > +*
-> >> > +* This program is free software; you can redistribute it and/or modify
-> >> > +* it under the terms of the GNU General Public License version 2 as
-> >> > +* published by the Free Software Foundation.
-> >> > +*
-> >> > +* This program is distributed in the hope that it will be useful,
-> >> > +* but WITHOUT ANY WARRANTY; without even the implied warranty of
-> >> > +* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> >> > +* GNU General Public License for more details.
-> >> > +*/
-> >> > +
-> >> > +#ifndef _MTK_VCODEC_UTIL_H_
-> >> > +#define _MTK_VCODEC_UTIL_H_
-> >> > +
-> >> > +#include <linux/types.h>
-> >> > +#include <linux/dma-direction.h>
-> >> > +
-> >> > +struct mtk_vcodec_mem {
-> >> > +   size_t size;
-> >> > +   void *va;
-> >> > +   dma_addr_t dma_addr;
-> >> > +};
-> >> > +
-> >> > +extern int mtk_v4l2_dbg_level;
-> >> > +extern bool mtk_vcodec_dbg;
-> >> > +
-> >> > +#define mtk_v4l2_debug(level, fmt, args...)                                 \
-> >> > +   do {                                                             \
-> >> > +           if (mtk_v4l2_dbg_level >= level)                         \
-> >> > +                   pr_info("[MTK_V4L2] level=%d %s(),%d: " fmt "\n",\
-> >> > +                           level, __func__, __LINE__, ##args);      \
-> >> > +   } while (0)
-> >>  > +
-> >> > +#define mtk_v4l2_err(fmt, args...)                \
-> >> > +   pr_err("[MTK_V4L2][ERROR] %s:%d: " fmt "\n", __func__, __LINE__, \
-> >> > +          ##args)
-> >>
-> >> Obviously the code should be structured to make use of dev_dbg/dev_err
-> >> possible.
-> >>
-> >> However where this won't work do you really need special macros for
-> >> this. Assuming your error messages are well written 'git grep' and the
-> >> following should be enough:
-> >>
-> >> #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
-> >>
-> > Thanks.
-> > For pr_err case, we will try to use "#define pr_fmt(fmt) KBUILD_MODNAME
-> > ": " fmt" in next version.
-> > For pr_info case, we still need debug level to control output messages.
-> 
-> To be honest I expect new code to be able to rely on -DDEBUG and/or
-> CONFIG_DYNAMIC_DEBUG.
-> 
-> I really can't see why a single V4L2 driver needs to hand roll a six
-> level debug message framework. If it really, really, really needs it
-> then it should at least have the good manners to copy the prior art in
-> the existing V4L2 drivers.
-> 
-We will add -DDEBUG in next version.
-In development stage, we need it when debugging.
-> 
-> 
-> >
-> >>
-> >> > +#define mtk_v4l2_debug_enter()  mtk_v4l2_debug(5, "+\n")
-> >> > +#define mtk_v4l2_debug_leave()  mtk_v4l2_debug(5, "-\n")
-> >>
-> >> Remove these. If you care about function entry and exit for debugging
-> >> you should be able to use ftrace.
-> >>
-> > I am not familiar with ftrace.
-> > What if we only want to trace v4l2 video encoder driver called flow not
-> > called stack? And only for functions we are interested not all
-> > functions.
-> > I will check if it is convenience for us using ftrace.
-> 
-> It is find for ftrace to only track a subset of functions.
-> 
-> 
-> Daniel.
-
-best regards,
-Tiffany
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+RGVhciBEYW5pZWwsDQoNCjEuIEkgd2lsbCByZW5hbWUgIlRSQU4iICYgIlRSQU5BQyIgJiAiSTJD
+X1RSQU5fREVGQVVMVF9WQUxVRSIgJiAiSTJDX1RSQU5fREVGQVVMVF9WQUxVRSIuDQoNCjIuIEhv
+dyBkb2VzIHRoZSBoYXJkd2FyZSBrbm93IHRoYXQgdGhpcyB0cmFuc2FjdGlvbiBzaG91bGQgYmUg
+YSAibWFzdGVyIGNvZGUiPw0KV2hlbiB3ZSBzZXQgaTJjIHNwZWVkID4gNDAwSyAsIHRoZSBoYXJk
+d2FyZSB3aWxsIHNlbmQgbWFzdGVyIGNvZGUuIFdlIGhhdmUgYSByZWdpc3RlciB0byBjb25maWd1
+cmUgbWFzdGVyIGNvZGXvvIxhbmQgdXN1YWxseSB3ZSB1c2UgdGhlIGRlZmF1bHQgdmFsdWUgIjAw
+MDAxMDAwIi4NCg0KSG93IGRvZXMgdGhlIGhhcmR3YXJlIGtub3cgd2hhdCByYXRlIHRvIHVzZT8N
+ClRoZSBpMmMgc3BlZWQgaXMgZGVmaW5lZCBpbiBkdHMsIGFuZCB3ZSB3aWxsIHNldCB0aGUgaTJj
+IHNwZWVkIGluIGkyYyByZWdpc3Rlciwgc28gSFcgd2lsbCBrbm93IHRoZSByYXRlIHRvIHVzZS4N
+Cg0KV2hlbiBzZW5kaW5nIHRoZSBtYXN0ZXIgY29kZSwgYXJiaXRyYXRpb24gaXMgc3VwcG9zZWQg
+dG8gb2NjdXIsIHN1Y2ggdGhhdCBvbmx5IG9uZSB3aW5uaW5nIG1hc3RlciBjYW4gcHJvY2VlZCB3
+aXRoIHRoZSBmb2xsb3dpbmcgaGlnaCBzcGVlZCB0cmFuc2FjdGlvbi4NCldoZXJlIGRvIHlvdSBj
+aGVjayB0aGF0IHlvdSB3b24gdGhpcyBhcmJpdHJhdGlvbj8NCk91ciBpMmMgZHJpdmVyIG5vdyBv
+bmx5IHN1cHBvcnQgb25lIG1hc3Rlci4NCg0KMy4gSSB3aWxsIGRlbGV0ZSB0aGUgY29tcGxldGlv
+bl9kb25lKCkgZnVuY3Rpb24uDQoNCjQuIERvbid0IHdlIG5lZWQgdG8gc2VuZCB0aGUgbWFzdGVy
+IGNvZGUgZm9yICpldmVyeSogSFMgdHJhbnNhY3Rpb24sIG5vdCBqdXN0ICJhdXRvX3Jlc3RhcnQi
+Pw0KV2hlbiB3ZSBkb24ndCB1c2UgYXV0byByZXN0YXJ0LCB3ZSBhbHNvIG5lZWQgdG8gc2VuZCB0
+aGUgbWFzdGVyIGNvZGUsIHRoZSBtYXN0ZXIgY29kZSBpcyBzZW50IGJ5IEhXIGF1dG9tYXRpY2Fs
+bHkuDQpJIGFtIGltcHJvdmluZyB0aGUgbWFzdGVyIGNvZGUgc2VjdGlvbiB3aGVuIHVzZSBhdXRv
+IHJlc3RhcnQsIGFuZCB0aGlzIHdpbGwgYmUgcmVsZWFzZWQgaW4gdGhlIG5leHQgcGF0Y2guDQoN
+CiI0MDAwMDAiID0+IFlvdSBhbHJlYWR5IGhhdmUgYSBtYWNybyBmb3IgdGhpczogTUFYX0ZTX01P
+REVfU1BFRUQNCg0KWWVzLCBJIHdpbGwgdXNlIE1BWF9GU19NT0RFX1NQRUVELg0KDQpUaGFua3Mh
+DQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBkamt1cnR6QGdvb2dsZS5jb20g
+W21haWx0bzpkamt1cnR6QGdvb2dsZS5jb21dIE9uIEJlaGFsZiBPZiBEYW5pZWwgS3VydHoNClNl
+bnQ6IDIwMTXlubQxMeaciDE05pelIDIyOjM5DQpUbzogTGlndW8gWmhhbmcgKOW8oOeri+WbvSkN
+CkNjOiBXb2xmcmFtIFNhbmc7IHNydl9oZXVwc3RyZWFtOyBNYXR0aGlhcyBCcnVnZ2VyOyBFZGRp
+ZSBIdWFuZyAo6buD5pm65YKRKTsgWHVkb25nIENoZW4gKOmZiOaXreS4nCk7IFNhc2NoYSBIYXVl
+cjsgTGludXggSTJDOyBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyBsaW51eC1hcm0ta2Vy
+bmVsQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
+cmcNClN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMi8yXSBpMmM6IG1lZGlhdGVrOiBmaXggaTJjIG11
+bHRpIHRyYW5zZmVyIGlzc3VlIGluIGhpZ2ggc3BlZWQgbW9kZQ0KDQpPbiBNb24sIE5vdiA5LCAy
+MDE1IGF0IDE6NDMgUE0sIExpZ3VvIFpoYW5nIDxsaWd1by56aGFuZ0BtZWRpYXRlay5jb20+IHdy
+b3RlOg0KPiBGb3IgcGxhdGZvcm0gd2l0aCBhdXRvIHJlc3RhcnQgc3VwcG9ydCwgd2hlbiBkb2lu
+ZyBpMmMgbXVsdGkgdHJhbnNmZXIgDQo+IGluIGhpZ2ggc3BlZWQsIGZvciBleGFtcGxlLCBkb2lu
+ZyB3cml0ZS10aGVuLXJlYWQgdHJhbnNmZXIsIHRoZSBtYXN0ZXIgDQo+IGNvZGUgd2lsbCBvY2N1
+cHkgdGhlIGZpcnN0IHRyYW5zZmVyLCBhbmQgdGhlIHNlY29uZCB0cmFuc2ZlciB3aWxsIGJlIA0K
+PiB0aGUgcmVhZCB0cmFuc2ZlciwgdGhlIHdyaXRlIHRyYW5zZmVyIHdpbGwgYmUgZGlzY2FyZGVk
+LiBTbyB3ZSBzaG91bGQgDQo+IGZpcnN0IHNlbmQgdGhlIG1hc3RlciBjb2RlLCBhbmQgdGhlbiBz
+dGFydCBpMmMgbXVsdGkgdHJhbnNmZXIuDQo+DQo+IFNpZ25lZC1vZmYtYnk6IExpZ3VvIFpoYW5n
+IDxsaWd1by56aGFuZ0BtZWRpYXRlay5jb20+DQo+IFJldmlld2VkLWJ5OiBFZGRpZSBIdWFuZyA8
+ZWRkaWUuaHVhbmdAbWVkaWF0ZWsuY29tPg0KPiAtLS0NCj4gIGRyaXZlcnMvaTJjL2J1c3Nlcy9p
+MmMtbXQ2NXh4LmMgfCA0NSANCj4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysNCj4gIDEgZmlsZSBjaGFuZ2VkLCA0NSBpbnNlcnRpb25zKCspDQo+DQo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLW10NjV4eC5jIA0KPiBiL2RyaXZlcnMvaTJjL2J1
+c3Nlcy9pMmMtbXQ2NXh4LmMgaW5kZXggZGM0YWFjNi4uMjQ5ZGY4NiAxMDA2NDQNCj4gLS0tIGEv
+ZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDY1eHguYw0KPiArKysgYi9kcml2ZXJzL2kyYy9idXNz
+ZXMvaTJjLW10NjV4eC5jDQo+IEBAIC01Myw2ICs1Myw4IEBADQo+ICAjZGVmaW5lIEkyQ19GU19U
+SU1FX0lOSVRfVkFMVUUgICAgICAgICAweDEzMDMNCj4gICNkZWZpbmUgSTJDX1dSUkRfVFJBTkFD
+X1ZBTFVFICAgICAgICAgIDB4MDAwMg0KPiAgI2RlZmluZSBJMkNfUkRfVFJBTkFDX1ZBTFVFICAg
+ICAgICAgICAgMHgwMDAxDQo+ICsjZGVmaW5lIEkyQ19UUkFOX0RFRkFVTFRfVkFMVUUgICAgICAg
+ICAweDAwMDENCj4gKyNkZWZpbmUgSTJDX1RSQU5fREVGQVVMVF9WQUxVRSAgICAgICAweDAwMDEN
+Cg0KIlRSQU4iIGFuZCAiVFJBTkFDIiBhcmUgbm90IGdvb2QgbmFtZXM7IHRoaXMgc2hvdWxkIGJl
+ICJUUkFOU0ZFUl9MRU4iDQphbmQgIlRSQU5TQUMiLCBiYXNlZCBvbiB0aGUgbmFtZXMgb2YgdGhl
+IHJlZ2lzdGVycyB0byB3aGljaCB5b3Ugd3JpdGUgdGhlc2UgY29uc3RhbnRzLg0KDQpGdXJ0aGVy
+bW9yZSwgdGhlc2UgYXJlIG5vdCAiZGVmYXVsdCIgdmFsdWVzLCB0aGV5IGFyZSB0aGUgdHJhbnNm
+ZXIgbGVuZ3RoIGFuZCBudW1iZXIgb2YgdHJhbnNhY3Rpb25zIGZvciBzZW5kaW5nIHRoZSAibWFz
+dGVyIGNvZGUiLCBzbzoNCg0KI2RlZmluZSBJMkNfVFJBTlNGRVJfTEVOX01BU1RFUl9DT0RFICAg
+ICAgICAgMHgwMDAxDQojZGVmaW5lIEkyQ19UUkFOU0FDX0xFTl9NQVNURVJfQ09ERSAgICAgICAw
+eDAwMDENCg0KU2ltaWxhcmx5LCBJIHRoaW5rIHRoZSAiVFJBTkFDIiBpbiBJMkNfV1JSRF9UUkFO
+QUNfVkFMVUUgYW5kIEkyQ19SRF9UUkFOQUNfVkFMVUUgc2hvdWxkIGFsc28gYmUgVFJBTlNBQy4N
+Cg0KPg0KPiAgI2RlZmluZSBJMkNfRE1BX0NPTl9UWCAgICAgICAgICAgICAgICAgMHgwMDAwDQo+
+ICAjZGVmaW5lIEkyQ19ETUFfQ09OX1JYICAgICAgICAgICAgICAgICAweDAwMDENCj4gQEAgLTM2
+NSw2ICszNjcsNDMgQEAgc3RhdGljIGludCBtdGtfaTJjX3NldF9zcGVlZChzdHJ1Y3QgbXRrX2ky
+YyAqaTJjLCB1bnNpZ25lZCBpbnQgcGFyZW50X2NsaywNCj4gICAgICAgICByZXR1cm4gMDsNCj4g
+IH0NCj4NCj4gK3N0YXRpYyBpbnQgbXRrX2kyY19zZW5kX21hc3Rlcl9jb2RlKHN0cnVjdCBtdGtf
+aTJjICppMmMpIHsNCj4gKyAgICAgICBpbnQgcmV0ID0gMDsNCj4gKw0KPiArICAgICAgIHJlaW5p
+dF9jb21wbGV0aW9uKCZpMmMtPm1zZ19jb21wbGV0ZSk7DQo+ICsNCj4gKyAgICAgICB3cml0ZXco
+STJDX0NPTlRST0xfUlMgfCBJMkNfQ09OVFJPTF9BQ0tFUlJfREVUX0VOIHwNCj4gKyAgICAgICAg
+ICAgICAgSTJDX0NPTlRST0xfQ0xLX0VYVF9FTiB8IEkyQ19DT05UUk9MX0RNQV9FTiwNCj4gKyAg
+ICAgICAgICAgICAgaTJjLT5iYXNlICsgT0ZGU0VUX0NPTlRST0wpOw0KPiArDQo+ICsgICAgICAg
+LyogQ2xlYXIgaW50ZXJydXB0IHN0YXR1cyAqLw0KPiArICAgICAgIHdyaXRldyhJMkNfUlNfVFJB
+TlNGRVIgfCBJMkNfVFJBTlNBQ19DT01QIHwgSTJDX0hTX05BQ0tFUlIgfCBJMkNfQUNLRVJSLA0K
+PiArICAgICAgICAgICAgICBpMmMtPmJhc2UgKyBPRkZTRVRfSU5UUl9TVEFUKTsNCj4gKw0KPiAr
+ICAgICAgIC8qIEVuYWJsZSBpbnRlcnJ1cHQgKi8NCj4gKyAgICAgICB3cml0ZXcoSTJDX1JTX1RS
+QU5TRkVSIHwgSTJDX1RSQU5TQUNfQ09NUCwgaTJjLT5iYXNlICsNCj4gKyAgICAgICAgICAgICAg
+T0ZGU0VUX0lOVFJfTUFTSyk7DQo+ICsNCj4gKyAgICAgICB3cml0ZXcoSTJDX1RSQU5fREVGQVVM
+VF9WQUxVRSwgaTJjLT5iYXNlICsgT0ZGU0VUX1RSQU5TRkVSX0xFTik7DQo+ICsgICAgICAgd3Jp
+dGV3KEkyQ19UUkFOQUNfREVGQVVMVF9WQUxVRSwgaTJjLT5iYXNlICsgDQo+ICsgT0ZGU0VUX1RS
+QU5TQUNfTEVOKTsNCj4gKw0KPiArICAgICAgIHdyaXRldyhJMkNfVFJBTlNBQ19TVEFSVCB8IEky
+Q19SU19NVUxfQ05GRywgaTJjLT5iYXNlICsgDQo+ICsgT0ZGU0VUX1NUQVJUKTsNCj4gKw0KPiAr
+ICAgICAgIHJldCA9IHdhaXRfZm9yX2NvbXBsZXRpb25fdGltZW91dCgmaTJjLT5tc2dfY29tcGxl
+dGUsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGkyYy0+YWRh
+cC50aW1lb3V0KTsNCg0KSG93IGRvZXMgdGhlIGhhcmR3YXJlIGtub3cgdGhhdCB0aGlzIHRyYW5z
+YWN0aW9uIHNob3VsZCBiZSBhICJtYXN0ZXIgY29kZSI/DQpEbyB5b3UgaGF2ZSB0byB0ZWxsIHRo
+ZSBoYXJkd2FyZSB3aGF0IHZhbHVlICgnMDAwMDFYWFgnKSB0byB1c2UgYXMgdGhlIG1hc3RlciBj
+b2RlPw0KVGhlIE1hc3RlciBDb2RlIG11c3QgYmUgc2VudCBhdCA8PSA0MDAga0h6LCBub3QgdGhl
+IHRhcmdldCBjbG9jay4gIEhvdyBkb2VzIHRoZSBoYXJkd2FyZSBrbm93IHdoYXQgcmF0ZSB0byB1
+c2U/DQpXaGVuIHNlbmRpbmcgdGhlIG1hc3RlciBjb2RlLCBhcmJpdHJhdGlvbiBpcyBzdXBwb3Nl
+ZCB0byBvY2N1ciwgc3VjaCB0aGF0IG9ubHkgb25lIHdpbm5pbmcgbWFzdGVyIGNhbiBwcm9jZWVk
+IHdpdGggdGhlIGZvbGxvd2luZyBoaWdoIHNwZWVkIHRyYW5zYWN0aW9uLg0KV2hlcmUgZG8geW91
+IGNoZWNrIHRoYXQgeW91IHdvbiB0aGlzIGFyYml0cmF0aW9uPw0KSWYgdGhpcyBpcyBub3QgaW1w
+bGVtZW50ZWQsIGFkZGluZyBhICJUT0RPIiB3b3VsZCBiZSBoZWxwZnVsLg0KDQo+ICsNCj4gKyAg
+ICAgICBjb21wbGV0aW9uX2RvbmUoJmkyYy0+bXNnX2NvbXBsZXRlKTsNCg0KVGhpcyBjb21wbGV0
+aW9uX2RvbmUoKSBpcyBvbmx5IHVzZWZ1bCBpZiB5b3UgY2hlY2sgdGhlIHJldHVybiB2YWx1ZS4N
+CllvdSBzaG91bGQgY2hlY2sgaXQgdG9vLCBzaW5jZSB3ZSBzaG91bGQgb25seSBjaGVjayBmb3Ig
+dGltZW91dCBpZiB0aGUgbWVzc2FnZSBoYXNuJ3QgY29tcGxldGVkLg0KDQo+ICsNCj4gKyAgICAg
+ICBpZiAocmV0ID09IDApIHsNCj4gKyAgICAgICAgICAgICAgIGRldl9kYmcoaTJjLT5kZXYsICJz
+ZW5kIG1hc3RlciBjb2RlIHRpbWVvdXQuXG4iKTsNCj4gKyAgICAgICAgICAgICAgIG10a19pMmNf
+aW5pdF9odyhpMmMpOw0KPiArICAgICAgICAgICAgICAgcmV0dXJuIC1FVElNRURPVVQ7DQo+ICsg
+ICAgICAgfQ0KPiArDQo+ICsgICAgICAgcmV0dXJuIDA7DQo+ICt9DQo+ICsNCj4gIHN0YXRpYyBp
+bnQgbXRrX2kyY19kb190cmFuc2ZlcihzdHJ1Y3QgbXRrX2kyYyAqaTJjLCBzdHJ1Y3QgaTJjX21z
+ZyAqbXNncywNCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGludCBudW0sIGludCBs
+ZWZ0X251bSkgIHsgQEAgLTUzOSw2IA0KPiArNTc4LDEyIEBAIHN0YXRpYyBpbnQgbXRrX2kyY190
+cmFuc2ZlcihzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmFkYXAsDQo+ICAgICAgICAgICAgICAgICB9DQo+
+ICAgICAgICAgfQ0KPg0KPiArICAgICAgIGlmIChpMmMtPmF1dG9fcmVzdGFydCAmJiBpMmMtPnNw
+ZWVkX2h6ID4gNDAwMDAwKSB7DQoNCkRvbid0IHdlIG5lZWQgdG8gc2VuZCB0aGUgbWFzdGVyIGNv
+ZGUgZm9yICpldmVyeSogSFMgdHJhbnNhY3Rpb24sIG5vdCBqdXN0ICJhdXRvX3Jlc3RhcnQiPw0K
+DQoiNDAwMDAwIiA9PiBZb3UgYWxyZWFkeSBoYXZlIGEgbWFjcm8gZm9yIHRoaXM6IE1BWF9GU19N
+T0RFX1NQRUVEDQoNCj4gKyAgICAgICAgICAgICAgIHJldCA9IG10a19pMmNfc2VuZF9tYXN0ZXJf
+Y29kZShpMmMpOw0KPiArICAgICAgICAgICAgICAgaWYgKHJldCkNCj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgcmV0dXJuIHJldDsNCj4gKyAgICAgICB9DQo+ICsNCj4gICAgICAgICB3aGlsZSAo
+bGVmdF9udW0tLSkgew0KPiAgICAgICAgICAgICAgICAgaWYgKCFtc2dzLT5idWYpIHsNCj4gICAg
+ICAgICAgICAgICAgICAgICAgICAgZGV2X2RiZyhpMmMtPmRldiwgImRhdGEgYnVmZmVyIGlzIE5V
+TEwuXG4iKTsNCj4gLS0NCj4gMS44LjEuMS5kaXJ0eQ0KPg0KPiAtLQ0KPiBUbyB1bnN1YnNjcmli
+ZSBmcm9tIHRoaXMgbGlzdDogc2VuZCB0aGUgbGluZSAidW5zdWJzY3JpYmUgDQo+IGxpbnV4LWtl
+cm5lbCIgaW4gdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5v
+cmcgDQo+IE1vcmUgbWFqb3Jkb21vIGluZm8gYXQgIGh0dHA6Ly92Z2VyLmtlcm5lbC5vcmcvbWFq
+b3Jkb21vLWluZm8uaHRtbA0KPiBQbGVhc2UgcmVhZCB0aGUgRkFRIGF0ICBodHRwOi8vd3d3LnR1
+eC5vcmcvbGttbC8NCg0KKioqKioqKioqKioqKiBFbWFpbCBDb25maWRlbnRpYWxpdHkgTm90aWNl
+ICoqKioqKioqKioqKioqKioqKioqDQpUaGUgaW5mb3JtYXRpb24gY29udGFpbmVkIGluIHRoaXMg
+ZS1tYWlsIG1lc3NhZ2UgKGluY2x1ZGluZyBhbnkgDQphdHRhY2htZW50cykgbWF5IGJlIGNvbmZp
+ZGVudGlhbCwgcHJvcHJpZXRhcnksIHByaXZpbGVnZWQsIG9yIG90aGVyd2lzZQ0KZXhlbXB0IGZy
+b20gZGlzY2xvc3VyZSB1bmRlciBhcHBsaWNhYmxlIGxhd3MuIEl0IGlzIGludGVuZGVkIHRvIGJl
+IA0KY29udmV5ZWQgb25seSB0byB0aGUgZGVzaWduYXRlZCByZWNpcGllbnQocykuIEFueSB1c2Us
+IGRpc3NlbWluYXRpb24sIA0KZGlzdHJpYnV0aW9uLCBwcmludGluZywgcmV0YWluaW5nIG9yIGNv
+cHlpbmcgb2YgdGhpcyBlLW1haWwgKGluY2x1ZGluZyBpdHMgDQphdHRhY2htZW50cykgYnkgdW5p
+bnRlbmRlZCByZWNpcGllbnQocykgaXMgc3RyaWN0bHkgcHJvaGliaXRlZCBhbmQgbWF5IA0KYmUg
+dW5sYXdmdWwuIElmIHlvdSBhcmUgbm90IGFuIGludGVuZGVkIHJlY2lwaWVudCBvZiB0aGlzIGUt
+bWFpbCwgb3IgYmVsaWV2ZSANCnRoYXQgeW91IGhhdmUgcmVjZWl2ZWQgdGhpcyBlLW1haWwgaW4g
+ZXJyb3IsIHBsZWFzZSBub3RpZnkgdGhlIHNlbmRlciANCmltbWVkaWF0ZWx5IChieSByZXBseWlu
+ZyB0byB0aGlzIGUtbWFpbCksIGRlbGV0ZSBhbnkgYW5kIGFsbCBjb3BpZXMgb2YgDQp0aGlzIGUt
+bWFpbCAoaW5jbHVkaW5nIGFueSBhdHRhY2htZW50cykgZnJvbSB5b3VyIHN5c3RlbSwgYW5kIGRv
+IG5vdA0KZGlzY2xvc2UgdGhlIGNvbnRlbnQgb2YgdGhpcyBlLW1haWwgdG8gYW55IG90aGVyIHBl
+cnNvbi4gVGhhbmsgeW91IQ0K
