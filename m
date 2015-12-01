@@ -1,78 +1,183 @@
-From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency control
-Date: Tue, 1 Dec 2015 23:09:49 +0800
-Message-ID: <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
-References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
-	<CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+From: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND RFC/PATCH 6/8] media: platform: mtk-vcodec: Add Mediatek
+ V4L2 Video Encoder Driver
+Date: Tue, 1 Dec 2015 15:42:43 +0000
+Message-ID: <565DBFF3.1000409@linaro.org>
+References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
+ <1447764885-23100-7-git-send-email-tiffany.lin@mediatek.com>
+ <56588622.8060600@linaro.org> <1448883594.25093.45.camel@mtksdaap41>
+ <CAMTL27FchgtJZS4YpVge-x+TstnVHmG1aAnaOV32qCU3zMUbAQ@mail.gmail.com>
+ <1448966550.7534.95.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>, Michael Turquette <mturquette@baylibre.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1448966550.7534.95.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOm
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
-> Hi Pi-Cheng and Michael,
->
-> On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
->> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
->>
->> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
->> for intermediate clock source switching.
->
-> It looks like this patch was never picked up.
-> It is required for MT8173 cpufreq.
->
-> What is the plan to get this one merged?
-
-Hi Dan,
-Mike is working on a new CCF feature called "coordinated clock rate changes"
-which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
-driver, and I am working with him to port MT8173 clock driver on the new
-feature. So I think that's why this patch was not picked since it will
-be migrated to new implementation once the new feature's ready.
-
-@Mike:
-Are you plannig to post those patches on the mailing list ?
-Or is it fine for you to take this first and then I will refine it for
-the new feature later?
-
-Best Regards,
-Pi-Cheng
-
->
-> -Dan
->
->>
->> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
->> ---
->> Changes in v6:
->> - Relace __clk_get_num_parents with clk_hw_get_num_parents to reflect
->>   API change
->>
->> Changes in v5:
->> - Replace __initdata with __initconst to fix compiling error
->>
->> Changes in v4:
->> - Fix some minor issues for v3
->> - Rebase to the patch that adds 13mhz clock for MT8173[1]
->>
->> Changes in v3:
->> - Rebase to 4.2-rc1
->> - Fix some issues of v2
->>
->> Changes in v2:
->> - Remove use of .determine_rate callback
->> ---
->>  drivers/clk/mediatek/Makefile          |   2 +-
->>  drivers/clk/mediatek/clk-cpumux.c      | 127 +++++++++++++++++++++++++++++++++
->>  drivers/clk/mediatek/clk-cpumux.h      |  22 ++++++
->>  drivers/clk/mediatek/clk-mt8173.c      |  23 ++++++
->>  include/dt-bindings/clock/mt8173-clk.h |   4 +-
->>  5 files changed, 176 insertions(+), 2 deletions(-)
->>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
->>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
->
+On 01/12/15 10:42, tiffany lin wrote:
+>>>>   > diff --git a/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
+>>>> b/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
+>>>>   > new file mode 100644
+>>>>   > index 0000000..9b3f025
+>>>>   > --- /dev/null
 > [snip]
+>>>>   > +int venc_if_create(void *ctx, unsigned int fourcc, unsigned long
+>>>> *handle)
+>>>>   > +{
+>>>>   > +  struct venc_handle *h;
+>>>>   > +  char str[10];
+>>>>   > +
+>>>>   > +  mtk_vcodec_fmt2str(fourcc, str);
+>>>>   > +
+>>>>   > +  h = kzalloc(sizeof(*h), GFP_KERNEL);
+>>>>   > +  if (!h)
+>>>>   > +          return -ENOMEM;
+>>>>   > +
+>>>>   > +  h->fourcc = fourcc;
+>>>>   > +  h->ctx = ctx;
+>>>>   > +  mtk_vcodec_debug(h, "fmt = %s handle = %p", str, h);
+>>>>   > +
+>>>>   > +  switch (fourcc) {
+>>>>   > +  default:
+>>>>   > +          mtk_vcodec_err(h, "invalid format %s", str);
+>>>>   > +          goto err_out;
+>>>>   > +  }
+>>>>   > +
+>>>>   > +  *handle = (unsigned long)h;
+>>>>   > +  return 0;
+>>>>   > +
+>>>>   > +err_out:
+>>>>   > +  kfree(h);
+>>>>   > +  return -EINVAL;
+>>>>   > +}
+>>>>   > +
+>>>>   > +int venc_if_init(unsigned long handle)
+>>>>   > +{
+>>>>   > +  int ret = 0;
+>>>>   > +  struct venc_handle *h = (struct venc_handle *)handle;
+>>>>   > +
+>>>>   > +  mtk_vcodec_debug_enter(h);
+>>>>   > +
+>>>>   > +  mtk_venc_lock(h->ctx);
+>>>>   > +  mtk_vcodec_enc_clock_on();
+>>>>   > +  vpu_enable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
+>>>>   > +  ret = h->enc_if->init(h->ctx, (unsigned long *)&h->drv_handle);
+>>>>   > +  vpu_disable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
+>>>>   > +  mtk_vcodec_enc_clock_off();
+>>>>   > +  mtk_venc_unlock(h->ctx);
+>>>>   > +
+>>>>   > +  return ret;
+>>>>   > +}
+>>>>
+>>>> To me this looks more like an obfuscation layer rather than a
+>>>> abstraction layer. I don't understand why we need to hide things from
+>>>> the V4L2 implementation that this code forms part of.
+>>>>
+>>>> More importantly, if this code was included somewhere where it could be
+>>>> properly integrated with the device model you might be able to use the
+>>>> pm_runtime system to avoid this sort of "heroics" to manage the clocks
+>>>> anyway.
+>>>>
+>>> We want to abstract common part from encoder driver.
+>>> Every encoder driver follow same calling flow and only need to take care
+>>> about how to communicate with vpu to encode specific format.
+>>> Encoder driver do not need to take care clock and multiple instance
+>>> issue.
+>>
+>> Looking at each of those stages:
+>>
+>> mtk_venc_lock():
+>> Why isn't one of the existing V4L2 locking strategies ok for you?
+>>
+> We only has one encoder hw.
+> To support multiple encode instances.
+> When one encoder ctx access encoder hw, it need to get lock first.
+>
+>> mtk_vcodec_enc_clock_on():
+>> This does seem like something a sub-driver *should* be doing for itself
+> This is for enabling encoder hw related clock.
+> To support multiple instances, one encode ctx must get hw lock first
+> then clock on/off hw relate clock.
+>
+>> vpu_enable_clock():
+>> Why can't the VPU driver manage this internally using pm_runtime?
+>>
+> Our VPU do not have power domain.
+> We will remove VPU clock on/off and let vpu control it in next version.
+>
+>>
+>> That is why I described this as an obfuscation layer. It is collecting
+>> a bunch of stuff that can be handled using the kernel driver model and
+>> clumping them together in a special middle layer.
+>>
+> We do use kernel driver model, but we put it in
+> mtk_vcodec_enc_clock_on/mtk_vcodec_enc_clock_off.
+> Every sub-driver has no need to write the same code.
+> And once clock configuration change or porting to other chips, we don't
+> need to change sub-driver one-by-one, just change abstract layer.
+
+I'm afraid I remain extremely unconvinced by the value of this API. It 
+is possible that once the types are fixed and it is tidied up it won't 
+stick out so much but I will be very surprised.
+
+Either way, I can wait until v2 before we discuss it further.
+
+
+>>>> If the start streaming operation implemented cleanup-on-error properly
+>>>> then there would only be two useful states: Started and stopped. Even
+>>>> the "sticky" error behavior looks unnecessary to me (meaning we don't
+>>>> need to track its state).
+>>>>
+>>> We cannot guaranteed that IOCTLs called from the user space follow
+>>> required sequence.
+>>> We need states to know if our driver could accept IOCTL command.
+>>
+>> I believe that knowing whether the streaming is started or stopped
+>> (e.g. two states) is sufficient for a driver to correctly handle
+>> abitrary ioctls from userspace and even then, the core code tracks
+>> this state for you so there's no need for you do it.
+>>
+>> The queue/dequeue ioctls succeed or fail based on the length of the
+>> queue (i.e. is the buffer queue overflowing or not) and have no need
+>> to check the streaming state.
+>
+>> If you are absolutely sure that the other states are needed then
+>> please provide an example of an ioctl() sequence where the additional
+>> state is needed.
+>>
+> I know your point that we have too many state changes in start_streaming
+> and stop_streaming function.
+> We will refine these two functions in next version.
+>
+> For the example, we need MTK_STATE_HEADER state, to make sure before
+> encode start, driver already get information to set encode parameters.
+
+Interesting. Again, I'll wait to see how the state simplifcation goes 
+before commenting further.
+
+
+> We need MTK_STATE_ABORT to inform encoder thread (mtk_venc_worker) that
+> stop encodeing job from stopped ctx instance.
+> When user space qbuf, we need to make sure everything is ready to sent
+> buf to encode.
+
+Agree that you need a flag here. In fact currently you have two, 
+MTK_STATE_ABORT and an unused one called aborting.
+
+You need to be very careful with these flags though. They are a magnet 
+for data race bugs (especially combined with SMP).
+
+For example at present I can't see any locking in the worker code. This 
+means there is nothing to make all those read-modify-write sequences 
+that manage the state atomic (thus risking state corruption).
+
+
+Daniel.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
