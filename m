@@ -1,183 +1,44 @@
-From: Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RESEND RFC/PATCH 6/8] media: platform: mtk-vcodec: Add Mediatek
- V4L2 Video Encoder Driver
-Date: Tue, 1 Dec 2015 15:42:43 +0000
-Message-ID: <565DBFF3.1000409@linaro.org>
-References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
- <1447764885-23100-7-git-send-email-tiffany.lin@mediatek.com>
- <56588622.8060600@linaro.org> <1448883594.25093.45.camel@mtksdaap41>
- <CAMTL27FchgtJZS4YpVge-x+TstnVHmG1aAnaOV32qCU3zMUbAQ@mail.gmail.com>
- <1448966550.7534.95.camel@mtksdaap41>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH 0/2] ARM: use const and __initconst for smp_operations
+ (with refactoring hisi)
+Date: Tue, 01 Dec 2015 22:21:05 +0100
+Message-ID: <2210426.UqpEyfenBv@wuerfel>
+References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1448966550.7534.95.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOm
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447551593-22246-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Patrice Chotard <patrice.chotard-qxv4g6HH51o@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Emilio =?ISO-8859-1?Q?L=F3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5@h>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/12/15 10:42, tiffany lin wrote:
->>>>   > diff --git a/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
->>>> b/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
->>>>   > new file mode 100644
->>>>   > index 0000000..9b3f025
->>>>   > --- /dev/null
-> [snip]
->>>>   > +int venc_if_create(void *ctx, unsigned int fourcc, unsigned long
->>>> *handle)
->>>>   > +{
->>>>   > +  struct venc_handle *h;
->>>>   > +  char str[10];
->>>>   > +
->>>>   > +  mtk_vcodec_fmt2str(fourcc, str);
->>>>   > +
->>>>   > +  h = kzalloc(sizeof(*h), GFP_KERNEL);
->>>>   > +  if (!h)
->>>>   > +          return -ENOMEM;
->>>>   > +
->>>>   > +  h->fourcc = fourcc;
->>>>   > +  h->ctx = ctx;
->>>>   > +  mtk_vcodec_debug(h, "fmt = %s handle = %p", str, h);
->>>>   > +
->>>>   > +  switch (fourcc) {
->>>>   > +  default:
->>>>   > +          mtk_vcodec_err(h, "invalid format %s", str);
->>>>   > +          goto err_out;
->>>>   > +  }
->>>>   > +
->>>>   > +  *handle = (unsigned long)h;
->>>>   > +  return 0;
->>>>   > +
->>>>   > +err_out:
->>>>   > +  kfree(h);
->>>>   > +  return -EINVAL;
->>>>   > +}
->>>>   > +
->>>>   > +int venc_if_init(unsigned long handle)
->>>>   > +{
->>>>   > +  int ret = 0;
->>>>   > +  struct venc_handle *h = (struct venc_handle *)handle;
->>>>   > +
->>>>   > +  mtk_vcodec_debug_enter(h);
->>>>   > +
->>>>   > +  mtk_venc_lock(h->ctx);
->>>>   > +  mtk_vcodec_enc_clock_on();
->>>>   > +  vpu_enable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
->>>>   > +  ret = h->enc_if->init(h->ctx, (unsigned long *)&h->drv_handle);
->>>>   > +  vpu_disable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
->>>>   > +  mtk_vcodec_enc_clock_off();
->>>>   > +  mtk_venc_unlock(h->ctx);
->>>>   > +
->>>>   > +  return ret;
->>>>   > +}
->>>>
->>>> To me this looks more like an obfuscation layer rather than a
->>>> abstraction layer. I don't understand why we need to hide things from
->>>> the V4L2 implementation that this code forms part of.
->>>>
->>>> More importantly, if this code was included somewhere where it could be
->>>> properly integrated with the device model you might be able to use the
->>>> pm_runtime system to avoid this sort of "heroics" to manage the clocks
->>>> anyway.
->>>>
->>> We want to abstract common part from encoder driver.
->>> Every encoder driver follow same calling flow and only need to take care
->>> about how to communicate with vpu to encode specific format.
->>> Encoder driver do not need to take care clock and multiple instance
->>> issue.
->>
->> Looking at each of those stages:
->>
->> mtk_venc_lock():
->> Why isn't one of the existing V4L2 locking strategies ok for you?
->>
-> We only has one encoder hw.
-> To support multiple encode instances.
-> When one encoder ctx access encoder hw, it need to get lock first.
->
->> mtk_vcodec_enc_clock_on():
->> This does seem like something a sub-driver *should* be doing for itself
-> This is for enabling encoder hw related clock.
-> To support multiple instances, one encode ctx must get hw lock first
-> then clock on/off hw relate clock.
->
->> vpu_enable_clock():
->> Why can't the VPU driver manage this internally using pm_runtime?
->>
-> Our VPU do not have power domain.
-> We will remove VPU clock on/off and let vpu control it in next version.
->
->>
->> That is why I described this as an obfuscation layer. It is collecting
->> a bunch of stuff that can be handled using the kernel driver model and
->> clumping them together in a special middle layer.
->>
-> We do use kernel driver model, but we put it in
-> mtk_vcodec_enc_clock_on/mtk_vcodec_enc_clock_off.
-> Every sub-driver has no need to write the same code.
-> And once clock configuration change or porting to other chips, we don't
-> need to change sub-driver one-by-one, just change abstract layer.
+On Sunday 15 November 2015 10:39:51 Masahiro Yamada wrote:
+> 1/2: minor refactoring for mach-hisi
+> 2/2: use const ... __initconst for smp_operations
+> 
+> I hope 2/2 will be reviewed by sub-arch maintainers.
+> Please issue Acked-by if it is OK.
+> 
+> I hope this series will be applied to ARM-SOC.
+> 
+> 
+> 
+> Masahiro Yamada (2):
+>   ARM: hisi: do not export smp_operations structures
+>   ARM: use const and __initconst for smp_operations
+> 
+> 
 
-I'm afraid I remain extremely unconvinced by the value of this API. It 
-is possible that once the types are fixed and it is tidied up it won't 
-stick out so much but I will be very surprised.
+Applied to next/cleanup with the 17 Acks, thanks!
 
-Either way, I can wait until v2 before we discuss it further.
-
-
->>>> If the start streaming operation implemented cleanup-on-error properly
->>>> then there would only be two useful states: Started and stopped. Even
->>>> the "sticky" error behavior looks unnecessary to me (meaning we don't
->>>> need to track its state).
->>>>
->>> We cannot guaranteed that IOCTLs called from the user space follow
->>> required sequence.
->>> We need states to know if our driver could accept IOCTL command.
->>
->> I believe that knowing whether the streaming is started or stopped
->> (e.g. two states) is sufficient for a driver to correctly handle
->> abitrary ioctls from userspace and even then, the core code tracks
->> this state for you so there's no need for you do it.
->>
->> The queue/dequeue ioctls succeed or fail based on the length of the
->> queue (i.e. is the buffer queue overflowing or not) and have no need
->> to check the streaming state.
->
->> If you are absolutely sure that the other states are needed then
->> please provide an example of an ioctl() sequence where the additional
->> state is needed.
->>
-> I know your point that we have too many state changes in start_streaming
-> and stop_streaming function.
-> We will refine these two functions in next version.
->
-> For the example, we need MTK_STATE_HEADER state, to make sure before
-> encode start, driver already get information to set encode parameters.
-
-Interesting. Again, I'll wait to see how the state simplifcation goes 
-before commenting further.
-
-
-> We need MTK_STATE_ABORT to inform encoder thread (mtk_venc_worker) that
-> stop encodeing job from stopped ctx instance.
-> When user space qbuf, we need to make sure everything is ready to sent
-> buf to encode.
-
-Agree that you need a flag here. In fact currently you have two, 
-MTK_STATE_ABORT and an unused one called aborting.
-
-You need to be very careful with these flags though. They are a magnet 
-for data race bugs (especially combined with SMP).
-
-For example at present I can't see any locking in the worker code. This 
-means there is nothing to make all those read-modify-write sequences 
-that manage the state atomic (thus risking state corruption).
-
-
-Daniel.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+	Arnd
