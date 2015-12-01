@@ -1,60 +1,41 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2 1/2] i2c: mediatek: add i2c first write then read
- optimization
-Date: Tue, 1 Dec 2015 01:56:55 +0100
-Message-ID: <20151201005655.GC2064@katana>
-References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
- <1447047839-5223-2-git-send-email-liguo.zhang@mediatek.com>
+From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/2] ARM: use const and __initconst for smp_operations
+Date: Tue, 1 Dec 2015 10:43:54 +0100
+Message-ID: <CACRpkdY2WbtP9XnNmh_Rnf8oxhDANhm_GrCh6Tg0g5tbfTRMGQ@mail.gmail.com>
+References: <1447551593-22246-1-git-send-email-yamada.masahiro@socionext.com>
+ <1447551593-22246-3-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="CblX+4bnyfN0pR09"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1447047839-5223-2-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1447551593-22246-3-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/STI ARCHITECTURE" <kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org>, "linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, =?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio-0Z03zUJReD5OxF6Tv1QG9Q@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm@gmail.c>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Sun, Nov 15, 2015 at 2:39 AM, Masahiro Yamada
+<yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org> wrote:
 
---CblX+4bnyfN0pR09
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> These smp_operations structures are not over-written, so add "const"
+> qualifier and replace __initdata with __initconst.
+>
+> Also, add "static" where it is possible.
+>
+> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+> Acked-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+> Acked-by: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+> Acked-by: Moritz Fischer <moritz.fischer-+aYTwkv1SeIAvxtiuMwx3w@public.gmane.org>
 
-On Mon, Nov 09, 2015 at 01:43:58PM +0800, Liguo Zhang wrote:
-> For platform with auto restart support, between every transfer,
-> i2c controller will trigger an interrupt and SW need to handle
-> it to start new transfer. When doing write-then-read transfer,
-> instead of restart mechanism, using WRRD mode to have controller
-> send both transfer in one request to reduce latency.
->=20
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
+Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 
-Applied to for-next, thanks!
-
-
---CblX+4bnyfN0pR09
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWXPBXAAoJEBQN5MwUoCm25a8QALZk1BwzERtedyftupkAV0/M
-FD0KO86KL40cVjwPsht2Oi5B0wlKIHlEPidGeQaG1vnA+NHbsWQirWUeQxBiVR/T
-4DqU3LnC3DhWiBgsNNAjhhr00GME1btUV7XaPwROSLv4VdXmzxnbZ5/U5dQiKkBr
-d6SOXDQfNeYvXExaA/iviupwGHOHJC4gmMWdBn/i196yw11VgXAFTAXGsMNtXQmI
-SxmeO4bZQoReEBetYQUfKyWBLxBVUn5+HNnQZUa0zjH+g0C9czwJMBidRBS+Eviy
-xeDWC7gV3cA7Hqyhb2MtyRjlYaGO7eDp/ijRKRtG3c/hwNyoPAn1VDL0zeywpoF6
-ph+GNSMYp2v1tYPK9RjylQn1GDDjV5gjT5fmsgnXAosCjEFAPOriU1PlJr3nJkBR
-G32G2VOgZlcOJLo/KAjHB0/c9TMgXD0Io5vFHFIM+/uq7L9hmUuOopGtSk8pjWwh
-uDVbXXAXCjaowWHVmkXR2eBNdJ4UYqfOcTz5Z5+aonjqIbebzTLKSN8Yj4wRvxxG
-llJUjAgykP2/dR0qEKTYQMFSuf3Jjib7c3bi6GZBVq+vZWqXtGMPJvnv/NXxpRnT
-S6+0QqZM7yL8Ntfsqd4bERnkY2vr87nX5yQ872HRHRqcKcDToU82HKPM7BXRiwN0
-b/34pjNtLhvSnG/on5ea
-=8q+r
------END PGP SIGNATURE-----
-
---CblX+4bnyfN0pR09--
+Yours,
+Linus Walleij
