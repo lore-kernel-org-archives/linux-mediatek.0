@@ -1,43 +1,193 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH] ARM: use "depends on" for SoC configs instead of "if"
- after prompt
-Date: Tue, 01 Dec 2015 22:46:39 +0100
-Message-ID: <1963964.9aGpi5r3i6@wuerfel>
-References: <1447643170-23773-1-git-send-email-yamada.masahiro@socionext.com>
+From: liguo zhang <liguo.zhang@mediatek.com>
+Subject: Re: [PATCH v2 2/2] i2c: mediatek: fix i2c multi transfer issue in
+ high speed mode
+Date: Wed, 2 Dec 2015 10:51:36 +0800
+Message-ID: <1449024696.7079.6.camel@mhfsdcap03>
+References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
+	 <1447047839-5223-3-git-send-email-liguo.zhang@mediatek.com>
+	 <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1447643170-23773-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-Cc: Andrew Lunn <andrew-g2DYL2Zd6BY@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, kernel-F5mvAk5X5gdBDgjK7y7TUQ@public.gmane.org, linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jamie Iles <jamie-wmLquQDDieKakBO8gow8eQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Viresh Kumar <vireshk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Wei Xu <xuwei5-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens@csie>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday 16 November 2015 12:06:10 Masahiro Yamada wrote:
-> For enabling/disabling sub-architectures, the latter is always correct.
-> 
-> As a good side effect, this commit fixes some entries over 80 columns
-> (mach-imx, mach-integrator, mach-mbevu).
-> 
-> Signed-off-by: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
-> ---
-> 
-> I hope this patch is applied to ARM-SOC, but am CCing Kbuild ML
-> because the correct understanding of Kconfig is required for this patch.
-> 
+On Sat, 2015-11-14 at 22:38 +0800, Daniel Kurtz wrote:
+> On Mon, Nov 9, 2015 at 1:43 PM, Liguo Zhang <liguo.zhang@mediatek.com=
+> wrote:
+> > For platform with auto restart support, when doing i2c multi transf=
+er
+> > in high speed, for example, doing write-then-read transfer, the mas=
+ter
+> > code will occupy the first transfer, and the second transfer will b=
+e
+> > the read transfer, the write transfer will be discarded. So we shou=
+ld
+> > first send the master code, and then start i2c multi transfer.
+> >
+> > Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+> > Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
+> > ---
+> >  drivers/i2c/busses/i2c-mt65xx.c | 45 +++++++++++++++++++++++++++++=
+++++++++++++
+> >  1 file changed, 45 insertions(+)
+> >
+> > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i=
+2c-mt65xx.c
+> > index dc4aac6..249df86 100644
+> > --- a/drivers/i2c/busses/i2c-mt65xx.c
+> > +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> > @@ -53,6 +53,8 @@
+> >  #define I2C_FS_TIME_INIT_VALUE         0x1303
+> >  #define I2C_WRRD_TRANAC_VALUE          0x0002
+> >  #define I2C_RD_TRANAC_VALUE            0x0001
+> > +#define I2C_TRAN_DEFAULT_VALUE         0x0001
+> > +#define I2C_TRANAC_DEFAULT_VALUE       0x0001
+>=20
+> "TRAN" and "TRANAC" are not good names; this should be "TRANSFER_LEN"
+> and "TRANSAC", based on the names of the registers to which you write
+> these constants.
+>=20
+> Furthermore, these are not "default" values, they are the transfer
+> length and number of transactions for sending the "master code", so:
+>=20
+> #define I2C_TRANSFER_LEN_MASTER_CODE         0x0001
+> #define I2C_TRANSAC_LEN_MASTER_CODE       0x0001
+>=20
+> Similarly, I think the "TRANAC" in I2C_WRRD_TRANAC_VALUE and
+> I2C_RD_TRANAC_VALUE should also be TRANSAC.
+>=20
 
-I have applied the patch to next/cleanup now, and added a comment about the
-fact that there is not really a bug here.
+Yes, I will follow your advice.
 
-Thanks!
+> >
+> >  #define I2C_DMA_CON_TX                 0x0000
+> >  #define I2C_DMA_CON_RX                 0x0001
+> > @@ -365,6 +367,43 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i=
+2c, unsigned int parent_clk,
+> >         return 0;
+> >  }
+> >
+> > +static int mtk_i2c_send_master_code(struct mtk_i2c *i2c)
+> > +{
+> > +       int ret =3D 0;
+> > +
+> > +       reinit_completion(&i2c->msg_complete);
+> > +
+> > +       writew(I2C_CONTROL_RS | I2C_CONTROL_ACKERR_DET_EN |
+> > +              I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN,
+> > +              i2c->base + OFFSET_CONTROL);
+> > +
+> > +       /* Clear interrupt status */
+> > +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP | I2C_HS_NACKERR =
+| I2C_ACKERR,
+> > +              i2c->base + OFFSET_INTR_STAT);
+> > +
+> > +       /* Enable interrupt */
+> > +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP, i2c->base +
+> > +              OFFSET_INTR_MASK);
+> > +
+> > +       writew(I2C_TRAN_DEFAULT_VALUE, i2c->base + OFFSET_TRANSFER_=
+LEN);
+> > +       writew(I2C_TRANAC_DEFAULT_VALUE, i2c->base + OFFSET_TRANSAC=
+_LEN);
+> > +
+> > +       writew(I2C_TRANSAC_START | I2C_RS_MUL_CNFG, i2c->base + OFF=
+SET_START);
+> > +
+> > +       ret =3D wait_for_completion_timeout(&i2c->msg_complete,
+> > +                                         i2c->adap.timeout);
+>=20
+> How does the hardware know that this transaction should be a "master =
+code"?
+> Do you have to tell the hardware what value ('00001XXX') to use as th=
+e
+> master code?
 
-	Arnd
+When we set i2c speed > 400K , the hardware will send master code. We
+have a register to configure master code=EF=BC=8Cand usually we use the=
+ default
+value "00001000".
+
+> The Master Code must be sent at <=3D 400 kHz, not the target clock.  =
+How
+> does the hardware know what rate to use?
+
+The i2c speed is defined in dts, and we will set the i2c speed in i2c
+register, so HW will know the rate to use.
+
+> When sending the master code, arbitration is supposed to occur, such
+> that only one winning master can proceed with the following high spee=
+d
+> transaction.
+> Where do you check that you won this arbitration?
+
+> If this is not implemented, adding a "TODO" would be helpful.
+>=20
+Our i2c driver now only support one master.
+
+> > +
+> > +       completion_done(&i2c->msg_complete);
+>=20
+> This completion_done() is only useful if you check the return value.
+> You should check it too, since we should only check for timeout if th=
+e
+> message hasn't completed.
+>=20
+I will delete the completion_done() function.
+
+> > +
+> > +       if (ret =3D=3D 0) {
+> > +               dev_dbg(i2c->dev, "send master code timeout.\n");
+> > +               mtk_i2c_init_hw(i2c);
+> > +               return -ETIMEDOUT;
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +
+> >  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg=
+ *msgs,
+> >                                int num, int left_num)
+> >  {
+> > @@ -539,6 +578,12 @@ static int mtk_i2c_transfer(struct i2c_adapter=
+ *adap,
+> >                 }
+> >         }
+> >
+> > +       if (i2c->auto_restart && i2c->speed_hz > 400000) {
+>=20
+> Don't we need to send the master code for *every* HS transaction, not
+> just "auto_restart"?
+>=20
+When we don't use auto restart, we also need to send the master code,
+the master code is sent by HW automatically.
+I am improving the master code section when use auto restart, and this
+will be released in the next patch.
+
+> "400000" =3D> You already have a macro for this: MAX_FS_MODE_SPEED
+>=20
+Yes, I will use MAX_FS_MODE_SPEED.
+
+> > +               ret =3D mtk_i2c_send_master_code(i2c);
+> > +               if (ret)
+> > +                       return ret;
+> > +       }
+> > +
+> >         while (left_num--) {
+> >                 if (!msgs->buf) {
+> >                         dev_dbg(i2c->dev, "data buffer is NULL.\n")=
+;
+> > --
+> > 1.8.1.1.dirty
+> >
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-ker=
+nel" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at  http://www.tux.org/lkml/
