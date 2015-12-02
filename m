@@ -1,193 +1,183 @@
-From: liguo zhang <liguo.zhang@mediatek.com>
-Subject: Re: [PATCH v2 2/2] i2c: mediatek: fix i2c multi transfer issue in
- high speed mode
-Date: Wed, 2 Dec 2015 10:51:36 +0800
-Message-ID: <1449024696.7079.6.camel@mhfsdcap03>
-References: <1447047839-5223-1-git-send-email-liguo.zhang@mediatek.com>
-	 <1447047839-5223-3-git-send-email-liguo.zhang@mediatek.com>
-	 <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
+From: tiffany lin <tiffany.lin@mediatek.com>
+Subject: Re: [RESEND RFC/PATCH 6/8] media: platform: mtk-vcodec: Add
+ Mediatek V4L2 Video Encoder Driver
+Date: Wed, 2 Dec 2015 21:08:28 +0800
+Message-ID: <1449061708.8326.5.camel@mtksdaap41>
+References: <1447764885-23100-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1447764885-23100-7-git-send-email-tiffany.lin@mediatek.com>
+	 <56588622.8060600@linaro.org> <1448883594.25093.45.camel@mtksdaap41>
+	 <CAMTL27FchgtJZS4YpVge-x+TstnVHmG1aAnaOV32qCU3zMUbAQ@mail.gmail.com>
+	 <1448966550.7534.95.camel@mtksdaap41> <565DBFF3.1000409@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omAixwqw2QwR5_4VffHN66aAYNXP1ZJPxsq2WKcgzVxOZw@mail.gmail.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <565DBFF3.1000409@linaro.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Daniel Thompson <daniel.thompson@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2015-11-14 at 22:38 +0800, Daniel Kurtz wrote:
-> On Mon, Nov 9, 2015 at 1:43 PM, Liguo Zhang <liguo.zhang@mediatek.com=
-> wrote:
-> > For platform with auto restart support, when doing i2c multi transf=
-er
-> > in high speed, for example, doing write-then-read transfer, the mas=
-ter
-> > code will occupy the first transfer, and the second transfer will b=
-e
-> > the read transfer, the write transfer will be discarded. So we shou=
-ld
-> > first send the master code, and then start i2c multi transfer.
+On Tue, 2015-12-01 at 15:42 +0000, Daniel Thompson wrote:
+> On 01/12/15 10:42, tiffany lin wrote:
+> >>>>   > diff --git a/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
+> >>>> b/drivers/media/platform/mtk-vcodec/common/venc_drv_if.c
+> >>>>   > new file mode 100644
+> >>>>   > index 0000000..9b3f025
+> >>>>   > --- /dev/null
+> > [snip]
+> >>>>   > +int venc_if_create(void *ctx, unsigned int fourcc, unsigned long
+> >>>> *handle)
+> >>>>   > +{
+> >>>>   > +  struct venc_handle *h;
+> >>>>   > +  char str[10];
+> >>>>   > +
+> >>>>   > +  mtk_vcodec_fmt2str(fourcc, str);
+> >>>>   > +
+> >>>>   > +  h = kzalloc(sizeof(*h), GFP_KERNEL);
+> >>>>   > +  if (!h)
+> >>>>   > +          return -ENOMEM;
+> >>>>   > +
+> >>>>   > +  h->fourcc = fourcc;
+> >>>>   > +  h->ctx = ctx;
+> >>>>   > +  mtk_vcodec_debug(h, "fmt = %s handle = %p", str, h);
+> >>>>   > +
+> >>>>   > +  switch (fourcc) {
+> >>>>   > +  default:
+> >>>>   > +          mtk_vcodec_err(h, "invalid format %s", str);
+> >>>>   > +          goto err_out;
+> >>>>   > +  }
+> >>>>   > +
+> >>>>   > +  *handle = (unsigned long)h;
+> >>>>   > +  return 0;
+> >>>>   > +
+> >>>>   > +err_out:
+> >>>>   > +  kfree(h);
+> >>>>   > +  return -EINVAL;
+> >>>>   > +}
+> >>>>   > +
+> >>>>   > +int venc_if_init(unsigned long handle)
+> >>>>   > +{
+> >>>>   > +  int ret = 0;
+> >>>>   > +  struct venc_handle *h = (struct venc_handle *)handle;
+> >>>>   > +
+> >>>>   > +  mtk_vcodec_debug_enter(h);
+> >>>>   > +
+> >>>>   > +  mtk_venc_lock(h->ctx);
+> >>>>   > +  mtk_vcodec_enc_clock_on();
+> >>>>   > +  vpu_enable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
+> >>>>   > +  ret = h->enc_if->init(h->ctx, (unsigned long *)&h->drv_handle);
+> >>>>   > +  vpu_disable_clock(vpu_get_plat_device(h->ctx->dev->plat_dev));
+> >>>>   > +  mtk_vcodec_enc_clock_off();
+> >>>>   > +  mtk_venc_unlock(h->ctx);
+> >>>>   > +
+> >>>>   > +  return ret;
+> >>>>   > +}
+> >>>>
+> >>>> To me this looks more like an obfuscation layer rather than a
+> >>>> abstraction layer. I don't understand why we need to hide things from
+> >>>> the V4L2 implementation that this code forms part of.
+> >>>>
+> >>>> More importantly, if this code was included somewhere where it could be
+> >>>> properly integrated with the device model you might be able to use the
+> >>>> pm_runtime system to avoid this sort of "heroics" to manage the clocks
+> >>>> anyway.
+> >>>>
+> >>> We want to abstract common part from encoder driver.
+> >>> Every encoder driver follow same calling flow and only need to take care
+> >>> about how to communicate with vpu to encode specific format.
+> >>> Encoder driver do not need to take care clock and multiple instance
+> >>> issue.
+> >>
+> >> Looking at each of those stages:
+> >>
+> >> mtk_venc_lock():
+> >> Why isn't one of the existing V4L2 locking strategies ok for you?
+> >>
+> > We only has one encoder hw.
+> > To support multiple encode instances.
+> > When one encoder ctx access encoder hw, it need to get lock first.
 > >
-> > Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> > Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
-> > ---
-> >  drivers/i2c/busses/i2c-mt65xx.c | 45 +++++++++++++++++++++++++++++=
-++++++++++++
-> >  1 file changed, 45 insertions(+)
+> >> mtk_vcodec_enc_clock_on():
+> >> This does seem like something a sub-driver *should* be doing for itself
+> > This is for enabling encoder hw related clock.
+> > To support multiple instances, one encode ctx must get hw lock first
+> > then clock on/off hw relate clock.
 > >
-> > diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i=
-2c-mt65xx.c
-> > index dc4aac6..249df86 100644
-> > --- a/drivers/i2c/busses/i2c-mt65xx.c
-> > +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> > @@ -53,6 +53,8 @@
-> >  #define I2C_FS_TIME_INIT_VALUE         0x1303
-> >  #define I2C_WRRD_TRANAC_VALUE          0x0002
-> >  #define I2C_RD_TRANAC_VALUE            0x0001
-> > +#define I2C_TRAN_DEFAULT_VALUE         0x0001
-> > +#define I2C_TRANAC_DEFAULT_VALUE       0x0001
->=20
-> "TRAN" and "TRANAC" are not good names; this should be "TRANSFER_LEN"
-> and "TRANSAC", based on the names of the registers to which you write
-> these constants.
->=20
-> Furthermore, these are not "default" values, they are the transfer
-> length and number of transactions for sending the "master code", so:
->=20
-> #define I2C_TRANSFER_LEN_MASTER_CODE         0x0001
-> #define I2C_TRANSAC_LEN_MASTER_CODE       0x0001
->=20
-> Similarly, I think the "TRANAC" in I2C_WRRD_TRANAC_VALUE and
-> I2C_RD_TRANAC_VALUE should also be TRANSAC.
->=20
-
-Yes, I will follow your advice.
-
+> >> vpu_enable_clock():
+> >> Why can't the VPU driver manage this internally using pm_runtime?
+> >>
+> > Our VPU do not have power domain.
+> > We will remove VPU clock on/off and let vpu control it in next version.
 > >
-> >  #define I2C_DMA_CON_TX                 0x0000
-> >  #define I2C_DMA_CON_RX                 0x0001
-> > @@ -365,6 +367,43 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i=
-2c, unsigned int parent_clk,
-> >         return 0;
-> >  }
+> >>
+> >> That is why I described this as an obfuscation layer. It is collecting
+> >> a bunch of stuff that can be handled using the kernel driver model and
+> >> clumping them together in a special middle layer.
+> >>
+> > We do use kernel driver model, but we put it in
+> > mtk_vcodec_enc_clock_on/mtk_vcodec_enc_clock_off.
+> > Every sub-driver has no need to write the same code.
+> > And once clock configuration change or porting to other chips, we don't
+> > need to change sub-driver one-by-one, just change abstract layer.
+> 
+> I'm afraid I remain extremely unconvinced by the value of this API. It 
+> is possible that once the types are fixed and it is tidied up it won't 
+> stick out so much but I will be very surprised.
+> 
+> Either way, I can wait until v2 before we discuss it further.
+> 
+> 
+> >>>> If the start streaming operation implemented cleanup-on-error properly
+> >>>> then there would only be two useful states: Started and stopped. Even
+> >>>> the "sticky" error behavior looks unnecessary to me (meaning we don't
+> >>>> need to track its state).
+> >>>>
+> >>> We cannot guaranteed that IOCTLs called from the user space follow
+> >>> required sequence.
+> >>> We need states to know if our driver could accept IOCTL command.
+> >>
+> >> I believe that knowing whether the streaming is started or stopped
+> >> (e.g. two states) is sufficient for a driver to correctly handle
+> >> abitrary ioctls from userspace and even then, the core code tracks
+> >> this state for you so there's no need for you do it.
+> >>
+> >> The queue/dequeue ioctls succeed or fail based on the length of the
+> >> queue (i.e. is the buffer queue overflowing or not) and have no need
+> >> to check the streaming state.
 > >
-> > +static int mtk_i2c_send_master_code(struct mtk_i2c *i2c)
-> > +{
-> > +       int ret =3D 0;
-> > +
-> > +       reinit_completion(&i2c->msg_complete);
-> > +
-> > +       writew(I2C_CONTROL_RS | I2C_CONTROL_ACKERR_DET_EN |
-> > +              I2C_CONTROL_CLK_EXT_EN | I2C_CONTROL_DMA_EN,
-> > +              i2c->base + OFFSET_CONTROL);
-> > +
-> > +       /* Clear interrupt status */
-> > +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP | I2C_HS_NACKERR =
-| I2C_ACKERR,
-> > +              i2c->base + OFFSET_INTR_STAT);
-> > +
-> > +       /* Enable interrupt */
-> > +       writew(I2C_RS_TRANSFER | I2C_TRANSAC_COMP, i2c->base +
-> > +              OFFSET_INTR_MASK);
-> > +
-> > +       writew(I2C_TRAN_DEFAULT_VALUE, i2c->base + OFFSET_TRANSFER_=
-LEN);
-> > +       writew(I2C_TRANAC_DEFAULT_VALUE, i2c->base + OFFSET_TRANSAC=
-_LEN);
-> > +
-> > +       writew(I2C_TRANSAC_START | I2C_RS_MUL_CNFG, i2c->base + OFF=
-SET_START);
-> > +
-> > +       ret =3D wait_for_completion_timeout(&i2c->msg_complete,
-> > +                                         i2c->adap.timeout);
->=20
-> How does the hardware know that this transaction should be a "master =
-code"?
-> Do you have to tell the hardware what value ('00001XXX') to use as th=
-e
-> master code?
-
-When we set i2c speed > 400K , the hardware will send master code. We
-have a register to configure master code=EF=BC=8Cand usually we use the=
- default
-value "00001000".
-
-> The Master Code must be sent at <=3D 400 kHz, not the target clock.  =
-How
-> does the hardware know what rate to use?
-
-The i2c speed is defined in dts, and we will set the i2c speed in i2c
-register, so HW will know the rate to use.
-
-> When sending the master code, arbitration is supposed to occur, such
-> that only one winning master can proceed with the following high spee=
-d
-> transaction.
-> Where do you check that you won this arbitration?
-
-> If this is not implemented, adding a "TODO" would be helpful.
->=20
-Our i2c driver now only support one master.
-
-> > +
-> > +       completion_done(&i2c->msg_complete);
->=20
-> This completion_done() is only useful if you check the return value.
-> You should check it too, since we should only check for timeout if th=
-e
-> message hasn't completed.
->=20
-I will delete the completion_done() function.
-
-> > +
-> > +       if (ret =3D=3D 0) {
-> > +               dev_dbg(i2c->dev, "send master code timeout.\n");
-> > +               mtk_i2c_init_hw(i2c);
-> > +               return -ETIMEDOUT;
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> > +
-> >  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg=
- *msgs,
-> >                                int num, int left_num)
-> >  {
-> > @@ -539,6 +578,12 @@ static int mtk_i2c_transfer(struct i2c_adapter=
- *adap,
-> >                 }
-> >         }
+> >> If you are absolutely sure that the other states are needed then
+> >> please provide an example of an ioctl() sequence where the additional
+> >> state is needed.
+> >>
+> > I know your point that we have too many state changes in start_streaming
+> > and stop_streaming function.
+> > We will refine these two functions in next version.
 > >
-> > +       if (i2c->auto_restart && i2c->speed_hz > 400000) {
->=20
-> Don't we need to send the master code for *every* HS transaction, not
-> just "auto_restart"?
->=20
-When we don't use auto restart, we also need to send the master code,
-the master code is sent by HW automatically.
-I am improving the master code section when use auto restart, and this
-will be released in the next patch.
+> > For the example, we need MTK_STATE_HEADER state, to make sure before
+> > encode start, driver already get information to set encode parameters.
+> 
+> Interesting. Again, I'll wait to see how the state simplifcation goes 
+> before commenting further.
+> 
+> 
+> > We need MTK_STATE_ABORT to inform encoder thread (mtk_venc_worker) that
+> > stop encodeing job from stopped ctx instance.
+> > When user space qbuf, we need to make sure everything is ready to sent
+> > buf to encode.
+> 
+> Agree that you need a flag here. In fact currently you have two, 
+> MTK_STATE_ABORT and an unused one called aborting.
+> 
+> You need to be very careful with these flags though. They are a magnet 
+> for data race bugs (especially combined with SMP).
+> 
+> For example at present I can't see any locking in the worker code. This 
+> means there is nothing to make all those read-modify-write sequences 
+> that manage the state atomic (thus risking state corruption).
+> 
+We prevent that one function set the flag and others clear the flag.
+So there is no special lock to protect state.
 
-> "400000" =3D> You already have a macro for this: MAX_FS_MODE_SPEED
->=20
-Yes, I will use MAX_FS_MODE_SPEED.
-
-> > +               ret =3D mtk_i2c_send_master_code(i2c);
-> > +               if (ret)
-> > +                       return ret;
-> > +       }
-> > +
-> >         while (left_num--) {
-> >                 if (!msgs->buf) {
-> >                         dev_dbg(i2c->dev, "data buffer is NULL.\n")=
-;
-> > --
-> > 1.8.1.1.dirty
-> >
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-ker=
-nel" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at  http://www.tux.org/lkml/
+> 
+> Daniel.
