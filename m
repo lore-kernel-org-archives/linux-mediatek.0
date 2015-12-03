@@ -1,7 +1,7 @@
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH] usb: xhci: fix config fail of FS hub behind a HS hub with MTT
-Date: Thu, 3 Dec 2015 14:14:14 +0800
-Message-ID: <1449123254-21654-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH] usb: xhci-mtk: fix bpkts value of LS/HS periodic eps not behind TT
+Date: Thu, 3 Dec 2015 14:17:28 +0800
+Message-ID: <1449123448-22476-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -10,42 +10,49 @@ To: Mathias Nyman <mathias.nyman@intel.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-if a full speed hub connects to a high speed hub which
-supports MTT, the MTT field of its slot context will be set
-to 1 when xHCI driver setups an xHCI virtual device in
-xhci_setup_addressable_virt_dev(); once usb core fetch its
-hub descriptor, and need to update the xHC's internal data
-structures for the device, the HUB field of its slot context
-will be set to 1 too, meanwhile MTT is also set before,
-this will cause configure endpoint command fail, so in the
-case, we should clear MTT to 0 for full speed hub according
-to section 6.2.2
+when a LS or FS device doesn't connect though a HS hub,
+the @bPkts field of its periodic endpoint context should
+be set to 1.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/usb/host/xhci-mtk-sch.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
-index 6cbcd1e..27c8cf8 100644
---- a/drivers/usb/host/xhci.c
-+++ b/drivers/usb/host/xhci.c
-@@ -4785,8 +4785,16 @@ int xhci_update_hub_device(struct usb_hcd *hcd, struct usb_device *hdev,
- 	ctrl_ctx->add_flags |= cpu_to_le32(SLOT_FLAG);
- 	slot_ctx = xhci_get_slot_ctx(xhci, config_cmd->in_ctx);
- 	slot_ctx->dev_info |= cpu_to_le32(DEV_HUB);
-+	/*
-+	 * refer to section 6.2.2: MTT should be 0 for full speed hub,
-+	 * but it may be already set to 1 when setup an xHCI virtual
-+	 * device, so clear it anyway.
-+	 */
- 	if (tt->multi)
- 		slot_ctx->dev_info |= cpu_to_le32(DEV_MTT);
-+	else if (hdev->speed == USB_SPEED_FULL)
-+		slot_ctx->dev_info &= cpu_to_le32(~DEV_MTT);
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index c30de7c..73f763c 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -275,8 +275,9 @@ static bool need_bw_sch(struct usb_host_endpoint *ep,
+ 		return false;
+ 
+ 	/*
+-	 * for LS & FS periodic endpoints which its device don't attach
+-	 * to TT are also ignored, root-hub will schedule them directly
++	 * for LS & FS periodic endpoints which its device is not behind
++	 * a TT are also ignored, root-hub will schedule them directly,
++	 * but need set @bpkts field of endpoint context to 1.
+ 	 */
+ 	if (is_fs_or_ls(speed) && !has_tt)
+ 		return false;
+@@ -339,8 +340,17 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 		GET_MAX_PACKET(usb_endpoint_maxp(&ep->desc)),
+ 		usb_endpoint_dir_in(&ep->desc), ep);
+ 
+-	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT))
++	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT)) {
++		/*
++		 * set @bpkts to 1 if it is LS or FS periodic endpoint, and its
++		 * device does not connected through an external HS hub
++		 */
++		if (usb_endpoint_xfer_int(&ep->desc)
++			|| usb_endpoint_xfer_isoc(&ep->desc))
++			ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(1));
 +
- 	if (xhci->hci_version > 0x95) {
- 		xhci_dbg(xhci, "xHCI version %x needs hub "
- 				"TT think time and number of ports\n",
+ 		return 0;
++	}
+ 
+ 	bw_index = get_bw_index(xhci, udev, ep);
+ 	sch_bw = &sch_array[bw_index];
 -- 
 1.8.1.1.dirty
