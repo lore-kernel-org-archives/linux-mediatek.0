@@ -1,92 +1,72 @@
-From: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH] usb: xhci-mtk: fix AHB bus hang up caused by roothubs
- polling
-Date: Fri, 4 Dec 2015 16:24:32 +0300
-Message-ID: <56619410.4000705@cogentembedded.com>
-References: <1449196807-31785-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4] mmc: core: fix __mmc_switch timeout caused by preempt
+Date: Fri, 4 Dec 2015 15:56:30 +0100
+Message-ID: <CAPDyKFqzekCOna5LUBNJRLQ-+7ryO57_B6=7ne3a9Vj6axF=yw@mail.gmail.com>
+References: <1448846850-14585-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1449196807-31785-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1448846850-14585-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Adrian Hunter <adrian.hunter@intel.com>, Minda Chen <Minda.Chen@csr.com>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello.
+On 30 November 2015 at 02:27, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> there is a time window between __mmc_send_status() and time_afer(),
+> on some eMMC chip, the timeout_ms is only 10ms, if this thread was
+> scheduled out during this period, then, even card has already changes
+> to transfer state by the result of CMD13, this part of code also treat
+> it to timeout error.
+> So, need calculate timeout first, then call __mmc_send_status(), if
+> already timeout and card still in programing state, then treat it to
+> the real timeout error.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-    Sorry for the grammar nitpicking but since it's in the comments, I felt 
-the necessity to comment.
+Thanks, applied for next!
 
-On 12/4/2015 5:40 AM, Chunfeng Yun wrote:
+Kind regards
+Uffe
 
-> when ip fail to enter sleep mode, register access protection will
-
-    Fails.
-
-> be disabed, at the same time if all clocks are disabled, access
-      ^^^^^^^ disabled
-
-> register will hang up AHB bus.
-> the common case causes ip sleep fail is that after all ports enter
-
-    Failure.
-
-> U3 but before ip enters sleep mode, a port receives a resume
-> signal('K'). this will happens when such as clicks mouse to try to
-> do remote wakeup to stop system enter suspend.
-
-    Wake up.
-
-> so stop polling roothubs to avoid access xHCI register on bus
-
-    Root hubs. Accessing.
-
-> suspend, and restart it when bus resume.
-
-    Resumes. Or "is resumed", maybe?
-
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > ---
->   drivers/usb/host/xhci-mtk.c | 23 +++++++++++++++++++++++
->   1 file changed, 23 insertions(+)
+>  drivers/mmc/core/mmc_ops.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
 >
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index c9ab6a4..38635fb 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -696,9 +696,24 @@ static int xhci_mtk_remove(struct platform_device *dev)
->   }
+> diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
+> index 1f44426..2c90635 100644
+> --- a/drivers/mmc/core/mmc_ops.c
+> +++ b/drivers/mmc/core/mmc_ops.c
+> @@ -489,6 +489,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>         unsigned long timeout;
+>         u32 status = 0;
+>         bool use_r1b_resp = use_busy_signal;
+> +       bool expired = false;
 >
->   #ifdef CONFIG_PM_SLEEP
-> +/*
-> + * if ip sleep fail, and all clocks are disabled, access register will hang
-
-    Fails.
-
-> + * AHB bus, so stop poll roothubs to avoid regs access on bus suspend.
-
-    Polling.
-
-> + * and no need to check whether ip sleep fail or not; this will cause SPM to
-
-    Failed.
-
-> + * wakeup system immediately after system suspend complete if ip sleep
-
-    Wake up.
-
-> + * fail, it is what we wanted.
-
-    Fails.
-
-> + */
-[...]
-
-MBR, Sergei
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>         mmc_retune_hold(host);
+>
+> @@ -545,6 +546,12 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>         timeout = jiffies + msecs_to_jiffies(timeout_ms);
+>         do {
+>                 if (send_status) {
+> +                       /*
+> +                        * Due to the possibility of being preempted after
+> +                        * sending the status command, check the expiration
+> +                        * time first.
+> +                        */
+> +                       expired = time_after(jiffies, timeout);
+>                         err = __mmc_send_status(card, &status, ignore_crc);
+>                         if (err)
+>                                 goto out;
+> @@ -565,7 +572,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>                 }
+>
+>                 /* Timeout if the device never leaves the program state. */
+> -               if (time_after(jiffies, timeout)) {
+> +               if (expired && R1_CURRENT_STATE(status) == R1_STATE_PRG) {
+>                         pr_err("%s: Card stuck in programming state! %s\n",
+>                                 mmc_hostname(host), __func__);
+>                         err = -ETIMEDOUT;
+> --
+> 1.8.1.1.dirty
+>
