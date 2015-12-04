@@ -1,87 +1,34 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] usb: xhci-mtk: fix AHB bus hang up caused by roothubs polling
-Date: Fri, 4 Dec 2015 10:40:07 +0800
-Message-ID: <1449196807-31785-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Mathias Nyman <mathias.nyman@intel.com>
+Subject: Re: [PATCH] usb: xhci: fix config fail of FS hub behind a HS hub
+ with MTT
+Date: Fri, 04 Dec 2015 14:06:30 +0200
+Message-ID: <566181C6.6090107@intel.com>
+References: <1449123254-21654-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1449123254-21654-1-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-when ip fail to enter sleep mode, register access protection will
-be disabed, at the same time if all clocks are disabled, access
-register will hang up AHB bus.
-the common case causes ip sleep fail is that after all ports enter
-U3 but before ip enters sleep mode, a port receives a resume
-signal('K'). this will happens when such as clicks mouse to try to
-do remote wakeup to stop system enter suspend.
-so stop polling roothubs to avoid access xHCI register on bus
-suspend, and restart it when bus resume.
+On 03.12.2015 08:14, Chunfeng Yun wrote:
+> if a full speed hub connects to a high speed hub which
+> supports MTT, the MTT field of its slot context will be set
+> to 1 when xHCI driver setups an xHCI virtual device in
+> xhci_setup_addressable_virt_dev(); once usb core fetch its
+> hub descriptor, and need to update the xHC's internal data
+> structures for the device, the HUB field of its slot context
+> will be set to 1 too, meanwhile MTT is also set before,
+> this will cause configure endpoint command fail, so in the
+> case, we should clear MTT to 0 for full speed hub according
+> to section 6.2.2
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/host/xhci-mtk.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Thanks, patch added to queue
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index c9ab6a4..38635fb 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -696,9 +696,24 @@ static int xhci_mtk_remove(struct platform_device *dev)
- }
- 
- #ifdef CONFIG_PM_SLEEP
-+/*
-+ * if ip sleep fail, and all clocks are disabled, access register will hang
-+ * AHB bus, so stop poll roothubs to avoid regs access on bus suspend.
-+ * and no need to check whether ip sleep fail or not; this will cause SPM to
-+ * wakeup system immediately after system suspend complete if ip sleep
-+ * fail, it is what we wanted.
-+ */
- static int xhci_mtk_suspend(struct device *dev)
- {
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+	struct usb_hcd *hcd = mtk->hcd;
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+
-+	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
-+	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
-+	del_timer_sync(&hcd->rh_timer);
-+	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-+	del_timer_sync(&xhci->shared_hcd->rh_timer);
- 
- 	xhci_mtk_host_disable(mtk);
- 	xhci_mtk_phy_power_off(mtk);
-@@ -710,11 +725,19 @@ static int xhci_mtk_suspend(struct device *dev)
- static int xhci_mtk_resume(struct device *dev)
- {
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+	struct usb_hcd *hcd = mtk->hcd;
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
- 
- 	usb_wakeup_disable(mtk);
- 	xhci_mtk_clks_enable(mtk);
- 	xhci_mtk_phy_power_on(mtk);
- 	xhci_mtk_host_enable(mtk);
-+
-+	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
-+	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
-+	usb_hcd_poll_rh_status(hcd);
-+	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-+	usb_hcd_poll_rh_status(xhci->shared_hcd);
- 	return 0;
- }
- 
--- 
-1.8.1.1.dirty
+-Mathias
