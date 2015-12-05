@@ -1,194 +1,83 @@
 From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: [PATCH v2] cpufreq: mt8173: move resources allocation into ->probe()
-Date: Sat,  5 Dec 2015 14:01:46 +0800
-Message-ID: <1449295306-9222-1-git-send-email-pi-cheng.chen@linaro.org>
-References: <1448785898-17838-4-git-send-email-pi-cheng.chen@linaro.org>
+Subject: [PATCH 1/2] cpufreq: mt8173: migrate to use operating-points-v2 bindings
+Date: Sat,  5 Dec 2015 16:53:03 +0800
+Message-ID: <1449305584-414-2-git-send-email-pi-cheng.chen@linaro.org>
+References: <1449305584-414-1-git-send-email-pi-cheng.chen@linaro.org>
 Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1448785898-17838-4-git-send-email-pi-cheng.chen@linaro.org>
+In-Reply-To: <1449305584-414-1-git-send-email-pi-cheng.chen@linaro.org>
 Sender: linux-pm-owner@vger.kernel.org
 To: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Since the return value of ->init() of cpufreq driver is not propagated
-to the device driver model now, move resources allocation into
-->probe() to handle -EPROBE_DEFER properly.
+Modify mt8173-cpufreq driver to get OPP-sharing information and set up
+OPP table provided by operating-points-v2 bindings.
 
 Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
 ---
-v1->v2:
-- fix error handling path in ->probe()
+This patch is based on the series[1] which fixes some issues of
+mt8173-cpufreq driver.
+
+[1] http://thread.gmane.org/gmane.linux.power-management.general/68692
 ---
- drivers/cpufreq/mt8173-cpufreq.c | 98 ++++++++++++++++++++++++++++------------
- 1 file changed, 70 insertions(+), 28 deletions(-)
+ drivers/cpufreq/mt8173-cpufreq.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-index 9d0fe37..257bcb9 100644
+index 257bcb9..17e9cad 100644
 --- a/drivers/cpufreq/mt8173-cpufreq.c
 +++ b/drivers/cpufreq/mt8173-cpufreq.c
-@@ -41,16 +41,35 @@
-  * the original PLL becomes stable at target frequency.
-  */
- struct mtk_cpu_dvfs_info {
-+	struct cpumask cpus;
- 	struct device *cpu_dev;
- 	struct regulator *proc_reg;
- 	struct regulator *sram_reg;
- 	struct clk *cpu_clk;
- 	struct clk *inter_clk;
- 	struct thermal_cooling_device *cdev;
-+	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
- };
+@@ -344,6 +344,9 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	unsigned long rate;
+ 	int ret;
  
-+static LIST_HEAD(dvfs_info_list);
++	/* Mark the first owner of this CPU DVFS domain information */
++	cpumask_set_cpu(cpu, &info->cpus);
 +
-+struct mtk_cpu_dvfs_info *get_dvfs_info(int cpu)
-+{
-+	struct mtk_cpu_dvfs_info *info;
-+	struct list_head *list;
-+
-+	list_for_each(list, &dvfs_info_list) {
-+		info = list_entry(list, struct mtk_cpu_dvfs_info, list_head);
-+
-+		if (cpumask_test_cpu(cpu, &info->cpus))
-+			return info;
+ 	cpu_dev = get_cpu_device(cpu);
+ 	if (!cpu_dev) {
+ 		pr_err("failed to get cpu%d device\n", cpu);
+@@ -390,7 +393,15 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+ 	/* Both presence and absence of sram regulator are valid cases. */
+ 	sram_reg = regulator_get_exclusive(cpu_dev, "sram");
+ 
+-	ret = dev_pm_opp_of_add_table(cpu_dev);
++	/* Get OPP-sharing information from "operating-points-v2" bindings */
++	ret = dev_pm_opp_of_get_sharing_cpus(cpu_dev, &info->cpus);
++	if (ret) {
++		pr_err("failed to get OPP-sharing information for cpu%d\n",
++		       cpu);
++		goto out_free_resources;
 +	}
 +
-+	return NULL;
-+}
-+
- static int mtk_cpufreq_voltage_tracking(struct mtk_cpu_dvfs_info *info,
- 					int new_vproc)
- {
-@@ -402,6 +421,9 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
++	ret = dev_pm_opp_of_cpumask_add_table(&info->cpus);
+ 	if (ret) {
+ 		pr_warn("no OPP table for cpu%d\n", cpu);
+ 		goto out_free_resources;
+@@ -421,13 +432,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
  	 */
  	info->need_voltage_tracking = !IS_ERR(sram_reg);
  
-+	/* CPUs in the same cluster share a clock and power domain. */
-+	cpumask_copy(&info->cpus, &cpu_topology[cpu].core_sibling);
-+
+-	/* CPUs in the same cluster share a clock and power domain. */
+-	cpumask_copy(&info->cpus, &cpu_topology[cpu].core_sibling);
+-
  	return 0;
  
  out_free_opp_table:
-@@ -440,47 +462,32 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 	struct cpufreq_frequency_table *freq_table;
- 	int ret;
+-	dev_pm_opp_of_remove_table(cpu_dev);
++	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
  
--	info = kzalloc(sizeof(*info), GFP_KERNEL);
--	if (!info)
--		return -ENOMEM;
--
--	ret = mtk_cpu_dvfs_info_init(info, policy->cpu);
--	if (ret) {
--		pr_err("%s failed to initialize dvfs info for cpu%d\n",
--		       __func__, policy->cpu);
--		goto out_free_dvfs_info;
-+	info = get_dvfs_info(policy->cpu);
-+	if (!info) {
-+		pr_err("dvfs info for cpu%d is not initialized.\n",
-+		       policy->cpu);
-+		return -EINVAL;
- 	}
+ out_free_resources:
+ 	if (!IS_ERR(proc_reg))
+@@ -453,7 +461,7 @@ static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
+ 	if (!IS_ERR(info->inter_clk))
+ 		clk_put(info->inter_clk);
  
- 	ret = dev_pm_opp_init_cpufreq_table(info->cpu_dev, &freq_table);
- 	if (ret) {
- 		pr_err("failed to init cpufreq table for cpu%d: %d\n",
- 		       policy->cpu, ret);
--		goto out_release_dvfs_info;
-+		return ret;
- 	}
- 
- 	ret = cpufreq_table_validate_and_show(policy, freq_table);
- 	if (ret) {
- 		pr_err("%s: invalid frequency table: %d\n", __func__, ret);
--		goto out_free_cpufreq_table;
-+		dev_pm_opp_free_cpufreq_table(info->cpu_dev, &freq_table);
-+		return ret;
- 	}
- 
--	/* CPUs in the same cluster share a clock and power domain. */
--	cpumask_copy(policy->cpus, &cpu_topology[policy->cpu].core_sibling);
-+	cpumask_copy(policy->cpus, &info->cpus);
- 	policy->driver_data = info;
- 	policy->clk = info->cpu_clk;
- 
- 	return 0;
--
--out_free_cpufreq_table:
--	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &freq_table);
--
--out_release_dvfs_info:
--	mtk_cpu_dvfs_info_release(info);
--
--out_free_dvfs_info:
--	kfree(info);
--
--	return ret;
+-	dev_pm_opp_of_remove_table(info->cpu_dev);
++	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
  }
  
- static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
-@@ -489,8 +496,6 @@ static int mtk_cpufreq_exit(struct cpufreq_policy *policy)
- 
- 	cpufreq_cooling_unregister(info->cdev);
- 	dev_pm_opp_free_cpufreq_table(info->cpu_dev, &policy->freq_table);
--	mtk_cpu_dvfs_info_release(info);
--	kfree(info);
- 
- 	return 0;
- }
-@@ -510,11 +515,48 @@ static struct cpufreq_driver mt8173_cpufreq_driver = {
- 
- static int mt8173_cpufreq_probe(struct platform_device *pdev)
- {
--	int ret;
-+	struct mtk_cpu_dvfs_info *info;
-+	struct list_head *list, *tmp;
-+	int cpu, ret;
-+
-+	for_each_possible_cpu(cpu) {
-+		info = get_dvfs_info(cpu);
-+		if (info)
-+			continue;
-+
-+		info = kzalloc(sizeof(*info), GFP_KERNEL);
-+		if (!info) {
-+			ret = -ENOMEM;
-+			goto release_dvfs_info_list;
-+		}
-+
-+		ret = mtk_cpu_dvfs_info_init(info, cpu);
-+		if (ret) {
-+			pr_err("%s failed to initialize dvfs info for cpu%d\n",
-+			       __func__, cpu);
-+			kfree(info);
-+			goto release_dvfs_info_list;
-+		}
-+
-+		list_add(&info->list_head, &dvfs_info_list);
-+	}
- 
- 	ret = cpufreq_register_driver(&mt8173_cpufreq_driver);
--	if (ret)
-+	if (ret) {
- 		pr_err("failed to register mtk cpufreq driver\n");
-+		goto release_dvfs_info_list;
-+	}
-+
-+	return 0;
-+
-+release_dvfs_info_list:
-+	list_for_each_safe(list, tmp, &dvfs_info_list) {
-+		info = list_entry(list, struct mtk_cpu_dvfs_info, list_head);
-+
-+		mtk_cpu_dvfs_info_release(info);
-+		list_del(list);
-+		kfree(info);
-+	}
- 
- 	return ret;
- }
+ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
 -- 
 1.9.1
 
