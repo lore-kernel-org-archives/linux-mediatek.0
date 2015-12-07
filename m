@@ -1,38 +1,33 @@
-From: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/2] ARM64: dts: mt8173: Add CPU OPP, clock and regulator
- supply properties
-Date: Mon, 7 Dec 2015 20:44:16 +0800
-Message-ID: <CALx668Vf73vwScD+_5JbuCT7yGrZ9PviHfy0zh6vyb_9m-M7LQ@mail.gmail.com>
-References: <1449305584-414-1-git-send-email-pi-cheng.chen@linaro.org>
-	<1449305584-414-3-git-send-email-pi-cheng.chen@linaro.org>
-	<20151207100700.GH3294@ubuntu>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v2] cpufreq: mt8173: move resources allocation into
+ ->probe()
+Date: Mon, 7 Dec 2015 21:33:57 +0530
+Message-ID: <20151207160357.GL3294@ubuntu>
+References: <1448785898-17838-4-git-send-email-pi-cheng.chen@linaro.org>
+ <1449295306-9222-1-git-send-email-pi-cheng.chen@linaro.org>
+ <CAGS+omBwHVAARNA=ZwK+fAwfJye6eDnxoKW6qCaH_haqsw9PJA@mail.gmail.com>
+ <CALx668XbV2CbuB0QL_3eV=JMTeOyjKP=s2mznadQxgGD_SGABg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20151207100700.GH3294@ubuntu>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linaro Kernel Mailman List <linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CALx668XbV2CbuB0QL_3eV=JMTeOyjKP=s2mznadQxgGD_SGABg@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ricky Liang <jcliang@chromium.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 7, 2015 at 6:07 PM, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
-> On 05-12-15, 16:53, Pi-Cheng Chen wrote:
->> +     cluster0_opp: opp_table0 {
->> +             compatible = "operating-points-v2";
->> +             opp-shared;
->> +             opp00 {
->
-> These have to named like: opp@50700000, look at linux-next for this.
+On 07-12-15, 20:42, Pi-Cheng Chen wrote:
+> >>         ret = dev_pm_opp_init_cpufreq_table(info->cpu_dev, &freq_table);
+> >
+> > Hmm. Does this change at init() time?  Or can we move this to probe(), too?
+> 
+> It doesn't change at init() time for MT8173 since we don't add OPP
+> dynamically and I don't see any problem to move it. I will move it to probe().
 
-Will do it.
+No. None of this belongs to probe(), we do it there just to handle the
+EPROBE_DEFER thing. Please don't move anything that isn't required to
+be.
 
-Thanks,
-Pi-Cheng
-
->
-> --
-> viresh
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+viresh
