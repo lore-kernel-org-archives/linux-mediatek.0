@@ -1,62 +1,36 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] arm64: dts: mt8173: Add nor flash node
-Date: Wed, 9 Dec 2015 11:28:28 +0100
-Message-ID: <5668024C.7020509@gmail.com>
-References: <1449460394-31601-1-git-send-email-bayi.cheng@mediatek.com>
- <CAGS+omCuB3VGcPk3fezakdVDnFB3GAmMD+wZ_6nGdv+uHoB40g@mail.gmail.com>
- <1449462852.9118.25.camel@mhfsdcap03> <1449463619.9118.31.camel@mhfsdcap03>
- <CAGS+omBycHuNaMy5vuEf0ZSRTniCS50qEdAY0=L1_1Wno4EBTQ@mail.gmail.com>
+From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/5] ARM: mediatek: Add MT2701 config options for mediatek SoCs.
+Date: Wed, 9 Dec 2015 23:44:36 +0100
+Message-ID: <CACRpkdYdJmb5vLmDmaRGt=0PGs3GzyPnqtEh3UJQ5euoxyg6Fg@mail.gmail.com>
+References: <1448527472-20651-1-git-send-email-biao.huang@mediatek.com>
+	<1448527472-20651-2-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omBycHuNaMy5vuEf0ZSRTniCS50qEdAY0=L1_1Wno4EBTQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>, bayi cheng <bayi.cheng@mediatek.com>
-Cc: "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1448527472-20651-2-git-send-email-biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Nov 26, 2015 at 9:44 AM, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
+> From: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>
+> The upcoming MTK pinctrl driver have a big pin table for each SoC
+> and we don't want to bloat the kernel binary if we don't need it.
+> Add config options so we can build for one SoC only. Add MT2701.
+>
+> Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On 07/12/15 09:19, Daniel Kurtz wrote:
-> Bayi,
->
-> On Mon, Dec 7, 2015 at 12:46 PM, bayi cheng <bayi.cheng@mediatek.com> wrote:
->> On Mon, 2015-12-07 at 12:34 +0800, bayi cheng wrote:
->>> On Mon, 2015-12-07 at 12:09 +0800, Daniel Kurtz wrote:
->>>> Bayi,
->>>>
->>>> On Mon, Dec 7, 2015 at 11:53 AM, Bayi Cheng <bayi.cheng@mediatek.com> wrote:
->>>>> Add Mediatek nor flash node
->>>>>
->>>>> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
->>>>> Acked-by: Brian Norris <computersforpeace@gmail.com>
->>>>> ---
->>>>> Previous version of this patch is
->>>>> http://lists.infradead.org/pipermail/linux-arm-kernel/2015-November/386005.html
->>>>> Drop flash node from mt8173.dtsi accroding review comment
->>>>
->>>> Is there a flash on mt8173-evb that can be accessed by the nor_flash ?
->>>> If so, can you include flash@0 node in the mt8173-evb.dts.
->>>>
->>>> -Dan
->>>>
->>> Hi Daniel, Thanks for your comments! you are right, there is a flash on
->>> mt8173-evb which can be accessed by the nor_flash, and I will include
->>> flash@0 node in mt8173-evb.dts (kernel v3.18) too.
->>>
->>> Bayi
->>
->> Hi Dan, I have reworked a EVB board for spi nor verify, we replaced the
->> spi nand flash with spi nor flash on EVB board,
->> and our shipping EVB board haven't support spi nor flash, So I will not
->> include flash@0 node in the mt8173-evb.dts. I am sorry to made you
->> confused!
->
-> Thanks for confirming.
->
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium. org>
->
+Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+FWIW, take this through the ARM SoC tree, since it's
+just a Kconfig symbol, the pin control patches
+should be possible to merge orthogonally.
 
-Added to v4.5-next/dts
-Thanks a lot.
+Yours,
+Linus Walleij
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
