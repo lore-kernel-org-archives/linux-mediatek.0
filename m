@@ -1,63 +1,62 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 1/5] dt-bindings: iommu: Add binding for mediatek IOMMU
-Date: Wed, 9 Dec 2015 14:55:44 +0800
-Message-ID: <1449644144.14761.44.camel@mhfsdcap03>
-References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
-	<1449568153-15643-2-git-send-email-yong.wu@mediatek.com>
-	<20151209033302.GA12091@rob-hp-laptop>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8173: Add nor flash node
+Date: Wed, 9 Dec 2015 11:28:28 +0100
+Message-ID: <5668024C.7020509@gmail.com>
+References: <1449460394-31601-1-git-send-email-bayi.cheng@mediatek.com>
+ <CAGS+omCuB3VGcPk3fezakdVDnFB3GAmMD+wZ_6nGdv+uHoB40g@mail.gmail.com>
+ <1449462852.9118.25.camel@mhfsdcap03> <1449463619.9118.31.camel@mhfsdcap03>
+ <CAGS+omBycHuNaMy5vuEf0ZSRTniCS50qEdAY0=L1_1Wno4EBTQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20151209033302.GA12091@rob-hp-laptop>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omBycHuNaMy5vuEf0ZSRTniCS50qEdAY0=L1_1Wno4EBTQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>, bayi cheng <bayi.cheng@mediatek.com>
+Cc: "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-mtd@lists.infradead.org, Brian Norris <computersforpeace@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-also add Mark.
 
-On Tue, 2015-12-08 at 21:33 -0600, Rob Herring wrote:
-> On Tue, Dec 08, 2015 at 05:49:09PM +0800, Yong Wu wrote:
-> > This patch add mediatek iommu dts binding document.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  68 +++++++++++++
-> >  include/dt-bindings/memory/mt8173-larb-port.h      | 111 +++++++++++++++++++++
-> 
-> This should be iommu rather than memory.
 
-Hi Rob,
-   Thanks very much for review.
+On 07/12/15 09:19, Daniel Kurtz wrote:
+> Bayi,
+>
+> On Mon, Dec 7, 2015 at 12:46 PM, bayi cheng <bayi.cheng@mediatek.com> wrote:
+>> On Mon, 2015-12-07 at 12:34 +0800, bayi cheng wrote:
+>>> On Mon, 2015-12-07 at 12:09 +0800, Daniel Kurtz wrote:
+>>>> Bayi,
+>>>>
+>>>> On Mon, Dec 7, 2015 at 11:53 AM, Bayi Cheng <bayi.cheng@mediatek.com> wrote:
+>>>>> Add Mediatek nor flash node
+>>>>>
+>>>>> Signed-off-by: Bayi Cheng <bayi.cheng@mediatek.com>
+>>>>> Acked-by: Brian Norris <computersforpeace@gmail.com>
+>>>>> ---
+>>>>> Previous version of this patch is
+>>>>> http://lists.infradead.org/pipermail/linux-arm-kernel/2015-November/386005.html
+>>>>> Drop flash node from mt8173.dtsi accroding review comment
+>>>>
+>>>> Is there a flash on mt8173-evb that can be accessed by the nor_flash ?
+>>>> If so, can you include flash@0 node in the mt8173-evb.dts.
+>>>>
+>>>> -Dan
+>>>>
+>>> Hi Daniel, Thanks for your comments! you are right, there is a flash on
+>>> mt8173-evb which can be accessed by the nor_flash, and I will include
+>>> flash@0 node in mt8173-evb.dts (kernel v3.18) too.
+>>>
+>>> Bayi
+>>
+>> Hi Dan, I have reworked a EVB board for spi nor verify, we replaced the
+>> spi nand flash with spi nor flash on EVB board,
+>> and our shipping EVB board haven't support spi nor flash, So I will not
+>> include flash@0 node in the mt8173-evb.dts. I am sorry to made you
+>> confused!
+>
+> Thanks for confirming.
+>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium. org>
+>
 
-   From the HW, all the larbs and ports are defined in the SMI.
-About the position of the SMI code, We also discussed before in [1].
-So I put the header file in /dt-bindings/memory/.
-
-This is a smi larb-port header file, maybe we should move this header
-file into this patch:
-[2/5] dt-bindings: mediatek: Add smi dts binding
-
-is it ok if we move it into [2/5]?
-
-[1]
-http://lists.infradead.org/pipermail/linux-mediatek/2015-March/000121.html
-
-> 
-> Otherwise, it looks okay to me.
-
-Thanks.
-
-> 
-> >  2 files changed, 179 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> >  create mode 100644 include/dt-bindings/memory/mt8173-larb-port.h
+Added to v4.5-next/dts
+Thanks a lot.
