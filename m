@@ -1,30 +1,27 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 4/5] pinctrl: mediatek: Add Pinctrl/GPIO/EINT driver for mt2701
-Date: Wed, 9 Dec 2015 23:52:01 +0100
-Message-ID: <CACRpkda2vgrVEisH=akc5aj6h4LW+mBTqgbAiF3E=3zcu6A28A@mail.gmail.com>
-References: <1448527472-20651-1-git-send-email-biao.huang@mediatek.com>
-	<1448527472-20651-5-git-send-email-biao.huang@mediatek.com>
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Subject: Re: [PATCH v2] cpufreq: mt8173: move resources allocation into ->probe()
+Date: Thu, 10 Dec 2015 00:53:41 +0100
+Message-ID: <3188378.Wlzx7Ukr89@vostro.rjw.lan>
+References: <1448785898-17838-4-git-send-email-pi-cheng.chen@linaro.org> <1449295306-9222-1-git-send-email-pi-cheng.chen@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1448527472-20651-5-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1449295306-9222-1-git-send-email-pi-cheng.chen@linaro.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Nov 26, 2015 at 9:44 AM, Biao Huang <biao.huang@mediatek.com> wrote:
+On Saturday, December 05, 2015 02:01:46 PM Pi-Cheng Chen wrote:
+> Since the return value of ->init() of cpufreq driver is not propagated
+> to the device driver model now, move resources allocation into
+> ->probe() to handle -EPROBE_DEFER properly.
+> 
+> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
 
-> Add mt2701 support using mediatek common pinctrl driver.
-> MT2701 have some special pins need an extra setting register
-> than other ICs, so adding this support to common code.
->
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+I'm expecting a v3 here.  Please let me know if I should apply this instead.
 
-This looks uncontroversial, but I would like to have some of the
-other Mediatek driver authors send their Ack/Review tags,
-so Hongzhou & Yingjoe: can you review this and the other
-patch to the pin control driver?
+Thanks,
+Rafael
 
-Yours,
-Linus Walleij
