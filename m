@@ -1,106 +1,37 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: [RFC PATCH] ASoC: dpcm: Apply symmetry for DPCM
-Date: Fri, 11 Dec 2015 11:33:51 +0800
-Message-ID: <1449804831-58929-1-git-send-email-koro.chen@mediatek.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v6 3/5] memory: mediatek: Add SMI driver
+Date: Fri, 11 Dec 2015 15:22:30 +0800
+Message-ID: <1449818550.14149.2.camel@mhfsdcap03>
+References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
+	 <1449568153-15643-4-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, liam.r.girdwood@linux.intel.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, PC Liao <pc.liao@mediatek.com>, Koro Chen <koro.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1449568153-15643-4-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: PC Liao <pc.liao@mediatek.com>
+On Tue, 2015-12-08 at 17:49 +0800, Yong Wu wrote:
+> This patch add SMI(Smart Multimedia Interface) driver. This driver
+> is responsible to enable/disable iommu and control the power domain
+> and clocks of each local arbiter.
+> 
+> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
 
-DPCM does not fully support symmetry attributes. soc_pcm_apply_symmetry()
-is skipped in soc_pcm_open() for DPCM, without being applied elsewhere.
-So HW parameters cannot be correctly limited, and user space can do
-playback/capture at different rates while HW actually does not support it.
-soc_pcm_params_symmetry() will return error and the second stream stops.
+Hi Matthias,
+   Because drivers/memory/ don't have the maintainer, and our IOMMU,
+V4L2 and DRM rely on the SMI. From Joerg and Thierry[1], we need your
+help. Could you have a loot at our SMI while free?
+Look forward to any comment from you.
+Thanks.
 
-This patch adds soc_pcm_apply_symmetry() for FE, BE, and codec DAIs
-in DPCM path that was skipped in soc_pcm_open().
+[1]http://lists.linuxfoundation.org/pipermail/iommu/2015-November/014981.html
 
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
-Signed-off-by: Koro Chen <koro.chen@mediatek.com>
----
- sound/soc/soc-pcm.c |   57 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 57 insertions(+)
-
-diff --git a/sound/soc/soc-pcm.c b/sound/soc/soc-pcm.c
-index 67ef1a0..2a2ca22 100644
---- a/sound/soc/soc-pcm.c
-+++ b/sound/soc/soc-pcm.c
-@@ -1614,6 +1614,56 @@ static void dpcm_set_fe_update_state(struct snd_soc_pcm_runtime *fe,
- 	snd_pcm_stream_unlock_irq(substream);
- }
- 
-+static int dpcm_apply_symmetry(struct snd_pcm_substream *fe_substream,
-+			       int stream)
-+{
-+	struct snd_soc_dpcm *dpcm;
-+	struct snd_soc_pcm_runtime *fe = fe_substream->private_data;
-+	struct snd_soc_dai *fe_cpu_dai = fe->cpu_dai;
-+	int err;
-+
-+	/* apply symmetry for FE */
-+	if (soc_pcm_has_symmetry(fe_substream))
-+		fe_substream->runtime->hw.info |= SNDRV_PCM_INFO_JOINT_DUPLEX;
-+
-+	/* Symmetry only applies if we've got an active stream. */
-+	if (fe_cpu_dai->active) {
-+		err = soc_pcm_apply_symmetry(fe_substream, fe_cpu_dai);
-+		if (err < 0)
-+			return err;
-+	}
-+
-+	/* apply symmetry for BE */
-+	list_for_each_entry(dpcm, &fe->dpcm[stream].be_clients, list_be) {
-+		struct snd_soc_pcm_runtime *be = dpcm->be;
-+		struct snd_pcm_substream *be_substream =
-+			snd_soc_dpcm_get_substream(be, stream);
-+		struct snd_soc_pcm_runtime *rtd = be_substream->private_data;
-+		int i;
-+
-+		if (soc_pcm_has_symmetry(be_substream))
-+			be_substream->runtime->hw.info |= SNDRV_PCM_INFO_JOINT_DUPLEX;
-+
-+		/* Symmetry only applies if we've got an active stream. */
-+		if (rtd->cpu_dai->active) {
-+			err = soc_pcm_apply_symmetry(be_substream, rtd->cpu_dai);
-+			if (err < 0)
-+				return err;
-+		}
-+
-+		for (i = 0; i < rtd->num_codecs; i++) {
-+			if (rtd->codec_dais[i]->active) {
-+				err = soc_pcm_apply_symmetry(be_substream,
-+							     rtd->codec_dais[i]);
-+				if (err < 0)
-+					return err;
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int dpcm_fe_dai_startup(struct snd_pcm_substream *fe_substream)
- {
- 	struct snd_soc_pcm_runtime *fe = fe_substream->private_data;
-@@ -1642,6 +1692,13 @@ static int dpcm_fe_dai_startup(struct snd_pcm_substream *fe_substream)
- 	dpcm_set_fe_runtime(fe_substream);
- 	snd_pcm_limit_hw_rates(runtime);
- 
-+	ret = dpcm_apply_symmetry(fe_substream, stream);
-+	if (ret < 0) {
-+		dev_err(fe->dev, "ASoC: failed to apply dpcm symmetry %d\n",
-+			ret);
-+		goto unwind;
-+	}
-+
- 	dpcm_set_fe_update_state(fe, stream, SND_SOC_DPCM_UPDATE_NO);
- 	return 0;
- 
--- 
-1.7.9.5
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
