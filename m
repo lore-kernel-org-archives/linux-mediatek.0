@@ -1,37 +1,41 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 3/5] memory: mediatek: Add SMI driver
-Date: Fri, 11 Dec 2015 15:22:30 +0800
-Message-ID: <1449818550.14149.2.camel@mhfsdcap03>
-References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
-	 <1449568153-15643-4-git-send-email-yong.wu@mediatek.com>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [PATCH v2 2/5] dt-bindings: mediatek: Modify pinctrl bindings for mt2701
+Date: Fri, 11 Dec 2015 17:07:49 +0800
+Message-ID: <1449824872-18314-3-git-send-email-biao.huang@mediatek.com>
+References: <1449824872-18314-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1449568153-15643-4-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1449824872-18314-1-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com, Biao Huang <biao.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2015-12-08 at 17:49 +0800, Yong Wu wrote:
-> This patch add SMI(Smart Multimedia Interface) driver. This driver
-> is responsible to enable/disable iommu and control the power domain
-> and clocks of each local arbiter.
-> 
-> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-Hi Matthias,
-   Because drivers/memory/ don't have the maintainer, and our IOMMU,
-V4L2 and DRM rely on the SMI. From Joerg and Thierry[1], we need your
-help. Could you have a loot at our SMI while free?
-Look forward to any comment from you.
-Thanks.
-
-[1]http://lists.linuxfoundation.org/pipermail/iommu/2015-November/014981.html
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+index 0480bc3..9ffb0b2 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
++++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+@@ -4,10 +4,11 @@ The Mediatek's Pin controller is used to control SoC pins.
+ 
+ Required properties:
+ - compatible: value should be one of the following.
+-    (a) "mediatek,mt8135-pinctrl", compatible with mt8135 pinctrl.
+-    (b) "mediatek,mt8173-pinctrl", compatible with mt8173 pinctrl.
+-    (c) "mediatek,mt6397-pinctrl", compatible with mt6397 pinctrl.
+-    (d) "mediatek,mt8127-pinctrl", compatible with mt8127 pinctrl.
++	"mediatek,mt2701-pinctrl", compatible with mt2701 pinctrl.
++	"mediatek,mt6397-pinctrl", compatible with mt6397 pinctrl.
++	"mediatek,mt8127-pinctrl", compatible with mt8127 pinctrl.
++	"mediatek,mt8135-pinctrl", compatible with mt8135 pinctrl.
++	"mediatek,mt8173-pinctrl", compatible with mt8173 pinctrl.
+ - pins-are-numbered: Specify the subnodes are using numbered pinmux to
+   specify pins.
+ - gpio-controller : Marks the device node as a gpio controller.
+-- 
+1.7.9.5
