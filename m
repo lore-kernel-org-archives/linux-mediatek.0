@@ -1,150 +1,129 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v12] Add Mediatek thermal support
-Date: Mon, 14 Dec 2015 11:37:39 +0100
-Message-ID: <20151214103739.GA14356@pengutronix.de>
-References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 4/8] dt-bindings: Add a binding for Mediatek Video
+ Encoder
+Date: Mon, 14 Dec 2015 12:36:17 +0100
+Message-ID: <566EA9B1.5000102@gmail.com>
+References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
+ <1449827743-22895-5-git-send-email-tiffany.lin@mediatek.com>
+ <20151211172919.GA2896@rob-hp-laptop> <1450081618.5745.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1448883753-19068-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1450081618.5745.3.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tiffany lin <tiffany.lin@mediatek.com>, Rob Herring <robh@kernel.org>
+Cc: daniel.thompson@linaro.org, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Eduardo,
 
-Ok, to apply this? There seem to be no further comments.
 
-Sascha
+On 14/12/15 09:26, tiffany lin wrote:
+> On Fri, 2015-12-11 at 11:29 -0600, Rob Herring wrote:
+>> On Fri, Dec 11, 2015 at 05:55:39PM +0800, Tiffany Lin wrote:
+>>> Add a DT binding documentation of Video Encoder for the
+>>> MT8173 SoC from Mediatek.
+>>>
+>>> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+>>
+>> A question and minor issue below, otherwise:
+>>
+>> Acked-by: Rob Herring <robh@kernel.org>
+>>
+>>> ---
+>>>   .../devicetree/bindings/media/mediatek-vcodec.txt  |   58 ++++++++++++++++++++
+>>>   1 file changed, 58 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+>>> new file mode 100644
+>>> index 0000000..510cd81
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+>>> @@ -0,0 +1,58 @@
+>>> +Mediatek Video Codec
+>>> +
+>>> +Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
+>>> +supports high resolution encoding functionalities.
+>>> +
+>>> +Required properties:
+>>> +- compatible : "mediatek,mt8173-vcodec-enc" for encoder
+>>> +- reg : Physical base address of the video codec registers and length of
+>>> +  memory mapped region.
+>>> +- interrupts : interrupt number to the cpu.
+>>> +- mediatek,larb : must contain the local arbiters in the current Socs.
 
-On Mon, Nov 30, 2015 at 12:42:30PM +0100, Sascha Hauer wrote:
-> This series adds support for the thermal sensors included in the
-> MT8173 SoC. Currently only basic temperature reading is supported
-> without any interrupt support.
-> 
-> The cpufreq driver for MT8173 is currently under review, so there's no
-> real cooling device available in mainline. Until this is available the
-> thermal driver can be tested with the following dts snippet. It creates
-> a fake gpio fan and a fake trip point which is so low that it can easily
-> be reached with a "cat /dev/zero > /dev/null" on the command line.
-> 
-> Sascha
-> 
-> Changes since v11:
-> - Fix usage of uninitialized variable gcc didn't warn about
-> 
-> changes since v10:
-> - Some style cleanup
-> - Add comment to make clear why we use the sensors in banks even if we
->   currently only use the maximum of all banks
-> 
-> changes since v9:
-> - rebase on v4.3
-> - Add support for reading the calibration values from nvmem fuses
-> - Only register a single thermal zone instead of four as it seems
->   that's everything needed
-> 
-> changes since v8:
-> - Add commit description to binding patch
-> - rebase on v4.3-rc2
-> 
-> changes since v7:
-> - re-add some used defines removed in v5
-> - Use MT8173_THERMAL_ZONE_* defines as array indices in static initializers
-> 
-> changes since v6:
-> - remove dot in Hanyi Wus name
-> 
-> changes since v5:
-> - update copyright
-> - remove unused defines
-> 
-> Changes since v4:
-> - give calibration constants more meaningful names (offset, slope)
-> - Use define instead of 0x00c for register access.
-> 
-> Changes since v3:
-> - add include/dt-bindings/thermal/mt8173.h for to be able to use sensor names
->   in dts files
-> - fix disabling wrong clock in error path
-> - remove now unused reset-names property from binding document
-> - rename MT8173_NUM_BANKS -> MT8173_NUM_ZONES
-> - rename MT8173_NUM_SENSING_POINTS -> MT8173_NUM_SENSORS_PER_ZONE
-> - rename struct thermal_zone_device *tz -> struct thermal_zone_device *tzd
-> 
-> Changes since v2:
-> - sort #includes alphabetically
-> - Add prefix to register defines
-> - drop some members from struct mtk_thermal
-> - simplify raw_to_mcelsius()
-> - add and use more register bit defines
-> - use device_reset() instead of devm_reset_control_get()/reset_control_reset()
-> - misc other stuff
-> 
-> Changes since v1:
-> - Use "mediatek," prefix for custom properties
-> - Drop "thermal: consistently use int for temperatures" dependency
-> 
-> -------------
-> 
-> 	fan: gpio_fan {
-> 		compatible = "gpio-fan";
-> 		gpios = <&pio 24 0>;
-> 		gpio-fan,speed-map = <0    0
-> 				      4500 1>;
-> 		#cooling-cells = <2>;
-> 	};
-> 
-> 	thermal-zones {
-> 			cpu_thermal: cpu_thermal {
-> 			polling-delay-passive = <1000>; /* milliseconds */
-> 			polling-delay = <1000>; /* milliseconds */
-> 
-> 			thermal-sensors = <&thermal>;
-> 
-> 			trips {
-> 				cpu_passive: cpu_passive {
-> 					temperature = <47000>; /* millicelsius */
-> 					hysteresis = <2000>; /* millicelsius */
-> 					type = "passive";
-> 				};
-> 
-> 				cpu_crit {
-> 					temperature = <90000>; /* millicelsius */
-> 					hysteresis = <2000>; /* millicelsius */
-> 					type = "critical";
-> 				};
-> 			};
-> 
-> 			cooling-maps {
-> 				map0 {
-> 					trip = <&cpu_passive>;
-> 					cooling-device = <&fan THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> 				};
-> 			};
-> 		};
-> 	};
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+This looks strange, shouldn't it be "larb" instead of "mediatek,larb".
+At least the example does not use the mediatek prefix.
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+>>> +- clocks : list of clock specifiers, corresponding to entries in
+>>> +  the clock-names property;
+>>> +- clock-names: must contain "vencpll", "venc_lt_sel", "vcodecpll_370p5_ck"
+>>> +- iommus : list of iommus specifiers should be enabled for hw encode.
+>>> +  There are 2 cells needed to enable/disable iommu.
+>>> +  The first one is local arbiter index(larbid), and the other is port
+>>> +  index(portid) within local arbiter. Specifies the larbid and portid
+>>> +  as defined in dt-binding/memory/mt8173-larb-port.h.
+>>> +- mediatek,vpu : the node of video processor unit
+
+Same here.
+
+Regards,
+Matthias
+
+>>> +
+>>> +Example:
+>>> +vcodec_enc: vcodec@0x18002000 {
+>>> +    compatible = "mediatek,mt8173-vcodec-enc";
+>>> +    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
+>>> +          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
+>>> +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
+>>> +           <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+>>> +    larb = <&larb3>,
+>>> +           <&larb5>;
+>>> +    iommus = <&iommu M4U_LARB3_ID M4U_PORT_VENC_RCPU>,
+>>
+>> Is this the same iommu as the VPU? If so, you can't have a mixed number
+>> of cells.
+> Yes, its same iommus as the VPU.
+> Now we use two parameters for iommus.
+> We will fix this in next version.
+>
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REC>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_BSDMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_SV_COMV>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_RD_COMV>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_LUMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_CHROMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_LUMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_CHROMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_RDMA>,
+>>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_WDMA>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RCPU_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_FRM_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_BSDMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_SV_COMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RD_COMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_LUMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_CHROMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REF_LUMA_SET2>,
+>>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_CHROMA_SET2>;
+>>> +    vpu = <&vpu>;
+>>
+>> Need to update the example.
+> Sorry, I didn't get it.
+> Do you means update VPU binding document "media/mediatek-vpu.txt"?
+>
+>>
+>>> +    clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
+>>> +             <&topckgen CLK_TOP_VENC_LT_SEL>,
+>>> +             <&topckgen CLK_TOP_VCODECPLL_370P5>;
+>>> +    clock-names = "vencpll",
+>>> +                  "venc_lt_sel",
+>>> +                  "vcodecpll_370p5_ck";
+>>> +  };
+>>> --
+>>> 1.7.9.5
+>>>
+>
+>
