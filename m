@@ -1,78 +1,139 @@
-From: Liguo Zhang <liguo.zhang@mediatek.com>
-Subject: [PATCH v3] i2c: mediatek: fix i2c multi transfer issue in high speed mode
-Date: Tue, 15 Dec 2015 15:22:26 +0800
-Message-ID: <1450164146-28995-1-git-send-email-liguo.zhang@mediatek.com>
+From: tiffany lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH v2 4/8] dt-bindings: Add a binding for Mediatek Video
+ Encoder
+Date: Tue, 15 Dec 2015 16:26:49 +0800
+Message-ID: <1450168009.31617.4.camel@mtksdaap41>
+References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1449827743-22895-5-git-send-email-tiffany.lin@mediatek.com>
+	 <20151211172919.GA2896@rob-hp-laptop> <1450081618.5745.3.camel@mtksdaap41>
+	 <566EA9B1.5000102@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <566EA9B1.5000102@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, daniel.thompson@linaro.org, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-For mt8173 platform with auto restart support, when doing i2c multi
-transfer in high speed, we should ignore the first restart irq after
-the master code, otherwise the first transfer will be discarded.
+Hi Matthias,
 
-Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
----
-Change in v3:
-ignore the first restart irq after the master code when doing
-i2c multi transfer in high speed.
 
-change in v2:
-fix i2c checkpatch error.
+On Mon, 2015-12-14 at 12:36 +0100, Matthias Brugger wrote:
+> 
+> On 14/12/15 09:26, tiffany lin wrote:
+> > On Fri, 2015-12-11 at 11:29 -0600, Rob Herring wrote:
+> >> On Fri, Dec 11, 2015 at 05:55:39PM +0800, Tiffany Lin wrote:
+> >>> Add a DT binding documentation of Video Encoder for the
+> >>> MT8173 SoC from Mediatek.
+> >>>
+> >>> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> >>
+> >> A question and minor issue below, otherwise:
+> >>
+> >> Acked-by: Rob Herring <robh@kernel.org>
+> >>
+> >>> ---
+> >>>   .../devicetree/bindings/media/mediatek-vcodec.txt  |   58 ++++++++++++++++++++
+> >>>   1 file changed, 58 insertions(+)
+> >>>   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> >>> new file mode 100644
+> >>> index 0000000..510cd81
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> >>> @@ -0,0 +1,58 @@
+> >>> +Mediatek Video Codec
+> >>> +
+> >>> +Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
+> >>> +supports high resolution encoding functionalities.
+> >>> +
+> >>> +Required properties:
+> >>> +- compatible : "mediatek,mt8173-vcodec-enc" for encoder
+> >>> +- reg : Physical base address of the video codec registers and length of
+> >>> +  memory mapped region.
+> >>> +- interrupts : interrupt number to the cpu.
+> >>> +- mediatek,larb : must contain the local arbiters in the current Socs.
+> 
+> This looks strange, shouldn't it be "larb" instead of "mediatek,larb".
+> At least the example does not use the mediatek prefix.
+> 
+We plan to change larb and vpu to mediate,larb and mediatek,vpu.
+We will fix this unmatch issue in next version.
 
----
- drivers/i2c/busses/i2c-mt65xx.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+best regards,
+Tiffany
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index dc4aac6..aec8e6c 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -155,6 +155,7 @@ struct mtk_i2c {
- 	u16 timing_reg;
- 	u16 high_speed_reg;
- 	unsigned char auto_restart;
-+	bool ignore_restart_irq;
- 	const struct mtk_i2c_compatible *dev_comp;
- };
- 
-@@ -539,6 +540,14 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 		}
- 	}
- 
-+	if (i2c->auto_restart && num >= 2 && i2c->speed_hz > MAX_FS_MODE_SPEED)
-+		/* ignore the first restart irq after the master code,
-+		 * otherwise the first transfer will be discarded.
-+		 */
-+		i2c->ignore_restart_irq = true;
-+	else
-+		i2c->ignore_restart_irq = false;
-+
- 	while (left_num--) {
- 		if (!msgs->buf) {
- 			dev_dbg(i2c->dev, "data buffer is NULL.\n");
-@@ -592,8 +601,16 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
- 	 * i2c->irq_stat need keep the two interrupt value.
- 	 */
- 	i2c->irq_stat |= intr_stat;
--	if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
--		complete(&i2c->msg_complete);
-+
-+	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
-+		i2c->ignore_restart_irq = false;
-+		i2c->irq_stat = 0;
-+		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
-+		       i2c->base + OFFSET_START);
-+	} else {
-+		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
-+			complete(&i2c->msg_complete);
-+	}
- 
- 	return IRQ_HANDLED;
- }
--- 
-1.8.1.1.dirty
+> >>> +- clocks : list of clock specifiers, corresponding to entries in
+> >>> +  the clock-names property;
+> >>> +- clock-names: must contain "vencpll", "venc_lt_sel", "vcodecpll_370p5_ck"
+> >>> +- iommus : list of iommus specifiers should be enabled for hw encode.
+> >>> +  There are 2 cells needed to enable/disable iommu.
+> >>> +  The first one is local arbiter index(larbid), and the other is port
+> >>> +  index(portid) within local arbiter. Specifies the larbid and portid
+> >>> +  as defined in dt-binding/memory/mt8173-larb-port.h.
+> >>> +- mediatek,vpu : the node of video processor unit
+> 
+> Same here.
+> 
+> Regards,
+> Matthias
+> 
+> >>> +
+> >>> +Example:
+> >>> +vcodec_enc: vcodec@0x18002000 {
+> >>> +    compatible = "mediatek,mt8173-vcodec-enc";
+> >>> +    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
+> >>> +          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
+> >>> +    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
+> >>> +           <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
+> >>> +    larb = <&larb3>,
+> >>> +           <&larb5>;
+> >>> +    iommus = <&iommu M4U_LARB3_ID M4U_PORT_VENC_RCPU>,
+> >>
+> >> Is this the same iommu as the VPU? If so, you can't have a mixed number
+> >> of cells.
+> > Yes, its same iommus as the VPU.
+> > Now we use two parameters for iommus.
+> > We will fix this in next version.
+> >
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REC>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_BSDMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_SV_COMV>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_RD_COMV>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_LUMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_CHROMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_LUMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_CHROMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_RDMA>,
+> >>> +             <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_WDMA>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RCPU_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_FRM_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_BSDMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_SV_COMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_RD_COMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_LUMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_CHROMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REF_LUMA_SET2>,
+> >>> +             <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_CHROMA_SET2>;
+> >>> +    vpu = <&vpu>;
+> >>
+> >> Need to update the example.
+> > Sorry, I didn't get it.
+> > Do you means update VPU binding document "media/mediatek-vpu.txt"?
+> >
+> >>
+> >>> +    clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
+> >>> +             <&topckgen CLK_TOP_VENC_LT_SEL>,
+> >>> +             <&topckgen CLK_TOP_VCODECPLL_370P5>;
+> >>> +    clock-names = "vencpll",
+> >>> +                  "venc_lt_sel",
+> >>> +                  "vcodecpll_370p5_ck";
+> >>> +  };
+> >>> --
+> >>> 1.7.9.5
+> >>>
+> >
+> >
