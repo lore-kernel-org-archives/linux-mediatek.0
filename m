@@ -1,28 +1,166 @@
-From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Subject: Re: [PATCH v3] cpufreq: mt8173: move resources allocation into ->probe()
-Date: Tue, 15 Dec 2015 00:59:33 +0100
-Message-ID: <1579627.P1F1zoisvS@vostro.rjw.lan>
-References: <3188378.Wlzx7Ukr89@vostro.rjw.lan> <1449719293-7966-1-git-send-email-pi-cheng.chen@linaro.org>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v6 3/5] memory: mediatek: Add SMI driver
+Date: Tue, 15 Dec 2015 10:38:23 +0800
+Message-ID: <1450147103.22854.23.camel@mhfsdcap03>
+References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
+	<1449568153-15643-4-git-send-email-yong.wu@mediatek.com>
+	<24171857.0SPpBlzoZl@linux-gy6r.site>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1449719293-7966-1-git-send-email-pi-cheng.chen@linaro.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Ricky Liang <jcliang@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <24171857.0SPpBlzoZl-FL1YVkE3Js+HtQ08XqlRiA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thursday, December 10, 2015 11:48:13 AM Pi-Cheng Chen wrote:
-> Since the return value of ->init() of cpufreq driver is not propagated
-> to the device driver model now, move resources allocation into
-> ->probe() to handle -EPROBE_DEFER properly.
+On Mon, 2015-12-14 at 19:18 +0100, Matthias Brugger wrote:
+> On Tuesday 08 Dec 2015 17:49:11 Yong Wu wrote:
+> > This patch add SMI(Smart Multimedia Interface) driver. This driver
+> > is responsible to enable/disable iommu and control the power domain
+> > and clocks of each local arbiter.
+> > 
+> > Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   Currently SMI offer mtk_smi_larb_get/put to enable the power-domain
+> > ,clocks and initialize the iommu configuration register for each a local
+> > arbiter, The reason is:
+> >   a) If a device would like to disable iommu, it also need call
+> > mtk_smi_larb_get/put to enable its power and clocks.
+> >   b) The iommu core don't support attach/detach a device within a
+> > iommu-group. So we cann't use iommu_attach_device(iommu_detach_device)
+> > instead
+> > of mtk_smi_larb_get/put.
+> > 
+[..]
+> > +static int
+> > +mtk_smi_enable(struct device *dev, struct clk *apb, struct clk *smi)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = pm_runtime_get_sync(dev);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	ret = clk_prepare_enable(apb);
+> > +	if (ret)
+> > +		goto err_put_pm;
+> > +
+> > +	ret = clk_prepare_enable(smi);
+> > +	if (ret)
+> > +		goto err_disable_apb;
+> > +
+> > +	return 0;
+> > +
+> > +err_disable_apb:
+> > +	clk_disable_unprepare(apb);
+> > +err_put_pm:
+> > +	pm_runtime_put_sync(dev);
+> > +	return ret;
+> > +}
+> > +
+> > +static void
+> > +mtk_smi_disable(struct device *dev, struct clk *apb, struct clk *smi)
+> > +{
+> > +	clk_disable_unprepare(smi);
+> > +	clk_disable_unprepare(apb);
+> > +	pm_runtime_put_sync(dev);
+> > +}
+> > +
+> > +static int mtk_smi_common_enable(struct mtk_smi_common *common)
+> > +{
+> > +	return mtk_smi_enable(common->dev, common->clk_apb, common->clk_smi);
+> > +}
+> > +
+> > +static void mtk_smi_common_disable(struct mtk_smi_common *common)
+> > +{
+> > +	mtk_smi_disable(common->dev, common->clk_apb, common->clk_smi);
+> > +}
+> > +
+> > +static int mtk_smi_larb_enable(struct mtk_smi_larb *larb)
+> > +{
+> > +	return mtk_smi_enable(larb->dev, larb->clk_apb, larb->clk_smi);
+> > +}
+> > +
+> > +static void mtk_smi_larb_disable(struct mtk_smi_larb *larb)
+> > +{
+> > +	mtk_smi_disable(larb->dev, larb->clk_apb, larb->clk_smi);
+> > +}
+> > +
 > 
-> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> This is somehow over-engineered. Just use mtk_smi_enable and mtk_smi_disable 
+> instead of adding an extra indirection.
 
-Applied along with the [1-3] in this series.
+I added this only for readable...then the code in mtk_smi_larb_get below
+may looks simple and readable.
 
-Thanks,
-Rafael
+If I use mtk_smi_enable/disable directly, the code will be like our
+v5[1], is it OK?
+Maybe I don't need these help function here, and only add more comment
+based on v5.
 
+[1] 
+http://lists.linuxfoundation.org/pipermail/iommu/2015-October/014590.html
+
+> 
+> > +int mtk_smi_larb_get(struct device *larbdev)
+> > +{
+> > +	struct mtk_smi_larb *larb = dev_get_drvdata(larbdev);
+> > +	struct mtk_smi_common *common = dev_get_drvdata(larb->smi_common_dev);
+> > +	int ret;
+> > +
+> > +	ret = mtk_smi_common_enable(common);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = mtk_smi_larb_enable(larb);
+> > +	if (ret)
+> > +		goto err_put_smi;
+> > +
+> > +	/* Configure the iommu info */
+> > +	writel_relaxed(larb->mmu, larb->base + SMI_LARB_MMU_EN);
+> > +
+> > +	return 0;
+> > +
+> > +err_put_smi:
+> > +	mtk_smi_common_disable(common);
+> > +	return ret;
+> > +}
+> > +
+> > +void mtk_smi_larb_put(struct device *larbdev)
+> > +{
+> > +	struct mtk_smi_larb *larb = dev_get_drvdata(larbdev);
+> > +	struct mtk_smi_common *common = dev_get_drvdata(larb->smi_common_dev);
+> > +
+> > +	writel_relaxed(0, larb->base + SMI_LARB_MMU_EN);
+> > +	mtk_smi_larb_disable(larb);
+> > +	mtk_smi_common_disable(common);
+> > +}
+> > +
+> 
+> Looks strange that you just disable all MMUs while you only enable some of 
+> them at runtime. Unfortunately the datasheet I have lacks the SMI part, so I 
+> can just guess how the HW is working.
+> From the DTS it looks like as if a larb can be used by two different 
+> components (e.g. larb0 from ovl0 and rdma0). Wouldn't that produce a conflict?
+
+Thanks. It's really a problem.
+
+There are OVL0 and MDP in larb0, Both will call mtk_smi_larb_get/put, we
+cann't disable all the MMUs in whole the larb0 here.  This register
+should be reset to zero while the larb power domain turning off(rely on
+the power-domain ref count).
+I will delete this(keep this in our V5.)
+
+> 
+> Regards,
+> Matthias
