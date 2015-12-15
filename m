@@ -1,151 +1,78 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v6 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Tue, 15 Dec 2015 12:47:25 +0530
-Message-ID: <566FBE85.4060708@codeaurora.org>
-References: <1450150210-21951-1-git-send-email-jitao.shi@mediatek.com>
- <1450150210-21951-2-git-send-email-jitao.shi@mediatek.com>
+From: Liguo Zhang <liguo.zhang@mediatek.com>
+Subject: [PATCH v3] i2c: mediatek: fix i2c multi transfer issue in high speed mode
+Date: Tue, 15 Dec 2015 15:22:26 +0800
+Message-ID: <1450164146-28995-1-git-send-email-liguo.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450150210-21951-2-git-send-email-jitao.shi@mediatek.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: devicetree@vger.kernel.org, eddie.huang@mediatek.com, Vincent Palatin <vpalatin@chromium.org>, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, bibby.hsieh@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, cawa.cheng@mediatek.com, yingjoe.chen@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, Andy Yan <andy.yan@rock-chips.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, linux-arm-kernel@lists.infradead.org, Rahul Sharma <rahul.sharma@samsung.com>
+Content-Type: text/plain
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpPbiAxMi8xNS8yMDE1IDA5OjAwIEFNLCBKaXRhbyBTaGkgd3JvdGU6Cj4gVGhpcyBwYXRj
-aCBhZGRzIGRybV9icmlkZ2UgZHJpdmVyIGZvciBwYXJhZGUgRFNJIHRvIGVEUCBicmlkZ2UgY2hp
-cC4KPgo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4K
-PiAtLS0KPiBDaGFuZ2VzIHNpbmNlIHY1Cj4gLWZpeCBjb21waWxlIGVycm9ycyB3aGVuIENPTkZJ
-R19HUElPTElCPW4KPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZyAgICAg
-ICAgIHwgICAxMCArCj4gICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlICAgICAgICB8
-ICAgIDEgKwo+ICAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wYXJhZGUtcHM4NjQwLmMgfCAgNDcy
-ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gICAzIGZpbGVzIGNoYW5nZWQsIDQ4
-MyBpbnNlcnRpb25zKCspCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2Jy
-aWRnZS9wYXJhZGUtcHM4NjQwLmMKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJp
-ZGdlL0tjb25maWcgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL0tjb25maWcKPiBpbmRleCA2ZGRk
-ZDM5Li5kY2ZkYmM5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZp
-Zwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvS2NvbmZpZwo+IEBAIC00MSw0ICs0MSwx
-NCBAQCBjb25maWcgRFJNX1BBUkFERV9QUzg2MjIKPiAgIAktLS1oZWxwLS0tCj4gICAJICBQYXJh
-ZGUgZURQLUxWRFMgYnJpZGdlIGNoaXAgZHJpdmVyLgo+Cj4gK2NvbmZpZyBEUk1fUEFSQURFX1BT
-ODY0MAo+ICsJdHJpc3RhdGUgIlBhcmFkZSBQUzg2NDAgTUlQSSBEU0kgdG8gZURQIENvbnZlcnRl
-ciIKPiArCWRlcGVuZHMgb24gT0YKPiArCXNlbGVjdCBEUk1fS01TX0hFTFBFUgo+ICsJc2VsZWN0
-IERSTV9QQU5FTAo+ICsJLS0taGVscC0tLQo+ICsJICBDaG9vc2UgdGhpcyBvcHRpb24gaWYgeW91
-IGhhdmUgUFM4NjQwIGZvciBkaXNwbGF5Cj4gKwkgIFRoZSBQUzg2NDAgaXMgYSBoaWdoLXBlcmZv
-cm1hbmNlIGFuZCBsb3ctcG93ZXIKPiArCSAgTUlQSSBEU0kgdG8gZURQIGNvbnZlcnRlcgo+ICsK
-PiAgIGVuZG1lbnUKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmls
-ZSBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvTWFrZWZpbGUKPiBpbmRleCBkNGUyOGJlLi4yNzJl
-M2MwMSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL01ha2VmaWxlCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9NYWtlZmlsZQo+IEBAIC00LDMgKzQsNCBAQCBvYmot
-JChDT05GSUdfRFJNX0RXX0hETUkpICs9IGR3X2hkbWkubwo+ICAgb2JqLSQoQ09ORklHX0RSTV9E
-V19IRE1JX0FIQl9BVURJTykgKz0gZHdfaGRtaS1haGItYXVkaW8ubwo+ICAgb2JqLSQoQ09ORklH
-X0RSTV9OWFBfUFROMzQ2MCkgKz0gbnhwLXB0bjM0NjAubwo+ICAgb2JqLSQoQ09ORklHX0RSTV9Q
-QVJBREVfUFM4NjIyKSArPSBwYXJhZGUtcHM4NjIyLm8KPiArb2JqLSQoQ09ORklHX0RSTV9QQVJB
-REVfUFM4NjQwKSArPSBwYXJhZGUtcHM4NjQwLm8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9wYXJhZGUtcHM4NjQwLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3BhcmFk
-ZS1wczg2NDAuYwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMC4uYmYwYzNj
-MzcKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9wYXJhZGUt
-cHM4NjQwLmMKPiBAQCAtMCwwICsxLDQ3MiBAQAo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIw
-MTQgTWVkaWFUZWsgSW5jLgo+ICsgKgo+ICsgKiBUaGlzIHByb2dyYW0gaXMgZnJlZSBzb2Z0d2Fy
-ZTsgeW91IGNhbiByZWRpc3RyaWJ1dGUgaXQgYW5kL29yIG1vZGlmeQo+ICsgKiBpdCB1bmRlciB0
-aGUgdGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIHZlcnNpb24gMiBhcwo+
-ICsgKiBwdWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbi4KPiArICoKPiAr
-ICogVGhpcyBwcm9ncmFtIGlzIGRpc3RyaWJ1dGVkIGluIHRoZSBob3BlIHRoYXQgaXQgd2lsbCBi
-ZSB1c2VmdWwsCj4gKyAqIGJ1dCBXSVRIT1VUIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRo
-ZSBpbXBsaWVkIHdhcnJhbnR5IG9mCj4gKyAqIE1FUkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZP
-UiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0aGUKPiArICogR05VIEdlbmVyYWwgUHVibGlj
-IExpY2Vuc2UgZm9yIG1vcmUgZGV0YWlscy4KPiArICovCj4gKwo+ICsjaW5jbHVkZSA8bGludXgv
-ZGVsYXkuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgo+ICsjaW5jbHVkZSA8bGludXgvZ3Bp
-by5oPgo+ICsjaW5jbHVkZSA8bGludXgvZ3Bpby9jb25zdW1lci5oPgo+ICsjaW5jbHVkZSA8bGlu
-dXgvaTJjLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2luY2x1ZGUgPGxpbnV4
-L29mLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9vZl9ncGlvLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9v
-Zl9ncmFwaC5oPgo+ICsjaW5jbHVkZSA8bGludXgvcmVndWxhdG9yL2NvbnN1bWVyLmg+Cj4gKwo+
-ICsjaW5jbHVkZSA8ZHJtL2RybV9wYW5lbC5oPgo+ICsKPiArI2luY2x1ZGUgPGRybVAuaD4KPiAr
-I2luY2x1ZGUgPGRybV9jcnRjX2hlbHBlci5oPgo+ICsjaW5jbHVkZSA8ZHJtX2NydGMuaD4KPiAr
-I2luY2x1ZGUgPGRybV9taXBpX2RzaS5oPgoKVGhpcyBkb2Vzbid0IHNlZW0gdG8gYmUgdXNlZCBh
-dCB0aGUgbW9tZW50LgoKPHNuaXA+Cgo+ICsKPiArc3RhdGljIGludCBwczg2NDBfcHJvYmUoc3Ry
-dWN0IGkyY19jbGllbnQgKmNsaWVudCwKPiArCQkJY29uc3Qgc3RydWN0IGkyY19kZXZpY2VfaWQg
-KmlkKQo+ICt7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmY2xpZW50LT5kZXY7Cj4gKwlzdHJ1
-Y3QgcHM4NjQwICpwc19icmlkZ2U7Cj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gZGV2LT5v
-Zl9ub2RlOwo+ICsJc3RydWN0IGRldmljZV9ub2RlICpwb3J0LCAqb3V0X2VwOwo+ICsJc3RydWN0
-IGRldmljZV9ub2RlICpwYW5lbF9ub2RlID0gTlVMTDsKPiArCWludCBpLCByZXQ7Cj4gKwo+ICsJ
-cHNfYnJpZGdlID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpwc19icmlkZ2UpLCBHRlBfS0VS
-TkVMKTsKPiArCWlmICghcHNfYnJpZGdlKQo+ICsJCXJldHVybiAtRU5PTUVNOwo+ICsKPiArCS8q
-IHBvcnRAMSBpcyBwczg2NDAgb3V0cHV0IHBvcnQgKi8KPiArCXBvcnQgPSBvZl9ncmFwaF9nZXRf
-cG9ydF9ieV9pZChucCwgMSk7Cj4gKwlpZiAocG9ydCkgewo+ICsJCW91dF9lcCA9IG9mX2dldF9j
-aGlsZF9ieV9uYW1lKHBvcnQsICJlbmRwb2ludCIpOwo+ICsJCW9mX25vZGVfcHV0KHBvcnQpOwo+
-ICsJCWlmIChvdXRfZXApIHsKPiArCQkJcGFuZWxfbm9kZSA9IG9mX2dyYXBoX2dldF9yZW1vdGVf
-cG9ydF9wYXJlbnQob3V0X2VwKTsKPiArCQkJb2Zfbm9kZV9wdXQob3V0X2VwKTsKPiArCQl9Cj4g
-Kwl9Cj4gKwlpZiAocGFuZWxfbm9kZSkgewo+ICsJCXBzX2JyaWRnZS0+cGFuZWwgPSBvZl9kcm1f
-ZmluZF9wYW5lbChwYW5lbF9ub2RlKTsKPiArCQlvZl9ub2RlX3B1dChwYW5lbF9ub2RlKTsKPiAr
-CQlpZiAoIXBzX2JyaWRnZS0+cGFuZWwpCj4gKwkJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJ
-fQoKVGhlIGRyaXZlciByZXRyaWV2ZXMgdGhlIHBhbmVsIGZyb20gdGhlIG91dHB1dCBwb3J0IHZp
-YSBEVCwgYnV0IGRvZXNuJ3QKcmV0cmlldmUgdGhlIERTSSBob3N0IGZyb20gdGhlIGlucHV0IHBv
-cnQ/CgpXb3VsZG4ndCB0aGlzIGRyaXZlciBuZWVkIHRvIGNhbGwgYSAibWlwaV9kc2lfYXR0YWNo
-IiBhdCBzb21lIHBvaW50IHRvCmxpbmsgd2l0aCB0aGUgRFNJIGhvc3QgKGFuZCBwYXNzIHBhcmFt
-ZXRlcnMgbGlrZSBudW1iZXIgb2YgbGFuZXMsIGNvbG9yCmZvcm1hdCBldGMpPwoKSSd2ZSBiZWVu
-IHdvcmtpbmcgb24gYSBwYXRjaHNldFsxXSB3aGljaCBsZXRzIGkyYyBkcml2ZXJzIGNyZWF0ZSBt
-aXBpCmRzaSBkZXZpY2VzLiBJIHRoaW5rIHRoaXMgd291bGQgYmUgbmVlZGVkIGZvciB0aGUgcHM4
-NjQwIGRyaXZlciB0b28uCgpbMV0gaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTUvMTIvMTAvMjgz
-CgpBcmNoaXQKCj4gKwo+ICsJcHNfYnJpZGdlLT5wYWdlWzBdID0gY2xpZW50Owo+ICsJZm9yIChp
-ID0gMTsgaSA8IDY7IGkrKykKPiArCQlwc19icmlkZ2UtPnBhZ2VbaV0gPSBpMmNfbmV3X2R1bW15
-KGNsaWVudC0+YWRhcHRlciwKPiArCQkJCQkJICAgY2xpZW50LT5hZGRyICsgaSk7Cj4gKwo+ICsJ
-cHNfYnJpZGdlLT5wd3JfM3YzX3N1cHBseSA9IGRldm1fcmVndWxhdG9yX2dldChkZXYsICJ2ZGQz
-MyIpOwo+ICsJaWYgKElTX0VSUihwc19icmlkZ2UtPnB3cl8zdjNfc3VwcGx5KSkgewo+ICsJCXJl
-dCA9IFBUUl9FUlIocHNfYnJpZGdlLT5wd3JfM3YzX3N1cHBseSk7Cj4gKwkJZGV2X2VycihkZXYs
-ICJjYW5ub3QgZ2V0IHZkZDMzIHN1cHBseTogJWRcbiIsIHJldCk7Cj4gKwkJcmV0dXJuIHJldDsK
-PiArCX0KPiArCj4gKwlwc19icmlkZ2UtPnB3cl8xdjJfc3VwcGx5ID0gZGV2bV9yZWd1bGF0b3Jf
-Z2V0KGRldiwgInZkZDEyIik7Cj4gKwlpZiAoSVNfRVJSKHBzX2JyaWRnZS0+cHdyXzF2Ml9zdXBw
-bHkpKSB7Cj4gKwkJcmV0ID0gUFRSX0VSUihwc19icmlkZ2UtPnB3cl8xdjJfc3VwcGx5KTsKPiAr
-CQlkZXZfZXJyKGRldiwgImNhbm5vdCBnZXQgdmRkMTIgc3VwcGx5OiAlZFxuIiwgcmV0KTsKPiAr
-CQlyZXR1cm4gcmV0Owo+ICsJfQo+ICsKPiArCXBzX2JyaWRnZS0+Z3Bpb19tb2RlX3NlbF9uID0g
-ZGV2bV9ncGlvZF9nZXQoJmNsaWVudC0+ZGV2LCAibW9kZS1zZWwiLAo+ICsJCQkJCQkgICAgR1BJ
-T0RfT1VUX0hJR0gpOwo+ICsJaWYgKElTX0VSUihwc19icmlkZ2UtPmdwaW9fbW9kZV9zZWxfbikp
-IHsKPiArCQlyZXQgPSBQVFJfRVJSKHBzX2JyaWRnZS0+Z3Bpb19tb2RlX3NlbF9uKTsKPiArCQlk
-ZXZfZXJyKGRldiwgImNhbm5vdCBnZXQgZ3Bpb19tb2RlX3NlbF9uICVkXG4iLCByZXQpOwo+ICsJ
-CXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICsJcHNfYnJpZGdlLT5ncGlvX3NscF9uID0gZGV2bV9n
-cGlvZF9nZXQoJmNsaWVudC0+ZGV2LCAic2xlZXAiLAo+ICsJCQkJCSAgICAgICBHUElPRF9PVVRf
-SElHSCk7Cj4gKwlpZiAoSVNfRVJSKHBzX2JyaWRnZS0+Z3Bpb19zbHBfbikpIHsKPiArCQlyZXQg
-PSBQVFJfRVJSKHBzX2JyaWRnZS0+Z3Bpb19zbHBfbik7Cj4gKwkJZGV2X2VycihkZXYsICJjYW5u
-b3QgZ2V0IGdwaW9fc2xwX246ICVkXG4iLCByZXQpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4g
-Kwo+ICsJcHNfYnJpZGdlLT5ncGlvX3JzdF9uID0gZGV2bV9ncGlvZF9nZXQoJmNsaWVudC0+ZGV2
-LCAicmVzZXQiLAo+ICsJCQkJCSAgICAgICBHUElPRF9PVVRfSElHSCk7Cj4gKwlpZiAoSVNfRVJS
-KHBzX2JyaWRnZS0+Z3Bpb19yc3RfbikpIHsKPiArCQlyZXQgPSBQVFJfRVJSKHBzX2JyaWRnZS0+
-Z3Bpb19yc3Rfbik7Cj4gKwkJZGV2X2VycihkZXYsICJjYW5ub3QgZ2V0IGdwaW9fcnN0X246ICVk
-XG4iLCByZXQpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICsJcHNfYnJpZGdlLT5icmlk
-Z2UuZnVuY3MgPSAmcHM4NjQwX2JyaWRnZV9mdW5jczsKPiArCXBzX2JyaWRnZS0+YnJpZGdlLm9m
-X25vZGUgPSBkZXYtPm9mX25vZGU7Cj4gKwlyZXQgPSBkcm1fYnJpZGdlX2FkZCgmcHNfYnJpZGdl
-LT5icmlkZ2UpOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGFk
-ZCBicmlkZ2U6ICVkXG4iLCByZXQpOwo+ICsJCXJldHVybiByZXQ7Cj4gKwl9Cj4gKwo+ICsJaTJj
-X3NldF9jbGllbnRkYXRhKGNsaWVudCwgcHNfYnJpZGdlKTsKPiArCj4gKwlyZXR1cm4gMDsKPiAr
-fQo+ICsKPiArc3RhdGljIGludCBwczg2NDBfcmVtb3ZlKHN0cnVjdCBpMmNfY2xpZW50ICpjbGll
-bnQpCj4gK3sKPiArCXN0cnVjdCBwczg2NDAgKnBzX2JyaWRnZSA9IGkyY19nZXRfY2xpZW50ZGF0
-YShjbGllbnQpOwo+ICsKPiArCWRybV9icmlkZ2VfcmVtb3ZlKCZwc19icmlkZ2UtPmJyaWRnZSk7
-Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgaTJjX2Rl
-dmljZV9pZCBwczg2NDBfaTJjX3RhYmxlW10gPSB7Cj4gKwl7InBhcmFkZSxwczg2NDAiLCAwfSwK
-PiArCXt9LAo+ICt9Owo+ICtNT0RVTEVfREVWSUNFX1RBQkxFKGkyYywgcHM4NjQwX2kyY190YWJs
-ZSk7Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBwczg2NDBfbWF0Y2hb
-XSA9IHsKPiArCXsgLmNvbXBhdGlibGUgPSAicGFyYWRlLHBzODY0MCIgfSwKPiArCXt9LAo+ICt9
-Owo+ICtNT0RVTEVfREVWSUNFX1RBQkxFKG9mLCBwczg2NDBfbWF0Y2gpOwo+ICsKPiArc3RhdGlj
-IHN0cnVjdCBpMmNfZHJpdmVyIHBzODY0MF9kcml2ZXIgPSB7Cj4gKwkuaWRfdGFibGUgPSBwczg2
-NDBfaTJjX3RhYmxlLAo+ICsJLnByb2JlID0gcHM4NjQwX3Byb2JlLAo+ICsJLnJlbW92ZSA9IHBz
-ODY0MF9yZW1vdmUsCj4gKwkuZHJpdmVyID0gewo+ICsJCS5uYW1lID0gInBhcmFkZSxwczg2NDAi
-LAo+ICsJCS5vZl9tYXRjaF90YWJsZSA9IHBzODY0MF9tYXRjaCwKPiArCX0sCj4gK307Cj4gK21v
-ZHVsZV9pMmNfZHJpdmVyKHBzODY0MF9kcml2ZXIpOwo+ICsKPiArTU9EVUxFX0FVVEhPUigiSml0
-YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiIpOwo+ICtNT0RVTEVfQVVUSE9SKCJDSyBI
-dSA8Y2suaHVAbWVkaWF0ZWsuY29tPiIpOwo+ICtNT0RVTEVfREVTQ1JJUFRJT04oIlBBUkFERSBw
-czg2NDAgRFNJLWVEUCBjb252ZXJ0ZXIgZHJpdmVyIik7Cj4gK01PRFVMRV9MSUNFTlNFKCJHUEwg
-djIiKTsKPgoKLS0gClRoZSBRdWFsY29tbSBJbm5vdmF0aW9uIENlbnRlciwgSW5jLiBpcyBhIG1l
-bWJlciBvZiB0aGUgQ29kZSBBdXJvcmEgCkZvcnVtLCBob3N0ZWQgYnkgVGhlIExpbnV4IEZvdW5k
-YXRpb24KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJp
-LWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+For mt8173 platform with auto restart support, when doing i2c multi
+transfer in high speed, we should ignore the first restart irq after
+the master code, otherwise the first transfer will be discarded.
+
+Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+Reviewed-by: Eddie Huang <eddie.huang@mediatek.com>
+---
+Change in v3:
+ignore the first restart irq after the master code when doing
+i2c multi transfer in high speed.
+
+change in v2:
+fix i2c checkpatch error.
+
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index dc4aac6..aec8e6c 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -155,6 +155,7 @@ struct mtk_i2c {
+ 	u16 timing_reg;
+ 	u16 high_speed_reg;
+ 	unsigned char auto_restart;
++	bool ignore_restart_irq;
+ 	const struct mtk_i2c_compatible *dev_comp;
+ };
+ 
+@@ -539,6 +540,14 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 		}
+ 	}
+ 
++	if (i2c->auto_restart && num >= 2 && i2c->speed_hz > MAX_FS_MODE_SPEED)
++		/* ignore the first restart irq after the master code,
++		 * otherwise the first transfer will be discarded.
++		 */
++		i2c->ignore_restart_irq = true;
++	else
++		i2c->ignore_restart_irq = false;
++
+ 	while (left_num--) {
+ 		if (!msgs->buf) {
+ 			dev_dbg(i2c->dev, "data buffer is NULL.\n");
+@@ -592,8 +601,16 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 	 * i2c->irq_stat need keep the two interrupt value.
+ 	 */
+ 	i2c->irq_stat |= intr_stat;
+-	if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
+-		complete(&i2c->msg_complete);
++
++	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
++		i2c->ignore_restart_irq = false;
++		i2c->irq_stat = 0;
++		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
++		       i2c->base + OFFSET_START);
++	} else {
++		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
++			complete(&i2c->msg_complete);
++	}
+ 
+ 	return IRQ_HANDLED;
+ }
+-- 
+1.8.1.1.dirty
