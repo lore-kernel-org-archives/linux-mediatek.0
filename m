@@ -1,106 +1,184 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 5/8] arm64: dts: mediatek: Add Video Encoder for
- MT8173
-Date: Tue, 15 Dec 2015 16:29:40 +0800
-Message-ID: <1450168180.31617.6.camel@mtksdaap41>
-References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1449827743-22895-6-git-send-email-tiffany.lin@mediatek.com>
-	 <1598527.2ooU1eBZYB@linux-gy6r.site>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v6 4/5] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Tue, 15 Dec 2015 12:37:34 +0000
+Message-ID: <5670098E.40601@arm.com>
+References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
+ <1449568153-15643-5-git-send-email-yong.wu@mediatek.com>
+ <20151214141656.GG18805@8bytes.org> <1450150132.22854.57.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1598527.2ooU1eBZYB-FL1YVkE3Js+HtQ08XqlRiA@public.gmane.org>
+In-Reply-To: <1450150132.22854.57.camel@mhfsdcap03>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Mikhail Ulyanov <mikhail.ulyanov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Fabien Dessenne <fabien.dessenne-qxv4g6HH51o@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Darren Etheridge <detheridge-l0cyMroinI0@public.gmane.org>, Peter Griffin <peter.griffin-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Benoit Parrot <bparrot-l0cyMroinI0@public.gmane.org>, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen@mediatek>
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+On 15/12/15 03:28, Yong Wu wrote:
+> On Mon, 2015-12-14 at 15:16 +0100, Joerg Roedel wrote:
+>> On Tue, Dec 08, 2015 at 05:49:12PM +0800, Yong Wu wrote:
+>>> +static int mtk_iommu_attach_device(struct iommu_domain *domain,
+>>> +				   struct device *dev)
+>>> +{
+>>> +	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+>>> +	struct mtk_iommu_client_priv *priv = dev->archdata.iommu;
+>>> +	struct mtk_iommu_data *data;
+>>> +	int ret;
+>>> +
+>>> +	if (!priv)
+>>> +		return -ENODEV;
+>>> +
+>>> +	data = dev_get_drvdata(priv->m4udev);
+>>> +	if (!data) {
+>>> +		/*
+>>> +		 * The DMA core will run earlier than this probe, and it will
+>>> +		 * create a default iommu domain for each a iommu device.
+>>> +		 * But here there is only one domain called the m4u domain
+>>> +		 * which all the multimedia HW share.
+>>> +		 * The default domain isn't needed here.
+>>> +		 */
+>>
+>> The iommu core creates one domain per iommu-group. In your case this
+>> means one default domain per iommu in the system.
+>
+> Yes. The iommu core will create one domain per iommu-group.
+> see the next "if" here.
+>
+> But the domain here is created by the current DMA64. It's from this
+> function do_iommu_attach which will be called too early and will help
+> create a default domain for each a iommu device.(my codebase is
+> v4.4-rc1).
 
-On Mon, 2015-12-14 at 19:18 +0100, Matthias Brugger wrote:
-> On Friday 11 Dec 2015 17:55:40 Tiffany Lin wrote:
-> > Add video encoder node for MT8173
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   47
-> > ++++++++++++++++++++++++++++++ 1 file changed, 47 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8173.dtsi index b8c8ff0..a6b0fcf 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> > @@ -545,6 +545,53 @@
-> >  			#clock-cells = <1>;
-> >  		};
-> > 
-> > +		larb3: larb@18001000 {
-> > +			compatible = "mediatek,mt8173-smi-larb";
-> > +			reg = <0 0x18001000 0 0x1000>;
-> > +			mediatek,smi = <&smi_common>;
-> > +			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
-> > +			clocks = <&vencsys CLK_VENC_CKE1>,
-> > +				 <&vencsys CLK_VENC_CKE0>;
-> > +			clock-names = "apb", "smi";
-> > +		};
-> > +
-> > +		vcodec_enc: vcodec@18002000 {
-> > +			compatible = "mediatek,mt8173-vcodec-enc";
-> > +			reg = <0 0x18002000 0 0x1000>,	/* VENC_SYS */
-> > +			      <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
-> > +			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
-> > +				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-> > +			larb = <&larb3>,
-> > +			       <&larb5>;
-> 
-> should be mediatek,larb or just larb for all instances of the larb's.
-> See my other email about the bindings.
-> 
-Yes, it should be mediatek,larb.
-We will fix this and mediatek,vpu in next version.
+I still don't really understand the problem here. The M4U device is 
+created early in mtk_iommu_init_fn, so it should be probed and ready to 
+go long before anything else. Indeed, for your mtk_iommu_device_group() 
+callback to work then everything must already be happening in the right 
+order - add_device will only call iommu_group_get_for_dev() if of_xlate 
+has populated dev->archdata.iommu, and of_xlate will only do that if the 
+M4U was up and running before the client device started probing. 
+Furthermore, if mtk_iommu_device_group() *does* work, then the IOMMU 
+core will go ahead and allocate the default domain there and then, which 
+the arch code should find and use later.
 
-best regards,
-Tiffany
+The potential issue I *do* see, looking more closely, is that 
+iommu_group_get_for_dev() is setting group->domain but not calling the 
+attach_dev callback, which looks wrong...
 
-> Regards,
-> Matthias
-> 
-> > +			iommus = <&iommu M4U_LARB3_ID M4U_PORT_VENC_RCPU>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_REC>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_BSDMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_SV_COMV>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_RD_COMV>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_LUMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_CUR_CHROMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_LUMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_REF_CHROMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_RDMA>,
-> > +				 <&iommu M4U_LARB3_ID M4U_PORT_VENC_NBM_WDMA>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_RCPU_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_FRM_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_BSDMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_SV_COMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_RD_COMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_LUMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_CUR_CHROMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_REF_LUMA_SET2>,
-> > +				 <&iommu M4U_LARB5_ID M4U_PORT_VENC_REC_CHROMA_SET2>;
-> > +			vpu = <&vpu>;
-> > +			clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
-> > +				 <&topckgen CLK_TOP_VENC_LT_SEL>,
-> > +				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
-> > +			clock-names = "vencpll",
-> > +				      "venc_lt_sel",
-> > +				      "vcodecpll_370p5_ck";
-> > +		};
-> > +
-> >  		vencltsys: clock-controller@19000000 {
-> >  			compatible = "mediatek,mt8173-vencltsys", "syscon";
-> >  			reg = <0 0x19000000 0 0x1000>;
-> 
+>
+> //=====the next "if"===========
+> } else if (!data->m4u_dom) {
+> 	/*
+> 	 * While a device is added into a iommu group, the iommu core
+> 	 * will create a default domain for each a iommu group.
+> 	 * This default domain is reserved as the m4u domain and is
+> 	 * initiated here.
+> 	 */
+> 	data->m4u_dom = dom;
+> 	if (domain->type == IOMMU_DOMAIN_DMA) {
+> 		ret = iommu_dma_init_domain(domain, 0,
+> 					    DMA_BIT_MASK(32));
+> 		if (ret)
+> 			goto err_uninit_dom;
+> 	}
+>
+> 	ret = mtk_iommu_domain_finalise(data);
+> 	if (ret)
+> 		goto err_uninit_dom;
+> }
+> //======================
+>
+>>
+>>> +		iommu_domain_free(domain);
+>>
+>> This function is not supposed to free the domain passed to it.
+>
+> As above this domain is created in the do_iommu_attach which will help
+> create a default domain for each a iommu device.
+> We don't need this default domain!
+>
+> If we don't free it here, there will be a memory leak.
+>
+>  From Robin's comment, He will improve the sequence of the
+> __iommu_setup_dma_ops in the future.
 
+That already happened. The final version of the arm64 code which was 
+merged makes sure that the IOMMU driver always sees the callbacks in the 
+desired of_xlate -> add_device -> attach_dev order. The whole point of 
+the comment below is that the driver itself *doesn't* have to care about 
+the awkward way in which that is currently achieved.
 
+> /*
+>   * TODO: Right now __iommu_setup_dma_ops() gets called too early to do
+>   * everything it needs to - the device is only partially created and the
+>   * IOMMU driver hasn't seen it yet, so it can't have a group. Thus we
+>   * need this delayed attachment dance. Once IOMMU probe ordering is
+> sorted
+>   * to move the arch_setup_dma_ops() call later, all the notifier bits
+> below
+>   * become unnecessary, and will go away.
+>   */
+>
+> /*
+>   * Best case: The device is either part of a group which was
+>   * already attached to a domain in a previous call, or it's
+>   * been put in a default DMA domain by the IOMMU core.
+>   */
+
+That was before Joerg made the device_group changes which enabled proper 
+default domains for platform devices - with those, we should be now be 
+hitting the "best case" behaviour every time. In fact I think the "fake 
+default domain" workaround shouldn't be needed at all any more, so I 
+will add removing it to my giant list of things to do.
+
+>     But there is no this patch currently, so I add iommu_domain_free
+> here.
+>
+>     "free the domain" here looks really not good. Then I delete the
+> iommu_domain_free here(allow this memory leak right now), is it ok?
+> (It will also works after Robin's change in the future.)
+>
+>>
+>>> +static int mtk_iommu_add_device(struct device *dev)
+>>> +{
+>>> +	struct iommu_group *group;
+>>> +
+>>> +	if (!dev->archdata.iommu) /* Not a iommu client device */
+>>> +		return -ENODEV;
+>>> +
+>>> +	group = iommu_group_get_for_dev(dev);
+>>> +	if (IS_ERR(group))
+>>> +		return PTR_ERR(group);
+>>> +
+>>> +	iommu_group_put(group);
+>>> +	return 0;
+>>> +}
+>>
+>> [...]
+>>
+>>> +static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+>>> +{
+>>> +	struct mtk_iommu_data *data;
+>>> +	struct mtk_iommu_client_priv *priv;
+>>> +
+>>> +	priv = dev->archdata.iommu;
+>>> +	if (!priv)
+>>> +		return ERR_PTR(-ENODEV);
+>>> +
+>>> +	/* All the client devices are in the same m4u iommu-group */
+>>> +	data = dev_get_drvdata(priv->m4udev);
+>>> +	if (!data->m4u_group) {
+>>> +		data->m4u_group = iommu_group_alloc();
+>>> +		if (IS_ERR(data->m4u_group))
+>>> +			dev_err(dev, "Failed to allocate M4U IOMMU group\n");
+>>> +	}
+>>> +	return data->m4u_group;
+>>> +}
+
+As long as this works as expected, then AFAICS you shouldn't have to 
+have *any* special-case behaviour or tracking of domains at all.
+
+Robin.
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
