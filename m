@@ -1,66 +1,50 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: Re: [PATCH 0/5] drivers/tty: make more bool drivers explicitly
- non-modular
-Date: Tue, 15 Dec 2015 17:29:50 -0500
-Message-ID: <20151215222950.GH2772@windriver.com>
-References: <1445206878-12455-1-git-send-email-paul.gortmaker@windriver.com>
+From: Dawei Chien <dawei.chien@mediatek.com>
+Subject: [PATCH v5 0/3] thermal: mediatek: Add cpu dynamic power cooling model.
+Date: Wed, 16 Dec 2015 11:59:13 +0800
+Message-ID: <1450238356-36319-1-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1445206878-12455-1-git-send-email-paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: linux-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Nicolas Ferre <nicolas.ferre-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Anton Blanchard <anton-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Brown <davidb-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Gross <agross-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, Dawei Chien <dawei.chien@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-[[PATCH 0/5] drivers/tty: make more bool drivers explicitly non-modular] On 18/10/2015 (Sun 18:21) Paul Gortmaker wrote:
+Use Intelligent Power Allocation (IPA) technical to add dynamic power model
+for binding CPU thermal zone. The power allocator governor allocates power
+budget to control CPU temperature.
 
-> This next set of patches to drivers/tty fixes up more drivers that would
-> perhaps appear modular when looking at the code, but are controlled by
-> a bool Kconfig.  We make sure they don't look modular and get rid
-> of module related code in the drivers that would never be used.
+Power Allocator governor is able to keep SOC temperature within a defined
+temperature range to avoid SOC overheat and keep it's performance.
+mt8173-cpufreq.c need to register its' own power model with power allocator
+thermal governor, so that power allocator governor can allocates suitable
+power budget to control CPU temperature.
 
-[...]
+Binding document is refer to this patchset
+https://lkml.org/lkml/2015/11/30/239
 
-> Paul Gortmaker (5):
->   drivers/tty: make hvc/hvc_vio.c explicitly non-modular
->   drivers/tty: make ehv_bytechan.c explicitly non-modular
->   drivers/tty/serial: make serial/atmel_serial.c explicitly non-modular
->   drivers/tty/serial: make msm_serial.c explicitly non-modular
->   drivers/tty/serial: make 8250/8250_mtk.c explicitly non-modular
+Change since V4:
+1. Remove unnecessary error-checking for mt8173-cpufreq.c
+2. Initializing variable capacitance with 0
 
-Hi Greg,
+Change since V3:
+1. Remove static power model
+2. Split V3's device tree in two for thermal zones and dynamic power models respectively
 
-You've merged the #3 atmel patch and #5 the 8250_mtk patch; the msm_serial
-patch (#4) is no longer applicable since the authors changed it to tristate.
+Change since V2:
+1. Move dynamic/static power model in device tree
 
-That leaves the top two patches; both for PPC hardware.  Did you skip
-those because you wanted them pushed through the powerpc tree?
+Change since V1:
+1. Include mt8171.h and sort header file for mt8173.dtsi
 
-If so, that is fine, I can do that.  Just let me know.
+Dawei Chien (3):
+  thermal: mediatek: Add cpu dynamic power cooling model.
+  arm64: dts: mt8173: Add thermal zone node.
+  arm64: dts: mt8173: Add dynamic power node.
 
-Thanks,
-Paul.
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   47 ++++++++++++++++++++++++++++++
+ drivers/cpufreq/mt8173-cpufreq.c         |   12 ++++++--
+ 2 files changed, 57 insertions(+), 2 deletions(-)
+
 --
-
-> 
->  drivers/tty/ehv_bytechan.c         | 40 +++------------------------------
->  drivers/tty/hvc/hvc_vio.c          | 29 ++++--------------------
->  drivers/tty/serial/8250/8250_mtk.c | 35 ++++++-----------------------
->  drivers/tty/serial/atmel_serial.c  | 45 ++++----------------------------------
->  drivers/tty/serial/msm_serial.c    | 30 ++++---------------------
->  5 files changed, 22 insertions(+), 157 deletions(-)
-> 
-> -- 
-> 2.6.1
-> 
+1.7.9.5
