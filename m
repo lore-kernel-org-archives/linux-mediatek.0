@@ -1,38 +1,71 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 4/5] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Wed, 16 Dec 2015 16:15:15 +0100
-Message-ID: <20151216151514.GI18805@8bytes.org>
-References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
-	<1449568153-15643-5-git-send-email-yong.wu@mediatek.com>
-	<20151214141656.GG18805@8bytes.org>
-	<1450150132.22854.57.camel@mhfsdcap03> <5670098E.40601@arm.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v7 02/14] drm/mediatek: Add DRM Driver for Mediatek SoC
+ MT8173.
+Date: Thu, 17 Dec 2015 00:10:04 +0800
+Message-ID: <CAGS+omCFYc2B+8bWy8kT-j2LzieYnPErP+xp7qyB81aGObHUGw@mail.gmail.com>
+References: <1448917676-25584-1-git-send-email-p.zabel@pengutronix.de>
+ <1448917676-25584-3-git-send-email-p.zabel@pengutronix.de>
+ <CAGS+omCeJU77tkjf4YGPiH9SZDo7aA4Cpbgih8RvvtSJVEKrnQ@mail.gmail.com>
+ <1450259579.3421.17.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <5670098E.40601-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1450259579.3421.17.camel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Jie Qiu <jie.qiu@mediatek.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, YT Shen <yt.shen@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Dec 15, 2015 at 12:37:34PM +0000, Robin Murphy wrote:
-> The potential issue I *do* see, looking more closely, is that
-> iommu_group_get_for_dev() is setting group->domain but not calling
-> the attach_dev callback, which looks wrong...
-
-Attaching the device happens from iommu_group_add_device(), which is
-called from iommu_group_get_for_dev() right after the domains are
-allocated/initialized.
-
-
-	Joerg
+SGkgUGhpbGlwcCwKCk9uIFdlZCwgRGVjIDE2LCAyMDE1IGF0IDU6NTIgUE0sIFBoaWxpcHAgWmFi
+ZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+IEhpIERhbmllbCwKPgo+IEFtIERp
+ZW5zdGFnLCBkZW4gMTUuMTIuMjAxNSwgMDI6NTcgKzA4MDAgc2NocmllYiBEYW5pZWwgS3VydHo6
+Cj4+IEhJIFBoaWxpcHAsCj4+Cj4+IFRoaXMgZHJpdmVyIGlzIGxvb2tpbmcgcmVhbGx5IGdvb2Qu
+Cj4+Cj4+IEJ1dCwgc3RpbGwgc29tZSB0aGluZ3MgdG8gdGhpbmsgYWJvdXQgKG1vc3RseSBzbWFs
+bCkgaW5saW5lIGJlbG93Li4uCj4KPiBNb3N0IG9mIG15IGFuc3dlcnMgYmVsb3cgc2VlbSB0byBi
+ZSAib2siIG9yIHNvbWUgZm9ybSB0aGVyZW9mLCBidXQgSQo+IGhhdmUgb25lIG9yIHR3byBxdWVz
+dGlvbnMgcmVnYXJkaW5nIHRoZSBsYXllcl9jb25maWcgYW5kIGNydGNfcmVzZXQKPiBzdWdnZXN0
+aW9ucy4KCkFuc3dlcnMgdG8geW91ciBxdWVzdGlvbnMgYmVsb3cuLi4KCj4KPiBbLi4uXQo+PiA+
+ICtzdGF0aWMgdm9pZCBtdGtfb3ZsX2xheWVyX2NvbmZpZyh2b2lkIF9faW9tZW0gKm92bF9iYXNl
+LCB1bnNpZ25lZCBpbnQgaWR4LAo+PiA+ICsgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX3BsYW5l
+X3N0YXRlICpzdGF0ZSkKPj4gPiArewo+PiA+ICsgICAgICAgc3RydWN0IG10a19wbGFuZV9wZW5k
+aW5nX3N0YXRlICpwZW5kaW5nID0gJnN0YXRlLT5wZW5kaW5nOwo+PiA+ICsgICAgICAgdW5zaWdu
+ZWQgaW50IGFkZHIgPSBwZW5kaW5nLT5hZGRyOwo+PiA+ICsgICAgICAgdW5zaWduZWQgaW50IHBp
+dGNoID0gcGVuZGluZy0+cGl0Y2ggJiAweGZmZmY7Cj4+ID4gKyAgICAgICB1bnNpZ25lZCBpbnQg
+Zm10ID0gcGVuZGluZy0+Zm9ybWF0Owo+PiA+ICsgICAgICAgdW5zaWduZWQgaW50IG9mZnNldCA9
+IChwZW5kaW5nLT55IDw8IDE2KSB8IHBlbmRpbmctPng7Cj4+ID4gKyAgICAgICB1bnNpZ25lZCBp
+bnQgc3JjX3NpemUgPSAocGVuZGluZy0+aGVpZ2h0IDw8IDE2KSB8IHBlbmRpbmctPndpZHRoOwo+
+PiA+ICsgICAgICAgdW5zaWduZWQgaW50IGNvbjsKPj4gPiArCj4+ID4gKyAgICAgICBjb24gPSBo
+YXNfcmJfc3dhcHBlZChmbXQpIDw8IDI0IHwgb3ZsX2ZtdF9jb252ZXJ0KGZtdCkgPDwgMTI7Cj4+
+Cj4+IENhbGwgdGhlc2UgY29udmVyc2lvbiByb3V0aW5lcyBlYXJsaWVyIChkdXJpbmcgYXRvbWlj
+X2NoZWNrKSBhbmQganVzdCBhZGQgdGhlCj4+IHJlc3VsdGluZyAiY29uIiB2YWx1ZSB0byBwZW5k
+aW5nLgo+Cj4gWW91IG1lYW4gdG8gYWRkIGEgLmxheWVyX2F0b21pY19jaGVjayBjYWxsYmFjayB0
+byB0aGUgbXRrX2RkcF9jb21wIG9wcz8KCkkgZGlkbid0IGhhdmUgYW55IHBhcnRpY3VsYXIgaW1w
+bGVtZW50YXRpb24gaW4gbWluZC4KQnV0LCB5ZWFoLi4uIG1heWJlIGEgbmV3ICJjaGVjayIgY2Fs
+bGJhY2sgdG8gcHJlLWNvbXB1dGUgYW5kIGZvcm1hbGx5CmNoZWNrIHRoZSBwcm92aWRlZCBzdGF0
+ZS4KVGhpcyBtaWdodCBiZSBvdmVya2lsbCB0aG91Z2ggaWYgaXQgZW5kcyB1cCBhZGRpbmcgYSBs
+b3Qgb2Ygb3ZlcmhlYWQKZm9yIHRoZXNlIHZhbHVlcyB3aGljaCBjYW4gbmV2ZXIgcmVhbGx5IGZh
+aWwgYW55d2F5LgoKPiBbLi4uXQoKPiBIb3cgYWJvdXQgdGhpczoKPgo+IHN0YXRpYyB2b2lkIG10
+a19kcm1fY3J0Y19yZXNldChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gewo+ICAgICAgICAgc3Ry
+dWN0IG10a19jcnRjX3N0YXRlICpzdGF0ZTsKPgo+ICAgICAgICAgaWYgKGNydGMtPnN0YXRlKSB7
+Cj4gICAgICAgICAgICAgICAgIGlmIChjcnRjLT5zdGF0ZS0+bW9kZV9ibG9iKQo+ICAgICAgICAg
+ICAgICAgICAgICAgICAgIGRybV9wcm9wZXJ0eV91bnJlZmVyZW5jZV9ibG9iKGNydGMtPnN0YXRl
+LT5tb2RlX2Jsb2IpOwo+Cj4gICAgICAgICAgICAgICAgIHN0YXRlID0gdG9fbXRrX2NydGNfc3Rh
+dGUoY3J0Yy0+c3RhdGUpOwo+ICAgICAgICAgICAgICAgICBtZW1zZXQoc3RhdGUsIDAsIHNpemVv
+Zigqc3RhdGUpKTsKPiAgICAgICAgIH0gZWxzZSB7Cj4gICAgICAgICAgICAgICAgIHN0YXRlID0g
+a3phbGxvYyhzaXplb2YoKnN0YXRlKSwgR0ZQX0tFUk5FTCk7Cj4gICAgICAgICAgICAgICAgIGlm
+ICghc3RhdGUpCj4gICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuOwo+ICAgICAgICAgICAg
+ICAgICBjcnRjLT5zdGF0ZSA9ICZzdGF0ZS0+YmFzZTsKPiAgICAgICAgIH0KPgo+ICAgICAgICAg
+c3RhdGUtPmJhc2UuY3J0YyA9IGNydGM7Cj4gfQoKbGd0bQoKPiBbLi4uXQoKPiBUaGFua3MgZm9y
+IHRoZSByZXZpZXchCgpUaGFua3MgZm9yIHRoZSBwYXRjaGVzISEKCj4KPiByZWdhcmRzCj4gUGhp
+bGlwcAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
