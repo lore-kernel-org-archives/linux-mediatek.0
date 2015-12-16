@@ -1,96 +1,38 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v2 6/8] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
- Encoder Driver
-Date: Wed, 16 Dec 2015 14:47:52 +0100
-Message-ID: <56716B88.7090301@xs4all.nl>
-References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
- <1449827743-22895-7-git-send-email-tiffany.lin@mediatek.com>
- <566EBAFC.3010408@xs4all.nl> <1450187460.21350.35.camel@mtksdaap41>
- <567020F1.1000204@cisco.com> <1450271857.6730.26.camel@mtksdaap41>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v6 4/5] iommu/mediatek: Add mt8173 IOMMU driver
+Date: Wed, 16 Dec 2015 16:15:15 +0100
+Message-ID: <20151216151514.GI18805@8bytes.org>
+References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
+	<1449568153-15643-5-git-send-email-yong.wu@mediatek.com>
+	<20151214141656.GG18805@8bytes.org>
+	<1450150132.22854.57.camel@mhfsdcap03> <5670098E.40601@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1450271857.6730.26.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tiffany lin <tiffany.lin@mediatek.com>, Hans Verkuil <hansverk@cisco.com>
-Cc: daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Y
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <5670098E.40601-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/16/15 14:17, tiffany lin wrote:
-> Hi Hans,
-> 
-> 
-> On Tue, 2015-12-15 at 15:17 +0100, Hans Verkuil wrote:
->>
->> On 12/15/15 14:51, tiffany lin wrote:
->>> We are not familiar with v4l2-compliance utility, we will check how to
->>> use it.
->>
->> It's part of v4l-utils.git (http://git.linuxtv.org/v4l-utils.git/). There is a
->> fairly decent man page. It does exhaustive compliance tests for V4L2 devices.
->>
->> That said, the support for memory-to-memory codec devices is not great, so I wouldn't
->> trust any failures it reports when using the streaming tests (i.e. the --stream*
->> options). By default just run 'v4l2-compliance -d /dev/videoX' to do the compliance
->> test.
->>
->> Note: before I accept this driver I do want to see that compliance test output!
->>
-> Got it. We will provide it in next version.
-> Now our driver is developed and run base on kernel v3.18.
-> V4L2 and vb2 have some difference between Linux 4.4-rc1 and 3.18 kernel.
-> Is it ok we provided test output base on v3.18 or we need to base on
-> 4.4-rc1?
+On Tue, Dec 15, 2015 at 12:37:34PM +0000, Robin Murphy wrote:
+> The potential issue I *do* see, looking more closely, is that
+> iommu_group_get_for_dev() is setting group->domain but not calling
+> the attach_dev callback, which looks wrong...
 
-I'm actually not sure if the latest v4l2-compliance test suite will work with a 3.18
-kernel. so either you have to go back to an older version of v4l2-compliance that
-works with 3.18 (go back to commit 4a57509a8334aca6ca8e81cd3beb08d5be397dac, that
-might do the trick) or (and that's what I recommend) go with the latest kernel.
+Attaching the device happens from iommu_group_add_device(), which is
+called from iommu_group_get_for_dev() right after the domains are
+allocated/initialized.
 
-For the media tree that is http://git.linuxtv.org/media_tree.git/log/.
 
-The final version of the patch has to be against that kernel anyway.
-
->>>>> +}
->>>>> +
->>>>> +int m2mctx_venc_queue_init(void *priv, struct vb2_queue *src_vq,
->>>>> +			   struct vb2_queue *dst_vq)
->>>>> +{
->>>>> +	struct mtk_vcodec_ctx *ctx = priv;
->>>>> +	int ret;
->>>>> +
->>>>> +	src_vq->type		= V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
->>>>> +	src_vq->io_modes	= VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
->>>>
->>>> You're using videobuf2-dma-contig, so VB2_USERPTR is generally useless in that
->>>> case. I would drop it.
->>>>
->>> Sorry, I don't get it. 
->>> We are using videobuf2-dma-contig, but we also using VB2_USERPTR.
->>
->> ???? In that case the user pointer you pass in must point to physically contiguous
->> memory. Which means you got it through some magic. Typically what should be used
->> are dmabuf handles to pass buffers around between different subsystems.
->>
->> The use of VB2_USERPTR for that purpose is deprecated.
->>
->> Or am I misunderstanding you as well?
->>
-> Our encoder support all three modes.
-> In case that A driver + Encode driver flow, OUTPUT buffer will be
-> VB2_DMABUF from A driver.
-> In case that read YCbCr frame data from file and encode them to bit
-> stream flow, we use VB2_USERPTR and VB2_MMAP.
-> In VB2_USERPTR case, videobuf2-dma-contig will help us get continuous
-> dma address.
-> Our chip has IOMMU and M4U that help us get continuous phy address for
-> encode HW.
-> 
-> http://lists.infradead.org/pipermail/linux-mediatek/2015-October/002525.html
-
-Ah, OK. Have you tested this with malloc()ed buffers? Just asking :-)
-
-Regards,
-
-	Hans
+	Joerg
