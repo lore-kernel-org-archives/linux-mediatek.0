@@ -1,59 +1,96 @@
-From: Dawei Chien <dawei.chien@mediatek.com>
-Subject: [PATCH v6 1/3] thermal: mediatek: Add cpu dynamic power cooling model.
-Date: Wed, 16 Dec 2015 21:29:14 +0800
-Message-ID: <1450272556-29770-2-git-send-email-dawei.chien@mediatek.com>
-References: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v2 6/8] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
+ Encoder Driver
+Date: Wed, 16 Dec 2015 14:47:52 +0100
+Message-ID: <56716B88.7090301@xs4all.nl>
+References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
+ <1449827743-22895-7-git-send-email-tiffany.lin@mediatek.com>
+ <566EBAFC.3010408@xs4all.nl> <1450187460.21350.35.camel@mtksdaap41>
+ <567020F1.1000204@cisco.com> <1450271857.6730.26.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, Dawei Chien <dawei.chien@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1450271857.6730.26.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tiffany lin <tiffany.lin@mediatek.com>, Hans Verkuil <hansverk@cisco.com>
+Cc: daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Y
 List-Id: linux-mediatek@lists.infradead.org
 
-MT8173 cpufreq driver select of_cpufreq_power_cooling_register registering
-cooling devices with dynamic power coefficient.
+On 12/16/15 14:17, tiffany lin wrote:
+> Hi Hans,
+> 
+> 
+> On Tue, 2015-12-15 at 15:17 +0100, Hans Verkuil wrote:
+>>
+>> On 12/15/15 14:51, tiffany lin wrote:
+>>> We are not familiar with v4l2-compliance utility, we will check how to
+>>> use it.
+>>
+>> It's part of v4l-utils.git (http://git.linuxtv.org/v4l-utils.git/). There is a
+>> fairly decent man page. It does exhaustive compliance tests for V4L2 devices.
+>>
+>> That said, the support for memory-to-memory codec devices is not great, so I wouldn't
+>> trust any failures it reports when using the streaming tests (i.e. the --stream*
+>> options). By default just run 'v4l2-compliance -d /dev/videoX' to do the compliance
+>> test.
+>>
+>> Note: before I accept this driver I do want to see that compliance test output!
+>>
+> Got it. We will provide it in next version.
+> Now our driver is developed and run base on kernel v3.18.
+> V4L2 and vb2 have some difference between Linux 4.4-rc1 and 3.18 kernel.
+> Is it ok we provided test output base on v3.18 or we need to base on
+> 4.4-rc1?
 
-Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
----
-This patch is base on patchset:
-https://lkml.org/lkml/2015/11/17/251
----
- drivers/cpufreq/mt8173-cpufreq.c |   11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+I'm actually not sure if the latest v4l2-compliance test suite will work with a 3.18
+kernel. so either you have to go back to an older version of v4l2-compliance that
+works with 3.18 (go back to commit 4a57509a8334aca6ca8e81cd3beb08d5be397dac, that
+might do the trick) or (and that's what I recommend) go with the latest kernel.
 
-diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-index 83001dc..d00bab5 100644
---- a/drivers/cpufreq/mt8173-cpufreq.c
-+++ b/drivers/cpufreq/mt8173-cpufreq.c
-@@ -263,17 +263,24 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	return 0;
- }
- 
-+#define DYNAMIC_POWER "dynamic-power-coefficient"
-+
- static void mtk_cpufreq_ready(struct cpufreq_policy *policy)
- {
- 	struct mtk_cpu_dvfs_info *info = policy->driver_data;
- 	struct device_node *np = of_node_get(info->cpu_dev->of_node);
-+	u32 capacitance = 0;
- 
- 	if (WARN_ON(!np))
- 		return;
- 
- 	if (of_find_property(np, "#cooling-cells", NULL)) {
--		info->cdev = of_cpufreq_cooling_register(np,
--							 policy->related_cpus);
-+		of_property_read_u32(np, DYNAMIC_POWER, &capacitance);
-+
-+		info->cdev = of_cpufreq_power_cooling_register(np,
-+						policy->related_cpus,
-+						capacitance,
-+						NULL);
- 
- 		if (IS_ERR(info->cdev)) {
- 			dev_err(info->cpu_dev,
--- 
-1.7.9.5
+For the media tree that is http://git.linuxtv.org/media_tree.git/log/.
 
+The final version of the patch has to be against that kernel anyway.
+
+>>>>> +}
+>>>>> +
+>>>>> +int m2mctx_venc_queue_init(void *priv, struct vb2_queue *src_vq,
+>>>>> +			   struct vb2_queue *dst_vq)
+>>>>> +{
+>>>>> +	struct mtk_vcodec_ctx *ctx = priv;
+>>>>> +	int ret;
+>>>>> +
+>>>>> +	src_vq->type		= V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+>>>>> +	src_vq->io_modes	= VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
+>>>>
+>>>> You're using videobuf2-dma-contig, so VB2_USERPTR is generally useless in that
+>>>> case. I would drop it.
+>>>>
+>>> Sorry, I don't get it. 
+>>> We are using videobuf2-dma-contig, but we also using VB2_USERPTR.
+>>
+>> ???? In that case the user pointer you pass in must point to physically contiguous
+>> memory. Which means you got it through some magic. Typically what should be used
+>> are dmabuf handles to pass buffers around between different subsystems.
+>>
+>> The use of VB2_USERPTR for that purpose is deprecated.
+>>
+>> Or am I misunderstanding you as well?
+>>
+> Our encoder support all three modes.
+> In case that A driver + Encode driver flow, OUTPUT buffer will be
+> VB2_DMABUF from A driver.
+> In case that read YCbCr frame data from file and encode them to bit
+> stream flow, we use VB2_USERPTR and VB2_MMAP.
+> In VB2_USERPTR case, videobuf2-dma-contig will help us get continuous
+> dma address.
+> Our chip has IOMMU and M4U that help us get continuous phy address for
+> encode HW.
+> 
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-October/002525.html
+
+Ah, OK. Have you tested this with malloc()ed buffers? Just asking :-)
+
+Regards,
+
+	Hans
