@@ -1,71 +1,39 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v7 02/14] drm/mediatek: Add DRM Driver for Mediatek SoC
- MT8173.
-Date: Thu, 17 Dec 2015 00:10:04 +0800
-Message-ID: <CAGS+omCFYc2B+8bWy8kT-j2LzieYnPErP+xp7qyB81aGObHUGw@mail.gmail.com>
-References: <1448917676-25584-1-git-send-email-p.zabel@pengutronix.de>
- <1448917676-25584-3-git-send-email-p.zabel@pengutronix.de>
- <CAGS+omCeJU77tkjf4YGPiH9SZDo7aA4Cpbgih8RvvtSJVEKrnQ@mail.gmail.com>
- <1450259579.3421.17.camel@pengutronix.de>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH v6 0/3] thermal: mediatek: Add cpu dynamic power cooling
+ model.
+Date: Thu, 17 Dec 2015 07:22:31 +0530
+Message-ID: <20151217015231.GC3496@ubuntu>
+References: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1450259579.3421.17.camel@pengutronix.de>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Paul Bolle <pebolle@tiscali.nl>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Jie Qiu <jie.qiu@mediatek.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Tomasz Figa <tfiga@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, YT Shen <yt.shen@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Dawei Chien <dawei.chien@mediatek.com>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUGhpbGlwcCwKCk9uIFdlZCwgRGVjIDE2LCAyMDE1IGF0IDU6NTIgUE0sIFBoaWxpcHAgWmFi
-ZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+IEhpIERhbmllbCwKPgo+IEFtIERp
-ZW5zdGFnLCBkZW4gMTUuMTIuMjAxNSwgMDI6NTcgKzA4MDAgc2NocmllYiBEYW5pZWwgS3VydHo6
-Cj4+IEhJIFBoaWxpcHAsCj4+Cj4+IFRoaXMgZHJpdmVyIGlzIGxvb2tpbmcgcmVhbGx5IGdvb2Qu
-Cj4+Cj4+IEJ1dCwgc3RpbGwgc29tZSB0aGluZ3MgdG8gdGhpbmsgYWJvdXQgKG1vc3RseSBzbWFs
-bCkgaW5saW5lIGJlbG93Li4uCj4KPiBNb3N0IG9mIG15IGFuc3dlcnMgYmVsb3cgc2VlbSB0byBi
-ZSAib2siIG9yIHNvbWUgZm9ybSB0aGVyZW9mLCBidXQgSQo+IGhhdmUgb25lIG9yIHR3byBxdWVz
-dGlvbnMgcmVnYXJkaW5nIHRoZSBsYXllcl9jb25maWcgYW5kIGNydGNfcmVzZXQKPiBzdWdnZXN0
-aW9ucy4KCkFuc3dlcnMgdG8geW91ciBxdWVzdGlvbnMgYmVsb3cuLi4KCj4KPiBbLi4uXQo+PiA+
-ICtzdGF0aWMgdm9pZCBtdGtfb3ZsX2xheWVyX2NvbmZpZyh2b2lkIF9faW9tZW0gKm92bF9iYXNl
-LCB1bnNpZ25lZCBpbnQgaWR4LAo+PiA+ICsgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX3BsYW5l
-X3N0YXRlICpzdGF0ZSkKPj4gPiArewo+PiA+ICsgICAgICAgc3RydWN0IG10a19wbGFuZV9wZW5k
-aW5nX3N0YXRlICpwZW5kaW5nID0gJnN0YXRlLT5wZW5kaW5nOwo+PiA+ICsgICAgICAgdW5zaWdu
-ZWQgaW50IGFkZHIgPSBwZW5kaW5nLT5hZGRyOwo+PiA+ICsgICAgICAgdW5zaWduZWQgaW50IHBp
-dGNoID0gcGVuZGluZy0+cGl0Y2ggJiAweGZmZmY7Cj4+ID4gKyAgICAgICB1bnNpZ25lZCBpbnQg
-Zm10ID0gcGVuZGluZy0+Zm9ybWF0Owo+PiA+ICsgICAgICAgdW5zaWduZWQgaW50IG9mZnNldCA9
-IChwZW5kaW5nLT55IDw8IDE2KSB8IHBlbmRpbmctPng7Cj4+ID4gKyAgICAgICB1bnNpZ25lZCBp
-bnQgc3JjX3NpemUgPSAocGVuZGluZy0+aGVpZ2h0IDw8IDE2KSB8IHBlbmRpbmctPndpZHRoOwo+
-PiA+ICsgICAgICAgdW5zaWduZWQgaW50IGNvbjsKPj4gPiArCj4+ID4gKyAgICAgICBjb24gPSBo
-YXNfcmJfc3dhcHBlZChmbXQpIDw8IDI0IHwgb3ZsX2ZtdF9jb252ZXJ0KGZtdCkgPDwgMTI7Cj4+
-Cj4+IENhbGwgdGhlc2UgY29udmVyc2lvbiByb3V0aW5lcyBlYXJsaWVyIChkdXJpbmcgYXRvbWlj
-X2NoZWNrKSBhbmQganVzdCBhZGQgdGhlCj4+IHJlc3VsdGluZyAiY29uIiB2YWx1ZSB0byBwZW5k
-aW5nLgo+Cj4gWW91IG1lYW4gdG8gYWRkIGEgLmxheWVyX2F0b21pY19jaGVjayBjYWxsYmFjayB0
-byB0aGUgbXRrX2RkcF9jb21wIG9wcz8KCkkgZGlkbid0IGhhdmUgYW55IHBhcnRpY3VsYXIgaW1w
-bGVtZW50YXRpb24gaW4gbWluZC4KQnV0LCB5ZWFoLi4uIG1heWJlIGEgbmV3ICJjaGVjayIgY2Fs
-bGJhY2sgdG8gcHJlLWNvbXB1dGUgYW5kIGZvcm1hbGx5CmNoZWNrIHRoZSBwcm92aWRlZCBzdGF0
-ZS4KVGhpcyBtaWdodCBiZSBvdmVya2lsbCB0aG91Z2ggaWYgaXQgZW5kcyB1cCBhZGRpbmcgYSBs
-b3Qgb2Ygb3ZlcmhlYWQKZm9yIHRoZXNlIHZhbHVlcyB3aGljaCBjYW4gbmV2ZXIgcmVhbGx5IGZh
-aWwgYW55d2F5LgoKPiBbLi4uXQoKPiBIb3cgYWJvdXQgdGhpczoKPgo+IHN0YXRpYyB2b2lkIG10
-a19kcm1fY3J0Y19yZXNldChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCj4gewo+ICAgICAgICAgc3Ry
-dWN0IG10a19jcnRjX3N0YXRlICpzdGF0ZTsKPgo+ICAgICAgICAgaWYgKGNydGMtPnN0YXRlKSB7
-Cj4gICAgICAgICAgICAgICAgIGlmIChjcnRjLT5zdGF0ZS0+bW9kZV9ibG9iKQo+ICAgICAgICAg
-ICAgICAgICAgICAgICAgIGRybV9wcm9wZXJ0eV91bnJlZmVyZW5jZV9ibG9iKGNydGMtPnN0YXRl
-LT5tb2RlX2Jsb2IpOwo+Cj4gICAgICAgICAgICAgICAgIHN0YXRlID0gdG9fbXRrX2NydGNfc3Rh
-dGUoY3J0Yy0+c3RhdGUpOwo+ICAgICAgICAgICAgICAgICBtZW1zZXQoc3RhdGUsIDAsIHNpemVv
-Zigqc3RhdGUpKTsKPiAgICAgICAgIH0gZWxzZSB7Cj4gICAgICAgICAgICAgICAgIHN0YXRlID0g
-a3phbGxvYyhzaXplb2YoKnN0YXRlKSwgR0ZQX0tFUk5FTCk7Cj4gICAgICAgICAgICAgICAgIGlm
-ICghc3RhdGUpCj4gICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuOwo+ICAgICAgICAgICAg
-ICAgICBjcnRjLT5zdGF0ZSA9ICZzdGF0ZS0+YmFzZTsKPiAgICAgICAgIH0KPgo+ICAgICAgICAg
-c3RhdGUtPmJhc2UuY3J0YyA9IGNydGM7Cj4gfQoKbGd0bQoKPiBbLi4uXQoKPiBUaGFua3MgZm9y
-IHRoZSByZXZpZXchCgpUaGFua3MgZm9yIHRoZSBwYXRjaGVzISEKCj4KPiByZWdhcmRzCj4gUGhp
-bGlwcAo+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On 16-12-15, 21:29, Dawei Chien wrote:
+> Use Intelligent Power Allocation (IPA) technical to add dynamic power model
+> for binding CPU thermal zone. The power allocator governor allocates power
+> budget to control CPU temperature.
+> 
+> Power Allocator governor is able to keep SOC temperature within a defined
+> temperature range to avoid SOC overheat and keep it's performance.
+> mt8173-cpufreq.c need to register its' own power model with power allocator
+> thermal governor, so that power allocator governor can allocates suitable
+> power budget to control CPU temperature.
+> 
+> Binding document is refer to this patchset
+> https://lkml.org/lkml/2015/11/30/239
+> 
+> Change since V5:
+> 1. Remove thermal sensor ID from phandles
+
+Though you should have included this in the new version, but still
+
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+-- 
+viresh
