@@ -1,108 +1,88 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: Re: [PATCH v2] soc: mediatek: SCPSYS: use module_platform_driver
-Date: Thu, 17 Dec 2015 10:16:17 -0500
-Message-ID: <20151217151617.GY2772@windriver.com>
-References: <1450263656-12513-1-git-send-email-s.hauer@pengutronix.de>
- <1562792.sV6cmsyeOM@wuerfel> <56715136.3060908@gmail.com>
- <CAGS+omA1mgmFH_JXffUTC-aq3rOy7dRYsdveiJ8LcnB5gg0ELw@mail.gmail.com>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU
+ frequency control
+Date: Thu, 17 Dec 2015 01:06:28 -0800
+Message-ID: <20151217090628.GA317@quark.deferred.io>
+References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
+ <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+ <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAGS+omA1mgmFH_JXffUTC-aq3rOy7dRYsdveiJ8LcnB5gg0ELw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Dawei Chien =?utf-8?B?KOmMouWkp+ihmyk=?= <Dawei.Chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-[Re: [PATCH v2] soc: mediatek: SCPSYS: use module_platform_driver] On 17/12/2015 (Thu 10:52) Daniel Kurtz wrote:
+On 12/01, Pi-Cheng Chen wrote:
+> On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> > Hi Pi-Cheng and Michael,
+> >
+> > On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+> >> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+> >>
+> >> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+> >> for intermediate clock source switching.
+> >
+> > It looks like this patch was never picked up.
+> > It is required for MT8173 cpufreq.
+> >
+> > What is the plan to get this one merged?
+> 
+> Hi Dan,
+> Mike is working on a new CCF feature called "coordinated clock rate changes"
+> which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
+> driver, and I am working with him to port MT8173 clock driver on the new
+> feature. So I think that's why this patch was not picked since it will
+> be migrated to new implementation once the new feature's ready.
+> 
+> @Mike:
+> Are you plannig to post those patches on the mailing list ?
+> Or is it fine for you to take this first and then I will refine it for
+> the new feature later?
 
-[...]
+I plan to post those patches next week.
+
+Thanks,
+Mike
 
 > 
-> Also, since scpsys' Kconfig is "bool" not "tristate" it isn't a real
-> module so I think we should use:
-> builtin_platform_driver not module_platform_driver
+> Best Regards,
+> Pi-Cheng
 > 
-> CC'ing Paul Gortmaker who seems to be on a mass
-> builtin_platform_driver conversion at the moment, see:
-> https://lkml.org/lkml/2015/12/9/952
-> 
-
-Good guess.  In my giant queue I have that change.  I just haven't got
-around to the requisite triple check and multi arch rebuild tests and
-put out a series for soc yet.  Here is the short list for soc:
-
-drivers-soc-make-mediatek-mtk-scpsys.c-explicitly-no.patch
-drivers-soc-make-qcom-spm.c-explicitly-non-modular.patch
-drivers-soc-make-samsung-exynos-srom.c.c-explicitly-.patch
-drivers-soc-make-sunxi_sram.c-explicitly-non-modular.patch
-drivers-soc-tegra-make-fuse-tegra.c-explicitly-non-m.patch
-
-...and here is the patch you predicted.  If someone wants to fold
-the change into their work then great; I'll be happy to drop
-mine and be with one less patch to herd along.
-
-Paul.
---
-
- From eb32cc2c1db8192c08dd64af69cb172b3be4c98b Mon Sep 17 00:00:00 2001
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Date: Fri, 4 Sep 2015 19:33:54 -0400
-Subject: [PATCH] drivers/soc: make mediatek/mtk-scpsys.c explicitly
- non-modular
-
-The Kconfig currently controlling compilation of this code is:
-
-drivers/soc/mediatek/Kconfig:config MTK_SCPSYS
-drivers/soc/mediatek/Kconfig:   bool "MediaTek SCPSYS Support"
-
-...meaning that it currently is not being built as a module by anyone.
-
-Lets remove the couple traces of modularity so that when reading the
-driver there is no doubt it is builtin-only.
-
-Since module_platform_driver() uses the same init level priority as
-builtin_platform_driver() the init ordering remains unchanged with
-this commit.
-
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Cc: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 164a7d8439b1..ae0ca34e64dd 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -15,7 +15,7 @@
- #include <linux/io.h>
- #include <linux/kernel.h>
- #include <linux/mfd/syscon.h>
--#include <linux/module.h>
-+#include <linux/init.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
-@@ -484,5 +484,4 @@ static struct platform_driver scpsys_drv = {
- 		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
- 	},
- };
--
--module_platform_driver_probe(scpsys_drv, scpsys_probe);
-+builtin_platform_driver_probe(scpsys_drv, scpsys_probe);
--- 
-2.5.0
+> >
+> > -Dan
+> >
+> >>
+> >> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+> >> ---
+> >> Changes in v6:
+> >> - Relace __clk_get_num_parents with clk_hw_get_num_parents to reflect
+> >>   API change
+> >>
+> >> Changes in v5:
+> >> - Replace __initdata with __initconst to fix compiling error
+> >>
+> >> Changes in v4:
+> >> - Fix some minor issues for v3
+> >> - Rebase to the patch that adds 13mhz clock for MT8173[1]
+> >>
+> >> Changes in v3:
+> >> - Rebase to 4.2-rc1
+> >> - Fix some issues of v2
+> >>
+> >> Changes in v2:
+> >> - Remove use of .determine_rate callback
+> >> ---
+> >>  drivers/clk/mediatek/Makefile          |   2 +-
+> >>  drivers/clk/mediatek/clk-cpumux.c      | 127 +++++++++++++++++++++++++++++++++
+> >>  drivers/clk/mediatek/clk-cpumux.h      |  22 ++++++
+> >>  drivers/clk/mediatek/clk-mt8173.c      |  23 ++++++
+> >>  include/dt-bindings/clock/mt8173-clk.h |   4 +-
+> >>  5 files changed, 176 insertions(+), 2 deletions(-)
+> >>  create mode 100644 drivers/clk/mediatek/clk-cpumux.c
+> >>  create mode 100644 drivers/clk/mediatek/clk-cpumux.h
+> >
+> > [snip]
