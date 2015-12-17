@@ -1,159 +1,106 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 4/5] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Thu, 17 Dec 2015 11:12:39 +0800
-Message-ID: <1450321959.22854.141.camel@mhfsdcap03>
-References: <1449568153-15643-1-git-send-email-yong.wu@mediatek.com>
-	<1449568153-15643-5-git-send-email-yong.wu@mediatek.com>
-	<20151214141656.GG18805@8bytes.org>
-	<1450150132.22854.57.camel@mhfsdcap03>
-	<5670098E.40601@arm.com> <1450245573.22854.108.camel@mhfsdcap03>
-	<56715D8D.3050102@arm.com>
+From: tiffany lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH v2 6/8] [Media] vcodec: mediatek: Add Mediatek V4L2
+ Video Encoder Driver
+Date: Thu, 17 Dec 2015 13:52:27 +0800
+Message-ID: <1450331547.7283.4.camel@mtksdaap41>
+References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1449827743-22895-7-git-send-email-tiffany.lin@mediatek.com>
+	 <566EBAFC.3010408@xs4all.nl> <1450187460.21350.35.camel@mtksdaap41>
+	 <567020F1.1000204@cisco.com> <1450271857.6730.26.camel@mtksdaap41>
+	 <56716B88.7090301@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <56715D8D.3050102-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56716B88.7090301@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Hans Verkuil <hansverk@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-12-16 at 12:48 +0000, Robin Murphy wrote:
-> On 16/12/15 05:59, Yong Wu wrote:
-> > On Tue, 2015-12-15 at 12:37 +0000, Robin Murphy wrote:
-> >> On 15/12/15 03:28, Yong Wu wrote:
-> >>> On Mon, 2015-12-14 at 15:16 +0100, Joerg Roedel wrote:
-> >>>> On Tue, Dec 08, 2015 at 05:49:12PM +0800, Yong Wu wrote:
-[...]
-> > Following your comment above, I test as below. Then the flows seems meet
-> > the "best case" that the iommu core will help create default DMA domain.
-> >
-> > @@ -664,19 +636,41 @@ static int mtk_iommu_probe(struct platform_device
-> > *pdev)
-> > for (i = 0; i < larb_nr; i++) {
-> > 		struct device_node *larbnode;
-> > 		struct platform_device *plarbdev;
-> >
-> > 		larbnode = of_parse_phandle(dev->of_node, "mediatek,larbs", i);
-> > 		if (!larbnode)
-> > 			return -EINVAL;
-> >
-> >                  plarbdev = of_find_device_by_node(larbnode);
-> >                  of_node_put(larbnode);
-> > -               if (!plarbdev)
-> > -                       return -EPROBE_DEFER;
-> > +               if (!plarbdev) {
-> > +                       plarbdev = of_platform_device_create(larbnode,
-> > NULL, platform_bus_type.dev_root);
-> > +                       if (IS_ERR(pdev))
-> > +                               return -EPROBE_DEFER;
-> > +               }
-> > }
-> >
-> > I only add of_platform_device_create for the SMI local arbiter devices
-> > here.
-> >
-> > This is a big improvement for us. If this is ok, I will send a quick
-> > next version for this.
-> 
-> In my opinion it's reasonable - we need the whole "IOMMU" to be ready, 
-
-  Thanks.
-
-> so if we already have to short-cut the creation of the M4U part it only 
-> seems fair to do the same for the SMI part. That said, would it work to 
-> just unconditionally poke the larbs in mtk_iommu_init_fn() before you 
-> poke the M4U itself? It would be nice to keep all that stuff together in 
-> the same place.
-
-    mtk_iommu_init_fn don't have the larb's "struct device_node". So I
-cann't create its platform_device directly.
-
-    I have tried 2 method:
-   a) add a mtk_smi_larb_init_fn in the SMI patch.
-
-static int mtk_smi_larb_init_fn(struct device_node *np)
-{
-	struct platform_device *pdev;
-
-	pdev = of_platform_device_create(np, NULL, platform_bus_type.dev_root);
-
-	return IS_ERR(pdev) ? PTR_ERR(pdev) :  0;
-}
-IOMMU_OF_DECLARE(mtk_smi_larb, "mediatek,mt8173-smi-larb",
-mtk_smi_larb_init_fn);
-
-   This don't work. It will run after mtk_iommu_init_fn. then the larb's
-platform_device also don't exist while m4u's probe.
-
-  b) Copy the code below to mtk_iommu_init_fn.
-
-   for (i = 0; i < larb_nr; i++) {
-      xxx
-      plarbdev = of_platform_device_create(larbnode,
-                      NULL, platform_bus_type.dev_root);
-   }
-
-   It works. But then there are 2 same code of parsing the SMI local
-arbiter(one is in mtk_iommu_init_fn, the other is in mtk_iommu_init_fn).
-It looks not good. I think that the one I wrote in the previous mail is
-better, It only add 3 lines, What's your opinion?
-
-> >>>>> +static struct iommu_group *mtk_iommu_device_group(struct device *dev)
-> >>>>> +{
-> >>>>> +	struct mtk_iommu_data *data;
-> >>>>> +	struct mtk_iommu_client_priv *priv;
-> >>>>> +
-> >>>>> +	priv = dev->archdata.iommu;
-> >>>>> +	if (!priv)
-> >>>>> +		return ERR_PTR(-ENODEV);
-> >>>>> +
-> >>>>> +	/* All the client devices are in the same m4u iommu-group */
-> >>>>> +	data = dev_get_drvdata(priv->m4udev);
-> >>>>> +	if (!data->m4u_group) {
-> >>>>> +		data->m4u_group = iommu_group_alloc();
-> >>>>> +		if (IS_ERR(data->m4u_group))
-> >>>>> +			dev_err(dev, "Failed to allocate M4U IOMMU group\n");
-> >>>>> +	}
-> >>>>> +	return data->m4u_group;
-> >>>>> +}
+On Wed, 2015-12-16 at 14:47 +0100, Hans Verkuil wrote:
+> On 12/16/15 14:17, tiffany lin wrote:
+> > Hi Hans,
+> > 
+> > 
+> > On Tue, 2015-12-15 at 15:17 +0100, Hans Verkuil wrote:
 > >>
-> >> As long as this works as expected, then AFAICS you shouldn't have to
-> >> have *any* special-case behaviour or tracking of domains at all.
-> >
-> > We only need one iommu-group, one iommu domain here.
-> >
-> > What's the special-case behavior, how can we track of domains.
-> > Could you help give me a example?
+> >> On 12/15/15 14:51, tiffany lin wrote:
+> >>> We are not familiar with v4l2-compliance utility, we will check how to
+> >>> use it.
+> >>
+> >> It's part of v4l-utils.git (http://git.linuxtv.org/v4l-utils.git/). There is a
+> >> fairly decent man page. It does exhaustive compliance tests for V4L2 devices.
+> >>
+> >> That said, the support for memory-to-memory codec devices is not great, so I wouldn't
+> >> trust any failures it reports when using the streaming tests (i.e. the --stream*
+> >> options). By default just run 'v4l2-compliance -d /dev/videoX' to do the compliance
+> >> test.
+> >>
+> >> Note: before I accept this driver I do want to see that compliance test output!
+> >>
+> > Got it. We will provide it in next version.
+> > Now our driver is developed and run base on kernel v3.18.
+> > V4L2 and vb2 have some difference between Linux 4.4-rc1 and 3.18 kernel.
+> > Is it ok we provided test output base on v3.18 or we need to base on
+> > 4.4-rc1?
 > 
-> The beauty of it is that you don't need to. If you guarantee all of an 
-> IOMMU's client devices are in the same group, you know you've only got 
-> one thing which can be attached to that IOMMU's domains. Therefore, you 
-> can freely allow as many domains as you like to *exist*, because there 
-> can never be more than one *active* at any given time - the core code 
-> enforces that the group is detached from one domain before being 
-> attached to another, and the driver's attach and detach calls just 
-> become responsible for switching the given domain's page table in and 
-> out of the actual hardware. I think it's pretty neat.
-
-It seems that mtk-iommu can not detach/attach dynamically. the iommu
-core don't support iommu_detach_device/iommu_attach_device whose
-iommu-group have many devices.(Normally there is only one device in a
-iommu-group). 
-
-So currently we only iommu_attach_device while probe, it will never
-attach/detach again.
-
-All our multimedia modules are in the m4u'domain and share m4u's
-pagetable, They won't change pagetable.
-
+> I'm actually not sure if the latest v4l2-compliance test suite will work with a 3.18
+> kernel. so either you have to go back to an older version of v4l2-compliance that
+> works with 3.18 (go back to commit 4a57509a8334aca6ca8e81cd3beb08d5be397dac, that
+> might do the trick) or (and that's what I recommend) go with the latest kernel.
 > 
-> Robin.
+> For the media tree that is http://git.linuxtv.org/media_tree.git/log/.
+> 
+> The final version of the patch has to be against that kernel anyway.
+> 
+Got it. Thanks for your help, we will try it. ^_^
+
+> >>>>> +}
+> >>>>> +
+> >>>>> +int m2mctx_venc_queue_init(void *priv, struct vb2_queue *src_vq,
+> >>>>> +			   struct vb2_queue *dst_vq)
+> >>>>> +{
+> >>>>> +	struct mtk_vcodec_ctx *ctx = priv;
+> >>>>> +	int ret;
+> >>>>> +
+> >>>>> +	src_vq->type		= V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> >>>>> +	src_vq->io_modes	= VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
+> >>>>
+> >>>> You're using videobuf2-dma-contig, so VB2_USERPTR is generally useless in that
+> >>>> case. I would drop it.
+> >>>>
+> >>> Sorry, I don't get it. 
+> >>> We are using videobuf2-dma-contig, but we also using VB2_USERPTR.
+> >>
+> >> ???? In that case the user pointer you pass in must point to physically contiguous
+> >> memory. Which means you got it through some magic. Typically what should be used
+> >> are dmabuf handles to pass buffers around between different subsystems.
+> >>
+> >> The use of VB2_USERPTR for that purpose is deprecated.
+> >>
+> >> Or am I misunderstanding you as well?
+> >>
+> > Our encoder support all three modes.
+> > In case that A driver + Encode driver flow, OUTPUT buffer will be
+> > VB2_DMABUF from A driver.
+> > In case that read YCbCr frame data from file and encode them to bit
+> > stream flow, we use VB2_USERPTR and VB2_MMAP.
+> > In VB2_USERPTR case, videobuf2-dma-contig will help us get continuous
+> > dma address.
+> > Our chip has IOMMU and M4U that help us get continuous phy address for
+> > encode HW.
+> > 
+> > http://lists.infradead.org/pipermail/linux-mediatek/2015-October/002525.html
+> 
+> Ah, OK. Have you tested this with malloc()ed buffers? Just asking :-)
+> 
+Yes. Actually we tested this with new()ed buffers. I think it default
+call malloc.
+
+> Regards,
+> 
+> 	Hans
+
+best regards,
+Tiffany
