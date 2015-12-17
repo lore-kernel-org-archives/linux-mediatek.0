@@ -1,106 +1,108 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v2 6/8] [Media] vcodec: mediatek: Add Mediatek V4L2
- Video Encoder Driver
-Date: Thu, 17 Dec 2015 13:52:27 +0800
-Message-ID: <1450331547.7283.4.camel@mtksdaap41>
-References: <1449827743-22895-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1449827743-22895-7-git-send-email-tiffany.lin@mediatek.com>
-	 <566EBAFC.3010408@xs4all.nl> <1450187460.21350.35.camel@mtksdaap41>
-	 <567020F1.1000204@cisco.com> <1450271857.6730.26.camel@mtksdaap41>
-	 <56716B88.7090301@xs4all.nl>
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: Re: [PATCH v2] soc: mediatek: SCPSYS: use module_platform_driver
+Date: Thu, 17 Dec 2015 10:16:17 -0500
+Message-ID: <20151217151617.GY2772@windriver.com>
+References: <1450263656-12513-1-git-send-email-s.hauer@pengutronix.de>
+ <1562792.sV6cmsyeOM@wuerfel> <56715136.3060908@gmail.com>
+ <CAGS+omA1mgmFH_JXffUTC-aq3rOy7dRYsdveiJ8LcnB5gg0ELw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56716B88.7090301@xs4all.nl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Hans Verkuil <hansverk@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@iki.fi>, Mikhail Ulyanov <mikhail.ulyanov@cogentembedded.com>, Fabien Dessenne <fabien.dessenne@st.com>, Arnd Bergmann <arnd@arndb.de>, Darren Etheridge <detheridge@ti.com>, Peter Griffin <peter.griffin@linaro.org>, Benoit Parrot <bparrot@ti.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAGS+omA1mgmFH_JXffUTC-aq3rOy7dRYsdveiJ8LcnB5gg0ELw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Dawei Chien =?utf-8?B?KOmMouWkp+ihmyk=?= <Dawei.Chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-12-16 at 14:47 +0100, Hans Verkuil wrote:
-> On 12/16/15 14:17, tiffany lin wrote:
-> > Hi Hans,
-> > 
-> > 
-> > On Tue, 2015-12-15 at 15:17 +0100, Hans Verkuil wrote:
-> >>
-> >> On 12/15/15 14:51, tiffany lin wrote:
-> >>> We are not familiar with v4l2-compliance utility, we will check how to
-> >>> use it.
-> >>
-> >> It's part of v4l-utils.git (http://git.linuxtv.org/v4l-utils.git/). There is a
-> >> fairly decent man page. It does exhaustive compliance tests for V4L2 devices.
-> >>
-> >> That said, the support for memory-to-memory codec devices is not great, so I wouldn't
-> >> trust any failures it reports when using the streaming tests (i.e. the --stream*
-> >> options). By default just run 'v4l2-compliance -d /dev/videoX' to do the compliance
-> >> test.
-> >>
-> >> Note: before I accept this driver I do want to see that compliance test output!
-> >>
-> > Got it. We will provide it in next version.
-> > Now our driver is developed and run base on kernel v3.18.
-> > V4L2 and vb2 have some difference between Linux 4.4-rc1 and 3.18 kernel.
-> > Is it ok we provided test output base on v3.18 or we need to base on
-> > 4.4-rc1?
-> 
-> I'm actually not sure if the latest v4l2-compliance test suite will work with a 3.18
-> kernel. so either you have to go back to an older version of v4l2-compliance that
-> works with 3.18 (go back to commit 4a57509a8334aca6ca8e81cd3beb08d5be397dac, that
-> might do the trick) or (and that's what I recommend) go with the latest kernel.
-> 
-> For the media tree that is http://git.linuxtv.org/media_tree.git/log/.
-> 
-> The final version of the patch has to be against that kernel anyway.
-> 
-Got it. Thanks for your help, we will try it. ^_^
+[Re: [PATCH v2] soc: mediatek: SCPSYS: use module_platform_driver] On 17/12/2015 (Thu 10:52) Daniel Kurtz wrote:
 
-> >>>>> +}
-> >>>>> +
-> >>>>> +int m2mctx_venc_queue_init(void *priv, struct vb2_queue *src_vq,
-> >>>>> +			   struct vb2_queue *dst_vq)
-> >>>>> +{
-> >>>>> +	struct mtk_vcodec_ctx *ctx = priv;
-> >>>>> +	int ret;
-> >>>>> +
-> >>>>> +	src_vq->type		= V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
-> >>>>> +	src_vq->io_modes	= VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
-> >>>>
-> >>>> You're using videobuf2-dma-contig, so VB2_USERPTR is generally useless in that
-> >>>> case. I would drop it.
-> >>>>
-> >>> Sorry, I don't get it. 
-> >>> We are using videobuf2-dma-contig, but we also using VB2_USERPTR.
-> >>
-> >> ???? In that case the user pointer you pass in must point to physically contiguous
-> >> memory. Which means you got it through some magic. Typically what should be used
-> >> are dmabuf handles to pass buffers around between different subsystems.
-> >>
-> >> The use of VB2_USERPTR for that purpose is deprecated.
-> >>
-> >> Or am I misunderstanding you as well?
-> >>
-> > Our encoder support all three modes.
-> > In case that A driver + Encode driver flow, OUTPUT buffer will be
-> > VB2_DMABUF from A driver.
-> > In case that read YCbCr frame data from file and encode them to bit
-> > stream flow, we use VB2_USERPTR and VB2_MMAP.
-> > In VB2_USERPTR case, videobuf2-dma-contig will help us get continuous
-> > dma address.
-> > Our chip has IOMMU and M4U that help us get continuous phy address for
-> > encode HW.
-> > 
-> > http://lists.infradead.org/pipermail/linux-mediatek/2015-October/002525.html
-> 
-> Ah, OK. Have you tested this with malloc()ed buffers? Just asking :-)
-> 
-Yes. Actually we tested this with new()ed buffers. I think it default
-call malloc.
+[...]
 
-> Regards,
 > 
-> 	Hans
+> Also, since scpsys' Kconfig is "bool" not "tristate" it isn't a real
+> module so I think we should use:
+> builtin_platform_driver not module_platform_driver
+> 
+> CC'ing Paul Gortmaker who seems to be on a mass
+> builtin_platform_driver conversion at the moment, see:
+> https://lkml.org/lkml/2015/12/9/952
+> 
 
-best regards,
-Tiffany
+Good guess.  In my giant queue I have that change.  I just haven't got
+around to the requisite triple check and multi arch rebuild tests and
+put out a series for soc yet.  Here is the short list for soc:
+
+drivers-soc-make-mediatek-mtk-scpsys.c-explicitly-no.patch
+drivers-soc-make-qcom-spm.c-explicitly-non-modular.patch
+drivers-soc-make-samsung-exynos-srom.c.c-explicitly-.patch
+drivers-soc-make-sunxi_sram.c-explicitly-non-modular.patch
+drivers-soc-tegra-make-fuse-tegra.c-explicitly-non-m.patch
+
+...and here is the patch you predicted.  If someone wants to fold
+the change into their work then great; I'll be happy to drop
+mine and be with one less patch to herd along.
+
+Paul.
+--
+
+ From eb32cc2c1db8192c08dd64af69cb172b3be4c98b Mon Sep 17 00:00:00 2001
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Date: Fri, 4 Sep 2015 19:33:54 -0400
+Subject: [PATCH] drivers/soc: make mediatek/mtk-scpsys.c explicitly
+ non-modular
+
+The Kconfig currently controlling compilation of this code is:
+
+drivers/soc/mediatek/Kconfig:config MTK_SCPSYS
+drivers/soc/mediatek/Kconfig:   bool "MediaTek SCPSYS Support"
+
+...meaning that it currently is not being built as a module by anyone.
+
+Lets remove the couple traces of modularity so that when reading the
+driver there is no doubt it is builtin-only.
+
+Since module_platform_driver() uses the same init level priority as
+builtin_platform_driver() the init ordering remains unchanged with
+this commit.
+
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Cc: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 164a7d8439b1..ae0ca34e64dd 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -15,7 +15,7 @@
+ #include <linux/io.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
+-#include <linux/module.h>
++#include <linux/init.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+@@ -484,5 +484,4 @@ static struct platform_driver scpsys_drv = {
+ 		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
+ 	},
+ };
+-
+-module_platform_driver_probe(scpsys_drv, scpsys_probe);
++builtin_platform_driver_probe(scpsys_drv, scpsys_probe);
+-- 
+2.5.0
