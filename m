@@ -1,72 +1,44 @@
-From: Eduardo Valentin <edubezval@gmail.com>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Thu, 17 Dec 2015 11:33:33 -0800
-Message-ID: <20151217193332.GB7999@localhost.localdomain>
-References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
- <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
+From: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] mtd: mtk-nor: adjust sequence of trigger function and assignment function
+Date: Fri, 18 Dec 2015 10:35:43 +0800
+Message-ID: <1450406143-29679-1-git-send-email-bayi.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Sascha,
+move write data register before excute command to avoid
+missing first byte write to nor flash
 
-Yeah, sorry for the long delay. I was planing on applying this patch for
-the next merge window, but it just came across one point, see below.
+Change-Id: Ie9d7ae30f9de1f3e976d2e1de5d8ee28837598c8
+Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/mtd/spi-nor/mtk-quadspi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Mon, Nov 30, 2015 at 12:42:32PM +0100, Sascha Hauer wrote:
-> This adds support for the Mediatek thermal controller found on MT8173
-> +static const int sensor_mux_values[MT8173_NUM_SENSORS] = { 0, 1, 2, 3, 16 };
-> +
+diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
+index dd269650..04da971 100644
+--- a/drivers/mtd/spi-nor/mtk-quadspi.c
++++ b/drivers/mtd/spi-nor/mtk-quadspi.c
+@@ -272,10 +272,10 @@ static int mt8173_nor_write_single_byte(struct mt8173_nor *mt8173_nor,
+ 	mt8173_nor_set_addr(mt8173_nor, addr);
+ 
+ 	for (i = 0; i < length; i++) {
++		writeb(*data++, mt8173_nor->base + MTK_NOR_WDATA_REG);
+ 		ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PIO_WR_CMD);
+ 		if (ret < 0)
+ 			return ret;
+-		writeb(*data++, mt8173_nor->base + MTK_NOR_WDATA_REG);
+ 	}
+ 	return 0;
+ }
+-- 
+1.8.1.1.dirty
 
-<big cut>
-
-> +/*
-> + * The MT8173 thermal controller has four banks. Each bank can read up to
-> + * four temperature sensors simultaneously. The MT8173 has a total of 5
-> + * temperature sensors. We use each bank to measure a certain area of the
-> + * SoC. Since TS2 is located centrally in the SoC it is influenced by multiple
-> + * areas, hence is used in different banks.
-> + *
-> + * The thermal core only gets the maximum temperature of all banks, so
-> + * the bank concept wouldn't be necessary here. However, the SVS (Smart
-> + * Voltage Scaling) unit makes its decisions based on the same bank
-> + * data, and this indeed needs the temperatures of the individual banks
-> + * for making better decisions.
-> + */
-> +static const struct mtk_thermal_bank_cfg bank_data[] = {
-> +	{
-> +		.num_sensors = 2,
-> +		.sensors = { MT8173_TS2, MT8173_TS3 },
-> +	}, {
-> +		.num_sensors = 2,
-> +		.sensors = { MT8173_TS2, MT8173_TS4 },
-> +	}, {
-> +		.num_sensors = 3,
-> +		.sensors = { MT8173_TS1, MT8173_TS2, MT8173_TSABB },
-> +	}, {
-> +		.num_sensors = 1,
-> +		.sensors = { MT8173_TS2 },
-> +	},
-> +};
-
-Why can't we expose all these as thermal zones?
-
-That should remove the policy of computing the maximum from this driver.
-Please have a look on the work being done [1] to add grouping and
-aggregation of thermal zones. With that in place, you should be a matter
-of configuring the grouping and selecting max as the aggregation function,
-from the thermal core, instead in the driver. Which should give the
-system engineer, more flexibility to compose whatever policy based on
-the exposed sensors.
-
-BR,
-
-Eduardo Valentin
-
-[1] - https://lkml.org/lkml/2015/11/25/446
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
