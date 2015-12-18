@@ -1,51 +1,90 @@
-From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH 15/69] clocksource/drivers/mediatek: Add the COMPILE_TEST
- option
-Date: Fri, 18 Dec 2015 15:17:28 +0100
-Message-ID: <1450448302-27429-15-git-send-email-daniel.lezcano@linaro.org>
-References: <5672CB9E.7090707@linaro.org>
- <1450448302-27429-1-git-send-email-daniel.lezcano@linaro.org>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Fri, 18 Dec 2015 23:06:36 +0800
+Message-ID: <1450451196.19539.9.camel@mtksdaap41>
+References: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1450448302-27429-1-git-send-email-daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mingo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Fabio Estevam <fabio.estevam@freescale.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, Patrice Chotard <patrice.chotard@st.com>, open list <linux-kernel@vger.kernel.org>, Fabian Frederick <fabf@skynet.be>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Increase the compilation test coverage by adding the COMPILE_TEST option.
+On Fri, 2015-12-18 at 12:21 +0800, Daniel Kurtz wrote:
+> Move pinctrl initialization earlier in boot so that real devices can find
+> their pctldev without probe deferring.
+> 
+> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mt6397.c | 2 +-
+>  drivers/pinctrl/mediatek/pinctrl-mt8127.c | 2 +-
+>  drivers/pinctrl/mediatek/pinctrl-mt8135.c | 2 +-
+>  drivers/pinctrl/mediatek/pinctrl-mt8173.c | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+> index f9751ae..a3780d4 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+> @@ -70,7 +70,7 @@ static int __init mtk_pinctrl_init(void)
+>  	return platform_driver_register(&mtk_pinctrl_driver);
+>  }
+>  
+> -module_init(mtk_pinctrl_init);
+> +arch_initcall(mtk_pinctrl_init);
 
-Signed-off-by: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
----
- drivers/clocksource/Kconfig | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-index 96a34dc..3ba43f6 100644
---- a/drivers/clocksource/Kconfig
-+++ b/drivers/clocksource/Kconfig
-@@ -228,9 +228,11 @@ config SYS_SUPPORTS_SH_CMT
-         bool
- 
- config MTK_TIMER
-+	bool "Mediatek timer driver" if COMPILE_TEST
- 	select CLKSRC_OF
- 	select CLKSRC_MMIO
--	bool
-+	help
-+	  Support for Mediatek timer driver.
- 
- config SYS_SUPPORTS_SH_MTU2
-         bool
--- 
-1.9.1
+MT6397 is PMIC, which depends on pwrap on main AP to work. Since
+pmic-wrap itself is module_platform_driver, I think it make sense to
+keep this one as module_init. Maybe adding a comment to explain why it
+is different from others will help.
+
+Joe.C
+
+>  
+>  MODULE_LICENSE("GPL v2");
+>  MODULE_DESCRIPTION("MediaTek MT6397 Pinctrl Driver");
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+> index b317b0b..98e0beb 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+> @@ -351,7 +351,7 @@ static int __init mtk_pinctrl_init(void)
+>  	return platform_driver_register(&mtk_pinctrl_driver);
+>  }
+>  
+> -module_init(mtk_pinctrl_init);
+> +arch_initcall(mtk_pinctrl_init);
+>  
+>  MODULE_LICENSE("GPL v2");
+>  MODULE_DESCRIPTION("MediaTek MT8127 Pinctrl Driver");
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+> index 404f117..1c153b8 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+> @@ -366,7 +366,7 @@ static int __init mtk_pinctrl_init(void)
+>  	return platform_driver_register(&mtk_pinctrl_driver);
+>  }
+>  
+> -module_init(mtk_pinctrl_init);
+> +arch_initcall(mtk_pinctrl_init);
+>  
+>  MODULE_LICENSE("GPL");
+>  MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> index ad27184..a62514e 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+> @@ -394,7 +394,7 @@ static int __init mtk_pinctrl_init(void)
+>  	return platform_driver_register(&mtk_pinctrl_driver);
+>  }
+>  
+> -module_init(mtk_pinctrl_init);
+> +arch_initcall(mtk_pinctrl_init);
+>  
+>  MODULE_LICENSE("GPL v2");
+>  MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
+
+
