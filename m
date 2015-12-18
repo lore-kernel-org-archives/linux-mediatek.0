@@ -1,46 +1,76 @@
-From: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RESEND PATCH] mtd: mtk-nor: adjust sequence of trigger function and assignment function
-Date: Fri, 18 Dec 2015 11:02:40 +0800
-Message-ID: <1450407760-30030-1-git-send-email-bayi.cheng@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Fri, 18 Dec 2015 12:21:11 +0800
+Message-ID: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Patrice Chotard <patrice.chotard@st.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+	support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+	support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Move write data register before excute command to avoid
-missing first byte write to nor flash
+Move pinctrl initialization earlier in boot so that real devices can find
+their pctldev without probe deferring.
 
-Signed-off-by: Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
 ---
-the previous patch didn't drop the Change-Id
+ drivers/pinctrl/mediatek/pinctrl-mt6397.c | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
----
- drivers/mtd/spi-nor/mtk-quadspi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/mtd/spi-nor/mtk-quadspi.c b/drivers/mtd/spi-nor/mtk-quadspi.c
-index dd269650..04da971 100644
---- a/drivers/mtd/spi-nor/mtk-quadspi.c
-+++ b/drivers/mtd/spi-nor/mtk-quadspi.c
-@@ -272,10 +272,10 @@ static int mt8173_nor_write_single_byte(struct mt8173_nor *mt8173_nor,
- 	mt8173_nor_set_addr(mt8173_nor, addr);
- 
- 	for (i = 0; i < length; i++) {
-+		writeb(*data++, mt8173_nor->base + MTK_NOR_WDATA_REG);
- 		ret = mt8173_nor_execute_cmd(mt8173_nor, MTK_NOR_PIO_WR_CMD);
- 		if (ret < 0)
- 			return ret;
--		writeb(*data++, mt8173_nor->base + MTK_NOR_WDATA_REG);
- 	}
- 	return 0;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+index f9751ae..a3780d4 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+@@ -70,7 +70,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
  }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek MT6397 Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index b317b0b..98e0beb 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -351,7 +351,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek MT8127 Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index 404f117..1c153b8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -366,7 +366,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index ad27184..a62514e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -394,7 +394,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
 -- 
-1.8.1.1.dirty
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+2.6.0.rc2.230.g3dd15c0
