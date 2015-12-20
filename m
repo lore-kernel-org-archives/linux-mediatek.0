@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: mediatek: arm64 updates for v4.4
-Date: Sun, 20 Dec 2015 22:17:50 +0100
-Message-ID: <CABuKBeJGS0a5tLFbH=hJtsZ-Uma=7p+M67NuLtBpzhN7d--11A@mail.gmail.com>
+Subject: [GIT PULL] ARM: mediatek: dts updates for v4.4
+Date: Sun, 20 Dec 2015 22:19:41 +0100
+Message-ID: <CABuKBe+SLMYqWvOmL2w-YWOwkGz5tGU8U-fkntFT6rBuFbOsPA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,7 +16,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Arnd and Olof,
@@ -34,29 +34,49 @@ The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
 
 are available in the git repository at:
 
-  https://github.com/mbgg/linux-mediatek.git tags/v4.4-next-arm64
+  https://github.com/mbgg/linux-mediatek.git tags/v4.4-next-dts
 
-for you to fetch changes up to 05bdabe7ebc780e3cd9275f0f5795d337fa5acca:
+for you to fetch changes up to eb0fc0d6ae99305a5aecbcf8a67cce838547d638:
 
-  arm64: dts: mediatek: mt8173 PSCI-1.0 support (2015-11-20 13:42:29 +0100)
-
-----------------------------------------------------------------
-Update psci support to the arm,psci-1.0 to mt8173
-
-Add display PWM driver to mt8173
-
-Add mediatek general porpose timer to mt8173
+  dt-bindings: soc: Add supplies for Mediatek SCPSYS unit (2015-12-09
+12:24:56 +0100)
 
 ----------------------------------------------------------------
-Daniel Kurtz (1):
-      arm64: dts: mt8173: add timer node
+Add regulators to the scpsys binding.
 
-Fan Chen (1):
-      arm64: dts: mediatek: mt8173 PSCI-1.0 support
+Move the include of the reset contoller to include/dt-bindings/reset.
 
-YH Huang (1):
-      arm64: dts: mt8173: add MT8173 display PWM driver support node
+Add basic support for mt2701 SoC and evaluation board.
 
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 13 ++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 33 ++++++++++++++++++++++++++++-
- 2 files changed, 45 insertions(+), 1 deletion(-)
+----------------------------------------------------------------
+Erin Lo (2):
+      Document: DT: Add bindings for mediatek MT2701 SoC Platform
+      ARM: dts: mediatek: add MT2701 basic support
+
+Philipp Zabel (1):
+      ARM: mediatek: DT: Move reset controller constants into common location
+
+Sascha Hauer (1):
+      dt-bindings: soc: Add supplies for Mediatek SCPSYS unit
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |   2 +-
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |   2 +-
+ .../interrupt-controller/mediatek,sysirq.txt       |   1 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |  14 +-
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |  12 ++
+ .../bindings/timer/mediatek,mtk-timer.txt          |   1 +
+ .../devicetree/bindings/watchdog/mtk-wdt.txt       |   6 +-
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/mt2701-evb.dts                   |  29 ++++
+ arch/arm/boot/dts/mt2701.dtsi                      | 146 +++++++++++++++++++++
+ arch/arm/boot/dts/mt8135.dtsi                      |   2 +-
+ arch/arm/mach-mediatek/mediatek.c                  |   1 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   2 +-
+ .../{reset-controller => reset}/mt8135-resets.h    |   0
+ .../{reset-controller => reset}/mt8173-resets.h    |   0
+ 16 files changed, 211 insertions(+), 12 deletions(-)
+ create mode 100644 arch/arm/boot/dts/mt2701-evb.dts
+ create mode 100644 arch/arm/boot/dts/mt2701.dtsi
+ rename include/dt-bindings/{reset-controller => reset}/mt8135-resets.h (100%)
+ rename include/dt-bindings/{reset-controller => reset}/mt8173-resets.h (100%)
