@@ -1,57 +1,81 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: mediatek: soc updates for v4.4
-Date: Sun, 20 Dec 2015 22:22:41 +0100
-Message-ID: <CABuKBeK7v2B_X4i-s02uiK-NpmxeGB2qtXokupsfVCJ5TOte9A@mail.gmail.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v2 4/5] pinctrl: mediatek: Add Pinctrl/GPIO/EINT driver
+ for mt2701
+Date: Mon, 21 Dec 2015 10:37:09 +0800
+Message-ID: <CAGS+omCTxV4jbW_AaAhDDf5OGBKeQT-XiCN=QNp8wKvs+Dd59w@mail.gmail.com>
+References: <1449824872-18314-1-git-send-email-biao.huang@mediatek.com>
+ <1449824872-18314-5-git-send-email-biao.huang@mediatek.com> <1450451637.19539.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1450451637.19539.11.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Biao and Joe,
 
-Please pull the following patches.
+On Fri, Dec 18, 2015 at 11:13 PM, Yingjoe Chen
+<yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> On Fri, 2015-12-11 at 17:07 +0800, Biao Huang wrote:
+>> Add mt2701 support using mediatek common pinctrl driver.
+>> MT2701 have some special pins need an extra setting register
+>> than other ICs, so adding this support to common code.
+>>
+>> Signed-off-by: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>  drivers/pinctrl/mediatek/Kconfig              |    6 +
+>>  drivers/pinctrl/mediatek/Makefile             |    1 +
+>>  drivers/pinctrl/mediatek/pinctrl-mt2701.c     |  590 +++++++
+>>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   14 +
+>>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |   12 +-
+>>  drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h | 2323 +++++++++++++++++++++++++
+>>  6 files changed, 2945 insertions(+), 1 deletion(-)
+>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2701.c
+>>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
+>
+> This patch looks good to me.
+> Thanks
+>
+> Acked-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Thanks,
-Matthias
+>
+> Joe.C
+>
+>>
+>> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+>> index 02f6f92..13e9939 100644
+>> --- a/drivers/pinctrl/mediatek/Kconfig
+>> +++ b/drivers/pinctrl/mediatek/Kconfig
+>> @@ -9,6 +9,12 @@ config PINCTRL_MTK_COMMON
+>>       select OF_GPIO
+>>
+>>  # For ARMv7 SoCs
+>> +config PINCTRL_MT2701
+>> +     bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
 
----
+This is 'bool', so can never be built as a module...
 
-The following changes since commit 8005c49d9aea74d382f474ce11afbbc7d7130bec:
+[snip...]
 
-  Linux 4.4-rc1 (2015-11-15 17:00:27 -0800)
+>> +module_init(mtk_pinctrl_init);
 
-are available in the git repository at:
+Yingjoe - you just ack'ed this change for the other MTK pinctrl.
+So, let's apply it here too:
 
-  https://github.com/mbgg/linux-mediatek.git tags/v4.4-next-soc
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
 
-for you to fetch changes up to e50be5cd0caa1d3c59d2fa9064c3932f3f74e047:
+>> +
+>> +MODULE_LICENSE("GPL v2");
+>> +MODULE_DESCRIPTION("MediaTek MT2701 Pinctrl Driver");
+>> +MODULE_AUTHOR("Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
 
-  drivers/soc: make mediatek/mtk-scpsys.c explicitly non-modular
-(2015-12-18 09:41:43 +0100)
+And remove these lines since this isn't a module.
 
-----------------------------------------------------------------
-Change the scpsys to builtin_platform_driver_probe.
-
-Add regulator support for scpsys driver.
-
-----------------------------------------------------------------
-Paul Gortmaker (1):
-      drivers/soc: make mediatek/mtk-scpsys.c explicitly non-modular
-
-Sascha Hauer (1):
-      soc: mediatek: SCPSYS: Add regulator support
-
- drivers/soc/mediatek/mtk-scpsys.c | 32 +++++++++++++++++++++++++++++---
- 1 file changed, 29 insertions(+), 3 deletions(-)
+-Dan
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
