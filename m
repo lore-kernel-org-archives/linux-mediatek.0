@@ -1,81 +1,60 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 4/5] pinctrl: mediatek: Add Pinctrl/GPIO/EINT driver
- for mt2701
-Date: Mon, 21 Dec 2015 10:37:09 +0800
-Message-ID: <CAGS+omCTxV4jbW_AaAhDDf5OGBKeQT-XiCN=QNp8wKvs+Dd59w@mail.gmail.com>
-References: <1449824872-18314-1-git-send-email-biao.huang@mediatek.com>
- <1449824872-18314-5-git-send-email-biao.huang@mediatek.com> <1450451637.19539.11.camel@mtksdaap41>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Mon, 21 Dec 2015 12:07:58 +0800
+Message-ID: <CAGS+omC86=Kfdj0cFNHqs4fXCAT0uU+AxHCj3ORd2HetNZ2gVQ@mail.gmail.com>
+References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de> <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1450451637.19539.11.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sasha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Biao and Joe,
+Hi Sascha,
 
-On Fri, Dec 18, 2015 at 11:13 PM, Yingjoe Chen
-<yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> On Fri, 2015-12-11 at 17:07 +0800, Biao Huang wrote:
->> Add mt2701 support using mediatek common pinctrl driver.
->> MT2701 have some special pins need an extra setting register
->> than other ICs, so adding this support to common code.
->>
->> Signed-off-by: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>  drivers/pinctrl/mediatek/Kconfig              |    6 +
->>  drivers/pinctrl/mediatek/Makefile             |    1 +
->>  drivers/pinctrl/mediatek/pinctrl-mt2701.c     |  590 +++++++
->>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |   14 +
->>  drivers/pinctrl/mediatek/pinctrl-mtk-common.h |   12 +-
->>  drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h | 2323 +++++++++++++++++++++++++
->>  6 files changed, 2945 insertions(+), 1 deletion(-)
->>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt2701.c
->>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt2701.h
+One nit below that can be fixed up later, or now if you don't plan to
+spin this driver to
+address Eduardo's feedback...
+
+On Mon, Nov 30, 2015 at 7:42 PM, Sascha Hauer <s.hauer@pengutronix.de> wrote:
+> This adds support for the Mediatek thermal controller found on MT8173
+> and likely other SoCs.
+> The controller is a bit special. It does not have its own ADC, instead
+> it controls the on-SoC AUXADC via AHB bus accesses. For this reason
+> we need the physical address of the AUXADC. Also it controls a mux
+> using AHB bus accesses, so we need the APMIXEDSYS physical address aswell.
 >
-> This patch looks good to me.
-> Thanks
->
-> Acked-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
->
-> Joe.C
->
->>
->> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
->> index 02f6f92..13e9939 100644
->> --- a/drivers/pinctrl/mediatek/Kconfig
->> +++ b/drivers/pinctrl/mediatek/Kconfig
->> @@ -9,6 +9,12 @@ config PINCTRL_MTK_COMMON
->>       select OF_GPIO
->>
->>  # For ARMv7 SoCs
->> +config PINCTRL_MT2701
->> +     bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
+[snip]
 
-This is 'bool', so can never be built as a module...
+> +static int mtk_thermal_get_calibration_data(struct device *dev, struct mtk_thermal *mt)
+> +{
+> +       struct nvmem_cell *cell;
+> +       u32 *buf;
+> +       size_t len;
+> +       int i, ret = 0;
+> +
+> +       /* Start with default values */
+> +       mt->adc_ge = 512;
+> +       for (i = 0; i < MT8173_NUM_SENSORS; i++)
+> +               mt->vts[i] = 260;
+> +       mt->degc_cali = 40;
+> +       mt->o_slope = 0;
+> +
+> +       cell = nvmem_cell_get(dev, "calibration-data");
+> +       if (IS_ERR(cell)) {
+> +               if (PTR_ERR(cell) == -EPROBE_DEFER)
 
-[snip...]
+It is useful to know why the thermal driver is being probe defered, so
+I suggest here:
+dev_warn(dev, "Waiting for calibration data.\n");
 
->> +module_init(mtk_pinctrl_init);
+> +                       return PTR_ERR(cell);
+> +               return 0;
+> +       }
 
-Yingjoe - you just ack'ed this change for the other MTK pinctrl.
-So, let's apply it here too:
-
--module_init(mtk_pinctrl_init);
-+arch_initcall(mtk_pinctrl_init);
-
->> +
->> +MODULE_LICENSE("GPL v2");
->> +MODULE_DESCRIPTION("MediaTek MT2701 Pinctrl Driver");
->> +MODULE_AUTHOR("Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-
-And remove these lines since this isn't a module.
-
+Thanks,
 -Dan
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
