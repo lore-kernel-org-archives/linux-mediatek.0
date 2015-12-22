@@ -1,68 +1,27 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] soc: mediatek: PMIC wrap: Clear the vldclr if state machine is stay on FSM_VLDCLR state.
-Date: Tue, 22 Dec 2015 15:51:17 +0800
-Message-ID: <1450770677-13557-1-git-send-email-henryc.chen@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Tue, 22 Dec 2015 11:23:26 +0100
+Message-ID: <CACRpkdbuL5Kjeqb-zJg9DmoxKzy7vphYgBTG-Ffh2i=UVH97ug@mail.gmail.com>
+References: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Patrice Chotard <patrice.chotard@st.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
-because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
-just return error when issue happened, so the state machine will stay on
-FSM_VLDCLR state when data send back later by PMIC and timeout again in next
-time because pmic wrap waiting for FSM_IDLE state at the begining of the
-read/write function.
+On Fri, Dec 18, 2015 at 5:21 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
 
-Clear the vldclr when timeout if state machine is stay on FSM_VLDCLR.
+> Move pinctrl initialization earlier in boot so that real devices can find
+> their pctldev without probe deferring.
+>
+> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+I interpret the discussion as I should wait for a new version of this?
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 105597a..ccd5337 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -443,10 +443,16 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
- static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
- {
- 	int ret;
-+	u32 val;
- 
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
--	if (ret)
-+	if (ret) {
-+		/* Clear vldclr bit if state is on the WACS_FSM_WFVLDCLR */
-+		val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-+		if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
-+			pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
- 		return ret;
-+	}
- 
- 	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
- 			PWRAP_WACS2_CMD);
-@@ -457,10 +463,16 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
- static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
- {
- 	int ret;
-+	u32 val;
- 
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
--	if (ret)
-+	if (ret) {
-+		/* Clear vldclr bit if state is on the WACS_FSM_WFVLDCLR */
-+		val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-+		if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
-+			pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
- 		return ret;
-+	}
- 
- 	pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
- 
--- 
-1.9.1
+Or should it be applied?
+
+Yours,
+Linus Walleij
