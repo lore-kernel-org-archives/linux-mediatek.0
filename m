@@ -1,44 +1,69 @@
 From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
-Date: Tue, 22 Dec 2015 21:41:28 +0800
-Message-ID: <CAGS+omCLEaD34eXLcQZ5q4Jt36d8Ksfg2SzfNNPxkgYrRQu0_g@mail.gmail.com>
-References: <1450412497-25872-1-git-send-email-djkurtz@chromium.org>
- <CACRpkdbuL5Kjeqb-zJg9DmoxKzy7vphYgBTG-Ffh2i=UVH97ug@mail.gmail.com> <1450791416.20501.7.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Subject: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Tue, 22 Dec 2015 21:46:37 +0800
+Message-ID: <1450792017-7120-1-git-send-email-djkurtz@chromium.org>
 Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1450791416.20501.7.camel@mtksdaap41>
 Sender: linux-gpio-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Fabio Estevam <fabio.estevam@freescale.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, Patrice Chotard <patrice.chotard@st.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Fabio Estevam <fabio.estevam@freescale.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+	support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+	support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Dec 22, 2015 at 9:36 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
-> On Tue, 2015-12-22 at 11:23 +0100, Linus Walleij wrote:
->> On Fri, Dec 18, 2015 at 5:21 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
->>
->> > Move pinctrl initialization earlier in boot so that real devices can find
->> > their pctldev without probe deferring.
->> >
->> > Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
->>
->> I interpret the discussion as I should wait for a new version of this?
->>
->> Or should it be applied?
->
-> We'll have another patch to change init orders for pwrap, mt6397 mfd
-> core and mt6397 regulator. Before that, the mt6397 pinctrl changes in
-> this patch won't work as expect. Apply this now won't cause any problem
-> either, unless someone think we should stink to current orders.
->
-> So I think we could apply this now:
->
-> Acked-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
->
-> Joe.C
+Move pinctrl initialization earlier in boot so that real devices can find
+their pctldev without probe deferring.
 
-Joe.C, Linus,
+Note: We don't change mt6397 probe order in this patch, since MT6397 is mfd
+PMIC, which depends on pwrap on main AP to work. Since pmic-wrap itself
+is module_platform_driver, we keep it as module_init.  A later patch
+will convert both pmic-wrap, and all functions of the MT6397 mfd to
+arch_initcall.
 
-Thanks for the Ack.
-I think it is cleaner if I just send a new patch without the mt6397 change.
-So, I'll do that in a bit.
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index b317b0b..98e0beb 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -351,7 +351,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek MT8127 Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index 404f117..1c153b8 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -366,7 +366,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL");
+ MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index ad27184..a62514e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -394,7 +394,7 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+ 
+-module_init(mtk_pinctrl_init);
++arch_initcall(mtk_pinctrl_init);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("MediaTek Pinctrl Driver");
+-- 
+2.6.0.rc2.230.g3dd15c0
+
