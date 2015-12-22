@@ -1,126 +1,94 @@
-From: Julia Lawall <Julia.Lawall@lip6.fr>
-Subject: [PATCH 0/5] add missing of_node_put
-Date: Mon, 21 Dec 2015 17:39:43 +0100
-Message-ID: <1450715988-4770-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Koro Chen <koro.chen@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Turn AFE on/off in runtime resume/suspend
+Date: Tue, 22 Dec 2015 11:11:34 +0800
+Message-ID: <1450753894-8087-1-git-send-email-koro.chen@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, linux-sh@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, pc.liao@mediatek.com, Koro Chen <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The various for_each device_node iterators performs an of_node_get on each
-iteration, so a break out of the loop requires an of_node_put.
+AFE is actually allowed to be turn on before configuration of DAIs
+since each DAI has its own enabling control. Turn on/off AFE in
+runtime resume/suspend to avoid AFE being shut down when closing a DAI
+while other DAIs are still active.
 
-The complete semantic patch that fixes this problem is
-(http://coccinelle.lip6.fr):
-
-// <smpl>
-@r@
-local idexpression n;
-expression e1,e2;
-iterator name for_each_node_by_name, for_each_node_by_type,
-for_each_compatible_node, for_each_matching_node,
-for_each_matching_node_and_match, for_each_child_of_node,
-for_each_available_child_of_node, for_each_node_with_property;
-iterator i;
-statement S;
-expression list [n1] es;
-@@
-
-(
-(
-for_each_node_by_name(n,e1) S
-|
-for_each_node_by_type(n,e1) S
-|
-for_each_compatible_node(n,e1,e2) S
-|
-for_each_matching_node(n,e1) S
-|
-for_each_matching_node_and_match(n,e1,e2) S
-|
-for_each_child_of_node(e1,n) S
-|
-for_each_available_child_of_node(e1,n) S
-|
-for_each_node_with_property(n,e1) S
-)
-&
-i(es,n,...) S
-)
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-   return n;
-|
-+  of_node_put(n);
-?  return ...;
-)
-   ...
- }
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-+  of_node_put(n);
-?  break;
-)
-   ...
- }
-... when != n
-
-@@
-local idexpression r.n;
-iterator r.i;
-expression e;
-identifier l;
-expression list [r.n1] es;
-@@
-
- i(es,n,...) {
-   ...
-(
-   of_node_put(n);
-|
-   e = n
-|
-+  of_node_put(n);
-?  goto l;
-)
-   ...
- }
-...
-l: ... when != n// </smpl>
-
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
 ---
+ sound/soc/mediatek/mtk-afe-pcm.c |   24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    1 +
- drivers/pinctrl/pinctrl-rockchip.c            |    5 ++++-
- drivers/pinctrl/pinctrl-tegra-xusb.c          |    4 +++-
- drivers/pinctrl/pinctrl-tegra.c               |    1 +
- drivers/pinctrl/sh-pfc/pinctrl.c              |    4 +++-
- drivers/pinctrl/sirf/pinctrl-sirf.c           |    8 ++++++--
- 6 files changed, 18 insertions(+), 5 deletions(-)
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index 5399a0e..08af9f5 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -382,9 +382,6 @@ static void mtk_afe_i2s_shutdown(struct snd_pcm_substream *substream,
+ 			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
+ 			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
+ 	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
+-
+-	/* disable AFE */
+-	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0);
+ }
+ 
+ static int mtk_afe_i2s_prepare(struct snd_pcm_substream *substream,
+@@ -433,9 +430,6 @@ static void mtk_afe_hdmi_shutdown(struct snd_pcm_substream *substream,
+ 
+ 	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S3_M],
+ 				  afe->clocks[MTK_CLK_I2S3_B]);
+-
+-	/* disable AFE */
+-	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0);
+ }
+ 
+ static int mtk_afe_hdmi_prepare(struct snd_pcm_substream *substream,
+@@ -679,17 +673,6 @@ static int mtk_afe_dais_hw_free(struct snd_pcm_substream *substream,
+ 	return snd_pcm_lib_free_pages(substream);
+ }
+ 
+-static int mtk_afe_dais_prepare(struct snd_pcm_substream *substream,
+-				struct snd_soc_dai *dai)
+-{
+-	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct mtk_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
+-
+-	/* enable AFE */
+-	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0x1);
+-	return 0;
+-}
+-
+ static int mtk_afe_dais_trigger(struct snd_pcm_substream *substream, int cmd,
+ 				struct snd_soc_dai *dai)
+ {
+@@ -757,7 +740,6 @@ static const struct snd_soc_dai_ops mtk_afe_dai_ops = {
+ 	.shutdown	= mtk_afe_dais_shutdown,
+ 	.hw_params	= mtk_afe_dais_hw_params,
+ 	.hw_free	= mtk_afe_dais_hw_free,
+-	.prepare	= mtk_afe_dais_prepare,
+ 	.trigger	= mtk_afe_dais_trigger,
+ };
+ 
+@@ -1118,6 +1100,9 @@ static int mtk_afe_runtime_suspend(struct device *dev)
+ {
+ 	struct mtk_afe *afe = dev_get_drvdata(dev);
+ 
++	/* disable AFE */
++	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0);
++
+ 	/* disable AFE clk */
+ 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
+ 			   AUD_TCON0_PDN_AFE, AUD_TCON0_PDN_AFE);
+@@ -1164,6 +1149,9 @@ static int mtk_afe_runtime_resume(struct device *dev)
+ 
+ 	/* unmask all IRQs */
+ 	regmap_update_bits(afe->regmap, AFE_IRQ_MCU_EN, 0xff, 0xff);
++
++	/* enable AFE */
++	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0x1);
+ 	return 0;
+ 
+ err_bck0:
+-- 
+1.7.9.5
