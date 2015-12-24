@@ -1,54 +1,53 @@
-From: Mark Brown <broonie@kernel.org>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
 Subject: Re: [PATCH] regulator: mt6397: convert to arch_initcall
-Date: Wed, 23 Dec 2015 12:00:19 +0000
-Message-ID: <20151223120019.GU16023@sirena.org.uk>
+Date: Thu, 24 Dec 2015 16:10:43 +0800
+Message-ID: <1450944643.30352.9.camel@mtksdaap41>
 References: <1450865768-10317-1-git-send-email-henryc.chen@mediatek.com>
+	 <20151223120019.GU16023@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="XSEVMyPRvc8xgDhM"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1450865768-10317-1-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <20151223120019.GU16023@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Sascha Hauer <kernel@pengutronix.de>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
+To: Mark Brown <broonie@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Henry Chen <henryc.chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, 2015-12-23 at 12:00 +0000, Mark Brown wrote:
+> On Wed, Dec 23, 2015 at 06:16:08PM +0800, Henry Chen wrote:
+> 
+> Please fix your mail client to word wrap within paragraphs at something
+> substantially less than 80 columns.  Doing this makes your messages much
+> easier to read and reply to.
+> 
+> > Due to some device may need reulator operation in earlier boot time like gpu module which
+> > power domain need regulator power on first. Move regulator of mt6397
+> > initialization earlier in boot so that real devices can use regulator
+> > without probe deferring.
+> 
+> Several problems here.  One is that we usually use subsys_initcall() for
+> working around the known broken subsystems here, why have you decided to
+> go for arch_initcall() instead.  Another is that you're saying this is
+> for GPUs but I'm not aware of any reason why GPUs are broken and we
+> should not be introducing new problems here - what's going on?
 
---XSEVMyPRvc8xgDhM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Wed, Dec 23, 2015 at 06:16:08PM +0800, Henry Chen wrote:
+These changes are related to pinctrl init order patch. The related
+discussion is here:
+http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003298.html
 
-Please fix your mail client to word wrap within paragraphs at something
-substantially less than 80 columns.  Doing this makes your messages much
-easier to read and reply to.
+and these should really be a series:
 
-> Due to some device may need reulator operation in earlier boot time like gpu module which
-> power domain need regulator power on first. Move regulator of mt6397
-> initialization earlier in boot so that real devices can use regulator
-> without probe deferring.
+mediatek pwrap
+http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003347.html
+mt6397 MFD core
+http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003348.html
+mt6397 regulator
+http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003349.html
 
-Several problems here.  One is that we usually use subsys_initcall() for
-working around the known broken subsystems here, why have you decided to
-go for arch_initcall() instead.  Another is that you're saying this is
-for GPUs but I'm not aware of any reason why GPUs are broken and we
-should not be introducing new problems here - what's going on?
 
---XSEVMyPRvc8xgDhM
-Content-Type: application/pgp-signature; name="signature.asc"
+I think Henry use arch_initcall because that's what pinctrl patch was
+using. In this case, we should use subsys_initcall for all these.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWeozSAAoJECTWi3JdVIfQAtYH/30r69nH1m4kYrP4Noovawwc
-8+WXP3TjxDUFck+vIFgNqcZ3mlbrRTCwe4UGAsN9Ogv8H8asiRVMPdrUCxS6CpQm
-jF23rljOUxEiqxlRQ7r+UKXBHxqDEgBn+H4HO6tLmkgVM3QVSZmB18GAJNiFT/Ga
-VodV+OkAIzR6gC3kl/gNKSsTwcowMYDKZ++FM9aS11Q/rxk9573gP51fSVo9IEKn
-LJ7T1Xh6qgm3NT6AB88oge7Wcsm0LSmnRiP2e93mjUBfDd9j4V3KNYgTum/AapAp
-NJcxYH5qs4vZ/t26mqX0NmGYisyUBZrodegbAZzWbho+hI+7peNncvMYoSmfDVA=
-=omNx
------END PGP SIGNATURE-----
-
---XSEVMyPRvc8xgDhM--
+Joe.C
