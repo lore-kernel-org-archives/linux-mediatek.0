@@ -1,53 +1,67 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH] regulator: mt6397: convert to arch_initcall
-Date: Thu, 24 Dec 2015 16:10:43 +0800
-Message-ID: <1450944643.30352.9.camel@mtksdaap41>
-References: <1450865768-10317-1-git-send-email-henryc.chen@mediatek.com>
-	 <20151223120019.GU16023@sirena.org.uk>
+From: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] nvmem: mediatek: Fix later provider initialization
+Date: Fri, 25 Dec 2015 11:41:15 +0800
+Message-ID: <1451014875-11625-1-git-send-email-andrew-ct.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20151223120019.GU16023@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Samuel Ortiz <sameo@linux.intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Henry Chen <henryc.chen@mediatek.com>, Mark Rutland <mark.rutland@arm.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2015-12-23 at 12:00 +0000, Mark Brown wrote:
-> On Wed, Dec 23, 2015 at 06:16:08PM +0800, Henry Chen wrote:
-> 
-> Please fix your mail client to word wrap within paragraphs at something
-> substantially less than 80 columns.  Doing this makes your messages much
-> easier to read and reply to.
-> 
-> > Due to some device may need reulator operation in earlier boot time like gpu module which
-> > power domain need regulator power on first. Move regulator of mt6397
-> > initialization earlier in boot so that real devices can use regulator
-> > without probe deferring.
-> 
-> Several problems here.  One is that we usually use subsys_initcall() for
-> working around the known broken subsystems here, why have you decided to
-> go for arch_initcall() instead.  Another is that you're saying this is
-> for GPUs but I'm not aware of any reason why GPUs are broken and we
-> should not be introducing new problems here - what's going on?
+Possibly, provider driver initialization is later than
+consumer driver. Use function subsys_initcall to initialize
+NVMEM provider early to ensure NVMEM consumer doesn't need
+to -EPROBE_DEFER.
 
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/nvmem/mtk-efuse.c | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
-These changes are related to pinctrl init order patch. The related
-discussion is here:
-http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003298.html
-
-and these should really be a series:
-
-mediatek pwrap
-http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003347.html
-mt6397 MFD core
-http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003348.html
-mt6397 regulator
-http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003349.html
-
-
-I think Henry use arch_initcall because that's what pinctrl patch was
-using. In this case, we should use subsys_initcall for all these.
-
-Joe.C
+diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+index 7b35f5b..9c49369 100644
+--- a/drivers/nvmem/mtk-efuse.c
++++ b/drivers/nvmem/mtk-efuse.c
+@@ -83,7 +83,28 @@ static struct platform_driver mtk_efuse_driver = {
+ 		.of_match_table = mtk_efuse_of_match,
+ 	},
+ };
+-module_platform_driver(mtk_efuse_driver);
++
++static int __init mtk_efuse_init(void)
++{
++	int ret;
++
++	ret = platform_driver_register(&mtk_efuse_driver);
++	if (ret) {
++		pr_err("Failed to register efuse driver\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++static void __exit mtk_efuse_exit(void)
++{
++	return platform_driver_unregister(&mtk_efuse_driver);
++}
++
++subsys_initcall(mtk_efuse_init);
++module_exit(mtk_efuse_exit);
++
+ MODULE_AUTHOR("Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
+ MODULE_DESCRIPTION("Mediatek EFUSE driver");
+ MODULE_LICENSE("GPL v2");
+-- 
+1.9.1
