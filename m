@@ -1,67 +1,31 @@
-From: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] nvmem: mediatek: Fix later provider initialization
-Date: Fri, 25 Dec 2015 11:41:15 +0800
-Message-ID: <1451014875-11625-1-git-send-email-andrew-ct.chen@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Subject: [PATCH v2 0/3] ARM64: dts: cpufreq: mt8173: Migrate mt8173-cpufreq to use OPPv2 bindings
+Date: Sun, 27 Dec 2015 14:21:55 +0800
+Message-ID: <1451197318-12418-1-git-send-email-pi-cheng.chen@linaro.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, linaro-kernel@lists.linaro.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Possibly, provider driver initialization is later than
-consumer driver. Use function subsys_initcall to initialize
-NVMEM provider early to ensure NVMEM consumer doesn't need
-to -EPROBE_DEFER.
+This series tries to migrate mt8173-cpufreq driver to use
+operating-points-v2 bindings and add support for mt8173-cpufreq driver
 
-Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/nvmem/mtk-efuse.c | 23 ++++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+v1->v2:
+- update dev_pm_opp_of_get_sharing_cpus() to setup bitfield of original CPU
+- rename OPP nodes in dts according to OPPv2 bindings in linux-next
 
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index 7b35f5b..9c49369 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -83,7 +83,28 @@ static struct platform_driver mtk_efuse_driver = {
- 		.of_match_table = mtk_efuse_of_match,
- 	},
- };
--module_platform_driver(mtk_efuse_driver);
-+
-+static int __init mtk_efuse_init(void)
-+{
-+	int ret;
-+
-+	ret = platform_driver_register(&mtk_efuse_driver);
-+	if (ret) {
-+		pr_err("Failed to register efuse driver\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void __exit mtk_efuse_exit(void)
-+{
-+	return platform_driver_unregister(&mtk_efuse_driver);
-+}
-+
-+subsys_initcall(mtk_efuse_init);
-+module_exit(mtk_efuse_exit);
-+
- MODULE_AUTHOR("Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
- MODULE_DESCRIPTION("Mediatek EFUSE driver");
- MODULE_LICENSE("GPL v2");
+Pi-Cheng Chen (3):
+  PM/OPP: Don't skip cpu_dev->id when setting up cpumask
+  cpufreq: mt8173: migrate to use operating-points-v2 bindings
+  ARM64: dts: mt8173: Add CPU OPP, clock and regulator supply properties
+
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 90 +++++++++++++++++++++++++++++
+ drivers/base/power/opp/cpu.c                |  4 --
+ drivers/cpufreq/mt8173-cpufreq.c            | 17 ++++--
+ 4 files changed, 119 insertions(+), 10 deletions(-)
+
 -- 
 1.9.1
+
