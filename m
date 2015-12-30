@@ -1,58 +1,55 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH 4/4] soc: mediatek: Add MT2701/MT7623 scpsys driver
-Date: Wed, 30 Dec 2015 17:01:54 +0800
-Message-ID: <CAGS+omCwxB+4VFOA1hA9Rg-ekWCVM8Y_c7woTEXnvX6FG1y9mQ@mail.gmail.com>
-References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com> <1451457706-14798-5-git-send-email-jamesjj.liao@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH 1/4] soc: mediatek: Separate scpsys driver common code
+Date: Wed, 30 Dec 2015 18:08:42 +0800
+Message-ID: <1451470122.22426.1.camel@mtksdaap41>
+References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1451457706-14798-2-git-send-email-jamesjj.liao@mediatek.com>
+	 <2524123.scG8tD5NSM@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1451457706-14798-5-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2524123.scG8tD5NSM@wuerfel>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 30, 2015 at 2:41 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> Add scpsys driver for MT2701 and MT7623.
->
-> Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/soc/mediatek/Kconfig             |  11 +++
->  drivers/soc/mediatek/Makefile            |   1 +
->  drivers/soc/mediatek/mtk-scpsys-mt2701.c | 161 +++++++++++++++++++++++++++++++
->  3 files changed, 173 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
->
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index eca6fb7..92cf838 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -39,3 +39,14 @@ config MTK_SCPSYS_MT8173
->           driver.
->           The System Control Processor System (SCPSYS) has several power
->           management related tasks in the system.
-> +
-> +config MTK_SCPSYS_MT2701
-> +       bool "SCPSYS Support MediaTek MT2701 and MT7623"
-> +       depends on ARCH_MEDIATEK || COMPILE_TEST
-> +       select MTK_SCPSYS
-> +       default ARCH_MEDIATEK
-> +       help
-> +         Say yes here to add support for the MT2701/MT7623 SCPSYS power
-> +         domain driver.
-> +         The System Control Processor System (SCPSYS) has several power
-> +         management related tasks in the system.
+Hi Arnd,
 
-I don't think we really want different drivers and Kconfig options.
+On Wed, 2015-12-30 at 09:52 +0100, Arnd Bergmann wrote:
+> On Wednesday 30 December 2015 14:41:43 James Liao wrote:
+> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > index 0a4ea80..eca6fb7 100644
+> > --- a/drivers/soc/mediatek/Kconfig
+> > +++ b/drivers/soc/mediatek/Kconfig
+> > @@ -22,11 +22,20 @@ config MTK_PMIC_WRAP
+> >  
+> >  config MTK_SCPSYS
+> >         bool "MediaTek SCPSYS Support"
+> > -       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > -       default ARM64 && ARCH_MEDIATEK
+> >         select REGMAP
+> >         select MTK_INFRACFG
+> >         select PM_GENERIC_DOMAINS if PM
+> >         help
+> >           Say yes here to add support for the MediaTek SCPSYS power domain
+> >           driver.
+> > +
+> > +config MTK_SCPSYS_MT8173
+> > +       bool "MediaTek MT8173 SCPSYS Support"
+> > +       depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +       select MTK_SCPSYS
+> > +       default ARCH_MEDIATEK
+> > 
+> 
+> Please don't "select" a user-visible Kconfig symbol. Either hide MTK_SCPSYS
+> by removing the string behind 'bool', or make this "depends on MTK_SCPSYS".
 
-Can we just use different compatibles to select the appropriate scp_domain_data?
+It looks something wrong during cherry-pick. MTK_SCPSYS should be
+invisible from user. I'll remove the string behind 'bool' in next patch.
 
--Dan
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+Best regards,
+
+James
