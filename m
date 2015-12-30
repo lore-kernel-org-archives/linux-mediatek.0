@@ -1,13 +1,11 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 3/4] soc: mediatek: Add MT2701 power dt-bindings
-Date: Wed, 30 Dec 2015 14:41:45 +0800
-Message-ID: <1451457706-14798-4-git-send-email-jamesjj.liao@mediatek.com>
-References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2] soc: mediatek: SCPSYS: use builtin_platform_driver
+Date: Wed, 30 Dec 2015 09:30:40 +0100
+Message-ID: <1451464240-5313-1-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1451457706-14798-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -17,53 +15,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+SCPSYS can't be built as module. Use builtin_platform_driver instead.
+For this probe must not be __init and the data accessed can't be
+__initconst. Remove this macros. To make the impact as small as possible,
+fold scp_domain_data into scp_domain via a pointer.
 
-Add power dt-bindings for MT2701.
-
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Reported-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- include/dt-bindings/power/mt2701-power.h | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
- create mode 100644 include/dt-bindings/power/mt2701-power.h
+Changes for v2:
+- set suppress_bind_attrs to true
 
-diff --git a/include/dt-bindings/power/mt2701-power.h b/include/dt-bindings/power/mt2701-power.h
-new file mode 100644
-index 0000000..64cc826
---- /dev/null
-+++ b/include/dt-bindings/power/mt2701-power.h
-@@ -0,0 +1,27 @@
-+/*
-+ * Copyright (C) 2015 MediaTek Inc.
-+ *
-+ * This program is free software: you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT2701_POWER_H
-+#define _DT_BINDINGS_POWER_MT2701_POWER_H
-+
-+#define MT2701_POWER_DOMAIN_CONN	0
-+#define MT2701_POWER_DOMAIN_DISP	1
-+#define MT2701_POWER_DOMAIN_MFG		2
-+#define MT2701_POWER_DOMAIN_VDEC	3
-+#define MT2701_POWER_DOMAIN_ISP		4
-+#define MT2701_POWER_DOMAIN_BDP		5
-+#define MT2701_POWER_DOMAIN_ETH		6
-+#define MT2701_POWER_DOMAIN_HIF		7
-+#define MT2701_POWER_DOMAIN_IFR_MSC	8
-+
-+#endif /* _DT_BINDINGS_POWER_MT2701_POWER_H */
+ drivers/soc/mediatek/mtk-scpsys.c | 49 +++++++++++++++++----------------------
+ 1 file changed, 21 insertions(+), 28 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 0221387..837effe 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -76,7 +76,7 @@ struct scp_domain_data {
+ 	bool active_wakeup;
+ };
+ 
+-static const struct scp_domain_data scp_domain_data[] __initconst = {
++static const struct scp_domain_data scp_domain_data[] = {
+ 	[MT8173_POWER_DOMAIN_VDEC] = {
+ 		.name = "vdec",
+ 		.sta_mask = PWR_STATUS_VDEC,
+@@ -174,12 +174,7 @@ struct scp_domain {
+ 	struct generic_pm_domain genpd;
+ 	struct scp *scp;
+ 	struct clk *clk[MAX_CLKS];
+-	u32 sta_mask;
+-	void __iomem *ctl_addr;
+-	u32 sram_pdn_bits;
+-	u32 sram_pdn_ack_bits;
+-	u32 bus_prot_mask;
+-	bool active_wakeup;
++	const struct scp_domain_data *data;
+ 	struct regulator *supply;
+ };
+ 
+@@ -195,8 +190,9 @@ static int scpsys_domain_is_on(struct scp_domain *scpd)
+ {
+ 	struct scp *scp = scpd->scp;
+ 
+-	u32 status = readl(scp->base + SPM_PWR_STATUS) & scpd->sta_mask;
+-	u32 status2 = readl(scp->base + SPM_PWR_STATUS_2ND) & scpd->sta_mask;
++	u32 status = readl(scp->base + SPM_PWR_STATUS) & scpd->data->sta_mask;
++	u32 status2 = readl(scp->base + SPM_PWR_STATUS_2ND) &
++				scpd->data->sta_mask;
+ 
+ 	/*
+ 	 * A domain is on when both status bits are set. If only one is set
+@@ -217,8 +213,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	struct scp *scp = scpd->scp;
+ 	unsigned long timeout;
+ 	bool expired;
+-	void __iomem *ctl_addr = scpd->ctl_addr;
+-	u32 sram_pdn_ack = scpd->sram_pdn_ack_bits;
++	void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
++	u32 sram_pdn_ack = scpd->data->sram_pdn_ack_bits;
+ 	u32 val;
+ 	int ret;
+ 	int i;
+@@ -273,7 +269,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val |= PWR_RST_B_BIT;
+ 	writel(val, ctl_addr);
+ 
+-	val &= ~scpd->sram_pdn_bits;
++	val &= ~scpd->data->sram_pdn_bits;
+ 	writel(val, ctl_addr);
+ 
+ 	/* wait until SRAM_PDN_ACK all 0 */
+@@ -292,9 +288,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 			expired = true;
+ 	}
+ 
+-	if (scpd->bus_prot_mask) {
++	if (scpd->data->bus_prot_mask) {
+ 		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
+-				scpd->bus_prot_mask);
++				scpd->data->bus_prot_mask);
+ 		if (ret)
+ 			goto err_pwr_ack;
+ 	}
+@@ -321,21 +317,21 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	struct scp *scp = scpd->scp;
+ 	unsigned long timeout;
+ 	bool expired;
+-	void __iomem *ctl_addr = scpd->ctl_addr;
+-	u32 pdn_ack = scpd->sram_pdn_ack_bits;
++	void __iomem *ctl_addr = scp->base + scpd->data->ctl_offs;
++	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+ 	u32 val;
+ 	int ret;
+ 	int i;
+ 
+-	if (scpd->bus_prot_mask) {
++	if (scpd->data->bus_prot_mask) {
+ 		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
+-				scpd->bus_prot_mask);
++				scpd->data->bus_prot_mask);
+ 		if (ret)
+ 			goto out;
+ 	}
+ 
+ 	val = readl(ctl_addr);
+-	val |= scpd->sram_pdn_bits;
++	val |= scpd->data->sram_pdn_bits;
+ 	writel(val, ctl_addr);
+ 
+ 	/* wait until SRAM_PDN_ACK all 1 */
+@@ -409,10 +405,10 @@ static bool scpsys_active_wakeup(struct device *dev)
+ 	genpd = pd_to_genpd(dev->pm_domain);
+ 	scpd = container_of(genpd, struct scp_domain, genpd);
+ 
+-	return scpd->active_wakeup;
++	return scpd->data->active_wakeup;
+ }
+ 
+-static int __init scpsys_probe(struct platform_device *pdev)
++static int scpsys_probe(struct platform_device *pdev)
+ {
+ 	struct genpd_onecell_data *pd_data;
+ 	struct resource *res;
+@@ -485,12 +481,7 @@ static int __init scpsys_probe(struct platform_device *pdev)
+ 		pd_data->domains[i] = genpd;
+ 		scpd->scp = scp;
+ 
+-		scpd->sta_mask = data->sta_mask;
+-		scpd->ctl_addr = scp->base + data->ctl_offs;
+-		scpd->sram_pdn_bits = data->sram_pdn_bits;
+-		scpd->sram_pdn_ack_bits = data->sram_pdn_ack_bits;
+-		scpd->bus_prot_mask = data->bus_prot_mask;
+-		scpd->active_wakeup = data->active_wakeup;
++		scpd->data = data;
+ 		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++)
+ 			scpd->clk[j] = clk[data->clk_id[j]];
+ 
+@@ -542,10 +533,12 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
+ };
+ 
+ static struct platform_driver scpsys_drv = {
++	.probe = scpsys_probe,
+ 	.driver = {
+ 		.name = "mtk-scpsys",
++		.suppress_bind_attrs = true,
+ 		.owner = THIS_MODULE,
+ 		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
+ 	},
+ };
+-builtin_platform_driver_probe(scpsys_drv, scpsys_probe);
++builtin_platform_driver(scpsys_drv);
 -- 
-1.9.1
+2.6.2
