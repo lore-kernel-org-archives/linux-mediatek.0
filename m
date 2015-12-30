@@ -1,70 +1,38 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH 4/4] soc: mediatek: Add MT2701/MT7623 scpsys driver
-Date: Wed, 30 Dec 2015 18:18:12 +0800
-Message-ID: <1451470692.22426.11.camel@mtksdaap41>
-References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1451457706-14798-5-git-send-email-jamesjj.liao@mediatek.com>
-	 <CAGS+omCwxB+4VFOA1hA9Rg-ekWCVM8Y_c7woTEXnvX6FG1y9mQ@mail.gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Wed, 30 Dec 2015 11:35:01 +0100
+Message-ID: <6145950.8rtkDup7QD@wuerfel>
+References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com> <1670989.QknqqsXE3p@wuerfel> <1451470328.22426.5.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omCwxB+4VFOA1hA9Rg-ekWCVM8Y_c7woTEXnvX6FG1y9mQ@mail.gmail.com>
+In-Reply-To: <1451470328.22426.5.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, Kevin Hilman <khilman@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Shunli Wang <shunli.wang@mediatek.com>
+To: linux-arm-kernel@lists.infradead.org
+Cc: James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Daniel,
-
-On Wed, 2015-12-30 at 17:01 +0800, Daniel Kurtz wrote:
-> On Wed, Dec 30, 2015 at 2:41 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
-> >
-> > From: Shunli Wang <shunli.wang@mediatek.com>
-> >
-> > Add scpsys driver for MT2701 and MT7623.
-> >
-> > Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
-> > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/Kconfig             |  11 +++
-> >  drivers/soc/mediatek/Makefile            |   1 +
-> >  drivers/soc/mediatek/mtk-scpsys-mt2701.c | 161 +++++++++++++++++++++++++++++++
-> >  3 files changed, 173 insertions(+)
-> >  create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
-> >
-> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > index eca6fb7..92cf838 100644
-> > --- a/drivers/soc/mediatek/Kconfig
-> > +++ b/drivers/soc/mediatek/Kconfig
-> > @@ -39,3 +39,14 @@ config MTK_SCPSYS_MT8173
-> >           driver.
-> >           The System Control Processor System (SCPSYS) has several power
-> >           management related tasks in the system.
-> > +
-> > +config MTK_SCPSYS_MT2701
-> > +       bool "SCPSYS Support MediaTek MT2701 and MT7623"
-> > +       depends on ARCH_MEDIATEK || COMPILE_TEST
-> > +       select MTK_SCPSYS
-> > +       default ARCH_MEDIATEK
-> > +       help
-> > +         Say yes here to add support for the MT2701/MT7623 SCPSYS power
-> > +         domain driver.
-> > +         The System Control Processor System (SCPSYS) has several power
-> > +         management related tasks in the system.
+On Wednesday 30 December 2015 18:12:08 James Liao wrote:
+> On Wed, 2015-12-30 at 09:52 +0100, Arnd Bergmann wrote:
+> > On Wednesday 30 December 2015 14:41:44 James Liao wrote:
+> > > Some power domain comsumers may init before module_init.
+> > > So the power domain provider (scpsys) need to be initialized
+> > > earlier too.
+> > > 
+> > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> > > ---
+> > > 
+> > 
+> > Why?
 > 
-> I don't think we really want different drivers and Kconfig options.
-> 
-> Can we just use different compatibles to select the appropriate scp_domain_data?
+> Some drivers use different init level to ensure they can be initialized
+> before other drivers. To support these drivers, moving scpsys driver's
+> initial function to subsys_init is the most easy way.
 
-Yes, we can. All scpsys drivers are built-in by default, and they will
-be activate by specific compatible string.
+This is just the same generic explanation that you already have.
 
-But some projects don't want to build unused drivers into kernel to save
-code size. Use different Kconfig options for each SoC so that these
-projects can disable unused drivers.
+Please be more specific what the dependency is and why we can't rely
+on deferred probing here.
 
-
-Best regards,
-
-James
+	Arnd
