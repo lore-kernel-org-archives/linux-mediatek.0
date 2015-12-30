@@ -1,58 +1,83 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
-Date: Wed, 30 Dec 2015 17:22:12 +0000
-Message-ID: <20151230172212.GZ16023@sirena.org.uk>
-References: <1450792017-7120-1-git-send-email-djkurtz@chromium.org>
- <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 4/4] soc: mediatek: Add MT2701/MT7623 scpsys driver
+Date: Wed, 30 Dec 2015 18:49:31 +0100
+Message-ID: <5684192B.4020806@gmail.com>
+References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1451457706-14798-5-git-send-email-jamesjj.liao@mediatek.com>
+ <CAGS+omCwxB+4VFOA1hA9Rg-ekWCVM8Y_c7woTEXnvX6FG1y9mQ@mail.gmail.com>
+ <1451470692.22426.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8M+BMcg+0CmQ2H7L"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Grant Likely <grant.likely@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Fabio Estevam <fabio.estevam@freescale.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1451470692.22426.11.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---8M+BMcg+0CmQ2H7L
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Tue, Dec 22, 2015 at 04:11:47PM +0100, Linus Walleij wrote:
-> On Tue, Dec 22, 2015 at 2:46 PM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+On 30/12/15 11:18, James Liao wrote:
+> Hi Daniel,
+>
+> On Wed, 2015-12-30 at 17:01 +0800, Daniel Kurtz wrote:
+>> On Wed, Dec 30, 2015 at 2:41 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+>>>
+>>> From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>
+>>> Add scpsys driver for MT2701 and MT7623.
+>>>
+>>> Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   drivers/soc/mediatek/Kconfig             |  11 +++
+>>>   drivers/soc/mediatek/Makefile            |   1 +
+>>>   drivers/soc/mediatek/mtk-scpsys-mt2701.c | 161 +++++++++++++++++++++++++++++++
+>>>   3 files changed, 173 insertions(+)
+>>>   create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
+>>>
+>>> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+>>> index eca6fb7..92cf838 100644
+>>> --- a/drivers/soc/mediatek/Kconfig
+>>> +++ b/drivers/soc/mediatek/Kconfig
+>>> @@ -39,3 +39,14 @@ config MTK_SCPSYS_MT8173
+>>>            driver.
+>>>            The System Control Processor System (SCPSYS) has several power
+>>>            management related tasks in the system.
+>>> +
+>>> +config MTK_SCPSYS_MT2701
+>>> +       bool "SCPSYS Support MediaTek MT2701 and MT7623"
+>>> +       depends on ARCH_MEDIATEK || COMPILE_TEST
+>>> +       select MTK_SCPSYS
+>>> +       default ARCH_MEDIATEK
+>>> +       help
+>>> +         Say yes here to add support for the MT2701/MT7623 SCPSYS power
+>>> +         domain driver.
+>>> +         The System Control Processor System (SCPSYS) has several power
+>>> +         management related tasks in the system.
+>>
+>> I don't think we really want different drivers and Kconfig options.
+>>
+>> Can we just use different compatibles to select the appropriate scp_domain_data?
+>
+> Yes, we can. All scpsys drivers are built-in by default, and they will
+> be activate by specific compatible string.
+>
+> But some projects don't want to build unused drivers into kernel to save
+> code size. Use different Kconfig options for each SoC so that these
+> projects can disable unused drivers.
+>
 
-> > Move pinctrl initialization earlier in boot so that real devices can find
-> > their pctldev without probe deferring.
-> (...)
-> > -module_init(mtk_pinctrl_init);
-> > +arch_initcall(mtk_pinctrl_init);
+Scpsys is a bool right now, you can disable it if you don't need it for 
+your project.
 
-> So I see why you're doing this (because of wanting to avoid nasty boot
-> probe deferrals, right?) and I'm going to apply it, because the work
-> with probe ordering is still in the works, but I'd like some general
-> ARM people to come in with opinions.
+I don't think the impact of adding scp_domain_data justifies adding SoC 
+specific scpsys drivers and bloat the drivers/soc/mediatek folder.
 
-I really don't think we should be applying this sort of stuff unless
-things are actively broken right now.  It's a bit of a rabbit hole we
-could spend a long time going down tweaking things for different
-systems in the same way that tweaking the link order can be and it masks
-the underlying issues.
-
---8M+BMcg+0CmQ2H7L
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWhBLDAAoJECTWi3JdVIfQLYIH/jZbT5iHyC9Ab6s5PIomZwyZ
-q7OrVof89o5dikybusX0NTwUsX8INaJ9t3tR37q9euWV8wCCQ7EVodddM+t1PzTy
-AEt4LC5hdJAg5eDUlduMRm9pY1HaDGL9joeI7ieEIC5QY7BHKEXFuhwX2umvivRs
-zo50qo/9S4T+6xnqnYWJE+GHMc8L4vAAgd95cGB09fUEruerZCE76gu4i8nVLXQg
-hgdFBhRfm7njoJmUYJbquuR6GebpyEi0Kem/Rpl2rbV59d2lBdhDUtPzYkP0u76a
-lCDHLuXHIu/bCW7tVmHrWAtFZ+7VmuukpIvsyuxCEHXNsYdkCNScN6cbedGQa9E=
-=/zRB
------END PGP SIGNATURE-----
-
---8M+BMcg+0CmQ2H7L--
+Best regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
