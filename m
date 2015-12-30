@@ -1,83 +1,51 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 1/5] clk: mediatek: Refine the makefile to support multiple clock drivers
-Date: Wed, 30 Dec 2015 14:27:41 +0800
-Message-ID: <1451456865-44139-2-git-send-email-jamesjj.liao@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH 5/5] reset: mediatek: mt2701 reset driver
+Date: Wed, 30 Dec 2015 14:27:45 +0800
+Message-ID: <1451456865-44139-6-git-send-email-jamesjj.liao@mediatek.com>
 References: <1451456865-44139-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1451456865-44139-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1451456865-44139-1-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Shunli Wang <shunli.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a Kconfig to define clock configuration for each SoC, and
-modify the Makefile to build drivers that only selected in config.
+From: Shunli Wang <shunli.wang@mediatek.com>
 
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In infrasys and perifsys, there are many reset
+control bits for kinds of modules. These bits are
+used as actual reset controllers to be registered
+into kernel's generic reset controller framework.
+
+Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
 ---
- drivers/clk/Kconfig           |  1 +
- drivers/clk/mediatek/Kconfig  | 23 +++++++++++++++++++++++
- drivers/clk/mediatek/Makefile |  6 +++---
- 3 files changed, 27 insertions(+), 3 deletions(-)
- create mode 100644 drivers/clk/mediatek/Kconfig
+ drivers/clk/mediatek/clk-mt2701.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index c3e3a02..b7a37dc 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -198,3 +198,4 @@ source "drivers/clk/mvebu/Kconfig"
+diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
+index 2acc8c3..802ab5c 100644
+--- a/drivers/clk/mediatek/clk-mt2701.c
++++ b/drivers/clk/mediatek/clk-mt2701.c
+@@ -666,6 +666,8 @@ static void __init mtk_infrasys_init(struct device_node *node)
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
++
++	mtk_register_reset_controller(node, 2, 0x30);
+ }
+ CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt2701-infracfg", mtk_infrasys_init);
  
- source "drivers/clk/samsung/Kconfig"
- source "drivers/clk/tegra/Kconfig"
-+source "drivers/clk/mediatek/Kconfig"
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-new file mode 100644
-index 0000000..dc224e6
---- /dev/null
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -0,0 +1,23 @@
-+#
-+# MediaTek SoC drivers
-+#
-+config COMMON_CLK_MEDIATEK
-+	bool
-+	---help---
-+	  Mediatek SoCs' clock support.
+@@ -783,6 +785,8 @@ static void __init mtk_pericfg_init(struct device_node *node)
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
 +
-+config COMMON_CLK_MT8135
-+	bool "Clock driver for Mediatek MT8135"
-+	depends on COMMON_CLK
-+	select COMMON_CLK_MEDIATEK
-+	default ARCH_MEDIATEK
-+	---help---
-+	  This driver supports Mediatek MT8135 clocks.
-+
-+config COMMON_CLK_MT8173
-+	bool "Clock driver for Mediatek MT8173"
-+	depends on COMMON_CLK
-+	select COMMON_CLK_MEDIATEK
-+	default ARCH_MEDIATEK
-+	---help---
-+	  This driver supports Mediatek MT8173 clocks.
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 95fdfac..32e7222 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -1,4 +1,4 @@
--obj-y += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o
-+obj-$(CONFIG_COMMON_CLK_MEDIATEK) += clk-mtk.o clk-pll.o clk-gate.o clk-apmixed.o
- obj-$(CONFIG_RESET_CONTROLLER) += reset.o
--obj-y += clk-mt8135.o
--obj-y += clk-mt8173.o
-+obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
-+obj-$(CONFIG_COMMON_CLK_MT8173) += clk-mt8173.o
++	mtk_register_reset_controller(node, 2, 0x0);
+ }
+ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt2701-pericfg", mtk_pericfg_init);
+ 
 -- 
 1.9.1
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
