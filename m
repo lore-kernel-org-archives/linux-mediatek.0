@@ -1,40 +1,58 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH] soc: mediatek: PMIC wrap: Enable STAUPD_PRD before WDT_SRC_EN enabled.
-Date: Wed, 30 Dec 2015 20:36:01 +0800
-Message-ID: <1451478961-5668-1-git-send-email-henryc.chen@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Wed, 30 Dec 2015 17:22:12 +0000
+Message-ID: <20151230172212.GZ16023@sirena.org.uk>
+References: <1450792017-7120-1-git-send-email-djkurtz@chromium.org>
+ <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="8M+BMcg+0CmQ2H7L"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Grant Likely <grant.likely@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Fabio Estevam <fabio.estevam@freescale.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The STAUPD_TRIG will be enable when WDT_INT enable on probe function, if
-doesn't enable STAUPD_PRD together, interrupt will be triggered because
-STAUPD timeout. To avoid unexpected interrupt, enable periodic status
-update which will be updated to PMIC every selected time period.
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 5 +++++
- 1 file changed, 5 insertions(+)
+--8M+BMcg+0CmQ2H7L
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index a8cde17..6e5c20f 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -904,6 +904,11 @@ static int pwrap_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	/*
-+	 * Enable periodic status update which will be updated to PMIC
-+	 * every selected time period.
-+	 */
-+	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
- 	/* Initialize watchdog, may not be done by the bootloader */
- 	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
- 	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
--- 
-1.9.1
+On Tue, Dec 22, 2015 at 04:11:47PM +0100, Linus Walleij wrote:
+> On Tue, Dec 22, 2015 at 2:46 PM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+
+> > Move pinctrl initialization earlier in boot so that real devices can find
+> > their pctldev without probe deferring.
+> (...)
+> > -module_init(mtk_pinctrl_init);
+> > +arch_initcall(mtk_pinctrl_init);
+
+> So I see why you're doing this (because of wanting to avoid nasty boot
+> probe deferrals, right?) and I'm going to apply it, because the work
+> with probe ordering is still in the works, but I'd like some general
+> ARM people to come in with opinions.
+
+I really don't think we should be applying this sort of stuff unless
+things are actively broken right now.  It's a bit of a rabbit hole we
+could spend a long time going down tweaking things for different
+systems in the same way that tweaking the link order can be and it masks
+the underlying issues.
+
+--8M+BMcg+0CmQ2H7L
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWhBLDAAoJECTWi3JdVIfQLYIH/jZbT5iHyC9Ab6s5PIomZwyZ
+q7OrVof89o5dikybusX0NTwUsX8INaJ9t3tR37q9euWV8wCCQ7EVodddM+t1PzTy
+AEt4LC5hdJAg5eDUlduMRm9pY1HaDGL9joeI7ieEIC5QY7BHKEXFuhwX2umvivRs
+zo50qo/9S4T+6xnqnYWJE+GHMc8L4vAAgd95cGB09fUEruerZCE76gu4i8nVLXQg
+hgdFBhRfm7njoJmUYJbquuR6GebpyEi0Kem/Rpl2rbV59d2lBdhDUtPzYkP0u76a
+lCDHLuXHIu/bCW7tVmHrWAtFZ+7VmuukpIvsyuxCEHXNsYdkCNScN6cbedGQa9E=
+=/zRB
+-----END PGP SIGNATURE-----
+
+--8M+BMcg+0CmQ2H7L--
