@@ -1,38 +1,40 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
-Date: Wed, 30 Dec 2015 11:35:01 +0100
-Message-ID: <6145950.8rtkDup7QD@wuerfel>
-References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com> <1670989.QknqqsXE3p@wuerfel> <1451470328.22426.5.camel@mtksdaap41>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: [PATCH] soc: mediatek: PMIC wrap: Enable STAUPD_PRD before WDT_SRC_EN enabled.
+Date: Wed, 30 Dec 2015 20:36:01 +0800
+Message-ID: <1451478961-5668-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1451470328.22426.5.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: James Liao <jamesjj.liao@mediatek.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wednesday 30 December 2015 18:12:08 James Liao wrote:
-> On Wed, 2015-12-30 at 09:52 +0100, Arnd Bergmann wrote:
-> > On Wednesday 30 December 2015 14:41:44 James Liao wrote:
-> > > Some power domain comsumers may init before module_init.
-> > > So the power domain provider (scpsys) need to be initialized
-> > > earlier too.
-> > > 
-> > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > > ---
-> > > 
-> > 
-> > Why?
-> 
-> Some drivers use different init level to ensure they can be initialized
-> before other drivers. To support these drivers, moving scpsys driver's
-> initial function to subsys_init is the most easy way.
+The STAUPD_TRIG will be enable when WDT_INT enable on probe function, if
+doesn't enable STAUPD_PRD together, interrupt will be triggered because
+STAUPD timeout. To avoid unexpected interrupt, enable periodic status
+update which will be updated to PMIC every selected time period.
 
-This is just the same generic explanation that you already have.
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Please be more specific what the dependency is and why we can't rely
-on deferred probing here.
-
-	Arnd
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index a8cde17..6e5c20f 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -904,6 +904,11 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	}
+ 
++	/*
++	 * Enable periodic status update which will be updated to PMIC
++	 * every selected time period.
++	 */
++	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+ 	/* Initialize watchdog, may not be done by the bootloader */
+ 	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+ 	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+-- 
+1.9.1
