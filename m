@@ -1,26 +1,45 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 2/5] dt-bindings: mediatek: Modify pinctrl bindings
- for mt2701
-Date: Tue, 29 Dec 2015 12:34:22 -0600
-Message-ID: <20151229183422.GA12450@rob-hp-laptop>
-References: <1451286546-5920-1-git-send-email-biao.huang@mediatek.com>
- <1451286546-5920-3-git-send-email-biao.huang@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH 0/5] Add clock support for Mediatek MT2701
+Date: Wed, 30 Dec 2015 14:27:40 +0800
+Message-ID: <1451456865-44139-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1451286546-5920-3-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Dec 28, 2015 at 03:09:03PM +0800, Biao Huang wrote:
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
+This patchset is based on 4.4-rc7, add clock and reset controller support
+for Mediatek MT2701.
 
-I acked v2 already. Please add acks when posting new versions.
+This patchset also refined makefile and Kconfig to support configurable
+multiple SoC clock support.
 
-Acked-by: Rob Herring <robh@kernel.org>
+James Liao (1):
+  clk: mediatek: Refine the makefile to support multiple clock drivers
+
+Shunli Wang (4):
+  clk: mediatek: Add dt-bindings for MT2701 clocks
+  clk: mediatek: Add MT2701 clock support
+  reset: mediatek: mt2701 reset controller dt-binding file
+  reset: mediatek: mt2701 reset driver
+
+ drivers/clk/Kconfig                                |    1 +
+ drivers/clk/mediatek/Kconfig                       |   31 +
+ drivers/clk/mediatek/Makefile                      |    7 +-
+ drivers/clk/mediatek/clk-gate.c                    |   56 +
+ drivers/clk/mediatek/clk-gate.h                    |    2 +
+ drivers/clk/mediatek/clk-mt2701.c                  | 1215 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     |   25 +
+ drivers/clk/mediatek/clk-mtk.h                     |   35 +-
+ include/dt-bindings/clock/mt2701-clk.h             |  481 ++++++++
+ .../dt-bindings/reset-controller/mt2701-resets.h   |   74 ++
+ 10 files changed, 1921 insertions(+), 6 deletions(-)
+ create mode 100644 drivers/clk/mediatek/Kconfig
+ create mode 100644 drivers/clk/mediatek/clk-mt2701.c
+ create mode 100644 include/dt-bindings/clock/mt2701-clk.h
+ create mode 100644 include/dt-bindings/reset-controller/mt2701-resets.h
+
+--
+1.9.1
