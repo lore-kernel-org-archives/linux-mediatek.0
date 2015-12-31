@@ -1,52 +1,87 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
-Date: Thu, 31 Dec 2015 15:45:22 +0100
-Message-ID: <4141203.8f3N9nOLLy@wuerfel>
-References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com> <1451541566.10610.10.camel@mtksdaap41> <1451553394.10610.14.camel@mtksdaap41>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
+Date: Thu, 31 Dec 2015 22:07:12 +0000
+Message-ID: <20151231220712.GD16023@sirena.org.uk>
+References: <1450792017-7120-1-git-send-email-djkurtz@chromium.org>
+ <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
+ <20151230172212.GZ16023@sirena.org.uk>
+ <CAGS+omA9AarzE2sp1Ry3RuOt8EOa-sL=DL1iDA2OeVVdjn=xgg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1451553394.10610.14.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="SSQrXjJAjSvYS5Wm"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAGS+omA9AarzE2sp1Ry3RuOt8EOa-sL=DL1iDA2OeVVdjn=xgg@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Grant Likely <grant.likely@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Fabio Estevam <fabio.estevam@freescale.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thursday 31 December 2015 17:16:34 James Liao wrote:
-> 
-> """
-> Take a example for our IOMMU(M4U) and SMI.  The IOMMU which is
-> subsys_init defaultly will depend on SMI. 
-> The SMI is a bridge between m4u and the Multimedia HW.  About the HW
-> block diagram and more other information please help check  [1].
-> SMI is responsible to enable/disable iommu and help transfer data for
-> each Multimedia HW,  Both have to wait until the power and the clocks is
-> enabled.  
-> 
-> So our iommu should probe done after smi, smi should be after
-> power-domain, and all the iommu consumer(display/vdec/venc/camera etc.)
-> should be after the iommu.
-> Then all the multimedia module will be delayed by power-domain who is
-> module_init currently.
-> 
-> After grep, we get some example whose  pm is not module_init:
-> core_initcall(exynos4_pm_init_power_domain);
-> subsys_initcall(imx_pgc_init);
-> 
-> So we expect move the power-domain initial more earlier too.  The
-> power-domain seems to be a basic module like ccf.
-> Is there some special reason about we should use module_init,  or do you
-> have any concern if we change it?
-> Thanks.
 
-Ok, got it. Generally, we should try to avoid using the earlier initcall
-levels, but a few things like clock controllers, iommus etc are special
-enough that we need to make sure their dependencies are there by the
-time those are probed.
+--SSQrXjJAjSvYS5Wm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Please put your explanation above into the patch changelog and add a code
-comment about the IOMMU next to the subsys_initcall() so it doesn't
-accidentally get changed when someone tries to do a code cleanup.
+On Thu, Dec 31, 2015 at 09:45:51PM +0800, Daniel Kurtz wrote:
+> On Thu, Dec 31, 2015 at 1:22 AM, Mark Brown <broonie@kernel.org> wrote:
 
-	Arnd
+> > I really don't think we should be applying this sort of stuff unless
+> > things are actively broken right now.  It's a bit of a rabbit hole we
+> > could spend a long time going down tweaking things for different
+> > systems in the same way that tweaking the link order can be and it masks
+> > the underlying issues.
+
+> Things are actively broken right now, in the sense that there are many
+> needless probe deferrals on boot.
+
+That's just noisy, everything does end up loading OK.  If the noise is a
+problem working on fixing the underlying problem with not being able to
+figure out dependencies seems like a better thing.  When we discussed
+this on the kernel summit list it wasn't clear everyone was convinced
+this was even a problem (I think it is since it obscures real
+information).  Actual breakage to me is something that never sorts
+itself out.
+
+> These are pinctrl drivers, which are required to load before every
+> other driver that requests a gpio.
+> AFAICT, the pinctrl is part of the platform "architecture", hence why
+> I suggest we move this to arch_initcall().
+
+This is exactly the sort of hacking that leads to problems - you can
+also make the same argument for a bunch of other things like regulators
+but then you find there's circular dependencies or extra devices with
+different requirements on some systems that cause further issues and
+need more special casing, or you find that some other device gets pushed
+earlier so you have to go round tweaking everything it uses.  It's not
+that the device is magic, it's that we don't understand how to handle
+dependencies well enough.  Raphael did say he was going to work on
+something for this, I'm not sure where it got to though.
+
+> arch_initcall() is also consistent with 39 other pinctrl drivers in
+> drivers/pinctrl.
+> 19 others use subsys_initcall(), core_initcall() or
+> postcore_initcall(), any of which would also work.
+
+It's fairly clear that there's at least a case for simplifying the
+existing practice here, for example by moving everything into a single
+(perhaps aliased) initcall rather than by randomly picking a level per
+system or by actually fiddling with the link ordering if the case is
+sufficiently clear that pinctrl in general ought to load earlier than it
+does.
+
+--SSQrXjJAjSvYS5Wm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWhacQAAoJECTWi3JdVIfQL+AH/iKqe8h38IrrA5wRdAuPq22g
+MJSgAdDSapma7nWQOhyDf3q5vYDD+0i5e8sZQWzL7V9Wfjdjc1FJWfgHqmhikTHe
+xWD48pnf3zqRqW3pre64Ic95dGnmpgd06OMj0ZPuFJoQi99XUFBCoNz71WKmyeUG
+GqgbYHIx8UXJGIrjP2IcRaqzLRQyZXKNaufDf42adEipK3M4bOMW/7nEV2gEqTKJ
+3qQFP8heXjQdYQXeAxuAd7PK+Bp4qUCWFYglbw4SfCD4LBk70/+WWB6KMvV2cUSo
+rC6tC9nvqKpi1wCQPXpWiqORMbWFus9n+RPCXXNkLrX7SyE44/fg8r2bTKXcvQA=
+=7+JS
+-----END PGP SIGNATURE-----
+
+--SSQrXjJAjSvYS5Wm--
