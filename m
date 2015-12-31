@@ -1,106 +1,39 @@
-From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] soc: mediatek: PMIC wrap: Clear the vldclr if state
- machine is stay on FSM_VLDCLR state.
-Date: Thu, 31 Dec 2015 10:09:15 +0800
-Message-ID: <1451527755.20140.6.camel@mtksdaap41>
-References: <1450770677-13557-1-git-send-email-henryc.chen@mediatek.com>
- <56841C41.4040901@gmail.com>
+From: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/4] SPI: support mt2701 IC
+Date: Thu, 31 Dec 2015 10:58:59 +0800
+Message-ID: <1451530743-8995-1-git-send-email-leilk.liu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56841C41.4040901-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+This series are based on 4.4-rc1 and provide 4 patches to support
+mt2701 spi HW.
 
-On Wed, 2015-12-30 at 19:02 +0100, Matthias Brugger wrote:
-> 
-> On 22/12/15 08:51, Henry Chen wrote:
-> > Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
-> > because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
-> > just return error when issue happened, so the state machine will stay on
-> > FSM_VLDCLR state when data send back later by PMIC and timeout again in next
-> > time because pmic wrap waiting for FSM_IDLE state at the begining of the
-> > read/write function.
-> >
-> > Clear the vldclr when timeout if state machine is stay on FSM_VLDCLR.
-> >
-> > Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 16 ++++++++++++++--
-> >   1 file changed, 14 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > index 105597a..ccd5337 100644
-> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -443,10 +443,16 @@ static int pwrap_wait_for_state(struct pmic_wrapper *wrp,
-> >   static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-> >   {
-> >   	int ret;
-> > +	u32 val;
-> >
-> >   	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-> > -	if (ret)
-> > +	if (ret) {
-> > +		/* Clear vldclr bit if state is on the WACS_FSM_WFVLDCLR */
-> > +		val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +		if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
-> > +			pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-> >   		return ret;
-> > +	}
-> 
-> I would prefer to have this encapsulated in a (inline) function. Maybe 
-> with better description then just the one line comment.
-> 
-> Thanks,
-> Matthias
+Change in this series:
+1. merge all identical compat to mtk_common_compat;
+2. Add spi support for mt2701 IC;
+3. add spi dts for mt2701;
+4. Add bindings for mediatek MT2701 soc platform.
 
-Ok, I will make the description more clear, do you means write the
-function like below and used it on pwrap_write/pwrap_read.
+Leilk Liu (4):
+  spi: mediatek: merge all identical compat to mtk_common_compat
+  spi: mediatek: Add spi support for mt2701 IC
+  dts: mt2701: add spi dts for mt2701
+  Document: spi: Add bindings for mediatek MT2701 soc platform
 
-static inline void pwrap_leave_fsm_vldclr(struct pmic_wrapper *wrp)
-{
-	if (pwrap_is_fsm_vldclr(wrp))
-		pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-}
+ .../devicetree/bindings/spi/spi-mt65xx.txt         |    5 ++-
+ arch/arm/boot/dts/mt2701.dtsi                      |   39 ++++++++++++++++++++
+ drivers/spi/spi-mt65xx.c                           |   18 ++++++---
+ 3 files changed, 55 insertions(+), 7 deletions(-)
 
+--
+1.7.9.5
 
-Thanks,
-Henry
-
-> 
-> >
-> >   	pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
-> >   			PWRAP_WACS2_CMD);
-> > @@ -457,10 +463,16 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
-> >   static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
-> >   {
-> >   	int ret;
-> > +	u32 val;
-> >
-> >   	ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-> > -	if (ret)
-> > +	if (ret) {
-> > +		/* Clear vldclr bit if state is on the WACS_FSM_WFVLDCLR */
-> > +		val = pwrap_readl(wrp, PWRAP_WACS2_RDATA);
-> > +		if (PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR)
-> > +			pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-> >   		return ret;
-> > +	}
-> >
-> >   	pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
-> >
-> >
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
