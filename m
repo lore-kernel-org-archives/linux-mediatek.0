@@ -1,15 +1,15 @@
-From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] soc: mediatek: PMIC wrap: Enable STAUPD_PRD before
- WDT_SRC_EN enabled.
-Date: Mon, 4 Jan 2016 11:05:03 +0800
-Message-ID: <1451876703.11408.10.camel@mtksdaap41>
-References: <1451478961-5668-1-git-send-email-henryc.chen@mediatek.com>
- <CAGS+omBc2XVESu1t+_iKj1gTk-7JVDK1KDoQEJR_-wcL4m0qWg@mail.gmail.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Mon, 4 Jan 2016 10:52:51 +0800
+Message-ID: <1451875971.14940.1.camel@mtksdaap41>
+References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1451541566.10610.10.camel@mtksdaap41>
+ <1451553394.10610.14.camel@mtksdaap41> <4141203.8f3N9nOLLy@wuerfel>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAGS+omBc2XVESu1t+_iKj1gTk-7JVDK1KDoQEJR_-wcL4m0qWg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <4141203.8f3N9nOLLy@wuerfel>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,72 +19,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2015-12-31 at 22:19 +0800, Daniel Kurtz wrote:
-> On Wed, Dec 30, 2015 at 8:36 PM, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> >
-> > The STAUPD_TRIG will be enable when WDT_INT enable on probe function, if
-> > doesn't enable STAUPD_PRD together, interrupt will be triggered because
-> > STAUPD timeout. To avoid unexpected interrupt, enable periodic status
-> > update which will be updated to PMIC every selected time period.
-> 
-> Sorry, I don't really understand this.
-> 
-> What exactly is triggering the unexpected watchdog interrupt (WDT_INT)?
-> 
-> How does setting STAUPD_PRD disable this "unexpected interrupt"?
-> 
-Yes, WDT_INT was triggered because the bit[25] of WDT_SRC_EN was
-enabled:
+Hi Arnd,
 
-bit[25] STAUPD_TRIG: STAUPD trigger signal timeout monitor
+On Thu, 2015-12-31 at 15:45 +0100, Arnd Bergmann wrote:
+> On Thursday 31 December 2015 17:16:34 James Liao wrote:
+> > 
+> > """
+> > Take a example for our IOMMU(M4U) and SMI.  The IOMMU which is
+> > subsys_init defaultly will depend on SMI. 
+> > The SMI is a bridge between m4u and the Multimedia HW.  About the HW
+> > block diagram and more other information please help check  [1].
+> > SMI is responsible to enable/disable iommu and help transfer data for
+> > each Multimedia HW,  Both have to wait until the power and the clocks is
+> > enabled.  
+> > 
+> > So our iommu should probe done after smi, smi should be after
+> > power-domain, and all the iommu consumer(display/vdec/venc/camera etc.)
+> > should be after the iommu.
+> > Then all the multimedia module will be delayed by power-domain who is
+> > module_init currently.
+> > 
+> > After grep, we get some example whose  pm is not module_init:
+> > core_initcall(exynos4_pm_init_power_domain);
+> > subsys_initcall(imx_pgc_init);
+> > 
+> > So we expect move the power-domain initial more earlier too.  The
+> > power-domain seems to be a basic module like ccf.
+> > Is there some special reason about we should use module_init,  or do you
+> > have any concern if we change it?
+> > Thanks.
+> 
+> Ok, got it. Generally, we should try to avoid using the earlier initcall
+> levels, but a few things like clock controllers, iommus etc are special
+> enough that we need to make sure their dependencies are there by the
+> time those are probed.
+> 
+> Please put your explanation above into the patch changelog and add a code
+> comment about the IOMMU next to the subsys_initcall() so it doesn't
+> accidentally get changed when someone tries to do a code cleanup.
 
-Setting STAUPD_PRD will update the status of PMIC periodic to avoid this
-watchdog timeout.
+OK, I'll add comments in next patch. Thanks for your comments.
 
 
-> From the MT8173 Datasheet, I can see that the value written to
-> STAUPD_PRD is the "periodic status update timing (period)".
-> 
-> > Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > index a8cde17..6e5c20f 100644
-> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -904,6 +904,11 @@ static int pwrap_probe(struct platform_device *pdev)
-> >                 return -ENODEV;
-> >         }
-> >
-> > +       /*
-> > +        * Enable periodic status update which will be updated to PMIC
-> > +        * every selected time period.
-> > +        */
-> > +       pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
-> 
-> nit: Perhaps use a define for 5, and specify the real period value.
-> Something like this:
-> 
-> #define PWRAP_STAUPD_98_5US  5
-> 
-ok.
+Best regards,
 
-> 
-> >         /* Initialize watchdog, may not be done by the bootloader */
-> >         pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> >         pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
-> > --
-> > 1.9.1
-> >
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> > the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at  http://www.tux.org/lkml/
+James
