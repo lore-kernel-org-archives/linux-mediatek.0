@@ -1,116 +1,72 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] pinctrl: mediatek: convert to arch_initcall
-Date: Mon, 4 Jan 2016 18:23:15 +0000
-Message-ID: <20160104182315.GP16023@sirena.org.uk>
-References: <1450792017-7120-1-git-send-email-djkurtz@chromium.org>
- <CACRpkdbRDzXunYK5d6Ld4Z2a=0mkp4KBvgL2P-St4P65Jajamw@mail.gmail.com>
- <20151230172212.GZ16023@sirena.org.uk>
- <CAGS+omA9AarzE2sp1Ry3RuOt8EOa-sL=DL1iDA2OeVVdjn=xgg@mail.gmail.com>
- <20151231220712.GD16023@sirena.org.uk>
- <CAGS+omDesPTYHhVLv_EtQsYxa6MNuSi06MwcXz6RcY=uAcEtnQ@mail.gmail.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [RFC v2 0/6] ASoC: Add mediatek HDMI codec support
+Date: Mon,  4 Jan 2016 20:09:05 +0100
+Message-ID: <1451934551-21333-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="/F2XdnRjS8y2HUtp"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omDesPTYHhVLv_EtQsYxa6MNuSi06MwcXz6RcY=uAcEtnQ@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Grant Likely <grant.likely@linaro.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Fabio Estevam <fabio.estevam@freescale.com>, Fabian Frederick <fabf@skynet.be>, Maoguang Meng <maoguang.meng@mediatek.com>, Axel Lin <axel.lin@ingics.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: alsa-devel@alsa-project.org
+Cc: Jean-Francois Moine <moinejf@free.fr>, Koro Chen <koro.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, Jyri Sarha <jsarha@ti.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
---/F2XdnRjS8y2HUtp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+this time we add an interface for Jyri's generic hdmi-codec driver [1] to
+the mediatek hdmi bridge driver. In place of a separate machine driver,
+the existing mt8173-rt5650-rt5676 driver is extended to link to the
+hdmi-codec instance provided by the hdmi bridge driver.
 
-On Fri, Jan 01, 2016 at 09:56:01AM +0800, Daniel Kurtz wrote:
-> On Fri, Jan 1, 2016 at 6:07 AM, Mark Brown <broonie@kernel.org> wrote:
-> > On Thu, Dec 31, 2015 at 09:45:51PM +0800, Daniel Kurtz wrote:
+The alsa jack support, previously implemented by the custom mediatek hdmi
+codec and machine drivers, is bolted on top of hdmi-codec using Russell's
+HDMI notifier prototype. It's all still a bit rough, but I could use some
+feedback at this point. Have we achieved consensus to go forward with the
+hdmi-codec approach? Is it ok to use an alsa jack for HDMI HPD status
+reporting?
 
-> >> Things are actively broken right now, in the sense that there are many
-> >> needless probe deferrals on boot.
+The mediatek drm patches apply on top of
+https://patchwork.kernel.org/patch/7949021/ ("drm/mediatek: Add HDMI support")
+the asoc patches depend on these two patches:
+https://patchwork.kernel.org/patch/7215121/ ("ALSA: pcm: add IEC958 channel status helper for hw_params")
+[1] https://patchwork.kernel.org/patch/7215271/ ("ASoC: hdmi-codec: Add hdmi-codec for external HDMI-encoders")
 
-> > That's just noisy, everything does end up loading OK.
+best regards
+Philipp
 
-> It's not just noisy, it also adds to boot time.
+Koro Chen (1):
+  ASoC: mediatek: Add HDMI dai-links in the machine driver
 
-If you've got meaningful boot time numbers from practical systems it'd
-be good to share them, nobody was able to show any actual problem there.
+Philipp Zabel (5):
+  drm/mediatek: hdmi: Add audio interface to the hdmi-codec driver
+  ASoC: mediatek: address dai link array entries by enum
+  video: rmk's HDMI notification prototype
+  drm/mediatek: hdmi: issue notifications
+  ASoC: hdmi-codec: Use HDMI notifications to add jack support
 
-> >> These are pinctrl drivers, which are required to load before every
-> >> other driver that requests a gpio.
-> >> AFAICT, the pinctrl is part of the platform "architecture", hence why
-> >> I suggest we move this to arch_initcall().
+ .../bindings/sound/mt8173-rt5650-rt5676.txt        |   5 +-
+ drivers/gpu/drm/mediatek/Kconfig                   |   1 +
+ drivers/gpu/drm/mediatek/mtk_cec.c                 |   5 +
+ drivers/gpu/drm/mediatek/mtk_drm_hdmi_drv.c        | 192 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  26 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi.h                |   4 +
+ drivers/video/Makefile                             |   2 +-
+ drivers/video/hdmi-not.c                           |  61 +++++++
+ include/linux/hdmi-not.h                           |  39 +++++
+ include/sound/hdmi-codec.h                         |   6 +
+ sound/soc/codecs/hdmi-codec.c                      |  72 +++++++-
+ sound/soc/mediatek/mt8173-rt5650-rt5676.c          |  66 ++++++-
+ 12 files changed, 470 insertions(+), 9 deletions(-)
+ create mode 100644 drivers/video/hdmi-not.c
+ create mode 100644 include/linux/hdmi-not.h
 
-> > This is exactly the sort of hacking that leads to problems
-
-> What problems?
-> More patches as people adjust / tune / optimize boot time, or something else?
-
-There's that and also general fragility when multiple drivers interact -
-it can get really problematic when different systems end up with
-different requirements for the sasme driver and disrupt each other or
-conflict with each other.
-
-> > you can
-> > also make the same argument for a bunch of other things like regulators
-> > but then you find there's circular dependencies or extra devices with
-> > different requirements on some systems that cause further issues and
-> > need more special casing, or you find that some other device gets pushed
-> > earlier so you have to go round tweaking everything it uses.
-
-> For regulators, I think things are a bit more subtle.  Most regulators
-> are external components that can be used on different boards for
-> different purposes, so I can see an argument for treating them in a
-> more generic way by using a later device_initcall.  The exception
-> being architecture specific PMICs that only make sense when paired
-> with a specific small set of CPUs - and if you look, there are many
-> PMIC regulator drivers that are at earlier initcall levels, presumably
-> because they are required by cpufreq drivers, and/or their initcall
-> level is set as the same as the rest of the functions exposed by the
-> same PMIC MFD.
-
-The reason the regulator drivers are earlier is that cpufreq and a
-couple of other things are broken and don't use the device model so we
-have to use link order hacks.  I'm pushing any driver that doesn't
-specifically have problems with those to just use normal initcall.
-
-> >> arch_initcall() is also consistent with 39 other pinctrl drivers in
-> >> drivers/pinctrl.
-> >> 19 others use subsys_initcall(), core_initcall() or
-> >> postcore_initcall(), any of which would also work.
-
-> > It's fairly clear that there's at least a case for simplifying the
-> > existing practice here, for example by moving everything into a single
-> > (perhaps aliased) initcall rather than by randomly picking a level per
-> > system or by actually fiddling with the link ordering if the case is
-> > sufficiently clear that pinctrl in general ought to load earlier than it
-> > does.
-
-> Nothing above sounds like a reason not to merge this patch, however.
-> Why should we block useful patches that use existing tools to fix real
-> architecture-specific issues until new infrastructure is merged that
-> solves general problems?
-
-Some of the infrastructure here is really trivial if we are saying that
-basically all drivers do this.  That way you don't end up so much with
-things like wondering why different drivers made different decisions so
-much.
-
---/F2XdnRjS8y2HUtp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWiriTAAoJECTWi3JdVIfQfCMH/iIpqLXso7jfP2CLIYK8qX1k
-sPYptZ0q87gwjDSinlZvCjaRAds+DsjtljoVK+xdw7PPOpnNR2K37JPWBn/AA4VH
-xK6S8kz0Z60oTlRjEqgLPfyOLMXlUtbw/GeT0KGn73hRW/MtvNgHjL1g2Fw+dVsC
-xdl+HeSE3y/I9kGgvS+xnLrlVKyDPv01xsovwjbgU8QDqDztL16HicCKWoxajGBA
-LKgQEQpi85FOncLzPzf+WEw48D5eTZpKVKgu416YtL7AQeFSqmk7j+RlOGYWmsJG
-xJzAJn0k1qhjv+VkimKDuRfOaabWjZop5Y050tUCtrBenbZH0KutMSBq0PSCsHM=
-=QARv
------END PGP SIGNATURE-----
-
---/F2XdnRjS8y2HUtp--
+-- 
+2.6.2
