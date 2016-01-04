@@ -1,81 +1,90 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH 05/12] net-next: mediatek: add switch driver for mt7621
-Date: Sun, 03 Jan 2016 11:18:47 -0800
-Message-ID: <1451848727.4334.55.camel@perches.com>
-References: <1451834775-15789-1-git-send-email-blogic@openwrt.org>
-         <1451834775-15789-5-git-send-email-blogic@openwrt.org>
+From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] soc: mediatek: PMIC wrap: Enable STAUPD_PRD before
+ WDT_SRC_EN enabled.
+Date: Mon, 4 Jan 2016 11:05:03 +0800
+Message-ID: <1451876703.11408.10.camel@mtksdaap41>
+References: <1451478961-5668-1-git-send-email-henryc.chen@mediatek.com>
+ <CAGS+omBc2XVESu1t+_iKj1gTk-7JVDK1KDoQEJR_-wcL4m0qWg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1451834775-15789-5-git-send-email-blogic@openwrt.org>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: John Crispin <blogic@openwrt.org>, "David S. Miller" <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, linux-mips@linux-mips.org, linux-mediatek@lists.infradead.org, Felix Fietkau <nbd@nbd.name>, Michael Lee <igvtee@gmail.com>, Steven Liu =?UTF-8?Q?=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu@mediatek.com>, Fred Chang =?UTF-8?Q?=28=E5=BC=B5=E5=98=89=E5=AE=8F=29?= <Fred.Chang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAGS+omBc2XVESu1t+_iKj1gTk-7JVDK1KDoQEJR_-wcL4m0qWg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 2016-01-03 at 16:26 +0100, John Crispin wrote:
-> This driver is very basic and only provides basic init and irq suppor=
-t.
-> The SoC and switch core both have support for a special tag making DS=
-A
-> support possible.
+On Thu, 2015-12-31 at 22:19 +0800, Daniel Kurtz wrote:
+> On Wed, Dec 30, 2015 at 8:36 PM, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >
+> > The STAUPD_TRIG will be enable when WDT_INT enable on probe function, if
+> > doesn't enable STAUPD_PRD together, interrupt will be triggered because
+> > STAUPD timeout. To avoid unexpected interrupt, enable periodic status
+> > update which will be updated to PMIC every selected time period.
+> 
+> Sorry, I don't really understand this.
+> 
+> What exactly is triggering the unexpected watchdog interrupt (WDT_INT)?
+> 
+> How does setting STAUPD_PRD disable this "unexpected interrupt"?
+> 
+Yes, WDT_INT was triggered because the bit[25] of WDT_SRC_EN was
+enabled:
 
-trivia:
+bit[25] STAUPD_TRIG: STAUPD trigger signal timeout monitor
 
-> diff --git a/drivers/net/ethernet/mediatek/gsw_mt7621.c b/drivers/net=
-/ethernet/mediatek/gsw_mt7621.c
-[]
-> +static irqreturn_t gsw_interrupt_mt7621(int irq, void *_priv)
-> +{
-> +	struct fe_priv *priv =3D (struct fe_priv *)_priv;
-> +	struct mt7620_gsw *gsw =3D (struct mt7620_gsw *)priv->soc->swpriv;
-> +	u32 reg, i;
-> +
-> +	reg =3D mt7530_mdio_r32(gsw, 0x700c);
-> +
-> +	for (i =3D 0; i < 5; i++)
-> +		if (reg & BIT(i)) {
-> +			unsigned int link;
-> +
-> +			link =3D mt7530_mdio_r32(gsw,
-> +					=A0=A0=A0=A0=A0=A0=A00x3008 + (i * 0x100)) & 0x1;
-> +
-> +			if (link !=3D priv->link[i]) {
-> +				priv->link[i] =3D link;
-> +				if (link)
-> +					netdev_info(priv->netdev,
-> +						=A0=A0=A0=A0"port %d link up\n", i);
-> +				else
-> +					netdev_info(priv->netdev,
-> +						=A0=A0=A0=A0"port %d link down\n", i);
-> +			}
-> +		}
+Setting STAUPD_PRD will update the status of PMIC periodic to avoid this
+watchdog timeout.
 
-It's more common to use braces after the for loop.
-Perhaps this could be written with a continue; to reduce
-indentation and also use a single netdev_info().
 
-	for (i =3D 0; i < 5; i++) {
-		unsigned int link;
+> From the MT8173 Datasheet, I can see that the value written to
+> STAUPD_PRD is the "periodic status update timing (period)".
+> 
+> > Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index a8cde17..6e5c20f 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -904,6 +904,11 @@ static int pwrap_probe(struct platform_device *pdev)
+> >                 return -ENODEV;
+> >         }
+> >
+> > +       /*
+> > +        * Enable periodic status update which will be updated to PMIC
+> > +        * every selected time period.
+> > +        */
+> > +       pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+> 
+> nit: Perhaps use a define for 5, and specify the real period value.
+> Something like this:
+> 
+> #define PWRAP_STAUPD_98_5US  5
+> 
+ok.
 
-		if (!(reg & BIT(i)))
-			continue;
-
-		link =3D=A0mt7530_mdio_r32(gsw, 0x3008 + (i * 0x100)) & 0x1;
-
-		if (link =3D=3D priv->link[i])
-			continue;
-
-		priv->link[i] =3D link;
-		netdev_info(priv->netdev, "port %d link %s\n",
-			    i, link ? "up" : "down");
-	}
+> 
+> >         /* Initialize watchdog, may not be done by the bootloader */
+> >         pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> >         pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+> > --
+> > 1.9.1
+> >
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> > the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at  http://www.tux.org/lkml/
