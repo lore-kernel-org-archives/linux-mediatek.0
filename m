@@ -1,58 +1,94 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH 1/2] Document: i2c: Add a dt binding for mediatek MT2701
- soc
-Date: Mon, 4 Jan 2016 10:55:12 +0100
-Message-ID: <20160104095511.GB1524@katana>
-References: <1451888138-11471-1-git-send-email-liguo.zhang@mediatek.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 4/8] dt-bindings: Add a binding for Mediatek Video Encoder
+Date: Mon, 4 Jan 2016 18:11:52 +0800
+Message-ID: <1451902316-55931-5-git-send-email-tiffany.lin@mediatek.com>
+References: <1451902316-55931-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="i0/AhcQY5QxfSsSZ"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1451888138-11471-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1451902316-55931-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Add a DT binding documentation of Video Encoder for the
+MT8173 SoC from Mediatek.
 
---i0/AhcQY5QxfSsSZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/media/mediatek-vcodec.txt  |   58 ++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
 
-On Mon, Jan 04, 2016 at 02:15:37PM +0800, Liguo Zhang wrote:
-> Add a dt binding for the MT2701 soc.
->=20
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+new file mode 100644
+index 0000000..5cc35ae
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -0,0 +1,58 @@
++Mediatek Video Codec
++
++Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
++supports high resolution encoding functionalities.
++
++Required properties:
++- compatible : "mediatek,mt8173-vcodec-enc" for encoder
++- reg : Physical base address of the video codec registers and length of
++  memory mapped region.
++- interrupts : interrupt number to the cpu.
++- mediatek,larb : must contain the local arbiters in the current Socs.
++- clocks : list of clock specifiers, corresponding to entries in
++  the clock-names property;
++- clock-names: must contain "vencpll", "venc_lt_sel", "vcodecpll_370p5_ck"
++- iommus : list of iommus specifiers should be enabled for hw encode.
++  There are 2 cells needed to enable/disable iommu.
++  The first one is local arbiter index(larbid), and the other is port
++  index(portid) within local arbiter. Specifies the larbid and portid
++  as defined in dt-binding/memory/mt8173-larb-port.h.
++- mediatek,vpu : the node of video processor unit
++
++Example:
++vcodec_enc: vcodec@0x18002000 {
++    compatible = "mediatek,mt8173-vcodec-enc";
++    reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
++          <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
++    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
++           <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++    mediatek,larb = <&larb3>,
++		    <&larb5>;
++    iommus = <&iommu M4U_PORT_VENC_RCPU>,
++             <&iommu M4U_PORT_VENC_REC>,
++             <&iommu M4U_PORT_VENC_BSDMA>,
++             <&iommu M4U_PORT_VENC_SV_COMV>,
++             <&iommu M4U_PORT_VENC_RD_COMV>,
++             <&iommu M4U_PORT_VENC_CUR_LUMA>,
++             <&iommu M4U_PORT_VENC_CUR_CHROMA>,
++             <&iommu M4U_PORT_VENC_REF_LUMA>,
++             <&iommu M4U_PORT_VENC_REF_CHROMA>,
++             <&iommu M4U_PORT_VENC_NBM_RDMA>,
++             <&iommu M4U_PORT_VENC_NBM_WDMA>,
++             <&iommu M4U_PORT_VENC_RCPU_SET2>,
++             <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
++             <&iommu M4U_PORT_VENC_BSDMA_SET2>,
++             <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
++             <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
++             <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
++             <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
++             <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
++             <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++    mediatek,vpu = <&vpu>;
++    clocks = <&apmixedsys CLK_APMIXED_VENCPLL>,
++             <&topckgen CLK_TOP_VENC_LT_SEL>,
++             <&topckgen CLK_TOP_VCODECPLL_370P5>;
++    clock-names = "vencpll",
++                  "venc_lt_sel",
++                  "vcodecpll_370p5_ck";
++  };
+-- 
+1.7.9.5
 
-This should probably go with the other patch via arm-soc, or?
-
-In that case:
-
-Acked-by: Wolfram Sang <wsa@the-dreams.de>
-
-
---i0/AhcQY5QxfSsSZ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWikF/AAoJEBQN5MwUoCm2bSEQAJ3ZUcDCMDa8atZpUBYyE2dq
-gmyjjg6u1XZlvIjdH4no/y0XVilUVo+zjvESmUzXeejRWmF07qMRazW8cCGO/nIf
-hGS+ABfjaeHNrrT6bsPdq7B2i3/ppMBMcWkt0txotmlQ5BQgSqtkHwjJ1GCbPGqh
-w3cOuk7PFMW5hdICzh44I6Hg4i0oTAu1IKTsCK9kdiqxlKe+hWGc4Vc9cKsuCUht
-tsnk/YkC5icKO7rSYjPG1T90QN2ZGlRbzRJrSzbyzcWfp016OOegi+jG/SbJV0Lp
-wzhXgN6f/ixrCsyKFL9WYPblbYp/hY6MuYtUAk/kdB3l2eC59ENa/RzDBT2RAUrS
-1pKsbBd6zglhChL+J3GdJvxjYGCdZ/Ohdm1GOWZVdmqLUNkrkPEdAgl/GF5cQsVS
-zLMCSuNgWJmlg3ZMpsuYMEP57AcpGtbhzYDeML6E8R0dNhykvJUMti19hrPvDLk8
-0A9FfLUumegzErTvaKxrpWf2ZF9J5HJk9/YT4ozDIJRBZEs9B28u+MKbeJpsafHB
-OHErn0a5hGXflFNApp2G4bCup2S+c7/ZHfYBldWYrdYGQ+/6gTmj/2UjocmF4Rr3
-Jg7YM/5DaGh3530xCFaASg5R58iunkHdgzx45Kj7qEMj1byrHM21m9ux0VqMZQcI
-MqVYCBmimir0bTIg+FDy
-=j85a
------END PGP SIGNATURE-----
-
---i0/AhcQY5QxfSsSZ--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
