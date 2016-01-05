@@ -1,56 +1,73 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v2 3/3] ARM64: dts: mt8173: Add CPU OPP, clock and
- regulator supply properties
-Date: Tue, 5 Jan 2016 15:54:55 +0530
-Message-ID: <20160105102455.GA30120@ubuntu>
-References: <1451197318-12418-1-git-send-email-pi-cheng.chen@linaro.org>
- <1451197318-12418-4-git-send-email-pi-cheng.chen@linaro.org>
- <20151228031340.GD3598@ubuntu>
- <3310024.mO5K6yH9vU@wuerfel>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [RFC v2 3/6] ASoC: mediatek: Add HDMI dai-links in
+ the machine driver
+Date: Tue, 5 Jan 2016 12:46:03 +0000
+Message-ID: <20160105124603.GB16023@sirena.org.uk>
+References: <1451934551-21333-3-git-send-email-p.zabel@pengutronix.de>
+ <1451934944-24588-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3310024.mO5K6yH9vU@wuerfel>
-Sender: linux-pm-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-arm-kernel@lists.infradead.org, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, devicetree@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-pm@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Content-Type: multipart/mixed; boundary="===============7849707838631682517=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1451934944-24588-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05-01-16, 11:21, Arnd Bergmann wrote:
-> On Monday 28 December 2015 08:43:40 Viresh Kumar wrote:
-> > On 27-12-15, 14:21, Pi-Cheng Chen wrote:
-> > > Add operating-points-v2, clock, and regulator supply properties
-> > > required by mt8173-cpufreq driver to enable it.
-> > > 
-> > > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-> > > ---
-> > > This patch is based on the patch[1] that adds underlying clock MUX for
-> > > MT8173 which is needed by mt8173-cpufreq driver but not yet picked.
-> > > 
-> > > [1] http://article.gmane.org/gmane.linux.kernel.clk/325
-> > > ---
-> > >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++
-> > >  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 90 +++++++++++++++++++++++++++++
-> > >  2 files changed, 108 insertions(+)
-> > 
-> > Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-> > 
-> 
-> This patch is now in linux-next through Rafael's pm tree, and it breaks the
-> arm64 build:
-> 
->         arm64-defconfig
-> Error: ../arch/arm64/boot/dts/mediatek/mt8173.dtsi:132.24-25 syntax error
-> 
-> 
-> Please revert.
-> 
-> In the future, please send all dts changes through the proper maintainer
-> channels (-> Mattias -> arm-soc), and make sure they actually build.
 
-Rafael has already reverted that, AFAIK, after Mark Brown reported the
-build issue.
+--===============7849707838631682517==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="upHqgONuYbTeMWr5"
+Content-Disposition: inline
 
--- 
-viresh
+
+--upHqgONuYbTeMWr5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jan 04, 2016 at 08:15:44PM +0100, Philipp Zabel wrote:
+> From: Koro Chen <koro.chen@mediatek.com>
+>=20
+> This creates pcmC0D2p for the HDMI playback in the same card.
+>=20
+> Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+
+Please don't send new patches in reply to the middle of an existing
+series, it makes it very hard to tell what's going on.  If you need to
+send a new version resend the whole series.
+
+--upHqgONuYbTeMWr5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWi7sKAAoJECTWi3JdVIfQd8gH/3i4VXFcM7aCWuovYanxYKz0
+1VnDevaWiabBdLsTma0a55cKFyl1eWKjJI2DTU2EP7E5/cTMteRPzQgXOTegmeH+
+4UGRaMw/yopUtXAJHTulWeAcbLTcIjsA65zBJgWxTx1AbPSYU+vctZcw6dIMnxmO
+vz1sU47mggPBK7GVDxrPy0aFOfZVYcQ1O5o8fy8W+mk55L/x/w6rOc6rezB6ADIV
+4Jnus62h09I8+AI30WLDoNenJoBSnqj9k0c9xksZWah486WGO4Bss4j7Jpdcb276
+1ZiXQ+wBSyuUJ44HBjJTSW9FYYxcdIk6lCdpUNl9Ya/Lv1uTk0lyXiKWTW5dtRc=
+=ktHU
+-----END PGP SIGNATURE-----
+
+--upHqgONuYbTeMWr5--
+
+--===============7849707838631682517==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============7849707838631682517==--
