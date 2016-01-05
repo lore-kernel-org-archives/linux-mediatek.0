@@ -1,7 +1,8 @@
 From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH 3/3] ARM: mediatek: add MT7623 smp bringup code
-Date: Tue,  5 Jan 2016 17:24:28 +0100
-Message-ID: <1452011068-28300-4-git-send-email-blogic@openwrt.org>
+Subject: [PATCH 1/3] Document: DT: Add bindings for mediatek MT7623 SoC
+ Platform
+Date: Tue,  5 Jan 2016 17:24:26 +0100
+Message-ID: <1452011068-28300-2-git-send-email-blogic@openwrt.org>
 References: <1452011068-28300-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,50 +22,61 @@ To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?q?Steven=20Liu=20=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add support for booting secondary CPUs on MT7623.
+This adds a DT binding documentation for the MT7623 SoC from Mediatek.
 
 Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 ---
- arch/arm/boot/dts/mt7623.dtsi    |    1 +
- arch/arm/mach-mediatek/platsmp.c |    7 +++++++
- 2 files changed, 8 insertions(+)
+ Documentation/devicetree/bindings/arm/mediatek.txt             |    4 ++++
+ Documentation/devicetree/bindings/serial/mtk-uart.txt          |    1 +
+ Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt |    1 +
+ 3 files changed, 6 insertions(+)
 
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 53c4268..fd2b614 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -23,6 +23,7 @@
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		enable-method = "mediatek,mt6589-smp";
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+index 618a9199..40e9d32 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.txt
++++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+@@ -10,6 +10,7 @@ compatible: Must contain one of
+    "mediatek,mt6589"
+    "mediatek,mt6592"
+    "mediatek,mt6795"
++   "mediatek,mt7623"
+    "mediatek,mt8127"
+    "mediatek,mt8135"
+    "mediatek,mt8173"
+@@ -29,6 +30,9 @@ Supported boards:
+ - Evaluation board for MT6795(Helio X10):
+     Required root node properties:
+       - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
++- Evaluation board for MT7623:
++    Required root node properties:
++      - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
+ - MTK mt8127 tablet moose EVB:
+     Required root node properties:
+       - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
+diff --git a/Documentation/devicetree/bindings/serial/mtk-uart.txt b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+index 2d47add..474f0cf 100644
+--- a/Documentation/devicetree/bindings/serial/mtk-uart.txt
++++ b/Documentation/devicetree/bindings/serial/mtk-uart.txt
+@@ -2,6 +2,7 @@
  
- 		cpu@0 {
- 			device_type = "cpu";
-diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
-index 8141f3f..8151400 100644
---- a/arch/arm/mach-mediatek/platsmp.c
-+++ b/arch/arm/mach-mediatek/platsmp.c
-@@ -44,6 +44,12 @@ static const struct mtk_smp_boot_info mtk_mt6589_boot = {
- 	{ 0x38, 0x3c, 0x40 },
- };
- 
-+static const struct mtk_smp_boot_info mtk_mt7623_boot = {
-+	0x10202000, 0x34,
-+	{ 0x534c4131, 0x4c415332, 0x41534c33 },
-+	{ 0x38, 0x3c, 0x40 },
-+};
-+
- static const struct of_device_id mtk_tz_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt8135", .data = &mtk_mt8135_tz_boot },
- 	{ .compatible   = "mediatek,mt8127", .data = &mtk_mt8135_tz_boot },
-@@ -51,6 +57,7 @@ static const struct of_device_id mtk_tz_smp_boot_infos[] __initconst = {
- 
- static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
-+	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
- };
- 
- static void __iomem *mtk_smp_base;
+ Required properties:
+ - compatible should contain:
++  * "mediatek,mt7623-uart" for MT7623 compatible UARTS
+   * "mediatek,mt8135-uart" for MT8135 compatible UARTS
+   * "mediatek,mt8127-uart" for MT8127 compatible UARTS
+   * "mediatek,mt8173-uart" for MT8173 compatible UARTS
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+index 64083bc..6bacda1b3 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
++++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+@@ -5,6 +5,7 @@ Required properties:
+ - compatible should contain:
+ 	* "mediatek,mt6580-timer" for MT6580 compatible timers
+ 	* "mediatek,mt6589-timer" for MT6589 compatible timers
++	* "mediatek,mt7623-timer" for MT7623 compatible timers
+ 	* "mediatek,mt8127-timer" for MT8127 compatible timers
+ 	* "mediatek,mt8135-timer" for MT8135 compatible timers
+ 	* "mediatek,mt8173-timer" for MT8173 compatible timers
 -- 
 1.7.10.4
