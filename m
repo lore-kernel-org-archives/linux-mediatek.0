@@ -1,11 +1,13 @@
 From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH 0/3] Add basic support for Mediatek MT7623 SoC
-Date: Tue,  5 Jan 2016 17:24:25 +0100
-Message-ID: <1452011068-28300-1-git-send-email-blogic@openwrt.org>
+Subject: [PATCH 2/2] soc: mediatek: PMIC wrap: INT_EN mask may vary
+Date: Tue,  5 Jan 2016 17:29:03 +0100
+Message-ID: <1452011343-28502-2-git-send-email-blogic@openwrt.org>
+References: <1452011343-28502-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452011343-28502-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,30 +21,67 @@ To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?q?Steven=20Liu=20=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MT7623 is a SoC based on 32bit ARMv7 architecture. It contains 4 CA7 cores.
-MT7623 share many HW IP with MT65xx series. This patchset was tested
-on MT7623 evaluation board, and boot to shell ok.
+The MT7623 and possible other SoCs have a different INT_EN mask. Change
+the driver so that it handles the interrupt mask in the same was as
+arb_en_all.
 
-This series contains document bindings, device tree including
-interrupt, uart, timer and wdt.
+Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-John Crispin (3):
-  Document: DT: Add bindings for mediatek MT7623 SoC Platform
-  ARM: dts: mediatek: add MT7623 basic support
-  ARM: mediatek: add MT7623 smp bringup code
-
- Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
- .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
- .../bindings/timer/mediatek,mtk-timer.txt          |    1 +
- arch/arm/boot/dts/Makefile                         |    1 +
- arch/arm/boot/dts/mt7623-evb.dts                   |   33 +++++
- arch/arm/boot/dts/mt7623.dtsi                      |  147 ++++++++++++++++++++
- arch/arm/mach-mediatek/Kconfig                     |    4 +
- arch/arm/mach-mediatek/mediatek.c                  |    1 +
- arch/arm/mach-mediatek/platsmp.c                   |    7 +
- 9 files changed, 199 insertions(+)
- create mode 100644 arch/arm/boot/dts/mt7623-evb.dts
- create mode 100644 arch/arm/boot/dts/mt7623.dtsi
-
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index f3fccea..82350d0 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -404,6 +404,7 @@ struct pmic_wrapper_type {
+ 	u32 dew_base;
+ 	enum pwrap_type type;
+ 	u32 arb_en_all;
++	u32 int_en_all;
+ };
+ 
+ static struct pmic_wrapper_type pwrap_mt8135 = {
+@@ -412,6 +413,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
+ 	.dew_base = 0xbc00,
+ 	.type = PWRAP_MT8135,
+ 	.arb_en_all = 0x1ff,
++	.int_en_all = BIT(31) | BIT(1),
+ };
+ 
+ static struct pmic_wrapper_type pwrap_mt8173 = {
+@@ -420,6 +422,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
+ 	.dew_base = 0xbc00,
+ 	.type = PWRAP_MT8173,
+ 	.arb_en_all = 0x3f,
++	.int_en_all = BIT(31) | BIT(1),
+ };
+ 
+ struct pmic_wrapper {
+@@ -431,6 +434,7 @@ struct pmic_wrapper {
+ 	u32 dew_base;
+ 	enum pwrap_type type;
+ 	u32 arb_en_all;
++	u32 int_en_all;
+ 	struct clk *clk_spi;
+ 	struct clk *clk_wrap;
+ 	struct reset_control *rstc;
+@@ -900,6 +904,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	wrp->dew_regs = type->dew_regs;
+ 	wrp->dew_base = type->dew_base;
+ 	wrp->arb_en_all = type->arb_en_all;
++	wrp->int_en_all = type->int_en_all;
+ 	wrp->dev = &pdev->dev;
+ 
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pwrap");
+@@ -974,7 +979,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+ 	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+ 	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+-	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
++	pwrap_writel(wrp, ~wrp->int_en_all, PWRAP_INT_EN);
+ 
+ 	irq = platform_get_irq(pdev, 0);
+ 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
 -- 
 1.7.10.4
