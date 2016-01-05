@@ -1,47 +1,47 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v2 5/6] reset: mediatek: mt2701 reset controller
- dt-binding file
-Date: Tue, 5 Jan 2016 18:00:13 +0800
-Message-ID: <1451988013.19662.2.camel@mtksdaap41>
-References: <1451975422-31174-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1451975422-31174-6-git-send-email-jamesjj.liao@mediatek.com>
-	 <1451986291.3391.5.camel@pengutronix.de>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH v2 3/3] ARM64: dts: mt8173: Add CPU OPP, clock and regulator supply properties
+Date: Tue, 05 Jan 2016 11:21:44 +0100
+Message-ID: <3310024.mO5K6yH9vU@wuerfel>
+References: <1451197318-12418-1-git-send-email-pi-cheng.chen@linaro.org> <1451197318-12418-4-git-send-email-pi-cheng.chen@linaro.org> <20151228031340.GD3598@ubuntu>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1451986291.3391.5.camel@pengutronix.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20151228031340.GD3598@ubuntu>
+Sender: linux-pm-owner@vger.kernel.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Viresh Kumar <viresh.kumar@linaro.org>, Pi-Cheng Chen <pi-cheng.chen@linaro.org>, devicetree@vger.kernel.org, linaro-kernel@lists.linaro.org, linux-pm@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Philipp,
-
-On Tue, 2016-01-05 at 10:31 +0100, Philipp Zabel wrote:
-> Am Dienstag, den 05.01.2016, 14:30 +0800 schrieb James Liao:
-> > From: Shunli Wang <shunli.wang@mediatek.com>
+On Monday 28 December 2015 08:43:40 Viresh Kumar wrote:
+> On 27-12-15, 14:21, Pi-Cheng Chen wrote:
+> > Add operating-points-v2, clock, and regulator supply properties
+> > required by mt8173-cpufreq driver to enable it.
 > > 
-> > Dt-binding file about reset controller is used to provide
-> > kinds of definition, which is referenced by dts file and
-> > IC-specified reset controller driver code.
-> > 
-> > Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+> > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
 > > ---
-> >  .../dt-bindings/reset-controller/mt2701-resets.h   | 74 ++++++++++++++++++++++
-> >  1 file changed, 74 insertions(+)
-> >  create mode 100644 include/dt-bindings/reset-controller/mt2701-resets.h
+> > This patch is based on the patch[1] that adds underlying clock MUX for
+> > MT8173 which is needed by mt8173-cpufreq driver but not yet picked.
 > > 
-> > diff --git a/include/dt-bindings/reset-controller/mt2701-resets.h b/include/dt-bindings/reset-controller/mt2701-resets.h
+> > [1] http://article.gmane.org/gmane.linux.kernel.clk/325
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++
+> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 90 +++++++++++++++++++++++++++++
+> >  2 files changed, 108 insertions(+)
 > 
-> No new files in include/dt-bindings/reset-controller, please.
-> This should go into include/dt-bindings/reset.
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> 
 
-OK, I'll move it to include/dt-bindings/reset/.
+This patch is now in linux-next through Rafael's pm tree, and it breaks the
+arm64 build:
+
+        arm64-defconfig
+Error: ../arch/arm64/boot/dts/mediatek/mt8173.dtsi:132.24-25 syntax error
 
 
-Best regards,
+Please revert.
 
-James
+In the future, please send all dts changes through the proper maintainer
+channels (-> Mattias -> arm-soc), and make sure they actually build.
 
-
+	Arnd
