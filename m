@@ -1,46 +1,45 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/6] dt-bindings: ARM: Mediatek: Document bindings for
- MT2701
-Date: Wed, 6 Jan 2016 09:08:00 -0600
-Message-ID: <20160106150800.GA941@rob-hp-laptop>
-References: <1451975422-31174-1-git-send-email-jamesjj.liao@mediatek.com>
- <1451975422-31174-3-git-send-email-jamesjj.liao@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [RFC v2 3/6] ASoC: mediatek: Add HDMI dai-links in
+ the machine driver
+Date: Thu, 07 Jan 2016 11:06:10 +0100
+Message-ID: <1452161170.4776.9.camel@pengutronix.de>
+References: <1451934551-21333-3-git-send-email-p.zabel@pengutronix.de>
+ <1451934944-24588-1-git-send-email-p.zabel@pengutronix.de>
+ <20160105124603.GB16023@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1451975422-31174-3-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160105124603.GB16023@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jan 05, 2016 at 02:30:18PM +0800, James Liao wrote:
-> This patch adds the binding documentation for apmixedsys, bdpsys,
-> ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
-> vdecsys for Mediatek MT2701.
+Am Dienstag, den 05.01.2016, 12:46 +0000 schrieb Mark Brown:
+> On Mon, Jan 04, 2016 at 08:15:44PM +0100, Philipp Zabel wrote:
+> > From: Koro Chen <koro.chen@mediatek.com>
+> > 
+> > This creates pcmC0D2p for the HDMI playback in the same card.
+> > 
+> > Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+> > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 > 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> Please don't send new patches in reply to the middle of an existing
+> series, it makes it very hard to tell what's going on.  If you need to
+> send a new version resend the whole series.
 
-[...]
+Sorry, I had to manually restart an aborted git send-email and
+accidentally chose the wrong --in-reply-to Message-Id for this patch.
+It's all just one series.
 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
-> new file mode 100644
-> index 0000000..4137196
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
-> @@ -0,0 +1,22 @@
-> +Mediatek bdpsys controller
-> +============================
-> +
-> +The Mediatek bdpsys controller provides various clocks to the system.
-> +
-> +Required Properties:
-> +
-> +- compatible: Should be:
-> +	- "mediatek,mt2701-bdpsys", "syscon"
-
-If this block and others only provide clocks, then why do you need 
-syscon here? If it is more that clocks, then the description is wrong.
-
-Rob
+regards
+Philipp
