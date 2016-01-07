@@ -1,77 +1,164 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [RFC v2 6/6] ASoC: hdmi-codec: Use HDMI
- notifications to add jack support
-Date: Fri, 8 Jan 2016 12:55:34 +0000
-Message-ID: <20160108125534.GN6588@sirena.org.uk>
-References: <1451934551-21333-1-git-send-email-p.zabel@pengutronix.de>
- <1451935145-24861-1-git-send-email-p.zabel@pengutronix.de>
- <568E9BE1.6050209@ti.com> <1452242629.3347.12.camel@pengutronix.de>
- <568F87F7.3010409@ti.com>
- <20160108104623.GF19062@n2100.arm.linux.org.uk>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3523294629709587610=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160108104623.GF19062@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, kernel@pengutronix.de, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH 1/2] dt-bindings: add MedieTak PCIE binding documentation
+Date: Thu,  7 Jan 2016 22:06:12 +0100
+Message-ID: <1452200773-50794-1-git-send-email-blogic@openwrt.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Signed-off-by: John Crispin <blogic@openwrt.org>
+---
+ .../devicetree/bindings/pci/mediatek-pcie.txt      |  140 ++++++++++++++++++++
+ 1 file changed, 140 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie.txt
 
---===============3523294629709587610==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="qw1jpiGhEv1c2/gd"
-Content-Disposition: inline
-
-
---qw1jpiGhEv1c2/gd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Jan 08, 2016 at 10:46:23AM +0000, Russell King - ARM Linux wrote:
-
-> Given that, I'd like to throw in here another detail: iirc, i915's
-> HDMI exports the ELD to userspace via a control called "ELD" - see
-> eld_bytes_ctl in sound/pci/hda/patch_hdmi.c.  This allows userspace
-> to monitor, and read the ELD including which compressed audio formats
-> are supported.  I'm not currently aware of anything that makes use of
-> this, but as there is this precedent for exporting this information,
-> maybe it should become a standard way, so that video playback
-> applications can then select an appropriate audio stream depending on
-> the current properties of the connected device?
-
-That makes sense to me.
-
---qw1jpiGhEv1c2/gd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWj7HFAAoJECTWi3JdVIfQORIH/0YNaiR4C4XhfP6fBuOyvCzr
-x+MuXmoQ8BELTKhbMCzEta+HR/3HDpZZ8Y7uVUP9OjECJK12R0QgRbspUpj7hIJO
-mgfMgXA84Y+JdykfLTmaBCL/ubsnPDmCBKCj5DymqqdZ8H1dvCkmg0qL5lQ0tfuA
-CrAj41C3z3+DN5cDrk5hVMGBmmHmXoC+3p5QRBdHUCgJ/Z66YHAqkOpYHPh3fbxa
-ZSLs0jj1YhpH/maR3wKYbILTNuz99BTbsglvAv+jEUjYC80BZIn7CLT/1YQ++jKA
-0+/H5xGwfyC5oOwyCQVM+IBNzvlw1tOEXTnVY7SDpLO4J16V5LS1BM9LHL//eCw=
-=FgyI
------END PGP SIGNATURE-----
-
---qw1jpiGhEv1c2/gd--
-
---===============3523294629709587610==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============3523294629709587610==--
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+new file mode 100644
+index 0000000..1bd20b2
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
+@@ -0,0 +1,140 @@
++Mediatek PCIe controller
++
++Required properties:
++- compatible: Should be one of:
++	- "mediatek,mt2701-pcie"
++	- "mediatek,mt7623-pcie"
++- device_type: Must be "pci"
++- reg: A list of physical base address and length for each set of controller
++  registers. A list of register ranges to use. Must contain an
++    entry for each entry in the reg-names property.
++- reg-names: Must include the following entries:
++  "pcie": PCIE registers
++  "pcie phy0": PCIE PHY0 registers
++  "pcie phy1": PCIE PHY0 registers
++  "pcie phy2": PCIE PHY0 registers
++- interrupts: A list of interrupt outputs of the controller. Must contain an
++  entry for each entry in the interrupt-names property.
++- interrupt-names: Must include the following entries:
++  "pcie0": The interrupt that is asserted for port0
++  "pcie1": The interrupt that is asserted for port1
++  "pcie2": The interrupt that is asserted for port2
++- bus-range: Range of bus numbers associated with this controller
++- #address-cells: Address representation for root ports (must be 3)
++- #size-cells: Size representation for root ports (must be 2)
++- ranges: Describes the translation of addresses for root ports and standard
++  PCI regions. The entries must be 6 cells each.
++  Please refer to the standard PCI bus binding document for a more detailed
++  explanation.
++- #interrupt-cells: Size representation for interrupts (must be 1)
++- clocks: Must contain an entry for each entry in clock-names.
++  See ../clocks/clock-bindings.txt for details.
++- clock-names: Must include the following entries:
++  - pcie0
++  - pcie1
++  - pcie2
++- resets: Must contain an entry for each entry in reset-names.
++  See ../reset/reset.txt for details.
++- reset-names: Must include the following entries:
++  - pcie0
++  - pcie1
++  - pcie2
++- mediatek,hifsys: Must contain a phandle to the HIFSYS syscon range.
++Root ports are defined as subnodes of the PCIe controller node.
++
++Required properties:
++- device_type: Must be "pci"
++- assigned-addresses: Address and size of the port configuration registers
++- reg: PCI bus address of the root port
++- #address-cells: Must be 3
++- #size-cells: Must be 2
++- ranges: Sub-ranges distributed from the PCIe controller node. An empty
++  property is sufficient.
++
++Example:
++
++SoC DTSI:
++
++	hifsys: clock-controller@1a000000 {
++		compatible = "mediatek,mt7623-hifsys",
++			     "mediatek,mt2701-hifsys",
++			     "syscon";
++		reg = <0 0x1a000000 0 0x1000>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
++	pcie-controller@1a140000 {
++		compatible = "mediatek,mt7623-pcie";
++		device_type = "pci";
++		reg = <0 0x1a140000 0 0x8000>, /* PCI-Express registers */
++		      <0 0x1a149000 0 0x1000>, /* PCI-Express PHY0 */
++		      <0 0x1a14a000 0 0x1000>, /* PCI-Express PHY1 */
++		      <0 0x1a244000 0 0x1000>; /* PCI-Express PHY2 */
++		reg-names = "pcie", "pcie phy0", "pcie phy1", "pcie phy2";
++		interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 195 IRQ_TYPE_LEVEL_LOW>;
++		interrupt-names = "pcie0", "pcie1", "pcie2";
++		clocks = <&topckgen CLK_TOP_ETHIF_SEL>;
++		clock-names = "pcie";
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_HIF>;
++		resets = <&hifsys MT2701_HIFSYS_PCIE0_RST>,
++			 <&hifsys MT2701_HIFSYS_PCIE1_RST>,
++			 <&hifsys MT2701_HIFSYS_PCIE2_RST>;
++		reset-names = "pcie0", "pice1", "pcie2";
++
++		bus-range = <0x00 0xff>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++
++                mediatek,hifsys = <&hifsys>;
++
++		ranges = <0x81000000 0 0x1a160000 0 0x1a160000 0 0x00010000 /* io space */
++			  0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>; /* pci memory */
++
++		status = "disabled";
++
++		pcie@1,0 {
++			device_type = "pci";
++			reg = <0x0800 0 0 0 0>;
++
++			#address-cells = <3>;
++			#size-cells = <2>;
++			ranges;
++
++			status = "disabled";
++		};
++
++		pcie@2,0{
++			device_type = "pci";
++			reg = <0x1000 0 0 0 0>;
++
++			#address-cells = <3>;
++			#size-cells = <2>;
++			ranges;
++
++			status = "disabled";
++		};
++
++		pcie@3,0{
++			device_type = "pci";
++			reg = <0x1800 0 0 0 0>;
++
++			#address-cells = <3>;
++			#size-cells = <2>;
++			ranges;
++
++			status = "disabled";
++		};
++	};
++
++Board DTS:
++
++	pcie-controller {
++		status = "okay";
++
++		pci@1,0 {
++			status = "okay";
++		};
++	};
+-- 
+1.7.10.4
