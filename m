@@ -1,45 +1,23 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC v2 3/6] ASoC: mediatek: Add HDMI dai-links in
- the machine driver
-Date: Thu, 07 Jan 2016 11:06:10 +0100
-Message-ID: <1452161170.4776.9.camel@pengutronix.de>
-References: <1451934551-21333-3-git-send-email-p.zabel@pengutronix.de>
- <1451934944-24588-1-git-send-email-p.zabel@pengutronix.de>
- <20160105124603.GB16023@sirena.org.uk>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v3 2/5] dt-bindings: mediatek: Modify pinctrl bindings for mt2701
+Date: Thu, 7 Jan 2016 11:11:42 +0100
+Message-ID: <CACRpkdbwQgP-4dOuRcaabkdyozEwJPeS7YG9F8cg8M4mgDZwNQ@mail.gmail.com>
+References: <1451286546-5920-1-git-send-email-biao.huang@mediatek.com>
+	<1451286546-5920-3-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160105124603.GB16023@sirena.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1451286546-5920-3-git-send-email-biao.huang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Dienstag, den 05.01.2016, 12:46 +0000 schrieb Mark Brown:
-> On Mon, Jan 04, 2016 at 08:15:44PM +0100, Philipp Zabel wrote:
-> > From: Koro Chen <koro.chen@mediatek.com>
-> > 
-> > This creates pcmC0D2p for the HDMI playback in the same card.
-> > 
-> > Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-> > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-> 
-> Please don't send new patches in reply to the middle of an existing
-> series, it makes it very hard to tell what's going on.  If you need to
-> send a new version resend the whole series.
+On Mon, Dec 28, 2015 at 8:09 AM, Biao Huang <biao.huang@mediatek.com> wrote:
 
-Sorry, I had to manually restart an aborted git send-email and
-accidentally chose the wrong --in-reply-to Message-Id for this patch.
-It's all just one series.
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 
-regards
-Philipp
+Patch applied with the ACKs.
+
+Yours,
+Linus Walleij
