@@ -1,43 +1,35 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v3 5/5] arm: dts: Add pinctrl/GPIO/EINT node for mt2701
-Date: Thu, 7 Jan 2016 11:14:05 +0100
-Message-ID: <CACRpkdbc-tNaeMzzX2riwUFPp0-XjVfvjuM6knWzVVwP89ECdA@mail.gmail.com>
-References: <1451286546-5920-1-git-send-email-biao.huang@mediatek.com>
-	<1451286546-5920-6-git-send-email-biao.huang@mediatek.com>
-	<5685104D.7070008@gmail.com>
+From: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/2] Add Mediatek MT2701 SMP support
+Date: Thu, 7 Jan 2016 20:09:42 +0800
+Message-ID: <1452168584-25394-1-git-send-email-louis.yu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <5685104D.7070008@gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Biao Huang <biao.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Dec 31, 2015 at 12:23 PM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
-> On 28/12/15 08:09, Biao Huang wrote:
->>
->> Add pinctrl and GPIO node to mt2701.dtsi
->>
->> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
->> Acked-by: Linus Walleij <linus.walleij@linaro.org>
->> ---
->>   arch/arm/boot/dts/mt2701.dtsi |   19 +++++++++++++++++++
->>   1 file changed, 19 insertions(+)
->>
->
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
->
-> Linus, will you take this patch through your branch?
+This patchset is based on 4.4-rc8 and [1], and contains smp support
+for Mediatek MT2701. MT2701 contains 4 CA7 cores.
 
-No I prefer anything in arch/arm/boot/dts/* to go in through
-the ARM SoC tree.
+This patchset adds related SMP support for Mediatek MT2701.
 
-It can usually be merged orthogonally anyways.
+[1] https://patchwork.kernel.org/patch/7248471/
 
-I take Documenation/devicetree/bindings/* and patches
-to the driver itself in drivers/pinctrl/*
+Louis Yu (2):
+  ARM: mediatek: add mt2701 smp bringup code
+  ARM: dts: mt2701: enable basic SMP bringup for mt2701
 
-Yours,
-Linus Walleij
+ arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
+ arch/arm/mach-mediatek/platsmp.c |    1 +
+ 2 files changed, 13 insertions(+)
+
+--
+1.7.9.5
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
