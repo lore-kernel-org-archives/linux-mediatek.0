@@ -1,104 +1,55 @@
-From: Ricky Liang <jcliang@chromium.org>
-Subject: Re: [RESEND PATCH v2] soc: mediatek: PMIC wrap: Clear the vldclr if
- state machine stay on FSM_VLDCLR state.
-Date: Fri, 8 Jan 2016 10:43:52 +0800
-Message-ID: <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
-References: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 0/4] Mediatek MT2701 SCPSYS power domain support
+Date: Fri, 8 Jan 2016 11:32:44 +0800
+Message-ID: <1452223968-6566-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 4, 2016 at 8:02 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
->
-> Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
-> because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
-> just return error when issue happened, so the state machine will stay on
-> FSM_VLDCLR state when data send back later by PMIC and timeout again in next
-> time because pmic wrap waiting for FSM_IDLE state at the beginning of the
-> read/write function.
->
-> Clear the vldclr when timeout if state machine stay on FSM_VLDCLR.
->
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
-> Changes since v1:
-> Encapsulated the code in a inline function, and add a descriptive comment.
-> ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 30 ++++++++++++++++++++++++++++--
->  1 file changed, 28 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 105597a..af919b1 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -412,6 +412,12 @@ static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
->         return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
->  }
->
-> +static inline void pwrap_leave_fsm_vldclr(struct pmic_wrapper *wrp)
-> +{
-> +       if (pwrap_is_fsm_vldclr(wrp))
-> +               pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
-> +}
-> +
->  static bool pwrap_is_sync_idle(struct pmic_wrapper *wrp)
->  {
->         return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
-> @@ -445,8 +451,18 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
->         int ret;
->
->         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-> -       if (ret)
-> +       if (ret) {
-> +               /*
-> +                * Timeout issue sometimes caused by the last read command
-> +                * failed because pmic wrap could not got the FSM_VLDCLR
-> +                * in time after finishing WACS2_CMD. It made state machine
-> +                * still on FSM_VLDCLR and timeout next time.
-> +                * Check the status of FSM and clear the vldclr to recovery the
-> +                * error.
-> +                */
-> +               pwrap_leave_fsm_vldclr(wrp);
->                 return ret;
-> +       }
->
->         pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
->                         PWRAP_WACS2_CMD);
-> @@ -459,8 +475,18 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
->         int ret;
->
->         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
-> -       if (ret)
-> +       if (ret) {
-> +               /*
-> +                * Timeout issue sometimes caused by the last read command
-> +                * failed because pmic wrap could not got the FSM_VLDCLR
-> +                * in time after finishing WACS2_CMD. It made state machine
-> +                * still on FSM_VLDCLR and timeout next time.
-> +                * Check the status of FSM and clear the vldclr to recovery the
-> +                * error.
-> +                */
-> +               pwrap_leave_fsm_vldclr(wrp);
->                 return ret;
-> +       }
->
->         pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
->
-> --
-> 1.9.1
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at  http://www.tux.org/lkml/
+This patchset is based on 4.4-rc7, add scpsys power domain support for
+Mediatek MT2701.
 
+This patchset also separate MT8173 scpsys driver into common part
+(mtk-scpsys.c) and platform part (mtk-scpsys-mt8173.c), so that MT2701
+scpsys driver can share most implementation with MT8173.
 
-Tested-by: Ricky Liang <jcliang@chromium.org>
+MT8173 and MT2701 scpsys init level are now subsys_init. Please refer to [1]
+to see discussion details.
 
-On our test platform this patch fixes PMIC communication erros.
+changes since v1:
+- Make MTK_SCPSYS in Kconfig invisible from users.
+- Add comments for changing scpsys init level to subsys_init.
+
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003416.html
+
+James Liao (2):
+  soc: mediatek: Separate scpsys driver common code
+  soc: mediatek: Init MT8173 scpsys driver earlier
+
+Shunli Wang (2):
+  soc: mediatek: Add MT2701 power dt-bindings
+  soc: mediatek: Add MT2701 scpsys driver
+
+ drivers/soc/mediatek/Kconfig             |  27 ++-
+ drivers/soc/mediatek/Makefile            |   2 +
+ drivers/soc/mediatek/mtk-scpsys-mt2701.c | 172 ++++++++++++++++++
+ drivers/soc/mediatek/mtk-scpsys-mt8173.c | 201 +++++++++++++++++++++
+ drivers/soc/mediatek/mtk-scpsys.c        | 301 ++++++++-----------------------
+ drivers/soc/mediatek/mtk-scpsys.h        |  54 ++++++
+ include/dt-bindings/power/mt2701-power.h |  27 +++
+ 7 files changed, 554 insertions(+), 230 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
+ create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt8173.c
+ create mode 100644 drivers/soc/mediatek/mtk-scpsys.h
+ create mode 100644 include/dt-bindings/power/mt2701-power.h
+
+--
+1.9.1
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
