@@ -1,116 +1,78 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH v2] soc: mediatek: PMIC wrap: Clear the vldclr if
- state machine stay on FSM_VLDCLR state.
-Date: Fri, 8 Jan 2016 11:08:50 +0100
-Message-ID: <568F8AB2.6080503@gmail.com>
-References: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
- <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
+From: Russell King - ARM Linux <linux@arm.linux.org.uk>
+Subject: Re: [RFC v2 6/6] ASoC: hdmi-codec: Use HDMI
+ notifications to add jack support
+Date: Fri, 8 Jan 2016 10:46:23 +0000
+Message-ID: <20160108104623.GF19062@n2100.arm.linux.org.uk>
+References: <1451934551-21333-1-git-send-email-p.zabel@pengutronix.de>
+ <1451935145-24861-1-git-send-email-p.zabel@pengutronix.de>
+ <568E9BE1.6050209@ti.com> <1452242629.3347.12.camel@pengutronix.de>
+ <568F87F7.3010409@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ricky Liang <jcliang@chromium.org>, Henry Chen <henryc.chen@mediatek.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+Content-Disposition: inline
+In-Reply-To: <568F87F7.3010409@ti.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jyri Sarha <jsarha@ti.com>
+Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, kernel@pengutronix.de, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Jan 08, 2016 at 11:57:11AM +0200, Jyri Sarha wrote:
+> On 01/08/16 10:43, Philipp Zabel wrote:
+> >Possibly the HDMI driver itself should just mute if the format is not
+> >supported, and userspace should be notified?
+> 
+> Another option would be simply aborting the playback. However having a mute
+> control, that is forced to mute if the current stream is not supported, is
+> an interesting idea. That would provide a way to notify the userspace
+> without intrusively killing the stream.
 
+Firstly, remember that the sequence you'll likely see is:
 
-On 08/01/16 03:43, Ricky Liang wrote:
-> On Mon, Jan 4, 2016 at 8:02 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
->>
->> Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
->> because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
->> just return error when issue happened, so the state machine will stay on
->> FSM_VLDCLR state when data send back later by PMIC and timeout again in next
->> time because pmic wrap waiting for FSM_IDLE state at the beginning of the
->> read/write function.
->>
->> Clear the vldclr when timeout if state machine stay on FSM_VLDCLR.
->>
->> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
->> ---
->> Changes since v1:
->> Encapsulated the code in a inline function, and add a descriptive comment.
->> ---
->>   drivers/soc/mediatek/mtk-pmic-wrap.c | 30 ++++++++++++++++++++++++++++--
->>   1 file changed, 28 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
->> index 105597a..af919b1 100644
->> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
->> @@ -412,6 +412,12 @@ static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
->>          return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
->>   }
->>
->> +static inline void pwrap_leave_fsm_vldclr(struct pmic_wrapper *wrp)
->> +{
->> +       if (pwrap_is_fsm_vldclr(wrp))
->> +               pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
->> +}
->> +
->>   static bool pwrap_is_sync_idle(struct pmic_wrapper *wrp)
->>   {
->>          return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
->> @@ -445,8 +451,18 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
->>          int ret;
->>
->>          ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
->> -       if (ret)
->> +       if (ret) {
->> +               /*
->> +                * Timeout issue sometimes caused by the last read command
->> +                * failed because pmic wrap could not got the FSM_VLDCLR
->> +                * in time after finishing WACS2_CMD. It made state machine
->> +                * still on FSM_VLDCLR and timeout next time.
->> +                * Check the status of FSM and clear the vldclr to recovery the
->> +                * error.
->> +                */
->> +               pwrap_leave_fsm_vldclr(wrp);
->>                  return ret;
->> +       }
->>
->>          pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
->>                          PWRAP_WACS2_CMD);
->> @@ -459,8 +475,18 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
->>          int ret;
->>
->>          ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
->> -       if (ret)
->> +       if (ret) {
->> +               /*
->> +                * Timeout issue sometimes caused by the last read command
->> +                * failed because pmic wrap could not got the FSM_VLDCLR
->> +                * in time after finishing WACS2_CMD. It made state machine
->> +                * still on FSM_VLDCLR and timeout next time.
->> +                * Check the status of FSM and clear the vldclr to recovery the
->> +                * error.
->> +                */
->> +               pwrap_leave_fsm_vldclr(wrp);
->>                  return ret;
->> +       }
->>
->>          pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
->>
->> --
->> 1.9.1
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at  http://www.tux.org/lkml/
->
->
-> Tested-by: Ricky Liang <jcliang@chromium.org>
->
-> On our test platform this patch fixes PMIC communication erros.
->
+- disconnect
+- connect
+- new edid
+- new eld
 
-I put the comment above the function declaration.
+The disconnect/connect cycle is HDMI protocol for "please re-read
+the EDID" and is used (eg) by AV receivers to signal a change.  When
+they change from HDMI pass-through mode in standby, to being powered
+on, they typically switch from passing the displays EDID through
+unmodified, to a modified version with their audio capabilities
+included - and vice versa when they're placed back into standby.
 
-Applied to v4.5-next/soc
+The kernel's audio driver doesn't have any knowledge about the kind
+of audio being passed through it: while it knows the alleged sample
+rate, bits per sample, and number of channels, these are PCM details,
+and not compressed audio details.  Compressed audio is normally sent
+with the kernel driver configured for 16 bit, 2 channel and an
+appropriate sample rate, with the IEC958 channel status data setup
+by the application (via libasound) to indicate non-audio amongst
+other details.  Therefore, the kernel driver doesn't know a
+nature of the compressed audio stream, and can't "mute" the stream
+if the ELD indicates that the compressed audio stream has gone
+away.
 
-Thanks.
+Given that, I'd like to throw in here another detail: iirc, i915's
+HDMI exports the ELD to userspace via a control called "ELD" - see
+eld_bytes_ctl in sound/pci/hda/patch_hdmi.c.  This allows userspace
+to monitor, and read the ELD including which compressed audio formats
+are supported.  I'm not currently aware of anything that makes use of
+this, but as there is this precedent for exporting this information,
+maybe it should become a standard way, so that video playback
+applications can then select an appropriate audio stream depending on
+the current properties of the connected device?
+
+-- 
+RMK's Patch system: http://www.arm.linux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
