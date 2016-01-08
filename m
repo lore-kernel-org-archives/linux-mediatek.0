@@ -1,78 +1,116 @@
-From: Jyri Sarha <jsarha@ti.com>
-Subject: Re: [RFC v2 6/6] ASoC: hdmi-codec: Use HDMI
- notifications to add jack support
-Date: Fri, 8 Jan 2016 11:57:11 +0200
-Message-ID: <568F87F7.3010409@ti.com>
-References: <1451934551-21333-1-git-send-email-p.zabel@pengutronix.de>
- <1451935145-24861-1-git-send-email-p.zabel@pengutronix.de>
- <568E9BE1.6050209@ti.com> <1452242629.3347.12.camel@pengutronix.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [RESEND PATCH v2] soc: mediatek: PMIC wrap: Clear the vldclr if
+ state machine stay on FSM_VLDCLR state.
+Date: Fri, 8 Jan 2016 11:08:50 +0100
+Message-ID: <568F8AB2.6080503@gmail.com>
+References: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
+ <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1452242629.3347.12.camel@pengutronix.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ricky Liang <jcliang@chromium.org>, Henry Chen <henryc.chen@mediatek.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/08/16 10:43, Philipp Zabel wrote:
-> Hi Jyri,
->
-> Am Donnerstag, den 07.01.2016, 19:09 +0200 schrieb Jyri Sarha:
->> On 01/04/16 21:19, Philipp Zabel wrote:
->>> Use HDMI connection / disconnection notifications to update an ALSA
->>> jack object. Also make a copy of the ELD block after every change.
->>>
+
+
+On 08/01/16 03:43, Ricky Liang wrote:
+> On Mon, Jan 4, 2016 at 8:02 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
 >>
->> The jack part looks good to me AFAIU,
+>> Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
+>> because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
+>> just return error when issue happened, so the state machine will stay on
+>> FSM_VLDCLR state when data send back later by PMIC and timeout again in next
+>> time because pmic wrap waiting for FSM_IDLE state at the beginning of the
+>> read/write function.
+>>
+>> Clear the vldclr when timeout if state machine stay on FSM_VLDCLR.
+>>
+>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+>> ---
+>> Changes since v1:
+>> Encapsulated the code in a inline function, and add a descriptive comment.
+>> ---
+>>   drivers/soc/mediatek/mtk-pmic-wrap.c | 30 ++++++++++++++++++++++++++++--
+>>   1 file changed, 28 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>> index 105597a..af919b1 100644
+>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>> @@ -412,6 +412,12 @@ static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
+>>          return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
+>>   }
+>>
+>> +static inline void pwrap_leave_fsm_vldclr(struct pmic_wrapper *wrp)
+>> +{
+>> +       if (pwrap_is_fsm_vldclr(wrp))
+>> +               pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
+>> +}
+>> +
+>>   static bool pwrap_is_sync_idle(struct pmic_wrapper *wrp)
+>>   {
+>>          return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
+>> @@ -445,8 +451,18 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+>>          int ret;
+>>
+>>          ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+>> -       if (ret)
+>> +       if (ret) {
+>> +               /*
+>> +                * Timeout issue sometimes caused by the last read command
+>> +                * failed because pmic wrap could not got the FSM_VLDCLR
+>> +                * in time after finishing WACS2_CMD. It made state machine
+>> +                * still on FSM_VLDCLR and timeout next time.
+>> +                * Check the status of FSM and clear the vldclr to recovery the
+>> +                * error.
+>> +                */
+>> +               pwrap_leave_fsm_vldclr(wrp);
+>>                  return ret;
+>> +       }
+>>
+>>          pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
+>>                          PWRAP_WACS2_CMD);
+>> @@ -459,8 +475,18 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+>>          int ret;
+>>
+>>          ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+>> -       if (ret)
+>> +       if (ret) {
+>> +               /*
+>> +                * Timeout issue sometimes caused by the last read command
+>> +                * failed because pmic wrap could not got the FSM_VLDCLR
+>> +                * in time after finishing WACS2_CMD. It made state machine
+>> +                * still on FSM_VLDCLR and timeout next time.
+>> +                * Check the status of FSM and clear the vldclr to recovery the
+>> +                * error.
+>> +                */
+>> +               pwrap_leave_fsm_vldclr(wrp);
+>>                  return ret;
+>> +       }
+>>
+>>          pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
+>>
+>> --
+>> 1.9.1
+>>
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>> Please read the FAQ at  http://www.tux.org/lkml/
 >
-> If this is in principle an acceptable idea, this leaves the issue that
-> the jack has an initial state and right now we can't query it but
-> instead would have to wait for the first HDMI_(DIS)CONNECTED
-> notification before it can be set. Would it make sense to add an
-> is_connected callback to the hdmi_codec_ops or does this rather belong
-> somewhere else?
+>
+> Tested-by: Ricky Liang <jcliang@chromium.org>
+>
+> On our test platform this patch fixes PMIC communication erros.
 >
 
-To me it would feel best if the hdmi notification would send the current 
-edid, eld, and connection state when the hdmi notification is 
-registered. But then again, I may not see the full picture.
+I put the comment above the function declaration.
 
-BTW, if we are going this way, the hdmi notification should be 
-registered always in probe phase. I don't think the 
-hdmi_codec_set_jack_detect() should be needed at all. Simple simple 
-flags in struct hdmi_codec_pdata that tells if the jack detection is 
-supported should do. Hmm, I am not sure if we need even that.
+Applied to v4.5-next/soc
 
->> but I think we should just update
->> the local ELD copy with data given in the ELD notification. It then
->> depends on the implementation details whether the get_eld() callback is
->> needed at all or if it should be called once at the probe time.
->
-> Thanks, that sounds reasonable.
->
->> Then it is a separate issue to check if the currently played stream is
->> still supported after an ELD update, and to decide what to do about it
->> if it is not.
-> [...]
->
-> Possibly the HDMI driver itself should just mute if the format is not
-> supported, and userspace should be notified?
->
-
-Another option would be simply aborting the playback. However having a 
-mute control, that is forced to mute if the current stream is not 
-supported, is an interesting idea. That would provide a way to notify 
-the userspace without intrusively killing the stream.
-
-Cheers,
-Jyri
+Thanks.
