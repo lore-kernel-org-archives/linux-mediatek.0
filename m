@@ -1,96 +1,95 @@
-From: Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH] clk: mediatek: Allow changing PLL rate when it is off
-Date: Fri, 8 Jan 2016 12:21:42 +0100
-Message-ID: <20160108112142.GF13058@pengutronix.de>
-References: <1452240997-35316-1-git-send-email-jamesjj.liao@mediatek.com>
- <20160108091510.GC13058@pengutronix.de>
- <1452246533.31362.10.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 4/4] soc: mediatek: Add MT2701/MT7623 scpsys driver
+Date: Fri, 8 Jan 2016 12:26:29 +0100
+Message-ID: <568F9CE5.7040601@gmail.com>
+References: <1451457706-14798-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1451457706-14798-5-git-send-email-jamesjj.liao@mediatek.com>
+ <CAGS+omCwxB+4VFOA1hA9Rg-ekWCVM8Y_c7woTEXnvX6FG1y9mQ@mail.gmail.com>
+ <1451470692.22426.11.camel@mtksdaap41> <5684192B.4020806@gmail.com>
+ <1451971439.19026.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1452246533.31362.10.camel@mtksdaap41>
+In-Reply-To: <1451971439.19026.3.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
 To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, Daniel Kurtz <djkurtz@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Daniel Kurtz <djkurtz@chromium.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Kevin Hilman <khilman@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Shunli Wang <shunli.wang@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 08, 2016 at 05:48:53PM +0800, James Liao wrote:
-> Hi Sascha,
-> 
-> On Fri, 2016-01-08 at 10:15 +0100, Sascha Hauer wrote:
-> > On Fri, Jan 08, 2016 at 04:16:37PM +0800, James Liao wrote:
-> > > Some modules may need to change its clock rate before turn on it.
-> > > So changing PLL's rate when it is off should be allowed.
-> > > This patch removes PLL enabled check before set rate, so that
-> > > PLLs can set new frequency even if they are off.
-> > 
-> > This sounds like the software refused to change the rate on disabled
-> > PLLs, but this is not the case.
-> 
-> In fact the major change of this patch is trigger (set) CON0_PCW_CHG no
-> matter PLL is on or not.
-> 
-> > > 
-> > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > > ---
-> > >  drivers/clk/mediatek/clk-pll.c | 9 ++-------
-> > >  1 file changed, 2 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > > index 966cab1..8e31fae 100644
-> > > --- a/drivers/clk/mediatek/clk-pll.c
-> > > +++ b/drivers/clk/mediatek/clk-pll.c
-> > > @@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> > >  		int postdiv)
-> > >  {
-> > >  	u32 con1, val;
-> > > -	int pll_en;
-> > > -
-> > > -	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
-> > >  
-> > >  	/* set postdiv */
-> > >  	val = readl(pll->pd_addr);
-> > > @@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> > >  
-> > >  	con1 = readl(pll->base_addr + REG_CON1);
-> > >  
-> > > -	if (pll_en)
-> > > -		con1 |= CON0_PCW_CHG;
-> > > +	con1 |= CON0_PCW_CHG;
-> > 
-> > This bit is described as "Feedback divide ratio update". To me this
-> > sounds like we have to inform the hardware that the PLL registers have
-> > been updated. The current code only sets this bit when the PLL is
-> > enabled which sounds sane to me.
-> > 
-> > >  
-> > >  	writel(con1, pll->base_addr + REG_CON1);
-> > >  	if (pll->tuner_addr)
-> > >  		writel(con1 + 1, pll->tuner_addr);
-> > >  
-> > > -	if (pll_en)
-> > > -		udelay(20);
-> > > +	udelay(20);
-> > 
-> > We seem to have to wait here until the PLL is really running at the new
-> > frequency. Normally we don't have to do this when the PLL is disabled.
-> > 
-> > I'm sure this patch solves a real problem, from looking at it it's just
-> > not clear to me what the problem is. Could you clarify this a bit?
-> 
-> On MT8173 for example, ARMPLL's enable bit can be controlled by other
-> HW. That means ARMPLL may be turned on even if we (CPU / SW) set
-> ARMPLL's enable bit as 0. In this case, SW may want and can still change
-> ARMPLL's rate by changing its pcw and postdiv settings. But without this
-> patch, new pcw setting will not be applied because its enable bit is 0.
 
-Ok, thanks for explaining. Could you add that to the commit message?
 
-Sascha
+On 05/01/16 06:23, James Liao wrote:
+> Hi Matthias,
+> On Wed, 2015-12-30 at 18:49 +0100, Matthias Brugger wrote:
+>>> On Wed, 2015-12-30 at 17:01 +0800, Daniel Kurtz wrote:
+>>>> On Wed, Dec 30, 2015 at 2:41 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
+>>>>>
+>>>>> From: Shunli Wang <shunli.wang@mediatek.com>
+>>>>>
+>>>>> Add scpsys driver for MT2701 and MT7623.
+>>>>>
+>>>>> Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+>>>>> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+>>>>> ---
+>>>>>    drivers/soc/mediatek/Kconfig             |  11 +++
+>>>>>    drivers/soc/mediatek/Makefile            |   1 +
+>>>>>    drivers/soc/mediatek/mtk-scpsys-mt2701.c | 161 +++++++++++++++++++++++++++++++
+>>>>>    3 files changed, 173 insertions(+)
+>>>>>    create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
+>>>>>
+>>>>> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+>>>>> index eca6fb7..92cf838 100644
+>>>>> --- a/drivers/soc/mediatek/Kconfig
+>>>>> +++ b/drivers/soc/mediatek/Kconfig
+>>>>> @@ -39,3 +39,14 @@ config MTK_SCPSYS_MT8173
+>>>>>             driver.
+>>>>>             The System Control Processor System (SCPSYS) has several power
+>>>>>             management related tasks in the system.
+>>>>> +
+>>>>> +config MTK_SCPSYS_MT2701
+>>>>> +       bool "SCPSYS Support MediaTek MT2701 and MT7623"
+>>>>> +       depends on ARCH_MEDIATEK || COMPILE_TEST
+>>>>> +       select MTK_SCPSYS
+>>>>> +       default ARCH_MEDIATEK
+>>>>> +       help
+>>>>> +         Say yes here to add support for the MT2701/MT7623 SCPSYS power
+>>>>> +         domain driver.
+>>>>> +         The System Control Processor System (SCPSYS) has several power
+>>>>> +         management related tasks in the system.
+>>>>
+>>>> I don't think we really want different drivers and Kconfig options.
+>>>>
+>>>> Can we just use different compatibles to select the appropriate scp_domain_data?
+>>>
+>>> Yes, we can. All scpsys drivers are built-in by default, and they will
+>>> be activate by specific compatible string.
+>>>
+>>> But some projects don't want to build unused drivers into kernel to save
+>>> code size. Use different Kconfig options for each SoC so that these
+>>> projects can disable unused drivers.
+>>>
+>>
+>> Scpsys is a bool right now, you can disable it if you don't need it for
+>> your project.
+>>
+>> I don't think the impact of adding scp_domain_data justifies adding SoC
+>> specific scpsys drivers and bloat the drivers/soc/mediatek folder.
+>
+> So you prefer to enable MT8173 and MT2701 scpsys drivers at the same
+> time if MTK_SCPSYS is true?
 
--- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Well the driver gets enabled by the compatible string from the DT 
+binding passed to the system. But yes, I prefer to have the code shared 
+and just add the necessary data structures.
+
+>
+> BTW, this patchset is based on 4.4-rc7, which lacks two patches from
+> your v4.4-next/soc. Should I rebase to v4.4-next/soc when I send v2
+> patch?
+>
+
+That would be a nice to have.
+
+Thanks,
+Matthias
