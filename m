@@ -1,78 +1,104 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [RESEND PATCH v2] usb: xhci-mtk: fix AHB bus hang up caused by roothubs polling
-Date: Fri, 8 Jan 2016 09:28:37 +0800
-Message-ID: <1452216517-3765-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Ricky Liang <jcliang@chromium.org>
+Subject: Re: [RESEND PATCH v2] soc: mediatek: PMIC wrap: Clear the vldclr if
+ state machine stay on FSM_VLDCLR state.
+Date: Fri, 8 Jan 2016 10:43:52 +0800
+Message-ID: <CAAJzSMdr_kKP=AuhodFSVN5KVKkVPBC9b3hie8F6a63C9QnZ9A@mail.gmail.com>
+References: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1451908972-11882-1-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-when ip fails to enter sleep mode, register access protection will
-be disabled, at the same time if all clocks are disabled, access
-register will hang up AHB bus.
-the common case causes ip sleep failure is that after all ports
-enter U3 but before ip enters sleep mode, a port receives a resume
-signal('K'). this will happens when such as clicks mouse to try to
-do remote-wakeup to stop system enter suspend.
-so stop polling root hubs to avoid access xHCI register on bus
-suspend, and restart it when bus resumes.
+On Mon, Jan 4, 2016 at 8:02 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
+>
+> Sometimes PMIC is too busy to send data in time to cause pmic wrap timeout,
+> because pmic wrap is waiting for FSM_VLDCLR after finishing WACS2_CMD. It
+> just return error when issue happened, so the state machine will stay on
+> FSM_VLDCLR state when data send back later by PMIC and timeout again in next
+> time because pmic wrap waiting for FSM_IDLE state at the beginning of the
+> read/write function.
+>
+> Clear the vldclr when timeout if state machine stay on FSM_VLDCLR.
+>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+> Changes since v1:
+> Encapsulated the code in a inline function, and add a descriptive comment.
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 30 ++++++++++++++++++++++++++++--
+>  1 file changed, 28 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 105597a..af919b1 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -412,6 +412,12 @@ static bool pwrap_is_fsm_vldclr(struct pmic_wrapper *wrp)
+>         return PWRAP_GET_WACS_FSM(val) == PWRAP_WACS_FSM_WFVLDCLR;
+>  }
+>
+> +static inline void pwrap_leave_fsm_vldclr(struct pmic_wrapper *wrp)
+> +{
+> +       if (pwrap_is_fsm_vldclr(wrp))
+> +               pwrap_writel(wrp, 1, PWRAP_WACS2_VLDCLR);
+> +}
+> +
+>  static bool pwrap_is_sync_idle(struct pmic_wrapper *wrp)
+>  {
+>         return pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_SYNC_IDLE0;
+> @@ -445,8 +451,18 @@ static int pwrap_write(struct pmic_wrapper *wrp, u32 adr, u32 wdata)
+>         int ret;
+>
+>         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> -       if (ret)
+> +       if (ret) {
+> +               /*
+> +                * Timeout issue sometimes caused by the last read command
+> +                * failed because pmic wrap could not got the FSM_VLDCLR
+> +                * in time after finishing WACS2_CMD. It made state machine
+> +                * still on FSM_VLDCLR and timeout next time.
+> +                * Check the status of FSM and clear the vldclr to recovery the
+> +                * error.
+> +                */
+> +               pwrap_leave_fsm_vldclr(wrp);
+>                 return ret;
+> +       }
+>
+>         pwrap_writel(wrp, (1 << 31) | ((adr >> 1) << 16) | wdata,
+>                         PWRAP_WACS2_CMD);
+> @@ -459,8 +475,18 @@ static int pwrap_read(struct pmic_wrapper *wrp, u32 adr, u32 *rdata)
+>         int ret;
+>
+>         ret = pwrap_wait_for_state(wrp, pwrap_is_fsm_idle);
+> -       if (ret)
+> +       if (ret) {
+> +               /*
+> +                * Timeout issue sometimes caused by the last read command
+> +                * failed because pmic wrap could not got the FSM_VLDCLR
+> +                * in time after finishing WACS2_CMD. It made state machine
+> +                * still on FSM_VLDCLR and timeout next time.
+> +                * Check the status of FSM and clear the vldclr to recovery the
+> +                * error.
+> +                */
+> +               pwrap_leave_fsm_vldclr(wrp);
+>                 return ret;
+> +       }
+>
+>         pwrap_writel(wrp, (adr >> 1) << 16, PWRAP_WACS2_CMD);
+>
+> --
+> 1.9.1
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at  http://www.tux.org/lkml/
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/host/xhci-mtk.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index c9ab6a4..9532f5a 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -696,9 +696,24 @@ static int xhci_mtk_remove(struct platform_device *dev)
- }
- 
- #ifdef CONFIG_PM_SLEEP
-+/*
-+ * if ip sleep fails, and all clocks are disabled, access register will hang
-+ * AHB bus, so stop polling roothubs to avoid regs access on bus suspend.
-+ * and no need to check whether ip sleep failed or not; this will cause SPM
-+ * to wake up system immediately after system suspend complete if ip sleep
-+ * fails, it is what we wanted.
-+ */
- static int xhci_mtk_suspend(struct device *dev)
- {
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+	struct usb_hcd *hcd = mtk->hcd;
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+
-+	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
-+	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
-+	del_timer_sync(&hcd->rh_timer);
-+	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-+	del_timer_sync(&xhci->shared_hcd->rh_timer);
- 
- 	xhci_mtk_host_disable(mtk);
- 	xhci_mtk_phy_power_off(mtk);
-@@ -710,11 +725,19 @@ static int xhci_mtk_suspend(struct device *dev)
- static int xhci_mtk_resume(struct device *dev)
- {
- 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
-+	struct usb_hcd *hcd = mtk->hcd;
-+	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
- 
- 	usb_wakeup_disable(mtk);
- 	xhci_mtk_clks_enable(mtk);
- 	xhci_mtk_phy_power_on(mtk);
- 	xhci_mtk_host_enable(mtk);
-+
-+	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
-+	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
-+	usb_hcd_poll_rh_status(hcd);
-+	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
-+	usb_hcd_poll_rh_status(xhci->shared_hcd);
- 	return 0;
- }
- 
--- 
-1.8.1.1.dirty
+Tested-by: Ricky Liang <jcliang@chromium.org>
+
+On our test platform this patch fixes PMIC communication erros.
