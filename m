@@ -1,52 +1,60 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] clk: mediatek: Fix memory leak on clock init fail
-Date: Fri, 8 Jan 2016 16:21:18 +0800
-Message-ID: <CAGS+omCXK4mFBz1HoDUMCPHKa5cqa4DOkbjBuratcps6nBLfig@mail.gmail.com>
-References: <1452240933-60695-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [RFC v2 6/6] ASoC: hdmi-codec: Use HDMI
+ notifications to add jack support
+Date: Fri, 08 Jan 2016 09:43:49 +0100
+Message-ID: <1452242629.3347.12.camel@pengutronix.de>
+References: <1451934551-21333-1-git-send-email-p.zabel@pengutronix.de>
+ <1451935145-24861-1-git-send-email-p.zabel@pengutronix.de>
+ <568E9BE1.6050209@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1452240933-60695-1-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <568E9BE1.6050209@ti.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Jyri Sarha <jsarha@ti.com>
+Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 8, 2016 at 4:15 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
-> mtk_clk_register_composite() may leak memory due to some error
-> handling path don't free all allocated memory. This patch
-> free all pointers that may allocate memory before error return.
-> And it's safe because kfree() can handle NULL pointers.
->
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Hi Jyri,
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+Am Donnerstag, den 07.01.2016, 19:09 +0200 schrieb Jyri Sarha:
+> On 01/04/16 21:19, Philipp Zabel wrote:
+> > Use HDMI connection / disconnection notifications to update an ALSA
+> > jack object. Also make a copy of the ELD block after every change.
+> >
+> 
+> The jack part looks good to me AFAIU, 
 
-> ---
->  drivers/clk/mediatek/clk-mtk.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-> index cf08db6..3528303 100644
-> --- a/drivers/clk/mediatek/clk-mtk.c
-> +++ b/drivers/clk/mediatek/clk-mtk.c
-> @@ -209,12 +209,14 @@ struct clk * __init mtk_clk_register_composite(const struct mtk_composite *mc,
->                 mc->flags);
->
->         if (IS_ERR(clk)) {
-> -               kfree(gate);
-> -               kfree(mux);
-> +               ret = PTR_ERR(clk);
-> +               goto err_out;
->         }
->
->         return clk;
->  err_out:
-> +       kfree(div);
-> +       kfree(gate);
->         kfree(mux);
->
->         return ERR_PTR(ret);
-> --
-> 1.9.1
->
+If this is in principle an acceptable idea, this leaves the issue that
+the jack has an initial state and right now we can't query it but
+instead would have to wait for the first HDMI_(DIS)CONNECTED
+notification before it can be set. Would it make sense to add an
+is_connected callback to the hdmi_codec_ops or does this rather belong
+somewhere else?
+
+> but I think we should just update 
+> the local ELD copy with data given in the ELD notification. It then 
+> depends on the implementation details whether the get_eld() callback is 
+> needed at all or if it should be called once at the probe time.
+
+Thanks, that sounds reasonable.
+
+> Then it is a separate issue to check if the currently played stream is 
+> still supported after an ELD update, and to decide what to do about it 
+> if it is not.
+[...]
+
+Possibly the HDMI driver itself should just mute if the format is not
+supported, and userspace should be notified?
+
+regards
+Philipp
