@@ -1,45 +1,57 @@
 From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH] clk: mediatek: Fix memory leak on clock init fail
-Date: Fri, 8 Jan 2016 16:15:33 +0800
-Message-ID: <1452240933-60695-1-git-send-email-jamesjj.liao@mediatek.com>
+Subject: [PATCH] clk: mediatek: Allow changing PLL rate when it is off
+Date: Fri, 8 Jan 2016 16:16:37 +0800
+Message-ID: <1452240997-35316-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>
 Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-mtk_clk_register_composite() may leak memory due to some error
-handling path don't free all allocated memory. This patch
-free all pointers that may allocate memory before error return.
-And it's safe because kfree() can handle NULL pointers.
+Some modules may need to change its clock rate before turn on it.
+So changing PLL's rate when it is off should be allowed.
+This patch removes PLL enabled check before set rate, so that
+PLLs can set new frequency even if they are off.
 
 Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index cf08db6..3528303 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -209,12 +209,14 @@ struct clk * __init mtk_clk_register_composite(const struct mtk_composite *mc,
- 		mc->flags);
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 966cab1..8e31fae 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+ 		int postdiv)
+ {
+ 	u32 con1, val;
+-	int pll_en;
+-
+-	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
  
- 	if (IS_ERR(clk)) {
--		kfree(gate);
--		kfree(mux);
-+		ret = PTR_ERR(clk);
-+		goto err_out;
- 	}
+ 	/* set postdiv */
+ 	val = readl(pll->pd_addr);
+@@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
  
- 	return clk;
- err_out:
-+	kfree(div);
-+	kfree(gate);
- 	kfree(mux);
+ 	con1 = readl(pll->base_addr + REG_CON1);
  
- 	return ERR_PTR(ret);
+-	if (pll_en)
+-		con1 |= CON0_PCW_CHG;
++	con1 |= CON0_PCW_CHG;
+ 
+ 	writel(con1, pll->base_addr + REG_CON1);
+ 	if (pll->tuner_addr)
+ 		writel(con1 + 1, pll->tuner_addr);
+ 
+-	if (pll_en)
+-		udelay(20);
++	udelay(20);
+ }
+ 
+ /*
 -- 
 1.9.1
+
