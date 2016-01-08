@@ -1,37 +1,58 @@
-From: liguo zhang <liguo.zhang@mediatek.com>
-Subject: Re: [PATCH 1/2] Document: i2c: Add a dt binding for mediatek MT2701
- soc
-Date: Fri, 8 Jan 2016 09:12:53 +0800
-Message-ID: <1452215573.2088.1.camel@mhfsdcap03>
-References: <1451888138-11471-1-git-send-email-liguo.zhang@mediatek.com>
-	 <20160104095511.GB1524@katana>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH] usb: xhci-mtk: fix bpkts value of LS/HS periodic eps not behind TT
+Date: Fri, 8 Jan 2016 09:26:26 +0800
+Message-ID: <1452216386-3285-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <20160104095511.GB1524@katana>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Wolfram Sang <wsa@the-dreams.de>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-01-04 at 10:55 +0100, Wolfram Sang wrote:
-> On Mon, Jan 04, 2016 at 02:15:37PM +0800, Liguo Zhang wrote:
-> > Add a dt binding for the MT2701 soc.
-> > 
-> > Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> 
-> This should probably go with the other patch via arm-soc, or?
+when a LS or FS device doesn't connect though a HS hub,
+the @bPkts field of its periodic endpoint context should
+be set to 1.
 
-The patch about i2c dts info for MT2701 depends on the MT2701 clock
-patch. After the MT2701 clock patch is accepted, the i2c patch for
-MT2701 may be accepted.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk-sch.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-The MT2701 clock patch:
-http://lists.infradead.org/pipermail/linux-mediatek/2016-January/003489.html
-
-> 
-> In that case:
-> 
-> Acked-by: Wolfram Sang <wsa@the-dreams.de>
-> 
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index c30de7c..73f763c 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -275,8 +275,9 @@ static bool need_bw_sch(struct usb_host_endpoint *ep,
+ 		return false;
+ 
+ 	/*
+-	 * for LS & FS periodic endpoints which its device don't attach
+-	 * to TT are also ignored, root-hub will schedule them directly
++	 * for LS & FS periodic endpoints which its device is not behind
++	 * a TT are also ignored, root-hub will schedule them directly,
++	 * but need set @bpkts field of endpoint context to 1.
+ 	 */
+ 	if (is_fs_or_ls(speed) && !has_tt)
+ 		return false;
+@@ -339,8 +340,17 @@ int xhci_mtk_add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
+ 		GET_MAX_PACKET(usb_endpoint_maxp(&ep->desc)),
+ 		usb_endpoint_dir_in(&ep->desc), ep);
+ 
+-	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT))
++	if (!need_bw_sch(ep, udev->speed, slot_ctx->tt_info & TT_SLOT)) {
++		/*
++		 * set @bpkts to 1 if it is LS or FS periodic endpoint, and its
++		 * device does not connected through an external HS hub
++		 */
++		if (usb_endpoint_xfer_int(&ep->desc)
++			|| usb_endpoint_xfer_isoc(&ep->desc))
++			ep_ctx->reserved[0] |= cpu_to_le32(EP_BPKTS(1));
++
+ 		return 0;
++	}
+ 
+ 	bw_index = get_bw_index(xhci, udev, ep);
+ 	sch_bw = &sch_array[bw_index];
+-- 
+1.8.1.1.dirty
