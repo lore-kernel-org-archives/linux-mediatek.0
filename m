@@ -1,7 +1,8 @@
 From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V2 2/4] soc: mediatek: PMIC wrap: INT_EN mask may vary
-Date: Sun, 10 Jan 2016 17:04:42 +0100
-Message-ID: <1452441884-25882-2-git-send-email-blogic@openwrt.org>
+Subject: [PATCH V2 3/4] soc: mediatek: PMIC wrap the SPI_W bit in
+ PWRAP_MAN_CMD may vary
+Date: Sun, 10 Jan 2016 17:04:43 +0100
+Message-ID: <1452441884-25882-3-git-send-email-blogic@openwrt.org>
 References: <1452441884-25882-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,67 +22,77 @@ To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT7623 and possible other SoCs have a different INT_EN mask. Change
-the driver so that it handles the interrupt mask in the same was as
-arb_en_all.
+MT2701 and MT7623 use bit 14 instead of 13. Bit 13 is used on these SoCs to
+select the slave type.
 
 Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c |    7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/soc/mediatek/mtk-pmic-wrap.c |   13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index f3fccea..82350d0 100644
+index 82350d0..ceeac3a 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -404,6 +404,7 @@ struct pmic_wrapper_type {
- 	u32 dew_base;
+@@ -405,6 +405,7 @@ struct pmic_wrapper_type {
  	enum pwrap_type type;
  	u32 arb_en_all;
-+	u32 int_en_all;
+ 	u32 int_en_all;
++	u32 man_cmd_spi_w;
  };
  
  static struct pmic_wrapper_type pwrap_mt8135 = {
-@@ -412,6 +413,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
- 	.dew_base = 0xbc00,
+@@ -414,6 +415,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
  	.type = PWRAP_MT8135,
  	.arb_en_all = 0x1ff,
-+	.int_en_all = BIT(31) | BIT(1),
+ 	.int_en_all = BIT(31) | BIT(1),
++	.man_cmd_spi_w = PWRAP_MAN_CMD_SPI_WRITE,
  };
  
  static struct pmic_wrapper_type pwrap_mt8173 = {
-@@ -420,6 +422,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
- 	.dew_base = 0xbc00,
+@@ -423,6 +425,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
  	.type = PWRAP_MT8173,
  	.arb_en_all = 0x3f,
-+	.int_en_all = BIT(31) | BIT(1),
+ 	.int_en_all = BIT(31) | BIT(1),
++	.man_cmd_spi_w = PWRAP_MAN_CMD_SPI_WRITE,
  };
  
  struct pmic_wrapper {
-@@ -431,6 +434,7 @@ struct pmic_wrapper {
- 	u32 dew_base;
+@@ -435,6 +438,7 @@ struct pmic_wrapper {
  	enum pwrap_type type;
  	u32 arb_en_all;
-+	u32 int_en_all;
+ 	u32 int_en_all;
++	u32 man_cmd_spi_w;
  	struct clk *clk_spi;
  	struct clk *clk_wrap;
  	struct reset_control *rstc;
-@@ -900,6 +904,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 	wrp->dew_regs = type->dew_regs;
+@@ -572,15 +576,15 @@ static int pwrap_reset_spislave(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 1, PWRAP_MAN_EN);
+ 	pwrap_writel(wrp, 0, PWRAP_DIO_EN);
+ 
+-	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_CSL,
++	pwrap_writel(wrp, wrp->man_cmd_spi_w | PWRAP_MAN_CMD_OP_CSL,
+ 			PWRAP_MAN_CMD);
+-	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_OUTS,
++	pwrap_writel(wrp, wrp->man_cmd_spi_w | PWRAP_MAN_CMD_OP_OUTS,
+ 			PWRAP_MAN_CMD);
+-	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_CSH,
++	pwrap_writel(wrp, wrp->man_cmd_spi_w | PWRAP_MAN_CMD_OP_CSH,
+ 			PWRAP_MAN_CMD);
+ 
+ 	for (i = 0; i < 4; i++)
+-		pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_OUTS,
++		pwrap_writel(wrp, wrp->man_cmd_spi_w | PWRAP_MAN_CMD_OP_OUTS,
+ 				PWRAP_MAN_CMD);
+ 
+ 	ret = pwrap_wait_for_state(wrp, pwrap_is_sync_idle);
+@@ -905,6 +909,7 @@ static int pwrap_probe(struct platform_device *pdev)
  	wrp->dew_base = type->dew_base;
  	wrp->arb_en_all = type->arb_en_all;
-+	wrp->int_en_all = type->int_en_all;
+ 	wrp->int_en_all = type->int_en_all;
++	wrp->man_cmd_spi_w = type->man_cmd_spi_w;
  	wrp->dev = &pdev->dev;
  
  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pwrap");
-@@ -974,7 +979,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 	pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
- 	pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
- 	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
--	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
-+	pwrap_writel(wrp, ~wrp->int_en_all, PWRAP_INT_EN);
- 
- 	irq = platform_get_irq(pdev, 0);
- 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
 -- 
 1.7.10.4
