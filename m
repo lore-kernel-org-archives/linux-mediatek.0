@@ -1,11 +1,13 @@
 From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH 0/4] mfd: mediatek: add support for MT6323
-Date: Sun, 10 Jan 2016 17:18:45 +0100
-Message-ID: <1452442729-27154-1-git-send-email-blogic@openwrt.org>
+Subject: [PATCH 3/4] mfd: mediatek: add support for different Slave types
+Date: Sun, 10 Jan 2016 17:18:48 +0100
+Message-ID: <1452442729-27154-4-git-send-email-blogic@openwrt.org>
+References: <1452442729-27154-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452442729-27154-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,26 +21,88 @@ To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-MT6323 and MT6397 are very similar. Currently there is only a regulator
-driver for the MT6323. This series is based on a patch that I was given
-by MTK.
-
 Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+---
+ drivers/mfd/mt6397-core.c |   38 +++++++++++++++++++++++++++++++-------
+ 1 file changed, 31 insertions(+), 7 deletions(-)
 
-John Crispin (4):
-  dt-bindings: mfd: Add bindings for the MediaTek MT6323 PMIC
-  mfd: mediatek: int_con and int_status may vary in location
-  mfd: mediatek: add support for different Slave types
-  mfd: mediatek: add MT6323 support to MT6397 driver
-
- Documentation/devicetree/bindings/mfd/mt6397.txt |   10 +-
- drivers/mfd/mt6397-core.c                        |   77 +++-
- include/linux/mfd/mt6323/core.h                  |   42 +++
- include/linux/mfd/mt6323/registers.h             |  414 ++++++++++++++++++++++
- include/linux/mfd/mt6397/core.h                  |    2 +
- 5 files changed, 527 insertions(+), 18 deletions(-)
- create mode 100644 include/linux/mfd/mt6323/core.h
- create mode 100644 include/linux/mfd/mt6323/registers.h
-
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 75ad0fe..51e194b 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -24,6 +24,9 @@
+ #define MT6397_RTC_BASE		0xe000
+ #define MT6397_RTC_SIZE		0x3e
+ 
++#define MT6391_CID_CODE		0x91
++#define MT6397_CID_CODE		0x97
++
+ static const struct resource mt6397_rtc_resources[] = {
+ 	{
+ 		.start = MT6397_RTC_BASE,
+@@ -232,6 +235,7 @@ static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
+ static int mt6397_probe(struct platform_device *pdev)
+ {
+ 	int ret;
++	unsigned int id;
+ 	struct mt6397_chip *mt6397;
+ 
+ 	mt6397 = devm_kzalloc(&pdev->dev, sizeof(*mt6397), GFP_KERNEL);
+@@ -239,10 +243,6 @@ static int mt6397_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	mt6397->dev = &pdev->dev;
+-	mt6397->int_con[0] = MT6397_INT_CON0;
+-	mt6397->int_con[1] = MT6397_INT_CON1;
+-	mt6397->int_status[0] = MT6397_INT_STATUS0;
+-	mt6397->int_status[1] = MT6397_INT_STATUS1;
+ 
+ 	/*
+ 	 * mt6397 MFD is child device of soc pmic wrapper.
+@@ -254,6 +254,29 @@ static int mt6397_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt6397);
+ 
++	ret = regmap_read(mt6397->regmap, MT6397_CID, &id);
++	if (ret) {
++		dev_err(mt6397->dev, "Failed to read chip id: %d\n", ret);
++		goto fail_irq;
++	}
++
++	switch (id & 0xff) {
++	case MT6397_CID_CODE:
++	case MT6391_CID_CODE:
++		mt6397->int_con[0] = MT6397_INT_CON0;
++		mt6397->int_con[1] = MT6397_INT_CON1;
++		mt6397->int_status[0] = MT6397_INT_STATUS0;
++		mt6397->int_status[1] = MT6397_INT_STATUS1;
++		ret = mfd_add_devices(&pdev->dev, -1, mt6397_devs,
++				ARRAY_SIZE(mt6397_devs), NULL, 0, NULL);
++		break;
++
++	default:
++		dev_err(&pdev->dev, "unsupported chip: %d\n", id);
++		ret = -ENODEV;
++		break;
++	}
++
+ 	mt6397->irq = platform_get_irq(pdev, 0);
+ 	if (mt6397->irq > 0) {
+ 		ret = mt6397_irq_init(mt6397);
+@@ -261,10 +284,11 @@ static int mt6397_probe(struct platform_device *pdev)
+ 			return ret;
+ 	}
+ 
+-	ret = mfd_add_devices(&pdev->dev, -1, mt6397_devs,
+-			ARRAY_SIZE(mt6397_devs), NULL, 0, NULL);
+-	if (ret)
++fail_irq:
++	if (ret) {
++		irq_domain_remove(mt6397->irq_domain);
+ 		dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
++	}
+ 
+ 	return ret;
+ }
 -- 
 1.7.10.4
