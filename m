@@ -1,37 +1,79 @@
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [RESEND PATCH v2] usb: xhci-mtk: fix AHB bus hang up caused by
- roothubs polling
-Date: Mon, 11 Jan 2016 16:01:44 +0200
-Message-ID: <5693B5C8.6090201@linux.intel.com>
-References: <1452216517-3765-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/2] regulator: mt6323: Add support for MT6323 regulator
+Date: Mon, 11 Jan 2016 17:59:41 +0000
+Message-ID: <20160111175941.GO6588@sirena.org.uk>
+References: <1452443975-28278-1-git-send-email-blogic@openwrt.org>
+ <1452443975-28278-2-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452216517-3765-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: multipart/mixed; boundary="===============4594711925291372872=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452443975-28278-2-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08.01.2016 03:28, Chunfeng Yun wrote:
-> when ip fails to enter sleep mode, register access protection will
-> be disabled, at the same time if all clocks are disabled, access
-> register will hang up AHB bus.
-> the common case causes ip sleep failure is that after all ports
-> enter U3 but before ip enters sleep mode, a port receives a resume
-> signal('K'). this will happens when such as clicks mouse to try to
-> do remote-wakeup to stop system enter suspend.
-> so stop polling root hubs to avoid access xHCI register on bus
-> suspend, and restart it when bus resumes.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+--===============4594711925291372872==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="aIZgg+C+Ywwbs/9X"
+Content-Disposition: inline
+
+
+--aIZgg+C+Ywwbs/9X
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Jan 10, 2016 at 05:39:35PM +0100, John Crispin wrote:
+> From: Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>=20
+> Add MT6323 regulator driver.
+>=20
+> Signed-off-by: Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Tested-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 > ---
->   drivers/usb/host/xhci-mtk.c | 23 +++++++++++++++++++++++
 
-The xhci Mediatek (xhci-mtk etc) support is in usb-next and should be available first time
-in 4.5-rc1 kernel.
+I need a Signed-off-by from whoever sends me a patch as covered by
+SubmittingPatches - please see there for what this means and why it's
+important.  Please also use subject lines matching the style for the
+subsystem (for patch 1).
 
-I'll forward fixes for it once 4.5-rc1 is out, they should end up in final 4.5
+--aIZgg+C+Ywwbs/9X
+Content-Type: application/pgp-signature; name="signature.asc"
 
--Mathias
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWk+2MAAoJECTWi3JdVIfQ6I8H/jrkGkRgWC/DXgg9YuENLk9w
+OCJ7ynLlJ/je6+eZsBLjd/QH9x2qSuYgehnvdMtcHR3w8yegE/PGGCF2u/1nV7du
+IsW+sjkwCCQuLAVn+BIgC18bQj/d8+JleRjgpmpapgKfvtxa0vAKAZZvqxRS4VLb
+7h7H+iCoc+il9RyepJMoYGCibAzMdtufZwVDKSv4vRZNoIC0WiaeBryS+1RlvRmc
+1VfzmIjDGvji5dMKE9JsB5KphVsvJZitLmmLPBJz6cgSV4medY/Hp8YuB0paxsBX
+2X6pKflVX1l7DySj+V+PUXpczuzKQz4M9dTS4ZbGeL1lGvXgZT6JRuqYj3DB3bw=
+=ia4T
+-----END PGP SIGNATURE-----
+
+--aIZgg+C+Ywwbs/9X--
+
+
+--===============4594711925291372872==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4594711925291372872==--
