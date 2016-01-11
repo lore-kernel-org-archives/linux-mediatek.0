@@ -1,48 +1,156 @@
-From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] mfd: mt6397: convert to arch_initcall
-Date: Mon, 11 Jan 2016 05:49:32 +0000
-Message-ID: <20160111054932.GH3331@x1>
-References: <1450862711-22124-1-git-send-email-henryc.chen@mediatek.com>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Enable 33bit memory address to support 4GB DRAM
+Date: Mon, 11 Jan 2016 16:00:50 +0800
+Message-ID: <1452499250-5202-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1450862711-22124-1-git-send-email-henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Samuel Ortiz <sameo-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>, Hidalgo Huang <hidalgo.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMyBEZWMgMjAxNSwgSGVucnkgQ2hlbiB3cm90ZToKCj4gU2luY2UgcGluY3RybCBv
-ciByZWd1bGF0b3Igb2YgbXQ2Mzk2IG5lZWQgdG8gaW5pdGlhbGl6ZSBlYXJsaWVyIHRvIGF2b2lk
-Cj4gcHJvYmUgZGVmZXJyaW5nLCBhbHNvIGNoYW5nZSB0aGUgY29yZSBkcml2ZXIgdG8gYXJjaF9p
-bml0LgoKVGhpcyBpcyBleGFjdGx5IHdoYXQgZGVmZXJyaW5nIHByb2JlIHdhcyBkZXNpZ25lZCBm
-b3I7IHNvIHRoYXQgeW91CmRvbid0IGhhdmUgdG8gbWVzcyBhcm91bmQgd2l0aCBpbml0Y2FsbCBv
-cmRlcmluZy4KCj4gU2lnbmVkLW9mZi1ieTogSGVucnkgQ2hlbiA8aGVucnljLmNoZW5AbWVkaWF0
-ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL21mZC9tdDYzOTctY29yZS5jIHwgNiArKysrKy0KPiAg
-MSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL21mZC9tdDYzOTctY29yZS5jIGIvZHJpdmVycy9tZmQvbXQ2Mzk3LWNv
-cmUuYwo+IGluZGV4IDE3NDljMWMuLmFmOThiNGIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZmQv
-bXQ2Mzk3LWNvcmUuYwo+ICsrKyBiL2RyaXZlcnMvbWZkL210NjM5Ny1jb3JlLmMKPiBAQCAtMjg1
-LDcgKzI4NSwxMSBAQCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdDYzOTdfZHJpdmVy
-ID0gewo+ICAJfSwKPiAgfTsKPiAgCj4gLW1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIobXQ2Mzk3X2Ry
-aXZlcik7Cj4gK3N0YXRpYyBpbnQgX19pbml0IG10NjM5N19jb3JlX2luaXQodm9pZCkKPiArewo+
-ICsJcmV0dXJuIHBsYXRmb3JtX2RyaXZlcl9yZWdpc3RlcigmbXQ2Mzk3X2RyaXZlcik7Cj4gK30K
-PiArYXJjaF9pbml0Y2FsbChtdDYzOTdfY29yZV9pbml0KTsKPiAgCj4gIE1PRFVMRV9BVVRIT1Io
-IkZsb3JhIEZ1LCBNZWRpYVRlayIpOwo+ICBNT0RVTEVfREVTQ1JJUFRJT04oIkRyaXZlciBmb3Ig
-TWVkaWFUZWsgTVQ2Mzk3IFBNSUMiKTsKCi0tIApMZWUgSm9uZXMKTGluYXJvIFNUTWljcm9lbGVj
-dHJvbmljcyBMYW5kaW5nIFRlYW0gTGVhZApMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0
-d2FyZSBmb3IgQVJNIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxv
-ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
-awo=
+If platform is embedded with memory more than 3GB, the address will
+go out of the scope that 32-bit can handle with. This patch sets the
+dma_mask and MSB properly to describe its address to 33-bit.
+
+Signed-off-by: Hidalgo Huang <hidalgo.huang@mediatek.com>
+Signed-off-by: PC Liao <pc.liao@mediatek.com>
+---
+ sound/soc/mediatek/mtk-afe-common.h |    1 +
+ sound/soc/mediatek/mtk-afe-pcm.c    |   24 +++++++++++++++++++++++-
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/mtk-afe-common.h b/sound/soc/mediatek/mtk-afe-common.h
+index 9b1af1a..f341f62 100644
+--- a/sound/soc/mediatek/mtk-afe-common.h
++++ b/sound/soc/mediatek/mtk-afe-common.h
+@@ -87,6 +87,7 @@ struct mtk_afe_memif_data {
+ 	int irq_en_shift;
+ 	int irq_fs_shift;
+ 	int irq_clr_shift;
++	int msb_shift;
+ };
+ 
+ struct mtk_afe_memif {
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index 08af9f5..60c38db 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -21,6 +21,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
++#include <linux/dma-mapping.h>
+ #include <linux/pm_runtime.h>
+ #include <sound/soc.h>
+ #include "mtk-afe-common.h"
+@@ -35,6 +36,7 @@
+ #define AFE_I2S_CON1		0x0034
+ #define AFE_I2S_CON2		0x0038
+ #define AFE_CONN_24BIT		0x006c
++#define AFE_MEMIF_MSB		0x00cc
+ 
+ #define AFE_CONN1		0x0024
+ #define AFE_CONN2		0x0028
+@@ -592,6 +594,7 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct mtk_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
+ 	struct mtk_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
++	int msb_at_bit33 = 0;
+ 	int ret;
+ 
+ 	dev_dbg(afe->dev,
+@@ -603,7 +606,10 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	memif->phys_buf_addr = substream->runtime->dma_addr;
++	if (sizeof(dma_addr_t) > 4)
++		msb_at_bit33 = (substream->runtime->dma_addr & 0x100000000) ? 1 : 0;
++
++	memif->phys_buf_addr = substream->runtime->dma_addr & 0xffffffff;
+ 	memif->buffer_size = substream->runtime->dma_bytes;
+ 
+ 	/* start */
+@@ -614,6 +620,11 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
+ 		     memif->data->reg_ofs_base + AFE_BASE_END_OFFSET,
+ 		     memif->phys_buf_addr + memif->buffer_size - 1);
+ 
++	/* set MSB to 33-bit */
++	regmap_update_bits(afe->regmap, AFE_MEMIF_MSB,
++			   1 << memif->data->msb_shift,
++			   msb_at_bit33 << memif->data->msb_shift);
++
+ 	/* set channel */
+ 	if (memif->data->mono_shift >= 0) {
+ 		unsigned int mono = (params_channels(params) == 1) ? 1 : 0;
+@@ -978,6 +989,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 0,
+ 		.irq_fs_shift = 4,
+ 		.irq_clr_shift = 0,
++		.msb_shift = 0,
+ 	}, {
+ 		.name = "DL2",
+ 		.id = MTK_AFE_MEMIF_DL2,
+@@ -991,6 +1003,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 2,
+ 		.irq_fs_shift = 16,
+ 		.irq_clr_shift = 2,
++		.msb_shift = 1,
+ 	}, {
+ 		.name = "VUL",
+ 		.id = MTK_AFE_MEMIF_VUL,
+@@ -1004,6 +1017,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 1,
+ 		.irq_fs_shift = 8,
+ 		.irq_clr_shift = 1,
++		.msb_shift = 6,
+ 	}, {
+ 		.name = "DAI",
+ 		.id = MTK_AFE_MEMIF_DAI,
+@@ -1017,6 +1031,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 3,
+ 		.irq_fs_shift = 20,
+ 		.irq_clr_shift = 3,
++		.msb_shift = 5,
+ 	}, {
+ 		.name = "AWB",
+ 		.id = MTK_AFE_MEMIF_AWB,
+@@ -1030,6 +1045,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 14,
+ 		.irq_fs_shift = 24,
+ 		.irq_clr_shift = 6,
++		.msb_shift = 3,
+ 	}, {
+ 		.name = "MOD_DAI",
+ 		.id = MTK_AFE_MEMIF_MOD_DAI,
+@@ -1043,6 +1059,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 3,
+ 		.irq_fs_shift = 20,
+ 		.irq_clr_shift = 3,
++		.msb_shift = 4,
+ 	}, {
+ 		.name = "HDMI",
+ 		.id = MTK_AFE_MEMIF_HDMI,
+@@ -1056,6 +1073,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
+ 		.irq_en_shift = 12,
+ 		.irq_fs_shift = -1,
+ 		.irq_clr_shift = 4,
++		.msb_shift = 8,
+ 	},
+ };
+ 
+@@ -1189,6 +1207,10 @@ static int mtk_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	struct mtk_afe *afe;
+ 	struct resource *res;
+ 
++	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(33));
++	if (ret)
++		return ret;
++
+ 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+ 	if (!afe)
+ 		return -ENOMEM;
+-- 
+1.7.9.5
