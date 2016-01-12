@@ -1,150 +1,155 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [RFC v3 3/7] ASoC: mediatek: Add HDMI dai-links in the machine driver
-Date: Tue, 12 Jan 2016 16:38:12 +0100
-Message-ID: <1452613096-8116-4-git-send-email-p.zabel@pengutronix.de>
-References: <1452613096-8116-1-git-send-email-p.zabel@pengutronix.de>
+From: Frank Binns <frank.binns@imgtec.com>
+Subject: Re: [PATCH v9 14/14] drm/mediatek: Add interface to allocate Mediatek
+ GEM buffer.
+Date: Tue, 12 Jan 2016 15:47:58 +0000
+Message-ID: <5695202E.1090603@imgtec.com>
+References: <1452611750-16283-1-git-send-email-p.zabel@pengutronix.de>
+ <1452611750-16283-15-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452613096-8116-1-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1452611750-16283-15-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Bolle <pebolle@tiscali.nl>, Nicolas Boichat <drinkcat@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Jie Qiu <jie.qiu@mediatek.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Cawa Cheng <cawa.cheng@mediatek.com>, Tomasz Figa <tfiga@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Kumar Gala <galak@codeaurora.org>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-This creates pcmC0D2p for the HDMI playback in the same card.
-
-Signed-off-by: Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
----
- .../bindings/sound/mt8173-rt5650-rt5676.txt        |  5 ++-
- sound/soc/mediatek/mt8173-rt5650-rt5676.c          | 48 ++++++++++++++++++++++
- 2 files changed, 51 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
-index f205ce9..ac28cdb 100644
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5676.txt
-@@ -1,15 +1,16 @@
--MT8173 with RT5650 RT5676 CODECS
-+MT8173 with RT5650 RT5676 CODECS and HDMI via I2S
- 
- Required properties:
- - compatible : "mediatek,mt8173-rt5650-rt5676"
- - mediatek,audio-codec: the phandles of rt5650 and rt5676 codecs
-+			and of the hdmi encoder node
- - mediatek,platform: the phandle of MT8173 ASoC platform
- 
- Example:
- 
- 	sound {
- 		compatible = "mediatek,mt8173-rt5650-rt5676";
--		mediatek,audio-codec = <&rt5650 &rt5676>;
-+		mediatek,audio-codec = <&rt5650 &rt5676 &hdmi0>;
- 		mediatek,platform = <&afe>;
- 	};
- 
-diff --git a/sound/soc/mediatek/mt8173-rt5650-rt5676.c b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-index 5c4c58c..def9d95 100644
---- a/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-+++ b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
-@@ -18,6 +18,7 @@
- #include <linux/gpio.h>
- #include <linux/of_gpio.h>
- #include <sound/soc.h>
-+#include <sound/hdmi-codec.h>
- #include <sound/jack.h>
- #include "../codecs/rt5645.h"
- #include "../codecs/rt5677.h"
-@@ -131,10 +132,31 @@ static struct snd_soc_dai_link_component mt8173_rt5650_rt5676_codecs[] = {
- 	},
- };
- 
-+static struct snd_soc_jack mt8173_hdmi_card_jack;
-+
-+static int mt8173_hdmi_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_codec *codec = runtime->codec;
-+	int ret;
-+
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &mt8173_hdmi_card_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new HDMI Jack %d\n", ret);
-+		return ret;
-+	}
-+
-+	return hdmi_codec_set_jack_detect(codec, &mt8173_hdmi_card_jack);
-+}
-+
- enum {
- 	DAI_LINK_PLAYBACK,
- 	DAI_LINK_CAPTURE,
-+	DAI_LINK_HDMI,
- 	DAI_LINK_CODEC_I2S,
-+	DAI_LINK_HDMI_I2S,
- 	DAI_LINK_INTERCODEC
- };
- 
-@@ -161,6 +183,16 @@ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
- 	},
-+	[DAI_LINK_HDMI] = {
-+		.name = "HDMI",
-+		.stream_name = "HDMI PCM",
-+		.cpu_dai_name = "HDMI",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
- 
- 	/* Back End DAI links */
- 	[DAI_LINK_CODEC_I2S] = {
-@@ -177,6 +209,14 @@ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
- 		.dpcm_playback = 1,
- 		.dpcm_capture = 1,
- 	},
-+	[DAI_LINK_HDMI_I2S] = {
-+		.name = "HDMI BE",
-+		.cpu_dai_name = "HDMIO",
-+		.no_pcm = 1,
-+		.codec_dai_name = "i2s-hifi",
-+		.dpcm_playback = 1,
-+		.init = mt8173_hdmi_init,
-+	},
- 	/* rt5676 <-> rt5650 intercodec link: Sets rt5676 I2S2 as master */
- 	[DAI_LINK_INTERCODEC] = {
- 		.name = "rt5650_rt5676 intercodec",
-@@ -251,6 +291,14 @@ static int mt8173_rt5650_rt5676_dev_probe(struct platform_device *pdev)
- 	mt8173_rt5650_rt5676_dais[DAI_LINK_INTERCODEC].codec_of_node =
- 		mt8173_rt5650_rt5676_codecs[1].of_node;
- 
-+	mt8173_rt5650_rt5676_dais[DAI_LINK_HDMI_I2S].codec_of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 2);
-+	if (!mt8173_rt5650_rt5676_dais[DAI_LINK_HDMI_I2S].codec_of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+
- 	card->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, card);
- 
--- 
-2.6.4
+SGkgUGhpbGlwcCwKCkNvbW1lbnRzIGJlbG93LgoKT24gMTIvMDEvMTYgMTU6MTUsIFBoaWxpcHAg
+WmFiZWwgd3JvdGU6Cj4gRnJvbTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPgo+IEFkZCBh
+biBpbnRlcmZhY2UgdG8gYWxsb2NhdGUgTWVkaWF0ZWsgR0VNIGJ1ZmZlcnMsIGFsbG93IHRoZSBJ
+T0NUTHMKPiB0byBiZSB1c2VkIGJ5IHJlbmRlciBub2Rlcy4KPiBUaGlzIHBhdGNoIGFsc28gc2V0
+cyB0aGUgUkVOREVSIGRyaXZlciBmZWF0dXJlLgo+Cj4gU2lnbmVkLW9mZi1ieTogQ0sgSHUgPGNr
+Lmh1QG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEJvaWNoYXQgPGRyaW5r
+Y2F0QGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVs
+QHBlbmd1dHJvbml4LmRlPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYyB8IDEzICsrKysrKystCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2dlbS5jIHwgMzkgKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9nZW0uaCB8IDEyICsrKysrKysKPiAgaW5jbHVkZS91YXBpL2RybS9tZWRp
+YXRla19kcm0uaCAgICAgICAgfCA1OSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+Cj4gIDQgZmlsZXMgY2hhbmdlZCwgMTIyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAg
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvdWFwaS9kcm0vbWVkaWF0ZWtfZHJtLmgKPgo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggZmRiMjdlOS4uMWY3NzZh
+OSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTIyLDYg
+KzIyLDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiAgI2luY2x1ZGUgPGxp
+bnV4L29mX3BsYXRmb3JtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+Cj4gKyNp
+bmNsdWRlIDxkcm0vbWVkaWF0ZWtfZHJtLmg+Cj4gIAo+ICAjaW5jbHVkZSAibXRrX2NlYy5oIgo+
+ICAjaW5jbHVkZSAibXRrX2RybV9jcnRjLmgiCj4gQEAgLTIyMiw2ICsyMjMsMTQgQEAgc3RhdGlj
+IGNvbnN0IHN0cnVjdCB2bV9vcGVyYXRpb25zX3N0cnVjdCBtdGtfZHJtX2dlbV92bV9vcHMgPSB7
+Cj4gIAkuY2xvc2UgPSBkcm1fZ2VtX3ZtX2Nsb3NlLAo+ICB9Owo+ICAKPiArc3RhdGljIGNvbnN0
+IHN0cnVjdCBkcm1faW9jdGxfZGVzYyBtdGtfaW9jdGxzW10gPSB7Cj4gKwlEUk1fSU9DVExfREVG
+X0RSVihNVEtfR0VNX0NSRUFURSwgbXRrX2dlbV9jcmVhdGVfaW9jdGwsCj4gKwkJCSAgRFJNX1VO
+TE9DS0VEIHwgRFJNX0FVVEggfCBEUk1fUkVOREVSX0FMTE9XKSwKPiArCURSTV9JT0NUTF9ERUZf
+RFJWKE1US19HRU1fTUFQX09GRlNFVCwKPiArCQkJICBtdGtfZ2VtX21hcF9vZmZzZXRfaW9jdGws
+Cj4gKwkJCSAgRFJNX1VOTE9DS0VEIHwgRFJNX0FVVEggfCBEUk1fUkVOREVSX0FMTE9XKSwKPiAr
+fTsKPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZmlsZV9vcGVyYXRpb25zIG10a19kcm1fZm9w
+cyA9IHsKPiAgCS5vd25lciA9IFRISVNfTU9EVUxFLAo+ICAJLm9wZW4gPSBkcm1fb3BlbiwKPiBA
+QCAtMjM3LDcgKzI0Niw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZmlsZV9vcGVyYXRpb25zIG10
+a19kcm1fZm9wcyA9IHsKPiAgCj4gIHN0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciBtdGtfZHJtX2Ry
+aXZlciA9IHsKPiAgCS5kcml2ZXJfZmVhdHVyZXMgPSBEUklWRVJfTU9ERVNFVCB8IERSSVZFUl9H
+RU0gfCBEUklWRVJfUFJJTUUgfAo+IC0JCQkgICBEUklWRVJfQVRPTUlDLAo+ICsJCQkgICBEUklW
+RVJfQVRPTUlDIHwgRFJJVkVSX1JFTkRFUiwKPiAgCS51bmxvYWQgPSBtdGtfZHJtX3VubG9hZCwK
+PiAgCS5zZXRfYnVzaWQgPSBkcm1fcGxhdGZvcm1fc2V0X2J1c2lkLAo+ICAKPiBAQCAtMjU3LDYg
+KzI2Niw4IEBAIHN0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciBtdGtfZHJtX2RyaXZlciA9IHsKPiAg
+CS5nZW1fcHJpbWVfaW1wb3J0ID0gZHJtX2dlbV9wcmltZV9pbXBvcnQsCj4gIAkuZ2VtX3ByaW1l
+X2dldF9zZ190YWJsZSA9IG10a19nZW1fcHJpbWVfZ2V0X3NnX3RhYmxlLAo+ICAJLmdlbV9wcmlt
+ZV9tbWFwID0gbXRrX2RybV9nZW1fbW1hcF9idWYsCj4gKwkuaW9jdGxzID0gbXRrX2lvY3RscywK
+PiArCS5udW1faW9jdGxzID0gQVJSQVlfU0laRShtdGtfaW9jdGxzKSwKPiAgCS5mb3BzID0gJm10
+a19kcm1fZm9wcywKPiAgCj4gIAkubmFtZSA9IERSSVZFUl9OQU1FLAo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gaW5kZXggOTZjYzk4MC4uZjcyNmQ1NSAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ICsrKyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gQEAgLTEzLDYgKzEzLDcgQEAKPiAg
+Cj4gICNpbmNsdWRlIDxkcm0vZHJtUC5oPgo+ICAjaW5jbHVkZSA8ZHJtL2RybV9nZW0uaD4KPiAr
+I2luY2x1ZGUgPGRybS9tZWRpYXRla19kcm0uaD4KPiAgCj4gICNpbmNsdWRlICJtdGtfZHJtX2dl
+bS5oIgo+ICAKPiBAQCAtMjI1LDMgKzIyNiw0MSBAQCBzdHJ1Y3Qgc2dfdGFibGUgKm10a19nZW1f
+cHJpbWVfZ2V0X3NnX3RhYmxlKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQo+ICAKPiAgCXJl
+dHVybiBzZ3Q7Cj4gIH0KPiArCj4gK2ludCBtdGtfZ2VtX21hcF9vZmZzZXRfaW9jdGwoc3RydWN0
+IGRybV9kZXZpY2UgKmRybSwgdm9pZCAqZGF0YSwKPiArCQkJICAgICBzdHJ1Y3QgZHJtX2ZpbGUg
+KmZpbGVfcHJpdikKPiArewo+ICsJc3RydWN0IGRybV9tdGtfZ2VtX21hcF9vZmYgKmFyZ3MgPSBk
+YXRhOwo+ICsKWW91IHNob3VsZCB2YWxpZGF0ZSBhcmdzLT5wYWQgaGVyZS4KCj4gKwlyZXR1cm4g
+bXRrX2RybV9nZW1fZHVtYl9tYXBfb2Zmc2V0KGZpbGVfcHJpdiwgZHJtLCBhcmdzLT5oYW5kbGUs
+Cj4gKwkJCQkJICAgJmFyZ3MtPm9mZnNldCk7Cj4gK30KPiArCj4gK2ludCBtdGtfZ2VtX2NyZWF0
+ZV9pb2N0bChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB2b2lkICpkYXRhLAo+ICsJCQkgc3RydWN0
+IGRybV9maWxlICpmaWxlX3ByaXYpCj4gK3sKPiArCXN0cnVjdCBtdGtfZHJtX2dlbV9vYmogKm10
+a19nZW07Cj4gKwlzdHJ1Y3QgZHJtX210a19nZW1fY3JlYXRlICphcmdzID0gZGF0YTsKPiArCWlu
+dCByZXQ7Cj4gKwpZb3Ugc2hvdWxkIHZhbGlkYXRlIGFyZ3MtPmZsYWdzIGhlcmUuCgo+ICsJbXRr
+X2dlbSA9IG10a19kcm1fZ2VtX2NyZWF0ZShkZXYsIGFyZ3MtPnNpemUsIGZhbHNlKTsKPiArCWlm
+IChJU19FUlIobXRrX2dlbSkpCj4gKwkJcmV0dXJuIFBUUl9FUlIobXRrX2dlbSk7Cj4gKwo+ICsJ
+LyoKPiArCSAqIGFsbG9jYXRlIGEgaWQgb2YgaWRyIHRhYmxlIHdoZXJlIHRoZSBvYmogaXMgcmVn
+aXN0ZXJlZAo+ICsJICogYW5kIGhhbmRsZSBoYXMgdGhlIGlkIHdoYXQgdXNlciBjYW4gc2VlLgo+
+ICsJICovClRoaXMgY29tbWVudCBkb2Vzbid0IHNlZW0gdGhhdCB1c2VmdWwuCgo+ICsJcmV0ID0g
+ZHJtX2dlbV9oYW5kbGVfY3JlYXRlKGZpbGVfcHJpdiwgJm10a19nZW0tPmJhc2UsICZhcmdzLT5o
+YW5kbGUpOwo+ICsJaWYgKHJldCkKPiArCQlnb3RvIGVycl9oYW5kbGVfY3JlYXRlOwo+ICsKPiAr
+CS8qIGRyb3AgcmVmZXJlbmNlIGZyb20gYWxsb2NhdGUgLSBoYW5kbGUgaG9sZHMgaXQgbm93LiAq
+Lwo+ICsJZHJtX2dlbV9vYmplY3RfdW5yZWZlcmVuY2VfdW5sb2NrZWQoJm10a19nZW0tPmJhc2Up
+Owo+ICsKPiArCXJldHVybiAwOwo+ICsKPiArZXJyX2hhbmRsZV9jcmVhdGU6Cj4gKwltdGtfZHJt
+X2dlbV9mcmVlX29iamVjdCgmbXRrX2dlbS0+YmFzZSk7Cj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmgKPiBpbmRleCA5YmRlZWIzLi4yOGI4
+ZmE3IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5o
+Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmgKPiBAQCAtNTIs
+NCArNTIsMTYgQEAgaW50IG10a19kcm1fZ2VtX21tYXBfYnVmKHN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqb2JqLAo+ICAJCXN0cnVjdCB2bV9hcmVhX3N0cnVjdCAqdm1hKTsKPiAgc3RydWN0IHNnX3Rh
+YmxlICptdGtfZ2VtX3ByaW1lX2dldF9zZ190YWJsZShzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9i
+aik7Cj4gIAo+ICsvKgo+ICsgKiByZXF1ZXN0IGdlbSBvYmplY3QgY3JlYXRpb24gYW5kIGJ1ZmZl
+ciBhbGxvY2F0aW9uIGFzIHRoZSBzaXplCj4gKyAqIHRoYXQgaXQgaXMgY2FsY3VsYXRlZCB3aXRo
+IGZyYW1lYnVmZmVyIGluZm9ybWF0aW9uIHN1Y2ggYXMgd2lkdGgsCj4gKyAqIGhlaWdodCBhbmQg
+YnBwLgo+ICsgKi8KPiAraW50IG10a19nZW1fY3JlYXRlX2lvY3RsKHN0cnVjdCBkcm1fZGV2aWNl
+ICpkZXYsIHZvaWQgKmRhdGEsCj4gKwkJc3RydWN0IGRybV9maWxlICpmaWxlX3ByaXYpOwo+ICsK
+PiArLyogZ2V0IGJ1ZmZlciBvZmZzZXQgdG8gbWFwIHRvIHVzZXIgc3BhY2UuICovCj4gK2ludCBt
+dGtfZ2VtX21hcF9vZmZzZXRfaW9jdGwoc3RydWN0IGRybV9kZXZpY2UgKmRldiwgdm9pZCAqZGF0
+YSwKPiArCQlzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdik7Cj4gKwo+ICAjZW5kaWYKPiBkaWZm
+IC0tZ2l0IGEvaW5jbHVkZS91YXBpL2RybS9tZWRpYXRla19kcm0uaCBiL2luY2x1ZGUvdWFwaS9k
+cm0vbWVkaWF0ZWtfZHJtLmgKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAu
+LjE5ZWEzNTcKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvaW5jbHVkZS91YXBpL2RybS9tZWRpYXRl
+a19kcm0uaAo+IEBAIC0wLDAgKzEsNTkgQEAKPiArLyoKPiArICogQ29weXJpZ2h0IChjKSAyMDE1
+IE1lZGlhVGVrIEluYy4KPiArICoKPiArICogVGhpcyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7
+IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9vciBtb2RpZnkKPiArICogaXQgdW5kZXIgdGhl
+IHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSB2ZXJzaW9uIDIgYXMKPiAr
+ICogcHVibGlzaGVkIGJ5IHRoZSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24uCj4gKyAqCj4gKyAq
+IFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUg
+dXNlZnVsLAo+ICsgKiBidXQgV0lUSE9VVCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZlbiB0aGUg
+aW1wbGllZCB3YXJyYW50eSBvZgo+ICsgKiBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1Ig
+QSBQQVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlCj4gKyAqIEdOVSBHZW5lcmFsIFB1YmxpYyBM
+aWNlbnNlIGZvciBtb3JlIGRldGFpbHMuCj4gKyAqLwo+ICsKPiArCj4gKyNpZm5kZWYgX1VBUElf
+TUVESUFURUtfRFJNX0gKPiArI2RlZmluZSBfVUFQSV9NRURJQVRFS19EUk1fSAo+ICsKPiArI2lu
+Y2x1ZGUgPGRybS9kcm0uaD4KPiArCj4gKy8qKgo+ICsgKiBVc2VyLWRlc2lyZWQgYnVmZmVyIGNy
+ZWF0aW9uIGluZm9ybWF0aW9uIHN0cnVjdHVyZS4KPiArICoKPiArICogQHNpemU6IHVzZXItZGVz
+aXJlZCBtZW1vcnkgYWxsb2NhdGlvbiBzaXplLgo+ICsgKgktIHRoaXMgc2l6ZSB2YWx1ZSB3b3Vs
+ZCBiZSBwYWdlLWFsaWduZWQgaW50ZXJuYWxseS4KPiArICogQGZsYWdzOiB1c2VyIHJlcXVlc3Qg
+Zm9yIHNldHRpbmcgbWVtb3J5IHR5cGUgb3IgY2FjaGUgYXR0cmlidXRlcy4KPiArICogQGhhbmRs
+ZTogcmV0dXJuZWQgYSBoYW5kbGUgdG8gY3JlYXRlZCBnZW0gb2JqZWN0Lgo+ICsgKgktIHRoaXMg
+aGFuZGxlIHdpbGwgYmUgc2V0IGJ5IGdlbSBtb2R1bGUgb2Yga2VybmVsIHNpZGUuCj4gKyAqLwo+
+ICtzdHJ1Y3QgZHJtX210a19nZW1fY3JlYXRlIHsKPiArCXVpbnQ2NF90IHNpemU7Cj4gKwl1aW50
+MzJfdCBmbGFnczsKPiArCXVpbnQzMl90IGhhbmRsZTsKPiArfTsKVGhlc2Ugc2hvdWxkIGJlIF9f
+dTMyIGFuZCBmcmllbmRzIGFjY29yZGluZyB0byB0aGUga2VybmVsIENvZGluZ1N0eWxlIGRvYy4K
+Cj4gKwo+ICsvKioKPiArICogQSBzdHJ1Y3R1cmUgZm9yIGdldHRpbmcgYnVmZmVyIG9mZnNldC4K
+PiArICoKPiArICogQGhhbmRsZTogYSBwb2ludGVyIHRvIGdlbSBvYmplY3QgY3JlYXRlZC4KPiAr
+ICogQHBhZDoganVzdCBwYWRkaW5nIHRvIGJlIDY0LWJpdCBhbGlnbmVkLgo+ICsgKiBAb2Zmc2V0
+OiByZWxhdGl2ZWQgb2Zmc2V0IHZhbHVlIG9mIHRoZSBtZW1vcnkgcmVnaW9uIGFsbG9jYXRlZC4K
+PiArICogICAgIC0gdGhpcyB2YWx1ZSBzaG91bGQgYmUgc2V0IGJ5IHVzZXIuCnJlbGF0aXZlZCAt
+PiByZWxhdGl2ZT8KCkFsc28sIHRoZSAnb2Zmc2V0JyBkb2N1bWVudGF0aW9uIGRvZXNuJ3Qgc2Vl
+bSByaWdodCBhcyB0aGlzIHdpbGwgYmUgc2V0CmJ5IHRoZSBrZXJuZWw/Cgo+ICsgKi8KPiArc3Ry
+dWN0IGRybV9tdGtfZ2VtX21hcF9vZmYgewo+ICsJdWludDMyX3QgaGFuZGxlOwo+ICsJdWludDMy
+X3QgcGFkOwo+ICsJdWludDY0X3Qgb2Zmc2V0Owo+ICt9OwpUaGVzZSBzaG91bGQgYWxzbyBiZSBf
+X3UzMiBhbmQgZnJpZW5kcy4KCj4gKwo+ICsjZGVmaW5lIERSTV9NVEtfR0VNX0NSRUFURQkJMHgw
+MAo+ICsjZGVmaW5lIERSTV9NVEtfR0VNX01BUF9PRkZTRVQJCTB4MDEKPiArCj4gKyNkZWZpbmUg
+RFJNX0lPQ1RMX01US19HRU1fQ1JFQVRFCURSTV9JT1dSKERSTV9DT01NQU5EX0JBU0UgKyBcCj4g
+KwkJRFJNX01US19HRU1fQ1JFQVRFLCBzdHJ1Y3QgZHJtX210a19nZW1fY3JlYXRlKQo+ICsKPiAr
+I2RlZmluZSBEUk1fSU9DVExfTVRLX0dFTV9NQVBfT0ZGU0VUCURSTV9JT1dSKERSTV9DT01NQU5E
+X0JBU0UgKyBcCj4gKwkJRFJNX01US19HRU1fTUFQX09GRlNFVCwgc3RydWN0IGRybV9tdGtfZ2Vt
+X21hcF9vZmYpCj4gKwo+ICsKPiArI2VuZGlmIC8qIF9VQVBJX01FRElBVEVLX0RSTV9IICovCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
+bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
