@@ -1,43 +1,63 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [RESEND PATCH v2] usb: xhci-mtk: fix AHB bus hang up caused by
- roothubs polling
-Date: Tue, 12 Jan 2016 09:48:24 +0800
-Message-ID: <1452563304.28863.1.camel@mhfsdcap03>
-References: <1452216517-3765-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <5693B5C8.6090201@linux.intel.com>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: Enable 33bit memory address to support
+ 4GB DRAM
+Date: Tue, 12 Jan 2016 10:54:44 +0800
+Message-ID: <1452567284.8331.12.camel@mtksdaap41>
+References: <1452499250-5202-1-git-send-email-pc.liao@mediatek.com>
+	 <s5hwprgcwv6.wl-tiwai@suse.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5693B5C8.6090201@linux.intel.com>
+In-Reply-To: <s5hwprgcwv6.wl-tiwai@suse.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mathias Nyman <mathias.nyman@linux.intel.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Takashi Iwai <tiwai@suse.de>
+Cc: "broonie@kernel.org" <broonie@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>, Hidalgo Huang =?UTF-8?Q?=28=E9=BB=83=E6=AD=A3=E5=92=8C=29?= <Hidalgo.Huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Mon, 2016-01-11 at 16:01 +0200, Mathias Nyman wrote:
-> On 08.01.2016 03:28, Chunfeng Yun wrote:
-> > when ip fails to enter sleep mode, register access protection will
-> > be disabled, at the same time if all clocks are disabled, access
-> > register will hang up AHB bus.
-> > the common case causes ip sleep failure is that after all ports
-> > enter U3 but before ip enters sleep mode, a port receives a resume
-> > signal('K'). this will happens when such as clicks mouse to try to
-> > do remote-wakeup to stop system enter suspend.
-> > so stop polling root hubs to avoid access xHCI register on bus
-> > suspend, and restart it when bus resumes.
-> >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >   drivers/usb/host/xhci-mtk.c | 23 +++++++++++++++++++++++
+On Mon, 2016-01-11 at 17:02 +0800, Takashi Iwai wrote:
+> On Mon, 11 Jan 2016 09:00:50 +0100,
+> PC Liao wrote:
+> > 
+> > @@ -603,7 +606,10 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
+> >  	if (ret < 0)
+> >  		return ret;
+> >  
+> > -	memif->phys_buf_addr = substream->runtime->dma_addr;
+> > +	if (sizeof(dma_addr_t) > 4)
+> > +		msb_at_bit33 = (substream->runtime->dma_addr & 0x100000000) ? 1 : 0;
 > 
-> The xhci Mediatek (xhci-mtk etc) support is in usb-next and should be available first time
-> in 4.5-rc1 kernel.
+> Better to put a proper suffix for the constant over 32bit.
 > 
-> I'll forward fixes for it once 4.5-rc1 is out, they should end up in final 4.5
+> Or use upper_32_bits().  Then sizeof() check can be omitted, as the
+> compiler should be smart enough to know it beforehand.
 > 
-Thank you!
+> 
+> Takashi
 
-> -Mathias
-> 
+
+Hi Takashi,
+
+Thanks for your comment.
+I change as below:
+@@ -606,10 +606,8 @@ static int mtk_afe_dais_hw_params(struct
+snd_pcm_substream
+        if (ret < 0)
+                return ret;
+
+-       if (sizeof(dma_addr_t) > 4)
+-               msb_at_bit33 = (substream->runtime->dma_addr &
+0x100000000) ? 1
+-
+-       memif->phys_buf_addr = substream->runtime->dma_addr &
+0xffffffff;
++       msb_at_bit33 = upper_32_bits(substream->runtime->dma_addr) ? 1 :
+0;
++       memif->phys_buf_addr =
+lower_32_bits(substream->runtime->dma_addr);
+
+
+Dose this change follow your idea?
+Thanks! 
+
+PC Liao
