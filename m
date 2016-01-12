@@ -1,157 +1,68 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH v2] ASoC: mediatek: Enable 33bit memory address to support 4GB DRAM
-Date: Tue, 12 Jan 2016 14:33:42 +0800
-Message-ID: <1452580422-23078-1-git-send-email-pc.liao@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH v3 0/6] Add clock support for Mediatek MT2701
+Date: Tue, 12 Jan 2016 16:31:04 +0800
+Message-ID: <1452587470-61506-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>, Hidalgo Huang <hidalgo.huang@mediatek.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, John Crispin <blogic@openwrt.org>
+Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If platform is embedded with memory more than 3GB, the address will
-go out of the scope that 32-bit can handle with. This patch sets the
-dma_mask and MSB properly to describe its address to 33-bit.
+This patchset is based on 4.4-rc7, add clock and reset controller support
+for Mediatek MT2701.
 
-Signed-off-by: Hidalgo Huang <hidalgo.huang@mediatek.com>
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
----
-Changes since v1:
-Use upper_32_bits() and lower_32_bits() to change the code. 
----
- sound/soc/mediatek/mtk-afe-common.h |    1 +
- sound/soc/mediatek/mtk-afe-pcm.c    |   22 +++++++++++++++++++++-
- 2 files changed, 22 insertions(+), 1 deletion(-)
+This patchset also refined makefile and Kconfig to support configurable
+multiple SoC clock support.
 
-diff --git a/sound/soc/mediatek/mtk-afe-common.h b/sound/soc/mediatek/mtk-afe-common.h
-index 9b1af1a..f341f62 100644
---- a/sound/soc/mediatek/mtk-afe-common.h
-+++ b/sound/soc/mediatek/mtk-afe-common.h
-@@ -87,6 +87,7 @@ struct mtk_afe_memif_data {
- 	int irq_en_shift;
- 	int irq_fs_shift;
- 	int irq_clr_shift;
-+	int msb_shift;
- };
- 
- struct mtk_afe_memif {
-diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
-index 08af9f5..689c51f 100644
---- a/sound/soc/mediatek/mtk-afe-pcm.c
-+++ b/sound/soc/mediatek/mtk-afe-pcm.c
-@@ -21,6 +21,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/dma-mapping.h>
- #include <linux/pm_runtime.h>
- #include <sound/soc.h>
- #include "mtk-afe-common.h"
-@@ -35,6 +36,7 @@
- #define AFE_I2S_CON1		0x0034
- #define AFE_I2S_CON2		0x0038
- #define AFE_CONN_24BIT		0x006c
-+#define AFE_MEMIF_MSB		0x00cc
- 
- #define AFE_CONN1		0x0024
- #define AFE_CONN2		0x0028
-@@ -592,6 +594,7 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
- 	struct mtk_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
- 	struct mtk_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	int msb_at_bit33 = 0;
- 	int ret;
- 
- 	dev_dbg(afe->dev,
-@@ -603,7 +606,8 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
- 	if (ret < 0)
- 		return ret;
- 
--	memif->phys_buf_addr = substream->runtime->dma_addr;
-+	msb_at_bit33 = upper_32_bits(substream->runtime->dma_addr) ? 1 : 0;
-+	memif->phys_buf_addr = lower_32_bits(substream->runtime->dma_addr);
- 	memif->buffer_size = substream->runtime->dma_bytes;
- 
- 	/* start */
-@@ -614,6 +618,11 @@ static int mtk_afe_dais_hw_params(struct snd_pcm_substream *substream,
- 		     memif->data->reg_ofs_base + AFE_BASE_END_OFFSET,
- 		     memif->phys_buf_addr + memif->buffer_size - 1);
- 
-+	/* set MSB to 33-bit */
-+	regmap_update_bits(afe->regmap, AFE_MEMIF_MSB,
-+			   1 << memif->data->msb_shift,
-+			   msb_at_bit33 << memif->data->msb_shift);
-+
- 	/* set channel */
- 	if (memif->data->mono_shift >= 0) {
- 		unsigned int mono = (params_channels(params) == 1) ? 1 : 0;
-@@ -978,6 +987,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 0,
- 		.irq_fs_shift = 4,
- 		.irq_clr_shift = 0,
-+		.msb_shift = 0,
- 	}, {
- 		.name = "DL2",
- 		.id = MTK_AFE_MEMIF_DL2,
-@@ -991,6 +1001,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 2,
- 		.irq_fs_shift = 16,
- 		.irq_clr_shift = 2,
-+		.msb_shift = 1,
- 	}, {
- 		.name = "VUL",
- 		.id = MTK_AFE_MEMIF_VUL,
-@@ -1004,6 +1015,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 1,
- 		.irq_fs_shift = 8,
- 		.irq_clr_shift = 1,
-+		.msb_shift = 6,
- 	}, {
- 		.name = "DAI",
- 		.id = MTK_AFE_MEMIF_DAI,
-@@ -1017,6 +1029,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 3,
- 		.irq_fs_shift = 20,
- 		.irq_clr_shift = 3,
-+		.msb_shift = 5,
- 	}, {
- 		.name = "AWB",
- 		.id = MTK_AFE_MEMIF_AWB,
-@@ -1030,6 +1043,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 14,
- 		.irq_fs_shift = 24,
- 		.irq_clr_shift = 6,
-+		.msb_shift = 3,
- 	}, {
- 		.name = "MOD_DAI",
- 		.id = MTK_AFE_MEMIF_MOD_DAI,
-@@ -1043,6 +1057,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 3,
- 		.irq_fs_shift = 20,
- 		.irq_clr_shift = 3,
-+		.msb_shift = 4,
- 	}, {
- 		.name = "HDMI",
- 		.id = MTK_AFE_MEMIF_HDMI,
-@@ -1056,6 +1071,7 @@ static const struct mtk_afe_memif_data memif_data[MTK_AFE_MEMIF_NUM] = {
- 		.irq_en_shift = 12,
- 		.irq_fs_shift = -1,
- 		.irq_clr_shift = 4,
-+		.msb_shift = 8,
- 	},
- };
- 
-@@ -1189,6 +1205,10 @@ static int mtk_afe_pcm_dev_probe(struct platform_device *pdev)
- 	struct mtk_afe *afe;
- 	struct resource *res;
- 
-+	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(33));
-+	if (ret)
-+		return ret;
-+
- 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
- 	if (!afe)
- 		return -ENOMEM;
--- 
-1.7.9.5
+changes since v2:
+- Fix ethsys definition.
+- Replace read-modify-write with regmap_update_bits() in clock operations.
+- Move mt2701-resets.h to include/dt-bindings/reset/.
+- Add hifsys reset patch from John Crispin.
+
+changes since v1:
+- Document MT2701 compatible strings.
+
+James Liao (2):
+  clk: mediatek: Refine the makefile to support multiple clock drivers
+  dt-bindings: ARM: Mediatek: Document bindings for MT2701
+
+Shunli Wang (4):
+  clk: mediatek: Add dt-bindings for MT2701 clocks
+  clk: mediatek: Add MT2701 clock support
+  reset: mediatek: Add MT2701 reset controller dt-binding file
+  reset: mediatek: Add MT2701 reset driver
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,ethsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,hifsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ drivers/clk/Kconfig                                |    1 +
+ drivers/clk/mediatek/Kconfig                       |   31 +
+ drivers/clk/mediatek/Makefile                      |    7 +-
+ drivers/clk/mediatek/clk-gate.c                    |   52 +
+ drivers/clk/mediatek/clk-gate.h                    |    2 +
+ drivers/clk/mediatek/clk-mt2701.c                  | 1216 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     |   25 +
+ drivers/clk/mediatek/clk-mtk.h                     |   35 +-
+ include/dt-bindings/clock/mt2701-clk.h             |  481 ++++++++
+ include/dt-bindings/reset/mt2701-resets.h          |   83 ++
+ 20 files changed, 2000 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+ create mode 100644 drivers/clk/mediatek/Kconfig
+ create mode 100644 drivers/clk/mediatek/clk-mt2701.c
+ create mode 100644 include/dt-bindings/clock/mt2701-clk.h
+ create mode 100644 include/dt-bindings/reset/mt2701-resets.h
+
+--
+1.9.1
