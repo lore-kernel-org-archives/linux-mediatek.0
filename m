@@ -1,50 +1,76 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v3 0/6] Add clock support for Mediatek MT2701
-Date: Wed, 13 Jan 2016 11:01:46 +0800
-Message-ID: <1452654106.2657.0.camel@mtksdaap41>
-References: <1452587470-61506-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <5694D106.2030009@openwrt.org>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] dt-bindings: ARM: Mediatek: Document bindings
+ for MT2701
+Date: Wed, 13 Jan 2016 11:39:15 +0800
+Message-ID: <1452656355.2657.12.camel@mtksdaap41>
+References: <1451975422-31174-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1451975422-31174-3-git-send-email-jamesjj.liao@mediatek.com>
+ <20160106150800.GA941@rob-hp-laptop>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <5694D106.2030009@openwrt.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: John Crispin <blogic@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160106150800.GA941@rob-hp-laptop>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
+Hi Rob,
 
-On Tue, 2016-01-12 at 11:10 +0100, John Crispin wrote:
-> Hi James,
-> 
-> On 12/01/2016 09:31, James Liao wrote:
-> > This patchset is based on 4.4-rc7, add clock and reset controller support
-> > for Mediatek MT2701.
+On Wed, 2016-01-06 at 09:08 -0600, Rob Herring wrote:
+> On Tue, Jan 05, 2016 at 02:30:18PM +0800, James Liao wrote:
+> > This patch adds the binding documentation for apmixedsys, bdpsys,
+> > ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
+> > vdecsys for Mediatek MT2701.
 > > 
-> > This patchset also refined makefile and Kconfig to support configurable
-> > multiple SoC clock support.
-> > 
-> > changes since v2:
-> > - Fix ethsys definition.
-> > - Replace read-modify-write with regmap_update_bits() in clock operations.
-> > - Move mt2701-resets.h to include/dt-bindings/reset/.
-> > - Add hifsys reset patch from John Crispin.
+> > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> thanks for folding the fixup.
+> [...]
 > 
-> i have been testing your V2 on MT7623 for several days now and updated
-> to V3 this morning which works just as well. feel free to add
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> > new file mode 100644
+> > index 0000000..4137196
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> > @@ -0,0 +1,22 @@
+> > +Mediatek bdpsys controller
+> > +============================
+> > +
+> > +The Mediatek bdpsys controller provides various clocks to the system.
+> > +
+> > +Required Properties:
+> > +
+> > +- compatible: Should be:
+> > +	- "mediatek,mt2701-bdpsys", "syscon"
 > 
-> Tested-by: John Crispin <blogic@openwrt.org>
+> If this block and others only provide clocks, then why do you need 
+> syscon here? If it is more that clocks, then the description is wrong.
 
-Thanks for your help.
+Sorry for late reply.
+
+In bdpsys and other similar subsystems, clock controlling and other
+feature controlling share the same register space. That means we may
+have multiple DT nodes with the same reg (register address) property.
+But it's not a good idea because we may have racing issue when multiple
+drivers share the same register space. With syscon, drivers that need
+share the same register base with bdpsys can safely control registers
+through regmap APIs.
+
+These subsystem nodes described in arm/mediatek/ are clock controllers,
+some of them may be the reset controller at the same time. Other
+subsystem features will have their own DT nodes and share the same
+register space by referring to these clock controllers.
 
 
 Best regards,
 
 James
-
-
-
