@@ -1,108 +1,36 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2] clk: mediatek: Allow changing PLL rate when it is off
-Date: Thu, 14 Jan 2016 13:55:17 +0800
-Message-ID: <1452750917.5384.24.camel@mtksdaap41>
-References: <1452482936-51852-1-git-send-email-jamesjj.liao@mediatek.com>
- <20160114022637.1942.4564@quark.deferred.io>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH] media: v4l2-compat-ioctl32: fix missing length copy in put_v4l2_buffer32
+Date: Thu, 14 Jan 2016 15:37:25 +0800
+Message-ID: <1452757045-34051-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160114022637.1942.4564-/Ffx6e7uQFNsG52AEeRyZ2GXanvQGlWp@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mike,
+In v4l2-compliance utility, test QUERYBUF required correct length
+value to go through each planar to check planar's length in multi-planar
 
-On Wed, 2016-01-13 at 18:26 -0800, Michael Turquette wrote:
-> Hi James,
-> 
-> Quoting James Liao (2016-01-10 19:28:56)
-> > Some modules may need to change its clock rate before turn on it.
-> > So changing PLL's rate when it is off should be allowed.
-> > This patch removes PLL enabled check before set rate, so that
-> > PLLs can set new frequency even if they are off.
-> > 
-> > On MT8173 for example, ARMPLL's enable bit can be controlled by
-> > other HW. That means ARMPLL may be turned on even if we (CPU / SW)
-> > set ARMPLL's enable bit as 0. In this case, SW may want and can
-> > still change ARMPLL's rate by changing its pcw and postdiv settings.
-> > But without this patch, new pcw setting will not be applied because
-> > its enable bit is 0.
-> 
-> Must the clock signal be enabled to change the PLL rate? If so, does
-> ARMPLL set the CLK_SET_RATE_GATE flag?
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ drivers/media/v4l2-core/v4l2-compat-ioctl32.c |    3 +++
+ 1 file changed, 3 insertions(+)
 
-No. The controlling of PLL's rate and enable are independent. So we can
-change the PLL's rate when it's enabled or disabled.
-
-> > 
-> > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/clk/mediatek/clk-pll.c | 9 ++-------
-> >  1 file changed, 2 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > index 966cab1..8e31fae 100644
-> > --- a/drivers/clk/mediatek/clk-pll.c
-> > +++ b/drivers/clk/mediatek/clk-pll.c
-> > @@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> >                 int postdiv)
-> >  {
-> >         u32 con1, val;
-> > -       int pll_en;
-> > -
-> > -       pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
-> >  
-> >         /* set postdiv */
-> >         val = readl(pll->pd_addr);
-> > @@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> >  
-> >         con1 = readl(pll->base_addr + REG_CON1);
-> >  
-> > -       if (pll_en)
-> > -               con1 |= CON0_PCW_CHG;
-> > +       con1 |= CON0_PCW_CHG;
-> 
-> This unconditionally enables the PLL whenever clk_set_rate is called,
-> changing the previous behavior. The clk framework still tracks the
-> intent of ARMPLLs users with the enable_count. How about something like
-> the following:
-
-Not really. This patch will not enable or disable PLL when we change its
-rate. The PLL enable bit is bit[0], we didn't change bit[0] in
-mtk_pll_set_rate_regs(), so its state will not be changed.
-
-This patch set CON0_PCW_CHG (bit[31]) no matter the PLL is enabled or
-not. So we don't need to check the enable bit[0] nor PLL state in the
-framework before set bit[31].
-
-> 	bool pll_en = clk_hw_is_enabled(&pll->hw);
-> 
-> 	if (pll_en)
-> 		con1 |= CON0_PCW_CHG;
-> 
-> 	writel(con1, pll->base_addr + REG_CON1);
-> 	if (pll->tuner_addr)
-> 		writel(con1 + 1, pll->tuner_addr);
-> 
-> 	if (pll_en)
-> 		udelay(20);
-> 
-> This does not rely on the hardware to tell us the intent of the user,
-> but instead on our framework usecounting.
-
-
-Best regards,
-
-James
+diff --git a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+index 327e83a..5ba932a 100644
+--- a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
++++ b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+@@ -521,6 +521,9 @@ static int put_v4l2_buffer32(struct v4l2_buffer *kp, struct v4l2_buffer32 __user
+ 		if (num_planes == 0)
+ 			return 0;
+ 
++		if (put_user(kp->length, &up->length))
++			return -EFAULT;
++
+ 		uplane = (__force struct v4l2_plane __user *)kp->m.planes;
+ 		if (get_user(p, &up->m.planes))
+ 			return -EFAULT;
+-- 
+1.7.9.5
