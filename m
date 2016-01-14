@@ -1,1302 +1,504 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
+From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
 Subject: Re: [PATCH v7 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Wed, 13 Jan 2016 16:31:10 -0800
-Message-ID: <CAGS+omB+RaUFDwz=zzAoa=h41PTLXRQgmy3fzcc6Q5cDw3D8-w@mail.gmail.com>
-References: <1452651494-16806-1-git-send-email-jitao.shi@mediatek.com> <1452651494-16806-2-git-send-email-jitao.shi@mediatek.com>
+Date: Thu, 14 Jan 2016 09:24:27 +0800
+Message-ID: <201601140940.uXzmZfZZ%fengguang.wu@intel.com>
+References: <1452651494-16806-2-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1452651494-16806-2-git-send-email-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, moderated list:AR
+Content-Type: multipart/mixed; boundary="liOOAslEiF7prFVr"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1452651494-16806-2-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.orgSascha Hauer <kerne>
 List-Id: linux-mediatek@lists.infradead.org
+
+
+--liOOAslEiF7prFVr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
 Hi Jitao,
 
-On Tue, Jan 12, 2016 at 6:18 PM, Jitao Shi <jitao.shi@mediatek.com> wrote:
-> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
->
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
-> Changes since v6:
->  - Add ps8640 firmware update function
->  - Change i2c to i2c_transfer from i2c_master_recv/i2c_master_send
-
-Thank you for using i2c_transfer.
-Did you notice any improvement during i2c-intesive operations (eg.,
-mode set or suspend/resume) by doing so?
-
->  - Add comments for each page client
-> ---
->  drivers/gpu/drm/bridge/Kconfig         |   10 +
->  drivers/gpu/drm/bridge/Makefile        |    1 +
->  drivers/gpu/drm/bridge/parade-ps8640.c | 1106 ++++++++++++++++++++++++++++++++
->  3 files changed, 1117 insertions(+)
->  create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
->
-> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-> index 6dddd39..dcfdbc9 100644
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -41,4 +41,14 @@ config DRM_PARADE_PS8622
->         ---help---
->           Parade eDP-LVDS bridge chip driver.
->
-> +config DRM_PARADE_PS8640
-> +       tristate "Parade PS8640 MIPI DSI to eDP Converter"
-> +       depends on OF
-
-depends on I2C, too.
-
-> +       select DRM_KMS_HELPER
-> +       select DRM_PANEL
-> +       ---help---
-> +         Choose this option if you have PS8640 for display
-> +         The PS8640 is a high-performance and low-power
-> +         MIPI DSI to eDP converter
-> +
->  endmenu
-> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-> index d4e28be..272e3c01 100644
-> --- a/drivers/gpu/drm/bridge/Makefile
-> +++ b/drivers/gpu/drm/bridge/Makefile
-> @@ -4,3 +4,4 @@ obj-$(CONFIG_DRM_DW_HDMI) += dw_hdmi.o
->  obj-$(CONFIG_DRM_DW_HDMI_AHB_AUDIO) += dw_hdmi-ahb-audio.o
->  obj-$(CONFIG_DRM_NXP_PTN3460) += nxp-ptn3460.o
->  obj-$(CONFIG_DRM_PARADE_PS8622) += parade-ps8622.o
-> +obj-$(CONFIG_DRM_PARADE_PS8640) += parade-ps8640.o
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
-> new file mode 100644
-> index 0000000..a18d8e9
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> @@ -0,0 +1,1106 @@
-> +/*
-> + * Copyright (c) 2014 MediaTek Inc.
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/err.h>
-> +#include <linux/firmware.h>
-> +#include <linux/gpio.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/i2c.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_gpio.h>
-> +#include <linux/of_graph.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <asm/unaligned.h>
-> +#include <drm/drm_panel.h>
-> +
-> +#include <drmP.h>
-> +#include <drm_crtc_helper.h>
-> +#include <drm_crtc.h>
-> +#include <drm_atomic_helper.h>
-> +
-> +#define PAGE2_SPI_CFG3         0x82
-> +#define I2C_TO_SPI_RESET       0x20
-> +#define PAGE2_ROMADD_BYTE1     0x8e
-> +#define PAGE2_ROMADD_BYTE2     0x8f
-> +#define PAGE2_SWSPI_WDATA      0x90
-> +#define PAGE2_SWSPI_RDATA      0x91
-> +#define PAGE2_SWSPI_LEN                0x92
-> +#define PAGE2_SWSPI_CTL                0x93
-> +#define TRIGGER_NO_READBACK    0x05
-> +#define TRIGGER_READBACK       0x01
-> +#define PAGE2_SPI_STATUS       0x9e
-> +#define PAGE2_GPIO_L           0xa6
-> +#define PAGE2_GPIO_H           0xa7
-> +#define PS_GPIO9               BIT(1)
-> +#define PAGE2_IROM_CTRL                0xb0
-> +#define IROM_ENABLE            0xc0
-> +#define IROM_DISABLE           0x80
-> +#define PAGE2_SW_REST          0xbc
-> +#define PAGE2_ENCTLSPI_WR      0xda
-> +#define PAGE2_I2C_BYPASS       0xea
-> +#define I2C_BYPASS_EN          0xd0
-> +
-> +#define PAGE3_SET_ADD          0xfe
-> +#define PAGE3_SET_VAL          0xff
-> +#define VDO_CTL_ADD            0x13
-> +#define VDO_DIS                        0x18
-> +#define VDO_EN                 0x1c
-> +
-> +#define PAGE4_REV_L            0xf0
-> +#define PAGE4_REV_H            0xf1
-> +#define PAGE4_CHIP_L           0xf2
-> +#define PAGE4_CHIP_H           0xf3
-> +
-> +/* Firmware */
-> +#define SPI_MAX_RETRY_CNT      8
-> +#define PS_FW_NAME             "ps864x_fw.bin"
-> +
-> +#define FW_CHIP_ID_OFFSET              0
-> +#define FW_VERSION_OFFSET              2
-> +
-> +#define bridge_to_ps8640(e)    container_of(e, struct ps8640, bridge)
-> +#define connector_to_ps8640(e) container_of(e, struct ps8640, connector)
-> +
-> +struct ps8640_info {
-> +       u8 family_id;
-> +       u8 variant_id;
-> +       u16 version;
-> +};
-> +
-> +struct ps8640 {
-> +       struct drm_connector connector;
-> +       struct drm_bridge bridge;
-> +       struct i2c_client *page[8];
-> +       struct ps8640_driver_data *driver_data;
-> +       struct regulator *pwr_1v2_supply;
-> +       struct regulator *pwr_3v3_supply;
-> +       struct drm_panel *panel;
-> +       struct gpio_desc *gpio_rst_n;
-> +       struct gpio_desc *gpio_slp_n;
-> +       struct gpio_desc *gpio_mode_sel_n;
-> +       bool enabled;
-> +
-> +       /* firmware file name */
-> +       bool in_fw_update;
-> +       char *fw_file;
-> +       struct ps8640_info info;
-> +};
-> +
-> +static const u8 enc_ctrl_code[6] = {0xaa, 0x55, 0x50, 0x41, 0x52, 0x44};
-> +
-> +static int ps8640_regr(struct i2c_client *client, u8 reg, u8 *data,
-> +                      u16 data_len)
-> +{
-> +       int ret;
-> +
-> +       struct i2c_msg msgs[] = {
-> +               {
-> +                .addr = client->addr,
-> +                .flags = 0,
-> +                .len = 1,
-> +                .buf = &reg,
-> +                },
-> +               {
-> +                .addr = client->addr,
-> +                .flags = I2C_M_RD,
-> +                .len = data_len,
-> +                .buf = data,
-> +                }
-> +       };
-> +
-> +       ret = i2c_transfer(client->adapter, msgs, 2);
-> +
-> +       if (ret == 2)
-> +               return 0;
-> +       if (ret < 0)
-> +               return ret;
-> +       else
-> +               return -EIO;
-> +}
-> +
-> +static int ps8640_regw(struct i2c_client *client, u8 reg,  const u8 *data,
-> +                      u16 data_len)
-> +{
-> +       int ret, i;
-> +       struct i2c_msg msg;
-> +       u8 *buf;
-> +
-> +       buf = devm_kzalloc(&client->dev, data_len + 1, GFP_KERNEL);
-
-This devm_kzalloc() is really bad, since it just sits here and
-accumulates buffers on every transaction for the life of the device
-instance.
-
-There are only 3 calls to ps8640_regw().
-We should be able to refactor things to avoid this devm_kzalloc.
-
-Two of these calls transfer a fixed 2 bytes, each of these can be
-handled by a custom helper function that takes the two values as
-parameters.
-
-The third is the firmware page buffer, which can also be implemented
-using a fixed 257 byte buffer, with a 0 followed by memcpy'ed 256
-bytes of data.
-
-> +       /* i2c page size is 256 bytes, so limit the data_len 256 */
-> +       if (data_len > 256) {
-> +               dev_err(&client->dev, "data_len must under 256: len = %d\n",
-> +                       data_len);
-> +               return -EIO;
-> +       }
-
-In any case, you definitely do not need this runtime error checking,
-since you are just checking your own code...
-
-> +       for (i = 0; i < data_len + 1; i++)
-> +               buf[i] = (i == 0) ? reg : data[i - 1];
-> +
-> +       msg.addr = client->addr;
-> +       msg.flags = 0;
-> +       msg.len = data_len + 1;
-> +       msg.buf = buf;
-> +
-> +       ret = i2c_transfer(client->adapter, &msg, 1);
-> +       if (ret == 1)
-> +               return 0;
-> +       if (ret < 0)
-> +               return ret;
-> +       else
-> +               return -EIO;
-> +}
-> +
-> +static int ps8640_regw_byte(struct i2c_client *client, u8 reg,  u8 data)
-> +{
-> +       int ret;
-> +       struct i2c_msg msg;
-> +       u8 buf[] = {reg, data};
-> +
-> +       msg.addr = client->addr;
-> +       msg.flags = 0;
-> +       msg.len = sizeof(buf);
-> +       msg.buf = buf;
-> +
-> +       ret = i2c_transfer(client->adapter, &msg, 1);
-> +       if (ret == 1)
-> +               return 0;
-> +       if (ret < 0)
-> +               return ret;
-> +       else
-> +               return -EIO;
-> +}
-> +
-> +static int ps8640_check_valid_id(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[4];
-> +       u8 chip_id[4];
-> +
-> +       ps8640_regr(client, PAGE4_REV_L, chip_id, 4);
-> +
-> +       if ((chip_id[0] == 0x00) && (chip_id[1] == 0x0a) &&
-> +           (chip_id[2] == 0x00) && (chip_id[3] == 0x30))
-
-nit: the inner () are not needed.
-
-> +               return 0;
-> +
-> +       return -ENODEV;
-> +}
-> +
-> +static void ps8640_show_mcu_fw_version(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[5];
-> +       u8 fw_ver[2];
-> +
-> +       ps8640_regr(client, 0x4, fw_ver, 2);
-> +       ps_bridge->info.version = (fw_ver[0] << 8) | fw_ver[1];
-> +
-> +       DRM_INFO_ONCE("ps8640 rom fw version %d.%d\n", fw_ver[0], fw_ver[1]);
-> +}
-> +
-> +static int ps8640_bdg_enable(struct ps8640 *ps_bridge)
-
-What is "bdg_enable"?
-If it is "bridge_enable", please spell it out:
- ps8640_bridge_enable()
-
-> +{
-> +       struct i2c_client *client = ps_bridge->page[3];
-> +       int ret;
-> +       u8 vdo_ctrl[2] = {VDO_CTL_ADD, VDO_EN};
-> +
-> +       ret = ps8640_check_valid_id(ps_bridge);
-
-Why are we doing this check here?
-I think we should only do this once, in probe.
-If the ps8640 is not valid, we shouldn't even get this far.
-
-> +       if (ret) {
-> +               DRM_ERROR("ps8640 not valid: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       ret = ps8640_regw(client, PAGE3_SET_ADD, vdo_ctrl, 2);
-> +       return ret;
-> +}
-> +
-> +static bool ps8640_in_bootloader(struct ps8640 *ps_bridge)
-
-This function doesn't seem very useful.  Just check the variable directly.
-
-> +{
-> +       return ps_bridge->in_fw_update;
-> +}
-> +
-> +static void ps8640_prepare(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       int err, retry_cnt = 0;
-> +       u8 set_vdo_done;
-> +
-> +       if (ps8640_in_bootloader(ps_bridge))
-> +               return;
-> +
-> +       if (ps_bridge->enabled)
-> +               return;
-> +
-> +       err = drm_panel_prepare(ps_bridge->panel);
-> +       if (err < 0) {
-> +               DRM_ERROR("failed to prepare panel: %d\n", err);
-> +               return;
-> +       }
-> +
-> +       /* delay for power stable */
-> +       usleep_range(500, 700);
-
-
-What is this "power stable" delay for?  The panel?
-Shouldn't that be handled in drm_panel_prepare()?
-
-> +
-> +       err = regulator_enable(ps_bridge->pwr_1v2_supply);
-> +       if (err < 0) {
-> +               DRM_ERROR("failed to enable vdd12-supply: %d\n", err);
-> +               goto err_panel_unprepare;
-> +       }
-> +
-> +       err = regulator_enable(ps_bridge->pwr_3v3_supply);
-> +       if (err < 0) {
-> +               DRM_ERROR("failed to enable vdd33-supply: %d\n", err);
-> +               goto err_regulator_1v2_disable;
-> +       }
-> +
-> +       gpiod_set_value(ps_bridge->gpio_slp_n, 1);
-> +       gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-
-Shouldn't we setup these GPIO before enabling the regulators?
-
-> +       usleep_range(500, 700);
-> +       gpiod_set_value(ps_bridge->gpio_rst_n, 1);
-> +
-> +       /* wait for the ps8640 embed mcu ready
-> +         * first wait 200ms and then check the mcu ready flag every 20ms
-> +       */
-
-Please fix multi-line comment indentation.
-
-> +       msleep(200);
-> +       do {
-> +               err = ps8640_regr(client, PAGE2_GPIO_H, &set_vdo_done, 1);
-> +               if (err < 0) {
-> +                       DRM_ERROR("failed read PAGE2_GPIO_H: %d\n", err);
-> +                       goto err_regulator_1v2_disable;
-> +               }
-> +               msleep(20);
-> +       } while ((retry_cnt++ < 10) && ((set_vdo_done & PS_GPIO9) != PS_GPIO9));
-> +
-> +       ps8640_show_mcu_fw_version(ps_bridge);
-
-Why do you need to read this on every prepare?
-We only print it once anyway.
-
-> +       ps8640_regw_byte(client, PAGE2_I2C_BYPASS, I2C_BYPASS_EN);
-
-What does this do?
-
-> +       ps_bridge->enabled = true;
-> +
-> +       return;
-> +
-> +err_regulator_1v2_disable:
-> +       regulator_disable(ps_bridge->pwr_1v2_supply);
-> +err_panel_unprepare:
-> +       drm_panel_unprepare(ps_bridge->panel);
-> +}
-> +
-> +static void ps8640_pre_enable(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +
-> +       ps8640_prepare(ps_bridge);
-
-The order looks strange to me:
-
-AFAICT, we are preparing the ps8640 before the panel, however, we also
-*disable* the ps8640 before the panel.
-
-Shouldn't we enable/disable in opposite order, like:
-
- ps8640_prepare
- ps8640_bdg_enable
- drm_panel_enable
-
- drm_panel_disable
- ps8640_bdg_disable
- ps8640_unprepare
-
-
-> +}
-> +
-> +static void ps8640_enable(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +       int err;
-> +
-> +       err = ps8640_bdg_enable(ps_bridge);
-> +       if (err)
-> +               DRM_ERROR("failed to enable unmutevideo: %d\n", err);
-> +
-> +       err = drm_panel_enable(ps_bridge->panel);
-> +       if (err < 0)
-> +               DRM_ERROR("failed to enable panel: %d\n", err);
-> +}
-> +
-> +static void ps8640_disable(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +       int err;
-> +
-> +       if (ps8640_in_bootloader(ps_bridge))
-> +               return;
-> +
-> +       if (!ps_bridge->enabled)
-> +               return;
-> +
-> +       ps_bridge->enabled = false;
-> +
-> +       err = drm_panel_disable(ps_bridge->panel);
-> +       if (err < 0)
-> +               DRM_ERROR("failed to disable panel: %d\n", err);
-> +
-> +       gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-> +       gpiod_set_value(ps_bridge->gpio_slp_n, 0);
-> +       regulator_disable(ps_bridge->pwr_3v3_supply);
-> +       regulator_disable(ps_bridge->pwr_1v2_supply);
-> +}
-> +
-> +static void ps8640_post_disable(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +       int err;
-> +
-> +       err = drm_panel_unprepare(ps_bridge->panel);
-> +       if (err)
-> +               DRM_ERROR("failed to unprepare panel: %d\n", err);
-> +}
-> +
-> +static int ps8640_get_modes(struct drm_connector *connector)
-> +{
-> +       struct ps8640 *ps_bridge = connector_to_ps8640(connector);
-> +
-> +       ps8640_prepare(ps_bridge);
-
-Hmm, is this needed?
-Shouldn't we unprepare after getting the modes?
-
-> +
-> +       return drm_panel_get_modes(ps_bridge->panel);
-> +}
-> +
-> +static struct drm_encoder *ps8640_best_encoder(struct drm_connector *connector)
-> +{
-> +       struct ps8640 *ps_bridge;
-> +
-> +       ps_bridge = connector_to_ps8640(connector);
-> +       return ps_bridge->bridge.encoder;
-> +}
-> +
-> +static const struct drm_connector_helper_funcs ps8640_connector_helper_funcs = {
-> +       .get_modes = ps8640_get_modes,
-> +       .best_encoder = ps8640_best_encoder,
-> +};
-> +
-> +static enum drm_connector_status ps8640_detect(struct drm_connector *connector,
-> +                                              bool force)
-> +{
-> +       return connector_status_connected;
-> +}
-> +
-> +static void ps8640_connector_destroy(struct drm_connector *connector)
-> +{
-> +       drm_connector_unregister(connector);
-> +       drm_connector_cleanup(connector);
-> +}
-> +
-> +static const struct drm_connector_funcs ps8640_connector_funcs = {
-> +       .dpms = drm_atomic_helper_connector_dpms,
-> +       .fill_modes = drm_helper_probe_single_connector_modes,
-> +       .detect = ps8640_detect,
-> +       .destroy = ps8640_connector_destroy,
-> +       .reset = drm_atomic_helper_connector_reset,
-> +       .atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-> +       .atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
-> +};
-> +
-> +int ps8640_bridge_attach(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +       int ret;
-> +
-> +       if (!bridge->encoder) {
-
-Hmm, how is this possible?
-
-> +               DRM_ERROR("Parent encoder object not found");
-> +               return -ENODEV;
-> +       }
-> +
-> +       ret = drm_connector_init(bridge->dev, &ps_bridge->connector,
-> +                                &ps8640_connector_funcs,
-> +                                DRM_MODE_CONNECTOR_eDP);
-> +
-> +       if (ret) {
-> +               DRM_ERROR("Failed to initialize connector with drm: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       drm_connector_helper_add(&ps_bridge->connector,
-> +                                &ps8640_connector_helper_funcs);
-> +       drm_connector_register(&ps_bridge->connector);
-> +
-> +       ps_bridge->connector.dpms = DRM_MODE_DPMS_ON;
-> +       drm_mode_connector_attach_encoder(&ps_bridge->connector,
-> +                                         bridge->encoder);
-> +
-> +       if (ps_bridge->panel)
-> +               drm_panel_attach(ps_bridge->panel, &ps_bridge->connector);
-> +
-> +       return ret;
-> +}
-> +
-> +static bool ps8640_bridge_mode_fixup(struct drm_bridge *bridge,
-> +                                    const struct drm_display_mode *mode,
-> +                                    struct drm_display_mode *adjusted_mode)
-> +{
-> +       return true;
-> +}
-> +
-> +static const struct drm_bridge_funcs ps8640_bridge_funcs = {
-> +       .attach = ps8640_bridge_attach,
-> +       .mode_fixup = ps8640_bridge_mode_fixup,
-> +       .disable = ps8640_disable,
-> +       .post_disable = ps8640_post_disable,
-> +       .pre_enable = ps8640_pre_enable,
-> +       .enable = ps8640_enable,
-> +};
-> +
-> +static ssize_t ps8640_fw_file_show(struct device *dev,
-> +                                  struct device_attribute *attr, char *buf)
-> +{
-> +       struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +
-> +       return scnprintf(buf, PAGE_SIZE, "%s\n", ps_bridge->fw_file);
-> +}
-> +
-> +static int ps8640_update_file_name(struct device *dev, char **file_name,
-> +                                  const char *buf, size_t count)
-> +{
-> +       char *new_file_name;
-> +
-> +       /* Simple sanity check */
-> +       if (count > 64) {
-> +               dev_warn(dev, "File name too long\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       new_file_name = devm_kmalloc(dev, count + 1, GFP_KERNEL);
-> +       if (!new_file_name)
-> +               return -ENOMEM;
-> +
-> +       memcpy(new_file_name, buf, count + 1);
-> +
-> +       /* Echo into the sysfs entry may append newline at the end of buf */
-> +       if (new_file_name[count - 1] == '\n')
-> +               count--;
-> +
-> +       new_file_name[count] = '\0';
-> +
-> +       if (*file_name)
-> +               devm_kfree(dev, *file_name);
-> +
-> +       *file_name = new_file_name;
-> +
-> +       return 0;
-> +}
-> +
-> +static ssize_t ps8640_fw_file_store(struct device *dev,
-> +                                   struct device_attribute *attr,
-> +                                   const char *buf, size_t count)
-
-Hmm. Why do we need to make the firmware file name changeable?
-Can't we just mandate a ps8640 file name, and use a symlink if
-necessary to select from a set of files if necessary?
-
-> +{
-> +       struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +       int ret;
-> +
-> +       ret = ps8640_update_file_name(dev, &ps_bridge->fw_file, buf, count);
-> +       if (ret)
-> +               return ret;
-> +
-> +       return count;
-> +}
-> +
-> +/* Firmware Version is returned as Major.Minor.Build */
-> +static ssize_t ps8640_fw_version_show(struct device *dev,
-> +                                     struct device_attribute *attr, char *buf)
-> +{
-> +       struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +       struct ps8640_info *info = &ps_bridge->info;
-> +
-> +       return scnprintf(buf, PAGE_SIZE, "%u.%u\n", info->version >> 8,
-> +                        info->version & 0xff);
-> +}
-> +
-> +/* Hardware Version is returned as FamilyID.VariantID */
-> +static ssize_t ps8640_hw_version_show(struct device *dev,
-> +                                     struct device_attribute *attr, char *buf)
-> +{
-> +       struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +       struct ps8640_info *info = &ps_bridge->info;
-> +
-> +       return scnprintf(buf, PAGE_SIZE, "ps%u.%u\n", info->family_id,
-> +                        info->variant_id);
-> +}
-> +
-> +static int ps8640_spi_send_cmd(struct ps8640 *ps_bridge, u8 *cmd, u8 cmd_len)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       u8 i;
-> +       int ret;
-> +
-> +       ret = ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +       if (ret)
-> +               goto err;
-> +
-> +       /* write command in write port */
-> +       for (i = 0; i < cmd_len; i++) {
-> +               ret = ps8640_regw_byte(client, PAGE2_SWSPI_WDATA, cmd[i]);
-> +               if (ret)
-> +                       goto err;
-> +       }
-> +       /*      command length */
-> +       ret = ps8640_regw_byte(client, PAGE2_SWSPI_LEN, cmd_len - 1);
-> +       if (ret)
-> +               goto err;
-> +       /*      trigger read */
-> +       ret = ps8640_regw_byte(client, PAGE2_SWSPI_CTL, TRIGGER_NO_READBACK);
-> +       if (ret)
-> +               goto err;
-> +
-> +       ret = ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +       if (ret)
-> +               goto err;
-> +
-> +       return 0;
-> +
-> +err:
-> +       dev_err(&client->dev, "send command err: %d\n", ret);
-> +       return ret;
-> +}
-> +
-> +static int ps8640_wait_spi_ready(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       u8 spi_rdy_st, retry_cnt = 0;
-> +
-> +       do {
-> +               ps8640_regr(client, PAGE2_SPI_STATUS, &spi_rdy_st, 1);
-> +               msleep(20);
-> +               if ((retry_cnt == SPI_MAX_RETRY_CNT) &&
-> +                   ((spi_rdy_st & 0x0c) != 0x0c)) {
-> +                       dev_err(&client->dev, "wait spi ready timeout\n");
-> +                       return -EBUSY;
-> +               }
-> +       } while ((retry_cnt++ < SPI_MAX_RETRY_CNT) &&
-> +                (spi_rdy_st & 0x0c) == 0x0c);
-> +
-> +       return 0;
-> +}
-> +
-> +static int ps8640_wait_spi_nobusy(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       u8 spi_status, retry_cnt = 0;
-> +       int ret;
-> +
-> +       do {
-> +               /*  0x05 RDSR; Read-Status-Register */
-> +               ret = ps8640_regw_byte(client, PAGE2_SWSPI_WDATA, 0x05);
-> +               if (ret)
-> +                       goto err_send_cmd_exit;
-> +
-> +               /*  command length */
-> +               ret = ps8640_regw_byte(client, PAGE2_SWSPI_LEN, 0x00);
-> +               if (ret)
-> +                       goto err_send_cmd_exit;
-> +
-> +               /*  trigger read */
-> +               ret = ps8640_regw_byte(client, PAGE2_SWSPI_CTL,
-> +                                      TRIGGER_READBACK);
-> +               if (ret)
-> +                       goto err_send_cmd_exit;
-> +
-> +               /* delay for cmd send */
-> +               usleep_range(100, 300);
-> +               /* wait for SPI ROM until not busy */
-> +               ret = ps8640_regr(client, PAGE2_SWSPI_RDATA, &spi_status, 1);
-> +               if (ret)
-> +                       goto err_send_cmd_exit;
-> +       } while ((retry_cnt++ < SPI_MAX_RETRY_CNT) &&
-> +                (spi_status & 0x0c) == 0x0c);
-> +
-> +       if ((retry_cnt > SPI_MAX_RETRY_CNT) && (spi_status & 0x0c) != 0x0c) {
-> +               ret = -EBUSY;
-> +               dev_err(&client->dev, "wait spi no busy timeout: %d\n", ret);
-> +               goto err_timeout;
-> +       }
-> +
-> +       return 0;
-> +
-> +err_send_cmd_exit:
-> +       dev_err(&client->dev, "send command err: %d\n", ret);
-> +
-> +err_timeout:
-> +       return ret;
-> +}
-> +
-> +static int ps8640_wait_rom_idle(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[0];
-> +       int ret;
-> +
-> +       ret = ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_wait_spi_ready(ps_bridge);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_wait_spi_nobusy(ps_bridge);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +       if (ret)
-> +               goto exit;
-> +
-> +exit:
-> +       if (ret)
-> +               dev_err(&client->dev, "wait ps8640 rom idle fail: %d\n", ret);
-> +
-> +       return ret;
-> +}
-> +
-> +static int ps8640_spi_dl_mode(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       int ret;
-> +
-> +       /* switch ps8640 mode to spi dl mode */
-> +       gpiod_set_value(ps_bridge->gpio_mode_sel_n, 0);
-> +
-> +       /* reset spi interface */
-> +       ret = ps8640_regw_byte(client, PAGE2_SW_REST, 0xc0);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_regw_byte(client, PAGE2_SW_REST, 0x40);
-> +       if (ret)
-> +               goto exit;
-> +
-> +exit:
-> +       if (ret)
-> +               dev_err(&client->dev, "fail reset spi interface: %d\n", ret);
-> +
-> +       return ret;
-> +}
-> +
-> +static int ps8640_rom_prepare(struct ps8640 *ps_bridge)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       struct device *dev = &client->dev;
-> +       u8 i, cmd[2];
-> +       int ret;
-> +
-> +       /*      Enable-Write-Status-Register */
-> +       cmd[0] = 0x06;
-> +       ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +       if (ret) {
-> +               dev_err(dev, "failed enable-write-status-register: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       /* disable all protection */
-> +       cmd[0] = 0x01;
-> +       cmd[1] = 0x00;
-> +       ret = ps8640_spi_send_cmd(ps_bridge, cmd, 2);
-> +       if (ret) {
-> +               dev_err(dev, "fail disable all protection: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       /* wait for SPI module ready */
-> +       ret = ps8640_wait_rom_idle(ps_bridge);
-> +       if (ret) {
-> +               dev_err(dev, "fail wait rom idle: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +       for (i = 0; i < 6; i++)
-> +               ps8640_regw_byte(client, PAGE2_ENCTLSPI_WR, enc_ctrl_code[i]);
-> +       ps8640_regw_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +
-> +       /*      Enable-Write-Status-Register */
-> +       cmd[0] = 0x06;
-> +       ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +       if (ret) {
-> +               dev_err(dev, "fail enable-write-status-register: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       /* chip erase command */
-> +       cmd[0] = 0xc7;
-> +       ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +       if (ret) {
-> +               dev_err(dev, "fail disable all protection: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       ret = ps8640_wait_rom_idle(ps_bridge);
-> +       if (ret) {
-> +               dev_err(dev, "fail wait rom idle: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int ps8640_validate_firmware(struct ps8640 *ps_bridge,
-> +                                   const struct firmware *fw)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[0];
-> +       struct ps8640_info *info = &ps_bridge->info;
-> +       u16 fw_chip_id, fw_version_id;
-> +
-> +       /*
-> +        * Get the chip_id from the firmware. Make sure that it is the
-> +        * right controller to do the firmware and config update.
-> +        */
-> +       fw_chip_id = get_unaligned_le16(fw->data + FW_CHIP_ID_OFFSET);
-> +
-> +       if (fw_chip_id != 0x8640) {
-> +               dev_err(&client->dev,
-> +                       "chip id mismatch: fw 0x%x vs. chip 0x8640\n",
-> +                       fw_chip_id);
-> +               return -ENODEV;
-> +       }
-> +
-> +       fw_version_id = get_unaligned_le16(fw->data + FW_VERSION_OFFSET);
-> +
-> +       if (fw_chip_id != info->version) {
-> +               dev_err(&client->dev,
-> +                       "fw version mismatch: fw %d.%d vs. chip %d.%d\n",
-> +                       fw_version_id >> 8, fw_version_id & 0xff,
-> +                       info->version >> 8, info->version & 0xff);
-> +               return -ENODEV;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int ps8640_write_rom(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[0];
-> +       struct device *dev = &client->dev;
-> +       struct i2c_client *client2 = ps_bridge->page[2];
-> +       struct i2c_client *client7 = ps_bridge->page[7];
-> +       unsigned int pos = 0;
-> +       u8 progress_cnt, rom_page_id[2];
-> +       int ret;
-> +
-> +       ps8640_regw_byte(client2, PAGE2_SPI_CFG3, I2C_TO_SPI_RESET);
-> +       msleep(100);
-> +       ps8640_regw_byte(client2, PAGE2_SPI_CFG3, 0x00);
-> +
-> +       while (pos < fw->size) {
-> +               rom_page_id[0] = (pos >> 8) & 0xFF;
-> +               rom_page_id[1] = (pos >> 16) & 0xFF;
-
-nit: kernel usually uses lowercase hex.  At the very least, be
-consistent in the driver (other hex constants are lowercase).
-
-> +               ret = ps8640_regw(client2, PAGE2_ROMADD_BYTE1, rom_page_id, 2);
-> +               if (ret)
-> +                       goto error;
-> +               ret = ps8640_regw(client7, 0, fw->data + pos, 256);
-> +               if (ret)
-> +                       goto error;
-> +
-> +               pos += 256;
-> +               if (progress_cnt != (pos * 100) / fw->size) {
-> +                       progress_cnt = (pos * 100) / fw->size;
-> +                       dev_info(dev, "fw update progress percent %d\n",
-> +                                progress_cnt);
-
-Please don't spam dmesg.  Use dev_dbg().
-Also, it might be more straightforward as:
-  dev_dbg(dev, "fw update completed %u / %u bytes\n", pos, fw->size);
-
-> +               }
-> +       }
-> +       return 0;
-> +
-> +error:
-> +       dev_err(dev, "failed write extenal flash, %d\n", ret);
-> +       return ret;
-> +}
-> +
-> +static int ps8640_spi_normal_mode(struct ps8640 *ps_bridge)
-> +{
-> +       u8 cmd[2];
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +
-> +       /*  Enable-Write-Status-Register */
-> +       cmd[0] = 0x06;
-> +       ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +
-> +       /* protect BPL/BP0/BP1 */
-> +       cmd[0] = 0x01;
-> +       cmd[1] = 0x8c;
-> +       ps8640_spi_send_cmd(ps_bridge, cmd, 2);
-> +
-> +       /* wait for SPI rom ready */
-> +       ps8640_wait_rom_idle(ps_bridge);
-> +
-> +     /* disable PS8640 mapping function */
-
-Indent w/ tabs everywhere.
-
-> +       ps8640_regw_byte(client, PAGE2_ENCTLSPI_WR, 0x00);
-> +
-> +       gpiod_set_value(ps_bridge->gpio_mode_sel_n, 1);
-> +       return 0;
-> +}
-> +
-> +static int ps8640_enter_bl(struct ps8640 *ps_bridge)
-> +{
-> +       int ret;
-> +
-> +       ret = ps8640_spi_dl_mode(ps_bridge);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ps_bridge->in_fw_update = true;
-> +       return 0;
-> +}
-> +
-> +static void ps8640_exit_bl(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +       ps_bridge->in_fw_update = false;
-> +       ps8640_spi_normal_mode(ps_bridge);
-> +}
-> +
-> +static int ps8640_load_fw(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +       struct i2c_client *client = ps_bridge->page[0];
-> +       struct device *dev = &client->dev;
-> +       int ret;
-> +       bool ps8640_status_backup = ps_bridge->enabled;
-> +
-> +       if (!ps8640_in_bootloader(ps_bridge)) {
-> +               if (!ps8640_status_backup)
-> +                       ps8640_prepare(ps_bridge);
-> +
-> +               ret = ps8640_enter_bl(ps_bridge);
-> +               if (ret)
-> +                       goto exit;
-> +       }
-> +
-> +       ret = ps8640_validate_firmware(ps_bridge, fw);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_rom_prepare(ps_bridge);
-> +       if (ret)
-> +               goto exit;
-> +
-> +       ret = ps8640_write_rom(ps_bridge, fw);
-> +
-> +exit:
-> +       if (ret)
-> +               dev_err(dev, "Failed to load firmware, %d\n", ret);
-> +
-> +       ps8640_exit_bl(ps_bridge, fw);
-> +       if (!ps8640_status_backup)
-> +               ps8640_disable(&ps_bridge->bridge);
-> +       return ret;
-> +}
-> +
-> +static ssize_t ps8640_update_fw_store(struct device *dev,
-> +                                     struct device_attribute *attr,
-> +                                     const char *buf, size_t count)
-> +{
-> +       struct i2c_client *client = to_i2c_client(dev);
-> +       struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> +       const struct firmware *fw;
-> +       int error;
-> +
-> +       error = request_firmware(&fw, ps_bridge->fw_file, dev);
-> +       if (error) {
-> +               dev_err(dev, "Unable to open firmware %s: %d\n",
-> +                       ps_bridge->fw_file, error);
-> +               return error;
-> +       }
-> +
-> +       error = ps8640_load_fw(ps_bridge, fw);
-> +       if (error)
-> +               dev_err(dev, "The firmware update failed(%d)\n", error);
-> +       else
-> +               dev_info(dev, "The firmware update succeeded\n");
-> +
-> +       release_firmware(fw);
-> +       return error ? error : count;
-> +}
-> +
-> +static DEVICE_ATTR(fw_file, S_IRUGO | S_IWUSR, ps8640_fw_file_show,
-> +                  ps8640_fw_file_store);
-> +static DEVICE_ATTR(fw_version, S_IRUGO, ps8640_fw_version_show, NULL);
-> +static DEVICE_ATTR(hw_version, S_IRUGO, ps8640_hw_version_show, NULL);
-> +static DEVICE_ATTR(update_fw, S_IWUSR, NULL, ps8640_update_fw_store);
-> +
-> +static struct attribute *ps8640_attrs[] = {
-> +       &dev_attr_fw_file.attr,
-> +       &dev_attr_fw_version.attr,
-> +       &dev_attr_hw_version.attr,
-> +       &dev_attr_update_fw.attr,
-> +       NULL
-> +};
-> +
-> +static const struct attribute_group ps8640_attr_group = {
-> +       .attrs = ps8640_attrs,
-> +};
-> +
-> +static void ps8640_remove_sysfs_group(void *data)
-> +{
-> +       struct ps8640 *ps_bridge = data;
-> +
-> +       sysfs_remove_group(&ps_bridge->page[0]->dev.kobj, &ps8640_attr_group);
-> +}
-> +
-> +/* for fireware update end */
-
-/* firmware update end */
-... or, just remove this comment
-
-> +
-> +static int ps8640_probe(struct i2c_client *client,
-> +                       const struct i2c_device_id *id)
-> +{
-> +       struct device *dev = &client->dev;
-> +       struct ps8640 *ps_bridge;
-> +       struct device_node *np = dev->of_node;
-> +       struct device_node *port, *out_ep;
-> +       struct device_node *panel_node = NULL;
-> +       int i, ret;
-> +
-> +       ps_bridge = devm_kzalloc(dev, sizeof(*ps_bridge), GFP_KERNEL);
-> +       if (!ps_bridge) {
-> +               ret = -ENOMEM;
-> +               goto exit;
-> +       }
-> +       /* port@1 is ps8640 output port */
-> +       port = of_graph_get_port_by_id(np, 1);
-> +       if (port) {
-> +               out_ep = of_get_child_by_name(port, "endpoint");
-> +               of_node_put(port);
-> +               if (out_ep) {
-> +                       panel_node = of_graph_get_remote_port_parent(out_ep);
-> +                       of_node_put(out_ep);
-> +               }
-> +       }
-> +       if (panel_node) {
-> +               ps_bridge->panel = of_drm_find_panel(panel_node);
-> +               of_node_put(panel_node);
-> +               if (!ps_bridge->panel) {
-> +                       ret = -EPROBE_DEFER;
-> +                       goto exit;
-> +               }
-> +       }
-> +
-> +       ps_bridge->pwr_3v3_supply = devm_regulator_get(dev, "vdd33");
-> +       if (IS_ERR(ps_bridge->pwr_3v3_supply)) {
-> +               ret = PTR_ERR(ps_bridge->pwr_3v3_supply);
-> +               dev_err(dev, "cannot get vdd33 supply: %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ps_bridge->pwr_1v2_supply = devm_regulator_get(dev, "vdd12");
-> +       if (IS_ERR(ps_bridge->pwr_1v2_supply)) {
-> +               ret = PTR_ERR(ps_bridge->pwr_1v2_supply);
-> +               dev_err(dev, "cannot get vdd12 supply: %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ps_bridge->gpio_mode_sel_n = devm_gpiod_get(&client->dev, "mode-sel",
-> +                                                   GPIOD_OUT_HIGH);
-> +       if (IS_ERR(ps_bridge->gpio_mode_sel_n)) {
-> +               ret = PTR_ERR(ps_bridge->gpio_mode_sel_n);
-> +               dev_err(dev, "cannot get gpio_mode_sel_n %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ps_bridge->gpio_slp_n = devm_gpiod_get(&client->dev, "sleep",
-> +                                              GPIOD_OUT_HIGH);
-> +       if (IS_ERR(ps_bridge->gpio_slp_n)) {
-> +               ret = PTR_ERR(ps_bridge->gpio_slp_n);
-> +               dev_err(dev, "cannot get gpio_slp_n: %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ps_bridge->gpio_rst_n = devm_gpiod_get(&client->dev, "reset",
-> +                                              GPIOD_OUT_HIGH);
-> +       if (IS_ERR(ps_bridge->gpio_rst_n)) {
-> +               ret = PTR_ERR(ps_bridge->gpio_rst_n);
-> +               dev_err(dev, "cannot get gpio_rst_n: %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ps_bridge->bridge.funcs = &ps8640_bridge_funcs;
-> +       ps_bridge->bridge.of_node = dev->of_node;
-> +       ret = drm_bridge_add(&ps_bridge->bridge);
-> +       if (ret) {
-> +               dev_err(dev, "Failed to add bridge: %d\n", ret);
-> +               goto exit;
-> +       }
-> +
-> +       ret = ps8640_update_file_name(&client->dev, &ps_bridge->fw_file,
-> +                                     PS_FW_NAME, strlen(PS_FW_NAME));
-> +       if (ret) {
-> +               dev_err(dev, "failed to update file name: %d\n", ret);
-> +               goto exit;
-
-goto exit_drm_bridge_remove:
-
-> +       }
-> +
-> +       ps_bridge->page[0] = client;
-> +
-> +       /* ps8640 uses multiple addresses, use dummy devices for them
-> +         * page[0]: for DP control
-> +         * page[1]: for VIDEO Bridge
-> +         * page[2]: for control top
-> +         * page[3]: for DSI Link Control1
-> +         * page[4]: for MIPI Phy
-> +         * page[5]: for VPLL
-> +         * page[6]: for DSI Link Control2
-> +         * page[7]: for spi rom mapping
-> +       */
-> +       for (i = 1; i < 8; i++) {
-> +               ps_bridge->page[i] = i2c_new_dummy(client->adapter,
-> +                                                  client->addr + i);
-> +               if (!ps_bridge->page[i]) {
-> +                       dev_err(dev, "failed i2c dummy device, address%02x\n",
-> +                               client->addr + i);
-> +                       ret = -EBUSY;
-> +                       goto exit_dummy;
-> +               }
-> +       }
-> +       i2c_set_clientdata(client, ps_bridge);
-> +
-> +       ret = sysfs_create_group(&client->dev.kobj, &ps8640_attr_group);
-> +       if (ret) {
-> +               dev_err(dev, "failed to create sysfs entries: %d\n", ret);
-> +               goto exit_dummy;
-> +       }
-> +
-> +       ret = devm_add_action(dev, ps8640_remove_sysfs_group, ps_bridge);
-> +       if (ret) {
-> +               ps8640_remove_sysfs_group(ps_bridge);
-> +               dev_err(dev, "failed to add sysfs cleanup action: %d\n", ret);
-> +               goto exit_dummy;
-
-goto exit_remove_sysfs;
-
-> +       }
-> +       return 0;
-> +
-
-
-exit_remove_sysfs:
-sysfs_remove_group(&ps_bridge->page[0]->dev.kobj, &ps8640_attr_group);
-
-> +exit_dummy:
-> +       for (i = 1; i < 8; i++)
-> +               if (ps_bridge->page[i])
-> +                       i2c_unregister_device(ps_bridge->page[i]);
-> +
-> +exit:
-
-drm_bridge_remove(&ps_bridge->bridge);
-
-> +       return ret;
-> +}
-> +
-> +static int ps8640_remove(struct i2c_client *client)
-> +{
-> +       struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> +       int i;
-> +
-> +       for (i = 1; i < 8; i++)
-> +               if (ps_bridge->page[i])
-
-This will always be true and can be skipped.
-
-> +                       i2c_unregister_device(ps_bridge->page[i]);
-> +
-
-exit_drm_bridge_remove:
-
-> +       drm_bridge_remove(&ps_bridge->bridge);
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct i2c_device_id ps8640_i2c_table[] = {
-> +       {"parade,ps8640", 0},
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(i2c, ps8640_i2c_table);
-> +
-> +static const struct of_device_id ps8640_match[] = {
-> +       { .compatible = "parade,ps8640" },
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(of, ps8640_match);
-> +
-> +static struct i2c_driver ps8640_driver = {
-> +       .id_table = ps8640_i2c_table,
-> +       .probe = ps8640_probe,
-> +       .remove = ps8640_remove,
-> +       .driver = {
-> +               .name = "parade,ps8640",
-> +               .of_match_table = ps8640_match,
-> +       },
-> +};
-> +module_i2c_driver(ps8640_driver);
-> +
-> +MODULE_AUTHOR("Jitao Shi <jitao.shi@mediatek.com>");
-> +MODULE_AUTHOR("CK Hu <ck.hu@mediatek.com>");
-> +MODULE_DESCRIPTION("PARADE ps8640 DSI-eDP converter driver");
-> +MODULE_LICENSE("GPL v2");
-> --
-> 1.7.9.5
->
+[auto build test WARNING on v4.4-rc8]
+[also build test WARNING on next-20160113]
+[cannot apply to drm/drm-next]
+[if your patch is applied to the wrong git tree, please drop us a note to help improving the system]
+
+url:    https://github.com/0day-ci/linux/commits/Jitao-Shi/Documentation-bridge-Add-documentation-for-ps8640-DT-properties/20160113-102004
+config: i386-randconfig-sb0-01140840 (attached as .config)
+reproduce:
+        # save the attached .config to linux build tree
+        make ARCH=i386 
+
+Note: it may well be a FALSE warning. FWIW you are at least aware of it now.
+http://gcc.gnu.org/wiki/Better_Uninitialized_Warnings
+
+All warnings (new ones prefixed by >>):
+
+   drivers/gpu/drm/bridge/parade-ps8640.c: In function 'ps8640_update_fw_store':
+>> drivers/gpu/drm/bridge/parade-ps8640.c:788:20: warning: 'progress_cnt' may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (progress_cnt != (pos * 100) / fw->size) {
+                       ^
+   drivers/gpu/drm/bridge/parade-ps8640.c:770:5: note: 'progress_cnt' was declared here
+     u8 progress_cnt, rom_page_id[2];
+        ^
+
+vim +/progress_cnt +788 drivers/gpu/drm/bridge/parade-ps8640.c
+
+   772	
+   773		ps8640_regw_byte(client2, PAGE2_SPI_CFG3, I2C_TO_SPI_RESET);
+   774		msleep(100);
+   775		ps8640_regw_byte(client2, PAGE2_SPI_CFG3, 0x00);
+   776	
+   777		while (pos < fw->size) {
+   778			rom_page_id[0] = (pos >> 8) & 0xFF;
+   779			rom_page_id[1] = (pos >> 16) & 0xFF;
+   780			ret = ps8640_regw(client2, PAGE2_ROMADD_BYTE1, rom_page_id, 2);
+   781			if (ret)
+   782				goto error;
+   783			ret = ps8640_regw(client7, 0, fw->data + pos, 256);
+   784			if (ret)
+   785				goto error;
+   786	
+   787			pos += 256;
+ > 788			if (progress_cnt != (pos * 100) / fw->size) {
+   789				progress_cnt = (pos * 100) / fw->size;
+   790				dev_info(dev, "fw update progress percent %d\n",
+   791					 progress_cnt);
+   792			}
+   793		}
+   794		return 0;
+   795	
+   796	error:
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+
+--liOOAslEiF7prFVr
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename=".config.gz"
+Content-Transfer-Encoding: base64
+
+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
+
+--liOOAslEiF7prFVr--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
