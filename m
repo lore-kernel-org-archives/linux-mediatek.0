@@ -1,62 +1,97 @@
-From: Koro Chen <koro.chen@mediatek.com>
-Subject: Re: [alsa-devel] [PATCH] ASoC: mediatek: add i2c dependency
-Date: Thu, 14 Jan 2016 09:43:15 +0800
-Message-ID: <1452735795.28205.1.camel@mtksdaap41>
-References: <5346380.rqT2CVl4PH@wuerfel>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v2] clk: mediatek: Allow changing PLL rate when it is off
+Date: Wed, 13 Jan 2016 18:26:37 -0800
+Message-ID: <20160114022637.1942.4564@quark.deferred.io>
+References: <1452482936-51852-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5346380.rqT2CVl4PH@wuerfel>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: broonie@kernel.org, alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org, lgirdwood@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1452482936-51852-1-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>
+Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-01-13 at 23:14 +0100, Arnd Bergmann wrote:
-> The newly added mediatek drivers for mt8173 select codes that depend
-> on I2C, which cuases a build failure if I2C is disabled:
-> 
-> warning: (SND_SOC_ADAU1761_I2C && SND_SOC_ADAU1781_I2C && SND_SOC_ADAU1977_I2C && SND_SOC_RT5677 && EXTCON_MAX14577 && EXTCON_MAX77693 && EXTCON_MAX77843 && BMC150_ACCEL_I2C && BMG160_I2C) selects REGMAP_I2C which has unmet direct dependencies (I2C)
-> codecs/rt5645.c:3854:1: warning: data definition has no type or storage class
-> codecs/rt5645.c:3854:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
-> codecs/rt5677.c:5270:1: warning: data definition has no type or storage class
-> 77_i2c_driver);
-> 
-> codecs/rt5677.c:5270:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
-> 
-> This adds an explicit dependency.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index 15c04e2eae34..976967675387 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -9,7 +9,7 @@ config SND_SOC_MEDIATEK
->  
->  config SND_SOC_MT8173_MAX98090
->  	tristate "ASoC Audio driver for MT8173 with MAX98090 codec"
-> -	depends on SND_SOC_MEDIATEK
-> +	depends on SND_SOC_MEDIATEK && I2C
->  	select SND_SOC_MAX98090
->  	help
->  	  This adds ASoC driver for Mediatek MT8173 boards
-> @@ -19,7 +19,7 @@ config SND_SOC_MT8173_MAX98090
->  
->  config SND_SOC_MT8173_RT5650_RT5676
->  	tristate "ASoC Audio driver for MT8173 with RT5650 RT5676 codecs"
-> -	depends on SND_SOC_MEDIATEK
-> +	depends on SND_SOC_MEDIATEK && I2C
->  	select SND_SOC_RT5645
->  	select SND_SOC_RT5677
->  	help
-> 
-Acked-by: Koro Chen <koro.chen@mediatek.com>
+Hi James,
 
-Thank you!
+Quoting James Liao (2016-01-10 19:28:56)
+> Some modules may need to change its clock rate before turn on it.
+> So changing PLL's rate when it is off should be allowed.
+> This patch removes PLL enabled check before set rate, so that
+> PLLs can set new frequency even if they are off.
+> 
+> On MT8173 for example, ARMPLL's enable bit can be controlled by
+> other HW. That means ARMPLL may be turned on even if we (CPU / SW)
+> set ARMPLL's enable bit as 0. In this case, SW may want and can
+> still change ARMPLL's rate by changing its pcw and postdiv settings.
+> But without this patch, new pcw setting will not be applied because
+> its enable bit is 0.
 
-> _______________________________________________
-> Alsa-devel mailing list
-> Alsa-devel@alsa-project.org
-> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+Must the clock signal be enabled to change the PLL rate? If so, does
+ARMPLL set the CLK_SET_RATE_GATE flag?
+
+> 
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> ---
+>  drivers/clk/mediatek/clk-pll.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> index 966cab1..8e31fae 100644
+> --- a/drivers/clk/mediatek/clk-pll.c
+> +++ b/drivers/clk/mediatek/clk-pll.c
+> @@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>                 int postdiv)
+>  {
+>         u32 con1, val;
+> -       int pll_en;
+> -
+> -       pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+>  
+>         /* set postdiv */
+>         val = readl(pll->pd_addr);
+> @@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+>  
+>         con1 = readl(pll->base_addr + REG_CON1);
+>  
+> -       if (pll_en)
+> -               con1 |= CON0_PCW_CHG;
+> +       con1 |= CON0_PCW_CHG;
+
+This unconditionally enables the PLL whenever clk_set_rate is called,
+changing the previous behavior. The clk framework still tracks the
+intent of ARMPLLs users with the enable_count. How about something like
+the following:
+
+	bool pll_en = clk_hw_is_enabled(&pll->hw);
+
+	if (pll_en)
+		con1 |= CON0_PCW_CHG;
+
+	writel(con1, pll->base_addr + REG_CON1);
+	if (pll->tuner_addr)
+		writel(con1 + 1, pll->tuner_addr);
+
+	if (pll_en)
+		udelay(20);
+
+This does not rely on the hardware to tell us the intent of the user,
+but instead on our framework usecounting.
+
+Regards,
+Mike
+
+>         writel(con1, pll->base_addr + REG_CON1);
+>         if (pll->tuner_addr)
+>                 writel(con1 + 1, pll->tuner_addr);
+>  
+> -       if (pll_en)
+> -               udelay(20);
+> +       udelay(20);
+>  }
+>  
+>  /*
+> -- 
+> 1.9.1
+> 
