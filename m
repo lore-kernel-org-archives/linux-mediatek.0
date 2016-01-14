@@ -1,129 +1,108 @@
 From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 4/4] soc: mediatek: Add MT2701 scpsys driver
-Date: Thu, 14 Jan 2016 12:50:29 +0800
-Message-ID: <1452747029.5384.13.camel@mtksdaap41>
-References: <1452676288-62711-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1452676288-62711-5-git-send-email-jamesjj.liao@mediatek.com>
-	 <56967171.2070007@gmail.com>
+Subject: Re: [PATCH v2] clk: mediatek: Allow changing PLL rate when it is off
+Date: Thu, 14 Jan 2016 13:55:17 +0800
+Message-ID: <1452750917.5384.24.camel@mtksdaap41>
+References: <1452482936-51852-1-git-send-email-jamesjj.liao@mediatek.com>
+ <20160114022637.1942.4564@quark.deferred.io>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56967171.2070007-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160114022637.1942.4564-/Ffx6e7uQFNsG52AEeRyZ2GXanvQGlWp@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+Hi Mike,
 
-On Wed, 2016-01-13 at 16:46 +0100, Matthias Brugger wrote:
+On Wed, 2016-01-13 at 18:26 -0800, Michael Turquette wrote:
+> Hi James,
 > 
-> On 13/01/16 10:11, James Liao wrote:
-> > From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> >
-> > Add scpsys driver for MT2701.
-> >
-> > Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Quoting James Liao (2016-01-10 19:28:56)
+> > Some modules may need to change its clock rate before turn on it.
+> > So changing PLL's rate when it is off should be allowed.
+> > This patch removes PLL enabled check before set rate, so that
+> > PLLs can set new frequency even if they are off.
+> > 
+> > On MT8173 for example, ARMPLL's enable bit can be controlled by
+> > other HW. That means ARMPLL may be turned on even if we (CPU / SW)
+> > set ARMPLL's enable bit as 0. In this case, SW may want and can
+> > still change ARMPLL's rate by changing its pcw and postdiv settings.
+> > But without this patch, new pcw setting will not be applied because
+> > its enable bit is 0.
+> 
+> Must the clock signal be enabled to change the PLL rate? If so, does
+> ARMPLL set the CLK_SET_RATE_GATE flag?
+
+No. The controlling of PLL's rate and enable are independent. So we can
+change the PLL's rate when it's enabled or disabled.
+
+> > 
 > > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > ---
+> >  drivers/clk/mediatek/clk-pll.c | 9 ++-------
+> >  1 file changed, 2 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+> > index 966cab1..8e31fae 100644
+> > --- a/drivers/clk/mediatek/clk-pll.c
+> > +++ b/drivers/clk/mediatek/clk-pll.c
+> > @@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+> >                 int postdiv)
+> >  {
+> >         u32 con1, val;
+> > -       int pll_en;
+> > -
+> > -       pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
+> >  
+> >         /* set postdiv */
+> >         val = readl(pll->pd_addr);
+> > @@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
+> >  
+> >         con1 = readl(pll->base_addr + REG_CON1);
+> >  
+> > -       if (pll_en)
+> > -               con1 |= CON0_PCW_CHG;
+> > +       con1 |= CON0_PCW_CHG;
 > 
-> NAK, same as in v1. Please don't split up the driver in several code 
-> files, but find a a way to share the common code elegantly.
-> Comments below.
+> This unconditionally enables the PLL whenever clk_set_rate is called,
+> changing the previous behavior. The clk framework still tracks the
+> intent of ARMPLLs users with the enable_count. How about something like
+> the following:
 
-Do you mean we should support MT8173 and MT2701 scpsys in a single file
-(such as mtk-scpsys.c)?
+Not really. This patch will not enable or disable PLL when we change its
+rate. The PLL enable bit is bit[0], we didn't change bit[0] in
+mtk_pll_set_rate_regs(), so its state will not be changed.
 
-We have lots of SoC with different power domain support. It means we
-need to add a different power domain table for a SoC, and may need to
-organize power domains (such as subdomains) for each SoC. It may not
-easy to maintain if we integrate all SoC's power domain into the same
-file.
+This patch set CON0_PCW_CHG (bit[31]) no matter the PLL is enabled or
+not. So we don't need to check the enable bit[0] nor PLL state in the
+framework before set bit[31].
 
-> >   drivers/soc/mediatek/Makefile            |   1 +
-> >   drivers/soc/mediatek/mtk-scpsys-mt2701.c | 170 +++++++++++++++++++++++++++++++
-> >   2 files changed, 171 insertions(+)
-> >   create mode 100644 drivers/soc/mediatek/mtk-scpsys-mt2701.c
-> >
-> > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> > index 13f7d21..d693f7d 100644
-> > --- a/drivers/soc/mediatek/Makefile
-> > +++ b/drivers/soc/mediatek/Makefile
-> > @@ -2,3 +2,4 @@ obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
-> >   obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-> >   obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-> >   obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys-mt8173.o
-> > +obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys-mt2701.o
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys-mt2701.c b/drivers/soc/mediatek/mtk-scpsys-mt2701.c
-> > new file mode 100644
-> > index 0000000..82c00ed
-> > --- /dev/null
-> > +++ b/drivers/soc/mediatek/mtk-scpsys-mt2701.c
-> > @@ -0,0 +1,170 @@
-> > +/*
-> > + * Copyright (c) 2015 Mediatek, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +#include <linux/mfd/syscon.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/pm_domain.h>
-> > +#include <linux/soc/mediatek/infracfg.h>
-> > +#include <dt-bindings/power/mt2701-power.h>
-> > +
-> > +#include "mtk-scpsys.h"
-> > +
-> > +#define SPM_VDE_PWR_CON			0x0210
-> > +#define SPM_MFG_PWR_CON			0x0214
-> > +#define SPM_ISP_PWR_CON			0x0238
-> > +#define SPM_DIS_PWR_CON			0x023C
-> > +#define SPM_CONN_PWR_CON		0x0280
-> > +#define SPM_BDP_PWR_CON			0x029C
-> > +#define SPM_ETH_PWR_CON			0x02A0
-> > +#define SPM_HIF_PWR_CON			0x02A4
-> > +#define SPM_IFR_MSC_PWR_CON		0x02A8
-> > +#define SPM_PWR_STATUS			0x060c
-> > +#define SPM_PWR_STATUS_2ND		0x0610
-> > +
-> > +#define CONN_PWR_STA_MASK		BIT(1)
-> > +#define DIS_PWR_STA_MASK		BIT(3)
-> > +#define MFG_PWR_STA_MASK		BIT(4)
-> > +#define ISP_PWR_STA_MASK		BIT(5)
-> > +#define VDE_PWR_STA_MASK		BIT(7)
-> > +#define BDP_PWR_STA_MASK		BIT(14)
-> > +#define ETH_PWR_STA_MASK		BIT(15)
-> > +#define HIF_PWR_STA_MASK		BIT(16)
-> > +#define IFR_MSC_PWR_STA_MASK		BIT(17)
+> 	bool pll_en = clk_hw_is_enabled(&pll->hw);
 > 
-> Apart from SPM_BDP_PWR_CON and BDP_PWR_STA_MASK this are compatible with 
-> mt8173. So please avoid code duplication.
-> Apart you changed the define names from PWR_STATUS_* to *_STA_MASK, 
-> please keep a uniform naming across the driver.
-
-OK, I'll unify the register naming or remove some register names in next
-patch.
-
-Some duplicated code can be reduced by moving them into the internal
-head file (mtk-scpsys.h). But some init code, such as driver init
-functions, may not easy to eliminate because the probe functions need to
-customize subdomains.
+> 	if (pll_en)
+> 		con1 |= CON0_PCW_CHG;
+> 
+> 	writel(con1, pll->base_addr + REG_CON1);
+> 	if (pll->tuner_addr)
+> 		writel(con1 + 1, pll->tuner_addr);
+> 
+> 	if (pll_en)
+> 		udelay(20);
+> 
+> This does not rely on the hardware to tell us the intent of the user,
+> but instead on our framework usecounting.
 
 
 Best regards,
 
 James
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
