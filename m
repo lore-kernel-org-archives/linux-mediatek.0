@@ -1,128 +1,30 @@
-From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2] clk: mediatek: Allow changing PLL rate when it is off
-Date: Thu, 14 Jan 2016 12:41:19 -0800
-Message-ID: <20160114204119.1942.69629@quark.deferred.io>
-References: <1452482936-51852-1-git-send-email-jamesjj.liao@mediatek.com>
- <20160114022637.1942.4564@quark.deferred.io>
- <1452750917.5384.24.camel@mtksdaap41>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3 3/4] soc: mediatek: Add MT2701 power dt-bindings
+Date: Thu, 14 Jan 2016 20:12:53 -0600
+Message-ID: <20160115021253.GA23690@rob-hp-laptop>
+References: <1452676288-62711-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1452676288-62711-4-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1452750917.5384.24.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1452676288-62711-4-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting James Liao (2016-01-13 21:55:17)
-> Hi Mike,
+On Wed, Jan 13, 2016 at 05:11:27PM +0800, James Liao wrote:
+> From: Shunli Wang <shunli.wang@mediatek.com>
 > 
-> On Wed, 2016-01-13 at 18:26 -0800, Michael Turquette wrote:
-> > Hi James,
-> > 
-> > Quoting James Liao (2016-01-10 19:28:56)
-> > > Some modules may need to change its clock rate before turn on it.
-> > > So changing PLL's rate when it is off should be allowed.
-> > > This patch removes PLL enabled check before set rate, so that
-> > > PLLs can set new frequency even if they are off.
-> > > 
-> > > On MT8173 for example, ARMPLL's enable bit can be controlled by
-> > > other HW. That means ARMPLL may be turned on even if we (CPU / SW)
-> > > set ARMPLL's enable bit as 0. In this case, SW may want and can
-> > > still change ARMPLL's rate by changing its pcw and postdiv settings.
-> > > But without this patch, new pcw setting will not be applied because
-> > > its enable bit is 0.
-> > 
-> > Must the clock signal be enabled to change the PLL rate? If so, does
-> > ARMPLL set the CLK_SET_RATE_GATE flag?
+> Add power dt-bindings for MT2701.
 > 
-> No. The controlling of PLL's rate and enable are independent. So we can
-> change the PLL's rate when it's enabled or disabled.
+> Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> ---
+>  .../devicetree/bindings/soc/mediatek/scpsys.txt    |  6 +++--
+>  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++++++++++++
+>  2 files changed, 31 insertions(+), 2 deletions(-)
+>  create mode 100644 include/dt-bindings/power/mt2701-power.h
 
-Thanks for the clarification.
-
-> 
-> > > 
-> > > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > ---
-> > >  drivers/clk/mediatek/clk-pll.c | 9 ++-------
-> > >  1 file changed, 2 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-> > > index 966cab1..8e31fae 100644
-> > > --- a/drivers/clk/mediatek/clk-pll.c
-> > > +++ b/drivers/clk/mediatek/clk-pll.c
-> > > @@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> > >                 int postdiv)
-> > >  {
-> > >         u32 con1, val;
-> > > -       int pll_en;
-> > > -
-> > > -       pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
-> > >  
-> > >         /* set postdiv */
-> > >         val = readl(pll->pd_addr);
-> > > @@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
-> > >  
-> > >         con1 = readl(pll->base_addr + REG_CON1);
-> > >  
-> > > -       if (pll_en)
-> > > -               con1 |= CON0_PCW_CHG;
-> > > +       con1 |= CON0_PCW_CHG;
-> > 
-> > This unconditionally enables the PLL whenever clk_set_rate is called,
-> > changing the previous behavior. The clk framework still tracks the
-> > intent of ARMPLLs users with the enable_count. How about something like
-> > the following:
-> 
-> Not really. This patch will not enable or disable PLL when we change its
-> rate. The PLL enable bit is bit[0], we didn't change bit[0] in
-> mtk_pll_set_rate_regs(), so its state will not be changed.
-> 
-> This patch set CON0_PCW_CHG (bit[31]) no matter the PLL is enabled or
-> not. So we don't need to check the enable bit[0] nor PLL state in the
-> framework before set bit[31].
-
-Ah, I mistakenly thought that CON0_PCW_CHG was the enable bit, since
-setting it was guarded by the pll_en conditional. Your explanation makes
-perfect sense to me.
-
-Acked-by: Michael Turquette <mturuqette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-
-Regards,
-Mike
-
-> 
-> >       bool pll_en = clk_hw_is_enabled(&pll->hw);
-> > 
-> >       if (pll_en)
-> >               con1 |= CON0_PCW_CHG;
-> > 
-> >       writel(con1, pll->base_addr + REG_CON1);
-> >       if (pll->tuner_addr)
-> >               writel(con1 + 1, pll->tuner_addr);
-> > 
-> >       if (pll_en)
-> >               udelay(20);
-> > 
-> > This does not rely on the hardware to tell us the intent of the user,
-> > but instead on our framework usecounting.
-> 
-> 
-> Best regards,
-> 
-> James
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-clk" in
-> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Acked-by: Rob Herring <robh@kernel.org>
