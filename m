@@ -1,58 +1,42 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 3/4] soc: mediatek: Add MT2701 power dt-bindings
-Date: Wed, 20 Jan 2016 17:29:21 +0800
-Message-ID: <1453282161.16515.9.camel@mtksdaap41>
-References: <1453270097-53853-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1453270097-53853-4-git-send-email-jamesjj.liao@mediatek.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH 1/2] dt-bindings: mediatek: Modify pinctrl bindings for
+ mt7623
+Date: Wed, 20 Jan 2016 17:34:54 +0800
+Message-ID: <1453282494.16515.10.camel@mtksdaap41>
+References: <1452441608-24176-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1453270097-53853-4-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1452441608-24176-1-git-send-email-blogic@openwrt.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-01-20 at 14:08 +0800, James Liao wrote:
-> From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add power dt-bindings for MT2701.
-> 
-> Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Sun, 2016-01-10 at 17:00 +0100, John Crispin wrote:
+> Signed-off-by: John Crispin <blogic@openwrt.org>
 > ---
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    |  6 +++--
->  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++++++++++++
->  2 files changed, 31 insertions(+), 2 deletions(-)
->  create mode 100644 include/dt-bindings/power/mt2701-power.h
+>  Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt |    1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index a6c8afc..807d87f 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -9,10 +9,12 @@ domain control.
->  
->  The driver implements the Generic PM domain bindings described in
->  power/power_domain.txt. It provides the power domains defined in
-> -include/dt-bindings/power/mt8173-power.h.
-> +include/dt-bindings/power/mt8173-power.h and mt2701-power.h.
->  
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+> index 9ffb0b2..4fa4444 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+> @@ -5,6 +5,7 @@ The Mediatek's Pin controller is used to control SoC pins.
 >  Required properties:
-> -- compatible: Must be "mediatek,mt8173-scpsys"
-> +- compatible: Should be:
-> +	- "mediatek,mt8173-scpsys"
-> +	- "mediatek,mt2701-scpsys"
->  - #power-domain-cells: Must be 1
->  - reg: Address range of the SCPSYS unit
->  - infracfg: must contain a phandle to the infracfg controller
+>  - compatible: value should be one of the following.
+>  	"mediatek,mt2701-pinctrl", compatible with mt2701 pinctrl.
+> +	"mediatek,mt7623-pinctrl", compatible with mt7623 pinctrl.
+>  	"mediatek,mt6397-pinctrl", compatible with mt6397 pinctrl.
+>  	"mediatek,mt8127-pinctrl", compatible with mt8127 pinctrl.
+>  	"mediatek,mt8135-pinctrl", compatible with mt8135 pinctrl.
 
-Please sort the list.
+Hi John,
+
+Please keep the list sorted.
 
 Joe.C
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
