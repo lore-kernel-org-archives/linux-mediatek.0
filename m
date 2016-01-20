@@ -1,96 +1,77 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH] soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of
- WDT_SRC_EN
-Date: Wed, 20 Jan 2016 19:11:52 +0800
-Message-ID: <1453288312.8457.9.camel@mtksdaap41>
-References: <1453265564-16379-1-git-send-email-henryc.chen@mediatek.com>
-	 <CAGS+omCFOUgTHxeUn0snrkBjvcR1bSOAAmkBHppF8nM37P1vrw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 2/6] dt-bindings: ARM: Mediatek: Document bindings for
+ MT2701
+Date: Wed, 20 Jan 2016 10:32:36 -0600
+Message-ID: <20160120163236.GA21035@rob-hp-laptop>
+References: <1453271747-57397-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1453271747-57397-3-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omCFOUgTHxeUn0snrkBjvcR1bSOAAmkBHppF8nM37P1vrw@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1453271747-57397-3-git-send-email-jamesjj.liao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, John Crispin <blogic@openwrt.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-01-20 at 02:32 -0800, Daniel Kurtz wrote:
-> On Tue, Jan 19, 2016 at 8:52 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
-> > Since STAUPD interrupts aren't handled on mt8173, disable watchdog timeout
-> > monitor of STAUPD to avoid WDT_INT triggered by STAUPD.
-> >
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+On Wed, Jan 20, 2016 at 02:35:43PM +0800, James Liao wrote:
+> This patch adds the binding documentation for apmixedsys, bdpsys,
+> ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
+> vdecsys for Mediatek MT2701.
 > 
-> > ---
-> >  drivers/soc/mediatek/mtk-pmic-wrap.c | 19 +++++++++++++++++--
-> >  1 file changed, 17 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > index af919b1..998f561 100644
-> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> > @@ -60,6 +60,15 @@
-> >  #define PWRAP_MAN_CMD_OP_OUTD          (0x9 << 8)
-> >  #define PWRAP_MAN_CMD_OP_OUTQ          (0xa << 8)
-> >
-> > +/* macro for Watch Dog Timer Source */
-> > +#define PWRAP_WDT_SRC_EN_STAUPD_TRIG           (1 << 25)
-> > +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE       (1 << 20)
-> > +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE       (1 << 6)
-> > +#define PWRAP_WDT_SRC_MASK_ALL                 0xffffffff
-> > +#define PWRAP_WDT_SRC_MASK_NO_STAUPD   ~(PWRAP_WDT_SRC_EN_STAUPD_TRIG | \
-> > +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE | \
-> > +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE)
-> > +
-> >  /* macro for slave device wrapper registers */
-> >  #define PWRAP_DEW_BASE                 0xbc00
-> >  #define PWRAP_DEW_EVENT_OUT_EN         (PWRAP_DEW_BASE + 0x0)
-> > @@ -830,7 +839,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
-> >
-> >  static int pwrap_probe(struct platform_device *pdev)
-> >  {
-> > -       int ret, irq;
-> > +       int ret, irq, wdt_src;
-> >         struct pmic_wrapper *wrp;
-> >         struct device_node *np = pdev->dev.of_node;
-> >         const struct of_device_id *of_id =
-> > @@ -920,7 +929,13 @@ static int pwrap_probe(struct platform_device *pdev)
-> >
-> >         /* Initialize watchdog, may not be done by the bootloader */
-> >         pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
-> > -       pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
-> > +       /*
-> > +        * Since STAUPD was not used on mt8173 platform,
-> > +        * so STAUPD of WDT_SRC which should be turned off
-> > +        */
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> Tested-by: John Crispin <blogic@openwrt.org>
+> ---
+>  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+>  .../bindings/arm/mediatek/mediatek,bdpsys.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,ethsys.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,hifsys.txt      | 22 ++++++++++++++++++++++
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  1 +
+>  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+>  .../bindings/arm/mediatek/mediatek,pericfg.txt     |  1 +
+>  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+>  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+>  10 files changed, 73 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
 > 
-> It is a little awkward that "!pwrap_is_mt8135(wrp)" means mt8173.  Is
-> this always true?
-> Why aren't we clearing STAUPD for mt8135 too?
-> I assume it is because mt8135 does not define this bit?
-> What about other devices that are not mt8135 or mt8173?
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> index 936166f..a701e19 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> @@ -6,6 +6,7 @@ The Mediatek apmixedsys controller provides the PLLs to the system.
+>  Required Properties:
+>  
+>  - compatible: Should be:
+> +	- "mediatek,mt2701-apmixedsys"
+>  	- "mediatek,mt8135-apmixedsys"
+>  	- "mediatek,mt8173-apmixedsys"
+>  - #clock-cells: Must be 1
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> new file mode 100644
+> index 0000000..4137196
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> @@ -0,0 +1,22 @@
+> +Mediatek bdpsys controller
+> +============================
+> +
+> +The Mediatek bdpsys controller provides various clocks to the system.
 
-MT8135 used STAUPD because it have pwrap event pin and it was different
-with mt8173. pwrap event have been removed on mt8173, so it no need to
-set STAUPD.
+As you clarified these blocks provide more that just clocks. Please list 
+all the functions here and on the others.
 
-Henry
-
-> Perhaps change the comment to:
-> "This driver does not use STAUPD, so clear this WDT SRC for all
-> devices for which it exists to avoid unhandled interrupts"
-> 
-
-> Other than that, this patch is:
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> 
-> > +       wdt_src = pwrap_is_mt8135(wrp) ?
-> > +                       PWRAP_WDT_SRC_MASK_ALL : PWRAP_WDT_SRC_MASK_NO_STAUPD;
-> > +       pwrap_writel(wrp, wdt_src, PWRAP_WDT_SRC_EN);
-> >         pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
-> >         pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
-> >
-> > --
-> > 1.8.1.1.dirty
-> >
+> +
+> +Required Properties:
+> +
+> +- compatible: Should be:
+> +	- "mediatek,mt2701-bdpsys", "syscon"
+> +- #clock-cells: Must be 1
+> +
+> +The bdpsys controller uses the common clk binding from
+> +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> +
