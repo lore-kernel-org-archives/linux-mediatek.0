@@ -1,8 +1,8 @@
 From: John Crispin <blogic@openwrt.org>
-Subject: [PATCH V2 02/11] soc: mediatek: PMIC wrap: don't duplicate the
- wrapper data
-Date: Wed, 20 Jan 2016 20:58:54 +0100
-Message-ID: <1453319943-35491-2-git-send-email-blogic@openwrt.org>
+Subject: [PATCH V2 04/11] soc: mediatek: PMIC wrap: split SoC specific init
+ into callback
+Date: Wed, 20 Jan 2016 20:58:56 +0100
+Message-ID: <1453319943-35491-4-git-send-email-blogic@openwrt.org>
 References: <1453319943-35491-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,94 +22,120 @@ To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-As we add support for more devices struct pmic_wrapper_type will grow and
-we do not really want to start duplicating all the elements in
-struct pmic_wrapper.
+This patch moves the SoC specific wrapper init code into separate callback
+to avoid pwrap_init() getting too large.
 
 Signed-off-by: John Crispin <blogic@openwrt.org>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c |   22 ++++++++--------------
- 1 file changed, 8 insertions(+), 14 deletions(-)
+ drivers/soc/mediatek/mtk-pmic-wrap.c |   68 +++++++++++++++++++++-------------
+ 1 file changed, 42 insertions(+), 26 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 0d9b19a..340c4b5 100644
+index b22b664..ab2202d 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -376,9 +376,7 @@ struct pmic_wrapper {
- 	struct device *dev;
- 	void __iomem *base;
- 	struct regmap *regmap;
--	int *regs;
--	enum pwrap_type type;
--	u32 arb_en_all;
-+	const struct pmic_wrapper_type *master;
- 	struct clk *clk_spi;
- 	struct clk *clk_wrap;
- 	struct reset_control *rstc;
-@@ -389,22 +387,22 @@ struct pmic_wrapper {
+@@ -372,6 +372,7 @@ struct pmic_wrapper_type {
+ 	enum pwrap_type type;
+ 	u32 arb_en_all;
+ 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
++	int (*init_special)(struct pmic_wrapper *wrp);
+ };
  
  static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
- {
--	return wrp->type == PWRAP_MT8135;
-+	return wrp->master->type == PWRAP_MT8135;
+@@ -665,6 +666,41 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+ 	return 0;
  }
  
- static inline int pwrap_is_mt8173(struct pmic_wrapper *wrp)
++static int pwrap_mt8135_init_special(struct pmic_wrapper *wrp)
++{
++	/* enable pwrap events and pwrap bridge in AP side */
++	pwrap_writel(wrp, 0x1, PWRAP_EVENT_IN_EN);
++	pwrap_writel(wrp, 0xffff, PWRAP_EVENT_DST_EN);
++	writel(0x7f, wrp->bridge_base + PWRAP_MT8135_BRIDGE_IORD_ARB_EN);
++	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS3_EN);
++	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS4_EN);
++	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_UNIT);
++	writel(0xffff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_SRC_EN);
++	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_TIMER_EN);
++	writel(0x7ff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INT_EN);
++
++	/* enable PMIC event out and sources */
++	if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
++		pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
++		dev_err(wrp->dev, "enable dewrap fail\n");
++		return -EFAULT;
++	}
++
++	return 0;
++}
++
++static int pwrap_mt8173_init_special(struct pmic_wrapper *wrp)
++{
++	/* PMIC_DEWRAP enables */
++	if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
++		pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
++		dev_err(wrp->dev, "enable dewrap fail\n");
++		return -EFAULT;
++	}
++
++	return 0;
++}
++
+ static int pwrap_init(struct pmic_wrapper *wrp)
  {
--	return wrp->type == PWRAP_MT8173;
-+	return wrp->master->type == PWRAP_MT8173;
- }
+ 	int ret;
+@@ -743,32 +779,10 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
+ 	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
  
- static u32 pwrap_readl(struct pmic_wrapper *wrp, enum pwrap_regs reg)
- {
--	return readl(wrp->base + wrp->regs[reg]);
-+	return readl(wrp->base + wrp->master->regs[reg]);
- }
+-	if (pwrap_is_mt8135(wrp)) {
+-		/* enable pwrap events and pwrap bridge in AP side */
+-		pwrap_writel(wrp, 0x1, PWRAP_EVENT_IN_EN);
+-		pwrap_writel(wrp, 0xffff, PWRAP_EVENT_DST_EN);
+-		writel(0x7f, wrp->bridge_base + PWRAP_MT8135_BRIDGE_IORD_ARB_EN);
+-		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS3_EN);
+-		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS4_EN);
+-		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_UNIT);
+-		writel(0xffff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_SRC_EN);
+-		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_TIMER_EN);
+-		writel(0x7ff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INT_EN);
+-
+-		/* enable PMIC event out and sources */
+-		if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
+-				pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
+-			dev_err(wrp->dev, "enable dewrap fail\n");
+-			return -EFAULT;
+-		}
+-	} else {
+-		/* PMIC_DEWRAP enables */
+-		if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
+-				pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
+-			dev_err(wrp->dev, "enable dewrap fail\n");
+-			return -EFAULT;
+-		}
+-	}
++	if (wrp->master->init_special)
++		ret = wrp->master->init_special(wrp);
++	if (ret)
++		return ret;
  
- static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
- {
--	writel(val, wrp->base + wrp->regs[reg]);
-+	writel(val, wrp->base + wrp->master->regs[reg]);
- }
+ 	/* Setup the init done registers */
+ 	pwrap_writel(wrp, 1, PWRAP_INIT_DONE2);
+@@ -811,6 +825,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
+ 	.type = PWRAP_MT8135,
+ 	.arb_en_all = 0x1ff,
+ 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
++	.init_special = pwrap_mt8135_init_special,
+ };
  
- static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
-@@ -697,7 +695,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ static struct pmic_wrapper_type pwrap_mt8173 = {
+@@ -818,6 +833,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
+ 	.type = PWRAP_MT8173,
+ 	.arb_en_all = 0x3f,
+ 	.init_reg_clock = pwrap_mt8173_init_reg_clock,
++	.init_special = pwrap_mt8173_init_special,
+ };
  
- 	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
- 
--	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
-+	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
- 
- 	pwrap_writel(wrp, 1, PWRAP_WACS2_EN);
- 
-@@ -742,7 +740,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
- 	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
- 	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
--	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
-+	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
- 
- 	if (pwrap_is_mt8135(wrp))
- 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
-@@ -836,7 +834,6 @@ static int pwrap_probe(struct platform_device *pdev)
- 	struct device_node *np = pdev->dev.of_node;
- 	const struct of_device_id *of_id =
- 		of_match_device(of_pwrap_match_tbl, &pdev->dev);
--	const struct pmic_wrapper_type *type;
- 	struct resource *res;
- 
- 	wrp = devm_kzalloc(&pdev->dev, sizeof(*wrp), GFP_KERNEL);
-@@ -845,10 +842,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, wrp);
- 
--	type = of_id->data;
--	wrp->regs = type->regs;
--	wrp->type = type->type;
--	wrp->arb_en_all = type->arb_en_all;
-+	wrp->master = of_id->data;
- 	wrp->dev = &pdev->dev;
- 
- 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pwrap");
+ static struct of_device_id of_pwrap_match_tbl[] = {
 -- 
 1.7.10.4
