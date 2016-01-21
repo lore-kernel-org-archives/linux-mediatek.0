@@ -1,14 +1,16 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH 0/3] Add basic support for Mediatek MT7623 SoC
-Date: Thu, 21 Jan 2016 11:18:53 +0100
-Message-ID: <56A0B08D.7000104@openwrt.org>
-References: <1452011068-28300-1-git-send-email-blogic@openwrt.org>
- <56A0AEA7.5000704@gmail.com>
+From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of
+ WDT_SRC_EN
+Date: Thu, 21 Jan 2016 18:28:24 +0800
+Message-ID: <1453372104.8457.12.camel@mtksdaap41>
+References: <1453265564-16379-1-git-send-email-henryc.chen@mediatek.com>
+ <CAGS+omCFOUgTHxeUn0snrkBjvcR1bSOAAmkBHppF8nM37P1vrw@mail.gmail.com>
+ <1453288312.8457.9.camel@mtksdaap41> <56A0A249.30003@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56A0AEA7.5000704-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <56A0A249.30003-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,58 +21,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, 2016-01-21 at 10:18 +0100, Matthias Brugger wrote:
+> 
+> On 20/01/16 12:11, Henry Chen wrote:
+> > On Wed, 2016-01-20 at 02:32 -0800, Daniel Kurtz wrote:
+> >> On Tue, Jan 19, 2016 at 8:52 PM, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> >>> Since STAUPD interrupts aren't handled on mt8173, disable watchdog timeout
+> >>> monitor of STAUPD to avoid WDT_INT triggered by STAUPD.
+> >>>
+> >>> Signed-off-by: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>
+> >>> ---
+> >>>   drivers/soc/mediatek/mtk-pmic-wrap.c | 19 +++++++++++++++++--
+> >>>   1 file changed, 17 insertions(+), 2 deletions(-)
+> >>>
+> >>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> >>> index af919b1..998f561 100644
+> >>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> >>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> >>> @@ -60,6 +60,15 @@
+> >>>   #define PWRAP_MAN_CMD_OP_OUTD          (0x9 << 8)
+> >>>   #define PWRAP_MAN_CMD_OP_OUTQ          (0xa << 8)
+> >>>
+> >>> +/* macro for Watch Dog Timer Source */
+> >>> +#define PWRAP_WDT_SRC_EN_STAUPD_TRIG           (1 << 25)
+> >>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE       (1 << 20)
+> >>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE       (1 << 6)
+> >>> +#define PWRAP_WDT_SRC_MASK_ALL                 0xffffffff
+> >>> +#define PWRAP_WDT_SRC_MASK_NO_STAUPD   ~(PWRAP_WDT_SRC_EN_STAUPD_TRIG | \
+> >>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE | \
+> >>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE)
+> >>> +
+> >>>   /* macro for slave device wrapper registers */
+> >>>   #define PWRAP_DEW_BASE                 0xbc00
+> >>>   #define PWRAP_DEW_EVENT_OUT_EN         (PWRAP_DEW_BASE + 0x0)
+> >>> @@ -830,7 +839,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
+> >>>
+> >>>   static int pwrap_probe(struct platform_device *pdev)
+> >>>   {
+> >>> -       int ret, irq;
+> >>> +       int ret, irq, wdt_src;
+> >>>          struct pmic_wrapper *wrp;
+> >>>          struct device_node *np = pdev->dev.of_node;
+> >>>          const struct of_device_id *of_id =
+> >>> @@ -920,7 +929,13 @@ static int pwrap_probe(struct platform_device *pdev)
+> >>>
+> >>>          /* Initialize watchdog, may not be done by the bootloader */
+> >>>          pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+> >>> -       pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+> >>> +       /*
+> >>> +        * Since STAUPD was not used on mt8173 platform,
+> >>> +        * so STAUPD of WDT_SRC which should be turned off
+> >>> +        */
+> >>
+> >> It is a little awkward that "!pwrap_is_mt8135(wrp)" means mt8173.  Is
+> >> this always true?
+> >> Why aren't we clearing STAUPD for mt8135 too?
+> >> I assume it is because mt8135 does not define this bit?
+> >> What about other devices that are not mt8135 or mt8173?
+> >
+> > MT8135 used STAUPD because it have pwrap event pin and it was different
+> > with mt8173. pwrap event have been removed on mt8173, so it no need to
+> > set STAUPD.
+> >
+> 
+> I think we already had this discussion once. It seems as if there are 
+> different versions of pmic-wrapper. An older version used by mt8135 and 
+> e.g. mt6589 and a newer one used by mt8173.
+> 
+> So I agree with Daniel that we should check pwrap_is_mt8173 instead.
 
+> Apart from that the patch looks good.
+> 
 
-On 21/01/2016 11:10, Matthias Brugger wrote:
-> 
-> 
-> On 05/01/16 17:24, John Crispin wrote:
->> MT7623 is a SoC based on 32bit ARMv7 architecture. It contains 4 CA7
->> cores.
->> MT7623 share many HW IP with MT65xx series. This patchset was tested
->> on MT7623 evaluation board, and boot to shell ok.
->>
->> This series contains document bindings, device tree including
->> interrupt, uart, timer and wdt.
->>
->> John Crispin (3):
->>    Document: DT: Add bindings for mediatek MT7623 SoC Platform
->>    ARM: dts: mediatek: add MT7623 basic support
->>    ARM: mediatek: add MT7623 smp bringup code
->>
->>   Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
->>   .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
->>   .../bindings/timer/mediatek,mtk-timer.txt          |    1 +
->>   arch/arm/boot/dts/Makefile                         |    1 +
->>   arch/arm/boot/dts/mt7623-evb.dts                   |   33 +++++
->>   arch/arm/boot/dts/mt7623.dtsi                      |  147
->> ++++++++++++++++++++
->>   arch/arm/mach-mediatek/Kconfig                     |    4 +
->>   arch/arm/mach-mediatek/mediatek.c                  |    1 +
->>   arch/arm/mach-mediatek/platsmp.c                   |    7 +
->>   9 files changed, 199 insertions(+)
->>   create mode 100644 arch/arm/boot/dts/mt7623-evb.dts
->>   create mode 100644 arch/arm/boot/dts/mt7623.dtsi
->>
-> 
-> Applied to v4.5-next/dts and v4.5-next/soc.
-> 
-> I split patch 3 to fit the different branches.
-> 
-> Thanks,
+Ok, I will send a patch to change that, thanks.
+Henry 
+
+> Regards,
 > Matthias
-
-thanks mate, i'll be resending the pmic, pinctrl, regulator ... patches
-hopefully tomorrow. pcie will take a few days extra
-
-	John
-
-
 > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > Henry
+> >
+> >> Perhaps change the comment to:
+> >> "This driver does not use STAUPD, so clear this WDT SRC for all
+> >> devices for which it exists to avoid unhandled interrupts"
+> >>
+> >
+> >> Other than that, this patch is:
+> >> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> >>
+> >>> +       wdt_src = pwrap_is_mt8135(wrp) ?
+> >>> +                       PWRAP_WDT_SRC_MASK_ALL : PWRAP_WDT_SRC_MASK_NO_STAUPD;
+> >>> +       pwrap_writel(wrp, wdt_src, PWRAP_WDT_SRC_EN);
+> >>>          pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+> >>>          pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
+> >>>
+> >>> --
+> >>> 1.8.1.1.dirty
+> >>>
+> >
+> >
