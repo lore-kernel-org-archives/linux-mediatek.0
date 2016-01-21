@@ -1,42 +1,35 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 0/2] Add Mediatek MT2701 SMP support
-Date: Thu, 21 Jan 2016 18:36:44 +0100
-Message-ID: <56A1172C.5070509@gmail.com>
-References: <1452168584-25394-1-git-send-email-louis.yu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2] soc: mediatek: SCPSYS: use builtin_platform_driver
+Date: Thu, 21 Jan 2016 18:55:04 +0100
+Message-ID: <56A11B78.8030405@gmail.com>
+References: <1451464240-5313-1-git-send-email-matthias.bgg@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1452168584-25394-1-git-send-email-louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1451464240-5313-1-git-send-email-matthias.bgg@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-mediatek@lists.infradead.org
+Cc: s.hauer@pengutronix.de, arnd@arndb.de, djkurtz@chromium.org, paul.gortmaker@windriver.com, eddie.huang@mediatek.com, jamesjj.liao@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/01/16 13:09, Louis Yu wrote:
-> This patchset is based on 4.4-rc8 and [1], and contains smp support
-> for Mediatek MT2701. MT2701 contains 4 CA7 cores.
+On 30/12/15 09:30, Matthias Brugger wrote:
+> SCPSYS can't be built as module. Use builtin_platform_driver instead.
+> For this probe must not be __init and the data accessed can't be
+> __initconst. Remove this macros. To make the impact as small as possible,
+> fold scp_domain_data into scp_domain via a pointer.
 >
-> This patchset adds related SMP support for Mediatek MT2701.
->
-> [1] https://patchwork.kernel.org/patch/7248471/
->
-> Louis Yu (2):
->    ARM: mediatek: add mt2701 smp bringup code
->    ARM: dts: mt2701: enable basic SMP bringup for mt2701
->
->   arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
->   arch/arm/mach-mediatek/platsmp.c |    1 +
->   2 files changed, 13 insertions(+)
->
+> Cc: Sascha Hauer <s.hauer@pengutronix.de>
+> Cc: Arnd Bergmann <arnd@arndb.de>
+> Reported-by: Daniel Kurtz <djkurtz@chromium.org>
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
 
-Applied to v4.5-next/(soc,dts)
+Applied to v4.5-next/soc with the tags.
 
-Thanks.
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Daniel actually stands out, with Reported-by, Reviewed-by and Tested-by 
+tags. :)
+
+Thanks!
