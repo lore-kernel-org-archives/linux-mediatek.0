@@ -1,67 +1,114 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v3 1/6] clk: mediatek: Refine the makefile to support
- multiple clock drivers
-Date: Thu, 21 Jan 2016 13:50:44 +0800
-Message-ID: <1453355444.5384.43.camel@mtksdaap41>
-References: <1452587470-61506-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1452587470-61506-2-git-send-email-jamesjj.liao@mediatek.com>
-	 <1453343300.28078.6.camel@mtksdaap41> <1453344325.28078.9.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of
+ WDT_SRC_EN
+Date: Thu, 21 Jan 2016 10:18:01 +0100
+Message-ID: <56A0A249.30003@gmail.com>
+References: <1453265564-16379-1-git-send-email-henryc.chen@mediatek.com>
+ <CAGS+omCFOUgTHxeUn0snrkBjvcR1bSOAAmkBHppF8nM37P1vrw@mail.gmail.com>
+ <1453288312.8457.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453344325.28078.9.camel@mtksdaap41>
+In-Reply-To: <1453288312.8457.9.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
+To: Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Yingjoe,
-
-On Thu, 2016-01-21 at 10:45 +0800, Yingjoe Chen wrote:
-> On Thu, 2016-01-21 at 10:28 +0800, Yingjoe Chen wrote:
-> > On Tue, 2016-01-12 at 16:31 +0800, James Liao wrote:
-> > > Add a Kconfig to define clock configuration for each SoC, and
-> > > modify the Makefile to build drivers that only selected in config.
-> > > 
-> > > Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
-> > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > > ---
-> > >  drivers/clk/Kconfig           |  1 +
-> > >  drivers/clk/mediatek/Kconfig  | 23 +++++++++++++++++++++++
-> > >  drivers/clk/mediatek/Makefile |  6 +++---
-> > >  3 files changed, 27 insertions(+), 3 deletions(-)
-> > >  create mode 100644 drivers/clk/mediatek/Kconfig
-> > > 
-> > > diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-> > > index c3e3a02..b7a37dc 100644
-> > > --- a/drivers/clk/Kconfig
-> > > +++ b/drivers/clk/Kconfig
-> > > @@ -198,3 +198,4 @@ source "drivers/clk/mvebu/Kconfig"
-> > >  
-> > >  source "drivers/clk/samsung/Kconfig"
-> > >  source "drivers/clk/tegra/Kconfig"
-> > > +source "drivers/clk/mediatek/Kconfig"
-> > 
-> > 
-> > Hi James,
-> > 
-> > drivers/clk/mediatek/Kconfig add user selectable options, menuconfig
-> > will list them outside of "Common Clock Framework" sub-menu if you
-> > source the file here. Kconfig for samsung & tegra doesn't have any, so
-> > it is OK for them to stay here.
-> > 
-> > Please move it inside the menu, also it seems the source lines are
-> > sorted now, so let's keep them sorted.
-> 
-> 
-> After looking at drivers/clk/Kconfig history, it seems we have similar
-> issue before. I think we should move all sources under clk menu to
-> prevent this from happening.
-
-I may provide a separated patch to move other Kconfig into menu section.
 
 
-Best regards,
+On 20/01/16 12:11, Henry Chen wrote:
+> On Wed, 2016-01-20 at 02:32 -0800, Daniel Kurtz wrote:
+>> On Tue, Jan 19, 2016 at 8:52 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
+>>> Since STAUPD interrupts aren't handled on mt8173, disable watchdog timeout
+>>> monitor of STAUPD to avoid WDT_INT triggered by STAUPD.
+>>>
+>>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+>>
+>>> ---
+>>>   drivers/soc/mediatek/mtk-pmic-wrap.c | 19 +++++++++++++++++--
+>>>   1 file changed, 17 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> index af919b1..998f561 100644
+>>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+>>> @@ -60,6 +60,15 @@
+>>>   #define PWRAP_MAN_CMD_OP_OUTD          (0x9 << 8)
+>>>   #define PWRAP_MAN_CMD_OP_OUTQ          (0xa << 8)
+>>>
+>>> +/* macro for Watch Dog Timer Source */
+>>> +#define PWRAP_WDT_SRC_EN_STAUPD_TRIG           (1 << 25)
+>>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE       (1 << 20)
+>>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE       (1 << 6)
+>>> +#define PWRAP_WDT_SRC_MASK_ALL                 0xffffffff
+>>> +#define PWRAP_WDT_SRC_MASK_NO_STAUPD   ~(PWRAP_WDT_SRC_EN_STAUPD_TRIG | \
+>>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE | \
+>>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE)
+>>> +
+>>>   /* macro for slave device wrapper registers */
+>>>   #define PWRAP_DEW_BASE                 0xbc00
+>>>   #define PWRAP_DEW_EVENT_OUT_EN         (PWRAP_DEW_BASE + 0x0)
+>>> @@ -830,7 +839,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
+>>>
+>>>   static int pwrap_probe(struct platform_device *pdev)
+>>>   {
+>>> -       int ret, irq;
+>>> +       int ret, irq, wdt_src;
+>>>          struct pmic_wrapper *wrp;
+>>>          struct device_node *np = pdev->dev.of_node;
+>>>          const struct of_device_id *of_id =
+>>> @@ -920,7 +929,13 @@ static int pwrap_probe(struct platform_device *pdev)
+>>>
+>>>          /* Initialize watchdog, may not be done by the bootloader */
+>>>          pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+>>> -       pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
+>>> +       /*
+>>> +        * Since STAUPD was not used on mt8173 platform,
+>>> +        * so STAUPD of WDT_SRC which should be turned off
+>>> +        */
+>>
+>> It is a little awkward that "!pwrap_is_mt8135(wrp)" means mt8173.  Is
+>> this always true?
+>> Why aren't we clearing STAUPD for mt8135 too?
+>> I assume it is because mt8135 does not define this bit?
+>> What about other devices that are not mt8135 or mt8173?
+>
+> MT8135 used STAUPD because it have pwrap event pin and it was different
+> with mt8173. pwrap event have been removed on mt8173, so it no need to
+> set STAUPD.
+>
 
-James
+I think we already had this discussion once. It seems as if there are 
+different versions of pmic-wrapper. An older version used by mt8135 and 
+e.g. mt6589 and a newer one used by mt8173.
+
+So I agree with Daniel that we should check pwrap_is_mt8173 instead.
+
+Apart from that the patch looks good.
+
+Regards,
+Matthias
+
+> Henry
+>
+>> Perhaps change the comment to:
+>> "This driver does not use STAUPD, so clear this WDT SRC for all
+>> devices for which it exists to avoid unhandled interrupts"
+>>
+>
+>> Other than that, this patch is:
+>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+>>
+>>> +       wdt_src = pwrap_is_mt8135(wrp) ?
+>>> +                       PWRAP_WDT_SRC_MASK_ALL : PWRAP_WDT_SRC_MASK_NO_STAUPD;
+>>> +       pwrap_writel(wrp, wdt_src, PWRAP_WDT_SRC_EN);
+>>>          pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
+>>>          pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
+>>>
+>>> --
+>>> 1.8.1.1.dirty
+>>>
+>
+>
