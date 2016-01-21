@@ -1,59 +1,101 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v3 1/6] clk: mediatek: Refine the makefile to support
- multiple clock drivers
-Date: Thu, 21 Jan 2016 10:45:25 +0800
-Message-ID: <1453344325.28078.9.camel@mtksdaap41>
-References: <1452587470-61506-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1452587470-61506-2-git-send-email-jamesjj.liao@mediatek.com>
-	 <1453343300.28078.6.camel@mtksdaap41>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH v4 2/6] dt-bindings: ARM: Mediatek: Document bindings
+ for MT2701
+Date: Thu, 21 Jan 2016 13:18:57 +0800
+Message-ID: <1453353537.5384.33.camel@mtksdaap41>
+References: <1453271747-57397-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1453271747-57397-3-git-send-email-jamesjj.liao@mediatek.com>
+	 <20160120163236.GA21035@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453343300.28078.6.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20160120163236.GA21035@rob-hp-laptop>
+Sender: linux-clk-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, John Crispin <blogic@openwrt.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-01-21 at 10:28 +0800, Yingjoe Chen wrote:
-> On Tue, 2016-01-12 at 16:31 +0800, James Liao wrote:
-> > Add a Kconfig to define clock configuration for each SoC, and
-> > modify the Makefile to build drivers that only selected in config.
+Hi Rob,
+
+On Wed, 2016-01-20 at 10:32 -0600, Rob Herring wrote:
+> On Wed, Jan 20, 2016 at 02:35:43PM +0800, James Liao wrote:
+> > This patch adds the binding documentation for apmixedsys, bdpsys,
+> > ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
+> > vdecsys for Mediatek MT2701.
 > > 
-> > Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
 > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> > Tested-by: John Crispin <blogic@openwrt.org>
 > > ---
-> >  drivers/clk/Kconfig           |  1 +
-> >  drivers/clk/mediatek/Kconfig  | 23 +++++++++++++++++++++++
-> >  drivers/clk/mediatek/Makefile |  6 +++---
-> >  3 files changed, 27 insertions(+), 3 deletions(-)
-> >  create mode 100644 drivers/clk/mediatek/Kconfig
+> >  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+> >  .../bindings/arm/mediatek/mediatek,bdpsys.txt      | 22 ++++++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,ethsys.txt      | 22 ++++++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,hifsys.txt      | 22 ++++++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  1 +
+> >  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+> >  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+> >  .../bindings/arm/mediatek/mediatek,pericfg.txt     |  1 +
+> >  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+> >  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+> >  10 files changed, 73 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
 > > 
-> > diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-> > index c3e3a02..b7a37dc 100644
-> > --- a/drivers/clk/Kconfig
-> > +++ b/drivers/clk/Kconfig
-> > @@ -198,3 +198,4 @@ source "drivers/clk/mvebu/Kconfig"
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> > index 936166f..a701e19 100644
+> > --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+> > @@ -6,6 +6,7 @@ The Mediatek apmixedsys controller provides the PLLs to the system.
+> >  Required Properties:
 > >  
-> >  source "drivers/clk/samsung/Kconfig"
-> >  source "drivers/clk/tegra/Kconfig"
-> > +source "drivers/clk/mediatek/Kconfig"
+> >  - compatible: Should be:
+> > +	- "mediatek,mt2701-apmixedsys"
+> >  	- "mediatek,mt8135-apmixedsys"
+> >  	- "mediatek,mt8173-apmixedsys"
+> >  - #clock-cells: Must be 1
+> > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> > new file mode 100644
+> > index 0000000..4137196
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+> > @@ -0,0 +1,22 @@
+> > +Mediatek bdpsys controller
+> > +============================
+> > +
+> > +The Mediatek bdpsys controller provides various clocks to the system.
 > 
-> 
-> Hi James,
-> 
-> drivers/clk/mediatek/Kconfig add user selectable options, menuconfig
-> will list them outside of "Common Clock Framework" sub-menu if you
-> source the file here. Kconfig for samsung & tegra doesn't have any, so
-> it is OK for them to stay here.
-> 
-> Please move it inside the menu, also it seems the source lines are
-> sorted now, so let's keep them sorted.
+> As you clarified these blocks provide more that just clocks. Please list 
+> all the functions here and on the others.
+
+Some blocks may provide clock and reset controller at the same time. But
+most of them will not provide functions directly. Instead, some DT
+blocks which provide specific functions may refer to these controller
+nodes due to it need to access the same register space.
+
+For example, scpsys (the power domain provider) refers to infracfg
+because it need to control infracfg registers when power on/off domains:
+
+	scpsys: scpsys@10006000 {
+		compatible = "mediatek,mt2701-scpsys";
+		#power-domain-cells = <1>;
+		reg = <0 0x10006000 0 0x1000>;
+		infracfg = <&infracfg>;
+	};
+
+So I think it should not need to list all functions for each blocks
+here.
+
+> > +
+> > +Required Properties:
+> > +
+> > +- compatible: Should be:
+> > +	- "mediatek,mt2701-bdpsys", "syscon"
+> > +- #clock-cells: Must be 1
+> > +
+> > +The bdpsys controller uses the common clk binding from
+> > +Documentation/devicetree/bindings/clock/clock-bindings.txt
+> > +The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+> > +
 
 
-After looking at drivers/clk/Kconfig history, it seems we have similar
-issue before. I think we should move all sources under clk menu to
-prevent this from happening.
-
-Joe.C
