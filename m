@@ -1,114 +1,85 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of
- WDT_SRC_EN
-Date: Thu, 21 Jan 2016 10:18:01 +0100
-Message-ID: <56A0A249.30003@gmail.com>
-References: <1453265564-16379-1-git-send-email-henryc.chen@mediatek.com>
- <CAGS+omCFOUgTHxeUn0snrkBjvcR1bSOAAmkBHppF8nM37P1vrw@mail.gmail.com>
- <1453288312.8457.9.camel@mtksdaap41>
+Subject: Re: [PATCH v2 0/3] Mediatek EFUSE Support
+Date: Thu, 21 Jan 2016 10:33:21 +0100
+Message-ID: <56A0A5E1.5050105@gmail.com>
+References: <1447930014-19579-1-git-send-email-andrew-ct.chen@mediatek.com>
+ <CAGS+omA8XK6ksd7Ma8yAUbkSsHR6yQxjFrV+HGbd83UiH6T51g@mail.gmail.com>
+ <566E94CA.1050700@linaro.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453288312.8457.9.camel@mtksdaap41>
+In-Reply-To: <566E94CA.1050700@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Daniel Kurtz <djkurtz@chromium.org>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 20/01/16 12:11, Henry Chen wrote:
-> On Wed, 2016-01-20 at 02:32 -0800, Daniel Kurtz wrote:
->> On Tue, Jan 19, 2016 at 8:52 PM, Henry Chen <henryc.chen@mediatek.com> wrote:
->>> Since STAUPD interrupts aren't handled on mt8173, disable watchdog timeout
->>> monitor of STAUPD to avoid WDT_INT triggered by STAUPD.
->>>
->>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
->>
->>> ---
->>>   drivers/soc/mediatek/mtk-pmic-wrap.c | 19 +++++++++++++++++--
->>>   1 file changed, 17 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> index af919b1..998f561 100644
->>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> @@ -60,6 +60,15 @@
->>>   #define PWRAP_MAN_CMD_OP_OUTD          (0x9 << 8)
->>>   #define PWRAP_MAN_CMD_OP_OUTQ          (0xa << 8)
->>>
->>> +/* macro for Watch Dog Timer Source */
->>> +#define PWRAP_WDT_SRC_EN_STAUPD_TRIG           (1 << 25)
->>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE       (1 << 20)
->>> +#define PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE       (1 << 6)
->>> +#define PWRAP_WDT_SRC_MASK_ALL                 0xffffffff
->>> +#define PWRAP_WDT_SRC_MASK_NO_STAUPD   ~(PWRAP_WDT_SRC_EN_STAUPD_TRIG | \
->>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_DLE | \
->>> +                                         PWRAP_WDT_SRC_EN_HARB_STAUPD_ALE)
->>> +
->>>   /* macro for slave device wrapper registers */
->>>   #define PWRAP_DEW_BASE                 0xbc00
->>>   #define PWRAP_DEW_EVENT_OUT_EN         (PWRAP_DEW_BASE + 0x0)
->>> @@ -830,7 +839,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
->>>
->>>   static int pwrap_probe(struct platform_device *pdev)
->>>   {
->>> -       int ret, irq;
->>> +       int ret, irq, wdt_src;
->>>          struct pmic_wrapper *wrp;
->>>          struct device_node *np = pdev->dev.of_node;
->>>          const struct of_device_id *of_id =
->>> @@ -920,7 +929,13 @@ static int pwrap_probe(struct platform_device *pdev)
->>>
->>>          /* Initialize watchdog, may not be done by the bootloader */
->>>          pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
->>> -       pwrap_writel(wrp, 0xffffffff, PWRAP_WDT_SRC_EN);
->>> +       /*
->>> +        * Since STAUPD was not used on mt8173 platform,
->>> +        * so STAUPD of WDT_SRC which should be turned off
->>> +        */
->>
->> It is a little awkward that "!pwrap_is_mt8135(wrp)" means mt8173.  Is
->> this always true?
->> Why aren't we clearing STAUPD for mt8135 too?
->> I assume it is because mt8135 does not define this bit?
->> What about other devices that are not mt8135 or mt8173?
+On 14/12/15 11:07, Srinivas Kandagatla wrote:
+> Hi Andrew,
 >
-> MT8135 used STAUPD because it have pwrap event pin and it was different
-> with mt8173. pwrap event have been removed on mt8173, so it no need to
-> set STAUPD.
+> On 14/12/15 04:27, Daniel Kurtz wrote:
+>> Hi Srinivas,
+>>
+>> On Thu, Nov 19, 2015 at 6:46 PM, Andrew-CT Chen
+>> <andrew-ct.chen@mediatek.com> wrote:
+>>> This patch adds EFUSE support driver which is used by other drivers
+>>> like thermal sensor and HDMI impedance.
+>>>
+>>> There are some efuses these fuses store things like calibration data,
+>>> speed bins.. etc. Drivers like thermal sensor, HDMI impedance would
+>>> read out this data for configuring the driver.
+>>>
+>>> Change in v2:
+>>> 1. Rebase to 4.4-rc1
+>>> 2. Modify the driver Makefile for more consistent with other drivers
+>>> 3. Modify the compatible string to "mediatek,mt8173-efuse" and
+>>> "mediatek,efuse"
+>>
+>> Do you still plan to queue this for v4.5?
+>>
+> Sorry guys, for the long delay in replying your pings, got busy with
+> regular office stuff :-)
+>
+> Yes, It should go in v4.5, I did send request with my sign-off to Greg,
+> he should take it via char-misc tree.
 >
 
-I think we already had this discussion once. It seems as if there are 
-different versions of pmic-wrapper. An older version used by mt8135 and 
-e.g. mt6589 and a newer one used by mt8173.
+I can't see this patches in the char-misc tree [1].
+Can you please double check?
 
-So I agree with Daniel that we should check pwrap_is_mt8173 instead.
-
-Apart from that the patch looks good.
-
-Regards,
+Thanks,
 Matthias
 
-> Henry
->
->> Perhaps change the comment to:
->> "This driver does not use STAUPD, so clear this WDT SRC for all
->> devices for which it exists to avoid unhandled interrupts"
->>
->
->> Other than that, this patch is:
->> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
->>
->>> +       wdt_src = pwrap_is_mt8135(wrp) ?
->>> +                       PWRAP_WDT_SRC_MASK_ALL : PWRAP_WDT_SRC_MASK_NO_STAUPD;
->>> +       pwrap_writel(wrp, wdt_src, PWRAP_WDT_SRC_EN);
->>>          pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
->>>          pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
+[1] https://git.kernel.org/cgit/linux/kernel/git/gregkh/char-misc.git/
+
+> Thanks,
+> srini
+>>>
+>>> Andrew-CT Chen (3):
+>>>    dt-bindings: add document of mediatek efuse driver
+>>>    nvmem: mediatek: Add Mediatek EFUSE driver
+>>>    dts: arm64: Add EFUSE device node
+>>>
+>>>   .../devicetree/bindings/nvmem/mtk-efuse.txt        | 36 +++++++++
+>>>   arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  5 ++
+>>>   drivers/nvmem/Kconfig                              | 11 +++
+>>>   drivers/nvmem/Makefile                             |  2 +
+>>>   drivers/nvmem/mtk-efuse.c                          | 89
+>>> ++++++++++++++++++++++
+>>>   5 files changed, 143 insertions(+)
+>>>   create mode 100644
+>>> Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+>>>   create mode 100644 drivers/nvmem/mtk-efuse.c
 >>>
 >>> --
->>> 1.8.1.1.dirty
+>>> 1.9.1
 >>>
->
->
+>>> --
+>>> To unsubscribe from this list: send the line "unsubscribe
+>>> linux-kernel" in
+>>> the body of a message to majordomo@vger.kernel.org
+>>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>>> Please read the FAQ at  http://www.tux.org/lkml/
