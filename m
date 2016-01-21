@@ -1,85 +1,58 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 0/3] Mediatek EFUSE Support
-Date: Thu, 21 Jan 2016 10:33:21 +0100
-Message-ID: <56A0A5E1.5050105@gmail.com>
-References: <1447930014-19579-1-git-send-email-andrew-ct.chen@mediatek.com>
- <CAGS+omA8XK6ksd7Ma8yAUbkSsHR6yQxjFrV+HGbd83UiH6T51g@mail.gmail.com>
- <566E94CA.1050700@linaro.org>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/3] Add basic support for Mediatek MT7623 SoC
+Date: Thu, 21 Jan 2016 11:10:47 +0100
+Message-ID: <56A0AEA7.5000704@gmail.com>
+References: <1452011068-28300-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <566E94CA.1050700@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Daniel Kurtz <djkurtz@chromium.org>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Cc: Maxime Ripard <maxime.ripard@free-electrons.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1452011068-28300-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 14/12/15 11:07, Srinivas Kandagatla wrote:
-> Hi Andrew,
+On 05/01/16 17:24, John Crispin wrote:
+> MT7623 is a SoC based on 32bit ARMv7 architecture. It contains 4 CA7 cores.
+> MT7623 share many HW IP with MT65xx series. This patchset was tested
+> on MT7623 evaluation board, and boot to shell ok.
 >
-> On 14/12/15 04:27, Daniel Kurtz wrote:
->> Hi Srinivas,
->>
->> On Thu, Nov 19, 2015 at 6:46 PM, Andrew-CT Chen
->> <andrew-ct.chen@mediatek.com> wrote:
->>> This patch adds EFUSE support driver which is used by other drivers
->>> like thermal sensor and HDMI impedance.
->>>
->>> There are some efuses these fuses store things like calibration data,
->>> speed bins.. etc. Drivers like thermal sensor, HDMI impedance would
->>> read out this data for configuring the driver.
->>>
->>> Change in v2:
->>> 1. Rebase to 4.4-rc1
->>> 2. Modify the driver Makefile for more consistent with other drivers
->>> 3. Modify the compatible string to "mediatek,mt8173-efuse" and
->>> "mediatek,efuse"
->>
->> Do you still plan to queue this for v4.5?
->>
-> Sorry guys, for the long delay in replying your pings, got busy with
-> regular office stuff :-)
+> This series contains document bindings, device tree including
+> interrupt, uart, timer and wdt.
 >
-> Yes, It should go in v4.5, I did send request with my sign-off to Greg,
-> he should take it via char-misc tree.
+> John Crispin (3):
+>    Document: DT: Add bindings for mediatek MT7623 SoC Platform
+>    ARM: dts: mediatek: add MT7623 basic support
+>    ARM: mediatek: add MT7623 smp bringup code
+>
+>   Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+>   .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+>   .../bindings/timer/mediatek,mtk-timer.txt          |    1 +
+>   arch/arm/boot/dts/Makefile                         |    1 +
+>   arch/arm/boot/dts/mt7623-evb.dts                   |   33 +++++
+>   arch/arm/boot/dts/mt7623.dtsi                      |  147 ++++++++++++++++++++
+>   arch/arm/mach-mediatek/Kconfig                     |    4 +
+>   arch/arm/mach-mediatek/mediatek.c                  |    1 +
+>   arch/arm/mach-mediatek/platsmp.c                   |    7 +
+>   9 files changed, 199 insertions(+)
+>   create mode 100644 arch/arm/boot/dts/mt7623-evb.dts
+>   create mode 100644 arch/arm/boot/dts/mt7623.dtsi
 >
 
-I can't see this patches in the char-misc tree [1].
-Can you please double check?
+Applied to v4.5-next/dts and v4.5-next/soc.
+
+I split patch 3 to fit the different branches.
 
 Thanks,
 Matthias
-
-[1] https://git.kernel.org/cgit/linux/kernel/git/gregkh/char-misc.git/
-
-> Thanks,
-> srini
->>>
->>> Andrew-CT Chen (3):
->>>    dt-bindings: add document of mediatek efuse driver
->>>    nvmem: mediatek: Add Mediatek EFUSE driver
->>>    dts: arm64: Add EFUSE device node
->>>
->>>   .../devicetree/bindings/nvmem/mtk-efuse.txt        | 36 +++++++++
->>>   arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  5 ++
->>>   drivers/nvmem/Kconfig                              | 11 +++
->>>   drivers/nvmem/Makefile                             |  2 +
->>>   drivers/nvmem/mtk-efuse.c                          | 89
->>> ++++++++++++++++++++++
->>>   5 files changed, 143 insertions(+)
->>>   create mode 100644
->>> Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
->>>   create mode 100644 drivers/nvmem/mtk-efuse.c
->>>
->>> --
->>> 1.9.1
->>>
->>> --
->>> To unsubscribe from this list: send the line "unsubscribe
->>> linux-kernel" in
->>> the body of a message to majordomo@vger.kernel.org
->>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->>> Please read the FAQ at  http://www.tux.org/lkml/
