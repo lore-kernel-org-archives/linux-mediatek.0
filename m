@@ -1,173 +1,74 @@
-From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: [PATCH 5/5] cpufreq: mt8173: Add notifier to handle OPP voltage adjustment
-Date: Fri, 22 Jan 2016 16:40:29 +0800
-Message-ID: <1453452029-20843-6-git-send-email-pi-cheng.chen@linaro.org>
-References: <1453452029-20843-1-git-send-email-pi-cheng.chen@linaro.org>
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <1453452029-20843-1-git-send-email-pi-cheng.chen@linaro.org>
-Sender: linux-pm-owner@vger.kernel.org
-To: Nishanth Menon <nm@ti.com>, Eduardo Valentin <edubezval@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>
-Cc: Kevin Hilman <khilman@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, Stephen Boyd <sboyd@codeaurora.org>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: Re: [PATCH V2 1/4] soc: mediatek: PMIC wrap: DEW base addr may vary
+Date: Fri, 22 Jan 2016 10:03:31 +0100
+Message-ID: <56A1F063.1080706@openwrt.org>
+References: <1452441884-25882-1-git-send-email-blogic@openwrt.org>
+ <1452572924.31465.13.camel@mtksdaap41> <56A0C4B4.8090807@gmail.com>
+ <56A0D7AA.3010301@openwrt.org> <56A10718.1010801@gmail.com>
+ <56A10C7A.5080809@openwrt.org> <1453439072.8457.21.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453439072.8457.21.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a notifier to receive OPP voltage adjustment event which is
-triggered by voltage change of OPP entries done by Mediatek SVS
-(Smart Voltage Scaling) engine.
+Hi Henry
 
-CC: Stephen Boyd <sboyd@codeaurora.org>
+>>>> not sure if that is a good idea. the code path and dew register usage
+>>>> depends on the slave type. putting the dew registers into the DT will
+>>>> only have the effect that we will have 1 array less in the driver but in
+>>>> turn will have code to load that exact array back. also it wont be a
+>>>> simple array that we store in the DT. but we need to match register
+>>>> names to register offsets.
+>>>>
+>>>> although i agree that putting static data into the DT tends to be a good
+>>>> thing i believe in this case it is not really sane.
+>>>>
+>>>
+>>> Actually I wasn't thinking of this. My idea (poor mans solution) would
+>>> be to identify the pmic dts node and use the values dependent on this,
+>>> rather then on the SoC version.
+>>
+>> i have that bit already in my series based on code i got from mtk.
+>>
+>> however even cooler might be to just read the CID register and make an
+>> educated decision based on that.
+>>
+> CID of mt6397/mt6391/mt6323 was 0x0100 => bit[7:0]
+> 
 
-Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
----
-This patch is modify from the patch which adds[1] a notifier in
-cpufreq-dt to handle OPP voltage adjust event. This patch relies on the
-on the runtime voltage adjustment mechanism of OPP introduced in the
-same patchset.
+Yep, i have a patch here that i will test today that utilizes the CID
+register.
 
-[1] https://lkml.org/lkml/2015/9/18/833
----
- drivers/cpufreq/mt8173-cpufreq.c | 55 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
+>> i'll try to cleanup the patches tomorrow and then post them.
+>>
+>>>
+>>> The premium class solution would be to have the registers definded in
+>>> the pmic driver and get them accessed through the pmic-wrapper driver.
+>>
+>> indeed that would be an option.
+> There was a problem, pmic-wrapper driver was needed to probe before pmic
+> driver, if DEW address was definded in the pmic driver or stored in pmic
+> device tree, how could pmic-wrap driver to get them because pmic driver
+> was not initialize yet?
+> 
 
-diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-index 1ede917..248f6e8 100644
---- a/drivers/cpufreq/mt8173-cpufreq.c
-+++ b/drivers/cpufreq/mt8173-cpufreq.c
-@@ -48,8 +48,11 @@ struct mtk_cpu_dvfs_info {
- 	struct clk *cpu_clk;
- 	struct clk *inter_clk;
- 	struct thermal_cooling_device *cdev;
-+	struct mutex lock;
-+	struct notifier_block opp_nb;
- 	struct list_head list_head;
- 	int intermediate_voltage;
-+	unsigned long opp_freq;
- 	bool need_voltage_tracking;
- };
- 
-@@ -211,6 +214,33 @@ static int mtk_cpufreq_set_voltage(struct mtk_cpu_dvfs_info *info, int vproc)
- 					     vproc + VOLT_TOL);
- }
- 
-+static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-+				    unsigned long event, void *data)
-+{
-+	struct dev_pm_opp *opp = data;
-+	struct mtk_cpu_dvfs_info *info = container_of(nb,
-+						      struct mtk_cpu_dvfs_info,
-+						      opp_nb);
-+	unsigned long freq, volt;
-+	int ret = 0;
-+
-+	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-+		freq = dev_pm_opp_get_freq(opp);
-+
-+		if (info->opp_freq == freq) {
-+			volt = dev_pm_opp_get_voltage(opp);
-+			mutex_lock(&info->lock);
-+			ret = mtk_cpufreq_set_voltage(info, volt);
-+			mutex_unlock(&info->lock);
-+			if (ret)
-+				dev_err(info->cpu_dev,
-+					"failed to scale voltage: %d\n", ret);
-+		}
-+	}
-+
-+	return notifier_from_errno(ret);
-+}
-+
- static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 				  unsigned int index)
- {
-@@ -245,6 +275,8 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	vproc = dev_pm_opp_get_voltage(opp);
- 	rcu_read_unlock();
- 
-+	mutex_lock(&info->lock);
-+
- 	/*
- 	 * If the new voltage or the intermediate voltage is higher than the
- 	 * current voltage, scale up voltage first.
-@@ -256,6 +288,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			pr_err("cpu%d: failed to scale up voltage!\n",
- 			       policy->cpu);
- 			mtk_cpufreq_set_voltage(info, old_vproc);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
-@@ -267,6 +300,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -277,6 +311,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		clk_set_parent(cpu_clk, armpll);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -287,6 +322,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, inter_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -302,10 +338,14 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			clk_set_parent(cpu_clk, info->inter_clk);
- 			clk_set_rate(armpll, old_freq_hz);
- 			clk_set_parent(cpu_clk, armpll);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
- 
-+	info->opp_freq = freq_hz;
-+	mutex_unlock(&info->lock);
-+
- 	return 0;
- }
- 
-@@ -343,6 +383,7 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	struct dev_pm_opp *opp;
- 	unsigned long rate;
- 	int ret;
-+	struct srcu_notifier_head *opp_srcu_head;
- 
- 	cpu_dev = get_cpu_device(cpu);
- 	if (!cpu_dev) {
-@@ -417,11 +458,25 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
- 	rcu_read_unlock();
- 
-+	opp_srcu_head = dev_pm_opp_get_notifier(cpu_dev);
-+	if (IS_ERR(opp_srcu_head)) {
-+		ret = PTR_ERR(opp_srcu_head);
-+		goto out_free_opp_table;
-+	}
-+
-+	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-+	ret = srcu_notifier_chain_register(opp_srcu_head, &info->opp_nb);
-+	if (ret)
-+		goto out_free_opp_table;
-+
- 	info->cpu_dev = cpu_dev;
- 	info->proc_reg = proc_reg;
- 	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
- 	info->cpu_clk = cpu_clk;
- 	info->inter_clk = inter_clk;
-+	info->opp_freq = clk_get_rate(cpu_clk);
-+
-+	mutex_init(&info->lock);
- 
- 	/*
- 	 * If SRAM regulator is present, software "voltage tracking" is needed
--- 
-1.9.1
+That is exactly what i was wondering about. i can only think of
+solutions that would
 
+i have respun the series and will resend it today once i tested it on a
+device.
+
+	John
