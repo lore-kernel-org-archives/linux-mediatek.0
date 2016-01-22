@@ -1,74 +1,144 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH V2 1/4] soc: mediatek: PMIC wrap: DEW base addr may vary
-Date: Fri, 22 Jan 2016 10:03:31 +0100
-Message-ID: <56A1F063.1080706@openwrt.org>
-References: <1452441884-25882-1-git-send-email-blogic@openwrt.org>
- <1452572924.31465.13.camel@mtksdaap41> <56A0C4B4.8090807@gmail.com>
- <56A0D7AA.3010301@openwrt.org> <56A10718.1010801@gmail.com>
- <56A10C7A.5080809@openwrt.org> <1453439072.8457.21.camel@mtksdaap41>
+From: Liguo Zhang <liguo.zhang@mediatek.com>
+Subject: [PATCH] i2c: mt8173: add 4GB mode support in i2c driver.
+Date: Fri, 22 Jan 2016 17:38:02 +0800
+Message-ID: <1453455482-3218-1-git-send-email-liguo.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453439072.8457.21.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Henry
+If 4GB mode is enable, we should add 4gb mode support in i2c driver.
+Set 4GB mode register to support 4GB mode.
 
->>>> not sure if that is a good idea. the code path and dew register usage
->>>> depends on the slave type. putting the dew registers into the DT will
->>>> only have the effect that we will have 1 array less in the driver but in
->>>> turn will have code to load that exact array back. also it wont be a
->>>> simple array that we store in the DT. but we need to match register
->>>> names to register offsets.
->>>>
->>>> although i agree that putting static data into the DT tends to be a good
->>>> thing i believe in this case it is not really sane.
->>>>
->>>
->>> Actually I wasn't thinking of this. My idea (poor mans solution) would
->>> be to identify the pmic dts node and use the values dependent on this,
->>> rather then on the SoC version.
->>
->> i have that bit already in my series based on code i got from mtk.
->>
->> however even cooler might be to just read the CID register and make an
->> educated decision based on that.
->>
-> CID of mt6397/mt6391/mt6323 was 0x0100 => bit[7:0]
-> 
+Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c |   41 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-Yep, i have a patch here that i will test today that utilizes the CID
-register.
-
->> i'll try to cleanup the patches tomorrow and then post them.
->>
->>>
->>> The premium class solution would be to have the registers definded in
->>> the pmic driver and get them accessed through the pmic-wrapper driver.
->>
->> indeed that would be an option.
-> There was a problem, pmic-wrapper driver was needed to probe before pmic
-> driver, if DEW address was definded in the pmic driver or stored in pmic
-> device tree, how could pmic-wrap driver to get them because pmic driver
-> was not initialize yet?
-> 
-
-That is exactly what i was wondering about. i can only think of
-solutions that would
-
-i have respun the series and will resend it today once i tested it on a
-device.
-
-	John
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index aec8e6c..80d3c79 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -60,6 +60,7 @@
+ #define I2C_DMA_INT_FLAG_NONE		0x0000
+ #define I2C_DMA_CLR_FLAG		0x0000
+ #define I2C_DMA_HARD_RST		0x0002
++#define I2C_DMA_4G_MODE			0x0001
+ 
+ #define I2C_DEFAULT_SPEED		100000	/* hz */
+ #define MAX_FS_MODE_SPEED		400000
+@@ -88,6 +89,8 @@ enum DMA_REGS_OFFSET {
+ 	OFFSET_RX_MEM_ADDR = 0x20,
+ 	OFFSET_TX_LEN = 0x24,
+ 	OFFSET_RX_LEN = 0x28,
++	OFFSET_TX_4G_MODE = 0x54,
++	OFFSET_RX_4G_MODE = 0x58,
+ };
+ 
+ enum i2c_trans_st_rs {
+@@ -133,6 +136,7 @@ struct mtk_i2c_compatible {
+ 	unsigned char dcm: 1;
+ 	unsigned char auto_restart: 1;
+ 	unsigned char aux_len_reg: 1;
++	unsigned char support_33bits: 1;
+ };
+ 
+ struct mtk_i2c {
+@@ -182,6 +186,7 @@ static const struct mtk_i2c_compatible mt6577_compat = {
+ 	.dcm = 1,
+ 	.auto_restart = 0,
+ 	.aux_len_reg = 0,
++	.support_33bits = 0,
+ };
+ 
+ static const struct mtk_i2c_compatible mt6589_compat = {
+@@ -190,6 +195,7 @@ static const struct mtk_i2c_compatible mt6589_compat = {
+ 	.dcm = 0,
+ 	.auto_restart = 0,
+ 	.aux_len_reg = 0,
++	.support_33bits = 0,
+ };
+ 
+ static const struct mtk_i2c_compatible mt8173_compat = {
+@@ -198,6 +204,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
+ 	.dcm = 1,
+ 	.auto_restart = 1,
+ 	.aux_len_reg = 1,
++	.support_33bits = 1,
+ };
+ 
+ static const struct of_device_id mtk_i2c_of_match[] = {
+@@ -373,6 +380,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	u16 start_reg;
+ 	u16 control_reg;
+ 	u16 restart_flag = 0;
++	u32 reg_4g_mode = 0;
+ 	dma_addr_t rpaddr = 0;
+ 	dma_addr_t wpaddr = 0;
+ 	int ret;
+@@ -439,6 +447,13 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					msgs->len, DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, rpaddr))
+ 			return -ENOMEM;
++
++		if (i2c->dev_comp->support_33bits) {
++			reg_4g_mode = (rpaddr & 0x100000000ULL) ?
++				       I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
++			writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
++		}
++
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_RX_LEN);
+ 	} else if (i2c->op == I2C_MASTER_WR) {
+@@ -448,6 +463,13 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					msgs->len, DMA_TO_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, wpaddr))
+ 			return -ENOMEM;
++
++		if (i2c->dev_comp->support_33bits) {
++			reg_4g_mode = (wpaddr & 0x100000000ULL) ?
++				       I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
++			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
++		}
++
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+ 	} else {
+@@ -465,6 +487,17 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					 msgs->len, DMA_TO_DEVICE);
+ 			return -ENOMEM;
+ 		}
++
++		if (i2c->dev_comp->support_33bits) {
++			reg_4g_mode = (wpaddr & 0x100000000ULL) ?
++				       I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
++			writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
++
++			reg_4g_mode = (rpaddr & 0x100000000ULL) ?
++				       I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
++			writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
++		}
++
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+@@ -729,6 +762,14 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
++	if (i2c->dev_comp->support_33bits) {
++		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(33));
++		if (ret) {
++			dev_err(&pdev->dev, "dma_set_mask return error.\n");
++			return ret;
++		}
++	}
++
+ 	ret = mtk_i2c_clock_enable(i2c);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "clock enable failed!\n");
+-- 
+1.7.9.5
