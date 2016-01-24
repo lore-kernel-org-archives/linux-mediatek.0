@@ -1,93 +1,116 @@
-From: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-Subject: Re: [RFC PATCH 3/5] dt-bindings: thermal: Add optional properties of
- Mediatek thermal controller
-Date: Mon, 25 Jan 2016 08:21:20 +0800
-Message-ID: <20160125002120.GA2848@gmail.com>
-References: <1453452029-20843-1-git-send-email-pi-cheng.chen@linaro.org>
- <1453452029-20843-4-git-send-email-pi-cheng.chen@linaro.org>
- <20160122223136.GA21819@rob-hp-laptop>
+From: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Subject: Re: [PATCH v4] media: v4l2-compat-ioctl32: fix missing length copy in
+ put_v4l2_buffer32
+Date: Mon, 25 Jan 2016 00:10:12 +0200
+Message-ID: <5599852.iRZxXXq57I@avalon>
+References: <1453190210-49347-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20160122223136.GA21819@rob-hp-laptop>
-Sender: linux-pm-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Nishanth Menon <nm@ti.com>, Eduardo Valentin <edubezval@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Sascha Hauer <kernel@pengutronix.de>, Kevin Hilman <khilman@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1453190210-49347-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 22, 2016 at 04:31:36PM -0600, Rob Herring wrote:
-> On Fri, Jan 22, 2016 at 04:40:27PM +0800, Pi-Cheng Chen wrote:
-> > This adds optional properties of Mediatek thermal controller which are
-> > required by SVS engine integrated with Mediatek thermal controller.
-> > 
-> > Signed-off-by: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
-> > ---
-> >  .../bindings/thermal/mediatek-thermal.txt          | 23 ++++++++++++++++------
-> >  1 file changed, 17 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> > index 81f9a51..acaacaa 100644
-> > --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> > +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> > @@ -7,6 +7,11 @@ this device needs phandles to the AUXADC. Also it controls a mux in the
-> >  apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
-> >  is also needed.
-> >  
-> > +There is another hardware engine, SVS (Smart Voltage Scaling) which shares the
-> > +same block of banked registers with Mediatek thermal controller. Hence the
-> > +driver of SVS is integrated with the driver of Mediatek thermal controller. The
-> > +properties required by SVS engine are optional for Mediatek thermal controller.
-> > +
-> >  Required properties:
-> >  - compatible: "mediatek,mt8173-thermal"
-> >  - reg: Address range of the thermal controller
-> > @@ -21,9 +26,15 @@ Required properties:
-> >  - #thermal-sensor-cells : Should be 0. See ./thermal.txt for a description.
-> >  
-> >  Optional properties:
-> > -- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
-> > -               unspecified default values shall be used.
-> > -- nvmem-cell-names: Should be "calibration-data"
-> > +- clocks, clock-names: Clocks that are optional for the thermal controller.
-> > +	       Specify to enable SVS engine.
-> > +	       "svs_pll": The PLL clock should be switched to during
-> > +			  initialization stage of SVS engine.
-> > +	       "svs_mux": The MUX clock controls the clock input of SVS engine.
-> > +- nvmem-cells: A list of phandles to the calibration data provided by a nvmem
-> > +	       device. If unspecified default values shall be used. The SVS
-> > +	       engine will be disabled if no SVS calibration data is specified.
-> > +- nvmem-cell-names: Should be "calibration-data" and "svs-calibration-data"
-> >  
-> >  Example:
-> >  
-> > @@ -33,11 +44,11 @@ Example:
-> >  		reg = <0 0x1100b000 0 0x1000>;
-> >  		interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
-> >  		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
-> > -		clock-names = "therm", "auxadc";
-> > +		clock-names = "therm", "auxadc", ;
+Hi Tiffany,
+
+Thank you for the patch.
+
+On Tuesday 19 January 2016 15:56:50 Tiffany Lin wrote:
+> In v4l2-compliance utility, test QUERYBUF required correct length
+> value to go through each planar to check planar's length in
+> multi-planar buffer type
 > 
-> Huh?
+> Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+
+> ---
+>  drivers/media/v4l2-core/v4l2-compat-ioctl32.c |   21 ++++++++-------------
+>  1 file changed, 8 insertions(+), 13 deletions(-)
 > 
+> diff --git a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c index 327e83a..f38c076
+> 100644
+> --- a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> +++ b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
+> @@ -415,7 +415,8 @@ static int get_v4l2_buffer32(struct v4l2_buffer *kp,
+> struct v4l2_buffer32 __user get_user(kp->index, &up->index) ||
+>  		get_user(kp->type, &up->type) ||
+>  		get_user(kp->flags, &up->flags) ||
+> -		get_user(kp->memory, &up->memory))
+> +		get_user(kp->memory, &up->memory) ||
+> +		get_user(kp->length, &up->length))
+>  			return -EFAULT;
+> 
+>  	if (V4L2_TYPE_IS_OUTPUT(kp->type))
+> @@ -427,9 +428,6 @@ static int get_v4l2_buffer32(struct v4l2_buffer *kp,
+> struct v4l2_buffer32 __user return -EFAULT;
+> 
+>  	if (V4L2_TYPE_IS_MULTIPLANAR(kp->type)) {
+> -		if (get_user(kp->length, &up->length))
+> -			return -EFAULT;
+> -
+>  		num_planes = kp->length;
+>  		if (num_planes == 0) {
+>  			kp->m.planes = NULL;
+> @@ -462,16 +460,14 @@ static int get_v4l2_buffer32(struct v4l2_buffer *kp,
+> struct v4l2_buffer32 __user } else {
+>  		switch (kp->memory) {
+>  		case V4L2_MEMORY_MMAP:
+> -			if (get_user(kp->length, &up->length) ||
+> -				get_user(kp->m.offset, &up->m.offset))
+> +			if (get_user(kp->m.offset, &up->m.offset))
+>  				return -EFAULT;
+>  			break;
+>  		case V4L2_MEMORY_USERPTR:
+>  			{
+>  			compat_long_t tmp;
+> 
+> -			if (get_user(kp->length, &up->length) ||
+> -			    get_user(tmp, &up->m.userptr))
+> +			if (get_user(tmp, &up->m.userptr))
+>  				return -EFAULT;
+> 
+>  			kp->m.userptr = (unsigned long)compat_ptr(tmp);
+> @@ -513,7 +509,8 @@ static int put_v4l2_buffer32(struct v4l2_buffer *kp,
+> struct v4l2_buffer32 __user copy_to_user(&up->timecode, &kp->timecode,
+> sizeof(struct v4l2_timecode)) || put_user(kp->sequence, &up->sequence) ||
+>  		put_user(kp->reserved2, &up->reserved2) ||
+> -		put_user(kp->reserved, &up->reserved))
+> +		put_user(kp->reserved, &up->reserved) ||
+> +		put_user(kp->length, &up->length))
+>  			return -EFAULT;
+> 
+>  	if (V4L2_TYPE_IS_MULTIPLANAR(kp->type)) {
+> @@ -536,13 +533,11 @@ static int put_v4l2_buffer32(struct v4l2_buffer *kp,
+> struct v4l2_buffer32 __user } else {
+>  		switch (kp->memory) {
+>  		case V4L2_MEMORY_MMAP:
+> -			if (put_user(kp->length, &up->length) ||
+> -				put_user(kp->m.offset, &up->m.offset))
+> +			if (put_user(kp->m.offset, &up->m.offset))
+>  				return -EFAULT;
+>  			break;
+>  		case V4L2_MEMORY_USERPTR:
+> -			if (put_user(kp->length, &up->length) ||
+> -				put_user(kp->m.userptr, &up->m.userptr))
+> +			if (put_user(kp->m.userptr, &up->m.userptr))
+>  				return -EFAULT;
+>  			break;
+>  		case V4L2_MEMORY_OVERLAY:
 
-It should be:
+-- 
+Regards,
 
-clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>,
-	 <&topckgen CLK_TOP_SYSPLL1_D2>, <&topckgen CLK_TOP_AXI_SEL>;
-clock-names = "therm", "auxadc", "svs_pll", "svs_mux";
-
-Sorry for my mistake.
-
-> >  		resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
-> >  		reset-names = "therm";
-> >  		mediatek,auxadc = <&auxadc>;
-> >  		mediatek,apmixedsys = <&apmixedsys>;
-> > -		nvmem-cells = <&thermal_calibration_data>;
-> > -		nvmem-cell-names = "calibration-data";
-> > +		nvmem-cells = <&thermal_calibration_data>, <&svs-calibration>;
-> > +		nvmem-cell-names = "calibration-data", "svs-calibration-data";
-> >  	};
-> > -- 
-> > 1.9.1
-> > 
+Laurent Pinchart
