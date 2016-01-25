@@ -1,63 +1,45 @@
 From: Javier Martinez Canillas <javier@dowhile0.org>
 Subject: Re: [PATCH V2 2/2] regulator: mt6323: Add support for MT6323 regulator
-Date: Mon, 25 Jan 2016 10:19:15 -0300
-Message-ID: <CABxcv=m32FLmLzuGC-KFmZ5q-8TmC1FrhdOw+WB-d_L53gg_tg@mail.gmail.com>
+Date: Mon, 25 Jan 2016 10:25:03 -0300
+Message-ID: <CABxcv==AzZju5a3Na0OQf6PmsM_J8auPLzxffLsZ09at8DWXew@mail.gmail.com>
 References: <1453718405-40815-1-git-send-email-blogic@openwrt.org>
 	<1453718405-40815-2-git-send-email-blogic@openwrt.org>
 	<CABxcv=kWnUwpCo=JJbnPAARRM226YfBJw_6yF7MiE8-7iqBD+Q@mail.gmail.com>
 	<56A612E2.1010509@openwrt.org>
 	<20160125123538.GO6588@sirena.org.uk>
 	<56A61F78.6070703@openwrt.org>
+	<CABxcv=m32FLmLzuGC-KFmZ5q-8TmC1FrhdOw+WB-d_L53gg_tg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56A61F78.6070703@openwrt.org>
+In-Reply-To: <CABxcv=m32FLmLzuGC-KFmZ5q-8TmC1FrhdOw+WB-d_L53gg_tg@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: John Crispin <blogic@openwrt.org>
 Cc: Mark Brown <broonie@kernel.org>, Steven Liu <steven.liu@mediatek.com>, Linux Kernel <linux-kernel@vger.kernel.org>, Henry Chen <henryc.chen@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello John,
+On Mon, Jan 25, 2016 at 10:19 AM, Javier Martinez Canillas
+<javier@dowhile0.org> wrote:
 
-On Mon, Jan 25, 2016 at 10:13 AM, John Crispin <blogic@openwrt.org> wrote:
+[snip]
+
 >
->
-> On 25/01/2016 13:35, Mark Brown wrote:
->> On Mon, Jan 25, 2016 at 01:19:46PM +0100, John Crispin wrote:
->>> On 25/01/2016 13:11, Javier Martinez Canillas wrote:
->>
->>>> You don't have a .of_match table but according the DT bindings, the
->>>> compatible string "mediatek,mt6323-regulator" should be used so there
->>>> should be a OF match table or the vendor prefix of the compatible
->>>> string won't be used for matching (i.e: fallbacks to the driver .name
->>>> for match).
->>
->>> the driver is probed via drivers/mfd/mt6397-core.c and does not require
->>> the OF match table. It loads fine just like the mt6397 driver.
->>
->> That's fine but you shouldn't have the compatible string in your binding
->> document since it's not actually used or needed.
->>
-> Hi,
->
-> correct me if i am wrong but if we remove the compatible string from the
-> binding document, then we will also have to remove it from the dts and
-> then the kernel won't be able to match the node to the driver and thus
-> the regulator phandle derefs will fail.
+> In fact, the kernel is currently not matching the compatible, it is
+> only matching because you provided a .of_compatible is provided in the
+> mfd_cell.
 >
 
-The kernel doesn't need to match the compatible since the MFD driver
-register the device explicitly with mfd_add_devices().
+Sorry my English was a bit off in this paragraph...
 
-In fact, the kernel is currently not matching the compatible, it is
-only matching because you provided a .of_compatible is provided in the
-mfd_cell.
+I tried to say that OF does not traverse MFD sub-devices and lookups a
+device driver that matches the compatible automatically since a MFD
+device is not a bus. Currently it is only trying to match a compatible
+string because the mfd_cell has a .of_compatible set so an of_node is
+assigned on mfd_add_device().
 
-If you wan't subdevices for a MFD to be registered automatically by OF
-and the compatible matched like other buses, then your MFD driver
-needs to call of_platform_populate() instead mfd_add_devices().
-
->         John
+But it is failing to match because no OF device table is provided and
+the platform bus match callback is falling back to the driver .name to
+match so the compatible is not really used as Mark said.
 
 Best regards,
 Javier
