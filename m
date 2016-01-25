@@ -1,111 +1,136 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH V2 2/2] regulator: mt6323: Add support for MT6323 regulator
-Date: Mon, 25 Jan 2016 13:33:21 +0100
-Message-ID: <56A61611.2000401@openwrt.org>
-References: <1453718405-40815-1-git-send-email-blogic@openwrt.org>
- <1453718405-40815-2-git-send-email-blogic@openwrt.org>
- <CABxcv=kWnUwpCo=JJbnPAARRM226YfBJw_6yF7MiE8-7iqBD+Q@mail.gmail.com>
- <56A612E2.1010509@openwrt.org>
- <CABxcv=kC3tOrfJvCCaXcMSO4ufBXc_GoWeGBcX56k1RV-BX=ow@mail.gmail.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH V2 2/4] mfd: mediatek: int_con and int_status may vary in
+ location
+Date: Mon, 25 Jan 2016 12:33:53 +0000
+Message-ID: <20160125123353.GE3368@x1>
+References: <1453716887-38442-1-git-send-email-blogic@openwrt.org>
+ <1453716887-38442-3-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABxcv=kC3tOrfJvCCaXcMSO4ufBXc_GoWeGBcX56k1RV-BX=ow-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1453716887-38442-3-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, 25 Jan 2016, John Crispin wrote:
 
+> MT6323 has the INT_CON and INT_STATUS located at a different position=
+=2E
+> Make the registers locations configurable.
+>=20
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> ---
+>  drivers/mfd/mt6397-core.c       |   27 +++++++++++++++++----------
+>  include/linux/mfd/mt6397/core.h |    2 ++
+>  2 files changed, 19 insertions(+), 10 deletions(-)
 
-On 25/01/2016 13:30, Javier Martinez Canillas wrote:
-> Hello John,
-> 
-> On Mon, Jan 25, 2016 at 9:19 AM, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org> wrote:
->> Hi,
->>
->> On 25/01/2016 13:11, Javier Martinez Canillas wrote:
->>> Hello,
->>>
->>> On Mon, Jan 25, 2016 at 7:40 AM, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org> wrote:
->>>> From: Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>>
->>> [snip]
->>>
->>>> +}
->>>> +
->>>> +static struct platform_driver mt6323_regulator_driver = {
->>>> +       .driver = {
->>>> +               .name = "mt6323-regulator",
->>>> +       },
->>>> +       .probe = mt6323_regulator_probe,
->>>> +};
->>>> +
->>>
->>> You don't have a .of_match table but according the DT bindings, the
->>> compatible string "mediatek,mt6323-regulator" should be used so there
->>> should be a OF match table or the vendor prefix of the compatible
->>> string won't be used for matching (i.e: fallbacks to the driver .name
->>> for match).
->>
->> the driver is probed via drivers/mfd/mt6397-core.c and does not require
->> the OF match table. It loads fine just like the mt6397 driver.
->>
-> 
-> The MFD driver sets .of_compatible = "mediatek,mt6397-regulator" for
-> the MFD cell so I'm pretty sure that the platform bus .uevent callback
-> will report a MODALIAS=of:NfooT<NULL>C"mediatek,mt6397-regulator" so
-> that's what udev is going to pass to kmod but:
-> 
-> kmod load of:NfooT<NULL>C"mediatek,mt6397-regulator"
-> 
-> is not going to succeed since there won't be a kernel module with that alias.
-> 
-> Did you really try building it as a module and checked that it auto loads?
-> 
+=46or my own reference:
+  Acked-by: Lee Jones <lee.jones@linaro.org>
 
-Hi,
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 1749c1c..75ad0fe 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -69,8 +69,10 @@ static void mt6397_irq_sync_unlock(struct irq_data=
+ *data)
+>  {
+>  	struct mt6397_chip *mt6397 =3D irq_data_get_irq_chip_data(data);
+> =20
+> -	regmap_write(mt6397->regmap, MT6397_INT_CON0, mt6397->irq_masks_cur=
+[0]);
+> -	regmap_write(mt6397->regmap, MT6397_INT_CON1, mt6397->irq_masks_cur=
+[1]);
+> +	regmap_write(mt6397->regmap, mt6397->int_con[0],
+> +		     mt6397->irq_masks_cur[0]);
+> +	regmap_write(mt6397->regmap, mt6397->int_con[1],
+> +		     mt6397->irq_masks_cur[1]);
+> =20
+>  	mutex_unlock(&mt6397->irqlock);
+>  }
+> @@ -147,8 +149,8 @@ static irqreturn_t mt6397_irq_thread(int irq, voi=
+d *data)
+>  {
+>  	struct mt6397_chip *mt6397 =3D data;
+> =20
+> -	mt6397_irq_handle_reg(mt6397, MT6397_INT_STATUS0, 0);
+> -	mt6397_irq_handle_reg(mt6397, MT6397_INT_STATUS1, 16);
+> +	mt6397_irq_handle_reg(mt6397, mt6397->int_status[0], 0);
+> +	mt6397_irq_handle_reg(mt6397, mt6397->int_status[1], 16);
+> =20
+>  	return IRQ_HANDLED;
+>  }
+> @@ -177,8 +179,8 @@ static int mt6397_irq_init(struct mt6397_chip *mt=
+6397)
+>  	mutex_init(&mt6397->irqlock);
+> =20
+>  	/* Mask all interrupt sources */
+> -	regmap_write(mt6397->regmap, MT6397_INT_CON0, 0x0);
+> -	regmap_write(mt6397->regmap, MT6397_INT_CON1, 0x0);
+> +	regmap_write(mt6397->regmap, mt6397->int_con[0], 0x0);
+> +	regmap_write(mt6397->regmap, mt6397->int_con[1], 0x0);
+> =20
+>  	mt6397->irq_domain =3D irq_domain_add_linear(mt6397->dev->of_node,
+>  		MT6397_IRQ_NR, &mt6397_irq_domain_ops, mt6397);
+> @@ -203,8 +205,8 @@ static int mt6397_irq_suspend(struct device *dev)
+>  {
+>  	struct mt6397_chip *chip =3D dev_get_drvdata(dev);
+> =20
+> -	regmap_write(chip->regmap, MT6397_INT_CON0, chip->wake_mask[0]);
+> -	regmap_write(chip->regmap, MT6397_INT_CON1, chip->wake_mask[1]);
+> +	regmap_write(chip->regmap, chip->int_con[0], chip->wake_mask[0]);
+> +	regmap_write(chip->regmap, chip->int_con[1], chip->wake_mask[1]);
+> =20
+>  	enable_irq_wake(chip->irq);
+> =20
+> @@ -215,8 +217,8 @@ static int mt6397_irq_resume(struct device *dev)
+>  {
+>  	struct mt6397_chip *chip =3D dev_get_drvdata(dev);
+> =20
+> -	regmap_write(chip->regmap, MT6397_INT_CON0, chip->irq_masks_cur[0])=
+;
+> -	regmap_write(chip->regmap, MT6397_INT_CON1, chip->irq_masks_cur[1])=
+;
+> +	regmap_write(chip->regmap, chip->int_con[0], chip->irq_masks_cur[0]=
+);
+> +	regmap_write(chip->regmap, chip->int_con[1], chip->irq_masks_cur[1]=
+);
+> =20
+>  	disable_irq_wake(chip->irq);
+> =20
+> @@ -237,6 +239,11 @@ static int mt6397_probe(struct platform_device *=
+pdev)
+>  		return -ENOMEM;
+> =20
+>  	mt6397->dev =3D &pdev->dev;
+> +	mt6397->int_con[0] =3D MT6397_INT_CON0;
+> +	mt6397->int_con[1] =3D MT6397_INT_CON1;
+> +	mt6397->int_status[0] =3D MT6397_INT_STATUS0;
+> +	mt6397->int_status[1] =3D MT6397_INT_STATUS1;
+> +
+>  	/*
+>  	 * mt6397 MFD is child device of soc pmic wrapper.
+>  	 * Regmap is set from its parent.
+> diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt63=
+97/core.h
+> index 45b8e8a..d678f52 100644
+> --- a/include/linux/mfd/mt6397/core.h
+> +++ b/include/linux/mfd/mt6397/core.h
+> @@ -60,6 +60,8 @@ struct mt6397_chip {
+>  	u16 wake_mask[2];
+>  	u16 irq_masks_cur[2];
+>  	u16 irq_masks_cache[2];
+> +	u16 int_con[2];
+> +	u16 int_status[2];
+>  };
+> =20
+>  #endif /* __MFD_MT6397_CORE_H__ */
 
-ok, you mean kmod loading. I was only looking at probing. i'll fix it
-and send a patch to also fix it for mt6397.
-
-	John
-
->>>
->>>> +module_platform_driver(mt6323_regulator_driver);
->>>> +
->>>> +MODULE_AUTHOR("Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
->>>> +MODULE_DESCRIPTION("Regulator Driver for MediaTek MT6397 PMIC");
->>>> +MODULE_LICENSE("GPL");
->>>> +MODULE_ALIAS("platform:mt6323-regulator");
->>>
->>> This alias should not be needed if you provide a OF match table and a
->>> MODULE_DEVICE_TABLE(of, foo);
->>
->> see above.
->>
-> 
-> In any case, I think the correct thing to do is to provide a .match
-> and .of_match tables for the platform driver. Since in the future if
-> you need to support another device with the same driver, you will need
-> to add another MODULE_ALIAS(). And also is better to be consistent on
-> what is matched and what is reported to user-space as a module alias.
-> 
->>         John
-> 
-> Bets regards,
-> Javier
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
