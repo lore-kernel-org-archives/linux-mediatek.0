@@ -1,65 +1,62 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V2 4/4] mfd: mediatek: add MT6323 support to MT6397 driver
-Date: Mon, 25 Jan 2016 19:59:47 +0100
-Message-ID: <56A670A3.5030100@openwrt.org>
-References: <1453716887-38442-1-git-send-email-blogic@openwrt.org>
- <20160125124112.GG3368@x1> <56A64108.7020807@openwrt.org>
- <3476571.0yU9yvPsKF@linux-gy6r.site>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V3 1/2] regulator: Add document for MT6323 regulator
+Date: Mon, 25 Jan 2016 20:31:52 -0600
+Message-ID: <20160126023152.GA9464@rob-hp-laptop>
+References: <1453722989-41622-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3476571.0yU9yvPsKF@linux-gy6r.site>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1453722989-41622-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 25/01/2016 19:44, Matthias Brugger wrote:
-> On Monday 25 Jan 2016 16:36:40 John Crispin wrote:
->> Hi,
->>
->> On 25/01/2016 13:41, Lee Jones wrote:
->>> Please honour the subject format of the subsystem you are contributing
->>> to.
->>>
->>> `git log --oneline -- $subsystem` gives you this.
->>>
->>> On Mon, 25 Jan 2016, John Crispin wrote:
->>>> Signed-off-by: John Crispin <blogic@openwrt.org>
->>>> ---
->>
->> [...]
->>
->>>> @@ -261,6 +271,15 @@ static int mt6397_probe(struct platform_device
->>>> *pdev)
->>>>
->>>>  	}
->>>>  	
->>>>  	switch (id & 0xff) {
->>>>
->>>> +	case MT6323_CID_CODE:
->>>> +		mt6397->int_con[0] = MT6323_INT_CON0;
->>>
->>> This is confusing.  You're still using memory allocated for a mt6397
->>> device.
->>
->> the variable is currently defined as struct mt6397_chip *mt6397;
->> shall i only change the name or also create a patch to rename the struct ?
->>
+On Mon, Jan 25, 2016 at 12:56:28PM +0100, John Crispin wrote:
+> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> ---
+>  .../bindings/regulator/mt6323-regulator.txt        |  241 ++++++++++++++++++++
+>  1 file changed, 241 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
 > 
-> I think we should rename the struct and the file as well.
-> 
-> Cheers,
-> Matthias
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> new file mode 100644
+> index 0000000..4412102
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> @@ -0,0 +1,241 @@
+> +Mediatek MT6323 Regulator Driver
+> +
+> +Required properties:
+> +- compatible: "mediatek,mt6323-regulator"
+> +- mt6323regulator: List of regulators provided by this controller. It is named
+> +  according to its regulator type, buck_<name> and ldo_<name>.
+> +  The definition for each of these nodes is defined using the standard binding
+> +  for regulators at Documentation/devicetree/bindings/regulator/regulator.txt.
 
-Hi,
+This is a node, not property and it should be named "regulators".
 
-that would have been my next question. renaming the struct would imply
-renaming the driver and the whole namespace contained within. We would
-then also need to change the Kconfig and Makefile. I am happy to do this
-but want to be sure that is is actually wanted.
-
-	John
+> +
+> +The valid names for regulators are::
+> +BUCK:
+> +  buck_vproc, buck_vsys, buck_vpa
+> +LDO:
+> +  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
+> +  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
+> +  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
+> +  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
+> +
+> +Example:
+> +
+> +	pmic: mt6323 {
+> +		compatible = "mediatek,mt6323";
+> +
+> +		mt6323regulator: mt6323regulator{
+> +			compatible = "mediatek,mt6323-regulator";
+> +
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
