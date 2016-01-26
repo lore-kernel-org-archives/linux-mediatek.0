@@ -1,109 +1,78 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V2 4/4] mfd: mediatek: add MT6323 support to MT6397 driver
-Date: Tue, 26 Jan 2016 09:44:45 +0100
-Message-ID: <56A731FD.6080702@openwrt.org>
-References: <1453716887-38442-1-git-send-email-blogic@openwrt.org>
- <20160125124112.GG3368@x1> <56A64108.7020807@openwrt.org>
- <3476571.0yU9yvPsKF@linux-gy6r.site> <56A670A3.5030100@openwrt.org>
- <1453777643.26374.11.camel@mtksdaap41> <56A71CE5.4080201@openwrt.org>
- <20160126083433.GX3368@x1>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH V3 09/11] soc: mediatek: PMIC wrap: add a slave specific
+ struct
+Date: Tue, 26 Jan 2016 17:31:50 +0800
+Message-ID: <1453800710.10901.6.camel@mtksdaap41>
+References: <1453715604-36856-1-git-send-email-blogic@openwrt.org>
+	 <1453715604-36856-10-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160126083433.GX3368@x1>
+In-Reply-To: <1453715604-36856-10-git-send-email-blogic@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, chen.zhong@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
+Hi John,
 
-On 26/01/2016 09:34, Lee Jones wrote:
-> On Tue, 26 Jan 2016, John Crispin wrote:
->> On 26/01/2016 04:07, Henry Chen wrote:
->>> On Mon, 2016-01-25 at 19:59 +0100, John Crispin wrote:
->>>>
->>>> On 25/01/2016 19:44, Matthias Brugger wrote:
->>>>> On Monday 25 Jan 2016 16:36:40 John Crispin wrote:
->>>>>> Hi,
->>>>>>
->>>>>> On 25/01/2016 13:41, Lee Jones wrote:
->>>>>>> Please honour the subject format of the subsystem you are contributing
->>>>>>> to.
->>>>>>>
->>>>>>> `git log --oneline -- $subsystem` gives you this.
->>>>>>>
->>>>>>> On Mon, 25 Jan 2016, John Crispin wrote:
->>>>>>>> Signed-off-by: John Crispin <blogic@openwrt.org>
->>>>>>>> ---
->>>>>>
->>>>>> [...]
->>>>>>
->>>>>>>> @@ -261,6 +271,15 @@ static int mt6397_probe(struct platform_device
->>>>>>>> *pdev)
->>>>>>>>
->>>>>>>>  	}
->>>>>>>>  	
->>>>>>>>  	switch (id & 0xff) {
->>>>>>>>
->>>>>>>> +	case MT6323_CID_CODE:
->>>>>>>> +		mt6397->int_con[0] = MT6323_INT_CON0;
->>>>>>>
->>>>>>> This is confusing.  You're still using memory allocated for a mt6397
->>>>>>> device.
->>>>>>
->>>>>> the variable is currently defined as struct mt6397_chip *mt6397;
->>>>>> shall i only change the name or also create a patch to rename the struct ?
->>>>>>
->>>>>
->>>>> I think we should rename the struct and the file as well.
->>>>>
->>>>> Cheers,
->>>>> Matthias
->>>>
->>>> Hi,
->>>>
->>>> that would have been my next question. renaming the struct would imply
->>>> renaming the driver and the whole namespace contained within. We would
->>>> then also need to change the Kconfig and Makefile. I am happy to do this
->>>> but want to be sure that is is actually wanted.
->>>>
->>>> 	John
->>> Hi,
->>>
->>> Since mt6323 was similar with mt6397, I think we can reuse the
->>> mt6397_chip without duplicate code.
->>>
->>> Maybe we can rename the local variable name to avoid confusing.
->>>
->>> struct mt6397_chip *mt_pmic;
->>> ...
->>> ...
->>> switch (id & 0xff) {
->>> 	case MT6323_CID_CODE:
->>> 		mt_pmic->int_con[0] = MT6323_INT_CON0;
->>> 		mt_pmic->int_con[1] = MT6323_INT_CON1;
->>> ...
->>> ...
->>>
->>> Henry
->>
->> Hi,
->>
->> IMHO we should either rename the namespace or not. renaming some
->> variables seems weird as that will just move the confusion/inconsistency
->> to another place in the code. I am however rather indifferent on this
->> matter.
+Thanks for preparing the patch.
+
+
+
+On Mon, 2016-01-25 at 10:53 +0100, John Crispin wrote:
+> This patch adds a new struct pwrap_slv_type that we use to store the slave
+> specific data. The patch adds 2 new helper functions to access the dew
+> registers. The slave type is looked up via the wrappers child node.
 > 
-> It's common to name a driver after the device which was enabled first,
-> so no need to rename the files or CONFIGs; however, it does seem
-> prudent to generify the struct (both parts).
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> ---
+>  drivers/soc/mediatek/mtk-pmic-wrap.c |  170 +++++++++++++++++++++++++---------
+>  1 file changed, 124 insertions(+), 46 deletions(-)
 > 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 54553b4..21d8e5a 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+<...>
 
-Hi Lee,
+> +/* defines for slave device wrapper registers */
+> +enum dew_regs {
+> +	PWRAP_DEW_BASE,
+> +	PWRAP_DEW_EVENT_OUT_EN,
+> +	PWRAP_DEW_DIO_EN,
+> +	PWRAP_DEW_EVENT_SRC_EN,
+> +	PWRAP_DEW_EVENT_SRC,
+> +	PWRAP_DEW_EVENT_FLAG,
+> +	PWRAP_DEW_READ_TEST,
+> +	PWRAP_DEW_WRITE_TEST,
+> +	PWRAP_DEW_CRC_EN,
+> +	PWRAP_DEW_CRC_VAL,
+> +	PWRAP_DEW_MON_GRP_SEL,
+> +	PWRAP_DEW_MON_FLAG_SEL,
+> +	PWRAP_DEW_EVENT_TEST,
+> +	PWRAP_DEW_CIPHER_KEY_SEL,
+> +	PWRAP_DEW_CIPHER_IV_SEL,
+> +	PWRAP_DEW_CIPHER_LOAD,
+> +	PWRAP_DEW_CIPHER_START,
+> +	PWRAP_DEW_CIPHER_RDY,
+> +	PWRAP_DEW_CIPHER_MODE,
+> +	PWRAP_DEW_CIPHER_SWRST,
+> +	PWRAP_MT8173_DEW_CIPHER_IV0,
+> +	PWRAP_MT8173_DEW_CIPHER_IV1,
+> +	PWRAP_MT8173_DEW_CIPHER_IV2,
+> +	PWRAP_MT8173_DEW_CIPHER_IV3,
+> +	PWRAP_MT8173_DEW_CIPHER_IV4,
+> +	PWRAP_MT8173_DEW_CIPHER_IV5,
 
-fine, how would you like me to name the struct. would
-"struct mtk_pmic" be ok ?
 
-	John
+For PWRAP_MT8173_DEW_*, since they exist on pmic mt6397, it seems
+strange to name them with MT8173 name. I guess we got this name because
+MTK internal code base try to support them in MT8173.
+
+On the other hand, these are not used in current code, maybe we can just
+remove them?
+
+Joe.C
