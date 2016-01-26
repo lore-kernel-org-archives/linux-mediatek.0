@@ -1,96 +1,56 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH V3 09/11] soc: mediatek: PMIC wrap: add a slave specific
- struct
-Date: Tue, 26 Jan 2016 10:36:07 +0100
-Message-ID: <56A73E07.8050201@openwrt.org>
-References: <1453715604-36856-1-git-send-email-blogic@openwrt.org>
- <1453715604-36856-10-git-send-email-blogic@openwrt.org>
- <1453800710.10901.6.camel@mtksdaap41>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency control
+Date: Tue, 26 Jan 2016 02:23:48 -0800
+Message-ID: <CAGS+omBWEVac_in-ZDurf4R5tje3hzJPyr5nsP2Z_v7F8sSCUg@mail.gmail.com>
+References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
+ <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+ <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com> <20151217090628.GA317@quark.deferred.io>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453800710.10901.6.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20151217090628.GA317@quark.deferred.io>
+Sender: linux-clk-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Michael, Pi-Cheng,
 
+On Thu, Dec 17, 2015 at 1:06 AM, Michael Turquette
+<mturquette@baylibre.com> wrote:
+>
+> On 12/01, Pi-Cheng Chen wrote:
+> > On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> > > Hi Pi-Cheng and Michael,
+> > >
+> > > On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+> > >> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+> > >>
+> > >> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+> > >> for intermediate clock source switching.
+> > >
+> > > It looks like this patch was never picked up.
+> > > It is required for MT8173 cpufreq.
+> > >
+> > > What is the plan to get this one merged?
+> >
+> > Hi Dan,
+> > Mike is working on a new CCF feature called "coordinated clock rate changes"
+> > which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
+> > driver, and I am working with him to port MT8173 clock driver on the new
+> > feature. So I think that's why this patch was not picked since it will
+> > be migrated to new implementation once the new feature's ready.
+> >
+> > @Mike:
+> > Are you plannig to post those patches on the mailing list ?
+> > Or is it fine for you to take this first and then I will refine it for
+> > the new feature later?
+>
+> I plan to post those patches next week.
 
-On 26/01/2016 10:31, Yingjoe Chen wrote:
-> 
-> Hi John,
-> 
-> Thanks for preparing the patch.
-> 
-> 
-> 
-> On Mon, 2016-01-25 at 10:53 +0100, John Crispin wrote:
->> This patch adds a new struct pwrap_slv_type that we use to store the slave
->> specific data. The patch adds 2 new helper functions to access the dew
->> registers. The slave type is looked up via the wrappers child node.
->>
->> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
->> ---
->>  drivers/soc/mediatek/mtk-pmic-wrap.c |  170 +++++++++++++++++++++++++---------
->>  1 file changed, 124 insertions(+), 46 deletions(-)
->>
->> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
->> index 54553b4..21d8e5a 100644
->> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> <...>
-> 
->> +/* defines for slave device wrapper registers */
->> +enum dew_regs {
->> +	PWRAP_DEW_BASE,
->> +	PWRAP_DEW_EVENT_OUT_EN,
->> +	PWRAP_DEW_DIO_EN,
->> +	PWRAP_DEW_EVENT_SRC_EN,
->> +	PWRAP_DEW_EVENT_SRC,
->> +	PWRAP_DEW_EVENT_FLAG,
->> +	PWRAP_DEW_READ_TEST,
->> +	PWRAP_DEW_WRITE_TEST,
->> +	PWRAP_DEW_CRC_EN,
->> +	PWRAP_DEW_CRC_VAL,
->> +	PWRAP_DEW_MON_GRP_SEL,
->> +	PWRAP_DEW_MON_FLAG_SEL,
->> +	PWRAP_DEW_EVENT_TEST,
->> +	PWRAP_DEW_CIPHER_KEY_SEL,
->> +	PWRAP_DEW_CIPHER_IV_SEL,
->> +	PWRAP_DEW_CIPHER_LOAD,
->> +	PWRAP_DEW_CIPHER_START,
->> +	PWRAP_DEW_CIPHER_RDY,
->> +	PWRAP_DEW_CIPHER_MODE,
->> +	PWRAP_DEW_CIPHER_SWRST,
->> +	PWRAP_MT8173_DEW_CIPHER_IV0,
->> +	PWRAP_MT8173_DEW_CIPHER_IV1,
->> +	PWRAP_MT8173_DEW_CIPHER_IV2,
->> +	PWRAP_MT8173_DEW_CIPHER_IV3,
->> +	PWRAP_MT8173_DEW_CIPHER_IV4,
->> +	PWRAP_MT8173_DEW_CIPHER_IV5,
-> 
-> 
-> For PWRAP_MT8173_DEW_*, since they exist on pmic mt6397, it seems
-> strange to name them with MT8173 name. I guess we got this name because
-> MTK internal code base try to support them in MT8173.
-> 
-> On the other hand, these are not used in current code, maybe we can just
-> remove them?
-> 
-> Joe.C
+Were these patches ever posted?
+Or should we consider going ahead and trying to merge this 4-month old
+MTK CPU mux clock patch into v4.5 before it is too late?
 
-Hi Joe,
-
-correct, i kept them as they are in the mtk internal driver. i'll
-happily drop them.
-
-	John
+Thanks,
+-Dan
