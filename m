@@ -1,128 +1,149 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH V3 08/11] soc: mediatek: PMIC wrap: remove
- pwrap_is_mt8135() and pwrap_is_mt8173()
-Date: Tue, 26 Jan 2016 20:53:31 +0800
-Message-ID: <1453812811.10901.12.camel@mtksdaap41>
-References: <1453715604-36856-1-git-send-email-blogic@openwrt.org>
-	 <1453715604-36856-9-git-send-email-blogic@openwrt.org>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH V2 4/4] mfd: mediatek: add MT6323 support to MT6397 driver
+Date: Tue, 26 Jan 2016 14:00:07 +0000
+Message-ID: <20160126140007.GZ3368@x1>
+References: <1453716887-38442-1-git-send-email-blogic@openwrt.org>
+ <20160125124112.GG3368@x1>
+ <56A64108.7020807@openwrt.org>
+ <3476571.0yU9yvPsKF@linux-gy6r.site>
+ <56A670A3.5030100@openwrt.org>
+ <1453777643.26374.11.camel@mtksdaap41>
+ <56A71CE5.4080201@openwrt.org>
+ <20160126083433.GX3368@x1>
+ <56A76100.1020307@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453715604-36856-9-git-send-email-blogic@openwrt.org>
+Content-Disposition: inline
+In-Reply-To: <56A76100.1020307@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: John Crispin <blogic@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Henry Chen <henryc.chen@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-01-25 at 10:53 +0100, John Crispin wrote:
-> With ore SoCs being added the list of helper functions like these would
-> grow. While at it also add a new flag "bridge" and use that insted of
-> pwrap_is_mt8173() where appropriate.
+On Tue, 26 Jan 2016, John Crispin wrote:
 
+>=20
+>=20
+> On 26/01/2016 09:34, Lee Jones wrote:
+> > On Tue, 26 Jan 2016, John Crispin wrote:
+> >> On 26/01/2016 04:07, Henry Chen wrote:
+> >>> On Mon, 2016-01-25 at 19:59 +0100, John Crispin wrote:
+> >>>>
+> >>>> On 25/01/2016 19:44, Matthias Brugger wrote:
+> >>>>> On Monday 25 Jan 2016 16:36:40 John Crispin wrote:
+> >>>>>> Hi,
+> >>>>>>
+> >>>>>> On 25/01/2016 13:41, Lee Jones wrote:
+> >>>>>>> Please honour the subject format of the subsystem you are con=
+tributing
+> >>>>>>> to.
+> >>>>>>>
+> >>>>>>> `git log --oneline -- $subsystem` gives you this.
+> >>>>>>>
+> >>>>>>> On Mon, 25 Jan 2016, John Crispin wrote:
+> >>>>>>>> Signed-off-by: John Crispin <blogic@openwrt.org>
+> >>>>>>>> ---
+> >>>>>>
+> >>>>>> [...]
+> >>>>>>
+> >>>>>>>> @@ -261,6 +271,15 @@ static int mt6397_probe(struct platform=
+_device
+> >>>>>>>> *pdev)
+> >>>>>>>>
+> >>>>>>>>  	}
+> >>>>>>>>  =09
+> >>>>>>>>  	switch (id & 0xff) {
+> >>>>>>>>
+> >>>>>>>> +	case MT6323_CID_CODE:
+> >>>>>>>> +		mt6397->int_con[0] =3D MT6323_INT_CON0;
+> >>>>>>>
+> >>>>>>> This is confusing.  You're still using memory allocated for a=
+ mt6397
+> >>>>>>> device.
+> >>>>>>
+> >>>>>> the variable is currently defined as struct mt6397_chip *mt639=
+7;
+> >>>>>> shall i only change the name or also create a patch to rename =
+the struct ?
+> >>>>>>
+> >>>>>
+> >>>>> I think we should rename the struct and the file as well.
+> >>>>>
+> >>>>> Cheers,
+> >>>>> Matthias
+> >>>>
+> >>>> Hi,
+> >>>>
+> >>>> that would have been my next question. renaming the struct would=
+ imply
+> >>>> renaming the driver and the whole namespace contained within. We=
+ would
+> >>>> then also need to change the Kconfig and Makefile. I am happy to=
+ do this
+> >>>> but want to be sure that is is actually wanted.
+> >>>>
+> >>>> 	John
+> >>> Hi,
+> >>>
+> >>> Since mt6323 was similar with mt6397, I think we can reuse the
+> >>> mt6397_chip without duplicate code.
+> >>>
+> >>> Maybe we can rename the local variable name to avoid confusing.
+> >>>
+> >>> struct mt6397_chip *mt_pmic;
+> >>> ...
+> >>> ...
+> >>> switch (id & 0xff) {
+> >>> 	case MT6323_CID_CODE:
+> >>> 		mt_pmic->int_con[0] =3D MT6323_INT_CON0;
+> >>> 		mt_pmic->int_con[1] =3D MT6323_INT_CON1;
+> >>> ...
+> >>> ...
+> >>>
+> >>> Henry
+> >>
+> >> Hi,
+> >>
+> >> IMHO we should either rename the namespace or not. renaming some
+> >> variables seems weird as that will just move the confusion/inconsi=
+stency
+> >> to another place in the code. I am however rather indifferent on t=
+his
+> >> matter.
+> >=20
+> > It's common to name a driver after the device which was enabled fir=
+st,
+> > so no need to rename the files or CONFIGs; however, it does seem
+> > prudent to generify the struct (both parts).
+> >=20
+>=20
+> Hi,
+>=20
+> renaming struct mt6397_chip is not as straightforward as it seems as
+> other drivers such as pinctrl and rtc share the data structure with t=
+he
+> mfd driver.
+>=20
+> i have kept the structs name as is for now and only renamed the insta=
+nce.
 
-typos?
-s/ore/more/
-s/insted/instead/
+That's fine.
 
-I think you mean "has_bridge" flag?
+> If you want i can create a separate series that addresses only the
+> renaming of the structure. The "rename struct mt6397" patch would nee=
+d
+> to do a change to drivers from 3 subsystems in 1 single commit as not=
+ to
+> break compile and merge order.
 
+I'll leave this up to you.
 
-> 
-> Signed-off-by: John Crispin <blogic@openwrt.org>
-> ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c |   27 +++++++++++----------------
->  1 file changed, 11 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 8bb091b..54553b4 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -374,20 +374,11 @@ struct pmic_wrapper_type {
->  	u32 int_en_all;
->  	u32 spi_w;
->  	u32 wdt_src;
-> +	int has_bridge;
+The real problem from my PoV was the instance name.
 
-How about using :1 for flag?
-
-Joe.C
-
->  	int (*init_reg_clock)(struct pmic_wrapper *wrp);
->  	int (*init_special)(struct pmic_wrapper *wrp);
->  };
->  
-> -static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
-> -{
-> -	return wrp->master->type == PWRAP_MT8135;
-> -}
-> -
-> -static inline int pwrap_is_mt8173(struct pmic_wrapper *wrp)
-> -{
-> -	return wrp->master->type == PWRAP_MT8173;
-> -}
-> -
->  static u32 pwrap_readl(struct pmic_wrapper *wrp, enum pwrap_regs reg)
->  {
->  	return readl(wrp->base + wrp->master->regs[reg]);
-> @@ -619,11 +610,14 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
->  	pwrap_writel(wrp, 0x1, PWRAP_CIPHER_KEY_SEL);
->  	pwrap_writel(wrp, 0x2, PWRAP_CIPHER_IV_SEL);
->  
-> -	if (pwrap_is_mt8135(wrp)) {
-> +	switch (wrp->master->type) {
-> +	case PWRAP_MT8135:
->  		pwrap_writel(wrp, 1, PWRAP_CIPHER_LOAD);
->  		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
-> -	} else {
-> +		break;
-> +	case PWRAP_MT8173:
->  		pwrap_writel(wrp, 1, PWRAP_CIPHER_EN);
-> +		break;
->  	}
->  
->  	/* Config cipher mode @PMIC */
-> @@ -713,7 +707,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->  	if (wrp->rstc_bridge)
->  		reset_control_reset(wrp->rstc_bridge);
->  
-> -	if (pwrap_is_mt8173(wrp)) {
-> +	if (wrp->master->type == PWRAP_MT8173) {
->  		/* Enable DCM */
->  		pwrap_writel(wrp, 3, PWRAP_DCM_EN);
->  		pwrap_writel(wrp, 0, PWRAP_DCM_DBC_PRD);
-> @@ -773,7 +767,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->  	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
->  	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
->  
-> -	if (pwrap_is_mt8135(wrp))
-> +	if (wrp->master->type == PWRAP_MT8135)
->  		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
->  
->  	pwrap_writel(wrp, 0x1, PWRAP_WACS0_EN);
-> @@ -792,7 +786,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->  	pwrap_writel(wrp, 1, PWRAP_INIT_DONE0);
->  	pwrap_writel(wrp, 1, PWRAP_INIT_DONE1);
->  
-> -	if (pwrap_is_mt8135(wrp)) {
-> +	if (wrp->master->has_bridge) {
->  		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE3);
->  		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE4);
->  	}
-> @@ -830,6 +824,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
->  	.int_en_all = BIT(31) | BIT(1),
->  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
->  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> +	.has_bridge = 1,
->  	.init_reg_clock = pwrap_mt8135_init_reg_clock,
->  	.init_special = pwrap_mt8135_init_special,
->  };
-> @@ -888,7 +883,7 @@ static int pwrap_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> -	if (pwrap_is_mt8135(wrp)) {
-> +	if (wrp->master->has_bridge) {
->  		res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
->  				"pwrap-bridge");
->  		wrp->bridge_base = devm_ioremap_resource(wrp->dev, res);
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
