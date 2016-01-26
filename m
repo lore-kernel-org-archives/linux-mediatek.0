@@ -1,117 +1,159 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V2 4/4] mfd: mediatek: add MT6323 support to MT6397 driver
-Date: Tue, 26 Jan 2016 13:05:20 +0100
-Message-ID: <56A76100.1020307@openwrt.org>
-References: <1453716887-38442-1-git-send-email-blogic@openwrt.org>
- <20160125124112.GG3368@x1> <56A64108.7020807@openwrt.org>
- <3476571.0yU9yvPsKF@linux-gy6r.site> <56A670A3.5030100@openwrt.org>
- <1453777643.26374.11.camel@mtksdaap41> <56A71CE5.4080201@openwrt.org>
- <20160126083433.GX3368@x1>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v8 0/5] MT8173 IOMMU SUPPORT
+Date: Tue, 26 Jan 2016 12:12:37 +0800
+Message-ID: <1453781562-23556-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160126083433.GX3368@x1>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Henry Chen <henryc.chen@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+  This patch set adds support for m4u(Multimedia Memory Management Unit),
+Currently it only support the m4u with 2 levels of pagetable on mt8173.
 
+  It's also based on Robin Murphy's reposting Short-descriptor v2.
+ 
+  Please check the hardware block diagram of Mediatek IOMMU.
+ 
+              m4u (Multimedia Memory Management Unit)
+               |
+           SMI Common(Smart Multimedia Interface Common)
+               |
+       +----------------+-------
+       |                |
+       |                |
+   SMI larb0        SMI larb1   ... SoCs have several SMI local arbiter(larb).
+   (display)         (vdec)
+       |                |
+       |                |
+ +-----+-----+     +----+----+
+ |     |     |     |    |    |
+ |     |     |...  |    |    |  ... There are different ports in each larb.
+ |     |     |     |    |    |
+OVL0 RDMA0 WDMA0  MC   PP   VLD
 
-On 26/01/2016 09:34, Lee Jones wrote:
-> On Tue, 26 Jan 2016, John Crispin wrote:
->> On 26/01/2016 04:07, Henry Chen wrote:
->>> On Mon, 2016-01-25 at 19:59 +0100, John Crispin wrote:
->>>>
->>>> On 25/01/2016 19:44, Matthias Brugger wrote:
->>>>> On Monday 25 Jan 2016 16:36:40 John Crispin wrote:
->>>>>> Hi,
->>>>>>
->>>>>> On 25/01/2016 13:41, Lee Jones wrote:
->>>>>>> Please honour the subject format of the subsystem you are contributing
->>>>>>> to.
->>>>>>>
->>>>>>> `git log --oneline -- $subsystem` gives you this.
->>>>>>>
->>>>>>> On Mon, 25 Jan 2016, John Crispin wrote:
->>>>>>>> Signed-off-by: John Crispin <blogic@openwrt.org>
->>>>>>>> ---
->>>>>>
->>>>>> [...]
->>>>>>
->>>>>>>> @@ -261,6 +271,15 @@ static int mt6397_probe(struct platform_device
->>>>>>>> *pdev)
->>>>>>>>
->>>>>>>>  	}
->>>>>>>>  	
->>>>>>>>  	switch (id & 0xff) {
->>>>>>>>
->>>>>>>> +	case MT6323_CID_CODE:
->>>>>>>> +		mt6397->int_con[0] = MT6323_INT_CON0;
->>>>>>>
->>>>>>> This is confusing.  You're still using memory allocated for a mt6397
->>>>>>> device.
->>>>>>
->>>>>> the variable is currently defined as struct mt6397_chip *mt6397;
->>>>>> shall i only change the name or also create a patch to rename the struct ?
->>>>>>
->>>>>
->>>>> I think we should rename the struct and the file as well.
->>>>>
->>>>> Cheers,
->>>>> Matthias
->>>>
->>>> Hi,
->>>>
->>>> that would have been my next question. renaming the struct would imply
->>>> renaming the driver and the whole namespace contained within. We would
->>>> then also need to change the Kconfig and Makefile. I am happy to do this
->>>> but want to be sure that is is actually wanted.
->>>>
->>>> 	John
->>> Hi,
->>>
->>> Since mt6323 was similar with mt6397, I think we can reuse the
->>> mt6397_chip without duplicate code.
->>>
->>> Maybe we can rename the local variable name to avoid confusing.
->>>
->>> struct mt6397_chip *mt_pmic;
->>> ...
->>> ...
->>> switch (id & 0xff) {
->>> 	case MT6323_CID_CODE:
->>> 		mt_pmic->int_con[0] = MT6323_INT_CON0;
->>> 		mt_pmic->int_con[1] = MT6323_INT_CON1;
->>> ...
->>> ...
->>>
->>> Henry
->>
->> Hi,
->>
->> IMHO we should either rename the namespace or not. renaming some
->> variables seems weird as that will just move the confusion/inconsistency
->> to another place in the code. I am however rather indifferent on this
->> matter.
-> 
-> It's common to name a driver after the device which was enabled first,
-> so no need to rename the files or CONFIGs; however, it does seem
-> prudent to generify the struct (both parts).
-> 
+  As above, The Multimedia HW will go through SMI and M4U while it
+access EMI. SMI is a bridge between m4u and the Multimedia HW. It contain
+smi local arbiter and smi common. It will control whether the Multimedia
+HW should go though the m4u for translation or bypass it and talk
+directly with EMI. And also SMI help control the power domain and clocks for
+each local arbiter.
+  Normally we specify a local arbiter(larb) for each multimedia HW
+like display, video decode, and camera. And there are different ports
+in each larb. Take a example, There are many ports like MC, PP, VLD in the
+video decode local arbiter, all these ports are according to the video HW.
 
-Hi,
+v8:
+ - rebase onto v4.5-rc1.
+ - add depends on (ARM || ARM64) for MTK_IOMMU in Kconfig to avoid build fail
+   in other ARCHs.
+ - delete COHERENCE_EN bit.
+ - delete a *if* while config iommu information since the iommu is always
+   enabled currently.
 
-renaming struct mt6397_chip is not as straightforward as it seems as
-other drivers such as pinctrl and rtc share the data structure with the
-mfd driver.
+v7: http://lists.linuxfoundation.org/pipermail/iommu/2015-December/015214.html
+- rebase onto Robin's short v2:
+  http://lists.linuxfoundation.org/pipermail/iommu/2015-December/015210.html
+- Adjust the iommu probe sequence to meet the expectant flow that the iommu
+  core help create the domain.
+- use component additional data instead of the interface mtk_smi_config_port.
+- reconstruct the SMI help function.
 
-i have kept the structs name as is for now and only renamed the instance.
+v6: http://lists.linuxfoundation.org/pipermail/iommu/2015-December/015105.html
+-rebase onto v4.4-rc1.
+-Use Robin's reposting Short-decriptor.
+ http://lists.linuxfoundation.org/pipermail/iommu/2015-December/015088.html
+-Add component for m4u and smi since m4u should depend on smi-larb.
+ The master device is the m4u device, and the client one is the smi-larb device. 
+-Change mtk iommu-cells from 2 to 1 since the mapping between larb and port is
+ fixed. Compare this with v2, we redefine MTK_M4U_ID following this register
+ REG_MMU_INT_ID.
+-About SMI: Add some help funcion and rename some function and struction for
+ more readable. 
+ These three above are according to Daniel Kurtz's suggestion.
 
-If you want i can create a separate series that addresses only the
-renaming of the structure. The "rename struct mt6397" patch would need
-to do a change to drivers from 3 subsystems in 1 single commit as not to
-break compile and merge order.
+v5: http://lists.linuxfoundation.org/pipermail/iommu/2015-October/014586.html
+-rebase onto v4.3-rc1.
+-About MTK iommu: don't return the same domain while domain_alloc, change the
+ domain's flow according to the M4U HW.
+-About Short-descriptor: Improve many error-handles, NO_PERMS quirk, and 
+ add TLBI_MAP quirk following Will's Suggestion; Add io-pgtable don't use 
+ dma_to_phys; Add a loop in arm_short_unmap since iommu_unmap don't care the 
+ physical address align.
+-About SMI driver: Add a help funcion for some similar code. Add PROPRE_DEFER
+ for power-domain as MTK SCPSYS is module_init currently.
 
-	John
+v4: http://lists.linuxfoundation.org/pipermail/iommu/2015-August/013903.html
+-use only one iommu domain here based on the Robin's DMA-v5:
+ http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013900.html
+-remove flush_pgtable.
+-change writel to writel_relaxed.
+-about Short-descriptor: move dma_map_single into io-pgtable-arm-short.
+ Improve the flow of free pgtable and add NO_XN+NO_PERMS quirk following
+ Will's suggestion.
+-Change two sytle issues in dtsi according to Daniel's suggestion.
+
+v3: http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013632.html
+-rebased onto v4.2-rc1
+-improve iommu flow based on the Robin's DMA v3:
+ http://lists.linuxfoundation.org/pipermail/iommu/2015-July/013597.html
+-change mtk iommu-cells from 1 to 2.
+-about Short-descriptor: add split function; add self-test; add some other bits like nG,
+ XN according to the spec; add SUPERSECTION and MTK quirk; move io_pgtable_ops_to_pgtable
+ out from LPAE to the header file.
+-about SMI: move from driver/soc/mediatek to driver/memory; change the clocks from
+ clk[2] to clk_apb and clk_smi; add pm.
+-add iommu suspend/resume to backup/restore register.
+
+v2: http://lists.linuxfoundation.org/pipermail/iommu/2015-May/013028.html
+-add arm short descriptor support.
+-seperate smi common from smi and change the clock-names according
+ to smi HW.
+-delete the hardcode of the port-names in mt8173.
+ replace this with larb-portes-nr in dtsi.
+-fix some coding style issues.
+
+v1: http://lists.infradead.org/pipermail/linux-mediatek/2015-March/000058.html
+-initial version.
+
+Yong Wu (5):
+  dt-bindings: iommu: Add binding for mediatek IOMMU
+  dt-bindings: mediatek: Add smi dts binding
+  memory: mediatek: Add SMI driver
+  iommu/mediatek: Add mt8173 IOMMU driver
+  dts: mt8173: Add iommu/smi nodes for mt8173
+
+ .../devicetree/bindings/iommu/mediatek,iommu.txt   |  68 ++
+ .../memory-controllers/mediatek,smi-common.txt     |  24 +
+ .../memory-controllers/mediatek,smi-larb.txt       |  25 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  81 +++
+ drivers/iommu/Kconfig                              |  16 +
+ drivers/iommu/Makefile                             |   1 +
+ drivers/iommu/mtk_iommu.c                          | 732 +++++++++++++++++++++
+ drivers/memory/Kconfig                             |   8 +
+ drivers/memory/Makefile                            |   1 +
+ drivers/memory/mtk-smi.c                           | 272 ++++++++
+ include/dt-bindings/memory/mt8173-larb-port.h      | 111 ++++
+ include/soc/mediatek/smi.h                         |  58 ++
+ 12 files changed, 1397 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+ create mode 100644 drivers/iommu/mtk_iommu.c
+ create mode 100644 drivers/memory/mtk-smi.c
+ create mode 100644 include/dt-bindings/memory/mt8173-larb-port.h
+ create mode 100644 include/soc/mediatek/smi.h
+
+-- 
+1.8.1.1.dirty
