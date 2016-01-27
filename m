@@ -1,7 +1,7 @@
 From: John Crispin <blogic@openwrt.org>
-Subject: [PATCH V4 06/11] soc: mediatek: PMIC wrap: SPI_WRITE needs a different bitmask for MT2701/7623
-Date: Wed, 27 Jan 2016 12:29:04 +0100
-Message-ID: <1453894149-44127-6-git-send-email-blogic@openwrt.org>
+Subject: [PATCH V4 02/11] soc: mediatek: PMIC wrap: don't duplicate the wrapper data
+Date: Wed, 27 Jan 2016 12:29:00 +0100
+Message-ID: <1453894149-44127-2-git-send-email-blogic@openwrt.org>
 References: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
@@ -10,63 +10,94 @@ To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MT2701 and MT7623 use a different bitmask for the SPI_WRITE command.
+As we add support for more devices struct pmic_wrapper_type will grow and
+we do not really want to start duplicating all the elements in
+struct pmic_wrapper.
 
 Signed-off-by: John Crispin <blogic@openwrt.org>
 ---
-Changes in V4
-* fix typo in the subject
-
- drivers/soc/mediatek/mtk-pmic-wrap.c |   11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ drivers/soc/mediatek/mtk-pmic-wrap.c |   22 ++++++++--------------
+ 1 file changed, 8 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 948fc73..ba7b6b5 100644
+index 0d9b19a..340c4b5 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -372,6 +372,7 @@ struct pmic_wrapper_type {
- 	enum pwrap_type type;
- 	u32 arb_en_all;
- 	u32 int_en_all;
-+	u32 spi_w;
- 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
- 	int (*init_special)(struct pmic_wrapper *wrp);
- };
-@@ -511,15 +512,15 @@ static int pwrap_reset_spislave(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 1, PWRAP_MAN_EN);
- 	pwrap_writel(wrp, 0, PWRAP_DIO_EN);
+@@ -376,9 +376,7 @@ struct pmic_wrapper {
+ 	struct device *dev;
+ 	void __iomem *base;
+ 	struct regmap *regmap;
+-	int *regs;
+-	enum pwrap_type type;
+-	u32 arb_en_all;
++	const struct pmic_wrapper_type *master;
+ 	struct clk *clk_spi;
+ 	struct clk *clk_wrap;
+ 	struct reset_control *rstc;
+@@ -389,22 +387,22 @@ struct pmic_wrapper {
  
--	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_CSL,
-+	pwrap_writel(wrp, wrp->master->spi_w | PWRAP_MAN_CMD_OP_CSL,
- 			PWRAP_MAN_CMD);
--	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_OUTS,
-+	pwrap_writel(wrp, wrp->master->spi_w | PWRAP_MAN_CMD_OP_OUTS,
- 			PWRAP_MAN_CMD);
--	pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_CSH,
-+	pwrap_writel(wrp, wrp->master->spi_w | PWRAP_MAN_CMD_OP_CSH,
- 			PWRAP_MAN_CMD);
+ static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
+ {
+-	return wrp->type == PWRAP_MT8135;
++	return wrp->master->type == PWRAP_MT8135;
+ }
  
- 	for (i = 0; i < 4; i++)
--		pwrap_writel(wrp, PWRAP_MAN_CMD_SPI_WRITE | PWRAP_MAN_CMD_OP_OUTS,
-+		pwrap_writel(wrp, wrp->master->spi_w | PWRAP_MAN_CMD_OP_OUTS,
- 				PWRAP_MAN_CMD);
+ static inline int pwrap_is_mt8173(struct pmic_wrapper *wrp)
+ {
+-	return wrp->type == PWRAP_MT8173;
++	return wrp->master->type == PWRAP_MT8173;
+ }
  
- 	ret = pwrap_wait_for_state(wrp, pwrap_is_sync_idle);
-@@ -826,6 +827,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
- 	.type = PWRAP_MT8135,
- 	.arb_en_all = 0x1ff,
- 	.int_en_all = BIT(31) | BIT(1),
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
- 	.init_special = pwrap_mt8135_init_special,
- };
-@@ -835,6 +837,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
- 	.type = PWRAP_MT8173,
- 	.arb_en_all = 0x3f,
- 	.int_en_all = BIT(31) | BIT(1),
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.init_reg_clock = pwrap_mt8173_init_reg_clock,
- 	.init_special = pwrap_mt8173_init_special,
- };
+ static u32 pwrap_readl(struct pmic_wrapper *wrp, enum pwrap_regs reg)
+ {
+-	return readl(wrp->base + wrp->regs[reg]);
++	return readl(wrp->base + wrp->master->regs[reg]);
+ }
+ 
+ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
+ {
+-	writel(val, wrp->base + wrp->regs[reg]);
++	writel(val, wrp->base + wrp->master->regs[reg]);
+ }
+ 
+ static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
+@@ -697,7 +695,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 
+ 	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
+ 
+-	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+ 
+ 	pwrap_writel(wrp, 1, PWRAP_WACS2_EN);
+ 
+@@ -742,7 +740,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
+ 	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+ 	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
+-	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+ 
+ 	if (pwrap_is_mt8135(wrp))
+ 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
+@@ -836,7 +834,6 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	struct device_node *np = pdev->dev.of_node;
+ 	const struct of_device_id *of_id =
+ 		of_match_device(of_pwrap_match_tbl, &pdev->dev);
+-	const struct pmic_wrapper_type *type;
+ 	struct resource *res;
+ 
+ 	wrp = devm_kzalloc(&pdev->dev, sizeof(*wrp), GFP_KERNEL);
+@@ -845,10 +842,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, wrp);
+ 
+-	type = of_id->data;
+-	wrp->regs = type->regs;
+-	wrp->type = type->type;
+-	wrp->arb_en_all = type->arb_en_all;
++	wrp->master = of_id->data;
+ 	wrp->dev = &pdev->dev;
+ 
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pwrap");
 -- 
 1.7.10.4
