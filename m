@@ -1,141 +1,109 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V4 04/11] soc: mediatek: PMIC wrap: split SoC specific init
- into callback
-Date: Wed, 27 Jan 2016 12:29:02 +0100
-Message-ID: <1453894149-44127-4-git-send-email-blogic@openwrt.org>
-References: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453894149-44127-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH V3 2/4] mfd: mt6397: int_con and int_status may vary in location
+Date: Wed, 27 Jan 2016 12:47:36 +0100
+Message-ID: <1453895258-44369-2-git-send-email-blogic@openwrt.org>
+References: <1453895258-44369-1-git-send-email-blogic@openwrt.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453895258-44369-1-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch moves the SoC specific wrapper init code into separate callback
-to avoid pwrap_init() getting too large.
+MT6323 has the INT_CON and INT_STATUS located at a different position.
+Make the registers locations configurable.
 
-Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Signed-off-by: John Crispin <blogic@openwrt.org>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c |   68 +++++++++++++++++++++-------------
- 1 file changed, 42 insertions(+), 26 deletions(-)
+ drivers/mfd/mt6397-core.c       |   27 +++++++++++++++++----------
+ include/linux/mfd/mt6397/core.h |    2 ++
+ 2 files changed, 19 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index b22b664..ab2202d 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -372,6 +372,7 @@ struct pmic_wrapper_type {
- 	enum pwrap_type type;
- 	u32 arb_en_all;
- 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
-+	int (*init_special)(struct pmic_wrapper *wrp);
- };
- 
- static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
-@@ -665,6 +666,41 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 	return 0;
- }
- 
-+static int pwrap_mt8135_init_special(struct pmic_wrapper *wrp)
-+{
-+	/* enable pwrap events and pwrap bridge in AP side */
-+	pwrap_writel(wrp, 0x1, PWRAP_EVENT_IN_EN);
-+	pwrap_writel(wrp, 0xffff, PWRAP_EVENT_DST_EN);
-+	writel(0x7f, wrp->bridge_base + PWRAP_MT8135_BRIDGE_IORD_ARB_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS3_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS4_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_UNIT);
-+	writel(0xffff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_SRC_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_TIMER_EN);
-+	writel(0x7ff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INT_EN);
-+
-+	/* enable PMIC event out and sources */
-+	if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
-+		pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
-+		dev_err(wrp->dev, "enable dewrap fail\n");
-+		return -EFAULT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int pwrap_mt8173_init_special(struct pmic_wrapper *wrp)
-+{
-+	/* PMIC_DEWRAP enables */
-+	if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
-+		pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
-+		dev_err(wrp->dev, "enable dewrap fail\n");
-+		return -EFAULT;
-+	}
-+
-+	return 0;
-+}
-+
- static int pwrap_init(struct pmic_wrapper *wrp)
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 1749c1c..75ad0fe 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -69,8 +69,10 @@ static void mt6397_irq_sync_unlock(struct irq_data *data)
  {
- 	int ret;
-@@ -743,32 +779,10 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 0x5, PWRAP_STAUPD_PRD);
- 	pwrap_writel(wrp, 0xff, PWRAP_STAUPD_GRPEN);
+ 	struct mt6397_chip *mt6397 = irq_data_get_irq_chip_data(data);
  
--	if (pwrap_is_mt8135(wrp)) {
--		/* enable pwrap events and pwrap bridge in AP side */
--		pwrap_writel(wrp, 0x1, PWRAP_EVENT_IN_EN);
--		pwrap_writel(wrp, 0xffff, PWRAP_EVENT_DST_EN);
--		writel(0x7f, wrp->bridge_base + PWRAP_MT8135_BRIDGE_IORD_ARB_EN);
--		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS3_EN);
--		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS4_EN);
--		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_UNIT);
--		writel(0xffff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_SRC_EN);
--		writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_TIMER_EN);
--		writel(0x7ff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INT_EN);
--
--		/* enable PMIC event out and sources */
--		if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
--				pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
--			dev_err(wrp->dev, "enable dewrap fail\n");
--			return -EFAULT;
--		}
--	} else {
--		/* PMIC_DEWRAP enables */
--		if (pwrap_write(wrp, PWRAP_DEW_EVENT_OUT_EN, 0x1) ||
--				pwrap_write(wrp, PWRAP_DEW_EVENT_SRC_EN, 0xffff)) {
--			dev_err(wrp->dev, "enable dewrap fail\n");
--			return -EFAULT;
--		}
--	}
-+	if (wrp->master->init_special)
-+		ret = wrp->master->init_special(wrp);
-+	if (ret)
-+		return ret;
+-	regmap_write(mt6397->regmap, MT6397_INT_CON0, mt6397->irq_masks_cur[0]);
+-	regmap_write(mt6397->regmap, MT6397_INT_CON1, mt6397->irq_masks_cur[1]);
++	regmap_write(mt6397->regmap, mt6397->int_con[0],
++		     mt6397->irq_masks_cur[0]);
++	regmap_write(mt6397->regmap, mt6397->int_con[1],
++		     mt6397->irq_masks_cur[1]);
  
- 	/* Setup the init done registers */
- 	pwrap_writel(wrp, 1, PWRAP_INIT_DONE2);
-@@ -811,6 +825,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
- 	.type = PWRAP_MT8135,
- 	.arb_en_all = 0x1ff,
- 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
-+	.init_special = pwrap_mt8135_init_special,
+ 	mutex_unlock(&mt6397->irqlock);
+ }
+@@ -147,8 +149,8 @@ static irqreturn_t mt6397_irq_thread(int irq, void *data)
+ {
+ 	struct mt6397_chip *mt6397 = data;
+ 
+-	mt6397_irq_handle_reg(mt6397, MT6397_INT_STATUS0, 0);
+-	mt6397_irq_handle_reg(mt6397, MT6397_INT_STATUS1, 16);
++	mt6397_irq_handle_reg(mt6397, mt6397->int_status[0], 0);
++	mt6397_irq_handle_reg(mt6397, mt6397->int_status[1], 16);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -177,8 +179,8 @@ static int mt6397_irq_init(struct mt6397_chip *mt6397)
+ 	mutex_init(&mt6397->irqlock);
+ 
+ 	/* Mask all interrupt sources */
+-	regmap_write(mt6397->regmap, MT6397_INT_CON0, 0x0);
+-	regmap_write(mt6397->regmap, MT6397_INT_CON1, 0x0);
++	regmap_write(mt6397->regmap, mt6397->int_con[0], 0x0);
++	regmap_write(mt6397->regmap, mt6397->int_con[1], 0x0);
+ 
+ 	mt6397->irq_domain = irq_domain_add_linear(mt6397->dev->of_node,
+ 		MT6397_IRQ_NR, &mt6397_irq_domain_ops, mt6397);
+@@ -203,8 +205,8 @@ static int mt6397_irq_suspend(struct device *dev)
+ {
+ 	struct mt6397_chip *chip = dev_get_drvdata(dev);
+ 
+-	regmap_write(chip->regmap, MT6397_INT_CON0, chip->wake_mask[0]);
+-	regmap_write(chip->regmap, MT6397_INT_CON1, chip->wake_mask[1]);
++	regmap_write(chip->regmap, chip->int_con[0], chip->wake_mask[0]);
++	regmap_write(chip->regmap, chip->int_con[1], chip->wake_mask[1]);
+ 
+ 	enable_irq_wake(chip->irq);
+ 
+@@ -215,8 +217,8 @@ static int mt6397_irq_resume(struct device *dev)
+ {
+ 	struct mt6397_chip *chip = dev_get_drvdata(dev);
+ 
+-	regmap_write(chip->regmap, MT6397_INT_CON0, chip->irq_masks_cur[0]);
+-	regmap_write(chip->regmap, MT6397_INT_CON1, chip->irq_masks_cur[1]);
++	regmap_write(chip->regmap, chip->int_con[0], chip->irq_masks_cur[0]);
++	regmap_write(chip->regmap, chip->int_con[1], chip->irq_masks_cur[1]);
+ 
+ 	disable_irq_wake(chip->irq);
+ 
+@@ -237,6 +239,11 @@ static int mt6397_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	mt6397->dev = &pdev->dev;
++	mt6397->int_con[0] = MT6397_INT_CON0;
++	mt6397->int_con[1] = MT6397_INT_CON1;
++	mt6397->int_status[0] = MT6397_INT_STATUS0;
++	mt6397->int_status[1] = MT6397_INT_STATUS1;
++
+ 	/*
+ 	 * mt6397 MFD is child device of soc pmic wrapper.
+ 	 * Regmap is set from its parent.
+diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
+index 45b8e8a..d678f52 100644
+--- a/include/linux/mfd/mt6397/core.h
++++ b/include/linux/mfd/mt6397/core.h
+@@ -60,6 +60,8 @@ struct mt6397_chip {
+ 	u16 wake_mask[2];
+ 	u16 irq_masks_cur[2];
+ 	u16 irq_masks_cache[2];
++	u16 int_con[2];
++	u16 int_status[2];
  };
  
- static struct pmic_wrapper_type pwrap_mt8173 = {
-@@ -818,6 +833,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
- 	.type = PWRAP_MT8173,
- 	.arb_en_all = 0x3f,
- 	.init_reg_clock = pwrap_mt8173_init_reg_clock,
-+	.init_special = pwrap_mt8173_init_special,
- };
- 
- static struct of_device_id of_pwrap_match_tbl[] = {
+ #endif /* __MFD_MT6397_CORE_H__ */
 -- 
 1.7.10.4
