@@ -1,144 +1,114 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V4 03/11] soc: mediatek: PMIC wrap: add wrapper callbacks for
- init_reg_clock
-Date: Wed, 27 Jan 2016 12:29:01 +0100
-Message-ID: <1453894149-44127-3-git-send-email-blogic@openwrt.org>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH V4 08/11] soc: mediatek: PMIC wrap: remove pwrap_is_mt8135() and pwrap_is_mt8173()
+Date: Wed, 27 Jan 2016 12:29:06 +0100
+Message-ID: <1453894149-44127-8-git-send-email-blogic@openwrt.org>
 References: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1453894149-44127-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Split init_reg_clock up into SoC specific callbacks. The patch also
-reorders the code to avoid the need for callback function prototypes.
+With more SoCs being added the list of helper functions like these would
+grow. While at it also add a new flag "has_bridge" and use that instead of
+pwrap_is_mt8173() where appropriate.
 
-Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Signed-off-by: John Crispin <blogic@openwrt.org>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c |   70 ++++++++++++++++++----------------
- 1 file changed, 38 insertions(+), 32 deletions(-)
+Changed in V4
+* fix 2 typos in the description
+* used a bitfiled for the new has_bidge flag
+
+ drivers/soc/mediatek/mtk-pmic-wrap.c |   27 +++++++++++----------------
+ 1 file changed, 11 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 340c4b5..b22b664 100644
+index 8bb091b..4aab1f8 100644
 --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
 +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -354,24 +354,6 @@ enum pwrap_type {
- 	PWRAP_MT8173,
+@@ -374,20 +374,11 @@ struct pmic_wrapper_type {
+ 	u32 int_en_all;
+ 	u32 spi_w;
+ 	u32 wdt_src;
++	int has_bridge:1;
+ 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
+ 	int (*init_special)(struct pmic_wrapper *wrp);
  };
  
--struct pmic_wrapper_type {
--	int *regs;
--	enum pwrap_type type;
--	u32 arb_en_all;
--};
+-static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
+-{
+-	return wrp->master->type == PWRAP_MT8135;
+-}
 -
--static struct pmic_wrapper_type pwrap_mt8135 = {
--	.regs = mt8135_regs,
--	.type = PWRAP_MT8135,
--	.arb_en_all = 0x1ff,
--};
+-static inline int pwrap_is_mt8173(struct pmic_wrapper *wrp)
+-{
+-	return wrp->master->type == PWRAP_MT8173;
+-}
 -
--static struct pmic_wrapper_type pwrap_mt8173 = {
--	.regs = mt8173_regs,
--	.type = PWRAP_MT8173,
--	.arb_en_all = 0x3f,
--};
--
- struct pmic_wrapper {
- 	struct device *dev;
- 	void __iomem *base;
-@@ -385,6 +367,13 @@ struct pmic_wrapper {
- 	void __iomem *bridge_base;
- };
- 
-+struct pmic_wrapper_type {
-+	int *regs;
-+	enum pwrap_type type;
-+	u32 arb_en_all;
-+	int (*init_reg_clock)(struct pmic_wrapper *wrp);
-+};
-+
- static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
+ static u32 pwrap_readl(struct pmic_wrapper *wrp, enum pwrap_regs reg)
  {
- 	return wrp->master->type == PWRAP_MT8135;
-@@ -578,20 +567,23 @@ static int pwrap_init_sidly(struct pmic_wrapper *wrp)
- 	return 0;
- }
+ 	return readl(wrp->base + wrp->master->regs[reg]);
+@@ -619,11 +610,14 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x1, PWRAP_CIPHER_KEY_SEL);
+ 	pwrap_writel(wrp, 0x2, PWRAP_CIPHER_IV_SEL);
  
--static int pwrap_init_reg_clock(struct pmic_wrapper *wrp)
-+static int pwrap_mt8135_init_reg_clock(struct pmic_wrapper *wrp)
- {
 -	if (pwrap_is_mt8135(wrp)) {
--		pwrap_writel(wrp, 0x4, PWRAP_CSHEXT);
--		pwrap_writel(wrp, 0x0, PWRAP_CSHEXT_WRITE);
--		pwrap_writel(wrp, 0x4, PWRAP_CSHEXT_READ);
--		pwrap_writel(wrp, 0x0, PWRAP_CSLEXT_START);
--		pwrap_writel(wrp, 0x0, PWRAP_CSLEXT_END);
++	switch (wrp->master->type) {
++	case PWRAP_MT8135:
+ 		pwrap_writel(wrp, 1, PWRAP_CIPHER_LOAD);
+ 		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
 -	} else {
--		pwrap_writel(wrp, 0x0, PWRAP_CSHEXT_WRITE);
--		pwrap_writel(wrp, 0x4, PWRAP_CSHEXT_READ);
--		pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_START);
--		pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_END);
--	}
-+	pwrap_writel(wrp, 0x4, PWRAP_CSHEXT);
-+	pwrap_writel(wrp, 0x0, PWRAP_CSHEXT_WRITE);
-+	pwrap_writel(wrp, 0x4, PWRAP_CSHEXT_READ);
-+	pwrap_writel(wrp, 0x0, PWRAP_CSLEXT_START);
-+	pwrap_writel(wrp, 0x0, PWRAP_CSLEXT_END);
-+
-+	return 0;
-+}
-+
-+static int pwrap_mt8173_init_reg_clock(struct pmic_wrapper *wrp)
-+{
-+	pwrap_writel(wrp, 0x0, PWRAP_CSHEXT_WRITE);
-+	pwrap_writel(wrp, 0x4, PWRAP_CSHEXT_READ);
-+	pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_START);
-+	pwrap_writel(wrp, 0x2, PWRAP_CSLEXT_END);
++		break;
++	case PWRAP_MT8173:
+ 		pwrap_writel(wrp, 1, PWRAP_CIPHER_EN);
++		break;
+ 	}
  
- 	return 0;
- }
-@@ -699,7 +691,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	/* Config cipher mode @PMIC */
+@@ -713,7 +707,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	if (wrp->rstc_bridge)
+ 		reset_control_reset(wrp->rstc_bridge);
  
- 	pwrap_writel(wrp, 1, PWRAP_WACS2_EN);
+-	if (pwrap_is_mt8173(wrp)) {
++	if (wrp->master->type == PWRAP_MT8173) {
+ 		/* Enable DCM */
+ 		pwrap_writel(wrp, 3, PWRAP_DCM_EN);
+ 		pwrap_writel(wrp, 0, PWRAP_DCM_DBC_PRD);
+@@ -773,7 +767,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
+ 	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
  
--	ret = pwrap_init_reg_clock(wrp);
-+	ret = wrp->master->init_reg_clock(wrp);
- 	if (ret)
- 		return ret;
+-	if (pwrap_is_mt8135(wrp))
++	if (wrp->master->type == PWRAP_MT8135)
+ 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
  
-@@ -814,6 +806,20 @@ static const struct regmap_config pwrap_regmap_config = {
- 	.max_register = 0xffff,
+ 	pwrap_writel(wrp, 0x1, PWRAP_WACS0_EN);
+@@ -792,7 +786,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 1, PWRAP_INIT_DONE0);
+ 	pwrap_writel(wrp, 1, PWRAP_INIT_DONE1);
+ 
+-	if (pwrap_is_mt8135(wrp)) {
++	if (wrp->master->has_bridge) {
+ 		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE3);
+ 		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE4);
+ 	}
+@@ -830,6 +824,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
+ 	.int_en_all = BIT(31) | BIT(1),
+ 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+ 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
++	.has_bridge = 1,
+ 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
+ 	.init_special = pwrap_mt8135_init_special,
  };
+@@ -888,7 +883,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
-+static struct pmic_wrapper_type pwrap_mt8135 = {
-+	.regs = mt8135_regs,
-+	.type = PWRAP_MT8135,
-+	.arb_en_all = 0x1ff,
-+	.init_reg_clock = pwrap_mt8135_init_reg_clock,
-+};
-+
-+static struct pmic_wrapper_type pwrap_mt8173 = {
-+	.regs = mt8173_regs,
-+	.type = PWRAP_MT8173,
-+	.arb_en_all = 0x3f,
-+	.init_reg_clock = pwrap_mt8173_init_reg_clock,
-+};
-+
- static struct of_device_id of_pwrap_match_tbl[] = {
- 	{
- 		.compatible = "mediatek,mt8135-pwrap",
+-	if (pwrap_is_mt8135(wrp)) {
++	if (wrp->master->has_bridge) {
+ 		res = platform_get_resource_byname(pdev, IORESOURCE_MEM,
+ 				"pwrap-bridge");
+ 		wrp->bridge_base = devm_ioremap_resource(wrp->dev, res);
 -- 
 1.7.10.4
