@@ -1,56 +1,28 @@
 From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] drivers/pinctrl: make mediatek/pinctrl-mt8* driver
- explicitly non-modular
-Date: Wed, 27 Jan 2016 15:00:19 +0100
-Message-ID: <CACRpkdb6-GhWdZ=0gM5YnpL6GzBmoUX1dLWCUDhCw+VgLxpLzg@mail.gmail.com>
-References: <1451929450-18150-1-git-send-email-paul.gortmaker@windriver.com>
+Subject: Re: [PATCH] pinctrl: mediatek: guard sub-directory with CONFIG_PINCTRL_MTK
+Date: Wed, 27 Jan 2016 15:11:24 +0100
+Message-ID: <CACRpkdbrJ5P8Ro4RQUquMOTuXhN+54ZHYGbLqrbwW6tbwCC7Mg@mail.gmail.com>
+References: <1453563204-30407-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1451929450-18150-1-git-send-email-paul.gortmaker@windriver.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Paul Gortmaker <paul.gortmaker@windriver.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453563204-30407-1-git-send-email-yamada.masahiro@socionext.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 4, 2016 at 6:44 PM, Paul Gortmaker
-<paul.gortmaker@windriver.com> wrote:
+On Sat, Jan 23, 2016 at 4:33 PM, Masahiro Yamada
+<yamada.masahiro@socionext.com> wrote:
 
-> The Kconfig for these drivers are currently:
+> CONFIG_PINCTRL_MTK is more suitable than CONFIG_ARCH_MEDIATEK
+> to guard the drivers/pinctrl/mediatek/ directory.
+> (I renamed CONFIG_PINCTRL_MTK_COMMON to CONFIG_PINCTRL_MTK.)
 >
-> config PINCTRL_MT8127
->         bool "Mediatek MT8127 pin control" if COMPILE_TEST && !MACH_MT8127
->
-> config PINCTRL_MT8135
->         bool "Mediatek MT8135 pin control" if COMPILE_TEST && !MACH_MT8135
->
-> config PINCTRL_MT8173
->         bool "Mediatek MT8173 pin control"
->
-> ...meaning that they are currently not being built as a module by anyone.
-> Lets remove the modular code that is essentially orphaned, so that
-> when reading the driver there is no doubt it is builtin-only.
->
-> A recent commit moved these from module_init to arch_initcall already, so
-> the init ordering remains untouched with this commit.
->
-> We also delete the MODULE_LICENSE tag etc. since all that information
-> is already contained at the top of the file in the comments.
->
-> Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
->
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Daniel Kurtz <djkurtz@chromium.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>
-> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Signed-off-by: Paul Gortmaker <paul.gortmaker@windriver.com>
+> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 
-Patch applied.
-
-Sorry for delayed response...
+This patch does not apply to linux v4.5-rc1, please rebase the
+patch and resend.
 
 Yours,
 Linus Walleij
