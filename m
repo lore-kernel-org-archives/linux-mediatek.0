@@ -1,30 +1,62 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v8 2/5] dt-bindings: mediatek: Add smi dts binding
-Date: Tue, 26 Jan 2016 16:00:19 -0600
-Message-ID: <20160126220019.GA23765@rob-hp-laptop>
-References: <1453781562-23556-1-git-send-email-yong.wu@mediatek.com>
- <1453781562-23556-3-git-send-email-yong.wu@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH v5 6/6] reset: mediatek: Add MT2701 reset driver
+Date: Wed, 27 Jan 2016 15:21:04 +0800
+Message-ID: <1453879264-37915-7-git-send-email-jamesjj.liao@mediatek.com>
+References: <1453879264-37915-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1453781562-23556-3-git-send-email-yong.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Lucas Stach <l.stach@pengutronix.de>, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, pebolle@tiscali.nl, arnd@arndb.de, mitchelh@codeaurora.org, p.zabel@pengutronix.de, youhua.li@mediatek.com, kendrick.hsu@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1453879264-37915-1-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: John Crispin <blogic@openwrt.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jan 26, 2016 at 12:12:39PM +0800, Yong Wu wrote:
-> This patch add smi binding document and smi local arbiter header file.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  .../memory-controllers/mediatek,smi-common.txt     |  24 +++++
->  .../memory-controllers/mediatek,smi-larb.txt       |  25 +++++
->  include/dt-bindings/memory/mt8173-larb-port.h      | 111 +++++++++++++++++++++
->  3 files changed, 160 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
->  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
->  create mode 100644 include/dt-bindings/memory/mt8173-larb-port.h
+From: Shunli Wang <shunli.wang@mediatek.com>
 
-Acked-by: Rob Herring <robh@kernel.org>
+In infrasys and perifsys, there are many reset
+control bits for kinds of modules. These bits are
+used as actual reset controllers to be registered
+into kernel's generic reset controller framework.
+
+Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Tested-by: John Crispin <blogic@openwrt.org>
+---
+ drivers/clk/mediatek/clk-mt2701.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/clk/mediatek/clk-mt2701.c b/drivers/clk/mediatek/clk-mt2701.c
+index 0ac45fc..01722e0 100644
+--- a/drivers/clk/mediatek/clk-mt2701.c
++++ b/drivers/clk/mediatek/clk-mt2701.c
+@@ -665,6 +665,8 @@ static void __init mtk_infrasys_init(struct device_node *node)
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
++
++	mtk_register_reset_controller(node, 2, 0x30);
+ }
+ CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt2701-infracfg", mtk_infrasys_init);
+ 
+@@ -782,6 +784,8 @@ static void __init mtk_pericfg_init(struct device_node *node)
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
++
++	mtk_register_reset_controller(node, 2, 0x0);
+ }
+ CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt2701-pericfg", mtk_pericfg_init);
+ 
+@@ -997,6 +1001,8 @@ static void __init mtk_hifsys_init(struct device_node *node)
+ 	if (r)
+ 		pr_err("%s(): could not register clock provider: %d\n",
+ 			__func__, r);
++
++	mtk_register_reset_controller(node, 1, 0x34);
+ }
+ CLK_OF_DECLARE(mtk_hifsys, "mediatek,mt2701-hifsys", mtk_hifsys_init);
+ 
+-- 
+1.9.1
+
