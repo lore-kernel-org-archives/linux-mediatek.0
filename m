@@ -1,44 +1,55 @@
-From: Sylwester Nawrocki <s.nawrocki@samsung.com>
-Subject: Re: [PATCH v2] clk: Move vendor's Kconfig into CCF menu section
-Date: Thu, 28 Jan 2016 13:57:22 +0100
-Message-ID: <56AA1032.70001@samsung.com>
-References: <1453971537-5510-1-git-send-email-jamesjj.liao@mediatek.com>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323 regulator
+Date: Thu, 28 Jan 2016 19:13:48 +0100
+Message-ID: <56AA5A5C.9080402@openwrt.org>
+References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
+ <1453896059-44589-2-git-send-email-blogic@openwrt.org>
+ <20160127144105.GQ6042@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-reply-to: <1453971537-5510-1-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160127144105.GQ6042-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?SGVucnlDIENoZW4gKOmZs+W7uuixqik=?= <HenryC.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chen Zhong <chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 28/01/16 09:58, James Liao wrote:
-> Move all vendor's Kconfig into CCF menu section to prevent
-> new drivers putting their Kconfig files in a wrong place.
+
+
+On 27/01/2016 15:41, Mark Brown wrote:
+> On Wed, Jan 27, 2016 at 01:00:59PM +0100, John Crispin wrote:
 > 
-> Some Kconigs need to modify at the same time to avoid build
-
-"Some Kconfigs need to be modified..." ?
-
-> warnings.
+>> +		/* Constrain board-specific capabilities according to what
+>> +		 * this driver and the chip itself can actually do.
+>> +		 */
+>> +		c = rdev->constraints;
+>> +		c->valid_modes_mask |= REGULATOR_MODE_NORMAL |
+>> +				       REGULATOR_MODE_STANDBY;
+>> +		c->valid_ops_mask |= REGULATOR_CHANGE_MODE;
 > 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> ---
-> This patch is based on v4.5-rc1.
+> No, drivers should *never* enable things that weren't explictly enabled
+> by the machine constraints.  This misses the whole point of having
+> constraints.  They are there so that the system integrator can enable
+> the functionality that is safe on a given board.  
 > 
-> changes since v1:
-> - Modify s3c24xx and samsung's Kconfig to avoid build warngings.
+> The comment is also inaccurate, it claims it's imposing constraints but
+> in fact it's adding additional permissions.
 > 
->  arch/arm/mach-s3c24xx/Kconfig | 1 +
->  drivers/clk/Kconfig           | 8 +++-----
->  drivers/clk/samsung/Kconfig   | 1 -
->  3 files changed, 4 insertions(+), 6 deletions(-)
 
-For the samsung code changes:
+Hi Mark
 
-Acked-by: Sylwester Nawrocki <s.nawrocki@samsung.com>
+would the following two bindings be ok ? I would create patches to add them.
 
--- 
-Thanks,
-Sylwester
+* regulator-allow-mode; or regulator-allow-change-mode;
+* regulator-modes = <REGULATOR_MODE_NORMAL REGULATOR_MODE_STANDBY>;
+
+	John
