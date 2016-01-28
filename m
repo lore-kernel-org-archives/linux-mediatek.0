@@ -1,49 +1,157 @@
-From: biao huang <biao.huang@mediatek.com>
-Subject: Re: [PATCH v4 0/5] pinctrl: mediatek: add pinctrl/GPIO/EINT driver
- for mt2701
-Date: Fri, 29 Jan 2016 06:08:40 +0800
-Message-ID: <1454018920.14802.41.camel@mhfsdcap03>
-References: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
-	 <CACRpkdbxpc19bdzGDUDoqseTA-TW3V8dAA4Oe+G860qTsHd-dQ@mail.gmail.com>
+From: Liguo Zhang <liguo.zhang@mediatek.com>
+Subject: [PATCH v2] i2c: mt8173: add 4GB mode support in i2c driver.
+Date: Fri, 29 Jan 2016 07:06:24 +0800
+Message-ID: <1454022384-7955-1-git-send-email-liguo.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdbxpc19bdzGDUDoqseTA-TW3V8dAA4Oe+G860qTsHd-dQ@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: John Crispin <blogic@openwrt.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "arm@kernel.org" <arm@kernel.org>
+Content-Type: text/plain
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Linus,
-	[PATCH v4 1/5] pinctrl: mediatek: fix direction control issue
-	this patch is also a pinctrl patch, and it seems not merged in
-devel-mt2701 branch.
+If 4GB mode is enable, we should add 4gb mode support in i2c driver.
+Set 4GB mode register to support 4GB mode.
 
-Best Regards!
-Yours,
-Biao Huang
+Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+---
+change in v2:
+Define a static inline funtion mtk_i2c_set_4g_mode() for support 4g mode.
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 51 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-On Thu, 2016-01-28 at 11:20 +0100, Linus Walleij wrote:
-> On Wed, Jan 27, 2016 at 2:24 AM, Biao Huang <biao.huang@mediatek.com> wrote:
-> 
-> > Change in v4:
-> > 1. create a sperate patch for direction setting of input-enable/disalbe and input-schmitt-enable/disable.
-> 
-> So I've merged the patches affecting drivers/pinctrl on the special
-> devel-mt2701 branch, so the ARM SoC people can pull this into
-> their tree to resolve dependencies on the pinctrl include
-> in include/dt-bindings.
-> https://git.kernel.org/cgit/linux/kernel/git/linusw/linux-pinctrl.git/log/?h=devel-mt2701
-> 
-> The rest of the patches should go into ARM SoC, so they can
-> just pull this branch in and apply that stuff on top.
-> 
-> Allow this a few days, I am also waiting for the add-on patches
-> from John Crispin to come in, please include John in the
-> feedback loop.
-> 
-> Yours,
-> Linus Walleij
-
-
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index aec8e6c..f5734e6 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -60,6 +60,7 @@
+ #define I2C_DMA_INT_FLAG_NONE		0x0000
+ #define I2C_DMA_CLR_FLAG		0x0000
+ #define I2C_DMA_HARD_RST		0x0002
++#define I2C_DMA_4G_MODE			0x0001
+ 
+ #define I2C_DEFAULT_SPEED		100000	/* hz */
+ #define MAX_FS_MODE_SPEED		400000
+@@ -88,6 +89,8 @@ enum DMA_REGS_OFFSET {
+ 	OFFSET_RX_MEM_ADDR = 0x20,
+ 	OFFSET_TX_LEN = 0x24,
+ 	OFFSET_RX_LEN = 0x28,
++	OFFSET_TX_4G_MODE = 0x54,
++	OFFSET_RX_4G_MODE = 0x58,
+ };
+ 
+ enum i2c_trans_st_rs {
+@@ -133,6 +136,7 @@ struct mtk_i2c_compatible {
+ 	unsigned char dcm: 1;
+ 	unsigned char auto_restart: 1;
+ 	unsigned char aux_len_reg: 1;
++	unsigned char support_33bits: 1;
+ };
+ 
+ struct mtk_i2c {
+@@ -182,6 +186,7 @@ static const struct mtk_i2c_compatible mt6577_compat = {
+ 	.dcm = 1,
+ 	.auto_restart = 0,
+ 	.aux_len_reg = 0,
++	.support_33bits = 0,
+ };
+ 
+ static const struct mtk_i2c_compatible mt6589_compat = {
+@@ -190,6 +195,7 @@ static const struct mtk_i2c_compatible mt6589_compat = {
+ 	.dcm = 0,
+ 	.auto_restart = 0,
+ 	.aux_len_reg = 0,
++	.support_33bits = 0,
+ };
+ 
+ static const struct mtk_i2c_compatible mt8173_compat = {
+@@ -198,6 +204,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
+ 	.dcm = 1,
+ 	.auto_restart = 1,
+ 	.aux_len_reg = 1,
++	.support_33bits = 1,
+ };
+ 
+ static const struct of_device_id mtk_i2c_of_match[] = {
+@@ -366,6 +373,30 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
+ 	return 0;
+ }
+ 
++static inline void mtk_i2c_set_4g_mode(struct mtk_i2c *i2c, dma_addr_t wpaddr,
++				       dma_addr_t rpaddr)
++{
++	u32 reg_4g_mode;
++
++	if (i2c->op == I2C_MASTER_RD) {
++		reg_4g_mode = (rpaddr & 0x100000000ULL) ? I2C_DMA_4G_MODE :
++			       I2C_DMA_CLR_FLAG;
++		writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
++	} else if (i2c->op == I2C_MASTER_WR) {
++		reg_4g_mode = (wpaddr & 0x100000000ULL) ? I2C_DMA_4G_MODE :
++			       I2C_DMA_CLR_FLAG;
++		writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
++	} else {
++		reg_4g_mode = (wpaddr & 0x100000000ULL) ? I2C_DMA_4G_MODE :
++			       I2C_DMA_CLR_FLAG;
++		writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
++
++		reg_4g_mode = (rpaddr & 0x100000000ULL) ? I2C_DMA_4G_MODE :
++			       I2C_DMA_CLR_FLAG;
++		writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
++	}
++}
++
+ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 			       int num, int left_num)
+ {
+@@ -439,6 +470,10 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					msgs->len, DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, rpaddr))
+ 			return -ENOMEM;
++
++		if (i2c->dev_comp->support_33bits)
++			mtk_i2c_set_4g_mode(i2c, 0, rpaddr);
++
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_RX_LEN);
+ 	} else if (i2c->op == I2C_MASTER_WR) {
+@@ -448,6 +483,10 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					msgs->len, DMA_TO_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, wpaddr))
+ 			return -ENOMEM;
++
++		if (i2c->dev_comp->support_33bits)
++			mtk_i2c_set_4g_mode(i2c, wpaddr, 0);
++
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+ 	} else {
+@@ -465,6 +504,10 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 					 msgs->len, DMA_TO_DEVICE);
+ 			return -ENOMEM;
+ 		}
++
++		if (i2c->dev_comp->support_33bits)
++			mtk_i2c_set_4g_mode(i2c, wpaddr, rpaddr);
++
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+ 		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+@@ -729,6 +772,14 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
++	if (i2c->dev_comp->support_33bits) {
++		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(33));
++		if (ret) {
++			dev_err(&pdev->dev, "dma_set_mask return error.\n");
++			return ret;
++		}
++	}
++
+ 	ret = mtk_i2c_clock_enable(i2c);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "clock enable failed!\n");
+-- 
+1.8.1.1.dirty
