@@ -1,75 +1,38 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH v2] clk: Move vendor's Kconfig into CCF menu section
-Date: Thu, 28 Jan 2016 16:58:57 +0800
-Message-ID: <1453971537-5510-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Johannes Berg <johannes-cdvu00un1VgdHxzADdlk8Q@public.gmane.org>
+Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
+Date: Thu, 28 Jan 2016 10:37:09 +0100
+Message-ID: <1453973829.2217.0.camel@sipsolutions.net>
+References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
+ <CAF-23O2y7qRB=ZoU8cn2gcX7rjFdXh+rdLXSjF1nnym79Mknug@mail.gmail.com>
+ (sfid-20160128_103122_810896_2EF40B14)
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Arnd Bergmann <arnd@arndb.de>
-Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAF-23O2y7qRB=ZoU8cn2gcX7rjFdXh+rdLXSjF1nnym79Mknug-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+ (sfid-20160128_103122_810896_2EF40B14)
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: =?UTF-8?Q?=E9=99=B3=E6=9F=8F=E5=AE=8F?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Move all vendor's Kconfig into CCF menu section to prevent
-new drivers putting their Kconfig files in a wrong place.
-
-Some Kconigs need to modify at the same time to avoid build
-warnings.
-
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
----
-This patch is based on v4.5-rc1.
-
-changes since v1:
-- Modify s3c24xx and samsung's Kconfig to avoid build warngings.
-
- arch/arm/mach-s3c24xx/Kconfig | 1 +
- drivers/clk/Kconfig           | 8 +++-----
- drivers/clk/samsung/Kconfig   | 1 -
- 3 files changed, 4 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm/mach-s3c24xx/Kconfig b/arch/arm/mach-s3c24xx/Kconfig
-index ef68ecb..f02495f 100644
---- a/arch/arm/mach-s3c24xx/Kconfig
-+++ b/arch/arm/mach-s3c24xx/Kconfig
-@@ -15,6 +15,7 @@ config PLAT_S3C24XX
- 	select NO_IOPORT_MAP
- 	select S3C_DEV_NAND
- 	select IRQ_DOMAIN
-+	select COMMON_CLK
- 	help
- 	  Base platform code for any Samsung S3C24XX device
- 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index eca8e01..de707b2 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -202,11 +202,9 @@ config COMMON_CLK_CDCE706
- 
- source "drivers/clk/bcm/Kconfig"
- source "drivers/clk/hisilicon/Kconfig"
--source "drivers/clk/qcom/Kconfig"
--
--endmenu
--
- source "drivers/clk/mvebu/Kconfig"
--
-+source "drivers/clk/qcom/Kconfig"
- source "drivers/clk/samsung/Kconfig"
- source "drivers/clk/tegra/Kconfig"
-+
-+endmenu
-diff --git a/drivers/clk/samsung/Kconfig b/drivers/clk/samsung/Kconfig
-index 84196ec..b3fe5cb 100644
---- a/drivers/clk/samsung/Kconfig
-+++ b/drivers/clk/samsung/Kconfig
-@@ -1,6 +1,5 @@
- config COMMON_CLK_SAMSUNG
- 	bool
--	select COMMON_CLK
- 
- config S3C2410_COMMON_CLK
- 	bool
--- 
-1.9.1
-
+T24gVGh1LCAyMDE2LTAxLTI4IGF0IDE3OjMxICswODAwLCBLb2FuLVNpbiBUYW4gd3JvdGU6Cj7C
+oAo+ID4gSSBoYXZlIHlldCB0byBkZWJ1ZyB0aGlzIGFueSBmdXJ0aGVyLCBidXQgc3RpbGwgd2Fu
+dGVkIHRvIHJlcG9ydCBpdAo+ID4gaW4gY2FzZSBhbnlvbmUgZWxzZSBoYXMgdGhlIHRpbWUgdG8g
+ZGVidWcgaXQgZnVydGhlci4KPiBiaXNlY3Qgc2hvd2VkIHRoYXQgdGhlIGN1bHByaXQgb2YgdGhl
+IGJpZyBlbmRpYW4gcHJvYmxlbSBpcyBhCj4gInJlZ21hcC1tbWlvOiBVc2UgbmF0aXZlIGVuZGlh
+bm5lc3MgZm9yIHJlYWQvd3JpdGUiCj4gcGF0Y2ggWzFdLiBJIHNhdyBKb2hhbm5lcyBhbHJlYWR5
+IHByb3Bvc2VkIHRvIHJldmVydCBpdCBbMl0uCj4gCgpNYXJrIGhhcyByZWFsIGZpeGVzIGZvciBp
+dCBpbnN0ZWFkOgpodHRwczovL2dpdC5rZXJuZWwub3JnL2NnaXQvbGludXgva2VybmVsL2dpdC9i
+cm9vbmllL3JlZ21hcC5naXQvbG9nLz9oPWZpeC9tbWlvCgpqb2hhbm5lcwoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
