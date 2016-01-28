@@ -1,52 +1,45 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH V4 09/11] soc: mediatek: PMIC wrap: add a slave specific
- struct
-Date: Thu, 28 Jan 2016 10:37:40 +0800
-Message-ID: <1453948660.29651.3.camel@mtksdaap41>
-References: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
-	 <1453894149-44127-9-git-send-email-blogic@openwrt.org>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: Re: [PATCH] pinctrl: mediatek: guard sub-directory with CONFIG_PINCTRL_MTK
+Date: Thu, 28 Jan 2016 13:22:35 +0900
+Message-ID: <CAK7LNAQ_8o0FiRpb7D6RBmA+7WxRMFhWJjo2f4E_NH5qAGYb4A@mail.gmail.com>
+References: <1453563204-30407-1-git-send-email-yamada.masahiro@socionext.com>
+	<CACRpkdbrJ5P8Ro4RQUquMOTuXhN+54ZHYGbLqrbwW6tbwCC7Mg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1453894149-44127-9-git-send-email-blogic@openwrt.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <blogic@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <CACRpkdbrJ5P8Ro4RQUquMOTuXhN+54ZHYGbLqrbwW6tbwCC7Mg@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
+Hi Linus
 
-On Wed, 2016-01-27 at 12:29 +0100, John Crispin wrote:
+2016-01-27 23:11 GMT+09:00 Linus Walleij <linus.walleij@linaro.org>:
+> On Sat, Jan 23, 2016 at 4:33 PM, Masahiro Yamada
+> <yamada.masahiro@socionext.com> wrote:
+>
+>> CONFIG_PINCTRL_MTK is more suitable than CONFIG_ARCH_MEDIATEK
+>> to guard the drivers/pinctrl/mediatek/ directory.
+>> (I renamed CONFIG_PINCTRL_MTK_COMMON to CONFIG_PINCTRL_MTK.)
+>>
+>> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+>
+> This patch does not apply to linux v4.5-rc1, please rebase the
+> patch and resend.
 
-> @@ -746,7 +786,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->  	pwrap_writel(wrp, 1, PWRAP_DIO_EN);
->  
->  	/* Read Test */
-> -	pwrap_read(wrp, PWRAP_DEW_READ_TEST, &rdata);
-> +	pwrap_dew_read(wrp, PWRAP_DEW_READ_TEST, &rdata);
->  	if (rdata != PWRAP_DEW_READ_TEST_VAL) {
->  		dev_err(wrp->dev, "Read test failed after switch to DIO mode: 0x%04x != 0x%04x\n",
->  				PWRAP_DEW_READ_TEST_VAL, rdata);
-> @@ -759,12 +799,13 @@ static int pwrap_init(struct pmic_wrapper *wrp)
->  		return ret;
->  
->  	/* Signature checking - using CRC */
-> -	if (pwrap_write(wrp, PWRAP_DEW_CRC_EN, 0x1))
-> +	if (pwrap_dew_write(wrp, PWRAP_DEW_CRC_EN, 0x1))
->  		return -EFAULT;
->  
->  	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
->  	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
-> -	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
-> +	pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
-> +		     PWRAP_SIG_ADR);
 
-It should be "pwrap_dew_write(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);",
-right?
+These two patches can be applied in this order:
+https://patchwork.kernel.org/patch/8097541/
+https://patchwork.kernel.org/patch/8097551/
 
-Henry
+(Sorry, I should have sent them as a series.)
 
->  	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
->  
->  	if (wrp->master->type == PWRAP_MT8135)
+
+If you want to apply only the latter onto v4.5-rc1,
+"git am -C2" can apply it.
+
+
+-- 
+Best Regards
+Masahiro Yamada
