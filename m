@@ -1,57 +1,47 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323 regulator
-Date: Thu, 28 Jan 2016 15:16:41 +0800
-Message-ID: <1453965401.19407.18.camel@mtksdaap41>
-References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
- <1453896059-44589-2-git-send-email-blogic@openwrt.org>
- <20160127144105.GQ6042@sirena.org.uk>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH] clk: Move vendor's Kconfig into CCF menu section
+Date: Thu, 28 Jan 2016 00:36:56 -0800
+Message-ID: <20160128083656.GM12841@codeaurora.org>
+References: <201601271708.gQUxXACW%fengguang.wu@intel.com>
+ <4711589.Ig064LES4c@wuerfel>
+ <1453888578.28646.7.camel@mtksdaap41>
+ <6167008.u8jfFpmfhy@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20160127144105.GQ6042@sirena.org.uk>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Mark Brown <broonie@kernel.org>
-Cc: linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <6167008.u8jfFpmfhy@wuerfel>
+Sender: linux-clk-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>, linux-arm-kernel@lists.infradead.org, kbuild test robot <lkp@intel.com>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Mike Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kbuild-all@01.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
-
-On Wed, 2016-01-27 at 14:41 +0000, Mark Brown wrote:
-> On Wed, Jan 27, 2016 at 01:00:59PM +0100, John Crispin wrote:
+On 01/27, Arnd Bergmann wrote:
+> On Wednesday 27 January 2016 17:56:18 James Liao wrote:
+> > > 
+> > > I think you should include this change in your patch, or as a preparation.
+> > > All other samsung platforms already select COMMON_CLK through ARCH_MULTIPLATFORM,
+> > > and all SoCs that are part of ARCH_S3C24XX individually select a symbol that
+> > > selects COMMON_CLK.
+> > 
+> > Oops, I didn't notice there are warnings after moving these Kconfigs
+> > into menu section.
+> > 
+> > The original motivation of this patch is preventing new clk drivers
+> > include their Kconfig in a wrong place, so it's not critical. Do you
+> > think we should apply this patch (with your changes below) or drop this
+> > patch directly?
 > 
-> > +		/* Constrain board-specific capabilities according to what
-> > +		 * this driver and the chip itself can actually do.
-> > +		 */
-> > +		c = rdev->constraints;
-> > +		c->valid_modes_mask |= REGULATOR_MODE_NORMAL |
-> > +				       REGULATOR_MODE_STANDBY;
-> > +		c->valid_ops_mask |= REGULATOR_CHANGE_MODE;
 > 
-> No, drivers should *never* enable things that weren't explictly enabled
-> by the machine constraints.  This misses the whole point of having
-> constraints.  They are there so that the system integrator can enable
-> the functionality that is safe on a given board.  
+> I think your patch is good, we just need to fix S3C24xx, which is doing
+> things in a strange way for historic reasons.
 
-Okay..the constrains should be define on device tree.
-But which optional properties was suitable to fill on device tree if consumers want to call
-regulator_set_mode directly ?
-I have check the of_regulator.c and not found the suitable property name which can set valid_modes_mask & valid_ops_mask.
+So far we've taken the approach of not caring if they include
+their Kconfig outside the common clk menu when all the configs
+inside the Kconfig file are hidden. Of course, when they aren't
+hidden this becomes a problem, but that isn't the case unless
+something changed recently.
 
-Thanks,
-Henry 
-> 
-> The comment is also inaccurate, it claims it's imposing constraints but
-> in fact it's adding additional permissions.
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
