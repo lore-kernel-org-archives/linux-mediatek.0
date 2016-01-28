@@ -1,28 +1,47 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH V2 01/11] dt-bindings: ARM: Mediatek: add MT2701/7623
- string to the PMIC wrapper doc
-Date: Thu, 28 Jan 2016 21:23:03 -0600
-Message-ID: <20160129032303.GA15844@rob-hp-laptop>
-References: <1453319943-35491-1-git-send-email-blogic@openwrt.org>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH] mmc: mediatek: make sure clock is enabled when executing ops->card_busy()
+Date: Fri, 29 Jan 2016 03:31:54 +0800
+Message-ID: <1454009514-6474-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1453319943-35491-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 20, 2016 at 08:58:53PM +0100, John Crispin wrote:
-> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt |    1 +
->  1 file changed, 1 insertion(+)
+add pm_runtime_get_sync() before access MSDC_PS register
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 82a97ac..a56b16d 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1054,13 +1054,15 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
+ static int msdc_card_busy(struct mmc_host *mmc)
+ {
+ 	struct msdc_host *host = mmc_priv(mmc);
+-	u32 status = readl(host->base + MSDC_PS);
++	u32 status;
+ 
+-	/* check if any pin between dat[0:3] is low */
+-	if (((status >> 16) & 0xf) != 0xf)
+-		return 1;
++	pm_runtime_get_sync(host->dev);
++	status = readl(host->base + MSDC_PS);
++	pm_runtime_mark_last_busy(host->dev);
++	pm_runtime_put_autosuspend(host->dev);
+ 
+-	return 0;
++	/* check if any pin between dat[0:3] is low */
++	return !!(((status >> 16) & 0xf) != 0xf);
+ }
+ 
+ static void msdc_request_timeout(struct work_struct *work)
+-- 
+1.8.1.1.dirty
+
