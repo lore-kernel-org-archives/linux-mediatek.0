@@ -1,35 +1,61 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v4 0/5] pinctrl: mediatek: add pinctrl/GPIO/EINT driver
- for mt2701
-Date: Thu, 28 Jan 2016 11:20:34 +0100
-Message-ID: <CACRpkdbxpc19bdzGDUDoqseTA-TW3V8dAA4Oe+G860qTsHd-dQ@mail.gmail.com>
-References: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: pinctrl: mediatek: questions about gpio/pinctrl/eint
+Date: Thu, 28 Jan 2016 10:35:41 +0800
+Message-ID: <1453948541.14802.38.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
 Sender: linux-gpio-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, John Crispin <blogic@openwrt.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "arm@kernel.org" <arm@kernel.org>
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 27, 2016 at 2:24 AM, Biao Huang <biao.huang@mediatek.com> wrote:
+Hi Linus,
 
-> Change in v4:
-> 1. create a sperate patch for direction setting of input-enable/disalbe and input-schmitt-enable/disable.
+	We have two questions associate with mediatek pinctrl/gpio in linux
+kernel to asking for your help.
 
-So I've merged the patches affecting drivers/pinctrl on the special
-devel-mt2701 branch, so the ARM SoC people can pull this into
-their tree to resolve dependencies on the pinctrl include
-in include/dt-bindings.
-https://git.kernel.org/cgit/linux/kernel/git/linusw/linux-pinctrl.git/log/?h=devel-mt2701
+	First, when user call GPIO API to control medaitek gpio, they should
+call pinctrl API to set pinmux to mode 0 ahead, so this pin is function
+as gpio. And this makes things a little complicated. Is there any simple
+API can solve this problem? How about add pinmux setting in
+gpio_request?
 
-The rest of the patches should go into ARM SoC, so they can
-just pull this branch in and apply that stuff on top.
+	Second, here is our request_irq flow in mkd eint driver:
+request_irq --> mtk_pinctrl_irq_request_resources--> mtk_pmx_set_mode,
+Normally, it'll set pinmux to eint mode (usually is mode 0) in
+mtk_pmx_set_mode function. But for special case, such as iddig (connect
+to usb), when iddig request_irq, it should set pinmux to iddig mode
+(mode 2 in mt8163).
+	Is there a better way than changing
+        MTK_PIN(
+                PINCTRL_PIN(16, "IDDIG"),
+                NULL, "mt8173",
+                MTK_EINT_FUNCTION(0, 16),
+                MTK_FUNCTION(0, "GPIO16"),
+                MTK_FUNCTION(1, "IDDIG"),
+                MTK_FUNCTION(2, "CMFLASH"),
+                MTK_FUNCTION(4, "PWM5")
+        ),
+	to
+        MTK_PIN(
+                PINCTRL_PIN(16, "IDDIG"),
+                NULL, "mt8173",
+                MTK_EINT_FUNCTION(2, 16),
+                MTK_FUNCTION(0, "GPIO16"),
+                MTK_FUNCTION(1, "IDDIG"),
+                MTK_FUNCTION(2, "CMFLASH"),
+                MTK_FUNCTION(4, "PWM5")
+        ),
+	in drivers/pinctrl/mediatek/pinctrl-mtk-mt8163.h?
 
-Allow this a few days, I am also waiting for the add-on patches
-from John Crispin to come in, please include John in the
-feedback loop.
+	We are looking forward for your help, thanks very much!
 
+Best Regards!
 Yours,
-Linus Walleij
+Biao Huang
+
+
+
+
