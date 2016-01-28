@@ -1,47 +1,49 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH] mmc: mediatek: make sure clock is enabled when executing ops->card_busy()
-Date: Fri, 29 Jan 2016 03:31:54 +0800
-Message-ID: <1454009514-6474-1-git-send-email-chaotian.jing@mediatek.com>
+From: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH v4 0/5] pinctrl: mediatek: add pinctrl/GPIO/EINT driver
+ for mt2701
+Date: Fri, 29 Jan 2016 06:08:40 +0800
+Message-ID: <1454018920.14802.41.camel@mhfsdcap03>
+References: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
+	 <CACRpkdbxpc19bdzGDUDoqseTA-TW3V8dAA4Oe+G860qTsHd-dQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <CACRpkdbxpc19bdzGDUDoqseTA-TW3V8dAA4Oe+G860qTsHd-dQ@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: John Crispin <blogic@openwrt.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "arm@kernel.org" <arm@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-add pm_runtime_get_sync() before access MSDC_PS register
+Hi Linus,
+	[PATCH v4 1/5] pinctrl: mediatek: fix direction control issue
+	this patch is also a pinctrl patch, and it seems not merged in
+devel-mt2701 branch.
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/host/mtk-sd.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+Best Regards!
+Yours,
+Biao Huang
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 82a97ac..a56b16d 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1054,13 +1054,15 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
- static int msdc_card_busy(struct mmc_host *mmc)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
--	u32 status = readl(host->base + MSDC_PS);
-+	u32 status;
- 
--	/* check if any pin between dat[0:3] is low */
--	if (((status >> 16) & 0xf) != 0xf)
--		return 1;
-+	pm_runtime_get_sync(host->dev);
-+	status = readl(host->base + MSDC_PS);
-+	pm_runtime_mark_last_busy(host->dev);
-+	pm_runtime_put_autosuspend(host->dev);
- 
--	return 0;
-+	/* check if any pin between dat[0:3] is low */
-+	return !!(((status >> 16) & 0xf) != 0xf);
- }
- 
- static void msdc_request_timeout(struct work_struct *work)
--- 
-1.8.1.1.dirty
+On Thu, 2016-01-28 at 11:20 +0100, Linus Walleij wrote:
+> On Wed, Jan 27, 2016 at 2:24 AM, Biao Huang <biao.huang@mediatek.com> wrote:
+> 
+> > Change in v4:
+> > 1. create a sperate patch for direction setting of input-enable/disalbe and input-schmitt-enable/disable.
+> 
+> So I've merged the patches affecting drivers/pinctrl on the special
+> devel-mt2701 branch, so the ARM SoC people can pull this into
+> their tree to resolve dependencies on the pinctrl include
+> in include/dt-bindings.
+> https://git.kernel.org/cgit/linux/kernel/git/linusw/linux-pinctrl.git/log/?h=devel-mt2701
+> 
+> The rest of the patches should go into ARM SoC, so they can
+> just pull this branch in and apply that stuff on top.
+> 
+> Allow this a few days, I am also waiting for the add-on patches
+> from John Crispin to come in, please include John in the
+> feedback loop.
+> 
+> Yours,
+> Linus Walleij
+
 
