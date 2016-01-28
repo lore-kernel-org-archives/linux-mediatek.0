@@ -1,16 +1,15 @@
-From: Johannes Berg <johannes-cdvu00un1VgdHxzADdlk8Q@public.gmane.org>
-Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
-Date: Thu, 28 Jan 2016 10:37:09 +0100
-Message-ID: <1453973829.2217.0.camel@sipsolutions.net>
-References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
- <CAF-23O2y7qRB=ZoU8cn2gcX7rjFdXh+rdLXSjF1nnym79Mknug@mail.gmail.com>
- (sfid-20160128_103122_810896_2EF40B14)
+From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 3/5] pinctrl: dt bindings: Add pinfunc header file for
+ mt2701
+Date: Thu, 28 Jan 2016 11:13:20 +0100
+Message-ID: <CACRpkdbvpLqg=e22o_2DjVu7Wx+OG_7zGo7ykg_3RZpA1j2Uwg@mail.gmail.com>
+References: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
+ <1453857883-28436-4-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAF-23O2y7qRB=ZoU8cn2gcX7rjFdXh+rdLXSjF1nnym79Mknug-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
- (sfid-20160128_103122_810896_2EF40B14)
+In-Reply-To: <1453857883-28436-4-git-send-email-biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,19 +19,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: =?UTF-8?Q?=E9=99=B3=E6=9F=8F=E5=AE=8F?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCAyMDE2LTAxLTI4IGF0IDE3OjMxICswODAwLCBLb2FuLVNpbiBUYW4gd3JvdGU6Cj7C
-oAo+ID4gSSBoYXZlIHlldCB0byBkZWJ1ZyB0aGlzIGFueSBmdXJ0aGVyLCBidXQgc3RpbGwgd2Fu
-dGVkIHRvIHJlcG9ydCBpdAo+ID4gaW4gY2FzZSBhbnlvbmUgZWxzZSBoYXMgdGhlIHRpbWUgdG8g
-ZGVidWcgaXQgZnVydGhlci4KPiBiaXNlY3Qgc2hvd2VkIHRoYXQgdGhlIGN1bHByaXQgb2YgdGhl
-IGJpZyBlbmRpYW4gcHJvYmxlbSBpcyBhCj4gInJlZ21hcC1tbWlvOiBVc2UgbmF0aXZlIGVuZGlh
-bm5lc3MgZm9yIHJlYWQvd3JpdGUiCj4gcGF0Y2ggWzFdLiBJIHNhdyBKb2hhbm5lcyBhbHJlYWR5
-IHByb3Bvc2VkIHRvIHJldmVydCBpdCBbMl0uCj4gCgpNYXJrIGhhcyByZWFsIGZpeGVzIGZvciBp
-dCBpbnN0ZWFkOgpodHRwczovL2dpdC5rZXJuZWwub3JnL2NnaXQvbGludXgva2VybmVsL2dpdC9i
-cm9vbmllL3JlZ21hcC5naXQvbG9nLz9oPWZpeC9tbWlvCgpqb2hhbm5lcwoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Wed, Jan 27, 2016 at 2:24 AM, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+
+> Add pinfunc header file, mt2701 related dts will include it
+>
+> Signed-off-by: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+
+Patch applied to the special "devel-mt2701" branch that I will soon
+merge into devel proper.
+
+Yours,
+Linus Walleij
