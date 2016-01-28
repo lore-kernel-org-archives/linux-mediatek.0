@@ -1,46 +1,52 @@
-From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
-Date: Wed, 27 Jan 2016 17:16:45 -0800
-Message-ID: <7hsi1ilczm.fsf@baylibre.com>
-References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: Re: [PATCH V4 09/11] soc: mediatek: PMIC wrap: add a slave specific
+ struct
+Date: Thu, 28 Jan 2016 10:37:40 +0800
+Message-ID: <1453948660.29651.3.camel@mtksdaap41>
+References: <1453894149-44127-1-git-send-email-blogic@openwrt.org>
+	 <1453894149-44127-9-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
- (Kevin Hilman's message of "Wed, 27 Jan 2016 16:55:25 -0800")
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: =?utf-8?B?6Zmz5p+P5a6P?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?utf-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1453894149-44127-9-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org> writes:
+Hi John,
 
-[...]
+On Wed, 2016-01-27 at 12:29 +0100, John Crispin wrote:
 
-> It seems to be pretty stable up through v4.4 but
-> unreliable/unpredictable in v4.5-rc1 and lots of places in between.
-> It's hard to bisect because it doesn't reliably fail, but when it does
-> fail to finish booting, it's typically after it reaches a shell, and
-> trying to run various simple shell commands fails to complete, like
-> this example from next-20160125[2].
->
-> To me this suggests possibly an issue with the idle driver where
-> characters might be getting lost on the serial console, which causes
-> the automated boot scripts to fail because the shell is still waiting
-> for the command to be finished.
+> @@ -746,7 +786,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>  	pwrap_writel(wrp, 1, PWRAP_DIO_EN);
+>  
+>  	/* Read Test */
+> -	pwrap_read(wrp, PWRAP_DEW_READ_TEST, &rdata);
+> +	pwrap_dew_read(wrp, PWRAP_DEW_READ_TEST, &rdata);
+>  	if (rdata != PWRAP_DEW_READ_TEST_VAL) {
+>  		dev_err(wrp->dev, "Read test failed after switch to DIO mode: 0x%04x != 0x%04x\n",
+>  				PWRAP_DEW_READ_TEST_VAL, rdata);
+> @@ -759,12 +799,13 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+>  		return ret;
+>  
+>  	/* Signature checking - using CRC */
+> -	if (pwrap_write(wrp, PWRAP_DEW_CRC_EN, 0x1))
+> +	if (pwrap_dew_write(wrp, PWRAP_DEW_CRC_EN, 0x1))
+>  		return -EFAULT;
+>  
+>  	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
+>  	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+> -	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
+> +	pwrap_writel(wrp, wrp->slave->dew_regs[PWRAP_DEW_CRC_VAL],
+> +		     PWRAP_SIG_ADR);
 
-FWIW, I think I confirmed my suspicion that it's an idle driver issue
-because adding 'nohlt' on the cmdline, which forces cpuidle_poll mode
-(essentially disabling cpuidle) makes mainline boot quite reliably on my
-mt8173-evb board now.
+It should be "pwrap_dew_write(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);",
+right?
 
-Kevin
+Henry
+
+>  	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+>  
+>  	if (wrp->master->type == PWRAP_MT8135)
