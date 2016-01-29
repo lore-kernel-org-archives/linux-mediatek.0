@@ -1,65 +1,71 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH] mmc: mediatek: make sure clock is enabled when executing ops->card_busy()
-Date: Fri, 29 Jan 2016 11:23:39 +0100
-Message-ID: <CAPDyKFrv2dVarscYz79svnhBGMy2TYbgePKYyKw_dMJiWmLrUA@mail.gmail.com>
-References: <1454009514-6474-1-git-send-email-chaotian.jing@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323
+ regulator
+Date: Fri, 29 Jan 2016 12:27:17 +0100
+Message-ID: <20160129112717.GP4130@sirena.org.uk>
+References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
+ <1453896059-44589-2-git-send-email-blogic@openwrt.org>
+ <20160127144105.GQ6042@sirena.org.uk>
+ <56AA5A5C.9080402@openwrt.org>
+ <20160128231306.GD4130@sirena.org.uk>
+ <1454061134.10861.14.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1454009514-6474-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="AFQGHouA0VN8Ovbt"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1454061134.10861.14.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: menghui lin <menghui.lin@mediatek.com>
+Cc: John Crispin <blogic@openwrt.org>, Liam Girdwood <lgirdwood@gmail.com>, HenryC Chen =?utf-8?B?KOmZs+W7uuixqik=?= <HenryC.Chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 28 January 2016 at 20:31, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> add pm_runtime_get_sync() before access MSDC_PS register
 
-This isn't need as the mmc core does that when claiming the host, see
-below commit.
+--AFQGHouA0VN8Ovbt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->From that point there have been some additional fixup, as there were
-actually some paths when to core invoked some of the host_ops
-callbacks, without claiming the host. Although that should also have
-been fixed now.
+On Fri, Jan 29, 2016 at 05:52:14PM +0800, menghui lin wrote:
+> On Fri, 2016-01-29 at 00:13 +0100, Mark Brown wrote:
 
-commit 9250aea76bfcbf4c2a7868e5566281bf2bb7af27
-mmc: core: Enable runtime PM management of host devices
+> > I'm not convinced this binding makes sense, how would a user of the API
+> > (currently there are none in tree) know what the modes mean?  It's a bit
+> > different when the user is supplying configuration for a specific
+> > regulator but this needs to be something that can be used by consumers.
 
-Kind regards
-Uffe
+> > What are you actually trying to do with this?
 
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/host/mtk-sd.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 82a97ac..a56b16d 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1054,13 +1054,15 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
->  static int msdc_card_busy(struct mmc_host *mmc)
->  {
->         struct msdc_host *host = mmc_priv(mmc);
-> -       u32 status = readl(host->base + MSDC_PS);
-> +       u32 status;
->
-> -       /* check if any pin between dat[0:3] is low */
-> -       if (((status >> 16) & 0xf) != 0xf)
-> -               return 1;
-> +       pm_runtime_get_sync(host->dev);
-> +       status = readl(host->base + MSDC_PS);
-> +       pm_runtime_mark_last_busy(host->dev);
-> +       pm_runtime_put_autosuspend(host->dev);
->
-> -       return 0;
-> +       /* check if any pin between dat[0:3] is low */
-> +       return !!(((status >> 16) & 0xf) != 0xf);
->  }
->
->  static void msdc_request_timeout(struct work_struct *work)
-> --
-> 1.8.1.1.dirty
->
+> In this patch, we want to support both normal/standby modes for mt6323
+> regulators due to mt6323 regulators support low power mode which
+> provides better power efficiency for standby case.
+
+> We expect user of mt6323 regulators could dynamically change power mode
+> by regulator_set_mode(). -EINVAL is returned if the given mode is not
+> supported.
+
+> The regulator_set_mode() API looks very straightforward and possible
+> modes are already defined in consumer.h. It looks like we don't have to
+> list possible modes for mt6323 additionally in binding document.
+
+None of this is answering my question - I know what the current API is,
+describing it doesn't tell me about actual users or how they are able to
+sensibly use the interface.  Bear in mind that the definitions of the
+various modes are all relative and what one device thinks is high usage
+may be low usage for another device.
+
+--AFQGHouA0VN8Ovbt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWq0yUAAoJECTWi3JdVIfQIqEH/2mcQfLvsTB97bG5BoAsIAvs
+j67jBUUwnBYQ5Ep2ZCXECV7y2Cb3zaT3P3U4H3RvboTjNhiTOy+vJrltBe0uR+hf
+IOFXgh98jpndoRl6bVHCDeNf7BwZ9ffjATtD2BBycprTNwBPwNz1iqOkFbvEFN98
+QdpAF6IJtAI++s1slzsTt/Pe+nHCQ0eLiSacTdrcYH4jY39l3YHiUp8RUp0paIll
+ME5jnr1G+relbfJV4If4n6LdGXoTigmzkwbAjH58cLKqPI3SGhhczstzQaWL4eH3
+Til33CpHSxUE5j0mGa7ef+oa8vpbExVOOChVPB6U5UYDlLEk6QJVGe5F3RIbhzc=
+=CoPr
+-----END PGP SIGNATURE-----
+
+--AFQGHouA0VN8Ovbt--
