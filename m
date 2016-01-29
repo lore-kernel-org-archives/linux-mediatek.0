@@ -1,59 +1,28 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323
- regulator
-Date: Fri, 29 Jan 2016 00:13:06 +0100
-Message-ID: <20160128231306.GD4130@sirena.org.uk>
-References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
- <1453896059-44589-2-git-send-email-blogic@openwrt.org>
- <20160127144105.GQ6042@sirena.org.uk>
- <56AA5A5C.9080402@openwrt.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V2 01/11] dt-bindings: ARM: Mediatek: add MT2701/7623
+ string to the PMIC wrapper doc
+Date: Thu, 28 Jan 2016 21:23:03 -0600
+Message-ID: <20160129032303.GA15844@rob-hp-laptop>
+References: <1453319943-35491-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="C+ts3FVlLX8+P6JN"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <56AA5A5C.9080402@openwrt.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <blogic@openwrt.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, HenryC Chen =?utf-8?B?KOmZs+W7uuixqik=?= <HenryC.Chen@mediatek.com>
+In-Reply-To: <1453319943-35491-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, Jan 20, 2016 at 08:58:53PM +0100, John Crispin wrote:
+> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> ---
+>  Documentation/devicetree/bindings/soc/mediatek/pwrap.txt |    1 +
+>  1 file changed, 1 insertion(+)
 
---C+ts3FVlLX8+P6JN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Jan 28, 2016 at 07:13:48PM +0100, John Crispin wrote:
-
-> would the following two bindings be ok ? I would create patches to add them.
-
-> * regulator-allow-mode; or regulator-allow-change-mode;
-
-This seems redundant, if we have a list of valid modes presumably they
-can be used - same idea as with voltage setting.
-
-> * regulator-modes = <REGULATOR_MODE_NORMAL REGULATOR_MODE_STANDBY>;
-
-I'm not convinced this binding makes sense, how would a user of the API
-(currently there are none in tree) know what the modes mean?  It's a bit
-different when the user is supplying configuration for a specific
-regulator but this needs to be something that can be used by consumers.
-
-What are you actually trying to do with this?
-
---C+ts3FVlLX8+P6JN
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWqqCBAAoJECTWi3JdVIfQMygH/Avl7NgcybqAMKGmvX2F2RJI
-WWCIYMnclibZD+dqnbazVdOCX1PtzlfRyC+oninbi5Lbo+bpTxI2wJsCUvYayOJs
-6q9dIUH3QK4kMou+ryJMNcXj34rriiq5hfcqxbM46VoIkyoRTl+Fn6EQMYtmZr3n
-4vFGpKOg+Jb0WlUR+VoyEFTQVhgcGEfwnZK0BPj13tj/kuOGywlZkE8Qq9QV25E+
-TZosBE02lVE8jnVn8dugz05t1TsBO/LjXe2D7cHWR+rVQULILRYL/bAbko3VGDhg
-cnrnnz3mdMNmzFkv1yBjao5qUzuvRTOegcc3zM0KNaFQNM2EplkxzBC9mbItO0o=
-=K1eG
------END PGP SIGNATURE-----
-
---C+ts3FVlLX8+P6JN--
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
