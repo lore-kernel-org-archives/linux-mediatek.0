@@ -1,108 +1,65 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v5] i2c: mt8173: add 4GB mode support in i2c driver.
-Date: Mon, 1 Feb 2016 19:42:37 +0800
-Message-ID: <CAGS+omAaj6afPrFYyFB3M-g6bpJeVDgJvYJx5rtu5kjCH=Gtzg@mail.gmail.com>
-References: <1454291910-19870-1-git-send-email-liguo.zhang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency
+ control
+Date: Mon, 1 Feb 2016 12:46:39 +0100
+Message-ID: <56AF459F.2050808@gmail.com>
+References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
+ <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+ <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
+ <20151217090628.GA317@quark.deferred.io>
+ <CAGS+omBWEVac_in-ZDurf4R5tje3hzJPyr5nsP2Z_v7F8sSCUg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-i2c-owner@vger.kernel.org>
-In-Reply-To: <1454291910-19870-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omBWEVac_in-ZDurf4R5tje3hzJPyr5nsP2Z_v7F8sSCUg@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>, Michael Turquette <mturquette@baylibre.com>
+Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Feb 1, 2016 at 9:58 AM, Liguo Zhang <liguo.zhang@mediatek.com> wrote:
-> If 4GB mode is enable, we should add 4gb mode support in i2c driver.
-> Set 4GB mode register to support 4GB mode.
->
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> ---
-> change in v5:
-> Use BIT_ULL() to fix kernel building warning.
-> change in v4:
-> Use BIT_ULL() to fix kernel building warning.
-> change in v3:
-> Only inline the computation of reg_4g_mode in mtk_i2c_set_4g_mode().
-> change in v2:
-> Define a static inline function mtk_i2c_set_4g_mode() for support 4g mode.
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 42 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
->
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index aec8e6c..e054205 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -60,6 +60,7 @@
->  #define I2C_DMA_INT_FLAG_NONE          0x0000
->  #define I2C_DMA_CLR_FLAG               0x0000
->  #define I2C_DMA_HARD_RST               0x0002
-> +#define I2C_DMA_4G_MODE                        0x0001
->
->  #define I2C_DEFAULT_SPEED              100000  /* hz */
->  #define MAX_FS_MODE_SPEED              400000
-> @@ -88,6 +89,8 @@ enum DMA_REGS_OFFSET {
->         OFFSET_RX_MEM_ADDR = 0x20,
->         OFFSET_TX_LEN = 0x24,
->         OFFSET_RX_LEN = 0x28,
-> +       OFFSET_TX_4G_MODE = 0x54,
-> +       OFFSET_RX_4G_MODE = 0x58,
->  };
->
->  enum i2c_trans_st_rs {
-> @@ -133,6 +136,7 @@ struct mtk_i2c_compatible {
->         unsigned char dcm: 1;
->         unsigned char auto_restart: 1;
->         unsigned char aux_len_reg: 1;
-> +       unsigned char support_33bits: 1;
->  };
->
->  struct mtk_i2c {
-> @@ -182,6 +186,7 @@ static const struct mtk_i2c_compatible mt6577_compat = {
->         .dcm = 1,
->         .auto_restart = 0,
->         .aux_len_reg = 0,
-> +       .support_33bits = 0,
->  };
->
->  static const struct mtk_i2c_compatible mt6589_compat = {
-> @@ -190,6 +195,7 @@ static const struct mtk_i2c_compatible mt6589_compat = {
->         .dcm = 0,
->         .auto_restart = 0,
->         .aux_len_reg = 0,
-> +       .support_33bits = 0,
->  };
->
->  static const struct mtk_i2c_compatible mt8173_compat = {
-> @@ -198,6 +204,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
->         .dcm = 1,
->         .auto_restart = 1,
->         .aux_len_reg = 1,
-> +       .support_33bits = 1,
->  };
->
->  static const struct of_device_id mtk_i2c_of_match[] = {
-> @@ -366,6 +373,11 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
->         return 0;
->  }
->
-> +static inline u32 mtk_i2c_set_4g_mode(dma_addr_t addr)
-> +{
-> +       return (addr & BIT_ULL(32)) ? I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
-> +}
-> +
->  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                int num, int left_num)
->  {
-> @@ -373,6 +385,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->         u16 start_reg;
->         u16 control_reg;
->         u16 restart_flag = 0;
-> +       u32 reg_4g_mode = 0;
 
-nit: unnecessary init (as Yingjoe mentioned earlier).
 
-Otherwise, this one is:
+On 26/01/16 11:23, Daniel Kurtz wrote:
+> Hi Michael, Pi-Cheng,
+>
+> On Thu, Dec 17, 2015 at 1:06 AM, Michael Turquette
+> <mturquette@baylibre.com> wrote:
+>>
+>> On 12/01, Pi-Cheng Chen wrote:
+>>> On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+>>>> Hi Pi-Cheng and Michael,
+>>>>
+>>>> On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+>>>>> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+>>>>>
+>>>>> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+>>>>> for intermediate clock source switching.
+>>>>
+>>>> It looks like this patch was never picked up.
+>>>> It is required for MT8173 cpufreq.
+>>>>
+>>>> What is the plan to get this one merged?
+>>>
+>>> Hi Dan,
+>>> Mike is working on a new CCF feature called "coordinated clock rate changes"
+>>> which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
+>>> driver, and I am working with him to port MT8173 clock driver on the new
+>>> feature. So I think that's why this patch was not picked since it will
+>>> be migrated to new implementation once the new feature's ready.
+>>>
+>>> @Mike:
+>>> Are you plannig to post those patches on the mailing list ?
+>>> Or is it fine for you to take this first and then I will refine it for
+>>> the new feature later?
+>>
+>> I plan to post those patches next week.
+>
+> Were these patches ever posted?
+> Or should we consider going ahead and trying to merge this 4-month old
+> MTK CPU mux clock patch into v4.5 before it is too late?
+>
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+It's already too late for v4.5. The -rc are mostly bug fixes and new 
+features get merged after the official v4.5 release. They will show up 
+in v4.6-rc1
