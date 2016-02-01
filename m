@@ -1,70 +1,87 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Mon, 1 Feb 2016 10:54:06 +0800
-Message-ID: <1454295246.22151.6.camel@mtksdaap41>
-References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
-	 <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
-	 <20151217193332.GB7999@localhost.localdomain>
-	 <20160104141940.GI13058@pengutronix.de>
-	 <20160119072917.GA13237@pengutronix.de>
+From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v8 1/2] Documentation: bridge: Add documentation for ps8640 DT
+ properties
+Date: Mon, 1 Feb 2016 12:13:31 +0800
+Message-ID: <1454300012-32552-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20160119072917.GA13237@pengutronix.de>
-Sender: linux-pm-owner@vger.kernel.org
-To: Eduardo Valentin <edubezval@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: stonea168-9Onoh4P/yGk@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-01-19 at 15:29 +0800, Sascha Hauer wrote:
-> Eduardo,
-> 
-> On Mon, Jan 04, 2016 at 03:19:40PM +0100, Sascha Hauer wrote:
-> > Hi Eduardo,
-> > 
-> > > 
-> > > That should remove the policy of computing the maximum from this driver.
-> > > Please have a look on the work being done [1] to add grouping and
-> > > aggregation of thermal zones. With that in place, you should be a matter
-> > > of configuring the grouping and selecting max as the aggregation function,
-> > > from the thermal core, instead in the driver. Which should give the
-> > > system engineer, more flexibility to compose whatever policy based on
-> > > the exposed sensors.
-> > 
-> > I think the aggregation of thermal zones is quite useful when it comes
-> > to putting different chips together to a system. I am not so sure how
-> > useful it is to expose different thermal zones of a single SoC to the
-> > device tree.
-> > Currently the only control knob we have is the CPU frequency. When any
-> > of the sensors on the SoC gets too hot then the only thing we can do is
-> > to decrease the CPU frequency. This does not leave much space for
-> > configuration in the device tree.
-> > What I need to be able is to attach multiple sensors to one thermal
-> > zone. The aggregation patch series only partly solves that and I think
-> > is inconsistent, but I commented on the series directly.
-> 
-> Any input on this? I really like to get this driver upstream as it is
-> currently blocking other Mediatek drivers.
-> 
+Add documentation for DT properties supported by
+ps8640 DSI-eDP converter.
 
-Hi Eduardo,
+Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+Changes since v7:
+ - No change
+---
+ .../devicetree/bindings/display/bridge/ps8640.txt  |   43 ++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
 
-Do you have any comment about Sascha's response ? We really hope get
-your comment since Mediatek thermal driver already reviewed in public
-over half years, and we have other patches [0] [1] depend on thermal
-driver.
-
-[0]:
-http://lists.infradead.org/pipermail/linux-arm-kernel/2015-December/394084.html
-[1]:
-http://lists.infradead.org/pipermail/linux-arm-kernel/2016-January/401055.html
-
-Regards,
-Eddie
-
-
-
-
-
-
+diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+new file mode 100644
+index 0000000..a3e0971
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+@@ -0,0 +1,43 @@
++ps8640-bridge bindings
++
++Required properties:
++	- compatible: "parade,ps8640"
++	- reg: first page address of the bridge.
++	- sleep-gpios: OF device-tree gpio specification for PD_ pin.
++	- reset-gpios: OF device-tree gpio specification for reset pin.
++	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
++	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
++	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
++	- ports: The device node can contain video interface port nodes per
++		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
++		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
++
++[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
++
++Example:
++	edp-bridge@18 {
++		compatible = "parade,ps8640";
++		reg = <0x18>;
++		sleep-gpios = <&pio 116 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 115 GPIO_ACTIVE_HIGH>;
++		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
++		vdd12-supply = <&ps8640_fixed_1v2>;
++		vdd33-supply = <&mt6397_vgp2_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				reg = <0>;
++				ps8640_in: endpoint {
++					remote-endpoint = <&dsi0_out>;
++				};
++			};
++			port@1 {
++				reg = <1>;
++				ps8640_out: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++	};
+-- 
+1.7.9.5
