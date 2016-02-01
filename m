@@ -1,36 +1,117 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: cros-ec-keyboard: Add LOCK key to keyboard matrix
-Date: Mon, 1 Feb 2016 09:19:50 -0800
-Message-ID: <CAD=FV=WB274i3r+aYVG4kOtwPzWgmx2E-MfjPcdKfcd7pXUSPA@mail.gmail.com>
-References: <1454121504-12683-1-git-send-email-djkurtz@chromium.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 2/6] dt-bindings: ARM: Mediatek: Document bindings for
+ MT2701
+Date: Mon, 1 Feb 2016 19:01:18 +0100
+Message-ID: <56AF9D6E.80305@gmail.com>
+References: <1453271747-57397-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1453271747-57397-3-git-send-email-jamesjj.liao@mediatek.com>
+ <20160120163236.GA21035@rob-hp-laptop> <1453353537.5384.33.camel@mtksdaap41>
+ <CAL_JsqLJVLDbPqynmD9-Yc=JVGH4iLPfb2keA5G7c2fjitAsSQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1454121504-12683-1-git-send-email-djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: James Chao <james_chao-4gYQFoH7KfQ@public.gmane.org>, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM PORT" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqLJVLDbPqynmD9-Yc=JVGH4iLPfb2keA5G7c2fjitAsSQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>, James Liao <jamesjj.liao@mediatek.com>
+Cc: Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, John Crispin <blogic@openwrt.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, linux-clk <linux-clk@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Dan,
 
-On Fri, Jan 29, 2016 at 6:38 PM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
-> From: James Chao <james_chao-4gYQFoH7KfQ@public.gmane.org>
+
+On 01/02/16 16:55, Rob Herring wrote:
+> On Wed, Jan 20, 2016 at 11:18 PM, James Liao <jamesjj.liao@mediatek.com> wrote:
+>> Hi Rob,
+>>
+>> On Wed, 2016-01-20 at 10:32 -0600, Rob Herring wrote:
+>>> On Wed, Jan 20, 2016 at 02:35:43PM +0800, James Liao wrote:
+>>>> This patch adds the binding documentation for apmixedsys, bdpsys,
+>>>> ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
+>>>> vdecsys for Mediatek MT2701.
+>>>>
+>>>> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+>>>> Tested-by: John Crispin <blogic@openwrt.org>
+>>>> ---
+>>>>   .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,bdpsys.txt      | 22 ++++++++++++++++++++++
+>>>>   .../bindings/arm/mediatek/mediatek,ethsys.txt      | 22 ++++++++++++++++++++++
+>>>>   .../bindings/arm/mediatek/mediatek,hifsys.txt      | 22 ++++++++++++++++++++++
+>>>>   .../bindings/arm/mediatek/mediatek,imgsys.txt      |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,infracfg.txt    |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,pericfg.txt     |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,topckgen.txt    |  1 +
+>>>>   .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  1 +
+>>>>   10 files changed, 73 insertions(+)
+>>>>   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+>>>>   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+>>>>   create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+>>>> index 936166f..a701e19 100644
+>>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+>>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
+>>>> @@ -6,6 +6,7 @@ The Mediatek apmixedsys controller provides the PLLs to the system.
+>>>>   Required Properties:
+>>>>
+>>>>   - compatible: Should be:
+>>>> +   - "mediatek,mt2701-apmixedsys"
+>>>>      - "mediatek,mt8135-apmixedsys"
+>>>>      - "mediatek,mt8173-apmixedsys"
+>>>>   - #clock-cells: Must be 1
+>>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+>>>> new file mode 100644
+>>>> index 0000000..4137196
+>>>> --- /dev/null
+>>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+>>>> @@ -0,0 +1,22 @@
+>>>> +Mediatek bdpsys controller
+>>>> +============================
+>>>> +
+>>>> +The Mediatek bdpsys controller provides various clocks to the system.
+>>>
+>>> As you clarified these blocks provide more that just clocks. Please list
+>>> all the functions here and on the others.
+>>
+>> Some blocks may provide clock and reset controller at the same time. But
 >
-> The LOCK key is at KSO9/KSI3 for Chromebook Flip and other devices
-> that use the Chrome OS EC keyboard matrix.
+> Then say the block provides clocks and resets is all I'm asking for.
 >
-> Signed-off-by: James Chao <james_chao-4gYQFoH7KfQ@public.gmane.org>
-> Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  arch/arm/boot/dts/cros-ec-keyboard.dtsi | 1 +
->  1 file changed, 1 insertion(+)
+>> most of them will not provide functions directly. Instead, some DT
+>> blocks which provide specific functions may refer to these controller
+>> nodes due to it need to access the same register space.
+>>
+>> For example, scpsys (the power domain provider) refers to infracfg
+>> because it need to control infracfg registers when power on/off domains:
+>>
+>>          scpsys: scpsys@10006000 {
+>>                  compatible = "mediatek,mt2701-scpsys";
+>>                  #power-domain-cells = <1>;
+>>                  reg = <0 0x10006000 0 0x1000>;
+>>                  infracfg = <&infracfg>;
+>>          };
+>>
+>> So I think it should not need to list all functions for each blocks
+>> here.
+>
+> Sorry, but you do need to describe what functions the blocks provide.
+>
+> Also, if you are accessing the infracfg regs directly to modify clock
+> registers outside of the clock driver, that is very bad design. The
+> clock driver could assume that register values are not changing behind
+> its back and it bypasses any locks around register accesses. I can see
+> why it is needed though, but we really need a proper interface.
+>
 
-Feel free to add:
+Some of the register blocks like infracfg is a potpourri of different 
+functions. Clocks and power domains are some of them. In the drivers 
+this is isolated, but there are many blocks which are not used at the 
+moment and therefor are not documented in bindings description (e.g. 
+debug control for the very same block, not sure if that will be 
+implemented one day).
 
-Reviewed-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Would it be ok for you, if James just lists the blocks which already 
+have an implementation and leaving apart the rest of it?
+
+Regards,
+Matthias
