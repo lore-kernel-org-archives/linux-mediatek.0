@@ -1,147 +1,84 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v9 02/14] drm/mediatek: Add DRM Driver for Mediatek SoC
- MT8173.
-Date: Wed, 3 Feb 2016 01:12:12 +0800
-Message-ID: <CAGS+omCf7Xdc3gX1OZO4DUccVRJNx0+oVUsuqu_q_zTC_T8YpA@mail.gmail.com>
-References: <1452611750-16283-1-git-send-email-p.zabel@pengutronix.de>
- <1452611750-16283-3-git-send-email-p.zabel@pengutronix.de>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
+Date: Tue, 02 Feb 2016 10:46:29 -0800
+Message-ID: <7h37tbdk6y.fsf@baylibre.com>
+References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
+ <7hsi1ilczm.fsf@baylibre.com>
+ <CAF-23O3ps0Wt_UCmJbArpc5iJJryJKA0k_2qAyNb7op8O=UnAg@mail.gmail.com>
+ <1453964180.26397.8.camel@mtksdaap41> <7hy4b8gc7q.fsf@baylibre.com>
+ <1454309376.11974.3.camel@mtksdaap41> <7hh9hrgbbh.fsf@baylibre.com>
+ <1454379462.27798.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1452611750-16283-3-git-send-email-p.zabel@pengutronix.de>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, dri-devel <dri-devel@lists.freedesktop.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Stephen Boyd <sboyd@codeaurora.org>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1454379462.27798.11.camel@mtksdaap41> (Fan Chen's message of
+ "Tue, 2 Feb 2016 10:17:42 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?utf-8?B?6Zmz5p+P5a6P?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgUGhpbGlwcCwKClNvcnJ5IGZvciB0aGUgcHJldmlvdXMgSFRNTCBlbWFpbC4gIFRyeWluZyBh
-Z2Fpbi4uLgoKQmVsb3cgYXJlIHNvbWUgbW9yZSBjb21tZW50cyBmcm9tIG15IG9ic2VydmF0aW9u
-cyB0b2RheSB0cnlpbmcgdG8gY29uZmlndXJlCk1lZGlhdGVrIERSTSB0byB1c2UganVzdCB0aGUg
-TUlQSS9EU0kgcGF0aCAobm8gSERNSSkuCgpPbiBUdWUsIEphbiAxMiwgMjAxNiBhdCAxMToxNSBQ
-TSwgUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gRnJvbTog
-Q0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPgo+IFRoaXMgcGF0Y2ggYWRkcyBhbiBpbml0aWFs
-IERSTSBkcml2ZXIgZm9yIHRoZSBNZWRpYXRlayBNVDgxNzMgRElTUAo+IHN1YnN5c3RlbS4gSXQg
-Y3VycmVudGx5IHN1cHBvcnRzIHR3byBmaXhlZCBvdXRwdXQgc3RyZWFtcyBmcm9tIHRoZQo+IE9W
-TDAvT1ZMMSBzb3VyY2VzIHRvIHRoZSBEU0kwL0RQSTAgc2lua3MsIHJlc3BlY3RpdmVseS4KPgo+
-IFNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1i
-eTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogRGFuaWVs
-IEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFph
-YmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgoKW3NuaXBdCgo+ICtpbnQgbXRrX2RybV9jcnRj
-X2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKPiArICAgICAgICAgICAgICAgICAg
-ICAgICBjb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCAqcGF0aCwgdW5zaWduZWQgaW50IHBhdGhf
-bGVuKQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2ID0gZHJtX2Rl
-di0+ZGV2X3ByaXZhdGU7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYgPSBkcm1fZGV2LT5k
-ZXY7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YzsKPiArICAgICAgIGVu
-dW0gZHJtX3BsYW5lX3R5cGUgdHlwZTsKPiArICAgICAgIHVuc2lnbmVkIGludCB6cG9zOwo+ICsg
-ICAgICAgaW50IHBpcGUgPSBwcml2LT5udW1fcGlwZXM7Cj4gKyAgICAgICBpbnQgcmV0Owo+ICsg
-ICAgICAgaW50IGk7Cj4gKwo+ICsgICAgICAgbXRrX2NydGMgPSBkZXZtX2t6YWxsb2MoZGV2LCBz
-aXplb2YoKm10a19jcnRjKSwgR0ZQX0tFUk5FTCk7Cj4gKyAgICAgICBpZiAoIW10a19jcnRjKQo+
-ICsgICAgICAgICAgICAgICByZXR1cm4gLUVOT01FTTsKPiArCj4gKyAgICAgICBtdGtfY3J0Yy0+
-Y29uZmlnX3JlZ3MgPSBwcml2LT5jb25maWdfcmVnczsKPiArICAgICAgIG10a19jcnRjLT5kZHBf
-Y29tcF9uciA9IHBhdGhfbGVuOwo+ICsgICAgICAgbXRrX2NydGMtPmRkcF9jb21wID0gZGV2bV9r
-bWFsbG9jX2FycmF5KGRldiwgbXRrX2NydGMtPmRkcF9jb21wX25yLAo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNpemVvZigqbXRrX2NydGMtPmRkcF9j
-b21wKSwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBH
-RlBfS0VSTkVMKTsKPiArCj4gKyAgICAgICBtdGtfY3J0Yy0+bXV0ZXggPSBtdGtfZGlzcF9tdXRl
-eF9nZXQocHJpdi0+bXV0ZXhfZGV2LCBwaXBlKTsKPiArICAgICAgIGlmIChJU19FUlIobXRrX2Ny
-dGMtPm11dGV4KSkgewo+ICsgICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKG10a19jcnRjLT5t
-dXRleCk7Cj4gKyAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCBtdXRl
-eDogJWRcbiIsIHJldCk7Cj4gKyAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gKyAgICAgICB9
-Cj4gKwo+ICsgICAgICAgZm9yIChpID0gMDsgaSA8IG10a19jcnRjLT5kZHBfY29tcF9ucjsgaSsr
-KSB7Cj4gKyAgICAgICAgICAgICAgIGVudW0gbXRrX2RkcF9jb21wX2lkIGNvbXBfaWQgPSBwYXRo
-W2ldOwo+ICsgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wOwo+ICsKPiAr
-ICAgICAgICAgICAgICAgY29tcCA9IHByaXYtPmRkcF9jb21wW2NvbXBfaWRdOwo+ICsgICAgICAg
-ICAgICAgICBpZiAoIWNvbXApIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBkZXZfZXJyKGRl
-diwgIkNvbXBvbmVudCAlcyBub3QgaW5pdGlhbGl6ZWRcbiIsCj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBwcml2LT5jb21wX25vZGVbY29tcF9pZF0tPmZ1bGxfbmFtZSk7CgpJZiBv
-bmUgb2YgdGhlIGNvbXBvbmVudHMgaXMgZGlzYWJsZWQgaW4gLmR0c2ksIHRoZW4gaXRzCnByaXYt
-PmNvbXBfbm9kZVtjb21wX2lkXSB3aWxsIGJlIE5VTEwgaGVyZSwgYW5kIHRyeWluZyB0byBmdWxs
-X25hbWUgd2lsbCBPT1BTLgoKCj4gKyAgICAgICAgICAgICAgICAgICAgICAgcmV0ID0gLUVOT0RF
-VjsKPiArICAgICAgICAgICAgICAgICAgICAgICBnb3RvIHVucHJlcGFyZTsKPiArICAgICAgICAg
-ICAgICAgfQo+ICsKPiArICAgICAgICAgICAgICAgcmV0ID0gY2xrX3ByZXBhcmUoY29tcC0+Y2xr
-KTsKPiArICAgICAgICAgICAgICAgaWYgKHJldCkgewo+ICsgICAgICAgICAgICAgICAgICAgICAg
-IGRldl9lcnIoZGV2LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkZhaWxlZCB0
-byBwcmVwYXJlIGNsb2NrIGZvciBjb21wb25lbnQgJXM6ICVkXG4iLAo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgcHJpdi0+Y29tcF9ub2RlW2NvbXBfaWRdLT5mdWxsX25hbWUsIHJl
-dCk7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgZ290byB1bnByZXBhcmU7Cj4gKyAgICAgICAg
-ICAgICAgIH0KPiArCj4gKyAgICAgICAgICAgICAgIG10a19jcnRjLT5kZHBfY29tcFtpXSA9IGNv
-bXA7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgZm9yICh6cG9zID0gMDsgenBvcyA8IE9WTF9M
-QVlFUl9OUjsgenBvcysrKSB7Cj4gKyAgICAgICAgICAgICAgIHR5cGUgPSAoenBvcyA9PSAwKSA/
-IERSTV9QTEFORV9UWVBFX1BSSU1BUlkgOgo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgKHpwb3MgPT0gMSkgPyBEUk1fUExBTkVfVFlQRV9DVVJTT1IgOgo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9QTEFORV9UWVBFX09WRVJMQVk7
-Cj4gKyAgICAgICAgICAgICAgIHJldCA9IG10a19wbGFuZV9pbml0KGRybV9kZXYsICZtdGtfY3J0
-Yy0+cGxhbmVzW3pwb3NdLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBC
-SVQocGlwZSksIHR5cGUsIHpwb3MpOwo+ICsgICAgICAgICAgICAgICBpZiAocmV0KQo+ICsgICAg
-ICAgICAgICAgICAgICAgICAgIGdvdG8gdW5wcmVwYXJlOwo+ICsgICAgICAgfQo+ICsKPiArICAg
-ICAgIHJldCA9IG10a19kcm1fY3J0Y19pbml0KGRybV9kZXYsIG10a19jcnRjLCAmbXRrX2NydGMt
-PnBsYW5lc1swXS5iYXNlLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJm10a19j
-cnRjLT5wbGFuZXNbMV0uYmFzZSwgcGlwZSk7Cj4gKyAgICAgICBpZiAocmV0IDwgMCkKPiArICAg
-ICAgICAgICAgICAgZ290byB1bnByZXBhcmU7Cj4gKwo+ICsgICAgICAgcHJpdi0+Y3J0Y1twaXBl
-XSA9ICZtdGtfY3J0Yy0+YmFzZTsKPiArICAgICAgIHByaXYtPm51bV9waXBlcysrOwo+ICsKPiAr
-ICAgICAgIHJldHVybiAwOwo+ICsKPiArdW5wcmVwYXJlOgo+ICsgICAgICAgd2hpbGUgKC0taSA+
-PSAwKQo+ICsgICAgICAgICAgICAgICBjbGtfdW5wcmVwYXJlKG10a19jcnRjLT5kZHBfY29tcFtp
-XS0+Y2xrKTsKPiArCj4gKyAgICAgICByZXR1cm4gcmV0Owo+ICt9Cgo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAw
-MDAwLi45ZGIyMmI0Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2Rydi5jCgpbc25pcF0KCj4gK3N0YXRpYyBzdHJ1Y3QgZHJtX2RyaXZlciBt
-dGtfZHJtX2RyaXZlciA9IHsKPiArICAgICAgIC5kcml2ZXJfZmVhdHVyZXMgPSBEUklWRVJfTU9E
-RVNFVCB8IERSSVZFUl9HRU0gfCBEUklWRVJfUFJJTUUgfAo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgICAgIERSSVZFUl9BVE9NSUMsCj4gKyAgICAgICAudW5sb2FkID0gbXRrX2RybV91bmxvYWQs
-Cj4gKyAgICAgICAuc2V0X2J1c2lkID0gZHJtX3BsYXRmb3JtX3NldF9idXNpZCwKCkkgdGhpbmsg
-dXNpbmcgZHJtX3BsYXRmb3JtX3NldF9idXNpZCgpIGFzIG91ciAuc2V0X2J1c2lkIG1heSBjYXVz
-ZSBhbiBPT1BzIGlmCnVzZXJzcGFjZSBkb2VzIERSTV9JT0NUTF9TRVRfVkVSU0lPTi4KCmRybV9z
-ZXR2ZXJzaW9uKCkgd2lsbCBjYWxscyBkcm1fc2V0X2J1c2lkKCksIHdoaWNoIGNhbGxzCmRldi0+
-ZHJpdmVyLT5zZXRfYnVzaWQoKQpkcm1fcGxhdGZvcm1fc2V0X2J1c2lkKCkgYWNjZXNzZXMgZGV2
-LT5wbGF0Zm9ybWRldi0+aWQuCgpIb3dldmVyLCBkZXYtPnBsYXRmb3JtZGV2IGlzIG9ubHkgc2V0
-IGJ5OgogIGRybV9wbGF0Zm9ybV9pbml0KCktPmRybV9nZXRfcGxhdGZvcm1fZGV2KCkKCkFuZCwg
-c2luY2UgbXRrX2RybV9iaW5kKCkgZG9lcyB0aGUgZHJtX2Rldl9hbGxvYygpIC8KZHJtX2Rldl9y
-ZWdpc3RlcigpIGl0c2VsZiBpbnN0ZWFkCm9mIGNhbGxpbmcgZHJtX2dldF9wbGF0Zm9ybV9kZXYo
-KSwgc28gZGV2LT5wbGF0Zm9ybWRldiB3aWxsIHN0aWxsIGJlIE5VTEwuCgpTbywgd2h5IGRvbid0
-IHdlIGNhbGwgZHJtX3BsYXRmb3JtX2luaXQoKSBpbnN0ZWFkIGFuZCBpbXBsZW1lbnQgYSAubG9h
-ZCBjYWxsYmFjawp0byBkbyBtdGtfZHJtX2ttc19pbml0KCk/Cgo+ICsKPiArICAgICAgIC5nZXRf
-dmJsYW5rX2NvdW50ZXIgPSBkcm1fdmJsYW5rX2NvdW50LAo+ICsgICAgICAgLmVuYWJsZV92Ymxh
-bmsgPSBtdGtfZHJtX2NydGNfZW5hYmxlX3ZibGFuaywKPiArICAgICAgIC5kaXNhYmxlX3ZibGFu
-ayA9IG10a19kcm1fY3J0Y19kaXNhYmxlX3ZibGFuaywKPiArCj4gKyAgICAgICAuZ2VtX2ZyZWVf
-b2JqZWN0ID0gbXRrX2RybV9nZW1fZnJlZV9vYmplY3QsCj4gKyAgICAgICAuZ2VtX3ZtX29wcyA9
-ICZtdGtfZHJtX2dlbV92bV9vcHMsCj4gKyAgICAgICAuZHVtYl9jcmVhdGUgPSBtdGtfZHJtX2dl
-bV9kdW1iX2NyZWF0ZSwKPiArICAgICAgIC5kdW1iX21hcF9vZmZzZXQgPSBtdGtfZHJtX2dlbV9k
-dW1iX21hcF9vZmZzZXQsCj4gKyAgICAgICAuZHVtYl9kZXN0cm95ID0gZHJtX2dlbV9kdW1iX2Rl
-c3Ryb3ksCj4gKwo+ICsgICAgICAgLnByaW1lX2hhbmRsZV90b19mZCA9IGRybV9nZW1fcHJpbWVf
-aGFuZGxlX3RvX2ZkLAo+ICsgICAgICAgLnByaW1lX2ZkX3RvX2hhbmRsZSA9IGRybV9nZW1fcHJp
-bWVfZmRfdG9faGFuZGxlLAo+ICsgICAgICAgLmdlbV9wcmltZV9leHBvcnQgPSBkcm1fZ2VtX3By
-aW1lX2V4cG9ydCwKPiArICAgICAgIC5nZW1fcHJpbWVfaW1wb3J0ID0gZHJtX2dlbV9wcmltZV9p
-bXBvcnQsCj4gKyAgICAgICAuZ2VtX3ByaW1lX2dldF9zZ190YWJsZSA9IG10a19nZW1fcHJpbWVf
-Z2V0X3NnX3RhYmxlLAo+ICsgICAgICAgLmdlbV9wcmltZV9tbWFwID0gbXRrX2RybV9nZW1fbW1h
-cF9idWYsCj4gKyAgICAgICAuZm9wcyA9ICZtdGtfZHJtX2ZvcHMsCj4gKwo+ICsgICAgICAgLm5h
-bWUgPSBEUklWRVJfTkFNRSwKPiArICAgICAgIC5kZXNjID0gRFJJVkVSX0RFU0MsCj4gKyAgICAg
-ICAuZGF0ZSA9IERSSVZFUl9EQVRFLAo+ICsgICAgICAgLm1ham9yID0gRFJJVkVSX01BSk9SLAo+
-ICsgICAgICAgLm1pbm9yID0gRFJJVkVSX01JTk9SLAo+ICt9Owo+ICsKPiArc3RhdGljIGludCBj
-b21wYXJlX29mKHN0cnVjdCBkZXZpY2UgKmRldiwgdm9pZCAqZGF0YSkKPiArewo+ICsgICAgICAg
-cmV0dXJuIGRldi0+b2Zfbm9kZSA9PSBkYXRhOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IG10a19k
-cm1fYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gK3sKPiArICAgICAgIHN0cnVjdCBtdGtfZHJt
-X3ByaXZhdGUgKnByaXZhdGUgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArICAgICAgIHN0cnVj
-dCBkcm1fZGV2aWNlICpkcm07Cj4gKyAgICAgICBpbnQgcmV0Owo+ICsKPiArICAgICAgIGRybSA9
-IGRybV9kZXZfYWxsb2MoJm10a19kcm1fZHJpdmVyLCBkZXYpOwo+ICsgICAgICAgaWYgKCFkcm0p
-Cj4gKyAgICAgICAgICAgICAgIHJldHVybiAtRU5PTUVNOwo+ICsKPiArICAgICAgIGRybV9kZXZf
-c2V0X3VuaXF1ZShkcm0sIGRldl9uYW1lKGRldikpOwo+ICsKPiArICAgICAgIHJldCA9IGRybV9k
-ZXZfcmVnaXN0ZXIoZHJtLCAwKTsKPiArICAgICAgIGlmIChyZXQgPCAwKQo+ICsgICAgICAgICAg
-ICAgICBnb3RvIGVycl9mcmVlOwo+ICsKPiArICAgICAgIGRybS0+ZGV2X3ByaXZhdGUgPSBwcml2
-YXRlOwo+ICsgICAgICAgcHJpdmF0ZS0+ZHJtID0gZHJtOwo+ICsKPiArICAgICAgIHJldCA9IG10
-a19kcm1fa21zX2luaXQoZHJtKTsKPiArICAgICAgIGlmIChyZXQgPCAwKQo+ICsgICAgICAgICAg
-ICAgICBnb3RvIGVycl91bnJlZ2lzdGVyOwo+ICsKPiArICAgICAgIHJldHVybiAwOwo+ICsKPiAr
-ZXJyX3VucmVnaXN0ZXI6Cj4gKyAgICAgICBkcm1fZGV2X3VucmVnaXN0ZXIoZHJtKTsKPiArZXJy
-X2ZyZWU6Cj4gKyAgICAgICBkcm1fZGV2X3VucmVmKGRybSk7Cj4gKyAgICAgICByZXR1cm4gcmV0
-Owo+ICt9Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-Oi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Fan,
+
+Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
+
+> I just checked that the problem cannot be reproduced (tested 100 times
+> with your script) after flashing new firmware which we uploaded to
+> github[0] yesterday.
+
+Great news!
+
+> This latest firmware got many fixes and also supports cluster idle, so
+> we prefer testing with this new one Would you please test in your
+> side? Thanks for your great help!!
+
+I tested the latest firmware and it's booted 20+ times in a row without
+failure, which is better than it ever did in the past, so it seems to
+have fixed the idle problem.
+
+I will keep an eye on the failures in kernelci.org and let you know if I
+notice any other failures.
+
+Thanks again for the updated firmware!
+
+Speaking of updated firmware, is there any chance to make the default
+version of the firmware significantly less noisy.  There is a TON of
+output from the firmware before fastboot starts which makes the logs for
+this board very noisy (same complaint on the mt8135.)
+
+Kevin
+
+>
+>
+> Best regards,
+> Fan
+>
+> On Mon, 2016-02-01 at 17:17 -0800, Kevin Hilman wrote:
+>> Hi Eddie,
+>> 
+>> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
+>> 
+>> [...]
+>> 
+>> > Thanks your patience to provide detail steps, we can reproduce this
+>> > problem now. It seems something wrong in ATF, we still investigate how
+>> > to fix it. We will provide you new ATF firmware once we have solution
+>> 
+>> Great, I'm glad you can reproduce it.  I was starting to worry it was
+>> only my hardware with the problem.
+>> 
+>> Please let me know if there are firmware updates you'd like me to test
+>> and I'll be happy to.
+>> 
+>> Thanks,
+>> 
+>> Kevin
