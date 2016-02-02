@@ -1,31 +1,47 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v2] clk: move the common clock's to_clk_*(_hw) macros to
- clk-provider.h
-Date: Mon, 1 Feb 2016 17:09:39 -0800
-Message-ID: <20160202010939.GF4848@codeaurora.org>
-References: <568F9960.9040209@gmail.com>
- <704f6d5aa50acc4723f6756c217a865641d927fe.1452267334.git.geliangtang@163.com>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
+Date: Mon, 01 Feb 2016 17:17:38 -0800
+Message-ID: <7hh9hrgbbh.fsf@baylibre.com>
+References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
+ <7hsi1ilczm.fsf@baylibre.com>
+ <CAF-23O3ps0Wt_UCmJbArpc5iJJryJKA0k_2qAyNb7op8O=UnAg@mail.gmail.com>
+ <1453964180.26397.8.camel@mtksdaap41> <7hy4b8gc7q.fsf@baylibre.com>
+ <1454309376.11974.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <704f6d5aa50acc4723f6756c217a865641d927fe.1452267334.git.geliangtang@163.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Geliang Tang <geliangtang@163.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Joachim Eastwood <manabian@gmail.com>, Tero Kristo <t-kristo@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1454309376.11974.3.camel@mtksdaap41> (Eddie Huang's message of
+ "Mon, 1 Feb 2016 14:49:36 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?utf-8?B?6Zmz5p+P5a6P?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/08, Geliang Tang wrote:
-> to_clk_*(_hw) macros have been repeatedly defined in many places.
-> This patch moves all the to_clk_*(_hw) definitions in the common
-> clock framework to public header clk-provider.h, and drop the local
-> definitions.
-> 
-> Signed-off-by: Geliang Tang <geliangtang@163.com>
-> ---
+Hi Eddie,
 
-Applied to clk-next
+Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+[...]
+
+> Thanks your patience to provide detail steps, we can reproduce this
+> problem now. It seems something wrong in ATF, we still investigate how
+> to fix it. We will provide you new ATF firmware once we have solution
+
+Great, I'm glad you can reproduce it.  I was starting to worry it was
+only my hardware with the problem.
+
+Please let me know if there are firmware updates you'd like me to test
+and I'll be happy to.
+
+Thanks,
+
+Kevin
