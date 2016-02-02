@@ -1,173 +1,297 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v6] i2c: mt8173: add 4GB mode support in i2c driver.
-Date: Tue, 2 Feb 2016 11:02:47 +0800
-Message-ID: <CAGS+omBzroag0W3GLDSvCXMo2nVOJS33aoHRRxHB60P2ET_z9A@mail.gmail.com>
-References: <1454347143-31461-1-git-send-email-liguo.zhang@mediatek.com>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [RFC 3/3] CMDQ: Mediatek CMDQ driver
+Date: Tue, 2 Feb 2016 14:48:01 +0800
+Message-ID: <1454395681.27603.13.camel@mtksdaap41>
+References: <1453266881-16849-1-git-send-email-hs.liao@mediatek.com>
+	 <1453266881-16849-4-git-send-email-hs.liao@mediatek.com>
+	 <CAGS+omBjD1pXKY_6bFbiGxa5bttvqg5zEvKevzSfoiMOy7ys6Q@mail.gmail.com>
+	 <1454053150.32413.52.camel@mtksdaap41>
+	 <CAGS+omBrEE21Xxh8hjcf32qfHJE0jJYvxGP6L1ihS6jcNbLvLQ@mail.gmail.com>
+	 <1454070262.7401.21.camel@mtksdaap41>
+	 <CAGS+omBhs7Ks7MVDsxHBBUdgF+0fmAa465HwvNiCzEe97Knt3Q@mail.gmail.com>
+	 <1454292257.22270.3.camel@mtksdaap41>
+	 <CAGS+omCzDisk2TfbDnWiXufWgUsCbhF_JFafaUazhSymX-MT_Q@mail.gmail.com>
+	 <1454307624.22441.18.camel@mtksdaap41>
+	 <CAGS+omB7d3Kq1DKNHxZJjLDmin0rpkDj1kEde3zCxTiT5-xZWw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1454347143-31461-1-git-send-email-liguo.zhang@mediatek.com>
+In-Reply-To: <CAGS+omB7d3Kq1DKNHxZJjLDmin0rpkDj1kEde3zCxTiT5-xZWw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: Wolfram Sang <wsa@the-dreams.de>, srv_heupstream <srv_heupstream@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Linux I2C <linux-i2c@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Yong
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 2, 2016 at 1:19 AM, Liguo Zhang <liguo.zhang@mediatek.com> wrote:
->
-> If 4GB mode is enable, we should add 4gb mode support in i2c driver.
-> Set 4GB mode register to support 4GB mode.
->
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+On Mon, 2016-02-01 at 18:22 +0800, Daniel Kurtz wrote:
+> On Mon, Feb 1, 2016 at 2:20 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> > On Mon, 2016-02-01 at 12:15 +0800, Daniel Kurtz wrote:
+> >> On Mon, Feb 1, 2016 at 10:04 AM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> >> >
+> >> > On Fri, 2016-01-29 at 21:15 +0800, Daniel Kurtz wrote:
+> >> > > On Fri, Jan 29, 2016 at 8:24 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> >> > > > On Fri, 2016-01-29 at 16:42 +0800, Daniel Kurtz wrote:
+> >> > > >> On Fri, Jan 29, 2016 at 3:39 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> >> > > >> > Hi Dan,
+> >> > > >> >
+> >> > > >> > Many thanks for your comments and time.
+> >> > > >> > I reply my plan inline.
+> >> > > >> >
+> >> > > >> >
+> >> > > >> > On Thu, 2016-01-28 at 12:49 +0800, Daniel Kurtz wrote:
+> >> > > >> >> Hi HS,
+> >> > > >> >>
+> >> > > >> >> Sorry for the delay.  It is hard to find time to review a >3700 line
+> >> > > >> >> driver :-o in detail....
+> >> > > >> >>
+> >> > > >> >> Some review comments inline, although I still do not completely
+> >> > > >> >> understand how all that this driver does and how it works.
+> >> > > >> >> I'll try to find time to go through this driver in detail again next
+> >> > > >> >> time you post it for review.
+> >> > > >> >>
+> >> > > >> >> On Tue, Jan 19, 2016 at 9:14 PM,  <hs.liao@mediatek.com> wrote:
+> >> > > >> >> > From: HS Liao <hs.liao@mediatek.com>
+> >> > > >> >> >
+> >> > > >> >> > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> >> > > >> >> > CMDQ is used to help read/write registers with critical time limitation,
+> >> > > >> >> > such as updating display configuration during the vblank. It controls
+> >> > > >> >> > Global Command Engine (GCE) hardware to achieve this requirement.
+> >> > > >> >> > Currently, CMDQ only supports display related hardwares, but we expect
+> >> > > >> >> > it can be extended to other hardwares for future requirements.
+> >> > > >> >> >
+> >> > > >> >> > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> >> > > >> >>
+> >> > > >> >> [snip]
+> >> > > >> >>
+> >> > > >> >> > diff --git a/drivers/soc/mediatek/mtk-cmdq.c b/drivers/soc/mediatek/mtk-cmdq.c
+> >> > > >> >> > new file mode 100644
+> >> > > >> >> > index 0000000..7570f00
+> >> > > >> >> > --- /dev/null
+> >> > > >> >> > +++ b/drivers/soc/mediatek/mtk-cmdq.c
+> >> > > >
+> >> > > > [snip]
+> >> > > >
+> >> > > >> >> > +static const struct cmdq_subsys g_subsys[] = {
+> >> > > >> >> > +       {0x1400, 1, "MMSYS"},
+> >> > > >> >> > +       {0x1401, 2, "DISP"},
+> >> > > >> >> > +       {0x1402, 3, "DISP"},
+> >> > > >> >>
+> >> > > >> >> This isn't going to scale.  These addresses could be different on
+> >> > > >> >> different chips.
+> >> > > >> >> Instead of a static table like this, we probably need specify to the
+> >> > > >> >> connection between gce and other devices via devicetree phandles, and
+> >> > > >> >> then use the phandles to lookup the corresponding device address
+> >> > > >> >> range.
+> >> > > >> >
+> >> > > >> > I will define them in device tree.
+> >> > > >> > E.g.
+> >> > > >> > cmdq {
+> >> > > >> >   reg_domain = 0x14000000, 0x14010000, 0x14020000
+> >> > > >> > }
+> >> > > >>
+> >> > > >> The devicetree should only model hardware relationships, not software
+> >> > > >> considerations.
+> >> > > >>
+> >> > > >> Is the hardware constraint here for using gce with various other
+> >> > > >> hardware blocks?  I think we already model this by only providing a
+> >> > > >> gce phandle in the device tree nodes for those devices that can use
+> >> > > >> gce.
+> >> > > >>
+> >> > > >> Looking at the driver closer, as far as I can tell, the whole subsys
+> >> > > >> concept is a purely software abstraction, and only used to debug the
+> >> > > >> CMDQ_CODE_WRITE command.  In fact, AFAICT, everything would work fine
+> >> > > >> if we just completely removed the 'subsys' concept, and just passed
+> >> > > >> through the raw address provided by the driver.
+> >> > > >>
+> >> > > >> So, I recommend just removing 'subsys' completely from the driver -
+> >> > > >> from this array, and in the masks.
+> >> > > >>
+> >> > > >> Instead, if there is an error on the write command, just print the
+> >> > > >> address that fails.  There are other ways to deduce the subsystem from
+> >> > > >> a physical address.
+> >> > > >>
+> >> > > >> Thanks,
+> >> > > >>
+> >> > > >> -Dan
+> >> > > >
+> >> > > > Hi Dan,
+> >> > > >
+> >> > > > Subsys is not just for debug.
+> >> > > > Its main purpose is to transfer CPU address to GCE address.
+> >> > > > Let me explain it by "write" op,
+> >> > > > I list a code segment from cmdq_rec_append_command().
+> >> > > >
+> >> > > >         case CMDQ_CODE_WRITE:
+> >> > > >                 subsys = cmdq_subsys_from_phys_addr(cqctx, arg_a);
+> >> > > >                 if (subsys < 0) {
+> >> > > >                         dev_err(dev,
+> >> > > >                                 "unsupported memory base address 0x%08x\n",
+> >> > > >                                 arg_a);
+> >> > > >                         return -EFAULT;
+> >> > > >                 }
+> >> > > >
+> >> > > >                 *cmd_ptr++ = arg_b;
+> >> > > >                 *cmd_ptr++ = (CMDQ_CODE_WRITE << CMDQ_OP_CODE_SHIFT) |
+> >> > > >                              (arg_a & CMDQ_ARG_A_WRITE_MASK) |
+> >> > > >                              ((subsys & CMDQ_SUBSYS_MASK) << CMDQ_SUBSYS_SHIFT);
+> >> > > >                 break;
+> >> > > >
+> >> > > > Subsys is mapped from physical address via cmdq_subsys_from_phys_addr(),
+> >> > > > and then it becomes part of GCE command via ((subsys & CMDQ_SUBSYS_MASK)
+> >> > > > << CMDQ_SUBSYS_SHIFT) .
+> >> > > > Only low bits of physical address are the same as GCE address.
+> >> > > > We can get it by (arg_a & CMDQ_ARG_A_WRITE_MASK).
+> >> > > > MASK is used to define how many bits are valid for this op.
+> >> > > > So, GCE address = subsys + valid low bits.
+> >> > >
+> >> > > How are these upper bits of the "GCE address" defined?
+> >> > > In other words, for a given SoC, how is the mapping between physical
+> >> > > io addresses to GCE addresses defined?
+> >> > > Is this mapping fixed by hardware?
+> >>
+> >> Please answer the detailed technical questions:
+> >>
+> >> How are these upper bits of the "GCE address" defined?
+> >
+> > A GCE command is arg_a + arg_b. Both of them have 32 bits length.
+> > arg_a is op + subsys + addr, and arg_b is value.
+> > subsys + addr is less than 32bits, so we need to map address range to
+> > subsys.
+> > The mapping rule is defined by hardware.
+> >
+> >> In other words, for a given SoC, how is the mapping between physical
+> >> io addresses to GCE addresses defined?
+> >
+> > It is (b).
+> >
+> >>
+> >> (a) Does the GCE remap a continuous device IO address range?
+> >>
+> >> AFAICT, the  defines an MT8173 specific mapping of:
+> >>
+> >> For example, the g_subsys table above seems to imply that the MT8173
+> >> gce maps all of:
+> >>   0x1400ffff:0x141fffff => 0x010000:0x1fffff
+> >>
+> >> (b) Or, are the upper 5 bits of the "gce address" significant, and via
+> >> hardware it can map a disjoint groups of device addresses into the
+> >> continuous GCE address space, and really there are 0x1f distinct 64k
+> >> mappings:
+> >>
+> >> mmsys (1) : 0x14000000:0x1400ffff => 0x010000:0x01ffff
+> >> disp  (2) : 0x14010000:0x1401ffff => 0x020000:0x02ffff
+> >> disp  (3) : 0x14020000:0x1402ffff => 0x030000:0x03ffff
+> >> ...
+> >> ???? (1f) : 0x141fffff:0x141fffff => 0x1f0000:0x1fffff
+> >>
+> >> If the mapping is fixed and continuous (a), then I think all we need
+> >> is a single dts entry for the gce node that describes how it performs
+> >> this mapping.  And then, the gce consumers can just pass in their
+> >> regular physical addresses, and the gce driver can remap them directly
+> >> to gce addresses.
+> >>
+> >> WDYT?
+> >
+> > How about this?
+> > hardware_module = <address_base subsys_id mask>;
+> > So, the result is
+> > mmsys_config_base = <0x14000000 1 0xffff0000>;
+> > disp_rdma_config_base = <0x14010000 2 0xffff0000>;
+> > disp_mutex_config_base = <0x14020000 3 0xffff0000>;
+> 
+> What uses ID 0 and 4 - 0x1f?
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+Subsys is defined by GCE hardware, and other IDs are reserved currently.
 
+> According to mt8173.dtsi, here are the blocks in the address ranges above:
+> 
+> @1400:
+>   mmsys: clock-controller@14000000
+>   ovl0: ovl@1400c000
+>   ovl1: ovl@1400d000
+>   rdma0: rdma@1400e000
+>   rdma1: rdma@1400f000
+> 
+> @1401:
+>   rdma2: rdma@14010000
+>   wdma0: wdma@14011000
+>   wdma1: wdma@14012000
+>   color0: color@14013000
+>   color1: color@14014000
+>   aal@14015000
+>   gamma@14016000
+>   merge@14017000
+>   split0: split@14018000
+>   split1: split@14019000
+>   ufoe@1401a000
+>   dsi0: dsi@1401b000
+>   dsi1: dsi@1401c000
+>   dpi0: dpi@1401d000
+>   pwm0: pwm@1401e000
+>   pwm1: pwm@1401f000
+> 
+> @1402:
+>   mutex: mutex@14020000
+>   od@14023000
+>   larb0: larb@14021000
+>   smi_common: smi@14022000
+>   hdmi0: hdmi@14025000
+>   larb4: larb@14027000
+> 
+> I assume that the gce will work with any of the devices in those
+> ranges, not just "mmsys", "rdma" and "mutex", right?   (Also, notice
 
->
-> ---
-> change in v6:
-> Remove unnecessary init for reg_4g_mode.
-> change in v5:
-> Use BIT_ULL() to fix kernel building warning.
-> change in v4:
-> Use BIT_ULL() to fix kernel building warning.
-> change in v3:
-> Only inline the computation of reg_4g_mode in mtk_i2c_set_4g_mode().
-> change in v2:
-> Define a static inline function mtk_i2c_set_4g_mode() for support 4g mode.
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c | 42 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
->
-> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-> index aec8e6c..453358b 100644
-> --- a/drivers/i2c/busses/i2c-mt65xx.c
-> +++ b/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -60,6 +60,7 @@
->  #define I2C_DMA_INT_FLAG_NONE          0x0000
->  #define I2C_DMA_CLR_FLAG               0x0000
->  #define I2C_DMA_HARD_RST               0x0002
-> +#define I2C_DMA_4G_MODE                        0x0001
->
->  #define I2C_DEFAULT_SPEED              100000  /* hz */
->  #define MAX_FS_MODE_SPEED              400000
-> @@ -88,6 +89,8 @@ enum DMA_REGS_OFFSET {
->         OFFSET_RX_MEM_ADDR = 0x20,
->         OFFSET_TX_LEN = 0x24,
->         OFFSET_RX_LEN = 0x28,
-> +       OFFSET_TX_4G_MODE = 0x54,
-> +       OFFSET_RX_4G_MODE = 0x58,
->  };
->
->  enum i2c_trans_st_rs {
-> @@ -133,6 +136,7 @@ struct mtk_i2c_compatible {
->         unsigned char dcm: 1;
->         unsigned char auto_restart: 1;
->         unsigned char aux_len_reg: 1;
-> +       unsigned char support_33bits: 1;
->  };
->
->  struct mtk_i2c {
-> @@ -182,6 +186,7 @@ static const struct mtk_i2c_compatible mt6577_compat = {
->         .dcm = 1,
->         .auto_restart = 0,
->         .aux_len_reg = 0,
-> +       .support_33bits = 0,
->  };
->
->  static const struct mtk_i2c_compatible mt6589_compat = {
-> @@ -190,6 +195,7 @@ static const struct mtk_i2c_compatible mt6589_compat = {
->         .dcm = 0,
->         .auto_restart = 0,
->         .aux_len_reg = 0,
-> +       .support_33bits = 0,
->  };
->
->  static const struct mtk_i2c_compatible mt8173_compat = {
-> @@ -198,6 +204,7 @@ static const struct mtk_i2c_compatible mt8173_compat = {
->         .dcm = 1,
->         .auto_restart = 1,
->         .aux_len_reg = 1,
-> +       .support_33bits = 1,
->  };
->
->  static const struct of_device_id mtk_i2c_of_match[] = {
-> @@ -366,6 +373,11 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk,
->         return 0;
->  }
->
-> +static inline u32 mtk_i2c_set_4g_mode(dma_addr_t addr)
-> +{
-> +       return (addr & BIT_ULL(32)) ? I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
-> +}
-> +
->  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                int num, int left_num)
->  {
-> @@ -373,6 +385,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->         u16 start_reg;
->         u16 control_reg;
->         u16 restart_flag = 0;
-> +       u32 reg_4g_mode;
->         dma_addr_t rpaddr = 0;
->         dma_addr_t wpaddr = 0;
->         int ret;
-> @@ -439,6 +452,12 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                         msgs->len, DMA_FROM_DEVICE);
->                 if (dma_mapping_error(i2c->dev, rpaddr))
->                         return -ENOMEM;
-> +
-> +               if (i2c->dev_comp->support_33bits) {
-> +                       reg_4g_mode = mtk_i2c_set_4g_mode(rpaddr);
-> +                       writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
-> +               }
-> +
->                 writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
->                 writel(msgs->len, i2c->pdmabase + OFFSET_RX_LEN);
->         } else if (i2c->op == I2C_MASTER_WR) {
-> @@ -448,6 +467,12 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                         msgs->len, DMA_TO_DEVICE);
->                 if (dma_mapping_error(i2c->dev, wpaddr))
->                         return -ENOMEM;
-> +
-> +               if (i2c->dev_comp->support_33bits) {
-> +                       reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
-> +                       writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
-> +               }
-> +
->                 writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
->                 writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
->         } else {
-> @@ -465,6 +490,15 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
->                                          msgs->len, DMA_TO_DEVICE);
->                         return -ENOMEM;
->                 }
-> +
-> +               if (i2c->dev_comp->support_33bits) {
-> +                       reg_4g_mode = mtk_i2c_set_4g_mode(wpaddr);
-> +                       writel(reg_4g_mode, i2c->pdmabase + OFFSET_TX_4G_MODE);
-> +
-> +                       reg_4g_mode = mtk_i2c_set_4g_mode(rpaddr);
-> +                       writel(reg_4g_mode, i2c->pdmabase + OFFSET_RX_4G_MODE);
-> +               }
-> +
->                 writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
->                 writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
->                 writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
-> @@ -729,6 +763,14 @@ static int mtk_i2c_probe(struct platform_device *pdev)
->                 return -EINVAL;
->         }
->
-> +       if (i2c->dev_comp->support_33bits) {
-> +               ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(33));
-> +               if (ret) {
-> +                       dev_err(&pdev->dev, "dma_set_mask return error.\n");
-> +                       return ret;
-> +               }
-> +       }
-> +
->         ret = mtk_i2c_clock_enable(i2c);
->         if (ret) {
->                 dev_err(&pdev->dev, "clock enable failed!\n");
-> --
-> 1.8.1.1.dirty
->
+That's right.
+
+> there are two "rdma" in the @1400 range, so rdma is really not a good
+> name for @1401)
+
+I think we can just use index.
+disp0_config_base = <0x14000000 1 0xffff0000>;
+disp1_config_base = <0x14010000 2 0xffff0000>;
+disp2_config_base = <0x14020000 3 0xffff0000>;
+
+> Further, it looks like the gce just maps a large device address range
+> starting at 0x14000000 to (21-bit) gce address 0x010000, rather than
+> 31 individually addressable 64k "subsys" blocks.  Is there a counter
+> example that I am missing?
+
+>From GCE's point of view,
+it's 32 (0x0~0x1f) individually addressable 64k "subsys" blocks.
+Currently, we don't have a counter example since all display related
+address are put together.
+
+> -Dan
+
+Thanks,
+HS Liao
+
+> >
+> >> -Dan
+> >>
+> >> >
+> >> > Yes, this mapping is fixed by hardware.
+> >> >
+> >> > > Does it vary for different SoCs?
+> >> >
+> >> > Yes, it varies for different SoCs.
+> >> >
+> >> > >
+> >> > > -Dan
+> >> > >
+> >> > > > That's why we need to know the mapping between the range of physical
+> >> > > > address and subsys.
+> >> > > > Please guide us a better way to code such requirement.
+> >> > > > Thanks for your help.
+> >> > > >
+> >> > > > Thanks,
+> >> > > > HS Liao
+> >> > > >
+> >> >
+> >> > Thanks,
+> >> > HS Liao
+> >> >
+> >
+> > Thanks,
+> > HS Liao
+> >
