@@ -1,8 +1,8 @@
 From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323
  regulator
-Date: Tue, 2 Feb 2016 19:38:39 +0000
-Message-ID: <20160202193839.GX4455@sirena.org.uk>
+Date: Tue, 2 Feb 2016 19:39:13 +0000
+Message-ID: <20160202193913.GY4455@sirena.org.uk>
 References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
  <1453896059-44589-2-git-send-email-blogic@openwrt.org>
  <20160127144105.GQ6042@sirena.org.uk>
@@ -13,7 +13,7 @@ References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
  <1454069479.10861.30.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="AFjAQ8ujNJnIGHaX"
+	protocol="application/pgp-signature"; boundary="b/3kIrr+SWblMf9a"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
 In-Reply-To: <1454069479.10861.30.camel@mtksdaap41>
@@ -23,7 +23,7 @@ Cc: John Crispin <blogic@openwrt.org>, Liam Girdwood <lgirdwood@gmail.com>, Henr
 List-Id: linux-mediatek@lists.infradead.org
 
 
---AFjAQ8ujNJnIGHaX
+--b/3kIrr+SWblMf9a
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -42,23 +42,22 @@ On Fri, Jan 29, 2016 at 08:11:19PM +0800, menghui lin wrote:
 > requested mode provides stronger power capability than current mode.
 > Here I assume that power capability fast > normal > idle > standby.
 
-How does the driver know if it needs to change the mode (ie, how can it
-tell if the current mode is inadequate) and surely if we can only change
-in one direction this isn't terribly useful?
+...and I also note that the above *still* doesn't answer my questions
+above.
 
---AFjAQ8ujNJnIGHaX
+--b/3kIrr+SWblMf9a
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJWsQW+AAoJECTWi3JdVIfQS9QH/0y/TL4CoNcTtm5kdsN4+irO
-9fszW5OaCkavgfERM2I71wE5uNv2q+UXG6jfRFeO9DIJY7Xueux5eRERcl6/S11b
-iqV5VbRQ43XmrKYqSX96TZgFIYQ1i8uwSWFxnrKTwKt9fyt6gYR91+4/USwq8KN2
-Ke1uvsUNP+jAIxusi4l0CNX2IR+PrBFdCgj+qieHJ9TpSuf4+VQ1ccRBI5GUPy5y
-O5sjSfcFJiIndCZyy2dPTkt2LRQJvmQOyUfpieHRwHGaYTH87Onyv2i4JjP4E/ak
-czUDG1Wuve3WYoZZODZ8esvY7Wt5ovjAeg45r0EGfzciwR7Hc8HE1uJvj8/W4z0=
-=YPTr
+iQEcBAEBCAAGBQJWsQXgAAoJECTWi3JdVIfQ2fwH/0/NuBXkjO3k6AEV8LpuvK2E
+PamCWVfN4FFSz/rwtsMKTShq2Ng8sjBJ8k4OcNo61l/bOHOZ8jBC9Zk/XQ8QXKFQ
+WKwwIsk1ZnNvPTTEu5/Eo6D7CBPFxFsbmQ0a3vDos4GXm5EfmLFy73IKphYl5rzN
+7DiQqVXJyVWtu2NtNcLLDDTWSgd1tYUc+xv1+SsLhJpI/gY4HcRYCSc5vEU9VU0b
+dvZaTW8jVIxa3nr2FTrPBIlvvt+cKwcx7LiXHNP3f1CqD9tq85kDFWEYL+UAZVFF
+L/uSsEcqNHFLMqSMyHUMY9JJE7wF0/Z1rb3B/fSsVWX911vz9VeyO5UYcY989Xw=
+=Z7CK
 -----END PGP SIGNATURE-----
 
---AFjAQ8ujNJnIGHaX--
+--b/3kIrr+SWblMf9a--
