@@ -1,63 +1,70 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH V4 2/2] regulator: mt6323: Add support for MT6323
- regulator
-Date: Tue, 2 Feb 2016 19:39:13 +0000
-Message-ID: <20160202193913.GY4455@sirena.org.uk>
-References: <1453896059-44589-1-git-send-email-blogic@openwrt.org>
- <1453896059-44589-2-git-send-email-blogic@openwrt.org>
- <20160127144105.GQ6042@sirena.org.uk>
- <56AA5A5C.9080402@openwrt.org>
- <20160128231306.GD4130@sirena.org.uk>
- <1454061134.10861.14.camel@mtksdaap41>
- <20160129112717.GP4130@sirena.org.uk>
- <1454069479.10861.30.camel@mtksdaap41>
+From: Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: MTK mt8173-evb: mainline unstable, and big-endian boot failures
+Date: Wed, 3 Feb 2016 09:38:18 +0800
+Message-ID: <1454463498.27798.24.camel@mtksdaap41>
+References: <CAOi56cVDbkAJEDWy3+DV63a=UuD7nqpUu8X7e-OjtWM-4dj_-w@mail.gmail.com>
+ <7hsi1ilczm.fsf@baylibre.com>
+ <CAF-23O3ps0Wt_UCmJbArpc5iJJryJKA0k_2qAyNb7op8O=UnAg@mail.gmail.com>
+ <1453964180.26397.8.camel@mtksdaap41> <7hy4b8gc7q.fsf@baylibre.com>
+ <1454309376.11974.3.camel@mtksdaap41> <7hh9hrgbbh.fsf@baylibre.com>
+ <1454379462.27798.11.camel@mtksdaap41> <7h37tbdk6y.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="b/3kIrr+SWblMf9a"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1454069479.10861.30.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: menghui lin <menghui.lin@mediatek.com>
-Cc: John Crispin <blogic@openwrt.org>, Liam Girdwood <lgirdwood@gmail.com>, HenryC Chen =?utf-8?B?KOmZs+W7uuixqik=?= <HenryC.Chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <7h37tbdk6y.fsf-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Koan-Sin Tan <freedom.tan-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, =?UTF-8?Q?=E9=99=B3=E6=9F=8F=E5=AE=8F?= <howard.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Kevin,
 
---b/3kIrr+SWblMf9a
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Tue, 2016-02-02 at 10:46 -0800, Kevin Hilman wrote:
+> Hi Fan,
+> 
+> Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
+> 
+> > I just checked that the problem cannot be reproduced (tested 100 times
+> > with your script) after flashing new firmware which we uploaded to
+> > github[0] yesterday.
+> 
+> Great news!
+> 
+> > This latest firmware got many fixes and also supports cluster idle, so
+> > we prefer testing with this new one Would you please test in your
+> > side? Thanks for your great help!!
+> 
+> I tested the latest firmware and it's booted 20+ times in a row without
+> failure, which is better than it ever did in the past, so it seems to
+> have fixed the idle problem.
+> 
+> I will keep an eye on the failures in kernelci.org and let you know if I
+> notice any other failures.
+> 
+> Thanks again for the updated firmware!
+> 
+Thanks to keep notice us failures as well.
 
-On Fri, Jan 29, 2016 at 08:11:19PM +0800, menghui lin wrote:
-> On Fri, 2016-01-29 at 12:27 +0100, Mark Brown wrote:
+> Speaking of updated firmware, is there any chance to make the default
+> version of the firmware significantly less noisy.  There is a TON of
+> output from the firmware before fastboot starts which makes the logs for
+> this board very noisy (same complaint on the mt8135.)
+> 
+I will discuss with Eddie if it's possible to release a version with
+light logs, but I'm afraid the answer could be given after our Chinese
+New Year vacation. :P
+ 
 
-> > None of this is answering my question - I know what the current API is,
-> > describing it doesn't tell me about actual users or how they are able to
-> > sensibly use the interface.  Bear in mind that the definitions of the
-> > various modes are all relative and what one device thinks is high usage
-> > may be low usage for another device.
+> Kevin
+> 
 
-> Assuming valid_modes_mask and initial_mode are specified, a possible
-> way to modify regulator_set_mode() is to allow mode change only if the
-> regulator is controlled exclusively by a certain consumer or the
-> requested mode provides stronger power capability than current mode.
-> Here I assume that power capability fast > normal > idle > standby.
-
-...and I also note that the above *still* doesn't answer my questions
-above.
-
---b/3kIrr+SWblMf9a
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWsQXgAAoJECTWi3JdVIfQ2fwH/0/NuBXkjO3k6AEV8LpuvK2E
-PamCWVfN4FFSz/rwtsMKTShq2Ng8sjBJ8k4OcNo61l/bOHOZ8jBC9Zk/XQ8QXKFQ
-WKwwIsk1ZnNvPTTEu5/Eo6D7CBPFxFsbmQ0a3vDos4GXm5EfmLFy73IKphYl5rzN
-7DiQqVXJyVWtu2NtNcLLDDTWSgd1tYUc+xv1+SsLhJpI/gY4HcRYCSc5vEU9VU0b
-dvZaTW8jVIxa3nr2FTrPBIlvvt+cKwcx7LiXHNP3f1CqD9tq85kDFWEYL+UAZVFF
-L/uSsEcqNHFLMqSMyHUMY9JJE7wF0/Z1rb3B/fSsVWX911vz9VeyO5UYcY989Xw=
-=Z7CK
------END PGP SIGNATURE-----
-
---b/3kIrr+SWblMf9a--
+Fan
