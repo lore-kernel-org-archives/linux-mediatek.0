@@ -1,92 +1,66 @@
-From: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] ARM64: dts: mt8173: Add CPU OPP, clock and
- regulator supply properties
-Date: Wed, 3 Feb 2016 09:46:25 +0800
-Message-ID: <CALx668UB+o_RYUWSR86nUL7YpiK9fWPzZeOSaOmYTGtdnRKx=Q@mail.gmail.com>
-References: <1451197318-12418-1-git-send-email-pi-cheng.chen@linaro.org>
- <1451197318-12418-4-git-send-email-pi-cheng.chen@linaro.org>
- <20151228031340.GD3598@ubuntu> <3310024.mO5K6yH9vU@wuerfel>
- <20160105102455.GA30120@ubuntu> <56B08DA4.8070207@gmail.com>
- <56B0B894.9040706@gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v8 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
+Date: Wed, 3 Feb 2016 11:29:29 +0800
+Message-ID: <CAGS+omAhExDg1H96nFY1EEKwTPVsnS6vNnxJCPYL4QwMt+hAcw@mail.gmail.com>
+References: <1454300012-32552-1-git-send-email-jitao.shi@mediatek.com>
+ <1454300012-32552-2-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56B0B894.9040706-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, "Rafael J. Wysocki" <rafael.j.wysocki-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linaro Kernel Mailman List <linaro-kernel-cunTk1MwBs8s++Sfvej+rw@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1454300012-32552-2-git-send-email-jitao.shi@mediatek.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream <srv_heupstream@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 2, 2016 at 10:09 PM, Matthias Brugger
-<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
->
-> On 02/02/16 12:06, Matthias Brugger wrote:
->>
->>
->>
->> On 05/01/16 11:24, Viresh Kumar wrote:
->>>
->>> On 05-01-16, 11:21, Arnd Bergmann wrote:
->>>>
->>>> On Monday 28 December 2015 08:43:40 Viresh Kumar wrote:
->>>>>
->>>>> On 27-12-15, 14:21, Pi-Cheng Chen wrote:
->>>>>>
->>>>>> Add operating-points-v2, clock, and regulator supply properties
->>>>>> required by mt8173-cpufreq driver to enable it.
->>>>>>
->>>>>> Signed-off-by: Pi-Cheng Chen <pi-cheng.chen-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>>>>> ---
->>>>>> This patch is based on the patch[1] that adds underlying clock MUX for
->>>>>> MT8173 which is needed by mt8173-cpufreq driver but not yet picked.
->>>>>>
->>>>>> [1] http://article.gmane.org/gmane.linux.kernel.clk/325
->>>>>> ---
->>>>>>   arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 18 ++++++
->>>>>>   arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 90
->>>>>> +++++++++++++++++++++++++++++
->>>>>>   2 files changed, 108 insertions(+)
->>>>>
->>>>>
->>>>> Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
->>>>>
->>>>
->>>> This patch is now in linux-next through Rafael's pm tree, and it
->>>> breaks the
->>>> arm64 build:
->>>>
->>>>          arm64-defconfig
->>>> Error: ../arch/arm64/boot/dts/mediatek/mt8173.dtsi:132.24-25 syntax
->>>> error
->>>>
->>>>
->>>> Please revert.
->>>>
->>>> In the future, please send all dts changes through the proper maintainer
->>>> channels (-> Mattias -> arm-soc), and make sure they actually build.
->>>
->>>
->>> Rafael has already reverted that, AFAIK, after Mark Brown reported the
->>> build issue.
->>>
->>
->> Applied to v4.5-next/dts
->>
->
-> I oversaw that this needs a clock patch, which is not yet mainlined.
-> I deleted this patch from my tree.
-
-I should mention that explicitly.
-Sorry for the inconvenience.
-
-Pi-Cheng
+SGkgSml0YW8sCgpPbmUgbW9yZSBjb21tZW50LCBpbmxpbmUuLi4KCk9uIE1vbiwgRmViIDEsIDIw
+MTYgYXQgMTI6MTMgUE0sIEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4gd3JvdGU6
+Cj4gVGhpcyBwYXRjaCBhZGRzIGRybV9icmlkZ2UgZHJpdmVyIGZvciBwYXJhZGUgRFNJIHRvIGVE
+UCBicmlkZ2UgY2hpcC4KPgo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
+ZGlhdGVrLmNvbT4KCltzbmlwXQoKPiArc3RhdGljIGludCBwczg2NDBfcHJvYmUoc3RydWN0IGky
+Y19jbGllbnQgKmNsaWVudCwKPiArICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1Y3Qg
+aTJjX2RldmljZV9pZCAqaWQpCj4gK3sKPiArICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9ICZj
+bGllbnQtPmRldjsKPiArICAgICAgIHN0cnVjdCBwczg2NDAgKnBzX2JyaWRnZTsKPiArICAgICAg
+IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkZXYtPm9mX25vZGU7Cj4gKyAgICAgICBzdHJ1Y3Qg
+ZGV2aWNlX25vZGUgKnBvcnQsICpvdXRfZXA7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUg
+KnBhbmVsX25vZGUgPSBOVUxMOwo+ICsgICAgICAgaW50IGksIHJldDsKPiArCj4gKyAgICAgICBw
+c19icmlkZ2UgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKnBzX2JyaWRnZSksIEdGUF9LRVJO
+RUwpOwo+ICsgICAgICAgcHNfYnJpZGdlLT5kc2kgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2Yo
+c3RydWN0IG1pcGlfZHNpX2RldmljZSksCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBHRlBfS0VSTkVMKTsKPiArICAgICAgIGlmICghcHNfYnJpZGdlKSB7Cj4gKyAgICAg
+ICAgICAgICAgIHJldCA9IC1FTk9NRU07Cj4gKyAgICAgICAgICAgICAgIGdvdG8gZXhpdDsKPiAr
+ICAgICAgIH0KPiArICAgICAgIC8qIHBvcnRAMSBpcyBwczg2NDAgb3V0cHV0IHBvcnQgKi8KPiAr
+ICAgICAgIHBvcnQgPSBvZl9ncmFwaF9nZXRfcG9ydF9ieV9pZChucCwgMSk7Cj4gKyAgICAgICBp
+ZiAocG9ydCkgewo+ICsgICAgICAgICAgICAgICBvdXRfZXAgPSBvZl9nZXRfY2hpbGRfYnlfbmFt
+ZShwb3J0LCAiZW5kcG9pbnQiKTsKPiArICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocG9ydCk7
+Cj4gKyAgICAgICAgICAgICAgIGlmIChvdXRfZXApIHsKPiArICAgICAgICAgICAgICAgICAgICAg
+ICBwYW5lbF9ub2RlID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChvdXRfZXApOwo+
+ICsgICAgICAgICAgICAgICAgICAgICAgIG9mX25vZGVfcHV0KG91dF9lcCk7Cj4gKyAgICAgICAg
+ICAgICAgIH0KPiArICAgICAgIH0KPiArICAgICAgIGlmIChwYW5lbF9ub2RlKSB7Cj4gKyAgICAg
+ICAgICAgICAgIHBzX2JyaWRnZS0+cGFuZWwgPSBvZl9kcm1fZmluZF9wYW5lbChwYW5lbF9ub2Rl
+KTsKPiArICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocGFuZWxfbm9kZSk7Cj4gKyAgICAgICAg
+ICAgICAgIGlmICghcHNfYnJpZGdlLT5wYW5lbCkgewo+ICsgICAgICAgICAgICAgICAgICAgICAg
+IHJldCA9IC1FUFJPQkVfREVGRVI7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgZ290byBleGl0
+Owo+ICsgICAgICAgICAgICAgICB9Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgcHNfYnJpZGdl
+LT5wd3JfM3YzX3N1cHBseSA9IGRldm1fcmVndWxhdG9yX2dldChkZXYsICJ2ZGQzMyIpOwo+ICsg
+ICAgICAgaWYgKElTX0VSUihwc19icmlkZ2UtPnB3cl8zdjNfc3VwcGx5KSkgewo+ICsgICAgICAg
+ICAgICAgICByZXQgPSBQVFJfRVJSKHBzX2JyaWRnZS0+cHdyXzN2M19zdXBwbHkpOwo+ICsgICAg
+ICAgICAgICAgICBkZXZfZXJyKGRldiwgImNhbm5vdCBnZXQgdmRkMzMgc3VwcGx5OiAlZFxuIiwg
+cmV0KTsKPiArICAgICAgICAgICAgICAgZ290byBleGl0Owo+ICsgICAgICAgfQo+ICsKPiArICAg
+ICAgIHBzX2JyaWRnZS0+cHdyXzF2Ml9zdXBwbHkgPSBkZXZtX3JlZ3VsYXRvcl9nZXQoZGV2LCAi
+dmRkMTIiKTsKClNpbmNlIHdlIGhhdmUgdHdvIHJlZ3VsYXRvcnMsIGFuZCB0aGV5IG11c3QgYWx3
+YXlzIGJlIGVuYWJsZWQgJgpkaXNhYmxlZCB0b2dldGhlciwgd2UgY2FuIGp1c3QgdXNlIHRoZSAn
+YnVsayByZWd1bGF0b3InIEFQSXM6CgogIGRldm1fcmVndWxhdG9yX2J1bGtfZ2V0KCkKICByZWd1
+bGF0b3JfYnVsa19lbmFibGUoKQogIHJlZ3VsYXRvcl9idWxrX2Rpc2FibGUoKQpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
+dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
