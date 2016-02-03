@@ -1,72 +1,77 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: FW: [RFC 3/3] CMDQ: Mediatek CMDQ driver
-Date: Wed, 3 Feb 2016 16:04:03 +0800
-Message-ID: <1454486643.29722.2.camel@mtksdaap41>
-References: <8A0FDEEF9DBBD140A3857422D81DA20F867B19FD@mtkmbs01n1>
-	 <1454479333.11967.12.camel@mtksdaap41>
-	 <CAGS+omABD93f3X0pfiFgaxa9Lob2txkJfUUomUvs+hiRkxSuHw@mail.gmail.com>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v9 1/2] Documentation: bridge: Add documentation for ps8640 DT properties
+Date: Wed, 3 Feb 2016 16:48:07 +0800
+Message-ID: <1454489288-31951-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omABD93f3X0pfiFgaxa9Lob2txkJfUUomUvs+hiRkxSuHw@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob
+To: David Airlie <airlied@linux.ie>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediat
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-02-03 at 14:40 +0800, Daniel Kurtz wrote:
-> > Hi Dan,
-> >
-> > Thanks for your comment.
-> > This solution looks good to me.
-> > I will change it as your suggestion.
-> >
-> > But, I have a question about 'mask out the provided *device virtual*
-> > address'.
-> > Are lower 16-bits (or 24-bits for JUMP op) of device virtual address the
-> > same as device physical address?
-> 
-> I'm not sure.  But I doubt it we can rely on this.
-> My guess would be that the ioremap only preserves the lower 12 bits
-> (4k page size).
-> 
-> > If not, we still need to pass in physical address into CMDQ driver.
-> 
-> Or, instead of the iommu/slot approach, we can just provide a
-> registration function for the gce driver.
-> Each gce consumer could then have a simple gce node, with no slot/address:
-> 
->   mediatek,gce = <&gce>;
-> 
-> Then on probe, the gce consumer could pass in its (struct device *) to
-> gce_register_device().  gce_register_device() could then access the
-> device's of_node to extract its physical address range, and look up
-> its physical address in its table of per-soc of
-> "device_address:gce_subsys_address" entries.  If the physical address
-> is in a valid subsys ranges, the gce_register_device would cache the
-> subsys address, and an offset in a (struct gce_consumer).
-> gce_register_device() could then add this struct to a struct list_head
-> of gce_consumers, and finally return a pointer to it back to the
-> caller.
-> 
-> Later, the gce consumer could pass in ths (struct gce_consumer *) when
-> make gce calls, along with the *offset* (not the physical address or
-> virtual address) for the register that it wishes to access.  Then the
-> gce driver can simply use the gce_consumer->subsys entry to create a
-> gce address from the passed in offset.
-> 
-> This will keep the binding very simple, and would remove the need to
-> convert from device virtual to physical addresses by the gce consumer,
-> but require a little more per-gce-consumer setup.
-> 
-> -Dan
+Add documentation for DT properties supported by
+ps8640 DSI-eDP converter.
 
-Hi Dan,
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+---
+Changes since v8:
+ - No change
+---
+ .../devicetree/bindings/display/bridge/ps8640.txt  |   43 ++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
 
-This solution is better.
-I will use it.
-Thanks for your suggestion.
-
-Thanks,
-HS Liao
+diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+new file mode 100644
+index 0000000..a3e0971
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+@@ -0,0 +1,43 @@
++ps8640-bridge bindings
++
++Required properties:
++	- compatible: "parade,ps8640"
++	- reg: first page address of the bridge.
++	- sleep-gpios: OF device-tree gpio specification for PD_ pin.
++	- reset-gpios: OF device-tree gpio specification for reset pin.
++	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
++	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
++	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
++	- ports: The device node can contain video interface port nodes per
++		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
++		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
++
++[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
++
++Example:
++	edp-bridge@18 {
++		compatible = "parade,ps8640";
++		reg = <0x18>;
++		sleep-gpios = <&pio 116 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 115 GPIO_ACTIVE_HIGH>;
++		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
++		vdd12-supply = <&ps8640_fixed_1v2>;
++		vdd33-supply = <&mt6397_vgp2_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				reg = <0>;
++				ps8640_in: endpoint {
++					remote-endpoint = <&dsi0_out>;
++				};
++			};
++			port@1 {
++				reg = <1>;
++				ps8640_out: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++	};
+-- 
+1.7.9.5
