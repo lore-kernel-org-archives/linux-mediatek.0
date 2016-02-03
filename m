@@ -1,66 +1,134 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v8 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Wed, 3 Feb 2016 11:29:29 +0800
-Message-ID: <CAGS+omAhExDg1H96nFY1EEKwTPVsnS6vNnxJCPYL4QwMt+hAcw@mail.gmail.com>
-References: <1454300012-32552-1-git-send-email-jitao.shi@mediatek.com>
- <1454300012-32552-2-git-send-email-jitao.shi@mediatek.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/4] soc: mediatek: Refine scpsys to support multiple
+ platform
+Date: Wed, 3 Feb 2016 13:22:48 +0800
+Message-ID: <1454476968.2847.59.camel@mtksdaap41>
+References: <1453270097-53853-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1453270097-53853-2-git-send-email-jamesjj.liao@mediatek.com>
+	 <56ADF556.6070402@gmail.com> <1454396212.2847.15.camel@mtksdaap41>
+	 <56B0889A.1010305@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1454300012-32552-2-git-send-email-jitao.shi@mediatek.com>
-List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream <srv_heupstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56B0889A.1010305-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgSml0YW8sCgpPbmUgbW9yZSBjb21tZW50LCBpbmxpbmUuLi4KCk9uIE1vbiwgRmViIDEsIDIw
-MTYgYXQgMTI6MTMgUE0sIEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4gd3JvdGU6
-Cj4gVGhpcyBwYXRjaCBhZGRzIGRybV9icmlkZ2UgZHJpdmVyIGZvciBwYXJhZGUgRFNJIHRvIGVE
-UCBicmlkZ2UgY2hpcC4KPgo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1l
-ZGlhdGVrLmNvbT4KCltzbmlwXQoKPiArc3RhdGljIGludCBwczg2NDBfcHJvYmUoc3RydWN0IGky
-Y19jbGllbnQgKmNsaWVudCwKPiArICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1Y3Qg
-aTJjX2RldmljZV9pZCAqaWQpCj4gK3sKPiArICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9ICZj
-bGllbnQtPmRldjsKPiArICAgICAgIHN0cnVjdCBwczg2NDAgKnBzX2JyaWRnZTsKPiArICAgICAg
-IHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnAgPSBkZXYtPm9mX25vZGU7Cj4gKyAgICAgICBzdHJ1Y3Qg
-ZGV2aWNlX25vZGUgKnBvcnQsICpvdXRfZXA7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlX25vZGUg
-KnBhbmVsX25vZGUgPSBOVUxMOwo+ICsgICAgICAgaW50IGksIHJldDsKPiArCj4gKyAgICAgICBw
-c19icmlkZ2UgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKnBzX2JyaWRnZSksIEdGUF9LRVJO
-RUwpOwo+ICsgICAgICAgcHNfYnJpZGdlLT5kc2kgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2Yo
-c3RydWN0IG1pcGlfZHNpX2RldmljZSksCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBHRlBfS0VSTkVMKTsKPiArICAgICAgIGlmICghcHNfYnJpZGdlKSB7Cj4gKyAgICAg
-ICAgICAgICAgIHJldCA9IC1FTk9NRU07Cj4gKyAgICAgICAgICAgICAgIGdvdG8gZXhpdDsKPiAr
-ICAgICAgIH0KPiArICAgICAgIC8qIHBvcnRAMSBpcyBwczg2NDAgb3V0cHV0IHBvcnQgKi8KPiAr
-ICAgICAgIHBvcnQgPSBvZl9ncmFwaF9nZXRfcG9ydF9ieV9pZChucCwgMSk7Cj4gKyAgICAgICBp
-ZiAocG9ydCkgewo+ICsgICAgICAgICAgICAgICBvdXRfZXAgPSBvZl9nZXRfY2hpbGRfYnlfbmFt
-ZShwb3J0LCAiZW5kcG9pbnQiKTsKPiArICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocG9ydCk7
-Cj4gKyAgICAgICAgICAgICAgIGlmIChvdXRfZXApIHsKPiArICAgICAgICAgICAgICAgICAgICAg
-ICBwYW5lbF9ub2RlID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChvdXRfZXApOwo+
-ICsgICAgICAgICAgICAgICAgICAgICAgIG9mX25vZGVfcHV0KG91dF9lcCk7Cj4gKyAgICAgICAg
-ICAgICAgIH0KPiArICAgICAgIH0KPiArICAgICAgIGlmIChwYW5lbF9ub2RlKSB7Cj4gKyAgICAg
-ICAgICAgICAgIHBzX2JyaWRnZS0+cGFuZWwgPSBvZl9kcm1fZmluZF9wYW5lbChwYW5lbF9ub2Rl
-KTsKPiArICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocGFuZWxfbm9kZSk7Cj4gKyAgICAgICAg
-ICAgICAgIGlmICghcHNfYnJpZGdlLT5wYW5lbCkgewo+ICsgICAgICAgICAgICAgICAgICAgICAg
-IHJldCA9IC1FUFJPQkVfREVGRVI7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgZ290byBleGl0
-Owo+ICsgICAgICAgICAgICAgICB9Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgcHNfYnJpZGdl
-LT5wd3JfM3YzX3N1cHBseSA9IGRldm1fcmVndWxhdG9yX2dldChkZXYsICJ2ZGQzMyIpOwo+ICsg
-ICAgICAgaWYgKElTX0VSUihwc19icmlkZ2UtPnB3cl8zdjNfc3VwcGx5KSkgewo+ICsgICAgICAg
-ICAgICAgICByZXQgPSBQVFJfRVJSKHBzX2JyaWRnZS0+cHdyXzN2M19zdXBwbHkpOwo+ICsgICAg
-ICAgICAgICAgICBkZXZfZXJyKGRldiwgImNhbm5vdCBnZXQgdmRkMzMgc3VwcGx5OiAlZFxuIiwg
-cmV0KTsKPiArICAgICAgICAgICAgICAgZ290byBleGl0Owo+ICsgICAgICAgfQo+ICsKPiArICAg
-ICAgIHBzX2JyaWRnZS0+cHdyXzF2Ml9zdXBwbHkgPSBkZXZtX3JlZ3VsYXRvcl9nZXQoZGV2LCAi
-dmRkMTIiKTsKClNpbmNlIHdlIGhhdmUgdHdvIHJlZ3VsYXRvcnMsIGFuZCB0aGV5IG11c3QgYWx3
-YXlzIGJlIGVuYWJsZWQgJgpkaXNhYmxlZCB0b2dldGhlciwgd2UgY2FuIGp1c3QgdXNlIHRoZSAn
-YnVsayByZWd1bGF0b3InIEFQSXM6CgogIGRldm1fcmVndWxhdG9yX2J1bGtfZ2V0KCkKICByZWd1
-bGF0b3JfYnVsa19lbmFibGUoKQogIHJlZ3VsYXRvcl9idWxrX2Rpc2FibGUoKQpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cDovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Matthias,
+
+On Tue, 2016-02-02 at 11:44 +0100, Matthias Brugger wrote:
+> On 02/02/16 07:56, James Liao wrote:
+> > On Sun, 2016-01-31 at 12:51 +0100, Matthias Brugger wrote:
+> >> >On 20/01/16 07:08, James Liao wrote:
+> >>> > >Refine scpsys driver common code to support multiple SoC / platform.
+> >>> > >
+> >>> > >Signed-off-by: James Liao<jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>> > >---
+> >>> > >   drivers/soc/mediatek/mtk-scpsys.c | 418 ++++++++++++++++++++------------------
+> >>> > >   drivers/soc/mediatek/mtk-scpsys.h |  55 +++++
+> >>> > >   2 files changed, 270 insertions(+), 203 deletions(-)
+> >>> > >   create mode 100644 drivers/soc/mediatek/mtk-scpsys.h
+> >> >
+> >> >In general this approach looks fine to me, comments below.
+> >> >
+> >>> > >
+> >>> > >diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> > >index 0221387..339adfc 100644
+> >>> > >--- a/drivers/soc/mediatek/mtk-scpsys.c
+> >>> > >+++ b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> > >@@ -11,29 +11,17 @@
+> >>> > >    * GNU General Public License for more details.
+> >>> > >    */
+> >>> > >   #include <linux/clk.h>
+> >>> > >-#include <linux/delay.h>
+> >>> > >+#include <linux/init.h>
+> >>> > >   #include <linux/io.h>
+> >>> > >-#include <linux/kernel.h>
+> >>> > >   #include <linux/mfd/syscon.h>
+> >> >
+> >> >When at it, do we need this include?
+> > syscon_regmap_lookup_by_phandle() is declared in this head file.
+> >
+> >>> > >-#include <linux/init.h>
+> >>> > >   #include <linux/of_device.h>
+> >>> > >   #include <linux/platform_device.h>
+> >>> > >   #include <linux/pm_domain.h>
+> >>> > >-#include <linux/regmap.h>
+> >>> > >-#include <linux/soc/mediatek/infracfg.h>
+> >>> > >   #include <linux/regulator/consumer.h>
+> >>> > >-#include <dt-bindings/power/mt8173-power.h>
+> >>> > >+#include <linux/soc/mediatek/infracfg.h>
+> >>> > >+
+> >>> > >+#include "mtk-scpsys.h"
+> >>> > >
+> >>> > >-#define SPM_VDE_PWR_CON			0x0210
+> >>> > >-#define SPM_MFG_PWR_CON			0x0214
+> >>> > >-#define SPM_VEN_PWR_CON			0x0230
+> >>> > >-#define SPM_ISP_PWR_CON			0x0238
+> >>> > >-#define SPM_DIS_PWR_CON			0x023c
+> >>> > >-#define SPM_VEN2_PWR_CON		0x0298
+> >>> > >-#define SPM_AUDIO_PWR_CON		0x029c
+> >>> > >-#define SPM_MFG_2D_PWR_CON		0x02c0
+> >>> > >-#define SPM_MFG_ASYNC_PWR_CON		0x02c4
+> >>> > >-#define SPM_USB_PWR_CON			0x02cc
+> >> >
+> >> >I would prefer to keep this defines and declare SoC specific ones where
+> >> >necessary. It makes the code more readable.
+> > Some register address may be reused by other modules among SoCs, so it's
+> > not easy to maintain the defines when we implement multiple SoC drivers
+> > in the same file. For example, offset 0x0298 is VEN2_PWR_CON on MT8173,
+> > but it is MJC_PWR_CON on other chips.
+> >
+> 
+> So that sounds as if 0x0298 offset is MT8173 specific.
+> I checked [VDE, MFG, VEN, IFR, ISP, DIS, DPY]_PWR_CON on mt8173, mt8135 
+> and mt6589 and they all have the same offset. So it doesn't seem as if 
+> the offset randomly changes for every SoC.
+> 
+> > Furthermore, these register offsets are only used in scp_domain_data[],
+> > and each element has its own power domain name. So I think it's enough
+> > to know which power domain are using these registers and status bits.
+> >
+> 
+> Yes that's true, but it will make it easier for another person to 
+> understand the driver, especially if he want's to implement the driver 
+> for a new SoC.
+
+There are two kinds of conflicts may happen:
+
+1. Different modules use the same register address.
+2. Different register addresses are used by the same module (on
+different IC).
+
+Type 1. for example:
+
+	#define SPM_BDP_PWR_CON			0x029c /* 2701 */
+	#define SPM_AUDIO_PWR_CON		0x029c /* 8173 */
+
+We can resolve this conflict easily, such as define these two register
+name to the same register address.
+
+Type 2. for example:
+
+	#define SPM_VDE_PWR_CON			0x0300 /* 6755 */
+	#define SPM_VDE_PWR_CON			0x0210 /* 8173 */
+
+We can not reuse the register defines in this case. We may need to name
+the registers with its IC name, such as MT8173_SPM_VDE_PWR_CON and
+MT6755_VDE_PWR_CON. But it will increase the maintain effort. That's why
+I prefer to remove register defines if we implement multiple SoC's
+scpsys in a single file.
+
+
+Best regards,
+
+James
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
