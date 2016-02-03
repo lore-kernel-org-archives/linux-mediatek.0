@@ -1,113 +1,68 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v9 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Wed, 3 Feb 2016 18:37:10 +0800
-Message-ID: <CAGS+omAZpgPhxJVBXtXDNppotdMLcSydK9=CG5TWOeAAVGRcWw@mail.gmail.com>
-References: <1454489288-31951-1-git-send-email-jitao.shi@mediatek.com> <1454489288-31951-2-git-send-email-jitao.shi@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v8 08/13] arm64: dts: mt8173: Add display subsystem
+ related nodes
+Date: Wed, 03 Feb 2016 12:00:24 +0100
+Message-ID: <1454497224.3415.53.camel@pengutronix.de>
+References: <1451929005-16372-1-git-send-email-p.zabel@pengutronix.de>
+ <1451929005-16372-9-git-send-email-p.zabel@pengutronix.de>
+ <CAGS+omD3hP5=6XEhSanefJHfmy1z6tqWRcGaw9WohJ320bkC2A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1454489288-31951-2-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, stonea168-9Onoh4P/yGk@public.gmane.org, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, =?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg@gmail>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAGS+omD3hP5=6XEhSanefJHfmy1z6tqWRcGaw9WohJ320bkC2A@mail.gmail.com>
+List-Unsubscribe: <http://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <http://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <http://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, dri-devel <dri-devel@lists.freedesktop.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Stephen Boyd <sboyd@codeaurora.org>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jitao,
-
-Looks really good.
-
-Just a couple of tiny things...
-
-
-
-On Wed, Feb 3, 2016 at 4:48 PM, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
-> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
->
-> Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-
-[snip]
-
-> +static int ps8640_get_modes(struct drm_connector *connector)
-> +{
-> +       struct ps8640 *ps_bridge = connector_to_ps8640(connector);
-> +       u8 *edid;
-> +       int ret, num_modes = 0;
-> +       bool power_off;
-> +
-> +       if (ps_bridge->edid)
-> +               return drm_add_edid_modes(connector, ps_bridge->edid);
-> +
-> +       power_off = !ps_bridge->enabled;
-> +       ps8640_pre_enable(&ps_bridge->bridge);
-> +
-> +       edid = kmalloc(EDID_LENGTH, GFP_KERNEL);
-
-devm_kmalloc() if you can.  Or at least kfree() in ps8640_remove
-
-
-> +       if (!edid) {
-> +               DRM_ERROR("Failed to allocate EDID\n");
-> +               return 0;
-> +       }
-> +
-> +       ret = ps8640_read(ps_bridge->ddc_i2c, 0, edid, EDID_LENGTH);
-> +       if (ret) {
-> +               kfree(edid);
-> +               goto out;
-> +       }
-> +
-> +       ps_bridge->edid = (struct edid *)edid;
-> +       drm_mode_connector_update_edid_property(connector, ps_bridge->edid);
-> +
-> +       num_modes = drm_add_edid_modes(connector, ps_bridge->edid);
-> +
-> +out:
-> +       if (power_off)
-> +               ps8640_post_disable(&ps_bridge->bridge);
-> +
-> +       return num_modes;
-> +}
-
-[snip]
-
-> +static int ps8640_spi_normal_mode(struct ps8640 *ps_bridge)
-> +{
-> +       u8 cmd[2];
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +
-> +       /* Enable-Write-Status-Register */
-> +       cmd[0] = WRITE_ENABLE_CMD;
-> +       ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +
-> +       /* protect BPL/BP0/BP1 */
-> +       cmd[0] = WRITE_STATUS_REG_CMD;
-> +       cmd[1] = BLK_PROTECT_BITS | STATUS_REG_PROTECT;
-> +       ps8640_spi_send_cmd(ps_bridge, cmd, 2);
-> +
-> +       /* wait for SPI rom ready */
-> +       ps8640_wait_rom_idle(ps_bridge);
-> +
-> +       /* disable PS8640 mapping function */
-> +       ps8640_write_byte(client, PAGE2_ENCTLSPI_WR, 0x00);
-> +
-> +       gpiod_set_value(ps_bridge->gpio_mode_sel_n, 1);
-> +       return 0;
-> +}
-> +
-> +static int ps8640_enter_bl(struct ps8640 *ps_bridge)
-> +{
-> +       ps_bridge->in_fw_update = true;
-> +       return ps8640_spi_dl_mode(ps_bridge);
-
-
-On error:
- ps_bridge->in_fw_update = false;
-
-Thanks,
--Dan
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgRGFuaWVsLAoKQW0gRGllbnN0YWcsIGRlbiAwMi4wMi4yMDE2LCAxNjoxMCArMDgwMCBzY2hy
+aWViIERhbmllbCBLdXJ0ejoKPiBPbiBUdWUsIEphbiA1LCAyMDE2IGF0IDE6MzYgQU0sIFBoaWxp
+cHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+ID4gRnJvbTogQ0sgSHUg
+PGNrLmh1QG1lZGlhdGVrLmNvbT4KPiA+Cj4gPiBUaGlzIHBhdGNoIGFkZHMgdGhlIGRldmljZSBu
+b2RlcyBmb3IgdGhlIERJU1AgZnVuY3Rpb24gYmxvY2tzCj4gPiBjb21wcmlzaW5nIHRoZSBkaXNw
+bGF5IHN1YnN5c3RlbS4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0
+ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogQ2F3YSBDaGVuZyA8Y2F3YS5jaGVuZ0BtZWRpYXRl
+ay5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBKaWUgUWl1IDxqaWUucWl1QG1lZGlhdGVrLmNvbT4K
+PiA+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4g
+PiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+
+ID4gLS0tCj4gPiBDaGFuZ2VzIHNpbmNlIHY3Ogo+ID4gIC0gQWRkIDI2IE1IeiBQTEwgcmVmZXJl
+bmNlIGlucHV0IGNsb2NrIGFuZCB0aGUgaGlnaC1zcGVlZCBvdXRwdXQgY2xvY2sgdG8KPiA+ICAg
+IHRoZSBNSVBJIFRYIEQtUEhZIG5vZGVzCj4gPiAgLSBUaGUgSFMgb3V0cHV0IGNsb2NrIGlzIHJv
+dXRlZCB0byB0aGUgRFNJIGVuY29kZXIgbW9kdWxlCj4gPiAgLSBBZGQgcG93ZXItZG9tYWlucyBw
+cm9wZXJ0eSB0byBhbGwgbm9kZXMgaW4gdGhlIE1NIGRvbWFpbgo+ID4gLS0tCj4gPiAgYXJjaC9h
+cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRzaSB8IDIzNyArKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIzNyBpbnNlcnRpb25zKCspCj4g
+Pgo+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0
+c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNpCj4gPiBpbmRleCA0
+OTAxZjEzLi42OGMxY2IyIDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRp
+YXRlay9tdDgxNzMuZHRzaQo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9t
+dDgxNzMuZHRzaQo+ID4gQEAgLTI1LDYgKzI1LDIzIEBAClsuLi5dCj4gPiArICAgICAgICAgICAg
+ICAgZHBpMDogZHBpQDE0MDFkMDAwIHsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGNvbXBh
+dGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRwaSI7Cj4gPiArICAgICAgICAgICAgICAgICAgICAg
+ICByZWcgPSA8MCAweDE0MDFkMDAwIDAgMHgxMDAwPjsKPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxOTQgSVJRX1RZUEVfTEVWRUxfTE9XPjsKPiA+ICsg
+ICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnNjcHN5cyBNVDgxNzNfUE9X
+RVJfRE9NQUlOX01NPjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmbW1z
+eXMgQ0xLX01NX0RQSV9QSVhFTD4sCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICA8Jm1tc3lzIENMS19NTV9EUElfRU5HSU5FPiwKPiA+ICsgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIDwmYXBtaXhlZHN5cyBDTEtfQVBNSVhFRF9UVkRQTEw+Owo+ID4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgY2xvY2stbmFtZXMgPSAicGl4ZWwiLCAiZW5naW5lIiwgInBsbCI7Cj4g
+PiArCj4gPiArICAgICAgICAgICAgICAgICAgICAgICBwb3J0IHsKPiA+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgZHBpMF9vdXQ6IGVuZHBvaW50IHsKPiA+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICByZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkwX2luPjsK
+PiAKPiBuaXQ6IEF0IHRoaXMgcG9pbnQgaW4gdGhlIHBhdGNoIHNlcmllcywgeW91IGhhdmVuJ3Qg
+ZGVmaW5lZCBoZG1pMF9pbiB5ZXQuCj4gTW92ZSB0aGlzIHBvcnQgdG8gIkFkZCBIRE1JIHJlbGF0
+ZWQgbm9kZXMiLgoKVGhhbmtzLCB3aWxsIGRvIGluIHYxMC4KCnJlZ2FyZHMKUGhpbGlwcAoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHA6Ly9saXN0cy5m
+cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
