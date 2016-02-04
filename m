@@ -1,104 +1,85 @@
-From: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH V3 08/11] soc: mediatek: PMIC wrap: remove
- pwrap_is_mt8135() and pwrap_is_mt8173()
-Date: Thu, 4 Feb 2016 17:36:16 +0800
-Message-ID: <1454578576.15541.11.camel@mtksdaap41>
-References: <1453715604-36856-1-git-send-email-blogic@openwrt.org>
- <1453715604-36856-9-git-send-email-blogic@openwrt.org>
- <56AF3992.8020004@gmail.com> <56AF3AC7.5040001@openwrt.org>
- <56AF3D67.8080708@gmail.com> <56AF3E47.9010001@openwrt.org>
- <56AF4138.5010004@gmail.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 8/8] arm64: dts: mediatek: Add Video Encoder for MT8173
+Date: Thu, 4 Feb 2016 19:35:03 +0800
+Message-ID: <1454585703-42428-9-git-send-email-tiffany.lin@mediatek.com>
+References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-4-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-5-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-6-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-7-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-8-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56AF4138.5010004-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1454585703-42428-8-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-02-01 at 12:27 +0100, Matthias Brugger wrote:
-> 
-> On 01/02/16 12:15, John Crispin wrote:
-> >
-> >
-> > On 01/02/2016 12:11, Matthias Brugger wrote:
-> >>
-> >>
-> >> On 01/02/16 12:00, John Crispin wrote:
-> >>>
-> >>>
-> >>> On 01/02/2016 11:55, Matthias Brugger wrote:
-> >>>>
-> >>>>
-> >>>> On 25/01/16 10:53, John Crispin wrote:
-> >>>>> With ore SoCs being added the list of helper functions like these would
-> >>>>
-> >>>> The commit message is something strange:
-> >>>> "With every new SoC being added..." maybe?
-> >>>>
-> >>>>> grow. While at it also add a new flag "bridge" and use that insted of
-> >>>>
-> >>>> s/insted/instead
-> >>>>
-> >>>>> pwrap_is_mt8173() where appropriate.
-> >>>
-> >>> you are lookign at V3 of the series, V4 has this fix done already
-> >>>
-> >>> [...]
-> >>>
-> >>>
-> >>>>>         }
-> >>>>> @@ -830,6 +824,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
-> >>>>>         .int_en_all = BIT(31) | BIT(1),
-> >>>>>         .spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-> >>>>>         .wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> >>>>> +    .has_bridge = 1,
-> >>>>>         .init_reg_clock = pwrap_mt8135_init_reg_clock,
-> >>>>>         .init_special = pwrap_mt8135_init_special,
-> >>>>>     };
-> >>>>
-> >>>> Please set has_bridge explicitly for mt8173.
-> >>>
-> >>> I dont get it. the original code never did that.
-> >>>
-> >>
-> >> has_bridge was introduced by this patch, but you don't set it explicitly
-> >> to 0 in pwrap_mt8173.
-> >>
-> >> Just as I see it, please try to write a summary to every new version of
-> >> a patch set which explains what you changed between one version and
-> >> another. This will help a lot making the review easier.
-> >>
-> >> Thanks,
-> >> Matthias
-> >>
-> >
-> >
-> > You missed the "to zero" part before. now the comment makes sense. I can
-> > set it to 0 if it is more obvious for you in that case.
-> >
-> > general consent is to not declare statics to 0. check_patch.pl will
-> > actually complain about those declarations. that is why i was confused.
-> 
-> If that's the case, then we accept the authority of check_patch.pl ;)
-> I didn't know that, so just leave has_bridge as it was.
+Add video encoder node for MT8173
 
-I believe checkpatch only complain for global/static variables
-initializers, not inside a struct initializers even when they are
-global.
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   39 ++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-In MTK i2c drivers drivers/i2c/busses/i2c-mt65xx.c, we always explicitly
-init flags in compatible struct, IMHO it make support feature for each
-IC more clearly. This does not trigger any warning from checkpatch.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 5b0b38a..f61669d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1150,6 +1150,45 @@
+ 			clock-names = "apb", "smi";
+ 		};
+ 
++		vcodec_enc: vcodec@18002000 {
++			compatible = "mediatek,mt8173-vcodec-enc";
++			reg = <0 0x18002000 0 0x1000>,	/* VENC_SYS */
++			      <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++			mediatek,larb = <&larb3>,
++					<&larb5>;
++			iommus = <&iommu M4U_PORT_VENC_RCPU>,
++				 <&iommu M4U_PORT_VENC_REC>,
++				 <&iommu M4U_PORT_VENC_BSDMA>,
++				 <&iommu M4U_PORT_VENC_SV_COMV>,
++				 <&iommu M4U_PORT_VENC_RD_COMV>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA>,
++				 <&iommu M4U_PORT_VENC_REF_CHROMA>,
++				 <&iommu M4U_PORT_VENC_NBM_RDMA>,
++				 <&iommu M4U_PORT_VENC_NBM_WDMA>,
++				 <&iommu M4U_PORT_VENC_RCPU_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
++				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
++				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++			mediatek,vpu = <&vpu>;
++			clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
++				 <&topckgen CLK_TOP_VENC_SEL>,
++				 <&topckgen CLK_TOP_UNIVPLL1_D2>,
++				 <&topckgen CLK_TOP_VENC_LT_SEL>;
++			clock-names = "vencpll_d2",
++				      "venc_sel",
++				      "univpll1_d2",
++				      "venc_lt_sel";
++		};
++
+ 		vencltsys: clock-controller@19000000 {
+ 			compatible = "mediatek,mt8173-vencltsys", "syscon";
+ 			reg = <0 0x19000000 0 0x1000>;
+-- 
+1.7.9.5
 
-Joe.C
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
