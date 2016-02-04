@@ -1,57 +1,67 @@
-From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: fix direction control issue
-Date: Wed, 3 Feb 2016 19:03:35 -0800
-Message-ID: <1454555015.4618.10.camel@mussux00>
-References: <1454462686-770-1-git-send-email-biao.huang@mediatek.com>
- <1454462686-770-2-git-send-email-biao.huang@mediatek.com>
+From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v9 03/14] drm/mediatek: Add DSI sub driver
+Date: Thu, 4 Feb 2016 14:37:45 +0800
+Message-ID: <1454567865.12573.7.camel@mtksdaap41>
+References: <1452611750-16283-1-git-send-email-p.zabel@pengutronix.de>
+	 <1452611750-16283-4-git-send-email-p.zabel@pengutronix.de>
+	 <CAGS+omCqKFQ-E_q7x=i95fhZSGgTOVW+_EoiRb++E14Xrob-tA@mail.gmail.com>
+	 <1454497304.3867.1.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1454462686-770-2-git-send-email-biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1454497304.3867.1.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Dave Airlie <airlied-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Stone <daniel-rLtY4a/8tF1rovVCs/uTlw@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>Daniel Vetter <da>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-02-03 at 09:24 +0800, Biao Huang wrote:
-> Since input-enable/disable and input-schmitt-enable/disable are
-> workable when gpio direction is input, so add direction setting
-> when do input-enable/disable and input-schmitt-enable/disable
-> properties.
+Hi Philipp:
+
+On Wed, 2016-02-03 at 12:01 +0100, Philipp Zabel wrote:
+> Hi Daniel,
 > 
-> Signed-off-by: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    2 ++
->  1 file changed, 2 insertions(+)
+
+> > > +static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+> > > +{
+> > > +       if (!dsi->enabled)
+> > > +               return;
+> > > +
+> > > +       if (dsi->panel) {
+> > > +               if (drm_panel_disable(dsi->panel)) {
+> > > +                       DRM_ERROR("failed to disable the panel\n");
+> > > +                       return;
+> > > +               }
+> > > +       }
+> > > +
+> > > +       mtk_dsi_poweroff(dsi);
+> > 
+> > The order is a bit suspicious here; I would expect to poweroff dsi
+> > before the panel to mirror the turn on order.
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 8cac73d..6eb01c9 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -352,6 +352,7 @@ static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
->  		ret = mtk_pconf_set_pull_select(pctl, pin, true, false, arg);
->  		break;
->  	case PIN_CONFIG_INPUT_ENABLE:
-> +		mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
->  		ret = mtk_pconf_set_ies_smt(pctl, pin, arg, param);
+> CK, could you comment on this?
+> 
 
-Hi Linus,
+According to the experience of other Mediatek SoC,
+In mtk_output_dsi_enable(), we should do power on dsi first and then
+prepare panel because dsi should be ready to receive panel prepare error
+message. So we should disable panel and then power off dsi in
+mtk_output_dsi_disable().
 
->From pinctrl-bindings.txt, 'input-enable' property defined as following:
-input-enable        - enable input on pin (no effect on output)
+> I can reorder this, but I'm not sure about the reasoning (what happens
+> hardware wise if we just cut panel power vs. if the DSI panel first sees
+> the ULP transition). Further, I don't have a panel to test, just the
+> PS8640.
+> 
+> thanks
+> Philipp
+> 
+> 
 
-Since input enable and input direction are two different settings on our
-SOC, could you tell me the exact meaning of this property? Input enable
-only? Or set input direction at the same time?
+Regards,
+CK
 
-Thanks,
-Hongzhou
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
