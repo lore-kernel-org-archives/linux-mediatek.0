@@ -1,48 +1,86 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v10 03/13] drm/mediatek: Add DSI sub driver
-Date: Thu, 04 Feb 2016 14:27:07 +0100
-Message-ID: <1454592427.3356.24.camel@pengutronix.de>
-References: <1454527562-28154-1-git-send-email-p.zabel@pengutronix.de>
-	 <1454527562-28154-4-git-send-email-p.zabel@pengutronix.de>
-	 <CACvgo528oR23PFbZwfm7RPwTZ6Z2Bv8uc0WHNyyG0SPQypMzDg@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 4/5] pinctrl: mediatek: Add Pinctrl/GPIO/EINT driver
+ for mt2701
+Date: Thu, 4 Feb 2016 14:48:58 +0100
+Message-ID: <56B356CA.1010200@gmail.com>
+References: <1451286546-5920-1-git-send-email-biao.huang@mediatek.com>
+ <1451286546-5920-5-git-send-email-biao.huang@mediatek.com>
+ <1451290066.11129.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CACvgo528oR23PFbZwfm7RPwTZ6Z2Bv8uc0WHNyyG0SPQypMzDg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Bolle <pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1451290066.11129.4.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, hongzhou.yang@mediatek.com, erin.lo@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Emil,
 
-Am Donnerstag, den 04.02.2016, 13:09 +0000 schrieb Emil Velikov:
-> Hi Philipp,
-> 
-> On 3 February 2016 at 19:25, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org> wrote:
-> 
-> > diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> > index 8dad892..b7e0404 100644
-> > --- a/drivers/gpu/drm/mediatek/Kconfig
-> > +++ b/drivers/gpu/drm/mediatek/Kconfig
-> > @@ -3,6 +3,9 @@ config DRM_MEDIATEK
-> >         depends on DRM
-> >         depends on ARCH_MEDIATEK || (ARM && COMPILE_TEST)
-> >         select DRM_KMS_HELPER
-> > +       select DRM_MIPI_DSI
-> > +       select DRM_PANEL
-> 
-> > +       select DRM_PANEL_SIMPLE
-> Please don't force a particular panel like that. No other driver does
-> it, so might as well not start now ?
 
-I'll drop this select on DRM_PANEL_SIMPLE.
+On 28/12/15 09:07, Yingjoe Chen wrote:
+> On Mon, 2015-12-28 at 15:09 +0800, Biao Huang wrote:
+>> Add mt2701 support using mediatek common pinctrl driver.
+>> MT2701 have some special pins need an extra setting register
+>> than other ICs, so adding this support to common code.
+>>
+>> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+>> Acked-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> <...>
+>> +
+>> +static struct platform_driver mtk_pinctrl_driver = {
+>> +	.probe = mt2701_pinctrl_probe,
+>> +	.driver = {
+>> +		.name = "mediatek-mt2701-pinctrl",
+>> +		.owner = THIS_MODULE,
+>> +		.of_match_table = mt2701_pctrl_match,
+>> +	},
+>> +};
+>> +
+>> +static int __init mtk_pinctrl_init(void)
+>> +{
+>> +	return platform_driver_register(&mtk_pinctrl_driver);
+>> +}
+>> +
+>> +arch_initcall(mtk_pinctrl_init);
+>
+>
+> As discussed in
+> http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003350.html
+> we should use subsys_initcall() instead.
+>
+>
+>> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+>> index f307f1d..76279f0 100644
+>> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+>> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> <...>
+>> @@ -347,6 +352,7 @@ static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
+>>   		ret = mtk_pconf_set_pull_select(pctl, pin, true, false, arg);
+>>   		break;
+>>   	case PIN_CONFIG_INPUT_ENABLE:
+>> +		mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
+>>   		ret = mtk_pconf_set_ies_smt(pctl, pin, arg, param);
+>>   		break;
+>>   	case PIN_CONFIG_OUTPUT:
+>> @@ -354,6 +360,7 @@ static int mtk_pconf_parse_conf(struct pinctrl_dev *pctldev,
+>>   		ret = mtk_pmx_gpio_set_direction(pctldev, NULL, pin, false);
+>>   		break;
+>>   	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
+>> +		mtk_pmx_gpio_set_direction(pctldev, NULL, pin, true);
+>>   		ret = mtk_pconf_set_ies_smt(pctl, pin, arg, param);
+>>   		break;
+>>   	case PIN_CONFIG_DRIVE_STRENGTH:
+>
+> This change is not directly related to adding mt2710 support and change
+> behavior for all MTK pinctrl drivers, please create a separate patch for
+> this.
+>
 
-thanks
-Philipp
+Hi Biao,
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This patch didn't make it into v4.5-rc1. Are you thinking of sending a 
+new version addressing the comments from Yingjoe?
+
+Regards,
+Matthias
