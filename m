@@ -1,8 +1,8 @@
 From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V5 01/11] dt-bindings: ARM: Mediatek: add MT2701/7623 string
- to the PMIC wrapper doc
-Date: Sun,  7 Feb 2016 11:42:48 +0100
-Message-ID: <1454841778-35529-2-git-send-email-blogic@openwrt.org>
+Subject: [PATCH V5 02/11] soc: mediatek: PMIC wrap: don't duplicate the
+ wrapper data
+Date: Sun,  7 Feb 2016 11:42:49 +0100
+Message-ID: <1454841778-35529-3-git-send-email-blogic@openwrt.org>
 References: <1454841778-35529-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,27 +19,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
----
- Documentation/devicetree/bindings/soc/mediatek/pwrap.txt |    1 +
- 1 file changed, 1 insertion(+)
+As we add support for more devices struct pmic_wrapper_type will grow and
+we do not really want to start duplicating all the elements in
+struct pmic_wrapper.
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-index ddeb5b6..107700d 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/pwrap.txt
-@@ -18,6 +18,7 @@ IP Pairing
+Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c |   22 ++++++++--------------
+ 1 file changed, 8 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 0d9b19a..340c4b5 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -376,9 +376,7 @@ struct pmic_wrapper {
+ 	struct device *dev;
+ 	void __iomem *base;
+ 	struct regmap *regmap;
+-	int *regs;
+-	enum pwrap_type type;
+-	u32 arb_en_all;
++	const struct pmic_wrapper_type *master;
+ 	struct clk *clk_spi;
+ 	struct clk *clk_wrap;
+ 	struct reset_control *rstc;
+@@ -389,22 +387,22 @@ struct pmic_wrapper {
  
- Required properties in pwrap device node.
- - compatible:
-+	"mediatek,mt2701-pwrap" for MT2701/7623 SoCs
- 	"mediatek,mt8135-pwrap" for MT8135 SoCs
- 	"mediatek,mt8173-pwrap" for MT8173 SoCs
- - interrupts: IRQ for pwrap in SOC
+ static inline int pwrap_is_mt8135(struct pmic_wrapper *wrp)
+ {
+-	return wrp->type == PWRAP_MT8135;
++	return wrp->master->type == PWRAP_MT8135;
+ }
+ 
+ static inline int pwrap_is_mt8173(struct pmic_wrapper *wrp)
+ {
+-	return wrp->type == PWRAP_MT8173;
++	return wrp->master->type == PWRAP_MT8173;
+ }
+ 
+ static u32 pwrap_readl(struct pmic_wrapper *wrp, enum pwrap_regs reg)
+ {
+-	return readl(wrp->base + wrp->regs[reg]);
++	return readl(wrp->base + wrp->master->regs[reg]);
+ }
+ 
+ static void pwrap_writel(struct pmic_wrapper *wrp, u32 val, enum pwrap_regs reg)
+ {
+-	writel(val, wrp->base + wrp->regs[reg]);
++	writel(val, wrp->base + wrp->master->regs[reg]);
+ }
+ 
+ static bool pwrap_is_fsm_idle(struct pmic_wrapper *wrp)
+@@ -697,7 +695,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 
+ 	pwrap_writel(wrp, 1, PWRAP_WRAP_EN);
+ 
+-	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+ 
+ 	pwrap_writel(wrp, 1, PWRAP_WACS2_EN);
+ 
+@@ -742,7 +740,7 @@ static int pwrap_init(struct pmic_wrapper *wrp)
+ 	pwrap_writel(wrp, 0x1, PWRAP_CRC_EN);
+ 	pwrap_writel(wrp, 0x0, PWRAP_SIG_MODE);
+ 	pwrap_writel(wrp, PWRAP_DEW_CRC_VAL, PWRAP_SIG_ADR);
+-	pwrap_writel(wrp, wrp->arb_en_all, PWRAP_HIPRIO_ARB_EN);
++	pwrap_writel(wrp, wrp->master->arb_en_all, PWRAP_HIPRIO_ARB_EN);
+ 
+ 	if (pwrap_is_mt8135(wrp))
+ 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
+@@ -836,7 +834,6 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	struct device_node *np = pdev->dev.of_node;
+ 	const struct of_device_id *of_id =
+ 		of_match_device(of_pwrap_match_tbl, &pdev->dev);
+-	const struct pmic_wrapper_type *type;
+ 	struct resource *res;
+ 
+ 	wrp = devm_kzalloc(&pdev->dev, sizeof(*wrp), GFP_KERNEL);
+@@ -845,10 +842,7 @@ static int pwrap_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, wrp);
+ 
+-	type = of_id->data;
+-	wrp->regs = type->regs;
+-	wrp->type = type->type;
+-	wrp->arb_en_all = type->arb_en_all;
++	wrp->master = of_id->data;
+ 	wrp->dev = &pdev->dev;
+ 
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pwrap");
 -- 
 1.7.10.4
