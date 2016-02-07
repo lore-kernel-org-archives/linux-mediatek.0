@@ -1,78 +1,50 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH] MIPS: pci-mt7620: Fix return value check in
- mt7620_pci_probe()
-Date: Sat, 6 Feb 2016 16:40:03 +0100
-Message-ID: <56B613D3.2070709@openwrt.org>
-References: <1454768659-32720-1-git-send-email-weiyj_lk@163.com>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: [PATCH V5 00/11] soc: mediatek: PMIC wrap: add MT6323/2701/7623
+ support
+Date: Sun,  7 Feb 2016 11:42:47 +0100
+Message-ID: <1454841778-35529-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1454768659-32720-1-git-send-email-weiyj_lk@163.com>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: weiyj_lk@163.com, Ralf Baechle <ralf@linux-mips.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mips@linux-mips.org, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Steven Liu <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+This series adds support for a new PMIC (MT6323) and 2 new SoCs
+(MT2701/7623) to the pmic-wrap driver.
 
-On 06/02/2016 15:24, weiyj_lk@163.com wrote:
-> From: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
-> 
-> In case of error, the function devm_ioremap_resource() returns
-> ERR_PTR() and never returns NULL. The NULL test in the return
-> value check should be replaced with IS_ERR().
-> 
-> Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
 
-Hi,
+John Crispin (11):
+  dt-bindings: ARM: Mediatek: add MT2701/7623 string to the PMIC
+    wrapper doc
+  soc: mediatek: PMIC wrap: don't duplicate the wrapper data
+  soc: mediatek: PMIC wrap: add wrapper callbacks for init_reg_clock
+  soc: mediatek: PMIC wrap: split SoC specific init into callback
+  soc: mediatek: PMIC wrap: WRAP_INT_EN needs a different bitmask for
+    MT2701/7623
+  soc: mediatek: PMIC wrap: SPI_WRITE needs a different bitmask for
+    MT2701/7623
+  soc: mediatek: PMIC wrap: move wdt_src into the pmic_wrapper_type
+    struct
+  soc: mediatek: PMIC wrap: remove pwrap_is_mt8135() and
+    pwrap_is_mt8173()
+  soc: mediatek: PMIC wrap: add a slave specific struct
+  soc: mediatek: PMIC wrap: add mt6323 slave support
+  soc: mediatek: PMIC wrap: add MT2701/7623 support
 
-thanks for the fix.
+ .../devicetree/bindings/soc/mediatek/pwrap.txt     |    1 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c               |  554 +++++++++++++++-----
+ 2 files changed, 424 insertions(+), 131 deletions(-)
 
-Acked-by: John Crispin <blogic@openwrt.org>
-
-@Ralf: can you merge this via LMO with the next PR please ?
-
-@mbgg: ignore the patch please it is for the legacy MIPS SoCs
-
-	John
-
-> ---
->  arch/mips/pci/pci-mt7620.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/mips/pci/pci-mt7620.c b/arch/mips/pci/pci-mt7620.c
-> index a009ee4..044c1cd 100644
-> --- a/arch/mips/pci/pci-mt7620.c
-> +++ b/arch/mips/pci/pci-mt7620.c
-> @@ -297,12 +297,12 @@ static int mt7620_pci_probe(struct platform_device *pdev)
->  		return PTR_ERR(rstpcie0);
->  
->  	bridge_base = devm_ioremap_resource(&pdev->dev, bridge_res);
-> -	if (!bridge_base)
-> -		return -ENOMEM;
-> +	if (IS_ERR(bridge_base))
-> +		return PTR_ERR(bridge_base);
->  
->  	pcie_base = devm_ioremap_resource(&pdev->dev, pcie_res);
-> -	if (!pcie_base)
-> -		return -ENOMEM;
-> +	if (IS_ERR(pcie_base))
-> +		return PTR_ERR(pcie_base);
->  
->  	iomem_resource.start = 0;
->  	iomem_resource.end = ~0;
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+-- 
+1.7.10.4
