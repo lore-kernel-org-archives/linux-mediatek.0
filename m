@@ -1,96 +1,101 @@
-From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Subject: Re: [PATCH 1/2] serial: 8250: fix building mediatek with SERIAL_8250=m
-Date: Mon, 8 Feb 2016 11:55:35 -0500
-Message-ID: <20160208165535.GZ23093@windriver.com>
-References: <1454935947-2743255-1-git-send-email-arnd@arndb.de>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RFC 1/3] dt-bindings: soc: Add documentation for the MediaTek
+ GCE unit
+Date: Mon, 8 Feb 2016 18:51:31 +0100
+Message-ID: <56B8D5A3.3000506@gmail.com>
+References: <1453266881-16849-1-git-send-email-hs.liao@mediatek.com>
+ <1453266881-16849-2-git-send-email-hs.liao@mediatek.com>
+ <20160120163826.GA23400@rob-hp-laptop> <1453433893.15298.13.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1454935947-2743255-1-git-send-email-arnd-r2nGTMty4D4@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Matt Redfearn <matt.redfearn-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, Paul Burton <paul.burton-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1453433893.15298.13.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-[[PATCH 1/2] serial: 8250: fix building mediatek with SERIAL_8250=m] On 08/02/2016 (Mon 13:51) Arnd Bergmann wrote:
 
-> The Mediatek 8250 driver has a 'bool' Kconfig symbol, but that
-> breaks when SERIAL_8250 is a loadable module:
-> 
-> drivers/tty/built-in.o: In function `mtk8250_set_termios':
-> 8250_ingenic.c:(.text+0x1bee8): undefined reference to `serial8250_do_set_termios'
-> 8250_ingenic.c:(.text+0x1bf10): undefined reference to `uart_get_baud_rate'
-> 8250_ingenic.c:(.text+0x1c09c): undefined reference to `uart_get_divisor'
-> drivers/tty/built-in.o: In function `mtk8250_do_pm':
-> 8250_ingenic.c:(.text+0x1c0d0): undefined reference to `serial8250_do_pm'
-> drivers/tty/built-in.o: In function `mtk8250_probe':
-> 8250_ingenic.c:(.text+0x1c2e4): undefined reference to `serial8250_register_8250_port'
-> serial/8250/8250_mtk.c:287:242: error: data definition has no type or storage class [-Werror]
-> serial/8250/8250_mtk.c:287:122: error: 'mtk8250_platform_driver_init' defined but not used [-Werror=unused-function]
 
-Probably should drop the ingenic lines above ; assuming they are make -j N
-related and that mtk doesn't depend on or build ingenic.
+On 22/01/16 04:38, Horng-Shyang Liao wrote:
+> Hi Rob,
+>
+> On Wed, 2016-01-20 at 10:38 -0600, Rob Herring wrote:
+>> On Wed, Jan 20, 2016 at 01:14:38PM +0800, hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>>> From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>
+>>> This adds documentation for the MediaTek Global Command Engine (GCE) unit
+>>> found in MT8173 SoCs.
+>>>
+>>> Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   .../devicetree/bindings/soc/mediatek/gce.txt       |   33 ++++++++++++++++++++
+>>>   1 file changed, 33 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/gce.txt b/Documentation/devicetree/bindings/soc/mediatek/gce.txt
+>>> new file mode 100644
+>>> index 0000000..878b11e
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/soc/mediatek/gce.txt
+>>> @@ -0,0 +1,33 @@
+>>> +MediaTek GCE
+>>> +===============
+>>> +
+>>> +The Global Command Engine (GCE) is used to help read/write registers with
+>>> +critical time limitation, such as updating display configuration during the
+>>> +vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
+>>> +Currently, the GCE only supports display related hardwares, but we expect
+>>> +it can be extended to other hardwares for future requirements.
+>>
+>> That's a hardware limitation or just s/w is only using it for display?
+>> If the latter, that's not really relevant to this binding and should be
+>> removed.
+>
+> Just s/w is only using it for display.
+> I will remove it from next patch.
+>
+>>> +
+>>> +Required properties:
+>>> +- compatible: Must be "mediatek,mt8173-gce"
+>>> +- reg: Address range of the GCE unit
+>>> +- interrupts: The interrupt signal from the GCE block
+>>> +- clock: Clocks according to the common clock binding
+>>> +- clock-names: Must be "gce" to stand for GCE clock
+>>> +
+>>> +Example:
+>>> +
+>>> +	gce: gce@10212000 {
+>>> +		compatible = "mediatek,mt8173-gce";
+>>> +		reg = <0 0x10212000 0 0x1000>;
+>>> +		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
+>>> +		clocks = <&infracfg CLK_INFRA_GCE>;
+>>> +		clock-names = "gce";
+>>> +	};
+>>> +
+>>> +	mmsys: clock-controller@14000000 {
+>>> +		compatible = "mediatek,mt8173-mmsys", "syscon";
+>>> +		reg = <0 0x14000000 0 0x1000>;
+>>> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+>>> +		#clock-cells = <1>;
+>>> +		mediatek,gce = <&gce>;
+>>
+>> Not documented.
+>
+> It's just an example about how gce is used by display mmsys.
+> After I discussed with Mediatek display owner,
+> we think this can be moved to display device tree document.
+> Do you agree with this suggestion?
+> If so, I will remove it from next patch, too.
+>
 
-> 
-> This changes the symbol to a 'tristate', so the dependency on
-> SERIAL_8250 also works when that is set to 'm'.
-> To actually build the driver, we also need to include <linux/module.h>.
-> 
-> Note that the driver uses builtin_platform_driver() and implements
-> no .remove() callback, so unloading the module is not possible.
+The problem is that mediatek,gce is not documented, but only 
+mediatek,mt8173-gce.
 
-But this is due to d72d391c126e0ffd3047c06c4bef4d795853d5d5.  So again,
-I'm not sure what this achives vs. just making it depend on having
-SERIAL_8250=y as a trivial fix for the one build issue.
-
-If you really see a use case for tristate, then the above should be
-reverted before adding your conversion to tristate I think.
-
-Paul.
+Regards,
+Matthias
 --
-
-> 
-> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-> ---
->  drivers/tty/serial/8250/8250_mtk.c | 1 +
->  drivers/tty/serial/8250/Kconfig    | 2 +-
->  2 files changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index 9038843cadc7..7e9242a5ddfe 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -19,6 +19,7 @@
->  #include <linux/init.h>
->  #include <linux/of_irq.h>
->  #include <linux/of_platform.h>
-> +#include <linux/module.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/serial_8250.h>
-> diff --git a/drivers/tty/serial/8250/Kconfig b/drivers/tty/serial/8250/Kconfig
-> index 67ad6b0d595b..6ae0fae4f796 100644
-> --- a/drivers/tty/serial/8250/Kconfig
-> +++ b/drivers/tty/serial/8250/Kconfig
-> @@ -370,7 +370,7 @@ config SERIAL_8250_LPC18XX
->  	  serial port, say Y to this option. If unsure, say Y.
->  
->  config SERIAL_8250_MT6577
-> -	bool "Mediatek serial port support"
-> +	tristate "Mediatek serial port support"
->  	depends on SERIAL_8250 && ARCH_MEDIATEK
->  	help
->  	  If you have a Mediatek based board and want to use the
-> -- 
-> 2.7.0
-> 
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
