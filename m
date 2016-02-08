@@ -1,42 +1,35 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v6 2/7] dt-bindings: ARM: Mediatek: Document bindings for
- MT2701
-Date: Mon, 8 Feb 2016 13:24:28 -0600
-Message-ID: <20160208192428.GA26367@rob-hp-laptop>
-References: <1454665050-37776-1-git-send-email-jamesjj.liao@mediatek.com>
- <1454665050-37776-3-git-send-email-jamesjj.liao@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V5 1/2] regulator: Add document for MT6323 regulator
+Date: Mon, 8 Feb 2016 15:24:43 -0600
+Message-ID: <20160208212443.GA32296@rob-hp-laptop>
+References: <1454874037-38905-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1454665050-37776-3-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org
+In-Reply-To: <1454874037-38905-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, chen.zhong-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, HenryC.Chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Feb 05, 2016 at 05:37:25PM +0800, James Liao wrote:
-> This patch adds the binding documentation for apmixedsys, bdpsys,
-> ethsys, hifsys, imgsys, infracfg, mmsys, pericfg, topckgen and
-> vdecsys for Mediatek MT2701.
+On Sun, Feb 07, 2016 at 08:40:36PM +0100, John Crispin wrote:
+> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 > 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> Tested-by: John Crispin <blogic@openwrt.org>
 > ---
->  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |  3 ++-
->  .../bindings/arm/mediatek/mediatek,bdpsys.txt      | 22 ++++++++++++++++++++
->  .../bindings/arm/mediatek/mediatek,ethsys.txt      | 22 ++++++++++++++++++++
->  .../bindings/arm/mediatek/mediatek,hifsys.txt      | 24 ++++++++++++++++++++++
->  .../bindings/arm/mediatek/mediatek,imgsys.txt      |  3 ++-
->  .../bindings/arm/mediatek/mediatek,infracfg.txt    |  3 ++-
->  .../bindings/arm/mediatek/mediatek,mmsys.txt       |  3 ++-
->  .../bindings/arm/mediatek/mediatek,pericfg.txt     |  3 ++-
->  .../bindings/arm/mediatek/mediatek,topckgen.txt    |  3 ++-
->  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |  3 ++-
->  10 files changed, 82 insertions(+), 7 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+> Changes in V5
+> * regulator vs regulators
+> 
+> Changes in V4
+> * regulator is a subnode and not a property
+> 
+>  .../bindings/regulator/mt6323-regulator.txt        |  244 ++++++++++++++++++++
+>  1 file changed, 244 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
 
-Acked-by: Rob Herring <robh@kernel.org>
-
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
