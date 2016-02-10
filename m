@@ -1,47 +1,49 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH V5 1/2] regulator: Add document for MT6323 regulator
-Date: Tue, 9 Feb 2016 15:17:45 +0000
-Message-ID: <20160209151745.GG13270@sirena.org.uk>
-References: <1454874037-38905-1-git-send-email-blogic@openwrt.org>
- <20160209124133.GE13270@sirena.org.uk>
- <56B9DF5D.2010501@openwrt.org>
+From: Ralf Baechle <ralf@linux-mips.org>
+Subject: Re: [PATCH] MIPS: pci-mt7620: Fix return value check in
+ mt7620_pci_probe()
+Date: Wed, 10 Feb 2016 10:01:06 +0100
+Message-ID: <20160210090106.GA10352@linux-mips.org>
+References: <1454768659-32720-1-git-send-email-weiyj_lk@163.com>
+ <56B613D3.2070709@openwrt.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="eMnpOGXCMazMAbfp"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mips-bounce@linux-mips.org>
 Content-Disposition: inline
-In-Reply-To: <56B9DF5D.2010501@openwrt.org>
-Sender: linux-kernel-owner@vger.kernel.org
+In-Reply-To: <56B613D3.2070709@openwrt.org>
+Sender: linux-mips-bounce@linux-mips.org
+Errors-to: linux-mips-bounce@linux-mips.org
+List-help: <mailto:ecartis@linux-mips.org?Subject=help>
+List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
+List-software: Ecartis version 1.0.0
+List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
+List-owner: <mailto:ralf@linux-mips.org>
+List-post: <mailto:linux-mips@linux-mips.org>
+List-archive: <http://www.linux-mips.org/archives/linux-mips/>
 To: John Crispin <blogic@openwrt.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, chen.zhong@mediatek.com, HenryC.Chen@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Cc: weiyj_lk@163.com, Matthias Brugger <matthias.bgg@gmail.com>, linux-mips@linux-mips.org, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Sat, Feb 06, 2016 at 04:40:03PM +0100, John Crispin wrote:
 
---eMnpOGXCMazMAbfp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> On 06/02/2016 15:24, weiyj_lk@163.com wrote:
+> > From: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+> > 
+> > In case of error, the function devm_ioremap_resource() returns
+> > ERR_PTR() and never returns NULL. The NULL test in the return
+> > value check should be replaced with IS_ERR().
+> > 
+> > Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+> 
+> Hi,
+> 
+> thanks for the fix.
+> 
+> Acked-by: John Crispin <blogic@openwrt.org>
+> 
+> @Ralf: can you merge this via LMO with the next PR please ?
+> 
+> @mbgg: ignore the patch please it is for the legacy MIPS SoCs
 
-On Tue, Feb 09, 2016 at 01:45:17PM +0100, John Crispin wrote:
+Applied.  Thanks folks,
 
-> How would you like it to be. i am failing to understand that from your
-> comment.
-
-Remove the compatible string, you don't have a separate device to bind
-to.
-
---eMnpOGXCMazMAbfp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWugMZAAoJECTWi3JdVIfQj+QH/3WJ+cjkH+qzRfvNolvKp+Mj
-kk3wzVMJVgPlanYn6hV+RXTF4bL/fIAdHpatPLRir/SIqbPljZcQ0pGJPN2MJXZz
-NjnT/PBqCsRZCluF943Wmtyfr3O63qTZpCLLzN0WiNzc+0pB4wexKQplYxCeAKO8
-8gWCWP73BgztId4XSKeCyBNOExiLawB18FWtT6j34eECElN9hA2G7AOej8aluLH2
-QLH4vkb/QqyrBDoexHpS7M2r5VJUKV6zUp7zlTUxQw3owtZxyS1hT7dzpqMUlykS
-hg+zD7jiiQF1jrmzQVujk8l3pVkbayvFdHeL51d0z+oJ2D8WoVjVKxZfJcBnvls=
-=xrr2
------END PGP SIGNATURE-----
-
---eMnpOGXCMazMAbfp--
+  Ralf
