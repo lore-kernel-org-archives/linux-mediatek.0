@@ -1,48 +1,112 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: guard sub-directory with CONFIG_PINCTRL_MTK
-Date: Wed, 10 Feb 2016 10:29:13 +0100
-Message-ID: <CACRpkdaA37GXf8c=EznSpocLp33CaU8dYqb8V0pua4dVfZa_2w@mail.gmail.com>
-References: <1453563204-30407-1-git-send-email-yamada.masahiro@socionext.com>
-	<CACRpkdbrJ5P8Ro4RQUquMOTuXhN+54ZHYGbLqrbwW6tbwCC7Mg@mail.gmail.com>
-	<CAK7LNAQ_8o0FiRpb7D6RBmA+7WxRMFhWJjo2f4E_NH5qAGYb4A@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: [PATCH v2] pinctrl: mediatek: guard sub-directory with CONFIG_PINCTRL_MTK
+Date: Wed, 10 Feb 2016 18:54:32 +0900
+Message-ID: <1455098072-13112-1-git-send-email-yamada.masahiro@socionext.com>
 Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CAK7LNAQ_8o0FiRpb7D6RBmA+7WxRMFhWJjo2f4E_NH5qAGYb4A@mail.gmail.com>
 Sender: linux-gpio-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+To: linux-gpio@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, Masahiro Yamada <yamada.masahiro@socionext.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 28, 2016 at 5:22 AM, Masahiro Yamada
-<yamada.masahiro@socionext.com> wrote:
-> Hi Linus
->
-> 2016-01-27 23:11 GMT+09:00 Linus Walleij <linus.walleij@linaro.org>:
->> On Sat, Jan 23, 2016 at 4:33 PM, Masahiro Yamada
->> <yamada.masahiro@socionext.com> wrote:
->>
->>> CONFIG_PINCTRL_MTK is more suitable than CONFIG_ARCH_MEDIATEK
->>> to guard the drivers/pinctrl/mediatek/ directory.
->>> (I renamed CONFIG_PINCTRL_MTK_COMMON to CONFIG_PINCTRL_MTK.)
->>>
->>> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
->>
->> This patch does not apply to linux v4.5-rc1, please rebase the
->> patch and resend.
->
->
-> These two patches can be applied in this order:
-> https://patchwork.kernel.org/patch/8097541/
-> https://patchwork.kernel.org/patch/8097551/
->
-> (Sorry, I should have sent them as a series.)
+CONFIG_PINCTRL_MTK is more suitable than CONFIG_ARCH_MEDIATEK
+to guard the drivers/pinctrl/mediatek/ directory.
+(I renamed CONFIG_PINCTRL_MTK_COMMON to CONFIG_PINCTRL_MTK.)
 
-No order works for me and I have merged quite a lot of other stuff
-that had higher priority.
+This allows COMPILE_TEST to descend into drivers/pinctrl/mediatek
+without CONFIG_ARCH_MEDIATEK define.
 
-But please rebase both patches on my "devel" branch and resend
-and I will apply them.
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+---
 
-Yours,
-Linus Walleij
+Series-changes: 2
+  - Rebase onto linux-pinctrl/devel
+
+ drivers/pinctrl/Makefile          |  2 +-
+ drivers/pinctrl/mediatek/Kconfig  | 12 ++++++------
+ drivers/pinctrl/mediatek/Makefile | 12 ++++++------
+ 3 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+index 7ea62ef..e4bc115 100644
+--- a/drivers/pinctrl/Makefile
++++ b/drivers/pinctrl/Makefile
+@@ -50,4 +50,4 @@ obj-$(CONFIG_PINCTRL_STM32)	+= stm32/
+ obj-$(CONFIG_PINCTRL_SUNXI)	+= sunxi/
+ obj-$(CONFIG_PINCTRL_UNIPHIER)	+= uniphier/
+ obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
+-obj-$(CONFIG_ARCH_MEDIATEK)	+= mediatek/
++obj-$(CONFIG_PINCTRL_MTK)	+= mediatek/
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 13e9939..e4fbc58 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -1,6 +1,6 @@
+ if ARCH_MEDIATEK || COMPILE_TEST
+ 
+-config PINCTRL_MTK_COMMON
++config PINCTRL_MTK
+ 	bool
+ 	depends on OF
+ 	select PINMUX
+@@ -13,19 +13,19 @@ config PINCTRL_MT2701
+ 	bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
+ 	depends on OF
+ 	default MACH_MT2701
+-	select PINCTRL_MTK_COMMON
++	select PINCTRL_MTK
+ 
+ config PINCTRL_MT8135
+ 	bool "Mediatek MT8135 pin control" if COMPILE_TEST && !MACH_MT8135
+ 	depends on OF
+ 	default MACH_MT8135
+-	select PINCTRL_MTK_COMMON
++	select PINCTRL_MTK
+ 
+ config PINCTRL_MT8127
+ 	bool "Mediatek MT8127 pin control" if COMPILE_TEST && !MACH_MT8127
+ 	depends on OF
+ 	default MACH_MT8127
+-	select PINCTRL_MTK_COMMON
++	select PINCTRL_MTK
+ 
+ # For ARMv8 SoCs
+ config PINCTRL_MT8173
+@@ -33,13 +33,13 @@ config PINCTRL_MT8173
+ 	depends on OF
+ 	depends on ARM64 || COMPILE_TEST
+ 	default ARM64 && ARCH_MEDIATEK
+-	select PINCTRL_MTK_COMMON
++	select PINCTRL_MTK
+ 
+ # For PMIC
+ config PINCTRL_MT6397
+ 	bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
+ 	depends on OF
+ 	default MFD_MT6397
+-	select PINCTRL_MTK_COMMON
++	select PINCTRL_MTK
+ 
+ endif
+diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
+index da30314..e59c613 100644
+--- a/drivers/pinctrl/mediatek/Makefile
++++ b/drivers/pinctrl/mediatek/Makefile
+@@ -1,9 +1,9 @@
+ # Core
+-obj-$(CONFIG_PINCTRL_MTK_COMMON)	+= pinctrl-mtk-common.o
++obj-y				+= pinctrl-mtk-common.o
+ 
+ # SoC Drivers
+-obj-$(CONFIG_PINCTRL_MT2701)		+= pinctrl-mt2701.o
+-obj-$(CONFIG_PINCTRL_MT8135)		+= pinctrl-mt8135.o
+-obj-$(CONFIG_PINCTRL_MT8127)		+= pinctrl-mt8127.o
+-obj-$(CONFIG_PINCTRL_MT8173)		+= pinctrl-mt8173.o
+-obj-$(CONFIG_PINCTRL_MT6397)		+= pinctrl-mt6397.o
++obj-$(CONFIG_PINCTRL_MT2701)	+= pinctrl-mt2701.o
++obj-$(CONFIG_PINCTRL_MT8135)	+= pinctrl-mt8135.o
++obj-$(CONFIG_PINCTRL_MT8127)	+= pinctrl-mt8127.o
++obj-$(CONFIG_PINCTRL_MT8173)	+= pinctrl-mt8173.o
++obj-$(CONFIG_PINCTRL_MT6397)	+= pinctrl-mt6397.o
+-- 
+1.9.1
+
