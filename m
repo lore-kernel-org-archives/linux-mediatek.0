@@ -1,562 +1,98 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH V3 4/4] mfd: mt6397: add MT6323 support to MT6397 driver
-Date: Wed, 10 Feb 2016 16:59:32 +0000
-Message-ID: <20160210165932.GV3782@x1>
+From: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V3 2/4] mfd: mt6397: int_con and int_status may vary in
+ location
+Date: Wed, 10 Feb 2016 16:59:07 +0000
+Message-ID: <20160210165907.GT3782@x1>
 References: <1453895258-44369-1-git-send-email-blogic@openwrt.org>
- <1453895258-44369-4-git-send-email-blogic@openwrt.org>
+ <1453895258-44369-2-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1453895258-44369-4-git-send-email-blogic@openwrt.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <blogic@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1453895258-44369-2-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 27 Jan 2016, John Crispin wrote:
-
-> Signed-off-by: John Crispin <blogic@openwrt.org>
-> ---
-> Changes in V3
-> * fix copyright date/author
-> * use short license text
-> * reanme the conetxt variable inside the probe function
->=20
->  drivers/mfd/mt6397-core.c            |   20 ++
->  include/linux/mfd/mt6323/core.h      |   36 +++
->  include/linux/mfd/mt6323/registers.h |  408 ++++++++++++++++++++++++=
-++++++++++
->  3 files changed, 464 insertions(+)
->  create mode 100644 include/linux/mfd/mt6323/core.h
->  create mode 100644 include/linux/mfd/mt6323/registers.h
-
-Applied, thanks.
-
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index aa91606..8234cd3 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -19,11 +19,14 @@
->  #include <linux/regmap.h>
->  #include <linux/mfd/core.h>
->  #include <linux/mfd/mt6397/core.h>
-> +#include <linux/mfd/mt6323/core.h>
->  #include <linux/mfd/mt6397/registers.h>
-> +#include <linux/mfd/mt6323/registers.h>
-> =20
->  #define MT6397_RTC_BASE		0xe000
->  #define MT6397_RTC_SIZE		0x3e
-> =20
-> +#define MT6323_CID_CODE		0x23
->  #define MT6391_CID_CODE		0x91
->  #define MT6397_CID_CODE		0x97
-> =20
-> @@ -40,6 +43,13 @@ static const struct resource mt6397_rtc_resources[=
-] =3D {
->  	},
->  };
-> =20
-> +static const struct mfd_cell mt6323_devs[] =3D {
-> +	{
-> +		.name =3D "mt6323-regulator",
-> +		.of_compatible =3D "mediatek,mt6323-regulator"
-> +	},
-> +};
-> +
->  static const struct mfd_cell mt6397_devs[] =3D {
->  	{
->  		.name =3D "mt6397-rtc",
-> @@ -261,6 +271,15 @@ static int mt6397_probe(struct platform_device *=
-pdev)
->  	}
-> =20
->  	switch (id & 0xff) {
-> +	case MT6323_CID_CODE:
-> +		pmic->int_con[0] =3D MT6323_INT_CON0;
-> +		pmic->int_con[1] =3D MT6323_INT_CON1;
-> +		pmic->int_status[0] =3D MT6323_INT_STATUS0;
-> +		pmic->int_status[1] =3D MT6323_INT_STATUS1;
-> +		ret =3D mfd_add_devices(&pdev->dev, -1, mt6323_devs,
-> +				ARRAY_SIZE(mt6323_devs), NULL, 0, NULL);
-> +		break;
-> +
->  	case MT6397_CID_CODE:
->  	case MT6391_CID_CODE:
->  		pmic->int_con[0] =3D MT6397_INT_CON0;
-> @@ -302,6 +321,7 @@ static int mt6397_remove(struct platform_device *=
-pdev)
-> =20
->  static const struct of_device_id mt6397_of_match[] =3D {
->  	{ .compatible =3D "mediatek,mt6397" },
-> +	{ .compatible =3D "mediatek,mt6323" },
->  	{ }
->  };
->  MODULE_DEVICE_TABLE(of, mt6397_of_match);
-> diff --git a/include/linux/mfd/mt6323/core.h b/include/linux/mfd/mt63=
-23/core.h
-> new file mode 100644
-> index 0000000..06d0ec3
-> --- /dev/null
-> +++ b/include/linux/mfd/mt6323/core.h
-> @@ -0,0 +1,36 @@
-> +/*
-> + * Copyright (c) 2016 Chen Zhong <chen.zhong@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or mod=
-ify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + */
-> +
-> +#ifndef __MFD_MT6323_CORE_H__
-> +#define __MFD_MT6323_CORE_H__
-> +
-> +enum MT6323_IRQ_STATUS_numbers {
-> +	MT6323_IRQ_STATUS_SPKL_AB =3D 0,
-> +	MT6323_IRQ_STATUS_SPKL,
-> +	MT6323_IRQ_STATUS_BAT_L,
-> +	MT6323_IRQ_STATUS_BAT_H,
-> +	MT6323_IRQ_STATUS_WATCHDOG,
-> +	MT6323_IRQ_STATUS_PWRKEY,
-> +	MT6323_IRQ_STATUS_THR_L,
-> +	MT6323_IRQ_STATUS_THR_H,
-> +	MT6323_IRQ_STATUS_VBATON_UNDET,
-> +	MT6323_IRQ_STATUS_BVALID_DET,
-> +	MT6323_IRQ_STATUS_CHRDET,
-> +	MT6323_IRQ_STATUS_OV,
-> +	MT6323_IRQ_STATUS_LDO =3D 16,
-> +	MT6323_IRQ_STATUS_FCHRKEY,
-> +	MT6323_IRQ_STATUS_ACCDET,
-> +	MT6323_IRQ_STATUS_AUDIO,
-> +	MT6323_IRQ_STATUS_RTC,
-> +	MT6323_IRQ_STATUS_VPROC,
-> +	MT6323_IRQ_STATUS_VSYS,
-> +	MT6323_IRQ_STATUS_VPA,
-> +	MT6323_IRQ_STATUS_NR,
-> +};
-> +
-> +#endif /* __MFD_MT6323_CORE_H__ */
-> diff --git a/include/linux/mfd/mt6323/registers.h b/include/linux/mfd=
-/mt6323/registers.h
-> new file mode 100644
-> index 0000000..160f3c0
-> --- /dev/null
-> +++ b/include/linux/mfd/mt6323/registers.h
-> @@ -0,0 +1,408 @@
-> +/*
-> + * Copyright (c) 2016 Chen Zhong <chen.zhong@mediatek.com>
-> + *
-> + * This program is free software; you can redistribute it and/or mod=
-ify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + */
-> +
-> +#ifndef __MFD_MT6323_REGISTERS_H__
-> +#define __MFD_MT6323_REGISTERS_H__
-> +
-> +/* PMIC Registers */
-> +#define MT6323_CHR_CON0           0x0000
-> +#define MT6323_CHR_CON1           0x0002
-> +#define MT6323_CHR_CON2           0x0004
-> +#define MT6323_CHR_CON3           0x0006
-> +#define MT6323_CHR_CON4           0x0008
-> +#define MT6323_CHR_CON5           0x000A
-> +#define MT6323_CHR_CON6           0x000C
-> +#define MT6323_CHR_CON7           0x000E
-> +#define MT6323_CHR_CON8           0x0010
-> +#define MT6323_CHR_CON9           0x0012
-> +#define MT6323_CHR_CON10          0x0014
-> +#define MT6323_CHR_CON11          0x0016
-> +#define MT6323_CHR_CON12          0x0018
-> +#define MT6323_CHR_CON13          0x001A
-> +#define MT6323_CHR_CON14          0x001C
-> +#define MT6323_CHR_CON15          0x001E
-> +#define MT6323_CHR_CON16          0x0020
-> +#define MT6323_CHR_CON17          0x0022
-> +#define MT6323_CHR_CON18          0x0024
-> +#define MT6323_CHR_CON19          0x0026
-> +#define MT6323_CHR_CON20          0x0028
-> +#define MT6323_CHR_CON21          0x002A
-> +#define MT6323_CHR_CON22          0x002C
-> +#define MT6323_CHR_CON23          0x002E
-> +#define MT6323_CHR_CON24          0x0030
-> +#define MT6323_CHR_CON25          0x0032
-> +#define MT6323_CHR_CON26          0x0034
-> +#define MT6323_CHR_CON27          0x0036
-> +#define MT6323_CHR_CON28          0x0038
-> +#define MT6323_CHR_CON29          0x003A
-> +#define MT6323_STRUP_CON0         0x003C
-> +#define MT6323_STRUP_CON2         0x003E
-> +#define MT6323_STRUP_CON3         0x0040
-> +#define MT6323_STRUP_CON4         0x0042
-> +#define MT6323_STRUP_CON5         0x0044
-> +#define MT6323_STRUP_CON6         0x0046
-> +#define MT6323_STRUP_CON7         0x0048
-> +#define MT6323_STRUP_CON8         0x004A
-> +#define MT6323_STRUP_CON9         0x004C
-> +#define MT6323_STRUP_CON10        0x004E
-> +#define MT6323_STRUP_CON11        0x0050
-> +#define MT6323_SPK_CON0           0x0052
-> +#define MT6323_SPK_CON1           0x0054
-> +#define MT6323_SPK_CON2           0x0056
-> +#define MT6323_SPK_CON6           0x005E
-> +#define MT6323_SPK_CON7           0x0060
-> +#define MT6323_SPK_CON8           0x0062
-> +#define MT6323_SPK_CON9           0x0064
-> +#define MT6323_SPK_CON10          0x0066
-> +#define MT6323_SPK_CON11          0x0068
-> +#define MT6323_SPK_CON12          0x006A
-> +#define MT6323_CID                0x0100
-> +#define MT6323_TOP_CKPDN0         0x0102
-> +#define MT6323_TOP_CKPDN0_SET     0x0104
-> +#define MT6323_TOP_CKPDN0_CLR     0x0106
-> +#define MT6323_TOP_CKPDN1         0x0108
-> +#define MT6323_TOP_CKPDN1_SET     0x010A
-> +#define MT6323_TOP_CKPDN1_CLR     0x010C
-> +#define MT6323_TOP_CKPDN2         0x010E
-> +#define MT6323_TOP_CKPDN2_SET     0x0110
-> +#define MT6323_TOP_CKPDN2_CLR     0x0112
-> +#define MT6323_TOP_RST_CON        0x0114
-> +#define MT6323_TOP_RST_CON_SET    0x0116
-> +#define MT6323_TOP_RST_CON_CLR    0x0118
-> +#define MT6323_TOP_RST_MISC       0x011A
-> +#define MT6323_TOP_RST_MISC_SET   0x011C
-> +#define MT6323_TOP_RST_MISC_CLR   0x011E
-> +#define MT6323_TOP_CKCON0         0x0120
-> +#define MT6323_TOP_CKCON0_SET     0x0122
-> +#define MT6323_TOP_CKCON0_CLR     0x0124
-> +#define MT6323_TOP_CKCON1         0x0126
-> +#define MT6323_TOP_CKCON1_SET     0x0128
-> +#define MT6323_TOP_CKCON1_CLR     0x012A
-> +#define MT6323_TOP_CKTST0         0x012C
-> +#define MT6323_TOP_CKTST1         0x012E
-> +#define MT6323_TOP_CKTST2         0x0130
-> +#define MT6323_TEST_OUT           0x0132
-> +#define MT6323_TEST_CON0          0x0134
-> +#define MT6323_TEST_CON1          0x0136
-> +#define MT6323_EN_STATUS0         0x0138
-> +#define MT6323_EN_STATUS1         0x013A
-> +#define MT6323_OCSTATUS0          0x013C
-> +#define MT6323_OCSTATUS1          0x013E
-> +#define MT6323_PGSTATUS           0x0140
-> +#define MT6323_CHRSTATUS          0x0142
-> +#define MT6323_TDSEL_CON          0x0144
-> +#define MT6323_RDSEL_CON          0x0146
-> +#define MT6323_SMT_CON0           0x0148
-> +#define MT6323_SMT_CON1           0x014A
-> +#define MT6323_SMT_CON2           0x014C
-> +#define MT6323_SMT_CON3           0x014E
-> +#define MT6323_SMT_CON4           0x0150
-> +#define MT6323_DRV_CON0           0x0152
-> +#define MT6323_DRV_CON1           0x0154
-> +#define MT6323_DRV_CON2           0x0156
-> +#define MT6323_DRV_CON3           0x0158
-> +#define MT6323_DRV_CON4           0x015A
-> +#define MT6323_SIMLS1_CON         0x015C
-> +#define MT6323_SIMLS2_CON         0x015E
-> +#define MT6323_INT_CON0           0x0160
-> +#define MT6323_INT_CON0_SET       0x0162
-> +#define MT6323_INT_CON0_CLR       0x0164
-> +#define MT6323_INT_CON1           0x0166
-> +#define MT6323_INT_CON1_SET       0x0168
-> +#define MT6323_INT_CON1_CLR       0x016A
-> +#define MT6323_INT_MISC_CON       0x016C
-> +#define MT6323_INT_MISC_CON_SET   0x016E
-> +#define MT6323_INT_MISC_CON_CLR   0x0170
-> +#define MT6323_INT_STATUS0        0x0172
-> +#define MT6323_INT_STATUS1        0x0174
-> +#define MT6323_OC_GEAR_0          0x0176
-> +#define MT6323_OC_GEAR_1          0x0178
-> +#define MT6323_OC_GEAR_2          0x017A
-> +#define MT6323_OC_CTL_VPROC       0x017C
-> +#define MT6323_OC_CTL_VSYS        0x017E
-> +#define MT6323_OC_CTL_VPA         0x0180
-> +#define MT6323_FQMTR_CON0         0x0182
-> +#define MT6323_FQMTR_CON1         0x0184
-> +#define MT6323_FQMTR_CON2         0x0186
-> +#define MT6323_RG_SPI_CON         0x0188
-> +#define MT6323_DEW_DIO_EN         0x018A
-> +#define MT6323_DEW_READ_TEST      0x018C
-> +#define MT6323_DEW_WRITE_TEST     0x018E
-> +#define MT6323_DEW_CRC_SWRST      0x0190
-> +#define MT6323_DEW_CRC_EN         0x0192
-> +#define MT6323_DEW_CRC_VAL        0x0194
-> +#define MT6323_DEW_DBG_MON_SEL    0x0196
-> +#define MT6323_DEW_CIPHER_KEY_SEL 0x0198
-> +#define MT6323_DEW_CIPHER_IV_SEL  0x019A
-> +#define MT6323_DEW_CIPHER_EN      0x019C
-> +#define MT6323_DEW_CIPHER_RDY     0x019E
-> +#define MT6323_DEW_CIPHER_MODE    0x01A0
-> +#define MT6323_DEW_CIPHER_SWRST   0x01A2
-> +#define MT6323_DEW_RDDMY_NO       0x01A4
-> +#define MT6323_DEW_RDATA_DLY_SEL  0x01A6
-> +#define MT6323_BUCK_CON0          0x0200
-> +#define MT6323_BUCK_CON1          0x0202
-> +#define MT6323_BUCK_CON2          0x0204
-> +#define MT6323_BUCK_CON3          0x0206
-> +#define MT6323_BUCK_CON4          0x0208
-> +#define MT6323_BUCK_CON5          0x020A
-> +#define MT6323_VPROC_CON0         0x020C
-> +#define MT6323_VPROC_CON1         0x020E
-> +#define MT6323_VPROC_CON2         0x0210
-> +#define MT6323_VPROC_CON3         0x0212
-> +#define MT6323_VPROC_CON4         0x0214
-> +#define MT6323_VPROC_CON5         0x0216
-> +#define MT6323_VPROC_CON7         0x021A
-> +#define MT6323_VPROC_CON8         0x021C
-> +#define MT6323_VPROC_CON9         0x021E
-> +#define MT6323_VPROC_CON10        0x0220
-> +#define MT6323_VPROC_CON11        0x0222
-> +#define MT6323_VPROC_CON12        0x0224
-> +#define MT6323_VPROC_CON13        0x0226
-> +#define MT6323_VPROC_CON14        0x0228
-> +#define MT6323_VPROC_CON15        0x022A
-> +#define MT6323_VPROC_CON18        0x0230
-> +#define MT6323_VSYS_CON0          0x0232
-> +#define MT6323_VSYS_CON1          0x0234
-> +#define MT6323_VSYS_CON2          0x0236
-> +#define MT6323_VSYS_CON3          0x0238
-> +#define MT6323_VSYS_CON4          0x023A
-> +#define MT6323_VSYS_CON5          0x023C
-> +#define MT6323_VSYS_CON7          0x0240
-> +#define MT6323_VSYS_CON8          0x0242
-> +#define MT6323_VSYS_CON9          0x0244
-> +#define MT6323_VSYS_CON10         0x0246
-> +#define MT6323_VSYS_CON11         0x0248
-> +#define MT6323_VSYS_CON12         0x024A
-> +#define MT6323_VSYS_CON13         0x024C
-> +#define MT6323_VSYS_CON14         0x024E
-> +#define MT6323_VSYS_CON15         0x0250
-> +#define MT6323_VSYS_CON18         0x0256
-> +#define MT6323_VPA_CON0           0x0300
-> +#define MT6323_VPA_CON1           0x0302
-> +#define MT6323_VPA_CON2           0x0304
-> +#define MT6323_VPA_CON3           0x0306
-> +#define MT6323_VPA_CON4           0x0308
-> +#define MT6323_VPA_CON5           0x030A
-> +#define MT6323_VPA_CON7           0x030E
-> +#define MT6323_VPA_CON8           0x0310
-> +#define MT6323_VPA_CON9           0x0312
-> +#define MT6323_VPA_CON10          0x0314
-> +#define MT6323_VPA_CON11          0x0316
-> +#define MT6323_VPA_CON12          0x0318
-> +#define MT6323_VPA_CON14          0x031C
-> +#define MT6323_VPA_CON16          0x0320
-> +#define MT6323_VPA_CON17          0x0322
-> +#define MT6323_VPA_CON18          0x0324
-> +#define MT6323_VPA_CON19          0x0326
-> +#define MT6323_VPA_CON20          0x0328
-> +#define MT6323_BUCK_K_CON0        0x032A
-> +#define MT6323_BUCK_K_CON1        0x032C
-> +#define MT6323_BUCK_K_CON2        0x032E
-> +#define MT6323_ISINK0_CON0        0x0330
-> +#define MT6323_ISINK0_CON1        0x0332
-> +#define MT6323_ISINK0_CON2        0x0334
-> +#define MT6323_ISINK0_CON3        0x0336
-> +#define MT6323_ISINK1_CON0        0x0338
-> +#define MT6323_ISINK1_CON1        0x033A
-> +#define MT6323_ISINK1_CON2        0x033C
-> +#define MT6323_ISINK1_CON3        0x033E
-> +#define MT6323_ISINK2_CON0        0x0340
-> +#define MT6323_ISINK2_CON1        0x0342
-> +#define MT6323_ISINK2_CON2        0x0344
-> +#define MT6323_ISINK2_CON3        0x0346
-> +#define MT6323_ISINK3_CON0        0x0348
-> +#define MT6323_ISINK3_CON1        0x034A
-> +#define MT6323_ISINK3_CON2        0x034C
-> +#define MT6323_ISINK3_CON3        0x034E
-> +#define MT6323_ISINK_ANA0         0x0350
-> +#define MT6323_ISINK_ANA1         0x0352
-> +#define MT6323_ISINK_PHASE_DLY    0x0354
-> +#define MT6323_ISINK_EN_CTRL      0x0356
-> +#define MT6323_ANALDO_CON0        0x0400
-> +#define MT6323_ANALDO_CON1        0x0402
-> +#define MT6323_ANALDO_CON2        0x0404
-> +#define MT6323_ANALDO_CON3        0x0406
-> +#define MT6323_ANALDO_CON4        0x0408
-> +#define MT6323_ANALDO_CON5        0x040A
-> +#define MT6323_ANALDO_CON6        0x040C
-> +#define MT6323_ANALDO_CON7        0x040E
-> +#define MT6323_ANALDO_CON8        0x0410
-> +#define MT6323_ANALDO_CON10       0x0412
-> +#define MT6323_ANALDO_CON15       0x0414
-> +#define MT6323_ANALDO_CON16       0x0416
-> +#define MT6323_ANALDO_CON17       0x0418
-> +#define MT6323_ANALDO_CON18       0x041A
-> +#define MT6323_ANALDO_CON19       0x041C
-> +#define MT6323_ANALDO_CON20       0x041E
-> +#define MT6323_ANALDO_CON21       0x0420
-> +#define MT6323_DIGLDO_CON0        0x0500
-> +#define MT6323_DIGLDO_CON2        0x0502
-> +#define MT6323_DIGLDO_CON3        0x0504
-> +#define MT6323_DIGLDO_CON5        0x0506
-> +#define MT6323_DIGLDO_CON6        0x0508
-> +#define MT6323_DIGLDO_CON7        0x050A
-> +#define MT6323_DIGLDO_CON8        0x050C
-> +#define MT6323_DIGLDO_CON9        0x050E
-> +#define MT6323_DIGLDO_CON10       0x0510
-> +#define MT6323_DIGLDO_CON11       0x0512
-> +#define MT6323_DIGLDO_CON12       0x0514
-> +#define MT6323_DIGLDO_CON13       0x0516
-> +#define MT6323_DIGLDO_CON14       0x0518
-> +#define MT6323_DIGLDO_CON15       0x051A
-> +#define MT6323_DIGLDO_CON16       0x051C
-> +#define MT6323_DIGLDO_CON17       0x051E
-> +#define MT6323_DIGLDO_CON18       0x0520
-> +#define MT6323_DIGLDO_CON19       0x0522
-> +#define MT6323_DIGLDO_CON20       0x0524
-> +#define MT6323_DIGLDO_CON21       0x0526
-> +#define MT6323_DIGLDO_CON23       0x0528
-> +#define MT6323_DIGLDO_CON24       0x052A
-> +#define MT6323_DIGLDO_CON26       0x052C
-> +#define MT6323_DIGLDO_CON27       0x052E
-> +#define MT6323_DIGLDO_CON28       0x0530
-> +#define MT6323_DIGLDO_CON29       0x0532
-> +#define MT6323_DIGLDO_CON30       0x0534
-> +#define MT6323_DIGLDO_CON31       0x0536
-> +#define MT6323_DIGLDO_CON32       0x0538
-> +#define MT6323_DIGLDO_CON33       0x053A
-> +#define MT6323_DIGLDO_CON34       0x053C
-> +#define MT6323_DIGLDO_CON35       0x053E
-> +#define MT6323_DIGLDO_CON36       0x0540
-> +#define MT6323_DIGLDO_CON39       0x0542
-> +#define MT6323_DIGLDO_CON40       0x0544
-> +#define MT6323_DIGLDO_CON41       0x0546
-> +#define MT6323_DIGLDO_CON42       0x0548
-> +#define MT6323_DIGLDO_CON43       0x054A
-> +#define MT6323_DIGLDO_CON44       0x054C
-> +#define MT6323_DIGLDO_CON45       0x054E
-> +#define MT6323_DIGLDO_CON46       0x0550
-> +#define MT6323_DIGLDO_CON47       0x0552
-> +#define MT6323_DIGLDO_CON48       0x0554
-> +#define MT6323_DIGLDO_CON49       0x0556
-> +#define MT6323_DIGLDO_CON50       0x0558
-> +#define MT6323_DIGLDO_CON51       0x055A
-> +#define MT6323_DIGLDO_CON52       0x055C
-> +#define MT6323_DIGLDO_CON53       0x055E
-> +#define MT6323_DIGLDO_CON54       0x0560
-> +#define MT6323_EFUSE_CON0         0x0600
-> +#define MT6323_EFUSE_CON1         0x0602
-> +#define MT6323_EFUSE_CON2         0x0604
-> +#define MT6323_EFUSE_CON3         0x0606
-> +#define MT6323_EFUSE_CON4         0x0608
-> +#define MT6323_EFUSE_CON5         0x060A
-> +#define MT6323_EFUSE_CON6         0x060C
-> +#define MT6323_EFUSE_VAL_0_15     0x060E
-> +#define MT6323_EFUSE_VAL_16_31    0x0610
-> +#define MT6323_EFUSE_VAL_32_47    0x0612
-> +#define MT6323_EFUSE_VAL_48_63    0x0614
-> +#define MT6323_EFUSE_VAL_64_79    0x0616
-> +#define MT6323_EFUSE_VAL_80_95    0x0618
-> +#define MT6323_EFUSE_VAL_96_111   0x061A
-> +#define MT6323_EFUSE_VAL_112_127  0x061C
-> +#define MT6323_EFUSE_VAL_128_143  0x061E
-> +#define MT6323_EFUSE_VAL_144_159  0x0620
-> +#define MT6323_EFUSE_VAL_160_175  0x0622
-> +#define MT6323_EFUSE_VAL_176_191  0x0624
-> +#define MT6323_EFUSE_DOUT_0_15    0x0626
-> +#define MT6323_EFUSE_DOUT_16_31   0x0628
-> +#define MT6323_EFUSE_DOUT_32_47   0x062A
-> +#define MT6323_EFUSE_DOUT_48_63   0x062C
-> +#define MT6323_EFUSE_DOUT_64_79   0x062E
-> +#define MT6323_EFUSE_DOUT_80_95   0x0630
-> +#define MT6323_EFUSE_DOUT_96_111  0x0632
-> +#define MT6323_EFUSE_DOUT_112_127 0x0634
-> +#define MT6323_EFUSE_DOUT_128_143 0x0636
-> +#define MT6323_EFUSE_DOUT_144_159 0x0638
-> +#define MT6323_EFUSE_DOUT_160_175 0x063A
-> +#define MT6323_EFUSE_DOUT_176_191 0x063C
-> +#define MT6323_EFUSE_CON7         0x063E
-> +#define MT6323_EFUSE_CON8         0x0640
-> +#define MT6323_EFUSE_CON9         0x0642
-> +#define MT6323_RTC_MIX_CON0       0x0644
-> +#define MT6323_RTC_MIX_CON1       0x0646
-> +#define MT6323_AUDTOP_CON0        0x0700
-> +#define MT6323_AUDTOP_CON1        0x0702
-> +#define MT6323_AUDTOP_CON2        0x0704
-> +#define MT6323_AUDTOP_CON3        0x0706
-> +#define MT6323_AUDTOP_CON4        0x0708
-> +#define MT6323_AUDTOP_CON5        0x070A
-> +#define MT6323_AUDTOP_CON6        0x070C
-> +#define MT6323_AUDTOP_CON7        0x070E
-> +#define MT6323_AUDTOP_CON8        0x0710
-> +#define MT6323_AUDTOP_CON9        0x0712
-> +#define MT6323_AUXADC_ADC0        0x0714
-> +#define MT6323_AUXADC_ADC1        0x0716
-> +#define MT6323_AUXADC_ADC2        0x0718
-> +#define MT6323_AUXADC_ADC3        0x071A
-> +#define MT6323_AUXADC_ADC4        0x071C
-> +#define MT6323_AUXADC_ADC5        0x071E
-> +#define MT6323_AUXADC_ADC6        0x0720
-> +#define MT6323_AUXADC_ADC7        0x0722
-> +#define MT6323_AUXADC_ADC8        0x0724
-> +#define MT6323_AUXADC_ADC9        0x0726
-> +#define MT6323_AUXADC_ADC10       0x0728
-> +#define MT6323_AUXADC_ADC11       0x072A
-> +#define MT6323_AUXADC_ADC12       0x072C
-> +#define MT6323_AUXADC_ADC13       0x072E
-> +#define MT6323_AUXADC_ADC14       0x0730
-> +#define MT6323_AUXADC_ADC15       0x0732
-> +#define MT6323_AUXADC_ADC16       0x0734
-> +#define MT6323_AUXADC_ADC17       0x0736
-> +#define MT6323_AUXADC_ADC18       0x0738
-> +#define MT6323_AUXADC_ADC19       0x073A
-> +#define MT6323_AUXADC_ADC20       0x073C
-> +#define MT6323_AUXADC_RSV1        0x073E
-> +#define MT6323_AUXADC_RSV2        0x0740
-> +#define MT6323_AUXADC_CON0        0x0742
-> +#define MT6323_AUXADC_CON1        0x0744
-> +#define MT6323_AUXADC_CON2        0x0746
-> +#define MT6323_AUXADC_CON3        0x0748
-> +#define MT6323_AUXADC_CON4        0x074A
-> +#define MT6323_AUXADC_CON5        0x074C
-> +#define MT6323_AUXADC_CON6        0x074E
-> +#define MT6323_AUXADC_CON7        0x0750
-> +#define MT6323_AUXADC_CON8        0x0752
-> +#define MT6323_AUXADC_CON9        0x0754
-> +#define MT6323_AUXADC_CON10       0x0756
-> +#define MT6323_AUXADC_CON11       0x0758
-> +#define MT6323_AUXADC_CON12       0x075A
-> +#define MT6323_AUXADC_CON13       0x075C
-> +#define MT6323_AUXADC_CON14       0x075E
-> +#define MT6323_AUXADC_CON15       0x0760
-> +#define MT6323_AUXADC_CON16       0x0762
-> +#define MT6323_AUXADC_CON17       0x0764
-> +#define MT6323_AUXADC_CON18       0x0766
-> +#define MT6323_AUXADC_CON19       0x0768
-> +#define MT6323_AUXADC_CON20       0x076A
-> +#define MT6323_AUXADC_CON21       0x076C
-> +#define MT6323_AUXADC_CON22       0x076E
-> +#define MT6323_AUXADC_CON23       0x0770
-> +#define MT6323_AUXADC_CON24       0x0772
-> +#define MT6323_AUXADC_CON25       0x0774
-> +#define MT6323_AUXADC_CON26       0x0776
-> +#define MT6323_AUXADC_CON27       0x0778
-> +#define MT6323_ACCDET_CON0        0x077A
-> +#define MT6323_ACCDET_CON1        0x077C
-> +#define MT6323_ACCDET_CON2        0x077E
-> +#define MT6323_ACCDET_CON3        0x0780
-> +#define MT6323_ACCDET_CON4        0x0782
-> +#define MT6323_ACCDET_CON5        0x0784
-> +#define MT6323_ACCDET_CON6        0x0786
-> +#define MT6323_ACCDET_CON7        0x0788
-> +#define MT6323_ACCDET_CON8        0x078A
-> +#define MT6323_ACCDET_CON9        0x078C
-> +#define MT6323_ACCDET_CON10       0x078E
-> +#define MT6323_ACCDET_CON11       0x0790
-> +#define MT6323_ACCDET_CON12       0x0792
-> +#define MT6323_ACCDET_CON13       0x0794
-> +#define MT6323_ACCDET_CON14       0x0796
-> +#define MT6323_ACCDET_CON15       0x0798
-> +#define MT6323_ACCDET_CON16       0x079A
-> +
-> +#endif /* __MFD_MT6323_REGISTERS_H__ */
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+T24gV2VkLCAyNyBKYW4gMjAxNiwgSm9obiBDcmlzcGluIHdyb3RlOgoKPiBNVDYzMjMgaGFzIHRo
+ZSBJTlRfQ09OIGFuZCBJTlRfU1RBVFVTIGxvY2F0ZWQgYXQgYSBkaWZmZXJlbnQgcG9zaXRpb24u
+Cj4gTWFrZSB0aGUgcmVnaXN0ZXJzIGxvY2F0aW9ucyBjb25maWd1cmFibGUuCj4gCj4gU2lnbmVk
+LW9mZi1ieTogSm9obiBDcmlzcGluIDxibG9naWNAb3BlbndydC5vcmc+Cj4gLS0tCj4gIGRyaXZl
+cnMvbWZkL210NjM5Ny1jb3JlLmMgICAgICAgfCAgIDI3ICsrKysrKysrKysrKysrKysrLS0tLS0t
+LS0tLQo+ICBpbmNsdWRlL2xpbnV4L21mZC9tdDYzOTcvY29yZS5oIHwgICAgMiArKwo+ICAyIGZp
+bGVzIGNoYW5nZWQsIDE5IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQoKQXBwbGllZCwg
+dGhhbmtzLgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZmQvbXQ2Mzk3LWNvcmUuYyBiL2RyaXZl
+cnMvbWZkL210NjM5Ny1jb3JlLmMKPiBpbmRleCAxNzQ5YzFjLi43NWFkMGZlIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvbWZkL210NjM5Ny1jb3JlLmMKPiArKysgYi9kcml2ZXJzL21mZC9tdDYzOTct
+Y29yZS5jCj4gQEAgLTY5LDggKzY5LDEwIEBAIHN0YXRpYyB2b2lkIG10NjM5N19pcnFfc3luY191
+bmxvY2soc3RydWN0IGlycV9kYXRhICpkYXRhKQo+ICB7Cj4gIAlzdHJ1Y3QgbXQ2Mzk3X2NoaXAg
+Km10NjM5NyA9IGlycV9kYXRhX2dldF9pcnFfY2hpcF9kYXRhKGRhdGEpOwo+ICAKPiAtCXJlZ21h
+cF93cml0ZShtdDYzOTctPnJlZ21hcCwgTVQ2Mzk3X0lOVF9DT04wLCBtdDYzOTctPmlycV9tYXNr
+c19jdXJbMF0pOwo+IC0JcmVnbWFwX3dyaXRlKG10NjM5Ny0+cmVnbWFwLCBNVDYzOTdfSU5UX0NP
+TjEsIG10NjM5Ny0+aXJxX21hc2tzX2N1clsxXSk7Cj4gKwlyZWdtYXBfd3JpdGUobXQ2Mzk3LT5y
+ZWdtYXAsIG10NjM5Ny0+aW50X2NvblswXSwKPiArCQkgICAgIG10NjM5Ny0+aXJxX21hc2tzX2N1
+clswXSk7Cj4gKwlyZWdtYXBfd3JpdGUobXQ2Mzk3LT5yZWdtYXAsIG10NjM5Ny0+aW50X2Nvblsx
+XSwKPiArCQkgICAgIG10NjM5Ny0+aXJxX21hc2tzX2N1clsxXSk7Cj4gIAo+ICAJbXV0ZXhfdW5s
+b2NrKCZtdDYzOTctPmlycWxvY2spOwo+ICB9Cj4gQEAgLTE0Nyw4ICsxNDksOCBAQCBzdGF0aWMg
+aXJxcmV0dXJuX3QgbXQ2Mzk3X2lycV90aHJlYWQoaW50IGlycSwgdm9pZCAqZGF0YSkKPiAgewo+
+ICAJc3RydWN0IG10NjM5N19jaGlwICptdDYzOTcgPSBkYXRhOwo+ICAKPiAtCW10NjM5N19pcnFf
+aGFuZGxlX3JlZyhtdDYzOTcsIE1UNjM5N19JTlRfU1RBVFVTMCwgMCk7Cj4gLQltdDYzOTdfaXJx
+X2hhbmRsZV9yZWcobXQ2Mzk3LCBNVDYzOTdfSU5UX1NUQVRVUzEsIDE2KTsKPiArCW10NjM5N19p
+cnFfaGFuZGxlX3JlZyhtdDYzOTcsIG10NjM5Ny0+aW50X3N0YXR1c1swXSwgMCk7Cj4gKwltdDYz
+OTdfaXJxX2hhbmRsZV9yZWcobXQ2Mzk3LCBtdDYzOTctPmludF9zdGF0dXNbMV0sIDE2KTsKPiAg
+Cj4gIAlyZXR1cm4gSVJRX0hBTkRMRUQ7Cj4gIH0KPiBAQCAtMTc3LDggKzE3OSw4IEBAIHN0YXRp
+YyBpbnQgbXQ2Mzk3X2lycV9pbml0KHN0cnVjdCBtdDYzOTdfY2hpcCAqbXQ2Mzk3KQo+ICAJbXV0
+ZXhfaW5pdCgmbXQ2Mzk3LT5pcnFsb2NrKTsKPiAgCj4gIAkvKiBNYXNrIGFsbCBpbnRlcnJ1cHQg
+c291cmNlcyAqLwo+IC0JcmVnbWFwX3dyaXRlKG10NjM5Ny0+cmVnbWFwLCBNVDYzOTdfSU5UX0NP
+TjAsIDB4MCk7Cj4gLQlyZWdtYXBfd3JpdGUobXQ2Mzk3LT5yZWdtYXAsIE1UNjM5N19JTlRfQ09O
+MSwgMHgwKTsKPiArCXJlZ21hcF93cml0ZShtdDYzOTctPnJlZ21hcCwgbXQ2Mzk3LT5pbnRfY29u
+WzBdLCAweDApOwo+ICsJcmVnbWFwX3dyaXRlKG10NjM5Ny0+cmVnbWFwLCBtdDYzOTctPmludF9j
+b25bMV0sIDB4MCk7Cj4gIAo+ICAJbXQ2Mzk3LT5pcnFfZG9tYWluID0gaXJxX2RvbWFpbl9hZGRf
+bGluZWFyKG10NjM5Ny0+ZGV2LT5vZl9ub2RlLAo+ICAJCU1UNjM5N19JUlFfTlIsICZtdDYzOTdf
+aXJxX2RvbWFpbl9vcHMsIG10NjM5Nyk7Cj4gQEAgLTIwMyw4ICsyMDUsOCBAQCBzdGF0aWMgaW50
+IG10NjM5N19pcnFfc3VzcGVuZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIHsKPiAgCXN0cnVjdCBt
+dDYzOTdfY2hpcCAqY2hpcCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ICAKPiAtCXJlZ21hcF93
+cml0ZShjaGlwLT5yZWdtYXAsIE1UNjM5N19JTlRfQ09OMCwgY2hpcC0+d2FrZV9tYXNrWzBdKTsK
+PiAtCXJlZ21hcF93cml0ZShjaGlwLT5yZWdtYXAsIE1UNjM5N19JTlRfQ09OMSwgY2hpcC0+d2Fr
+ZV9tYXNrWzFdKTsKPiArCXJlZ21hcF93cml0ZShjaGlwLT5yZWdtYXAsIGNoaXAtPmludF9jb25b
+MF0sIGNoaXAtPndha2VfbWFza1swXSk7Cj4gKwlyZWdtYXBfd3JpdGUoY2hpcC0+cmVnbWFwLCBj
+aGlwLT5pbnRfY29uWzFdLCBjaGlwLT53YWtlX21hc2tbMV0pOwo+ICAKPiAgCWVuYWJsZV9pcnFf
+d2FrZShjaGlwLT5pcnEpOwo+ICAKPiBAQCAtMjE1LDggKzIxNyw4IEBAIHN0YXRpYyBpbnQgbXQ2
+Mzk3X2lycV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgbXQ2Mzk3
+X2NoaXAgKmNoaXAgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCj4gLQlyZWdtYXBfd3JpdGUo
+Y2hpcC0+cmVnbWFwLCBNVDYzOTdfSU5UX0NPTjAsIGNoaXAtPmlycV9tYXNrc19jdXJbMF0pOwo+
+IC0JcmVnbWFwX3dyaXRlKGNoaXAtPnJlZ21hcCwgTVQ2Mzk3X0lOVF9DT04xLCBjaGlwLT5pcnFf
+bWFza3NfY3VyWzFdKTsKPiArCXJlZ21hcF93cml0ZShjaGlwLT5yZWdtYXAsIGNoaXAtPmludF9j
+b25bMF0sIGNoaXAtPmlycV9tYXNrc19jdXJbMF0pOwo+ICsJcmVnbWFwX3dyaXRlKGNoaXAtPnJl
+Z21hcCwgY2hpcC0+aW50X2NvblsxXSwgY2hpcC0+aXJxX21hc2tzX2N1clsxXSk7Cj4gIAo+ICAJ
+ZGlzYWJsZV9pcnFfd2FrZShjaGlwLT5pcnEpOwo+ICAKPiBAQCAtMjM3LDYgKzIzOSwxMSBAQCBz
+dGF0aWMgaW50IG10NjM5N19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJ
+CXJldHVybiAtRU5PTUVNOwo+ICAKPiAgCW10NjM5Ny0+ZGV2ID0gJnBkZXYtPmRldjsKPiArCW10
+NjM5Ny0+aW50X2NvblswXSA9IE1UNjM5N19JTlRfQ09OMDsKPiArCW10NjM5Ny0+aW50X2Nvblsx
+XSA9IE1UNjM5N19JTlRfQ09OMTsKPiArCW10NjM5Ny0+aW50X3N0YXR1c1swXSA9IE1UNjM5N19J
+TlRfU1RBVFVTMDsKPiArCW10NjM5Ny0+aW50X3N0YXR1c1sxXSA9IE1UNjM5N19JTlRfU1RBVFVT
+MTsKPiArCj4gIAkvKgo+ICAJICogbXQ2Mzk3IE1GRCBpcyBjaGlsZCBkZXZpY2Ugb2Ygc29jIHBt
+aWMgd3JhcHBlci4KPiAgCSAqIFJlZ21hcCBpcyBzZXQgZnJvbSBpdHMgcGFyZW50Lgo+IGRpZmYg
+LS1naXQgYS9pbmNsdWRlL2xpbnV4L21mZC9tdDYzOTcvY29yZS5oIGIvaW5jbHVkZS9saW51eC9t
+ZmQvbXQ2Mzk3L2NvcmUuaAo+IGluZGV4IDQ1YjhlOGEuLmQ2NzhmNTIgMTAwNjQ0Cj4gLS0tIGEv
+aW5jbHVkZS9saW51eC9tZmQvbXQ2Mzk3L2NvcmUuaAo+ICsrKyBiL2luY2x1ZGUvbGludXgvbWZk
+L210NjM5Ny9jb3JlLmgKPiBAQCAtNjAsNiArNjAsOCBAQCBzdHJ1Y3QgbXQ2Mzk3X2NoaXAgewo+
+ICAJdTE2IHdha2VfbWFza1syXTsKPiAgCXUxNiBpcnFfbWFza3NfY3VyWzJdOwo+ICAJdTE2IGly
+cV9tYXNrc19jYWNoZVsyXTsKPiArCXUxNiBpbnRfY29uWzJdOwo+ICsJdTE2IGludF9zdGF0dXNb
+Ml07Cj4gIH07Cj4gIAo+ICAjZW5kaWYgLyogX19NRkRfTVQ2Mzk3X0NPUkVfSF9fICovCgotLSAK
+TGVlIEpvbmVzCkxpbmFybyBTVE1pY3JvZWxlY3Ryb25pY3MgTGFuZGluZyBUZWFtIExlYWQKTGlu
+YXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCkZvbGxvdyBMaW5h
+cm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
+ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
