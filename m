@@ -1,49 +1,97 @@
-From: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH] pinctrl: mediatek: fix handling return value of
- mtk_pmx_find_gpio_mode
-Date: Thu, 11 Feb 2016 15:34:08 +0100
-Message-ID: <1455201248-4988-1-git-send-email-a.hajda@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Cc: Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH v2 1/6] Revert "drivers/tty/serial: make 8250/8250_mtk.c explicitly non-modular"
+Date: Thu, 11 Feb 2016 16:41:27 +0100
+Message-ID: <1455205297-1021302-2-git-send-email-arnd@arndb.de>
+References: <1455205297-1021302-1-git-send-email-arnd@arndb.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1455205297-1021302-1-git-send-email-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The function can return negative values, so its result should
-be assigned to signed variable.
+This reverts commit d72d391c126e, which tried to remove dead code but
+left the driver in a useless state when the main 8250 driver is a
+loadable module. This would normally result in a link error, but
+as the entire drivers/tty/serial/8250/ directory is only entered
+when CONFIG_SERIAL_8250 is set, we never notice that the driver does
+not get built in this configuration.
 
-The problem has been detected using coccinelle semantic patch
-scripts/coccinelle/tests/assign_signed_to_unsigned.cocci.
-
-Fixes: 59ee9c9 ('pinctrl: mediatek: Add gpio_request_enable support')
-Signed-off-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: d72d391c126e ("drivers/tty/serial: make 8250/8250_mtk.c explicitly non-modular")
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/tty/serial/8250/8250_mtk.c | 35 ++++++++++++++++++++++++++++-------
+ 1 file changed, 28 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index cbc2204..ddc9217 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -755,7 +755,7 @@ static int mtk_pmx_gpio_request_enable(struct pinctrl_dev *pctldev,
- 				    struct pinctrl_gpio_range *range,
- 				    unsigned offset)
- {
--	unsigned long muxval;
-+	int muxval;
- 	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index 0e590b233f03..78883ca64ddd 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -16,7 +16,7 @@
+  */
+ #include <linux/clk.h>
+ #include <linux/io.h>
+-#include <linux/init.h>
++#include <linux/module.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+@@ -245,6 +245,23 @@ static int mtk8250_probe(struct platform_device *pdev)
+ 	return 0;
+ }
  
- 	muxval = mtk_pmx_find_gpio_mode(pctl, offset);
++static int mtk8250_remove(struct platform_device *pdev)
++{
++	struct mtk8250_data *data = platform_get_drvdata(pdev);
++
++	pm_runtime_get_sync(&pdev->dev);
++
++	serial8250_unregister_port(data->line);
++
++	pm_runtime_disable(&pdev->dev);
++	pm_runtime_put_noidle(&pdev->dev);
++
++	if (!pm_runtime_status_suspended(&pdev->dev))
++		mtk8250_runtime_suspend(&pdev->dev);
++
++	return 0;
++}
++
+ #ifdef CONFIG_PM_SLEEP
+ static int mtk8250_suspend(struct device *dev)
+ {
+@@ -275,18 +292,18 @@ static const struct of_device_id mtk8250_of_match[] = {
+ 	{ .compatible = "mediatek,mt6577-uart" },
+ 	{ /* Sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, mtk8250_of_match);
+ 
+ static struct platform_driver mtk8250_platform_driver = {
+ 	.driver = {
+-		.name			= "mt6577-uart",
+-		.pm			= &mtk8250_pm_ops,
+-		.of_match_table		= mtk8250_of_match,
+-		.suppress_bind_attrs	= true,
+-
++		.name		= "mt6577-uart",
++		.pm		= &mtk8250_pm_ops,
++		.of_match_table	= mtk8250_of_match,
+ 	},
+ 	.probe			= mtk8250_probe,
++	.remove			= mtk8250_remove,
+ };
+-builtin_platform_driver(mtk8250_platform_driver);
++module_platform_driver(mtk8250_platform_driver);
+ 
+ #ifdef CONFIG_SERIAL_8250_CONSOLE
+ static int __init early_mtk8250_setup(struct earlycon_device *device,
+@@ -302,3 +319,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
+ 
+ OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
+ #endif
++
++MODULE_AUTHOR("Matthias Brugger");
++MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("Mediatek 8250 serial port driver");
 -- 
-1.9.1
+2.7.0
