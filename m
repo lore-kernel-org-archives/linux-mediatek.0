@@ -1,42 +1,51 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 5/6] serial: 8250/mediatek: fix building with
- SERIAL_8250=m
-Date: Fri, 12 Feb 2016 00:14:14 +0100
-Message-ID: <56BD15C6.6040006@gmail.com>
-References: <1455205297-1021302-1-git-send-email-arnd@arndb.de>
- <1455205297-1021302-6-git-send-email-arnd@arndb.de>
+Subject: Re: [PATCH v3 5/5] arm: dts: Add pinctrl/GPIO/EINT node for mt2701
+Date: Fri, 12 Feb 2016 00:27:40 +0100
+Message-ID: <56BD18EC.3090601@gmail.com>
+References: <1451286546-5920-1-git-send-email-biao.huang@mediatek.com>
+ <1451286546-5920-6-git-send-email-biao.huang@mediatek.com>
+ <5685104D.7070008@gmail.com>
+ <CACRpkdbc-tNaeMzzX2riwUFPp0-XjVfvjuM6knWzVVwP89ECdA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455205297-1021302-6-git-send-email-arnd@arndb.de>
+In-Reply-To: <CACRpkdbc-tNaeMzzX2riwUFPp0-XjVfvjuM6knWzVVwP89ECdA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-arm-kernel@lists.infradead.org, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Biao Huang <biao.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 11/02/16 16:41, Arnd Bergmann wrote:
-> The Mediatek 8250 driver has a 'bool' Kconfig symbol, but that
-> breaks when SERIAL_8250 is a loadable module:
+On 07/01/16 11:14, Linus Walleij wrote:
+> On Thu, Dec 31, 2015 at 12:23 PM, Matthias Brugger
+> <matthias.bgg@gmail.com> wrote:
+>> On 28/12/15 08:09, Biao Huang wrote:
+>>>
+>>> Add pinctrl and GPIO node to mt2701.dtsi
+>>>
+>>> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+>>> Acked-by: Linus Walleij <linus.walleij@linaro.org>
+>>> ---
+>>>    arch/arm/boot/dts/mt2701.dtsi |   19 +++++++++++++++++++
+>>>    1 file changed, 19 insertions(+)
+>>>
+>>
+>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>
+>> Linus, will you take this patch through your branch?
 >
-> drivers/tty/built-in.o: In function `mtk8250_set_termios':
-> :(.text+0x1bee8): undefined reference to `serial8250_do_set_termios'
-> :(.text+0x1bf10): undefined reference to `uart_get_baud_rate'
-> :(.text+0x1c09c): undefined reference to `uart_get_divisor'
-> drivers/tty/built-in.o: In function `mtk8250_do_pm':
-> :(.text+0x1c0d0): undefined reference to `serial8250_do_pm'
-> drivers/tty/built-in.o: In function `mtk8250_probe':
-> :(.text+0x1c2e4): undefined reference to `serial8250_register_8250_port'
-> serial/8250/8250_mtk.c:287:242: error: data definition has no type or storage class [-Werror]
-> serial/8250/8250_mtk.c:287:122: error: 'mtk8250_platform_driver_init' defined but not used [-Werror=unused-function]
+> No I prefer anything in arch/arm/boot/dts/* to go in through
+> the ARM SoC tree.
 >
-> This changes the symbol to a 'tristate', so the dependency on
-> SERIAL_8250 also works when that is set to 'm'.
-> To actually build the driver, we also need to include <linux/module.h>.
+> It can usually be merged orthogonally anyways.
 >
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
+> I take Documenation/devicetree/bindings/* and patches
+> to the driver itself in drivers/pinctrl/*
+>
+> Yours,
+> Linus Walleij
+>
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied, thanks.
