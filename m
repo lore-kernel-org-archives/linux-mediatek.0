@@ -1,90 +1,72 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: [PATCH v2 3/6] serial: 8250/mediatek: mark PM functions as
- __maybe_unused
-Date: Thu, 11 Feb 2016 16:41:29 +0100
-Message-ID: <1455205297-1021302-4-git-send-email-arnd@arndb.de>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH v2 5/6] serial: 8250/mediatek: fix building with SERIAL_8250=m
+Date: Thu, 11 Feb 2016 16:41:31 +0100
+Message-ID: <1455205297-1021302-6-git-send-email-arnd@arndb.de>
 References: <1455205297-1021302-1-git-send-email-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1455205297-1021302-1-git-send-email-arnd-r2nGTMty4D4@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1455205297-1021302-1-git-send-email-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The mtk8250_runtime_suspend function is not used when runtime PM is
-disabled, so we get a warning about an unused function:
+The Mediatek 8250 driver has a 'bool' Kconfig symbol, but that
+breaks when SERIAL_8250 is a loadable module:
 
-drivers/tty/serial/8250/8250_mtk.c:119:12: error: 'mtk8250_runtime_suspend' defined but not used [-Werror=unused-function]
- static int mtk8250_runtime_suspend(struct device *dev)
+drivers/tty/built-in.o: In function `mtk8250_set_termios':
+:(.text+0x1bee8): undefined reference to `serial8250_do_set_termios'
+:(.text+0x1bf10): undefined reference to `uart_get_baud_rate'
+:(.text+0x1c09c): undefined reference to `uart_get_divisor'
+drivers/tty/built-in.o: In function `mtk8250_do_pm':
+:(.text+0x1c0d0): undefined reference to `serial8250_do_pm'
+drivers/tty/built-in.o: In function `mtk8250_probe':
+:(.text+0x1c2e4): undefined reference to `serial8250_register_8250_port'
+serial/8250/8250_mtk.c:287:242: error: data definition has no type or storage class [-Werror]
+serial/8250/8250_mtk.c:287:122: error: 'mtk8250_platform_driver_init' defined but not used [-Werror=unused-function]
 
-This marks all the PM functions as __maybe_unused to avoid the warning,
-and removes the #ifdef around the PM_SLEEP functions for consistency.
+This changes the symbol to a 'tristate', so the dependency on
+SERIAL_8250 also works when that is set to 'm'.
+To actually build the driver, we also need to include <linux/module.h>.
 
-Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/tty/serial/8250/8250_mtk.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/tty/serial/8250/8250_mtk.c | 3 ++-
+ drivers/tty/serial/8250/Kconfig    | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 78883ca64ddd..6ecc6e3e82dc 100644
+index 6ecc6e3e82dc..55be90c1d85e 100644
 --- a/drivers/tty/serial/8250/8250_mtk.c
 +++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -116,7 +116,7 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
- 		tty_termios_encode_baud_rate(termios, baud, baud);
- }
+@@ -19,6 +19,7 @@
+ #include <linux/module.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
++#include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/serial_8250.h>
+@@ -303,7 +304,7 @@ static struct platform_driver mtk8250_platform_driver = {
+ };
+ module_platform_driver(mtk8250_platform_driver);
  
--static int mtk8250_runtime_suspend(struct device *dev)
-+static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
+-#ifdef CONFIG_SERIAL_8250_CONSOLE
++#if defined(CONFIG_SERIAL_8250_CONSOLE) && !defined(MODULE)
+ static int __init early_mtk8250_setup(struct earlycon_device *device,
+ 					const char *options)
  {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
+diff --git a/drivers/tty/serial/8250/Kconfig b/drivers/tty/serial/8250/Kconfig
+index 67ad6b0d595b..6ae0fae4f796 100644
+--- a/drivers/tty/serial/8250/Kconfig
++++ b/drivers/tty/serial/8250/Kconfig
+@@ -370,7 +370,7 @@ config SERIAL_8250_LPC18XX
+ 	  serial port, say Y to this option. If unsure, say Y.
  
-@@ -126,7 +126,7 @@ static int mtk8250_runtime_suspend(struct device *dev)
- 	return 0;
- }
- 
--static int mtk8250_runtime_resume(struct device *dev)
-+static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 	int err;
-@@ -262,8 +262,7 @@ static int mtk8250_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM_SLEEP
--static int mtk8250_suspend(struct device *dev)
-+static int __maybe_unused mtk8250_suspend(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 
-@@ -272,7 +271,7 @@ static int mtk8250_suspend(struct device *dev)
- 	return 0;
- }
- 
--static int mtk8250_resume(struct device *dev)
-+static int __maybe_unused mtk8250_resume(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 
-@@ -280,7 +279,6 @@ static int mtk8250_resume(struct device *dev)
- 
- 	return 0;
- }
--#endif /* CONFIG_PM_SLEEP */
- 
- static const struct dev_pm_ops mtk8250_pm_ops = {
- 	SET_SYSTEM_SLEEP_PM_OPS(mtk8250_suspend, mtk8250_resume)
+ config SERIAL_8250_MT6577
+-	bool "Mediatek serial port support"
++	tristate "Mediatek serial port support"
+ 	depends on SERIAL_8250 && ARCH_MEDIATEK
+ 	help
+ 	  If you have a Mediatek based board and want to use the
 -- 
 2.7.0
