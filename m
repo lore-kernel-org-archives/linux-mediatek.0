@@ -1,39 +1,26 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [PATCH v6 4/7] clk: mediatek: Add MT2701 clock support
-Date: Wed, 10 Feb 2016 12:08:53 -0800
-Message-ID: <20160210200853.26445.15165@quark.deferred.io>
-References: <1454665050-37776-1-git-send-email-jamesjj.liao@mediatek.com>
- <1454665050-37776-5-git-send-email-jamesjj.liao@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 5/5] arm: dts: Add pinctrl/GPIO/EINT node for mt2701
+Date: Thu, 11 Feb 2016 11:55:18 +0100
+Message-ID: <56BC6896.6070108@gmail.com>
+References: <1453857883-28436-1-git-send-email-biao.huang@mediatek.com>
+ <1453857883-28436-6-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <1454665050-37776-5-git-send-email-jamesjj.liao@mediatek.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1453857883-28436-6-git-send-email-biao.huang@mediatek.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Biao Huang <biao.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, Linus Walleij <linus.walleij@linaro.org>, Erin Lo <erin.lo@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Quoting James Liao (2016-02-05 01:37:27)
-> +CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt2701-topckgen", mtk_topckgen_init);
-> +CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt2701-infracfg", mtk_infrasys_init);
-> +CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt2701-pericfg", mtk_pericfg_init);
-> +CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt2701-mmsys", mtk_mmsys_init);
-> +CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt2701-imgsys", mtk_imgsys_init);
-> +CLK_OF_DECLARE(mtk_vdecsys, "mediatek,mt2701-vdecsys", mtk_vdecsys_init);
-> +CLK_OF_DECLARE(mtk_hifsys, "mediatek,mt2701-hifsys", mtk_hifsys_init);
-> +CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt2701-ethsys", mtk_ethsys_init);
-> +CLK_OF_DECLARE(mtk_bdpsys, "mediatek,mt2701-bdpsys", mtk_bdpsys_init);
-> +CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt2701-apmixedsys",
 
-:-/
 
-This is way too much CLK_OF_DECLARE and not enough Linux Driver Model.
+On 27/01/16 02:24, Biao Huang wrote:
+> Add pinctrl and GPIO node to mt2701.dtsi
+>
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> Acked-by: Linus Walleij <linus.walleij@linaro.org>
+> ---
 
-I understand that some platforms really must initialize some clocks very
-early, but can we please separate those into one table and call
-CLK_OF_DECLARE on only that set, and then register the rest through a
-platform_driver later on?
-
-Best regards,
-Mike
+Applied, thanks.
