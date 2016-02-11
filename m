@@ -1,37 +1,49 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH 1/2] serial: 8250: fix building mediatek with SERIAL_8250=m
-Date: Thu, 11 Feb 2016 14:49:43 +0100
-Message-ID: <4992215.sKvb0IIruL@wuerfel>
-References: <1454935947-2743255-1-git-send-email-arnd@arndb.de> <20160208165535.GZ23093@windriver.com>
+From: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH] pinctrl: mediatek: fix handling return value of
+ mtk_pmx_find_gpio_mode
+Date: Thu, 11 Feb 2016 15:34:08 +0100
+Message-ID: <1455201248-4988-1-git-send-email-a.hajda@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160208165535.GZ23093@windriver.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Paul Gortmaker <paul.gortmaker@windriver.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-arm-kernel@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matt Redfearn <matt.redfearn@imgtec.com>, Paul Burton <paul.burton@imgtec.com>, Jiri Slaby <jslaby@suse.com>, linux-serial@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Cc: Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday 08 February 2016 11:55:35 Paul Gortmaker wrote:
-> > drivers/tty/built-in.o: In function `mtk8250_set_termios':
-> > 8250_ingenic.c:(.text+0x1bee8): undefined reference to `serial8250_do_set_termios'
-> > 8250_ingenic.c:(.text+0x1bf10): undefined reference to `uart_get_baud_rate'
-> > 8250_ingenic.c:(.text+0x1c09c): undefined reference to `uart_get_divisor'
-> > drivers/tty/built-in.o: In function `mtk8250_do_pm':
-> > 8250_ingenic.c:(.text+0x1c0d0): undefined reference to `serial8250_do_pm'
-> > drivers/tty/built-in.o: In function `mtk8250_probe':
-> > 8250_ingenic.c:(.text+0x1c2e4): undefined reference to `serial8250_register_8250_port'
-> > serial/8250/8250_mtk.c:287:242: error: data definition has no type or storage class [-Werror]
-> > serial/8250/8250_mtk.c:287:122: error: 'mtk8250_platform_driver_init' defined but not used [-Werror=unused-function]
-> 
-> Probably should drop the ingenic lines above ; assuming they are make -j N
-> related and that mtk doesn't depend on or build ingenic.
+The function can return negative values, so its result should
+be assigned to signed variable.
 
-I looked at these again and noticed that this is just being misreported
-by the linker. I don't know exactly what happens here but I see it a lot:
-the function names ("mtk8250_set_termios") are all correct, but the file
-names ("8250_ingenic.c") are wrong. I normally edit out the file names
-manually but forgot that here. I'll fix it up when resending.
+The problem has been detected using coccinelle semantic patch
+scripts/coccinelle/tests/assign_signed_to_unsigned.cocci.
 
-	Arnd
+Fixes: 59ee9c9 ('pinctrl: mediatek: Add gpio_request_enable support')
+Signed-off-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index cbc2204..ddc9217 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -755,7 +755,7 @@ static int mtk_pmx_gpio_request_enable(struct pinctrl_dev *pctldev,
+ 				    struct pinctrl_gpio_range *range,
+ 				    unsigned offset)
+ {
+-	unsigned long muxval;
++	int muxval;
+ 	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
+ 
+ 	muxval = mtk_pmx_find_gpio_mode(pctl, offset);
+-- 
+1.9.1
