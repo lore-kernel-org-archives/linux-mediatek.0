@@ -1,14 +1,11 @@
-From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: mediatek: fix handling return value of
- mtk_pmx_find_gpio_mode
-Date: Thu, 11 Feb 2016 18:59:38 -0800
-Message-ID: <1455245978.12131.0.camel@mussux00>
-References: <1455201248-4988-1-git-send-email-a.hajda@samsung.com>
+From: Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>
+Subject: [PATCH] MAINTAINERS: update Han's email
+Date: Fri, 12 Feb 2016 05:13:25 +0000
+Message-ID: <1455254005-746-1-git-send-email-han.xu@nxp.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1455201248-4988-1-git-send-email-a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,41 +15,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+To: matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, rubini-kaDoWcXyVrEAvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: han.xu-3arQi8VN3Tc@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-02-11 at 15:34 +0100, Andrzej Hajda wrote:
-> The function can return negative values, so its result should
-> be assigned to signed variable.
-> 
-> The problem has been detected using coccinelle semantic patch
-> scripts/coccinelle/tests/assign_signed_to_unsigned.cocci.
-> 
-> Fixes: 59ee9c9 ('pinctrl: mediatek: Add gpio_request_enable support')
-> Signed-off-by: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index cbc2204..ddc9217 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -755,7 +755,7 @@ static int mtk_pmx_gpio_request_enable(struct pinctrl_dev *pctldev,
->  				    struct pinctrl_gpio_range *range,
->  				    unsigned offset)
->  {
-> -	unsigned long muxval;
-> +	int muxval;
->  	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
->  
->  	muxval = mtk_pmx_find_gpio_mode(pctl, offset);
+Update my email address from freescale to nxp.
 
+Signed-off-by: Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thank you very much.
-
-Acked-by: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Yours,
-Hongzhou
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7bd927e..b00cce8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -4559,7 +4559,7 @@ F:	include/linux/platform_data/video-imxfb.h
+ F:	drivers/video/fbdev/imxfb.c
+ 
+ FREESCALE QUAD SPI DRIVER
+-M:	Han Xu <han.xu-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
++M:	Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>
+ L:	linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+ S:	Maintained
+ F:	drivers/mtd/spi-nor/fsl-quadspi.c
+-- 
+2.7.1
