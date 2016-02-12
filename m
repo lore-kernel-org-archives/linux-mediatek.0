@@ -1,57 +1,78 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v6] i2c: mt8173: add 4GB mode support in i2c driver.
-Date: Fri, 12 Feb 2016 20:18:45 +0100
-Message-ID: <20160212191845.GN1520@katana>
-References: <1454347143-31461-1-git-send-email-liguo.zhang@mediatek.com>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: mt1873-evb: MMC failing with linux-next
+Date: Fri, 12 Feb 2016 13:42:50 -0800
+Message-ID: <7h37sx1u79.fsf@baylibre.com>
+References: <7hegcmadfk.fsf@baylibre.com> <56BDF937.60208@gmail.com>
+ <56BE01D6.40908@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="l3ej7W/Jb2pB3qL2"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1454347143-31461-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56BE01D6.40908-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> (Matthias Brugger's message of "Fri,
+ 12 Feb 2016 17:01:26 +0100")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
 
---l3ej7W/Jb2pB3qL2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On 12/02/16 16:24, Matthias Brugger wrote:
+>> Hi Kevin,
+>>
+>> On 09/02/16 02:18, Kevin Hilman wrote:
+>>> Hello,
+>>>
+>>> I tried getting MMC working with linux-next (next-20160208) on
+>>> mt8173-evb by enabling a few options[1] on top of the default defconfig,
+>>> and this results in a kernel that hangs as soon as it starts userspace.
+>>>
+>>> The MMC driver seems to start, though has some regulator issues:
+>>>
+>>> [    0.526380] sdhci: Secure Digital Host Controller Interface driver
+>>> [    0.527176] sdhci: Copyright(c) Pierre Ossman
+>>> [    0.528835] vio18: unsupportable voltage range: 3300000-1980000uV
+>>> [    0.529610] mtk-msdc 11230000.mmc: Regulator set error -22:
+>>> 3300000 - 3300000
+>>> [    0.563731] mtk-msdc 11240000.mmc: Got CD GPIO
+>>>
+>>> The driver appears to be attempting to set 3.3V but using a 1.8V
+>>> regulator (vio18), which is failing.
+>>>
+>>> Then, the kernel hangs after freeing unused memory:
+>>>
+>>> [    0.616386] hctosys: unable to open rtc device (rtc0)
+>>> [    0.624118] usb_vbus: disabling
+>>> [    0.624547] vusb: disabling
+>>> [    0.624929] vgp6: disabling
+>>> [    0.625635] ALSA device list:
+>>> [    0.626009]   No soundcards found.
+>>> [    0.626963] Freeing unused kernel memory: 724K (ffffffc000977000 -
+>>> ffffffc000a2c000)
+>>>
+>>> And nothing further here.
+>>>
+>>
+>> I can see the warning from the mmc regulator access, but after that my
+>> board boots just fine.
+>> I'm using linux-next as of today (20160212).
+>> I attached my config, it should be defconfig plus the config options you
+>> mentioned (and an initramfs).
+>>
+>> Is this the configuration you have?
+>
+> I spotted an error in my scripts to build the kernel. After fixing
+> this I can reproduce your error.
 
-On Tue, Feb 02, 2016 at 01:19:03AM +0800, Liguo Zhang wrote:
-> If 4GB mode is enable, we should add 4gb mode support in i2c driver.
-> Set 4GB mode register to support 4GB mode.
->=20
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+OK, let me know if you need anything else to help debug, or want me to
+test anything further.  Otherwise I'll leave it in your capable hands.
 
-The subject should have "mt65xx" since this is the driver name. I also
-added DMA to the commit message to make clear what this mode is about.
-
-Applied to for-next, thanks!
-
-
---l3ej7W/Jb2pB3qL2
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJWvjAVAAoJEBQN5MwUoCm2wSEP/3ZLVpccUeBIWAFQs42fI8Jx
-c/acHSXHtEreHzNtMr1MAHAOSVt01uSg7VY/sWclYKxV+Bvh8CvghuaLiHTCEVNw
-opqzS60ZufBwweO/n/vHMz857ZqCNLXwfI6wW7uuvbmi9ZSrvJQenm2CBjNAw8xv
-cCSweez/Kg82ua3TUpI5fuNS+6LYk36WAk1MhtpefS6MgQ515FmSDeQjjNKYBNXW
-vuGFQJw1HIWbGmutq6lDbKAj4ENikwZ03Nrsq2xGlHTbUzjUocQuMyg2EYiCJgAt
-dO/F4IpaaC7pesBn3wlKx6yAJyCv3Mf0oz8JwPm/9Bcfxeh07Wcdz75isdBGJwJm
-UfdTho62Xq54k0tl/tF0t+psKsS604KFVM9gDiOlddOsfj+fqI0QIfbpb9EVNsj4
-FJdAV9DA1Ba7OKi2rOQnp2owPvqNO5I3MbgFeVE6DsZHthS8xajj3OL0jCDVCS3x
-u/8hX2qkQ/0pq59IP5sHODkyCnmuJCPSqxE1dQXNFPjGjf4ujAAUoMqxW090etso
-Z8QbPry5jg/1e2RtHOgbLtERwE/E7Bj/D6DxNXz66zhz0SocxDnWDKT8y5x8AxvJ
-IoxA128bEJWkWSskIqaG0l8bRtGN27/0ObV2ZPRSN1Qtf1Jf3blyJPeUzVg7P6MI
-UGAkBKvtp8u6kYBi4GxH
-=kElB
------END PGP SIGNATURE-----
-
---l3ej7W/Jb2pB3qL2--
+Kevin
