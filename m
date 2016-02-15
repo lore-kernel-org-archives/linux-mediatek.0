@@ -1,46 +1,67 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V5 04/11] soc: mediatek: PMIC wrap: split SoC specific
- init into callback
-Date: Sun, 14 Feb 2016 22:01:38 +0100
-Message-ID: <56C0EB32.4080701@openwrt.org>
-References: <1454841778-35529-1-git-send-email-blogic@openwrt.org>
- <1454841778-35529-5-git-send-email-blogic@openwrt.org>
- <56BC7674.9030706@gmail.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH] rtc: mt6397: Add platform device ID table
+Date: Mon, 15 Feb 2016 09:58:17 +0800
+Message-ID: <1455501497.7263.4.camel@mtksdaap41>
+References: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56BC7674.9030706@gmail.com>
+In-Reply-To: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Javier Martinez Canillas <javier@osg.samsung.com>
+Cc: linux-kernel@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 11/02/2016 12:54, Matthias Brugger wrote:
->> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
->> b/drivers/soc/mediatek/mtk-pmic-wrap.c
->> index b22b664..e3bbee5 100644
->> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
->> @@ -372,6 +372,7 @@ struct pmic_wrapper_type {
->>       enum pwrap_type type;
->>       u32 arb_en_all;
->>       int (*init_reg_clock)(struct pmic_wrapper *wrp);
->> +    int (*init_special)(struct pmic_wrapper *wrp);
+On Tue, 2016-02-09 at 08:08 -0300, Javier Martinez Canillas wrote:
+> The platform bus_type .match callback attempts to match the platform device
+> name with an entry on the .id_table if provided and fallbacks to match with
+> the driver's name if a table is not provided.
 > 
-> Nit:
-> I wonder if we can find a better name for the callback, as init_special
-> sounds quite generic to me.
+> Using a platform device ID to match is more explicit, allows the driver to
+> support more than one device and also the MODULE_DEVICE_TABLE macro can be
+> used to export the module aliases information instead of the MODULE_ALIAS.
 > 
-> Thanks,
-> Matthias
+> Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+> 
+> ---
+> 
+>  drivers/rtc/rtc-mt6397.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index 06a5c52b292f..46533f11f7fc 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -404,6 +404,12 @@ static const struct of_device_id mt6397_rtc_of_match[] = {
+>  };
+>  MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
+>  
+> +static const struct platform_device_id mt6397_rtc_id[] = {
+> +	{"mt6397-rtc", 0},
+> +	{ /* sentinel */ },
+> +};
+> +MODULE_DEVICE_TABLE(platform, mt6397_rtc_id);
+> +
+>  static struct platform_driver mtk_rtc_driver = {
+>  	.driver = {
+>  		.name = "mt6397-rtc",
+> @@ -412,6 +418,7 @@ static struct platform_driver mtk_rtc_driver = {
+>  	},
+>  	.probe	= mtk_rtc_probe,
+>  	.remove = mtk_rtc_remove,
+> +	.id_table = mt6397_rtc_id,
+>  };
+>  
+>  module_platform_driver(mtk_rtc_driver);
+> @@ -419,4 +426,3 @@ module_platform_driver(mtk_rtc_driver);
+>  MODULE_LICENSE("GPL v2");
+>  MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
+>  MODULE_DESCRIPTION("RTC Driver for MediaTek MT6397 PMIC");
+> -MODULE_ALIAS("platform:mt6397-rtc");
 
-Hi,
+This patch looks good to me, but I am wondering, since we tend to use
+device tree method to match driver, do we still need support platform
+device ID ?
 
-At first I considered enable_wrapper as the mt8135/8173 code seems to do
-just that. however mt2701 does an init of the ADC. So how about using
-init_soc_specific ?
-
-	John
+Eddie
