@@ -1,67 +1,72 @@
-From: Eddie Huang <eddie.huang@mediatek.com>
-Subject: Re: [PATCH] rtc: mt6397: Add platform device ID table
-Date: Mon, 15 Feb 2016 09:58:17 +0800
-Message-ID: <1455501497.7263.4.camel@mtksdaap41>
-References: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Mon, 15 Feb 2016 10:11:45 +0800
+Message-ID: <CAGS+omD9U8tKmb02d_gMMAGX18MJZhz0RrugpBK2EuqgZrBy6g@mail.gmail.com>
+References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+ <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
+ <20151217193332.GB7999@localhost.localdomain> <20160104141940.GI13058@pengutronix.de>
+ <20160119072917.GA13237@pengutronix.de> <1454295246.22151.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Javier Martinez Canillas <javier@osg.samsung.com>
-Cc: linux-kernel@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1454295246.22151.6.camel@mtksdaap41>
+Sender: linux-pm-owner@vger.kernel.org
+To: Eddie Huang <eddie.huang@mediatek.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-02-09 at 08:08 -0300, Javier Martinez Canillas wrote:
-> The platform bus_type .match callback attempts to match the platform device
-> name with an entry on the .id_table if provided and fallbacks to match with
-> the driver's name if a table is not provided.
-> 
-> Using a platform device ID to match is more explicit, allows the driver to
-> support more than one device and also the MODULE_DEVICE_TABLE macro can be
-> used to export the module aliases information instead of the MODULE_ALIAS.
-> 
-> Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
-> 
-> ---
-> 
->  drivers/rtc/rtc-mt6397.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index 06a5c52b292f..46533f11f7fc 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -404,6 +404,12 @@ static const struct of_device_id mt6397_rtc_of_match[] = {
->  };
->  MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
->  
-> +static const struct platform_device_id mt6397_rtc_id[] = {
-> +	{"mt6397-rtc", 0},
-> +	{ /* sentinel */ },
-> +};
-> +MODULE_DEVICE_TABLE(platform, mt6397_rtc_id);
-> +
->  static struct platform_driver mtk_rtc_driver = {
->  	.driver = {
->  		.name = "mt6397-rtc",
-> @@ -412,6 +418,7 @@ static struct platform_driver mtk_rtc_driver = {
->  	},
->  	.probe	= mtk_rtc_probe,
->  	.remove = mtk_rtc_remove,
-> +	.id_table = mt6397_rtc_id,
->  };
->  
->  module_platform_driver(mtk_rtc_driver);
-> @@ -419,4 +426,3 @@ module_platform_driver(mtk_rtc_driver);
->  MODULE_LICENSE("GPL v2");
->  MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
->  MODULE_DESCRIPTION("RTC Driver for MediaTek MT6397 PMIC");
-> -MODULE_ALIAS("platform:mt6397-rtc");
+Hi Eduardo, Sascha,
 
-This patch looks good to me, but I am wondering, since we tend to use
-device tree method to match driver, do we still need support platform
-device ID ?
+On Mon, Feb 1, 2016 at 10:54 AM, Eddie Huang <eddie.huang@mediatek.com> wrote:
+>
+> On Tue, 2016-01-19 at 15:29 +0800, Sascha Hauer wrote:
+> > Eduardo,
+> >
+> > On Mon, Jan 04, 2016 at 03:19:40PM +0100, Sascha Hauer wrote:
+> > > Hi Eduardo,
+> > >
+> > > >
+> > > > That should remove the policy of computing the maximum from this driver.
+> > > > Please have a look on the work being done [1] to add grouping and
+> > > > aggregation of thermal zones. With that in place, you should be a matter
+> > > > of configuring the grouping and selecting max as the aggregation function,
+> > > > from the thermal core, instead in the driver. Which should give the
+> > > > system engineer, more flexibility to compose whatever policy based on
+> > > > the exposed sensors.
+> > >
+> > > I think the aggregation of thermal zones is quite useful when it comes
+> > > to putting different chips together to a system. I am not so sure how
+> > > useful it is to expose different thermal zones of a single SoC to the
+> > > device tree.
+> > > Currently the only control knob we have is the CPU frequency. When any
+> > > of the sensors on the SoC gets too hot then the only thing we can do is
+> > > to decrease the CPU frequency. This does not leave much space for
+> > > configuration in the device tree.
+> > > What I need to be able is to attach multiple sensors to one thermal
+> > > zone. The aggregation patch series only partly solves that and I think
+> > > is inconsistent, but I commented on the series directly.
+> >
+> > Any input on this? I really like to get this driver upstream as it is
+> > currently blocking other Mediatek drivers.
+> >
+>
+> Hi Eduardo,
+>
+> Do you have any comment about Sascha's response ? We really hope get
+> your comment since Mediatek thermal driver already reviewed in public
+> over half years, and we have other patches [0] [1] depend on thermal
+> driver.
+>
+> [0]:
+> http://lists.infradead.org/pipermail/linux-arm-kernel/2015-December/394084.html
+> [1]:
+> http://lists.infradead.org/pipermail/linux-arm-kernel/2016-January/401055.html
 
-Eddie
+Friendly ping on the Mediatek thermal driver.
+The "EFUSE" dependency has now landed in v4.5-rc4.
+So, AFAICT, the only thing left that may be blocking landing Mediatek
+thermal driver is resolution of this discussion about thermal zones.
+Can we kindly resolve this soon so we have a chance to land it in v4.6.
+
+Thanks,
+-Dan
