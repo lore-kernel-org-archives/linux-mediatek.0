@@ -1,54 +1,91 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency control
-Date: Mon, 15 Feb 2016 11:28:42 +0800
-Message-ID: <CAGS+omCV-90OsBk1c1Xj9_20yC5CmPNtMb+K9R7=mOiTg3sAJw@mail.gmail.com>
-References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
- <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
- <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com> <20151217090628.GA317@quark.deferred.io>
+From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: mt1873-evb: MMC failing with linux-next
+Date: Mon, 15 Feb 2016 11:52:08 +0800
+Message-ID: <1455508328.29366.14.camel@mtksdaap41>
+References: <7hegcmadfk.fsf@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20151217090628.GA317@quark.deferred.io>
-Sender: linux-clk-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>
-Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <7hegcmadfk.fsf-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mike, Pi-Cheng,
+Hi Kevin,
 
-On Thu, Dec 17, 2015 at 5:06 PM, Michael Turquette
-<mturquette@baylibre.com> wrote:
-> On 12/01, Pi-Cheng Chen wrote:
->> On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
->> > Hi Pi-Cheng and Michael,
->> >
->> > On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
->> >> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
->> >>
->> >> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
->> >> for intermediate clock source switching.
->> >
->> > It looks like this patch was never picked up.
->> > It is required for MT8173 cpufreq.
->> >
->> > What is the plan to get this one merged?
->>
->> Hi Dan,
->> Mike is working on a new CCF feature called "coordinated clock rate changes"
->> which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
->> driver, and I am working with him to port MT8173 clock driver on the new
->> feature. So I think that's why this patch was not picked since it will
->> be migrated to new implementation once the new feature's ready.
->>
->> @Mike:
->> Are you plannig to post those patches on the mailing list ?
->> Or is it fine for you to take this first and then I will refine it for
->> the new feature later?
->
-> I plan to post those patches next week.
+On Mon, 2016-02-08 at 17:18 -0800, Kevin Hilman wrote:
+> Hello,
+> 
+> I tried getting MMC working with linux-next (next-20160208) on
+> mt8173-evb by enabling a few options[1] on top of the default defconfig,
+> and this results in a kernel that hangs as soon as it starts userspace.
+> 
+> The MMC driver seems to start, though has some regulator issues:
+> 
+> [    0.526380] sdhci: Secure Digital Host Controller Interface driver
+> [    0.527176] sdhci: Copyright(c) Pierre Ossman
+> [    0.528835] vio18: unsupportable voltage range: 3300000-1980000uV
+> [    0.529610] mtk-msdc 11230000.mmc: Regulator set error -22:    3300000 - 3300000
+> [    0.563731] mtk-msdc 11240000.mmc: Got CD GPIO
+>     
+> The driver appears to be attempting to set 3.3V but using a 1.8V
+> regulator (vio18), which is failing.
 
-Were these patches ever posted?
-I'm not really sure what patch set I am looking for.
+This message shows set 3.3V to vio18 fail. Then MMC core will set 1.8V
+to vio18 again, this time should be ok.
 
-Thanks,
--Dan
+> 
+> Then, the kernel hangs after freeing unused memory:
+> 
+> [    0.616386] hctosys: unable to open rtc device (rtc0)
+> [    0.624118] usb_vbus: disabling
+> [    0.624547] vusb: disabling
+> [    0.624929] vgp6: disabling
+> [    0.625635] ALSA device list:
+> [    0.626009]   No soundcards found.
+> [    0.626963] Freeing unused kernel memory: 724K (ffffffc000977000 - ffffffc000a2c000)
+> 
+> And nothing further here.
+> 
+> It boots fine when disabling the MMC driver (CONFIG_MMC_MTK=n).
+> 
+> Any ideas?
+
+MT8173-evb use MT8173 engineer sample, which has one bug that if disable
+USB power domain, vcore (include mmc) power will be disabled too. MT8173
+mass production chip already fix this bug. Sascha send one patch to fix
+this issue [1] before. But I think it is not a good solution because if
+mmc runtime suspend, vcore power will be disabled too. Please apply
+following code and try again, I will send this fixup to public later.
+
+By the way, you should set MMC_BLOCK_MINORS=32 because partition number
+on eMMC is larger than default value 8.
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+b/arch/arm64/boot/dts/mediatek/mt8173-evb.d
+index e427f04..7453a47 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+@@ -214,6 +214,9 @@
+ };
+
+ &pwrap {
++       /* Only MT8173 E1 needs USB power domain */
++       power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++
+        pmic: mt6397 {
+                compatible = "mediatek,mt6397";
+                interrupt-parent = <&pio>;
+
+
+[1]:http://lists.infradead.org/pipermail/linux-arm-kernel/2015-July/358065.html
