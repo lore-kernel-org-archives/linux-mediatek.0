@@ -1,7 +1,7 @@
 From: Hans Verkuil <hverkuil@xs4all.nl>
 Subject: Re: [PATCH v4 2/8] [media] VPU: mediatek: support Mediatek VPU
-Date: Mon, 15 Feb 2016 11:07:41 +0100
-Message-ID: <56C1A36D.6010908@xs4all.nl>
+Date: Mon, 15 Feb 2016 11:13:26 +0100
+Message-ID: <56C1A4C6.7040601@xs4all.nl>
 References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
  <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
  <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
@@ -14,10 +14,6 @@ Sender: linux-kernel-owner@vger.kernel.org
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
-
-Hi Tiffany,
-
-A small review comment below:
 
 On 02/04/2016 12:34 PM, Tiffany Lin wrote:
 > The VPU driver for hw video codec embedded in Mediatek's MT8173 SOCs.
@@ -43,66 +39,38 @@ On 02/04/2016 12:34 PM, Tiffany Lin wrote:
 >  create mode 100644 drivers/media/platform/mtk-vpu/mtk_vpu.c
 >  create mode 100644 drivers/media/platform/mtk-vpu/mtk_vpu.h
 > 
+> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> index ccbc974..ba812d6 100644
+> --- a/drivers/media/platform/Kconfig
+> +++ b/drivers/media/platform/Kconfig
+> @@ -148,6 +148,15 @@ config VIDEO_CODA
+>  	   Coda is a range of video codec IPs that supports
+>  	   H.264, MPEG-4, and other video formats.
+>  
+> +config VIDEO_MEDIATEK_VPU
+> +	tristate "Mediatek Video Processor Unit"
+> +	depends on VIDEO_DEV && VIDEO_V4L2 && ARCH_MEDIATEK
+> +	---help---
+> +	    This driver provides downloading VPU firmware and
+> +	    communicating with VPU. This driver for hw video
+> +	    codec embedded in new Mediatek's SOCs. It is able
+> +	    to handle video decoding/encoding in a range of formats.
 
-<snip>
+Can you be more specific in this text and mention for which Mediatek SoCs
+this driver is for? Just like you did in the commit log.
 
-> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> new file mode 100644
-> index 0000000..f54fd89
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> @@ -0,0 +1,994 @@
+Also add something like this:
 
-<snip>
+          To compile this driver as a module, choose M here: the module
+          will be called mtk-vpu.
 
-> +static ssize_t vpu_debug_read(struct file *file, char __user *user_buf,
-> +			      size_t count, loff_t *ppos)
-> +{
-> +	char buf[256];
-> +	unsigned int len;
-> +	unsigned int running, pc, vpu_to_host, host_to_vpu, wdt;
-> +	int ret;
-> +	struct device *dev = file->private_data;
-> +	struct mtk_vpu *vpu = dev_get_drvdata(dev);
-> +
-> +	ret = vpu_clock_enable(vpu);
-> +	if (ret) {
-> +		dev_err(vpu->dev, "[VPU] enable clock failed %d\n", ret);
-> +		return 0;
-> +	}
-> +
-> +	/* vpu register status */
-> +	running = vpu_running(vpu);
-> +	pc = vpu_cfg_readl(vpu, VPU_PC_REG);
-> +	wdt = vpu_cfg_readl(vpu, VPU_WDT_REG);
-> +	host_to_vpu = vpu_cfg_readl(vpu, HOST_TO_VPU);
-> +	vpu_to_host = vpu_cfg_readl(vpu, VPU_TO_HOST);
-> +	vpu_clock_disable(vpu);
-> +
-> +	if (running) {
-> +		len = sprintf(buf, "VPU is running\n\n"
-
-Please use snprintf.
-
-> +		"FW Version: %s\n"
-> +		"PC: 0x%x\n"
-> +		"WDT: 0x%x\n"
-> +		"Host to VPU: 0x%x\n"
-> +		"VPU to Host: 0x%x\n",
-> +		vpu->run.fw_ver, pc, wdt,
-> +		host_to_vpu, vpu_to_host);
-> +	} else {
-> +		len = sprintf(buf, "VPU not running\n");
-
-Ditto.
-
-sprintf always makes me feel uncomfortable :-)
-
-> +	}
-> +
-> +	return simple_read_from_buffer(user_buf, count, ppos, buf, len);
-> +}
+I always find it useful if the Kconfig text mentions the module name.
 
 Regards,
 
 	Hans
+
+> +
+>  config VIDEO_MEM2MEM_DEINTERLACE
+>  	tristate "Deinterlace support"
+>  	depends on VIDEO_DEV && VIDEO_V4L2 && DMA_ENGINE
