@@ -1,93 +1,62 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 1/2] pinctrl: mediatek: fix direction control issue
-Date: Tue, 16 Feb 2016 13:28:52 +0100
-Message-ID: <CACRpkdb1pVQY0UG-_Z5ivyG6rPZq5YibYcRhzdnDMghfH8jMjA@mail.gmail.com>
-References: <1454462686-770-1-git-send-email-biao.huang@mediatek.com>
-	<1454462686-770-2-git-send-email-biao.huang@mediatek.com>
-	<1454555015.4618.10.camel@mussux00>
-	<CACRpkdZb2-TX1eY7eyK5qCqOg66MP1e4+OO287roJdP=RB6-Fg@mail.gmail.com>
-	<1455242831.35628.15.camel@mussux00>
-	<1455612869.11448.22.camel@mtksdaap41>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: Re: [PATCH] rtc: mt6397: Add platform device ID table
+Date: Tue, 16 Feb 2016 21:19:07 +0800
+Message-ID: <1455628747.2981.4.camel@mtksdaap41>
+References: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
+	 <1455501497.7263.4.camel@mtksdaap41> <56C1E5C8.6040007@osg.samsung.com>
+	 <2416670.q30ahHlzPm@wuerfel>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1455612869.11448.22.camel@mtksdaap41>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Sherman Yin <syin@broadcom.com>, Biao Huang <biao.huang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <2416670.q30ahHlzPm@wuerfel>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: linux-arm-kernel@lists.infradead.org, Javier Martinez Canillas <javier@osg.samsung.com>, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 16, 2016 at 9:54 AM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+On Tue, 2016-02-16 at 12:37 +0100, Arnd Bergmann wrote:
+> On Monday 15 February 2016 11:50:48 Javier Martinez Canillas wrote:
+> > 
+> > On 02/14/2016 10:58 PM, Eddie Huang wrote:
+> > 
+> > [snip]
+> > 
+> > >> @@ -412,6 +418,7 @@ static struct platform_driver mtk_rtc_driver = {
+> > >>      },
+> > >>      .probe  = mtk_rtc_probe,
+> > >>      .remove = mtk_rtc_remove,
+> > >> +    .id_table = mt6397_rtc_id,
+> > >>   };
+> > >>
+> > >>   module_platform_driver(mtk_rtc_driver);
+> > >> @@ -419,4 +426,3 @@ module_platform_driver(mtk_rtc_driver);
+> > >>   MODULE_LICENSE("GPL v2");
+> > >>   MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
+> > >>   MODULE_DESCRIPTION("RTC Driver for MediaTek MT6397 PMIC");
+> > >> -MODULE_ALIAS("platform:mt6397-rtc");
+> > >
+> > > This patch looks good to me, but I am wondering, since we tend to use
+> > > device tree method to match driver, do we still need support platform
+> > > device ID ?
+> > >
+> > 
+> > I'm not familiar with neither this IP block nor the SoC so it is up to
+> > you. I just noticed this issue when reviewing a regulator driver for a
+> > similar PMIC posted by someone from mediatek.
+> > 
+> > I thought platform device was needed since the driver has a MODULE_ALIAS()
+> > but please let me know what you prefer and I can re-spin the patch and
+> > just remove the MODULE_ALIAS() if that makes more sense for this platform.
+> >   
+> > 
+> 
+> I agree. We can alway add a MODULE_DEVICE_TABLE() if we get multiple
+> users of this driver on architectures that don't use devicetree yet.
+> 
 
-> To make it more clear, for a GPIO pin to get input on MTK chip, we must:
->
-> - Enable input for the pad (input-enable)
+Sure. Thanks the patch to add expandability to this driver.
 
-This should be done by the pin control portions of the driver in
-response to the PIN_CONFIG_INPUT_ENABLE generic pin
-config setting.
+Acked-by: Eddie Huang <eddie.huang@mediatek.com>
 
-Possibly *also* by just writing the hardware registers
-from the callbacks right below here:
-
-> - Set mux to GPIO mode
-
-This should be done by just writing the hardware registers
-in these callbacks from struct pinmux_ops:
-
-        int (*gpio_request_enable) (struct pinctrl_dev *pctldev,
-                                    struct pinctrl_gpio_range *range,
-                                    unsigned offset);
-        void (*gpio_disable_free) (struct pinctrl_dev *pctldev,
-                                   struct pinctrl_gpio_range *range,
-                                   unsigned offset);
-        int (*gpio_set_direction) (struct pinctrl_dev *pctldev,
-                                   struct pinctrl_gpio_range *range,
-                                   unsigned offset,
-                                   bool input);
-
-In respons to these functions being called from the corresponding
-GPIO driver:
-
-extern int pinctrl_request_gpio(unsigned gpio);
-extern void pinctrl_free_gpio(unsigned gpio);
-extern int pinctrl_gpio_direction_input(unsigned gpio);
-extern int pinctrl_gpio_direction_output(unsigned gpio);
-
-> - Set GPIO direction to input
-
-This should be done in these callbacks from struct gpio_chip:
-
-        int                     (*direction_input)(struct gpio_chip *chip,
-                                                unsigned offset);
-        int                     (*direction_output)(struct gpio_chip *chip,
-                                                unsigned offset, int value);
-
-By just writing the hardware registers.
-
-> Currently user need to add a dts node to set pinmux to GPIO mode with
-> input-enable property, the driver need to call gpio_direction_input to
-> set direction.
-
-It seems like:
-
-- Your GPIO driver is not calling the pinctrl_request_gpio/
-  pinctrl_gpio_direction_* etc.
-
-- Your pinmux driver is not implementing the GPIO-specifif
-  .gpio_* functions
-
-> Since input-enable and GPIO direction are 2 different things, we now
-> think this patch is inappropriate. Instead, user should not required to
-> add pinmux node in dts if all he want is use it as plain GPIO input.
-
-If you sort out the above callbacks (also read
-Documentation/pinctrl.txt about GPIO) I think it is
-clear what you need to do.
-
-Usually you should only need a special pinmux/pinconf node
-for a GPIO line if you need to specify pull-up or similar electronic
-things for that GPIO.
-
-Yours,
-Linus Walleij
+Eddie
