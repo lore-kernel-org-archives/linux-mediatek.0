@@ -1,118 +1,93 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [RFC 1/3] dt-bindings: soc: Add documentation for the MediaTek
- GCE unit
-Date: Tue, 16 Feb 2016 20:06:22 +0800
-Message-ID: <1455624382.17318.6.camel@mtksdaap41>
-References: <1453266881-16849-1-git-send-email-hs.liao@mediatek.com>
-	 <1453266881-16849-2-git-send-email-hs.liao@mediatek.com>
-	 <20160120163826.GA23400@rob-hp-laptop>
-	 <1453433893.15298.13.camel@mtksdaap41> <56B8D5A3.3000506@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/2] pinctrl: mediatek: fix direction control issue
+Date: Tue, 16 Feb 2016 13:28:52 +0100
+Message-ID: <CACRpkdb1pVQY0UG-_Z5ivyG6rPZq5YibYcRhzdnDMghfH8jMjA@mail.gmail.com>
+References: <1454462686-770-1-git-send-email-biao.huang@mediatek.com>
+	<1454462686-770-2-git-send-email-biao.huang@mediatek.com>
+	<1454555015.4618.10.camel@mussux00>
+	<CACRpkdZb2-TX1eY7eyK5qCqOg66MP1e4+OO287roJdP=RB6-Fg@mail.gmail.com>
+	<1455242831.35628.15.camel@mussux00>
+	<1455612869.11448.22.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56B8D5A3.3000506@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1455612869.11448.22.camel@mtksdaap41>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>, Sherman Yin <syin@broadcom.com>, Biao Huang <biao.huang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+On Tue, Feb 16, 2016 at 9:54 AM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
 
-On Mon, 2016-02-08 at 18:51 +0100, Matthias Brugger wrote:
-> 
-> On 22/01/16 04:38, Horng-Shyang Liao wrote:
-> > Hi Rob,
-> >
-> > On Wed, 2016-01-20 at 10:38 -0600, Rob Herring wrote:
-> >> On Wed, Jan 20, 2016 at 01:14:38PM +0800, hs.liao@mediatek.com wrote:
-> >>> From: HS Liao <hs.liao@mediatek.com>
-> >>>
-> >>> This adds documentation for the MediaTek Global Command Engine (GCE) unit
-> >>> found in MT8173 SoCs.
-> >>>
-> >>> Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> >>> ---
-> >>>   .../devicetree/bindings/soc/mediatek/gce.txt       |   33 ++++++++++++++++++++
-> >>>   1 file changed, 33 insertions(+)
-> >>>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/gce.txt b/Documentation/devicetree/bindings/soc/mediatek/gce.txt
-> >>> new file mode 100644
-> >>> index 0000000..878b11e
-> >>> --- /dev/null
-> >>> +++ b/Documentation/devicetree/bindings/soc/mediatek/gce.txt
-> >>> @@ -0,0 +1,33 @@
-> >>> +MediaTek GCE
-> >>> +===============
-> >>> +
-> >>> +The Global Command Engine (GCE) is used to help read/write registers with
-> >>> +critical time limitation, such as updating display configuration during the
-> >>> +vblank. The GCE can be used to implement the Command Queue (CMDQ) driver.
-> >>> +Currently, the GCE only supports display related hardwares, but we expect
-> >>> +it can be extended to other hardwares for future requirements.
-> >>
-> >> That's a hardware limitation or just s/w is only using it for display?
-> >> If the latter, that's not really relevant to this binding and should be
-> >> removed.
-> >
-> > Just s/w is only using it for display.
-> > I will remove it from next patch.
-> >
-> >>> +
-> >>> +Required properties:
-> >>> +- compatible: Must be "mediatek,mt8173-gce"
-> >>> +- reg: Address range of the GCE unit
-> >>> +- interrupts: The interrupt signal from the GCE block
-> >>> +- clock: Clocks according to the common clock binding
-> >>> +- clock-names: Must be "gce" to stand for GCE clock
-> >>> +
-> >>> +Example:
-> >>> +
-> >>> +	gce: gce@10212000 {
-> >>> +		compatible = "mediatek,mt8173-gce";
-> >>> +		reg = <0 0x10212000 0 0x1000>;
-> >>> +		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
-> >>> +		clocks = <&infracfg CLK_INFRA_GCE>;
-> >>> +		clock-names = "gce";
-> >>> +	};
-> >>> +
-> >>> +	mmsys: clock-controller@14000000 {
-> >>> +		compatible = "mediatek,mt8173-mmsys", "syscon";
-> >>> +		reg = <0 0x14000000 0 0x1000>;
-> >>> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-> >>> +		#clock-cells = <1>;
-> >>> +		mediatek,gce = <&gce>;
-> >>
-> >> Not documented.
-> >
-> > It's just an example about how gce is used by display mmsys.
-> > After I discussed with Mediatek display owner,
-> > we think this can be moved to display device tree document.
-> > Do you agree with this suggestion?
-> > If so, I will remove it from next patch, too.
-> >
-> 
-> The problem is that mediatek,gce is not documented, but only 
-> mediatek,mt8173-gce.
+> To make it more clear, for a GPIO pin to get input on MTK chip, we must:
+>
+> - Enable input for the pad (input-enable)
 
-How about this?
+This should be done by the pin control portions of the driver in
+response to the PIN_CONFIG_INPUT_ENABLE generic pin
+config setting.
 
-Required properties for a client device:
-- mediatek,gce: Should point to the respective GCE block
+Possibly *also* by just writing the hardware registers
+from the callbacks right below here:
 
-Example for a client device:
+> - Set mux to GPIO mode
 
-mmsys: clock-controller@14000000 {
-	compatible = "mediatek,mt8173-mmsys";
-	mediatek,gce = <&gce>;
-	...
-};
+This should be done by just writing the hardware registers
+in these callbacks from struct pinmux_ops:
 
+        int (*gpio_request_enable) (struct pinctrl_dev *pctldev,
+                                    struct pinctrl_gpio_range *range,
+                                    unsigned offset);
+        void (*gpio_disable_free) (struct pinctrl_dev *pctldev,
+                                   struct pinctrl_gpio_range *range,
+                                   unsigned offset);
+        int (*gpio_set_direction) (struct pinctrl_dev *pctldev,
+                                   struct pinctrl_gpio_range *range,
+                                   unsigned offset,
+                                   bool input);
 
-> 
-> Regards,
-> Matthias
+In respons to these functions being called from the corresponding
+GPIO driver:
 
-Thanks,
-HS Liao
+extern int pinctrl_request_gpio(unsigned gpio);
+extern void pinctrl_free_gpio(unsigned gpio);
+extern int pinctrl_gpio_direction_input(unsigned gpio);
+extern int pinctrl_gpio_direction_output(unsigned gpio);
+
+> - Set GPIO direction to input
+
+This should be done in these callbacks from struct gpio_chip:
+
+        int                     (*direction_input)(struct gpio_chip *chip,
+                                                unsigned offset);
+        int                     (*direction_output)(struct gpio_chip *chip,
+                                                unsigned offset, int value);
+
+By just writing the hardware registers.
+
+> Currently user need to add a dts node to set pinmux to GPIO mode with
+> input-enable property, the driver need to call gpio_direction_input to
+> set direction.
+
+It seems like:
+
+- Your GPIO driver is not calling the pinctrl_request_gpio/
+  pinctrl_gpio_direction_* etc.
+
+- Your pinmux driver is not implementing the GPIO-specifif
+  .gpio_* functions
+
+> Since input-enable and GPIO direction are 2 different things, we now
+> think this patch is inappropriate. Instead, user should not required to
+> add pinmux node in dts if all he want is use it as plain GPIO input.
+
+If you sort out the above callbacks (also read
+Documentation/pinctrl.txt about GPIO) I think it is
+clear what you need to do.
+
+Usually you should only need a special pinmux/pinconf node
+for a GPIO line if you need to specify pull-up or similar electronic
+things for that GPIO.
+
+Yours,
+Linus Walleij
