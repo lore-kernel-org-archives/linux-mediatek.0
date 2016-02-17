@@ -1,44 +1,40 @@
-From: Biao Huang <biao.huang@mediatek.com>
-Subject: [PATCH 2/2] pinctrl: mediatek: add input-enable and direction setting for eint resources
-Date: Wed, 17 Feb 2016 03:16:34 +0800
-Message-ID: <1455650194-9813-3-git-send-email-biao.huang@mediatek.com>
-References: <1455650194-9813-1-git-send-email-biao.huang@mediatek.com>
+From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 1/2] dt-bindings: Add LG lp120up1 panel bindings
+Date: Wed, 17 Feb 2016 14:50:38 +0800
+Message-ID: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455650194-9813-1-git-send-email-biao.huang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel@pengu>
 List-Id: linux-mediatek@lists.infradead.org
 
-To use pin as eint, user should make sure that:
-1. pin is set to right mode, this is done in .irq_request_resources
-implementation already.
-2. direction of the pin is input, which should call GPIO API to set
-pin to input gpio.
-We add what step 2 do to .irq_request_resources so that user doesn't
-need call GPIO API any more when pin for eint usage.
+Add documentation for lp120up1 panel
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c |    4 ++++
- 1 file changed, 4 insertions(+)
+ .../bindings/display/panel/lg,lp120up1.txt         |    7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 578897a..342d85b 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -863,6 +863,10 @@ static int mtk_pinctrl_irq_request_resources(struct irq_data *d)
- 
- 	/* set mux to INT mode */
- 	mtk_pmx_set_mode(pctl->pctl_dev, pin->pin.number, pin->eint.eintmux);
-+	/* set gpio direction to input */
-+	mtk_pmx_gpio_set_direction(pctl->pctl_dev, NULL, pin->pin.number, true);
-+	/* set input-enable */
-+	mtk_pconf_set_ies_smt(pctl, pin->pin.number, 1, PIN_CONFIG_INPUT_ENABLE);
- 
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt b/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
+new file mode 100644
+index 0000000..ff0b6c6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
+@@ -0,0 +1,7 @@
++LG 12.0" (1920x1280 pixels) TFT LCD panel
++
++Required properties:
++- compatible: should be "lg,lp120up1"
++
++This binding is compatible with the simple-panel binding, which is specified
++in simple-panel.txt in this directory.
 -- 
 1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
