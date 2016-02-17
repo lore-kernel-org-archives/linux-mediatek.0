@@ -1,68 +1,70 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH 2/2] drm/panel: Add support for LG lp120up1 panel
-Date: Wed, 17 Feb 2016 14:50:39 +0800
-Message-ID: <1455691839-2410-2-git-send-email-jitao.shi@mediatek.com>
-References: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Wed, 17 Feb 2016 15:01:37 +0800
+Message-ID: <1455692499-56828-3-git-send-email-jamesjj.liao@mediatek.com>
+References: <1455692499-56828-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengu>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1455692499-56828-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The LG lp120up1 panel is a 12.0" 1920x1280 panel,
-which can be supported by the simple panel driver
+Some power domain comsumers may init before module_init.
+So the power domain provider (scpsys) need to be initialized
+earlier too.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Take an example for our IOMMU (M4U) and SMI. SMI is a bridge
+between IOMMU and multimedia HW. SMI is responsible to
+enable/disable iommu and help transfer data for each multimedia
+HW. Both of them have to wait until the power and clocks are
+enabled.
+
+So scpsys driver should be initialized before SMI, and SMI should
+be initialized before IOMMU, and then init IOMMU consumers
+(display/vdec/venc/camera etc.).
+
+IOMMU is subsys_init by default. So we need to init scpsys driver
+before subsys_init.
+
+Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/gpu/drm/panel/panel-simple.c |   26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index f88a631..2030c37 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -982,6 +982,29 @@ static const struct panel_desc lg_lb070wv8 = {
- 	.bus_format = MEDIA_BUS_FMT_RGB888_1X7X4_SPWG,
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 6d2874d..ebfc887 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -625,4 +625,21 @@ static struct platform_driver scpsys_drv = {
+ 		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
+ 	},
  };
- 
-+static const struct drm_display_mode lg_lp120up1_mode = {
-+	.clock = 162300,
-+	.hdisplay = 1920,
-+	.hsync_start = 1920 + 40,
-+	.hsync_end = 1920 + 40 + 40,
-+	.htotal = 1920 + 40 + 40+ 80,
-+	.vdisplay = 1280,
-+	.vsync_start = 1280 + 4,
-+	.vsync_end = 1280 + 4 + 4,
-+	.vtotal = 1280 + 4 + 4 + 12,
-+	.vrefresh = 60,
-+};
+-builtin_platform_driver_probe(scpsys_drv, scpsys_probe);
 +
-+static const struct panel_desc lg_lp120up1 = {
-+	.modes = &lg_lp120up1_mode,
-+	.num_modes = 1,
-+	.bpc = 8,
-+	.size = {
-+		.width = 267,
-+		.height = 183,
-+	},
-+};
++static int __init scpsys_drv_init(void)
++{
++	return platform_driver_probe(&scpsys_drv, scpsys_probe);
++}
 +
- static const struct drm_display_mode lg_lp129qe_mode = {
- 	.clock = 285250,
- 	.hdisplay = 2560,
-@@ -1256,6 +1279,9 @@ static const struct of_device_id platform_of_match[] = {
- 		.compatible = "lg,lb070wv8",
- 		.data = &lg_lb070wv8,
- 	}, {
-+		.compatible = "lg,lp120up1",
-+		.data = &lg_lp120up1,
-+	}, {
- 		.compatible = "lg,lp129qe",
- 		.data = &lg_lp129qe,
- 	}, {
++/*
++ * There are some Mediatek drivers which depend on the power domain driver need
++ * to probe in earlier initcall levels. So scpsys driver also need to probe
++ * earlier.
++ *
++ * IOMMU(M4U) and SMI drivers for example. SMI is a bridge between IOMMU and
++ * multimedia HW. IOMMU depends on SMI, and SMI is a power domain consumer,
++ * so the proper probe sequence should be scpsys -> SMI -> IOMMU driver.
++ * IOMMU drivers are initialized during subsys_init by default, so we need to
++ * move SMI and scpsys drivers to subsys_init or earlier init levels.
++ */
++subsys_initcall(scpsys_drv_init);
 -- 
-1.7.9.5
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
