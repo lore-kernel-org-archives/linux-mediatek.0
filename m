@@ -1,99 +1,65 @@
 From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH v3 1/5] Revert "drivers/tty/serial: make 8250/8250_mtk.c explicitly non-modular"
-Date: Wed, 17 Feb 2016 16:02:31 +0100
-Message-ID: <1455721357-4008289-2-git-send-email-arnd@arndb.de>
+Subject: [PATCH v3 5/5] serial: 8250/mediatek: fix building with SERIAL_8250=m
+Date: Wed, 17 Feb 2016 16:02:35 +0100
+Message-ID: <1455721357-4008289-6-git-send-email-arnd@arndb.de>
 References: <1455721357-4008289-1-git-send-email-arnd@arndb.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1455721357-4008289-1-git-send-email-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, Peter Hurley <peter@hurleysoftware.com>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, Peter Hurley <peter@hurleysoftware.com>, Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Martin Sperl <kernel@martin.sperl.org>, Paul Burton <paul.burton@imgtec.com>, Mans Rullgard <mans@mansr.com>, Scott Wood <scottwood@freescale.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This reverts commit d72d391c126e ("drivers/tty/serial: make
-8250/8250_mtk.c explicitly non-modular"), which intended to remove dead
-code but did not have the desired effect when the main 8250 driver was
-a module itself.
+The Mediatek 8250 driver has a 'bool' Kconfig symbol, but that
+breaks when SERIAL_8250 is a loadable module:
 
-This would normally result in a link error, but as the entire
-drivers/tty/serial/8250/ directory is only entered when CONFIG_SERIAL_8250
-is set, we never notice that the driver does not get built in this
-configuration.
+drivers/tty/built-in.o: In function `mtk8250_set_termios':
+:(.text+0x1bee8): undefined reference to `serial8250_do_set_termios'
+:(.text+0x1bf10): undefined reference to `uart_get_baud_rate'
+:(.text+0x1c09c): undefined reference to `uart_get_divisor'
+drivers/tty/built-in.o: In function `mtk8250_do_pm':
+:(.text+0x1c0d0): undefined reference to `serial8250_do_pm'
+drivers/tty/built-in.o: In function `mtk8250_probe':
+:(.text+0x1c2e4): undefined reference to `serial8250_register_8250_port'
+serial/8250/8250_mtk.c:287:242: error: data definition has no type or storage class [-Werror]
+serial/8250/8250_mtk.c:287:122: error: 'mtk8250_platform_driver_init' defined but not used [-Werror=unused-function]
+
+This changes the symbol to a 'tristate', so the dependency on
+SERIAL_8250 also works when that is set to 'm'.
+To actually build the driver, we also need to include <linux/module.h>.
 
 Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/tty/serial/8250/8250_mtk.c | 35 ++++++++++++++++++++++++++++-------
- 1 file changed, 28 insertions(+), 7 deletions(-)
+ drivers/tty/serial/8250/8250_mtk.c | 2 +-
+ drivers/tty/serial/8250/Kconfig    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 9038843cadc7..6ecc6e3e82dc 100644
+index 6ecc6e3e82dc..a0294f3de4f8 100644
 --- a/drivers/tty/serial/8250/8250_mtk.c
 +++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -16,7 +16,7 @@
-  */
- #include <linux/clk.h>
- #include <linux/io.h>
--#include <linux/init.h>
-+#include <linux/module.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
-@@ -245,6 +245,23 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static int mtk8250_remove(struct platform_device *pdev)
-+{
-+	struct mtk8250_data *data = platform_get_drvdata(pdev);
-+
-+	pm_runtime_get_sync(&pdev->dev);
-+
-+	serial8250_unregister_port(data->line);
-+
-+	pm_runtime_disable(&pdev->dev);
-+	pm_runtime_put_noidle(&pdev->dev);
-+
-+	if (!pm_runtime_status_suspended(&pdev->dev))
-+		mtk8250_runtime_suspend(&pdev->dev);
-+
-+	return 0;
-+}
-+
- static int __maybe_unused mtk8250_suspend(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
-@@ -273,18 +290,18 @@ static const struct of_device_id mtk8250_of_match[] = {
- 	{ .compatible = "mediatek,mt6577-uart" },
- 	{ /* Sentinel */ }
+@@ -303,7 +303,7 @@ static struct platform_driver mtk8250_platform_driver = {
  };
-+MODULE_DEVICE_TABLE(of, mtk8250_of_match);
+ module_platform_driver(mtk8250_platform_driver);
  
- static struct platform_driver mtk8250_platform_driver = {
- 	.driver = {
--		.name			= "mt6577-uart",
--		.pm			= &mtk8250_pm_ops,
--		.of_match_table		= mtk8250_of_match,
--		.suppress_bind_attrs	= true,
--
-+		.name		= "mt6577-uart",
-+		.pm		= &mtk8250_pm_ops,
-+		.of_match_table	= mtk8250_of_match,
- 	},
- 	.probe			= mtk8250_probe,
-+	.remove			= mtk8250_remove,
- };
--builtin_platform_driver(mtk8250_platform_driver);
-+module_platform_driver(mtk8250_platform_driver);
- 
- #ifdef CONFIG_SERIAL_8250_CONSOLE
+-#ifdef CONFIG_SERIAL_8250_CONSOLE
++#if defined(CONFIG_SERIAL_8250_CONSOLE) && !defined(MODULE)
  static int __init early_mtk8250_setup(struct earlycon_device *device,
-@@ -300,3 +317,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
+ 					const char *options)
+ {
+diff --git a/drivers/tty/serial/8250/Kconfig b/drivers/tty/serial/8250/Kconfig
+index 1b0638511ac1..c45a02a7f9e2 100644
+--- a/drivers/tty/serial/8250/Kconfig
++++ b/drivers/tty/serial/8250/Kconfig
+@@ -370,7 +370,7 @@ config SERIAL_8250_LPC18XX
+ 	  serial port, say Y to this option. If unsure, say Y.
  
- OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
- #endif
-+
-+MODULE_AUTHOR("Matthias Brugger");
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("Mediatek 8250 serial port driver");
+ config SERIAL_8250_MT6577
+-	bool "Mediatek serial port support"
++	tristate "Mediatek serial port support"
+ 	depends on SERIAL_8250 && ARCH_MEDIATEK
+ 	help
+ 	  If you have a Mediatek based board and want to use the
 -- 
 2.7.0
