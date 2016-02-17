@@ -1,153 +1,99 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH v9 5/5] dts: mt8173: Add iommu/smi nodes for mt8173
-Date: Wed, 17 Feb 2016 08:46:14 +0800
-Message-ID: <1455669974-1527-6-git-send-email-yong.wu@mediatek.com>
-References: <1455669974-1527-1-git-send-email-yong.wu@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v10 10/13] clk: mediatek: make dpi0_sel propagate rate
+ changes
+Date: Wed, 17 Feb 2016 10:19:26 +0100
+Message-ID: <1455700766.3336.11.camel@pengutronix.de>
+References: <1454527562-28154-1-git-send-email-p.zabel@pengutronix.de>
+ <1454527562-28154-11-git-send-email-p.zabel@pengutronix.de>
+ <20160215231404.2278.31008@quark.deferred.io>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455669974-1527-1-git-send-email-yong.wu@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>, Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Will Deacon <will.deacon@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Lucas Stach <l.stach@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, Sasha Hauer <kernel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, pebolle@tiscali.nl, arnd@arndb.de, mitchelh@codeaurora.org, p.zabel@pengutronix.de, youhua.li@mediatek.com, kendrick.hsu@mediatek.com, Yong Wu <yong.wu@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160215231404.2278.31008@quark.deferred.io>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Stephen Boyd <sboyd@codeaurora.org>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add the iommu/larbs nodes for mt8173
-
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 81 ++++++++++++++++++++++++++++++++
- 1 file changed, 81 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index ec135ea..8048811 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -14,6 +14,7 @@
- #include <dt-bindings/clock/mt8173-clk.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/memory/mt8173-larb-port.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/power/mt8173-power.h>
- #include <dt-bindings/reset/mt8173-resets.h>
-@@ -277,6 +278,17 @@
- 			reg = <0 0x10200620 0 0x20>;
- 		};
- 
-+		iommu: iommu@10205000 {
-+			compatible = "mediatek,mt8173-m4u";
-+			reg = <0 0x10205000 0 0x1000>;
-+			interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&infracfg CLK_INFRA_M4U>;
-+			clock-names = "bclk";
-+			mediatek,larbs = <&larb0 &larb1 &larb2
-+					  &larb3 &larb4 &larb5>;
-+			#iommu-cells = <1>;
-+		};
-+
- 		apmixedsys: clock-controller@10209000 {
- 			compatible = "mediatek,mt8173-apmixedsys";
- 			reg = <0 0x10209000 0 0x1000>;
-@@ -589,29 +601,98 @@
- 			status = "disabled";
- 		};
- 
-+		larb0: larb@14021000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x14021000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+			clocks = <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB0>;
-+			clock-names = "apb", "smi";
-+		};
-+
-+		smi_common: smi@14022000 {
-+			compatible = "mediatek,mt8173-smi-common";
-+			reg = <0 0x14022000 0 0x1000>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+			clocks = <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_COMMON>;
-+			clock-names = "apb", "smi";
-+		};
-+
-+		larb4: larb@14027000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x14027000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+			clocks = <&mmsys CLK_MM_SMI_LARB4>,
-+				 <&mmsys CLK_MM_SMI_LARB4>;
-+			clock-names = "apb", "smi";
-+		};
-+
- 		imgsys: clock-controller@15000000 {
- 			compatible = "mediatek,mt8173-imgsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb2: larb@15001000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x15001000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_ISP>;
-+			clocks = <&imgsys CLK_IMG_LARB2_SMI>,
-+				 <&imgsys CLK_IMG_LARB2_SMI>;
-+			clock-names = "apb", "smi";
-+		};
-+
- 		vdecsys: clock-controller@16000000 {
- 			compatible = "mediatek,mt8173-vdecsys", "syscon";
- 			reg = <0 0x16000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb1: larb@16010000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x16010000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
-+			clocks = <&vdecsys CLK_VDEC_CKEN>,
-+				 <&vdecsys CLK_VDEC_LARB_CKEN>;
-+			clock-names = "apb", "smi";
-+		};
-+
- 		vencsys: clock-controller@18000000 {
- 			compatible = "mediatek,mt8173-vencsys", "syscon";
- 			reg = <0 0x18000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb3: larb@18001000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x18001000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC>;
-+			clocks = <&vencsys CLK_VENC_CKE1>,
-+				 <&vencsys CLK_VENC_CKE0>;
-+			clock-names = "apb", "smi";
-+		};
-+
- 		vencltsys: clock-controller@19000000 {
- 			compatible = "mediatek,mt8173-vencltsys", "syscon";
- 			reg = <0 0x19000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
-+
-+		larb5: larb@19001000 {
-+			compatible = "mediatek,mt8173-smi-larb";
-+			reg = <0 0x19001000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_VENC_LT>;
-+			clocks = <&vencltsys CLK_VENCLT_CKE1>,
-+				 <&vencltsys CLK_VENCLT_CKE0>;
-+			clock-names = "apb", "smi";
-+		};
- 	};
- };
- 
--- 
-1.8.1.1.dirty
+SGkgTWljaGFlbCwKCnRoYW5rIHlvdSBmb3IgdGhlIGNvbW1lbnRzLgoKQW0gTW9udGFnLCBkZW4g
+MTUuMDIuMjAxNiwgMTU6MTQgLTA4MDAgc2NocmllYiBNaWNoYWVsIFR1cnF1ZXR0ZToKPiBRdW90
+aW5nIFBoaWxpcHAgWmFiZWwgKDIwMTYtMDItMDMgMTE6MjU6NTkpCj4gPiBUaGlzIG11eCBpcyBz
+dXBwb3NlZCB0byBzZWxlY3QgYSBmaXR0aW5nIGRpdmlkZXIgYWZ0ZXIgdGhlIFBMTAo+ID4gaXMg
+YWxyZWFkeSBzZXQgdG8gdGhlIGNvcnJlY3QgcmF0ZS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTog
+UGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KPiA+IEFja2VkLWJ5OiBKYW1l
+cyBMaWFvIDxqYW1lc2pqLmxpYW9AbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAgZHJpdmVycy9j
+bGsvbWVkaWF0ZWsvY2xrLW10ODE3My5jIHwgMiArLQo+ID4gIGRyaXZlcnMvY2xrL21lZGlhdGVr
+L2Nsay1tdGsuaCAgICB8IDcgKysrKystLQo+ID4gIDIgZmlsZXMgY2hhbmdlZCwgNiBpbnNlcnRp
+b25zKCspLCAzIGRlbGV0aW9ucygtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsv
+bWVkaWF0ZWsvY2xrLW10ODE3My5jIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE3My5j
+Cj4gPiBpbmRleCAyMjdlMzU2Li42ODJiMjc1IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9jbGsv
+bWVkaWF0ZWsvY2xrLW10ODE3My5jCj4gPiArKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGst
+bXQ4MTczLmMKPiA+IEBAIC01NTgsNyArNTU4LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
+Y29tcG9zaXRlIHRvcF9tdXhlc1tdIF9faW5pdGNvbnN0ID0gewo+ID4gICAgICAgICBNVVhfR0FU
+RShDTEtfVE9QX0FUQl9TRUwsICJhdGJfc2VsIiwgYXRiX3BhcmVudHMsIDB4MDA5MCwgMTYsIDIs
+IDIzKSwKPiA+ICAgICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9WRU5DX0xUX1NFTCwgInZlbmNsdF9z
+ZWwiLCB2ZW5jX2x0X3BhcmVudHMsIDB4MDA5MCwgMjQsIDQsIDMxKSwKPiA+ICAgICAgICAgLyog
+Q0xLX0NGR182ICovCj4gPiAtICAgICAgIE1VWF9HQVRFKENMS19UT1BfRFBJMF9TRUwsICJkcGkw
+X3NlbCIsIGRwaTBfcGFyZW50cywgMHgwMGEwLCAwLCAzLCA3KSwKPiA+ICsgICAgICAgTVVYX0dB
+VEVfRkxBR1MoQ0xLX1RPUF9EUEkwX1NFTCwgImRwaTBfc2VsIiwgZHBpMF9wYXJlbnRzLCAweDAw
+YTAsIDAsIDMsIDcsIDApLAo+IAo+IFNvIHRoZSBvbmx5IGluc3RhbmNlIG9mIE1VWF9HQVRFIHRo
+YXQgc2hvdWxkIG5vdCBwcm9wYWdhdGUgaXQncyByZXF1ZXN0Cj4gdXAgdG8gdGhlIHBhcmVudCBp
+cyBkcGkwX3NlbD8gQXJlIHlvdSBzdXJlPwoKVGhlIG90aGVyIHdheSBhcm91bmQuIFRoaXMgaXMg
+dGhlIG9ubHkgY2xvY2sgSSdtIHN1cmUgb2YgdGhhdCBpdApzaG91bGRuJ3QgcHJvcGFnYXRlLiBG
+b3IgdGhlIG90aGVycyBJIGRvbid0IGtub3csIHNvIEkgd2FudCB0byBsZWF2ZQp0aGVtIGFzIHRo
+ZXkgYXJlLgoKPiBJIGhvcGUgc28gYmVjYXVzZSB0aGlzIHBhdGNoIGNoYW5nZXMgYWxsIE1VWF9H
+QVRFIGNsa3MgdG8gcHJvcGFnYXRlCj4gdGhlaXIgcmVxdWVzdHMgdXAgdG8gdGhlaXIgcGFyZW50
+cywgd2hpY2ggaXMgc29ydCBvZiBhIGJpZyBjaGFuZ2UuCgpUaGUgTVVYX0dBVEUgbWFjcm8gcHJl
+dmlvdXNseSB1bmNvbmRpdGlvbmFsbHkgc2V0IHRoZQpDTEtfU0VUX1JBVEVfUEFSRU5ULCBzbyBu
+b3RoaW5nIHNob3VsZCBoYXZlIGNoYW5nZWQgdGhlcmUuIFNlZSAod2F5KQpiZWxvdy4KCj4gQWxz
+bywgdGhlIG5hbWUgZ2FtZSBpcyBhIGJpdCBjb25mdXNpbmcuIEkgY2FuIHNlZSB0aGF0IHlvdSdy
+ZSB0cnlpbmcgdG8KPiBwcmV2ZW50IGhhdmluZyBhIGh1Z2UgcGF0Y2ggdGhhdCB0b3VjaGVzIGV2
+ZXJ5IE1VWF9HQVRFIGluaXRpYWxpemF0aW9uLgo+IEhvd2V2ZXIgaXQgaXNuJ3Qgb2J2aW91cyBm
+cm9tIHRoZSBuYW1lICJNVVhfR0FURSgpIiB0aGF0IHRoZSBtYWNybyB3aWxsCj4gZW5hYmxlIENM
+S19TRVRfUkFURV9QQVJFTlQgZnVuY3Rpb25hbGl0eS4gTWF5YmUgcHV0IGEgY29tbWVudCBhYm92
+ZSBpdAo+IGp1c3QgdG8gbWFrZSBpdCBleHRyYSBjbGVhcj8KCkkgY2FuIGRvIHRoYXQuCgo+ID4g
+ICAgICAgICBNVVhfR0FURShDTEtfVE9QX0lSREFfU0VMLCAiaXJkYV9zZWwiLCBpcmRhX3BhcmVu
+dHMsIDB4MDBhMCwgOCwgMiwgMTUpLAo+ID4gICAgICAgICBNVVhfR0FURShDTEtfVE9QX0NDSTQw
+MF9TRUwsICJjY2k0MDBfc2VsIiwgY2NpNDAwX3BhcmVudHMsIDB4MDBhMCwgMTYsIDMsIDIzKSwK
+PiA+ICAgICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9BVURfMV9TRUwsICJhdWRfMV9zZWwiLCBhdWRf
+MV9wYXJlbnRzLCAweDAwYTAsIDI0LCAyLCAzMSksCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9j
+bGsvbWVkaWF0ZWsvY2xrLW10ay5oIGIvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ay5oCj4g
+PiBpbmRleCAzMmQyZTQ1Li5iNjA3OTk2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9jbGsvbWVk
+aWF0ZWsvY2xrLW10ay5oCj4gPiArKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXRrLmgK
+PiA+IEBAIC04Myw3ICs4Myw3IEBAIHN0cnVjdCBtdGtfY29tcG9zaXRlIHsKPiA+ICAgICAgICAg
+c2lnbmVkIGNoYXIgbnVtX3BhcmVudHM7Cj4gPiAgfTsKPiA+ICAKPiA+IC0jZGVmaW5lIE1VWF9H
+QVRFKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93aWR0aCwgX2dhdGUpIHsg
+IFwKPiA+ICsjZGVmaW5lIE1VWF9HQVRFX0ZMQUdTKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVn
+LCBfc2hpZnQsIF93aWR0aCwgX2dhdGUsIF9mbGFncykgeyAgICBcCj4gPiAgICAgICAgICAgICAg
+ICAgLmlkID0gX2lkLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBcCj4gPiAgICAgICAgICAgICAgICAgLm5hbWUgPSBfbmFtZSwgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBcCj4gPiAgICAgICAgICAgICAgICAgLm11eF9yZWcgPSBf
+cmVnLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcCj4gPiBAQCAtOTQs
+OSArOTQsMTIgQEAgc3RydWN0IG10a19jb21wb3NpdGUgewo+ID4gICAgICAgICAgICAgICAgIC5k
+aXZpZGVyX3NoaWZ0ID0gLTEsICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+
+ID4gICAgICAgICAgICAgICAgIC5wYXJlbnRfbmFtZXMgPSBfcGFyZW50cywgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgXAo+ID4gICAgICAgICAgICAgICAgIC5udW1fcGFyZW50cyA9IEFS
+UkFZX1NJWkUoX3BhcmVudHMpLCAgICAgICAgICAgICAgICAgICAgXAo+ID4gLSAgICAgICAgICAg
+ICAgIC5mbGFncyA9IENMS19TRVRfUkFURV9QQVJFTlQsICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgXAo+ID4gKyAgICAgICAgICAgICAgIC5mbGFncyA9IF9mbGFncywgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgXAoKVGhpcy4KCj4gPiAgICAgICAgIH0KPiA+ICAKPiA+
+ICsjZGVmaW5lIE1VWF9HQVRFKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93
+aWR0aCwgX2dhdGUpICAgIFwKPiA+ICsgICAgICAgTVVYX0dBVEVfRkxBR1MoX2lkLCBfbmFtZSwg
+X3BhcmVudHMsIF9yZWcsIF9zaGlmdCwgX3dpZHRoLCBfZ2F0ZSwgQ0xLX1NFVF9SQVRFX1BBUkVO
+VCkKPiA+ICsKPiA+ICAjZGVmaW5lIE1VWChfaWQsIF9uYW1lLCBfcGFyZW50cywgX3JlZywgX3No
+aWZ0LCBfd2lkdGgpIHsgICAgICAgICAgICAgIFwKPiA+ICAgICAgICAgICAgICAgICAuaWQgPSBf
+aWQsICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKPiA+ICAg
+ICAgICAgICAgICAgICAubmFtZSA9IF9uYW1lLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIFwKPiA+IC0tIAo+ID4gMi43LjAucmMzCgpiZXN0IHJlZ2FyZHMKUGhpbGlw
+cAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
