@@ -1,89 +1,61 @@
-From: Michael Turquette <mturquette@baylibre.com>
-Subject: Re: [PATCH v11 10/14] clk: mediatek: make dpi0_sel propagate rate
- changes
-Date: Wed, 17 Feb 2016 16:15:40 -0800
-Message-ID: <20160218001540.2278.93143@quark.deferred.io>
-References: <1455708534-20274-1-git-send-email-p.zabel@pengutronix.de>
- <1455708534-20274-11-git-send-email-p.zabel@pengutronix.de>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 3/5] memory: mediatek: Add SMI driver
+Date: Thu, 18 Feb 2016 01:52:15 +0800
+Message-ID: <1455731535.10704.8.camel@mhfsdcap03>
+References: <1453781562-23556-1-git-send-email-yong.wu@mediatek.com>
+	 <1453781562-23556-4-git-send-email-yong.wu@mediatek.com>
+	 <56ADE959.2050309@gmail.com> <20160216141059.GT18805@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1455708534-20274-11-git-send-email-p.zabel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160216141059.GT18805-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-UXVvdGluZyBQaGlsaXBwIFphYmVsICgyMDE2LTAyLTE3IDAzOjI4OjUwKQo+IFRoaXMgbXV4IGlz
-IHN1cHBvc2VkIHRvIHNlbGVjdCBhIGZpdHRpbmcgZGl2aWRlciBhZnRlciB0aGUgUExMCj4gaXMg
-YWxyZWFkeSBzZXQgdG8gdGhlIGNvcnJlY3QgcmF0ZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBQaGls
-aXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IEFja2VkLWJ5OiBKYW1lcyBMaWFv
-IDxqYW1lc2pqLmxpYW9AbWVkaWF0ZWsuY29tPgoKTG9va3MgZ29vZCB0byBtZS4KClJlZ2FyZHMs
-Ck1pa2UKCj4gLS0tCj4gQ2hhbmdlcyBzaW5jZSB2MTA6Cj4gIC0gQWRkIGNvbW1lbnRzIGFib3V0
-IE1VWF9HQVRFIHJhdGUgY2hhbmdlIHByb3BhZ2F0aW9uCj4gLS0tCj4gIGRyaXZlcnMvY2xrL21l
-ZGlhdGVrL2Nsay1tdDgxNzMuYyB8ICA2ICsrKysrLQo+ICBkcml2ZXJzL2Nsay9tZWRpYXRlay9j
-bGstbXRrLmggICAgfCAxNSArKysrKysrKysrKysrLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAxOCBp
-bnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Ns
-ay9tZWRpYXRlay9jbGstbXQ4MTczLmMgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTcz
-LmMKPiBpbmRleCAyMjdlMzU2Li44NWMwYmZjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL21l
-ZGlhdGVrL2Nsay1tdDgxNzMuYwo+ICsrKyBiL2RyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1tdDgx
-NzMuYwo+IEBAIC01NTgsNyArNTU4LDExIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2NvbXBv
-c2l0ZSB0b3BfbXV4ZXNbXSBfX2luaXRjb25zdCA9IHsKPiAgICAgICAgIE1VWF9HQVRFKENMS19U
-T1BfQVRCX1NFTCwgImF0Yl9zZWwiLCBhdGJfcGFyZW50cywgMHgwMDkwLCAxNiwgMiwgMjMpLAo+
-ICAgICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9WRU5DX0xUX1NFTCwgInZlbmNsdF9zZWwiLCB2ZW5j
-X2x0X3BhcmVudHMsIDB4MDA5MCwgMjQsIDQsIDMxKSwKPiAgICAgICAgIC8qIENMS19DRkdfNiAq
-Lwo+IC0gICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9EUEkwX1NFTCwgImRwaTBfc2VsIiwgZHBpMF9w
-YXJlbnRzLCAweDAwYTAsIDAsIDMsIDcpLAo+ICsgICAgICAgLyoKPiArICAgICAgICAqIFRoZSBk
-cGkwX3NlbCBjbG9jayBzaG91bGQgbm90IHByb3BhZ2F0ZSByYXRlIGNoYW5nZXMgdG8gaXRzIHBh
-cmVudAo+ICsgICAgICAgICogY2xvY2sgc28gdGhlIGRwaSBkcml2ZXIgY2FuIGhhdmUgZnVsbCBj
-b250cm9sIG92ZXIgUExMIGFuZCBkaXZpZGVyLgo+ICsgICAgICAgICovCj4gKyAgICAgICBNVVhf
-R0FURV9GTEFHUyhDTEtfVE9QX0RQSTBfU0VMLCAiZHBpMF9zZWwiLCBkcGkwX3BhcmVudHMsIDB4
-MDBhMCwgMCwgMywgNywgMCksCj4gICAgICAgICBNVVhfR0FURShDTEtfVE9QX0lSREFfU0VMLCAi
-aXJkYV9zZWwiLCBpcmRhX3BhcmVudHMsIDB4MDBhMCwgOCwgMiwgMTUpLAo+ICAgICAgICAgTVVY
-X0dBVEUoQ0xLX1RPUF9DQ0k0MDBfU0VMLCAiY2NpNDAwX3NlbCIsIGNjaTQwMF9wYXJlbnRzLCAw
-eDAwYTAsIDE2LCAzLCAyMyksCj4gICAgICAgICBNVVhfR0FURShDTEtfVE9QX0FVRF8xX1NFTCwg
-ImF1ZF8xX3NlbCIsIGF1ZF8xX3BhcmVudHMsIDB4MDBhMCwgMjQsIDIsIDMxKSwKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ay5oIGIvZHJpdmVycy9jbGsvbWVkaWF0
-ZWsvY2xrLW10ay5oCj4gaW5kZXggMzJkMmU0NS4uOWYyNGZjZiAxMDA2NDQKPiAtLS0gYS9kcml2
-ZXJzL2Nsay9tZWRpYXRlay9jbGstbXRrLmgKPiArKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9j
-bGstbXRrLmgKPiBAQCAtODMsNyArODMsMTEgQEAgc3RydWN0IG10a19jb21wb3NpdGUgewo+ICAg
-ICAgICAgc2lnbmVkIGNoYXIgbnVtX3BhcmVudHM7Cj4gIH07Cj4gIAo+IC0jZGVmaW5lIE1VWF9H
-QVRFKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93aWR0aCwgX2dhdGUpIHsg
-IFwKPiArLyoKPiArICogSW4gY2FzZSB0aGUgcmF0ZSBjaGFuZ2UgcHJvcGFnYXRpb24gdG8gcGFy
-ZW50IGNsb2NrcyBpcyB1bmRlc2lyYWJsZSwKPiArICogdGhpcyBtYWNybyBhbGxvd3MgdG8gc3Bl
-Y2lmeSB0aGUgY2xvY2sgZmxhZ3MgbWFudWFsbHkuCj4gKyAqLwo+ICsjZGVmaW5lIE1VWF9HQVRF
-X0ZMQUdTKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93aWR0aCwgX2dhdGUs
-IF9mbGFncykgeyAgICBcCj4gICAgICAgICAgICAgICAgIC5pZCA9IF9pZCwgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgICAgICAgICAubmFt
-ZSA9IF9uYW1lLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKPiAg
-ICAgICAgICAgICAgICAgLm11eF9yZWcgPSBfcmVnLCAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBcCj4gQEAgLTk0LDkgKzk4LDE2IEBAIHN0cnVjdCBtdGtfY29tcG9zaXRl
-IHsKPiAgICAgICAgICAgICAgICAgLmRpdmlkZXJfc2hpZnQgPSAtMSwgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBcCj4gICAgICAgICAgICAgICAgIC5wYXJlbnRfbmFtZXMgPSBf
-cGFyZW50cywgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgICAgICAg
-ICAubnVtX3BhcmVudHMgPSBBUlJBWV9TSVpFKF9wYXJlbnRzKSwgICAgICAgICAgICAgICAgICAg
-IFwKPiAtICAgICAgICAgICAgICAgLmZsYWdzID0gQ0xLX1NFVF9SQVRFX1BBUkVOVCwgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBcCj4gKyAgICAgICAgICAgICAgIC5mbGFncyA9IF9mbGFncywg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgfQo+ICAK
-PiArLyoKPiArICogVW5sZXNzIG5lY2Vzc2FyeSwgYWxsIE1VWF9HQVRFIGNsb2NrcyBwcm9wYWdh
-dGUgcmF0ZSBjaGFuZ2VzIHRvIHRoZWlyCj4gKyAqIHBhcmVudCBjbG9jayBieSBkZWZhdWx0Lgo+
-ICsgKi8KPiArI2RlZmluZSBNVVhfR0FURShfaWQsIF9uYW1lLCBfcGFyZW50cywgX3JlZywgX3No
-aWZ0LCBfd2lkdGgsIF9nYXRlKSAgICBcCj4gKyAgICAgICBNVVhfR0FURV9GTEFHUyhfaWQsIF9u
-YW1lLCBfcGFyZW50cywgX3JlZywgX3NoaWZ0LCBfd2lkdGgsIF9nYXRlLCBDTEtfU0VUX1JBVEVf
-UEFSRU5UKQo+ICsKPiAgI2RlZmluZSBNVVgoX2lkLCBfbmFtZSwgX3BhcmVudHMsIF9yZWcsIF9z
-aGlmdCwgX3dpZHRoKSB7ICAgICAgICAgICAgICBcCj4gICAgICAgICAgICAgICAgIC5pZCA9IF9p
-ZCwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAg
-ICAgICAgICAgICAubmFtZSA9IF9uYW1lLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIFwKPiAtLSAKPiAyLjcuMAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On Tue, 2016-02-16 at 15:11 +0100, Joerg Roedel wrote:
+> On Sun, Jan 31, 2016 at 12:00:41PM +0100, Matthias Brugger wrote:
+> > 
+> > 
+> > On 26/01/16 05:12, Yong Wu wrote:
+> > >This patch add SMI(Smart Multimedia Interface) driver. This driver
+> > >is responsible to enable/disable iommu and control the power domain
+> > >and clocks of each local arbiter.
+> > >
+> > >Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > >Tested-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> > >---
+> > 
+> > Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > 
+> > Joerg would you mind to take this through your branch?
+> 
+> Hmm, I somehow missed the patch-set, at least I can't find the v8
+> patches in my inbox.
+> 
+> Yong, can you please re-send with all Acks and other tags added?
+
+Hi Joerg,
+  
+     I have re-sent v9[1] which has added all the tags yesterday.
+
+     Could you find them in your inbox? If not again, please tell me.
+
+     Thanks.
+
+[1]:http://lists.linuxfoundation.org/pipermail/iommu/2016-February/015713.html
+
+> 
+> 
+> Thanks,
+> 
+> 	Joerg
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
