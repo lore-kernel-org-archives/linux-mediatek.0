@@ -1,187 +1,76 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 4/4] soc: mediatek: Add MT2701 scpsys driver
-Date: Wed, 17 Feb 2016 15:01:39 +0800
-Message-ID: <1455692499-56828-5-git-send-email-jamesjj.liao@mediatek.com>
-References: <1455692499-56828-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v4 5/8] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
+ Encoder Driver
+Date: Wed, 17 Feb 2016 08:47:44 +0100
+Message-ID: <56C425A0.6080005@xs4all.nl>
+References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-4-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-5-git-send-email-tiffany.lin@mediatek.com>
+ <1454585703-42428-6-git-send-email-tiffany.lin@mediatek.com>
+ <56C1B4AF.1030207@xs4all.nl> <1455604653.19396.68.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1455692499-56828-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1455604653.19396.68.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tiffany lin <tiffany.lin@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On 02/16/2016 07:37 AM, tiffany lin wrote:
+>>> +static int fops_vcodec_open(struct file *file)
+>>> +{
+>>> +	struct video_device *vfd = video_devdata(file);
+>>> +	struct mtk_vcodec_dev *dev = video_drvdata(file);
+>>> +	struct mtk_vcodec_ctx *ctx = NULL;
+>>> +	int ret = 0;
+>>> +
+>>> +	mutex_lock(&dev->dev_mutex);
+>>> +
+>>> +	ctx = devm_kzalloc(&dev->plat_dev->dev, sizeof(*ctx), GFP_KERNEL);
+>>> +	if (!ctx) {
+>>> +		ret = -ENOMEM;
+>>> +		goto err_alloc;
+>>> +	}
+>>> +
+>>> +	if (dev->num_instances >= MTK_VCODEC_MAX_ENCODER_INSTANCES) {
+>>> +		mtk_v4l2_err("Too many open contexts\n");
+>>> +		ret = -EBUSY;
+>>> +		goto err_no_ctx;
+>>
+>> Hmm. I never like it if you can't open a video node because of a reason like this.
+>>
+>> I.e. a simple 'v4l2-ctl -D' (i.e. calling QUERYCAP) should never fail.
+>>
+>> If there are hardware limitation that prevent more than X instances from running at
+>> the same time, then those limitations typically kick in when you start to stream
+>> (or possibly when calling REQBUFS). But before that it should always be possible to
+>> open the device.
+>>
+>> Having this check at open() is an indication of a poor design.
+>>
+>> Is this is a hardware limitation at all?
+>>
+> This is to make sure performance meet requirements, such as bitrate and
+> framerate.
 
-Add scpsys driver for MT2701.
+Is it the driver's job to make enforce this? What if the application only
+deals with low-res video, but wants to encode a lot of those? Or is encoding
+a video off-line?
 
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/soc/mediatek/mtk-scpsys.c | 108 +++++++++++++++++++++++++++++++++++++-
- 1 file changed, 107 insertions(+), 1 deletion(-)
+The driver generally doesn't know the use-case, so if this is an artificial
+limitation as opposed to a hardware limitation, then I would just drop this.
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index ebfc887..171fd8e 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -20,6 +20,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/soc/mediatek/infracfg.h>
- 
-+#include <dt-bindings/power/mt2701-power.h>
- #include <dt-bindings/power/mt8173-power.h>
- 
- #define SPM_VDE_PWR_CON			0x0210
-@@ -27,8 +28,13 @@
- #define SPM_VEN_PWR_CON			0x0230
- #define SPM_ISP_PWR_CON			0x0238
- #define SPM_DIS_PWR_CON			0x023c
-+#define SPM_CONN_PWR_CON		0x0280
- #define SPM_VEN2_PWR_CON		0x0298
--#define SPM_AUDIO_PWR_CON		0x029c
-+#define SPM_AUDIO_PWR_CON		0x029c	/* MT8173 */
-+#define SPM_BDP_PWR_CON			0x029c	/* MT2701 */
-+#define SPM_ETH_PWR_CON			0x02a0
-+#define SPM_HIF_PWR_CON			0x02a4
-+#define SPM_IFR_MSC_PWR_CON		0x02a8
- #define SPM_MFG_2D_PWR_CON		0x02c0
- #define SPM_MFG_ASYNC_PWR_CON		0x02c4
- #define SPM_USB_PWR_CON			0x02cc
-@@ -42,10 +48,15 @@
- #define PWR_ON_2ND_BIT			BIT(3)
- #define PWR_CLK_DIS_BIT			BIT(4)
- 
-+#define PWR_STATUS_CONN			BIT(1)
- #define PWR_STATUS_DISP			BIT(3)
- #define PWR_STATUS_MFG			BIT(4)
- #define PWR_STATUS_ISP			BIT(5)
- #define PWR_STATUS_VDEC			BIT(7)
-+#define PWR_STATUS_BDP			BIT(14)
-+#define PWR_STATUS_ETH			BIT(15)
-+#define PWR_STATUS_HIF			BIT(16)
-+#define PWR_STATUS_IFR_MSC		BIT(17)
- #define PWR_STATUS_VENC_LT		BIT(20)
- #define PWR_STATUS_VENC			BIT(21)
- #define PWR_STATUS_MFG_2D		BIT(22)
-@@ -469,6 +480,98 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- }
- 
- /*
-+ * MT2701 power domain support
-+ */
-+
-+static const struct scp_domain_data scp_domain_data_mt2701[] __initconst = {
-+	[MT2701_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
-+		.sta_mask = PWR_STATUS_CONN,
-+		.ctl_offs = SPM_CONN_PWR_CON,
-+		.bus_prot_mask = 0x0104,
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_DISP] = {
-+		.name = "disp",
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.clk_id = {CLK_MM},
-+		.bus_prot_mask = 0x0002,
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_VDEC] = {
-+		.name = "vdec",
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_MM},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_BDP] = {
-+		.name = "bdp",
-+		.sta_mask = PWR_STATUS_BDP,
-+		.ctl_offs = SPM_BDP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_ETH] = {
-+		.name = "eth",
-+		.sta_mask = PWR_STATUS_ETH,
-+		.ctl_offs = SPM_ETH_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_HIF] = {
-+		.name = "hif",
-+		.sta_mask = PWR_STATUS_HIF,
-+		.ctl_offs = SPM_HIF_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_IFR_MSC] = {
-+		.name = "ifr_msc",
-+		.sta_mask = PWR_STATUS_IFR_MSC,
-+		.ctl_offs = SPM_IFR_MSC_PWR_CON,
-+		.active_wakeup = true,
-+	},
-+};
-+
-+#define NUM_DOMAINS_MT2701	ARRAY_SIZE(scp_domain_data_mt2701)
-+
-+static int __init scpsys_probe_mt2701(struct platform_device *pdev)
-+{
-+	struct scp *scp;
-+
-+	scp = init_scp(pdev, scp_domain_data_mt2701, NUM_DOMAINS_MT2701);
-+	if (IS_ERR(scp))
-+		return PTR_ERR(scp);
-+
-+	mtk_register_power_domains(pdev, scp, NUM_DOMAINS_MT2701);
-+
-+	return 0;
-+}
-+
-+/*
-  * MT8173 power domain support
-  */
- 
-@@ -597,6 +700,9 @@ static int __init scpsys_probe_mt8173(struct platform_device *pdev)
- 
- static const struct of_device_id of_scpsys_match_tbl[] = {
- 	{
-+		.compatible = "mediatek,mt2701-scpsys",
-+		.data = scpsys_probe_mt2701,
-+	}, {
- 		.compatible = "mediatek,mt8173-scpsys",
- 		.data = scpsys_probe_mt8173,
- 	}, {
--- 
-1.9.1
+Regards,
+
+	Hans
+
+> We got your point. We will remove this and move limitation control to
+> start_streaming or REQBUFS.
+> Appreciated for your suggestion.:)
+> 
+> 
+>>> +	}
