@@ -1,87 +1,109 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
-Date: Wed, 17 Feb 2016 18:05:57 +0100
-Message-ID: <56C4A875.6080908@gmail.com>
-References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
- <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
- <20151217193332.GB7999@localhost.localdomain>
- <20160104141940.GI13058@pengutronix.de>
- <20160119072917.GA13237@pengutronix.de> <1454295246.22151.6.camel@mtksdaap41>
- <CAGS+omD9U8tKmb02d_gMMAGX18MJZhz0RrugpBK2EuqgZrBy6g@mail.gmail.com>
- <CAGS+omArr0_-ziBXWjEcKS0bqnruNzZc2aq2s3zkghUC7_HfGw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/5] Revert "drivers/tty/serial: make 8250/8250_mtk.c
+ explicitly non-modular"
+Date: Wed, 17 Feb 2016 18:19:01 +0100
+Message-ID: <56C4AB85.7010708@gmail.com>
+References: <1455721357-4008289-1-git-send-email-arnd@arndb.de>
+ <1455721357-4008289-2-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omArr0_-ziBXWjEcKS0bqnruNzZc2aq2s3zkghUC7_HfGw@mail.gmail.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1455721357-4008289-2-git-send-email-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-arm-kernel@lists.infradead.org, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, Peter Hurley <peter@hurleysoftware.com>, Jiri Slaby <jslaby@suse.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 15/02/16 03:14, Daniel Kurtz wrote:
-> On Mon, Feb 15, 2016 at 10:11 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
->> Hi Eduardo, Sascha,
->>
->> On Mon, Feb 1, 2016 at 10:54 AM, Eddie Huang <eddie.huang@mediatek.com> wrote:
->>>
->>> On Tue, 2016-01-19 at 15:29 +0800, Sascha Hauer wrote:
->>>> Eduardo,
->>>>
->>>> On Mon, Jan 04, 2016 at 03:19:40PM +0100, Sascha Hauer wrote:
->>>>> Hi Eduardo,
->>>>>
->>>>>>
->>>>>> That should remove the policy of computing the maximum from this driver.
->>>>>> Please have a look on the work being done [1] to add grouping and
->>>>>> aggregation of thermal zones. With that in place, you should be a matter
->>>>>> of configuring the grouping and selecting max as the aggregation function,
->>>>>> from the thermal core, instead in the driver. Which should give the
->>>>>> system engineer, more flexibility to compose whatever policy based on
->>>>>> the exposed sensors.
->>>>>
->>>>> I think the aggregation of thermal zones is quite useful when it comes
->>>>> to putting different chips together to a system. I am not so sure how
->>>>> useful it is to expose different thermal zones of a single SoC to the
->>>>> device tree.
->>>>> Currently the only control knob we have is the CPU frequency. When any
->>>>> of the sensors on the SoC gets too hot then the only thing we can do is
->>>>> to decrease the CPU frequency. This does not leave much space for
->>>>> configuration in the device tree.
->>>>> What I need to be able is to attach multiple sensors to one thermal
->>>>> zone. The aggregation patch series only partly solves that and I think
->>>>> is inconsistent, but I commented on the series directly.
->>>>
->>>> Any input on this? I really like to get this driver upstream as it is
->>>> currently blocking other Mediatek drivers.
->>>>
->>>
->>> Hi Eduardo,
->>>
->>> Do you have any comment about Sascha's response ? We really hope get
->>> your comment since Mediatek thermal driver already reviewed in public
->>> over half years, and we have other patches [0] [1] depend on thermal
->>> driver.
->>>
->>> [0]:
->>> http://lists.infradead.org/pipermail/linux-arm-kernel/2015-December/394084.html
->>> [1]:
->>> http://lists.infradead.org/pipermail/linux-arm-kernel/2016-January/401055.html
->>
->> Friendly ping on the Mediatek thermal driver.
->> The "EFUSE" dependency has now landed in v4.5-rc4.
+On 17/02/16 16:02, Arnd Bergmann wrote:
+> This reverts commit d72d391c126e ("drivers/tty/serial: make
+> 8250/8250_mtk.c explicitly non-modular"), which intended to remove dead
+> code but did not have the desired effect when the main 8250 driver was
+> a module itself.
 >
-> Actually, it landed in char-misc-next, not v4.5-rc4.
+> This would normally result in a link error, but as the entire
+> drivers/tty/serial/8250/ directory is only entered when CONFIG_SERIAL_8250
+> is set, we never notice that the driver does not get built in this
+> configuration.
 >
->> So, AFAICT, the only thing left that may be blocking landing Mediatek
->> thermal driver is resolution of this discussion about thermal zones.
->> Can we kindly resolve this soon so we have a chance to land it in v4.6.
->>
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
 
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-I think the problem is, that Eduardo wants to see the hierachical 
-thermal zones being used. But there is still a discussion ongoing [1].
-
-[1] https://patchwork.kernel.org/patch/7699971/
+>   drivers/tty/serial/8250/8250_mtk.c | 35 ++++++++++++++++++++++++++++-------
+>   1 file changed, 28 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index 9038843cadc7..6ecc6e3e82dc 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -16,7 +16,7 @@
+>    */
+>   #include <linux/clk.h>
+>   #include <linux/io.h>
+> -#include <linux/init.h>
+> +#include <linux/module.h>
+>   #include <linux/of_irq.h>
+>   #include <linux/of_platform.h>
+>   #include <linux/platform_device.h>
+> @@ -245,6 +245,23 @@ static int mtk8250_probe(struct platform_device *pdev)
+>   	return 0;
+>   }
+>
+> +static int mtk8250_remove(struct platform_device *pdev)
+> +{
+> +	struct mtk8250_data *data = platform_get_drvdata(pdev);
+> +
+> +	pm_runtime_get_sync(&pdev->dev);
+> +
+> +	serial8250_unregister_port(data->line);
+> +
+> +	pm_runtime_disable(&pdev->dev);
+> +	pm_runtime_put_noidle(&pdev->dev);
+> +
+> +	if (!pm_runtime_status_suspended(&pdev->dev))
+> +		mtk8250_runtime_suspend(&pdev->dev);
+> +
+> +	return 0;
+> +}
+> +
+>   static int __maybe_unused mtk8250_suspend(struct device *dev)
+>   {
+>   	struct mtk8250_data *data = dev_get_drvdata(dev);
+> @@ -273,18 +290,18 @@ static const struct of_device_id mtk8250_of_match[] = {
+>   	{ .compatible = "mediatek,mt6577-uart" },
+>   	{ /* Sentinel */ }
+>   };
+> +MODULE_DEVICE_TABLE(of, mtk8250_of_match);
+>
+>   static struct platform_driver mtk8250_platform_driver = {
+>   	.driver = {
+> -		.name			= "mt6577-uart",
+> -		.pm			= &mtk8250_pm_ops,
+> -		.of_match_table		= mtk8250_of_match,
+> -		.suppress_bind_attrs	= true,
+> -
+> +		.name		= "mt6577-uart",
+> +		.pm		= &mtk8250_pm_ops,
+> +		.of_match_table	= mtk8250_of_match,
+>   	},
+>   	.probe			= mtk8250_probe,
+> +	.remove			= mtk8250_remove,
+>   };
+> -builtin_platform_driver(mtk8250_platform_driver);
+> +module_platform_driver(mtk8250_platform_driver);
+>
+>   #ifdef CONFIG_SERIAL_8250_CONSOLE
+>   static int __init early_mtk8250_setup(struct earlycon_device *device,
+> @@ -300,3 +317,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
+>
+>   OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
+>   #endif
+> +
+> +MODULE_AUTHOR("Matthias Brugger");
+> +MODULE_LICENSE("GPL");
+> +MODULE_DESCRIPTION("Mediatek 8250 serial port driver");
+>
