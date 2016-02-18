@@ -1,93 +1,75 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V6 1/2] regulator: Add document for MT6323 regulator
-Date: Thu, 18 Feb 2016 15:50:10 +0100
-Message-ID: <56C5DA22.9080008@openwrt.org>
-References: <1455709056-50510-1-git-send-email-blogic@openwrt.org>
- <20160218143610.GG9654@rob-hp-laptop>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [RFC v4 0/8] ASoC: Add mediatek HDMI codec support
+Date: Thu, 18 Feb 2016 15:58:38 +0100
+Message-ID: <1455807526-16918-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160218143610.GG9654@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
 
+these patches add an interface for Jyri's generic hdmi-codec driver [1] to
+the mediatek hdmi bridge driver. The accesses to the hcp->eld field are
+now locked by a mutex, and I have added a patch to use the hdmi helper
+function [2] for N/CTS calculation.
 
-On 18/02/2016 15:36, Rob Herring wrote:
-> On Wed, Feb 17, 2016 at 12:37:35PM +0100, John Crispin wrote:
->> Signed-off-by: John Crispin <blogic@openwrt.org>
->> Cc: devicetree@vger.kernel.org
->>
->> ---
->> Changes in V6
->> * remove the compatible string
->>
->> Changes in V5
->> * regulator vs regulators
->>
->> Changes in V4
->> * regulator is a subnode and not a property
->>
->>  .../bindings/regulator/mt6323-regulator.txt        |  241 ++++++++++++++++++++
->>  1 file changed, 241 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
->>
->> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
->> new file mode 100644
->> index 0000000..67c0780
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
->> @@ -0,0 +1,241 @@
->> +Mediatek MT6323 Regulator Driver
->> +
->> +All voltage regulators are defined as subnodes of the regulators node. A list
->> +of regulators provided by this controller are defined as subnodes of the
->> +drivers node. Each regulator is named according to its regulator type,
-> 
-> s/drivers/PMIC's/
-> 
->> +buck_<name> and ldo_<name>. The definition for each of these nodes is defined
->> +using the standard binding for regulators at
->> +Documentation/devicetree/bindings/regulator/regulator.txt.
->> +
->> +The valid names for regulators are::
->> +BUCK:
->> +  buck_vproc, buck_vsys, buck_vpa
->> +LDO:
->> +  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
->> +  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
->> +  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
->> +  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
->> +
->> +Example:
->> +
->> +	pmic: mt6323 {
->> +		compatible = "mediatek,mt6323";
->> +
->> +		mt6323regulator: regulators {
->> +			compatible = "mediatek,mt6323-regulator";
-> 
-> Still have the compatible here...
-> 
-> Otherwise:
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> 
+Changes since v3:
+ - Add mutex to lock hcp->eld
+ - Use helper function for N and CTS calculation
 
-grml, i only removed one of the compat strings and did not notice there
-are two. do you want me to send a fixup that you can fold into the one
-you already merged or do you want me to resend just this one patch with
-the fix applied ?
+The mediatek drm patches apply on top of
+https://patchwork.kernel.org/patch/8337071/ ("drm/mediatek: Add HDMI support"),
+and need this patch:
+[2] https://patchwork.kernel.org/patch/8091531/ ("video: hdmi: add helper function for N and CTS")
+The asoc patches depend on these two patches:
+https://patchwork.kernel.org/patch/7215121/ ("ALSA: pcm: add IEC958 channel status helper for hw_params")
+[1] https://patchwork.kernel.org/patch/7215271/ ("ASoC: hdmi-codec: Add hdmi-codec for external HDMI-encoders")
 
-	John
+regards
+Philipp
 
+Koro Chen (1):
+  ASoC: mediatek: Add HDMI dai-links in the machine driver
 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+Philipp Zabel (7):
+  drm/mediatek: hdmi: Add audio interface to the hdmi-codec driver
+  ASoC: mediatek: address dai link array entries by enum
+  video: rmk's HDMI notification prototype
+  drm/mediatek: hdmi: issue notifications
+  ASoC: hdmi-codec: Use HDMI notifications to add jack support
+  ASoC: hdmi-codec: Add ELD control
+  drm/mediatek: hdmi: use helper function for N and CTS calculation
+
+ .../bindings/sound/mt8173-rt5650-rt5676.txt        |   5 +-
+ drivers/gpu/drm/mediatek/Kconfig                   |   1 +
+ drivers/gpu/drm/mediatek/mtk_cec.c                 |  11 ++
+ drivers/gpu/drm/mediatek/mtk_drm_hdmi_drv.c        | 148 +++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  89 +++++-----
+ drivers/gpu/drm/mediatek/mtk_hdmi.h                |  10 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_hw.c             | 179 ++++-----------------
+ drivers/gpu/drm/mediatek/mtk_hdmi_hw.h             |   4 +-
+ drivers/video/Makefile                             |   2 +-
+ drivers/video/hdmi-not.c                           |  61 +++++++
+ include/linux/hdmi-not.h                           |  39 +++++
+ include/sound/hdmi-codec.h                         |   6 +
+ sound/soc/codecs/hdmi-codec.c                      | 123 +++++++++++++-
+ sound/soc/mediatek/mt8173-rt5650-rt5676.c          |  66 +++++++-
+ 14 files changed, 528 insertions(+), 216 deletions(-)
+ create mode 100644 drivers/video/hdmi-not.c
+ create mode 100644 include/linux/hdmi-not.h
+
+-- 
+2.7.0
