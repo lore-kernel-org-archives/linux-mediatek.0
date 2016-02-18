@@ -1,188 +1,57 @@
-From: Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Subject: Re: [RFC v4 4/8] video: rmk's HDMI notification prototype
-Date: Thu, 18 Feb 2016 15:06:50 +0000
-Message-ID: <20160218150650.GR19428@n2100.arm.linux.org.uk>
-References: <1455807526-16918-1-git-send-email-p.zabel@pengutronix.de>
- <1455807741-19122-2-git-send-email-p.zabel@pengutronix.de>
+From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH 2/2] drm/panel: Add support for LG lp120up1 panel
+Date: Thu, 18 Feb 2016 16:12:45 +0100
+Message-ID: <20160218151244.GB5571@ulmo.nvidia.com>
+References: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
+ <1455691839-2410-2-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dc+cDN39EJAMEtIO"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1455691839-2410-2-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1455807741-19122-2-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjo
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 18, 2016 at 04:02:17PM +0100, Philipp Zabel wrote:
-> This is extracted from Russell's food for thought HDMI notification
-> prototype [1]. I've put it into drivers/video for the time being because
-> my kernels don't have drivers/cec yet.
+--dc+cDN39EJAMEtIO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I see it's also the old version still - this is my latest version, only
-subtly different in terms of the file naming and Kconfig option name.
-Functionally the same.
+On Wed, Feb 17, 2016 at 02:50:39PM +0800, Jitao Shi wrote:
+> The LG lp120up1 panel is a 12.0" 1920x1280 panel,
+> which can be supported by the simple panel driver
 
- drivers/video/Kconfig         |  3 +++
- drivers/video/Makefile        |  1 +
- drivers/video/hdmi-notifier.c | 61 +++++++++++++++++++++++++++++++++++++++++++
- include/linux/hdmi-notifier.h | 44 +++++++++++++++++++++++++++++++
- 4 files changed, 109 insertions(+)
+It'd be nice to mention the type of interface of the panel here. While
+at it, please rewrite the commit message to make use of what width you
+have (i.e. any line after the subject can be 72 characters wide).
 
-diff --git a/drivers/video/Kconfig b/drivers/video/Kconfig
-index e0606c01e8ac..193649c8a951 100644
---- a/drivers/video/Kconfig
-+++ b/drivers/video/Kconfig
-@@ -40,6 +40,9 @@ config VIDEOMODE_HELPERS
- config HDMI
- 	bool
- 
-+config HDMI_NOTIFIERS
-+	bool
-+
- if VT
- 	source "drivers/video/console/Kconfig"
- endif
-diff --git a/drivers/video/Makefile b/drivers/video/Makefile
-index 9ad3c17d6456..65f564906fb4 100644
---- a/drivers/video/Makefile
-+++ b/drivers/video/Makefile
-@@ -1,5 +1,6 @@
- obj-$(CONFIG_VGASTATE)            += vgastate.o
- obj-$(CONFIG_HDMI)                += hdmi.o
-+obj-$(CONFIG_HDMI_NOTIFIERS)      += hdmi-notifier.o
- 
- obj-$(CONFIG_VT)		  += console/
- obj-$(CONFIG_LOGO)		  += logo/
-diff --git a/drivers/video/hdmi-notifier.c b/drivers/video/hdmi-notifier.c
-new file mode 100644
-index 000000000000..a233359cacfa
---- /dev/null
-+++ b/drivers/video/hdmi-notifier.c
-@@ -0,0 +1,61 @@
-+#include <linux/export.h>
-+#include <linux/hdmi-notifier.h>
-+#include <linux/notifier.h>
-+#include <linux/string.h>
-+
-+static BLOCKING_NOTIFIER_HEAD(hdmi_notifier);
-+
-+int hdmi_register_notifier(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_register(&hdmi_notifier, nb);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_register_notifier);
-+
-+int hdmi_unregister_notifier(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_unregister(&hdmi_notifier, nb);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_unregister_notifier);
-+
-+void hdmi_event_connect(struct device *dev)
-+{
-+	struct hdmi_event_base base;
-+
-+	base.source = dev;
-+
-+	blocking_notifier_call_chain(&hdmi_notifier, HDMI_CONNECTED, &base);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_event_connect);
-+
-+void hdmi_event_disconnect(struct device *dev)
-+{
-+	struct hdmi_event_base base;
-+
-+	base.source = dev;
-+
-+	blocking_notifier_call_chain(&hdmi_notifier, HDMI_DISCONNECTED, &base);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_event_disconnect);
-+
-+void hdmi_event_new_edid(struct device *dev, const void *edid, size_t size)
-+{
-+	struct hdmi_event_new_edid new_edid;
-+
-+	new_edid.base.source = dev;
-+	new_edid.edid = edid;
-+	new_edid.size = size;
-+
-+	blocking_notifier_call_chain(&hdmi_notifier, HDMI_NEW_EDID, &new_edid);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_event_new_edid);
-+
-+void hdmi_event_new_eld(struct device *dev, const void *eld)
-+{
-+	struct hdmi_event_new_eld new_eld;
-+
-+	new_eld.base.source = dev;
-+	memcpy(new_eld.eld, eld, sizeof(new_eld.eld));
-+
-+	blocking_notifier_call_chain(&hdmi_notifier, HDMI_NEW_ELD, &new_eld);
-+}
-+EXPORT_SYMBOL_GPL(hdmi_event_new_eld);
-diff --git a/include/linux/hdmi-notifier.h b/include/linux/hdmi-notifier.h
-new file mode 100644
-index 000000000000..9c5ad498f610
---- /dev/null
-+++ b/include/linux/hdmi-notifier.h
-@@ -0,0 +1,44 @@
-+#ifndef LINUX_HDMI_NOTIFIER_H
-+#define LINUX_HDMI_NOTIFIER_H
-+
-+#include <linux/types.h>
-+
-+enum {
-+	HDMI_CONNECTED,
-+	HDMI_DISCONNECTED,
-+	HDMI_NEW_EDID,
-+	HDMI_NEW_ELD,
-+};
-+
-+struct hdmi_event_base {
-+	struct device *source;
-+};
-+
-+struct hdmi_event_new_edid {
-+	struct hdmi_event_base base;
-+	const void *edid;
-+	size_t size;
-+};
-+
-+struct hdmi_event_new_eld {
-+	struct hdmi_event_base base;
-+	unsigned char eld[128];
-+};
-+
-+union hdmi_event {
-+	struct hdmi_event_base base;
-+	struct hdmi_event_new_edid edid;
-+	struct hdmi_event_new_eld eld;
-+};
-+
-+struct notifier_block;
-+
-+int hdmi_register_notifier(struct notifier_block *nb);
-+int hdmi_unregister_notifier(struct notifier_block *nb);
-+
-+void hdmi_event_connect(struct device *dev);
-+void hdmi_event_disconnect(struct device *dev);
-+void hdmi_event_new_edid(struct device *dev, const void *edid, size_t size);
-+void hdmi_event_new_eld(struct device *dev, const void *eld);
-+
-+#endif
+Thierry
 
+--dc+cDN39EJAMEtIO
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-RMK's Patch system: http://www.arm.linux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJWxd9pAAoJEN0jrNd/PrOhC2sP/iJ76PJs1A10Dt0DAh6X7LEl
+2UxlXucTq7oNLVhYiM/qpVs/7308SiHoCG5xYtMS9OWqDHprdvdisTOJ7GgZ9Xql
+iEDaNxso05HG2INh5gIBG3XAD6nnGMzSJWrA4hHSonNTt2WmHe+qclQ6koKW0AE2
+iTIvJRVq2zf78i9+xF0edsubInyW2elpU1TLNIsyLrrCP9YENPqTCz241LHLcWC3
+2+I+2abshFto/YOIw2n0VmTy78Xo9iZ71xCeoN15sxPpE/Y7NkLYMMNk7JGwXvxc
++HxtJTKKZVYw4WcxXrTHwsYufp0jV7nHBc0SmIi3rh1BCZ7GGeIb6RCVA3TfhvLH
+WfrMhCHua+WqtBSwrPO0uXJavuhUxDzNxvtpSfpCmahc3wVs402mPLPpyMcraGwr
+KHuvBtaJlyl8pT+7wbOK5fb0IR0CItOFwwbL4ShL712WbVcEaZpVmP+z006Heswb
+tt7dz0hoJSrvNfxG11uTWwC+OiEvfDeXwo4vrkj51tyfqS3eND/jyp5UNO/7Lt34
+EQyR0ccTON+PdicQgfiWuu9GTAgCELPCJmS6HXeE8/21ZHZkE4VuvupycFmIJY/V
+Lkw53THyTFbiWVjks6gVLAUvmljcwgM360qyxK4G3PA4GrY2kp1bKpAWCA6LPXUk
+8CjCL8GWp/Z21mYQLSXX
+=mYfP
+-----END PGP SIGNATURE-----
+
+--dc+cDN39EJAMEtIO--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
