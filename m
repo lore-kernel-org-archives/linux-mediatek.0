@@ -1,85 +1,195 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: [RFC v4 4/8] video: rmk's HDMI notification
-	prototype
-Date: Thu, 18 Feb 2016 15:24:06 +0000
-Message-ID: <20160218152406.GS19428@n2100.arm.linux.org.uk>
-References: <1455807526-16918-1-git-send-email-p.zabel@pengutronix.de>
- <1455807741-19122-2-git-send-email-p.zabel@pengutronix.de>
- <20160218150650.GR19428@n2100.arm.linux.org.uk>
- <1455808710.3937.25.camel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Disposition: inline
-In-Reply-To: <1455808710.3937.25.camel@pengutronix.de>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: [PATCH 1/1] thermal: small style cleanup in mtk_thermal
+Date: Thu, 18 Feb 2016 07:50:25 -0800
+Message-ID: <1455810625-20509-1-git-send-email-edubezval@gmail.com>
+References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: s.hauer@pengutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, rui.zhang@intel.com, linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com, djkurtz@chromium.org, eddie.huang@mediatek.com, Eduardo Valentin <edubezval@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Feb 18, 2016 at 04:18:30PM +0100, Philipp Zabel wrote:
-> Hi Russell,
-> 
-> Am Donnerstag, den 18.02.2016, 15:06 +0000 schrieb Russell King - ARM
-> Linux:
-> > On Thu, Feb 18, 2016 at 04:02:17PM +0100, Philipp Zabel wrote:
-> > > This is extracted from Russell's food for thought HDMI notification
-> > > prototype [1]. I've put it into drivers/video for the time being because
-> > > my kernels don't have drivers/cec yet.
-> > 
-> > I see it's also the old version still - this is my latest version, only
-> > subtly different in terms of the file naming and Kconfig option name.
-> > Functionally the same.
-> 
-> Thank you for the update. Have you sent (or do you intend to send) this
-> separately somewhere? I could then reference it and drop the patch from
-> this series.
-> Or I could add your signoff and keep the new patch as part of this
-> series, if you'd prefer.
+Remove all checkpatch.pl --strict errors, checks, and warnings.
 
-I haven't yet: it's part of two branches in my tree at the moment, one
-with Hans Verkil's CEC work in plus TDA998x and dw-hdmi support for
-that, and also my imx-drm branch which contains a reworked version of
-FSL's CEC code:
+Cc: Zhang Rui <rui.zhang@intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
+---
+Sascha,
 
-imx-drm:
-drm: bridge/dw_hdmi: place PHY into low power mode when disabled
-drm: bridge/dw_hdmi: start of support for pixel doubled modes
-drm: bridge/dw_hdmi: remove CEC engine register definitions
-drm: bridge/dw_hdmi-cec: add Designware HDMI CEC driver
-cec: add HDMI CEC input driver
-cec: add HDMI CEC core driver
-drm: bridge/dw_hdmi: add HDMI notifier support
-video: add HDMI state notifier support
+Add your v12 in my forlinus branch. But also, on top of it
+I cleaned the patch further with the following patch.
 
-cec:
-cec: add tda9950 driver using Hans Verkil's CEC code
-drm: i2c/tda998x: add CEC support
-cec: add dw-hdmi cec driver using Hans Verkil's CEC code
-DocBook/media: add CEC documentation
-cec.txt: add CEC framework documentation
-cec: add compat32 ioctl support
-cec: add HDMI CEC framework
-rc: Add HDMI CEC protocol handling
-HID: add HDMI CEC specific keycodes
-input.h: add BUS_CEC type
-drm: bridge/dw_hdmi: add HDMI notifier support
-video: add HDMI state notifier support
+BR,
 
-I haven't put any thought into how to get anything from these merged yet,
-I was rather hoping that Hans was going to push his own CEC work to be
-merged, and then I'd think about those logistics.
+Eduardo
 
+ drivers/thermal/mtk_thermal.c | 56 ++++++++++++++++++++++---------------------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 589a138..3d93b1c 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -78,7 +78,7 @@
+ 
+ #define TEMP_MONCTL1_PERIOD_UNIT(x)	((x) & 0x3ff)
+ 
+-#define TEMP_MONCTL2_FILTER_INTERVAL(x)	(((x) & 0x3ff)) << 16
++#define TEMP_MONCTL2_FILTER_INTERVAL(x)	(((x) & 0x3ff) << 16)
+ #define TEMP_MONCTL2_SENSOR_INTERVAL(x)	((x) & 0x3ff)
+ 
+ #define TEMP_AHBPOLL_ADC_POLL_INTERVAL(x)	(x)
+@@ -108,15 +108,15 @@
+ #define MT8173_NUM_SENSORS_PER_ZONE	4
+ 
+ /* Layout of the fuses providing the calibration data */
+-#define MT8173_CALIB_BUF0_VALID		(1 << 0)
+-#define MT8173_CALIB_BUF1_ADC_GE(x)	(((x) >> 22 ) & 0x3ff)
+-#define MT8173_CALIB_BUF0_VTS_TS1(x)	(((x) >> 17 ) & 0x1ff)
+-#define MT8173_CALIB_BUF0_VTS_TS2(x)	(((x) >> 8 ) & 0x1ff)
+-#define MT8173_CALIB_BUF1_VTS_TS3(x)	(((x) >> 0 ) & 0x1ff)
+-#define MT8173_CALIB_BUF2_VTS_TS4(x)	(((x) >> 23 ) & 0x1ff)
+-#define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14 ) & 0x1ff)
+-#define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1 ) & 0x3f)
+-#define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26 ) & 0x3f)
++#define MT8173_CALIB_BUF0_VALID		BIT(0)
++#define MT8173_CALIB_BUF1_ADC_GE(x)	(((x) >> 22) & 0x3ff)
++#define MT8173_CALIB_BUF0_VTS_TS1(x)	(((x) >> 17) & 0x1ff)
++#define MT8173_CALIB_BUF0_VTS_TS2(x)	(((x) >> 8) & 0x1ff)
++#define MT8173_CALIB_BUF1_VTS_TS3(x)	(((x) >> 0) & 0x1ff)
++#define MT8173_CALIB_BUF2_VTS_TS4(x)	(((x) >> 23) & 0x1ff)
++#define MT8173_CALIB_BUF2_VTS_TSABB(x)	(((x) >> 14) & 0x1ff)
++#define MT8173_CALIB_BUF0_DEGC_CALI(x)	(((x) >> 1) & 0x3f)
++#define MT8173_CALIB_BUF0_O_SLOPE(x)	(((x) >> 26) & 0x3f)
+ 
+ #define THERMAL_NAME    "mtk-thermal"
+ 
+@@ -136,6 +136,7 @@ struct mtk_thermal {
+ 
+ 	struct mtk_thermal_bank banks[MT8173_NUM_ZONES];
+ 
++	/* lock: for getting and putting banks */
+ 	struct mutex lock;
+ 
+ 	/* Calibration values */
+@@ -271,11 +272,9 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
+ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ {
+ 	struct mtk_thermal *mt = bank->mt;
+-	int temp, i, max;
++	int i, temp = INT_MIN, max = INT_MIN;
+ 	u32 raw;
+ 
+-	temp = max = INT_MIN;
+-
+ 	for (i = 0; i < bank_data[bank->id].num_sensors; i++) {
+ 		raw = readl(mt->thermal_base + sensing_points[i].msr);
+ 
+@@ -322,7 +321,7 @@ static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
+ };
+ 
+ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+-		u32 apmixed_phys_base, u32 auxadc_phys_base)
++				  u32 apmixed_phys_base, u32 auxadc_phys_base)
+ {
+ 	struct mtk_thermal_bank *bank = &mt->banks[num];
+ 	const struct mtk_thermal_bank_cfg *cfg = &bank_data[num];
+@@ -346,7 +345,7 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+ 
+ 	/* poll is set to 10u */
+ 	writel(TEMP_AHBPOLL_ADC_POLL_INTERVAL(768),
+-			mt->thermal_base + TEMP_AHBPOLL);
++	       mt->thermal_base + TEMP_AHBPOLL);
+ 
+ 	/* temperature sampling control, 1 sample */
+ 	writel(0x0, mt->thermal_base + TEMP_MSRCTL0);
+@@ -375,49 +374,50 @@ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+ 
+ 	/* AHB address for auxadc mux selection */
+ 	writel(auxadc_phys_base + AUXADC_CON1_CLR_V,
+-			mt->thermal_base + TEMP_ADCMUXADDR);
++	       mt->thermal_base + TEMP_ADCMUXADDR);
+ 
+ 	/* AHB address for pnp sensor mux selection */
+ 	writel(apmixed_phys_base + APMIXED_SYS_TS_CON1,
+-			mt->thermal_base + TEMP_PNPMUXADDR);
++	       mt->thermal_base + TEMP_PNPMUXADDR);
+ 
+ 	/* AHB value for auxadc enable */
+ 	writel(BIT(MT8173_TEMP_AUXADC_CHANNEL), mt->thermal_base + TEMP_ADCEN);
+ 
+ 	/* AHB address for auxadc enable (channel 0 immediate mode selected) */
+ 	writel(auxadc_phys_base + AUXADC_CON1_SET_V,
+-			mt->thermal_base + TEMP_ADCENADDR);
++	       mt->thermal_base + TEMP_ADCENADDR);
+ 
+ 	/* AHB address for auxadc valid bit */
+ 	writel(auxadc_phys_base + AUXADC_DATA(MT8173_TEMP_AUXADC_CHANNEL),
+-			mt->thermal_base + TEMP_ADCVALIDADDR);
++	       mt->thermal_base + TEMP_ADCVALIDADDR);
+ 
+ 	/* AHB address for auxadc voltage output */
+ 	writel(auxadc_phys_base + AUXADC_DATA(MT8173_TEMP_AUXADC_CHANNEL),
+-			mt->thermal_base + TEMP_ADCVOLTADDR);
++	       mt->thermal_base + TEMP_ADCVOLTADDR);
+ 
+ 	/* read valid & voltage are at the same register */
+ 	writel(0x0, mt->thermal_base + TEMP_RDCTRL);
+ 
+ 	/* indicate where the valid bit is */
+ 	writel(TEMP_ADCVALIDMASK_VALID_HIGH | TEMP_ADCVALIDMASK_VALID_POS(12),
+-			mt->thermal_base + TEMP_ADCVALIDMASK);
++	       mt->thermal_base + TEMP_ADCVALIDMASK);
+ 
+ 	/* no shift */
+ 	writel(0x0, mt->thermal_base + TEMP_ADCVOLTAGESHIFT);
+ 
+ 	/* enable auxadc mux write transaction */
+ 	writel(TEMP_ADCWRITECTRL_ADC_MUX_WRITE,
+-			mt->thermal_base + TEMP_ADCWRITECTRL);
++	       mt->thermal_base + TEMP_ADCWRITECTRL);
+ 
+ 	for (i = 0; i < cfg->num_sensors; i++)
+ 		writel(sensor_mux_values[cfg->sensors[i]],
+-				mt->thermal_base + sensing_points[i].adcpnp);
++		       mt->thermal_base + sensing_points[i].adcpnp);
+ 
+ 	writel((1 << cfg->num_sensors) - 1, mt->thermal_base + TEMP_MONCTL0);
+ 
+-	writel(TEMP_ADCWRITECTRL_ADC_PNP_WRITE | TEMP_ADCWRITECTRL_ADC_MUX_WRITE,
+-			mt->thermal_base + TEMP_ADCWRITECTRL);
++	writel(TEMP_ADCWRITECTRL_ADC_PNP_WRITE |
++	       TEMP_ADCWRITECTRL_ADC_MUX_WRITE,
++	       mt->thermal_base + TEMP_ADCWRITECTRL);
+ 
+ 	mtk_thermal_put_bank(bank);
+ }
+@@ -434,7 +434,8 @@ static u64 of_get_phys_base(struct device_node *np)
+ 	return of_translate_address(np, regaddr_p);
+ }
+ 
+-static int mtk_thermal_get_calibration_data(struct device *dev, struct mtk_thermal *mt)
++static int mtk_thermal_get_calibration_data(struct device *dev,
++					    struct mtk_thermal *mt)
+ {
+ 	struct nvmem_cell *cell;
+ 	u32 *buf;
+@@ -567,7 +568,8 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	for (i = 0; i < MT8173_NUM_ZONES; i++)
+-		mtk_thermal_init_bank(mt, i, apmixed_phys_base, auxadc_phys_base);
++		mtk_thermal_init_bank(mt, i, apmixed_phys_base,
++				      auxadc_phys_base);
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
 -- 
-RMK's Patch system: http://www.arm.linux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+2.1.4
+
