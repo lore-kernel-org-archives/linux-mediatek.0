@@ -1,57 +1,94 @@
-From: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH 2/2] drm/panel: Add support for LG lp120up1 panel
-Date: Thu, 18 Feb 2016 16:12:45 +0100
-Message-ID: <20160218151244.GB5571@ulmo.nvidia.com>
-References: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
- <1455691839-2410-2-git-send-email-jitao.shi@mediatek.com>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: Re: [PATCH 2/3] thermal: Add Mediatek thermal controller support
+Date: Thu, 18 Feb 2016 07:15:54 -0800
+Message-ID: <20160218151552.GA1852@localhost.localdomain>
+References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+ <1448883753-19068-3-git-send-email-s.hauer@pengutronix.de>
+ <20151217193332.GB7999@localhost.localdomain>
+ <20160104141940.GI13058@pengutronix.de>
+ <20160119072917.GA13237@pengutronix.de>
+ <1454295246.22151.6.camel@mtksdaap41>
+ <CAGS+omD9U8tKmb02d_gMMAGX18MJZhz0RrugpBK2EuqgZrBy6g@mail.gmail.com>
+ <CAGS+omArr0_-ziBXWjEcKS0bqnruNzZc2aq2s3zkghUC7_HfGw@mail.gmail.com>
+ <56C4A875.6080908@gmail.com>
+ <20160218105603.GE3939@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="dc+cDN39EJAMEtIO"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1455691839-2410-2-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pm-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjo
+In-Reply-To: <20160218105603.GE3939@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "kernel@pengutronix.de" <kernel@pengutronix.de>, Zhang Rui <rui.zhang@intel.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
---dc+cDN39EJAMEtIO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Folks,
 
-On Wed, Feb 17, 2016 at 02:50:39PM +0800, Jitao Shi wrote:
-> The LG lp120up1 panel is a 12.0" 1920x1280 panel,
-> which can be supported by the simple panel driver
+On Thu, Feb 18, 2016 at 11:56:03AM +0100, Sascha Hauer wrote:
+> On Wed, Feb 17, 2016 at 06:05:57PM +0100, Matthias Brugger wrote:
+> > 
+> > 
+> > On 15/02/16 03:14, Daniel Kurtz wrote:
+> > >On Mon, Feb 15, 2016 at 10:11 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> > >>Hi Eduardo, Sascha,
+> > >>
+> > >>>>Any input on this? I really like to get this driver upstream as it is
+> > >>>>currently blocking other Mediatek drivers.
+> > >>>>
+> > >>>
+> > >>>Hi Eduardo,
+> > >>>
+> > >>>Do you have any comment about Sascha's response ? We really hope get
+> > >>>your comment since Mediatek thermal driver already reviewed in public
+> > >>>over half years, and we have other patches [0] [1] depend on thermal
+> > >>>driver.
+> > >>>
+> > >>>[0]:
+> > >>>http://lists.infradead.org/pipermail/linux-arm-kernel/2015-December/394084.html
+> > >>>[1]:
+> > >>>http://lists.infradead.org/pipermail/linux-arm-kernel/2016-January/401055.html
+> > >>
+> > >>Friendly ping on the Mediatek thermal driver.
+> > >>The "EFUSE" dependency has now landed in v4.5-rc4.
+> > >
+> > >Actually, it landed in char-misc-next, not v4.5-rc4.
+> > >
+> > >>So, AFAICT, the only thing left that may be blocking landing Mediatek
+> > >>thermal driver is resolution of this discussion about thermal zones.
+> > >>Can we kindly resolve this soon so we have a chance to land it in v4.6.
+> > >>
+> > 
+> > 
+> > I think the problem is, that Eduardo wants to see the hierachical thermal
+> > zones being used. But there is still a discussion ongoing [1].
+> 
+> It seems the original Author lost interest in the hierarchical thermal
+> zones. I am not convinced that we need hierarchical thermal zones for
+> the Mediatek driver since from the five sensors we only need the maximum
+> temperature (If this ever changes we could still rework it).
+> 
+> Given the current speed of communication I am not willing to add
+> another, possibly controversal, dependency to an otherwise simple
+> driver. I am even less willing when concerns like these come after *v12*
+> of this series.
+> 
+> Eduardo, it would really help to get a word from you.
 
-It'd be nice to mention the type of interface of the panel here. While
-at it, please rewrite the commit message to make use of what width you
-have (i.e. any line after the subject can be 72 characters wide).
+Apologize for the long delays here. In fact I want the hierarchical
+support on this driver. But given that it is not really a strong
+dependency and the hierarchical support is still an ongoing development,
+I don't see why we should not merge this driver.
 
-Thierry
+I also have had the chance to try it out in a board, and seams to work
+for me. I am adding to my tree.
 
---dc+cDN39EJAMEtIO
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks for the perseverance. :-)
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJWxd9pAAoJEN0jrNd/PrOhC2sP/iJ76PJs1A10Dt0DAh6X7LEl
-2UxlXucTq7oNLVhYiM/qpVs/7308SiHoCG5xYtMS9OWqDHprdvdisTOJ7GgZ9Xql
-iEDaNxso05HG2INh5gIBG3XAD6nnGMzSJWrA4hHSonNTt2WmHe+qclQ6koKW0AE2
-iTIvJRVq2zf78i9+xF0edsubInyW2elpU1TLNIsyLrrCP9YENPqTCz241LHLcWC3
-2+I+2abshFto/YOIw2n0VmTy78Xo9iZ71xCeoN15sxPpE/Y7NkLYMMNk7JGwXvxc
-+HxtJTKKZVYw4WcxXrTHwsYufp0jV7nHBc0SmIi3rh1BCZ7GGeIb6RCVA3TfhvLH
-WfrMhCHua+WqtBSwrPO0uXJavuhUxDzNxvtpSfpCmahc3wVs402mPLPpyMcraGwr
-KHuvBtaJlyl8pT+7wbOK5fb0IR0CItOFwwbL4ShL712WbVcEaZpVmP+z006Heswb
-tt7dz0hoJSrvNfxG11uTWwC+OiEvfDeXwo4vrkj51tyfqS3eND/jyp5UNO/7Lt34
-EQyR0ccTON+PdicQgfiWuu9GTAgCELPCJmS6HXeE8/21ZHZkE4VuvupycFmIJY/V
-Lkw53THyTFbiWVjks6gVLAUvmljcwgM360qyxK4G3PA4GrY2kp1bKpAWCA6LPXUk
-8CjCL8GWp/Z21mYQLSXX
-=mYfP
------END PGP SIGNATURE-----
-
---dc+cDN39EJAMEtIO--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Sascha
+> 
+> -- 
+> Pengutronix e.K.                           |                             |
+> Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+> Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
