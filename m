@@ -1,25 +1,93 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: Add LG lp120up1 panel bindings
-Date: Thu, 18 Feb 2016 08:36:33 -0600
-Message-ID: <20160218143633.GJ9654@rob-hp-laptop>
-References: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
+From: John Crispin <blogic@openwrt.org>
+Subject: Re: [PATCH V6 1/2] regulator: Add document for MT6323 regulator
+Date: Thu, 18 Feb 2016 15:50:10 +0100
+Message-ID: <56C5DA22.9080008@openwrt.org>
+References: <1455709056-50510-1-git-send-email-blogic@openwrt.org>
+ <20160218143610.GG9654@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
+In-Reply-To: <20160218143610.GG9654@rob-hp-laptop>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com
+To: Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Feb 17, 2016 at 02:50:38PM +0800, Jitao Shi wrote:
-> Add documentation for lp120up1 panel
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
->  .../bindings/display/panel/lg,lp120up1.txt         |    7 +++++++
->  1 file changed, 7 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
 
-Acked-by: Rob Herring <robh@kernel.org>
+
+On 18/02/2016 15:36, Rob Herring wrote:
+> On Wed, Feb 17, 2016 at 12:37:35PM +0100, John Crispin wrote:
+>> Signed-off-by: John Crispin <blogic@openwrt.org>
+>> Cc: devicetree@vger.kernel.org
+>>
+>> ---
+>> Changes in V6
+>> * remove the compatible string
+>>
+>> Changes in V5
+>> * regulator vs regulators
+>>
+>> Changes in V4
+>> * regulator is a subnode and not a property
+>>
+>>  .../bindings/regulator/mt6323-regulator.txt        |  241 ++++++++++++++++++++
+>>  1 file changed, 241 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+>> new file mode 100644
+>> index 0000000..67c0780
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+>> @@ -0,0 +1,241 @@
+>> +Mediatek MT6323 Regulator Driver
+>> +
+>> +All voltage regulators are defined as subnodes of the regulators node. A list
+>> +of regulators provided by this controller are defined as subnodes of the
+>> +drivers node. Each regulator is named according to its regulator type,
+> 
+> s/drivers/PMIC's/
+> 
+>> +buck_<name> and ldo_<name>. The definition for each of these nodes is defined
+>> +using the standard binding for regulators at
+>> +Documentation/devicetree/bindings/regulator/regulator.txt.
+>> +
+>> +The valid names for regulators are::
+>> +BUCK:
+>> +  buck_vproc, buck_vsys, buck_vpa
+>> +LDO:
+>> +  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
+>> +  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
+>> +  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
+>> +  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
+>> +
+>> +Example:
+>> +
+>> +	pmic: mt6323 {
+>> +		compatible = "mediatek,mt6323";
+>> +
+>> +		mt6323regulator: regulators {
+>> +			compatible = "mediatek,mt6323-regulator";
+> 
+> Still have the compatible here...
+> 
+> Otherwise:
+> 
+> Acked-by: Rob Herring <robh@kernel.org>
+> 
+
+grml, i only removed one of the compat strings and did not notice there
+are two. do you want me to send a fixup that you can fold into the one
+you already merged or do you want me to resend just this one patch with
+the fix applied ?
+
+	John
+
+
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
