@@ -1,109 +1,89 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v3 1/5] Revert "drivers/tty/serial: make 8250/8250_mtk.c
- explicitly non-modular"
-Date: Wed, 17 Feb 2016 18:19:01 +0100
-Message-ID: <56C4AB85.7010708@gmail.com>
-References: <1455721357-4008289-1-git-send-email-arnd@arndb.de>
- <1455721357-4008289-2-git-send-email-arnd@arndb.de>
+From: Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v11 10/14] clk: mediatek: make dpi0_sel propagate rate
+ changes
+Date: Wed, 17 Feb 2016 16:15:40 -0800
+Message-ID: <20160218001540.2278.93143@quark.deferred.io>
+References: <1455708534-20274-1-git-send-email-p.zabel@pengutronix.de>
+ <1455708534-20274-11-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455721357-4008289-2-git-send-email-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-arm-kernel@lists.infradead.org, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-serial@vger.kernel.org, linux-kernel@vger.kernel.org, Masahiro Yamada <yamada.masahiro@socionext.com>, Peter Hurley <peter@hurleysoftware.com>, Jiri Slaby <jslaby@suse.com>, Sascha Hauer <s.hauer@pengutronix.de>, Eddie Huang <eddie.huang@mediatek.com>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1455708534-20274-11-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 17/02/16 16:02, Arnd Bergmann wrote:
-> This reverts commit d72d391c126e ("drivers/tty/serial: make
-> 8250/8250_mtk.c explicitly non-modular"), which intended to remove dead
-> code but did not have the desired effect when the main 8250 driver was
-> a module itself.
->
-> This would normally result in a link error, but as the entire
-> drivers/tty/serial/8250/ directory is only entered when CONFIG_SERIAL_8250
-> is set, we never notice that the driver does not get built in this
-> configuration.
->
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
-
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
-
->   drivers/tty/serial/8250/8250_mtk.c | 35 ++++++++++++++++++++++++++++-------
->   1 file changed, 28 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index 9038843cadc7..6ecc6e3e82dc 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -16,7 +16,7 @@
->    */
->   #include <linux/clk.h>
->   #include <linux/io.h>
-> -#include <linux/init.h>
-> +#include <linux/module.h>
->   #include <linux/of_irq.h>
->   #include <linux/of_platform.h>
->   #include <linux/platform_device.h>
-> @@ -245,6 +245,23 @@ static int mtk8250_probe(struct platform_device *pdev)
->   	return 0;
->   }
->
-> +static int mtk8250_remove(struct platform_device *pdev)
-> +{
-> +	struct mtk8250_data *data = platform_get_drvdata(pdev);
-> +
-> +	pm_runtime_get_sync(&pdev->dev);
-> +
-> +	serial8250_unregister_port(data->line);
-> +
-> +	pm_runtime_disable(&pdev->dev);
-> +	pm_runtime_put_noidle(&pdev->dev);
-> +
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		mtk8250_runtime_suspend(&pdev->dev);
-> +
-> +	return 0;
-> +}
-> +
->   static int __maybe_unused mtk8250_suspend(struct device *dev)
->   {
->   	struct mtk8250_data *data = dev_get_drvdata(dev);
-> @@ -273,18 +290,18 @@ static const struct of_device_id mtk8250_of_match[] = {
->   	{ .compatible = "mediatek,mt6577-uart" },
->   	{ /* Sentinel */ }
->   };
-> +MODULE_DEVICE_TABLE(of, mtk8250_of_match);
->
->   static struct platform_driver mtk8250_platform_driver = {
->   	.driver = {
-> -		.name			= "mt6577-uart",
-> -		.pm			= &mtk8250_pm_ops,
-> -		.of_match_table		= mtk8250_of_match,
-> -		.suppress_bind_attrs	= true,
-> -
-> +		.name		= "mt6577-uart",
-> +		.pm		= &mtk8250_pm_ops,
-> +		.of_match_table	= mtk8250_of_match,
->   	},
->   	.probe			= mtk8250_probe,
-> +	.remove			= mtk8250_remove,
->   };
-> -builtin_platform_driver(mtk8250_platform_driver);
-> +module_platform_driver(mtk8250_platform_driver);
->
->   #ifdef CONFIG_SERIAL_8250_CONSOLE
->   static int __init early_mtk8250_setup(struct earlycon_device *device,
-> @@ -300,3 +317,7 @@ static int __init early_mtk8250_setup(struct earlycon_device *device,
->
->   OF_EARLYCON_DECLARE(mtk8250, "mediatek,mt6577-uart", early_mtk8250_setup);
->   #endif
-> +
-> +MODULE_AUTHOR("Matthias Brugger");
-> +MODULE_LICENSE("GPL");
-> +MODULE_DESCRIPTION("Mediatek 8250 serial port driver");
->
+UXVvdGluZyBQaGlsaXBwIFphYmVsICgyMDE2LTAyLTE3IDAzOjI4OjUwKQo+IFRoaXMgbXV4IGlz
+IHN1cHBvc2VkIHRvIHNlbGVjdCBhIGZpdHRpbmcgZGl2aWRlciBhZnRlciB0aGUgUExMCj4gaXMg
+YWxyZWFkeSBzZXQgdG8gdGhlIGNvcnJlY3QgcmF0ZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBQaGls
+aXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IEFja2VkLWJ5OiBKYW1lcyBMaWFv
+IDxqYW1lc2pqLmxpYW9AbWVkaWF0ZWsuY29tPgoKTG9va3MgZ29vZCB0byBtZS4KClJlZ2FyZHMs
+Ck1pa2UKCj4gLS0tCj4gQ2hhbmdlcyBzaW5jZSB2MTA6Cj4gIC0gQWRkIGNvbW1lbnRzIGFib3V0
+IE1VWF9HQVRFIHJhdGUgY2hhbmdlIHByb3BhZ2F0aW9uCj4gLS0tCj4gIGRyaXZlcnMvY2xrL21l
+ZGlhdGVrL2Nsay1tdDgxNzMuYyB8ICA2ICsrKysrLQo+ICBkcml2ZXJzL2Nsay9tZWRpYXRlay9j
+bGstbXRrLmggICAgfCAxNSArKysrKysrKysrKysrLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAxOCBp
+bnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Ns
+ay9tZWRpYXRlay9jbGstbXQ4MTczLmMgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTcz
+LmMKPiBpbmRleCAyMjdlMzU2Li44NWMwYmZjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL21l
+ZGlhdGVrL2Nsay1tdDgxNzMuYwo+ICsrKyBiL2RyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1tdDgx
+NzMuYwo+IEBAIC01NTgsNyArNTU4LDExIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2NvbXBv
+c2l0ZSB0b3BfbXV4ZXNbXSBfX2luaXRjb25zdCA9IHsKPiAgICAgICAgIE1VWF9HQVRFKENMS19U
+T1BfQVRCX1NFTCwgImF0Yl9zZWwiLCBhdGJfcGFyZW50cywgMHgwMDkwLCAxNiwgMiwgMjMpLAo+
+ICAgICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9WRU5DX0xUX1NFTCwgInZlbmNsdF9zZWwiLCB2ZW5j
+X2x0X3BhcmVudHMsIDB4MDA5MCwgMjQsIDQsIDMxKSwKPiAgICAgICAgIC8qIENMS19DRkdfNiAq
+Lwo+IC0gICAgICAgTVVYX0dBVEUoQ0xLX1RPUF9EUEkwX1NFTCwgImRwaTBfc2VsIiwgZHBpMF9w
+YXJlbnRzLCAweDAwYTAsIDAsIDMsIDcpLAo+ICsgICAgICAgLyoKPiArICAgICAgICAqIFRoZSBk
+cGkwX3NlbCBjbG9jayBzaG91bGQgbm90IHByb3BhZ2F0ZSByYXRlIGNoYW5nZXMgdG8gaXRzIHBh
+cmVudAo+ICsgICAgICAgICogY2xvY2sgc28gdGhlIGRwaSBkcml2ZXIgY2FuIGhhdmUgZnVsbCBj
+b250cm9sIG92ZXIgUExMIGFuZCBkaXZpZGVyLgo+ICsgICAgICAgICovCj4gKyAgICAgICBNVVhf
+R0FURV9GTEFHUyhDTEtfVE9QX0RQSTBfU0VMLCAiZHBpMF9zZWwiLCBkcGkwX3BhcmVudHMsIDB4
+MDBhMCwgMCwgMywgNywgMCksCj4gICAgICAgICBNVVhfR0FURShDTEtfVE9QX0lSREFfU0VMLCAi
+aXJkYV9zZWwiLCBpcmRhX3BhcmVudHMsIDB4MDBhMCwgOCwgMiwgMTUpLAo+ICAgICAgICAgTVVY
+X0dBVEUoQ0xLX1RPUF9DQ0k0MDBfU0VMLCAiY2NpNDAwX3NlbCIsIGNjaTQwMF9wYXJlbnRzLCAw
+eDAwYTAsIDE2LCAzLCAyMyksCj4gICAgICAgICBNVVhfR0FURShDTEtfVE9QX0FVRF8xX1NFTCwg
+ImF1ZF8xX3NlbCIsIGF1ZF8xX3BhcmVudHMsIDB4MDBhMCwgMjQsIDIsIDMxKSwKPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ay5oIGIvZHJpdmVycy9jbGsvbWVkaWF0
+ZWsvY2xrLW10ay5oCj4gaW5kZXggMzJkMmU0NS4uOWYyNGZjZiAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2Nsay9tZWRpYXRlay9jbGstbXRrLmgKPiArKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9j
+bGstbXRrLmgKPiBAQCAtODMsNyArODMsMTEgQEAgc3RydWN0IG10a19jb21wb3NpdGUgewo+ICAg
+ICAgICAgc2lnbmVkIGNoYXIgbnVtX3BhcmVudHM7Cj4gIH07Cj4gIAo+IC0jZGVmaW5lIE1VWF9H
+QVRFKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93aWR0aCwgX2dhdGUpIHsg
+IFwKPiArLyoKPiArICogSW4gY2FzZSB0aGUgcmF0ZSBjaGFuZ2UgcHJvcGFnYXRpb24gdG8gcGFy
+ZW50IGNsb2NrcyBpcyB1bmRlc2lyYWJsZSwKPiArICogdGhpcyBtYWNybyBhbGxvd3MgdG8gc3Bl
+Y2lmeSB0aGUgY2xvY2sgZmxhZ3MgbWFudWFsbHkuCj4gKyAqLwo+ICsjZGVmaW5lIE1VWF9HQVRF
+X0ZMQUdTKF9pZCwgX25hbWUsIF9wYXJlbnRzLCBfcmVnLCBfc2hpZnQsIF93aWR0aCwgX2dhdGUs
+IF9mbGFncykgeyAgICBcCj4gICAgICAgICAgICAgICAgIC5pZCA9IF9pZCwgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgICAgICAgICAubmFt
+ZSA9IF9uYW1lLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwKPiAg
+ICAgICAgICAgICAgICAgLm11eF9yZWcgPSBfcmVnLCAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBcCj4gQEAgLTk0LDkgKzk4LDE2IEBAIHN0cnVjdCBtdGtfY29tcG9zaXRl
+IHsKPiAgICAgICAgICAgICAgICAgLmRpdmlkZXJfc2hpZnQgPSAtMSwgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBcCj4gICAgICAgICAgICAgICAgIC5wYXJlbnRfbmFtZXMgPSBf
+cGFyZW50cywgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgICAgICAg
+ICAubnVtX3BhcmVudHMgPSBBUlJBWV9TSVpFKF9wYXJlbnRzKSwgICAgICAgICAgICAgICAgICAg
+IFwKPiAtICAgICAgICAgICAgICAgLmZsYWdzID0gQ0xLX1NFVF9SQVRFX1BBUkVOVCwgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBcCj4gKyAgICAgICAgICAgICAgIC5mbGFncyA9IF9mbGFncywg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAgICAgfQo+ICAK
+PiArLyoKPiArICogVW5sZXNzIG5lY2Vzc2FyeSwgYWxsIE1VWF9HQVRFIGNsb2NrcyBwcm9wYWdh
+dGUgcmF0ZSBjaGFuZ2VzIHRvIHRoZWlyCj4gKyAqIHBhcmVudCBjbG9jayBieSBkZWZhdWx0Lgo+
+ICsgKi8KPiArI2RlZmluZSBNVVhfR0FURShfaWQsIF9uYW1lLCBfcGFyZW50cywgX3JlZywgX3No
+aWZ0LCBfd2lkdGgsIF9nYXRlKSAgICBcCj4gKyAgICAgICBNVVhfR0FURV9GTEFHUyhfaWQsIF9u
+YW1lLCBfcGFyZW50cywgX3JlZywgX3NoaWZ0LCBfd2lkdGgsIF9nYXRlLCBDTEtfU0VUX1JBVEVf
+UEFSRU5UKQo+ICsKPiAgI2RlZmluZSBNVVgoX2lkLCBfbmFtZSwgX3BhcmVudHMsIF9yZWcsIF9z
+aGlmdCwgX3dpZHRoKSB7ICAgICAgICAgICAgICBcCj4gICAgICAgICAgICAgICAgIC5pZCA9IF9p
+ZCwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAo+ICAgICAg
+ICAgICAgICAgICAubmFtZSA9IF9uYW1lLCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIFwKPiAtLSAKPiAyLjcuMAo+IApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
