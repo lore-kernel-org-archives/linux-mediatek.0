@@ -1,323 +1,58 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: Add machine driver for ALC5650 codec
-Date: Fri, 19 Feb 2016 10:35:59 +0800
-Message-ID: <1455849359-14581-1-git-send-email-pc.liao@mediatek.com>
+From: Henry Chen <henryc.chen@mediatek.com>
+Subject: Re: [RFC PATCH 4/5] PM / AVS: thermal: MT8173: Introduce support
+ for SVS engine
+Date: Fri, 19 Feb 2016 13:08:02 +0800
+Message-ID: <1455858482.17104.13.camel@mtksdaap41>
+References: <1453452029-20843-1-git-send-email-pi-cheng.chen@linaro.org>
+	 <1453452029-20843-5-git-send-email-pi-cheng.chen@linaro.org>
+	 <CAGS+omAYPhJ80kHG=bW4AjFsQzhwUfC6C+nAXa=Ny5UyoCid=w@mail.gmail.com>
+	 <20160218030049.GA8780@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, PC Liao <pc.liao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20160218030049.GA8780@gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Pi-Cheng Chen <pi-cheng.chen@linaro.org>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, dawei.chien@mediatek.com, Nishanth Menon <nm@ti.com>, Eduardo Valentin <edubezval@gmail.com>, Viresh Kumar <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>, Sascha Hauer <kernel@pengutronix.de>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, linux-pm@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, Stephen Boyd <sboyd@codeaurora.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Koro Chen <koro.chen@mediatek.com>
 
-This is the DPCM based machine driver with rt5650
+On Thu, 2016-02-18 at 11:00 +0800, Pi-Cheng Chen wrote:
 
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
----
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |   15 ++
- sound/soc/mediatek/Kconfig                         |   10 +
- sound/soc/mediatek/Makefile                        |    1 +
- sound/soc/mediatek/mt8173-rt5650.c                 |  236 ++++++++++++++++++++
- 4 files changed, 262 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
- create mode 100644 sound/soc/mediatek/mt8173-rt5650.c
+> > > +               vboot = regulator_get_voltage(svs->reg) / 1000;
+> > > +               if (mvolt_to_config(vboot) !=
+> > > +                   mvolt_to_config(svs_bank_cfgs[i].vboot)) {
+> > > +                       dev_err(svs->dev, "Vboot value mismatch!\n");
+> > > +                       ret = -EINVAL;
+> > > +                       break;
+> > > +               }
+> > > +
+> > > +               ret = regulator_set_mode(svs->reg, REGULATOR_MODE_FAST);
+> > > +               if (ret) {
+> > > +                       dev_err(svs->dev,
+> > > +                               "Failed to set regulator in PWM mode\n");
+> > > +                       ret = -EINVAL;
+> > > +                       break;
+> > > +               }
+> > 
+> > Shouldn't this be best effort?
+> > If we can't set the regulator to fast mode, can we continue anyway?
+> > 
+> 
+> AFAIK, we need to set the regulator to fast mode to get stable voltage as
+> possible. I am sure about the details.
+> 
+> @Henry,
+> Would you please comment it?
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-new file mode 100644
-index 0000000..fe5a5ef
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-@@ -0,0 +1,15 @@
-+MT8173 with RT5650 CODECS
-+
-+Required properties:
-+- compatible : "mediatek,mt8173-rt5650"
-+- mediatek,audio-codec: the phandles of rt5650 codecs
-+- mediatek,platform: the phandle of MT8173 ASoC platform
-+
-+Example:
-+
-+	sound {
-+		compatible = "mediatek,mt8173-rt5650";
-+		mediatek,audio-codec = <&rt5650>;
-+		mediatek,platform = <&afe>;
-+	};
-+
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 9769676..6c88087 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -17,6 +17,16 @@ config SND_SOC_MT8173_MAX98090
- 	  Select Y if you have such device.
- 	  If unsure select "N".
- 
-+config SND_SOC_MT8173_RT5650
-+        tristate "ASoC Audio driver for MT8173 with RT5650 codec"
-+        depends on SND_SOC_MEDIATEK && I2C
-+        select SND_SOC_RT5645
-+        help
-+          This adds ASoC driver for Mediatek MT8173 boards
-+          with the RT5650 audio codec.
-+          Select Y if you have such device.
-+          If unsure select "N".
-+
- config SND_SOC_MT8173_RT5650_RT5676
- 	tristate "ASoC Audio driver for MT8173 with RT5650 RT5676 codecs"
- 	depends on SND_SOC_MEDIATEK && I2C
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index 75effbe..bcdcb06 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -3,3 +3,4 @@ obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
- # Machine support
- obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
- obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
-+obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
-diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-new file mode 100644
-index 0000000..bb09bb1
---- /dev/null
-+++ b/sound/soc/mediatek/mt8173-rt5650.c
-@@ -0,0 +1,236 @@
-+/*
-+ * mt8173-rt5650.c  --  MT8173 machine driver with RT5650 codecs
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Koro Chen <koro.chen@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/gpio.h>
-+#include <linux/of_gpio.h>
-+#include <sound/soc.h>
-+#include <sound/jack.h>
-+#include "../codecs/rt5645.h"
-+
-+#define MCLK_FOR_CODECS		12288000
-+
-+static const struct snd_soc_dapm_widget mt8173_rt5650_widgets[] = {
-+	SND_SOC_DAPM_SPK("Speaker", NULL),
-+	SND_SOC_DAPM_MIC("Int Mic", NULL),
-+	SND_SOC_DAPM_HP("Headphone", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-+};
-+
-+static const struct snd_soc_dapm_route mt8173_rt5650_routes[] = {
-+	{"Speaker", NULL, "SPOL"},
-+	{"Speaker", NULL, "SPOR"},
-+	{"DMIC L1", NULL, "Int Mic"},
-+	{"DMIC R1", NULL, "Int Mic"},
-+	{"Headphone", NULL, "HPOL"},
-+	{"Headphone", NULL, "HPOR"},
-+	{"Headset Mic", NULL, "micbias1"},
-+	{"Headset Mic", NULL, "micbias2"},
-+	{"IN1P", NULL, "Headset Mic"},
-+	{"IN1N", NULL, "Headset Mic"},
-+};
-+
-+static const struct snd_kcontrol_new mt8173_rt5650_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Speaker"),
-+	SOC_DAPM_PIN_SWITCH("Int Mic"),
-+	SOC_DAPM_PIN_SWITCH("Headphone"),
-+	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-+};
-+
-+static int mt8173_rt5650_hw_params(struct snd_pcm_substream *substream,
-+				   struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	int i, ret;
-+
-+	for (i = 0; i < rtd->num_codecs; i++) {
-+		struct snd_soc_dai *codec_dai = rtd->codec_dais[i];
-+
-+		/* pll from mclk 12.288M */
-+		ret = snd_soc_dai_set_pll(codec_dai, 0, 0, MCLK_FOR_CODECS,
-+					  params_rate(params) * 512);
-+		if (ret)
-+			return ret;
-+
-+		/* sysclk from pll */
-+		ret = snd_soc_dai_set_sysclk(codec_dai, 1,
-+					     params_rate(params) * 512,
-+					     SND_SOC_CLOCK_IN);
-+		if (ret)
-+			return ret;
-+	}
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt8173_rt5650_ops = {
-+	.hw_params = mt8173_rt5650_hw_params,
-+};
-+
-+static struct snd_soc_jack mt8173_rt5650_jack;
-+
-+static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-+	int ret;
-+
-+	rt5645_sel_asrc_clk_src(codec,
-+				RT5645_DA_STEREO_FILTER |
-+				RT5645_AD_STEREO_FILTER,
-+				RT5645_CLK_SEL_I2S1_ASRC);
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "Headset Jack",
-+				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
-+				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
-+				    &mt8173_rt5650_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new Headset Jack %d\n", ret);
-+		return ret;
-+	}
-+
-+	return rt5645_set_jack_detect(codec,
-+				      &mt8173_rt5650_jack,
-+				      &mt8173_rt5650_jack,
-+				      &mt8173_rt5650_jack);
-+}
-+
-+static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
-+	{
-+		.dai_name = "rt5645-aif1",
-+	},
-+};
-+
-+enum {
-+	DAI_LINK_PLAYBACK,
-+	DAI_LINK_CAPTURE,
-+	DAI_LINK_CODEC_I2S,
-+};
-+
-+/* Digital audio interface glue - connects codec <---> CPU */
-+static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
-+	/* Front End DAI links */
-+	[DAI_LINK_PLAYBACK] = {
-+		.name = "rt5650 Playback",
-+		.stream_name = "rt5650 Playback",
-+		.cpu_dai_name = "DL1",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	[DAI_LINK_CAPTURE] = {
-+		.name = "rt5650 Capture",
-+		.stream_name = "rt5650 Capture",
-+		.cpu_dai_name = "VUL",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	/* Back End DAI links */
-+	[DAI_LINK_CODEC_I2S] = {
-+		.name = "Codec",
-+		.cpu_dai_name = "I2S",
-+		.no_pcm = 1,
-+		.codecs = mt8173_rt5650_codecs,
-+		.num_codecs = 1,
-+		.init = mt8173_rt5650_init,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			   SND_SOC_DAIFMT_CBS_CFS,
-+		.ops = &mt8173_rt5650_ops,
-+		.ignore_pmdown_time = 1,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+};
-+
-+static struct snd_soc_card mt8173_rt5650_card = {
-+	.name = "mtk-rt5650",
-+	.owner = THIS_MODULE,
-+	.dai_link = mt8173_rt5650_dais,
-+	.num_links = ARRAY_SIZE(mt8173_rt5650_dais),
-+	.controls = mt8173_rt5650_controls,
-+	.num_controls = ARRAY_SIZE(mt8173_rt5650_controls),
-+	.dapm_widgets = mt8173_rt5650_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt8173_rt5650_widgets),
-+	.dapm_routes = mt8173_rt5650_routes,
-+	.num_dapm_routes = ARRAY_SIZE(mt8173_rt5650_routes),
-+};
-+
-+static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt8173_rt5650_card;
-+	struct device_node *platform_node;
-+	int i, ret;
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node,
-+					 "mediatek,platform", 0);
-+	if (!platform_node) {
-+		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+
-+	for (i = 0; i < card->num_links; i++) {
-+		if (mt8173_rt5650_dais[i].platform_name)
-+			continue;
-+		mt8173_rt5650_dais[i].platform_of_node = platform_node;
-+	}
-+
-+	mt8173_rt5650_codecs[0].of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 0);
-+	if (!mt8173_rt5650_codecs[0].of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	card->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, card);
-+
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+	return ret;
-+}
-+
-+static const struct of_device_id mt8173_rt5650_dt_match[] = {
-+	{ .compatible = "mediatek,mt8173-rt5650", },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mt8173_rt5650_dt_match);
-+
-+static struct platform_driver mt8173_rt5650_driver = {
-+	.driver = {
-+		   .name = "mtk-rt5650",
-+		   .of_match_table = mt8173_rt5650_dt_match,
-+#ifdef CONFIG_PM
-+		   .pm = &snd_soc_pm_ops,
-+#endif
-+	},
-+	.probe = mt8173_rt5650_dev_probe,
-+};
-+
-+module_platform_driver(mt8173_rt5650_driver);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT8173 RT5650 SoC machine driver");
-+MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:mtk-rt5650");
-+
--- 
-1.7.9.5
+Hi,
+
+Yes, as you said, PTPOD need the more precisely voltage as possible when
+driver initialize, there has two mode in mt6397: pwm/auto mode, the pwm
+mode which can get the more stable Vout than auto mode.
+
+Thanks,
+Henry
+
+
