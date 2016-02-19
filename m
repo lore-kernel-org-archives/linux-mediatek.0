@@ -1,73 +1,37 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V6 05/11] soc: mediatek: PMIC wrap: WRAP_INT_EN needs a
- different bitmask for MT2701/7623
-Date: Fri, 19 Feb 2016 09:44:09 +0100
-Message-ID: <1455871455-21212-6-git-send-email-blogic@openwrt.org>
-References: <1455871455-21212-1-git-send-email-blogic@openwrt.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH V2 1/2] pinctrl: mediatek: Modify pinctrl bindings for mt7623
+Date: Fri, 19 Feb 2016 10:03:12 +0100
+Message-ID: <CACRpkdYiQop2qDNuh4N2YZy2DTy9mOEyERro8hT4YogCPc2LGw@mail.gmail.com>
+References: <1455866238-6102-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1455871455-21212-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Flora Fu <flora.fu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1455866238-6102-1-git-send-email-blogic@openwrt.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Biao Huang <biao.huang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MT2701 and MT7623 use a different bitmask for PWRAP_INT_EN.
+On Fri, Feb 19, 2016 at 8:17 AM, John Crispin <blogic@openwrt.org> wrote:
 
-Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
----
-Changes in V5
-* move the logic invert from call to declaration
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> Cc: devicetree@vger.kernel.org
+> ---
+> please apply to the devel-mt2701 branch
+>
+> Changes in V2
+> * make mt7623-pinfunc.h part of patch 1/2
+> * make sure the list stays sorted
 
- drivers/soc/mediatek/mtk-pmic-wrap.c |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Patch applied unless the Mediatek maintainers come with serious
+remarks (I can always revert).
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 22c89e9..9df1135 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -371,6 +371,7 @@ struct pmic_wrapper_type {
- 	int *regs;
- 	enum pwrap_type type;
- 	u32 arb_en_all;
-+	u32 int_en_all;
- 	int (*init_reg_clock)(struct pmic_wrapper *wrp);
- 	int (*init_soc_specific)(struct pmic_wrapper *wrp);
- };
-@@ -825,6 +826,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
- 	.regs = mt8135_regs,
- 	.type = PWRAP_MT8135,
- 	.arb_en_all = 0x1ff,
-+	.int_en_all = ~(BIT(31) | BIT(1)),
- 	.init_reg_clock = pwrap_mt8135_init_reg_clock,
- 	.init_soc_specific = pwrap_mt8135_init_soc_specific,
- };
-@@ -833,6 +835,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
- 	.regs = mt8173_regs,
- 	.type = PWRAP_MT8173,
- 	.arb_en_all = 0x3f,
-+	.int_en_all = ~(BIT(31) | BIT(1)),
- 	.init_reg_clock = pwrap_mt8173_init_reg_clock,
- 	.init_soc_specific = pwrap_mt8173_init_soc_specific,
- };
-@@ -946,7 +949,7 @@ static int pwrap_probe(struct platform_device *pdev)
- 			PWRAP_WDT_SRC_MASK_NO_STAUPD : PWRAP_WDT_SRC_MASK_ALL;
- 	pwrap_writel(wrp, wdt_src, PWRAP_WDT_SRC_EN);
- 	pwrap_writel(wrp, 0x1, PWRAP_TIMER_EN);
--	pwrap_writel(wrp, ~((1 << 31) | (1 << 1)), PWRAP_INT_EN);
-+	pwrap_writel(wrp, wrp->master->int_en_all, PWRAP_INT_EN);
- 
- 	irq = platform_get_irq(pdev, 0);
- 	ret = devm_request_irq(wrp->dev, irq, pwrap_interrupt, IRQF_TRIGGER_HIGH,
--- 
-1.7.10.4
+Only minor comments from Yingjoe on the previous version so I guess
+it is finished.
+
+MTK guys: do you even have this SoC? It appears MTK is churning out
+a plethora of SoCs and then they land in the lap of the OpenWRT
+developers before the MTK maintainers even start to look at it...
+
+Yours,
+Linus Walleij
