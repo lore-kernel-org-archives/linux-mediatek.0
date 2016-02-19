@@ -1,74 +1,74 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v4 5/8] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
- Encoder Driver
-Date: Sat, 20 Feb 2016 10:18:24 +0100
-Message-ID: <56C82F60.4060304@xs4all.nl>
-References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
- <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
- <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
- <1454585703-42428-4-git-send-email-tiffany.lin@mediatek.com>
- <1454585703-42428-5-git-send-email-tiffany.lin@mediatek.com>
- <1454585703-42428-6-git-send-email-tiffany.lin@mediatek.com>
- <56C1B4AF.1030207@xs4all.nl> <1455604653.19396.68.camel@mtksdaap41>
- <56C2D371.9090805@xs4all.nl> <1455959480.12533.11.camel@mtksdaap41>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] ASoC: mediatek: Add machine driver for ALC5650 codec
+Date: Sat, 20 Feb 2016 00:37:44 +0900
+Message-ID: <20160219153744.GP18327@sirena.org.uk>
+References: <1455849359-14581-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1455959480.12533.11.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============8396865635730190716=="
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455849359-14581-1-git-send-email-pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: PC Liao <pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/20/2016 10:11 AM, tiffany lin wrote:
-> Hi Hans,
-> 
-> On Tue, 2016-02-16 at 08:44 +0100, Hans Verkuil wrote:
->> On 02/16/2016 07:37 AM, tiffany lin wrote:
->>>>> +
->>>>> +const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
->>>>> +	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
->>>>> +	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
->>>>> +
->>>>> +	.vidioc_reqbufs			= v4l2_m2m_ioctl_reqbufs,
->>>>> +	.vidioc_querybuf		= v4l2_m2m_ioctl_querybuf,
->>>>> +	.vidioc_qbuf			= vidioc_venc_qbuf,
->>>>> +	.vidioc_dqbuf			= vidioc_venc_dqbuf,
->>>>> +
->>>>> +	.vidioc_querycap		= vidioc_venc_querycap,
->>>>> +	.vidioc_enum_fmt_vid_cap_mplane = vidioc_enum_fmt_vid_cap_mplane,
->>>>> +	.vidioc_enum_fmt_vid_out_mplane = vidioc_enum_fmt_vid_out_mplane,
->>>>> +	.vidioc_enum_framesizes		= vidioc_enum_framesizes,
->>>>> +
->>>>> +	.vidioc_try_fmt_vid_cap_mplane	= vidioc_try_fmt_vid_cap_mplane,
->>>>> +	.vidioc_try_fmt_vid_out_mplane	= vidioc_try_fmt_vid_out_mplane,
->>>>> +	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
->>>>
->>>> Please add vidioc_create_bufs and vidioc_prepare_buf as well.
->>>>
->>>
->>> Currently we do not support these use cases, do we need to add
->>> vidioc_create_bufs and vidioc_prepare_buf now?
->>
->> I would suggest you do. The vb2 framework gives it (almost) for free.
->> prepare_buf is completely free (just add the helper) and create_bufs
->> needs a few small changes in the queue_setup function, that's all.
->>
-> After try to add vidioc_create_bufs directly using
-> vb2_ioctl_create_bufs, it will have problem in 
 
-This is a m2m device, so you should use the m2m variant of this:
-v4l2_m2m_ioctl_create_bufs
+--===============8396865635730190716==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="xXygN3QAmJYWdGtb"
+Content-Disposition: inline
 
-That should solve this problem.
 
-Ditto for prepare_buf: you need to use v4l2_m2m_ioctl_prepare_buf.
+--xXygN3QAmJYWdGtb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Regards,
+On Fri, Feb 19, 2016 at 10:35:59AM +0800, PC Liao wrote:
 
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> @@ -3,3 +3,4 @@ obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
+>  # Machine support
+>  obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
+>  obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
+> +obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
+
+Why is this not covered by (or coverable by) the existinng RT5650-RT5657
+driver?
+
+--xXygN3QAmJYWdGtb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJWxzbHAAoJECTWi3JdVIfQER4H/2BAfeA7Y/91xa5W+OTkuWEl
+HPvKvy7P2AyJcsNBkX1Dsa9ZEfYsh0283J8bN4XhfNNVHAoFvErXPPrVr0Zg9DFB
+EC9oBo+ZnTjR4EyWeqdvtT09aSHgXUzwf3ftL2L5W1dVZE8SmEXllGhwN6jXcRzh
+6fGJhHd+RCCaH6vULqCScA07z2yPODKk18qjqgqEN28OwtUfwT/gUPEJ/YZ9RG1N
+atla4P3KGUNBqiliFdCSmb78LhP7g7a2j4JPrLVyKHX7itt3c46uQAp9ecJNsocT
++s9vBypU5LLmrzGOVZq5MpxMxA1l2w3TAVak+Wm0A2jXdwAe7ZsACVo19wZ9p00=
+=2Sux
+-----END PGP SIGNATURE-----
+
+--xXygN3QAmJYWdGtb--
+
+
+--===============8396865635730190716==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8396865635730190716==--
