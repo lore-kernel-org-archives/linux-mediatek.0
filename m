@@ -1,86 +1,217 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 5/8] [Media] vcodec: mediatek: Add Mediatek V4L2
- Video Encoder Driver
-Date: Mon, 22 Feb 2016 23:19:24 +0800
-Message-ID: <1456154364.1943.3.camel@mtksdaap41>
-References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
-	 <1454585703-42428-4-git-send-email-tiffany.lin@mediatek.com>
-	 <1454585703-42428-5-git-send-email-tiffany.lin@mediatek.com>
-	 <1454585703-42428-6-git-send-email-tiffany.lin@mediatek.com>
-	 <56C1B4AF.1030207@xs4all.nl> <1455604653.19396.68.camel@mtksdaap41>
-	 <56C2D371.9090805@xs4all.nl> <1455959480.12533.11.camel@mtksdaap41>
-	 <56C82F60.4060304@xs4all.nl>
+From: sanjeev sharma <sanjeevsharmaengg@gmail.com>
+Subject: Re: [PATCH v2 2/2] drm/panel: Support for LG lp120up1 panel with eDP
+ input
+Date: Mon, 22 Feb 2016 16:42:54 +0530
+Message-ID: <CAGUYZuSsrneg8zQ0Ro8z5C469A2D-TOKpONECxWdoM6T+xNAeg@mail.gmail.com>
+References: <1456138904-15258-1-git-send-email-jitao.shi@mediatek.com>
+ <1456138904-15258-2-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56C82F60.4060304-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============0734283569=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1456138904-15258-2-git-send-email-jitao.shi@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa.cheng@mediatek.com, yingjoe.chen@mediatek.com, Thierry Reding <treding@nvidia.com>, devicetree@vger.kernel.org, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Russell King <rmk+kernel@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, eddie.huang@mediatek.com, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream@mediatek.com, linux-kernel <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+--===============0734283569==
+Content-Type: multipart/alternative; boundary=089e0116169c111879052c59ea89
 
-On Sat, 2016-02-20 at 10:18 +0100, Hans Verkuil wrote:
-> On 02/20/2016 10:11 AM, tiffany lin wrote:
-> > Hi Hans,
-> > 
-> > On Tue, 2016-02-16 at 08:44 +0100, Hans Verkuil wrote:
-> >> On 02/16/2016 07:37 AM, tiffany lin wrote:
-> >>>>> +
-> >>>>> +const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
-> >>>>> +	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
-> >>>>> +	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
-> >>>>> +
-> >>>>> +	.vidioc_reqbufs			= v4l2_m2m_ioctl_reqbufs,
-> >>>>> +	.vidioc_querybuf		= v4l2_m2m_ioctl_querybuf,
-> >>>>> +	.vidioc_qbuf			= vidioc_venc_qbuf,
-> >>>>> +	.vidioc_dqbuf			= vidioc_venc_dqbuf,
-> >>>>> +
-> >>>>> +	.vidioc_querycap		= vidioc_venc_querycap,
-> >>>>> +	.vidioc_enum_fmt_vid_cap_mplane = vidioc_enum_fmt_vid_cap_mplane,
-> >>>>> +	.vidioc_enum_fmt_vid_out_mplane = vidioc_enum_fmt_vid_out_mplane,
-> >>>>> +	.vidioc_enum_framesizes		= vidioc_enum_framesizes,
-> >>>>> +
-> >>>>> +	.vidioc_try_fmt_vid_cap_mplane	= vidioc_try_fmt_vid_cap_mplane,
-> >>>>> +	.vidioc_try_fmt_vid_out_mplane	= vidioc_try_fmt_vid_out_mplane,
-> >>>>> +	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
-> >>>>
-> >>>> Please add vidioc_create_bufs and vidioc_prepare_buf as well.
-> >>>>
-> >>>
-> >>> Currently we do not support these use cases, do we need to add
-> >>> vidioc_create_bufs and vidioc_prepare_buf now?
-> >>
-> >> I would suggest you do. The vb2 framework gives it (almost) for free.
-> >> prepare_buf is completely free (just add the helper) and create_bufs
-> >> needs a few small changes in the queue_setup function, that's all.
-> >>
-> > After try to add vidioc_create_bufs directly using
-> > vb2_ioctl_create_bufs, it will have problem in 
-> 
-> This is a m2m device, so you should use the m2m variant of this:
-> v4l2_m2m_ioctl_create_bufs
-> 
-> That should solve this problem.
-> 
-> Ditto for prepare_buf: you need to use v4l2_m2m_ioctl_prepare_buf.
-> 
-Got it. After using v4l2_m2m_ioctl_create_bufs, the problem was solved.
-Thanks for your help.
+--089e0116169c111879052c59ea89
+Content-Type: text/plain; charset=UTF-8
 
-> Regards,
-> 
-> 	Hans
+Hello Jitao,
 
+Can't we add this panel information in device tree file instead inside the
+device driver ?
 
+Regards
+Sanjeev Sharma
 
+On Mon, Feb 22, 2016 at 4:31 PM, Jitao Shi <jitao.shi@mediatek.com> wrote:
 
+> The LG lp120up1 TFT LCD panel with eDP interface is a 12.0" 1920x1280
+> panel, which can be supported by the simple panel driver
+>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+> Changes since v1:
+>  - Add eDP panel type in comment msg
+>  - Fixed comment msg with 72 characters width
+> ---
+>  drivers/gpu/drm/panel/panel-simple.c |   26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/panel/panel-simple.c
+> b/drivers/gpu/drm/panel/panel-simple.c
+> index f88a631..2030c37 100644
+> --- a/drivers/gpu/drm/panel/panel-simple.c
+> +++ b/drivers/gpu/drm/panel/panel-simple.c
+> @@ -982,6 +982,29 @@ static const struct panel_desc lg_lb070wv8 = {
+>         .bus_format = MEDIA_BUS_FMT_RGB888_1X7X4_SPWG,
+>  };
+>
+> +static const struct drm_display_mode lg_lp120up1_mode = {
+> +       .clock = 162300,
+> +       .hdisplay = 1920,
+> +       .hsync_start = 1920 + 40,
+> +       .hsync_end = 1920 + 40 + 40,
+> +       .htotal = 1920 + 40 + 40+ 80,
+> +       .vdisplay = 1280,
+> +       .vsync_start = 1280 + 4,
+> +       .vsync_end = 1280 + 4 + 4,
+> +       .vtotal = 1280 + 4 + 4 + 12,
+> +       .vrefresh = 60,
+> +};
+> +
+> +static const struct panel_desc lg_lp120up1 = {
+> +       .modes = &lg_lp120up1_mode,
+> +       .num_modes = 1,
+> +       .bpc = 8,
+> +       .size = {
+> +               .width = 267,
+> +               .height = 183,
+> +       },
+> +};
+> +
+>  static const struct drm_display_mode lg_lp129qe_mode = {
+>         .clock = 285250,
+>         .hdisplay = 2560,
+> @@ -1256,6 +1279,9 @@ static const struct of_device_id platform_of_match[]
+> = {
+>                 .compatible = "lg,lb070wv8",
+>                 .data = &lg_lb070wv8,
+>         }, {
+> +               .compatible = "lg,lp120up1",
+> +               .data = &lg_lp120up1,
+> +       }, {
+>                 .compatible = "lg,lp129qe",
+>                 .data = &lg_lp129qe,
+>         }, {
+> --
+> 1.7.9.5
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--089e0116169c111879052c59ea89
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div><div><span style=3D"font-family:verdana,sans-ser=
+if">Hello Jitao,<br><br></span></div><span style=3D"font-family:verdana,san=
+s-serif">Can&#39;t we add this panel information in device tree file instea=
+d inside the device driver ?<br><br></span></div><span style=3D"font-family=
+:verdana,sans-serif">Regards<br></span></div><span style=3D"font-family:ver=
+dana,sans-serif">Sanjeev Sharma </span><br></div><div class=3D"gmail_extra"=
+><br><div class=3D"gmail_quote">On Mon, Feb 22, 2016 at 4:31 PM, Jitao Shi =
+<span dir=3D"ltr">&lt;<a href=3D"mailto:jitao.shi@mediatek.com" target=3D"_=
+blank">jitao.shi@mediatek.com</a>&gt;</span> wrote:<br><blockquote class=3D=
+"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding=
+-left:1ex">The LG lp120up1 TFT LCD panel with eDP interface is a 12.0&quot;=
+ 1920x1280<br>
+panel, which can be supported by the simple panel driver<br>
+<br>
+Signed-off-by: Jitao Shi &lt;<a href=3D"mailto:jitao.shi@mediatek.com">jita=
+o.shi@mediatek.com</a>&gt;<br>
+---<br>
+Changes since v1:<br>
+=C2=A0- Add eDP panel type in comment msg<br>
+=C2=A0- Fixed comment msg with 72 characters width<br>
+---<br>
+=C2=A0drivers/gpu/drm/panel/panel-simple.c |=C2=A0 =C2=A026 +++++++++++++++=
++++++++++++<br>
+=C2=A01 file changed, 26 insertions(+)<br>
+<br>
+diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/p=
+anel-simple.c<br>
+index f88a631..2030c37 100644<br>
+--- a/drivers/gpu/drm/panel/panel-simple.c<br>
++++ b/drivers/gpu/drm/panel/panel-simple.c<br>
+@@ -982,6 +982,29 @@ static const struct panel_desc lg_lb070wv8 =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .bus_format =3D MEDIA_BUS_FMT_RGB888_1X7X4_SPWG=
+,<br>
+=C2=A0};<br>
+<br>
++static const struct drm_display_mode lg_lp120up1_mode =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.clock =3D 162300,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.hdisplay =3D 1920,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.hsync_start =3D 1920 + 40,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.hsync_end =3D 1920 + 40 + 40,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.htotal =3D 1920 + 40 + 40+ 80,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.vdisplay =3D 1280,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.vsync_start =3D 1280 + 4,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.vsync_end =3D 1280 + 4 + 4,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.vtotal =3D 1280 + 4 + 4 + 12,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.vrefresh =3D 60,<br>
++};<br>
++<br>
++static const struct panel_desc lg_lp120up1 =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.modes =3D &amp;lg_lp120up1_mode,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.num_modes =3D 1,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.bpc =3D 8,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0.size =3D {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.width =3D 267,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.height =3D 183,<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0},<br>
++};<br>
++<br>
+=C2=A0static const struct drm_display_mode lg_lp129qe_mode =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .clock =3D 285250,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 .hdisplay =3D 2560,<br>
+@@ -1256,6 +1279,9 @@ static const struct of_device_id platform_of_match[] =
+=3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .compatible =3D &qu=
+ot;lg,lb070wv8&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .data =3D &amp;lg_l=
+b070wv8,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }, {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.compatible =3D &qu=
+ot;lg,lp120up1&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0.data =3D &amp;lg_l=
+p120up1,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0}, {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .compatible =3D &qu=
+ot;lg,lp129qe&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 .data =3D &amp;lg_l=
+p129qe,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }, {<br>
+<span class=3D"HOEnZb"><font color=3D"#888888">--<br>
+1.7.9.5<br>
+<br>
+<br>
+_______________________________________________<br>
+linux-arm-kernel mailing list<br>
+<a href=3D"mailto:linux-arm-kernel@lists.infradead.org">linux-arm-kernel@li=
+sts.infradead.org</a><br>
+<a href=3D"http://lists.infradead.org/mailman/listinfo/linux-arm-kernel" re=
+l=3D"noreferrer" target=3D"_blank">http://lists.infradead.org/mailman/listi=
+nfo/linux-arm-kernel</a><br>
+</font></span></blockquote></div><br></div>
+
+--089e0116169c111879052c59ea89--
+
+--===============0734283569==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+Content-Disposition: inline
+
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+
+--===============0734283569==--
