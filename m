@@ -1,65 +1,49 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [v9,4/5] iommu/mediatek: Add mt8173 IOMMU driver
-Date: Mon, 22 Feb 2016 02:43:09 +0800
-Message-ID: <1456080189.25237.4.camel@mhfsdcap03>
-References: <1455669974-1527-5-git-send-email-yong.wu@mediatek.com>
-	 <20160220070209.GA16577@roeck-us.net>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: Add machine driver for ALC5650 codec
+Date: Mon, 22 Feb 2016 11:05:50 +0800
+Message-ID: <1456110350.7576.12.camel@mtksdaap41>
+References: <1455849359-14581-1-git-send-email-pc.liao@mediatek.com>
+	 <20160219153744.GP18327@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160220070209.GA16577-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
-Cc: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160219153744.GP18327@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: "tiwai@suse.de" <tiwai@suse.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-02-19 at 23:02 -0800, Guenter Roeck wrote:
-> On Wed, Feb 17, 2016 at 08:46:13AM +0800, Yong Wu wrote:
-> > This patch adds support for mediatek m4u (MultiMedia Memory Management
-> > Unit).
-[...]
-> > +#include <linux/clk.h>
-> > +#include <linux/component.h>
-> > +#include <linux/dma-iommu.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/io.h>
-> > +#include <linux/iommu.h>
-> > +#include <linux/iopoll.h>
-> > +#include <linux/list.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_address.h>
-> > +#include <linux/of_iommu.h>
-> > +#include <linux/of_irq.h>
-> > +#include <linux/of_platform.h>
-> > +#include <linux/platform_device.h>
-> > +#include <soc/mediatek/smi.h>
-> > +#include <dt-bindings/memory/mt8173-larb-port.h>
-> > +
-> 
-> Some missing includes:
-> 
-> linux/bug.h
-> 	for WARN_ON()
-> linux/device.h
-> 	for dev_xxx() error messages, dev_get_drvdata(), etc.
-> linux/err.h
-> 	for error functions (IS_ERR, error definitions)
-> linux/slab.h
-> 	for kzalloc() etc.
-> linux/spinlock.h
-> 	for spinlock functions
-> asm/barrier.h
-> 	for wmb()
-> 
-> Guenter
+Hi Mark,
 
-Hi Guenter,
-    Thanks for this suggestion. I'm sorry that I didn't get any build
-warning or error here. Anyway I will add them and send a quick v10.
+On Fri, 2016-02-19 at 23:37 +0800, Mark Brown wrote:
+> On Fri, Feb 19, 2016 at 10:35:59AM +0800, PC Liao wrote:
+> 
+> > @@ -3,3 +3,4 @@ obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
+> >  # Machine support
+> >  obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
+> >  obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
+> > +obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
+> 
+> Why is this not covered by (or coverable by) the existinng RT5650-RT5657
+> driver?
 
+Thanks for your review.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Because they are different boards and have some differences like HW
+configuration and mixer control, we want to separate machine driver
+clearly.
+
+Otherwise, I think I will upload this change to new version for more
+clearly.
+diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
+index bcdcb06..dcb1440 100644
+--- a/sound/soc/mediatek/Makefile
++++ b/sound/soc/mediatek/Makefile
+@@ -2,5 +2,5 @@
+ obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
+ # Machine support
+ obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
+-obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
+ obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
++obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
