@@ -1,140 +1,78 @@
-From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] drm/panel: Support for LG lp120up1 panel with eDP
- input
-Date: Mon, 22 Feb 2016 12:43:08 +0100
-Message-ID: <20160222114308.GA22505@ulmo>
-References: <1456138904-15258-1-git-send-email-jitao.shi@mediatek.com>
- <1456138904-15258-2-git-send-email-jitao.shi@mediatek.com>
- <CAGUYZuSsrneg8zQ0Ro8z5C469A2D-TOKpONECxWdoM6T+xNAeg@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] ARM: mediatek: soc updates for v4.5
+Date: Mon, 22 Feb 2016 13:40:51 +0100
+Message-ID: <CABuKBeLEf+jyE5gzWEVzfRZ7DwRgnLrdWLREwqqfYGBb2g+exQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="M9NhX3UHpAaciwkO"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAGUYZuSsrneg8zQ0Ro8z5C469A2D-TOKpONECxWdoM6T+xNAeg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sanjeev sharma <sanjeevsharmaengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, stonea168-9Onoh4P/yGk@public.gmane.org, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM9gwCICpdfJQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Arnd and Olof,
 
---M9NhX3UHpAaciwkO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Please pull the following patches.
+As you can see from the description, this pull request includes some
+fixes. Only a few developer have access to a Mediatek HW at the
+moment. Therefor I didn't send the fixes to stable.
 
-On Mon, Feb 22, 2016 at 04:42:54PM +0530, sanjeev sharma wrote:
-> Hello Jitao,
->=20
-> Can't we add this panel information in device tree file instead inside the
-> device driver ?
+If you want me to send the fixes for older kernel versions, please let me know.
 
-We could, but that would be redundant. Panels need to be represented by
-a specific compatible string anyway, and that compatible string implies
-the video timings, bits-per-color, width and height.
+Thanks,
+Matthias
 
-Also there's more to panels than just the timings or dimensions. Power
-up and power down sequences are also implied by the compatible stirng.
-Describing all of that in the device tree was at some point attempted,
-but in the end it turned out too complicated and we ended up with what
-we have now.
+---
 
-Thierry
+The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 
-> On Mon, Feb 22, 2016 at 4:31 PM, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->=20
-> > The LG lp120up1 TFT LCD panel with eDP interface is a 12.0" 1920x1280
-> > panel, which can be supported by the simple panel driver
-> >
-> > Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> > Changes since v1:
-> >  - Add eDP panel type in comment msg
-> >  - Fixed comment msg with 72 characters width
-> > ---
-> >  drivers/gpu/drm/panel/panel-simple.c |   26 ++++++++++++++++++++++++++
-> >  1 file changed, 26 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/panel/panel-simple.c
-> > b/drivers/gpu/drm/panel/panel-simple.c
-> > index f88a631..2030c37 100644
-> > --- a/drivers/gpu/drm/panel/panel-simple.c
-> > +++ b/drivers/gpu/drm/panel/panel-simple.c
-> > @@ -982,6 +982,29 @@ static const struct panel_desc lg_lb070wv8 =3D {
-> >         .bus_format =3D MEDIA_BUS_FMT_RGB888_1X7X4_SPWG,
-> >  };
-> >
-> > +static const struct drm_display_mode lg_lp120up1_mode =3D {
-> > +       .clock =3D 162300,
-> > +       .hdisplay =3D 1920,
-> > +       .hsync_start =3D 1920 + 40,
-> > +       .hsync_end =3D 1920 + 40 + 40,
-> > +       .htotal =3D 1920 + 40 + 40+ 80,
-> > +       .vdisplay =3D 1280,
-> > +       .vsync_start =3D 1280 + 4,
-> > +       .vsync_end =3D 1280 + 4 + 4,
-> > +       .vtotal =3D 1280 + 4 + 4 + 12,
-> > +       .vrefresh =3D 60,
-> > +};
-> > +
-> > +static const struct panel_desc lg_lp120up1 =3D {
-> > +       .modes =3D &lg_lp120up1_mode,
-> > +       .num_modes =3D 1,
-> > +       .bpc =3D 8,
-> > +       .size =3D {
-> > +               .width =3D 267,
-> > +               .height =3D 183,
-> > +       },
-> > +};
-> > +
-> >  static const struct drm_display_mode lg_lp129qe_mode =3D {
-> >         .clock =3D 285250,
-> >         .hdisplay =3D 2560,
-> > @@ -1256,6 +1279,9 @@ static const struct of_device_id platform_of_matc=
-h[]
-> > =3D {
-> >                 .compatible =3D "lg,lb070wv8",
-> >                 .data =3D &lg_lb070wv8,
-> >         }, {
-> > +               .compatible =3D "lg,lp120up1",
-> > +               .data =3D &lg_lp120up1,
-> > +       }, {
-> >                 .compatible =3D "lg,lp129qe",
-> >                 .data =3D &lg_lp129qe,
-> >         }, {
-> > --
-> > 1.7.9.5
-> >
-> >
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-> >
+Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
 
---M9NhX3UHpAaciwkO
-Content-Type: application/pgp-signature; name="signature.asc"
+are available in the git repository at:
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-soc
 
-iQIcBAABCAAGBQJWyvRIAAoJEN0jrNd/PrOhckoP/3p8swvDH4Qm3/l6w5Qaw7mf
-DIXu1ovTOcBWPBvPKP7RANwrZIgwpPQDgP2PWU+cLCdQsAv+UdxGEX1qATAQC2Al
-ExGYaNrawQI8lFhvuTinNbiURG6ovSfsWNrc0aRw5bEv6cXn6uEqAETH0bFHcm30
-aDF6JrP6+gi23oGSWYimarCy+i/IBhHHfsqiyG+C19eDk3K3ttkIfdhmxpw3uhye
-/SRwYbyN8sn/Fb0NmJoS8qXEJ0uCxkb3Huu4r1XNQw+eEOagrEHPliBwISDSHLeS
-boqtI1bwj2622E+BXEoxRiSFokdIfUKNF+KEx9p6Gc3VQwCpWZx6Zpi6UC651uit
-I8ryxJHlmCU/saV9o2wACJsdCsU/eBEb32ohx7ymSe587DUKcdxaIQF+P0OPRumt
-5jbOaAH8aMdDKWI0l5Z/gbowPjcPz9j7tLPw+PJOJgF1Sg8qQKPHdehaE/aWzCHR
-N6anwDl4TYTwc9GQVY64X575CdUciNad/lvo/WuAqs70b1Y/azkQFFoPBHfJzQA6
-SKOdYJh0PHDfvYVSW2IXQvNj3qAuheURny7QakhGddsp7bITwoMb1k/k64NMkFlv
-roPn+Xls5V8mfKaZYOQ43U56nSVAq4nOvQ2n+I3jY1RZXsRxlm1VZP221N91C97O
-GBVVG9XLkAl4p2U2HNFv
-=tT3r
------END PGP SIGNATURE-----
+for you to fetch changes up to cc8ed76938b5cf6a54ab3d60edabaf808dc960d1:
 
---M9NhX3UHpAaciwkO--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+soc: mediatek: SCPSYS: Fix double enabling of regulators (2016-02-01
+11:28:07 +0100)
+
+----------------------------------------------------------------
+Fix state machine implemenation of PMIC wrapper.
+Add SMP support for mt7623.
+Disable watchdog of STAUPD in PMIC wrapper for mt8173.
+Add SMP support for mt2701.
+Use builtin_platform_driver for scpsys. Driver can't be build as module.
+Fix regulator enablement in scpsys.
+
+----------------------------------------------------------------
+Henry Chen (2):
+soc: mediatek: PMIC wrap: Clear the vldclr if state machine stay on
+FSM_VLDCLR state.
+soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of WDT_SRC_EN
+
+John Crispin (1):
+ARM: mediatek: add MT7623 smp bringup code
+
+Louis Yu (1):
+ARM: mediatek: add mt2701 smp bringup code
+
+Matthias Brugger (1):
+soc: mediatek: SCPSYS: use builtin_platform_driver
+
+Sascha Hauer (1):
+soc: mediatek: SCPSYS: Fix double enabling of regulators
+
+arch/arm/mach-mediatek/platsmp.c | 8 +++++
+drivers/soc/mediatek/mtk-pmic-wrap.c | 41 +++++++++++++++++++++---
+drivers/soc/mediatek/mtk-scpsys.c | 60 ++++++++++++++++--------------------
+3 files changed, 71 insertions(+), 38 deletions(-)
