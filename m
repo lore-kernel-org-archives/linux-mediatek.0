@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] ARM: mediatek: soc updates for v4.5
-Date: Mon, 22 Feb 2016 13:40:51 +0100
-Message-ID: <CABuKBeLEf+jyE5gzWEVzfRZ7DwRgnLrdWLREwqqfYGBb2g+exQ@mail.gmail.com>
+Subject: [GIT PULL] ARM: mediatek: dts updates for v4.6
+Date: Mon, 22 Feb 2016 13:43:15 +0100
+Message-ID: <CABuKBeK+zT85Z695dBGO-0tU26w5LBJqS53aecdZYGZ6V0GPhA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,7 +16,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Arnd and Olof,
@@ -24,7 +24,7 @@ Hi Arnd and Olof,
 Please pull the following patches.
 As you can see from the description, this pull request includes some
 fixes. Only a few developer have access to a Mediatek HW at the
-moment. Therefor I didn't send the fixes to stable.
+moment. Therefore I didn't send the fixes to stable.
 
 If you want me to send the fixes for older kernel versions, please let me know.
 
@@ -35,44 +35,32 @@ Matthias
 
 The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 
-Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
+  Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
 
 are available in the git repository at:
 
-https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-soc
+  https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-dts64
 
-for you to fetch changes up to cc8ed76938b5cf6a54ab3d60edabaf808dc960d1:
+for you to fetch changes up to 3ea064b1e5adc263893ffdc3a11891c6d00d5e49:
 
-soc: mediatek: SCPSYS: Fix double enabling of regulators (2016-02-01
-11:28:07 +0100)
-
-----------------------------------------------------------------
-Fix state machine implemenation of PMIC wrapper.
-Add SMP support for mt7623.
-Disable watchdog of STAUPD in PMIC wrapper for mt8173.
-Add SMP support for mt2701.
-Use builtin_platform_driver for scpsys. Driver can't be build as module.
-Fix regulator enablement in scpsys.
+  ARM64: dts: Mediatek: mt8173-evb: fix access MMC fail issue
+(2016-02-19 11:05:09 +0100)
 
 ----------------------------------------------------------------
-Henry Chen (2):
-soc: mediatek: PMIC wrap: Clear the vldclr if state machine stay on
-FSM_VLDCLR state.
-soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of WDT_SRC_EN
+Add nor-flash to mt8173 SoC.
+Add efuse device to mt1873 SoC.
+Fix power-domain issue mt8173-evb which uses older chip revision.
 
-John Crispin (1):
-ARM: mediatek: add MT7623 smp bringup code
+----------------------------------------------------------------
+Bayi Cheng (1):
+      arm64: dts: mt8173: Add nor flash node
 
-Louis Yu (1):
-ARM: mediatek: add mt2701 smp bringup code
+Eddie Huang (1):
+      ARM64: dts: Mediatek: mt8173-evb: fix access MMC fail issue
 
-Matthias Brugger (1):
-soc: mediatek: SCPSYS: use builtin_platform_driver
+andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org (1):
+      dts: arm64: Add EFUSE device node
 
-Sascha Hauer (1):
-soc: mediatek: SCPSYS: Fix double enabling of regulators
-
-arch/arm/mach-mediatek/platsmp.c | 8 +++++
-drivers/soc/mediatek/mtk-pmic-wrap.c | 41 +++++++++++++++++++++---
-drivers/soc/mediatek/mtk-scpsys.c | 60 ++++++++++++++++--------------------
-3 files changed, 71 insertions(+), 38 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts |  3 +++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 16 ++++++++++++++++
+ 2 files changed, 19 insertions(+)
