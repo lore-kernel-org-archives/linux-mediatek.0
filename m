@@ -1,13 +1,11 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: mediatek: soc updates for v4.5
-Date: Mon, 22 Feb 2016 13:44:00 +0100
-Message-ID: <CABuKBeKf4dB7Y6A9WN530Zfmk55TXYserHv9OL-8Atfg65tTjA@mail.gmail.com>
-References: <CABuKBeLEf+jyE5gzWEVzfRZ7DwRgnLrdWLREwqqfYGBb2g+exQ@mail.gmail.com>
+Subject: [GIT PULL] ARM: mediatek: dts updates for v4.6
+Date: Mon, 22 Feb 2016 13:47:24 +0100
+Message-ID: <CABuKBe+vk0E6-8ni5bHtyn6X3EbLoOxfjw0zqPRE_tLdp0AAXQ@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABuKBeLEf+jyE5gzWEVzfRZ7DwRgnLrdWLREwqqfYGBb2g+exQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,75 +16,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Arnd and Olof,
 
-These updates are of course for v4.6, sorry for the confusion.
+Please pull the following patches.
 
+Thanks,
 Matthias
 
-2016-02-22 13:40 GMT+01:00 Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
-> Hi Arnd and Olof,
->
-> Please pull the following patches.
-> As you can see from the description, this pull request includes some
-> fixes. Only a few developer have access to a Mediatek HW at the
-> moment. Therefor I didn't send the fixes to stable.
->
-> If you want me to send the fixes for older kernel versions, please let me know.
->
-> Thanks,
-> Matthias
->
-> ---
->
-> The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
->
-> Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
->
-> are available in the git repository at:
->
-> https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-soc
->
-> for you to fetch changes up to cc8ed76938b5cf6a54ab3d60edabaf808dc960d1:
->
-> soc: mediatek: SCPSYS: Fix double enabling of regulators (2016-02-01
-> 11:28:07 +0100)
->
-> ----------------------------------------------------------------
-> Fix state machine implemenation of PMIC wrapper.
-> Add SMP support for mt7623.
-> Disable watchdog of STAUPD in PMIC wrapper for mt8173.
-> Add SMP support for mt2701.
-> Use builtin_platform_driver for scpsys. Driver can't be build as module.
-> Fix regulator enablement in scpsys.
->
-> ----------------------------------------------------------------
-> Henry Chen (2):
-> soc: mediatek: PMIC wrap: Clear the vldclr if state machine stay on
-> FSM_VLDCLR state.
-> soc: mediatek: PMIC wrap: clear the STAUPD_TRIG bit of WDT_SRC_EN
->
-> John Crispin (1):
-> ARM: mediatek: add MT7623 smp bringup code
->
-> Louis Yu (1):
-> ARM: mediatek: add mt2701 smp bringup code
->
-> Matthias Brugger (1):
-> soc: mediatek: SCPSYS: use builtin_platform_driver
->
-> Sascha Hauer (1):
-> soc: mediatek: SCPSYS: Fix double enabling of regulators
->
-> arch/arm/mach-mediatek/platsmp.c | 8 +++++
-> drivers/soc/mediatek/mtk-pmic-wrap.c | 41 +++++++++++++++++++++---
-> drivers/soc/mediatek/mtk-scpsys.c | 60 ++++++++++++++++--------------------
-> 3 files changed, 71 insertions(+), 38 deletions(-)
+---
 
+The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
 
+  Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
 
--- 
-motzblog.wordpress.com
+are available in the git repository at:
+
+  https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-dts
+
+for you to fetch changes up to 8ba671efdbe5be3e5d691a8b7f77b0d68459b874:
+
+  arm: dts: Add pinctrl/GPIO/EINT node for mt2701 (2016-02-11 11:39:56 +0100)
+
+----------------------------------------------------------------
+Add support for mt7623 SoC.
+Enable SMP support for mt7623.
+Enable SMP support for mt2701
+Add pinctrl for mt2701
+
+----------------------------------------------------------------
+Biao Huang (1):
+      arm: dts: Add pinctrl/GPIO/EINT node for mt2701
+
+John Crispin (3):
+      Document: DT: Add bindings for mediatek MT7623 SoC Platform
+      ARM: dts: mediatek: add MT7623 basic support
+      ARM: dts: mt7623: enable SMP bringup
+
+Louis Yu (1):
+      ARM: dts: mt2701: enable basic SMP bringup for mt2701
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |   4 +
+ .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
+ .../bindings/timer/mediatek,mtk-timer.txt          |   1 +
+ arch/arm/boot/dts/Makefile                         |   1 +
+ arch/arm/boot/dts/mt2701.dtsi                      |  31 +++++
+ arch/arm/boot/dts/mt7623-evb.dts                   |  33 +++++
+ arch/arm/boot/dts/mt7623.dtsi                      | 147 +++++++++++++++++++++
+ arch/arm/mach-mediatek/Kconfig                     |   4 +
+ arch/arm/mach-mediatek/mediatek.c                  |   1 +
+ 9 files changed, 223 insertions(+)
+ create mode 100644 arch/arm/boot/dts/mt7623-evb.dts
+ create mode 100644 arch/arm/boot/dts/mt7623.dtsi
