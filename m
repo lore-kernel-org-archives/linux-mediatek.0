@@ -1,84 +1,86 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: mediatek: dts updates for v4.6
-Date: Mon, 22 Feb 2016 13:48:57 +0100
-Message-ID: <CABuKBe+8TkdnYX1pKLHkhRbYyAmhX9-QP=6oTOt73oQCR5NA7g@mail.gmail.com>
-References: <CABuKBeK+zT85Z695dBGO-0tU26w5LBJqS53aecdZYGZ6V0GPhA@mail.gmail.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 5/8] [Media] vcodec: mediatek: Add Mediatek V4L2
+ Video Encoder Driver
+Date: Mon, 22 Feb 2016 23:19:24 +0800
+Message-ID: <1456154364.1943.3.camel@mtksdaap41>
+References: <1454585703-42428-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1454585703-42428-2-git-send-email-tiffany.lin@mediatek.com>
+	 <1454585703-42428-3-git-send-email-tiffany.lin@mediatek.com>
+	 <1454585703-42428-4-git-send-email-tiffany.lin@mediatek.com>
+	 <1454585703-42428-5-git-send-email-tiffany.lin@mediatek.com>
+	 <1454585703-42428-6-git-send-email-tiffany.lin@mediatek.com>
+	 <56C1B4AF.1030207@xs4all.nl> <1455604653.19396.68.camel@mtksdaap41>
+	 <56C2D371.9090805@xs4all.nl> <1455959480.12533.11.camel@mtksdaap41>
+	 <56C82F60.4060304@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABuKBeK+zT85Z695dBGO-0tU26w5LBJqS53aecdZYGZ6V0GPhA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <56C82F60.4060304-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Hans,
 
-2016-02-22 13:43 GMT+01:00 Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>:
-> Hi Arnd and Olof,
->
-> Please pull the following patches.
-> As you can see from the description, this pull request includes some
-> fixes. Only a few developer have access to a Mediatek HW at the
-> moment. Therefore I didn't send the fixes to stable.
->
-> If you want me to send the fixes for older kernel versions, please let me know.
->
-> Thanks,
-> Matthias
->
-> ---
->
-> The following changes since commit 92e963f50fc74041b5e9e744c330dca48e04f08d:
->
->   Linux 4.5-rc1 (2016-01-24 13:06:47 -0800)
->
-> are available in the git repository at:
->
->   https://github.com/mbgg/linux-mediatek.git tags/v4.5-next-dts64
+On Sat, 2016-02-20 at 10:18 +0100, Hans Verkuil wrote:
+> On 02/20/2016 10:11 AM, tiffany lin wrote:
+> > Hi Hans,
+> > 
+> > On Tue, 2016-02-16 at 08:44 +0100, Hans Verkuil wrote:
+> >> On 02/16/2016 07:37 AM, tiffany lin wrote:
+> >>>>> +
+> >>>>> +const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+> >>>>> +	.vidioc_streamon		= v4l2_m2m_ioctl_streamon,
+> >>>>> +	.vidioc_streamoff		= v4l2_m2m_ioctl_streamoff,
+> >>>>> +
+> >>>>> +	.vidioc_reqbufs			= v4l2_m2m_ioctl_reqbufs,
+> >>>>> +	.vidioc_querybuf		= v4l2_m2m_ioctl_querybuf,
+> >>>>> +	.vidioc_qbuf			= vidioc_venc_qbuf,
+> >>>>> +	.vidioc_dqbuf			= vidioc_venc_dqbuf,
+> >>>>> +
+> >>>>> +	.vidioc_querycap		= vidioc_venc_querycap,
+> >>>>> +	.vidioc_enum_fmt_vid_cap_mplane = vidioc_enum_fmt_vid_cap_mplane,
+> >>>>> +	.vidioc_enum_fmt_vid_out_mplane = vidioc_enum_fmt_vid_out_mplane,
+> >>>>> +	.vidioc_enum_framesizes		= vidioc_enum_framesizes,
+> >>>>> +
+> >>>>> +	.vidioc_try_fmt_vid_cap_mplane	= vidioc_try_fmt_vid_cap_mplane,
+> >>>>> +	.vidioc_try_fmt_vid_out_mplane	= vidioc_try_fmt_vid_out_mplane,
+> >>>>> +	.vidioc_expbuf			= v4l2_m2m_ioctl_expbuf,
+> >>>>
+> >>>> Please add vidioc_create_bufs and vidioc_prepare_buf as well.
+> >>>>
+> >>>
+> >>> Currently we do not support these use cases, do we need to add
+> >>> vidioc_create_bufs and vidioc_prepare_buf now?
+> >>
+> >> I would suggest you do. The vb2 framework gives it (almost) for free.
+> >> prepare_buf is completely free (just add the helper) and create_bufs
+> >> needs a few small changes in the queue_setup function, that's all.
+> >>
+> > After try to add vidioc_create_bufs directly using
+> > vb2_ioctl_create_bufs, it will have problem in 
+> 
+> This is a m2m device, so you should use the m2m variant of this:
+> v4l2_m2m_ioctl_create_bufs
+> 
+> That should solve this problem.
+> 
+> Ditto for prepare_buf: you need to use v4l2_m2m_ioctl_prepare_buf.
+> 
+Got it. After using v4l2_m2m_ioctl_create_bufs, the problem was solved.
+Thanks for your help.
 
-As the tag name says, these pull request is for dts64 instead of dts,
-as written in the subject.
-I screwed it up, sorry.
-
-Regards,
-Matthias
-
->
-> for you to fetch changes up to 3ea064b1e5adc263893ffdc3a11891c6d00d5e49:
->
->   ARM64: dts: Mediatek: mt8173-evb: fix access MMC fail issue
-> (2016-02-19 11:05:09 +0100)
->
-> ----------------------------------------------------------------
-> Add nor-flash to mt8173 SoC.
-> Add efuse device to mt1873 SoC.
-> Fix power-domain issue mt8173-evb which uses older chip revision.
->
-> ----------------------------------------------------------------
-> Bayi Cheng (1):
->       arm64: dts: mt8173: Add nor flash node
->
-> Eddie Huang (1):
->       ARM64: dts: Mediatek: mt8173-evb: fix access MMC fail issue
->
-> andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org (1):
->       dts: arm64: Add EFUSE device node
->
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts |  3 +++
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi    | 16 ++++++++++++++++
->  2 files changed, 19 insertions(+)
+> Regards,
+> 
+> 	Hans
 
 
 
--- 
-motzblog.wordpress.com
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
