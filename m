@@ -1,49 +1,39 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: Add machine driver for ALC5650 codec
-Date: Mon, 22 Feb 2016 11:05:50 +0800
-Message-ID: <1456110350.7576.12.camel@mtksdaap41>
-References: <1455849359-14581-1-git-send-email-pc.liao@mediatek.com>
-	 <20160219153744.GP18327@sirena.org.uk>
+From: Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v2 1/2] dt-bindings: Add LG lp120up1 panel bindings
+Date: Mon, 22 Feb 2016 19:01:43 +0800
+Message-ID: <1456138904-15258-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160219153744.GP18327@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: "tiwai@suse.de" <tiwai@suse.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengu>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
+Add documentation for lp120up1 panel
 
-On Fri, 2016-02-19 at 23:37 +0800, Mark Brown wrote:
-> On Fri, Feb 19, 2016 at 10:35:59AM +0800, PC Liao wrote:
-> 
-> > @@ -3,3 +3,4 @@ obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
-> >  # Machine support
-> >  obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
-> >  obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
-> > +obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
-> 
-> Why is this not covered by (or coverable by) the existinng RT5650-RT5657
-> driver?
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+Changes since v1:
+ - add Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/display/panel/lg,lp120up1.txt         |    7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
 
-Thanks for your review.
-
-Because they are different boards and have some differences like HW
-configuration and mixer control, we want to separate machine driver
-clearly.
-
-Otherwise, I think I will upload this change to new version for more
-clearly.
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index bcdcb06..dcb1440 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -2,5 +2,5 @@
- obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
- # Machine support
- obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
--obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
- obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
-+obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
+diff --git a/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt b/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
+new file mode 100644
+index 0000000..8c5de69
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/lg,lp120up1.txt
+@@ -0,0 +1,7 @@
++LG 12.0" (1920x1280 pixels) TFT LCD panel
++
++Required properties:
++- compatible: should be "lg,lp120up1"
++
++This binding is compatible with the simple-panel binding, which is specified
++in simple-panel.txt in this directory.
+-- 
+1.7.9.5
