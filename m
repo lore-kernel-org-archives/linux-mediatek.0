@@ -1,50 +1,34 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH V6 1/2] regulator: Add document for MT6323 regulator
-Date: Sun, 21 Feb 2016 09:38:59 +0900
-Message-ID: <20160221003859.GI18327@sirena.org.uk>
-References: <1455709056-50510-1-git-send-email-blogic@openwrt.org>
+From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/2] drm/panel: Add support for LG lp120up1 panel
+Date: Mon, 22 Feb 2016 10:12:23 +0800
+Message-ID: <1456107143.6025.0.camel@mszsdhlt06>
+References: <1455691839-2410-1-git-send-email-jitao.shi@mediatek.com>
+	 <1455691839-2410-2-git-send-email-jitao.shi@mediatek.com>
+	 <20160218151244.GB5571@ulmo.nvidia.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BtQ+uzrQQ7HCCYtg"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1455709056-50510-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+In-Reply-To: <20160218151244.GB5571-AwZRO8vwLAwmlAP/+Wk3EA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Cc: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, 2016-02-18 at 16:12 +0100, Thierry Reding wrote:
+> On Wed, Feb 17, 2016 at 02:50:39PM +0800, Jitao Shi wrote:
+> > The LG lp120up1 panel is a 12.0" 1920x1280 panel,
+> > which can be supported by the simple panel driver
+> 
+> It'd be nice to mention the type of interface of the panel here. While
+> at it, please rewrite the commit message to make use of what width you
+> have (i.e. any line after the subject can be 72 characters wide).
+> 
+> Thierry
 
---BtQ+uzrQQ7HCCYtg
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thanks for your review.
+I'll fix it next patchset.
 
-On Wed, Feb 17, 2016 at 12:37:35PM +0100, John Crispin wrote:
-> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-
-...and dropped due to the dependency on MFD changes that you didn't
-mention :/  I can't apply this without a pull request from Lee with the
-MFD changes for the chip that I can depend on, there's no separate
-Kconfig symbol and the MFD is already merged causing build failures
-(you've had mail from 0day about that).
-
---BtQ+uzrQQ7HCCYtg
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJWyQcaAAoJECTWi3JdVIfQDV0H/i6GKyu0jcNypJWRz/vctiNO
-McWa4TZGSP//AJGvd8sSrlMPuFSb6U8MwiEcQKJe2zGR/yi1FvJttertBHBZi0UA
-g/59R0dBoxSAkC9gL99BVV5q23NtCGmESywJtRtwUfWSohwZeUnusz++xyMifjhZ
-zzWn/Pr1ToPUGsl/hiAfdvwEylD3L89jcNV6e3285q/uiVYD/wLDT0wdMxL78T8B
-GpbM2wU4tKJIbiHsl1hgXpYWDlo+lY0JPhK9+UKqduDwqWnk0gCjtyCya+H903GZ
-GTQVsqBE9/YzY/PkKw7wEOMT2PdCRaoq+SbxIfkHDUPkdo23EdYJjgCKQTZuh3M=
-=2c+4
------END PGP SIGNATURE-----
-
---BtQ+uzrQQ7HCCYtg--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
