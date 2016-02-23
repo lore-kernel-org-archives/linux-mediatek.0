@@ -1,48 +1,29 @@
-From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] ARM64: dts: Mediatek: mt8173-evb: fix access MMC fail issue
-Date: Tue, 23 Feb 2016 10:32:04 -0800
-Message-ID: <7hlh6bth0b.fsf@baylibre.com>
-References: <1455861643-24307-1-git-send-email-eddie.huang@mediatek.com>
-	<7h37skw9jd.fsf@baylibre.com> <56CC1E0E.4050400@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
+ AUXADC
+Date: Tue, 23 Feb 2016 14:32:54 -0600
+Message-ID: <20160223203254.GA14660@rob-hp-laptop>
+References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56CC1E0E.4050400-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> (Matthias Brugger's message of "Tue,
-	23 Feb 2016 09:53:34 +0100")
+Content-Disposition: inline
+In-Reply-To: <1455866326-15095-1-git-send-email-s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chaotian Jing <chaotian.jing-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> writes:
+On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
+> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> ---
+> 
+> This is a supplement to the MTK Thermal series which was lacking the
+> description for the AUXADC.
 
-> On 23/02/16 01:32, Kevin Hilman wrote:
->> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
->>
->>> MT8173 E1 chip has one bug that if turn off USB power domain, vcore
->>> power will also be off, thus cause modules using vcore power domain
->>> fail, like MMC. The E1 chip only found on MT8173-evb board and this
->>> board only has E1 chip, so implement this as a board specific
->>> workaround.
->>>
->>> Pwrapper use vcore power, so add pwrapper using USB power domain to
->>> keep USB power domain not to zero and disabled.
->>>
->>> Signed-off-by: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> Tested-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
->>
->
-> I send the patch in a pull request yesterday, so I won't be able to
-> add your tag.
+So it will be applied with that I presume.
 
-No worries.  Was on vacation, so couldn't test sooner.
-
-> Thanks for testing and reporting this issue!
-
-You're welcome,
-
-Kevin
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
