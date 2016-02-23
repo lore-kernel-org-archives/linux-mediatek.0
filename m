@@ -1,77 +1,66 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v11 1/2] Documentation: bridge: Add documentation for ps8640 DT properties
-Date: Tue, 23 Feb 2016 15:35:36 +0800
-Message-ID: <1456212937-7635-1-git-send-email-jitao.shi@mediatek.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v5 1/8] dt-bindings: Add a binding for Mediatek Video Processor
+Date: Tue, 23 Feb 2016 16:11:14 +0800
+Message-ID: <1456215081-16858-2-git-send-email-tiffany.lin@mediatek.com>
+References: <1456215081-16858-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456215081-16858-1-git-send-email-tiffany.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, cawa.c
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Tiffany.lin@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add documentation for DT properties supported by
-ps8640 DSI-eDP converter.
+From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Add a DT binding documentation of Video Processor Unit for the
+MT8173 SoC from Mediatek.
+
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
 Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
-Chnages since v10:
- - set sleep reset pin as GPIO_ACTIVE_LOW
----
- .../devicetree/bindings/display/bridge/ps8640.txt  |   43 ++++++++++++++++++++
- 1 file changed, 43 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
+ .../devicetree/bindings/media/mediatek-vpu.txt     |   31 ++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vpu.txt b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
 new file mode 100644
-index 0000000..022b33f
+index 0000000..2a5bac3
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
-@@ -0,0 +1,43 @@
-+ps8640-bridge bindings
++++ b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+@@ -0,0 +1,31 @@
++* Mediatek Video Processor Unit
++
++Video Processor Unit is a HW video controller. It controls HW Codec including
++H.264/VP8/VP9 Decode, H.264/VP8 Encode and Image Processor (scale/rotate/color convert).
 +
 +Required properties:
-+	- compatible: "parade,ps8640"
-+	- reg: first page address of the bridge.
-+	- sleep-gpios: OF device-tree gpio specification for PD pin.
-+	- reset-gpios: OF device-tree gpio specification for reset pin.
-+	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
-+	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
-+	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
-+	- ports: The device node can contain video interface port nodes per
-+		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
-+		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
++  - compatible: "mediatek,mt8173-vpu"
++  - reg: Must contain an entry for each entry in reg-names.
++  - reg-names: Must include the following entries:
++    "tcm": tcm base
++    "cfg_reg": Main configuration registers base
++  - interrupts: interrupt number to the cpu.
++  - clocks : clock name from clock manager
++  - clock-names: must be main. It is the main clock of VPU
 +
-+[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
++Optional properties:
++  - memory-region: phandle to a node describing memory (see
++    Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt)
++    to be used for VPU extended memory; if not present, VPU may be located
++    anywhere in the memory
 +
 +Example:
-+	edp-bridge@18 {
-+		compatible = "parade,ps8640";
-+		reg = <0x18>;
-+		sleep-gpios = <&pio 116 GPIO_ACTIVE_LOW>;
-+		reset-gpios = <&pio 115 GPIO_ACTIVE_LOW>;
-+		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
-+		vdd12-supply = <&ps8640_fixed_1v2>;
-+		vdd33-supply = <&mt6397_vgp2_reg>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			port@0 {
-+				reg = <0>;
-+				ps8640_in: endpoint {
-+					remote-endpoint = <&dsi0_out>;
-+				};
-+			};
-+			port@1 {
-+				reg = <1>;
-+				ps8640_out: endpoint {
-+					remote-endpoint = <&panel_in>;
-+				};
-+			};
-+		};
++	vpu: vpu@10020000 {
++		compatible = "mediatek,mt8173-vpu";
++		reg = <0 0x10020000 0 0x30000>,
++		      <0 0x10050000 0 0x100>;
++		reg-names = "tcm", "cfg_reg";
++		interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&topckgen TOP_SCP_SEL>;
++		clock-names = "main";
 +	};
 -- 
 1.7.9.5
