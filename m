@@ -1,32 +1,63 @@
-From: Joachim Eastwood <manabian@gmail.com>
-Subject: Re: [PATCH 40/50] pinctrl: lpc18xx: Use devm_pinctrl_register() for
- pinctrl registration
-Date: Wed, 24 Feb 2016 16:06:02 +0100
-Message-ID: <CAGhQ9Vzoosj=SpSn-fj1thL9bdfW+cay_truUR9VF8nP9HUwbg@mail.gmail.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-	<1456319775-3216-41-git-send-email-ldewangan@nvidia.com>
+From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
+ AUXADC
+Date: Wed, 24 Feb 2016 16:12:04 +0100
+Message-ID: <20160224151204.GP3939@pengutronix.de>
+References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
+ <20160223203254.GA14660@rob-hp-laptop>
+ <56CDBFFE.9050406@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-41-git-send-email-ldewangan@nvidia.com>
-Sender: linux-doc-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, corbet@lwn.net, Lee Jones <lee@kernel.org>, linux-doc@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <56CDBFFE.9050406-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Laxman,
+Hi Matthias,
 
-On 24 February 2016 at 14:16, Laxman Dewangan <ldewangan@nvidia.com> wrote:
-> Use devm_pinctrl_register() for pin control registration.
->
-> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-> Cc: Joachim Eastwood <manabian@gmail.com>
-> ---
->  drivers/pinctrl/pinctrl-lpc18xx.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
+> 
+> 
+> On 23/02/16 21:32, Rob Herring wrote:
+> >On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
+> >>Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> >>---
+> >>
+> >>This is a supplement to the MTK Thermal series which was lacking the
+> >>description for the AUXADC.
+> >
+> >So it will be applied with that I presume.
+> >
+> >Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> >
+> 
+> Well the basic problem that I see is, that the auxadc has some more
+> registers (at least in mt6589) for the touch screen registers.
+> So this makes it a candidate for syscon and regmap.
+> But this needs a patch in the thermal driver first...
 
-Acked-by: Joachim Eastwood <manabian@gmail.com>
+When we want to have a driver for the auxadc we are free to write one.
+No need to use syscon and/or regmap for it.
+
+Note that the auxadc is not used by the thermal *driver*, it's used by
+the thermal *hardware*. It's the hardware that directly reads/writes
+auxadc registers. If MTK did it right then a real auxadc driver should
+not be disturbed by the thermal controller accesses. At least from
+checking the datasheet the registers the thermal controller accesses
+are completely orthogonal to the ones a auxadc driver would use.
+
+Sascha
 
 
-regards,
-Joachim Eastwood
+-- 
+Pengutronix e.K.                           |                             |
+Industrial Linux Solutions                 | http://www.pengutronix.de/  |
+Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
