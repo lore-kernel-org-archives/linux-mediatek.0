@@ -1,69 +1,39 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
- AUXADC
-Date: Wed, 24 Feb 2016 19:34:19 +0100
-Message-ID: <56CDF7AB.7050201@gmail.com>
-References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
- <20160223203254.GA14660@rob-hp-laptop> <56CDBFFE.9050406@gmail.com>
- <20160224151204.GP3939@pengutronix.de>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 0/4] Mediatek MT2701 SCPSYS power domain support
+Date: Wed, 24 Feb 2016 11:48:46 -0800
+Message-ID: <7hmvqpsxcx.fsf@baylibre.com>
+References: <1455692499-56828-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160224151204.GP3939-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455692499-56828-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+ (James Liao's message of "Wed, 17 Feb 2016 15:01:35 +0800")
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
 
-
-On 24/02/16 16:12, Sascha Hauer wrote:
-> Hi Matthias,
+> This patchset is based on v4.5-rc4 and adds scpsys power domain support
+> for Mediatek MT2701.
 >
-> On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
->>
->>
->> On 23/02/16 21:32, Rob Herring wrote:
->>> On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
->>>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
->>>> ---
->>>>
->>>> This is a supplement to the MTK Thermal series which was lacking the
->>>> description for the AUXADC.
->>>
->>> So it will be applied with that I presume.
->>>
->>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->>>
->>
->> Well the basic problem that I see is, that the auxadc has some more
->> registers (at least in mt6589) for the touch screen registers.
->> So this makes it a candidate for syscon and regmap.
->> But this needs a patch in the thermal driver first...
->
-> When we want to have a driver for the auxadc we are free to write one.
-> No need to use syscon and/or regmap for it.
->
-> Note that the auxadc is not used by the thermal *driver*, it's used by
-> the thermal *hardware*. It's the hardware that directly reads/writes
-> auxadc registers. If MTK did it right then a real auxadc driver should
-> not be disturbed by the thermal controller accesses. At least from
+> To share the code between MT2701 and MT8173, this patchset also refined
+> original mtk-scpsys.c to separate common codes and platform codes, so
+> that mtk-scpsys.c can support new SoCs more easily.
 
-Right, didn't realize this.
+Thanks for refactoring to support multiple SoCs, I like this version
+much better.
 
-> checking the datasheet the registers the thermal controller accesses
-> are completely orthogonal to the ones a auxadc driver would use.
->
+Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 
-As you already explained, syscon/regmap is not needed here. Just for 
-completion: we already had completely orthogonal registers for the reset 
-controller, and we decided to use regmap there as well.
-We should stay consistent on this.
-
-Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Kevin
