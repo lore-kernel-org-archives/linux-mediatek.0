@@ -1,39 +1,41 @@
-From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for
- pinctrl_{register, unregister}
-Date: Wed, 24 Feb 2016 18:22:06 +0100 (CET)
-Message-ID: <771728522.222286.b52ca77e-fe5e-4536-8e14-525e9a846cdc.open-xchange@email.1und1.de>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1456319775-3216-1-git-send-email-ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, corbet-T1hC0tSOHrs@public.gmane.org
-Cc: linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Fabio Estevam <fabio.estevam-3arQi8VN3Tc@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Javier Martinez Canillas <javier@osg.samsung.com>
+Subject: [PATCH] rtc: mt6397: Remove plaform module alias
+Date: Wed, 24 Feb 2016 14:26:20 -0300
+Message-ID: <1456334780-17380-1-git-send-email-javier@osg.samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Arnd Bergmann <arnd@arndb.de>, Javier Martinez Canillas <javier@osg.samsung.com>, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, Alexandre Belloni <alexandre.belloni@free-electrons.com>, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Laxman,
+The driver uses the MODULE_ALIAS() macro to export a platform module alias
+to allow the module to be autoloaded if the device is registered using the
+legacy platform registration mechanism but the driver is always used by OF
+only machines so the alias is not needed and should just be removed.
 
-> Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org> hat am 24. Februar 2016 um 14:15
-> geschrieben:
->
->
-> Add resource manageemnt APIs fro pinctrl_register() and pinctrl_unregister()
-> and use these new APIs on hw driver to reduce the error path code and
-> remove callback for driver.
->
+Suggested-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
 
-just for interest: why didn't you patch freescale/pinctrl-mxs.c?
+---
+Hello,
 
-Regards
-Stefan
+This patch supersedes "rtc: mt6397: Add platform device ID table":
+https://lkml.org/lkml/2016/2/9/192.
+
+Best regards,
+Javier
+
+ drivers/rtc/rtc-mt6397.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 06a5c52b292f..44f622c3e048 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -419,4 +419,3 @@ module_platform_driver(mtk_rtc_driver);
+ MODULE_LICENSE("GPL v2");
+ MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
+ MODULE_DESCRIPTION("RTC Driver for MediaTek MT6397 PMIC");
+-MODULE_ALIAS("platform:mt6397-rtc");
+-- 
+2.5.0
