@@ -1,85 +1,75 @@
-From: Hongzhou Yang <hongzhou.yang@mediatek.com>
-Subject: Re: [PATCH 13/50] pinctrl: mtk-common: Use devm_pinctrl_register()
- for pinctrl registration
-Date: Wed, 24 Feb 2016 12:28:25 -0800
-Message-ID: <1456345705.14518.1.camel@mussux00>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-	 <1456319775-3216-14-git-send-email-ldewangan@nvidia.com>
+From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v6 4/7] clk: mediatek: Add MT2701 clock support
+Date: Wed, 24 Feb 2016 13:25:33 -0800
+Message-ID: <20160224212533.2278.7597@quark.deferred.io>
+References: <1454665050-37776-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1454665050-37776-5-git-send-email-jamesjj.liao@mediatek.com>
+ <20160210200853.26445.15165@quark.deferred.io>
+ <1455527982.29688.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-14-git-send-email-ldewangan@nvidia.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1455527982.29688.8.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-02-24 at 18:45 +0530, Laxman Dewangan wrote:
-> Use devm_pinctrl_register() for pin control registration and clean
-> the error path.
+Hi James,
+
+Quoting James Liao (2016-02-15 01:19:42)
+> Hi Mike,
 > 
-> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Hongzhou Yang <hongzhou.yang@mediatek.com>
-> Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> ---
-
-Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
-
-Thanks,
-Hongzhou
-
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 17 ++++++-----------
->  1 file changed, 6 insertions(+), 11 deletions(-)
+> On Wed, 2016-02-10 at 12:08 -0800, Michael Turquette wrote:
+> > Quoting James Liao (2016-02-05 01:37:27)
+> > > +CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt2701-topckgen", mtk_topckgen_init);
+> > > +CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt2701-infracfg", mtk_infrasys_init);
+> > > +CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt2701-pericfg", mtk_pericfg_init);
+> > > +CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt2701-mmsys", mtk_mmsys_init);
+> > > +CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt2701-imgsys", mtk_imgsys_init);
+> > > +CLK_OF_DECLARE(mtk_vdecsys, "mediatek,mt2701-vdecsys", mtk_vdecsys_init);
+> > > +CLK_OF_DECLARE(mtk_hifsys, "mediatek,mt2701-hifsys", mtk_hifsys_init);
+> > > +CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt2701-ethsys", mtk_ethsys_init);
+> > > +CLK_OF_DECLARE(mtk_bdpsys, "mediatek,mt2701-bdpsys", mtk_bdpsys_init);
+> > > +CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt2701-apmixedsys",
+> > 
+> > :-/
+> > 
+> > This is way too much CLK_OF_DECLARE and not enough Linux Driver Model.
+> > 
+> > I understand that some platforms really must initialize some clocks very
+> > early, but can we please separate those into one table and call
+> > CLK_OF_DECLARE on only that set, and then register the rest through a
+> > platform_driver later on?
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index ddc9217..194413d 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -1390,17 +1390,16 @@ int mtk_pctrl_init(struct platform_device *pdev,
->  	pctl->pctl_desc.pmxops = &mtk_pmx_ops;
->  	pctl->dev = &pdev->dev;
->  
-> -	pctl->pctl_dev = pinctrl_register(&pctl->pctl_desc, &pdev->dev, pctl);
-> +	pctl->pctl_dev = devm_pinctrl_register(&pdev->dev, &pctl->pctl_desc,
-> +					       pctl);
->  	if (IS_ERR(pctl->pctl_dev)) {
->  		dev_err(&pdev->dev, "couldn't register pinctrl driver\n");
->  		return PTR_ERR(pctl->pctl_dev);
->  	}
->  
->  	pctl->chip = devm_kzalloc(&pdev->dev, sizeof(*pctl->chip), GFP_KERNEL);
-> -	if (!pctl->chip) {
-> -		ret = -ENOMEM;
-> -		goto pctrl_error;
-> -	}
-> +	if (!pctl->chip)
-> +		return -ENOMEM;
->  
->  	*pctl->chip = mtk_gpio_chip;
->  	pctl->chip->ngpio = pctl->devdata->npins;
-> @@ -1409,10 +1408,8 @@ int mtk_pctrl_init(struct platform_device *pdev,
->  	pctl->chip->base = -1;
->  
->  	ret = gpiochip_add_data(pctl->chip, pctl);
-> -	if (ret) {
-> -		ret = -EINVAL;
-> -		goto pctrl_error;
-> -	}
-> +	if (ret)
-> +		return -EINVAL;
->  
->  	/* Register the GPIO to pin mappings. */
->  	ret = gpiochip_add_pin_range(pctl->chip, dev_name(&pdev->dev),
-> @@ -1490,8 +1487,6 @@ int mtk_pctrl_init(struct platform_device *pdev,
->  
->  chip_error:
->  	gpiochip_remove(pctl->chip);
-> -pctrl_error:
-> -	pinctrl_unregister(pctl->pctl_dev);
->  	return ret;
->  }
->  
+> I know CLK_OF_DECLARE is much earlier than platform_driver, so it can
+> ensure all drivers lookup their clocks successfully during
+> platform_driver probe. Is there anything different to init these clock
+> providers in CLK_OF_DECLARE and platform_driver?
 
+This a common pattern we're seeing right now. Joachim did a nice job of
+supporting early clocks with CLK_OF_DECLARE, and also using a proper
+driver in his lpc18xx implementation:
 
+http://marc.info/?l=devicetree&m=145618160610001
+
+Regards,
+Mike
+
+> 
+> 
+> Best regards,
+> 
+> James
+> 
+> 
+> 
