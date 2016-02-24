@@ -1,80 +1,39 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: Re: [PATCH] rtc: mt6397: Add platform device ID table
-Date: Wed, 24 Feb 2016 14:02:09 -0300
-Message-ID: <56CDE211.1000802@osg.samsung.com>
-References: <1455016095-13724-1-git-send-email-javier@osg.samsung.com>
- <2416670.q30ahHlzPm@wuerfel> <1455628747.2981.4.camel@mtksdaap41>
- <3216713.qF8RyQVuPO@wuerfel>
+From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for
+ pinctrl_{register, unregister}
+Date: Wed, 24 Feb 2016 18:22:06 +0100 (CET)
+Message-ID: <771728522.222286.b52ca77e-fe5e-4536-8e14-525e9a846cdc.open-xchange@email.1und1.de>
+References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3216713.qF8RyQVuPO@wuerfel>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, linux-arm-kernel@lists.infradead.org
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1456319775-3216-1-git-send-email-ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, lee-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, corbet-T1hC0tSOHrs@public.gmane.org
+Cc: linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Fabio Estevam <fabio.estevam-3arQi8VN3Tc@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello Arnd,
+Hi Laxman,
 
-On 02/24/2016 01:56 PM, Arnd Bergmann wrote:
-> On Tuesday 16 February 2016 21:19:07 Eddie Huang wrote:
->> On Tue, 2016-02-16 at 12:37 +0100, Arnd Bergmann wrote:
->>> On Monday 15 February 2016 11:50:48 Javier Martinez Canillas wrote:
->>>>
->>>> On 02/14/2016 10:58 PM, Eddie Huang wrote:
->>>>
->>>> [snip]
->>>>
->>>>>> @@ -412,6 +418,7 @@ static struct platform_driver mtk_rtc_driver = {
->>>>>>       },
->>>>>>       .probe  = mtk_rtc_probe,
->>>>>>       .remove = mtk_rtc_remove,
->>>>>> +    .id_table = mt6397_rtc_id,
->>>>>>    };
->>>>>>
->>>>>>    module_platform_driver(mtk_rtc_driver);
->>>>>> @@ -419,4 +426,3 @@ module_platform_driver(mtk_rtc_driver);
->>>>>>    MODULE_LICENSE("GPL v2");
->>>>>>    MODULE_AUTHOR("Tianping Fang <tianping.fang@mediatek.com>");
->>>>>>    MODULE_DESCRIPTION("RTC Driver for MediaTek MT6397 PMIC");
->>>>>> -MODULE_ALIAS("platform:mt6397-rtc");
->>>>>
->>>>> This patch looks good to me, but I am wondering, since we tend to use
->>>>> device tree method to match driver, do we still need support platform
->>>>> device ID ?
->>>>>
->>>>
->>>> I'm not familiar with neither this IP block nor the SoC so it is up to
->>>> you. I just noticed this issue when reviewing a regulator driver for a
->>>> similar PMIC posted by someone from mediatek.
->>>>
->>>> I thought platform device was needed since the driver has a MODULE_ALIAS()
->>>> but please let me know what you prefer and I can re-spin the patch and
->>>> just remove the MODULE_ALIAS() if that makes more sense for this platform.
->>>>
->>>>
->>>
->>> I agree. We can alway add a MODULE_DEVICE_TABLE() if we get multiple
->>> users of this driver on architectures that don't use devicetree yet.
->>>
->>
->> Sure. Thanks the patch to add expandability to this driver.
->>
->> Acked-by: Eddie Huang <eddie.huang@mediatek.com>
+> Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org> hat am 24. Februar 2016 um 14:15
+> geschrieben:
 >
-> I think we misunderstood one another. I think we can drop both the MODULE_DEVICE_TABLE and the MODULE_ALIAS: there is no need for another
-> driver ID when it is always probed using DT.
+>
+> Add resource manageemnt APIs fro pinctrl_register() and pinctrl_unregister()
+> and use these new APIs on hw driver to reduce the error path code and
+> remove callback for driver.
 >
 
-That's how I understood but then Eddie said the opposite so I got confused
-and was waiting for your clarification. I'll re-spin and remove the alias.
+just for interest: why didn't you patch freescale/pinctrl-mxs.c?
 
-> 	Arnd
->
-
-Best regards,
--- 
-Javier Martinez Canillas
-Open Source Group
-Samsung Research America
+Regards
+Stefan
