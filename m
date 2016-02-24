@@ -1,63 +1,53 @@
-From: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
- AUXADC
-Date: Wed, 24 Feb 2016 16:12:04 +0100
-Message-ID: <20160224151204.GP3939@pengutronix.de>
-References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
- <20160223203254.GA14660@rob-hp-laptop>
- <56CDBFFE.9050406@gmail.com>
+From: <miles.chen@mediatek.com>
+Subject: [PATCH] arm64/mm: fix virtual address boundary check
+Date: Thu, 25 Feb 2016 00:01:48 +0800
+Message-ID: <1456329708-2042-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <56CDBFFE.9050406-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, srv_wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+From: Miles Chen <miles.chen@mediatek.com>
 
-On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
-> 
-> 
-> On 23/02/16 21:32, Rob Herring wrote:
-> >On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
-> >>Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> >>---
-> >>
-> >>This is a supplement to the MTK Thermal series which was lacking the
-> >>description for the AUXADC.
-> >
-> >So it will be applied with that I presume.
-> >
-> >Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> >
-> 
-> Well the basic problem that I see is, that the auxadc has some more
-> registers (at least in mt6589) for the touch screen registers.
-> So this makes it a candidate for syscon and regmap.
-> But this needs a patch in the thermal driver first...
+The MODULES_VADDR is not the lowest possible
+kernel virtual address. TASK_SIZE_64 may be larger than
+MODULES_VADDR, FIXADDR_TOP, and PCI_IO_START.
 
-When we want to have a driver for the auxadc we are free to write one.
-No need to use syscon and/or regmap for it.
+Fix this by comparing TASK_SIZE_64 (highest user virtual address)
+with VA_START (lowest kernel virtual address).
 
-Note that the auxadc is not used by the thermal *driver*, it's used by
-the thermal *hardware*. It's the hardware that directly reads/writes
-auxadc registers. If MTK did it right then a real auxadc driver should
-not be disturbed by the thermal controller accesses. At least from
-checking the datasheet the registers the thermal controller accesses
-are completely orthogonal to the ones a auxadc driver would use.
+ #define VA_BITS		(CONFIG_ARM64_VA_BITS)
+ #define VA_START		(UL(0xffffffffffffffff) << VA_BITS)
+ #define PAGE_OFFSET		(UL(0xffffffffffffffff) << (VA_BITS - 1))
+ #define MODULES_END		(PAGE_OFFSET)
+ #define MODULES_VADDR		(MODULES_END - SZ_64M)
+ #define PCI_IO_END		(MODULES_VADDR - SZ_2M)
+ #define PCI_IO_START		(PCI_IO_END - PCI_IO_SIZE)
+ #define FIXADDR_TOP		(PCI_IO_START - SZ_2M)
+ #define TASK_SIZE_64		(UL(1) << VA_BITS)
 
-Sascha
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ arch/arm64/mm/init.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
+diff --git a/arch/arm64/mm/init.c b/arch/arm64/mm/init.c
+index f3b061e..7d75697 100644
+--- a/arch/arm64/mm/init.c
++++ b/arch/arm64/mm/init.c
+@@ -343,8 +343,8 @@ void __init mem_init(void)
+ #ifdef CONFIG_COMPAT
+ 	BUILD_BUG_ON(TASK_SIZE_32			> TASK_SIZE_64);
+ #endif
+-	BUILD_BUG_ON(TASK_SIZE_64			> MODULES_VADDR);
+-	BUG_ON(TASK_SIZE_64				> MODULES_VADDR);
++	BUILD_BUG_ON(TASK_SIZE_64			> VA_START);
++	BUG_ON(TASK_SIZE_64				> VA_START);
+ 
+ 	if (PAGE_SIZE >= 16384 && get_num_physpages() <= 128) {
+ 		extern int sysctl_overcommit_memory;
 -- 
-Pengutronix e.K.                           |                             |
-Industrial Linux Solutions                 | http://www.pengutronix.de/  |
-Peiner Str. 6-8, 31137 Hildesheim, Germany | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.9.1
