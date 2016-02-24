@@ -1,50 +1,69 @@
-From: Ray Jui <ray.jui@broadcom.com>
-Subject: Re: [PATCH 07/50] pinctrl: nsp-gpio: Use devm_pinctrl_register() for
- pinctrl registration
-Date: Wed, 24 Feb 2016 10:30:34 -0800
-Message-ID: <dbd2ae89-1e62-e7d3-58f0-681d26fee2c9@broadcom.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
- <1456319775-3216-8-git-send-email-ldewangan@nvidia.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
+ AUXADC
+Date: Wed, 24 Feb 2016 19:34:19 +0100
+Message-ID: <56CDF7AB.7050201@gmail.com>
+References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
+ <20160223203254.GA14660@rob-hp-laptop> <56CDBFFE.9050406@gmail.com>
+ <20160224151204.GP3939@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-8-git-send-email-ldewangan@nvidia.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>, linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Jon Mason <jonmason@broadcom.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160224151204.GP3939-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 2/24/2016 5:15 AM, Laxman Dewangan wrote:
-> Use devm_pinctrl_register() for pin control registration.
+On 24/02/16 16:12, Sascha Hauer wrote:
+> Hi Matthias,
 >
-> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-> Cc: Ray Jui <rjui@broadcom.com>
-> Cc: Scott Branden <sbranden@broadcom.com>
-> Cc: Jon Mason <jonmason@broadcom.com>
-> ---
->  drivers/pinctrl/bcm/pinctrl-nsp-gpio.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
+>>
+>>
+>> On 23/02/16 21:32, Rob Herring wrote:
+>>> On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
+>>>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>>>> ---
+>>>>
+>>>> This is a supplement to the MTK Thermal series which was lacking the
+>>>> description for the AUXADC.
+>>>
+>>> So it will be applied with that I presume.
+>>>
+>>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>>>
+>>
+>> Well the basic problem that I see is, that the auxadc has some more
+>> registers (at least in mt6589) for the touch screen registers.
+>> So this makes it a candidate for syscon and regmap.
+>> But this needs a patch in the thermal driver first...
 >
-> diff --git a/drivers/pinctrl/bcm/pinctrl-nsp-gpio.c b/drivers/pinctrl/bcm/pinctrl-nsp-gpio.c
-> index ac90043..2873f73 100644
-> --- a/drivers/pinctrl/bcm/pinctrl-nsp-gpio.c
-> +++ b/drivers/pinctrl/bcm/pinctrl-nsp-gpio.c
-> @@ -609,7 +609,7 @@ static int nsp_gpio_register_pinconf(struct nsp_gpio *chip)
->  	pctldesc->npins = gc->ngpio;
->  	pctldesc->confops = &nsp_pconf_ops;
+> When we want to have a driver for the auxadc we are free to write one.
+> No need to use syscon and/or regmap for it.
 >
-> -	chip->pctl = pinctrl_register(pctldesc, chip->dev, chip);
-> +	chip->pctl = devm_pinctrl_register(chip->dev, pctldesc, chip);
->  	if (IS_ERR(chip->pctl)) {
->  		dev_err(chip->dev, "unable to register pinctrl device\n");
->  		return PTR_ERR(chip->pctl);
+> Note that the auxadc is not used by the thermal *driver*, it's used by
+> the thermal *hardware*. It's the hardware that directly reads/writes
+> auxadc registers. If MTK did it right then a real auxadc driver should
+> not be disturbed by the thermal controller accesses. At least from
+
+Right, didn't realize this.
+
+> checking the datasheet the registers the thermal controller accesses
+> are completely orthogonal to the ones a auxadc driver would use.
 >
 
-Acked-by: Ray Jui <ray.jui@broadcom.com>
+As you already explained, syscon/regmap is not needed here. Just for 
+completion: we already had completely orthogonal registers for the reset 
+controller, and we decided to use regmap there as well.
+We should stay consistent on this.
 
-Thanks!
-
-Ray
+Thanks,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
