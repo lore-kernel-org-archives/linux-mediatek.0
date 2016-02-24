@@ -1,66 +1,68 @@
-From: Baruch Siach <baruch@tkos.co.il>
-Subject: Re: [PATCH 38/50] pinctrl: digicolor: Use devm_pinctrl_register()
- for pinctrl registration
-Date: Wed, 24 Feb 2016 15:42:19 +0200
-Message-ID: <20160224134219.GI2225@tarshish>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: Re: [PATCH 25/50] pinctrl: ish-pfc: Use devm_pinctrl_register() for
+ pinctrl registration
+Date: Wed, 24 Feb 2016 14:59:44 +0100
+Message-ID: <CAMuHMdVBjn02J1tAwXb7XQKQa3jk=D4LX-f-1cZ2wsjc3Gfxqw@mail.gmail.com>
 References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
- <1456319775-3216-39-git-send-email-ldewangan@nvidia.com>
+	<1456319775-3216-26-git-send-email-ldewangan@nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1456319775-3216-39-git-send-email-ldewangan@nvidia.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-doc-owner@vger.kernel.org>
+In-Reply-To: <1456319775-3216-26-git-send-email-ldewangan@nvidia.com>
+Sender: linux-doc-owner@vger.kernel.org
 To: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, Jonathan Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-renesas-soc@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Laxman Dewangan,
+Hi Laxman,
 
-On Wed, Feb 24, 2016 at 06:46:03PM +0530, Laxman Dewangan wrote:
-> Use devm_pinctrl_register() for pin control registration and clean
-> error path.
-> 
+On Wed, Feb 24, 2016 at 2:15 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
+> Use devm_pinctrl_register() for pin control registration.
+>
 > Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-> Cc: Baruch Siach <baruch@tkos.co.il>
-> ---
->  drivers/pinctrl/pinctrl-digicolor.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-digicolor.c b/drivers/pinctrl/pinctrl-digicolor.c
-> index f1343d6..c18014d 100644
-> --- a/drivers/pinctrl/pinctrl-digicolor.c
-> +++ b/drivers/pinctrl/pinctrl-digicolor.c
-> @@ -326,17 +326,15 @@ static int dc_pinctrl_probe(struct platform_device *pdev)
->  
->  	pmap->dev = &pdev->dev;
->  
-> -	pmap->pctl = pinctrl_register(pctl_desc, &pdev->dev, pmap);
-> +	pmap->pctl = devm_pinctrl_register(&pdev->dev, pctl_desc, pmap);
->  	if (IS_ERR(pmap->pctl)) {
->  		dev_err(&pdev->dev, "pinctrl driver registration failed\n");
->  		return PTR_ERR(pmap->pctl);
->  	}
->  
->  	ret = dc_gpiochip_add(pmap, pdev->dev.of_node);
-> -	if (ret < 0) {
-> -		pinctrl_unregister(pmap->pctl);
-> +	if (ret < 0)
->  		return ret;
-> -	}
->  
->  	return 0;
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Geert Uytterhoeven <geert+renesas@glider.be>
+> Cc: linux-renesas-soc@vger.kernel.org
 
-Please simplify even more to just:
+Thanks for your patch!
 
-   return dc_gpiochip_add(pmap, pdev->dev.of_node);
+> index 87b0a59..f17b5fc 100644
+> --- a/drivers/pinctrl/sh-pfc/pinctrl.c
+> +++ b/drivers/pinctrl/sh-pfc/pinctrl.c
+> @@ -692,19 +692,9 @@ int sh_pfc_register_pinctrl(struct sh_pfc *pfc)
+>         pmx->pctl_desc.pins = pmx->pins;
+>         pmx->pctl_desc.npins = pfc->info->nr_pins;
+>
+> -       pmx->pctl = pinctrl_register(&pmx->pctl_desc, pfc->dev, pmx);
+> +       pmx->pctl = devm_pinctrl_register(pfc->dev, &pmx->pctl_desc, pmx);
+>         if (IS_ERR(pmx->pctl))
+>                 return PTR_ERR(pmx->pctl);
+>
+>         return 0;
+>  }
+> -
+> -int sh_pfc_unregister_pinctrl(struct sh_pfc *pfc)
+> -{
+> -       struct sh_pfc_pinctrl *pmx = pfc->pinctrl;
+> -
+> -       pinctrl_unregister(pmx->pctl);
+> -
+> -       pfc->pinctrl = NULL;
+> -       return 0;
+> -}
 
-and remove the no longer used 'ret' variable.
+There's no longer a need to have sh_pfc.pinctrl, so please remove that field
+while you're at it.
 
-Thanks,
-baruch
+Thanks!
 
--- 
-     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
-=}------------------------------------------------ooO--U--Ooo------------{=
-   - baruch@tkos.co.il - tel: +972.2.679.5364, http://www.tkos.co.il -
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
