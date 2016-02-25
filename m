@@ -1,47 +1,39 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] arm64/mm: fix virtual address boundary check
-Date: Thu, 25 Feb 2016 09:34:33 +0800
-Message-ID: <1456364073.16470.8.camel@mtkswgap22>
-References: <1456329708-2042-1-git-send-email-miles.chen@mediatek.com>
-	 <20160224161944.GJ4777@e104818-lin.cambridge.arm.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH 26/50] pinctrl: spear: Use devm_pinctrl_register() for
+ pinctrl registration
+Date: Thu, 25 Feb 2016 07:40:07 +0530
+Message-ID: <20160225021007.GA31255@vireshk-i7>
+References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
+ <1456319775-3216-27-git-send-email-ldewangan@nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160224161944.GJ4777@e104818-lin.cambridge.arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Will Deacon <will.deacon@arm.com>, wsdupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1456319775-3216-27-git-send-email-ldewangan@nvidia.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Laxman Dewangan <ldewangan@nvidia.com>
+Cc: linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org, Viresh Kumar <vireshk@kernel.org>, spear-devel@list.st.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-02-24 at 16:19 +0000, Catalin Marinas wrote:
-> On Thu, Feb 25, 2016 at 12:01:48AM +0800, miles.chen@mediatek.com wrote:
-> > From: Miles Chen <miles.chen@mediatek.com>
-> > 
-> > The MODULES_VADDR is not the lowest possible
-> > kernel virtual address. TASK_SIZE_64 may be larger than
-> > MODULES_VADDR, FIXADDR_TOP, and PCI_IO_START.
-> > 
-> > Fix this by comparing TASK_SIZE_64 (highest user virtual address)
-> > with VA_START (lowest kernel virtual address).
-> > 
-> >  #define VA_BITS		(CONFIG_ARM64_VA_BITS)
-> >  #define VA_START		(UL(0xffffffffffffffff) << VA_BITS)
-> >  #define PAGE_OFFSET		(UL(0xffffffffffffffff) << (VA_BITS - 1))
-> >  #define MODULES_END		(PAGE_OFFSET)
-> >  #define MODULES_VADDR		(MODULES_END - SZ_64M)
-> >  #define PCI_IO_END		(MODULES_VADDR - SZ_2M)
-> >  #define PCI_IO_START		(PCI_IO_END - PCI_IO_SIZE)
-> >  #define FIXADDR_TOP		(PCI_IO_START - SZ_2M)
-> >  #define TASK_SIZE_64		(UL(1) << VA_BITS)
+On 24-02-16, 18:45, Laxman Dewangan wrote:
+> Use devm_pinctrl_register() for pin control registration and remove
+> need of .remove callback.
 > 
-> We should remove these checks altogether. There is a huge gap between
-> the user and kernel addresses that they would never overlap (we don't
-> have enough levels of page tables to cover 64-bit VA space).
-> 
-Thanks for your reply. I confirmed that in the ARMv8 documentation. 
-I'll send another patch to remove these checks.
+> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
+> Cc: Viresh Kumar <vireshk@kernel.org>
+> Cc: spear-devel@list.st.com
+> Cc: linux-arm-kernel@lists.infradead.org
+> ---
+>  drivers/pinctrl/spear/pinctrl-spear.c     | 11 +----------
+>  drivers/pinctrl/spear/pinctrl-spear.h     |  1 -
+>  drivers/pinctrl/spear/pinctrl-spear1310.c |  6 ------
+>  drivers/pinctrl/spear/pinctrl-spear1340.c |  6 ------
+>  drivers/pinctrl/spear/pinctrl-spear300.c  |  6 ------
+>  drivers/pinctrl/spear/pinctrl-spear310.c  |  6 ------
+>  drivers/pinctrl/spear/pinctrl-spear320.c  |  6 ------
+>  7 files changed, 1 insertion(+), 41 deletions(-)
 
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Cheers,
-Miles
+-- 
+viresh
