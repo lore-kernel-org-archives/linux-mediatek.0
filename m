@@ -1,369 +1,390 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: Add machine driver for rt5650 rt5514 codec
-Date: Thu, 25 Feb 2016 15:16:38 +0800
-Message-ID: <1456384598-43873-1-git-send-email-pc.liao@mediatek.com>
+From: Liguo Zhang <liguo.zhang@mediatek.com>
+Subject: [PATCH] i2c: mediatek: i2c multi transfer optimization
+Date: Thu, 25 Feb 2016 08:01:07 +0800
+Message-ID: <1456358467-529-1-git-send-email-liguo.zhang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Liguo Zhang <liguo.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Koro Chen <koro.chen@mediatek.com>
+Send the next transfer in the i2c irq handler, and only signal
+complete() when the entire transaction has been completed.
 
-This is the DPCM based machine driver with rt5650 and rt5514.
-
-Signed-off-by: Koro Chen <koro.chen@mediatek.com>
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
+Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
 ---
- .../bindings/sound/mt8173-rt5650-rt5514.txt        |   15 ++
- sound/soc/mediatek/Kconfig                         |   28 ++-
- sound/soc/mediatek/Makefile                        |    3 +-
- sound/soc/mediatek/mt8173-rt5650-rt5514.c          |  258 ++++++++++++++++++++
- 4 files changed, 294 insertions(+), 10 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
- create mode 100644 sound/soc/mediatek/mt8173-rt5650-rt5514.c
+ drivers/i2c/busses/i2c-mt65xx.c | 220 ++++++++++++++++++++++------------------
+ 1 file changed, 123 insertions(+), 97 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
-new file mode 100644
-index 0000000..e8b3c80
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650-rt5514.txt
-@@ -0,0 +1,15 @@
-+MT8173 with RT5650 RT5514 CODECS
-+
-+Required properties:
-+- compatible : "mediatek,mt8173-rt5650-rt5514"
-+- mediatek,audio-codec: the phandles of rt5650 and rt5514 codecs
-+- mediatek,platform: the phandle of MT8173 ASoC platform
-+
-+Example:
-+
-+	sound {
-+		compatible = "mediatek,mt8173-rt5650-rt5514";
-+		mediatek,audio-codec = <&rt5650 &rt5514>;
-+		mediatek,platform = <&afe>;
-+	};
-+
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 6c88087..f7e789e 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -18,14 +18,25 @@ config SND_SOC_MT8173_MAX98090
- 	  If unsure select "N".
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 453358b..15ce3b8 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -139,6 +139,15 @@ struct mtk_i2c_compatible {
+ 	unsigned char support_33bits: 1;
+ };
  
- config SND_SOC_MT8173_RT5650
--        tristate "ASoC Audio driver for MT8173 with RT5650 codec"
--        depends on SND_SOC_MEDIATEK && I2C
--        select SND_SOC_RT5645
--        help
--          This adds ASoC driver for Mediatek MT8173 boards
--          with the RT5650 audio codec.
--          Select Y if you have such device.
--          If unsure select "N".
-+	tristate "ASoC Audio driver for MT8173 with RT5650 codec"
-+	depends on SND_SOC_MEDIATEK && I2C
-+	select SND_SOC_RT5645
-+	help
-+	  This adds ASoC driver for Mediatek MT8173 boards
-+	  with the RT5650 audio codec.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
++struct mtk_i2c_transaction {
++	u32 num;
++	u32 index;
++	dma_addr_t wpaddr;
++	dma_addr_t rpaddr;
++	struct i2c_msg *msgs;
++	int result;
++};
 +
-+config SND_SOC_MT8173_RT5650_RT5514
-+	tristate "ASoC Audio driver for MT8173 with RT5650 RT5514 codecs"
-+	depends on SND_SOC_MEDIATEK && I2C
-+	select SND_SOC_RT5645
-+	select SND_SOC_RT5514
-+	help
-+	  This adds ASoC driver for Mediatek MT8173 boards
-+	  with the RT5650 and RT5514 codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
+ struct mtk_i2c {
+ 	struct i2c_adapter adap;	/* i2c host adapter */
+ 	struct device *dev;
+@@ -161,6 +170,7 @@ struct mtk_i2c {
+ 	unsigned char auto_restart;
+ 	bool ignore_restart_irq;
+ 	const struct mtk_i2c_compatible *dev_comp;
++	struct mtk_i2c_transaction transac;
+ };
  
- config SND_SOC_MT8173_RT5650_RT5676
- 	tristate "ASoC Audio driver for MT8173 with RT5650 RT5676 codecs"
-@@ -37,4 +48,3 @@ config SND_SOC_MT8173_RT5650_RT5676
- 	  with the RT5650 and RT5676 codecs.
- 	  Select Y if you have such device.
- 	  If unsure select "N".
+ static const struct i2c_adapter_quirks mt6577_i2c_quirks = {
+@@ -378,8 +388,7 @@ static inline u32 mtk_i2c_set_4g_mode(dma_addr_t addr)
+ 	return (addr & BIT_ULL(32)) ? I2C_DMA_4G_MODE : I2C_DMA_CLR_FLAG;
+ }
+ 
+-static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+-			       int num, int left_num)
++static int mtk_i2c_start_transfer(struct mtk_i2c *i2c)
+ {
+ 	u16 addr_reg;
+ 	u16 start_reg;
+@@ -388,15 +397,31 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	u32 reg_4g_mode;
+ 	dma_addr_t rpaddr = 0;
+ 	dma_addr_t wpaddr = 0;
+-	int ret;
++	struct i2c_msg *msg;
++	struct mtk_i2c_transaction *i2c_transac;
++	int num;
++	int left_num;
+ 
+ 	i2c->irq_stat = 0;
+ 
++	i2c_transac = &i2c->transac;
++	num = i2c_transac->num;
++	left_num = i2c_transac->num - i2c_transac->index - 1;
++	msg = &i2c_transac->msgs[i2c_transac->index];
++
++	if (!msg->buf)
++		return -EINVAL;
++
++	if (i2c->op == I2C_MASTER_WRRD)
++		left_num--;
++	else if (msg->flags & I2C_M_RD)
++		i2c->op = I2C_MASTER_RD;
++	else
++		i2c->op = I2C_MASTER_WR;
++
+ 	if (i2c->auto_restart)
+ 		restart_flag = I2C_RS_TRANSFER;
+ 
+-	reinit_completion(&i2c->msg_complete);
 -
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index bcdcb06..d486860 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -2,5 +2,6 @@
- obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
- # Machine support
- obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
--obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
- obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
-+obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5514) += mt8173-rt5650-rt5514.o
-+obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
-diff --git a/sound/soc/mediatek/mt8173-rt5650-rt5514.c b/sound/soc/mediatek/mt8173-rt5650-rt5514.c
-new file mode 100644
-index 0000000..58e0836
---- /dev/null
-+++ b/sound/soc/mediatek/mt8173-rt5650-rt5514.c
-@@ -0,0 +1,258 @@
-+/*
-+ * mt8173-rt5650-rt5514.c  --  MT8173 machine driver with RT5650/5514 codecs
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Koro Chen <koro.chen@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
+ 	control_reg = readw(i2c->base + OFFSET_CONTROL) &
+ 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
+ 	if ((i2c->speed_hz > 400000) || (left_num >= 1))
+@@ -413,7 +438,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	else
+ 		writew(I2C_FS_START_CON, i2c->base + OFFSET_EXT_CONF);
+ 
+-	addr_reg = msgs->addr << 1;
++	addr_reg = msg->addr << 1;
+ 	if (i2c->op == I2C_MASTER_RD)
+ 		addr_reg |= 0x1;
+ 
+@@ -431,16 +456,16 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	/* Set transfer and transaction len */
+ 	if (i2c->op == I2C_MASTER_WRRD) {
+ 		if (i2c->dev_comp->aux_len_reg) {
+-			writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
+-			writew((msgs + 1)->len, i2c->base +
++			writew(msg->len, i2c->base + OFFSET_TRANSFER_LEN);
++			writew((msg + 1)->len, i2c->base +
+ 			       OFFSET_TRANSFER_LEN_AUX);
+ 		} else {
+-			writew(msgs->len | ((msgs + 1)->len) << 8,
++			writew(msg->len | ((msg + 1)->len) << 8,
+ 			       i2c->base + OFFSET_TRANSFER_LEN);
+ 		}
+ 		writew(I2C_WRRD_TRANAC_VALUE, i2c->base + OFFSET_TRANSAC_LEN);
+ 	} else {
+-		writew(msgs->len, i2c->base + OFFSET_TRANSFER_LEN);
++		writew(msg->len, i2c->base + OFFSET_TRANSFER_LEN);
+ 		writew(num, i2c->base + OFFSET_TRANSAC_LEN);
+ 	}
+ 
+@@ -448,8 +473,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	if (i2c->op == I2C_MASTER_RD) {
+ 		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+ 		writel(I2C_DMA_CON_RX, i2c->pdmabase + OFFSET_CON);
+-		rpaddr = dma_map_single(i2c->dev, msgs->buf,
+-					msgs->len, DMA_FROM_DEVICE);
++		rpaddr = dma_map_single(i2c->dev, msg->buf, msg->len,
++					DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, rpaddr))
+ 			return -ENOMEM;
+ 
+@@ -459,12 +484,13 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 		}
+ 
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+-		writel(msgs->len, i2c->pdmabase + OFFSET_RX_LEN);
++		writel(msg->len, i2c->pdmabase + OFFSET_RX_LEN);
++		i2c_transac->rpaddr = rpaddr;
+ 	} else if (i2c->op == I2C_MASTER_WR) {
+ 		writel(I2C_DMA_INT_FLAG_NONE, i2c->pdmabase + OFFSET_INT_FLAG);
+ 		writel(I2C_DMA_CON_TX, i2c->pdmabase + OFFSET_CON);
+-		wpaddr = dma_map_single(i2c->dev, msgs->buf,
+-					msgs->len, DMA_TO_DEVICE);
++		wpaddr = dma_map_single(i2c->dev, msg->buf, msg->len,
++					DMA_TO_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, wpaddr))
+ 			return -ENOMEM;
+ 
+@@ -474,20 +500,21 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 		}
+ 
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+-		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
++		writel(msg->len, i2c->pdmabase + OFFSET_TX_LEN);
 +
-+#include <linux/module.h>
-+#include <linux/gpio.h>
-+#include <linux/of_gpio.h>
-+#include <sound/soc.h>
-+#include <sound/jack.h>
-+#include "../codecs/rt5645.h"
++		i2c_transac->wpaddr = wpaddr;
+ 	} else {
+ 		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_INT_FLAG);
+ 		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_CON);
+-		wpaddr = dma_map_single(i2c->dev, msgs->buf,
+-					msgs->len, DMA_TO_DEVICE);
++		wpaddr = dma_map_single(i2c->dev, msg->buf, msg->len,
++					DMA_TO_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, wpaddr))
+ 			return -ENOMEM;
+-		rpaddr = dma_map_single(i2c->dev, (msgs + 1)->buf,
+-					(msgs + 1)->len,
+-					DMA_FROM_DEVICE);
++		rpaddr = dma_map_single(i2c->dev, (msg + 1)->buf,
++					(msg + 1)->len, DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(i2c->dev, rpaddr)) {
+-			dma_unmap_single(i2c->dev, wpaddr,
+-					 msgs->len, DMA_TO_DEVICE);
++			dma_unmap_single(i2c->dev, wpaddr, msg->len,
++					 DMA_TO_DEVICE);
+ 			return -ENOMEM;
+ 		}
+ 
+@@ -501,8 +528,11 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 
+ 		writel((u32)wpaddr, i2c->pdmabase + OFFSET_TX_MEM_ADDR);
+ 		writel((u32)rpaddr, i2c->pdmabase + OFFSET_RX_MEM_ADDR);
+-		writel(msgs->len, i2c->pdmabase + OFFSET_TX_LEN);
+-		writel((msgs + 1)->len, i2c->pdmabase + OFFSET_RX_LEN);
++		writel(msg->len, i2c->pdmabase + OFFSET_TX_LEN);
++		writel((msg + 1)->len, i2c->pdmabase + OFFSET_RX_LEN);
 +
-+#define MCLK_FOR_CODECS		12288000
++		i2c_transac->wpaddr = wpaddr;
++		i2c_transac->rpaddr = rpaddr;
+ 	}
+ 
+ 	writel(I2C_DMA_START_EN, i2c->pdmabase + OFFSET_EN);
+@@ -516,40 +546,6 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	}
+ 	writew(start_reg, i2c->base + OFFSET_START);
+ 
+-	ret = wait_for_completion_timeout(&i2c->msg_complete,
+-					  i2c->adap.timeout);
+-
+-	/* Clear interrupt mask */
+-	writew(~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
+-	       I2C_TRANSAC_COMP), i2c->base + OFFSET_INTR_MASK);
+-
+-	if (i2c->op == I2C_MASTER_WR) {
+-		dma_unmap_single(i2c->dev, wpaddr,
+-				 msgs->len, DMA_TO_DEVICE);
+-	} else if (i2c->op == I2C_MASTER_RD) {
+-		dma_unmap_single(i2c->dev, rpaddr,
+-				 msgs->len, DMA_FROM_DEVICE);
+-	} else {
+-		dma_unmap_single(i2c->dev, wpaddr, msgs->len,
+-				 DMA_TO_DEVICE);
+-		dma_unmap_single(i2c->dev, rpaddr, (msgs + 1)->len,
+-				 DMA_FROM_DEVICE);
+-	}
+-
+-	if (ret == 0) {
+-		dev_dbg(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
+-		mtk_i2c_init_hw(i2c);
+-		return -ETIMEDOUT;
+-	}
+-
+-	completion_done(&i2c->msg_complete);
+-
+-	if (i2c->irq_stat & (I2C_HS_NACKERR | I2C_ACKERR)) {
+-		dev_dbg(i2c->dev, "addr: %x, transfer ACK error\n", msgs->addr);
+-		mtk_i2c_init_hw(i2c);
+-		return -ENXIO;
+-	}
+-
+ 	return 0;
+ }
+ 
+@@ -559,19 +555,27 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	int ret;
+ 	int left_num = num;
+ 	struct mtk_i2c *i2c = i2c_get_adapdata(adap);
++	struct mtk_i2c_transaction *i2c_transac = &i2c->transac;
 +
-+static const struct snd_soc_dapm_widget mt8173_rt5650_rt5514_widgets[] = {
-+	SND_SOC_DAPM_SPK("Speaker", NULL),
-+	SND_SOC_DAPM_MIC("Int Mic", NULL),
-+	SND_SOC_DAPM_HP("Headphone", NULL),
-+	SND_SOC_DAPM_MIC("Headset Mic", NULL),
-+};
++	i2c_transac->num = num;
++	i2c_transac->index = 0;
++	i2c_transac->msgs = msgs;
++	i2c_transac->result = 0;
 +
-+static const struct snd_soc_dapm_route mt8173_rt5650_rt5514_routes[] = {
-+	{"Speaker", NULL, "SPOL"},
-+	{"Speaker", NULL, "SPOR"},
-+	{"Sub DMIC1L", NULL, "Int Mic"},
-+	{"Sub DMIC1R", NULL, "Int Mic"},
-+	{"Headphone", NULL, "HPOL"},
-+	{"Headphone", NULL, "HPOR"},
-+	{"Headset Mic", NULL, "micbias1"},
-+	{"Headset Mic", NULL, "micbias2"},
-+	{"IN1P", NULL, "Headset Mic"},
-+	{"IN1N", NULL, "Headset Mic"},
-+};
-+
-+static const struct snd_kcontrol_new mt8173_rt5650_rt5514_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Speaker"),
-+	SOC_DAPM_PIN_SWITCH("Int Mic"),
-+	SOC_DAPM_PIN_SWITCH("Headphone"),
-+	SOC_DAPM_PIN_SWITCH("Headset Mic"),
-+};
-+
-+static int mt8173_rt5650_rt5514_hw_params(struct snd_pcm_substream *substream,
-+					  struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	int i, ret;
-+
-+	for (i = 0; i < rtd->num_codecs; i++) {
-+		struct snd_soc_dai *codec_dai = rtd->codec_dais[i];
-+
-+		/* pll from mclk 12.288M */
-+		ret = snd_soc_dai_set_pll(codec_dai, 0, 0, MCLK_FOR_CODECS,
-+					  params_rate(params) * 512);
-+		if (ret)
-+			return ret;
-+
-+		/* sysclk from pll */
-+		ret = snd_soc_dai_set_sysclk(codec_dai, 1,
-+					     params_rate(params) * 512,
-+					     SND_SOC_CLOCK_IN);
-+		if (ret)
-+			return ret;
++	reinit_completion(&i2c->msg_complete);
+ 
+ 	ret = mtk_i2c_clock_enable(i2c);
+ 	if (ret)
+ 		return ret;
+ 
++	i2c->op = 0;
+ 	i2c->auto_restart = i2c->dev_comp->auto_restart;
+ 
+ 	/* checking if we can skip restart and optimize using WRRD mode */
+-	if (i2c->auto_restart && num == 2) {
+-		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+-		    msgs[0].addr == msgs[1].addr) {
+-			i2c->auto_restart = 0;
+-		}
++	if (num == 2 && !(msgs[0].flags & I2C_M_RD) &&
++	    (msgs[1].flags & I2C_M_RD) && msgs[0].addr == msgs[1].addr) {
++		i2c->op = I2C_MASTER_WRRD;
++		i2c->auto_restart = 0;
+ 	}
+ 
+ 	if (i2c->auto_restart && num >= 2 && i2c->speed_hz > MAX_FS_MODE_SPEED)
+@@ -582,33 +586,33 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	else
+ 		i2c->ignore_restart_irq = false;
+ 
+-	while (left_num--) {
+-		if (!msgs->buf) {
+-			dev_dbg(i2c->dev, "data buffer is NULL.\n");
+-			ret = -EINVAL;
+-			goto err_exit;
+-		}
++	/* always use DMA mode. */
++	ret = mtk_i2c_start_transfer(i2c);
++	if (ret < 0)
++		goto err_exit;
+ 
+-		if (msgs->flags & I2C_M_RD)
+-			i2c->op = I2C_MASTER_RD;
+-		else
+-			i2c->op = I2C_MASTER_WR;
+-
+-		if (!i2c->auto_restart) {
+-			if (num > 1) {
+-				/* combined two messages into one transaction */
+-				i2c->op = I2C_MASTER_WRRD;
+-				left_num--;
+-			}
+-		}
++	ret = wait_for_completion_timeout(&i2c->msg_complete,
++					  i2c->adap.timeout);
+ 
+-		/* always use DMA mode. */
+-		ret = mtk_i2c_do_transfer(i2c, msgs, num, left_num);
+-		if (ret < 0)
+-			goto err_exit;
++	if (ret == 0) {
++		dev_dbg(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
++		mtk_i2c_init_hw(i2c);
++		ret = -ETIMEDOUT;
++		goto err_exit;
 +	}
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt8173_rt5650_rt5514_ops = {
-+	.hw_params = mt8173_rt5650_rt5514_hw_params,
-+};
-+
-+static struct snd_soc_jack mt8173_rt5650_rt5514_jack;
-+
-+static int mt8173_rt5650_rt5514_init(struct snd_soc_pcm_runtime *runtime)
-+{
-+	struct snd_soc_card *card = runtime->card;
-+	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-+	int ret;
-+
-+	rt5645_sel_asrc_clk_src(codec,
-+				RT5645_DA_STEREO_FILTER |
-+				RT5645_AD_STEREO_FILTER,
-+				RT5645_CLK_SEL_I2S1_ASRC);
-+
-+	/* enable jack detection */
-+	ret = snd_soc_card_jack_new(card, "Headset Jack",
-+				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
-+				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
-+				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
-+				    &mt8173_rt5650_rt5514_jack, NULL, 0);
-+	if (ret) {
-+		dev_err(card->dev, "Can't new Headset Jack %d\n", ret);
-+		return ret;
+ 
+-		msgs++;
++	if (i2c->irq_stat & (I2C_HS_NACKERR | I2C_ACKERR)) {
++		dev_dbg(i2c->dev, "addr: %x, transfer ACK error\n", msgs->addr);
++		mtk_i2c_init_hw(i2c);
++		ret = -ENXIO;
++		goto err_exit;
 +	}
 +
-+	return rt5645_set_jack_detect(codec,
-+				      &mt8173_rt5650_rt5514_jack,
-+				      &mt8173_rt5650_rt5514_jack,
-+				      &mt8173_rt5650_rt5514_jack);
-+}
++	if (i2c_transac->result) {
++		ret = i2c_transac->result;
++		goto err_exit;
+ 	}
 +
-+static struct snd_soc_dai_link_component mt8173_rt5650_rt5514_codecs[] = {
-+	{
-+		.dai_name = "rt5645-aif1",
-+	},
-+	{
-+		.dai_name = "rt5514-aif1",
-+	},
-+};
+ 	/* the return value is number of executed messages */
+ 	ret = num;
+ 
+@@ -621,29 +625,51 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ {
+ 	struct mtk_i2c *i2c = dev_id;
+ 	u16 restart_flag = 0;
+-	u16 intr_stat;
++	struct i2c_msg *msg;
++	struct mtk_i2c_transaction *i2c_transac = &i2c->transac;
+ 
+ 	if (i2c->auto_restart)
+ 		restart_flag = I2C_RS_TRANSFER;
+ 
+-	intr_stat = readw(i2c->base + OFFSET_INTR_STAT);
+-	writew(intr_stat, i2c->base + OFFSET_INTR_STAT);
++	/* Clear interrupt mask */
++	writew(~(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
++	       I2C_TRANSAC_COMP), i2c->base + OFFSET_INTR_MASK);
+ 
+-	/*
+-	 * when occurs ack error, i2c controller generate two interrupts
+-	 * first is the ack error interrupt, then the complete interrupt
+-	 * i2c->irq_stat need keep the two interrupt value.
+-	 */
+-	i2c->irq_stat |= intr_stat;
++	i2c->irq_stat = readw(i2c->base + OFFSET_INTR_STAT);
++	writew(i2c->irq_stat, i2c->base + OFFSET_INTR_STAT);
+ 
+ 	if (i2c->ignore_restart_irq && (i2c->irq_stat & restart_flag)) {
+ 		i2c->ignore_restart_irq = false;
+ 		i2c->irq_stat = 0;
++		/* Enable interrupt */
++		writew(restart_flag | I2C_HS_NACKERR | I2C_ACKERR |
++		       I2C_TRANSAC_COMP, i2c->base + OFFSET_INTR_MASK);
+ 		writew(I2C_RS_MUL_CNFG | I2C_RS_MUL_TRIG | I2C_TRANSAC_START,
+ 		       i2c->base + OFFSET_START);
+ 	} else {
+-		if (i2c->irq_stat & (I2C_TRANSAC_COMP | restart_flag))
++		msg = &i2c_transac->msgs[i2c_transac->index];
 +
-+enum {
-+	DAI_LINK_PLAYBACK,
-+	DAI_LINK_CAPTURE,
-+	DAI_LINK_CODEC_I2S,
-+};
++		if (i2c->op == I2C_MASTER_WR || i2c->op == I2C_MASTER_WRRD) {
++			dma_unmap_single(i2c->dev, i2c_transac->wpaddr,
++					 msg->len, DMA_TO_DEVICE);
++		}
 +
-+/* Digital audio interface glue - connects codec <---> CPU */
-+static struct snd_soc_dai_link mt8173_rt5650_rt5514_dais[] = {
-+	/* Front End DAI links */
-+	[DAI_LINK_PLAYBACK] = {
-+		.name = "rt5650_rt5514 Playback",
-+		.stream_name = "rt5650_rt5514 Playback",
-+		.cpu_dai_name = "DL1",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	[DAI_LINK_CAPTURE] = {
-+		.name = "rt5650_rt5514 Capture",
-+		.stream_name = "rt5650_rt5514 Capture",
-+		.cpu_dai_name = "VUL",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	/* Back End DAI links */
-+	[DAI_LINK_CODEC_I2S] = {
-+		.name = "Codec",
-+		.cpu_dai_name = "I2S",
-+		.no_pcm = 1,
-+		.codecs = mt8173_rt5650_rt5514_codecs,
-+		.num_codecs = 2,
-+		.init = mt8173_rt5650_rt5514_init,
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
-+			   SND_SOC_DAIFMT_CBS_CFS,
-+		.ops = &mt8173_rt5650_rt5514_ops,
-+		.ignore_pmdown_time = 1,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+};
++		if (i2c->op == I2C_MASTER_WRRD)
++			dma_unmap_single(i2c->dev, i2c_transac->rpaddr,
++					 (msg + 1)->len, DMA_FROM_DEVICE);
 +
-+static struct snd_soc_codec_conf mt8173_rt5650_rt5514_codec_conf[] = {
-+	{
-+		.name_prefix = "Sub",
-+	},
-+};
++		if (i2c->op == I2C_MASTER_RD)
++			dma_unmap_single(i2c->dev, i2c_transac->rpaddr,
++					 msg->len, DMA_FROM_DEVICE);
 +
-+static struct snd_soc_card mt8173_rt5650_rt5514_card = {
-+	.name = "mtk-rt5650-rt5514",
-+	.owner = THIS_MODULE,
-+	.dai_link = mt8173_rt5650_rt5514_dais,
-+	.num_links = ARRAY_SIZE(mt8173_rt5650_rt5514_dais),
-+	.codec_conf = mt8173_rt5650_rt5514_codec_conf,
-+	.num_configs = ARRAY_SIZE(mt8173_rt5650_rt5514_codec_conf),
-+	.controls = mt8173_rt5650_rt5514_controls,
-+	.num_controls = ARRAY_SIZE(mt8173_rt5650_rt5514_controls),
-+	.dapm_widgets = mt8173_rt5650_rt5514_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt8173_rt5650_rt5514_widgets),
-+	.dapm_routes = mt8173_rt5650_rt5514_routes,
-+	.num_dapm_routes = ARRAY_SIZE(mt8173_rt5650_rt5514_routes),
-+};
-+
-+static int mt8173_rt5650_rt5514_dev_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt8173_rt5650_rt5514_card;
-+	struct device_node *platform_node;
-+	int i, ret;
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node,
-+					 "mediatek,platform", 0);
-+	if (!platform_node) {
-+		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+
-+	for (i = 0; i < card->num_links; i++) {
-+		if (mt8173_rt5650_rt5514_dais[i].platform_name)
-+			continue;
-+		mt8173_rt5650_rt5514_dais[i].platform_of_node = platform_node;
-+	}
-+
-+	mt8173_rt5650_rt5514_codecs[0].of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 0);
-+	if (!mt8173_rt5650_rt5514_codecs[0].of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	mt8173_rt5650_rt5514_codecs[1].of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 1);
-+	if (!mt8173_rt5650_rt5514_codecs[1].of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	mt8173_rt5650_rt5514_codec_conf[0].of_node =
-+		mt8173_rt5650_rt5514_codecs[1].of_node;
-+
-+	card->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, card);
-+
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+	return ret;
-+}
-+
-+static const struct of_device_id mt8173_rt5650_rt5514_dt_match[] = {
-+	{ .compatible = "mediatek,mt8173-rt5650-rt5514", },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mt8173_rt5650_rt5514_dt_match);
-+
-+static struct platform_driver mt8173_rt5650_rt5514_driver = {
-+	.driver = {
-+		   .name = "mtk-rt5650-rt5514",
-+		   .of_match_table = mt8173_rt5650_rt5514_dt_match,
-+#ifdef CONFIG_PM
-+		   .pm = &snd_soc_pm_ops,
-+#endif
-+	},
-+	.probe = mt8173_rt5650_rt5514_dev_probe,
-+};
-+
-+module_platform_driver(mt8173_rt5650_rt5514_driver);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT8173 RT5650 and RT5514 SoC machine driver");
-+MODULE_AUTHOR("Koro Chen <koro.chen@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:mtk-rt5650-rt5514");
-+
++		if (i2c->irq_stat & ~restart_flag) {
+ 			complete(&i2c->msg_complete);
++		} else {
++			i2c_transac->index++;
++			i2c_transac->result = mtk_i2c_start_transfer(i2c);
++			if (i2c_transac->result)
++				complete(&i2c->msg_complete);
++		}
+ 	}
+ 
+ 	return IRQ_HANDLED;
 -- 
-1.7.9.5
+1.8.1.1.dirty
