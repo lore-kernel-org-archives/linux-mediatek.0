@@ -1,46 +1,58 @@
-From: Joshua Henderson <joshua.henderson@microchip.com>
-Subject: Re: [PATCH 42/50] pinctrl: pic32: Use devm_pinctrl_register() for
- pinctrl registration
-Date: Thu, 25 Feb 2016 13:30:43 -0700
-Message-ID: <56CF6473.4020804@microchip.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
- <1456319775-3216-43-git-send-email-ldewangan@nvidia.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-43-git-send-email-ldewangan@nvidia.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>, linus.walleij@linaro.org, corbet@lwn.net, lee@kernel.org
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-mediatek@lists.infradead.org
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] mt7601u: do not free dma_buf when ivp allocation fails
+Date: Thu, 25 Feb 2016 22:28:59 +0000
+Message-ID: <1456439339-18458-1-git-send-email-colin.king@canonical.com>
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/24/2016 06:16 AM, Laxman Dewangan wrote:
-> Use devm_pinctrl_register() for pin control registration.
-> 
-> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
+From: Colin Ian King <colin.king@canonical.com>
 
-Reviewed-by: Joshua Henderson <joshua.henderson@microchip.com>
+If the allocation of ivp fails the error handling attempts to
+free an uninitialized dma_buf; this data structure just contains
+garbage on the stack, so the freeing will cause issues when the
+urb, buf and dma fields are cleaned. Fix this by handling the
+ivp check and
 
-Thanks,
-Josh
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/net/wireless/mediatek/mt7601u/mcu.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-> ---
->  drivers/pinctrl/pinctrl-pic32.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-pic32.c b/drivers/pinctrl/pinctrl-pic32.c
-> index 0b07d4b..2a3fcd6 100644
-> --- a/drivers/pinctrl/pinctrl-pic32.c
-> +++ b/drivers/pinctrl/pinctrl-pic32.c
-> @@ -2194,7 +2194,8 @@ static int pic32_pinctrl_probe(struct platform_device *pdev)
->  	pic32_pinctrl_desc.custom_params = pic32_mpp_bindings;
->  	pic32_pinctrl_desc.num_custom_params = ARRAY_SIZE(pic32_mpp_bindings);
->  
-> -	pctl->pctldev = pinctrl_register(&pic32_pinctrl_desc, &pdev->dev, pctl);
-> +	pctl->pctldev = devm_pinctrl_register(&pdev->dev, &pic32_pinctrl_desc,
-> +					      pctl);
->  	if (IS_ERR(pctl->pctldev)) {
->  		dev_err(&pdev->dev, "Failed to register pinctrl device\n");
->  		return PTR_ERR(pctl->pctldev);
-> 
+diff --git a/drivers/net/wireless/mediatek/mt7601u/mcu.c b/drivers/net/wireless/mediatek/mt7601u/mcu.c
+index fbb1986..06ac657 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/mcu.c
++++ b/drivers/net/wireless/mediatek/mt7601u/mcu.c
+@@ -359,13 +359,13 @@ mt7601u_upload_firmware(struct mt7601u_dev *dev, const struct mt76_fw *fw)
+ 	struct mt7601u_dma_buf dma_buf;
+ 	void *ivb;
+ 	u32 ilm_len, dlm_len;
+-	int i, ret;
++	int i, ret = -ENOMEM;
+ 
+ 	ivb = kmemdup(fw->ivb, sizeof(fw->ivb), GFP_KERNEL);
+-	if (!ivb || mt7601u_usb_alloc_buf(dev, MCU_FW_URB_SIZE, &dma_buf)) {
+-		ret = -ENOMEM;
++	if (!ivb)
++		goto error_ivb;
++	if (mt7601u_usb_alloc_buf(dev, MCU_FW_URB_SIZE, &dma_buf))
+ 		goto error;
+-	}
+ 
+ 	ilm_len = le32_to_cpu(fw->hdr.ilm_len) - sizeof(fw->ivb);
+ 	dev_dbg(dev->dev, "loading FW - ILM %u + IVB %zu\n",
+@@ -396,8 +396,9 @@ mt7601u_upload_firmware(struct mt7601u_dev *dev, const struct mt76_fw *fw)
+ 
+ 	dev_dbg(dev->dev, "Firmware running!\n");
+ error:
+-	kfree(ivb);
+ 	mt7601u_usb_free_buf(dev, &dma_buf);
++error_ivb:
++	kfree(ivb);
+ 
+ 	return ret;
+ }
+-- 
+2.7.0
