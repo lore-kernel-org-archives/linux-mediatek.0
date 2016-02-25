@@ -1,88 +1,90 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v6 4/7] clk: mediatek: Add MT2701 clock support
-Date: Thu, 25 Feb 2016 14:24:37 +0800
-Message-ID: <1456381477.22545.24.camel@mtksdaap41>
-References: <1454665050-37776-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1454665050-37776-5-git-send-email-jamesjj.liao@mediatek.com>
-	 <20160210200853.26445.15165@quark.deferred.io>
-	 <1455527982.29688.8.camel@mtksdaap41>
-	 <20160224212533.2278.7597@quark.deferred.io>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Add I03/I04 widgets and corresponding routes
+Date: Thu, 25 Feb 2016 15:12:33 +0800
+Message-ID: <1456384353-13041-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160224212533.2278.7597@quark.deferred.io>
-Sender: linux-clk-owner@vger.kernel.org
-To: Michael Turquette <mturquette@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, Shunli Wang <shunli.wang@mediatek.com>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mike,
+From: Koro Chen <koro.chen@mediatek.com>
 
-On Wed, 2016-02-24 at 13:25 -0800, Michael Turquette wrote:
-> Hi James,
-> 
-> Quoting James Liao (2016-02-15 01:19:42)
-> > Hi Mike,
-> > 
-> > On Wed, 2016-02-10 at 12:08 -0800, Michael Turquette wrote:
-> > > Quoting James Liao (2016-02-05 01:37:27)
-> > > > +CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt2701-topckgen", mtk_topckgen_init);
-> > > > +CLK_OF_DECLARE(mtk_infrasys, "mediatek,mt2701-infracfg", mtk_infrasys_init);
-> > > > +CLK_OF_DECLARE(mtk_pericfg, "mediatek,mt2701-pericfg", mtk_pericfg_init);
-> > > > +CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt2701-mmsys", mtk_mmsys_init);
-> > > > +CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt2701-imgsys", mtk_imgsys_init);
-> > > > +CLK_OF_DECLARE(mtk_vdecsys, "mediatek,mt2701-vdecsys", mtk_vdecsys_init);
-> > > > +CLK_OF_DECLARE(mtk_hifsys, "mediatek,mt2701-hifsys", mtk_hifsys_init);
-> > > > +CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt2701-ethsys", mtk_ethsys_init);
-> > > > +CLK_OF_DECLARE(mtk_bdpsys, "mediatek,mt2701-bdpsys", mtk_bdpsys_init);
-> > > > +CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt2701-apmixedsys",
-> > > 
-> > > :-/
-> > > 
-> > > This is way too much CLK_OF_DECLARE and not enough Linux Driver Model.
-> > > 
-> > > I understand that some platforms really must initialize some clocks very
-> > > early, but can we please separate those into one table and call
-> > > CLK_OF_DECLARE on only that set, and then register the rest through a
-> > > platform_driver later on?
-> > 
-> > I know CLK_OF_DECLARE is much earlier than platform_driver, so it can
-> > ensure all drivers lookup their clocks successfully during
-> > platform_driver probe. Is there anything different to init these clock
-> > providers in CLK_OF_DECLARE and platform_driver?
-> 
-> This a common pattern we're seeing right now. Joachim did a nice job of
-> supporting early clocks with CLK_OF_DECLARE, and also using a proper
-> driver in his lpc18xx implementation:
-> 
-> http://marc.info/?l=devicetree&m=145618160610001
+Add these widgets to allow another path from I2S input.
 
-Do you mean we should keep most clock init in platform_driver_probe and
-use CLK_OF_DECLARE for some early clocks only?
+Change-Id: Ib6804bbbde388830d8359245fe13bbb0f2bb36ba
+Signed-off-by: Koro Chen <koro.chen@mediatek.com>
+Signed-off-by: PC Liao <pc.liao@mediatek.com>
+---
+ sound/soc/mediatek/mtk-afe-pcm.c |   11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Using CLK_OF_DECLARE() for all clock providers is convenient. The
-convenience includes coding structure and driver init order. The coding
-structure means we can use a consistency way to add clock providers, so
-we can reduce errors and apply code generator on clock drivers.
-
-The driver init order is another issue. In lpc18xx driver you mentioned
-in [1], it uses ERR_PTR(-EPROBE_DEFER) to be the place holder for
-non-early clocks in arch_init (CLK_OF_DECLARE), and then register early
-and non-early clocks again in module_init. The EPROBE_DEFER place holder
-is an interesting idea to resolve init order issue. But to register
-clocks twice on the same clock provider seems not a good idea, although
-it can still work in current CCF implementation.
-
-Is it important to move clock init into platform_driver? If not, I
-prefer to keep current implementation on MT2701, and look for a better
-way to init clocks in platform_driver in new SoCs.
-
-
-[1] http://marc.info/?l=devicetree&m=145618160610001
-
-
-Best regards,
-
-James
-
+diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
+index 689c51f..5de878f 100644
+--- a/sound/soc/mediatek/mtk-afe-pcm.c
++++ b/sound/soc/mediatek/mtk-afe-pcm.c
+@@ -40,6 +40,7 @@
+ 
+ #define AFE_CONN1		0x0024
+ #define AFE_CONN2		0x0028
++#define AFE_CONN3		0x002c
+ #define AFE_CONN7		0x0460
+ #define AFE_CONN8		0x0464
+ #define AFE_HDMI_CONN0		0x0390
+@@ -63,6 +64,7 @@
+ #define AFE_HDMI_OUT_CUR	0x0378
+ #define AFE_HDMI_OUT_END	0x037c
+ 
++#define AFE_ADDA_TOP_CON0	0x0120
+ #define AFE_ADDA2_TOP_CON0	0x0600
+ 
+ #define AFE_HDMI_OUT_CON0	0x0370
+@@ -259,6 +261,7 @@ static int mtk_afe_set_i2s(struct mtk_afe *afe, unsigned int rate)
+ 		return -EINVAL;
+ 
+ 	/* from external ADC */
++	regmap_update_bits(afe->regmap, AFE_ADDA_TOP_CON0, 0x1, 0x1);
+ 	regmap_update_bits(afe->regmap, AFE_ADDA2_TOP_CON0, 0x1, 0x1);
+ 
+ 	/* set input */
+@@ -903,15 +906,19 @@ static const struct snd_kcontrol_new mtk_afe_o04_mix[] = {
+ };
+ 
+ static const struct snd_kcontrol_new mtk_afe_o09_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("I03 Switch", AFE_CONN3, 0, 1, 0),
+ 	SOC_DAPM_SINGLE_AUTODISABLE("I17 Switch", AFE_CONN7, 30, 1, 0),
+ };
+ 
+ static const struct snd_kcontrol_new mtk_afe_o10_mix[] = {
++	SOC_DAPM_SINGLE_AUTODISABLE("I04 Switch", AFE_CONN3, 3, 1, 0),
+ 	SOC_DAPM_SINGLE_AUTODISABLE("I18 Switch", AFE_CONN8, 0, 1, 0),
+ };
+ 
+ static const struct snd_soc_dapm_widget mtk_afe_pcm_widgets[] = {
+ 	/* inter-connections */
++	SND_SOC_DAPM_MIXER("I03", SND_SOC_NOPM, 0, 0, NULL, 0),
++	SND_SOC_DAPM_MIXER("I04", SND_SOC_NOPM, 0, 0, NULL, 0),
+ 	SND_SOC_DAPM_MIXER("I05", SND_SOC_NOPM, 0, 0, NULL, 0),
+ 	SND_SOC_DAPM_MIXER("I06", SND_SOC_NOPM, 0, 0, NULL, 0),
+ 	SND_SOC_DAPM_MIXER("I17", SND_SOC_NOPM, 0, 0, NULL, 0),
+@@ -934,12 +941,16 @@ static const struct snd_soc_dapm_route mtk_afe_pcm_routes[] = {
+ 	{"I2S Playback", NULL, "O04"},
+ 	{"VUL", NULL, "O09"},
+ 	{"VUL", NULL, "O10"},
++	{"I03", NULL, "I2S Capture"},
++	{"I04", NULL, "I2S Capture"},
+ 	{"I17", NULL, "I2S Capture"},
+ 	{"I18", NULL, "I2S Capture"},
+ 	{ "O03", "I05 Switch", "I05" },
+ 	{ "O04", "I06 Switch", "I06" },
+ 	{ "O09", "I17 Switch", "I17" },
++	{ "O09", "I03 Switch", "I03" },
+ 	{ "O10", "I18 Switch", "I18" },
++	{ "O10", "I04 Switch", "I04" },
+ };
+ 
+ static const struct snd_soc_dapm_route mtk_afe_hdmi_routes[] = {
+-- 
+1.7.9.5
