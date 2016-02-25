@@ -1,50 +1,59 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v10 0/5] MT8173 IOMMU SUPPORT
-Date: Thu, 25 Feb 2016 16:50:07 +0100
-Message-ID: <20160225155007.GA19092@8bytes.org>
-References: <1456161651-6136-1-git-send-email-yong.wu@mediatek.com>
+From: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] MAINTAINERS: add maintainer entry for FREESCALE GPMI
+ NAND driver
+Date: Thu, 25 Feb 2016 11:24:41 -0800
+Message-ID: <20160225192441.GM21465@google.com>
+References: <1455767715-621-1-git-send-email-han.xu@nxp.com>
+ <20160218043612.GA735@sha-win-210.asiapac.arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1456161651-6136-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+In-Reply-To: <20160218043612.GA735-RnYvDTsF2hYsaCPVB7xHRghBfBaA6wv0QQ4Iyu8u01E@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Huang Shijie <shijie.huang-5wv7dgnIgG8@public.gmane.org>
+Cc: rubini-kaDoWcXyVrEAvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Feb 23, 2016 at 01:20:46AM +0800, Yong Wu wrote:
-> Yong Wu (5):
->   dt-bindings: iommu: Add binding for mediatek IOMMU
->   dt-bindings: mediatek: Add smi dts binding
->   memory: mediatek: Add SMI driver
->   iommu/mediatek: Add mt8173 IOMMU driver
->   dts: mt8173: Add iommu/smi nodes for mt8173
-> 
->  .../devicetree/bindings/iommu/mediatek,iommu.txt   |  68 ++
->  .../memory-controllers/mediatek,smi-common.txt     |  24 +
->  .../memory-controllers/mediatek,smi-larb.txt       |  25 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  81 +++
->  drivers/iommu/Kconfig                              |  16 +
->  drivers/iommu/Makefile                             |   1 +
->  drivers/iommu/mtk_iommu.c                          | 737 +++++++++++++++++++++
->  drivers/memory/Kconfig                             |   8 +
->  drivers/memory/Makefile                            |   1 +
->  drivers/memory/mtk-smi.c                           | 273 ++++++++
->  include/dt-bindings/memory/mt8173-larb-port.h      | 111 ++++
->  include/soc/mediatek/smi.h                         |  58 ++
->  12 files changed, 1403 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
->  create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
->  create mode 100644 drivers/iommu/mtk_iommu.c
->  create mode 100644 drivers/memory/mtk-smi.c
->  create mode 100644 include/dt-bindings/memory/mt8173-larb-port.h
->  create mode 100644 include/soc/mediatek/smi.h
+On Thu, Feb 18, 2016 at 12:36:13PM +0800, Huang Shijie wrote:
+> On Thu, Feb 18, 2016 at 03:55:15AM +0000, Han Xu wrote:
+> > Add a maintainer entry for FREESCALE GPMI NAND driver and add myself as a
+> > maintainer.
+> >
+> > Signed-off-by: Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>
+> > ---
+> >  MAINTAINERS | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 7bd927e..49baa5b 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -4543,6 +4543,12 @@ L:     linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org
+> >  S:   Maintained
+> >  F:   drivers/dma/fsldma.*
+> >
+> > +FREESCALE GPMI NAND DRIVER
+> > +M:   Han Xu <han.xu-3arQi8VN3Tc@public.gmane.org>
+> > +L:   linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > +S:   Maintained
+> > +F:   drivers/mtd/nand/gpmi-nand/*
+> > +
+> >  FREESCALE I2C CPM DRIVER
+> >  M:   Jochen Friedrich <jochen-NIgtFMG+Po8@public.gmane.org>
+> >  L:   linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org
+> > --
+> > 2.7.1
+> >
+> Acked-by: Huang Shijie <shijie.huang-5wv7dgnIgG8@public.gmane.org>
 
-Applied all, thanks.
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Pushed to linux-mtd.git
