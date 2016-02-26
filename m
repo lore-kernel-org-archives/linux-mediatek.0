@@ -1,14 +1,13 @@
 From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [GIT PULL] ARM: mediatek: soc updates for v4.5
-Date: Fri, 26 Feb 2016 22:27:58 +0100
-Message-ID: <4249031.5hymV8HWSB@wuerfel>
-References: <CABuKBeLEf+jyE5gzWEVzfRZ7DwRgnLrdWLREwqqfYGBb2g+exQ@mail.gmail.com>
- <CABuKBeKf4dB7Y6A9WN530Zfmk55TXYserHv9OL-8Atfg65tTjA@mail.gmail.com>
+Subject: Re: [GIT PULL] ARM: mediatek: dts updates for v4.6
+Date: Fri, 26 Feb 2016 22:31:30 +0100
+Message-ID: <2947440.eXCb0RRaIr@wuerfel>
+References: <CABuKBeK+zT85Z695dBGO-0tU26w5LBJqS53aecdZYGZ6V0GPhA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CABuKBeKf4dB7Y6A9WN530Zfmk55TXYserHv9OL-8Atfg65tTjA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <CABuKBeK+zT85Z695dBGO-0tU26w5LBJqS53aecdZYGZ6V0GPhA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,16 +17,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Louis Yu <louis.yu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, HenryC Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bayi Cheng <bayi.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Eddie Huang =?utf-8?B?KOm7g+aZuuWCkSk=?= <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Monday 22 February 2016 13:44:00 Matthias Brugger wrote:
-> Hi,
+On Monday 22 February 2016 13:43:15 Matthias Brugger wrote:
 > 
-> These updates are of course for v4.6, sorry for the confusion.
-> 
+> Please pull the following patches.
+> As you can see from the description, this pull request includes some
+> fixes. Only a few developer have access to a Mediatek HW at the
+> moment. Therefore I didn't send the fixes to stable.
+>
+> If you want me to send the fixes for older kernel versions, please let me know.
 
-And I mixed up the branch, it's in next/soc of course, not next/dt ;-)
+I think it's fine either way here, up to you. 
+
+Pulled into next/dts64, thanks!
 
 	Arnd
