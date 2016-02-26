@@ -1,39 +1,31 @@
 From: David Miller <davem@davemloft.net>
 Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch
  driver (ESW)
-Date: Fri, 26 Feb 2016 12:35:10 -0500 (EST)
-Message-ID: <20160226.123510.2183497788787486032.davem@davemloft.net>
-References: <1456496504-50429-1-git-send-email-blogic@openwrt.org>
-	<1456496504-50429-4-git-send-email-blogic@openwrt.org>
+Date: Fri, 26 Feb 2016 12:36:21 -0500 (EST)
+Message-ID: <20160226.123621.1711849052272895222.davem@davemloft.net>
+References: <1456496504-50429-4-git-send-email-blogic@openwrt.org>
 	<20160226151813.GD12022@lunn.ch>
+	<56D06E3F.1020100@openwrt.org>
 Mime-Version: 1.0
 Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160226151813.GD12022@lunn.ch>
+In-Reply-To: <56D06E3F.1020100@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: andrew@lunn.ch
-Cc: blogic@openwrt.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, steven.liu@mediatek.com, Carlos.Huang@mediatek.com, Fred.Chang@mediatek.com
+To: blogic@openwrt.org
+Cc: andrew@lunn.ch, Fred.Chang@mediatek.com, steven.liu@mediatek.com, netdev@vger.kernel.org, Carlos.Huang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
-Date: Fri, 26 Feb 2016 16:18:13 +0100
+From: John Crispin <blogic@openwrt.org>
+Date: Fri, 26 Feb 2016 16:24:47 +0100
 
-> On Fri, Feb 26, 2016 at 03:21:35PM +0100, John Crispin wrote:
->> The ESW is found in many of the old 100mbit MIPS based SoCs. it has 5
->> external ports, 1 cpu port and 1 further port that the internal HW
->> offloading engine connects to.
->> 
->> This driver is very basic and only provides basic init and irq support.
->> The SoC and switch core both have support for a special tag making DSA
->> support possible.
-> 
-> Hi Crispin
-> 
-> There was recently a discussion about adding switches without using
-> DSA or switchdev. It was pretty much decided we would not accept such
-> drivers.
-> 
-> Sorry
+> the problem here is that on one side people complain about vendors not
+> sending code upstream. once they start being a good citizen and provide
+> funding to send stuff upstream the feedback tends to be very bad as seen
+> here.
 
-+1
+The feedback is not bad, on the contrary it is very positive and people
+like Andrew want to help people like you write proper switch drivers.
+
+If you were ignored, or rejected purely on the grounds of coding style
+issues, that would be "very bad" feedback.
