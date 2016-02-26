@@ -1,34 +1,37 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 31/50] pinctrl: uniphier: Use devm_pinctrl_register() for
- pinctrl registration
-Date: Fri, 26 Feb 2016 19:06:29 +0900
-Message-ID: <CAK7LNATP6vBz3CvD5cJ+DwbL3g8e_UJ40W8zZJwzQrKXnWokkg@mail.gmail.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-	<1456319775-3216-32-git-send-email-ldewangan@nvidia.com>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v10 0/5] MT8173 IOMMU SUPPORT
+Date: Fri, 26 Feb 2016 12:06:33 +0100
+Message-ID: <20160226110633.GE22747@8bytes.org>
+References: <1456161651-6136-1-git-send-email-yong.wu@mediatek.com>
+	<20160225155007.GA19092@8bytes.org>
+	<1456476955.3383.21.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1456319775-3216-32-git-send-email-ldewangan@nvidia.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Jonathan Corbet <corbet@lwn.net>, lee@kernel.org, linux-doc@vger.kernel.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-gpio@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Broadcom Kernel Feedback List <bcm-kernel-feedback-list@broadcom.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1456476955.3383.21.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-2016-02-24 22:15 GMT+09:00 Laxman Dewangan <ldewangan@nvidia.com>:
-> Use devm_pinctrl_register() for pin control registration and remove
-> need of .remove callback.
->
-> Signed-off-by: Laxman Dewangan <ldewangan@nvidia.com>
-> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-> ---
+Hi Philipp,
 
-Acked-by: Masahiro Yamada <yamada.masahiro@socionext.com>
+On Fri, Feb 26, 2016 at 09:55:55AM +0100, Philipp Zabel wrote:
+> Do you have a stable branch that I could base the mediatek-drm patches
+> on and that I may include in a pull request to be merged via drm-next?
 
-
-Thanks!
+You can base it on the arm/mediatek branch of the iommu tree. I'll push
+it out in the next minutes.
 
 
-
--- 
-Best Regards
-Masahiro Yamada
+	Joerg
