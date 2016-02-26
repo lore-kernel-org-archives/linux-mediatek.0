@@ -1,31 +1,39 @@
 From: David Miller <davem@davemloft.net>
 Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch
  driver (ESW)
-Date: Fri, 26 Feb 2016 12:36:21 -0500 (EST)
-Message-ID: <20160226.123621.1711849052272895222.davem@davemloft.net>
+Date: Fri, 26 Feb 2016 12:43:13 -0500 (EST)
+Message-ID: <20160226.124313.718457444189293093.davem@davemloft.net>
 References: <1456496504-50429-4-git-send-email-blogic@openwrt.org>
 	<20160226151813.GD12022@lunn.ch>
-	<56D06E3F.1020100@openwrt.org>
+	<56D07C82.2040204@openwrt.org>
 Mime-Version: 1.0
 Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <56D06E3F.1020100@openwrt.org>
+In-Reply-To: <56D07C82.2040204@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: blogic@openwrt.org
-Cc: andrew@lunn.ch, Fred.Chang@mediatek.com, steven.liu@mediatek.com, netdev@vger.kernel.org, Carlos.Huang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+To: nbd@openwrt.org
+Cc: andrew@lunn.ch, blogic@openwrt.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, steven.liu@mediatek.com, Carlos.Huang@mediatek.com, Fred.Chang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: John Crispin <blogic@openwrt.org>
-Date: Fri, 26 Feb 2016 16:24:47 +0100
+From: Felix Fietkau <nbd@openwrt.org>
+Date: Fri, 26 Feb 2016 17:25:38 +0100
 
-> the problem here is that on one side people complain about vendors not
-> sending code upstream. once they start being a good citizen and provide
-> funding to send stuff upstream the feedback tends to be very bad as seen
-> here.
+> In my opinion, leaving this part out does not make much sense and
+> neither does deferring the entire patch series until we have a
+> switchdev/DSA capable driver. This is just a starting point, which will
+> be turned into a proper driver with the right APIs later.
 
-The feedback is not bad, on the contrary it is very positive and people
-like Andrew want to help people like you write proper switch drivers.
+I disagree, and we want people to concentrate on writing proper
+switchdev/DSA drivers.
 
-If you were ignored, or rejected purely on the grounds of coding style
-issues, that would be "very bad" feedback.
+People like Andrew have offered to help in any way possible to make
+this as easy as possible, so please take this seriously.
+
+I would have accepted your arguments a year ago when we didn't have
+the right infrastructure, but now we do and there is no real excuse
+to submit partial or bastardized drivers for these kinds of hardware
+anymore
+
+Thanks in advance for your understanding, and I'm plan to stand
+very firm on this.
