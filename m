@@ -1,35 +1,54 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch
- driver (ESW)
-Date: Fri, 26 Feb 2016 12:44:59 -0500 (EST)
-Message-ID: <20160226.124459.2214228338245540067.davem@davemloft.net>
-References: <20160226151813.GD12022@lunn.ch>
-	<56D06E3F.1020100@openwrt.org>
-	<20160226170545.GE12022@lunn.ch>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch driver
+ (ESW)
+Date: Fri, 26 Feb 2016 10:34:31 -0800
+Message-ID: <56D09AB7.3000203@gmail.com>
+References: <1456496504-50429-1-git-send-email-blogic@openwrt.org>
+ <1456496504-50429-4-git-send-email-blogic@openwrt.org>
+ <20160226151813.GD12022@lunn.ch> <56D06E3F.1020100@openwrt.org>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160226170545.GE12022@lunn.ch>
+In-Reply-To: <56D06E3F.1020100@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: andrew@lunn.ch
-Cc: blogic@openwrt.org, Fred.Chang@mediatek.com, steven.liu@mediatek.com, netdev@vger.kernel.org, Carlos.Huang@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+To: John Crispin <blogic@openwrt.org>, Andrew Lunn <andrew@lunn.ch>
+Cc: "Fred Chang (?????????)" <Fred.Chang@mediatek.com>, "Steven Liu (?????????)" <steven.liu@mediatek.com>, netdev@vger.kernel.org, "Carlos Huang (?????????)" <Carlos.Huang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Andrew Lunn <andrew@lunn.ch>
-Date: Fri, 26 Feb 2016 18:05:45 +0100
-
-> I think it is great a vendor is providing funding to get code
-> upstream. However, that code needs to conform with current kernel
-> architecture and design philosophy.
+On 26/02/16 07:24, John Crispin wrote:
 > 
-> We as a community also need to be consistent. We have recently push
-> back on Microchip with there LAN9352 who want to do something very
-> similar, introduce the MAC and a very dumb switch driver. They are now
-> looking at what it means to do a DSA driver. There is also talk of
-> writing a DSA driver for the ks8995 family.
+> Hi,
 > 
-> As David said recently, a year ago this probably would of been
-> accepted. But now, switches need to be DSA or switchdev.
+> would the series be ok if we just dropped those parts and then have a
+> driver in the kernel that wont do much with the out of tree patches ?
+> 
+> the problem here is that on one side people complain about vendors not
+> sending code upstream. once they start being a good citizen and provide
+> funding to send stuff upstream the feedback tends to be very bad as seen
+> here.
 
-+1
+I agree with David here, the feedback from Andrew is very constructive,
+you just don't like the feedback you are being given, which is a
+different thing. You can't always get a 12 series patches adding a new
+driver accepted after second try, look at all the recent submissions
+that occured, it took 5-6-7 maybe more submissions until things were in
+a shape where they could be merged. If for your next submission you get
+the feedback that switchdev/DSA is deprecated, and something new needs
+to be used, then I would agree that feedback is not acceptable, I doubt
+this will be the case unless we wait another 10 years to get these
+patches out.
+
+> we are planning on doing a DSA driver but one step at a time. this
+> kind of feedback will inevitably lead to vendors doing second thoughts
+> of upstream contributions.
+
+If you are planning on a DSA driver, which sounds like a good plan, then
+maybe drop the integrated switch parts for now, keep it as a local set
+of patches for your testing, and just get the basic CPU Ethernet MAC
+driver to work for data movement, so that part gets in, and later on,
+when your DSA driver is ready, that's one less thing to take care of.
+They ultimately are logically spearated drivers if you use DSA, a little
+less if you use switchdev.
+-- 
+Florian
