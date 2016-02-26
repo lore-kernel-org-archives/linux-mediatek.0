@@ -1,37 +1,44 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH v10 0/5] MT8173 IOMMU SUPPORT
-Date: Fri, 26 Feb 2016 16:49:12 +0100
-Message-ID: <1456501752.3383.26.camel@pengutronix.de>
-References: <1456161651-6136-1-git-send-email-yong.wu@mediatek.com>
-	 <20160225155007.GA19092@8bytes.org>
-	 <1456476955.3383.21.camel@pengutronix.de>
-	 <20160226110633.GE22747@8bytes.org>
+From: Felix Fietkau <nbd@openwrt.org>
+Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch driver
+ (ESW)
+Date: Fri, 26 Feb 2016 17:25:38 +0100
+Message-ID: <56D07C82.2040204@openwrt.org>
+References: <1456496504-50429-1-git-send-email-blogic@openwrt.org>
+ <1456496504-50429-4-git-send-email-blogic@openwrt.org>
+ <20160226151813.GD12022@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160226110633.GE22747-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, mitchelh-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160226151813.GD12022@lunn.ch>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>, John Crispin <blogic@openwrt.org>
+Cc: "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "Steven Liu (?????????)" <steven.liu@mediatek.com>, "Carlos Huang (?????????)" <Carlos.Huang@mediatek.com>, "Fred Chang (?????????)" <Fred.Chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Freitag, den 26.02.2016, 12:06 +0100 schrieb Joerg Roedel:
-> Hi Philipp,
+On 2016-02-26 16:18, Andrew Lunn wrote:
+> On Fri, Feb 26, 2016 at 03:21:35PM +0100, John Crispin wrote:
+>> The ESW is found in many of the old 100mbit MIPS based SoCs. it has 5
+>> external ports, 1 cpu port and 1 further port that the internal HW
+>> offloading engine connects to.
+>> 
+>> This driver is very basic and only provides basic init and irq support.
+>> The SoC and switch core both have support for a special tag making DSA
+>> support possible.
 > 
-> On Fri, Feb 26, 2016 at 09:55:55AM +0100, Philipp Zabel wrote:
-> > Do you have a stable branch that I could base the mediatek-drm patches
-> > on and that I may include in a pull request to be merged via drm-next?
+> Hi Crispin
 > 
-> You can base it on the arm/mediatek branch of the iommu tree. I'll push
-> it out in the next minutes.
+> There was recently a discussion about adding switches without using
+> DSA or switchdev. It was pretty much decided we would not accept such
+> drivers.
+For exactly this reason, the code does not provide any non-standard API
+for allowing the user to configure the switch. The hardware needs to be
+programmed with some defaults for the driver to be functional (since the
+switch logic is built into the SoC).
 
-Excellent, thank you.
+In my opinion, leaving this part out does not make much sense and
+neither does deferring the entire patch series until we have a
+switchdev/DSA capable driver. This is just a starting point, which will
+be turned into a proper driver with the right APIs later.
 
-regards
-Philipp
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+- Felix
