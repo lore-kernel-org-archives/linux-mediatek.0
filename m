@@ -1,40 +1,40 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v5 0/8] Add MT8173 Video Encoder Driver and VPU Driver
-Date: Fri, 26 Feb 2016 14:09:44 +0100
-Message-ID: <56D04E98.8040209@xs4all.nl>
-References: <1456215081-16858-1-git-send-email-tiffany.lin@mediatek.com>
- <56CC1CAB.1060409@xs4all.nl> <56D03DE2.1090400@mm-sol.com>
+From: Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] arm64/mm: remove unnecessary boundary check
+Date: Fri, 26 Feb 2016 13:40:33 +0000
+Message-ID: <20160226134033.GK4777@e104818-lin.cambridge.arm.com>
+References: <1456371874-19826-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <56D03DE2.1090400@mm-sol.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Stanimir Varbanov <svarbanov@mm-sol.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1456371874-19826-1-git-send-email-miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: srv_wsdupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 02/26/2016 12:58 PM, Stanimir Varbanov wrote:
-> Hi Hans,
+On Thu, Feb 25, 2016 at 11:44:34AM +0800, miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> <snip>
+> Remove the unnecessary boundary check since there is a huge
+> gap between user and kernel address that they would never overlap.
+> (arm64 does not have enough levels of page tables to cover 64-bit
+> virtual address)
 > 
->> Nice!
->>
->> Can you try 'v4l2-compliance -s'? Note that this may not work since I know
->> that v4l2-compliance doesn't work all that well with codecs, but I am
->> curious what the output is when you try streaming.
+> See Documentation/arm64/memory.txt
 > 
-> Sorry for the off topic question.
-> 
-> Does every new v4l2 encoder/decoder driver must use v4l2 mem2mem device
-> framework, with other words is that mandatory?
-> 
+> Signed-off-by: Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-No, that's not mandatory. In most cases it will simplify your code, but
-sometimes it only makes it harder and then you are better off doing it
-yourself.
+Applied. Thanks.
 
-Regards,
-
-	Hans
+-- 
+Catalin
