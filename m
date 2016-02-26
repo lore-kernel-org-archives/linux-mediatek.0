@@ -1,73 +1,35 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH V7 1/2] regulator: Add document for MT6323 regulator
-Date: Fri, 26 Feb 2016 16:16:16 +0100
-Message-ID: <3493904.qJy7d8g0ZC@wuerfel>
-References: <1456145817-12741-1-git-send-email-blogic@openwrt.org>
- <3623271.aQ3n624Sax@wuerfel> <56D06816.7070709@openwrt.org>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH V2 03/12] net-next: mediatek: add embedded switch driver
+ (ESW)
+Date: Fri, 26 Feb 2016 16:18:13 +0100
+Message-ID: <20160226151813.GD12022@lunn.ch>
+References: <1456496504-50429-1-git-send-email-blogic@openwrt.org>
+ <1456496504-50429-4-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56D06816.7070709-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1456496504-50429-4-git-send-email-blogic@openwrt.org>
+Sender: netdev-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "Steven Liu (?????????)" <steven.liu@mediatek.com>, "Carlos Huang (?????????)" <Carlos.Huang@mediatek.com>, "Fred Chang (?????????)" <Fred.Chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Friday 26 February 2016 15:58:30 John Crispin wrote:
-> On 26/02/2016 15:22, Arnd Bergmann wrote:
-> > On Monday 22 February 2016 13:56:56 John Crispin wrote:
-> >> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-> >> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> >> ---
-> >> This patch needs to be merged post-rc1 as it depends on the MFD series of
-> >> the PMIC which is already inside Lee's tree pending the PR.
-> > 
-> > (dropping most lists)
-> > 
-> > Hi John,
-> > 
-> > Do you or someone else have a git tree that has all the remaining
-> > patches for mt6323 that need to be merged?
-> > 
-> > We are doing a code review session at Linaro Connect and it seems
-> > like a nice platform to include, given that it is simpler than
-> > most of the phone oriented platforms that have lots of complex
-> > code out of tree.
-> > 
-> >       Arnd
-> > 
+On Fri, Feb 26, 2016 at 03:21:35PM +0100, John Crispin wrote:
+> The ESW is found in many of the old 100mbit MIPS based SoCs. it has 5
+> external ports, 1 cpu port and 1 further port that the internal HW
+> offloading engine connects to.
 > 
-> 
-> Hi Arnd,
-> 
-> sure thing i can get one online for you in the next 48 hours, including
-> all the patches required to boot mt7623 with v4.4. I still have a few
-> outdated patches in my local tree for the scpsys and usb part, so I need
-> to extract latest versions from the ML.
-> 
-> would v4.4 be ok or do you prefer me using the latest rc ?
+> This driver is very basic and only provides basic init and irq support.
+> The SoC and switch core both have support for a special tag making DSA
+> support possible.
 
-4.4 is fine, whichever is easier for you, thanks!
+Hi Crispin
 
-I was actually thinking of the patches that presumably are in some
-BSP from Mediatek that you used as the base and that contain code that
-has not been posted on mailing lists.
+There was recently a discussion about adding switches without using
+DSA or switchdev. It was pretty much decided we would not accept such
+drivers.
 
-Having both your version and the original source available would
-of course be even better.
+Sorry
 
-Assuming that the mediatek tree exists and is accessible, do you
-have an estimate of how much of it you haven't yet rewritten for
-submission, or how much is not in a state that is upstreamable
-at all (e.g. the GPU driver for MT7623N)?
-
-	Arnd
+	Andrew
