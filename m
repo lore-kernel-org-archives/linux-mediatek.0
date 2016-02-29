@@ -1,49 +1,63 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] iommu/mediatek: select ARM_DMA_USE_IOMMU
-Date: Mon, 29 Feb 2016 16:48:22 +0100
-Message-ID: <20160229154822.GC13711@8bytes.org>
-References: <1456737553-496245-1-git-send-email-arnd@arndb.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1456737553-496245-1-git-send-email-arnd-r2nGTMty4D4@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 2/2] cpufreq: mediatek: allow building as a module
+Date: Mon, 29 Feb 2016 17:04:21 +0100
+Message-ID: <1456761867-1742824-2-git-send-email-arnd@arndb.de>
+References: <1456761867-1742824-1-git-send-email-arnd@arndb.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456761867-1742824-1-git-send-email-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
+Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Feb 29, 2016 at 10:19:06AM +0100, Arnd Bergmann wrote:
-> The newly added Mediatek IOMMU driver uses the IOMMU_DMA infrastructure,
-> but unlike other such drivers, it does not select 'ARM_DMA_USE_IOMMU',
-> which is a prerequisite, leading to a link error:
-> 
-> warning: (MTK_IOMMU) selects IOMMU_DMA which has unmet direct dependencies (IOMMU_SUPPORT && NEED_SG_DMA_LENGTH)
-> drivers/iommu/built-in.o: In function `iommu_put_dma_cookie':
-> mtk_iommu.c:(.text+0x11fe): undefined reference to `put_iova_domain'
-> drivers/iommu/built-in.o: In function `iommu_dma_init_domain':
-> mtk_iommu.c:(.text+0x1316): undefined reference to `init_iova_domain'
-> drivers/iommu/built-in.o: In function `__iommu_dma_unmap':
-> mtk_iommu.c:(.text+0x1380): undefined reference to `find_iova'
-> 
-> This adds the same select that the other drivers have. On a related
-> note, I wonder if we should just always select ARM_DMA_USE_IOMMU
-> whenever any IOMMU driver is enabled. Are there any cases where
-> we would enable an IOMMU but not use it?
-> 
-> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-> Fixes: 0df4fabe208d ("iommu/mediatek: Add mt8173 IOMMU driver")
-> ---
->  drivers/iommu/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+The MT8173 cpufreq driver can currently only be built-in, but
+it has a Kconfig dependency on the thermal core. THERMAL
+can be a loadable module, which in turn makes this driver
+impossible to build.
 
-Applied both, thanks.
+It is nicer to make the cpufreq driver a module as well, so
+this patch turns the option in to a 'tristate' and adapts
+the dependency accordingly.
+
+The driver has no module_exit() function, so it will continue
+to not support unloading, but it can be built as a module
+and loaded at runtime now.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: 5269e7067cd6 ("cpufreq: Add ARM_MT8173_CPUFREQ dependency on THERMAL")
+---
+ drivers/cpufreq/Kconfig.arm      | 4 ++--
+ drivers/cpufreq/mt8173-cpufreq.c | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
+index 0031069b64c9..14b1f9393b05 100644
+--- a/drivers/cpufreq/Kconfig.arm
++++ b/drivers/cpufreq/Kconfig.arm
+@@ -84,10 +84,10 @@ config ARM_KIRKWOOD_CPUFREQ
+ 	  SoCs.
+ 
+ config ARM_MT8173_CPUFREQ
+-	bool "Mediatek MT8173 CPUFreq support"
++	tristate "Mediatek MT8173 CPUFreq support"
+ 	depends on ARCH_MEDIATEK && REGULATOR
+ 	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
+-	depends on !CPU_THERMAL || THERMAL=y
++	depends on !CPU_THERMAL || THERMAL
+ 	select PM_OPP
+ 	help
+ 	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
+diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
+index 1efba340456d..2058e6d292ce 100644
+--- a/drivers/cpufreq/mt8173-cpufreq.c
++++ b/drivers/cpufreq/mt8173-cpufreq.c
+@@ -17,6 +17,7 @@
+ #include <linux/cpu_cooling.h>
+ #include <linux/cpufreq.h>
+ #include <linux/cpumask.h>
++#include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_opp.h>
+-- 
+2.7.0
