@@ -1,63 +1,85 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH 2/2] cpufreq: mediatek: allow building as a module
-Date: Mon, 29 Feb 2016 17:04:21 +0100
-Message-ID: <1456761867-1742824-2-git-send-email-arnd@arndb.de>
-References: <1456761867-1742824-1-git-send-email-arnd@arndb.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456761867-1742824-1-git-send-email-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+From: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+Subject: [PATCH 2/8] drivers/pinctrl: make mediatek/pinctrl-mt6397 driver
+ explicitly non-modular
+Date: Mon, 29 Feb 2016 15:48:38 -0500
+Message-ID: <1456778924-20730-3-git-send-email-paul.gortmaker@windriver.com>
+References: <1456778924-20730-1-git-send-email-paul.gortmaker@windriver.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1456778924-20730-1-git-send-email-paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT8173 cpufreq driver can currently only be built-in, but
-it has a Kconfig dependency on the thermal core. THERMAL
-can be a loadable module, which in turn makes this driver
-impossible to build.
+The Kconfig for this driver is currently:
 
-It is nicer to make the cpufreq driver a module as well, so
-this patch turns the option in to a 'tristate' and adapts
-the dependency accordingly.
+config PINCTRL_MT6397
+        bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
 
-The driver has no module_exit() function, so it will continue
-to not support unloading, but it can be built as a module
-and loaded at runtime now.
+...meaning that it is currently not being built as a module by anyone.
+Lets remove the modular code that is essentially orphaned, so that
+when reading the driver there is no doubt it is builtin-only.
 
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-Fixes: 5269e7067cd6 ("cpufreq: Add ARM_MT8173_CPUFREQ dependency on THERMAL")
+Since module_init translates to device_initcall in the non-modular
+case, the init ordering remains unchanged with this commit.
+
+We also delete the MODULE_LICENSE tag etc. since all that information
+is already contained at the top of the file in the comments.
+
+Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
+
+Cc: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
 ---
- drivers/cpufreq/Kconfig.arm      | 4 ++--
- drivers/cpufreq/mt8173-cpufreq.c | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mt6397.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
-index 0031069b64c9..14b1f9393b05 100644
---- a/drivers/cpufreq/Kconfig.arm
-+++ b/drivers/cpufreq/Kconfig.arm
-@@ -84,10 +84,10 @@ config ARM_KIRKWOOD_CPUFREQ
- 	  SoCs.
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+index f9751ae28e32..6eccb85c02cd 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+@@ -12,7 +12,7 @@
+  * GNU General Public License for more details.
+  */
  
- config ARM_MT8173_CPUFREQ
--	bool "Mediatek MT8173 CPUFreq support"
-+	tristate "Mediatek MT8173 CPUFreq support"
- 	depends on ARCH_MEDIATEK && REGULATOR
- 	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
--	depends on !CPU_THERMAL || THERMAL=y
-+	depends on !CPU_THERMAL || THERMAL
- 	select PM_OPP
- 	help
- 	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
-diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-index 1efba340456d..2058e6d292ce 100644
---- a/drivers/cpufreq/mt8173-cpufreq.c
-+++ b/drivers/cpufreq/mt8173-cpufreq.c
-@@ -17,6 +17,7 @@
- #include <linux/cpu_cooling.h>
- #include <linux/cpufreq.h>
- #include <linux/cpumask.h>
-+#include <linux/module.h>
- #include <linux/of.h>
+-#include <linux/module.h>
++#include <linux/init.h>
  #include <linux/platform_device.h>
- #include <linux/pm_opp.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+@@ -55,7 +55,6 @@ static const struct of_device_id mt6397_pctrl_match[] = {
+ 	{ .compatible = "mediatek,mt6397-pinctrl", },
+ 	{ }
+ };
+-MODULE_DEVICE_TABLE(of, mt6397_pctrl_match);
+ 
+ static struct platform_driver mtk_pinctrl_driver = {
+ 	.probe = mt6397_pinctrl_probe,
+@@ -69,9 +68,4 @@ static int __init mtk_pinctrl_init(void)
+ {
+ 	return platform_driver_register(&mtk_pinctrl_driver);
+ }
+-
+-module_init(mtk_pinctrl_init);
+-
+-MODULE_LICENSE("GPL v2");
+-MODULE_DESCRIPTION("MediaTek MT6397 Pinctrl Driver");
+-MODULE_AUTHOR("Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
++device_initcall(mtk_pinctrl_init);
 -- 
-2.7.0
+2.6.1
