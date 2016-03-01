@@ -1,72 +1,84 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/2] cpufreq: mediatek: allow building as a module
-Date: Tue, 1 Mar 2016 16:04:38 +0100
-Message-ID: <56D5AF86.7000809@gmail.com>
-References: <1456761867-1742824-1-git-send-email-arnd@arndb.de>
- <1456761867-1742824-2-git-send-email-arnd@arndb.de>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v12 09/14] arm64: dts: mt8173: Add HDMI related nodes
+Date: Tue,  1 Mar 2016 16:20:25 +0100
+Message-ID: <1456845630-2786-10-git-send-email-p.zabel@pengutronix.de>
+References: <1456845630-2786-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1456761867-1742824-2-git-send-email-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1456845630-2786-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 29/02/16 17:04, Arnd Bergmann wrote:
-> The MT8173 cpufreq driver can currently only be built-in, but
-> it has a Kconfig dependency on the thermal core. THERMAL
-> can be a loadable module, which in turn makes this driver
-> impossible to build.
->
-> It is nicer to make the cpufreq driver a module as well, so
-> this patch turns the option in to a 'tristate' and adapts
-> the dependency accordingly.
->
-> The driver has no module_exit() function, so it will continue
-> to not support unloading, but it can be built as a module
-> and loaded at runtime now.
->
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> Fixes: 5269e7067cd6 ("cpufreq: Add ARM_MT8173_CPUFREQ dependency on THERMAL")
-> ---
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
->   drivers/cpufreq/Kconfig.arm      | 4 ++--
->   drivers/cpufreq/mt8173-cpufreq.c | 1 +
->   2 files changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/cpufreq/Kconfig.arm b/drivers/cpufreq/Kconfig.arm
-> index 0031069b64c9..14b1f9393b05 100644
-> --- a/drivers/cpufreq/Kconfig.arm
-> +++ b/drivers/cpufreq/Kconfig.arm
-> @@ -84,10 +84,10 @@ config ARM_KIRKWOOD_CPUFREQ
->   	  SoCs.
->
->   config ARM_MT8173_CPUFREQ
-> -	bool "Mediatek MT8173 CPUFreq support"
-> +	tristate "Mediatek MT8173 CPUFreq support"
->   	depends on ARCH_MEDIATEK && REGULATOR
->   	depends on ARM64 || (ARM_CPU_TOPOLOGY && COMPILE_TEST)
-> -	depends on !CPU_THERMAL || THERMAL=y
-> +	depends on !CPU_THERMAL || THERMAL
->   	select PM_OPP
->   	help
->   	  This adds the CPUFreq driver support for Mediatek MT8173 SoC.
-> diff --git a/drivers/cpufreq/mt8173-cpufreq.c b/drivers/cpufreq/mt8173-cpufreq.c
-> index 1efba340456d..2058e6d292ce 100644
-> --- a/drivers/cpufreq/mt8173-cpufreq.c
-> +++ b/drivers/cpufreq/mt8173-cpufreq.c
-> @@ -17,6 +17,7 @@
->   #include <linux/cpu_cooling.h>
->   #include <linux/cpufreq.h>
->   #include <linux/cpumask.h>
-> +#include <linux/module.h>
->   #include <linux/of.h>
->   #include <linux/platform_device.h>
->   #include <linux/pm_opp.h>
->
+RnJvbTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KClRoaXMgcGF0Y2ggYWRkcyB0aGUgZGV2
+aWNlIG5vZGVzIGZvciB0aGUgSERNSSBlbmNvZGVyLCBIRE1JIFBIWSwKYW5kIEhETUkgQ0VDIG1v
+ZHVsZXMuCgpTaWduZWQtb2ZmLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgpTaWduZWQt
+b2ZmLWJ5OiBDYXdhIENoZW5nIDxjYXdhLmNoZW5nQG1lZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1i
+eTogSmllIFFpdSA8amllLnFpdUBtZWRpYXRlay5jb20+ClNpZ25lZC1vZmYtYnk6IERhbmllbCBL
+dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+ClNpZ25lZC1vZmYtYnk6IFBoaWxpcHAgWmFiZWwg
+PHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
+ay9tdDgxNzMuZHRzaSB8IDY5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiAxIGZp
+bGUgY2hhbmdlZCwgNjkgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
+dC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVr
+L210ODE3My5kdHNpCmluZGV4IDRmZjY2NmQuLjlmYjMyYTEgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJt
+NjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2kKKysrIGIvYXJjaC9hcm02NC9ib290L2R0
+cy9tZWRpYXRlay9tdDgxNzMuZHRzaQpAQCAtMTk5LDYgKzE5OSwxNiBAQAogCQkJCSAgICAgPEdJ
+Q19TUEkgMTQ2IElSUV9UWVBFX0xFVkVMX0hJR0g+LAogCQkJCSAgICAgPEdJQ19TUEkgMTQ3IElS
+UV9UWVBFX0xFVkVMX0hJR0g+OwogCisJCQloZG1pX3BpbjogeHh4IHsKKworCQkJCS8qaGRtaSBo
+dHBsZyBwaW4qLworCQkJCXBpbnMxIHsKKwkJCQkJcGlubXV4ID0gPE1UODE3M19QSU5fMjFfSFRQ
+TEdfX0ZVTkNfSFRQTEc+OworCQkJCQlpbnB1dC1lbmFibGU7CisJCQkJCWJpYXMtcHVsbC1kb3du
+OworCQkJCX07CisJCQl9OworCiAJCQlpMmMwX3BpbnNfYTogaTJjMCB7CiAJCQkJcGluczEgewog
+CQkJCQlwaW5tdXggPSA8TVQ4MTczX1BJTl80NV9TREEwX19GVU5DX1NEQTA+LApAQCAtMjg2LDYg
+KzI5NiwxNCBAQAogCQkJY2xvY2stbmFtZXMgPSAic3BpIiwgIndyYXAiOwogCQl9OwogCisJCWNl
+YzogY2VjQDEwMDEzMDAwIHsKKwkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWNlYyI7
+CisJCQlyZWcgPSA8MCAweDEwMDEzMDAwIDAgMHhiYz47CisJCQlpbnRlcnJ1cHRzID0gPEdJQ19T
+UEkgMTY3IElSUV9UWVBFX0xFVkVMX0xPVz47CisJCQljbG9ja3MgPSA8JmluZnJhY2ZnIENMS19J
+TkZSQV9DRUM+OworCQkJc3RhdHVzID0gImRpc2FibGVkIjsKKwkJfTsKKwogCQlzeXNpcnE6IGlu
+dHBvbC1jb250cm9sbGVyQDEwMjAwNjIwIHsKIAkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
+MTczLXN5c2lycSIsCiAJCQkJICAgICAibWVkaWF0ZWssbXQ2NTc3LXN5c2lycSI7CkBAIC0zMTIs
+NiArMzMwLDE5IEBACiAJCQkjY2xvY2stY2VsbHMgPSA8MT47CiAJCX07CiAKKwkJaGRtaV9waHk6
+IGhkbWktcGh5QDEwMjA5MTAwIHsKKwkJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWhk
+bWktcGh5IjsKKwkJCXJlZyA9IDwwIDB4MTAyMDkxMDAgMCAweDI0PjsKKwkJCWNsb2NrcyA9IDwm
+YXBtaXhlZHN5cyBDTEtfQVBNSVhFRF9IRE1JX1JFRj47CisJCQljbG9jay1uYW1lcyA9ICJwbGxf
+cmVmIjsKKwkJCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJoZG1pdHhfZGlnX2N0cyI7CisJCQltZWRp
+YXRlayxpYmlhcyA9IDwweGE+OworCQkJbWVkaWF0ZWssaWJpYXNfdXAgPSA8MHgxYz47CisJCQkj
+Y2xvY2stY2VsbHMgPSA8MD47CisJCQkjcGh5LWNlbGxzID0gPDA+OworCQkJc3RhdHVzID0gImRp
+c2FibGVkIjsKKwkJfTsKKwogCQltaXBpX3R4MDogbWlwaS1kcGh5QDEwMjE1MDAwIHsKIAkJCWNv
+bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1pcGktdHgiOwogCQkJcmVnID0gPDAgMHgxMDIx
+NTAwMCAwIDB4MTAwMD47CkBAIC03OTgsNiArODI5LDEyIEBACiAJCQkJIDwmYXBtaXhlZHN5cyBD
+TEtfQVBNSVhFRF9UVkRQTEw+OwogCQkJY2xvY2stbmFtZXMgPSAicGl4ZWwiLCAiZW5naW5lIiwg
+InBsbCI7CiAJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOworCisJCQlwb3J0IHsKKwkJCQlkcGkwX291
+dDogZW5kcG9pbnQgeworCQkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkwX2luPjsKKwkJCQl9
+OworCQkJfTsKIAkJfTsKIAogCQlwd20wOiBwd21AMTQwMWUwMDAgewpAQCAtODU1LDYgKzg5Miwz
+OCBAQAogCQkJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9PRD47CiAJCX07CiAKKwkJaGRt
+aTA6IGhkbWlAMTQwMjUwMDAgeworCQkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtaGRt
+aSI7CisJCQlyZWcgPSA8MCAweDE0MDI1MDAwIDAgMHg0MDA+OworCQkJaW50ZXJydXB0cyA9IDxH
+SUNfU1BJIDIwNiBJUlFfVFlQRV9MRVZFTF9MT1c+OworCQkJY2xvY2tzID0gPCZtbXN5cyBDTEtf
+TU1fSERNSV9QSVhFTD4sCisJCQkJIDwmbW1zeXMgQ0xLX01NX0hETUlfUExMQ0s+LAorCQkJCSA8
+Jm1tc3lzIENMS19NTV9IRE1JX0FVRElPPiwKKwkJCQkgPCZtbXN5cyBDTEtfTU1fSERNSV9TUERJ
+Rj47CisJCQljbG9jay1uYW1lcyA9ICJwaXhlbCIsICJwbGwiLCAiYmNsayIsICJzcGRpZiI7CisJ
+CQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOworCQkJcGluY3RybC0wID0gPCZoZG1pX3Bpbj47
+CisJCQlwaHlzID0gPCZoZG1pX3BoeT47CisJCQlwaHktbmFtZXMgPSAiaGRtaSI7CisJCQltZWRp
+YXRlayxzeXNjb24taGRtaSA9IDwmbW1zeXMgMHg5MDA+OworCQkJYXNzaWduZWQtY2xvY2tzID0g
+PCZ0b3Bja2dlbiBDTEtfVE9QX0hETUlfU0VMPjsKKwkJCWFzc2lnbmVkLWNsb2NrLXBhcmVudHMg
+PSA8JmhkbWlfcGh5PjsKKwkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CisKKwkJCXBvcnRzIHsKKwkJ
+CQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKKwkJCQkjc2l6ZS1jZWxscyA9IDwwPjsKKworCQkJCXBv
+cnRAMCB7CisJCQkJCXJlZyA9IDwwPjsKKworCQkJCQloZG1pMF9pbjogZW5kcG9pbnQgeworCQkJ
+CQkJcmVtb3RlLWVuZHBvaW50ID0gPCZkcGkwX291dD47CisJCQkJCX07CisJCQkJfTsKKwkJCX07
+CisJCX07CisKIAkJbGFyYjQ6IGxhcmJAMTQwMjcwMDAgewogCQkJY29tcGF0aWJsZSA9ICJtZWRp
+YXRlayxtdDgxNzMtc21pLWxhcmIiOwogCQkJcmVnID0gPDAgMHgxNDAyNzAwMCAwIDB4MTAwMD47
+Ci0tIAoyLjcuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
