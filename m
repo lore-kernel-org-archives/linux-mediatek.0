@@ -1,91 +1,41 @@
-From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/8] drivers/pinctrl: make mediatek/pinctrl-mt6397
- driver explicitly non-modular
-Date: Tue, 1 Mar 2016 12:02:01 -0800
-Message-ID: <1456862521.13127.1.camel@mussux00>
-References: <1456778924-20730-1-git-send-email-paul.gortmaker@windriver.com>
- <1456778924-20730-3-git-send-email-paul.gortmaker@windriver.com>
+From: Alexandre Belloni <alexandre.belloni@free-electrons.com>
+Subject: Re: [PATCH] rtc: mt6397: Remove plaform module alias
+Date: Tue, 1 Mar 2016 22:49:20 +0100
+Message-ID: <20160301214920.GI23985@piout.net>
+References: <1456334780-17380-1-git-send-email-javier@osg.samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1456778924-20730-3-git-send-email-paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
-Cc: biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1456334780-17380-1-git-send-email-javier@osg.samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Javier Martinez Canillas <javier@osg.samsung.com>
+Cc: linux-kernel@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Alessandro Zummo <a.zummo@towertech.it>, rtc-linux@googlegroups.com, linux-mediatek@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-02-29 at 15:48 -0500, Paul Gortmaker wrote:
-> The Kconfig for this driver is currently:
+On 24/02/2016 at 14:26:20 -0300, Javier Martinez Canillas wrote :
+> The driver uses the MODULE_ALIAS() macro to export a platform module alias
+> to allow the module to be autoloaded if the device is registered using the
+> legacy platform registration mechanism but the driver is always used by OF
+> only machines so the alias is not needed and should just be removed.
 > 
-> config PINCTRL_MT6397
->         bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
+> Suggested-by: Arnd Bergmann <arnd@arndb.de>
+> Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
 > 
-> ...meaning that it is currently not being built as a module by anyone.
-> Lets remove the modular code that is essentially orphaned, so that
-> when reading the driver there is no doubt it is builtin-only.
-> 
-> Since module_init translates to device_initcall in the non-modular
-> case, the init ordering remains unchanged with this commit.
-> 
-> We also delete the MODULE_LICENSE tag etc. since all that information
-> is already contained at the top of the file in the comments.
-> 
-> Also note that MODULE_DEVICE_TABLE is a no-op for non-modular code.
-> 
-> Cc: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Signed-off-by: Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mt6397.c | 10 ++--------
->  1 file changed, 2 insertions(+), 8 deletions(-)
+> Hello,
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> index f9751ae28e32..6eccb85c02cd 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> @@ -12,7 +12,7 @@
->   * GNU General Public License for more details.
->   */
->  
-> -#include <linux/module.h>
-> +#include <linux/init.h>
->  #include <linux/platform_device.h>
->  #include <linux/of.h>
->  #include <linux/of_device.h>
-> @@ -55,7 +55,6 @@ static const struct of_device_id mt6397_pctrl_match[] = {
->  	{ .compatible = "mediatek,mt6397-pinctrl", },
->  	{ }
->  };
-> -MODULE_DEVICE_TABLE(of, mt6397_pctrl_match);
->  
->  static struct platform_driver mtk_pinctrl_driver = {
->  	.probe = mt6397_pinctrl_probe,
-> @@ -69,9 +68,4 @@ static int __init mtk_pinctrl_init(void)
->  {
->  	return platform_driver_register(&mtk_pinctrl_driver);
->  }
-> -
-> -module_init(mtk_pinctrl_init);
-> -
-> -MODULE_LICENSE("GPL v2");
-> -MODULE_DESCRIPTION("MediaTek MT6397 Pinctrl Driver");
-> -MODULE_AUTHOR("Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +device_initcall(mtk_pinctrl_init);
+> This patch supersedes "rtc: mt6397: Add platform device ID table":
+> https://lkml.org/lkml/2016/2/9/192.
+> 
+> Best regards,
+> Javier
+> 
+>  drivers/rtc/rtc-mt6397.c | 1 -
+>  1 file changed, 1 deletion(-)
+Applied, thanks.
 
-
-Acked-by: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Thanks,
-Hongzhou
+-- 
+Alexandre Belloni, Free Electrons
+Embedded Linux, Kernel and Android engineering
+http://free-electrons.com
