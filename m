@@ -1,63 +1,296 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH v2 2/2] drm/panel: Support for LG lp120up1 panel with eDP
- input
-Date: Wed, 2 Mar 2016 17:12:36 +0100
-Message-ID: <20160302161236.GC23204@ulmo.nvidia.com>
-References: <1456138904-15258-1-git-send-email-jitao.shi@mediatek.com>
- <1456138904-15258-2-git-send-email-jitao.shi@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH V7 1/2] regulator: Add document for MT6323 regulator
+Date: Wed, 2 Mar 2016 12:07:28 -0600
+Message-ID: <20160302180728.GA21394@rob-hp-laptop>
+References: <1456396631-12788-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="32u276st3Jlj2kUU"
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1456138904-15258-2-git-send-email-jitao.shi@mediatek.com>
+In-Reply-To: <1456396631-12788-1-git-send-email-blogic@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding <treding@nvidia.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, eddie.huan
+To: John Crispin <blogic@openwrt.org>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
---32u276st3Jlj2kUU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Feb 22, 2016 at 07:01:44PM +0800, Jitao Shi wrote:
-> The LG lp120up1 TFT LCD panel with eDP interface is a 12.0" 1920x1280
-> panel, which can be supported by the simple panel driver
->=20
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+On Thu, Feb 25, 2016 at 11:37:10AM +0100, John Crispin wrote:
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> Cc: devicetree@vger.kernel.org
 > ---
-> Changes since v1:
->  - Add eDP panel type in comment msg
->  - Fixed comment msg with 72 characters width
-> ---
->  drivers/gpu/drm/panel/panel-simple.c |   26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+> This patch needs to be merged post-rc1 as it depends on the MFD series of
+> the PMIC which is already inside Lee's tree pending the PR.
 
-Applied, thanks.
+Why? It is an indpendent change with no actual dependency.
 
-Thierry
+> 
+> Changes in V7
+> * remove another compatible string
+> * small wording changes
+> 
+> Changes in V6
+> * remove the compatible string
+> 
+> Changes in V5
+> * regulator vs regulators
+> 
+> Changes in V4
+> * regulator is a subnode and not a property
+> 
+>  .../bindings/regulator/mt6323-regulator.txt        |  239 ++++++++++++++++++++
+>  1 file changed, 239 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
 
---32u276st3Jlj2kUU
-Content-Type: application/pgp-signature; name="signature.asc"
+Acked-by: Rob Herring <robh@kernel.org>
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJW1xD0AAoJEN0jrNd/PrOh6+gP/2hHu4YCUUpShT0UON5yy/1U
-vP6XJ+7Ymuy5OJqNTcyH03qSGk/nvfRoF+We4T3YWVY+Lo+jUXOnl9iBUl2MiZ5i
-H0xGGmrARLujrPMhi50p1GnEFTmxaOa2V6pGEp6B5tC7k3sskgDnKvlhg490r8kX
-y+LwztbtNT206jkQw/YqQz5R0BCi2iUoDbvO8U/TuhtTSAKSPsrrm7xLeHKDjxjA
-uSfa1be60LJQrGIGgbChpf/Jp97huCL4XlfFCILdIoqlrb+iRWGlWlIJXAXkZCB0
-kFGA3hvFjuUt9iW4tPlF1VEsueMnuaIplWVFP9YCyyOkZVVuf9o+pLm4uXfp7GoD
-jAYybCA1lj5JdEBF/pmMkWWKLG798kio4GcbeQWt8xiYd0RoL68/Gj1EC70GX4Fh
-udMlJ8J3s4XTYpWT51p4X75VVSD8srQfapo3mikAg0M+VdhLYBeLpLmE+VLZLhJa
-pMTKnj9cw2nWxxtUUBAmO14/Xdihqygvv4W7oeni0WL0w/PoiHrWhFXma8SL58zd
-mDcf3AjrXjQTMN35FyOjDGLuoXJFGWIltbNsYNWCus0R11w2H6lNfmHcYqMqbZjs
-KtN2KFImMq5ixurGtNg3IYXDy5aS8goQzbH/IJn2uLs+/HwWDEDmUzPCwvCtoQ9v
-t7Eo3g+zJZa9zFRXnHV+
-=fAm3
------END PGP SIGNATURE-----
-
---32u276st3Jlj2kUU--
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> new file mode 100644
+> index 0000000..9fd95e7
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> @@ -0,0 +1,239 @@
+> +Mediatek MT6323 Regulator Driver
+> +
+> +All voltage regulators are defined as subnodes of the regulators node. A list
+> +of regulators provided by this controller are defined as subnodes of the
+> +PMIC's node. Each regulator is named according to its regulator type,
+> +buck_<name> and ldo_<name>. The definition for each of these nodes is defined
+> +using the standard binding for regulators at
+> +Documentation/devicetree/bindings/regulator/regulator.txt.
+> +
+> +The valid names for regulators are::
+> +BUCK:
+> +  buck_vproc, buck_vsys, buck_vpa
+> +LDO:
+> +  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
+> +  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
+> +  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
+> +  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
+> +
+> +Example:
+> +
+> +	pmic: mt6323 {
+> +		compatible = "mediatek,mt6323";
+> +
+> +		mt6323regulator: regulators {
+> +			mt6323_vproc_reg: buck_vproc{
+> +				regulator-name = "vproc";
+> +				regulator-min-microvolt = < 700000>;
+> +				regulator-max-microvolt = <1350000>;
+> +				regulator-ramp-delay = <12500>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vsys_reg: buck_vsys{
+> +				regulator-name = "vsys";
+> +				regulator-min-microvolt = <1400000>;
+> +				regulator-max-microvolt = <2987500>;
+> +				regulator-ramp-delay = <25000>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vpa_reg: buck_vpa{
+> +				regulator-name = "vpa";
+> +				regulator-min-microvolt = < 500000>;
+> +				regulator-max-microvolt = <3650000>;
+> +			};
+> +
+> +			mt6323_vtcxo_reg: ldo_vtcxo{
+> +				regulator-name = "vtcxo";
+> +				regulator-min-microvolt = <2800000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-enable-ramp-delay = <90>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vcn28_reg: ldo_vcn28{
+> +				regulator-name = "vcn28";
+> +				regulator-min-microvolt = <2800000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-enable-ramp-delay = <185>;
+> +			};
+> +
+> +			mt6323_vcn33_bt_reg: ldo_vcn33_bt{
+> +				regulator-name = "vcn33_bt";
+> +				regulator-min-microvolt = <3300000>;
+> +				regulator-max-microvolt = <3600000>;
+> +				regulator-enable-ramp-delay = <185>;
+> +			};
+> +
+> +			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi{
+> +				regulator-name = "vcn33_wifi";
+> +				regulator-min-microvolt = <3300000>;
+> +				regulator-max-microvolt = <3600000>;
+> +				regulator-enable-ramp-delay = <185>;
+> +			};
+> +
+> +			mt6323_va_reg: ldo_va{
+> +				regulator-name = "va";
+> +				regulator-min-microvolt = <2800000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vcama_reg: ldo_vcama{
+> +				regulator-name = "vcama";
+> +				regulator-min-microvolt = <1500000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vio28_reg: ldo_vio28{
+> +				regulator-name = "vio28";
+> +				regulator-min-microvolt = <2800000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vusb_reg: ldo_vusb{
+> +				regulator-name = "vusb";
+> +				regulator-min-microvolt = <3300000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vmc_reg: ldo_vmc{
+> +				regulator-name = "vmc";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <36>;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vmch_reg: ldo_vmch{
+> +				regulator-name = "vmch";
+> +				regulator-min-microvolt = <3000000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <36>;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vemc3v3_reg: ldo_vemc3v3{
+> +				regulator-name = "vemc3v3";
+> +				regulator-min-microvolt = <3000000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <36>;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vgp1_reg: ldo_vgp1{
+> +				regulator-name = "vgp1";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vgp2_reg: ldo_vgp2{
+> +				regulator-name = "vgp2";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <3000000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vgp3_reg: ldo_vgp3{
+> +				regulator-name = "vgp3";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vcn18_reg: ldo_vcn18{
+> +				regulator-name = "vcn18";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vsim1_reg: ldo_vsim1{
+> +				regulator-name = "vsim1";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <3000000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vsim2_reg: ldo_vsim2{
+> +				regulator-name = "vsim2";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <3000000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vrtc_reg: ldo_vrtc{
+> +				regulator-name = "vrtc";
+> +				regulator-min-microvolt = <2800000>;
+> +				regulator-max-microvolt = <2800000>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vcamaf_reg: ldo_vcamaf{
+> +				regulator-name = "vcamaf";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vibr_reg: ldo_vibr{
+> +				regulator-name = "vibr";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <3300000>;
+> +				regulator-enable-ramp-delay = <36>;
+> +			};
+> +
+> +			mt6323_vrf18_reg: ldo_vrf18{
+> +				regulator-name = "vrf18";
+> +				regulator-min-microvolt = <1825000>;
+> +				regulator-max-microvolt = <1825000>;
+> +				regulator-enable-ramp-delay = <187>;
+> +			};
+> +
+> +			mt6323_vm_reg: ldo_vm{
+> +				regulator-name = "vm";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vio18_reg: ldo_vio18{
+> +				regulator-name = "vio18";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +				regulator-always-on;
+> +				regulator-boot-on;
+> +			};
+> +
+> +			mt6323_vcamd_reg: ldo_vcamd{
+> +				regulator-name = "vcamd";
+> +				regulator-min-microvolt = <1200000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +
+> +			mt6323_vcamio_reg: ldo_vcamio{
+> +				regulator-name = "vcamio";
+> +				regulator-min-microvolt = <1800000>;
+> +				regulator-max-microvolt = <1800000>;
+> +				regulator-enable-ramp-delay = <216>;
+> +			};
+> +		};
+> +	};
+> -- 
+> 1.7.10.4
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
