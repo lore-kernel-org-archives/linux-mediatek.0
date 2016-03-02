@@ -1,32 +1,25 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+From: John Crispin <blogic@openwrt.org>
 Subject: Re: [PATCH V7 1/2] regulator: Add document for MT6323 regulator
-Date: Wed, 2 Mar 2016 19:11:27 +0100
-Message-ID: <56D72CCF.3070301@openwrt.org>
+Date: Wed, 2 Mar 2016 19:13:56 +0100
+Message-ID: <56D72D64.4020705@openwrt.org>
 References: <1456396631-12788-1-git-send-email-blogic@openwrt.org>
  <20160302180728.GA21394@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20160302180728.GA21394@rob-hp-laptop>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
 On 02/03/2016 19:07, Rob Herring wrote:
 > On Thu, Feb 25, 2016 at 11:37:10AM +0100, John Crispin wrote:
->> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
->> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> Signed-off-by: John Crispin <blogic@openwrt.org>
+>> Cc: devicetree@vger.kernel.org
 >> ---
 >> This patch needs to be merged post-rc1 as it depends on the MFD series of
 >> the PMIC which is already inside Lee's tree pending the PR.
@@ -38,6 +31,7 @@ that comment applies to the whole series and not just the one patch as
 2/2 uses registers contained within a header file which is part of the
 series adding the actual MFD driver. adding the doc without the driver
 seemed wrong to me.
+
 
 
 >>
@@ -58,7 +52,7 @@ seemed wrong to me.
 >>  1 file changed, 239 insertions(+)
 >>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
 > 
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Acked-by: Rob Herring <robh@kernel.org>
 > 
 >>
 >> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
@@ -310,11 +304,11 @@ seemed wrong to me.
 >> 1.7.10.4
 >> --
 >> To unsubscribe from this list: send the line "unsubscribe devicetree" in
->> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+>> the body of a message to majordomo@vger.kernel.org
 >> More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > 
 > _______________________________________________
 > Linux-mediatek mailing list
-> Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> Linux-mediatek@lists.infradead.org
 > http://lists.infradead.org/mailman/listinfo/linux-mediatek
 > 
