@@ -1,46 +1,94 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: Re: [patch 1/2] iommu/mediatek: signedness bug in probe function
-Date: Wed, 2 Mar 2016 14:53:52 +0100
-Message-ID: <20160302135351.GC20213@8bytes.org>
-References: <20160302101006.GF5533@mwanda>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v5 2/9] ASoC: mediatek: address dai link array
+	entries by enum
+Date: Wed,  2 Mar 2016 15:49:06 +0100
+Message-ID: <1456930153-11853-3-git-send-email-p.zabel@pengutronix.de>
+References: <1456930153-11853-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160302101006.GF5533@mwanda>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Cc: kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1456930153-11853-1-git-send-email-p.zabel@pengutronix.de>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: alsa-devel@alsa-project.org
+Cc: Jean-Francois Moine <moinejf@free.fr>, Koro Chen <koro.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, Jyri Sarha <jsarha@ti.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 02, 2016 at 01:10:06PM +0300, Dan Carpenter wrote:
-> "larb_nr" needs to be signed for the error handling to work.  "i" can
-> be int as well.
-> 
-> Fixes: 0df4fabe208d ('iommu/mediatek: Add mt8173 IOMMU driver')
-> Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-> 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index 721ffdb..1a4022c 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -578,7 +578,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->  	struct resource         *res;
->  	struct component_match  *match = NULL;
->  	void                    *protect;
-> -	unsigned int            i, larb_nr;
-> +	int			i, larb_nr;
->  	int                     ret;
->  
->  	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+This should be more robust to future changes than adressing
+array entries by index number.
 
-I merged a similar fix from Andrzej Hajda yesterday.
+Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+---
+ sound/soc/mediatek/mt8173-rt5650-rt5676.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8173-rt5650-rt5676.c b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
+index 50ba538..5c4c58c 100644
+--- a/sound/soc/mediatek/mt8173-rt5650-rt5676.c
++++ b/sound/soc/mediatek/mt8173-rt5650-rt5676.c
+@@ -131,10 +131,17 @@ static struct snd_soc_dai_link_component mt8173_rt5650_rt5676_codecs[] = {
+ 	},
+ };
+ 
++enum {
++	DAI_LINK_PLAYBACK,
++	DAI_LINK_CAPTURE,
++	DAI_LINK_CODEC_I2S,
++	DAI_LINK_INTERCODEC
++};
++
+ /* Digital audio interface glue - connects codec <---> CPU */
+ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
+ 	/* Front End DAI links */
+-	{
++	[DAI_LINK_PLAYBACK] = {
+ 		.name = "rt5650_rt5676 Playback",
+ 		.stream_name = "rt5650_rt5676 Playback",
+ 		.cpu_dai_name = "DL1",
+@@ -144,7 +151,7 @@ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
+ 		.dynamic = 1,
+ 		.dpcm_playback = 1,
+ 	},
+-	{
++	[DAI_LINK_CAPTURE] = {
+ 		.name = "rt5650_rt5676 Capture",
+ 		.stream_name = "rt5650_rt5676 Capture",
+ 		.cpu_dai_name = "VUL",
+@@ -156,7 +163,7 @@ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
+ 	},
+ 
+ 	/* Back End DAI links */
+-	{
++	[DAI_LINK_CODEC_I2S] = {
+ 		.name = "Codec",
+ 		.cpu_dai_name = "I2S",
+ 		.no_pcm = 1,
+@@ -170,7 +177,8 @@ static struct snd_soc_dai_link mt8173_rt5650_rt5676_dais[] = {
+ 		.dpcm_playback = 1,
+ 		.dpcm_capture = 1,
+ 	},
+-	{ /* rt5676 <-> rt5650 intercodec link: Sets rt5676 I2S2 as master */
++	/* rt5676 <-> rt5650 intercodec link: Sets rt5676 I2S2 as master */
++	[DAI_LINK_INTERCODEC] = {
+ 		.name = "rt5650_rt5676 intercodec",
+ 		.stream_name = "rt5650_rt5676 intercodec",
+ 		.cpu_dai_name = "snd-soc-dummy-dai",
+@@ -240,7 +248,7 @@ static int mt8173_rt5650_rt5676_dev_probe(struct platform_device *pdev)
+ 	mt8173_rt5650_rt5676_codec_conf[0].of_node =
+ 		mt8173_rt5650_rt5676_codecs[1].of_node;
+ 
+-	mt8173_rt5650_rt5676_dais[3].codec_of_node =
++	mt8173_rt5650_rt5676_dais[DAI_LINK_INTERCODEC].codec_of_node =
+ 		mt8173_rt5650_rt5676_codecs[1].of_node;
+ 
+ 	card->dev = &pdev->dev;
+-- 
+2.7.0
