@@ -1,7 +1,7 @@
 From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
-Subject: [patch 1/2] iommu/mediatek: signedness bug in probe function
-Date: Wed, 2 Mar 2016 13:10:06 +0300
-Message-ID: <20160302101006.GF5533@mwanda>
+Subject: [patch 2/2] iommu/mediatek: checking for IS_ERR() instead of NULL
+Date: Wed, 2 Mar 2016 13:10:27 +0300
+Message-ID: <20160302101027.GG5533@mwanda>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -20,22 +20,33 @@ To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Yong Wu <yong.w
 Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-"larb_nr" needs to be signed for the error handling to work.  "i" can
-be int as well.
+of_platform_device_create() returns NULL on error, it never returns
+error pointers.
 
 Fixes: 0df4fabe208d ('iommu/mediatek: Add mt8173 IOMMU driver')
 Signed-off-by: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 721ffdb..1a4022c 100644
+index 1a4022c..4682da4 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -578,7 +578,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	struct resource         *res;
- 	struct component_match  *match = NULL;
- 	void                    *protect;
--	unsigned int            i, larb_nr;
-+	int			i, larb_nr;
- 	int                     ret;
+@@ -628,7 +628,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 			plarbdev = of_platform_device_create(
+ 						larbnode, NULL,
+ 						platform_bus_type.dev_root);
+-			if (IS_ERR(plarbdev))
++			if (!plarbdev)
+ 				return -EPROBE_DEFER;
+ 		}
+ 		data->smi_imu.larb_imu[i].dev = &plarbdev->dev;
+@@ -721,8 +721,8 @@ static int mtk_iommu_init_fn(struct device_node *np)
+ 	struct platform_device *pdev;
  
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+ 	pdev = of_platform_device_create(np, NULL, platform_bus_type.dev_root);
+-	if (IS_ERR(pdev))
+-		return PTR_ERR(pdev);
++	if (!pdev)
++		return -ENOMEM;
+ 
+ 	ret = platform_driver_register(&mtk_iommu_driver);
+ 	if (ret) {
