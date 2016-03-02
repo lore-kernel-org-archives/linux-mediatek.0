@@ -1,97 +1,78 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH v5 7/9] ASoC: hdmi-codec: Add ELD control
-Date: Wed,  2 Mar 2016 15:49:11 +0100
-Message-ID: <1456930153-11853-8-git-send-email-p.zabel@pengutronix.de>
-References: <1456930153-11853-1-git-send-email-p.zabel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1456930153-11853-1-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 2/6] usb: xhci-mtk: use __maybe_unused to hide pm functions
+Date: Wed,  2 Mar 2016 16:24:04 +0100
+Message-ID: <1456932255-71725-3-git-send-email-arnd@arndb.de>
+References: <1456932255-71725-1-git-send-email-arnd@arndb.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1456932255-71725-1-git-send-email-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-arm-kernel@lists.infradead.org, Felipe Balbi <balbi@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-ALSA doesn't know about all the different compressed audio formats,
-so there is no interface to let userspace enumerate the formats that
-are supported by the connected sink. Exporting the raw ELD bytes to
-userspace allows an application to select the appropriate audio format
-depending on the current capabilities of the connected HDMI sink device.
-Usually userspace then just pretends to ALSA that the data is in one of
-the raw 16-bit PCM audio formats and relies on the IEC controls to tell
-the sink how to interpret the data.
+The mediatek XHCI glue driver uses SET_SYSTEM_SLEEP_PM_OPS() to
+conditionally set the correct suspend/resume options, and
+also puts both the dev_pm_ops and the functions inside of
+an #ifdef testing for CONFIG_PM_SLEEP, but those functions
+then call other code that becomes unused:
 
-Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Reviewed-by: Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>
-Tested-by: Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>
+drivers/usb/host/xhci-mtk.c:135:12: error: 'xhci_mtk_host_disable' defined but not used [-Werror=unused-function]
+drivers/usb/host/xhci-mtk.c:313:13: error: 'usb_wakeup_enable' defined but not used [-Werror=unused-function]
+drivers/usb/host/xhci-mtk.c:321:13: error: 'usb_wakeup_disable' defined but not used [-Werror=unused-function]
+
+This replaces the #ifdef with __maybe_unused annotations so the
+compiler knows it can silently drop them instead of warning.
+
+For the DEV_PM_OPS definition, we can use an IS_ENABLED() check
+to avoid defining the structure when CONFIG_PM is not set without
+the #ifdef.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- sound/soc/codecs/hdmi-codec.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/usb/host/xhci-mtk.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-index 7d5db11..9c4e65c 100644
---- a/sound/soc/codecs/hdmi-codec.c
-+++ b/sound/soc/codecs/hdmi-codec.c
-@@ -55,6 +55,42 @@ enum {
- 	DAI_ID_SPDIF,
- };
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 9532f5aef71b..79959f17c38c 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -695,7 +695,6 @@ static int xhci_mtk_remove(struct platform_device *dev)
+ 	return 0;
+ }
  
-+static int hdmi_eld_ctl_info(struct snd_kcontrol *kcontrol,
-+			     struct snd_ctl_elem_info *uinfo)
-+{
-+	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
-+	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
-+
-+	uinfo->type = SNDRV_CTL_ELEM_TYPE_BYTES;
-+	uinfo->count = sizeof(hcp->eld);
-+
-+	return 0;
-+}
-+
-+static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
-+			    struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
-+	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
-+
-+	mutex_lock(&hcp->eld_lock);
-+	memcpy(ucontrol->value.bytes.data, hcp->eld, sizeof(hcp->eld));
-+	mutex_unlock(&hcp->eld_lock);
-+
-+	return 0;
-+}
-+
-+static const struct snd_kcontrol_new hdmi_controls[] = {
-+	{
-+		.access = SNDRV_CTL_ELEM_ACCESS_READ |
-+			  SNDRV_CTL_ELEM_ACCESS_VOLATILE,
-+		.iface = SNDRV_CTL_ELEM_IFACE_PCM,
-+		.name = "ELD",
-+		.info = hdmi_eld_ctl_info,
-+		.get = hdmi_eld_ctl_get,
-+	},
-+};
-+
- static void hdmi_codec_abort(struct device *dev)
+-#ifdef CONFIG_PM_SLEEP
+ /*
+  * if ip sleep fails, and all clocks are disabled, access register will hang
+  * AHB bus, so stop polling roothubs to avoid regs access on bus suspend.
+@@ -703,7 +702,7 @@ static int xhci_mtk_remove(struct platform_device *dev)
+  * to wake up system immediately after system suspend complete if ip sleep
+  * fails, it is what we wanted.
+  */
+-static int xhci_mtk_suspend(struct device *dev)
++static int __maybe_unused xhci_mtk_suspend(struct device *dev)
  {
- 	struct hdmi_codec_priv *hcp = dev_get_drvdata(dev);
-@@ -326,6 +362,8 @@ static const struct snd_soc_dai_driver hdmi_spdif_dai = {
- };
+ 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
+ 	struct usb_hcd *hcd = mtk->hcd;
+@@ -722,7 +721,7 @@ static int xhci_mtk_suspend(struct device *dev)
+ 	return 0;
+ }
  
- static struct snd_soc_codec_driver hdmi_codec = {
-+	.controls = hdmi_controls,
-+	.num_controls = ARRAY_SIZE(hdmi_controls),
- 	.dapm_widgets = hdmi_widgets,
- 	.num_dapm_widgets = ARRAY_SIZE(hdmi_widgets),
- 	.dapm_routes = hdmi_routes,
+-static int xhci_mtk_resume(struct device *dev)
++static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ {
+ 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
+ 	struct usb_hcd *hcd = mtk->hcd;
+@@ -744,10 +743,7 @@ static int xhci_mtk_resume(struct device *dev)
+ static const struct dev_pm_ops xhci_mtk_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(xhci_mtk_suspend, xhci_mtk_resume)
+ };
+-#define DEV_PM_OPS	(&xhci_mtk_pm_ops)
+-#else
+-#define DEV_PM_OPS	NULL
+-#endif /* CONFIG_PM */
++#define DEV_PM_OPS IS_ENABLED(CONFIG_PM) ? &xhci_mtk_pm_ops : NULL
+ 
+ #ifdef CONFIG_OF
+ static const struct of_device_id mtk_xhci_of_match[] = {
 -- 
 2.7.0
