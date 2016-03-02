@@ -1,314 +1,288 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [PATCH V7 1/2] regulator: Add document for MT6323 regulator
-Date: Wed, 2 Mar 2016 19:13:56 +0100
-Message-ID: <56D72D64.4020705@openwrt.org>
-References: <1456396631-12788-1-git-send-email-blogic@openwrt.org>
- <20160302180728.GA21394@rob-hp-laptop>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH V2 01/12] net-next: mediatek: Document ralink/mediatek
+ SoC ethernet binding
+Date: Wed, 2 Mar 2016 12:46:37 -0600
+Message-ID: <20160302184637.GA4042@rob-hp-laptop>
+References: <1456496504-50429-1-git-send-email-blogic@openwrt.org>
+ <1456496504-50429-2-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160302180728.GA21394@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1456496504-50429-2-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Fred Chang =?utf-8?B?KOW8teWYieWujyk=?= <Fred.Chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Steven Liu =?utf-8?B?KOWKieS6uuixqik=?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Carlos Huang =?utf-8?B?KOm7g+Wjq+W9sCk=?= <Carlos.Huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michael Lee <igvtee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 02/03/2016 19:07, Rob Herring wrote:
-> On Thu, Feb 25, 2016 at 11:37:10AM +0100, John Crispin wrote:
->> Signed-off-by: John Crispin <blogic@openwrt.org>
->> Cc: devicetree@vger.kernel.org
->> ---
->> This patch needs to be merged post-rc1 as it depends on the MFD series of
->> the PMIC which is already inside Lee's tree pending the PR.
+On Fri, Feb 26, 2016 at 03:21:33PM +0100, John Crispin wrote:
+> Add three files. One describes the actual frame engine, the other two
+> describe fast ethernet and gigabit switches bindings.
 > 
-> Why? It is an indpendent change with no actual dependency.
+> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Michael Lee <igvtee-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+Does this reflect the order people worked on this? Your SoB typically 
+would be last.
+
+> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> ---
+>  .../devicetree/bindings/net/mediatek-net-esw.txt   |   25 +++++
+>  .../devicetree/bindings/net/mediatek-net-gsw.txt   |   48 +++++++++
+>  .../devicetree/bindings/net/mediatek-net.txt       |  113 ++++++++++++++++++++
+>  3 files changed, 186 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-net-esw.txt
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-net-gsw.txt
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-net.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net-esw.txt b/Documentation/devicetree/bindings/net/mediatek-net-esw.txt
+> new file mode 100644
+> index 0000000..84c51a0
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net-esw.txt
+> @@ -0,0 +1,25 @@
+> +Ralink Fast Ethernet Embedded Switch
+> +====================================
+> +
+> +The ralink fast ethernet embedded switch can be found on Ralink and Mediatek
+> +SoCs (RT3x5x, RT5350, MT76x8).
+> +
+> +Required properties:
+> +- compatible: Should be "ralink,rt3050-esw"
+> +- reg: Address and length of the register set for the device
+> +- interrupts: Should contain the embedded switches interrupt
+> +
+> +Optional properties:
+> +- mediatek,led_polarity: override the active high/low settings of the leds
 
-that comment applies to the whole series and not just the one patch as
-2/2 uses registers contained within a header file which is part of the
-series adding the actual MFD driver. adding the doc without the driver
-seemed wrong to me.
+Don't use '_'.
 
+This doesn't tell me what the polaritiy actually is.
 
+> +- interrupt-parent: Should be the phandle for the interrupt controller
+> +  that services interrupts for this device
+> +
+> +Example:
+> +
+> +esw@10110000 {
+> +	compatible = "ralink,rt3050-esw";
+> +	reg = <0x10110000 8000>;
+> +
+> +	interrupt-parent = <&intc>;
+> +	interrupts = <17>;
+> +};
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net-gsw.txt b/Documentation/devicetree/bindings/net/mediatek-net-gsw.txt
+> new file mode 100644
+> index 0000000..596b385
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net-gsw.txt
+> @@ -0,0 +1,48 @@
+> +Mediatek Gigabit Switch
+> +=======================
+> +
+> +The mediatek gigabit switch can be found on Mediatek SoCs.
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,mt7620-gsw", "mediatek,mt7621-gsw",
+> +  "mediatek,mt7623-gsw"
 
->>
->> Changes in V7
->> * remove another compatible string
->> * small wording changes
->>
->> Changes in V6
->> * remove the compatible string
->>
->> Changes in V5
->> * regulator vs regulators
->>
->> Changes in V4
->> * regulator is a subnode and not a property
->>
->>  .../bindings/regulator/mt6323-regulator.txt        |  239 ++++++++++++++++++++
->>  1 file changed, 239 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> 
->>
->> diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
->> new file mode 100644
->> index 0000000..9fd95e7
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
->> @@ -0,0 +1,239 @@
->> +Mediatek MT6323 Regulator Driver
->> +
->> +All voltage regulators are defined as subnodes of the regulators node. A list
->> +of regulators provided by this controller are defined as subnodes of the
->> +PMIC's node. Each regulator is named according to its regulator type,
->> +buck_<name> and ldo_<name>. The definition for each of these nodes is defined
->> +using the standard binding for regulators at
->> +Documentation/devicetree/bindings/regulator/regulator.txt.
->> +
->> +The valid names for regulators are::
->> +BUCK:
->> +  buck_vproc, buck_vsys, buck_vpa
->> +LDO:
->> +  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
->> +  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
->> +  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
->> +  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
->> +
->> +Example:
->> +
->> +	pmic: mt6323 {
->> +		compatible = "mediatek,mt6323";
->> +
->> +		mt6323regulator: regulators {
->> +			mt6323_vproc_reg: buck_vproc{
->> +				regulator-name = "vproc";
->> +				regulator-min-microvolt = < 700000>;
->> +				regulator-max-microvolt = <1350000>;
->> +				regulator-ramp-delay = <12500>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vsys_reg: buck_vsys{
->> +				regulator-name = "vsys";
->> +				regulator-min-microvolt = <1400000>;
->> +				regulator-max-microvolt = <2987500>;
->> +				regulator-ramp-delay = <25000>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vpa_reg: buck_vpa{
->> +				regulator-name = "vpa";
->> +				regulator-min-microvolt = < 500000>;
->> +				regulator-max-microvolt = <3650000>;
->> +			};
->> +
->> +			mt6323_vtcxo_reg: ldo_vtcxo{
->> +				regulator-name = "vtcxo";
->> +				regulator-min-microvolt = <2800000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-enable-ramp-delay = <90>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vcn28_reg: ldo_vcn28{
->> +				regulator-name = "vcn28";
->> +				regulator-min-microvolt = <2800000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-enable-ramp-delay = <185>;
->> +			};
->> +
->> +			mt6323_vcn33_bt_reg: ldo_vcn33_bt{
->> +				regulator-name = "vcn33_bt";
->> +				regulator-min-microvolt = <3300000>;
->> +				regulator-max-microvolt = <3600000>;
->> +				regulator-enable-ramp-delay = <185>;
->> +			};
->> +
->> +			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi{
->> +				regulator-name = "vcn33_wifi";
->> +				regulator-min-microvolt = <3300000>;
->> +				regulator-max-microvolt = <3600000>;
->> +				regulator-enable-ramp-delay = <185>;
->> +			};
->> +
->> +			mt6323_va_reg: ldo_va{
->> +				regulator-name = "va";
->> +				regulator-min-microvolt = <2800000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vcama_reg: ldo_vcama{
->> +				regulator-name = "vcama";
->> +				regulator-min-microvolt = <1500000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vio28_reg: ldo_vio28{
->> +				regulator-name = "vio28";
->> +				regulator-min-microvolt = <2800000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vusb_reg: ldo_vusb{
->> +				regulator-name = "vusb";
->> +				regulator-min-microvolt = <3300000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vmc_reg: ldo_vmc{
->> +				regulator-name = "vmc";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <36>;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vmch_reg: ldo_vmch{
->> +				regulator-name = "vmch";
->> +				regulator-min-microvolt = <3000000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <36>;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vemc3v3_reg: ldo_vemc3v3{
->> +				regulator-name = "vemc3v3";
->> +				regulator-min-microvolt = <3000000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <36>;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vgp1_reg: ldo_vgp1{
->> +				regulator-name = "vgp1";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vgp2_reg: ldo_vgp2{
->> +				regulator-name = "vgp2";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <3000000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vgp3_reg: ldo_vgp3{
->> +				regulator-name = "vgp3";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vcn18_reg: ldo_vcn18{
->> +				regulator-name = "vcn18";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vsim1_reg: ldo_vsim1{
->> +				regulator-name = "vsim1";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <3000000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vsim2_reg: ldo_vsim2{
->> +				regulator-name = "vsim2";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <3000000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vrtc_reg: ldo_vrtc{
->> +				regulator-name = "vrtc";
->> +				regulator-min-microvolt = <2800000>;
->> +				regulator-max-microvolt = <2800000>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vcamaf_reg: ldo_vcamaf{
->> +				regulator-name = "vcamaf";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vibr_reg: ldo_vibr{
->> +				regulator-name = "vibr";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <3300000>;
->> +				regulator-enable-ramp-delay = <36>;
->> +			};
->> +
->> +			mt6323_vrf18_reg: ldo_vrf18{
->> +				regulator-name = "vrf18";
->> +				regulator-min-microvolt = <1825000>;
->> +				regulator-max-microvolt = <1825000>;
->> +				regulator-enable-ramp-delay = <187>;
->> +			};
->> +
->> +			mt6323_vm_reg: ldo_vm{
->> +				regulator-name = "vm";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vio18_reg: ldo_vio18{
->> +				regulator-name = "vio18";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +				regulator-always-on;
->> +				regulator-boot-on;
->> +			};
->> +
->> +			mt6323_vcamd_reg: ldo_vcamd{
->> +				regulator-name = "vcamd";
->> +				regulator-min-microvolt = <1200000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +
->> +			mt6323_vcamio_reg: ldo_vcamio{
->> +				regulator-name = "vcamio";
->> +				regulator-min-microvolt = <1800000>;
->> +				regulator-max-microvolt = <1800000>;
->> +				regulator-enable-ramp-delay = <216>;
->> +			};
->> +		};
->> +	};
->> -- 
->> 1.7.10.4
->> --
->> To unsubscribe from this list: send the line "unsubscribe devicetree" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+This is an OR condition? Formatting like this would be better:
+
+Should be one of:
+	"mediatek,mt7620-gsw"
+	"mediatek,mt7621-gsw"
+	"mediatek,mt7623-gsw"
+
+> +- reg: Address and length of the register set for the device
+> +- interrupts: Should contain the gigabit switches interrupt
+
+s/switches/switch's/
+
+> +
+> +
+> +Additional required properties for ARM based SoCs:
+
+Which ones are those? Describe in terms of compatible properties.
+
+> +- mediatek,reset-pin: phandle describing the reset GPIO
+> +- clocks: the clocks used by the switch
+> +- clock-names: the names of the clocks listed in the clocks property
+> +  these should be "trgpll", "esw", "gp2", "gp1"
+> +- mt7530-supply: the phandle of the regulator used to power the switch
+> +- mediatek,pctl-regmap: phandle to the port control regmap. this is used to
+> +  setup the drive current
+> +
+> +
+> +Optional properties:
+> +- interrupt-parent: Should be the phandle for the interrupt controller
+> +  that services interrupts for this device
+> +
+> +Example:
+> +
+> +gsw: switch@1b100000 {
+> +	compatible = "mediatek,mt7623-gsw";
+> +	reg = <0 0x1b110000 0 0x300000>;
+> +
+> +	interrupt-parent = <&pio>;
+> +	interrupts = <168 IRQ_TYPE_EDGE_RISING>;
+> +
+> +	clocks = <&apmixedsys CLK_APMIXED_TRGPLL>,
+> +		 <&ethsys CLK_ETHSYS_ESW>,
+> +		 <&ethsys CLK_ETHSYS_GP2>,
+> +		 <&ethsys CLK_ETHSYS_GP1>;
+> +	clock-names = "trgpll", "esw", "gp2", "gp1";
+> +
+> +	mt7530-supply = <&mt6323_vpa_reg>;
+> +
+> +	mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> +	mediatek,reset-pin = <&pio 15 0>;
+> +
+> +	status = "okay";
+> +};
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> new file mode 100644
+> index 0000000..f8c5747
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> @@ -0,0 +1,113 @@
+> +iMEdiatek Frame Engine Ethernet controller
+
+typo?
+
+> +=======================================
+> +
+> +The frame engine ethernet controller can be found on Ralink and Mediatek SoCs
+> +(RT288x, RT3x5x, RT366x, RT388x, rt5350, mt7620, mt7621, mt76x8).
+> +
+> +Depending on the SoC, there is a number of ports connected to the CPU port
+> +directly and/or via a (gigabit-)switch. Newer gigabit SoCs can support
+> +a dual MAC setup.
+> +
+> +* Ethernet controller node
+> +
+> +Required properties:
+> +- compatible: Should be one of "ralink,rt2880-eth", "ralink,rt3050-eth",
+> +  "ralink,rt3050-eth", "ralink,rt3883-eth", "ralink,rt5350-eth",
+> +  "mediatek,mt7620-eth", "mediatek,mt7621-eth", "mediatek,mt7623-eth"
+
+Do one per line.
+
+> +- reg: Address and length of the register set for the device
+> +- interrupts: Should contain the frame engines interrupt
+> +- mediatek,ethsys: phandle to the syscon node that handles the port setup
+> +
+> +Required properties for ARM based SoCs:
+
+Which ones?
+
+> +- clocks: the clock used by the core
+> +- clock-names: the names of the clock listed in the clocks property
+> +- power-domains: phandle the to power domain that the ethernet is part of
+> +
+> +Optional properties:
+> +- interrupt-parent: Should be the phandle for the interrupt controller
+> +  that services interrupts for this device
+> +- mediatek,switch : phandle pointing at the device node of the switch device
+> +
+> +
+> +* Ethernet port node for MT7620
+> +
+> +We need to define which physical port is wired and how it should be setup.
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,eth-port"
+> +- reg: The number of the physical port
+> +- phy-handle: reference to the node describing the phy
+> +
+> +
+> +* Ethernet MAC node - dual MAC SoCs only
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,eth-mac"
+> +- reg: The number of the MAC
+> +
+> +
+> +Example for singel MAC SoC:
+
+s/singel/single/
+
+> +
+> +mdio-bus {
+> +	status = "okay";
+> +
+> +	phy4: ethernet-phy@4 {
+> +		reg = <4>;
+> +		phy-mode = "rgmii";
+> +	};
+> +};
+> +
+> +eth: ethernet@10100000 {
+> +	compatible = "mediatek,mt7620-eth";
+> +	reg = <0x10100000 10000>;
+> +
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	interrupt-parent = <&cpuintc>;
+> +	interrupts = <5>;
+> +
+> +	mediatek,switch = <&gsw>;
+> +
+> +	port@4 {
+> +		status = "okay";
+> +		phy-mode = "rgmii";
+> +		phy-handle = <&phy4>;
+> +	};
+> +};
+> +
+> +
+> +Example for dual MAC SoC:
+> +
+> +eth: ethernet@1b100000 {
+> +	compatible = "mediatek,mt7623-eth";
+> +	reg = <0 0x1b100000 0 0x10000>;
+> +
+> +	clocks = <&topckgen CLK_TOP_ETHIF_SEL>;
+> +	clock-names = "ethif";
+> +
+> +	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
+> +	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+> +
+> +	mediatek,ethsys = <&ethsys>;
+> +	mediatek,switch = <&gsw>;
+> +
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	status = "disabled";
+> +
+> +	gmac1: mac@0 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <0>;
+> +
+> +		status = "okay";
+
+The parent disabled and this enabled doesn't make sense. I'd just drop 
+status from examples.
+
+> +	};
+> +
+> +	gmac2: mac@1 {
+> +		compatible = "mediatek,eth-mac";
+> +		reg = <1>;
+> +
+> +		status = "okay";
+> +	};
+> +};
+> -- 
+> 1.7.10.4
 > 
 > _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
