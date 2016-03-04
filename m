@@ -1,59 +1,57 @@
-From: Wolfram Sang <wsa@the-dreams.de>
-Subject: Re: [PATCH v2] i2c: mediatek: i2c multi transfer optimization
-Date: Thu, 3 Mar 2016 22:18:35 +0100
-Message-ID: <20160303211835.GC1501@katana>
-References: <1456421739-5450-1-git-send-email-liguo.zhang@mediatek.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH] arm64/dma-mapping: Add DMA_ATTR_ALLOC_SINGLE_PAGES
+ support
+Date: Fri, 4 Mar 2016 08:00:49 +0800
+Message-ID: <1457049649.26149.11.camel@mhfsdcap03>
+References: <1456944866-15990-1-git-send-email-yong.wu@mediatek.com>
+	 <CAD=FV=VOJT_Nd67O21J2-rabXRQ2=iTJxP8yCAty2xFhcVupGw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="w7PDEPdKQumQfZlR"
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1456421739-5450-1-git-send-email-liguo.zhang@mediatek.com>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Liguo Zhang <liguo.zhang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAD=FV=VOJT_Nd67O21J2-rabXRQ2=iTJxP8yCAty2xFhcVupGw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Doug Anderson <dianders@chromium.org>
+Cc: Joerg Roedel <joro@8bytes.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Arnd Bergmann <arnd@arndb.de>, Lucas Stach <l.stach@pengutronix.de>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, 2016-03-03 at 09:44 -0800, Doug Anderson wrote:
+> Hi,
+> 
+> On Wed, Mar 2, 2016 at 10:54 AM, Yong Wu <yong.wu@mediatek.com> wrote:
+> > Sometimes it is not worth for the iommu allocating big chunks.
+> > Here we enable DMA_ATTR_ALLOC_SINGLE_PAGES which could help avoid to
+> > allocate big chunks while iommu allocating buffer.
+> >
+> > More information about this attribute, please check Doug's commit[1].
+> >
+> > [1]: https://lkml.org/lkml/2016/1/11/720
+> >
+> > Cc: Robin Murphy <robin.murphy@arm.com>
+> > Suggested-by: Douglas Anderson <dianders@chromium.org>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >
+> > Our video drivers may soon use this.
+> >
+> >  arch/arm64/mm/dma-mapping.c |  4 ++--
+> >  drivers/iommu/dma-iommu.c   | 14 ++++++++++----
+> >  include/linux/dma-iommu.h   |  4 ++--
+> >  3 files changed, 14 insertions(+), 8 deletions(-)
+> 
+> It should also be mentioned that this depends on commit df05c6f6e0bb
+> ("ARM: 8506/1: common: DMA-mapping: add DMA_ATTR_ALLOC_SINGLE_PAGES
+> attribute") which is not in mainline quite yet.
 
---w7PDEPdKQumQfZlR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks. I will add it in the commit message.
 
-On Fri, Feb 26, 2016 at 01:35:39AM +0800, Liguo Zhang wrote:
-> Send the next transfer in the i2c irq handler, and only signal
-> complete() when the entire transaction has been completed.
+> 
+> Also please CC Marek Szyprowski on any future patches in this area
+> since I saw a patch series from him that was touching this same area.
 
-This describes what you do. But not why. Is this an improvment of
-throughput? Is there a downside of interrupt latency?
+Will do.
+
+> 
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
 Thanks.
-
->=20
-> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
-> ---
-> change in v2:
-> Remove the unused variable left_num in mtk_i2c_transfer().
-
---w7PDEPdKQumQfZlR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJW2KorAAoJEBQN5MwUoCm2p3EP/1CyMQ/2QGu59Qz0je8uKiUZ
-CwEQJKgwh7AXuyCHczdHezhGtVpGkc2Qpgodty2ELyiujTAH5TkzOScL3cD8yyHr
-AVve4pT3Atq9MFRAIOHJGmShf1HMTbfa/IyNTcny3QjuIti+ncgdMdVzxfFZxguW
-g0s2gTG5Jz6SDHZfzz7eLD4ct1FW4JpUk0mDM6ZdQfS2fXbg9zGPgcsfb0mwXoue
-emga0lRk9hQcPm5HSUfQ5TxRMFe3i1I+qu4RZ5K+fndIcvRAAUbRd30vHDNWOWDi
-YPJ+WjeFChFRGtKeUvm0OTtjfnYJ7gJq2Zv4LyZ13vsDEqUx7zHZ50JfBbeIUQd1
-n2gn424Dbn9vxMSKdJL8WQMr546NDPWgbBuyWE6V4BsSN3gI1eXlIGV4EpbH8i08
-olXfdPCiIBEi7POluh4dcsR9t0KfebmvYokcju6EJmSLBCFXkEdM/42ifS+N/7lS
-nlbyXKyGMM0K+cnXb/PyShsT0LLqV8NWRvhFro06sO0Ex4i8vtRQFQURXTuvrgzq
-aQTd30JaEwwzub0Phh2uqiPT06Em/37g1VTtYQ5uSVKBt6Ld6svKNoyEYOe6iKMQ
-HUzc+1354kZRjh0+VZgCimWlyt6Pix0O4Ii/ug7dmpbff5IOiuITJVwSVt0OBG7k
-PHKvmReh3W+py3hfZl3G
-=EL2G
------END PGP SIGNATURE-----
-
---w7PDEPdKQumQfZlR--
