@@ -1,84 +1,31 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 2/2] mmc: mediatek: Use mmc_regulator_set_vqmmc in start_signal_voltage_switch
-Date: Fri, 4 Mar 2016 10:41:51 +0100
-Message-ID: <CAPDyKFptSCN8xHqHbGv+EBzweKRuKoYATAkK1UETHiqyF7YgGg@mail.gmail.com>
-References: <1457000385-2317-1-git-send-email-drinkcat@chromium.org>
-	<1457000385-2317-2-git-send-email-drinkcat@chromium.org>
+From: David Laight <David.Laight@ACULAB.COM>
+Subject: RE: [PATCH V3 2/4] net-next: mediatek: add support for MT7623
+ ethernet
+Date: Fri, 4 Mar 2016 10:50:01 +0000
+Message-ID: <063D6719AE5E284EB5DD2968C1650D6D41114A26@AcuExch.aculab.com>
+References: <1457035361-57669-1-git-send-email-blogic@openwrt.org>
+ <1457035361-57669-3-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457000385-2317-2-git-send-email-drinkcat@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>
+Content-Type: text/plain; charset="ks_c_5601-1987"
+Content-Transfer-Encoding: base64
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1457035361-57669-3-git-send-email-blogic@openwrt.org>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: 'John Crispin' <blogic@openwrt.org>, "David S. Miller" <davem@davemloft.net>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "Steven Liu (???)" <steven.liu@mediatek.com>, "Carlos Huang (???)" <Carlos.Huang@mediatek.com>, Felix Fietkau <nbd@openwrt.org>, Michael Lee <igvtee@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 3 March 2016 at 11:19, Nicolas Boichat <drinkcat@chromium.org> wrote:
-> We've introduced a new helper in the MMC core:
-> mmc_regulator_set_vqmmc().  Let's use this in mtk-sd.  Using this new
-> helper has some advantages:
->
->     1. We get the mmc_regulator_set_vqmmc() behavior of trying to match
->        VQMMC and VMMC when the signal voltage is 3.3V.  This ensures max
->        compatibility.
->
->     2. We get rid of a few more warnings when probing unsupported
->        voltages.
->
->     3. We get rid of some non-mediatek specific code in mtk-sd.
->
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-
-Thanks, applied for next!
-
-Kind regards
-Uffe
-
-> ---
->
-> Similar to e0848f5d294c703917260a6228cc08b8be46c527
-> mmc: dw_mmc: Use mmc_regulator_set_vqmmc in start_signal_voltage_switch ,
-> where I copied the commit message from.
->
->  drivers/mmc/host/mtk-sd.c | 17 +++++------------
->  1 file changed, 5 insertions(+), 12 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 07809f4..b17f30d 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1021,26 +1021,19 @@ static void msdc_set_buswidth(struct msdc_host *host, u32 width)
->  static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
->  {
->         struct msdc_host *host = mmc_priv(mmc);
-> -       int min_uv, max_uv;
->         int ret = 0;
->
->         if (!IS_ERR(mmc->supply.vqmmc)) {
-> -               if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_330) {
-> -                       min_uv = 3300000;
-> -                       max_uv = 3300000;
-> -               } else if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_180) {
-> -                       min_uv = 1800000;
-> -                       max_uv = 1800000;
-> -               } else {
-> +               if (ios->signal_voltage != MMC_SIGNAL_VOLTAGE_330 &&
-> +                   ios->signal_voltage != MMC_SIGNAL_VOLTAGE_180) {
->                         dev_err(host->dev, "Unsupported signal voltage!\n");
->                         return -EINVAL;
->                 }
->
-> -               ret = regulator_set_voltage(mmc->supply.vqmmc, min_uv, max_uv);
-> +               ret = mmc_regulator_set_vqmmc(mmc, ios);
->                 if (ret) {
-> -                       dev_dbg(host->dev,
-> -                                       "Regulator set error %d: %d - %d\n",
-> -                                       ret, min_uv, max_uv);
-> +                       dev_dbg(host->dev, "Regulator set error %d (%d)\n",
-> +                               ret, ios->signal_voltage);
->                 } else {
->                         /* Apply different pinctrl settings for different signal voltage */
->                         if (ios->signal_voltage == MMC_SIGNAL_VOLTAGE_180)
-> --
-> 2.7.0.rc3.207.g0ac5344
->
+RnJvbTogSm9obiBDcmlzcGluDQo+IFNlbnQ6IDAzIE1hcmNoIDIwMTYgMjA6MDMNCi4uLg0KPiAr
+LyogdWdseSBtYWNybyBoYWNrIHRvIG1ha2Ugc3VyZSBod19zdGF0cyBhbmQgZXRodG9vbCBzdHJp
+bmdzIGFyZSBjb25zaXN0ZW50ICovDQo+ICsjZGVmaW5lIE1US19TVEFUX1JFR19ERUNMQVJFCQlc
+DQo+ICsJX0ZFKHR4X2J5dGVzKQkJCVwNCj4gKwlfRkUodHhfcGFja2V0cykJCQlcDQo+ICsJX0ZF
+KHR4X3NraXApCQkJXA0KPiArCV9GRSh0eF9jb2xsaXNpb25zKQkJXA0KPiArCV9GRShyeF9ieXRl
+cykJCQlcDQo+ICsJX0ZFKHJ4X3BhY2tldHMpCQkJXA0KPiArCV9GRShyeF9vdmVyZmxvdykJCVwN
+Cj4gKwlfRkUocnhfZmNzX2Vycm9ycykJCVwNCj4gKwlfRkUocnhfc2hvcnRfZXJyb3JzKQkJXA0K
+PiArCV9GRShyeF9sb25nX2Vycm9ycykJCVwNCj4gKwlfRkUocnhfY2hlY2tzdW1fZXJyb3JzKQkJ
+XA0KPiArCV9GRShyeF9mbG93X2NvbnRyb2xfcGFja2V0cykNCg0KTXVjaCBiZXR0ZXIgaXMgdG8g
+cmVwbGFjZSB0aGUgZmlyc3QgbGluZSB3aXRoOg0KI2RlZmluZSBNVEtfU1RBVF9SRUdfX0RFQ0xB
+UkUoX0ZFKQ0KdGhlbiB0aGUgY2FsbGluZyBjb2RlIGNhbiBkbzoNCiNkZWZpbmUgWFgoeCkgI3gs
+DQpjb25zdCBjaGFyICpuYW1lcyA9IHtNVEtfU1RBVF9SRUdfREVDTEFSRShYWCl9Ow0KI3VuZGVm
+IFhYDQoNCglEYXZpZA0KDQo=
