@@ -1,57 +1,51 @@
-From: Yong Wu <yong.wu@mediatek.com>
-Subject: Re: [PATCH] arm64/dma-mapping: Add DMA_ATTR_ALLOC_SINGLE_PAGES
- support
-Date: Fri, 4 Mar 2016 08:00:49 +0800
-Message-ID: <1457049649.26149.11.camel@mhfsdcap03>
-References: <1456944866-15990-1-git-send-email-yong.wu@mediatek.com>
-	 <CAD=FV=VOJT_Nd67O21J2-rabXRQ2=iTJxP8yCAty2xFhcVupGw@mail.gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 1/2] mmc: mediatek: Change signal voltage error to dev_dbg()
+Date: Fri, 4 Mar 2016 10:41:46 +0100
+Message-ID: <CAPDyKFqt111susg4GtDsWkYAEPAk0NU7vv67DjG+6FBAw_N1Dw@mail.gmail.com>
+References: <1457000385-2317-1-git-send-email-drinkcat@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAD=FV=VOJT_Nd67O21J2-rabXRQ2=iTJxP8yCAty2xFhcVupGw@mail.gmail.com>
+In-Reply-To: <1457000385-2317-1-git-send-email-drinkcat@chromium.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Doug Anderson <dianders@chromium.org>
-Cc: Joerg Roedel <joro@8bytes.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Arnd Bergmann <arnd@arndb.de>, Lucas Stach <l.stach@pengutronix.de>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org, Marek Szyprowski <m.szyprowski@samsung.com>
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Doug Anderson <dianders@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-03-03 at 09:44 -0800, Doug Anderson wrote:
-> Hi,
-> 
-> On Wed, Mar 2, 2016 at 10:54 AM, Yong Wu <yong.wu@mediatek.com> wrote:
-> > Sometimes it is not worth for the iommu allocating big chunks.
-> > Here we enable DMA_ATTR_ALLOC_SINGLE_PAGES which could help avoid to
-> > allocate big chunks while iommu allocating buffer.
-> >
-> > More information about this attribute, please check Doug's commit[1].
-> >
-> > [1]: https://lkml.org/lkml/2016/1/11/720
-> >
-> > Cc: Robin Murphy <robin.murphy@arm.com>
-> > Suggested-by: Douglas Anderson <dianders@chromium.org>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >
-> > Our video drivers may soon use this.
-> >
-> >  arch/arm64/mm/dma-mapping.c |  4 ++--
-> >  drivers/iommu/dma-iommu.c   | 14 ++++++++++----
-> >  include/linux/dma-iommu.h   |  4 ++--
-> >  3 files changed, 14 insertions(+), 8 deletions(-)
-> 
-> It should also be mentioned that this depends on commit df05c6f6e0bb
-> ("ARM: 8506/1: common: DMA-mapping: add DMA_ATTR_ALLOC_SINGLE_PAGES
-> attribute") which is not in mainline quite yet.
+On 3 March 2016 at 11:19, Nicolas Boichat <drinkcat@chromium.org> wrote:
+> In commit ceae98f20e36 ("mmc: core: Try other signal levels
+> during power up") we can see that there are times when it's
+> valid to try several signal voltages.  Don't print an ugly
+> error in the logs when that happens.
+>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 
-Thanks. I will add it in the commit message.
+Thanks, applied for next!
 
-> 
-> Also please CC Marek Szyprowski on any future patches in this area
-> since I saw a patch series from him that was touching this same area.
+Kind regards
+Uffe
 
-Will do.
-
-> 
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-
-Thanks.
+> ---
+>
+> Similar to b19caf379c82e99737c29bc15d7b7fd7d24279f9
+> mmc: dw_mmc: Change signal voltage error to dev_dbg()
+>
+>  drivers/mmc/host/mtk-sd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index f01972e..07809f4 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1038,7 +1038,7 @@ static int msdc_ops_switch_volt(struct mmc_host *mmc, struct mmc_ios *ios)
+>
+>                 ret = regulator_set_voltage(mmc->supply.vqmmc, min_uv, max_uv);
+>                 if (ret) {
+> -                       dev_err(host->dev,
+> +                       dev_dbg(host->dev,
+>                                         "Regulator set error %d: %d - %d\n",
+>                                         ret, min_uv, max_uv);
+>                 } else {
+> --
+> 2.7.0.rc3.207.g0ac5344
+>
