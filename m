@@ -1,57 +1,40 @@
 From: John Crispin <blogic@openwrt.org>
-Subject: [PATCH V4 0/4] net-next: mediatek: add ethernet driver
-Date: Mon,  7 Mar 2016 09:56:33 +0100
-Message-ID: <1457340997-23116-1-git-send-email-blogic@openwrt.org>
+Subject: [PATCH V4 4/4] net-next: mediatek: add an entry to MAINTAINERS
+Date: Mon,  7 Mar 2016 09:56:37 +0100
+Message-ID: <1457340997-23116-5-git-send-email-blogic@openwrt.org>
+References: <1457340997-23116-1-git-send-email-blogic@openwrt.org>
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1457340997-23116-1-git-send-email-blogic@openwrt.org>
 Sender: netdev-owner@vger.kernel.org
 To: "David S. Miller" <davem@davemloft.net>
 Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Steven=20Liu=20=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu@mediatek.com>, =?UTF-8?q?Carlos=20Huang=20=28=E9=BB=83=E5=A3=AB=E5=BD=B0=29?= <Carlos.Huang@mediatek.com>, Felix Fietkau <nbd@openwrt.org>, Michael Lee <igvtee@gmail.com>, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This series adds support for the Mediatek ethernet core found on current ARM
-based SoCs. The driver works on MT2701 and MT7623 SoCs
+Add myself and Felix as the Maintainers for the MediaTek ethernet driver.
 
-Instead of trying to upstream everything at once I decided to concentrate on
-the important parts required to make current generation silicon work. The V3
-series only includes the code required to make dual MAC setups work and only
-supports the newer QDMA engine.
+Signed-off-by: Felix Fietkau <nbd@openwrt.org>
+Signed-off-by: John Crispin <blogic@openwrt.org>
+---
+ MAINTAINERS |    7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Changes in V4
-* remove ugly _FE macro, use offsetof() instead
-
-Changes in V3
-* only include code for MT2701/7623 support
-* drop support for PDMA and older MIPS based SoCs
-* drop switch support
-
-Changes in V2
-* change the namespace of the functions from fe_* to mtk_*
-* add support for the latest generation of ARM SoCs
-* add dual MAC support
-* remove the swconfig specific bits
-* remove most of the magic values and replace them with defines
-* add verbose descriptions to the patches
-
-John Crispin (4):
-  net-next: mediatek: document MediaTek SoC ethernet binding
-  net-next: mediatek: add support for MT7623 ethernet
-  net-next: mediatek: add Kconfig and Makefile
-  net-next: mediatek: add an entry to MAINTAINERS
-
- .../devicetree/bindings/net/mediatek-net.txt       |   77 +
- MAINTAINERS                                        |    7 +
- drivers/net/ethernet/Kconfig                       |    1 +
- drivers/net/ethernet/Makefile                      |    1 +
- drivers/net/ethernet/mediatek/Kconfig              |   17 +
- drivers/net/ethernet/mediatek/Makefile             |    5 +
- drivers/net/ethernet/mediatek/mtk_eth_soc.c        | 1806 ++++++++++++++++++++
- drivers/net/ethernet/mediatek/mtk_eth_soc.h        |  421 +++++
- 8 files changed, 2335 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/mediatek-net.txt
- create mode 100644 drivers/net/ethernet/mediatek/Kconfig
- create mode 100644 drivers/net/ethernet/mediatek/Makefile
- create mode 100644 drivers/net/ethernet/mediatek/mtk_eth_soc.c
- create mode 100644 drivers/net/ethernet/mediatek/mtk_eth_soc.h
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9c4d157..b5293f3 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -7012,6 +7012,13 @@ F:	include/uapi/linux/meye.h
+ F:	include/uapi/linux/ivtv*
+ F:	include/uapi/linux/uvcvideo.h
+ 
++MEDIATEK ETHERNET DRIVER
++M:	Felix Fietkau <nbd@openwrt.org>
++M:	John Crispin <blogic@openwrt.org>
++L:	netdev@vger.kernel.org
++S:	Maintained
++F:	drivers/net/ethernet/mediatek/
++
+ MEDIATEK MT7601U WIRELESS LAN DRIVER
+ M:	Jakub Kicinski <kubakici@wp.pl>
+ L:	linux-wireless@vger.kernel.org
 -- 
 1.7.10.4
