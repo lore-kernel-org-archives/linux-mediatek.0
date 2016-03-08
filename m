@@ -1,76 +1,108 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v5 6/9] ASoC: hdmi-codec: Use HDMI
- notifications to add jack support
-Date: Tue, 08 Mar 2016 09:31:04 +0100
-Message-ID: <1457425864.4174.20.camel@pengutronix.de>
-References: <1456930153-11853-1-git-send-email-p.zabel@pengutronix.de>
- <1456930153-11853-7-git-send-email-p.zabel@pengutronix.de>
- <56DE0124.6080208@ti.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <56DE0124.6080208@ti.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Jyri Sarha <jsarha@ti.com>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, kernel@pengutronix.de, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH V5 1/4] net-next: mediatek: document MediaTek SoC ethernet binding
+Date: Tue,  8 Mar 2016 11:29:54 +0100
+Message-ID: <1457432997-25526-2-git-send-email-blogic@openwrt.org>
+References: <1457432997-25526-1-git-send-email-blogic@openwrt.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1457432997-25526-1-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Steven=20Liu=20=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu@mediatek.com>, =?UTF-8?q?Carlos=20Huang=20=28=E9=BB=83=E5=A3=AB=E5=BD=B0=29?= <Carlos.Huang@mediatek.com>, Felix Fietkau <nbd@openwrt.org>, Michael Lee <igvtee@gmail.com>, John Crispin <blogic@openwrt.org>, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jyri,
+This adds the binding documentation for the MediaTek Ethernet
+controller.
 
-Am Dienstag, den 08.03.2016, 00:31 +0200 schrieb Jyri Sarha:
-> I don't think this patch was updated according to updated "video: rmk's 
-> HDMI notification prototype":
-> 
-> On 03/02/16 16:49, Philipp Zabel wrote:
-> > Use HDMI connection / disconnection notifications to update an ALSA
-> > jack object. Also make a copy of the ELD block after every change.
-> >
-> > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-> > ---
-> >   include/sound/hdmi-codec.h    |  6 +++
-> >   sound/soc/codecs/hdmi-codec.c | 85 +++++++++++++++++++++++++++++++++++++++----
-> >   2 files changed, 83 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
-> > index 15fe70f..8b6219d 100644
-> > --- a/include/sound/hdmi-codec.h
-> > +++ b/include/sound/hdmi-codec.h
-> > @@ -99,6 +99,12 @@ struct hdmi_codec_pdata {
-> >   	int max_i2s_channels;
-> >   };
-> >
-> > +struct snd_soc_codec;
-> > +struct snd_soc_jack;
-> > +
-> > +int hdmi_codec_set_jack_detect(struct snd_soc_codec *codec,
-> > +			       struct snd_soc_jack *jack);
-> > +
-> >   #define HDMI_CODEC_DRV_NAME "hdmi-audio-codec"
-> >
-> >   #endif /* __HDMI_CODEC_H__ */
-> > diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-> > index 687332d..7d5db11 100644
-> > --- a/sound/soc/codecs/hdmi-codec.c
-> > +++ b/sound/soc/codecs/hdmi-codec.c
-> > @@ -12,9 +12,12 @@
-> >    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
-> >    * General Public License for more details.
-> >    */
-> > +#include <linux/hdmi-not.h>
-> 
-> This should be hdmi-notifier.h. "select HDMI_NOTIFIERS" also needs to be 
-> added to SND_SOC_HDMI_CODEC config option for compilation to succeed.
+Signed-off-by: John Crispin <blogic@openwrt.org>
+Acked-by: Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org
+---
+ .../devicetree/bindings/net/mediatek-net.txt       |   77 ++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-net.txt
 
-Yes, thank you for pointing that out. Will be fixed in v6.
-
-regards
-Philipp
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+new file mode 100644
+index 0000000..5ca7929
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -0,0 +1,77 @@
++MediaTek Frame Engine Ethernet controller
++=========================================
++
++The frame engine ethernet controller can be found on MediaTek SoCs. These SoCs
++have dual GMAC each represented by a child node..
++
++* Ethernet controller node
++
++Required properties:
++- compatible: Should be "mediatek,mt7623-eth"
++- reg: Address and length of the register set for the device
++- interrupts: Should contain the frame engines interrupt
++- clocks: the clock used by the core
++- clock-names: the names of the clock listed in the clocks property. These are
++	"ethif", "esw", "gp2", "gp1"
++- power-domains: phandle to the power domain that the ethernet is part of
++- resets: Should contain a phandle to the ethsys reset signal
++- reset-names: Should contain the reset signal name "eth"
++- mediatek,ethsys: phandle to the syscon node that handles the port setup
++- mediatek,pctl: phandle to the syscon node that handles the ports slew rate
++	and driver current
++
++Optional properties:
++- interrupt-parent: Should be the phandle for the interrupt controller
++  that services interrupts for this device
++
++
++* Ethernet MAC node
++
++Required properties:
++- compatible: Should be "mediatek,eth-mac"
++- reg: The number of the MAC
++- phy-handle: see ethernet.txt file in the same directory.
++
++Example:
++
++eth: ethernet@1b100000 {
++	compatible = "mediatek,mt7623-eth";
++	reg = <0 0x1b100000 0 0x20000>;
++	clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
++		 <&ethsys CLK_ETHSYS_ESW>,
++		 <&ethsys CLK_ETHSYS_GP2>,
++		 <&ethsys CLK_ETHSYS_GP1>;
++	clock-names = "ethif", "esw", "gp2", "gp1";
++	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
++	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
++	resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
++	reset-names = "eth";
++	mediatek,ethsys = <&ethsys>;
++	mediatek,pctl = <&syscfg_pctl_a>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	gmac1: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		phy-handle = <&phy0>;
++	};
++
++	gmac2: mac@1 {
++		compatible = "mediatek,eth-mac";
++		reg = <1>;
++		phy-handle = <&phy1>;
++	};
++
++	mdio-bus {
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++			phy-mode = "rgmii";
++		};
++
++		phy1: ethernet-phy@1 {
++			reg = <1>;
++			phy-mode = "rgmii";
++		};
++	};
++};
+-- 
+1.7.10.4
