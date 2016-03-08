@@ -1,146 +1,53 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH v6 08/10] drm/mediatek: hdmi: use helper function for N and
- CTS calculation
-Date: Tue,  8 Mar 2016 14:31:47 +0100
-Message-ID: <1457443909-14807-9-git-send-email-p.zabel@pengutronix.de>
-References: <1457443909-14807-1-git-send-email-p.zabel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1457443909-14807-1-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Eduardo Valentin <edubezval@gmail.com>
+Subject: [PATCH 1/1] thermal: mtk: allow compile testing on UM
+Date: Tue,  8 Mar 2016 13:39:41 -0800
+Message-ID: <1457473181-10631-1-git-send-email-edubezval@gmail.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Rui Zhang <rui.zhang@intel.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use the hdmi helper function [1] to calculate N and CTS.
+Following the fix on thermal Kconfig, this
+patch adds dependency on HAS_IOMEM so driver
+properly compile test on UM arch.
 
-[1] https://patchwork.kernel.org/patch/8091531/ ("video: hdmi: add helper
-    function for N and CTS")
-
-Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Zhang Rui <rui.zhang@intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Eduardo Valentin <edubezval@gmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_hw.c | 85 +++++++++-------------------------
- 1 file changed, 21 insertions(+), 64 deletions(-)
+Krzysztof,
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_hw.c b/drivers/gpu/drm/mediatek/mtk_hdmi_hw.c
-index 6acbe77..9be50f5 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_hw.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_hw.c
-@@ -492,65 +492,6 @@ static const struct hdmi_acr_n hdmi_rec_n_table[] = {
- 	{      0, {  4096,  6272,  6144 } }, /* all other TMDS clocks */
- };
- 
--/**
-- * hdmi_recommended_n() - Return N value recommended by HDMI specification
-- * @freq: audio sample rate in Hz
-- * @clock: rounded TMDS clock in kHz
-- */
--static unsigned int hdmi_recommended_n(unsigned int freq, unsigned int clock)
--{
--	const struct hdmi_acr_n *recommended;
--	unsigned int i;
--
--	for (i = 0; i < ARRAY_SIZE(hdmi_rec_n_table) - 1; i++) {
--		if (clock == hdmi_rec_n_table[i].clock)
--			break;
--	}
--	recommended = hdmi_rec_n_table + i;
--
--	switch (freq) {
--	case 32000:
--		return recommended->n[0];
--	case 44100:
--		return recommended->n[1];
--	case 48000:
--		return recommended->n[2];
--	case 88200:
--		return recommended->n[1] * 2;
--	case 96000:
--		return recommended->n[2] * 2;
--	case 176400:
--		return recommended->n[1] * 4;
--	case 192000:
--		return recommended->n[2] * 4;
--	default:
--		return (128 * freq) / 1000;
--	}
--}
--
--static unsigned int hdmi_mode_clock_to_hz(unsigned int clock)
--{
--	switch (clock) {
--	case 25175:
--		return 25174825;	/* 25.2/1.001 MHz */
--	case 74176:
--		return 74175824;	/* 74.25/1.001 MHz */
--	case 148352:
--		return 148351648;	/* 148.5/1.001 MHz */
--	case 296703:
--		return 296703297;	/* 297/1.001 MHz */
--	default:
--		return clock * 1000;
--	}
--}
--
--static unsigned int hdmi_expected_cts(unsigned int audio_sample_rate,
--				      unsigned int tmds_clock, unsigned int n)
--{
--	return DIV_ROUND_CLOSEST_ULL((u64)hdmi_mode_clock_to_hz(tmds_clock) * n,
--				     128 * audio_sample_rate);
--}
--
- static void do_hdmi_hw_aud_set_ncts(struct mtk_hdmi *hdmi, unsigned int n,
- 				    unsigned int cts)
- {
-@@ -575,18 +516,34 @@ static void do_hdmi_hw_aud_set_ncts(struct mtk_hdmi *hdmi, unsigned int n,
- 		mtk_hdmi_write(hdmi, GRL_NCTS, val[i]);
- }
- 
-+static unsigned int hdmi_mode_clock_to_hz(unsigned int clock)
-+{
-+	switch (clock) {
-+	case 25175:
-+		return 25174825;	/* 25.2/1.001 MHz */
-+	case 74176:
-+		return 74175824;	/* 74.25/1.001 MHz */
-+	case 148352:
-+		return 148351648;	/* 148.5/1.001 MHz */
-+	case 296703:
-+		return 296703296;	/* 297/1.001 MHz */
-+	default:
-+		return clock * 1000;
-+	}
-+}
-+
- void mtk_hdmi_hw_aud_set_ncts(struct mtk_hdmi *hdmi, unsigned int sample_rate,
- 			      unsigned int clock)
- {
--	unsigned int n, cts;
-+	struct hdmi_audio_n_cts n_cts;
- 
--	n = hdmi_recommended_n(sample_rate, clock);
--	cts = hdmi_expected_cts(sample_rate, clock, n);
-+	hdmi_audio_get_coherent_n_cts(sample_rate, hdmi_mode_clock_to_hz(clock),
-+				      &n_cts);
- 
- 	dev_dbg(hdmi->dev, "%s: sample_rate=%u, clock=%d, cts=%u, n=%u\n",
--		__func__, sample_rate, clock, n, cts);
-+		__func__, sample_rate, clock, n_cts.cts, n_cts.n);
- 
- 	mtk_hdmi_mask(hdmi, DUMMY_304, AUDIO_I2S_NCTS_SEL_64,
- 		      AUDIO_I2S_NCTS_SEL);
--	do_hdmi_hw_aud_set_ncts(hdmi, n, cts);
-+	do_hdmi_hw_aud_set_ncts(hdmi, n_cts.n, n_cts.cts);
- }
+I had to split your patch into two, because mtk driver
+is only in my for-linus branch. I want to send your patch
+as a fix for the current kernel. This is why you are seeing
+this patch now.
+
+This patch has been added to my linus branch.
+
+BR,
+Eduardo
+---
+ drivers/thermal/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
+index 5e7c97a..462d014 100644
+--- a/drivers/thermal/Kconfig
++++ b/drivers/thermal/Kconfig
+@@ -368,6 +368,7 @@ config INTEL_PCH_THERMAL
+ config MTK_THERMAL
+ 	tristate "Temperature sensor driver for mediatek SoCs"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on HAS_IOMEM
+ 	default y
+ 	help
+ 	  Enable this option if you want to have support for thermal management
 -- 
-2.7.0
+2.1.4
+
