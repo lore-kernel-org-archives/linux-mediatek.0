@@ -1,58 +1,81 @@
-From: Laxman Dewangan <ldewangan@nvidia.com>
-Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for pinctrl_{register,
- unregister}
-Date: Wed, 9 Mar 2016 19:53:06 +0530
-Message-ID: <56E031CA.9010204@nvidia.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com> <CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com> <56D307CC.2050202@nvidia.com>
+From: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 07/13] thermal: convert mtk_thermal to use
+ devm_thermal_zone_of_sensor_register
+Date: Wed,  9 Mar 2016 13:35:29 -0800
+Message-ID: <1457559336-17652-8-git-send-email-edubezval@gmail.com>
+References: <1457559336-17652-1-git-send-email-edubezval@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <56D307CC.2050202@nvidia.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1457559336-17652-1-git-send-email-edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rui Zhang <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Linux PM <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, lm-sensors-GZX6beZjE8VD60Wz+7aTrA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Linus,
+This changes the driver to use the devm_ version
+of thermal_zone_of_sensor_register and cleans
+up the  local points and unregister calls.
 
-On Sunday 28 February 2016 08:14 PM, Laxman Dewangan wrote:
->
-> On Thursday 25 February 2016 07:43 PM, Linus Walleij wrote:
->> On Wed, Feb 24, 2016 at 2:15 PM, Laxman Dewangan 
->> <ldewangan@nvidia.com> wrote:
->>
->>> Add resource manageemnt APIs fro pinctrl_register() and 
->>> pinctrl_unregister()
->>> and use these new APIs on hw driver to reduce the error path code and
->>> remove callback for driver.
->> As you can probably guess I like this too, so wait a while, collect ACKs
->> and send me a branch to pull for this too.
->>
-> Got lots of ack/reviewed by and captured all. Also did code changes 
-> per review:
-> - Optimizing in devm_ apis.
-> - Correcting the description of devm_ apis.
-> - Simplifying probe in digicolor.
-> - Removing unwanted pfc->pinctrl in ish.
->
-> Pushed the change at:
-> Branch "devm_pinctrl_register" of 
-> https://github.com/ldewangan/linux-upstream.git.
->
-> Base repo is
-> for-next of 
-> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
->
->
-> If required, I can send the V2 version of list with acks.
->
+Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/thermal/mtk_thermal.c | 12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
 
-Let me know if I need to send full series (V2 with collected ack) again 
-or fine to pull it from above location.
-
-
-Thanks,
-Laxman
-
-
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 3d93b1c..2c40b0f 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -145,7 +145,6 @@ struct mtk_thermal {
+ 	s32 o_slope;
+ 	s32 vts[MT8173_NUM_SENSORS];
+ 
+-	struct thermal_zone_device *tzd;
+ };
+ 
+ struct mtk_thermal_bank_cfg {
+@@ -573,16 +572,11 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	mt->tzd = thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-				&mtk_thermal_ops);
+-	if (IS_ERR(mt->tzd))
+-		goto err_register;
++	devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
++					     &mtk_thermal_ops);
+ 
+ 	return 0;
+ 
+-err_register:
+-	clk_disable_unprepare(mt->clk_peri_therm);
+-
+ err_disable_clk_auxadc:
+ 	clk_disable_unprepare(mt->clk_auxadc);
+ 
+@@ -593,8 +587,6 @@ static int mtk_thermal_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_thermal *mt = platform_get_drvdata(pdev);
+ 
+-	thermal_zone_of_sensor_unregister(&pdev->dev, mt->tzd);
+-
+ 	clk_disable_unprepare(mt->clk_peri_therm);
+ 	clk_disable_unprepare(mt->clk_auxadc);
+ 
+-- 
+2.1.4
