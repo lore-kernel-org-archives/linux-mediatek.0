@@ -1,48 +1,79 @@
-From: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Subject: Re: [PATCH 2/6] usb: xhci-mtk: use __maybe_unused to hide pm functions
-Date: Thu, 10 Mar 2016 13:42:37 +0200
-Message-ID: <56E15DAD.3000104@linux.intel.com>
-References: <1456932255-71725-1-git-send-email-arnd@arndb.de> <1456932255-71725-3-git-send-email-arnd@arndb.de> <56D9B8EE.3060107@gmail.com>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH 1/2] iommu/io-pgtable: Add MTK 4GB mode in
+ Short-descriptor
+Date: Thu, 10 Mar 2016 22:18:28 +0800
+Message-ID: <1457619508.14539.40.camel@mtksdaap41>
+References: <1456268552-16635-1-git-send-email-yong.wu@mediatek.com>
+	 <1456268552-16635-2-git-send-email-yong.wu@mediatek.com>
+	 <56D6DD2E.4030207@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56D9B8EE.3060107-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56D6DD2E.4030207@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, pebolle@tiscali.nl, arnd@arndb.de, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, linux-kernel@vger.kernel.org, milton.chiang@mediatek.com, Tomasz Figa <tfiga@google.com>, iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@google.com>, Sasha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, youhua.li@mediatek.com, mitchelh@codeaurora.org, linux-arm-kernel@lists.infradead.org, Lucas Stach <l.stach@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04.03.2016 18:33, Matthias Brugger wrote:
->
->
-> On 02/03/16 16:24, Arnd Bergmann wrote:
->> The mediatek XHCI glue driver uses SET_SYSTEM_SLEEP_PM_OPS() to
->> conditionally set the correct suspend/resume options, and
->> also puts both the dev_pm_ops and the functions inside of
->> an #ifdef testing for CONFIG_PM_SLEEP, but those functions
->> then call other code that becomes unused:
->>
->> drivers/usb/host/xhci-mtk.c:135:12: error: 'xhci_mtk_host_disable' defined but not used [-Werror=unused-function]
->> drivers/usb/host/xhci-mtk.c:313:13: error: 'usb_wakeup_enable' defined but not used [-Werror=unused-function]
->> drivers/usb/host/xhci-mtk.c:321:13: error: 'usb_wakeup_disable' defined but not used [-Werror=unused-function]
->>
->> This replaces the #ifdef with __maybe_unused annotations so the
->> compiler knows it can silently drop them instead of warning.
->>
->> For the DEV_PM_OPS definition, we can use an IS_ENABLED() check
->> to avoid defining the structure when CONFIG_PM is not set without
->> the #ifdef.
->>
->> Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
->> ---
->
-> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->
+On Wed, 2016-03-02 at 12:31 +0000, Robin Murphy wrote:
+> Hi Yong,
+> 
+> On 23/02/16 23:02, Yong Wu wrote:
+> > Mediatek extend bit9 in the lvl1 and lvl2 pgtable descriptor of the
+> > Short-descriptor as the 4GB mode in which the dram size will be
+> > over 4GB.
+> >
+> > We add a special quirk for this MTK-4GB mode, And in the standard
+> > spec, Bit9 in the lvl1 is "IMPLEMENTATION DEFINED", while it's AP[2]
+> > in the lvl2, therefore if this quirk is enabled, NO_PERMS is also
+> > expected.
+> 
+> Would you be able to explain exactly what this "4GB mode" actually is? 
+> I've been trying to make sense of it from the original M4U patches and 
+> the patch for the I2C driver, but it has me completely baffled.
+> 
+> Is it simply used as an extra physical address bit (although surely that 
+> would make it "8GB mode"?), or does it do something crazier like 
+> toggling an interconnect remap that shifts the output addresses up by 
+> 1GB to be relative to the base of DRAM, like a dma_pfn_offset?
 
-Acked-by: Mathias Nyman <mathias.nyman-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Unfortunately, it is somewhat more crazier than that. Let me have a
+short brief on what we got.
 
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Normally, mt8173 memory map looks like this:
+
+Physical addr
+---------
+| 1st GB |    ->  HW SRAM and Regs
+|--------
+| 2nd GB |    ->  DRAM 1st GB
+|--------
+| 3rd GB |    ->  DRAM 2nd GB
+|--------
+| 4th GB |    ->  DRAM 3rd GB
+|--------
+
+On mt8173, we have a "DRAM 4GB mode" toggle bit. If it is enabled, from
+CPU's point of view, the dram will be shifted to start from PA
+0x1_00000000. The PA 0x40000000~0xffffffff will become an alias to
+0x1_40000000~0x1_ffffffff.
+
+Many HW only support 32bits physical address, the 33bit will be added to
+PA when 4GB mode is enabled. This looks like dma_pfn_offset you
+mentioned.
+
+Some others, like i2c or audio, support 33bits physical address, mostly
+because they support DMA to/from SRAM with the same SW interface. When
+4GB mode is enabled, these HW can still access DRAM with aliased dram
+address (0x40000000 ~ 0xffffffff)
+
+The MTK M4U(iommu) is another case. It did add 33 bits to page table
+entries and registers. Unfortunately, when 4GB mode is enabled, 33bit
+must be 1. It treats all PA < 0x1_0000_0000 as invalid address. That's
+why we always set the 33bit when 4GB mode is enabled in this patch.
+
+And there are other HWs with even crazier remap rule, but that's another
+story...
+
+Joe.C
