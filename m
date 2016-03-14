@@ -1,45 +1,25 @@
-From: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
-Subject: Re: [PATCH] media: v4l2-compat-ioctl32: fix missing reserved field
- copy in put_v4l2_create32
-Date: Mon, 14 Mar 2016 08:28:59 -0300
-Message-ID: <20160314082859.31340fb6@recife.lan>
-References: <1457952106-38215-1-git-send-email-tiffany.lin@mediatek.com>
+From: Eddie Huang <eddie.huang@mediatek.com>
+Subject: NVMEM usage question
+Date: Mon, 14 Mar 2016 20:01:39 +0800
+Message-ID: <1457956899.20370.25.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1457952106-38215-1-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: linux-mediatek@lists.infradead.org, andrew-ct.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Em Mon, 14 Mar 2016 18:41:46 +0800
-Tiffany Lin <tiffany.lin@mediatek.com> escreveu:
+Hi,
 
-> Change-Id: Idac449fae5059a3ce255340e6da491f8bd83af7a
+Mediatek PMIC chip have some spare registers used to store information.
+The value of these registers will exist until user unplug battery or
+battery depletion. One of our usage example is store battery utilization
+in these spare registers. We want to implement NVMEM driver to
+read/write sparse registers, but binding document describe NVMEM is for
+"Non-volatile memory", and for hardware like eeprom, efuse. Since the
+usage here is some kind of "battery backup memory", but not real
+non-volatile memory, is NVMEM driver suitable for this case ?
 
-We don't need change-id at the Kernel, but we do need a proper patch
-description.
-
-Regards,
-Mauro
-
-> ---
->  drivers/media/v4l2-core/v4l2-compat-ioctl32.c |    3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
-> index f38c076..109f687 100644
-> --- a/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
-> +++ b/drivers/media/v4l2-core/v4l2-compat-ioctl32.c
-> @@ -280,7 +280,8 @@ static int put_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user
->  static int put_v4l2_create32(struct v4l2_create_buffers *kp, struct v4l2_create_buffers32 __user *up)
->  {
->  	if (!access_ok(VERIFY_WRITE, up, sizeof(struct v4l2_create_buffers32)) ||
-> -	    copy_to_user(up, kp, offsetof(struct v4l2_create_buffers32, format)))
-> +	    copy_to_user(up, kp, offsetof(struct v4l2_create_buffers32, format)) ||
-> +	    copy_to_user(up->reserved, kp->reserved, sizeof(kp->reserved)))
->  		return -EFAULT;
->  	return __put_v4l2_format32(&kp->format, &up->format);
->  }
+Eddie
