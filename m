@@ -1,44 +1,31 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH 3/3] net: mediatek: check device_reset return code
-Date: Mon, 14 Mar 2016 15:07:12 +0100
-Message-ID: <1457964435-2945038-3-git-send-email-arnd@arndb.de>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 2/3] net: mediatek: remove incorrect dma_mask assignment
+Date: Mon, 14 Mar 2016 13:06:39 -0400 (EDT)
+Message-ID: <20160314.130639.328854823799037233.davem@davemloft.net>
 References: <1457964435-2945038-1-git-send-email-arnd@arndb.de>
+	<1457964435-2945038-2-git-send-email-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457964435-2945038-1-git-send-email-arnd@arndb.de>
+In-Reply-To: <1457964435-2945038-2-git-send-email-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>
-Cc: Arnd Bergmann <arnd@arndb.de>, Felix Fietkau <nbd@openwrt.org>, John Crispin <blogic@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: arnd@arndb.de
+Cc: nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The device_reset() function may fail, so we have to check
-its return value, e.g. to make deferred probing work correctly.
-gcc warns about it because of the warn_unused_result attribute:
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 14 Mar 2016 15:07:11 +0100
 
-drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_probe':
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:1679:2: error: ignoring return value of 'device_reset', declared with attribute warn_unused_result [-Werror=unused-result]
+> Device drivers should not mess with the DMA mask directly,
+> but instead call dma_set_mask() etc if needed.
+> 
+> In case of the mtk_eth_soc driver, the mask already gets set
+> correctly when the device is created, and setting it again
+> is against the documented API.
+> 
+> This removes the incorrect setting.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-This adds the trivial error check to propagate the return value
-to the generic platform device probe code.
-
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 87f417712da0..1e6c5498bba9 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1676,7 +1676,9 @@ static int mtk_probe(struct platform_device *pdev)
- 	struct mtk_eth *eth;
- 	int err;
- 
--	device_reset(&pdev->dev);
-+	err = device_reset(&pdev->dev);
-+	if (err)
-+		return err;
- 
- 	match = of_match_device(of_mtk_match, &pdev->dev);
- 	soc = (struct mtk_soc_data *)match->data;
--- 
-2.7.0
+Applied.
