@@ -1,31 +1,50 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [patch 2/2 net-next] mediatek: unlock on error in mtk_tx_map()
-Date: Tue, 15 Mar 2016 10:19:04 +0300
-Message-ID: <20160315071904.GI13560@mwanda>
+From: John Crispin <blogic@openwrt.org>
+Subject: Re: [patch 1/2 net-next] mediatek: checking for IS_ERR() instead of
+ NULL
+Date: Tue, 15 Mar 2016 08:27:47 +0100
+Message-ID: <56E7B973.4050604@openwrt.org>
+References: <20160315071849.GH13560@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Felix Fietkau <nbd@openwrt.org>, John Crispin <blogic@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20160315071849.GH13560@mwanda>
+Sender: netdev-owner@vger.kernel.org
+To: Dan Carpenter <dan.carpenter@oracle.com>, Felix Fietkau <nbd@openwrt.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There was a missing unlock on the error path.
 
-Fixes: 656e705243fd ('net-next: mediatek: add support for MT7623 ethernet')
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 9759fe5..c2c2e206 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -661,6 +661,8 @@ err_dma:
- 		itxd = mtk_qdma_phys_to_virt(ring, itxd->txd2);
- 	} while (itxd != txd);
- 
-+	spin_unlock_irqrestore(&eth->page_lock, flags);
-+
- 	return -ENOMEM;
- }
- 
+On 15/03/2016 08:18, Dan Carpenter wrote:
+> of_phy_connect() returns NULL on error, it never returns error pointers.
+> 
+> Fixes: 656e705243fd ('net-next: mediatek: add support for MT7623 ethernet')
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+Acked-by: John Crispin <blogic@openwrt.org>
+
+Thanks !
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index ba3afa5..9759fe5 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -186,9 +186,9 @@ static int mtk_phy_connect_node(struct mtk_eth *eth, struct mtk_mac *mac,
+>  
+>  	phydev = of_phy_connect(eth->netdev[mac->id], phy_node,
+>  				mtk_phy_link_adjust, 0, phy_mode);
+> -	if (IS_ERR(phydev)) {
+> +	if (!phydev) {
+>  		dev_err(eth->dev, "could not connect to PHY\n");
+> -		return PTR_ERR(phydev);
+> +		return -ENODEV;
+>  	}
+>  
+>  	dev_info(eth->dev,
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
