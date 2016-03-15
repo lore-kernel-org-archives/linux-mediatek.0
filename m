@@ -1,44 +1,42 @@
-From: Dawei Chien <dawei.chien@mediatek.com>
-Subject: [RESEND][PATCH v6 0/3] thermal: mediatek: Add cpu dynamic power cooling model.
-Date: Tue, 15 Mar 2016 16:10:34 +0800
-Message-ID: <1458029437-12846-1-git-send-email-dawei.chien@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for
+ pinctrl_{register, unregister}
+Date: Tue, 15 Mar 2016 09:31:15 +0100
+Message-ID: <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
+References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
+	<CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com>
+	<56D307CC.2050202@nvidia.com>
+	<56E031CA.9010204@nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, Dawei Chien <dawei.chien@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-doc-owner@vger.kernel.org>
+In-Reply-To: <56E031CA.9010204@nvidia.com>
+Sender: linux-doc-owner@vger.kernel.org
+To: Laxman Dewangan <ldewangan@nvidia.com>
+Cc: Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use Intelligent Power Allocation (IPA) technical to add dynamic power model for binding CPU thermal zone. The power allocator governor allocates power budget to control CPU temperature.
+On Wed, Mar 9, 2016 at 3:23 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
 
-Power Allocator governor is able to keep SOC temperature within a defined temperature range to avoid SOC overheat and keep it's performance.
-mt8173-cpufreq.c need to register its' own power model with power allocator thermal governor, so that power allocator governor can allocates suitable power budget to control CPU temperature.
+>> Pushed the change at:
+>> Branch "devm_pinctrl_register" of
+>> https://github.com/ldewangan/linux-upstream.git.
+>>
+>> Base repo is
+>> for-next of
+>> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
+>>
+>>
+>> If required, I can send the V2 version of list with acks.
+>
+> Let me know if I need to send full series (V2 with collected ack) again or
+> fine to pull it from above location.
 
-Binding document is refer to this patchset
-https://lkml.org/lkml/2015/11/30/239
+Please collect the ACKs on your branch and ask me to pull it after v4.6-rc1.
+No need to resend the patches.
 
-Change since V5:
-1. Remove thermal sensor ID from phandles
+Unfortunately it arrived too late for the merge window, but hey: we got the
+devm gpiochip in for v4.6.
 
-Change since V4:
-1. Remove unnecessary error-checking for mt8173-cpufreq.c 2. Initializing variable capacitance with 0
-
-Change since V3:
-1. Remove static power model
-2. Split V3's device tree in two for thermal zones and dynamic power models respectively
-
-Change since V2:
-1. Move dynamic/static power model in device tree
-
-Change since V1:
-1. Include mt8171.h and sort header file for mt8173.dtsi
-
-Dawei Chien (3):
-  thermal: mediatek: Add cpu dynamic power cooling model.
-  arm64: dts: mt8173: Add thermal zone node.
-  arm64: dts: mt8173: Add dynamic power node.
-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |   47 ++++++++++++++++++++++++++++++
- drivers/cpufreq/mt8173-cpufreq.c         |   12 ++++++--
- 2 files changed, 57 insertions(+), 2 deletions(-)
+Yours,
+Linus Walleij
