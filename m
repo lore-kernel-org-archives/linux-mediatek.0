@@ -1,108 +1,49 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v13 03/14] drm/mediatek: Add DSI sub driver
-Date: Tue, 15 Mar 2016 20:06:32 +0800
-Message-ID: <CAGS+omCPoA=Y_fRK9rrpq5EWfwdMTMzrwUrKaUOCUbaokJ8wGA@mail.gmail.com>
-References: <1457443649-12133-1-git-send-email-p.zabel@pengutronix.de>
- <1457443649-12133-4-git-send-email-p.zabel@pengutronix.de>
- <CAGS+omDuzLt7ErhpqC4rBwLnCDtKi-mci6=PVFEh=4JJZ+zS_g@mail.gmail.com>
- <1458042570.3360.26.camel@pengutronix.de>
+From: Laxman Dewangan <ldewangan@nvidia.com>
+Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for pinctrl_{register,
+ unregister}
+Date: Tue, 15 Mar 2016 18:55:19 +0530
+Message-ID: <56E80D3F.3090300@nvidia.com>
+References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>	<CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com>	<56D307CC.2050202@nvidia.com>	<56E031CA.9010204@nvidia.com> <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1458042570.3360.26.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, dri-devel <dri-devel@lists.freedesktop.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBNYXIgMTUsIDIwMTYgYXQgNzo0OSBQTSwgUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBw
-ZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4KPiBIaSBEYW5pZWwsCj4KPiBBbSBNaXR0d29jaCwgZGVu
-IDA5LjAzLjIwMTYsIDIyOjA3ICswODAwIHNjaHJpZWIgRGFuaWVsIEt1cnR6Ogo+ID4gSGkgUGhp
-bGlwcCwgQ0ssCj4gPgo+ID4gU29tZSBzbWFsbCBjb21tZW50cy4KPiA+IE5vdGhpbmcgdGhhdCBj
-b3VsZG4ndCBiZSBhZGRyZXNzZWQgYWZ0ZXIgbWVyZ2luZywgaWYgeW91IHByZWZlci4KPiA+Cj4g
-PiBPbiBUdWUsIE1hciA4LCAyMDE2IGF0IDk6MjcgUE0sIFBoaWxpcHAgWmFiZWwgPHAuemFiZWxA
-cGVuZ3V0cm9uaXguZGU+IHdyb3RlOgo+IFsuLi5dCj4gPiA+ICtzdGF0aWMgaW50IG10a19kc2lf
-cG93ZXJvbihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ID4gPiArewo+ID4gPiArICAgICAgIHN0cnVj
-dCBkZXZpY2UgKmRldiA9IGRzaS0+ZGV2Owo+ID4gPiArICAgICAgIGludCByZXQ7Cj4gPiA+ICsK
-PiA+ID4gKyAgICAgICBpZiAoKytkc2ktPnJlZmNvdW50ICE9IDEpCj4gPiA+ICsgICAgICAgICAg
-ICAgICByZXR1cm4gMDsKPiA+Cj4gPiBXaGF0IGlzIHRoZSBwb2ludCBvZiB0aGlzIHJlZmNvdW50
-Pwo+ID4gSSBiZWxpZXZlIGRzaS0+ZW5hYmxlZCBhbHJlYWR5IGVuc3VyZXMgcG93ZXJvbi9wb3dl
-cm9mZiBjYWxscyBhcmUgcGFpcmVkLgo+Cj4gbXRrX2RzaV9wb3dlcm9uKCkgaXMgY2FsbGVkIGZy
-b20gYm90aCBtdGtfZHNpX2VuY29kZXJfZW5hYmxlKCkgYW5kCj4gbXRrX2RzaV9kZHBfc3RhcnQo
-KSBhbmQgZW5hYmxlcyBqdXN0IGVub3VnaCBvZiB0aGUgRFNJIHRvIHByb3ZpZGUgcG93ZXIKPiBh
-bmQgdGhlIHBpeGVsIGNsb2NrLiBUaGUgcmVhc29uIGlzIHRoYXQgdGhlIERTSSBhbHNvIHByb3Zp
-ZGVzIHRoZSBwaXhlbAo+IGNsb2NrIHRvIHRoZSByZXN0IG9mIHRoZSBwaXBlbGluZSBlbGVtZW50
-cy4KPgo+IGRzaS0+ZW5hYmxlZCBvbmx5IHRyYWNrcyB0aGUgd2hvbGUgRFNJIGJlaW5nIGFjdGl2
-ZSBhZnRlciB0aGUgY2FsbCBvZgo+IG10a19kc2lfZW5jb2Rlcl9lbmFibGUoKS4KPgo+IFsuLi5d
-Cj4gPiA+ICtzdGF0aWMgaW50IG10a19kc2lfY3JlYXRlX2Nvbm5fZW5jKHN0cnVjdCBkcm1fZGV2
-aWNlICpkcm0sIHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gPiA+ICt7Cj4gPiA+ICsgICAgICAgaW50
-IHJldDsKPiA+ID4gKwo+ID4gPiArICAgICAgIHJldCA9IGRybV9lbmNvZGVyX2luaXQoZHJtLCAm
-ZHNpLT5lbmNvZGVyLCAmbXRrX2RzaV9lbmNvZGVyX2Z1bmNzLAo+ID4gPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgRFJNX01PREVfRU5DT0RFUl9EU0ksIE5VTEwpOwo+ID4gPiArICAg
-ICAgIGlmIChyZXQpIHsKPiA+ID4gKyAgICAgICAgICAgICAgIERSTV9FUlJPUigiRmFpbGVkIHRv
-IGVuY29kZXIgaW5pdCB0byBkcm1cbiIpOwo+ID4gPiArICAgICAgICAgICAgICAgcmV0dXJuIHJl
-dDsKPiA+ID4gKyAgICAgICB9Cj4gPiA+ICsgICAgICAgZHJtX2VuY29kZXJfaGVscGVyX2FkZCgm
-ZHNpLT5lbmNvZGVyLCAmbXRrX2RzaV9lbmNvZGVyX2hlbHBlcl9mdW5jcyk7Cj4gPiA+ICsKPiA+
-ID4gKyAgICAgICAvKgo+ID4gPiArICAgICAgICAqIEN1cnJlbnRseSBkaXNwbGF5IGRhdGEgcGF0
-aHMgYXJlIHN0YXRpY2FsbHkgYXNzaWduZWQgdG8gYSBjcnRjIGVhY2guCj4gPiA+ICsgICAgICAg
-ICogY3J0YyAwIGlzIE9WTDAgLT4gQ09MT1IwIC0+IEFBTCAtPiBPRCAtPiBSRE1BMCAtPiBVRk9F
-IC0+IERTSTAKPiA+ID4gKyAgICAgICAgKi8KPiA+ID4gKyAgICAgICBkc2ktPmVuY29kZXIucG9z
-c2libGVfY3J0Y3MgPSAxOwo+ID4gPiArCj4gPiA+ICsgICAgICAgLyogUHJlLWVtcHQgRFAgY29u
-bmVjdG9yIGNyZWF0aW9uIGlmIHRoZXJlJ3MgYSBicmlkZ2UgKi8KPiA+ID4gKyAgICAgICByZXQg
-PSBtdGtfZHJtX2F0dGFjaF9icmlkZ2UoZHNpLT5icmlkZ2UsICZkc2ktPmVuY29kZXIpOwo+ID4g
-PiArICAgICAgIGlmICghcmV0KQo+ID4gPiArICAgICAgICAgICAgICAgcmV0dXJuIDA7Cj4gPgo+
-ID4gbml0OiB0aGUgYWJvdmUgdmFsaWQgZWFybHkgdGVybWluYXRpb24gb2YgdGhpcyBmdW5jdGlv
-biBoZXJlIGlzIGEgYml0IHVudXN1YWwuCj4gPiBJdCBtaWdodCBiZSBtb3JlIGNsZWFyIGlmIHRo
-ZSAiY29ubmVjdG9yIGluaXQiIHBhcnQgYmVsb3cgd2FzIHNwbGl0IG91dCBpbnRvIGl0cwo+ID4g
-b3duIGhlbHBlciBmdW5jdGlvbi4KPgo+IEdvb2QgcG9pbnQsIHdpbGwgZG8gdGhhdC4KPgo+IFsu
-Li5dCj4gPiA+ICtzdGF0aWMgaW50IG10a19kc2lfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4gPiA+ICt7Cj4gPiA+ICsgICAgICAgc3RydWN0IG10a19kc2kgKmRzaSA9IHBs
-YXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+ID4gPiArCj4gPiA+ICsgICAgICAgbXRrX291dHB1
-dF9kc2lfZGlzYWJsZShkc2kpOwo+ID4KPiA+IFRoaXMgb25lIGxvb2tzIHVubWF0Y2hlZC4KPgo+
-IEl0IGlzLCBpbmRlZWQgd2Ugc2hvdWxkIGxldCB0aGUgZHJtIGNvcmUgZGlzYWJsZSB0aGUgZW5j
-b2RlciBiZWZvcmUgdGhlCj4gZHJpdmVyIGlzIHJlbW92ZWQuCj4KPiBbLi4uXQo+ID4gPiArc3Rh
-dGljIGludCBtdGtfZHNpX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gPiA+ICt7Cj4gPiA+
-ICsgICAgICAgc3RydWN0IG10a19kc2kgKmRzaTsKPiA+ID4gKwo+ID4gPiArICAgICAgIGRzaSA9
-IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+ID4gPiArCj4gPiA+ICsgICAgICAgbXRrX291dHB1dF9k
-c2lfZW5hYmxlKGRzaSk7Cj4gPiA+ICsgICAgICAgRFJNX0RFQlVHX0RSSVZFUigiZHNpIHJlc3Vt
-ZSBzdWNjZXNzIVxuIik7Cj4gPiA+ICsKPiA+ID4gKyAgICAgICByZXR1cm4gMDsKPiA+ID4gK30K
-PiA+ID4gKyNlbmRpZgo+ID4gPiArc3RhdGljIFNJTVBMRV9ERVZfUE1fT1BTKG10a19kc2lfcG1f
-b3BzLCBtdGtfZHNpX3N1c3BlbmQsIG10a19kc2lfcmVzdW1lKTsKPiA+Cj4gPiBJIGRvbid0IHRo
-aW5rIHdlIHdhbnQgUE0gb3BzLgo+ID4gVGhlIE1USyBEUk0gZHJpdmVyIGRpc2FibGVzL2VuYWJs
-ZXMgZW5jb2RlcnMgZHVyaW5nIHN1c3BlbmQvcmVzdW1lLgo+Cj4gWWVzLCBhbmQgdGhhdCB3aWxs
-IGFsc28gYWxsb3cgdG8gbWVyZ2UgbXRrX291dHB1dF9kc2lfZGlzYWJsZSgpIGludG8KPiBtdGtf
-ZHNpX2VuY29kZXJfZGlzYWJsZSgpLCB0b28uCj4KPiBbLi4uXQo+ID4gPiArc3RhdGljIHVuc2ln
-bmVkIGxvbmcgbXRrX21pcGlfdHhfcGxsX3JlY2FsY19yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+
-ID4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5z
-aWduZWQgbG9uZyBwYXJlbnRfcmF0ZSkKPiA+ID4gK3sKPiA+ID4gKyAgICAgICBzdHJ1Y3QgbXRr
-X21pcGlfdHggKm1pcGlfdHggPSBjb250YWluZXJfb2YoaHcsIHN0cnVjdCBtdGtfbWlwaV90eCwK
-PiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cGxsX2h3KTsKPiA+Cj4gPiBBbiBpbmxpbmUgZnVuY3Rpb24gLyBtYWNybyB3b3VsZCBoZWxwIGhl
-cmUuCj4KPiBPay4KPgo+IFsuLi5dCj4gPiA+ICtzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9wb3dl
-cl9vZmZfc2lnbmFsKHN0cnVjdCBwaHkgKnBoeSkKPiA+ID4gK3sKPiA+ID4gKyAgICAgICBzdHJ1
-Y3QgbXRrX21pcGlfdHggKm1pcGlfdHggPSBwaHlfZ2V0X2RydmRhdGEocGh5KTsKPiA+ID4gKwo+
-ID4gPiArICAgICAgIG10a19taXBpX3R4X21hc2sobWlwaV90eCwgTUlQSVRYX0RTSV9UT1BfQ09O
-LCBSR19EU0lfUEFEX1RJRV9MT1dfRU4sCj4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICBS
-R19EU0lfUEFEX1RJRV9MT1dfRU4pOwo+ID4KPiA+IEFzIG1lbnRpb25lZCBpbiB0aGUgSERNSSBy
-ZXZpZXcsIF9zZXRfYml0cygpIC8gX2Nscl9iaXRzKCkgaXMgbW9yZSByZWFkYWJsZSB0aGFuCj4g
-PiBfbWFzaygpIGlmIHdlIGFyZSBqdXN0IHNldHRpbmcvY2xlYXJpbmcgZ3JvdXBzIG9mIGJpdHMu
-Cj4KPiBJIGRvbid0IHRoaW5rCj4gICAgICAgICBtdGtfbWlwaV90eF9zZXRfYml0cyhtaXBpX3R4
-LCBNSVBJVFhfRFNJX1RPUF9DT04sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSR19E
-U0lfUEFEX1RJRV9MT1dfRU4pOwo+IGlzIHRoYXQgbXVjaCBlYXNpZXIgdG8gcmVhZC4gSG93IGFi
-b3V0IGNhbGxpbmcgdGhlIGZ1bmN0aW9uCj4gbXRrX21pcGlfdHhfdXBkYXRlX2JpdHMgaW5zdGVh
-ZD8KCkFjdHVhbGx5LCB0aGUgaW1wb3J0YW50IHBhcnQgaGVyZSB3YXMgdG8gcmVtb3ZlIHRoZSBy
-ZWR1bmRhbnQgJ3ZhbHVlJwpwYXJhbWV0ZXIsIGFuZCBpbnN0ZWFkIGhhdmUgZGVkaWNhdGVkIGNs
-ZWFyIC8gc2V0IGZ1bmN0aW9ucyB0aGF0Cm9wZXJhdGUgb24ganVzdCB0aGUgbWFzay4KCgoKPgo+
-IHJlZ2FyZHMKPiBQaGlsaXBwCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
-ZHJpLWRldmVsCg==
+
+On Tuesday 15 March 2016 02:01 PM, Linus Walleij wrote:
+> On Wed, Mar 9, 2016 at 3:23 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
+>
+>>> Pushed the change at:
+>>> Branch "devm_pinctrl_register" of
+>>> https://github.com/ldewangan/linux-upstream.git.
+>>>
+>>> Base repo is
+>>> for-next of
+>>> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
+>>>
+>>>
+>>> If required, I can send the V2 version of list with acks.
+>> Let me know if I need to send full series (V2 with collected ack) again or
+>> fine to pull it from above location.
+> Please collect the ACKs on your branch and ask me to pull it after v4.6-rc1.
+> No need to resend the patches.
+>
+> Unfortunately it arrived too late for the merge window, but hey: we got the
+> devm gpiochip in for v4.6.
+
+Thanks for taking the GPIO patches.
+
+Ok, We will do pincontrol post v4.6 and probably, we will have some more 
+chnages for using devm_gpio in pincontrol subsystem  as these APIs will 
+be available  publicly.
+
+Thanks,
+Laxman
+
+
+
