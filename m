@@ -1,49 +1,49 @@
-From: Laxman Dewangan <ldewangan@nvidia.com>
-Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for pinctrl_{register,
- unregister}
-Date: Tue, 15 Mar 2016 18:55:19 +0530
-Message-ID: <56E80D3F.3090300@nvidia.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>	<CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com>	<56D307CC.2050202@nvidia.com>	<56E031CA.9010204@nvidia.com> <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] iommu: provide of_xlate pointer unconditionally
+Date: Tue, 15 Mar 2016 22:37:17 +0100
+Message-ID: <1458077877-474066-1-git-send-email-arnd@arndb.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Yong Wu <yong.wu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>, Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <jroedel@suse.de>, Alex Williamson <alex.williamson@redhat.com>, Will Deacon <will.deacon@arm.com>, Magnus Damm <damm+renesas@opensource.se>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+iommu drivers that support the standard DT bindings use a of_xlate
+callback pointer, but that is only part of struct iommu_ops when
+CONFIG_OF_IOMMU is enabled, leading to build errors in randconfig
+builds when that is not provided:
 
-On Tuesday 15 March 2016 02:01 PM, Linus Walleij wrote:
-> On Wed, Mar 9, 2016 at 3:23 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
->
->>> Pushed the change at:
->>> Branch "devm_pinctrl_register" of
->>> https://github.com/ldewangan/linux-upstream.git.
->>>
->>> Base repo is
->>> for-next of
->>> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
->>>
->>>
->>> If required, I can send the V2 version of list with acks.
->> Let me know if I need to send full series (V2 with collected ack) again or
->> fine to pull it from above location.
-> Please collect the ACKs on your branch and ask me to pull it after v4.6-rc1.
-> No need to resend the patches.
->
-> Unfortunately it arrived too late for the merge window, but hey: we got the
-> devm gpiochip in for v4.6.
+drivers/iommu/mtk_iommu.c:497:2: error: unknown field 'of_xlate' specified in initializer
+  .of_xlate = mtk_iommu_of_xlate,
+  ^
+drivers/iommu/mtk_iommu.c:497:14: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
+  .of_xlate = mtk_iommu_of_xlate,
+              ^~~~~~~~~~~~~~~~~~
+drivers/iommu/mtk_iommu.c:497:14: note: (near initialization for 'mtk_iommu_ops.domain_get_attr')
 
-Thanks for taking the GPIO patches.
+We can work around it by adding more #ifdefs in each driver, but
+it seems nicer to just allow setting the pointer even if it is
+unused. This makes the driver code look nicer, and it gives better
+compile-time coverage when test building on other architectures.
 
-Ok, We will do pincontrol post v4.6 and probably, we will have some more 
-chnages for using devm_gpio in pincontrol subsystem  as these APIs will 
-be available  publicly.
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: 0df4fabe208d ("iommu/mediatek: Add mt8173 IOMMU driver")
+---
+ include/linux/iommu.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-Thanks,
-Laxman
-
-
-
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index a5c539fa5d2b..ef7a6ecd8584 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -195,9 +195,7 @@ struct iommu_ops {
+ 	/* Get the number of windows per domain */
+ 	u32 (*domain_get_windows)(struct iommu_domain *domain);
+ 
+-#ifdef CONFIG_OF_IOMMU
+ 	int (*of_xlate)(struct device *dev, struct of_phandle_args *args);
+-#endif
+ 
+ 	unsigned long pgsize_bitmap;
+ 	void *priv;
+-- 
+2.7.0
