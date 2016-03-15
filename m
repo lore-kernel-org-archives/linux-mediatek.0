@@ -1,47 +1,64 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: Re: [patch 2/2 net-next] mediatek: unlock on error in mtk_tx_map()
-Date: Tue, 15 Mar 2016 08:27:48 +0100
-Message-ID: <56E7B974.6050109@openwrt.org>
-References: <20160315071904.GI13560@mwanda>
+From: Dawei Chien <dawei.chien@mediatek.com>
+Subject: [RESEND][PATCH 3/3] arm64: dts: mt8173: Add dynamic power node.
+Date: Tue, 15 Mar 2016 16:10:37 +0800
+Message-ID: <1458029437-12846-4-git-send-email-dawei.chien@mediatek.com>
+References: <1458029437-12846-1-git-send-email-dawei.chien@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20160315071904.GI13560@mwanda>
-Sender: netdev-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>, Felix Fietkau <nbd@openwrt.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1458029437-12846-1-git-send-email-dawei.chien@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, Dawei Chien <dawei.chien@mediatek.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+This device node is for calculating dynamic power in mW.
+Since mt8173 has two clusters, there are two dynamic power
+coefficient as well.
 
+Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+---
+This patch is base on patchset:
+https://lkml.org/lkml/2015/11/17/251
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |    4 ++++
+ 1 file changed, 4 insertions(+)
 
-On 15/03/2016 08:19, Dan Carpenter wrote:
-> There was a missing unlock on the error path.
-> 
-> Fixes: 656e705243fd ('net-next: mediatek: add support for MT7623 ethernet')
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
-
-Acked-by: John Crispin <blogic@openwrt.org>
-
-Thanks !
-
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 9759fe5..c2c2e206 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -661,6 +661,8 @@ err_dma:
->  		itxd = mtk_qdma_phys_to_virt(ring, itxd->txd2);
->  	} while (itxd != txd);
->  
-> +	spin_unlock_irqrestore(&eth->page_lock, flags);
-> +
->  	return -ENOMEM;
->  }
->  
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index f9c44cc..5cb6b4e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -71,6 +71,7 @@
+ 			#cooling-cells = <2>;
+ 			#cooling-min-level = <0>;
+ 			#cooling-max-level = <7>;
++			dynamic-power-coefficient = <263>;
+ 		};
+ 
+ 		cpu1: cpu@1 {
+@@ -95,6 +96,7 @@
+ 			#cooling-cells = <2>;
+ 			#cooling-min-level = <0>;
+ 			#cooling-max-level = <7>;
++			dynamic-power-coefficient = <263>;
+ 		};
+ 
+ 		cpu2: cpu@100 {
+@@ -119,6 +121,7 @@
+ 			#cooling-cells = <2>;
+ 			#cooling-min-level = <0>;
+ 			#cooling-max-level = <7>;
++			dynamic-power-coefficient = <530>;
+ 		};
+ 
+ 		cpu3: cpu@101 {
+@@ -143,6 +146,7 @@
+ 			#cooling-cells = <2>;
+ 			#cooling-min-level = <0>;
+ 			#cooling-max-level = <7>;
++			dynamic-power-coefficient = <530>;
+ 		};
+ 
+ 		idle-states {
+-- 
+1.7.9.5
