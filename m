@@ -1,42 +1,52 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for
- pinctrl_{register, unregister}
-Date: Tue, 15 Mar 2016 09:31:15 +0100
-Message-ID: <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-	<CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com>
-	<56D307CC.2050202@nvidia.com>
-	<56E031CA.9010204@nvidia.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v13 04/14] drm/mediatek: Add DPI sub driver
+Date: Tue, 15 Mar 2016 12:45:52 +0100
+Message-ID: <1458042352.3360.24.camel@pengutronix.de>
+References: <1457443649-12133-1-git-send-email-p.zabel@pengutronix.de>
+ <1457443649-12133-5-git-send-email-p.zabel@pengutronix.de>
+ <CAGS+omD__asTHg=aR1o3wzCsEs95GaxwdFD7rHoZcNLQ7zF6Jg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <56E031CA.9010204@nvidia.com>
-Sender: linux-doc-owner@vger.kernel.org
-To: Laxman Dewangan <ldewangan@nvidia.com>
-Cc: Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAGS+omD__asTHg=aR1o3wzCsEs95GaxwdFD7rHoZcNLQ7zF6Jg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, dri-devel <dri-devel@lists.freedesktop.org>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Sasha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Mar 9, 2016 at 3:23 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
-
->> Pushed the change at:
->> Branch "devm_pinctrl_register" of
->> https://github.com/ldewangan/linux-upstream.git.
->>
->> Base repo is
->> for-next of
->> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
->>
->>
->> If required, I can send the V2 version of list with acks.
->
-> Let me know if I need to send full series (V2 with collected ack) again or
-> fine to pull it from above location.
-
-Please collect the ACKs on your branch and ask me to pull it after v4.6-rc1.
-No need to resend the patches.
-
-Unfortunately it arrived too late for the merge window, but hey: we got the
-devm gpiochip in for v4.6.
-
-Yours,
-Linus Walleij
+SGkgRGFuaWVsLAoKQW0gTWl0dHdvY2gsIGRlbiAwOS4wMy4yMDE2LCAyMjoyMyArMDgwMCBzY2hy
+aWViIERhbmllbCBLdXJ0ejoKPiBIaSBQaGlsaXBwLCBKaWUsCj4gCj4gU29tZSBzbWFsbCBjb21t
+ZW50cy4KPiBOb3RoaW5nIHRoYXQgY2FuJ3QgYmUgZml4ZWQgYWZ0ZXIgbWVyZ2luZyBpZiB5b3Ug
+cHJlZmVyLgo+Cj4gT24gVHVlLCBNYXIgOCwgMjAxNiBhdCA5OjI3IFBNLCBQaGlsaXBwIFphYmVs
+IDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKWy4uLl0KPiA+ICtzdGF0aWMgaW50IG10
+a19kcGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSwgZW51bSBtdGtfZHBpX3Bvd2VyX2N0
+bCBwY3RsKQo+ID4gK3sKPiA+ICsgICAgICAgaW50IHJldDsKPiA+ICsKPiA+ICsgICAgICAgZHBp
+LT5wb3dlcl9jdGwgfD0gcGN0bDsKPiA+ICsKPiA+ICsgICAgICAgaWYgKCEoZHBpLT5wb3dlcl9j
+dGwgJiBEUElfUE9XRVJfU1RBUlQpICYmCj4gPiArICAgICAgICAgICAhKChkcGktPnBvd2VyX2N0
+bCAmIERQSV9QT1dFUl9FTkFCTEUpICYmCj4gPiArICAgICAgICAgICAgICgoZHBpLT5wb3dlcl9j
+dGwgJiBEUElfUE9XRVJfUkVTVU1FKSkpKQo+IAo+IFRoZXJlIG9uZSB0b28gbWFueSAoKSBvbiB0
+aGUgUE9XRVJfUkVTVU1FIGNsYXVzZS4KCkknbGwgdHJ5IHRvIHJlbW92ZSB0aGUgc3VzcGVuZCBv
+cHMgYW5kIHRoaXMgd2l0aCB0aGVtLgoKWy4uLl0KPiA+ICtzdGF0aWMgU0lNUExFX0RFVl9QTV9P
+UFMobXRrX2RwaV9wbV9vcHMsIG10a19kcGlfc3VzcGVuZCwgbXRrX2RwaV9yZXN1bWUpOwo+IAo+
+IExpa2UgaGRtaSAmIGRzaSwgSSB0aGluayB3ZSBjYW4gcmVtb3ZlIHRoZXNlIFBNIHJvdXRpbmVz
+Lgo+IEFuZCBtYXliZSB0aGVuIHdlIGNhbiByZW1vdmUgdGhlICJEUElfUE9XRVJfUkVTVU1FIiBs
+b2dpYyAod2hpY2ggSQo+IGRvbid0IGdyb2sgeWV0KT8KClJpZ2h0LCBhbHNvIHdlIHByb2JhYmx5
+IHNob3VsZCB1c2UgZHJtX2F0b21pY19oZWxwZXJfc3VzcGVuZC9yZXN1bWUgaW4KbXRrX2RybV9z
+eXNfc3VzcGVuZC9yZXN1bWUuCgpbLi4uXQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHBpLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5o
+Cj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5kZXggMDAwMDAwMC4uNGZhNDExNAo+ID4g
+LS0tIC9kZXYvbnVsbAo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGku
+aAo+IAo+IEFsbCBvZiB0aGlzIGNhbiBiZSBtb3ZlZCB0byBtdGtfZHBpLmMuCgpPaywgSSdsbCBt
+ZXJnZSB0aGlzIGludG8gbXRrX2RwaS5jLgoKcmVnYXJkcwpQaGlsaXBwCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
