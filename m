@@ -1,41 +1,64 @@
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: NVMEM usage question
-Date: Wed, 16 Mar 2016 06:50:45 +0000
-Message-ID: <56E90245.1040203@linaro.org>
-References: <1457956899.20370.25.camel@mtksdaap41>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] iommu: provide of_xlate pointer unconditionally
+Date: Wed, 16 Mar 2016 10:47:01 +0000
+Message-ID: <56E939A5.6040905@arm.com>
+References: <1458077877-474066-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1457956899.20370.25.camel@mtksdaap41>
+In-Reply-To: <1458077877-474066-1-git-send-email-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>
-Cc: linux-mediatek@lists.infradead.org, andrew-ct.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <jroedel@suse.de>, Alex Williamson <alex.williamson@redhat.com>, Will Deacon <will.deacon@arm.com>, Magnus Damm <damm+renesas@opensource.se>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 14/03/16 12:01, Eddie Huang wrote:
-> Hi,
+On 15/03/16 21:37, Arnd Bergmann wrote:
+> iommu drivers that support the standard DT bindings use a of_xlate
+> callback pointer, but that is only part of struct iommu_ops when
+> CONFIG_OF_IOMMU is enabled, leading to build errors in randconfig
+> builds when that is not provided:
 >
-> Mediatek PMIC chip have some spare registers used to store information.
-> The value of these registers will exist until user unplug battery or
-> battery depletion. One of our usage example is store battery utilization
-> in these spare registers. We want to implement NVMEM driver to
-> read/write sparse registers, but binding document describe NVMEM is for
-> "Non-volatile memory", and for hardware like eeprom, efuse. Since the
-> usage here is some kind of "battery backup memory", but not real
-> non-volatile memory, is NVMEM driver suitable for this case ?
-
-If this battery usage information can be retrieved after full power 
-cycle, then there should be some sort of non volatile memory involved.
-
-If that's the case then you can use the nvmem.
-
---srini
-
-
+> drivers/iommu/mtk_iommu.c:497:2: error: unknown field 'of_xlate' specified in initializer
+>    .of_xlate = mtk_iommu_of_xlate,
+>    ^
+> drivers/iommu/mtk_iommu.c:497:14: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
+>    .of_xlate = mtk_iommu_of_xlate,
+>                ^~~~~~~~~~~~~~~~~~
+> drivers/iommu/mtk_iommu.c:497:14: note: (near initialization for 'mtk_iommu_ops.domain_get_attr')
 >
-> Eddie
+> We can work around it by adding more #ifdefs in each driver, but
+> it seems nicer to just allow setting the pointer even if it is
+> unused. This makes the driver code look nicer, and it gives better
+> compile-time coverage when test building on other architectures.
+
+Makes sense. I don't know what the exact plan is for ACPI IORT, but I 
+would imagine that that could also tie in to the same mechanism.
+
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Fixes: 0df4fabe208d ("iommu/mediatek: Add mt8173 IOMMU driver")
+
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+FWIW the Exynos IOMMU driver has also been setting .of_xlate 
+unconditionally for a while, but that isn't covered by COMPILE_TEST.
+
+> ---
+>   include/linux/iommu.h | 2 --
+>   1 file changed, 2 deletions(-)
 >
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index a5c539fa5d2b..ef7a6ecd8584 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -195,9 +195,7 @@ struct iommu_ops {
+>   	/* Get the number of windows per domain */
+>   	u32 (*domain_get_windows)(struct iommu_domain *domain);
+>
+> -#ifdef CONFIG_OF_IOMMU
+>   	int (*of_xlate)(struct device *dev, struct of_phandle_args *args);
+> -#endif
+>
+>   	unsigned long pgsize_bitmap;
+>   	void *priv;
 >
