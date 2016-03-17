@@ -1,37 +1,79 @@
-From: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: Correct path for ARM GIC documentation
-Date: Thu, 17 Mar 2016 15:54:51 +0100
-Message-ID: <CACRpkdYAR0tzHkSd9aDt0Wqf-t7=8hHWQMsN56wVWBP__t2ePA@mail.gmail.com>
-References: <1458226077-7179-1-git-send-email-jonathanh@nvidia.com>
-	<56EAC404.9090606@nvidia.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
+ AUXADC
+Date: Thu, 17 Mar 2016 16:39:44 +0100
+Message-ID: <56EACFC0.5000300@gmail.com>
+References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
+ <20160223203254.GA14660@rob-hp-laptop> <56CDBFFE.9050406@gmail.com>
+ <20160224151204.GP3939@pengutronix.de> <56CDF7AB.7050201@gmail.com>
+ <20160307065233.GA21851@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56EAC404.9090606-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+In-Reply-To: <20160307065233.GA21851-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Beno=C3=AEt_Cousson?= <bcousson-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux-OMAP <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 17, 2016 at 3:49 PM, Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org> wrote:
+Hi Sascha,
 
-> Adding Linus for ux500 ...
+On 07/03/16 07:52, Sascha Hauer wrote:
+> On Wed, Feb 24, 2016 at 07:34:19PM +0100, Matthias Brugger wrote:
+>>
+>>
+>> On 24/02/16 16:12, Sascha Hauer wrote:
+>>> Hi Matthias,
+>>>
+>>> On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
+>>>>
+>>>>
+>>>> On 23/02/16 21:32, Rob Herring wrote:
+>>>>> On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
+>>>>>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+>>>>>> ---
+>>>>>>
+>>>>>> This is a supplement to the MTK Thermal series which was lacking the
+>>>>>> description for the AUXADC.
+>>>>>
+>>>>> So it will be applied with that I presume.
+>>>>>
+>>>>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+>>>>>
+>>>>
+>>>> Well the basic problem that I see is, that the auxadc has some more
+>>>> registers (at least in mt6589) for the touch screen registers.
+>>>> So this makes it a candidate for syscon and regmap.
+>>>> But this needs a patch in the thermal driver first...
+>>>
+>>> When we want to have a driver for the auxadc we are free to write one.
+>>> No need to use syscon and/or regmap for it.
+>>>
+>>> Note that the auxadc is not used by the thermal *driver*, it's used by
+>>> the thermal *hardware*. It's the hardware that directly reads/writes
+>>> auxadc registers. If MTK did it right then a real auxadc driver should
+>>> not be disturbed by the thermal controller accesses. At least from
+>>
+>> Right, didn't realize this.
+>>
+>>> checking the datasheet the registers the thermal controller accesses
+>>> are completely orthogonal to the ones a auxadc driver would use.
+>>>
+>>
+>> As you already explained, syscon/regmap is not needed here. Just for
+>> completion: we already had completely orthogonal registers for the reset
+>> controller, and we decided to use regmap there as well.
+>> We should stay consistent on this.
 >
-> On 17/03/16 14:47, Jon Hunter wrote:
->> Commit eb3fcf007fff ("dt-bindings: consolidate interrupt controller
->> bindings") moved the binding documentation for the ARM GIC from
->> arm/gic.txt to interrupt-controller/arm,gic.txt. However, there are
->> still some binding documents referring to the old path. Update these
->> binding documents to use the correct location.
->>
->> Fixes: eb3fcf007fff ("dt-bindings: consolidate interrupt controller bindings")
->>
->> Signed-off-by: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+> Matthias, is this some kind of action topic for me? We can use regmap
+> for the AUXADC driver if we want to, I have no problem with that.
+>
 
-Acked-by: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+No, no need for that, I will take the patch as is. I will let you know 
+when it got queued.
 
-Yours,
-Linus Walleij
+Sorry for the delay.
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
