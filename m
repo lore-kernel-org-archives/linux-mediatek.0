@@ -1,74 +1,24 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH 2/3] mtd: mediatek: driver for MTK Smart Device Gen1 NAND
-Date: Fri, 18 Mar 2016 15:24:27 +0100
-Message-ID: <20160318152427.672c3957@bbrezillon>
-References: <1456938013-8819-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1456938013-8819-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <20160308172437.6eccce05@bbrezillon> <56E08112.7040201@linaro.org>
- <20160309214348.5aa78af5@bbrezillon> <56EC09F5.5020704@linaro.org>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [patch 2/2 net-next] mediatek: unlock on error in mtk_tx_map()
+Date: Fri, 18 Mar 2016 18:31:14 -0400 (EDT)
+Message-ID: <20160318.183114.2001849673490296789.davem@davemloft.net>
+References: <20160315071904.GI13560@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56EC09F5.5020704-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <20160315071904.GI13560@mwanda>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: dan.carpenter@oracle.com
+Cc: nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 18 Mar 2016 10:00:21 -0400
-Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Date: Tue, 15 Mar 2016 10:19:04 +0300
 
-> On 03/09/2016 03:43 PM, Boris Brezillon wrote:
-> > On Wed, 9 Mar 2016 15:01:22 -0500
-> > Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
-> >
-> >> On 03/08/2016 11:24 AM, Boris Brezillon wrote:
-> >>>> +	switch (mtd->writesize) {
-> >>>>> +	case KB(2):
-> >>>>> +		fmt = PAGEFMT_512_2K;
-> >>>>> +		chip->ecc.layout = &nand_2k_64;
-> >>>>> +		break;
-> >>>>> +	case KB(4):
-> >>>>> +		fmt = PAGEFMT_2K_4K;
-> >>>>> +		chip->ecc.layout = &nand_4k_128;
-> >>>>> +		break;
-> >>>>> +	case KB(8):
-> >>>>> +		fmt = PAGEFMT_4K_8K;
-> >>>>> +		break;
-> >>>>> +	default:
-> >>>>> +		dev_err(dev, "invalid page size: %d\n", mtd->writesize);
-> >>>>> +		return -EINVAL;
-> >>>>> +	}
-> >>> ecclayout info should be exposed through mtd_ooblayout_ops now.
-> >>>
-> >> do you have an approximate date for when this interface will be merged in
-> >> git://git.infradead.org/l2-mtd.git?
-> >>
-> > Should be ready for 4.7, in the meantime you can base your work on my
-> > branch [1] (which is based on l2-mtd/master).
-> >
-> > [1]https://github.com/bbrezillon/linux-0day/tree/nand/ecclayout
+> There was a missing unlock on the error path.
 > 
-> 
-> hi Boris, just a quick one, please could you confirm that you would like to see
-> the RFC v2 patch-set for this driver based on this branch?
+> Fixes: 656e705243fd ('net-next: mediatek: add support for MT7623 ethernet')
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-Yes, I confirm you can base your work on this tree.
-
-> or should we rebase on some other tree?
-
-You may have to rebase on a different tree after 4.6-rc1 is out though.
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+Applied.
