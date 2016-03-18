@@ -1,39 +1,54 @@
-From: Henrique de Moraes Holschuh <hmh@hmh.eng.br>
-Subject: Re: NVMEM usage question
-Date: Thu, 17 Mar 2016 13:14:12 -0300
-Message-ID: <20160317161412.GA24806@khazad-dum.debian.net>
-References: <1457956899.20370.25.camel@mtksdaap41>
+From: <yun.hsiang@mediatek.com>
+Subject: [PATCH] ARM: Handle non-pmd-aligned end of first memblock.
+Date: Fri, 18 Mar 2016 17:49:27 +0800
+Message-ID: <1458294567-19308-1-git-send-email-yun.hsiang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1457956899.20370.25.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Eddie Huang <eddie.huang@mediatek.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-mediatek@lists.infradead.org, andrew-ct.chen@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Russell King <linux@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: wsd_upstream@mediatek.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yun Hsiang <yun.hsiang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 14 Mar 2016, Eddie Huang wrote:
-> 
-> Mediatek PMIC chip have some spare registers used to store information.
-> The value of these registers will exist until user unplug battery or
-> battery depletion. One of our usage example is store battery utilization
+From: Yun Hsiang <yun.hsiang@mediatek.com>
 
-i.e. like battery-backed raid caches.
+In paging_init(), if the end address of first memblock
+is non-PMD-aligned,we need to create a next-level page table
+for mapping the non-PMD-sized area.
+The memory of this next-level page table will be allocated
+from address of memblock.limit with a top-down order.
+sanity_check_meminfo() will find the address of
+first non-pmd-aligned page in memblock.memory,
+round down the address, and set it to memblock.current_limit.
 
-> in these spare registers. We want to implement NVMEM driver to
-> read/write sparse registers, but binding document describe NVMEM is for
-> "Non-volatile memory", and for hardware like eeprom, efuse. Since the
+There is a risk if arm_memblock_init()execute before
+sanity_check_meminfo(). arm_memblock_init() parse the device tree
+and modified memblock if there are no-map node in device tree.
+It might produce a new non-PMD-aligned block. While creating mapping
+to this new non-PMD-aligned block, the page table will be allocated
+from the memblock.limit which is still unmapped.
 
-Users will expect nvmem to not go away on battery drain, so I don't think it
-would be the best fit, semantically speaking.
+Signed-off-by: Yun Hsiang <yun.hsiang@mediatek.com>
+---
+ arch/arm/kernel/setup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Unless this is common enough that it would make sense to have a generic
-quasi-non-volatile profile for nvmem, and publish that constraint to
-userspace in a standard way...
-
+diff --git a/arch/arm/kernel/setup.c b/arch/arm/kernel/setup.c
+index 7d0cba6f..940e4bd 100644
+--- a/arch/arm/kernel/setup.c
++++ b/arch/arm/kernel/setup.c
+@@ -1036,11 +1036,11 @@ void __init setup_arch(char **cmdline_p)
+ #endif
+ 	setup_dma_zone(mdesc);
+ 	efi_init();
+-	sanity_check_meminfo();
+ 	arm_memblock_init(mdesc);
+ 
+ 	early_ioremap_reset();
+ 
++	sanity_check_meminfo();
+ 	paging_init(mdesc);
+ 	request_standard_resources(mdesc);
+ 
 -- 
-  "One disk to rule them all, One disk to find them. One disk to bring
-  them all and in the darkness grind them. In the Land of Redmond
-  where the shadows lie." -- The Silicon Valley Tarot
-  Henrique Holschuh
+1.9.1
