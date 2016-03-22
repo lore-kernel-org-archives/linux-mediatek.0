@@ -1,88 +1,62 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH] arm64/dma-mapping: Add DMA_ATTR_ALLOC_SINGLE_PAGES support
-Date: Mon, 21 Mar 2016 18:01:47 +0000
-Message-ID: <20160321180147.GR23397@arm.com>
-References: <1456944866-15990-1-git-send-email-yong.wu@mediatek.com>
+From: dawei chien <dawei.chien@mediatek.com>
+Subject: Re: [PATCH v6 0/3] thermal: mediatek: Add cpu dynamic power cooling
+ model.
+Date: Tue, 22 Mar 2016 13:13:06 +0800
+Message-ID: <1458623586.674.2.camel@mtksdaap41>
+References: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
+	 <20151217015231.GC3496@ubuntu> <1458017620.30412.3.camel@mtksdaap41>
+	 <20160315061709.GC13831@vireshk-mac-ubuntu>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1456944866-15990-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <20160315061709.GC13831@vireshk-mac-ubuntu>
+Sender: linux-pm-owner@vger.kernel.org
+To: Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 03, 2016 at 02:54:26AM +0800, Yong Wu wrote:
-> Sometimes it is not worth for the iommu allocating big chunks.
-> Here we enable DMA_ATTR_ALLOC_SINGLE_PAGES which could help avoid to
-> allocate big chunks while iommu allocating buffer.
+On Tue, 2016-03-15 at 13:17 +0700, Viresh Kumar wrote:
+> On 15-03-16, 12:53, dawei chien wrote:
+> > On Thu, 2015-12-17 at 09:52 +0800, Viresh Kumar wrote:
+> > > On 16-12-15, 21:29, Dawei Chien wrote:
+> > > > Use Intelligent Power Allocation (IPA) technical to add dynamic power model
+> > > > for binding CPU thermal zone. The power allocator governor allocates power
+> > > > budget to control CPU temperature.
+> > > >
+> > > > Power Allocator governor is able to keep SOC temperature within a defined
+> > > > temperature range to avoid SOC overheat and keep it's performance.
+> > > > mt8173-cpufreq.c need to register its' own power model with power allocator
+> > > > thermal governor, so that power allocator governor can allocates suitable
+> > > > power budget to control CPU temperature.
+> > > >
+> > > > Binding document is refer to this patchset
+> > > > https://lkml.org/lkml/2015/11/30/239
+> > > >
+> > > > Change since V5:
+> > > > 1. Remove thermal sensor ID from phandles
+> > > 
+> > > Though you should have included this in the new version, but still
+> > > 
+> > > Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+> > > 
+> > > --
+> > > viresh
+> > 
+> > Hi Viresh,
+> > Would you please pull this patch to your tree since following patch
+> > already pulled in, thank you.
+> > 
+> > https://lkml.org/lkml/2015/11/30/239
 > 
-> More information about this attribute, please check Doug's commit[1].
+> Its Rafael, who is going to apply this one.
 > 
-> [1]: https://lkml.org/lkml/2016/1/11/720
+> Can you please resend it as he may not have it in patchworks?
 > 
-> Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> Suggested-by: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-> 
-> Our video drivers may soon use this.
-> 
->  arch/arm64/mm/dma-mapping.c |  4 ++--
->  drivers/iommu/dma-iommu.c   | 14 ++++++++++----
->  include/linux/dma-iommu.h   |  4 ++--
->  3 files changed, 14 insertions(+), 8 deletions(-)
-> 
-> diff --git a/arch/arm64/mm/dma-mapping.c b/arch/arm64/mm/dma-mapping.c
-> index 331c4ca..3225e3ca 100644
-> --- a/arch/arm64/mm/dma-mapping.c
-> +++ b/arch/arm64/mm/dma-mapping.c
-> @@ -562,8 +562,8 @@ static void *__iommu_alloc_attrs(struct device *dev, size_t size,
->  		struct page **pages;
->  		pgprot_t prot = __get_dma_pgprot(attrs, PAGE_KERNEL, coherent);
->  
-> -		pages = iommu_dma_alloc(dev, iosize, gfp, ioprot, handle,
-> -					flush_page);
-> +		pages = iommu_dma_alloc(dev, iosize, gfp, ioprot, attrs,
-> +					handle, flush_page);
->  		if (!pages)
->  			return NULL;
->  
-> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
-> index 72d6182..3569cb6 100644
-> --- a/drivers/iommu/dma-iommu.c
-> +++ b/drivers/iommu/dma-iommu.c
-> @@ -190,7 +190,8 @@ static void __iommu_dma_free_pages(struct page **pages, int count)
->  	kvfree(pages);
->  }
->  
-> -static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
-> +static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp,
-> +					     struct dma_attrs *attrs)
->  {
->  	struct page **pages;
->  	unsigned int i = 0, array_size = count * sizeof(*pages);
-> @@ -203,6 +204,10 @@ static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
->  	if (!pages)
->  		return NULL;
->  
-> +	/* Go straight to 4K chunks if caller says it's OK. */
-> +	if (dma_get_attr(DMA_ATTR_ALLOC_SINGLE_PAGES, attrs))
-> +		order = 0;
 
-I have a slight snag with this, in that you don't consult the IOMMU
-pgsize_bitmap at any point, and assume that it can map pages at the
-same granularity as the CPU. The documentation for
-DMA_ATTR_ALLOC_SINGLE_PAGES seems to be weaker than that.
+Hi Rafael,
+Would you merge this patch to your tee, thank you.
 
-Will
+BR,
+Dawei
+
