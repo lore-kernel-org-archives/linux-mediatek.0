@@ -1,36 +1,58 @@
-From: Vladimir Zapolskiy <vz@mleia.com>
-Subject: [PATCH] net: mediatek: fix checking for NULL instead of IS_ERR() in .probe
-Date: Wed, 23 Mar 2016 01:06:04 +0200
-Message-ID: <1458687964-9690-1-git-send-email-vz@mleia.com>
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@openwrt.org>, John Crispin <blogic@openwrt.org>
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [RFCv2: PATCH 2/2] mtd: mediatek: driver for MTK Smart Device
+ Gen1 NAND
+Date: Tue, 22 Mar 2016 19:43:13 -0400
+Message-ID: <56F1D891.8010603@linaro.org>
+References: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <1458653560-2679-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <20160322175850.2722c389@bbrezillon>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160322175850.2722c389@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-devm_ioremap_resource() returns ERR_PTR() value on error, it never
-returns NULL, fix it and propagate the returned error upwards.
+On 03/22/2016 12:58 PM, Boris Brezillon wrote:
+>> +typedef void (*release)(struct sdg1_ecc_if *);
+>> > +typedef int (*decode)(struct sdg1_ecc_if *);
+>> > +typedef void (*init) (struct sdg1_ecc_if *);
+>> > +
+>> > +struct sdg1_ecc_if {
+>> > +	release	release;
+>> > +	control control;
+>> > +	config config;
+>> > +	encode encode;
+>> > +	decode decode;
+>> > +	check check;
+>> > +	init init;
+>> > +};
+>> > +
+>> > +struct sdg1_ecc_if *of_sdg1_ecc_get(struct device_node *);
+> I think you should directly return a pointer to the sdg1_ecc instance
+> here.
+> AFAICS, the "interface" appraoch is useless, all you need is a set of
+> exported functions, which all takes the sdg1_ecc pointer as a first
+> argument and a set of extra arguments depending on the function.
+> See what's done in the jz4780_bch.c driver.
+>
 
-Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623 ethernet")
-Signed-off-by: Vladimir Zapolskiy <vz@mleia.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+yes I am of the contrary opinion (why export a number of functions when you can
+just export an interface and keep a clear encapsulation).
+as a matter of fact the interface exposes the dependency with the engine while a
+random number of function calls does not (with the interface approach eventually
+we might be able to have a common ecc interface some day, maybe)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 7f2126b..e0b68af 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1690,8 +1690,8 @@ static int mtk_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	eth->base = devm_ioremap_resource(&pdev->dev, res);
--	if (!eth->base)
--		return -EADDRNOTAVAIL;
-+	if (IS_ERR(eth->base))
-+		return PTR_ERR(eth->base);
- 
- 	spin_lock_init(&eth->page_lock);
- 
--- 
-2.1.4
+anyway, working on v3 now. thanks for the detailed review as always (and sorry
+for the clear fuck ups like the size 0 array in the wrong place...argh!)
