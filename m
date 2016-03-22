@@ -1,62 +1,186 @@
-From: dawei chien <dawei.chien@mediatek.com>
-Subject: Re: [PATCH v6 0/3] thermal: mediatek: Add cpu dynamic power cooling
- model.
-Date: Tue, 22 Mar 2016 13:13:06 +0800
-Message-ID: <1458623586.674.2.camel@mtksdaap41>
-References: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
-	 <20151217015231.GC3496@ubuntu> <1458017620.30412.3.camel@mtksdaap41>
-	 <20160315061709.GC13831@vireshk-mac-ubuntu>
+From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [RFCv2: PATCH 1/2] mtd: mediatek: device tree docs for MTK Smart
+ Device Gen1 NAND
+Date: Tue, 22 Mar 2016 09:32:39 -0400
+Message-ID: <1458653560-2679-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
+References: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pm-owner@vger.kernel.org>
-In-Reply-To: <20160315061709.GC13831@vireshk-mac-ubuntu>
-Sender: linux-pm-owner@vger.kernel.org
-To: Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-03-15 at 13:17 +0700, Viresh Kumar wrote:
-> On 15-03-16, 12:53, dawei chien wrote:
-> > On Thu, 2015-12-17 at 09:52 +0800, Viresh Kumar wrote:
-> > > On 16-12-15, 21:29, Dawei Chien wrote:
-> > > > Use Intelligent Power Allocation (IPA) technical to add dynamic power model
-> > > > for binding CPU thermal zone. The power allocator governor allocates power
-> > > > budget to control CPU temperature.
-> > > >
-> > > > Power Allocator governor is able to keep SOC temperature within a defined
-> > > > temperature range to avoid SOC overheat and keep it's performance.
-> > > > mt8173-cpufreq.c need to register its' own power model with power allocator
-> > > > thermal governor, so that power allocator governor can allocates suitable
-> > > > power budget to control CPU temperature.
-> > > >
-> > > > Binding document is refer to this patchset
-> > > > https://lkml.org/lkml/2015/11/30/239
-> > > >
-> > > > Change since V5:
-> > > > 1. Remove thermal sensor ID from phandles
-> > > 
-> > > Though you should have included this in the new version, but still
-> > > 
-> > > Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-> > > 
-> > > --
-> > > viresh
-> > 
-> > Hi Viresh,
-> > Would you please pull this patch to your tree since following patch
-> > already pulled in, thank you.
-> > 
-> > https://lkml.org/lkml/2015/11/30/239
-> 
-> Its Rafael, who is going to apply this one.
-> 
-> Can you please resend it as he may not have it in patchworks?
-> 
+This patch adds documentation support for Smart Device Gen1 type of
+NAND controllers.
 
-Hi Rafael,
-Would you merge this patch to your tee, thank you.
+Mediatek's SoC 2701 is one of the SoCs that implements this controller.
 
-BR,
-Dawei
+Signed-off-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+---
+ .../devicetree/bindings/mtd/mtksdg1-nand.txt       | 143 +++++++++++++++++++++
+ 1 file changed, 143 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/mtksdg1-nand.txt
 
+diff --git a/Documentation/devicetree/bindings/mtd/mtksdg1-nand.txt b/Documentation/devicetree/bindings/mtd/mtksdg1-nand.txt
+new file mode 100644
+index 0000000..be6c579
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/mtksdg1-nand.txt
+@@ -0,0 +1,143 @@
++MTK Smart Device SoCs NAND FLASH controller (NFC) DT binding
++
++This file documents the device tree bindings for the Smart Device Gen1
++NAND controllers. The functional split of the controller requires two
++drivers to operate: the nand controller interface driver and the ECC
++controller driver.
++
++The hardware description for both devices must be captured as device
++tree nodes.
++
++1) NFC NAND Controller Interface (NFI):
++=======================================
++
++The first part of NFC is NAND Controller Interface (NFI) HW.
++Required NFI properties:
++- compatible:			Should be "mediatek,mtxxxx-nfc".
++- reg:				Base physical address and size of NFI.
++- interrupts:			Interrupts of NFI.
++- clocks:			NFI required clocks.
++- clock-names:			NFI clocks internal name.
++- status:			Disabled default. Then set "okay" by platform.
++- mediatek,ecc-controller:	Required ECC Engine node.
++- #address-cells:		NAND chip index, should be 1.
++- #size-cells:			Should be 0.
++
++Example:
++
++	nand: nfi@1100d000 {
++		compatible = "mediatek,mt2701-nfc";
++		reg = <0 0x1100d000 0 0x1000>;
++		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_NFI>,
++			 <&pericfg CLK_PERI_NFI_PAD>;
++		clock-names = "nfi_clk", "pad_clk";
++		nand-on-flash-bbt;
++		status = "disabled";
++		mediatek,ecc-controller = <&bch>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++        };
++
++Platform related properties, should be set in {platform_name}.dts:
++- children nodes:	NAND chips.
++
++Children nodes properties:
++- reg:			Chip Select Signal, default 0.
++			Set as reg = <0>, <1> when need 2 CS.
++- spare_per_sector:	Spare size of each sector.
++- nand-ecc-strength:	Number of bits to correct per ECC step.
++- nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
++
++Optional:
++- vmch-supply:		NAND power supply.
++- pinctrl-names:	Default NAND pin GPIO setting name.
++- pinctrl-0:		GPIO setting node.
++
++Example:
++	&pio {
++		nand_pins_default: nanddefault {
++			pins_dat {
++				pinmux = <MT2701_PIN_111_MSDC0_DAT7__FUNC_NLD7>,
++					 <MT2701_PIN_112_MSDC0_DAT6__FUNC_NLD6>,
++					 <MT2701_PIN_114_MSDC0_DAT4__FUNC_NLD4>,
++					 <MT2701_PIN_118_MSDC0_DAT3__FUNC_NLD3>,
++					 <MT2701_PIN_121_MSDC0_DAT0__FUNC_NLD0>,
++					 <MT2701_PIN_120_MSDC0_DAT1__FUNC_NLD1>,
++					 <MT2701_PIN_113_MSDC0_DAT5__FUNC_NLD5>,
++					 <MT2701_PIN_115_MSDC0_RSTB__FUNC_NLD8>,
++					 <MT2701_PIN_119_MSDC0_DAT2__FUNC_NLD2>;
++				input-enable;
++				drive-strength = <MTK_DRIVE_8mA>;
++				bias-pull-up;
++			};
++
++			pins_we {
++				pinmux = <MT2701_PIN_117_MSDC0_CLK__FUNC_NWEB>;
++				drive-strength = <MTK_DRIVE_8mA>;
++				bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
++			};
++
++			pins_ale {
++				pinmux = <MT2701_PIN_116_MSDC0_CMD__FUNC_NALE>;
++				drive-strength = <MTK_DRIVE_8mA>;
++				bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			};
++		};
++	};
++
++	&nand {
++		status = "okay";
++		pinctrl-names = "default";
++		pinctrl-0 = <&nand_pins_default>;
++		chip@0 {
++			reg = <0>;
++			spare_per_sector = <56>;
++			nand-ecc-strength = <24>;
++			nand-ecc-step-size = <1024>;
++		};
++	};
++
++NAND chip optional subnodes:
++- Partitions, see Documentation/devicetree/bindings/mtd/partition.txt
++
++Example:
++	chip@0 {
++		partitions {
++			compatible = "fixed-partitions";
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			preloader@0 {
++				label = "pl";
++				read-only;
++				reg = <0x00000000 0x00400000>;
++			};
++			android@0x00400000 {
++				label = "android";
++				reg = <0x00400000 0x12c00000>;
++			};
++		};
++	};
++
++2) ECC Engine:
++==============
++
++Required BCH properties:
++- compatible:	Should be "mediatek,mtxxxx-ecc".
++- reg:		Base physical address and size of ECC.
++- interrupts:	Interrupts of ECC.
++- clocks:	ECC required clocks.
++- clock-names:	ECC clocks internal name.
++- status:	Disabled default. Then set "okay" by platform.
++
++Example:
++
++	bch: ecc@1100e000 {
++		compatible = "mediatek,mt2701-ecc";
++		reg = <0 0x1100e000 0 0x1000>;
++		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_NFI_ECC>;
++		clock-names = "nfiecc_clk";
++		status = "disabled";
++	};
+-- 
+2.5.0
