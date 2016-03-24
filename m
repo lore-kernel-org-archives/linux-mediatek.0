@@ -1,26 +1,80 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net: mediatek: fix checking for NULL instead of
- IS_ERR() in .probe
-Date: Wed, 23 Mar 2016 13:50:15 -0400 (EDT)
-Message-ID: <20160323.135015.4255305663652743.davem@davemloft.net>
-References: <1458687964-9690-1-git-send-email-vz@mleia.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] sbs-battery: fix power status when battery is dry
+Date: Thu, 24 Mar 2016 12:01:36 +0800
+Message-ID: <CAGS+omDTmJDkJYsf=gDJMrmAos+30enoAa2xfTPyirXUd37=9g@mail.gmail.com>
+References: <1458726794-48298-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1458687964-9690-1-git-send-email-vz@mleia.com>
-Sender: netdev-owner@vger.kernel.org
-To: vz@mleia.com
-Cc: nbd@openwrt.org, blogic@openwrt.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1458726794-48298-1-git-send-email-yh.huang@mediatek.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Vladimir Zapolskiy <vz@mleia.com>
-Date: Wed, 23 Mar 2016 01:06:04 +0200
+Hi YH,
 
-> devm_ioremap_resource() returns ERR_PTR() value on error, it never
-> returns NULL, fix it and propagate the returned error upwards.
-> 
-> Fixes: 656e705243fd ("net-next: mediatek: add support for MT7623 ethernet")
-> Signed-off-by: Vladimir Zapolskiy <vz@mleia.com>
+On Wed, Mar 23, 2016 at 5:53 PM, YH Huang <yh.huang@mediatek.com> wrote:
+> When the battery is dry and BATTERY_FULL_DISCHARGED is set,
+> we should check BATTERY_DISCHARGING to decide the power status.
+> If BATTERY_DISCHARGING is set, the power status is not charging.
+> Or the power status should be charging.
+>
+> Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> ---
+>  drivers/power/sbs-battery.c |   22 ++++++++++++----------
+>  1 file changed, 12 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/power/sbs-battery.c b/drivers/power/sbs-battery.c
+> index d6226d6..d86db0e 100644
+> --- a/drivers/power/sbs-battery.c
+> +++ b/drivers/power/sbs-battery.c
+> @@ -382,11 +382,12 @@ static int sbs_get_battery_property(struct i2c_client *client,
+>
+>                 if (ret & BATTERY_FULL_CHARGED)
+>                         val->intval = POWER_SUPPLY_STATUS_FULL;
+> -               else if (ret & BATTERY_FULL_DISCHARGED)
+> -                       val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> -               else if (ret & BATTERY_DISCHARGING)
+> -                       val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+> -               else
+> +               else if (ret & BATTERY_DISCHARGING) {
+> +                       if (ret & BATTERY_FULL_DISCHARGED)
+> +                               val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> +                       else
+> +                               val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+> +               } else
 
-Applied, thanks.
+
+I think (BATTERY_DISCHARGING && BATTERY_FULL_DISCHARGED) is still
+POWER_SUPPLY_STATUS_DISCHARGING.
+So, let's just report what the battery says and do:
+
+               else if (ret & BATTERY_DISCHARGING)
+                               val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+
+
+>                         val->intval = POWER_SUPPLY_STATUS_CHARGING;
+>
+>                 if (chip->poll_time == 0)
+> @@ -702,11 +703,12 @@ static void sbs_delayed_work(struct work_struct *work)
+>
+>         if (ret & BATTERY_FULL_CHARGED)
+>                 ret = POWER_SUPPLY_STATUS_FULL;
+> -       else if (ret & BATTERY_FULL_DISCHARGED)
+> -               ret = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> -       else if (ret & BATTERY_DISCHARGING)
+> -               ret = POWER_SUPPLY_STATUS_DISCHARGING;
+> -       else
+> +       else if (ret & BATTERY_DISCHARGING) {
+> +               if (ret & BATTERY_FULL_DISCHARGED)
+> +                       ret = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> +               else
+> +                       ret = POWER_SUPPLY_STATUS_DISCHARGING;
+> +       } else
+>                 ret = POWER_SUPPLY_STATUS_CHARGING;
+>
+>         if (chip->last_state != ret) {
+> --
+> 1.7.9.5
+>
