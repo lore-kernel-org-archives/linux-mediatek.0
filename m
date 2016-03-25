@@ -1,74 +1,74 @@
-From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: mt8173-evb: failing to boot in linux-next and mainline
-Date: Thu, 24 Mar 2016 11:42:15 -0700
-Message-ID: <CAOi56cV2M_Ee2AhxTUgHhZuZ1y7LH4sKKyiq3Okorj3K+L15GA@mail.gmail.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] sbs-battery: fix power status when battery is dry
+Date: Fri, 25 Mar 2016 11:06:30 +0800
+Message-ID: <CAGS+omDhFP+_shCqEWasLDsHf-ab0-OWJJ-gZZkgihAgrZwBHA@mail.gmail.com>
+References: <1458726794-48298-1-git-send-email-yh.huang@mediatek.com>
+ <CAGS+omDTmJDkJYsf=gDJMrmAos+30enoAa2xfTPyirXUd37=9g@mail.gmail.com> <1458801832.16645.7.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1458801832.16645.7.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: YH Huang <yh.huang@mediatek.com>
+Cc: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
+On Thu, Mar 24, 2016 at 2:43 PM, YH Huang <yh.huang@mediatek.com> wrote:
+>
+> Hi Daniel,
+>
+> On Thu, 2016-03-24 at 12:01 +0800, Daniel Kurtz wrote:
+> > Hi YH,
+> >
+> > On Wed, Mar 23, 2016 at 5:53 PM, YH Huang <yh.huang@mediatek.com> wrote:
+> > > When the battery is dry and BATTERY_FULL_DISCHARGED is set,
+> > > we should check BATTERY_DISCHARGING to decide the power status.
+> > > If BATTERY_DISCHARGING is set, the power status is not charging.
+> > > Or the power status should be charging.
+> > >
+> > > Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> > > ---
+> > >  drivers/power/sbs-battery.c |   22 ++++++++++++----------
+> > >  1 file changed, 12 insertions(+), 10 deletions(-)
+> > >
+> > > diff --git a/drivers/power/sbs-battery.c b/drivers/power/sbs-battery.c
+> > > index d6226d6..d86db0e 100644
+> > > --- a/drivers/power/sbs-battery.c
+> > > +++ b/drivers/power/sbs-battery.c
+> > > @@ -382,11 +382,12 @@ static int sbs_get_battery_property(struct i2c_client *client,
+> > >
+> > >                 if (ret & BATTERY_FULL_CHARGED)
+> > >                         val->intval = POWER_SUPPLY_STATUS_FULL;
+> > > -               else if (ret & BATTERY_FULL_DISCHARGED)
+> > > -                       val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> > > -               else if (ret & BATTERY_DISCHARGING)
+> > > -                       val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+> > > -               else
+> > > +               else if (ret & BATTERY_DISCHARGING) {
+> > > +                       if (ret & BATTERY_FULL_DISCHARGED)
+> > > +                               val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
+> > > +                       else
+> > > +                               val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+> > > +               } else
+> >
+> >
+> > I think (BATTERY_DISCHARGING && BATTERY_FULL_DISCHARGED) is still
+> > POWER_SUPPLY_STATUS_DISCHARGING.
+> > So, let's just report what the battery says and do:
+> >
+> >                else if (ret & BATTERY_DISCHARGING)
+> >                                val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+> >
+> So we just ignore the special situation (BATTERY_DISCHARGING &&
+> BATTERY_FULL_DISCHARGED).
+> Isn't POWER_SUPPLY_STATUS_NOT_CHARGING a useful information?
 
-The mt8173-evb has been failing to boot in linux-next since 29 Feb,
-and is now causing failures in mainline[2] since the merge window is
-open and things are getting merged.
+The battery is discharging.  The fact that it is also reporting that
+it is already "discharged" just seems premature.   I would expect to
+only see NOT_CHARGING if completely discharged *and* not discharging.
 
-Bisecting this has led to inconclusive results, so I'm still not sure
-what the real culprit is.  The last few kernel for the failures are:
-
-[    0.570979] NET: Registered protocol family 17
-[    0.571615] 9pnet: Installing 9P2000 support
-[    0.572211] Key type dns_resolver registered
-[    0.573195] registered taskstats version 1
-[    0.574170] hctosys: unable to open rtc device (rtc0)
-[    0.581122] usb_vbus: disabling
-
-Thinking it was this regulator getting prematurely disabled, I set the
-'regulator-always-on' property, which doesn't do much better, but does
-report a CPU stall:
-
-[    0.556186] NET: Registered protocol family 17
-[    0.556829] 9pnet: Installing 9P2000 support
-[    0.557496] Key type dns_resolver registered
-[    0.558669] registered taskstats version 1
-[    0.559611] hctosys: unable to open rtc device (rtc0)
-[   21.573504] INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   21.574227]  1-...: (1 GPs behind) idle=483/140000000000000/0
-softirq=221/222 fqs=2638
-[   21.575227]  (detected by 3, t=5252 jiffies, g=-238, c=-239, q=204)
-[   21.576017] Task dump for CPU 1:
-[   21.576424] swapper/0       R  running task        0     1      0 0x00000002
-[   21.577316] Call trace:
-[   21.577634] [<ffffff8008086c20>] __switch_to+0xd0/0xdc
-[   21.578280] [<ffffffc077096900>] 0xffffffc077096900
-[   33.321443] random: nonblocking pool is initialized
-[   84.593487] INFO: rcu_preempt detected stalls on CPUs/tasks:
-[   84.594207]  1-...: (1 GPs behind) idle=483/140000000000000/0
-softirq=221/222 fqs=10861
-[   84.595216]  (detected by 3, t=21007 jiffies, g=-238, c=-239, q=204)
-[   84.596017] Task dump for CPU 1:
-[   84.596424] swapper/0       R  running task        0     1      0 0x00000002
-[   84.597315] Call trace:
-[   84.597628] [<ffffff8008086c20>] __switch_to+0xd0/0xdc
-[   84.598273] [<ffffffc077096900>] 0xffffffc077096900
-
-Anyways, I gave up on this for now hoping someone here would take a closer look.
-
-Thanks,
-
-Kevin
-
-[1] https://kernelci.org/boot/mt8173-evb/job/next/kernel/next-20160324/defconfig/defconfig/lab/lab-khilman/?_id=56f3b10759b51423934b0500
-[2] https://kernelci.org/boot/mt8173-evb/job/mainline/kernel/v4.5-12149-gaca04ce5dbda/defconfig/defconfig/lab/lab-khilman/?_id=56f3c33f59b5145aa14b04f2
+>
+>
+> Regards,
+> YH Huang
+>
