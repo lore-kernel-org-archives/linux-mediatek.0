@@ -1,74 +1,138 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH] sbs-battery: fix power status when battery is dry
-Date: Fri, 25 Mar 2016 11:06:30 +0800
-Message-ID: <CAGS+omDhFP+_shCqEWasLDsHf-ab0-OWJJ-gZZkgihAgrZwBHA@mail.gmail.com>
-References: <1458726794-48298-1-git-send-email-yh.huang@mediatek.com>
- <CAGS+omDTmJDkJYsf=gDJMrmAos+30enoAa2xfTPyirXUd37=9g@mail.gmail.com> <1458801832.16645.7.camel@mtksdaap41>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
+Date: Fri, 25 Mar 2016 11:42:05 +0800
+Message-ID: <1458877325-33980-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1458801832.16645.7.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+To: broonie@kernel.org, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Mar 24, 2016 at 2:43 PM, YH Huang <yh.huang@mediatek.com> wrote:
->
-> Hi Daniel,
->
-> On Thu, 2016-03-24 at 12:01 +0800, Daniel Kurtz wrote:
-> > Hi YH,
-> >
-> > On Wed, Mar 23, 2016 at 5:53 PM, YH Huang <yh.huang@mediatek.com> wrote:
-> > > When the battery is dry and BATTERY_FULL_DISCHARGED is set,
-> > > we should check BATTERY_DISCHARGING to decide the power status.
-> > > If BATTERY_DISCHARGING is set, the power status is not charging.
-> > > Or the power status should be charging.
-> > >
-> > > Signed-off-by: YH Huang <yh.huang@mediatek.com>
-> > > ---
-> > >  drivers/power/sbs-battery.c |   22 ++++++++++++----------
-> > >  1 file changed, 12 insertions(+), 10 deletions(-)
-> > >
-> > > diff --git a/drivers/power/sbs-battery.c b/drivers/power/sbs-battery.c
-> > > index d6226d6..d86db0e 100644
-> > > --- a/drivers/power/sbs-battery.c
-> > > +++ b/drivers/power/sbs-battery.c
-> > > @@ -382,11 +382,12 @@ static int sbs_get_battery_property(struct i2c_client *client,
-> > >
-> > >                 if (ret & BATTERY_FULL_CHARGED)
-> > >                         val->intval = POWER_SUPPLY_STATUS_FULL;
-> > > -               else if (ret & BATTERY_FULL_DISCHARGED)
-> > > -                       val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
-> > > -               else if (ret & BATTERY_DISCHARGING)
-> > > -                       val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-> > > -               else
-> > > +               else if (ret & BATTERY_DISCHARGING) {
-> > > +                       if (ret & BATTERY_FULL_DISCHARGED)
-> > > +                               val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
-> > > +                       else
-> > > +                               val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-> > > +               } else
-> >
-> >
-> > I think (BATTERY_DISCHARGING && BATTERY_FULL_DISCHARGED) is still
-> > POWER_SUPPLY_STATUS_DISCHARGING.
-> > So, let's just report what the battery says and do:
-> >
-> >                else if (ret & BATTERY_DISCHARGING)
-> >                                val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-> >
-> So we just ignore the special situation (BATTERY_DISCHARGING &&
-> BATTERY_FULL_DISCHARGED).
-> Isn't POWER_SUPPLY_STATUS_NOT_CHARGING a useful information?
+This patch adds second I2S for rt5650 codec on mt8173-rt5650 machine driver.
 
-The battery is discharging.  The fact that it is also reporting that
-it is already "discharged" just seems premature.   I would expect to
-only see NOT_CHARGING if completely discharged *and* not discharging.
+Signed-off-by: PC Liao <pc.liao@mediatek.com>
+---
+ .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
+ sound/soc/mediatek/mt8173-rt5650.c                 |   55 ++++++++++++++++++--
+ 2 files changed, 56 insertions(+), 5 deletions(-)
 
->
->
-> Regards,
-> YH Huang
->
+diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+index fe5a5ef..0046926 100644
+--- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
++++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+@@ -5,11 +5,17 @@ Required properties:
+ - mediatek,audio-codec: the phandles of rt5650 codecs
+ - mediatek,platform: the phandle of MT8173 ASoC platform
+ 
++Optional properties:
++- mediatek,rt5650_i2s: I2S mode of rt5650
++  0: using I2S1 on rt5650 for record
++  1: using I2S2 on rt5650 for record
++
+ Example:
+ 
+ 	sound {
+ 		compatible = "mediatek,mt8173-rt5650";
+ 		mediatek,audio-codec = <&rt5650>;
+ 		mediatek,platform = <&afe>;
++		mediatek,rt5650_i2s = <0>;
+ 	};
+ 
+diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
+index bb09bb1..ab4c806 100644
+--- a/sound/soc/mediatek/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173-rt5650.c
+@@ -23,6 +23,20 @@
+ 
+ #define MCLK_FOR_CODECS		12288000
+ 
++struct mt8173_rt5650_platform_data {
++	unsigned int rt5650_i2s;
++	/* 0 = I2S1; 1 = I2S2 */
++};
++
++static struct mt8173_rt5650_platform_data mt8173_rt5650_priv = {
++	.rt5650_i2s = 0,
++};
++
++enum mt8173_rt5650_i2s {
++	MT8173_RT5650_I2S1 = 0,
++	MT8173_RT5650_I2S2,
++};
++
+ static const struct snd_soc_dapm_widget mt8173_rt5650_widgets[] = {
+ 	SND_SOC_DAPM_SPK("Speaker", NULL),
+ 	SND_SOC_DAPM_MIC("Int Mic", NULL),
+@@ -87,10 +101,25 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
+ 	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
+ 	int ret;
+ 
+-	rt5645_sel_asrc_clk_src(codec,
+-				RT5645_DA_STEREO_FILTER |
+-				RT5645_AD_STEREO_FILTER,
+-				RT5645_CLK_SEL_I2S1_ASRC);
++	switch (mt8173_rt5650_priv.rt5650_i2s) {
++	case MT8173_RT5650_I2S1:
++		rt5645_sel_asrc_clk_src(codec,
++					RT5645_DA_STEREO_FILTER |
++					RT5645_AD_STEREO_FILTER,
++					RT5645_CLK_SEL_I2S1_ASRC);
++		break;
++	case MT8173_RT5650_I2S2:
++		rt5645_sel_asrc_clk_src(codec,
++					RT5645_DA_STEREO_FILTER,
++					RT5645_CLK_SEL_I2S1_ASRC);
++		rt5645_sel_asrc_clk_src(codec,
++					RT5645_AD_STEREO_FILTER,
++					RT5645_CLK_SEL_I2S2_ASRC);
++		break;
++	default:
++		break;
++	}
++
+ 	/* enable jack detection */
+ 	ret = snd_soc_card_jack_new(card, "Headset Jack",
+ 				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
+@@ -112,6 +141,9 @@ static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
+ 	{
+ 		.dai_name = "rt5645-aif1",
+ 	},
++	{
++		.dai_name = "rt5645-aif2",
++	},
+ };
+ 
+ enum {
+@@ -149,7 +181,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
+ 		.cpu_dai_name = "I2S",
+ 		.no_pcm = 1,
+ 		.codecs = mt8173_rt5650_codecs,
+-		.num_codecs = 1,
++		.num_codecs = 2,
+ 		.init = mt8173_rt5650_init,
+ 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+ 			   SND_SOC_DAIFMT_CBS_CFS,
+@@ -199,6 +231,19 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 			"Property 'audio-codec' missing or invalid\n");
+ 		return -EINVAL;
+ 	}
++	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
++
++	if (device_property_present(&pdev->dev, "mediatek,rt5650_i2s")) {
++		ret = device_property_read_u32(&pdev->dev,
++					       "mediatek,rt5650_i2s",
++					       &mt8173_rt5650_priv.rt5650_i2s);
++		if (ret) {
++			dev_err(&pdev->dev,
++				"%s snd_soc_register_card fail %d\n",
++				__func__, ret);
++		}
++	}
++
+ 	card->dev = &pdev->dev;
+ 	platform_set_drvdata(pdev, card);
+ 
+-- 
+1.7.9.5
