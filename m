@@ -1,149 +1,106 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm: dts: mt2701: Add clock controller device nodes
-Date: Mon, 28 Mar 2016 13:29:15 +0800
-Message-ID: <1459142955-33209-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 1/2] dma/iommu: Add pgsize_bitmap confirmation in
+	__iommu_dma_alloc_pages
+Date: Mon, 28 Mar 2016 14:32:11 +0800
+Message-ID: <1459146732-15620-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add clock controller nodes for MT2701, include topckgen, infracfg,
-pericfg, apmixedsys, mmsys, imgsys, vdecsys, hifsys, ethsys and
-bdpsys. This patch also add two oscillators that provide clocks for
-MT2701.
+Currently __iommu_dma_alloc_pages assumes that all the IOMMU support
+the granule of PAGE_SIZE. It call alloc_page to try allocating memory
+in the last time. Fortunately the mininum pagesize in all the
+current IOMMU is SZ_4K, so this works well.
 
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+But there may be a case in which the mininum granule of IOMMU may be
+larger than PAGE_SIZE, then it will abort as the IOMMU cann't map the
+discontinuous memory within a granule. For example, the pgsize_bitmap
+of the IOMMU only has SZ_16K while the PAGE_SIZE is SZ_4K, then we
+have to prepare SZ_16K continuous memory at least for each a granule
+iommu mapping.
+
+Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
 ---
-This patch is based on v4.6-rc1 and MT2701 clock patches [1]. This
-patch adds all clock provider nodes which are supported in [1].
+v2:
+ -rebase on v4.6-rc1.
+ -add a new patch([1/2] add pgsize_bitmap) here.
 
-[1] http://lists.infradead.org/pipermail/linux-mediatek/2016-February/004030.html
+ drivers/iommu/dma-iommu.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
 
- arch/arm/boot/dts/mt2701.dtsi | 78 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 78 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 8343768..c8fee33 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -12,6 +12,7 @@
-  * GNU General Public License for more details.
-  */
+diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
+index 72d6182..75ce71e 100644
+--- a/drivers/iommu/dma-iommu.c
++++ b/drivers/iommu/dma-iommu.c
+@@ -190,11 +190,13 @@ static void __iommu_dma_free_pages(struct page **pages, int count)
+ 	kvfree(pages);
+ }
  
-+#include <dt-bindings/clock/mt2701-clk.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include "skeleton64.dtsi"
-@@ -76,6 +77,20 @@
- 		#clock-cells = <0>;
- 	};
+-static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
++static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp,
++					     unsigned long pgsize_bitmap)
+ {
+ 	struct page **pages;
+ 	unsigned int i = 0, array_size = count * sizeof(*pages);
+-	unsigned int order = MAX_ORDER;
++	int min_order = get_order(1 << __ffs(pgsize_bitmap));
++	int order = MAX_ORDER;
  
-+	clk26m: oscillator@0 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <26000000>;
-+		clock-output-names = "clk26m";
-+	};
-+
-+	rtc32k: oscillator@1 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <32000>;
-+		clock-output-names = "rtc32k";
-+	};
-+
- 	timer {
- 		compatible = "arm,armv7-timer";
- 		interrupt-parent = <&gic>;
-@@ -85,6 +100,26 @@
- 			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
- 	};
+ 	if (array_size <= PAGE_SIZE)
+ 		pages = kzalloc(array_size, GFP_KERNEL);
+@@ -213,13 +215,16 @@ static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
+ 		/*
+ 		 * Higher-order allocations are a convenience rather
+ 		 * than a necessity, hence using __GFP_NORETRY until
+-		 * falling back to single-page allocations.
++		 * falling back to min size allocations.
+ 		 */
+-		for (order = min_t(unsigned int, order, __fls(count));
+-		     order > 0; order--) {
+-			page = alloc_pages(gfp | __GFP_NORETRY, order);
++		for (order = min_t(int, order, __fls(count));
++		     order >= min_order; order--) {
++			page = alloc_pages((order == min_order) ? gfp :
++					   gfp | __GFP_NORETRY, order);
+ 			if (!page)
+ 				continue;
++			if (!order)
++				break;
+ 			if (PageCompound(page)) {
+ 				if (!split_huge_page(page))
+ 					break;
+@@ -229,8 +234,6 @@ static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
+ 				break;
+ 			}
+ 		}
+-		if (!page)
+-			page = alloc_page(gfp);
+ 		if (!page) {
+ 			__iommu_dma_free_pages(pages, i);
+ 			return NULL;
+@@ -292,7 +295,8 @@ struct page **iommu_dma_alloc(struct device *dev, size_t size,
  
-+	topckgen: syscon@10000000 {
-+		compatible = "mediatek,mt2701-topckgen", "syscon";
-+		reg = <0 0x10000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	infracfg: syscon@10001000 {
-+		compatible = "mediatek,mt2701-infracfg", "syscon";
-+		reg = <0 0x10001000 0 0x1000>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+	pericfg: syscon@10003000 {
-+		compatible = "mediatek,mt2701-pericfg", "syscon";
-+		reg = <0 0x10003000 0 0x1000>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
- 	watchdog: watchdog@10007000 {
- 		compatible = "mediatek,mt2701-wdt",
- 			     "mediatek,mt6589-wdt";
-@@ -109,6 +144,13 @@
- 		reg = <0 0x10200100 0 0x1c>;
- 	};
+ 	*handle = DMA_ERROR_CODE;
  
-+	apmixedsys: syscon@10209000 {
-+		compatible = "mediatek,mt2701-apmixedsys", "syscon";
-+		reg = <0 0x10209000 0 0x1000>;
-+		mediatek,hdmi-ibias = <0xa>;
-+		#clock-cells = <1>;
-+	};
-+
- 	gic: interrupt-controller@10211000 {
- 		compatible = "arm,cortex-a7-gic";
- 		interrupt-controller;
-@@ -155,4 +197,40 @@
- 		clocks = <&uart_clk>;
- 		status = "disabled";
- 	};
-+
-+	mmsys: syscon@14000000 {
-+		compatible = "mediatek,mt2701-mmsys", "syscon";
-+		reg = <0 0x14000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	imgsys: syscon@15000000 {
-+		compatible = "mediatek,mt2701-imgsys", "syscon";
-+		reg = <0 0x15000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	vdecsys: syscon@16000000 {
-+		compatible = "mediatek,mt2701-vdecsys", "syscon";
-+		reg = <0 0x16000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	hifsys: syscon@1a000000 {
-+		compatible = "mediatek,mt2701-hifsys", "syscon";
-+		reg = <0 0x1a000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	ethsys: syscon@1b000000 {
-+		compatible = "mediatek,mt2701-ethsys", "syscon";
-+		reg = <0 0x1b000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
-+
-+	bdpsys: syscon@1c000000 {
-+		compatible = "mediatek,mt2701-bdpsys", "syscon";
-+		reg = <0 0x1c000000 0 0x1000>;
-+		#clock-cells = <1>;
-+	};
- };
+-	pages = __iommu_dma_alloc_pages(count, gfp);
++	pages = __iommu_dma_alloc_pages(count, gfp,
++					domain->ops->pgsize_bitmap);
+ 	if (!pages)
+ 		return NULL;
+ 
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.8.1.1.dirty
