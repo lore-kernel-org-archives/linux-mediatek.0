@@ -1,63 +1,50 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: mt8173-evb: failing to boot in linux-next and mainline
-Date: Tue, 29 Mar 2016 13:40:15 +0800
-Message-ID: <1459230015.25921.10.camel@mtksdaap41>
-References: <CAOi56cV2M_Ee2AhxTUgHhZuZ1y7LH4sKKyiq3Okorj3K+L15GA@mail.gmail.com>
- <1459165876.24094.8.camel@mtksdaap41> <7h37raprav.fsf@baylibre.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine
+ driver
+Date: Mon, 28 Mar 2016 12:11:15 -0700
+Message-ID: <20160328191115.GE2350@sirena.org.uk>
+References: <1458877325-33980-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <7h37raprav.fsf-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="imjhCm/Pyz7Rq5F2"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1458877325-33980-1-git-send-email-pc.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: PC Liao <pc.liao@mediatek.com>
+Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sascha,
 
-On Mon, 2016-03-28 at 08:15 -0700, Kevin Hilman wrote:
-> Hi Eddie,
-> 
-> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
-> 
-> [...]
-> 
-> > Thanks your testing again. I can reproduce your case in my local
-> > environment using 4.6-rc1. After checking, there are two ways to avoid
-> > the hang:
-> > 1. set clk_ignore_unused to kernel command line
-> > 2. Revert patch "cc8ed76 soc: mediatek: SCPSYS: Fix double enabling of
-> > regulators"
-> >
-> > It seems there is a problem between turn on/off clock and power domain.
-> > We will try to fix this and send patch to public once have a solution.
-> 
-> Thanks for verifying.
-> 
-> I've confirmed that reverting the patch suggested above fixes the
-> problem.
-> 
-> Since -rc1 is out, and this problem still exists in mainline, if a
-> proper fix is not found very soon, I suggest reverting that patch in mainline.
-> 
-> Kevin
+--imjhCm/Pyz7Rq5F2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-According to Eddie and Kevin's test, I think some clocks
-(mm/mfg/venc/venclt) may be turned off and there are drivers need these
-clocks without clk_prepare_enable(). But I have no idea to find out what
-driver causes this issue. So I prefer to revert it on v4.6-rc1. Do you
-have comments about this issue?
+On Fri, Mar 25, 2016 at 11:42:05AM +0800, PC Liao wrote:
 
+> +Optional properties:
+> +- mediatek,rt5650_i2s: I2S mode of rt5650
+> +  0: using I2S1 on rt5650 for record
+> +  1: using I2S2 on rt5650 for record
+> +
 
-Best regards,
+I would expect the machine driver to have a reference to the DAI that is
+in use rather than a property like this.  This is the way pretty much
+all DT based machine drivers work...
 
-James
+--imjhCm/Pyz7Rq5F2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJW+YHFAAoJECTWi3JdVIfQozgH/j3rUQlVWmCwqFd/8FuekTbV
+cmiyPnpYI/NebElwyx2hfMCXHo1Q8SmpY+dO4tNlia0/ySpp5Pu/hbY+ELuiByA0
+1ddzci4OO8iyZvtQ/6+CzIvFcix2GOW6wHPTD9us4ZCc5SujY1pJzMdiqrY7aMfJ
+k7mbZZxyvw635mjUE5W3ZkMtFUgllbWoWaGhO2VAYQ1ouy5DhPMn+nfJZMDLkVaA
+/ULeJ1NzDOQfT+GEjRmVsBU6cHpMH/VN5wYKnn2NLhXoJAvA3+w7y3xGgwbG/8Oq
+/NcIXw+Z1UvYhLAOfgYS4V+mG2dVXumZI2mcexHexBXQr0N4ZfYZHgKfTMLAqkM=
+=veuE
+-----END PGP SIGNATURE-----
+
+--imjhCm/Pyz7Rq5F2--
