@@ -1,51 +1,96 @@
-From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFCv2: PATCH 1/2] mtd: mediatek: device tree docs for MTK Smart
- Device Gen1 NAND
-Date: Sat, 26 Mar 2016 14:38:31 -0400
-Message-ID: <56F6D727.8070001@linaro.org>
-References: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1458653560-2679-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <20160322145258.44945c64@bbrezillon>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: Re: [PATCH] sbs-battery: fix power status when battery is dry
+Date: Mon, 28 Mar 2016 10:32:10 +0800
+Message-ID: <1459132330.16645.14.camel@mtksdaap41>
+References: <1458726794-48298-1-git-send-email-yh.huang@mediatek.com>
+	 <CAGS+omDTmJDkJYsf=gDJMrmAos+30enoAa2xfTPyirXUd37=9g@mail.gmail.com>
+	 <1458801832.16645.7.camel@mtksdaap41>
+	 <CAGS+omDhFP+_shCqEWasLDsHf-ab0-OWJJ-gZZkgihAgrZwBHA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160322145258.44945c64@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omDhFP+_shCqEWasLDsHf-ab0-OWJJ-gZZkgihAgrZwBHA@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 03/22/2016 09:52 AM, Boris Brezillon wrote:
->> > +		compatible = "mediatek,mt2701-nfc";
->> > +		reg = <0 0x1100d000 0 0x1000>;
->> > +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
->> > +		clocks = <&pericfg CLK_PERI_NFI>,
->> > +			 <&pericfg CLK_PERI_NFI_PAD>;
->> > +		clock-names = "nfi_clk", "pad_clk";
->> > +		nand-on-flash-bbt;
->> > +		status = "disabled";
->> > +		mediatek,ecc-controller = <&bch>;
-> Now that 2 different drivers use the same way to link the ECC engine
-> and the NAND controller we can think about defining a generic property
-> (ecc-engine ?), and provide a generic framework.
->
-> The generic framework part is not something I'm asking right now, but I
-> think we should start using a generic property here.
->
+On Fri, 2016-03-25 at 11:06 +0800, Daniel Kurtz wrote:
+> On Thu, Mar 24, 2016 at 2:43 PM, YH Huang <yh.huang@mediatek.com> wro=
+te:
+> >
+> > Hi Daniel,
+> >
+> > On Thu, 2016-03-24 at 12:01 +0800, Daniel Kurtz wrote:
+> > > Hi YH,
+> > >
+> > > On Wed, Mar 23, 2016 at 5:53 PM, YH Huang <yh.huang@mediatek.com>=
+ wrote:
+> > > > When the battery is dry and BATTERY_FULL_DISCHARGED is set,
+> > > > we should check BATTERY_DISCHARGING to decide the power status.
+> > > > If BATTERY_DISCHARGING is set, the power status is not charging=
+=2E
+> > > > Or the power status should be charging.
+> > > >
+> > > > Signed-off-by: YH Huang <yh.huang@mediatek.com>
+> > > > ---
+> > > >  drivers/power/sbs-battery.c |   22 ++++++++++++----------
+> > > >  1 file changed, 12 insertions(+), 10 deletions(-)
+> > > >
+> > > > diff --git a/drivers/power/sbs-battery.c b/drivers/power/sbs-ba=
+ttery.c
+> > > > index d6226d6..d86db0e 100644
+> > > > --- a/drivers/power/sbs-battery.c
+> > > > +++ b/drivers/power/sbs-battery.c
+> > > > @@ -382,11 +382,12 @@ static int sbs_get_battery_property(struc=
+t i2c_client *client,
+> > > >
+> > > >                 if (ret & BATTERY_FULL_CHARGED)
+> > > >                         val->intval =3D POWER_SUPPLY_STATUS_FUL=
+L;
+> > > > -               else if (ret & BATTERY_FULL_DISCHARGED)
+> > > > -                       val->intval =3D POWER_SUPPLY_STATUS_NOT=
+_CHARGING;
+> > > > -               else if (ret & BATTERY_DISCHARGING)
+> > > > -                       val->intval =3D POWER_SUPPLY_STATUS_DIS=
+CHARGING;
+> > > > -               else
+> > > > +               else if (ret & BATTERY_DISCHARGING) {
+> > > > +                       if (ret & BATTERY_FULL_DISCHARGED)
+> > > > +                               val->intval =3D POWER_SUPPLY_ST=
+ATUS_NOT_CHARGING;
+> > > > +                       else
+> > > > +                               val->intval =3D POWER_SUPPLY_ST=
+ATUS_DISCHARGING;
+> > > > +               } else
+> > >
+> > >
+> > > I think (BATTERY_DISCHARGING && BATTERY_FULL_DISCHARGED) is still
+> > > POWER_SUPPLY_STATUS_DISCHARGING.
+> > > So, let's just report what the battery says and do:
+> > >
+> > >                else if (ret & BATTERY_DISCHARGING)
+> > >                                val->intval =3D POWER_SUPPLY_STATU=
+S_DISCHARGING;
+> > >
+> > So we just ignore the special situation (BATTERY_DISCHARGING &&
+> > BATTERY_FULL_DISCHARGED).
+> > Isn't POWER_SUPPLY_STATUS_NOT_CHARGING a useful information?
+>=20
+> The battery is discharging.  The fact that it is also reporting that
+> it is already "discharged" just seems premature.   I would expect to
+> only see NOT_CHARGING if completely discharged *and* not discharging.
 
-we have done all the changes required for v3 except this one.
-so please let me check my understanding before going ahead: are you suggesting
-that we replace "mediatek,ecc-controller" for "ecc-engine" (even though this
-generic property doesn't exist yet)?
+I check the "Smart Battery Data Specification Revision 1.1".
+And there are some words about FULLY_DISCHARGED.
+"Discharge should be stopped soon."
+"This status bit may be set prior to the
+=E2=80=98TERMINATE_DISCHARGE_ALARM=E2=80=99 as an early or first level =
+warning of end of
+battery charge."
+It looks like the FULLY_DISCHARGED status is used to announce the
+warning of battery charge and it is still discharging if there is no on=
+e
+takes care of it.
 
-and then afterwards, generate another patch-set set to define and document
-"ecc-engine"?
