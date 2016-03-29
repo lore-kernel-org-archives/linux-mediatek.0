@@ -1,69 +1,66 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [RFCv2: PATCH 1/2] mtd: mediatek: device tree docs for MTK
- Smart Device Gen1 NAND
-Date: Tue, 29 Mar 2016 09:58:47 +0200
-Message-ID: <20160329095847.0ff4a400@bbrezillon>
-References: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1458653560-2679-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <20160322145258.44945c64@bbrezillon> <56F6D727.8070001@linaro.org>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v6 1/8] dt-bindings: Add a binding for Mediatek Video Processor
+Date: Tue, 29 Mar 2016 19:32:03 +0800
+Message-ID: <1459251130-53774-2-git-send-email-tiffany.lin@mediatek.com>
+References: <1459251130-53774-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <56F6D727.8070001-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1459251130-53774-1-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Tiffany.lin@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 26 Mar 2016 14:38:31 -0400
-Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 
-> On 03/22/2016 09:52 AM, Boris Brezillon wrote:
-> >> > +		compatible = "mediatek,mt2701-nfc";
-> >> > +		reg = <0 0x1100d000 0 0x1000>;
-> >> > +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
-> >> > +		clocks = <&pericfg CLK_PERI_NFI>,
-> >> > +			 <&pericfg CLK_PERI_NFI_PAD>;
-> >> > +		clock-names = "nfi_clk", "pad_clk";
-> >> > +		nand-on-flash-bbt;
-> >> > +		status = "disabled";
-> >> > +		mediatek,ecc-controller = <&bch>;
-> > Now that 2 different drivers use the same way to link the ECC engine
-> > and the NAND controller we can think about defining a generic property
-> > (ecc-engine ?), and provide a generic framework.
-> >
-> > The generic framework part is not something I'm asking right now, but I
-> > think we should start using a generic property here.
-> >
-> 
-> we have done all the changes required for v3 except this one.
-> so please let me check my understanding before going ahead: are you suggesting
-> that we replace "mediatek,ecc-controller" for "ecc-engine" (even though this
-> generic property doesn't exist yet)?
-> 
-> and then afterwards, generate another patch-set set to define and document
-> "ecc-engine"?
+Add a DT binding documentation of Video Processor Unit for the
+MT8173 SoC from Mediatek.
 
-Yes, that's the idea, though the NAND controller aspect is not yet
-documented in Documentation/devicetree/bindings/mtd/nand.txt, and
-ecc-engine is supposed to be attached to the NAND controller node.
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/media/mediatek-vpu.txt     |   31 ++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
 
-I'll send a patch to further document the NAND chip, NAND controller
-description concepts in this generic NAND DT bindings doc (as suggested
-by Brian), and let you document this ecc-engine property.
-
-
-
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vpu.txt b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+new file mode 100644
+index 0000000..2a5bac3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+@@ -0,0 +1,31 @@
++* Mediatek Video Processor Unit
++
++Video Processor Unit is a HW video controller. It controls HW Codec including
++H.264/VP8/VP9 Decode, H.264/VP8 Encode and Image Processor (scale/rotate/color convert).
++
++Required properties:
++  - compatible: "mediatek,mt8173-vpu"
++  - reg: Must contain an entry for each entry in reg-names.
++  - reg-names: Must include the following entries:
++    "tcm": tcm base
++    "cfg_reg": Main configuration registers base
++  - interrupts: interrupt number to the cpu.
++  - clocks : clock name from clock manager
++  - clock-names: must be main. It is the main clock of VPU
++
++Optional properties:
++  - memory-region: phandle to a node describing memory (see
++    Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt)
++    to be used for VPU extended memory; if not present, VPU may be located
++    anywhere in the memory
++
++Example:
++	vpu: vpu@10020000 {
++		compatible = "mediatek,mt8173-vpu";
++		reg = <0 0x10020000 0 0x30000>,
++		      <0 0x10050000 0 0x100>;
++		reg-names = "tcm", "cfg_reg";
++		interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&topckgen TOP_SCP_SEL>;
++		clock-names = "main";
++	};
 -- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+1.7.9.5
