@@ -1,69 +1,104 @@
-From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFCv2: PATCH 1/2] mtd: mediatek: device tree docs for MTK Smart
- Device Gen1 NAND
-Date: Thu, 31 Mar 2016 08:41:25 -0400
-Message-ID: <56FD1AF5.1000505@linaro.org>
-References: <1458653560-2679-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1458653560-2679-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <20160322145258.44945c64@bbrezillon> <56F6D727.8070001@linaro.org>
- <20160329095847.0ff4a400@bbrezillon>
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: Re: [PATCH] mfd: mt6397: irq domain should initialize before
+ mfd_add_devices()
+Date: Thu, 31 Mar 2016 21:41:51 +0800
+Message-ID: <1459431711.395.6.camel@mtksdaap41>
+References: <1459322708-21363-1-git-send-email-henryc.chen@mediatek.com>
+	 <56FB99DB.6010901@openwrt.org> <1459388452.18284.2.camel@mtksdaap41>
+	 <1459391533.21870.15.camel@mtksdaap41> <56FCE910.8030100@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160329095847.0ff4a400@bbrezillon>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <56FCE910.8030100@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Henry Chen <henryc.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org, linux@roeck-us.net
 List-Id: linux-mediatek@lists.infradead.org
 
-On 03/29/2016 03:58 AM, Boris Brezillon wrote:
-> On Sat, 26 Mar 2016 14:38:31 -0400
-> Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
->
->> On 03/22/2016 09:52 AM, Boris Brezillon wrote:
->>>>> +		compatible = "mediatek,mt2701-nfc";
->>>>> +		reg = <0 0x1100d000 0 0x1000>;
->>>>> +		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_LOW>;
->>>>> +		clocks = <&pericfg CLK_PERI_NFI>,
->>>>> +			 <&pericfg CLK_PERI_NFI_PAD>;
->>>>> +		clock-names = "nfi_clk", "pad_clk";
->>>>> +		nand-on-flash-bbt;
->>>>> +		status = "disabled";
->>>>> +		mediatek,ecc-controller = <&bch>;
->>> Now that 2 different drivers use the same way to link the ECC engine
->>> and the NAND controller we can think about defining a generic property
->>> (ecc-engine ?), and provide a generic framework.
->>>
->>> The generic framework part is not something I'm asking right now, but I
->>> think we should start using a generic property here.
->>>
->> we have done all the changes required for v3 except this one.
->> so please let me check my understanding before going ahead: are you suggesting
->> that we replace "mediatek,ecc-controller" for "ecc-engine" (even though this
->> generic property doesn't exist yet)?
->>
->> and then afterwards, generate another patch-set set to define and document
->> "ecc-engine"?
-> Yes, that's the idea, though the NAND controller aspect is not yet
-> documented in Documentation/devicetree/bindings/mtd/nand.txt, and
-> ecc-engine is supposed to be attached to the NAND controller node.
->
-> I'll send a patch to further document the NAND chip, NAND controller
-> description concepts in this generic NAND DT bindings doc (as suggested
-> by Brian), and let you document this ecc-engine property.
->
+On Thu, 2016-03-31 at 11:08 +0200, John Crispin wrote:
+> 
+> On 31/03/2016 04:32, Yingjoe Chen wrote:
+> > On Thu, 2016-03-31 at 09:40 +0800, Henry Chen wrote:
+> >> On Wed, 2016-03-30 at 11:18 +0200, John Crispin wrote:
+> >>> Hi,
+> >>>
+> >>> small nitpick inline
+> >>>
+> >>> On 30/03/2016 09:25, Henry Chen wrote:
+> >>>> Some sub driver like RTC module need irq domain from parent to create
+> >>>> irq mapping when driver initialize. so move mt6397_irq_init() before
+> >>>> mfd_add_devices().
+> >>>>
+> >>>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> >>>> ---
+> >>>> This patch fixed the below warning based on "Linux kernel v4.6-rc1"
+> >>>> WARNING: CPU: 1 PID: 132 at kernel/mediatek/kernel/irq/irqdomain.c:471
+> >>>> irq_create_mapping+0xc4/0xd0
+> >>>> ---
+> >>>>  drivers/mfd/mt6397-core.c | 37 ++++++++++++++++++++++---------------
+> >>>>  1 file changed, 22 insertions(+), 15 deletions(-)
+> >>>>
+> >>>> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> >>>> index 8e8d932..a879223 100644
+> >>>> --- a/drivers/mfd/mt6397-core.c
+> >>>> +++ b/drivers/mfd/mt6397-core.c
+> >>>> @@ -270,22 +270,36 @@ static int mt6397_probe(struct platform_device *pdev)
+> >>>>  		goto fail_irq;
+> >>>>  	}
+> >>>>  
+> >>>> +	pmic->irq = platform_get_irq(pdev, 0);
+> >>>> +
+> >>>>  	switch (id & 0xff) {
+> >>>>  	case MT6323_CID_CODE:
+> >>>> -		pmic->int_con[0] = MT6323_INT_CON0;
+> >>>> -		pmic->int_con[1] = MT6323_INT_CON1;
+> >>>> -		pmic->int_status[0] = MT6323_INT_STATUS0;
+> >>>> -		pmic->int_status[1] = MT6323_INT_STATUS1;
+> >>>> +		if (pmic->irq > 0) {
+> >>>
+> >>> should this not be
+> >>>
+> >>> 		if (pmic->irq >= 0) {
+> >>>
+> >>> i think the code before your patch was wrong as linux irqs start with 0.
+> >>>
+> >>> 	John
+> >> Hi John,
+> >>
+> >> Thanks, I will modify this.
+> > 
+> > Linux irq start from 1, 0 is invalid. I can't find the document saying
+> > this now, but you could see this from irq_create_mapping() in
+> > kernel/irq/irqdomain.c
+> > 
+> > I think the code should have check return from platform_get_irq and
+> > handle -EPROBE_DEFER, but maybe it should be another patch?
+> > 
+> > BTW, in this function, it is possible that pmic->irq_domain will be NULL
+> > in fail_irq error handling. We should check before calling
+> > irq_domain_remove.
+> > 
+> > Joe.C
+> > 
+> 
+> Hi,
+> 
+> looking at
+> http://lxr.free-electrons.com/source/drivers/base/platform.c#L87 there
+> is a check in line #100 ret >= 0
+> 
+> checking the return value of pmic->irq = platform_get_irq(pdev, 0);
+> should follow the same pattern i think .. unless i have a thinko and am
+> reading the code wrong.
 
-ok I'll hold v3 -we have it ready already- until we have done this bit
-(hopefully it wont take long).
+
+I'm not sure why platform_get_irq() check for 0, but I think the code
+logic is differnet.
+
+When platform_get_irq() return 0 to our code, it means we don't have
+valid irq to use. In this case it doesn't make any sense to continue
+init irq.
 
 
->
+Joe.C
