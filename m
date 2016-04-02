@@ -1,60 +1,49 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: [PATCH v2] pinctrl: mediatek: correct debounce time unit in mtk_gpio_set_debounce
-Date: Sat, 2 Apr 2016 14:57:49 +0800
-Message-ID: <1459580269-64531-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v2] ASoC: mediatek: Add second I2S on mt8173-rt5650
+ machine driver
+Date: Sat, 2 Apr 2016 09:34:12 -0700
+Message-ID: <20160402163412.GC2350@sirena.org.uk>
+References: <1459498877-5810-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="KXlsDDyIxzhAJBYd"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1459498877-5810-1-git-send-email-pc.liao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, djkurtz@chromium.org, Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: PC Liao <pc.liao@mediatek.com>
+Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The debounce time unit for gpio_chip.set_debounce is us but
-mtk_gpio_set_debounce regard it as ms.
-Fix this by correct debounce time array dbnc_arr so it can find correct
-debounce setting. Debounce time for first debounce setting is 500us,
-correct this as well.
 
-While I'm at it, also change the debounce time array name to
-"debounce_time" for readability.
+--KXlsDDyIxzhAJBYd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
----
-This was based on v4.6-rc1
-Change since v1:
-- Improve commit message.
-- Change dbnc_arr name to debounce_time
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+On Fri, Apr 01, 2016 at 04:21:17PM +0800, PC Liao wrote:
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-index 2bbe6f7..6ab8c3c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-@@ -1004,7 +1004,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
- 	struct mtk_pinctrl *pctl = dev_get_drvdata(chip->parent);
- 	int eint_num, virq, eint_offset;
- 	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask, dbnc;
--	static const unsigned int dbnc_arr[] = {0 , 1, 16, 32, 64, 128, 256};
-+	static const unsigned int debounce_time[] = {500, 1000, 16000, 32000, 64000,
-+						128000, 256000};
- 	const struct mtk_desc_pin *pin;
- 	struct irq_data *d;
- 
-@@ -1022,9 +1023,9 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
- 	if (!mtk_eint_can_en_debounce(pctl, eint_num))
- 		return -ENOSYS;
- 
--	dbnc = ARRAY_SIZE(dbnc_arr);
--	for (i = 0; i < ARRAY_SIZE(dbnc_arr); i++) {
--		if (debounce <= dbnc_arr[i]) {
-+	dbnc = ARRAY_SIZE(debounce_time);
-+	for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
-+		if (debounce <= debounce_time[i]) {
- 			dbnc = i;
- 			break;
- 		}
--- 
-1.9.1
+> +Optional properties:
+> +- mediatek,audio-codec-dai-capture: audio codec dai on capture path
+> +  rt5645-aif1: Default setting. Connect rt5650 I2S1 for capture
+> +  rt5645-aif2: Connect rt5650 I2S2 for capture
+
+No, this has exactly the same issue as the previous version.  To repeat
+what I said last time I would expect that the driver should just specify
+the links between the DAIs.  Look at how other devices reference DAIs.
+
+--KXlsDDyIxzhAJBYd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJW//SDAAoJECTWi3JdVIfQDHYH/iWJfsoX7UzQYq2useXZkJhC
+/FcMRcYMhpwjzJgeWbm8B2Ux98cfogyAglS8b8yAo3wCkvD4O8u9M4Nru2O42j/y
+SUd+VdjywrYF/4WYNlbe/9GHmf6b2iiRLixjv/2eeuT58vjF903RyifamH7NswUb
+aurGtspPu38YvdeirdDYzK3DFtzq0RcHJItdXxnKi24+Gvs+564ueUDtKuG6XRkm
+PWifK+CzZmbqvwsciQmABwWxUPz3yfOX/S2YwkRia8wV7vKprdpg6Glx4hg6kRZz
+XGYVQt8bEYNcsMxVwT+ZOh/DIKCyGe7yq9fZkpNik5sAUleqLVZGJLX8qVP7MJU=
+=mcvv
+-----END PGP SIGNATURE-----
+
+--KXlsDDyIxzhAJBYd--
