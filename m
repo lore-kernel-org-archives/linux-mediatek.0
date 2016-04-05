@@ -1,47 +1,38 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [RFC PATCH 0/9] ARM: start to move arch/arm/mach-* to arch/arm/platforms/*
-Date: Mon, 4 Apr 2016 12:02:17 -0700
-Message-ID: <CAOesGMij8KUR_AxBZmUU7cM1qnvTSUjdPr=_EKsW_s5DoEmcfg@mail.gmail.com>
-References: <1459694367-18635-1-git-send-email-yamada.masahiro@socionext.com>
-	<20160403182543.GQ19428@n2100.arm.linux.org.uk>
+From: Joerg Roedel <jroedel@suse.de>
+Subject: Re: [PATCH] iommu: provide of_xlate pointer unconditionally
+Date: Tue, 5 Apr 2016 13:25:36 +0200
+Message-ID: <20160405112536.GB4203@suse.de>
+References: <1458077877-474066-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160403182543.GQ19428@n2100.arm.linux.org.uk>
+Content-Disposition: inline
+In-Reply-To: <1458077877-474066-1-git-send-email-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Arnd Bergmann <arnd@arndb.de>, Rob Herring <robh@kernel.org>, =?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, Mark Brown <broonie@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Marcus Cooper <codekipper@gmail.com>, Maxime Ripard <maxime.ripard@free-electrons.com>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Yong Wu <yong.wu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alex Williamson <alex.williamson@redhat.com>, Will Deacon <will.deacon@arm.com>, Magnus Damm <damm+renesas@opensource.se>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Apr 3, 2016 at 11:25 AM, Russell King - ARM Linux
-<linux@arm.linux.org.uk> wrote:
-> On Sun, Apr 03, 2016 at 11:39:18PM +0900, Masahiro Yamada wrote:
->> We have growing number of mach-* directories in arch/arm, and I guess
->> it might be a good time to discuss moving them into a sub-directory.
->
-> What does it buy us?  Let me summarise the actual change:
->
-> - Move up to 71 arch/arm/mach-* directories to arch/arm/platforms/*,
->   which just means another level of directory structure.  We still
->   end up with up to 71 directories in arch/arm/platforms/
->
-> - The ability to use obj-y rather than machine-y, where both already
->   work in the same way.
->
-> Is there anything I missed?
->
-> If that is all, then I really do not like this change - it's seems
-> to be churn for no benefit, and that's something we really should be
-> minimising.  Linus Torvalds has historically moaned at the ARM
-> architecture for stuff like this.
+On Tue, Mar 15, 2016 at 10:37:17PM +0100, Arnd Bergmann wrote:
+> iommu drivers that support the standard DT bindings use a of_xlate
+> callback pointer, but that is only part of struct iommu_ops when
+> CONFIG_OF_IOMMU is enabled, leading to build errors in randconfig
+> builds when that is not provided:
+> 
+> drivers/iommu/mtk_iommu.c:497:2: error: unknown field 'of_xlate' specified in initializer
+>   .of_xlate = mtk_iommu_of_xlate,
+>   ^
+> drivers/iommu/mtk_iommu.c:497:14: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
+>   .of_xlate = mtk_iommu_of_xlate,
+>               ^~~~~~~~~~~~~~~~~~
+> drivers/iommu/mtk_iommu.c:497:14: note: (near initialization for 'mtk_iommu_ops.domain_get_attr')
+> 
+> We can work around it by adding more #ifdefs in each driver, but
+> it seems nicer to just allow setting the pointer even if it is
+> unused. This makes the driver code look nicer, and it gives better
+> compile-time coverage when test building on other architectures.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Fixes: 0df4fabe208d ("iommu/mediatek: Add mt8173 IOMMU driver")
 
-Been behind on email so chiming in late, but I agree -- this change
-isn't bringing enough benefit to justify the churn.
-
-Overall we're looking at adding as little new code into arch/arm/mach*
-as possible, so making it easier to structure up and build more
-elaborate contents in their corner of it seems a bit like a step
-backwards.
-
-
--Olof
+Applied to iommu/fixes, thanks Arnd.
