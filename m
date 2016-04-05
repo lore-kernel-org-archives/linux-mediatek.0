@@ -1,38 +1,30 @@
-From: Joerg Roedel <jroedel@suse.de>
-Subject: Re: [PATCH] iommu: provide of_xlate pointer unconditionally
-Date: Tue, 5 Apr 2016 13:25:36 +0200
-Message-ID: <20160405112536.GB4203@suse.de>
-References: <1458077877-474066-1-git-send-email-arnd@arndb.de>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 0/2] MT8173 IOMMU 4GB MODE SUPPORT
+Date: Tue, 5 Apr 2016 15:41:02 +0200
+Message-ID: <20160405134102.GA10930@8bytes.org>
+References: <1457906471-31549-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1458077877-474066-1-git-send-email-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Yong Wu <yong.wu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alex Williamson <alex.williamson@redhat.com>, Will Deacon <will.deacon@arm.com>, Magnus Damm <damm+renesas@opensource.se>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1457906471-31549-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, milton.chiang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sasha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, youhua.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Mar 15, 2016 at 10:37:17PM +0100, Arnd Bergmann wrote:
-> iommu drivers that support the standard DT bindings use a of_xlate
-> callback pointer, but that is only part of struct iommu_ops when
-> CONFIG_OF_IOMMU is enabled, leading to build errors in randconfig
-> builds when that is not provided:
-> 
-> drivers/iommu/mtk_iommu.c:497:2: error: unknown field 'of_xlate' specified in initializer
->   .of_xlate = mtk_iommu_of_xlate,
->   ^
-> drivers/iommu/mtk_iommu.c:497:14: error: initialization from incompatible pointer type [-Werror=incompatible-pointer-types]
->   .of_xlate = mtk_iommu_of_xlate,
->               ^~~~~~~~~~~~~~~~~~
-> drivers/iommu/mtk_iommu.c:497:14: note: (near initialization for 'mtk_iommu_ops.domain_get_attr')
-> 
-> We can work around it by adding more #ifdefs in each driver, but
-> it seems nicer to just allow setting the pointer even if it is
-> unused. This makes the driver code look nicer, and it gives better
-> compile-time coverage when test building on other architectures.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> Fixes: 0df4fabe208d ("iommu/mediatek: Add mt8173 IOMMU driver")
+On Mon, Mar 14, 2016 at 06:01:09AM +0800, Yong Wu wrote:
+> Yong Wu (2):
+>   iommu/io-pgtable: Add MTK 4GB mode in Short-descriptor
+>   iommu/mediatek: Add 4GB mode support
 
-Applied to iommu/fixes, thanks Arnd.
+Applied both, thanks.
