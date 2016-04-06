@@ -1,120 +1,51 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] dma/iommu: Add pgsize_bitmap confirmation in
-	__iommu_dma_alloc_pages
-Date: Tue, 5 Apr 2016 10:03:32 -0700
-Message-ID: <CAD=FV=XdZwg8usj3bjM6W=A0Yk1AFqKFRadpiS-LGLwxVNxp7A@mail.gmail.com>
-References: <1459146732-15620-1-git-send-email-yong.wu@mediatek.com>
-	<20160329170238.GK6745@arm.com>
+From: YH Huang <yh.huang@mediatek.com>
+Subject: [PATCH] sbs-battery: fix power status when battery charging near dry
+Date: Wed, 6 Apr 2016 10:32:25 +0800
+Message-ID: <1459909945-36541-1-git-send-email-yh.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20160329170238.GK6745-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sebastian Reichel <sre@kernel.org>, Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, YH Huang <yh.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Will,
+POWER_SUPPLY_STATUS_NOT_CHARGING is used for AC connected, but
+battery not charging (e.g. because battery temperature is out
+of acceptable range).
 
-On Tue, Mar 29, 2016 at 10:02 AM, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org> wrote:
-> On Mon, Mar 28, 2016 at 02:32:11PM +0800, Yong Wu wrote:
->> Currently __iommu_dma_alloc_pages assumes that all the IOMMU support
->> the granule of PAGE_SIZE. It call alloc_page to try allocating memory
->> in the last time. Fortunately the mininum pagesize in all the
->> current IOMMU is SZ_4K, so this works well.
->>
->> But there may be a case in which the mininum granule of IOMMU may be
->> larger than PAGE_SIZE, then it will abort as the IOMMU cann't map the
->> discontinuous memory within a granule. For example, the pgsize_bitmap
->> of the IOMMU only has SZ_16K while the PAGE_SIZE is SZ_4K, then we
->> have to prepare SZ_16K continuous memory at least for each a granule
->> iommu mapping.
->
-> Did you find a driver/platform that actually needs this? I certainly
-> think it's possible, but we don't necessarily need to fix it if it's
-> not broken yet! Just adding a comment would be enough.
+When battery is charging near dry and BATTERY_FULL_DISCHARGED is set,
+it is wrong to set as POWER_SUPPLY_STATUS_NOT_CHARGING.
+Just use BATTERY_DISCHARGING to decide the power supply status is
+discharging or charging.
 
-I think Yong Wu was adding this patch in response to your request from
-v1 of <https://patchwork.kernel.org/patch/8487511/>.  Fixing this
-seemed like a separate issue so I asked Yong Wu to make two patches
-rather than sticking this fix in the patch as his original.  Hopefully
-this makes sense.
+Signed-off-by: YH Huang <yh.huang@mediatek.com>
+---
+ drivers/power/sbs-battery.c |    4 ----
+ 1 file changed, 4 deletions(-)
 
-> Either way, a couple of review comments inline.
->
->>
->> Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> ---
->> v2:
->>  -rebase on v4.6-rc1.
->>  -add a new patch([1/2] add pgsize_bitmap) here.
->>
->>  drivers/iommu/dma-iommu.c | 22 +++++++++++++---------
->>  1 file changed, 13 insertions(+), 9 deletions(-)
->>
->> diff --git a/drivers/iommu/dma-iommu.c b/drivers/iommu/dma-iommu.c
->> index 72d6182..75ce71e 100644
->> --- a/drivers/iommu/dma-iommu.c
->> +++ b/drivers/iommu/dma-iommu.c
->> @@ -190,11 +190,13 @@ static void __iommu_dma_free_pages(struct page **pages, int count)
->>       kvfree(pages);
->>  }
->>
->> -static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
->> +static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp,
->> +                                          unsigned long pgsize_bitmap)
->>  {
->>       struct page **pages;
->>       unsigned int i = 0, array_size = count * sizeof(*pages);
->> -     unsigned int order = MAX_ORDER;
->> +     int min_order = get_order(1 << __ffs(pgsize_bitmap));
->
-> 1UL
+diff --git a/drivers/power/sbs-battery.c b/drivers/power/sbs-battery.c
+index d6226d6..768b9fc 100644
+--- a/drivers/power/sbs-battery.c
++++ b/drivers/power/sbs-battery.c
+@@ -382,8 +382,6 @@ static int sbs_get_battery_property(struct i2c_client *client,
+ 
+ 		if (ret & BATTERY_FULL_CHARGED)
+ 			val->intval = POWER_SUPPLY_STATUS_FULL;
+-		else if (ret & BATTERY_FULL_DISCHARGED)
+-			val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
+ 		else if (ret & BATTERY_DISCHARGING)
+ 			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
+ 		else
+@@ -702,8 +700,6 @@ static void sbs_delayed_work(struct work_struct *work)
+ 
+ 	if (ret & BATTERY_FULL_CHARGED)
+ 		ret = POWER_SUPPLY_STATUS_FULL;
+-	else if (ret & BATTERY_FULL_DISCHARGED)
+-		ret = POWER_SUPPLY_STATUS_NOT_CHARGING;
+ 	else if (ret & BATTERY_DISCHARGING)
+ 		ret = POWER_SUPPLY_STATUS_DISCHARGING;
+ 	else
+-- 
+1.7.9.5
 
-Yong: presumably you will spin with this fix?
-
-
->> +     int order = MAX_ORDER;
->>
->>       if (array_size <= PAGE_SIZE)
->>               pages = kzalloc(array_size, GFP_KERNEL);
->> @@ -213,13 +215,16 @@ static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
->>               /*
->>                * Higher-order allocations are a convenience rather
->>                * than a necessity, hence using __GFP_NORETRY until
->> -              * falling back to single-page allocations.
->> +              * falling back to min size allocations.
->>                */
->> -             for (order = min_t(unsigned int, order, __fls(count));
->> -                  order > 0; order--) {
->> -                     page = alloc_pages(gfp | __GFP_NORETRY, order);
->> +             for (order = min_t(int, order, __fls(count));
->> +                  order >= min_order; order--) {
->> +                     page = alloc_pages((order == min_order) ? gfp :
->> +                                        gfp | __GFP_NORETRY, order);
->>                       if (!page)
->>                               continue;
->> +                     if (!order)
->> +                             break;
->
-> Isn't this handled by the loop condition?
-
-He changed the loop condition to be ">= min_order" instead of "> 0",
-so now we can get here with an order == 0.  This makes sense because
-when min_order is not 0 you still want to run the code to split the
-pages and it is sane not to duplicate that below.
-
-Maybe I'm misunderstanding, though.  Perhaps you can explain how you
-think this code should look?
-
--Doug
