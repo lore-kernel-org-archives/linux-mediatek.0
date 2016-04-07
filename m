@@ -1,318 +1,284 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: [PATCH] net-next: mediatek: add support for IRQ grouping
-Date: Thu,  7 Apr 2016 20:24:59 +0200
-Message-ID: <1460053499-53659-1-git-send-email-blogic@openwrt.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>
-Cc: Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: [RESEND/PATCH V7 1/2] regulator: Add document for MT6323 regulator
+Date: Thu,  7 Apr 2016 20:46:15 +0200
+Message-ID: <1460054776-54782-1-git-send-email-blogic@openwrt.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Erin=20Lo=20=28=E7=BE=85=E9=9B=85=E9=BD=A1=29?= <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The ethernet core has 3 IRQs. Using the IRQ grouping registers we are able
-to separate TX and RX IRQs, which allows us to service them on separate
-cores. This patch splits the IRQ handler into 2 separate functions, one
-for TX and another for RX. The TX housekeeping is split out of the NAPI
-handler. Instead we use a tasklet to handle housekeeping.
-
-Signed-off-by: John Crispin <blogic@openwrt.org>
+Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |  115 +++++++++++++++++----------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |   12 ++-
- 2 files changed, 86 insertions(+), 41 deletions(-)
+Series was dropped in the 4.6-rc1 merge window to avoid a merge order
+conflict with the corresponding MFD driver.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8163047..6387516 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -756,7 +756,7 @@ drop:
- }
- 
- static int mtk_poll_rx(struct napi_struct *napi, int budget,
--		       struct mtk_eth *eth, u32 rx_intr)
-+		       struct mtk_eth *eth)
- {
- 	struct mtk_rx_ring *ring = &eth->rx_ring;
- 	int idx = ring->calc_idx;
-@@ -842,12 +842,12 @@ release_desc:
- 	}
- 
- 	if (done < budget)
--		mtk_w32(eth, rx_intr, MTK_QMTK_INT_STATUS);
-+		mtk_w32(eth, MTK_RX_DONE_INT, MTK_QMTK_INT_STATUS);
- 
- 	return done;
- }
- 
--static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
-+static int mtk_poll_tx(struct mtk_eth *eth, int budget)
- {
- 	struct mtk_tx_ring *ring = &eth->tx_ring;
- 	struct mtk_tx_dma *desc;
-@@ -910,9 +910,7 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
- 	}
- 
- 	/* read hw index again make sure no new tx packet */
--	if (cpu != dma || cpu != mtk_r32(eth, MTK_QTX_DRX_PTR))
--		*tx_again = true;
--	else
-+	if (cpu == dma && cpu == mtk_r32(eth, MTK_QTX_DRX_PTR))
- 		mtk_w32(eth, MTK_TX_DONE_INT, MTK_QMTK_INT_STATUS);
- 
- 	if (!total)
-@@ -924,27 +922,27 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
- 	return total;
- }
- 
-+static void mtk_clean_tx_tasklet(unsigned long arg)
-+{
-+	struct mtk_eth *eth = (struct mtk_eth *)arg;
+Changes in V7
+* remove another compatible string
+* small wording changes
+
+Changes in V6
+* remove the compatible string
+
+Changes in V5
+* regulator vs regulators
+
+Changes in V4
+* regulator is a subnode and not a property
+
+ .../bindings/regulator/mt6323-regulator.txt        |  239 ++++++++++++++++++++
+ 1 file changed, 239 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+
+diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+new file mode 100644
+index 0000000..9fd95e7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+@@ -0,0 +1,239 @@
++Mediatek MT6323 Regulator Driver
 +
-+	if (mtk_poll_tx(eth, MTK_NAPI_WEIGHT) > 0)
-+		tasklet_schedule(&eth->tx_clean_tasklet);
-+	else
-+		mtk_irq_enable(eth, MTK_TX_DONE_INT);
-+}
++All voltage regulators are defined as subnodes of the regulators node. A list
++of regulators provided by this controller are defined as subnodes of the
++PMIC's node. Each regulator is named according to its regulator type,
++buck_<name> and ldo_<name>. The definition for each of these nodes is defined
++using the standard binding for regulators at
++Documentation/devicetree/bindings/regulator/regulator.txt.
 +
- static int mtk_poll(struct napi_struct *napi, int budget)
- {
- 	struct mtk_eth *eth = container_of(napi, struct mtk_eth, rx_napi);
--	u32 status, status2, mask, tx_intr, rx_intr, status_intr;
--	int tx_done, rx_done;
--	bool tx_again = false;
-+	u32 status, status2, mask, status_intr;
-+	int rx_done = 0;
- 
- 	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
- 	status2 = mtk_r32(eth, MTK_INT_STATUS2);
--	tx_intr = MTK_TX_DONE_INT;
--	rx_intr = MTK_RX_DONE_INT;
- 	status_intr = (MTK_GDM1_AF | MTK_GDM2_AF);
--	tx_done = 0;
--	rx_done = 0;
--	tx_again = 0;
- 
--	if (status & tx_intr)
--		tx_done = mtk_poll_tx(eth, budget, &tx_again);
--
--	if (status & rx_intr)
--		rx_done = mtk_poll_rx(napi, budget, eth, rx_intr);
-+	rx_done = mtk_poll_rx(napi, budget, eth);
- 
- 	if (unlikely(status2 & status_intr)) {
- 		mtk_stats_update(eth);
-@@ -953,20 +951,20 @@ static int mtk_poll(struct napi_struct *napi, int budget)
- 
- 	if (unlikely(netif_msg_intr(eth))) {
- 		mask = mtk_r32(eth, MTK_QDMA_INT_MASK);
--		netdev_info(eth->netdev[0],
--			    "done tx %d, rx %d, intr 0x%08x/0x%x\n",
--			    tx_done, rx_done, status, mask);
-+		dev_info(eth->dev,
-+			 "done rx %d, intr 0x%08x/0x%x\n",
-+			 rx_done, status, mask);
- 	}
- 
--	if (tx_again || rx_done == budget)
-+	if (rx_done == budget)
- 		return budget;
- 
- 	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
--	if (status & (tx_intr | rx_intr))
-+	if (status & MTK_RX_DONE_INT)
- 		return budget;
- 
- 	napi_complete(napi);
--	mtk_irq_enable(eth, tx_intr | rx_intr);
-+	mtk_irq_enable(eth, MTK_RX_DONE_INT);
- 
- 	return rx_done;
- }
-@@ -1195,22 +1193,43 @@ static void mtk_tx_timeout(struct net_device *dev)
- 	schedule_work(&eth->pending_work);
- }
- 
--static irqreturn_t mtk_handle_irq(int irq, void *_eth)
-+static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
- {
- 	struct mtk_eth *eth = _eth;
- 	u32 status;
- 
- 	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
-+	status &= ~MTK_TX_DONE_INT;
++The valid names for regulators are::
++BUCK:
++  buck_vproc, buck_vsys, buck_vpa
++LDO:
++  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
++  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
++  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
++  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
 +
- 	if (unlikely(!status))
- 		return IRQ_NONE;
- 
--	if (likely(status & (MTK_RX_DONE_INT | MTK_TX_DONE_INT))) {
-+	if (status & MTK_RX_DONE_INT) {
- 		if (likely(napi_schedule_prep(&eth->rx_napi)))
- 			__napi_schedule(&eth->rx_napi);
--	} else {
--		mtk_w32(eth, status, MTK_QMTK_INT_STATUS);
-+		mtk_irq_disable(eth, MTK_RX_DONE_INT);
- 	}
--	mtk_irq_disable(eth, (MTK_RX_DONE_INT | MTK_TX_DONE_INT));
-+	mtk_w32(eth, status, MTK_QMTK_INT_STATUS);
++Example:
 +
-+	return IRQ_HANDLED;
-+}
++	pmic: mt6323 {
++		compatible = "mediatek,mt6323";
 +
-+static irqreturn_t mtk_handle_irq_tx(int irq, void *_eth)
-+{
-+	struct mtk_eth *eth = _eth;
-+	u32 status;
++		mt6323regulator: regulators {
++			mt6323_vproc_reg: buck_vproc{
++				regulator-name = "vproc";
++				regulator-min-microvolt = < 700000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
 +
-+	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
-+	status &= ~MTK_RX_DONE_INT;
++			mt6323_vsys_reg: buck_vsys{
++				regulator-name = "vsys";
++				regulator-min-microvolt = <1400000>;
++				regulator-max-microvolt = <2987500>;
++				regulator-ramp-delay = <25000>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
 +
-+	if (unlikely(!status))
-+		return IRQ_NONE;
++			mt6323_vpa_reg: buck_vpa{
++				regulator-name = "vpa";
++				regulator-min-microvolt = < 500000>;
++				regulator-max-microvolt = <3650000>;
++			};
 +
-+	if (status & MTK_TX_DONE_INT) {
-+		tasklet_schedule(&eth->tx_clean_tasklet);
-+		mtk_irq_disable(eth, MTK_TX_DONE_INT);
-+	}
-+	mtk_w32(eth, status, MTK_QMTK_INT_STATUS);
- 
- 	return IRQ_HANDLED;
- }
-@@ -1223,7 +1242,7 @@ static void mtk_poll_controller(struct net_device *dev)
- 	u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
- 
- 	mtk_irq_disable(eth, int_mask);
--	mtk_handle_irq(dev->irq, dev);
-+	mtk_handle_irq(dev->irq[0], dev);
- 	mtk_irq_enable(eth, int_mask);
- }
- #endif
-@@ -1344,7 +1363,11 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
- 	/* Enable RX VLan Offloading */
- 	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
- 
--	err = devm_request_irq(eth->dev, eth->irq, mtk_handle_irq, 0,
-+	err = devm_request_irq(eth->dev, eth->irq[1], mtk_handle_irq_tx, 0,
-+			       dev_name(eth->dev), eth);
-+	if (err)
-+		return err;
-+	err = devm_request_irq(eth->dev, eth->irq[2], mtk_handle_irq_rx, 0,
- 			       dev_name(eth->dev), eth);
- 	if (err)
- 		return err;
-@@ -1360,7 +1383,11 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
- 	mtk_w32(eth, 0, MTK_RST_GL);
- 
- 	/* FE int grouping */
--	mtk_w32(eth, 0, MTK_FE_INT_GRP);
-+	mtk_w32(eth, MTK_TX_DONE_INT, MTK_PDMA_INT_GRP1);
-+	mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_GRP2);
-+	mtk_w32(eth, MTK_TX_DONE_INT, MTK_QDMA_INT_GRP1);
-+	mtk_w32(eth, MTK_RX_DONE_INT, MTK_QDMA_INT_GRP2);
-+	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
- 
- 	for (i = 0; i < 2; i++) {
- 		u32 val = mtk_r32(eth, MTK_GDMA_FWD_CFG(i));
-@@ -1408,7 +1435,9 @@ static void mtk_uninit(struct net_device *dev)
- 	phy_disconnect(mac->phy_dev);
- 	mtk_mdio_cleanup(eth);
- 	mtk_irq_disable(eth, ~0);
--	free_irq(dev->irq, dev);
-+	free_irq(eth->irq[0], dev);
-+	free_irq(eth->irq[1], dev);
-+	free_irq(eth->irq[2], dev);
- }
- 
- static int mtk_do_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
-@@ -1682,10 +1711,10 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
- 		dev_err(eth->dev, "error bringing up device\n");
- 		goto free_netdev;
- 	}
--	eth->netdev[id]->irq = eth->irq;
-+	eth->netdev[id]->irq = eth->irq[0];
- 	netif_info(eth, probe, eth->netdev[id],
- 		   "mediatek frame engine at 0x%08lx, irq %d\n",
--		   eth->netdev[id]->base_addr, eth->netdev[id]->irq);
-+		   eth->netdev[id]->base_addr, eth->irq[0]);
- 
- 	return 0;
- 
-@@ -1702,6 +1731,7 @@ static int mtk_probe(struct platform_device *pdev)
- 	struct mtk_soc_data *soc;
- 	struct mtk_eth *eth;
- 	int err;
-+	int i;
- 
- 	match = of_match_device(of_mtk_match, &pdev->dev);
- 	soc = (struct mtk_soc_data *)match->data;
-@@ -1736,10 +1766,12 @@ static int mtk_probe(struct platform_device *pdev)
- 		return PTR_ERR(eth->rstc);
- 	}
- 
--	eth->irq = platform_get_irq(pdev, 0);
--	if (eth->irq < 0) {
--		dev_err(&pdev->dev, "no IRQ resource found\n");
--		return -ENXIO;
-+	for (i = 0; i < 3; i++) {
-+		eth->irq[i] = platform_get_irq(pdev, i);
-+		if (eth->irq[i] < 0) {
-+			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-+			return -ENXIO;
-+		}
- 	}
- 
- 	eth->clk_ethif = devm_clk_get(&pdev->dev, "ethif");
-@@ -1783,6 +1815,9 @@ static int mtk_probe(struct platform_device *pdev)
- 	netif_napi_add(&eth->dummy_dev, &eth->rx_napi, mtk_poll,
- 		       MTK_NAPI_WEIGHT);
- 
-+	tasklet_init(&eth->tx_clean_tasklet,
-+		     mtk_clean_tx_tasklet, (unsigned long)eth);
++			mt6323_vtcxo_reg: ldo_vtcxo{
++				regulator-name = "vtcxo";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <90>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
 +
- 	platform_set_drvdata(pdev, eth);
- 
- 	return 0;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index eed626d..4cfb40c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -68,6 +68,10 @@
- /* Unicast Filter MAC Address Register - High */
- #define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
- 
-+/* PDMA Interrupt grouping registers */
-+#define MTK_PDMA_INT_GRP1	0xa50
-+#define MTK_PDMA_INT_GRP2	0xa54
++			mt6323_vcn28_reg: ldo_vcn28{
++				regulator-name = "vcn28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <185>;
++			};
 +
- /* QDMA TX Queue Configuration Registers */
- #define MTK_QTX_CFG(x)		(0x1800 + (x * 0x10))
- #define QDMA_RES_THRES		4
-@@ -124,6 +128,11 @@
- #define MTK_TX_DONE_INT		(MTK_TX_DONE_INT0 | MTK_TX_DONE_INT1 | \
- 				 MTK_TX_DONE_INT2 | MTK_TX_DONE_INT3)
- 
-+/* QDMA Interrupt grouping registers */
-+#define MTK_QDMA_INT_GRP1	0x1a20
-+#define MTK_QDMA_INT_GRP2	0x1a24
-+#define MTK_RLS_DONE_INT	BIT(0)
++			mt6323_vcn33_bt_reg: ldo_vcn33_bt{
++				regulator-name = "vcn33_bt";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-enable-ramp-delay = <185>;
++			};
 +
- /* QDMA Interrupt Status Register */
- #define MTK_QDMA_INT_MASK	0x1A1C
- 
-@@ -374,7 +383,7 @@ struct mtk_eth {
- 	struct net_device		dummy_dev;
- 	struct net_device		*netdev[MTK_MAX_DEVS];
- 	struct mtk_mac			*mac[MTK_MAX_DEVS];
--	int				irq;
-+	int				irq[3];
- 	u32				msg_enable;
- 	unsigned long			sysclk;
- 	struct regmap			*ethsys;
-@@ -391,6 +400,7 @@ struct mtk_eth {
- 	struct clk			*clk_gp2;
- 	struct mii_bus			*mii_bus;
- 	struct work_struct		pending_work;
-+	struct tasklet_struct		tx_clean_tasklet;
- };
- 
- /* struct mtk_mac -	the structure that holds the info about the MACs of the
++			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi{
++				regulator-name = "vcn33_wifi";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-enable-ramp-delay = <185>;
++			};
++
++			mt6323_va_reg: ldo_va{
++				regulator-name = "va";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcama_reg: ldo_vcama{
++				regulator-name = "vcama";
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vio28_reg: ldo_vio28{
++				regulator-name = "vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vusb_reg: ldo_vusb{
++				regulator-name = "vusb";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-boot-on;
++			};
++
++			mt6323_vmc_reg: ldo_vmc{
++				regulator-name = "vmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vmch_reg: ldo_vmch{
++				regulator-name = "vmch";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vemc3v3_reg: ldo_vemc3v3{
++				regulator-name = "vemc3v3";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vgp1_reg: ldo_vgp1{
++				regulator-name = "vgp1";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vgp2_reg: ldo_vgp2{
++				regulator-name = "vgp2";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vgp3_reg: ldo_vgp3{
++				regulator-name = "vgp3";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vcn18_reg: ldo_vcn18{
++				regulator-name = "vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vsim1_reg: ldo_vsim1{
++				regulator-name = "vsim1";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vsim2_reg: ldo_vsim2{
++				regulator-name = "vsim2";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vrtc_reg: ldo_vrtc{
++				regulator-name = "vrtc";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcamaf_reg: ldo_vcamaf{
++				regulator-name = "vcamaf";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vibr_reg: ldo_vibr{
++				regulator-name = "vibr";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++			};
++
++			mt6323_vrf18_reg: ldo_vrf18{
++				regulator-name = "vrf18";
++				regulator-min-microvolt = <1825000>;
++				regulator-max-microvolt = <1825000>;
++				regulator-enable-ramp-delay = <187>;
++			};
++
++			mt6323_vm_reg: ldo_vm{
++				regulator-name = "vm";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vio18_reg: ldo_vio18{
++				regulator-name = "vio18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcamd_reg: ldo_vcamd{
++				regulator-name = "vcamd";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vcamio_reg: ldo_vcamio{
++				regulator-name = "vcamio";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++		};
++	};
 -- 
 1.7.10.4
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
