@@ -1,64 +1,48 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: Re: [PATCH v3] ASoC: mediatek: Add second I2S on mt8173-rt5650
- machine driver
-Date: Thu, 7 Apr 2016 18:03:50 +0800
-Message-ID: <1460023430.9948.8.camel@mtksdaap41>
-References: <1460014517-20359-1-git-send-email-pc.liao@mediatek.com>
-	 <57062D4C.5020905@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <57062D4C.5020905@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: "broonie@kernel.org" <broonie@kernel.org>, "tiwai@suse.de" <tiwai@suse.de>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, srv_heupstream <srv_heupstream@mediatek.com>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH 1/9] net: mediatek: update the IRQ part of the binding document
+Date: Thu,  7 Apr 2016 19:57:48 +0200
+Message-ID: <1460051876-53135-1-git-send-email-blogic@openwrt.org>
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?q?Sean=20Wang=20=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?= <sean.wang@mediatek.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+The current binding document only describes a single interrupt. Update the
+document by adding the 2 other interrupts.
 
-On Thu, 2016-04-07 at 17:50 +0800, Matthias Brugger wrote:
-> 
-> On 07/04/16 09:35, PC Liao wrote:
-> > diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-> > index bb09bb1..9f56df9 100644
-> > --- a/sound/soc/mediatek/mt8173-rt5650.c
-> > +++ b/sound/soc/mediatek/mt8173-rt5650.c
-> > @@ -85,12 +85,26 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
-> >   {
-> >   	struct snd_soc_card *card = runtime->card;
-> >   	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-> > +	const char *codec_dai_capture = runtime->codec_dais[1]->name;
-> >   	int ret;
-> >
-> >   	rt5645_sel_asrc_clk_src(codec,
-> > -				RT5645_DA_STEREO_FILTER |
-> > -				RT5645_AD_STEREO_FILTER,
-> > -				RT5645_CLK_SEL_I2S1_ASRC);
-> > +					RT5645_DA_STEREO_FILTER,
-> > +					RT5645_CLK_SEL_I2S1_ASRC);
-> > +
-> > +	if (!strcmp(codec_dai_capture, "rt5645-aif1")) {
-> > +		rt5645_sel_asrc_clk_src(codec,
-> > +					RT5645_AD_STEREO_FILTER,
-> > +					RT5645_CLK_SEL_I2S1_ASRC);
-> > +	} else if (!strcmp(codec_dai_capture, "rt5645-aif2")) {
-> > +		rt5645_sel_asrc_clk_src(codec,
-> > +					RT5645_AD_STEREO_FILTER,
-> > +					RT5645_CLK_SEL_I2S2_ASRC);
-> > +	} else {
-> > +		dev_err(card->dev, "Can't get the right codec dai\n");
-> > +		return -EINVAL;
-> 
-> For compatibility issues we should enable RT5645_CLK_SEL_I2S1_ASRC as 
-> default. BTW in the old version you enabled DA and AD filter while in 
-> the new version you just enable AD filter. What is the reason for that?
-> 
-> Regards,
-> Matthias
+The driver currently only uses a single interrupt. The HW is however able
+to using IRQ grouping to split TX and RX onto separate GIC irqs.
 
-Thanks for comment.
-I separate rt5645_sel_asrc_clk_src function into two parts.
-I have and enable DA filter for I2S1 first.
-Then, I use codec_dai_capture to determine which I2S AD filter I need.
-Thanks!
+Signed-off-by: John Crispin <blogic@openwrt.org>
+Cc: devicetree@vger.kernel.org
+---
+ Documentation/devicetree/bindings/net/mediatek-net.txt |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 5ca7929..2f142be 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -9,7 +9,7 @@ have dual GMAC each represented by a child node..
+ Required properties:
+ - compatible: Should be "mediatek,mt7623-eth"
+ - reg: Address and length of the register set for the device
+-- interrupts: Should contain the frame engines interrupt
++- interrupts: Should contain the three frame engines interrupts
+ - clocks: the clock used by the core
+ - clock-names: the names of the clock listed in the clocks property. These are
+ 	"ethif", "esw", "gp2", "gp1"
+@@ -42,7 +42,9 @@ eth: ethernet@1b100000 {
+ 		 <&ethsys CLK_ETHSYS_GP2>,
+ 		 <&ethsys CLK_ETHSYS_GP1>;
+ 	clock-names = "ethif", "esw", "gp2", "gp1";
+-	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
++	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW
++		      GIC_SPI 199 IRQ_TYPE_LEVEL_LOW
++		      GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
+ 	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+ 	resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
+ 	reset-names = "eth";
+-- 
+1.7.10.4
