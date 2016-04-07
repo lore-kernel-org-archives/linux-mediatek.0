@@ -1,38 +1,37 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH v2 2/3] mfd: mt6397: Checking for null before irq_domain_remove.
-Date: Fri, 8 Apr 2016 14:58:48 +0800
-Message-ID: <1460098729-25549-2-git-send-email-henryc.chen@mediatek.com>
-References: <1460098729-25549-1-git-send-email-henryc.chen@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460098729-25549-1-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Henry Chen <henryc.chen@mediatek.com>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH V3 3/8] net: mediatek: remove superfluous reset call
+Date: Fri,  8 Apr 2016 00:54:06 +0200
+Message-ID: <1460069651-1234-4-git-send-email-blogic@openwrt.org>
+References: <1460069651-1234-1-git-send-email-blogic@openwrt.org>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1460069651-1234-1-git-send-email-blogic@openwrt.org>
+Sender: netdev-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?q?Sean=20Wang=20=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?= <sean.wang@mediatek.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-It is possible that pmic->irq_domain will be NULL in fail_irq error handling.
-Check before calling irq_domain_remove.
+HW reset is triggered in the mtk_hw_init() function. There is no need to
+also reset the core during probe.
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+Signed-off-by: John Crispin <blogic@openwrt.org>
 ---
- drivers/mfd/mt6397-core.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |    4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index a879223..15050cb 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -312,7 +312,8 @@ static int mt6397_probe(struct platform_device *pdev)
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 94cceb8..a4982e4 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1679,10 +1679,6 @@ static int mtk_probe(struct platform_device *pdev)
+ 	struct mtk_eth *eth;
+ 	int err;
  
- fail_irq:
- 	if (ret) {
--		irq_domain_remove(pmic->irq_domain);
-+		if (pmic->irq_domain)
-+			irq_domain_remove(pmic->irq_domain);
- 		dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
- 	}
+-	err = device_reset(&pdev->dev);
+-	if (err)
+-		return err;
+-
+ 	match = of_match_device(of_mtk_match, &pdev->dev);
+ 	soc = (struct mtk_soc_data *)match->data;
  
 -- 
-1.8.1.1.dirty
+1.7.10.4
