@@ -1,132 +1,156 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH v3] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
-Date: Thu, 7 Apr 2016 15:35:17 +0800
-Message-ID: <1460014517-20359-1-git-send-email-pc.liao@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH] mfd: mt6397: irq domain should initialize before
+ mfd_add_devices()
+Date: Thu, 7 Apr 2016 08:52:14 +0100
+Message-ID: <20160407075214.GX3323@x1>
+References: <1459322708-21363-1-git-send-email-henryc.chen@mediatek.com>
+ <56FB99DB.6010901@openwrt.org>
+ <1459388452.18284.2.camel@mtksdaap41>
+ <1459391533.21870.15.camel@mtksdaap41>
+ <56FCE910.8030100@openwrt.org>
+ <1459431711.395.6.camel@mtksdaap41>
+ <56FD2F18.4050508@openwrt.org>
+ <1459910866.18284.27.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1459910866.18284.27.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: John Crispin <blogic@openwrt.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-kernel@vger.kernel.org, Flora Fu <flora.fu@mediatek.com>, linux-mediatek@lists.infradead.org, linux@roeck-us.net, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds second I2S connection to rt5650 codec for capture path on
-mt8173-rt5650 machine driver.
+On Wed, 06 Apr 2016, Henry Chen wrote:
 
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
----
-Changes since v2:
-Use sound-dai to determine the capture path.
----
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
- sound/soc/mediatek/mt8173-rt5650.c                 |   42 ++++++++++++++++++--
- 2 files changed, 44 insertions(+), 4 deletions(-)
+> On Thu, 2016-03-31 at 16:07 +0200, John Crispin wrote:
+> >=20
+> > On 31/03/2016 15:41, Yingjoe Chen wrote:
+> > > On Thu, 2016-03-31 at 11:08 +0200, John Crispin wrote:
+> > >>
+> > >> On 31/03/2016 04:32, Yingjoe Chen wrote:
+> > >>> On Thu, 2016-03-31 at 09:40 +0800, Henry Chen wrote:
+> > >>>> On Wed, 2016-03-30 at 11:18 +0200, John Crispin wrote:
+> > >>>>> Hi,
+> > >>>>>
+> > >>>>> small nitpick inline
+> > >>>>>
+> > >>>>> On 30/03/2016 09:25, Henry Chen wrote:
+> > >>>>>> Some sub driver like RTC module need irq domain from parent =
+to create
+> > >>>>>> irq mapping when driver initialize. so move mt6397_irq_init(=
+) before
+> > >>>>>> mfd_add_devices().
+> > >>>>>>
+> > >>>>>> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> > >>>>>> ---
+> > >>>>>> This patch fixed the below warning based on "Linux kernel v4=
+=2E6-rc1"
+> > >>>>>> WARNING: CPU: 1 PID: 132 at kernel/mediatek/kernel/irq/irqdo=
+main.c:471
+> > >>>>>> irq_create_mapping+0xc4/0xd0
+> > >>>>>> ---
+> > >>>>>>  drivers/mfd/mt6397-core.c | 37 ++++++++++++++++++++++------=
+---------
+> > >>>>>>  1 file changed, 22 insertions(+), 15 deletions(-)
+> > >>>>>>
+> > >>>>>> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-=
+core.c
+> > >>>>>> index 8e8d932..a879223 100644
+> > >>>>>> --- a/drivers/mfd/mt6397-core.c
+> > >>>>>> +++ b/drivers/mfd/mt6397-core.c
+> > >>>>>> @@ -270,22 +270,36 @@ static int mt6397_probe(struct platfor=
+m_device *pdev)
+> > >>>>>>  		goto fail_irq;
+> > >>>>>>  	}
+> > >>>>>> =20
+> > >>>>>> +	pmic->irq =3D platform_get_irq(pdev, 0);
+> > >>>>>> +
+> > >>>>>>  	switch (id & 0xff) {
+> > >>>>>>  	case MT6323_CID_CODE:
+> > >>>>>> -		pmic->int_con[0] =3D MT6323_INT_CON0;
+> > >>>>>> -		pmic->int_con[1] =3D MT6323_INT_CON1;
+> > >>>>>> -		pmic->int_status[0] =3D MT6323_INT_STATUS0;
+> > >>>>>> -		pmic->int_status[1] =3D MT6323_INT_STATUS1;
+> > >>>>>> +		if (pmic->irq > 0) {
+> > >>>>>
+> > >>>>> should this not be
+> > >>>>>
+> > >>>>> 		if (pmic->irq >=3D 0) {
+> > >>>>>
+> > >>>>> i think the code before your patch was wrong as linux irqs st=
+art with 0.
+> > >>>>>
+> > >>>>> 	John
+> > >>>> Hi John,
+> > >>>>
+> > >>>> Thanks, I will modify this.
+> > >>>
+> > >>> Linux irq start from 1, 0 is invalid. I can't find the document=
+ saying
+> > >>> this now, but you could see this from irq_create_mapping() in
+> > >>> kernel/irq/irqdomain.c
+> > >>>
+> > >>> I think the code should have check return from platform_get_irq=
+ and
+> > >>> handle -EPROBE_DEFER, but maybe it should be another patch?
+> > >>>
+> > >>> BTW, in this function, it is possible that pmic->irq_domain wil=
+l be NULL
+> > >>> in fail_irq error handling. We should check before calling
+> > >>> irq_domain_remove.
+> > >>>
+> > >>> Joe.C
+> > >>>
+> > >>
+> > >> Hi,
+> > >>
+> > >> looking at
+> > >> http://lxr.free-electrons.com/source/drivers/base/platform.c#L87=
+ there
+> > >> is a check in line #100 ret >=3D 0
+> > >>
+> > >> checking the return value of pmic->irq =3D platform_get_irq(pdev=
+, 0);
+> > >> should follow the same pattern i think .. unless i have a thinko=
+ and am
+> > >> reading the code wrong.
+> > >=20
+> > >=20
+> > > I'm not sure why platform_get_irq() check for 0, but I think the =
+code
+> > > logic is differnet.
+> > >=20
+> > > When platform_get_irq() return 0 to our code, it means we don't h=
+ave
+> > > valid irq to use. In this case it doesn't make any sense to conti=
+nue
+> > > init irq.
+> > >=20
+> > >=20
+> > > Joe.C
+> > >=20
+> >=20
+> >=20
+> > --> http://lwn.net/Articles/470820/
+> >=20
+> > indeed ARM has changed this is seems. was not aware of this change,
+> > sorry for the noise
+> >=20
+> > 	John
+>=20
+> Hi Lee/Joe/John,
+>=20
+> Thanks for comment, that means we can keep this patch for 4.6-rc1
+> regression (RTC get NULL irq issue), right?
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-index fe5a5ef..4ed768e 100644
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-@@ -5,11 +5,17 @@ Required properties:
- - mediatek,audio-codec: the phandles of rt5650 codecs
- - mediatek,platform: the phandle of MT8173 ASoC platform
- 
-+Optional properties:
-+- sound-dai: audio codec dai on capture path
-+  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
-+  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
-+
- Example:
- 
- 	sound {
- 		compatible = "mediatek,mt8173-rt5650";
- 		mediatek,audio-codec = <&rt5650>;
- 		mediatek,platform = <&afe>;
-+		sound-dai = <&rt5650 1>;
- 	};
- 
-diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-index bb09bb1..9f56df9 100644
---- a/sound/soc/mediatek/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173-rt5650.c
-@@ -85,12 +85,26 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- {
- 	struct snd_soc_card *card = runtime->card;
- 	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-+	const char *codec_dai_capture = runtime->codec_dais[1]->name;
- 	int ret;
- 
- 	rt5645_sel_asrc_clk_src(codec,
--				RT5645_DA_STEREO_FILTER |
--				RT5645_AD_STEREO_FILTER,
--				RT5645_CLK_SEL_I2S1_ASRC);
-+					RT5645_DA_STEREO_FILTER,
-+					RT5645_CLK_SEL_I2S1_ASRC);
-+
-+	if (!strcmp(codec_dai_capture, "rt5645-aif1")) {
-+		rt5645_sel_asrc_clk_src(codec,
-+					RT5645_AD_STEREO_FILTER,
-+					RT5645_CLK_SEL_I2S1_ASRC);
-+	} else if (!strcmp(codec_dai_capture, "rt5645-aif2")) {
-+		rt5645_sel_asrc_clk_src(codec,
-+					RT5645_AD_STEREO_FILTER,
-+					RT5645_CLK_SEL_I2S2_ASRC);
-+	} else {
-+		dev_err(card->dev, "Can't get the right codec dai\n");
-+		return -EINVAL;
-+	}
-+
- 	/* enable jack detection */
- 	ret = snd_soc_card_jack_new(card, "Headset Jack",
- 				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
-@@ -110,6 +124,11 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- 
- static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
- 	{
-+		/* Playback */
-+		.dai_name = "rt5645-aif1",
-+	},
-+	{
-+		/* Capture */
- 		.dai_name = "rt5645-aif1",
- 	},
- };
-@@ -149,7 +168,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.cpu_dai_name = "I2S",
- 		.no_pcm = 1,
- 		.codecs = mt8173_rt5650_codecs,
--		.num_codecs = 1,
-+		.num_codecs = 2,
- 		.init = mt8173_rt5650_init,
- 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
- 			   SND_SOC_DAIFMT_CBS_CFS,
-@@ -177,6 +196,7 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- {
- 	struct snd_soc_card *card = &mt8173_rt5650_card;
- 	struct device_node *platform_node;
-+	const char *codec_dai_capture;
- 	int i, ret;
- 
- 	platform_node = of_parse_phandle(pdev->dev.of_node,
-@@ -199,6 +219,20 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 			"Property 'audio-codec' missing or invalid\n");
- 		return -EINVAL;
- 	}
-+	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
-+
-+	if (device_property_present(&pdev->dev, "sound-dai")) {
-+		ret = snd_soc_of_get_dai_name(pdev->dev.of_node,
-+					      &codec_dai_capture);
-+		if (ret < 0) {
-+			dev_err(&pdev->dev,
-+				"%s snd_soc_of_get_dai_name fail %d\n",
-+				__func__, ret);
-+			return ret;
-+		}
-+		mt8173_rt5650_codecs[1].dai_name = codec_dai_capture;
-+	}
-+
- 	card->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, card);
- 
--- 
-1.7.9.5
+Just re-send everything with any Acks that you collected.
+
+> I will send another patch to fixed above error handling problem.
+
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
