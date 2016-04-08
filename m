@@ -1,67 +1,59 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH v2] pinctrl: mediatek: correct debounce time unit in mtk_gpio_set_debounce
-Date: Fri, 8 Apr 2016 19:01:56 +0800
-Message-ID: <CAGS+omDzU8sEwqkQn95UQCgpgE59jvnpQaTO=3HivQhZ6V-UOw@mail.gmail.com>
-References: <1459580269-64531-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Will Deacon <will.deacon@arm.com>
+Subject: Re: [PATCH v2 1/2] dma/iommu: Add pgsize_bitmap confirmation in
+ __iommu_dma_alloc_pages
+Date: Fri, 8 Apr 2016 14:07:33 +0100
+Message-ID: <20160408130733.GD23750@arm.com>
+References: <1459146732-15620-1-git-send-email-yong.wu@mediatek.com>
+ <20160329170238.GK6745@arm.com>
+ <CAD=FV=XdZwg8usj3bjM6W=A0Yk1AFqKFRadpiS-LGLwxVNxp7A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1459580269-64531-1-git-send-email-yingjoe.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=XdZwg8usj3bjM6W=A0Yk1AFqKFRadpiS-LGLwxVNxp7A@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, "open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Catalin Marinas <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Arnd Bergmann <arnd@arndb.de>, Lucas Stach <l.stach@pengutronix.de>, Marek Szyprowski <m.szyprowski@samsung.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, Apr 2, 2016 at 2:57 PM, Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
-> The debounce time unit for gpio_chip.set_debounce is us but
-> mtk_gpio_set_debounce regard it as ms.
-> Fix this by correct debounce time array dbnc_arr so it can find correct
-> debounce setting. Debounce time for first debounce setting is 500us,
-> correct this as well.
->
-> While I'm at it, also change the debounce time array name to
-> "debounce_time" for readability.
->
-> Signed-off-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+On Tue, Apr 05, 2016 at 10:03:32AM -0700, Doug Anderson wrote:
+> On Tue, Mar 29, 2016 at 10:02 AM, Will Deacon <will.deacon@arm.com> wrote:
+> > On Mon, Mar 28, 2016 at 02:32:11PM +0800, Yong Wu wrote:
+> >> @@ -213,13 +215,16 @@ static struct page **__iommu_dma_alloc_pages(unsigned int count, gfp_t gfp)
+> >>               /*
+> >>                * Higher-order allocations are a convenience rather
+> >>                * than a necessity, hence using __GFP_NORETRY until
+> >> -              * falling back to single-page allocations.
+> >> +              * falling back to min size allocations.
+> >>                */
+> >> -             for (order = min_t(unsigned int, order, __fls(count));
+> >> -                  order > 0; order--) {
+> >> -                     page = alloc_pages(gfp | __GFP_NORETRY, order);
+> >> +             for (order = min_t(int, order, __fls(count));
+> >> +                  order >= min_order; order--) {
+> >> +                     page = alloc_pages((order == min_order) ? gfp :
+> >> +                                        gfp | __GFP_NORETRY, order);
+> >>                       if (!page)
+> >>                               continue;
+> >> +                     if (!order)
+> >> +                             break;
+> >
+> > Isn't this handled by the loop condition?
+> 
+> He changed the loop condition to be ">= min_order" instead of "> 0",
+> so now we can get here with an order == 0.  This makes sense because
+> when min_order is not 0 you still want to run the code to split the
+> pages and it is sane not to duplicate that below.
+> 
+> Maybe I'm misunderstanding, though.  Perhaps you can explain how you
+> think this code should look?
 
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+My reading of the code was that we require order >= min_order to enter
+the loop. Given that order doesn't change between the loop header and the
+if (!order) check, then that must mean we can enter the loop body with
+order == 0 and order >= min_order, which means that min_order is allowed
+to be negative. That feels weird.
 
-> ---
-> This was based on v4.6-rc1
-> Change since v1:
-> - Improve commit message.
-> - Change dbnc_arr name to debounce_time
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 2bbe6f7..6ab8c3c 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -1004,7 +1004,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
->         struct mtk_pinctrl *pctl = dev_get_drvdata(chip->parent);
->         int eint_num, virq, eint_offset;
->         unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask, dbnc;
-> -       static const unsigned int dbnc_arr[] = {0 , 1, 16, 32, 64, 128, 256};
-> +       static const unsigned int debounce_time[] = {500, 1000, 16000, 32000, 64000,
-> +                                               128000, 256000};
->         const struct mtk_desc_pin *pin;
->         struct irq_data *d;
->
-> @@ -1022,9 +1023,9 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
->         if (!mtk_eint_can_en_debounce(pctl, eint_num))
->                 return -ENOSYS;
->
-> -       dbnc = ARRAY_SIZE(dbnc_arr);
-> -       for (i = 0; i < ARRAY_SIZE(dbnc_arr); i++) {
-> -               if (debounce <= dbnc_arr[i]) {
-> +       dbnc = ARRAY_SIZE(debounce_time);
-> +       for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
-> +               if (debounce <= debounce_time[i]) {
->                         dbnc = i;
->                         break;
->                 }
-> --
-> 1.9.1
->
+Am I barking up the wrong tree?
+
+Will
