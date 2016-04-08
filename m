@@ -1,14 +1,11 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH V3 8/8] net: mediatek: do not set the QID field in the TX DMA
- descriptors
-Date: Fri,  8 Apr 2016 00:54:11 +0200
-Message-ID: <1460069651-1234-9-git-send-email-blogic@openwrt.org>
-References: <1460069651-1234-1-git-send-email-blogic@openwrt.org>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] usb: core: buffer: avoid NULL pointer dereferrence
+Date: Fri, 8 Apr 2016 17:08:03 +0800
+Message-ID: <1460106483-24793-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1460069651-1234-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,37 +15,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: Felix Fietkau <nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?q?Sean=20Wang=20=28=E7=8E=8B=E5=BF=97=E4=BA=98=29?= <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The QID field gets set to the mac id. This made the DMA linked list queue
-the traffic of each MAC on a different internal queue. However during long
-term testing we found that this will cause traffic stalls as the multi
-queue setup requires a more complete initialisation which is not part of
-the upstream driver yet.
+NULL pointer dereferrence will happen when class driver
+wants to allocate zero length buffer and pool_max[0]
+can't be used, so skip reserved pool in this case.
 
-This patch removes the code setting the QID field, resulting in all
-traffic ending up in queue 0 which works without any special setup.
-
-Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/usb/core/buffer.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index eb0d554..c984462 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -603,8 +603,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 			WRITE_ONCE(txd->txd1, mapped_addr);
- 			WRITE_ONCE(txd->txd3, (TX_DMA_SWC |
- 					       TX_DMA_PLEN0(frag_map_size) |
--					       last_frag * TX_DMA_LS0) |
--					       mac->id);
-+					       last_frag * TX_DMA_LS0));
- 			WRITE_ONCE(txd->txd4, 0);
+diff --git a/drivers/usb/core/buffer.c b/drivers/usb/core/buffer.c
+index 2741566..c8f958b 100644
+--- a/drivers/usb/core/buffer.c
++++ b/drivers/usb/core/buffer.c
+@@ -131,7 +131,7 @@ void *hcd_buffer_alloc(
+ 	}
  
- 			tx_buf->skb = (struct sk_buff *)MTK_DMA_DUMMY_DESC;
+ 	for (i = 0; i < HCD_BUFFER_POOLS; i++) {
+-		if (size <= pool_max[i])
++		if (pool_max[i] && size <= pool_max[i])
+ 			return dma_pool_alloc(hcd->pool[i], mem_flags, dma);
+ 	}
+ 	return dma_alloc_coherent(hcd->self.controller, size, dma, mem_flags);
+@@ -158,7 +158,7 @@ void hcd_buffer_free(
+ 	}
+ 
+ 	for (i = 0; i < HCD_BUFFER_POOLS; i++) {
+-		if (size <= pool_max[i]) {
++		if (pool_max[i] && size <= pool_max[i]) {
+ 			dma_pool_free(hcd->pool[i], addr, dma);
+ 			return;
+ 		}
 -- 
-1.7.10.4
+1.7.9.5
