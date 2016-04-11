@@ -1,47 +1,74 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: core: buffer: avoid NULL pointer dereferrence
-Date: Mon, 11 Apr 2016 15:16:08 +0800
-Message-ID: <1460358968.10419.26.camel@mhfsdcap03>
-References: <1460106483-24793-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <20160408140701.GA3547@kroah.com> <1460343705.10419.12.camel@mhfsdcap03>
-	 <87shyspwbz.fsf@intel.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 1/2] dma/iommu: Add pgsize_bitmap confirmation in
+	__iommu_dma_alloc_pages
+Date: Mon, 11 Apr 2016 15:40:10 +0800
+Message-ID: <1460360410.18251.10.camel@mhfsdcap03>
+References: <1459146732-15620-1-git-send-email-yong.wu@mediatek.com>
+	<20160329170238.GK6745@arm.com>
+	<CAD=FV=XdZwg8usj3bjM6W=A0Yk1AFqKFRadpiS-LGLwxVNxp7A@mail.gmail.com>
+	<20160408130733.GD23750@arm.com>
+	<CAD=FV=VbekVUHW3=d0icSgUO1M-1cccwCAZ+s=YSzOtEveCQag@mail.gmail.com>
+	<20160408173002.GJ23750@arm.com>
+	<CAD=FV=XbL6gbdmX62Q3QJQ6R-rC7cCd44RLPgK3kvhAC49BJjA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87shyspwbz.fsf@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <CAD=FV=XbL6gbdmX62Q3QJQ6R-rC7cCd44RLPgK3kvhAC49BJjA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-04-11 at 08:07 +0300, Felipe Balbi wrote:
+On Fri, 2016-04-08 at 10:34 -0700, Doug Anderson wrote:
 > Hi,
 > 
-> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> > On Fri, 2016-04-08 at 07:07 -0700, Greg Kroah-Hartman wrote:
-> >> On Fri, Apr 08, 2016 at 05:08:03PM +0800, Chunfeng Yun wrote:
-> >> > NULL pointer dereferrence will happen when class driver
-> >> > wants to allocate zero length buffer and pool_max[0]
-> >> > can't be used, so skip reserved pool in this case.
-> >> 
-> >> Why would a driver want to allocate a 0 length buffer?  What driver does
-> >> this?
-> > It's misc/usbtest.c
+> On Fri, Apr 8, 2016 at 10:30 AM, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org> wrote:
+> >> > Am I barking up the wrong tree?
+> >>
+> >> I don't think min_order can be negative.  Certainly we could enter the
+> >> loop with order == 0 and min_order == 0, though.
+> >
+> > ... and in that case, PageCompound will be false, and we'll call split_page
+> > which won't do anything, so we break out.
+> >
+> >>
+> >> Some examples:
+> >>
+> >> order = 0, min_order = 0
+> >> -> Want alloc_pages _without_ __GFP_NORETRY.  OK
+> >> -> If alloc_pages fails, return NULL.  OK
+> >> -> If alloc pages succeeds, don't need splitting since single page.  OK
+> >
+> > [...]
+> >
+> >> I think those are all right.  Did I mess up?  You could certainly
+> >> structure the loop in a different way but you need to make sure you
+> >> handle all of those cases.  If you have an alternate structure that
+> >> handles all those, let's consider it.
+> >
+> > Right, I don't think the code is broken, I just think the !order check is
+> > confusing and not needed.
 > 
-> that'll do what you ask it to do with the userspace tool testusb. Are
-> you trying to pass a size of 0 ?
+> Ah ha!  Got it.  I didn't dig into split_page() to see that it was a
+> no-op when "order == 0".  I just know that the old code didn't call
+> split_page() with order == 0 so I assumed that was wise to keep.  If
+> we don't need to keep that then agreed that the "if" test can simply
+> be removed.  :)
 > 
-No, I just ran "testusb -t10" which called test_ctrl_queue().
-In this function, sub-case 8 passed a parameter @len as 0 to
-simple_alloc_urb(), and then it tried to allocate a 0-length buffer.
+> -Doug
 
-> >> Shouldn't we fix that issue instead?
-> > I don't know which way is better, but it seems simple to fix it up in
-> > buffer.c 
-> 
-> I think we should, really, avoid a 0-length allocation, but passing a
-> size of 0 to testusb isn't very good either ;-) How are you calling
-> testusb ?
-> 
-As explained above.
+Hi Will, Doug,
+
+Thanks very much for review this patch, and Thanks Robin's work,
+Currently this one is obsoleted since it's included in [1].
+
+[1]:http://lists.linuxfoundation.org/pipermail/iommu/2016-April/016402.html
