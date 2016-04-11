@@ -1,50 +1,53 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v2 3/3] mfd: mt6397: check the EPROBE_DEFER from
- platform_get_irq.
-Date: Mon, 11 Apr 2016 09:50:39 +0100
-Message-ID: <20160411085039.GL4592@x1>
+Subject: Re: [PATCH v2 2/3] mfd: mt6397: Checking for null before
+ irq_domain_remove.
+Date: Mon, 11 Apr 2016 09:53:23 +0100
+Message-ID: <20160411085323.GM4592@x1>
 References: <1460098729-25549-1-git-send-email-henryc.chen@mediatek.com>
- <1460098729-25549-3-git-send-email-henryc.chen@mediatek.com>
+ <1460098729-25549-2-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1460098729-25549-3-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <1460098729-25549-2-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
+To: Henry Chen <henryc.chen@mediatek.com>, tglx@linutronix.de
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 08 Apr 2016, Henry Chen wrote:
+=46AO Thomas,
 
-> If get the -EPROBE_DEFER from platform_get_irq, it should return back=
- directly.
+On Fri, 08 Apr 2016, Henry Chen wrote:
+> It is possible that pmic->irq_domain will be NULL in fail_irq error h=
+andling.
+> Check before calling irq_domain_remove.
 >=20
 > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 > ---
->  drivers/mfd/mt6397-core.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/mfd/mt6397-core.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >=20
 > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 15050cb..b9b1e28 100644
+> index a879223..15050cb 100644
 > --- a/drivers/mfd/mt6397-core.c
 > +++ b/drivers/mfd/mt6397-core.c
-> @@ -271,6 +271,8 @@ static int mt6397_probe(struct platform_device *p=
+> @@ -312,7 +312,8 @@ static int mt6397_probe(struct platform_device *p=
 dev)
+> =20
+>  fail_irq:
+>  	if (ret) {
+> -		irq_domain_remove(pmic->irq_domain);
+> +		if (pmic->irq_domain)
+> +			irq_domain_remove(pmic->irq_domain);
+
+You might be better off making this change in the framework.
+
+Just get irq_domain_remove() to harmlessly return if !irq_domain.
+
+>  		dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
 >  	}
 > =20
->  	pmic->irq =3D platform_get_irq(pdev, 0);
-> +	if (pmic->irq =3D=3D -EPROBE_DEFER)
-> +		return -EPROBE_DEFER;
-
-if (ret < 0)
-   return ret;
-
-=2E.. is more common, as it covers more bases, etc.
-
->  	switch (id & 0xff) {
->  	case MT6323_CID_CODE:
 
 --=20
 Lee Jones
