@@ -1,74 +1,202 @@
-From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] dma/iommu: Add pgsize_bitmap confirmation in
-	__iommu_dma_alloc_pages
-Date: Mon, 11 Apr 2016 15:40:10 +0800
-Message-ID: <1460360410.18251.10.camel@mhfsdcap03>
-References: <1459146732-15620-1-git-send-email-yong.wu@mediatek.com>
-	<20160329170238.GK6745@arm.com>
-	<CAD=FV=XdZwg8usj3bjM6W=A0Yk1AFqKFRadpiS-LGLwxVNxp7A@mail.gmail.com>
-	<20160408130733.GD23750@arm.com>
-	<CAD=FV=VbekVUHW3=d0icSgUO1M-1cccwCAZ+s=YSzOtEveCQag@mail.gmail.com>
-	<20160408173002.GJ23750@arm.com>
-	<CAD=FV=XbL6gbdmX62Q3QJQ6R-rC7cCd44RLPgK3kvhAC49BJjA@mail.gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 2/2] phy: phy-mt65xx-usb3: add support for mt2701 platform
+Date: Mon, 11 Apr 2016 15:41:30 +0800
+Message-ID: <1460360490-18606-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <CAD=FV=XbL6gbdmX62Q3QJQ6R-rC7cCd44RLPgK3kvhAC49BJjA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-04-08 at 10:34 -0700, Doug Anderson wrote:
-> Hi,
-> 
-> On Fri, Apr 8, 2016 at 10:30 AM, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org> wrote:
-> >> > Am I barking up the wrong tree?
-> >>
-> >> I don't think min_order can be negative.  Certainly we could enter the
-> >> loop with order == 0 and min_order == 0, though.
-> >
-> > ... and in that case, PageCompound will be false, and we'll call split_page
-> > which won't do anything, so we break out.
-> >
-> >>
-> >> Some examples:
-> >>
-> >> order = 0, min_order = 0
-> >> -> Want alloc_pages _without_ __GFP_NORETRY.  OK
-> >> -> If alloc_pages fails, return NULL.  OK
-> >> -> If alloc pages succeeds, don't need splitting since single page.  OK
-> >
-> > [...]
-> >
-> >> I think those are all right.  Did I mess up?  You could certainly
-> >> structure the loop in a different way but you need to make sure you
-> >> handle all of those cases.  If you have an alternate structure that
-> >> handles all those, let's consider it.
-> >
-> > Right, I don't think the code is broken, I just think the !order check is
-> > confusing and not needed.
-> 
-> Ah ha!  Got it.  I didn't dig into split_page() to see that it was a
-> no-op when "order == 0".  I just know that the old code didn't call
-> split_page() with order == 0 so I assumed that was wise to keep.  If
-> we don't need to keep that then agreed that the "if" test can simply
-> be removed.  :)
-> 
-> -Doug
+A new compatible string, "mediatek,mt2701-u3phy", is added.
 
-Hi Will, Doug,
+Some register settings to avoid RX sensitivity level degradation
+which may arise on mt8173 platform are separated from other
+platforms.
 
-Thanks very much for review this patch, and Thanks Robin's work,
-Currently this one is obsoleted since it's included in [1].
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/phy/Kconfig           |    5 ++-
+ drivers/phy/phy-mt65xx-usb3.c |   77 ++++++++++++++++++++++++++++-------------
+ 2 files changed, 54 insertions(+), 28 deletions(-)
 
-[1]:http://lists.linuxfoundation.org/pipermail/iommu/2016-April/016402.html
+diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+index 26566db..3037f28 100644
+--- a/drivers/phy/Kconfig
++++ b/drivers/phy/Kconfig
+@@ -218,9 +218,8 @@ config PHY_MT65XX_USB3
+ 	depends on ARCH_MEDIATEK && OF
+ 	select GENERIC_PHY
+ 	help
+-	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver
+-	  for mt65xx SoCs. it supports two usb2.0 ports and
+-	  one usb3.0 port.
++	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver,
++	  it supports multiple usb2.0 and usb3.0 ports.
+ 
+ config PHY_HI6220_USB
+ 	tristate "hi6220 USB PHY support"
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index c0e7b4b..4d85e73 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -134,6 +134,11 @@
+ #define U3P_SR_COEF_DIVISOR	1000
+ #define U3P_FM_DET_CYCLE_CNT	1024
+ 
++struct mt65xx_phy_pdata {
++	/* avoid RX sensitivity level degradation only for mt8173 */
++	bool avoid_rx_sen_degradation;
++};
++
+ struct mt65xx_phy_instance {
+ 	struct phy *phy;
+ 	void __iomem *port_base;
+@@ -145,6 +150,7 @@ struct mt65xx_u3phy {
+ 	struct device *dev;
+ 	void __iomem *sif_base;	/* include sif2, but exclude port's */
+ 	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
++	const struct mt65xx_phy_pdata *pdata;
+ 	struct mt65xx_phy_instance **phys;
+ 	int nphys;
+ };
+@@ -241,22 +247,26 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
+ 		tmp = readl(port_base + U3P_U2PHYACR4);
+ 		tmp &= ~P2C_U2_GPIO_CTR_MSK;
+ 		writel(tmp, port_base + U3P_U2PHYACR4);
++	}
+ 
+-		tmp = readl(port_base + U3P_USBPHYACR2);
+-		tmp |= PA2_RG_SIF_U2PLL_FORCE_EN;
+-		writel(tmp, port_base + U3P_USBPHYACR2);
+-
+-		tmp = readl(port_base + U3D_U2PHYDCR0);
+-		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
+-		writel(tmp, port_base + U3D_U2PHYDCR0);
+-	} else {
+-		tmp = readl(port_base + U3D_U2PHYDCR0);
+-		tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
+-		writel(tmp, port_base + U3D_U2PHYDCR0);
+-
+-		tmp = readl(port_base + U3P_U2PHYDTM0);
+-		tmp |= P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM;
+-		writel(tmp, port_base + U3P_U2PHYDTM0);
++	if (u3phy->pdata->avoid_rx_sen_degradation) {
++		if (!index) {
++			tmp = readl(port_base + U3P_USBPHYACR2);
++			tmp |= PA2_RG_SIF_U2PLL_FORCE_EN;
++			writel(tmp, port_base + U3P_USBPHYACR2);
++
++			tmp = readl(port_base + U3D_U2PHYDCR0);
++			tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
++			writel(tmp, port_base + U3D_U2PHYDCR0);
++		} else {
++			tmp = readl(port_base + U3D_U2PHYDCR0);
++			tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
++			writel(tmp, port_base + U3D_U2PHYDCR0);
++
++			tmp = readl(port_base + U3P_U2PHYDTM0);
++			tmp |= P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM;
++			writel(tmp, port_base + U3P_U2PHYDTM0);
++		}
+ 	}
+ 
+ 	tmp = readl(port_base + U3P_USBPHYACR6);
+@@ -318,7 +328,7 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
+ 		tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
+ 		writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
+ 
+-		/* [mt8173]switch 100uA current to SSUSB */
++		/* switch 100uA current to SSUSB */
+ 		tmp = readl(port_base + U3P_USBPHYACR5);
+ 		tmp |= PA5_RG_U2_HS_100U_U3_EN;
+ 		writel(tmp, port_base + U3P_USBPHYACR5);
+@@ -335,7 +345,7 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
+ 	tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(4);
+ 	writel(tmp, port_base + U3P_USBPHYACR5);
+ 
+-	if (index) {
++	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
+ 		tmp = readl(port_base + U3D_U2PHYDCR0);
+ 		tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
+ 		writel(tmp, port_base + U3D_U2PHYDCR0);
+@@ -386,7 +396,9 @@ static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
+ 		tmp = readl(port_base + U3P_U3_PHYA_REG0);
+ 		tmp &= ~P3A_RG_U3_VUSB10_ON;
+ 		writel(tmp, port_base + U3P_U3_PHYA_REG0);
+-	} else {
++	}
++
++	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
+ 		tmp = readl(port_base + U3D_U2PHYDCR0);
+ 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
+ 		writel(tmp, port_base + U3D_U2PHYDCR0);
+@@ -402,7 +414,7 @@ static void phy_instance_exit(struct mt65xx_u3phy *u3phy,
+ 	u32 index = instance->index;
+ 	u32 tmp;
+ 
+-	if (index) {
++	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
+ 		tmp = readl(port_base + U3D_U2PHYDCR0);
+ 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
+ 		writel(tmp, port_base + U3D_U2PHYDCR0);
+@@ -502,8 +514,24 @@ static struct phy_ops mt65xx_u3phy_ops = {
+ 	.owner		= THIS_MODULE,
+ };
+ 
++static const struct mt65xx_phy_pdata mt2701_pdata = {
++	.avoid_rx_sen_degradation = false,
++};
++
++static const struct mt65xx_phy_pdata mt8173_pdata = {
++	.avoid_rx_sen_degradation = true,
++};
++
++static const struct of_device_id mt65xx_u3phy_id_table[] = {
++	{ .compatible = "mediatek,mt2701-u3phy", .data = &mt2701_pdata },
++	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, mt65xx_u3phy_id_table);
++
+ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ {
++	const struct of_device_id *match;
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct device_node *child_np;
+@@ -513,10 +541,15 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 	struct resource res;
+ 	int port, retval;
+ 
++	match = of_match_node(mt65xx_u3phy_id_table, pdev->dev.of_node);
++	if (!match)
++		return -EINVAL;
++
+ 	u3phy = devm_kzalloc(dev, sizeof(*u3phy), GFP_KERNEL);
+ 	if (!u3phy)
+ 		return -ENOMEM;
+ 
++	u3phy->pdata = match->data;
+ 	u3phy->nphys = of_get_child_count(np);
+ 	u3phy->phys = devm_kcalloc(dev, u3phy->nphys,
+ 				       sizeof(*u3phy->phys), GFP_KERNEL);
+@@ -587,12 +620,6 @@ put_child:
+ 	return retval;
+ }
+ 
+-static const struct of_device_id mt65xx_u3phy_id_table[] = {
+-	{ .compatible = "mediatek,mt8173-u3phy", },
+-	{ },
+-};
+-MODULE_DEVICE_TABLE(of, mt65xx_u3phy_id_table);
+-
+ static struct platform_driver mt65xx_u3phy_driver = {
+ 	.probe		= mt65xx_u3phy_probe,
+ 	.driver		= {
+-- 
+1.7.9.5
