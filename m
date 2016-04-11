@@ -1,61 +1,59 @@
-From: Sebastian Reichel <sre@kernel.org>
-Subject: Re: [PATCH] sbs-battery: fix power status when battery charging near
- dry
-Date: Sun, 10 Apr 2016 18:28:17 +0200
-Message-ID: <20160410162817.GD25923@earth>
-References: <1459909945-36541-1-git-send-email-yh.huang@mediatek.com>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] phy: phy-mt65xx-usb3: add support for mt2701 platform
+Date: Mon, 11 Apr 2016 10:34:16 +0800
+Message-ID: <1460342056.10419.2.camel@mhfsdcap03>
+References: <1460106832-25360-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <5707B8D3.4070605@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OROCMA9jn6tkzFBc"
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1459909945-36541-1-git-send-email-yh.huang@mediatek.com>
-Sender: linux-pm-owner@vger.kernel.org
-To: YH Huang <yh.huang@mediatek.com>
-Cc: Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>, David Woodhouse <dwmw2@infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <5707B8D3.4070605-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, 2016-04-08 at 15:57 +0200, Matthias Brugger wrote:
+> 
+> On 08/04/16 11:13, Chunfeng Yun wrote:
+> > A new compatible string, "mediatek,mt2701-u3phy", is added.
+> >
+> > Some register settings to avoid RX sensitivity level degradation
+> > which may arise on mt8173 platform are separated from other
+> > platforms.
+> >
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >   .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |    4 +-
+> >   drivers/phy/Kconfig                                |    5 +-
+> >   drivers/phy/phy-mt65xx-usb3.c                      |   77 +++++++++++++-------
+> >   3 files changed, 57 insertions(+), 29 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> > index 00100cf..8d2a62f 100644
+> > --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> > +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> > @@ -4,7 +4,9 @@ mt65xx USB3.0 PHY binding
+> >   This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+> >
+> >   Required properties (controller (parent) node):
+> > - - compatible	: should be "mediatek,mt8173-u3phy"
+> > + - compatible	: should be one or more of
+> 
+> If there are more then one, which value will avoid_rx_sen_degradation 
+> have? There should be only one compatible.
+> 
+You are right.
+I will modify it later, thanks
 
---OROCMA9jn6tkzFBc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Apart from that normally the dts documentation parts are separate patches.
+> 
+> Regards,
+> Matthias
 
-Hi,
 
-On Wed, Apr 06, 2016 at 10:32:25AM +0800, YH Huang wrote:
-> POWER_SUPPLY_STATUS_NOT_CHARGING is used for AC connected, but
-> battery not charging (e.g. because battery temperature is out
-> of acceptable range).
->=20
-> When battery is charging near dry and BATTERY_FULL_DISCHARGED is set,
-> it is wrong to set as POWER_SUPPLY_STATUS_NOT_CHARGING.
-> Just use BATTERY_DISCHARGING to decide the power supply status is
-> discharging or charging.
-
-Thanks, queued.
-
--- Sebastian
-
---OROCMA9jn6tkzFBc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBCgAGBQJXCn8hAAoJENju1/PIO/qaYYwP/3hB+Zh6xtG81oiWh5NycmEk
-CSsK9OMysG8rb0uskACzY3O9vQJa4DFDTT+IW1OGW4wPIsJpq109PAUJjf/qHDJA
-oDelePozOTs/1BLhI8NIuo7GxeV4UhszWn20L6y/2UOFmPNcFjfjny7PTXoj89nc
-JFtWrVrZrED0z+yLozlC7lW2uI5lih33+0qoBsZXjaZnjHmXP6AOHHO/FV8Kk5tl
-zDaTES2P79gjANhLZ27jj5KIFmVmzZ3ZXcauPMbSEDT0FWJ9/Q+rxXbCovs2lxLO
-SxVQWTECXOD8nv/BUStdM/jbJc8dEF3JW6+SWJHJ4SYGTq9I7O6CuaxTy+Kl1xcN
-4taK1GsGtekfHUfaWrF1cRuYiDgnbnStXJ/cXDxP5jSdAGS3rwRYXxWxusmt8cFM
-6vMRHKxNhsogvy3JSvk8dgBnGQxwjrwgzTtM+XxgJSoOakjH9+Yp3+Ey0i9KlnmR
-anxoxF5irFRrxNWnjzPAk02vQlpp/ALFai2g9ixjrdnX5Sizvipjc03uoJ+qi+AB
-riuDEWisTKhKS0GR/zYhl+BrHO/fikOAUhid0MZ9cO0vBRL5yYU20EpXvboYkNKv
-tD6M1bR39Jr6ifdl1ztFVCMyGBh1QB/O/5njKcplz81UUVih12aq9nceMopi+GVq
-BeD453g8A4h20ZRrIe7Y
-=yyDM
------END PGP SIGNATURE-----
-
---OROCMA9jn6tkzFBc--
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
