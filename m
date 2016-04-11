@@ -1,66 +1,66 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v14 3/6] drm/mediatek: enable hdmi output control bit
-Date: Mon, 11 Apr 2016 17:10:13 +0200
-Message-ID: <1460387416-31254-4-git-send-email-p.zabel@pengutronix.de>
-References: <1460387416-31254-1-git-send-email-p.zabel@pengutronix.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 1/9] net: mediatek: update the IRQ part of the binding
+ document
+Date: Mon, 11 Apr 2016 10:24:38 -0500
+Message-ID: <20160411152438.GA16983@rob-hp-laptop>
+References: <1460051876-53135-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1460387416-31254-1-git-send-email-p.zabel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1460051876-53135-1-git-send-email-blogic@openwrt.org>
+Sender: netdev-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang =?utf-8?B?KOeOi+W/l+S6mCk=?= <sean.wang@mediatek.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogSmllIFFpdSA8amllLnFpdUBtZWRpYXRlay5jb20+CgpNVDgxNzMgSERNSSBoYXJkd2Fy
-ZSBoYXMgYSBvdXRwdXQgY29udHJvbCBiaXQgdG8gZW5hYmxlL2Rpc2FibGUgSERNSQpvdXRwdXQu
-IEJlY2F1c2Ugb2Ygc2VjdXJpdHkgcmVhc29uLCBzbyB0aGlzIGJpdCBjYW4gT05MWSBiZSBjb250
-cm9sbGVkCmluIEFSTSBzdXBlcnZpc29yIG1vZGUuIE5vdyB0aGUgb25seSB3YXkgdG8gZW50ZXIg
-QVJNIHN1cGVydmlzb3IgaXMgdGhlCkFSTSB0cnVzdGVkIGZpcm13YXJlLiBTbyBhdGYgcHJvdmlk
-ZXMgYSBBUEkgZm9yIEhETUkgZHJpdmVyIHRvIGNhbGwgdG8Kc2V0dXAgdGhpcyBIRE1JIGNvbnRy
-b2wgYml0IHRvIGVuYWJsZSBIRE1JIG91dHB1dCBpbiBzdXBlcnZpc29yIG1vZGUuCgpTaWduZWQt
-b2ZmLWJ5OiBKaWUgUWl1IDxqaWUucWl1QG1lZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogUGhp
-bGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgIHwgMTIgKysrKysrKysrKysrCiBkcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2hkbWlfcmVncy5oIHwgIDEgKwogMiBmaWxlcyBjaGFuZ2VkLCAxMyBp
-bnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19o
-ZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwppbmRleCA0Y2Q0YzAx
-Li4wNDRjMzU2IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWku
-YworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwpAQCAtMTYsNiArMTYs
-NyBAQAogI2luY2x1ZGUgPGRybS9kcm1fY3J0Yy5oPgogI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19o
-ZWxwZXIuaD4KICNpbmNsdWRlIDxkcm0vZHJtX2VkaWQuaD4KKyNpbmNsdWRlIDxsaW51eC9hcm0t
-c21jY2MuaD4KICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KICNpbmNsdWRlIDxsaW51eC9kZWxheS5o
-PgogI2luY2x1ZGUgPGxpbnV4L2hkbWkuaD4KQEAgLTI0Niw2ICsyNDcsMTcgQEAgc3RhdGljIHZv
-aWQgbXRrX2hkbWlfaHdfdmlkX2JsYWNrKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSwgYm9vbCBibGFj
-aykKIAogc3RhdGljIHZvaWQgbXRrX2hkbWlfaHdfbWFrZV9yZWdfd3JpdGFibGUoc3RydWN0IG10
-a19oZG1pICpoZG1pLCBib29sIGVuYWJsZSkKIHsKKwlzdHJ1Y3QgYXJtX3NtY2NjX3JlcyByZXM7
-CisKKwkvKgorCSAqIE1UODE3MyBIRE1JIGhhcmR3YXJlIGhhcyBhbiBvdXRwdXQgY29udHJvbCBi
-aXQgdG8gZW5hYmxlL2Rpc2FibGUgSERNSQorCSAqIG91dHB1dC4gVGhpcyBiaXQgY2FuIG9ubHkg
-YmUgY29udHJvbGxlZCBpbiBBUk0gc3VwZXJ2aXNvciBtb2RlLgorCSAqIFRoZSBBUk0gdHJ1c3Rl
-ZCBmaXJtd2FyZSBwcm92aWRlcyBhbiBBUEkgZm9yIHRoZSBIRE1JIGRyaXZlciB0byBzZXQKKwkg
-KiB0aGlzIGNvbnRyb2wgYml0IHRvIGVuYWJsZSBIRE1JIG91dHB1dCBpbiBzdXBlcnZpc29yIG1v
-ZGUuCisJICovCisJYXJtX3NtY2NjX3NtYyhNVEtfU0lQX1NFVF9BVVRIT1JJWkVEX1NFQ1VSRV9S
-RUcsIDB4MTQwMDA5MDQsIDB4ODAwMDAwMDAsCisJCSAgICAgIDAsIDAsIDAsIDAsIDAsICZyZXMp
-OworCiAJcmVnbWFwX3VwZGF0ZV9iaXRzKGhkbWktPnN5c19yZWdtYXAsIGhkbWktPnN5c19vZmZz
-ZXQgKyBIRE1JX1NZU19DRkcyMCwKIAkJCSAgIEhETUlfUENMS19GUkVFX1JVTiwgZW5hYmxlID8g
-SERNSV9QQ0xLX0ZSRUVfUlVOIDogMCk7CiAJcmVnbWFwX3VwZGF0ZV9iaXRzKGhkbWktPnN5c19y
-ZWdtYXAsIGhkbWktPnN5c19vZmZzZXQgKyBIRE1JX1NZU19DRkcxQywKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9yZWdzLmggYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2hkbWlfcmVncy5oCmluZGV4IDIwOWZiZTEuLmE1Y2IwN2QgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9yZWdzLmgKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3JlZ3MuaApAQCAtMjM0LDQgKzIzNCw1IEBACiAj
-ZGVmaW5lIE1ITF9TWU5DX0FVVE9fRU4JCUJJVCgzMCkKICNkZWZpbmUgSERNSV9QQ0xLX0ZSRUVf
-UlVOCQlCSVQoMzEpCiAKKyNkZWZpbmUgTVRLX1NJUF9TRVRfQVVUSE9SSVpFRF9TRUNVUkVfUkVH
-IDB4ODIwMDAwMDEKICNlbmRpZgotLSAKMi43LjAKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Thu, Apr 07, 2016 at 07:57:48PM +0200, John Crispin wrote:
+> The current binding document only describes a single interrupt. Update the
+> document by adding the 2 other interrupts.
+> 
+> The driver currently only uses a single interrupt. The HW is however able
+> to using IRQ grouping to split TX and RX onto separate GIC irqs.
+
+I assume you aren't breaking existing DTs, and the driver will continue 
+to work with a single irq specified?
+
+> 
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> Cc: devicetree@vger.kernel.org
+> ---
+>  Documentation/devicetree/bindings/net/mediatek-net.txt |    6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> index 5ca7929..2f142be 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek-net.txt
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> @@ -9,7 +9,7 @@ have dual GMAC each represented by a child node..
+>  Required properties:
+>  - compatible: Should be "mediatek,mt7623-eth"
+>  - reg: Address and length of the register set for the device
+> -- interrupts: Should contain the frame engines interrupt
+> +- interrupts: Should contain the three frame engines interrupts
+
+Need to define what each irq is and the order.
+
+>  - clocks: the clock used by the core
+>  - clock-names: the names of the clock listed in the clocks property. These are
+>  	"ethif", "esw", "gp2", "gp1"
+> @@ -42,7 +42,9 @@ eth: ethernet@1b100000 {
+>  		 <&ethsys CLK_ETHSYS_GP2>,
+>  		 <&ethsys CLK_ETHSYS_GP1>;
+>  	clock-names = "ethif", "esw", "gp2", "gp1";
+> -	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
+> +	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW
+> +		      GIC_SPI 199 IRQ_TYPE_LEVEL_LOW
+> +		      GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
+>  	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+>  	resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
+>  	reset-names = "eth";
+> -- 
+> 1.7.10.4
+> --
+> To unsubscribe from this list: send the line "unsubscribe devicetree" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
