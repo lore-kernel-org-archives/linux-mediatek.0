@@ -1,38 +1,61 @@
-From: Viresh Kumar <viresh.kumar@linaro.org>
-Subject: Re: [PATCH v6 0/3] thermal: mediatek: Add cpu dynamic power cooling
- model.
-Date: Tue, 12 Apr 2016 11:09:34 +0530
-Message-ID: <20160412053934.GU16238@vireshk-i7>
-References: <1450272556-29770-1-git-send-email-dawei.chien@mediatek.com>
- <20151217015231.GC3496@ubuntu>
- <1458017620.30412.3.camel@mtksdaap41>
- <20160315061709.GC13831@vireshk-mac-ubuntu>
- <1458623586.674.2.camel@mtksdaap41>
- <1460428370.25776.6.camel@mtksdaap41>
- <20160412051103.GN16238@vireshk-i7>
- <1460438685.14875.3.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1460438685.14875.3.camel@mtksdaap41>
-Sender: linux-pm-owner@vger.kernel.org
-To: dawei chien <dawei.chien@mediatek.com>
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
+From: John Crispin <blogic@openwrt.org>
+Subject: [PATCH V3] net: mediatek: update the IRQ part of the binding document
+Date: Tue, 12 Apr 2016 08:35:18 +0200
+Message-ID: <1460442918-6070-1-git-send-email-blogic@openwrt.org>
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12-04-16, 13:24, dawei chien wrote:
-> Please refer to following for my resending, thank you.
-> 
-> https://lkml.org/lkml/2016/3/15/101
-> https://patchwork.kernel.org/patch/8586131/
-> https://patchwork.kernel.org/patch/8586111/
-> https://patchwork.kernel.org/patch/8586081/
+The current binding document only describes a single interrupt. Update the
+document by adding the 2 other interrupts.
 
-Oh, you were continuously sending new ping requests on the old thread.
-You should have used the new thread instead :)
+The driver currently only uses a single interrupt. The HW is however able
+to using IRQ grouping to split TX and RX onto separate GIC irqs.
 
-Anyway, I have pinged Rafael over the new thread now.
+Signed-off-by: John Crispin <blogic@openwrt.org>
+Cc: devicetree@vger.kernel.org
+---
+This binding doc was merged in 4.6-rc1 and there are no users yet. The
+current driver only uses 1 irq but will work fine with all 3 listed in
+the devicetree. This patch should be merged before v4.6 is final such
+that listing all 3 irqs becomes part of the ABI. I have already posted
+a patch that utilizes all 3 irqs for next-next for v4.7 inclusion.
 
+Changes in V3:
+* be verbose about the 3 irqs and their ordering
+
+Changes in V2:
+* split this patch out of the series that fixes tx stalls in the driver
+
+ Documentation/devicetree/bindings/net/mediatek-net.txt |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 5ca7929..32eaaca 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -9,7 +9,8 @@ have dual GMAC each represented by a child node..
+ Required properties:
+ - compatible: Should be "mediatek,mt7623-eth"
+ - reg: Address and length of the register set for the device
+-- interrupts: Should contain the frame engines interrupt
++- interrupts: Should contain the three frame engines interrupts in numeric
++	order. These are fe_int0, fe_int1 and fe_int2.
+ - clocks: the clock used by the core
+ - clock-names: the names of the clock listed in the clocks property. These are
+ 	"ethif", "esw", "gp2", "gp1"
+@@ -42,7 +43,9 @@ eth: ethernet@1b100000 {
+ 		 <&ethsys CLK_ETHSYS_GP2>,
+ 		 <&ethsys CLK_ETHSYS_GP1>;
+ 	clock-names = "ethif", "esw", "gp2", "gp1";
+-	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
++	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW
++		      GIC_SPI 199 IRQ_TYPE_LEVEL_LOW
++		      GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
+ 	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+ 	resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
+ 	reset-names = "eth";
 -- 
-viresh
+1.7.10.4
