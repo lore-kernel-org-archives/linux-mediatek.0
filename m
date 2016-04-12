@@ -1,53 +1,66 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: [PATCH] Revert "soc: mediatek: SCPSYS: Fix double enabling of regulators"
-Date: Tue, 12 Apr 2016 16:34:30 +0800
-Message-ID: <1460450070-30556-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH v3] i2c: mediatek: i2c multi transfer optimization
+Date: Tue, 12 Apr 2016 23:13:56 +0200
+Message-ID: <20160412211355.GA1526@katana>
+References: <1457375031-3769-1-git-send-email-liguo.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ZGiS0Q5IWpPtfppv"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1457375031-3769-1-git-send-email-liguo.zhang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: Olof Johansson <olof@lixom.net>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>
+To: Liguo Zhang <liguo.zhang@mediatek.com>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This reverts commit cc8ed76938b5cf6a54ab3d60edabaf808dc960d1
-("soc: mediatek: SCPSYS: Fix double enabling of regulators") [1].
 
-This patch fixes mt8173-evb failing boot issue. With commit [1],
-genpd state will not sync to real power domain state. So some
-resources such as clocks and regulators may stay in a wrong state.
+--ZGiS0Q5IWpPtfppv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-There is no regulator double enabling issue on mainline kernel, so
-we can refert commit [1] safely.
+Hi,
 
-Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
----
- drivers/soc/mediatek/mtk-scpsys.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+thanks for the submission!
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 57e781c..837effe 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -491,13 +491,14 @@ static int scpsys_probe(struct platform_device *pdev)
- 		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
- 
- 		/*
--		 * With CONFIG_PM disabled turn on all domains to make the
--		 * hardware usable.
-+		 * Initially turn on all domains to make the domains usable
-+		 * with !CONFIG_PM and to get the hardware in sync with the
-+		 * software.  The unused domains will be switched off during
-+		 * late_init time.
- 		 */
--		if (!IS_ENABLED(CONFIG_PM))
--			genpd->power_on(genpd);
-+		genpd->power_on(genpd);
- 
--		pm_genpd_init(genpd, NULL, true);
-+		pm_genpd_init(genpd, NULL, false);
- 	}
- 
- 	/*
--- 
-1.9.1
+On Tue, Mar 08, 2016 at 02:23:51AM +0800, Liguo Zhang wrote:
+> Signal complete() in the i2c irq handler after one transfer done,
+> and then wait_for_completion_timeout() will return, this procedure
+> may cost much time, so only signal complete() when the entire
+> transaction has been completed, it will reduce the entire transaction
+> time.
+>=20
+> Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+
+I wonder. You have less context switches, yes. On the other hand, you
+likely have bigger interrupt latency because you do more stuff in the
+interrupt handler. Is it really a gain in the end?
+
+Regards,
+
+   Wolfram
+
+
+--ZGiS0Q5IWpPtfppv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXDWUTAAoJEBQN5MwUoCm2WqEP/iYiA940CEMWOPhx/RgpbdHq
++PoAO7geqKgb/u6b/HAtVdyXFpsnC3db3C6PFWg84q8gesh3HrmfarekIXcKQiGo
+/VHwXhSTbxu4KE4T4XlSzOlokb7Er7cJmg+P5Jv99CjpTAZGo00UfsxkUArca+5s
+J2fDV5/T1Q1hg8UFxdYTAukm7gB+lDyL8jBnDl9qCz4wWn5lfR0B1FBp8tyzjOIE
+CoWxx3B6FBAZh8pQYTHtWGf0TW1lIvG/bqu24upfV0Yf8m9UIFr2W1Op2v/Y5GC2
+JVnqJXZ7GtCbZTSMK5cU3yEHiRQE+dbPy017j3N4Ul6NUMYMv5aontfAt/Af1Nhx
+ruY8tDuk/izDN+zN4nTSCT4B6r/jMLpkCBoMHuKpXL6CsbJbiT+huYDubuxzAuH3
+YoJP/Nhoz98JFtYuBTk6L1l8UFK3w0V8paIwrSii92SdMvnntPaTUkBqMmtkn11a
+40Lq+OYLGGT5XDuPp91KFrRFhO5PLPSgZwt0KCjLVC3HN6dcnd7rQbRbP50yanZB
+EB8vPOwjKHjLaMBtjwSM85Gzv7PVjfw3YLEwSD0yg6bNjHE5f0wz74le/Y4tKYW5
+zSXIlnCyv3+DoWMNr6sQu/aiHnlm5chUT5EcgJFXSYpm/Eb5QN6Dh8XqHXf8DrQ/
+ZQTnCbTXdgklOqhSVrlg
+=83yL
+-----END PGP SIGNATURE-----
+
+--ZGiS0Q5IWpPtfppv--
