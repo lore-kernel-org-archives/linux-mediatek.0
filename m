@@ -1,61 +1,53 @@
-From: John Crispin <blogic@openwrt.org>
-Subject: [PATCH V3] net: mediatek: update the IRQ part of the binding document
-Date: Tue, 12 Apr 2016 08:35:18 +0200
-Message-ID: <1460442918-6070-1-git-send-email-blogic@openwrt.org>
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>
-Cc: Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <blogic@openwrt.org>, devicetree@vger.kernel.org
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH] Revert "soc: mediatek: SCPSYS: Fix double enabling of regulators"
+Date: Tue, 12 Apr 2016 16:34:30 +0800
+Message-ID: <1460450070-30556-1-git-send-email-jamesjj.liao@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: Olof Johansson <olof@lixom.net>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The current binding document only describes a single interrupt. Update the
-document by adding the 2 other interrupts.
+This reverts commit cc8ed76938b5cf6a54ab3d60edabaf808dc960d1
+("soc: mediatek: SCPSYS: Fix double enabling of regulators") [1].
 
-The driver currently only uses a single interrupt. The HW is however able
-to using IRQ grouping to split TX and RX onto separate GIC irqs.
+This patch fixes mt8173-evb failing boot issue. With commit [1],
+genpd state will not sync to real power domain state. So some
+resources such as clocks and regulators may stay in a wrong state.
 
-Signed-off-by: John Crispin <blogic@openwrt.org>
-Cc: devicetree@vger.kernel.org
+There is no regulator double enabling issue on mainline kernel, so
+we can refert commit [1] safely.
+
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 ---
-This binding doc was merged in 4.6-rc1 and there are no users yet. The
-current driver only uses 1 irq but will work fine with all 3 listed in
-the devicetree. This patch should be merged before v4.6 is final such
-that listing all 3 irqs becomes part of the ABI. I have already posted
-a patch that utilizes all 3 irqs for next-next for v4.7 inclusion.
+ drivers/soc/mediatek/mtk-scpsys.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-Changes in V3:
-* be verbose about the 3 irqs and their ordering
-
-Changes in V2:
-* split this patch out of the series that fixes tx stalls in the driver
-
- Documentation/devicetree/bindings/net/mediatek-net.txt |    7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index 5ca7929..32eaaca 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -9,7 +9,8 @@ have dual GMAC each represented by a child node..
- Required properties:
- - compatible: Should be "mediatek,mt7623-eth"
- - reg: Address and length of the register set for the device
--- interrupts: Should contain the frame engines interrupt
-+- interrupts: Should contain the three frame engines interrupts in numeric
-+	order. These are fe_int0, fe_int1 and fe_int2.
- - clocks: the clock used by the core
- - clock-names: the names of the clock listed in the clocks property. These are
- 	"ethif", "esw", "gp2", "gp1"
-@@ -42,7 +43,9 @@ eth: ethernet@1b100000 {
- 		 <&ethsys CLK_ETHSYS_GP2>,
- 		 <&ethsys CLK_ETHSYS_GP1>;
- 	clock-names = "ethif", "esw", "gp2", "gp1";
--	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>;
-+	interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW
-+		      GIC_SPI 199 IRQ_TYPE_LEVEL_LOW
-+		      GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
- 	power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
- 	resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
- 	reset-names = "eth";
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 57e781c..837effe 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -491,13 +491,14 @@ static int scpsys_probe(struct platform_device *pdev)
+ 		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
+ 
+ 		/*
+-		 * With CONFIG_PM disabled turn on all domains to make the
+-		 * hardware usable.
++		 * Initially turn on all domains to make the domains usable
++		 * with !CONFIG_PM and to get the hardware in sync with the
++		 * software.  The unused domains will be switched off during
++		 * late_init time.
+ 		 */
+-		if (!IS_ENABLED(CONFIG_PM))
+-			genpd->power_on(genpd);
++		genpd->power_on(genpd);
+ 
+-		pm_genpd_init(genpd, NULL, true);
++		pm_genpd_init(genpd, NULL, false);
+ 	}
+ 
+ 	/*
 -- 
-1.7.10.4
+1.9.1
