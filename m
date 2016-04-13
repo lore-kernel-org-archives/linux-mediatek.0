@@ -1,82 +1,74 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: Correct path for ARM GIC documentation
-Date: Wed, 13 Apr 2016 17:36:50 +0200
-Message-ID: <570E6792.6090006@gmail.com>
-References: <1458226077-7179-1-git-send-email-jonathanh@nvidia.com>
+From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] pinctrl: mediatek: correct debounce time unit in
+ mtk_gpio_set_debounce
+Date: Wed, 13 Apr 2016 10:30:03 -0700
+Message-ID: <1460568603.16516.0.camel@mussux00>
+References: <1459580269-64531-1-git-send-email-yingjoe.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458226077-7179-1-git-send-email-jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?= <bcousson-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1459580269-64531-1-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Sat, 2016-04-02 at 14:57 +0800, Yingjoe Chen wrote:
+> The debounce time unit for gpio_chip.set_debounce is us but
+> mtk_gpio_set_debounce regard it as ms.
+> Fix this by correct debounce time array dbnc_arr so it can find correct
+> debounce setting. Debounce time for first debounce setting is 500us,
+> correct this as well.
+> 
+> While I'm at it, also change the debounce time array name to
+> "debounce_time" for readability.
+> 
+> Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
+Acked-by: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On 17/03/16 15:47, Jon Hunter wrote:
-> Commit eb3fcf007fff ("dt-bindings: consolidate interrupt controller
-> bindings") moved the binding documentation for the ARM GIC from
-> arm/gic.txt to interrupt-controller/arm,gic.txt. However, there are
-> still some binding documents referring to the old path. Update these
-> binding documents to use the correct location.
->
-> Fixes: eb3fcf007fff ("dt-bindings: consolidate interrupt controller bindings")
->
-> Signed-off-by: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 > ---
-
-Acked-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
->   Documentation/devicetree/bindings/arm/omap/crossbar.txt                | 3 ++-
->   Documentation/devicetree/bindings/arm/ux500/boards.txt                 | 2 +-
->   .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt       | 3 +--
->   3 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/arm/omap/crossbar.txt b/Documentation/devicetree/bindings/arm/omap/crossbar.txt
-> index a9b28d74d902..bb5727ae004a 100644
-> --- a/Documentation/devicetree/bindings/arm/omap/crossbar.txt
-> +++ b/Documentation/devicetree/bindings/arm/omap/crossbar.txt
-> @@ -42,7 +42,8 @@ Examples:
->   Consumer:
->   ========
->   See Documentation/devicetree/bindings/interrupt-controller/interrupts.txt and
-> -Documentation/devicetree/bindings/arm/gic.txt for further details.
-> +Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt for
-> +further details.
->
->   An interrupt consumer on an SoC using crossbar will use:
->   	interrupts = <GIC_SPI request_number interrupt_level>
-> diff --git a/Documentation/devicetree/bindings/arm/ux500/boards.txt b/Documentation/devicetree/bindings/arm/ux500/boards.txt
-> index b8737a8de718..7334c24625fc 100644
-> --- a/Documentation/devicetree/bindings/arm/ux500/boards.txt
-> +++ b/Documentation/devicetree/bindings/arm/ux500/boards.txt
-> @@ -23,7 +23,7 @@ scu:
->   	see binding for arm/scu.txt
->
->   interrupt-controller:
-> -	see binding for arm/gic.txt
-> +	see binding for interrupt-controller/arm,gic.txt
->
->   timer:
->   	see binding for arm/twd.txt
-> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> index b8e1674c7837..8cf564d083d2 100644
-> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> @@ -16,8 +16,7 @@ Required properties:
->   	"mediatek,mt6577-sysirq"
->   	"mediatek,mt2701-sysirq"
->   - interrupt-controller : Identifies the node as an interrupt controller
-> -- #interrupt-cells : Use the same format as specified by GIC in
-> -  Documentation/devicetree/bindings/arm/gic.txt
-> +- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
->   - interrupt-parent: phandle of irq parent for sysirq. The parent must
->     use the same interrupt-cells format as GIC.
->   - reg: Physical base address of the intpol registers and length of memory
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> This was based on v4.6-rc1
+> Change since v1:
+> - Improve commit message.
+> - Change dbnc_arr name to debounce_time
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 2bbe6f7..6ab8c3c 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -1004,7 +1004,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
+>  	struct mtk_pinctrl *pctl = dev_get_drvdata(chip->parent);
+>  	int eint_num, virq, eint_offset;
+>  	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask, dbnc;
+> -	static const unsigned int dbnc_arr[] = {0 , 1, 16, 32, 64, 128, 256};
+> +	static const unsigned int debounce_time[] = {500, 1000, 16000, 32000, 64000,
+> +						128000, 256000};
+>  	const struct mtk_desc_pin *pin;
+>  	struct irq_data *d;
+>  
+> @@ -1022,9 +1023,9 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
+>  	if (!mtk_eint_can_en_debounce(pctl, eint_num))
+>  		return -ENOSYS;
+>  
+> -	dbnc = ARRAY_SIZE(dbnc_arr);
+> -	for (i = 0; i < ARRAY_SIZE(dbnc_arr); i++) {
+> -		if (debounce <= dbnc_arr[i]) {
+> +	dbnc = ARRAY_SIZE(debounce_time);
+> +	for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
+> +		if (debounce <= debounce_time[i]) {
+>  			dbnc = i;
+>  			break;
+>  		}
