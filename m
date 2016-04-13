@@ -1,33 +1,45 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [RESEND PATCH 0/2] pinctrl: mediatek: add pinctrl/GPIO/EINT
- driver for mt2701
-Date: Wed, 13 Apr 2016 11:32:58 +0200
-Message-ID: <570E124A.9090505@gmail.com>
-References: <1460531264-4405-1-git-send-email-biao.huang@mediatek.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: phy-mt65xx-usb: add support for
+ mt2701 platform
+Date: Wed, 13 Apr 2016 12:00:19 +0200
+Message-ID: <570E18B3.2000101@gmail.com>
+References: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1460531264-4405-1-git-send-email-biao.huang@mediatek.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Biao Huang <biao.huang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>
-Cc: srv_heupstream@mediatek.com, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 13/04/16 09:07, Biao Huang wrote:
-> Biao Huang (1):
->    arm: dts: Add pinctrl/GPIO/EINT node for mt2701
+On 11/04/16 09:41, Chunfeng Yun wrote:
+> A new compatible string, "mediatek,mt2701-u3phy", is added.
 >
-> Erin Lo (1):
->    ARM: mediatek: Add MT2701 config options for mediatek SoCs.
->
->   arch/arm/boot/dts/mt2701.dtsi  |   19 +++++++++++++++++++
->   arch/arm/mach-mediatek/Kconfig |    4 ++++
->   2 files changed, 23 insertions(+)
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>   .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |    4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 >
 
-Applied to v4.6-next/[dts,kconfig].
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Thanks.
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> index 00100cf..33a2b1e 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> @@ -4,7 +4,9 @@ mt65xx USB3.0 PHY binding
+>   This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+>
+>   Required properties (controller (parent) node):
+> - - compatible	: should be "mediatek,mt8173-u3phy"
+> + - compatible	: should be one of
+> +		  "mediatek,mt2701-u3phy"
+> +		  "mediatek,mt8173-u3phy"
+>    - reg		: offset and length of register for phy, exclude port's
+>   		  register.
+>    - clocks	: a list of phandle + clock-specifier pairs, one for each
+>
