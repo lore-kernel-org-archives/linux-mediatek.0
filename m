@@ -1,74 +1,42 @@
-From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2] pinctrl: mediatek: correct debounce time unit in
- mtk_gpio_set_debounce
-Date: Wed, 13 Apr 2016 10:30:03 -0700
-Message-ID: <1460568603.16516.0.camel@mussux00>
-References: <1459580269-64531-1-git-send-email-yingjoe.chen@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH V3] net: mediatek: update the IRQ part of the binding
+ document
+Date: Wed, 13 Apr 2016 12:33:35 -0500
+Message-ID: <20160413173335.GA15022@rob-hp-laptop>
+References: <1460442918-6070-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1459580269-64531-1-git-send-email-yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1460442918-6070-1-git-send-email-blogic@openwrt.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Crispin <blogic@openwrt.org>
+Cc: "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@openwrt.org>, Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sat, 2016-04-02 at 14:57 +0800, Yingjoe Chen wrote:
-> The debounce time unit for gpio_chip.set_debounce is us but
-> mtk_gpio_set_debounce regard it as ms.
-> Fix this by correct debounce time array dbnc_arr so it can find correct
-> debounce setting. Debounce time for first debounce setting is 500us,
-> correct this as well.
+On Tue, Apr 12, 2016 at 08:35:18AM +0200, John Crispin wrote:
+> The current binding document only describes a single interrupt. Update the
+> document by adding the 2 other interrupts.
 > 
-> While I'm at it, also change the debounce time array name to
-> "debounce_time" for readability.
+> The driver currently only uses a single interrupt. The HW is however able
+> to using IRQ grouping to split TX and RX onto separate GIC irqs.
 > 
-> Signed-off-by: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Acked-by: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
+> Signed-off-by: John Crispin <blogic@openwrt.org>
+> Cc: devicetree@vger.kernel.org
 > ---
-> This was based on v4.6-rc1
-> Change since v1:
-> - Improve commit message.
-> - Change dbnc_arr name to debounce_time
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
+> This binding doc was merged in 4.6-rc1 and there are no users yet. The
+> current driver only uses 1 irq but will work fine with all 3 listed in
+> the devicetree. This patch should be merged before v4.6 is final such
+> that listing all 3 irqs becomes part of the ABI. I have already posted
+> a patch that utilizes all 3 irqs for next-next for v4.7 inclusion.
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> index 2bbe6f7..6ab8c3c 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> @@ -1004,7 +1004,8 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
->  	struct mtk_pinctrl *pctl = dev_get_drvdata(chip->parent);
->  	int eint_num, virq, eint_offset;
->  	unsigned int set_offset, bit, clr_bit, clr_offset, rst, i, unmask, dbnc;
-> -	static const unsigned int dbnc_arr[] = {0 , 1, 16, 32, 64, 128, 256};
-> +	static const unsigned int debounce_time[] = {500, 1000, 16000, 32000, 64000,
-> +						128000, 256000};
->  	const struct mtk_desc_pin *pin;
->  	struct irq_data *d;
->  
-> @@ -1022,9 +1023,9 @@ static int mtk_gpio_set_debounce(struct gpio_chip *chip, unsigned offset,
->  	if (!mtk_eint_can_en_debounce(pctl, eint_num))
->  		return -ENOSYS;
->  
-> -	dbnc = ARRAY_SIZE(dbnc_arr);
-> -	for (i = 0; i < ARRAY_SIZE(dbnc_arr); i++) {
-> -		if (debounce <= dbnc_arr[i]) {
-> +	dbnc = ARRAY_SIZE(debounce_time);
-> +	for (i = 0; i < ARRAY_SIZE(debounce_time); i++) {
-> +		if (debounce <= debounce_time[i]) {
->  			dbnc = i;
->  			break;
->  		}
+> Changes in V3:
+> * be verbose about the 3 irqs and their ordering
+> 
+> Changes in V2:
+> * split this patch out of the series that fixes tx stalls in the driver
+> 
+>  Documentation/devicetree/bindings/net/mediatek-net.txt |    7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+
+Acked-by: Rob Herring <robh@kernel.org>
