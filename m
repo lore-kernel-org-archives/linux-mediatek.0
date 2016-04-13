@@ -1,80 +1,91 @@
-From: Nicolas Dufresne <nicolas.dufresne@gmail.com>
-Subject: Re: [PATCH 1/7] [media]: v4l: add Mediatek MT21 video block format
-Date: Wed, 13 Apr 2016 10:23:36 -0400
-Message-ID: <1460557416.18956.3.camel@gmail.com>
-References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
-Reply-To: nicolas@ndufresne.ca
+From: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [PATCH] dt-bindings: Correct path for ARM GIC documentation
+Date: Wed, 13 Apr 2016 16:30:12 +0100
+Message-ID: <570E6604.1070707@nvidia.com>
+References: <1458226077-7179-1-git-send-email-jonathanh@nvidia.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1458226077-7179-1-git-send-email-jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Beno=c3=aet_Cousson?= <bcousson-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Tony Lindgren <tony-4v6yS6AI5VpBDgjK7y7TUQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Le mercredi 13 avril 2016 =C3=A0 20:01 +0800, Tiffany Lin a =C3=A9crit=C2=
-=A0:
-> From: Daniel Kurtz <djkurtz@chromium.org>
->=20
-> Mediatek video format is YVU8_420_2PLANE_PACK8_PROGRESSIVE.
->=20
-> Create V4L2_PIX_FMT_MT21 and DRM_FORMAT_MT21 to be consistent with
-> V4L2_PIX_FMT_NV12 notation.
->=20
-> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Rob,
+
+Are you ok to pick this up? Or are you still waiting for ACK's from Tony
+and Matthias?
+
+Jon
+
+On 17/03/16 14:47, Jon Hunter wrote:
+> Commit eb3fcf007fff ("dt-bindings: consolidate interrupt controller
+> bindings") moved the binding documentation for the ARM GIC from
+> arm/gic.txt to interrupt-controller/arm,gic.txt. However, there are
+> still some binding documents referring to the old path. Update these
+> binding documents to use the correct location.
+> 
+> Fixes: eb3fcf007fff ("dt-bindings: consolidate interrupt controller bindings")
+> 
+> Signed-off-by: Jon Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>
 > ---
-> =C2=A0include/uapi/drm/drm_fourcc.h=C2=A0=C2=A0|=C2=A0=C2=A0=C2=A0=C2=
-=A01 +
-> =C2=A0include/uapi/linux/videodev2.h |=C2=A0=C2=A0=C2=A0=C2=A02 ++
+>  Documentation/devicetree/bindings/arm/omap/crossbar.txt                | 3 ++-
+>  Documentation/devicetree/bindings/arm/ux500/boards.txt                 | 2 +-
+>  .../devicetree/bindings/interrupt-controller/mediatek,sysirq.txt       | 3 +--
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/omap/crossbar.txt b/Documentation/devicetree/bindings/arm/omap/crossbar.txt
+> index a9b28d74d902..bb5727ae004a 100644
+> --- a/Documentation/devicetree/bindings/arm/omap/crossbar.txt
+> +++ b/Documentation/devicetree/bindings/arm/omap/crossbar.txt
+> @@ -42,7 +42,8 @@ Examples:
+>  Consumer:
+>  ========
+>  See Documentation/devicetree/bindings/interrupt-controller/interrupts.txt and
+> -Documentation/devicetree/bindings/arm/gic.txt for further details.
+> +Documentation/devicetree/bindings/interrupt-controller/arm,gic.txt for
+> +further details.
+>  
+>  An interrupt consumer on an SoC using crossbar will use:
+>  	interrupts = <GIC_SPI request_number interrupt_level>
+> diff --git a/Documentation/devicetree/bindings/arm/ux500/boards.txt b/Documentation/devicetree/bindings/arm/ux500/boards.txt
+> index b8737a8de718..7334c24625fc 100644
+> --- a/Documentation/devicetree/bindings/arm/ux500/boards.txt
+> +++ b/Documentation/devicetree/bindings/arm/ux500/boards.txt
+> @@ -23,7 +23,7 @@ scu:
+>  	see binding for arm/scu.txt
+>  
+>  interrupt-controller:
+> -	see binding for arm/gic.txt
+> +	see binding for interrupt-controller/arm,gic.txt
+>  
+>  timer:
+>  	see binding for arm/twd.txt
+> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> index b8e1674c7837..8cf564d083d2 100644
+> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+> @@ -16,8 +16,7 @@ Required properties:
+>  	"mediatek,mt6577-sysirq"
+>  	"mediatek,mt2701-sysirq"
+>  - interrupt-controller : Identifies the node as an interrupt controller
+> -- #interrupt-cells : Use the same format as specified by GIC in
+> -  Documentation/devicetree/bindings/arm/gic.txt
+> +- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
+>  - interrupt-parent: phandle of irq parent for sysirq. The parent must
+>    use the same interrupt-cells format as GIC.
+>  - reg: Physical base address of the intpol registers and length of memory
+> 
 
-Might be better to split this patch.
-
-> =C2=A02 files changed, 3 insertions(+)
->=20
-> diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fou=
-rcc.h
-> index 0b69a77..a193905 100644
-> --- a/include/uapi/drm/drm_fourcc.h
-> +++ b/include/uapi/drm/drm_fourcc.h
-> @@ -116,6 +116,7 @@
-> =C2=A0#define DRM_FORMAT_NV24		fourcc_code('N', 'V', '2', '4') /* non=
--subsampled Cr:Cb plane */
-> =C2=A0#define DRM_FORMAT_NV42		fourcc_code('N', 'V', '4', '2') /* non=
--subsampled Cb:Cr plane */
-> =C2=A0
-> +#define DRM_FORMAT_MT21		fourcc_code('M', 'T', '2', '1') /* Mediatek=
- Block Mode */
-
-Please document the tiling format, don't just add a define here.
-
-> =C2=A0/*
-> =C2=A0 * 3 plane YCbCr
-> =C2=A0 * index 0: Y plane, [7:0] Y
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/vide=
-odev2.h
-> index d0acd26..e9e3276 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -527,6 +527,8 @@ struct v4l2_pix_format {
-> =C2=A0#define V4L2_PIX_FMT_HM12=C2=A0=C2=A0=C2=A0=C2=A0v4l2_fourcc('H=
-', 'M', '1', '2') /*=C2=A0=C2=A08=C2=A0=C2=A0YUV 4:2:0 16x16 macroblock=
-s */
-> =C2=A0#define V4L2_PIX_FMT_M420=C2=A0=C2=A0=C2=A0=C2=A0v4l2_fourcc('M=
-', '4', '2', '0') /* 12=C2=A0=C2=A0YUV 4:2:0 2 lines y, 1 line uv inter=
-leaved */
-> =C2=A0
-> +#define V4L2_PIX_FMT_MT21=C2=A0=C2=A0=C2=A0=C2=A0v4l2_fourcc('M', 'T=
-', '2', '1') /* Mediatek Block Mode=C2=A0=C2=A0*/
-> +
-
-Same. On Linux Media side, there is docbook documentation where you can
-explain in detail.
-
-> =C2=A0/* two planes -- one Y, one Cr + Cb interleaved=C2=A0=C2=A0*/
-> =C2=A0#define V4L2_PIX_FMT_NV12=C2=A0=C2=A0=C2=A0=C2=A0v4l2_fourcc('N=
-', 'V', '1', '2') /* 12=C2=A0=C2=A0Y/CbCr 4:2:0=C2=A0=C2=A0*/
-> =C2=A0#define V4L2_PIX_FMT_NV21=C2=A0=C2=A0=C2=A0=C2=A0v4l2_fourcc('N=
-', 'V', '2', '1') /* 12=C2=A0=C2=A0Y/CrCb 4:2:0=C2=A0=C2=A0*/
+-----------------------------------------------------------------------------------
+This email message is for the sole use of the intended recipient(s) and may contain
+confidential information.  Any unauthorized review, use, disclosure or distribution
+is prohibited.  If you are not the intended recipient, please contact the sender by
+reply email and destroy all copies of the original message.
+-----------------------------------------------------------------------------------
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
