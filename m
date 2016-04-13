@@ -1,45 +1,53 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy-mt65xx-usb: add support for
- mt2701 platform
-Date: Wed, 13 Apr 2016 12:00:19 +0200
-Message-ID: <570E18B3.2000101@gmail.com>
-References: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: arm: soc fixes for v4.6
+Date: Wed, 13 Apr 2016 12:13:41 +0200
+Message-ID: <570E1BD5.4090305@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi all,
 
+Please merge the following fix to end the boot regression for v4.6.
 
-On 11/04/16 09:41, Chunfeng Yun wrote:
-> A new compatible string, "mediatek,mt2701-u3phy", is added.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |    4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
->
+Thanks,
+Matthias
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> index 00100cf..33a2b1e 100644
-> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> @@ -4,7 +4,9 @@ mt65xx USB3.0 PHY binding
->   This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
->
->   Required properties (controller (parent) node):
-> - - compatible	: should be "mediatek,mt8173-u3phy"
-> + - compatible	: should be one of
-> +		  "mediatek,mt2701-u3phy"
-> +		  "mediatek,mt8173-u3phy"
->    - reg		: offset and length of register for phy, exclude port's
->   		  register.
->    - clocks	: a list of phandle + clock-specifier pairs, one for each
->
+The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
+
+   Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
+
+are available in the git repository at:
+
+   https://github.com/mbgg/linux-mediatek.git tags/v4.6-soc-fixes
+
+for you to fetch changes up to d9c9f3b809d2bb0356f013e88d10730eafab5346:
+
+   Revert "soc: mediatek: SCPSYS: Fix double enabling of regulators" 
+(2016-04-13 11:55:08 +0200)
+
+----------------------------------------------------------------
+- fix boot error reverting commit cc8ed76938b5
+("soc: mediatek: SCPSYS: Fix double enabling of regulators")
+
+----------------------------------------------------------------
+James Liao (1):
+       Revert "soc: mediatek: SCPSYS: Fix double enabling of regulators"
+
+  drivers/soc/mediatek/mtk-scpsys.c | 11 ++++++-----
+  1 file changed, 6 insertions(+), 5 deletions(-)
