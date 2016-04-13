@@ -1,55 +1,25 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH v2 3/3] mfd: mt6397: check the EPROBE_DEFER from
- platform_get_irq.
-Date: Wed, 13 Apr 2016 13:48:21 +0800
-Message-ID: <1460526501.32184.4.camel@mtksdaap41>
-References: <1460098729-25549-1-git-send-email-henryc.chen@mediatek.com>
-	 <1460098729-25549-3-git-send-email-henryc.chen@mediatek.com>
-	 <20160411085039.GL4592@x1>
+From: Biao Huang <biao.huang@mediatek.com>
+Subject: [RESEND PATCH 0/2] pinctrl: mediatek: add pinctrl/GPIO/EINT driver for mt2701
+Date: Wed, 13 Apr 2016 15:07:42 +0800
+Message-ID: <1460531264-4405-1-git-send-email-biao.huang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160411085039.GL4592@x1>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Linus Walleij <linus.walleij@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, srv_heupstream@mediatek.com, Yingjoe Chen <yingjoe.chen@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-04-11 at 09:50 +0100, Lee Jones wrote:
-> On Fri, 08 Apr 2016, Henry Chen wrote:
-> 
-> > If get the -EPROBE_DEFER from platform_get_irq, it should return back directly.
-> > 
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > ---
-> >  drivers/mfd/mt6397-core.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> > index 15050cb..b9b1e28 100644
-> > --- a/drivers/mfd/mt6397-core.c
-> > +++ b/drivers/mfd/mt6397-core.c
-> > @@ -271,6 +271,8 @@ static int mt6397_probe(struct platform_device *pdev)
-> >  	}
-> >  
-> >  	pmic->irq = platform_get_irq(pdev, 0);
-> > +	if (pmic->irq == -EPROBE_DEFER)
-> > +		return -EPROBE_DEFER;
-> 
-> if (ret < 0)
->    return ret;
-> 
-> ... is more common, as it covers more bases, etc.
+Biao Huang (1):
+  arm: dts: Add pinctrl/GPIO/EINT node for mt2701
 
-Okay, the interrupt should be a required properties, if get failed just
-return back.
+Erin Lo (1):
+  ARM: mediatek: Add MT2701 config options for mediatek SoCs.
 
-I will also change the binding doc.
+ arch/arm/boot/dts/mt2701.dtsi  |   19 +++++++++++++++++++
+ arch/arm/mach-mediatek/Kconfig |    4 ++++
+ 2 files changed, 23 insertions(+)
 
-Thanks.
+-- 
+1.7.9.5
 
-> 
-> >  	switch (id & 0xff) {
-> >  	case MT6323_CID_CODE:
-> 
