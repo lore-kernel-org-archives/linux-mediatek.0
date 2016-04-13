@@ -1,77 +1,59 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: mt8173-evb: failing to boot in linux-next and mainline
-Date: Wed, 13 Apr 2016 12:15:10 +0200
-Message-ID: <570E1C2E.8010203@gmail.com>
-References: <CAOi56cV2M_Ee2AhxTUgHhZuZ1y7LH4sKKyiq3Okorj3K+L15GA@mail.gmail.com>
- <1459165876.24094.8.camel@mtksdaap41> <7h37raprav.fsf@baylibre.com>
- <1459230015.25921.10.camel@mtksdaap41>
- <CAOi56cVtfn5BmKP2YHM0kKvCcoAJUmaZWpupODRU4ABE=XEYbQ@mail.gmail.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 1/7] [media]: v4l: add Mediatek MT21 video block format
+Date: Wed, 13 Apr 2016 20:01:49 +0800
+Message-ID: <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
+References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAOi56cVtfn5BmKP2YHM0kKvCcoAJUmaZWpupODRU4ABE=XEYbQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1460548915-17536-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
+Mediatek video format is YVU8_420_2PLANE_PACK8_PROGRESSIVE.
 
-On 12/04/16 01:12, Kevin Hilman wrote:
-> On Mon, Mar 28, 2016 at 10:40 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->> Hi Sascha,
->>
->> On Mon, 2016-03-28 at 08:15 -0700, Kevin Hilman wrote:
->>> Hi Eddie,
->>>
->>> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
->>>
->>> [...]
->>>
->>>> Thanks your testing again. I can reproduce your case in my local
->>>> environment using 4.6-rc1. After checking, there are two ways to avoid
->>>> the hang:
->>>> 1. set clk_ignore_unused to kernel command line
->>>> 2. Revert patch "cc8ed76 soc: mediatek: SCPSYS: Fix double enabling of
->>>> regulators"
->>>>
->>>> It seems there is a problem between turn on/off clock and power domain.
->>>> We will try to fix this and send patch to public once have a solution.
->>>
->>> Thanks for verifying.
->>>
->>> I've confirmed that reverting the patch suggested above fixes the
->>> problem.
->>>
->>> Since -rc1 is out, and this problem still exists in mainline, if a
->>> proper fix is not found very soon, I suggest reverting that patch in mainline.
->>>
->>> Kevin
->>
->> According to Eddie and Kevin's test, I think some clocks
->> (mm/mfg/venc/venclt) may be turned off and there are drivers need these
->> clocks without clk_prepare_enable(). But I have no idea to find out what
->> driver causes this issue. So I prefer to revert it on v4.6-rc1. Do you
->> have comments about this issue?
->
-> FYI... mt8173-evb is still failing in mainline v4.6-rc3:
->
->     https://kernelci.org/boot/all/job/mainline/kernel/v4.6-rc3/
->
-> please fix and/or revert ASAP so this boot regression is not in v4.6 final.
->
+Create V4L2_PIX_FMT_MT21 and DRM_FORMAT_MT21 to be consistent with
+V4L2_PIX_FMT_NV12 notation.
 
-Sorry for the late reply. I'm quite busy in my day job ATM.
-I just send the revert James proposed as fix.
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ include/uapi/drm/drm_fourcc.h  |    1 +
+ include/uapi/linux/videodev2.h |    2 ++
+ 2 files changed, 3 insertions(+)
 
-Regards,
-Matthias
+diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
+index 0b69a77..a193905 100644
+--- a/include/uapi/drm/drm_fourcc.h
++++ b/include/uapi/drm/drm_fourcc.h
+@@ -116,6 +116,7 @@
+ #define DRM_FORMAT_NV24		fourcc_code('N', 'V', '2', '4') /* non-subsampled Cr:Cb plane */
+ #define DRM_FORMAT_NV42		fourcc_code('N', 'V', '4', '2') /* non-subsampled Cb:Cr plane */
+ 
++#define DRM_FORMAT_MT21		fourcc_code('M', 'T', '2', '1') /* Mediatek Block Mode */
+ /*
+  * 3 plane YCbCr
+  * index 0: Y plane, [7:0] Y
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index d0acd26..e9e3276 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -527,6 +527,8 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_HM12    v4l2_fourcc('H', 'M', '1', '2') /*  8  YUV 4:2:0 16x16 macroblocks */
+ #define V4L2_PIX_FMT_M420    v4l2_fourcc('M', '4', '2', '0') /* 12  YUV 4:2:0 2 lines y, 1 line uv interleaved */
+ 
++#define V4L2_PIX_FMT_MT21    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek Block Mode  */
++
+ /* two planes -- one Y, one Cr + Cb interleaved  */
+ #define V4L2_PIX_FMT_NV12    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/CbCr 4:2:0  */
+ #define V4L2_PIX_FMT_NV21    v4l2_fourcc('N', 'V', '2', '1') /* 12  Y/CrCb 4:2:0  */
+-- 
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
