@@ -1,476 +1,96 @@
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Subject: [alsa-devel] [RFC PATCH 4/4] ASoC: mediatek: Add mt2701-cs42448 driver and config option.
-Date: Thu, 14 Apr 2016 15:37:08 +0800
-Message-ID: <1460619428-48882-5-git-send-email-garlic.tseng@mediatek.com>
-References: <1460619428-48882-1-git-send-email-garlic.tseng@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH v7 0/9] Add clock support for Mediatek MT2701
+Date: Thu, 14 Apr 2016 16:11:45 +0800
+Message-ID: <1460621514-65191-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460619428-48882-1-git-send-email-garlic.tseng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: garlic.tseng@mediatek.com, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add machine driver and config option for MT2701.
+This series is based on 4.6-rc1, add clock and reset controller support
+for Mediatek MT2701.
 
-Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
----
- sound/soc/mediatek/Kconfig                 |  21 ++
- sound/soc/mediatek/Makefile                |   3 +
- sound/soc/mediatek/mt2701/Makefile         |  20 ++
- sound/soc/mediatek/mt2701/mt2701-cs42448.c | 376 +++++++++++++++++++++++++++++
- 4 files changed, 420 insertions(+)
- create mode 100644 sound/soc/mediatek/mt2701/Makefile
- create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
+This series also refined makefile and Kconfig to support configurable
+multiple SoC clock support.
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index f7e789e..b190322 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -48,3 +48,24 @@ config SND_SOC_MT8173_RT5650_RT5676
- 	  with the RT5650 and RT5676 codecs.
- 	  Select Y if you have such device.
- 	  If unsure select "N".
-+
-+config SND_SOC_MT2701
-+	bool "SND_SOC_MT2701"
-+	depends on SND_SOC_MEDIATEK
-+	select SND_SOC_CS42XX8_I2C
-+	help
-+	  This adds ASoC driver for Mediatek MT2701 boards
-+	  with the CS42448 codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
-+config SND_SOC_MT2701_CS42448
-+	bool "SND_SOC_MT2701_CS42448"
-+	depends on SND_SOC_MT2701
-+	select SND_SOC_CS42XX8_I2C
-+	help
-+	  This adds ASoC driver for Mediatek MT2701 boards
-+	  with the CS42448 codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index 5048165..60387ca 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -3,3 +3,6 @@ obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173/
- obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173/
- obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5514) += mt8173/
- obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173/
-+
-+# 2701 Machine support
-+obj-$(CONFIG_SND_SOC_MT2701_CS42448) += mt2701/
-diff --git a/sound/soc/mediatek/mt2701/Makefile b/sound/soc/mediatek/mt2701/Makefile
-new file mode 100644
-index 0000000..9f27653
---- /dev/null
-+++ b/sound/soc/mediatek/mt2701/Makefile
-@@ -0,0 +1,20 @@
-+#
-+# Copyright (C) 2015 MediaTek Inc.
-+#
-+# This program is free software: you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License version 2 as
-+# published by the Free Software Foundation.
-+#
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+# GNU General Public License for more details.
-+#
-+
-+# platform driver
-+obj-$(CONFIG_SND_SOC_MT2701) += mtk2701-afe-pcm.o
-+obj-$(CONFIG_SND_SOC_MT2701) += mtk2701-irq.o
-+obj-$(CONFIG_SND_SOC_MT2701) += mtk2701-afe-clock-ctrl.o
-+
-+# machine driver
-+obj-$(CONFIG_SND_SOC_MT2701_CS42448) += mt2701-cs42448.o
-diff --git a/sound/soc/mediatek/mt2701/mt2701-cs42448.c b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-new file mode 100644
-index 0000000..426f677
---- /dev/null
-+++ b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-@@ -0,0 +1,376 @@
-+/*
-+ * mt2701-cs42448.c  --  MT2701 CS42448 ALSA SoC machine driver
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Ir Lian <ir.lian@mediatek.com>
-+ *              Garlic Tseng <garlic.tseng@mediatek.com>
-+ *
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <sound/soc.h>
-+#include <linux/delay.h>
-+#include <linux/gpio.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/of_gpio.h>
-+
-+#include "mtk2701-afe-common.h"
-+
-+struct mt2701_cs42448_private {
-+	int i2s1_in_mux;
-+	int i2s1_in_mux_gpio_sel_1;
-+	int i2s1_in_mux_gpio_sel_2;
-+};
-+
-+static const char * const i2sin_mux_switch_text[] = {
-+	"ADC_SDOUT2",
-+	"ADC_SDOUT3",
-+	"I2S_IN_1",
-+	"I2S_IN_2",
-+};
-+
-+static const struct soc_enum i2sin_mux_enum =
-+	SOC_ENUM_SINGLE_EXT(4, i2sin_mux_switch_text);
-+
-+static int mt2701_cs42448_i2sin1_mux_get(struct snd_kcontrol *kcontrol,
-+					 struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
-+	struct mt2701_cs42448_private *priv = snd_soc_card_get_drvdata(card);
-+
-+	ucontrol->value.integer.value[0] = priv->i2s1_in_mux;
-+	return 0;
-+}
-+
-+static int mt2701_cs42448_i2sin1_mux_set(struct snd_kcontrol *kcontrol,
-+					 struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
-+	struct mt2701_cs42448_private *priv = snd_soc_card_get_drvdata(card);
-+
-+	if (ucontrol->value.integer.value[0] == priv->i2s1_in_mux)
-+		return 0;
-+
-+	switch (ucontrol->value.integer.value[0]) {
-+	case 0:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 0);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 0);
-+		break;
-+	case 1:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 1);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 0);
-+		break;
-+	case 2:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 0);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 1);
-+		break;
-+	case 3:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 1);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 1);
-+		break;
-+	default:
-+		dev_warn(card->dev, "%s invalid setting\n", __func__);
-+	}
-+
-+	priv->i2s1_in_mux = ucontrol->value.integer.value[0];
-+	return 0;
-+}
-+
-+static const struct snd_soc_dapm_widget
-+			mt2701_cs42448_asoc_card_dapm_widgets[] = {
-+	SND_SOC_DAPM_LINE("Line Out Jack", NULL),
-+	SND_SOC_DAPM_MIC("AMIC", NULL),
-+	SND_SOC_DAPM_LINE("Tuner In", NULL),
-+	SND_SOC_DAPM_LINE("Satellite Tuner In", NULL),
-+	SND_SOC_DAPM_LINE("AUX In", NULL),
-+};
-+
-+static const struct snd_kcontrol_new mt2701_cs42448_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Line Out Jack"),
-+	SOC_DAPM_PIN_SWITCH("AMIC"),
-+	SOC_DAPM_PIN_SWITCH("Tuner In"),
-+	SOC_DAPM_PIN_SWITCH("Satellite Tuner In"),
-+	SOC_DAPM_PIN_SWITCH("AUX In"),
-+	SOC_ENUM_EXT("I2SIN1_MUX_Switch", i2sin_mux_enum,
-+		     mt2701_cs42448_i2sin1_mux_get,
-+		     mt2701_cs42448_i2sin1_mux_set),
-+};
-+
-+static const unsigned int mt2701_cs42448_sampling_rates[] = {48000};
-+
-+static struct snd_pcm_hw_constraint_list mt2701_cs42448_constraints_rates = {
-+		.count = ARRAY_SIZE(mt2701_cs42448_sampling_rates),
-+		.list = mt2701_cs42448_sampling_rates,
-+		.mask = 0,
-+};
-+
-+static int mt2701_cs42448_fe_ops_startup(struct snd_pcm_substream *substream)
-+{
-+	int err;
-+
-+	err = snd_pcm_hw_constraint_list(substream->runtime, 0,
-+					 SNDRV_PCM_HW_PARAM_RATE,
-+					 &mt2701_cs42448_constraints_rates);
-+	if (err < 0) {
-+		dev_err(substream->pcm->card->dev, /*better way to get device?*/
-+			"%s snd_pcm_hw_constraint_list failed: 0x%x\n",
-+			__func__, err);
-+		return err;
-+	}
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt2701_cs42448_fe_ops = {
-+	.startup = mt2701_cs42448_fe_ops_startup,
-+};
-+
-+static int mt2701_cs42448_be_ops_hw_params(struct snd_pcm_substream *substream,
-+					   struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
-+	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	/* codec slave, mt2701 master */
-+	unsigned int fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			    | SND_SOC_DAIFMT_CONT;
-+	unsigned int mclk_rate;
-+	unsigned int rate = params_rate(params);
-+	unsigned int div_mclk_to_bck = rate > 192000 ? 2 : 4;
-+	unsigned int div_bck_to_lrck = 64;
-+
-+	mclk_rate = rate * div_bck_to_lrck * div_mclk_to_bck;
-+
-+	/* mt2701 mclk */
-+	snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_rate, SND_SOC_CLOCK_OUT);
-+	/* mt2701 bck */
-+	snd_soc_dai_set_clkdiv(cpu_dai, DIV_ID_MCLK_TO_BCK, div_mclk_to_bck);
-+	/* mt2701 lrck */
-+	snd_soc_dai_set_clkdiv(cpu_dai, DIV_ID_BCK_TO_LRCK, div_bck_to_lrck);
-+	/* mt2701 master */
-+	snd_soc_dai_set_fmt(cpu_dai, fmt);
-+
-+	/* codec mclk */
-+	snd_soc_dai_set_sysclk(codec_dai, 0, mclk_rate, SND_SOC_CLOCK_IN);
-+	/* codec slave */
-+	snd_soc_dai_set_fmt(codec_dai, fmt);
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt2701_cs42448_be_ops = {
-+	.hw_params = mt2701_cs42448_be_ops_hw_params
-+};
-+
-+static struct snd_soc_dai_link mt2701_cs42448_dai_links[] = {
-+	/*FE*/
-+	{
-+		.name = "mt2701-cs42448-pcm0",
-+		.stream_name = "mt2701-cs42448-pcm0",
-+		.cpu_dai_name = "PCM0",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	{
-+		.name = "mt2701-cs42448-multi-ch-out",
-+		.stream_name = "mt2701-cs42448-multi-ch-out",
-+		.cpu_dai_name = "PCM_multi",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	{
-+		.name = "mt2701-cs42448-pcm1-data-UL",
-+		.stream_name = "mt2701-cs42448-pcm1-data-UL",
-+		.cpu_dai_name = "PCM1",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	/*BE*/
-+	{
-+		.name = "mt2701-cs42448-I2S0",
-+		.cpu_dai_name = "I2S0",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.codec_name = "cs42xx8.2-0048",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	{
-+		.name = "mt2701-cs42448-I2S1",
-+		.cpu_dai_name = "I2S1",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.codec_name = "cs42xx8.2-0048",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	{
-+		.name = "mt2701-cs42448-I2S2",
-+		.cpu_dai_name = "I2S2",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.codec_name = "cs42xx8.2-0048",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	{
-+		.name = "mt2701-cs42448-I2S3",
-+		.cpu_dai_name = "I2S3",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.codec_name = "cs42xx8.2-0048",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+};
-+
-+static struct snd_soc_card mt2701_cs42448_soc_card = {
-+	.name = "mt2701-cs42448",
-+	.dai_link = mt2701_cs42448_dai_links,
-+	.num_links = ARRAY_SIZE(mt2701_cs42448_dai_links),
-+	.controls = mt2701_cs42448_controls,
-+	.num_controls = ARRAY_SIZE(mt2701_cs42448_controls),
-+	.dapm_widgets = mt2701_cs42448_asoc_card_dapm_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt2701_cs42448_asoc_card_dapm_widgets),
-+};
-+
-+static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt2701_cs42448_soc_card;
-+	int ret;
-+	int i;
-+	struct device_node *platform_node;
-+	struct mt2701_cs42448_private *priv =
-+		devm_kzalloc(&pdev->dev, sizeof(struct mt2701_cs42448_private),
-+			     GFP_KERNEL);
-+	struct device *dev = &pdev->dev;
-+
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node,
-+					 "mediatek,platform", 0);
-+	if (!platform_node) {
-+		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	for (i = 0; i < card->num_links; i++) {
-+		if (mt2701_cs42448_dai_links[i].platform_name)
-+			continue;
-+		mt2701_cs42448_dai_links[i].platform_of_node = platform_node;
-+	}
-+
-+	card->dev = dev;
-+
-+	ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to parse audio-routing: %d\n", ret);
-+		return ret;
-+	}
-+
-+	priv->i2s1_in_mux_gpio_sel_1 =
-+		of_get_named_gpio(dev->of_node, "i2s1-in-sel-gpio1", 0);
-+	if (gpio_is_valid(priv->i2s1_in_mux_gpio_sel_1)) {
-+		ret = devm_gpio_request(dev, priv->i2s1_in_mux_gpio_sel_1,
-+					"i2s1_in_mux_gpio_sel_1");
-+		if (ret)
-+			dev_warn(&pdev->dev, "%s devm_gpio_request fail %d\n",
-+				 __func__, ret);
-+		gpio_direction_output(priv->i2s1_in_mux_gpio_sel_1, 0);
-+	}
-+
-+	priv->i2s1_in_mux_gpio_sel_2 =
-+		of_get_named_gpio(dev->of_node, "i2s1-in-sel-gpio2", 0);
-+	if (gpio_is_valid(priv->i2s1_in_mux_gpio_sel_2)) {
-+		ret = devm_gpio_request(dev, priv->i2s1_in_mux_gpio_sel_2,
-+					"i2s1_in_mux_gpio_sel_2");
-+		if (ret)
-+			dev_warn(&pdev->dev, "%s devm_gpio_request fail2 %d\n",
-+				 __func__, ret);
-+		gpio_direction_output(priv->i2s1_in_mux_gpio_sel_2, 0);
-+	}
-+	snd_soc_card_set_drvdata(card, priv);
-+
-+	ret = snd_soc_register_card(card);
-+
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+	return ret;
-+}
-+
-+static int mt2701_cs42448_machine_remove(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = platform_get_drvdata(pdev);
-+
-+	devm_kfree(&pdev->dev, snd_soc_card_get_drvdata(card));
-+	return snd_soc_unregister_card(card);
-+}
-+
-+#ifdef CONFIG_OF
-+static const struct of_device_id mt2701_cs42448_machine_dt_match[] = {
-+	{.compatible = "mediatek,mt2701-cs42448-machine",},
-+	{}
-+};
-+#endif
-+
-+static struct platform_driver mt2701_cs42448_machine = {
-+	.driver = {
-+		.name = "mt2701-cs42448",
-+		.owner = THIS_MODULE,
-+		   #ifdef CONFIG_OF
-+		   .of_match_table = mt2701_cs42448_machine_dt_match,
-+		   #endif
-+	},
-+	.probe = mt2701_cs42448_machine_probe,
-+	.remove = mt2701_cs42448_machine_remove
-+};
-+
-+module_platform_driver(mt2701_cs42448_machine);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT2701 CS42448 ALSA SoC machine driver");
-+MODULE_AUTHOR("Ir Lian <ir.lian@mediatek.com>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("mt2701 cs42448 soc card");
--- 
+changes since v6:
+- Rebase to v4.6-rc1.
+- Register subsystem clocks in probe() instead of CLK_OF_DECLARE().
+- Add clocks that referred by subsystem clocks.
+- Fix clk_data size of apmixedsys.
+- Add config options for each subsystem clock provider.
+
+changes since v5:
+- Rebase to v4.5-rc1 and [1].
+- Enable critical clocks for MT2701
+- Refine dt-binding documents, add reset controller support for hifsys.
+
+changes since v4:
+- Rebase to v4.5-rc1.
+- Remove CLK_SET_RATE_PARENT from divider flags.
+- Add img_jpgdec_smi clock.
+- Move clk/mediatek/Kconfig into menu section in clk/Kconfig.
+
+changes since v3:
+- Change the parent of mm_mdp_bls_26m from clk26m to pwm_sel.
+
+changes since v2:
+- Fix ethsys definition.
+- Replace read-modify-write with regmap_update_bits() in clock operations.
+- Move mt2701-resets.h to include/dt-bindings/reset/.
+- Add hifsys reset patch from John Crispin.
+
+changes since v1:
+- Document MT2701 compatible strings.
+
+[1] https://patchwork.kernel.org/patch/8147901/
+
+James Liao (5):
+  clk: mediatek: Refine the makefile to support multiple clock drivers
+  dt-bindings: ARM: Mediatek: Document bindings for MT2701
+  clk: mediatek: Enable critical clocks for MT2701
+  clk: mediatek: Add config options for MT2701 subsystem clocks
+  arm: dts: mt2701: Add clock controller device nodes
+
+Shunli Wang (4):
+  clk: mediatek: Add dt-bindings for MT2701 clocks
+  clk: mediatek: Add MT2701 clock support
+  reset: mediatek: Add MT2701 reset controller dt-binding file
+  reset: mediatek: Add MT2701 reset driver
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    3 +-
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,ethsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,hifsys.txt      |   24 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    3 +-
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    3 +-
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    3 +-
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |    3 +-
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    3 +-
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    3 +-
+ arch/arm/boot/dts/mt2701.dtsi                      |   42 +
+ drivers/clk/Kconfig                                |    1 +
+ drivers/clk/mediatek/Kconfig                       |   73 +
+ drivers/clk/mediatek/Makefile                      |    7 +-
+ drivers/clk/mediatek/clk-gate.c                    |   52 +
+ drivers/clk/mediatek/clk-gate.h                    |    2 +
+ drivers/clk/mediatek/clk-mt2701.c                  | 1417 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     |   25 +
+ drivers/clk/mediatek/clk-mtk.h                     |   34 +-
+ include/dt-bindings/clock/mt2701-clk.h             |  486 +++++++
+ include/dt-bindings/reset/mt2701-resets.h          |   83 ++
+ 21 files changed, 2298 insertions(+), 13 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+ create mode 100644 drivers/clk/mediatek/Kconfig
+ create mode 100644 drivers/clk/mediatek/clk-mt2701.c
+ create mode 100644 include/dt-bindings/clock/mt2701-clk.h
+ create mode 100644 include/dt-bindings/reset/mt2701-resets.h
+
+--
 1.9.1
+
