@@ -1,62 +1,62 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: phy-mt65xx-usb: add support for
- mt2701 platform
-Date: Thu, 14 Apr 2016 09:45:17 +0800
-Message-ID: <1460598317.5156.2.camel@mhfsdcap03>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH v2 2/2] phy: phy-mt65xx-usb3: add support for mt2701
+ platform
+Date: Thu, 14 Apr 2016 09:58:49 +0800
+Message-ID: <1460599129.5156.12.camel@mhfsdcap03>
 References: <1460360490-18606-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <570E48EA.4030907@ti.com>
+	 <1460360490-18606-2-git-send-email-chunfeng.yun@mediatek.com>
+	 <570E4A29.3030103@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <570E48EA.4030907-l0cyMroinI0@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <570E4A29.3030103@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi,
 
-On Wed, 2016-04-13 at 18:56 +0530, Kishon Vijay Abraham I wrote:
+On Wed, 2016-04-13 at 19:01 +0530, Kishon Vijay Abraham I wrote:
 > Hi,
 > 
 > On Monday 11 April 2016 01:11 PM, Chunfeng Yun wrote:
 > > A new compatible string, "mediatek,mt2701-u3phy", is added.
+> > 
+> > Some register settings to avoid RX sensitivity level degradation
+> > which may arise on mt8173 platform are separated from other
+> > platforms.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  drivers/phy/Kconfig           |    5 ++-
+> >  drivers/phy/phy-mt65xx-usb3.c |   77 ++++++++++++++++++++++++++++-------------
+> >  2 files changed, 54 insertions(+), 28 deletions(-)
+> > 
+> > diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+> > index 26566db..3037f28 100644
+> > --- a/drivers/phy/Kconfig
+> > +++ b/drivers/phy/Kconfig
+> > @@ -218,9 +218,8 @@ config PHY_MT65XX_USB3
+> >  	depends on ARCH_MEDIATEK && OF
+> >  	select GENERIC_PHY
+> >  	help
+> > -	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver
+> > -	  for mt65xx SoCs. it supports two usb2.0 ports and
+> > -	  one usb3.0 port.
+> > +	  Say 'Y' here to add support for Mediatek USB3.0 PHY driver,
+> > +	  it supports multiple usb2.0 and usb3.0 ports.
 > 
-> how about changing the commit log to something like below?
-> Add a new compatible string for "mt2701"
+> Do you mean this PHY driver support both USB2 and USB3? Then it's not really a
+> USB3 PHY driver right?
 > 
-OK
+Sorry for my unclear description.
 
-thanks
+It supports USB3 PHY, and each USB3 PHY in fact includes a USB2 PHY and
+a SuperSpeed PHY.
+
+Thanks a lot
 
 > Thanks
 > Kishon
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |    4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > index 00100cf..33a2b1e 100644
-> > --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > @@ -4,7 +4,9 @@ mt65xx USB3.0 PHY binding
-> >  This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
-> >  
-> >  Required properties (controller (parent) node):
-> > - - compatible	: should be "mediatek,mt8173-u3phy"
-> > + - compatible	: should be one of
-> > +		  "mediatek,mt2701-u3phy"
-> > +		  "mediatek,mt8173-u3phy"
-> >   - reg		: offset and length of register for phy, exclude port's
-> >  		  register.
-> >   - clocks	: a list of phandle + clock-specifier pairs, one for each
-> > 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
