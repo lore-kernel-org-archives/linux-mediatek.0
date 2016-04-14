@@ -1,93 +1,78 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/7] [media]: v4l: add Mediatek MT21 video block format
-Date: Thu, 14 Apr 2016 14:13:41 +0800
-Message-ID: <1460614421.30214.2.camel@mtksdaap41>
-References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1460557416.18956.3.camel@gmail.com>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: [alsa-devel] [RFC PATCH 0/4] ASoC: Mediatek: Add support for MT2701 SOC
+Date: Thu, 14 Apr 2016 15:37:04 +0800
+Message-ID: <1460619428-48882-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1460557416.18956.3.camel-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: garlic.tseng@mediatek.com, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi=20
-On Wed, 2016-04-13 at 10:23 -0400, Nicolas Dufresne wrote:
-> Le mercredi 13 avril 2016 =C3=A0 20:01 +0800, Tiffany Lin a =C3=A9cri=
-t :
-> > From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> >=20
-> > Mediatek video format is YVU8_420_2PLANE_PACK8_PROGRESSIVE.
-> >=20
-> > Create V4L2_PIX_FMT_MT21 and DRM_FORMAT_MT21 to be consistent with
-> > V4L2_PIX_FMT_NV12 notation.
-> >=20
-> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  include/uapi/drm/drm_fourcc.h  |    1 +
-> >  include/uapi/linux/videodev2.h |    2 ++
->=20
-> Might be better to split this patch.
-Got it, will split to two patch in next version.
+This patch adds basic support for Mediatek AFE for MT2701 SoC.
+The patch is based on broonie tree "for-next" branch.
 
->=20
-> >  2 files changed, 3 insertions(+)
-> >=20
-> > diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_f=
-ourcc.h
-> > index 0b69a77..a193905 100644
-> > --- a/include/uapi/drm/drm_fourcc.h
-> > +++ b/include/uapi/drm/drm_fourcc.h
-> > @@ -116,6 +116,7 @@
-> >  #define DRM_FORMAT_NV24		fourcc_code('N', 'V', '2', '4') /* non-su=
-bsampled Cr:Cb plane */
-> >  #define DRM_FORMAT_NV42		fourcc_code('N', 'V', '4', '2') /* non-su=
-bsampled Cb:Cr plane */
-> > =20
-> > +#define DRM_FORMAT_MT21		fourcc_code('M', 'T', '2', '1') /* Mediat=
-ek Block Mode */
->=20
-> Please document the tiling format, don't just add a define here.
-Got it, will add documentation in next version.
+The interface to connect with BT chip is not finish yet, but as an upstream
+rookie I really need some comments. Any comments will be greatly appreciated.
 
->=20
-> >  /*
-> >   * 3 plane YCbCr
-> >   * index 0: Y plane, [7:0] Y
-> > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/vi=
-deodev2.h
-> > index d0acd26..e9e3276 100644
-> > --- a/include/uapi/linux/videodev2.h
-> > +++ b/include/uapi/linux/videodev2.h
-> > @@ -527,6 +527,8 @@ struct v4l2_pix_format {
-> >  #define V4L2_PIX_FMT_HM12    v4l2_fourcc('H', 'M', '1', '2') /*  8=
-  YUV 4:2:0 16x16 macroblocks */
-> >  #define V4L2_PIX_FMT_M420    v4l2_fourcc('M', '4', '2', '0') /* 12=
-  YUV 4:2:0 2 lines y, 1 line uv interleaved */
-> > =20
-> > +#define V4L2_PIX_FMT_MT21    v4l2_fourcc('M', 'T', '2', '1') /* Me=
-diatek Block Mode  */
-> > +
->=20
-> Same. On Linux Media side, there is docbook documentation where you c=
-an
-> explain in detail.
-Got it, will add documentation in next version.
+Garlic Tseng (4):
+  ASoC: mediatek: Refine mt8173 driver
+  ASoC: mediatek: add documents for mt2701
+  ASoC: mediatek: add mt2701 platform driver implementation.
+  ASoC: mediatek: Add mt2701-cs42448 driver and config option.
 
->=20
-> >  /* two planes -- one Y, one Cr + Cb interleaved  */
-> >  #define V4L2_PIX_FMT_NV12    v4l2_fourcc('N', 'V', '1', '2') /* 12=
-  Y/CbCr 4:2:0  */
-> >  #define V4L2_PIX_FMT_NV21    v4l2_fourcc('N', 'V', '2', '1') /* 12=
-  Y/CrCb 4:2:0  */
+ .../devicetree/bindings/sound/mt2701-cs42448.txt   |   39 +
+ .../devicetree/bindings/sound/mtk2701-afe-pcm.txt  |  150 ++
+ sound/soc/mediatek/Kconfig                         |   21 +
+ sound/soc/mediatek/Makefile                        |   15 +-
+ sound/soc/mediatek/mt2701/Makefile                 |   20 +
+ sound/soc/mediatek/mt2701/mt2701-cs42448.c         |  376 +++++
+ sound/soc/mediatek/mt2701/mtk2701-afe-clock-ctrl.c |  259 +++
+ sound/soc/mediatek/mt2701/mtk2701-afe-clock-ctrl.h |   28 +
+ sound/soc/mediatek/mt2701/mtk2701-afe-common.h     |  217 +++
+ sound/soc/mediatek/mt2701/mtk2701-afe-pcm.c        | 1752 ++++++++++++++++++++
+ sound/soc/mediatek/mt2701/mtk2701-irq.c            |  109 ++
+ sound/soc/mediatek/mt2701/mtk2701-irq.h            |   30 +
+ sound/soc/mediatek/mt2701/mtk2701-reg.h            |  165 ++
+ sound/soc/mediatek/mt8173-max98090.c               |  213 ---
+ sound/soc/mediatek/mt8173-rt5650-rt5514.c          |  258 ---
+ sound/soc/mediatek/mt8173-rt5650-rt5676.c          |  288 ----
+ sound/soc/mediatek/mt8173-rt5650.c                 |  236 ---
+ sound/soc/mediatek/mt8173/Makefile                 |    7 +
+ sound/soc/mediatek/mt8173/mt8173-max98090.c        |  213 +++
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c   |  258 +++
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c   |  288 ++++
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c          |  236 +++
+ sound/soc/mediatek/mt8173/mtk-afe-common.h         |  101 ++
+ sound/soc/mediatek/mt8173/mtk-afe-pcm.c            | 1333 +++++++++++++++
+ sound/soc/mediatek/mtk-afe-common.h                |  101 --
+ sound/soc/mediatek/mtk-afe-pcm.c                   | 1333 ---------------
+ 26 files changed, 5610 insertions(+), 2436 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt2701-cs42448.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mtk2701-afe-pcm.txt
+ create mode 100644 sound/soc/mediatek/mt2701/Makefile
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-afe-clock-ctrl.c
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-afe-clock-ctrl.h
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-irq.c
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-irq.h
+ create mode 100644 sound/soc/mediatek/mt2701/mtk2701-reg.h
+ delete mode 100644 sound/soc/mediatek/mt8173-max98090.c
+ delete mode 100644 sound/soc/mediatek/mt8173-rt5650-rt5514.c
+ delete mode 100644 sound/soc/mediatek/mt8173-rt5650-rt5676.c
+ delete mode 100644 sound/soc/mediatek/mt8173-rt5650.c
+ create mode 100644 sound/soc/mediatek/mt8173/Makefile
+ create mode 100644 sound/soc/mediatek/mt8173/mt8173-max98090.c
+ create mode 100644 sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
+ create mode 100644 sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
+ create mode 100644 sound/soc/mediatek/mt8173/mt8173-rt5650.c
+ create mode 100644 sound/soc/mediatek/mt8173/mtk-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8173/mtk-afe-pcm.c
+ delete mode 100644 sound/soc/mediatek/mtk-afe-common.h
+ delete mode 100644 sound/soc/mediatek/mtk-afe-pcm.c
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+1.9.1
