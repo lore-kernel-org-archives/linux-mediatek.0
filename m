@@ -1,92 +1,111 @@
-From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: mt8173-evb: failing to boot in linux-next and mainline
-Date: Thu, 14 Apr 2016 14:58:15 -0700
-Message-ID: <CAOi56cUSL-O1_5TC3QuZzUJQASKS8GOvvzXfUU2w1sZGdd6W-g@mail.gmail.com>
-References: <CAOi56cV2M_Ee2AhxTUgHhZuZ1y7LH4sKKyiq3Okorj3K+L15GA@mail.gmail.com>
- <1459165876.24094.8.camel@mtksdaap41> <7h37raprav.fsf@baylibre.com>
- <1459230015.25921.10.camel@mtksdaap41>
- <CAOi56cVtfn5BmKP2YHM0kKvCcoAJUmaZWpupODRU4ABE=XEYbQ@mail.gmail.com>
- <570E1C2E.8010203@gmail.com>
+From: "YiMing (Garlic) Tseng" <garlic.tseng@mediatek.com>
+Subject: Re: [alsa-devel] [RFC PATCH v2 5/5] ASoC: mediatek: Add
+ mt2701-cs42448 driver and config option.
+Date: Fri, 15 Apr 2016 09:45:53 +0800
+Message-ID: <1460684753.28853.9.camel@mtksdaap41>
+References: <1460636070-37426-1-git-send-email-garlic.tseng@mediatek.com>
+	 <1460636070-37426-6-git-send-email-garlic.tseng@mediatek.com>
+	 <1460637574.13240.19.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <570E1C2E.8010203-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1460637574.13240.19.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Apr 13, 2016 at 3:15 AM, Matthias Brugger
-<matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
->
-> On 12/04/16 01:12, Kevin Hilman wrote:
->>
->> On Mon, Mar 28, 2016 at 10:40 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> wrote:
->>>
->>> Hi Sascha,
->>>
->>> On Mon, 2016-03-28 at 08:15 -0700, Kevin Hilman wrote:
->>>>
->>>> Hi Eddie,
->>>>
->>>> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
->>>>
->>>> [...]
->>>>
->>>>> Thanks your testing again. I can reproduce your case in my local
->>>>> environment using 4.6-rc1. After checking, there are two ways to avoid
->>>>> the hang:
->>>>> 1. set clk_ignore_unused to kernel command line
->>>>> 2. Revert patch "cc8ed76 soc: mediatek: SCPSYS: Fix double enabling of
->>>>> regulators"
->>>>>
->>>>> It seems there is a problem between turn on/off clock and power domain.
->>>>> We will try to fix this and send patch to public once have a solution.
->>>>
->>>>
->>>> Thanks for verifying.
->>>>
->>>> I've confirmed that reverting the patch suggested above fixes the
->>>> problem.
->>>>
->>>> Since -rc1 is out, and this problem still exists in mainline, if a
->>>> proper fix is not found very soon, I suggest reverting that patch in
->>>> mainline.
->>>>
->>>> Kevin
->>>
->>>
->>> According to Eddie and Kevin's test, I think some clocks
->>> (mm/mfg/venc/venclt) may be turned off and there are drivers need these
->>> clocks without clk_prepare_enable(). But I have no idea to find out what
->>> driver causes this issue. So I prefer to revert it on v4.6-rc1. Do you
->>> have comments about this issue?
->>
->>
->> FYI... mt8173-evb is still failing in mainline v4.6-rc3:
->>
->>     https://kernelci.org/boot/all/job/mainline/kernel/v4.6-rc3/
->>
->> please fix and/or revert ASAP so this boot regression is not in v4.6
->> final.
->>
->
-> Sorry for the late reply. I'm quite busy in my day job ATM.
-> I just send the revert James proposed as fix.
->
+On Thu, 2016-04-14 at 20:39 +0800, Yingjoe Chen wrote:
+> On Thu, 2016-04-14 at 20:14 +0800, Garlic Tseng wrote:
+> > Add machine driver and config option for MT2701.
+> > 
+> > Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+> > ---
+> >  sound/soc/mediatek/Kconfig                 |  21 ++
+> >  sound/soc/mediatek/Makefile                |   3 +
+> >  sound/soc/mediatek/mt2701/Makefile         |  20 ++
+> >  sound/soc/mediatek/mt2701/mt2701-cs42448.c | 376 +++++++++++++++++++++++++++++
+> >  4 files changed, 420 insertions(+)
+> >  create mode 100644 sound/soc/mediatek/mt2701/Makefile
+> >  create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
+> > 
+> > diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> > index f7e789e..b190322 100644
+> > --- a/sound/soc/mediatek/Kconfig
+> > +++ b/sound/soc/mediatek/Kconfig
+> > @@ -48,3 +48,24 @@ config SND_SOC_MT8173_RT5650_RT5676
+> >  	  with the RT5650 and RT5676 codecs.
+> >  	  Select Y if you have such device.
+> >  	  If unsure select "N".
+> > +
+> > +config SND_SOC_MT2701
+> 
+> It seems we need different driver for different soc. So after this
+> patch, SND_SOC_MEDIATEK only select driver for mt8173. Maybe it should
+> be renamed to SND_SOC_MT8173 to reflect this.
 
-Thanks, I just tried your branch with arm-soc/for-next and mt8173-evb
-is booting again.  Thanks.
+Yes I think you are right. I'll do it.
 
-Kevin
+> 
+> > +	bool "SND_SOC_MT2701"
+> 
+> 
+> Please check other config in this file and have a proper config prompt
+> here.
+> 
+> Can we support module like mt8173?
+
+We already support mt8173. I didn't change the config for mt8173 and it
+works well before.
+
+
+Next version I'll change SND_SOC_MEDIATEK to SND_SOC_MT8173 and check
+the config prompt. 
+
+> 
+> > +	depends on SND_SOC_MEDIATEK
+> > +	select SND_SOC_CS42XX8_I2C
+> > +	help
+> > +	  This adds ASoC driver for Mediatek MT2701 boards
+> > +	  with the CS42448 codecs.
+> > +	  Select Y if you have such device.
+> > +	  If unsure select "N".
+> 
+> 
+> Based on the Makefile, this is platform driver for mt2701. This should
+> not depends on codec. Please update the help message and select.
+
+Yes you are right. I'll do it.
+
+> > +
+> > +config SND_SOC_MT2701_CS42448
+> > +	bool "SND_SOC_MT2701_CS42448"
+> > +	depends on SND_SOC_MT2701
+> > +	select SND_SOC_CS42XX8_I2C
+> > +	help
+> > +	  This adds ASoC driver for Mediatek MT2701 boards
+> > +	  with the CS42448 codecs.
+> > +	  Select Y if you have such device.
+> > +	  If unsure select "N".
+> > +
+> > diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
+> > index 5048165..60387ca 100644
+> > --- a/sound/soc/mediatek/Makefile
+> > +++ b/sound/soc/mediatek/Makefile
+> > @@ -3,3 +3,6 @@ obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173/
+> >  obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173/
+> >  obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5514) += mt8173/
+> >  obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173/
+> > +
+> > +# 2701 Machine support
+> > +obj-$(CONFIG_SND_SOC_MT2701_CS42448) += mt2701/
+> 
+> Sorting, please put mt2701 before mt8173.
+
+OK I'll do it next patch.
+
+
+> Joe.C
+> 
+> 
