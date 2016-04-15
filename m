@@ -1,103 +1,79 @@
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Subject: Re: [RFC PATCH v2 1/5] ASoC: Mediatek: Refine mt8173
- driver
-Date: Fri, 15 Apr 2016 09:56:02 +0800
-Message-ID: <1460685362.28853.19.camel@mtksdaap41>
-References: <1460636070-37426-1-git-send-email-garlic.tseng@mediatek.com>
- <1460636070-37426-2-git-send-email-garlic.tseng@mediatek.com>
- <1460637893.13240.24.camel@mtksdaap41>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v6 3/4] soc: mediatek: Add MT2701 power dt-bindings
+Date: Fri, 15 Apr 2016 10:02:33 +0800
+Message-ID: <1460685753.7028.5.camel@mtksdaap41>
+References: <1460621819-695-1-git-send-email-jamesjj.liao@mediatek.com>
+	 <1460621819-695-4-git-send-email-jamesjj.liao@mediatek.com>
+	 <1460631381.13240.3.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1460637893.13240.24.camel@mtksdaap41>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, broonie@kernel.org, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1460631381.13240.3.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-04-14 at 20:44 +0800, Yingjoe Chen wrote:
-> On Thu, 2016-04-14 at 20:14 +0800, Garlic Tseng wrote:
-> > Move mt8173 driver to another folder.
+Hi Yingjoe,
+
+On Thu, 2016-04-14 at 18:56 +0800, Yingjoe Chen wrote:
+> On Thu, 2016-04-14 at 16:16 +0800, James Liao wrote:
+> > From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > 
-> > The software control sequence of mt2701 is very different from that of mt8173,
-> > so this patch moves mt8173 code to another folder.
+> > Add power dt-bindings for MT2701.
 > > 
-> > 
-> > Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+> > Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> > Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 > > ---
-> >  sound/soc/mediatek/Makefile                            | 12 +++++-------
-> >  sound/soc/mediatek/mt8173/Makefile                     |  7 +++++++
-> >  sound/soc/mediatek/{ => mt8173}/mt8173-max98090.c      |  2 +-
-> >  sound/soc/mediatek/{ => mt8173}/mt8173-rt5650-rt5514.c |  2 +-
-> >  sound/soc/mediatek/{ => mt8173}/mt8173-rt5650-rt5676.c |  4 ++--
-> >  sound/soc/mediatek/{ => mt8173}/mt8173-rt5650.c        |  2 +-
-> >  sound/soc/mediatek/{ => mt8173}/mtk-afe-common.h       |  0
-> >  sound/soc/mediatek/{ => mt8173}/mtk-afe-pcm.c          |  0
-> >  8 files changed, 17 insertions(+), 12 deletions(-)
-> >  create mode 100644 sound/soc/mediatek/mt8173/Makefile
-> >  rename sound/soc/mediatek/{ => mt8173}/mt8173-max98090.c (99%)
-> >  rename sound/soc/mediatek/{ => mt8173}/mt8173-rt5650-rt5514.c (99%)
-> >  rename sound/soc/mediatek/{ => mt8173}/mt8173-rt5650-rt5676.c (99%)
-> >  rename sound/soc/mediatek/{ => mt8173}/mt8173-rt5650.c (99%)
-> >  rename sound/soc/mediatek/{ => mt8173}/mtk-afe-common.h (100%)
-> >  rename sound/soc/mediatek/{ => mt8173}/mtk-afe-pcm.c (100%)
+> >  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 12 ++++++----
+> >  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++++++++++++
+> >  2 files changed, 34 insertions(+), 5 deletions(-)
+> >  create mode 100644 include/dt-bindings/power/mt2701-power.h
 > > 
-> > diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-> > index d486860..5048165 100644
-> > --- a/sound/soc/mediatek/Makefile
-> > +++ b/sound/soc/mediatek/Makefile
-> > @@ -1,7 +1,5 @@
-> > -# MTK Platform Support
-> > -obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
-> > -# Machine support
-> > -obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173-max98090.o
-> > -obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173-rt5650.o
-> > -obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5514) += mt8173-rt5650-rt5514.o
-> > -obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173-rt5650-rt5676.o
-> > +# 8173 Machine support
-> > +obj-$(CONFIG_SND_SOC_MT8173_MAX98090) += mt8173/
-> > +obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5676) += mt8173/
-> > +obj-$(CONFIG_SND_SOC_MT8173_RT5650_RT5514) += mt8173/
-> > +obj-$(CONFIG_SND_SOC_MT8173_RT5650) += mt8173/
+> > diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > index e8f15e3..ebb3144 100644
+> > --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+> > @@ -9,17 +9,19 @@ domain control.
+> >  
+> >  The driver implements the Generic PM domain bindings described in
+> >  power/power_domain.txt. It provides the power domains defined in
+> > -include/dt-bindings/power/mt8173-power.h.
+> > +include/dt-bindings/power/mt8173-power.h and mt2701-power.h.
+> >  
+> >  Required properties:
+> > -- compatible: Must be "mediatek,mt8173-scpsys"
+> > +- compatible: Should be one of:
+> > +	- "mediatek,mt2701-scpsys"
+> > +	- "mediatek,mt8173-scpsys"
+> >  - #power-domain-cells: Must be 1
+> >  - reg: Address range of the SCPSYS unit
+> >  - infracfg: must contain a phandle to the infracfg controller
+> >  - clock, clock-names: clocks according to the common clock binding.
+> > -                      The clocks needed "mm", "mfg", "venc" and "venc_lt".
+> > -		      These are the clocks which hardware needs to be enabled
+> > -		      before enabling certain power domains.
+> > +                      The clocks needed "mm", "mfg", "venc", "venc_lt" and
+> > +                      "ethif". These are the clocks which hardware needs to be
+> > +                      enabled before enabling certain power domains.
 > 
-> Since all CONFIG_SND_SOC_MT8173_* depends on CONFIG_SND_SOC_MEDIATEK,
-> you could just do:
 > 
-> obj-$(CONFIG_SND_SOC_MEDIATEK) += mt8173/
-> 
-> 
-> This way we don't need to modify 2 makefiles when adding new ASoC
-> driver.
+> Clock ethif only exist on mt2701 so it is not required on mt8173.
 
-Yes you're right. I'll modify it.
+You are right. Each SoC needs different clock for each power domain.
+Here list all subsystems of available SoCs.
 
-> 
-> 
-> > diff --git a/sound/soc/mediatek/mt8173/Makefile b/sound/soc/mediatek/mt8173/Makefile
-> > new file mode 100644
-> > index 0000000..d486860
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8173/Makefile
-> > @@ -0,0 +1,7 @@
-> > +# MTK Platform Support
-> > +obj-$(CONFIG_SND_SOC_MEDIATEK) += mtk-afe-pcm.o
-> 
-> Maybe we should also rename this to mt8173-afe-pcm.o?
 
-Well I agree with you. Maybe I have to check all the files and modify
-them with prefix "mt8173" and "mt2701". (or "mtk8173" and "mtk2701"? 
-I'm not so sure here)
 
-> 
-> Joe.C
+Best regards,
 
-Thanks for your comments.
+James
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
