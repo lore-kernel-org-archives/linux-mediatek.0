@@ -1,79 +1,52 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH v6 3/4] soc: mediatek: Add MT2701 power dt-bindings
-Date: Fri, 15 Apr 2016 22:42:09 +0800
-Message-ID: <1460731329.19786.4.camel@mtksdaap41>
-References: <1460621819-695-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1460621819-695-4-git-send-email-jamesjj.liao@mediatek.com>
-	 <1460631381.13240.3.camel@mtksdaap41> <1460685753.7028.5.camel@mtksdaap41>
+From: liguo zhang <liguo.zhang@mediatek.com>
+Subject: Re: [PATCH v3] i2c: mediatek: i2c multi transfer optimization
+Date: Sat, 16 Apr 2016 12:21:01 +0800
+Message-ID: <1460780461.29864.34.camel@mhfsdcap03>
+References: <1457375031-3769-1-git-send-email-liguo.zhang@mediatek.com>
+	 <20160412211355.GA1526@katana>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460685753.7028.5.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-i2c-owner@vger.kernel.org>
+In-Reply-To: <20160412211355.GA1526@katana>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Wolfram Sang <wsa@the-dreams.de>
+Cc: srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang <eddie.huang@mediatek.com>, Xudong Chen <xudong.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-04-15 at 10:02 +0800, James Liao wrote:
-> Hi Yingjoe,
+On Tue, 2016-04-12 at 23:13 +0200, Wolfram Sang wrote:
+> Hi,
 > 
-> On Thu, 2016-04-14 at 18:56 +0800, Yingjoe Chen wrote:
-> > On Thu, 2016-04-14 at 16:16 +0800, James Liao wrote:
-> > > From: Shunli Wang <shunli.wang@mediatek.com>
-> > > 
-> > > Add power dt-bindings for MT2701.
-> > > 
-> > > Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
-> > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > > Acked-by: Rob Herring <robh@kernel.org>
-> > > Reviewed-by: Kevin Hilman <khilman@baylibre.com>
-> > > ---
-> > >  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 12 ++++++----
-> > >  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++++++++++++
-> > >  2 files changed, 34 insertions(+), 5 deletions(-)
-> > >  create mode 100644 include/dt-bindings/power/mt2701-power.h
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > > index e8f15e3..ebb3144 100644
-> > > --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > > +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> > > @@ -9,17 +9,19 @@ domain control.
-> > >  
-> > >  The driver implements the Generic PM domain bindings described in
-> > >  power/power_domain.txt. It provides the power domains defined in
-> > > -include/dt-bindings/power/mt8173-power.h.
-> > > +include/dt-bindings/power/mt8173-power.h and mt2701-power.h.
-> > >  
-> > >  Required properties:
-> > > -- compatible: Must be "mediatek,mt8173-scpsys"
-> > > +- compatible: Should be one of:
-> > > +	- "mediatek,mt2701-scpsys"
-> > > +	- "mediatek,mt8173-scpsys"
-> > >  - #power-domain-cells: Must be 1
-> > >  - reg: Address range of the SCPSYS unit
-> > >  - infracfg: must contain a phandle to the infracfg controller
-> > >  - clock, clock-names: clocks according to the common clock binding.
-> > > -                      The clocks needed "mm", "mfg", "venc" and "venc_lt".
-> > > -		      These are the clocks which hardware needs to be enabled
-> > > -		      before enabling certain power domains.
-> > > +                      The clocks needed "mm", "mfg", "venc", "venc_lt" and
-> > > +                      "ethif". These are the clocks which hardware needs to be
-> > > +                      enabled before enabling certain power domains.
-> > 
-> > 
-> > Clock ethif only exist on mt2701 so it is not required on mt8173.
+> thanks for the submission!
 > 
-> You are right. Each SoC needs different clock for each power domain.
-> Here list all subsystems of available SoCs.
+> On Tue, Mar 08, 2016 at 02:23:51AM +0800, Liguo Zhang wrote:
+> > Signal complete() in the i2c irq handler after one transfer done,
+> > and then wait_for_completion_timeout() will return, this procedure
+> > may cost much time, so only signal complete() when the entire
+> > transaction has been completed, it will reduce the entire transaction
+> > time.
+> > 
+> > Signed-off-by: Liguo Zhang <liguo.zhang@mediatek.com>
+> 
+> I wonder. You have less context switches, yes. On the other hand, you
+> likely have bigger interrupt latency because you do more stuff in the
+> interrupt handler. Is it really a gain in the end?
+> 
 
-Binding should list required clocks for each specific platform. How
-about this:
+When doing i2c multi transfer(first i2c write then i2c read, and not
+using the MTK i2c WRRD mode) repeatedly in our stress test, we found the
+procedure(complete()-->wait_for_completion_timeout()) may cost much
+time, and it will affect the following i2c transfer. In our stress test,
+It will affect the i2c read transfer, the value from the i2c read is not
+right.
+So when doing i2c multi transfer, the first is i2c write,then i2c read,
+we will use the MTK i2c WRRD mode to do i2c multi transfer in the
+previous patch.
+But If i2c multi transfer has at least three transfer, we can't use the
+MTK i2c WRRD mode, this patch may be important. Now we have not already
+seen the i2c multi transfer scenario, which has at least three transfer.
 
-- clock, clock-names: clocks according to the common clock binding.
-		      These are the clocks which hardware needs to be
-                      enabled before enabling certain power domains.
-  	Required clocks for mt2701: "mm", "mfg", "ethif"
-	Required clocks for mt8173: "mm", "mfg", "venc", "venc_lt"
-
-Joe.C
+> Regards,
+> 
+>    Wolfram
+> 
