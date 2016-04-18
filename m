@@ -1,34 +1,55 @@
-From: PC Liao <pc.liao@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH v3] ASoC: mediatek: Add second I2S on mt8173-rt5650
  machine driver
-Date: Mon, 18 Apr 2016 19:36:20 +0800
-Message-ID: <1460979380.17045.2.camel@mtksdaap41>
+Date: Mon, 18 Apr 2016 13:03:52 +0100
+Message-ID: <20160418120352.GZ3217@sirena.org.uk>
 References: <1460014517-20359-1-git-send-email-pc.liao@mediatek.com>
+ <1460979380.17045.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="1ar0NSVY9gjTGNA2"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460014517-20359-1-git-send-email-pc.liao@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1460979380.17045.2.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "broonie@kernel.org" <broonie@kernel.org>
-Cc: "tiwai@suse.de" <tiwai@suse.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>
+To: PC Liao <pc.liao@mediatek.com>
+Cc: "tiwai@suse.de" <tiwai@suse.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?utf-8?B?KOmZs+aAnee/sCk=?= <koro.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
 
-On Thu, 2016-04-07 at 15:35 +0800, PC Liao wrote:
-> This patch adds second I2S connection to rt5650 codec for capture path on
-> mt8173-rt5650 machine driver.
-> 
-> Signed-off-by: PC Liao <pc.liao@mediatek.com>
-> ---
-> Changes since v2:
-> Use sound-dai to determine the capture path.
-> ---
->  .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
->  sound/soc/mediatek/mt8173-rt5650.c                 |   42 ++++++++++++++++++--
->  2 files changed, 44 insertions(+), 4 deletions(-)
-> 
+--1ar0NSVY9gjTGNA2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Could you please give some comments or suggestions?
-Thanks!
+On Mon, Apr 18, 2016 at 07:36:20PM +0800, PC Liao wrote:
+
+> Could you please give some comments or suggestions?
+
+I don't have these patches.  If you're getting review comments from
+other people please address them, it's quite possible I saw them and
+agreed with them.
+
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so=20
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  Sending content
+free pings just adds to the mail volume (if they are seen at all) and if=20
+something has gone wrong you'll have to resend the patches anyway.
+
+--1ar0NSVY9gjTGNA2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXFM0nAAoJECTWi3JdVIfQzj8H/jpSQ2Y3epAwuxWfp1x0153h
+SS2wfCfruHkRJ0ZN1guV7a7sGlDN+X9C1k2ep2CtRXt8eg0qInfhvP21YRGoVaBc
+z0CUYvHqBl9E4kmmKiSl9s86Gf0WmcUZbJnQ7hmyWWX6TdT3/XB6zP3drxOgSAeH
+ONPJfLU77kJPJ7jpIsZFSM4C+2CAlZrTW/Yi6oyUfYq+q5vk79pHGe/OVJTWoNXS
+qR6xU9p+8jP7xeTXpMh2bmIBPzg32xeknwY8dy1qcyOFvM0SLp/TALL0urqbwkp0
+W1HbfvgDHkn0iEctmaHtDzSINRxfPxc6fC8tJ9uouQmCxsgiaKCds/Dj2ioneKo=
+=YyUF
+-----END PGP SIGNATURE-----
+
+--1ar0NSVY9gjTGNA2--
