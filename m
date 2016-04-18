@@ -1,146 +1,185 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
- NAND
-Date: Mon, 18 Apr 2016 10:01:52 +0200
-Message-ID: <20160418100152.6973d5ac@bbrezillon>
-References: <1460393772-26910-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1460393772-26910-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
+From: tiffany lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH 3/7] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
+ Decoder Driver
+Date: Mon, 18 Apr 2016 16:22:34 +0800
+Message-ID: <1460967754.7861.61.camel@mtksdaap41>
+References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
+	 <1460548915-17536-3-git-send-email-tiffany.lin@mediatek.com>
+	 <1460548915-17536-4-git-send-email-tiffany.lin@mediatek.com>
+	 <5710FA3A.2030603@xs4all.nl> <1460958046.7861.48.camel@mtksdaap41>
+	 <57148D8E.9060601@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1460393772-26910-3-git-send-email-jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <57148D8E.9060601@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Pawel Osciak <pawel@osciak.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 11 Apr 2016 12:56:12 -0400
-Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+Hi Hans,
 
-> This patch adds support for mediatek's SDG1 NFC nand controller
-> embedded in SoC 2701.
+On Mon, 2016-04-18 at 09:32 +0200, Hans Verkuil wrote:
+> On 04/18/2016 07:40 AM, tiffany lin wrote:
+> > 
+> > snipped.
+> > 
+> >>> +
+> >>> +void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
+> >>> +{
+> >>> +	struct mtk_q_data *q_data;
+> >>> +
+> >>> +	ctx->m2m_ctx->q_lock = &ctx->dev->dev_mutex;
+> >>> +	ctx->fh.m2m_ctx = ctx->m2m_ctx;
+> >>> +	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+> >>> +	INIT_WORK(&ctx->decode_work, mtk_vdec_worker);
+> >>> +
+> >>> +	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
+> >>> +	memset(q_data, 0, sizeof(struct mtk_q_data));
+> >>> +	q_data->visible_width = DFT_CFG_WIDTH;
+> >>> +	q_data->visible_height = DFT_CFG_HEIGHT;
+> >>> +	q_data->fmt = &mtk_video_formats[OUT_FMT_IDX];
+> >>> +	q_data->colorspace = V4L2_COLORSPACE_REC709;
+> >>> +	q_data->field = V4L2_FIELD_NONE;
+> >>> +	ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
+> >>> +		DFT_CFG_WIDTH * DFT_CFG_HEIGHT;
+> >>> +	ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] = 0;
+> >>> +
+> >>> +
+> >>> +	q_data = &ctx->q_data[MTK_Q_DATA_DST];
+> >>> +	memset(q_data, 0, sizeof(struct mtk_q_data));
+> >>> +	q_data->visible_width = DFT_CFG_WIDTH;
+> >>> +	q_data->visible_height = DFT_CFG_HEIGHT;
+> >>> +	q_data->coded_width = DFT_CFG_WIDTH;
+> >>> +	q_data->coded_height = DFT_CFG_HEIGHT;
+> >>> +	q_data->colorspace = V4L2_COLORSPACE_REC709;
+> >>> +	q_data->field = V4L2_FIELD_NONE;
+> >>> +
+> >>> +	q_data->fmt = &mtk_video_formats[CAP_FMT_IDX];
+> >>> +
+> >>> +	v4l_bound_align_image(&q_data->coded_width,
+> >>> +					MTK_VDEC_MIN_W,
+> >>> +					MTK_VDEC_MAX_W, 4,
+> >>> +					&q_data->coded_height,
+> >>> +					MTK_VDEC_MIN_H,
+> >>> +					MTK_VDEC_MAX_H, 5, 6);
+> >>> +
+> >>> +	q_data->sizeimage[0] = q_data->coded_width * q_data->coded_height;
+> >>> +	q_data->bytesperline[0] = q_data->coded_width;
+> >>> +	q_data->sizeimage[1] = q_data->sizeimage[0] / 2;
+> >>> +	q_data->bytesperline[1] = q_data->coded_width;
+> >>> +
+> >>> +}
+> >>> +
+> >>> +static int vidioc_vdec_streamon(struct file *file, void *priv,
+> >>> +				enum v4l2_buf_type type)
+> >>> +{
+> >>> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> >>> +
+> >>> +	mtk_v4l2_debug(3, "[%d] (%d)", ctx->idx, type);
+> >>> +
+> >>> +	return v4l2_m2m_streamon(file, ctx->m2m_ctx, type);
+> >>> +}
+> >>> +
+> >>> +static int vidioc_vdec_streamoff(struct file *file, void *priv,
+> >>> +				 enum v4l2_buf_type type)
+> >>> +{
+> >>> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> >>> +
+> >>> +	mtk_v4l2_debug(3, "[%d] (%d)", ctx->idx, type);
+> >>> +	return v4l2_m2m_streamoff(file, ctx->m2m_ctx, type);
+> >>> +}
+> >>> +
+> >>> +static int vidioc_vdec_reqbufs(struct file *file, void *priv,
+> >>> +			       struct v4l2_requestbuffers *reqbufs)
+> >>> +{
+> >>> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> >>> +	int ret;
+> >>> +
+> >>> +	mtk_v4l2_debug(3, "[%d] (%d) count=%d", ctx->idx,
+> >>> +			 reqbufs->type, reqbufs->count);
+> >>> +	ret = v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
+> >>> +
+> >>> +	return ret;
+> >>> +}
+> >>
+> >> Please use the v4l2_m2m_ioctl_* helper functions were applicable.
+> >>
+> > 
+> > 
+> > 
+> > snipped.
+> >>> +static unsigned int fops_vcodec_poll(struct file *file,
+> >>> +				     struct poll_table_struct *wait)
+> >>> +{
+> >>> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(file->private_data);
+> >>> +	struct mtk_vcodec_dev *dev = ctx->dev;
+> >>> +	int ret;
+> >>> +
+> >>> +	mutex_lock(&dev->dev_mutex);
+> >>> +	ret = v4l2_m2m_poll(file, ctx->m2m_ctx, wait);
+> >>> +	mutex_unlock(&dev->dev_mutex);
+> >>> +
+> >>> +	return ret;
+> >>> +}
+> >>> +
+> >>> +static int fops_vcodec_mmap(struct file *file, struct vm_area_struct *vma)
+> >>> +{
+> >>> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(file->private_data);
+> >>> +
+> >>> +	return v4l2_m2m_mmap(file, ctx->m2m_ctx, vma);
+> >>> +}
+> >>> +
+> >>> +static const struct v4l2_file_operations mtk_vcodec_fops = {
+> >>> +	.owner				= THIS_MODULE,
+> >>> +	.open				= fops_vcodec_open,
+> >>> +	.release			= fops_vcodec_release,
+> >>> +	.poll				= fops_vcodec_poll,
+> >>> +	.unlocked_ioctl			= video_ioctl2,
+> >>> +	.mmap				= fops_vcodec_mmap,
+> >>
+> >> You should be able to use the v4l2_m2m_fop helper functions for poll and mmap.
+> >>
+> > 
+> > Hi Hans,
+> > 
+> > We are plaining to remove m2m framework in th feature, although we think
 > 
-> Signed-off-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> ---
+> Remove it for just the decoder driver or both encoder and decoder?
+> 
+Remove it from decoder driver.
 
-[...]
-
-> +static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
-> +				struct device_node *np)
-> +{
-> +	struct mtk_nfc_nand_chip *chip;
-> +	struct nand_chip *nand;
-> +	struct mtd_info *mtd;
-> +	int nsels, len;
-> +	u32 tmp;
-> +	int ret;
-> +	int i;
-> +
-> +	if (!of_get_property(np, "reg", &nsels))
-> +		return -ENODEV;
-> +
-> +	nsels /= sizeof(u32);
-> +	if (!nsels || nsels > MTK_NAND_MAX_NSELS) {
-> +		dev_err(dev, "invalid reg property size %d\n", nsels);
-> +		return -EINVAL;
-> +	}
-> +
-> +	chip = devm_kzalloc(dev,
-> +			sizeof(*chip) + nsels * sizeof(u8), GFP_KERNEL);
-> +	if (!chip)
-> +		return -ENOMEM;
-> +
-> +	chip->nsels = nsels;
-> +	for (i = 0; i < nsels; i++) {
-> +		ret = of_property_read_u32_index(np, "reg", i, &tmp);
-> +		if (ret) {
-> +			dev_err(dev, "reg property failure : %d\n", ret);
-> +			return ret;
-> +		}
-> +		chip->sels[i] = tmp;
-> +	}
-> +
-> +	if (of_property_read_u32(np, "spare_per_sector",
-> +						&chip->spare_per_sector)) {
-> +		dev_err(dev, "missing spare_per_sector property in DT\n");
-> +		return -ENODEV;
-> +
-> +	}
-> +
-> +	nand = &chip->nand;
-> +	nand->controller = &nfc->controller;
-> +
-> +	nand_set_flash_node(nand, np);
-> +	nand_set_controller_data(nand, nfc);
-> +
-> +	nand->options |= NAND_USE_BOUNCE_BUFFER | NAND_SUBPAGE_READ;
-> +	nand->block_markbad = mtk_nfc_block_markbad;
-> +	nand->dev_ready = mtk_nfc_dev_ready;
-> +	nand->select_chip = mtk_nfc_select_chip;
-> +	nand->write_byte = mtk_nfc_write_byte;
-> +	nand->write_buf = mtk_nfc_write_buf;
-> +	nand->read_byte = mtk_nfc_read_byte;
-> +	nand->read_buf = mtk_nfc_read_buf;
-> +	nand->cmd_ctrl = mtk_nfc_cmd_ctrl;
-> +
-> +	/* set default mode in case dt entry is missing */
-> +	nand->ecc.mode = NAND_ECC_HW;
-> +
-> +	nand->ecc.write_subpage = mtk_nfc_write_subpage_hwecc;
-> +	nand->ecc.write_page_raw = mtk_nfc_write_page_raw;
-> +	nand->ecc.write_page = mtk_nfc_write_page_hwecc;
-> +	nand->ecc.write_oob_raw = mtk_nfc_write_oob_raw;
-> +	nand->ecc.write_oob = mtk_nfc_write_oob;
-> +
-> +	nand->ecc.read_subpage = mtk_nfc_read_subpage_hwecc;
-> +	nand->ecc.read_page_raw = mtk_nfc_read_page_raw;
-> +	nand->ecc.read_oob_raw = mtk_nfc_read_oob_raw;
-> +	nand->ecc.read_page = mtk_nfc_read_page_hwecc;
-> +	nand->ecc.read_oob = mtk_nfc_read_oob;
-> +
-> +	mtd = nand_to_mtd(nand);
-> +	mtd->owner = THIS_MODULE;
-> +	mtd->dev.parent = dev;
-> +	mtd->name = MTK_NAME;
-> +	mtd_set_ooblayout(mtd, &mtk_nfc_ooblayout_ops);
-> +
-> +	mtk_nfc_hw_init(nfc);
-> +
-> +	ret = nand_scan_ident(mtd, nsels, NULL);
-> +	if (ret)
-> +		return -ENODEV;
-> +
-> +	/* TODO: add NAND_ECC_SOFT */
-> +	if (nand->ecc.mode != NAND_ECC_HW) {
-> +		dev_err(dev, "driver only supports NAND_ECC_HW\n");
-> +		return -ENODEV;
-> +	}
-
-You also don't check the ecc->strength and ecc->step_size values, and
-I'd recommend doing the ECC initialization in a separate function.
-Moreover, as already explained on IRC, you should not make the
-nand-ecc-strength and nand-ecc-step-size properties mandatory. Usually
-those information are exposed by the NAND chip itself, and are
-available in chip->ecc_strength_ds and chip->ecc_step_size_ds.
-nand-ecc-strength and nand-ecc-step-size are only here to override the
-ECC config (a typical usage is to override those information to match
-the configuration hardcoded in the bootloader).
-
-Here is an example of how it could be done [1].
-
-[1]http://lxr.free-electrons.com/source/drivers/mtd/nand/sunxi_nand.c#L1188
+> > it is easy to use and could save a lot of code similar to what m2m
+> > framework implemented and reduce code size.
+> > The main reason is that in v4l2_m2m_try_schedule, it required that at
+> > least one output buffer and one capture buffer to run device_run.
+> > We want to start device_run without capture buffer queued.
+> 
+> I assume the reason is that you need to get the resolution etc. information
+> from the encoded stream? Without a capture buffer you can't actually decode
+> a frame, but that's probably not what this is about.
+Yes, it could start parsing without waiting CAPTURE ready and get
+CAPTURE buffer from vb2 when it really need it.
 
 
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+> > Is there any suggestion that we could use m2m framework but trigger
+> > device_run with only output buffer.
+> > Or we need to remove m2m and write our own implementation.
+> 
+> I am assuming that not using the m2m framework is for the decoder only and
+> that its purpose is to obtain data about the encoded stream early.
+> 
+yes. it's for decode only.
+
+
+> This is something that was discussed with Pawel in the past. I don't have a
+> problem if you do it yourself (without the m2m framework), but it might also
+> be an idea to adapt the framework for this.
+> 
+> Pawel, do you have any thoughts on that?
+> 
+> Regards,
+> 
+> 	Hans
