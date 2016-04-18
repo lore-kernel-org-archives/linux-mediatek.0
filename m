@@ -1,44 +1,49 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 3/5] clocksource/drivers/mtk_timer: add __init attribute
-Date: Mon, 18 Apr 2016 18:44:48 +0200
-Message-ID: <20160418164448.GB2820@linaro.org>
-References: <1460991338-9845-1-git-send-email-Julia.Lawall@lip6.fr>
- <1460991338-9845-4-git-send-email-Julia.Lawall@lip6.fr>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH v4] ASoC: mediatek: Add second I2S on mt8173-rt5650
+ machine driver
+Date: Mon, 18 Apr 2016 18:22:03 +0100
+Message-ID: <20160418172203.GL3217@sirena.org.uk>
+References: <1460983419-7705-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <kernel-janitors-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="M9YpAf2t6OxtMGzg"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1460991338-9845-4-git-send-email-Julia.Lawall@lip6.fr>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: kernel-janitors@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, "Luis R . Rodriguez" <mcgrof@kernel.org>, Josh Triplett <josh@joshtriplett.org>
+In-Reply-To: <1460983419-7705-1-git-send-email-pc.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: PC Liao <pc.liao@mediatek.com>
+Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Apr 18, 2016 at 04:55:36PM +0200, Julia Lawall wrote:
-> Add __init attribute on a function that is only called from other __init
-> functions and that is not inlined, at least with gcc version 4.8.4 on an
-> x86 machine with allyesconfig.  Currently, the function is put in the
-> .text.unlikely segment.  Declaring it as __init will cause it to be put in
-> the .init.text and to disappear after initialization.
-> 
-> The result of objdump -x on the function before the change is as follows:
-> 
-> 0000000000000000 l     F .text.unlikely 000000000000006f mtk_timer_setup.isra.4
-> 
-> And after the change it is as follows:
-> 
-> 0000000000000000 l     F .init.text	000000000000006a mtk_timer_setup.isra.4
-> 
-> Done with the help of Coccinelle.  The semantic patch checks for local
-> static non-init functions that are called from an __init function and are
-> not called from any other function.
-> 
-> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-> ---
 
-Applied for 4.7.
+--M9YpAf2t6OxtMGzg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Thanks !
+On Mon, Apr 18, 2016 at 08:43:39PM +0800, PC Liao wrote:
 
-  -- Daniel
+> +Optional properties:
+> +- sound-dai: audio codec dai on capture path
+> +  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
+> +  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
 
+Code-wise this seems fine but it seems like it'd be clearer to call this
+capture-dai - this isn't used to select whatr's used for playback, only
+for capture.
+
+--M9YpAf2t6OxtMGzg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXFRe6AAoJECTWi3JdVIfQYDAH/3Rr8ayrnOah6lOydZET4rJg
+Bb60VuNadIHr/ImPs8pifCWfR7Mt9WTyVTbYaKy2DnE4So43W1DZMOaomEvPnlAJ
+kzd6F6q64u+lQ9eEqUXnYPLoad1t7yrfNqqAZmlhkpg8q6sntPgLPFwkCgy8O6e3
+SSh5mjhwy6Uz3uBA25EyNs0ib7vajNKtRPqF2bbsAKVh6D4bN+BIp56X1ltP3eU2
+zM+5cwplK+JbUX1TM9h70fTMNFzZWilmW1eMlrS0ejmKGOCU/VcFCIBjF2zGQ43o
+04NwzIZ8Xv4k2B0AMnd4OdCE/PIosVtUVBeeOukBGgCrtwH+OZxu3rFK+GL/C+4=
+=LyK0
+-----END PGP SIGNATURE-----
+
+--M9YpAf2t6OxtMGzg--
