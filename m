@@ -1,164 +1,74 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 3/7] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Mon, 18 Apr 2016 13:40:46 +0800
-Message-ID: <1460958046.7861.48.camel@mtksdaap41>
-References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-3-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-4-git-send-email-tiffany.lin@mediatek.com>
-	 <5710FA3A.2030603@xs4all.nl>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH] mmc: mediatek: fix request blocked by cancel_delayed_work
+Date: Mon, 18 Apr 2016 15:13:29 +0800
+Message-ID: <1460963609-16179-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5710FA3A.2030603-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
+there are 2 points will cause could not call mmc_request_done()
+and eventually cause the caller thread blocked.
 
-snipped.
+A. if card was busy, cancel_delayed_work() will return false because
+the delay work has not been scheduled, in this case, need put
+mod_delayed_work() in front of msdc_cmd_is_ready()
 
-> > +
-> > +void mtk_vcodec_dec_set_default_params(struct mtk_vcodec_ctx *ctx)
-> > +{
-> > +	struct mtk_q_data *q_data;
-> > +
-> > +	ctx->m2m_ctx->q_lock = &ctx->dev->dev_mutex;
-> > +	ctx->fh.m2m_ctx = ctx->m2m_ctx;
-> > +	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
-> > +	INIT_WORK(&ctx->decode_work, mtk_vdec_worker);
-> > +
-> > +	q_data = &ctx->q_data[MTK_Q_DATA_SRC];
-> > +	memset(q_data, 0, sizeof(struct mtk_q_data));
-> > +	q_data->visible_width = DFT_CFG_WIDTH;
-> > +	q_data->visible_height = DFT_CFG_HEIGHT;
-> > +	q_data->fmt = &mtk_video_formats[OUT_FMT_IDX];
-> > +	q_data->colorspace = V4L2_COLORSPACE_REC709;
-> > +	q_data->field = V4L2_FIELD_NONE;
-> > +	ctx->q_data[MTK_Q_DATA_DST].sizeimage[0] =
-> > +		DFT_CFG_WIDTH * DFT_CFG_HEIGHT;
-> > +	ctx->q_data[MTK_Q_DATA_DST].bytesperline[0] = 0;
-> > +
-> > +
-> > +	q_data = &ctx->q_data[MTK_Q_DATA_DST];
-> > +	memset(q_data, 0, sizeof(struct mtk_q_data));
-> > +	q_data->visible_width = DFT_CFG_WIDTH;
-> > +	q_data->visible_height = DFT_CFG_HEIGHT;
-> > +	q_data->coded_width = DFT_CFG_WIDTH;
-> > +	q_data->coded_height = DFT_CFG_HEIGHT;
-> > +	q_data->colorspace = V4L2_COLORSPACE_REC709;
-> > +	q_data->field = V4L2_FIELD_NONE;
-> > +
-> > +	q_data->fmt = &mtk_video_formats[CAP_FMT_IDX];
-> > +
-> > +	v4l_bound_align_image(&q_data->coded_width,
-> > +					MTK_VDEC_MIN_W,
-> > +					MTK_VDEC_MAX_W, 4,
-> > +					&q_data->coded_height,
-> > +					MTK_VDEC_MIN_H,
-> > +					MTK_VDEC_MAX_H, 5, 6);
-> > +
-> > +	q_data->sizeimage[0] = q_data->coded_width * q_data->coded_height;
-> > +	q_data->bytesperline[0] = q_data->coded_width;
-> > +	q_data->sizeimage[1] = q_data->sizeimage[0] / 2;
-> > +	q_data->bytesperline[1] = q_data->coded_width;
-> > +
-> > +}
-> > +
-> > +static int vidioc_vdec_streamon(struct file *file, void *priv,
-> > +				enum v4l2_buf_type type)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> > +
-> > +	mtk_v4l2_debug(3, "[%d] (%d)", ctx->idx, type);
-> > +
-> > +	return v4l2_m2m_streamon(file, ctx->m2m_ctx, type);
-> > +}
-> > +
-> > +static int vidioc_vdec_streamoff(struct file *file, void *priv,
-> > +				 enum v4l2_buf_type type)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> > +
-> > +	mtk_v4l2_debug(3, "[%d] (%d)", ctx->idx, type);
-> > +	return v4l2_m2m_streamoff(file, ctx->m2m_ctx, type);
-> > +}
-> > +
-> > +static int vidioc_vdec_reqbufs(struct file *file, void *priv,
-> > +			       struct v4l2_requestbuffers *reqbufs)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> > +	int ret;
-> > +
-> > +	mtk_v4l2_debug(3, "[%d] (%d) count=%d", ctx->idx,
-> > +			 reqbufs->type, reqbufs->count);
-> > +	ret = v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
-> > +
-> > +	return ret;
-> > +}
-> 
-> Please use the v4l2_m2m_ioctl_* helper functions were applicable.
-> 
+B. if a request really need more than 5s(Some Sandisk TF card), it will
+use cancel_delayed_work() to cancel itself, and also return false, so use
+in_interrupt() to avoid this case
 
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index b17f30d..1511b1b 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -724,7 +724,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ 	bool ret;
+ 
+ 	ret = cancel_delayed_work(&host->req_timeout);
+-	if (!ret) {
++	if (!ret && in_interrupt()) {
+ 		/* delay work already running */
+ 		return;
+ 	}
+@@ -824,7 +824,12 @@ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
+ 	}
+ 
+ 	if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
+-		tmo = jiffies + msecs_to_jiffies(20);
++		/*
++		 * 2550ms is from EXT_CSD[248], after switch to hs200,
++		 * using CMD13 to polling card status, it will get response
++		 * of 0x800, but EMMC still pull-low DAT0.
++		 */
++		tmo = jiffies + msecs_to_jiffies(2550);
+ 		/* R1B or with data, should check SDCBUSY */
+ 		while ((readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) &&
+ 				time_before(jiffies, tmo))
+@@ -847,6 +852,7 @@ static void msdc_start_command(struct msdc_host *host,
+ 	WARN_ON(host->cmd);
+ 	host->cmd = cmd;
+ 
++	mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
+ 	if (!msdc_cmd_is_ready(host, mrq, cmd))
+ 		return;
+ 
+@@ -858,7 +864,6 @@ static void msdc_start_command(struct msdc_host *host,
+ 
+ 	cmd->error = 0;
+ 	rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
+-	mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
+ 
+ 	sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
+ 	writel(cmd->arg, host->base + SDC_ARG);
+-- 
+1.8.1.1.dirty
 
-snipped.
-> > +static unsigned int fops_vcodec_poll(struct file *file,
-> > +				     struct poll_table_struct *wait)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(file->private_data);
-> > +	struct mtk_vcodec_dev *dev = ctx->dev;
-> > +	int ret;
-> > +
-> > +	mutex_lock(&dev->dev_mutex);
-> > +	ret = v4l2_m2m_poll(file, ctx->m2m_ctx, wait);
-> > +	mutex_unlock(&dev->dev_mutex);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int fops_vcodec_mmap(struct file *file, struct vm_area_struct *vma)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(file->private_data);
-> > +
-> > +	return v4l2_m2m_mmap(file, ctx->m2m_ctx, vma);
-> > +}
-> > +
-> > +static const struct v4l2_file_operations mtk_vcodec_fops = {
-> > +	.owner				= THIS_MODULE,
-> > +	.open				= fops_vcodec_open,
-> > +	.release			= fops_vcodec_release,
-> > +	.poll				= fops_vcodec_poll,
-> > +	.unlocked_ioctl			= video_ioctl2,
-> > +	.mmap				= fops_vcodec_mmap,
-> 
-> You should be able to use the v4l2_m2m_fop helper functions for poll and mmap.
-> 
-
-Hi Hans,
-
-We are plaining to remove m2m framework in th feature, although we think
-it is easy to use and could save a lot of code similar to what m2m
-framework implemented and reduce code size.
-The main reason is that in v4l2_m2m_try_schedule, it required that at
-least one output buffer and one capture buffer to run device_run.
-We want to start device_run without capture buffer queued.
-Is there any suggestion that we could use m2m framework but trigger
-device_run with only output buffer.
-Or we need to remove m2m and write our own implementation.
-
-
-
-snipped.
-
-
-best regards,
-Tiffany
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
