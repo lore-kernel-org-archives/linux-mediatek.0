@@ -1,37 +1,57 @@
-From: Nicolas Dufresne <nicolas.dufresne@gmail.com>
-Subject: Re: [PATCH 3/7] [Media] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Mon, 18 Apr 2016 13:48:17 -0400
-Message-ID: <1461001697.2719.7.camel@gmail.com>
-References: <1460548915-17536-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-3-git-send-email-tiffany.lin@mediatek.com>
-	 <1460548915-17536-4-git-send-email-tiffany.lin@mediatek.com>
-	 <5710FA3A.2030603@xs4all.nl> <1460958046.7861.48.camel@mtksdaap41>
-	 <57148D8E.9060601@xs4all.nl> <1460967754.7861.61.camel@mtksdaap41>
-Reply-To: nicolas@ndufresne.ca
+From: HS Liao <hs.liao@mediatek.com>
+Subject: [RFC v4 0/4] Mediatek MT8173 CMDQ support
+Date: Tue, 19 Apr 2016 12:49:58 +0800
+Message-ID: <1461041402-19962-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460967754.7861.61.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: tiffany lin <tiffany.lin@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Pawel Osciak <pawel@osciak.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le lundi 18 avril 2016 =C3=A0 16:22 +0800, tiffany lin a =C3=A9crit=C2=A0=
-:
-> > > We are plaining to remove m2m framework in th feature, although
-> we think
-> >=C2=A0
-> > Remove it for just the decoder driver or both encoder and decoder?
-> >=C2=A0
-> Remove it from decoder driver.
 
-Did you look at how CODA handle it (drivers/media/platform/coda/coda-
-common.c) ? I don't know any detail, but they do have the same issue
-and use both=C2=A0v4l2_m2m_fop_poll and=C2=A0v4l2_m2m_fop_mmap.
+Hi,
 
-cheers,
-Nicolas
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help read/write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
+
+These patches have a build dependency on top of v4.6-rc1.
+
+Changes since v3:
+ - rebase to v4.6-rc1
+ - pass both arm and arm64 arch compilation
+ - fix bug of removing free task list in v3
+ - marchal return error code
+ - use offset instead of physical address
+ - centralize release flow
+ - add "suspend/resume protection" patch
+ - add queue_work() in cmdq_auto_release() to prevent no more flush
+   or interrupt to consume waiting tasks
+ - remove some debug or redundant code
+ - rewrite some code to shrink code size
+
+Best regards,
+HS Liao
+
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  CMDQ: Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  CMDQ: suspend/resume protection
+
+ .../devicetree/bindings/soc/mediatek/gce.txt       |   34 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |    8 +
+ drivers/soc/mediatek/Kconfig                       |   10 +
+ drivers/soc/mediatek/Makefile                      |    1 +
+ drivers/soc/mediatek/mtk-cmdq.c                    | 1997 ++++++++++++++++++++
+ include/soc/mediatek/cmdq.h                        |  197 ++
+ 6 files changed, 2247 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+ create mode 100644 include/soc/mediatek/cmdq.h
+
+-- 
+1.7.9.5
