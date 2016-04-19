@@ -1,17 +1,18 @@
-From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
- NAND
-Date: Tue, 19 Apr 2016 18:39:17 -0400
-Message-ID: <5716B395.8000805@linaro.org>
-References: <1460393772-26910-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1460393772-26910-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <20160418001751.286edf83@bbrezillon> <5716402F.8060908@linaro.org>
- <20160419184237.62646214@bbrezillon>
+From: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: mt8173-evb: failing to boot in linux-next and mainline
+Date: Tue, 19 Apr 2016 15:57:47 -0700
+Message-ID: <CAOi56cW4GjnCCNM_8-83H4gb4NXM2S7QWnmc=oniRGzBZFHMJQ@mail.gmail.com>
+References: <CAOi56cV2M_Ee2AhxTUgHhZuZ1y7LH4sKKyiq3Okorj3K+L15GA@mail.gmail.com>
+ <1459165876.24094.8.camel@mtksdaap41> <7h37raprav.fsf@baylibre.com>
+ <1459230015.25921.10.camel@mtksdaap41>
+ <CAOi56cVtfn5BmKP2YHM0kKvCcoAJUmaZWpupODRU4ABE=XEYbQ@mail.gmail.com>
+ <570E1C2E.8010203@gmail.com>
+ <CAOi56cUSL-O1_5TC3QuZzUJQASKS8GOvvzXfUU2w1sZGdd6W-g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160419184237.62646214@bbrezillon>
+In-Reply-To: <CAOi56cUSL-O1_5TC3QuZzUJQASKS8GOvvzXfUU2w1sZGdd6W-g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,247 +22,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tyler Baker <tyler.baker-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 04/19/2016 12:42 PM, Boris Brezillon wrote:
-> Hi Jorge,
->
-> On Tue, 19 Apr 2016 10:26:55 -0400
-> Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
->
->>>> +static irqreturn_t mtk_ecc_irq(int irq, void *id)
->>>> +{
->>>> +	struct mtk_ecc *ecc = id;
->>>> +	u32 dec, enc;
->>>> +
->>>> +	dec = readw(ecc->regs + ECC_DECIRQ_STA) & DEC_IRQEN;
->>>> +	enc = readl(ecc->regs + ECC_ENCIRQ_STA) & ENC_IRQEN;
->>>> +
->>>> +	if (!(dec || enc))
->>>> +		return IRQ_NONE;
->>>> +
->>>> +	if (dec) {
->>>> +		dec = readw(ecc->regs + ECC_DECDONE);
->>>> +		if (dec & ecc->sec_mask) {
->>>> +			ecc->sec_mask = 0;
->>>> +			complete(&ecc->done);
->>> If you can really do enc and dec in parallel, then you should have two
->>> waitqueues.
+On Thu, Apr 14, 2016 at 2:58 PM, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org> wrote:
+> On Wed, Apr 13, 2016 at 3:15 AM, Matthias Brugger
+> <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 >>
->> unfortunately no, we can't do parallel operations.
-> That's not a problem, as long a you get exclusive access to the engine
-> when launching an operation.
->
-> Given this new input, I'd suggest reworking a bit the ECC interface.
-> How about providing an mtk_ecc_enable() function where you'll pass the
-> direction, or even better, the config which would contain the direction
-> (encoding or decoding), the ECC strength and step-size (maybe we
-> should also pass the ECC_MODE: NFI, DMA or whatever).
-
-OK. that is simple enough (having said that, the mtk_ecc_irq will not change)
-
-
->
-> Similarly to the mtk_ecc_enable() function you would have an
-> mtk_ecc_disable() which would disable everything.
-
-ok
-
->
-> [...]
->>>> +{
->>> Not sure this is needed right now, since the NAND driver is the only
->>> user of the ECC engine (not even sure you can use the ECC engine
->>> independently), and we do not support accessing chips in parallel, but
->>> it may be more future proof to take a lock before using the ECC
->>> encoder/decoder, and release it when the operation is finished.
->> Since it is not required per the current architecture (no parallel chip
->> accesses) I do have doubts about it.
-> Hm, given that your engine can possibly be used outside of the NAND
-> pipeline, I'd recommend introducing a lock and using it.
-
-I dont think it will ever will but I'll do the lock (just like jz4780_bch.c does)
-
-> BTW, I see ECC_NFI_MODE (where NFI probably means Nand Flash
-> Interface) and ECC_DMA_MODE, but the ECC_ENC_MODE mask is (3 << 5). I'm
-> just curious, what are the other modes (if any)?
-
-b11: reserved mode
-b10: PIO mode
-b01: NFI mode
-b00: DMA mode
-
-
->
->>> This your controller seems capable of doing ECC encoding/decoding in
->>> parallel, it might be worth having 2 different locks.
->> I did double check with the design team and it can't.
-> Then having a single lock is fine.
->
->>> If you decide to not use any lock, please add something in the
->>> documentation, stating that it's the ECC engine user responsibility to
->>> ensure serialization, and forbid several mtk_ecc_get() on the same
->>> device.
->> ok.
-> Honestly, it wouldn't be a blocking aspect if you decide to skip the
-> locking part, but given that implementing it seems quite easy and more
-> future proof, I'd prefer if you do it.
-
-ok.
-
->
->>>> +{
->>>> +	dma_addr_t addr;
->>>> +	u32 *p, len;
->>>> +	u32 reg, i;
->>>> +	int rc, ret = 0;
->>>> +
->>>> +	addr = dma_map_single(ecc->dev, d->data, d->len, DMA_TO_DEVICE);
->>>> +	rc = dma_mapping_error(ecc->dev, addr);
->>>> +	if (rc) {
->>>> +		dev_err(ecc->dev, "dma mapping error\n");
->>>> +		return -EINVAL;
->>>> +	}
->>>> +
->>>> +	/* enable the encoder in DMA mode to calculate the ECC bytes  */
->>>> +	reg = readl(ecc->regs + ECC_ENCCNFG) & ~ECC_ENC_MODE_MASK;
->>>> +	reg |= ECC_DMA_MODE;
->>> When I compare the start_encode() to the start_decode() function I see
->>> one big difference: the former is clearly operating in non-pipeline
->>> mode (the data are retrieved using DMA and returned values are kept in
->>> PARX registers), while, IFAICS, the latter is operating in pipeline
->>> mode (data are directly retrieved from the NAND engine stream).
->> yes
 >>
->>> I'm perfectly fine supporting those 2 modes (at least it gives an
->>> answer to one of my question: the ECC engine can be used independently
->>> of the NAND engine), but the function names should reflect this.
->> sure: ecc_prepare_decoder() and ecc_encode().
-> Maybe something mode explicit, like mtd_ecc_prepare_pipeline().
-
-what is wrong with prepare decoder?
-
-> BTW, I had a second look at your implementation, and I wonder why
-> you're not putting the operations done in the prepare function directly
-> in the enable one.
-
-No reason - this was the sequence of register writes provided by the design team 
-so we kept them this way.
-I'll try to reorganize.
-
->
->
->
->>>> +
->>>> +static int mtk_nfc_block_markbad(struct mtd_info *mtd, loff_t ofs)
->>>> +{
->>>> +	struct nand_chip *chip = mtd_to_nand(mtd);
->>>> +	u8 *buf = chip->buffers->databuf;
->>>> +	int page, rc, i;
->>>> +
->>>> +	memset(buf, 0x00, mtd->writesize + mtd->oobsize);
->>>> +
->>>> +	if (chip->bbt_options & NAND_BBT_SCANLASTPAGE)
->>>> +		ofs += mtd->erasesize - mtd->writesize;
->>>> +
->>>> +	i = 0;
->>>> +	do {
->>>> +		page = (int)(ofs >> chip->page_shift);
->>>> +		chip->cmdfunc(mtd, NAND_CMD_SEQIN, 0x00, page);
->>>> +		rc = mtk_nfc_write_page(mtd, chip, buf, 0, page, 1);
->>>> +		if (rc < 0)
->>>> +			return rc;
->>>> +
->>>> +		chip->cmdfunc(mtd, NAND_CMD_PAGEPROG, -1, -1);
->>>> +		rc = chip->waitfunc(mtd, chip);
->>>> +		rc = rc & NAND_STATUS_FAIL ? -EIO : 0;
->>>> +		if (rc < 0)
->>>> +			return rc;
->>>> +
->>>> +		ofs += mtd->writesize;
->>>> +		i++;
->>>> +
->>>> +	} while ((chip->bbt_options & NAND_BBT_SCAN2NDPAGE) && i < 2);
->>>> +
->>>> +	return 0;
->>>> +}
->>> Why do you need this custom implementation?
->> the reason it our page layout: if we need to mark a bad block it is not possible
->> for us to access the spare area (our layout is: sector + oob + sector + oob ...)
->> so we just mark the whole page.
+>> On 12/04/16 01:12, Kevin Hilman wrote:
+>>>
+>>> On Mon, Mar 28, 2016 at 10:40 PM, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> wrote:
+>>>>
+>>>> Hi Sascha,
+>>>>
+>>>> On Mon, 2016-03-28 at 08:15 -0700, Kevin Hilman wrote:
+>>>>>
+>>>>> Hi Eddie,
+>>>>>
+>>>>> Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
+>>>>>
+>>>>> [...]
+>>>>>
+>>>>>> Thanks your testing again. I can reproduce your case in my local
+>>>>>> environment using 4.6-rc1. After checking, there are two ways to avoid
+>>>>>> the hang:
+>>>>>> 1. set clk_ignore_unused to kernel command line
+>>>>>> 2. Revert patch "cc8ed76 soc: mediatek: SCPSYS: Fix double enabling of
+>>>>>> regulators"
+>>>>>>
+>>>>>> It seems there is a problem between turn on/off clock and power domain.
+>>>>>> We will try to fix this and send patch to public once have a solution.
+>>>>>
+>>>>>
+>>>>> Thanks for verifying.
+>>>>>
+>>>>> I've confirmed that reverting the patch suggested above fixes the
+>>>>> problem.
+>>>>>
+>>>>> Since -rc1 is out, and this problem still exists in mainline, if a
+>>>>> proper fix is not found very soon, I suggest reverting that patch in
+>>>>> mainline.
+>>>>>
+>>>>> Kevin
+>>>>
+>>>>
+>>>> According to Eddie and Kevin's test, I think some clocks
+>>>> (mm/mfg/venc/venclt) may be turned off and there are drivers need these
+>>>> clocks without clk_prepare_enable(). But I have no idea to find out what
+>>>> driver causes this issue. So I prefer to revert it on v4.6-rc1. Do you
+>>>> have comments about this issue?
+>>>
+>>>
+>>> FYI... mt8173-evb is still failing in mainline v4.6-rc3:
+>>>
+>>>     https://kernelci.org/boot/all/job/mainline/kernel/v4.6-rc3/
+>>>
+>>> please fix and/or revert ASAP so this boot regression is not in v4.6
+>>> final.
+>>>
 >>
->> is this acceptable?
-> Oh, this means you're loosing the BBM as soon as you start using the
-> NAND. Don't you have a mechanism switching one or 2 bytes of in-band
-> with OOB data, so that the BBM remains intact and you can still mark
-> them as bad when needed?
-> I'd strongly suggest to do this (I know other drivers, like the GPMI
-> one, use the same trick).
->
-> BTW, how do you detect bad blocks marked by the NAND vendor. Those BBMs
-> will be in what you consider your in-band region.
-
-let me come back to you on this. I realize it is important.
-
->
->
->>>> +
->>>> +	if (ret < mtd->bitflip_threshold)
->>>> +		mtd->ecc_stats.corrected = stats.corrected;
->>> Hm, ->corrected has already been updated by mtk_nfc_read_page_hwecc(),
->>> or am I missing something?
->>> Moreover, you should have mtd->ecc_stats.corrected += stats.corrected.
->> sorry, yes it might be a bit convoluted due to the inverted logic.
->> unless the number of bitflips returned by the read_page_hwecc is equal or over
->> the threshold we don't update the corrected stats (so we just reset it to the
->> previous value at this point, hence the = instead of the +=).
-> What's the point? I mean, ->corrected should be updated each time you
-> read a page, even if the number of bitflips does not exceed the
-> bitflips_threshold.
-
-ack
-
->
->
->>>> +
->>>> +static int mtk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
->>>> +				struct mtd_oob_region *oob_region)
->>>> +{
->>>> +	struct nand_chip *chip = mtd_to_nand(mtd);
->>>> +
->>>> +	if (section)
->>>> +		return -ERANGE;
->>>> +
->>>> +	oob_region->length = NFI_FDM_REG_SIZE * chip->ecc.steps;
->>> Is NFI_FDM_REG_SIZE really fixed to 8, or does it depend on the
->>> spare_per_sector and ecc->bytes information?
->> Its value can range between 0 and 8 and it depends on the spare area size and
->> the ecc level.
->> each sector spare is: FDM + ECC parity + dummy (if there is dummy, the
->> controller pads it)
->> ECC parity = 14 * ecc level (bits)
+>> Sorry for the late reply. I'm quite busy in my day job ATM.
+>> I just send the revert James proposed as fix.
 >>
->> So we could do:
->>
->> FDM size = spare size - (14 * ecc level + 7) / 8;
->> if (FDM size > 8)
->> FDM size = 8;
-> Looks good to me.
-
-ok
-
 >
->>
->> for SLC and MLC nand we do fix it to 8 in all cases.
->> for TLC nand, since we have less spare, we can only use 3 bytes.
->>
->> do you think it is worth adding the FDM size as a function?
-> Not necessarily a function, it can be a field somewhere in your private
-> mtk_nand_chip struct.
+> Thanks, I just tried your branch with arm-soc/for-next and mt8173-evb
+> is booting again.  Thanks.
 
-ok.
+FYI... mt8173-evb still failing in linux-next, and not sure if it's a
+new issue or not.
 
->
->
+https://kernelci.org/boot/mt8173-evb/job/next/kernel/next-20160419/defconfig/defconfig/lab/lab-khilman/?_id=57163f9459b514ffc46e78d72
