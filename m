@@ -1,93 +1,70 @@
-From: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] arm: dts: mt2701: Use real clock for UARTs
-Date: Wed, 20 Apr 2016 16:02:16 +0800
-Message-ID: <1461139336-1107-1-git-send-email-erin.lo@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 2/2 v6] ASoC: mediatek: Add second I2S on
+ mt8173-rt5650 machine driver
+Date: Wed, 20 Apr 2016 09:29:17 +0100
+Message-ID: <20160420082917.GH3217@sirena.org.uk>
+References: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
+ <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============1978703617254817036=="
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: PC Liao <pc.liao@mediatek.com>
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We used to use a fixed rate clock for the UARTs. Now that we have clock
-support we can associate the correct clocks to the UARTs and drop the
-26MHz fixed rate UART clock.
 
-Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-This patch dependents on "Add clock support for Mediatek MT2701"[1].
+--===============1978703617254817036==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="caC6Ojpb5aKGbDVu"
+Content-Disposition: inline
 
-If we have clock support, we must associate the correct clocks to the UARTs.
-Otherwise it will cause booting issue.
-Please also accept this patch together with [1].
 
-[1]http://lists.infradead.org/pipermail/linux-mediatek/2016-April/004938.html
----
- arch/arm/boot/dts/mt2701.dtsi | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+--caC6Ojpb5aKGbDVu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 171d4da..e79e88f 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -71,12 +71,6 @@
- 		#clock-cells = <0>;
- 	};
- 
--	uart_clk: dummy26m {
--		compatible = "fixed-clock";
--		clock-frequency = <26000000>;
--		#clock-cells = <0>;
--	};
--
- 	clk26m: oscillator@0 {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
-@@ -167,7 +161,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11002000 0 0x400>;
- 		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -176,7 +171,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11003000 0 0x400>;
- 		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -185,7 +181,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11004000 0 0x400>;
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -194,7 +191,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11005000 0 0x400>;
- 		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- };
--- 
-1.9.1
+On Wed, Apr 20, 2016 at 02:40:47PM +0800, PC Liao wrote:
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +Optional properties:
+> +- capture-dai: audio codec dai on capture path
+> +  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
+> +  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
+
+I sugggested changing this to use a subnode but you've ignored my
+suggestion...
+
+--caC6Ojpb5aKGbDVu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXFz3bAAoJECTWi3JdVIfQ1TAH/RTZ74H/1+D4Pg07yV1ONzqd
+hDrnYVrZlSr1kyxqWyoynvfyXmNsK1on7EqajK1BGJlSe5Idp1vJ9ymRU8ZvbGhk
++NdexYG3maQREHx9BKOmaXCaHnAQHEYSwcAqm6G31LiqCcFTvihAaQbd4amjqdm2
+4tYyCz+IkbdHAIg/mThp0sgkz20mUtSyffp7J+R1bDLqX4HeNYfNyax0QcTxjexC
+Lnhuwboo/x4PPVJrilfRAvLaRMIefS6K7H/WgQgCZdXNv+so121J/FX1x2YlQ6A1
+2zz+qCh2M2dEkw/fiG5YHZqNFjLrD+iogtyZHFxUM7fL+NUbUZYYtTwHRhWfieM=
+=O//j
+-----END PGP SIGNATURE-----
+
+--caC6Ojpb5aKGbDVu--
+
+--===============1978703617254817036==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+
+--===============1978703617254817036==--
