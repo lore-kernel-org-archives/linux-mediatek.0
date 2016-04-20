@@ -1,134 +1,93 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH 2/2 v6] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
-Date: Wed, 20 Apr 2016 14:40:47 +0800
-Message-ID: <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
-References: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
+From: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] arm: dts: mt2701: Use real clock for UARTs
+Date: Wed, 20 Apr 2016 16:02:16 +0800
+Message-ID: <1461139336-1107-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds second I2S connection to rt5650 codec for capture path on
-mt8173-rt5650 machine driver.
+We used to use a fixed rate clock for the UARTs. Now that we have clock
+support we can associate the correct clocks to the UARTs and drop the
+26MHz fixed rate UART clock.
 
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
+Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
- sound/soc/mediatek/mt8173-rt5650.c                 |   44 ++++++++++++++++++--
- 2 files changed, 47 insertions(+), 3 deletions(-)
+This patch dependents on "Add clock support for Mediatek MT2701"[1].
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-index fe5a5ef..802dd1b 100644
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-@@ -5,11 +5,17 @@ Required properties:
- - mediatek,audio-codec: the phandles of rt5650 codecs
- - mediatek,platform: the phandle of MT8173 ASoC platform
- 
-+Optional properties:
-+- capture-dai: audio codec dai on capture path
-+  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
-+  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
-+
- Example:
- 
- 	sound {
- 		compatible = "mediatek,mt8173-rt5650";
- 		mediatek,audio-codec = <&rt5650>;
- 		mediatek,platform = <&afe>;
-+		capture-dai = <&rt5650 1>;
+If we have clock support, we must associate the correct clocks to the UARTs.
+Otherwise it will cause booting issue.
+Please also accept this patch together with [1].
+
+[1]http://lists.infradead.org/pipermail/linux-mediatek/2016-April/004938.html
+---
+ arch/arm/boot/dts/mt2701.dtsi | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
+
+diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+index 171d4da..e79e88f 100644
+--- a/arch/arm/boot/dts/mt2701.dtsi
++++ b/arch/arm/boot/dts/mt2701.dtsi
+@@ -71,12 +71,6 @@
+ 		#clock-cells = <0>;
  	};
  
-diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-index bb09bb1..45dea22 100644
---- a/sound/soc/mediatek/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173-rt5650.c
-@@ -85,12 +85,26 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- {
- 	struct snd_soc_card *card = runtime->card;
- 	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
-+	const char *codec_dai_capture = runtime->codec_dais[1]->name;
- 	int ret;
+-	uart_clk: dummy26m {
+-		compatible = "fixed-clock";
+-		clock-frequency = <26000000>;
+-		#clock-cells = <0>;
+-	};
+-
+ 	clk26m: oscillator@0 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+@@ -167,7 +161,8 @@
+ 			     "mediatek,mt6577-uart";
+ 		reg = <0 0x11002000 0 0x400>;
+ 		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&uart_clk>;
++		clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
++		clock-names = "baud", "bus";
+ 		status = "disabled";
+ 	};
  
- 	rt5645_sel_asrc_clk_src(codec,
--				RT5645_DA_STEREO_FILTER |
--				RT5645_AD_STEREO_FILTER,
-+				RT5645_DA_STEREO_FILTER,
- 				RT5645_CLK_SEL_I2S1_ASRC);
-+
-+	if (!strcmp(codec_dai_capture, "rt5645-aif1")) {
-+		rt5645_sel_asrc_clk_src(codec,
-+					RT5645_AD_STEREO_FILTER,
-+					RT5645_CLK_SEL_I2S1_ASRC);
-+	} else if (!strcmp(codec_dai_capture, "rt5645-aif2")) {
-+		rt5645_sel_asrc_clk_src(codec,
-+					RT5645_AD_STEREO_FILTER,
-+					RT5645_CLK_SEL_I2S2_ASRC);
-+	} else {
-+		dev_err(card->dev, "Can't get the right codec dai\n");
-+		return -EINVAL;
-+	}
-+
- 	/* enable jack detection */
- 	ret = snd_soc_card_jack_new(card, "Headset Jack",
- 				    SND_JACK_HEADPHONE | SND_JACK_MICROPHONE |
-@@ -110,6 +124,11 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
+@@ -176,7 +171,8 @@
+ 			     "mediatek,mt6577-uart";
+ 		reg = <0 0x11003000 0 0x400>;
+ 		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&uart_clk>;
++		clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
++		clock-names = "baud", "bus";
+ 		status = "disabled";
+ 	};
  
- static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
- 	{
-+		/* Playback */
-+		.dai_name = "rt5645-aif1",
-+	},
-+	{
-+		/* Capture */
- 		.dai_name = "rt5645-aif1",
- 	},
+@@ -185,7 +181,8 @@
+ 			     "mediatek,mt6577-uart";
+ 		reg = <0 0x11004000 0 0x400>;
+ 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&uart_clk>;
++		clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
++		clock-names = "baud", "bus";
+ 		status = "disabled";
+ 	};
+ 
+@@ -194,7 +191,8 @@
+ 			     "mediatek,mt6577-uart";
+ 		reg = <0 0x11005000 0 0x400>;
+ 		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
+-		clocks = <&uart_clk>;
++		clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
++		clock-names = "baud", "bus";
+ 		status = "disabled";
+ 	};
  };
-@@ -149,7 +168,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.cpu_dai_name = "I2S",
- 		.no_pcm = 1,
- 		.codecs = mt8173_rt5650_codecs,
--		.num_codecs = 1,
-+		.num_codecs = 2,
- 		.init = mt8173_rt5650_init,
- 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
- 			   SND_SOC_DAIFMT_CBS_CFS,
-@@ -177,6 +196,8 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- {
- 	struct snd_soc_card *card = &mt8173_rt5650_card;
- 	struct device_node *platform_node;
-+	const char *codec_dai_capture;
-+	struct of_phandle_args args;
- 	int i, ret;
- 
- 	platform_node = of_parse_phandle(pdev->dev.of_node,
-@@ -199,6 +220,23 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 			"Property 'audio-codec' missing or invalid\n");
- 		return -EINVAL;
- 	}
-+	mt8173_rt5650_codecs[1].of_node = mt8173_rt5650_codecs[0].of_node;
-+
-+	if (device_property_present(&pdev->dev, "capture-dai")) {
-+		ret = of_parse_phandle_with_args(pdev->dev.of_node,
-+						 "capture-dai",
-+						 "#sound-dai-cells", 0, &args);
-+		if (ret < 0) {
-+			dev_err(&pdev->dev,
-+				"%s capture-dai name fail %d\n",
-+				__func__, ret);
-+			return ret;
-+		}
-+
-+		ret = snd_soc_get_dai_name(&args, &codec_dai_capture);
-+		mt8173_rt5650_codecs[1].dai_name = codec_dai_capture;
-+	}
-+
- 	card->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, card);
- 
 -- 
-1.7.9.5
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
