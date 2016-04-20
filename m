@@ -1,54 +1,56 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 00/50] pinctrl: Add and use devm_ apis for
- pinctrl_{register, unregister}
-Date: Wed, 20 Apr 2016 13:12:05 +0900
-Message-ID: <CAK7LNARUxy_ACa77t7ZZy4NqK6WOoKBqghy8YgyHg2Q0vLiymA@mail.gmail.com>
-References: <1456319775-3216-1-git-send-email-ldewangan@nvidia.com>
-	<CACRpkdZjv2KZ0AtC9oBytmSdS+=T+kC8PoJVt-RawE8Np8p40w@mail.gmail.com>
-	<56D307CC.2050202@nvidia.com>
-	<56E031CA.9010204@nvidia.com>
-	<CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
+From: PC Liao <pc.liao@mediatek.com>
+Subject: [PATCH 0/2 v6] ASoC: mediatek: Add second I2S on
+	mt8173-rt5650 machine driver
+Date: Wed, 20 Apr 2016 14:40:45 +0800
+Message-ID: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CACRpkdYQL0HUWuz882RRsSu5hLoS5VcVvpm1LeL1aeJkE_Y0tA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Laxman Dewangan <ldewangan@nvidia.com>, Jon Corbet <corbet@lwn.net>, Lee Jones <lee@kernel.org>, "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC Liao <pc.liao@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi.
+Because applied patch (commit 0beeb8d0b434b8b007ac8058fb2cac5997fff6df
+"ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver") is 
+dropped, I upload new version which include dependent patch.
 
-2016-03-15 17:31 GMT+09:00 Linus Walleij <linus.walleij@linaro.org>:
-> On Wed, Mar 9, 2016 at 3:23 PM, Laxman Dewangan <ldewangan@nvidia.com> wrote:
->
->>> Pushed the change at:
->>> Branch "devm_pinctrl_register" of
->>> https://github.com/ldewangan/linux-upstream.git.
->>>
->>> Base repo is
->>> for-next of
->>> https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git
->>>
->>>
->>> If required, I can send the V2 version of list with acks.
->>
->> Let me know if I need to send full series (V2 with collected ack) again or
->> fine to pull it from above location.
->
-> Please collect the ACKs on your branch and ask me to pull it after v4.6-rc1.
-> No need to resend the patches.
->
-> Unfortunately it arrived too late for the merge window, but hey: we got the
-> devm gpiochip in for v4.6.
+Changes since v5:
+ - add "ASoC: core: export snd_soc_get_dai_name" patch. 
+Because snd_soc_of_get_dai_name() fix the property name "sound-dai". 
+Our patch needs to change name to use, so export
+snd_soc_get_dai_name() which is included in snd_soc_of_get_dai_name(). 
+
+Changes since v4:
+Change name from "sound-dai" to "capture-dai" to determine the capture path
+
+Changes since v2,v3:
+Fix unclear code and use sound-dai to determine the capture path
+
+Changes since v1:
+Use codec dai name to determine the capture path. 
 
 
-Not pulled yet?
+Jean-Francois Moine (1):
+  ASoC: core: export snd_soc_get_dai_name
 
-I want to do my development on top of the devm_pinctrl_register series.
+PC Liao (1):
+  ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
 
-
+ .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
+ include/sound/soc.h                                |    2 +
+ sound/soc/mediatek/mt8173-rt5650.c                 |   44 ++++++++++++++++++--
+ sound/soc/soc-core.c                               |    5 ++-
+ 4 files changed, 52 insertions(+), 5 deletions(-)
 
 -- 
-Best Regards
-Masahiro Yamada
+1.7.9.5
