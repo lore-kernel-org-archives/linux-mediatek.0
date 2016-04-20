@@ -1,56 +1,67 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH V6 00/11] soc: mediatek: PMIC wrap: add MT6323/2701/7623
- support
-Date: Wed, 20 Apr 2016 13:07:44 +0200
-Message-ID: <57176300.8050505@gmail.com>
-References: <1455871455-21212-1-git-send-email-blogic@openwrt.org>
+Subject: Re: [PATCH 3/3] ARM64: dts: mt8173: Add thermal/auxadc device nodes
+Date: Wed, 20 Apr 2016 13:23:58 +0200
+Message-ID: <571766CE.2000202@gmail.com>
+References: <1448883753-19068-1-git-send-email-s.hauer@pengutronix.de>
+ <1448883753-19068-4-git-send-email-s.hauer@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1455871455-21212-1-git-send-email-blogic@openwrt.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <blogic@openwrt.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1448883753-19068-4-git-send-email-s.hauer@pengutronix.de>
+Sender: linux-pm-owner@vger.kernel.org
+To: Sascha Hauer <s.hauer@pengutronix.de>, linux-pm@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>
+Cc: linux-kernel@vger.kernel.org, kernel@pengutronix.de, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 19/02/16 09:44, John Crispin wrote:
-> This series adds support for the MT6323 PMIC and the MT2701/7623 SoC.
-> MT6323 is slightly different to the already supported PMIC. This series
-> makes a few changes to the code to allow easy addition of the new PMIC
-> and SoCs.
+On 30/11/15 12:42, Sascha Hauer wrote:
+> This adds the thermal controller and auxadc nodes to the Mediatek MT8173
+> dtsi file.
 >
-> Changes in V6
-> * 4/11 - make description verbose and rename init_special
-> * 6/11 - make description verbose
-> * 7/11 - make description verbose
-> * 8/11 - make description verbose
-> * 9/11 - put mt6397 specific dew registers in their own paragraph
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
 >
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 06a1564..e2ddd03 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -277,6 +277,11 @@
+>   				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+>   		};
 >
-> John Crispin (11):
->    dt-bindings: ARM: Mediatek: add MT2701/7623 string to the PMIC
->      wrapper doc
->    soc: mediatek: PMIC wrap: don't duplicate the wrapper data
->    soc: mediatek: PMIC wrap: add wrapper callbacks for init_reg_clock
->    soc: mediatek: PMIC wrap: split SoC specific init into callback
->    soc: mediatek: PMIC wrap: WRAP_INT_EN needs a different bitmask for
->      MT2701/7623
->    soc: mediatek: PMIC wrap: SPI_WRITE needs a different bitmask for
->      MT2701/7623
->    soc: mediatek: PMIC wrap: move wdt_src into the pmic_wrapper_type
->      struct
->    soc: mediatek: PMIC wrap: remove pwrap_is_mt8135() and
->      pwrap_is_mt8173()
->    soc: mediatek: PMIC wrap: add a slave specific struct
->    soc: mediatek: PMIC wrap: add mt6323 slave support
->    soc: mediatek: PMIC wrap: add MT2701/7623 support
+> +		auxadc: auxadc@11001000 {
+> +			compatible = "mediatek,mt8173-auxadc";
+> +			reg = <0 0x11001000 0 0x1000>;
+> +		};
+> +
+>   		uart0: serial@11002000 {
+>   			compatible = "mediatek,mt8173-uart",
+>   				     "mediatek,mt6577-uart";
+> @@ -487,6 +492,18 @@
+>   			clock-names = "source", "hclk";
+>   			status = "disabled";
+>   		};
+> +
+> +		thermal: thermal@1100b000 {
+> +			#thermal-sensor-cells = <0>;
+> +			compatible = "mediatek,mt8173-thermal";
+> +			reg = <0 0x1100b000 0 0x1000>;
+> +			interrupts = <0 70 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
+> +			clock-names = "therm", "auxadc";
+> +			resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
+> +			mediatek,auxadc = <&auxadc>;
+> +			mediatek,apmixedsys = <&apmixedsys>;
+> +		};
+>   	};
+>   };
 >
->   .../devicetree/bindings/soc/mediatek/pwrap.txt     |    1 +
->   drivers/soc/mediatek/mtk-pmic-wrap.c               |  544 +++++++++++++++-----
->   2 files changed, 414 insertions(+), 131 deletions(-)
 >
 
-Applied, thanks!
+Applied with the ACK from Eduardo.
+Thanks.
