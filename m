@@ -1,49 +1,88 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] ARM: mediatek: enable gpt6 on boot up to make arch timer
- work on mt7623
-Date: Wed, 20 Apr 2016 13:59:12 +0200
-Message-ID: <57176F10.3010202@gmail.com>
-References: <1460053115-53448-1-git-send-email-blogic@openwrt.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2 v6] ASoC: mediatek: Add second I2S on mt8173-rt5650
+ machine driver
+Date: Wed, 20 Apr 2016 15:30:42 +0200
+Message-ID: <57178482.9090705@gmail.com>
+References: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
+ <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1460053115-53448-1-git-send-email-blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: PC Liao <pc.liao@mediatek.com>, broonie@kernel.org, tiwai@suse.de
+Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/04/16 20:18, John Crispin wrote:
-> GPT6 needs to be enabled on MT7623 for the arch timer to work.
+On 20/04/16 08:40, PC Liao wrote:
+> This patch adds second I2S connection to rt5650 codec for capture path on
+> mt8173-rt5650 machine driver.
 >
-> Signed-off-by: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: PC Liao <pc.liao@mediatek.com>
 > ---
->   arch/arm/mach-mediatek/mediatek.c |    1 +
->   1 file changed, 1 insertion(+)
+>   .../devicetree/bindings/sound/mt8173-rt5650.txt    |    6 +++
+>   sound/soc/mediatek/mt8173-rt5650.c                 |   44 ++++++++++++++++++--
+>   2 files changed, 47 insertions(+), 3 deletions(-)
 >
-> diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
-> index 9c2e38d..a6e3c98 100644
-> --- a/arch/arm/mach-mediatek/mediatek.c
-> +++ b/arch/arm/mach-mediatek/mediatek.c
-> @@ -29,6 +29,7 @@ static void __init mediatek_timer_init(void)
->   	void __iomem *gpt_base;
+> diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> index fe5a5ef..802dd1b 100644
+> --- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> +++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+> @@ -5,11 +5,17 @@ Required properties:
+>   - mediatek,audio-codec: the phandles of rt5650 codecs
+>   - mediatek,platform: the phandle of MT8173 ASoC platform
 >
->   	if (of_machine_is_compatible("mediatek,mt6589") ||
-> +	    of_machine_is_compatible("mediatek,mt7623") ||
->   	    of_machine_is_compatible("mediatek,mt8135") ||
->   	    of_machine_is_compatible("mediatek,mt8127")) {
->   		/* turn on GPT6 which ungates arch timer clocks */
+> +Optional properties:
+> +- capture-dai: audio codec dai on capture path
+> +  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
+> +  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
+> +
+>   Example:
 >
+>   	sound {
+>   		compatible = "mediatek,mt8173-rt5650";
+>   		mediatek,audio-codec = <&rt5650>;
+>   		mediatek,platform = <&afe>;
+> +		capture-dai = <&rt5650 1>;
+>   	};
+>
+> diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
+> index bb09bb1..45dea22 100644
+> --- a/sound/soc/mediatek/mt8173-rt5650.c
+> +++ b/sound/soc/mediatek/mt8173-rt5650.c
+> @@ -85,12 +85,26 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
+>   {
+>   	struct snd_soc_card *card = runtime->card;
+>   	struct snd_soc_codec *codec = runtime->codec_dais[0]->codec;
+> +	const char *codec_dai_capture = runtime->codec_dais[1]->name;
+>   	int ret;
+>
+>   	rt5645_sel_asrc_clk_src(codec,
+> -				RT5645_DA_STEREO_FILTER |
+> -				RT5645_AD_STEREO_FILTER,
+> +				RT5645_DA_STEREO_FILTER,
+>   				RT5645_CLK_SEL_I2S1_ASRC);
+> +
+> +	if (!strcmp(codec_dai_capture, "rt5645-aif1")) {
+> +		rt5645_sel_asrc_clk_src(codec,
+> +					RT5645_AD_STEREO_FILTER,
+> +					RT5645_CLK_SEL_I2S1_ASRC);
+> +	} else if (!strcmp(codec_dai_capture, "rt5645-aif2")) {
+> +		rt5645_sel_asrc_clk_src(codec,
+> +					RT5645_AD_STEREO_FILTER,
+> +					RT5645_CLK_SEL_I2S2_ASRC);
+> +	} else {
 
-Applied thanks.
+For compatibility you should change this to something like:
+
+    dev_warn(card->dev, "Only one dai codec found in DTS, enabled rt5645
+                         AD filter\n");
+    rt5645_sel_asrc_clk_src(codec, RT5645_AD_STEREO_FILTER,
+                                   RT5645_CLK_SEL_I2S1_ASRC);
+}
+
+Regards,
+Matthias
