@@ -1,31 +1,56 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [alsa-devel] [RFC PATCH v2 2/5] ASoC: mediatek: add documents for
- mt2701
-Date: Wed, 20 Apr 2016 12:36:18 +0200
-Message-ID: <57175BA2.4070706@gmail.com>
-References: <1460636070-37426-1-git-send-email-garlic.tseng@mediatek.com>
- <1460636070-37426-3-git-send-email-garlic.tseng@mediatek.com>
+Subject: Re: [PATCH V6 00/11] soc: mediatek: PMIC wrap: add MT6323/2701/7623
+ support
+Date: Wed, 20 Apr 2016 13:07:44 +0200
+Message-ID: <57176300.8050505@gmail.com>
+References: <1455871455-21212-1-git-send-email-blogic@openwrt.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1460636070-37426-3-git-send-email-garlic.tseng@mediatek.com>
+In-Reply-To: <1455871455-21212-1-git-send-email-blogic@openwrt.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>, broonie@kernel.org, tiwai@suse.de
-Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: John Crispin <blogic@openwrt.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, Flora Fu <flora.fu@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 14/04/16 14:14, Garlic Tseng wrote:
-[...]
+On 19/02/16 09:44, John Crispin wrote:
+> This series adds support for the MT6323 PMIC and the MT2701/7623 SoC.
+> MT6323 is slightly different to the already supported PMIC. This series
+> makes a few changes to the code to allow easy addition of the new PMIC
+> and SoCs.
+>
+> Changes in V6
+> * 4/11 - make description verbose and rename init_special
+> * 6/11 - make description verbose
+> * 7/11 - make description verbose
+> * 8/11 - make description verbose
+> * 9/11 - put mt6397 specific dew registers in their own paragraph
+>
+>
+> John Crispin (11):
+>    dt-bindings: ARM: Mediatek: add MT2701/7623 string to the PMIC
+>      wrapper doc
+>    soc: mediatek: PMIC wrap: don't duplicate the wrapper data
+>    soc: mediatek: PMIC wrap: add wrapper callbacks for init_reg_clock
+>    soc: mediatek: PMIC wrap: split SoC specific init into callback
+>    soc: mediatek: PMIC wrap: WRAP_INT_EN needs a different bitmask for
+>      MT2701/7623
+>    soc: mediatek: PMIC wrap: SPI_WRITE needs a different bitmask for
+>      MT2701/7623
+>    soc: mediatek: PMIC wrap: move wdt_src into the pmic_wrapper_type
+>      struct
+>    soc: mediatek: PMIC wrap: remove pwrap_is_mt8135() and
+>      pwrap_is_mt8173()
+>    soc: mediatek: PMIC wrap: add a slave specific struct
+>    soc: mediatek: PMIC wrap: add mt6323 slave support
+>    soc: mediatek: PMIC wrap: add MT2701/7623 support
+>
+>   .../devicetree/bindings/soc/mediatek/pwrap.txt     |    1 +
+>   drivers/soc/mediatek/mtk-pmic-wrap.c               |  544 +++++++++++++++-----
+>   2 files changed, 414 insertions(+), 131 deletions(-)
+>
 
-> diff --git a/Documentation/devicetree/bindings/sound/mtk2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mtk2701-afe-pcm.txt
-> new file mode 100644
-
-Nit:
-I would prefer to name it mt2701-afe-pcm.txt as all the other SoC 
-specific files.
-
-Regards,
-Matthias
+Applied, thanks!
