@@ -1,42 +1,31 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: Re: [PATCH 2/2 v6] ASoC: mediatek: Add second I2S on mt8173-rt5650
- machine driver
-Date: Wed, 20 Apr 2016 17:39:50 +0800
-Message-ID: <1461145190.3774.5.camel@mtksdaap41>
-References: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
-	 <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
-	 <20160420082917.GH3217@sirena.org.uk>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [alsa-devel] [RFC PATCH v2 2/5] ASoC: mediatek: add documents for
+ mt2701
+Date: Wed, 20 Apr 2016 12:36:18 +0200
+Message-ID: <57175BA2.4070706@gmail.com>
+References: <1460636070-37426-1-git-send-email-garlic.tseng@mediatek.com>
+ <1460636070-37426-3-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160420082917.GH3217@sirena.org.uk>
+In-Reply-To: <1460636070-37426-3-git-send-email-garlic.tseng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: "tiwai@suse.de" <tiwai@suse.de>, srv_heupstream <srv_heupstream@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>, Koro Chen =?UTF-8?Q?=28=E9=99=B3=E6=80=9D=E7=BF=B0=29?= <koro.chen@mediatek.com>
+To: Garlic Tseng <garlic.tseng@mediatek.com>, broonie@kernel.org, tiwai@suse.de
+Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
 
-On Wed, 2016-04-20 at 16:29 +0800, Mark Brown wrote:
-> On Wed, Apr 20, 2016 at 02:40:47PM +0800, PC Liao wrote:
-> 
-> > +Optional properties:
-> > +- capture-dai: audio codec dai on capture path
-> > +  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
-> > +  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
-> 
-> I sugggested changing this to use a subnode but you've ignored my
-> suggestion...
 
-Sorry.... It's my mistake.
+On 14/04/16 14:14, Garlic Tseng wrote:
+[...]
 
-You mean that using a subnode.
-This is my example:
+> diff --git a/Documentation/devicetree/bindings/sound/mtk2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mtk2701-afe-pcm.txt
+> new file mode 100644
 
-  codec-capture {
-	  sound-dai = <&rt5650 1>;
-  };
+Nit:
+I would prefer to name it mt2701-afe-pcm.txt as all the other SoC 
+specific files.
 
-Does this is your suggestion?
-Thanks!
+Regards,
+Matthias
