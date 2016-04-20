@@ -1,85 +1,41 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: MediaTek: Add binding document for the
- AUXADC
-Date: Wed, 20 Apr 2016 13:24:09 +0200
-Message-ID: <571766D9.2030207@gmail.com>
-References: <1455866326-15095-1-git-send-email-s.hauer@pengutronix.de>
- <20160223203254.GA14660@rob-hp-laptop> <56CDBFFE.9050406@gmail.com>
- <20160224151204.GP3939@pengutronix.de> <56CDF7AB.7050201@gmail.com>
- <20160307065233.GA21851@pengutronix.de> <56EACFC0.5000300@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [RESEND][PATCH 1/3] thermal: mediatek: Add cpu dynamic power
+ cooling model.
+Date: Wed, 20 Apr 2016 13:58:07 +0200
+Message-ID: <57176ECF.6020705@gmail.com>
+References: <1458029437-12846-1-git-send-email-dawei.chien@mediatek.com>
+ <1458029437-12846-2-git-send-email-dawei.chien@mediatek.com>
+ <20160412053807.GT16238@vireshk-i7>
+ <CAJZ5v0hpkyMCVhvYy4JzR1A5OZKs7dqDOB64aQXmjXiLM0F=BQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56EACFC0.5000300-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <CAJZ5v0hpkyMCVhvYy4JzR1A5OZKs7dqDOB64aQXmjXiLM0F=BQ@mail.gmail.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>
+Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Dawei Chien <dawei.chien@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Lezcano <daniel.lezcano@linaro.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Rafael,
 
-
-On 17/03/16 16:39, Matthias Brugger wrote:
-> Hi Sascha,
->
-> On 07/03/16 07:52, Sascha Hauer wrote:
->> On Wed, Feb 24, 2016 at 07:34:19PM +0100, Matthias Brugger wrote:
->>>
->>>
->>> On 24/02/16 16:12, Sascha Hauer wrote:
->>>> Hi Matthias,
->>>>
->>>> On Wed, Feb 24, 2016 at 03:36:46PM +0100, Matthias Brugger wrote:
->>>>>
->>>>>
->>>>> On 23/02/16 21:32, Rob Herring wrote:
->>>>>> On Fri, Feb 19, 2016 at 08:18:46AM +0100, Sascha Hauer wrote:
->>>>>>> Signed-off-by: Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
->>>>>>> ---
->>>>>>>
->>>>>>> This is a supplement to the MTK Thermal series which was lacking the
->>>>>>> description for the AUXADC.
->>>>>>
->>>>>> So it will be applied with that I presume.
->>>>>>
->>>>>> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->>>>>>
->>>>>
->>>>> Well the basic problem that I see is, that the auxadc has some more
->>>>> registers (at least in mt6589) for the touch screen registers.
->>>>> So this makes it a candidate for syscon and regmap.
->>>>> But this needs a patch in the thermal driver first...
->>>>
->>>> When we want to have a driver for the auxadc we are free to write one.
->>>> No need to use syscon and/or regmap for it.
->>>>
->>>> Note that the auxadc is not used by the thermal *driver*, it's used by
->>>> the thermal *hardware*. It's the hardware that directly reads/writes
->>>> auxadc registers. If MTK did it right then a real auxadc driver should
->>>> not be disturbed by the thermal controller accesses. At least from
->>>
->>> Right, didn't realize this.
->>>
->>>> checking the datasheet the registers the thermal controller accesses
->>>> are completely orthogonal to the ones a auxadc driver would use.
->>>>
->>>
->>> As you already explained, syscon/regmap is not needed here. Just for
->>> completion: we already had completely orthogonal registers for the reset
->>> controller, and we decided to use regmap there as well.
->>> We should stay consistent on this.
+On 13/04/16 06:52, Rafael J. Wysocki wrote:
+> On Tue, Apr 12, 2016 at 7:38 AM, Viresh Kumar <viresh.kumar@linaro.org> wrote:
+>> Hi Rafael,
 >>
->> Matthias, is this some kind of action topic for me? We can use regmap
->> for the AUXADC driver if we want to, I have no problem with that.
+>> On 15-03-16, 16:10, Dawei Chien wrote:
+>>> MT8173 cpufreq driver select of_cpufreq_power_cooling_register registering
+>>> cooling devices with dynamic power coefficient.
+>>>
+>>> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+>>> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 >>
+>> Can you please apply this patch from Dawei ?
 >
-> No, no need for that, I will take the patch as is. I will let you know
-> when it got queued.
+> I can, but I'm traveling this week, so that's rather going to happen next week.
 >
-> Sorry for the delay.
 
-Applied, thanks.
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+I don't see the patch in linux-next, did you forget to pick/push it?
+
+Regards,
+Matthias
