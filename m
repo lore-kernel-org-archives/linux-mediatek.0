@@ -1,70 +1,63 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 2/2 v6] ASoC: mediatek: Add second I2S on
- mt8173-rt5650 machine driver
-Date: Wed, 20 Apr 2016 09:29:17 +0100
-Message-ID: <20160420082917.GH3217@sirena.org.uk>
-References: <1461134447-42001-1-git-send-email-pc.liao@mediatek.com>
- <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v15 0/6] MT8173 HDMI support
+Date: Wed, 20 Apr 2016 10:49:24 +0200
+Message-ID: <1461142170-23946-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1978703617254817036=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1461134447-42001-3-git-send-email-pc.liao@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: PC Liao <pc.liao@mediatek.com>
-Cc: alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, tiwai@suse.de, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============1978703617254817036==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="caC6Ojpb5aKGbDVu"
-Content-Disposition: inline
-
-
---caC6Ojpb5aKGbDVu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Apr 20, 2016 at 02:40:47PM +0800, PC Liao wrote:
-
-> +Optional properties:
-> +- capture-dai: audio codec dai on capture path
-> +  <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
-> +  <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
-
-I sugggested changing this to use a subnode but you've ignored my
-suggestion...
-
---caC6Ojpb5aKGbDVu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXFz3bAAoJECTWi3JdVIfQ1TAH/RTZ74H/1+D4Pg07yV1ONzqd
-hDrnYVrZlSr1kyxqWyoynvfyXmNsK1on7EqajK1BGJlSe5Idp1vJ9ymRU8ZvbGhk
-+NdexYG3maQREHx9BKOmaXCaHnAQHEYSwcAqm6G31LiqCcFTvihAaQbd4amjqdm2
-4tYyCz+IkbdHAIg/mThp0sgkz20mUtSyffp7J+R1bDLqX4HeNYfNyax0QcTxjexC
-Lnhuwboo/x4PPVJrilfRAvLaRMIefS6K7H/WgQgCZdXNv+so121J/FX1x2YlQ6A1
-2zz+qCh2M2dEkw/fiG5YHZqNFjLrD+iogtyZHFxUM7fL+NUbUZYYtTwHRhWfieM=
-=O//j
------END PGP SIGNATURE-----
-
---caC6Ojpb5aKGbDVu--
-
---===============1978703617254817036==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============1978703617254817036==--
+VGhpcyBzZXJpZXMgY29udGFpbnMgdGhlIEhETUkgZW5jb2RlciwgUEhZLCBhbmQgRERDIGRyaXZl
+cnMgc3BsaXQgb3V0CmZyb20gdGhlICJNVDgxNzMgRFJNIHN1cHBvcnQiIHNlcmllcy4gSXQgbm93
+IGRlcGVuZHMgb24gdGhlIHJlY2VudGx5Cm1lcmdlZCBoZG1pLWNvZGVjIFsxXSBkcml2ZXIsIHRv
+IHdoaWNoIGl0IGludGVyZmFjZXMgZm9yIGF1ZGlvIHBsYXliYWNrLgoKWzFdIGNvbW1pdCAwOTE4
+NDExOGE4YWIgKCJBU29DOiBoZG1pLWNvZGVjOiBBZGQgaGRtaS1jb2RlYyBmb3IgZXh0ZXJuYWwg
+SERNSS1lbmNvZGVycyIpCiAgICBvZiBnaXQ6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
+L2tlcm5lbC9naXQvYnJvb25pZS9zb3VuZC5naXQKCkNoYW5nZXMgc2luY2UgdjE0OgogLSBTZWxl
+Y3QgSERNSV9DT0RFQwogLSBBZGQgaGRtaS1jb2RlYyBpbnRlcmZhY2UKIC0gU2ltcGxpZnkgbXRr
+X2hkbWlfaHdfYXVkX3NldF9jaGFubmVsX3N0YXR1cwoKcmVnYXJkcwpQaGlsaXBwCgpDSyBIdSAo
+MSk6CiAgYXJtNjQ6IGR0czogbXQ4MTczOiBBZGQgSERNSSByZWxhdGVkIG5vZGVzCgpKaWUgUWl1
+ICgyKToKICBkcm0vbWVkaWF0ZWs6IEFkZCBIRE1JIHN1cHBvcnQKICBkcm0vbWVkaWF0ZWs6IGVu
+YWJsZSBoZG1pIG91dHB1dCBjb250cm9sIGJpdAoKUGhpbGlwcCBaYWJlbCAoMyk6CiAgZHQtYmlu
+ZGluZ3M6IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhETUkgZHRzIGJpbmRpbmcKICBkdC1i
+aW5kaW5nczogaGRtaS1jb25uZWN0b3I6IGFkZCBEREMgSTJDIGJ1cyBwaGFuZGxlIGRvY3VtZW50
+YXRpb24KICBhcm02NDogZHRzOiBtdDgxNzMtZXZiOiBlbmFibGUgSERNSSBvdXRwdXQKCiAuLi4v
+YmluZGluZ3MvZGlzcGxheS9jb25uZWN0b3IvaGRtaS1jb25uZWN0b3IudHh0ICB8ICAgIDEgKwog
+Li4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS50eHQgICAgfCAgMTQ4
+ICsrCiBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My1ldmIuZHRzICAgICAgICB8
+ICAgMzggKwogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRzaSAgICAgICAg
+ICAgfCAgIDc3ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAg
+ICAgICAgIHwgICAgOCArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUgICAgICAg
+ICAgICAgICAgICB8ICAgIDcgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuYyAg
+ICAgICAgICAgICAgICAgfCAgMjY1ICsrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19j
+ZWMuaCAgICAgICAgICAgICAgICAgfCAgIDI2ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfaGRtaS5jICAgICAgICAgICAgICAgIHwgMTgzNSArKysrKysrKysrKysrKysrKysrKwogZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmggICAgICAgICAgICAgICAgfCAgIDIzICsK
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9kZGMuYyAgICAgICAgICAgIHwgIDM1
+OCArKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcmVncy5oICAgICAgICAg
+ICB8ICAyMzggKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3Bo
+eS5jICAgICB8ICA1MTUgKysrKysrCiAxMyBmaWxlcyBjaGFuZ2VkLCAzNTM5IGluc2VydGlvbnMo
+KykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
+ZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxoZG1pLnR4dAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9kZGMuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9yZWdzLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCgotLSAKMi44LjAu
+cmMzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
