@@ -1,31 +1,60 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH v8] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
-Date: Thu, 21 Apr 2016 19:38:14 +0800
-Message-ID: <1461238694-46035-1-git-send-email-pc.liao@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver" to the asoc tree
+Date: Thu, 21 Apr 2016 17:11:28 +0100
+Message-ID: <E1atHCS-0002xe-NX@debutante>
+References: <1461238694-46035-1-git-send-email-pc.liao@mediatek.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1461238694-46035-1-git-send-email-pc.liao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC Liao <pc.liao@mediatek.com>
+To: PC Liao <pc.liao@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
+
+The patch
+
+   ASoC: mediatek: Add second I2S on mt8173-rt5650 machine driver
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From d349caeb05104ef01392abc6c7cfc8ab516c7be4 Mon Sep 17 00:00:00 2001
+From: PC Liao <pc.liao@mediatek.com>
+Date: Thu, 21 Apr 2016 19:38:14 +0800
+Subject: [PATCH] ASoC: mediatek: Add second I2S on mt8173-rt5650 machine
+ driver
 
 This patch adds second I2S connection to rt5650 codec for capture path on
 mt8173-rt5650 machine driver.
 
 Signed-off-by: PC Liao <pc.liao@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
-Changes since v7:
-Change the code for compatibility
-Changes since v6:
-Use subnode to determine the capture path
----
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |   10 ++++
- sound/soc/mediatek/mt8173-rt5650.c                 |   50 ++++++++++++++++++--
+ .../devicetree/bindings/sound/mt8173-rt5650.txt    | 10 +++++
+ sound/soc/mediatek/mt8173-rt5650.c                 | 50 ++++++++++++++++++++--
  2 files changed, 57 insertions(+), 3 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-index fe5a5ef..5bfa6b6 100644
+index fe5a5ef1714d..5bfa6b60530b 100644
 --- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
 +++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
 @@ -5,11 +5,21 @@ Required properties:
@@ -51,7 +80,7 @@ index fe5a5ef..5bfa6b6 100644
  	};
  
 diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-index bb09bb1..a27a667 100644
+index bb09bb1b7f1c..a27a6673dbe3 100644
 --- a/sound/soc/mediatek/mt8173-rt5650.c
 +++ b/sound/soc/mediatek/mt8173-rt5650.c
 @@ -85,12 +85,29 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
@@ -144,4 +173,4 @@ index bb09bb1..a27a667 100644
  	platform_set_drvdata(pdev, card);
  
 -- 
-1.7.9.5
+2.8.0.rc3
