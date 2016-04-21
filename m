@@ -1,81 +1,104 @@
-From: dawei chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [RESEND][PATCH 3/3] arm64: dts: mt8173: Add dynamic power node.
-Date: Thu, 21 Apr 2016 12:12:51 +0800
-Message-ID: <1461211971.16427.4.camel@mtksdaap41>
-References: <1458029437-12846-1-git-send-email-dawei.chien@mediatek.com>
-	 <1458029437-12846-4-git-send-email-dawei.chien@mediatek.com>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2] iommu/dma: Finish optimising higher-order allocations
+Date: Thu, 21 Apr 2016 13:47:24 +0800
+Message-ID: <1461217644.19705.10.camel@mhfsdcap03>
+References: <89763f6b1ac684c3d8712e38760bec55b7885e3b.1460048991.git.robin.murphy@arm.com>
+ <3e4572cb0a175061c1c4b436e3806ba9d7b9f199.1460563676.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1458029437-12846-4-git-send-email-dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: "Rafael J. Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Punit Agrawal <punit.agrawal-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <3e4572cb0a175061c1c4b436e3806ba9d7b9f199.1460563676.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-03-15 at 16:10 +0800, Dawei Chien (=E9=8C=A2=E5=A4=A7=E8=A1=
-=9B) wrote:
-> This device node is for calculating dynamic power in mW.
-> Since mt8173 has two clusters, there are two dynamic power
-> coefficient as well.
->=20
-> Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+On Wed, 2016-04-13 at 17:29 +0100, Robin Murphy wrote:
+> Now that we know exactly which page sizes our caller wants to use in the
+> given domain, we can restrict higher-order allocation attempts to just
+> those sizes, if any, and avoid wasting any time or effort on other sizes
+> which offer no benefit. In the same vein, this also lets us accommodate
+> a minimum order greater than 0 for special cases.
+> 
+> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+
+Hi Robin,
+
+    Thanks very much for this patch. It works well on our MT8173.
+
+    Tested-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> 
+
 > ---
-> This patch is base on patchset:
-> https://lkml.org/lkml/2015/11/17/251
+> 
+> Just throwing this out as a quick solo update as I'm still expecting
+> discussion on the rest of the series.
+> 
+[...]
+>  	while (count) {
+>  		struct page *page = NULL;
+> -		int j;
+> +		unsigned int order_size;
+>  
+>  		/*
+>  		 * Higher-order allocations are a convenience rather
+>  		 * than a necessity, hence using __GFP_NORETRY until
+> -		 * falling back to single-page allocations.
+> +		 * falling back to minimum-order allocations.
+>  		 */
+> -		for (order = min_t(unsigned int, order, __fls(count));
+> -		     order > 0; order--) {
+> -			page = alloc_pages(gfp | __GFP_NORETRY, order);
+> +		for (order_mask &= (2U << __fls(count)) - 1;
+> +		     order_mask; order_mask &= ~order_size) {
+> +			unsigned int order = __fls(order_mask);
+> +
+> +			order_size = 1U << order;
+> +			page = alloc_pages((order_mask - order_size) ?
+> +					   gfp | __GFP_NORETRY : gfp, order);
+>  			if (!page)
+>  				continue;
+> -			if (PageCompound(page)) {
+> -				if (!split_huge_page(page))
+> -					break;
+> -				__free_pages(page, order);
+> -			} else {
+> +			if (!order)
+> +				break;
 
-Sorry for miss one dependence for this device node.
-https://lkml.org/lkml/2015/7/9/206
+I also added this "if" in my old code. I don't know much about
+PageCompound and split_page, but from Will's suggestion[1], this "if" is
+unnecessary.
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi |    4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/bo=
-ot/dts/mediatek/mt8173.dtsi
-> index f9c44cc..5cb6b4e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -71,6 +71,7 @@
->                         #cooling-cells =3D <2>;
->                         #cooling-min-level =3D <0>;
->                         #cooling-max-level =3D <7>;
-> +                       dynamic-power-coefficient =3D <263>;
->                 };
->=20
->                 cpu1: cpu@1 {
-> @@ -95,6 +96,7 @@
->                         #cooling-cells =3D <2>;
->                         #cooling-min-level =3D <0>;
->                         #cooling-max-level =3D <7>;
-> +                       dynamic-power-coefficient =3D <263>;
->                 };
->=20
->                 cpu2: cpu@100 {
-> @@ -119,6 +121,7 @@
->                         #cooling-cells =3D <2>;
->                         #cooling-min-level =3D <0>;
->                         #cooling-max-level =3D <7>;
-> +                       dynamic-power-coefficient =3D <530>;
->                 };
->=20
->                 cpu3: cpu@101 {
-> @@ -143,6 +146,7 @@
->                         #cooling-cells =3D <2>;
->                         #cooling-min-level =3D <0>;
->                         #cooling-max-level =3D <7>;
-> +                       dynamic-power-coefficient =3D <530>;
->                 };
->=20
->                 idle-states {
-> --
-> 1.7.9.5
->=20
+[1]:http://lists.linuxfoundation.org/pipermail/iommu/2016-April/016422.html
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" i=
-n
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +			if (!PageCompound(page)) {
+>  				split_page(page, order);
+>  				break;
+> +			} else if (!split_huge_page(page)) {
+> +				break;
+>  			}
+> +			__free_pages(page, order);
+>  		}
+> -		if (!page)
+> -			page = alloc_page(gfp);
+>  		if (!page) {
+>  			__iommu_dma_free_pages(pages, i);
+>  			return NULL;
+>  		}
+> -		j = 1 << order;
+> -		count -= j;
+> -		while (j--)
+> +		count -= order_size;
+> +		while (order_size--)
+>  			pages[i++] = page++;
+>  	}
+[...]
