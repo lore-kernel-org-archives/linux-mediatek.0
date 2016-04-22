@@ -1,21 +1,21 @@
 From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v7 6/8] [media] vcodec: mediatek: Add Mediatek VP8 Video
+Subject: Re: [PATCH v7 7/8] [media] vcodec: mediatek: Add Mediatek H264 Video
  Encoder Driver
-Date: Fri, 22 Apr 2016 15:50:38 +0800
-Message-ID: <201604221555.2coNqrLX%fengguang.wu@intel.com>
-References: <1461299131-57851-7-git-send-email-tiffany.lin@mediatek.com>
+Date: Fri, 22 Apr 2016 16:05:48 +0800
+Message-ID: <201604221647.1smOH44j%fengguang.wu@intel.com>
+References: <1461299131-57851-8-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="J/dobhs11T7y2rNN"
+Content-Type: multipart/mixed; boundary="Nq2Wo0NMKNjxTN9z"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1461299131-57851-7-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1461299131-57851-8-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---J/dobhs11T7y2rNN
+--Nq2Wo0NMKNjxTN9z
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -34,101 +34,47 @@ reproduce:
 
 All warnings (new ones prefixed by >>):
 
-   drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c: In function 'vp8_enc_alloc_work_buf':
->> drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:214:35: warning: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'size_t {aka unsigned int}' [-Wformat=]
-   drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c: In function 'vp8_enc_compose_one_frame':
->> drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:279:10: warning: format '%ld' expects argument of type 'long int', but argument 4 has type 'size_t {aka unsigned int}' [-Wformat=]
-      mtk_vcodec_err(inst, "bitstream buf size is too small(%ld)",
-             ^
+   drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c: In function 'h264_enc_alloc_work_buf':
+>> drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:299:35: warning: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'size_t {aka unsigned int}' [-Wformat=]
 
-vim +214 drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+vim +299 drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
 
-   208				tmp_va = vpu_mapping_dm_addr(inst->vpu_inst.dev,
-   209							     wb[i].vpua);
-   210				memcpy(inst->work_bufs[i].va, tmp_va, wb[i].size);
-   211			}
-   212			wb[i].iova = inst->work_bufs[i].dma_addr;
-   213	
- > 214			mtk_vcodec_debug(inst,
-   215					 "work_bufs[%d] va=0x%p,iova=0x%p,size=0x%lx",
-   216					 i, inst->work_bufs[i].va,
-   217					 (void *)inst->work_bufs[i].dma_addr,
-   218					 inst->work_bufs[i].size);
-   219		}
-   220	
-   221		mtk_vcodec_debug_leave(inst);
-   222	
-   223		return ret;
-   224	
-   225	err_alloc:
-   226		vp8_enc_free_work_buf(inst);
-   227	
-   228		return ret;
-   229	}
-   230	
-   231	static unsigned int vp8_enc_wait_venc_done(struct venc_vp8_inst *inst)
-   232	{
-   233		unsigned int irq_status = 0;
-   234		struct mtk_vcodec_ctx *ctx = (struct mtk_vcodec_ctx *)inst->ctx;
-   235	
-   236		if (!mtk_vcodec_wait_for_done_ctx(ctx, MTK_INST_IRQ_RECEIVED,
-   237						  WAIT_INTR_TIMEOUT_MS)) {
-   238			irq_status = ctx->irq_status;
-   239			mtk_vcodec_debug(inst, "isr return %x", irq_status);
-   240		}
-   241		return irq_status;
-   242	}
-   243	
-   244	/*
-   245	 * Compose ac_tag, bitstream header and bitstream payload into
-   246	 * one bitstream buffer.
-   247	 */
-   248	static int vp8_enc_compose_one_frame(struct venc_vp8_inst *inst,
-   249					     struct mtk_vcodec_mem *bs_buf,
-   250					     unsigned int *bs_size)
-   251	{
-   252		unsigned int not_key;
-   253		u32 bs_frm_size;
-   254		u32 bs_hdr_len;
-   255		unsigned int ac_tag_size;
-   256		u8 ac_tag[MAX_AC_TAG_SIZE];
-   257	
-   258		bs_frm_size = vp8_enc_read_reg(inst, VENC_BITSTREAM_FRAME_SIZE);
-   259		bs_hdr_len = vp8_enc_read_reg(inst, VENC_BITSTREAM_HEADER_LEN);
-   260	
-   261		/* if a frame is key frame, not_key is 0 */
-   262		not_key = !inst->vpu_inst.is_key_frm;
-   263		*(u32 *)ac_tag = __cpu_to_le32((bs_hdr_len << 5) | 0x10 | not_key);
-   264		/* key frame */
-   265		if (not_key == 0) {
-   266			ac_tag_size = MAX_AC_TAG_SIZE;
-   267			ac_tag[3] = 0x9d;
-   268			ac_tag[4] = 0x01;
-   269			ac_tag[5] = 0x2a;
-   270			ac_tag[6] = inst->vsi->config.pic_w;
-   271			ac_tag[7] = inst->vsi->config.pic_w >> 8;
-   272			ac_tag[8] = inst->vsi->config.pic_h;
-   273			ac_tag[9] = inst->vsi->config.pic_h >> 8;
-   274		} else {
-   275			ac_tag_size = 3;
-   276		}
-   277	
-   278		if (bs_buf->size < bs_hdr_len + bs_frm_size + ac_tag_size) {
- > 279			mtk_vcodec_err(inst, "bitstream buf size is too small(%ld)",
-   280				       bs_buf->size);
-   281			return -EINVAL;
-   282		}
+   283				 * This RC_CODE is pre-allocated by VPU and saved in VPU
+   284				 * addr. So we need use memcpy to copy RC_CODE from VPU
+   285				 * addr into IO virtual addr in 'iova' field for reg
+   286				 * setting in VPU side.
+   287				 */
+   288				if (i == VENC_H264_VPU_WORK_BUF_RC_CODE) {
+   289					void *tmp_va;
+   290	
+   291					tmp_va = vpu_mapping_dm_addr(inst->vpu_inst.dev,
+   292								     wb[i].vpua);
+   293					memcpy(inst->work_bufs[i].va, tmp_va,
+   294					       wb[i].size);
+   295				}
+   296			}
+   297			wb[i].iova = inst->work_bufs[i].dma_addr;
+   298	
+ > 299			mtk_vcodec_debug(inst,
+   300					 "work_buf[%d] va=0x%p iova=0x%p size=0x%lx",
+   301					 i, inst->work_bufs[i].va,
+   302					 (void *)inst->work_bufs[i].dma_addr,
+   303					 inst->work_bufs[i].size);
+   304		}
+   305	
+   306		/* the pps_buf is used by AP side only */
+   307		inst->pps_buf.size = 128;
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---J/dobhs11T7y2rNN
+--Nq2Wo0NMKNjxTN9z
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICErWGVcAAy5jb25maWcAjDxLc9w20vf9FVPOd9g9ONbbSn2lAwiCM8iQBA2QMyNdWIo0
+H4sICGraGVcAAy5jb25maWcAjDxLc9w20vf9FVPOd9g9ONbbSn2lAwiCM8iQBA2QMyNdWIo0
 jlUrS1lJzjr/frsBPhogOI4PttndAPHodzfnp3/8tGDf3p6/3r493N0+Pv61+H3/tH+5fdvf
 Lz4/PO7/f5GqRanqhUhl/TMQ5w9P375/eDi9vFic/Xzx89H7l7uTxXr/8rR/XPDnp88Pv3+D
 0Q/PT//4Cai5KjO5bC/OElkvHl4XT89vi9f92z86+O7yoj09ufqLPI8PsjS1bngtVdmmgqtU
@@ -1125,7 +1071,7 @@ bZx/SNATE4JVODuEFRwD3uKtP+M3SiiDpjHQr/xFpqhj+ksQC1VBw5dMInzy5zNzJTcRL7DO
 HdUr8xqtCoHDck28Yg3Txc+LAPHHqoHOf/pxVgz04acffcBA+GZEISQYQdNUAo7hyYbTn0Jm
 R0FNKqFUgK6Of/qvVRp4dfRzRda/Fm/7FOLKNY2BFodlpCpheKBqOoxuVP8PYEdHRtdYAwA=
 
---J/dobhs11T7y2rNN--
+--Nq2Wo0NMKNjxTN9z--
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
