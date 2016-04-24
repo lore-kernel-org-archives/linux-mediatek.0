@@ -1,105 +1,59 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: Re: [PATCH] mmc: mediatek: fix request blocked by
- cancel_delayed_work
-Date: Sat, 23 Apr 2016 17:43:50 +0800
-Message-ID: <1461404630.7081.9.camel@mhfsdcap03>
-References: <1460963609-16179-1-git-send-email-chaotian.jing@mediatek.com>
-	 <CAPDyKFrXVaq85sSQ+ib-U=rgdxB_k2tif0aHQi_0d8kZ2FZDcA@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Subject: [PATCH 00/12] nvmem: remove regmap dependency
+Date: Sun, 24 Apr 2016 20:28:04 +0100
+Message-ID: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFrXVaq85sSQ+ib-U=rgdxB_k2tif0aHQi_0d8kZ2FZDcA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Wolfram Sang <wsa@the-dreams.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Joachim Eastwood <manabian@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Fri, 2016-04-22 at 14:24 +0200, Ulf Hansson wrote:
-> On 18 April 2016 at 09:13, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> > there are 2 points will cause could not call mmc_request_done()
-> > and eventually cause the caller thread blocked.
-> >
-> > A. if card was busy, cancel_delayed_work() will return false because
-> > the delay work has not been scheduled, in this case, need put
-> > mod_delayed_work() in front of msdc_cmd_is_ready()
-> >
-> > B. if a request really need more than 5s(Some Sandisk TF card), it will
-> > use cancel_delayed_work() to cancel itself, and also return false, so use
-> > in_interrupt() to avoid this case
-> >
-> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> > ---
-> >  drivers/mmc/host/mtk-sd.c | 11 ++++++++---
-> >  1 file changed, 8 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> > index b17f30d..1511b1b 100644
-> > --- a/drivers/mmc/host/mtk-sd.c
-> > +++ b/drivers/mmc/host/mtk-sd.c
-> > @@ -724,7 +724,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
-> >         bool ret;
-> >
-> >         ret = cancel_delayed_work(&host->req_timeout);
-> > -       if (!ret) {
-> > +       if (!ret && in_interrupt()) {
-> >                 /* delay work already running */
-> >                 return;
-> >         }
-> > @@ -824,7 +824,12 @@ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
-> >         }
-> >
-> >         if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
-> > -               tmo = jiffies + msecs_to_jiffies(20);
-> > +               /*
-> > +                * 2550ms is from EXT_CSD[248], after switch to hs200,
-> > +                * using CMD13 to polling card status, it will get response
-> > +                * of 0x800, but EMMC still pull-low DAT0.
-> > +                */
-> 
-> Seems like you are solving a eMMC specific issue on your driver?
-> 
-> Perhaps we should try to use a card quirk instead?
+nvmem uses regmap_raw_read/write apis to read/write data from providers,
+With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
+and fix accessor usage") nvmem providers based on regmap-mmio stopped
+working, as nvmem core was using raw accessors.
+This issue can be fixed temporarly by moving to other regmap apis,
+but we might hit same issue in future, and regmap looks like an
+overdo for nvmem. Moving to interfaces based on read/write callbacks
+from providers would be more robust.
 
-Actually, this is a Bug of __mmc_switch(), Per JEDEC Spec, while switch
-speed mode, should not use CMD13 to get card status, as it's response
-cannot reflect that if card was busy now, for this CMD6 switch HS200
-case, I tried some Samsung/Sandisk/KSI eMMC, issue CMD13 will always get
-0x800, even eMMC has already changed to transfer state and DAT0 is high,
-the response of CMD13 is also 0x800, and will never be 0x900.
-So, in __mmc_switch(), it's a bug to use CMD13 to know that if card has
-already changed to transfer state.
-But, Our host do not support MMC_CAP_WAIT_WHILE_BUSY, that's why we hit
-this issue.
+This patchset converts the nvmem core and nvmem provider drivers to
+use the new callbacks. Tested this patchset on qfprom and at24 drivers.
+Other driver are only compile tested, any testing on them would be great.
 
-May you give some advice for this ?
-Thx!
-> 
-> 
-> > +               tmo = jiffies + msecs_to_jiffies(2550);
-> >                 /* R1B or with data, should check SDCBUSY */
-> >                 while ((readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) &&
-> >                                 time_before(jiffies, tmo))
-> > @@ -847,6 +852,7 @@ static void msdc_start_command(struct msdc_host *host,
-> >         WARN_ON(host->cmd);
-> >         host->cmd = cmd;
-> >
-> > +       mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
-> >         if (!msdc_cmd_is_ready(host, mrq, cmd))
-> >                 return;
-> >
-> > @@ -858,7 +864,6 @@ static void msdc_start_command(struct msdc_host *host,
-> >
-> >         cmd->error = 0;
-> >         rawcmd = msdc_cmd_prepare_raw_cmd(host, mrq, cmd);
-> > -       mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
-> >
-> >         sdr_set_bits(host->base + MSDC_INTEN, cmd_ints_mask);
-> >         writel(cmd->arg, host->base + SDC_ARG);
-> > --
-> > 1.8.1.1.dirty
-> >
-> 
-> Kind regards
-> Uffe
+Thanks,
+srini
+
+Srinivas Kandagatla (12):
+  nvmem: core: remove regmap dependency
+  eeprom: at24: remove nvmem regmap dependency
+  eeprom: at25: remove nvmem regmap dependency
+  nvmem: qfprom: remove nvmem regmap dependency
+  nvmem: vif610-ocotp: remove nvmem regmap dependency
+  nvmem: sunxi-sid: remove nvmem regmap dependency
+  nvmem: rockchip-efuse: remove nvmem regmap dependency
+  nvmem: mtk-efuse: remove nvmem regmap dependency
+  nvmem: imx-ocotp: remove nvmem regmap dependency
+  nvmem: lpc18xx-eeprom: remove nvmem regmap dependency
+  nvmem: mxs-ocotp: remove nvmem regmap dependency
+  nvmem: 93xx46: remove nvmem regmap dependency
+
+ drivers/misc/eeprom/Kconfig         |   2 -
+ drivers/misc/eeprom/at24.c          | 103 ++++++++----------------------------
+ drivers/misc/eeprom/at25.c          |  89 +++++++------------------------
+ drivers/misc/eeprom/eeprom_93xx46.c |  90 +++++++------------------------
+ drivers/nvmem/Kconfig               |   4 --
+ drivers/nvmem/core.c                |  67 +++++++++++++----------
+ drivers/nvmem/imx-ocotp.c           |  55 ++++---------------
+ drivers/nvmem/lpc18xx_eeprom.c      |  94 +++++++++-----------------------
+ drivers/nvmem/mtk-efuse.c           |  47 ++++++++++------
+ drivers/nvmem/mxs-ocotp.c           |  79 ++++++++-------------------
+ drivers/nvmem/qfprom.c              |  56 +++++++++++++-------
+ drivers/nvmem/rockchip-efuse.c      |  49 ++++-------------
+ drivers/nvmem/sunxi_sid.c           |  54 ++++---------------
+ drivers/nvmem/vf610-ocotp.c         |  44 ++++-----------
+ include/linux/nvmem-provider.h      |  10 ++++
+ 15 files changed, 264 insertions(+), 579 deletions(-)
+
+-- 
+2.5.0
