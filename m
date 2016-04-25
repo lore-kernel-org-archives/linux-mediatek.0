@@ -1,169 +1,104 @@
-From: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v7 2/8] [media] VPU: mediatek: support Mediatek VPU
-Date: Mon, 25 Apr 2016 17:22:03 +0800
-Message-ID: <1461576123.15167.3.camel@mtksdaap41>
-References: <1461299131-57851-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1461299131-57851-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1461299131-57851-3-git-send-email-tiffany.lin@mediatek.com>
-	 <571DCA04.8000703@xs4all.nl>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v3 1/2] mfd: mt6397: irq domain should initialize before
+ mfd_add_devices()
+Date: Mon, 25 Apr 2016 11:54:24 +0100
+Message-ID: <20160425105424.GA2713@dell>
+References: <1460709030-23820-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <571DCA04.8000703-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1460709030-23820-1-git-send-email-henryc.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-04-25 at 09:40 +0200, Hans Verkuil wrote:
-> On 04/22/2016 06:25 AM, Tiffany Lin wrote:
-> > From: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > The VPU driver for hw video codec embedded in Mediatek's MT8173 SOCs.
-> > It is able to handle video decoding/encoding of in a range of formats.
-> > The driver provides with VPU firmware download, memory management and
-> > the communication interface between CPU and VPU.
-> > For VPU initialization, it will create virtual memory for CPU access and
-> > IOMMU address for vcodec hw device access. When a decode/encode instance
-> > opens a device node, vpu driver will download vpu firmware to the device.
-> > A decode/encode instant will decode/encode a frame using VPU
-> > interface to interrupt vpu to handle decoding/encoding jobs.
-> > 
-> > Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > 
-> > ---
-> >  drivers/media/platform/Kconfig           |   13 +
-> >  drivers/media/platform/Makefile          |    2 +
-> >  drivers/media/platform/mtk-vpu/Makefile  |    3 +
-> >  drivers/media/platform/mtk-vpu/mtk_vpu.c |  950 ++++++++++++++++++++++++++++++
-> >  drivers/media/platform/mtk-vpu/mtk_vpu.h |  162 +++++
-> >  5 files changed, 1130 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-vpu/Makefile
-> >  create mode 100755 drivers/media/platform/mtk-vpu/mtk_vpu.c
-> >  create mode 100644 drivers/media/platform/mtk-vpu/mtk_vpu.h
-> > 
-> 
-> 
-> > +int vpu_load_firmware(struct platform_device *pdev)
-> > +{
-> > +	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-> > +	struct device *dev = &pdev->dev;
-> > +	struct vpu_run *run = &vpu->run;
-> > +	const struct firmware *vpu_fw;
-> > +	int ret;
-> > +
-> > +	if (!pdev) {
-> > +		dev_err(dev, "VPU platform device is invalid\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	ret = vpu_clock_enable(vpu);
-> > +	if (ret) {
-> > +		dev_err(dev, "enable clock failed %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	mutex_lock(&vpu->vpu_mutex);
-> > +
-> > +	if (vpu_running(vpu)) {
-> > +		mutex_unlock(&vpu->vpu_mutex);
-> > +		vpu_clock_disable(vpu);
-> > +		dev_warn(dev, "vpu is running already\n");
-> 
-> This warning should be dropped. Currently vpu_load_firmware is called
-> every time the video device is opened and no one else has the video device
-> open. So calling this multiple times is perfectly normal and the log shouldn't
-> be spammed with warnings.
-> 
-> I would recommend adding a fw_loaded bool to struct mtk_vpu and just
-> check that at the beginning of this function and just return 0 if it is true.
-> 
-> Then you don't need to enable the vpu clock either.
-> 
-> I hope I understand the hw correctly, though.
-> 
-> Assuming you can do this, then this code from the v4l driver needs an
-> additional comment:
+On Fri, 15 Apr 2016, Henry Chen wrote:
 
-We will change this in next version.
+> Some sub driver like RTC module need irq domain from parent to create
+> irq mapping when driver initialize. so move mt6397_irq_init() before
+> mfd_add_devices().
+>=20
+> Acked-by: John Crispin <blogic@openwrt.org>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+> ---
+> This series fixed the below warning based on "Linux kernel v4.6-rc1"
+> WARNING: CPU: 1 PID: 132 at kernel/mediatek/kernel/irq/irqdomain.c:47=
+1
+> irq_create_mapping+0xc4/0xd0
+> =20
+> Changes in V2: Add two patch for error handle checking.
+> Changes in V3: Add interrupt as required properties to dt-bindings do=
+c
+> ---
+>  drivers/mfd/mt6397-core.c | 22 +++++++++++++---------
+>  1 file changed, 13 insertions(+), 9 deletions(-)
 
-> 
-> >>> +	if (v4l2_fh_is_singular(&ctx->fh)) {
-> 
-> Add a comment here that says that vpu_load_firmware checks if it was
-> loaded already and does nothing in that case.
+Applied, thanks.
 
-We will change this in next version. Thanks
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 8e8d932..b2faf56 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -267,15 +267,23 @@ static int mt6397_probe(struct platform_device =
+*pdev)
+>  	ret =3D regmap_read(pmic->regmap, MT6397_CID, &id);
+>  	if (ret) {
+>  		dev_err(pmic->dev, "Failed to read chip id: %d\n", ret);
+> -		goto fail_irq;
+> +		return ret;
+>  	}
+> =20
+> +	pmic->irq =3D platform_get_irq(pdev, 0);
+> +	if (pmic->irq <=3D 0)
+> +		return pmic->irq;
+> +
+>  	switch (id & 0xff) {
+>  	case MT6323_CID_CODE:
+>  		pmic->int_con[0] =3D MT6323_INT_CON0;
+>  		pmic->int_con[1] =3D MT6323_INT_CON1;
+>  		pmic->int_status[0] =3D MT6323_INT_STATUS0;
+>  		pmic->int_status[1] =3D MT6323_INT_STATUS1;
+> +		ret =3D mt6397_irq_init(pmic);
+> +		if (ret)
+> +			return ret;
+> +
+>  		ret =3D mfd_add_devices(&pdev->dev, -1, mt6323_devs,
+>  				ARRAY_SIZE(mt6323_devs), NULL, 0, NULL);
+>  		break;
+> @@ -286,6 +294,10 @@ static int mt6397_probe(struct platform_device *=
+pdev)
+>  		pmic->int_con[1] =3D MT6397_INT_CON1;
+>  		pmic->int_status[0] =3D MT6397_INT_STATUS0;
+>  		pmic->int_status[1] =3D MT6397_INT_STATUS1;
+> +		ret =3D mt6397_irq_init(pmic);
+> +		if (ret)
+> +			return ret;
+> +
+>  		ret =3D mfd_add_devices(&pdev->dev, -1, mt6397_devs,
+>  				ARRAY_SIZE(mt6397_devs), NULL, 0, NULL);
+>  		break;
+> @@ -296,14 +308,6 @@ static int mt6397_probe(struct platform_device *=
+pdev)
+>  		break;
+>  	}
+> =20
+> -	pmic->irq =3D platform_get_irq(pdev, 0);
+> -	if (pmic->irq > 0) {
+> -		ret =3D mt6397_irq_init(pmic);
+> -		if (ret)
+> -			return ret;
+> -	}
+> -
+> -fail_irq:
+>  	if (ret) {
+>  		irq_domain_remove(pmic->irq_domain);
+>  		dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
 
-> 
-> >>> +		ret = vpu_load_firmware(dev->vpu_plat_dev);
-> >>> +		if (ret < 0) {
-> >>> +			/*
-> >>> +			  * Return 0 if downloading firmware successfully,
-> >>> +			  * otherwise it is failed
-> >>> +			  */
-> >>> +			mtk_v4l2_err("vpu_load_firmware failed!");
-> >>> +			goto err_load_fw;
-> >>> +		}
-> 
-> That makes it clear to the reader (i.e. me :-) ) that you can safely call
-> vpu_load_firmware multiple times.
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > +		return 0;
-> > +	}
-> > +
-> > +	run->signaled = false;
-> > +	dev_dbg(vpu->dev, "firmware request\n");
-> > +	/* Downloading program firmware to device*/
-> > +	ret = load_requested_vpu(vpu, vpu_fw, P_FW);
-> > +	if (ret < 0) {
-> > +		dev_err(dev, "Failed to request %s, %d\n", VPU_P_FW, ret);
-> > +		goto OUT_LOAD_FW;
-> > +	}
-> > +
-> > +	/* Downloading data firmware to device */
-> > +	ret = load_requested_vpu(vpu, vpu_fw, D_FW);
-> > +	if (ret < 0) {
-> > +		dev_err(dev, "Failed to request %s, %d\n", VPU_D_FW, ret);
-> > +		goto OUT_LOAD_FW;
-> > +	}
-> > +
-> > +	/* boot up vpu */
-> > +	vpu_cfg_writel(vpu, 0x1, VPU_RESET);
-> > +
-> > +	ret = wait_event_interruptible_timeout(run->wq,
-> > +					       run->signaled,
-> > +					       msecs_to_jiffies(INIT_TIMEOUT_MS)
-> > +					       );
-> > +	if (ret == 0) {
-> > +		ret = -ETIME;
-> > +		dev_err(dev, "wait vpu initialization timout!\n");
-> > +		goto OUT_LOAD_FW;
-> > +	} else if (-ERESTARTSYS == ret) {
-> > +		dev_err(dev, "wait vpu interrupted by a signal!\n");
-> > +		goto OUT_LOAD_FW;
-> > +	}
-> > +
-> > +	ret = 0;
-> > +	dev_info(dev, "vpu is ready. Fw version %s\n", run->fw_ver);
-> > +
-> > +OUT_LOAD_FW:
-> > +	mutex_unlock(&vpu->vpu_mutex);
-> > +	vpu_clock_disable(vpu);
-> > +
-> > +	return ret;
-> > +}
-> > +EXPORT_SYMBOL_GPL(vpu_load_firmware);
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--=20
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org =E2=94=82 Open source software for ARM SoCs
+=46ollow Linaro: Facebook | Twitter | Blog
