@@ -1,83 +1,86 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v3 2/2] dt-bindings: ARM: Mediatek: add interrupt as
- required properties to the mt6397/mt6323 doc
-Date: Mon, 25 Apr 2016 11:57:50 +0100
-Message-ID: <20160425105750.GB2713@dell>
-References: <1460709030-23820-1-git-send-email-henryc.chen@mediatek.com>
- <1460709030-23820-2-git-send-email-henryc.chen@mediatek.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v8 8/8] arm64: dts: mediatek: Add Video Encoder for MT8173
+Date: Mon, 25 Apr 2016 20:30:38 +0800
+Message-ID: <1461587438-59886-9-git-send-email-tiffany.lin@mediatek.com>
+References: <1461587438-59886-1-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-2-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-3-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-4-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-5-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-6-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-7-git-send-email-tiffany.lin@mediatek.com>
+ <1461587438-59886-8-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1460709030-23820-2-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1461587438-59886-8-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 15 Apr 2016, Henry Chen wrote:
+Add video encoder node for MT8173
 
-> MT6397/MT6323 have one interrupt line connected to the main SoC.
-> Interrupt should be required feature of pmic, each sub module also
-> need it to complete their function or error detect, add it as
-> required properties on dts file.
->=20
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Docum=
-entation/devicetree/bindings/mfd/mt6397.txt
-> index 949c85f..a96529e 100644
-> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-> @@ -15,7 +15,13 @@ Documentation/devicetree/bindings/soc/pwrap.txt
->  This document describes the binding for MFD device and its sub modul=
-e.
-> =20
->  Required properties:
-> -compatible: "mediatek,mt6397" or "mediatek,mt6323"
-> +- compatible: "mediatek,mt6397" or "mediatek,mt6323"
-> +- interrupts: mt6323/mt6397 have one interrupt line connecteded to t=
-he main SoC
-> +- interrupt-parent: The parent interrupt controller
-> +- interrupt-controller : marks the device node as an interrupt contr=
-oller
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Nit: All sentences should start with an upper case char.
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   39 ++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-The device node is not an interrupt controller -- it's a device node.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index ae147bb..348ce0e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -717,6 +717,45 @@
+ 			clock-names = "apb", "smi";
+ 		};
+ 
++		vcodec_enc: vcodec@18002000 {
++			compatible = "mediatek,mt8173-vcodec-enc";
++			reg = <0 0x18002000 0 0x1000>,	/* VENC_SYS */
++			      <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
++			mediatek,larb = <&larb3>,
++					<&larb5>;
++			iommus = <&iommu M4U_PORT_VENC_RCPU>,
++				 <&iommu M4U_PORT_VENC_REC>,
++				 <&iommu M4U_PORT_VENC_BSDMA>,
++				 <&iommu M4U_PORT_VENC_SV_COMV>,
++				 <&iommu M4U_PORT_VENC_RD_COMV>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA>,
++				 <&iommu M4U_PORT_VENC_REF_CHROMA>,
++				 <&iommu M4U_PORT_VENC_NBM_RDMA>,
++				 <&iommu M4U_PORT_VENC_NBM_WDMA>,
++				 <&iommu M4U_PORT_VENC_RCPU_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
++				 <&iommu M4U_PORT_VENC_BSDMA_SET2>,
++				 <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
++				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
++			mediatek,vpu = <&vpu>;
++			clocks = <&topckgen CLK_TOP_VENCPLL_D2>,
++				 <&topckgen CLK_TOP_VENC_SEL>,
++				 <&topckgen CLK_TOP_UNIVPLL1_D2>,
++				 <&topckgen CLK_TOP_VENC_LT_SEL>;
++			clock-names = "venc_sel_src",
++				      "venc_sel",
++				      "venc_lt_sel_src",
++				      "venc_lt_sel";
++		};
++
+ 		vencltsys: clock-controller@19000000 {
+ 			compatible = "mediatek,mt8173-vencltsys", "syscon";
+ 			reg = <0 0x19000000 0 0x1000>;
+-- 
+1.7.9.5
 
-The device the device node represents is the interrupt controller.
-
-Look at how others describe this property, it's pretty well used.
-
-> +- #interrupt-cells: the number of cells to describe an IRQ, this sho=
-uld be 2.
-
-Nit: Captial letter.
-
-> +  The first cell is the IRQ number.
-> +  The second cell is the flags, encoded as the trigger masks from
-> =20
->  Optional subnodes:
-> =20
-> @@ -43,6 +49,10 @@ Example:
-> =20
->  		pmic {
->  			compatible =3D "mediatek,mt6397";
-> +			interrupt-parent =3D <&pio>;
-> +			interrupts =3D <11 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-controller;
-> +			#interrupt-cells =3D <2>;
-> =20
->  			codec: mt6397codec {
->  				compatible =3D "mediatek,mt6397-codec";
-
---=20
-Lee Jones
-Linaro STMicroelectronics Landing Team Lead
-Linaro.org =E2=94=82 Open source software for ARM SoCs
-=46ollow Linaro: Facebook | Twitter | Blog
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
