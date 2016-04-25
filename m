@@ -1,15 +1,16 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v3 1/2] mfd: mt6397: irq domain should initialize before
- mfd_add_devices()
-Date: Mon, 25 Apr 2016 11:54:24 +0100
-Message-ID: <20160425105424.GA2713@dell>
+Subject: Re: [PATCH v3 2/2] dt-bindings: ARM: Mediatek: add interrupt as
+ required properties to the mt6397/mt6323 doc
+Date: Mon, 25 Apr 2016 11:57:50 +0100
+Message-ID: <20160425105750.GB2713@dell>
 References: <1460709030-23820-1-git-send-email-henryc.chen@mediatek.com>
+ <1460709030-23820-2-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1460709030-23820-1-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <1460709030-23820-2-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Henry Chen <henryc.chen@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
@@ -17,85 +18,63 @@ List-Id: linux-mediatek@lists.infradead.org
 
 On Fri, 15 Apr 2016, Henry Chen wrote:
 
-> Some sub driver like RTC module need irq domain from parent to create
-> irq mapping when driver initialize. so move mt6397_irq_init() before
-> mfd_add_devices().
+> MT6397/MT6323 have one interrupt line connected to the main SoC.
+> Interrupt should be required feature of pmic, each sub module also
+> need it to complete their function or error detect, add it as
+> required properties on dts file.
 >=20
-> Acked-by: John Crispin <blogic@openwrt.org>
 > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 > ---
-> This series fixed the below warning based on "Linux kernel v4.6-rc1"
-> WARNING: CPU: 1 PID: 132 at kernel/mediatek/kernel/irq/irqdomain.c:47=
-1
-> irq_create_mapping+0xc4/0xd0
+>  Documentation/devicetree/bindings/mfd/mt6397.txt | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Docum=
+entation/devicetree/bindings/mfd/mt6397.txt
+> index 949c85f..a96529e 100644
+> --- a/Documentation/devicetree/bindings/mfd/mt6397.txt
+> +++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
+> @@ -15,7 +15,13 @@ Documentation/devicetree/bindings/soc/pwrap.txt
+>  This document describes the binding for MFD device and its sub modul=
+e.
 > =20
-> Changes in V2: Add two patch for error handle checking.
-> Changes in V3: Add interrupt as required properties to dt-bindings do=
-c
-> ---
->  drivers/mfd/mt6397-core.c | 22 +++++++++++++---------
->  1 file changed, 13 insertions(+), 9 deletions(-)
+>  Required properties:
+> -compatible: "mediatek,mt6397" or "mediatek,mt6323"
+> +- compatible: "mediatek,mt6397" or "mediatek,mt6323"
+> +- interrupts: mt6323/mt6397 have one interrupt line connecteded to t=
+he main SoC
+> +- interrupt-parent: The parent interrupt controller
+> +- interrupt-controller : marks the device node as an interrupt contr=
+oller
 
-Applied, thanks.
+Nit: All sentences should start with an upper case char.
 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 8e8d932..b2faf56 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -267,15 +267,23 @@ static int mt6397_probe(struct platform_device =
-*pdev)
->  	ret =3D regmap_read(pmic->regmap, MT6397_CID, &id);
->  	if (ret) {
->  		dev_err(pmic->dev, "Failed to read chip id: %d\n", ret);
-> -		goto fail_irq;
-> +		return ret;
->  	}
+The device node is not an interrupt controller -- it's a device node.
+
+The device the device node represents is the interrupt controller.
+
+Look at how others describe this property, it's pretty well used.
+
+> +- #interrupt-cells: the number of cells to describe an IRQ, this sho=
+uld be 2.
+
+Nit: Captial letter.
+
+> +  The first cell is the IRQ number.
+> +  The second cell is the flags, encoded as the trigger masks from
 > =20
-> +	pmic->irq =3D platform_get_irq(pdev, 0);
-> +	if (pmic->irq <=3D 0)
-> +		return pmic->irq;
-> +
->  	switch (id & 0xff) {
->  	case MT6323_CID_CODE:
->  		pmic->int_con[0] =3D MT6323_INT_CON0;
->  		pmic->int_con[1] =3D MT6323_INT_CON1;
->  		pmic->int_status[0] =3D MT6323_INT_STATUS0;
->  		pmic->int_status[1] =3D MT6323_INT_STATUS1;
-> +		ret =3D mt6397_irq_init(pmic);
-> +		if (ret)
-> +			return ret;
-> +
->  		ret =3D mfd_add_devices(&pdev->dev, -1, mt6323_devs,
->  				ARRAY_SIZE(mt6323_devs), NULL, 0, NULL);
->  		break;
-> @@ -286,6 +294,10 @@ static int mt6397_probe(struct platform_device *=
-pdev)
->  		pmic->int_con[1] =3D MT6397_INT_CON1;
->  		pmic->int_status[0] =3D MT6397_INT_STATUS0;
->  		pmic->int_status[1] =3D MT6397_INT_STATUS1;
-> +		ret =3D mt6397_irq_init(pmic);
-> +		if (ret)
-> +			return ret;
-> +
->  		ret =3D mfd_add_devices(&pdev->dev, -1, mt6397_devs,
->  				ARRAY_SIZE(mt6397_devs), NULL, 0, NULL);
->  		break;
-> @@ -296,14 +308,6 @@ static int mt6397_probe(struct platform_device *=
-pdev)
->  		break;
->  	}
+>  Optional subnodes:
 > =20
-> -	pmic->irq =3D platform_get_irq(pdev, 0);
-> -	if (pmic->irq > 0) {
-> -		ret =3D mt6397_irq_init(pmic);
-> -		if (ret)
-> -			return ret;
-> -	}
-> -
-> -fail_irq:
->  	if (ret) {
->  		irq_domain_remove(pmic->irq_domain);
->  		dev_err(&pdev->dev, "failed to add child devices: %d\n", ret);
+> @@ -43,6 +49,10 @@ Example:
+> =20
+>  		pmic {
+>  			compatible =3D "mediatek,mt6397";
+> +			interrupt-parent =3D <&pio>;
+> +			interrupts =3D <11 IRQ_TYPE_LEVEL_HIGH>;
+> +			interrupt-controller;
+> +			#interrupt-cells =3D <2>;
+> =20
+>  			codec: mt6397codec {
+>  				compatible =3D "mediatek,mt6397-codec";
 
 --=20
 Lee Jones
