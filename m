@@ -1,144 +1,123 @@
-From: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Subject: Re: Applied "ASoC: hdmi-codec: Add ELD control" to the
-	asoc tree
-Date: Wed, 27 Apr 2016 10:42:19 +0100
-Message-ID: <20160427094219.GL19428@n2100.arm.linux.org.uk>
-References: <1461142804-26728-4-git-send-email-p.zabel@pengutronix.de>
- <E1atHJ9-0003ey-9b@debutante>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: mediatek: fix request blocked by cancel_delayed_work
+Date: Wed, 27 Apr 2016 12:02:52 +0200
+Message-ID: <CAPDyKFpO89QWHST8XoBvRO4Y+Fv4Umt43B35E2vhm-z2WmZXSw@mail.gmail.com>
+References: <1460963609-16179-1-git-send-email-chaotian.jing@mediatek.com>
+	<CAPDyKFrXVaq85sSQ+ib-U=rgdxB_k2tif0aHQi_0d8kZ2FZDcA@mail.gmail.com>
+	<1461404630.7081.9.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-Content-Disposition: inline
-In-Reply-To: <E1atHJ9-0003ey-9b@debutante>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, kernel@pengutronix.de, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1461404630.7081.9.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-It would have been good to have this as a generic ALSA control rather than
-an ASoC control.  The dw-hdmi driver is an ALSA driver, and now we have to
-re-invent this for ALSA...
+On 23 April 2016 at 11:43, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+> Hi,
+> On Fri, 2016-04-22 at 14:24 +0200, Ulf Hansson wrote:
+>> On 18 April 2016 at 09:13, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>> > there are 2 points will cause could not call mmc_request_done()
+>> > and eventually cause the caller thread blocked.
+>> >
+>> > A. if card was busy, cancel_delayed_work() will return false because
+>> > the delay work has not been scheduled, in this case, need put
+>> > mod_delayed_work() in front of msdc_cmd_is_ready()
+>> >
+>> > B. if a request really need more than 5s(Some Sandisk TF card), it will
+>> > use cancel_delayed_work() to cancel itself, and also return false, so use
+>> > in_interrupt() to avoid this case
+>> >
+>> > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> > ---
+>> >  drivers/mmc/host/mtk-sd.c | 11 ++++++++---
+>> >  1 file changed, 8 insertions(+), 3 deletions(-)
+>> >
+>> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+>> > index b17f30d..1511b1b 100644
+>> > --- a/drivers/mmc/host/mtk-sd.c
+>> > +++ b/drivers/mmc/host/mtk-sd.c
+>> > @@ -724,7 +724,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+>> >         bool ret;
+>> >
+>> >         ret = cancel_delayed_work(&host->req_timeout);
+>> > -       if (!ret) {
+>> > +       if (!ret && in_interrupt()) {
+>> >                 /* delay work already running */
+>> >                 return;
+>> >         }
+>> > @@ -824,7 +824,12 @@ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
+>> >         }
+>> >
+>> >         if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
+>> > -               tmo = jiffies + msecs_to_jiffies(20);
+>> > +               /*
+>> > +                * 2550ms is from EXT_CSD[248], after switch to hs200,
+>> > +                * using CMD13 to polling card status, it will get response
+>> > +                * of 0x800, but EMMC still pull-low DAT0.
+>> > +                */
+>>
+>> Seems like you are solving a eMMC specific issue on your driver?
+>>
+>> Perhaps we should try to use a card quirk instead?
+>
+> Actually, this is a Bug of __mmc_switch(), Per JEDEC Spec, while switch
+> speed mode, should not use CMD13 to get card status, as it's response
+> cannot reflect that if card was busy now, for this CMD6 switch HS200
 
-On Thu, Apr 21, 2016 at 05:18:23PM +0100, Mark Brown wrote:
-> The patch
-> 
->    ASoC: hdmi-codec: Add ELD control
-> 
-> has been applied to the asoc tree at
-> 
->    git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
-> 
-> All being well this means that it will be integrated into the linux-next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.  
-> 
-> You may get further e-mails resulting from automated or manual testing
-> and review of the tree, please engage with people reporting problems and
-> send followup patches addressing any issues that are reported if needed.
-> 
-> If any updates are required or you are submitting further changes they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
-> 
-> Please add any relevant lists and maintainers to the CCs when replying
-> to this mail.
-> 
-> Thanks,
-> Mark
-> 
-> >From 81151cfb6bfe69f1c5a52b795eb005226a322c9e Mon Sep 17 00:00:00 2001
-> From: Philipp Zabel <p.zabel@pengutronix.de>
-> Date: Wed, 20 Apr 2016 10:59:58 +0200
-> Subject: [PATCH] ASoC: hdmi-codec: Add ELD control
-> 
-> ALSA doesn't know about all the different compressed audio formats,
-> so there is no interface to let userspace enumerate the formats that
-> are supported by the connected sink. Exporting the raw ELD bytes to
-> userspace allows an application to select the appropriate audio format
-> depending on the current capabilities of the connected HDMI sink device.
-> Usually userspace then just pretends to ALSA that the data is in one of
-> the raw 16-bit PCM audio formats and relies on the IEC controls to tell
-> the sink how to interpret the data.
-> 
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-> Reviewed-by: Jyri Sarha <jsarha@ti.com>
-> Tested-by: Jyri Sarha <jsarha@ti.com>
-> Signed-off-by: Mark Brown <broonie@kernel.org>
-> ---
->  sound/soc/codecs/hdmi-codec.c | 38 ++++++++++++++++++++++++++++++++++++++
->  1 file changed, 38 insertions(+)
-> 
-> diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-> index b46b8edb9319..c78333b4311d 100644
-> --- a/sound/soc/codecs/hdmi-codec.c
-> +++ b/sound/soc/codecs/hdmi-codec.c
-> @@ -47,6 +47,42 @@ enum {
->  	DAI_ID_SPDIF,
->  };
->  
-> +static int hdmi_eld_ctl_info(struct snd_kcontrol *kcontrol,
-> +			     struct snd_ctl_elem_info *uinfo)
-> +{
-> +	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
-> +	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
-> +
-> +	uinfo->type = SNDRV_CTL_ELEM_TYPE_BYTES;
-> +	uinfo->count = sizeof(hcp->eld);
-> +
-> +	return 0;
-> +}
-> +
-> +static int hdmi_eld_ctl_get(struct snd_kcontrol *kcontrol,
-> +			    struct snd_ctl_elem_value *ucontrol)
-> +{
-> +	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
-> +	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
-> +
-> +	mutex_lock(&hcp->eld_lock);
-> +	memcpy(ucontrol->value.bytes.data, hcp->eld, sizeof(hcp->eld));
-> +	mutex_unlock(&hcp->eld_lock);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct snd_kcontrol_new hdmi_controls[] = {
-> +	{
-> +		.access = SNDRV_CTL_ELEM_ACCESS_READ |
-> +			  SNDRV_CTL_ELEM_ACCESS_VOLATILE,
-> +		.iface = SNDRV_CTL_ELEM_IFACE_PCM,
-> +		.name = "ELD",
-> +		.info = hdmi_eld_ctl_info,
-> +		.get = hdmi_eld_ctl_get,
-> +	},
-> +};
-> +
->  static int hdmi_codec_new_stream(struct snd_pcm_substream *substream,
->  				 struct snd_soc_dai *dai)
->  {
-> @@ -312,6 +348,8 @@ static const struct snd_soc_dai_driver hdmi_spdif_dai = {
->  };
->  
->  static struct snd_soc_codec_driver hdmi_codec = {
-> +	.controls = hdmi_controls,
-> +	.num_controls = ARRAY_SIZE(hdmi_controls),
->  	.dapm_widgets = hdmi_widgets,
->  	.num_dapm_widgets = ARRAY_SIZE(hdmi_widgets),
->  	.dapm_routes = hdmi_routes,
-> -- 
-> 2.8.0.rc3
-> 
+There is a statement applicable to all HS modes, which says it's *not
+recommended* but *if* used, CRC errors shall be ignored.
 
--- 
-RMK's Patch system: http://www.arm.linux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+That's what we have been doing so far, but perhaps that isn't good
+enough for HS200/400.
+
+> case, I tried some Samsung/Sandisk/KSI eMMC, issue CMD13 will always get
+> 0x800, even eMMC has already changed to transfer state and DAT0 is high,
+> the response of CMD13 is also 0x800, and will never be 0x900.
+
+What do you mean by never? I assume it would when you extend the timeout?
+
+Does your host driver make sure to ignore CRC errors in this case?
+Just to be sure, that isn't the problem.
+
+> So, in __mmc_switch(), it's a bug to use CMD13 to know that if card has
+> already changed to transfer state.
+
+Whether it's a bug or not, it seems like we have eMMC cards that we
+have issues to support because of the way we have interpreted the
+spec. So let's try to fix them!
+
+> But, Our host do not support MMC_CAP_WAIT_WHILE_BUSY, that's why we hit
+> this issue.
+
+Okay, I see.
+
+Let's try to change the behaviour in __mmc_switch() to prevent it to
+send CMD13 before the cards stops signal busy on DAT0, when switching
+to HS200/HS400 mode.
+
+What I have in mind is:
+
+1.
+When the host controller doesn't support MMC_CAP_WAIT_WHILE_BUSY, we
+would then to wait for a fixed timeout, before we send CMD13. In this
+case, do you know if the "generic_cmd6_time" is working for your eMMC
+devices that you had issues with?
+
+2.
+In additional to the above solution, we can for those hosts that
+supports the ->card_busy() ops, but not MMC_CAP_WAIT_WHILE_BUSY,
+invoke the ->card_busy() in a polling manner. Of course the above
+timeout should also be considered as we need to stop polling at some
+point.
+
+So I noticed the Mediatek mmc host driver supports the ->card_busy()
+ops. So I think you can try 1) first, then extend it to 2).
+
+Does it makes sense?
+
+[...]
+
+Kind regards
+Uffe
