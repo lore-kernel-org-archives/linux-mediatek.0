@@ -1,50 +1,146 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] usb: core: buffer: avoid NULL pointer dereferrence
-Date: Wed, 27 Apr 2016 09:32:10 +0800
-Message-ID: <1461720730.11651.4.camel@mhfsdcap03>
-References: <20160408140701.GA3547@kroah.com>
-	 <Pine.LNX.4.44L0.1604081120190.2069-100000@iolanthe.rowland.org>
-	 <20160426231115.GB23273@kroah.com>
+From: maitysanchayan@gmail.com
+Subject: Re: [PATCH 05/12] nvmem: vif610-ocotp: remove nvmem regmap dependency
+Date: Wed, 27 Apr 2016 11:06:00 +0530
+Message-ID: <20160427053600.GB2048@Sanchayan-Arch.localdomain>
+References: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
+ <1461526096-29584-6-git-send-email-srinivas.kandagatla@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20160426231115.GB23273-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1461526096-29584-6-git-send-email-srinivas.kandagatla@linaro.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, andrew@lunn.ch, Heiko Stuebner <heiko@sntech.de>, Wolfram Sang <wsa@the-dreams.de>, Joachim Eastwood <manabian@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Mark Brown <broonie@kernel.org>, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-arm-kernel@lists.infradead.org, stefan@agner.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hello Srinivas,
 
-On Tue, 2016-04-26 at 16:11 -0700, Greg Kroah-Hartman wrote:
-> On Fri, Apr 08, 2016 at 11:21:05AM -0400, Alan Stern wrote:
-> > On Fri, 8 Apr 2016, Greg Kroah-Hartman wrote:
-> > 
-> > > On Fri, Apr 08, 2016 at 05:08:03PM +0800, Chunfeng Yun wrote:
-> > > > NULL pointer dereferrence will happen when class driver
-> > > > wants to allocate zero length buffer and pool_max[0]
-> > > > can't be used, so skip reserved pool in this case.
-> > > 
-> > > Why would a driver want to allocate a 0 length buffer?  What driver does
-> > > this?
-> > > 
-> > > Shouldn't we fix that issue instead?
-> > 
-> > And even if a driver does want to allocate a 0-length buffer, shouldn't 
-> > the function simply return early instead of running through all its 
-> > calculations?
+On 16-04-24 20:28:09, Srinivas Kandagatla wrote:
+> This patch moves to nvmem support in the driver to use callback
+> instead of regmap.
+
+Minor nit, it says "vif610-octop" it should have been vf610-ocotp.
+
+For what it's worth, I tested this on Colibri Vybrid VF61 for a while and
+all seems to work fine.
+
+So with the testing for vf610-ocotp driver other than the minor nit
+
+Acked-by: Sanchayan Maity <maitysanchayan@gmail.com>
+
+Regards,
+Sanchayan.
+
 > 
-> Yes it should, Chunfeng, can you fix this patch to do that please.
+> Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+> ---
+>  drivers/nvmem/vf610-ocotp.c | 44 ++++++++++----------------------------------
+>  1 file changed, 10 insertions(+), 34 deletions(-)
 > 
-Ok, I will fix it later
-
-> thanks,
+> diff --git a/drivers/nvmem/vf610-ocotp.c b/drivers/nvmem/vf610-ocotp.c
+> index 8641319..72e4faa 100644
+> --- a/drivers/nvmem/vf610-ocotp.c
+> +++ b/drivers/nvmem/vf610-ocotp.c
+> @@ -25,7 +25,6 @@
+>  #include <linux/nvmem-provider.h>
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+> -#include <linux/regmap.h>
+>  #include <linux/slab.h>
+>  
+>  /* OCOTP Register Offsets */
+> @@ -152,23 +151,16 @@ static int vf610_get_fuse_address(int base_addr_offset)
+>  	return -EINVAL;
+>  }
+>  
+> -static int vf610_ocotp_write(void *context, const void *data, size_t count)
+> -{
+> -	return 0;
+> -}
+> -
+> -static int vf610_ocotp_read(void *context,
+> -			const void *off, size_t reg_size,
+> -			void *val, size_t val_size)
+> +static int vf610_ocotp_read(void *context, unsigned int offset,
+> +			void *val, size_t bytes)
+>  {
+>  	struct vf610_ocotp *ocotp = context;
+>  	void __iomem *base = ocotp->base;
+> -	unsigned int offset = *(u32 *)off;
+>  	u32 reg, *buf = val;
+>  	int fuse_addr;
+>  	int ret;
+>  
+> -	while (val_size > 0) {
+> +	while (bytes > 0) {
+>  		fuse_addr = vf610_get_fuse_address(offset);
+>  		if (fuse_addr > 0) {
+>  			writel(ocotp->timing, base + OCOTP_TIMING);
+> @@ -205,29 +197,19 @@ static int vf610_ocotp_read(void *context,
+>  		}
+>  
+>  		buf++;
+> -		val_size--;
+> -		offset += reg_size;
+> +		bytes -= 4;
+> +		offset += 4;
+>  	}
+>  
+>  	return 0;
+>  }
+>  
+> -static struct regmap_bus vf610_ocotp_bus = {
+> -	.read = vf610_ocotp_read,
+> -	.write = vf610_ocotp_write,
+> -	.reg_format_endian_default = REGMAP_ENDIAN_NATIVE,
+> -	.val_format_endian_default = REGMAP_ENDIAN_NATIVE,
+> -};
+> -
+> -static struct regmap_config ocotp_regmap_config = {
+> -	.reg_bits = 32,
+> -	.val_bits = 32,
+> -	.reg_stride = 4,
+> -};
+> -
+>  static struct nvmem_config ocotp_config = {
+>  	.name = "ocotp",
+>  	.owner = THIS_MODULE,
+> +	.stride = 4,
+> +	.word_size = 4,
+> +	.reg_read = vf610_ocotp_read,
+>  };
+>  
+>  static const struct of_device_id ocotp_of_match[] = {
+> @@ -247,7 +229,6 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct resource *res;
+> -	struct regmap *regmap;
+>  	struct vf610_ocotp *ocotp_dev;
+>  
+>  	ocotp_dev = devm_kzalloc(&pdev->dev,
+> @@ -267,13 +248,8 @@ static int vf610_ocotp_probe(struct platform_device *pdev)
+>  		return PTR_ERR(ocotp_dev->clk);
+>  	}
+>  
+> -	ocotp_regmap_config.max_register = resource_size(res);
+> -	regmap = devm_regmap_init(dev,
+> -		&vf610_ocotp_bus, ocotp_dev, &ocotp_regmap_config);
+> -	if (IS_ERR(regmap)) {
+> -		dev_err(dev, "regmap init failed\n");
+> -		return PTR_ERR(regmap);
+> -	}
+> +	ocotp_config.size = resource_size(res);
+> +	ocotp_config.priv = ocotp_dev;
+>  	ocotp_config.dev = dev;
+>  
+>  	ocotp_dev->nvmem = nvmem_register(&ocotp_config);
+> -- 
+> 2.5.0
 > 
-> greg k-h
-
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
