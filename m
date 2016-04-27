@@ -1,13 +1,14 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 Subject: Re: MTK Smart Device Gen1 NAND Driver - Testing on MT7623
-Date: Wed, 27 Apr 2016 10:06:27 +0200
-Message-ID: <20160427100627.63b148c3@bbrezillon>
+Date: Wed, 27 Apr 2016 10:41:31 +0200
+Message-ID: <869e6090-04fd-0f99-f248-af68e948362e@openwrt.org>
 References: <e397161c-2fe8-7e9d-c34f-adf5e91a99d7@openwrt.org>
+ <20160427100627.63b148c3@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <e397161c-2fe8-7e9d-c34f-adf5e91a99d7-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+In-Reply-To: <20160427100627.63b148c3@bbrezillon>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -17,110 +18,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Cc: "Steven Liu (=?UTF-8?B?5YqJ5Lq66LGq?=)" <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "Sean Wang (=?UTF-8?B?546L5b+X5LqY?=)" <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
 
-On Wed, 27 Apr 2016 08:36:21 +0200
-John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org> wrote:
+Hi Boris,
 
-> Hi Jorge,
+>>
+>> the devicetree i am using is this
+>>
+>> &nandc {
+>>         status = "okay";
+>>         pinctrl-names = "default";
+>>         pinctrl-0 = <&nand_pins_default>;
+>>         nand@0 {
+>>                 reg = <0>;
+>>                 spare_per_sector = <64>;
 > 
-> I have been testing version 3 of the driver on the MT7623 with limited
-> success and was hoping you could shed some light on the problems I am seeing
+> If I understood the meaning of spare_per_sector correctly, this should
+> be 32 (you have 2K pages and 1024 bytes sectors, so you have 2 sectors
+> and want to equally assign the 64 OOB bytes to those sectors =>
+> 64 / 2 = 32).
 > 
-> the driver loads
+> Anyway, hopefully all this complexity will be gone in the next version
+> along with the need to define nand-ecc-strength and nand-ecc-step-size
+> (which should be part of the NAND chip detection unless you really
+> need to overload them).
 > 
-> [    1.924633] nand: device found, Manufacturer ID: 0xef, Chip ID: 0xda
-> [    1.930941] nand: Unknown W29N02GV
-> [    1.934386] nand: 256 MiB, SLC, erase size: 128 KiB, page size: 2048,
-> OOB size: 64
-> [    1.942869] Bad block table not found for chip 0
-> [    1.948320] Bad block table not found for chip 0
-> [    1.952926] Scanning device for bad blocks
-> [    2.411339] Bad eraseblock 2046 at 0x00000ffc0000
-> [    2.416251] Bad eraseblock 2047 at 0x00000ffe0000
-> [    2.422096] Bad block table written to 0x00000ffa0000, version 0x01
-> [    2.429426] Bad block table written to 0x00000ff80000, version 0x01
-> [    2.435966] 6 ofpart partitions found on MTD device mtk-nand
-> [    2.441578] Creating 6 MTD partitions on "mtk-nand":
-> [    2.446523] 0x000000000000-0x000000400000 : "pl"
-> [    2.452256] 0x0000000c0000-0x000000100000 : "uboot-env"
-> [    2.458381] 0x000000100000-0x000000140000 : "factory"
-> [    2.464300] 0x000000140000-0x000002140000 : "kernel"
-> [    2.470419] 0x000002140000-0x000004140000 : "recovery"
-> [    2.476780] 0x000004140000-0x000005140000 : "rootfs"
-> 
-> but when i try to access the mtd devices i get an error
-> 
-> root@OpenWrt:/# hexdump -C /dev/mtd1
-> [  165.752134] mtk-ecc 1100e000.ecc: decoder NOT idle
-> [  166.251999] mtk-nand 1100d000.nfi: read ahb/dma done timeout
-> [  166.757624] mtk-nand 1100d000.nfi: subpage done timeout
-> [  167.262834] mtk-ecc 1100e000.ecc: decoder NOT idle
-> hexdump: /dev/mtd1: I/O error
-> 
-> the devicetree i am using is this
-> 
-> &nandc {
->         status = "okay";
->         pinctrl-names = "default";
->         pinctrl-0 = <&nand_pins_default>;
->         nand@0 {
->                 reg = <0>;
->                 spare_per_sector = <64>;
 
-If I understood the meaning of spare_per_sector correctly, this should
-be 32 (you have 2K pages and 1024 bytes sectors, so you have 2 sectors
-and want to equally assign the 64 OOB bytes to those sectors =>
-64 / 2 = 32).
+thanks for the info. i tried that aswell as some other settings but none
+makes the flash work. lets see if Jorge has some ideas. otherwise i will
+wait for V4.
 
-Anyway, hopefully all this complexity will be gone in the next version
-along with the need to define nand-ecc-strength and nand-ecc-step-size
-(which should be part of the NAND chip detection unless you really
-need to overload them).
+	John
 
->                 nand-on-flash-bbt;
->                 nand-ecc-mode = "hw";
->                 nand-ecc-strength = <12>;
->                 nand-ecc-step-size = <1024>;
->                 partitions {
->                         compatible = "fixed-partitions";
->                         #address-cells = <1>;
->                         #size-cells = <1>;
+>>                 nand-on-flash-bbt;
+>>                 nand-ecc-mode = "hw";
+>>                 nand-ecc-strength = <12>;
+>>                 nand-ecc-step-size = <1024>;
+>>                 partitions {
+>>                         compatible = "fixed-partitions";
+>>                         #address-cells = <1>;
+>>                         #size-cells = <1>;
+>>
+>>                         partition@C0000 {
+>>                                 label = "uboot-env";
+>>                                 reg = <0xC0000 0x40000>;
+>>                         };
+>>
+>>                         partition@100000 {
+>>                                 label = "factory";
+>>                                 reg = <0x100000 0x40000>;
+>>                         };
+>>
+>>                         partition@140000 {
+>>                                 label = "kernel";
+>>                                 reg = <0x140000 0x2000000>;
+>>                         };
+>>
+>>                         partition@2140000 {
+>>                                 label = "recovery";
+>>                                 reg = <0x2140000 0x2000000>;
+>>                         };
+>>
+>>                         partition@4140000 {
+>>                                 label = "rootfs";
+>>                                 reg = <0x4140000 0x1000000>;
+>>                         };
+>>                 };
+>>         };
+>> };
 > 
->                         partition@C0000 {
->                                 label = "uboot-env";
->                                 reg = <0xC0000 0x40000>;
->                         };
 > 
->                         partition@100000 {
->                                 label = "factory";
->                                 reg = <0x100000 0x40000>;
->                         };
-> 
->                         partition@140000 {
->                                 label = "kernel";
->                                 reg = <0x140000 0x2000000>;
->                         };
-> 
->                         partition@2140000 {
->                                 label = "recovery";
->                                 reg = <0x2140000 0x2000000>;
->                         };
-> 
->                         partition@4140000 {
->                                 label = "rootfs";
->                                 reg = <0x4140000 0x1000000>;
->                         };
->                 };
->         };
-> };
-
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
