@@ -1,70 +1,65 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: Applied "ASoC: hdmi-codec: Add ELD control" to the
-	asoc tree
-Date: Wed, 27 Apr 2016 11:14:42 +0100
-Message-ID: <20160427101442.GH3217@sirena.org.uk>
-References: <1461142804-26728-4-git-send-email-p.zabel@pengutronix.de>
- <E1atHJ9-0003ey-9b@debutante>
- <20160427094219.GL19428@n2100.arm.linux.org.uk>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v14 2/8] drm/mediatek: Add DRM Driver for Mediatek SoC
+ MT8173.
+Date: Wed, 27 Apr 2016 12:29:05 +0200
+Message-ID: <1461752945.4044.25.camel@pengutronix.de>
+References: <1460387376-11799-1-git-send-email-p.zabel@pengutronix.de>
+ <1460387376-11799-3-git-send-email-p.zabel@pengutronix.de>
+ <1461657922.3599.27.camel@pengutronix.de>
+ <20160426084800.GZ2510@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0905494736294692479=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20160427094219.GL19428@n2100.arm.linux.org.uk>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Russell King - ARM Linux <linux@arm.linux.org.uk>
-Cc: Jean-Francois Moine <moinejf@free.fr>, alsa-devel@alsa-project.org, Lars-Peter Clausen <lars@metafoo.de>, kernel@pengutronix.de, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Koro Chen <koro.chen@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Cawa Cheng <cawa.cheng@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160426084800.GZ2510@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Mark Rutland <mark.rutland@arm.com>, Emil Velikov <emil.l.velikov@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Stephen Boyd <sboyd@codeaurora.org>, Tomasz Figa <tfiga@chromium.org>, kernel@pengutronix.de, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
---===============0905494736294692479==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="30y3C67tAc+6DFNM"
-Content-Disposition: inline
-
-
---30y3C67tAc+6DFNM
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Apr 27, 2016 at 10:42:19AM +0100, Russell King - ARM Linux wrote:
-
-> It would have been good to have this as a generic ALSA control rather than
-> an ASoC control.  The dw-hdmi driver is an ALSA driver, and now we have to
-> re-invent this for ALSA...
-
-We can always just incrementally move the code to the ALSA top level,
-though it's so thin that I'm not sure it's really buying much.
-
---30y3C67tAc+6DFNM
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXIJERAAoJECTWi3JdVIfQNKQH/3R+eJoWI5tGu0G54tU0Ledz
-MIpky8D3ma9+Hu4zN7Yd/8Wz+Y+vexkUfcrG8K05BQSef3D35wTWPD3eWemUdl3U
-1aFycxaO12njUssiDTCSCQkNN5WkGOe2rVXrOWDQBWooLQQwvejZL6fMWGW4ucBl
-2+lESi1hduLEoPSf6qoC9U3a86KA6Mab8FFPqQxuBWoccCUKD3t3Bz7qGI4U+ZEJ
-xxMeyuL4yK1zi4l7rXzQREcZYLm4plcXVixJvYq4eTzG24TD0D1pLnyROYwrOkj1
-Wqm4h2saj2FT5LyL9w2wvGFA5reDuAx2IdnLB+9sG0+LEnGAjNxyJZpZUZnTwAs=
-=zbnS
------END PGP SIGNATURE-----
-
---30y3C67tAc+6DFNM--
-
---===============0905494736294692479==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-
---===============0905494736294692479==--
+SGkgRGFuaWVsLAoKQW0gRGllbnN0YWcsIGRlbiAyNi4wNC4yMDE2LCAxMDo0OCArMDIwMCBzY2hy
+aWViIERhbmllbCBWZXR0ZXI6ClsuLi5dCj4gPiArc3RhdGljIGludCBtdGtfZHJtX3VubG9hZChz
+dHJ1Y3QgZHJtX2RldmljZSAqZHJtKQo+ID4gK3sKPiA+ICsJbXRrX2RybV9rbXNfZGVpbml0KGRy
+bSk7Cj4gPiArCWRybS0+ZGV2X3ByaXZhdGUgPSBOVUxMOwo+ID4gKwo+ID4gKwlyZXR1cm4gMDsK
+PiA+ICt9Cj4gCj4gTGlrZSBsb2FkLCB0aGUgdW5sb2FkIGhvb2sgaXMgZGVwcmVjYXRlZC4gQW5k
+IGluIGRybS1uZXh0IHdlIG5vdyBoYXZlIHNvbWUKPiBuaWNlIGhlbHBlcnMgdG8gbWFrZSBub3Qg
+dXNpbmcgYW4gdW5sb2FkIGhvb2sgZWFzaWVyLiBQbGVhc2UgcmVmYWN0b3IgcGVyCj4gZXhpc3Rp
+bmcgZXhhbXBsZXMgYW5kIGdldCByaWQgb2YgeW91ciB1bmxvYWQgaG9vay4KClRoYW5rcywgZG9l
+cyB0aGlzIGNoYW5nZSBsb29rIGFib3V0IHJpZ2h0OgoKLS0tLS0tLS04PC0tLS0tLS0tCi0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCkBAIC0yMjIsMTQgKzIyMiw2IEBAIHN0YXRpYyB2
+b2lkIG10a19kcm1fa21zX2RlaW5pdChzdHJ1Y3QgZHJtX2RldmljZQoqZHJtKQogCWRybV9tb2Rl
+X2NvbmZpZ19jbGVhbnVwKGRybSk7CiB9CiAKLXN0YXRpYyBpbnQgbXRrX2RybV91bmxvYWQoc3Ry
+dWN0IGRybV9kZXZpY2UgKmRybSkKLXsKLQltdGtfZHJtX2ttc19kZWluaXQoZHJtKTsKLQlkcm0t
+PmRldl9wcml2YXRlID0gTlVMTDsKLQotCXJldHVybiAwOwotfQotCiBzdGF0aWMgY29uc3Qgc3Ry
+dWN0IGZpbGVfb3BlcmF0aW9ucyBtdGtfZHJtX2ZvcHMgPSB7CiAJLm93bmVyID0gVEhJU19NT0RV
+TEUsCiAJLm9wZW4gPSBkcm1fb3BlbiwKQEAgLTI0Niw3ICsyMzgsNiBAQCBzdGF0aWMgY29uc3Qg
+c3RydWN0IGZpbGVfb3BlcmF0aW9ucyBtdGtfZHJtX2ZvcHMgPSB7CiBzdGF0aWMgc3RydWN0IGRy
+bV9kcml2ZXIgbXRrX2RybV9kcml2ZXIgPSB7CiAJLmRyaXZlcl9mZWF0dXJlcyA9IERSSVZFUl9N
+T0RFU0VUIHwgRFJJVkVSX0dFTSB8IERSSVZFUl9QUklNRSB8CiAJCQkgICBEUklWRVJfQVRPTUlD
+LAotCS51bmxvYWQgPSBtdGtfZHJtX3VubG9hZCwKIAogCS5nZXRfdmJsYW5rX2NvdW50ZXIgPSBk
+cm1fdmJsYW5rX2NvdW50LAogCS5lbmFibGVfdmJsYW5rID0gbXRrX2RybV9jcnRjX2VuYWJsZV92
+YmxhbmssCkBAIC00NTUsOCArNDQ2LDE0IEBAIGVycl9ub2RlOgogc3RhdGljIGludCBtdGtfZHJt
+X3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogewogCXN0cnVjdCBtdGtfZHJt
+X3ByaXZhdGUgKnByaXZhdGUgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKKwlzdHJ1Y3Qg
+ZHJtX2RldmljZSAqZHJtID0gcHJpdmF0ZS0+ZHJtOwogCWludCBpOwogCisJZHJtX2Nvbm5lY3Rv
+cl91bnJlZ2lzdGVyX2FsbChkcm0pOworCWRybV9kZXZfdW5yZWdpc3Rlcihkcm0pOworCW10a19k
+cm1fa21zX2RlaW5pdChkcm0pOworCWRybV9kZXZfdW5yZWYoZHJtKTsKKwogCWNvbXBvbmVudF9t
+YXN0ZXJfZGVsKCZwZGV2LT5kZXYsICZtdGtfZHJtX29wcyk7CiAJcG1fcnVudGltZV9kaXNhYmxl
+KCZwZGV2LT5kZXYpOwogCW9mX25vZGVfcHV0KHByaXZhdGUtPm11dGV4X25vZGUpOwotLS0tLS0t
+LT44LS0tLS0tLS0KCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCB2bV9vcGVyYXRpb25zX3N0cnVj
+dCBtdGtfZHJtX2dlbV92bV9vcHMgPSB7Cj4gPiArCS5vcGVuID0gZHJtX2dlbV92bV9vcGVuLAo+
+ID4gKwkuY2xvc2UgPSBkcm1fZ2VtX3ZtX2Nsb3NlLAo+ID4gK307Cj4gCj4gRHJpdmUtYnkgcmV2
+aWV3IEkganVzdCBzcG90dGVkOiBQbGVhc2UgdXNlIGRybV9nZW1fY21hX3ZtX29wcyBpbnN0ZWFk
+IG9mCj4gcm9sbGluZyB5b3VyIG93bi4KCkdvb2QgY2F0Y2gsIHdpbGwgcmVtb3ZlLgoKcmVnYXJk
+cwpQaGlsaXBwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
