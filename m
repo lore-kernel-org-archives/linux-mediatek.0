@@ -1,88 +1,106 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH] memory: mtk-smi: export mtk_smi_larb_get/put
-Date: Wed, 27 Apr 2016 17:05:07 +0200
-Message-ID: <1461769507.4044.50.camel@pengutronix.de>
-References: <1461747086-26286-1-git-send-email-p.zabel@pengutronix.de>
- <57209DD0.5050002@gmail.com> <1461759758.4044.43.camel@pengutronix.de>
- <5720BAF6.1070808@gmail.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v15 0/8] MT8173 DRM support
+Date: Wed, 27 Apr 2016 17:05:44 +0200
+Message-ID: <1461769552-2752-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5720BAF6.1070808-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Mittwoch, den 27.04.2016, 15:13 +0200 schrieb Matthias Brugger:
-> 
-> On 27/04/16 14:22, Philipp Zabel wrote:
-> > Hi Matthias,
-> >
-> > Am Mittwoch, den 27.04.2016, 13:09 +0200 schrieb Matthias Brugger:
-> >> Hi Philipp,
-> >>
-> >> On 27/04/16 10:51, Philipp Zabel wrote:
-> >>> To allow building mediatek-drm.ko as a module, the
-> >>> mtk_smi_larb_get and mtk_smi_larb_put symbols have
-> >>> to be exported.
-> >>>
-> >>> Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-> >>> ---
-> >>>    drivers/memory/mtk-smi.c | 2 ++
-> >>>    1 file changed, 2 insertions(+)
-> >>>
-> >>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> >>> index 089091f..f6b5757 100644
-> >>> --- a/drivers/memory/mtk-smi.c
-> >>> +++ b/drivers/memory/mtk-smi.c
-> >>> @@ -91,6 +91,7 @@ int mtk_smi_larb_get(struct device *larbdev)
-> >>>
-> >>>    	return 0;
-> >>>    }
-> >>> +EXPORT_SYMBOL_GPL(mtk_smi_larb_get);
-> >>>
-> >>>    void mtk_smi_larb_put(struct device *larbdev)
-> >>>    {
-> >>> @@ -106,6 +107,7 @@ void mtk_smi_larb_put(struct device *larbdev)
-> >>>    	mtk_smi_disable(&larb->smi);
-> >>>    	mtk_smi_disable(common);
-> >>>    }
-> >>> +EXPORT_SYMBOL_GPL(mtk_smi_larb_put);
-> >>>
-> >>>    static int
-> >>>    mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
-> >>>
-> >>
-> >> Strangely this didn't work with my config (attached).
-> >> Would you mind to double check?
-> >
-> > warning: (DRM_MEDIATEK && MTK_IOMMU) selects MTK_SMI which has unmet
-> > direct dependencies (MEMORY && (ARCH_MEDIATEK || COMPILE_TEST))
-> >
-> > I suppose DRM_MEDIATEK also has to select MEMORY, just like MTK_IOMMU
-> > does?
-> >
-> 
-> Yes that's it.
-> 
-> Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> 
-> Dave, can you take this patch through your tree to avoid build breakage?
-> 
-> Thanks,
-> Matthias
-
-Should I include this patch in the next MT8173 DRM pull request?
-
-regards
-Philipp
+UmViYXNlZCBvbnRvIGRybS1uZXh0LCBmaXhlZCBidWlsZGluZyBhcyBhIG1vZHVsZSwgcmVtb3Zl
+ZCB0aGUKZHJpdmVyIHVubG9hZCBob29rLCBjdXN0b20gdm1fb3BzLCBhbmQgdGhlIGR0cyBwYXRj
+aC4KCkNoYW5nZXMgc2luY2UgdjE0OgogLSBGaXhlZCBtb2R1bGUgYnVpbGQKIC0gU2VsZWN0IERS
+TV9HRU1fQ01BX0hFTFBFUiBhbmQgdXNlIGRybV9nZW1fY21hX3ZtX29wcwogLSBTZWxlY3QgTUVN
+T1JZIHNvIHRoYXQgc2VsZWN0IE1US19TTUkgd29ya3MgcHJvcGVybHkKIC0gUmViYXNlIG9udG8g
+ZHJtLW5leHQgc28gd2UgY2FuIHVzZSBkcm1fY29ubmVjdG9yX3VucmVnaXN0ZXJfYWxsKCkKIC0g
+UmVtb3ZlIGRlcHJlY2F0ZWQgdW5sb2FkIGhvb2sKIC0gdXNlIGRpdl91NjQgdG8gYXZvaWQgIl9f
+YWVhYmlfdWxkaXZtb2QgdW5kZWZpbmVkIiBlcnJvciB3aGVuCiAgIGJ1aWxkaW5nIGFzIG1vZHVs
+ZQogLSBEcm9wcGVkIHRoZSBkdHMgcGF0Y2gsIE1hdHRoaWFzIHdpbGwgcGljayBpdCB1cCBzZXBh
+cmF0ZWx5CiAtIEFkZGVkIGEgcGF0Y2ggdG8gZXhwb3J0IG10a19zbWlfbGFyYl9nZXQvcHV0Cgpy
+ZWdhcmRzClBoaWxpcHAKCkNLIEh1ICgzKToKICBkdC1iaW5kaW5nczogZHJtL21lZGlhdGVrOiBB
+ZGQgTWVkaWF0ZWsgZGlzcGxheSBzdWJzeXN0ZW0gZHRzIGJpbmRpbmcKICBkcm0vbWVkaWF0ZWs6
+IEFkZCBEUk0gRHJpdmVyIGZvciBNZWRpYXRlayBTb0MgTVQ4MTczLgogIGRybS9tZWRpYXRlazog
+QWRkIERTSSBzdWIgZHJpdmVyCgpKaWUgUWl1ICgxKToKICBkcm0vbWVkaWF0ZWs6IEFkZCBEUEkg
+c3ViIGRyaXZlcgoKUGhpbGlwcCBaYWJlbCAoNCk6CiAgY2xrOiBtZWRpYXRlazogbWFrZSBkcGkw
+X3NlbCBwcm9wYWdhdGUgcmF0ZSBjaGFuZ2VzCiAgY2xrOiBtZWRpYXRlazogQWRkIGhkbWlfcmVm
+IEhETUkgUEhZIFBMTCByZWZlcmVuY2UgY2xvY2sgb3V0cHV0CiAgY2xrOiBtZWRpYXRlazogcmVt
+b3ZlIGhkbWl0eF9kaWdfY3RzIGZyb20gVE9QIGNsb2NrcwogIG1lbW9yeTogbXRrLXNtaTogZXhw
+b3J0IG10a19zbWlfbGFyYl9nZXQvcHV0CgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
+bWVkaWF0ZWssZGlzcC50eHQgICAgfCAyMDMgKysrKysKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21l
+ZGlhdGVrL21lZGlhdGVrLGRwaS50eHQgICAgIHwgIDM1ICsKIC4uLi9iaW5kaW5ncy9kaXNwbGF5
+L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQgICAgIHwgIDYwICsrCiBkcml2ZXJzL2Nsay9tZWRp
+YXRlay9jbGstbXQ4MTczLmMgICAgICAgICAgICAgICAgICB8ICAxMiArLQogZHJpdmVycy9jbGsv
+bWVkaWF0ZWsvY2xrLW10ay5oICAgICAgICAgICAgICAgICAgICAgfCAgMTUgKy0KIGRyaXZlcnMv
+Z3B1L2RybS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAyICsKIGRyaXZl
+cnMvZ3B1L2RybS9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAgICAgICAgIHwgIDE2ICsK
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgIDE0
+ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgICAgICAgICAgIHwg
+MzAyICsrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAg
+ICAgICAgIHwgMjQwICsrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyAg
+ICAgICAgICAgICAgICAgfCA3NjkgKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHBpX3JlZ3MuaCAgICAgICAgICAgIHwgMjI4ICsrKysrCiBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAgICAgICAgICB8IDU4MiArKysrKysrKysr
+KysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmggICAgICAgICAgICB8
+ICAzMiArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgICAgICAg
+ICB8IDM1MyArKysrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmgg
+ICAgICAgICAgICAgfCAgNDEgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
+X2NvbXAuYyAgICAgICAgfCAyMjUgKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmggICAgICAgIHwgMTUwICsrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2Rydi5jICAgICAgICAgICAgIHwgNTYxICsrKysrKysrKysrKysKIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oICAgICAgICAgICAgIHwgIDYwICsrCiBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5jICAgICAgICAgICAgICB8IDE2NSArKysr
+CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9mYi5oICAgICAgICAgICAgICB8ICAy
+MyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgICAgICAgICAgICB8
+IDI2OSArKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oICAgICAg
+ICAgICAgIHwgIDU5ICsrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5j
+ICAgICAgICAgICB8IDI0MCArKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X3BsYW5lLmggICAgICAgICAgIHwgIDU5ICsrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jICAgICAgICAgICAgICAgICB8IDkyNyArKysrKysrKysrKysrKysrKysrKysKIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgICAgICAgIHwgNDYzICsrKysr
+KysrKysKIGRyaXZlcnMvbWVtb3J5L210ay1zbWkuYyAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHwgICAyICsKIGluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svbXQ4MTczLWNsay5oICAgICAgICAg
+ICAgIHwgICAzICstCiAzMSBmaWxlcyBjaGFuZ2VkLCA2MTA2IGluc2VydGlvbnMoKyksIDUgZGVs
+ZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9t
+ZWRpYXRlayxkcGkudHh0CiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHNpLnR4dAogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlCiBjcmVhdGUgbW9kZSAxMDA2
+NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYwogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaV9yZWdzLmgKIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKIGNyZWF0
+ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmgKIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwog
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5o
+CiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRw
+X2NvbXAuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2Rydi5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZmIuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2ZiLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9nZW0uYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKCi0tIAoyLjguMC5yYzMKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
