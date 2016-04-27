@@ -1,38 +1,50 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH] usb: core: buffer: avoid NULL pointer dereferrence
-Date: Tue, 26 Apr 2016 16:11:15 -0700
-Message-ID: <20160426231115.GB23273@kroah.com>
+Date: Wed, 27 Apr 2016 09:32:10 +0800
+Message-ID: <1461720730.11651.4.camel@mhfsdcap03>
 References: <20160408140701.GA3547@kroah.com>
- <Pine.LNX.4.44L0.1604081120190.2069-100000@iolanthe.rowland.org>
+	 <Pine.LNX.4.44L0.1604081120190.2069-100000@iolanthe.rowland.org>
+	 <20160426231115.GB23273@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.44L0.1604081120190.2069-100000@iolanthe.rowland.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alan Stern <stern@rowland.harvard.edu>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160426231115.GB23273-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Apr 08, 2016 at 11:21:05AM -0400, Alan Stern wrote:
-> On Fri, 8 Apr 2016, Greg Kroah-Hartman wrote:
-> 
-> > On Fri, Apr 08, 2016 at 05:08:03PM +0800, Chunfeng Yun wrote:
-> > > NULL pointer dereferrence will happen when class driver
-> > > wants to allocate zero length buffer and pool_max[0]
-> > > can't be used, so skip reserved pool in this case.
+Hi,
+
+On Tue, 2016-04-26 at 16:11 -0700, Greg Kroah-Hartman wrote:
+> On Fri, Apr 08, 2016 at 11:21:05AM -0400, Alan Stern wrote:
+> > On Fri, 8 Apr 2016, Greg Kroah-Hartman wrote:
 > > 
-> > Why would a driver want to allocate a 0 length buffer?  What driver does
-> > this?
+> > > On Fri, Apr 08, 2016 at 05:08:03PM +0800, Chunfeng Yun wrote:
+> > > > NULL pointer dereferrence will happen when class driver
+> > > > wants to allocate zero length buffer and pool_max[0]
+> > > > can't be used, so skip reserved pool in this case.
+> > > 
+> > > Why would a driver want to allocate a 0 length buffer?  What driver does
+> > > this?
+> > > 
+> > > Shouldn't we fix that issue instead?
 > > 
-> > Shouldn't we fix that issue instead?
+> > And even if a driver does want to allocate a 0-length buffer, shouldn't 
+> > the function simply return early instead of running through all its 
+> > calculations?
 > 
-> And even if a driver does want to allocate a 0-length buffer, shouldn't 
-> the function simply return early instead of running through all its 
-> calculations?
+> Yes it should, Chunfeng, can you fix this patch to do that please.
+> 
+Ok, I will fix it later
 
-Yes it should, Chunfeng, can you fix this patch to do that please.
+> thanks,
+> 
+> greg k-h
 
-thanks,
 
-greg k-h
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
