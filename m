@@ -1,80 +1,56 @@
-From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
-Subject: Re: MTK Smart Device Gen1 NAND Driver - Testing on MT7623
-Date: Thu, 28 Apr 2016 14:13:33 +0200
-Message-ID: <5f7284a2-ff27-100d-87a3-a9a74448da0e@openwrt.org>
-References: <e397161c-2fe8-7e9d-c34f-adf5e91a99d7@openwrt.org>
- <20160427100627.63b148c3@bbrezillon>
- <869e6090-04fd-0f99-f248-af68e948362e@openwrt.org>
- <5720A5F5.8060602@linaro.org> <1461814664.8414.112.camel@mhfsdcap03>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461814664.8414.112.camel@mhfsdcap03>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 2/5] clocksource/drivers/mtk_timer: Add __init attribute
+Date: Thu, 28 Apr 2016 15:20:45 +0200
+Message-ID: <1461849648-12751-2-git-send-email-daniel.lezcano@linaro.org>
+References: <20160428131908.GC5197@linaro.org>
+ <1461849648-12751-1-git-send-email-daniel.lezcano@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1461849648-12751-1-git-send-email-daniel.lezcano@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: tglx@linutronix.de, mingo@kernel.org
+Cc: Julia Lawall <Julia.Lawall@lip6.fr>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Julia Lawall <Julia.Lawall@lip6.fr>
 
+Add __init attribute on a function that is only called from other __init
+functions and that is not inlined, at least with gcc version 4.8.4 on an
+x86 machine with allyesconfig.  Currently, the function is put in the
+.text.unlikely segment.  Declaring it as __init will cause it to be put in
+the .init.text and to disappear after initialization.
 
-On 28/04/2016 05:37, xiaolei li wrote:
-> On Wed, 2016-04-27 at 07:43 -0400, Jorge Ramirez wrote:
->> 
->> On 04/27/2016 04:41 AM, John Crispin wrote:
->> > thanks for the info. i tried that aswell as some other settings but none
->> > makes the flash work. lets see if Jorge has some ideas. otherwise i will
->> > wait for V4.
->> 
->> we are about to post v4 (need another day or two); we have major 
->> differences as to how the bad blocks are being marked and some other 
->> optimizations. if you don't mind upgrading to that version then we can 
->> help you debug on your side.
->> 
->> btw, does any of the mtd tests pass? oobtest, pagetest..?
->> 
->> I am also adding Xiaolei to the thread (we have been working together on 
->> this driver)
->> 
->> 
-> Hi John.
-> 
-> As Jorge said, we will post v4 soon. You can have a try then.
-> 
-> Also, if you wanna use V3 now. I think you can have a try to set
-> spare_per_sector = <32>. In V4, there will be no this setting in DT
-> file.
-> 
-> Thanks
-> Xiaolei
-> 
+The result of objdump -x on the function before the change is as follows:
 
-Hi
+0000000000000000 l     F .text.unlikely 000000000000006f mtk_timer_setup.isra.4
 
-i tried 32 and that just makes the driver spew errors during probe :-)
+And after the change it is as follows:
 
-i'll wait for V4 and test using that version
-	
-	John
+0000000000000000 l     F .init.text	000000000000006a mtk_timer_setup.isra.4
 
-> ************* Email Confidentiality Notice ********************
-> The information contained in this e-mail message (including any 
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be 
-> conveyed only to the designated recipient(s). Any use, dissemination, 
-> distribution, printing, retaining or copying of this e-mail (including its 
-> attachments) by unintended recipient(s) is strictly prohibited and may 
-> be unlawful. If you are not an intended recipient of this e-mail, or believe 
-> that you have received this e-mail in error, please notify the sender 
-> immediately (by replying to this e-mail), delete any and all copies of 
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
-> 
+Done with the help of Coccinelle.  The semantic patch checks for local
+static non-init functions that are called from an __init function and are
+not called from any other function.
+
+Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/clocksource/mtk_timer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index d67bc35..7e583f8 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -152,7 +152,7 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
+ }
+ 
+ static void
+-mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
++__init mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
+ {
+ 	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
+ 		evt->gpt_base + TIMER_CTRL_REG(timer));
+-- 
+1.9.1
