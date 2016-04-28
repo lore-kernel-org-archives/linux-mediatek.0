@@ -1,198 +1,83 @@
-From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
-Subject: Re: [PATCH 11/12] nvmem: mxs-ocotp: remove nvmem regmap dependency
-Date: Thu, 28 Apr 2016 08:50:34 +0200
-Message-ID: <5721B2BA.4080100@i2se.com>
-References: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
- <1461526096-29584-12-git-send-email-srinivas.kandagatla@linaro.org>
+From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v15 1/2] Documentation: bridge: Add documentation for ps8640 DT properties
+Date: Thu, 28 Apr 2016 20:11:37 +0800
+Message-ID: <1461845498-15996-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461526096-29584-12-git-send-email-srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: andrew-g2DYL2Zd6BY@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Wolfram Sang <wsa-z923LK4zBo2bacvFa/9K2g@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Joachim Eastwood <manabian-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, cawa.c
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Srinivas,
+Add documentation for DT properties supported by
+ps8640 DSI-eDP converter.
 
-Am 24.04.2016 um 21:28 schrieb Srinivas Kandagatla:
-> This patch moves to nvmem support in the driver to use callback
-> instead of regmap.
->
-> Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> ---
->  drivers/nvmem/mxs-ocotp.c | 79 +++++++++++++----------------------------------
->  1 file changed, 21 insertions(+), 58 deletions(-)
->
-> diff --git a/drivers/nvmem/mxs-ocotp.c b/drivers/nvmem/mxs-ocotp.c
-> index 8ba19bb..3bf962c 100644
-> --- a/drivers/nvmem/mxs-ocotp.c
-> +++ b/drivers/nvmem/mxs-ocotp.c
+Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+Changes since v14:
+ - change mode-sel-gpios as optional.
+---
+ .../devicetree/bindings/display/bridge/ps8640.txt  |   44 ++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
 
-the include of regmap.h should also be removed.
+diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+new file mode 100644
+index 0000000..7b13f92
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
+@@ -0,0 +1,44 @@
++ps8640-bridge bindings
++
++Required properties:
++	- compatible: "parade,ps8640"
++	- reg: first page address of the bridge.
++	- sleep-gpios: OF device-tree gpio specification for PD pin.
++	- reset-gpios: OF device-tree gpio specification for reset pin.
++	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
++	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
++	- ports: The device node can contain video interface port nodes per
++		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
++		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
++
++Optional properties:
++	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
++[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
++
++Example:
++	edp-bridge@18 {
++		compatible = "parade,ps8640";
++		reg = <0x18>;
++		sleep-gpios = <&pio 116 GPIO_ACTIVE_LOW>;
++		reset-gpios = <&pio 115 GPIO_ACTIVE_LOW>;
++		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
++		vdd12-supply = <&ps8640_fixed_1v2>;
++		vdd33-supply = <&mt6397_vgp2_reg>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			port@0 {
++				reg = <0>;
++				ps8640_in: endpoint {
++					remote-endpoint = <&dsi0_out>;
++				};
++			};
++			port@1 {
++				reg = <1>;
++				ps8640_out: endpoint {
++					remote-endpoint = <&panel_in>;
++				};
++			};
++		};
++	};
+-- 
+1.7.9.5
 
-> @@ -66,11 +66,10 @@ static int mxs_ocotp_wait(struct mxs_ocotp *otp)
->  	return 0;
->  }
->  
-> -static int mxs_ocotp_read(void *context, const void *reg, size_t reg_size,
-> -			  void *val, size_t val_size)
-> +static int mxs_ocotp_read(void *context, unsigned int offset,
-> +			  void *val, size_t bytes)
->  {
->  	struct mxs_ocotp *otp = context;
-> -	unsigned int offset = *(u32 *)reg;
->  	u32 *buf = val;
->  	int ret;
->  
-> @@ -94,17 +93,16 @@ static int mxs_ocotp_read(void *context, const void *reg, size_t reg_size,
->  	if (ret)
->  		goto close_banks;
->  
-> -	while (val_size) {
-> +	while (bytes) {
->  		if ((offset < OCOTP_DATA_OFFSET) || (offset % 16)) {
->  			/* fill up non-data register */
-> -			*buf = 0;
-> +			*buf++ = 0;
->  		} else {
-> -			*buf = readl(otp->base + offset);
-> +			*buf++ = readl(otp->base + offset);
->  		}
->  
-> -		buf++;
-> -		val_size--;
-> -		offset += reg_size;
-> +		bytes -= 4;
-> +		offset += 4;
-
-This change would also fix the buffer overflow but Stanislav's patch
-should be applied before to get the fix in stable.
-
->  	}
->  
->  close_banks:
-> @@ -117,57 +115,28 @@ disable_clk:
->  	return ret;
->  }
->  
-> -static int mxs_ocotp_write(void *context, const void *data, size_t count)
-> -{
-> -	/* We don't want to support writing */
-> -	return 0;
-> -}
-> -
-> -static bool mxs_ocotp_writeable_reg(struct device *dev, unsigned int reg)
-> -{
-> -	return false;
-> -}
-> -
->  static struct nvmem_config ocotp_config = {
->  	.name = "mxs-ocotp",
-> +	.stride = 16,
-> +	.word_size = 4,
->  	.owner = THIS_MODULE,
-
-.reg_read = mxs_ocotp_read,
-
->  };
->  
-> -static const struct regmap_range imx23_ranges[] = {
-> -	regmap_reg_range(OCOTP_DATA_OFFSET, 0x210),
-> -};
-> -
-> -static const struct regmap_access_table imx23_access = {
-> -	.yes_ranges = imx23_ranges,
-> -	.n_yes_ranges = ARRAY_SIZE(imx23_ranges),
-> -};
-> -
-> -static const struct regmap_range imx28_ranges[] = {
-> -	regmap_reg_range(OCOTP_DATA_OFFSET, 0x290),
-> -};
-> -
-> -static const struct regmap_access_table imx28_access = {
-> -	.yes_ranges = imx28_ranges,
-> -	.n_yes_ranges = ARRAY_SIZE(imx28_ranges),
-> +struct imx_data {
-struct mxs_data
-
-These chips are named imx2x but the platform is mxs. Please don't ask why.
-> +	int max_reg;
-Since nvmem_config uses "size" instead of "max_reg" we better use "size"
-here, too. This avoids confusion and potential issues see below.
->  };
->  
-> -static struct regmap_bus mxs_ocotp_bus = {
-> -	.read = mxs_ocotp_read,
-> -	.write = mxs_ocotp_write, /* make regmap_init() happy */
-> -	.reg_format_endian_default = REGMAP_ENDIAN_NATIVE,
-> -	.val_format_endian_default = REGMAP_ENDIAN_NATIVE,
-> +static const struct imx_data imx23_data = {
-static const struct mxs_data imx23_data
-> +	.max_reg = 0x210,
-.size = 0x220,
->  };
->  
-> -static struct regmap_config mxs_ocotp_config = {
-> -	.reg_bits = 32,
-> -	.val_bits = 32,
-> -	.reg_stride = 16,
-> -	.writeable_reg = mxs_ocotp_writeable_reg,
-> +static const struct imx_data imx28_data = {
-static const struct mxs_data imx28_data
-> +	.max_reg = 0x290,
-.size = 0x2a0,
->  };
->  
->  static const struct of_device_id mxs_ocotp_match[] = {
-> -	{ .compatible = "fsl,imx23-ocotp", .data = &imx23_access },
-> -	{ .compatible = "fsl,imx28-ocotp", .data = &imx28_access },
-> +	{ .compatible = "fsl,imx23-ocotp", .data = &imx23_data },
-> +	{ .compatible = "fsl,imx28-ocotp", .data = &imx23_data },
-.compatible = "fsl,imx28-ocotp", .data = &imx28_data
->  	{ /* sentinel */},
->  };
->  MODULE_DEVICE_TABLE(of, mxs_ocotp_match);
-> @@ -175,6 +144,7 @@ MODULE_DEVICE_TABLE(of, mxs_ocotp_match);
->  static int mxs_ocotp_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> +	struct imx_data *data;
-const struct mxs_data *data
->  	struct mxs_ocotp *otp;
->  	struct resource *res;
->  	const struct of_device_id *match;
-> @@ -205,17 +175,10 @@ static int mxs_ocotp_probe(struct platform_device *pdev)
->  		return ret;
->  	}
->  
-> -	access = match->data;
-> -	mxs_ocotp_config.rd_table = access;
-> -	mxs_ocotp_config.max_register = access->yes_ranges[0].range_max;
-> -
-> -	regmap = devm_regmap_init(dev, &mxs_ocotp_bus, otp, &mxs_ocotp_config);
-> -	if (IS_ERR(regmap)) {
-> -		dev_err(dev, "regmap init failed\n");
-> -		ret = PTR_ERR(regmap);
-> -		goto err_clk;
-> -	}
-> +	data = match->data;
->  
-> +	ocotp_config.size = data->max_reg;
-data->size
-
-Regards
-Stefan
-> +	ocotp_config.priv = otp;
->  	ocotp_config.dev = dev;
->  	otp->nvmem = nvmem_register(&ocotp_config);
->  	if (IS_ERR(otp->nvmem)) {
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
