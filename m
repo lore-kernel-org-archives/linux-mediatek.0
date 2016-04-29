@@ -1,56 +1,89 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 2/5] clocksource/drivers/mtk_timer: Add __init attribute
-Date: Thu, 28 Apr 2016 15:20:45 +0200
-Message-ID: <1461849648-12751-2-git-send-email-daniel.lezcano@linaro.org>
-References: <20160428131908.GC5197@linaro.org>
- <1461849648-12751-1-git-send-email-daniel.lezcano@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1461849648-12751-1-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tglx@linutronix.de, mingo@kernel.org
-Cc: Julia Lawall <Julia.Lawall@lip6.fr>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:CLOCKSOURCE, CLOC..." <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek
-	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+From: Dave Airlie <airlied-cv59FeDIM0c@public.gmane.org>
+Subject: Re: [PATCH] memory: mtk-smi: export mtk_smi_larb_get/put
+Date: Fri, 29 Apr 2016 06:08:05 +0100 (IST)
+Message-ID: <alpine.DEB.2.00.1604290607540.7793@skynet.skynet.ie>
+References: <1461747086-26286-1-git-send-email-p.zabel@pengutronix.de>
+ <57209DD0.5050002@gmail.com> <1461759758.4044.43.camel@pengutronix.de>
+ <5720BAF6.1070808@gmail.com> <1461769507.4044.50.camel@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1461769507.4044.50.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Julia Lawall <Julia.Lawall@lip6.fr>
+> Am Mittwoch, den 27.04.2016, 15:13 +0200 schrieb Matthias Brugger:
+> > 
+> > On 27/04/16 14:22, Philipp Zabel wrote:
+> > > Hi Matthias,
+> > >
+> > > Am Mittwoch, den 27.04.2016, 13:09 +0200 schrieb Matthias Brugger:
+> > >> Hi Philipp,
+> > >>
+> > >> On 27/04/16 10:51, Philipp Zabel wrote:
+> > >>> To allow building mediatek-drm.ko as a module, the
+> > >>> mtk_smi_larb_get and mtk_smi_larb_put symbols have
+> > >>> to be exported.
+> > >>>
+> > >>> Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+> > >>> ---
+> > >>>    drivers/memory/mtk-smi.c | 2 ++
+> > >>>    1 file changed, 2 insertions(+)
+> > >>>
+> > >>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > >>> index 089091f..f6b5757 100644
+> > >>> --- a/drivers/memory/mtk-smi.c
+> > >>> +++ b/drivers/memory/mtk-smi.c
+> > >>> @@ -91,6 +91,7 @@ int mtk_smi_larb_get(struct device *larbdev)
+> > >>>
+> > >>>    	return 0;
+> > >>>    }
+> > >>> +EXPORT_SYMBOL_GPL(mtk_smi_larb_get);
+> > >>>
+> > >>>    void mtk_smi_larb_put(struct device *larbdev)
+> > >>>    {
+> > >>> @@ -106,6 +107,7 @@ void mtk_smi_larb_put(struct device *larbdev)
+> > >>>    	mtk_smi_disable(&larb->smi);
+> > >>>    	mtk_smi_disable(common);
+> > >>>    }
+> > >>> +EXPORT_SYMBOL_GPL(mtk_smi_larb_put);
+> > >>>
+> > >>>    static int
+> > >>>    mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
+> > >>>
+> > >>
+> > >> Strangely this didn't work with my config (attached).
+> > >> Would you mind to double check?
+> > >
+> > > warning: (DRM_MEDIATEK && MTK_IOMMU) selects MTK_SMI which has unmet
+> > > direct dependencies (MEMORY && (ARCH_MEDIATEK || COMPILE_TEST))
+> > >
+> > > I suppose DRM_MEDIATEK also has to select MEMORY, just like MTK_IOMMU
+> > > does?
+> > >
+> > 
+> > Yes that's it.
+> > 
+> > Signed-off-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> > 
+> > Dave, can you take this patch through your tree to avoid build breakage?
+> > 
+> > Thanks,
+> > Matthias
+> 
+> Should I include this patch in the next MT8173 DRM pull request?
 
-Add __init attribute on a function that is only called from other __init
-functions and that is not inlined, at least with gcc version 4.8.4 on an
-x86 machine with allyesconfig.  Currently, the function is put in the
-.text.unlikely segment.  Declaring it as __init will cause it to be put in
-the .init.text and to disappear after initialization.
+Yes please do.
 
-The result of objdump -x on the function before the change is as follows:
-
-0000000000000000 l     F .text.unlikely 000000000000006f mtk_timer_setup.isra.4
-
-And after the change it is as follows:
-
-0000000000000000 l     F .init.text	000000000000006a mtk_timer_setup.isra.4
-
-Done with the help of Coccinelle.  The semantic patch checks for local
-static non-init functions that are called from an __init function and are
-not called from any other function.
-
-Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/clocksource/mtk_timer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-index d67bc35..7e583f8 100644
---- a/drivers/clocksource/mtk_timer.c
-+++ b/drivers/clocksource/mtk_timer.c
-@@ -152,7 +152,7 @@ static irqreturn_t mtk_timer_interrupt(int irq, void *dev_id)
- }
- 
- static void
--mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
-+__init mtk_timer_setup(struct mtk_clock_event_device *evt, u8 timer, u8 option)
- {
- 	writel(TIMER_CTRL_CLEAR | TIMER_CTRL_DISABLE,
- 		evt->gpt_base + TIMER_CTRL_REG(timer));
--- 
-1.9.1
+Dave.
