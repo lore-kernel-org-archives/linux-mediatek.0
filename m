@@ -1,122 +1,286 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v9 0/8] Add MT8173 Video Encoder Driver and VPU Driver
-Date: Mon, 2 May 2016 14:22:03 +0800
-Message-ID: <1462170123.18420.3.camel@mtksdaap41>
-References: <1461661117-4657-1-git-send-email-tiffany.lin@mediatek.com>
-	 <5723422E.4030109@xs4all.nl>
+From: Wolfram Sang <wsa@the-dreams.de>
+Subject: Re: [PATCH 02/12] eeprom: at24: remove nvmem regmap dependency
+Date: Mon, 2 May 2016 09:32:54 +0200
+Message-ID: <20160502073254.GA2015@tetsubishi>
+References: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
+ <1461526096-29584-3-git-send-email-srinivas.kandagatla@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5723422E.4030109-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="17pEHd4RhPHOinZp"
+Return-path: <linux-i2c-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1461526096-29584-3-git-send-email-srinivas.kandagatla@linaro.org>
+Sender: linux-i2c-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, Joachim Eastwood <manabian@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, andrew@lunn.ch
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
 
-On Fri, 2016-04-29 at 13:14 +0200, Hans Verkuil wrote:
-> Hi Tiffany,
-> 
-> On 04/26/2016 10:58 AM, Tiffany Lin wrote:
-> > ==============
-> >  Introduction
-> > ==============
-> > 
-> > The purpose of this series is to add the driver for video codec hw embedded in the Mediatek's MT8173 SoCs.
-> > Mediatek Video Codec is able to handle video encoding of in a range of formats.
-> > 
-> > This patch series also include VPU driver. Mediatek Video Codec driver rely on VPU driver to load,
-> > communicate with VPU.
-> > 
-> > Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
-> > 
-> > ==================
-> >  Device interface
-> > ==================
-> > 
-> > In principle the driver bases on v4l2 memory-to-memory framework:
-> > it provides a single video node and each opened file handle gets its own private context with separate
-> > buffer queues. Each context consist of 2 buffer queues: OUTPUT (for source buffers, i.e. raw video
-> > frames) and CAPTURE (for destination buffers, i.e. encoded video frames).
-> > 
-> > ==============================
-> >  VPU (Video Processor Unit)
-> > ==============================
-> > The VPU driver for hw video codec embedded in Mediatek's MT8173 SOCs.
-> > It is able to handle video decoding/encoding in a range of formats.
-> > The driver provides with VPU firmware download, memory management and the communication interface between CPU and VPU.
-> > For VPU initialization, it will create virtual memory for CPU access and physical address for VPU hw device access. 
-> > When a decode/encode instance opens a device node, vpu driver will download vpu firmware to the device.
-> > A decode/encode instant will decode/encode a frame using VPU interface to interrupt vpu to handle decoding/encoding jobs.
-> > 
-> > Please have a look at the code and comments will be very much appreciated.
-> 
-> I build this using my daily build setup and got a bunch of errors and warnings
-> from both the compiler (when this driver is compile-tested on a 32 bit arch)
-> and from sparse/smatch.
-> 
-> Can you fix these?
+--17pEHd4RhPHOinZp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Our driver only support for ARM/ARM64 architecture.
-I will add 
-MTK_IOMMU [=y] && (ARM || ARM64) to Kconfig for VIDEO_MEDIATEK_VCODEC.
-And we will fix compiler warning.
+On Sun, Apr 24, 2016 at 08:28:06PM +0100, Srinivas Kandagatla wrote:
+> This patch moves to nvmem support in the driver to use callback instead
+> of regmap.
+>=20
+> Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 
-best regards,
-Tiffany
-> 
-> linux-git-i686: WARNINGS
-> 
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c: In function 'load_requested_vpu':
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:498:117: warning: format '%lx' expects argument of type 'long unsigned int', but argument 4 has type 'size_t {aka unsigned int}' [-Wformat=]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:498:117: warning: format '%lx' expects argument of type 'long unsigned int', but argument 5 has type 'size_t {aka unsigned int}' [-Wformat=]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:501:410: warning: format '%lx' expects argument of type 'long unsigned int', but argument 4 has type 'size_t {aka unsigned int}' [-Wformat=]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/venc_vpu_if.c: In function 'vpu_enc_ipi_handler':
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/venc_vpu_if.c:40:30: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
->   struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)msg->venc_inst;
->                               ^
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c: In function 'mtk_venc_worker':
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:1046:43: warning: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'size_t {aka unsigned int}' [-Wformat=]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:1046:43: warning: format '%lx' expects argument of type 'long unsigned int', but argument 10 has type 'size_t {aka unsigned int}' [-Wformat=]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:1046:43: warning: format '%lx' expects argument of type 'long unsigned int', but argument 13 has type 'size_t {aka unsigned int}' [-Wformat=]
-> 
-> Tip: use %zu or %zx for size_t.
-> 
-> sparse: ERRORS
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:261:24: warning: incorrect type in assignment (different base types)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:476:23: warning: symbol 'get_vp8_enc_comm_if' was not declared. Should it be static?
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:237:6: warning: symbol 'vpu_clock_disable' was not declared. Should it be static?
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:250:5: warning: symbol 'vpu_clock_enable' was not declared. Should it be static?
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:436:54: warning: incorrect type in return expression (different address spaces)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:504:14: warning: incorrect type in assignment (different address spaces)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:710:26: warning: cast removes address space of expression
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c:674:23: warning: symbol 'get_h264_enc_comm_if' was not declared. Should it be static?
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:804:41: warning: Using plain integer as NULL pointer
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:905:25: warning: Using plain integer as NULL pointer
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:989:50: warning: Using plain integer as NULL pointer
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:133:15: error: undefined identifier 'kzalloc'
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:206:9: error: undefined identifier 'kfree'
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:228:9: error: undefined identifier 'kfree'
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:548:6: warning: 'vpu_fw' may be used uninitialized in this function [-Wmaybe-uninitialized]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:133:8: error: implicit declaration of function 'kzalloc' [-Werror=implicit-function-declaration]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:133:6: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:206:2: error: implicit declaration of function 'kfree' [-Werror=implicit-function-declaration]
-> 
-> smatch: ERRORS
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:921 mtk_venc_encode_header() warn: inconsistent indenting
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:397 vpu_wdt_reg_handler() warn: variable dereferenced before check 'vpu' (see line 395)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vpu/mtk_vpu.c:398 vpu_wdt_reg_handler() error: we previously assumed 'vpu' could be null (see line 397)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:142 fops_vcodec_open() error: we previously assumed 'ctx' could be null (see line 134)
-> /home/hans/work/build/media-git/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c:363 mtk_vcodec_probe() warn: passing zero to 'PTR_ERR'
-> 
-> Thanks!
-> 
-> 	Hans
+Andrew, since you did the NVMEM implementation, could you have a look at
+this? That would be awesome. Thanks!
 
+> ---
+>  drivers/misc/eeprom/Kconfig |   1 -
+>  drivers/misc/eeprom/at24.c  | 103 ++++++++++----------------------------=
+------
+>  2 files changed, 22 insertions(+), 82 deletions(-)
+>=20
+> diff --git a/drivers/misc/eeprom/Kconfig b/drivers/misc/eeprom/Kconfig
+> index cfc493c..2d70464 100644
+> --- a/drivers/misc/eeprom/Kconfig
+> +++ b/drivers/misc/eeprom/Kconfig
+> @@ -3,7 +3,6 @@ menu "EEPROM support"
+>  config EEPROM_AT24
+>  	tristate "I2C EEPROMs / RAMs / ROMs from most vendors"
+>  	depends on I2C && SYSFS
+> -	select REGMAP
+>  	select NVMEM
+>  	help
+>  	  Enable this driver to get read/write support to most I2C EEPROMs
+> diff --git a/drivers/misc/eeprom/at24.c b/drivers/misc/eeprom/at24.c
+> index 089d694..de550a6 100644
+> --- a/drivers/misc/eeprom/at24.c
+> +++ b/drivers/misc/eeprom/at24.c
+> @@ -23,7 +23,6 @@
+>  #include <linux/acpi.h>
+>  #include <linux/i2c.h>
+>  #include <linux/nvmem-provider.h>
+> -#include <linux/regmap.h>
+>  #include <linux/platform_data/at24.h>
+> =20
+>  /*
+> @@ -69,7 +68,6 @@ struct at24_data {
+>  	unsigned write_max;
+>  	unsigned num_addresses;
+> =20
+> -	struct regmap_config regmap_config;
+>  	struct nvmem_config nvmem_config;
+>  	struct nvmem_device *nvmem;
+> =20
+> @@ -252,10 +250,10 @@ static ssize_t at24_eeprom_read(struct at24_data *a=
+t24, char *buf,
+>  	return -ETIMEDOUT;
+>  }
+> =20
+> -static ssize_t at24_read(struct at24_data *at24,
+> -		char *buf, loff_t off, size_t count)
+> +static int at24_read(void *priv, unsigned int off, void *val, size_t cou=
+nt)
+>  {
+> -	ssize_t retval =3D 0;
+> +	struct at24_data *at24 =3D priv;
+> +	char *buf =3D val;
+> =20
+>  	if (unlikely(!count))
+>  		return count;
+> @@ -267,23 +265,21 @@ static ssize_t at24_read(struct at24_data *at24,
+>  	mutex_lock(&at24->lock);
+> =20
+>  	while (count) {
+> -		ssize_t	status;
+> +		int	status;
+> =20
+>  		status =3D at24_eeprom_read(at24, buf, off, count);
+> -		if (status <=3D 0) {
+> -			if (retval =3D=3D 0)
+> -				retval =3D status;
+> -			break;
+> +		if (status < 0) {
+> +			mutex_unlock(&at24->lock);
+> +			return status;
+>  		}
+>  		buf +=3D status;
+>  		off +=3D status;
+>  		count -=3D status;
+> -		retval +=3D status;
+>  	}
+> =20
+>  	mutex_unlock(&at24->lock);
+> =20
+> -	return retval;
+> +	return 0;
+>  }
+> =20
+>  /*
+> @@ -372,13 +368,13 @@ static ssize_t at24_eeprom_write(struct at24_data *=
+at24, const char *buf,
+>  	return -ETIMEDOUT;
+>  }
+> =20
+> -static ssize_t at24_write(struct at24_data *at24, const char *buf, loff_=
+t off,
+> -			  size_t count)
+> +static int at24_write(void *priv, unsigned int off, void *val, size_t co=
+unt)
+>  {
+> -	ssize_t retval =3D 0;
+> +	struct at24_data *at24 =3D priv;
+> +	char *buf =3D val;
+> =20
+>  	if (unlikely(!count))
+> -		return count;
+> +		return -EINVAL;
+> =20
+>  	/*
+>  	 * Write data to chip, protecting against concurrent updates
+> @@ -387,70 +383,23 @@ static ssize_t at24_write(struct at24_data *at24, c=
+onst char *buf, loff_t off,
+>  	mutex_lock(&at24->lock);
+> =20
+>  	while (count) {
+> -		ssize_t	status;
+> +		int status;
+> =20
+>  		status =3D at24_eeprom_write(at24, buf, off, count);
+> -		if (status <=3D 0) {
+> -			if (retval =3D=3D 0)
+> -				retval =3D status;
+> -			break;
+> +		if (status < 0) {
+> +			mutex_unlock(&at24->lock);
+> +			return status;
+>  		}
+>  		buf +=3D status;
+>  		off +=3D status;
+>  		count -=3D status;
+> -		retval +=3D status;
+>  	}
+> =20
+>  	mutex_unlock(&at24->lock);
+> =20
+> -	return retval;
+> -}
+> -
+> -/*----------------------------------------------------------------------=
+---*/
+> -
+> -/*
+> - * Provide a regmap interface, which is registered with the NVMEM
+> - * framework
+> -*/
+> -static int at24_regmap_read(void *context, const void *reg, size_t reg_s=
+ize,
+> -			    void *val, size_t val_size)
+> -{
+> -	struct at24_data *at24 =3D context;
+> -	off_t offset =3D *(u32 *)reg;
+> -	int err;
+> -
+> -	err =3D at24_read(at24, val, offset, val_size);
+> -	if (err)
+> -		return err;
+> -	return 0;
+> -}
+> -
+> -static int at24_regmap_write(void *context, const void *data, size_t cou=
+nt)
+> -{
+> -	struct at24_data *at24 =3D context;
+> -	const char *buf;
+> -	u32 offset;
+> -	size_t len;
+> -	int err;
+> -
+> -	memcpy(&offset, data, sizeof(offset));
+> -	buf =3D (const char *)data + sizeof(offset);
+> -	len =3D count - sizeof(offset);
+> -
+> -	err =3D at24_write(at24, buf, offset, len);
+> -	if (err)
+> -		return err;
+>  	return 0;
+>  }
+> =20
+> -static const struct regmap_bus at24_regmap_bus =3D {
+> -	.read =3D at24_regmap_read,
+> -	.write =3D at24_regmap_write,
+> -	.reg_format_endian_default =3D REGMAP_ENDIAN_NATIVE,
+> -};
+> -
+> -/*----------------------------------------------------------------------=
+---*/
+> -
+>  #ifdef CONFIG_OF
+>  static void at24_get_ofdata(struct i2c_client *client,
+>  		struct at24_platform_data *chip)
+> @@ -482,7 +431,6 @@ static int at24_probe(struct i2c_client *client, cons=
+t struct i2c_device_id *id)
+>  	struct at24_data *at24;
+>  	int err;
+>  	unsigned i, num_addresses;
+> -	struct regmap *regmap;
+> =20
+>  	if (client->dev.platform_data) {
+>  		chip =3D *(struct at24_platform_data *)client->dev.platform_data;
+> @@ -612,19 +560,6 @@ static int at24_probe(struct i2c_client *client, con=
+st struct i2c_device_id *id)
+>  		}
+>  	}
+> =20
+> -	at24->regmap_config.reg_bits =3D 32;
+> -	at24->regmap_config.val_bits =3D 8;
+> -	at24->regmap_config.reg_stride =3D 1;
+> -	at24->regmap_config.max_register =3D chip.byte_len - 1;
+> -
+> -	regmap =3D devm_regmap_init(&client->dev, &at24_regmap_bus, at24,
+> -				  &at24->regmap_config);
+> -	if (IS_ERR(regmap)) {
+> -		dev_err(&client->dev, "regmap init failed\n");
+> -		err =3D PTR_ERR(regmap);
+> -		goto err_clients;
+> -	}
+> -
+>  	at24->nvmem_config.name =3D dev_name(&client->dev);
+>  	at24->nvmem_config.dev =3D &client->dev;
+>  	at24->nvmem_config.read_only =3D !writable;
+> @@ -632,6 +567,12 @@ static int at24_probe(struct i2c_client *client, con=
+st struct i2c_device_id *id)
+>  	at24->nvmem_config.owner =3D THIS_MODULE;
+>  	at24->nvmem_config.compat =3D true;
+>  	at24->nvmem_config.base_dev =3D &client->dev;
+> +	at24->nvmem_config.reg_read =3D at24_read;
+> +	at24->nvmem_config.reg_write =3D at24_write;
+> +	at24->nvmem_config.priv =3D at24;
+> +	at24->nvmem_config.stride =3D 4;
+> +	at24->nvmem_config.word_size =3D 1;
+> +	at24->nvmem_config.size =3D chip.byte_len;
+> =20
+>  	at24->nvmem =3D nvmem_register(&at24->nvmem_config);
+> =20
+> --=20
+> 2.5.0
+>=20
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--17pEHd4RhPHOinZp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJXJwKlAAoJEBQN5MwUoCm2LqEQAKYRqDPyaF2b52f6DbduwJOA
+ouNKKhwF4xz/9AZCd/Z9T2+H0t/zYtv3jUpuPPdOPdm0qtNg/Ybu2r0097+yz3nY
+2Sg+AoWnfS6B01qXZ3ak2Jnp9IT6x8bWDowdcfW0MPG+OVdY8fEy3RO4pseLUVPs
+tZDQZcwOXI/qmKs2rtfOcxNDbp7+npbdeU6FyUNgJhVC987PkJrxMlQ8nZVWvRSX
+vFK0sw6ca00PRiQyTCtvqpMjLa/viUyMxFObEh6xMbxv3nHyHCqKBLB366+FhGWM
+qi5apFEvBVLb6j9sgO05hoYV14QW8HthkEmmIqfQd/YoSHBRsuHvAzbKvH7HArXj
+WXKGVZOI1tfyEXNQKxvP8sCuhJU9ni5bLdMyemmVp/NaX9ceiuxb9ak5aHHvoMEJ
+smaHEFFjjAPl7/wLBLfb0fGNMgGjYsga4VRQw7+MTttYR249eQGg40XgjGBCA+Xn
+qnvs+CRPy8vqcTLQ06U+p3y+5wVqV3IeT9CLr91rk6pnfKYH0ReGhRdVpUypQssx
+bDLW777vtQmRGzwdmHIqkbIIMwn7vX6mv6FSzbROHmMistUaQYR9tL34C5ueMOcb
+IRWnEOCXl0nFnQz77MbLQEdFFm9NCfQzPlpplRAEHzGjoQriMqx0aLoCC7MOGVEW
+BdIws04KgXRXKvNUPxwY
+=I1dt
+-----END PGP SIGNATURE-----
+
+--17pEHd4RhPHOinZp--
