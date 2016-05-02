@@ -1,18 +1,11 @@
-From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
- NAND
-Date: Mon, 2 May 2016 07:38:40 -0400
-Message-ID: <57273C40.6000407@linaro.org>
-References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1461946642-1842-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <f887fa30-2205-c102-bade-0071b3ee6b1f@openwrt.org>
- <1462165406.8414.196.camel@mhfsdcap03>
- <676c2485-e176-4182-2400-201074b36ca3@openwrt.org>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] ARM: mediatek soc updates for v4.7
+Date: Mon, 2 May 2016 16:34:11 +0200
+Message-ID: <CABuKBeJV6bA=2Sx_apRp2HMfuyymFCV67zxaoJzBeRbRMzv0AQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <676c2485-e176-4182-2400-201074b36ca3-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -22,34 +15,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi all,
 
+Please take the following patches for v4.7.
 
-On 05/02/2016 02:13 AM, John Crispin wrote:
-> Hi,
->
->> Your ecc-strength setting is wrong, because your nand device's OOB size
->> is not enough to store 24 bit ecc parity data.
->> For this nand, its ecc-strength is max 12 bit per 1024B for our
->> controller.
->> You can get the setting as mtk-nand DT Documentation description.
-> i tried 12 aswell and it also gives an error. the problem with the
-> documentation is that FDM is unknown to me.
->
->
->> Because the ecc-size and ecc-strength settings are optional, so if you
->> are not sure how to set them, you can remove the setting from DT file.
-> tried that just now, the driver defaults to 12 and problem remains
+Thanks,
+Matthias
 
-can you send the boot log letting the driver use its own calculated values?
-ie, just don't specify any of the controller optional values in the 
-device tree and let the driver calculate them for you.
+---
 
-Also instead of a read operation, can you try the oobtest?
-you will have to insmod or modprobe "mtd_oobtest dev="
+The following changes since commit f55532a0c0b8bb6148f4e07853b876ef73bc69ca:
 
-I don't have the spec for the MT7623 but maybe also worth checking the 
-configuration for the NFI_ACCON settings (timing control register).
+  Linux 4.6-rc1 (2016-03-26 16:03:24 -0700)
+
+are available in the git repository at:
+
+  https://github.com/mbgg/linux-mediatek.git tags/v4.6-next-soc
+
+for you to fetch changes up to 601bac7638fa693204dc70035d2651474704967c:
+
+  ARM: mediatek: enable gpt6 on boot up to make arch timer work on
+mt7623 (2016-04-20 13:58:45 +0200)
+
+----------------------------------------------------------------
+- re-organize pmic wrapper code for easier and cleaner addiont of new
+SoCs and pmic wrappers
+- add support for pmic wrapper mt6323
+- add support for SoC mt2701
+- enable gpt6 arch timer on mt7623
+
+----------------------------------------------------------------
+John Crispin (11):
+      soc: mediatek: PMIC wrap: don't duplicate the wrapper data
+      soc: mediatek: PMIC wrap: add wrapper callbacks for init_reg_clock
+      soc: mediatek: PMIC wrap: split SoC specific init into callback
+      soc: mediatek: PMIC wrap: WRAP_INT_EN needs a different bitmask
+for MT2701/7623
+      soc: mediatek: PMIC wrap: SPI_WRITE needs a different bitmask
+for MT2701/7623
+      soc: mediatek: PMIC wrap: move wdt_src into the pmic_wrapper_type struct
+      soc: mediatek: PMIC wrap: remove pwrap_is_mt8135() and pwrap_is_mt8173()
+      soc: mediatek: PMIC wrap: add a slave specific struct
+      soc: mediatek: PMIC wrap: add mt6323 slave support
+      soc: mediatek: PMIC wrap: add MT2701/7623 support
+      ARM: mediatek: enable gpt6 on boot up to make arch timer work on mt7623
+
+ arch/arm/mach-mediatek/mediatek.c    |   1 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 544 ++++++++++++++++++++++++++---------
+ 2 files changed, 414 insertions(+), 131 deletions(-)
