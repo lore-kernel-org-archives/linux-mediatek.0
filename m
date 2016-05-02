@@ -1,33 +1,55 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH 08/12] nvmem: mtk-efuse: remove nvmem regmap dependency
-Date: Sun, 1 May 2016 14:01:46 -0700
-Message-ID: <20160501210146.GA29070@kroah.com>
-References: <1461526096-29584-1-git-send-email-srinivas.kandagatla@linaro.org>
- <1461526096-29584-9-git-send-email-srinivas.kandagatla@linaro.org>
+From: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
+ NAND
+Date: Mon, 2 May 2016 08:13:40 +0200
+Message-ID: <676c2485-e176-4182-2400-201074b36ca3@openwrt.org>
+References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <1461946642-1842-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <f887fa30-2205-c102-bade-0071b3ee6b1f@openwrt.org>
+ <1462165406.8414.196.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-i2c-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1461526096-29584-9-git-send-email-srinivas.kandagatla@linaro.org>
-Sender: linux-i2c-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Cc: Wolfram Sang <wsa@the-dreams.de>, Maxime Ripard <maxime.ripard@free-electrons.com>, Joachim Eastwood <manabian@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, andrew@lunn.ch
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1462165406.8414.196.camel@mhfsdcap03>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Apr 24, 2016 at 08:28:12PM +0100, Srinivas Kandagatla wrote:
-> This patch moves to nvmem support in the driver to use callback
-> instead of regmap.
-> 
-> Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-> Acked-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> ---
->  drivers/nvmem/Kconfig     |  1 -
->  drivers/nvmem/mtk-efuse.c | 47 ++++++++++++++++++++++++++++++++---------------
->  2 files changed, 32 insertions(+), 16 deletions(-)
+Hi,
 
-This patch didn't apply to my tree.  Can you fix it up and resend, and
-also patch 11/12?
+> Your ecc-strength setting is wrong, because your nand device's OOB size
+> is not enough to store 24 bit ecc parity data.
+> For this nand, its ecc-strength is max 12 bit per 1024B for our
+> controller.
+> You can get the setting as mtk-nand DT Documentation description.
 
-thanks,
+i tried 12 aswell and it also gives an error. the problem with the
+documentation is that FDM is unknown to me.
 
-greg k-h
+
+> Because the ecc-size and ecc-strength settings are optional, so if you
+> are not sure how to set them, you can remove the setting from DT file.
+
+tried that just now, the driver defaults to 12 and problem remains
+
+
+> In addition, can I have a check whether you have run valid nand driver
+> on your platform before? Can you do a full device erase operation at
+> first, then use this V4 for your test?
+
+the SDK kernel works fine on the board using nand as a primary boot
+source. i am confident that this is not a board level issue.
+
+how would i go about doing a full device reset operation ?
+
+	John
