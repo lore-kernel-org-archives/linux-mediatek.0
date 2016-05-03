@@ -1,187 +1,128 @@
-From: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: [PATCH v3 2/2] nvmem: mxs-ocotp: remove nvmem regmap dependency
-Date: Mon,  2 May 2016 19:36:14 +0100
-Message-ID: <1462214174-469-3-git-send-email-srinivas.kandagatla@linaro.org>
-References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH] usb: xhci-mtk: fixup mouse wakeup failure during system
+ suspend
+Date: Tue, 3 May 2016 15:44:18 +0800
+Message-ID: <1462261458.11651.7.camel@mhfsdcap03>
+References: <1461204293-18243-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1462214174-469-1-git-send-email-srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Cc: stefan.wahren-eS4NqCHxEME@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1461204293-18243-1-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mathias Nyman <mathias.nyman@intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <balbi@ti.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Regmap raw accessors are bus specific implementations, using regmap raw
-apis in nvmem breaks nvmem providers based on regmap mmio.
-This patch moves to nvmem support in the driver to use callback
-instead of regmap, which is what the nvmem core supports now.
+Hi Mathias,
 
-Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
----
- drivers/nvmem/mxs-ocotp.c | 83 +++++++++++++----------------------------------
- 1 file changed, 22 insertions(+), 61 deletions(-)
+On Thu, 2016-04-21 at 10:04 +0800, Chunfeng Yun wrote:
+> Click mouse after xhci suspend completion but before system suspend
+> completion, system will not be waken up by mouse if the duration of
+> them is larger than 20ms which is the device UFP's resume signaling
+> lasted. Another reason is that the SPM is not enabled before system
+> suspend compeltion, this causes SPM also not notice the resume signal.
+> So in order to reduce the duration less than 20ms, make use of
+> syscore's suspend/resume interface.
+> In fact it is a work around solution which only reduces the
+> probability of failure, because we can't ensure that the duration from
+> syscore's suspend completion to SPM working is always less than 20ms.
+> 
+> Because the syscore runs on irq disabled context, and xhci's
+> suspend/resume calls some sleeping functions, enable local irq
+> and then disable it during suspend/resume. This may be not a problem,
+> since only boot CPU is runing.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/host/xhci-mtk.c |   31 ++++++++++++++++++++++++++++++-
+>  1 file changed, 30 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 79959f1..8277f02 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -28,6 +28,7 @@
+>  #include <linux/pm_runtime.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
+> +#include <linux/syscore_ops.h>
+>  
+>  #include "xhci.h"
+>  #include "xhci-mtk.h"
+> @@ -490,6 +491,8 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+>  	return xhci_gen_setup(hcd, xhci_mtk_quirks);
+>  }
+>  
+> +static struct device *xhci_mtk_syscore_dev;
+> +
+>  static int xhci_mtk_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -512,6 +515,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  	if (!mtk)
+>  		return -ENOMEM;
+>  
+> +	xhci_mtk_syscore_dev = dev;
+>  	mtk->dev = dev;
+>  	mtk->vbus = devm_regulator_get(dev, "vbus");
+>  	if (IS_ERR(mtk->vbus)) {
+> @@ -740,6 +744,29 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+>  	return 0;
+>  }
+>  
+> +static int xhci_mtk_syscore_suspend(void)
+> +{
+> +	local_irq_enable();
+> +	xhci_mtk_suspend(xhci_mtk_syscore_dev);
+> +	local_irq_disable();
+> +
+> +	return 0;
+> +}
+> +
+> +static void xhci_mtk_syscore_resume(void)
+> +{
+> +	local_irq_enable();
+> +	xhci_mtk_resume(xhci_mtk_syscore_dev);
+> +	local_irq_disable();
+> +
+> +	return;
+> +}
+> +
+> +static struct syscore_ops xhci_mtk_syscore_ops = {
+> +	.suspend = xhci_mtk_syscore_suspend,
+> +	.resume = xhci_mtk_syscore_resume,
+> +};
+> +
+>  static const struct dev_pm_ops xhci_mtk_pm_ops = {
+>  	SET_SYSTEM_SLEEP_PM_OPS(xhci_mtk_suspend, xhci_mtk_resume)
+>  };
+> @@ -758,7 +785,7 @@ static struct platform_driver mtk_xhci_driver = {
+>  	.remove	= xhci_mtk_remove,
+>  	.driver	= {
+>  		.name = "xhci-mtk",
+> -		.pm = DEV_PM_OPS,
+> +		/*.pm = DEV_PM_OPS,*/
+>  		.of_match_table = of_match_ptr(mtk_xhci_of_match),
+>  	},
+>  };
+> @@ -766,6 +793,7 @@ MODULE_ALIAS("platform:xhci-mtk");
+>  
+>  static int __init xhci_mtk_init(void)
+>  {
+> +	register_syscore_ops(&xhci_mtk_syscore_ops);
+>  	xhci_init_driver(&xhci_mtk_hc_driver, &xhci_mtk_overrides);
+>  	return platform_driver_register(&mtk_xhci_driver);
+>  }
+> @@ -774,6 +802,7 @@ module_init(xhci_mtk_init);
+>  static void __exit xhci_mtk_exit(void)
+>  {
+>  	platform_driver_unregister(&mtk_xhci_driver);
+> +	unregister_syscore_ops(&xhci_mtk_syscore_ops);
+>  }
+>  module_exit(xhci_mtk_exit);
 
-diff --git a/drivers/nvmem/mxs-ocotp.c b/drivers/nvmem/mxs-ocotp.c
-index 2bb3c57..d26dd03 100644
---- a/drivers/nvmem/mxs-ocotp.c
-+++ b/drivers/nvmem/mxs-ocotp.c
-@@ -25,7 +25,6 @@
- #include <linux/nvmem-provider.h>
- #include <linux/of_device.h>
- #include <linux/platform_device.h>
--#include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/stmp_device.h>
- 
-@@ -66,11 +65,10 @@ static int mxs_ocotp_wait(struct mxs_ocotp *otp)
- 	return 0;
- }
- 
--static int mxs_ocotp_read(void *context, const void *reg, size_t reg_size,
--			  void *val, size_t val_size)
-+static int mxs_ocotp_read(void *context, unsigned int offset,
-+			  void *val, size_t bytes)
- {
- 	struct mxs_ocotp *otp = context;
--	unsigned int offset = *(u32 *)reg;
- 	u32 *buf = val;
- 	int ret;
- 
-@@ -94,17 +92,16 @@ static int mxs_ocotp_read(void *context, const void *reg, size_t reg_size,
- 	if (ret)
- 		goto close_banks;
- 
--	while (val_size >= reg_size) {
-+	while (bytes) {
- 		if ((offset < OCOTP_DATA_OFFSET) || (offset % 16)) {
- 			/* fill up non-data register */
--			*buf = 0;
-+			*buf++ = 0;
- 		} else {
--			*buf = readl(otp->base + offset);
-+			*buf++ = readl(otp->base + offset);
- 		}
- 
--		buf++;
--		val_size -= reg_size;
--		offset += reg_size;
-+		bytes -= 4;
-+		offset += 4;
- 	}
- 
- close_banks:
-@@ -117,57 +114,29 @@ disable_clk:
- 	return ret;
- }
- 
--static int mxs_ocotp_write(void *context, const void *data, size_t count)
--{
--	/* We don't want to support writing */
--	return 0;
--}
--
--static bool mxs_ocotp_writeable_reg(struct device *dev, unsigned int reg)
--{
--	return false;
--}
--
- static struct nvmem_config ocotp_config = {
- 	.name = "mxs-ocotp",
-+	.stride = 16,
-+	.word_size = 4,
- 	.owner = THIS_MODULE,
-+	.reg_read = mxs_ocotp_read,
- };
- 
--static const struct regmap_range imx23_ranges[] = {
--	regmap_reg_range(OCOTP_DATA_OFFSET, 0x210),
--};
--
--static const struct regmap_access_table imx23_access = {
--	.yes_ranges = imx23_ranges,
--	.n_yes_ranges = ARRAY_SIZE(imx23_ranges),
--};
--
--static const struct regmap_range imx28_ranges[] = {
--	regmap_reg_range(OCOTP_DATA_OFFSET, 0x290),
--};
--
--static const struct regmap_access_table imx28_access = {
--	.yes_ranges = imx28_ranges,
--	.n_yes_ranges = ARRAY_SIZE(imx28_ranges),
-+struct mxs_data {
-+	int size;
- };
- 
--static struct regmap_bus mxs_ocotp_bus = {
--	.read = mxs_ocotp_read,
--	.write = mxs_ocotp_write, /* make regmap_init() happy */
--	.reg_format_endian_default = REGMAP_ENDIAN_NATIVE,
--	.val_format_endian_default = REGMAP_ENDIAN_NATIVE,
-+static const struct mxs_data imx23_data = {
-+	.size = 0x220,
- };
- 
--static struct regmap_config mxs_ocotp_config = {
--	.reg_bits = 32,
--	.val_bits = 32,
--	.reg_stride = 16,
--	.writeable_reg = mxs_ocotp_writeable_reg,
-+static const struct mxs_data imx28_data = {
-+	.size = 0x2a0,
- };
- 
- static const struct of_device_id mxs_ocotp_match[] = {
--	{ .compatible = "fsl,imx23-ocotp", .data = &imx23_access },
--	{ .compatible = "fsl,imx28-ocotp", .data = &imx28_access },
-+	{ .compatible = "fsl,imx23-ocotp", .data = &imx23_data },
-+	{ .compatible = "fsl,imx28-ocotp", .data = &imx28_data },
- 	{ /* sentinel */},
- };
- MODULE_DEVICE_TABLE(of, mxs_ocotp_match);
-@@ -175,11 +144,10 @@ MODULE_DEVICE_TABLE(of, mxs_ocotp_match);
- static int mxs_ocotp_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-+	const struct mxs_data *data;
- 	struct mxs_ocotp *otp;
- 	struct resource *res;
- 	const struct of_device_id *match;
--	struct regmap *regmap;
--	const struct regmap_access_table *access;
- 	int ret;
- 
- 	match = of_match_device(dev->driver->of_match_table, dev);
-@@ -205,17 +173,10 @@ static int mxs_ocotp_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	access = match->data;
--	mxs_ocotp_config.rd_table = access;
--	mxs_ocotp_config.max_register = access->yes_ranges[0].range_max;
--
--	regmap = devm_regmap_init(dev, &mxs_ocotp_bus, otp, &mxs_ocotp_config);
--	if (IS_ERR(regmap)) {
--		dev_err(dev, "regmap init failed\n");
--		ret = PTR_ERR(regmap);
--		goto err_clk;
--	}
-+	data = match->data;
- 
-+	ocotp_config.size = data->size;
-+	ocotp_config.priv = otp;
- 	ocotp_config.dev = dev;
- 	otp->nvmem = nvmem_register(&ocotp_config);
- 	if (IS_ERR(otp->nvmem)) {
--- 
-2.5.0
+Do you have any suggestions about the patch?
+
+Thanks
+>  
