@@ -1,101 +1,67 @@
-From: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Subject: Re: [PATCH] usb: xhci-mtk: fixup mouse wakeup failure during system suspend
-Date: Tue, 03 May 2016 12:33:31 +0300
-Message-ID: <87mvo7fpuc.fsf@intel.com>
-References: <1461204293-18243-1-git-send-email-chunfeng.yun@mediatek.com> <1462261458.11651.7.camel@mhfsdcap03> <87vb2vfujq.fsf@intel.com> <1462266591.11651.34.camel@mhfsdcap03>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v10 1/8] dt-bindings: Add a binding for Mediatek Video Processor
+Date: Tue, 3 May 2016 18:11:20 +0800
+Message-ID: <1462270287-11374-2-git-send-email-tiffany.lin@mediatek.com>
+References: <1462270287-11374-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha1; protocol="application/pgp-signature"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1462266591.11651.34.camel@mhfsdcap03>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <balbi-l0cyMroinI0@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462270287-11374-1-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Tiffany.lin@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 
+Add a DT binding documentation of Video Processor Unit for the
+MT8173 SoC from Mediatek.
 
-Hi,
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 
-chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
->> chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
->> > On Thu, 2016-04-21 at 10:04 +0800, Chunfeng Yun wrote:
->> >> Click mouse after xhci suspend completion but before system suspend
->> >> completion, system will not be waken up by mouse if the duration of
->> >> them is larger than 20ms which is the device UFP's resume signaling
->>=20
->> what is "them" here ? The duration of what is longer than 20ms ?
-> They are "xhci suspend completion" and "system suspend completion";
->
-> It's time duration
+---
+ .../devicetree/bindings/media/mediatek-vpu.txt     |   31 ++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
 
-okay. So if xhci suspend takes longer than 20ms your SPM doesn't see a
-wakeup ?
-
->> >> lasted. Another reason is that the SPM is not enabled before system
->>=20
->> what's SPM ?
-> It is System Power Management which is powered off when system is
-> running in normal mode, and is powered on when system enters suspend
-> mode. It is used to wakeup system when some wakeup sources, such as
-> bluetooth or powerkey etc, tigger wakeup event.
-
-okay, thanks
-
->> >> suspend compeltion, this causes SPM also not notice the resume signal.
->>            ^^^^^^^^^^
->>            completion
->>=20
->> >> So in order to reduce the duration less than 20ms, make use of
->> >> syscore's suspend/resume interface.
->>=20
->> no, this is the wrong approach
-> But it seems only one workable approach from software side
-
-I wouldn't say that. It seems to me SPM should be enabled earlier.
-
->> >> Because the syscore runs on irq disabled context, and xhci's
->> >> suspend/resume calls some sleeping functions, enable local irq
->> >> and then disable it during suspend/resume. This may be not a problem,
->> >> since only boot CPU is runing.
->>=20
->> another problem :) calling local_irq_{enable,disable}() is an indication
->> that something's wrong.
-> Oh!
->
-> BTW: There will be warning logs if they are not called.
-
-yeah, I got that :-) But it's still wrong to use
-local_irq_{enable,disable}() the way you're using them :-)
-
-=2D-=20
-balbi
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1
-
-iQIcBAEBAgAGBQJXKHBsAAoJEIaOsuA1yqREvnkP/iV8gMUF9XtNZR7Xe4LYpy/4
-vZIEGlYsQojlhJTLLIVQspllAUePKgL7ar1TmFMFtIP3jQ4eOCUqDCPpArD6VRDT
-O87ev5hLjQRj2NnzCjvb44tBdzatDT+dR/VmRcV6YlOPVrxhYbwPaG/ym4FwyyCN
-Ukcdmlld/kGIMxFOj2ttHqNosx0/Vqp6sASYU6fu1pj36EhOxB9VlSjuaJ4V0Riz
-2g1Nzj3tlsJoU/175PJU1oQ60boi04UnAkUSII5pgDrz1bXE9FYaudr8IGpTGf3s
-RAQjAA+Bmg9hzOQAxYsx6EBcgZLWYPw0jpKQ3tqlfeWQWePVAvWT3/XXYypN0GyG
-c7uu0BBi49fQdnqy9W7zJn3/+dkYb/s6Rh8M9hOK8vDO/pkn0/FEsCesU+3hJtjo
-jEhdoNB5mAEKgwuk5jx0h7J8Y5WUydMsusGZHVQL/xeOxZqun2z8ENiP9uzadOFM
-huLPdRAYjyGeoGYAcnCpRZjDeOvhbd94gDXnZrUPipp8ea/FIQ+94C0hqflXbNXN
-CVm4pXqFEt8xiHD0sHtIC1Cgodn6nZJpvs/l5BB3d88AWEZVFPXPZ3xePW1+1fxy
-DraXl3mghG6by0hvCbNJQkpTMOico/jnTIY1DBfFqnsQ+FyPZ0XFy7YKcNqjG2gE
-ZY3z006wQzNAwMa746o6
-=HQXL
------END PGP SIGNATURE-----
---=-=-=--
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vpu.txt b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+new file mode 100644
+index 0000000..2a5bac3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-vpu.txt
+@@ -0,0 +1,31 @@
++* Mediatek Video Processor Unit
++
++Video Processor Unit is a HW video controller. It controls HW Codec including
++H.264/VP8/VP9 Decode, H.264/VP8 Encode and Image Processor (scale/rotate/color convert).
++
++Required properties:
++  - compatible: "mediatek,mt8173-vpu"
++  - reg: Must contain an entry for each entry in reg-names.
++  - reg-names: Must include the following entries:
++    "tcm": tcm base
++    "cfg_reg": Main configuration registers base
++  - interrupts: interrupt number to the cpu.
++  - clocks : clock name from clock manager
++  - clock-names: must be main. It is the main clock of VPU
++
++Optional properties:
++  - memory-region: phandle to a node describing memory (see
++    Documentation/devicetree/bindings/reserved-memory/reserved-memory.txt)
++    to be used for VPU extended memory; if not present, VPU may be located
++    anywhere in the memory
++
++Example:
++	vpu: vpu@10020000 {
++		compatible = "mediatek,mt8173-vpu";
++		reg = <0 0x10020000 0 0x30000>,
++		      <0 0x10050000 0 0x100>;
++		reg-names = "tcm", "cfg_reg";
++		interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&topckgen TOP_SCP_SEL>;
++		clock-names = "main";
++	};
+-- 
+1.7.9.5
