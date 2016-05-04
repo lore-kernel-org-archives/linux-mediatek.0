@@ -1,118 +1,34 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: xhci-mtk: fixup mouse wakeup failure during system
- suspend
-Date: Wed, 4 May 2016 18:54:21 +0800
-Message-ID: <1462359261.11651.69.camel@mhfsdcap03>
-References: <1461204293-18243-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1462261458.11651.7.camel@mhfsdcap03> <87vb2vfujq.fsf@intel.com>
-	 <1462266591.11651.34.camel@mhfsdcap03> <87mvo7fpuc.fsf@intel.com>
-	 <1462324873.11651.57.camel@mhfsdcap03> <871t5ifdxk.fsf@intel.com>
+From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Subject: Re: [PATCH v3 2/2] nvmem: mxs-ocotp: remove nvmem regmap dependency
+Date: Wed, 4 May 2016 13:03:04 +0200
+Message-ID: <5729D6E8.8060808@i2se.com>
+References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+ <1462214174-469-3-git-send-email-srinivas.kandagatla@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <871t5ifdxk.fsf@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1462214174-469-3-git-send-email-srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Am 02.05.2016 um 20:36 schrieb Srinivas Kandagatla:
+> Regmap raw accessors are bus specific implementations, using regmap raw
+> apis in nvmem breaks nvmem providers based on regmap mmio.
+> This patch moves to nvmem support in the driver to use callback
+> instead of regmap, which is what the nvmem core supports now.
+>
+> Signed-off-by: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
 
-On Wed, 2016-05-04 at 11:03 +0300, Felipe Balbi wrote:
-> Hi,
-> 
-> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> > On Tue, 2016-05-03 at 12:33 +0300, Felipe Balbi wrote:
-> >> Hi,
-> >> 
-> >> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> >> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> >> > On Thu, 2016-04-21 at 10:04 +0800, Chunfeng Yun wrote:
-> >> >> >> Click mouse after xhci suspend completion but before system suspend
-> >> >> >> completion, system will not be waken up by mouse if the duration of
-> >> >> >> them is larger than 20ms which is the device UFP's resume signaling
-> >> >> 
-> >> >> what is "them" here ? The duration of what is longer than 20ms ?
-> >> > They are "xhci suspend completion" and "system suspend completion";
-> >> >
-> >> > It's time duration
-> >> 
-> >> okay. So if xhci suspend takes longer than 20ms your SPM doesn't see a
-> >> wakeup ?
-> > It is not the time of xhci suspend consumed, but is the time of duration
-> > from xhci suspend completion to system suspend completion(after BOOT-CPU
-> > is turned off, SPM will be enabled to receive wakeup event)
-> 
-> Okay, so SPM will be the entity actually handling wakeups, right ? I'm
-> assuming something like this happens:
-> 
-> echo mem > /sys/power/state
->  /* start suspending devices */
->   xhci_suspend()
->  /* all devices suspended */
->  enable_spm()
-> 
-> so, if a mouse button is pressed after xhci_suspend() returns but before
-> enable_spm() runs, then we're gonna miss that event, am I right ?
-Yes, you are right.
-> 
-> I can't think of any way to sort this out. Let's ask on linux-pm (I've
-> added linux-pm to Cc list)
-Thanks
-> 
-> >> >> >> lasted. Another reason is that the SPM is not enabled before system
-> >> >> 
-> >> >> what's SPM ?
-> >> > It is System Power Management which is powered off when system is
-> >> > running in normal mode, and is powered on when system enters suspend
-> >> > mode. It is used to wakeup system when some wakeup sources, such as
-> >> > bluetooth or powerkey etc, tigger wakeup event.
-> >> 
-> >> okay, thanks
-> >> 
-> >> >> >> suspend compeltion, this causes SPM also not notice the resume signal.
-> >> >>            ^^^^^^^^^^
-> >> >>            completion
-> >> >> 
-> >> >> >> So in order to reduce the duration less than 20ms, make use of
-> >> >> >> syscore's suspend/resume interface.
-> >> >> 
-> >> >> no, this is the wrong approach
-> >> > But it seems only one workable approach from software side
-> >> 
-> >> I wouldn't say that. It seems to me SPM should be enabled earlier.
-> > Yes, but normally SPM should be enabled after all CPUS are turned off,
-> > so it's difficult to do that, I mean enable SPM before turning off CPUS
-> 
-> is it a requirement that SPM should be enabled only after all CPUs are
-> turned off ? If that's the case, then any device in the system might
-> have missed wakeups. This doesn't seem like a good design to me; unless
-> I'm missing something...
-Yes, it's a requirement.
-
-If the wakeup source is level trigger, and will keep it until SPM notice
-it. Although USB wakeup is level trigger, but it just last at most 20ms
-and clear itself automatically.
-
-> 
-> >> >> >> Because the syscore runs on irq disabled context, and xhci's
-> >> >> >> suspend/resume calls some sleeping functions, enable local irq
-> >> >> >> and then disable it during suspend/resume. This may be not a problem,
-> >> >> >> since only boot CPU is runing.
-> >> >> 
-> >> >> another problem :) calling local_irq_{enable,disable}() is an indication
-> >> >> that something's wrong.
-> >> > Oh!
-> >> >
-> >> > BTW: There will be warning logs if they are not called.
-> >> 
-> >> yeah, I got that :-) But it's still wrong to use
-> >> local_irq_{enable,disable}() the way you're using them :-)
-> > Yes
-> >
-> > Thank you very much.
-> >> 
-> >
-> >
-> 
+Acked-by: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
