@@ -1,303 +1,606 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: [PATCH] mmc: mmc: do not use CMD13 to get status after speed mode switch
-Date: Wed, 4 May 2016 14:54:32 +0800
-Message-ID: <1462344872-6448-1-git-send-email-chaotian.jing@mediatek.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v10 0/8] Add MT8173 Video Encoder Driver and VPU Driver
+Date: Wed, 4 May 2016 09:32:14 +0200
+Message-ID: <5729A57E.1080505@xs4all.nl>
+References: <1462270287-11374-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1462270287-11374-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Per JEDEC spec, it is not recommended to use CMD13 to get card status
-after speed mode switch. below are two reason about this:
-1. CMD13 cannot be guaranteed due to the asynchronous operation.
-Therefore it is not recommended to use CMD13 to check busy completion
-of the timing change indication.
-2. After switch to HS200, CMD13 will get response of 0x800, and even the
-busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
+Hi Tiffany,
 
-this patch drops CMD13 when doing speed mode switch, if host do not
-support MMC_CAP_WAIT_WHILE_BUSY and there is no ops->card_busy(),
-then the only way is to wait a fixed timeout.
+On 05/03/2016 12:11 PM, Tiffany Lin wrote:
+> ==============
+>  Introduction
+> ==============
+> 
+> The purpose of this series is to add the driver for video codec hw embedded in the Mediatek's MT8173 SoCs.
+> Mediatek Video Codec is able to handle video encoding of in a range of formats.
+> 
+> This patch series also include VPU driver. Mediatek Video Codec driver rely on VPU driver to load,
+> communicate with VPU.
+> 
+> Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
+> This patch series need [PATCH v15 8/8] memory: mtk-smi: export mtk_smi_larb_get/put[1] to build as module
+> 
+> [1]http://lists.infradead.org/pipermail/linux-mediatek/2016-April/005173.html
+> 
+> ==================
+>  Device interface
+> ==================
+> 
+> In principle the driver bases on v4l2 memory-to-memory framework:
+> it provides a single video node and each opened file handle gets its own private context with separate
+> buffer queues. Each context consist of 2 buffer queues: OUTPUT (for source buffers, i.e. raw video
+> frames) and CAPTURE (for destination buffers, i.e. encoded video frames).
+> 
+> ==============================
+>  VPU (Video Processor Unit)
+> ==============================
+> The VPU driver for hw video codec embedded in Mediatek's MT8173 SOCs.
+> It is able to handle video decoding/encoding in a range of formats.
+> The driver provides with VPU firmware download, memory management and the communication interface between CPU and VPU.
+> For VPU initialization, it will create virtual memory for CPU access and physical address for VPU hw device access. 
+> When a decode/encode instance opens a device node, vpu driver will download vpu firmware to the device.
+> A decode/encode instant will decode/encode a frame using VPU interface to interrupt vpu to handle decoding/encoding jobs.
+> 
+> Please have a look at the code and comments will be very much appreciated.
+> 
+> Change in v10:
+> 1. Fix smatch/sparse error message
+> 2. Add depends on ARM || ARM64 and MTK_IOMMU in Kconfig
 
-Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
----
- drivers/mmc/core/mmc.c     |   82 ++++++++++++++++----------------------------
- drivers/mmc/core/mmc_ops.c |   25 +++++++++-----
- 2 files changed, 45 insertions(+), 62 deletions(-)
+I don't like the ARM or ARM64 dependency since that makes COMPILE_TEST harder.
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 4dbe3df..03ee7a4 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -962,7 +962,7 @@ static int mmc_select_hs(struct mmc_card *card)
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
- 			   EXT_CSD_HS_TIMING, EXT_CSD_TIMING_HS,
- 			   card->ext_csd.generic_cmd6_time,
--			   true, true, true);
-+			   true, false, true);
- 	if (!err)
- 		mmc_set_timing(card->host, MMC_TIMING_MMC_HS);
- 
-@@ -1056,7 +1056,6 @@ static int mmc_switch_status(struct mmc_card *card)
- static int mmc_select_hs400(struct mmc_card *card)
- {
- 	struct mmc_host *host = card->host;
--	bool send_status = true;
- 	unsigned int max_dtr;
- 	int err = 0;
- 	u8 val;
-@@ -1068,9 +1067,6 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	      host->ios.bus_width == MMC_BUS_WIDTH_8))
- 		return 0;
- 
--	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
--		send_status = false;
--
- 	/* Reduce frequency to HS frequency */
- 	max_dtr = card->ext_csd.hs_max_dtr;
- 	mmc_set_clock(host, max_dtr);
-@@ -1080,7 +1076,7 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
- 			   EXT_CSD_HS_TIMING, val,
- 			   card->ext_csd.generic_cmd6_time,
--			   true, send_status, true);
-+			   true, false, true);
- 	if (err) {
- 		pr_err("%s: switch to high-speed from hs200 failed, err:%d\n",
- 			mmc_hostname(host), err);
-@@ -1090,11 +1086,9 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	/* Set host controller to HS timing */
- 	mmc_set_timing(card->host, MMC_TIMING_MMC_HS);
- 
--	if (!send_status) {
--		err = mmc_switch_status(card);
--		if (err)
--			goto out_err;
--	}
-+	err = mmc_switch_status(card);
-+	if (err)
-+		goto out_err;
- 
- 	/* Switch card to DDR */
- 	err = mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
-@@ -1113,7 +1107,7 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
- 			   EXT_CSD_HS_TIMING, val,
- 			   card->ext_csd.generic_cmd6_time,
--			   true, send_status, true);
-+			   true, false, true);
- 	if (err) {
- 		pr_err("%s: switch to hs400 failed, err:%d\n",
- 			 mmc_hostname(host), err);
-@@ -1124,11 +1118,9 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
- 	mmc_set_bus_speed(card);
- 
--	if (!send_status) {
--		err = mmc_switch_status(card);
--		if (err)
--			goto out_err;
--	}
-+	err = mmc_switch_status(card);
-+	if (err)
-+		goto out_err;
- 
- 	return 0;
- 
-@@ -1146,14 +1138,10 @@ int mmc_hs200_to_hs400(struct mmc_card *card)
- int mmc_hs400_to_hs200(struct mmc_card *card)
- {
- 	struct mmc_host *host = card->host;
--	bool send_status = true;
- 	unsigned int max_dtr;
- 	int err;
- 	u8 val;
- 
--	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
--		send_status = false;
--
- 	/* Reduce frequency to HS */
- 	max_dtr = card->ext_csd.hs_max_dtr;
- 	mmc_set_clock(host, max_dtr);
-@@ -1162,49 +1150,43 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
- 	val = EXT_CSD_TIMING_HS;
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
- 			   val, card->ext_csd.generic_cmd6_time,
--			   true, send_status, true);
-+			   true, false, true);
- 	if (err)
- 		goto out_err;
- 
- 	mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
- 
--	if (!send_status) {
--		err = mmc_switch_status(card);
--		if (err)
--			goto out_err;
--	}
-+	err = mmc_switch_status(card);
-+	if (err)
-+		goto out_err;
- 
- 	/* Switch HS DDR to HS */
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_BUS_WIDTH,
- 			   EXT_CSD_BUS_WIDTH_8, card->ext_csd.generic_cmd6_time,
--			   true, send_status, true);
-+			   true, false, true);
- 	if (err)
- 		goto out_err;
- 
- 	mmc_set_timing(host, MMC_TIMING_MMC_HS);
- 
--	if (!send_status) {
--		err = mmc_switch_status(card);
--		if (err)
--			goto out_err;
--	}
-+	err = mmc_switch_status(card);
-+	if (err)
-+		goto out_err;
- 
- 	/* Switch HS to HS200 */
- 	val = EXT_CSD_TIMING_HS200 |
- 	      card->drive_strength << EXT_CSD_DRV_STR_SHIFT;
- 	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
- 			   val, card->ext_csd.generic_cmd6_time, true,
--			   send_status, true);
-+			   false, true);
- 	if (err)
- 		goto out_err;
- 
- 	mmc_set_timing(host, MMC_TIMING_MMC_HS200);
- 
--	if (!send_status) {
--		err = mmc_switch_status(card);
--		if (err)
--			goto out_err;
--	}
-+	err = mmc_switch_status(card);
-+	if (err)
-+		goto out_err;
- 
- 	mmc_set_bus_speed(card);
- 
-@@ -1243,7 +1225,6 @@ static void mmc_select_driver_type(struct mmc_card *card)
- static int mmc_select_hs200(struct mmc_card *card)
- {
- 	struct mmc_host *host = card->host;
--	bool send_status = true;
- 	unsigned int old_timing;
- 	int err = -EINVAL;
- 	u8 val;
-@@ -1260,9 +1241,6 @@ static int mmc_select_hs200(struct mmc_card *card)
- 
- 	mmc_select_driver_type(card);
- 
--	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
--		send_status = false;
--
- 	/*
- 	 * Set the bus width(4 or 8) with host's support and
- 	 * switch to HS200 mode if bus width is set successfully.
-@@ -1274,20 +1252,18 @@ static int mmc_select_hs200(struct mmc_card *card)
- 		err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
- 				   EXT_CSD_HS_TIMING, val,
- 				   card->ext_csd.generic_cmd6_time,
--				   true, send_status, true);
-+				   true, false, true);
- 		if (err)
- 			goto err;
- 		old_timing = host->ios.timing;
- 		mmc_set_timing(host, MMC_TIMING_MMC_HS200);
--		if (!send_status) {
--			err = mmc_switch_status(card);
--			/*
--			 * mmc_select_timing() assumes timing has not changed if
--			 * it is a switch error.
--			 */
--			if (err == -EBADMSG)
--				mmc_set_timing(host, old_timing);
--		}
-+		err = mmc_switch_status(card);
-+		/*
-+		 * mmc_select_timing() assumes timing has not changed if
-+		 * it is a switch error.
-+		 */
-+		if (err == -EBADMSG)
-+			mmc_set_timing(host, old_timing);
- 	}
- err:
- 	if (err)
-diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
-index 62355bd..32de144 100644
---- a/drivers/mmc/core/mmc_ops.c
-+++ b/drivers/mmc/core/mmc_ops.c
-@@ -480,6 +480,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 	u32 status = 0;
- 	bool use_r1b_resp = use_busy_signal;
- 	bool expired = false;
-+	bool busy = false;
- 
- 	mmc_retune_hold(host);
- 
-@@ -535,19 +536,24 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 	/* Must check status to be sure of no errors. */
- 	timeout = jiffies + msecs_to_jiffies(timeout_ms);
- 	do {
-+		/*
-+		 * Due to the possibility of being preempted after
-+		 * sending the status command, check the expiration
-+		 * time first.
-+		 */
-+		expired = time_after(jiffies, timeout);
- 		if (send_status) {
--			/*
--			 * Due to the possibility of being preempted after
--			 * sending the status command, check the expiration
--			 * time first.
--			 */
--			expired = time_after(jiffies, timeout);
- 			err = __mmc_send_status(card, &status, ignore_crc);
- 			if (err)
- 				goto out;
- 		}
- 		if ((host->caps & MMC_CAP_WAIT_WHILE_BUSY) && use_r1b_resp)
- 			break;
-+		if (host->ops->card_busy) {
-+			if (!host->ops->card_busy(host))
-+				break;
-+			busy = true;
-+		}
- 		if (mmc_host_is_spi(host))
- 			break;
- 
-@@ -556,19 +562,20 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
- 		 * does'nt support MMC_CAP_WAIT_WHILE_BUSY, then we can only
- 		 * rely on waiting for the stated timeout to be sufficient.
- 		 */
--		if (!send_status) {
-+		if (!send_status && !host->ops->card_busy) {
- 			mmc_delay(timeout_ms);
- 			goto out;
- 		}
- 
- 		/* Timeout if the device never leaves the program state. */
--		if (expired && R1_CURRENT_STATE(status) == R1_STATE_PRG) {
-+		if (expired &&
-+		    (R1_CURRENT_STATE(status) == R1_STATE_PRG || busy)) {
- 			pr_err("%s: Card stuck in programming state! %s\n",
- 				mmc_hostname(host), __func__);
- 			err = -ETIMEDOUT;
- 			goto out;
- 		}
--	} while (R1_CURRENT_STATE(status) == R1_STATE_PRG);
-+	} while (R1_CURRENT_STATE(status) == R1_STATE_PRG || busy);
- 
- 	err = mmc_switch_status_error(host, status);
- out:
--- 
-1.7.9.5
+I removed it here and for the VPU and everything still compiles fine with
+sparse and smatch. So I'll drop those dependencies.
 
+Why is the MTK_IOMMU dependency needed? Just curious.
+
+Note that sparse still complains about this:
+
+media-git/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c:261:24: warning: incorrect type in assignment (different base types)
+
+I think this code should be rewritten. Something like this would work
+(if I understand the code correctly):
+
+u32 tag = (bs_hdr_len << 5) | 0x10 | not_key;
+
+ac_tag[0] = tag & 0xff;
+ac_tag[1] = (tag >> 8) & 0xff;
+ac_tag[2] = (tag >> 16) & 0xff;
+
+It's perhaps a bit more verbose, but a lot easier to understand.
+
+I'm accepting this driver but I'll remove the ARM || ARM64 dependency. Can
+you post a follow-up patch for this sparse warning?
+
+Regards,
+
+	Hans
+
+
+> 
+> VPU part
+> 1. Fix smatch/sparse error message
+> 2. Use totalram_pages instead of max_pfn to decide VPU 4GB mode
+> 3. Protect variable "fw_load"
+> 4. Add depends on ARM || ARM64 in Kconfig
+> 
+> Change in v9:
+> 1. Rename idx in mtk_vcodec_ctx to id and curr_max_idx in mtk_vcodec_dev to id_counter.
+> 2. Refine fops_vcodec_open
+> 
+> VPU part
+> Merge Julia Lawall's fixes to "[PATCH v9 2/8] [media] VPU: mediatek: support Mediatek VPU"
+> 1.[PATCH] VPU: mediatek: fix simple_open.cocci warnings 
+> 2.[PATCH] VPU: mediatek: fix platform_no_drv_owner.cocci warnings
+> 
+> Change in v8:
+> 1. Refine indentation
+> 2. Refine colorspace information process vidioc_try_fmt_vid_out_mplane
+> 3. Remove instance_mask in mtk_vcodec_dev, use curr_max_idx for instance index
+> 4. Use kzalloc to allocate ctx
+> 5. Refine fops_vcodec_open
+> 
+> VPU Part
+> 1. Refine vpu_load_firmware
+> 
+> Change in v7:
+> 1. Rebase against the master branch of git://linuxtv.org/media_tree.git
+> 2. Add ycbcr_enc, quantization and xfer_func in try_fmt, g_fmt, s_fmt
+> 3. Merge h264_enc and vp8_enc to venc directory
+> 
+> Change in v6:
+> 1. Add synchronization access protect between irq handler and work thread
+> 2. Add DMA_ATTR_ALLOC_SINGLE_PAGES support
+> 3. S_FMT will return coded_width, coded_height, so user space could allocate correct size memory that HW required
+> 4. merge h264/vp8 enc ap and md32 ipi msg
+> 5. separate h264/vp8 enc gop_size and intra_period handle
+> 6. remove sizeimage relative code in work buffer function
+> 7. Refine makefile to build as an module
+> 8. Code clean up
+> 
+> VPU Part
+> 1. export symbols for building VPU as an module
+> 2. change function from "wait_event_interruptible_timeout" to "wait_event_timeout" since
+>    CPU needs to wait for ACK from VPU even if it was interrupted by a signal
+> 
+> v4l2-compliance test output:
+> localhost Encode # ./v4l2-compliance -d /dev/video1
+> Driver Info:
+>         Driver name   : mtk-vcodec-enc
+>         Card type     : platform:mt8173
+>         Bus info      : platform:mt8173
+>         Driver version: 4.4.0
+>         Capabilities  : 0x84204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+>                 Device Capabilities
+>         Device Caps   : 0x04204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+> 
+> Compliance test for device /dev/video1 (not using libv4l2):
+> 
+> Required ioctls:
+>         test VIDIOC_QUERYCAP: OK
+> 
+> Allow for multiple opens:
+>         test second video open: OK
+>         test VIDIOC_QUERYCAP: OK
+>         test VIDIOC_G/S_PRIORITY: OK
+> 
+> Debug ioctls:
+>         test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+>         test VIDIOC_LOG_STATUS: OK (Not Supported)
+> 
+> Input ioctls:
+>         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+>         test VIDIOC_ENUMAUDIO: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDIO: OK (Not Supported)
+>         Inputs: 0 Audio Inputs: 0 Tuners: 0
+> 
+> Output ioctls:
+>         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+>         Outputs: 0 Audio Outputs: 0 Modulators: 0
+> 
+> Input/Output configuration ioctls:
+>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> 
+>         Control ioctls:
+>                 test VIDIOC_QUERYCTRL/MENU: OK
+>                 test VIDIOC_G/S_CTRL: OK
+>                 test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>                 Standard Controls: 12 Private Controls: 0
+> 
+>         Format ioctls:
+>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>                 test VIDIOC_G/S_PARM: OK
+>                 test VIDIOC_G_FBUF: OK (Not Supported)
+>                 test VIDIOC_G_FMT: OK
+>                 test VIDIOC_TRY_FMT: OK
+>                 test VIDIOC_S_FMT: OK
+>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> 
+>         Codec ioctls:
+>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> 
+>         Buffer ioctls:
+>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+>                 test VIDIOC_EXPBUF: OK
+> Total: 38, Succeeded: 38, Failed: 0, Warnings: 0
+> 
+> 
+> v4l2-compliance test output:
+> localhost ~ # /usr/bin/v4l2-compliance -d /dev/video1
+>  
+> Change in v5:
+> Vcodec Part
+> 1. Pass checkpatch and v4l2-compliance test
+> 2. Remove unused g/s_selection for now
+> 3. add vidioc_g_parm support
+> 4. add vidioc_create_bufs and vidioc_prepare_buf support
+> 5. Remove instance check in fops_vcodec_open
+> 6. Fix comments for data structure and code
+> 7. Refine venc, venc_lt clock source name in devicetree and binding document
+> 8. Fix Author information and copyright information
+> 9. Refine code according to review comments
+> 
+> VPU Part
+> 
+> v4l2-compliance test output:
+> localhost ~ # /usr/bin/v4l2-compliance -d /dev/video1
+> Driver Info:
+>         Driver name   : mtk-vcodec-enc
+>         Card type     : platform:mt8173
+>         Bus info      : platform:mt8173
+>         Driver version: 4.4.0
+>         Capabilities  : 0x84204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+>                 Device Capabilities
+>         Device Caps   : 0x04204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+> 
+> Compliance test for device /dev/video1 (not using libv4l2):
+> 
+> Required ioctls:
+>         test VIDIOC_QUERYCAP: OK
+> 
+> Allow for multiple opens:
+>         test second video open: OK
+>         test VIDIOC_QUERYCAP: OK
+>         test VIDIOC_G/S_PRIORITY: OK
+> 
+> Debug ioctls:
+>         test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+>         test VIDIOC_LOG_STATUS: OK (Not Supported)
+> 
+> Input ioctls:
+>         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+>         test VIDIOC_ENUMAUDIO: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDIO: OK (Not Supported)
+>         Inputs: 0 Audio Inputs: 0 Tuners: 0
+> 
+> Output ioctls:
+>         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+>         Outputs: 0 Audio Outputs: 0 Modulators: 0
+> 
+> Input/Output configuration ioctls:
+>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> 
+>         Control ioctls:
+>                 test VIDIOC_QUERYCTRL/MENU: OK
+>                 test VIDIOC_G/S_CTRL: OK
+>                 test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>                 Standard Controls: 12 Private Controls: 0
+> 
+>         Format ioctls:
+>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>                 test VIDIOC_G/S_PARM: OK
+>                 test VIDIOC_G_FBUF: OK (Not Supported)
+>                 test VIDIOC_G_FMT: OK
+>                 test VIDIOC_TRY_FMT: OK
+>                 test VIDIOC_S_FMT: OK
+>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> 
+>         Codec ioctls:
+>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> 
+>         Buffer ioctls:
+>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+>                 test VIDIOC_EXPBUF: OK
+> 
+> 
+> Total: 38, Succeeded: 38, Failed: 0, Warnings: 0
+> 
+> 
+> Change in v4:
+> Vcodec Part
+> 1. Remove MTK_ENCODE_PARAM_SKIP_FRAME support
+> 2. Remove MTK_ENCODE_PARAM_FRAME_TYPE and change to use V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME[3]
+> 3. Refine Encoder HW clock source
+> 4. Refine debug log
+> 5. Add watchdog support
+> 6. With patch "media: v4l2-compat-ioctl32: fix missing length copy in put_v4l2_buffer32"[4],
+> v4l2-compliance test passed[5] in v4.4-rc5 
+> 
+> VPU Part
+> 1. These two patches were Acked-by: Rob Herring <robh <at> kernel.org> in v3
+>    [PATCH v3 1/8] dt-bindings: Add a binding for Mediatek Video Processor
+>    [PATCH v3 3/8] arm64: dts: mediatek: Add node for Mediatek Video Processor Unit
+>    Because we were wrong about how the hardware works, there is no connection between VPU and IOMMU HW
+>    We remove VPU attaching to IOMMU
+> 2. Support VPU running on 4GB DRAM system
+> 3. Support VPU watchdog reset
+> 4. Refine for coding style 
+> 
+> [3]https://patchwork.linuxtv.org/patch/32670/
+> [4] https://patchwork.linuxtv.org/patch/32631/
+> [5]localhost ~ # /usr/bin/v4l2-compliance -d /dev/video1
+> Driver Info:
+>         Driver name   : mtk-vcodec-en
+>         Card type     : platform:mt817
+>         Bus info      : platform:mt817
+>         Driver version: 4.4.0
+>         Capabilities  : 0x84204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+>                 Device Capabilities
+>         Device Caps   : 0x04204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+> 
+> Compliance test for device /dev/video1 (not using libv4l2):
+> 
+> Required ioctls:
+>         test VIDIOC_QUERYCAP: OK
+> 
+> Allow for multiple opens:
+>         test second video open: OK
+>         test VIDIOC_QUERYCAP: OK
+>         test VIDIOC_G/S_PRIORITY: OK
+> 
+> Debug ioctls:
+>         test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+>         test VIDIOC_LOG_STATUS: OK (Not Supported)
+> 
+> Input ioctls:
+>         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+>         test VIDIOC_ENUMAUDIO: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDIO: OK (Not Supported)
+>         Inputs: 0 Audio Inputs: 0 Tuners: 0
+> 
+> Output ioctls:
+>         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+>         Outputs: 0 Audio Outputs: 0 Modulators: 0
+> 
+> Input/Output configuration ioctls:
+>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> 
+>         Control ioctls:
+>                 test VIDIOC_QUERYCTRL/MENU: OK
+>                 test VIDIOC_G/S_CTRL: OK
+>                 test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>                 Standard Controls: 12 Private Controls: 0
+> 
+>         Format ioctls:
+>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>                 test VIDIOC_G/S_PARM: OK (Not Supported)
+>                 test VIDIOC_G_FBUF: OK (Not Supported)
+>                 test VIDIOC_G_FMT: OK
+>                 test VIDIOC_TRY_FMT: OK
+>                 test VIDIOC_S_FMT: OK
+>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> 
+>         Codec ioctls:
+>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> 
+>         Buffer ioctls:
+>                 warn: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(475):
+> VIDIOC_CREATE_BUFS not supported
+>                 warn: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(475):
+> VIDIOC_CREATE_BUFS not supported
+>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+>                 test VIDIOC_EXPBUF: OK
+> 
+> Total: 38, Succeeded: 38, Failed: 0, Warnings: 2
+> 
+> Change in v3:
+> 1.Refine code to pass v4l2-compliance test, now it still has 2 issues 2.Refine code according to latest MTK
+> IOMMU patches[1] 3.Remove MFC51 specific CIDs and add MTK specific CIDs for for keyframe and
+>   skip I-frame
+> 4.Refine code according to review comments
+> 
+> Below is the v1.6 version v4l2-compliance report for the mt8173 encoder driver.
+> Now there are still 2 test fail in v1.6.
+> For VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF, we directly use v4l2_m2m_ioctl_* functions, but it still
+> fail. It pass in kernel 3.18 but fail in kernel 4.4.
+> We will try v1.8 in next version.
+> VIDIOC_EXPBUF is becuase we support all three memory types VB2_DMABUF, VB2_MMAP and VB2_USERPTR.
+> VIDIOC_EXPBUF only allowed when only VB2_MMAP supported.
+> localhost ~ # /usr/bin/v4l2-compliance -d /dev/video1 Driver Info:
+>         Driver name   : mtk-vcodec-en
+>         Card type     : platform:mt817
+>         Bus info      : platform:mt817
+>         Driver version: 4.4.0
+>         Capabilities  : 0x84204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+>                 Device Capabilities
+>         Device Caps   : 0x04204000
+>                 Video Memory-to-Memory Multiplanar
+>                 Streaming
+>                 Extended Pix Format
+> 
+> Compliance test for device /dev/video1 (not using libv4l2):
+> 
+> Required ioctls:
+>         test VIDIOC_QUERYCAP: OK
+> 
+> Allow for multiple opens:
+>         test second video open: OK
+>         test VIDIOC_QUERYCAP: OK
+>         test VIDIOC_G/S_PRIORITY: OK
+> 
+> Debug ioctls:
+>         test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+>         test VIDIOC_LOG_STATUS: OK (Not Supported)
+> 
+> Input ioctls:
+>         test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+>         test VIDIOC_ENUMAUDIO: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDIO: OK (Not Supported)
+>         Inputs: 0 Audio Inputs: 0 Tuners: 0
+> 
+> Output ioctls:
+>         test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+>         test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+>         test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+>         test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+>         test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+>         Outputs: 0 Audio Outputs: 0 Modulators: 0
+> 
+> Input/Output configuration ioctls:
+>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> 
+>         Control ioctls:
+>                 test VIDIOC_QUERYCTRL/MENU: OK
+>                 test VIDIOC_G/S_CTRL: OK
+>                 test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>                 Standard Controls: 11 Private Controls: 2
+> 
+>         Format ioctls:
+>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>                 test VIDIOC_G/S_PARM: OK (Not Supported)
+>                 test VIDIOC_G_FBUF: OK (Not Supported)
+>                 test VIDIOC_G_FMT: OK
+>                 test VIDIOC_TRY_FMT: OK
+>                 test VIDIOC_S_FMT: OK
+>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> 
+>         Codec ioctls:
+>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> 
+>         Buffer ioctls:
+>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(266): vp->length
+> == 0
+>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(335):
+> buf.check(Unqueued, i)
+>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(420):
+> testQueryBuf(node, i, q.g_buffers())
+>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: FAIL
+>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
+>                 test VIDIOC_EXPBUF: FAIL
+> Total: 38, Succeeded: 36, Failed: 2, Warnings: 0
+> 
+> Change in v2:
+> Vcodec Part
+> 1.Remove common and include directory in mtk-vcodec 2.Refine vb2ops_venc_start_streaming and
+> vb2ops_venc_stop_streaming and state machine 3.Remove venc_if_init and venc_if_deinit 4.Refine
+> debug message 5.Refine lab and vpu decription in mediatek-vcodec.txt
+> 
+> VPU Part
+> 1. Modify VPU Kconfig
+> 2. Move encoder header files to other patch sets 3. Remove marcos for extended virtual/iova address 4.
+> Change register and variable names 5. Add a reference counter for VPU watchdog 6. Remove one busy waiting
+> in function vpu_ipi_send 7. Operate VPU clock in VPU driver (not called by encoder drivers) 8. Refine
+> memory mapping, firmware download and extended memory allocation/free functions 9. Release more
+> allocated resources in driver remove function
+> 
+> Andrew-CT Chen (3):
+>   dt-bindings: Add a binding for Mediatek Video Processor
+>   VPU: mediatek: support Mediatek VPU
+>   arm64: dts: mediatek: Add node for Mediatek Video Processor Unit
+> 
+> Tiffany Lin (5):
+>   dt-bindings: Add a binding for Mediatek Video Encoder
+>   vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver
+>   vcodec: mediatek: Add Mediatek VP8 Video Encoder Driver
+>   vcodec: mediatek: Add Mediatek H264 Video Encoder Driver
+>   arm64: dts: mediatek: Add Video Encoder for MT8173
+> 
+>  .../devicetree/bindings/media/mediatek-vcodec.txt  |   59 +
+>  .../devicetree/bindings/media/mediatek-vpu.txt     |   31 +
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   62 +
+>  drivers/media/platform/Kconfig                     |   32 +
+>  drivers/media/platform/Makefile                    |    4 +
+>  drivers/media/platform/mtk-vcodec/Makefile         |   19 +
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |  338 +++++
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 1288 ++++++++++++++++++++
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h |   58 +
+>  .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c |  454 +++++++
+>  .../media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c  |  137 +++
+>  .../media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h  |   26 +
+>  .../media/platform/mtk-vcodec/mtk_vcodec_intr.c    |   55 +
+>  .../media/platform/mtk-vcodec/mtk_vcodec_intr.h    |   27 +
+>  .../media/platform/mtk-vcodec/mtk_vcodec_util.c    |   94 ++
+>  .../media/platform/mtk-vcodec/mtk_vcodec_util.h    |   87 ++
+>  .../media/platform/mtk-vcodec/venc/venc_h264_if.c  |  679 +++++++++++
+>  .../media/platform/mtk-vcodec/venc/venc_vp8_if.c   |  481 ++++++++
+>  drivers/media/platform/mtk-vcodec/venc_drv_base.h  |   62 +
+>  drivers/media/platform/mtk-vcodec/venc_drv_if.c    |  113 ++
+>  drivers/media/platform/mtk-vcodec/venc_drv_if.h    |  163 +++
+>  drivers/media/platform/mtk-vcodec/venc_ipi_msg.h   |  210 ++++
+>  drivers/media/platform/mtk-vcodec/venc_vpu_if.c    |  237 ++++
+>  drivers/media/platform/mtk-vcodec/venc_vpu_if.h    |   61 +
+>  drivers/media/platform/mtk-vpu/Makefile            |    3 +
+>  drivers/media/platform/mtk-vpu/mtk_vpu.c           |  950 +++++++++++++++
+>  drivers/media/platform/mtk-vpu/mtk_vpu.h           |  162 +++
+>  27 files changed, 5892 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vpu.txt
+>  create mode 100644 drivers/media/platform/mtk-vcodec/Makefile
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_drv_base.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_drv_if.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_drv_if.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_ipi_msg.h
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/venc_vpu_if.h
+>  create mode 100644 drivers/media/platform/mtk-vpu/Makefile
+>  create mode 100644 drivers/media/platform/mtk-vpu/mtk_vpu.c
+>  create mode 100644 drivers/media/platform/mtk-vpu/mtk_vpu.h
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
