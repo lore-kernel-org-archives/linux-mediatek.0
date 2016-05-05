@@ -1,50 +1,51 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [alsa-devel] [PATCH 1/7] ASoC: mediatek: Refine mt8173 driver
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: Re: [PATCH 1/7] ASoC: mediatek: Refine mt8173 driver
  and change config option
-Date: Wed, 4 May 2016 17:43:06 +0100
-Message-ID: <20160504164306.GA6292@sirena.org.uk>
+Date: Thu, 5 May 2016 10:45:42 +0800
+Message-ID: <1462416342.25179.36.camel@mtksdaap41>
 References: <1461934848-60011-1-git-send-email-garlic.tseng@mediatek.com>
  <1461934848-60011-2-git-send-email-garlic.tseng@mediatek.com>
+ <20160504164306.GA6292@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="utUizcr4eQAkV3Ky"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1461934848-60011-2-git-send-email-garlic.tseng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>
-Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160504164306.GA6292@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Wed, 2016-05-04 at 17:43 +0100, Mark Brown wrote:
+> On Fri, Apr 29, 2016 at 09:00:42PM +0800, Garlic Tseng wrote:
+> 
+> >  .../{mtk-afe-pcm.c => mt8173/mt8173-afe-pcm.c}     | 488 ++++++++++-----------
+> 
+> So there's going to be no code sharing at all between this and any other
+> Mediatek chips?  That seems very surprising, it'd suggest that the
+> hardware designers were creating a new design completely from scratch
+> each time which doesn't seem all that likely.  This is an unusual way of
+> organizing things and we need a much clearer explanation of what's going
+> on here.
 
---utUizcr4eQAkV3Ky
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+MT8173 and MT2701 are from different product lines so the register
+control sequences are very different. If another driver for 8173-like
+(or 2701-like) chip go upstream it shall share some common code with the
+relatively driver indeed. However I think MT8173 and MT2701 can't share
+the platform driver or a lot of "if MT8173 else MT2701" will mess up the
+code.
 
-On Fri, Apr 29, 2016 at 09:00:42PM +0800, Garlic Tseng wrote:
 
->  .../{mtk-afe-pcm.c => mt8173/mt8173-afe-pcm.c}     | 488 ++++++++++-----------
-
-So there's going to be no code sharing at all between this and any other
-Mediatek chips?  That seems very surprising, it'd suggest that the
-hardware designers were creating a new design completely from scratch
-each time which doesn't seem all that likely.  This is an unusual way of
-organizing things and we need a much clearer explanation of what's going
-on here.
-
---utUizcr4eQAkV3Ky
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXKiaaAAoJECTWi3JdVIfQlmsIAIBywmMZ2EhbIi3Rgo+HaHOJ
-IZRiAOvXMTafJdw7ToZu0qzGL+yq+ofNqEB1bommSYCYe0sIzm8WMPI8grkz+r3X
-77E4ylGx3ikCY9wMSFK+xLZjLq5qT8rcL1KRzm1QCvcWx1mp/9k1qCHI8MMrc/sf
-IDRZMrdH5pYrThAkQcBJ7ALerL4tIy53QaL5KMa4v2jyfjdqWXhIOuSRl4sYRMUi
-dqiJ5F6adYmu5gs+vv2o1VLgIxRFfLPorMOOz03puMmpXyY0CrSr7TbL4HsqEv4A
-9zJRpnGGLXaSJIQcBuX0i5M/H+qX3AT1F2eGeaJEfAqOlXy/rprp/IlTcgKWIq4=
-=7N8B
------END PGP SIGNATURE-----
-
---utUizcr4eQAkV3Ky--
+However, several (maybe 2 or 3) tiny functions for the two driver code
+are very similar indeed. For example, pointer callback functions of
+platform driver are very similar. It reads the cursor and return. But
+I'm not sure if it is better to share the function. It is too trivial
+for me.
