@@ -1,32 +1,30 @@
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Subject: Re: [alsa-devel] [PATCH 1/7] ASoC: mediatek: Refine mt8173 driver
- and change config option
-Date: Sat, 7 May 2016 02:33:56 +0800
-Message-ID: <1462559636.11805.6.camel@mtksdaap41>
-References: <1461934848-60011-1-git-send-email-garlic.tseng@mediatek.com>
-	 <1461934848-60011-2-git-send-email-garlic.tseng@mediatek.com>
-	 <20160504164306.GA6292@sirena.org.uk>
-	 <1462416342.25179.36.camel@mtksdaap41> <572B0511.80701@gmail.com>
-	 <1462444772.2873.70.camel@mtksdaap41> <20160506122046.GR6292@sirena.org.uk>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v7 8/9] clk: mediatek: Add config options for MT2701
+ subsystem clocks
+Date: Fri, 6 May 2016 16:02:14 -0700
+Message-ID: <20160506230214.GH3492@codeaurora.org>
+References: <1460621514-65191-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1460621514-65191-9-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160506122046.GR6292@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1460621514-65191-9-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-05-06 at 13:20 +0100, Mark Brown wrote:
-> On Thu, May 05, 2016 at 06:39:32PM +0800, Garlic Tseng wrote:
+On 04/14, James Liao wrote:
+> MT2701 subsystem clocks are optional and should be enabled only if
+> their subsystem drivers are ready to control these clocks.
 > 
-> > As mentioned above, the difference of the ASoCs between the two chips
-> > are too large that we have a hard time sharing the driver code.
-> 
-> The things you're describing all sound like scaling differences rather
-> than fundamental changes.  I'd expect to see at least some shared code
-> here, we don't want to be just duplicating the entire driver every time
-> there's a new hardware revision.
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> ---
 
-Oh ok, I'll do it in the next version. Thanks for comment.
+Why is this patch split off from the patch that introduces the
+file?
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
