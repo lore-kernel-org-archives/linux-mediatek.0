@@ -1,86 +1,59 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v4 1/2] mtd: mediatek: device tree docs for MTK Smart
- Device Gen1 NAND
-Date: Fri, 6 May 2016 15:38:16 +0200
-Message-ID: <20160506153816.7ca581ac@bbrezillon>
-References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
- <1461946642-1842-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v16 3/8] drm/mediatek: Add DRM Driver for Mediatek SoC
+ MT8173.
+Date: Fri, 06 May 2016 16:40:00 +0200
+Message-ID: <1462545600.5058.59.camel@pengutronix.de>
+References: <1462539954-26158-1-git-send-email-p.zabel@pengutronix.de>
+ <1462539954-26158-4-git-send-email-p.zabel@pengutronix.de>
+ <20160506131648.GB27098@phenom.ffwll.local>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1461946642-1842-2-git-send-email-jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20160506131648.GB27098@phenom.ffwll.local>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, dri-devel@lists.freedesktop.org, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, kernel@pengutronix.de, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jorge,
-
-On Fri, 29 Apr 2016 12:17:21 -0400
-Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
-
-> This patch adds documentation support for Smart Device Gen1 type of
-> NAND controllers.
-> 
-> Signed-off-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/mtd/mtk-nand.txt | 161 +++++++++++++++++++++
->  1 file changed, 161 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-> new file mode 100644
-> index 0000000..175767d
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
-
-[...]
-
-> +
-> +Children nodes properties:
-> +- reg:			Chip Select Signal, default 0.
-> +			Set as reg = <0>, <1> when need 2 CS.
-> +Optional:
-> +- nand-on-flash-bbt:	Store BBT on NAND Flash.
-> +- nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
-> +- nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
-> +			The controller only supports 512 and 1024.
-> +			For large page NANDs ther recommended value is 1024.
-> +- nand-ecc-strength:	Number of bits to correct per ECC step.
-> +			The valid values that the controller supports are: 4, 6,
-> +			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
-> +			48, 52, 56, 60.
-> +			The strength should be calculated as follows:
-> +			E = (S - F) * 8 / 14
-> +			S = O / (P / Q)
-> +				E :nand-ecc-strength;
-> +				S :spare size per sector;
-> +				F : FDM size, should be in the range [1,8].
-> +				    It is used to store free oob data.
-> +				O : oob size;
-> +				P : page size;
-> +				Q :nand-ecc-step-size
-> +			If the result does not match any one of the listed
-> +			choices above, please select the smaller valid value from
-> +			the list.
-> +			(otherwise the driver will do the clamping at runtime).
-> +- vmch-supply:		NAND power supply.
-
-Where is this supply name coming from? I most datasheets I see Vdd or
-Vcc, but nothing close to Vmch.
-
-
-
--- 
-Boris Brezillon, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+SGkgRGFuaWVsLAoKQW0gRnJlaXRhZywgZGVuIDA2LjA1LjIwMTYsIDE1OjE2ICswMjAwIHNjaHJp
+ZWIgRGFuaWVsIFZldHRlcjoKPiBPbiBGcmksIE1heSAwNiwgMjAxNiBhdCAwMzowNTo0OVBNICsw
+MjAwLCBQaGlsaXBwIFphYmVsIHdyb3RlOgo+ID4gRnJvbTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVr
+LmNvbT4KPiA+IAo+ID4gVGhpcyBwYXRjaCBhZGRzIGFuIGluaXRpYWwgRFJNIGRyaXZlciBmb3Ig
+dGhlIE1lZGlhdGVrIE1UODE3MyBESVNQCj4gPiBzdWJzeXN0ZW0uIEl0IGN1cnJlbnRseSBzdXBw
+b3J0cyB0d28gZml4ZWQgb3V0cHV0IHN0cmVhbXMgZnJvbSB0aGUKPiA+IE9WTDAvT1ZMMSBzb3Vy
+Y2VzIHRvIHRoZSBEU0kwL0RQSTAgc2lua3MsIHJlc3BlY3RpdmVseS4KPiA+IAo+ID4gU2lnbmVk
+LW9mZi1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IFlU
+IFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIEt1
+cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KPiA+IFNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVo
+IDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBNYW8gSHVhbmcg
+PGxpdHRsZWN2ckBjaHJvbWl1bS5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVs
+IDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPgo+IAo+IFNwb3R0ZWQgdHdvIHRpbnkgdGhpbmdzIGJl
+bG93LgpbLi4uXQo+ID4gK3N0YXRpYyBpbnQgbXRrX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRl
+dikKPiA+ICt7Cj4gPiArCXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnByaXZhdGUgPSBkZXZfZ2V0
+X2RydmRhdGEoZGV2KTsKPiA+ICsJc3RydWN0IGRybV9kZXZpY2UgKmRybTsKPiA+ICsJaW50IHJl
+dDsKPiA+ICsKPiA+ICsJZHJtID0gZHJtX2Rldl9hbGxvYygmbXRrX2RybV9kcml2ZXIsIGRldik7
+Cj4gPiArCWlmICghZHJtKQo+ID4gKwkJcmV0dXJuIC1FTk9NRU07Cj4gPiArCj4gPiArCWRybV9k
+ZXZfc2V0X3VuaXF1ZShkcm0sIGRldl9uYW1lKGRldikpOwo+ID4gKwo+ID4gKwlyZXQgPSBkcm1f
+ZGV2X3JlZ2lzdGVyKGRybSwgMCk7Cj4gPiArCWlmIChyZXQgPCAwKQo+ID4gKwkJZ290byBlcnJf
+ZnJlZTsKPiA+ICsKPiA+ICsJZHJtLT5kZXZfcHJpdmF0ZSA9IHByaXZhdGU7Cj4gPiArCXByaXZh
+dGUtPmRybSA9IGRybTsKPiA+ICsKPiA+ICsJcmV0ID0gbXRrX2RybV9rbXNfaW5pdChkcm0pOwo+
+ID4gKwlpZiAocmV0IDwgMCkKPiA+ICsJCWdvdG8gZXJyX3VucmVnaXN0ZXI7Cj4gCj4gV3Jvbmcg
+d2F5IHJvdW5kLCBkcm1fZGV2X3JlZ2lzdGVyIHNob3VsZCBiZSBsYXN0LiBBbmQgeW91J3JlIG1p
+c3NpbmcKPiBkcm1fY29ubmVjdG9yX3JlZ2lzdGVyX2FsbCBoZXJlLgo+IC1EYW5pZWwKClRoYW5r
+cywgdGhhdCBhbHNvIG1lYW5zIHRoZSBtdGtfZHNpIGFuZCBtdGtfaGRtaSBkcml2ZXJzIG11c3Qg
+bm90IGNhbGwKZHJtX2Nvbm5lY3Rvcl8odW4pcmVnaXN0ZXIgYW55bW9yZS4KV2hhdCBhYm91dCB0
+aGUgY29ubmVjdG9ycyByZWdpc3RlcmVkIGJ5IGV4dGVybmFsIGJyaWRnZSBkcml2ZXJzPyBTaG91
+bGQKdGhvc2UgY2hlY2sgZm9yIChkZXYtPmRyaXZlci0+bG9hZCkgYmVmb3JlIGNhbGxpbmcKZHJt
+X2Nvbm5lY3Rvcl91bnJlZ2lzdGVyPwoKcmVnYXJkcwpQaGlsaXBwCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRy
+aS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
