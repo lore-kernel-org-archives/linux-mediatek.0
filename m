@@ -1,103 +1,385 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH V2 05/22] net-next: mediatek: fix DQL support
-Date: Mon,  9 May 2016 12:03:57 +0200
-Message-ID: <1462788254-40572-6-git-send-email-john@phrozen.org>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: [PATCH V2 20/22] net-next: mediatek: add support for IRQ grouping
+Date: Mon,  9 May 2016 12:04:12 +0200
+Message-ID: <1462788254-40572-21-git-send-email-john@phrozen.org>
 References: <1462788254-40572-1-git-send-email-john@phrozen.org>
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1462788254-40572-1-git-send-email-john@phrozen.org>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net
-Cc: nbd@nbd.name, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1462788254-40572-1-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nbd-Vt+b4OUoWG0@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The MTK ethernet core has 2 MACs both sitting on the same DMA ring. The
-current code will assign the TX traffic of each MAC to its own DQL. This
-results in the amount of data, that DQL says is in the queue incorrect. As
-the data from multiple devices is infact enqueued. This makes any decision
-based on these value non deterministic. Fix this by tracking all TX
-traffic, regardless of the MAC it belongs to in the DQL of all devices
-using the DMA.
+The ethernet core has 3 IRQs. using the IRQ grouping registers we are able
+to separate TX and RX IRQs, which allows us to service them on separate
+cores. This patch splits the irq handler into 2 separate functions, one for
+TX and another for RX. The TX housekeeping is split out into its own NAPI
+handler.
 
-Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |   33 ++++++++++++++++-----------
- 1 file changed, 20 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  156 +++++++++++++++++----------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |   15 ++-
+ 2 files changed, 111 insertions(+), 60 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index c5ddb4d..4a01ba7 100644
+index a738221..74cb234 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -643,7 +643,16 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
- 	WRITE_ONCE(itxd->txd3, (TX_DMA_SWC | TX_DMA_PLEN0(skb_headlen(skb)) |
- 				(!nr_frags * TX_DMA_LS0)));
+@@ -892,14 +892,13 @@ release_desc:
+ 	return done;
+ }
  
--	netdev_sent_queue(dev, skb->len);
-+	/* we have a single DMA ring so BQL needs to be updated for all devices
-+	 * sitting on this ring
-+	 */
-+	for (i = 0; i < MTK_MAC_COUNT; i++) {
-+		if (!eth->netdev[i])
-+			continue;
-+
-+		netdev_sent_queue(eth->netdev[i], skb->len);
-+	}
-+
- 	skb_tx_timestamp(skb);
- 
- 	ring->next_free = mtk_qdma_phys_to_virt(ring, txd->txd2);
-@@ -871,21 +880,18 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
+-static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
++static int mtk_poll_tx(struct mtk_eth *eth, int budget)
+ {
+ 	struct mtk_tx_ring *ring = &eth->tx_ring;
  	struct mtk_tx_dma *desc;
  	struct sk_buff *skb;
  	struct mtk_tx_buf *tx_buf;
--	int total = 0, done[MTK_MAX_DEVS];
--	unsigned int bytes[MTK_MAX_DEVS];
-+	int total = 0, done = 0;
-+	unsigned int bytes = 0;
+-	int total = 0, done = 0;
+-	unsigned int bytes = 0;
++	unsigned int bytes = 0, done = 0;
  	u32 cpu, dma;
  	static int condition;
  	int i;
- 
--	memset(done, 0, sizeof(done));
--	memset(bytes, 0, sizeof(bytes));
--
- 	cpu = mtk_r32(eth, MTK_QTX_CRX_PTR);
- 	dma = mtk_r32(eth, MTK_QTX_DRX_PTR);
- 
- 	desc = mtk_qdma_phys_to_virt(ring, cpu);
- 
--	while ((cpu != dma) && budget) {
-+	while ((cpu != dma) && done < budget) {
- 		u32 next_cpu = desc->txd2;
- 		int mac;
- 
-@@ -905,9 +911,8 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
- 		}
- 
- 		if (skb != (struct sk_buff *)MTK_DMA_DUMMY_DESC) {
--			bytes[mac] += skb->len;
--			done[mac]++;
--			budget--;
-+			bytes += skb->len;
-+			done++;
- 		}
- 		mtk_tx_unmap(eth->dev, tx_buf);
- 
-@@ -920,11 +925,13 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
- 
- 	mtk_w32(eth, cpu, MTK_QTX_CRX_PTR);
- 
-+	/* we have a single DMA ring so BQL needs to be updated for all devices
-+	 * sitting on this ring
-+	 */
- 	for (i = 0; i < MTK_MAC_COUNT; i++) {
--		if (!eth->netdev[i] || !done[i])
-+		if (!eth->netdev[i])
- 			continue;
--		netdev_completed_queue(eth->netdev[i], done[i], bytes[i]);
--		total += done[i];
-+		netdev_completed_queue(eth->netdev[i], done, bytes);
+@@ -951,63 +950,82 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
+ 		netdev_completed_queue(eth->netdev[i], done, bytes);
  	}
  
- 	/* read hw index again make sure no new tx packet */
+-	/* read hw index again make sure no new tx packet */
+-	if (cpu != dma || cpu != mtk_r32(eth, MTK_QTX_DRX_PTR))
+-		*tx_again = true;
+-	else
+-		mtk_w32(eth, MTK_TX_DONE_INT, MTK_QMTK_INT_STATUS);
+-
+-	if (!total)
+-		return 0;
+-
+ 	if (mtk_queue_stopped(eth) &&
+ 	    (atomic_read(&ring->free_count) > ring->thresh))
+ 		mtk_wake_queue(eth);
+ 
+-	return total;
++	return done;
+ }
+ 
+-static int mtk_poll(struct napi_struct *napi, int budget)
++static void mtk_handle_status_irq(struct mtk_eth *eth)
+ {
+-	struct mtk_eth *eth = container_of(napi, struct mtk_eth, rx_napi);
+-	u32 status, status2, mask;
+-	int tx_done, rx_done;
+-	bool tx_again = false;
+-
+-	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+-	status2 = mtk_r32(eth, MTK_INT_STATUS2);
+-	tx_done = 0;
+-	rx_done = 0;
+-	tx_again = 0;
+-
+-	if (status & MTK_TX_DONE_INT)
+-		tx_done = mtk_poll_tx(eth, budget, &tx_again);
+-
+-	if (status & MTK_RX_DONE_INT)
+-		rx_done = mtk_poll_rx(napi, budget, eth);
++	u32 status2 = mtk_r32(eth, MTK_INT_STATUS2);
+ 
+ 	if (unlikely(status2 & (MTK_GDM1_AF | MTK_GDM2_AF))) {
+ 		mtk_stats_update(eth);
+ 		mtk_w32(eth, (MTK_GDM1_AF | MTK_GDM2_AF),
+ 			MTK_INT_STATUS2);
+ 	}
++}
++
++static int mtk_napi_tx(struct napi_struct *napi, int budget)
++{
++	struct mtk_eth *eth = container_of(napi, struct mtk_eth, tx_napi);
++	u32 status, mask;
++	int tx_done = 0;
++
++	mtk_handle_status_irq(eth);
++	mtk_w32(eth, MTK_TX_DONE_INT, MTK_QMTK_INT_STATUS);
++	tx_done = mtk_poll_tx(eth, budget);
++
++	if (unlikely(netif_msg_intr(eth))) {
++		status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
++		mask = mtk_r32(eth, MTK_QDMA_INT_MASK);
++		dev_info(eth->dev,
++			 "done tx %d, intr 0x%08x/0x%x\n",
++			 tx_done, status, mask);
++	}
++
++	if (tx_done == budget)
++		return budget;
++
++	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
++	if (status & MTK_TX_DONE_INT)
++		return budget;
++
++	napi_complete(napi);
++	mtk_irq_enable(eth, MTK_TX_DONE_INT);
++
++	return tx_done;
++}
++
++static int mtk_napi_rx(struct napi_struct *napi, int budget)
++{
++	struct mtk_eth *eth = container_of(napi, struct mtk_eth, rx_napi);
++	u32 status, mask;
++	int rx_done = 0;
++
++	mtk_handle_status_irq(eth);
++	mtk_w32(eth, MTK_RX_DONE_INT, MTK_QMTK_INT_STATUS);
++	rx_done = mtk_poll_rx(napi, budget, eth);
+ 
+ 	if (unlikely(netif_msg_intr(eth))) {
++		status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+ 		mask = mtk_r32(eth, MTK_QDMA_INT_MASK);
+-		netdev_info(eth->netdev[0],
+-			    "done tx %d, rx %d, intr 0x%08x/0x%x\n",
+-			    tx_done, rx_done, status, mask);
++		dev_info(eth->dev,
++			 "done rx %d, intr 0x%08x/0x%x\n",
++			 rx_done, status, mask);
+ 	}
+ 
+-	if (tx_again || rx_done == budget)
++	if (rx_done == budget)
+ 		return budget;
+ 
+ 	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+-	if (status & (tx_intr | rx_intr))
++	if (status & MTK_RX_DONE_INT)
+ 		return budget;
+ 
+ 	napi_complete(napi);
+-	mtk_irq_enable(eth, MTK_RX_DONE_INT | MTK_RX_DONE_INT);
++	mtk_irq_enable(eth, MTK_RX_DONE_INT);
+ 
+ 	return rx_done;
+ }
+@@ -1243,22 +1261,26 @@ static void mtk_tx_timeout(struct net_device *dev)
+ 	schedule_work(&eth->pending_work);
+ }
+ 
+-static irqreturn_t mtk_handle_irq(int irq, void *_eth)
++static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
+ {
+ 	struct mtk_eth *eth = _eth;
+-	u32 status;
+ 
+-	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+-	if (unlikely(!status))
+-		return IRQ_NONE;
++	if (likely(napi_schedule_prep(&eth->rx_napi))) {
++		__napi_schedule(&eth->rx_napi);
++		mtk_irq_disable(eth, MTK_RX_DONE_INT);
++	}
+ 
+-	if (likely(status & (MTK_RX_DONE_INT | MTK_TX_DONE_INT))) {
+-		if (likely(napi_schedule_prep(&eth->rx_napi)))
+-			__napi_schedule(&eth->rx_napi);
+-	} else {
+-		mtk_w32(eth, status, MTK_QMTK_INT_STATUS);
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t mtk_handle_irq_tx(int irq, void *_eth)
++{
++	struct mtk_eth *eth = _eth;
++
++	if (likely(napi_schedule_prep(&eth->tx_napi))) {
++		__napi_schedule(&eth->tx_napi);
++		mtk_irq_disable(eth, MTK_TX_DONE_INT);
+ 	}
+-	mtk_irq_disable(eth, (MTK_RX_DONE_INT | MTK_TX_DONE_INT));
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -1271,7 +1293,7 @@ static void mtk_poll_controller(struct net_device *dev)
+ 	u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
+ 
+ 	mtk_irq_disable(eth, int_mask);
+-	mtk_handle_irq(dev->irq, dev);
++	mtk_handle_irq(dev->irq[0], dev);
+ 	mtk_irq_enable(eth, int_mask);
+ }
+ #endif
+@@ -1307,6 +1329,7 @@ static int mtk_open(struct net_device *dev)
+ 		if (err)
+ 			return err;
+ 
++		napi_enable(&eth->tx_napi);
+ 		napi_enable(&eth->rx_napi);
+ 		mtk_irq_enable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
+ 	}
+@@ -1355,6 +1378,7 @@ static int mtk_stop(struct net_device *dev)
+ 		return 0;
+ 
+ 	mtk_irq_disable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
++	napi_disable(&eth->tx_napi);
+ 	napi_disable(&eth->rx_napi);
+ 
+ 	mtk_stop_dma(eth, MTK_QDMA_GLO_CFG);
+@@ -1392,7 +1416,11 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
+ 	/* Enable RX VLan Offloading */
+ 	mtk_w32(eth, 1, MTK_CDMP_EG_CTRL);
+ 
+-	err = devm_request_irq(eth->dev, eth->irq, mtk_handle_irq, 0,
++	err = devm_request_irq(eth->dev, eth->irq[1], mtk_handle_irq_tx, 0,
++			       dev_name(eth->dev), eth);
++	if (err)
++		return err;
++	err = devm_request_irq(eth->dev, eth->irq[2], mtk_handle_irq_rx, 0,
+ 			       dev_name(eth->dev), eth);
+ 	if (err)
+ 		return err;
+@@ -1408,7 +1436,11 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
+ 	mtk_w32(eth, 0, MTK_RST_GL);
+ 
+ 	/* FE int grouping */
+-	mtk_w32(eth, 0, MTK_FE_INT_GRP);
++	mtk_w32(eth, MTK_TX_DONE_INT, MTK_PDMA_INT_GRP1);
++	mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_GRP2);
++	mtk_w32(eth, MTK_TX_DONE_INT, MTK_QDMA_INT_GRP1);
++	mtk_w32(eth, MTK_RX_DONE_INT, MTK_QDMA_INT_GRP2);
++	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
+ 
+ 	for (i = 0; i < 2; i++) {
+ 		u32 val = mtk_r32(eth, MTK_GDMA_FWD_CFG(i));
+@@ -1456,7 +1488,9 @@ static void mtk_uninit(struct net_device *dev)
+ 	phy_disconnect(mac->phy_dev);
+ 	mtk_mdio_cleanup(eth);
+ 	mtk_irq_disable(eth, ~0);
+-	free_irq(dev->irq, dev);
++	free_irq(eth->irq[0], dev);
++	free_irq(eth->irq[1], dev);
++	free_irq(eth->irq[2], dev);
+ }
+ 
+ static int mtk_do_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
+@@ -1730,10 +1764,10 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 		dev_err(eth->dev, "error bringing up device\n");
+ 		goto free_netdev;
+ 	}
+-	eth->netdev[id]->irq = eth->irq;
++	eth->netdev[id]->irq = eth->irq[0];
+ 	netif_info(eth, probe, eth->netdev[id],
+ 		   "mediatek frame engine at 0x%08lx, irq %d\n",
+-		   eth->netdev[id]->base_addr, eth->netdev[id]->irq);
++		   eth->netdev[id]->base_addr, eth->irq[0]);
+ 
+ 	return 0;
+ 
+@@ -1750,6 +1784,7 @@ static int mtk_probe(struct platform_device *pdev)
+ 	struct mtk_soc_data *soc;
+ 	struct mtk_eth *eth;
+ 	int err;
++	int i;
+ 
+ 	match = of_match_device(of_mtk_match, &pdev->dev);
+ 	soc = (struct mtk_soc_data *)match->data;
+@@ -1785,10 +1820,12 @@ static int mtk_probe(struct platform_device *pdev)
+ 		return PTR_ERR(eth->rstc);
+ 	}
+ 
+-	eth->irq = platform_get_irq(pdev, 0);
+-	if (eth->irq < 0) {
+-		dev_err(&pdev->dev, "no IRQ resource found\n");
+-		return -ENXIO;
++	for (i = 0; i < 3; i++) {
++		eth->irq[i] = platform_get_irq(pdev, i);
++		if (eth->irq[i] < 0) {
++			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
++			return -ENXIO;
++		}
+ 	}
+ 
+ 	eth->clk_ethif = devm_clk_get(&pdev->dev, "ethif");
+@@ -1829,7 +1866,9 @@ static int mtk_probe(struct platform_device *pdev)
+ 	 * for NAPI to work
+ 	 */
+ 	init_dummy_netdev(&eth->dummy_dev);
+-	netif_napi_add(&eth->dummy_dev, &eth->rx_napi, mtk_poll,
++	netif_napi_add(&eth->dummy_dev, &eth->tx_napi, mtk_napi_tx,
++		       MTK_NAPI_WEIGHT);
++	netif_napi_add(&eth->dummy_dev, &eth->rx_napi, mtk_napi_rx,
+ 		       MTK_NAPI_WEIGHT);
+ 
+ 	platform_set_drvdata(pdev, eth);
+@@ -1850,6 +1889,7 @@ static int mtk_remove(struct platform_device *pdev)
+ 	clk_disable_unprepare(eth->clk_gp1);
+ 	clk_disable_unprepare(eth->clk_gp2);
+ 
++	netif_napi_del(&eth->tx_napi);
+ 	netif_napi_del(&eth->rx_napi);
+ 	mtk_cleanup(eth);
+ 	platform_set_drvdata(pdev, NULL);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 3159d2a..f82e3ac 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -68,6 +68,10 @@
+ /* Unicast Filter MAC Address Register - High */
+ #define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
+ 
++/* PDMA Interrupt grouping registers */
++#define MTK_PDMA_INT_GRP1	0xa50
++#define MTK_PDMA_INT_GRP2	0xa54
++
+ /* QDMA TX Queue Configuration Registers */
+ #define MTK_QTX_CFG(x)		(0x1800 + (x * 0x10))
+ #define QDMA_RES_THRES		4
+@@ -125,6 +129,11 @@
+ #define MTK_TX_DONE_INT		(MTK_TX_DONE_INT0 | MTK_TX_DONE_INT1 | \
+ 				 MTK_TX_DONE_INT2 | MTK_TX_DONE_INT3)
+ 
++/* QDMA Interrupt grouping registers */
++#define MTK_QDMA_INT_GRP1	0x1a20
++#define MTK_QDMA_INT_GRP2	0x1a24
++#define MTK_RLS_DONE_INT	BIT(0)
++
+ /* QDMA Interrupt Status Register */
+ #define MTK_QDMA_INT_MASK	0x1A1C
+ 
+@@ -356,7 +365,8 @@ struct mtk_rx_ring {
+  * @dma_refcnt:		track how many netdevs are using the DMA engine
+  * @tx_ring:		Pointer to the memore holding info about the TX ring
+  * @rx_ring:		Pointer to the memore holding info about the RX ring
+- * @rx_napi:		The NAPI struct
++ * @tx_napi:		The TX NAPI struct
++ * @rx_napi:		The RX NAPI struct
+  * @scratch_ring:	Newer SoCs need memory for a second HW managed TX ring
+  * @phy_scratch_ring:	physical address of scratch_ring
+  * @scratch_head:	The scratch memory that scratch_ring points to.
+@@ -377,7 +387,7 @@ struct mtk_eth {
+ 	struct net_device		dummy_dev;
+ 	struct net_device		*netdev[MTK_MAX_DEVS];
+ 	struct mtk_mac			*mac[MTK_MAX_DEVS];
+-	int				irq;
++	int				irq[3];
+ 	u32				msg_enable;
+ 	unsigned long			sysclk;
+ 	struct regmap			*ethsys;
+@@ -385,6 +395,7 @@ struct mtk_eth {
+ 	atomic_t			dma_refcnt;
+ 	struct mtk_tx_ring		tx_ring;
+ 	struct mtk_rx_ring		rx_ring;
++	struct napi_struct		tx_napi;
+ 	struct napi_struct		rx_napi;
+ 	struct mtk_tx_dma		*scratch_ring;
+ 	dma_addr_t			phy_scratch_ring;
 -- 
 1.7.10.4
