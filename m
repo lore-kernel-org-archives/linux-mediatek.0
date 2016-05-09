@@ -1,30 +1,34 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH V2 04/22] net-next: mediatek: properly handle RGMII modes
-Date: Mon, 9 May 2016 14:09:01 +0200
-Message-ID: <20160509120901.GS7972@lunn.ch>
-References: <1462788254-40572-1-git-send-email-john@phrozen.org>
- <1462788254-40572-5-git-send-email-john@phrozen.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [GIT PULL] ARM: mediatek soc updates for v4.7
+Date: Mon, 09 May 2016 16:30:36 +0200
+Message-ID: <4344474.MABVc9hllp@wuerfel>
+References: <CABuKBeJV6bA=2Sx_apRp2HMfuyymFCV67zxaoJzBeRbRMzv0AQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1462788254-40572-5-git-send-email-john@phrozen.org>
-Sender: netdev-owner@vger.kernel.org
-To: John Crispin <john@phrozen.org>
-Cc: davem@davemloft.net, nbd@nbd.name, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CABuKBeJV6bA=2Sx_apRp2HMfuyymFCV67zxaoJzBeRbRMzv0AQ@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, arm@kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, John Crispin <blogic@openwrt.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 09, 2016 at 12:03:56PM +0200, John Crispin wrote:
-> If an external Gigabit PHY is connected to either of the MACs we need to
-> be able to tell the PHY to use a delay. Not doing so will result in heavy
-> packet loss and/or data corruption when using PHYs such as the IC+ IP1001.
-> We tell the PHY which MII delay mode to use via the devictree.
+On Monday 02 May 2016 16:34:11 Matthias Brugger wrote:
+> - re-organize pmic wrapper code for easier and cleaner addiont of new
+> SoCs and pmic wrappers
+> - add support for pmic wrapper mt6323
+> - add support for SoC mt2701
+> - enable gpt6 arch timer on mt7623
 > 
-> The ethernet driver needs to be adapted to handle all 3 rgmii-*id modes
-> in the same way as normal rgmii when setting up the MAC.
-> 
-> Signed-off-by: John Crispin <john@phrozen.org>
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Pulled into next/drivers, thanks!
 
-	     Andrew
+	Arnd
