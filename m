@@ -1,8 +1,8 @@
 From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v4 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
  NAND
-Date: Tue, 10 May 2016 10:53:23 -0400
-Message-ID: <5731F5E3.3020607@linaro.org>
+Date: Tue, 10 May 2016 10:53:43 -0400
+Message-ID: <5731F5F7.6000204@linaro.org>
 References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <1461946642-1842-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <20160510141335.442d3d7b@bbrezillon>
@@ -26,19 +26,8 @@ List-Id: linux-mediatek@lists.infradead.org
 
 On 05/10/2016 08:13 AM, Boris Brezillon wrote:
 >> +
->> >+void mtk_ecc_disable(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
-> If you save the mode somewhere in mtk_ecc (or just write in both ENC
-> and DEC registers), you won't need this extra config arg here.
-
-ok.
-
+>> >+void mtk_ecc_hw_init(struct mtk_ecc *ecc)
+> No need to expose this function. Make it static and remove the
+> prototype in your header.
 >
->> >+{
->> >+	enum mtk_ecc_codec codec = config->codec;
->> >+
->> >+	mtk_ecc_codec_wait_idle(ecc, codec);
->> >+	writew(0, ecc->regs + ECC_IRQ_REG(codec));
->> >+	writew(ECC_CODEC_DISABLE(codec), ecc->regs + ECC_CTL_REG(codec));
->> >+	up(&ecc->sem);
->> >+}
->> >+EXPORT_SYMBOL(mtk_ecc_disable);
+yes, it was a leftover.
