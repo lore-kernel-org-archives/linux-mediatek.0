@@ -1,16 +1,17 @@
-From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
 Subject: Re: [PATCH v4 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
  NAND
-Date: Tue, 10 May 2016 14:14:13 -0400
-Message-ID: <573224F5.4030003@linaro.org>
+Date: Tue, 10 May 2016 20:19:09 +0200
+Message-ID: <20160510201909.5ee62b48@bbrezillon>
 References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <1461946642-1842-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <20160510141335.442d3d7b@bbrezillon> <5731F5E3.3020607@linaro.org>
+ <573224F5.4030003@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5731F5E3.3020607-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+In-Reply-To: <573224F5.4030003-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,32 +21,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+To: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 05/10/2016 10:53 AM, Jorge Ramirez wrote:
-> On 05/10/2016 08:13 AM, Boris Brezillon wrote:
->>> +
->>> >+void mtk_ecc_disable(struct mtk_ecc *ecc, struct mtk_ecc_config 
->>> *config)
->> If you save the mode somewhere in mtk_ecc (or just write in both ENC
->> and DEC registers), you won't need this extra config arg here.
->
-> ok. 
+On Tue, 10 May 2016 14:14:13 -0400
+Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
 
-actually as I was implementing this change (and it is a simple change to 
-do) I am not sure that it is a good idea to store the state of the 
-engine in the ecc_driver (ie: codec_x active sort of flag). And writing 
-to both set of registers looks ugly to me.
+> On 05/10/2016 10:53 AM, Jorge Ramirez wrote:
+> > On 05/10/2016 08:13 AM, Boris Brezillon wrote:  
+> >>> +  
+> >>> >+void mtk_ecc_disable(struct mtk_ecc *ecc, struct mtk_ecc_config   
+> >>> *config)  
+> >> If you save the mode somewhere in mtk_ecc (or just write in both ENC
+> >> and DEC registers), you won't need this extra config arg here.  
+> >
+> > ok.   
+> 
+> actually as I was implementing this change (and it is a simple change to 
+> do) I am not sure that it is a good idea to store the state of the 
+> engine in the ecc_driver (ie: codec_x active sort of flag). And writing 
+> to both set of registers looks ugly to me.
+> 
+> the way the nand driver is written, it is the nand driver the one that 
+> controls the ecc engine 'states' (init, enable_x,disable_x). Why do we 
+> want the ecc engine to remember that it was running the encoder or the 
+> decoder? I think keeping the parameter in this function makes more 
+> sense, that way the ecc driver itself completely stateless.
+> 
+> however let me see if there is a register I can poke to find out the 
+> active codec (then I could remove the config parameter that you pointed 
+> out without having to store state). I should be able to just read the 
+> ECC control register to determine this.
+> 
+> 
 
-the way the nand driver is written, it is the nand driver the one that 
-controls the ecc engine 'states' (init, enable_x,disable_x). Why do we 
-want the ecc engine to remember that it was running the encoder or the 
-decoder? I think keeping the parameter in this function makes more 
-sense, that way the ecc driver itself completely stateless.
+Ok, that's not so important either. It's just that it's more common to
+have an enable/config() function that takes some argument to let the
+driver know how it should operate and the disable() function that just
+disables everything, no matter what config you previously passed. If
+it's really inconvenient for you, then let's just keep it as it is
+right now. 
 
-however let me see if there is a register I can poke to find out the 
-active codec (then I could remove the config parameter that you pointed 
-out without having to store state). I should be able to just read the 
-ECC control register to determine this.
+-- 
+Boris Brezillon, Free Electrons
+Embedded Linux and Kernel engineering
+http://free-electrons.com
