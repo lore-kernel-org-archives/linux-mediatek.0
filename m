@@ -1,8 +1,8 @@
 From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v4 2/2] mtd: mediatek: driver for MTK Smart Device Gen1
  NAND
-Date: Tue, 10 May 2016 10:50:31 -0400
-Message-ID: <5731F537.9040009@linaro.org>
+Date: Tue, 10 May 2016 10:53:23 -0400
+Message-ID: <5731F5E3.3020607@linaro.org>
 References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <1461946642-1842-3-git-send-email-jorge.ramirez-ortiz@linaro.org>
  <20160510141335.442d3d7b@bbrezillon>
@@ -25,42 +25,20 @@ Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm
 List-Id: linux-mediatek@lists.infradead.org
 
 On 05/10/2016 08:13 AM, Boris Brezillon wrote:
->> +	if (config->codec == ECC_ENC) {
->> >+		/* configure ECC encoder (in bits) */
->> >+		enc_sz = config->enc_len << 3;
->> >+
->> >+		reg = ecc_bit | (config->ecc_mode << ECC_MODE_SHIFT);
->> >+		reg |= (enc_sz << ECC_MS_SHIFT);
->> >+		writel(reg, ecc->regs + ECC_ENCCNFG);
->> >+
->> >+		if (config->ecc_mode != ECC_NFI_MODE)
->> >+			writel(lower_32_bits(config->addr),
->> >+				ecc->regs + ECC_ENCDIADDR);
->> >+
->> >+	} else {
->> >+		/* configure ECC decoder (in bits) */
->> >+		dec_sz = config->dec_len;
->> >+
->> >+		reg = ecc_bit | (config->ecc_mode << ECC_MODE_SHIFT);
->> >+		reg |= (dec_sz << ECC_MS_SHIFT) | DEC_CNFG_CORRECT;
->> >+		reg |= DEC_EMPTY_EN;
->> >+		writel(reg, ecc->regs + ECC_DECCNFG);
->> >+
->> >+		if (config->sec_mask)
->> >+			ecc->sec_mask = 1 << (config->sec_mask - 1);
->> >+	}
-> I see that some of the logic could be shared between the ENC and DEC
-> cases.
+>> +
+>> >+void mtk_ecc_disable(struct mtk_ecc *ecc, struct mtk_ecc_config *config)
+> If you save the mode somewhere in mtk_ecc (or just write in both ENC
+> and DEC registers), you won't need this extra config arg here.
 
-I guess you are referring to
-reg = ecc_bit | (config->ecc_mode << ECC_MODE_SHIFT);
+ok.
 
-ok...
-
-> BTW, why do you multiply enc_len by 8 (bits to byte conversion), but
-> don't do that for dec_len?
 >
-
-just as needed by the hardware:
-the config is in bits, the encoder register requires bytes, the decoder 
-register requires bits.
+>> >+{
+>> >+	enum mtk_ecc_codec codec = config->codec;
+>> >+
+>> >+	mtk_ecc_codec_wait_idle(ecc, codec);
+>> >+	writew(0, ecc->regs + ECC_IRQ_REG(codec));
+>> >+	writew(ECC_CODEC_DISABLE(codec), ecc->regs + ECC_CTL_REG(codec));
+>> >+	up(&ecc->sem);
+>> >+}
+>> >+EXPORT_SYMBOL(mtk_ecc_disable);
