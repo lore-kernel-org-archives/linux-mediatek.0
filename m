@@ -1,172 +1,85 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 4/5] iommu/mediatek: add support for mtk iommu generation
- one HW
-Date: Tue, 10 May 2016 11:28:40 +0100
-Message-ID: <5731B7D8.8040304@arm.com>
-References: <1462780816-5288-1-git-send-email-honghui.zhang@mediatek.com>
- <1462780816-5288-5-git-send-email-honghui.zhang@mediatek.com>
+From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] mtd: mediatek: device tree docs for MTK Smart
+ Device Gen1 NAND
+Date: Tue, 10 May 2016 07:57:25 -0400
+Message-ID: <5731CCA5.5070603@linaro.org>
+References: <1461946642-1842-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <1461946642-1842-2-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <20160506153816.7ca581ac@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462780816-5288-5-git-send-email-honghui.zhang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: honghui.zhang@mediatek.com, joro@8bytes.org, treding@nvidia.com, mark.rutland@arm.com, matthias.bgg@gmail.com
-Cc: catalin.marinas@arm.com, will.deacon@arm.com, youlin.pei@mediatek.com, yingjoe.chen@mediatek.com, devicetree@vger.kernel.org, kendrick.hsu@mediatek.com, kernel@pengutronix.de, arnd@arndb.de, tfiga@google.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org, pebolle@tiscali.nl, srv_heupstream@mediatek.com, erin.lo@mediatek.com, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, djkurtz@google.com, p.zabel@pengutronix.de, l.stach@pengutronix.de
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160506153816.7ca581ac@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/05/16 09:00, honghui.zhang@mediatek.com wrote:
-[...]
-> +static void *mtk_iommu_alloc_pgt(struct device *dev, size_t size, gfp_t gfp)
-> +{
-> +	dma_addr_t dma;
-> +	void *pages = alloc_pages_exact(size, gfp | __GFP_ZERO);
-> +
-> +	if (!pages)
-> +		return NULL;
-> +
-> +	dma = dma_map_single(dev, pages, size, DMA_TO_DEVICE);
-> +	if (dma_mapping_error(dev, dma))
-> +		goto out_free;
-> +	/*
-> +	 * We depend on the IOMMU being able to work with any physical
-> +	 * address directly, so if the DMA layer suggests otherwise by
-> +	 * translating or truncating them, that bodes very badly...
-> +	 */
-> +	if (dma != virt_to_phys(pages))
-> +		goto out_unmap;
+On 05/06/2016 09:38 AM, Boris Brezillon wrote:
+> Hi Jorge,
+>
+> On Fri, 29 Apr 2016 12:17:21 -0400
+> Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+>
+>> This patch adds documentation support for Smart Device Gen1 type of
+>> NAND controllers.
+>>
+>> Signed-off-by: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+>> ---
+>>   Documentation/devicetree/bindings/mtd/mtk-nand.txt | 161 +++++++++++++++++++++
+>>   1 file changed, 161 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+>>
+>> diff --git a/Documentation/devicetree/bindings/mtd/mtk-nand.txt b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+>> new file mode 100644
+>> index 0000000..175767d
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/mtd/mtk-nand.txt
+> [...]
+>
+>> +
+>> +Children nodes properties:
+>> +- reg:			Chip Select Signal, default 0.
+>> +			Set as reg = <0>, <1> when need 2 CS.
+>> +Optional:
+>> +- nand-on-flash-bbt:	Store BBT on NAND Flash.
+>> +- nand-ecc-mode:	the NAND ecc mode (check driver for supported modes)
+>> +- nand-ecc-step-size:	Number of data bytes covered by a single ECC step.
+>> +			The controller only supports 512 and 1024.
+>> +			For large page NANDs ther recommended value is 1024.
+>> +- nand-ecc-strength:	Number of bits to correct per ECC step.
+>> +			The valid values that the controller supports are: 4, 6,
+>> +			8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32, 36, 40, 44,
+>> +			48, 52, 56, 60.
+>> +			The strength should be calculated as follows:
+>> +			E = (S - F) * 8 / 14
+>> +			S = O / (P / Q)
+>> +				E :nand-ecc-strength;
+>> +				S :spare size per sector;
+>> +				F : FDM size, should be in the range [1,8].
+>> +				    It is used to store free oob data.
+>> +				O : oob size;
+>> +				P : page size;
+>> +				Q :nand-ecc-step-size
+>> +			If the result does not match any one of the listed
+>> +			choices above, please select the smaller valid value from
+>> +			the list.
+>> +			(otherwise the driver will do the clamping at runtime).
+>> +- vmch-supply:		NAND power supply.
+> Where is this supply name coming from? I most datasheets I see Vdd or
+> Vcc, but nothing close to Vmch.
+>
+>
+>
 
-Given that you've only got a single table to allocate, and at 4MB it has 
-a fair chance of failing beyond early boot time, just use 
-dma_alloc_coherent() - you don't need to care about the dma <-> phys 
-relationship because you don't have multi-level tables to walk. That 
-way, you can get rid of all the awkward streaming DMA stuff, and also 
-benefit from CMA to avoid allocation failures.
-
-> +	kmemleak_ignore(pages);
-> +	return pages;
-> +
-> +out_unmap:
-> +	dev_err(dev, "Cannot accommodate DMA translation for IOMMU page tables\n");
-> +	dma_unmap_single(dev, dma, size, DMA_TO_DEVICE);
-> +out_free:
-> +	free_pages_exact(pages, size);
-> +	return NULL;
-> +
-> +}
-> +
-> +static void mtk_iommu_free_pgt(struct device *dev, void *pages, size_t size)
-> +{
-> +	dma_unmap_single(dev, (dma_addr_t)virt_to_phys(pages),
-> +			 size, DMA_TO_DEVICE);
-> +	free_pages_exact(pages, size);
-> +}
-> +
-> +static int mtk_iommu_domain_finalise(struct mtk_iommu_data *data)
-> +{
-> +	struct mtk_iommu_domain *dom = data->m4u_dom;
-> +
-> +	spin_lock_init(&dom->pgtlock);
-> +
-> +	dom->pgt_va = mtk_iommu_alloc_pgt(data->dev,
-> +				dom->pgt_size, GFP_KERNEL);
-> +	if (!dom->pgt_va)
-> +		return -ENOMEM;
-> +
-> +	dom->pgt_pa = virt_to_phys(dom->pgt_va);
-> +
-> +	writel(dom->pgt_pa, data->base + REG_MMU_PT_BASE_ADDR);
-> +
-> +	dom->cookie = (void *)data;
-> +
-> +	return 0;
-> +}
-> +
-> +static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
-> +{
-> +	struct mtk_iommu_domain *dom;
-> +
-> +	if (type != IOMMU_DOMAIN_UNMANAGED)
-> +		return NULL;
-> +
-> +	dom = kzalloc(sizeof(*dom), GFP_KERNEL);
-> +	if (!dom)
-> +		return NULL;
-> +
-> +	/*
-> +	 * MTK m4u support 4GB iova address space, and oly support 4K page
-> +	 * mapping. So the pagetable size should be exactly as 4M.
-> +	 */
-> +	dom->pgt_size = SZ_4M;
-
-If the table size is fixed, then why bother having a variable at all?
-
-> +	return &dom->domain;
-> +}
-> +
-> +static void mtk_iommu_domain_free(struct iommu_domain *domain)
-> +{
-> +	kfree(to_mtk_domain(domain));
-> +}
-> +
-
-[...]
-
-> +static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
-> +			 phys_addr_t paddr, size_t size, int prot)
-> +{
-> +	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-> +	struct mtk_iommu_data *data = dom->cookie;
-> +	unsigned int page_num = size >> MTK_IOMMU_PAGE_SHIFT;
-
-Since you only advertise a single page size, this will always be 1, so 
-you could either get rid of the loop here...
-
-> +	unsigned long flags;
-> +	unsigned int i;
-> +	u32 *pgt_base_iova;
-> +	u32 pabase = (u32)paddr;
-> +	int map_size = 0;
-> +
-> +	spin_lock_irqsave(&dom->pgtlock, flags);
-> +	pgt_base_iova = dom->pgt_va + (iova  >> MTK_IOMMU_PAGE_SHIFT);
-> +	for (i = 0; i < page_num; i++) {
-> +		pgt_base_iova[i] = pabase | F_DESC_VALID | F_DESC_NONSEC;
-> +		pabase += MTK_IOMMU_PAGE_SIZE;
-> +		map_size += MTK_IOMMU_PAGE_SIZE;
-> +	}
-> +	dma_sync_single_for_device(data->dev,
-> +			dom->pgt_pa + (iova >> MTK_IOMMU_PAGE_SHIFT),
-> +			(size >> MTK_IOMMU_PAGE_SHIFT) * sizeof(u32),
-> +			DMA_TO_DEVICE);
-> +	spin_unlock_irqrestore(&dom->pgtlock, flags);
-> +
-> +	mtk_iommu_tlb_flush_range(data, iova, size);
-> +
-> +	return map_size;
-> +}
-
-[...]
-
-> +static struct iommu_ops mtk_iommu_ops = {
-> +	.domain_alloc	= mtk_iommu_domain_alloc,
-> +	.domain_free	= mtk_iommu_domain_free,
-> +	.attach_dev	= mtk_iommu_attach_device,
-> +	.detach_dev	= mtk_iommu_detach_device,
-> +	.map		= mtk_iommu_map,
-> +	.unmap		= mtk_iommu_unmap,
-> +	.map_sg		= default_iommu_map_sg,
-> +	.iova_to_phys	= mtk_iommu_iova_to_phys,
-> +	.add_device	= mtk_iommu_add_device,
-> +	.remove_device	= mtk_iommu_remove_device,
-> +	.device_group	= mtk_iommu_device_group,
-> +	.pgsize_bitmap	= MTK_IOMMU_PAGE_SIZE,
-> +};
-
-...or perhaps advertise .pgsize_bitmap = ~0UL << MTK_IOMMU_PAGE_SHIFT 
-here, so you actually can handle multiple entries at once for larger 
-mappings - given how simple the page table format is that doesn't seem 
-too unreasonable, especially since it should give you a big efficiency 
-win in terms of TLB maintenance.
-
-Robin.
+um yes we are removing this since we dont use it (it is the NAND vcc on 
+some other MTK platform to do power management via regulator).
