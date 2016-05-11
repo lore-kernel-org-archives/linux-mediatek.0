@@ -1,182 +1,28 @@
-From: zengzhaoxiu@163.com
-Subject: [patch V4 00/31] bitops: add parity functions
-Date: Wed, 11 May 2016 16:25:58 +0800
-Message-ID: <1462955158-28394-1-git-send-email-zengzhaoxiu@163.com>
-Return-path: <linux-mips-bounce@linux-mips.org>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: akpm@linux-foundation.org, linux@horizon.com, bp@suse.de, ulrik.debie-os@e2big.org, sam@ravnborg.org, davem@davemloft.net, ddaney.cavm@gmail.com, joe@perches.com, computersforpeace@gmail.com
-Cc: linux-kernel@vger.kernel.org, linux-arch@vger.kernel.org, linux-alpha@vger.kernel.org, adi-buildroot-devel@lists.sourceforge.net, linux-ia64@vger.kernel.org, linux-mips@linux-mips.org, linux-am33-list@redhat.com, linuxppc-dev@lists.ozlabs.org, sparclinux@vger.kernel.org, qat-linux@intel.com, linux-crypto@vger.kernel.org, linux-edac@vger.kernel.org, linux-media@vger.kernel.org, linux-mtd@lists.infradead.org, netdev@vger.kernel.org, linux-scsi@vger.kernel.org, linux-nfs@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhaoxiu Zeng <zhaoxiu.zeng@gmail.com>
+From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Add support for regulator operation mode of mt6397
+Date: Wed, 11 May 2016 17:12:07 +0800
+Message-ID: <1462957929-20105-1-git-send-email-henryc.chen@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Zhaoxiu Zeng <zhaoxiu.zeng@gmail.com>
+Some regulators support different operating modes, but there is no suitable
+property that can pass the opeation mode constraints on runtime at present.
 
-When I do "grep parity -r linux", I found many parity calculations
-distributed in many drivers.
+This series making the change to specify supported modes as a devicetree list.
+Consumers can change or get the regulator operation mode by regulator_set_mode
+/regulator_get_mode and define the support operating mode on devicetree.
 
-This patch series does:
-  1. provide generic and architecture-specific parity calculations
-  2. remove drivers' local parity calculations, use bitops' parity
-     functions instead
-  3. replace "hweightN(x) & 1" with "parityN(x)" to improve readability,
-     and improve performance on some CPUs that without popcount support
+There is a requirement from SVS driver. SVS calibartion requires that the
+regulator be in its low-noise (pwm mode) state at boot, but at all other times
+it can be normal mode for power saving.
+http://www.spinics.net/lists/devicetree/msg111204.html
 
-I did not use GCC's __builtin_parity* functions, based on the following reasons:
-  1. I don't know where to identify which version of GCC from the beginning
-     supported __builtin_parity for the architecture.
-  2. For the architecture that doesn't has popcount instruction, GCC instead use
-     "call __paritysi2" (__paritydi2 for 64-bits). So if use __builtin_parity, we must
-     provide __paritysi2 and __paritydi2 functions for these architectures.
-     Additionally, parity4,8,16 might be "__builtin_parity(x & mask)", but the "& mask"
-     operation is totally unnecessary.
-  3. For the architecture that has popcount instruction, we do the same things as GCC.
-  4. For powerpc, sparc, and x86, we do runtime patching to use popcount instruction
-     if the CPU support.
-
-I have compiled successfully with x86_64_defconfig, i386_defconfig, pseries_defconfig
-and sparc64_defconfig.
-
-Changes to V3:
-- Remove "odd" and "even" from documents. The function parityN returns whether an odd
-  or even number of bits are on in a N-bit word, does not involve the definition of
-  odd/even parity. Is it an odd or even parity checking, depends on the caller's context.
-- Replace "hweightN(x) % 2" with "parityN(x)" in crypto/sahara.c and edac/amd64_edac.c
-- Use PARITY_MAGIC instead of 0x6996 in powerpc's parity_64.S
-- Use PARITY_MAGIC instead of 0x6996 in sparc's parity.S
-- Pick up ACKs
-
-Changes to v2:
-- X86, remove custom calling convention, use inline asm
-- Add constant PARITY_MAGIC (proposals by Sam Ravnborg)
-- Add include/asm-generic/bitops/popc-parity.h (proposals by Chris Metcalf)
-- Tile uses popc-parity.h directly
-- Mips uses popc-parity.h if has usable __builtin_popcount
-- Add few comments in powerpc's and sparc's parity.S
-
-Changes to v1:
-- Add runtime patching for powerpc, sparc, and x86
-- Avr32 use grenric parity too
-- Fix error in ssfdc's patch, and add commit message
-- Don't change the original code composition of adxrs450.c
-- Directly assignement to phy_cap.parity in drivers/scsi/isci/phy.c
-
-Regards,
-
-=== diffstat ===
-
-Zhaoxiu Zeng (31):
-  bitops: add parity functions
-  bitops: Include generic parity.h in some architectures' bitops.h
-  bitops: Add alpha-specific parity functions
-  bitops: Add blackfin-specific parity functions
-  bitops: Add ia-specific parity functions
-  bitops: Tile and MIPS (if has usable __builtin_popcount) use popcount
-    parity functions
-  bitops: Add powerpc-specific parity functions
-  bitops: Add sparc-specific parity functions
-  bitops: Add x86-specific parity functions
-  sunrpc: use parity8
-  mips: use parity functions in cerr-sb1.c
-  lib: bch: use parity32
-  media: use parity8 in vivid-vbi-gen.c
-  media: use parity functions in saa7115
-  input: use parity32 in grip_mp
-  input: use parity64 in sidewinder
-  input: use parity16 in ams_delta_serio
-  scsi: use parity32 in isci's phy
-  mtd: use parity16 in ssfdc
-  mtd: use parity functions in inftlcore
-  crypto: use parity functions in qat_hal
-  mtd: use parity16 in sm_ftl
-  ethernet: use parity8 in sun/niu.c
-  input: use parity8 in pcips2
-  input: use parity8 in sa1111ps2
-  iio: use parity32 in adxrs450
-  serial: use parity32 in max3100
-  input: use parity8 in elantech
-  ethernet: use parity8 in broadcom/tg3.c
-  crypto: use parity_long is sahara.c
-  edac: use parity8 in amd64_edac.c
-
- arch/alpha/include/asm/bitops.h              |  27 +++++
- arch/arc/include/asm/bitops.h                |   1 +
- arch/arm/include/asm/bitops.h                |   1 +
- arch/arm64/include/asm/bitops.h              |   1 +
- arch/avr32/include/asm/bitops.h              |   1 +
- arch/blackfin/include/asm/bitops.h           |  31 ++++++
- arch/c6x/include/asm/bitops.h                |   1 +
- arch/cris/include/asm/bitops.h               |   1 +
- arch/frv/include/asm/bitops.h                |   1 +
- arch/h8300/include/asm/bitops.h              |   1 +
- arch/hexagon/include/asm/bitops.h            |   1 +
- arch/ia64/include/asm/bitops.h               |  31 ++++++
- arch/m32r/include/asm/bitops.h               |   1 +
- arch/m68k/include/asm/bitops.h               |   1 +
- arch/metag/include/asm/bitops.h              |   1 +
- arch/mips/include/asm/bitops.h               |   7 ++
- arch/mips/mm/cerr-sb1.c                      |  67 ++++---------
- arch/mn10300/include/asm/bitops.h            |   1 +
- arch/openrisc/include/asm/bitops.h           |   1 +
- arch/parisc/include/asm/bitops.h             |   1 +
- arch/powerpc/include/asm/bitops.h            |  11 +++
- arch/powerpc/lib/Makefile                    |   2 +-
- arch/powerpc/lib/parity_64.S                 | 143 +++++++++++++++++++++++++++
- arch/powerpc/lib/ppc_ksyms.c                 |   5 +
- arch/s390/include/asm/bitops.h               |   1 +
- arch/sh/include/asm/bitops.h                 |   1 +
- arch/sparc/include/asm/bitops_32.h           |   1 +
- arch/sparc/include/asm/bitops_64.h           |  18 ++++
- arch/sparc/kernel/sparc_ksyms_64.c           |   6 ++
- arch/sparc/lib/Makefile                      |   2 +-
- arch/sparc/lib/parity.S                      | 129 ++++++++++++++++++++++++
- arch/tile/include/asm/bitops.h               |   2 +
- arch/x86/include/asm/arch_hweight.h          |   5 +
- arch/x86/include/asm/arch_parity.h           | 117 ++++++++++++++++++++++
- arch/x86/include/asm/bitops.h                |   4 +-
- arch/xtensa/include/asm/bitops.h             |   1 +
- drivers/crypto/qat/qat_common/qat_hal.c      |  32 ++----
- drivers/crypto/sahara.c                      |   2 +-
- drivers/edac/amd64_edac.c                    |   2 +-
- drivers/iio/gyro/adxrs450.c                  |   4 +-
- drivers/input/joystick/grip_mp.c             |  16 +--
- drivers/input/joystick/sidewinder.c          |  24 +----
- drivers/input/mouse/elantech.c               |  10 +-
- drivers/input/mouse/elantech.h               |   1 -
- drivers/input/serio/ams_delta_serio.c        |   8 +-
- drivers/input/serio/pcips2.c                 |   2 +-
- drivers/input/serio/sa1111ps2.c              |   2 +-
- drivers/media/i2c/saa7115.c                  |  17 +---
- drivers/media/platform/vivid/vivid-vbi-gen.c |   9 +-
- drivers/mtd/inftlcore.c                      |  17 +---
- drivers/mtd/sm_ftl.c                         |   5 +-
- drivers/mtd/ssfdc.c                          |  31 ++----
- drivers/net/ethernet/broadcom/tg3.c          |   6 +-
- drivers/net/ethernet/sun/niu.c               |  10 +-
- drivers/scsi/isci/phy.c                      |  15 +--
- drivers/tty/serial/max3100.c                 |   2 +-
- include/asm-generic/bitops.h                 |   1 +
- include/asm-generic/bitops/arch_parity.h     |  39 ++++++++
- include/asm-generic/bitops/const_parity.h    |  36 +++++++
- include/asm-generic/bitops/parity.h          |   7 ++
- include/asm-generic/bitops/popc-parity.h     |  32 ++++++
- include/linux/bitops.h                       |  10 ++
- lib/bch.c                                    |  14 +--
- net/sunrpc/auth_gss/gss_krb5_keys.c          |   6 +-
- 64 files changed, 749 insertions(+), 237 deletions(-)
- create mode 100644 arch/powerpc/lib/parity_64.S
- create mode 100644 arch/sparc/lib/parity.S
- create mode 100644 arch/x86/include/asm/arch_parity.h
- create mode 100644 include/asm-generic/bitops/arch_parity.h
- create mode 100644 include/asm-generic/bitops/const_parity.h
- create mode 100644 include/asm-generic/bitops/parity.h
- create mode 100644 include/asm-generic/bitops/popc-parity.h
-
--- 
-2.7.4
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
