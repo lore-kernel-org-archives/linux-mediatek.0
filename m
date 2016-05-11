@@ -1,32 +1,54 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 6/6] pinctrl: mt8173: set GPIO16 to usb iddig mode
-Date: Wed, 11 May 2016 13:56:11 +0200
-Message-ID: <CACRpkdaeD5mk7LXEWnE0=Xute8-JA-fa4tVt4fYhujEXeq2+9w@mail.gmail.com>
-References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
-	<1462868614-20602-7-git-send-email-chunfeng.yun@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] drm: mediatek: add COMMON_CLK dependency
+Date: Wed, 11 May 2016 14:34:22 +0200
+Message-ID: <1462970100-240687-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1462868614-20602-7-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Maoguang Meng <maoguang.meng@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Biao Huang <biao.huang@mediatek.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>l
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, May 10, 2016 at 10:23 AM, Chunfeng Yun
-<chunfeng.yun@mediatek.com> wrote:
-
-> the default mode of GPIO16 pin is gpio, when set EINT16 to
-> IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
-> fixed when set its default mode as usb iddig.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-
-This looks like it can be merged orthogonally to all the
-other patches, but I don't understand the patch or if it
-is correct.
-
-Hongzhou/Yingjoe, can either of you review this patch?
-
-Yours,
-Linus Walleij
+T24ga2VybmVsIGJ1aWxkcyB3aXRob3V0IENPTU1PTl9DTEssIHRoZSBuZXdseSBhZGRlZCBtZWRp
+YXRlayBkcm0KZHJpdmVyIGZhaWxzIHRvIGJ1aWxkOgoKZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19taXBpX3R4LmM6MTMwOjE2OiBlcnJvcjogZmllbGQgJ3BsbF9odycgaGFzIGluY29tcGxl
+dGUgdHlwZQogIHN0cnVjdCBjbGtfaHcgcGxsX2h3OwogICAgICAgICAgICAgICAgXn5+fn5+Cklu
+IGZpbGUgaW5jbHVkZWQgZnJvbSAuLi9pbmNsdWRlL2xpbnV4L2Nsay5oOjE2OjAsCiAgICAgICAg
+ICAgICAgICAgZnJvbSAuLi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYzox
+NDoKZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmM6IEluIGZ1bmN0aW9uICdt
+dGtfbWlwaV90eF9mcm9tX2Nsa19odyc6CmluY2x1ZGUvbGludXgva2VybmVsLmg6ODMxOjQ4OiBl
+cnJvcjogaW5pdGlhbGl6YXRpb24gZnJvbSBpbmNvbXBhdGlibGUgcG9pbnRlciB0eXBlIFstV2Vy
+cm9yPWluY29tcGF0aWJsZS1wb2ludGVyLXR5cGVzXQogIGNvbnN0IHR5cGVvZiggKCh0eXBlICop
+MCktPm1lbWJlciApICpfX21wdHIgPSAocHRyKTsgXAogICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBeCi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21p
+cGlfdHguYzoxMzY6OTogbm90ZTogaW4gZXhwYW5zaW9uIG9mIG1hY3JvICdjb250YWluZXJfb2Yn
+CiAgcmV0dXJuIGNvbnRhaW5lcl9vZihodywgc3RydWN0IG10a19taXBpX3R4LCBwbGxfaHcpOwog
+ICAgICAgICBefn5+fn5+fn5+fn4KZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4
+LmM6IEF0IHRvcCBsZXZlbDoKZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmM6
+MzAyOjIxOiBlcnJvcjogdmFyaWFibGUgJ210a19taXBpX3R4X3BsbF9vcHMnIGhhcyBpbml0aWFs
+aXplciBidXQgaW5jb21wbGV0ZSB0eXBlCiBzdGF0aWMgY29uc3Qgc3RydWN0IGNsa19vcHMgbXRr
+X21pcGlfdHhfcGxsX29wcyA9IHsKClRoaXMgYWRkcyB0aGUgcmVxdWlyZWQgS2NvbmZpZyBkZXBl
+bmRlbmN5LgoKU2lnbmVkLW9mZi1ieTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KLS0t
+CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZyB8IDEgKwogMSBmaWxlIGNoYW5nZWQs
+IDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
+b25maWcgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZwppbmRleCBlZWVmYzk3MTgw
+MWEuLjBjMDZhNjlkN2YwNCAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
+b25maWcKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcKQEAgLTIsNiArMiw3
+IEBAIGNvbmZpZyBEUk1fTUVESUFURUsKIAl0cmlzdGF0ZSAiRFJNIFN1cHBvcnQgZm9yIE1lZGlh
+dGVrIFNvQ3MiCiAJZGVwZW5kcyBvbiBEUk0KIAlkZXBlbmRzIG9uIEFSQ0hfTUVESUFURUsgfHwg
+KEFSTSAmJiBDT01QSUxFX1RFU1QpCisJZGVwZW5kcyBvbiBDT01NT05fQ0xLCiAJc2VsZWN0IERS
+TV9HRU1fQ01BX0hFTFBFUgogCXNlbGVjdCBEUk1fS01TX0hFTFBFUgogCXNlbGVjdCBEUk1fTUlQ
+SV9EU0kKLS0gCjIuNy4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
