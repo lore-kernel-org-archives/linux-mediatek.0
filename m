@@ -1,90 +1,348 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v7 7/9] clk: mediatek: Enable critical clocks for MT2701
-Date: Wed, 11 May 2016 10:51:29 +0800
-Message-ID: <1462935089.28773.11.camel@mtksdaap41>
-References: <1460621514-65191-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1460621514-65191-8-git-send-email-jamesjj.liao@mediatek.com>
-	 <20160506231229.GJ3492@codeaurora.org> <1462772426.5344.7.camel@mtksdaap41>
-	 <20160509221321.GT3492@codeaurora.org>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH] mmc: mmc: do not use CMD13 to get status after speed mode
+ switch
+Date: Wed, 11 May 2016 10:50:22 +0300
+Message-ID: <5732E43E.8070800@intel.com>
+References: <1462344872-6448-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160509221321.GT3492@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>, Lee Jones <lee.jones@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1462344872-6448-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stephen, Mike, Lee,
-
-On Mon, 2016-05-09 at 15:13 -0700, Stephen Boyd wrote:
-> On 05/09, James Liao wrote:
-> > Hi Stephen,
-> > 
-> > On Fri, 2016-05-06 at 16:12 -0700, Stephen Boyd wrote:
-> > > On 04/14, James Liao wrote:
-> > > > Some system clocks should be turned on by default on MT2701.
-> > > > This patch enable these clocks when related clocks have
-> > > > been registered.
-> > > > 
-> > > > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > > > ---
-> > > 
-> > > critical clks got merged now (sorry I'm slowly getting back to
-> > > looking at patches). Please use that flag.
-> > 
-> > I don't see critical clock support in v4.6-rc7. Is there a repo/branch
-> > that has critical clocks merged?
-> > 
+On 04/05/16 09:54, Chaotian Jing wrote:
+> Per JEDEC spec, it is not recommended to use CMD13 to get card status
+> after speed mode switch. below are two reason about this:
+> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
+> Therefore it is not recommended to use CMD13 to check busy completion
+> of the timing change indication.
+> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
+> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
 > 
-> Right, it's in clk-next in the clk tree.
+> this patch drops CMD13 when doing speed mode switch, if host do not
+> support MMC_CAP_WAIT_WHILE_BUSY and there is no ops->card_busy(),
+> then the only way is to wait a fixed timeout.
 
-I got the latest code from clk-next and tried to use CLK_IS_CRITICAL fro
-critical clocks. But There is something wrong with CLK_IS_CRITICAL. For
-example, if we set vdec_sel as a critical clock, we'll get the following
-result:
+This looks like it should be 3 patches:
+	1. Change __mmc_switch
+	2. Change HS200 and HS400 selection
+	3. Change HS selection
 
-    vdecpll                               0            0
-       vdecpll_ck                         1            1
-          vdec_sel                        1            1
+However there is another problem: card_busy is not the same as busy signal -
+see below.  So that needs to be sorted out first.
 
-vdec_sel and vdecpll_ck are TOPCKGEN clocks. vdecpll is a APMIXEDSYS
-PLL, which will be registered after TOPCKGEN clocks. The prepare and
-enable count are incorrect in this case.
+> 
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/core/mmc.c     |   82 ++++++++++++++++----------------------------
+>  drivers/mmc/core/mmc_ops.c |   25 +++++++++-----
+>  2 files changed, 45 insertions(+), 62 deletions(-)
+> 
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 4dbe3df..03ee7a4 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -962,7 +962,7 @@ static int mmc_select_hs(struct mmc_card *card)
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>  			   EXT_CSD_HS_TIMING, EXT_CSD_TIMING_HS,
+>  			   card->ext_csd.generic_cmd6_time,
+> -			   true, true, true);
+> +			   true, false, true);
 
-We may need to prepare/enable a parent clock if an enabled orphan clock
-re-parent to it. I tried the following modification and it can resolve
-this issue. But I'm not sure it's a correct place to enable parent
-clcoks. May I have your comment on this?
+If you are going to do that, then you still need to do mmc_switch_status(card).
 
-------------------------------------------------------------
-diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-index ce39add..db1bc3a 100644
---- a/drivers/clk/clk.c
-+++ b/drivers/clk/clk.c
-@@ -2388,8 +2388,15 @@ static int __clk_core_init(struct clk_core *core)
-        hlist_for_each_entry_safe(orphan, tmp2, &clk_orphan_list,
-child_node) {
-                struct clk_core *parent = __clk_init_parent(orphan);
+But we have done CMD13 polling for HS for a long time, so this should be a
+separate patch and separately justified.  Maybe we should still poll if
+!(host->caps & MMC_CAP_WAIT_WHILE_BUSY) && !host->ops->card_busy.
 
--               if (parent)
-+               if (parent) {
-                        clk_core_reparent(orphan, parent);
-+
-+                       if (orphan->prepare_count)
-+                               clk_core_prepare(parent);
-+
-+                       if (orphan->enable_count )
-+                               clk_core_enable(parent);
-+               }
-        }
+>  	if (!err)
+>  		mmc_set_timing(card->host, MMC_TIMING_MMC_HS);
+>  
+> @@ -1056,7 +1056,6 @@ static int mmc_switch_status(struct mmc_card *card)
+>  static int mmc_select_hs400(struct mmc_card *card)
+>  {
+>  	struct mmc_host *host = card->host;
+> -	bool send_status = true;
+>  	unsigned int max_dtr;
+>  	int err = 0;
+>  	u8 val;
+> @@ -1068,9 +1067,6 @@ static int mmc_select_hs400(struct mmc_card *card)
+>  	      host->ios.bus_width == MMC_BUS_WIDTH_8))
+>  		return 0;
+>  
+> -	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
+> -		send_status = false;
+> -
+>  	/* Reduce frequency to HS frequency */
+>  	max_dtr = card->ext_csd.hs_max_dtr;
+>  	mmc_set_clock(host, max_dtr);
+> @@ -1080,7 +1076,7 @@ static int mmc_select_hs400(struct mmc_card *card)
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>  			   EXT_CSD_HS_TIMING, val,
+>  			   card->ext_csd.generic_cmd6_time,
+> -			   true, send_status, true);
+> +			   true, false, true);
+>  	if (err) {
+>  		pr_err("%s: switch to high-speed from hs200 failed, err:%d\n",
+>  			mmc_hostname(host), err);
+> @@ -1090,11 +1086,9 @@ static int mmc_select_hs400(struct mmc_card *card)
+>  	/* Set host controller to HS timing */
+>  	mmc_set_timing(card->host, MMC_TIMING_MMC_HS);
+>  
+> -	if (!send_status) {
+> -		err = mmc_switch_status(card);
+> -		if (err)
+> -			goto out_err;
+> -	}
+> +	err = mmc_switch_status(card);
+> +	if (err)
+> +		goto out_err;
+>  
+>  	/* Switch card to DDR */
+>  	err = mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+> @@ -1113,7 +1107,7 @@ static int mmc_select_hs400(struct mmc_card *card)
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>  			   EXT_CSD_HS_TIMING, val,
+>  			   card->ext_csd.generic_cmd6_time,
+> -			   true, send_status, true);
+> +			   true, false, true);
+>  	if (err) {
+>  		pr_err("%s: switch to hs400 failed, err:%d\n",
+>  			 mmc_hostname(host), err);
+> @@ -1124,11 +1118,9 @@ static int mmc_select_hs400(struct mmc_card *card)
+>  	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
+>  	mmc_set_bus_speed(card);
+>  
+> -	if (!send_status) {
+> -		err = mmc_switch_status(card);
+> -		if (err)
+> -			goto out_err;
+> -	}
+> +	err = mmc_switch_status(card);
+> +	if (err)
+> +		goto out_err;
+>  
+>  	return 0;
+>  
+> @@ -1146,14 +1138,10 @@ int mmc_hs200_to_hs400(struct mmc_card *card)
+>  int mmc_hs400_to_hs200(struct mmc_card *card)
+>  {
+>  	struct mmc_host *host = card->host;
+> -	bool send_status = true;
+>  	unsigned int max_dtr;
+>  	int err;
+>  	u8 val;
+>  
+> -	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
+> -		send_status = false;
+> -
+>  	/* Reduce frequency to HS */
+>  	max_dtr = card->ext_csd.hs_max_dtr;
+>  	mmc_set_clock(host, max_dtr);
+> @@ -1162,49 +1150,43 @@ int mmc_hs400_to_hs200(struct mmc_card *card)
+>  	val = EXT_CSD_TIMING_HS;
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
+>  			   val, card->ext_csd.generic_cmd6_time,
+> -			   true, send_status, true);
+> +			   true, false, true);
+>  	if (err)
+>  		goto out_err;
+>  
+>  	mmc_set_timing(host, MMC_TIMING_MMC_DDR52);
+>  
+> -	if (!send_status) {
+> -		err = mmc_switch_status(card);
+> -		if (err)
+> -			goto out_err;
+> -	}
+> +	err = mmc_switch_status(card);
+> +	if (err)
+> +		goto out_err;
+>  
+>  	/* Switch HS DDR to HS */
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_BUS_WIDTH,
+>  			   EXT_CSD_BUS_WIDTH_8, card->ext_csd.generic_cmd6_time,
+> -			   true, send_status, true);
+> +			   true, false, true);
+>  	if (err)
+>  		goto out_err;
+>  
+>  	mmc_set_timing(host, MMC_TIMING_MMC_HS);
+>  
+> -	if (!send_status) {
+> -		err = mmc_switch_status(card);
+> -		if (err)
+> -			goto out_err;
+> -	}
+> +	err = mmc_switch_status(card);
+> +	if (err)
+> +		goto out_err;
+>  
+>  	/* Switch HS to HS200 */
+>  	val = EXT_CSD_TIMING_HS200 |
+>  	      card->drive_strength << EXT_CSD_DRV_STR_SHIFT;
+>  	err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL, EXT_CSD_HS_TIMING,
+>  			   val, card->ext_csd.generic_cmd6_time, true,
+> -			   send_status, true);
+> +			   false, true);
+>  	if (err)
+>  		goto out_err;
+>  
+>  	mmc_set_timing(host, MMC_TIMING_MMC_HS200);
+>  
+> -	if (!send_status) {
+> -		err = mmc_switch_status(card);
+> -		if (err)
+> -			goto out_err;
+> -	}
+> +	err = mmc_switch_status(card);
+> +	if (err)
+> +		goto out_err;
+>  
+>  	mmc_set_bus_speed(card);
+>  
+> @@ -1243,7 +1225,6 @@ static void mmc_select_driver_type(struct mmc_card *card)
+>  static int mmc_select_hs200(struct mmc_card *card)
+>  {
+>  	struct mmc_host *host = card->host;
+> -	bool send_status = true;
+>  	unsigned int old_timing;
+>  	int err = -EINVAL;
+>  	u8 val;
+> @@ -1260,9 +1241,6 @@ static int mmc_select_hs200(struct mmc_card *card)
+>  
+>  	mmc_select_driver_type(card);
+>  
+> -	if (host->caps & MMC_CAP_WAIT_WHILE_BUSY)
+> -		send_status = false;
+> -
+>  	/*
+>  	 * Set the bus width(4 or 8) with host's support and
+>  	 * switch to HS200 mode if bus width is set successfully.
+> @@ -1274,20 +1252,18 @@ static int mmc_select_hs200(struct mmc_card *card)
+>  		err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
+>  				   EXT_CSD_HS_TIMING, val,
+>  				   card->ext_csd.generic_cmd6_time,
+> -				   true, send_status, true);
+> +				   true, false, true);
+>  		if (err)
+>  			goto err;
+>  		old_timing = host->ios.timing;
+>  		mmc_set_timing(host, MMC_TIMING_MMC_HS200);
+> -		if (!send_status) {
+> -			err = mmc_switch_status(card);
+> -			/*
+> -			 * mmc_select_timing() assumes timing has not changed if
+> -			 * it is a switch error.
+> -			 */
+> -			if (err == -EBADMSG)
+> -				mmc_set_timing(host, old_timing);
+> -		}
+> +		err = mmc_switch_status(card);
+> +		/*
+> +		 * mmc_select_timing() assumes timing has not changed if
+> +		 * it is a switch error.
+> +		 */
+> +		if (err == -EBADMSG)
+> +			mmc_set_timing(host, old_timing);
+>  	}
+>  err:
+>  	if (err)
+> diff --git a/drivers/mmc/core/mmc_ops.c b/drivers/mmc/core/mmc_ops.c
+> index 62355bd..32de144 100644
+> --- a/drivers/mmc/core/mmc_ops.c
+> +++ b/drivers/mmc/core/mmc_ops.c
+> @@ -480,6 +480,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>  	u32 status = 0;
+>  	bool use_r1b_resp = use_busy_signal;
+>  	bool expired = false;
+> +	bool busy = false;
+>  
+>  	mmc_retune_hold(host);
+>  
+> @@ -535,19 +536,24 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>  	/* Must check status to be sure of no errors. */
+>  	timeout = jiffies + msecs_to_jiffies(timeout_ms);
+>  	do {
+> +		/*
+> +		 * Due to the possibility of being preempted after
+> +		 * sending the status command, check the expiration
+> +		 * time first.
+> +		 */
+> +		expired = time_after(jiffies, timeout);
+>  		if (send_status) {
+> -			/*
+> -			 * Due to the possibility of being preempted after
+> -			 * sending the status command, check the expiration
+> -			 * time first.
+> -			 */
+> -			expired = time_after(jiffies, timeout);
+>  			err = __mmc_send_status(card, &status, ignore_crc);
+>  			if (err)
+>  				goto out;
+>  		}
+>  		if ((host->caps & MMC_CAP_WAIT_WHILE_BUSY) && use_r1b_resp)
+>  			break;
+> +		if (host->ops->card_busy) {
 
-        /*
-------------------------------------------------------------
+card_busy is a problem because it is designed for SD voltage switch which
+checks DAT[3:0] whereas the busy signal is only DAT0.
 
+> +			if (!host->ops->card_busy(host))
+> +				break;
+> +			busy = true;
+> +		}
+>  		if (mmc_host_is_spi(host))
+>  			break;
 
-Best regards,
+I would tend to put all the changes together here after the
+mmc_host_is_spi() check i.e.
 
-James
+		if (host->ops->card_busy) {
+			expired = time_after(jiffies, timeout);
+			if (!host->ops->card_busy(host))
+				break;
+			if (!expired) {
+				cond_resched();
+				continue;
+			}
+			pr_err("%s: Card stuck in busy state! %s\n",
+			       mmc_hostname(host), __func__);
+			err = -ETIMEDOUT;
+			goto out;
+		}
+
+Also I think the changes to __mmc_switch() should be a separate patch.
+However you can't go forward with this until you sort out what card_busy means.
+
+>  
+> @@ -556,19 +562,20 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
+>  		 * does'nt support MMC_CAP_WAIT_WHILE_BUSY, then we can only
+>  		 * rely on waiting for the stated timeout to be sufficient.
+>  		 */
+> -		if (!send_status) {
+> +		if (!send_status && !host->ops->card_busy) {
+>  			mmc_delay(timeout_ms);
+>  			goto out;
+>  		}
+>  
+>  		/* Timeout if the device never leaves the program state. */
+> -		if (expired && R1_CURRENT_STATE(status) == R1_STATE_PRG) {
+> +		if (expired &&
+> +		    (R1_CURRENT_STATE(status) == R1_STATE_PRG || busy)) {
+>  			pr_err("%s: Card stuck in programming state! %s\n",
+>  				mmc_hostname(host), __func__);
+>  			err = -ETIMEDOUT;
+>  			goto out;
+>  		}
+> -	} while (R1_CURRENT_STATE(status) == R1_STATE_PRG);
+> +	} while (R1_CURRENT_STATE(status) == R1_STATE_PRG || busy);
+>  
+>  	err = mmc_switch_status_error(host, status);
+>  out:
+> 
 
