@@ -1,66 +1,145 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH RESEND 2/2] regulator: mt6397: Add buck change mode
- regulator interface for mt6397
-Date: Wed, 11 May 2016 15:50:46 +0100
-Message-ID: <20160511145046.GI6261@sirena.org.uk>
-References: <1462959090-2877-1-git-send-email-henryc.chen@mediatek.com>
- <1462959090-2877-3-git-send-email-henryc.chen@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 3/6] dt-bindings: mtu3: add devicetree bindings
+Date: Wed, 11 May 2016 09:54:09 -0500
+Message-ID: <20160511145409.GA23042@rob-hp-laptop>
+References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1462868614-20602-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="7IgncvKP0CVPV/ZZ"
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1462959090-2877-3-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Stephen Boyd <sboyd@codeaurora.org>, Bjorn Andersson <bjorn.andersson@sonymobile.com>, Laxman Dewangan <ldewangan@nvidia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1462868614-20602-4-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On Tue, May 10, 2016 at 04:23:31PM +0800, Chunfeng Yun wrote:
+> add a DT binding doc for MediaTek USB3 DRD driver
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  Documentation/devicetree/bindings/usb/mtu3.txt |   86 ++++++++++++++++++++++++
+>  1 file changed, 86 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mtu3.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
+> new file mode 100644
+> index 0000000..ff142a5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
+> @@ -0,0 +1,86 @@
+> +The device node for Mediatek USB3.0 DRD controller
+> +
+> +Required properties:
+> + - compatible : should be "mediatek,mt8173-mtu3"
+> + - reg : specifies physical base address and size of the registers
+> + - reg-names: should be "mac" for device IP and "ippc" for IP port control
+> + - interrupts : interrupt used by the device IP
+> + - power-domains : a phandle to USB power domain node to control USB's
+> +	mtcmos
+> + - vusb33-supply : regulator of USB avdd3.3v
+> + - clocks : a list of phandle + clock-specifier pairs, one for each
+> +	entry in clock-names
+> + - clock-names : must contain "sys_ck" for clock of controller;
+> +	"wakeup_deb_p0" and "wakeup_deb_p1" are optional, they are
+> +	depends on "mediatek,enable-wakeup"
+> + - phys : a list of phandle + phy specifier pairs
 
---7IgncvKP0CVPV/ZZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+How many?
 
-On Wed, May 11, 2016 at 05:31:30PM +0800, Henry Chen wrote:
+> + - dr_mode : should be one of "host", "peripheral" or "otg",
+> +	refer to usb/generic.txt
+> +
+> +Optional properties:
+> + - #address-cells, #size-cells : should be '2' if the device has sub-nodes
+> +	with 'reg' property
+> + - ranges : allows valid 1:1 translation between child's address space and
+> +	parent's address space
+> + - extcon : external connector for vbus and idpin changes detection, needed
+> +	when supports dual-role mode.
+> + - vbus-supply : reference to the VBUS regulator, needed when supports
+> +	dual-role mode.
+> + - pinctl-names : a pinctrl state named "default" must be defined,
+> +	"id_float" and "id_ground" are optinal which depends on
+> +	"mediatek,enable-manual-drd"
+> + - pinctrl-0 : pin control group
+> +	See: Documentation/devicetree/bindings/pinctrl/pinctrl-binding.txt
+> +
+> + - maximum-speed : valid arguments are "super-speed", "high-speed" and
+> +	"full-speed"; refer to usb/generic.txt
+> + - mediatek,enable-wakeup : supports ip sleep wakeup used by host mode
+> + - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+> +	control register, it depends on "mediatek,enable-wakeup".
 
-> +The possible values for "regulator-supported-modes" are:
-> +	0: PWM mode, mapping to regulator fast mode, allow the
-> +	converter to remain in the PWM mode regardless of the load current, so
-> +	that the noise spectrum of the converter can be minimized for certain
-> +	highly-noise-sensitive handset applications.
-> +	1: Auto mode, mapping to regulator normal mode, mode switch by current
-> +	loading. At light load currents, the converter automatically enters
-> +	PFM mode to save power and improve light load efficiency. At heavy
-> +	load currents, the converter automatically enters PWM mode to minimiz
-> +	the noise spectrum of the converter.
+There is a standard wake-up source binding. That assumes asserting the 
+device's irq (or one of the irqs) will cause wake-up.
 
-The details of how this maps onto Linux shouldn't be in the bindings.
+The syscon-wakeup should probably get implemented as a stacked 
+irqdomain.
 
-> +				regulator-allow-change-mode;
-> +				regulator-supported-modes =3D <0 1>;
+> + - mediatek,enable-manual-drd : supports manual dual-role switch by sysfs
+> +	interface; only used when receptacle is TYPE-A and also wants to support
+> +	dual-role mode.
 
-These are problematic too as covered in my other mail.=20
+sysfs is a Linux detail that doesn't apply to the binding. Does the 
+property mean "the IP block supports or doesn't support switching"  or 
+"I want to enable switching feature". Only the former belongs in DT.
 
-> -static struct regulator_ops mt6397_volt_range_ops =3D {
-> +static const struct regulator_ops mt6397_volt_range_ops =3D {
+As far as the sysfs interface, it should be generic, not Mediatek 
+specific.
 
-The constification is fine but an unrelated change.  Otherwise this
-looks fine from a code point of view, let's get that merged separately.
+> +
+> +Sub-nodes:
+> +The xhci should be added as subnode to mtu3 as shown in the following example
+> +if host mode is enabled. The DT binding details of xhci can be found in:
+> +Documentation/devicetree/bindings/usb/mt8173-xhci.txt
 
---7IgncvKP0CVPV/ZZ
-Content-Type: application/pgp-signature; name="signature.asc"
+Is XHCI really a sub-block? It seems mostly independent.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQEcBAEBCAAGBQJXM0bFAAoJECTWi3JdVIfQWUIH/iYT3d/hj9humaXhx493iF37
-DIeyno9cdT4e1Fc8W6Qr7Tr/lAOn5j9mBTilozxp0Y5lPk5SmbZhQnLWuVGBcetQ
-Zq1VjqZ8pksAWhNwb3j6M/UyOuFmHRQZRpoV35xbLj4JTWdATrBAb0wqJkSmQa0c
-5BI1NS0hMaq0DcH5CODK2uP5u4ka5fMllT/UrWtq+FskWLIarhM8vrMvrqNzQewp
-+DVV8UftScFV20RUtv/barWrVGUtXzOf6+XMs3FuZi21XUG4I+QCpNCdHxHzYkcB
-A2ZDQHUKR/7c9DVd+Q6bliNZ6Bgjy52gsnXQMJc618j2/Hf+hvkF4xbezdeZfps=
-=Rydm
------END PGP SIGNATURE-----
-
---7IgncvKP0CVPV/ZZ--
+> +
+> +Example:
+> +ssusb: usb@11271000 {
+> +	compatible = "mediatek,mt8173-mtu3";
+> +	reg = <0 0x11271000 0 0x3000>,
+> +	      <0 0x11280700 0 0x0100>;
+> +	reg-names = "mac", "ippc";
+> +	interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
+> +	phys = <&phy_port0 PHY_TYPE_USB3>,
+> +	       <&phy_port1 PHY_TYPE_USB2>;
+> +	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+> +	clocks = <&topckgen CLK_TOP_USB30_SEL>,
+> +		 <&pericfg CLK_PERI_USB0>,
+> +		 <&pericfg CLK_PERI_USB1>;
+> +	clock-names = "sys_ck",
+> +		      "wakeup_deb_p0",
+> +		      "wakeup_deb_p1";
+> +	vusb33-supply = <&mt6397_vusb_reg>;
+> +	vbus-supply = <&usb_p0_vbus>;
+> +	extcon = <&extcon_usb>;
+> +	dr_mode = "otg";
+> +	mediatek,enable-wakeup;
+> +	mediatek,syscon-wakeup = <&pericfg>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +	ranges;
+> +	status = "disabled";
+> +
+> +	usb_host: xhci@11270000 {
+> +		compatible = "mediatek,mt8173-xhci";
+> +		reg = <0 0x11270000 0 0x1000>;
+> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+> +		clocks = <&topckgen CLK_TOP_USB30_SEL>;
+> +		clock-names = "sys_ck";
+> +		vusb33-supply = <&mt6397_vusb_reg>;
+> +		status = "disabled";
+> +	};
+> +};
+> -- 
+> 1.7.9.5
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
