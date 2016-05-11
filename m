@@ -1,70 +1,66 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH RESEND 1/2] regulator: Add support for parsing operation
- mode
-Date: Wed, 11 May 2016 15:46:32 +0100
-Message-ID: <20160511144632.GH6261@sirena.org.uk>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH RESEND 2/2] regulator: mt6397: Add buck change mode
+ regulator interface for mt6397
+Date: Wed, 11 May 2016 15:50:46 +0100
+Message-ID: <20160511145046.GI6261@sirena.org.uk>
 References: <1462959090-2877-1-git-send-email-henryc.chen@mediatek.com>
- <1462959090-2877-2-git-send-email-henryc.chen@mediatek.com>
+ <1462959090-2877-3-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="xQmOcGOVkeO43v2v"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+	protocol="application/pgp-signature"; boundary="7IgncvKP0CVPV/ZZ"
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1462959090-2877-2-git-send-email-henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1462959090-2877-3-git-send-email-henryc.chen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Henry Chen <henryc.chen@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Stephen Boyd <sboyd@codeaurora.org>, Bjorn Andersson <bjorn.andersson@sonymobile.com>, Laxman Dewangan <ldewangan@nvidia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---xQmOcGOVkeO43v2v
+--7IgncvKP0CVPV/ZZ
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 11, 2016 at 05:31:29PM +0800, Henry Chen wrote:
+On Wed, May 11, 2016 at 05:31:30PM +0800, Henry Chen wrote:
 
-> +- regulator-allow-change-mode: allow the regulator mode to be configured
-> +- regulator-supported-modes: Regulators can run in a variety of different operating
-> +  modes depending on output load. This allows further system power savings by
-> +  selecting the best (and most efficient) regulator mode for a desired load.
-> +  The definition for each of these operation is defined at
-> +  include/linux/regulator/consumer.h
+> +The possible values for "regulator-supported-modes" are:
+> +	0: PWM mode, mapping to regulator fast mode, allow the
+> +	converter to remain in the PWM mode regardless of the load current, so
+> +	that the noise spectrum of the converter can be minimized for certain
+> +	highly-noise-sensitive handset applications.
+> +	1: Auto mode, mapping to regulator normal mode, mode switch by current
+> +	loading. At light load currents, the converter automatically enters
+> +	PFM mode to save power and improve light load efficiency. At heavy
+> +	load currents, the converter automatically enters PWM mode to minimiz
+> +	the noise spectrum of the converter.
 
-It really isn't OK for a DT binding to be documented by referencing
-Linux kernel internals.
+The details of how this maps onto Linux shouldn't be in the bindings.
 
-> +	0: FAST.
-> +	1: NORMAL.
-> +	2: IDLE.
-> +	3: STANDBY.
+> +				regulator-allow-change-mode;
+> +				regulator-supported-modes =3D <0 1>;
 
-The problem with these is that they don't really mean anything outside
-of a specific regulator.  This makes it very hard to make them at all
-interoperable, and is also incompatible with the way we're currently
-handling the modes elsewhere in the bindings.  If we're going to make an
-ABI of this we need to have something with abstraction in it but it's
-hard to see how to abstract modes since they're so implementation
-specific, even if the mechanisms are similar the different load ranges
-that regulators support mean that what's a very taxing load for one
-regulator may be nothing to another.
+These are problematic too as covered in my other mail.=20
 
---xQmOcGOVkeO43v2v
+> -static struct regulator_ops mt6397_volt_range_ops =3D {
+> +static const struct regulator_ops mt6397_volt_range_ops =3D {
+
+The constification is fine but an unrelated change.  Otherwise this
+looks fine from a code point of view, let's get that merged separately.
+
+--7IgncvKP0CVPV/ZZ
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXM0XGAAoJECTWi3JdVIfQXaEH/ir8TUe8a3SqSLLwGwueng6o
-MdcL0Ae3iEaFhdT59kKRHgB70ORdEBRFQnt8I4uG3acHyuupy+JTyuP/7V3RXQJ5
-unGcqP30uXuhAgWMOCk0c3j/FAzH8Cd3TEymKn6qxQLRDLuRfdOf3DFes17WV0Qh
-t9DhOYGMSZeSRbUVN3zwlw3kFn612lqkuOegb5nrGes8Emp1db2g2e3hLz1vcDMR
-hAZ5PGpQlR0rW3EhHH/p35RUF5H2HpBs2EQLDWElSE9o5TepDyU2zgz8Ur/xrDEk
-5GYQL5emoS9lQIQ/J39yT/ci5R63Rcw20YXNRDbmqspafF5aAadaL9c18sM1Q6c=
-=JSAM
+iQEcBAEBCAAGBQJXM0bFAAoJECTWi3JdVIfQWUIH/iYT3d/hj9humaXhx493iF37
+DIeyno9cdT4e1Fc8W6Qr7Tr/lAOn5j9mBTilozxp0Y5lPk5SmbZhQnLWuVGBcetQ
+Zq1VjqZ8pksAWhNwb3j6M/UyOuFmHRQZRpoV35xbLj4JTWdATrBAb0wqJkSmQa0c
+5BI1NS0hMaq0DcH5CODK2uP5u4ka5fMllT/UrWtq+FskWLIarhM8vrMvrqNzQewp
++DVV8UftScFV20RUtv/barWrVGUtXzOf6+XMs3FuZi21XUG4I+QCpNCdHxHzYkcB
+A2ZDQHUKR/7c9DVd+Q6bliNZ6Bgjy52gsnXQMJc618j2/Hf+hvkF4xbezdeZfps=
+=Rydm
 -----END PGP SIGNATURE-----
 
---xQmOcGOVkeO43v2v--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--7IgncvKP0CVPV/ZZ--
