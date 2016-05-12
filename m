@@ -1,64 +1,32 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] soc: mtk-pmic-wrap: avoid integer overflow warning
-Date: Thu, 12 May 2016 23:01:30 +0200
-Message-ID: <1463086904-2493288-1-git-send-email-arnd@arndb.de>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Alan Cooper <alcooperx@gmail.com>
+Subject: Re: [PATCH 3/6] dt-bindings: mtu3: add devicetree bindings
+Date: Thu, 12 May 2016 19:02:36 -0400
+Message-ID: <CAOGqxeUYEGKq5yhHbgcjPZtY06ZfDp2iCLZDqS3uyfCW523B4w@mail.gmail.com>
+References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
+	<1462868614-20602-4-git-send-email-chunfeng.yun@mediatek.com>
+	<20160511145409.GA23042@rob-hp-laptop>
+	<1463037844.11651.118.camel@mhfsdcap03>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1463037844.11651.118.camel@mhfsdcap03>
+Sender: linux-gpio-owner@vger.kernel.org
+To: chunfeng yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Linus Walleij <linus.walleij@linaro.org>, Biao Huang <biao.huang@mediatek.com>, USB list <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On ARM64, the mtk-pmic-wrap driver causes a harmless warning:
+On Thu, May 12, 2016 at 3:24 AM, chunfeng yun <chunfeng.yun@mediatek.com> wrote:
+>> > + - mediatek,enable-manual-drd : supports manual dual-role switch by sysfs
+>> > +   interface; only used when receptacle is TYPE-A and also wants to support
+>> > +   dual-role mode.
+>>
+>> sysfs is a Linux detail that doesn't apply to the binding. Does the
+>> property mean "the IP block supports or doesn't support switching"  or
+>> "I want to enable switching feature". Only the former belongs in DT.
+>>
+> It is the former case, and has little relation with sysfs interface.
+> I will modify it later, sorry for my unclear description.
 
-mtk-pmic-wrap.c:1062:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-mtk-pmic-wrap.c:1074:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-mtk-pmic-wrap.c:1086:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-  .int_en_all = ~(BIT(31) | BIT(1)),
-
-The problem is that the result of the BIT() macro is an 'unsigned long',
-so taking the bitwise NOT operation of that results in an integer
-with the upper 32 bits all set and that cannot be assigned to a
-'u32' variable without loss of information.
-
-This is harmless because we were never interested in the upper bits
-here anyway, so we can shut up the warning by adding a simple cast
-to 'u32'.
-
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 3c3e56df526e..a003ba26ca6e 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1059,7 +1059,7 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
- 	.regs = mt2701_regs,
- 	.type = PWRAP_MT2701,
- 	.arb_en_all = 0x3f,
--	.int_en_all = ~(BIT(31) | BIT(2)),
-+	.int_en_all = ~(u32)(BIT(31) | BIT(2)),
- 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE_NEW,
- 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
- 	.has_bridge = 0,
-@@ -1071,7 +1071,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
- 	.regs = mt8135_regs,
- 	.type = PWRAP_MT8135,
- 	.arb_en_all = 0x1ff,
--	.int_en_all = ~(BIT(31) | BIT(1)),
-+	.int_en_all = ~(u32)(BIT(31) | BIT(1)),
- 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
- 	.has_bridge = 1,
-@@ -1083,7 +1083,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
- 	.regs = mt8173_regs,
- 	.type = PWRAP_MT8173,
- 	.arb_en_all = 0x3f,
--	.int_en_all = ~(BIT(31) | BIT(1)),
-+	.int_en_all = ~(u32)(BIT(31) | BIT(1)),
- 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.wdt_src = PWRAP_WDT_SRC_MASK_NO_STAUPD,
- 	.has_bridge = 0,
--- 
-2.7.0
+Could the property name be just "enable-manual-drd" instead of
+"mediatek,enable-manual-drd"? I expect to have to add this
+functionality to our USB driver in the near future.
