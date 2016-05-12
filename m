@@ -1,44 +1,43 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [PATCH] drm: mediatek: remove IOMMU_DMA select
-Date: Wed, 11 May 2016 22:15:20 +0200
-Message-ID: <3436915.Zo8cThvXaA@wuerfel>
-References: <1462982509-342936-1-git-send-email-arnd@arndb.de>
- <1462997501-982363-1-git-send-email-arnd@arndb.de>
+From: chunfeng yun <chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 6/6] pinctrl: mt8173: set GPIO16 to usb iddig mode
+Date: Thu, 12 May 2016 09:41:22 +0800
+Message-ID: <1463017282.11651.82.camel@mhfsdcap03>
+References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
+	 <1462868614-20602-7-git-send-email-chunfeng.yun@mediatek.com>
+	 <CACRpkdaeD5mk7LXEWnE0=Xute8-JA-fa4tVt4fYhujEXeq2+9w@mail.gmail.com>
+	 <1462991546.11623.3.camel@mussux00>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1462997501-982363-1-git-send-email-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, YT Shen <yt.shen@mediatek.com>, airlied@redhat.com, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462991546.11623.3.camel@mussux00>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Maoguang Meng <maoguang.meng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Biao Huang <biao.huang@mediatek.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.or
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkbmVzZGF5IDExIE1heSAyMDE2IDIyOjExOjA3IEFybmQgQmVyZ21hbm4gd3JvdGU6Cj4g
-V2UgZ2V0IGEgaGFybWxlc3MgYnVpbGQgd2FybmluZyB3aGVuIHRyeWluZyB0byB1c2UgdGhlIG1l
-ZGlhdGVrCj4gRFJNIGRyaXZlciB3aXRoIElPTU1VIHN1cHBvcnQgZGlzYWJsZWQ6Cj4gCj4gd2Fy
-bmluZzogKERSTV9NRURJQVRFSykgc2VsZWN0cyBJT01NVV9ETUEgd2hpY2ggaGFzIHVubWV0IGRp
-cmVjdCBkZXBlbmRlbmNpZXMgKElPTU1VX1NVUFBPUlQpCj4gCj4gSG93ZXZlciwgdGhlIElPTU1V
-X0RNQSBzeW1ib2wgaXMgbm90IG1lYW50IHRvIGJlIHVzZWQgYnkgZHJpdmVycwo+IGF0IGFsbCwg
-YW5kIHRoaXMgZHJpdmVyIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGEgc3RyaWN0IGRlcGVuZGVuY3kK
-PiBvbiBpdCBvdGhlciB0aGFuIHVzaW5nIHRoZSBtZWRpYXRlayBJT01NVSBkcml2ZXIgdGhhdCBk
-b2VzLgo+IAo+IFNpbmNlIHdlIGFsc28gd2FudCB0byBiZSBhYmxlIHRvIGRvIGNvbXBpbGUgdGVz
-dHMgd2l0aCB0aGUKPiBkcml2ZXIgb24gb3RoZXIgcGxhdGZvcm1zLCB0aGUgSU9NTVVfRE1BIHN5
-bWJvbCBzaG91bGQgbm90Cj4gYmUgc2VsZWN0ZWQgaGVyZS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBB
-cm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+IC0tLQo+IElmIHNvbWVvbmUgaGFzIGEgYmV0
-dGVyIGV4cGxhbmF0aW9uIGFib3V0IHdoeSB0aGUgJ3NlbGVjdCcgaXMgaGVyZSwKPiBsZXQgbWUg
-a25vdywgaXQgY2VydGFpbmx5IHNlZW1zIG91dCBvZiBwbGFjZS4KClNvcnJ5LCBJIGRpZG4ndCBt
-ZWFuIHRvIHNlbmQgdGhpcyBhcyBhIHJlcGx5IHRvICJNb3JlIGJ1aWxkIGZpeGVzIGZvcgpvbWFw
-ZHJtIGluIGN1cnJlbnQgLW5leHQiLCBJIGNvcGllZCB0aGUgd3JvbmcgY29tbWFuZCBsaW5lLgoK
-SSdsbCByZXNlbmQgaXQgaWYgbmVjZXNzYXJ5LgoKCUFybmQKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi,
+
+On Wed, 2016-05-11 at 11:32 -0700, Hongzhou Yang wrote:
+> On Wed, 2016-05-11 at 13:56 +0200, Linus Walleij wrote:
+> > On Tue, May 10, 2016 at 10:23 AM, Chunfeng Yun
+> > <chunfeng.yun@mediatek.com> wrote:
+> > 
+> > > the default mode of GPIO16 pin is gpio, when set EINT16 to
+> > > IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
+> > > fixed when set its default mode as usb iddig.
+> > >
+> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > 
+> 
+> Chunfeng, GPIO16 can be used as EINT16 mode, but the pinmux should be 0.
+> If you want to set its default mode to iddig, you should set it in dts.
+> 
+I set it in DTS, but it didn't work, because when usb driver requested
+IRQ, pinmux was switched back to default mode set by
+MTK_EINT_FUNCTION().
+
+
+> Yours,
+> Hongzhou
+> 
