@@ -1,55 +1,103 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH] drm: mediatek: remove IOMMU_DMA select
-Date: Thu, 12 May 2016 12:46:15 +0200
-Message-ID: <1463049975.3070.29.camel@pengutronix.de>
-References: <1462982509-342936-1-git-send-email-arnd@arndb.de>
- <1462997501-982363-1-git-send-email-arnd@arndb.de>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v2 4/9] dt-bindings: Add a binding for Mediatek Video Decoder
+Date: Thu, 12 May 2016 19:24:05 +0800
+Message-ID: <1463052250-38262-5-git-send-email-tiffany.lin@mediatek.com>
+References: <1463052250-38262-1-git-send-email-tiffany.lin@mediatek.com>
+ <1463052250-38262-2-git-send-email-tiffany.lin@mediatek.com>
+ <1463052250-38262-3-git-send-email-tiffany.lin@mediatek.com>
+ <1463052250-38262-4-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1462997501-982363-1-git-send-email-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, airlied@redhat.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463052250-38262-4-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIGRlbiAxMS4wNS4yMDE2LCAyMjoxMSArMDIwMCBzY2hyaWViIEFybmQgQmVy
-Z21hbm46Cj4gV2UgZ2V0IGEgaGFybWxlc3MgYnVpbGQgd2FybmluZyB3aGVuIHRyeWluZyB0byB1
-c2UgdGhlIG1lZGlhdGVrCj4gRFJNIGRyaXZlciB3aXRoIElPTU1VIHN1cHBvcnQgZGlzYWJsZWQ6
-Cj4gCj4gd2FybmluZzogKERSTV9NRURJQVRFSykgc2VsZWN0cyBJT01NVV9ETUEgd2hpY2ggaGFz
-IHVubWV0IGRpcmVjdCBkZXBlbmRlbmNpZXMgKElPTU1VX1NVUFBPUlQpCj4gCj4gSG93ZXZlciwg
-dGhlIElPTU1VX0RNQSBzeW1ib2wgaXMgbm90IG1lYW50IHRvIGJlIHVzZWQgYnkgZHJpdmVycwo+
-IGF0IGFsbCwgYW5kIHRoaXMgZHJpdmVyIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGEgc3RyaWN0IGRl
-cGVuZGVuY3kKPiBvbiBpdCBvdGhlciB0aGFuIHVzaW5nIHRoZSBtZWRpYXRlayBJT01NVSBkcml2
-ZXIgdGhhdCBkb2VzLgo+IAo+IFNpbmNlIHdlIGFsc28gd2FudCB0byBiZSBhYmxlIHRvIGRvIGNv
-bXBpbGUgdGVzdHMgd2l0aCB0aGUKPiBkcml2ZXIgb24gb3RoZXIgcGxhdGZvcm1zLCB0aGUgSU9N
-TVVfRE1BIHN5bWJvbCBzaG91bGQgbm90Cj4gYmUgc2VsZWN0ZWQgaGVyZS4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+IC0tLQo+IElmIHNvbWVvbmUg
-aGFzIGEgYmV0dGVyIGV4cGxhbmF0aW9uIGFib3V0IHdoeSB0aGUgJ3NlbGVjdCcgaXMgaGVyZSwK
-PiBsZXQgbWUga25vdywgaXQgY2VydGFpbmx5IHNlZW1zIG91dCBvZiBwbGFjZS4KCk5vLCBpdCBq
-dXN0IGhhcyBiZWVuIHRoZXJlIHNpbmNlIHRoZSBpbml0aWFsIFJGQyBhbmQgbm9ib2R5IG5vdGlj
-ZWQuCgo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZyB8IDEgLQo+ICAxIGZpbGUg
-Y2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvS2NvbmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCj4gaW5k
-ZXggMGMwNmE2OWQ3ZjA0Li41NDU5NzNmNmI3NDMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL0tjb25maWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2Nv
-bmZpZwo+IEBAIC03LDcgKzcsNiBAQCBjb25maWcgRFJNX01FRElBVEVLCj4gIAlzZWxlY3QgRFJN
-X0tNU19IRUxQRVIKPiAgCXNlbGVjdCBEUk1fTUlQSV9EU0kKPiAgCXNlbGVjdCBEUk1fUEFORUwK
-PiAtCXNlbGVjdCBJT01NVV9ETUEKPiAgCXNlbGVjdCBNRU1PUlkKPiAgCXNlbGVjdCBNVEtfU01J
-Cj4gIAloZWxwCgpBY2tlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5k
-ZT4KCkkgdHJpZWQKICBtYWtlIEFSQ0g9YXJtNjQgYWxsbm9jb25maWcKYW5kIHRoZW4gc2V0CiAg
-Q09ORklHX01PRFVMRVM9eQogIENPTkZJR19BUkNIX01FRElBVEVLPXkKICBDT05GSUdfRFJNPW0K
-ICBDT05GSUdfRFJNX01FRElBVEVLPW0KCkFuZCBpdCBidWlsZHMgZmluZSB3aXRoIElPTU1VX0RN
-QS9NVEtfSU9NTVUgZGlzYWJsZWQuCgp0aGFua3MKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Add a DT binding documentation of Video Decoder for the
+MT8173 SoC from Mediatek.
+
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ .../devicetree/bindings/media/mediatek-vcodec.txt  |   50 ++++++++++++++++++--
+ 1 file changed, 46 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+index 59a47a5..9aa8848 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -1,25 +1,67 @@
+ Mediatek Video Codec
+ 
+ Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
+-supports high resolution encoding functionalities.
++supports high resolution encoding and decoding functionalities.
+ 
+ Required properties:
+ - compatible : "mediatek,mt8173-vcodec-enc" for encoder
++  "mediatek,mt8173-vcodec-dec" for decoder.
+ - reg : Physical base address of the video codec registers and length of
+   memory mapped region.
+ - interrupts : interrupt number to the cpu.
+ - mediatek,larb : must contain the local arbiters in the current Socs.
+ - clocks : list of clock specifiers, corresponding to entries in
+   the clock-names property.
+-- clock-names: encoder must contain "venc_sel_src", "venc_sel",
+-- "venc_lt_sel_src", "venc_lt_sel".
++- clock-names: encoder must contain "venc_sel_src", "venc_sel",,
++  "venc_lt_sel_src", "venc_lt_sel", decoder must contain "vcodecpll",
++  "univpll_d2", "clk_cci400_sel", "vdec_sel", "vdecpll".
+ - iommus : should point to the respective IOMMU block with master port as
+   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+   for details.
+ - mediatek,vpu : the node of video processor unit
+ 
++
+ Example:
+-vcodec_enc: vcodec@0x18002000 {
++
++vcodec_dec: vcodec@16000000 {
++    compatible = "mediatek,mt8173-vcodec-dec";
++    reg = <0 0x16000000 0 0x100>,   /*VDEC_SYS*/
++          <0 0x16020000 0 0x1000>,  /*VDEC_MISC*/
++          <0 0x16021000 0 0x800>,   /*VDEC_LD*/
++          <0 0x16021800 0 0x800>,   /*VDEC_TOP*/
++          <0 0x16022000 0 0x1000>,  /*VDEC_CM*/
++          <0 0x16023000 0 0x1000>,  /*VDEC_AD*/
++          <0 0x16024000 0 0x1000>,  /*VDEC_AV*/
++          <0 0x16025000 0 0x1000>,  /*VDEC_PP*/
++          <0 0x16026800 0 0x800>,   /*VP8_VD*/
++          <0 0x16027000 0 0x800>,   /*VP6_VD*/
++          <0 0x16027800 0 0x800>,   /*VP8_VL*/
++          <0 0x16028400 0 0x400>;   /*VP9_VD*/
++    interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
++    mediatek,larb = <&larb1>;
++    iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
++             <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
++    mediatek,vpu = <&vpu>;
++    power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
++    clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
++             <&topckgen CLK_TOP_UNIVPLL_D2>,
++             <&topckgen CLK_TOP_CCI400_SEL>,  
++             <&topckgen CLK_TOP_VDEC_SEL>,
++             <&topckgen CLK_TOP_VCODECPLL>;
++    clock-names = "vcodecpll",
++                  "univpll_d2",
++                  "clk_cci400_sel",   
++                  "vdec_sel",  
++                  "vdecpll";
++  };
++
++  vcodec_enc: vcodec@0x18002000 {
+     compatible = "mediatek,mt8173-vcodec-enc";
+     reg = <0 0x18002000 0 0x1000>,    /*VENC_SYS*/
+           <0 0x19002000 0 0x1000>;    /*VENC_LT_SYS*/
+-- 
+1.7.9.5
