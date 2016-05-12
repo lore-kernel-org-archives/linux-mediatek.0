@@ -1,59 +1,55 @@
-From: Adrian Hunter <adrian.hunter@intel.com>
-Subject: Re: [PATCH] mmc: mmc: do not use CMD13 to get status after speed mode
- switch
-Date: Thu, 12 May 2016 13:29:40 +0300
-Message-ID: <57345B14.7030308@intel.com>
-References: <1462344872-6448-1-git-send-email-chaotian.jing@mediatek.com>
- <5732E43E.8070800@intel.com> <1463036431.11653.3.camel@mhfsdcap03>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH] drm: mediatek: remove IOMMU_DMA select
+Date: Thu, 12 May 2016 12:46:15 +0200
+Message-ID: <1463049975.3070.29.camel@pengutronix.de>
+References: <1462982509-342936-1-git-send-email-arnd@arndb.de>
+ <1462997501-982363-1-git-send-email-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1463036431.11653.3.camel@mhfsdcap03>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1462997501-982363-1-git-send-email-arnd@arndb.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, airlied@redhat.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 12/05/16 10:00, Chaotian Jing wrote:
-> On Wed, 2016-05-11 at 10:50 +0300, Adrian Hunter wrote:
->> On 04/05/16 09:54, Chaotian Jing wrote:
->>> Per JEDEC spec, it is not recommended to use CMD13 to get card status
->>> after speed mode switch. below are two reason about this:
->>> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
->>> Therefore it is not recommended to use CMD13 to check busy completion
->>> of the timing change indication.
->>> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
->>> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
->>>
->>> this patch drops CMD13 when doing speed mode switch, if host do not
->>> support MMC_CAP_WAIT_WHILE_BUSY and there is no ops->card_busy(),
->>> then the only way is to wait a fixed timeout.
->>
->> This looks like it should be 3 patches:
->> 	1. Change __mmc_switch
->> 	2. Change HS200 and HS400 selection
->> 	3. Change HS selection
->>
->> However there is another problem: card_busy is not the same as busy signal -
->> see below.  So that needs to be sorted out first.
->>
-> We should make that card_busy() is the same with busy signal asserted.
-> as you know, if card was not in busy state, all data pins should be high
-> level as it is pull-up by default. so that's no conflict to check card
-> busy signal by DAT0 or DAT0 ~ DAT3.
-
-Potentially SDIO uses DAT1 for card interrupt, so that is a conflict right
-there.
-
-Also SDHCI does it backwards (don't ask me why) and considers 0000 to be
-busy, so there's another conflict.
-
-Some of the language in the SD and SDHCI specifications seems to indicate
-that checking all 4 DAT lines during voltage switch is optional i.e. only 1
-of the lines must be checked.  If that is true then we could change all the
-drivers over to check just DAT0, and expect that to work for both busy
-signalling and SD voltage switch checks.
-
-So it seems to me card_busy still needs to be sorted out first.
-
+QW0gTWl0dHdvY2gsIGRlbiAxMS4wNS4yMDE2LCAyMjoxMSArMDIwMCBzY2hyaWViIEFybmQgQmVy
+Z21hbm46Cj4gV2UgZ2V0IGEgaGFybWxlc3MgYnVpbGQgd2FybmluZyB3aGVuIHRyeWluZyB0byB1
+c2UgdGhlIG1lZGlhdGVrCj4gRFJNIGRyaXZlciB3aXRoIElPTU1VIHN1cHBvcnQgZGlzYWJsZWQ6
+Cj4gCj4gd2FybmluZzogKERSTV9NRURJQVRFSykgc2VsZWN0cyBJT01NVV9ETUEgd2hpY2ggaGFz
+IHVubWV0IGRpcmVjdCBkZXBlbmRlbmNpZXMgKElPTU1VX1NVUFBPUlQpCj4gCj4gSG93ZXZlciwg
+dGhlIElPTU1VX0RNQSBzeW1ib2wgaXMgbm90IG1lYW50IHRvIGJlIHVzZWQgYnkgZHJpdmVycwo+
+IGF0IGFsbCwgYW5kIHRoaXMgZHJpdmVyIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGEgc3RyaWN0IGRl
+cGVuZGVuY3kKPiBvbiBpdCBvdGhlciB0aGFuIHVzaW5nIHRoZSBtZWRpYXRlayBJT01NVSBkcml2
+ZXIgdGhhdCBkb2VzLgo+IAo+IFNpbmNlIHdlIGFsc28gd2FudCB0byBiZSBhYmxlIHRvIGRvIGNv
+bXBpbGUgdGVzdHMgd2l0aCB0aGUKPiBkcml2ZXIgb24gb3RoZXIgcGxhdGZvcm1zLCB0aGUgSU9N
+TVVfRE1BIHN5bWJvbCBzaG91bGQgbm90Cj4gYmUgc2VsZWN0ZWQgaGVyZS4KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+IC0tLQo+IElmIHNvbWVvbmUg
+aGFzIGEgYmV0dGVyIGV4cGxhbmF0aW9uIGFib3V0IHdoeSB0aGUgJ3NlbGVjdCcgaXMgaGVyZSwK
+PiBsZXQgbWUga25vdywgaXQgY2VydGFpbmx5IHNlZW1zIG91dCBvZiBwbGFjZS4KCk5vLCBpdCBq
+dXN0IGhhcyBiZWVuIHRoZXJlIHNpbmNlIHRoZSBpbml0aWFsIFJGQyBhbmQgbm9ib2R5IG5vdGlj
+ZWQuCgo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZyB8IDEgLQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvS2NvbmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCj4gaW5k
+ZXggMGMwNmE2OWQ3ZjA0Li41NDU5NzNmNmI3NDMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL0tjb25maWcKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2Nv
+bmZpZwo+IEBAIC03LDcgKzcsNiBAQCBjb25maWcgRFJNX01FRElBVEVLCj4gIAlzZWxlY3QgRFJN
+X0tNU19IRUxQRVIKPiAgCXNlbGVjdCBEUk1fTUlQSV9EU0kKPiAgCXNlbGVjdCBEUk1fUEFORUwK
+PiAtCXNlbGVjdCBJT01NVV9ETUEKPiAgCXNlbGVjdCBNRU1PUlkKPiAgCXNlbGVjdCBNVEtfU01J
+Cj4gIAloZWxwCgpBY2tlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5k
+ZT4KCkkgdHJpZWQKICBtYWtlIEFSQ0g9YXJtNjQgYWxsbm9jb25maWcKYW5kIHRoZW4gc2V0CiAg
+Q09ORklHX01PRFVMRVM9eQogIENPTkZJR19BUkNIX01FRElBVEVLPXkKICBDT05GSUdfRFJNPW0K
+ICBDT05GSUdfRFJNX01FRElBVEVLPW0KCkFuZCBpdCBidWlsZHMgZmluZSB3aXRoIElPTU1VX0RN
+QS9NVEtfSU9NTVUgZGlzYWJsZWQuCgp0aGFua3MKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
+ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
