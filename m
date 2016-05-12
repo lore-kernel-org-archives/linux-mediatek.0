@@ -1,53 +1,59 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] drm: mediatek: remove IOMMU_DMA select
-Date: Thu, 12 May 2016 10:24:02 +0100
-Message-ID: <57344BB2.8020608@arm.com>
-References: <1462982509-342936-1-git-send-email-arnd@arndb.de>
- <1462997501-982363-1-git-send-email-arnd@arndb.de>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Subject: Re: [PATCH] mmc: mmc: do not use CMD13 to get status after speed mode
+ switch
+Date: Thu, 12 May 2016 13:29:40 +0300
+Message-ID: <57345B14.7030308@intel.com>
+References: <1462344872-6448-1-git-send-email-chaotian.jing@mediatek.com>
+ <5732E43E.8070800@intel.com> <1463036431.11653.3.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1462997501-982363-1-git-send-email-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Arnd Bergmann <arnd@arndb.de>, airlied@redhat.com, David Airlie <airlied@linux.ie>
-Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, YT Shen <yt.shen@mediatek.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1463036431.11653.3.camel@mhfsdcap03>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMTEvMDUvMTYgMjE6MTEsIEFybmQgQmVyZ21hbm4gd3JvdGU6Cj4gV2UgZ2V0IGEgaGFybWxl
-c3MgYnVpbGQgd2FybmluZyB3aGVuIHRyeWluZyB0byB1c2UgdGhlIG1lZGlhdGVrCj4gRFJNIGRy
-aXZlciB3aXRoIElPTU1VIHN1cHBvcnQgZGlzYWJsZWQ6Cj4KPiB3YXJuaW5nOiAoRFJNX01FRElB
-VEVLKSBzZWxlY3RzIElPTU1VX0RNQSB3aGljaCBoYXMgdW5tZXQgZGlyZWN0IGRlcGVuZGVuY2ll
-cyAoSU9NTVVfU1VQUE9SVCkKPgo+IEhvd2V2ZXIsIHRoZSBJT01NVV9ETUEgc3ltYm9sIGlzIG5v
-dCBtZWFudCB0byBiZSB1c2VkIGJ5IGRyaXZlcnMKPiBhdCBhbGwsIGFuZCB0aGlzIGRyaXZlciBk
-b2Vzbid0IHNlZW0gdG8gaGF2ZSBhIHN0cmljdCBkZXBlbmRlbmN5Cj4gb24gaXQgb3RoZXIgdGhh
-biB1c2luZyB0aGUgbWVkaWF0ZWsgSU9NTVUgZHJpdmVyIHRoYXQgZG9lcy4KPgo+IFNpbmNlIHdl
-IGFsc28gd2FudCB0byBiZSBhYmxlIHRvIGRvIGNvbXBpbGUgdGVzdHMgd2l0aCB0aGUKPiBkcml2
-ZXIgb24gb3RoZXIgcGxhdGZvcm1zLCB0aGUgSU9NTVVfRE1BIHN5bWJvbCBzaG91bGQgbm90Cj4g
-YmUgc2VsZWN0ZWQgaGVyZS4KPgo+IFNpZ25lZC1vZmYtYnk6IEFybmQgQmVyZ21hbm4gPGFybmRA
-YXJuZGIuZGU+Cj4gLS0tCj4gSWYgc29tZW9uZSBoYXMgYSBiZXR0ZXIgZXhwbGFuYXRpb24gYWJv
-dXQgd2h5IHRoZSAnc2VsZWN0JyBpcyBoZXJlLAo+IGxldCBtZSBrbm93LCBpdCBjZXJ0YWlubHkg
-c2VlbXMgb3V0IG9mIHBsYWNlLgoKQWNrIC0gaXQncyBuZWl0aGVyIGFuIElPTU1VIGRyaXZlciBu
-b3IgYSBETUEgQVBJIGltcGxlbWVudGF0aW9uLCBzbyBpdCAKaGFzIG5vIGJ1c2luZXNzIHdpdGgg
-SU9NTVVfRE1BLiBJZiB0aGVyZSdzIGFuIElPTU1VIGRlcGVuZGVuY3kgaW4gCmdlbmVyYWwgaXQg
-c2hvdWxkIGJlIG9uIE1US19JT01NVSwgbm90IHVuZGVybHlpbmcgaW1wbGVtZW50YXRpb24gZGV0
-YWlscy4KClJvYmluLgoKPiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnIHwgMSAt
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
-b25maWcKPiBpbmRleCAwYzA2YTY5ZDdmMDQuLjU0NTk3M2Y2Yjc0MyAxMDA2NDQKPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9LY29uZmlnCj4gQEAgLTcsNyArNyw2IEBAIGNvbmZpZyBEUk1fTUVESUFURUsKPiAg
-IAlzZWxlY3QgRFJNX0tNU19IRUxQRVIKPiAgIAlzZWxlY3QgRFJNX01JUElfRFNJCj4gICAJc2Vs
-ZWN0IERSTV9QQU5FTAo+IC0Jc2VsZWN0IElPTU1VX0RNQQo+ICAgCXNlbGVjdCBNRU1PUlkKPiAg
-IAlzZWxlY3QgTVRLX1NNSQo+ICAgCWhlbHAKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+On 12/05/16 10:00, Chaotian Jing wrote:
+> On Wed, 2016-05-11 at 10:50 +0300, Adrian Hunter wrote:
+>> On 04/05/16 09:54, Chaotian Jing wrote:
+>>> Per JEDEC spec, it is not recommended to use CMD13 to get card status
+>>> after speed mode switch. below are two reason about this:
+>>> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
+>>> Therefore it is not recommended to use CMD13 to check busy completion
+>>> of the timing change indication.
+>>> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
+>>> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
+>>>
+>>> this patch drops CMD13 when doing speed mode switch, if host do not
+>>> support MMC_CAP_WAIT_WHILE_BUSY and there is no ops->card_busy(),
+>>> then the only way is to wait a fixed timeout.
+>>
+>> This looks like it should be 3 patches:
+>> 	1. Change __mmc_switch
+>> 	2. Change HS200 and HS400 selection
+>> 	3. Change HS selection
+>>
+>> However there is another problem: card_busy is not the same as busy signal -
+>> see below.  So that needs to be sorted out first.
+>>
+> We should make that card_busy() is the same with busy signal asserted.
+> as you know, if card was not in busy state, all data pins should be high
+> level as it is pull-up by default. so that's no conflict to check card
+> busy signal by DAT0 or DAT0 ~ DAT3.
+
+Potentially SDIO uses DAT1 for card interrupt, so that is a conflict right
+there.
+
+Also SDHCI does it backwards (don't ask me why) and considers 0000 to be
+busy, so there's another conflict.
+
+Some of the language in the SD and SDHCI specifications seems to indicate
+that checking all 4 DAT lines during voltage switch is optional i.e. only 1
+of the lines must be checked.  If that is true then we could change all the
+drivers over to check just DAT0, and expect that to work for both busy
+signalling and SD voltage switch checks.
+
+So it seems to me card_busy still needs to be sorted out first.
+
