@@ -1,231 +1,57 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v7 4/4] soc: mediatek: Add MT2701 scpsys driver
-Date: Mon, 16 May 2016 17:28:14 +0800
-Message-ID: <1463390894-32062-5-git-send-email-jamesjj.liao@mediatek.com>
-References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [RFC 1/3] dt-bindings: drm/mediatek: Add display binding for
+ Mediatek SoC MT2701
+Date: Mon, 16 May 2016 18:27:02 +0800
+Message-ID: <1463394422.28394.5.camel@mtksdaap41>
+References: <1463053795-55455-1-git-send-email-yt.shen@mediatek.com>
+ <1463053795-55455-2-git-send-email-yt.shen@mediatek.com>
+ <1463065184.17225.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1463390894-32062-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1463065184.17225.2.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, weiqing.kong@mediatek.com, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, srv_heupstream@mediatek.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Add scpsys driver for MT2701.
-
-mtk-scpsys now supports MT8173 (arm64) and MT2701 (arm). So it should
-be enabled on both arm64 and arm platforms.
-
-Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
----
- drivers/soc/mediatek/Kconfig      |   2 +-
- drivers/soc/mediatek/mtk-scpsys.c | 117 +++++++++++++++++++++++++++++++++++++-
- 2 files changed, 116 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 0a4ea80..609bb34 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -23,7 +23,7 @@ config MTK_PMIC_WRAP
- config MTK_SCPSYS
- 	bool "MediaTek SCPSYS Support"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
--	default ARM64 && ARCH_MEDIATEK
-+	default ARCH_MEDIATEK
- 	select REGMAP
- 	select MTK_INFRACFG
- 	select PM_GENERIC_DOMAINS if PM
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index 00c0adb..f4d1230 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -20,6 +20,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/soc/mediatek/infracfg.h>
- 
-+#include <dt-bindings/power/mt2701-power.h>
- #include <dt-bindings/power/mt8173-power.h>
- 
- #define SPM_VDE_PWR_CON			0x0210
-@@ -27,8 +28,13 @@
- #define SPM_VEN_PWR_CON			0x0230
- #define SPM_ISP_PWR_CON			0x0238
- #define SPM_DIS_PWR_CON			0x023c
-+#define SPM_CONN_PWR_CON		0x0280
- #define SPM_VEN2_PWR_CON		0x0298
--#define SPM_AUDIO_PWR_CON		0x029c
-+#define SPM_AUDIO_PWR_CON		0x029c	/* MT8173 */
-+#define SPM_BDP_PWR_CON			0x029c	/* MT2701 */
-+#define SPM_ETH_PWR_CON			0x02a0
-+#define SPM_HIF_PWR_CON			0x02a4
-+#define SPM_IFR_MSC_PWR_CON		0x02a8
- #define SPM_MFG_2D_PWR_CON		0x02c0
- #define SPM_MFG_ASYNC_PWR_CON		0x02c4
- #define SPM_USB_PWR_CON			0x02cc
-@@ -42,10 +48,15 @@
- #define PWR_ON_2ND_BIT			BIT(3)
- #define PWR_CLK_DIS_BIT			BIT(4)
- 
-+#define PWR_STATUS_CONN			BIT(1)
- #define PWR_STATUS_DISP			BIT(3)
- #define PWR_STATUS_MFG			BIT(4)
- #define PWR_STATUS_ISP			BIT(5)
- #define PWR_STATUS_VDEC			BIT(7)
-+#define PWR_STATUS_BDP			BIT(14)
-+#define PWR_STATUS_ETH			BIT(15)
-+#define PWR_STATUS_HIF			BIT(16)
-+#define PWR_STATUS_IFR_MSC		BIT(17)
- #define PWR_STATUS_VENC_LT		BIT(20)
- #define PWR_STATUS_VENC			BIT(21)
- #define PWR_STATUS_MFG_2D		BIT(22)
-@@ -59,6 +70,7 @@ enum clk_id {
- 	CLK_MFG,
- 	CLK_VENC,
- 	CLK_VENC_LT,
-+	CLK_ETHIF,
- 	CLK_MAX,
- };
- 
-@@ -321,7 +333,8 @@ static void init_clks(struct platform_device *pdev, struct clk *clk[CLK_MAX])
- 		CLK_MM,
- 		CLK_MFG,
- 		CLK_VENC,
--		CLK_VENC_LT
-+		CLK_VENC_LT,
-+		CLK_ETHIF
- 	};
- 
- 	static const char * const clk_names[] = {
-@@ -329,6 +342,7 @@ static void init_clks(struct platform_device *pdev, struct clk *clk[CLK_MAX])
- 		"mfg",
- 		"venc",
- 		"venc_lt",
-+		"ethif",
- 	};
- 
- 	int i;
-@@ -459,6 +473,102 @@ static void mtk_register_power_domains(struct platform_device *pdev,
- }
- 
- /*
-+ * MT2701 power domain support
-+ */
-+
-+static const struct scp_domain_data scp_domain_data_mt2701[] = {
-+	[MT2701_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
-+		.sta_mask = PWR_STATUS_CONN,
-+		.ctl_offs = SPM_CONN_PWR_CON,
-+		.bus_prot_mask = 0x0104,
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_DISP] = {
-+		.name = "disp",
-+		.sta_mask = PWR_STATUS_DISP,
-+		.ctl_offs = SPM_DIS_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.clk_id = {CLK_MM},
-+		.bus_prot_mask = 0x0002,
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_MFG] = {
-+		.name = "mfg",
-+		.sta_mask = PWR_STATUS_MFG,
-+		.ctl_offs = SPM_MFG_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_MFG},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_VDEC] = {
-+		.name = "vdec",
-+		.sta_mask = PWR_STATUS_VDEC,
-+		.ctl_offs = SPM_VDE_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.clk_id = {CLK_MM},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_ISP] = {
-+		.name = "isp",
-+		.sta_mask = PWR_STATUS_ISP,
-+		.ctl_offs = SPM_ISP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(13, 12),
-+		.clk_id = {CLK_MM},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_BDP] = {
-+		.name = "bdp",
-+		.sta_mask = PWR_STATUS_BDP,
-+		.ctl_offs = SPM_BDP_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_ETH] = {
-+		.name = "eth",
-+		.sta_mask = PWR_STATUS_ETH,
-+		.ctl_offs = SPM_ETH_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.clk_id = {CLK_ETHIF},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_HIF] = {
-+		.name = "hif",
-+		.sta_mask = PWR_STATUS_HIF,
-+		.ctl_offs = SPM_HIF_PWR_CON,
-+		.sram_pdn_bits = GENMASK(11, 8),
-+		.sram_pdn_ack_bits = GENMASK(15, 12),
-+		.clk_id = {CLK_ETHIF},
-+		.active_wakeup = true,
-+	},
-+	[MT2701_POWER_DOMAIN_IFR_MSC] = {
-+		.name = "ifr_msc",
-+		.sta_mask = PWR_STATUS_IFR_MSC,
-+		.ctl_offs = SPM_IFR_MSC_PWR_CON,
-+		.active_wakeup = true,
-+	},
-+};
-+
-+#define NUM_DOMAINS_MT2701	ARRAY_SIZE(scp_domain_data_mt2701)
-+
-+static int __init scpsys_probe_mt2701(struct platform_device *pdev)
-+{
-+	struct scp *scp;
-+
-+	scp = init_scp(pdev, scp_domain_data_mt2701, NUM_DOMAINS_MT2701);
-+	if (IS_ERR(scp))
-+		return PTR_ERR(scp);
-+
-+	mtk_register_power_domains(pdev, scp, NUM_DOMAINS_MT2701);
-+
-+	return 0;
-+}
-+
-+/*
-  * MT8173 power domain support
-  */
- 
-@@ -587,6 +697,9 @@ static int __init scpsys_probe_mt8173(struct platform_device *pdev)
- 
- static const struct of_device_id of_scpsys_match_tbl[] = {
- 	{
-+		.compatible = "mediatek,mt2701-scpsys",
-+		.data = scpsys_probe_mt2701,
-+	}, {
- 		.compatible = "mediatek,mt8173-scpsys",
- 		.data = scpsys_probe_mt8173,
- 	}, {
--- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgWWluZ2pvZSwKCk9uIFRodSwgMjAxNi0wNS0xMiBhdCAyMjo1OSArMDgwMCwgWWluZ2pvZSBD
+aGVuIHdyb3RlOgo+IE9uIFRodSwgMjAxNi0wNS0xMiBhdCAxOTo0OSArMDgwMCwgeXQuc2hlbkBt
+ZWRpYXRlay5jb20gd3JvdGU6Cj4gPiBGcm9tOiBZVCBTaGVuIDx5dC5zaGVuQG1lZGlhdGVrLmNv
+bT4KPiA+IAo+ID4gQWRkIGRldmljZSB0cmVlIGJpbmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgdGhl
+IGRpc3BsYXkgc3Vic3lzdGVtIGluCj4gPiBNZWRpYXRlayBTb0MgTVQyNzAxCj4gPiAKPiA+IFNp
+Z25lZC1vZmYtYnk6IFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAg
+Li4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgfCAgICAx
+ICsKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiA+IAo+ID4gZGlmZiAtLWdp
+dCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
+ZGlhdGVrLGRpc3AudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiA+IGluZGV4IGRiNmU3N2UuLjUzYjNjYzMg
+MTAwNjQ0Cj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKPiA+IEBA
+IC00MCw2ICs0MCw3IEBAIFJlcXVpcmVkIHByb3BlcnRpZXMgKGFsbCBmdW5jdGlvbiBibG9ja3Mp
+Ogo+ID4gIAkibWVkaWF0ZWssPGNoaXA+LWRwaSIgICAgICAgIC0gRFBJIGNvbnRyb2xsZXIsIHNl
+ZSBtZWRpYXRlayxkcGkudHh0Cj4gPiAgCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1tdXRleCIgLSBk
+aXNwbGF5IG11dGV4Cj4gPiAgCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1vZCIgICAgLSBvdmVyZHJp
+dmUKPiA+ICsJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLWJscyIgICAtIGJhY2tsaWdodAo+ID4gIC0g
+cmVnOiBQaHlzaWNhbCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgZnVuY3Rpb24gYmxv
+Y2sgcmVnaXN0ZXIgc3BhY2UKPiA+ICAtIGludGVycnVwdHM6IFRoZSBpbnRlcnJ1cHQgc2lnbmFs
+IGZyb20gdGhlIGZ1bmN0aW9uIGJsb2NrIChyZXF1aXJlZCwgZXhjZXB0IGZvcgo+ID4gICAgbWVy
+Z2UgYW5kIHNwbGl0IGZ1bmN0aW9uIGJsb2NrcykuCj4gCj4gCj4gSGksCj4gCj4gVGhpcyBvbmUg
+aXMgaW4gY29uZmxpY3Qgd2l0aCAiU3VwcG9ydCBNZWRpYXRlayBTb2MgTVQyNzAxIGRpc3AgcHdt
+Igo+IHNlcmllcyBXZWlxaW5nIHNlbnQgbGFzdCB3ZWVrLCB3aGljaCBhZGQgZGlzcC1ibHMgc3Vw
+cG9ydCB0byBkaXNwbGF5IHB3bQo+IGRyaXZlci4KPiAKPiBKb2UuQwoKVGhhbmtzLCBJIHdpbGwg
+cmVtb3ZlIHRoaXMgcGFydCBhbmQgdXBkYXRlIGl0IGluIHRoZSBuZXh0IHZlcnNpb24uCgpSZWdh
+cmRzLAp5dC5zaGVuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
