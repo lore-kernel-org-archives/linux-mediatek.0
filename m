@@ -1,59 +1,98 @@
-From: Henry Chen <henryc.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH RESEND 2/2] regulator: mt6397: Add buck change mode
- regulator interface for mt6397
-Date: Fri, 13 May 2016 16:04:20 +0800
-Message-ID: <1463126660.2821.9.camel@mtksdaap41>
-References: <1462959090-2877-1-git-send-email-henryc.chen@mediatek.com>
- <1462959090-2877-3-git-send-email-henryc.chen@mediatek.com>
- <20160511145046.GI6261@sirena.org.uk>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v7 3/4] soc: mediatek: Add MT2701 power dt-bindings
+Date: Mon, 16 May 2016 17:28:13 +0800
+Message-ID: <1463390894-32062-4-git-send-email-jamesjj.liao@mediatek.com>
+References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160511145046.GI6261-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Laxman Dewangan <ldewangan-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-/MT0OVThwyLZJqsBc5GL+g@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1463390894-32062-1-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mark,
+From: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On Wed, 2016-05-11 at 15:50 +0100, Mark Brown wrote:
-> On Wed, May 11, 2016 at 05:31:30PM +0800, Henry Chen wrote:
-> 
-> > +The possible values for "regulator-supported-modes" are:
-> > +	0: PWM mode, mapping to regulator fast mode, allow the
-> > +	converter to remain in the PWM mode regardless of the load current, so
-> > +	that the noise spectrum of the converter can be minimized for certain
-> > +	highly-noise-sensitive handset applications.
-> > +	1: Auto mode, mapping to regulator normal mode, mode switch by current
-> > +	loading. At light load currents, the converter automatically enters
-> > +	PFM mode to save power and improve light load efficiency. At heavy
-> > +	load currents, the converter automatically enters PWM mode to minimiz
-> > +	the noise spectrum of the converter.
-> 
-> The details of how this maps onto Linux shouldn't be in the bindings.
-> 
-> > +				regulator-allow-change-mode;
-> > +				regulator-supported-modes = <0 1>;
-> 
-> These are problematic too as covered in my other mail. 
-> 
-> > -static struct regulator_ops mt6397_volt_range_ops = {
-> > +static const struct regulator_ops mt6397_volt_range_ops = {
-> 
-> The constification is fine but an unrelated change.  Otherwise this
-> looks fine from a code point of view, let's get that merged separately.
+Add power dt-bindings for MT2701.
 
-Okay, although we didn't have conclusion and solution for regulator
-operation mode, as you said that we can get some patch merged
-separately, so I will resend the patch which clean up comments from
-you and Daniel.
+Signed-off-by: Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+---
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    | 13 +++++++----
+ include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++++++++++++
+ 2 files changed, 35 insertions(+), 5 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt2701-power.h
+
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index e8f15e3..16fe94d 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -9,17 +9,20 @@ domain control.
+ 
+ The driver implements the Generic PM domain bindings described in
+ power/power_domain.txt. It provides the power domains defined in
+-include/dt-bindings/power/mt8173-power.h.
++include/dt-bindings/power/mt8173-power.h and mt2701-power.h.
+ 
+ Required properties:
+-- compatible: Must be "mediatek,mt8173-scpsys"
++- compatible: Should be one of:
++	- "mediatek,mt2701-scpsys"
++	- "mediatek,mt8173-scpsys"
+ - #power-domain-cells: Must be 1
+ - reg: Address range of the SCPSYS unit
+ - infracfg: must contain a phandle to the infracfg controller
+ - clock, clock-names: clocks according to the common clock binding.
+-                      The clocks needed "mm", "mfg", "venc" and "venc_lt".
+-		      These are the clocks which hardware needs to be enabled
+-		      before enabling certain power domains.
++                      These are clocks which hardware needs to be
++                      enabled before enabling certain power domains.
++	Required clocks for MT2701: "mm", "mfg", "ethif"
++	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+ 
+ Optional properties:
+ - vdec-supply: Power supply for the vdec power domain
+diff --git a/include/dt-bindings/power/mt2701-power.h b/include/dt-bindings/power/mt2701-power.h
+new file mode 100644
+index 0000000..64cc826
+--- /dev/null
++++ b/include/dt-bindings/power/mt2701-power.h
+@@ -0,0 +1,27 @@
++/*
++ * Copyright (C) 2015 MediaTek Inc.
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef _DT_BINDINGS_POWER_MT2701_POWER_H
++#define _DT_BINDINGS_POWER_MT2701_POWER_H
++
++#define MT2701_POWER_DOMAIN_CONN	0
++#define MT2701_POWER_DOMAIN_DISP	1
++#define MT2701_POWER_DOMAIN_MFG		2
++#define MT2701_POWER_DOMAIN_VDEC	3
++#define MT2701_POWER_DOMAIN_ISP		4
++#define MT2701_POWER_DOMAIN_BDP		5
++#define MT2701_POWER_DOMAIN_ETH		6
++#define MT2701_POWER_DOMAIN_HIF		7
++#define MT2701_POWER_DOMAIN_IFR_MSC	8
++
++#endif /* _DT_BINDINGS_POWER_MT2701_POWER_H */
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
