@@ -1,132 +1,127 @@
-From: chunfeng yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH] usb: xhci-mtk: fixup mouse wakeup failure during system
- suspend
-Date: Tue, 17 May 2016 10:00:06 +0800
-Message-ID: <1463450406.11651.134.camel@mhfsdcap03>
-References: <1461204293-18243-1-git-send-email-chunfeng.yun@mediatek.com>
-	 <1462261458.11651.7.camel@mhfsdcap03> <87vb2vfujq.fsf@intel.com>
-	 <1462266591.11651.34.camel@mhfsdcap03> <87mvo7fpuc.fsf@intel.com>
-	 <1462324873.11651.57.camel@mhfsdcap03> <871t5ifdxk.fsf@intel.com>
-	 <1462359261.11651.69.camel@mhfsdcap03> <87mvo6dojx.fsf@intel.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v8 0/10] Add clock support for Mediatek MT2701
+Date: Tue, 17 May 2016 13:05:01 +0800
+Message-ID: <1463461511-25019-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <87mvo6dojx.fsf@intel.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org, Tony Lindgren <tony@atomide.com>
+Content-Type: text/plain
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-05-04 at 14:56 +0300, Felipe Balbi wrote:
-> Hi,
-> 
-> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> > On Tue, 2016-05-03 at 12:33 +0300, Felipe Balbi wrote:
-> >> >> Hi,
-> >> >> 
-> >> >> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> >> >> chunfeng yun <chunfeng.yun@mediatek.com> writes:
-> >> >> >> > On Thu, 2016-04-21 at 10:04 +0800, Chunfeng Yun wrote:
-> >> >> >> >> Click mouse after xhci suspend completion but before system suspend
-> >> >> >> >> completion, system will not be waken up by mouse if the duration of
-> >> >> >> >> them is larger than 20ms which is the device UFP's resume signaling
-> >> >> >> 
-> >> >> >> what is "them" here ? The duration of what is longer than 20ms ?
-> >> >> > They are "xhci suspend completion" and "system suspend completion";
-> >> >> >
-> >> >> > It's time duration
-> >> >> 
-> >> >> okay. So if xhci suspend takes longer than 20ms your SPM doesn't see a
-> >> >> wakeup ?
-> >> > It is not the time of xhci suspend consumed, but is the time of duration
-> >> > from xhci suspend completion to system suspend completion(after BOOT-CPU
-> >> > is turned off, SPM will be enabled to receive wakeup event)
-> >> 
-> >> Okay, so SPM will be the entity actually handling wakeups, right ? I'm
-> >> assuming something like this happens:
-> >> 
-> >> echo mem > /sys/power/state
-> >>  /* start suspending devices */
-> >>   xhci_suspend()
-> >>  /* all devices suspended */
-> >>  enable_spm()
-> >> 
-> >> so, if a mouse button is pressed after xhci_suspend() returns but before
-> >> enable_spm() runs, then we're gonna miss that event, am I right ?
-> > Yes, you are right.
-> >> 
-> >> I can't think of any way to sort this out. Let's ask on linux-pm (I've
-> >> added linux-pm to Cc list)
-> > Thanks
-> >> 
-> >> >> >> >> lasted. Another reason is that the SPM is not enabled before system
-> >> >> >> 
-> >> >> >> what's SPM ?
-> >> >> > It is System Power Management which is powered off when system is
-> >> >> > running in normal mode, and is powered on when system enters suspend
-> >> >> > mode. It is used to wakeup system when some wakeup sources, such as
-> >> >> > bluetooth or powerkey etc, tigger wakeup event.
-> >> >> 
-> >> >> okay, thanks
-> >> >> 
-> >> >> >> >> suspend compeltion, this causes SPM also not notice the resume signal.
-> >> >> >>            ^^^^^^^^^^
-> >> >> >>            completion
-> >> >> >> 
-> >> >> >> >> So in order to reduce the duration less than 20ms, make use of
-> >> >> >> >> syscore's suspend/resume interface.
-> >> >> >> 
-> >> >> >> no, this is the wrong approach
-> >> >> > But it seems only one workable approach from software side
-> >> >> 
-> >> >> I wouldn't say that. It seems to me SPM should be enabled earlier.
-> >> > Yes, but normally SPM should be enabled after all CPUS are turned off,
-> >> > so it's difficult to do that, I mean enable SPM before turning off CPUS
-> >> 
-> >> is it a requirement that SPM should be enabled only after all CPUs are
-> >> turned off ? If that's the case, then any device in the system might
-> >> have missed wakeups. This doesn't seem like a good design to me; unless
-> >> I'm missing something...
-> > Yes, it's a requirement.
-> >
-> > If the wakeup source is level trigger, and will keep it until SPM notice
-> > it. Although USB wakeup is level trigger, but it just last at most 20ms
-> > and clear itself automatically.
-> 
-> who's clearing USB wakeup after 20ms ? Sure, it's a requirement by the
-> USB spec that host should drive reset for *at least* 20ms, but I don't
-> remember the exact wordings WRT remote wakeup
-> 
-> /me reads
-> 
-> Okay, here it is, section 7.1.7.7 of USB 2.0 Spec states:
-> 
-> 	"The remote wakeup device must hold the resume signaling for at
->         least 1 ms but for no more than 15 ms (TDRSMUP). At the end of
->         this period, the device stops driving the bus (puts its drivers
->         into the high-impedance state and does not drive the bus to the
->         J state)."
-> 
-> IOW, the mouse is not at fault here. Remote wakeup can last anywhere
-> between 1ms and 15ms. If your system can't cope with it, then I'd say
-> it's a problem with your system and you shouldn't allow XHCI to go to
-> such deep power states until SPM is enabled.
-Yes
+This series is based on clk-next, add clock and reset controller support
+for Mediatek MT2701.
 
-> 
-> I really tried finding the correct piece of code which does this for PCI
-> devices, but basically it's treated as an IRQ and as long as
-> enable_irq_wake() or the sysfs file is set to true, then PME gets
-> enabled (hopefully PCI folks can confirm this statement).
-> 
-> Very recently Tony Lindgren added proper handling of wakeup signals as
-> IRQs for non-PCI systems too (see 4990d4fe327b PM / Wakeirq: Add
-> automated device wake IRQ handling), wonder if you could treat SPM
-> similarly.
-We can't make use of device's interrupt as wake IRQ, because there is no
-IRQ when xHCI enters suspend mode.
+This series also refined makefile and Kconfig to support configurable
+multiple SoC clock support.
 
-Thanks
-> 
+There some code borrowed from [2] in clk-mtk.h, and may need to resolve
+conflicts while merging these two series.
+
+changes since v7:
+- Rebase to clk-next.
+- Implement subsystem clocks in seperated files.
+- Replace critical clock enabling with CLK_IS_CRITICAL flag.
+- Reduce most clock registrations in CLK_OF_DECLARE().
+- Remove __init and __initconst from most init fucntions and data,
+  and replace driver registration with platform_driver_register().
+- Replace some common function or variable names with unique names.
+- Use real clock for UARTs.
+
+changes since v6:
+- Rebase to v4.6-rc1.
+- Register subsystem clocks in probe() instead of CLK_OF_DECLARE().
+- Add clocks that referred by subsystem clocks.
+- Fix clk_data size of apmixedsys.
+- Add config options for each subsystem clock provider.
+
+changes since v5:
+- Rebase to v4.5-rc1 and [1].
+- Enable critical clocks for MT2701
+- Refine dt-binding documents, add reset controller support for hifsys.
+
+changes since v4:
+- Rebase to v4.5-rc1.
+- Remove CLK_SET_RATE_PARENT from divider flags.
+- Add img_jpgdec_smi clock.
+- Move clk/mediatek/Kconfig into menu section in clk/Kconfig.
+
+changes since v3:
+- Change the parent of mm_mdp_bls_26m from clk26m to pwm_sel.
+
+changes since v2:
+- Fix ethsys definition.
+- Replace read-modify-write with regmap_update_bits() in clock operations.
+- Move mt2701-resets.h to include/dt-bindings/reset/.
+- Add hifsys reset patch from John Crispin.
+
+changes since v1:
+- Document MT2701 compatible strings.
+
+[1] https://patchwork.kernel.org/patch/8147901/
+[2] http://www.spinics.net/lists/dri-devel/msg106726.html
+
+Erin Lo (1):
+  arm: dts: mt2701: Use real clock for UARTs
+
+James Liao (5):
+  clk: fix initial state of critical clock's parents
+  clk: mediatek: remove __init from clk registration functions
+  clk: mediatek: Refine the makefile to support multiple clock drivers
+  dt-bindings: ARM: Mediatek: Document bindings for MT2701
+  arm: dts: mt2701: Add clock controller device nodes
+
+Shunli Wang (4):
+  clk: mediatek: Add dt-bindings for MT2701 clocks
+  clk: mediatek: Add MT2701 clock support
+  reset: mediatek: Add MT2701 reset controller dt-binding file
+  reset: mediatek: Add MT2701 reset driver
+
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    3 +-
+ .../bindings/arm/mediatek/mediatek,bdpsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,ethsys.txt      |   22 +
+ .../bindings/arm/mediatek/mediatek,hifsys.txt      |   24 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    3 +-
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    3 +-
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    3 +-
+ .../bindings/arm/mediatek/mediatek,pericfg.txt     |    3 +-
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    3 +-
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    3 +-
+ arch/arm/boot/dts/mt2701.dtsi                      |   50 +-
+ drivers/clk/Kconfig                                |    1 +
+ drivers/clk/clk.c                                  |    9 +-
+ drivers/clk/mediatek/Kconfig                       |   73 ++
+ drivers/clk/mediatek/Makefile                      |   13 +-
+ drivers/clk/mediatek/clk-gate.c                    |   54 +-
+ drivers/clk/mediatek/clk-gate.h                    |    2 +
+ drivers/clk/mediatek/clk-mt2701-bdp.c              |  140 +++
+ drivers/clk/mediatek/clk-mt2701-eth.c              |   82 ++
+ drivers/clk/mediatek/clk-mt2701-hif.c              |   81 ++
+ drivers/clk/mediatek/clk-mt2701-img.c              |   82 ++
+ drivers/clk/mediatek/clk-mt2701-mm.c               |  125 +++
+ drivers/clk/mediatek/clk-mt2701-vdec.c             |   93 ++
+ drivers/clk/mediatek/clk-mt2701.c                  | 1037 ++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                     |   52 +-
+ drivers/clk/mediatek/clk-mtk.h                     |   52 +-
+ drivers/clk/mediatek/clk-pll.c                     |    3 +-
+ include/dt-bindings/clock/mt2701-clk.h             |  486 +++++++++
+ include/dt-bindings/reset/mt2701-resets.h          |   83 ++
+ 29 files changed, 2578 insertions(+), 29 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,bdpsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,hifsys.txt
+ create mode 100644 drivers/clk/mediatek/Kconfig
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-bdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-hif.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701.c
+ create mode 100644 include/dt-bindings/clock/mt2701-clk.h
+ create mode 100644 include/dt-bindings/reset/mt2701-resets.h
+
+--
+1.9.1
+
