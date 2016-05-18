@@ -1,57 +1,44 @@
-From: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/5] headers_check: don't warn about c++ guards
-Date: Wed, 18 May 2016 21:20:29 +0100
-Message-ID: <CACvgo51FkfzzhFjYKyyHfxb-DyZeheQP2oZG-tWf1-EiBakp2w@mail.gmail.com>
-References: <1463587653-3035181-1-git-send-email-arnd@arndb.de>
- <1463587653-3035181-2-git-send-email-arnd@arndb.de>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [RFC 2/3] drm/mediatek: add support for Mediatek SoC MT2701
+Date: Wed, 18 May 2016 21:26:04 +0100
+Message-ID: <CACvgo50-wnRYiYueRTqUT=PsUWu4NRm6bwZO8izaAZuf6-kMWQ@mail.gmail.com>
+References: <1463053795-55455-1-git-send-email-yt.shen@mediatek.com>
+ <1463053795-55455-3-git-send-email-yt.shen@mediatek.com>
+ <CACvgo52qc4E=MAGLoCaUH+GZuyvPexHchZnvuv-fF8P23e_1Uw@mail.gmail.com>
+ <1463560401.8576.15.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
-Return-path: <nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-In-Reply-To: <1463587653-3035181-2-git-send-email-arnd-r2nGTMty4D4@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/nouveau>,
- <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/nouveau>
-List-Post: <mailto:nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/nouveau>,
- <mailto:nouveau-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Nouveau" <nouveau-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "moderated list:ARM/S5P EXYNOS AR..." <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, ML nouveau <nouveau-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, ML dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ben Skeggs <bskeggs-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Alex Deucher <alexander.deucher-5C7GfCeVMHo@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig-5C7GfCeVMHo@public.gmane.org>, LAKML <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1463560401.8576.15.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, srv_heupstream@mediatek.com, Ian Campbell <ijc+devicetree@hellion.org.uk>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gMTggTWF5IDIwMTYgYXQgMTc6MDcsIEFybmQgQmVyZ21hbm4gPGFybmRAYXJuZGIuZGU+IHdy
-b3RlOgo+IEEgcmVjZW50IGFkZGl0aW9uIHRvIHRoZSBEUk0gdHJlZSBmb3IgNC43IGFkZGVkICdl
-eHRlcm4gIkMiJyBndWFyZHMKPiBmb3IgYysrIHRvIGFsbCB0aGUgRFJNIGhlYWRlcnMsIGFuZCB0
-aGF0IG5vdyBjYXVzZXMgd2FybmluZ3MKPiBpbiAnbWFrZSBoZWFkZXJzX2NoZWNrJzoKPgo+IHVz
-ci9pbmNsdWRlL2RybS9hbWRncHVfZHJtLmg6Mzg6IHVzZXJzcGFjZSBjYW5ub3QgcmVmZXJlbmNl
-IGZ1bmN0aW9uIG9yIHZhcmlhYmxlIGRlZmluZWQgaW4gdGhlIGtlcm5lbAo+IHVzci9pbmNsdWRl
-L2RybS9kcm0uaDo2MzogdXNlcnNwYWNlIGNhbm5vdCByZWZlcmVuY2UgZnVuY3Rpb24gb3IgdmFy
-aWFibGUgZGVmaW5lZCBpbiB0aGUga2VybmVsCj4gdXNyL2luY2x1ZGUvZHJtL2RybS5oOjY5OTog
-dXNlcnNwYWNlIGNhbm5vdCByZWZlcmVuY2UgZnVuY3Rpb24gb3IgdmFyaWFibGUgZGVmaW5lZCBp
-biB0aGUga2VybmVsCj4gdXNyL2luY2x1ZGUvZHJtL2RybV9mb3VyY2MuaDozMDogdXNlcnNwYWNl
-IGNhbm5vdCByZWZlcmVuY2UgZnVuY3Rpb24gb3IgdmFyaWFibGUgZGVmaW5lZCBpbiB0aGUga2Vy
-bmVsCj4gdXNyL2luY2x1ZGUvZHJtL2RybV9tb2RlLmg6MzM6IHVzZXJzcGFjZSBjYW5ub3QgcmVm
-ZXJlbmNlIGZ1bmN0aW9uIG9yIHZhcmlhYmxlIGRlZmluZWQgaW4gdGhlIGtlcm5lbAo+IHVzci9p
-bmNsdWRlL2RybS9kcm1fc2FyZWEuaDozODogdXNlcnNwYWNlIGNhbm5vdCByZWZlcmVuY2UgZnVu
-Y3Rpb24gb3IgdmFyaWFibGUgZGVmaW5lZCBpbiB0aGUga2VybmVsCj4gdXNyL2luY2x1ZGUvZHJt
-L2V4eW5vc19kcm0uaDoyMTogdXNlcnNwYWNlIGNhbm5vdCByZWZlcmVuY2UgZnVuY3Rpb24gb3Ig
-dmFyaWFibGUgZGVmaW5lZCBpbiB0aGUga2VybmVsCj4gdXNyL2luY2x1ZGUvZHJtL2k4MTBfZHJt
-Lmg6NzogdXNlcnNwYWNlIGNhbm5vdCByZWZlcmVuY2UgZnVuY3Rpb24gb3IgdmFyaWFibGUgZGVm
-aW5lZCBpbiB0aGUga2VybmVsCj4KPiBUaGlzIGNoYW5nZXMgdGhlIGhlYWRlcnNfY2hlY2sucGwg
-c2NyaXB0IHRvIG5vdCB3YXJuIGFib3V0IHRoaXMuCj4gSSdtIGxpc3RpbmcgdGhlIG1lcmdlIGNv
-bW1pdCBhcyBpbnRyb2R1Y2luZyB0aGUgcHJvYmxlbSwgYmVjYXVzZQo+IHRoZXJlIGFyZSBzZXZl
-cmFsIHBhdGNoZXMgaW4gdGhpcyBicmFuY2ggdGhhdCBlYWNoIGRvIHRoaXMgZm9yCj4gb25lIGZp
-bGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgo+IEZp
-eGVzOiA3YzEwZGRmODc0NzIgKCJNZXJnZSBicmFuY2ggJ2RybS11YXBpLWV4dGVybi1jLWZpeGVz
-JyBvZiBodHRwczovL2dpdGh1Yi5jb20vZXZlbGlrb3YvbGludXggaW50byBkcm0tbmV4dCIpClJl
-dmlld2VkLWJ5OiBFbWlsIFZlbGlrb3YgPGVtaWwubC52ZWxpa292QGdtYWlsLmNvbT4KClRoYW5r
-cyBBcm5kICEKCkFzIERhdmUgbWVudGlvbmVkIC0gdGhlIGJlc3Qgc29sdXRpb24gd291bGQgYmUg
-dG8gaGF2ZSB0aGUgaHVua3MKZ2VuZXJhdGVkIG9uIHRoZSBmbHkuIFNhZGx5IFBlcmwgYW5kIG1l
-IGRvbid0IGdvIGhhbmQgaW4gaGFuZCBzbyBpZgp5b3UncmUgaW50ZXJlc3RlZCBJJ2xsIGJlIHJl
-YWxseSBncmF0ZWZ1bC4KCi1FbWlsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCk5vdXZlYXUgbWFpbGluZyBsaXN0Ck5vdXZlYXVAbGlzdHMuZnJlZWRlc2t0
-b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vbm91
-dmVhdQo=
+T24gMTggTWF5IDIwMTYgYXQgMDk6MzMsIFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPiB3
+cm90ZToKCj4+ID4gQEAgLTEwOCw2ICsxMDgsMTAgQEAgaW50IG10a19kcm1fZ2VtX2R1bWJfY3Jl
+YXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LCBzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+
+PiA+ICAgICAgICAgaW50IHJldDsKPj4gPgo+PiA+ICAgICAgICAgYXJncy0+cGl0Y2ggPSBESVZf
+Uk9VTkRfVVAoYXJncy0+d2lkdGggKiBhcmdzLT5icHAsIDgpOwo+PiA+ICsgICAgICAgLyoKPj4g
+PiArICAgICAgICogYWxpZ24gdG8gOCBieXRlcyBzaW5jZSBNYWxpIHJlcXVpcmVzIGl0Lgo+PiA+
+ICsgICAgICAgKi8KPj4gPiArICAgICAgIGFyZ3MtPnBpdGNoID0gQUxJR04oYXJncy0+cGl0Y2gs
+IDgpOwo+PiBBcmUgeW91IHN1cmUgd2UgbmVlZCB0aGlzLCBiYXNlZCBvbiB0aGUgbGluZSBqdXN0
+IGFib3ZlID8KPiBJIHRoaW5rIGJwcCBzdGFuZHMgZm9yIGJpdHMgcGVyIHBpeGVsLCBzbyB3aWR0
+aCAqIGJwcCAvIDggc2ltcGx5IHRyYW5zZmVyIGZyb20gYml0cyB0byBieXRlcywgd2hpY2gKPiBj
+YW5ub3QgZ3VhcmFudGVlIGFsaWduIHRvIDguCj4KWW91J3JlIGFic29sdXRlbHkgY29ycmVjdC4g
+UmVhZGluZyB0aGUgY29tbWVudCBtYWRlIG1lIGxvb3NlIG15IG1pbmQKYW5kIGNvbXBsZXRlbHkg
+bWlzaW50ZXJwcmV0IHRoZSBkaXZpc2lvbiBtYWNyby4KCj4gSSB3aWxsIHJlbW92ZSB0aGlzIGFs
+aWduIHBhcnQgZnJvbSB0aGUgcGF0Y2gsIHRoaXMgY29uc3RyYWludCBpcyBub3QgZnJvbSBkaXNw
+bGF5IGNvbnRyb2xsZXIuClRoYW5rIHlvdSAhCgpSZWdhcmRzCkVtaWwKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApk
+cmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
