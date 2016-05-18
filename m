@@ -1,58 +1,34 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH 0/5] drm: fixes for merge-window regressions
-Date: Wed, 18 May 2016 15:45:01 +0200
-Message-ID: <1463579106-400827-1-git-send-email-arnd@arndb.de>
+From: Stefan Wahren <stefan.wahren@i2se.com>
+Subject: Re: [PATCH v3 0/2] nvmem: remove regmap dependency
+Date: Wed, 18 May 2016 16:30:01 +0200
+Message-ID: <573C7C69.1050301@i2se.com>
+References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, nouveau@lists.freedesktop.org, Seung-Woo Kim <sw0312.kim@samsung.com>, Russell King <rmk+kernel@armlinux.org.uk>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Alex Deucher <alexander.deucher@amd.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, linux-mediatek@lists.infradead.org, Ben Skeggs <bskeggs@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=iso-8859-15
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mediatek@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-QSBjb3VwbGUgb2YgbmV3IHdhcm5pbmdzIGFuZCBidWlsZCBlcnJvcnMgYXBwZWFyZWQgdGhyb3Vn
-aCB0aGUgRFJNCnRyZWUgaW4gbGludXgtbmV4dCBhZnRlciB0aGUgbWVyZ2Ugd2luZG93IG9wZW5l
-ZC4gVGhlIGZpcnN0IHBhdGNoCmhlcmUgaXMgZm9yIHNjcmlwdHMvaGVhZGVyc19jaGVjay5wbCwg
-YnV0IGFzIHRoZSBidWcgaXMgb25seQpwcmVzZW50IGluIGRybS1uZXh0IGF0IHRoZSBtb21lbnQs
-IGl0IHdvdWxkIGJlIGdvb2QgdG8gYWRkIGFsbApmaXZlIHBhdGNoZXMgdG8gdGhhdCB0cmVlIGJl
-Zm9yZSB0aGV5IG1ha2UgaXQgaW50byBtYWlubGluZS4KCkl0J3MgbGlrZWx5IHRoYXQgc29tZSBv
-ZiB0aGVzZSBoYXZlIGFscmVhZHkgYmVlbiBmaXhlZCBzaW5jZQp0aGlzIG1vcm5pbmcncyBsaW51
-eC1uZXh0LCBzbyBqdXN0IGlnbm9yZSB0aGUgb25lcyBhcmUgbm8KbG9uZ2VyIG5lZWRlZC4KCkFy
-bmQgQmVyZ21hbm4gKDUpOgogIGhlYWRlcnNfY2hlY2s6IGRvbid0IHdhcm4gYWJvdXQgYysrIGd1
-YXJkcwogIGRybTogbWVkaWF0ZWs6IGFkZCBDT05GSUdfT0YgZGVwZW5kZW5jeQogIGRybTogbWVk
-aWF0ZWs6IGZpeHVwIGRybV9nZW1fb2JqZWN0X2xvb2t1cCBBUEkgY2hhbmdlCiAgZHJtOiBleHlu
-b3M6IG1hcmsgcG0gZnVuY3Rpb25zIGFzIF9fbWF5YmVfdW51c2VkCiAgZHJtOiByZW1vdmUgdW51
-c2VkIGRldiB2YXJpYWJsZXMKCiBkcml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9jcnRjLmMg
-ICB8IDEgLQogZHJpdmVycy9ncHUvZHJtL2V4eW5vcy9leHlub3NfaGRtaS5jICAgfCA2ICsrLS0t
-LQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAgfCAxICsKIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2ZiLmMgIHwgMiArLQogZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZ2VtLmMgfCAyICstCiBkcml2ZXJzL2dwdS9kcm0vbm91dmVhdS9ub3V2
-ZWF1X2dlbS5jICB8IDEgLQogZHJpdmVycy9ncHUvZHJtL25vdXZlYXUvbnY1MF9kaXNwbGF5LmMg
-fCAxIC0KIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX2NzLmMgICAgIHwgMSAtCiBzY3Jp
-cHRzL2hlYWRlcnNfY2hlY2sucGwgICAgICAgICAgICAgICB8IDQgKysrKwogOSBmaWxlcyBjaGFu
-Z2VkLCA5IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQoKCkNjOiBSdXNzZWxsIEtpbmcg
-PHJtaytrZXJuZWxAYXJtbGludXgub3JnLnVrPgpDYzogSW5raSBEYWUgPGlua2kuZGFlQHNhbXN1
-bmcuY29tPgpDYzogSm9vbnlvdW5nIFNoaW0gPGp5MDkyMi5zaGltQHNhbXN1bmcuY29tPgpDYzog
-U2V1bmctV29vIEtpbSA8c3cwMzEyLmtpbUBzYW1zdW5nLmNvbT4KQ2M6IEt5dW5nbWluIFBhcmsg
-PGt5dW5nbWluLnBhcmtAc2Ftc3VuZy5jb20+CkNjOiBLdWtqaW4gS2ltIDxrZ2VuZUBrZXJuZWwu
-b3JnPgpDYzogS3J6eXN6dG9mIEtvemxvd3NraSA8ay5rb3psb3dza2lAc2Ftc3VuZy5jb20+CkNj
-OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgpDYzogQmVuIFNrZWdn
-cyA8YnNrZWdnc0ByZWRoYXQuY29tPgpDYzogQWxleCBEZXVjaGVyIDxhbGV4YW5kZXIuZGV1Y2hl
-ckBhbWQuY29tPgpDYzogIkNocmlzdGlhbiBLw7ZuaWciIDxjaHJpc3RpYW4ua29lbmlnQGFtZC5j
-b20+CkNjOiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgpDYzogZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpDYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwpDYzogbGlu
-dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1zYW1zdW5nLXNvY0B2
-Z2VyLmtlcm5lbC5vcmcKQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6
-IG5vdXZlYXVAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCgotLSAKMi43LjAKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Srinivas,
+
+Am 02.05.2016 um 20:36 schrieb Srinivas Kandagatla:
+> Hi Greg, 
+>
+> This is v3 patchset for the leftover 2 patches for nvmem regmap
+> removal series [1]. These patches are based on char-misc tree.
+>
+> nvmem uses regmap_raw_read/write apis to read/write data from providers,
+> With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
+> and fix accessor usage") nvmem providers based on regmap-mmio stopped
+> working, as nvmem core was using raw accessors.
+> This issue can be fixed temporarly by moving to other regmap apis,
+> but we might hit same issue in future, and regmap looks like an
+> overdo for nvmem. Moving to interfaces based on read/write callbacks
+> from providers would be more robust.
+
+i noticed that Documentation/nvmem/nvmem.txt also needs a fix after
+removing regmap dependency.
