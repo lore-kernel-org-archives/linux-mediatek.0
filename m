@@ -1,64 +1,64 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/5] drm: mediatek: fixup drm_gem_object_lookup API change
-Date: Thu, 19 May 2016 16:56:30 +0200
-Message-ID: <573DD41E.3050506@gmail.com>
-References: <1463587653-3035181-1-git-send-email-arnd@arndb.de>
- <1463587653-3035181-4-git-send-email-arnd@arndb.de>
+From: <yt.shen@mediatek.com>
+Subject: [RFC v2 0/5] MT2701 DRM support
+Date: Fri, 20 May 2016 23:05:31 +0800
+Message-ID: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1463587653-3035181-4-git-send-email-arnd@arndb.de>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>
-Cc: Russell King <rmk+kernel@armlinux.org.uk>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Ben Skeggs <bskeggs@redhat.com>, Alex Deucher <alexander.deucher@amd.com>, =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 18/05/16 18:07, Arnd Bergmann wrote:
-> The drm_gem_object_lookup() function prototype changed while this
-> driver was added, so it fails to build now:
->
-> drivers/gpu/drm/mediatek/mtk_drm_gem.c: In function 'mtk_drm_gem_dumb_map_offset':
-> drivers/gpu/drm/mediatek/mtk_drm_gem.c:142:30: error: passing argument 1 of 'drm_gem_object_lookup' from incompatible pointer type [-Werror=incompatible-pointer-types]
->    obj = drm_gem_object_lookup(dev, file_priv, handle);
->
-> This fixes the new caller as well.
->
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> Fixes: a8ad0bd84f98 ("drm: Remove unused drm_device from drm_gem_object_lookup()")
-> ---
->   drivers/gpu/drm/mediatek/mtk_drm_fb.c  | 2 +-
->   drivers/gpu/drm/mediatek/mtk_drm_gem.c | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> index 33d30c19f35f..147df85399ab 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> @@ -138,7 +138,7 @@ struct drm_framebuffer *mtk_drm_mode_fb_create(struct drm_device *dev,
->   	if (drm_format_num_planes(cmd->pixel_format) != 1)
->   		return ERR_PTR(-EINVAL);
->
-> -	gem = drm_gem_object_lookup(dev, file, cmd->handles[0]);
-> +	gem = drm_gem_object_lookup(file, cmd->handles[0]);
->   	if (!gem)
->   		return ERR_PTR(-ENOENT);
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> index a773bfaea913..fa2ec0cd00e8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> @@ -139,7 +139,7 @@ int mtk_drm_gem_dumb_map_offset(struct drm_file *file_priv,
->   	struct drm_gem_object *obj;
->   	int ret;
->
-> -	obj = drm_gem_object_lookup(dev, file_priv, handle);
-> +	obj = drm_gem_object_lookup(file_priv, handle);
->   	if (!obj) {
->   		DRM_ERROR("failed to lookup gem object.\n");
->   		return -EINVAL;
->
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+RnJvbTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+CgpUaGlzIGlzIE1UMjcwMSBEUk0g
+c3VwcG9ydCBSRkMsIGJhc2VkIG9uIE1UODE3MyBEUk0gcGF0Y2ggdjE2LgpNb3N0IGNvZGVzIGFy
+ZSB0aGUgc2FtZSwgZXhjZXB0IHNvbWUgcmVnaXN0ZXIgY2hhbmdlZC4KCkZvciBleGFtcGxlOgog
+LSBESVNQX09WTCBhZGRyZXNzIG9mZnNldCBjaGFuZ2VkLCBjb2xvciBmb3JtYXQgZGVmaW5pdGlv
+biBjaGFuZ2VkLgogLSBESVNQX1JETUEgZmlmbyBzaXplIGNoYW5nZWQuCiAtIERJU1BfQ09MT1Ig
+b2Zmc2V0IGNoYW5nZWQuCgpXZSBhZGQgYSBuZXcgY29tcG9uZW50IERJU1BfQkxTLCBhbmQgdGhl
+IGNvbm5lY3Rpb24gc2V0dGluZ3MgYXJlIHVwZGF0ZWQuCkFuZCB3ZSBoYXZlIHNoYWRvdyByZWdp
+c3RlciBzdXBwb3J0IGluIE1UMjcwMS4KCkNoYW5nZXMgc2luY2UgdjE6Ci0gUmVtb3ZlZCBCTFMg
+YmluZGluZ3MgYW5kIGNvZGVzLCB3aGljaCBiZWxvbmcgdG8gcHdtIGRyaXZlcgotIE1vdmVkIG10
+a19kaXNwX211dGV4X2FjcXVpcmUoKSBqdXN0IGJlZm9yZSBtdGtfY3J0Y19kZHBfY29uZmlnKCkK
+LSBTcGxpdCBwYXRjaCBpbnRvIHNtYWxsZXIgcGFydHMKLSBBZGRlZCBjb25zdCBrZXl3b3JkIHRv
+IGNvbnN0YW50IHN0cnVjdHVyZQotIFJlbW92ZWQgY29kZXMgZm9yIHNwZWNpYWwgbWVtb3J5IGFs
+aWduCgpUaGUgUkZDIGRlcGVuZHMgb24gTVQyNzAxIGlvbW11L3NtaSBkcml2ZXIuCmh0dHBzOi8v
+cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTA0MzQxMS8gKCJkdC1iaW5kaW5nczogbWVkaWF0
+ZWs6IGFkZCBkZXNjcmlwdGlvbnMgZm9yIG1lZGlhdGVrIG10MjcwMSBpb21tdSBhbmQgc21pIiks
+Cmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTA0MzM5MS8gKCJpb21tdS9tZWRp
+YXRlazogbW92ZSB0aGUgY29tbW9uIHN0cnVjdCBpbnRvIGhlYWRlciBmaWxlIiksCmh0dHBzOi8v
+cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTA0MzQyMS8gKCJtZW1vcnkvbWVkaWF0ZWs6IGFk
+ZCBzdXBwb3J0IGZvciBtdDI3MDEiKSwKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRj
+aC85MDQzNDUxLyAoImlvbW11L21lZGlhdGVrOiBhZGQgc3VwcG9ydCBmb3IgbXRrIGlvbW11IGdl
+bmVyYXRpb24gb25lIEhXIiksCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTA0
+MzQ3MS8gKCJBUk06IGR0czogbXQyNzAxOiBhZGQgaW9tbXUvc21pIGR0c2kgbm9kZSBmb3IgbXQy
+NzAxIiksCgpUaGFua3MsCnl0LnNoZW4KCllUIFNoZW4gKDUpOgogIGRybS9tZWRpYXRlazogcmVu
+YW1lIG1hY3JvcywgYWRkIGNoaXAgc3VmZml4CiAgZHJtL21lZGlhdGtlOiBhZGQgc3VwcG9ydCBm
+b3IgTWVkaWF0ZWsgU29DIE1UMjcwMQogIGRybS9tZWRpYXRlazogYWRkICpkcml2ZXJfZGF0YSBm
+b3IgZGlmZmVyZW50IGhhcmR3YXJlIHNldHRpbmdzCiAgZHJtL21lZGlhdGVrOiBhZGQgc2hhZG93
+IHJlZ2lzdGVyIHN1cHBvcnQKICBhcm06IGR0czogbXQyNzAxOiBBZGQgZGlzcGxheSBzdWJzeXN0
+ZW0gcmVsYXRlZCBub2RlcyBmb3IgTVQyNzAxCgogYXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAxLmR0
+c2kgICAgICAgICAgICAgICB8ICAxMTcgKysrKysrKysrKysrKysrKysrKysrCiBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgICAgIHwgICA0OSArKysrKystLS0KIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAgfCAgIDM2ICsrKysrLS0KIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgICAgfCAgIDc1ICsrKysrKysr
+LS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgfCAgMTUx
+ICsrKysrKysrKysrKysrKysrKysrLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZGRwLmggICAgICB8ICAgIDIgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZGRwX2NvbXAuYyB8ICAgNDIgKysrKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2RkcF9jb21wLmggfCAgIDE1ICsrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmMgICAgICB8ICAgNzIgKysrKysrKysrKystLQogZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAgIDkgKysKIDEwIGZpbGVzIGNoYW5nZWQsIDQ2
+MiBpbnNlcnRpb25zKCspLCAxMDYgZGVsZXRpb25zKC0pCgotLSAKMS43LjkuNQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
+bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
