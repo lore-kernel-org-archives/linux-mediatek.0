@@ -1,105 +1,40 @@
-From: <yt.shen@mediatek.com>
-Subject: [RFC v2 5/5] arm: dts: mt2701: Add display subsystem related nodes
- for MT2701
-Date: Fri, 20 May 2016 23:05:36 +0800
-Message-ID: <1463756736-46573-6-git-send-email-yt.shen@mediatek.com>
-References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, YT Shen <yt.shen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Subject: [PATCH 03/54] MAINTAINERS: Add file patterns for mediatek device tree bindings
+Date: Sun, 22 May 2016 11:05:40 +0200
+Message-ID: <1463907991-7916-4-git-send-email-geert@linux-m68k.org>
+References: <1463907991-7916-1-git-send-email-geert@linux-m68k.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1463907991-7916-1-git-send-email-geert@linux-m68k.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Geert Uytterhoeven <geert@linux-m68k.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+CgpUaGlzIHBhdGNoIGFkZHMgdGhl
-IGRldmljZSBub2RlcyBmb3IgdGhlIERJU1AgZnVuY3Rpb24gYmxvY2tzIGZvciBNVDI3MDEKClNp
-Z25lZC1vZmYtYnk6IFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPgotLS0KIGFyY2gvYXJt
-L2Jvb3QvZHRzL210MjcwMS5kdHNpIHwgIDExNyArKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDExNyBpbnNlcnRpb25zKCspCgpkaWZmIC0t
-Z2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAxLmR0c2kgYi9hcmNoL2FybS9ib290L2R0cy9t
-dDI3MDEuZHRzaQppbmRleCAzNjNkZTBkLi4wYmVlZjJhIDEwMDY0NAotLS0gYS9hcmNoL2FybS9i
-b290L2R0cy9tdDI3MDEuZHRzaQorKysgYi9hcmNoL2FybS9ib290L2R0cy9tdDI3MDEuZHRzaQpA
-QCAtMjQsNiArMjQsMTMgQEAKIAljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMSI7CiAJaW50
-ZXJydXB0LXBhcmVudCA9IDwmc3lzaXJxPjsKIAorCWFsaWFzZXMgeworCQlyZG1hMCA9ICZyZG1h
-MDsKKwkJcmRtYTEgPSAmcmRtYTE7CisJCWRwaTAgPSAmZHBpMDsKKwkJZHBpMSA9ICZkcGkxOwor
-CX07CisKIAljcHVzIHsKIAkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CiAJCSNzaXplLWNlbGxzID0g
-PDA+OwpAQCAtMTcxLDYgKzE3OCwxNCBAQAogCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQy
-NzAxX1BPV0VSX0RPTUFJTl9ESVNQPjsKIAl9OwogCisJbWlwaV90eDA6IG1pcGktZHBoeUAxMDAx
-MDAwMCB7CisJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLW1pcGktdHgiOworCQlyZWcg
-PSA8MCAweDEwMDEwMDAwIDAgMHg5MD47CisJCWNsb2NrcyA9IDwmY2xrMjZtPjsKKwkJY2xvY2st
-b3V0cHV0LW5hbWVzID0gIm1pcGlfdHgwX3BsbCI7CisJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CisJ
-fTsKKwogCXN5c2lycTogaW50ZXJydXB0LWNvbnRyb2xsZXJAMTAyMDAxMDAgewogCQljb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10MjcwMS1zeXNpcnEiLAogCQkJICAgICAibWVkaWF0ZWssbXQ2NTc3
-LXN5c2lycSI7CkBAIC0yNTUsNiArMjcwLDc5IEBACiAJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CiAJ
-fTsKIAorCW92bEAxNDAwNzAwMCB7CisJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRp
-c3Atb3ZsIjsKKwkJcmVnID0gPDAgMHgxNDAwNzAwMCAwIDB4MTAwMD47CisJCWludGVycnVwdHMg
-PSA8R0lDX1NQSSAxNTMgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tzID0gPCZtbXN5cyBD
-TEtfTU1fRElTUF9PVkw+OworCQlpb21tdXMgPSA8JmlvbW11IE1UMjcwMV9NNFVfUE9SVF9ESVNQ
-X09WTF8wPjsKKwkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OworCX07CisKKwlyZG1hMDogcmRt
-YUAxNDAwODAwMCB7CisJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtcmRtYSI7
-CisJCXJlZyA9IDwwIDB4MTQwMDgwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19T
-UEkgMTUyIElSUV9UWVBFX0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
-U1BfUkRNQT47CisJCWlvbW11cyA9IDwmaW9tbXUgTVQyNzAxX000VV9QT1JUX0RJU1BfUkRNQT47
-CisJCW1lZGlhdGVrLGxhcmIgPSA8JmxhcmIwPjsKKwl9OworCisJd2RtYUAxNDAwOTAwMCB7CisJ
-CWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3Atd2RtYSI7CisJCXJlZyA9IDwwIDB4
-MTQwMDkwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTU0IElSUV9UWVBF
-X0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfV0RNQT47CisJCWlv
-bW11cyA9IDwmaW9tbXUgTVQyNzAxX000VV9QT1JUX0RJU1BfV0RNQT47CisJCW1lZGlhdGVrLGxh
-cmIgPSA8JmxhcmIwPjsKKwl9OworCisJYmxzQDE0MDBhMDAwIHsKKwkJY29tcGF0aWJsZSA9ICJt
-ZWRpYXRlayxtdDI3MDEtZGlzcC1ibHMiOworCQlyZWcgPSA8MCAweDE0MDBhMDAwIDAgMHgxMDAw
-PjsKKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE1NSBJUlFfVFlQRV9MRVZFTF9MT1c+OworCQlj
-bG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX0JMUz47CisJfTsKKworCWNvbG9yQDE0MDBiMDAw
-IHsKKwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1jb2xvciI7CisJCXJlZyA9
-IDwwIDB4MTQwMGIwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTU2IElS
-UV9UWVBFX0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfQ09MT1I+
-OworCX07CisKKwlkc2kwOiBkc2lAMTQwMGMwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10MjcwMS1kc2kiOworCQlyZWcgPSA8MCAweDE0MDBjMDAwIDAgMHgxMDAwPjsKKwkJaW50ZXJy
-dXB0cyA9IDxHSUNfU1BJIDE1NyBJUlFfVFlQRV9MRVZFTF9MT1c+OworCQljbG9ja3MgPSA8Jm1t
-c3lzIENMS19NTV9EU0lfRU5HSU5FPiwgPCZtbXN5cyBDTEtfTU1fRFNJX0RJRz4sCisJCQkgPCZt
-aXBpX3R4MD47CisJCWNsb2NrLW5hbWVzID0gImVuZ2luZSIsICJkaWdpdGFsIiwgImhzIjsKKwkJ
-cGh5cyA9IDwmbWlwaV90eDA+OworCQlwaHktbmFtZXMgPSAiZHBoeSI7CisJCSNhZGRyZXNzLWNl
-bGxzID0gPDE+OworCQkjc2l6ZS1jZWxscyA9IDwwPjsKKwkJc3RhdHVzID0gImRpc2FibGVkIjsK
-Kwl9OworCisJZHBpMDogZHBpQDE0MDBkMDAwIHsKKwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
-dDI3MDEtZHBpIjsKKwkJcmVnID0gPDAgMHgxNDAwZDAwMCAwIDB4MTAwMD47CisJCWludGVycnVw
-dHMgPSA8R0lDX1NQSSAxNTggSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tzID0gPCZtbXN5
-cyBDTEtfTU1fRFBJX0RJR0w+LAorCQkJIDwmbW1zeXMgQ0xLX01NX0RQSV9FTkdJTkU+OworCQlj
-bG9jay1uYW1lcyA9ICJjbGtfZHBpX2RpZ2wiLAorCQkJICAgICAgImNsa19kcGlfZW5naW5lIjsK
-KwkJc3RhdHVzID0gImRpc2FibGVkIjsKKwl9OworCisJbXV0ZXg6IG11dGV4QDE0MDBlMDAwIHsK
-KwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1tdXRleCI7CisJCXJlZyA9IDww
-IDB4MTQwMGUwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTYxIElSUV9U
-WVBFX0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX01VVEVYXzMySz47CisJ
-fTsKKwogCWxhcmIwOiBsYXJiQDE0MDEwMDAwIHsKIAkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxt
-dDI3MDEtc21pLWxhcmIiOwogCQlyZWcgPSA8MCAweDE0MDEwMDAwIDAgMHgxMDAwPjsKQEAgLTI2
-NSw2ICszNTMsMzUgQEAKIAkJcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UMjcwMV9QT1dFUl9E
-T01BSU5fRElTUD47CiAJfTsKIAorCXJkbWExOiByZG1hQDE0MDEyMDAwIHsKKwkJY29tcGF0aWJs
-ZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1yZG1hIjsKKwkJcmVnID0gPDAgMHgxNDAxMjAwMCAw
-IDB4MTAwMD47CisJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNjQgSVJRX1RZUEVfTEVWRUxfTE9X
-PjsKKwkJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9SRE1BMT47CisJCWlvbW11cyA9IDwm
-aW9tbXUgTVQyNzAxX000VV9QT1JUX0RJU1BfUkRNQTE+OworCQltZWRpYXRlayxsYXJiID0gPCZs
-YXJiMD47CisJfTsKKworCXVmb2VAMTQwMTMwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10MjcwMS1kaXNwLXVmb2UiOworCQlyZWcgPSA8MCAweDE0MDEzMDAwIDAgMHgxMDAwPjsKKwkJ
-Y2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9VRk9FPjsKKwl9OworCisJZHBpMTogZHBpQDE0
-MDE0MDAwIHsKKwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZHBpIjsKKwkJcmVnID0g
-PDAgMHgxNDAxNDAwMCAwIDB4MTAwMD47CisJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxOTQgSVJR
-X1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRFBJMV9ESUdMPiwK
-KwkJCSA8Jm1tc3lzIENMS19NTV9EUEkxX0VOR0lORT4sCisJCQkgPCZ0b3Bja2dlbiBDTEtfVE9Q
-X0RQSTFfU0VMPiwKKwkJCSA8JnRvcGNrZ2VuIENMS19UT1BfVFZEUExMPiwKKwkJCSA8JnRvcGNr
-Z2VuIENMS19UT1BfVFZEUExMX0QyPiwKKwkJCSA8JnRvcGNrZ2VuIENMS19UT1BfVFZEUExMX0Q0
-PjsKKwkJY2xvY2stbmFtZXMgPSAicGl4ZWwiLCAiZW5naW5lIiwgInNlbCIsImRpdjEiLCJkaXYy
-IiwiZGl2NCI7CisJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CisJfTsKKwogCWltZ3N5czogc3lzY29u
-QDE1MDAwMDAwIHsKIAkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtaW1nc3lzIiwgInN5
-c2NvbiI7CiAJCXJlZyA9IDwwIDB4MTUwMDAwMDAgMCAweDEwMDA+OwotLSAKMS43LjkuNQoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
-aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Submitters of device tree binding documentation may forget to CC
+the subsystem maintainer if this is missing.
+
+Signed-off-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+Please apply this patch directly if you want to be involved in device
+tree binding documentation for your subsystem.
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e1bf10e4ad021483..80d97eebcccec449 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1424,6 +1424,7 @@ M:	Matthias Brugger <matthias.bgg@gmail.com>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
++F:	Documentation/devicetree/bindings/soc/mediatek/
+ F:	arch/arm/boot/dts/mt6*
+ F:	arch/arm/boot/dts/mt8*
+ F:	arch/arm/mach-mediatek/
+-- 
+1.9.1
