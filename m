@@ -1,45 +1,45 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v2 3/3] regulator: mt6397: Add buck change mode regulator
- interface for mt6397
-Date: Mon, 23 May 2016 12:29:53 +0100
-Message-ID: <20160523112953.GS8206@sirena.org.uk>
-References: <1463987611-32139-1-git-send-email-henryc.chen@mediatek.com>
- <1463987611-32139-4-git-send-email-henryc.chen@mediatek.com>
+Subject: Re: [PATCH] regulator: mt6397: Constify struct regulator_ops
+Date: Mon, 23 May 2016 12:32:22 +0100
+Message-ID: <20160523113222.GT8206@sirena.org.uk>
+References: <1463988616-18803-1-git-send-email-henryc.chen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ZmeoGP/RI+eIV+cU"
+	protocol="application/pgp-signature"; boundary="RlgFhasKO3bfRJ5j"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1463987611-32139-4-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <1463988616-18803-1-git-send-email-henryc.chen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
---ZmeoGP/RI+eIV+cU
+--RlgFhasKO3bfRJ5j
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Mon, May 23, 2016 at 03:13:31PM +0800, Henry Chen wrote:
-> BUCKs of mt6397 have auto mode and pwm mode.
-> User can use regulator interfaces to control modes
+On Mon, May 23, 2016 at 03:30:16PM +0800, Henry Chen wrote:
+> Consitify the structure of regulator operations.
 
-This doesn't apply against current code, please check and resend.
+Oh, actually the mode setting patch does apply but it depends on this
+one (which was sent after...).  It would have been better to send a
+patch series for the driver and separately a patch series for the core,
+the driver changes are orthogonal to the core ones here.
 
---ZmeoGP/RI+eIV+cU
+--RlgFhasKO3bfRJ5j
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXQumwAAoJECTWi3JdVIfQSekH/Rjt9QylkbSAR2VDzGagKH83
-62qukl1SdPnodsk8nAygncXS+/XJG33B8rMr/6QqPTNqr+r54vmbJ7i93n1vCZUA
-qkMiRgmvVUD6UkdzNWpknTCyZUC1uZlBL1JvH3jFS6aDjGnxPrHXBWECp/pbzyvY
-jBO4ILsJRzR4iDBvtyfodhhBHT3acxiLRT9alndjh0Xmz2d4mY1uYfbzpa/+RRR+
-D11I3gY/LFcHKIgIyzB4xGDl3rcPjN6xHiw89PnSwyw7q1rTHlcU6Zqp50EHlXaJ
-CskeMcvjdgWvjnPaZ+m2NFXwkVOFPrtgXVB750vlEWkxmtEdZUJqGiaBRBiw/Fo=
-=2HYj
+iQEcBAEBCAAGBQJXQupGAAoJECTWi3JdVIfQJEwH/1+Or2O49A/lNVHmMznerZDt
+Oa6ZnLL5hIiHnSHcP87+7WbIV8z8iZcxDNfxI/k8d5qPaOL6ZmrMgbPyegAmLPZL
+s1kXAio4FxfQfOdWrWGnp/mLeKMkVi0aYPVEPy5FH1lYTvd0axihEwbnCEJBes8z
+GFBU1mZB8VyN0YfItCO4JS/re/6e8DrFayfN8n1L+tuvZAsEJwfpntvGXcLMFn42
+9A8S4waagyDYipoV+yiHtXLXBXcv/srbQprV5fiPkyZAegHA4tVm0i0YS1NiFJ2i
+tjh7FBqqhMIy9j5yeFBJu2BNUv3R9z6sTV1mlGIUNW4CQFSGkmwsl3b5syQnipE=
+=PwmK
 -----END PGP SIGNATURE-----
 
---ZmeoGP/RI+eIV+cU--
+--RlgFhasKO3bfRJ5j--
