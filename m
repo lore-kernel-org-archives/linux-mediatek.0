@@ -1,75 +1,54 @@
-From: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH] soc: mtk-pmic-wrap: avoid integer overflow warning
-Date: Mon, 23 May 2016 17:15:24 +0800
-Message-ID: <1463994924.18442.1.camel@mtksdaap41>
-References: <1463086904-2493288-1-git-send-email-arnd@arndb.de>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [RFC v2 3/5] drm/mediatek: add *driver_data for different
+ hardware settings
+Date: Mon, 23 May 2016 17:43:02 +0800
+Message-ID: <1463996582.30093.5.camel@mtksdaap41>
+References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
+ <1463756736-46573-4-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463086904-2493288-1-git-send-email-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1463756736-46573-4-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: yt.shen@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-Thanks to the patch.
-
-On Thu, 2016-05-12 at 23:01 +0200, Arnd Bergmann wrote:
-> On ARM64, the mtk-pmic-wrap driver causes a harmless warning:
-> 
-> mtk-pmic-wrap.c:1062:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-> mtk-pmic-wrap.c:1074:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-> mtk-pmic-wrap.c:1086:16: warning: large integer implicitly truncated to unsigned type [-Woverflow]
->   .int_en_all = ~(BIT(31) | BIT(1)),
-> 
-> The problem is that the result of the BIT() macro is an 'unsigned long',
-> so taking the bitwise NOT operation of that results in an integer
-> with the upper 32 bits all set and that cannot be assigned to a
-> 'u32' variable without loss of information.
-> 
-> This is harmless because we were never interested in the upper bits
-> here anyway, so we can shut up the warning by adding a simple cast
-> to 'u32'.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-
-Acked-by: Henry Chen <henryc.chen at mediatek.com>
-
-> ---
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 3c3e56df526e..a003ba26ca6e 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -1059,7 +1059,7 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
->  	.regs = mt2701_regs,
->  	.type = PWRAP_MT2701,
->  	.arb_en_all = 0x3f,
-> -	.int_en_all = ~(BIT(31) | BIT(2)),
-> +	.int_en_all = ~(u32)(BIT(31) | BIT(2)),
->  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE_NEW,
->  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
->  	.has_bridge = 0,
-> @@ -1071,7 +1071,7 @@ static struct pmic_wrapper_type pwrap_mt8135 = {
->  	.regs = mt8135_regs,
->  	.type = PWRAP_MT8135,
->  	.arb_en_all = 0x1ff,
-> -	.int_en_all = ~(BIT(31) | BIT(1)),
-> +	.int_en_all = ~(u32)(BIT(31) | BIT(1)),
->  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
->  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
->  	.has_bridge = 1,
-> @@ -1083,7 +1083,7 @@ static struct pmic_wrapper_type pwrap_mt8173 = {
->  	.regs = mt8173_regs,
->  	.type = PWRAP_MT8173,
->  	.arb_en_all = 0x3f,
-> -	.int_en_all = ~(BIT(31) | BIT(1)),
-> +	.int_en_all = ~(u32)(BIT(31) | BIT(1)),
->  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
->  	.wdt_src = PWRAP_WDT_SRC_MASK_NO_STAUPD,
->  	.has_bridge = 0,
+SGksIFlUOgoKT25lIGNvbW1lbnQgYmVsb3cuCgpPbiBGcmksIDIwMTYtMDUtMjAgYXQgMjM6MDUg
+KzA4MDAsIHl0LnNoZW5AbWVkaWF0ZWsuY29tIHdyb3RlOgo+IEZyb206IFlUIFNoZW4gPHl0LnNo
+ZW5AbWVkaWF0ZWsuY29tPgo+IAo+IFRoZXJlIGFyZSBzb21lIGhhcmR3YXJlIHNldHRpbmdzIGNo
+YW5nZWQsIGJldHdlZW4gTVQ4MTczICYgTVQyNzAxOgo+IERJU1BfT1ZMIGFkZHJlc3Mgb2Zmc2V0
+IGNoYW5nZWQsIGNvbG9yIGZvcm1hdCBkZWZpbml0aW9uIGNoYW5nZWQuCj4gRElTUF9SRE1BIGZp
+Zm8gc2l6ZSBjaGFuZ2VkLgo+IERJU1BfQ09MT1Igb2Zmc2V0IGNoYW5nZWQuCj4gCj4gU2lnbmVk
+LW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gKwo+ICtzdGF0
+aWMgaW5saW5lIHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgKm10a19vdmxfZ2V0X2Ry
+aXZlcl9kYXRhKAo+ICsJc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiArewo+ICsJY29u
+c3Qgc3RydWN0IG9mX2RldmljZV9pZCAqb2ZfaWQgPQo+ICsJCW9mX21hdGNoX2RldmljZShtdGtf
+ZGlzcF9vdmxfZHJpdmVyX2R0X21hdGNoLCAmcGRldi0+ZGV2KTsKPiArCj4gKwlyZXR1cm4gKHN0
+cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgKilvZl9pZC0+ZGF0YTsKPiArfQo+ICsKPiAr
+c3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RkcF9jb21wX2RyaXZlcl9kYXRhICptdGtfcmRtYV9n
+ZXRfZHJpdmVyX2RhdGEoCj4gKwlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICt7Cj4g
+Kwljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZCA9Cj4gKwkJb2ZfbWF0Y2hfZGV2aWNl
+KG10a19kaXNwX3JkbWFfZHJpdmVyX2R0X21hdGNoLCAmcGRldi0+ZGV2KTsKPiArCj4gKwlyZXR1
+cm4gKHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgKilvZl9pZC0+ZGF0YTsKPiArfQo+
+ICsKPiArc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RkcF9jb21wX2RyaXZlcl9kYXRhICptdGtf
+Y29sb3JfZ2V0X2RyaXZlcl9kYXRhKAo+ICsJc3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+ICt7
+Cj4gKwljb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZCA9Cj4gKwkJb2ZfbWF0Y2hfbm9k
+ZShtdGtfZGlzcF9jb2xvcl9kcml2ZXJfZHRfbWF0Y2gsIG5vZGUpOwo+ICsKPiArCXJldHVybiAo
+c3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJfZGF0YSAqKW9mX2lkLT5kYXRhOwo+ICt9Cj4gKyAK
+ClRoZXNlIHRocmVlIGZ1bmN0aW9ucyBsb29rcyB0aGUgc2FtZSB3aXRoIGRpZmZlcmVudCBwYXJh
+bWV0ZXI6Cm10a19kaXNwX292bF9kcml2ZXJfZHRfbWF0Y2gsIG10a19kaXNwX3JkbWFfZHJpdmVy
+X2R0X21hdGNoLCBhbmQKbXRrX2Rpc3BfY29sb3JfZHJpdmVyX2R0X21hdGNoLiBTbyBtZXJnZSB0
+aGVtIHRvIHByZXZlbnQgZHVwbGljYXRlZApjb2RlLgoKUmVnYXJkcywKQ0sKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
+aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
+a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
