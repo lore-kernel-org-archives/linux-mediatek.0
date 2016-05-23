@@ -1,45 +1,56 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] regulator: mt6397: Constify struct regulator_ops
-Date: Mon, 23 May 2016 12:32:22 +0100
-Message-ID: <20160523113222.GT8206@sirena.org.uk>
-References: <1463988616-18803-1-git-send-email-henryc.chen@mediatek.com>
+From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v7 0/4] Mediatek MT8173 CMDQ support
+Date: Mon, 23 May 2016 20:23:06 +0800
+Message-ID: <1464006190-344-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="RlgFhasKO3bfRJ5j"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1463988616-18803-1-git-send-email-henryc.chen@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, eddie.huang@mediatek.com
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---RlgFhasKO3bfRJ5j
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hi,
 
-On Mon, May 23, 2016 at 03:30:16PM +0800, Henry Chen wrote:
-> Consitify the structure of regulator operations.
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help read/write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
 
-Oh, actually the mode setting patch does apply but it depends on this
-one (which was sent after...).  It would have been better to send a
-patch series for the driver and separately a patch series for the core,
-the driver changes are orthogonal to the core ones here.
+These patches have a build dependency on top of v4.6-rc1.
 
---RlgFhasKO3bfRJ5j
-Content-Type: application/pgp-signature; name="signature.asc"
+Changes since v6:
+ - remove task waiting list
+ - remove cmdq_command
+ - use kzalloc/kfree instead of kmem_cache
+ - use u64* instead of u32* if suitable
+ - shrink some code
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Best regards,
+HS Liao
 
-iQEcBAEBCAAGBQJXQupGAAoJECTWi3JdVIfQJEwH/1+Or2O49A/lNVHmMznerZDt
-Oa6ZnLL5hIiHnSHcP87+7WbIV8z8iZcxDNfxI/k8d5qPaOL6ZmrMgbPyegAmLPZL
-s1kXAio4FxfQfOdWrWGnp/mLeKMkVi0aYPVEPy5FH1lYTvd0axihEwbnCEJBes8z
-GFBU1mZB8VyN0YfItCO4JS/re/6e8DrFayfN8n1L+tuvZAsEJwfpntvGXcLMFn42
-9A8S4waagyDYipoV+yiHtXLXBXcv/srbQprV5fiPkyZAegHA4tVm0i0YS1NiFJ2i
-tjh7FBqqhMIy9j5yeFBJu2BNUv3R9z6sTV1mlGIUNW4CQFSGkmwsl3b5syQnipE=
-=PwmK
------END PGP SIGNATURE-----
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  CMDQ: Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  CMDQ: suspend/resume protection
 
---RlgFhasKO3bfRJ5j--
+ .../devicetree/bindings/soc/mediatek/gce.txt       |   34 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |    8 +
+ drivers/soc/mediatek/Kconfig                       |   10 +
+ drivers/soc/mediatek/Makefile                      |    1 +
+ drivers/soc/mediatek/mtk-cmdq.c                    | 1062 ++++++++++++++++++++
+ include/soc/mediatek/cmdq.h                        |  197 ++++
+ 6 files changed, 1312 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+ create mode 100644 include/soc/mediatek/cmdq.h
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
