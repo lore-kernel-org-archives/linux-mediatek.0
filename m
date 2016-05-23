@@ -1,80 +1,69 @@
-From: Mark Rutland <mark.rutland@arm.com>
+From: Mark Brown <broonie@kernel.org>
 Subject: Re: [PATCH v2 1/3] regulator: DT: Add DT property for operation mode
  configuration
-Date: Mon, 23 May 2016 11:47:04 +0100
-Message-ID: <20160523104703.GB26992@leverpostej>
+Date: Mon, 23 May 2016 12:28:56 +0100
+Message-ID: <20160523112856.GR8206@sirena.org.uk>
 References: <1463987611-32139-1-git-send-email-henryc.chen@mediatek.com>
  <1463987611-32139-2-git-send-email-henryc.chen@mediatek.com>
+ <20160523104703.GB26992@leverpostej>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="xSu31lw3TgkWXnjh"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1463987611-32139-2-git-send-email-henryc.chen@mediatek.com>
+In-Reply-To: <20160523104703.GB26992@leverpostej>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Henry Chen <henryc.chen@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mark Rutland <mark.rutland@arm.com>
+Cc: Henry Chen <henryc.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Liam Girdwood <lgirdwood@gmail.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, May 23, 2016 at 03:13:29PM +0800, Henry Chen wrote:
-> Some regulators support their operating mode to be changed by consumers for
-> module specific purpose. Add a DT property to support this.
-> 
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/regulator/regulator.txt |  5 +++++
->  include/dt-bindings/regulator/regulator.h                 | 14 ++++++++++++++
->  2 files changed, 19 insertions(+)
->  create mode 100644 include/dt-bindings/regulator/regulator.h
-> 
-> diff --git a/Documentation/devicetree/bindings/regulator/regulator.txt b/Documentation/devicetree/bindings/regulator/regulator.txt
-> index ecfc593..e505d0b 100644
-> --- a/Documentation/devicetree/bindings/regulator/regulator.txt
-> +++ b/Documentation/devicetree/bindings/regulator/regulator.txt
-> @@ -49,6 +49,11 @@ Optional properties:
->  	0: Disable active discharge.
->  	1: Enable active discharge.
->  	Absence of this property will leave configuration to default.
-> +- regulator-supported-modes: Regulators can run in a variety of different
-> +  operating modes depending on output load. This allows further system power
-> +  savings by selecting the best (and most efficient) regulator mode for a
-> +  desired load. The definition for each of these operation is defined at
-> +  include/dt-bindings/regulator/regulator.h
 
-This doesen't tell me for the property is formatted.
+--xSu31lw3TgkWXnjh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Is it a list? A mask?
+On Mon, May 23, 2016 at 11:47:04AM +0100, Mark Rutland wrote:
 
->  
->  Deprecated properties:
->  - regulator-compatible: If a regulator chip contains multiple
-> diff --git a/include/dt-bindings/regulator/regulator.h b/include/dt-bindings/regulator/regulator.h
-> new file mode 100644
-> index 0000000..2ed1dfd
-> --- /dev/null
-> +++ b/include/dt-bindings/regulator/regulator.h
-> @@ -0,0 +1,14 @@
-> +/*
-> + * This header provides constants for binding regulator.
-> + */
-> +
-> +#ifndef _DT_BINDINGS_REGULATOR_REGULATOR_H
-> +#define _DT_BINDINGS_REGULATOR_REGULATOR_H
-> +
-> +/* Regulator operating modes */
-> +#define REGULATOR_OPERATION_MODE_FAST			0x0
-> +#define REGULATOR_OPERATION_MODE_NORMAL			0x1
-> +#define REGULATOR_OPERATION_MODE_IDLE			0x2
-> +#define REGULATOR_OPERATION_MODE_STANDBY		0x3
+> > +/* Regulator operating modes */
+> > +#define REGULATOR_OPERATION_MODE_FAST			0x0
+> > +#define REGULATOR_OPERATION_MODE_NORMAL			0x1
+> > +#define REGULATOR_OPERATION_MODE_IDLE			0x2
+> > +#define REGULATOR_OPERATION_MODE_STANDBY		0x3
 
-These sound like they're tied to linux internal details (e.g. the
-implementation of idle and/or suspend).
+> These sound like they're tied to linux internal details (e.g. the
+> implementation of idle and/or suspend).
 
-What do each of these actually mean?
+> What do each of these actually mean?
 
-Mark.
+They are not really at all general and I'm fairly sure I've provided the
+same feedback repeatedly on earlier versions of the patch set.  They are
+not entirely based on Linux internal details (or at least the Linux
+internal details tend to flow from the hardware) - broadly fast is
+forced PWM, normal is default, idle is LDO mode and standby is a lower
+quality LDO mode - but how this translates into anything that a consumer
+could actually use is unclear since the supported output loads and
+quality of regulation can vary wildy.  It's also somewhat implementation
+dependent what a given regulator does (and it's always possible that
+some regulators may have more modes to control or differing definitions
+in the hardware).
 
-> +
-> +#endif
-> -- 
-> 1.8.1.1.dirty
-> 
+Henry, *please* look at how the existing mode support in the bindings is
+done and consider how a consumer would use this given that it doesn't
+know anything about the regulator...
+
+--xSu31lw3TgkWXnjh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXQul2AAoJECTWi3JdVIfQ/0MH/273M2+b80bCdidd2WPB/FtZ
+CaP8OEzs3OodFyNFyTXPLlq5wMwmpeuPK/nUeoi7lqMPbFLCJkgiaYaFIrLvRMhe
+upwWWxVmewhobVuSkep33qJU71PKcrzVMv4rmfcrgIthOhvVE+7rMtZIv04po1sf
+uLP/xdBWRte93SIiGtl5naqZR1MmoBlzXLdJleJwv2w8Vo9+KBtAIFiR03O39m9H
+lZwLIu04fevGZ2I8COlBklycdfTspt9hmqXSZdtWypIS8zPLLtGZardFTXUSqdfZ
+bALfVUZAePGEUL2Ypr8zqFxjfpaIt/YE9ncEJGYVKyDP9T0kR3vgRdEGX1gwWn8=
+=Od5Q
+-----END PGP SIGNATURE-----
+
+--xSu31lw3TgkWXnjh--
