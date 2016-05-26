@@ -1,77 +1,57 @@
-From: PC Liao <pc.liao@mediatek.com>
-Subject: [PATCH] ASoC: mediatek: Change the order of MCLK clock configuration
-Date: Thu, 26 May 2016 20:50:50 +0800
-Message-ID: <1464267050-57287-1-git-send-email-pc.liao@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v16 0/4] MT8173 HDMI support
+Date: Thu, 26 May 2016 17:15:10 +0200
+Message-ID: <1464275714-23257-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, s.hauer@pengutronix.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, garlic.tseng@mediatek.com, PC Liao <pc.liao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Jie Qiu <jie.qiu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, kernel@pengutronix.de, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paul Bolle <pebolle@tiscali.nl>, Emil Velikov <emil.l.velikov@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Kumar Gala <galak@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Because MCLK opens later and closes earlier than codec, this patch
-changes the order of MCLK clock configuration.
-
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
----
- sound/soc/mediatek/mtk-afe-pcm.c |   16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
-
-diff --git a/sound/soc/mediatek/mtk-afe-pcm.c b/sound/soc/mediatek/mtk-afe-pcm.c
-index f1c58a2..440ae06 100644
---- a/sound/soc/mediatek/mtk-afe-pcm.c
-+++ b/sound/soc/mediatek/mtk-afe-pcm.c
-@@ -360,8 +360,6 @@ static int mtk_afe_i2s_startup(struct snd_pcm_substream *substream,
- 	if (dai->active)
- 		return 0;
- 
--	mtk_afe_dais_enable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
--	mtk_afe_dais_enable_clks(afe, afe->clocks[MTK_CLK_I2S2_M], NULL);
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
- 			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M, 0);
- 	return 0;
-@@ -380,8 +378,6 @@ static void mtk_afe_i2s_shutdown(struct snd_pcm_substream *substream,
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
- 			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M,
- 			   AUD_TCON0_PDN_22M | AUD_TCON0_PDN_24M);
--	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S1_M], NULL);
--	mtk_afe_dais_disable_clks(afe, afe->clocks[MTK_CLK_I2S2_M], NULL);
- }
- 
- static int mtk_afe_i2s_prepare(struct snd_pcm_substream *substream,
-@@ -1132,6 +1128,8 @@ static int mtk_afe_runtime_suspend(struct device *dev)
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
- 			   AUD_TCON0_PDN_AFE, AUD_TCON0_PDN_AFE);
- 
-+	clk_disable_unprepare(afe->clocks[MTK_CLK_I2S1_M]);
-+	clk_disable_unprepare(afe->clocks[MTK_CLK_I2S2_M]);
- 	clk_disable_unprepare(afe->clocks[MTK_CLK_BCK0]);
- 	clk_disable_unprepare(afe->clocks[MTK_CLK_BCK1]);
- 	clk_disable_unprepare(afe->clocks[MTK_CLK_TOP_PDN_AUD]);
-@@ -1164,6 +1162,12 @@ static int mtk_afe_runtime_resume(struct device *dev)
- 	ret = clk_prepare_enable(afe->clocks[MTK_CLK_BCK1]);
- 	if (ret)
- 		goto err_bck0;
-+	ret = clk_prepare_enable(afe->clocks[MTK_CLK_I2S1_M]);
-+	if (ret)
-+		goto err_i2s1_m;
-+	ret = clk_prepare_enable(afe->clocks[MTK_CLK_I2S2_M]);
-+	if (ret)
-+		goto err_i2s2_m;
- 
- 	/* enable AFE clk */
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0, AUD_TCON0_PDN_AFE, 0);
-@@ -1179,6 +1183,10 @@ static int mtk_afe_runtime_resume(struct device *dev)
- 	regmap_update_bits(afe->regmap, AFE_DAC_CON0, 0x1, 0x1);
- 	return 0;
- 
-+err_i2s1_m:
-+	clk_disable_unprepare(afe->clocks[MTK_CLK_I2S1_M]);
-+err_i2s2_m:
-+	clk_disable_unprepare(afe->clocks[MTK_CLK_I2S2_M]);
- err_bck0:
- 	clk_disable_unprepare(afe->clocks[MTK_CLK_BCK0]);
- err_top_aud:
--- 
-1.7.9.5
+VGhpcyBzZXJpZXMgY29udGFpbnMgdGhlIE1UODE3MyBIRE1JIGVuY29kZXIsIFBIWSwgYW5kIERE
+QyBkcml2ZXJzLgoKQ2hhbmdlcyBzaW5jZSB2MTU6CiAtIEZpeCBEREMgaWRsZSBwb2xsaW5nLCB0
+aGUgU0lGTV9UUkkgYml0IGlzIHNldCB3aGVuIHRoZSBkZGMgY29udHJvbGxlciBpcwogICBidXN5
+LgogLSBEb24ndCByZWdpc3RlciB0aGUgSERNSSBjb25uZWN0b3IsIG10a19kcm1fZHJ2IHdpbGwg
+ZG8gaXQgdXNpbmcKICAgZHJtX2Nvbm5lY3Rvcl9yZWdpc3Rlcl9hbGwoKS4KIC0gRHJvcCBkZXZp
+Y2UgdHJlZSBwYXRjaGVzLCB0aGVzZSB3aWxsIGJlIHN1Ym1pdHRlZCBzZXBhcmF0ZWx5LgoKcmVn
+YXJkcwpQaGlsaXBwCgpKaWUgUWl1ICgyKToKICBkcm0vbWVkaWF0ZWs6IEFkZCBIRE1JIHN1cHBv
+cnQKICBkcm0vbWVkaWF0ZWs6IGVuYWJsZSBoZG1pIG91dHB1dCBjb250cm9sIGJpdAoKUGhpbGlw
+cCBaYWJlbCAoMik6CiAgZHQtYmluZGluZ3M6IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhE
+TUkgZHRzIGJpbmRpbmcKICBkdC1iaW5kaW5nczogaGRtaS1jb25uZWN0b3I6IGFkZCBEREMgSTJD
+IGJ1cyBwaGFuZGxlIGRvY3VtZW50YXRpb24KCiAuLi4vYmluZGluZ3MvZGlzcGxheS9jb25uZWN0
+b3IvaGRtaS1jb25uZWN0b3IudHh0ICB8ICAgIDEgKwogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVk
+aWF0ZWsvbWVkaWF0ZWssaGRtaS50eHQgICAgfCAgMTQ4ICsrCiBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvS2NvbmZpZyAgICAgICAgICAgICAgICAgICB8ICAgIDggKwogZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICAgfCAgICA3ICsKIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfY2VjLmMgICAgICAgICAgICAgICAgIHwgIDI2NSArKysKIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmggICAgICAgICAgICAgICAgIHwgICAyNiArCiBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyAgICAgICAgICAgICAgICB8IDE4Mjgg
+KysrKysrKysrKysrKysrKysrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5o
+ICAgICAgICAgICAgICAgIHwgICAyMyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWlfZGRjLmMgICAgICAgICAgICB8ICAzNTggKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19oZG1pX3JlZ3MuaCAgICAgICAgICAgfCAgMjM4ICsrKwogZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYyAgICAgfCAgNTE1ICsrKysrKwogMTEgZmlsZXMg
+Y2hhbmdlZCwgMzQxNyBpbnNlcnRpb25zKCspCiBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS50
+eHQKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5j
+CiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuaAog
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCiBj
+cmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmgKIGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfZGRjLmMK
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcmVn
+cy5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgx
+NzNfaGRtaV9waHkuYwoKLS0gCjIuOC4xCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5m
+cmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcmktZGV2ZWwK
