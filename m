@@ -1,144 +1,62 @@
-From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v7 2/4] CMDQ: Mediatek CMDQ driver
-Date: Fri, 27 May 2016 13:44:18 +0800
-Message-ID: <1464327858.8578.6.camel@mtksdaap41>
-References: <1464006190-344-1-git-send-email-hs.liao@mediatek.com>
-	 <1464006190-344-3-git-send-email-hs.liao@mediatek.com>
-	 <1464059159.7425.6.camel@mtksdaap41> <1464092829.19894.16.camel@mtksdaap41>
-	 <1464247708.13536.14.camel@mtksdaap41>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [RFC v2 2/5] drm/mediatke: add support for Mediatek SoC MT2701
+Date: Fri, 27 May 2016 15:29:00 +0800
+Message-ID: <1464334140.31149.14.camel@mtksdaap41>
+References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
+ <1463756736-46573-3-git-send-email-yt.shen@mediatek.com>
+ <1463994590.31921.14.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1464247708.13536.14.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1463994590.31921.14.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK,
-
-Reply in line.
-
-On Thu, 2016-05-26 at 15:28 +0800, CK Hu wrote:
-> Hi, HS:
-> 
-> Replay inline.
-> 
-> On Tue, 2016-05-24 at 20:27 +0800, Horng-Shyang Liao wrote:
-> > Hi CK,
-> > 
-> > Reply in line.
-> > 
-> > On Tue, 2016-05-24 at 11:05 +0800, CK Hu wrote:
-> > > Hi, HS:
-> > > 
-> > > Some comments below.
-> > > 
-> > ...
-> > > > +static void cmdq_thread_irq_handler(struct cmdq *cmdq, int tid)
-> > > > +{
-> > > > +	struct cmdq_thread *thread = &cmdq->thread[tid];
-> > > > +	unsigned long flags = 0L;
-> > > > +	int value;
-> > > > +
-> > > > +	spin_lock_irqsave(&cmdq->exec_lock, flags);
-> > > > +
-> > > > +	/*
-> > > > +	 * it is possible for another CPU core
-> > > > +	 * to run "release task" right before we acquire the spin lock
-> > > > +	 * and thus reset / disable this HW thread
-> > > > +	 * so we check both the IRQ flag and the enable bit of this thread
-> > > > +	 */
-> > > > +	value = cmdq_thread_readl(thread, CMDQ_THR_IRQ_STATUS);
-> > > > +	if (!(value & CMDQ_THR_IRQ_MASK)) {
-> > > > +		spin_unlock_irqrestore(&cmdq->exec_lock, flags);
-> > > > +		return;
-> > > > +	}
-> > > 
-> > > If this case happen and just return without clearing irq status, the irq
-> > > would keep triggering and system hang up. So just remove this checking
-> > > and go down to clear irq status.
-> > 
-> > This case is safe because irq status is cleared.
-> > But, next if condition has the problem which you mentioned.
-> > 
-> > I will change it as below.
-> > 
-> > 	if (!(cmdq_thread_readl(thread, CMDQ_THR_ENABLE_TASK) &
-> > 	      CMDQ_THR_ENABLED)) {
-> > 		cmdq_thread_writel(thread, ~value, CMDQ_THR_IRQ_STATUS);
-> > 		spin_unlock_irqrestore(&cmdq->exec_lock, flags);
-> > 		return;
-> > 	}
-> > 
-> > If thread is disabled, tasks must be all finished.
-> > Therefore, just clear irq status and return.
-> > 
-> 
-> For irq status checking part, if irq status & irq mask is zero, remove
-> this checking and let it go down, it still do nothing because value &
-> CMDQ_THR_IRQ_ERROR is zero and value & CMDQ_THR_IRQ_DONE is zero. So you
-> can just remove this checking and get the same result.
-> 
-> In general HW design, once a HW is not enable, it does not trigger
-> interrupt any more. Be sure that it's necessary to clear irq status even
-> though thread is disable.
-> 
-
-I Will remove first if condition,
-so rewrite first two if condition parts as below.
-
-value = cmdq_thread_readl(thread, CMDQ_THR_IRQ_STATUS);
-cmdq_thread_writel(thread, ~value, CMDQ_THR_IRQ_STATUS);
-
-if (!(cmdq_thread_readl(thread, CMDQ_THR_ENABLE_TASK) &
-			CMDQ_THR_ENABLED))
-	value = 0;
-
-> > > > +
-> > > > +	if (!(cmdq_thread_readl(thread, CMDQ_THR_ENABLE_TASK) &
-> > > > +	      CMDQ_THR_ENABLED)) {
-> > > > +		spin_unlock_irqrestore(&cmdq->exec_lock, flags);
-> > > > +		return;
-> > > > +	}
-> > > > +
-> > > > +	cmdq_thread_writel(thread, ~value, CMDQ_THR_IRQ_STATUS);
-> > > > +
-> > > > +	if (value & CMDQ_THR_IRQ_ERROR)
-> > > > +		cmdq_handle_error_done(cmdq, thread, true);
-> > > > +	else if (value & CMDQ_THR_IRQ_DONE)
-> > > > +		cmdq_handle_error_done(cmdq, thread, false);
-> > > 
-> > > These irq status checking and clearing code here is the same as those in
-> > > cmdq_task_handle_error_result(). To move the checking and clearing code
-> > > into cmdq_handle_error_done() and here just to call
-> > > cmdq_handle_error_done(cmdq, thread) would reduce duplicated code.
-> > 
-> > Will do.
-> > 
-> > > > +
-> > > > +	spin_unlock_irqrestore(&cmdq->exec_lock, flags);
-> > > > +}
-> > ...
-> > ...
-> > > 
-> > > Regards,
-> > > CK
-> > 
-> > Thanks,
-> > HS
-> > 
-> 
-> Regards,
-> CK
-> 
-> 
-
-Thanks,
-HS
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SGkgQ0ssCgoKT24gTW9uLCAyMDE2LTA1LTIzIGF0IDE3OjA5ICswODAwLCBDSyBIdSB3cm90ZToK
+PiBIaSwgWVQ6Cj4gCj4gU29tZSBjb21tZW50cyBiZWxvdy4KPiAKPiBPbiBGcmksIDIwMTYtMDUt
+MjAgYXQgMjM6MDUgKzA4MDAsIHl0LnNoZW5AbWVkaWF0ZWsuY29tIHdyb3RlOgo+ID4gRnJvbTog
+WVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gPiAKPiA+IFRoaXMgcGF0Y2ggYWRkIHN1
+cHBvcnQgZm9yIHRoZSBNZWRpYXRlayBNVDI3MDEgRElTUCBzdWJzeXN0ZW0uCj4gPiBUaGVyZSBp
+cyBvbmx5IG9uZSBPVkwgZW5naW5lIGluIE1UMjcwMS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTog
+WVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gPiAgCj4gPiArc3RhdGljIHZvaWQgbXRr
+X2RkcF9tdXhfc2VsKHZvaWQgX19pb21lbSAqY29uZmlnX3JlZ3MsCj4gPiArCQkJICAgIGVudW0g
+bXRrX2RkcF9jb21wX2lkIGN1ciwgZW51bSBtdGtfZGRwX2NvbXBfaWQgbmV4dCkKPiA+ICt7Cj4g
+PiArCWlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5U
+X0RTSTApIHsKPiA+ICsJCXdyaXRlbF9yZWxheGVkKEJMU19UT19EU0lfUkRNQTFfVE9fRFBJMSwK
+PiA+ICsJCQkgICAgICAgY29uZmlnX3JlZ3MgKyBESVNQX1JFR19DT05GSUdfT1VUX1NFTCk7Cj4g
+PiArCX0KPiA+ICt9Cj4gPiArCj4gCj4gVGhlIGZ1bmN0aW9uIG5hbWUgJ211eCcgbG9va3Mgc3Ry
+YW5nZS4gVGhlIHJlZ2lzdGVyIHdyaXR0ZW4gaGVyZQo+IGNvbnRyb2xzIHRoZSBzaW5nbGUgb3V0
+cHV0IHNlbGVjdGlvbi4gSSBwcmVmZXIgdG8gcmVuYW1lIGl0IGFzCj4gbXRrX2RkcF9zb3V0X3Nl
+bCgpLgpPSywgSSB3aWxsIHJlbmFtZSB0aGlzIGZ1bmN0aW9uIGluIHRoZSBuZXh0IHZlcnNpb24u
+Cj4gCj4gPiAgCj4gPiAtc3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10a19kZHBf
+bWFpbltdID0gewo+ID4gK3N0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCBtdGtfZGRw
+X21haW5fMjcwMVtdID0gewo+ID4gKwlERFBfQ09NUE9ORU5UX09WTDAsCj4gPiArCUREUF9DT01Q
+T05FTlRfUkRNQTAsCj4gPiArCUREUF9DT01QT05FTlRfQ09MT1IwLAo+ID4gKwlERFBfQ09NUE9O
+RU5UX0JMUywKPiA+ICsJRERQX0NPTVBPTkVOVF9EU0kwLAo+ID4gK307Cj4gPiArCj4gPiArc3Rh
+dGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10a19kZHBfZXh0XzI3MDFbXSA9IHsKPiA+
+ICsJRERQX0NPTVBPTkVOVF9PVkwwLAo+ID4gKwlERFBfQ09NUE9ORU5UX0RTSTAsCj4gPiArfTsK
+PiA+ICsKPiAKPiBUaGVzZSB0d28gcGlwZWxpbmVzIGhhcyB0aGUgc2FtZSBjb21wb25lbnQgc3Vj
+aCBhcyBPVkwwIGFuZCBEU0kwLiBJCj4gdGhpbmsgdXNlciBwcm9ncmFtIGNvdWxkIG5vdCBlbmFi
+bGUgYm90aCBjcnRjIGF0IHRoZSBzYW1lIHRpbWUuIE1heWJlCj4gTVQyNzAxIGhhcyBvbmx5IG9u
+ZSBjcnRjLCBzbyB5b3Ugc2hvdWxkIG1vZGlmeSBpbml0aWFsIGZsb3cgdG8gY3JlYXRlCj4gb25s
+eSBvbmUgY3J0YyBmb3IgbWFpbiBkaXNwbGF5LiBPciBpdCdzIHR5cG8gZm9yIGV4dGVybmFsIGRp
+c3BsYXkgcGlwZSwKPiBwbGVhc2UgY29ycmVjdCBpdC4KTVQyNzAxIGhhcmR3YXJlIGNhbiBzdXBw
+b3J0IHR3byBvdXRwdXQgY29uY3VycmVudGx5LCBidXQgd2UgaGF2ZW4ndAppbXBsZW1lbnQgRFBJ
+IHBhdGggeWV0LiAgV2Ugd2lsbCBjaGFuZ2UgaXQgbGlrZSB0aGlzOgpzdGF0aWMgY29uc3QgZW51
+bSBtdGtfZGRwX2NvbXBfaWQgbXRrX2RkcF9leHRfMjcwMVtdID0gewoJRERQX0NPTVBPTkVOVF9S
+RE1BMSwKCUREUF9DT01QT05FTlRfRFBJMCwKfTsKClRoYW5rcy4KeXQuc2hlbgo+IAo+IAo+IFJl
+Z2FyZHMsCj4gQ0sKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
