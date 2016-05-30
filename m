@@ -1,71 +1,102 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: Re: [RFC v2 3/5] drm/mediatek: add *driver_data for different
- hardware settings
-Date: Mon, 30 May 2016 18:26:44 +0800
-Message-ID: <1464604004.21437.19.camel@mtksdaap41>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [RFC v2 1/5] drm/mediatek: rename macros, add chip suffix
+Date: Mon, 30 May 2016 12:41:29 +0200
+Message-ID: <20160530104129.GA8388@ulmo.ba.sec>
 References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
- <1463756736-46573-4-git-send-email-yt.shen@mediatek.com>
- <1463996582.30093.5.camel@mtksdaap41>
- <1464334313.31149.16.camel@mtksdaap41>
- <CACvgo52xB0KwumC75u2dxfz_yv2PNE0Gem+0t8dqV9qn+pPRLg@mail.gmail.com>
+ <1463756736-46573-2-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CACvgo52xB0KwumC75u2dxfz_yv2PNE0Gem+0t8dqV9qn+pPRLg@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Emil Velikov <emil.l.velikov@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree <devicetree@vger.kernel.org>, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="AqsLC8rIMeq19msA"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1463756736-46573-2-git-send-email-yt.shen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: yt.shen@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRW1pbCwKClRoYW5rcyBmb3IgeW91ciByZXZpZXcuCgpPbiBGcmksIDIwMTYtMDUtMjcgYXQg
-MTA6MjQgKzAxMDAsIEVtaWwgVmVsaWtvdiB3cm90ZToKPiBPbiAyNyBNYXkgMjAxNiBhdCAwODoz
-MSwgWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4gSGkgQ0ssCj4gPgo+
-ID4KPiA+IE9uIE1vbiwgMjAxNi0wNS0yMyBhdCAxNzo0MyArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4g
-Pj4gSGksIFlUOgo+ID4+Cj4gPj4gT25lIGNvbW1lbnQgYmVsb3cuCj4gPj4KPiA+PiBPbiBGcmks
-IDIwMTYtMDUtMjAgYXQgMjM6MDUgKzA4MDAsIHl0LnNoZW5AbWVkaWF0ZWsuY29tIHdyb3RlOgo+
-ID4+ID4gRnJvbTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gPj4gPgo+ID4+ID4g
-VGhlcmUgYXJlIHNvbWUgaGFyZHdhcmUgc2V0dGluZ3MgY2hhbmdlZCwgYmV0d2VlbiBNVDgxNzMg
-JiBNVDI3MDE6Cj4gPj4gPiBESVNQX09WTCBhZGRyZXNzIG9mZnNldCBjaGFuZ2VkLCBjb2xvciBm
-b3JtYXQgZGVmaW5pdGlvbiBjaGFuZ2VkLgo+ID4+ID4gRElTUF9SRE1BIGZpZm8gc2l6ZSBjaGFu
-Z2VkLgo+ID4+ID4gRElTUF9DT0xPUiBvZmZzZXQgY2hhbmdlZC4KPiA+PiA+Cj4gPj4gPiBTaWdu
-ZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVuQG1lZGlhdGVrLmNvbT4KPiA+PiA+IC0tLQo+ID4+
-ID4gKwo+ID4+ID4gK3N0YXRpYyBpbmxpbmUgc3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJfZGF0
-YSAqbXRrX292bF9nZXRfZHJpdmVyX2RhdGEoCj4gPj4gPiArICAgc3RydWN0IHBsYXRmb3JtX2Rl
-dmljZSAqcGRldikKPiA+PiA+ICt7Cj4gPj4gPiArICAgY29uc3Qgc3RydWN0IG9mX2RldmljZV9p
-ZCAqb2ZfaWQgPQo+ID4+ID4gKyAgICAgICAgICAgb2ZfbWF0Y2hfZGV2aWNlKG10a19kaXNwX292
-bF9kcml2ZXJfZHRfbWF0Y2gsICZwZGV2LT5kZXYpOwo+ID4+ID4gKwo+ID4+ID4gKyAgIHJldHVy
-biAoc3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJfZGF0YSAqKW9mX2lkLT5kYXRhOwo+ID4+ID4g
-K30KPiA+PiA+ICsKPiA+PiA+ICtzdGF0aWMgaW5saW5lIHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJp
-dmVyX2RhdGEgKm10a19yZG1hX2dldF9kcml2ZXJfZGF0YSgKPiA+PiA+ICsgICBzdHJ1Y3QgcGxh
-dGZvcm1fZGV2aWNlICpwZGV2KQo+ID4+ID4gK3sKPiA+PiA+ICsgICBjb25zdCBzdHJ1Y3Qgb2Zf
-ZGV2aWNlX2lkICpvZl9pZCA9Cj4gPj4gPiArICAgICAgICAgICBvZl9tYXRjaF9kZXZpY2UobXRr
-X2Rpc3BfcmRtYV9kcml2ZXJfZHRfbWF0Y2gsICZwZGV2LT5kZXYpOwo+ID4+ID4gKwo+ID4+ID4g
-KyAgIHJldHVybiAoc3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJfZGF0YSAqKW9mX2lkLT5kYXRh
-Owo+ID4+ID4gK30KPiA+PiA+ICsKPiA+PiA+ICtzdGF0aWMgaW5saW5lIHN0cnVjdCBtdGtfZGRw
-X2NvbXBfZHJpdmVyX2RhdGEgKm10a19jb2xvcl9nZXRfZHJpdmVyX2RhdGEoCj4gPj4gPiArICAg
-c3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+ID4+ID4gK3sKPiA+PiA+ICsgICBjb25zdCBzdHJ1
-Y3Qgb2ZfZGV2aWNlX2lkICpvZl9pZCA9Cj4gPj4gPiArICAgICAgICAgICBvZl9tYXRjaF9ub2Rl
-KG10a19kaXNwX2NvbG9yX2RyaXZlcl9kdF9tYXRjaCwgbm9kZSk7Cj4gPj4gPiArCj4gPj4gPiAr
-ICAgcmV0dXJuIChzdHJ1Y3QgbXRrX2RkcF9jb21wX2RyaXZlcl9kYXRhICopb2ZfaWQtPmRhdGE7
-Cj4gPj4gPiArfQo+ID4+ID4gKwo+ID4+Cj4gPj4gVGhlc2UgdGhyZWUgZnVuY3Rpb25zIGxvb2tz
-IHRoZSBzYW1lIHdpdGggZGlmZmVyZW50IHBhcmFtZXRlcjoKPiA+PiBtdGtfZGlzcF9vdmxfZHJp
-dmVyX2R0X21hdGNoLCBtdGtfZGlzcF9yZG1hX2RyaXZlcl9kdF9tYXRjaCwgYW5kCj4gPj4gbXRr
-X2Rpc3BfY29sb3JfZHJpdmVyX2R0X21hdGNoLiBTbyBtZXJnZSB0aGVtIHRvIHByZXZlbnQgZHVw
-bGljYXRlZAo+ID4+IGNvZGUuCj4gPiBPSywgSSdsbCBkbyB0aGlzIGluIHRoZSBuZXh0IHZlcnNp
-b24uCj4gCj4gQWxzbyBwcmVzZXJ2ZSB0aGUgY29uc3QtbmVzcyBvZiB0aGUgZGF0YSAtIGRvbid0
-IGNhc3QgaXQgYXdheSBvbiB0aGUKPiByZXR1cm4gbGluZS4KPiBOb3RlIHRoYXQgdGhlIGZ1bmN0
-aW9uIHJldHVybiB0eXBlIChhbmQgc29tZSBvZiB0aGUgdXNlcnMgb2Ygc2FpZAo+IGZ1bmN0aW9u
-cykgc2hvdWxkIGJlIHVwZGF0ZWQgYXMgd2VsbC4KT0ssIEkgd2lsbCBjaGVjayB0aGlzIHBhcnQu
-Cgo+IAo+IC1FbWlsCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+
+--AqsLC8rIMeq19msA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, May 20, 2016 at 11:05:32PM +0800, yt.shen@mediatek.com wrote:
+> From: YT Shen <yt.shen@mediatek.com>
+>=20
+> Add MT8173 suffix for hardware related macros.
+>=20
+> Signed-off-by: YT Shen <yt.shen@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c |   62 ++++++++++++++++----------=
+------
+>  1 file changed, 31 insertions(+), 31 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_ddp.c
+> index 17ba935..d6aafd4 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> @@ -36,21 +36,21 @@
+>  #define DISP_REG_MUTEX_MOD(n)	(0x2c + 0x20 * (n))
+>  #define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
+> =20
+> -#define MUTEX_MOD_DISP_OVL0		BIT(11)
+> -#define MUTEX_MOD_DISP_OVL1		BIT(12)
+> -#define MUTEX_MOD_DISP_RDMA0		BIT(13)
+> -#define MUTEX_MOD_DISP_RDMA1		BIT(14)
+> -#define MUTEX_MOD_DISP_RDMA2		BIT(15)
+> -#define MUTEX_MOD_DISP_WDMA0		BIT(16)
+> -#define MUTEX_MOD_DISP_WDMA1		BIT(17)
+> -#define MUTEX_MOD_DISP_COLOR0		BIT(18)
+> -#define MUTEX_MOD_DISP_COLOR1		BIT(19)
+> -#define MUTEX_MOD_DISP_AAL		BIT(20)
+> -#define MUTEX_MOD_DISP_GAMMA		BIT(21)
+> -#define MUTEX_MOD_DISP_UFOE		BIT(22)
+> -#define MUTEX_MOD_DISP_PWM0		BIT(23)
+> -#define MUTEX_MOD_DISP_PWM1		BIT(24)
+> -#define MUTEX_MOD_DISP_OD		BIT(25)
+> +#define MUTEX_MOD_DISP_OVL0_MT8173		BIT(11)
+> +#define MUTEX_MOD_DISP_OVL1_MT8173		BIT(12)
+> +#define MUTEX_MOD_DISP_RDMA0_MT8173		BIT(13)
+> +#define MUTEX_MOD_DISP_RDMA1_MT8173		BIT(14)
+> +#define MUTEX_MOD_DISP_RDMA2_MT8173		BIT(15)
+> +#define MUTEX_MOD_DISP_WDMA0_MT8173		BIT(16)
+> +#define MUTEX_MOD_DISP_WDMA1_MT8173		BIT(17)
+> +#define MUTEX_MOD_DISP_COLOR0_MT8173		BIT(18)
+> +#define MUTEX_MOD_DISP_COLOR1_MT8173		BIT(19)
+> +#define MUTEX_MOD_DISP_AAL_MT8173		BIT(20)
+> +#define MUTEX_MOD_DISP_GAMMA_MT8173		BIT(21)
+> +#define MUTEX_MOD_DISP_UFOE_MT8173		BIT(22)
+> +#define MUTEX_MOD_DISP_PWM0_MT8173		BIT(23)
+> +#define MUTEX_MOD_DISP_PWM1_MT8173		BIT(24)
+> +#define MUTEX_MOD_DISP_OD_MT8173		BIT(25)
+
+Just a random fly-by comment: this looks like a hardware spinlock, have
+you ever considered implementing this as a hwspinlock driver? See the
+drivers/hwspinlock subdirectory for existing examples.
+
+Thierry
+
+--AqsLC8rIMeq19msA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJXTBjXAAoJEN0jrNd/PrOhCogQAK4RVgRmuHImo5ySj883GPKV
+PlNTiIgZ+ihlFfk5iuKZtfoRHIwa9MEN+wqVT5Ka4w0kvNqY1FppS1iWxzW2FLY/
+KiTq7IF8n1wuffuyG5Geg0ZRlue3LQmHvR32oVxdhxUk3WNFm6j1sOZnXaPs8Lci
+yEYA++fIupM5esGGpQ66m57RTBAYoplqymoizQKKB0TlJ0OjMnyfkbXrJ6BHyPkw
+l+piXBcwAYjV+Y/2qoAlA+4VU9z5ZSYTTX+uksOMIDKUqfLe6D5dmI70c4piS0T2
+7nkPwPdBKHMLqx/qELNMThvIiNEoqEb/8I8uKt3nCM9O2th3O5pWAnwq2OETTS70
+fOl4hv2v5M0+3darOsjrMSsi6qXhgdXpgv/vkJSOJGZ33+u92CZd3rrr4Bp+3iUY
+pLFZhrXcmrDLB+rjm4Ih0xs3G2Szpy4+spubvz8wZQCFvZzTWjrWJoH29t59/4N8
+k3WTxKg3kRlXisE4hA1jtQox7OBmzIaSv+uMQ0dZp/iKmz0PrIEMnRdifXEueDul
+no0uszriG1H31A5+2b3LrTyLAmmJ8Kl3PNgShtytyguG3Gob2jjw8exdFFTTAv8Y
+sbQNxjIsoTczdMVsVW94D5kpZfJdfYgFwYL9wML86AGKTtIlmNoGWCYtutKVcJdg
+xv8qR9Re1AEYOLsrrkzF
+=ZGuM
+-----END PGP SIGNATURE-----
+
+--AqsLC8rIMeq19msA--
