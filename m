@@ -1,126 +1,139 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [RFC v2 3/5] drm/mediatek: add *driver_data for different
- hardware settings
-Date: Mon, 30 May 2016 12:45:53 +0200
-Message-ID: <20160530104553.GB8388@ulmo.ba.sec>
-References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
- <1463756736-46573-4-git-send-email-yt.shen@mediatek.com>
- <1463996582.30093.5.camel@mtksdaap41>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 1/9] VPU: mediatek: Add decode support
+Date: Mon, 30 May 2016 20:29:15 +0800
+Message-ID: <1464611363-14936-2-git-send-email-tiffany.lin@mediatek.com>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0639353690=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1463996582.30093.5.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Kumar Gala <galak@codeaurora.org>, yt.shen@mediatek.com, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1464611363-14936-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+From: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
---===============0639353690==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VrqPEDrXMn8OVzN4"
-Content-Disposition: inline
+VPU driver add decode support
 
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/media/platform/mtk-vpu/mtk_vpu.c |   12 ++++++++++++
+ drivers/media/platform/mtk-vpu/mtk_vpu.h |   27 +++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
 
---VrqPEDrXMn8OVzN4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index b60d02c..ca23b1f 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -134,6 +134,8 @@ struct vpu_wdt {
+  *
+  * @signaled:		the signal of vpu initialization completed
+  * @fw_ver:		VPU firmware version
++ * @dec_capability:	decoder capability which is not used for now and
++ *			the value is reserved for future use
+  * @enc_capability:	encoder capability which is not used for now and
+  *			the value is reserved for future use
+  * @wq:			wait queue for VPU initialization status
+@@ -141,6 +143,7 @@ struct vpu_wdt {
+ struct vpu_run {
+ 	u32 signaled;
+ 	char fw_ver[VPU_FW_VER_LEN];
++	unsigned int	dec_capability;
+ 	unsigned int	enc_capability;
+ 	wait_queue_head_t wq;
+ };
+@@ -415,6 +418,14 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
+ }
+ EXPORT_SYMBOL_GPL(vpu_wdt_reg_handler);
+ 
++unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev)
++{
++	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
++
++	return vpu->run.dec_capability;
++}
++EXPORT_SYMBOL_GPL(vpu_get_vdec_hw_capa);
++
+ unsigned int vpu_get_venc_hw_capa(struct platform_device *pdev)
+ {
+ 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+@@ -600,6 +611,7 @@ static void vpu_init_ipi_handler(void *data, unsigned int len, void *priv)
+ 
+ 	vpu->run.signaled = run->signaled;
+ 	strncpy(vpu->run.fw_ver, run->fw_ver, VPU_FW_VER_LEN);
++	vpu->run.dec_capability = run->dec_capability;
+ 	vpu->run.enc_capability = run->enc_capability;
+ 	wake_up_interruptible(&vpu->run.wq);
+ }
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.h b/drivers/media/platform/mtk-vpu/mtk_vpu.h
+index 5ab37f0..f457479 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.h
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.h
+@@ -37,6 +37,18 @@ typedef void (*ipi_handler_t) (void *data,
+ 			 command to VPU.
+ 			 For other IPI below, AP should send the request
+ 			 to VPU to trigger the interrupt.
++ * @IPI_VDEC_H264:	 The interrupt from vpu is to notify kernel to
++			 handle H264 vidoe decoder job, and vice versa.
++			 Decode output format is always MT21 no matter what
++			 the input format is.
++ * @IPI_VDEC_VP8:	 The interrupt from is to notify kernel to
++			 handle VP8 video decoder job, and vice versa.
++			 Decode output format is always MT21 no matter what
++			 the input format is.
++ * @IPI_VDEC_VP9:	 The interrupt from vpu is to notify kernel to
++			 handle VP9 video decoder job, and vice versa.
++			 Decode output format is always MT21 no matter what
++			 the input format is.
+  * @IPI_VENC_H264:	 The interrupt from vpu is to notify kernel to
+ 			 handle H264 video encoder job, and vice versa.
+  * @IPI_VENC_VP8:	 The interrupt fro vpu is to notify kernel to
+@@ -46,6 +58,9 @@ typedef void (*ipi_handler_t) (void *data,
+ 
+ enum ipi_id {
+ 	IPI_VPU_INIT = 0,
++	IPI_VDEC_H264,
++	IPI_VDEC_VP8,
++	IPI_VDEC_VP9,
+ 	IPI_VENC_H264,
+ 	IPI_VENC_VP8,
+ 	IPI_MAX,
+@@ -55,10 +70,12 @@ enum ipi_id {
+  * enum rst_id - reset id to register reset function for VPU watchdog timeout
+  *
+  * @VPU_RST_ENC: encoder reset id
++ * @VPU_RST_DEC: decoder reset id
+  * @VPU_RST_MAX: maximum reset id
+  */
+ enum rst_id {
+ 	VPU_RST_ENC,
++	VPU_RST_DEC,
+ 	VPU_RST_MAX,
+ };
+ 
+@@ -125,6 +142,16 @@ struct platform_device *vpu_get_plat_device(struct platform_device *pdev);
+ int vpu_wdt_reg_handler(struct platform_device *pdev,
+ 			void vpu_wdt_reset_func(void *),
+ 			void *priv, enum rst_id id);
++
++/**
++ * vpu_get_vdec_hw_capa - get video decoder hardware capability
++ *
++ * @pdev:	VPU platform device
++ *
++ * Return: video decoder hardware capability
++ **/
++unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev);
++
+ /**
+  * vpu_get_venc_hw_capa - get video encoder hardware capability
+  *
+-- 
+1.7.9.5
 
-On Mon, May 23, 2016 at 05:43:02PM +0800, CK Hu wrote:
-> Hi, YT:
->=20
-> One comment below.
->=20
-> On Fri, 2016-05-20 at 23:05 +0800, yt.shen@mediatek.com wrote:
-> > From: YT Shen <yt.shen@mediatek.com>
-> >=20
-> > There are some hardware settings changed, between MT8173 & MT2701:
-> > DISP_OVL address offset changed, color format definition changed.
-> > DISP_RDMA fifo size changed.
-> > DISP_COLOR offset changed.
-> >=20
-> > Signed-off-by: YT Shen <yt.shen@mediatek.com>
-> > ---
-> > +
-> > +static inline struct mtk_ddp_comp_driver_data *mtk_ovl_get_driver_data(
-> > +	struct platform_device *pdev)
-> > +{
-> > +	const struct of_device_id *of_id =3D
-> > +		of_match_device(mtk_disp_ovl_driver_dt_match, &pdev->dev);
-> > +
-> > +	return (struct mtk_ddp_comp_driver_data *)of_id->data;
-> > +}
-> > +
-> > +static inline struct mtk_ddp_comp_driver_data *mtk_rdma_get_driver_dat=
-a(
-> > +	struct platform_device *pdev)
-> > +{
-> > +	const struct of_device_id *of_id =3D
-> > +		of_match_device(mtk_disp_rdma_driver_dt_match, &pdev->dev);
-> > +
-> > +	return (struct mtk_ddp_comp_driver_data *)of_id->data;
-> > +}
-> > +
-> > +static inline struct mtk_ddp_comp_driver_data *mtk_color_get_driver_da=
-ta(
-> > +	struct device_node *node)
-> > +{
-> > +	const struct of_device_id *of_id =3D
-> > +		of_match_node(mtk_disp_color_driver_dt_match, node);
-> > +
-> > +	return (struct mtk_ddp_comp_driver_data *)of_id->data;
-> > +}
-> > +=20
->=20
-> These three functions looks the same with different parameter:
-> mtk_disp_ovl_driver_dt_match, mtk_disp_rdma_driver_dt_match, and
-> mtk_disp_color_driver_dt_match. So merge them to prevent duplicated
-> code.
-
-I think what you really want is of_device_get_match_data().
-
-Thierry
-
---VrqPEDrXMn8OVzN4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJXTBnhAAoJEN0jrNd/PrOhESwP/RAvu3FLDB1lvUOAwgbaENgT
-T0gLGTOwrqZcznISJFmbiLfA0MBEfhQg01hPi+6BYwaaxvuD+UZD+Ycbinn4yr6E
-D5xSKOrfgXauDlE+h7hEVNUs6VYKmsqzNib/sWuNYOjFLOC/f5oP4DBP3R8ZzyCN
-Nvcol1tJQkj86vXv/NyWF4XYwGshAJ8OhpP+srs62SpZJkNh+Lnhz+bH1ayBZpri
-uAfYKk4clQxGTDoiO5SoBzRWodCclo/szWkhv/ccS8JavR0ElMYHrO88vQTTUcal
-+QhchzNrBXMZcOvy4klV530d/8kKfF0ai4kkzkNs7lwN+yawJE8Hy7YgXN+/GXfX
-3YDUVus47NNXFSf7H6f/i+/GALN4oCRqMaTMQua6yuQrMr0G0uK/R5rG0ri17Dj9
-PhOlNJGP9QqZKcW2xFfHoIoqQkNUi+axX7iu5tdkkKzywm9XNCpAmjxifE0X5r7C
-c/yuW1FnmPfl8lgiaPlw0cd0La5LbxrSqilmZibydMCiwUTIOpbKywfl30NxHCxR
-05f3ZjVllal+U1ZwP/wlODdJ/sUadDBVotNsuoD4NwRzTRTIB7S8H5zEpSWXNCzh
-KUW5anxZvOcNwdCrCOVbGw+cxdQeJYm9V/TbSGIeYiTzfT22M3u8iqNO2MDlioVI
-Q29xm5b1lvGBix7EyktY
-=R/l1
------END PGP SIGNATURE-----
-
---VrqPEDrXMn8OVzN4--
-
---===============0639353690==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Content-Disposition: inline
-
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
-
---===============0639353690==--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
