@@ -1,82 +1,235 @@
-From: Weiqing Kong <weiqing.kong@mediatek.com>
-Subject: [PATCH 3/3] dts: Add disp bls dsti and dts config for MT2701
-Date: Mon, 30 May 2016 16:41:52 +0800
-Message-ID: <1464597712-5399-4-git-send-email-weiqing.kong@mediatek.com>
-References: <1464597712-5399-1-git-send-email-weiqing.kong@mediatek.com>
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Mon, 30 May 2016 17:38:03 +0800
+Message-ID: <1464601083.20071.12.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+	 <1464590942.20547.22.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1464597712-5399-1-git-send-email-weiqing.kong@mediatek.com>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, weiqing.kong@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, erin.lo@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yh.huang@mediatek.com, yt.shen@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1464590942.20547.22.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
----
- arch/arm/boot/dts/mt2701-evb.dts | 29 +++++++++++++++++++++++++++++
- arch/arm/boot/dts/mt2701.dtsi    |  9 +++++++++
- 2 files changed, 38 insertions(+)
+Hi CK,
 
-diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-index 082ca88..6d572f4 100644
---- a/arch/arm/boot/dts/mt2701-evb.dts
-+++ b/arch/arm/boot/dts/mt2701-evb.dts
-@@ -22,6 +22,35 @@
- 	memory {
- 		reg = <0 0x80000000 0 0x40000000>;
- 	};
-+
-+	backlight_lcd: backlight_lcd {
-+		compatible = "pwm-backlight";
-+		pwms = <&disp_bls 0 100000>;
-+		brightness-levels = <
-+			  0  16  32  48  64  80  96 112
-+			128 144 160 176 192 208 224 240
-+			255
-+		>;
-+		default-brightness-level = <9>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pwm_bls_gpio>;
-+	};
-+};
-+
-+&disp_bls {
-+	status = "okay";
-+};
-+
-+&mmsys {
-+	status = "okay";
-+};
-+
-+&pio {
-+	pwm_bls_gpio: pwm_bls_gpio {
-+		pins_cmd_dat {
-+			pinmux = <MT2701_PIN_208_AUD_EXT_CK1__FUNC_DISP_PWM>;
-+		};
-+	};
- };
- 
- &uart0 {
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 42d5a37..dae55d6 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -234,6 +234,15 @@
- 		status = "disabled";
- 	};
- 
-+	disp_bls: dispsys@1400a000 {
-+		compatible = "mediatek,mt2701-disp-bls";
-+		reg = <0 0x1400a000 0 0x1000>;
-+		#pwm-cells = <2>;
-+		clocks = <&mmsys CLK_MM_MDP_BLS_26M>, <&mmsys CLK_MM_DISP_BLS>;
-+		clock-names = "main", "mm";
-+		status = "disabled";
-+	};
-+
- 	imgsys: syscon@15000000 {
- 		compatible = "mediatek,mt2701-imgsys", "syscon";
- 		reg = <0 0x15000000 0 0x1000>;
--- 
-1.8.1.1.dirty
+Reply inline.
+
+On Mon, 2016-05-30 at 14:49 +0800, CK Hu wrote:
+> Hi, HS:
+> 
+> Some comments inline.
+> 
+> On Mon, 2016-05-30 at 11:19 +0800, HS Liao wrote:
+...
+> > +static void cmdq_thread_irq_handler(struct cmdq *cmdq, int tid)
+> > +{
+> > +	struct cmdq_thread *thread = &cmdq->thread[tid];
+> > +	unsigned long flags = 0L;
+> > +	u32 irq_flag;
+> > +
+> > +	spin_lock_irqsave(&cmdq->exec_lock, flags);
+> > +
+> > +	irq_flag = cmdq_thread_readl(thread, CMDQ_THR_IRQ_STATUS);
+> > +	cmdq_thread_writel(thread, ~irq_flag, CMDQ_THR_IRQ_STATUS);
+> > +
+> > +	/*
+> > +	 * Another CPU core could run "release task" right before we acquire
+> > +	 * the spin lock, and thus reset / disable this GCE thread, so we
+> > +	 * need to check the enable bit of this GCE thread.
+> > +	 */
+> > +	if (!(cmdq_thread_readl(thread, CMDQ_THR_ENABLE_TASK) &
+> > +	      CMDQ_THR_ENABLED))
+> > +		irq_flag = 0;
+> 
+> These three statement (clear irq flag and detect thread enable) can be
+> moved into cmdq_handle_error_done() and the duplicated part in
+> cmdq_task_handle_error_result() can be removed. Even though
+> cmdq_task_handle_error_result() need not check thread enable, it would
+> not influence the flow.
+
+Will do.
+
+> > +
+> > +	cmdq_handle_error_done(cmdq, thread, irq_flag);
+> > +	spin_unlock_irqrestore(&cmdq->exec_lock, flags);
+> > +}
+...
+> > +static int cmdq_task_handle_error_result(struct cmdq_task *task)
+> > +{
+> > +	struct cmdq *cmdq = task->cmdq;
+> > +	struct device *dev = cmdq->dev;
+> > +	struct cmdq_thread *thread = task->thread;
+> > +	struct cmdq_task *next_task, *prev_task;
+> > +	u32 irq_flag;
+> > +
+> > +	/* suspend GCE thread to ensure consistency */
+> > +	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> > +
+> > +	/* ISR has handled this error task */
+> > +	if (task->task_state == TASK_STATE_ERROR) {
+> > +		next_task = list_first_entry_or_null(&thread->task_busy_list,
+> > +				struct cmdq_task, list_entry);
+> > +		if (next_task) /* move to next task */
+> > +			cmdq_thread_writel(thread, next_task->pa_base,
+> > +					   CMDQ_THR_CURR_ADDR);
+> > +		cmdq_thread_resume(thread);
+> > +		return -ECANCELED;
+> > +	}
+> > +
+> > +	/*
+> > +	 * Save next_task and prev_task in advance
+> > +	 * since cmdq_handle_error_done will remove list_entry.
+> > +	 */
+> > +	next_task = prev_task = NULL;
+> > +	if (task->list_entry.next != &thread->task_busy_list)
+> > +		next_task = list_next_entry(task, list_entry);
+> > +	if (task->list_entry.prev != &thread->task_busy_list)
+> > +		prev_task = list_prev_entry(task, list_entry);
+> 
+> I think there is always no previous task because task order in
+> thread->task_busy_list is the same as in cmdq->task_release_wq. So each
+> task processed by release work should be the first item in
+> thread->task_busy_list or be removed from thread->task_busy_list.
+
+Will remove previous task.
+
+> > +
+> > +	/*
+> > +	 * Although IRQ is disabled, GCE continues to execute.
+> > +	 * It may have pending IRQ before GCE thread is suspended,
+> > +	 * so check this condition again.
+> > +	 */
+> > +	irq_flag = cmdq_thread_readl(thread, CMDQ_THR_IRQ_STATUS);
+> > +	cmdq_handle_error_done(cmdq, thread, irq_flag);
+> > +	cmdq_thread_writel(thread, ~irq_flag, CMDQ_THR_IRQ_STATUS);
+> > +
+> > +	if (task->task_state == TASK_STATE_DONE) {
+> > +		cmdq_thread_resume(thread);
+> > +		return 0;
+> > +	}
+> > +
+> > +	if (task->task_state == TASK_STATE_ERROR) {
+> > +		dev_err(dev, "task 0x%p error\n", task);
+> > +		if (next_task) /* move to next task */
+> > +			cmdq_thread_writel(thread, next_task->pa_base,
+> > +					   CMDQ_THR_CURR_ADDR);
+> > +		cmdq_thread_resume(thread);
+> > +		return -ECANCELED;
+> > +	}
+> > +
+> > +	/* Task is running, so we force to remove it. */
+> > +	dev_err(dev, "task 0x%p timeout or killed\n", task);
+> 
+> No 'kill' state.
+
+>From CMDQ v8, there is no killed task.
+I will rewrite output message.
+
+> > +	task->task_state = TASK_STATE_ERROR;
+> > +
+> > +	if (prev_task) {
+> > +		u64 *prev_va = prev_task->va_base;
+> > +		u64 *curr_va = task->va_base;
+> > +
+> > +		/* copy JUMP instruction */
+> > +		prev_va[prev_task->num_cmd - 1] = curr_va[task->num_cmd - 1];
+> > +
+> > +		cmdq_thread_invalidate_fetched_data(thread);
+> > +	} else if (next_task) { /* move to next task */
+> > +		cmdq_thread_writel(thread, next_task->pa_base,
+> > +				   CMDQ_THR_CURR_ADDR);
+> > +	}
+> 
+> Just one statement in 'else if' part. So remove the parentheses.
+
+I think we should keep this parentheses.
+
+Quote from CodingStyle document:
+
+This does not apply if only one branch of a conditional statement is a
+single
+statement; in the latter case use braces in both branches:
+
+if (condition) {
+        do_this();
+        do_that();
+} else {
+        otherwise();
+}
+
+> > +
+> > +	list_del(&task->list_entry);
+> > +	cmdq_thread_resume(thread);
+> > +
+> > +	/* call cb here to prevent lock */
+> 
+> I think these three statements should be place together and there should
+> be no this comment.
+> 
+> 1. Change task state to DONE or ERROR.
+> 2. Callback
+> 3. Remove task from task_busy_list.
+
+I will put these three statements together and wrap up them as a
+function.
+
+> > +	if (task->cb.cb) {
+> > +		struct cmdq_cb_data cmdq_cb_data;
+> > +
+> > +		cmdq_cb_data.err = true;
+> > +		cmdq_cb_data.data = task->cb.data;
+> > +		task->cb.cb(cmdq_cb_data);
+> > +	}
+> > +
+> > +	return -ECANCELED;
+> > +}
+...
+> > +static int cmdq_suspend(struct device *dev)
+> > +{
+> > +	struct cmdq *cmdq = dev_get_drvdata(dev);
+> > +	u32 exec_threads;
+> > +
+> > +	mutex_lock(&cmdq->task_mutex);
+> > +	cmdq->suspended = true;
+> > +	mutex_unlock(&cmdq->task_mutex);
+> > +
+> > +	exec_threads = readl(cmdq->base + CMDQ_CURR_LOADED_THR);
+> > +	if ((exec_threads & CMDQ_THR_EXECUTING) && !cmdq_task_is_empty(cmdq)) {
+> > +		dev_err(dev, "wait active tasks timeout.\n");
+> > +		flush_workqueue(cmdq->task_release_wq);
+> > +	}
+> 
+> Maybe it need not to check exec_threads, it may be written as:
+> 
+> 	if (!cmdq_task_is_empty(cmdq))
+> 		dev_err(dev, "wait active tasks timeout.\n");
+> 
+> 	flush_workqueue(cmdq->task_release_wq);
+> 
+> Even though task_busy_list is empty, that does not mean every task in
+> cmdq->task_release_wq is finished. So always do flush
+> cmdq->task_release_wq.
+
+Will do.
+
+> > +	return 0;
+> > +}
+> > +
+...
+> 
+> Regards,
+> CK
+> 
+
+Thanks,
+HS
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
