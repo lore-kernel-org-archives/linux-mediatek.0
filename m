@@ -1,65 +1,76 @@
-From: Stefan Wahren <stefan.wahren@i2se.com>
-Subject: Re: [PATCH v3 0/2] nvmem: remove regmap dependency
-Date: Wed, 1 Jun 2016 10:27:49 +0200
-Message-ID: <7eec3215-b455-6567-28a2-e2a860e1d3ec@i2se.com>
-References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Transfer-Encoding: 7bit
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: [PATCH 4/9] clocksource/drivers/mkt_timer: Convert init function to return error
+Date: Wed,  1 Jun 2016 10:34:47 +0200
+Message-ID: <1464770093-12667-5-git-send-email-daniel.lezcano@linaro.org>
+References: <1464770093-12667-1-git-send-email-daniel.lezcano@linaro.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+In-Reply-To: <1464770093-12667-1-git-send-email-daniel.lezcano@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-mediatek@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: daniel.lezcano@linaro.org, tglx@linutronix.de
+Cc: linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
+	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Greg,
+The init functions do not return any error. They behave as the following:
 
-Am 02.05.2016 um 20:36 schrieb Srinivas Kandagatla:
-> Hi Greg, 
->
-> This is v3 patchset for the leftover 2 patches for nvmem regmap
-> removal series [1]. These patches are based on char-misc tree.
->
-> nvmem uses regmap_raw_read/write apis to read/write data from providers,
-> With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
-> and fix accessor usage") nvmem providers based on regmap-mmio stopped
-> working, as nvmem core was using raw accessors.
-> This issue can be fixed temporarly by moving to other regmap apis,
-> but we might hit same issue in future, and regmap looks like an
-> overdo for nvmem. Moving to interfaces based on read/write callbacks
-> from providers would be more robust.
->
-> This patchset converts the nvmem core and nvmem provider drivers to
-> use the new callbacks. Tested this patchset on qfprom and at24 drivers.
-> Other driver are only compile tested, any testing on them would be great.
->
-> Most of the patches have been applied to char-misc tree, these are the
-> two patches which had some outstanding comments on mxs nvmemprovider,
-> which are now fixed.
->
-> Changes since v2:
->  - Fixed the mxs size and dt data pointer spotted by Stefan and Fabio
->
-> Changes since v1:
->  - rebased mtk-efuse on top of char-misc
->  - addressed concerns raised by Stefan Wahren.
->
-> [1] https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1130026.html
->
-> Thanks,
-> srini
->
-> Srinivas Kandagatla (2):
->   nvmem: mtk-efuse: remove nvmem regmap dependency
->   nvmem: mxs-ocotp: remove nvmem regmap dependency
->
->  drivers/nvmem/Kconfig     |  1 -
->  drivers/nvmem/mtk-efuse.c | 47 ++++++++++++++++++---------
->  drivers/nvmem/mxs-ocotp.c | 83 +++++++++++++----------------------------------
->  3 files changed, 54 insertions(+), 77 deletions(-)
->
+ - panic, thus leading to a kernel crash while another timer may work and
+   make the system boot up correctly
 
-any objections about this series or is it still in queue?
+ or
 
-Stefan
+ - print an error and let the caller unaware if the state of the system
+
+Change that by converting the init functions to return an error conforming
+to the CLOCKSOURCE_OF_RET prototype.
+
+Proper error handling (rollback, errno value) will be changed later case
+by case, thus this change just return back an error or success in the init
+function.
+
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ drivers/clocksource/mtk_timer.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
+index 7e583f8..432a2c0 100644
+--- a/drivers/clocksource/mtk_timer.c
++++ b/drivers/clocksource/mtk_timer.c
+@@ -181,7 +181,7 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
+ 			evt->gpt_base + GPT_IRQ_EN_REG);
+ }
+ 
+-static void __init mtk_timer_init(struct device_node *node)
++static int __init mtk_timer_init(struct device_node *node)
+ {
+ 	struct mtk_clock_event_device *evt;
+ 	struct resource res;
+@@ -190,7 +190,7 @@ static void __init mtk_timer_init(struct device_node *node)
+ 
+ 	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
+ 	if (!evt)
+-		return;
++		return -ENOMEM;
+ 
+ 	evt->dev.name = "mtk_tick";
+ 	evt->dev.rating = 300;
+@@ -248,7 +248,7 @@ static void __init mtk_timer_init(struct device_node *node)
+ 
+ 	mtk_timer_enable_irq(evt, GPT_CLK_EVT);
+ 
+-	return;
++	return 0;
+ 
+ err_clk_disable:
+ 	clk_disable_unprepare(clk);
+@@ -262,5 +262,7 @@ err_mem:
+ 	release_mem_region(res.start, resource_size(&res));
+ err_kzalloc:
+ 	kfree(evt);
++
++	return -EINVAL;
+ }
+-CLOCKSOURCE_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
++CLOCKSOURCE_OF_DECLARE_RET(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
+-- 
+1.9.1
