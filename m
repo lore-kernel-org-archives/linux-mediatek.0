@@ -1,76 +1,92 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: [PATCH 4/9] clocksource/drivers/mkt_timer: Convert init function to return error
-Date: Wed,  1 Jun 2016 10:34:47 +0200
-Message-ID: <1464770093-12667-5-git-send-email-daniel.lezcano@linaro.org>
-References: <1464770093-12667-1-git-send-email-daniel.lezcano@linaro.org>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [RFC v2 1/5] drm/mediatek: rename macros, add chip suffix
+Date: Wed, 1 Jun 2016 17:09:05 +0800
+Message-ID: <1464772145.10410.27.camel@mtksdaap41>
+References: <1463756736-46573-1-git-send-email-yt.shen@mediatek.com>
+	 <1463756736-46573-2-git-send-email-yt.shen@mediatek.com>
+	 <20160530104129.GA8388@ulmo.ba.sec>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464770093-12667-1-git-send-email-daniel.lezcano@linaro.org>
+In-Reply-To: <20160530104129.GA8388@ulmo.ba.sec>
 Sender: linux-kernel-owner@vger.kernel.org
-To: daniel.lezcano@linaro.org, tglx@linutronix.de
-Cc: linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek
-	SoC..." <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The init functions do not return any error. They behave as the following:
+Hi Thierry,
 
- - panic, thus leading to a kernel crash while another timer may work and
-   make the system boot up correctly
+On Mon, 2016-05-30 at 12:41 +0200, Thierry Reding wrote:
+> On Fri, May 20, 2016 at 11:05:32PM +0800, yt.shen@mediatek.com wrote:
+> > From: YT Shen <yt.shen@mediatek.com>
+> > 
+> > Add MT8173 suffix for hardware related macros.
+> > 
+> > Signed-off-by: YT Shen <yt.shen@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c |   62 ++++++++++++++++----------------
+> >  1 file changed, 31 insertions(+), 31 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > index 17ba935..d6aafd4 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
+> > @@ -36,21 +36,21 @@
+> >  #define DISP_REG_MUTEX_MOD(n)	(0x2c + 0x20 * (n))
+> >  #define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
+> >  
+> > -#define MUTEX_MOD_DISP_OVL0		BIT(11)
+> > -#define MUTEX_MOD_DISP_OVL1		BIT(12)
+> > -#define MUTEX_MOD_DISP_RDMA0		BIT(13)
+> > -#define MUTEX_MOD_DISP_RDMA1		BIT(14)
+> > -#define MUTEX_MOD_DISP_RDMA2		BIT(15)
+> > -#define MUTEX_MOD_DISP_WDMA0		BIT(16)
+> > -#define MUTEX_MOD_DISP_WDMA1		BIT(17)
+> > -#define MUTEX_MOD_DISP_COLOR0		BIT(18)
+> > -#define MUTEX_MOD_DISP_COLOR1		BIT(19)
+> > -#define MUTEX_MOD_DISP_AAL		BIT(20)
+> > -#define MUTEX_MOD_DISP_GAMMA		BIT(21)
+> > -#define MUTEX_MOD_DISP_UFOE		BIT(22)
+> > -#define MUTEX_MOD_DISP_PWM0		BIT(23)
+> > -#define MUTEX_MOD_DISP_PWM1		BIT(24)
+> > -#define MUTEX_MOD_DISP_OD		BIT(25)
+> > +#define MUTEX_MOD_DISP_OVL0_MT8173		BIT(11)
+> > +#define MUTEX_MOD_DISP_OVL1_MT8173		BIT(12)
+> > +#define MUTEX_MOD_DISP_RDMA0_MT8173		BIT(13)
+> > +#define MUTEX_MOD_DISP_RDMA1_MT8173		BIT(14)
+> > +#define MUTEX_MOD_DISP_RDMA2_MT8173		BIT(15)
+> > +#define MUTEX_MOD_DISP_WDMA0_MT8173		BIT(16)
+> > +#define MUTEX_MOD_DISP_WDMA1_MT8173		BIT(17)
+> > +#define MUTEX_MOD_DISP_COLOR0_MT8173		BIT(18)
+> > +#define MUTEX_MOD_DISP_COLOR1_MT8173		BIT(19)
+> > +#define MUTEX_MOD_DISP_AAL_MT8173		BIT(20)
+> > +#define MUTEX_MOD_DISP_GAMMA_MT8173		BIT(21)
+> > +#define MUTEX_MOD_DISP_UFOE_MT8173		BIT(22)
+> > +#define MUTEX_MOD_DISP_PWM0_MT8173		BIT(23)
+> > +#define MUTEX_MOD_DISP_PWM1_MT8173		BIT(24)
+> > +#define MUTEX_MOD_DISP_OD_MT8173		BIT(25)
+> 
+> Just a random fly-by comment: this looks like a hardware spinlock, have
+> you ever considered implementing this as a hwspinlock driver? See the
+> drivers/hwspinlock subdirectory for existing examples.
+> 
+> Thierry
 
- or
+I see the drivers/hwspinlock and Documentation/hwspinlock.txt
+Yes, we can implement this like a hardware spinlock.  But I have some
+questions, the document says:
 
- - print an error and let the caller unaware if the state of the system
+"Hardware spinlock modules provide hardware assistance for
+synchronization and mutual exclusion between heterogeneous processors
+and those not operating under a single, shared operating system"
 
-Change that by converting the init functions to return an error conforming
-to the CLOCKSOURCE_OF_RET prototype.
+The mutex here is a handshake interface between software and hardware.
+The hardware is the display controller, the software is the drm display
+driver, and no other consumers need to access this mutex.  So I think
+that using hwspinlock to implement a bit too complicated, am I right?
 
-Proper error handling (rollback, errno value) will be changed later case
-by case, thus this change just return back an error or success in the init
-function.
+I will use iopoll macros to implement this part in the next version.
+Thanks.
 
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
----
- drivers/clocksource/mtk_timer.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/clocksource/mtk_timer.c b/drivers/clocksource/mtk_timer.c
-index 7e583f8..432a2c0 100644
---- a/drivers/clocksource/mtk_timer.c
-+++ b/drivers/clocksource/mtk_timer.c
-@@ -181,7 +181,7 @@ static void mtk_timer_enable_irq(struct mtk_clock_event_device *evt, u8 timer)
- 			evt->gpt_base + GPT_IRQ_EN_REG);
- }
- 
--static void __init mtk_timer_init(struct device_node *node)
-+static int __init mtk_timer_init(struct device_node *node)
- {
- 	struct mtk_clock_event_device *evt;
- 	struct resource res;
-@@ -190,7 +190,7 @@ static void __init mtk_timer_init(struct device_node *node)
- 
- 	evt = kzalloc(sizeof(*evt), GFP_KERNEL);
- 	if (!evt)
--		return;
-+		return -ENOMEM;
- 
- 	evt->dev.name = "mtk_tick";
- 	evt->dev.rating = 300;
-@@ -248,7 +248,7 @@ static void __init mtk_timer_init(struct device_node *node)
- 
- 	mtk_timer_enable_irq(evt, GPT_CLK_EVT);
- 
--	return;
-+	return 0;
- 
- err_clk_disable:
- 	clk_disable_unprepare(clk);
-@@ -262,5 +262,7 @@ err_mem:
- 	release_mem_region(res.start, resource_size(&res));
- err_kzalloc:
- 	kfree(evt);
-+
-+	return -EINVAL;
- }
--CLOCKSOURCE_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
-+CLOCKSOURCE_OF_DECLARE_RET(mtk_mt6577, "mediatek,mt6577-timer", mtk_timer_init);
--- 
-1.9.1
+yt.shen
