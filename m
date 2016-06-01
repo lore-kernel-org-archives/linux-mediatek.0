@@ -1,44 +1,67 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [GIT PULL] drm/mediatek: MT8173 DSI and DPI fixes
-Date: Wed, 01 Jun 2016 18:50:03 +0200
-Message-ID: <1464799803.3522.73.camel@pengutronix.de>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v3 0/2] nvmem: remove regmap dependency
+Date: Wed, 1 Jun 2016 10:55:42 -0700
+Message-ID: <20160601175542.GA19241@kroah.com>
+References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+ <7eec3215-b455-6567-28a2-e2a860e1d3ec@i2se.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <7eec3215-b455-6567-28a2-e2a860e1d3ec@i2se.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Stefan Wahren <stefan.wahren@i2se.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, linux-mediatek@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwKCnRoaXMgdGFnIGNvbnRhaW5zIHR3byBmaXhlcywgb25lIGVhY2ggZm9yIGFuIG92
-ZXJzaWdodCBpbiB0aGUgRFBJIGFuZApEU0kgZHJpdmVyLCByZXNwZWN0aXZlbHkuCgpyZWdhcmRz
-ClBoaWxpcHAKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgMWE2OTVhOTA1YzE4
-NTQ4MDYyNTA5MTc4Yjk4YmM5MWU2NzUxMDg2NDoKCiAgTGludXggNC43LXJjMSAoMjAxNi0wNS0y
-OSAwOToyOToyNCAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0
-OgoKICBnaXQ6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L3B6YS9saW51eC5naXQgdGFncy9tZWRp
-YXRlay1kcm0tZml4ZXMtMjAxNi0wNi0wMQoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRv
-IDJlYTlmMzE3OTlhZGNlMzVkOGM5YTBiYjNiYzFkMmI1MTU3MDJjNmY6CgogIGRybS9tZWRpYXRl
-azogbXRrX2RzaTogUmVtb3ZlIHNwdXJpb3VzIGRybV9jb25uZWN0b3JfdW5yZWdpc3RlciAoMjAx
-Ni0wNi0wMSAxNjowOTo1NiArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KbWVkaWF0ZWstZHJtIGZpeGVzCgotIHJl
-bW92ZSBhbiBpbnZhbGlkLCB1bnJlYWNoYWJsZSBlcnJvciBtZXNzYWdlIGFuZCBOVUxMIHBvaW50
-ZXIgZGVyZWZlcmVuY2UKLSByZW1vdmUgYSBzcHVyaW91cyBkcm1fY29ubmVjdG9yX3VucmVnaXN0
-ZXIgY2FsbCBmcm9tIHRoZSBEU0kgZHJpdmVyCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tClBoaWxpcHAgWmFiZWwgKDIpOgog
-ICAgICBkcm0vbWVkaWF0ZWs6IG10a19kcGk6IHJlbW92ZSBpbnZhbGlkIGVycm9yIG1lc3NhZ2UK
-ICAgICAgZHJtL21lZGlhdGVrOiBtdGtfZHNpOiBSZW1vdmUgc3B1cmlvdXMgZHJtX2Nvbm5lY3Rv
-cl91bnJlZ2lzdGVyCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyB8IDUgLS0t
-LS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA0ICstLS0KIDIgZmlsZXMg
-Y2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDggZGVsZXRpb25zKC0pCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
-LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Wed, Jun 01, 2016 at 10:27:49AM +0200, Stefan Wahren wrote:
+> Hi Greg,
+> 
+> Am 02.05.2016 um 20:36 schrieb Srinivas Kandagatla:
+> > Hi Greg, 
+> >
+> > This is v3 patchset for the leftover 2 patches for nvmem regmap
+> > removal series [1]. These patches are based on char-misc tree.
+> >
+> > nvmem uses regmap_raw_read/write apis to read/write data from providers,
+> > With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
+> > and fix accessor usage") nvmem providers based on regmap-mmio stopped
+> > working, as nvmem core was using raw accessors.
+> > This issue can be fixed temporarly by moving to other regmap apis,
+> > but we might hit same issue in future, and regmap looks like an
+> > overdo for nvmem. Moving to interfaces based on read/write callbacks
+> > from providers would be more robust.
+> >
+> > This patchset converts the nvmem core and nvmem provider drivers to
+> > use the new callbacks. Tested this patchset on qfprom and at24 drivers.
+> > Other driver are only compile tested, any testing on them would be great.
+> >
+> > Most of the patches have been applied to char-misc tree, these are the
+> > two patches which had some outstanding comments on mxs nvmemprovider,
+> > which are now fixed.
+> >
+> > Changes since v2:
+> >  - Fixed the mxs size and dt data pointer spotted by Stefan and Fabio
+> >
+> > Changes since v1:
+> >  - rebased mtk-efuse on top of char-misc
+> >  - addressed concerns raised by Stefan Wahren.
+> >
+> > [1] https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1130026.html
+> >
+> > Thanks,
+> > srini
+> >
+> > Srinivas Kandagatla (2):
+> >   nvmem: mtk-efuse: remove nvmem regmap dependency
+> >   nvmem: mxs-ocotp: remove nvmem regmap dependency
+> >
+> >  drivers/nvmem/Kconfig     |  1 -
+> >  drivers/nvmem/mtk-efuse.c | 47 ++++++++++++++++++---------
+> >  drivers/nvmem/mxs-ocotp.c | 83 +++++++++++++----------------------------------
+> >  3 files changed, 54 insertions(+), 77 deletions(-)
+> >
+> 
+> any objections about this series or is it still in queue?
+
+still in my queue...
