@@ -1,7 +1,8 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 11/45] frv: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:13 +0200
-Message-ID: <1464881987-13203-12-git-send-email-k.kozlowski__20085.0117406391$1464882127$gmane$org@samsung.com>
+Subject: [RFC v3 13/45] drm/mediatek: dma-mapping: Use unsigned long for
+ dma_attrs
+Date: Thu, 02 Jun 2016 17:39:15 +0200
+Message-ID: <1464881987-13203-14-git-send-email-k.kozlowski__38974.8906637125$1464882131$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,89 +27,72 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/frv/mb93090-mb00/pci-dma-nommu.c | 8 ++++----
- arch/frv/mb93090-mb00/pci-dma.c       | 9 ++++-----
- 2 files changed, 8 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 13 ++++++-------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h |  2 +-
+ 2 files changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/arch/frv/mb93090-mb00/pci-dma-nommu.c b/arch/frv/mb93090-mb00/pci-dma-nommu.c
-index 082be49b5df0..90f2e4cb33d6 100644
---- a/arch/frv/mb93090-mb00/pci-dma-nommu.c
-+++ b/arch/frv/mb93090-mb00/pci-dma-nommu.c
-@@ -35,7 +35,7 @@ static DEFINE_SPINLOCK(dma_alloc_lock);
- static LIST_HEAD(dma_alloc_list);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index fa2ec0cd00e8..7abc550ebc00 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -54,15 +54,14 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
  
- static void *frv_dma_alloc(struct device *hwdev, size_t size, dma_addr_t *dma_handle,
--		gfp_t gfp, struct dma_attrs *attrs)
-+		gfp_t gfp, unsigned long attrs)
- {
- 	struct dma_alloc_record *new;
- 	struct list_head *this = &dma_alloc_list;
-@@ -86,7 +86,7 @@ static void *frv_dma_alloc(struct device *hwdev, size_t size, dma_addr_t *dma_ha
- }
+ 	obj = &mtk_gem->base;
  
- static void frv_dma_free(struct device *hwdev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs)
-+		dma_addr_t dma_handle, unsigned long attrs)
- {
- 	struct dma_alloc_record *rec;
- 	unsigned long flags;
-@@ -107,7 +107,7 @@ static void frv_dma_free(struct device *hwdev, size_t size, void *vaddr,
+-	init_dma_attrs(&mtk_gem->dma_attrs);
+-	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &mtk_gem->dma_attrs);
++	mtk_gem->dma_attrs = DMA_ATTR_WRITE_COMBINE;
  
- static int frv_dma_map_sg(struct device *dev, struct scatterlist *sglist,
- 		int nents, enum dma_data_direction direction,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
- {
- 	int i;
- 	struct scatterlist *sg;
-@@ -124,7 +124,7 @@ static int frv_dma_map_sg(struct device *dev, struct scatterlist *sglist,
+ 	if (!alloc_kmap)
+-		dma_set_attr(DMA_ATTR_NO_KERNEL_MAPPING, &mtk_gem->dma_attrs);
++		mtk_gem->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
  
- static dma_addr_t frv_dma_map_page(struct device *dev, struct page *page,
- 		unsigned long offset, size_t size,
--		enum dma_data_direction direction, struct dma_attrs *attrs)
-+		enum dma_data_direction direction, unsigned long attrs)
- {
- 	BUG_ON(direction == DMA_NONE);
- 	flush_dcache_page(page);
-diff --git a/arch/frv/mb93090-mb00/pci-dma.c b/arch/frv/mb93090-mb00/pci-dma.c
-index 316b7b65348d..f585745b1abc 100644
---- a/arch/frv/mb93090-mb00/pci-dma.c
-+++ b/arch/frv/mb93090-mb00/pci-dma.c
-@@ -19,8 +19,7 @@
- #include <asm/io.h>
+ 	mtk_gem->cookie = dma_alloc_attrs(priv->dma_dev, obj->size,
+ 					  &mtk_gem->dma_addr, GFP_KERNEL,
+-					  &mtk_gem->dma_attrs);
++					  mtk_gem->dma_attrs);
+ 	if (!mtk_gem->cookie) {
+ 		DRM_ERROR("failed to allocate %zx byte dma buffer", obj->size);
+ 		ret = -ENOMEM;
+@@ -93,7 +92,7 @@ void mtk_drm_gem_free_object(struct drm_gem_object *obj)
+ 		drm_prime_gem_destroy(obj, mtk_gem->sg);
+ 	else
+ 		dma_free_attrs(priv->dma_dev, obj->size, mtk_gem->cookie,
+-			       mtk_gem->dma_addr, &mtk_gem->dma_attrs);
++			       mtk_gem->dma_addr, mtk_gem->dma_attrs);
  
- static void *frv_dma_alloc(struct device *hwdev, size_t size,
--		dma_addr_t *dma_handle, gfp_t gfp,
--		struct dma_attrs *attrs)
-+		dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
- {
- 	void *ret;
+ 	/* release file pointer to gem object. */
+ 	drm_gem_object_release(obj);
+@@ -173,7 +172,7 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	vma->vm_pgoff = 0;
  
-@@ -32,14 +31,14 @@ static void *frv_dma_alloc(struct device *hwdev, size_t size,
- }
+ 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
+-			     mtk_gem->dma_addr, obj->size, &mtk_gem->dma_attrs);
++			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
+ 	if (ret)
+ 		drm_gem_vm_close(vma);
  
- static void frv_dma_free(struct device *hwdev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs)
-+		dma_addr_t dma_handle, unsigned long attrs)
- {
- 	consistent_free(vaddr);
- }
+@@ -224,7 +223,7 @@ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj)
  
- static int frv_dma_map_sg(struct device *dev, struct scatterlist *sglist,
- 		int nents, enum dma_data_direction direction,
--		struct dma_attrs *attrs)
-+		unsigned long attrs)
- {
- 	unsigned long dampr2;
- 	void *vaddr;
-@@ -69,7 +68,7 @@ static int frv_dma_map_sg(struct device *dev, struct scatterlist *sglist,
+ 	ret = dma_get_sgtable_attrs(priv->dma_dev, sgt, mtk_gem->cookie,
+ 				    mtk_gem->dma_addr, obj->size,
+-				    &mtk_gem->dma_attrs);
++				    mtk_gem->dma_attrs);
+ 	if (ret) {
+ 		DRM_ERROR("failed to allocate sgt, %d\n", ret);
+ 		kfree(sgt);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+index 3a2a5624a1cb..2752718fa5b2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+@@ -35,7 +35,7 @@ struct mtk_drm_gem_obj {
+ 	void			*cookie;
+ 	void			*kvaddr;
+ 	dma_addr_t		dma_addr;
+-	struct dma_attrs	dma_attrs;
++	unsigned long		dma_attrs;
+ 	struct sg_table		*sg;
+ };
  
- static dma_addr_t frv_dma_map_page(struct device *dev, struct page *page,
- 		unsigned long offset, size_t size,
--		enum dma_data_direction direction, struct dma_attrs *attrs)
-+		enum dma_data_direction direction, unsigned long attrs)
- {
- 	flush_dcache_page(page);
- 	return (dma_addr_t) page_to_phys(page) + offset;
 -- 
 1.9.1
