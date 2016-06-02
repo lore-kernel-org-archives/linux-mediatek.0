@@ -1,153 +1,130 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: add MCLK source selection" to the asoc tree
-Date: Thu, 02 Jun 2016 18:21:28 +0100
-Message-ID: <E1b8WJE-0006KH-Sl@finisterre>
-References: <1464782412-632-1-git-send-email-pc.liao@mediatek.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464782412-632-1-git-send-email-pc.liao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: PC Liao <pc.liao@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, s.hauer@pengutronix.de, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 09/20] drm: rcar-du: Rely on the default ->best_encoder() behavior
+Date: Thu, 02 Jun 2016 23:57:14 +0300
+Message-ID: <5863270.jtrd0Kruzj@avalon>
+References: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com> <1464877907-27723-10-git-send-email-boris.brezillon@free-electrons.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <1464877907-27723-10-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>, Alexey Brodkin <abrodkin@synopsys.com>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@freescale.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Hi Boris,
 
-   ASoC: mediatek: add MCLK source selection
+Thank you for the patch.
 
-has been applied to the asoc tree at
+On Thursday 02 Jun 2016 16:31:36 Boris Brezillon wrote:
+> All outputs have a 1:1 relationship between connectors and encoders,
+> and the driver is relying on the atomic helpers: we can drop the custom
+> ->best_encoder() implementations and let the core call
+> drm_atomic_helper_best_encoder() for us.
+> 
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+> ---
+>  drivers/gpu/drm/rcar-du/rcar_du_encoder.c | 12 ------------
+>  drivers/gpu/drm/rcar-du/rcar_du_encoder.h |  3 ---
+>  drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c |  1 -
+>  drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c |  1 -
+>  drivers/gpu/drm/rcar-du/rcar_du_vgacon.c  |  1 -
+>  5 files changed, 18 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
+> b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c index 4e939e4..55149e9 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
+> +++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
+> @@ -27,18 +27,6 @@
+>  #include "rcar_du_vgacon.h"
+> 
+>  /*
+> ---------------------------------------------------------------------------
+> -- - * Common connector functions
+> - */
+> -
+> -struct drm_encoder *
+> -rcar_du_connector_best_encoder(struct drm_connector *connector)
+> -{
+> -	struct rcar_du_connector *rcon = to_rcar_connector(connector);
+> -
+> -	return rcar_encoder_to_drm_encoder(rcon->encoder);
+> -}
+> -
+> -/*
+> ---------------------------------------------------------------------------
+> -- * Encoder
+>   */
+> 
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
+> b/drivers/gpu/drm/rcar-du/rcar_du_encoder.h index 719b6f2a..a8669c3 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
+> +++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.h
+> @@ -49,9 +49,6 @@ struct rcar_du_connector {
+>  #define to_rcar_connector(c) \
+>  	container_of(c, struct rcar_du_connector, connector)
+> 
+> -struct drm_encoder *
+> -rcar_du_connector_best_encoder(struct drm_connector *connector);
+> -
+>  int rcar_du_encoder_init(struct rcar_du_device *rcdu,
+>  			 enum rcar_du_encoder_type type,
+>  			 enum rcar_du_output output,
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
+> b/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c index 6c92714..612b4d5 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
+> +++ b/drivers/gpu/drm/rcar-du/rcar_du_hdmicon.c
+> @@ -52,7 +52,6 @@ static int rcar_du_hdmi_connector_mode_valid(struct
+> drm_connector *connector, static const struct drm_connector_helper_funcs
+> connector_helper_funcs = { .get_modes = rcar_du_hdmi_connector_get_modes,
+>  	.mode_valid = rcar_du_hdmi_connector_mode_valid,
+> -	.best_encoder = rcar_du_connector_best_encoder,
+>  };
+> 
+>  static enum drm_connector_status
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
+> b/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c index e905f5d..6afd0af 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
+> +++ b/drivers/gpu/drm/rcar-du/rcar_du_lvdscon.c
+> @@ -59,7 +59,6 @@ static int rcar_du_lvds_connector_get_modes(struct
+> drm_connector *connector)
+> 
+>  static const struct drm_connector_helper_funcs connector_helper_funcs = {
+>  	.get_modes = rcar_du_lvds_connector_get_modes,
+> -	.best_encoder = rcar_du_connector_best_encoder,
+>  };
+> 
+>  static enum drm_connector_status
+> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
+> b/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c index 9d7e5c9..68f7ffa 100644
+> --- a/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
+> +++ b/drivers/gpu/drm/rcar-du/rcar_du_vgacon.c
+> @@ -28,7 +28,6 @@ static int rcar_du_vga_connector_get_modes(struct
+> drm_connector *connector)
+> 
+>  static const struct drm_connector_helper_funcs connector_helper_funcs = {
+>  	.get_modes = rcar_du_vga_connector_get_modes,
+> -	.best_encoder = rcar_du_connector_best_encoder,
+>  };
+> 
+>  static enum drm_connector_status
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+You can also remove
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+        rcon->encoder = renc;
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+from rcar_du_vga_connector_init(), it's not needed anymore. The same code in 
+rcar_du_hdmi_connector_init() has to stay for now though, as it's used to 
+locate the slave encoder in the HDMI support code. That should change when the 
+driver will be converted to use drm_bridge.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+I can also fix this during the conversion to drm_bridge if you don't want to 
+resubmit. In any case,
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Thanks,
-Mark
-
->From 0c198ed2ba68b6cc728c5aa3c5486d9e5c328ecd Mon Sep 17 00:00:00 2001
-From: PC Liao <pc.liao@mediatek.com>
-Date: Wed, 1 Jun 2016 20:00:12 +0800
-Subject: [PATCH] ASoC: mediatek: add MCLK source selection
-
-The new machine's MCLK source is from mt8173 which is dynamic from
-sampling rate*256. This patch provides the selection for device tree.
-
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |  5 +++
- sound/soc/mediatek/mt8173-rt5650.c                 | 45 +++++++++++++++++++++-
- 2 files changed, 48 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-index 5bfa6b60530b..f250fc7c7acc 100644
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-@@ -12,12 +12,17 @@ Required codec-capture subnode properties:
-   <&rt5650 0> : Default setting. Connect rt5650 I2S1 for capture. (dai_name = rt5645-aif1)
-   <&rt5650 1> : Connect rt5650 I2S2 for capture. (dai_name = rt5645-aif2)
- 
-+- mediatek,mclk: the MCLK source
-+  0 : external oscillator, MCLK = 12.288M
-+  1 : internal source from mt8173, MCLK = sampling rate*256
-+
- Example:
- 
- 	sound {
- 		compatible = "mediatek,mt8173-rt5650";
- 		mediatek,audio-codec = <&rt5650>;
- 		mediatek,platform = <&afe>;
-+		mediatek,mclk = <0>;
- 		codec-capture {
- 			sound-dai = <&rt5650 1>;
- 		};
-diff --git a/sound/soc/mediatek/mt8173-rt5650.c b/sound/soc/mediatek/mt8173-rt5650.c
-index a27a6673dbe3..072934b470a8 100644
---- a/sound/soc/mediatek/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173-rt5650.c
-@@ -23,6 +23,20 @@
- 
- #define MCLK_FOR_CODECS		12288000
- 
-+enum mt8173_rt5650_mclk {
-+	MT8173_RT5650_MCLK_EXTERNAL = 0,
-+	MT8173_RT5650_MCLK_INTERNAL,
-+};
-+
-+struct mt8173_rt5650_platform_data {
-+	enum mt8173_rt5650_mclk pll_from;
-+	/* 0 = external oscillator; 1 = internal source from mt8173 */
-+};
-+
-+static struct mt8173_rt5650_platform_data mt8173_rt5650_priv = {
-+	.pll_from = MT8173_RT5650_MCLK_EXTERNAL,
-+};
-+
- static const struct snd_soc_dapm_widget mt8173_rt5650_widgets[] = {
- 	SND_SOC_DAPM_SPK("Speaker", NULL),
- 	SND_SOC_DAPM_MIC("Int Mic", NULL),
-@@ -54,13 +68,29 @@ static int mt8173_rt5650_hw_params(struct snd_pcm_substream *substream,
- 				   struct snd_pcm_hw_params *params)
- {
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	unsigned int mclk_clock;
- 	int i, ret;
- 
-+	switch (mt8173_rt5650_priv.pll_from) {
-+	case MT8173_RT5650_MCLK_EXTERNAL:
-+		/* mclk = 12.288M */
-+		mclk_clock = MCLK_FOR_CODECS;
-+		break;
-+	case MT8173_RT5650_MCLK_INTERNAL:
-+		/* mclk = sampling rate*256 */
-+		mclk_clock = params_rate(params) * 256;
-+		break;
-+	default:
-+		/* mclk = 12.288M */
-+		mclk_clock = MCLK_FOR_CODECS;
-+		break;
-+	}
-+
- 	for (i = 0; i < rtd->num_codecs; i++) {
- 		struct snd_soc_dai *codec_dai = rtd->codec_dais[i];
- 
--		/* pll from mclk 12.288M */
--		ret = snd_soc_dai_set_pll(codec_dai, 0, 0, MCLK_FOR_CODECS,
-+		/* pll from mclk */
-+		ret = snd_soc_dai_set_pll(codec_dai, 0, 0, mclk_clock,
- 					  params_rate(params) * 512);
- 		if (ret)
- 			return ret;
-@@ -243,6 +273,17 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 		mt8173_rt5650_codecs[1].dai_name = codec_capture_dai;
- 	}
- 
-+	if (device_property_present(&pdev->dev, "mediatek,mclk")) {
-+		ret = device_property_read_u32(&pdev->dev,
-+					       "mediatek,mclk",
-+					       &mt8173_rt5650_priv.pll_from);
-+		if (ret) {
-+			dev_err(&pdev->dev,
-+				"%s snd_soc_register_card fail %d\n",
-+				__func__, ret);
-+		}
-+	}
-+
- 	card->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, card);
- 
 -- 
-2.8.1
+Regards,
+
+Laurent Pinchart
