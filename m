@@ -1,7 +1,7 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 04/45] arc: dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:06 +0200
-Message-ID: <1464881987-13203-5-git-send-email-k.kozlowski__38197.3753836521$1464882084$gmane$org@samsung.com>
+Subject: [RFC v3 07/45] avr32: dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:09 +0200
+Message-ID: <1464881987-13203-8-git-send-email-k.kozlowski__47307.852007407$1464882094$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -26,48 +26,48 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/arc/mm/dma.c | 8 ++++----
+ arch/avr32/mm/dma-coherent.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arc/mm/dma.c b/arch/arc/mm/dma.c
-index 73d7e4c75b7d..3d1f467d1792 100644
---- a/arch/arc/mm/dma.c
-+++ b/arch/arc/mm/dma.c
-@@ -22,7 +22,7 @@
- 
- 
- static void *arc_dma_alloc(struct device *dev, size_t size,
--		dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
-+		dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
- {
- 	unsigned long order = get_order(size);
- 	struct page *page;
-@@ -90,7 +90,7 @@ static void *arc_dma_alloc(struct device *dev, size_t size,
+diff --git a/arch/avr32/mm/dma-coherent.c b/arch/avr32/mm/dma-coherent.c
+index 92cf1fb2b3e6..fc51f4421933 100644
+--- a/arch/avr32/mm/dma-coherent.c
++++ b/arch/avr32/mm/dma-coherent.c
+@@ -99,7 +99,7 @@ static void __dma_free(struct device *dev, size_t size,
  }
  
- static void arc_dma_free(struct device *dev, size_t size, void *vaddr,
--		dma_addr_t dma_handle, struct dma_attrs *attrs)
-+		dma_addr_t dma_handle, unsigned long attrs)
+ static void *avr32_dma_alloc(struct device *dev, size_t size,
+-		dma_addr_t *handle, gfp_t gfp, struct dma_attrs *attrs)
++		dma_addr_t *handle, gfp_t gfp, unsigned long attrs)
  {
- 	struct page *page = virt_to_page(dma_handle);
- 	int is_non_coh = 1;
-@@ -129,7 +129,7 @@ static void _dma_cache_sync(phys_addr_t paddr, size_t size,
+ 	struct page *page;
+ 	dma_addr_t phys;
+@@ -119,7 +119,7 @@ static void *avr32_dma_alloc(struct device *dev, size_t size,
+ }
  
- static dma_addr_t arc_dma_map_page(struct device *dev, struct page *page,
- 		unsigned long offset, size_t size, enum dma_data_direction dir,
+ static void avr32_dma_free(struct device *dev, size_t size,
+-		void *cpu_addr, dma_addr_t handle, struct dma_attrs *attrs)
++		void *cpu_addr, dma_addr_t handle, unsigned long attrs)
+ {
+ 	struct page *page;
+ 
+@@ -142,7 +142,7 @@ static void avr32_dma_free(struct device *dev, size_t size,
+ 
+ static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
+ 		unsigned long offset, size_t size,
+-		enum dma_data_direction direction, struct dma_attrs *attrs)
++		enum dma_data_direction direction, unsigned long attrs)
+ {
+ 	void *cpu_addr = page_address(page) + offset;
+ 
+@@ -152,7 +152,7 @@ static dma_addr_t avr32_dma_map_page(struct device *dev, struct page *page,
+ 
+ static int avr32_dma_map_sg(struct device *dev, struct scatterlist *sglist,
+ 		int nents, enum dma_data_direction direction,
 -		struct dma_attrs *attrs)
 +		unsigned long attrs)
  {
- 	phys_addr_t paddr = page_to_phys(page) + offset;
- 	_dma_cache_sync(paddr, size, dir);
-@@ -137,7 +137,7 @@ static dma_addr_t arc_dma_map_page(struct device *dev, struct page *page,
- }
- 
- static int arc_dma_map_sg(struct device *dev, struct scatterlist *sg,
--	   int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
-+	   int nents, enum dma_data_direction dir, unsigned long attrs)
- {
- 	struct scatterlist *s;
  	int i;
+ 	struct scatterlist *sg;
 -- 
 1.9.1
