@@ -1,8 +1,8 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 13/45] drm/mediatek: dma-mapping: Use unsigned long for
+Subject: [RFC v3 15/45] drm/nouveau: dma-mapping: Use unsigned long for
  dma_attrs
-Date: Thu, 02 Jun 2016 17:39:15 +0200
-Message-ID: <1464881987-13203-14-git-send-email-k.kozlowski__38974.8906637125$1464882131$gmane$org@samsung.com>
+Date: Thu, 02 Jun 2016 17:39:17 +0200
+Message-ID: <1464881987-13203-16-git-send-email-k.kozlowski__49579.7356278219$1464882135$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -27,72 +27,53 @@ squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 13 ++++++-------
- drivers/gpu/drm/mediatek/mtk_drm_gem.h |  2 +-
- 2 files changed, 7 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index fa2ec0cd00e8..7abc550ebc00 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -54,15 +54,14 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev,
+diff --git a/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c b/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c
+index 6b8f2a19b2d9..a6a7fa0d7679 100644
+--- a/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c
++++ b/drivers/gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c
+@@ -109,7 +109,7 @@ struct gk20a_instmem {
+ 	u16 iommu_bit;
  
- 	obj = &mtk_gem->base;
- 
--	init_dma_attrs(&mtk_gem->dma_attrs);
--	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &mtk_gem->dma_attrs);
-+	mtk_gem->dma_attrs = DMA_ATTR_WRITE_COMBINE;
- 
- 	if (!alloc_kmap)
--		dma_set_attr(DMA_ATTR_NO_KERNEL_MAPPING, &mtk_gem->dma_attrs);
-+		mtk_gem->dma_attrs |= DMA_ATTR_NO_KERNEL_MAPPING;
- 
- 	mtk_gem->cookie = dma_alloc_attrs(priv->dma_dev, obj->size,
- 					  &mtk_gem->dma_addr, GFP_KERNEL,
--					  &mtk_gem->dma_attrs);
-+					  mtk_gem->dma_attrs);
- 	if (!mtk_gem->cookie) {
- 		DRM_ERROR("failed to allocate %zx byte dma buffer", obj->size);
- 		ret = -ENOMEM;
-@@ -93,7 +92,7 @@ void mtk_drm_gem_free_object(struct drm_gem_object *obj)
- 		drm_prime_gem_destroy(obj, mtk_gem->sg);
- 	else
- 		dma_free_attrs(priv->dma_dev, obj->size, mtk_gem->cookie,
--			       mtk_gem->dma_addr, &mtk_gem->dma_attrs);
-+			       mtk_gem->dma_addr, mtk_gem->dma_attrs);
- 
- 	/* release file pointer to gem object. */
- 	drm_gem_object_release(obj);
-@@ -173,7 +172,7 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	vma->vm_pgoff = 0;
- 
- 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
--			     mtk_gem->dma_addr, obj->size, &mtk_gem->dma_attrs);
-+			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
- 	if (ret)
- 		drm_gem_vm_close(vma);
- 
-@@ -224,7 +223,7 @@ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj)
- 
- 	ret = dma_get_sgtable_attrs(priv->dma_dev, sgt, mtk_gem->cookie,
- 				    mtk_gem->dma_addr, obj->size,
--				    &mtk_gem->dma_attrs);
-+				    mtk_gem->dma_attrs);
- 	if (ret) {
- 		DRM_ERROR("failed to allocate sgt, %d\n", ret);
- 		kfree(sgt);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-index 3a2a5624a1cb..2752718fa5b2 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-@@ -35,7 +35,7 @@ struct mtk_drm_gem_obj {
- 	void			*cookie;
- 	void			*kvaddr;
- 	dma_addr_t		dma_addr;
--	struct dma_attrs	dma_attrs;
-+	unsigned long		dma_attrs;
- 	struct sg_table		*sg;
+ 	/* Only used by DMA API */
+-	struct dma_attrs attrs;
++	unsigned long attrs;
  };
+ #define gk20a_instmem(p) container_of((p), struct gk20a_instmem, base)
  
+@@ -293,7 +293,7 @@ gk20a_instobj_dtor_dma(struct nvkm_memory *memory)
+ 		goto out;
+ 
+ 	dma_free_attrs(dev, node->base.mem.size << PAGE_SHIFT, node->base.vaddr,
+-		       node->handle, &imem->attrs);
++		       node->handle, imem->attrs);
+ 
+ out:
+ 	return node;
+@@ -386,7 +386,7 @@ gk20a_instobj_ctor_dma(struct gk20a_instmem *imem, u32 npages, u32 align,
+ 
+ 	node->base.vaddr = dma_alloc_attrs(dev, npages << PAGE_SHIFT,
+ 					   &node->handle, GFP_KERNEL,
+-					   &imem->attrs);
++					   imem->attrs);
+ 	if (!node->base.vaddr) {
+ 		nvkm_error(subdev, "cannot allocate DMA memory\n");
+ 		return -ENOMEM;
+@@ -597,10 +597,9 @@ gk20a_instmem_new(struct nvkm_device *device, int index,
+ 
+ 		nvkm_info(&imem->base.subdev, "using IOMMU\n");
+ 	} else {
+-		init_dma_attrs(&imem->attrs);
+-		dma_set_attr(DMA_ATTR_NON_CONSISTENT, &imem->attrs);
+-		dma_set_attr(DMA_ATTR_WEAK_ORDERING, &imem->attrs);
+-		dma_set_attr(DMA_ATTR_WRITE_COMBINE, &imem->attrs);
++		imem->attrs = DMA_ATTR_NON_CONSISTENT |
++			      DMA_ATTR_WEAK_ORDERING |
++			      DMA_ATTR_WRITE_COMBINE;
+ 
+ 		nvkm_info(&imem->base.subdev, "using DMA API\n");
+ 	}
 -- 
 1.9.1
