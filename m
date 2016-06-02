@@ -1,11 +1,13 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 00/45] dma-mapping: Use unsigned long for dma_attrs
-Date: Thu, 02 Jun 2016 17:39:02 +0200
-Message-ID: <1464881987-13203-1-git-send-email-k.kozlowski__28567.0231249698$1464882080$gmane$org@samsung.com>
+Subject: [RFC v3 02/45] dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:04 +0200
+Message-ID: <1464881987-13203-3-git-send-email-k.kozlowski__12809.6506385647$1464882082$gmane$org@samsung.com>
+References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-reply-to: <1464881987-13203-1-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,38 +21,6 @@ To: Richard Henderson <rth-hL46jP5Bxq7R7s880joybQ@public.gmane.org>, Ivan Koksha
 Cc: hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-
-This is third approach (complete this time) for replacing struct
-dma_attrs with unsigned long.
-
-The main patch (2/45) doing the change is split into many subpatches
-for easier review (3-43).  They should be squashed together when
-applying.
-
-
-*Important:* Patchset is *only* build tested on allyesconfigs: ARM,
-ARM64, i386, x86_64 and powerpc. Please provide reviewes and tests
-for other platforms.
-
-Rebased on next-20160602.
-
-For easier testing the patchset is available here:
-repo:   https://github.com/krzk/linux
-branch: for-next/dma-attrs-const-v3
-
-
-I didn't CC all the maintainers... the list is too big.
-
-Changes since v2
-================
-1. Follow Christoph Hellwig's comments (don't use BIT add
-   documentation, remove dma_get_attr).
-
-
-Rationale
-=========
 The dma-mapping core and the implementations do not change the
 DMA attributes passed by pointer.  Thus the pointer can point to const
 data.  However the attributes do not have to be a bitfield. Instead
@@ -63,169 +33,559 @@ unsigned long will do fine:
 2. It brings safeness and checking for const correctness because the
    attributes are passed by value.
 
+Semantic patches for this change (at least most of them):
+===
+virtual patch
+virtual context
 
-Best regards,
-Krzysztof
+@r@
+identifier f, attrs;
 
+@@
+f(...,
+- struct dma_attrs *attrs
++ unsigned long attrs
+, ...)
+{
+...
+}
 
-Krzysztof Kozlowski (45):
-  powerpc: dma-mapping: Don't hard-code the value of
-    DMA_ATTR_WEAK_ORDERING
-  dma-mapping: Use unsigned long for dma_attrs
-  alpha: dma-mapping: Use unsigned long for dma_attrs
-  arc: dma-mapping: Use unsigned long for dma_attrs
-  ARM: dma-mapping: Use unsigned long for dma_attrs
-  arm64: dma-mapping: Use unsigned long for dma_attrs
-  avr32: dma-mapping: Use unsigned long for dma_attrs
-  blackfin: dma-mapping: Use unsigned long for dma_attrs
-  c6x: dma-mapping: Use unsigned long for dma_attrs
-  cris: dma-mapping: Use unsigned long for dma_attrs
-  frv: dma-mapping: Use unsigned long for dma_attrs
-  drm/exynos: dma-mapping: Use unsigned long for dma_attrs
-  drm/mediatek: dma-mapping: Use unsigned long for dma_attrs
-  drm/msm: dma-mapping: Use unsigned long for dma_attrs
-  drm/nouveau: dma-mapping: Use unsigned long for dma_attrs
-  drm/rockship: dma-mapping: Use unsigned long for dma_attrs
-  infiniband: dma-mapping: Use unsigned long for dma_attrs
-  iommu: dma-mapping: Use unsigned long for dma_attrs
-  [media] dma-mapping: Use unsigned long for dma_attrs
-  xen: dma-mapping: Use unsigned long for dma_attrs
-  swiotlb: dma-mapping: Use unsigned long for dma_attrs
-  powerpc: dma-mapping: Use unsigned long for dma_attrs
-  video: dma-mapping: Use unsigned long for dma_attrs
-  x86: dma-mapping: Use unsigned long for dma_attrs
-  iommu: intel: dma-mapping: Use unsigned long for dma_attrs
-  h8300: dma-mapping: Use unsigned long for dma_attrs
-  hexagon: dma-mapping: Use unsigned long for dma_attrs
-  ia64: dma-mapping: Use unsigned long for dma_attrs
-  m68k: dma-mapping: Use unsigned long for dma_attrs
-  metag: dma-mapping: Use unsigned long for dma_attrs
-  microblaze: dma-mapping: Use unsigned long for dma_attrs
-  mips: dma-mapping: Use unsigned long for dma_attrs
-  mn10300: dma-mapping: Use unsigned long for dma_attrs
-  nios2: dma-mapping: Use unsigned long for dma_attrs
-  openrisc: dma-mapping: Use unsigned long for dma_attrs
-  parisc: dma-mapping: Use unsigned long for dma_attrs
-  misc: mic: dma-mapping: Use unsigned long for dma_attrs
-  s390: dma-mapping: Use unsigned long for dma_attrs
-  sh: dma-mapping: Use unsigned long for dma_attrs
-  sparc: dma-mapping: Use unsigned long for dma_attrs
-  tile: dma-mapping: Use unsigned long for dma_attrs
-  unicore32: dma-mapping: Use unsigned long for dma_attrs
-  xtensa: dma-mapping: Use unsigned long for dma_attrs
-  dma-mapping: Remove dma_get_attr
-  dma-mapping: Document the DMA attributes right in declaration
+@@
+identifier r.f;
+@@
+f(...,
+- NULL
++ 0
+ )
+===
+// Options: --all-includes
+virtual patch
+virtual context
 
- Documentation/DMA-API.txt                          |  33 +++---
- Documentation/DMA-attributes.txt                   |   2 +-
- arch/alpha/include/asm/dma-mapping.h               |   2 -
- arch/alpha/kernel/pci-noop.c                       |   2 +-
- arch/alpha/kernel/pci_iommu.c                      |  12 +-
- arch/arc/mm/dma.c                                  |  12 +-
- arch/arm/common/dmabounce.c                        |   4 +-
- arch/arm/include/asm/dma-mapping.h                 |  13 +--
- arch/arm/include/asm/xen/page-coherent.h           |  16 +--
- arch/arm/mm/dma-mapping.c                          | 117 +++++++++----------
- arch/arm/xen/mm.c                                  |   8 +-
- arch/arm64/mm/dma-mapping.c                        |  67 +++++------
- arch/avr32/mm/dma-coherent.c                       |  12 +-
- arch/blackfin/kernel/dma-mapping.c                 |   8 +-
- arch/c6x/include/asm/dma-mapping.h                 |   4 +-
- arch/c6x/kernel/dma.c                              |   9 +-
- arch/c6x/mm/dma-coherent.c                         |   4 +-
- arch/cris/arch-v32/drivers/pci/dma.c               |   9 +-
- arch/frv/mb93090-mb00/pci-dma-nommu.c              |   8 +-
- arch/frv/mb93090-mb00/pci-dma.c                    |   9 +-
- arch/h8300/kernel/dma.c                            |   8 +-
- arch/hexagon/include/asm/dma-mapping.h             |   1 -
- arch/hexagon/kernel/dma.c                          |   8 +-
- arch/ia64/hp/common/sba_iommu.c                    |  22 ++--
- arch/ia64/include/asm/machvec.h                    |   1 -
- arch/ia64/kernel/pci-swiotlb.c                     |   4 +-
- arch/ia64/sn/pci/pci_dma.c                         |  22 ++--
- arch/m68k/kernel/dma.c                             |  12 +-
- arch/metag/kernel/dma.c                            |  16 +--
- arch/microblaze/include/asm/dma-mapping.h          |   1 -
- arch/microblaze/kernel/dma.c                       |  12 +-
- arch/mips/cavium-octeon/dma-octeon.c               |   8 +-
- arch/mips/loongson64/common/dma-swiotlb.c          |  10 +-
- arch/mips/mm/dma-default.c                         |  20 ++--
- arch/mips/netlogic/common/nlm-dma.c                |   4 +-
- arch/mn10300/mm/dma-alloc.c                        |   8 +-
- arch/nios2/mm/dma-mapping.c                        |  12 +-
- arch/openrisc/kernel/dma.c                         |  21 ++--
- arch/parisc/kernel/pci-dma.c                       |  18 +--
- arch/powerpc/include/asm/dma-mapping.h             |   7 +-
- arch/powerpc/include/asm/iommu.h                   |  10 +-
- arch/powerpc/kernel/dma-iommu.c                    |  12 +-
- arch/powerpc/kernel/dma.c                          |  18 +--
- arch/powerpc/kernel/ibmebus.c                      |  12 +-
- arch/powerpc/kernel/iommu.c                        |  12 +-
- arch/powerpc/kernel/vio.c                          |  12 +-
- arch/powerpc/platforms/cell/iommu.c                |  26 ++---
- arch/powerpc/platforms/pasemi/iommu.c              |   2 +-
- arch/powerpc/platforms/powernv/npu-dma.c           |   8 +-
- arch/powerpc/platforms/powernv/pci-ioda.c          |   4 +-
- arch/powerpc/platforms/powernv/pci.c               |   2 +-
- arch/powerpc/platforms/powernv/pci.h               |   2 +-
- arch/powerpc/platforms/ps3/system-bus.c            |  18 +--
- arch/powerpc/platforms/pseries/iommu.c             |   6 +-
- arch/powerpc/sysdev/dart_iommu.c                   |   2 +-
- arch/s390/include/asm/dma-mapping.h                |   1 -
- arch/s390/pci/pci_dma.c                            |  23 ++--
- arch/sh/include/asm/dma-mapping.h                  |   4 +-
- arch/sh/kernel/dma-nommu.c                         |   4 +-
- arch/sh/mm/consistent.c                            |   4 +-
- arch/sparc/kernel/iommu.c                          |  12 +-
- arch/sparc/kernel/ioport.c                         |  24 ++--
- arch/sparc/kernel/pci_sun4v.c                      |  12 +-
- arch/tile/kernel/pci-dma.c                         |  28 ++---
- arch/unicore32/mm/dma-swiotlb.c                    |   4 +-
- arch/x86/include/asm/dma-mapping.h                 |   5 +-
- arch/x86/include/asm/swiotlb.h                     |   4 +-
- arch/x86/include/asm/xen/page-coherent.h           |   9 +-
- arch/x86/kernel/amd_gart_64.c                      |  20 ++--
- arch/x86/kernel/pci-calgary_64.c                   |  14 +--
- arch/x86/kernel/pci-dma.c                          |   4 +-
- arch/x86/kernel/pci-nommu.c                        |   4 +-
- arch/x86/kernel/pci-swiotlb.c                      |   4 +-
- arch/x86/pci/sta2x11-fixup.c                       |   2 +-
- arch/x86/pci/vmd.c                                 |  16 +--
- arch/xtensa/kernel/pci-dma.c                       |  12 +-
- drivers/gpu/drm/exynos/exynos_drm_fbdev.c          |   2 +-
- drivers/gpu/drm/exynos/exynos_drm_g2d.c            |  12 +-
- drivers/gpu/drm/exynos/exynos_drm_gem.c            |  20 ++--
- drivers/gpu/drm/exynos/exynos_drm_gem.h            |   2 +-
- drivers/gpu/drm/mediatek/mtk_drm_gem.c             |  13 +--
- drivers/gpu/drm/mediatek/mtk_drm_gem.h             |   2 +-
- drivers/gpu/drm/msm/msm_drv.c                      |  13 +--
- .../gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c    |  13 +--
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  17 ++-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.h        |   2 +-
- drivers/infiniband/core/umem.c                     |   7 +-
- drivers/iommu/amd_iommu.c                          |  12 +-
- drivers/iommu/dma-iommu.c                          |   8 +-
- drivers/iommu/intel-iommu.c                        |  12 +-
- drivers/media/platform/sti/bdisp/bdisp-hw.c        |  26 ++---
- drivers/media/v4l2-core/videobuf2-dma-contig.c     |  30 ++---
- drivers/media/v4l2-core/videobuf2-dma-sg.c         |  19 +--
- drivers/misc/mic/host/mic_boot.c                   |  20 ++--
- drivers/parisc/ccio-dma.c                          |  16 +--
- drivers/parisc/sba_iommu.c                         |  16 +--
- drivers/video/fbdev/omap2/omapfb/omapfb-main.c     |  12 +-
- drivers/video/fbdev/omap2/omapfb/omapfb.h          |   3 +-
- drivers/xen/swiotlb-xen.c                          |  14 +--
- include/linux/dma-attrs.h                          |  71 ------------
- include/linux/dma-iommu.h                          |   6 +-
- include/linux/dma-mapping.h                        | 128 ++++++++++++++-------
- include/linux/swiotlb.h                            |  10 +-
- include/media/videobuf2-dma-contig.h               |   7 +-
- include/rdma/ib_verbs.h                            |   8 +-
- include/xen/swiotlb-xen.h                          |  12 +-
- lib/dma-noop.c                                     |   9 +-
- lib/swiotlb.c                                      |  13 ++-
- 108 files changed, 689 insertions(+), 788 deletions(-)
+@r@
+identifier f, attrs;
+type t;
+
+@@
+t f(..., struct dma_attrs *attrs);
+
+@@
+identifier r.f;
+@@
+f(...,
+- NULL
++ 0
+ )
+===
+
+Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+---
+ Documentation/DMA-API.txt        |  29 +++++------
+ Documentation/DMA-attributes.txt |   2 +-
+ include/linux/dma-attrs.h        |  71 -------------------------
+ include/linux/dma-mapping.h      | 108 +++++++++++++++++++++++----------------
+ lib/dma-noop.c                   |   9 ++--
+ 5 files changed, 83 insertions(+), 136 deletions(-)
  delete mode 100644 include/linux/dma-attrs.h
 
+diff --git a/Documentation/DMA-API.txt b/Documentation/DMA-API.txt
+index 45ef3f279c3b..24f9688bb98a 100644
+--- a/Documentation/DMA-API.txt
++++ b/Documentation/DMA-API.txt
+@@ -369,35 +369,32 @@ See also dma_map_single().
+ dma_addr_t
+ dma_map_single_attrs(struct device *dev, void *cpu_addr, size_t size,
+ 		     enum dma_data_direction dir,
+-		     struct dma_attrs *attrs)
++		     unsigned long attrs)
+ 
+ void
+ dma_unmap_single_attrs(struct device *dev, dma_addr_t dma_addr,
+ 		       size_t size, enum dma_data_direction dir,
+-		       struct dma_attrs *attrs)
++		       unsigned long attrs)
+ 
+ int
+ dma_map_sg_attrs(struct device *dev, struct scatterlist *sgl,
+ 		 int nents, enum dma_data_direction dir,
+-		 struct dma_attrs *attrs)
++		 unsigned long attrs)
+ 
+ void
+ dma_unmap_sg_attrs(struct device *dev, struct scatterlist *sgl,
+ 		   int nents, enum dma_data_direction dir,
+-		   struct dma_attrs *attrs)
++		   unsigned long attrs)
+ 
+ The four functions above are just like the counterpart functions
+ without the _attrs suffixes, except that they pass an optional
+-struct dma_attrs*.
+-
+-struct dma_attrs encapsulates a set of "DMA attributes". For the
+-definition of struct dma_attrs see linux/dma-attrs.h.
++dma_attrs.
+ 
+ The interpretation of DMA attributes is architecture-specific, and
+ each attribute should be documented in Documentation/DMA-attributes.txt.
+ 
+-If struct dma_attrs* is NULL, the semantics of each of these
+-functions is identical to those of the corresponding function
++If dma_attrs are 0, the semantics of each of these functions
++is identical to those of the corresponding function
+ without the _attrs suffix. As a result dma_map_single_attrs()
+ can generally replace dma_map_single(), etc.
+ 
+@@ -405,15 +402,15 @@ As an example of the use of the *_attrs functions, here's how
+ you could pass an attribute DMA_ATTR_FOO when mapping memory
+ for DMA:
+ 
+-#include <linux/dma-attrs.h>
+-/* DMA_ATTR_FOO should be defined in linux/dma-attrs.h and
++#include <linux/dma-mapping.h>
++/* DMA_ATTR_FOO should be defined in linux/dma-mapping.h and
+  * documented in Documentation/DMA-attributes.txt */
+ ...
+ 
+-	DEFINE_DMA_ATTRS(attrs);
+-	dma_set_attr(DMA_ATTR_FOO, &attrs);
++	unsigned long attr;
++	attr |= DMA_ATTR_FOO;
+ 	....
+-	n = dma_map_sg_attrs(dev, sg, nents, DMA_TO_DEVICE, &attr);
++	n = dma_map_sg_attrs(dev, sg, nents, DMA_TO_DEVICE, attr);
+ 	....
+ 
+ Architectures that care about DMA_ATTR_FOO would check for its
+@@ -422,7 +419,7 @@ routines, e.g.:
+ 
+ void whizco_dma_map_sg_attrs(struct device *dev, dma_addr_t dma_addr,
+ 			     size_t size, enum dma_data_direction dir,
+-			     struct dma_attrs *attrs)
++			     unsigned long attrs)
+ {
+ 	....
+ 	int foo =  dma_get_attr(DMA_ATTR_FOO, attrs);
+diff --git a/Documentation/DMA-attributes.txt b/Documentation/DMA-attributes.txt
+index e8cf9cf873b3..2d455a5cf671 100644
+--- a/Documentation/DMA-attributes.txt
++++ b/Documentation/DMA-attributes.txt
+@@ -2,7 +2,7 @@
+ 			==============
+ 
+ This document describes the semantics of the DMA attributes that are
+-defined in linux/dma-attrs.h.
++defined in linux/dma-mapping.h.
+ 
+ DMA_ATTR_WRITE_BARRIER
+ ----------------------
+diff --git a/include/linux/dma-attrs.h b/include/linux/dma-attrs.h
+deleted file mode 100644
+index 5246239a4953..000000000000
+--- a/include/linux/dma-attrs.h
++++ /dev/null
+@@ -1,71 +0,0 @@
+-#ifndef _DMA_ATTR_H
+-#define _DMA_ATTR_H
+-
+-#include <linux/bitmap.h>
+-#include <linux/bitops.h>
+-#include <linux/bug.h>
+-
+-/**
+- * an enum dma_attr represents an attribute associated with a DMA
+- * mapping. The semantics of each attribute should be defined in
+- * Documentation/DMA-attributes.txt.
+- */
+-enum dma_attr {
+-	DMA_ATTR_WRITE_BARRIER,
+-	DMA_ATTR_WEAK_ORDERING,
+-	DMA_ATTR_WRITE_COMBINE,
+-	DMA_ATTR_NON_CONSISTENT,
+-	DMA_ATTR_NO_KERNEL_MAPPING,
+-	DMA_ATTR_SKIP_CPU_SYNC,
+-	DMA_ATTR_FORCE_CONTIGUOUS,
+-	DMA_ATTR_ALLOC_SINGLE_PAGES,
+-	DMA_ATTR_MAX,
+-};
+-
+-#define __DMA_ATTRS_LONGS BITS_TO_LONGS(DMA_ATTR_MAX)
+-
+-/**
+- * struct dma_attrs - an opaque container for DMA attributes
+- * @flags - bitmask representing a collection of enum dma_attr
+- */
+-struct dma_attrs {
+-	unsigned long flags[__DMA_ATTRS_LONGS];
+-};
+-
+-#define DEFINE_DMA_ATTRS(x) 					\
+-	struct dma_attrs x = {					\
+-		.flags = { [0 ... __DMA_ATTRS_LONGS-1] = 0 },	\
+-	}
+-
+-static inline void init_dma_attrs(struct dma_attrs *attrs)
+-{
+-	bitmap_zero(attrs->flags, __DMA_ATTRS_LONGS);
+-}
+-
+-/**
+- * dma_set_attr - set a specific attribute
+- * @attr: attribute to set
+- * @attrs: struct dma_attrs (may be NULL)
+- */
+-static inline void dma_set_attr(enum dma_attr attr, struct dma_attrs *attrs)
+-{
+-	if (attrs == NULL)
+-		return;
+-	BUG_ON(attr >= DMA_ATTR_MAX);
+-	__set_bit(attr, attrs->flags);
+-}
+-
+-/**
+- * dma_get_attr - check for a specific attribute
+- * @attr: attribute to set
+- * @attrs: struct dma_attrs (may be NULL)
+- */
+-static inline int dma_get_attr(enum dma_attr attr, struct dma_attrs *attrs)
+-{
+-	if (attrs == NULL)
+-		return 0;
+-	BUG_ON(attr >= DMA_ATTR_MAX);
+-	return test_bit(attr, attrs->flags);
+-}
+-
+-#endif /* _DMA_ATTR_H */
+diff --git a/include/linux/dma-mapping.h b/include/linux/dma-mapping.h
+index 71c1b215ef66..b752b9ccec78 100644
+--- a/include/linux/dma-mapping.h
++++ b/include/linux/dma-mapping.h
+@@ -5,13 +5,25 @@
+ #include <linux/string.h>
+ #include <linux/device.h>
+ #include <linux/err.h>
+-#include <linux/dma-attrs.h>
+ #include <linux/dma-debug.h>
+ #include <linux/dma-direction.h>
+ #include <linux/scatterlist.h>
+ #include <linux/kmemcheck.h>
+ #include <linux/bug.h>
+ 
++/**
++ * List of possible attributes associated with a DMA mapping. The semantics
++ * of each attribute should be defined in Documentation/DMA-attributes.txt.
++ */
++#define DMA_ATTR_WRITE_BARRIER		(1UL << 1)
++#define DMA_ATTR_WEAK_ORDERING		(1UL << 2)
++#define DMA_ATTR_WRITE_COMBINE		(1UL << 3)
++#define DMA_ATTR_NON_CONSISTENT		(1UL << 4)
++#define DMA_ATTR_NO_KERNEL_MAPPING	(1UL << 5)
++#define DMA_ATTR_SKIP_CPU_SYNC		(1UL << 6)
++#define DMA_ATTR_FORCE_CONTIGUOUS	(1UL << 7)
++#define DMA_ATTR_ALLOC_SINGLE_PAGES	(1UL << 8)
++
+ /*
+  * A dma_addr_t can hold any valid DMA or bus address for the platform.
+  * It can be given to a device to use as a DMA source or target.  A CPU cannot
+@@ -21,34 +33,35 @@
+ struct dma_map_ops {
+ 	void* (*alloc)(struct device *dev, size_t size,
+ 				dma_addr_t *dma_handle, gfp_t gfp,
+-				struct dma_attrs *attrs);
++				unsigned long attrs);
+ 	void (*free)(struct device *dev, size_t size,
+ 			      void *vaddr, dma_addr_t dma_handle,
+-			      struct dma_attrs *attrs);
++			      unsigned long attrs);
+ 	int (*mmap)(struct device *, struct vm_area_struct *,
+-			  void *, dma_addr_t, size_t, struct dma_attrs *attrs);
++			  void *, dma_addr_t, size_t,
++			  unsigned long attrs);
+ 
+ 	int (*get_sgtable)(struct device *dev, struct sg_table *sgt, void *,
+-			   dma_addr_t, size_t, struct dma_attrs *attrs);
++			   dma_addr_t, size_t, unsigned long attrs);
+ 
+ 	dma_addr_t (*map_page)(struct device *dev, struct page *page,
+ 			       unsigned long offset, size_t size,
+ 			       enum dma_data_direction dir,
+-			       struct dma_attrs *attrs);
++			       unsigned long attrs);
+ 	void (*unmap_page)(struct device *dev, dma_addr_t dma_handle,
+ 			   size_t size, enum dma_data_direction dir,
+-			   struct dma_attrs *attrs);
++			   unsigned long attrs);
+ 	/*
+ 	 * map_sg returns 0 on error and a value > 0 on success.
+ 	 * It should never return a value < 0.
+ 	 */
+ 	int (*map_sg)(struct device *dev, struct scatterlist *sg,
+ 		      int nents, enum dma_data_direction dir,
+-		      struct dma_attrs *attrs);
++		      unsigned long attrs);
+ 	void (*unmap_sg)(struct device *dev,
+ 			 struct scatterlist *sg, int nents,
+ 			 enum dma_data_direction dir,
+-			 struct dma_attrs *attrs);
++			 unsigned long attrs);
+ 	void (*sync_single_for_cpu)(struct device *dev,
+ 				    dma_addr_t dma_handle, size_t size,
+ 				    enum dma_data_direction dir);
+@@ -88,6 +101,19 @@ static inline int is_device_dma_capable(struct device *dev)
+ 	return dev->dma_mask != NULL && *dev->dma_mask != DMA_MASK_NONE;
+ }
+ 
++/**
++ * dma_get_attr - check for a specific attribute
++ * @attr: attribute to look for
++ * @attrs: attributes to check within
++ *
++ * Unlike all other dma-mapping functions, this one gets pointer to
++ * attributes (for old-code compatiblity reasons).
++ */
++static inline bool dma_get_attr(unsigned long attr, unsigned long attrs)
++{
++	return !!(attr & attrs);
++}
++
+ #ifdef CONFIG_HAVE_GENERIC_DMA_COHERENT
+ /*
+  * These three functions are only for dma allocator.
+@@ -123,7 +149,7 @@ static inline struct dma_map_ops *get_dma_ops(struct device *dev)
+ static inline dma_addr_t dma_map_single_attrs(struct device *dev, void *ptr,
+ 					      size_t size,
+ 					      enum dma_data_direction dir,
+-					      struct dma_attrs *attrs)
++					      unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 	dma_addr_t addr;
+@@ -142,7 +168,7 @@ static inline dma_addr_t dma_map_single_attrs(struct device *dev, void *ptr,
+ static inline void dma_unmap_single_attrs(struct device *dev, dma_addr_t addr,
+ 					  size_t size,
+ 					  enum dma_data_direction dir,
+-					  struct dma_attrs *attrs)
++					  unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 
+@@ -158,7 +184,7 @@ static inline void dma_unmap_single_attrs(struct device *dev, dma_addr_t addr,
+  */
+ static inline int dma_map_sg_attrs(struct device *dev, struct scatterlist *sg,
+ 				   int nents, enum dma_data_direction dir,
+-				   struct dma_attrs *attrs)
++				   unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 	int i, ents;
+@@ -176,7 +202,7 @@ static inline int dma_map_sg_attrs(struct device *dev, struct scatterlist *sg,
+ 
+ static inline void dma_unmap_sg_attrs(struct device *dev, struct scatterlist *sg,
+ 				      int nents, enum dma_data_direction dir,
+-				      struct dma_attrs *attrs)
++				      unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 
+@@ -195,7 +221,7 @@ static inline dma_addr_t dma_map_page(struct device *dev, struct page *page,
+ 
+ 	kmemcheck_mark_initialized(page_address(page) + offset, size);
+ 	BUG_ON(!valid_dma_direction(dir));
+-	addr = ops->map_page(dev, page, offset, size, dir, NULL);
++	addr = ops->map_page(dev, page, offset, size, dir, 0);
+ 	debug_dma_map_page(dev, page, offset, size, dir, addr, false);
+ 
+ 	return addr;
+@@ -208,7 +234,7 @@ static inline void dma_unmap_page(struct device *dev, dma_addr_t addr,
+ 
+ 	BUG_ON(!valid_dma_direction(dir));
+ 	if (ops->unmap_page)
+-		ops->unmap_page(dev, addr, size, dir, NULL);
++		ops->unmap_page(dev, addr, size, dir, 0);
+ 	debug_dma_unmap_page(dev, addr, size, dir, false);
+ }
+ 
+@@ -289,10 +315,10 @@ dma_sync_sg_for_device(struct device *dev, struct scatterlist *sg,
+ 
+ }
+ 
+-#define dma_map_single(d, a, s, r) dma_map_single_attrs(d, a, s, r, NULL)
+-#define dma_unmap_single(d, a, s, r) dma_unmap_single_attrs(d, a, s, r, NULL)
+-#define dma_map_sg(d, s, n, r) dma_map_sg_attrs(d, s, n, r, NULL)
+-#define dma_unmap_sg(d, s, n, r) dma_unmap_sg_attrs(d, s, n, r, NULL)
++#define dma_map_single(d, a, s, r) dma_map_single_attrs(d, a, s, r, 0)
++#define dma_unmap_single(d, a, s, r) dma_unmap_single_attrs(d, a, s, r, 0)
++#define dma_map_sg(d, s, n, r) dma_map_sg_attrs(d, s, n, r, 0)
++#define dma_unmap_sg(d, s, n, r) dma_unmap_sg_attrs(d, s, n, r, 0)
+ 
+ extern int dma_common_mmap(struct device *dev, struct vm_area_struct *vma,
+ 			   void *cpu_addr, dma_addr_t dma_addr, size_t size);
+@@ -321,7 +347,7 @@ void dma_common_free_remap(void *cpu_addr, size_t size, unsigned long vm_flags);
+  */
+ static inline int
+ dma_mmap_attrs(struct device *dev, struct vm_area_struct *vma, void *cpu_addr,
+-	       dma_addr_t dma_addr, size_t size, struct dma_attrs *attrs)
++	       dma_addr_t dma_addr, size_t size, unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 	BUG_ON(!ops);
+@@ -330,7 +356,7 @@ dma_mmap_attrs(struct device *dev, struct vm_area_struct *vma, void *cpu_addr,
+ 	return dma_common_mmap(dev, vma, cpu_addr, dma_addr, size);
+ }
+ 
+-#define dma_mmap_coherent(d, v, c, h, s) dma_mmap_attrs(d, v, c, h, s, NULL)
++#define dma_mmap_coherent(d, v, c, h, s) dma_mmap_attrs(d, v, c, h, s, 0)
+ 
+ int
+ dma_common_get_sgtable(struct device *dev, struct sg_table *sgt,
+@@ -338,7 +364,8 @@ dma_common_get_sgtable(struct device *dev, struct sg_table *sgt,
+ 
+ static inline int
+ dma_get_sgtable_attrs(struct device *dev, struct sg_table *sgt, void *cpu_addr,
+-		      dma_addr_t dma_addr, size_t size, struct dma_attrs *attrs)
++		      dma_addr_t dma_addr, size_t size,
++		      unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 	BUG_ON(!ops);
+@@ -348,7 +375,7 @@ dma_get_sgtable_attrs(struct device *dev, struct sg_table *sgt, void *cpu_addr,
+ 	return dma_common_get_sgtable(dev, sgt, cpu_addr, dma_addr, size);
+ }
+ 
+-#define dma_get_sgtable(d, t, v, h, s) dma_get_sgtable_attrs(d, t, v, h, s, NULL)
++#define dma_get_sgtable(d, t, v, h, s) dma_get_sgtable_attrs(d, t, v, h, s, 0)
+ 
+ #ifndef arch_dma_alloc_attrs
+ #define arch_dma_alloc_attrs(dev, flag)	(true)
+@@ -356,7 +383,7 @@ dma_get_sgtable_attrs(struct device *dev, struct sg_table *sgt, void *cpu_addr,
+ 
+ static inline void *dma_alloc_attrs(struct device *dev, size_t size,
+ 				       dma_addr_t *dma_handle, gfp_t flag,
+-				       struct dma_attrs *attrs)
++				       unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 	void *cpu_addr;
+@@ -378,7 +405,7 @@ static inline void *dma_alloc_attrs(struct device *dev, size_t size,
+ 
+ static inline void dma_free_attrs(struct device *dev, size_t size,
+ 				     void *cpu_addr, dma_addr_t dma_handle,
+-				     struct dma_attrs *attrs)
++				     unsigned long attrs)
+ {
+ 	struct dma_map_ops *ops = get_dma_ops(dev);
+ 
+@@ -398,31 +425,27 @@ static inline void dma_free_attrs(struct device *dev, size_t size,
+ static inline void *dma_alloc_coherent(struct device *dev, size_t size,
+ 		dma_addr_t *dma_handle, gfp_t flag)
+ {
+-	return dma_alloc_attrs(dev, size, dma_handle, flag, NULL);
++	return dma_alloc_attrs(dev, size, dma_handle, flag, 0);
+ }
+ 
+ static inline void dma_free_coherent(struct device *dev, size_t size,
+ 		void *cpu_addr, dma_addr_t dma_handle)
+ {
+-	return dma_free_attrs(dev, size, cpu_addr, dma_handle, NULL);
++	return dma_free_attrs(dev, size, cpu_addr, dma_handle, 0);
+ }
+ 
+ static inline void *dma_alloc_noncoherent(struct device *dev, size_t size,
+ 		dma_addr_t *dma_handle, gfp_t gfp)
+ {
+-	DEFINE_DMA_ATTRS(attrs);
+-
+-	dma_set_attr(DMA_ATTR_NON_CONSISTENT, &attrs);
+-	return dma_alloc_attrs(dev, size, dma_handle, gfp, &attrs);
++	return dma_alloc_attrs(dev, size, dma_handle, gfp,
++			       DMA_ATTR_NON_CONSISTENT);
+ }
+ 
+ static inline void dma_free_noncoherent(struct device *dev, size_t size,
+ 		void *cpu_addr, dma_addr_t dma_handle)
+ {
+-	DEFINE_DMA_ATTRS(attrs);
+-
+-	dma_set_attr(DMA_ATTR_NON_CONSISTENT, &attrs);
+-	dma_free_attrs(dev, size, cpu_addr, dma_handle, &attrs);
++	dma_free_attrs(dev, size, cpu_addr, dma_handle,
++		       DMA_ATTR_NON_CONSISTENT);
+ }
+ 
+ static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
+@@ -646,9 +669,8 @@ static inline void dmam_release_declared_memory(struct device *dev)
+ static inline void *dma_alloc_wc(struct device *dev, size_t size,
+ 				 dma_addr_t *dma_addr, gfp_t gfp)
+ {
+-	DEFINE_DMA_ATTRS(attrs);
+-	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &attrs);
+-	return dma_alloc_attrs(dev, size, dma_addr, gfp, &attrs);
++	return dma_alloc_attrs(dev, size, dma_addr, gfp,
++			       DMA_ATTR_WRITE_COMBINE);
+ }
+ #ifndef dma_alloc_writecombine
+ #define dma_alloc_writecombine dma_alloc_wc
+@@ -657,9 +679,8 @@ static inline void *dma_alloc_wc(struct device *dev, size_t size,
+ static inline void dma_free_wc(struct device *dev, size_t size,
+ 			       void *cpu_addr, dma_addr_t dma_addr)
+ {
+-	DEFINE_DMA_ATTRS(attrs);
+-	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &attrs);
+-	return dma_free_attrs(dev, size, cpu_addr, dma_addr, &attrs);
++	return dma_free_attrs(dev, size, cpu_addr, dma_addr,
++			      DMA_ATTR_WRITE_COMBINE);
+ }
+ #ifndef dma_free_writecombine
+ #define dma_free_writecombine dma_free_wc
+@@ -670,9 +691,8 @@ static inline int dma_mmap_wc(struct device *dev,
+ 			      void *cpu_addr, dma_addr_t dma_addr,
+ 			      size_t size)
+ {
+-	DEFINE_DMA_ATTRS(attrs);
+-	dma_set_attr(DMA_ATTR_WRITE_COMBINE, &attrs);
+-	return dma_mmap_attrs(dev, vma, cpu_addr, dma_addr, size, &attrs);
++	return dma_mmap_attrs(dev, vma, cpu_addr, dma_addr, size,
++			      DMA_ATTR_WRITE_COMBINE);
+ }
+ #ifndef dma_mmap_writecombine
+ #define dma_mmap_writecombine dma_mmap_wc
+diff --git a/lib/dma-noop.c b/lib/dma-noop.c
+index 72145646857e..3d766e78fbe2 100644
+--- a/lib/dma-noop.c
++++ b/lib/dma-noop.c
+@@ -10,7 +10,7 @@
+ 
+ static void *dma_noop_alloc(struct device *dev, size_t size,
+ 			    dma_addr_t *dma_handle, gfp_t gfp,
+-			    struct dma_attrs *attrs)
++			    unsigned long attrs)
+ {
+ 	void *ret;
+ 
+@@ -22,7 +22,7 @@ static void *dma_noop_alloc(struct device *dev, size_t size,
+ 
+ static void dma_noop_free(struct device *dev, size_t size,
+ 			  void *cpu_addr, dma_addr_t dma_addr,
+-			  struct dma_attrs *attrs)
++			  unsigned long attrs)
+ {
+ 	free_pages((unsigned long)cpu_addr, get_order(size));
+ }
+@@ -30,13 +30,14 @@ static void dma_noop_free(struct device *dev, size_t size,
+ static dma_addr_t dma_noop_map_page(struct device *dev, struct page *page,
+ 				      unsigned long offset, size_t size,
+ 				      enum dma_data_direction dir,
+-				      struct dma_attrs *attrs)
++				      unsigned long attrs)
+ {
+ 	return page_to_phys(page) + offset;
+ }
+ 
+ static int dma_noop_map_sg(struct device *dev, struct scatterlist *sgl, int nents,
+-			     enum dma_data_direction dir, struct dma_attrs *attrs)
++			     enum dma_data_direction dir,
++			     unsigned long attrs)
+ {
+ 	int i;
+ 	struct scatterlist *sg;
 -- 
 1.9.1
