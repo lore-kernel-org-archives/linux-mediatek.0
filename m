@@ -1,8 +1,7 @@
 From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC v3 01/45] powerpc: dma-mapping: Don't hard-code the value of
- DMA_ATTR_WEAK_ORDERING
-Date: Thu, 02 Jun 2016 17:39:03 +0200
-Message-ID: <1464881987-13203-2-git-send-email-k.kozlowski__26462.5431890183$1464882096$gmane$org@samsung.com>
+Subject: [RFC v3 08/45] blackfin: dma-mapping: Use unsigned long for dma_attrs
+Date: Thu, 02 Jun 2016 17:39:10 +0200
+Message-ID: <1464881987-13203-9-git-send-email-k.kozlowski__14008.0060963102$1464882099$gmane$org@samsung.com>
 References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,27 +21,53 @@ To: Richard Henderson <rth-hL46jP5Bxq7R7s880joybQ@public.gmane.org>, Ivan Koksha
 Cc: hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hard-coded value of DMA_ATTR_WEAK_ORDERING is then compared with the
-symbol.  This will stop matching if the value of symbol is changed (when
-switching DMA attributes to unsigned long).
+Split out subsystem specific changes for easier reviews. This will be
+squashed with main commit.
 
 Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- arch/powerpc/platforms/cell/iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/blackfin/kernel/dma-mapping.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/powerpc/platforms/cell/iommu.c b/arch/powerpc/platforms/cell/iommu.c
-index 14a582b21274..0c2794d2b6c0 100644
---- a/arch/powerpc/platforms/cell/iommu.c
-+++ b/arch/powerpc/platforms/cell/iommu.c
-@@ -1162,7 +1162,7 @@ static int __init setup_iommu_fixed(char *str)
- 	pciep = of_find_node_by_type(NULL, "pcie-endpoint");
+diff --git a/arch/blackfin/kernel/dma-mapping.c b/arch/blackfin/kernel/dma-mapping.c
+index 771afe6e4264..53fbbb61aa86 100644
+--- a/arch/blackfin/kernel/dma-mapping.c
++++ b/arch/blackfin/kernel/dma-mapping.c
+@@ -79,7 +79,7 @@ static void __free_dma_pages(unsigned long addr, unsigned int pages)
+ }
  
- 	if (strcmp(str, "weak") == 0 || (pciep && strcmp(str, "strong") != 0))
--		iommu_fixed_is_weak = 1;
-+		iommu_fixed_is_weak = DMA_ATTR_WEAK_ORDERING;
+ static void *bfin_dma_alloc(struct device *dev, size_t size,
+-		dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
++		dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
+ {
+ 	void *ret;
  
- 	of_node_put(pciep);
+@@ -94,7 +94,7 @@ static void *bfin_dma_alloc(struct device *dev, size_t size,
+ }
+ 
+ static void bfin_dma_free(struct device *dev, size_t size, void *vaddr,
+-		  dma_addr_t dma_handle, struct dma_attrs *attrs)
++		  dma_addr_t dma_handle, unsigned long attrs)
+ {
+ 	__free_dma_pages((unsigned long)vaddr, get_pages(size));
+ }
+@@ -111,7 +111,7 @@ EXPORT_SYMBOL(__dma_sync);
+ 
+ static int bfin_dma_map_sg(struct device *dev, struct scatterlist *sg_list,
+ 		int nents, enum dma_data_direction direction,
+-		struct dma_attrs *attrs)
++		unsigned long attrs)
+ {
+ 	struct scatterlist *sg;
+ 	int i;
+@@ -139,7 +139,7 @@ static void bfin_dma_sync_sg_for_device(struct device *dev,
+ 
+ static dma_addr_t bfin_dma_map_page(struct device *dev, struct page *page,
+ 		unsigned long offset, size_t size, enum dma_data_direction dir,
+-		struct dma_attrs *attrs)
++		unsigned long attrs)
+ {
+ 	dma_addr_t handle = (dma_addr_t)(page_address(page) + offset);
  
 -- 
 1.9.1
