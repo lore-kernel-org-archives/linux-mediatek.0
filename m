@@ -1,62 +1,40 @@
-From: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Russell King - ARM Linux <linux@armlinux.org.uk>
 Subject: Re: [PATCH v2 1/3] of: add common OF-based component functionality
-Date: Fri, 3 Jun 2016 17:44:30 +0200
-Message-ID: <20160603154430.GA21013@ulmo.ba.sec>
+Date: Fri, 3 Jun 2016 17:11:29 +0100
+Message-ID: <20160603161129.GF1041@n2100.armlinux.org.uk>
 References: <20160603141548.GC1041@n2100.armlinux.org.uk>
  <E1b8pyR-0005OJ-V3@rmk-PC.armlinux.org.uk>
+ <20160603154430.GA21013@ulmo.ba.sec>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="a8Wt8u1KmwUX3Y2C"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <E1b8pyR-0005OJ-V3-eh5Bv4kxaXIk46pC+1QYvQNdhmdF6hFW@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Grant Likely <grant.likely-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20160603154430.GA21013@ulmo.ba.sec>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Grant Likely <grant.likely@linaro.org>, Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Fri, Jun 03, 2016 at 05:44:30PM +0200, Thierry Reding wrote:
+> On Fri, Jun 03, 2016 at 03:21:19PM +0100, Russell King wrote:
+> [...]
+> > diff --git a/drivers/of/of_component.c b/drivers/of/of_component.c
+> [...]
+> > +static void component_compare_of(struct device *dev, void *data)
+> > +{
+> > +	return dev->of_node == data;
+> > +}
+> 
+> The return statement here doesn't match the return value. Didn't GCC
+> complain about this?
 
---a8Wt8u1KmwUX3Y2C
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I didn't build-test it, because I wanted people's opinions on it first
+(building means rebuilding my entire tree...)
 
-On Fri, Jun 03, 2016 at 03:21:19PM +0100, Russell King wrote:
-[...]
-> diff --git a/drivers/of/of_component.c b/drivers/of/of_component.c
-[...]
-> +static void component_compare_of(struct device *dev, void *data)
-> +{
-> +	return dev->of_node == data;
-> +}
+Anyway, the patch series is dead because I'm not prepared to make the
+changes which Rob mentioned, so we're back to v1 instead.
 
-The return statement here doesn't match the return value. Didn't GCC
-complain about this?
-
-Thierry
-
---a8Wt8u1KmwUX3Y2C
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
-
-iQIcBAABCAAGBQJXUaXcAAoJEN0jrNd/PrOhRu8QAI0dzDVOWc1ex9hferRdPRlj
-Uc+Mr0f+tfLw0hCfIGXBdeVk8Uf3g/sBJWVCKVeuOs84ndc5uLQ1UEb47nLc7cZ3
-qAlehtQ/q2Co9q0fWamWvI8n2lZWNb1yzlvpXhojcO+MgPdsUE9socX3zKMDsI6D
-yBFWmsYNbRRqOBZX7y0L7d3rsJNi9sm4M2Fe/JMB20BVYTrPt9+Hl/sVnHhaJYP5
-xC2Gei8o8l69NR2xQwQCydKaBNiqWk4YVu10g8pNQ1BTM3geubrruv3jEa0LnHGx
-w3XRGQoh/DBBDWtHLsIiKDnGHcPp6GWehwrfZQufECO6HuCpZ8/G7WELJOfFMAIQ
-GkDfEspruuY1KVo78U6bUj+3Iux25Ho1+a63ozvpDMLIl+i9+86vhwfDghn3fjWs
-cafiy7wp24Ewtkns6nq9V0NwKhP7gLDQ6Oju0LhIV9E3b11i+lN25hAkfiqSntGr
-E1ADci1qNQFzwk9zrTyD39z5k1gairGIcN8c8F2LOQSDydFqlBRdjTCL3Jhco9g7
-FMC4djOaDJOdcx3bssDoxAzmdG/6v1SJZm5/DeEV/tFBrV15mE6XlzuObvTg9LPh
-KZVYtbwSfll45th881Py+WjEs583K8WKQCf49bmq2O28hAtnhodxvFdZ4Sn42Ao8
-CMJ1/iCw9bso4feX2Fn4
-=AN5e
------END PGP SIGNATURE-----
-
---a8Wt8u1KmwUX3Y2C--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
+according to speedtest.net.
