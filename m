@@ -1,56 +1,58 @@
-From: weiqing kong <weiqing.kong@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: pwm: Add MediaTek display PWM bindings
-Date: Fri, 3 Jun 2016 14:45:49 +0800
-Message-ID: <1464936349.5209.9.camel@mhfsdcap03>
-References: <1464597712-5399-1-git-send-email-weiqing.kong@mediatek.com>
-	 <1464597712-5399-2-git-send-email-weiqing.kong@mediatek.com>
-	 <20160602224550.GA19256@rob-hp-laptop>
+From: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
+Subject: Re: [RFC v3 02/45] dma-mapping: Use unsigned long for dma_attrs
+Date: Fri, 3 Jun 2016 09:17:00 +0200
+Message-ID: <CAMuHMdXWMf7Dt77wSUj8NytQqb99jzDiAz46kJkAEz+6BX3Uvw@mail.gmail.com>
+References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
+	<1464881987-13203-3-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160602224550.GA19256@rob-hp-laptop>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, erin.lo@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yh.huang@mediatek.com, yt.shen@mediatek.com
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1464881987-13203-3-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Linux MIPS Mailing List <linux-mips-6z/3iImG2C8G8FEW9MqTrA@public.gmane.org>, Aurelien Jacquiot <a-jacquiot-l0cyMroinI0@public.gmane.org>, Benjamin Herrenschmidt <benh-XVmvHMARGAS8U2dJNN8I7kB+6BGkLq7r@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Paul Mackerras <paulus-eUNUBHrolfbYtjvyW6yDsg@public.gmane.org>, "linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Michael Ellerman <mpe-Gsx/Oe8HsFggBc27wqDAHg@public.gmane.org>, Linux-sh list <linux-sh-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "James E.J. Bottomley" <jejb-6jwH94ZQLHl74goWV3ctuw@public.gmane.org>, Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, xen-devel-GuqFBffKawtpuQazS67q72D2FQJk+8+b@public.gmane.org, Matt Turner <mattst88-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, uclinux-h8-devel-5NWGOfrQmneRv+LV9MX5uooqe+aC9MnS@public.gmane.org, James Hogan <james.hogan-1AXoQHu6uovQT0dZR+AlfA@public.gmane.org>, "adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org" <adi-buildroot-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, "linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-06-02 at 17:45 -0500, Rob Herring wrote:
-> On Mon, May 30, 2016 at 04:41:50PM +0800, Weiqing Kong wrote:
-> > Add MT2701 compatible string.
-> > 
-> > Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> > index f8f59ba..f2f2fa9 100644
-> > --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> > +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> > @@ -1,9 +1,10 @@
-> >  MediaTek display PWM controller
-> >  
-> >  Required properties:
-> > - - compatible: should be "mediatek,<name>-disp-pwm":
-> > -   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
-> > + - compatible: should be like these:
-> > +   - "mediatek,mt2701-disp-bls": found on mt2701 SoC.
-> 
-> Why bls instead of pwm?
+Hi Krzysztof,
 
-In mt6595/mt8173, we have a hardware module named pwm.
-In mt2701, we have bls hardware module which includes disp pwm function,
-so we named it mt2701-disp-bls rather than mt2701-disp-pwm in order to
-match with hardware spec.
-thanks.
+On Thu, Jun 2, 2016 at 5:39 PM, Krzysztof Kozlowski
+<k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org> wrote:
+> --- a/include/linux/dma-mapping.h
+> +++ b/include/linux/dma-mapping.h
+> @@ -5,13 +5,25 @@
 
-> 
-> >     - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
-> > +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
-> >   - reg: physical base address and length of the controller's registers.
-> >   - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
-> >     the cell format.
-> > -- 
-> > 1.8.1.1.dirty
-> > 
+> +/**
+> + * List of possible attributes associated with a DMA mapping. The semantics
+> + * of each attribute should be defined in Documentation/DMA-attributes.txt.
+> + */
+> +#define DMA_ATTR_WRITE_BARRIER         (1UL << 1)
+
+Any particular reason they start at 2, not 1?
+
+> +#define DMA_ATTR_WEAK_ORDERING         (1UL << 2)
+> +#define DMA_ATTR_WRITE_COMBINE         (1UL << 3)
+> +#define DMA_ATTR_NON_CONSISTENT                (1UL << 4)
+> +#define DMA_ATTR_NO_KERNEL_MAPPING     (1UL << 5)
+> +#define DMA_ATTR_SKIP_CPU_SYNC         (1UL << 6)
+> +#define DMA_ATTR_FORCE_CONTIGUOUS      (1UL << 7)
+> +#define DMA_ATTR_ALLOC_SINGLE_PAGES    (1UL << 8)
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
