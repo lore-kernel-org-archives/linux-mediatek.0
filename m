@@ -1,76 +1,131 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH] iommu: convert DT component matching to
- component_match_add_release()
-Date: Fri, 3 Jun 2016 15:13:00 +0200
-Message-ID: <5751825C.40703@gmail.com>
-References: <E1b8jzj-00046r-Pd@rmk-PC.armlinux.org.uk>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2,3/5] dt-bindings: mtu3: add devicetree bindings
+Date: Fri, 3 Jun 2016 15:34:04 +0200
+Message-ID: <5751874C.9070100@gmail.com>
+References: <1464673962-11506-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1464673962-11506-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <E1b8jzj-00046r-Pd-eh5Bv4kxaXIk46pC+1QYvQNdhmdF6hFW@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1464673962-11506-4-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 03/06/16 09:58, Russell King wrote:
-> Convert DT component matching to use component_match_add_release().
+On 31/05/16 07:52, Chunfeng Yun wrote:
+> add a DT binding doc for MediaTek USB3 DRD driver
 >
-> Signed-off-by: Russell King <rmk+kernel-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
-
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
->   drivers/iommu/mtk_iommu.c | 13 ++++++++++---
->   1 file changed, 10 insertions(+), 3 deletions(-)
+>   Documentation/devicetree/bindings/usb/mtu3.txt |   85 ++++++++++++++++++++++++
+>   1 file changed, 85 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/usb/mtu3.txt
 >
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index c3043d8754e3..c036df1c49ca 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -557,6 +557,11 @@ static int compare_of(struct device *dev, void *data)
->   	return dev->of_node == data;
->   }
->
-> +static void release_of(struct device *dev, void *data)
-> +{
-> +	of_node_put(data);
-> +}
+> diff --git a/Documentation/devicetree/bindings/usb/mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
+> new file mode 100644
+> index 0000000..571ae8b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
+
+The file should be called mt8173-mtu3.txt to be in line with mt8173-xhci.txt
+
+> @@ -0,0 +1,85 @@
+> +The device node for Mediatek USB3.0 DRD controller
 > +
->   static int mtk_iommu_bind(struct device *dev)
->   {
->   	struct mtk_iommu_data *data = dev_get_drvdata(dev);
-> @@ -630,17 +635,19 @@ static int mtk_iommu_probe(struct platform_device *pdev)
->   			continue;
->
->   		plarbdev = of_find_device_by_node(larbnode);
-> -		of_node_put(larbnode);
->   		if (!plarbdev) {
->   			plarbdev = of_platform_device_create(
->   						larbnode, NULL,
->   						platform_bus_type.dev_root);
-> -			if (!plarbdev)
-> +			if (!plarbdev) {
-> +				of_node_put(larbnode);
->   				return -EPROBE_DEFER;
-> +			}
->   		}
->   		data->smi_imu.larb_imu[i].dev = &plarbdev->dev;
->
-> -		component_match_add(dev, &match, compare_of, larbnode);
-> +		component_match_add_release(dev, &match, release_of,
-> +					    compare_of, larbnode);
->   	}
->
->   	platform_set_drvdata(pdev, data);
+> +Required properties:
+> + - compatible : should be "mediatek,mt8173-mtu3"
+> + - reg : specifies physical base address and size of the registers
+> + - reg-names: should be "mac" for device IP and "ippc" for IP port control
+> + - interrupts : interrupt used by the device IP
+> + - power-domains : a phandle to USB power domain node to control USB's
+> +	mtcmos
+> + - vusb33-supply : regulator of USB avdd3.3v
+> + - clocks : a list of phandle + clock-specifier pairs, one for each
+> +	entry in clock-names
+> + - clock-names : must contain "sys_ck" for clock of controller;
+> +	"wakeup_deb_p0" and "wakeup_deb_p1" are optional, they are
+> +	depends on "mediatek,enable-wakeup"
+> + - phys : a list of phandle + phy specifier pairs
+> + - dr_mode : should be one of "host", "peripheral" or "otg",
+> +	refer to usb/generic.txt
+> +
+> +Optional properties:
+> + - #address-cells, #size-cells : should be '2' if the device has sub-nodes
+> +	with 'reg' property
+> + - ranges : allows valid 1:1 translation between child's address space and
+> +	parent's address space
+> + - extcon : external connector for vbus and idpin changes detection, needed
+> +	when supports dual-role mode.
+> + - vbus-supply : reference to the VBUS regulator, needed when supports
+> +	dual-role mode.
+> + - pinctl-names : a pinctrl state named "default" must be defined,
+> +	"id_float" and "id_ground" are optinal which depends on
+> +	"mediatek,enable-manual-drd"
+
+So pinctrl is optional, but if you put it, you need at least "default"?
+
+Apart from that, DT maintainers prefer to have the binding patches at 
+the beginning of a series, so it's easier for them to not oversee any.
+
+Regards,
+Matthias
+
+> + - pinctrl-0 : pin control group
+> +	See: Documentation/devicetree/bindings/pinctrl/pinctrl-binding.txt
+> +
+> + - maximum-speed : valid arguments are "super-speed", "high-speed" and
+> +	"full-speed"; refer to usb/generic.txt
+> + - enable-manual-drd : supports manual dual-role switch via sysfs; only used
+> +	when receptacle is TYPE-A and also wants to support dual-role mode.
+> + - mediatek,enable-wakeup : supports ip sleep wakeup used by host mode
+> + - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
+> +	control register, it depends on "mediatek,enable-wakeup".
+> +
+> +Sub-nodes:
+> +The xhci should be added as subnode to mtu3 as shown in the following example
+> +if host mode is enabled. The DT binding details of xhci can be found in:
+> +Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+> +
+> +Example:
+> +ssusb: usb@11271000 {
+> +	compatible = "mediatek,mt8173-mtu3";
+> +	reg = <0 0x11271000 0 0x3000>,
+> +	      <0 0x11280700 0 0x0100>;
+> +	reg-names = "mac", "ippc";
+> +	interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
+> +	phys = <&phy_port0 PHY_TYPE_USB3>,
+> +	       <&phy_port1 PHY_TYPE_USB2>;
+> +	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+> +	clocks = <&topckgen CLK_TOP_USB30_SEL>,
+> +		 <&pericfg CLK_PERI_USB0>,
+> +		 <&pericfg CLK_PERI_USB1>;
+> +	clock-names = "sys_ck",
+> +		      "wakeup_deb_p0",
+> +		      "wakeup_deb_p1";
+> +	vusb33-supply = <&mt6397_vusb_reg>;
+> +	vbus-supply = <&usb_p0_vbus>;
+> +	extcon = <&extcon_usb>;
+> +	dr_mode = "otg";
+> +	mediatek,enable-wakeup;
+> +	mediatek,syscon-wakeup = <&pericfg>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +	ranges;
+> +	status = "disabled";
+> +
+> +	usb_host: xhci@11270000 {
+> +		compatible = "mediatek,mt8173-xhci";
+> +		reg = <0 0x11270000 0 0x1000>;
+> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+> +		clocks = <&topckgen CLK_TOP_USB30_SEL>;
+> +		clock-names = "sys_ck";
+> +		vusb33-supply = <&mt6397_vusb_reg>;
+> +		status = "disabled";
+> +	};
+> +};
 >
