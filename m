@@ -1,69 +1,37 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: pwm: Add MediaTek display PWM bindings
-Date: Fri, 3 Jun 2016 17:03:53 +0200
-Message-ID: <57519C59.5040107@gmail.com>
-References: <1464597712-5399-1-git-send-email-weiqing.kong@mediatek.com>
- <1464597712-5399-2-git-send-email-weiqing.kong@mediatek.com>
- <20160602224550.GA19256@rob-hp-laptop> <1464936349.5209.9.camel@mhfsdcap03>
+From: Lucas Stach <l.stach@pengutronix.de>
+Subject: Re: [PATCH v2 2/3] drm: convert DT component matching to
+ component_match_add_release()
+Date: Fri, 03 Jun 2016 17:10:32 +0200
+Message-ID: <1464966632.32235.4.camel@pengutronix.de>
+References: <20160603141548.GC1041@n2100.armlinux.org.uk>
+ <E1b8pyX-0005OP-2s@rmk-PC.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <1464936349.5209.9.camel@mhfsdcap03>
-Sender: linux-pwm-owner@vger.kernel.org
-To: weiqing kong <weiqing.kong@mediatek.com>, Rob Herring <robh@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, erin.lo@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yh.huang@mediatek.com, yt.shen@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <E1b8pyX-0005OP-2s@rmk-PC.armlinux.org.uk>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King <rmk+kernel@armlinux.org.uk>
+Cc: devicetree@vger.kernel.org, linux-arm-msm@vger.kernel.org, Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 03/06/16 08:45, weiqing kong wrote:
-> On Thu, 2016-06-02 at 17:45 -0500, Rob Herring wrote:
->> On Mon, May 30, 2016 at 04:41:50PM +0800, Weiqing Kong wrote:
->>> Add MT2701 compatible string.
->>>
->>> Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
->>> ---
->>>   Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt | 5 +++--
->>>   1 file changed, 3 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
->>> index f8f59ba..f2f2fa9 100644
->>> --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
->>> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
->>> @@ -1,9 +1,10 @@
->>>   MediaTek display PWM controller
->>>
->>>   Required properties:
->>> - - compatible: should be "mediatek,<name>-disp-pwm":
->>> -   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
->>> + - compatible: should be like these:
->>> +   - "mediatek,mt2701-disp-bls": found on mt2701 SoC.
->>
->> Why bls instead of pwm?
->
-> In mt6595/mt8173, we have a hardware module named pwm.
-> In mt2701, we have bls hardware module which includes disp pwm function,
-> so we named it mt2701-disp-bls rather than mt2701-disp-pwm in order to
-> match with hardware spec.
-> thanks.
->
-
- From what I understand pwm module and disp pwm in mt6589/mt8173 is 
-independent from the disp pwm. Actually the disp pwm in mt6589 is part 
-of the bls module, so this should me mediatek,mt2701-disp-pwm as well
-
-Thanks,
-Matthias
-
->>
->>>      - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
->>> +   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
->>>    - reg: physical base address and length of the controller's registers.
->>>    - #pwm-cells: must be 2. See pwm.txt in this directory for a description of
->>>      the cell format.
->>> --
->>> 1.8.1.1.dirty
->>>
->
->
+QW0gRnJlaXRhZywgZGVuIDAzLjA2LjIwMTYsIDE1OjIxICswMTAwIHNjaHJpZWIgUnVzc2VsbCBL
+aW5nOgo+IENvbnZlcnQgRFQgY29tcG9uZW50IG1hdGNoaW5nIHRvIHVzZSBjb21wb25lbnRfbWF0
+Y2hfYWRkX3JlbGVhc2UoKS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSdXNzZWxsIEtpbmcgPHJtaytr
+ZXJuZWxAYXJtbGludXgub3JnLnVrPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL2hkbGNk
+X2Rydi5jICAgICAgICAgICAgIHwgIDkgKysrLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm1h
+ZGEvYXJtYWRhX2Rydi5jICAgICAgICAgfCAgOCArKy0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0v
+ZHJtX29mLmMgICAgICAgICAgICAgICAgICAgIHwgIDYgKysrKy0tCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9ldG5hdml2L2V0bmF2aXZfZHJ2LmMgICAgICAgfCAxMSArKy0tLS0tLS0tLQoKRm9yIHRoZSBl
+dG5hdml2IHBhcnQ6CgpBY2tlZC1ieTogTHVjYXMgU3RhY2ggPGwuc3RhY2hAcGVuZ3V0cm9uaXgu
+ZGU+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
+ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
+Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
