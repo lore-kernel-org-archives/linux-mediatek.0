@@ -1,131 +1,107 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2,3/5] dt-bindings: mtu3: add devicetree bindings
-Date: Fri, 3 Jun 2016 15:34:04 +0200
-Message-ID: <5751874C.9070100@gmail.com>
-References: <1464673962-11506-1-git-send-email-chunfeng.yun@mediatek.com>
- <1464673962-11506-4-git-send-email-chunfeng.yun@mediatek.com>
+From: Russell King <rmk+kernel@armlinux.org.uk>
+Subject: [PATCH v2 1/3] of: add common OF-based component functionality
+Date: Fri, 03 Jun 2016 15:21:19 +0100
+Message-ID: <E1b8pyR-0005OJ-V3@rmk-PC.armlinux.org.uk>
+References: <20160603141548.GC1041@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464673962-11506-4-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+In-Reply-To: <20160603141548.GC1041@n2100.armlinux.org.uk>
+Content-Disposition: inline
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>, Frank Rowand <frowand.list@gmail.com>, Grant Likely <grant.likely@linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Add common OF-based component functionality for matching devices by
+device node, and releasing the device node at the appropraite time.
 
+Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+---
+ drivers/of/Makefile          |  2 +-
+ drivers/of/of_component.c    | 41 +++++++++++++++++++++++++++++++++++++++++
+ include/linux/of_component.h | 14 ++++++++++++++
+ 3 files changed, 56 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/of/of_component.c
+ create mode 100644 include/linux/of_component.h
 
-On 31/05/16 07:52, Chunfeng Yun wrote:
-> add a DT binding doc for MediaTek USB3 DRD driver
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->   Documentation/devicetree/bindings/usb/mtu3.txt |   85 ++++++++++++++++++++++++
->   1 file changed, 85 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/usb/mtu3.txt
->
-> diff --git a/Documentation/devicetree/bindings/usb/mtu3.txt b/Documentation/devicetree/bindings/usb/mtu3.txt
-> new file mode 100644
-> index 0000000..571ae8b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/usb/mtu3.txt
-
-The file should be called mt8173-mtu3.txt to be in line with mt8173-xhci.txt
-
-> @@ -0,0 +1,85 @@
-> +The device node for Mediatek USB3.0 DRD controller
-> +
-> +Required properties:
-> + - compatible : should be "mediatek,mt8173-mtu3"
-> + - reg : specifies physical base address and size of the registers
-> + - reg-names: should be "mac" for device IP and "ippc" for IP port control
-> + - interrupts : interrupt used by the device IP
-> + - power-domains : a phandle to USB power domain node to control USB's
-> +	mtcmos
-> + - vusb33-supply : regulator of USB avdd3.3v
-> + - clocks : a list of phandle + clock-specifier pairs, one for each
-> +	entry in clock-names
-> + - clock-names : must contain "sys_ck" for clock of controller;
-> +	"wakeup_deb_p0" and "wakeup_deb_p1" are optional, they are
-> +	depends on "mediatek,enable-wakeup"
-> + - phys : a list of phandle + phy specifier pairs
-> + - dr_mode : should be one of "host", "peripheral" or "otg",
-> +	refer to usb/generic.txt
-> +
-> +Optional properties:
-> + - #address-cells, #size-cells : should be '2' if the device has sub-nodes
-> +	with 'reg' property
-> + - ranges : allows valid 1:1 translation between child's address space and
-> +	parent's address space
-> + - extcon : external connector for vbus and idpin changes detection, needed
-> +	when supports dual-role mode.
-> + - vbus-supply : reference to the VBUS regulator, needed when supports
-> +	dual-role mode.
-> + - pinctl-names : a pinctrl state named "default" must be defined,
-> +	"id_float" and "id_ground" are optinal which depends on
-> +	"mediatek,enable-manual-drd"
-
-So pinctrl is optional, but if you put it, you need at least "default"?
-
-Apart from that, DT maintainers prefer to have the binding patches at 
-the beginning of a series, so it's easier for them to not oversee any.
-
-Regards,
-Matthias
-
-> + - pinctrl-0 : pin control group
-> +	See: Documentation/devicetree/bindings/pinctrl/pinctrl-binding.txt
-> +
-> + - maximum-speed : valid arguments are "super-speed", "high-speed" and
-> +	"full-speed"; refer to usb/generic.txt
-> + - enable-manual-drd : supports manual dual-role switch via sysfs; only used
-> +	when receptacle is TYPE-A and also wants to support dual-role mode.
-> + - mediatek,enable-wakeup : supports ip sleep wakeup used by host mode
-> + - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
-> +	control register, it depends on "mediatek,enable-wakeup".
-> +
-> +Sub-nodes:
-> +The xhci should be added as subnode to mtu3 as shown in the following example
-> +if host mode is enabled. The DT binding details of xhci can be found in:
-> +Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-> +
-> +Example:
-> +ssusb: usb@11271000 {
-> +	compatible = "mediatek,mt8173-mtu3";
-> +	reg = <0 0x11271000 0 0x3000>,
-> +	      <0 0x11280700 0 0x0100>;
-> +	reg-names = "mac", "ippc";
-> +	interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
-> +	phys = <&phy_port0 PHY_TYPE_USB3>,
-> +	       <&phy_port1 PHY_TYPE_USB2>;
-> +	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-> +	clocks = <&topckgen CLK_TOP_USB30_SEL>,
-> +		 <&pericfg CLK_PERI_USB0>,
-> +		 <&pericfg CLK_PERI_USB1>;
-> +	clock-names = "sys_ck",
-> +		      "wakeup_deb_p0",
-> +		      "wakeup_deb_p1";
-> +	vusb33-supply = <&mt6397_vusb_reg>;
-> +	vbus-supply = <&usb_p0_vbus>;
-> +	extcon = <&extcon_usb>;
-> +	dr_mode = "otg";
-> +	mediatek,enable-wakeup;
-> +	mediatek,syscon-wakeup = <&pericfg>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +	ranges;
-> +	status = "disabled";
-> +
-> +	usb_host: xhci@11270000 {
-> +		compatible = "mediatek,mt8173-xhci";
-> +		reg = <0 0x11270000 0 0x1000>;
-> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-> +		clocks = <&topckgen CLK_TOP_USB30_SEL>;
-> +		clock-names = "sys_ck";
-> +		vusb33-supply = <&mt6397_vusb_reg>;
-> +		status = "disabled";
-> +	};
-> +};
->
+diff --git a/drivers/of/Makefile b/drivers/of/Makefile
+index d7efd9d458aa..6a4a5e2c0839 100644
+--- a/drivers/of/Makefile
++++ b/drivers/of/Makefile
+@@ -1,4 +1,4 @@
+-obj-y = base.o device.o platform.o
++obj-y = base.o of_component.o device.o platform.o
+ obj-$(CONFIG_OF_DYNAMIC) += dynamic.o
+ obj-$(CONFIG_OF_FLATTREE) += fdt.o
+ obj-$(CONFIG_OF_EARLY_FLATTREE) += fdt_address.o
+diff --git a/drivers/of/of_component.c b/drivers/of/of_component.c
+new file mode 100644
+index 000000000000..41e6e817d264
+--- /dev/null
++++ b/drivers/of/of_component.c
+@@ -0,0 +1,41 @@
++/*
++ * Copyright (C) 2016 Russell King.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 as
++ * published by the Free Software Foundation.
++ */
++#include <linux/component.h>
++#include <linux/device.h>
++#include <linux/of.h>
++#include <linux/of_component.h>
++#include <linux/of_graph.h>
++
++static void component_release_of(struct device *dev, void *data)
++{
++	of_node_put(data);
++}
++
++void component_match_add_of_compare(struct device *master,
++	struct component_match **matchptr,
++	int (*compare)(struct device *, void *), struct device_node *node)
++{
++	of_node_get(node);
++	component_match_add_release(master, matchptr, component_release_of,
++				    compare, node);
++}
++EXPORT_SYMBOL_GPL(component_match_add_of_compare);
++
++static void component_compare_of(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
++void component_match_add_of(struct device *master,
++	struct component_match **matchptr, struct device_node *node)
++{
++	of_node_get(node);
++	component_match_add_release(master, matchptr, component_release_of,
++				    component_compare_of, node);
++}
++EXPORT_SYMBOL_GPL(component_match_add_of);
+diff --git a/include/linux/of_component.h b/include/linux/of_component.h
+new file mode 100644
+index 000000000000..a8170ba3b786
+--- /dev/null
++++ b/include/linux/of_component.h
+@@ -0,0 +1,14 @@
++#ifndef __LINUX_COMPONENT_OF_H
++#define __LINUX_COMPONENT_OF_H
++
++struct component_match;
++struct device;
++struct device_node;
++
++void component_match_add_of_compare(struct device *master,
++	struct component_match **matchptr,
++	int (*compare)(struct device *, void *), struct device_node *node);
++void component_match_add_of(struct device *master,
++	struct component_match **matchptr, struct device_node *node);
++
++#endif
+-- 
+2.1.0
