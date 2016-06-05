@@ -1,24 +1,104 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH V4 0/4] net-next: mediatek: improve phy support
-Date: Fri, 03 Jun 2016 19:54:43 -0400 (EDT)
-Message-ID: <20160603.195443.1166932614450106227.davem@davemloft.net>
-References: <1464941829-38712-1-git-send-email-john@phrozen.org>
-Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH 03/12] net: mediatek: fix missing free of scratch memory
+Date: Sun,  5 Jun 2016 08:32:56 +0200
+Message-ID: <1465108385-38286-4-git-send-email-john@phrozen.org>
+References: <1465108385-38286-1-git-send-email-john@phrozen.org>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464941829-38712-1-git-send-email-john@phrozen.org>
+In-Reply-To: <1465108385-38286-1-git-send-email-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: john@phrozen.org
-Cc: nbd@openwrt.org, keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: John Crispin <john@phrozen.org>
-Date: Fri,  3 Jun 2016 10:17:05 +0200
+Scratch memory gets allocated in mtk_init_fq_dma() but the corresponding
+code to free it is missing inside mtk_dma_free() causing a memory leak.
+With this patch applied, we can run ifconfig up/down several thousand
+times without any problems.
 
-> The current driver did not handle the RGMII delay modes and asymmetric flow
-> control properly. The mii_bus is not freed properly. Also add support for
-> fixed-phy allowing the driver to work on SoCs that have an internal gigabit
-> switch.
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |   18 +++++++++++++-----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |    2 ++
+ 2 files changed, 15 insertions(+), 5 deletions(-)
 
-Series applied, thanks John.
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 6780886..8d79bbf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -453,14 +453,14 @@ static inline void mtk_rx_get_desc(struct mtk_rx_dma *rxd,
+ /* the qdma core needs scratch memory to be setup */
+ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ {
+-	dma_addr_t phy_ring_head, phy_ring_tail;
++	dma_addr_t phy_ring_tail;
+ 	int cnt = MTK_DMA_SIZE;
+ 	dma_addr_t dma_addr;
+ 	int i;
+ 
+ 	eth->scratch_ring = dma_alloc_coherent(eth->dev,
+ 					       cnt * sizeof(struct mtk_tx_dma),
+-					       &phy_ring_head,
++					       &eth->phy_scratch_ring,
+ 					       GFP_ATOMIC | __GFP_ZERO);
+ 	if (unlikely(!eth->scratch_ring))
+ 		return -ENOMEM;
+@@ -477,19 +477,19 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
+ 		return -ENOMEM;
+ 
+ 	memset(eth->scratch_ring, 0x0, sizeof(struct mtk_tx_dma) * cnt);
+-	phy_ring_tail = phy_ring_head +
++	phy_ring_tail = eth->phy_scratch_ring +
+ 			(sizeof(struct mtk_tx_dma) * (cnt - 1));
+ 
+ 	for (i = 0; i < cnt; i++) {
+ 		eth->scratch_ring[i].txd1 =
+ 					(dma_addr + (i * MTK_QDMA_PAGE_SIZE));
+ 		if (i < cnt - 1)
+-			eth->scratch_ring[i].txd2 = (phy_ring_head +
++			eth->scratch_ring[i].txd2 = (eth->phy_scratch_ring +
+ 				((i + 1) * sizeof(struct mtk_tx_dma)));
+ 		eth->scratch_ring[i].txd3 = TX_DMA_SDL(MTK_QDMA_PAGE_SIZE);
+ 	}
+ 
+-	mtk_w32(eth, phy_ring_head, MTK_QDMA_FQ_HEAD);
++	mtk_w32(eth, eth->phy_scratch_ring, MTK_QDMA_FQ_HEAD);
+ 	mtk_w32(eth, phy_ring_tail, MTK_QDMA_FQ_TAIL);
+ 	mtk_w32(eth, (cnt << 16) | cnt, MTK_QDMA_FQ_CNT);
+ 	mtk_w32(eth, MTK_QDMA_PAGE_SIZE << 16, MTK_QDMA_FQ_BLEN);
+@@ -1189,6 +1189,14 @@ static void mtk_dma_free(struct mtk_eth *eth)
+ 	for (i = 0; i < MTK_MAC_COUNT; i++)
+ 		if (eth->netdev[i])
+ 			netdev_reset_queue(eth->netdev[i]);
++	if (eth->scratch_ring) {
++		dma_free_coherent(eth->dev,
++				  MTK_DMA_SIZE * sizeof(struct mtk_tx_dma),
++				  eth->scratch_ring,
++				  eth->phy_scratch_ring);
++		eth->scratch_ring = NULL;
++		eth->phy_scratch_ring = 0;
++	}
+ 	mtk_tx_clean(eth);
+ 	mtk_rx_clean(eth);
+ 	kfree(eth->scratch_head);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index eed626d..57f7e8a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -357,6 +357,7 @@ struct mtk_rx_ring {
+  * @rx_ring:		Pointer to the memore holding info about the RX ring
+  * @rx_napi:		The NAPI struct
+  * @scratch_ring:	Newer SoCs need memory for a second HW managed TX ring
++ * @phy_scratch_ring:	physical address of scratch_ring
+  * @scratch_head:	The scratch memory that scratch_ring points to.
+  * @clk_ethif:		The ethif clock
+  * @clk_esw:		The switch clock
+@@ -384,6 +385,7 @@ struct mtk_eth {
+ 	struct mtk_rx_ring		rx_ring;
+ 	struct napi_struct		rx_napi;
+ 	struct mtk_tx_dma		*scratch_ring;
++	dma_addr_t			phy_scratch_ring;
+ 	void				*scratch_head;
+ 	struct clk			*clk_ethif;
+ 	struct clk			*clk_esw;
+-- 
+1.7.10.4
