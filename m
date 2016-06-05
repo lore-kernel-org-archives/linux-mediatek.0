@@ -1,45 +1,49 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH 10/12] net: mediatek: fix off by one in the TX ring allocation
-Date: Sun,  5 Jun 2016 08:33:03 +0200
-Message-ID: <1465108385-38286-11-git-send-email-john@phrozen.org>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 01/12] net: mediatek: fix DQL support
+Date: Sun, 05 Jun 2016 00:32:42 -0700 (PDT)
+Message-ID: <20160605.003242.796780762112643713.davem@davemloft.net>
 References: <1465108385-38286-1-git-send-email-john@phrozen.org>
+	<1465108385-38286-2-git-send-email-john@phrozen.org>
+Mime-Version: 1.0
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465108385-38286-1-git-send-email-john@phrozen.org>
+In-Reply-To: <1465108385-38286-2-git-send-email-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "David S. Miller" <davem@davemloft.net>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
+To: john@phrozen.org
+Cc: nbd@nbd.name, keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The TX ring setup has an off by one error causing it to not utilise all
-descriptors. This has the side effect that we need to reset the next
-pointer at runtime to make it work. Fix the off by one and remove the
-code fixing the ring at runtime.
+From: John Crispin <john@phrozen.org>
+Date: Sun,  5 Jun 2016 08:32:54 +0200
 
-Signed-off-by: John Crispin <john@phrozen.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+> @@ -625,7 +625,16 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+>  	WRITE_ONCE(itxd->txd3, (TX_DMA_SWC | TX_DMA_PLEN0(skb_headlen(skb)) |
+>  				(!nr_frags * TX_DMA_LS0)));
+>  
+> -	netdev_sent_queue(dev, skb->len);
+> +	/* we have a single DMA ring so BQL needs to be updated for all devices
+> +	 * sitting on this ring
+> +	 */
+> +	for (i = 0; i < MTK_MAC_COUNT; i++) {
+> +		if (!eth->netdev[i])
+> +			continue;
+> +
+> +		netdev_sent_queue(eth->netdev[i], skb->len);
+> +	}
+> +
+>  	skb_tx_timestamp(skb);
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 24714ab..6daf48b 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -903,7 +903,6 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget, bool *tx_again)
- 		}
- 		mtk_tx_unmap(eth->dev, tx_buf);
- 
--		ring->last_free->txd2 = next_cpu;
- 		ring->last_free = desc;
- 		atomic_inc(&ring->free_count);
- 
-@@ -1011,7 +1010,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 
- 	atomic_set(&ring->free_count, MTK_DMA_SIZE - 2);
- 	ring->next_free = &ring->dma[0];
--	ring->last_free = &ring->dma[MTK_DMA_SIZE - 2];
-+	ring->last_free = &ring->dma[MTK_DMA_SIZE - 1];
- 	ring->thresh = MAX_SKB_FRAGS;
- 
- 	/* make sure that all changes to the dma ring are flushed before we
--- 
-1.7.10.4
+Sorry, this is very far from working.
+
+You cannot asynchronously touch the DQL state of another netdevice.
+
+You have to hold the TX lock of a queue while changing it's DQL state,
+otherwise you'll corrupt the state.
+
+This "loop over all possible devices on this DMA ring" is pretty
+expensive for the problem you're trying to solve.
+
+You'll have to find another way to fix this bug, which BTW I'm not too
+clear about.  The commit message doesn't explain sufficiently what the
+actual problem is.  "not deterministic" doesn't give enough details.
