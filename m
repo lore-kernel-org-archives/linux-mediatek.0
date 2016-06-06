@@ -1,74 +1,83 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH 01/12] net: mediatek: fix DQL support
-Date: Mon, 6 Jun 2016 08:43:13 +0200
-Message-ID: <e1b52f75-edb7-8504-3e6d-40fcb03e39df@phrozen.org>
-References: <1465108385-38286-1-git-send-email-john@phrozen.org>
- <1465108385-38286-2-git-send-email-john@phrozen.org>
- <20160605.003242.796780762112643713.davem@davemloft.net>
+From: Hans-Christian Noren Egtvedt <egtvedt@samfundet.no>
+Subject: Re: [RFC v3 44/45] dma-mapping: Remove dma_get_attr
+Date: Mon, 6 Jun 2016 08:45:12 +0200
+Message-ID: <20160606064512.GB7998@samfundet.no>
+References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
+ <1464881987-13203-45-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160605.003242.796780762112643713.davem@davemloft.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, nbd@nbd.name
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-mips-bounce@linux-mips.org>
+Content-Disposition: inline
+In-Reply-To: <1464881987-13203-45-git-send-email-k.kozlowski@samsung.com>
+Sender: linux-mips-bounce@linux-mips.org
+Errors-to: linux-mips-bounce@linux-mips.org
+List-help: <mailto:ecartis@linux-mips.org?Subject=help>
+List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
+List-software: Ecartis version 1.0.0
+List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
+List-owner: <mailto:ralf@linux-mips.org>
+List-post: <mailto:linux-mips@linux-mips.org>
+List-archive: <http://www.linux-mips.org/archives/linux-mips/>
+To: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Cc: Richard Henderson <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Matt Turner <mattst88@gmail.com>, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Stefano Stabellini <sstabellini@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Haavard Skinnemoen <hskinnemoen@gmail.com>, Steven Miao <realmz6@gmail.com>, Mark Salter <msalter@redhat.com>, Aurelien Jacquiot <a-jacquiot@ti.com>, Mikael Starvik <starvik@axis.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, Richard Kuo <rkuo@codeaurora.org>, Tony Luck <tony.luck@intel.com>, Fenghua Yu <fenghua.yu@intel.com>, Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>, Geert
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 05/06/2016 09:32, David Miller wrote:
-> From: John Crispin <john@phrozen.org>
-> Date: Sun,  5 Jun 2016 08:32:54 +0200
+Around Thu 02 Jun 2016 17:39:46 +0200 or thereabout, Krzysztof Kozlowski wrote:
+> After switching DMA attributes to unsigned long it is easier to just
+> compare the bits.
 > 
->> @@ -625,7 +625,16 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
->>  	WRITE_ONCE(itxd->txd3, (TX_DMA_SWC | TX_DMA_PLEN0(skb_headlen(skb)) |
->>  				(!nr_frags * TX_DMA_LS0)));
->>  
->> -	netdev_sent_queue(dev, skb->len);
->> +	/* we have a single DMA ring so BQL needs to be updated for all devices
->> +	 * sitting on this ring
->> +	 */
->> +	for (i = 0; i < MTK_MAC_COUNT; i++) {
->> +		if (!eth->netdev[i])
->> +			continue;
->> +
->> +		netdev_sent_queue(eth->netdev[i], skb->len);
->> +	}
->> +
->>  	skb_tx_timestamp(skb);
-> 
-> Sorry, this is very far from working.
-> 
-> You cannot asynchronously touch the DQL state of another netdevice.
-> 
-> You have to hold the TX lock of a queue while changing it's DQL state,
-> otherwise you'll corrupt the state.
-> 
-> This "loop over all possible devices on this DMA ring" is pretty
-> expensive for the problem you're trying to solve.
-> 
-> You'll have to find another way to fix this bug, which BTW I'm not too
-> clear about.  The commit message doesn't explain sufficiently what the
-> actual problem is.  "not deterministic" doesn't give enough details.
-> 
+> Signed-off-by: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+> ---
+>  Documentation/DMA-API.txt                      |  4 +--
+>  arch/arc/mm/dma.c                              |  4 +--
+>  arch/arm/mm/dma-mapping.c                      | 36 ++++++++++++--------------
+>  arch/arm/xen/mm.c                              |  4 +--
+>  arch/arm64/mm/dma-mapping.c                    | 10 +++----
+>  arch/avr32/mm/dma-coherent.c                   |  4 +--
 
-Hi David,
+For the AVR32 related change
 
-DQL is supposed to measure how much data is enqueued on a netdev. the
-problem here is that two devices share the same hardware queue. fq_codel
-for example uses the values from dql to base its QoS judgement on. if we
-track the dql of the 2 devices separately then the values will not take
-the actual amount of data enqueued into account but only parts of it.
-this will make the queue length used as a basis for fq_codel
-calculations non deterministic thus breaking qos. dql needs to track the
-amount of data in the physical queue underlying the netdev to be useful.
-hope that explanation is better to understand.
+Acked-by: Hans-Christian Noren Egtvedt <egtvedt@samfundet.no>
 
-i think one solution would be to add some code to have 2 devices share
-the same dql instance. would that be an acceptable solution ?
+>  arch/ia64/sn/pci/pci_dma.c                     | 10 ++-----
+>  arch/metag/kernel/dma.c                        |  2 +-
+>  arch/mips/mm/dma-default.c                     |  6 ++---
+>  arch/openrisc/kernel/dma.c                     |  4 +--
+>  arch/parisc/kernel/pci-dma.c                   |  2 +-
+>  arch/powerpc/platforms/cell/iommu.c            | 10 +++----
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c    |  2 +-
+>  drivers/iommu/dma-iommu.c                      |  2 +-
+>  drivers/media/v4l2-core/videobuf2-dma-contig.c |  2 +-
+>  include/linux/dma-mapping.h                    | 13 ----------
+>  16 files changed, 46 insertions(+), 69 deletions(-)
 
-anyhow, i will resend the series without the dql patch today and then
-worry about it afterwards.
+<snipp non-AVR32>
 
-	John
+> diff --git a/arch/avr32/mm/dma-coherent.c b/arch/avr32/mm/dma-coherent.c
+> index fc51f4421933..58610d0df7ed 100644
+> --- a/arch/avr32/mm/dma-coherent.c
+> +++ b/arch/avr32/mm/dma-coherent.c
+> @@ -109,7 +109,7 @@ static void *avr32_dma_alloc(struct device *dev, size_t size,
+>  		return NULL;
+>  	phys = page_to_phys(page);
+>  
+> -	if (dma_get_attr(DMA_ATTR_WRITE_COMBINE, attrs)) {
+> +	if (attrs & DMA_ATTR_WRITE_COMBINE) {
+>  		/* Now, map the page into P3 with write-combining turned on */
+>  		*handle = phys;
+>  		return __ioremap(phys, size, _PAGE_BUFFER);
+> @@ -123,7 +123,7 @@ static void avr32_dma_free(struct device *dev, size_t size,
+>  {
+>  	struct page *page;
+>  
+> -	if (dma_get_attr(DMA_ATTR_WRITE_COMBINE, attrs)) {
+> +	if (attrs & DMA_ATTR_WRITE_COMBINE) {
+>  		iounmap(cpu_addr);
+>  
+>  		page = phys_to_page(handle);
+
+<snipp non-AVR32>
+
+-- 
+mvh
+Hans-Christian Noren Egtvedt
