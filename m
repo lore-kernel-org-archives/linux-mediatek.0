@@ -1,48 +1,45 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/4] serial: 8250_mtk: drop !defined(MODULE) conditional
-Date: Mon, 6 Jun 2016 12:27:50 +0200
-Message-ID: <57555026.8030400@gmail.com>
-References: <1465206063-1018-1-git-send-email-yamada.masahiro@socionext.com>
- <1465206063-1018-4-git-send-email-yamada.masahiro@socionext.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH 09/12] net: mediatek: increase watchdog_timeo
+Date: Mon, 6 Jun 2016 14:21:32 +0200
+Message-ID: <20160606122132.GM12165@lunn.ch>
+References: <1465108385-38286-1-git-send-email-john@phrozen.org>
+ <1465108385-38286-10-git-send-email-john@phrozen.org>
+ <20160605145632.GI12165@lunn.ch>
+ <0da64a49-d100-f83d-e6d3-91b706710660@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465206063-1018-4-git-send-email-yamada.masahiro@socionext.com>
+Content-Disposition: inline
+In-Reply-To: <0da64a49-d100-f83d-e6d3-91b706710660@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Masahiro Yamada <yamada.masahiro@socionext.com>, linux-serial@vger.kernel.org
-Cc: Arnd Bergmann <arnd@arndb.de>, Peter Hurley <peter@hurleysoftware.com>, Rob Herring <robh@kernel.org>, Paul Burton <paul.burton@imgtec.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>, Paul Gortmaker <paul.gortmaker@windriver.com>, linux-kernel@vger.kernel.org, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: John Crispin <john@phrozen.org>
+Cc: Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 List-Id: linux-mediatek@lists.infradead.org
 
+> Hi Andrew,
+> 
+> it is waiting for the watchdog to trigger :-) TBH the 1s seems to be too
+> short to for the dma ring length to be flushed and i had to pick some
+> value and 5 is used most places.
+> 
+> it really depends on the amount of packets in the queue, their length
+> and the mac setting. the timeout needs to be large enough that it would
+> not trigger incorrectly even if the mac is on 10mbit half duplex and all
+> frames in the queue were maximum size.
 
+So you are saying there is 5 seconds worth of traffic in the transmit ring.
 
-On 06/06/16 11:41, Masahiro Yamada wrote:
-> The !defined(MODULE) conditional has been added to the
-> OF_EARLYCON_DECLARE() define.
->
-> This commit partially reverts commit 3f5921a60f74 ("serial:
-> 8250/mediatek: fix building with SERIAL_8250=m").
->
-> Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
-> ---
+As a general point, not specific to this driver, is that wise? Isn't
+that really bad buffer bloat?
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+I just wondered what happened to cause it to have 5 seconds worth of
+traffic in the transmit ring. Did downstream signal a pause?  But i
+thought the byte queue limit was designed to prevent a big backlog in
+the transmit queue? At 10/Half, is it not reacting fast enough?  Since
+it is half duplex, do you have a lot of traffic coming the other way
+and something is not being fair at distributing up and down traffic?
 
->
->   drivers/tty/serial/8250/8250_mtk.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index 3489fbc..3611ec9 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -301,7 +301,7 @@ static struct platform_driver mtk8250_platform_driver = {
->   };
->   module_platform_driver(mtk8250_platform_driver);
->
-> -#if defined(CONFIG_SERIAL_8250_CONSOLE) && !defined(MODULE)
-> +#ifdef CONFIG_SERIAL_8250_CONSOLE
->   static int __init early_mtk8250_setup(struct earlycon_device *device,
->   					const char *options)
->   {
->
+I'm just wondering if by increasing the watchdog to 5 seconds, you are
+just hiding a problem.
+
+    Andrew
