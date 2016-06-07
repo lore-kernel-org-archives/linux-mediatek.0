@@ -1,66 +1,31 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
-Date: Tue, 7 Jun 2016 10:45:22 +0800
-Message-ID: <1465267522.15317.0.camel@mtksdaap41>
-References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
-	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
-	 <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
-	 <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
-	 <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
-	 <57516774.5080008@gmail.com>
-	 <CABb+yY2aOncqM-fOiq_ZBink0Fth6Drd30ZMe3-bXNkodW2dVA@mail.gmail.com>
+From: David Vrabel <david.vrabel-Sxgqhf6Nn4DQT0dZR+AlfA@public.gmane.org>
+Subject: Re: [RFC v3 20/45] xen: dma-mapping: Use unsigned long for dma_attrs
+Date: Tue, 7 Jun 2016 10:06:19 +0100
+Message-ID: <57568E8B.4000707__36873.7494144172$1465290458$gmane$org@citrix.com>
+References: <1464881987-13203-1-git-send-email-k.kozlowski@samsung.com>
+ <1464881987-13203-21-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABb+yY2aOncqM-fOiq_ZBink0Fth6Drd30ZMe3-bXNkodW2dVA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>De
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1464881987-13203-21-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Richard Henderson <rth-hL46jP5Bxq7R7s880joybQ@public.gmane.org>, Ivan Kokshaysky <ink-biIs/Y0ymYJMZLIVYojuPNP0rXTJTi09@public.gmane.org>, Matt Turner <mattst88-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Vineet Gupta <vgupta-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Stefano Stabellini <sstabellini-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Haavard Skinnemoen <hskinnemoen-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans-Christian Egtvedt <egtvedt-BrfabpQBY5qlHtIdYg32fQ@public.gmane.org>, Steven Miao <realmz6-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Salter <msalter-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Aurelien Jacquiot <a-jacquiot-l0cyMroinI0@public.gmane.org>, Mikael Starvik <starvik-VrBV9hrLPhE@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Yoshinori Sato <ysato-Rn4VEauK+AKRv+LV9MX5uooqe+aC9MnS@public.gmane.org>, Richard Kuo <rkuo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Tony Luck <tony.luck-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Fenghua Yu <fenghua.yu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Konrad Rzeszutek Wilk <konrad.wilk-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, James
+Cc: hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-06-03 at 18:41 +0530, Jassi Brar wrote:
-> On Fri, Jun 3, 2016 at 4:48 PM, Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> > On 03/06/16 08:12, Horng-Shyang Liao wrote:
-> >> On Thu, 2016-06-02 at 10:46 +0200, Matthias Brugger wrote:
-> 
-> >>> I keep thinking about how to get rid of the two data structures,
-> >>> task_busy_list and the task_release_wq. We need the latter for the only
-> >>> sake of getting a timeout.
-> >>>
-> >>> Did you have a look on how the mailbox framework handles this?
-> >>> By the way, what is the reason to not implement the whole driver as a
-> >>> mailbox controller? For me, this driver looks like a good fit.
-> >>
-> >>
-> >> CMDQ needs to encode commands for GCE hardware. We think this behavior
-> >> should be put in CMDQ driver, and client just call CMDQ functions.
-> >> Therefore, if we want to use mailbox framework, cmdq_rec must be
-> >> mailbox client, and the others must be mailbox controller.
-> >>
-> >
-> > You mean the functions to fill the cmdq_rec and execute it?
-> > I think this should be part of the driver.
-> >
-> > Jassi, can you have a look on the interface this driver exports [0].
-> > They are needed to actually create the message which will be send.
-> > Could something like this be part of a mailbox driver?
-> >
-> > [0] https://patchwork.kernel.org/patch/9140221/
-> >
-> Packet creating/parsing should not be a part of controller driver. As
-> the log of this patch says, today it is used for only display but in
-> future it could work with other h/w as well, so it makes sense to have
-> mailbox api do the message queuing, the controller driver do the
-> send/receive and client drivers implement display and other h/w
-> specific packaging of data (protocol handling).
-> 
-> So yes, I think this could use mailbox api.
-> 
-> Cheers.
+On 02/06/16 16:39, Krzysztof Kozlowski wrote:
+> Split out subsystem specific changes for easier reviews. This will be
+> squashed with main commit.
 
-I will try to rewrite CMDQ driver by mailbox framework and discuss with
-you if I encounter other problems.
+Acked-by: David Vrabel <david.vrabel-Sxgqhf6Nn4DQT0dZR+AlfA@public.gmane.org>
 
-Thanks,
-HS
+David
