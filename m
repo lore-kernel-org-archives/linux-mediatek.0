@@ -1,100 +1,66 @@
-From: Mark yao <mark.yao@rock-chips.com>
-Subject: Re: [PATCH 10/20] drm: rockchip: Rely on the default ->best_encoder()
- behavior
-Date: Tue, 7 Jun 2016 08:51:54 +0800
-Message-ID: <57561AAA.5060500@rock-chips.com>
-References: <1464877907-27723-1-git-send-email-boris.brezillon@free-electrons.com>
- <1464877907-27723-11-git-send-email-boris.brezillon@free-electrons.com>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Tue, 7 Jun 2016 10:45:22 +0800
+Message-ID: <1465267522.15317.0.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+	 <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
+	 <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
+	 <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
+	 <57516774.5080008@gmail.com>
+	 <CABb+yY2aOncqM-fOiq_ZBink0Fth6Drd30ZMe3-bXNkodW2dVA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8;
-	format=flowed
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <1464877907-27723-11-git-send-email-boris.brezillon@free-electrons.com>
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>, Alexey Brodkin <abrodkin@synopsys.com>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@freescale.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Thierry
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CABb+yY2aOncqM-fOiq_ZBink0Fth6Drd30ZMe3-bXNkodW2dVA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jassisinghbrar@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>De
 List-Id: linux-mediatek@lists.infradead.org
 
-On 2016=E5=B9=B406=E6=9C=8802=E6=97=A5 22:31, Boris Brezillon wrote:
-> All outputss have a 1:1 relationship between connectors and encoders
-> and the driver is relying on the atomic helpers: we can drop the cust=
-om
-> ->best_encoder() implementations  and let the core call
-> drm_atomic_helper_best_encoder() for us.
+On Fri, 2016-06-03 at 18:41 +0530, Jassi Brar wrote:
+> On Fri, Jun 3, 2016 at 4:48 PM, Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> > On 03/06/16 08:12, Horng-Shyang Liao wrote:
+> >> On Thu, 2016-06-02 at 10:46 +0200, Matthias Brugger wrote:
+> 
+> >>> I keep thinking about how to get rid of the two data structures,
+> >>> task_busy_list and the task_release_wq. We need the latter for the only
+> >>> sake of getting a timeout.
+> >>>
+> >>> Did you have a look on how the mailbox framework handles this?
+> >>> By the way, what is the reason to not implement the whole driver as a
+> >>> mailbox controller? For me, this driver looks like a good fit.
+> >>
+> >>
+> >> CMDQ needs to encode commands for GCE hardware. We think this behavior
+> >> should be put in CMDQ driver, and client just call CMDQ functions.
+> >> Therefore, if we want to use mailbox framework, cmdq_rec must be
+> >> mailbox client, and the others must be mailbox controller.
+> >>
+> >
+> > You mean the functions to fill the cmdq_rec and execute it?
+> > I think this should be part of the driver.
+> >
+> > Jassi, can you have a look on the interface this driver exports [0].
+> > They are needed to actually create the message which will be send.
+> > Could something like this be part of a mailbox driver?
+> >
+> > [0] https://patchwork.kernel.org/patch/9140221/
+> >
+> Packet creating/parsing should not be a part of controller driver. As
+> the log of this patch says, today it is used for only display but in
+> future it could work with other h/w as well, so it makes sense to have
+> mailbox api do the message queuing, the controller driver do the
+> send/receive and client drivers implement display and other h/w
+> specific packaging of data (protocol handling).
+> 
+> So yes, I think this could use mailbox api.
+> 
+> Cheers.
 
-Good, All connectors and encoders is 1:1 relationship on rockchip=20
-outputs, so
+I will try to rewrite CMDQ driver by mailbox framework and discuss with
+you if I encounter other problems.
 
-Acked-by: Mark Yao <mark.yao@rock-chips.com>
-
->
-> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
-> ---
->   drivers/gpu/drm/rockchip/dw-mipi-dsi.c | 9 ---------
->   drivers/gpu/drm/rockchip/inno_hdmi.c   | 9 ---------
->   2 files changed, 18 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c b/drivers/gpu/drm=
-/rockchip/dw-mipi-dsi.c
-> index dedc65b..ca22e5e 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi.c
-> @@ -964,18 +964,9 @@ static enum drm_mode_status dw_mipi_dsi_mode_val=
-id(
->   	return mode_status;
->   }
->  =20
-> -static struct drm_encoder *dw_mipi_dsi_connector_best_encoder(
-> -					struct drm_connector *connector)
-> -{
-> -	struct dw_mipi_dsi *dsi =3D con_to_dsi(connector);
-> -
-> -	return &dsi->encoder;
-> -}
-> -
->   static struct drm_connector_helper_funcs dw_mipi_dsi_connector_help=
-er_funcs =3D {
->   	.get_modes =3D dw_mipi_dsi_connector_get_modes,
->   	.mode_valid =3D dw_mipi_dsi_mode_valid,
-> -	.best_encoder =3D dw_mipi_dsi_connector_best_encoder,
->   };
->  =20
->   static enum drm_connector_status
-> diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/r=
-ockchip/inno_hdmi.c
-> index f8b4feb..006260d 100644
-> --- a/drivers/gpu/drm/rockchip/inno_hdmi.c
-> +++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
-> @@ -579,14 +579,6 @@ inno_hdmi_connector_mode_valid(struct drm_connec=
-tor *connector,
->   	return MODE_OK;
->   }
->  =20
-> -static struct drm_encoder *
-> -inno_hdmi_connector_best_encoder(struct drm_connector *connector)
-> -{
-> -	struct inno_hdmi *hdmi =3D to_inno_hdmi(connector);
-> -
-> -	return &hdmi->encoder;
-> -}
-> -
->   static int
->   inno_hdmi_probe_single_connector_modes(struct drm_connector *connec=
-tor,
->   				       uint32_t maxX, uint32_t maxY)
-> @@ -613,7 +605,6 @@ static struct drm_connector_funcs inno_hdmi_conne=
-ctor_funcs =3D {
->   static struct drm_connector_helper_funcs inno_hdmi_connector_helper=
-_funcs =3D {
->   	.get_modes =3D inno_hdmi_connector_get_modes,
->   	.mode_valid =3D inno_hdmi_connector_mode_valid,
-> -	.best_encoder =3D inno_hdmi_connector_best_encoder,
->   };
->  =20
->   static int inno_hdmi_register(struct drm_device *drm, struct inno_h=
-dmi *hdmi)
-
-
---=20
-=EF=BC=ADark Yao
+Thanks,
+HS
