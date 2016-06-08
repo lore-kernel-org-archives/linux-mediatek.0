@@ -1,48 +1,39 @@
-From: Tom Herbert <tom@herbertland.com>
-Subject: Re: [PATCH 01/12] net: mediatek: fix DQL support
-Date: Tue, 7 Jun 2016 16:20:33 -0700
-Message-ID: <CALx6S357KoKbS6tMKUgvHHLowXauZqAXib=bGuJBprwMDFkQ2g@mail.gmail.com>
-References: <1465108385-38286-2-git-send-email-john@phrozen.org>
-	<20160605.003242.796780762112643713.davem@davemloft.net>
-	<e1b52f75-edb7-8504-3e6d-40fcb03e39df@phrozen.org>
-	<20160607.160116.2076757909377302163.davem@davemloft.net>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: Re: [alsa-devel] [PATCH v2 5/9] ASoC: mediatek: add structure
+ define and clock control for 2701
+Date: Wed, 8 Jun 2016 09:44:37 +0800
+Message-ID: <1465350277.4197.2.camel@mtksdaap41>
+References: <1464929784-5489-1-git-send-email-garlic.tseng@mediatek.com>
+	 <1464929784-5489-6-git-send-email-garlic.tseng@mediatek.com>
+	 <20160607161508.GC7510@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160607.160116.2076757909377302163.davem@davemloft.net>
+In-Reply-To: <20160607161508.GC7510@sirena.org.uk>
 Sender: linux-kernel-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: john@phrozen.org, Linux Kernel Network Developers <netdev@vger.kernel.org>, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, LKML <linux-kernel@vger.kernel.org>, nbd@nbd.name
+To: Mark Brown <broonie@kernel.org>
+Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Jun 7, 2016 at 4:01 PM, David Miller <davem@davemloft.net> wrote:
-> From: John Crispin <john@phrozen.org>
-> Date: Mon, 6 Jun 2016 08:43:13 +0200
->
->> i think one solution would be to add some code to have 2 devices share
->> the same dql instance. would that be an acceptable solution ?
->
-> You still need to address the issue of synchronization.
->
-> dql purposefully doesn't use locking, always because a higher level
-> object (in this case the netdev TX queue) it is contained within
-> provides the synchronization.
->
-> That breaks apart once you share the dql between two netdevs, as you
-> are proposing here.  You'll have to add locking, which is expensive.
->
-> That's why I'm trying to encourage you to think out of the box and
-> find some way to solve the issue without having to access shared
-> state shared between multiple devices.
->
+On Tue, 2016-06-07 at 17:15 +0100, Mark Brown wrote:
+> On Fri, Jun 03, 2016 at 12:56:20PM +0800, Garlic Tseng wrote:
+> 
+> > +void mt2701_init_clock(struct mtk_base_afe *afe)
+> > +{
+> > +	struct mt2701_afe_private *afe_priv = afe->platform_priv;
+> > +	int i = 0;
+> > +
+> > +	for (i = 0; i < MT2701_CLOCK_NUM; i++) {
+> > +		afe_priv->clocks[i] = devm_clk_get(afe->dev, aud_clks[i]);
+> > +		if (IS_ERR(aud_clks[i]))
+> > +			dev_warn(afe->dev, "%s devm_clk_get %s fail\n",
+> > +				 __func__, aud_clks[i]);
+> > +	}
+> > +}
+> 
+> This looks like we just ignore the error but I'm not seeing anything
+> that stops us trying to use the clocks or handle deferred probe?
 
-I think you guys mean mean BQL not DQL :-)
-
-If two netdevs share the same DMA ring then is using two netdevs the
-right approach. Seems like this would have other consequences beyond
-BQL...
-
-Tom
-
-> Thanks.
->
+The probe for platform_driver should fail if the clock error occur.
+I'll fix it. Thanks.
