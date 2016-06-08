@@ -1,169 +1,61 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
-Date: Wed, 8 Jun 2016 12:45:54 +0200
-Message-ID: <5757F762.4020908@gmail.com>
-References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
- <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
- <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
- <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
- <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
- <57516774.5080008@gmail.com> <1464956037.16029.8.camel@mtksdaap41>
- <575181E5.6090603@gmail.com> <5756FD73.3050607@gmail.com>
- <1465364427.9963.13.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 07/20] drm: mediatek: Rely on the default
+ ->best_encoder() behavior
+Date: Wed, 8 Jun 2016 13:17:07 +0200
+Message-ID: <5757FEB3.8050001@gmail.com>
+References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
+ <1465300095-16971-8-git-send-email-boris.brezillon@free-electrons.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1465364427.9963.13.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jaswinder.singh-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465300095-16971-8-git-send-email-boris.brezillon@free-electrons.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <k.kozlowski@samsung.com>, linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>, Alexey Brodkin <abrodkin@synopsys.com>, Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@freescale.com>, Rob Clark <robdclark@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mark Yao <mark.yao@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Vincent Abriou <vincent.abriou@st.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chen-Yu Tsai <wens@csie.org>, Thierry Reding <thier>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 08/06/16 07:40, Horng-Shyang Liao wrote:
-> Hi Matthias,
+On 07/06/16 13:48, Boris Brezillon wrote:
+> We have a 1:1 relationship between connectors and encoders and the
+> driver is relying on the atomic helpers: we can drop the custom
+> ->best_encoder() implementation and let the core call
+> drm_atomic_helper_best_encoder() for us.
 >
-> On Tue, 2016-06-07 at 18:59 +0200, Matthias Brugger wrote:
->>
->> On 03/06/16 15:11, Matthias Brugger wrote:
->>>
->>>
->> [...]
->>
->>>>>>>>>>>> +
->>>>>>>>>>>> +            smp_mb(); /* modify jump before enable thread */
->>>>>>>>>>>> +        }
->>>>>>>>>>>> +
->>>>>>>>>>>> +        cmdq_thread_writel(thread, task->pa_base +
->>>>>>>>>>>> task->command_size,
->>>>>>>>>>>> +                   CMDQ_THR_END_ADDR);
->>>>>>>>>>>> +        cmdq_thread_resume(thread);
->>>>>>>>>>>> +    }
->>>>>>>>>>>> +    list_move_tail(&task->list_entry, &thread->task_busy_list);
->>>>>>>>>>>> +    spin_unlock_irqrestore(&cmdq->exec_lock, flags);
->>>>>>>>>>>> +}
->>>>>>>>>>>> +
->>>>>>>>>>>> +static void cmdq_handle_error_done(struct cmdq *cmdq,
->>>>>>>>>>>> +                   struct cmdq_thread *thread, u32 irq_flag)
->>>>>>>>>>>> +{
->>>>>>>>>>>> +    struct cmdq_task *task, *tmp, *curr_task = NULL;
->>>>>>>>>>>> +    u32 curr_pa;
->>>>>>>>>>>> +    struct cmdq_cb_data cmdq_cb_data;
->>>>>>>>>>>> +    bool err;
->>>>>>>>>>>> +
->>>>>>>>>>>> +    if (irq_flag & CMDQ_THR_IRQ_ERROR)
->>>>>>>>>>>> +        err = true;
->>>>>>>>>>>> +    else if (irq_flag & CMDQ_THR_IRQ_DONE)
->>>>>>>>>>>> +        err = false;
->>>>>>>>>>>> +    else
->>>>>>>>>>>> +        return;
->>>>>>>>>>>> +
->>>>>>>>>>>> +    curr_pa = cmdq_thread_readl(thread, CMDQ_THR_CURR_ADDR);
->>>>>>>>>>>> +
->>>>>>>>>>>> +    list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
->>>>>>>>>>>> +                 list_entry) {
->>>>>>>>>>>> +        if (curr_pa >= task->pa_base &&
->>>>>>>>>>>> +            curr_pa < (task->pa_base + task->command_size))
->>>>>>>>>>>
->>>>>>>>>>> What are you checking here? It seems as if you make some implcit
->>>>>>>>>>> assumptions about pa_base and the order of execution of
->>>>>>>>>>> commands in the
->>>>>>>>>>> thread. Is it save to do so? Does dma_alloc_coherent give any
->>>>>>>>>>> guarantees
->>>>>>>>>>> about dma_handle?
->>>>>>>>>>
->>>>>>>>>> 1. Check what is the current running task in this GCE thread.
->>>>>>>>>> 2. Yes.
->>>>>>>>>> 3. Yes, CMDQ doesn't use iommu, so physical address is continuous.
->>>>>>>>>>
->>>>>>>>>
->>>>>>>>> Yes, physical addresses might be continous, but AFAIK there is no
->>>>>>>>> guarantee that the dma_handle address is steadily growing, when
->>>>>>>>> calling
->>>>>>>>> dma_alloc_coherent. And if I understand the code correctly, you
->>>>>>>>> use this
->>>>>>>>> assumption to decide if the task picked from task_busy_list is
->>>>>>>>> currently
->>>>>>>>> executing. So I think this mecanism is not working.
->>>>>>>>
->>>>>>>> I don't use dma_handle address, and just use physical addresses.
->>>>>>>>     From CPU's point of view, tasks are linked by the busy list.
->>>>>>>>     From GCE's point of view, tasks are linked by the JUMP command.
->>>>>>>>
->>>>>>>>> In which cases does the HW thread raise an interrupt.
->>>>>>>>> In case of error. When does CMDQ_THR_IRQ_DONE get raised?
->>>>>>>>
->>>>>>>> GCE will raise interrupt if any task is done or error.
->>>>>>>> However, GCE is fast, so CPU may get multiple done tasks
->>>>>>>> when it is running ISR.
->>>>>>>>
->>>>>>>> In case of error, that GCE thread will pause and raise interrupt.
->>>>>>>> So, CPU may get multiple done tasks and one error task.
->>>>>>>>
->>>>>>>
->>>>>>> I think we should reimplement the ISR mechanism. Can't we just read
->>>>>>> CURR_IRQ_STATUS and THR_IRQ_STATUS in the handler and leave
->>>>>>> cmdq_handle_error_done to the thread_fn? You will need to pass
->>>>>>> information from the handler to thread_fn, but that shouldn't be an
->>>>>>> issue. AFAIK interrupts are disabled in the handler, so we should stay
->>>>>>> there as short as possible. Traversing task_busy_list is expensive, so
->>>>>>> we need to do it in a thread context.
->>>>>>
->>>>>> Actually, our initial implementation is similar to your suggestion,
->>>>>> but display needs CMDQ to return callback function very precisely,
->>>>>> else display will drop frame.
->>>>>> For display, CMDQ interrupt will be raised every 16 ~ 17 ms,
->>>>>> and CMDQ needs to call callback function in ISR.
->>>>>> If we defer callback to workqueue, the time interval may be larger than
->>>>>> 32 ms.sometimes.
->>>>>>
->>>>>
->>>>> I think the problem is, that you implemented the workqueue as a ordered
->>>>> workqueue, so there is no parallel processing. I'm still not sure why
->>>>> you need the workqueue to be ordered. Can you please explain.
->>>>
->>>> The order should be kept.
->>>> Let me use mouse cursor as an example.
->>>> If task 1 means move mouse cursor to point A, task 2 means point B,
->>>> and task 3 means point C, our expected result is A -> B -> C.
->>>> If the order is not kept, the result could become A -> C -> B.
->>>>
->>>
->>> Got it, thanks for the clarification.
->>>
->>
->> I think a way to get rid of the workqueue is to use a timer, which gets
->> programmed to the time a timeout in the first task in the busy list
->> would happen. Everytime we update the busy list (e.g. because of task
->> got finished by the thread), we update the timer. When the timer
->> triggers, which hopefully won't happen too often, we return timeout on
->> the busy list elements, until the time is lower then the actual time.
->>
->> At least with this we can reduce the data structures in this driver and
->> make it more lightweight.
->
->  From my understanding, your proposed method can handle timeout case.
->
-> However, the workqueue is also in charge of releasing tasks.
-> Do you take releasing tasks into consideration by using the proposed
-> timer method?
-> Furthermore, I think the code will become more complex if we also use
-> timer to implement releasing tasks.
->
+> Signed-off-by: Boris Brezillon <boris.brezillon@free-electrons.com>
 
-Can't we call
-         clk_disable_unprepare(cmdq->clock);
-         cmdq_task_release(task);
-after invoking the callback?
-Regrading the clock, wouldn't it be easier to handle the clock 
-enable/disable depending on the state of task_busy_list? I suppose we 
-can't as we would need to check the task_busy_list of all threads, right?
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> ---
+>   drivers/gpu/drm/mediatek/mtk_dsi.c | 9 ---------
+>   1 file changed, 9 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index 2d808e5..7343ffc 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -575,14 +575,6 @@ static int mtk_dsi_connector_get_modes(struct drm_connector *connector)
+>   	return drm_panel_get_modes(dsi->panel);
+>   }
+>
+> -static struct drm_encoder *mtk_dsi_connector_best_encoder(
+> -		struct drm_connector *connector)
+> -{
+> -	struct mtk_dsi *dsi = connector_to_dsi(connector);
+> -
+> -	return &dsi->encoder;
+> -}
+> -
+>   static const struct drm_encoder_helper_funcs mtk_dsi_encoder_helper_funcs = {
+>   	.mode_fixup = mtk_dsi_encoder_mode_fixup,
+>   	.mode_set = mtk_dsi_encoder_mode_set,
+> @@ -603,7 +595,6 @@ static const struct drm_connector_funcs mtk_dsi_connector_funcs = {
+>   static const struct drm_connector_helper_funcs
+>   	mtk_dsi_connector_helper_funcs = {
+>   	.get_modes = mtk_dsi_connector_get_modes,
+> -	.best_encoder = mtk_dsi_connector_best_encoder,
+>   };
+>
+>   static int mtk_drm_attach_bridge(struct drm_bridge *bridge,
+>
