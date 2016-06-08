@@ -1,263 +1,179 @@
-From: weiqing kong <weiqing.kong@mediatek.com>
-Subject: Re: [PATCH 2/3] pwm: Add MediaTek MT2701 display PWM driver support
-Date: Wed, 8 Jun 2016 20:05:48 +0800
-Message-ID: <1465387548.5209.32.camel@mhfsdcap03>
-References: <1464597712-5399-1-git-send-email-weiqing.kong@mediatek.com>
-	 <1464597712-5399-3-git-send-email-weiqing.kong@mediatek.com>
-	 <5751A3DD.7020402@gmail.com> <1465370478.5209.30.camel@mhfsdcap03>
-	 <5758000F.7050503@gmail.com>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Wed, 8 Jun 2016 20:25:27 +0800
+Message-ID: <1465388727.21326.8.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+	 <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
+	 <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
+	 <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
+	 <57516774.5080008@gmail.com> <1464956037.16029.8.camel@mtksdaap41>
+	 <575181E5.6090603@gmail.com> <5756FD73.3050607@gmail.com>
+	 <1465364427.9963.13.camel@mtksdaap41> <5757F762.4020908@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
-In-Reply-To: <5758000F.7050503@gmail.com>
-Sender: linux-pwm-owner@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5757F762.4020908@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, erin.lo@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yh.huang@mediatek.com, yt.shen@mediatek.com
+Cc: Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, jassisinghbrar@gmail.com, jaswinder.
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-06-08 at 13:22 +0200, Matthias Brugger wrote:
+Hi Matthias,
+
+On Wed, 2016-06-08 at 12:45 +0200, Matthias Brugger wrote:
 > 
-> On 08/06/16 09:21, weiqing kong wrote:
-> > On Fri, 2016-06-03 at 17:35 +0200, Matthias Brugger wrote:
-> >>
-> >> On 30/05/16 10:41, Weiqing Kong wrote:
-> >>> Use the mtk_pwm_data struction to define different registers
-> >>> and add MT2701 specific register operations, such as MT2701
-> >>> doesn't have commit register, needs to disable double buffer
-> >>> before writing register, and needs to select manual mode
-> >>> and use PWM_PERIOD/PWM_HIGH_WIDTH.
-> >>>
-> >>> Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
-> >>> ---
-> >>>    drivers/pwm/pwm-mtk-disp.c | 89 +++++++++++++++++++++++++++++++++++++---------
-> >>>    1 file changed, 72 insertions(+), 17 deletions(-)
-> >>>
-> >>> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-> >>> index 0ad3385..03b9c9e 100644
-> >>> --- a/drivers/pwm/pwm-mtk-disp.c
-> >>> +++ b/drivers/pwm/pwm-mtk-disp.c
-> >>> @@ -18,33 +18,44 @@
-> >>>    #include <linux/io.h>
-> >>>    #include <linux/module.h>
-> >>>    #include <linux/of.h>
-> >>> +#include <linux/of_device.h>
-> >>>    #include <linux/platform_device.h>
-> >>>    #include <linux/pwm.h>
-> >>>    #include <linux/slab.h>
-> >>>
-> >>>    #define DISP_PWM_EN		0x00
-> >>> -#define PWM_ENABLE_MASK		BIT(0)
-> >>>
-> >>>    #define DISP_PWM_COMMIT		0x08
-> >>>    #define PWM_COMMIT_MASK		BIT(0)
-> >>>
-> >>> -#define DISP_PWM_CON_0		0x10
-> >>>    #define PWM_CLKDIV_SHIFT	16
-> >>>    #define PWM_CLKDIV_MAX		0x3ff
-> >>>    #define PWM_CLKDIV_MASK		(PWM_CLKDIV_MAX << PWM_CLKDIV_SHIFT)
-> >>>
-> >>> -#define DISP_PWM_CON_1		0x14
-> >>>    #define PWM_PERIOD_BIT_WIDTH	12
-> >>>    #define PWM_PERIOD_MASK		((1 << PWM_PERIOD_BIT_WIDTH) - 1)
-> >>>
-> >>>    #define PWM_HIGH_WIDTH_SHIFT	16
-> >>>    #define PWM_HIGH_WIDTH_MASK	(0x1fff << PWM_HIGH_WIDTH_SHIFT)
-> >>>
-> >>> +#define MT2701_PWM_MANUAL_SEL_MASK	BIT(1)
-> >>> +#define MT2701_PWM_BLS_DEBUG		0xb0
-> >>
-> >> Do we need to set magic 0x3 in the debug register? If so, this should be
-> >> part of mtk_pwm_data, just as con0_sel.
+> On 08/06/16 07:40, Horng-Shyang Liao wrote:
+> > Hi Matthias,
 > >
-> > Do you mean that add bls_debug into struct mtk_pwm_data,
-> > and set 0x3 in mt2701 data, 0x0 in mt8173 data?
+> > On Tue, 2016-06-07 at 18:59 +0200, Matthias Brugger wrote:
+> >>
+> >> On 03/06/16 15:11, Matthias Brugger wrote:
+> >>>
+> >>>
+> >> [...]
+> >>
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +            smp_mb(); /* modify jump before enable thread */
+> >>>>>>>>>>>> +        }
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +        cmdq_thread_writel(thread, task->pa_base +
+> >>>>>>>>>>>> task->command_size,
+> >>>>>>>>>>>> +                   CMDQ_THR_END_ADDR);
+> >>>>>>>>>>>> +        cmdq_thread_resume(thread);
+> >>>>>>>>>>>> +    }
+> >>>>>>>>>>>> +    list_move_tail(&task->list_entry, &thread->task_busy_list);
+> >>>>>>>>>>>> +    spin_unlock_irqrestore(&cmdq->exec_lock, flags);
+> >>>>>>>>>>>> +}
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +static void cmdq_handle_error_done(struct cmdq *cmdq,
+> >>>>>>>>>>>> +                   struct cmdq_thread *thread, u32 irq_flag)
+> >>>>>>>>>>>> +{
+> >>>>>>>>>>>> +    struct cmdq_task *task, *tmp, *curr_task = NULL;
+> >>>>>>>>>>>> +    u32 curr_pa;
+> >>>>>>>>>>>> +    struct cmdq_cb_data cmdq_cb_data;
+> >>>>>>>>>>>> +    bool err;
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +    if (irq_flag & CMDQ_THR_IRQ_ERROR)
+> >>>>>>>>>>>> +        err = true;
+> >>>>>>>>>>>> +    else if (irq_flag & CMDQ_THR_IRQ_DONE)
+> >>>>>>>>>>>> +        err = false;
+> >>>>>>>>>>>> +    else
+> >>>>>>>>>>>> +        return;
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +    curr_pa = cmdq_thread_readl(thread, CMDQ_THR_CURR_ADDR);
+> >>>>>>>>>>>> +
+> >>>>>>>>>>>> +    list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+> >>>>>>>>>>>> +                 list_entry) {
+> >>>>>>>>>>>> +        if (curr_pa >= task->pa_base &&
+> >>>>>>>>>>>> +            curr_pa < (task->pa_base + task->command_size))
+> >>>>>>>>>>>
+> >>>>>>>>>>> What are you checking here? It seems as if you make some implcit
+> >>>>>>>>>>> assumptions about pa_base and the order of execution of
+> >>>>>>>>>>> commands in the
+> >>>>>>>>>>> thread. Is it save to do so? Does dma_alloc_coherent give any
+> >>>>>>>>>>> guarantees
+> >>>>>>>>>>> about dma_handle?
+> >>>>>>>>>>
+> >>>>>>>>>> 1. Check what is the current running task in this GCE thread.
+> >>>>>>>>>> 2. Yes.
+> >>>>>>>>>> 3. Yes, CMDQ doesn't use iommu, so physical address is continuous.
+> >>>>>>>>>>
+> >>>>>>>>>
+> >>>>>>>>> Yes, physical addresses might be continous, but AFAIK there is no
+> >>>>>>>>> guarantee that the dma_handle address is steadily growing, when
+> >>>>>>>>> calling
+> >>>>>>>>> dma_alloc_coherent. And if I understand the code correctly, you
+> >>>>>>>>> use this
+> >>>>>>>>> assumption to decide if the task picked from task_busy_list is
+> >>>>>>>>> currently
+> >>>>>>>>> executing. So I think this mecanism is not working.
+> >>>>>>>>
+> >>>>>>>> I don't use dma_handle address, and just use physical addresses.
+> >>>>>>>>     From CPU's point of view, tasks are linked by the busy list.
+> >>>>>>>>     From GCE's point of view, tasks are linked by the JUMP command.
+> >>>>>>>>
+> >>>>>>>>> In which cases does the HW thread raise an interrupt.
+> >>>>>>>>> In case of error. When does CMDQ_THR_IRQ_DONE get raised?
+> >>>>>>>>
+> >>>>>>>> GCE will raise interrupt if any task is done or error.
+> >>>>>>>> However, GCE is fast, so CPU may get multiple done tasks
+> >>>>>>>> when it is running ISR.
+> >>>>>>>>
+> >>>>>>>> In case of error, that GCE thread will pause and raise interrupt.
+> >>>>>>>> So, CPU may get multiple done tasks and one error task.
+> >>>>>>>>
+> >>>>>>>
+> >>>>>>> I think we should reimplement the ISR mechanism. Can't we just read
+> >>>>>>> CURR_IRQ_STATUS and THR_IRQ_STATUS in the handler and leave
+> >>>>>>> cmdq_handle_error_done to the thread_fn? You will need to pass
+> >>>>>>> information from the handler to thread_fn, but that shouldn't be an
+> >>>>>>> issue. AFAIK interrupts are disabled in the handler, so we should stay
+> >>>>>>> there as short as possible. Traversing task_busy_list is expensive, so
+> >>>>>>> we need to do it in a thread context.
+> >>>>>>
+> >>>>>> Actually, our initial implementation is similar to your suggestion,
+> >>>>>> but display needs CMDQ to return callback function very precisely,
+> >>>>>> else display will drop frame.
+> >>>>>> For display, CMDQ interrupt will be raised every 16 ~ 17 ms,
+> >>>>>> and CMDQ needs to call callback function in ISR.
+> >>>>>> If we defer callback to workqueue, the time interval may be larger than
+> >>>>>> 32 ms.sometimes.
+> >>>>>>
+> >>>>>
+> >>>>> I think the problem is, that you implemented the workqueue as a ordered
+> >>>>> workqueue, so there is no parallel processing. I'm still not sure why
+> >>>>> you need the workqueue to be ordered. Can you please explain.
+> >>>>
+> >>>> The order should be kept.
+> >>>> Let me use mouse cursor as an example.
+> >>>> If task 1 means move mouse cursor to point A, task 2 means point B,
+> >>>> and task 3 means point C, our expected result is A -> B -> C.
+> >>>> If the order is not kept, the result could become A -> C -> B.
+> >>>>
+> >>>
+> >>> Got it, thanks for the clarification.
+> >>>
+> >>
+> >> I think a way to get rid of the workqueue is to use a timer, which gets
+> >> programmed to the time a timeout in the first task in the busy list
+> >> would happen. Everytime we update the busy list (e.g. because of task
+> >> got finished by the thread), we update the timer. When the timer
+> >> triggers, which hopefully won't happen too often, we return timeout on
+> >> the busy list elements, until the time is lower then the actual time.
+> >>
+> >> At least with this we can reduce the data structures in this driver and
+> >> make it more lightweight.
+> >
+> >  From my understanding, your proposed method can handle timeout case.
+> >
+> > However, the workqueue is also in charge of releasing tasks.
+> > Do you take releasing tasks into consideration by using the proposed
+> > timer method?
+> > Furthermore, I think the code will become more complex if we also use
+> > timer to implement releasing tasks.
 > >
 > 
-> Yes.
-> 
-> >>
-> >>> +#define MT2701_PWM_BLS_DEBUG_MASK	0x3
-> >>> +
-> >>> +struct mtk_pwm_data {
-> >>> +	unsigned int enable_bit;
-> >>> +	unsigned int con0;
-> >>> +	unsigned int con0_sel;
-> >>> +	unsigned int con1;
-> >>> +	bool have_commit_reg;
-> >>> +};
-> >>> +
-> >>>    struct mtk_disp_pwm {
-> >>>    	struct pwm_chip chip;
-> >>>    	struct clk *clk_main;
-> >>>    	struct clk *clk_mm;
-> >>>    	void __iomem *base;
-> >>> +	const struct mtk_pwm_data *data;
-> >>
-> >> Couldn't that just be the offset for the commit register and set it to
-> >> 0x0 if the commit register is not present. Right now, we suppose the
-> >> DISP_PWM_EN is at offset 0x0, so this should not be a problem.
-> >>
-> >
-> > Do you mean that replace have_commit_reg with commit_reg_offset?
-> > just like this?
-> > bool have_commit_reg;
-> > ->
-> > unsigned int commit_reg_offset;
-> > and set commit_reg_offset 0x0 in mt2701, 0x1 in mt8173?
-> >
-> 
-> No, you can set comit_reg_offset to the value of DISP_PWM_COMMIT for 
-> mt8173 and 0x0 for mt2701. Then you can get rid of DISP_PWM_COMMIT.
+> Can't we call
+>          clk_disable_unprepare(cmdq->clock);
+>          cmdq_task_release(task);
+> after invoking the callback?
+
+Do you mean just call these two functions in ISR?
+My major concern is dma_free_coherent() and kfree() in
+cmdq_task_release(task).
+Therefore, your suggestion is to use GFP_ATOMIC for both
+dma_alloc_coherent() and kzalloc(). Right?
+If so, I can try to implement timeout by timer, and discuss with you
+if I have further questions.
+
+> Regrading the clock, wouldn't it be easier to handle the clock 
+> enable/disable depending on the state of task_busy_list? I suppose we 
+> can't as we would need to check the task_busy_list of all threads, right?
 > 
 > Regards,
 > Matthias
 
-ok, I got it, thanks.
-
-> 
-> >>>    };
-> >>>
-> >>>    static inline struct mtk_disp_pwm *to_mtk_disp_pwm(struct pwm_chip *chip)
-> >>> @@ -106,12 +117,18 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
-> >>>    		return err;
-> >>>    	}
-> >>>
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_CON_0, PWM_CLKDIV_MASK,
-> >>> +	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
-> >>> +				 PWM_CLKDIV_MASK,
-> >>>    				 clk_div << PWM_CLKDIV_SHIFT);
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_CON_1,
-> >>> -				 PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK, value);
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_COMMIT, PWM_COMMIT_MASK, 1);
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_COMMIT, PWM_COMMIT_MASK, 0);
-> >>> +	mtk_disp_pwm_update_bits(mdp, mdp->data->con1,
-> >>> +				 PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK,
-> >>> +				 value);
-> >>> +	if (mdp->data->have_commit_reg) {
-> >>> +		mtk_disp_pwm_update_bits(mdp, DISP_PWM_COMMIT,
-> >>> +					 PWM_COMMIT_MASK, 0x1);
-> >>> +		mtk_disp_pwm_update_bits(mdp, DISP_PWM_COMMIT,
-> >>> +					 PWM_COMMIT_MASK, 0x0);
-> >>
-> >> should be renamed to MT8173_PWM_COMMIT_MASK, although I'm not really a
-> >> friend of mixing up SoC specific defines with a Soc specific
-> >> mtk_disp_pwm structure.
-> >>
-> >> Regards,
-> >> Matthias
-> >
-> > ok, I will modify it as you said. thanks for you suggestion.
-> >
-> >>
-> >>> +	}
-> >>>
-> >>>    	clk_disable(mdp->clk_mm);
-> >>>    	clk_disable(mdp->clk_main);
-> >>> @@ -134,7 +151,9 @@ static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-> >>>    		return err;
-> >>>    	}
-> >>>
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, PWM_ENABLE_MASK, 1);
-> >>> +	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN,
-> >>> +				 mdp->data->enable_bit,
-> >>> +				 mdp->data->enable_bit);
-> >>>
-> >>>    	return 0;
-> >>>    }
-> >>> @@ -143,7 +162,8 @@ static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-> >>>    {
-> >>>    	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
-> >>>
-> >>> -	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, PWM_ENABLE_MASK, 0);
-> >>> +	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN,
-> >>> +				 mdp->data->enable_bit, 0x0);
-> >>>
-> >>>    	clk_disable(mdp->clk_mm);
-> >>>    	clk_disable(mdp->clk_main);
-> >>> @@ -156,12 +176,41 @@ static const struct pwm_ops mtk_disp_pwm_ops = {
-> >>>    	.owner = THIS_MODULE,
-> >>>    };
-> >>>
-> >>> +static const struct mtk_pwm_data mt8173_pwm_data = {
-> >>> +	.enable_bit = BIT(0),
-> >>> +	.con0 = 0x10,
-> >>> +	.con0_sel = 0x0,
-> >>> +	.con1 = 0x14,
-> >>> +	.have_commit_reg = true,
-> >>> +};
-> >>> +
-> >>> +static const struct mtk_pwm_data mt2701_pwm_data = {
-> >>> +	.enable_bit = BIT(16),
-> >>> +	.con0 = 0xa8,
-> >>> +	.con0_sel = 0x2,
-> >>> +	.con1 = 0xac,
-> >>> +	.have_commit_reg = false,
-> >>> +};
-> >>> +
-> >>> +static const struct of_device_id mtk_disp_pwm_of_match[] = {
-> >>> +	{ .compatible = "mediatek,mt2701-disp-bls", .data = &mt2701_pwm_data},
-> >>> +	{ .compatible = "mediatek,mt6595-disp-pwm", .data = &mt8173_pwm_data},
-> >>> +	{ .compatible = "mediatek,mt8173-disp-pwm", .data = &mt8173_pwm_data},
-> >>> +	{ }
-> >>> +};
-> >>> +MODULE_DEVICE_TABLE(of, mtk_disp_pwm_of_match);
-> >>> +
-> >>>    static int mtk_disp_pwm_probe(struct platform_device *pdev)
-> >>>    {
-> >>> +	const struct of_device_id *id;
-> >>>    	struct mtk_disp_pwm *mdp;
-> >>>    	struct resource *r;
-> >>>    	int ret;
-> >>>
-> >>> +	id = of_match_device(mtk_disp_pwm_of_match, &pdev->dev);
-> >>> +	if (!id)
-> >>> +		return -EINVAL;
-> >>> +
-> >>>    	mdp = devm_kzalloc(&pdev->dev, sizeof(*mdp), GFP_KERNEL);
-> >>>    	if (!mdp)
-> >>>    		return -ENOMEM;
-> >>> @@ -191,6 +240,7 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
-> >>>    	mdp->chip.ops = &mtk_disp_pwm_ops;
-> >>>    	mdp->chip.base = -1;
-> >>>    	mdp->chip.npwm = 1;
-> >>> +	mdp->data = id->data;
-> >>>
-> >>>    	ret = pwmchip_add(&mdp->chip);
-> >>>    	if (ret < 0) {
-> >>> @@ -200,6 +250,18 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
-> >>>
-> >>>    	platform_set_drvdata(pdev, mdp);
-> >>>
-> >>> +	/*
-> >>> +	 * For MT2701, disable double buffer before writing register
-> >>> +	 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
-> >>> +	 */
-> >>> +	if (!mdp->data->have_commit_reg) {
-> >>> +		mtk_disp_pwm_update_bits(mdp, MT2701_PWM_BLS_DEBUG,
-> >>> +					 MT2701_PWM_BLS_DEBUG_MASK, 0x3);
-> >>> +		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
-> >>> +					 MT2701_PWM_MANUAL_SEL_MASK,
-> >>> +					 mdp->data->con0_sel);
-> >>> +	}
-> >>> +
-> >>>    	return 0;
-> >>>
-> >>>    disable_clk_mm:
-> >>> @@ -221,13 +283,6 @@ static int mtk_disp_pwm_remove(struct platform_device *pdev)
-> >>>    	return ret;
-> >>>    }
-> >>>
-> >>> -static const struct of_device_id mtk_disp_pwm_of_match[] = {
-> >>> -	{ .compatible = "mediatek,mt8173-disp-pwm" },
-> >>> -	{ .compatible = "mediatek,mt6595-disp-pwm" },
-> >>> -	{ }
-> >>> -};
-> >>> -MODULE_DEVICE_TABLE(of, mtk_disp_pwm_of_match);
-> >>> -
-> >>>    static struct platform_driver mtk_disp_pwm_driver = {
-> >>>    	.driver = {
-> >>>    		.name = "mediatek-disp-pwm",
-> >>>
-> >
-> >
+Thanks,
+HS
