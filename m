@@ -1,102 +1,169 @@
-From: Archit Taneja <architt@codeaurora.org>
-Subject: Re: [PATCH v2 08/20] drm: msm: Rely on the default
- ->best_encoder() behavior where appropriate
-Date: Wed, 8 Jun 2016 15:39:03 +0530
-Message-ID: <5757EEBF.1010501@codeaurora.org>
-References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465300095-16971-9-git-send-email-boris.brezillon@free-electrons.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Wed, 8 Jun 2016 12:45:54 +0200
+Message-ID: <5757F762.4020908@gmail.com>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+ <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+ <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
+ <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
+ <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
+ <57516774.5080008@gmail.com> <1464956037.16029.8.camel@mtksdaap41>
+ <575181E5.6090603@gmail.com> <5756FD73.3050607@gmail.com>
+ <1465364427.9963.13.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <1465300095-16971-9-git-send-email-boris.brezillon@free-electrons.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Boris Brezillon <boris.brezillon@free-electrons.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel.vetter@intel.com>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Heiko Stuebner <heiko@sntech.de>, Stefan Agner <stefan@agner.ch>, virtualization@lists.linux-foundation.org, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Alexandre Courbot <gnurou@gmail.com>, linux-samsung-soc@vger.kernel.org, Joonyoung Shim <jy0922.shim@samsung.com>, Alexey Brodkin <abrodkin@synopsys.com>, Kyungmin Park <kyungmin.park@samsung.com>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>, linux-tegra@vger.kernel.org, Stephen Warren <swarren@wwwdotorg.org>, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Inki Dae <inki.dae@samsung.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1465364427.9963.13.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jaswinder.singh-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksCgpPbiAwNi8wNy8yMDE2IDA1OjE4IFBNLCBCb3JpcyBCcmV6aWxsb24gd3JvdGU6Cj4gRm9y
-IGFsbCBvdXRwdXRzIGV4Y2VwdCBEU0kgd2UgaGF2ZSBhIDE6MSByZWxhdGlvbnNoaXAgYmV0d2Vl
-biBjb25uZWN0b3JzCj4gYW5kIGVuY29kZXJzIGFuZCB0aGUgZHJpdmVyIGlzIHJlbHlpbmcgb24g
-dGhlIGF0b21pYyBoZWxwZXJzOiB3ZSBjYW4KPiBkcm9wIHRoZSBjdXN0b20gLT5iZXN0X2VuY29k
-ZXIoKSBhbmQgbGV0IHRoZSBjb3JlIGNhbGwKPiBkcm1fYXRvbWljX2hlbHBlcl9iZXN0X2VuY29k
-ZXIoKSBmb3IgdXMuCgpXb3JrcyBmaW5lIHdpdGggbXNtLgoKVGVzdGVkLWJ5OiBBcmNoaXQgVGFu
-ZWphIDxhcmNoaXR0QGNvZGVhdXJvcmEub3JnPgoKVGhhbmtzLApBcmNoaXQKCj4KPiBTaWduZWQt
-b2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBmcmVlLWVsZWN0cm9ucy5j
-b20+Cj4gLS0tCj4gICBkcml2ZXJzL2dwdS9kcm0vbXNtL2VkcC9lZHBfY29ubmVjdG9yLmMgICAg
-ICAgICAgICB8IDEwIC0tLS0tLS0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9tc20vaGRtaS9oZG1p
-X2Nvbm5lY3Rvci5jICAgICAgICAgIHwgIDggLS0tLS0tLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9t
-c20vbWRwL21kcDQvbWRwNF9sdmRzX2Nvbm5lY3Rvci5jIHwgIDkgLS0tLS0tLS0tCj4gICAzIGZp
-bGVzIGNoYW5nZWQsIDI3IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tc20vZWRwL2VkcF9jb25uZWN0b3IuYyBiL2RyaXZlcnMvZ3B1L2RybS9tc20vZWRwL2Vk
-cF9jb25uZWN0b3IuYwo+IGluZGV4IDcyMzYwY2QuLjU5NjA2MjggMTAwNjQ0Cj4gLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL21zbS9lZHAvZWRwX2Nvbm5lY3Rvci5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21zbS9lZHAvZWRwX2Nvbm5lY3Rvci5jCj4gQEAgLTkxLDE1ICs5MSw2IEBAIHN0YXRpYyBp
-bnQgZWRwX2Nvbm5lY3Rvcl9tb2RlX3ZhbGlkKHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0
-b3IsCj4gICAJcmV0dXJuIE1PREVfT0s7Cj4gICB9Cj4KPiAtc3RhdGljIHN0cnVjdCBkcm1fZW5j
-b2RlciAqCj4gLWVkcF9jb25uZWN0b3JfYmVzdF9lbmNvZGVyKHN0cnVjdCBkcm1fY29ubmVjdG9y
-ICpjb25uZWN0b3IpCj4gLXsKPiAtCXN0cnVjdCBlZHBfY29ubmVjdG9yICplZHBfY29ubmVjdG9y
-ID0gdG9fZWRwX2Nvbm5lY3Rvcihjb25uZWN0b3IpOwo+IC0KPiAtCURCRygiIik7Cj4gLQlyZXR1
-cm4gZWRwX2Nvbm5lY3Rvci0+ZWRwLT5lbmNvZGVyOwo+IC19Cj4gLQo+ICAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1bmNzIGVkcF9jb25uZWN0b3JfZnVuY3MgPSB7Cj4gICAJ
-LmRwbXMgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfZHBtcywKPiAgIAkuZGV0ZWN0ID0g
-ZWRwX2Nvbm5lY3Rvcl9kZXRlY3QsCj4gQEAgLTExMyw3ICsxMDQsNiBAQCBzdGF0aWMgY29uc3Qg
-c3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgZWRwX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiAgIHN0
-YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgZWRwX2Nvbm5lY3Rv
-cl9oZWxwZXJfZnVuY3MgPSB7Cj4gICAJLmdldF9tb2RlcyA9IGVkcF9jb25uZWN0b3JfZ2V0X21v
-ZGVzLAo+ICAgCS5tb2RlX3ZhbGlkID0gZWRwX2Nvbm5lY3Rvcl9tb2RlX3ZhbGlkLAo+IC0JLmJl
-c3RfZW5jb2RlciA9IGVkcF9jb25uZWN0b3JfYmVzdF9lbmNvZGVyLAo+ICAgfTsKPgo+ICAgLyog
-aW5pdGlhbGl6ZSBjb25uZWN0b3IgKi8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21z
-bS9oZG1pL2hkbWlfY29ubmVjdG9yLmMgYi9kcml2ZXJzL2dwdS9kcm0vbXNtL2hkbWkvaGRtaV9j
-b25uZWN0b3IuYwo+IGluZGV4IGIxNWQ3MjYuLmEyNTE1YjQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL21zbS9oZG1pL2hkbWlfY29ubmVjdG9yLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vbXNtL2hkbWkvaGRtaV9jb25uZWN0b3IuYwo+IEBAIC00MDYsMTMgKzQwNiw2IEBAIHN0YXRp
-YyBpbnQgbXNtX2hkbWlfY29ubmVjdG9yX21vZGVfdmFsaWQoc3RydWN0IGRybV9jb25uZWN0b3Ig
-KmNvbm5lY3RvciwKPiAgIAlyZXR1cm4gMDsKPiAgIH0KPgo+IC1zdGF0aWMgc3RydWN0IGRybV9l
-bmNvZGVyICoKPiAtbXNtX2hkbWlfY29ubmVjdG9yX2Jlc3RfZW5jb2RlcihzdHJ1Y3QgZHJtX2Nv
-bm5lY3RvciAqY29ubmVjdG9yKQo+IC17Cj4gLQlzdHJ1Y3QgaGRtaV9jb25uZWN0b3IgKmhkbWlf
-Y29ubmVjdG9yID0gdG9faGRtaV9jb25uZWN0b3IoY29ubmVjdG9yKTsKPiAtCXJldHVybiBoZG1p
-X2Nvbm5lY3Rvci0+aGRtaS0+ZW5jb2RlcjsKPiAtfQo+IC0KPiAgIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgZHJtX2Nvbm5lY3Rvcl9mdW5jcyBoZG1pX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiAgIAkuZHBt
-cyA9IGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kcG1zLAo+ICAgCS5kZXRlY3QgPSBoZG1p
-X2Nvbm5lY3Rvcl9kZXRlY3QsCj4gQEAgLTQyNiw3ICs0MTksNiBAQCBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IGRybV9jb25uZWN0b3JfZnVuY3MgaGRtaV9jb25uZWN0b3JfZnVuY3MgPSB7Cj4gICBzdGF0
-aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfaGVscGVyX2Z1bmNzIG1zbV9oZG1pX2Nvbm5l
-Y3Rvcl9oZWxwZXJfZnVuY3MgPSB7Cj4gICAJLmdldF9tb2RlcyA9IG1zbV9oZG1pX2Nvbm5lY3Rv
-cl9nZXRfbW9kZXMsCj4gICAJLm1vZGVfdmFsaWQgPSBtc21faGRtaV9jb25uZWN0b3JfbW9kZV92
-YWxpZCwKPiAtCS5iZXN0X2VuY29kZXIgPSBtc21faGRtaV9jb25uZWN0b3JfYmVzdF9lbmNvZGVy
-LAo+ICAgfTsKPgo+ICAgLyogaW5pdGlhbGl6ZSBjb25uZWN0b3IgKi8KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL21zbS9tZHAvbWRwNC9tZHA0X2x2ZHNfY29ubmVjdG9yLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vbXNtL21kcC9tZHA0L21kcDRfbHZkc19jb25uZWN0b3IuYwo+IGluZGV4IDI2
-NDhjZDcuLjM1MzQyOWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21zbS9tZHAvbWRw
-NC9tZHA0X2x2ZHNfY29ubmVjdG9yLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbXNtL21kcC9t
-ZHA0L21kcDRfbHZkc19jb25uZWN0b3IuYwo+IEBAIC05MCwxNCArOTAsNiBAQCBzdGF0aWMgaW50
-IG1kcDRfbHZkc19jb25uZWN0b3JfbW9kZV92YWxpZChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29u
-bmVjdG9yLAo+ICAgCXJldHVybiBNT0RFX09LOwo+ICAgfQo+Cj4gLXN0YXRpYyBzdHJ1Y3QgZHJt
-X2VuY29kZXIgKgo+IC1tZHA0X2x2ZHNfY29ubmVjdG9yX2Jlc3RfZW5jb2RlcihzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubmVjdG9yKQo+IC17Cj4gLQlzdHJ1Y3QgbWRwNF9sdmRzX2Nvbm5lY3Rv
-ciAqbWRwNF9sdmRzX2Nvbm5lY3RvciA9Cj4gLQkJCXRvX21kcDRfbHZkc19jb25uZWN0b3IoY29u
-bmVjdG9yKTsKPiAtCXJldHVybiBtZHA0X2x2ZHNfY29ubmVjdG9yLT5lbmNvZGVyOwo+IC19Cj4g
-LQo+ICAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1bmNzIG1kcDRfbHZkc19j
-b25uZWN0b3JfZnVuY3MgPSB7Cj4gICAJLmRwbXMgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0
-b3JfZHBtcywKPiAgIAkuZGV0ZWN0ID0gbWRwNF9sdmRzX2Nvbm5lY3Rvcl9kZXRlY3QsCj4gQEAg
-LTExMSw3ICsxMDMsNiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3Mg
-bWRwNF9sdmRzX2Nvbm5lY3Rvcl9mdW5jcyA9IHsKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJt
-X2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3MgbWRwNF9sdmRzX2Nvbm5lY3Rvcl9oZWxwZXJfZnVuY3Mg
-PSB7Cj4gICAJLmdldF9tb2RlcyA9IG1kcDRfbHZkc19jb25uZWN0b3JfZ2V0X21vZGVzLAo+ICAg
-CS5tb2RlX3ZhbGlkID0gbWRwNF9sdmRzX2Nvbm5lY3Rvcl9tb2RlX3ZhbGlkLAo+IC0JLmJlc3Rf
-ZW5jb2RlciA9IG1kcDRfbHZkc19jb25uZWN0b3JfYmVzdF9lbmNvZGVyLAo+ICAgfTsKPgo+ICAg
-LyogaW5pdGlhbGl6ZSBjb25uZWN0b3IgKi8KPgoKLS0gClRoZSBRdWFsY29tbSBJbm5vdmF0aW9u
-IENlbnRlciwgSW5jLiBpcyBhIG1lbWJlciBvZiB0aGUgQ29kZSBBdXJvcmEgCkZvcnVtLCBob3N0
-ZWQgYnkgVGhlIExpbnV4IEZvdW5kYXRpb24KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KSW50ZWwtZ2Z4IG1haWxpbmcgbGlzdApJbnRlbC1nZnhAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vaW50ZWwtZ2Z4Cg==
+
+
+On 08/06/16 07:40, Horng-Shyang Liao wrote:
+> Hi Matthias,
+>
+> On Tue, 2016-06-07 at 18:59 +0200, Matthias Brugger wrote:
+>>
+>> On 03/06/16 15:11, Matthias Brugger wrote:
+>>>
+>>>
+>> [...]
+>>
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +            smp_mb(); /* modify jump before enable thread */
+>>>>>>>>>>>> +        }
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +        cmdq_thread_writel(thread, task->pa_base +
+>>>>>>>>>>>> task->command_size,
+>>>>>>>>>>>> +                   CMDQ_THR_END_ADDR);
+>>>>>>>>>>>> +        cmdq_thread_resume(thread);
+>>>>>>>>>>>> +    }
+>>>>>>>>>>>> +    list_move_tail(&task->list_entry, &thread->task_busy_list);
+>>>>>>>>>>>> +    spin_unlock_irqrestore(&cmdq->exec_lock, flags);
+>>>>>>>>>>>> +}
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +static void cmdq_handle_error_done(struct cmdq *cmdq,
+>>>>>>>>>>>> +                   struct cmdq_thread *thread, u32 irq_flag)
+>>>>>>>>>>>> +{
+>>>>>>>>>>>> +    struct cmdq_task *task, *tmp, *curr_task = NULL;
+>>>>>>>>>>>> +    u32 curr_pa;
+>>>>>>>>>>>> +    struct cmdq_cb_data cmdq_cb_data;
+>>>>>>>>>>>> +    bool err;
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +    if (irq_flag & CMDQ_THR_IRQ_ERROR)
+>>>>>>>>>>>> +        err = true;
+>>>>>>>>>>>> +    else if (irq_flag & CMDQ_THR_IRQ_DONE)
+>>>>>>>>>>>> +        err = false;
+>>>>>>>>>>>> +    else
+>>>>>>>>>>>> +        return;
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +    curr_pa = cmdq_thread_readl(thread, CMDQ_THR_CURR_ADDR);
+>>>>>>>>>>>> +
+>>>>>>>>>>>> +    list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+>>>>>>>>>>>> +                 list_entry) {
+>>>>>>>>>>>> +        if (curr_pa >= task->pa_base &&
+>>>>>>>>>>>> +            curr_pa < (task->pa_base + task->command_size))
+>>>>>>>>>>>
+>>>>>>>>>>> What are you checking here? It seems as if you make some implcit
+>>>>>>>>>>> assumptions about pa_base and the order of execution of
+>>>>>>>>>>> commands in the
+>>>>>>>>>>> thread. Is it save to do so? Does dma_alloc_coherent give any
+>>>>>>>>>>> guarantees
+>>>>>>>>>>> about dma_handle?
+>>>>>>>>>>
+>>>>>>>>>> 1. Check what is the current running task in this GCE thread.
+>>>>>>>>>> 2. Yes.
+>>>>>>>>>> 3. Yes, CMDQ doesn't use iommu, so physical address is continuous.
+>>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>> Yes, physical addresses might be continous, but AFAIK there is no
+>>>>>>>>> guarantee that the dma_handle address is steadily growing, when
+>>>>>>>>> calling
+>>>>>>>>> dma_alloc_coherent. And if I understand the code correctly, you
+>>>>>>>>> use this
+>>>>>>>>> assumption to decide if the task picked from task_busy_list is
+>>>>>>>>> currently
+>>>>>>>>> executing. So I think this mecanism is not working.
+>>>>>>>>
+>>>>>>>> I don't use dma_handle address, and just use physical addresses.
+>>>>>>>>     From CPU's point of view, tasks are linked by the busy list.
+>>>>>>>>     From GCE's point of view, tasks are linked by the JUMP command.
+>>>>>>>>
+>>>>>>>>> In which cases does the HW thread raise an interrupt.
+>>>>>>>>> In case of error. When does CMDQ_THR_IRQ_DONE get raised?
+>>>>>>>>
+>>>>>>>> GCE will raise interrupt if any task is done or error.
+>>>>>>>> However, GCE is fast, so CPU may get multiple done tasks
+>>>>>>>> when it is running ISR.
+>>>>>>>>
+>>>>>>>> In case of error, that GCE thread will pause and raise interrupt.
+>>>>>>>> So, CPU may get multiple done tasks and one error task.
+>>>>>>>>
+>>>>>>>
+>>>>>>> I think we should reimplement the ISR mechanism. Can't we just read
+>>>>>>> CURR_IRQ_STATUS and THR_IRQ_STATUS in the handler and leave
+>>>>>>> cmdq_handle_error_done to the thread_fn? You will need to pass
+>>>>>>> information from the handler to thread_fn, but that shouldn't be an
+>>>>>>> issue. AFAIK interrupts are disabled in the handler, so we should stay
+>>>>>>> there as short as possible. Traversing task_busy_list is expensive, so
+>>>>>>> we need to do it in a thread context.
+>>>>>>
+>>>>>> Actually, our initial implementation is similar to your suggestion,
+>>>>>> but display needs CMDQ to return callback function very precisely,
+>>>>>> else display will drop frame.
+>>>>>> For display, CMDQ interrupt will be raised every 16 ~ 17 ms,
+>>>>>> and CMDQ needs to call callback function in ISR.
+>>>>>> If we defer callback to workqueue, the time interval may be larger than
+>>>>>> 32 ms.sometimes.
+>>>>>>
+>>>>>
+>>>>> I think the problem is, that you implemented the workqueue as a ordered
+>>>>> workqueue, so there is no parallel processing. I'm still not sure why
+>>>>> you need the workqueue to be ordered. Can you please explain.
+>>>>
+>>>> The order should be kept.
+>>>> Let me use mouse cursor as an example.
+>>>> If task 1 means move mouse cursor to point A, task 2 means point B,
+>>>> and task 3 means point C, our expected result is A -> B -> C.
+>>>> If the order is not kept, the result could become A -> C -> B.
+>>>>
+>>>
+>>> Got it, thanks for the clarification.
+>>>
+>>
+>> I think a way to get rid of the workqueue is to use a timer, which gets
+>> programmed to the time a timeout in the first task in the busy list
+>> would happen. Everytime we update the busy list (e.g. because of task
+>> got finished by the thread), we update the timer. When the timer
+>> triggers, which hopefully won't happen too often, we return timeout on
+>> the busy list elements, until the time is lower then the actual time.
+>>
+>> At least with this we can reduce the data structures in this driver and
+>> make it more lightweight.
+>
+>  From my understanding, your proposed method can handle timeout case.
+>
+> However, the workqueue is also in charge of releasing tasks.
+> Do you take releasing tasks into consideration by using the proposed
+> timer method?
+> Furthermore, I think the code will become more complex if we also use
+> timer to implement releasing tasks.
+>
+
+Can't we call
+         clk_disable_unprepare(cmdq->clock);
+         cmdq_task_release(task);
+after invoking the callback?
+Regrading the clock, wouldn't it be easier to handle the clock 
+enable/disable depending on the state of task_busy_list? I suppose we 
+can't as we would need to check the task_busy_list of all threads, right?
+
+Regards,
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
