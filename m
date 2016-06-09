@@ -1,99 +1,55 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: [RFC v3 5/5] arm: dts: mt2701: Add display subsystem related nodes
- for MT2701
-Date: Thu, 9 Jun 2016 00:03:45 +0800
-Message-ID: <1465401825-43642-6-git-send-email-yt.shen@mediatek.com>
-References: <1465401825-43642-1-git-send-email-yt.shen@mediatek.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [alsa-devel] [PATCH v2 6/9] ASoC: mediatek: add mt2701 platform
+ driver implementation.
+Date: Thu, 9 Jun 2016 11:44:24 +0100
+Message-ID: <20160609104424.GU7510@sirena.org.uk>
+References: <1464929784-5489-1-git-send-email-garlic.tseng@mediatek.com>
+ <1464929784-5489-7-git-send-email-garlic.tseng@mediatek.com>
+ <20160607163112.GD7510@sirena.org.uk>
+ <1465356742.18601.7.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465401825-43642-1-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="/TDNEY6SkuiyIcFh"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1465356742.18601.7.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Garlic Tseng <garlic.tseng@mediatek.com>
+Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VGhpcyBwYXRjaCBhZGRzIHRoZSBkZXZpY2Ugbm9kZXMgZm9yIHRoZSBESVNQIGZ1bmN0aW9uIGJs
-b2NrcyBmb3IgTVQyNzAxCgpTaWduZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVuQG1lZGlhdGVr
-LmNvbT4KLS0tCiBhcmNoL2FybS9ib290L2R0cy9tdDI3MDEuZHRzaSB8ICAxMDYgKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCAxMDYgaW5z
-ZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2Jvb3QvZHRzL210MjcwMS5kdHNpIGIv
-YXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAxLmR0c2kKaW5kZXggMzYzZGUwZC4uYjkwNTRhOCAxMDA2
-NDQKLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvbXQyNzAxLmR0c2kKKysrIGIvYXJjaC9hcm0vYm9v
-dC9kdHMvbXQyNzAxLmR0c2kKQEAgLTI0LDYgKzI0LDExIEBACiAJY29tcGF0aWJsZSA9ICJtZWRp
-YXRlayxtdDI3MDEiOwogCWludGVycnVwdC1wYXJlbnQgPSA8JnN5c2lycT47CiAKKwlhbGlhc2Vz
-IHsKKwkJcmRtYTAgPSAmcmRtYTA7CisJCXJkbWExID0gJnJkbWExOworCX07CisKIAljcHVzIHsK
-IAkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CiAJCSNzaXplLWNlbGxzID0gPDA+OwpAQCAtMTcxLDYg
-KzE3NiwxNiBAQAogCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQyNzAxX1BPV0VSX0RPTUFJ
-Tl9ESVNQPjsKIAl9OwogCisJbWlwaV90eDA6IG1pcGktZHBoeUAxMDAxMDAwMCB7CisJCWNvbXBh
-dGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLW1pcGktdHgiOworCQlyZWcgPSA8MCAweDEwMDEwMDAw
-IDAgMHg5MD47CisJCWNsb2NrcyA9IDwmY2xrMjZtPjsKKwkJY2xvY2stb3V0cHV0LW5hbWVzID0g
-Im1pcGlfdHgwX3BsbCI7CisJCSNjbG9jay1jZWxscyA9IDwwPjsKKwkJI3BoeS1jZWxscyA9IDww
-PjsKKwkJc3RhdHVzID0gImRpc2FibGVkIjsKKwl9OworCiAJc3lzaXJxOiBpbnRlcnJ1cHQtY29u
-dHJvbGxlckAxMDIwMDEwMCB7CiAJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLXN5c2ly
-cSIsCiAJCQkgICAgICJtZWRpYXRlayxtdDY1Nzctc3lzaXJxIjsKQEAgLTI1NSw2ICsyNzAsNjgg
-QEAKIAkJc3RhdHVzID0gImRpc2FibGVkIjsKIAl9OwogCisJb3ZsQDE0MDA3MDAwIHsKKwkJY29t
-cGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1vdmwiOworCQlyZWcgPSA8MCAweDE0MDA3
-MDAwIDAgMHgxMDAwPjsKKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE1MyBJUlFfVFlQRV9MRVZF
-TF9MT1c+OworCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX09WTD47CisJCWlvbW11cyA9
-IDwmaW9tbXUgTVQyNzAxX000VV9QT1JUX0RJU1BfT1ZMXzA+OworCQltZWRpYXRlayxsYXJiID0g
-PCZsYXJiMD47CisJfTsKKworCXJkbWEwOiByZG1hQDE0MDA4MDAwIHsKKwkJY29tcGF0aWJsZSA9
-ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1yZG1hIjsKKwkJcmVnID0gPDAgMHgxNDAwODAwMCAwIDB4
-MTAwMD47CisJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNTIgSVJRX1RZUEVfTEVWRUxfTE9XPjsK
-KwkJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9SRE1BPjsKKwkJaW9tbXVzID0gPCZpb21t
-dSBNVDI3MDFfTTRVX1BPUlRfRElTUF9SRE1BPjsKKwkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+
-OworCX07CisKKwl3ZG1hQDE0MDA5MDAwIHsKKwkJY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3
-MDEtZGlzcC13ZG1hIjsKKwkJcmVnID0gPDAgMHgxNDAwOTAwMCAwIDB4MTAwMD47CisJCWludGVy
-cnVwdHMgPSA8R0lDX1NQSSAxNTQgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tzID0gPCZt
-bXN5cyBDTEtfTU1fRElTUF9XRE1BPjsKKwkJaW9tbXVzID0gPCZpb21tdSBNVDI3MDFfTTRVX1BP
-UlRfRElTUF9XRE1BPjsKKwkJbWVkaWF0ZWssbGFyYiA9IDwmbGFyYjA+OworCX07CisKKwlibHNA
-MTQwMGEwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kaXNwLWJscyI7CisJ
-CXJlZyA9IDwwIDB4MTQwMGEwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkg
-MTU1IElSUV9UWVBFX0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1Bf
-QkxTPjsKKwl9OworCisJY29sb3JAMTQwMGIwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10MjcwMS1kaXNwLWNvbG9yIjsKKwkJcmVnID0gPDAgMHgxNDAwYjAwMCAwIDB4MTAwMD47CisJ
-CWludGVycnVwdHMgPSA8R0lDX1NQSSAxNTYgSVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tz
-ID0gPCZtbXN5cyBDTEtfTU1fRElTUF9DT0xPUj47CisJfTsKKworCWRzaTA6IGRzaUAxNDAwYzAw
-MCB7CisJCWNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRzaSI7CisJCXJlZyA9IDwwIDB4
-MTQwMGMwMDAgMCAweDEwMDA+OworCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTU3IElSUV9UWVBF
-X0xFVkVMX0xPVz47CisJCWNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RTSV9FTkdJTkU+LCA8Jm1t
-c3lzIENMS19NTV9EU0lfRElHPiwKKwkJCSA8Jm1pcGlfdHgwPjsKKwkJY2xvY2stbmFtZXMgPSAi
-ZW5naW5lIiwgImRpZ2l0YWwiLCAiaHMiOworCQlwaHlzID0gPCZtaXBpX3R4MD47CisJCXBoeS1u
-YW1lcyA9ICJkcGh5IjsKKwkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CisJCSNzaXplLWNlbGxzID0g
-PDA+OworCQlzdGF0dXMgPSAiZGlzYWJsZWQiOworCX07CisKKwltdXRleDogbXV0ZXhAMTQwMGUw
-MDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kaXNwLW11dGV4IjsKKwkJcmVn
-ID0gPDAgMHgxNDAwZTAwMCAwIDB4MTAwMD47CisJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNjEg
-SVJRX1RZUEVfTEVWRUxfTE9XPjsKKwkJY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fTVVURVhfMzJL
-PjsKKwl9OworCiAJbGFyYjA6IGxhcmJAMTQwMTAwMDAgewogCQljb21wYXRpYmxlID0gIm1lZGlh
-dGVrLG10MjcwMS1zbWktbGFyYiI7CiAJCXJlZyA9IDwwIDB4MTQwMTAwMDAgMCAweDEwMDA+OwpA
-QCAtMjY1LDYgKzM0MiwzNSBAQAogCQlwb3dlci1kb21haW5zID0gPCZzY3BzeXMgTVQyNzAxX1BP
-V0VSX0RPTUFJTl9ESVNQPjsKIAl9OwogCisJcmRtYTE6IHJkbWFAMTQwMTIwMDAgeworCQljb21w
-YXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kaXNwLXJkbWEiOworCQlyZWcgPSA8MCAweDE0MDEy
-MDAwIDAgMHgxMDAwPjsKKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE2NCBJUlFfVFlQRV9MRVZF
-TF9MT1c+OworCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1JETUExPjsKKwkJaW9tbXVz
-ID0gPCZpb21tdSBNVDI3MDFfTTRVX1BPUlRfRElTUF9SRE1BMT47CisJCW1lZGlhdGVrLGxhcmIg
-PSA8JmxhcmIwPjsKKwl9OworCisJdWZvZUAxNDAxMzAwMCB7CisJCWNvbXBhdGlibGUgPSAibWVk
-aWF0ZWssbXQyNzAxLWRpc3AtdWZvZSI7CisJCXJlZyA9IDwwIDB4MTQwMTMwMDAgMCAweDEwMDA+
-OworCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1VGT0U+OworCX07CisKKwlkcGkwOiBk
-cGlAMTQwMTQwMDAgeworCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kcGkiOworCQly
-ZWcgPSA8MCAweDE0MDE0MDAwIDAgMHgxMDAwPjsKKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE5
-NCBJUlFfVFlQRV9MRVZFTF9MT1c+OworCQljbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9EUEkxX0RJ
-R0w+LAorCQkJIDwmbW1zeXMgQ0xLX01NX0RQSTFfRU5HSU5FPiwKKwkJCSA8JnRvcGNrZ2VuIENM
-S19UT1BfRFBJMV9TRUw+LAorCQkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9UVkRQTEw+LAorCQkJIDwm
-dG9wY2tnZW4gQ0xLX1RPUF9UVkRQTExfRDI+LAorCQkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9UVkRQ
-TExfRDQ+OworCQljbG9jay1uYW1lcyA9ICJwaXhlbCIsICJlbmdpbmUiLCAic2VsIiwiZGl2MSIs
-ImRpdjIiLCJkaXY0IjsKKwkJc3RhdHVzID0gImRpc2FibGVkIjsKKwl9OworCiAJaW1nc3lzOiBz
-eXNjb25AMTUwMDAwMDAgewogCQljb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1pbWdzeXMi
-LCAic3lzY29uIjsKIAkJcmVnID0gPDAgMHgxNTAwMDAwMCAwIDB4MTAwMD47Ci0tIAoxLjcuOS41
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2
-ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9s
-aXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+--/TDNEY6SkuiyIcFh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Wed, Jun 08, 2016 at 11:32:22AM +0800, Garlic Tseng wrote:
+> On Tue, 2016-06-07 at 17:31 +0100, Mark Brown wrote:
+
+> > > +	SOC_DAPM_SINGLE_AUTODISABLE("Multi ch asrc out3", PWR2_TOP_CON, 7, 1,
+> > > +				    1),
+> > > +};
+
+> > On/off controls should end in Switch.
+
+> Do you means that the name should end in Switch? Something like "Multi
+> ch asrc out3 Switch" (or maybe a shorter one)
+
+Yes, exactly.
+
+--/TDNEY6SkuiyIcFh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAEBCAAGBQJXWUiIAAoJECTWi3JdVIfQB9UH/0Ej7CAci3v4+aqhdCItJnpf
+eorPDVX2csDcxEUIlpXGnxH/MQn0YfloED4aFcmrNlzKdudUuZ0EnmXxEK/b6NR4
+WhLwXp9JbnInDbZDoXkqv9iIB5Xr1I1mpmIREBpMAsNMR2Be6s6PHV2OPId4aMSZ
+j0dpwRrLryH+x0xWEuYzsdYL0ChfjdqkYxeriD0Tva5CJUra64PlxYAOA72x1Iby
+Q9B/Cor/QPrAQ+C0GEnluMATboxlDWjjsr58hGQlSdfRapRuv4Qdj0SOSxaki19t
+rC7KOUayivoLYV0XNO7MF3x6dhag6i7IF47VEYlgIUpE3LnzSqtWXieIHjVA1xI=
+=UR6z
+-----END PGP SIGNATURE-----
+
+--/TDNEY6SkuiyIcFh--
