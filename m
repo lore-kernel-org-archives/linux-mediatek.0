@@ -1,48 +1,38 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [PATCH v2 06/20] drm: i915: Rely on the default ->best_encoder()
- behavior where appropriate
-Date: Fri, 10 Jun 2016 18:41:52 +0200
-Message-ID: <20160610164152.GO3363__47916.7735008106$1465577926$gmane$org@phenom.ffwll.local>
-References: <1465300095-16971-1-git-send-email-boris.brezillon@free-electrons.com>
- <1465300095-16971-7-git-send-email-boris.brezillon@free-electrons.com>
- <20160610152412.GL3363@phenom.ffwll.local>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH V2 00/11] net: mediatek: various small fixes
+Date: Fri, 10 Jun 2016 10:46:04 -0700 (PDT)
+Message-ID: <20160610.104604.309213239246401664.davem@davemloft.net>
+References: <1465558088-15265-1-git-send-email-john@phrozen.org>
+	<ac8eae20-f8a5-6e06-43fd-c2826599b709@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20160610152412.GL3363-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Jani Nikula <jani.nikula-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Alexey Brodkin <abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Joonyoung Shim <jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Seung-Woo Kim <sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Alison Wang <alison.wang-KZfg59tc24xl57MIdRCFDg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mark Yao <mark.yao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko@snte>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <ac8eae20-f8a5-6e06-43fd-c2826599b709@phrozen.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: john@phrozen.org
+Cc: keyhaede@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, nbd@nbd.name
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 10, 2016 at 05:24:12PM +0200, Daniel Vetter wrote:
-> On Tue, Jun 07, 2016 at 01:48:01PM +0200, Boris Brezillon wrote:
-> > For all outputs except dp_mst, we have a 1:1 relationship between
-> > connectors and encoders and the driver is relying on the atomic helpers:
-> > we can drop the custom ->best_encoder() implementation and let the core
-> > call drm_atomic_helper_best_encoder() for us.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+From: John Crispin <john@phrozen.org>
+Date: Fri, 10 Jun 2016 13:30:15 +0200
+
 > 
-> You can also drop the best_encoder from intel_dp_mst, we only need the
-> atomic_best_encoder. The best_encoder there was needed to help out the
-> fbdev emulation. Care to respin?
+> 
+> On 10/06/2016 13:27, John Crispin wrote:
+>> This series contains various small fixes that we stumbled across while
+>> doing thorough testing and code level reviewing of the driver. The only
+>> patch that sticks out is the first one, which addresses a DQL related
+>> issue. The rest are just minor fixes.
+>> 
+> 
+> Hi David,
+> 
+> i forgot to remove the last sentence here. can you live with that as it
+> wont end up in the git history or do you want me to send a V3 with this
+> line removed.
 
-Boris pointed out on irc that this won't work for the fbdev stuff since
-that has a WARN_ON if theres more than 1 possible encoder. Applied this
-one here instead.
+What do you mean it won't end up in the GIT history?  I always put this
+introductory text into the merge commit for the patch series.
 
-Thanks, Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Now, I can remove it for you, which I will do.
