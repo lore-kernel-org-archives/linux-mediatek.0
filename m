@@ -1,74 +1,37 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: [PATCH v4 12/44] drm/mediatek: dma-mapping: Use unsigned long for
- dma_attrs
-Date: Fri, 10 Jun 2016 12:11:29 +0200
-Message-ID: <1465553521-27303-13-git-send-email-k.kozlowski@samsung.com>
-References: <1465553521-27303-1-git-send-email-k.kozlowski@samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-reply-to: <1465553521-27303-1-git-send-email-k.kozlowski@samsung.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Arnd Bergmann <arnd@arndb.de>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, hch@infradead.org, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH V2 08/11] net: mediatek: increase watchdog_timeo
+Date: Fri, 10 Jun 2016 13:28:05 +0200
+Message-ID: <1465558088-15265-9-git-send-email-john@phrozen.org>
+References: <1465558088-15265-1-git-send-email-john@phrozen.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465558088-15265-1-git-send-email-john@phrozen.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-U3BsaXQgb3V0IHN1YnN5c3RlbSBzcGVjaWZpYyBjaGFuZ2VzIGZvciBlYXNpZXIgcmV2aWV3cy4g
-VGhpcyB3aWxsIGJlCnNxdWFzaGVkIHdpdGggbWFpbiBjb21taXQuCgpTaWduZWQtb2ZmLWJ5OiBL
-cnp5c3p0b2YgS296bG93c2tpIDxrLmtvemxvd3NraUBzYW1zdW5nLmNvbT4KLS0tCiBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyB8IDEzICsrKysrKy0tLS0tLS0KIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oIHwgIDIgKy0KIDIgZmlsZXMgY2hhbmdl
-ZCwgNyBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZ2VtLmMKaW5kZXggZmEyZWMwY2QwMGU4Li43YWJjNTUwZWJjMDAgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCkBAIC01NCwxNSArNTQsMTQgQEAgc3RydWN0
-IG10a19kcm1fZ2VtX29iaiAqbXRrX2RybV9nZW1fY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpk
-ZXYsCiAKIAlvYmogPSAmbXRrX2dlbS0+YmFzZTsKIAotCWluaXRfZG1hX2F0dHJzKCZtdGtfZ2Vt
-LT5kbWFfYXR0cnMpOwotCWRtYV9zZXRfYXR0cihETUFfQVRUUl9XUklURV9DT01CSU5FLCAmbXRr
-X2dlbS0+ZG1hX2F0dHJzKTsKKwltdGtfZ2VtLT5kbWFfYXR0cnMgPSBETUFfQVRUUl9XUklURV9D
-T01CSU5FOwogCiAJaWYgKCFhbGxvY19rbWFwKQotCQlkbWFfc2V0X2F0dHIoRE1BX0FUVFJfTk9f
-S0VSTkVMX01BUFBJTkcsICZtdGtfZ2VtLT5kbWFfYXR0cnMpOworCQltdGtfZ2VtLT5kbWFfYXR0
-cnMgfD0gRE1BX0FUVFJfTk9fS0VSTkVMX01BUFBJTkc7CiAKIAltdGtfZ2VtLT5jb29raWUgPSBk
-bWFfYWxsb2NfYXR0cnMocHJpdi0+ZG1hX2Rldiwgb2JqLT5zaXplLAogCQkJCQkgICZtdGtfZ2Vt
-LT5kbWFfYWRkciwgR0ZQX0tFUk5FTCwKLQkJCQkJICAmbXRrX2dlbS0+ZG1hX2F0dHJzKTsKKwkJ
-CQkJICBtdGtfZ2VtLT5kbWFfYXR0cnMpOwogCWlmICghbXRrX2dlbS0+Y29va2llKSB7CiAJCURS
-TV9FUlJPUigiZmFpbGVkIHRvIGFsbG9jYXRlICV6eCBieXRlIGRtYSBidWZmZXIiLCBvYmotPnNp
-emUpOwogCQlyZXQgPSAtRU5PTUVNOwpAQCAtOTMsNyArOTIsNyBAQCB2b2lkIG10a19kcm1fZ2Vt
-X2ZyZWVfb2JqZWN0KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQogCQlkcm1fcHJpbWVfZ2Vt
-X2Rlc3Ryb3kob2JqLCBtdGtfZ2VtLT5zZyk7CiAJZWxzZQogCQlkbWFfZnJlZV9hdHRycyhwcml2
-LT5kbWFfZGV2LCBvYmotPnNpemUsIG10a19nZW0tPmNvb2tpZSwKLQkJCSAgICAgICBtdGtfZ2Vt
-LT5kbWFfYWRkciwgJm10a19nZW0tPmRtYV9hdHRycyk7CisJCQkgICAgICAgbXRrX2dlbS0+ZG1h
-X2FkZHIsIG10a19nZW0tPmRtYV9hdHRycyk7CiAKIAkvKiByZWxlYXNlIGZpbGUgcG9pbnRlciB0
-byBnZW0gb2JqZWN0LiAqLwogCWRybV9nZW1fb2JqZWN0X3JlbGVhc2Uob2JqKTsKQEAgLTE3Myw3
-ICsxNzIsNyBAQCBzdGF0aWMgaW50IG10a19kcm1fZ2VtX29iamVjdF9tbWFwKHN0cnVjdCBkcm1f
-Z2VtX29iamVjdCAqb2JqLAogCXZtYS0+dm1fcGdvZmYgPSAwOwogCiAJcmV0ID0gZG1hX21tYXBf
-YXR0cnMocHJpdi0+ZG1hX2Rldiwgdm1hLCBtdGtfZ2VtLT5jb29raWUsCi0JCQkgICAgIG10a19n
-ZW0tPmRtYV9hZGRyLCBvYmotPnNpemUsICZtdGtfZ2VtLT5kbWFfYXR0cnMpOworCQkJICAgICBt
-dGtfZ2VtLT5kbWFfYWRkciwgb2JqLT5zaXplLCBtdGtfZ2VtLT5kbWFfYXR0cnMpOwogCWlmIChy
-ZXQpCiAJCWRybV9nZW1fdm1fY2xvc2Uodm1hKTsKIApAQCAtMjI0LDcgKzIyMyw3IEBAIHN0cnVj
-dCBzZ190YWJsZSAqbXRrX2dlbV9wcmltZV9nZXRfc2dfdGFibGUoc3RydWN0IGRybV9nZW1fb2Jq
-ZWN0ICpvYmopCiAKIAlyZXQgPSBkbWFfZ2V0X3NndGFibGVfYXR0cnMocHJpdi0+ZG1hX2Rldiwg
-c2d0LCBtdGtfZ2VtLT5jb29raWUsCiAJCQkJICAgIG10a19nZW0tPmRtYV9hZGRyLCBvYmotPnNp
-emUsCi0JCQkJICAgICZtdGtfZ2VtLT5kbWFfYXR0cnMpOworCQkJCSAgICBtdGtfZ2VtLT5kbWFf
-YXR0cnMpOwogCWlmIChyZXQpIHsKIAkJRFJNX0VSUk9SKCJmYWlsZWQgdG8gYWxsb2NhdGUgc2d0
-LCAlZFxuIiwgcmV0KTsKIAkJa2ZyZWUoc2d0KTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZ2VtLmgKaW5kZXggM2EyYTU2MjRhMWNiLi4yNzUyNzE4ZmE1YjIgMTAwNjQ0Ci0tLSBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oCisrKyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5oCkBAIC0zNSw3ICszNSw3IEBAIHN0cnVjdCBtdGtfZHJt
-X2dlbV9vYmogewogCXZvaWQJCQkqY29va2llOwogCXZvaWQJCQkqa3ZhZGRyOwogCWRtYV9hZGRy
-X3QJCWRtYV9hZGRyOwotCXN0cnVjdCBkbWFfYXR0cnMJZG1hX2F0dHJzOworCXVuc2lnbmVkIGxv
-bmcJCWRtYV9hdHRyczsKIAlzdHJ1Y3Qgc2dfdGFibGUJCSpzZzsKIH07CiAKLS0gCjEuOS4xCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0
-cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+During stress testing, after reducing the threshold value, we have seen
+TX timeouts that were caused by the watchdog_timeo value being too low.
+Increase the value to 5 * HZ which is a value commonly used by many other
+drivers.
+
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 8b289e1..24714ab 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1688,7 +1688,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 	mac->hw_stats->reg_offset = id * MTK_STAT_OFFSET;
+ 
+ 	SET_NETDEV_DEV(eth->netdev[id], eth->dev);
+-	eth->netdev[id]->watchdog_timeo = HZ;
++	eth->netdev[id]->watchdog_timeo = 5 * HZ;
+ 	eth->netdev[id]->netdev_ops = &mtk_netdev_ops;
+ 	eth->netdev[id]->base_addr = (unsigned long)eth->base;
+ 	eth->netdev[id]->vlan_features = MTK_HW_FEATURES &
+-- 
+1.7.10.4
