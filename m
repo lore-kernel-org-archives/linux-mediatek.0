@@ -1,155 +1,101 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v3,5/5] arm64: dts: mediatek: add USB3 DRD driver
-Date: Fri, 10 Jun 2016 15:32:42 +0800
-Message-ID: <1465543962-11678-6-git-send-email-chunfeng.yun@mediatek.com>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: Add MediaTek USB3 DRD Driver
+Date: Fri, 10 Jun 2016 17:15:09 +0800
+Message-ID: <1465550109.11651.147.camel@mhfsdcap03>
 References: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1465543962-11678-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-USB3 DRD driver is added for MT8173-EVB, and xHCI driver
-becomes its subnode
+Hi,
+On Fri, 2016-06-10 at 15:32 +0800, Chunfeng Yun wrote:
+> From 8fdc924cecf0ca14da6e8aba360501e53437e548 Mon Sep 17 00:00:00 2001
+> From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Date: Fri, 10 Jun 2016 15:20:20 +0800
+> Subject: [PATCH 0/5] Add MediaTek USB3 DRD Driver
+> 
+> These patches introduce the MediaTek USB3 dual-role controller
+> driver.
+> 
+> The driver can be configured as Dual-Role Device (DRD),
+> Peripheral Only and Host Only (xHCI) modes. It works well
+> with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
+> tested on MT8173 platform which only contains USB2.0 device IP,
+> and on MT6290 platform which contains USB3.0 device IP.
+> 
+> Change in v3:
+> 1. fix some typo error
+> 2. rename mtu3.txt to mt8173-mtu3.txt
+> 
+> Change in v2:
+> 1. modify binding docs according to suggestions
+> 2. modify some comments and remove some dummy blank lines
+> 3. fix memory leakage
+> 
+> Chunfeng Yun (5):
+>   dt-bindings: mt8173-xhci: support host side of dual-role mode
+>   dt-bindings: mt8173-mtu3: add devicetree bindings
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   46 +++++++++++++++++++++++++--
- arch/arm64/boot/dts/mediatek/mt8173.dtsi    |   28 ++++++++++++----
- 2 files changed, 65 insertions(+), 9 deletions(-)
+Could you please help me to review the following two patches based on
+v4.7-rc1:
+  1- usb: xhci-mtk: make IPPC register optional
+  2- usb: Add MediaTek USB3 DRD Driver
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 7453a47..682dfd7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -34,6 +34,11 @@
- 
- 	chosen { };
- 
-+	extcon_usb: extcon_iddig {
-+		compatible = "linux,extcon-usb-gpio";
-+		id-gpio = <&pio 16 GPIO_ACTIVE_HIGH>;
-+	};
-+
- 	usb_p1_vbus: regulator@0 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "usb_vbus";
-@@ -42,6 +47,16 @@
- 		gpio = <&pio 130 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 	};
-+
-+	usb_p0_vbus: regulator@1 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vbus";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&pio 9 GPIO_ACTIVE_HIGH>;
-+		enable-active-high;
-+	};
-+
- };
- 
- &i2c1 {
-@@ -205,6 +220,20 @@
- 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
- 		};
- 	};
-+
-+	usb_id_pins_float: usb_iddig_pull_up {
-+		pins_iddig {
-+			pinmux = <MT8173_PIN_16_IDDIG__FUNC_IDDIG>;
-+			bias-pull-up;
-+		};
-+	};
-+
-+	usb_id_pins_ground: usb_iddig_pull_down {
-+		pins_iddig {
-+			pinmux = <MT8173_PIN_16_IDDIG__FUNC_IDDIG>;
-+			bias-pull-down;
-+		};
-+	};
- };
- 
- &pwm0 {
-@@ -431,12 +460,25 @@
- 	status = "okay";
- };
- 
-+&ssusb {
-+	vusb33-supply = <&mt6397_vusb_reg>;
-+	vbus-supply = <&usb_p0_vbus>;
-+	extcon = <&extcon_usb>;
-+	dr_mode = "otg";
-+	mediatek,enable-wakeup;
-+	pinctrl-names = "default", "id_float", "id_ground";
-+	pinctrl-0 = <&usb_id_pins_float>;
-+	pinctrl-1 = <&usb_id_pins_float>;
-+	pinctrl-2 = <&usb_id_pins_ground>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	status = "okay";
- };
- 
--&usb30 {
-+&usb_host {
- 	vusb33-supply = <&mt6397_vusb_reg>;
- 	vbus-supply = <&usb_p1_vbus>;
--	mediatek,wakeup-src = <1>;
-+	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 05f89c4..723ab6e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -608,11 +608,14 @@
- 			status = "disabled";
- 		};
- 
--		usb30: usb@11270000 {
--			compatible = "mediatek,mt8173-xhci";
--			reg = <0 0x11270000 0 0x1000>,
-+		ssusb: usb@11271000 {
-+			compatible = "mediatek,mt8173-mtu3";
-+			reg = <0 0x11271000 0 0x3000>,
- 			      <0 0x11280700 0 0x0100>;
--			interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+			reg-names = "mac", "ippc";
-+			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
-+			phys = <&phy_port0 PHY_TYPE_USB3>,
-+			       <&phy_port1 PHY_TYPE_USB2>;
- 			power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
- 			clocks = <&topckgen CLK_TOP_USB30_SEL>,
- 				 <&pericfg CLK_PERI_USB0>,
-@@ -620,10 +623,21 @@
- 			clock-names = "sys_ck",
- 				      "wakeup_deb_p0",
- 				      "wakeup_deb_p1";
--			phys = <&phy_port0 PHY_TYPE_USB3>,
--			       <&phy_port1 PHY_TYPE_USB2>;
- 			mediatek,syscon-wakeup = <&pericfg>;
--			status = "okay";
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			ranges;
-+			status = "disabled";
-+
-+			usb_host: xhci@11270000 {
-+				compatible = "mediatek,mt8173-xhci";
-+				reg = <0 0x11270000 0 0x1000>;
-+				interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+				power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-+				clocks = <&topckgen CLK_TOP_USB30_SEL>;
-+				clock-names = "sys_ck";
-+				status = "disabled";
-+			};
- 		};
- 
- 		u3phy: usb-phy@11290000 {
--- 
-1.7.9.5
+Thank you very much
+
+>   usb: xhci-mtk: make IPPC register optional
+>   usb: Add MediaTek USB3 DRD Driver
+>   arm64: dts: mediatek: add USB3 DRD driver
+> 
+>  .../devicetree/bindings/usb/mt8173-mtu3.txt        |   85 ++
+>  .../devicetree/bindings/usb/mt8173-xhci.txt        |   48 ++
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   46 +-
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   28 +-
+>  drivers/usb/Kconfig                                |    2 +
+>  drivers/usb/Makefile                               |    1 +
+>  drivers/usb/host/xhci-mtk.c                        |   32 +-
+>  drivers/usb/mtu3/Kconfig                           |   47 ++
+>  drivers/usb/mtu3/Makefile                          |   20 +
+>  drivers/usb/mtu3/mtu3.h                            |  422 ++++++++++
+>  drivers/usb/mtu3/mtu3_core.c                       |  879 ++++++++++++++++++++
+>  drivers/usb/mtu3/mtu3_dr.c                         |  348 ++++++++
+>  drivers/usb/mtu3/mtu3_dr.h                         |  108 +++
+>  drivers/usb/mtu3/mtu3_gadget.c                     |  731 ++++++++++++++++
+>  drivers/usb/mtu3/mtu3_gadget_ep0.c                 |  879 ++++++++++++++++++++
+>  drivers/usb/mtu3/mtu3_host.c                       |  294 +++++++
+>  drivers/usb/mtu3/mtu3_hw_regs.h                    |  474 +++++++++++
+>  drivers/usb/mtu3/mtu3_plat.c                       |  490 +++++++++++
+>  drivers/usb/mtu3/mtu3_qmu.c                        |  599 +++++++++++++
+>  drivers/usb/mtu3/mtu3_qmu.h                        |   43 +
+>  20 files changed, 5562 insertions(+), 14 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+>  create mode 100644 drivers/usb/mtu3/Kconfig
+>  create mode 100644 drivers/usb/mtu3/Makefile
+>  create mode 100644 drivers/usb/mtu3/mtu3.h
+>  create mode 100644 drivers/usb/mtu3/mtu3_core.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_dr.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_dr.h
+>  create mode 100644 drivers/usb/mtu3/mtu3_gadget.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_gadget_ep0.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_host.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_hw_regs.h
+>  create mode 100644 drivers/usb/mtu3/mtu3_plat.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_qmu.c
+>  create mode 100644 drivers/usb/mtu3/mtu3_qmu.h
+> 
+> --
+> 1.7.9.5
+> 
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
