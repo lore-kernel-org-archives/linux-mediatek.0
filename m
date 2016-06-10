@@ -1,73 +1,224 @@
-From: Felipe Balbi <felipe.balbi@linux.intel.com>
-Subject: Re: Add MediaTek USB3 DRD Driver
-Date: Fri, 10 Jun 2016 12:27:11 +0300
-Message-ID: <8760th75sg.fsf@linux.intel.com>
-References: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: [PATCH v4 00/44] dma-mapping: Use unsigned long for dma_attrs
+Date: Fri, 10 Jun 2016 12:11:17 +0200
+Message-ID: <1465553521-27303-1-git-send-email-k.kozlowski@samsung.com>
+Return-path: <linux-m68k-owner@vger.kernel.org>
+Sender: linux-m68k-owner@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: hch@infradead.org, Krzysztof Kozlowski <k.kozlowski@samsung.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-alpha@vger.kernel.org, linux-snps-arc@lists.infradead.org, linux-arm-kernel@lists.infradead.org, xen-devel@lists.xenproject.org, linux-c6x-dev@linux-c6x.org, linux-cris-kernel@axis.com, linux-hexagon@vger.kernel.org, linux-ia64@vger.kernel.org, linux-m68k@lists.linux-m68k.org, linux-metag@vger.kernel.org, linux-mips@linux-mips.org, linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-s390@vger.kernel.org, linux-sh@vger.kernel.org, sparclinux@vger.kernel.org, linux-pci@vger.kernel.org, linux-xtensa@linux-xtensa.org, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.
 List-Id: linux-mediatek@lists.infradead.org
-
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
 
 Hi,
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
-> From 8fdc924cecf0ca14da6e8aba360501e53437e548 Mon Sep 17 00:00:00 2001
-> From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Date: Fri, 10 Jun 2016 15:20:20 +0800
-> Subject: [PATCH 0/5] Add MediaTek USB3 DRD Driver
->
-> These patches introduce the MediaTek USB3 dual-role controller
-> driver.
->
-> The driver can be configured as Dual-Role Device (DRD),
-> Peripheral Only and Host Only (xHCI) modes. It works well
-> with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
-> tested on MT8173 platform which only contains USB2.0 device IP,
-> and on MT6290 platform which contains USB3.0 device IP.
->
-> Change in v3:
-> 1. fix some typo error
-> 2. rename mtu3.txt to mt8173-mtu3.txt
->
-> Change in v2:
-> 1. modify binding docs according to suggestions
-> 2. modify some comments and remove some dummy blank lines
-> 3. fix memory leakage
 
-I don't see anything inherently wrong with this series. But keep in mind
-I don't have HW to test. I can take the peripheral driver in a few days.
+This is fourth approach for replacing struct dma_attrs with unsigned
+long.
 
-=2D-=20
-balbi
+The main patch (1/44) doing the change is split into many subpatches
+for easier review (2-42).  They should be squashed together when
+applying.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+*Important:* Patchset is tested on my ARM platforms and *only* build
+tested on allyesconfigs: ARM, ARM64, i386, x86_64 and powerpc.
+Please kindly provide reviewes and tests for other platforms.
 
-iQIcBAEBCAAGBQJXWofvAAoJEIaOsuA1yqREjfMP/jHqr0YYEw25bawj6Sd0VNSV
-foC62fuiGDyOY508ES04EQjV7Q9lMa2hWfel/l2SMOV+v8bcNrv7qnySAoxt8HN7
-+9OCiFN68r3wAqZ6H01YsbOWtSC6b6vIRnTB723AJ20vw2IL+WGhZ3AL+5GzWwtU
-cBWRcuFOh3hNzkI8EGcnNxpCuRZLFHSb4g+Pc010m7oEm9GdnywsHoRYd7XzHwhK
-ALlkjv1wUypHNep1sAOXx9hZL8FxTaov29+a9miu9WWnCM7b90yEJvCd31pxm+zC
-ZjzgJoD8MAEl7lKwNeHBR83km4ZznoLa2PV8Yedu4oTqvWEAVUeL876S1JkxzmMo
-LjrEoIKW7WZYsEGvXlUOu9Kr5XwegkstSFbo47clvxs2WbKyZsRglcsKq8AM3JKW
-mEXhkjgY10I5//Ql0OjGBy8jV1TuPSguROXK3GU9M5F0/+pYGLqmgfjqbuK/3eRq
-kQaiyYmIUA/k5/jEWAHelyAjf6QnPX523TLsfDZsno59+eP4+3aXEXdX8hoKQtvC
-H006W8Apwy4uDdoWG7QVQtinPYpe0mywLLIBC6trjktl1/R2wrqYEyHlk9sCG1Yv
-hYi2Fv2szDH38MiZACCOO+Osu1hAqayjQ5VXCSckraMH0OfYDfzuRWZknAkrCNjg
-GHcg6XeJtQ4pt6etVuXu
-=12Xo
------END PGP SIGNATURE-----
---=-=-=--
+Rebased on next-20160607.
+
+For easier testing the patchset is available here:
+repo:   https://github.com/krzk/linux
+branch: for-next/dma-attrs-const-v4
+
+
+Changes since v3
+================
+1. Collect some acks.
+2. Drop wrong patch 1/45 ("powerpc: dma-mapping: Don't hard-code
+   the value of DMA_ATTR_WEAK_ORDERING").
+3. Minor fix pointed out by Michael Ellerman.
+
+
+Changes since v2
+================
+1. Follow Christoph Hellwig's comments (don't use BIT add
+   documentation, remove dma_get_attr).
+
+
+Rationale
+=========
+The dma-mapping core and the implementations do not change the
+DMA attributes passed by pointer.  Thus the pointer can point to const
+data.  However the attributes do not have to be a bitfield. Instead
+unsigned long will do fine:
+
+1. This is just simpler.  Both in terms of reading the code and setting
+   attributes.  Instead of initializing local attributes on the stack
+   and passing pointer to it to dma_set_attr(), just set the bits.
+
+2. It brings safeness and checking for const correctness because the
+   attributes are passed by value.
+
+
+Best regards,
+Krzysztof
+
+
+Krzysztof Kozlowski (44):
+  dma-mapping: Use unsigned long for dma_attrs
+  alpha: dma-mapping: Use unsigned long for dma_attrs
+  arc: dma-mapping: Use unsigned long for dma_attrs
+  ARM: dma-mapping: Use unsigned long for dma_attrs
+  arm64: dma-mapping: Use unsigned long for dma_attrs
+  avr32: dma-mapping: Use unsigned long for dma_attrs
+  blackfin: dma-mapping: Use unsigned long for dma_attrs
+  c6x: dma-mapping: Use unsigned long for dma_attrs
+  cris: dma-mapping: Use unsigned long for dma_attrs
+  frv: dma-mapping: Use unsigned long for dma_attrs
+  drm/exynos: dma-mapping: Use unsigned long for dma_attrs
+  drm/mediatek: dma-mapping: Use unsigned long for dma_attrs
+  drm/msm: dma-mapping: Use unsigned long for dma_attrs
+  drm/nouveau: dma-mapping: Use unsigned long for dma_attrs
+  drm/rockship: dma-mapping: Use unsigned long for dma_attrs
+  infiniband: dma-mapping: Use unsigned long for dma_attrs
+  iommu: dma-mapping: Use unsigned long for dma_attrs
+  [media] dma-mapping: Use unsigned long for dma_attrs
+  xen: dma-mapping: Use unsigned long for dma_attrs
+  swiotlb: dma-mapping: Use unsigned long for dma_attrs
+  powerpc: dma-mapping: Use unsigned long for dma_attrs
+  video: dma-mapping: Use unsigned long for dma_attrs
+  x86: dma-mapping: Use unsigned long for dma_attrs
+  iommu: intel: dma-mapping: Use unsigned long for dma_attrs
+  h8300: dma-mapping: Use unsigned long for dma_attrs
+  hexagon: dma-mapping: Use unsigned long for dma_attrs
+  ia64: dma-mapping: Use unsigned long for dma_attrs
+  m68k: dma-mapping: Use unsigned long for dma_attrs
+  metag: dma-mapping: Use unsigned long for dma_attrs
+  microblaze: dma-mapping: Use unsigned long for dma_attrs
+  mips: dma-mapping: Use unsigned long for dma_attrs
+  mn10300: dma-mapping: Use unsigned long for dma_attrs
+  nios2: dma-mapping: Use unsigned long for dma_attrs
+  openrisc: dma-mapping: Use unsigned long for dma_attrs
+  parisc: dma-mapping: Use unsigned long for dma_attrs
+  misc: mic: dma-mapping: Use unsigned long for dma_attrs
+  s390: dma-mapping: Use unsigned long for dma_attrs
+  sh: dma-mapping: Use unsigned long for dma_attrs
+  sparc: dma-mapping: Use unsigned long for dma_attrs
+  tile: dma-mapping: Use unsigned long for dma_attrs
+  unicore32: dma-mapping: Use unsigned long for dma_attrs
+  xtensa: dma-mapping: Use unsigned long for dma_attrs
+  dma-mapping: Remove dma_get_attr
+  dma-mapping: Document the DMA attributes next to the declaration
+
+ Documentation/DMA-API.txt                          |  33 +++---
+ Documentation/DMA-attributes.txt                   |   2 +-
+ arch/alpha/include/asm/dma-mapping.h               |   2 -
+ arch/alpha/kernel/pci-noop.c                       |   2 +-
+ arch/alpha/kernel/pci_iommu.c                      |  12 +-
+ arch/arc/mm/dma.c                                  |  12 +-
+ arch/arm/common/dmabounce.c                        |   4 +-
+ arch/arm/include/asm/dma-mapping.h                 |  13 +--
+ arch/arm/include/asm/xen/page-coherent.h           |  16 +--
+ arch/arm/mm/dma-mapping.c                          | 121 ++++++++++---------
+ arch/arm/xen/mm.c                                  |   8 +-
+ arch/arm64/mm/dma-mapping.c                        |  67 +++++------
+ arch/avr32/mm/dma-coherent.c                       |  12 +-
+ arch/blackfin/kernel/dma-mapping.c                 |   8 +-
+ arch/c6x/include/asm/dma-mapping.h                 |   4 +-
+ arch/c6x/kernel/dma.c                              |   9 +-
+ arch/c6x/mm/dma-coherent.c                         |   4 +-
+ arch/cris/arch-v32/drivers/pci/dma.c               |   9 +-
+ arch/frv/mb93090-mb00/pci-dma-nommu.c              |   8 +-
+ arch/frv/mb93090-mb00/pci-dma.c                    |   9 +-
+ arch/h8300/kernel/dma.c                            |   8 +-
+ arch/hexagon/include/asm/dma-mapping.h             |   1 -
+ arch/hexagon/kernel/dma.c                          |   8 +-
+ arch/ia64/hp/common/sba_iommu.c                    |  22 ++--
+ arch/ia64/include/asm/machvec.h                    |   1 -
+ arch/ia64/kernel/pci-swiotlb.c                     |   4 +-
+ arch/ia64/sn/pci/pci_dma.c                         |  22 ++--
+ arch/m68k/kernel/dma.c                             |  12 +-
+ arch/metag/kernel/dma.c                            |  16 +--
+ arch/microblaze/include/asm/dma-mapping.h          |   1 -
+ arch/microblaze/kernel/dma.c                       |  12 +-
+ arch/mips/cavium-octeon/dma-octeon.c               |   8 +-
+ arch/mips/loongson64/common/dma-swiotlb.c          |  10 +-
+ arch/mips/mm/dma-default.c                         |  20 ++--
+ arch/mips/netlogic/common/nlm-dma.c                |   4 +-
+ arch/mn10300/mm/dma-alloc.c                        |   8 +-
+ arch/nios2/mm/dma-mapping.c                        |  12 +-
+ arch/openrisc/kernel/dma.c                         |  21 ++--
+ arch/parisc/kernel/pci-dma.c                       |  18 +--
+ arch/powerpc/include/asm/dma-mapping.h             |   7 +-
+ arch/powerpc/include/asm/iommu.h                   |  10 +-
+ arch/powerpc/kernel/dma-iommu.c                    |  12 +-
+ arch/powerpc/kernel/dma.c                          |  18 +--
+ arch/powerpc/kernel/ibmebus.c                      |  12 +-
+ arch/powerpc/kernel/iommu.c                        |  12 +-
+ arch/powerpc/kernel/vio.c                          |  12 +-
+ arch/powerpc/platforms/cell/iommu.c                |  28 ++---
+ arch/powerpc/platforms/pasemi/iommu.c              |   2 +-
+ arch/powerpc/platforms/powernv/npu-dma.c           |   8 +-
+ arch/powerpc/platforms/powernv/pci-ioda.c          |   4 +-
+ arch/powerpc/platforms/powernv/pci.c               |   2 +-
+ arch/powerpc/platforms/powernv/pci.h               |   2 +-
+ arch/powerpc/platforms/ps3/system-bus.c            |  18 +--
+ arch/powerpc/platforms/pseries/iommu.c             |   6 +-
+ arch/powerpc/sysdev/dart_iommu.c                   |   2 +-
+ arch/s390/include/asm/dma-mapping.h                |   1 -
+ arch/s390/pci/pci_dma.c                            |  23 ++--
+ arch/sh/include/asm/dma-mapping.h                  |   4 +-
+ arch/sh/kernel/dma-nommu.c                         |   4 +-
+ arch/sh/mm/consistent.c                            |   4 +-
+ arch/sparc/kernel/iommu.c                          |  12 +-
+ arch/sparc/kernel/ioport.c                         |  24 ++--
+ arch/sparc/kernel/pci_sun4v.c                      |  12 +-
+ arch/tile/kernel/pci-dma.c                         |  28 ++---
+ arch/unicore32/mm/dma-swiotlb.c                    |   4 +-
+ arch/x86/include/asm/dma-mapping.h                 |   5 +-
+ arch/x86/include/asm/swiotlb.h                     |   4 +-
+ arch/x86/include/asm/xen/page-coherent.h           |   9 +-
+ arch/x86/kernel/amd_gart_64.c                      |  20 ++--
+ arch/x86/kernel/pci-calgary_64.c                   |  14 +--
+ arch/x86/kernel/pci-dma.c                          |   4 +-
+ arch/x86/kernel/pci-nommu.c                        |   4 +-
+ arch/x86/kernel/pci-swiotlb.c                      |   4 +-
+ arch/x86/pci/sta2x11-fixup.c                       |   2 +-
+ arch/x86/pci/vmd.c                                 |  16 +--
+ arch/xtensa/kernel/pci-dma.c                       |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_fbdev.c          |   2 +-
+ drivers/gpu/drm/exynos/exynos_drm_g2d.c            |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_gem.c            |  20 ++--
+ drivers/gpu/drm/exynos/exynos_drm_gem.h            |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c             |  13 +--
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h             |   2 +-
+ drivers/gpu/drm/msm/msm_drv.c                      |  13 +--
+ .../gpu/drm/nouveau/nvkm/subdev/instmem/gk20a.c    |  13 +--
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c        |  17 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h        |   2 +-
+ drivers/infiniband/core/umem.c                     |   7 +-
+ drivers/iommu/amd_iommu.c                          |  12 +-
+ drivers/iommu/dma-iommu.c                          |   8 +-
+ drivers/iommu/intel-iommu.c                        |  12 +-
+ drivers/media/platform/sti/bdisp/bdisp-hw.c        |  26 ++---
+ drivers/media/v4l2-core/videobuf2-dma-contig.c     |  30 ++---
+ drivers/media/v4l2-core/videobuf2-dma-sg.c         |  19 +--
+ drivers/misc/mic/host/mic_boot.c                   |  20 ++--
+ drivers/parisc/ccio-dma.c                          |  16 +--
+ drivers/parisc/sba_iommu.c                         |  16 +--
+ drivers/video/fbdev/omap2/omapfb/omapfb-main.c     |  12 +-
+ drivers/video/fbdev/omap2/omapfb/omapfb.h          |   3 +-
+ drivers/xen/swiotlb-xen.c                          |  14 +--
+ include/linux/dma-attrs.h                          |  72 ------------
+ include/linux/dma-iommu.h                          |   6 +-
+ include/linux/dma-mapping.h                        | 128 ++++++++++++++-------
+ include/linux/swiotlb.h                            |  10 +-
+ include/media/videobuf2-dma-contig.h               |   7 +-
+ include/rdma/ib_verbs.h                            |   8 +-
+ include/xen/swiotlb-xen.h                          |  12 +-
+ lib/dma-noop.c                                     |   9 +-
+ lib/swiotlb.c                                      |  13 ++-
+ 108 files changed, 691 insertions(+), 793 deletions(-)
+ delete mode 100644 include/linux/dma-attrs.h
+
+-- 
+1.9.1
