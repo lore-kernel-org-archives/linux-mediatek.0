@@ -1,51 +1,86 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [alsa-devel] [PATCH v2 2/9] ASoC: mediatek: implement mediatek
- common structure
-Date: Thu, 9 Jun 2016 11:44:44 +0100
-Message-ID: <20160609104444.GV7510@sirena.org.uk>
-References: <1464929784-5489-1-git-send-email-garlic.tseng@mediatek.com>
- <1464929784-5489-3-git-send-email-garlic.tseng@mediatek.com>
- <20160607155427.GB7510@sirena.org.uk>
- <1465351572.4197.17.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Add MediaTek USB3 DRD Driver
+Date: Fri, 10 Jun 2016 15:32:37 +0800
+Message-ID: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vXO+wElmrbrjQnTC"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1465351572.4197.17.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>
-Cc: tiwai@suse.de, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+>From 8fdc924cecf0ca14da6e8aba360501e53437e548 Mon Sep 17 00:00:00 2001
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Fri, 10 Jun 2016 15:20:20 +0800
+Subject: [PATCH 0/5] Add MediaTek USB3 DRD Driver
 
---vXO+wElmrbrjQnTC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+These patches introduce the MediaTek USB3 dual-role controller
+driver.
 
-On Wed, Jun 08, 2016 at 10:06:12AM +0800, Garlic Tseng wrote:
-> On Tue, 2016-06-07 at 16:54 +0100, Mark Brown wrote:
+The driver can be configured as Dual-Role Device (DRD),
+Peripheral Only and Host Only (xHCI) modes. It works well
+with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
+tested on MT8173 platform which only contains USB2.0 device IP,
+and on MT6290 platform which contains USB3.0 device IP.
 
-> > Do you need to export the individual ops rather than just the ops
-> > structure?
+Change in v3:
+1. fix some typo error
+2. rename mtu3.txt to mt8173-mtu3.txt
 
-> Yes, in 2701 driver we modify some ops.
+Change in v2:
+1. modify binding docs according to suggestions
+2. modify some comments and remove some dummy blank lines
+3. fix memory leakage
 
-OK.
+Chunfeng Yun (5):
+  dt-bindings: mt8173-xhci: support host side of dual-role mode
+  dt-bindings: mt8173-mtu3: add devicetree bindings
+  usb: xhci-mtk: make IPPC register optional
+  usb: Add MediaTek USB3 DRD Driver
+  arm64: dts: mediatek: add USB3 DRD driver
 
---vXO+wElmrbrjQnTC
-Content-Type: application/pgp-signature; name="signature.asc"
+ .../devicetree/bindings/usb/mt8173-mtu3.txt        |   85 ++
+ .../devicetree/bindings/usb/mt8173-xhci.txt        |   48 ++
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   46 +-
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   28 +-
+ drivers/usb/Kconfig                                |    2 +
+ drivers/usb/Makefile                               |    1 +
+ drivers/usb/host/xhci-mtk.c                        |   32 +-
+ drivers/usb/mtu3/Kconfig                           |   47 ++
+ drivers/usb/mtu3/Makefile                          |   20 +
+ drivers/usb/mtu3/mtu3.h                            |  422 ++++++++++
+ drivers/usb/mtu3/mtu3_core.c                       |  879 ++++++++++++++++++++
+ drivers/usb/mtu3/mtu3_dr.c                         |  348 ++++++++
+ drivers/usb/mtu3/mtu3_dr.h                         |  108 +++
+ drivers/usb/mtu3/mtu3_gadget.c                     |  731 ++++++++++++++++
+ drivers/usb/mtu3/mtu3_gadget_ep0.c                 |  879 ++++++++++++++++++++
+ drivers/usb/mtu3/mtu3_host.c                       |  294 +++++++
+ drivers/usb/mtu3/mtu3_hw_regs.h                    |  474 +++++++++++
+ drivers/usb/mtu3/mtu3_plat.c                       |  490 +++++++++++
+ drivers/usb/mtu3/mtu3_qmu.c                        |  599 +++++++++++++
+ drivers/usb/mtu3/mtu3_qmu.h                        |   43 +
+ 20 files changed, 5562 insertions(+), 14 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+ create mode 100644 drivers/usb/mtu3/Kconfig
+ create mode 100644 drivers/usb/mtu3/Makefile
+ create mode 100644 drivers/usb/mtu3/mtu3.h
+ create mode 100644 drivers/usb/mtu3/mtu3_core.c
+ create mode 100644 drivers/usb/mtu3/mtu3_dr.c
+ create mode 100644 drivers/usb/mtu3/mtu3_dr.h
+ create mode 100644 drivers/usb/mtu3/mtu3_gadget.c
+ create mode 100644 drivers/usb/mtu3/mtu3_gadget_ep0.c
+ create mode 100644 drivers/usb/mtu3/mtu3_host.c
+ create mode 100644 drivers/usb/mtu3/mtu3_hw_regs.h
+ create mode 100644 drivers/usb/mtu3/mtu3_plat.c
+ create mode 100644 drivers/usb/mtu3/mtu3_qmu.c
+ create mode 100644 drivers/usb/mtu3/mtu3_qmu.h
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+--
+1.7.9.5
 
-iQEcBAEBCAAGBQJXWUibAAoJECTWi3JdVIfQDZ8H/2oEmciG6tv/BvraHr9rsnxo
-Oq5Gh9xQkyQWcp5mMBl7MS/OZa3TlwgvFmvVfmJIsaO+J1Tw6MobkiesI29mVBlI
-AXHziY4rFLRiXkCbKS3jo0c/MUEBM113l7BGm/WZ2wmY11AOzQzoRKRrpcNZVNrW
-L5Vp5jHXgVYoLWHn7eOJr2Ir7gKfDISqhwo9GQC8kvsev+TXp6aAnXjRIwVI0k5v
-PUQjGB8kIHkUPe95qCaUKeZ7opA1Gl5NFWuTTq5PmtXiw2Di0BIEwhLIS49TydwN
-MGuNylKOARYvwWKm4PHalijcExtTN38Y1z+O1faTa7UZ04mE+2dWw08cnWVd/CY=
-=UQyL
------END PGP SIGNATURE-----
 
---vXO+wElmrbrjQnTC--
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
