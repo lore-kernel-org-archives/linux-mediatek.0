@@ -1,47 +1,27 @@
-From: John Crispin <john@phrozen.org>
+From: David Miller <davem@davemloft.net>
 Subject: Re: [PATCH V2 00/11] net: mediatek: various small fixes
-Date: Fri, 10 Jun 2016 19:50:33 +0200
-Message-ID: <a333787c-ce3a-049e-8144-d07d38b55cfc@phrozen.org>
+Date: Fri, 10 Jun 2016 23:30:16 -0700 (PDT)
+Message-ID: <20160610.233016.1590591569188856238.davem@davemloft.net>
 References: <1465558088-15265-1-git-send-email-john@phrozen.org>
- <ac8eae20-f8a5-6e06-43fd-c2826599b709@phrozen.org>
- <20160610.104604.309213239246401664.davem@davemloft.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20160610.104604.309213239246401664.davem@davemloft.net>
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465558088-15265-1-git-send-email-john@phrozen.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: john@phrozen.org
+Cc: nbd@nbd.name, keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+From: John Crispin <john@phrozen.org>
+Date: Fri, 10 Jun 2016 13:27:57 +0200
 
+> This series contains various small fixes that we stumbled across while
+> doing thorough testing and code level reviewing of the driver. The only
+> patch that sticks out is the first one, which addresses a DQL related
+> issue. The rest are just minor fixes.
+> 
+> Changes in V2:
+> * drop the DQL patch from the list until a better solution is found
 
-On 10/06/2016 19:46, David Miller wrote:
-> From: John Crispin <john@phrozen.org>
-> Date: Fri, 10 Jun 2016 13:30:15 +0200
-> 
->>
->>
->> On 10/06/2016 13:27, John Crispin wrote:
->>> This series contains various small fixes that we stumbled across while
->>> doing thorough testing and code level reviewing of the driver. The only
->>> patch that sticks out is the first one, which addresses a DQL related
->>> issue. The rest are just minor fixes.
->>>
->>
->> Hi David,
->>
->> i forgot to remove the last sentence here. can you live with that as it
->> wont end up in the git history or do you want me to send a V3 with this
->> line removed.
-> 
-> What do you mean it won't end up in the GIT history?  I always put this
-> introductory text into the merge commit for the patch series.
-> 
-> Now, I can remove it for you, which I will do.
-> 
-
-cool, thanks a lot !
-
-	John
+Series applied, thanks.
