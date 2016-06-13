@@ -1,68 +1,32 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [GIT PULL] drm/mediatek: MT8173 HDMI support
-Date: Mon, 13 Jun 2016 11:44:40 +0200
-Message-ID: <1465811080.3553.8.camel@pengutronix.de>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v3,1/5] dt-bindings: mt8173-xhci: support host side of
+ dual-role mode
+Date: Mon, 13 Jun 2016 13:54:54 -0500
+Message-ID: <20160613185454.GA21742@rob-hp-laptop>
+References: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1465543962-11678-2-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1465543962-11678-2-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwKCnBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlu
-cyB0aGUgdjE2IE1UODE3MyBIRE1JCnBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDUtMjYsIHJlYmFz
-ZWQgb250byB2NC43LXJjMi4gVGhlcmUgaGF2ZSBiZWVuIG5vCmZ1cnRoZXIgY29tbWVudHMuCgpy
-ZWdhcmRzClBoaWxpcHAKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYWY4YzM0
-Y2U2YWUzMmFkZGRhMzc4OGQ1NGE3ZTM0MGNhZDIyNTE2YjoKCiAgTGludXggNC43LXJjMiAoMjAx
-Ni0wNi0wNSAxNDozMToyNiAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0
-b3J5IGF0OgoKICBnaXQ6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L3B6YS9saW51eC5naXQgdGFn
-cy9tZWRpYXRlay1kcm0tMjAxNi0wNi0xMwoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRv
-IDIxZmYxNmI3N2U3NzlmOWY5ZGQ1NjUyMjYxM2YzODM1YjBhM2EzODY6CgogIGR0LWJpbmRpbmdz
-OiBoZG1pLWNvbm5lY3RvcjogYWRkIEREQyBJMkMgYnVzIHBoYW5kbGUgZG9jdW1lbnRhdGlvbiAo
-MjAxNi0wNi0xMyAxMTowODoyNyArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTVQ4MTczIEhETUkgc3VwcG9ydAoK
-LSBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1UODE3MyBIRE1JIGVuY29k
-ZXIsIENFQywgRERDLAogIGFuZCBQSFkKLSBkcml2ZXJzIGZvciBNVDgxNzMgSERNSSBlbmNvZGVy
-LCBDRUMgKEhQRCBvbmx5IGZvciBub3cpLCBEREMsIGFuZCBQSFkKLSBlbmFibGUgSERNSSBvdXRw
-dXQgdmlhIGEgY3VzdG9tIFNNQ0NDIGNhbGwKLSBhZGQgZGRjLWkyYy1idXMgcHJvcGVydHkgdG8g
-SERNSSBjb25uZWN0b3IgZGV2aWNlIHRyZWUgYmluZGluZwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpKaWUgUWl1ICgyKToK
-ICAgICAgZHJtL21lZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0CiAgICAgIGRybS9tZWRpYXRlazog
-ZW5hYmxlIGhkbWkgb3V0cHV0IGNvbnRyb2wgYml0CgpQaGlsaXBwIFphYmVsICgyKToKICAgICAg
-ZHQtYmluZGluZ3M6IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhETUkgZHRzIGJpbmRpbmcK
-ICAgICAgZHQtYmluZGluZ3M6IGhkbWktY29ubmVjdG9yOiBhZGQgRERDIEkyQyBidXMgcGhhbmRs
-ZSBkb2N1bWVudGF0aW9uCgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvY29ubmVjdG9yL2hkbWktY29u
-bmVjdG9yLnR4dCAgfCAgICAxICsKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlh
-dGVrLGhkbWkudHh0ICAgIHwgIDE0OCArKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25m
-aWcgICAgICAgICAgICAgICAgICAgfCAgICA4ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9N
-YWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAgNyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2NlYy5jICAgICAgICAgICAgICAgICB8ICAyNjUgKysrCiBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2NlYy5oICAgICAgICAgICAgICAgICB8ICAgMjYgKwogZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgICAgICAgICAgICAgfCAxODI4ICsrKysrKysrKysr
-KysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAg
-ICAgICB8ICAgMjMgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jICAg
-ICAgICAgICAgfCAgMzU4ICsrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9y
-ZWdzLmggICAgICAgICAgIHwgIDIzOCArKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-bXQ4MTczX2hkbWlfcGh5LmMgICAgIHwgIDUxNSArKysrKysKIDExIGZpbGVzIGNoYW5nZWQsIDM0
-MTcgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0CiBjcmVhdGUg
-bW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuYwogY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmgKIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwogY3JlYXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oCiBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jCiBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3JlZ3MuaAogY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5
-LmMKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
-dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Fri, Jun 10, 2016 at 03:32:38PM +0800, Chunfeng Yun wrote:
+> Some resources, such as IPPC register etc, shared with device
+> driver are moved into common glue layer when xHCI driver is the
+> host side of dual-role mode and they should be changed as optional
+> properties if they are required ones before. For clarity, add
+> a new part of binding to support host side of dual-role mode.
+> 
+> Additionally add optional properties of pinctrl for host only mode
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../devicetree/bindings/usb/mt8173-xhci.txt        |   48 ++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+
+Acked-by: Rob Herring <robh@kernel.org>
