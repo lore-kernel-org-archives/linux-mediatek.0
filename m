@@ -1,714 +1,159 @@
-From: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [alsa-devel] [PATCH v3 2/9] ASoC: mediatek: implement mediatek common
- structure
-Date: Mon, 13 Jun 2016 14:24:05 +0800
-Message-ID: <1465799052-9657-3-git-send-email-garlic.tseng@mediatek.com>
-References: <1465799052-9657-1-git-send-email-garlic.tseng@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [RFC v3 3/5] drm/mediatek: add shadow register support
+Date: Mon, 13 Jun 2016 14:43:03 +0800
+Message-ID: <1465800183.27253.4.camel@mtksdaap41>
+References: <1465401825-43642-1-git-send-email-yt.shen@mediatek.com>
+ <1465401825-43642-4-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465799052-9657-1-git-send-email-garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, ir.lian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PC.Liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1465401825-43642-4-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-implement mediatek basic structure, include common private data,
-afe fe dai operator and afe platform driver.
-
-Signed-off-by: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- sound/soc/mediatek/common/mtk-afe-fe-dai.c         | 379 +++++++++++++++++++++
- sound/soc/mediatek/common/mtk-afe-fe-dai.h         |  45 +++
- .../soc/mediatek/common/mtk-afe-platform-driver.c  |  90 +++++
- .../soc/mediatek/common/mtk-afe-platform-driver.h  |  23 ++
- sound/soc/mediatek/common/mtk-base-afe.h           | 104 ++++++
- 5 files changed, 641 insertions(+)
- create mode 100644 sound/soc/mediatek/common/mtk-afe-fe-dai.c
- create mode 100644 sound/soc/mediatek/common/mtk-afe-fe-dai.h
- create mode 100644 sound/soc/mediatek/common/mtk-afe-platform-driver.c
- create mode 100644 sound/soc/mediatek/common/mtk-afe-platform-driver.h
- create mode 100644 sound/soc/mediatek/common/mtk-base-afe.h
-
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-new file mode 100644
-index 0000000..d6b99d2
---- /dev/null
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -0,0 +1,379 @@
-+/*
-+ * mtk-afe-fe-dais.c  --  Mediatek afe fe dai operator
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <sound/soc.h>
-+#include "mtk-afe-fe-dai.h"
-+#include "mtk-base-afe.h"
-+
-+#define AFE_BASE_END_OFFSET 8
-+
-+int mtk_regmap_update_bits(struct regmap *map, int reg, unsigned int mask,
-+			   unsigned int val)
-+{
-+	if (reg < 0)
-+		return 0;
-+	return regmap_update_bits(map, reg, mask, val);
-+}
-+
-+int mtk_regmap_write(struct regmap *map, int reg, unsigned int val)
-+{
-+	if (reg < 0)
-+		return 0;
-+	return regmap_write(map, reg, val);
-+}
-+
-+int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct snd_pcm_runtime *runtime = substream->runtime;
-+	int memif_num = rtd->cpu_dai->id;
-+	struct mtk_base_afe_memif *memif = &afe->memif[memif_num];
-+	const struct snd_pcm_hardware *mtk_afe_hardware = afe->mtk_afe_hardware;
-+	int ret;
-+
-+	memif->substream = substream;
-+
-+	snd_pcm_hw_constraint_step(substream->runtime, 0,
-+				   SNDRV_PCM_HW_PARAM_BUFFER_BYTES, 16);
-+	/*enable agent*/
-+	mtk_regmap_update_bits(afe->regmap, memif->data->agent_disable_reg,
-+			       1 << memif->data->agent_disable_shift,
-+			       0 << memif->data->agent_disable_shift);
-+
-+	snd_soc_set_runtime_hwparams(substream, mtk_afe_hardware);
-+
-+	/*
-+	 * Capture cannot use ping-pong buffer since hw_ptr at IRQ may be
-+	 * smaller than period_size due to AFE's internal buffer.
-+	 * This easily leads to overrun when avail_min is period_size.
-+	 * One more period can hold the possible unread buffer.
-+	 */
-+	if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
-+		int periods_max = mtk_afe_hardware->periods_max;
-+
-+		ret = snd_pcm_hw_constraint_minmax(runtime,
-+						   SNDRV_PCM_HW_PARAM_PERIODS,
-+						   3, periods_max);
-+		if (ret < 0) {
-+			dev_err(afe->dev, "hw_constraint_minmax failed\n");
-+			return ret;
-+		}
-+	}
-+
-+	ret = snd_pcm_hw_constraint_integer(runtime,
-+					    SNDRV_PCM_HW_PARAM_PERIODS);
-+	if (ret < 0)
-+		dev_err(afe->dev, "snd_pcm_hw_constraint_integer failed\n");
-+
-+	/*dynamic allocate irq to memif */
-+	if (memif->irq_usage < 0) {
-+		int irq_id = mtk_dynamic_irq_acquire(afe);
-+
-+		if (irq_id != afe->irqs_size) {
-+			/* link */
-+			memif->irq_usage = irq_id;
-+		} else {
-+			dev_err(afe->dev, "%s() error: no more asys irq\n",
-+				__func__);
-+			ret = -EBUSY;
-+		}
-+	}
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_startup);
-+
-+void mtk_afe_fe_shutdown(struct snd_pcm_substream *substream,
-+			 struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	int irq_id;
-+
-+	irq_id = memif->irq_usage;
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->agent_disable_reg,
-+			       1 << memif->data->agent_disable_shift,
-+			       1 << memif->data->agent_disable_shift);
-+
-+	if (!memif->const_irq) {
-+		mtk_dynamic_irq_release(afe, irq_id);
-+		memif->irq_usage = -1;
-+		memif->substream = NULL;
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_shutdown);
-+
-+int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
-+			 struct snd_pcm_hw_params *params,
-+			 struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	int msb_at_bit33 = 0;
-+	int ret, fs = 0;
-+
-+	ret = snd_pcm_lib_malloc_pages(substream, params_buffer_bytes(params));
-+	if (ret < 0)
-+		return ret;
-+
-+	msb_at_bit33 = upper_32_bits(substream->runtime->dma_addr) ? 1 : 0;
-+	memif->phys_buf_addr = lower_32_bits(substream->runtime->dma_addr);
-+	memif->buffer_size = substream->runtime->dma_bytes;
-+
-+	/* start */
-+	mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base,
-+			 memif->phys_buf_addr);
-+	/* end */
-+	mtk_regmap_write(afe->regmap,
-+			 memif->data->reg_ofs_base + AFE_BASE_END_OFFSET,
-+			 memif->phys_buf_addr + memif->buffer_size - 1);
-+
-+	/* set MSB to 33-bit */
-+	mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
-+			       1 << memif->data->msb_shift,
-+			       msb_at_bit33 << memif->data->msb_shift);
-+
-+	/* set channel */
-+	if (memif->data->mono_shift >= 0) {
-+		unsigned int mono = (params_channels(params) == 1) ? 1 : 0;
-+
-+		mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
-+				       1 << memif->data->mono_shift,
-+				       mono << memif->data->mono_shift);
-+	}
-+
-+	/* set rate */
-+	if (memif->data->fs_shift < 0)
-+		return 0;
-+
-+	fs = afe->memif_fs(substream, params_rate(params));
-+
-+	if (fs < 0)
-+		return -EINVAL;
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->fs_reg,
-+			       memif->data->fs_maskbit << memif->data->fs_shift,
-+			       fs << memif->data->fs_shift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_hw_params);
-+
-+int mtk_afe_fe_hw_free(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai)
-+{
-+	return snd_pcm_lib_free_pages(substream);
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_hw_free);
-+
-+int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
-+		       struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_pcm_runtime * const runtime = substream->runtime;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	struct mtk_base_afe_irq *irqs = &afe->irqs[memif->irq_usage];
-+	const struct mtk_base_irq_data *irq_data = irqs->irq_data;
-+	unsigned int counter = runtime->period_size;
-+	int fs;
-+
-+	dev_dbg(afe->dev, "%s %s cmd=%d\n", __func__, memif->data->name, cmd);
-+
-+	switch (cmd) {
-+	case SNDRV_PCM_TRIGGER_START:
-+	case SNDRV_PCM_TRIGGER_RESUME:
-+		if (memif->data->enable_shift >= 0)
-+			mtk_regmap_update_bits(afe->regmap,
-+					       memif->data->enable_reg,
-+					       1 << memif->data->enable_shift,
-+					       1 << memif->data->enable_shift);
-+
-+		/* set irq counter */
-+		mtk_regmap_update_bits(afe->regmap, irq_data->irq_cnt_reg,
-+				       irq_data->irq_cnt_maskbit
-+				       << irq_data->irq_cnt_shift,
-+				       counter << irq_data->irq_cnt_shift);
-+
-+		/* set irq fs */
-+		fs = afe->irq_fs(substream, runtime->rate);
-+
-+		if (fs < 0)
-+			return -EINVAL;
-+
-+		mtk_regmap_update_bits(afe->regmap, irq_data->irq_fs_reg,
-+				       irq_data->irq_fs_maskbit
-+				       << irq_data->irq_fs_shift,
-+				       fs << irq_data->irq_fs_shift);
-+
-+		/* enable interrupt */
-+		mtk_regmap_update_bits(afe->regmap, irq_data->irq_en_reg,
-+				       1 << irq_data->irq_en_shift,
-+				       1 << irq_data->irq_en_shift);
-+
-+		return 0;
-+	case SNDRV_PCM_TRIGGER_STOP:
-+	case SNDRV_PCM_TRIGGER_SUSPEND:
-+		mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
-+				       1 << memif->data->enable_shift, 0);
-+		/* disable interrupt */
-+		mtk_regmap_update_bits(afe->regmap, irq_data->irq_en_reg,
-+				       1 << irq_data->irq_en_shift,
-+				       0 << irq_data->irq_en_shift);
-+		/* and clear pending IRQ */
-+		mtk_regmap_write(afe->regmap, irq_data->irq_clr_reg,
-+				 1 << irq_data->irq_clr_shift);
-+		return 0;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_trigger);
-+
-+int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai)
-+{
-+	struct snd_soc_pcm_runtime *rtd  = substream->private_data;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	int hd_audio = 0;
-+
-+	/*set hd mode*/
-+	switch (substream->runtime->format) {
-+	case SNDRV_PCM_FORMAT_S16_LE:
-+		hd_audio = 0;
-+		break;
-+	case SNDRV_PCM_FORMAT_S32_LE:
-+		hd_audio = 1;
-+		break;
-+	case SNDRV_PCM_FORMAT_S24_LE:
-+		hd_audio = 1;
-+		break;
-+	default:
-+		dev_err(afe->dev, "%s() error: unsupported format %d\n",
-+			__func__, substream->runtime->format);
-+		break;
-+	}
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->hd_reg,
-+			       1 << memif->data->hd_shift,
-+			       hd_audio << memif->data->hd_shift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_prepare);
-+
-+const struct snd_soc_dai_ops mtk_afe_fe_ops = {
-+	.startup	= mtk_afe_fe_startup,
-+	.shutdown	= mtk_afe_fe_shutdown,
-+	.hw_params	= mtk_afe_fe_hw_params,
-+	.hw_free	= mtk_afe_fe_hw_free,
-+	.prepare	= mtk_afe_fe_prepare,
-+	.trigger	= mtk_afe_fe_trigger,
-+};
-+EXPORT_SYMBOL_GPL(mtk_afe_fe_ops);
-+
-+static DEFINE_MUTEX(irqs_lock);
-+int mtk_dynamic_irq_acquire(struct mtk_base_afe *afe)
-+{
-+	int i;
-+
-+	mutex_lock(&afe->irq_alloc_lock);
-+	for (i = 0; i < afe->irqs_size; ++i) {
-+		if (afe->irqs[i].irq_occupyed == 0) {
-+			afe->irqs[i].irq_occupyed = 1;
-+			mutex_unlock(&afe->irq_alloc_lock);
-+			return i;
-+		}
-+	}
-+	mutex_unlock(&afe->irq_alloc_lock);
-+	return afe->irqs_size;
-+}
-+EXPORT_SYMBOL_GPL(mtk_dynamic_irq_acquire);
-+
-+int mtk_dynamic_irq_release(struct mtk_base_afe *afe, int irq_id)
-+{
-+	mutex_lock(&afe->irq_alloc_lock);
-+	if (irq_id >= 0 && irq_id < afe->irqs_size) {
-+		afe->irqs[irq_id].irq_occupyed = 0;
-+		mutex_unlock(&afe->irq_alloc_lock);
-+		return 0;
-+	}
-+	mutex_unlock(&afe->irq_alloc_lock);
-+	return -EINVAL;
-+}
-+EXPORT_SYMBOL_GPL(mtk_dynamic_irq_release);
-+
-+int mtk_afe_dai_suspend(struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dai->dev);
-+	struct device *dev = afe->dev;
-+	struct regmap *regmap = afe->regmap;
-+	int i;
-+
-+	if (pm_runtime_status_suspended(dev) || afe->suspended)
-+		return 0;
-+
-+	if (!afe->reg_back_up)
-+		afe->reg_back_up =
-+			devm_kcalloc(dev, afe->reg_back_up_list_num,
-+				     sizeof(unsigned int), GFP_KERNEL);
-+
-+	for (i = 0; i < afe->reg_back_up_list_num; i++)
-+		regmap_read(regmap, afe->reg_back_up_list[i],
-+			    &afe->reg_back_up[i]);
-+
-+	afe->suspended = true;
-+	afe->runtime_suspend(dev);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_dai_suspend);
-+
-+int mtk_afe_dai_resume(struct snd_soc_dai *dai)
-+{
-+	struct mtk_base_afe *afe = dev_get_drvdata(dai->dev);
-+	struct device *dev = afe->dev;
-+	struct regmap *regmap = afe->regmap;
-+	int i = 0;
-+
-+	if (pm_runtime_status_suspended(dev) || !afe->suspended)
-+		return 0;
-+
-+	afe->runtime_resume(dev);
-+
-+	if (!afe->reg_back_up)
-+		dev_dbg(dev, "%s no reg_backup\n", __func__);
-+
-+	for (i = 0; i < afe->reg_back_up_list_num; i++)
-+		mtk_regmap_write(regmap, afe->reg_back_up_list[i],
-+				 afe->reg_back_up[i]);
-+
-+	afe->suspended = false;
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_afe_dai_resume);
-+
-+MODULE_DESCRIPTION("Mediatek simple fe dai operator");
-+MODULE_AUTHOR("Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_LICENSE("GPL v2");
-+
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-new file mode 100644
-index 0000000..28cb178
---- /dev/null
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-@@ -0,0 +1,45 @@
-+/*
-+ * mtk-afe-fe-dais.h  --  Mediatek afe fe dai operator definition
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef _MTK_AFE_FE_DAI_H_
-+#define _MTK_AFE_FE_DAI_H_
-+
-+struct snd_soc_dai_ops;
-+struct mtk_base_afe;
-+struct mtk_base_afe_memif;
-+
-+int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai);
-+void mtk_afe_fe_shutdown(struct snd_pcm_substream *substream,
-+			 struct snd_soc_dai *dai);
-+int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
-+			 struct snd_pcm_hw_params *params,
-+			 struct snd_soc_dai *dai);
-+int mtk_afe_fe_hw_free(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai);
-+int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
-+		       struct snd_soc_dai *dai);
-+int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
-+		       struct snd_soc_dai *dai);
-+
-+extern const struct snd_soc_dai_ops mtk_afe_fe_ops;
-+
-+int mtk_dynamic_irq_acquire(struct mtk_base_afe *afe);
-+int mtk_dynamic_irq_release(struct mtk_base_afe *afe, int irq_id);
-+int mtk_afe_dai_suspend(struct snd_soc_dai *dai);
-+int mtk_afe_dai_resume(struct snd_soc_dai *dai);
-+
-+#endif
-diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-new file mode 100644
-index 0000000..82d439c
---- /dev/null
-+++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-@@ -0,0 +1,90 @@
-+/*
-+ * mtk-afe-platform-driver.c  --  Mediatek afe platform driver
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/dma-mapping.h>
-+#include <sound/soc.h>
-+
-+#include "mtk-afe-platform-driver.h"
-+#include "mtk-base-afe.h"
-+
-+static snd_pcm_uframes_t mtk_afe_pcm_pointer
-+			 (struct snd_pcm_substream *substream)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
-+	const struct mtk_base_memif_data *memif_data = memif->data;
-+	struct regmap *regmap = afe->regmap;
-+	struct device *dev = afe->dev;
-+	int reg_ofs_base = memif_data->reg_ofs_base;
-+	int reg_ofs_cur = memif_data->reg_ofs_cur;
-+	unsigned int hw_ptr = 0, hw_base = 0;
-+	int ret, pcm_ptr_bytes;
-+
-+	ret = regmap_read(regmap, reg_ofs_cur, &hw_ptr);
-+	if (ret || hw_ptr == 0) {
-+		dev_err(dev, "%s hw_ptr err\n", __func__);
-+		pcm_ptr_bytes = 0;
-+		goto POINTER_RETURN_FRAMES;
-+	}
-+
-+	ret = regmap_read(regmap, reg_ofs_base, &hw_base);
-+	if (ret || hw_base == 0) {
-+		dev_err(dev, "%s hw_ptr err\n", __func__);
-+		pcm_ptr_bytes = 0;
-+		goto POINTER_RETURN_FRAMES;
-+	}
-+
-+	pcm_ptr_bytes = hw_ptr - hw_base;
-+
-+POINTER_RETURN_FRAMES:
-+	return bytes_to_frames(substream->runtime, pcm_ptr_bytes);
-+}
-+
-+static const struct snd_pcm_ops mtk_afe_pcm_ops = {
-+	.ioctl = snd_pcm_lib_ioctl,
-+	.pointer = mtk_afe_pcm_pointer,
-+};
-+
-+static int mtk_afe_pcm_new(struct snd_soc_pcm_runtime *rtd)
-+{
-+	size_t size;
-+	struct snd_card *card = rtd->card->snd_card;
-+	struct snd_pcm *pcm = rtd->pcm;
-+	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
-+
-+	size = afe->mtk_afe_hardware->buffer_bytes_max;
-+	return snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV,
-+						     card->dev, size, size);
-+}
-+
-+static void mtk_afe_pcm_free(struct snd_pcm *pcm)
-+{
-+	snd_pcm_lib_preallocate_free_for_all(pcm);
-+}
-+
-+const struct snd_soc_platform_driver mtk_afe_pcm_platform = {
-+	.ops = &mtk_afe_pcm_ops,
-+	.pcm_new = mtk_afe_pcm_new,
-+	.pcm_free = mtk_afe_pcm_free,
-+};
-+EXPORT_SYMBOL_GPL(mtk_afe_pcm_platform);
-+
-+MODULE_DESCRIPTION("Mediatek simple platform driver");
-+MODULE_AUTHOR("Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_LICENSE("GPL v2");
-+
-diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.h b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-new file mode 100644
-index 0000000..a973fc9
---- /dev/null
-+++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-@@ -0,0 +1,23 @@
-+/*
-+ * mtk-afe-platform-driver.h  --  Mediatek afe platform driver definition
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef _MTK_AFE_PLATFORM_DRIVER_H_
-+#define _MTK_AFE_PLATFORM_DRIVER_H_
-+
-+extern const struct snd_soc_platform_driver mtk_afe_pcm_platform;
-+
-+#endif
-+
-diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
-new file mode 100644
-index 0000000..3a78f6f
---- /dev/null
-+++ b/sound/soc/mediatek/common/mtk-base-afe.h
-@@ -0,0 +1,104 @@
-+/*
-+ * mtk-base-afe.h  --  Mediatek base afe structure
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef _MTK_BASE_AFE_H_
-+#define _MTK_BASE_AFE_H_
-+
-+struct mtk_base_memif_data {
-+	int id;
-+	const char *name;
-+	int reg_ofs_base;
-+	int reg_ofs_cur;
-+	int fs_reg;
-+	int fs_shift;
-+	int fs_maskbit;
-+	int mono_reg;
-+	int mono_shift;
-+	int enable_reg;
-+	int enable_shift;
-+	int hd_reg;
-+	int hd_shift;
-+	int msb_reg;
-+	int msb_shift;
-+	int agent_disable_reg;
-+	int agent_disable_shift;
-+};
-+
-+struct mtk_base_irq_data {
-+	int id;
-+	int irq_cnt_reg;
-+	int irq_cnt_shift;
-+	int irq_cnt_maskbit;
-+	int irq_fs_reg;
-+	int irq_fs_shift;
-+	int irq_fs_maskbit;
-+	int irq_en_reg;
-+	int irq_en_shift;
-+	int irq_clr_reg;
-+	int irq_clr_shift;
-+};
-+
-+struct device;
-+struct mtk_base_afe_memif;
-+struct mtk_base_afe_irq;
-+struct regmap;
-+struct snd_pcm_substream;
-+struct snd_soc_dai;
-+
-+struct mtk_base_afe {
-+	void __iomem *base_addr;
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct mutex irq_alloc_lock; /* dynamic alloc irq lock */
-+
-+	unsigned int const *reg_back_up_list;
-+	unsigned int *reg_back_up;
-+	unsigned int reg_back_up_list_num;
-+
-+	int (*runtime_suspend)(struct device *dev);
-+	int (*runtime_resume)(struct device *dev);
-+	bool suspended;
-+
-+	struct mtk_base_afe_memif *memif;
-+	int memif_size;
-+	struct mtk_base_afe_irq *irqs;
-+	int irqs_size;
-+
-+	const struct snd_pcm_hardware *mtk_afe_hardware;
-+	int (*memif_fs)(struct snd_pcm_substream *substream,
-+			unsigned int rate);
-+	int (*irq_fs)(struct snd_pcm_substream *substream,
-+		      unsigned int rate);
-+
-+	void *platform_priv;
-+};
-+
-+struct mtk_base_afe_memif {
-+	unsigned int phys_buf_addr;
-+	int buffer_size;
-+	struct snd_pcm_substream *substream;
-+	const struct mtk_base_memif_data *data;
-+	int irq_usage;
-+	int const_irq;
-+};
-+
-+struct mtk_base_afe_irq {
-+	const struct mtk_base_irq_data *irq_data;
-+	int irq_occupyed;
-+};
-+
-+#endif
-+
--- 
-1.9.1
+SGksIFlUOgoKT25lIGNvbW1lbnQgaW5saW5lLgoKT24gVGh1LCAyMDE2LTA2LTA5IGF0IDAwOjAz
+ICswODAwLCBZVCBTaGVuIHdyb3RlOgo+IFdlIG5lZWQgdG8gYWNxdWlyZSBtdXRleCBiZWZvcmUg
+dXNpbmcgdGhlIHJlc291cmNlcywKPiBhbmQgbmVlZCB0byByZWxlYXNlIGl0IGFmdGVyIGZpbmlz
+aGVkLgo+IFNvIHdlIGRvbid0IG5lZWQgdG8gd3JpdGUgcmVnaXN0ZXJzIGluIHRoZSBibGFua2lu
+ZyBwZXJpb2QuCj4gCj4gU2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5j
+b20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8ICAg
+NzUgKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHAuYyAgfCAgIDIyICsrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kZHAuaCAgfCAgICAyICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZHJ2LmMgIHwgICAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2Rydi5oICB8ICAgIDEgKwo+ICA1IGZpbGVzIGNoYW5nZWQsIDcyIGluc2VydGlvbnMo
+KyksIDI5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9j
+cnRjLmMKPiBpbmRleCAyNGFhM2JhLi44MGQ5NjQxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2NydGMuYwo+IEBAIC0zMTUsNiArMzE1LDQyIEBAIHN0YXRpYyB2b2lkIG10
+a19jcnRjX2RkcF9od19maW5pKHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQo+ICAJcG1f
+cnVudGltZV9wdXQoZHJtLT5kZXYpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfY3J0Y19k
+ZHBfY29uZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiArewo+ICsJc3RydWN0IG10a19kcm1f
+Y3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiArCXN0cnVjdCBtdGtfY3J0Y19z
+dGF0ZSAqc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShtdGtfY3J0Yy0+YmFzZS5zdGF0ZSk7Cj4g
+KwlzdHJ1Y3QgbXRrX2RkcF9jb21wICpvdmwgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBbMF07Cj4gKwl1
+bnNpZ25lZCBpbnQgaTsKPiArCj4gKwkvKgo+ICsJICogVE9ETzogaW5zdGVhZCBvZiB1cGRhdGlu
+ZyB0aGUgcmVnaXN0ZXJzIGhlcmUsIHdlIHNob3VsZCBwcmVwYXJlCj4gKwkgKiB3b3JraW5nIHJl
+Z2lzdGVycyBpbiBhdG9taWNfY29tbWl0IGFuZCBsZXQgdGhlIGhhcmR3YXJlIGNvbW1hbmQKPiAr
+CSAqIHF1ZXVlIHVwZGF0ZSBtb2R1bGUgcmVnaXN0ZXJzIG9uIHZibGFuay4KPiArCSAqLwo+ICsJ
+aWYgKHN0YXRlLT5wZW5kaW5nX2NvbmZpZykgewo+ICsJCW10a19kZHBfY29tcF9jb25maWcob3Zs
+LCBzdGF0ZS0+cGVuZGluZ193aWR0aCwKPiArCQkJCSAgICBzdGF0ZS0+cGVuZGluZ19oZWlnaHQs
+Cj4gKwkJCQkgICAgc3RhdGUtPnBlbmRpbmdfdnJlZnJlc2gpOwo+ICsKPiArCQlzdGF0ZS0+cGVu
+ZGluZ19jb25maWcgPSBmYWxzZTsKPiArCX0KPiArCj4gKwlpZiAobXRrX2NydGMtPnBlbmRpbmdf
+cGxhbmVzKSB7Cj4gKwkJZm9yIChpID0gMDsgaSA8IE9WTF9MQVlFUl9OUjsgaSsrKSB7Cj4gKwkJ
+CXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV0uYmFzZTsKPiAr
+CQkJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7Cj4gKwo+ICsJCQlwbGFuZV9z
+dGF0ZSA9IHRvX210a19wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+ICsKPiArCQkJaWYgKHBs
+YW5lX3N0YXRlLT5wZW5kaW5nLmNvbmZpZykgewo+ICsJCQkJbXRrX2RkcF9jb21wX2xheWVyX2Nv
+bmZpZyhvdmwsIGksIHBsYW5lX3N0YXRlKTsKPiArCQkJCXBsYW5lX3N0YXRlLT5wZW5kaW5nLmNv
+bmZpZyA9IGZhbHNlOwo+ICsJCQl9Cj4gKwkJfQo+ICsJCW10a19jcnRjLT5wZW5kaW5nX3BsYW5l
+cyA9IGZhbHNlOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfZW5h
+YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgewo+ICAJc3RydWN0IG10a19kcm1fY3J0YyAq
+bXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiBAQCAtMzkxLDYgKzQyNyw3IEBAIHN0YXRp
+YyB2b2lkIG10a19kcm1fY3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAo+
+ICAJCQkJICAgICAgc3RydWN0IGRybV9jcnRjX3N0YXRlICpvbGRfY3J0Y19zdGF0ZSkKPiAgewo+
+ICAJc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiAr
+CXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnByaXYgPSBjcnRjLT5kZXYtPmRldl9wcml2YXRlOwo+
+ICAJdW5zaWduZWQgaW50IHBlbmRpbmdfcGxhbmVzID0gMDsKPiAgCWludCBpOwo+ICAKPiBAQCAt
+NDA5LDYgKzQ0NiwxMiBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2ZsdXNoKHN0
+cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgCX0KPiAgCWlmIChwZW5kaW5nX3BsYW5lcykKPiAgCQlt
+dGtfY3J0Yy0+cGVuZGluZ19wbGFuZXMgPSB0cnVlOwo+ICsKPiArCWlmIChwcml2LT5kYXRhLT5z
+aGFkb3dfcmVnaXN0ZXIpIHsKPiArCQltdGtfZGlzcF9tdXRleF9hY3F1aXJlKG10a19jcnRjLT5t
+dXRleCk7Cj4gKwkJbXRrX2NydGNfZGRwX2NvbmZpZyhjcnRjKTsKPiArCQltdGtfZGlzcF9tdXRl
+eF9yZWxlYXNlKG10a19jcnRjLT5tdXRleCk7Cj4gKwl9Cj4gIH0KPiAgCj4gIHN0YXRpYyBjb25z
+dCBzdHJ1Y3QgZHJtX2NydGNfZnVuY3MgbXRrX2NydGNfZnVuY3MgPSB7Cj4gQEAgLTQ1MywzNiAr
+NDk2LDEwIEBAIGVycl9jbGVhbnVwX2NydGM6Cj4gIHZvaWQgbXRrX2NydGNfZGRwX2lycShzdHJ1
+Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVjdCBtdGtfZGRwX2NvbXAgKm92bCkKPiAgewo+ICAJc3Ry
+dWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiAtCXN0cnVj
+dCBtdGtfY3J0Y19zdGF0ZSAqc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShtdGtfY3J0Yy0+YmFz
+ZS5zdGF0ZSk7Cj4gLQl1bnNpZ25lZCBpbnQgaTsKPiArCXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUg
+KnByaXYgPSBjcnRjLT5kZXYtPmRldl9wcml2YXRlOwo+ICAKPiAtCS8qCj4gLQkgKiBUT0RPOiBp
+bnN0ZWFkIG9mIHVwZGF0aW5nIHRoZSByZWdpc3RlcnMgaGVyZSwgd2Ugc2hvdWxkIHByZXBhcmUK
+PiAtCSAqIHdvcmtpbmcgcmVnaXN0ZXJzIGluIGF0b21pY19jb21taXQgYW5kIGxldCB0aGUgaGFy
+ZHdhcmUgY29tbWFuZAo+IC0JICogcXVldWUgdXBkYXRlIG1vZHVsZSByZWdpc3RlcnMgb24gdmJs
+YW5rLgo+IC0JICovCj4gLQlpZiAoc3RhdGUtPnBlbmRpbmdfY29uZmlnKSB7Cj4gLQkJbXRrX2Rk
+cF9jb21wX2NvbmZpZyhvdmwsIHN0YXRlLT5wZW5kaW5nX3dpZHRoLAo+IC0JCQkJICAgIHN0YXRl
+LT5wZW5kaW5nX2hlaWdodCwKPiAtCQkJCSAgICBzdGF0ZS0+cGVuZGluZ192cmVmcmVzaCk7Cj4g
+LQo+IC0JCXN0YXRlLT5wZW5kaW5nX2NvbmZpZyA9IGZhbHNlOwo+IC0JfQo+IC0KPiAtCWlmICht
+dGtfY3J0Yy0+cGVuZGluZ19wbGFuZXMpIHsKPiAtCQlmb3IgKGkgPSAwOyBpIDwgT1ZMX0xBWUVS
+X05SOyBpKyspIHsKPiAtCQkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBs
+YW5lc1tpXS5iYXNlOwo+IC0JCQlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsK
+PiAtCj4gLQkJCXBsYW5lX3N0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7
+Cj4gLQo+IC0JCQlpZiAocGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmlnKSB7Cj4gLQkJCQltdGtf
+ZGRwX2NvbXBfbGF5ZXJfY29uZmlnKG92bCwgaSwgcGxhbmVfc3RhdGUpOwo+IC0JCQkJcGxhbmVf
+c3RhdGUtPnBlbmRpbmcuY29uZmlnID0gZmFsc2U7Cj4gLQkJCX0KPiAtCQl9Cj4gLQkJbXRrX2Ny
+dGMtPnBlbmRpbmdfcGxhbmVzID0gZmFsc2U7Cj4gLQl9Cj4gKwlpZiAoIXByaXYtPmRhdGEtPnNo
+YWRvd19yZWdpc3RlcikKPiArCQltdGtfY3J0Y19kZHBfY29uZmlnKGNydGMpOwo+ICAKPiAgCW10
+a19kcm1fZmluaXNoX3BhZ2VfZmxpcChtdGtfY3J0Yyk7Cj4gIH0KPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHAuYwo+IGluZGV4IDgwMzA3NjkuLmZhNTM4MDYgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+IEBAIC0xMiw2ICsxMiw3IEBACj4gICAq
+Lwo+ICAKPiAgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICsjaW5jbHVkZSA8bGludXgvaW9wb2xs
+Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2Rl
+dmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gQEAgLTMyLDYg
+KzMzLDcgQEAKPiAgI2RlZmluZSBESVNQX1JFR19DT05GSUdfTU1TWVNfQ0dfQ09OMAkJMHgxMDAK
+PiAgCj4gICNkZWZpbmUgRElTUF9SRUdfTVVURVhfRU4obikJKDB4MjAgKyAweDIwICogKG4pKQo+
+ICsjZGVmaW5lIERJU1BfUkVHX01VVEVYKG4pCSgweDI0ICsgMHgyMCAqIChuKSkKPiAgI2RlZmlu
+ZSBESVNQX1JFR19NVVRFWF9SU1QobikJKDB4MjggKyAweDIwICogKG4pKQo+ICAjZGVmaW5lIERJ
+U1BfUkVHX01VVEVYX01PRChuKQkoMHgyYyArIDB4MjAgKiAobikpCj4gICNkZWZpbmUgRElTUF9S
+RUdfTVVURVhfU09GKG4pCSgweDMwICsgMHgyMCAqIChuKSkKPiBAQCAtMzAwLDYgKzMwMiwyNiBA
+QCB2b2lkIG10a19kaXNwX211dGV4X2Rpc2FibGUoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRl
+eCkKPiAgCXdyaXRlbCgwLCBkZHAtPnJlZ3MgKyBESVNQX1JFR19NVVRFWF9FTihtdXRleC0+aWQp
+KTsKPiAgfQo+ICAKPiArdm9pZCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKHN0cnVjdCBtdGtfZGlz
+cF9tdXRleCAqbXV0ZXgpCj4gK3sKPiArCXN0cnVjdCBtdGtfZGRwICpkZHAgPSBjb250YWluZXJf
+b2YobXV0ZXgsIHN0cnVjdCBtdGtfZGRwLAo+ICsJCQkJCSAgIG11dGV4W211dGV4LT5pZF0pOwo+
+ICsJdTMyIHRtcDsKPiArCj4gKwl3cml0ZWwoMSwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVhf
+RU4obXV0ZXgtPmlkKSk7Cj4gKwl3cml0ZWwoMSwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVgo
+bXV0ZXgtPmlkKSk7Cj4gKwlyZWFkbF9wb2xsX3RpbWVvdXRfYXRvbWljKGRkcC0+cmVncyArIERJ
+U1BfUkVHX01VVEVYKG11dGV4LT5pZCksIHRtcCwKPiArCQkJCSAgdG1wICYgMHgyLCAxLCAxMDAw
+MCk7Cj4gK30KPiArCj4gK3ZvaWQgbXRrX2Rpc3BfbXV0ZXhfcmVsZWFzZShzdHJ1Y3QgbXRrX2Rp
+c3BfbXV0ZXggKm11dGV4KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2RkcCAqZGRwID0gY29udGFpbmVy
+X29mKG11dGV4LCBzdHJ1Y3QgbXRrX2RkcCwKPiArCQkJCQkgICBtdXRleFttdXRleC0+aWRdKTsK
+PiArCj4gKwl3cml0ZWwoMCwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVgobXV0ZXgtPmlkKSk7
+Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgbXRrX2RkcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
+aWNlICpwZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaCBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oCj4gaW5kZXggOTJjMTE3NS4uZjlhNzk5
+MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaAo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oCj4gQEAgLTM3LDUg
+KzM3LDcgQEAgdm9pZCBtdGtfZGlzcF9tdXRleF9yZW1vdmVfY29tcChzdHJ1Y3QgbXRrX2Rpc3Bf
+bXV0ZXggKm11dGV4LAo+ICAJCQkJZW51bSBtdGtfZGRwX2NvbXBfaWQgaWQpOwo+ICB2b2lkIG10
+a19kaXNwX211dGV4X3VucHJlcGFyZShzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4KTsKPiAg
+dm9pZCBtdGtfZGlzcF9tdXRleF9wdXQoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRleCk7Cj4g
+K3ZvaWQgbXRrX2Rpc3BfbXV0ZXhfYWNxdWlyZShzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4
+KTsKPiArdm9pZCBtdGtfZGlzcF9tdXRleF9yZWxlYXNlKHN0cnVjdCBtdGtfZGlzcF9tdXRleCAq
+bXV0ZXgpOwo+ICAKPiAgI2VuZGlmIC8qIE1US19EUk1fRERQX0ggKi8KPiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IGluZGV4IDgwYjRmNTQuLmU5ZWI1MzUgMTAwNjQ0Cj4g
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC0xMzMsNiArMTMzLDcgQEAg
+c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQ4MTczX21tc3lzX2Ry
+aXZlcl9kYXRhID0gewo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9t
+YWluKSwKPiAgCS5leHRfcGF0aCA9IG10ODE3M19tdGtfZGRwX2V4dCwKPiAgCS5leHRfbGVuID0g
+QVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9leHQpLAo+ICsJLnNoYWRvd19yZWdpc3RlciA9IGZh
+bHNlLAoKZ2xvYmFsIGRhdGEgaXMgaW5pdGlhbGl6ZWQgYXMgemVyby4KCj4gIH07Cj4gIAo+ICBz
+dGF0aWMgaW50IG10a19kcm1fa21zX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggYi9kcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IGluZGV4IGZhMGIxMDYuLjk0ZjhiNjYg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IEBAIC0zMyw2ICsz
+Myw3IEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgewo+ICAJdW5zaWduZWQgaW50IG1h
+aW5fbGVuOwo+ICAJY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgKmV4dF9wYXRoOwo+ICAJdW5z
+aWduZWQgaW50IGV4dF9sZW47Cj4gKwlib29sIHNoYWRvd19yZWdpc3RlcjsKPiAgfTsKPiAgCj4g
+IHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
