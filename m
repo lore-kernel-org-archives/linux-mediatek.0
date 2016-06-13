@@ -1,243 +1,923 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [RFC v3 4/5] drm/mediatek: add support for Mediatek SoC MT2701
-Date: Mon, 13 Jun 2016 13:56:06 +0800
-Message-ID: <1465797366.27253.2.camel@mtksdaap41>
-References: <1465401825-43642-1-git-send-email-yt.shen@mediatek.com>
- <1465401825-43642-5-git-send-email-yt.shen@mediatek.com>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: [alsa-devel] [PATCH v3 5/9] ASoC: mediatek: add structure define and clock control for 2701
+Date: Mon, 13 Jun 2016 14:24:08 +0800
+Message-ID: <1465799052-9657-6-git-send-email-garlic.tseng@mediatek.com>
+References: <1465799052-9657-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465401825-43642-5-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465799052-9657-1-git-send-email-garlic.tseng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: garlic.tseng@mediatek.com, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKU29tZSBjb21tZW50cyBpbmxpbmUuCgpPbiBUaHUsIDIwMTYtMDYtMDkgYXQgMDA6
-MDMgKzA4MDAsIFlUIFNoZW4gd3JvdGU6Cj4gVGhpcyBwYXRjaCBhZGQgc3VwcG9ydCBmb3IgdGhl
-IE1lZGlhdGVrIE1UMjcwMSBESVNQIHN1YnN5c3RlbS4KPiBUaGVyZSBpcyBvbmx5IG9uZSBPVkwg
-ZW5naW5lIGluIE1UMjcwMS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVuQG1l
-ZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292
-bC5jICAgICB8ICAgIDYgKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bf
-cmRtYS5jICAgIHwgICAgNiArKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2RkcC5jICAgICAgfCAgIDQyICsrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgICAgOCArKysrKwo+ICBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgICAgMiArKwo+ICBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyAgICAgIHwgICAzMSArKysrKysrKysr
-KysrKysrKysrKwo+ICA2IGZpbGVzIGNoYW5nZWQsIDk1IGluc2VydGlvbnMoKykKPiAKPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jIGIvZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCj4gaW5kZXggZWI1YzA1ZS4uMWRhMGE3
-MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMK
-PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiBAQCAtMjg2
-LDExICsyODYsMTcgQEAgc3RhdGljIGludCBtdGtfZGlzcF9vdmxfcmVtb3ZlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiArc3RhdGljIGNvbnN0
-IHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgbXQyNzAxX292bF9kcml2ZXJfZGF0YSA9
-IHsKPiArCS5vdmwgPSB7MHgwMDQwLCAxIDw8IDEyLCAwfQo+ICt9Owo+ICsKPiAgc3RhdGljIGNv
-bnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgbXQ4MTczX292bF9kcml2ZXJfZGF0
-YSA9IHsKPiAgCS5vdmwgPSB7MHgwZjQwLCAwLCAxIDw8IDEyfQo+ICB9Owo+ICAKPiAgc3RhdGlj
-IGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2Rpc3Bfb3ZsX2RyaXZlcl9kdF9tYXRjaFtd
-ID0gewo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1vdmwiLAo+ICsJ
-ICAuZGF0YSA9ICZtdDI3MDFfb3ZsX2RyaXZlcl9kYXRhfSwKPiAgCXsgLmNvbXBhdGlibGUgPSAi
-bWVkaWF0ZWssbXQ4MTczLWRpc3Atb3ZsIiwKPiAgCSAgLmRhdGEgPSAmbXQ4MTczX292bF9kcml2
-ZXJfZGF0YX0sCj4gIAl7fSwKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kaXNwX3JkbWEuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1h
-LmMKPiBpbmRleCBmYjBkYjUwLi41MDZhMzUzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2Rpc3BfcmRtYS5jCj4gQEAgLTIyNSwxMSArMjI1LDE3IEBAIHN0YXRpYyBpbnQgbXRr
-X2Rpc3BfcmRtYV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXJldHVy
-biAwOwo+ICB9Cj4gIAo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJf
-ZGF0YSBtdDI3MDFfcmRtYV9kcml2ZXJfZGF0YSA9IHsKPiArCS5yZG1hX2ZpZm9fcHNldWRvX3Np
-emUgPSBTWl80SywKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21w
-X2RyaXZlcl9kYXRhIG10ODE3M19yZG1hX2RyaXZlcl9kYXRhID0gewo+ICAJLnJkbWFfZmlmb19w
-c2V1ZG9fc2l6ZSA9IFNaXzhLLAo+ICB9Owo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9k
-ZXZpY2VfaWQgbXRrX2Rpc3BfcmRtYV9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKPiArCXsgLmNvbXBh
-dGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtcmRtYSIsCj4gKwkgIC5kYXRhID0gJm10Mjcw
-MV9yZG1hX2RyaXZlcl9kYXRhfSwKPiAgCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTcz
-LWRpc3AtcmRtYSIsCj4gIAkgIC5kYXRhID0gJm10ODE3M19yZG1hX2RyaXZlcl9kYXRhfSwKPiAg
-CXt9LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAu
-YyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4gaW5kZXggZmE1Mzgw
-Ni4uN2FiNjk4NiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jCj4g
-QEAgLTMyLDYgKzMyLDEwIEBACj4gICNkZWZpbmUgRElTUF9SRUdfQ09ORklHX0RJU1BfUkRNQTFf
-TU9VVF9FTgkweDBjOAo+ICAjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19NTVNZU19DR19DT04wCQkw
-eDEwMAo+ICAKPiArI2RlZmluZSBESVNQX1JFR19DT05GSUdfRElTUF9PVkxfTU9VVF9FTgkweDAz
-MAo+ICsjZGVmaW5lIERJU1BfUkVHX0NPTkZJR19PVVRfU0VMCQkJMHgwNGMKPiArI2RlZmluZSBE
-SVNQX1JFR19DT05GSUdfRFNJX1NFTAkJCTB4MDUwCgpBbGlnbiB0aGUgZGlnaXRhbCB2YWx1ZS4K
-Cj4gKwo+ICAjZGVmaW5lIERJU1BfUkVHX01VVEVYX0VOKG4pCSgweDIwICsgMHgyMCAqIChuKSkK
-PiAgI2RlZmluZSBESVNQX1JFR19NVVRFWChuKQkoMHgyNCArIDB4MjAgKiAobikpCj4gICNkZWZp
-bmUgRElTUF9SRUdfTVVURVhfUlNUKG4pCSgweDI4ICsgMHgyMCAqIChuKSkKPiBAQCAtNTQsNiAr
-NTgsMTMgQEAKPiAgI2RlZmluZSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfUFdNMQkJQklUKDI0KQo+
-ICAjZGVmaW5lIE1UODE3M19NVVRFWF9NT0RfRElTUF9PRAkJQklUKDI1KQo+ICAKPiArI2RlZmlu
-ZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfT1ZMCQlCSVQoMykKPiArI2RlZmluZSBNVDI3MDFfTVVU
-RVhfTU9EX0RJU1BfV0RNQQkJQklUKDYpCj4gKyNkZWZpbmUgTVQyNzAxX01VVEVYX01PRF9ESVNQ
-X0NPTE9SCQlCSVQoNykKPiArI2RlZmluZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfQkxTCQlCSVQo
-OSkKPiArI2RlZmluZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfUkRNQTAJCUJJVCgxMCkKPiArI2Rl
-ZmluZSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfUkRNQTEJCUJJVCgxMikKPiArCj4gICNkZWZpbmUg
-TVVURVhfU09GX1NJTkdMRV9NT0RFCQkwCj4gICNkZWZpbmUgTVVURVhfU09GX0RTSTAJCQkxCj4g
-ICNkZWZpbmUgTVVURVhfU09GX0RTSTEJCQkyCj4gQEAgLTY5LDYgKzgwLDEwIEBACj4gICNkZWZp
-bmUgRFBJMF9TRUxfSU5fUkRNQTEJCTB4MQo+ICAjZGVmaW5lIENPTE9SMV9TRUxfSU5fT1ZMMQkJ
-MHgxCj4gIAo+ICsjZGVmaW5lIE9WTF9NT1VUX0VOX1JETUEJCTB4MQo+ICsjZGVmaW5lIEJMU19U
-T19EU0lfUkRNQTFfVE9fRFBJMQkweDgKPiArI2RlZmluZSBEU0lfU0VMX0lOX0JMUwkJCTB4MAo+
-ICsKPiAgc3RydWN0IG10a19kaXNwX211dGV4IHsKPiAgCWludCBpZDsKPiAgCWJvb2wgY2xhaW1l
-ZDsKPiBAQCAtODIsNiArOTcsMTUgQEAgc3RydWN0IG10a19kZHAgewo+ICAJY29uc3QgdW5zaWdu
-ZWQgaW50CQkqbXV0ZXhfbW9kOwo+ICB9Owo+ICAKPiArc3RhdGljIGNvbnN0IHVuc2lnbmVkIGlu
-dCBtdDI3MDFfbXV0ZXhfbW9kW0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiArCVtERFBfQ09N
-UE9ORU5UX0JMU10gPSBNVDI3MDFfTVVURVhfTU9EX0RJU1BfQkxTLAo+ICsJW0REUF9DT01QT05F
-TlRfQ09MT1IwXSA9IE1UMjcwMV9NVVRFWF9NT0RfRElTUF9DT0xPUiwKPiArCVtERFBfQ09NUE9O
-RU5UX09WTDBdID0gTVQyNzAxX01VVEVYX01PRF9ESVNQX09WTCwKPiArCVtERFBfQ09NUE9ORU5U
-X1JETUEwXSA9IE1UMjcwMV9NVVRFWF9NT0RfRElTUF9SRE1BMCwKPiArCVtERFBfQ09NUE9ORU5U
-X1JETUExXSA9IE1UMjcwMV9NVVRFWF9NT0RfRElTUF9SRE1BMSwKPiArCVtERFBfQ09NUE9ORU5U
-X1dETUEwXSA9IE1UMjcwMV9NVVRFWF9NT0RfRElTUF9XRE1BLAo+ICt9Owo+ICsKPiAgc3RhdGlj
-IGNvbnN0IHVuc2lnbmVkIGludCBtdDgxNzNfbXV0ZXhfbW9kW0REUF9DT01QT05FTlRfSURfTUFY
-XSA9IHsKPiAgCVtERFBfQ09NUE9ORU5UX0FBTF0gPSBNVDgxNzNfTVVURVhfTU9EX0RJU1BfQUFM
-LAo+ICAJW0REUF9DT01QT05FTlRfQ09MT1IwXSA9IE1UODE3M19NVVRFWF9NT0RfRElTUF9DT0xP
-UjAsCj4gQEAgLTEwOSw2ICsxMzMsOSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfbW91
-dF9lbihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4gIAlpZiAoY3VyID09IEREUF9DT01QT05F
-TlRfT1ZMMCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRfQ09MT1IwKSB7Cj4gIAkJKmFkZHIgPSBE
-SVNQX1JFR19DT05GSUdfRElTUF9PVkwwX01PVVRfRU47Cj4gIAkJdmFsdWUgPSBPVkwwX01PVVRf
-RU5fQ09MT1IwOwo+ICsJfSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9PVkwwICYmIG5l
-eHQgPT0gRERQX0NPTVBPTkVOVF9SRE1BMCkgewo+ICsJCSphZGRyID0gRElTUF9SRUdfQ09ORklH
-X0RJU1BfT1ZMX01PVVRfRU47Cj4gKwkJdmFsdWUgPSBPVkxfTU9VVF9FTl9SRE1BOwo+ICAJfSBl
-bHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9PRCAmJiBuZXh0ID09IEREUF9DT01QT05FTlRf
-UkRNQTApIHsKPiAgCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX09EX01PVVRfRU47Cj4g
-IAkJdmFsdWUgPSBPRF9NT1VUX0VOX1JETUEwOwo+IEBAIC0xNDYsNiArMTczLDkgQEAgc3RhdGlj
-IHVuc2lnbmVkIGludCBtdGtfZGRwX3NlbF9pbihlbnVtIG10a19kZHBfY29tcF9pZCBjdXIsCj4g
-IAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX09WTDEgJiYgbmV4dCA9PSBERFBfQ09N
-UE9ORU5UX0NPTE9SMSkgewo+ICAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfQ09MT1Ix
-X1NFTF9JTjsKPiAgCQl2YWx1ZSA9IENPTE9SMV9TRUxfSU5fT1ZMMTsKPiArCX0gZWxzZSBpZiAo
-Y3VyID09IEREUF9DT01QT05FTlRfQkxTICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kwKSB7
-Cj4gKwkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdfRFNJX1NFTDsKPiArCQl2YWx1ZSA9IERTSV9T
-RUxfSU5fQkxTOwo+ICAJfSBlbHNlIHsKPiAgCQl2YWx1ZSA9IDA7Cj4gIAl9Cj4gQEAgLTE1Myw2
-ICsxODMsMTUgQEAgc3RhdGljIHVuc2lnbmVkIGludCBtdGtfZGRwX3NlbF9pbihlbnVtIG10a19k
-ZHBfY29tcF9pZCBjdXIsCj4gIAlyZXR1cm4gdmFsdWU7Cj4gIH0KPiAgCj4gK3N0YXRpYyB2b2lk
-IG10a19kZHBfc291dF9zZWwodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywKPiArCQkJICAgIGVu
-dW0gbXRrX2RkcF9jb21wX2lkIGN1ciwgZW51bSBtdGtfZGRwX2NvbXBfaWQgbmV4dCkKPiArewo+
-ICsJaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX0JMUyAmJiBuZXh0ID09IEREUF9DT01QT05FTlRf
-RFNJMCkgewo+ICsJCXdyaXRlbF9yZWxheGVkKEJMU19UT19EU0lfUkRNQTFfVE9fRFBJMSwKPiAr
-CQkJICAgICAgIGNvbmZpZ19yZWdzICsgRElTUF9SRUdfQ09ORklHX09VVF9TRUwpOwo+ICsJfQoK
-UmVkdW5kYW50IHBhcmVudGhlc2VzLgoKPiArfQo+ICsKPiAgdm9pZCBtdGtfZGRwX2FkZF9jb21w
-X3RvX3BhdGgodm9pZCBfX2lvbWVtICpjb25maWdfcmVncywKPiAgCQkJICAgICAgZW51bSBtdGtf
-ZGRwX2NvbXBfaWQgY3VyLAo+ICAJCQkgICAgICBlbnVtIG10a19kZHBfY29tcF9pZCBuZXh0KQo+
-IEBAIC0xNjUsNiArMjA0LDggQEAgdm9pZCBtdGtfZGRwX2FkZF9jb21wX3RvX3BhdGgodm9pZCBf
-X2lvbWVtICpjb25maWdfcmVncywKPiAgCQl3cml0ZWxfcmVsYXhlZChyZWcsIGNvbmZpZ19yZWdz
-ICsgYWRkcik7Cj4gIAl9Cj4gIAo+ICsJbXRrX2RkcF9zb3V0X3NlbChjb25maWdfcmVncywgY3Vy
-LCBuZXh0KTsKPiArCj4gIAl2YWx1ZSA9IG10a19kZHBfc2VsX2luKGN1ciwgbmV4dCwgJmFkZHIp
-Owo+ICAJaWYgKHZhbHVlKSB7Cj4gIAkJcmVnID0gcmVhZGxfcmVsYXhlZChjb25maWdfcmVncyAr
-IGFkZHIpIHwgdmFsdWU7Cj4gQEAgLTM2Miw2ICs0MDMsNyBAQCBzdGF0aWMgaW50IG10a19kZHBf
-cmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIH0KPiAgCj4gIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGRkcF9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKPiArCXsg
-LmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtbXV0ZXgiLCAuZGF0YSA9IG10Mjcw
-MV9tdXRleF9tb2R9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1t
-dXRleCIsIC5kYXRhID0gbXQ4MTczX211dGV4X21vZH0sCj4gIAl7fSwKPiAgfTsKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMKPiBpbmRleCA0YjRlNDQ5Li44
-N2UwNDM2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
-cF9jb21wLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5jCj4gQEAgLTEwMiw2ICsxMDIsNyBAQCBzdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IG10a19k
-ZHBfY29tcF9zdGVtW01US19ERFBfQ09NUF9UWVBFX01BWF0gPSB7Cj4gIAlbTVRLX0RJU1BfUFdN
-XSA9ICJwd20iLAo+ICAJW01US19ESVNQX01VVEVYXSA9ICJtdXRleCIsCj4gIAlbTVRLX0RJU1Bf
-T0RdID0gIm9kIiwKPiArCVtNVEtfRElTUF9CTFNdID0gImJscyIsCj4gIH07Cj4gIAo+ICBzdHJ1
-Y3QgbXRrX2RkcF9jb21wX21hdGNoIHsKPiBAQCAtMTEyLDYgKzExMyw3IEBAIHN0cnVjdCBtdGtf
-ZGRwX2NvbXBfbWF0Y2ggewo+ICAKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBf
-bWF0Y2ggbXRrX2RkcF9tYXRjaGVzW0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiAgCVtERFBf
-Q09NUE9ORU5UX0FBTF0JPSB7IE1US19ESVNQX0FBTCwJMCwgTlVMTCB9LAo+ICsJW0REUF9DT01Q
-T05FTlRfQkxTXQk9IHsgTVRLX0RJU1BfQkxTLAkwLCBOVUxMIH0sCj4gIAlbRERQX0NPTVBPTkVO
-VF9DT0xPUjBdCT0geyBNVEtfRElTUF9DT0xPUiwJMCwgJmRkcF9jb2xvciB9LAo+ICAJW0REUF9D
-T01QT05FTlRfQ09MT1IxXQk9IHsgTVRLX0RJU1BfQ09MT1IsCTEsICZkZHBfY29sb3IgfSwKPiAg
-CVtERFBfQ09NUE9ORU5UX0RQSTBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+IEBAIC0xMzAs
-MTEgKzEzMiwxNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtf
-ZGRwX21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0gewo+ICAJW0REUF9DT01QT05FTlRf
-V0RNQTFdCT0geyBNVEtfRElTUF9XRE1BLAkxLCBOVUxMIH0sCj4gIH07Cj4gIAo+ICtzdGF0aWMg
-Y29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9kcml2ZXJfZGF0YSBtdDI3MDFfY29sb3JfZHJpdmVy
-X2RhdGEgPSB7Cj4gKwkuY29sb3Jfb2Zmc2V0ID0gMHgwZjAwLAo+ICt9Owo+ICsKPiAgc3RhdGlj
-IGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfZHJpdmVyX2RhdGEgbXQ4MTczX2NvbG9yX2RyaXZl
-cl9kYXRhID0gewo+ICAJLmNvbG9yX29mZnNldCA9IDB4MGMwMCwKPiAgfTsKPiAgCj4gIHN0YXRp
-YyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kaXNwX2NvbG9yX2RyaXZlcl9kdF9tYXRj
-aFtdID0gewo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1jb2xvciIs
-Cj4gKwkgIC5kYXRhID0gJm10MjcwMV9jb2xvcl9kcml2ZXJfZGF0YX0sCj4gIAl7IC5jb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLWNvbG9yIiwKPiAgCSAgLmRhdGEgPSAmbXQ4MTcz
-X2NvbG9yX2RyaXZlcl9kYXRhfSwKPiAgCXt9LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuaAo+IGluZGV4IDUzMDY1YzcuLjZlMmQ5MTggMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAtMzUsNiArMzUs
-NyBAQCBlbnVtIG10a19kZHBfY29tcF90eXBlIHsKPiAgCU1US19ESVNQX1BXTSwKPiAgCU1US19E
-SVNQX01VVEVYLAo+ICAJTVRLX0RJU1BfT0QsCj4gKwlNVEtfRElTUF9CTFMsCj4gIAlNVEtfRERQ
-X0NPTVBfVFlQRV9NQVgsCj4gIH07Cj4gIAo+IEBAIC01Nyw2ICs1OCw3IEBAIGVudW0gbXRrX2Rk
-cF9jb21wX2lkIHsKPiAgCUREUF9DT01QT05FTlRfVUZPRSwKPiAgCUREUF9DT01QT05FTlRfV0RN
-QTAsCj4gIAlERFBfQ09NUE9ORU5UX1dETUExLAo+ICsJRERQX0NPTVBPTkVOVF9CTFMsCj4gIAlE
-RFBfQ09NUE9ORU5UX0lEX01BWCwKPiAgfTsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZHJ2LmMKPiBpbmRleCBlOWViNTM1Li5iNGI2NmE3IDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiBAQCAtMTA5LDYgKzEwOSwxOSBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGRybV9tb2RlX2NvbmZpZ19mdW5jcyBtdGtfZHJtX21vZGVfY29uZmlnX2Z1bmNz
-ID0gewo+ICAJLmF0b21pY19jb21taXQgPSBtdGtfYXRvbWljX2NvbW1pdCwKPiAgfTsKPiAgCj4g
-K3N0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29tcF9pZCBtdDI3MDFfbXRrX2RkcF9tYWluW10g
-PSB7Cj4gKwlERFBfQ09NUE9ORU5UX09WTDAsCj4gKwlERFBfQ09NUE9ORU5UX1JETUEwLAo+ICsJ
-RERQX0NPTVBPTkVOVF9DT0xPUjAsCj4gKwlERFBfQ09NUE9ORU5UX0JMUywKPiArCUREUF9DT01Q
-T05FTlRfRFNJMCwKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBlbnVtIG10a19kZHBfY29tcF9p
-ZCBtdDI3MDFfbXRrX2RkcF9leHRbXSA9IHsKPiArCUREUF9DT01QT05FTlRfUkRNQTEsCj4gKwlE
-RFBfQ09NUE9ORU5UX0RQSTAsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3QgZW51bSBtdGtfZGRw
-X2NvbXBfaWQgbXQ4MTczX210a19kZHBfbWFpbltdID0gewo+ICAJRERQX0NPTVBPTkVOVF9PVkww
-LAo+ICAJRERQX0NPTVBPTkVOVF9DT0xPUjAsCj4gQEAgLTEyOCw2ICsxNDEsMTQgQEAgc3RhdGlj
-IGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3M19tdGtfZGRwX2V4dFtdID0gewo+ICAJ
-RERQX0NPTVBPTkVOVF9EUEkwLAo+ICB9Owo+ICAKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtf
-bW1zeXNfZHJpdmVyX2RhdGEgbXQyNzAxX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ICsJLm1haW5f
-cGF0aCA9IG10MjcwMV9tdGtfZGRwX21haW4sCj4gKwkubWFpbl9sZW4gPSBBUlJBWV9TSVpFKG10
-MjcwMV9tdGtfZGRwX21haW4pLAo+ICsJLmV4dF9wYXRoID0gbXQyNzAxX210a19kZHBfZXh0LAo+
-ICsJLmV4dF9sZW4gPSBBUlJBWV9TSVpFKG10MjcwMV9tdGtfZGRwX2V4dCksCj4gKwkuc2hhZG93
-X3JlZ2lzdGVyID0gdHJ1ZSwKPiArfTsKPiArCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21t
-c3lzX2RyaXZlcl9kYXRhIG10ODE3M19tbXN5c19kcml2ZXJfZGF0YSA9IHsKPiAgCS5tYWluX3Bh
-dGggPSBtdDgxNzNfbXRrX2RkcF9tYWluLAo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgx
-NzNfbXRrX2RkcF9tYWluKSwKPiBAQCAtMzMyLDE4ICszNTMsMjYgQEAgc3RhdGljIGNvbnN0IHN0
-cnVjdCBjb21wb25lbnRfbWFzdGVyX29wcyBtdGtfZHJtX29wcyA9IHsKPiAgfTsKPiAgCj4gIHN0
-YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kZHBfY29tcF9kdF9pZHNbXSA9IHsK
-PiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3Atb3ZsIiwgICAuZGF0YSA9
-ICh2b2lkICopTVRLX0RJU1BfT1ZMIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10
-ODE3My1kaXNwLW92bCIsICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX09WTCB9LAo+ICsJeyAu
-Y29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1yZG1hIiwgIC5kYXRhID0gKHZvaWQg
-KilNVEtfRElTUF9SRE1BIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1k
-aXNwLXJkbWEiLCAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX1JETUEgfSwKPiArCXsgLmNvbXBh
-dGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3Atd2RtYSIsICAuZGF0YSA9ICh2b2lkICopTVRL
-X0RJU1BfV0RNQSB9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC13
-ZG1hIiwgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9XRE1BIH0sCj4gKwl7IC5jb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10MjcwMS1kaXNwLWNvbG9yIiwgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQ
-X0NPTE9SIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLWNvbG9y
-IiwgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX0NPTE9SIH0sCj4gIAl7IC5jb21wYXRpYmxlID0g
-Im1lZGlhdGVrLG10ODE3My1kaXNwLWFhbCIsICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX0FB
-TH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLWdhbW1hIiwgLmRh
-dGEgPSAodm9pZCAqKU1US19ESVNQX0dBTU1BLCB9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRp
-YXRlayxtdDgxNzMtZGlzcC11Zm9lIiwgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9VRk9FIH0s
-Cj4gKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10MjcwMS1kc2kiLAkgICAgICAuZGF0YSA9
-ICh2b2lkICopTVRLX0RTSSB9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMt
-ZHNpIiwgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRFNJIH0sCj4gKwl7IC5jb21wYXRpYmxl
-ID0gIm1lZGlhdGVrLG10MjcwMS1kcGkiLAkgICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RQSSB9
-LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZHBpIiwgICAgICAgIC5kYXRh
-ID0gKHZvaWQgKilNVEtfRFBJIH0sCj4gKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10Mjcw
-MS1kaXNwLW11dGV4IiwgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX01VVEVYIH0sCj4gIAl7IC5j
-b21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLW11dGV4IiwgLmRhdGEgPSAodm9pZCAq
-KU1US19ESVNQX01VVEVYIH0sCj4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1k
-aXNwLXB3bSIsICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX1BXTSB9LAo+ICAJeyAuY29tcGF0
-aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1vZCIsICAgIC5kYXRhID0gKHZvaWQgKilNVEtf
-RElTUF9PRCB9LAo+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1ibHMi
-LCAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9CTFMgfSwKPiAgCXsgfQo+ICB9Owo+ICAKPiBA
-QCAtNTE1LDYgKzU0NCw4IEBAIHN0YXRpYyBTSU1QTEVfREVWX1BNX09QUyhtdGtfZHJtX3BtX29w
-cywgbXRrX2RybV9zeXNfc3VzcGVuZCwKPiAgCQkJIG10a19kcm1fc3lzX3Jlc3VtZSk7Cj4gIAo+
-ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHJtX29mX2lkc1tdID0gewo+
-ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtbW1zeXMiLAo+ICsJICAuZGF0YSA9
-ICZtdDI3MDFfbW1zeXNfZHJpdmVyX2RhdGF9LAo+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRl
-ayxtdDgxNzMtbW1zeXMiLAo+ICAJICAuZGF0YSA9ICZtdDgxNzNfbW1zeXNfZHJpdmVyX2RhdGF9
-LAo+ICAJeyB9CgpSZWdhcmRzLApDSwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+add structure define and clock control function for 2701.
+
+Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+---
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c | 464 ++++++++++++++++++++++
+ sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h |  38 ++
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h     | 181 +++++++++
+ sound/soc/mediatek/mt2701/mt2701-reg.h            | 186 +++++++++
+ 4 files changed, 869 insertions(+)
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-reg.h
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+new file mode 100644
+index 0000000..b815ecc
+--- /dev/null
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.c
+@@ -0,0 +1,464 @@
++/*
++ * mt2701-afe-clock-ctrl.c  --  Mediatek 2701 afe clock ctrl
++ *
++ * Copyright (c) 2016 MediaTek Inc.
++ * Author: Garlic Tseng <garlic.tseng@mediatek.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#include <sound/soc.h>
++#include <linux/regmap.h>
++#include <linux/pm_runtime.h>
++
++#include "mt2701-afe-common.h"
++#include "mt2701-afe-clock-ctrl.h"
++
++static const char *aud_clks[MT2701_CLOCK_NUM] = {
++	[MT2701_AUD_INFRA_SYS_AUDIO] = "infra_sys_audio_clk",
++	[MT2701_AUD_AUD_MUX1_SEL] = "top_audio_mux1_sel",
++	[MT2701_AUD_AUD_MUX2_SEL] = "top_audio_mux2_sel",
++	[MT2701_AUD_AUD_MUX1_DIV] = "top_audio_mux1_div",
++	[MT2701_AUD_AUD_MUX2_DIV] = "top_audio_mux2_div",
++	[MT2701_AUD_AUD_48K_TIMING] = "top_audio_48k_timing",
++	[MT2701_AUD_AUD_44K_TIMING] = "top_audio_44k_timing",
++	[MT2701_AUD_AUDPLL_MUX_SEL] = "top_audpll_mux_sel",
++	[MT2701_AUD_APLL_SEL] = "top_apll_sel",
++	[MT2701_AUD_AUD1PLL_98M] = "top_aud1_pll_98M",
++	[MT2701_AUD_AUD2PLL_90M] = "top_aud2_pll_90M",
++	[MT2701_AUD_HADDS2PLL_98M] = "top_hadds2_pll_98M",
++	[MT2701_AUD_HADDS2PLL_294M] = "top_hadds2_pll_294M",
++	[MT2701_AUD_AUDPLL] = "top_audpll",
++	[MT2701_AUD_AUDPLL_D4] = "top_audpll_d4",
++	[MT2701_AUD_AUDPLL_D8] = "top_audpll_d8",
++	[MT2701_AUD_AUDPLL_D16] = "top_audpll_d16",
++	[MT2701_AUD_AUDPLL_D24] = "top_audpll_d24",
++	[MT2701_AUD_AUDINTBUS] = "top_audintbus_sel",
++	[MT2701_AUD_CLK_26M] = "clk_26m",
++	[MT2701_AUD_SYSPLL1_D4] = "top_syspll1_d4",
++	[MT2701_AUD_AUD_K1_SRC_SEL] = "top_aud_k1_src_sel",
++	[MT2701_AUD_AUD_K2_SRC_SEL] = "top_aud_k2_src_sel",
++	[MT2701_AUD_AUD_K3_SRC_SEL] = "top_aud_k3_src_sel",
++	[MT2701_AUD_AUD_K4_SRC_SEL] = "top_aud_k4_src_sel",
++	[MT2701_AUD_AUD_K5_SRC_SEL] = "top_aud_k5_src_sel",
++	[MT2701_AUD_AUD_K6_SRC_SEL] = "top_aud_k6_src_sel",
++	[MT2701_AUD_AUD_K1_SRC_DIV] = "top_aud_k1_src_div",
++	[MT2701_AUD_AUD_K2_SRC_DIV] = "top_aud_k2_src_div",
++	[MT2701_AUD_AUD_K3_SRC_DIV] = "top_aud_k3_src_div",
++	[MT2701_AUD_AUD_K4_SRC_DIV] = "top_aud_k4_src_div",
++	[MT2701_AUD_AUD_K5_SRC_DIV] = "top_aud_k5_src_div",
++	[MT2701_AUD_AUD_K6_SRC_DIV] = "top_aud_k6_src_div",
++	[MT2701_AUD_AUD_I2S1_MCLK] = "top_aud_i2s1_mclk",
++	[MT2701_AUD_AUD_I2S2_MCLK] = "top_aud_i2s2_mclk",
++	[MT2701_AUD_AUD_I2S3_MCLK] = "top_aud_i2s3_mclk",
++	[MT2701_AUD_AUD_I2S4_MCLK] = "top_aud_i2s4_mclk",
++	[MT2701_AUD_AUD_I2S5_MCLK] = "top_aud_i2s5_mclk",
++	[MT2701_AUD_AUD_I2S6_MCLK] = "top_aud_i2s6_mclk",
++	[MT2701_AUD_ASM_M_SEL] = "top_asm_m_sel",
++	[MT2701_AUD_ASM_H_SEL] = "top_asm_h_sel",
++	[MT2701_AUD_UNIVPLL2_D4] = "top_univpll2_d4",
++	[MT2701_AUD_UNIVPLL2_D2] = "top_univpll2_d2",
++	[MT2701_AUD_SYSPLL_D5] = "top_syspll_d5",
++};
++
++int mt2701_init_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int i = 0;
++
++	for (i = 0; i < MT2701_CLOCK_NUM; i++) {
++		afe_priv->clocks[i] = devm_clk_get(afe->dev, aud_clks[i]);
++		if (IS_ERR(aud_clks[i])) {
++			dev_warn(afe->dev, "%s devm_clk_get %s fail\n",
++				 __func__, aud_clks[i]);
++			return PTR_ERR(aud_clks[i]);
++		}
++	}
++
++	return 0;
++}
++
++int mt2701_afe_enable_clock(struct mtk_base_afe *afe)
++{
++	int ret = 0;
++
++	ret = mt2701_turn_on_a1sys_clock(afe);
++	if (ret) {
++		dev_err(afe->dev, "%s turn_on_a1sys_clock fail %d\n",
++			__func__, ret);
++		return ret;
++	}
++
++	ret = mt2701_turn_on_a2sys_clock(afe);
++	if (ret) {
++		dev_err(afe->dev, "%s turn_on_a2sys_clock fail %d\n",
++			__func__, ret);
++		mt2701_turn_off_a1sys_clock(afe);
++		return ret;
++	}
++
++	ret = mt2701_turn_on_afe_clock(afe);
++	if (ret) {
++		dev_err(afe->dev, "%s turn_on_afe_clock fail %d\n",
++			__func__, ret);
++		mt2701_turn_off_a1sys_clock(afe);
++		mt2701_turn_off_a2sys_clock(afe);
++		return ret;
++	}
++
++	regmap_update_bits(afe->regmap, ASYS_TOP_CON,
++			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON,
++			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON);
++	regmap_update_bits(afe->regmap, AFE_DAC_CON0,
++			   AFE_DAC_CON0_AFE_ON,
++			   AFE_DAC_CON0_AFE_ON);
++	regmap_write(afe->regmap, PWR2_TOP_CON,
++		     PWR2_TOP_CON_INIT_VAL);
++	regmap_write(afe->regmap, PWR1_ASM_CON1,
++		     PWR1_ASM_CON1_INIT_VAL);
++	regmap_write(afe->regmap, PWR2_ASM_CON1,
++		     PWR2_ASM_CON1_INIT_VAL);
++
++	return 0;
++}
++
++void mt2701_afe_disable_clock(struct mtk_base_afe *afe)
++{
++	mt2701_turn_off_afe_clock(afe);
++	mt2701_turn_off_a1sys_clock(afe);
++	mt2701_turn_off_a2sys_clock(afe);
++	regmap_update_bits(afe->regmap, ASYS_TOP_CON,
++			   AUDIO_TOP_CON0_A1SYS_A2SYS_ON, 0);
++	regmap_update_bits(afe->regmap, AFE_DAC_CON0,
++			   AFE_DAC_CON0_AFE_ON, 0);
++}
++
++int mt2701_turn_on_a1sys_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int ret = 0;
++
++	/* Set Mux */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_MUX1_SEL]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUD_MUX1_SEL], ret);
++		goto A1SYS_CLK_AUD_MUX1_SEL_ERR;
++	}
++
++	ret = clk_set_parent(afe_priv->clocks[MT2701_AUD_AUD_MUX1_SEL],
++			     afe_priv->clocks[MT2701_AUD_AUD1PLL_98M]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n", __func__,
++			aud_clks[MT2701_AUD_AUD_MUX1_SEL],
++			aud_clks[MT2701_AUD_AUD1PLL_98M], ret);
++		goto A1SYS_CLK_AUD_MUX1_SEL_ERR;
++	}
++
++	/* Set Divider */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_MUX1_DIV]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__,
++			aud_clks[MT2701_AUD_AUD_MUX1_DIV],
++			ret);
++		goto A1SYS_CLK_AUD_MUX1_DIV_ERR;
++	}
++
++	ret = clk_set_rate(afe_priv->clocks[MT2701_AUD_AUD_MUX1_DIV],
++			   MT2701_AUD_AUD_MUX1_DIV_RATE);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%d fail %d\n", __func__,
++			aud_clks[MT2701_AUD_AUD_MUX1_DIV],
++			MT2701_AUD_AUD_MUX1_DIV_RATE, ret);
++		goto A1SYS_CLK_AUD_MUX1_DIV_ERR;
++	}
++
++	/* Enable clock gate */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_48K_TIMING]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUD_48K_TIMING], ret);
++		goto A1SYS_CLK_AUD_48K_ERR;
++	}
++
++	/* Enable infra audio */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_INFRA_SYS_AUDIO], ret);
++		goto A1SYS_CLK_INFRA_ERR;
++	}
++
++	return 0;
++
++A1SYS_CLK_INFRA_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++A1SYS_CLK_AUD_48K_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_48K_TIMING]);
++A1SYS_CLK_AUD_MUX1_DIV_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX1_DIV]);
++A1SYS_CLK_AUD_MUX1_SEL_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX1_SEL]);
++
++	return ret;
++}
++
++void mt2701_turn_off_a1sys_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_48K_TIMING]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX1_DIV]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX1_SEL]);
++}
++
++int mt2701_turn_on_a2sys_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int ret = 0;
++
++	/* Set Mux */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_MUX2_SEL]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUD_MUX2_SEL], ret);
++		goto A2SYS_CLK_AUD_MUX2_SEL_ERR;
++	}
++
++	ret = clk_set_parent(afe_priv->clocks[MT2701_AUD_AUD_MUX2_SEL],
++			     afe_priv->clocks[MT2701_AUD_AUD2PLL_90M]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n", __func__,
++			aud_clks[MT2701_AUD_AUD_MUX2_SEL],
++			aud_clks[MT2701_AUD_AUD2PLL_90M], ret);
++		goto A2SYS_CLK_AUD_MUX2_SEL_ERR;
++	}
++
++	/* Set Divider */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_MUX2_DIV]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUD_MUX2_DIV], ret);
++		goto A2SYS_CLK_AUD_MUX2_DIV_ERR;
++	}
++
++	ret = clk_set_rate(afe_priv->clocks[MT2701_AUD_AUD_MUX2_DIV],
++			   MT2701_AUD_AUD_MUX2_DIV_RATE);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%d fail %d\n", __func__,
++			aud_clks[MT2701_AUD_AUD_MUX2_DIV],
++			MT2701_AUD_AUD_MUX2_DIV_RATE, ret);
++		goto A2SYS_CLK_AUD_MUX2_DIV_ERR;
++	}
++
++	/* Enable clock gate */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUD_44K_TIMING]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUD_44K_TIMING], ret);
++		goto A2SYS_CLK_AUD_44K_ERR;
++	}
++
++	/* Enable infra audio */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_INFRA_SYS_AUDIO], ret);
++		goto A2SYS_CLK_INFRA_ERR;
++	}
++
++	return 0;
++
++A2SYS_CLK_INFRA_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++A2SYS_CLK_AUD_44K_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_44K_TIMING]);
++A2SYS_CLK_AUD_MUX2_DIV_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX2_DIV]);
++A2SYS_CLK_AUD_MUX2_SEL_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX2_SEL]);
++
++	return ret;
++}
++
++void mt2701_turn_off_a2sys_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_44K_TIMING]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX2_DIV]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUD_MUX2_SEL]);
++}
++
++int mt2701_turn_on_afe_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int ret;
++
++	/* enable INFRA_SYS */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_INFRA_SYS_AUDIO], ret);
++		goto AFE_AUD_INFRA_ERR;
++	}
++
++	/* Set MT2701_AUD_AUDINTBUS to MT2701_AUD_SYSPLL1_D4 */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_AUDINTBUS]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_AUDINTBUS], ret);
++		goto AFE_AUD_AUDINTBUS_ERR;
++	}
++
++	ret = clk_set_parent(afe_priv->clocks[MT2701_AUD_AUDINTBUS],
++			     afe_priv->clocks[MT2701_AUD_SYSPLL1_D4]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n", __func__,
++			aud_clks[MT2701_AUD_AUDINTBUS],
++			aud_clks[MT2701_AUD_SYSPLL1_D4], ret);
++		goto AFE_AUD_AUDINTBUS_ERR;
++	}
++
++	/* Set MT2701_AUD_ASM_H_SEL to MT2701_AUD_UNIVPLL2_D2 */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_ASM_H_SEL]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_ASM_H_SEL], ret);
++		goto AFE_AUD_ASM_H_ERR;
++	}
++
++	ret = clk_set_parent(afe_priv->clocks[MT2701_AUD_ASM_H_SEL],
++			     afe_priv->clocks[MT2701_AUD_UNIVPLL2_D2]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n", __func__,
++			aud_clks[MT2701_AUD_ASM_H_SEL],
++			aud_clks[MT2701_AUD_UNIVPLL2_D2], ret);
++		goto AFE_AUD_ASM_H_ERR;
++	}
++
++	/* Set MT2701_AUD_ASM_M_SEL to MT2701_AUD_UNIVPLL2_D4 */
++	ret = clk_prepare_enable(afe_priv->clocks[MT2701_AUD_ASM_M_SEL]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[MT2701_AUD_ASM_M_SEL], ret);
++		goto AFE_AUD_ASM_M_ERR;
++	}
++
++	ret = clk_set_parent(afe_priv->clocks[MT2701_AUD_ASM_M_SEL],
++			     afe_priv->clocks[MT2701_AUD_UNIVPLL2_D4]);
++	if (ret) {
++		dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n", __func__,
++			aud_clks[MT2701_AUD_ASM_M_SEL],
++			aud_clks[MT2701_AUD_UNIVPLL2_D4], ret);
++		goto AFE_AUD_ASM_M_ERR;
++	}
++
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUDIO_TOP_CON0_PDN_AFE, 0);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUDIO_TOP_CON0_PDN_APLL_CK, 0);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_A1SYS, 0);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_A2SYS, 0);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_AFE_CONN, 0);
++
++	return 0;
++
++AFE_AUD_ASM_M_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_ASM_M_SEL]);
++AFE_AUD_ASM_H_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_ASM_H_SEL]);
++AFE_AUD_AUDINTBUS_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUDINTBUS]);
++AFE_AUD_INFRA_ERR:
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++
++	return ret;
++}
++
++void mt2701_turn_off_afe_clock(struct mtk_base_afe *afe)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_INFRA_SYS_AUDIO]);
++
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_AUDINTBUS]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_ASM_H_SEL]);
++	clk_disable_unprepare(afe_priv->clocks[MT2701_AUD_ASM_M_SEL]);
++
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUDIO_TOP_CON0_PDN_AFE, AUDIO_TOP_CON0_PDN_AFE);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON0,
++			   AUDIO_TOP_CON0_PDN_APLL_CK,
++			   AUDIO_TOP_CON0_PDN_APLL_CK);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_A1SYS,
++			   AUDIO_TOP_CON4_PDN_A1SYS);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_A2SYS,
++			   AUDIO_TOP_CON4_PDN_A2SYS);
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_AFE_CONN,
++			   AUDIO_TOP_CON4_PDN_AFE_CONN);
++}
++
++void mt2701_mclk_configuration(struct mtk_base_afe *afe, int id, int domain,
++			       int mclk)
++{
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++	int ret;
++	int aud_src_div_id = MT2701_AUD_AUD_K1_SRC_DIV + id;
++	int aud_src_clk_id = MT2701_AUD_AUD_K1_SRC_SEL + id;
++
++	/* Set MCLK Kx_SRC_SEL(domain) */
++	ret = clk_prepare_enable(afe_priv->clocks[aud_src_clk_id]);
++	if (ret)
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[aud_src_clk_id], ret);
++
++	if (domain == 0) {
++		ret = clk_set_parent(afe_priv->clocks[aud_src_clk_id],
++				     afe_priv->clocks[MT2701_AUD_AUD_MUX1_SEL]);
++		if (ret)
++			dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n",
++				__func__, aud_clks[aud_src_clk_id],
++				aud_clks[MT2701_AUD_AUD_MUX1_SEL], ret);
++	} else {
++		ret = clk_set_parent(afe_priv->clocks[aud_src_clk_id],
++				     afe_priv->clocks[MT2701_AUD_AUD_MUX2_SEL]);
++		if (ret)
++			dev_err(afe->dev, "%s clk_set_parent %s-%s fail %d\n",
++				__func__, aud_clks[aud_src_clk_id],
++				aud_clks[MT2701_AUD_AUD_MUX2_SEL], ret);
++	}
++	clk_disable_unprepare(afe_priv->clocks[aud_src_clk_id]);
++
++	/* Set MCLK Kx_SRC_DIV(divider) */
++	ret = clk_prepare_enable(afe_priv->clocks[aud_src_div_id]);
++	if (ret)
++		dev_err(afe->dev, "%s clk_prepare_enable %s fail %d\n",
++			__func__, aud_clks[aud_src_div_id], ret);
++
++	ret = clk_set_rate(afe_priv->clocks[aud_src_div_id], mclk);
++	if (ret)
++		dev_err(afe->dev, "%s clk_set_rate %s-%d fail %d\n", __func__,
++			aud_clks[aud_src_div_id], mclk, ret);
++	clk_disable_unprepare(afe_priv->clocks[aud_src_div_id]);
++}
++
++MODULE_DESCRIPTION("MT2701 afe clock control");
++MODULE_AUTHOR("Garlic Tseng <garlic.tseng@mediatek.com>");
++MODULE_LICENSE("GPL v2");
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
+new file mode 100644
+index 0000000..6497d57
+--- /dev/null
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-clock-ctrl.h
+@@ -0,0 +1,38 @@
++/*
++ * mt2701-afe-clock-ctrl.h  --  Mediatek 2701 afe clock ctrl definition
++ *
++ * Copyright (c) 2016 MediaTek Inc.
++ * Author: Garlic Tseng <garlic.tseng@mediatek.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef _MT2701_AFE_CLOCK_CTRL_H_
++#define _MT2701_AFE_CLOCK_CTRL_H_
++
++struct mtk_base_afe;
++
++int mt2701_init_clock(struct mtk_base_afe *afe);
++int mt2701_afe_enable_clock(struct mtk_base_afe *afe);
++void mt2701_afe_disable_clock(struct mtk_base_afe *afe);
++
++int mt2701_turn_on_a1sys_clock(struct mtk_base_afe *afe);
++void mt2701_turn_off_a1sys_clock(struct mtk_base_afe *afe);
++
++int mt2701_turn_on_a2sys_clock(struct mtk_base_afe *afe);
++void mt2701_turn_off_a2sys_clock(struct mtk_base_afe *afe);
++
++int mt2701_turn_on_afe_clock(struct mtk_base_afe *afe);
++void mt2701_turn_off_afe_clock(struct mtk_base_afe *afe);
++
++void mt2701_mclk_configuration(struct mtk_base_afe *afe, int id, int domain,
++			       int mclk);
++
++#endif
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+new file mode 100644
+index 0000000..c77166e
+--- /dev/null
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+@@ -0,0 +1,181 @@
++/*
++ * mt2701-afe-common.h  --  Mediatek 2701 audio driver definitions
++ *
++ * Copyright (c) 2016 MediaTek Inc.
++ * Author: Garlic Tseng <garlic.tseng@mediatek.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef _MT_2701_AFE_COMMON_H_
++#define _MT_2701_AFE_COMMON_H_
++#include <sound/soc.h>
++#include <linux/clk.h>
++#include <linux/regmap.h>
++#include "mt2701-reg.h"
++#include "../common/mtk-base-afe.h"
++
++#define MT2701_STREAM_DIR_NUM (SNDRV_PCM_STREAM_LAST + 1)
++#define MT2701_PLL_DOMAIN_0_RATE	98304000
++#define MT2701_PLL_DOMAIN_1_RATE	90316800
++#define MT2701_AUD_AUD_MUX1_DIV_RATE (MT2701_PLL_DOMAIN_0_RATE / 2)
++#define MT2701_AUD_AUD_MUX2_DIV_RATE (MT2701_PLL_DOMAIN_1_RATE / 2)
++
++enum {
++	MT2701_I2S_1,
++	MT2701_I2S_2,
++	MT2701_I2S_3,
++	MT2701_I2S_4,
++	MT2701_I2S_NUM,
++};
++
++enum {
++	MT2701_MEMIF_DL1,
++	MT2701_MEMIF_DL2,
++	MT2701_MEMIF_DL3,
++	MT2701_MEMIF_DL4,
++	MT2701_MEMIF_DL5,
++	MT2701_MEMIF_DL_SINGLE_NUM,
++	MT2701_MEMIF_DLM = MT2701_MEMIF_DL_SINGLE_NUM,
++	MT2701_MEMIF_UL1,
++	MT2701_MEMIF_UL2,
++	MT2701_MEMIF_UL3,
++	MT2701_MEMIF_UL4,
++	MT2701_MEMIF_UL5,
++	MT2701_MEMIF_DLBT,
++	MT2701_MEMIF_ULBT,
++	MT2701_MEMIF_NUM,
++	MT2701_IO_I2S = MT2701_MEMIF_NUM,
++	MT2701_IO_2ND_I2S,
++	MT2701_IO_3RD_I2S,
++	MT2701_IO_4TH_I2S,
++	MT2701_IO_5TH_I2S,
++	MT2701_IO_6TH_I2S,
++	MT2701_IO_MRG,
++};
++
++enum {
++	MT2701_IRQ_ASYS_START,
++	MT2701_IRQ_ASYS_IRQ1 = MT2701_IRQ_ASYS_START,
++	MT2701_IRQ_ASYS_IRQ2,
++	MT2701_IRQ_ASYS_IRQ3,
++	MT2701_IRQ_ASYS_END,
++};
++
++enum {
++	DIV_ID_MCLK_TO_BCK,
++	DIV_ID_BCK_TO_LRCK,
++};
++
++/* 2701 clock def */
++enum audio_system_clock_type {
++	MT2701_AUD_INFRA_SYS_AUDIO,
++	MT2701_AUD_AUD_MUX1_SEL,
++	MT2701_AUD_AUD_MUX2_SEL,
++	MT2701_AUD_AUD_MUX1_DIV,
++	MT2701_AUD_AUD_MUX2_DIV,
++	MT2701_AUD_AUD_48K_TIMING,
++	MT2701_AUD_AUD_44K_TIMING,
++	MT2701_AUD_AUDPLL_MUX_SEL,
++	MT2701_AUD_APLL_SEL,
++	MT2701_AUD_AUD1PLL_98M,
++	MT2701_AUD_AUD2PLL_90M,
++	MT2701_AUD_HADDS2PLL_98M,
++	MT2701_AUD_HADDS2PLL_294M,
++	MT2701_AUD_AUDPLL,
++	MT2701_AUD_AUDPLL_D4,
++	MT2701_AUD_AUDPLL_D8,
++	MT2701_AUD_AUDPLL_D16,
++	MT2701_AUD_AUDPLL_D24,
++	MT2701_AUD_AUDINTBUS,
++	MT2701_AUD_CLK_26M,
++	MT2701_AUD_SYSPLL1_D4,
++	MT2701_AUD_AUD_K1_SRC_SEL,
++	MT2701_AUD_AUD_K2_SRC_SEL,
++	MT2701_AUD_AUD_K3_SRC_SEL,
++	MT2701_AUD_AUD_K4_SRC_SEL,
++	MT2701_AUD_AUD_K5_SRC_SEL,
++	MT2701_AUD_AUD_K6_SRC_SEL,
++	MT2701_AUD_AUD_K1_SRC_DIV,
++	MT2701_AUD_AUD_K2_SRC_DIV,
++	MT2701_AUD_AUD_K3_SRC_DIV,
++	MT2701_AUD_AUD_K4_SRC_DIV,
++	MT2701_AUD_AUD_K5_SRC_DIV,
++	MT2701_AUD_AUD_K6_SRC_DIV,
++	MT2701_AUD_AUD_I2S1_MCLK,
++	MT2701_AUD_AUD_I2S2_MCLK,
++	MT2701_AUD_AUD_I2S3_MCLK,
++	MT2701_AUD_AUD_I2S4_MCLK,
++	MT2701_AUD_AUD_I2S5_MCLK,
++	MT2701_AUD_AUD_I2S6_MCLK,
++	MT2701_AUD_ASM_M_SEL,
++	MT2701_AUD_ASM_H_SEL,
++	MT2701_AUD_UNIVPLL2_D4,
++	MT2701_AUD_UNIVPLL2_D2,
++	MT2701_AUD_SYSPLL_D5,
++	MT2701_CLOCK_NUM
++};
++
++static const unsigned int mt2701_afe_backup_list[] = {
++	AUDIO_TOP_CON0,
++	AUDIO_TOP_CON4,
++	AUDIO_TOP_CON5,
++	ASYS_TOP_CON,
++	AFE_CONN0,
++	AFE_CONN1,
++	AFE_CONN2,
++	AFE_CONN3,
++	AFE_CONN15,
++	AFE_CONN16,
++	AFE_CONN17,
++	AFE_CONN18,
++	AFE_CONN19,
++	AFE_CONN20,
++	AFE_CONN21,
++	AFE_CONN22,
++	AFE_DAC_CON0,
++	AFE_MEMIF_PBUF_SIZE,
++};
++
++struct snd_pcm_substream;
++struct mtk_base_irq_data;
++
++struct mt2701_i2s_data {
++	int i2s_ctrl_reg;
++	int i2s_pwn_shift;
++	int i2s_asrc_fs_shift;
++	int i2s_asrc_fs_mask;
++};
++
++enum mt2701_i2s_dir {
++	I2S_OUT,
++	I2S_IN,
++	I2S_DIR_NUM,
++};
++
++struct mt2701_i2s_path {
++	int dai_id;
++	int mclk_rate;
++	int div_mclk_to_bck;
++	int div_bck_to_lrck;
++	int format;
++	snd_pcm_format_t stream_fmt;
++	int on[I2S_DIR_NUM];
++	int occupied[I2S_DIR_NUM];
++	const struct mt2701_i2s_data *i2s_data[2];
++};
++
++struct mt2701_afe_private {
++	struct clk *clocks[MT2701_CLOCK_NUM];
++	struct mt2701_i2s_path i2s_path[MT2701_I2S_NUM];
++	bool mrg_enable[MT2701_STREAM_DIR_NUM];
++};
++
++#endif
+diff --git a/sound/soc/mediatek/mt2701/mt2701-reg.h b/sound/soc/mediatek/mt2701/mt2701-reg.h
+new file mode 100644
+index 0000000..bb62b1c
+--- /dev/null
++++ b/sound/soc/mediatek/mt2701/mt2701-reg.h
+@@ -0,0 +1,186 @@
++/*
++ * mt2701-reg.h  --  Mediatek 2701 audio driver reg definition
++ *
++ * Copyright (c) 2016 MediaTek Inc.
++ * Author: Garlic Tseng <garlic.tseng@mediatek.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 and
++ * only version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef _MT2701_REG_H_
++#define _MT2701_REG_H_
++
++#include <linux/delay.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/pm_runtime.h>
++#include <sound/soc.h>
++#include "mt2701-afe-common.h"
++
++/*****************************************************************************
++ *                  R E G I S T E R       D E F I N I T I O N
++ *****************************************************************************/
++#define AUDIO_TOP_CON0 0x0000
++#define AUDIO_TOP_CON4 0x0010
++#define AUDIO_TOP_CON5 0x0014
++#define AFE_DAIBT_CON0 0x001c
++#define AFE_MRGIF_CON 0x003c
++#define ASMI_TIMING_CON1 0x0100
++#define ASMO_TIMING_CON1 0x0104
++#define PWR1_ASM_CON1 0x0108
++#define ASYS_TOP_CON 0x0600
++#define ASYS_I2SIN1_CON 0x0604
++#define ASYS_I2SIN2_CON 0x0608
++#define ASYS_I2SIN3_CON 0x060c
++#define ASYS_I2SIN4_CON 0x0610
++#define ASYS_I2SIN5_CON 0x0614
++#define ASYS_I2SO1_CON 0x061C
++#define ASYS_I2SO2_CON 0x0620
++#define ASYS_I2SO3_CON 0x0624
++#define ASYS_I2SO4_CON 0x0628
++#define ASYS_I2SO5_CON 0x062c
++#define PWR2_TOP_CON 0x0634
++#define AFE_CONN0 0x06c0
++#define AFE_CONN1 0x06c4
++#define AFE_CONN2 0x06c8
++#define AFE_CONN3 0x06cc
++#define AFE_CONN14 0x06f8
++#define AFE_CONN15 0x06fc
++#define AFE_CONN16 0x0700
++#define AFE_CONN17 0x0704
++#define AFE_CONN18 0x0708
++#define AFE_CONN19 0x070c
++#define AFE_CONN20 0x0710
++#define AFE_CONN21 0x0714
++#define AFE_CONN22 0x0718
++#define AFE_CONN23 0x071c
++#define AFE_CONN24 0x0720
++#define AFE_CONN41 0x0764
++#define ASYS_IRQ1_CON 0x0780
++#define ASYS_IRQ2_CON 0x0784
++#define ASYS_IRQ3_CON 0x0788
++#define ASYS_IRQ_CLR 0x07c0
++#define ASYS_IRQ_STATUS 0x07c4
++#define PWR2_ASM_CON1 0x1070
++#define AFE_DAC_CON0 0x1200
++#define AFE_DAC_CON1 0x1204
++#define AFE_DAC_CON2 0x1208
++#define AFE_DAC_CON3 0x120c
++#define AFE_DAC_CON4 0x1210
++#define AFE_MEMIF_HD_CON1 0x121c
++#define AFE_MEMIF_PBUF_SIZE 0x1238
++#define AFE_MEMIF_HD_CON0 0x123c
++#define AFE_DL1_BASE 0x1240
++#define AFE_DL1_CUR 0x1244
++#define AFE_DL2_BASE 0x1250
++#define AFE_DL2_CUR 0x1254
++#define AFE_DL3_BASE 0x1260
++#define AFE_DL3_CUR 0x1264
++#define AFE_DL4_BASE 0x1270
++#define AFE_DL4_CUR 0x1274
++#define AFE_DL5_BASE 0x1280
++#define AFE_DL5_CUR 0x1284
++#define AFE_DLMCH_BASE 0x12a0
++#define AFE_DLMCH_CUR 0x12a4
++#define AFE_ARB1_BASE 0x12b0
++#define AFE_ARB1_CUR 0x12b4
++#define AFE_VUL_BASE 0x1300
++#define AFE_VUL_CUR 0x130c
++#define AFE_UL2_BASE 0x1310
++#define AFE_UL2_END 0x1318
++#define AFE_UL2_CUR 0x131c
++#define AFE_UL3_BASE 0x1320
++#define AFE_UL3_END 0x1328
++#define AFE_UL3_CUR 0x132c
++#define AFE_UL4_BASE 0x1330
++#define AFE_UL4_END 0x1338
++#define AFE_UL4_CUR 0x133c
++#define AFE_UL5_BASE 0x1340
++#define AFE_UL5_END 0x1348
++#define AFE_UL5_CUR 0x134c
++#define AFE_DAI_BASE 0x1370
++#define AFE_DAI_CUR 0x137c
++
++/* AUDIO_TOP_CON0 (0x0000) */
++#define AUDIO_TOP_CON0_A1SYS_A2SYS_ON	(0x3 << 0)
++#define AUDIO_TOP_CON0_PDN_AFE		(0x1 << 2)
++#define AUDIO_TOP_CON0_PDN_APLL_CK	(0x1 << 23)
++
++/* AUDIO_TOP_CON4 (0x0010) */
++#define AUDIO_TOP_CON4_I2SO1_PWN	(0x1 << 6)
++#define AUDIO_TOP_CON4_PDN_A1SYS	(0x1 << 21)
++#define AUDIO_TOP_CON4_PDN_A2SYS	(0x1 << 22)
++#define AUDIO_TOP_CON4_PDN_AFE_CONN	(0x1 << 23)
++#define AUDIO_TOP_CON4_PDN_MRGIF	(0x1 << 25)
++
++/* AFE_DAIBT_CON0 (0x001c) */
++#define AFE_DAIBT_CON0_DAIBT_EN		(0x1 << 0)
++#define AFE_DAIBT_CON0_BT_FUNC_EN	(0x1 << 1)
++#define AFE_DAIBT_CON0_BT_FUNC_RDY	(0x1 << 3)
++#define AFE_DAIBT_CON0_BT_WIDE_MODE_EN	(0x1 << 9)
++#define AFE_DAIBT_CON0_MRG_USE		(0x1 << 12)
++
++/* PWR1_ASM_CON1 (0x0108) */
++#define PWR1_ASM_CON1_INIT_VAL		(0x492)
++
++/* AFE_MRGIF_CON (0x003c) */
++#define AFE_MRGIF_CON_MRG_EN		(0x1 << 0)
++#define AFE_MRGIF_CON_MRG_I2S_EN	(0x1 << 16)
++#define AFE_MRGIF_CON_I2S_MODE_MASK	(0xf << 20)
++#define AFE_MRGIF_CON_I2S_MODE_32K	(0x4 << 20)
++
++/* ASYS_I2SO1_CON (0x061c) */
++#define ASYS_I2SO1_CON_FS		(0x1f << 8)
++#define ASYS_I2SO1_CON_FS_SET(x)	((x) << 8)
++#define ASYS_I2SO1_CON_MULTI_CH		(0x1 << 16)
++#define ASYS_I2SO1_CON_SIDEGEN		(0x1 << 30)
++#define ASYS_I2SO1_CON_I2S_EN		(0x1 << 0)
++/* 0:EIAJ 1:I2S */
++#define ASYS_I2SO1_CON_I2S_MODE		(0x1 << 3)
++#define ASYS_I2SO1_CON_WIDE_MODE	(0x1 << 1)
++#define ASYS_I2SO1_CON_WIDE_MODE_SET(x)	((x) << 1)
++
++/* PWR2_TOP_CON (0x0634) */
++#define PWR2_TOP_CON_INIT_VAL		(0xffe1ffff)
++
++/* ASYS_IRQ_CLR (0x07c0) */
++#define ASYS_IRQ_CLR_ALL		(0xffffffff)
++
++/* PWR2_ASM_CON1 (0x1070) */
++#define PWR2_ASM_CON1_INIT_VAL		(0x492492)
++
++/* AFE_DAC_CON0 (0x1200) */
++#define AFE_DAC_CON0_AFE_ON		(0x1 << 0)
++
++/* AFE_MEMIF_PBUF_SIZE (0x1238) */
++#define AFE_MEMIF_PBUF_SIZE_DLM_MASK		(0x1 << 29)
++#define AFE_MEMIF_PBUF_SIZE_PAIR_INTERLEAVE	(0x0 << 29)
++#define AFE_MEMIF_PBUF_SIZE_FULL_INTERLEAVE	(0x1 << 29)
++#define DLMCH_BIT_WIDTH_MASK			(0x1 << 28)
++#define AFE_MEMIF_PBUF_SIZE_DLM_CH_MASK		(0xf << 24)
++#define AFE_MEMIF_PBUF_SIZE_DLM_CH(x)		((x) << 24)
++#define AFE_MEMIF_PBUF_SIZE_DLM_BYTE_MASK	(0x3 << 12)
++#define AFE_MEMIF_PBUF_SIZE_DLM_32BYTES		(0x1 << 12)
++
++/* I2S in/out register bit control */
++#define ASYS_I2S_CON_FS			(0x1f << 8)
++#define ASYS_I2S_CON_FS_SET(x)		((x) << 8)
++#define ASYS_I2S_CON_RESET		(0x1 << 30)
++#define ASYS_I2S_CON_I2S_EN		(0x1 << 0)
++#define ASYS_I2S_CON_I2S_COUPLE_MODE	(0x1 << 17)
++/* 0:EIAJ 1:I2S */
++#define ASYS_I2S_CON_I2S_MODE		(0x1 << 3)
++#define ASYS_I2S_CON_WIDE_MODE		(0x1 << 1)
++#define ASYS_I2S_CON_WIDE_MODE_SET(x)	((x) << 1)
++#define ASYS_I2S_IN_PHASE_FIX		(0x1 << 31)
++
++#define AFE_END_ADDR 0x15e0
++#endif
+-- 
+1.9.1
