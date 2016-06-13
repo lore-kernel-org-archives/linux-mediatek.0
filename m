@@ -1,532 +1,68 @@
-From: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [alsa-devel] [PATCH v4 9/9] ASoC: mediatek: Add mt2701-cs42448 driver
- and config option.
-Date: Mon, 13 Jun 2016 15:26:46 +0800
-Message-ID: <1465802806-19197-10-git-send-email-garlic.tseng@mediatek.com>
-References: <1465802806-19197-1-git-send-email-garlic.tseng@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [GIT PULL] drm/mediatek: MT8173 HDMI support
+Date: Mon, 13 Jun 2016 11:44:40 +0200
+Message-ID: <1465811080.3553.8.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465802806-19197-1-git-send-email-garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tiwai-l3A5Bk7waGM@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, ir.lian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PC.Liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add machine driver and config option for MT2701.
-
-Signed-off-by: Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- sound/soc/mediatek/Kconfig                 |  21 ++
- sound/soc/mediatek/Makefile                |   1 +
- sound/soc/mediatek/mt2701/Makefile         |  19 ++
- sound/soc/mediatek/mt2701/mt2701-cs42448.c | 422 +++++++++++++++++++++++++++++
- 4 files changed, 463 insertions(+)
- create mode 100644 sound/soc/mediatek/mt2701/Makefile
- create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
-
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index ff1a419..0ecb785 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -7,6 +7,27 @@ config SND_SOC_MEDIATEK
- 	  Select Y if you have such device.
- 	  If unsure select "N".
- 
-+config SND_SOC_MT2701
-+	tristate "ASoC support for Mediatek MT2701 chip"
-+	depends on ARCH_MEDIATEK
-+	select SND_SOC_MEDIATEK
-+	help
-+	  This adds ASoC driver for Mediatek MT2701 boards
-+	  that can be used with other codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
-+config SND_SOC_MT2701_CS42448
-+	tristate "SND_SOC_MT2701_CS42448"
-+	depends on SND_SOC_MT2701
-+	select SND_SOC_CS42XX8_I2C
-+	select SND_SOC_BT_SCO
-+	help
-+	  This adds ASoC driver for Mediatek MT2701 boards
-+	  with the CS42448 codecs.
-+	  Select Y if you have such device.
-+	  If unsure select "N".
-+
- config SND_SOC_MT8173
- 	tristate "ASoC support for Mediatek MT8173 chip"
- 	depends on ARCH_MEDIATEK
-diff --git a/sound/soc/mediatek/Makefile b/sound/soc/mediatek/Makefile
-index 3d893be..5133215 100644
---- a/sound/soc/mediatek/Makefile
-+++ b/sound/soc/mediatek/Makefile
-@@ -1,3 +1,4 @@
- obj-$(CONFIG_SND_SOC_MEDIATEK) += common/
-+obj-$(CONFIG_SND_SOC_MT2701) += mt2701/
- obj-$(CONFIG_SND_SOC_MT8173) += mt8173/
- 
-diff --git a/sound/soc/mediatek/mt2701/Makefile b/sound/soc/mediatek/mt2701/Makefile
-new file mode 100644
-index 0000000..31c3d04
---- /dev/null
-+++ b/sound/soc/mediatek/mt2701/Makefile
-@@ -0,0 +1,19 @@
-+#
-+# Copyright (C) 2015 MediaTek Inc.
-+#
-+# This program is free software: you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License version 2 as
-+# published by the Free Software Foundation.
-+#
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-+# GNU General Public License for more details.
-+#
-+
-+# platform driver
-+snd-soc-mt2701-afe-objs := mt2701-afe-pcm.o mt2701-afe-clock-ctrl.o
-+obj-$(CONFIG_SND_SOC_MT2701) += snd-soc-mt2701-afe.o
-+
-+# machine driver
-+obj-$(CONFIG_SND_SOC_MT2701_CS42448) += mt2701-cs42448.o
-diff --git a/sound/soc/mediatek/mt2701/mt2701-cs42448.c b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-new file mode 100644
-index 0000000..0e48cb9
---- /dev/null
-+++ b/sound/soc/mediatek/mt2701/mt2701-cs42448.c
-@@ -0,0 +1,422 @@
-+/*
-+ * mt2701-cs42448.c  --  MT2701 CS42448 ALSA SoC machine driver
-+ *
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Ir Lian <ir.lian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *              Garlic Tseng <garlic.tseng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+ *
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 and
-+ * only version 2 as published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#include <linux/module.h>
-+#include <sound/soc.h>
-+#include <linux/delay.h>
-+#include <linux/gpio.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/of_gpio.h>
-+
-+#include "mt2701-afe-common.h"
-+
-+struct mt2701_cs42448_private {
-+	int i2s1_in_mux;
-+	int i2s1_in_mux_gpio_sel_1;
-+	int i2s1_in_mux_gpio_sel_2;
-+};
-+
-+static const char * const i2sin_mux_switch_text[] = {
-+	"ADC_SDOUT2",
-+	"ADC_SDOUT3",
-+	"I2S_IN_1",
-+	"I2S_IN_2",
-+};
-+
-+static const struct soc_enum i2sin_mux_enum =
-+	SOC_ENUM_SINGLE_EXT(4, i2sin_mux_switch_text);
-+
-+static int mt2701_cs42448_i2sin1_mux_get(struct snd_kcontrol *kcontrol,
-+					 struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
-+	struct mt2701_cs42448_private *priv = snd_soc_card_get_drvdata(card);
-+
-+	ucontrol->value.integer.value[0] = priv->i2s1_in_mux;
-+	return 0;
-+}
-+
-+static int mt2701_cs42448_i2sin1_mux_set(struct snd_kcontrol *kcontrol,
-+					 struct snd_ctl_elem_value *ucontrol)
-+{
-+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
-+	struct mt2701_cs42448_private *priv = snd_soc_card_get_drvdata(card);
-+
-+	if (ucontrol->value.integer.value[0] == priv->i2s1_in_mux)
-+		return 0;
-+
-+	switch (ucontrol->value.integer.value[0]) {
-+	case 0:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 0);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 0);
-+		break;
-+	case 1:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 1);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 0);
-+		break;
-+	case 2:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 0);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 1);
-+		break;
-+	case 3:
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_1, 1);
-+		gpio_set_value(priv->i2s1_in_mux_gpio_sel_2, 1);
-+		break;
-+	default:
-+		dev_warn(card->dev, "%s invalid setting\n", __func__);
-+	}
-+
-+	priv->i2s1_in_mux = ucontrol->value.integer.value[0];
-+	return 0;
-+}
-+
-+static const struct snd_soc_dapm_widget
-+			mt2701_cs42448_asoc_card_dapm_widgets[] = {
-+	SND_SOC_DAPM_LINE("Line Out Jack", NULL),
-+	SND_SOC_DAPM_MIC("AMIC", NULL),
-+	SND_SOC_DAPM_LINE("Tuner In", NULL),
-+	SND_SOC_DAPM_LINE("Satellite Tuner In", NULL),
-+	SND_SOC_DAPM_LINE("AUX In", NULL),
-+};
-+
-+static const struct snd_kcontrol_new mt2701_cs42448_controls[] = {
-+	SOC_DAPM_PIN_SWITCH("Line Out Jack"),
-+	SOC_DAPM_PIN_SWITCH("AMIC"),
-+	SOC_DAPM_PIN_SWITCH("Tuner In"),
-+	SOC_DAPM_PIN_SWITCH("Satellite Tuner In"),
-+	SOC_DAPM_PIN_SWITCH("AUX In"),
-+	SOC_ENUM_EXT("I2SIN1_MUX_Switch", i2sin_mux_enum,
-+		     mt2701_cs42448_i2sin1_mux_get,
-+		     mt2701_cs42448_i2sin1_mux_set),
-+};
-+
-+static const unsigned int mt2701_cs42448_sampling_rates[] = {48000};
-+
-+static struct snd_pcm_hw_constraint_list mt2701_cs42448_constraints_rates = {
-+		.count = ARRAY_SIZE(mt2701_cs42448_sampling_rates),
-+		.list = mt2701_cs42448_sampling_rates,
-+		.mask = 0,
-+};
-+
-+static int mt2701_cs42448_fe_ops_startup(struct snd_pcm_substream *substream)
-+{
-+	int err;
-+
-+	err = snd_pcm_hw_constraint_list(substream->runtime, 0,
-+					 SNDRV_PCM_HW_PARAM_RATE,
-+					 &mt2701_cs42448_constraints_rates);
-+	if (err < 0) {
-+		dev_err(substream->pcm->card->dev,
-+			"%s snd_pcm_hw_constraint_list failed: 0x%x\n",
-+			__func__, err);
-+		return err;
-+	}
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt2701_cs42448_48k_fe_ops = {
-+	.startup = mt2701_cs42448_fe_ops_startup,
-+};
-+
-+static int mt2701_cs42448_be_ops_hw_params(struct snd_pcm_substream *substream,
-+					   struct snd_pcm_hw_params *params)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
-+	struct snd_soc_dai *codec_dai = rtd->codec_dai;
-+	/* codec slave, mt2701 master */
-+	unsigned int fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			    | SND_SOC_DAIFMT_CONT;
-+	unsigned int mclk_rate;
-+	unsigned int rate = params_rate(params);
-+	unsigned int div_mclk_to_bck = rate > 192000 ? 2 : 4;
-+	unsigned int div_bck_to_lrck = 64;
-+
-+	mclk_rate = rate * div_bck_to_lrck * div_mclk_to_bck;
-+
-+	/* mt2701 mclk */
-+	snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_rate, SND_SOC_CLOCK_OUT);
-+	/* mt2701 bck */
-+	snd_soc_dai_set_clkdiv(cpu_dai, DIV_ID_MCLK_TO_BCK, div_mclk_to_bck);
-+	/* mt2701 lrck */
-+	snd_soc_dai_set_clkdiv(cpu_dai, DIV_ID_BCK_TO_LRCK, div_bck_to_lrck);
-+	/* mt2701 master */
-+	snd_soc_dai_set_fmt(cpu_dai, fmt);
-+
-+	/* codec mclk */
-+	snd_soc_dai_set_sysclk(codec_dai, 0, mclk_rate, SND_SOC_CLOCK_IN);
-+	/* codec slave */
-+	snd_soc_dai_set_fmt(codec_dai, fmt);
-+	return 0;
-+}
-+
-+static struct snd_soc_ops mt2701_cs42448_be_ops = {
-+	.hw_params = mt2701_cs42448_be_ops_hw_params
-+};
-+
-+enum {
-+	DAI_LINK_FE_MULTI_CH_OUT,
-+	DAI_LINK_FE_PCM0_IN,
-+	DAI_LINK_FE_PCM1_IN,
-+	DAI_LINK_FE_BT_OUT,
-+	DAI_LINK_FE_BT_IN,
-+	DAI_LINK_BE_I2S0,
-+	DAI_LINK_BE_I2S1,
-+	DAI_LINK_BE_I2S2,
-+	DAI_LINK_BE_I2S3,
-+	DAI_LINK_BE_MRG_BT,
-+};
-+
-+static struct snd_soc_dai_link mt2701_cs42448_dai_links[] = {
-+	/* FE */
-+	[DAI_LINK_FE_MULTI_CH_OUT] = {
-+		.name = "mt2701-cs42448-multi-ch-out",
-+		.stream_name = "mt2701-cs42448-multi-ch-out",
-+		.cpu_dai_name = "PCM_multi",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_48k_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	[DAI_LINK_FE_PCM0_IN] = {
-+		.name = "mt2701-cs42448-pcm0",
-+		.stream_name = "mt2701-cs42448-pcm0-data-UL",
-+		.cpu_dai_name = "PCM0",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_48k_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_FE_PCM1_IN] = {
-+		.name = "mt2701-cs42448-pcm1-data-UL",
-+		.stream_name = "mt2701-cs42448-pcm1-data-UL",
-+		.cpu_dai_name = "PCM1",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.ops = &mt2701_cs42448_48k_fe_ops,
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_FE_BT_OUT] = {
-+		.name = "mt2701-cs42448-pcm-BT-out",
-+		.stream_name = "mt2701-cs42448-pcm-BT",
-+		.cpu_dai_name = "PCM_BT_DL",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
-+	[DAI_LINK_FE_BT_IN] = {
-+		.name = "mt2701-cs42448-pcm-BT-in",
-+		.stream_name = "mt2701-cs42448-pcm-BT",
-+		.cpu_dai_name = "PCM_BT_UL",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST,
-+			    SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_capture = 1,
-+	},
-+	/* BE */
-+	[DAI_LINK_BE_I2S0] = {
-+		.name = "mt2701-cs42448-I2S0",
-+		.cpu_dai_name = "I2S0",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_BE_I2S1] = {
-+		.name = "mt2701-cs42448-I2S1",
-+		.cpu_dai_name = "I2S1",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_BE_I2S2] = {
-+		.name = "mt2701-cs42448-I2S2",
-+		.cpu_dai_name = "I2S2",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_BE_I2S3] = {
-+		.name = "mt2701-cs42448-I2S3",
-+		.cpu_dai_name = "I2S3",
-+		.no_pcm = 1,
-+		.codec_dai_name = "cs42448",
-+		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS
-+			 | SND_SOC_DAIFMT_GATED,
-+		.ops = &mt2701_cs42448_be_ops,
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+	[DAI_LINK_BE_MRG_BT] = {
-+		.name = "mt2701-cs42448-MRG-BT",
-+		.cpu_dai_name = "MRG BT",
-+		.no_pcm = 1,
-+		.codec_dai_name = "bt-sco-pcm",
-+		.dpcm_playback = 1,
-+		.dpcm_capture = 1,
-+	},
-+};
-+
-+static struct snd_soc_card mt2701_cs42448_soc_card = {
-+	.name = "mt2701-cs42448",
-+	.owner = THIS_MODULE,
-+	.dai_link = mt2701_cs42448_dai_links,
-+	.num_links = ARRAY_SIZE(mt2701_cs42448_dai_links),
-+	.controls = mt2701_cs42448_controls,
-+	.num_controls = ARRAY_SIZE(mt2701_cs42448_controls),
-+	.dapm_widgets = mt2701_cs42448_asoc_card_dapm_widgets,
-+	.num_dapm_widgets = ARRAY_SIZE(mt2701_cs42448_asoc_card_dapm_widgets),
-+};
-+
-+static int mt2701_cs42448_machine_probe(struct platform_device *pdev)
-+{
-+	struct snd_soc_card *card = &mt2701_cs42448_soc_card;
-+	int ret;
-+	int i;
-+	struct device_node *platform_node, *codec_node, *codec_node_bt_mrg;
-+	struct mt2701_cs42448_private *priv =
-+		devm_kzalloc(&pdev->dev, sizeof(struct mt2701_cs42448_private),
-+			     GFP_KERNEL);
-+	struct device *dev = &pdev->dev;
-+
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	platform_node = of_parse_phandle(pdev->dev.of_node,
-+					 "mediatek,platform", 0);
-+	if (!platform_node) {
-+		dev_err(&pdev->dev, "Property 'platform' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	for (i = 0; i < card->num_links; i++) {
-+		if (mt2701_cs42448_dai_links[i].platform_name)
-+			continue;
-+		mt2701_cs42448_dai_links[i].platform_of_node = platform_node;
-+	}
-+
-+	card->dev = dev;
-+
-+	codec_node = of_parse_phandle(pdev->dev.of_node,
-+				      "mediatek,audio-codec", 0);
-+	if (!codec_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	for (i = 0; i < card->num_links; i++) {
-+		if (mt2701_cs42448_dai_links[i].codec_name)
-+			continue;
-+		mt2701_cs42448_dai_links[i].codec_of_node = codec_node;
-+	}
-+
-+	codec_node_bt_mrg = of_parse_phandle(pdev->dev.of_node,
-+					     "mediatek,audio-codec-bt-mrg", 0);
-+	if (!codec_node_bt_mrg) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec-bt-mrg' missing or invalid\n");
-+		return -EINVAL;
-+	}
-+	mt2701_cs42448_dai_links[DAI_LINK_BE_MRG_BT].codec_of_node
-+							= codec_node_bt_mrg;
-+
-+	ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to parse audio-routing: %d\n", ret);
-+		return ret;
-+	}
-+
-+	priv->i2s1_in_mux_gpio_sel_1 =
-+		of_get_named_gpio(dev->of_node, "i2s1-in-sel-gpio1", 0);
-+	if (gpio_is_valid(priv->i2s1_in_mux_gpio_sel_1)) {
-+		ret = devm_gpio_request(dev, priv->i2s1_in_mux_gpio_sel_1,
-+					"i2s1_in_mux_gpio_sel_1");
-+		if (ret)
-+			dev_warn(&pdev->dev, "%s devm_gpio_request fail %d\n",
-+				 __func__, ret);
-+		gpio_direction_output(priv->i2s1_in_mux_gpio_sel_1, 0);
-+	}
-+
-+	priv->i2s1_in_mux_gpio_sel_2 =
-+		of_get_named_gpio(dev->of_node, "i2s1-in-sel-gpio2", 0);
-+	if (gpio_is_valid(priv->i2s1_in_mux_gpio_sel_2)) {
-+		ret = devm_gpio_request(dev, priv->i2s1_in_mux_gpio_sel_2,
-+					"i2s1_in_mux_gpio_sel_2");
-+		if (ret)
-+			dev_warn(&pdev->dev, "%s devm_gpio_request fail2 %d\n",
-+				 __func__, ret);
-+		gpio_direction_output(priv->i2s1_in_mux_gpio_sel_2, 0);
-+	}
-+	snd_soc_card_set_drvdata(card, priv);
-+
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+
-+	if (ret)
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+			__func__, ret);
-+	return ret;
-+}
-+
-+#ifdef CONFIG_OF
-+static const struct of_device_id mt2701_cs42448_machine_dt_match[] = {
-+	{.compatible = "mediatek,mt2701-cs42448-machine",},
-+	{}
-+};
-+#endif
-+
-+static struct platform_driver mt2701_cs42448_machine = {
-+	.driver = {
-+		.name = "mt2701-cs42448",
-+		   #ifdef CONFIG_OF
-+		   .of_match_table = mt2701_cs42448_machine_dt_match,
-+		   #endif
-+	},
-+	.probe = mt2701_cs42448_machine_probe,
-+};
-+
-+module_platform_driver(mt2701_cs42448_machine);
-+
-+/* Module information */
-+MODULE_DESCRIPTION("MT2701 CS42448 ALSA SoC machine driver");
-+MODULE_AUTHOR("Ir Lian <ir.lian-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-+MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("mt2701 cs42448 soc card");
--- 
-1.9.1
+SGkgRGF2ZSwKCnBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlu
+cyB0aGUgdjE2IE1UODE3MyBIRE1JCnBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDUtMjYsIHJlYmFz
+ZWQgb250byB2NC43LXJjMi4gVGhlcmUgaGF2ZSBiZWVuIG5vCmZ1cnRoZXIgY29tbWVudHMuCgpy
+ZWdhcmRzClBoaWxpcHAKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYWY4YzM0
+Y2U2YWUzMmFkZGRhMzc4OGQ1NGE3ZTM0MGNhZDIyNTE2YjoKCiAgTGludXggNC43LXJjMiAoMjAx
+Ni0wNi0wNSAxNDozMToyNiAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0
+b3J5IGF0OgoKICBnaXQ6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L3B6YS9saW51eC5naXQgdGFn
+cy9tZWRpYXRlay1kcm0tMjAxNi0wNi0xMwoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRv
+IDIxZmYxNmI3N2U3NzlmOWY5ZGQ1NjUyMjYxM2YzODM1YjBhM2EzODY6CgogIGR0LWJpbmRpbmdz
+OiBoZG1pLWNvbm5lY3RvcjogYWRkIEREQyBJMkMgYnVzIHBoYW5kbGUgZG9jdW1lbnRhdGlvbiAo
+MjAxNi0wNi0xMyAxMTowODoyNyArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTVQ4MTczIEhETUkgc3VwcG9ydAoK
+LSBkZXZpY2UgdHJlZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1UODE3MyBIRE1JIGVuY29k
+ZXIsIENFQywgRERDLAogIGFuZCBQSFkKLSBkcml2ZXJzIGZvciBNVDgxNzMgSERNSSBlbmNvZGVy
+LCBDRUMgKEhQRCBvbmx5IGZvciBub3cpLCBEREMsIGFuZCBQSFkKLSBlbmFibGUgSERNSSBvdXRw
+dXQgdmlhIGEgY3VzdG9tIFNNQ0NDIGNhbGwKLSBhZGQgZGRjLWkyYy1idXMgcHJvcGVydHkgdG8g
+SERNSSBjb25uZWN0b3IgZGV2aWNlIHRyZWUgYmluZGluZwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpKaWUgUWl1ICgyKToK
+ICAgICAgZHJtL21lZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0CiAgICAgIGRybS9tZWRpYXRlazog
+ZW5hYmxlIGhkbWkgb3V0cHV0IGNvbnRyb2wgYml0CgpQaGlsaXBwIFphYmVsICgyKToKICAgICAg
+ZHQtYmluZGluZ3M6IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhETUkgZHRzIGJpbmRpbmcK
+ICAgICAgZHQtYmluZGluZ3M6IGhkbWktY29ubmVjdG9yOiBhZGQgRERDIEkyQyBidXMgcGhhbmRs
+ZSBkb2N1bWVudGF0aW9uCgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvY29ubmVjdG9yL2hkbWktY29u
+bmVjdG9yLnR4dCAgfCAgICAxICsKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlh
+dGVrLGhkbWkudHh0ICAgIHwgIDE0OCArKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25m
+aWcgICAgICAgICAgICAgICAgICAgfCAgICA4ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9N
+YWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgICAgNyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2NlYy5jICAgICAgICAgICAgICAgICB8ICAyNjUgKysrCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2NlYy5oICAgICAgICAgICAgICAgICB8ICAgMjYgKwogZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMgICAgICAgICAgICAgICAgfCAxODI4ICsrKysrKysrKysr
+KysrKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAg
+ICAgICB8ICAgMjMgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jICAg
+ICAgICAgICAgfCAgMzU4ICsrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9y
+ZWdzLmggICAgICAgICAgIHwgIDIzOCArKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+bXQ4MTczX2hkbWlfcGh5LmMgICAgIHwgIDUxNSArKysrKysKIDExIGZpbGVzIGNoYW5nZWQsIDM0
+MTcgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0CiBjcmVhdGUg
+bW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuYwogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmgKIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwogY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oCiBjcmVhdGUgbW9kZSAx
+MDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jCiBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3JlZ3MuaAogY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5
+LmMKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
