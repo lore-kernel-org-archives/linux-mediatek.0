@@ -1,159 +1,231 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [RFC v3 3/5] drm/mediatek: add shadow register support
-Date: Mon, 13 Jun 2016 14:43:03 +0800
-Message-ID: <1465800183.27253.4.camel@mtksdaap41>
-References: <1465401825-43642-1-git-send-email-yt.shen@mediatek.com>
- <1465401825-43642-4-git-send-email-yt.shen@mediatek.com>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: [alsa-devel] [PATCH v4 4/9] ASoC: mediatek: add documents for mt2701
+Date: Mon, 13 Jun 2016 15:26:41 +0800
+Message-ID: <1465802806-19197-5-git-send-email-garlic.tseng@mediatek.com>
+References: <1465802806-19197-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1465401825-43642-4-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, srv_heupstream@mediatek.com, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1465802806-19197-1-git-send-email-garlic.tseng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: garlic.tseng@mediatek.com, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, koro.chen@mediatek.com, PC.Liao@mediatek.com, ir.lian@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT25lIGNvbW1lbnQgaW5saW5lLgoKT24gVGh1LCAyMDE2LTA2LTA5IGF0IDAwOjAz
-ICswODAwLCBZVCBTaGVuIHdyb3RlOgo+IFdlIG5lZWQgdG8gYWNxdWlyZSBtdXRleCBiZWZvcmUg
-dXNpbmcgdGhlIHJlc291cmNlcywKPiBhbmQgbmVlZCB0byByZWxlYXNlIGl0IGFmdGVyIGZpbmlz
-aGVkLgo+IFNvIHdlIGRvbid0IG5lZWQgdG8gd3JpdGUgcmVnaXN0ZXJzIGluIHRoZSBibGFua2lu
-ZyBwZXJpb2QuCj4gCj4gU2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5j
-b20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8ICAg
-NzUgKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHAuYyAgfCAgIDIyICsrKysrKysrKwo+ICBkcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kZHAuaCAgfCAgICAyICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmMgIHwgICAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2Rydi5oICB8ICAgIDEgKwo+ICA1IGZpbGVzIGNoYW5nZWQsIDcyIGluc2VydGlvbnMo
-KyksIDI5IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9j
-cnRjLmMKPiBpbmRleCAyNGFhM2JhLi44MGQ5NjQxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2NydGMuYwo+IEBAIC0zMTUsNiArMzE1LDQyIEBAIHN0YXRpYyB2b2lkIG10
-a19jcnRjX2RkcF9od19maW5pKHN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjKQo+ICAJcG1f
-cnVudGltZV9wdXQoZHJtLT5kZXYpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfY3J0Y19k
-ZHBfY29uZmlnKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiArewo+ICsJc3RydWN0IG10a19kcm1f
-Y3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiArCXN0cnVjdCBtdGtfY3J0Y19z
-dGF0ZSAqc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShtdGtfY3J0Yy0+YmFzZS5zdGF0ZSk7Cj4g
-KwlzdHJ1Y3QgbXRrX2RkcF9jb21wICpvdmwgPSBtdGtfY3J0Yy0+ZGRwX2NvbXBbMF07Cj4gKwl1
-bnNpZ25lZCBpbnQgaTsKPiArCj4gKwkvKgo+ICsJICogVE9ETzogaW5zdGVhZCBvZiB1cGRhdGlu
-ZyB0aGUgcmVnaXN0ZXJzIGhlcmUsIHdlIHNob3VsZCBwcmVwYXJlCj4gKwkgKiB3b3JraW5nIHJl
-Z2lzdGVycyBpbiBhdG9taWNfY29tbWl0IGFuZCBsZXQgdGhlIGhhcmR3YXJlIGNvbW1hbmQKPiAr
-CSAqIHF1ZXVlIHVwZGF0ZSBtb2R1bGUgcmVnaXN0ZXJzIG9uIHZibGFuay4KPiArCSAqLwo+ICsJ
-aWYgKHN0YXRlLT5wZW5kaW5nX2NvbmZpZykgewo+ICsJCW10a19kZHBfY29tcF9jb25maWcob3Zs
-LCBzdGF0ZS0+cGVuZGluZ193aWR0aCwKPiArCQkJCSAgICBzdGF0ZS0+cGVuZGluZ19oZWlnaHQs
-Cj4gKwkJCQkgICAgc3RhdGUtPnBlbmRpbmdfdnJlZnJlc2gpOwo+ICsKPiArCQlzdGF0ZS0+cGVu
-ZGluZ19jb25maWcgPSBmYWxzZTsKPiArCX0KPiArCj4gKwlpZiAobXRrX2NydGMtPnBlbmRpbmdf
-cGxhbmVzKSB7Cj4gKwkJZm9yIChpID0gMDsgaSA8IE9WTF9MQVlFUl9OUjsgaSsrKSB7Cj4gKwkJ
-CXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV0uYmFzZTsKPiAr
-CQkJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGU7Cj4gKwo+ICsJCQlwbGFuZV9z
-dGF0ZSA9IHRvX210a19wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+ICsKPiArCQkJaWYgKHBs
-YW5lX3N0YXRlLT5wZW5kaW5nLmNvbmZpZykgewo+ICsJCQkJbXRrX2RkcF9jb21wX2xheWVyX2Nv
-bmZpZyhvdmwsIGksIHBsYW5lX3N0YXRlKTsKPiArCQkJCXBsYW5lX3N0YXRlLT5wZW5kaW5nLmNv
-bmZpZyA9IGZhbHNlOwo+ICsJCQl9Cj4gKwkJfQo+ICsJCW10a19jcnRjLT5wZW5kaW5nX3BsYW5l
-cyA9IGZhbHNlOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfZW5h
-YmxlKHN0cnVjdCBkcm1fY3J0YyAqY3J0YykKPiAgewo+ICAJc3RydWN0IG10a19kcm1fY3J0YyAq
-bXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiBAQCAtMzkxLDYgKzQyNyw3IEBAIHN0YXRp
-YyB2b2lkIG10a19kcm1fY3J0Y19hdG9taWNfZmx1c2goc3RydWN0IGRybV9jcnRjICpjcnRjLAo+
-ICAJCQkJICAgICAgc3RydWN0IGRybV9jcnRjX3N0YXRlICpvbGRfY3J0Y19zdGF0ZSkKPiAgewo+
-ICAJc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiAr
-CXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnByaXYgPSBjcnRjLT5kZXYtPmRldl9wcml2YXRlOwo+
-ICAJdW5zaWduZWQgaW50IHBlbmRpbmdfcGxhbmVzID0gMDsKPiAgCWludCBpOwo+ICAKPiBAQCAt
-NDA5LDYgKzQ0NiwxMiBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2ZsdXNoKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgCX0KPiAgCWlmIChwZW5kaW5nX3BsYW5lcykKPiAgCQlt
-dGtfY3J0Yy0+cGVuZGluZ19wbGFuZXMgPSB0cnVlOwo+ICsKPiArCWlmIChwcml2LT5kYXRhLT5z
-aGFkb3dfcmVnaXN0ZXIpIHsKPiArCQltdGtfZGlzcF9tdXRleF9hY3F1aXJlKG10a19jcnRjLT5t
-dXRleCk7Cj4gKwkJbXRrX2NydGNfZGRwX2NvbmZpZyhjcnRjKTsKPiArCQltdGtfZGlzcF9tdXRl
-eF9yZWxlYXNlKG10a19jcnRjLT5tdXRleCk7Cj4gKwl9Cj4gIH0KPiAgCj4gIHN0YXRpYyBjb25z
-dCBzdHJ1Y3QgZHJtX2NydGNfZnVuY3MgbXRrX2NydGNfZnVuY3MgPSB7Cj4gQEAgLTQ1MywzNiAr
-NDk2LDEwIEBAIGVycl9jbGVhbnVwX2NydGM6Cj4gIHZvaWQgbXRrX2NydGNfZGRwX2lycShzdHJ1
-Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVjdCBtdGtfZGRwX2NvbXAgKm92bCkKPiAgewo+ICAJc3Ry
-dWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiAtCXN0cnVj
-dCBtdGtfY3J0Y19zdGF0ZSAqc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShtdGtfY3J0Yy0+YmFz
-ZS5zdGF0ZSk7Cj4gLQl1bnNpZ25lZCBpbnQgaTsKPiArCXN0cnVjdCBtdGtfZHJtX3ByaXZhdGUg
-KnByaXYgPSBjcnRjLT5kZXYtPmRldl9wcml2YXRlOwo+ICAKPiAtCS8qCj4gLQkgKiBUT0RPOiBp
-bnN0ZWFkIG9mIHVwZGF0aW5nIHRoZSByZWdpc3RlcnMgaGVyZSwgd2Ugc2hvdWxkIHByZXBhcmUK
-PiAtCSAqIHdvcmtpbmcgcmVnaXN0ZXJzIGluIGF0b21pY19jb21taXQgYW5kIGxldCB0aGUgaGFy
-ZHdhcmUgY29tbWFuZAo+IC0JICogcXVldWUgdXBkYXRlIG1vZHVsZSByZWdpc3RlcnMgb24gdmJs
-YW5rLgo+IC0JICovCj4gLQlpZiAoc3RhdGUtPnBlbmRpbmdfY29uZmlnKSB7Cj4gLQkJbXRrX2Rk
-cF9jb21wX2NvbmZpZyhvdmwsIHN0YXRlLT5wZW5kaW5nX3dpZHRoLAo+IC0JCQkJICAgIHN0YXRl
-LT5wZW5kaW5nX2hlaWdodCwKPiAtCQkJCSAgICBzdGF0ZS0+cGVuZGluZ192cmVmcmVzaCk7Cj4g
-LQo+IC0JCXN0YXRlLT5wZW5kaW5nX2NvbmZpZyA9IGZhbHNlOwo+IC0JfQo+IC0KPiAtCWlmICht
-dGtfY3J0Yy0+cGVuZGluZ19wbGFuZXMpIHsKPiAtCQlmb3IgKGkgPSAwOyBpIDwgT1ZMX0xBWUVS
-X05SOyBpKyspIHsKPiAtCQkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUgPSAmbXRrX2NydGMtPnBs
-YW5lc1tpXS5iYXNlOwo+IC0JCQlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpwbGFuZV9zdGF0ZTsK
-PiAtCj4gLQkJCXBsYW5lX3N0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7
-Cj4gLQo+IC0JCQlpZiAocGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmlnKSB7Cj4gLQkJCQltdGtf
-ZGRwX2NvbXBfbGF5ZXJfY29uZmlnKG92bCwgaSwgcGxhbmVfc3RhdGUpOwo+IC0JCQkJcGxhbmVf
-c3RhdGUtPnBlbmRpbmcuY29uZmlnID0gZmFsc2U7Cj4gLQkJCX0KPiAtCQl9Cj4gLQkJbXRrX2Ny
-dGMtPnBlbmRpbmdfcGxhbmVzID0gZmFsc2U7Cj4gLQl9Cj4gKwlpZiAoIXByaXYtPmRhdGEtPnNo
-YWRvd19yZWdpc3RlcikKPiArCQltdGtfY3J0Y19kZHBfY29uZmlnKGNydGMpOwo+ICAKPiAgCW10
-a19kcm1fZmluaXNoX3BhZ2VfZmxpcChtdGtfY3J0Yyk7Cj4gIH0KPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHAuYwo+IGluZGV4IDgwMzA3NjkuLmZhNTM4MDYgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiArKysgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYwo+IEBAIC0xMiw2ICsxMiw3IEBACj4gICAq
-Lwo+ICAKPiAgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICsjaW5jbHVkZSA8bGludXgvaW9wb2xs
-Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2Rl
-dmljZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gQEAgLTMyLDYg
-KzMzLDcgQEAKPiAgI2RlZmluZSBESVNQX1JFR19DT05GSUdfTU1TWVNfQ0dfQ09OMAkJMHgxMDAK
-PiAgCj4gICNkZWZpbmUgRElTUF9SRUdfTVVURVhfRU4obikJKDB4MjAgKyAweDIwICogKG4pKQo+
-ICsjZGVmaW5lIERJU1BfUkVHX01VVEVYKG4pCSgweDI0ICsgMHgyMCAqIChuKSkKPiAgI2RlZmlu
-ZSBESVNQX1JFR19NVVRFWF9SU1QobikJKDB4MjggKyAweDIwICogKG4pKQo+ICAjZGVmaW5lIERJ
-U1BfUkVHX01VVEVYX01PRChuKQkoMHgyYyArIDB4MjAgKiAobikpCj4gICNkZWZpbmUgRElTUF9S
-RUdfTVVURVhfU09GKG4pCSgweDMwICsgMHgyMCAqIChuKSkKPiBAQCAtMzAwLDYgKzMwMiwyNiBA
-QCB2b2lkIG10a19kaXNwX211dGV4X2Rpc2FibGUoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRl
-eCkKPiAgCXdyaXRlbCgwLCBkZHAtPnJlZ3MgKyBESVNQX1JFR19NVVRFWF9FTihtdXRleC0+aWQp
-KTsKPiAgfQo+ICAKPiArdm9pZCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKHN0cnVjdCBtdGtfZGlz
-cF9tdXRleCAqbXV0ZXgpCj4gK3sKPiArCXN0cnVjdCBtdGtfZGRwICpkZHAgPSBjb250YWluZXJf
-b2YobXV0ZXgsIHN0cnVjdCBtdGtfZGRwLAo+ICsJCQkJCSAgIG11dGV4W211dGV4LT5pZF0pOwo+
-ICsJdTMyIHRtcDsKPiArCj4gKwl3cml0ZWwoMSwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVhf
-RU4obXV0ZXgtPmlkKSk7Cj4gKwl3cml0ZWwoMSwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVgo
-bXV0ZXgtPmlkKSk7Cj4gKwlyZWFkbF9wb2xsX3RpbWVvdXRfYXRvbWljKGRkcC0+cmVncyArIERJ
-U1BfUkVHX01VVEVYKG11dGV4LT5pZCksIHRtcCwKPiArCQkJCSAgdG1wICYgMHgyLCAxLCAxMDAw
-MCk7Cj4gK30KPiArCj4gK3ZvaWQgbXRrX2Rpc3BfbXV0ZXhfcmVsZWFzZShzdHJ1Y3QgbXRrX2Rp
-c3BfbXV0ZXggKm11dGV4KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2RkcCAqZGRwID0gY29udGFpbmVy
-X29mKG11dGV4LCBzdHJ1Y3QgbXRrX2RkcCwKPiArCQkJCQkgICBtdXRleFttdXRleC0+aWRdKTsK
-PiArCj4gKwl3cml0ZWwoMCwgZGRwLT5yZWdzICsgRElTUF9SRUdfTVVURVgobXV0ZXgtPmlkKSk7
-Cj4gK30KPiArCj4gIHN0YXRpYyBpbnQgbXRrX2RkcF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
-aWNlICpwZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaCBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oCj4gaW5kZXggOTJjMTE3NS4uZjlhNzk5
-MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaAo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5oCj4gQEAgLTM3LDUg
-KzM3LDcgQEAgdm9pZCBtdGtfZGlzcF9tdXRleF9yZW1vdmVfY29tcChzdHJ1Y3QgbXRrX2Rpc3Bf
-bXV0ZXggKm11dGV4LAo+ICAJCQkJZW51bSBtdGtfZGRwX2NvbXBfaWQgaWQpOwo+ICB2b2lkIG10
-a19kaXNwX211dGV4X3VucHJlcGFyZShzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4KTsKPiAg
-dm9pZCBtdGtfZGlzcF9tdXRleF9wdXQoc3RydWN0IG10a19kaXNwX211dGV4ICptdXRleCk7Cj4g
-K3ZvaWQgbXRrX2Rpc3BfbXV0ZXhfYWNxdWlyZShzdHJ1Y3QgbXRrX2Rpc3BfbXV0ZXggKm11dGV4
-KTsKPiArdm9pZCBtdGtfZGlzcF9tdXRleF9yZWxlYXNlKHN0cnVjdCBtdGtfZGlzcF9tdXRleCAq
-bXV0ZXgpOwo+ICAKPiAgI2VuZGlmIC8qIE1US19EUk1fRERQX0ggKi8KPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IGluZGV4IDgwYjRmNTQuLmU5ZWI1MzUgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC0xMzMsNiArMTMzLDcgQEAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQ4MTczX21tc3lzX2Ry
-aXZlcl9kYXRhID0gewo+ICAJLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9t
-YWluKSwKPiAgCS5leHRfcGF0aCA9IG10ODE3M19tdGtfZGRwX2V4dCwKPiAgCS5leHRfbGVuID0g
-QVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9leHQpLAo+ICsJLnNoYWRvd19yZWdpc3RlciA9IGZh
-bHNlLAoKZ2xvYmFsIGRhdGEgaXMgaW5pdGlhbGl6ZWQgYXMgemVyby4KCj4gIH07Cj4gIAo+ICBz
-dGF0aWMgaW50IG10a19kcm1fa21zX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKPiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IGluZGV4IGZhMGIxMDYuLjk0ZjhiNjYg
-MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiAr
-KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IEBAIC0zMyw2ICsz
-Myw3IEBAIHN0cnVjdCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgewo+ICAJdW5zaWduZWQgaW50IG1h
-aW5fbGVuOwo+ICAJY29uc3QgZW51bSBtdGtfZGRwX2NvbXBfaWQgKmV4dF9wYXRoOwo+ICAJdW5z
-aWduZWQgaW50IGV4dF9sZW47Cj4gKwlib29sIHNoYWRvd19yZWdpc3RlcjsKPiAgfTsKPiAgCj4g
-IHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgewoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
-LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAo=
+add mt2701-afe-pcm.txt and mt2701-cs42448.txt for mt2701
+
+Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+---
+ .../devicetree/bindings/sound/mt2701-afe-pcm.txt   | 150 +++++++++++++++++++++
+ .../devicetree/bindings/sound/mt2701-cs42448.txt   |  43 ++++++
+ 2 files changed, 193 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/mt2701-cs42448.txt
+
+diff --git a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+new file mode 100644
+index 0000000..3e623a7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+@@ -0,0 +1,150 @@
++Mediatek AFE PCM controller for mt2701
++
++Required properties:
++- compatible = "mediatek,mt2701-audio";
++- reg: register location and size
++- interrupts: Should contain AFE interrupt
++- clock-names: should have these clock names:
++		"infra_sys_audio_clk",
++		"top_audio_mux1_sel",
++		"top_audio_mux2_sel",
++		"top_audio_mux1_div",
++		"top_audio_mux2_div",
++		"top_audio_48k_timing",
++		"top_audio_44k_timing",
++		"top_audpll_mux_sel",
++		"top_apll_sel",
++		"top_aud1_pll_98M",
++		"top_aud2_pll_90M",
++		"top_hadds2_pll_98M",
++		"top_hadds2_pll_294M",
++		"top_audpll",
++		"top_audpll_d4",
++		"top_audpll_d8",
++		"top_audpll_d16",
++		"top_audpll_d24",
++		"top_audintbus_sel",
++		"clk_26m",
++		"top_syspll1_d4",
++		"top_aud_k1_src_sel",
++		"top_aud_k2_src_sel",
++		"top_aud_k3_src_sel",
++		"top_aud_k4_src_sel",
++		"top_aud_k5_src_sel",
++		"top_aud_k6_src_sel",
++		"top_aud_k1_src_div",
++		"top_aud_k2_src_div",
++		"top_aud_k3_src_div",
++		"top_aud_k4_src_div",
++		"top_aud_k5_src_div",
++		"top_aud_k6_src_div",
++		"top_aud_i2s1_mclk",
++		"top_aud_i2s2_mclk",
++		"top_aud_i2s3_mclk",
++		"top_aud_i2s4_mclk",
++		"top_aud_i2s5_mclk",
++		"top_aud_i2s6_mclk",
++		"top_asm_m_sel",
++		"top_asm_h_sel",
++		"top_univpll2_d4",
++		"top_univpll2_d2",
++		"top_syspll_d5";
++
++Example:
++
++	afe: mt2701-afe-pcm@11220000 {
++		compatible = "mediatek,mt2701-audio";
++		reg = <0 0x11220000 0 0x2000>,
++		      <0 0x112A0000 0 0x20000>;
++		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&infracfg CLK_INFRA_AUDIO>,
++			 <&topckgen CLK_TOP_AUD_MUX1_SEL>,
++			 <&topckgen CLK_TOP_AUD_MUX2_SEL>,
++			 <&topckgen CLK_TOP_AUD_MUX1_DIV>,
++			 <&topckgen CLK_TOP_AUD_MUX2_DIV>,
++			 <&topckgen CLK_TOP_AUD_48K_TIMING>,
++			 <&topckgen CLK_TOP_AUD_44K_TIMING>,
++			 <&topckgen CLK_TOP_AUDPLL_MUX_SEL>,
++			 <&topckgen CLK_TOP_APLL_SEL>,
++			 <&topckgen CLK_TOP_AUD1PLL_98M>,
++			 <&topckgen CLK_TOP_AUD2PLL_90M>,
++			 <&topckgen CLK_TOP_HADDS2PLL_98M>,
++			 <&topckgen CLK_TOP_HADDS2PLL_294M>,
++			 <&topckgen CLK_TOP_AUDPLL>,
++			 <&topckgen CLK_TOP_AUDPLL_D4>,
++			 <&topckgen CLK_TOP_AUDPLL_D8>,
++			 <&topckgen CLK_TOP_AUDPLL_D16>,
++			 <&topckgen CLK_TOP_AUDPLL_D24>,
++			 <&topckgen CLK_TOP_AUDINTBUS_SEL>,
++			 <&clk26m>,
++			 <&topckgen CLK_TOP_SYSPLL1_D4>,
++			 <&topckgen CLK_TOP_AUD_K1_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K2_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K3_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K4_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K5_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K6_SRC_SEL>,
++			 <&topckgen CLK_TOP_AUD_K1_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_K2_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_K3_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_K4_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_K5_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_K6_SRC_DIV>,
++			 <&topckgen CLK_TOP_AUD_I2S1_MCLK>,
++			 <&topckgen CLK_TOP_AUD_I2S2_MCLK>,
++			 <&topckgen CLK_TOP_AUD_I2S3_MCLK>,
++			 <&topckgen CLK_TOP_AUD_I2S4_MCLK>,
++			 <&topckgen CLK_TOP_AUD_I2S5_MCLK>,
++			 <&topckgen CLK_TOP_AUD_I2S6_MCLK>,
++			 <&topckgen CLK_TOP_ASM_M_SEL>,
++			 <&topckgen CLK_TOP_ASM_H_SEL>,
++			 <&topckgen CLK_TOP_UNIVPLL2_D4>,
++			 <&topckgen CLK_TOP_UNIVPLL2_D2>,
++			 <&topckgen CLK_TOP_SYSPLL_D5>;
++
++		clock-names = "infra_sys_audio_clk",
++			      "top_audio_mux1_sel",
++			      "top_audio_mux2_sel",
++			      "top_audio_mux1_div",
++			      "top_audio_mux2_div",
++			      "top_audio_48k_timing",
++			      "top_audio_44k_timing",
++			      "top_audpll_mux_sel",
++			      "top_apll_sel",
++			      "top_aud1_pll_98M",
++			      "top_aud2_pll_90M",
++			      "top_hadds2_pll_98M",
++			      "top_hadds2_pll_294M",
++			      "top_audpll",
++			      "top_audpll_d4",
++			      "top_audpll_d8",
++			      "top_audpll_d16",
++			      "top_audpll_d24",
++			      "top_audintbus_sel",
++			      "clk_26m",
++			      "top_syspll1_d4",
++			      "top_aud_k1_src_sel",
++			      "top_aud_k2_src_sel",
++			      "top_aud_k3_src_sel",
++			      "top_aud_k4_src_sel",
++			      "top_aud_k5_src_sel",
++			      "top_aud_k6_src_sel",
++			      "top_aud_k1_src_div",
++			      "top_aud_k2_src_div",
++			      "top_aud_k3_src_div",
++			      "top_aud_k4_src_div",
++			      "top_aud_k5_src_div",
++			      "top_aud_k6_src_div",
++			      "top_aud_i2s1_mclk",
++			      "top_aud_i2s2_mclk",
++			      "top_aud_i2s3_mclk",
++			      "top_aud_i2s4_mclk",
++			      "top_aud_i2s5_mclk",
++			      "top_aud_i2s6_mclk",
++			      "top_asm_m_sel",
++			      "top_asm_h_sel",
++			      "top_univpll2_d4",
++			      "top_univpll2_d2",
++			      "top_syspll_d5";
++	};
+diff --git a/Documentation/devicetree/bindings/sound/mt2701-cs42448.txt b/Documentation/devicetree/bindings/sound/mt2701-cs42448.txt
+new file mode 100644
+index 0000000..0557444
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/mt2701-cs42448.txt
+@@ -0,0 +1,43 @@
++MT2701 with CS42448 CODEC
++
++Required properties:
++- compatible: "mediatek,mt2701-cs42448-machine"
++- mediatek,platform: the phandle of MT2701 ASoC platform
++- audio-routing: a list of the connections between audio
++- mediatek,audio-codec: the phandles of cs42448 codec
++- mediatek,audio-codec-bt-mrg the phandles of bt-sco dummy codec
++- pinctrl-names: Should contain only one value - "default"
++- pinctrl-0: Should specify pin control groups used for this controller.
++- i2s1-in-sel-gpio1, i2s1-in-sel-gpio2: Should specify two gpio pins to
++					control I2S1-in mux.
++
++Example:
++
++	sound:sound {
++		compatible = "mediatek,mt2701-cs42448-machine";
++		mediatek,platform = <&afe>;
++		/* CS42448 Machine name */
++		audio-routing =
++			"Line Out Jack", "AOUT1L",
++			"Line Out Jack", "AOUT1R",
++			"Line Out Jack", "AOUT2L",
++			"Line Out Jack", "AOUT2R",
++			"Line Out Jack", "AOUT3L",
++			"Line Out Jack", "AOUT3R",
++			"Line Out Jack", "AOUT4L",
++			"Line Out Jack", "AOUT4R",
++			"AIN1L", "AMIC",
++			"AIN1R", "AMIC",
++			"AIN2L", "Tuner In",
++			"AIN2R", "Tuner In",
++			"AIN3L", "Satellite Tuner In",
++			"AIN3R", "Satellite Tuner In",
++			"AIN3L", "AUX In",
++			"AIN3R", "AUX In";
++		mediatek,audio-codec = <&cs42448>;
++		mediatek,audio-codec-bt-mrg = <&bt_sco_codec>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&aud_pins_default>;
++		i2s1-in-sel-gpio1 = <&pio 53 0>;
++		i2s1-in-sel-gpio2 = <&pio 54 0>;
++	};
+-- 
+1.9.1
