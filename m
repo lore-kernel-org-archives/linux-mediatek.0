@@ -1,261 +1,186 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
-Date: Tue, 14 Jun 2016 20:07:43 +0800
-Message-ID: <1465906063.20796.20.camel@mtksdaap41>
-References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
-	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
-	 <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
-	 <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
-	 <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
-	 <57516774.5080008@gmail.com> <1464956037.16029.8.camel@mtksdaap41>
-	 <575181E5.6090603@gmail.com> <5756FD73.3050607@gmail.com>
-	 <1465364427.9963.13.camel@mtksdaap41> <5757F762.4020908@gmail.com>
-	 <1465388727.21326.8.camel@mtksdaap41> <57583B45.2080504@gmail.com>
-	 <1465890268.7191.13.camel@mtksdaap41> <575FD9BA.8040708@gmail.com>
+From: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: [PATCH v5 0/2] MTK Smart Device Gen1 NAND Driver
+Date: Tue, 14 Jun 2016 11:50:49 -0400
+Message-ID: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <575FD9BA.8040708@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>, jassisinghbrar@gmail.com, jaswinder.
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+  Fixes/Changes on v5 relative to: 
+  --------------------------------
 
-On Tue, 2016-06-14 at 12:17 +0200, Matthias Brugger wrote:
-> 
-> On 14/06/16 09:44, Horng-Shyang Liao wrote:
-> > Hi Matthias,
-> >
-> > On Wed, 2016-06-08 at 17:35 +0200, Matthias Brugger wrote:
-> >>
-> >> On 08/06/16 14:25, Horng-Shyang Liao wrote:
-> >>> Hi Matthias,
-> >>>
-> >>> On Wed, 2016-06-08 at 12:45 +0200, Matthias Brugger wrote:
-> >>>>
-> >>>> On 08/06/16 07:40, Horng-Shyang Liao wrote:
-> >>>>> Hi Matthias,
-> >>>>>
-> >>>>> On Tue, 2016-06-07 at 18:59 +0200, Matthias Brugger wrote:
-> >>>>>>
-> >>>>>> On 03/06/16 15:11, Matthias Brugger wrote:
-> >>>>>>>
-> >>>>>>>
-> >>>>>> [...]
-> >>>>>>
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +            smp_mb(); /* modify jump before enable thread */
-> >>>>>>>>>>>>>>>> +        }
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +        cmdq_thread_writel(thread, task->pa_base +
-> >>>>>>>>>>>>>>>> task->command_size,
-> >>>>>>>>>>>>>>>> +                   CMDQ_THR_END_ADDR);
-> >>>>>>>>>>>>>>>> +        cmdq_thread_resume(thread);
-> >>>>>>>>>>>>>>>> +    }
-> >>>>>>>>>>>>>>>> +    list_move_tail(&task->list_entry, &thread->task_busy_list);
-> >>>>>>>>>>>>>>>> +    spin_unlock_irqrestore(&cmdq->exec_lock, flags);
-> >>>>>>>>>>>>>>>> +}
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +static void cmdq_handle_error_done(struct cmdq *cmdq,
-> >>>>>>>>>>>>>>>> +                   struct cmdq_thread *thread, u32 irq_flag)
-> >>>>>>>>>>>>>>>> +{
-> >>>>>>>>>>>>>>>> +    struct cmdq_task *task, *tmp, *curr_task = NULL;
-> >>>>>>>>>>>>>>>> +    u32 curr_pa;
-> >>>>>>>>>>>>>>>> +    struct cmdq_cb_data cmdq_cb_data;
-> >>>>>>>>>>>>>>>> +    bool err;
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +    if (irq_flag & CMDQ_THR_IRQ_ERROR)
-> >>>>>>>>>>>>>>>> +        err = true;
-> >>>>>>>>>>>>>>>> +    else if (irq_flag & CMDQ_THR_IRQ_DONE)
-> >>>>>>>>>>>>>>>> +        err = false;
-> >>>>>>>>>>>>>>>> +    else
-> >>>>>>>>>>>>>>>> +        return;
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +    curr_pa = cmdq_thread_readl(thread, CMDQ_THR_CURR_ADDR);
-> >>>>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>>> +    list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-> >>>>>>>>>>>>>>>> +                 list_entry) {
-> >>>>>>>>>>>>>>>> +        if (curr_pa >= task->pa_base &&
-> >>>>>>>>>>>>>>>> +            curr_pa < (task->pa_base + task->command_size))
-> >>>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>> What are you checking here? It seems as if you make some implcit
-> >>>>>>>>>>>>>>> assumptions about pa_base and the order of execution of
-> >>>>>>>>>>>>>>> commands in the
-> >>>>>>>>>>>>>>> thread. Is it save to do so? Does dma_alloc_coherent give any
-> >>>>>>>>>>>>>>> guarantees
-> >>>>>>>>>>>>>>> about dma_handle?
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> 1. Check what is the current running task in this GCE thread.
-> >>>>>>>>>>>>>> 2. Yes.
-> >>>>>>>>>>>>>> 3. Yes, CMDQ doesn't use iommu, so physical address is continuous.
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>> Yes, physical addresses might be continous, but AFAIK there is no
-> >>>>>>>>>>>>> guarantee that the dma_handle address is steadily growing, when
-> >>>>>>>>>>>>> calling
-> >>>>>>>>>>>>> dma_alloc_coherent. And if I understand the code correctly, you
-> >>>>>>>>>>>>> use this
-> >>>>>>>>>>>>> assumption to decide if the task picked from task_busy_list is
-> >>>>>>>>>>>>> currently
-> >>>>>>>>>>>>> executing. So I think this mecanism is not working.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> I don't use dma_handle address, and just use physical addresses.
-> >>>>>>>>>>>>       From CPU's point of view, tasks are linked by the busy list.
-> >>>>>>>>>>>>       From GCE's point of view, tasks are linked by the JUMP command.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>>> In which cases does the HW thread raise an interrupt.
-> >>>>>>>>>>>>> In case of error. When does CMDQ_THR_IRQ_DONE get raised?
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> GCE will raise interrupt if any task is done or error.
-> >>>>>>>>>>>> However, GCE is fast, so CPU may get multiple done tasks
-> >>>>>>>>>>>> when it is running ISR.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> In case of error, that GCE thread will pause and raise interrupt.
-> >>>>>>>>>>>> So, CPU may get multiple done tasks and one error task.
-> >>>>>>>>>>>>
-> >>>>>>>>>>>
-> >>>>>>>>>>> I think we should reimplement the ISR mechanism. Can't we just read
-> >>>>>>>>>>> CURR_IRQ_STATUS and THR_IRQ_STATUS in the handler and leave
-> >>>>>>>>>>> cmdq_handle_error_done to the thread_fn? You will need to pass
-> >>>>>>>>>>> information from the handler to thread_fn, but that shouldn't be an
-> >>>>>>>>>>> issue. AFAIK interrupts are disabled in the handler, so we should stay
-> >>>>>>>>>>> there as short as possible. Traversing task_busy_list is expensive, so
-> >>>>>>>>>>> we need to do it in a thread context.
-> >>>>>>>>>>
-> >>>>>>>>>> Actually, our initial implementation is similar to your suggestion,
-> >>>>>>>>>> but display needs CMDQ to return callback function very precisely,
-> >>>>>>>>>> else display will drop frame.
-> >>>>>>>>>> For display, CMDQ interrupt will be raised every 16 ~ 17 ms,
-> >>>>>>>>>> and CMDQ needs to call callback function in ISR.
-> >>>>>>>>>> If we defer callback to workqueue, the time interval may be larger than
-> >>>>>>>>>> 32 ms.sometimes.
-> >>>>>>>>>>
-> >>>>>>>>>
-> >>>>>>>>> I think the problem is, that you implemented the workqueue as a ordered
-> >>>>>>>>> workqueue, so there is no parallel processing. I'm still not sure why
-> >>>>>>>>> you need the workqueue to be ordered. Can you please explain.
-> >>>>>>>>
-> >>>>>>>> The order should be kept.
-> >>>>>>>> Let me use mouse cursor as an example.
-> >>>>>>>> If task 1 means move mouse cursor to point A, task 2 means point B,
-> >>>>>>>> and task 3 means point C, our expected result is A -> B -> C.
-> >>>>>>>> If the order is not kept, the result could become A -> C -> B.
-> >>>>>>>>
-> >>>>>>>
-> >>>>>>> Got it, thanks for the clarification.
-> >>>>>>>
-> >>>>>>
-> >>>>>> I think a way to get rid of the workqueue is to use a timer, which gets
-> >>>>>> programmed to the time a timeout in the first task in the busy list
-> >>>>>> would happen. Everytime we update the busy list (e.g. because of task
-> >>>>>> got finished by the thread), we update the timer. When the timer
-> >>>>>> triggers, which hopefully won't happen too often, we return timeout on
-> >>>>>> the busy list elements, until the time is lower then the actual time.
-> >>>>>>
-> >>>>>> At least with this we can reduce the data structures in this driver and
-> >>>>>> make it more lightweight.
-> >>>>>
-> >>>>>    From my understanding, your proposed method can handle timeout case.
-> >>>>>
-> >>>>> However, the workqueue is also in charge of releasing tasks.
-> >>>>> Do you take releasing tasks into consideration by using the proposed
-> >>>>> timer method?
-> >>>>> Furthermore, I think the code will become more complex if we also use
-> >>>>> timer to implement releasing tasks.
-> >>>>>
-> >>>>
-> >>>> Can't we call
-> >>>>            clk_disable_unprepare(cmdq->clock);
-> >>>>            cmdq_task_release(task);
-> >>>> after invoking the callback?
-> >>>
-> >>> Do you mean just call these two functions in ISR?
-> >>> My major concern is dma_free_coherent() and kfree() in
-> >>> cmdq_task_release(task).
-> >>
-> >> Why do we need the dma calls at all? Can't we just calculate the
-> >> physical address using __pa(x)?
-> >
-> > I prefer to use dma_map_single/dma_unmap_single.
-> >
-> 
-> Can you please elaborate why you need this. We don't do dma, so we 
-> should not use dma memory for this.
+  tree		: https://github.com/bbrezillon/linux-0day
+  branch	: nand/next
+  commit	:
+ 		'commit "mtd: nand: sunxi: fix return value check..."'
+		 Author: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
+		 Date: Mon Jun 13 14:27:18 2016 +0000
 
-We need a buffer to share between CPU and GCE, so we do need DMA.
-CPU is in charge of writing GCE commands into this buffer.
-GCE is in charge of reading and running GCE commands from this buffer.
-When we chain CMDQ tasks, we also need to modify GCE JUMP command.
-Therefore, I prefer to use dma_alloc_coherent and dma_free_coherent.
+  Patch v5
+  --------
+  mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
+       - remove unused property
+  
+  mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+       - clean up macros and clarify semantics.
+       - replace codec requests with operations.
+       - replace semaphore with mutex on ecc accesses.
+       - addtional comments to some functions.
+       - explicit error for 16bits buswidth (not supported).
+       - resolve endian issues.
+       - determine active ecc codec by register inspection. 
 
-However, if we want to use timer to handle timeout, we need to release
-memory in ISR.
-In this case, using kmalloc/kfree + dma_map_single/dma_unmap_single
-instead of dma_alloc_coherent/dma_free_coherent is an alternative
-solution, but taking care the synchronization between cache and memory
-is the expected overhead.
+  Patch v4
+  --------
+  mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+       - nand-on-flash-bbt, nand-ecc-mode, nand-ecc-step-size and
+         nand-ecc-strength are now optional parameters
+       - spare-per-sector removed from DT settings.
+       - extend documentation.
 
-> >>> Therefore, your suggestion is to use GFP_ATOMIC for both
-> >>> dma_alloc_coherent() and kzalloc(). Right?
-> >>
-> >> I don't think we need GFP_ATOMIC, the critical path will just free the
-> >> memory.
-> >
-> > I tested these two functions, and kfree was safe.
-> > However, dma_free_coherent raised BUG.
-> > BUG: failure at
-> > /mnt/host/source/src/third_party/kernel/v3.18/mm/vmalloc.c:1514/vunmap()!
-> 
-> Just a general hint. Please try to evaluate on a recent kernel. It looks 
-> like as if you tried this on a v3.18 based one.
+  mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+       - rename functions (semantic issues).
+       - add lock to ECC engine.
+       - rework ECC interface (single enable/disable function).
+       - rework bad block mark (now stored in OOB).
+       - fix stat reporting.
+       - rework FDM calculation.
+       - handle optional DT settings (strength, mode, ecc step size).
+       - spare per sector clamped to valid register values (hw spec).
+		
+  Patch v3
+  --------
+  mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+	- rename nandc (nand controller)
 
-This driver should be backward compatible to v3.18 for a MTK project.
+  mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+ 	- rename source and header files
+	- register definitions move to source files
+	- ecc interface dropped
+	- blank lines between functions (checkpatch.pl doesn't catch them)
+	- ecc_check function renamed ecc_get_stats
+	- ecc->dev assigned during probe()
+	- generic ecc control function replaced by individual functions
+	- required ecc parameters passed in ecc specific structures
+	- fix memory corruption (size 0 array)
+	- clarify nand offset/ptr function helpers (naming corrected)
+	- move ecc config call to select_chip()
+	- comment on hw issue workaround during read_byte
+	- implement write_buf
+	- remove switch_oob
+	- fix suspend/resume operation
+	- make nand-ecc-mode mandatory in device tree 
 
-> Best regards,
-> Matthias
+  RFC v2
+  ------
+ 
+  mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+	- split nand flash interface and ecc engine
 
-Thanks,
-HS
+  mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+	- split host and ecc in two separate drivers.
+	- expose ecc layout through mtd_ooblayout_ops.
+	- fix wait loops.
+	- use device tree to describe ecc strength and ecc size.
+	- use device tree to describe CS.
+	- replace cmdfunc with cmd_ctrl.
+	- fix read byte interface.
 
-> > 1512 void vunmap(const void *addr)
-> > 1513 {
-> > 1514         BUG_ON(in_interrupt());		// <-- here
-> > 1515         might_sleep();
-> > 1516         if (addr)
-> > 1517                 __vunmap(addr, 0);
-> > 1518 }
-> > 1519 EXPORT_SYMBOL(vunmap);
-> >
-> > Therefore, I plan to use kmalloc + dma_map_single instead of
-> > dma_alloc_coherent, and dma_unmap_single + kfree instead of
-> > dma_free_coherent.
-> >
-> > What do you think about the function replacement?
-> >
-> >>> If so, I can try to implement timeout by timer, and discuss with you
-> >>> if I have further questions.
-> >>>
-> >>
-> >> Sounds good :)
-> >>
-> >> Thanks,
-> >> Matthias
-> >
-> > Thanks,
-> > HS
-> >
-> >>>> Regrading the clock, wouldn't it be easier to handle the clock
-> >>>> enable/disable depending on the state of task_busy_list? I suppose we
-> >>>> can't as we would need to check the task_busy_list of all threads, right?
-> >>>>
-> >>>> Regards,
-> >>>> Matthias
-> >>>
-> >>> Thanks,
-> >>> HS
-> >>>
-> >
-> >
+  dont enable controller in mt2701.dtsi
+	- requires additional device tree changes. This will be done in
+	  the near future.
+
+Overview:
+=========
+
+The following patch-set adds support for Mediatek's Smart Device
+Gen1 NAND controller.
+
+* Controller expected layout:
+-----------------------------
+
+The controller expects the OOB information relevant to each sector
+within the page to follow immediately the data field.
+
+For example for a 4KiB page with 1KiB sectors and 224B of OOB information,
+the controller would expect the following layout.
+
+-----------------------------------------------------
+| 1KiB | 56B | 1KiB | 56B | 1KiB | 56B | 1KiB | 56B |
+-----------------------------------------------------
+
+This implies that the following actions are required:
+
+- raw writes:
+  to match the controller expected layout, the driver uses the CPU and
+  a private bounce buffer to reassemble the page before the actual
+  writes.
+  
+- non raw writes:
+  ecc is hardware generated and data DMA'd in a single transfer.
+
+Bad Block mark
+==============
+The bad block mark is stored in the OOB region (one byte)
+
+Controller limitations:
+=======================
+
+ * dma chaning not supported:
+	To guarantee that the pages corresponding to the buffers are contiguous
+	in memory the driver enables NAND_USE_BOUNCE_BUFFER.
+ * spare per sector: 16B to 128B
+ * sector sizes: 512B or 1024B
+ * programable page sizes: 512B, 2KB, 4KB, 8K, 16K 
+
+Tests:
+======
+
+* UBIFS support has been validated on 512MiB device (iozone, dd)
+* All drivers/mtd/tests/* pass clean.
+* Speed tests:
+  eraseblock write speed:	7563 KiB/s
+  eraseblock read speed:	10904 KiB/s
+  page write speed:		7497 KiB/s
+  page read speed:		10864 KiB/s
+  2 page write speed:		7527 KiB/s
+  2 page read speed:		10881 KiB/s
+  erase speed:			103157 KiB/s
+  2x multi-block erase speed:	357445 KiB/s
+  4x multi-block erase speed:	362944 KiB/s
+  8x multi-block erase speed:	363805 KiB/s
+  16x multi-block erase speed:	364237 KiB/s
+  32x multi-block erase speed:	364670 KiB/s
+  64x multi-block erase speed:	365104 KiB/s
+
+Jorge Ramirez-Ortiz (2):
+  mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
+  mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+
+ Documentation/devicetree/bindings/mtd/mtk-nand.txt |  160 +++
+ drivers/mtd/nand/Kconfig                           |    7 +
+ drivers/mtd/nand/Makefile                          |    1 +
+ drivers/mtd/nand/mtk_ecc.c                         |  528 +++++++
+ drivers/mtd/nand/mtk_ecc.h                         |   50 +
+ drivers/mtd/nand/mtk_nand.c                        | 1509 ++++++++++++++++++++
+ 6 files changed, 2255 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+ create mode 100644 drivers/mtd/nand/mtk_ecc.c
+ create mode 100644 drivers/mtd/nand/mtk_ecc.h
+ create mode 100644 drivers/mtd/nand/mtk_nand.c
+
+-- 
+2.7.4
