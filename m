@@ -1,236 +1,148 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH 2/2] drm/mediatek: set mt8173 dithering function
-Date: Tue, 14 Jun 2016 10:55:53 +0800
-Message-ID: <1465872953-47706-2-git-send-email-bibby.hsieh@mediatek.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/2] drm/mediatek: Add gamma correction
+Date: Tue, 14 Jun 2016 07:43:22 +0200
+Message-ID: <20160614054322.GL1338@phenom.ffwll.local>
 References: <1465872953-47706-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
 In-Reply-To: <1465872953-47706-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Some panels only accept bpc (bit per color) 6-bit.
-But, the default bpc in mt8173 display data path is 8-bit.
-If we didn't enable dithering function to convert bpc,
-display cannot show the smooth grayscale image.
-
-In mt8173, the dithering function in OD (OverDrive) and
-GAMMA module, we have to config them with
-connector->display_mode.bpc when CRTC initial.
-
-1. Clear the default value at *_DITHER_5 and *_DITHER_7 register.
-2. Calculate the LSB_ERR_SHIFT bits and ADD_LSHIFT bits two values.
-i.e. Input bpc of OD is 10 bits, we assume the bpc of panel is 6-bit,
-so, we need to set 4-bit to LSB_ERR_SHIFT and ADD_LSHIFT bits respectively.
-3. Then, set the OD or GAMMA to dithering mode depends on path-1 or path-2.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    3 +-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    3 +-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   18 +++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   44 +++++++++++++++++++++++++--
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |    6 ++--
- 5 files changed, 64 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8f62671f..019b7ca 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -103,7 +103,8 @@ static void mtk_ovl_stop(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
--			   unsigned int h, unsigned int vrefresh)
-+			   unsigned int h, unsigned int vrefresh,
-+			   unsigned int bpc)
- {
- 	if (w != 0 && h != 0)
- 		writel_relaxed(h << 16 | w, comp->regs + DISP_REG_OVL_ROI_SIZE);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 5fb80cb..0df05f9 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -106,7 +106,8 @@ static void mtk_rdma_stop(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
--			    unsigned int height, unsigned int vrefresh)
-+			    unsigned int height, unsigned int vrefresh,
-+			    unsigned int bpc)
- {
- 	unsigned int threshold;
- 	unsigned int reg;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 1b38406..96c1b31 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -52,6 +52,7 @@ struct mtk_drm_crtc {
- 	struct mtk_disp_mutex		*mutex;
- 	unsigned int			ddp_comp_nr;
- 	struct mtk_ddp_comp		**ddp_comp;
-+	unsigned int			bpc;
- };
- 
- struct mtk_crtc_state {
-@@ -232,6 +233,8 @@ static void mtk_crtc_ddp_clk_disable(struct mtk_drm_crtc *mtk_crtc)
- static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- {
- 	struct drm_crtc *crtc = &mtk_crtc->base;
-+	struct drm_connector *connector;
-+	struct drm_encoder *encoder;
- 	unsigned int width, height, vrefresh;
- 	int ret;
- 	int i;
-@@ -243,6 +246,15 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 	width = crtc->state->adjusted_mode.hdisplay;
- 	height = crtc->state->adjusted_mode.vdisplay;
- 	vrefresh = crtc->state->adjusted_mode.vrefresh;
-+	drm_for_each_encoder(encoder, crtc->dev) {
-+		if (encoder->crtc != crtc)
-+			continue;
-+		drm_for_each_connector(connector, crtc->dev) {
-+			if (connector->encoder != encoder)
-+				continue;
-+			mtk_crtc->bpc = connector->display_info.bpc;
-+		}
-+	}
- 
- 	ret = pm_runtime_get_sync(crtc->dev->dev);
- 	if (ret < 0) {
-@@ -276,7 +288,8 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
- 
--		mtk_ddp_comp_config(comp, width, height, vrefresh);
-+		mtk_ddp_comp_config(comp, width, height, vrefresh,
-+				    mtk_crtc->bpc);
- 		mtk_ddp_comp_start(comp);
- 	}
- 
-@@ -475,7 +488,8 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *ovl)
- 	if (state->pending_config) {
- 		mtk_ddp_comp_config(ovl, state->pending_width,
- 				    state->pending_height,
--				    state->pending_vrefresh);
-+				    state->pending_vrefresh,
-+				    mtk_crtc->bpc);
- 
- 		state->pending_config = false;
- 	}
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 3fd5141..c574f6d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -31,6 +31,10 @@
- #define DISP_OD_INTSTA				0x000c
- #define DISP_OD_CFG				0x0020
- #define DISP_OD_SIZE				0x0030
-+#define DISP_OD_DITHER_5			0x0114
-+#define DISP_OD_DITHER_7			0x011c
-+#define DISP_OD_DITHER_15			0x013c
-+#define DISP_OD_DITHER_16			0x0140
- 
- #define DISP_REG_UFO_START			0x0000
- 
-@@ -52,14 +56,31 @@
- #define GAMMA_LUT_EN		BIT(1)
- 
- #define	OD_RELAY_MODE		BIT(0)
-+#define OD_DITHERING		BIT(2)
- 
- #define	UFO_BYPASS		BIT(2)
- 
- #define	COLOR_BYPASS_ALL	BIT(7)
- #define	COLOR_SEQ_SEL		BIT(13)
- 
-+#define DITHERING_ALGORITHM_EN	BIT(0)
-+
-+#define DITHERING_LSB_ERR_SHIFT_R(bits)		((bits) << 28)
-+#define DITHERING_OVFLW_R(bits)			((bits) << 24)
-+#define DITHERING_ADD_LSHIFT_R(bits)		((bits) << 20)
-+#define DITHERING_INPUT_RSHIFT_R(bits)		((bits) << 16)
-+#define DITHERING_LSB_ERR_SHIFT_B(bits)		((bits) << 28)
-+#define DITHERING_OVFLW_B(bits)			((bits) << 24)
-+#define DITHERING_ADD_LSHIFT_B(bits)		((bits) << 20)
-+#define DITHERING_INPUT_RSHIFT_B(bits)		((bits) << 16)
-+#define DITHERING_LSB_ERR_SHIFT_G(bits)		((bits) << 12)
-+#define DITHERING_OVFLW_G(bits)			((bits) << 8)
-+#define DITHERING_ADD_LSHIFT_G(bits)		((bits) << 4)
-+#define DITHERING_INPUT_RSHIFT_G(bits)		(bits)
-+
- static void mtk_color_config(struct mtk_ddp_comp *comp, unsigned int w,
--			     unsigned int h, unsigned int vrefresh)
-+			     unsigned int h, unsigned int vrefresh,
-+			     unsigned int bpc)
- {
- 	writel(w, comp->regs + DISP_COLOR_WIDTH);
- 	writel(h, comp->regs + DISP_COLOR_HEIGHT);
-@@ -73,9 +94,25 @@ static void mtk_color_start(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
--			  unsigned int h, unsigned int vrefresh)
-+			  unsigned int h, unsigned int vrefresh,
-+			  unsigned int bpc)
- {
- 	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
-+	if (bpc < 10) {
-+		writel(0, comp->regs + DISP_OD_DITHER_5);
-+		writel(0, comp->regs + DISP_OD_DITHER_7);
-+		writel(DITHERING_LSB_ERR_SHIFT_R(10 - bpc) |
-+		       DITHERING_ADD_LSHIFT_R(10 - bpc) |
-+		       DITHERING_ALGORITHM_EN, comp->regs + DISP_OD_DITHER_15);
-+		writel(DITHERING_LSB_ERR_SHIFT_B(10 - bpc) |
-+		       DITHERING_ADD_LSHIFT_B(10 - bpc) |
-+		       DITHERING_LSB_ERR_SHIFT_G(10 - bpc) |
-+		       DITHERING_ADD_LSHIFT_G(10 - bpc),
-+		       comp->regs + DISP_OD_DITHER_16);
-+		writel(OD_DITHERING, comp->regs + DISP_OD_CFG);
-+	} else {
-+		writel(OD_RELAY_MODE, comp->regs + DISP_OD_CFG);
-+	}
- }
- 
- static void mtk_od_start(struct mtk_ddp_comp *comp)
-@@ -90,7 +127,8 @@ static void mtk_ufoe_start(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_aal_config(struct mtk_ddp_comp *comp, unsigned int w,
--			   unsigned int h, unsigned int vrefresh)
-+			   unsigned int h, unsigned int vrefresh,
-+			   unsigned int bpc)
- {
- 	writel(h << 16 | w, comp->regs + DISP_AAL_SIZE);
- }
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 0832179..02ca1be 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -64,7 +64,7 @@ struct mtk_ddp_comp;
- 
- struct mtk_ddp_comp_funcs {
- 	void (*config)(struct mtk_ddp_comp *comp, unsigned int w,
--		       unsigned int h, unsigned int vrefresh);
-+		       unsigned int h, unsigned int vrefresh, unsigned int bpc);
- 	void (*start)(struct mtk_ddp_comp *comp);
- 	void (*stop)(struct mtk_ddp_comp *comp);
- 	void (*enable_vblank)(struct mtk_ddp_comp *comp, struct drm_crtc *crtc);
-@@ -88,10 +88,10 @@ struct mtk_ddp_comp {
- 
- static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
- 				       unsigned int w, unsigned int h,
--				       unsigned int vrefresh)
-+				       unsigned int vrefresh, unsigned int bpc)
- {
- 	if (comp->funcs && comp->funcs->config)
--		comp->funcs->config(comp, w, h, vrefresh);
-+		comp->funcs->config(comp, w, h, vrefresh, bpc);
- }
- 
- static inline void mtk_ddp_comp_start(struct mtk_ddp_comp *comp)
--- 
-1.7.9.5
+T24gVHVlLCBKdW4gMTQsIDIwMTYgYXQgMTA6NTU6NTJBTSArMDgwMCwgQmliYnkgSHNpZWggd3Jv
+dGU6Cj4gQXBwbHkgZ2FtbWEgZnVuY3Rpb24gdG8gY29ycmVjdCBicmlnaHRuZXNzIHZhbHVlcy4K
+PiBJdCBhcHBsaWVzIGFyYml0cmFyeSBtYXBwaW5nIGN1cnZlIHRvIGNvbXBlbnNhdGUgdGhlCj4g
+aW5jb3JyZWN0IHRyYW5zZmVyIGZ1bmN0aW9uIG9mIHRoZSBwYW5lbC4KPiAKPiBTaWduZWQtb2Zm
+LWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgoKSSB0aGluayBpdCB3
+b3VsZCBiZSBtdWNoIGJldHRlciB0byB1c2UgdGhlIG5ldyBhdG9taWMgY29sb3IgbWFuYWdlbWVu
+dApzdXBwb3J0LCB3aGljaCBpbmNsdWRlcyBnYW1tYS4gU2VlIGRybV9jcnRjX2VuYWJsZV9jb2xv
+cl9tZ210LgotRGFuaWVsCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9jcnRjLmMgICAgIHwgICAxMiArKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fY3J0Yy5oICAgICB8ICAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kZHBfY29tcC5jIHwgICA1NiArKysrKysrKysrKysrKysrKysrKysrKysrKy0KPiAgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCB8ICAgIDkgKysrKysKPiAg
+NCBmaWxlcyBjaGFuZ2VkLCA3NyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+IGluZGV4IDI0YWEzYmEuLjFiMzg0
+MDYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5j
+Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gQEAgLTEy
+Nyw2ICsxMjcsMTYgQEAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX3Jlc2V0KHN0cnVjdCBkcm1f
+Y3J0YyAqY3J0YykKPiAgCXN0YXRlLT5iYXNlLmNydGMgPSBjcnRjOwo+ICB9Cj4gIAo+ICtzdGF0
+aWMgdm9pZCBtdGtfY3J0Y19nYW1tYV9zZXQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1MTYgKnIs
+Cj4gKwkJCSAgICAgICB1MTYgKmcsIHUxNiAqYiwgdWludDMyX3Qgc3RhcnQsIHVpbnQzMl90IHNp
+emUpCj4gK3sKPiArCXN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMo
+Y3J0Yyk7Cj4gKwl1bnNpZ25lZCBpbnQgaTsKPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgbXRrX2Ny
+dGMtPmRkcF9jb21wX25yOyBpKyspCj4gKwkJbXRrX2RkcF9nYW1tYV9zZXQobXRrX2NydGMtPmRk
+cF9jb21wW2ldLCByLCBnLCBiLCBzdGFydCwgc2l6ZSk7Cj4gK30KPiArCj4gIHN0YXRpYyBzdHJ1
+Y3QgZHJtX2NydGNfc3RhdGUgKm10a19kcm1fY3J0Y19kdXBsaWNhdGVfc3RhdGUoc3RydWN0IGRy
+bV9jcnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2NydGNfc3RhdGUgKnN0YXRlOwo+IEBA
+IC00MTgsNiArNDI4LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19mdW5jcyBtdGtf
+Y3J0Y19mdW5jcyA9IHsKPiAgCS5yZXNldAkJCT0gbXRrX2RybV9jcnRjX3Jlc2V0LAo+ICAJLmF0
+b21pY19kdXBsaWNhdGVfc3RhdGUJPSBtdGtfZHJtX2NydGNfZHVwbGljYXRlX3N0YXRlLAo+ICAJ
+LmF0b21pY19kZXN0cm95X3N0YXRlCT0gbXRrX2RybV9jcnRjX2Rlc3Ryb3lfc3RhdGUsCj4gKwku
+Z2FtbWFfc2V0CQk9IG10a19jcnRjX2dhbW1hX3NldCwKPiAgfTsKPiAgCj4gIHN0YXRpYyBjb25z
+dCBzdHJ1Y3QgZHJtX2NydGNfaGVscGVyX2Z1bmNzIG10a19jcnRjX2hlbHBlcl9mdW5jcyA9IHsK
+PiBAQCAtNTY5LDYgKzU4MCw3IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm1fZGV2LAo+ICAJaWYgKHJldCA8IDApCj4gIAkJZ290byB1bnByZXBhcmU7Cj4g
+IAo+ICsJZHJtX21vZGVfY3J0Y19zZXRfZ2FtbWFfc2l6ZSgmbXRrX2NydGMtPmJhc2UsIE1US19M
+VVRfU0laRSk7Cj4gIAlwcml2LT5jcnRjW3BpcGVdID0gJm10a19jcnRjLT5iYXNlOwo+ICAJcHJp
+di0+bnVtX3BpcGVzKys7Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9jcnRjLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
+LmgKPiBpbmRleCA4MWU1NTY2Li5kMzMyNTY0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2NydGMuaAo+IEBAIC0xOSw2ICsxOSw3IEBACj4gICNpbmNsdWRlICJtdGtfZHJt
+X3BsYW5lLmgiCj4gIAo+ICAjZGVmaW5lIE9WTF9MQVlFUl9OUgk0Cj4gKyNkZWZpbmUgTVRLX0xV
+VF9TSVpFCTUxMgo+ICAKPiAgaW50IG10a19kcm1fY3J0Y19lbmFibGVfdmJsYW5rKHN0cnVjdCBk
+cm1fZGV2aWNlICpkcm0sIHVuc2lnbmVkIGludCBwaXBlKTsKPiAgdm9pZCBtdGtfZHJtX2NydGNf
+ZGlzYWJsZV92Ymxhbmsoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgdW5zaWduZWQgaW50IHBpcGUp
+Owo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
+cC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IGluZGV4
+IDM5NzBmY2YuLjNmZDUxNDEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcm1fZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmMKPiBAQCAtMjQsNiArMjQsNyBAQAo+ICAjaW5jbHVkZSAibXRrX2RybV9k
+cnYuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1fcGxhbmUuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1f
+ZGRwX2NvbXAuaCIKPiArI2luY2x1ZGUgIm10a19kcm1fY3J0Yy5oIgo+ICAKPiAgI2RlZmluZSBE
+SVNQX09EX0VOCQkJCTB4MDAwMAo+ICAjZGVmaW5lIERJU1BfT0RfSU5URU4JCQkJMHgwMDA4Cj4g
+QEAgLTM4LDYgKzM5LDE4IEBACj4gICNkZWZpbmUgRElTUF9DT0xPUl9XSURUSAkJCTB4MGM1MAo+
+ICAjZGVmaW5lIERJU1BfQ09MT1JfSEVJR0hUCQkJMHgwYzU0Cj4gIAo+ICsjZGVmaW5lIERJU1Bf
+QUFMX0VOCQkJCTB4MDAwCj4gKyNkZWZpbmUgRElTUF9BQUxfU0laRQkJCQkweDAzMAo+ICsKPiAr
+I2RlZmluZSBESVNQX0dBTU1BX0NGRwkJCQkweDAyMAo+ICsjZGVmaW5lIERJU1BfR0FNTUFfTFVU
+CQkJCTB4NzAwCj4gKwo+ICsjZGVmaW5lIExVVF8xMEJJVF9NQVNLCQkJCTB4M2ZmCj4gKwo+ICsj
+ZGVmaW5lIEFBTF9FTgkJCUJJVCgwKQo+ICsKPiArI2RlZmluZSBHQU1NQV9MVVRfRU4JCUJJVCgx
+KQo+ICsKPiAgI2RlZmluZQlPRF9SRUxBWV9NT0RFCQlCSVQoMCkKPiAgCj4gICNkZWZpbmUJVUZP
+X0JZUEFTUwkJQklUKDIpCj4gQEAgLTc2LDYgKzg5LDQwIEBAIHN0YXRpYyB2b2lkIG10a191Zm9l
+X3N0YXJ0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gIAl3cml0ZWwoVUZPX0JZUEFTUywg
+Y29tcC0+cmVncyArIERJU1BfUkVHX1VGT19TVEFSVCk7Cj4gIH0KPiAgCj4gK3N0YXRpYyB2b2lk
+IG10a19hYWxfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3
+LAo+ICsJCQkgICB1bnNpZ25lZCBpbnQgaCwgdW5zaWduZWQgaW50IHZyZWZyZXNoKQo+ICt7Cj4g
+Kwl3cml0ZWwoaCA8PCAxNiB8IHcsIGNvbXAtPnJlZ3MgKyBESVNQX0FBTF9TSVpFKTsKPiArfQo+
+ICsKPiArc3RhdGljIHZvaWQgbXRrX2FhbF9zdGFydChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21w
+KQo+ICt7Cj4gKwl3cml0ZWwoQUFMX0VOLCBjb21wLT5yZWdzICArIERJU1BfQUFMX0VOKTsKPiAr
+fQo+ICsKPiArc3RhdGljIHZvaWQgbXRrX2FhbF9zdG9wKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNv
+bXApCj4gK3sKPiArCXdyaXRlbF9yZWxheGVkKDB4MCwgY29tcC0+cmVncyAgKyBESVNQX0FBTF9F
+Tik7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3RydWN0IG10a19kZHBf
+Y29tcCAqY29tcCwgdTE2ICpyLCB1MTYgKmcsCj4gKwkJCSAgdTE2ICpiLCB1aW50MzJfdCBzdGFy
+dCwgdWludDMyX3Qgc2l6ZSkKPiArewo+ICsJaW50IGk7Cj4gKwl1bnNpZ25lZCBpbnQgbHV0Owo+
+ICsJaW50IGVuZCA9IChzdGFydCArIHNpemUgPiBNVEtfTFVUX1NJWkUpID8gTVRLX0xVVF9TSVpF
+IDogc3RhcnQgKyBzaXplOwo+ICsJdm9pZCBfX2lvbWVtICpsdXRfYmFzZTsKPiArCj4gKwl3cml0
+ZWwoR0FNTUFfTFVUX0VOLCBjb21wLT5yZWdzICsgRElTUF9HQU1NQV9DRkcpOwo+ICsJbHV0X2Jh
+c2UgPSBjb21wLT5yZWdzICsgRElTUF9HQU1NQV9MVVQ7Cj4gKwlmb3IgKGkgPSBzdGFydDsgaSA8
+IGVuZDsgaSsrKSB7Cj4gKwkJbHV0ID0gKCgocltpXSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKSA8
+PCAyMCkgKwo+ICsJCQkoKChnW2ldID4+IDYpICYgTFVUXzEwQklUX01BU0spIDw8IDEwKSArCj4g
+KwkJCSgoYltpXSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKTsKPiArCQl3cml0ZWwobHV0LCAobHV0
+X2Jhc2UgKyBpICogNCkpOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10
+a19kZHBfY29tcF9mdW5jcyBkZHBfY29sb3IgPSB7Cj4gIAkuY29uZmlnID0gbXRrX2NvbG9yX2Nv
+bmZpZywKPiAgCS5zdGFydCA9IG10a19jb2xvcl9zdGFydCwKPiBAQCAtOTAsNiArMTM3LDEzIEBA
+IHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRkcF91Zm9lID0gewo+ICAJ
+LnN0YXJ0ID0gbXRrX3Vmb2Vfc3RhcnQsCj4gIH07Cj4gIAo+ICtzdGF0aWMgY29uc3Qgc3RydWN0
+IG10a19kZHBfY29tcF9mdW5jcyBkZHBfYWFsID0gewo+ICsJLmdhbW1hX3NldCA9IG10a19nYW1t
+YV9zZXQsCj4gKwkuY29uZmlnID0gbXRrX2FhbF9jb25maWcsCj4gKwkuc3RhcnQgPSBtdGtfYWFs
+X3N0YXJ0LAo+ICsJLnN0b3AgPSBtdGtfYWFsX3N0b3AsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29u
+c3QgY2hhciAqIGNvbnN0IG10a19kZHBfY29tcF9zdGVtW01US19ERFBfQ09NUF9UWVBFX01BWF0g
+PSB7Cj4gIAlbTVRLX0RJU1BfT1ZMXSA9ICJvdmwiLAo+ICAJW01US19ESVNQX1JETUFdID0gInJk
+bWEiLAo+IEBAIC0xMTIsNyArMTY2LDcgQEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4g
+IH07Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRw
+X21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0gewo+IC0JW0REUF9DT01QT05FTlRfQUFM
+XQk9IHsgTVRLX0RJU1BfQUFMLAkwLCBOVUxMIH0sCj4gKwlbRERQX0NPTVBPTkVOVF9BQUxdCT0g
+eyBNVEtfRElTUF9BQUwsCTAsICZkZHBfYWFsIH0sCj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBd
+CT0geyBNVEtfRElTUF9DT0xPUiwJMCwgJmRkcF9jb2xvciB9LAo+ICAJW0REUF9DT01QT05FTlRf
+Q09MT1IxXQk9IHsgTVRLX0RJU1BfQ09MT1IsCTEsICZkZHBfY29sb3IgfSwKPiAgCVtERFBfQ09N
+UE9ORU5UX0RQSTBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+IGluZGV4IDZiMTNiYTkuLjA4MzIxNzkgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAt
+NzMsNiArNzMsOCBAQCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIHsKPiAgCXZvaWQgKCpsYXll
+cl9vZmYpKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCBpZHgpOwo+ICAJ
+dm9pZCAoKmxheWVyX2NvbmZpZykoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQg
+aW50IGlkeCwKPiAgCQkJICAgICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZSk7Cj4gKwl2
+b2lkICgqZ2FtbWFfc2V0KShzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1MTYgKnIsIHUxNiAq
+ZywgdTE2ICpiLAo+ICsJCQkgIHUzMiBzdGFydCwgdTMyIHNpemUpOwo+ICB9Owo+ICAKPiAgc3Ry
+dWN0IG10a19kZHBfY29tcCB7Cj4gQEAgLTEzOSw2ICsxNDEsMTMgQEAgc3RhdGljIGlubGluZSB2
+b2lkIG10a19kZHBfY29tcF9sYXllcl9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwK
+PiAgCQljb21wLT5mdW5jcy0+bGF5ZXJfY29uZmlnKGNvbXAsIGlkeCwgc3RhdGUpOwo+ICB9Cj4g
+IAo+ICtzdGF0aWMgaW5saW5lIHZvaWQgbXRrX2RkcF9nYW1tYV9zZXQoc3RydWN0IG10a19kZHBf
+Y29tcCAqY29tcCwgdTE2ICpyLCB1MTYgKmcsCj4gKwkJCQkgICAgIHUxNiAqYiwgdWludDMyX3Qg
+c3RhcnQsIHVpbnQzMl90IHNpemUpCj4gK3sKPiArCWlmIChjb21wLT5mdW5jcyAmJiBjb21wLT5m
+dW5jcy0+Z2FtbWFfc2V0KQo+ICsJCWNvbXAtPmZ1bmNzLT5nYW1tYV9zZXQoY29tcCwgciwgZywg
+Yiwgc3RhcnQsIHNpemUpOwo+ICt9Cj4gKwo+ICBpbnQgbXRrX2RkcF9jb21wX2dldF9pZChzdHJ1
+Y3QgZGV2aWNlX25vZGUgKm5vZGUsCj4gIAkJCWVudW0gbXRrX2RkcF9jb21wX3R5cGUgY29tcF90
+eXBlKTsKPiAgaW50IG10a19kZHBfY29tcF9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
+IGRldmljZV9ub2RlICpjb21wX25vZGUsCj4gLS0gCj4gMS43LjkuNQo+IAoKLS0gCkRhbmllbCBW
+ZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZm
+d2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
+aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
+czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
