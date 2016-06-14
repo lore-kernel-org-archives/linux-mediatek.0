@@ -1,148 +1,230 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 1/2] drm/mediatek: Add gamma correction
-Date: Tue, 14 Jun 2016 07:43:22 +0200
-Message-ID: <20160614054322.GL1338@phenom.ffwll.local>
-References: <1465872953-47706-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Tue, 14 Jun 2016 15:44:28 +0800
+Message-ID: <1465890268.7191.13.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+	 <574C5CBF.7060002@gmail.com> <1464683762.14604.59.camel@mtksdaap41>
+	 <574DEE40.9010008@gmail.com> <1464775020.11122.40.camel@mtksdaap41>
+	 <574FF264.7050209@gmail.com> <1464934356.15175.31.camel@mtksdaap41>
+	 <57516774.5080008@gmail.com> <1464956037.16029.8.camel@mtksdaap41>
+	 <575181E5.6090603@gmail.com> <5756FD73.3050607@gmail.com>
+	 <1465364427.9963.13.camel@mtksdaap41> <5757F762.4020908@gmail.com>
+	 <1465388727.21326.8.camel@mtksdaap41> <57583B45.2080504@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1465872953-47706-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <57583B45.2080504-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jaswinder.
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBKdW4gMTQsIDIwMTYgYXQgMTA6NTU6NTJBTSArMDgwMCwgQmliYnkgSHNpZWggd3Jv
-dGU6Cj4gQXBwbHkgZ2FtbWEgZnVuY3Rpb24gdG8gY29ycmVjdCBicmlnaHRuZXNzIHZhbHVlcy4K
-PiBJdCBhcHBsaWVzIGFyYml0cmFyeSBtYXBwaW5nIGN1cnZlIHRvIGNvbXBlbnNhdGUgdGhlCj4g
-aW5jb3JyZWN0IHRyYW5zZmVyIGZ1bmN0aW9uIG9mIHRoZSBwYW5lbC4KPiAKPiBTaWduZWQtb2Zm
-LWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgoKSSB0aGluayBpdCB3
-b3VsZCBiZSBtdWNoIGJldHRlciB0byB1c2UgdGhlIG5ldyBhdG9taWMgY29sb3IgbWFuYWdlbWVu
-dApzdXBwb3J0LCB3aGljaCBpbmNsdWRlcyBnYW1tYS4gU2VlIGRybV9jcnRjX2VuYWJsZV9jb2xv
-cl9tZ210LgotRGFuaWVsCgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9jcnRjLmMgICAgIHwgICAxMiArKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fY3J0Yy5oICAgICB8ICAgIDEgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5jIHwgICA1NiArKysrKysrKysrKysrKysrKysrKysrKysrKy0KPiAgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCB8ICAgIDkgKysrKysKPiAg
-NCBmaWxlcyBjaGFuZ2VkLCA3NyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+IGluZGV4IDI0YWEzYmEuLjFiMzg0
-MDYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5j
-Cj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCj4gQEAgLTEy
-Nyw2ICsxMjcsMTYgQEAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX3Jlc2V0KHN0cnVjdCBkcm1f
-Y3J0YyAqY3J0YykKPiAgCXN0YXRlLT5iYXNlLmNydGMgPSBjcnRjOwo+ICB9Cj4gIAo+ICtzdGF0
-aWMgdm9pZCBtdGtfY3J0Y19nYW1tYV9zZXQoc3RydWN0IGRybV9jcnRjICpjcnRjLCB1MTYgKnIs
-Cj4gKwkJCSAgICAgICB1MTYgKmcsIHUxNiAqYiwgdWludDMyX3Qgc3RhcnQsIHVpbnQzMl90IHNp
-emUpCj4gK3sKPiArCXN0cnVjdCBtdGtfZHJtX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMo
-Y3J0Yyk7Cj4gKwl1bnNpZ25lZCBpbnQgaTsKPiArCj4gKwlmb3IgKGkgPSAwOyBpIDwgbXRrX2Ny
-dGMtPmRkcF9jb21wX25yOyBpKyspCj4gKwkJbXRrX2RkcF9nYW1tYV9zZXQobXRrX2NydGMtPmRk
-cF9jb21wW2ldLCByLCBnLCBiLCBzdGFydCwgc2l6ZSk7Cj4gK30KPiArCj4gIHN0YXRpYyBzdHJ1
-Y3QgZHJtX2NydGNfc3RhdGUgKm10a19kcm1fY3J0Y19kdXBsaWNhdGVfc3RhdGUoc3RydWN0IGRy
-bV9jcnRjICpjcnRjKQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2NydGNfc3RhdGUgKnN0YXRlOwo+IEBA
-IC00MTgsNiArNDI4LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19mdW5jcyBtdGtf
-Y3J0Y19mdW5jcyA9IHsKPiAgCS5yZXNldAkJCT0gbXRrX2RybV9jcnRjX3Jlc2V0LAo+ICAJLmF0
-b21pY19kdXBsaWNhdGVfc3RhdGUJPSBtdGtfZHJtX2NydGNfZHVwbGljYXRlX3N0YXRlLAo+ICAJ
-LmF0b21pY19kZXN0cm95X3N0YXRlCT0gbXRrX2RybV9jcnRjX2Rlc3Ryb3lfc3RhdGUsCj4gKwku
-Z2FtbWFfc2V0CQk9IG10a19jcnRjX2dhbW1hX3NldCwKPiAgfTsKPiAgCj4gIHN0YXRpYyBjb25z
-dCBzdHJ1Y3QgZHJtX2NydGNfaGVscGVyX2Z1bmNzIG10a19jcnRjX2hlbHBlcl9mdW5jcyA9IHsK
-PiBAQCAtNTY5LDYgKzU4MCw3IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1f
-ZGV2aWNlICpkcm1fZGV2LAo+ICAJaWYgKHJldCA8IDApCj4gIAkJZ290byB1bnByZXBhcmU7Cj4g
-IAo+ICsJZHJtX21vZGVfY3J0Y19zZXRfZ2FtbWFfc2l6ZSgmbXRrX2NydGMtPmJhc2UsIE1US19M
-VVRfU0laRSk7Cj4gIAlwcml2LT5jcnRjW3BpcGVdID0gJm10a19jcnRjLT5iYXNlOwo+ICAJcHJp
-di0+bnVtX3BpcGVzKys7Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9jcnRjLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
-LmgKPiBpbmRleCA4MWU1NTY2Li5kMzMyNTY0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2NydGMuaAo+IEBAIC0xOSw2ICsxOSw3IEBACj4gICNpbmNsdWRlICJtdGtfZHJt
-X3BsYW5lLmgiCj4gIAo+ICAjZGVmaW5lIE9WTF9MQVlFUl9OUgk0Cj4gKyNkZWZpbmUgTVRLX0xV
-VF9TSVpFCTUxMgo+ICAKPiAgaW50IG10a19kcm1fY3J0Y19lbmFibGVfdmJsYW5rKHN0cnVjdCBk
-cm1fZGV2aWNlICpkcm0sIHVuc2lnbmVkIGludCBwaXBlKTsKPiAgdm9pZCBtdGtfZHJtX2NydGNf
-ZGlzYWJsZV92Ymxhbmsoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgdW5zaWduZWQgaW50IHBpcGUp
-Owo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29t
-cC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IGluZGV4
-IDM5NzBmY2YuLjNmZDUxNDEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2RkcF9jb21wLmMKPiBAQCAtMjQsNiArMjQsNyBAQAo+ICAjaW5jbHVkZSAibXRrX2RybV9k
-cnYuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1fcGxhbmUuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1f
-ZGRwX2NvbXAuaCIKPiArI2luY2x1ZGUgIm10a19kcm1fY3J0Yy5oIgo+ICAKPiAgI2RlZmluZSBE
-SVNQX09EX0VOCQkJCTB4MDAwMAo+ICAjZGVmaW5lIERJU1BfT0RfSU5URU4JCQkJMHgwMDA4Cj4g
-QEAgLTM4LDYgKzM5LDE4IEBACj4gICNkZWZpbmUgRElTUF9DT0xPUl9XSURUSAkJCTB4MGM1MAo+
-ICAjZGVmaW5lIERJU1BfQ09MT1JfSEVJR0hUCQkJMHgwYzU0Cj4gIAo+ICsjZGVmaW5lIERJU1Bf
-QUFMX0VOCQkJCTB4MDAwCj4gKyNkZWZpbmUgRElTUF9BQUxfU0laRQkJCQkweDAzMAo+ICsKPiAr
-I2RlZmluZSBESVNQX0dBTU1BX0NGRwkJCQkweDAyMAo+ICsjZGVmaW5lIERJU1BfR0FNTUFfTFVU
-CQkJCTB4NzAwCj4gKwo+ICsjZGVmaW5lIExVVF8xMEJJVF9NQVNLCQkJCTB4M2ZmCj4gKwo+ICsj
-ZGVmaW5lIEFBTF9FTgkJCUJJVCgwKQo+ICsKPiArI2RlZmluZSBHQU1NQV9MVVRfRU4JCUJJVCgx
-KQo+ICsKPiAgI2RlZmluZQlPRF9SRUxBWV9NT0RFCQlCSVQoMCkKPiAgCj4gICNkZWZpbmUJVUZP
-X0JZUEFTUwkJQklUKDIpCj4gQEAgLTc2LDYgKzg5LDQwIEBAIHN0YXRpYyB2b2lkIG10a191Zm9l
-X3N0YXJ0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXApCj4gIAl3cml0ZWwoVUZPX0JZUEFTUywg
-Y29tcC0+cmVncyArIERJU1BfUkVHX1VGT19TVEFSVCk7Cj4gIH0KPiAgCj4gK3N0YXRpYyB2b2lk
-IG10a19hYWxfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCB3
-LAo+ICsJCQkgICB1bnNpZ25lZCBpbnQgaCwgdW5zaWduZWQgaW50IHZyZWZyZXNoKQo+ICt7Cj4g
-Kwl3cml0ZWwoaCA8PCAxNiB8IHcsIGNvbXAtPnJlZ3MgKyBESVNQX0FBTF9TSVpFKTsKPiArfQo+
-ICsKPiArc3RhdGljIHZvaWQgbXRrX2FhbF9zdGFydChzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21w
-KQo+ICt7Cj4gKwl3cml0ZWwoQUFMX0VOLCBjb21wLT5yZWdzICArIERJU1BfQUFMX0VOKTsKPiAr
-fQo+ICsKPiArc3RhdGljIHZvaWQgbXRrX2FhbF9zdG9wKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNv
-bXApCj4gK3sKPiArCXdyaXRlbF9yZWxheGVkKDB4MCwgY29tcC0+cmVncyAgKyBESVNQX0FBTF9F
-Tik7Cj4gK30KPiArCj4gK3N0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3RydWN0IG10a19kZHBf
-Y29tcCAqY29tcCwgdTE2ICpyLCB1MTYgKmcsCj4gKwkJCSAgdTE2ICpiLCB1aW50MzJfdCBzdGFy
-dCwgdWludDMyX3Qgc2l6ZSkKPiArewo+ICsJaW50IGk7Cj4gKwl1bnNpZ25lZCBpbnQgbHV0Owo+
-ICsJaW50IGVuZCA9IChzdGFydCArIHNpemUgPiBNVEtfTFVUX1NJWkUpID8gTVRLX0xVVF9TSVpF
-IDogc3RhcnQgKyBzaXplOwo+ICsJdm9pZCBfX2lvbWVtICpsdXRfYmFzZTsKPiArCj4gKwl3cml0
-ZWwoR0FNTUFfTFVUX0VOLCBjb21wLT5yZWdzICsgRElTUF9HQU1NQV9DRkcpOwo+ICsJbHV0X2Jh
-c2UgPSBjb21wLT5yZWdzICsgRElTUF9HQU1NQV9MVVQ7Cj4gKwlmb3IgKGkgPSBzdGFydDsgaSA8
-IGVuZDsgaSsrKSB7Cj4gKwkJbHV0ID0gKCgocltpXSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKSA8
-PCAyMCkgKwo+ICsJCQkoKChnW2ldID4+IDYpICYgTFVUXzEwQklUX01BU0spIDw8IDEwKSArCj4g
-KwkJCSgoYltpXSA+PiA2KSAmIExVVF8xMEJJVF9NQVNLKTsKPiArCQl3cml0ZWwobHV0LCAobHV0
-X2Jhc2UgKyBpICogNCkpOwo+ICsJfQo+ICt9Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10
-a19kZHBfY29tcF9mdW5jcyBkZHBfY29sb3IgPSB7Cj4gIAkuY29uZmlnID0gbXRrX2NvbG9yX2Nv
-bmZpZywKPiAgCS5zdGFydCA9IG10a19jb2xvcl9zdGFydCwKPiBAQCAtOTAsNiArMTM3LDEzIEBA
-IHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRkcF91Zm9lID0gewo+ICAJ
-LnN0YXJ0ID0gbXRrX3Vmb2Vfc3RhcnQsCj4gIH07Cj4gIAo+ICtzdGF0aWMgY29uc3Qgc3RydWN0
-IG10a19kZHBfY29tcF9mdW5jcyBkZHBfYWFsID0gewo+ICsJLmdhbW1hX3NldCA9IG10a19nYW1t
-YV9zZXQsCj4gKwkuY29uZmlnID0gbXRrX2FhbF9jb25maWcsCj4gKwkuc3RhcnQgPSBtdGtfYWFs
-X3N0YXJ0LAo+ICsJLnN0b3AgPSBtdGtfYWFsX3N0b3AsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29u
-c3QgY2hhciAqIGNvbnN0IG10a19kZHBfY29tcF9zdGVtW01US19ERFBfQ09NUF9UWVBFX01BWF0g
-PSB7Cj4gIAlbTVRLX0RJU1BfT1ZMXSA9ICJvdmwiLAo+ICAJW01US19ESVNQX1JETUFdID0gInJk
-bWEiLAo+IEBAIC0xMTIsNyArMTY2LDcgQEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4g
-IH07Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRw
-X21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0gewo+IC0JW0REUF9DT01QT05FTlRfQUFM
-XQk9IHsgTVRLX0RJU1BfQUFMLAkwLCBOVUxMIH0sCj4gKwlbRERQX0NPTVBPTkVOVF9BQUxdCT0g
-eyBNVEtfRElTUF9BQUwsCTAsICZkZHBfYWFsIH0sCj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBd
-CT0geyBNVEtfRElTUF9DT0xPUiwJMCwgJmRkcF9jb2xvciB9LAo+ICAJW0REUF9DT01QT05FTlRf
-Q09MT1IxXQk9IHsgTVRLX0RJU1BfQ09MT1IsCTEsICZkZHBfY29sb3IgfSwKPiAgCVtERFBfQ09N
-UE9ORU5UX0RQSTBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+IGluZGV4IDZiMTNiYTkuLjA4MzIxNzkgMTAw
-NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAt
-NzMsNiArNzMsOCBAQCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIHsKPiAgCXZvaWQgKCpsYXll
-cl9vZmYpKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2lnbmVkIGludCBpZHgpOwo+ICAJ
-dm9pZCAoKmxheWVyX2NvbmZpZykoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwgdW5zaWduZWQg
-aW50IGlkeCwKPiAgCQkJICAgICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZSk7Cj4gKwl2
-b2lkICgqZ2FtbWFfc2V0KShzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1MTYgKnIsIHUxNiAq
-ZywgdTE2ICpiLAo+ICsJCQkgIHUzMiBzdGFydCwgdTMyIHNpemUpOwo+ICB9Owo+ICAKPiAgc3Ry
-dWN0IG10a19kZHBfY29tcCB7Cj4gQEAgLTEzOSw2ICsxNDEsMTMgQEAgc3RhdGljIGlubGluZSB2
-b2lkIG10a19kZHBfY29tcF9sYXllcl9jb25maWcoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwK
-PiAgCQljb21wLT5mdW5jcy0+bGF5ZXJfY29uZmlnKGNvbXAsIGlkeCwgc3RhdGUpOwo+ICB9Cj4g
-IAo+ICtzdGF0aWMgaW5saW5lIHZvaWQgbXRrX2RkcF9nYW1tYV9zZXQoc3RydWN0IG10a19kZHBf
-Y29tcCAqY29tcCwgdTE2ICpyLCB1MTYgKmcsCj4gKwkJCQkgICAgIHUxNiAqYiwgdWludDMyX3Qg
-c3RhcnQsIHVpbnQzMl90IHNpemUpCj4gK3sKPiArCWlmIChjb21wLT5mdW5jcyAmJiBjb21wLT5m
-dW5jcy0+Z2FtbWFfc2V0KQo+ICsJCWNvbXAtPmZ1bmNzLT5nYW1tYV9zZXQoY29tcCwgciwgZywg
-Yiwgc3RhcnQsIHNpemUpOwo+ICt9Cj4gKwo+ICBpbnQgbXRrX2RkcF9jb21wX2dldF9pZChzdHJ1
-Y3QgZGV2aWNlX25vZGUgKm5vZGUsCj4gIAkJCWVudW0gbXRrX2RkcF9jb21wX3R5cGUgY29tcF90
-eXBlKTsKPiAgaW50IG10a19kZHBfY29tcF9pbml0KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
-IGRldmljZV9ub2RlICpjb21wX25vZGUsCj4gLS0gCj4gMS43LjkuNQo+IAoKLS0gCkRhbmllbCBW
-ZXR0ZXIKU29mdHdhcmUgRW5naW5lZXIsIEludGVsIENvcnBvcmF0aW9uCmh0dHA6Ly9ibG9nLmZm
-d2xsLmNoCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi Matthias,
+
+On Wed, 2016-06-08 at 17:35 +0200, Matthias Brugger wrote:
+> 
+> On 08/06/16 14:25, Horng-Shyang Liao wrote:
+> > Hi Matthias,
+> >
+> > On Wed, 2016-06-08 at 12:45 +0200, Matthias Brugger wrote:
+> >>
+> >> On 08/06/16 07:40, Horng-Shyang Liao wrote:
+> >>> Hi Matthias,
+> >>>
+> >>> On Tue, 2016-06-07 at 18:59 +0200, Matthias Brugger wrote:
+> >>>>
+> >>>> On 03/06/16 15:11, Matthias Brugger wrote:
+> >>>>>
+> >>>>>
+> >>>> [...]
+> >>>>
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +            smp_mb(); /* modify jump before enable thread */
+> >>>>>>>>>>>>>> +        }
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +        cmdq_thread_writel(thread, task->pa_base +
+> >>>>>>>>>>>>>> task->command_size,
+> >>>>>>>>>>>>>> +                   CMDQ_THR_END_ADDR);
+> >>>>>>>>>>>>>> +        cmdq_thread_resume(thread);
+> >>>>>>>>>>>>>> +    }
+> >>>>>>>>>>>>>> +    list_move_tail(&task->list_entry, &thread->task_busy_list);
+> >>>>>>>>>>>>>> +    spin_unlock_irqrestore(&cmdq->exec_lock, flags);
+> >>>>>>>>>>>>>> +}
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +static void cmdq_handle_error_done(struct cmdq *cmdq,
+> >>>>>>>>>>>>>> +                   struct cmdq_thread *thread, u32 irq_flag)
+> >>>>>>>>>>>>>> +{
+> >>>>>>>>>>>>>> +    struct cmdq_task *task, *tmp, *curr_task = NULL;
+> >>>>>>>>>>>>>> +    u32 curr_pa;
+> >>>>>>>>>>>>>> +    struct cmdq_cb_data cmdq_cb_data;
+> >>>>>>>>>>>>>> +    bool err;
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +    if (irq_flag & CMDQ_THR_IRQ_ERROR)
+> >>>>>>>>>>>>>> +        err = true;
+> >>>>>>>>>>>>>> +    else if (irq_flag & CMDQ_THR_IRQ_DONE)
+> >>>>>>>>>>>>>> +        err = false;
+> >>>>>>>>>>>>>> +    else
+> >>>>>>>>>>>>>> +        return;
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +    curr_pa = cmdq_thread_readl(thread, CMDQ_THR_CURR_ADDR);
+> >>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>> +    list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+> >>>>>>>>>>>>>> +                 list_entry) {
+> >>>>>>>>>>>>>> +        if (curr_pa >= task->pa_base &&
+> >>>>>>>>>>>>>> +            curr_pa < (task->pa_base + task->command_size))
+> >>>>>>>>>>>>>
+> >>>>>>>>>>>>> What are you checking here? It seems as if you make some implcit
+> >>>>>>>>>>>>> assumptions about pa_base and the order of execution of
+> >>>>>>>>>>>>> commands in the
+> >>>>>>>>>>>>> thread. Is it save to do so? Does dma_alloc_coherent give any
+> >>>>>>>>>>>>> guarantees
+> >>>>>>>>>>>>> about dma_handle?
+> >>>>>>>>>>>>
+> >>>>>>>>>>>> 1. Check what is the current running task in this GCE thread.
+> >>>>>>>>>>>> 2. Yes.
+> >>>>>>>>>>>> 3. Yes, CMDQ doesn't use iommu, so physical address is continuous.
+> >>>>>>>>>>>>
+> >>>>>>>>>>>
+> >>>>>>>>>>> Yes, physical addresses might be continous, but AFAIK there is no
+> >>>>>>>>>>> guarantee that the dma_handle address is steadily growing, when
+> >>>>>>>>>>> calling
+> >>>>>>>>>>> dma_alloc_coherent. And if I understand the code correctly, you
+> >>>>>>>>>>> use this
+> >>>>>>>>>>> assumption to decide if the task picked from task_busy_list is
+> >>>>>>>>>>> currently
+> >>>>>>>>>>> executing. So I think this mecanism is not working.
+> >>>>>>>>>>
+> >>>>>>>>>> I don't use dma_handle address, and just use physical addresses.
+> >>>>>>>>>>      From CPU's point of view, tasks are linked by the busy list.
+> >>>>>>>>>>      From GCE's point of view, tasks are linked by the JUMP command.
+> >>>>>>>>>>
+> >>>>>>>>>>> In which cases does the HW thread raise an interrupt.
+> >>>>>>>>>>> In case of error. When does CMDQ_THR_IRQ_DONE get raised?
+> >>>>>>>>>>
+> >>>>>>>>>> GCE will raise interrupt if any task is done or error.
+> >>>>>>>>>> However, GCE is fast, so CPU may get multiple done tasks
+> >>>>>>>>>> when it is running ISR.
+> >>>>>>>>>>
+> >>>>>>>>>> In case of error, that GCE thread will pause and raise interrupt.
+> >>>>>>>>>> So, CPU may get multiple done tasks and one error task.
+> >>>>>>>>>>
+> >>>>>>>>>
+> >>>>>>>>> I think we should reimplement the ISR mechanism. Can't we just read
+> >>>>>>>>> CURR_IRQ_STATUS and THR_IRQ_STATUS in the handler and leave
+> >>>>>>>>> cmdq_handle_error_done to the thread_fn? You will need to pass
+> >>>>>>>>> information from the handler to thread_fn, but that shouldn't be an
+> >>>>>>>>> issue. AFAIK interrupts are disabled in the handler, so we should stay
+> >>>>>>>>> there as short as possible. Traversing task_busy_list is expensive, so
+> >>>>>>>>> we need to do it in a thread context.
+> >>>>>>>>
+> >>>>>>>> Actually, our initial implementation is similar to your suggestion,
+> >>>>>>>> but display needs CMDQ to return callback function very precisely,
+> >>>>>>>> else display will drop frame.
+> >>>>>>>> For display, CMDQ interrupt will be raised every 16 ~ 17 ms,
+> >>>>>>>> and CMDQ needs to call callback function in ISR.
+> >>>>>>>> If we defer callback to workqueue, the time interval may be larger than
+> >>>>>>>> 32 ms.sometimes.
+> >>>>>>>>
+> >>>>>>>
+> >>>>>>> I think the problem is, that you implemented the workqueue as a ordered
+> >>>>>>> workqueue, so there is no parallel processing. I'm still not sure why
+> >>>>>>> you need the workqueue to be ordered. Can you please explain.
+> >>>>>>
+> >>>>>> The order should be kept.
+> >>>>>> Let me use mouse cursor as an example.
+> >>>>>> If task 1 means move mouse cursor to point A, task 2 means point B,
+> >>>>>> and task 3 means point C, our expected result is A -> B -> C.
+> >>>>>> If the order is not kept, the result could become A -> C -> B.
+> >>>>>>
+> >>>>>
+> >>>>> Got it, thanks for the clarification.
+> >>>>>
+> >>>>
+> >>>> I think a way to get rid of the workqueue is to use a timer, which gets
+> >>>> programmed to the time a timeout in the first task in the busy list
+> >>>> would happen. Everytime we update the busy list (e.g. because of task
+> >>>> got finished by the thread), we update the timer. When the timer
+> >>>> triggers, which hopefully won't happen too often, we return timeout on
+> >>>> the busy list elements, until the time is lower then the actual time.
+> >>>>
+> >>>> At least with this we can reduce the data structures in this driver and
+> >>>> make it more lightweight.
+> >>>
+> >>>   From my understanding, your proposed method can handle timeout case.
+> >>>
+> >>> However, the workqueue is also in charge of releasing tasks.
+> >>> Do you take releasing tasks into consideration by using the proposed
+> >>> timer method?
+> >>> Furthermore, I think the code will become more complex if we also use
+> >>> timer to implement releasing tasks.
+> >>>
+> >>
+> >> Can't we call
+> >>           clk_disable_unprepare(cmdq->clock);
+> >>           cmdq_task_release(task);
+> >> after invoking the callback?
+> >
+> > Do you mean just call these two functions in ISR?
+> > My major concern is dma_free_coherent() and kfree() in
+> > cmdq_task_release(task).
+> 
+> Why do we need the dma calls at all? Can't we just calculate the 
+> physical address using __pa(x)?
+
+I prefer to use dma_map_single/dma_unmap_single.
+
+> > Therefore, your suggestion is to use GFP_ATOMIC for both
+> > dma_alloc_coherent() and kzalloc(). Right?
+> 
+> I don't think we need GFP_ATOMIC, the critical path will just free the 
+> memory.
+
+I tested these two functions, and kfree was safe.
+However, dma_free_coherent raised BUG.
+BUG: failure at
+/mnt/host/source/src/third_party/kernel/v3.18/mm/vmalloc.c:1514/vunmap()!
+1512 void vunmap(const void *addr)
+1513 {
+1514         BUG_ON(in_interrupt());		// <-- here
+1515         might_sleep();
+1516         if (addr)
+1517                 __vunmap(addr, 0);
+1518 }
+1519 EXPORT_SYMBOL(vunmap);
+
+Therefore, I plan to use kmalloc + dma_map_single instead of
+dma_alloc_coherent, and dma_unmap_single + kfree instead of
+dma_free_coherent.
+
+What do you think about the function replacement?
+
+> > If so, I can try to implement timeout by timer, and discuss with you
+> > if I have further questions.
+> >
+> 
+> Sounds good :)
+> 
+> Thanks,
+> Matthias
+
+Thanks,
+HS
+
+> >> Regrading the clock, wouldn't it be easier to handle the clock
+> >> enable/disable depending on the state of task_busy_list? I suppose we
+> >> can't as we would need to check the task_busy_list of all threads, right?
+> >>
+> >> Regards,
+> >> Matthias
+> >
+> > Thanks,
+> > HS
+> >
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
