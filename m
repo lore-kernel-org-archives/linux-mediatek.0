@@ -1,113 +1,82 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [PATCH 2/2 v16] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Tue, 14 Jun 2016 16:09:23 +0800
-Message-ID: <CAGS+omDpakAsjijbhUG9gJZ6WA=+UBJ2fhhmp-ZEz7CtK8AHCw@mail.gmail.com>
-References: <1464861445-11086-1-git-send-email-jitao.shi@mediatek.com> <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
+From: =?UTF-8?B?V3UtQ2hlbmcgTGkgKOadjuWLmeiqoCk=?=
+	<wuchengli-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
+Date: Tue, 14 Jun 2016 16:44:36 +0800
+Message-ID: <CAOMLVLjnktOoDWseZBwsFwLbym8mX7CQzOHW3tbum1yWJjfFNA@mail.gmail.com>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+ <20160607112235.475c2e4c@recife.lan> <575746EE.3030706@cisco.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Thierry Reding <treding@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Russell King <rmk+kernel@arm.linux.org.uk>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, moderated list:A
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <575746EE.3030706-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lin PoChun <PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jitao,
-
-On Thu, Jun 2, 2016 at 5:57 PM, Jitao Shi <jitao.shi@mediatek.com> wrote:
+On Wed, Jun 8, 2016 at 6:13 AM, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org> wrote:
 >
-> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
 >
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> ---
-> Changes since v15:
->  - Drop drm_connector_(un)register calls from parade ps8640.
->    The main DRM driver mtk_drm_drv now calls
->    drm_connector_register_all() after drm_dev_register() in the
->    mtk_drm_bind() function. That function should iterate over all
->    connectors and call drm_connector_register() for each of them.
->    So, remove drm_connector_(un)register calls from parade ps8640.
+> On 06/07/2016 11:22 PM, Mauro Carvalho Chehab wrote:
+>>
+>> Em Mon, 30 May 2016 20:29:14 +0800
+>> Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
+>>
+>>> ==============
+>>>   Introduction
+>>> ==============
+>>>
+>>> The purpose of this series is to add the driver for video codec hw
+>>> embedded in the Mediatek's MT8173 SoCs.
+>>> Mediatek Video Codec is able to handle video decoding of in a range of
+>>> formats.
+>>>
+>>> This patch series add Mediatek block format V4L2_PIX_FMT_MT21, the
+>>> decoder driver will decoded bitstream to
+>>> V4L2_PIX_FMT_MT21 format.
+>>>
+>>> This patch series rely on MTK VPU driver in patch series "Add MT8173
+>>> Video Encoder Driver and VPU Driver"[1]
+>>> and patch "CHROMIUM: v4l: Add V4L2_PIX_FMT_VP9 definition"[2] for VP9
+>>> support.
+>>> Mediatek Video Decoder driver rely on VPU driver to load, communicate
+>>> with VPU.
+>>>
+>>> Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI
+>>> both have been merged in v4.6-rc1.
+>>>
+>>> [1]https://patchwork.linuxtv.org/patch/33734/
+>>> [2]https://chromium-review.googlesource.com/#/c/245241/
+>>
+>>
+>> Hmm... I'm not seeing the firmware for this driver at the
+>> linux-firmware tree:
+>>
+>> https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/log/
+Tiffany. Can you check the license and add the firmware to linux-firmware?
 
-[snip...]
-
-> +static void ps8640_pre_enable(struct drm_bridge *bridge)
-> +{
-> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +       struct i2c_client *client = ps_bridge->page[2];
-> +       int err;
-> +       u8 set_vdo_done;
-> +       ktime_t timeout;
-> +
-> +       if (ps_bridge->in_fw_update)
-> +               return;
-> +
-> +       if (ps_bridge->enabled)
-> +               return;
-> +
-> +       err = drm_panel_prepare(ps_bridge->panel);
-> +       if (err < 0) {
-> +               DRM_ERROR("failed to prepare panel: %d\n", err);
-> +               return;
-> +       }
-> +
-
-(1) For patch v10, Philipp Zabel commented that gpio_slp_n &
-gpio_rst_n are both active low, and that the device tree should
-contain a reset-gpios property with the GPIO_ACTIVE_LOW flag set.
-(2) However, you did change the the reset logic from v10 -> v11, but
-it isn't clear why (nor mentioned in the patch notes).
-
-v10 (https://patchwork.kernel.org/patch/8357851/) had:
-
-+ gpiod_set_value(ps_bridge->gpio_slp_n, 1);
-+ gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-+
-+ err = regulator_bulk_enable(ARRAY_SIZE(ps_bridge->supplies),
-+    ps_bridge->supplies);
-+ if (err < 0) {
-+ DRM_ERROR("cannot enable regulators %d\n", err);
-+ goto err_panel_unprepare;
-+ }
-+
-+ usleep_range(500, 700);
-+ gpiod_set_value(ps_bridge->gpio_rst_n, 1);
-
-In other words:
-  (a) de-assert power down
-  (b) assert reset
-  (c) enable 1.2 & 3.3 regulators
-  (d) <wait for  regulator delay> (aka regulator-ramp-delay in device-tree)
-  (e) wait an additional 2 ms (as requested by Parade for ps8640 to stabilize?)
-  (f) de-assert reset
-  (g) wait 200 ms (for ps8640 FW to load?)
-
-This mostly made sense to me, except for step (a)... I'm not sure why
-you de-assert power down before enabling the regulators.  It seems
-like you'd want to do that later, maybe after reset (can you ask
-Paradetech?).
-
-Now (as of v11) it has changed to:
-
-> +       err = regulator_bulk_enable(ARRAY_SIZE(ps_bridge->supplies),
-> +                                   ps_bridge->supplies);
-> +       if (err < 0) {
-> +               DRM_ERROR("cannot enable regulators %d\n", err);
-> +               goto err_panel_unprepare;
-> +       }
-> +
-> +       gpiod_set_value(ps_bridge->gpio_slp_n, 1);
-> +       gpiod_set_value(ps_bridge->gpio_rst_n, 0);
-> +       usleep_range(2000, 2500);
-> +       gpiod_set_value(ps_bridge->gpio_rst_n, 1);
-
-Two additional comments:
-
-(3) if you correctly configure these gpios as GPIO_ACTIVE_LOW, you can
-drop the "_n" suffix, which will make the driver code easier to
-understand.
-(4) "gpio_slp_n" is called "PD#" by the PS8640 datasheet, so a better
-name might be: "gpio_power_down".
-
-Thanks,
--Dan
+For the information, both encoder and decoder drivers require the
+firmware to work.
+>>
+>> Nor I'm seeing any pull request for them. Did you send it?
+>> I'll only merge the driver upstream after seeing such pull request.
+>
+>
+> Mauro, are you confusing the decoder and encoder driver? I haven't
+> thoroughly reviewed the decoder driver
+> yet, so there is no pull request for the decoder driver.
+>
+> The only pull request I made was for the encoder driver.
+>
+> Regards,
+>
+>         Hans
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
