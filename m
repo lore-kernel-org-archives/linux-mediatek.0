@@ -1,26 +1,30 @@
-From: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH v2 3/3] iommu: convert DT component matching to
- component_match_add_release()
-Date: Wed, 15 Jun 2016 15:31:04 +0200
-Message-ID: <20160615133104.GL26566@8bytes.org>
-References: <20160603141548.GC1041@n2100.armlinux.org.uk>
- <E1b8pyc-0005OV-7X@rmk-PC.armlinux.org.uk>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <E1b8pyc-0005OV-7X@rmk-PC.armlinux.org.uk>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Russell King <rmk+kernel@armlinux.org.uk>
-Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux-foundation.org
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH 0/4] net-next: mediatek: IRQ cleanups, fixes and grouping
+Date: Wed, 15 Jun 2016 16:58:46 +0200
+Message-ID: <1466002730-58476-1-git-send-email-john@phrozen.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "David S. Miller" <davem@davemloft.net>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 03, 2016 at 03:21:30PM +0100, Russell King wrote:
-> Convert DT component matching to use component_match_add_release().
-> 
-> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/iommu/mtk_iommu.c | 14 ++++++--------
->  1 file changed, 6 insertions(+), 8 deletions(-)
+This series contains 2 small code cleanups that are leftovers from the
+MIPS support. There is also a small fix that adds proper locking to the
+code accessing the IRQ registers. Without this fix we saw deadlocks caused
+by the last patch of the series, which adds IRQ grouping. The grouping
+feature allows us to use different IRQs for TX and RX. By doing so we can
+use affinity to let the SoC handle the IRQs on different cores.
 
-Applied, thanks.
+John Crispin (4):
+  net-next: mediatek: remove superfluous register reads
+  net-next: mediatek: don't use intermediate variables to store IRQ
+    masks
+  net-next: mediatek: add IRQ locking
+  net-next: mediatek: add support for IRQ grouping
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |  175 +++++++++++++++++----------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |   16 ++-
+ 2 files changed, 122 insertions(+), 69 deletions(-)
+
+-- 
+1.7.10.4
