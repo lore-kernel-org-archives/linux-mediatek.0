@@ -1,54 +1,54 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [alsa-devel] [PATCH v4 9/9] ASoC: mediatek: Add mt2701-cs42448
- driver and config option.
-Date: Wed, 15 Jun 2016 18:58:42 +0800
-Message-ID: <1465988322.30493.7.camel@mtksdaap41>
-References: <1465802806-19197-1-git-send-email-garlic.tseng@mediatek.com>
-	 <1465802806-19197-10-git-send-email-garlic.tseng@mediatek.com>
+From: Chris Wilson <chris@chris-wilson.co.uk>
+Subject: [PATCH 09/44] drm/mediatek: Remove redundant calls to
+	drm_connector_register_all()
+Date: Wed, 15 Jun 2016 13:17:54 +0100
+Message-ID: <1465993109-19523-10-git-send-email-chris@chris-wilson.co.uk>
+References: <1465993109-19523-1-git-send-email-chris@chris-wilson.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465802806-19197-10-git-send-email-garlic.tseng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>
-Cc: broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <1465993109-19523-1-git-send-email-chris@chris-wilson.co.uk>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: intel-gfx@lists.freedesktop.org
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-06-13 at 15:26 +0800, Garlic Tseng wrote:
-> Add machine driver and config option for MT2701.
-> 
-> Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
-> ---
->  sound/soc/mediatek/Kconfig                 |  21 ++
->  sound/soc/mediatek/Makefile                |   1 +
->  sound/soc/mediatek/mt2701/Makefile         |  19 ++
->  sound/soc/mediatek/mt2701/mt2701-cs42448.c | 422 +++++++++++++++++++++++++++++
->  4 files changed, 463 insertions(+)
->  create mode 100644 sound/soc/mediatek/mt2701/Makefile
->  create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
-> 
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index ff1a419..0ecb785 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -7,6 +7,27 @@ config SND_SOC_MEDIATEK
->  	  Select Y if you have such device.
->  	  If unsure select "N".
->  
-> +config SND_SOC_MT2701
-> +	tristate "ASoC support for Mediatek MT2701 chip"
-> +	depends on ARCH_MEDIATEK
-> +	select SND_SOC_MEDIATEK
-> +	help
-> +	  This adds ASoC driver for Mediatek MT2701 boards
-> +	  that can be used with other codecs.
-> +	  Select Y if you have such device.
-> +	  If unsure select "N".
-> +
-> +config SND_SOC_MT2701_CS42448
-> +	tristate "SND_SOC_MT2701_CS42448"
-
-Please provide proper config prompt here.
-
-Joe.C
+VXAgdG8gbm93LCB0aGUgcmVjb21tZW5kYXRpb24gd2FzIGZvciBkcml2ZXJzIHRvIGNhbGwgZHJt
+X2Rldl9yZWdpc3RlcigpCmZvbGxvd2VkIGJ5IGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCku
+IE5vdyB0aGF0CmRybV9jb25uZWN0b3JfcmVnaXN0ZXIoKSBpcyBzYWZlIGFnYWluc3QgbXVsdGlw
+bGUgaW52b2NhdGlvbnMsIHdlIGNhbgptb3ZlIGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCkg
+dG8gZHJtX2Rldl9yZWdpc3RlcigpIGFuZCBub3Qgc3VmZmVyCmZyb20gYW55IGJhY2t3YXJkcyBj
+b21wYXRpYmlsaXR5IGlzc3VlcyB3aXRoIGRyaXZlcnMgbm90IGZvbGxvd2luZyB0aGUKbW9yZSBy
+aWdvcm91cyBpbml0IG9yZGVyaW5nLgoKU2lnbmVkLW9mZi1ieTogQ2hyaXMgV2lsc29uIDxjaHJp
+c0BjaHJpcy13aWxzb24uY28udWs+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZm
+d2xsLmNoPgpDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KQ2M6
+IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IGRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzog
+bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNyAtLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNyBkZWxl
+dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IGMzM2Jm
+OThjNWQ1ZS4uN2FiOTFmNGEyMDBmIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
+cnYuYwpAQCAtMjkzLDE0ICsyOTMsOCBAQCBzdGF0aWMgaW50IG10a19kcm1fYmluZChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYpCiAJaWYgKHJldCA8IDApCiAJCWdvdG8gZXJyX2RlaW5pdDsKIAotCXJldCA9
+IGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKGRybSk7Ci0JaWYgKHJldCA8IDApCi0JCWdvdG8g
+ZXJyX3VucmVnaXN0ZXI7Ci0KIAlyZXR1cm4gMDsKIAotZXJyX3VucmVnaXN0ZXI6Ci0JZHJtX2Rl
+dl91bnJlZ2lzdGVyKGRybSk7CiBlcnJfZGVpbml0OgogCW10a19kcm1fa21zX2RlaW5pdChkcm0p
+OwogZXJyX2ZyZWU6CkBAIC00NTUsNyArNDQ5LDYgQEAgc3RhdGljIGludCBtdGtfZHJtX3JlbW92
+ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0g
+PSBwcml2YXRlLT5kcm07CiAJaW50IGk7CiAKLQlkcm1fY29ubmVjdG9yX3VucmVnaXN0ZXJfYWxs
+KGRybSk7CiAJZHJtX2Rldl91bnJlZ2lzdGVyKGRybSk7CiAJbXRrX2RybV9rbXNfZGVpbml0KGRy
+bSk7CiAJZHJtX2Rldl91bnJlZihkcm0pOwotLSAKMi44LjEKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwt
+Z2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
