@@ -1,54 +1,26 @@
-From: Chris Wilson <chris@chris-wilson.co.uk>
-Subject: [PATCH 09/44] drm/mediatek: Remove redundant calls to
-	drm_connector_register_all()
-Date: Wed, 15 Jun 2016 13:17:54 +0100
-Message-ID: <1465993109-19523-10-git-send-email-chris@chris-wilson.co.uk>
-References: <1465993109-19523-1-git-send-email-chris@chris-wilson.co.uk>
+From: Joerg Roedel <joro@8bytes.org>
+Subject: Re: [PATCH v2 3/3] iommu: convert DT component matching to
+ component_match_add_release()
+Date: Wed, 15 Jun 2016 15:31:04 +0200
+Message-ID: <20160615133104.GL26566@8bytes.org>
+References: <20160603141548.GC1041@n2100.armlinux.org.uk>
+ <E1b8pyc-0005OV-7X@rmk-PC.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <1465993109-19523-1-git-send-email-chris@chris-wilson.co.uk>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: intel-gfx@lists.freedesktop.org
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <E1b8pyc-0005OV-7X@rmk-PC.armlinux.org.uk>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Russell King <rmk+kernel@armlinux.org.uk>
+Cc: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux-foundation.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VXAgdG8gbm93LCB0aGUgcmVjb21tZW5kYXRpb24gd2FzIGZvciBkcml2ZXJzIHRvIGNhbGwgZHJt
-X2Rldl9yZWdpc3RlcigpCmZvbGxvd2VkIGJ5IGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCku
-IE5vdyB0aGF0CmRybV9jb25uZWN0b3JfcmVnaXN0ZXIoKSBpcyBzYWZlIGFnYWluc3QgbXVsdGlw
-bGUgaW52b2NhdGlvbnMsIHdlIGNhbgptb3ZlIGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKCkg
-dG8gZHJtX2Rldl9yZWdpc3RlcigpIGFuZCBub3Qgc3VmZmVyCmZyb20gYW55IGJhY2t3YXJkcyBj
-b21wYXRpYmlsaXR5IGlzc3VlcyB3aXRoIGRyaXZlcnMgbm90IGZvbGxvd2luZyB0aGUKbW9yZSBy
-aWdvcm91cyBpbml0IG9yZGVyaW5nLgoKU2lnbmVkLW9mZi1ieTogQ2hyaXMgV2lsc29uIDxjaHJp
-c0BjaHJpcy13aWxzb24uY28udWs+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZm
-d2xsLmNoPgpDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4KQ2M6
-IERhdmlkIEFpcmxpZSA8YWlybGllZEBsaW51eC5pZT4KQ2M6IGRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKQ2M6IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzog
-bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwgNyAtLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNyBkZWxl
-dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
-cnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCmluZGV4IGMzM2Jm
-OThjNWQ1ZS4uN2FiOTFmNGEyMDBmIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
-cnYuYwpAQCAtMjkzLDE0ICsyOTMsOCBAQCBzdGF0aWMgaW50IG10a19kcm1fYmluZChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYpCiAJaWYgKHJldCA8IDApCiAJCWdvdG8gZXJyX2RlaW5pdDsKIAotCXJldCA9
-IGRybV9jb25uZWN0b3JfcmVnaXN0ZXJfYWxsKGRybSk7Ci0JaWYgKHJldCA8IDApCi0JCWdvdG8g
-ZXJyX3VucmVnaXN0ZXI7Ci0KIAlyZXR1cm4gMDsKIAotZXJyX3VucmVnaXN0ZXI6Ci0JZHJtX2Rl
-dl91bnJlZ2lzdGVyKGRybSk7CiBlcnJfZGVpbml0OgogCW10a19kcm1fa21zX2RlaW5pdChkcm0p
-OwogZXJyX2ZyZWU6CkBAIC00NTUsNyArNDQ5LDYgQEAgc3RhdGljIGludCBtdGtfZHJtX3JlbW92
-ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXN0cnVjdCBkcm1fZGV2aWNlICpkcm0g
-PSBwcml2YXRlLT5kcm07CiAJaW50IGk7CiAKLQlkcm1fY29ubmVjdG9yX3VucmVnaXN0ZXJfYWxs
-KGRybSk7CiAJZHJtX2Rldl91bnJlZ2lzdGVyKGRybSk7CiAJbXRrX2RybV9rbXNfZGVpbml0KGRy
-bSk7CiAJZHJtX2Rldl91bnJlZihkcm0pOwotLSAKMi44LjEKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5nIGxpc3QKSW50ZWwt
-Z2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
+On Fri, Jun 03, 2016 at 03:21:30PM +0100, Russell King wrote:
+> Convert DT component matching to use component_match_add_release().
+> 
+> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/iommu/mtk_iommu.c | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
+
+Applied, thanks.
