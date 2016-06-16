@@ -1,101 +1,58 @@
-From: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
-Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
-Date: Thu, 16 Jun 2016 07:54:28 -0300
-Message-ID: <20160616075428.0fde4aaa@recife.lan>
-References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
-	<20160607112235.475c2e4c@recife.lan>
-	<575746EE.3030706@cisco.com>
-	<1465902488.27938.7.camel@mtksdaap41>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [GIT PULL] drm/mediatek: MT8173 HDMI support
+Date: Thu, 16 Jun 2016 16:41:34 +0200
+Message-ID: <1466088094.3343.36.camel@pengutronix.de>
+References: <1465811080.3553.8.camel@pengutronix.de>
+ <CAPM=9tyMpNpzq9m4tJBe-zFzmsaRxFHYV20yv5yWmsrGeuQcqw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1465902488.27938.7.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: tiffany lin <tiffany.lin@mediatek.com>
-Cc: Hans Verkuil <hansverk@cisco.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAPM=9tyMpNpzq9m4tJBe-zFzmsaRxFHYV20yv5yWmsrGeuQcqw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Dave Airlie <airlied@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, dri-devel <dri-devel@lists.freedesktop.org>, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Em Tue, 14 Jun 2016 19:08:08 +0800
-tiffany lin <tiffany.lin@mediatek.com> escreveu:
-
-> Hi Mauro,
-> 
-> 
-> On Wed, 2016-06-08 at 07:13 +0900, Hans Verkuil wrote:
-> > 
-> > On 06/07/2016 11:22 PM, Mauro Carvalho Chehab wrote:  
-> > > Em Mon, 30 May 2016 20:29:14 +0800
-> > > Tiffany Lin <tiffany.lin@mediatek.com> escreveu:
-> > >  
-> > >> ==============
-> > >>   Introduction
-> > >> ==============
-> > >>
-> > >> The purpose of this series is to add the driver for video codec hw embedded in the Mediatek's MT8173 SoCs.
-> > >> Mediatek Video Codec is able to handle video decoding of in a range of formats.
-> > >>
-> > >> This patch series add Mediatek block format V4L2_PIX_FMT_MT21, the decoder driver will decoded bitstream to
-> > >> V4L2_PIX_FMT_MT21 format.
-> > >>
-> > >> This patch series rely on MTK VPU driver in patch series "Add MT8173 Video Encoder Driver and VPU Driver"[1]
-> > >> and patch "CHROMIUM: v4l: Add V4L2_PIX_FMT_VP9 definition"[2] for VP9 support.
-> > >> Mediatek Video Decoder driver rely on VPU driver to load, communicate with VPU.
-> > >>
-> > >> Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
-> > >>
-> > >> [1]https://patchwork.linuxtv.org/patch/33734/
-> > >> [2]https://chromium-review.googlesource.com/#/c/245241/  
-> > >
-> > > Hmm... I'm not seeing the firmware for this driver at the
-> > > linux-firmware tree:
-> > > 	https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/log/
-> > >
-> > > Nor I'm seeing any pull request for them. Did you send it?
-> > > I'll only merge the driver upstream after seeing such pull request.  
-> >   
-> Sorry, I am not familiar with how to upstream firmware.
-> Do you mean we need to upstream vpu firmware first before merge encoder
-> driver upstream?
-
-Please look at this page:
-	https://linuxtv.org/wiki/index.php/Development:_How_to_submit_patches#Firmware_submission
-
-The information here can also be useful:
-	https://www.kernel.org/doc/readme/firmware-README.AddingFirmware
-
-In summary, you need to provide redistribution rights for the
-firmware blob. You can either submit it to me or directly to
-linux-firmware. In the latter, please c/c me on such patch.
-
-Thanks!
-Mauro
-
-> 
-> In
-> https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/tree/README, it mentions that 
-> "To submit firmware to this repository, please send either a git binary
-> diff or preferably a git pull request to: linux-firmware@kernel.org and
-> also cc: to related mailing lists."
-> 
-> How we made a git pull request to linux-firmware@kernel.org? 
-> How we find out related mailing lists?
-> 
-> best regards,
-> Tiffany
-> 
-> > Mauro, are you confusing the decoder and encoder driver? I haven't thoroughly reviewed the decoder driver
-> > yet, so there is no pull request for the decoder driver.
-> > 
-> > The only pull request I made was for the encoder driver.
-> > 
-> > Regards,
-> > 
-> > 	Hans  
-> 
-> 
-
-
--- 
-Thanks,
-Mauro
+QW0gRG9ubmVyc3RhZywgZGVuIDE2LjA2LjIwMTYsIDA2OjE5ICsxMDAwIHNjaHJpZWIgRGF2ZSBB
+aXJsaWU6Cj4gT24gMTMgSnVuZSAyMDE2IGF0IDE5OjQ0LCBQaGlsaXBwIFphYmVsIDxwLnphYmVs
+QHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiA+IEhpIERhdmUsCj4gPgo+ID4gcGxlYXNlIGNvbnNp
+ZGVyIG1lcmdpbmcgdGhpcyB0YWcsIHdoaWNoIGNvbnRhaW5zIHRoZSB2MTYgTVQ4MTczIEhETUkK
+PiA+IHBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDUtMjYsIHJlYmFzZWQgb250byB2NC43LXJjMi4g
+VGhlcmUgaGF2ZSBiZWVuIG5vCj4gPiBmdXJ0aGVyIGNvbW1lbnRzLgo+IAo+IGFybTMyIGJ1aWxk
+Cj4gIERUQyAgICAgZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfc2xhdmVfY29tcGF0LmR0
+Ygo+IC9ob21lL2FpcmxpZWQvZGV2ZWwva2VybmVsL2RybS1uZXh0L2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfaGRtaV9kZGMuYzoKPiBJbiBmdW5jdGlvbiDigJhtdGtfaGRtaV9kZGNfcHJv
+YmXigJk6Cj4gL2hvbWUvYWlybGllZC9kZXZlbC9rZXJuZWwvZHJtLW5leHQvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jOjMyMjoxMTE6Cj4gd2FybmluZzogZm9ybWF0IOKA
+mCVsbHjigJkgZXhwZWN0cyBhcmd1bWVudCBvZiB0eXBlIOKAmGxvbmcgbG9uZyB1bnNpZ25lZAo+
+IGludOKAmSwgYnV0IGFyZ3VtZW50IDQgaGFzIHR5cGUg4oCYcmVzb3VyY2Vfc2l6ZV90IHtha2Eg
+dW5zaWduZWQgaW50feKAmQo+IFstV2Zvcm1hdD1dCj4gL2hvbWUvYWlybGllZC9kZXZlbC9rZXJu
+ZWwvZHJtLW5leHQvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jOjMyMjox
+MTE6Cj4gd2FybmluZzogZm9ybWF0IOKAmCVsbHjigJkgZXhwZWN0cyBhcmd1bWVudCBvZiB0eXBl
+IOKAmGxvbmcgbG9uZyB1bnNpZ25lZAo+IGludOKAmSwgYnV0IGFyZ3VtZW50IDUgaGFzIHR5cGUg
+4oCYcmVzb3VyY2Vfc2l6ZV90IHtha2EgdW5zaWduZWQgaW50feKAmQo+IFstV2Zvcm1hdD1dCj4g
+Cj4gUGxlYXNlIGZpeCB0aGF0IGFuZCByZXNlbmQuCj4gRGF2ZS4KCkknbGwgZml4IGl0IHVwIGFz
+IGZvbGxvd3MgYW5kIHJlc2VuZDoKCi0tLS0tLS0tLS04PC0tLS0tLS0tLS0KZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9kZGMuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaV9kZGMuYwppbmRleCBjMjRiYmM0Li4zM2M5ZTFiIDEwMDY0NAot
+LS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfZGRjLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jCkBAIC0zMTksOCArMzE5LDggQEAgc3Rh
+dGljIGludCBtdGtfaGRtaV9kZGNfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikK
+IAogCWRldl9kYmcoZGV2LCAiZGRjLT5hZGFwOiAlcFxuIiwgJmRkYy0+YWRhcCk7CiAJZGV2X2Ri
+ZyhkZXYsICJkZGMtPmNsazogJXBcbiIsIGRkYy0+Y2xrKTsKLQlkZXZfZGJnKGRldiwgInBoeXNp
+Y2FsIGFkcjogMHglbGx4LCBlbmQ6IDB4JWxseFxuIiwgbWVtLT5zdGFydCwKLQkJbWVtLT5lbmQp
+OworCWRldl9kYmcoZGV2LCAicGh5c2ljYWwgYWRyOiAlcGEsIGVuZDogJXBhXG4iLCAmbWVtLT5z
+dGFydCwKKwkJJm1lbS0+ZW5kKTsKIAogCXJldHVybiAwOwogCi0tLS0tLS0tLS0+OC0tLS0tLS0t
+LS0KCnJlZ2FyZHMKUGhpbGlwcAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRl
+c2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCg==
