@@ -1,43 +1,35 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH 0/4] net-next: mediatek: IRQ cleanups, fixes and
- grouping
-Date: Thu, 16 Jun 2016 17:27:26 -0700 (PDT)
-Message-ID: <20160616.172726.2001945071088559824.davem@davemloft.net>
-References: <1466002730-58476-1-git-send-email-john@phrozen.org>
-	<20160615.222050.2210130284846212716.davem@davemloft.net>
-	<5dbb935d-2d9a-48fe-79c7-8e8f57b27678@phrozen.org>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v2 0/2] drm/mediatek: MT8173 gamma & dither support
+Date: Fri, 17 Jun 2016 09:58:12 +0800
+Message-ID: <1466128694-11208-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <5dbb935d-2d9a-48fe-79c7-8e8f57b27678@phrozen.org>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, nbd@nbd.name
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: John Crispin <john@phrozen.org>
-Date: Thu, 16 Jun 2016 11:44:44 +0200
+This is MT8173 gamma & dither support PATCH v2, based on 4.7-rc1.
 
-> 
-> 
-> On 16/06/2016 07:20, David Miller wrote:
->> From: John Crispin <john@phrozen.org>
->> Date: Wed, 15 Jun 2016 16:58:46 +0200
->> 
->>> This series contains 2 small code cleanups that are leftovers from the
->>> MIPS support. There is also a small fix that adds proper locking to the
->>> code accessing the IRQ registers. Without this fix we saw deadlocks caused
->>> by the last patch of the series, which adds IRQ grouping. The grouping
->>> feature allows us to use different IRQs for TX and RX. By doing so we can
->>> use affinity to let the SoC handle the IRQs on different cores.
->> 
->> This patch series doesn't apply cleanly to the net-next tree, I get rejects
->> on patch #4.
->> 
-> 
-> it depends on the series with the 11 fixes that i sent last week which
-> is however in the net tree and not the next tree (i also still had the
-> DQL hack in my tree).
+Changes since v1:
+ -According to the suggestion from Daniel,
+  we used the new atomic color management.
+ -Applied gamma function at GAMMA engine (path 2).
+ -Made dithering function support hardware mirroring well.
+ -Removed the bpc variable from mtk_drm_crtc struct.
 
-Then you need to tell me about such dependencies in your submission.
+Bibby Hsieh (2):
+  drm/mediatek: Add gamma correction
+  drm/mediatek: set mt8173 dithering function
+
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    3 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   26 ++++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |    1 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  147 ++++++++++++++++++++++++++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   16 ++-
+ 6 files changed, 184 insertions(+), 12 deletions(-)
+
+-- 
+1.7.9.5
