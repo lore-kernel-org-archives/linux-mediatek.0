@@ -1,161 +1,196 @@
-From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
-Date: Mon, 20 Jun 2016 19:22:00 +0800
-Message-ID: <1466421720.1918.11.camel@mtksdaap41>
-References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
-	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
-	 <1466419311.27959.12.camel@mtksdaap41>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v5 0/2] MTK Smart Device Gen1 NAND Driver
+Date: Mon, 20 Jun 2016 13:54:11 +0200
+Message-ID: <20160620135411.2ef381e0@bbrezillon>
+References: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1466419311.27959.12.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-06-20 at 18:41 +0800, CK Hu wrote:
-> Hi, HS:
+On Tue, 14 Jun 2016 11:50:49 -0400
+Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+
+>   Fixes/Changes on v5 relative to: 
+>   --------------------------------
 > 
-> One comment inline.
+>   tree		: https://github.com/bbrezillon/linux-0day
+>   branch	: nand/next
+>   commit	:
+>  		'commit "mtd: nand: sunxi: fix return value check..."'
+> 		 Author: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
+> 		 Date: Mon Jun 13 14:27:18 2016 +0000
 > 
-> On Mon, 2016-05-30 at 11:19 +0800, HS Liao wrote:
-> > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
-> > CMDQ is used to help read/write registers with critical time limitation,
-> > such as updating display configuration during the vblank. It controls
-> > Global Command Engine (GCE) hardware to achieve this requirement.
-> > Currently, CMDQ only supports display related hardwares, but we expect
-> > it can be extended to other hardwares for future requirements.
-> > 
-> > Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  drivers/soc/mediatek/Kconfig    |  10 +
-> >  drivers/soc/mediatek/Makefile   |   1 +
-> >  drivers/soc/mediatek/mtk-cmdq.c | 943 ++++++++++++++++++++++++++++++++++++++++
-> >  include/soc/mediatek/cmdq.h     | 197 +++++++++
-> >  4 files changed, 1151 insertions(+)
-> >  create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
-> >  create mode 100644 include/soc/mediatek/cmdq.h
-> > 
-> > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> > index 0a4ea80..c4ad75c 100644
-> > --- a/drivers/soc/mediatek/Kconfig
-> > +++ b/drivers/soc/mediatek/Kconfig
-> > @@ -1,6 +1,16 @@
-> >  #
-> >  # MediaTek SoC drivers
-> >  #
-> > +config MTK_CMDQ
-> > +	bool "MediaTek CMDQ Support"
-> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > +	select MTK_INFRACFG
-> > +	help
-> > +	  Say yes here to add support for the MediaTek Command Queue (CMDQ)
-> > +	  driver. The CMDQ is used to help read/write registers with critical
-> > +	  time limitation, such as updating display configuration during the
-> > +	  vblank.
-> > +
-> >  config MTK_INFRACFG
-> >  	bool "MediaTek INFRACFG Support"
-> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> > index 12998b0..f7397ef 100644
-> > --- a/drivers/soc/mediatek/Makefile
-> > +++ b/drivers/soc/mediatek/Makefile
+>   Patch v5
+>   --------
+>   mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
+>        - remove unused property
+>   
+>   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+>        - clean up macros and clarify semantics.
+>        - replace codec requests with operations.
+>        - replace semaphore with mutex on ecc accesses.
+>        - addtional comments to some functions.
+>        - explicit error for 16bits buswidth (not supported).
+>        - resolve endian issues.
+>        - determine active ecc codec by register inspection. 
 > 
-> [Snip...]
+>   Patch v4
+>   --------
+>   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+>        - nand-on-flash-bbt, nand-ecc-mode, nand-ecc-step-size and
+>          nand-ecc-strength are now optional parameters
+>        - spare-per-sector removed from DT settings.
+>        - extend documentation.
 > 
-> > +
-> > +static int cmdq_eng_get_thread(u64 flag)
-> > +{
-> > +	if (flag & BIT_ULL(CMDQ_ENG_DISP_DSI0))
-> > +		return CMDQ_THR_DISP_MAIN_IDX;
-> > +	else if (flag & BIT_ULL(CMDQ_ENG_DISP_DPI0))
-> > +		return CMDQ_THR_DISP_SUB_IDX;
-> > +	else
-> > +		return CMDQ_THR_DISP_MISC_IDX;
-> > +}
+>   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+>        - rename functions (semantic issues).
+>        - add lock to ECC engine.
+>        - rework ECC interface (single enable/disable function).
+>        - rework bad block mark (now stored in OOB).
+>        - fix stat reporting.
+>        - rework FDM calculation.
+>        - handle optional DT settings (strength, mode, ecc step size).
+>        - spare per sector clamped to valid register values (hw spec).
+> 		
+>   Patch v3
+>   --------
+>   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+> 	- rename nandc (nand controller)
 > 
-> I think cmdq should not have knowledge of client. These statement show
-> that cmdq know that DSI0-tasks is different with DPI0-tasks. I propose
-> the 'session' to replace engine flag. For example, main display create
-> one cmdq_session and external display create another cmdq_session. For
-> client driver, every tasks created by main display is bound to main
-> display session. For cmdq driver, it should dynamically bind a session
-> to a HW thread, and then dispatch tasks of this session to this HW
-> thread. After HW thread run out of tasks of this session, detach this
-> session with this thread.
-> For the problem of remove wfe cmd, I think a session can have a property
-> of merge_wfe_cmd. For display session, session->merge_wfe_cmd = true.
-> For other client, it's false.
+>   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+>  	- rename source and header files
+> 	- register definitions move to source files
+> 	- ecc interface dropped
+> 	- blank lines between functions (checkpatch.pl doesn't catch them)
+> 	- ecc_check function renamed ecc_get_stats
+> 	- ecc->dev assigned during probe()
+> 	- generic ecc control function replaced by individual functions
+> 	- required ecc parameters passed in ecc specific structures
+> 	- fix memory corruption (size 0 array)
+> 	- clarify nand offset/ptr function helpers (naming corrected)
+> 	- move ecc config call to select_chip()
+> 	- comment on hw issue workaround during read_byte
+> 	- implement write_buf
+> 	- remove switch_oob
+> 	- fix suspend/resume operation
+> 	- make nand-ecc-mode mandatory in device tree 
+> 
+>   RFC v2
+>   ------
+>  
+>   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
+> 	- split nand flash interface and ecc engine
+> 
+>   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+> 	- split host and ecc in two separate drivers.
+> 	- expose ecc layout through mtd_ooblayout_ops.
+> 	- fix wait loops.
+> 	- use device tree to describe ecc strength and ecc size.
+> 	- use device tree to describe CS.
+> 	- replace cmdfunc with cmd_ctrl.
+> 	- fix read byte interface.
+> 
+>   dont enable controller in mt2701.dtsi
+> 	- requires additional device tree changes. This will be done in
+> 	  the near future.
+> 
+> Overview:
+> =========
+> 
+> The following patch-set adds support for Mediatek's Smart Device
+> Gen1 NAND controller.
+> 
+> * Controller expected layout:
+> -----------------------------
+> 
+> The controller expects the OOB information relevant to each sector
+> within the page to follow immediately the data field.
+> 
+> For example for a 4KiB page with 1KiB sectors and 224B of OOB information,
+> the controller would expect the following layout.
+> 
+> -----------------------------------------------------
+> | 1KiB | 56B | 1KiB | 56B | 1KiB | 56B | 1KiB | 56B |
+> -----------------------------------------------------
+> 
+> This implies that the following actions are required:
+> 
+> - raw writes:
+>   to match the controller expected layout, the driver uses the CPU and
+>   a private bounce buffer to reassemble the page before the actual
+>   writes.
+>   
+> - non raw writes:
+>   ecc is hardware generated and data DMA'd in a single transfer.
+> 
+> Bad Block mark
+> ==============
+> The bad block mark is stored in the OOB region (one byte)
+> 
+> Controller limitations:
+> =======================
+> 
+>  * dma chaning not supported:
+> 	To guarantee that the pages corresponding to the buffers are contiguous
+> 	in memory the driver enables NAND_USE_BOUNCE_BUFFER.
+>  * spare per sector: 16B to 128B
+>  * sector sizes: 512B or 1024B
+>  * programable page sizes: 512B, 2KB, 4KB, 8K, 16K 
+> 
+> Tests:
+> ======
+> 
+> * UBIFS support has been validated on 512MiB device (iozone, dd)
+> * All drivers/mtd/tests/* pass clean.
+> * Speed tests:
+>   eraseblock write speed:	7563 KiB/s
+>   eraseblock read speed:	10904 KiB/s
+>   page write speed:		7497 KiB/s
+>   page read speed:		10864 KiB/s
+>   2 page write speed:		7527 KiB/s
+>   2 page read speed:		10881 KiB/s
+>   erase speed:			103157 KiB/s
+>   2x multi-block erase speed:	357445 KiB/s
+>   4x multi-block erase speed:	362944 KiB/s
+>   8x multi-block erase speed:	363805 KiB/s
+>   16x multi-block erase speed:	364237 KiB/s
+>   32x multi-block erase speed:	364670 KiB/s
+>   64x multi-block erase speed:	365104 KiB/s
 
-Hi CK,
-
-I think your suggestion is similar to CMDQ 'scenarios',
-which was removed from CMDQ v2.
-
-Daniel suggests to use engine flags instead of scenarios.
-Quote from https://patchwork.kernel.org/patch/8068311/ .
-'Instead of encoding policy (these arbitrary "scenarios"), perhaps the
- cmdq driver should just provide these flag bits, and the display
- subsystem can use them to build the "flag" parameter itself.
-
- After all, the exact configuration of mmsys components is somewhat
- flexible.'
-
-Therefore, it would be better to discuss with Daniel before we change
-it.
-
-
-Hi Daniel,
-
-Do you think we should use scenarios or sessions instead of flags?
+Applied after fixing a few coding style issues.
 
 Thanks,
-HS
 
-> Here is the sample code to create cmdq_rec with session.
-> 
-> merge_wfe_cmd = true;
-> cmdq_session_create(merge_wfe_cmd, &primary_display_session);
-> cmdq_rec_create(dev, primary_display_session, &rec);
-> 
-> 
-> Therefore, the below definition can be removed.
-> 
-> > +
-> > +enum cmdq_eng {
-> > +	CMDQ_ENG_DISP_AAL,
-> > +	CMDQ_ENG_DISP_COLOR0,
-> > +	CMDQ_ENG_DISP_COLOR1,
-> > +	CMDQ_ENG_DISP_DPI0,
-> > +	CMDQ_ENG_DISP_DSI0,
-> > +	CMDQ_ENG_DISP_DSI1,
-> > +	CMDQ_ENG_DISP_GAMMA,
-> > +	CMDQ_ENG_DISP_OD,
-> > +	CMDQ_ENG_DISP_OVL0,
-> > +	CMDQ_ENG_DISP_OVL1,
-> > +	CMDQ_ENG_DISP_PWM0,
-> > +	CMDQ_ENG_DISP_PWM1,
-> > +	CMDQ_ENG_DISP_RDMA0,
-> > +	CMDQ_ENG_DISP_RDMA1,
-> > +	CMDQ_ENG_DISP_RDMA2,
-> > +	CMDQ_ENG_DISP_UFOE,
-> > +	CMDQ_ENG_DISP_WDMA0,
-> > +	CMDQ_ENG_DISP_WDMA1,
-> > +	CMDQ_ENG_MAX,
-> > +};
-> > +
-> 
-> 
-> Regards,
-> CK
-> 
+Boris
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> Jorge Ramirez-Ortiz (2):
+>   mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
+>   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
+> 
+>  Documentation/devicetree/bindings/mtd/mtk-nand.txt |  160 +++
+>  drivers/mtd/nand/Kconfig                           |    7 +
+>  drivers/mtd/nand/Makefile                          |    1 +
+>  drivers/mtd/nand/mtk_ecc.c                         |  528 +++++++
+>  drivers/mtd/nand/mtk_ecc.h                         |   50 +
+>  drivers/mtd/nand/mtk_nand.c                        | 1509 ++++++++++++++++++++
+>  6 files changed, 2255 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
+>  create mode 100644 drivers/mtd/nand/mtk_ecc.c
+>  create mode 100644 drivers/mtd/nand/mtk_ecc.h
+>  create mode 100644 drivers/mtd/nand/mtk_nand.c
+> 
