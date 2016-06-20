@@ -1,196 +1,68 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v5 0/2] MTK Smart Device Gen1 NAND Driver
-Date: Mon, 20 Jun 2016 13:54:11 +0200
-Message-ID: <20160620135411.2ef381e0@bbrezillon>
-References: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [GIT PULL v2] drm/mediatek: MT8173 HDMI support
+Date: Mon, 20 Jun 2016 14:00:03 +0200
+Message-ID: <1466424003.6070.33.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 14 Jun 2016 11:50:49 -0400
-Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
-
->   Fixes/Changes on v5 relative to: 
->   --------------------------------
-> 
->   tree		: https://github.com/bbrezillon/linux-0day
->   branch	: nand/next
->   commit	:
->  		'commit "mtd: nand: sunxi: fix return value check..."'
-> 		 Author: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
-> 		 Date: Mon Jun 13 14:27:18 2016 +0000
-> 
->   Patch v5
->   --------
->   mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
->        - remove unused property
->   
->   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
->        - clean up macros and clarify semantics.
->        - replace codec requests with operations.
->        - replace semaphore with mutex on ecc accesses.
->        - addtional comments to some functions.
->        - explicit error for 16bits buswidth (not supported).
->        - resolve endian issues.
->        - determine active ecc codec by register inspection. 
-> 
->   Patch v4
->   --------
->   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
->        - nand-on-flash-bbt, nand-ecc-mode, nand-ecc-step-size and
->          nand-ecc-strength are now optional parameters
->        - spare-per-sector removed from DT settings.
->        - extend documentation.
-> 
->   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
->        - rename functions (semantic issues).
->        - add lock to ECC engine.
->        - rework ECC interface (single enable/disable function).
->        - rework bad block mark (now stored in OOB).
->        - fix stat reporting.
->        - rework FDM calculation.
->        - handle optional DT settings (strength, mode, ecc step size).
->        - spare per sector clamped to valid register values (hw spec).
-> 		
->   Patch v3
->   --------
->   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
-> 	- rename nandc (nand controller)
-> 
->   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
->  	- rename source and header files
-> 	- register definitions move to source files
-> 	- ecc interface dropped
-> 	- blank lines between functions (checkpatch.pl doesn't catch them)
-> 	- ecc_check function renamed ecc_get_stats
-> 	- ecc->dev assigned during probe()
-> 	- generic ecc control function replaced by individual functions
-> 	- required ecc parameters passed in ecc specific structures
-> 	- fix memory corruption (size 0 array)
-> 	- clarify nand offset/ptr function helpers (naming corrected)
-> 	- move ecc config call to select_chip()
-> 	- comment on hw issue workaround during read_byte
-> 	- implement write_buf
-> 	- remove switch_oob
-> 	- fix suspend/resume operation
-> 	- make nand-ecc-mode mandatory in device tree 
-> 
->   RFC v2
->   ------
->  
->   mtd: mediatek: device tree docs for MTK Smart Device Gen1 NAND
-> 	- split nand flash interface and ecc engine
-> 
->   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
-> 	- split host and ecc in two separate drivers.
-> 	- expose ecc layout through mtd_ooblayout_ops.
-> 	- fix wait loops.
-> 	- use device tree to describe ecc strength and ecc size.
-> 	- use device tree to describe CS.
-> 	- replace cmdfunc with cmd_ctrl.
-> 	- fix read byte interface.
-> 
->   dont enable controller in mt2701.dtsi
-> 	- requires additional device tree changes. This will be done in
-> 	  the near future.
-> 
-> Overview:
-> =========
-> 
-> The following patch-set adds support for Mediatek's Smart Device
-> Gen1 NAND controller.
-> 
-> * Controller expected layout:
-> -----------------------------
-> 
-> The controller expects the OOB information relevant to each sector
-> within the page to follow immediately the data field.
-> 
-> For example for a 4KiB page with 1KiB sectors and 224B of OOB information,
-> the controller would expect the following layout.
-> 
-> -----------------------------------------------------
-> | 1KiB | 56B | 1KiB | 56B | 1KiB | 56B | 1KiB | 56B |
-> -----------------------------------------------------
-> 
-> This implies that the following actions are required:
-> 
-> - raw writes:
->   to match the controller expected layout, the driver uses the CPU and
->   a private bounce buffer to reassemble the page before the actual
->   writes.
->   
-> - non raw writes:
->   ecc is hardware generated and data DMA'd in a single transfer.
-> 
-> Bad Block mark
-> ==============
-> The bad block mark is stored in the OOB region (one byte)
-> 
-> Controller limitations:
-> =======================
-> 
->  * dma chaning not supported:
-> 	To guarantee that the pages corresponding to the buffers are contiguous
-> 	in memory the driver enables NAND_USE_BOUNCE_BUFFER.
->  * spare per sector: 16B to 128B
->  * sector sizes: 512B or 1024B
->  * programable page sizes: 512B, 2KB, 4KB, 8K, 16K 
-> 
-> Tests:
-> ======
-> 
-> * UBIFS support has been validated on 512MiB device (iozone, dd)
-> * All drivers/mtd/tests/* pass clean.
-> * Speed tests:
->   eraseblock write speed:	7563 KiB/s
->   eraseblock read speed:	10904 KiB/s
->   page write speed:		7497 KiB/s
->   page read speed:		10864 KiB/s
->   2 page write speed:		7527 KiB/s
->   2 page read speed:		10881 KiB/s
->   erase speed:			103157 KiB/s
->   2x multi-block erase speed:	357445 KiB/s
->   4x multi-block erase speed:	362944 KiB/s
->   8x multi-block erase speed:	363805 KiB/s
->   16x multi-block erase speed:	364237 KiB/s
->   32x multi-block erase speed:	364670 KiB/s
->   64x multi-block erase speed:	365104 KiB/s
-
-Applied after fixing a few coding style issues.
-
-Thanks,
-
-Boris
-
-> 
-> Jorge Ramirez-Ortiz (2):
->   mtd: mediatek: device tree bindings for MTK Smart Device Gen1 NAND
->   mtd: mediatek: driver for MTK Smart Device Gen1 NAND
-> 
->  Documentation/devicetree/bindings/mtd/mtk-nand.txt |  160 +++
->  drivers/mtd/nand/Kconfig                           |    7 +
->  drivers/mtd/nand/Makefile                          |    1 +
->  drivers/mtd/nand/mtk_ecc.c                         |  528 +++++++
->  drivers/mtd/nand/mtk_ecc.h                         |   50 +
->  drivers/mtd/nand/mtk_nand.c                        | 1509 ++++++++++++++++++++
->  6 files changed, 2255 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/mtk-nand.txt
->  create mode 100644 drivers/mtd/nand/mtk_ecc.c
->  create mode 100644 drivers/mtd/nand/mtk_ecc.h
->  create mode 100644 drivers/mtd/nand/mtk_nand.c
-> 
+SGkgRGF2ZSwKCnBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlu
+cyB0aGUgdjE2IE1UODE3MyBIRE1JCnBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDUtMjYsIHJlYmFz
+ZWQgb250byB2NC43LXJjMiwgd2l0aCB0d28gd2FybmluZ3MKZml4ZWQuCgpyZWdhcmRzClBoaWxp
+cHAKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYWY4YzM0Y2U2YWUzMmFkZGRh
+Mzc4OGQ1NGE3ZTM0MGNhZDIyNTE2YjoKCiAgTGludXggNC43LXJjMiAoMjAxNi0wNi0wNSAxNDoz
+MToyNiAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKICBn
+aXQ6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L3B6YS9saW51eC5naXQgdGFncy9tZWRpYXRlay1k
+cm0tMjAxNi0wNi0yMAoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDlhNDQ5ZTBkZTBk
+NzA4YmFlN2FmN2Y4OTdjMWE2Nzg0OGY5MWM0NTU6CgogIGR0LWJpbmRpbmdzOiBoZG1pLWNvbm5l
+Y3RvcjogYWRkIEREQyBJMkMgYnVzIHBoYW5kbGUgZG9jdW1lbnRhdGlvbiAoMjAxNi0wNi0xNiAx
+NjozMDozOSArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTVQ4MTczIEhETUkgc3VwcG9ydAoKLSBkZXZpY2UgdHJl
+ZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1UODE3MyBIRE1JIGVuY29kZXIsIENFQywgRERD
+LAogIGFuZCBQSFkKLSBkcml2ZXJzIGZvciBNVDgxNzMgSERNSSBlbmNvZGVyLCBDRUMgKEhQRCBv
+bmx5IGZvciBub3cpLCBEREMsIGFuZCBQSFkKLSBlbmFibGUgSERNSSBvdXRwdXQgdmlhIGEgY3Vz
+dG9tIFNNQ0NDIGNhbGwKLSBhZGQgZGRjLWkyYy1idXMgcHJvcGVydHkgdG8gSERNSSBjb25uZWN0
+b3IgZGV2aWNlIHRyZWUgYmluZGluZwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpKaWUgUWl1ICgyKToKICAgICAgZHJtL21l
+ZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0CiAgICAgIGRybS9tZWRpYXRlazogZW5hYmxlIGhkbWkg
+b3V0cHV0IGNvbnRyb2wgYml0CgpQaGlsaXBwIFphYmVsICgyKToKICAgICAgZHQtYmluZGluZ3M6
+IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhETUkgZHRzIGJpbmRpbmcKICAgICAgZHQtYmlu
+ZGluZ3M6IGhkbWktY29ubmVjdG9yOiBhZGQgRERDIEkyQyBidXMgcGhhbmRsZSBkb2N1bWVudGF0
+aW9uCgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvY29ubmVjdG9yL2hkbWktY29ubmVjdG9yLnR4dCAg
+fCAgICAxICsKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0
+ICAgIHwgIDE0OCArKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAgICAg
+ICAgICAgICAgfCAgICA4ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICAg
+ICAgICAgICAgICAgIHwgICAgNyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5j
+ICAgICAgICAgICAgICAgICB8ICAyNjUgKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2NlYy5oICAgICAgICAgICAgICAgICB8ICAgMjYgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19oZG1pLmMgICAgICAgICAgICAgICAgfCAxODI4ICsrKysrKysrKysrKysrKysrKysrCiBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAgICAgICB8ICAgMjMg
+KwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jICAgICAgICAgICAgfCAg
+MzU4ICsrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9yZWdzLmggICAgICAg
+ICAgIHwgIDIzOCArKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlf
+cGh5LmMgICAgIHwgIDUxNSArKysrKysKIDExIGZpbGVzIGNoYW5nZWQsIDM0MTcgaW5zZXJ0aW9u
+cygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0CiBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3JlZ3MuaAogY3JlYXRlIG1vZGUgMTAwNjQ0
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
