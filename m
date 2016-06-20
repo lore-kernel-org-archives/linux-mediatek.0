@@ -1,68 +1,51 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [GIT PULL v2] drm/mediatek: MT8173 HDMI support
-Date: Mon, 20 Jun 2016 14:00:03 +0200
-Message-ID: <1466424003.6070.33.camel@pengutronix.de>
+From: Jorge Ramirez <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v5 0/2] MTK Smart Device Gen1 NAND Driver
+Date: Mon, 20 Jun 2016 10:17:55 -0400
+Message-ID: <5767FB13.5070503@linaro.org>
+References: <1465919451-1891-1-git-send-email-jorge.ramirez-ortiz@linaro.org>
+ <20160620135411.2ef381e0@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160620135411.2ef381e0@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwKCnBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlu
-cyB0aGUgdjE2IE1UODE3MyBIRE1JCnBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDUtMjYsIHJlYmFz
-ZWQgb250byB2NC43LXJjMiwgd2l0aCB0d28gd2FybmluZ3MKZml4ZWQuCgpyZWdhcmRzClBoaWxp
-cHAKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgYWY4YzM0Y2U2YWUzMmFkZGRh
-Mzc4OGQ1NGE3ZTM0MGNhZDIyNTE2YjoKCiAgTGludXggNC43LXJjMiAoMjAxNi0wNi0wNSAxNDoz
-MToyNiAtMDcwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0OgoKICBn
-aXQ6Ly9naXQucGVuZ3V0cm9uaXguZGUvZ2l0L3B6YS9saW51eC5naXQgdGFncy9tZWRpYXRlay1k
-cm0tMjAxNi0wNi0yMAoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVwIHRvIDlhNDQ5ZTBkZTBk
-NzA4YmFlN2FmN2Y4OTdjMWE2Nzg0OGY5MWM0NTU6CgogIGR0LWJpbmRpbmdzOiBoZG1pLWNvbm5l
-Y3RvcjogYWRkIEREQyBJMkMgYnVzIHBoYW5kbGUgZG9jdW1lbnRhdGlvbiAoMjAxNi0wNi0xNiAx
-NjozMDozOSArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KTVQ4MTczIEhETUkgc3VwcG9ydAoKLSBkZXZpY2UgdHJl
-ZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIE1UODE3MyBIRE1JIGVuY29kZXIsIENFQywgRERD
-LAogIGFuZCBQSFkKLSBkcml2ZXJzIGZvciBNVDgxNzMgSERNSSBlbmNvZGVyLCBDRUMgKEhQRCBv
-bmx5IGZvciBub3cpLCBEREMsIGFuZCBQSFkKLSBlbmFibGUgSERNSSBvdXRwdXQgdmlhIGEgY3Vz
-dG9tIFNNQ0NDIGNhbGwKLSBhZGQgZGRjLWkyYy1idXMgcHJvcGVydHkgdG8gSERNSSBjb25uZWN0
-b3IgZGV2aWNlIHRyZWUgYmluZGluZwoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpKaWUgUWl1ICgyKToKICAgICAgZHJtL21l
-ZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0CiAgICAgIGRybS9tZWRpYXRlazogZW5hYmxlIGhkbWkg
-b3V0cHV0IGNvbnRyb2wgYml0CgpQaGlsaXBwIFphYmVsICgyKToKICAgICAgZHQtYmluZGluZ3M6
-IGRybS9tZWRpYXRlazogQWRkIE1lZGlhdGVrIEhETUkgZHRzIGJpbmRpbmcKICAgICAgZHQtYmlu
-ZGluZ3M6IGhkbWktY29ubmVjdG9yOiBhZGQgRERDIEkyQyBidXMgcGhhbmRsZSBkb2N1bWVudGF0
-aW9uCgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvY29ubmVjdG9yL2hkbWktY29ubmVjdG9yLnR4dCAg
-fCAgICAxICsKIC4uLi9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0
-ICAgIHwgIDE0OCArKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAgICAg
-ICAgICAgICAgfCAgICA4ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICAg
-ICAgICAgICAgICAgIHwgICAgNyArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5j
-ICAgICAgICAgICAgICAgICB8ICAyNjUgKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2NlYy5oICAgICAgICAgICAgICAgICB8ICAgMjYgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19oZG1pLmMgICAgICAgICAgICAgICAgfCAxODI4ICsrKysrKysrKysrKysrKysrKysrCiBk
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuaCAgICAgICAgICAgICAgICB8ICAgMjMg
-KwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jICAgICAgICAgICAgfCAg
-MzU4ICsrKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9yZWdzLmggICAgICAg
-ICAgIHwgIDIzOCArKysKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlf
-cGh5LmMgICAgIHwgIDUxNSArKysrKysKIDExIGZpbGVzIGNoYW5nZWQsIDM0MTcgaW5zZXJ0aW9u
-cygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0CiBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX2RkYy5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3JlZ3MuaAogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On 06/20/2016 07:54 AM, Boris Brezillon wrote:
+>> >Tests:
+>> >======
+>> >
+>> >* UBIFS support has been validated on 512MiB device (iozone, dd)
+>> >* All drivers/mtd/tests/* pass clean.
+>> >* Speed tests:
+>> >   eraseblock write speed:	7563 KiB/s
+>> >   eraseblock read speed:	10904 KiB/s
+>> >   page write speed:		7497 KiB/s
+>> >   page read speed:		10864 KiB/s
+>> >   2 page write speed:		7527 KiB/s
+>> >   2 page read speed:		10881 KiB/s
+>> >   erase speed:			103157 KiB/s
+>> >   2x multi-block erase speed:	357445 KiB/s
+>> >   4x multi-block erase speed:	362944 KiB/s
+>> >   8x multi-block erase speed:	363805 KiB/s
+>> >   16x multi-block erase speed:	364237 KiB/s
+>> >   32x multi-block erase speed:	364670 KiB/s
+>> >   64x multi-block erase speed:	365104 KiB/s
+> Applied after fixing a few coding style issues.
+>
+
+Awesome.
+Thanks for all the reviews and these additional fixes!
+
+jorge
