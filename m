@@ -1,281 +1,121 @@
-From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6755 support
-Date: Mon, 20 Jun 2016 17:19:10 +0800
-Message-ID: <1466414350.3378.9.camel@mtkswgap22>
-References: <1465870805-10451-1-git-send-email-mars.cheng@mediatek.com>
- <1465870805-10451-3-git-send-email-mars.cheng@mediatek.com>
- <5767A9FB.3010007@gmail.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
+Date: Mon, 20 Jun 2016 11:19:21 +0200
+Message-ID: <5767B519.5010501@baylibre.com>
+References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
+ <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <5767A9FB.3010007-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Choui <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-mips-bounce@linux-mips.org>
+In-Reply-To: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+Sender: linux-mips-bounce@linux-mips.org
+Errors-to: linux-mips-bounce@linux-mips.org
+List-help: <mailto:ecartis@linux-mips.org?Subject=help>
+List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
+List-software: Ecartis version 1.0.0
+List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
+List-owner: <mailto:ralf@linux-mips.org>
+List-post: <mailto:linux-mips@linux-mips.org>
+List-archive: <http://www.linux-mips.org/archives/linux-mips/>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, tglx@linutronix.de
+Cc: linux-kernel@vger.kernel.org, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukjin Kim <kgene@kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-06-20 at 10:31 +0200, Matthias Brugger wrote:
+On 06/16/2016 11:27 PM, Daniel Lezcano wrote:
+> All the clocksource drivers's init function are now converted to return
+> an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the
+> clksrc-of table.
 > 
-> On 14/06/16 04:20, Mars Cheng wrote:
-> > This adds basic chip support for MT6755 SoC.
-> >
-> > Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile         |    1 +
-> >   arch/arm64/boot/dts/mediatek/mt6755-phone.dts |   39 +++++++
-> >   arch/arm64/boot/dts/mediatek/mt6755.dtsi      |  143 +++++++++++++++++++++++++
-> >   3 files changed, 183 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt6755-phone.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> > index e0a4bff..9abdb01 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -1,3 +1,4 @@
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-phone.dtb
+> Let's convert back the names:
+>  - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
+>  - clksrc-of-ret              => clksrc-of
 > 
-> I suppose this is a evaluation platform? Is this different to the EVB 
-> for this SoC? Or will the only phone build with this SoC be this one?
-> 
-
-Yes, this is an evaluation platform which is an internal demo phone.
-No difference to EVB. Would you suggest I change the name? If so, I will
-change it to mt6755-evb.dtb. So will the compatible string in it.
- 
-> Thanks,
-> Matthias
-> 
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt6755-phone.dts b/arch/arm64/boot/dts/mediatek/mt6755-phone.dts
-> > new file mode 100644
-> > index 0000000..f551666
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt6755-phone.dts
-> > @@ -0,0 +1,39 @@
-> > +/*
-> > + * Copyright (c) 2016 MediaTek Inc.
-> > + * Author: Mars.C <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include "mt6755.dtsi"
-> > +
-> > +/ {
-> > +	model = "MediaTek MT6755 phone";
-> > +	compatible = "mediatek,mt6755-phone", "mediatek,mt6755";
-> > +
-> > +	aliases {
-> > +		serial0 = &uart0;
-> > +		serial1 = &uart1;
-> 
-> we don't enable uart1, so we don't need the alias.
-
-OK, will fix this.
-
-> 
-> > +	};
-> > +
-> > +	memory@40000000 {
-> > +		device_type = "memory";
-> > +		reg = <0 0x40000000 0 0x1e800000>;
-> > +	};
-> > +
-> > +	chosen {
-> > +		stdout-path = "serial0:921600n8";
-> > +	};
-> > +};
-> > +
-> > +&uart0 {
-> > +	status = "okay";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt6755.dtsi b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> > new file mode 100644
-> > index 0000000..36c3384
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt6755.dtsi
-> > @@ -0,0 +1,143 @@
-> > +/*
-> > + * Copyright (c) 2016 MediaTek Inc.
-> > + * Author: Mars.C <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +
-> > +#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +
-> > +/ {
-> > +	compatible = "mediatek,mt6755";
-> > +	interrupt-parent = <&sysirq>;
-> > +	#address-cells = <2>;
-> > +	#size-cells = <2>;
-> > +
-> > +	psci {
-> > +		compatible = "arm,psci-0.2";
-> > +		method = "smc";
-> > +	};
-> > +
-> > +	cpus {
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +
-> > +		cpu0: cpu@0 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x000>;
-> > +		};
-> > +
-> > +		cpu1: cpu@1 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x001>;
-> > +		};
-> > +
-> > +		cpu2: cpu@2 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x002>;
-> > +		};
-> > +
-> > +		cpu3: cpu@3 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x003>;
-> > +		};
-> > +
-> > +		cpu4: cpu@100 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x100>;
-> > +		};
-> > +
-> > +		cpu5: cpu@101 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x101>;
-> > +		};
-> > +
-> > +		cpu6: cpu@102 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x102>;
-> > +		};
-> > +
-> > +		cpu7: cpu@103 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x103>;
-> > +		};
-> > +	};
-> > +
-> > +	uart_clk: dummy26m {
-> > +		compatible = "fixed-clock";
-> > +		clock-frequency = <26000000>;
-> > +		#clock-cells = <0>;
-> > +	};
-> > +
-> 
-> We can do that, but I would prefer to see the clock driver early. So 
-> that the DTS we carry around as complete as possible.
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  arch/arc/kernel/time.c                    |  6 +++---
+>  arch/arm/kernel/smp_twd.c                 |  6 +++---
+>  arch/microblaze/kernel/timer.c            |  2 +-
+>  arch/mips/ralink/cevt-rt3352.c            |  2 +-
+>  arch/nios2/kernel/time.c                  |  2 +-
+>  drivers/clocksource/arm_arch_timer.c      |  6 +++---
+>  drivers/clocksource/arm_global_timer.c    |  2 +-
+>  drivers/clocksource/armv7m_systick.c      |  2 +-
+>  drivers/clocksource/asm9260_timer.c       |  2 +-
+>  drivers/clocksource/bcm2835_timer.c       |  2 +-
+>  drivers/clocksource/bcm_kona_timer.c      |  4 ++--
+>  drivers/clocksource/cadence_ttc_timer.c   |  2 +-
+>  drivers/clocksource/clksrc-dbx500-prcmu.c |  2 +-
+>  drivers/clocksource/clksrc-probe.c        | 14 --------------
+>  drivers/clocksource/clksrc_st_lpc.c       |  2 +-
+>  drivers/clocksource/clps711x-timer.c      |  2 +-
+>  drivers/clocksource/dw_apb_timer_of.c     |  8 ++++----
+>  drivers/clocksource/exynos_mct.c          |  4 ++--
+>  drivers/clocksource/fsl_ftm_timer.c       |  2 +-
+>  drivers/clocksource/h8300_timer16.c       |  2 +-
+>  drivers/clocksource/h8300_timer8.c        |  2 +-
+>  drivers/clocksource/h8300_tpu.c           |  2 +-
+>  drivers/clocksource/meson6_timer.c        |  2 +-
+>  drivers/clocksource/mips-gic-timer.c      |  2 +-
+>  drivers/clocksource/moxart_timer.c        |  2 +-
+>  drivers/clocksource/mps2-timer.c          |  2 +-
+>  drivers/clocksource/mtk_timer.c           |  2 +-
+>  drivers/clocksource/mxs_timer.c           |  2 +-
+>  drivers/clocksource/nomadik-mtu.c         |  2 +-
+>  drivers/clocksource/pxa_timer.c           |  2 +-
+>  drivers/clocksource/qcom-timer.c          |  4 ++--
+>  drivers/clocksource/rockchip_timer.c      |  8 ++++----
+>  drivers/clocksource/samsung_pwm_timer.c   |  8 ++++----
+>  drivers/clocksource/sun4i_timer.c         |  2 +-
+>  drivers/clocksource/tango_xtal.c          |  2 +-
+>  drivers/clocksource/tegra20_timer.c       |  4 ++--
+>  drivers/clocksource/time-armada-370-xp.c  |  6 +++---
+>  drivers/clocksource/time-efm32.c          |  4 ++--
+>  drivers/clocksource/time-lpc32xx.c        |  2 +-
+>  drivers/clocksource/time-orion.c          |  2 +-
+>  drivers/clocksource/time-pistachio.c      |  2 +-
+>  drivers/clocksource/timer-atlas7.c        |  2 +-
+>  drivers/clocksource/timer-atmel-pit.c     |  2 +-
+>  drivers/clocksource/timer-atmel-st.c      |  2 +-
+>  drivers/clocksource/timer-digicolor.c     |  2 +-
+>  drivers/clocksource/timer-imx-gpt.c       | 24 ++++++++++++------------
+>  drivers/clocksource/timer-integrator-ap.c |  2 +-
+>  drivers/clocksource/timer-keystone.c      |  2 +-
+>  drivers/clocksource/timer-nps.c           |  4 ++--
+>  drivers/clocksource/timer-oxnas-rps.c     |  4 ++--
+>  drivers/clocksource/timer-prima2.c        |  2 +-
+>  drivers/clocksource/timer-sp804.c         |  4 ++--
+>  drivers/clocksource/timer-stm32.c         |  2 +-
+>  drivers/clocksource/timer-sun5i.c         |  4 ++--
+>  drivers/clocksource/timer-ti-32k.c        |  2 +-
+>  drivers/clocksource/timer-u300.c          |  2 +-
+>  drivers/clocksource/versatile.c           |  4 ++--
+>  drivers/clocksource/vf_pit_timer.c        |  2 +-
+>  drivers/clocksource/vt8500_timer.c        |  2 +-
+>  drivers/clocksource/zevio-timer.c         |  2 +-
+>  include/asm-generic/vmlinux.lds.h         |  2 --
+>  include/linux/clocksource.h               |  5 +----
+>  62 files changed, 98 insertions(+), 117 deletions(-)
 > 
 
-OK, I will merge the clk later. However, the clk driver would be
-submmited later, is that OK? Or would you prefer sunmmit clk driver
-together?
+[...]
 
-> > +	timer {
-> > +		compatible = "arm,armv8-timer";
-> > +		interrupt-parent = <&gic>;
-> > +		interrupts = <GIC_PPI 13
-> > +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 14
-> > +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 11
-> > +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> > +			     <GIC_PPI 10
-> > +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
-> > +	};
-> > +
-> > +	sysirq: intpol-controller@10200620 {
-> > +		compatible = "mediatek,mt6755-sysirq",
-> > +			     "mediatek,mt6577-sysirq";
-> > +		interrupt-controller;
-> > +		#interrupt-cells = <3>;
-> > +		interrupt-parent = <&gic>;
-> > +		reg = <0 0x10200620 0 0x20>;
-> > +	};
-> > +
-> > +	gic: interrupt-controller@10231000 {
-> > +		compatible = "arm,gic-400";
-> > +		#interrupt-cells = <3>;
-> > +		interrupt-parent = <&gic>;
-> > +		interrupt-controller;
-> > +		reg = <0 0x10231000 0 0x1000>,
-> > +		      <0 0x10232000 0 0x2000>,
-> > +		      <0 0x10234000 0 0x2000>,
-> > +		      <0 0x10236000 0 0x2000>;
-> > +	};
-> > +
-> > +	uart0: serial@11002000 {
-> > +		compatible = "mediatek,mt6755-uart",
-> > +			     "mediatek,mt6577-uart";
-> > +		reg = <0 0x11002000 0 0x400>;
-> > +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&uart_clk>;
-> 
-> status = "disabled";
+> diff --git a/drivers/clocksource/timer-oxnas-rps.c b/drivers/clocksource/timer-oxnas-rps.c
+> index 0d99f40..bd887e2 100644
+> --- a/drivers/clocksource/timer-oxnas-rps.c
+> +++ b/drivers/clocksource/timer-oxnas-rps.c
+> @@ -293,5 +293,5 @@ err_alloc:
+>  	return ret;
+>  }
+>  
+> -CLOCKSOURCE_OF_DECLARE_RET(ox810se_rps,
+> -			   "oxsemi,ox810se-rps-timer", oxnas_rps_timer_init);
+> +CLOCKSOURCE_OF_DECLARE(ox810se_rps,
+> +		       "oxsemi,ox810se-rps-timer", oxnas_rps_timer_init);
 
-OK, will fix this.
-> 
-> > +	};
-> > +
-> > +	uart1: serial@11003000 {
-> > +		compatible = "mediatek,mt6755-uart",
-> > +			     "mediatek,mt6577-uart";
-> > +		reg = <0 0x11003000 0 0x400>;
-> > +		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&uart_clk>;
-> 
-> same here.
+For the OXNAS part :
 
-OK, will fix this.
+Acked-by: Neil Armstrong <narmstrong@baylibre.com>
 
-Thanks.
-> 
-> Regards,
-> Matthias
+Thanks,
+Neil
