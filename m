@@ -1,112 +1,190 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: add mt6755 support
-Date: Tue, 21 Jun 2016 08:50:18 +0800
-Message-ID: <1466470218.863.4.camel@mtkswgap22>
-References: <1465870805-10451-1-git-send-email-mars.cheng@mediatek.com>
-	 <1465870805-10451-3-git-send-email-mars.cheng@mediatek.com>
-	 <5767A9FB.3010007@gmail.com> <1466414350.3378.9.camel@mtkswgap22>
-	 <5768233B.8080109@gmail.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Tue, 21 Jun 2016 10:03:00 +0800
+Message-ID: <1466474580.6214.29.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+	 <1466419311.27959.12.camel@mtksdaap41>
+	 <1466421720.1918.11.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5768233B.8080109@gmail.com>
+In-Reply-To: <1466421720.1918.11.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Horng-Shyang Liao <hs.liao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-06-20 at 19:09 +0200, Matthias Brugger wrote:
-
-> >>> +	uart_clk: dummy26m {
-> >>> +		compatible = "fixed-clock";
-> >>> +		clock-frequency = <26000000>;
-> >>> +		#clock-cells = <0>;
-> >>> +	};
-> >>> +
-> >>
-> >> We can do that, but I would prefer to see the clock driver early. So
-> >> that the DTS we carry around as complete as possible.
-> >>
-> >
-> > OK, I will merge the clk later. However, the clk driver would be
-> > submmited later, is that OK? Or would you prefer sunmmit clk driver
-> > together?
-> >
+On Mon, 2016-06-20 at 19:22 +0800, Horng-Shyang Liao wrote:
+> On Mon, 2016-06-20 at 18:41 +0800, CK Hu wrote:
+> > Hi, HS:
+> > 
+> > One comment inline.
+> > 
+> > On Mon, 2016-05-30 at 11:19 +0800, HS Liao wrote:
+> > > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> > > CMDQ is used to help read/write registers with critical time limitation,
+> > > such as updating display configuration during the vblank. It controls
+> > > Global Command Engine (GCE) hardware to achieve this requirement.
+> > > Currently, CMDQ only supports display related hardwares, but we expect
+> > > it can be extended to other hardwares for future requirements.
+> > > 
+> > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> > > ---
+> > >  drivers/soc/mediatek/Kconfig    |  10 +
+> > >  drivers/soc/mediatek/Makefile   |   1 +
+> > >  drivers/soc/mediatek/mtk-cmdq.c | 943 ++++++++++++++++++++++++++++++++++++++++
+> > >  include/soc/mediatek/cmdq.h     | 197 +++++++++
+> > >  4 files changed, 1151 insertions(+)
+> > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+> > >  create mode 100644 include/soc/mediatek/cmdq.h
+> > > 
+> > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > > index 0a4ea80..c4ad75c 100644
+> > > --- a/drivers/soc/mediatek/Kconfig
+> > > +++ b/drivers/soc/mediatek/Kconfig
+> > > @@ -1,6 +1,16 @@
+> > >  #
+> > >  # MediaTek SoC drivers
+> > >  #
+> > > +config MTK_CMDQ
+> > > +	bool "MediaTek CMDQ Support"
+> > > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > +	select MTK_INFRACFG
+> > > +	help
+> > > +	  Say yes here to add support for the MediaTek Command Queue (CMDQ)
+> > > +	  driver. The CMDQ is used to help read/write registers with critical
+> > > +	  time limitation, such as updating display configuration during the
+> > > +	  vblank.
+> > > +
+> > >  config MTK_INFRACFG
+> > >  	bool "MediaTek INFRACFG Support"
+> > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> > > index 12998b0..f7397ef 100644
+> > > --- a/drivers/soc/mediatek/Makefile
+> > > +++ b/drivers/soc/mediatek/Makefile
+> > 
+> > [Snip...]
+> > 
+> > > +
+> > > +static int cmdq_eng_get_thread(u64 flag)
+> > > +{
+> > > +	if (flag & BIT_ULL(CMDQ_ENG_DISP_DSI0))
+> > > +		return CMDQ_THR_DISP_MAIN_IDX;
+> > > +	else if (flag & BIT_ULL(CMDQ_ENG_DISP_DPI0))
+> > > +		return CMDQ_THR_DISP_SUB_IDX;
+> > > +	else
+> > > +		return CMDQ_THR_DISP_MISC_IDX;
+> > > +}
+> > 
+> > I think cmdq should not have knowledge of client. These statement show
+> > that cmdq know that DSI0-tasks is different with DPI0-tasks. I propose
+> > the 'session' to replace engine flag. For example, main display create
+> > one cmdq_session and external display create another cmdq_session. For
+> > client driver, every tasks created by main display is bound to main
+> > display session. For cmdq driver, it should dynamically bind a session
+> > to a HW thread, and then dispatch tasks of this session to this HW
+> > thread. After HW thread run out of tasks of this session, detach this
+> > session with this thread.
+> > For the problem of remove wfe cmd, I think a session can have a property
+> > of merge_wfe_cmd. For display session, session->merge_wfe_cmd = true.
+> > For other client, it's false.
 > 
-> The uart won't work without any clock node. It is OK like this. I just 
-> wanted to emphasis that we should try to get the clock driver accpeted 
-> early in the effort.
+> Hi CK,
+> 
+> I think your suggestion is similar to CMDQ 'scenarios',
+> which was removed from CMDQ v2.
+> 
+> Daniel suggests to use engine flags instead of scenarios.
+> Quote from https://patchwork.kernel.org/patch/8068311/ .
+> 'Instead of encoding policy (these arbitrary "scenarios"), perhaps the
+>  cmdq driver should just provide these flag bits, and the display
+>  subsystem can use them to build the "flag" parameter itself.
+> 
+>  After all, the exact configuration of mmsys components is somewhat
+>  flexible.'
+> 
+> Therefore, it would be better to discuss with Daniel before we change
+> it.
+> 
+> 
+> Hi Daniel,
+> 
+> Do you think we should use scenarios or sessions instead of flags?
 > 
 > Thanks,
-> Matthias
-
-Got it. I will not include the clk dts & driver in basic chip patch
-v2.We will submmit clk driver soon after this basic chip support patch.
-
-Thanks.
-
+> HS
 > 
-> >>> +	timer {
-> >>> +		compatible = "arm,armv8-timer";
-> >>> +		interrupt-parent = <&gic>;
-> >>> +		interrupts = <GIC_PPI 13
-> >>> +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> >>> +			     <GIC_PPI 14
-> >>> +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> >>> +			     <GIC_PPI 11
-> >>> +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
-> >>> +			     <GIC_PPI 10
-> >>> +			     (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
-> >>> +	};
-> >>> +
-> >>> +	sysirq: intpol-controller@10200620 {
-> >>> +		compatible = "mediatek,mt6755-sysirq",
-> >>> +			     "mediatek,mt6577-sysirq";
-> >>> +		interrupt-controller;
-> >>> +		#interrupt-cells = <3>;
-> >>> +		interrupt-parent = <&gic>;
-> >>> +		reg = <0 0x10200620 0 0x20>;
-> >>> +	};
-> >>> +
-> >>> +	gic: interrupt-controller@10231000 {
-> >>> +		compatible = "arm,gic-400";
-> >>> +		#interrupt-cells = <3>;
-> >>> +		interrupt-parent = <&gic>;
-> >>> +		interrupt-controller;
-> >>> +		reg = <0 0x10231000 0 0x1000>,
-> >>> +		      <0 0x10232000 0 0x2000>,
-> >>> +		      <0 0x10234000 0 0x2000>,
-> >>> +		      <0 0x10236000 0 0x2000>;
-> >>> +	};
-> >>> +
-> >>> +	uart0: serial@11002000 {
-> >>> +		compatible = "mediatek,mt6755-uart",
-> >>> +			     "mediatek,mt6577-uart";
-> >>> +		reg = <0 0x11002000 0 0x400>;
-> >>> +		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
-> >>> +		clocks = <&uart_clk>;
-> >>
-> >> status = "disabled";
-> >
-> > OK, will fix this.
-> >>
-> >>> +	};
-> >>> +
-> >>> +	uart1: serial@11003000 {
-> >>> +		compatible = "mediatek,mt6755-uart",
-> >>> +			     "mediatek,mt6577-uart";
-> >>> +		reg = <0 0x11003000 0 0x400>;
-> >>> +		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
-> >>> +		clocks = <&uart_clk>;
-> >>
-> >> same here.
-> >
-> > OK, will fix this.
-> >
-> > Thanks.
-> >>
-> >> Regards,
-> >> Matthias
-> >
-> >
+
+Hi, HS:
+
+'session' is not similar to 'scenarios'.
+
+In 'scenarios' mechanism, client bind a task with scenarios and send to
+cmdq. Cmdq transfer scenarios to engine flag, and use engine flag to
+dispatch task to HW thread.
+
+
+In 'engine flag' mechanism, proposed by Daniel, client bind a task
+directly with engine flag. Cmdq directly use engine flag to dispatch
+task to HW thread without any translation.
+
+But neither 'scenarios' mechanism nor 'engine flag' mechanism get rid of
+engine flag, which make cmdq have knowledge of client.
+
+In 'session' mechanism, there is no engine flag any more. Client bind
+time-sequential tasks to the same session and tasks in different session
+can execute parallelly. One thing cmdq need to know is to dispatch tasks
+with the same session to the same HW thread, so cmdq does not have any
+knowledge of client.
+
+Daniel focus on reduce translating scenarios to engine flag. I think
+'session' mechanism does not conflict with his opinion because we does
+not translate 'session' to engine flag. Therefore, I think 'session' is
+the best of these three mechanism.
+
+Regards,
+CK
+
+> > Here is the sample code to create cmdq_rec with session.
+> > 
+> > merge_wfe_cmd = true;
+> > cmdq_session_create(merge_wfe_cmd, &primary_display_session);
+> > cmdq_rec_create(dev, primary_display_session, &rec);
+> > 
+> > 
+> > Therefore, the below definition can be removed.
+> > 
+> > > +
+> > > +enum cmdq_eng {
+> > > +	CMDQ_ENG_DISP_AAL,
+> > > +	CMDQ_ENG_DISP_COLOR0,
+> > > +	CMDQ_ENG_DISP_COLOR1,
+> > > +	CMDQ_ENG_DISP_DPI0,
+> > > +	CMDQ_ENG_DISP_DSI0,
+> > > +	CMDQ_ENG_DISP_DSI1,
+> > > +	CMDQ_ENG_DISP_GAMMA,
+> > > +	CMDQ_ENG_DISP_OD,
+> > > +	CMDQ_ENG_DISP_OVL0,
+> > > +	CMDQ_ENG_DISP_OVL1,
+> > > +	CMDQ_ENG_DISP_PWM0,
+> > > +	CMDQ_ENG_DISP_PWM1,
+> > > +	CMDQ_ENG_DISP_RDMA0,
+> > > +	CMDQ_ENG_DISP_RDMA1,
+> > > +	CMDQ_ENG_DISP_RDMA2,
+> > > +	CMDQ_ENG_DISP_UFOE,
+> > > +	CMDQ_ENG_DISP_WDMA0,
+> > > +	CMDQ_ENG_DISP_WDMA1,
+> > > +	CMDQ_ENG_MAX,
+> > > +};
+> > > +
+> > 
+> > 
+> > Regards,
+> > CK
+> > 
+> 
+> 
