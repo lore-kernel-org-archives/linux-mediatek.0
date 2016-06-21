@@ -1,122 +1,215 @@
-From: Noam Camus <noamca@mellanox.com>
-Subject: RE: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
-Date: Tue, 21 Jun 2016 06:45:58 +0000
-Message-ID: <HE1PR05MB162581196C0157F45749344FAA2B0@HE1PR05MB1625.eurprd05.prod.outlook.com>
-References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org>
- <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Tue, 21 Jun 2016 15:46:11 +0800
+Message-ID: <1466495171.8045.27.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+ <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+ <1466419311.27959.12.camel@mtksdaap41>
+ <1466421720.1918.11.camel@mtksdaap41> <1466474580.6214.29.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
-Content-Language: en-US
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, "tglx@linutronix.de" <tglx@linutronix.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, S?ren Brinkmann <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander Shiyan <shc_work@mail.ru>, Kukjin Kim <kg>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1466474580.6214.29.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
->From: Daniel Lezcano [mailto:daniel.lezcano@linaro.org] 
->Sent: Friday, June 17, 2016 12:27 AM
+On Tue, 2016-06-21 at 10:03 +0800, CK Hu wrote:
+> On Mon, 2016-06-20 at 19:22 +0800, Horng-Shyang Liao wrote:
+> > On Mon, 2016-06-20 at 18:41 +0800, CK Hu wrote:
+> > > Hi, HS:
+> > > 
+> > > One comment inline.
+> > > 
+> > > On Mon, 2016-05-30 at 11:19 +0800, HS Liao wrote:
+> > > > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> > > > CMDQ is used to help read/write registers with critical time limitation,
+> > > > such as updating display configuration during the vblank. It controls
+> > > > Global Command Engine (GCE) hardware to achieve this requirement.
+> > > > Currently, CMDQ only supports display related hardwares, but we expect
+> > > > it can be extended to other hardwares for future requirements.
+> > > > 
+> > > > Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > Signed-off-by: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > ---
+> > > >  drivers/soc/mediatek/Kconfig    |  10 +
+> > > >  drivers/soc/mediatek/Makefile   |   1 +
+> > > >  drivers/soc/mediatek/mtk-cmdq.c | 943 ++++++++++++++++++++++++++++++++++++++++
+> > > >  include/soc/mediatek/cmdq.h     | 197 +++++++++
+> > > >  4 files changed, 1151 insertions(+)
+> > > >  create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+> > > >  create mode 100644 include/soc/mediatek/cmdq.h
+> > > > 
+> > > > diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> > > > index 0a4ea80..c4ad75c 100644
+> > > > --- a/drivers/soc/mediatek/Kconfig
+> > > > +++ b/drivers/soc/mediatek/Kconfig
+> > > > @@ -1,6 +1,16 @@
+> > > >  #
+> > > >  # MediaTek SoC drivers
+> > > >  #
+> > > > +config MTK_CMDQ
+> > > > +	bool "MediaTek CMDQ Support"
+> > > > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > > +	select MTK_INFRACFG
+> > > > +	help
+> > > > +	  Say yes here to add support for the MediaTek Command Queue (CMDQ)
+> > > > +	  driver. The CMDQ is used to help read/write registers with critical
+> > > > +	  time limitation, such as updating display configuration during the
+> > > > +	  vblank.
+> > > > +
+> > > >  config MTK_INFRACFG
+> > > >  	bool "MediaTek INFRACFG Support"
+> > > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> > > > index 12998b0..f7397ef 100644
+> > > > --- a/drivers/soc/mediatek/Makefile
+> > > > +++ b/drivers/soc/mediatek/Makefile
+> > > 
+> > > [Snip...]
+> > > 
+> > > > +
+> > > > +static int cmdq_eng_get_thread(u64 flag)
+> > > > +{
+> > > > +	if (flag & BIT_ULL(CMDQ_ENG_DISP_DSI0))
+> > > > +		return CMDQ_THR_DISP_MAIN_IDX;
+> > > > +	else if (flag & BIT_ULL(CMDQ_ENG_DISP_DPI0))
+> > > > +		return CMDQ_THR_DISP_SUB_IDX;
+> > > > +	else
+> > > > +		return CMDQ_THR_DISP_MISC_IDX;
+> > > > +}
+> > > 
+> > > I think cmdq should not have knowledge of client. These statement show
+> > > that cmdq know that DSI0-tasks is different with DPI0-tasks. I propose
+> > > the 'session' to replace engine flag. For example, main display create
+> > > one cmdq_session and external display create another cmdq_session. For
+> > > client driver, every tasks created by main display is bound to main
+> > > display session. For cmdq driver, it should dynamically bind a session
+> > > to a HW thread, and then dispatch tasks of this session to this HW
+> > > thread. After HW thread run out of tasks of this session, detach this
+> > > session with this thread.
+> > > For the problem of remove wfe cmd, I think a session can have a property
+> > > of merge_wfe_cmd. For display session, session->merge_wfe_cmd = true.
+> > > For other client, it's false.
+> > 
+> > Hi CK,
+> > 
+> > I think your suggestion is similar to CMDQ 'scenarios',
+> > which was removed from CMDQ v2.
+> > 
+> > Daniel suggests to use engine flags instead of scenarios.
+> > Quote from https://patchwork.kernel.org/patch/8068311/ .
+> > 'Instead of encoding policy (these arbitrary "scenarios"), perhaps the
+> >  cmdq driver should just provide these flag bits, and the display
+> >  subsystem can use them to build the "flag" parameter itself.
+> > 
+> >  After all, the exact configuration of mmsys components is somewhat
+> >  flexible.'
+> > 
+> > Therefore, it would be better to discuss with Daniel before we change
+> > it.
+> > 
+> > 
+> > Hi Daniel,
+> > 
+> > Do you think we should use scenarios or sessions instead of flags?
+> > 
+> > Thanks,
+> > HS
+> > 
+> 
+> Hi, HS:
+> 
+> 'session' is not similar to 'scenarios'.
+> 
+> In 'scenarios' mechanism, client bind a task with scenarios and send to
+> cmdq. Cmdq transfer scenarios to engine flag, and use engine flag to
+> dispatch task to HW thread.
+> 
+> 
+> In 'engine flag' mechanism, proposed by Daniel, client bind a task
+> directly with engine flag. Cmdq directly use engine flag to dispatch
+> task to HW thread without any translation.
+> 
+> But neither 'scenarios' mechanism nor 'engine flag' mechanism get rid of
+> engine flag, which make cmdq have knowledge of client.
+> 
+> In 'session' mechanism, there is no engine flag any more. Client bind
+> time-sequential tasks to the same session and tasks in different session
+> can execute parallelly. One thing cmdq need to know is to dispatch tasks
+> with the same session to the same HW thread, so cmdq does not have any
+> knowledge of client.
+> 
+> Daniel focus on reduce translating scenarios to engine flag. I think
+> 'session' mechanism does not conflict with his opinion because we does
+> not translate 'session' to engine flag. Therefore, I think 'session' is
+> the best of these three mechanism.
+> 
+> Regards,
+> CK
 
->All the clocksource drivers's init function are now converted to return an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the clksrc-of table.
+Hi CK,
 
->Let's convert back the names:
-> - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
-> - clksrc-of-ret              => clksrc-of
+'Session' looks like a group of options for CMDQ.
+CMDQ driver can just follow the options to run its flow,
+and doesn't need to know its client(s).
 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
-> arch/arc/kernel/time.c                    |  6 +++---
-> arch/arm/kernel/smp_twd.c                 |  6 +++---
-> arch/microblaze/kernel/timer.c            |  2 +-
-> arch/mips/ralink/cevt-rt3352.c            |  2 +-
-> arch/nios2/kernel/time.c                  |  2 +-
-> drivers/clocksource/arm_arch_timer.c      |  6 +++---
-> drivers/clocksource/arm_global_timer.c    |  2 +-
-> drivers/clocksource/armv7m_systick.c      |  2 +-
-> drivers/clocksource/asm9260_timer.c       |  2 +-
-> drivers/clocksource/bcm2835_timer.c       |  2 +-
-> drivers/clocksource/bcm_kona_timer.c      |  4 ++--
-> drivers/clocksource/cadence_ttc_timer.c   |  2 +-
-> drivers/clocksource/clksrc-dbx500-prcmu.c |  2 +-
-> drivers/clocksource/clksrc-probe.c        | 14 --------------
-> drivers/clocksource/clksrc_st_lpc.c       |  2 +-
-> drivers/clocksource/clps711x-timer.c      |  2 +-
-> drivers/clocksource/dw_apb_timer_of.c     |  8 ++++----
-> drivers/clocksource/exynos_mct.c          |  4 ++--
-> drivers/clocksource/fsl_ftm_timer.c       |  2 +-
-> drivers/clocksource/h8300_timer16.c       |  2 +-
-> drivers/clocksource/h8300_timer8.c        |  2 +-
-> drivers/clocksource/h8300_tpu.c           |  2 +-
-> drivers/clocksource/meson6_timer.c        |  2 +-
-> drivers/clocksource/mips-gic-timer.c      |  2 +-
-> drivers/clocksource/moxart_timer.c        |  2 +-
-> drivers/clocksource/mps2-timer.c          |  2 +-
-> drivers/clocksource/mtk_timer.c           |  2 +-
-> drivers/clocksource/mxs_timer.c           |  2 +-
-> drivers/clocksource/nomadik-mtu.c         |  2 +-
-> drivers/clocksource/pxa_timer.c           |  2 +-
-> drivers/clocksource/qcom-timer.c          |  4 ++--
-> drivers/clocksource/rockchip_timer.c      |  8 ++++----
-> drivers/clocksource/samsung_pwm_timer.c   |  8 ++++----
-> drivers/clocksource/sun4i_timer.c         |  2 +-
-> drivers/clocksource/tango_xtal.c          |  2 +-
-> drivers/clocksource/tegra20_timer.c       |  4 ++--
-> drivers/clocksource/time-armada-370-xp.c  |  6 +++---
-> drivers/clocksource/time-efm32.c          |  4 ++--
-> drivers/clocksource/time-lpc32xx.c        |  2 +-
-> drivers/clocksource/time-orion.c          |  2 +-
-> drivers/clocksource/time-pistachio.c      |  2 +-
-> drivers/clocksource/timer-atlas7.c        |  2 +-
-> drivers/clocksource/timer-atmel-pit.c     |  2 +-
-> drivers/clocksource/timer-atmel-st.c      |  2 +-
-> drivers/clocksource/timer-digicolor.c     |  2 +-
-> drivers/clocksource/timer-imx-gpt.c       | 24 ++++++++++++------------
-> drivers/clocksource/timer-integrator-ap.c |  2 +-
-> drivers/clocksource/timer-keystone.c      |  2 +-
-> drivers/clocksource/timer-nps.c           |  4 ++--
-> drivers/clocksource/timer-oxnas-rps.c     |  4 ++--
-> drivers/clocksource/timer-prima2.c        |  2 +-
-> drivers/clocksource/timer-sp804.c         |  4 ++--
-> drivers/clocksource/timer-stm32.c         |  2 +-
-> drivers/clocksource/timer-sun5i.c         |  4 ++--
-> drivers/clocksource/timer-ti-32k.c        |  2 +-
-> drivers/clocksource/timer-u300.c          |  2 +-
-> drivers/clocksource/versatile.c           |  4 ++--
-> drivers/clocksource/vf_pit_timer.c        |  2 +-
-> drivers/clocksource/vt8500_timer.c        |  2 +-
-> drivers/clocksource/zevio-timer.c         |  2 +-
-> include/asm-generic/vmlinux.lds.h         |  2 --
-> include/linux/clocksource.h               |  5 +----
-> 62 files changed, 98 insertions(+), 117 deletions(-)
+We don't have many options now, but it has good flexibility to extend
+for future requirements.
 
-[..]
+I will add it in next version.
 
-> diff --git a/drivers/clocksource/timer-nps.c b/drivers/clocksource/timer-nps.c index b5c7b2b..70c149a 100644
-> --- a/drivers/clocksource/timer-nps.c
-> +++ b/drivers/clocksource/timer-nps.c
-> @@ -96,5 +96,5 @@ static int __init nps_timer_init(struct device_node *node)
-> 	return nps_setup_clocksource(node, clk);  }
- 
-> -CLOCKSOURCE_OF_DECLARE_RET(ezchip_nps400_clksrc, "ezchip,nps400-timer",
-> -			   nps_timer_init);
-> +CLOCKSOURCE_OF_DECLARE(ezchip_nps400_clksrc, "ezchip,nps400-timer",
-> +		       nps_timer_init);
-> diff --git a/drivers/clocksource/timer-oxnas-rps.c b/drivers/clocksource/timer-oxnas-rps.c
-> index 0d99f40..bd887e2 100644
-> --- a/drivers/clocksource/timer-oxnas-rps.c
-> +++ b/drivers/clocksource/timer-oxnas-rps.c
-> @@ -293,5 +293,5 @@ err_alloc:
->  	return ret;
-> }
- 
+Thanks,
+HS
 
-Acked-by: Noam Camus <noamca@mellanox.com>
+> > > Here is the sample code to create cmdq_rec with session.
+> > > 
+> > > merge_wfe_cmd = true;
+> > > cmdq_session_create(merge_wfe_cmd, &primary_display_session);
+> > > cmdq_rec_create(dev, primary_display_session, &rec);
+> > > 
+> > > 
+> > > Therefore, the below definition can be removed.
+> > > 
+> > > > +
+> > > > +enum cmdq_eng {
+> > > > +	CMDQ_ENG_DISP_AAL,
+> > > > +	CMDQ_ENG_DISP_COLOR0,
+> > > > +	CMDQ_ENG_DISP_COLOR1,
+> > > > +	CMDQ_ENG_DISP_DPI0,
+> > > > +	CMDQ_ENG_DISP_DSI0,
+> > > > +	CMDQ_ENG_DISP_DSI1,
+> > > > +	CMDQ_ENG_DISP_GAMMA,
+> > > > +	CMDQ_ENG_DISP_OD,
+> > > > +	CMDQ_ENG_DISP_OVL0,
+> > > > +	CMDQ_ENG_DISP_OVL1,
+> > > > +	CMDQ_ENG_DISP_PWM0,
+> > > > +	CMDQ_ENG_DISP_PWM1,
+> > > > +	CMDQ_ENG_DISP_RDMA0,
+> > > > +	CMDQ_ENG_DISP_RDMA1,
+> > > > +	CMDQ_ENG_DISP_RDMA2,
+> > > > +	CMDQ_ENG_DISP_UFOE,
+> > > > +	CMDQ_ENG_DISP_WDMA0,
+> > > > +	CMDQ_ENG_DISP_WDMA1,
+> > > > +	CMDQ_ENG_MAX,
+> > > > +};
+> > > > +
+> > > 
+> > > 
+> > > Regards,
+> > > CK
+> > > 
+> > 
+> > 
+> 
+> 
