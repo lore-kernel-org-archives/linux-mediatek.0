@@ -1,120 +1,87 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
-Date: Thu, 23 Jun 2016 19:44:11 +0800
-Message-ID: <1466682251.12354.0.camel@mtksdaap41>
-References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
-	 <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
-	 <1466661829.15112.26.camel@mtksdaap41>
-	 <1466668480.12124.15.camel@mtksdaap41>
+From: Stefan Wahren <stefan.wahren-eS4NqCHxEME@public.gmane.org>
+Subject: Re: [PATCH v3 0/2] nvmem: remove regmap dependency
+Date: Thu, 23 Jun 2016 20:07:13 +0200 (CEST)
+Message-ID: <541115749.18852.dd1915ce-f885-44a4-a743-86ca28f8b9fd.open-xchange@email.1und1.de>
+References: <1462214174-469-1-git-send-email-srinivas.kandagatla@linaro.org>
+ <7eec3215-b455-6567-28a2-e2a860e1d3ec@i2se.com>
+ <20160601175542.GA19241@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1466668480.12124.15.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160601175542.GA19241-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-06-23 at 15:54 +0800, Horng-Shyang Liao wrote:
-> Hi CK,
-> 
-> On Thu, 2016-06-23 at 14:03 +0800, CK Hu wrote:
-> > Hi, HS:
-> > 
-> > On Mon, 2016-05-30 at 11:19 +0800, HS Liao wrote:
-> > [...]
-> > 
-> > > +
-> > > +/* events for CMDQ and display */
-> > > +enum cmdq_event {
-> > > +	/* Display start of frame(SOF) events */
-> > > +	CMDQ_EVENT_DISP_OVL0_SOF = 11,
-> > > +	CMDQ_EVENT_DISP_OVL1_SOF = 12,
-> > > +	CMDQ_EVENT_DISP_RDMA0_SOF = 13,
-> > > +	CMDQ_EVENT_DISP_RDMA1_SOF = 14,
-> > > +	CMDQ_EVENT_DISP_RDMA2_SOF = 15,
-> > > +	CMDQ_EVENT_DISP_WDMA0_SOF = 16,
-> > > +	CMDQ_EVENT_DISP_WDMA1_SOF = 17,
-> > > +	/* Display end of frame(EOF) events */
-> > > +	CMDQ_EVENT_DISP_OVL0_EOF = 39,
-> > > +	CMDQ_EVENT_DISP_OVL1_EOF = 40,
-> > > +	CMDQ_EVENT_DISP_RDMA0_EOF = 41,
-> > > +	CMDQ_EVENT_DISP_RDMA1_EOF = 42,
-> > > +	CMDQ_EVENT_DISP_RDMA2_EOF = 43,
-> > > +	CMDQ_EVENT_DISP_WDMA0_EOF = 44,
-> > > +	CMDQ_EVENT_DISP_WDMA1_EOF = 45,
-> > > +	/* Mutex end of frame(EOF) events */
-> > > +	CMDQ_EVENT_MUTEX0_STREAM_EOF = 53,
-> > > +	CMDQ_EVENT_MUTEX1_STREAM_EOF = 54,
-> > > +	CMDQ_EVENT_MUTEX2_STREAM_EOF = 55,
-> > > +	CMDQ_EVENT_MUTEX3_STREAM_EOF = 56,
-> > > +	CMDQ_EVENT_MUTEX4_STREAM_EOF = 57,
-> > > +	/* Display underrun events */
-> > > +	CMDQ_EVENT_DISP_RDMA0_UNDERRUN = 63,
-> > > +	CMDQ_EVENT_DISP_RDMA1_UNDERRUN = 64,
-> > > +	CMDQ_EVENT_DISP_RDMA2_UNDERRUN = 65,
-> > > +	/* Keep this at the end of HW events */
-> > > +	CMDQ_MAX_HW_EVENT_COUNT = 260,
-> > > +};
-> > 
-> > The value of these symbol is just the GCE-HW-defined value. I think it's
-> > not appropriate to expose HW-defined value to client. For another SoC
-> > GCE HW, these definition may change.
-> 
-> Agree.
-> 
-> > One way to solve this problem is to translate symbol to value
-> > internally. But these events looks like interrupt and the value may vary
-> > by each SoC, to prevent driver modified frequently, it's better to place
-> > the value definition in device tree. It may looks like:
-> > 
-> > mmsys: clock-controller@14000000 {
-> > 	compatible = "mediatek,mt8173-mmsys";
-> > 	mediatek,gce = <&gce>;
-> > 	gce-events = <53 54>;
-> 
-> However, client still needs to know the HW-defined value by using
-> this solution.
-> 
-> > 	gce-event-names = "MUTEX0_EOF","MUTEX1_EOF";
-> > }
-> > 
-> > For cmdq driver, you just need modify interface from
-> > 
-> > int cmdq_rec_wfe(struct cmdq_rec *rec, enum cmdq_event event)
-> > int cmdq_rec_clear_event(struct cmdq_rec *rec, enum cmdq_event event)
-> > 
-> > to
-> > 
-> > int cmdq_rec_wfe(struct cmdq_rec *rec, u32 event)
-> > int cmdq_rec_clear_event(struct cmdq_rec *rec, u32 event)
-> 
-> I think an easy way for this issue is just removing HW-defined values
-> from include/soc/mediatek/cmdq.h (but keeping enum), and then mapping
-> abstract values into real values in driver.
-> The benefit of this solution is that we can keep interface and leave SoC
-> specific code into driver.
-> What do you think?
+Hi Greg,
 
-Hi, HS:
-
-OK, that's fine.
-
-Regards,
-CK
-
+> Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org> hat am 1. Juni 2016 um 19:55
+> geschrieben:
 > 
-> > Regards,
-> > CK
 > 
-> Thanks,
-> HS
+> On Wed, Jun 01, 2016 at 10:27:49AM +0200, Stefan Wahren wrote:
+> > Hi Greg,
+> > 
+> > Am 02.05.2016 um 20:36 schrieb Srinivas Kandagatla:
+> > > Hi Greg, 
+> > >
+> > > This is v3 patchset for the leftover 2 patches for nvmem regmap
+> > > removal series [1]. These patches are based on char-misc tree.
+> > >
+> > > nvmem uses regmap_raw_read/write apis to read/write data from providers,
+> > > With recent patch 922a9f936e40 ("regmap: mmio: Convert to regmap_bus
+> > > and fix accessor usage") nvmem providers based on regmap-mmio stopped
+> > > working, as nvmem core was using raw accessors.
+> > > This issue can be fixed temporarly by moving to other regmap apis,
+> > > but we might hit same issue in future, and regmap looks like an
+> > > overdo for nvmem. Moving to interfaces based on read/write callbacks
+> > > from providers would be more robust.
+> > >
+> > > This patchset converts the nvmem core and nvmem provider drivers to
+> > > use the new callbacks. Tested this patchset on qfprom and at24 drivers.
+> > > Other driver are only compile tested, any testing on them would be great.
+> > >
+> > > Most of the patches have been applied to char-misc tree, these are the
+> > > two patches which had some outstanding comments on mxs nvmemprovider,
+> > > which are now fixed.
+> > >
+> > > Changes since v2:
+> > >  - Fixed the mxs size and dt data pointer spotted by Stefan and Fabio
+> > >
+> > > Changes since v1:
+> > >  - rebased mtk-efuse on top of char-misc
+> > >  - addressed concerns raised by Stefan Wahren.
+> > >
+> > > [1]
+> > > https://www.mail-archive.com/linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org/msg1130026.html
+> > >
+> > > Thanks,
+> > > srini
+> > >
+> > > Srinivas Kandagatla (2):
+> > >   nvmem: mtk-efuse: remove nvmem regmap dependency
+> > >   nvmem: mxs-ocotp: remove nvmem regmap dependency
+> > >
+> > >  drivers/nvmem/Kconfig     |  1 -
+> > >  drivers/nvmem/mtk-efuse.c | 47 ++++++++++++++++++---------
+> > >  drivers/nvmem/mxs-ocotp.c | 83
+> > > +++++++++++++----------------------------------
+> > >  3 files changed, 54 insertions(+), 77 deletions(-)
+> > >
+> > 
+> > any objections about this series or is it still in queue?
 > 
+> still in my queue...
 > 
 
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+gently ping ...
