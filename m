@@ -1,38 +1,51 @@
-From: Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH V2 63/63] clocksources: Switch back to the clksrc table
-Date: Fri, 24 Jun 2016 15:13:20 +0800
-Message-ID: <CAGb2v64Qk822h2Mqp1Moc1yV7uXSEQBGiurkyFLSZdJ6NOO3Vg@mail.gmail.com>
-References: <1466112442-31105-1-git-send-email-daniel.lezcano@linaro.org> <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
+Date: Fri, 24 Jun 2016 15:27:18 +0800
+Message-ID: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mips-bounce@linux-mips.org>
-In-Reply-To: <1466112442-31105-64-git-send-email-daniel.lezcano@linaro.org>
-Sender: linux-mips-bounce@linux-mips.org
-Errors-to: linux-mips-bounce@linux-mips.org
-List-help: <mailto:ecartis@linux-mips.org?Subject=help>
-List-unsubscribe: <mailto:ecartis@linux-mips.org?subject=unsubscribe%20linux-mips>
-List-software: Ecartis version 1.0.0
-List-subscribe: <mailto:ecartis@linux-mips.org?subject=subscribe%20linux-mips>
-List-owner: <mailto:ralf@linux-mips.org>
-List-post: <mailto:linux-mips@linux-mips.org>
-List-archive: <http://www.linux-mips.org/archives/linux-mips/>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>, linux-kernel <linux-kernel@vger.kernel.org>, Vineet Gupta <vgupta@synopsys.com>, Russell King <linux@armlinux.org.uk>, Michal Simek <monstr@monstr.eu>, John Crispin <john@phrozen.org>, Ralf Baechle <ralf@linux-mips.org>, Ley Foon Tan <lftan@altera.com>, Srinivas Kandagatla <srinivas.kandagatla@gmail.com>, Maxime Coquelin <maxime.coquelin@st.com>, Patrice Chotard <patrice.chotard@st.com>, Stephen Warren <swarren@wwwdotorg.org>, Lee Jones <lee@kernel.org>, Eric Anholt <eric@anholt.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, =?UTF-8?Q?S=C3=B6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, Linus Walleij <linus.walleij@linaro.org>, Alexander
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 17, 2016 at 5:27 AM, Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
-> All the clocksource drivers's init function are now converted to return
-> an error code. CLOCKSOURCE_OF_DECLARE is no longer used as well as the
-> clksrc-of table.
->
-> Let's convert back the names:
->  - CLOCKSOURCE_OF_DECLARE_RET => CLOCKSOURCE_OF_DECLARE
->  - clksrc-of-ret              => clksrc-of
->
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->  drivers/clocksource/sun4i_timer.c         |  2 +-
->  drivers/clocksource/timer-sun5i.c         |  4 ++--
-
-Acked-by: Chen-Yu Tsai <wens@csie.org>
+SGkgRGF2ZSwKClBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlu
+cyB0aGUgdjIgTVQ4MTczIGdhbW1hICYgZGl0aGVyIGZ1bmN0aW9uIHBhdGNoZXMgSSBzZW50IG9u
+IDIwMTYtMDYtMTcsIHJlYmFzZWQgb250byB2NC43LXJjMS4gVGhlcmUgaGF2ZSBiZWVuIG5vIGZ1
+cnRoZXIgY29tbWVudHMuCgpUaGFua3MKQmliYnkKClRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5j
+ZSBjb21taXQgMWE2OTVhOTA1YzE4NTQ4MDYyNTA5MTc4Yjk4YmM5MWU2NzUxMDg2NDoKCiAgTGlu
+dXggNC43LXJjMSAoMjAxNi0wNS0yOSAxNjoyOToyNCBHTVQpCgphcmUgYXZhaWxhYmxlIGluIHRo
+ZSBnaXQgcmVwb3NpdG9yeSBhdDoKCiAgZ2l0QGdpdGh1Yi5jb206QmliYnlIc2llaC9saW51eDQu
+Ny1yYzEuZ2l0Cgpmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8gZGQwZWI3NzNiYzEyNWY1
+ZTZiY2E3MzVkMTljMDg1MDBkYzM3MzBmOToKCiAgZHJtL21lZGlhdGVrOiBBZGQgZ2FtbWEgY29y
+cmVjdGlvbgoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpUaGlzIGlzIE1UODE3MyBnYW1tYSAmIGRpdGhlciBz
+dXBwb3J0IFBBVENIIHYyLCBiYXNlZCBvbiA0LjctcmMxLgoKQ2hhbmdlcyBzaW5jZSB2MToKIC1B
+Y2NvcmRpbmcgdG8gdGhlIHN1Z2dlc3Rpb24gZnJvbSBEYW5pZWwsCiAgd2UgdXNlZCB0aGUgbmV3
+IGF0b21pYyBjb2xvciBtYW5hZ2VtZW50LgogLUFwcGxpZWQgZ2FtbWEgZnVuY3Rpb24gYXQgR0FN
+TUEgZW5naW5lIChwYXRoIDIpLgogLU1hZGUgZGl0aGVyaW5nIGZ1bmN0aW9uIHN1cHBvcnQgaGFy
+ZHdhcmUgbWlycm9yaW5nIHdlbGwuCiAtUmVtb3ZlZCB0aGUgYnBjIHZhcmlhYmxlIGZyb20gbXRr
+X2RybV9jcnRjIHN0cnVjdC4KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQoKQmliYnkgSHNpZWggKDIpOgogIGRy
+bS9tZWRpYXRlazogQWRkIGdhbW1hIGNvcnJlY3Rpb24KICBkcm0vbWVkaWF0ZWs6IHNldCBtdDgx
+NzMgZGl0aGVyaW5nIGZ1bmN0aW9uCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
+X292bC5jICAgICB8ICAgIDMgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9y
+ZG1hLmMgICAgfCAgICAzICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRj
+LmMgICAgIHwgICAyNiArKysrLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0
+Yy5oICAgICB8ICAgIDEgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2Nv
+bXAuYyB8ICAxNDcgKysrKysrKysrKysrKysrKysrKysrKysrKystCiBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgICAxNiArKy0KIDYgZmlsZXMgY2hhbmdlZCwg
+MTg0IGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQoKLS0gCjEuNy45LjUKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
