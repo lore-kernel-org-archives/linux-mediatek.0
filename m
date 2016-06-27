@@ -1,409 +1,187 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/3] auxadc: Add Mediatek auxadc driver for mt2701.
-Date: Sun, 26 Jun 2016 15:31:05 +0100
-Message-ID: <38e8d819-e4f7-1b30-f286-e9b37680fea1@kernel.org>
-References: <1466753830-4542-1-git-send-email-zhiyong.tao@mediatek.com>
- <1466753830-4542-3-git-send-email-zhiyong.tao@mediatek.com>
- <alpine.DEB.2.02.1606241036400.10280@pmeerw.net>
+From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v8 2/3] CMDQ: Mediatek CMDQ driver
+Date: Mon, 27 Jun 2016 10:00:07 +0800
+Message-ID: <1466992807.9692.2.camel@mtksdaap41>
+References: <1464578397-29743-1-git-send-email-hs.liao@mediatek.com>
+ <1464578397-29743-3-git-send-email-hs.liao@mediatek.com>
+ <1466419311.27959.12.camel@mtksdaap41>
+ <1466421720.1918.11.camel@mtksdaap41> <1466474580.6214.29.camel@mtksdaap41>
+ <1466495171.8045.27.camel@mtksdaap41> <1466768371.817.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <alpine.DEB.2.02.1606241036400.10280-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1466768371.817.9.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 24/06/16 09:51, Peter Meerwald-Stadler wrote:
+On Fri, 2016-06-24 at 19:39 +0800, Horng-Shyang Liao wrote:
+> On Tue, 2016-06-21 at 15:46 +0800, Horng-Shyang Liao wrote:
+> > On Tue, 2016-06-21 at 10:03 +0800, CK Hu wrote:
+> > > On Mon, 2016-06-20 at 19:22 +0800, Horng-Shyang Liao wrote:
+> > > > On Mon, 2016-06-20 at 18:41 +0800, CK Hu wrote:
+> > > > > [Snip...]
+> > > > > 
+> > > > > > +
+> > > > > > +static int cmdq_eng_get_thread(u64 flag)
+> > > > > > +{
+> > > > > > +	if (flag & BIT_ULL(CMDQ_ENG_DISP_DSI0))
+> > > > > > +		return CMDQ_THR_DISP_MAIN_IDX;
+> > > > > > +	else if (flag & BIT_ULL(CMDQ_ENG_DISP_DPI0))
+> > > > > > +		return CMDQ_THR_DISP_SUB_IDX;
+> > > > > > +	else
+> > > > > > +		return CMDQ_THR_DISP_MISC_IDX;
+> > > > > > +}
+> > > > > 
+> > > > > I think cmdq should not have knowledge of client. These statement show
+> > > > > that cmdq know that DSI0-tasks is different with DPI0-tasks. I propose
+> > > > > the 'session' to replace engine flag. For example, main display create
+> > > > > one cmdq_session and external display create another cmdq_session. For
+> > > > > client driver, every tasks created by main display is bound to main
+> > > > > display session. For cmdq driver, it should dynamically bind a session
+> > > > > to a HW thread, and then dispatch tasks of this session to this HW
+> > > > > thread. After HW thread run out of tasks of this session, detach this
+> > > > > session with this thread.
+> > > > > For the problem of remove wfe cmd, I think a session can have a property
+> > > > > of merge_wfe_cmd. For display session, session->merge_wfe_cmd = true.
+> > > > > For other client, it's false.
+> > > > 
+> > > > Hi CK,
+> > > > 
+> > > > I think your suggestion is similar to CMDQ 'scenarios',
+> > > > which was removed from CMDQ v2.
+> > > > 
+> > > > Daniel suggests to use engine flags instead of scenarios.
+> > > > Quote from https://patchwork.kernel.org/patch/8068311/ .
+> > > > 'Instead of encoding policy (these arbitrary "scenarios"), perhaps the
+> > > >  cmdq driver should just provide these flag bits, and the display
+> > > >  subsystem can use them to build the "flag" parameter itself.
+> > > > 
+> > > >  After all, the exact configuration of mmsys components is somewhat
+> > > >  flexible.'
+> > > > 
+> > > > Therefore, it would be better to discuss with Daniel before we change
+> > > > it.
+> > > > 
+> > > > 
+> > > > Hi Daniel,
+> > > > 
+> > > > Do you think we should use scenarios or sessions instead of flags?
+> > > > 
+> > > > Thanks,
+> > > > HS
+> > > > 
+> > > 
+> > > Hi, HS:
+> > > 
+> > > 'session' is not similar to 'scenarios'.
+> > > 
+> > > In 'scenarios' mechanism, client bind a task with scenarios and send to
+> > > cmdq. Cmdq transfer scenarios to engine flag, and use engine flag to
+> > > dispatch task to HW thread.
+> > > 
+> > > 
+> > > In 'engine flag' mechanism, proposed by Daniel, client bind a task
+> > > directly with engine flag. Cmdq directly use engine flag to dispatch
+> > > task to HW thread without any translation.
+> > > 
+> > > But neither 'scenarios' mechanism nor 'engine flag' mechanism get rid of
+> > > engine flag, which make cmdq have knowledge of client.
+> > > 
+> > > In 'session' mechanism, there is no engine flag any more. Client bind
+> > > time-sequential tasks to the same session and tasks in different session
+> > > can execute parallelly. One thing cmdq need to know is to dispatch tasks
+> > > with the same session to the same HW thread, so cmdq does not have any
+> > > knowledge of client.
+> > > 
+> > > Daniel focus on reduce translating scenarios to engine flag. I think
+> > > 'session' mechanism does not conflict with his opinion because we does
+> > > not translate 'session' to engine flag. Therefore, I think 'session' is
+> > > the best of these three mechanism.
+> > > 
+> > > Regards,
+> > > CK
+> > 
+> > Hi CK,
+> > 
+> > 'Session' looks like a group of options for CMDQ.
+> > CMDQ driver can just follow the options to run its flow,
+> > and doesn't need to know its client(s).
+> > 
+> > We don't have many options now, but it has good flexibility to extend
+> > for future requirements.
+> > 
+> > I will add it in next version.
+> > 
+> > Thanks,
+> > HS
 > 
->> Add Mediatek auxadc driver in iio.
->> It will register a device in iio and support iio.
->> So thermal can read auxadc channel to sample data by iio device.
->> It is tested successfully on mt2701 platform.
->> Mt8173 platform is not tested. But the expectation is compatible.
+> Hi CK,
 > 
-> some reference to iio would be nice in the subject line
+> I think session is very similar to mailbox channel.
+> We can treat session's parameters as channel's arguments in device tree.
+> Linking session to GCE thread is also just like linking channel to GCE
+> thread.
+> Because I will use mailbox framework in CMDQ v9, we can use mailbox
+> channel instead of session.
+> What do you think?
 > 
-> comments below
->  
->> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-A few additions from me to add to Peter's already thorough review.
-I'm being more fuss about naming than anything else.  Looks pretty
-good otherwise.
+> Thanks,
+> HS
+> 
 
-Jonathan
->> ---
->>  drivers/iio/adc/Kconfig         |   11 ++
->>  drivers/iio/adc/Makefile        |    1 +
->>  drivers/iio/adc/mt65xx_auxadc.c |  269
-The naming is 'interesting'.  I'd just name it after the first major part
-to be supported.  Hardware manufacturers (possibly including mediatek) play
-with series numbers all the time so wild cards in part names often get
-more confusing than just having an actual part number and listing the others
-in the Kconfig help as well.
->>  +++++++++++++++++++++++++++++++++++++++
->>  3 files changed, 281 insertions(+)
->>  create mode 100644 drivers/iio/adc/mt65xx_auxadc.c
->>
->> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
->> index 25378c5..7684849 100644
->> --- a/drivers/iio/adc/Kconfig
->> +++ b/drivers/iio/adc/Kconfig
->> @@ -315,6 +315,17 @@ config MEN_Z188_ADC
->>  	  This driver can also be built as a module. If so, the module will be
->>  	  called men_z188_adc.
->>  
->> +config MEDIATEK_MT65XX_AUXADC
->> +	tristate "MediaTek AUXADC driver"
-> 
-> maybe some 'depends on' here so the driver is just visible for relevant 
-> configs? see below, MXR_LRADC, for an example
-Make sure to include CONFIG_TEST as well though to get build coverage from
-the autobuilders.
-> 
->> +	help
->> +	  Say yes here to enable support for MediaTek mt65xx AUXADC.
->> +
->> +	  The driver supports immediate mode operation to read from one of sixteen
->> +	  channels (external or internal).
->> +
->> +	  This driver can also be built as a module. If so, the module will be
->> +	  called mt65xx_auxadc.
->> +
->>  config MXS_LRADC
->>          tristate "Freescale i.MX23/i.MX28 LRADC"
->>          depends on (ARCH_MXS || COMPILE_TEST) && HAS_IOMEM
->> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
->> index 38638d4..bc62209 100644
->> --- a/drivers/iio/adc/Makefile
->> +++ b/drivers/iio/adc/Makefile
->> @@ -31,6 +31,7 @@ obj-$(CONFIG_MAX1363) += max1363.o
->>  obj-$(CONFIG_MCP320X) += mcp320x.o
->>  obj-$(CONFIG_MCP3422) += mcp3422.o
->>  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
->> +obj-$(CONFIG_MEDIATEK_MT65XX_AUXADC) += mt65xx_auxadc.o
->>  obj-$(CONFIG_MXS_LRADC) += mxs-lradc.o
->>  obj-$(CONFIG_NAU7802) += nau7802.o
->>  obj-$(CONFIG_PALMAS_GPADC) += palmas_gpadc.o
->> diff --git a/drivers/iio/adc/mt65xx_auxadc.c
->>  b/drivers/iio/adc/mt65xx_auxadc.c
->> new file mode 100644
->> index 0000000..b3c059c
->> --- /dev/null
->> +++ b/drivers/iio/adc/mt65xx_auxadc.c
->> @@ -0,0 +1,269 @@
->> +/*
->> + * Copyright (c) 2016 MediaTek Inc.
->> + * Author: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> + *
->> + * This program is free software; you can redistribute it and/or modify
->> + * it under the terms of the GNU General Public License version 2 as
->> + * published by the Free Software Foundation.
->> + *
->> + * This program is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->> + * GNU General Public License for more details.
->> + */
->> +
->> +#include <linux/clk.h>
->> +#include <linux/delay.h>
->> +#include <linux/err.h>
->> +#include <linux/kernel.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/of_device.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/iopoll.h>
->> +#include <linux/io.h>
->> +#include <linux/iio/iio.h>
->> +
->> +/* Registers  define*/
-> 
-> delete one space before define, add a space after define; maybe 'Register 
-> definitions' or 'Register defines' would read smoother
-> 
->> +#define MT65XX_AUXADC_CON0                    0x00
->> +#define MT65XX_AUXADC_CON1                    0x04
->> +#define MT65XX_AUXADC_CON2                    0x10
->> +#define MT65XX_AUXADC_STA                     BIT(0)
->> +
->> +#define MT65XX_AUXADC_DAT0                    0x14
->> +#define MT65XX_AUXADC_RDY0                    BIT(12)
->> +
->> +#define MT65XX_AUXADC_MISC                    0x94
->> +#define MT65XX_AUXADC_PDN_EN                  BIT(14)
->> +
->> +#define MT65XX_AUXADC_DAT_MASK                0xfff
->> +#define MT65XX_AUXADC_SLEEP_US                1000
->> +#define MT65XX_AUXADC_TIMEOUT_US              10000
->> +#define MT65XX_AUXADC_POWER_READY_MS          1
->> +#define MT65XX_AUXADC_SAMPLE_READY_US         25
->> +
->> +struct mt65xx_auxadc_device {
->> +	void __iomem *reg_base;
->> +	struct clk *adc_clk;
->> +	struct mutex lock; /*generic mutex for auxadc driver*/
-> 
-> comment needed?
-> 
->> +	unsigned int power_ready_ms;
->> +	unsigned int sample_ready_us;
->> +};
->> +
->> +#define MT65xx_AUXADC_CHANNEL(idx) {				       \
-> 
-> XX uppercase
-> 
->> +		.type = IIO_VOLTAGE,				       \
->> +		.indexed = 1,					       \
->> +		.channel = (idx),				       \
->> +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),	       \
->> +		.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE) | \
->> +					    BIT(IIO_CHAN_INFO_OFFSET), \
->> +}
->> +
->> +static const struct iio_chan_spec mt65xx_auxadc_iio_channels[] = {
->> +	MT65xx_AUXADC_CHANNEL(0),
->> +	MT65xx_AUXADC_CHANNEL(1),
->> +	MT65xx_AUXADC_CHANNEL(2),
->> +	MT65xx_AUXADC_CHANNEL(3),
->> +	MT65xx_AUXADC_CHANNEL(4),
->> +	MT65xx_AUXADC_CHANNEL(5),
->> +	MT65xx_AUXADC_CHANNEL(6),
->> +	MT65xx_AUXADC_CHANNEL(7),
->> +	MT65xx_AUXADC_CHANNEL(8),
->> +	MT65xx_AUXADC_CHANNEL(9),
->> +	MT65xx_AUXADC_CHANNEL(10),
->> +	MT65xx_AUXADC_CHANNEL(11),
->> +	MT65xx_AUXADC_CHANNEL(12),
->> +	MT65xx_AUXADC_CHANNEL(13),
->> +	MT65xx_AUXADC_CHANNEL(14),
->> +	MT65xx_AUXADC_CHANNEL(15),
->> +};
->> +
->> +static int mt65xx_auxadc_read(struct iio_dev *indio_dev,
->> +			      struct iio_chan_spec const *chan)
->> +{
->> +	u32 rawdata, val;
->> +	void __iomem *reg_channel;
->> +	struct mt65xx_auxadc_device *adc_dev = iio_priv(indio_dev);
->> +
->> +	reg_channel = adc_dev->reg_base + MT65XX_AUXADC_DAT0 +
->> +		      chan->channel * 0x04;
->> +
->> +	mutex_lock(&adc_dev->lock);
->> +
->> +	val = readl(adc_dev->reg_base + MT65XX_AUXADC_CON1);
->> +	val &= ~(1 << chan->channel);
->> +	writel(val, adc_dev->reg_base + MT65XX_AUXADC_CON1);
->> +
->> +	/* read channel and make sure old ready bit ==0 */
->> +	readl_poll_timeout(reg_channel, val,
->> +			   ((val & MT65XX_AUXADC_RDY0) == 0),
->> +			   MT65XX_AUXADC_SLEEP_US,
->> +			   MT65XX_AUXADC_TIMEOUT_US);
-> 
-> this returns a code 0 or -ETIMEDOUT that probably should be checked
-> 
->> +
->> +	/* set bit  to trigger sample */
-> 
-> double space after bit
-> 
->> +	val = readl(adc_dev->reg_base + MT65XX_AUXADC_CON1);
->> +	val |= 1 << chan->channel;
->> +	writel(val, adc_dev->reg_base + MT65XX_AUXADC_CON1);
->> +
->> +	/* we must delay here for hardware sample channel data */
->> +	udelay(adc_dev->sample_ready_us);
->> +
->> +	/* check MTK_AUXADC_CON2 if auxadc is idle */
->> +	readl_poll_timeout(adc_dev->reg_base + MT65XX_AUXADC_CON2, val,
->> +			   ((val & MT65XX_AUXADC_STA) == 0),
->> +			   MT65XX_AUXADC_SLEEP_US,
->> +			   MT65XX_AUXADC_TIMEOUT_US);
->> +
->> +	/* read channel and make sure  ready bit ==1 */
-space before 1 (nitpick but would conform to coding style if it were code ;)
+Hi, HS:
 
->> +	readl_poll_timeout(reg_channel, val,
->> +			   ((val & MT65XX_AUXADC_RDY0) == 1),
->> +			   MT65XX_AUXADC_SLEEP_US,
->> +			   MT65XX_AUXADC_TIMEOUT_US);
->> +
->> +	/* read data */
->> +	rawdata = readl(reg_channel) & MT65XX_AUXADC_DAT_MASK;
->> +
->> +	mutex_unlock(&adc_dev->lock);
->> +
->> +	return rawdata;
->> +}
->> +
->> +static int mt65xx_auxadc_read_raw(struct iio_dev *indio_dev,
->> +				  struct iio_chan_spec const *chan,
->> +				  int *val,
->> +				  int *val2,
->> +				  long info)
->> +{
->> +	int ret;
->> +
->> +	switch (info) {
->> +	case IIO_CHAN_INFO_RAW:
->> +		*val = mt65xx_auxadc_read(indio_dev, chan);
->> +		ret = IIO_VAL_INT;
->> +		break;
->> +	case IIO_CHAN_INFO_SCALE:
->> +		*val = 1;
-> 
-> no point in returning 1 and 0 for SCALE and OFFSET, these are the 
-> default/assumed values if not given
-If the device is really kicking out values in the base units for
-it's type (millivolts) then have the channel type as _PROCESSED not
-raw to indicate to userspace that it can be used directly without any
-offsets or scales being applied.
+I'm not familiar with mailbox, but this sounds good to me.
 
+Regards,
+CK
 
+> > > > > Here is the sample code to create cmdq_rec with session.
+> > > > > 
+> > > > > merge_wfe_cmd = true;
+> > > > > cmdq_session_create(merge_wfe_cmd, &primary_display_session);
+> > > > > cmdq_rec_create(dev, primary_display_session, &rec);
+> > > > > 
+> > > > > 
+> > > > > Therefore, the below definition can be removed.
+> > > > > 
+> > > > > > +
+> > > > > > +enum cmdq_eng {
+> > > > > > +	CMDQ_ENG_DISP_AAL,
+> > > > > > +	CMDQ_ENG_DISP_COLOR0,
+> > > > > > +	CMDQ_ENG_DISP_COLOR1,
+> > > > > > +	CMDQ_ENG_DISP_DPI0,
+> > > > > > +	CMDQ_ENG_DISP_DSI0,
+> > > > > > +	CMDQ_ENG_DISP_DSI1,
+> > > > > > +	CMDQ_ENG_DISP_GAMMA,
+> > > > > > +	CMDQ_ENG_DISP_OD,
+> > > > > > +	CMDQ_ENG_DISP_OVL0,
+> > > > > > +	CMDQ_ENG_DISP_OVL1,
+> > > > > > +	CMDQ_ENG_DISP_PWM0,
+> > > > > > +	CMDQ_ENG_DISP_PWM1,
+> > > > > > +	CMDQ_ENG_DISP_RDMA0,
+> > > > > > +	CMDQ_ENG_DISP_RDMA1,
+> > > > > > +	CMDQ_ENG_DISP_RDMA2,
+> > > > > > +	CMDQ_ENG_DISP_UFOE,
+> > > > > > +	CMDQ_ENG_DISP_WDMA0,
+> > > > > > +	CMDQ_ENG_DISP_WDMA1,
+> > > > > > +	CMDQ_ENG_MAX,
+> > > > > > +};
+> > > > > > +
+> > > > > 
+> > > > > 
+> > > > > Regards,
+> > > > > CK
 > 
->> +		ret = IIO_VAL_INT;
->> +		break;
->> +	case IIO_CHAN_INFO_OFFSET:
->> +		*val = 0;
->> +		ret = IIO_VAL_INT;
->> +		break;
->> +	default:
->> +		ret = -EINVAL;
->> +		break;
->> +	}
->> +
->> +	return ret;
->> +}
->> +
->> +static const struct iio_info mt65xx_auxadc_info = {
->> +	.driver_module = THIS_MODULE,
->> +	.read_raw = &mt65xx_auxadc_read_raw,
->> +};
->> +
->> +static int mt65xx_auxadc_probe(struct platform_device *pdev)
->> +{
->> +	struct mt65xx_auxadc_device *adc_dev;
->> +	unsigned long adc_clk_rate;
->> +	struct resource *res;
->> +	struct iio_dev *indio_dev;
->> +	int ret;
->> +	u32 val;
->> +
->> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
->> +	if (!indio_dev)
->> +		return -ENOMEM;
->> +
->> +	adc_dev = iio_priv(indio_dev);
->> +	indio_dev->dev.parent = &pdev->dev;
->> +	indio_dev->name = dev_name(&pdev->dev);
->> +	indio_dev->info = &mt65xx_auxadc_info;
->> +	indio_dev->modes = INDIO_DIRECT_MODE;
->> +	indio_dev->channels = mt65xx_auxadc_iio_channels;
->> +	indio_dev->num_channels = ARRAY_SIZE(mt65xx_auxadc_iio_channels);
->> +
->> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> +	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
->> +	if (IS_ERR(adc_dev->reg_base)) {
->> +		dev_err(&pdev->dev, "failed to get auxadc base address.\n");
->> +		return PTR_ERR(adc_dev->reg_base);
->> +	}
->> +
->> +	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
->> +	if (IS_ERR(adc_dev->adc_clk)) {
->> +		dev_err(&pdev->dev, "failed to get axuadc clock\n");
-> 
-> spelling: auxadc
-> 
->> +		return PTR_ERR(adc_dev->adc_clk);
->> +	}
->> +
->> +	ret = clk_prepare_enable(adc_dev->adc_clk);
->> +	if (ret) {
->> +		dev_err(&pdev->dev, "failed to enable auxadc clock\n");
->> +		return ret;
->> +	}
->> +
->> +	adc_clk_rate = clk_get_rate(adc_dev->adc_clk);
->> +	if (!adc_clk_rate) {
->> +		dev_err(&pdev->dev, "null clock rate!\n");
->> +		clk_disable_unprepare(adc_dev->adc_clk);
->> +		return -EINVAL;
->> +	}
->> +
->> +	adc_dev->power_ready_ms = MT65XX_AUXADC_POWER_READY_MS;
->> +	adc_dev->sample_ready_us = MT65XX_AUXADC_SAMPLE_READY_US;
->> +
->> +	mutex_init(&adc_dev->lock);
->> +
->> +	val = readl(adc_dev->reg_base + MT65XX_AUXADC_MISC);
->> +	val |= MT65XX_AUXADC_PDN_EN;
->> +	writel(val, adc_dev->reg_base + MT65XX_AUXADC_MISC);
->> +	mdelay(adc_dev->power_ready_ms);
->> +
->> +	ret = iio_device_register(indio_dev);
->> +	if (ret < 0) {
->> +		dev_err(&pdev->dev, "failed to register iio device!\n");
-> 
-> power down on failure?
-> clk_disable_unprepare()?
-Absolutely.  Anything you have in remove (other than very first statement)
-should be mirrored in the error paths of probe.
-> 
->> +		return ret;
->> +	}
->> +
->> +	platform_set_drvdata(pdev, indio_dev);
-> 
-> I'd rather put this before iio_device_register() to avoid a potential race 
-> window
-Whilst good practice in general, I'm not sure there is a race here.
-It's only used in remove, which inherently can't race with probe.
-> 
->> +
->> +	return 0;
->> +}
->> +
->> +static int mt65xx_auxadc_remove(struct platform_device *pdev)
->> +{
->> +	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
->> +	struct mt65xx_auxadc_device *adc_dev = iio_priv(indio_dev);
->> +	u32 val;
->> +
->> +	iio_device_unregister(indio_dev);
->> +
->> +	val = readl(adc_dev->reg_base + MT65XX_AUXADC_MISC);
->> +	val &= ~MT65XX_AUXADC_PDN_EN;
->> +	writel(val, adc_dev->reg_base + MT65XX_AUXADC_MISC);
->> +
->> +	clk_disable_unprepare(adc_dev->adc_clk);
->> +
->> +	return 0;
->> +}
->> +
->> +static const struct of_device_id mt65xx_auxadc_of_match[] = {
->> +	{ .compatible = "mediatek,mt2701-auxadc", },
->> +	{ .compatible = "mediatek,mt8173-auxadc", },
->> +	{ }
->> +};
->> +MODULE_DEVICE_TABLE(of, mt65xx_auxadc_of_match);
->> +
->> +static struct platform_driver mt65xx_auxadc_driver = {
->> +	.driver = {
->> +		.name   = "mt65xx-auxadc",
->> +		.of_match_table = mt65xx_auxadc_of_match,
->> +	},
->> +	.probe	= mt65xx_auxadc_probe,
->> +	.remove	= mt65xx_auxadc_remove,
->> +};
->> +module_platform_driver(mt65xx_auxadc_driver);
->> +
->> +MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
->> +MODULE_DESCRIPTION("MTK AUXADC Device Driver");
->> +MODULE_LICENSE("GPL v2");
->>
 > 
