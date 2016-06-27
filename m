@@ -1,51 +1,73 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: add ARM_SMCCC dependency
-Date: Mon, 27 Jun 2016 11:30:54 +0200
-Message-ID: <8177d497-69bb-db97-5dec-98417dad012a@gmail.com>
-References: <20160627092416.1463857-1-arnd@arndb.de>
+Subject: Re: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
+Date: Mon, 27 Jun 2016 12:20:10 +0200
+Message-ID: <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
+References: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160627092416.1463857-1-arnd@arndb.de>
+In-Reply-To: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: CK Hu <ck.hu@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 06/27/2016 11:22 AM, Arnd Bergmann wrote:
-> ARM SMCCC is only set for ARMv7 and ARMv8 CPUs, but we currently
-> allow the driver to be build for older architecture levels as
-> well, which results in a link failure:
+On 06/24/2016 09:27 AM, Bibby Hsieh wrote:
+> Hi Dave,
 >
-> drivers/gpu/built-in.o: In function `mtk_hdmi_hw_make_reg_writable':
-> :(.text+0x1e737c): undefined reference to `arm_smccc_smc'
+> Please consider merging this tag, which contains the v2 MT8173 gamma & dither function patches I sent on 2016-06-17, rebased onto v4.7-rc1. There have been no further comments.
 >
-> This adds a Kconfig dependency. The patch applies on my two
-> previous fixes that are not yet applied, so please apply all
-> three to get randconfig builds to work correctly.
+> Thanks
+> Bibby
 >
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
-> ---
->  drivers/gpu/drm/mediatek/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
+> The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
 >
+>   Linux 4.7-rc1 (2016-05-29 16:29:24 GMT)
+>
+> are available in the git repository at:
+>
+>   git@github.com:BibbyHsieh/linux4.7-rc1.git
+>
+> for you to fetch changes up to dd0eb773bc125f5e6bca735d19c08500dc3730f9:
+>
+>   drm/mediatek: Add gamma correction
+>
+> -------------------------------------------------------------------------
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+As far as I can see, your branch has 3 patches on top from Eddie. It 
+seems to me as if you didn't send your patches to the mailinglist before?
+Anyway this branch does not fulfill the rules to get merged into the 
+linux kernel.
 
-> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> index 96ebf8bb6024..294de4549922 100644
-> --- a/drivers/gpu/drm/mediatek/Kconfig
-> +++ b/drivers/gpu/drm/mediatek/Kconfig
-> @@ -3,6 +3,7 @@ config DRM_MEDIATEK
->  	depends on DRM
->  	depends on ARCH_MEDIATEK || (ARM && COMPILE_TEST)
->  	depends on COMMON_CLK
-> +	depends on HAVE_ARM_SMCCC
->  	depends on OF
->  	select DRM_GEM_CMA_HELPER
->  	select DRM_KMS_HELPER
+Why do you send a pull request? The normal process is to send the 
+patches via email and if the maintainer wants you can send a pull 
+request once the patches are ready to be merged.
+
+Regards,
+Matthias
+
+> This is MT8173 gamma & dither support PATCH v2, based on 4.7-rc1.
+>
+> Changes since v1:
+>  -According to the suggestion from Daniel,
+>   we used the new atomic color management.
+>  -Applied gamma function at GAMMA engine (path 2).
+>  -Made dithering function support hardware mirroring well.
+>  -Removed the bpc variable from mtk_drm_crtc struct.
+> -------------------------------------------------------------------------
+>
+> Bibby Hsieh (2):
+>   drm/mediatek: Add gamma correction
+>   drm/mediatek: set mt8173 dithering function
+>
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    3 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    3 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   26 ++++-
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |    1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  147 ++++++++++++++++++++++++++-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   16 ++-
+>  6 files changed, 184 insertions(+), 12 deletions(-)
 >
