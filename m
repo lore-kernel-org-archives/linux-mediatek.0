@@ -1,43 +1,51 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] drm/mediatek: add ARM_SMCCC dependency
-Date: Mon, 27 Jun 2016 11:22:37 +0200
-Message-ID: <20160627092416.1463857-1-arnd@arndb.de>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] drm/mediatek: add ARM_SMCCC dependency
+Date: Mon, 27 Jun 2016 11:30:54 +0200
+Message-ID: <8177d497-69bb-db97-5dec-98417dad012a@gmail.com>
+References: <20160627092416.1463857-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Arnd Bergmann <arnd@arndb.de>, Jie Qiu <jie.qiu@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160627092416.1463857-1-arnd@arndb.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>, David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: CK Hu <ck.hu@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-QVJNIFNNQ0NDIGlzIG9ubHkgc2V0IGZvciBBUk12NyBhbmQgQVJNdjggQ1BVcywgYnV0IHdlIGN1
-cnJlbnRseQphbGxvdyB0aGUgZHJpdmVyIHRvIGJlIGJ1aWxkIGZvciBvbGRlciBhcmNoaXRlY3R1
-cmUgbGV2ZWxzIGFzCndlbGwsIHdoaWNoIHJlc3VsdHMgaW4gYSBsaW5rIGZhaWx1cmU6Cgpkcml2
-ZXJzL2dwdS9idWlsdC1pbi5vOiBJbiBmdW5jdGlvbiBgbXRrX2hkbWlfaHdfbWFrZV9yZWdfd3Jp
-dGFibGUnOgo6KC50ZXh0KzB4MWU3MzdjKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgYXJtX3Nt
-Y2NjX3NtYycKClRoaXMgYWRkcyBhIEtjb25maWcgZGVwZW5kZW5jeS4gVGhlIHBhdGNoIGFwcGxp
-ZXMgb24gbXkgdHdvCnByZXZpb3VzIGZpeGVzIHRoYXQgYXJlIG5vdCB5ZXQgYXBwbGllZCwgc28g
-cGxlYXNlIGFwcGx5IGFsbAp0aHJlZSB0byBnZXQgcmFuZGNvbmZpZyBidWlsZHMgdG8gd29yayBj
-b3JyZWN0bHkuCgpTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgpG
-aXhlczogOGY4M2YyNjg5MWUxICgiZHJtL21lZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0IikKLS0t
-CiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZyB8IDEgKwogMSBmaWxlIGNoYW5nZWQs
-IDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
-b25maWcgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZwppbmRleCA5NmViZjhiYjYw
-MjQuLjI5NGRlNDU0OTkyMiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tj
-b25maWcKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcKQEAgLTMsNiArMyw3
-IEBAIGNvbmZpZyBEUk1fTUVESUFURUsKIAlkZXBlbmRzIG9uIERSTQogCWRlcGVuZHMgb24gQVJD
-SF9NRURJQVRFSyB8fCAoQVJNICYmIENPTVBJTEVfVEVTVCkKIAlkZXBlbmRzIG9uIENPTU1PTl9D
-TEsKKwlkZXBlbmRzIG9uIEhBVkVfQVJNX1NNQ0NDCiAJZGVwZW5kcyBvbiBPRgogCXNlbGVjdCBE
-Uk1fR0VNX0NNQV9IRUxQRVIKIAlzZWxlY3QgRFJNX0tNU19IRUxQRVIKLS0gCjIuOS4wCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+
+On 06/27/2016 11:22 AM, Arnd Bergmann wrote:
+> ARM SMCCC is only set for ARMv7 and ARMv8 CPUs, but we currently
+> allow the driver to be build for older architecture levels as
+> well, which results in a link failure:
+>
+> drivers/gpu/built-in.o: In function `mtk_hdmi_hw_make_reg_writable':
+> :(.text+0x1e737c): undefined reference to `arm_smccc_smc'
+>
+> This adds a Kconfig dependency. The patch applies on my two
+> previous fixes that are not yet applied, so please apply all
+> three to get randconfig builds to work correctly.
+>
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
+> ---
+>  drivers/gpu/drm/mediatek/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+> index 96ebf8bb6024..294de4549922 100644
+> --- a/drivers/gpu/drm/mediatek/Kconfig
+> +++ b/drivers/gpu/drm/mediatek/Kconfig
+> @@ -3,6 +3,7 @@ config DRM_MEDIATEK
+>  	depends on DRM
+>  	depends on ARCH_MEDIATEK || (ARM && COMPILE_TEST)
+>  	depends on COMMON_CLK
+> +	depends on HAVE_ARM_SMCCC
+>  	depends on OF
+>  	select DRM_GEM_CMA_HELPER
+>  	select DRM_KMS_HELPER
+>
