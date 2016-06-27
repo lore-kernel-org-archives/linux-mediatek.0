@@ -1,73 +1,85 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 Subject: Re: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
-Date: Mon, 27 Jun 2016 12:20:10 +0200
-Message-ID: <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
+Date: Mon, 27 Jun 2016 19:29:30 +0800
+Message-ID: <1467026970.23883.16.camel@mtksdaap41>
 References: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
+ <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@linux.ie>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 06/24/2016 09:27 AM, Bibby Hsieh wrote:
-> Hi Dave,
->
-> Please consider merging this tag, which contains the v2 MT8173 gamma & dither function patches I sent on 2016-06-17, rebased onto v4.7-rc1. There have been no further comments.
->
-> Thanks
-> Bibby
->
-> The following changes since commit 1a695a905c18548062509178b98bc91e67510864:
->
->   Linux 4.7-rc1 (2016-05-29 16:29:24 GMT)
->
-> are available in the git repository at:
->
->   git@github.com:BibbyHsieh/linux4.7-rc1.git
->
-> for you to fetch changes up to dd0eb773bc125f5e6bca735d19c08500dc3730f9:
->
->   drm/mediatek: Add gamma correction
->
-> -------------------------------------------------------------------------
-
-As far as I can see, your branch has 3 patches on top from Eddie. It 
-seems to me as if you didn't send your patches to the mailinglist before?
-Anyway this branch does not fulfill the rules to get merged into the 
-linux kernel.
-
-Why do you send a pull request? The normal process is to send the 
-patches via email and if the maintainer wants you can send a pull 
-request once the patches are ready to be merged.
-
-Regards,
-Matthias
-
-> This is MT8173 gamma & dither support PATCH v2, based on 4.7-rc1.
->
-> Changes since v1:
->  -According to the suggestion from Daniel,
->   we used the new atomic color management.
->  -Applied gamma function at GAMMA engine (path 2).
->  -Made dithering function support hardware mirroring well.
->  -Removed the bpc variable from mtk_drm_crtc struct.
-> -------------------------------------------------------------------------
->
-> Bibby Hsieh (2):
->   drm/mediatek: Add gamma correction
->   drm/mediatek: set mt8173 dithering function
->
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    3 +-
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    3 +-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   26 ++++-
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |    1 +
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  147 ++++++++++++++++++++++++++-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   16 ++-
->  6 files changed, 184 insertions(+), 12 deletions(-)
->
+T24gTW9uLCAyMDE2LTA2LTI3IGF0IDEyOjIwICswMjAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
+Ogo+IAo+IE9uIDA2LzI0LzIwMTYgMDk6MjcgQU0sIEJpYmJ5IEhzaWVoIHdyb3RlOgo+ID4gSGkg
+RGF2ZSwKPiA+Cj4gPiBQbGVhc2UgY29uc2lkZXIgbWVyZ2luZyB0aGlzIHRhZywgd2hpY2ggY29u
+dGFpbnMgdGhlIHYyIE1UODE3MyBnYW1tYSAmIGRpdGhlciBmdW5jdGlvbiBwYXRjaGVzIEkgc2Vu
+dCBvbiAyMDE2LTA2LTE3LCByZWJhc2VkIG9udG8gdjQuNy1yYzEuIFRoZXJlIGhhdmUgYmVlbiBu
+byBmdXJ0aGVyIGNvbW1lbnRzLgo+ID4KPiA+IFRoYW5rcwo+ID4gQmliYnkKPiA+Cj4gPiBUaGUg
+Zm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IDFhNjk1YTkwNWMxODU0ODA2MjUwOTE3OGI5
+OGJjOTFlNjc1MTA4NjQ6Cj4gPgo+ID4gICBMaW51eCA0LjctcmMxICgyMDE2LTA1LTI5IDE2OjI5
+OjI0IEdNVCkKPiA+Cj4gPiBhcmUgYXZhaWxhYmxlIGluIHRoZSBnaXQgcmVwb3NpdG9yeSBhdDoK
+PiA+Cj4gPiAgIGdpdEBnaXRodWIuY29tOkJpYmJ5SHNpZWgvbGludXg0LjctcmMxLmdpdAo+ID4K
+PiA+IGZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byBkZDBlYjc3M2JjMTI1ZjVlNmJjYTcz
+NWQxOWMwODUwMGRjMzczMGY5Ogo+ID4KPiA+ICAgZHJtL21lZGlhdGVrOiBBZGQgZ2FtbWEgY29y
+cmVjdGlvbgo+ID4KPiA+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPiAKPiBBcyBmYXIgYXMgSSBjYW4gc2Vl
+LCB5b3VyIGJyYW5jaCBoYXMgMyBwYXRjaGVzIG9uIHRvcCBmcm9tIEVkZGllLiBJdCAKPiBzZWVt
+cyB0byBtZSBhcyBpZiB5b3UgZGlkbid0IHNlbmQgeW91ciBwYXRjaGVzIHRvIHRoZSBtYWlsaW5n
+bGlzdCBiZWZvcmU/Cj4gQW55d2F5IHRoaXMgYnJhbmNoIGRvZXMgbm90IGZ1bGZpbGwgdGhlIHJ1
+bGVzIHRvIGdldCBtZXJnZWQgaW50byB0aGUgCj4gbGludXgga2VybmVsLgo+IAo+IFdoeSBkbyB5
+b3Ugc2VuZCBhIHB1bGwgcmVxdWVzdD8gVGhlIG5vcm1hbCBwcm9jZXNzIGlzIHRvIHNlbmQgdGhl
+IAo+IHBhdGNoZXMgdmlhIGVtYWlsIGFuZCBpZiB0aGUgbWFpbnRhaW5lciB3YW50cyB5b3UgY2Fu
+IHNlbmQgYSBwdWxsIAo+IHJlcXVlc3Qgb25jZSB0aGUgcGF0Y2hlcyBhcmUgcmVhZHkgdG8gYmUg
+bWVyZ2VkLgo+IAo+IFJlZ2FyZHMsCj4gTWF0dGhpYXMKPiAKCkkgc2VudCB2MSBhbmQgdjIgb24g
+MjAxNi0wNi0xNCBhbmQgMDYtMTcgcmVzcGVjdGl2ZWx5IFswLThdLgpBZnRlciBJIG1hZGUgc29t
+ZSBtb2RpZmljYXRpb25zIGFjY29yZGluZyB0byBEYW5pZWwgVmV0dGVyJ3MgY29tbWVudHMsCnRo
+ZXJlIGhhZCBiZWVuIG5vIGZ1cnRoZXIgY29tbWVudHMgYW5kIEkgc2VudCB0aGUgcHVsbCByZXF1
+ZXN0IGFzIHRoZQpvdGhlciBzdWItc3lzLgoKSSdtIHNvcnJ5IGZvciBteSBtaXN0YWtlLCBJIHdp
+bGwgcmUtYXJyYW5nZSB0aGUgdHJlZSBmb3IgdXBzdHJlYW0uCk5leHQgdGltZSwgSSB3aWxsIGNo
+ZWNrIHdpdGggbWFpbnRhaW5lciBieSBlbWFpbCBmaXJzdCwgYW5kIHNlbnQgdGhlCnB1bGwgcmVx
+dWVzdC4KClRoYW5rcy4KQmliYnkgCiAKWzBdaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9w
+YXRjaC85MTc0OTQxLwpbMV1odHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkxNzQ4
+NTUvClsyXWh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTE4MjM2MS8KWzNdaHR0
+cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85MTgyMzY3LwpbNF1odHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAxNi1KdW5lLzExMTE3OC5odG1s
+Cls1XWh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL2FyY2hpdmVzL2RyaS1kZXZlbC8yMDE2
+LUp1bmUvMTExMTc3Lmh0bWwKWzZdaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvYXJjaGl2
+ZXMvZHJpLWRldmVsLzIwMTYtSnVuZS8xMTExNzYuaHRtbApbN11odHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9hcmNoaXZlcy9kcmktZGV2ZWwvMjAxNi1KdW5lLzExMDc4MS5odG1sCls4XWh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL2FyY2hpdmVzL2RyaS1kZXZlbC8yMDE2LUp1bmUv
+MTEwNzgyLmh0bWwKWzldaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvYXJjaGl2ZXMvZHJp
+LWRldmVsLzIwMTYtSnVuZS8xMTA3ODQuaHRtbAoKPiA+IFRoaXMgaXMgTVQ4MTczIGdhbW1hICYg
+ZGl0aGVyIHN1cHBvcnQgUEFUQ0ggdjIsIGJhc2VkIG9uIDQuNy1yYzEuCj4gPgo+ID4gQ2hhbmdl
+cyBzaW5jZSB2MToKPiA+ICAtQWNjb3JkaW5nIHRvIHRoZSBzdWdnZXN0aW9uIGZyb20gRGFuaWVs
+LAo+ID4gICB3ZSB1c2VkIHRoZSBuZXcgYXRvbWljIGNvbG9yIG1hbmFnZW1lbnQuCj4gPiAgLUFw
+cGxpZWQgZ2FtbWEgZnVuY3Rpb24gYXQgR0FNTUEgZW5naW5lIChwYXRoIDIpLgo+ID4gIC1NYWRl
+IGRpdGhlcmluZyBmdW5jdGlvbiBzdXBwb3J0IGhhcmR3YXJlIG1pcnJvcmluZyB3ZWxsLgo+ID4g
+IC1SZW1vdmVkIHRoZSBicGMgdmFyaWFibGUgZnJvbSBtdGtfZHJtX2NydGMgc3RydWN0Lgo+ID4g
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQo+ID4KPiA+IEJpYmJ5IEhzaWVoICgyKToKPiA+ICAgZHJtL21lZGlh
+dGVrOiBBZGQgZ2FtbWEgY29ycmVjdGlvbgo+ID4gICBkcm0vbWVkaWF0ZWs6IHNldCBtdDgxNzMg
+ZGl0aGVyaW5nIGZ1bmN0aW9uCj4gPgo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZGlzcF9vdmwuYyAgICAgfCAgICAzICstCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kaXNwX3JkbWEuYyAgICB8ICAgIDMgKy0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9jcnRjLmMgICAgIHwgICAyNiArKysrLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2NydGMuaCAgICAgfCAgICAxICsKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgIDE0NyArKysrKysrKysrKysrKysrKysrKysrKysr
+Ky0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgICAx
+NiArKy0KPiA+ICA2IGZpbGVzIGNoYW5nZWQsIDE4NCBpbnNlcnRpb25zKCspLCAxMiBkZWxldGlv
+bnMoLSkKPiA+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+Cmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVs
+Cg==
