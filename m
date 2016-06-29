@@ -1,59 +1,49 @@
-From: Roger Lu <roger.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] PM / suspend: show workqueues busy name in suspend flow
-Date: Wed, 29 Jun 2016 11:54:11 +0800
-Message-ID: <1467172451.4141.20.camel@mtksdaap41>
-References: <1466586509-32400-1-git-send-email-roger.lu@mediatek.com>
- <20160622152126.GV3262@mtj.duckdns.org>
- <1467020645.25092.24.camel@mtksdaap41>
- <20160628165616.GD5185@htj.duckdns.org>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 2/2 v16] drm/bridge: Add I2C based driver for ps8640 bridge
+Date: Wed, 29 Jun 2016 12:31:23 +0800
+Message-ID: <CAGS+omDsDS5tx=+Efq8LWNd3-asU4r2h=-AE6vdKgfG-p6vdAA@mail.gmail.com>
+References: <1464861445-11086-1-git-send-email-jitao.shi@mediatek.com>
+ <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
+ <CACvgo53002XCPLufbJHQLC1uL1nNS7_0gh=napedetmvT6FoSw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160628165616.GD5185-piEFEHQLUPpN0TnZuCh8vA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tejun Heo <tj-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Len Brown <len.brown-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "Rafael J . Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Lai Jiangshan <jiangshanlai-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CACvgo53002XCPLufbJHQLC1uL1nNS7_0gh=napedetmvT6FoSw@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, ML dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, devicetree <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, LAKML <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream <srv_heupstream@mediatek.com>, Linux-Kernel@Vger
 List-Id: linux-mediatek@lists.infradead.org
 
-Dear Tejun,
-
-On Tue, 2016-06-28 at 12:56 -0400, Tejun Heo wrote:
-> Hello, Roger.
-> 
-> On Mon, Jun 27, 2016 at 05:44:05PM +0800, Roger Lu wrote:
-> > show_workqueue_state() is a better choice to me. However, only freezable
-> > workqueue is able to affect suspend flow. So, is there other mailing
-> > list discussing about showing freezable workqueue state only?? Maybe we
-> > can use that API in this case. Thanks very much.
-> > 
-> > freezable workqueue means workqueue is created with flag WQ_FREEZABLE.
-> 
-> It's for debugging anyway and workqueue dumps usually are pretty
-> short.  I don't think it's fine to use the same function.  We can add
-> flags in the printouts but I'm not even sure that'd be necessary.
-> 
-> Thanks.
-> 
-
-Please allow me to elaborate my previous concern about printing
-freezable workqueue info only in this case.
-
-The benefit of it is that debugger can quickly understand which
-freezable workqueues block suspend flow and assign this issue to
-corresponding owner instead of extracting freezable workqueue info from
-show_workqueue_state() first and, then, assigning the issue.
-
-Adding a flag to printout the info we need is great. Perhaps we can do
-that. Thanks for the advice.
-
-Sincerely,
-Roger Lu.
+SGkgRW1pbCwKCk9uZSBhbnN3ZXIgaW5saW5lIGJlbG93LiAgVGhlIHJlc3QgSSBsZWF2ZSB0byBK
+aXRhby4uLgoKW3NuaXAuLi5dCgpPbiBGcmksIEp1biAxNywgMjAxNiBhdCAzOjE0IEFNLCBFbWls
+IFZlbGlrb3YgPGVtaWwubC52ZWxpa292QGdtYWlsLmNvbT4gd3JvdGU6Cgo+PiArc3RhdGljIHNz
+aXplX3QgcHM4NjQwX3VwZGF0ZV9md19zdG9yZShzdHJ1Y3QgZGV2aWNlICpkZXYsCj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGRldmljZV9hdHRyaWJ1dGUg
+KmF0dHIsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgY2hh
+ciAqYnVmLCBzaXplX3QgY291bnQpCj4+ICt7Cj4+ICsgICAgICAgc3RydWN0IGkyY19jbGllbnQg
+KmNsaWVudCA9IHRvX2kyY19jbGllbnQoZGV2KTsKPj4gKyAgICAgICBzdHJ1Y3QgcHM4NjQwICpw
+c19icmlkZ2UgPSBpMmNfZ2V0X2NsaWVudGRhdGEoY2xpZW50KTsKPj4gKyAgICAgICBjb25zdCBz
+dHJ1Y3QgZmlybXdhcmUgKmZ3Owo+PiArICAgICAgIGludCBlcnJvcjsKPj4gKwo+PiArICAgICAg
+IGVycm9yID0gcmVxdWVzdF9maXJtd2FyZSgmZncsIFBTX0ZXX05BTUUsIGRldik7Cj4gQ2FuIHRo
+ZSBkZXZpY2Ugb3BlcmF0ZSB3aXRob3V0IGEgZmlybXdhcmUgPyBJZiBub3QsIHdoeSBpcyB0aGUK
+PiBmaXJtd2FyZSBsb2FkZWQgc28gbGF0ZXIvYWZ0ZXIgdXNlciBpbnRlcmFjdGlvbiAodmlhIHN5
+c2ZzKSA/IEkgZG9uJ3QKPiByZWNhbGwgYW55IG90aGVyIGRyaXZlciBpbiBEUk0gdG8gdXNlIHN1
+Y2ggYW4gYXBwcm9hY2guCgpUaGUgUFM4NjQwIGhhcyBpbnRlcm5hbCBmbGFzaCwgc28gaXQgc2hv
+dWxkIGFsd2F5cyBhbHJlYWR5IGhhdmUgYQp3b3JraW5nIGZpcm13YXJlLgpUaGlzIHN5c2ZzIGlu
+dGVyZmFjZSBpcyB1c2VmdWwgZm9yIHVzZXIgc3BhY2UgaW5pdGlhdGVkIGZpZWxkIGZpcm13YXJl
+IHVwZGF0ZXMuCgpSZWdhcmRzLAotRGFuaWVsCgo+IFJlZ2FyZHMsCj4gRW1pbAo+IF9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxp
+bmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3Rz
+LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbApfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
