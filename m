@@ -1,40 +1,62 @@
-From: Tejun Heo <tj@kernel.org>
-Subject: Re: [PATCH] PM / suspend: show workqueues busy name in suspend flow
-Date: Wed, 29 Jun 2016 09:22:01 -0400
-Message-ID: <20160629132201.GC24054@htj.duckdns.org>
-References: <1466586509-32400-1-git-send-email-roger.lu@mediatek.com>
- <20160622152126.GV3262@mtj.duckdns.org>
- <1467020645.25092.24.camel@mtksdaap41>
- <20160628165616.GD5185@htj.duckdns.org>
- <1467172451.4141.20.camel@mtksdaap41>
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+Subject: [PATCH 1/4] mmc: mediatek: do not tune data for HS400 mode
+Date: Thu, 30 Jun 2016 10:00:58 +0800
+Message-ID: <1467252061-3791-2-git-send-email-chaotian.jing@mediatek.com>
+References: <1467252061-3791-1-git-send-email-chaotian.jing@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1467172451.4141.20.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Roger Lu <roger.lu@mediatek.com>
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, Lai Jiangshan <jiangshanlai@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, djkurtz@chromium.org, drinkcat@chromium.org, fan.chen@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <1467252061-3791-1-git-send-email-chaotian.jing@mediatek.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Wei-Ning Huang <wnhuang@chromium.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello, Roger.
+for hs400 mode, should only tune DS delay, should not
+tune PAD_TUNE for data path.
+if eMMC will run at hs400 mode, do not tune data while
+call ops->execute_tuning().
 
-On Wed, Jun 29, 2016 at 11:54:11AM +0800, Roger Lu wrote:
-> Please allow me to elaborate my previous concern about printing
-> freezable workqueue info only in this case.
-> 
-> The benefit of it is that debugger can quickly understand which
-> freezable workqueues block suspend flow and assign this issue to
-> corresponding owner instead of extracting freezable workqueue info from
-> show_workqueue_state() first and, then, assigning the issue.
+Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-I don't think it matters.  At that point, workqueues are generally
-pretty idle anyway and it shouldn't be difficult to tell which work
-items are the offending ones.  Besides, freezable and unfreezable
-workqueues share the same backend pools, so it isn't easily separable
-either.
-
-Thanks.
-
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 5642f71..4d7ce65 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -326,6 +326,7 @@ struct msdc_host {
+ 	unsigned char timing;
+ 	bool vqmmc_enabled;
+ 	u32 hs400_ds_delay;
++	bool hs400_mode;	/* current eMMC will run at hs400 mode */
+ 	struct msdc_save_para save_para; /* used when gate HCLK */
+ };
+ 
+@@ -1402,9 +1403,11 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
+ 		dev_err(host->dev, "Tune response fail!\n");
+ 		return ret;
+ 	}
+-	ret = msdc_tune_data(mmc, opcode);
+-	if (ret == -EIO)
+-		dev_err(host->dev, "Tune data fail!\n");
++	if (host->hs400_mode == false) {
++		ret = msdc_tune_data(mmc, opcode);
++		if (ret == -EIO)
++			dev_err(host->dev, "Tune data fail!\n");
++	}
+ 
+ 	return ret;
+ }
+@@ -1412,6 +1415,7 @@ static int msdc_execute_tuning(struct mmc_host *mmc, u32 opcode)
+ static int msdc_prepare_hs400_tuning(struct mmc_host *mmc, struct mmc_ios *ios)
+ {
+ 	struct msdc_host *host = mmc_priv(mmc);
++	host->hs400_mode = true;
+ 
+ 	writel(host->hs400_ds_delay, host->base + PAD_DS_TUNE);
+ 	return 0;
 -- 
-tejun
+1.8.1.1.dirty
+
