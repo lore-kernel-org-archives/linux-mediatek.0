@@ -1,27 +1,28 @@
 From: kbuild test robot <lkp@intel.com>
-Subject: Re: [PATCH V2 4/4] net-next: mediatek: add support for IRQ grouping
-Date: Thu, 30 Jun 2016 13:04:30 +0800
-Message-ID: <201606301332.bixswLIk%fengguang.wu@intel.com>
-References: <1467200291-60106-5-git-send-email-john@phrozen.org>
+Subject: Re: [PATCH V2 2/4] net-next: mediatek: don't use intermediate
+ variables to store IRQ masks
+Date: Thu, 30 Jun 2016 14:03:52 +0800
+Message-ID: <201606301404.EoyOs9Sz%fengguang.wu@intel.com>
+References: <1467200291-60106-3-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="6TrnltStXW4iwmi0"
+Content-Type: multipart/mixed; boundary="CE+1k2dSO48ffgeK"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1467200291-60106-5-git-send-email-john@phrozen.org>
+In-Reply-To: <1467200291-60106-3-git-send-email-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
 Cc: kbuild-all@01.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>, Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---6TrnltStXW4iwmi0
+--CE+1k2dSO48ffgeK
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi,
 
 [auto build test ERROR on net/master]
-[also build test ERROR on next-20160629]
-[cannot apply to net-next/master v4.7-rc5]
+[also build test ERROR on v4.7-rc5 next-20160629]
+[cannot apply to net-next/master]
 [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
 
 url:    https://github.com/0day-ci/linux/commits/John-Crispin/net-next-mediatek-IRQ-cleanups-fixes-and-grouping/20160629-194341
@@ -33,40 +34,49 @@ reproduce:
         # save the attached .config to linux build tree
         make.cross ARCH=arm 
 
+Note: the linux-review/John-Crispin/net-next-mediatek-IRQ-cleanups-fixes-and-grouping/20160629-194341 HEAD e8462c612b33003fba7c1a70328c7fb7872d8507 builds fine.
+      It only hurts bisectibility.
+
 All errors (new ones prefixed by >>):
 
-   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_poll_controller':
->> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1300:2: error: implicit declaration of function 'mtk_handle_irq' [-Werror=implicit-function-declaration]
-     mtk_handle_irq(dev->irq[0], dev);
-     ^
->> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1300:25: error: subscripted value is neither array nor pointer nor vector
-     mtk_handle_irq(dev->irq[0], dev);
-                            ^
-   cc1: some warnings being treated as errors
+   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_poll':
+>> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:16: error: 'tx_intr' undeclared (first use in this function)
+     if (status & (tx_intr | rx_intr))
+                   ^
+   drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:16: note: each undeclared identifier is reported only once for each function it appears in
+>> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:26: error: 'rx_intr' undeclared (first use in this function)
+     if (status & (tx_intr | rx_intr))
+                             ^
 
-vim +/mtk_handle_irq +1300 drivers/net/ethernet/mediatek/mtk_eth_soc.c
+vim +/tx_intr +1003 drivers/net/ethernet/mediatek/mtk_eth_soc.c
 
-  1294	{
-  1295		struct mtk_mac *mac = netdev_priv(dev);
-  1296		struct mtk_eth *eth = mac->hw;
-  1297		u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
-  1298	
-  1299		mtk_irq_disable(eth, int_mask);
-> 1300		mtk_handle_irq(dev->irq[0], dev);
-  1301		mtk_irq_enable(eth, int_mask);
-  1302	}
-  1303	#endif
+656e7052 John Crispin 2016-03-08   997  	}
+656e7052 John Crispin 2016-03-08   998  
+656e7052 John Crispin 2016-03-08   999  	if (tx_again || rx_done == budget)
+656e7052 John Crispin 2016-03-08  1000  		return budget;
+656e7052 John Crispin 2016-03-08  1001  
+656e7052 John Crispin 2016-03-08  1002  	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+656e7052 John Crispin 2016-03-08 @1003  	if (status & (tx_intr | rx_intr))
+656e7052 John Crispin 2016-03-08  1004  		return budget;
+656e7052 John Crispin 2016-03-08  1005  
+656e7052 John Crispin 2016-03-08  1006  	napi_complete(napi);
+
+:::::: The code at line 1003 was first introduced by commit
+:::::: 656e705243fd0c2864b89634ea16ed444ef64dc6 net-next: mediatek: add support for MT7623 ethernet
+
+:::::: TO: John Crispin <blogic@openwrt.org>
+:::::: CC: David S. Miller <davem@davemloft.net>
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---6TrnltStXW4iwmi0
+--CE+1k2dSO48ffgeK
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICJmndFcAAy5jb25maWcAjFxbc+Ootn7fv8LVcx7OeZiJL7GdnFN5QAjbjCWhALKdvFCe
+H4sICJK0dFcAAy5jb25maWcAjFxbc+Ootn7fv8LVcx7OeZiJL7GdnFN5QAjbjCWhALKdvFCe
 jLvHtXPpctKzu//9WYBkAULu6ZqaRN9awBIs1g2UX/71ywB9+3h72X8cn/bPzz8GXw6vh9P+
 4/Dn4PPx+fB/g5QNCiYHJKXyN2DOjq/fvl/tTy+D69/mvw1/PT2NB+vD6fXwPMBvr5+PX75B
 4+Pb679++RdmxYIuFeL53Q/nQa2QUGKp8ArRoqUUhKQaTnOkMlIs5cpvpfFKEEVZnlddkoEV
@@ -1134,4 +1144,4 @@ cbbkvxzTP425i8uuwxvjQmMRh2J3doc4W1boLxFqTeZyUdVG6Ac/vqtLahQPtqf0Oi0IuHEx
 bECgghk7EhSqFVIHDl6r6/EvR2YDqyapo1QK9Ya/hkMD9ga/PLbZSVAPjZ3blISAd1RVq+t/
 CYNV0Cd/0DCrRBzdtRL1/we+2UOaipkDAA==
 
---6TrnltStXW4iwmi0--
+--CE+1k2dSO48ffgeK--
