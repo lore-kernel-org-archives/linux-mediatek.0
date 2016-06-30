@@ -1,24 +1,63 @@
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-Subject: fix some host driver defect
-Date: Thu, 30 Jun 2016 10:00:57 +0800
-Message-ID: <1467252061-3791-1-git-send-email-chaotian.jing@mediatek.com>
+From: Roger Lu <roger.lu@mediatek.com>
+Subject: [PATCH] PM / suspend: show workqueue state in suspend flow
+Date: Thu, 30 Jun 2016 11:17:46 +0800
+Message-ID: <1467256666-27808-1-git-send-email-roger.lu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Chaotian Jing <chaotian.jing@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Wei-Ning Huang <wnhuang@chromium.org>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, Tejun Heo <tj@kernel.org>
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Lai Jiangshan <jiangshanlai@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Roger Lu <roger.lu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+If freezable workqueue aborts suspend flow, show
+workqueue state for debug purpose.
 
-Chaotian Jing (4):
-  mmc: mediatek: do not tune data for HS400 mode
-  mmc: mediatek: fix CRC error when calling mmc_select_hs400()
-  mmc: mediatek: fix CMD21/CMD19 timeout issue
-  mmc: mediatek: perfer to use rise edge latching
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ kernel/power/process.c | 3 +++
+ kernel/workqueue.c     | 7 +++++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
- drivers/mmc/host/mtk-sd.c | 70 +++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 56 insertions(+), 14 deletions(-)
-
+diff --git a/kernel/power/process.c b/kernel/power/process.c
+index df058be..6eef250 100644
+--- a/kernel/power/process.c
++++ b/kernel/power/process.c
+@@ -89,6 +89,9 @@ static int try_to_freeze_tasks(bool user_only)
+ 		       elapsed_msecs / 1000, elapsed_msecs % 1000,
+ 		       todo - wq_busy, wq_busy);
+ 
++		if (wq_busy)
++			show_workqueue_state();
++
+ 		if (!wakeup) {
+ 			read_lock(&tasklist_lock);
+ 			for_each_process_thread(g, p) {
+diff --git a/kernel/workqueue.c b/kernel/workqueue.c
+index e1c0e99..c945617 100644
+--- a/kernel/workqueue.c
++++ b/kernel/workqueue.c
+@@ -4369,8 +4369,8 @@ static void show_pwq(struct pool_workqueue *pwq)
+ /**
+  * show_workqueue_state - dump workqueue state
+  *
+- * Called from a sysrq handler and prints out all busy workqueues and
+- * pools.
++ * Called from a sysrq handler or try_to_freeze_tasks() and prints out
++ * all busy workqueues and pools.
+  */
+ void show_workqueue_state(void)
+ {
+@@ -4396,6 +4396,9 @@ void show_workqueue_state(void)
+ 		if (idle)
+ 			continue;
+ 
++		if (wq->flags & WQ_FREEZABLE)
++			pr_info("freezable ");
++
+ 		pr_info("workqueue %s: flags=0x%x\n", wq->name, wq->flags);
+ 
+ 		for_each_pwq(pwq, wq) {
 -- 
-1.8.1.1.dirty
+2.6.4
+
