@@ -1,167 +1,84 @@
-From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v9 4/4] CMDQ: save more energy in idle
-Date: Thu, 30 Jun 2016 15:14:43 +0800
-Message-ID: <1467270883-1407-5-git-send-email-hs.liao@mediatek.com>
-References: <1467270883-1407-1-git-send-email-hs.liao@mediatek.com>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [PATCH V2 2/4] net-next: mediatek: don't use intermediate
+ variables to store IRQ masks
+Date: Thu, 30 Jun 2016 09:33:33 +0200
+Message-ID: <3eb8dd5f-7b21-a2f5-dbd5-9016bf328753@phrozen.org>
+References: <201606301404.EoyOs9Sz%fengguang.wu@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1467270883-1407-1-git-send-email-hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <201606301404.EoyOs9Sz%fengguang.wu@intel.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kbuild test robot <lkp@intel.com>
+Cc: Sean Wang <keyhaede@gmail.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kbuild-all@01.org, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use clk_disable_unprepare instead of clk_disable to save more energy
-when CMDQ is idle.
 
-Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/soc/mediatek/mtk-cmdq.c | 55 +++++++++++++++++++++++++++++++++++------
- 1 file changed, 47 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq.c b/drivers/soc/mediatek/mtk-cmdq.c
-index 6a6c4c3..549bbdd 100644
---- a/drivers/soc/mediatek/mtk-cmdq.c
-+++ b/drivers/soc/mediatek/mtk-cmdq.c
-@@ -32,6 +32,7 @@
- #include <linux/spinlock.h>
- #include <linux/suspend.h>
- #include <linux/timer.h>
-+#include <linux/workqueue.h>
- #include <soc/mediatek/cmdq.h>
- 
- #define CMDQ_THR_MAX_COUNT		3 /* main, sub, general(misc) */
-@@ -130,10 +131,16 @@ struct cmdq_task {
- 	struct cmdq_task_cb	cb;
- };
- 
-+struct cmdq_clk_release {
-+	struct cmdq		*cmdq;
-+	struct work_struct	release_work;
-+};
-+
- struct cmdq {
- 	struct mbox_controller	mbox;
- 	void __iomem		*base;
- 	u32			irq;
-+	struct workqueue_struct	*clk_release_wq;
- 	struct cmdq_thread	thread[CMDQ_THR_MAX_COUNT];
- 	struct mutex		task_mutex;
- 	struct clk		*clock;
-@@ -282,11 +289,19 @@ static void cmdq_task_remove_wfe(struct cmdq_task *task)
- static void cmdq_task_exec(struct cmdq_task *task, struct cmdq_thread *thread)
- {
- 	struct cmdq *cmdq = task->cmdq;
--	unsigned long curr_pa, end_pa;
-+	unsigned long curr_pa, end_pa, flags;
- 
- 	task->thread = thread;
- 	if (list_empty(&thread->task_busy_list)) {
--		WARN_ON(clk_enable(cmdq->clock) < 0);
-+		/*
-+		 * Unlock for clk prepare (sleeping function).
-+		 * We are safe to do that since we have task_mutex and
-+		 * only flush will add task.
-+		 */
-+		spin_unlock_irqrestore(&thread->chan->lock, flags);
-+		WARN_ON(clk_prepare_enable(cmdq->clock) < 0);
-+		spin_lock_irqsave(&thread->chan->lock, flags);
-+
- 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
- 
- 		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-@@ -356,6 +371,26 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
- 	cmdq_thread_resume(thread);
- }
- 
-+static void cmdq_clk_release_work(struct work_struct *work_item)
-+{
-+	struct cmdq_clk_release *clk_release = container_of(work_item,
-+			struct cmdq_clk_release, release_work);
-+	struct cmdq *cmdq = clk_release->cmdq;
-+
-+	clk_disable_unprepare(cmdq->clock);
-+	kfree(clk_release);
-+}
-+
-+static void cmdq_clk_release_schedule(struct cmdq *cmdq)
-+{
-+	struct cmdq_clk_release *clk_release;
-+
-+	clk_release = kmalloc(sizeof(*clk_release), GFP_ATOMIC);
-+	clk_release->cmdq = cmdq;
-+	INIT_WORK(&clk_release->release_work, cmdq_clk_release_work);
-+	queue_work(cmdq->clk_release_wq, &clk_release->release_work);
-+}
-+
- static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 				    struct cmdq_thread *thread)
- {
-@@ -405,7 +440,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 
- 	if (list_empty(&thread->task_busy_list)) {
- 		cmdq_thread_disable(cmdq, thread);
--		clk_disable(cmdq->clock);
-+		cmdq_clk_release_schedule(cmdq);
- 	} else {
- 		mod_timer(&thread->timeout,
- 			  jiffies + msecs_to_jiffies(CMDQ_TIMEOUT_MS));
-@@ -464,7 +499,7 @@ static void cmdq_thread_handle_timeout(unsigned long data)
- 
- 	cmdq_thread_resume(thread);
- 	cmdq_thread_disable(cmdq, thread);
--	clk_disable(cmdq->clock);
-+	cmdq_clk_release_schedule(cmdq);
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
- }
- 
-@@ -763,7 +798,7 @@ static int cmdq_suspend(struct device *dev)
- 		msleep(20);
- 	}
- 
--	clk_unprepare(cmdq->clock);
-+	flush_workqueue(cmdq->clk_release_wq);
- 	return 0;
- }
- 
-@@ -771,7 +806,6 @@ static int cmdq_resume(struct device *dev)
- {
- 	struct cmdq *cmdq = dev_get_drvdata(dev);
- 
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
- 	cmdq->suspended = false;
- 	return 0;
- }
-@@ -780,8 +814,8 @@ static int cmdq_remove(struct platform_device *pdev)
- {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
- 
-+	destroy_workqueue(cmdq->clk_release_wq);
- 	mbox_controller_unregister(&cmdq->mbox);
--	clk_unprepare(cmdq->clock);
- 	return 0;
- }
- 
-@@ -899,8 +933,13 @@ static int cmdq_probe(struct platform_device *pdev)
- 	}
- 
- 	mutex_init(&cmdq->task_mutex);
-+
-+	cmdq->clk_release_wq = alloc_ordered_workqueue(
-+			"%s", WQ_MEM_RECLAIM | WQ_HIGHPRI,
-+			"cmdq_clk_release");
-+
- 	platform_set_drvdata(pdev, cmdq);
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
-+
- 	return 0;
- }
- 
--- 
-1.9.1
+On 30/06/2016 08:03, kbuild test robot wrote:
+> Hi,
+> 
+> [auto build test ERROR on net/master]
+> [also build test ERROR on v4.7-rc5 next-20160629]
+> [cannot apply to net-next/master]
+> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+> 
+> url:    https://github.com/0day-ci/linux/commits/John-Crispin/net-next-mediatek-IRQ-cleanups-fixes-and-grouping/20160629-194341
+> config: arm-allmodconfig (attached as .config)
+> compiler: arm-linux-gnueabi-gcc (Debian 5.3.1-8) 5.3.1 20160205
+> reproduce:
+>         wget https://git.kernel.org/cgit/linux/kernel/git/wfg/lkp-tests.git/plain/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # save the attached .config to linux build tree
+>         make.cross ARCH=arm 
+> 
+> Note: the linux-review/John-Crispin/net-next-mediatek-IRQ-cleanups-fixes-and-grouping/20160629-194341 HEAD e8462c612b33003fba7c1a70328c7fb7872d8507 builds fine.
+>       It only hurts bisectibility.
+> 
+> All errors (new ones prefixed by >>):
+> 
+>    drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_poll':
+>>> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:16: error: 'tx_intr' undeclared (first use in this function)
+>      if (status & (tx_intr | rx_intr))
+>                    ^
+>    drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:16: note: each undeclared identifier is reported only once for each function it appears in
+>>> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1003:26: error: 'rx_intr' undeclared (first use in this function)
+>      if (status & (tx_intr | rx_intr))
+>                              ^
+> 
+> vim +/tx_intr +1003 drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> 
+> 656e7052 John Crispin 2016-03-08   997  	}
+> 656e7052 John Crispin 2016-03-08   998  
+> 656e7052 John Crispin 2016-03-08   999  	if (tx_again || rx_done == budget)
+> 656e7052 John Crispin 2016-03-08  1000  		return budget;
+> 656e7052 John Crispin 2016-03-08  1001  
+> 656e7052 John Crispin 2016-03-08  1002  	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
+> 656e7052 John Crispin 2016-03-08 @1003  	if (status & (tx_intr | rx_intr))
+> 656e7052 John Crispin 2016-03-08  1004  		return budget;
+> 656e7052 John Crispin 2016-03-08  1005  
+> 656e7052 John Crispin 2016-03-08  1006  	napi_complete(napi);
+> 
+> :::::: The code at line 1003 was first introduced by commit
+> :::::: 656e705243fd0c2864b89634ea16ed444ef64dc6 net-next: mediatek: add support for MT7623 ethernet
+> 
+> :::::: TO: John Crispin <blogic@openwrt.org>
+> :::::: CC: David S. Miller <davem@davemloft.net>
+> 
+> ---
+> 0-DAY kernel test infrastructure                Open Source Technology Center
+> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Hi,
+
+This series depends on a previous series currently sitting in net.git
+starting with
+	commit 562c5a70400c ("net: mediatek: only wake the queue if it is stopped")
+up to
+	commit 82c6544dddc6 ("net: mediatek: remove superfluous queue wake up
+call")
+
+i just double checked and with the series applied this compile error is gone
+
+	John
