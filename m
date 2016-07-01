@@ -1,11 +1,15 @@
-From: Roger Lu <roger.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] PM / suspend: show workqueue state in suspend flow
-Date: Fri, 1 Jul 2016 11:05:02 +0800
-Message-ID: <1467342302-16129-1-git-send-email-roger.lu@mediatek.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
+Date: Fri, 1 Jul 2016 12:11:51 +0200
+Message-ID: <8a46c1e7-1f27-1e67-8c05-b133598b6a66@xs4all.nl>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+ <20160607112235.475c2e4c@recife.lan> <575746EE.3030706@cisco.com>
+ <1465902488.27938.7.camel@mtksdaap41> <20160616075428.0fde4aaa@recife.lan>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160616075428.0fde4aaa-+RedX5hVuTR+urZeOPWqwQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -15,50 +19,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Rafael J . Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Len Brown <len.brown-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Tejun Heo <tj-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Roger Lu <roger.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lai Jiangshan <jiangshanlai-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If freezable workqueue aborts suspend flow, show
-workqueue state for debug purpose.
+On 06/16/2016 12:54 PM, Mauro Carvalho Chehab wrote:
+> Em Tue, 14 Jun 2016 19:08:08 +0800
+> tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
+> 
+>> Hi Mauro,
+>>
+>>
+>> On Wed, 2016-06-08 at 07:13 +0900, Hans Verkuil wrote:
+>>>
+>>> On 06/07/2016 11:22 PM, Mauro Carvalho Chehab wrote:  
+>>>> Em Mon, 30 May 2016 20:29:14 +0800
+>>>> Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
+>>>>  
+>>>>> ==============
+>>>>>   Introduction
+>>>>> ==============
+>>>>>
+>>>>> The purpose of this series is to add the driver for video codec hw embedded in the Mediatek's MT8173 SoCs.
+>>>>> Mediatek Video Codec is able to handle video decoding of in a range of formats.
+>>>>>
+>>>>> This patch series add Mediatek block format V4L2_PIX_FMT_MT21, the decoder driver will decoded bitstream to
+>>>>> V4L2_PIX_FMT_MT21 format.
+>>>>>
+>>>>> This patch series rely on MTK VPU driver in patch series "Add MT8173 Video Encoder Driver and VPU Driver"[1]
+>>>>> and patch "CHROMIUM: v4l: Add V4L2_PIX_FMT_VP9 definition"[2] for VP9 support.
+>>>>> Mediatek Video Decoder driver rely on VPU driver to load, communicate with VPU.
+>>>>>
+>>>>> Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
+>>>>>
+>>>>> [1]https://patchwork.linuxtv.org/patch/33734/
+>>>>> [2]https://chromium-review.googlesource.com/#/c/245241/  
+>>>>
+>>>> Hmm... I'm not seeing the firmware for this driver at the
+>>>> linux-firmware tree:
+>>>> 	https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/log/
+>>>>
+>>>> Nor I'm seeing any pull request for them. Did you send it?
+>>>> I'll only merge the driver upstream after seeing such pull request.  
+>>>   
+>> Sorry, I am not familiar with how to upstream firmware.
+>> Do you mean we need to upstream vpu firmware first before merge encoder
+>> driver upstream?
+> 
+> Please look at this page:
+> 	https://linuxtv.org/wiki/index.php/Development:_How_to_submit_patches#Firmware_submission
+> 
+> The information here can also be useful:
+> 	https://www.kernel.org/doc/readme/firmware-README.AddingFirmware
+> 
+> In summary, you need to provide redistribution rights for the
+> firmware blob. You can either submit it to me or directly to
+> linux-firmware. In the latter, please c/c me on such patch.
 
-Signed-off-by: Roger Lu <roger.lu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-Changes in v2:
-- remove prints in show_workqueue_state().
----
- kernel/power/process.c | 3 +++
- kernel/workqueue.c     | 4 ++--
- 2 files changed, 5 insertions(+), 2 deletions(-)
+Tiffany, what is the status of the firmware submission?
 
-diff --git a/kernel/power/process.c b/kernel/power/process.c
-index df058be..6eef250 100644
---- a/kernel/power/process.c
-+++ b/kernel/power/process.c
-@@ -89,6 +89,9 @@ static int try_to_freeze_tasks(bool user_only)
- 		       elapsed_msecs / 1000, elapsed_msecs % 1000,
- 		       todo - wq_busy, wq_busy);
- 
-+		if (wq_busy)
-+			show_workqueue_state();
-+
- 		if (!wakeup) {
- 			read_lock(&tasklist_lock);
- 			for_each_process_thread(g, p) {
-diff --git a/kernel/workqueue.c b/kernel/workqueue.c
-index e1c0e99..619e80c 100644
---- a/kernel/workqueue.c
-+++ b/kernel/workqueue.c
-@@ -4369,8 +4369,8 @@ static void show_pwq(struct pool_workqueue *pwq)
- /**
-  * show_workqueue_state - dump workqueue state
-  *
-- * Called from a sysrq handler and prints out all busy workqueues and
-- * pools.
-+ * Called from a sysrq handler or try_to_freeze_tasks() and prints out
-+ * all busy workqueues and pools.
-  */
- void show_workqueue_state(void)
- {
--- 
-2.6.4
+Regards,
+
+	Hans
