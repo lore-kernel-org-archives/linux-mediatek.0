@@ -1,94 +1,37 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
-Date: Fri, 1 Jul 2016 14:00:54 +0200
-Message-ID: <7ee128a2-f026-5404-bbac-6b5c1bee51e7@xs4all.nl>
-References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
- <20160607112235.475c2e4c@recife.lan> <575746EE.3030706@cisco.com>
- <1465902488.27938.7.camel@mtksdaap41> <20160616075428.0fde4aaa@recife.lan>
- <8a46c1e7-1f27-1e67-8c05-b133598b6a66@xs4all.nl>
- <1467373995.17297.2.camel@mtksdaap41>
+From: Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [patch] drm/mediatek/mtk_mipi_tx: checking the wrong variable
+Date: Fri, 1 Jul 2016 16:59:34 +0300
+Message-ID: <20160701135934.GA15723@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1467373995.17297.2.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: andrew-ct chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Disposition: inline
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, CK Hu <ck.hu@mediatek.com>
+Cc: Jitao Shi <jitao.shi@mediatek.com>, kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/01/2016 01:53 PM, andrew-ct chen wrote:
-> On Fri, 2016-07-01 at 12:11 +0200, Hans Verkuil wrote:
->> On 06/16/2016 12:54 PM, Mauro Carvalho Chehab wrote:
->>> Em Tue, 14 Jun 2016 19:08:08 +0800
->>> tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
->>>
->>>> Hi Mauro,
->>>>
->>>>
->>>> On Wed, 2016-06-08 at 07:13 +0900, Hans Verkuil wrote:
->>>>>
->>>>> On 06/07/2016 11:22 PM, Mauro Carvalho Chehab wrote:  
->>>>>> Em Mon, 30 May 2016 20:29:14 +0800
->>>>>> Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
->>>>>>  
->>>>>>> ==============
->>>>>>>   Introduction
->>>>>>> ==============
->>>>>>>
->>>>>>> The purpose of this series is to add the driver for video codec hw embedded in the Mediatek's MT8173 SoCs.
->>>>>>> Mediatek Video Codec is able to handle video decoding of in a range of formats.
->>>>>>>
->>>>>>> This patch series add Mediatek block format V4L2_PIX_FMT_MT21, the decoder driver will decoded bitstream to
->>>>>>> V4L2_PIX_FMT_MT21 format.
->>>>>>>
->>>>>>> This patch series rely on MTK VPU driver in patch series "Add MT8173 Video Encoder Driver and VPU Driver"[1]
->>>>>>> and patch "CHROMIUM: v4l: Add V4L2_PIX_FMT_VP9 definition"[2] for VP9 support.
->>>>>>> Mediatek Video Decoder driver rely on VPU driver to load, communicate with VPU.
->>>>>>>
->>>>>>> Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
->>>>>>>
->>>>>>> [1]https://patchwork.linuxtv.org/patch/33734/
->>>>>>> [2]https://chromium-review.googlesource.com/#/c/245241/  
->>>>>>
->>>>>> Hmm... I'm not seeing the firmware for this driver at the
->>>>>> linux-firmware tree:
->>>>>> 	https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/log/
->>>>>>
->>>>>> Nor I'm seeing any pull request for them. Did you send it?
->>>>>> I'll only merge the driver upstream after seeing such pull request.  
->>>>>   
->>>> Sorry, I am not familiar with how to upstream firmware.
->>>> Do you mean we need to upstream vpu firmware first before merge encoder
->>>> driver upstream?
->>>
->>> Please look at this page:
->>> 	https://linuxtv.org/wiki/index.php/Development:_How_to_submit_patches#Firmware_submission
->>>
->>> The information here can also be useful:
->>> 	https://www.kernel.org/doc/readme/firmware-README.AddingFirmware
->>>
->>> In summary, you need to provide redistribution rights for the
->>> firmware blob. You can either submit it to me or directly to
->>> linux-firmware. In the latter, please c/c me on such patch.
->>
->> Tiffany, what is the status of the firmware submission?
->>
->> Regards,
->>
->> 	Hans
-> 
-> Hi Hans,
-> We are working on firmware test to make sure that both decoder and
-> encoder work well. Hopes it can be ready (firmware submission) on July 4
-> or July 5.
-
-OK, great! Just wanted to make sure that this work was progressing and not stalled.
-
-Thanks!
-
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+V2Ugc2hvdWxkIGJlIGNoZWNraW5nICJwaHlfcHJvdmlkZXIiIGhlcmUgbm90ICJwaHkiLgoKRml4
+ZXM6IDJlNTRjMTRlMzEwZiAoJ2RybS9tZWRpYXRlazogQWRkIERTSSBzdWIgZHJpdmVyJykKU2ln
+bmVkLW9mZi1ieTogRGFuIENhcnBlbnRlciA8ZGFuLmNhcnBlbnRlckBvcmFjbGUuY29tPgoKZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKaW5kZXggY2Y4ZjM4ZC4uMWMzNjZmOCAx
+MDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKQEAgLTQzMSw3ICs0MzEsNyBA
+QCBzdGF0aWMgaW50IG10a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYpCiAJcGh5X3NldF9kcnZkYXRhKHBoeSwgbWlwaV90eCk7CiAKIAlwaHlfcHJvdmlkZXIgPSBk
+ZXZtX29mX3BoeV9wcm92aWRlcl9yZWdpc3RlcihkZXYsIG9mX3BoeV9zaW1wbGVfeGxhdGUpOwot
+CWlmIChJU19FUlIocGh5KSkgeworCWlmIChJU19FUlIocGh5X3Byb3ZpZGVyKSkgewogCQlyZXQg
+PSBQVFJfRVJSKHBoeV9wcm92aWRlcik7CiAJCXJldHVybiByZXQ7CiAJfQpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0
+CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3Rv
+cC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
