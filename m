@@ -1,57 +1,52 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH] net-next: mediatek: fix compile error inside
- mtk_poll_controller()
-Date: Sat,  2 Jul 2016 08:00:50 +0200
-Message-ID: <1467439250-48222-1-git-send-email-john@phrozen.org>
+From: Chen-Yu Tsai <wens@csie.org>
+Subject: Re: [PATCH v5 7/9] ASoC: bt-sco: extend rate and add a
+ general compatible string
+Date: Sat, 2 Jul 2016 17:05:21 +0800
+Message-ID: <CAGb2v67rgj4efyTZpZ-79NnCRM=KLJCJedte594qgSjMMB5xsQ@mail.gmail.com>
+References: <1466149440-23889-1-git-send-email-garlic.tseng@mediatek.com>
+ <1466149440-23889-8-git-send-email-garlic.tseng@mediatek.com>
+ <20160629191500.GU6247@sirena.org.uk> <1467291345.11091.16.camel@mtksdaap41>
+ <1467341386.21689.6.camel@mtksdaap41> <20160701161105.GY6247@sirena.org.uk>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: Sean Wang <keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Felix Fietkau <nbd-Vt+b4OUoWG0@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20160701161105.GY6247@sirena.org.uk>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel <linux-kernel@vger.kernel.org>, koro.chen@mediatek.com, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, PC.Liao@mediatek.com, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-commit 8067302973a1 ("net-next: mediatek: add support for IRQ grouping")
-failed to properly update the irq handling inside mtk_poll_controller()
-causing compile errors if netconsole was enabled. Fix this by updating
-the code to use the new separated irq handler function for RX.
+Hi,
 
-Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+On Sat, Jul 2, 2016 at 12:11 AM, Mark Brown <broonie@kernel.org> wrote:
+> On Fri, Jul 01, 2016 at 10:49:46AM +0800, Garlic Tseng wrote:
+>> On Thu, 2016-06-30 at 20:55 +0800, Garlic Tseng wrote:
+>
+>> > If you worry about some potential risk (I don't see any) maybe we have
+>> > to develop another dummy bt-sco codec driver which support both 8k and
+>> > 16k?
+>
+>> Ah! If someone whose bluetooth modules only support 8k use the driver,
+>> they might be broken, right? Maybe we can add another snd_soc_dai_driver
+>> which can support both 8k and 16k.
+>> (Actually I found the issue is discussed before
+>> http://mailman.alsa-project.org/pipermail/alsa-devel/2014-November/084687.html )
+>
+> Yes, that'd be fine - it could be the same driver and register different
+> parameters depending on config/compatible.
 
----
+Could we also make this driver directly configurable from Kconfig,
+and not just selected by platforms (currently Samsung) or by building
+all coddecs?
 
-Hi Dave,
-
-ideally you could fold this into the following patch inside net-next.git
-
-commit 8067302973a1 ("net-next: mediatek: add support for IRQ grouping")
-
-	John
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 7056a37..fbab9b2 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1297,7 +1297,7 @@ static void mtk_poll_controller(struct net_device *dev)
- 	u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
- 
- 	mtk_irq_disable(eth, int_mask);
--	mtk_handle_irq(dev->irq[0], dev);
-+	mtk_handle_irq_rx(eth->irq[2], dev);
- 	mtk_irq_enable(eth, int_mask);
- }
- #endif
--- 
-1.7.10.4
+Thanks
+ChenYu
