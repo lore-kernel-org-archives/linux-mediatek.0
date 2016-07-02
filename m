@@ -1,40 +1,32 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [patch] drm/mediatek/mtk_mipi_tx: checking the wrong variable
-Date: Sat, 2 Jul 2016 18:44:13 +0200
-Message-ID: <f665b4b4-c7b3-f07a-4185-fe551d334623@gmail.com>
-References: <20160701135934.GA15723@mwanda>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH] net-next: mediatek: fix compile error inside
+ mtk_poll_controller()
+Date: Sat, 02 Jul 2016 16:39:03 -0400 (EDT)
+Message-ID: <20160702.163903.1756164632554941051.davem@davemloft.net>
+References: <1467439250-48222-1-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-In-Reply-To: <20160701135934.GA15723@mwanda>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>, David Airlie <airlied@linux.ie>, CK Hu <ck.hu@mediatek.com>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1467439250-48222-1-git-send-email-john@phrozen.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: john@phrozen.org
+Cc: nbd@nbd.name, keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
+From: John Crispin <john@phrozen.org>
+Date: Sat,  2 Jul 2016 08:00:50 +0200
 
+> commit 8067302973a1 ("net-next: mediatek: add support for IRQ grouping")
+> failed to properly update the irq handling inside mtk_poll_controller()
+> causing compile errors if netconsole was enabled. Fix this by updating
+> the code to use the new separated irq handler function for RX.
+> 
+> Signed-off-by: John Crispin <john@phrozen.org>
 
-On 07/01/2016 03:59 PM, Dan Carpenter wrote:
-> We should be checking "phy_provider" here not "phy".
->
-> Fixes: 2e54c14e310f ('drm/mediatek: Add DSI sub driver')
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
->
+Applied.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ideally you could fold this into the following patch inside net-next.git
 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> index cf8f38d..1c366f8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> @@ -431,7 +431,7 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
->  	phy_set_drvdata(phy, mipi_tx);
->
->  	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> -	if (IS_ERR(phy)) {
-> +	if (IS_ERR(phy_provider)) {
->  		ret = PTR_ERR(phy_provider);
->  		return ret;
->  	}
->
+There is no "folding" in my tree, commits are forever and history is
+never changed or modified ever.
