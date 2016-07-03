@@ -1,32 +1,34 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH] net-next: mediatek: fix compile error inside
- mtk_poll_controller()
-Date: Sat, 02 Jul 2016 16:39:03 -0400 (EDT)
-Message-ID: <20160702.163903.1756164632554941051.davem@davemloft.net>
-References: <1467439250-48222-1-git-send-email-john@phrozen.org>
-Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467439250-48222-1-git-send-email-john@phrozen.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: john@phrozen.org
-Cc: nbd@nbd.name, keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH] drm/mediatek: fix error handling
+Date: Sun,  3 Jul 2016 07:37:08 +0200
+Message-ID: <1467524228-12546-1-git-send-email-christophe.jaillet@wanadoo.fr>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: airlied@linux.ie, matthias.bgg@gmail.com, ck.hu@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: John Crispin <john@phrozen.org>
-Date: Sat,  2 Jul 2016 08:00:50 +0200
+This is likely that checking 'phy_provider' instead of 'phy' is
+expected here.
 
-> commit 8067302973a1 ("net-next: mediatek: add support for IRQ grouping")
-> failed to properly update the irq handling inside mtk_poll_controller()
-> causing compile errors if netconsole was enabled. Fix this by updating
-> the code to use the new separated irq handler function for RX.
-> 
-> Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied.
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+index cf8f38d..1c366f8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+@@ -431,7 +431,7 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 	phy_set_drvdata(phy, mipi_tx);
+ 
+ 	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+-	if (IS_ERR(phy)) {
++	if (IS_ERR(phy_provider)) {
+ 		ret = PTR_ERR(phy_provider);
+ 		return ret;
+ 	}
+-- 
+2.7.4
 
-> ideally you could fold this into the following patch inside net-next.git
-
-There is no "folding" in my tree, commits are forever and history is
-never changed or modified ever.
