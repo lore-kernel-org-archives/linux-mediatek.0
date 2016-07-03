@@ -1,47 +1,57 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: fix error handling
-Date: Sun, 3 Jul 2016 07:51:31 +0200
-Message-ID: <d49277ce-e45c-a706-0f3a-e0d6e5fc8891@gmail.com>
-References: <1467524228-12546-1-git-send-email-christophe.jaillet@wanadoo.fr>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 0/2] Add mt6755 basic chip support
+Date: Sun, 3 Jul 2016 07:59:46 +0200
+Message-ID: <6516278a-4a21-3d67-bda2-ad861d56dd89@gmail.com>
+References: <1467166173-9029-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467524228-12546-1-git-send-email-christophe.jaillet@wanadoo.fr>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, airlied@linux.ie, ck.hu@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1467166173-9029-1-git-send-email-mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Choui <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 07/03/2016 07:37 AM, Christophe JAILLET wrote:
-> This is likely that checking 'phy_provider' instead of 'phy' is
-> expected here.
+On 06/29/2016 04:09 AM, Mars Cheng wrote:
+> This patch adds basic support for Mediatek's new 8-core chip, mt6755.
+> Based on 4.7-rc1
 >
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
->  drivers/gpu/drm/mediatek/mtk_mipi_tx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Changes in v3:
+> 1. use evb as project suffix
+> 2. add "disable" property for uart dts nodes
+> 3. only alias uart0 as serial0, since we don't enable uart1
+> 4. confirm all acks are added
 >
-> diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> index cf8f38d..1c366f8 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-> @@ -431,7 +431,7 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
->  	phy_set_drvdata(phy, mipi_tx);
+> Mars Cheng (2):
+>   Document: DT: Add bindings for mediatek MT6755 SoC Platform
+>   arm64: dts: mediatek: add mt6755 support
 >
->  	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> -	if (IS_ERR(phy)) {
-> +	if (IS_ERR(phy_provider)) {
 
-Dan already send a patch for that:
-http://www.spinics.net/lists/dri-devel/msg112031.html
+Applied, thanks.
 
-Regards,
 Matthias
 
->  		ret = PTR_ERR(phy_provider);
->  		return ret;
->  	}
+> Mars Cheng (2):
+>   Document: DT: Add bindings for mediatek MT6755 SoC Platform
+>   arm64: dts: mediatek: add mt6755 support
 >
+>  Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+>  .../interrupt-controller/mediatek,sysirq.txt       |    1 +
+>  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+>  arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+>  arch/arm64/boot/dts/mediatek/mt6755-evb.dts        |   38 +++++
+>  arch/arm64/boot/dts/mediatek/mt6755.dtsi           |  145 ++++++++++++++++++++
+>  6 files changed, 190 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6755-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6755.dtsi
+>
+> --
+> 1.7.9.5
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
