@@ -1,152 +1,64 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 5/5] ARM: dts: mt2701: add iommu/smi dtsi node for
-	mt2701
-Date: Sun, 3 Jul 2016 21:12:11 +0200
-Message-ID: <51441f39-e5b5-2cce-63ab-47bd3cf298b3@gmail.com>
-References: <1465379461-14757-1-git-send-email-honghui.zhang@mediatek.com>
-	<1465379461-14757-6-git-send-email-honghui.zhang@mediatek.com>
-	<09eaf7a5-2b18-1ea6-5699-2e968c6b79a4@gmail.com>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
+Date: Sun, 3 Jul 2016 23:43:46 +0100
+Message-ID: <CACvgo52YgRat8Uqhd9qh_ppvk0h=krxYLHL6Cjqs9+EzQaogUg@mail.gmail.com>
+References: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
+ <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
+ <1467026970.23883.16.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <09eaf7a5-2b18-1ea6-5699-2e968c6b79a4-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1467026970.23883.16.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, CK HU <ck.hu@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 07/03/2016 08:24 AM, Matthias Brugger wrote:
->
->
-> On 06/08/2016 11:51 AM, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
->> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>
->> Add the dtsi node of iommu and smi for mt2701.
->>
->> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>  arch/arm/boot/dts/mt2701.dtsi | 51
->> +++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 51 insertions(+)
->>
->
-> Applied,
-
-Please resend the patch including the infracfg and mmsys node.
-
-Regards,
-Matthias
-
->
-> Thanks.
->
->> diff --git a/arch/arm/boot/dts/mt2701.dtsi
->> b/arch/arm/boot/dts/mt2701.dtsi
->> index 42d5a37..363de0d 100644
->> --- a/arch/arm/boot/dts/mt2701.dtsi
->> +++ b/arch/arm/boot/dts/mt2701.dtsi
->> @@ -16,6 +16,7 @@
->>  #include <dt-bindings/power/mt2701-power.h>
->>  #include <dt-bindings/interrupt-controller/irq.h>
->>  #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +#include <dt-bindings/memory/mt2701-larb-port.h>
->>  #include "skeleton64.dtsi"
->>  #include "mt2701-pinfunc.h"
->>
->> @@ -160,6 +161,16 @@
->>          clock-names = "system-clk", "rtc-clk";
->>      };
->>
->> +    smi_common: smi@1000c000 {
->> +        compatible = "mediatek,mt2701-smi-common";
->> +        reg = <0 0x1000c000 0 0x1000>;
->> +        clocks = <&infracfg CLK_INFRA_SMI>,
->> +             <&mmsys CLK_MM_SMI_COMMON>,
->> +             <&infracfg CLK_INFRA_SMI>;
->> +        clock-names = "apb", "smi", "async";
->> +        power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
->> +    };
->> +
->>      sysirq: interrupt-controller@10200100 {
->>          compatible = "mediatek,mt2701-sysirq",
->>                   "mediatek,mt6577-sysirq";
->> @@ -169,6 +180,16 @@
->>          reg = <0 0x10200100 0 0x1c>;
->>      };
->>
->> +    iommu: mmsys_iommu@10205000 {
->> +        compatible = "mediatek,mt2701-m4u";
->> +        reg = <0 0x10205000 0 0x1000>;
->> +        interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>;
->> +        clocks = <&infracfg CLK_INFRA_M4U>;
->> +        clock-names = "bclk";
->> +        mediatek,larbs = <&larb0 &larb1 &larb2>;
->> +        #iommu-cells = <1>;
->> +    };
->> +
->>      apmixedsys: syscon@10209000 {
->>          compatible = "mediatek,mt2701-apmixedsys", "syscon";
->>          reg = <0 0x10209000 0 0x1000>;
->> @@ -234,6 +255,16 @@
->>          status = "disabled";
->>      };
->>
->> +    larb0: larb@14010000 {
->> +        compatible = "mediatek,mt2701-smi-larb";
->> +        reg = <0 0x14010000 0 0x1000>;
->> +        mediatek,smi = <&smi_common>;
->> +        clocks = <&mmsys CLK_MM_SMI_LARB0>,
->> +             <&mmsys CLK_MM_SMI_LARB0>;
->> +        clock-names = "apb", "smi";
->> +        power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
->> +    };
->> +
->>      imgsys: syscon@15000000 {
->>          compatible = "mediatek,mt2701-imgsys", "syscon";
->>          reg = <0 0x15000000 0 0x1000>;
->> @@ -241,6 +272,16 @@
->>          status = "disabled";
->>      };
->>
->> +    larb2: larb@15001000 {
->> +        compatible = "mediatek,mt2701-smi-larb";
->> +        reg = <0 0x15001000 0 0x1000>;
->> +        mediatek,smi = <&smi_common>;
->> +        clocks = <&imgsys CLK_IMG_SMI_COMM>,
->> +             <&imgsys CLK_IMG_SMI_COMM>;
->> +        clock-names = "apb", "smi";
->> +        power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
->> +    };
->> +
->>      vdecsys: syscon@16000000 {
->>          compatible = "mediatek,mt2701-vdecsys", "syscon";
->>          reg = <0 0x16000000 0 0x1000>;
->> @@ -248,6 +289,16 @@
->>          status = "disabled";
->>      };
->>
->> +    larb1: larb@16010000 {
->> +        compatible = "mediatek,mt2701-smi-larb";
->> +        reg = <0 0x16010000 0 0x1000>;
->> +        mediatek,smi = <&smi_common>;
->> +        clocks = <&vdecsys CLK_VDEC_CKGEN>,
->> +             <&vdecsys CLK_VDEC_LARB>;
->> +        clock-names = "apb", "smi";
->> +        power-domains = <&scpsys MT2701_POWER_DOMAIN_VDEC>;
->> +    };
->> +
->>      hifsys: syscon@1a000000 {
->>          compatible = "mediatek,mt2701-hifsys", "syscon";
->>          reg = <0 0x1a000000 0 0x1000>;
->>
+SGkgQmliYnksCgpPbiAyNyBKdW5lIDIwMTYgYXQgMTI6MjksIEJpYmJ5IEhzaWVoIDxiaWJieS5o
+c2llaEBtZWRpYXRlay5jb20+IHdyb3RlOgo+IE9uIE1vbiwgMjAxNi0wNi0yNyBhdCAxMjoyMCAr
+MDIwMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKPj4KPj4gT24gMDYvMjQvMjAxNiAwOToyNyBB
+TSwgQmliYnkgSHNpZWggd3JvdGU6Cj4+ID4gSGkgRGF2ZSwKPj4gPgo+PiA+IFBsZWFzZSBjb25z
+aWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBjb250YWlucyB0aGUgdjIgTVQ4MTczIGdhbW1h
+ICYgZGl0aGVyIGZ1bmN0aW9uIHBhdGNoZXMgSSBzZW50IG9uIDIwMTYtMDYtMTcsIHJlYmFzZWQg
+b250byB2NC43LXJjMS4gVGhlcmUgaGF2ZSBiZWVuIG5vIGZ1cnRoZXIgY29tbWVudHMuCj4+ID4K
+Pj4gPiBUaGFua3MKPj4gPiBCaWJieQo+PiA+Cj4+ID4gVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNp
+bmNlIGNvbW1pdCAxYTY5NWE5MDVjMTg1NDgwNjI1MDkxNzhiOThiYzkxZTY3NTEwODY0Ogo+PiA+
+Cj4+ID4gICBMaW51eCA0LjctcmMxICgyMDE2LTA1LTI5IDE2OjI5OjI0IEdNVCkKPj4gPgo+PiA+
+IGFyZSBhdmFpbGFibGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+PiA+Cj4+ID4gICBnaXRA
+Z2l0aHViLmNvbTpCaWJieUhzaWVoL2xpbnV4NC43LXJjMS5naXQKPj4gPgo+PiA+IGZvciB5b3Ug
+dG8gZmV0Y2ggY2hhbmdlcyB1cCB0byBkZDBlYjc3M2JjMTI1ZjVlNmJjYTczNWQxOWMwODUwMGRj
+MzczMGY5Ogo+PiA+Cj4+ID4gICBkcm0vbWVkaWF0ZWs6IEFkZCBnYW1tYSBjb3JyZWN0aW9uCj4+
+ID4KPj4gPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+Cj4+IEFzIGZhciBhcyBJIGNhbiBzZWUsIHlvdXIg
+YnJhbmNoIGhhcyAzIHBhdGNoZXMgb24gdG9wIGZyb20gRWRkaWUuIEl0Cj4+IHNlZW1zIHRvIG1l
+IGFzIGlmIHlvdSBkaWRuJ3Qgc2VuZCB5b3VyIHBhdGNoZXMgdG8gdGhlIG1haWxpbmdsaXN0IGJl
+Zm9yZT8KPj4gQW55d2F5IHRoaXMgYnJhbmNoIGRvZXMgbm90IGZ1bGZpbGwgdGhlIHJ1bGVzIHRv
+IGdldCBtZXJnZWQgaW50byB0aGUKPj4gbGludXgga2VybmVsLgo+Pgo+PiBXaHkgZG8geW91IHNl
+bmQgYSBwdWxsIHJlcXVlc3Q/IFRoZSBub3JtYWwgcHJvY2VzcyBpcyB0byBzZW5kIHRoZQo+PiBw
+YXRjaGVzIHZpYSBlbWFpbCBhbmQgaWYgdGhlIG1haW50YWluZXIgd2FudHMgeW91IGNhbiBzZW5k
+IGEgcHVsbAo+PiByZXF1ZXN0IG9uY2UgdGhlIHBhdGNoZXMgYXJlIHJlYWR5IHRvIGJlIG1lcmdl
+ZC4KPj4KPj4gUmVnYXJkcywKPj4gTWF0dGhpYXMKPj4KPgo+IEkgc2VudCB2MSBhbmQgdjIgb24g
+MjAxNi0wNi0xNCBhbmQgMDYtMTcgcmVzcGVjdGl2ZWx5IFswLThdLgo+IEFmdGVyIEkgbWFkZSBz
+b21lIG1vZGlmaWNhdGlvbnMgYWNjb3JkaW5nIHRvIERhbmllbCBWZXR0ZXIncyBjb21tZW50cywK
+PiB0aGVyZSBoYWQgYmVlbiBubyBmdXJ0aGVyIGNvbW1lbnRzIGFuZCBJIHNlbnQgdGhlIHB1bGwg
+cmVxdWVzdCBhcyB0aGUKPiBvdGhlciBzdWItc3lzLgo+Cj4gSSdtIHNvcnJ5IGZvciBteSBtaXN0
+YWtlLCBJIHdpbGwgcmUtYXJyYW5nZSB0aGUgdHJlZSBmb3IgdXBzdHJlYW0uCj4gTmV4dCB0aW1l
+LCBJIHdpbGwgY2hlY2sgd2l0aCBtYWludGFpbmVyIGJ5IGVtYWlsIGZpcnN0LCBhbmQgc2VudCB0
+aGUKPiBwdWxsIHJlcXVlc3QuCj4KSXQgbWlnaHQgYmUgYSBiaXQgaGFyZCB0byBmaW5kIG91dCB3
+aG8ncyB0aGUgbWFpbnRhaW5lciBjb25zaWRlcmluZwpNQUlOVEFJTkVSUyBoYXMgbm8gZW50cnkg
+Zm9yIHRoaXMgZHJpdmVyLgoKTG9va2luZyBhdCBob3cgdGhpbmdzIGFyZSBnb2luZyBQaGlsaXBw
+IFphYmVsIHdpbGwgYmUgdGhlIG1vcmUgbGlrZWx5CnBlcnNvbiBmb3IgdGhlIHRhc2ssIHlldCBJ
+IHdvdWxkIGJlIG5pY2UgaWYgc29tZW9uZSBmcm9tIHRoZSBNZWRpYXRlawpzcXVhZCBpcyBoZWxw
+aW5nIGhpbSBvdXQgLSBDSyBIdSBwZXJoYXBzID8KClJlZ2FyZHMsCkVtaWwKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
