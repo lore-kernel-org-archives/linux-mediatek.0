@@ -1,77 +1,70 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v9 01/10] clk: fix initial state of critical clock's
- parents
-Date: Mon, 4 Jul 2016 11:51:48 +0800
-Message-ID: <1467604308.26485.4.camel@mtksdaap41>
-References: <1466581229-2342-1-git-send-email-erin.lo@mediatek.com>
-	 <1466581229-2342-2-git-send-email-erin.lo@mediatek.com>
-	 <20160702012140.GB17071@codeaurora.org>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
+Date: Mon, 4 Jul 2016 13:19:33 +0800
+Message-ID: <1467609573.31010.3.camel@mtksdaap41>
+References: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
+ <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
+ <1467026970.23883.16.camel@mtksdaap41>
+ <CACvgo52YgRat8Uqhd9qh_ppvk0h=krxYLHL6Cjqs9+EzQaogUg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160702012140.GB17071@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>, Mike Turquette <mturquette@baylibre.com>
-Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CACvgo52YgRat8Uqhd9qh_ppvk0h=krxYLHL6Cjqs9+EzQaogUg@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, LAKML <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-07-01 at 18:21 -0700, Stephen Boyd wrote:
-> (Resending to everyone)
-> 
-> On 06/22, Erin Lo wrote:
-> > From: James Liao <jamesjj.liao@mediatek.com>
-> > 
-> > This patch fixed wrong state of parent clocks if they are registered
-> > after critical clocks.
-> > 
-> > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> 
-> It would be nice if you included the information about the
-> problem from James' previous mail. This says what it does, but
-> doesn't explain what the problem is and how it is fixing it.
-> 
-> > ---
-> >  drivers/clk/clk.c | 9 ++++++++-
-> >  1 file changed, 8 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> > index d584004..e9f5f89 100644
-> > --- a/drivers/clk/clk.c
-> > +++ b/drivers/clk/clk.c
-> > @@ -2388,8 +2388,15 @@ static int __clk_core_init(struct clk_core *core)
-> >  	hlist_for_each_entry_safe(orphan, tmp2, &clk_orphan_list, child_node) {
-> >  		struct clk_core *parent = __clk_init_parent(orphan);
-> >  
-> > -		if (parent)
-> > +		if (parent) {
-> >  			clk_core_reparent(orphan, parent);
-> > +
-> > +			if (orphan->prepare_count)
-> > +				clk_core_prepare(parent);
-> > +
-> > +			if (orphan->enable_count)
-> > +				clk_core_enable(parent);
-> > +		}
-> >  	}
-> 
-> I'm pretty sure I pointed this problem out to Mike when the
-> critical clk patches were being pushed. I can't recall what the
-> plan was though to fix the problem. I'm pretty sure he said that
-> clk_core_reparent() would take care of it, but obviously it is
-> not doing that. Or perhaps it was that clk handoff should figure
-> out that the parents of a critical clk are also on and thus keep
-> them on.
-
-Hi Mike
-
-Is there any other patch to fix this issue? Or did I misuse critical
-clock flag?
-
-
-Best regards,
-
-James
-
-
+SGksIEVtaWw6CgpPbiBTdW4sIDIwMTYtMDctMDMgYXQgMjM6NDMgKzAxMDAsIEVtaWwgVmVsaWtv
+diB3cm90ZToKPiBIaSBCaWJieSwKPiAKPiBPbiAyNyBKdW5lIDIwMTYgYXQgMTI6MjksIEJpYmJ5
+IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4gT24gTW9uLCAyMDE2
+LTA2LTI3IGF0IDEyOjIwICswMjAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+ID4+Cj4gPj4g
+T24gMDYvMjQvMjAxNiAwOToyNyBBTSwgQmliYnkgSHNpZWggd3JvdGU6Cj4gPj4gPiBIaSBEYXZl
+LAo+ID4+ID4KPiA+PiA+IFBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBj
+b250YWlucyB0aGUgdjIgTVQ4MTczIGdhbW1hICYgZGl0aGVyIGZ1bmN0aW9uIHBhdGNoZXMgSSBz
+ZW50IG9uIDIwMTYtMDYtMTcsIHJlYmFzZWQgb250byB2NC43LXJjMS4gVGhlcmUgaGF2ZSBiZWVu
+IG5vIGZ1cnRoZXIgY29tbWVudHMuCj4gPj4gPgo+ID4+ID4gVGhhbmtzCj4gPj4gPiBCaWJieQo+
+ID4+ID4KPiA+PiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgMWE2OTVhOTA1
+YzE4NTQ4MDYyNTA5MTc4Yjk4YmM5MWU2NzUxMDg2NDoKPiA+PiA+Cj4gPj4gPiAgIExpbnV4IDQu
+Ny1yYzEgKDIwMTYtMDUtMjkgMTY6Mjk6MjQgR01UKQo+ID4+ID4KPiA+PiA+IGFyZSBhdmFpbGFi
+bGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+ID4+ID4KPiA+PiA+ICAgZ2l0QGdpdGh1Yi5j
+b206QmliYnlIc2llaC9saW51eDQuNy1yYzEuZ2l0Cj4gPj4gPgo+ID4+ID4gZm9yIHlvdSB0byBm
+ZXRjaCBjaGFuZ2VzIHVwIHRvIGRkMGViNzczYmMxMjVmNWU2YmNhNzM1ZDE5YzA4NTAwZGMzNzMw
+Zjk6Cj4gPj4gPgo+ID4+ID4gICBkcm0vbWVkaWF0ZWs6IEFkZCBnYW1tYSBjb3JyZWN0aW9uCj4g
+Pj4gPgo+ID4+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4+Cj4gPj4gQXMgZmFyIGFzIEkgY2FuIHNl
+ZSwgeW91ciBicmFuY2ggaGFzIDMgcGF0Y2hlcyBvbiB0b3AgZnJvbSBFZGRpZS4gSXQKPiA+PiBz
+ZWVtcyB0byBtZSBhcyBpZiB5b3UgZGlkbid0IHNlbmQgeW91ciBwYXRjaGVzIHRvIHRoZSBtYWls
+aW5nbGlzdCBiZWZvcmU/Cj4gPj4gQW55d2F5IHRoaXMgYnJhbmNoIGRvZXMgbm90IGZ1bGZpbGwg
+dGhlIHJ1bGVzIHRvIGdldCBtZXJnZWQgaW50byB0aGUKPiA+PiBsaW51eCBrZXJuZWwuCj4gPj4K
+PiA+PiBXaHkgZG8geW91IHNlbmQgYSBwdWxsIHJlcXVlc3Q/IFRoZSBub3JtYWwgcHJvY2VzcyBp
+cyB0byBzZW5kIHRoZQo+ID4+IHBhdGNoZXMgdmlhIGVtYWlsIGFuZCBpZiB0aGUgbWFpbnRhaW5l
+ciB3YW50cyB5b3UgY2FuIHNlbmQgYSBwdWxsCj4gPj4gcmVxdWVzdCBvbmNlIHRoZSBwYXRjaGVz
+IGFyZSByZWFkeSB0byBiZSBtZXJnZWQuCj4gPj4KPiA+PiBSZWdhcmRzLAo+ID4+IE1hdHRoaWFz
+Cj4gPj4KPiA+Cj4gPiBJIHNlbnQgdjEgYW5kIHYyIG9uIDIwMTYtMDYtMTQgYW5kIDA2LTE3IHJl
+c3BlY3RpdmVseSBbMC04XS4KPiA+IEFmdGVyIEkgbWFkZSBzb21lIG1vZGlmaWNhdGlvbnMgYWNj
+b3JkaW5nIHRvIERhbmllbCBWZXR0ZXIncyBjb21tZW50cywKPiA+IHRoZXJlIGhhZCBiZWVuIG5v
+IGZ1cnRoZXIgY29tbWVudHMgYW5kIEkgc2VudCB0aGUgcHVsbCByZXF1ZXN0IGFzIHRoZQo+ID4g
+b3RoZXIgc3ViLXN5cy4KPiA+Cj4gPiBJJ20gc29ycnkgZm9yIG15IG1pc3Rha2UsIEkgd2lsbCBy
+ZS1hcnJhbmdlIHRoZSB0cmVlIGZvciB1cHN0cmVhbS4KPiA+IE5leHQgdGltZSwgSSB3aWxsIGNo
+ZWNrIHdpdGggbWFpbnRhaW5lciBieSBlbWFpbCBmaXJzdCwgYW5kIHNlbnQgdGhlCj4gPiBwdWxs
+IHJlcXVlc3QuCj4gPgo+IEl0IG1pZ2h0IGJlIGEgYml0IGhhcmQgdG8gZmluZCBvdXQgd2hvJ3Mg
+dGhlIG1haW50YWluZXIgY29uc2lkZXJpbmcKPiBNQUlOVEFJTkVSUyBoYXMgbm8gZW50cnkgZm9y
+IHRoaXMgZHJpdmVyLgo+IAo+IExvb2tpbmcgYXQgaG93IHRoaW5ncyBhcmUgZ29pbmcgUGhpbGlw
+cCBaYWJlbCB3aWxsIGJlIHRoZSBtb3JlIGxpa2VseQo+IHBlcnNvbiBmb3IgdGhlIHRhc2ssIHll
+dCBJIHdvdWxkIGJlIG5pY2UgaWYgc29tZW9uZSBmcm9tIHRoZSBNZWRpYXRlawo+IHNxdWFkIGlz
+IGhlbHBpbmcgaGltIG91dCAtIENLIEh1IHBlcmhhcHMgPwo+IAo+IFJlZ2FyZHMsCj4gRW1pbAoK
+SSdtIHdpbGxpbmcgdG8gYmUgb25lIG9mIE1lZGlhdGVrIERSTSBkcml2ZXIgbWFpbnRhaW5lci4g
+SSB3aXNoIHRoaXMKd291bGQgbWFrZSB0aGluZ3MgZWFzaWVyLgoKUmVnYXJkcywKQ0sKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
+aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
+ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
