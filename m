@@ -1,70 +1,34 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [GIT PULL] drm/mediatek: MT8173 gamma & dither support
-Date: Mon, 4 Jul 2016 13:19:33 +0800
-Message-ID: <1467609573.31010.3.camel@mtksdaap41>
-References: <1466753238-17216-1-git-send-email-bibby.hsieh@mediatek.com>
- <558c9efc-d197-a6c3-cf7e-f9fcac60ca64@gmail.com>
- <1467026970.23883.16.camel@mtksdaap41>
- <CACvgo52YgRat8Uqhd9qh_ppvk0h=krxYLHL6Cjqs9+EzQaogUg@mail.gmail.com>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: [alsa-devel] [PATCH] ASoC: bt-sco: add config prompt
+Date: Mon, 4 Jul 2016 15:06:42 +0800
+Message-ID: <1467616002-10447-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CACvgo52YgRat8Uqhd9qh_ppvk0h=krxYLHL6Cjqs9+EzQaogUg@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Emil Velikov <emil.l.velikov@gmail.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, LAKML <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, ir.lian@mediatek.com, wens@csie.org, Garlic Tseng <garlic.tseng@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEVtaWw6CgpPbiBTdW4sIDIwMTYtMDctMDMgYXQgMjM6NDMgKzAxMDAsIEVtaWwgVmVsaWtv
-diB3cm90ZToKPiBIaSBCaWJieSwKPiAKPiBPbiAyNyBKdW5lIDIwMTYgYXQgMTI6MjksIEJpYmJ5
-IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4gT24gTW9uLCAyMDE2
-LTA2LTI3IGF0IDEyOjIwICswMjAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+ID4+Cj4gPj4g
-T24gMDYvMjQvMjAxNiAwOToyNyBBTSwgQmliYnkgSHNpZWggd3JvdGU6Cj4gPj4gPiBIaSBEYXZl
-LAo+ID4+ID4KPiA+PiA+IFBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBj
-b250YWlucyB0aGUgdjIgTVQ4MTczIGdhbW1hICYgZGl0aGVyIGZ1bmN0aW9uIHBhdGNoZXMgSSBz
-ZW50IG9uIDIwMTYtMDYtMTcsIHJlYmFzZWQgb250byB2NC43LXJjMS4gVGhlcmUgaGF2ZSBiZWVu
-IG5vIGZ1cnRoZXIgY29tbWVudHMuCj4gPj4gPgo+ID4+ID4gVGhhbmtzCj4gPj4gPiBCaWJieQo+
-ID4+ID4KPiA+PiA+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBzaW5jZSBjb21taXQgMWE2OTVhOTA1
-YzE4NTQ4MDYyNTA5MTc4Yjk4YmM5MWU2NzUxMDg2NDoKPiA+PiA+Cj4gPj4gPiAgIExpbnV4IDQu
-Ny1yYzEgKDIwMTYtMDUtMjkgMTY6Mjk6MjQgR01UKQo+ID4+ID4KPiA+PiA+IGFyZSBhdmFpbGFi
-bGUgaW4gdGhlIGdpdCByZXBvc2l0b3J5IGF0Ogo+ID4+ID4KPiA+PiA+ICAgZ2l0QGdpdGh1Yi5j
-b206QmliYnlIc2llaC9saW51eDQuNy1yYzEuZ2l0Cj4gPj4gPgo+ID4+ID4gZm9yIHlvdSB0byBm
-ZXRjaCBjaGFuZ2VzIHVwIHRvIGRkMGViNzczYmMxMjVmNWU2YmNhNzM1ZDE5YzA4NTAwZGMzNzMw
-Zjk6Cj4gPj4gPgo+ID4+ID4gICBkcm0vbWVkaWF0ZWs6IEFkZCBnYW1tYSBjb3JyZWN0aW9uCj4g
-Pj4gPgo+ID4+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4+Cj4gPj4gQXMgZmFyIGFzIEkgY2FuIHNl
-ZSwgeW91ciBicmFuY2ggaGFzIDMgcGF0Y2hlcyBvbiB0b3AgZnJvbSBFZGRpZS4gSXQKPiA+PiBz
-ZWVtcyB0byBtZSBhcyBpZiB5b3UgZGlkbid0IHNlbmQgeW91ciBwYXRjaGVzIHRvIHRoZSBtYWls
-aW5nbGlzdCBiZWZvcmU/Cj4gPj4gQW55d2F5IHRoaXMgYnJhbmNoIGRvZXMgbm90IGZ1bGZpbGwg
-dGhlIHJ1bGVzIHRvIGdldCBtZXJnZWQgaW50byB0aGUKPiA+PiBsaW51eCBrZXJuZWwuCj4gPj4K
-PiA+PiBXaHkgZG8geW91IHNlbmQgYSBwdWxsIHJlcXVlc3Q/IFRoZSBub3JtYWwgcHJvY2VzcyBp
-cyB0byBzZW5kIHRoZQo+ID4+IHBhdGNoZXMgdmlhIGVtYWlsIGFuZCBpZiB0aGUgbWFpbnRhaW5l
-ciB3YW50cyB5b3UgY2FuIHNlbmQgYSBwdWxsCj4gPj4gcmVxdWVzdCBvbmNlIHRoZSBwYXRjaGVz
-IGFyZSByZWFkeSB0byBiZSBtZXJnZWQuCj4gPj4KPiA+PiBSZWdhcmRzLAo+ID4+IE1hdHRoaWFz
-Cj4gPj4KPiA+Cj4gPiBJIHNlbnQgdjEgYW5kIHYyIG9uIDIwMTYtMDYtMTQgYW5kIDA2LTE3IHJl
-c3BlY3RpdmVseSBbMC04XS4KPiA+IEFmdGVyIEkgbWFkZSBzb21lIG1vZGlmaWNhdGlvbnMgYWNj
-b3JkaW5nIHRvIERhbmllbCBWZXR0ZXIncyBjb21tZW50cywKPiA+IHRoZXJlIGhhZCBiZWVuIG5v
-IGZ1cnRoZXIgY29tbWVudHMgYW5kIEkgc2VudCB0aGUgcHVsbCByZXF1ZXN0IGFzIHRoZQo+ID4g
-b3RoZXIgc3ViLXN5cy4KPiA+Cj4gPiBJJ20gc29ycnkgZm9yIG15IG1pc3Rha2UsIEkgd2lsbCBy
-ZS1hcnJhbmdlIHRoZSB0cmVlIGZvciB1cHN0cmVhbS4KPiA+IE5leHQgdGltZSwgSSB3aWxsIGNo
-ZWNrIHdpdGggbWFpbnRhaW5lciBieSBlbWFpbCBmaXJzdCwgYW5kIHNlbnQgdGhlCj4gPiBwdWxs
-IHJlcXVlc3QuCj4gPgo+IEl0IG1pZ2h0IGJlIGEgYml0IGhhcmQgdG8gZmluZCBvdXQgd2hvJ3Mg
-dGhlIG1haW50YWluZXIgY29uc2lkZXJpbmcKPiBNQUlOVEFJTkVSUyBoYXMgbm8gZW50cnkgZm9y
-IHRoaXMgZHJpdmVyLgo+IAo+IExvb2tpbmcgYXQgaG93IHRoaW5ncyBhcmUgZ29pbmcgUGhpbGlw
-cCBaYWJlbCB3aWxsIGJlIHRoZSBtb3JlIGxpa2VseQo+IHBlcnNvbiBmb3IgdGhlIHRhc2ssIHll
-dCBJIHdvdWxkIGJlIG5pY2UgaWYgc29tZW9uZSBmcm9tIHRoZSBNZWRpYXRlawo+IHNxdWFkIGlz
-IGhlbHBpbmcgaGltIG91dCAtIENLIEh1IHBlcmhhcHMgPwo+IAo+IFJlZ2FyZHMsCj4gRW1pbAoK
-SSdtIHdpbGxpbmcgdG8gYmUgb25lIG9mIE1lZGlhdGVrIERSTSBkcml2ZXIgbWFpbnRhaW5lci4g
-SSB3aXNoIHRoaXMKd291bGQgbWFrZSB0aGluZ3MgZWFzaWVyLgoKUmVnYXJkcywKQ0sKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWls
-aW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZy
-ZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Add config prompt for bt-sco codec driver
+
+Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+---
+ sound/soc/codecs/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
+index f2f8603..1cd6ab3 100644
+--- a/sound/soc/codecs/Kconfig
++++ b/sound/soc/codecs/Kconfig
+@@ -383,7 +383,7 @@ config SND_SOC_ALC5632
+ 	tristate
+ 
+ config SND_SOC_BT_SCO
+-	tristate
++	tristate "Dummy BT SCO codec driver"
+ 
+ config SND_SOC_CQ0093VC
+ 	tristate
+-- 
+1.9.1
