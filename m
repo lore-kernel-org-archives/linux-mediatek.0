@@ -1,36 +1,55 @@
-From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Subject: pull request: lunux-firmware: Add Mediatek MT8173 VPU firmware
-Date: Mon, 4 Jul 2016 18:48:34 +0800
-Message-ID: <1467629314-31902-1-git-send-email-andrew-ct.chen@mediatek.com>
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Subject: [PATCH 0/4] ASoC: Mediatek: add MT2701 platform and
+	machine driver
+Date: Mon, 4 Jul 2016 18:56:24 +0800
+Message-ID: <1467629788-14411-1-git-send-email-garlic.tseng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-firmware@kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, tiffany.lin@mediatek.com, eddie.huang@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: broonie@kernel.org, tiwai@suse.de
+Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi linux-firmware maintainers,
+Some patches of the patchset "ASoC: Mediatek: Add support for MT2701 SOC"
+have been applied to the broonie tree, so I send a new patchset for the 
+remaining patches.
 
-The following changes since commit 3ef7857d511ce6a91c5ce609da76c4702651cfa5:
+The patchset adds mt2701 support based on Mediatek AFE common structure.
 
-  amdgpu: update polaris ucode (2016-06-28 14:31:11 -0400)
+Change since the previous patchset:
+* remove unnecessary set_clkdiv and set_fmt ops in mt2701 platform driver
+* add another snd_soc_dai_driver for bt-sco codec to support 8k and 16k
 
-are available in the git repository at:
 
-  https://github.com/andrewct-chen/vpu-linux-firmware.git vpu_encode
 
-for you to fetch changes up to 40876d7b3c911161ab71bc84a6e90f257a13cdc4:
+Garlic Tseng (4):
+  ASoC: mediatek: add mt2701 platform driver implementation.
+  ASoC: bt-sco: extend rate and add a general compatible string
+  ASoC: mediatek: add BT implementation
+  ASoC: mediatek: Add mt2701-cs42448 driver and config option.
 
-  mediatek: Add mt8173 VPU firmware (2016-07-04 16:26:54 +0800)
+ Documentation/devicetree/bindings/sound/bt-sco.txt |    2 +-
+ sound/soc/codecs/bt-sco.c                          |   52 +-
+ sound/soc/mediatek/Kconfig                         |   21 +
+ sound/soc/mediatek/Makefile                        |    1 +
+ sound/soc/mediatek/mt2701/Makefile                 |   19 +
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h      |    9 -
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c         | 1654 ++++++++++++++++++++
+ sound/soc/mediatek/mt2701/mt2701-cs42448.c         |  412 +++++
+ 8 files changed, 2144 insertions(+), 26 deletions(-)
+ create mode 100644 sound/soc/mediatek/mt2701/Makefile
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt2701/mt2701-cs42448.c
 
-----------------------------------------------------------------
-Andrew-CT Chen (1):
-      mediatek: Add mt8173 VPU firmware
-
- WHENCE    |   19 +++++++++++++++++++
- vpu_d.bin |  Bin 0 -> 4084848 bytes
- vpu_p.bin |  Bin 0 -> 131036 bytes
- 3 files changed, 19 insertions(+)
- create mode 100644 vpu_d.bin
- create mode 100644 vpu_p.bin
+-- 
+1.9.1
