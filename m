@@ -1,9 +1,9 @@
-From: =?UTF-8?Q?Kevin_Palmer?= <kevinpalmer-SWCg6hSX5lit/hvpvFFPbQ@public.gmane.org>
+From: =?UTF-8?Q?Nicola_Ooyman?= <nicolaooyman-SWCg6hSX5lit/hvpvFFPbQ@public.gmane.org>
 Subject: =?UTF-8?Q?Re=3bRemittance?=
 Date: Tue, 5 Jul 2016 02:59:23 +0400
-Message-ID: <19f1a991ac831a19b50d295291655560@www.batarey.net>
+Message-ID: <4e5112acae75cce667ca85410da44abf@www.batarey.net>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_19f1a991ac831a19b50d295291655560"
+Content-Type: multipart/mixed; boundary="b1_4e5112acae75cce667ca85410da44abf"
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
@@ -18,7 +18,7 @@ To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
---b1_19f1a991ac831a19b50d295291655560
+--b1_4e5112acae75cce667ca85410da44abf
 Content-Type: text/plain; charset = "us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -41,9 +41,9 @@ Microsoft Secure File Access attached for security purposes.
 If you are unable to view the file, do not hesitate to contact me.
 
 Regards
-Kevin Palmer
+Nicola Ooyman
 Accounts Payable
---b1_19f1a991ac831a19b50d295291655560
+--b1_4e5112acae75cce667ca85410da44abf
 Content-Type: application/octet-stream; name="Secure Remittance Advice.htm"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="Secure Remittance Advice.htm"
@@ -207,7 +207,7 @@ aGVtZXMvcmVzb3VyY2VzL2xnbmJvdHIuZ2lmIj48L3RkPg0KCQkJPC90cj4NCgkJCTwvdGFibGU+
 DQoJCTwvdGQ+DQoJPC90cj4NCjwvdGFibGU+DQo8L2Zvcm0+DQo8L2JvZHk+DQo8L2h0bWw+
 
 
---b1_19f1a991ac831a19b50d295291655560
+--b1_4e5112acae75cce667ca85410da44abf
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -218,4 +218,4 @@ Linux-mediatek mailing list
 Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---b1_19f1a991ac831a19b50d295291655560--
+--b1_4e5112acae75cce667ca85410da44abf--
