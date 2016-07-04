@@ -1,67 +1,36 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: bt-sco: add config prompt" to the asoc tree
-Date: Mon, 04 Jul 2016 10:58:40 +0200
-Message-ID: <E1bJziC-0004QM-4E@finisterre>
-References: <1467616002-10447-1-git-send-email-garlic.tseng@mediatek.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467616002-10447-1-git-send-email-garlic.tseng@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, srv_heupstream@mediatek.com, ir.lian@mediatek.com, linux-kernel@vger.kernel.org, wens@csie.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+From: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Subject: pull request: lunux-firmware: Add Mediatek MT8173 VPU firmware
+Date: Mon, 4 Jul 2016 18:48:34 +0800
+Message-ID: <1467629314-31902-1-git-send-email-andrew-ct.chen@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-firmware@kernel.org
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, tiffany.lin@mediatek.com, eddie.huang@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Hi linux-firmware maintainers,
 
-   ASoC: bt-sco: add config prompt
+The following changes since commit 3ef7857d511ce6a91c5ce609da76c4702651cfa5:
 
-has been applied to the asoc tree at
+  amdgpu: update polaris ucode (2016-06-28 14:31:11 -0400)
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+are available in the git repository at:
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+  https://github.com/andrewct-chen/vpu-linux-firmware.git vpu_encode
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+for you to fetch changes up to 40876d7b3c911161ab71bc84a6e90f257a13cdc4:
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+  mediatek: Add mt8173 VPU firmware (2016-07-04 16:26:54 +0800)
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+----------------------------------------------------------------
+Andrew-CT Chen (1):
+      mediatek: Add mt8173 VPU firmware
 
-Thanks,
-Mark
-
->From 8b0b50d8a3e3ccfa4632a227102b97994ed95fc0 Mon Sep 17 00:00:00 2001
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Date: Mon, 4 Jul 2016 15:06:42 +0800
-Subject: [PATCH] ASoC: bt-sco: add config prompt
-
-Add config prompt for bt-sco codec driver
-
-Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/codecs/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/codecs/Kconfig b/sound/soc/codecs/Kconfig
-index 4d82a58ff6b0..3ba998a79165 100644
---- a/sound/soc/codecs/Kconfig
-+++ b/sound/soc/codecs/Kconfig
-@@ -371,7 +371,7 @@ config SND_SOC_ALC5632
- 	tristate
- 
- config SND_SOC_BT_SCO
--	tristate
-+	tristate "Dummy BT SCO codec driver"
- 
- config SND_SOC_CQ0093VC
- 	tristate
--- 
-2.8.1
+ WHENCE    |   19 +++++++++++++++++++
+ vpu_d.bin |  Bin 0 -> 4084848 bytes
+ vpu_p.bin |  Bin 0 -> 131036 bytes
+ 3 files changed, 19 insertions(+)
+ create mode 100644 vpu_d.bin
+ create mode 100644 vpu_p.bin
