@@ -1,135 +1,224 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v8] ASoC: mediatek: Add HDMI dai-links to the
-	mt8173-rt5650 machine driver
-Date: Tue,  5 Jul 2016 11:26:21 +0200
-Message-ID: <1467710781-23590-1-git-send-email-p.zabel@pengutronix.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: alsa-devel@alsa-project.org
-Cc: Jean-Francois Moine <moinejf@free.fr>, Koro Chen <koro.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, Jyri Sarha <jsarha@ti.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: add BT implementation" to the asoc tree
+Date: Tue, 05 Jul 2016 11:55:51 +0200
+Message-ID: <E1bKN55-0002TQ-SY@finisterre>
+References: <1467629788-14411-4-git-send-email-garlic.tseng@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1467629788-14411-4-git-send-email-garlic.tseng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, koro.chen@mediatek.com, linux-mediatek@lists.infradead.org, PC.Liao@mediatek.com, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: PC Liao <pc.liao@mediatek.com>
+The patch
 
-This patch adds HDMI audio output support to the MT8173 RT5650 machine
-driver.
+   ASoC: mediatek: add BT implementation
 
-Signed-off-by: PC Liao <pc.liao@mediatek.com>
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 4bdc8d452c18a5b4f439a1bffdda6789c4a6c606 Mon Sep 17 00:00:00 2001
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Date: Mon, 4 Jul 2016 18:56:27 +0800
+Subject: [PATCH] ASoC: mediatek: add BT implementation
+
+Add BT implementation for mt2701 platform driver.
+
+Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
-Changes since v7:
- - Rebased onto asoc/for-next
----
- .../devicetree/bindings/sound/mt8173-rt5650.txt    |  5 +++--
- sound/soc/mediatek/Kconfig                         |  1 +
- sound/soc/mediatek/mt8173/mt8173-rt5650.c          | 26 ++++++++++++++++++++++
- 3 files changed, 30 insertions(+), 2 deletions(-)
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 139 +++++++++++++++++++++++++++++
+ 1 file changed, 139 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-index f250fc7..29dce2a 100644
---- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-+++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
-@@ -1,8 +1,9 @@
--MT8173 with RT5650 CODECS
-+MT8173 with RT5650 CODECS and HDMI via I2S
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index c865ba13617c..6c14d686bfa1 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -333,6 +333,86 @@ static int mt2701_afe_i2s_set_sysclk(struct snd_soc_dai *dai, int clk_id,
+ 	return 0;
+ }
  
- Required properties:
- - compatible : "mediatek,mt8173-rt5650"
- - mediatek,audio-codec: the phandles of rt5650 codecs
-+                        and of the hdmi encoder node
- - mediatek,platform: the phandle of MT8173 ASoC platform
- 
- Optional subnodes:
-@@ -20,7 +21,7 @@ Example:
- 
- 	sound {
- 		compatible = "mediatek,mt8173-rt5650";
--		mediatek,audio-codec = <&rt5650>;
-+		mediatek,audio-codec = <&rt5650 &hdmi0>;
- 		mediatek,platform = <&afe>;
- 		mediatek,mclk = <0>;
- 		codec-capture {
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index 2fbe543..05cf809 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -46,6 +46,7 @@ config SND_SOC_MT8173_RT5650
- 	tristate "ASoC Audio driver for MT8173 with RT5650 codec"
- 	depends on SND_SOC_MT8173 && I2C
- 	select SND_SOC_RT5645
-+	select SND_SOC_HDMI_CODEC
- 	help
- 	  This adds ASoC driver for Mediatek MT8173 boards
- 	  with the RT5650 audio codec.
-diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-index d478976..ba65f41 100644
---- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-@@ -169,7 +169,9 @@ static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
- enum {
- 	DAI_LINK_PLAYBACK,
- 	DAI_LINK_CAPTURE,
-+	DAI_LINK_HDMI,
- 	DAI_LINK_CODEC_I2S,
-+	DAI_LINK_HDMI_I2S,
- };
- 
- /* Digital audio interface glue - connects codec <---> CPU */
-@@ -195,6 +197,16 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.dynamic = 1,
- 		.dpcm_capture = 1,
- 	},
-+	[DAI_LINK_HDMI] = {
-+		.name = "HDMI",
-+		.stream_name = "HDMI PCM",
-+		.cpu_dai_name = "HDMI",
-+		.codec_name = "snd-soc-dummy",
-+		.codec_dai_name = "snd-soc-dummy-dai",
-+		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
-+		.dynamic = 1,
-+		.dpcm_playback = 1,
-+	},
- 	/* Back End DAI links */
- 	[DAI_LINK_CODEC_I2S] = {
- 		.name = "Codec",
-@@ -210,6 +222,13 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.dpcm_playback = 1,
- 		.dpcm_capture = 1,
- 	},
-+	[DAI_LINK_HDMI_I2S] = {
-+		.name = "HDMI BE",
-+		.cpu_dai_name = "HDMIO",
-+		.no_pcm = 1,
-+		.codec_dai_name = "i2s-hifi",
-+		.dpcm_playback = 1,
-+	},
- };
- 
- static struct snd_soc_card mt8173_rt5650_card = {
-@@ -284,6 +303,13 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	mt8173_rt5650_dais[DAI_LINK_HDMI_I2S].codec_of_node =
-+		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 1);
-+	if (!mt8173_rt5650_dais[DAI_LINK_HDMI_I2S].codec_of_node) {
-+		dev_err(&pdev->dev,
-+			"Property 'audio-codec' missing or invalid\n");
++static int mt2701_btmrg_startup(struct snd_pcm_substream *substream,
++				struct snd_soc_dai *dai)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++			   AUDIO_TOP_CON4_PDN_MRGIF, 0);
++
++	afe_priv->mrg_enable[substream->stream] = 1;
++	return 0;
++}
++
++static int mt2701_btmrg_hw_params(struct snd_pcm_substream *substream,
++				  struct snd_pcm_hw_params *params,
++				  struct snd_soc_dai *dai)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
++	int stream_fs;
++	u32 val, msk;
++
++	stream_fs = params_rate(params);
++
++	if ((stream_fs != 8000) && (stream_fs != 16000)) {
++		dev_err(afe->dev, "%s() btmgr not supprt this stream_fs %d\n",
++			__func__, stream_fs);
 +		return -EINVAL;
 +	}
- 	card->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, card);
++
++	regmap_update_bits(afe->regmap, AFE_MRGIF_CON,
++			   AFE_MRGIF_CON_I2S_MODE_MASK,
++			   AFE_MRGIF_CON_I2S_MODE_32K);
++
++	val = AFE_DAIBT_CON0_BT_FUNC_EN | AFE_DAIBT_CON0_BT_FUNC_RDY
++	      | AFE_DAIBT_CON0_MRG_USE;
++	msk = val;
++
++	if (stream_fs == 16000)
++		val |= AFE_DAIBT_CON0_BT_WIDE_MODE_EN;
++
++	msk |= AFE_DAIBT_CON0_BT_WIDE_MODE_EN;
++
++	regmap_update_bits(afe->regmap, AFE_DAIBT_CON0, msk, val);
++
++	regmap_update_bits(afe->regmap, AFE_DAIBT_CON0,
++			   AFE_DAIBT_CON0_DAIBT_EN,
++			   AFE_DAIBT_CON0_DAIBT_EN);
++	regmap_update_bits(afe->regmap, AFE_MRGIF_CON,
++			   AFE_MRGIF_CON_MRG_I2S_EN,
++			   AFE_MRGIF_CON_MRG_I2S_EN);
++	regmap_update_bits(afe->regmap, AFE_MRGIF_CON,
++			   AFE_MRGIF_CON_MRG_EN,
++			   AFE_MRGIF_CON_MRG_EN);
++	return 0;
++}
++
++static void mt2701_btmrg_shutdown(struct snd_pcm_substream *substream,
++				  struct snd_soc_dai *dai)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mtk_base_afe *afe = snd_soc_platform_get_drvdata(rtd->platform);
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	/* if the other direction stream is not occupied */
++	if (!afe_priv->mrg_enable[!substream->stream]) {
++		regmap_update_bits(afe->regmap, AFE_DAIBT_CON0,
++				   AFE_DAIBT_CON0_DAIBT_EN, 0);
++		regmap_update_bits(afe->regmap, AFE_MRGIF_CON,
++				   AFE_MRGIF_CON_MRG_EN, 0);
++		regmap_update_bits(afe->regmap, AFE_MRGIF_CON,
++				   AFE_MRGIF_CON_MRG_I2S_EN, 0);
++		regmap_update_bits(afe->regmap, AUDIO_TOP_CON4,
++				   AUDIO_TOP_CON4_PDN_MRGIF,
++				   AUDIO_TOP_CON4_PDN_MRGIF);
++	}
++	afe_priv->mrg_enable[substream->stream] = 0;
++}
++
+ static int mt2701_simple_fe_startup(struct snd_pcm_substream *substream,
+ 				    struct snd_soc_dai *dai)
+ {
+@@ -514,6 +594,13 @@ static const struct snd_soc_dai_ops mt2701_afe_i2s_ops = {
+ 	.set_sysclk	= mt2701_afe_i2s_set_sysclk,
+ };
  
++/* MRG BE DAIs */
++static struct snd_soc_dai_ops mt2701_btmrg_ops = {
++	.startup = mt2701_btmrg_startup,
++	.shutdown = mt2701_btmrg_shutdown,
++	.hw_params = mt2701_btmrg_hw_params,
++};
++
+ static struct snd_soc_dai_driver mt2701_afe_pcm_dais[] = {
+ 	/* FE DAIs: memory intefaces to CPU */
+ 	{
+@@ -566,6 +653,36 @@ static struct snd_soc_dai_driver mt2701_afe_pcm_dais[] = {
+ 		},
+ 		.ops = &mt2701_single_memif_dai_ops,
+ 	},
++	{
++		.name = "PCM_BT_DL",
++		.id = MT2701_MEMIF_DLBT,
++		.suspend = mtk_afe_dai_suspend,
++		.resume = mtk_afe_dai_resume,
++		.playback = {
++			.stream_name = "DLBT",
++			.channels_min = 1,
++			.channels_max = 1,
++			.rates = (SNDRV_PCM_RATE_8000
++				| SNDRV_PCM_RATE_16000),
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++		},
++		.ops = &mt2701_single_memif_dai_ops,
++	},
++	{
++		.name = "PCM_BT_UL",
++		.id = MT2701_MEMIF_ULBT,
++		.suspend = mtk_afe_dai_suspend,
++		.resume = mtk_afe_dai_resume,
++		.capture = {
++			.stream_name = "ULBT",
++			.channels_min = 1,
++			.channels_max = 1,
++			.rates = (SNDRV_PCM_RATE_8000
++				| SNDRV_PCM_RATE_16000),
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++		},
++		.ops = &mt2701_single_memif_dai_ops,
++	},
+ 	/* BE DAIs */
+ 	{
+ 		.name = "I2S0",
+@@ -665,6 +782,28 @@ static struct snd_soc_dai_driver mt2701_afe_pcm_dais[] = {
+ 		.ops = &mt2701_afe_i2s_ops,
+ 		.symmetric_rates = 1,
+ 	},
++	{
++		.name = "MRG BT",
++		.id = MT2701_IO_MRG,
++		.playback = {
++			.stream_name = "BT Playback",
++			.channels_min = 1,
++			.channels_max = 1,
++			.rates = (SNDRV_PCM_RATE_8000
++				| SNDRV_PCM_RATE_16000),
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++		},
++		.capture = {
++			.stream_name = "BT Capture",
++			.channels_min = 1,
++			.channels_max = 1,
++			.rates = (SNDRV_PCM_RATE_8000
++				| SNDRV_PCM_RATE_16000),
++			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++		},
++		.ops = &mt2701_btmrg_ops,
++		.symmetric_rates = 1,
++	}
+ };
+ 
+ static const struct snd_kcontrol_new mt2701_afe_o00_mix[] = {
 -- 
 2.8.1
