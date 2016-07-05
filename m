@@ -1,164 +1,135 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH v16 1/2] arm64: dts: mt8173: Add HDMI related nodes
-Date: Tue,  5 Jul 2016 11:16:09 +0200
-Message-ID: <1467710170-22176-1-git-send-email-p.zabel@pengutronix.de>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: [PATCH v8] ASoC: mediatek: Add HDMI dai-links to the
+	mt8173-rt5650 machine driver
+Date: Tue,  5 Jul 2016 11:26:21 +0200
+Message-ID: <1467710781-23590-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: alsa-devel@alsa-project.org
+Cc: Jean-Francois Moine <moinejf@free.fr>, Koro Chen <koro.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, Jyri Sarha <jsarha@ti.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+From: PC Liao <pc.liao@mediatek.com>
 
-This patch adds the device nodes for the HDMI encoder, HDMI PHY,
-and HDMI CEC modules.
+This patch adds HDMI audio output support to the MT8173 RT5650 machine
+driver.
 
-Signed-off-by: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Signed-off-by: PC Liao <pc.liao@mediatek.com>
+Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 ---
-No changes since v15. The corresponding HDMI drivers have been merged into
-drm-next with commit 2a3467063ae3 ("Merge tag 'mediatek-drm-2016-06-20' of
-git://git.pengutronix.de/git/pza/linux into drm-next")
+Changes since v7:
+ - Rebased onto asoc/for-next
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 77 ++++++++++++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
+ .../devicetree/bindings/sound/mt8173-rt5650.txt    |  5 +++--
+ sound/soc/mediatek/Kconfig                         |  1 +
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c          | 26 ++++++++++++++++++++++
+ 3 files changed, 30 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 78529e4..ea59d09 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -242,6 +242,16 @@
- 				     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
- 				     <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+index f250fc7..29dce2a 100644
+--- a/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
++++ b/Documentation/devicetree/bindings/sound/mt8173-rt5650.txt
+@@ -1,8 +1,9 @@
+-MT8173 with RT5650 CODECS
++MT8173 with RT5650 CODECS and HDMI via I2S
  
-+			hdmi_pin: xxx {
-+
-+				/*hdmi htplg pin*/
-+				pins1 {
-+					pinmux = <MT8173_PIN_21_HTPLG__FUNC_HTPLG>;
-+					input-enable;
-+					bias-pull-down;
-+				};
-+			};
-+
- 			i2c0_pins_a: i2c0 {
- 				pins1 {
- 					pinmux = <MT8173_PIN_45_SDA0__FUNC_SDA0>,
-@@ -329,6 +339,14 @@
- 			clock-names = "spi", "wrap";
- 		};
+ Required properties:
+ - compatible : "mediatek,mt8173-rt5650"
+ - mediatek,audio-codec: the phandles of rt5650 codecs
++                        and of the hdmi encoder node
+ - mediatek,platform: the phandle of MT8173 ASoC platform
  
-+		cec: cec@10013000 {
-+			compatible = "mediatek,mt8173-cec";
-+			reg = <0 0x10013000 0 0xbc>;
-+			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&infracfg CLK_INFRA_CEC>;
-+			status = "disabled";
-+		};
-+
- 		sysirq: intpol-controller@10200620 {
- 			compatible = "mediatek,mt8173-sysirq",
- 				     "mediatek,mt6577-sysirq";
-@@ -360,6 +378,19 @@
- 			#clock-cells = <1>;
- 		};
+ Optional subnodes:
+@@ -20,7 +21,7 @@ Example:
  
-+		hdmi_phy: hdmi-phy@10209100 {
-+			compatible = "mediatek,mt8173-hdmi-phy";
-+			reg = <0 0x10209100 0 0x24>;
-+			clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
-+			clock-names = "pll_ref";
-+			clock-output-names = "hdmitx_dig_cts";
-+			mediatek,ibias = <0xa>;
-+			mediatek,ibias_up = <0x1c>;
-+			#clock-cells = <0>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		mipi_tx0: mipi-dphy@10215000 {
- 			compatible = "mediatek,mt8173-mipi-tx";
- 			reg = <0 0x10215000 0 0x1000>;
-@@ -554,6 +585,14 @@
- 			status = "disabled";
- 		};
+ 	sound {
+ 		compatible = "mediatek,mt8173-rt5650";
+-		mediatek,audio-codec = <&rt5650>;
++		mediatek,audio-codec = <&rt5650 &hdmi0>;
+ 		mediatek,platform = <&afe>;
+ 		mediatek,mclk = <0>;
+ 		codec-capture {
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 2fbe543..05cf809 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -46,6 +46,7 @@ config SND_SOC_MT8173_RT5650
+ 	tristate "ASoC Audio driver for MT8173 with RT5650 codec"
+ 	depends on SND_SOC_MT8173 && I2C
+ 	select SND_SOC_RT5645
++	select SND_SOC_HDMI_CODEC
+ 	help
+ 	  This adds ASoC driver for Mediatek MT8173 boards
+ 	  with the RT5650 audio codec.
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index d478976..ba65f41 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -169,7 +169,9 @@ static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
+ enum {
+ 	DAI_LINK_PLAYBACK,
+ 	DAI_LINK_CAPTURE,
++	DAI_LINK_HDMI,
+ 	DAI_LINK_CODEC_I2S,
++	DAI_LINK_HDMI_I2S,
+ };
  
-+		hdmiddc0: i2c@11012000 {
-+			compatible = "mediatek,mt8173-hdmi-ddc";
-+			interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
-+			reg = <0 0x11012000 0 0x1C>;
-+			clocks = <&pericfg CLK_PERI_I2C5>;
-+			clock-names = "ddc-i2c";
-+		};
-+
- 		i2c6: i2c@11013000 {
- 			compatible = "mediatek,mt8173-i2c";
- 			reg = <0 0x11013000 0 0x70>,
-@@ -862,6 +901,12 @@
- 				 <&apmixedsys CLK_APMIXED_TVDPLL>;
- 			clock-names = "pixel", "engine", "pll";
- 			status = "disabled";
-+
-+			port {
-+				dpi0_out: endpoint {
-+					remote-endpoint = <&hdmi0_in>;
-+				};
-+			};
- 		};
+ /* Digital audio interface glue - connects codec <---> CPU */
+@@ -195,6 +197,16 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
+ 		.dynamic = 1,
+ 		.dpcm_capture = 1,
+ 	},
++	[DAI_LINK_HDMI] = {
++		.name = "HDMI",
++		.stream_name = "HDMI PCM",
++		.cpu_dai_name = "HDMI",
++		.codec_name = "snd-soc-dummy",
++		.codec_dai_name = "snd-soc-dummy-dai",
++		.trigger = {SND_SOC_DPCM_TRIGGER_POST, SND_SOC_DPCM_TRIGGER_POST},
++		.dynamic = 1,
++		.dpcm_playback = 1,
++	},
+ 	/* Back End DAI links */
+ 	[DAI_LINK_CODEC_I2S] = {
+ 		.name = "Codec",
+@@ -210,6 +222,13 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
+ 		.dpcm_playback = 1,
+ 		.dpcm_capture = 1,
+ 	},
++	[DAI_LINK_HDMI_I2S] = {
++		.name = "HDMI BE",
++		.cpu_dai_name = "HDMIO",
++		.no_pcm = 1,
++		.codec_dai_name = "i2s-hifi",
++		.dpcm_playback = 1,
++	},
+ };
  
- 		pwm0: pwm@1401e000 {
-@@ -919,6 +964,38 @@
- 			clocks = <&mmsys CLK_MM_DISP_OD>;
- 		};
+ static struct snd_soc_card mt8173_rt5650_card = {
+@@ -284,6 +303,13 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
-+		hdmi0: hdmi@14025000 {
-+			compatible = "mediatek,mt8173-hdmi";
-+			reg = <0 0x14025000 0 0x400>;
-+			interrupts = <GIC_SPI 206 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&mmsys CLK_MM_HDMI_PIXEL>,
-+				 <&mmsys CLK_MM_HDMI_PLLCK>,
-+				 <&mmsys CLK_MM_HDMI_AUDIO>,
-+				 <&mmsys CLK_MM_HDMI_SPDIF>;
-+			clock-names = "pixel", "pll", "bclk", "spdif";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&hdmi_pin>;
-+			phys = <&hdmi_phy>;
-+			phy-names = "hdmi";
-+			mediatek,syscon-hdmi = <&mmsys 0x900>;
-+			assigned-clocks = <&topckgen CLK_TOP_HDMI_SEL>;
-+			assigned-clock-parents = <&hdmi_phy>;
-+			status = "disabled";
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					hdmi0_in: endpoint {
-+						remote-endpoint = <&dpi0_out>;
-+					};
-+				};
-+			};
-+		};
-+
- 		larb4: larb@14027000 {
- 			compatible = "mediatek,mt8173-smi-larb";
- 			reg = <0 0x14027000 0 0x1000>;
++	mt8173_rt5650_dais[DAI_LINK_HDMI_I2S].codec_of_node =
++		of_parse_phandle(pdev->dev.of_node, "mediatek,audio-codec", 1);
++	if (!mt8173_rt5650_dais[DAI_LINK_HDMI_I2S].codec_of_node) {
++		dev_err(&pdev->dev,
++			"Property 'audio-codec' missing or invalid\n");
++		return -EINVAL;
++	}
+ 	card->dev = &pdev->dev;
+ 	platform_set_drvdata(pdev, card);
+ 
 -- 
 2.8.1
