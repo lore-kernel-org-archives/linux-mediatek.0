@@ -1,78 +1,102 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: mt2701: fix some error handling in probe" to the asoc tree
-Date: Thu, 07 Jul 2016 12:01:08 +0200
-Message-ID: <E1bL67I-0000ii-Ks@finisterre>
-References: <20160707081404.GB16645@mwanda>
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-In-Reply-To: <20160707081404.GB16645@mwanda>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Garlic Tseng <garlic.tseng@mediatek.com>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Garlic Tseng <garlic.tseng@mediatek.com>, alsa-devel@alsa-project.org, kernel-janitors@vger.kernel.org, Takashi Iwai <tiwai@suse.com>Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>alsa-devel@alsa-project.org
+From: tiffany lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
+Date: Thu, 7 Jul 2016 18:16:52 +0800
+Message-ID: <1467886612.21382.18.camel@mtksdaap41>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+	 <577D0576.2050706@xs4all.nl>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <577D0576.2050706@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Hi Hans,
 
-   ASoC: mediatek: mt2701: fix some error handling in probe
 
-has been applied to the asoc tree at
+On Wed, 2016-07-06 at 15:19 +0200, Hans Verkuil wrote:
+> Hi Tiffany,
+> 
+> I plan to review this patch series on Friday, but one obvious question is
+> what the reason for these failures is:
+> 
+> > Input/Output configuration ioctls:
+> >         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+> >         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+> >         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+> >         test VIDIOC_G/S_EDID: OK (Not Supported)
+> > 
+> >         Control ioctls:
+> >                 test VIDIOC_QUERYCTRL/MENU: OK
+> >                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(357): g_ctrl returned an error (11)
+> >                 test VIDIOC_G/S_CTRL: FAIL
+> >                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(579): g_ext_ctrls returned an error (11)
+> >                 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+These fails are because VIDIOC_G_CTRL and VIDIOC_G_EXT_CTRLS return
+V4L2_CID_MIN_BUFFERS_FOR_CAPTURE only when dirver in MTK_STATE_HEADER
+state, or it will return EAGAIN.
+This could help user space get correct value, not default value that may
+changed base on media content.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+> >                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(721): subscribe event for control 'User Controls' failed
+> >                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
+Driver do not support subscribe event for control 'User Controls' for
+now.
+Do we need to support this?
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+> >                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+> >                 Standard Controls: 2 Private Controls: 0
+> > 
+> >         Format ioctls:
+> >                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+> >                 test VIDIOC_G/S_PARM: OK (Not Supported)
+> >                 test VIDIOC_G_FBUF: OK (Not Supported)
+> >                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-formats.cpp(405): expected EINVAL, but got 11 when getting format for buftype 9
+> >                 test VIDIOC_G_FMT: FAIL
+This is because vidioc_vdec_g_fmt only succeed when context is in
+MTK_STATE_HEADER state, or user space cannot get correct format data
+using this function.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+> >                 test VIDIOC_TRY_FMT: OK (Not Supported)
+> >                 test VIDIOC_S_FMT: OK (Not Supported)
+> >                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> > 
+> >         Codec ioctls:
+> >                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+> >                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+> >                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> > 
+> >         Buffer ioctls:
+> >                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+> >                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
+Our OUTPUT and CAPTURE queue support both VB2_DMABUF and VB2_MMAP, user
+space can select which to use in runtime.
+So our driver default support v4l2_m2m_ioctl_expbuf functionality.
+In v4l2-compliance test, it will check v4l2_m2m_ioctl_expbuf only valid
+when node->valid_memorytype is V4L2_MEMORY_MMAP.
+So when go through node->valid_memorytype is V4L2_MEMORY_DMABUF, it
+fail.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+best regards,
+Tiffany
 
-Thanks,
-Mark
 
->From b02c5cc7239b8f58ba5da24092288dd7a9a56acc Mon Sep 17 00:00:00 2001
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Date: Thu, 7 Jul 2016 11:14:04 +0300
-Subject: [PATCH] ASoC: mediatek: mt2701: fix some error handling in probe
 
-The check for if the "afe" allocation failed was too late and there
-wasn't a check for "afe->platform_priv".
-
-Fixes: 43a6a7e71063 ('ASoC: mediatek: add mt2701 platform driver implementation.')
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-Acked-by: Garlic Tseng <garlic.tseng@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index 6c14d686bfa1..15522c08a967 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -1489,11 +1489,13 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	ret = 0;
- 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
-+	if (!afe)
-+		return -ENOMEM;
- 	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
- 					  GFP_KERNEL);
--	afe_priv = afe->platform_priv;
--	if (!afe)
-+	if (!afe->platform_priv)
- 		return -ENOMEM;
-+	afe_priv = afe->platform_priv;
- 
- 	afe->dev = &pdev->dev;
- 	dev = afe->dev;
--- 
-2.8.1
-
+> >                 test VIDIOC_EXPBUF: FAIL
+> > 
+> > 
+> > Total: 38, Succeeded: 33, Failed: 5, Warnings: 0
+> 
+> If it is due to a bug in v4l2-compliance, then let me know and I'll fix it. If not,
+> then it should be fixed in the driver.
+> 
+> Frankly, it was the presence of these failures that made me think this patch series
+> wasn't final. Before a v4l2 driver can be accepted in the kernel, v4l2-compliance must pass.
+> 
+> Regards,
+> 
+> 	Hans
