@@ -1,33 +1,26 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: fix some host driver defect
-Date: Wed, 6 Jul 2016 18:21:35 +0200
-Message-ID: <CAPDyKFoZVoZpKh90hG-QoSdwWSgAdV0b6oup-w-dOQ8atRZ+2w@mail.gmail.com>
-References: <1467252061-3791-1-git-send-email-chaotian.jing@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH -next] net: mediatek: remove .owner field for driver
+Date: Wed, 06 Jul 2016 22:31:52 -0700 (PDT)
+Message-ID: <20160706.223152.980979934196013750.davem@davemloft.net>
+References: <1467811813-4864-1-git-send-email-weiyj_lk@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467252061-3791-1-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, Douglas Anderson <dianders@chromium.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-mmc <linux-mmc@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Wei-Ning Huang <wnhuang@chromium.org>
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1467811813-4864-1-git-send-email-weiyj_lk@163.com>
+Sender: netdev-owner@vger.kernel.org
+To: weiyj_lk@163.com
+Cc: nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com, yongjun_wei@trendmicro.com.cn, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 30 June 2016 at 04:00, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->
-> Chaotian Jing (4):
->   mmc: mediatek: do not tune data for HS400 mode
->   mmc: mediatek: fix CRC error when calling mmc_select_hs400()
->   mmc: mediatek: fix CMD21/CMD19 timeout issue
->   mmc: mediatek: perfer to use rise edge latching
->
->  drivers/mmc/host/mtk-sd.c | 70 +++++++++++++++++++++++++++++++++++++----------
->  1 file changed, 56 insertions(+), 14 deletions(-)
->
-> --
-> 1.8.1.1.dirty
->
+From: weiyj_lk@163.com
+Date: Wed,  6 Jul 2016 13:30:13 +0000
 
-Thanks, applied for next!
+> From: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+> 
+> Remove .owner field since calls to module_platform_driver() will
+> set it automatically.
+> 
+> Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
 
-Kind regards
-Uffe
+Applied.
