@@ -1,55 +1,132 @@
-From: Keerthy <a0393675-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 1/3] dt-bindings: thermal: Add binding document for
- Mediatek thermal controller
-Date: Thu, 7 Jul 2016 16:39:16 +0530
-Message-ID: <577E385C.9080501@ti.com>
-References: <1467882386-40544-1-git-send-email-dawei.chien@mediatek.com>
- <1467882386-40544-2-git-send-email-dawei.chien@mediatek.com>
+From: Hans Verkuil <hansverk@cisco.com>
+Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
+Date: Thu, 7 Jul 2016 13:13:53 +0200
+Message-ID: <577E3971.1080305@cisco.com>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+ <577D0576.2050706@xs4all.nl> <1467886612.21382.18.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1467882386-40544-2-git-send-email-dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1467886612.21382.18.camel@mtksdaap41>
+Sender: linux-media-owner@vger.kernel.org
+To: tiffany lin <tiffany.lin@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Tiffany,
 
+On 07/07/16 12:16, tiffany lin wrote:
+> Hi Hans,
+> 
+> 
+> On Wed, 2016-07-06 at 15:19 +0200, Hans Verkuil wrote:
+>> Hi Tiffany,
+>>
+>> I plan to review this patch series on Friday, but one obvious question is
+>> what the reason for these failures is:
+>>
+>>> Input/Output configuration ioctls:
+>>>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+>>>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+>>>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+>>>         test VIDIOC_G/S_EDID: OK (Not Supported)
+>>>
+>>>         Control ioctls:
+>>>                 test VIDIOC_QUERYCTRL/MENU: OK
+>>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(357): g_ctrl returned an error (11)
+>>>                 test VIDIOC_G/S_CTRL: FAIL
+>>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(579): g_ext_ctrls returned an error (11)
+>>>                 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+> These fails are because VIDIOC_G_CTRL and VIDIOC_G_EXT_CTRLS return
+> V4L2_CID_MIN_BUFFERS_FOR_CAPTURE only when dirver in MTK_STATE_HEADER
+> state, or it will return EAGAIN.
+> This could help user space get correct value, not default value that may
+> changed base on media content.
 
-On Thursday 07 July 2016 02:36 PM, Dawei Chien wrote:
-> This adds the device tree binding documentation for the mediatek thermal
-> controller found on Mediatek MT2701.
->
-> Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->   .../bindings/thermal/mediatek-thermal.txt          |    2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> index 81f9a51..bb55e79 100644
-> --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> @@ -8,7 +8,7 @@ apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
->   is also needed.
->
->   Required properties:
-> -- compatible: "mediatek,mt8173-thermal"
-> +- compatible: "mediatek,mt8173-thermal" or "mediatek,mt2701-thermal"
+So this should be improved in v4l2-compliance.
 
-- compatible :
-  - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
-  - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+> 
+>>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(721): subscribe event for control 'User Controls' failed
+>>>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
+> Driver do not support subscribe event for control 'User Controls' for
+> now.
+> Do we need to support this?
 
->   - reg: Address range of the thermal controller
->   - interrupts: IRQ for the thermal controller
->   - clocks, clock-names: Clocks needed for the thermal controller. required
->
+Let me check: this might be a knock-on effect from the previous error.
+
+Which controls does your driver have? (v4l2-ctl -l)
+
+> 
+>>>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+>>>                 Standard Controls: 2 Private Controls: 0
+>>>
+>>>         Format ioctls:
+>>>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+>>>                 test VIDIOC_G/S_PARM: OK (Not Supported)
+>>>                 test VIDIOC_G_FBUF: OK (Not Supported)
+>>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-formats.cpp(405): expected EINVAL, but got 11 when getting format for buftype 9
+>>>                 test VIDIOC_G_FMT: FAIL
+> This is because vidioc_vdec_g_fmt only succeed when context is in
+> MTK_STATE_HEADER state, or user space cannot get correct format data
+> using this function.
+
+I'll take a look at this as well.
+
+> 
+>>>                 test VIDIOC_TRY_FMT: OK (Not Supported)
+>>>                 test VIDIOC_S_FMT: OK (Not Supported)
+>>>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+>>>
+>>>         Codec ioctls:
+>>>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+>>>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+>>>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+>>>
+>>>         Buffer ioctls:
+>>>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+>>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
+
+Don't use v4l-utils-1.6: just use the latest master branch. That way you can
+be certain that the latest fixes are in. Besides, 1.6.0 is really old (almost
+two years!). If you used the same old version for the encoder driver as well,
+then please retest that encoder driver!
+
+> Our OUTPUT and CAPTURE queue support both VB2_DMABUF and VB2_MMAP, user
+> space can select which to use in runtime.
+> So our driver default support v4l2_m2m_ioctl_expbuf functionality.
+> In v4l2-compliance test, it will check v4l2_m2m_ioctl_expbuf only valid
+> when node->valid_memorytype is V4L2_MEMORY_MMAP.
+> So when go through node->valid_memorytype is V4L2_MEMORY_DMABUF, it
+> fail.
+
+That sounds like a bug. I'll take a look. For all I know, this is fixed in the
+master branch.
+
+Regards,
+
+	Hans
+
+> 
+> 
+> best regards,
+> Tiffany
+> 
+> 
+> 
+>>>                 test VIDIOC_EXPBUF: FAIL
+>>>
+>>>
+>>> Total: 38, Succeeded: 33, Failed: 5, Warnings: 0
+>>
+>> If it is due to a bug in v4l2-compliance, then let me know and I'll fix it. If not,
+>> then it should be fixed in the driver.
+>>
+>> Frankly, it was the presence of these failures that made me think this patch series
+>> wasn't final. Before a v4l2 driver can be accepted in the kernel, v4l2-compliance must pass.
+>>
+>> Regards,
+>>
+>> 	Hans
+> 
+> 
