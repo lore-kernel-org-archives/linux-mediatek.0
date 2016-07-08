@@ -1,138 +1,102 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
-Date: Fri, 8 Jul 2016 13:44:41 +0200
-Message-ID: <e2952cc2-3abd-894e-9481-b91a45cf7891@xs4all.nl>
-References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
- <577D0576.2050706@xs4all.nl> <1467886612.21382.18.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v7 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Fri, 8 Jul 2016 14:47:21 +0200
+Message-ID: <577FA0D9.8070408@gmail.com>
+References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1463390894-32062-3-git-send-email-jamesjj.liao@mediatek.com>
+ <34025ec4-19d3-8b25-d669-50c6f19159cd@gmail.com>
+ <1467782540.26485.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1467886612.21382.18.camel@mtksdaap41>
-Sender: linux-media-owner@vger.kernel.org
-To: tiffany lin <tiffany.lin@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Kamil Debski <k.debski@samsung.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1467782540.26485.11.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/07/2016 12:16 PM, tiffany lin wrote:
-> Hi Hans,
-> 
-> 
-> On Wed, 2016-07-06 at 15:19 +0200, Hans Verkuil wrote:
->> Hi Tiffany,
+
+
+On 06/07/16 07:22, James Liao wrote:
+> On Sat, 2016-07-02 at 18:35 +0200, Matthias Brugger wrote:
 >>
->> I plan to review this patch series on Friday, but one obvious question is
->> what the reason for these failures is:
+>> On 05/16/2016 11:28 AM, James Liao wrote:
+>>> Some power domain comsumers may init before module_init.
+>>> So the power domain provider (scpsys) need to be initialized
+>>> earlier too.
+>>>
+>>> Take an example for our IOMMU (M4U) and SMI. SMI is a bridge
+>>> between IOMMU and multimedia HW. SMI is responsible to
+>>> enable/disable iommu and help transfer data for each multimedia
+>>> HW. Both of them have to wait until the power and clocks are
+>>> enabled.
+>>>
+>>> So scpsys driver should be initialized before SMI, and SMI should
+>>> be initialized before IOMMU, and then init IOMMU consumers
+>>> (display/vdec/venc/camera etc.).
+>>>
+>>> IOMMU is subsys_init by default. So we need to init scpsys driver
+>>> before subsys_init.
+>>>
+>>> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>> Reviewed-by: Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+>>> ---
+>>>   drivers/soc/mediatek/mtk-scpsys.c | 19 ++++++++++++++++++-
+>>>   1 file changed, 18 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+>>> index 5870a24..00c0adb 100644
+>>> --- a/drivers/soc/mediatek/mtk-scpsys.c
+>>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+>>> @@ -617,4 +617,21 @@ static struct platform_driver scpsys_drv = {
+>>>   		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
+>>>   	},
+>>>   };
+>>> -builtin_platform_driver(scpsys_drv);
+>>> +
+>>> +static int __init scpsys_drv_init(void)
+>>> +{
+>>> +	return platform_driver_register(&scpsys_drv);
+>>> +}
+>>> +
+>>> +/*
+>>> + * There are some Mediatek drivers which depend on the power domain driver need
+>>> + * to probe in earlier initcall levels. So scpsys driver also need to probe
+>>> + * earlier.
+>>> + *
+>>> + * IOMMU(M4U) and SMI drivers for example. SMI is a bridge between IOMMU and
+>>> + * multimedia HW. IOMMU depends on SMI, and SMI is a power domain consumer,
+>>> + * so the proper probe sequence should be scpsys -> SMI -> IOMMU driver.
+>>> + * IOMMU drivers are initialized during subsys_init by default, so we need to
+>>> + * move SMI and scpsys drivers to subsys_init or earlier init levels.
+>>> + */
+>>> +subsys_initcall(scpsys_drv_init);
+>>>
 >>
->>> Input/Output configuration ioctls:
->>>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
->>>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
->>>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
->>>         test VIDIOC_G/S_EDID: OK (Not Supported)
->>>
->>>         Control ioctls:
->>>                 test VIDIOC_QUERYCTRL/MENU: OK
->>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(357): g_ctrl returned an error (11)
->>>                 test VIDIOC_G/S_CTRL: FAIL
->>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(579): g_ext_ctrls returned an error (11)
->>>                 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
-> These fails are because VIDIOC_G_CTRL and VIDIOC_G_EXT_CTRLS return
-> V4L2_CID_MIN_BUFFERS_FOR_CAPTURE only when dirver in MTK_STATE_HEADER
-> state, or it will return EAGAIN.
-> This could help user space get correct value, not default value that may
-> changed base on media content.
+>> Can't we achieve this with probe deferring? I'm not really keen on
+>> coding the order of the different drivers like this.
+>
+> Hi Matthias,
+>
+> Some drivers such as IOMMU don't support probe deferring. So scpsys need
+> to init before them by changing init level.
+>
 
-OK, I really don't like this. I also looked what the s5p-mfc-dec driver does (the only other
-driver currently implementing this), and that returns -EINVAL.
+SMI larbs return EPROBE_DEFER if it can't find the PM provider for it's 
+domain, so this part should not be the problem. The larbs get added as 
+components in the probe, when the PM provider is present.
 
-My proposal would be to change this. If this information isn't known yet, why not
-just return 0 as the value? The doc would have to be updated and (preferably) also
-the s5p-mfc-dec driver. I've added Samsung devs to the Cc list, let me know what you
-think.
+The iommu driver uses the larbs as components. As long as not all 
+components are present the iommu does not bind them. So from what I see 
+this should work without any problem.
 
-> 
->>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(721): subscribe event for control 'User Controls' failed
->>>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
-> Driver do not support subscribe event for control 'User Controls' for
-> now.
-> Do we need to support this?
-
-I don't see why this would fail. It's OK to subscribe to such controls, although
-you'll never get an event.
-
->>>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
->>>                 Standard Controls: 2 Private Controls: 0
->>>
->>>         Format ioctls:
->>>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
->>>                 test VIDIOC_G/S_PARM: OK (Not Supported)
->>>                 test VIDIOC_G_FBUF: OK (Not Supported)
->>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-formats.cpp(405): expected EINVAL, but got 11 when getting format for buftype 9
->>>                 test VIDIOC_G_FMT: FAIL
-> This is because vidioc_vdec_g_fmt only succeed when context is in
-> MTK_STATE_HEADER state, or user space cannot get correct format data
-> using this function.
-
-Comparing this to s5p-mfc-dec I see that -EINVAL is returned in that case.
-
-I am not opposed to using EAGAIN in s5p-mfc-dec as well. Marek, Kamil, what is
-your opinion?
-
-> 
->>>                 test VIDIOC_TRY_FMT: OK (Not Supported)
->>>                 test VIDIOC_S_FMT: OK (Not Supported)
->>>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
->>>
->>>         Codec ioctls:
->>>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
->>>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
->>>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
->>>
->>>         Buffer ioctls:
->>>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
->>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
-> Our OUTPUT and CAPTURE queue support both VB2_DMABUF and VB2_MMAP, user
-> space can select which to use in runtime.
-> So our driver default support v4l2_m2m_ioctl_expbuf functionality.
-> In v4l2-compliance test, it will check v4l2_m2m_ioctl_expbuf only valid
-> when node->valid_memorytype is V4L2_MEMORY_MMAP.
-> So when go through node->valid_memorytype is V4L2_MEMORY_DMABUF, it
-> fail.
-
-valid_memorytype should have both MMAP and DMABUF flags.
-
-But v4l-utils-1.6.0 is way too old to be certain it isn't some v4l2-compliance bug
-that has since been fixed.
+Can you please specify where the iommu dirver has a problem. Maybe we 
+need to fix the driver rather then scpsys.
 
 Regards,
-
-	Hans
-
-> 
-> 
-> best regards,
-> Tiffany
-> 
-> 
-> 
->>>                 test VIDIOC_EXPBUF: FAIL
->>>
->>>
->>> Total: 38, Succeeded: 33, Failed: 5, Warnings: 0
->>
->> If it is due to a bug in v4l2-compliance, then let me know and I'll fix it. If not,
->> then it should be fixed in the driver.
->>
->> Frankly, it was the presence of these failures that made me think this patch series
->> wasn't final. Before a v4l2 driver can be accepted in the kernel, v4l2-compliance must pass.
->>
->> Regards,
->>
->> 	Hans
-> 
-> 
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-media" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
+Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
