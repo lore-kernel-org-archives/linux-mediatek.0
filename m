@@ -1,51 +1,63 @@
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Subject: Re: [alsa-devel] [PATCH -next v2] ASoC: mediatek: mt2701: fix non
- static symbol warning
-Date: Mon, 11 Jul 2016 09:31:25 +0800
-Message-ID: <1468200685.32731.1.camel@mtksdaap41>
-References: <1467985293-9041-1-git-send-email-weiyj_lk@163.com>
-	 <1467985621-13755-1-git-send-email-weiyj_lk@163.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v2 2/9] [media] : v4l: add Mediatek compressed video
+ block format
+Date: Mon, 11 Jul 2016 10:04:42 +0800
+Message-ID: <1468202682.3725.0.camel@mtksdaap41>
+References: <1463052250-38262-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1463052250-38262-2-git-send-email-tiffany.lin@mediatek.com>
+	 <1463052250-38262-3-git-send-email-tiffany.lin@mediatek.com>
+	 <78c9f4a1-e2b8-69ef-acc5-d24984497b33@xs4all.nl>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1467985621-13755-1-git-send-email-weiyj_lk@163.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: weiyj_lk@163.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Matthias Brugger <matthias.bgg@gmail.com>, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <78c9f4a1-e2b8-69ef-acc5-d24984497b33-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-07-08 at 13:47 +0000, weiyj_lk@163.com wrote:
-> From: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
-> 
-> Fixes the following sparse warning:
-> 
-> sound/soc/mediatek/mt2701/mt2701-afe-pcm.c:72:5: warning:
->  symbol 'mt2701_dai_num_to_i2s' was not declared. Should it be static?
-> 
-> Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+Hi Hans,
 
-Acked-by: Garlic Tseng <garlic.tseng@mediatek.com>
+On Fri, 2016-07-08 at 12:18 +0200, Hans Verkuil wrote:
+> On 05/12/2016 01:24 PM, Tiffany Lin wrote:
+> > Add V4L2_PIX_FMT_MT21 format used on MT8173 driver.
+> > It is compressed format and need MT8173 MDP driver to transfer to other 
+> > standard format.
+> > 
+> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  include/uapi/linux/videodev2.h |    1 +
+> >  1 file changed, 1 insertion(+)
+> > 
+> > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> > index 8f95191..52feea6 100644
+> > --- a/include/uapi/linux/videodev2.h
+> > +++ b/include/uapi/linux/videodev2.h
+> > @@ -625,6 +625,7 @@ struct v4l2_pix_format {
+> >  #define V4L2_PIX_FMT_Y8I      v4l2_fourcc('Y', '8', 'I', ' ') /* Greyscale 8-bit L/R interleaved */
+> >  #define V4L2_PIX_FMT_Y12I     v4l2_fourcc('Y', '1', '2', 'I') /* Greyscale 12-bit L/R interleaved */
+> >  #define V4L2_PIX_FMT_Z16      v4l2_fourcc('Z', '1', '6', ' ') /* Depth data 16-bit */
+> > +#define V4L2_PIX_FMT_MT21     v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
+> 
+> v4l2-ioctl.c should be modified as well so the correct description string is filled in.
+> 
+Got it. I will fix this.
 
-> ---
->  sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+best regards,
+Tiffany
+
+> Regards,
 > 
-> diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-> index 15522c0..34a6123 100644
-> --- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-> +++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-> @@ -69,7 +69,7 @@ static const struct mt2701_afe_rate mt2701_afe_i2s_rates[] = {
->  	{ .rate = 352800, .regvalue = 24 },
->  };
->  
-> -int mt2701_dai_num_to_i2s(struct mtk_base_afe *afe, int num)
-> +static int mt2701_dai_num_to_i2s(struct mtk_base_afe *afe, int num)
->  {
->  	int val = num - MT2701_IO_I2S;
+> 	Hans
 > 
-> 
-> _______________________________________________
-> Alsa-devel mailing list
-> Alsa-devel@alsa-project.org
-> http://mailman.alsa-project.org/mailman/listinfo/alsa-devel
+> >  
+> >  /* SDR formats - used only for Software Defined Radio devices */
+> >  #define V4L2_SDR_FMT_CU8          v4l2_fourcc('C', 'U', '0', '8') /* IQ u8 */
+> > 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
