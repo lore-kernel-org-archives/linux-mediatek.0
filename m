@@ -1,71 +1,49 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 3/9] DocBook/v4l: Add compressed video formats used
- on MT8173 codec driver
-Date: Mon, 11 Jul 2016 10:56:11 +0800
-Message-ID: <1468205771.3725.8.camel@mtksdaap41>
-References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
-	 <1464611363-14936-2-git-send-email-tiffany.lin@mediatek.com>
-	 <1464611363-14936-3-git-send-email-tiffany.lin@mediatek.com>
-	 <1464611363-14936-4-git-send-email-tiffany.lin@mediatek.com>
-	 <5a793171-24a7-4e9e-8bfd-f668c789f8e0@xs4all.nl>
+From: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3 0/2] AUXADC: Mediatek auxadc driver
+Date: Mon, 11 Jul 2016 11:09:54 +0800
+Message-ID: <1468206596-13792-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5a793171-24a7-4e9e-8bfd-f668c789f8e0-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+This series includes three patches:
+1.Change the device tree binding documentation.
+2.Add auxadc driver based on linux iio.
+3.Add auxadc nodes in the mediatek MT2701 dtsi file.
 
-On Fri, 2016-07-08 at 12:23 +0200, Hans Verkuil wrote:
-> On 05/30/2016 02:29 PM, Tiffany Lin wrote:
-> > Add V4L2_PIX_FMT_MT21 documentation
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  Documentation/DocBook/media/v4l/pixfmt.xml |    6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/Documentation/DocBook/media/v4l/pixfmt.xml b/Documentation/DocBook/media/v4l/pixfmt.xml
-> > index 5a08aee..d40e0ce 100644
-> > --- a/Documentation/DocBook/media/v4l/pixfmt.xml
-> > +++ b/Documentation/DocBook/media/v4l/pixfmt.xml
-> > @@ -1980,6 +1980,12 @@ array. Anything what's in between the UYVY lines is JPEG data and should be
-> >  concatenated to form the JPEG stream. </para>
-> >  </entry>
-> >  	  </row>
-> > +	  <row id="V4L2_PIX_FMT_MT21">
-> > +	    <entry><constant>V4L2_PIX_FMT_MT21</constant></entry>
-> > +	    <entry>'MT21'</entry>
-> > +	    <entry>Compressed two-planar YVU420 format used by Mediatek MT8173
-> > +	    codec driver.</entry>
-> 
-> Can you give a few more details? The encoder driver doesn't seem to produce this
-> format, so who is creating this? Where is this format documented?
-> 
+changes in patch v3:
+1).Add '#' before 'io-channel-cells' and change 'auxadc@' to 'adc@' in auxadc binding document.
+2).Fix CONFIG_MEDIATEK_MT65XX_AUXADC sequence as alphabetical order.
+3).Change the prefix 'MT65XX' to 'MT6577' to match auxadc driver name.
+4).Remove the delays stored in 'mt6577_auxadc_device' and use the defined delay directly.
+5).Use '-ETIMEDOUT' instead of '-EINVAL'.
+6).Return value directly in 'mt6577_auxadc_read_raw'.
+7).Add power off and unprepare clock if 'iio_device_register' failed.
+8).Change 'Registers' to 'Register'.
 
-It can be as input format for encoder, MDP and display drivers in our
-platform.
-This private format is only available in our platform.
-So I put it in "Reserved Format Identifiers" sections.
+changes in patch v2:
+1).Change the file name mt65xx_auxadc.c to mt6577_auxadc.c.
+2).Add 'depends on ARCH_MEDIATEK || COMPILE_TEST and HAS_IOMEM' for MEDIATEK_MT65XX_AUXADC config.
+3).Add check case for return value of 'readl_poll_timeout'.
+4).Remove returning 1 and 0 for SCALE and OFFSET. use channel type 'IIO_CHAN_INFO_PROCESSED' instead of 'IIO_CHAN_INFO_RAW'.
+5).Remove 'IIO_CHAN_INFO_OFFSET' and 'IIO_CHAN_INFO_SCALE' in 'MT65XX_AUXADC_CHANNEL' channel type.
+6).Add check case when auxadc power on failure. if auxadc power on failure, clk_disable_unprepare should be executed.
+7).Put 'platform_set_drvdata' before 'iio_device_register'.
+8).Fix coding style and spelling error.
 
+Zhiyong Tao (2):
+  dt-bindings: auxadc: Add binding document for Mediatek auxadc.
+  iio: adc: mt2701: Add Mediatek auxadc driver for mt2701.
 
-best regards,
-Tiffany
-
-> Regards,
-> 
-> 	Hans
-> 
-> > +	  </row>
-> >  	</tbody>
-> >        </tgroup>
-> >      </table>
-> > 
-
+ .../devicetree/bindings/iio/adc/mt65xx_auxadc.txt  |    4 +-
+ drivers/iio/adc/Kconfig                            |   26 +--
+ drivers/iio/adc/Makefile                           |    2 +-
+ drivers/iio/adc/mt6577_auxadc.c                    |  186 ++++++++++----------
+ 4 files changed, 106 insertions(+), 112 deletions(-)
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
