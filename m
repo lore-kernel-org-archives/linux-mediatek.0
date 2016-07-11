@@ -1,579 +1,126 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH V8 2/2] regulator: mt6323: Add support for MT6323 regulator
-Date: Mon, 11 Jul 2016 14:29:39 +0200
-Message-ID: <1468240179-7558-2-git-send-email-john@phrozen.org>
-References: <1468240179-7558-1-git-send-email-john@phrozen.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 1/4] soc: mediatek: Refine scpsys to support multiple
+ platform
+Date: Mon, 11 Jul 2016 15:10:59 +0200
+Message-ID: <57839AE3.2070103@gmail.com>
+References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1463390894-32062-2-git-send-email-jamesjj.liao@mediatek.com>
+ <6762e420-0d68-0376-b584-bfc878b5e95f@gmail.com>
+ <1467783564.26485.22.camel@mtksdaap41> <577E3AE9.5080202@gmail.com>
+ <1468227390.31247.20.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468240179-7558-1-git-send-email-john@phrozen.org>
+In-Reply-To: <1468227390.31247.20.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>, John Crispin <john@phrozen.org>
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Sascha Hauer <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Chen Zhong <chen.zhong@mediatek.com>
 
-The MT6323 is a regulator found on boards based on MediaTek MT7623 and
-probably other SoCs. It is a so called pmic and connects as a slave to
-SoC using SPI, wrapped inside the pmic-wrapper.
 
-Signed-off-by: Chen Zhong <chen.zhong@mediatek.com>
-Signed-off-by: John Crispin <john@phrozen.org>
----
-This is a resend as V7 was dropped due to a merge order conflict.
+On 11/07/16 10:56, James Liao wrote:
 
-Changes in V6
-* add back the set/get mode callbacks
+[...]
 
-Changes in V5
-* remove the code that modifies constraints
-* remove the code allows mode changes
+>>>>> @@ -467,28 +386,54 @@ static int scpsys_probe(struct platform_device *pdev)
+>>>>>    			if (PTR_ERR(scpd->supply) == -ENODEV)
+>>>>>    				scpd->supply = NULL;
+>>>>>    			else
+>>>>> -				return PTR_ERR(scpd->supply);
+>>>>> +				return ERR_CAST(scpd->supply);
+>>>>>    		}
+>>>>>    	}
+>>>>>
+>>>>> -	pd_data->num_domains = NUM_DOMAINS;
+>>>>> +	pd_data->num_domains = num;
+>>>>>
+>>>>> -	for (i = 0; i < NUM_DOMAINS; i++) {
+>>>>> +	init_clks(pdev, clk);
+>>>>> +
+>>>>> +	for (i = 0; i < num; i++) {
+>>>>>    		struct scp_domain *scpd = &scp->domains[i];
+>>>>>    		struct generic_pm_domain *genpd = &scpd->genpd;
+>>>>>    		const struct scp_domain_data *data = &scp_domain_data[i];
+>>>>>
+>>>>> +		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+>>>>> +			struct clk *c = clk[data->clk_id[j]];
+>>>>> +
+>>>>> +			if (IS_ERR(c)) {
+>>>>> +				dev_err(&pdev->dev, "%s: clk unavailable\n",
+>>>>> +					data->name);
+>>>>> +				return ERR_CAST(c);
+>>>>> +			}
+>>>>> +
+>>>>> +			scpd->clk[j] = c;
+>>>>
+>>>> Put this in the else branch. Apart from that is there any reason you
+>>>
+>>> Do you mean to change like this?
+>>>
+>>> 	if (IS_ERR(c)) {
+>>> 		...
+>>> 		return ERR_CAST(c);
+>>> 	} else {
+>>> 		scpd->clk[j] = c;
+>>> 	}
+>>>
+>>> checkpatch.pl will warn for above code due to it returns in 'if' branch.
+>>>
+>>
+>> I tried that on top of next-20160706 and it checkpatch didn't throw any
+>> warning. Which kernel version are based on?
+>
+> I don't remember which version of checkpatch warn on this pattern. This
+> patch series develop across several kernel versions.
 
-Changes in V4:
-* add id_table and of_match_table
-* use short GPL text
-* change MODULE_LICENSE to GPL V2
+We as the kernel community develop against master or linux-next. We only 
+care about older kernel version in the sense that we intent hard not to 
+break any userspace/kernel or firmware/kernel interfaces. Apart from 
+that it's up to every individual to backport patches from mainline 
+kernel to his respective version. But that's nothing the community as a 
+hole can take care of.
 
-Changes in V3:
-* none
+>
+> So do you prefer to put "scpd->clk[j] = c;" into 'else' branch?
+>
 
-Changes in V2:
-* send to the the proper maintainer
+Yes please :)
 
- drivers/regulator/Kconfig                  |    9 +
- drivers/regulator/Makefile                 |    1 +
- drivers/regulator/mt6323-regulator.c       |  432 ++++++++++++++++++++++++++++
- include/linux/regulator/mt6323-regulator.h |   52 ++++
- 4 files changed, 494 insertions(+)
- create mode 100644 drivers/regulator/mt6323-regulator.c
- create mode 100644 include/linux/regulator/mt6323-regulator.h
+>>>> moved the for up in the function? If not, I would prefer not to move it,
+>>>> to make it easier to read the diff.
+>>>
+>>> The new 'for' block are far different from original one. And I think
+>>> it's easy to read if we keep simple assign statements in the same block.
+>>>
+>>
+>> It's different in the sense that it checks if struct clk *c is an error.
+>> I don't see the reason why we need to move it up in the file.
+>> It's not too important but I would prefer not to move it if there is no
+>> reason.
+>
+> I think I may misunderstand your comments. Which 'for' block did you
+> mention for? 'for (i = 0; i < num ...' or 'for (j = 0; j < MAX_CLKS
+> && ...' ?
+>
+> The 'for(i)' exists in original code, this patch just change its counter
+> from 'NUM_DOMAINS' to 'num'. The 'for(j)' is a new for-block, so it was
+> not moved from other blocks.
+>
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index ae9cbd6..6c88e31 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -498,6 +498,15 @@ config REGULATOR_MT6311
- 	  This driver supports the control of different power rails of device
- 	  through regulator interface.
- 
-+config REGULATOR_MT6323
-+	tristate "MediaTek MT6323 PMIC"
-+	depends on MFD_MT6397
-+	help
-+	  Say y here to select this option to enable the power regulator of
-+	  MediaTek MT6323 PMIC.
-+	  This driver supports the control of different power rails of device
-+	  through regulator interface.
-+
- config REGULATOR_MT6397
- 	tristate "MediaTek MT6397 PMIC"
- 	depends on MFD_MT6397
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 85a1d44..f3da9ee 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -65,6 +65,7 @@ obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
- obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
- obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
- obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
-+obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
- obj-$(CONFIG_REGULATOR_QCOM_SMD_RPM) += qcom_smd-regulator.o
-diff --git a/drivers/regulator/mt6323-regulator.c b/drivers/regulator/mt6323-regulator.c
-new file mode 100644
-index 0000000..28ebbda
---- /dev/null
-+++ b/drivers/regulator/mt6323-regulator.c
-@@ -0,0 +1,432 @@
-+/*
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Chen Zhong <chen.zhong@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/mfd/mt6397/core.h>
-+#include <linux/mfd/mt6323/registers.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/regulator/mt6323-regulator.h>
-+#include <linux/regulator/of_regulator.h>
-+
-+#define MT6323_LDO_MODE_NORMAL	0
-+#define MT6323_LDO_MODE_LP	1
-+
-+/*
-+ * MT6323 regulators' information
-+ *
-+ * @desc: standard fields of regulator description.
-+ * @qi: Mask for query enable signal status of regulators
-+ * @vselon_reg: Register sections for hardware control mode of bucks
-+ * @vselctrl_reg: Register for controlling the buck control mode.
-+ * @vselctrl_mask: Mask for query buck's voltage control mode.
-+ */
-+struct mt6323_regulator_info {
-+	struct regulator_desc desc;
-+	u32 qi;
-+	u32 vselon_reg;
-+	u32 vselctrl_reg;
-+	u32 vselctrl_mask;
-+	u32 modeset_reg;
-+	u32 modeset_mask;
-+};
-+
-+#define MT6323_BUCK(match, vreg, min, max, step, volt_ranges, enreg,	\
-+		vosel, vosel_mask, voselon, vosel_ctrl)			\
-+[MT6323_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6323_volt_range_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6323_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = (max - min)/step + 1,			\
-+		.linear_ranges = volt_ranges,				\
-+		.n_linear_ranges = ARRAY_SIZE(volt_ranges),		\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(0),					\
-+	},								\
-+	.qi = BIT(13),							\
-+	.vselon_reg = voselon,						\
-+	.vselctrl_reg = vosel_ctrl,					\
-+	.vselctrl_mask = BIT(1),					\
-+}
-+
-+#define MT6323_LDO(match, vreg, ldo_volt_table, enreg, enbit, vosel,	\
-+		vosel_mask, _modeset_reg, _modeset_mask)		\
-+[MT6323_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6323_volt_table_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6323_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = ARRAY_SIZE(ldo_volt_table),		\
-+		.volt_table = ldo_volt_table,				\
-+		.vsel_reg = vosel,					\
-+		.vsel_mask = vosel_mask,				\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(enbit),				\
-+	},								\
-+	.qi = BIT(15),							\
-+	.modeset_reg = _modeset_reg,					\
-+	.modeset_mask = _modeset_mask,					\
-+}
-+
-+#define MT6323_REG_FIXED(match, vreg, enreg, enbit, volt,		\
-+		_modeset_reg, _modeset_mask)				\
-+[MT6323_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = #vreg,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6323_volt_fixed_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6323_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = 1,					\
-+		.enable_reg = enreg,					\
-+		.enable_mask = BIT(enbit),				\
-+		.min_uV = volt,						\
-+	},								\
-+	.qi = BIT(15),							\
-+	.modeset_reg = _modeset_reg,					\
-+	.modeset_mask = _modeset_mask,					\
-+}
-+
-+static const struct regulator_linear_range buck_volt_range1[] = {
-+	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250),
-+};
-+
-+static const struct regulator_linear_range buck_volt_range2[] = {
-+	REGULATOR_LINEAR_RANGE(1400000, 0, 0x7f, 12500),
-+};
-+
-+static const struct regulator_linear_range buck_volt_range3[] = {
-+	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
-+};
-+
-+static const u32 ldo_volt_table1[] = {
-+	3300000, 3400000, 3500000, 3600000,
-+};
-+
-+static const u32 ldo_volt_table2[] = {
-+	1500000, 1800000, 2500000, 2800000,
-+};
-+
-+static const u32 ldo_volt_table3[] = {
-+	1800000, 3300000,
-+};
-+
-+static const u32 ldo_volt_table4[] = {
-+	3000000, 3300000,
-+};
-+
-+static const u32 ldo_volt_table5[] = {
-+	1200000, 1300000, 1500000, 1800000, 2000000, 2800000, 3000000, 3300000,
-+};
-+
-+static const u32 ldo_volt_table6[] = {
-+	1200000, 1300000, 1500000, 1800000, 2500000, 2800000, 3000000, 2000000,
-+};
-+
-+static const u32 ldo_volt_table7[] = {
-+	1200000, 1300000, 1500000, 1800000,
-+};
-+
-+static const u32 ldo_volt_table8[] = {
-+	1800000, 3000000,
-+};
-+
-+static const u32 ldo_volt_table9[] = {
-+	1200000, 1350000, 1500000, 1800000,
-+};
-+
-+static const u32 ldo_volt_table10[] = {
-+	1200000, 1300000, 1500000, 1800000,
-+};
-+
-+static int mt6323_get_status(struct regulator_dev *rdev)
-+{
-+	int ret;
-+	u32 regval;
-+	struct mt6323_regulator_info *info = rdev_get_drvdata(rdev);
-+
-+	ret = regmap_read(rdev->regmap, info->desc.enable_reg, &regval);
-+	if (ret != 0) {
-+		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
-+		return ret;
-+	}
-+
-+	return (regval & info->qi) ? REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
-+}
-+
-+static int mt6323_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
-+{
-+	int ret, val = 0;
-+	struct mt6323_regulator_info *info = rdev_get_drvdata(rdev);
-+
-+	if (!info->modeset_mask) {
-+		dev_err(&rdev->dev, "regulator %s doesn't support set_mode\n",
-+			info->desc.name);
-+		return -EINVAL;
-+	}
-+
-+	switch (mode) {
-+	case REGULATOR_MODE_STANDBY:
-+		val = MT6323_LDO_MODE_LP;
-+		break;
-+	case REGULATOR_MODE_NORMAL:
-+		val = MT6323_LDO_MODE_NORMAL;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	val <<= ffs(info->modeset_mask) - 1;
-+
-+	ret = regmap_update_bits(rdev->regmap, info->modeset_reg,
-+				  info->modeset_mask, val);
-+
-+	return ret;
-+}
-+
-+static unsigned int mt6323_ldo_get_mode(struct regulator_dev *rdev)
-+{
-+	unsigned int val;
-+	unsigned int mode;
-+	int ret;
-+	struct mt6323_regulator_info *info = rdev_get_drvdata(rdev);
-+
-+	if (!info->modeset_mask) {
-+		dev_err(&rdev->dev, "regulator %s doesn't support get_mode\n",
-+			info->desc.name);
-+		return -EINVAL;
-+	}
-+
-+	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
-+	if (ret < 0)
-+		return ret;
-+
-+	val &= info->modeset_mask;
-+	val >>= ffs(info->modeset_mask) - 1;
-+
-+	if (val & 0x1)
-+		mode = REGULATOR_MODE_STANDBY;
-+	else
-+		mode = REGULATOR_MODE_NORMAL;
-+
-+	return mode;
-+}
-+
-+static struct regulator_ops mt6323_volt_range_ops = {
-+	.list_voltage = regulator_list_voltage_linear_range,
-+	.map_voltage = regulator_map_voltage_linear_range,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6323_get_status,
-+};
-+
-+static struct regulator_ops mt6323_volt_table_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.map_voltage = regulator_map_voltage_iterate,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6323_get_status,
-+	.set_mode = mt6323_ldo_set_mode,
-+	.get_mode = mt6323_ldo_get_mode,
-+};
-+
-+static struct regulator_ops mt6323_volt_fixed_ops = {
-+	.list_voltage = regulator_list_voltage_linear,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.get_status = mt6323_get_status,
-+	.set_mode = mt6323_ldo_set_mode,
-+	.get_mode = mt6323_ldo_get_mode,
-+};
-+
-+/* The array is indexed by id(MT6323_ID_XXX) */
-+static struct mt6323_regulator_info mt6323_regulators[] = {
-+	MT6323_BUCK("buck_vproc", VPROC, 700000, 1493750, 6250,
-+		buck_volt_range1, MT6323_VPROC_CON7, MT6323_VPROC_CON9, 0x7f,
-+		MT6323_VPROC_CON10, MT6323_VPROC_CON5),
-+	MT6323_BUCK("buck_vsys", VSYS, 1400000, 2987500, 12500,
-+		buck_volt_range2, MT6323_VSYS_CON7, MT6323_VSYS_CON9, 0x7f,
-+		MT6323_VSYS_CON10, MT6323_VSYS_CON5),
-+	MT6323_BUCK("buck_vpa", VPA, 500000, 3650000, 50000,
-+		buck_volt_range3, MT6323_VPA_CON7, MT6323_VPA_CON9,
-+		0x3f, MT6323_VPA_CON10, MT6323_VPA_CON5),
-+	MT6323_REG_FIXED("ldo_vtcxo", VTCXO, MT6323_ANALDO_CON1, 10, 2800000,
-+		MT6323_ANALDO_CON1, 0x2),
-+	MT6323_REG_FIXED("ldo_vcn28", VCN28, MT6323_ANALDO_CON19, 12, 2800000,
-+		MT6323_ANALDO_CON20, 0x2),
-+	MT6323_LDO("ldo_vcn33_bt", VCN33_BT, ldo_volt_table1,
-+		MT6323_ANALDO_CON16, 7, MT6323_ANALDO_CON16, 0xC,
-+		MT6323_ANALDO_CON21, 0x2),
-+	MT6323_LDO("ldo_vcn33_wifi", VCN33_WIFI, ldo_volt_table1,
-+		MT6323_ANALDO_CON17, 12, MT6323_ANALDO_CON16, 0xC,
-+		MT6323_ANALDO_CON21, 0x2),
-+	MT6323_REG_FIXED("ldo_va", VA, MT6323_ANALDO_CON2, 14, 2800000,
-+		MT6323_ANALDO_CON2, 0x2),
-+	MT6323_LDO("ldo_vcama", VCAMA, ldo_volt_table2,
-+		MT6323_ANALDO_CON4, 15, MT6323_ANALDO_CON10, 0x60, -1, 0),
-+	MT6323_REG_FIXED("ldo_vio28", VIO28, MT6323_DIGLDO_CON0, 14, 2800000,
-+		MT6323_DIGLDO_CON0, 0x2),
-+	MT6323_REG_FIXED("ldo_vusb", VUSB, MT6323_DIGLDO_CON2, 14, 3300000,
-+		MT6323_DIGLDO_CON2, 0x2),
-+	MT6323_LDO("ldo_vmc", VMC, ldo_volt_table3,
-+		MT6323_DIGLDO_CON3, 12, MT6323_DIGLDO_CON24, 0x10,
-+		MT6323_DIGLDO_CON3, 0x2),
-+	MT6323_LDO("ldo_vmch", VMCH, ldo_volt_table4,
-+		MT6323_DIGLDO_CON5, 14, MT6323_DIGLDO_CON26, 0x80,
-+		MT6323_DIGLDO_CON5, 0x2),
-+	MT6323_LDO("ldo_vemc3v3", VEMC3V3, ldo_volt_table4,
-+		MT6323_DIGLDO_CON6, 14, MT6323_DIGLDO_CON27, 0x80,
-+		MT6323_DIGLDO_CON6, 0x2),
-+	MT6323_LDO("ldo_vgp1", VGP1, ldo_volt_table5,
-+		MT6323_DIGLDO_CON7, 15, MT6323_DIGLDO_CON28, 0xE0,
-+		MT6323_DIGLDO_CON7, 0x2),
-+	MT6323_LDO("ldo_vgp2", VGP2, ldo_volt_table6,
-+		MT6323_DIGLDO_CON8, 15, MT6323_DIGLDO_CON29, 0xE0,
-+		MT6323_DIGLDO_CON8, 0x2),
-+	MT6323_LDO("ldo_vgp3", VGP3, ldo_volt_table7,
-+		MT6323_DIGLDO_CON9, 15, MT6323_DIGLDO_CON30, 0x60,
-+		MT6323_DIGLDO_CON9, 0x2),
-+	MT6323_REG_FIXED("ldo_vcn18", VCN18, MT6323_DIGLDO_CON11, 14, 1800000,
-+		MT6323_DIGLDO_CON11, 0x2),
-+	MT6323_LDO("ldo_vsim1", VSIM1, ldo_volt_table8,
-+		MT6323_DIGLDO_CON13, 15, MT6323_DIGLDO_CON34, 0x20,
-+		MT6323_DIGLDO_CON13, 0x2),
-+	MT6323_LDO("ldo_vsim2", VSIM2, ldo_volt_table8,
-+		MT6323_DIGLDO_CON14, 15, MT6323_DIGLDO_CON35, 0x20,
-+		MT6323_DIGLDO_CON14, 0x2),
-+	MT6323_REG_FIXED("ldo_vrtc", VRTC, MT6323_DIGLDO_CON15, 8, 2800000,
-+		-1, 0),
-+	MT6323_LDO("ldo_vcamaf", VCAMAF, ldo_volt_table5,
-+		MT6323_DIGLDO_CON31, 15, MT6323_DIGLDO_CON32, 0xE0,
-+		MT6323_DIGLDO_CON31, 0x2),
-+	MT6323_LDO("ldo_vibr", VIBR, ldo_volt_table5,
-+		MT6323_DIGLDO_CON39, 15, MT6323_DIGLDO_CON40, 0xE0,
-+		MT6323_DIGLDO_CON39, 0x2),
-+	MT6323_REG_FIXED("ldo_vrf18", VRF18, MT6323_DIGLDO_CON45, 15, 1825000,
-+		MT6323_DIGLDO_CON45, 0x2),
-+	MT6323_LDO("ldo_vm", VM, ldo_volt_table9,
-+		MT6323_DIGLDO_CON47, 14, MT6323_DIGLDO_CON48, 0x30,
-+		MT6323_DIGLDO_CON47, 0x2),
-+	MT6323_REG_FIXED("ldo_vio18", VIO18, MT6323_DIGLDO_CON49, 14, 1800000,
-+		MT6323_DIGLDO_CON49, 0x2),
-+	MT6323_LDO("ldo_vcamd", VCAMD, ldo_volt_table10,
-+		MT6323_DIGLDO_CON51, 14, MT6323_DIGLDO_CON52, 0x60,
-+		MT6323_DIGLDO_CON51, 0x2),
-+	MT6323_REG_FIXED("ldo_vcamio", VCAMIO, MT6323_DIGLDO_CON53, 14, 1800000,
-+		MT6323_DIGLDO_CON53, 0x2),
-+};
-+
-+static int mt6323_set_buck_vosel_reg(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6323 = dev_get_drvdata(pdev->dev.parent);
-+	int i;
-+	u32 regval;
-+
-+	for (i = 0; i < MT6323_MAX_REGULATOR; i++) {
-+		if (mt6323_regulators[i].vselctrl_reg) {
-+			if (regmap_read(mt6323->regmap,
-+				mt6323_regulators[i].vselctrl_reg,
-+				&regval) < 0) {
-+				dev_err(&pdev->dev,
-+					"Failed to read buck ctrl\n");
-+				return -EIO;
-+			}
-+
-+			if (regval & mt6323_regulators[i].vselctrl_mask) {
-+				mt6323_regulators[i].desc.vsel_reg =
-+				mt6323_regulators[i].vselon_reg;
-+			}
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int mt6323_regulator_probe(struct platform_device *pdev)
-+{
-+	struct mt6397_chip *mt6323 = dev_get_drvdata(pdev->dev.parent);
-+	struct regulator_config config = {};
-+	struct regulator_dev *rdev;
-+	int i;
-+	u32 reg_value;
-+
-+	/* Query buck controller to select activated voltage register part */
-+	if (mt6323_set_buck_vosel_reg(pdev))
-+		return -EIO;
-+
-+	/* Read PMIC chip revision to update constraints and voltage table */
-+	if (regmap_read(mt6323->regmap, MT6323_CID, &reg_value) < 0) {
-+		dev_err(&pdev->dev, "Failed to read Chip ID\n");
-+		return -EIO;
-+	}
-+	dev_info(&pdev->dev, "Chip ID = 0x%x\n", reg_value);
-+
-+	for (i = 0; i < MT6323_MAX_REGULATOR; i++) {
-+		config.dev = &pdev->dev;
-+		config.driver_data = &mt6323_regulators[i];
-+		config.regmap = mt6323->regmap;
-+		rdev = devm_regulator_register(&pdev->dev,
-+				&mt6323_regulators[i].desc, &config);
-+		if (IS_ERR(rdev)) {
-+			dev_err(&pdev->dev, "failed to register %s\n",
-+				mt6323_regulators[i].desc.name);
-+			return PTR_ERR(rdev);
-+		}
-+	}
-+	return 0;
-+}
-+
-+static const struct platform_device_id mt6323_platform_ids[] = {
-+	{"mt6323-regulator", 0},
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(platform, mt6323_platform_ids);
-+
-+static const struct of_device_id mt6323_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-regulator", },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_of_match);
-+
-+static struct platform_driver mt6323_regulator_driver = {
-+	.driver = {
-+		.name = "mt6323-regulator",
-+		.of_match_table = of_match_ptr(mt6323_of_match),
-+	},
-+	.probe = mt6323_regulator_probe,
-+	.id_table = mt6323_platform_ids,
-+};
-+
-+module_platform_driver(mt6323_regulator_driver);
-+
-+MODULE_AUTHOR("Chen Zhong <chen.zhong@mediatek.com>");
-+MODULE_DESCRIPTION("Regulator Driver for MediaTek MT6397 PMIC");
-+MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/regulator/mt6323-regulator.h b/include/linux/regulator/mt6323-regulator.h
-new file mode 100644
-index 0000000..67011cd
---- /dev/null
-+++ b/include/linux/regulator/mt6323-regulator.h
-@@ -0,0 +1,52 @@
-+/*
-+ * Copyright (c) 2016 MediaTek Inc.
-+ * Author: Chen Zhong <chen.zhong@mediatek.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 as
-+ * published by the Free Software Foundation.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ */
-+
-+#ifndef __LINUX_REGULATOR_MT6323_H
-+#define __LINUX_REGULATOR_MT6323_H
-+
-+enum {
-+	MT6323_ID_VPROC = 0,
-+	MT6323_ID_VSYS,
-+	MT6323_ID_VPA,
-+	MT6323_ID_VTCXO,
-+	MT6323_ID_VCN28,
-+	MT6323_ID_VCN33_BT,
-+	MT6323_ID_VCN33_WIFI,
-+	MT6323_ID_VA,
-+	MT6323_ID_VCAMA,
-+	MT6323_ID_VIO28 = 9,
-+	MT6323_ID_VUSB,
-+	MT6323_ID_VMC,
-+	MT6323_ID_VMCH,
-+	MT6323_ID_VEMC3V3,
-+	MT6323_ID_VGP1,
-+	MT6323_ID_VGP2,
-+	MT6323_ID_VGP3,
-+	MT6323_ID_VCN18,
-+	MT6323_ID_VSIM1,
-+	MT6323_ID_VSIM2,
-+	MT6323_ID_VRTC,
-+	MT6323_ID_VCAMAF,
-+	MT6323_ID_VIBR,
-+	MT6323_ID_VRF18,
-+	MT6323_ID_VM,
-+	MT6323_ID_VIO18,
-+	MT6323_ID_VCAMD,
-+	MT6323_ID_VCAMIO,
-+	MT6323_ID_RG_MAX,
-+};
-+
-+#define MT6323_MAX_REGULATOR	MT6323_ID_RG_MAX
-+
-+#endif /* __LINUX_REGULATOR_MT6323_H */
--- 
-1.7.10.4
+for (j = 0; j < MAX_CLKS... is present in the actual scpsys_probe in 
+linux-next (line 485 as of today). This patch moves this for a few lines 
+up, to be precise before executing this code sequence:
+<code>
+pd_data->domains[i] = genpd;
+scpd->scp = scp;
+
+scpd->data = data;
+</code>
+
+AFAIK there is no reason to do so. It adds unnecessary complexity to the 
+patch. So please fix this together with the other comments you got.
+
+Thanks a lot,
+Matthias
