@@ -1,117 +1,285 @@
-From: Keerthy <a0393675-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 3/3] arm: dts: thermal: add thermal/auxadc node.
-Date: Mon, 11 Jul 2016 14:39:26 +0530
-Message-ID: <57836246.3010800@ti.com>
-References: <1467882386-40544-1-git-send-email-dawei.chien@mediatek.com>
- <1467882386-40544-4-git-send-email-dawei.chien@mediatek.com>
- <577E465D.8070004@ti.com> <1468227415.15776.34.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1468227415.15776.34.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: dawei chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: [PATCH V8 1/2] regulator: Add document for MT6323 regulator
+Date: Mon, 11 Jul 2016 14:29:38 +0200
+Message-ID: <1468240179-7558-1-git-send-email-john@phrozen.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+This is a resend as V7 was dropped due to a merge order conflict.
 
+Changes in V7
+* remove another compatible string
+* small wording changes
 
-On Monday 11 July 2016 02:26 PM, dawei chien wrote:
-> Dear Keerthy,
->
-> On Thu, 2016-07-07 at 17:39 +0530, Keerthy wrote:
->>
->> On Thursday 07 July 2016 02:36 PM, Dawei Chien wrote:
->>> This adds the thermal controller and auxadc nodes
->>> to the Mediatek MT2701 dtsi file.
->>>
->>> Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>> This patch depned on:
->>> https://patchwork.kernel.org/patch/9213545/
->>> ---
->>>    arch/arm/boot/dts/mt2701.dtsi |   43 +++++++++++++++++++++++++++++++++++++++++
->>>    1 file changed, 43 insertions(+)
->>>
->>> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
->>> index 2ac8b50..0834a23 100644
->>> --- a/arch/arm/boot/dts/mt2701.dtsi
->>> +++ b/arch/arm/boot/dts/mt2701.dtsi
->>> @@ -77,6 +77,36 @@
->>>    		#clock-cells = <0>;
->>>    	};
->>>
->>> +	thermal-zones {
->>> +		cpu_thermal: cpu_thermal {
->>> +			polling-delay-passive = <1000>; /* milliseconds */
->>> +			polling-delay = <1000>; /* milliseconds */
->>> +
->>> +			thermal-sensors = <&thermal 0>;
->>> +			sustainable-power = <1000>;
->>> +
->>> +			trips {
->>> +				threshold: trip-point@0 {
->>> +					temperature = <68000>;
->>> +					hysteresis = <2000>;
->>> +					type = "passive";
->>> +				};
->>> +
->>> +				target: trip-point@1 {
->>> +					temperature = <85000>;
->>> +					hysteresis = <2000>;
->>> +					type = "passive";
->>> +				};
->>> +
->>> +				cpu_crit: cpu_crit@0 {
->>> +					temperature = <115000>;
->>> +					hysteresis = <2000>;
->>> +					type = "critical";
->>> +				};
->>> +			};
->>> +		};
->>> +	};
->>> +
->>
->> are there any corresponding cooling-maps?
->
-> Since MT2701 does not register CPUFREQ cooling device and its' own
-> device node, I could not add cooling-maps so far.
-> Could we add cooling map after CPUFREQ ready, thank you.
+Changes in V6
+* remove the compatible string
 
-Okay. I was curious to know about the cooling agents.
+Changes in V5
+* regulator vs regulators
 
->
->>
->>>    	timer {
->>>    		compatible = "arm,armv7-timer";
->>>    		interrupt-parent = <&gic>;
->>> @@ -183,4 +213,17 @@
->>>    		clocks = <&uart_clk>;
->>>    		status = "disabled";
->>>    	};
->>> +
->>> +	thermal: thermal@1100b000 {
->>> +		#thermal-sensor-cells = <0>;
->>> +		compatible = "mediatek,mt2701-thermal";
->>> +		reg = <0 0x1100b000 0 0x1000>;
->>> +		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
->>> +		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
->>> +		clock-names = "therm", "auxadc";
->>> +		resets = <&pericfg 0x10>;
->>> +		reset-names = "therm";
->>> +		mediatek,auxadc = <&auxadc>;
->>> +		mediatek,apmixedsys = <&apmixedsys>;
->>> +	};
->>>    };
->>>
->
->
+Changes in V4
+* regulator is a subnode and not a property
+
+ .../bindings/regulator/mt6323-regulator.txt        |  239 ++++++++++++++++++++
+ 1 file changed, 239 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+
+diff --git a/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+new file mode 100644
+index 0000000..9fd95e7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+@@ -0,0 +1,239 @@
++Mediatek MT6323 Regulator Driver
++
++All voltage regulators are defined as subnodes of the regulators node. A list
++of regulators provided by this controller are defined as subnodes of the
++PMIC's node. Each regulator is named according to its regulator type,
++buck_<name> and ldo_<name>. The definition for each of these nodes is defined
++using the standard binding for regulators at
++Documentation/devicetree/bindings/regulator/regulator.txt.
++
++The valid names for regulators are::
++BUCK:
++  buck_vproc, buck_vsys, buck_vpa
++LDO:
++  ldo_vtcxo, ldo_vcn28, ldo_vcn33_bt, ldo_vcn33_wifi, ldo_va, ldo_vcama,
++  ldo_vio28, ldo_vusb, ldo_vmc, ldo_vmch, ldo_vemc3v3, ldo_vgp1, ldo_vgp2,
++  ldo_vgp3, ldo_vcn18, ldo_vsim1, ldo_vsim2, ldo_vrtc, ldo_vcamaf, ldo_vibr,
++  ldo_vrf18, ldo_vm, ldo_vio18, ldo_vcamd, ldo_vcamio
++
++Example:
++
++	pmic: mt6323 {
++		compatible = "mediatek,mt6323";
++
++		mt6323regulator: regulators {
++			mt6323_vproc_reg: buck_vproc{
++				regulator-name = "vproc";
++				regulator-min-microvolt = < 700000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vsys_reg: buck_vsys{
++				regulator-name = "vsys";
++				regulator-min-microvolt = <1400000>;
++				regulator-max-microvolt = <2987500>;
++				regulator-ramp-delay = <25000>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vpa_reg: buck_vpa{
++				regulator-name = "vpa";
++				regulator-min-microvolt = < 500000>;
++				regulator-max-microvolt = <3650000>;
++			};
++
++			mt6323_vtcxo_reg: ldo_vtcxo{
++				regulator-name = "vtcxo";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <90>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcn28_reg: ldo_vcn28{
++				regulator-name = "vcn28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <185>;
++			};
++
++			mt6323_vcn33_bt_reg: ldo_vcn33_bt{
++				regulator-name = "vcn33_bt";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-enable-ramp-delay = <185>;
++			};
++
++			mt6323_vcn33_wifi_reg: ldo_vcn33_wifi{
++				regulator-name = "vcn33_wifi";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3600000>;
++				regulator-enable-ramp-delay = <185>;
++			};
++
++			mt6323_va_reg: ldo_va{
++				regulator-name = "va";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcama_reg: ldo_vcama{
++				regulator-name = "vcama";
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vio28_reg: ldo_vio28{
++				regulator-name = "vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vusb_reg: ldo_vusb{
++				regulator-name = "vusb";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-boot-on;
++			};
++
++			mt6323_vmc_reg: ldo_vmc{
++				regulator-name = "vmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vmch_reg: ldo_vmch{
++				regulator-name = "vmch";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vemc3v3_reg: ldo_vemc3v3{
++				regulator-name = "vemc3v3";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++				regulator-boot-on;
++			};
++
++			mt6323_vgp1_reg: ldo_vgp1{
++				regulator-name = "vgp1";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vgp2_reg: ldo_vgp2{
++				regulator-name = "vgp2";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vgp3_reg: ldo_vgp3{
++				regulator-name = "vgp3";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vcn18_reg: ldo_vcn18{
++				regulator-name = "vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vsim1_reg: ldo_vsim1{
++				regulator-name = "vsim1";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vsim2_reg: ldo_vsim2{
++				regulator-name = "vsim2";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vrtc_reg: ldo_vrtc{
++				regulator-name = "vrtc";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcamaf_reg: ldo_vcamaf{
++				regulator-name = "vcamaf";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vibr_reg: ldo_vibr{
++				regulator-name = "vibr";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <36>;
++			};
++
++			mt6323_vrf18_reg: ldo_vrf18{
++				regulator-name = "vrf18";
++				regulator-min-microvolt = <1825000>;
++				regulator-max-microvolt = <1825000>;
++				regulator-enable-ramp-delay = <187>;
++			};
++
++			mt6323_vm_reg: ldo_vm{
++				regulator-name = "vm";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vio18_reg: ldo_vio18{
++				regulator-name = "vio18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++				regulator-always-on;
++				regulator-boot-on;
++			};
++
++			mt6323_vcamd_reg: ldo_vcamd{
++				regulator-name = "vcamd";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++
++			mt6323_vcamio_reg: ldo_vcamio{
++				regulator-name = "vcamio";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <216>;
++			};
++		};
++	};
+-- 
+1.7.10.4
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
