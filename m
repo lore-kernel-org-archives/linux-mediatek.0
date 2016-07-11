@@ -1,56 +1,58 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH V8 1/2] regulator: Add document for MT6323 regulator
-Date: Mon, 11 Jul 2016 22:07:54 +0100
-Message-ID: <20160711210754.GA9976@sirena.org.uk>
+Subject: Re: [PATCH V8 2/2] regulator: mt6323: Add support for MT6323
+ regulator
+Date: Mon, 11 Jul 2016 22:12:35 +0100
+Message-ID: <20160711211235.GB9976@sirena.org.uk>
 References: <1468240179-7558-1-git-send-email-john@phrozen.org>
- <20160711180805.GG3701@sirena.org.uk>
- <cef78bd8-9a4a-e848-d7cb-13a27127f11e@phrozen.org>
- <20160711192211.GI3701@sirena.org.uk>
- <c1acbf13-93a0-4257-ee48-4885a87fede5@phrozen.org>
+ <1468240179-7558-2-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="M9NhX3UHpAaciwkO"
+	protocol="application/pgp-signature"; boundary="CdrF4e02JqNVZeln"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <c1acbf13-93a0-4257-ee48-4885a87fede5@phrozen.org>
+In-Reply-To: <1468240179-7558-2-git-send-email-john@phrozen.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: John Crispin <john@phrozen.org>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---M9NhX3UHpAaciwkO
+--CdrF4e02JqNVZeln
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Mon, Jul 11, 2016 at 10:31:45PM +0200, John Crispin wrote:
+On Mon, Jul 11, 2016 at 02:29:39PM +0200, John Crispin wrote:
 
-> maybe i am missing something here, but i can see the dependencies inside
-> the for-next branch of
-> git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git. is
-> this not the tree i should base patches on for v4.8 ?
+> +static const struct of_device_id mt6323_of_match[] = {
+> +	{ .compatible = "mediatek,mt6323-regulator", },
+> +	{ /* sentinel */ },
+> +};
+> +MODULE_DEVICE_TABLE(of, mt6323_of_match);
 
-Oh, so these aren't things that Lee just applied but rather things that
-have propagated through?  You didn't say what commits you were talking
-about, you linked to a long gitweb URL that would have been difficult to
-paste due to wrapping.  This sort of thing is why it's really helpful to
-make your e-mails directly human readable, saying something like "these
-depend on change X which is in Linus' tree now" would've made this
-clear.
+This may have been answered last time but I don't remember - why is
+there a compatible string for this device in the DT?  Surely we already
+know that the regulators for the mt6323 are present by virtue of the
+fact that we know that the core mt6323 is present in the system?
+Indeed, looking at the now merged MFD code it appears that this is
+in fact the case so we could just not have a compatible and perhaps this
+was just an oversight.  This is good because it means we're not encoding
+the specific way Linux instantiates devices into the DT.
 
---M9NhX3UHpAaciwkO
+Otherwise this does look good.
+
+--CdrF4e02JqNVZeln
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXhAqoAAoJECTWi3JdVIfQTLoH/jr0xdIPvmi8cunTocybOSrB
-5HkLOuAGuIrxyuU20n/1gXVohQHT47HhGteqi8Vw4HSDkwBhVvz8uruJ2EnPDxcC
-SCLwsuYVD82hI/cBU4z2lNzctFf7BsaHZ6lOGNTItUw/DuA84R0b3QkCD9IqyS9a
-Ym15a3jm+Xfa+vsXTSULWWLI7VPswmSuh49w86RHr9G4Pbmosoa42LBvWLl1ph8V
-bqe4Kb75rYoIjdQV1il2k+cNFXnUk2kqGwW3xBF63Bz56wB6sCf9Su9FN5oTpIm0
-yn16u1rr8GRdpM5Ov9AdXjwveEWVFUhatfogkNOycnPyACXdmY74yPem7Ht0WnY=
-=ckCh
+iQEcBAEBCAAGBQJXhAvCAAoJECTWi3JdVIfQuokH/RuZOTGynp7Z4mnBvT8SpybP
+ZSS2so9V40HJ/K1q5w17d6wuZiIAYQwOV26bgcGSfAbC223W9BhBwABF9bq9nQZf
+k6aJfRCs3KvWxJ8vQ6o4YcpAc4MhWUPbbxmmm6/B7EOzu+l5rPCDmxxc+10d61OF
+bySzJRuy1NYJan1AN6Up5XFQJYY7fBewauF+lZTGfpCaGXEikwnNwrmzdMbZF3I8
+G53jj4Qtsi2jg5NCVm0bWaTh8dpoKmowqiIl6jlRMj81fbx6KorCh18U6z5UxcXR
+wj8A9sKydkjHs6dSk+Qw7y7KNfeVH7YnugRgJkAi9ysWO8sG3jebDFduqU7Qoao=
+=SdQg
 -----END PGP SIGNATURE-----
 
---M9NhX3UHpAaciwkO--
+--CdrF4e02JqNVZeln--
