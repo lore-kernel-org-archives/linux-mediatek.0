@@ -1,90 +1,167 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: [PATCH v4 1/3] dt-bindings: auxadc: Add binding document for Mediatek auxadc.
-Date: Mon, 11 Jul 2016 14:39:55 +0800
-Message-ID: <1468219197-9572-2-git-send-email-zhiyong.tao@mediatek.com>
-References: <1468219197-9572-1-git-send-email-zhiyong.tao@mediatek.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] vcodec: mediatek: Add g/s_selection support for V4L2
+ Encoder
+Date: Mon, 11 Jul 2016 16:09:51 +0800
+Message-ID: <1468224591.2462.6.camel@mtksdaap41>
+References: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
+ <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468219197-9572-1-git-send-email-zhiyong.tao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
-Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, erin.lo@mediatek.com, dawei.chien@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <4ca82842-968d-a5e2-587d-752c71713607-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The commit adds the device tree binding documentation for the mediatek
-auxadc found on Mediatek MT2701.
-Thermal gets auxadc sample data by iio device.
-So the commit changes auxadc device tree binding documentation from
-/soc/mediatek/auxadc.txt to /iio/adc/mt6577_auxadc.txt.
+Hi Hans,
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
----
- .../devicetree/bindings/iio/adc/mt6577_auxadc.txt  |   27 ++++++++++++++++++++
- .../devicetree/bindings/soc/mediatek/auxadc.txt    |   21 ---------------
- 2 files changed, 27 insertions(+), 21 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
- delete mode 100644 Documentation/devicetree/bindings/soc/mediatek/auxadc.txt
+On Mon, 2016-07-11 at 06:32 +0200, Hans Verkuil wrote:
+> Hi Tiffany,
+> 
+> My apologies for the delay, but here is my review at last:
+> 
+> On 05/30/2016 09:52 AM, Tiffany Lin wrote:
+> > This patch add g/s_selection support for MT8173
+> > 
+> > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   74 ++++++++++++++++++++
+> >  1 file changed, 74 insertions(+)
+> > 
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > index 6e72d73..23ef9a1 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > @@ -630,6 +630,77 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+> >  	return vidioc_try_fmt(f, fmt);
+> >  }
+> >  
+> > +static int vidioc_venc_g_selection(struct file *file, void *priv,
+> > +				     struct v4l2_selection *s)
+> > +{
+> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> > +	struct mtk_q_data *q_data;
+> > +
+> > +	/* crop means compose for output devices */
+> > +	switch (s->target) {
+> > +	case V4L2_SEL_TGT_CROP_DEFAULT:
+> > +	case V4L2_SEL_TGT_CROP_BOUNDS:
+> > +	case V4L2_SEL_TGT_CROP:
+> > +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> > +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> > +	case V4L2_SEL_TGT_COMPOSE:
+> > +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> > +			mtk_v4l2_err("Invalid s->type = %d", s->type);
+> > +			return -EINVAL;
+> > +		}
+> > +		break;
+> > +	default:
+> > +		mtk_v4l2_err("Invalid s->target = %d", s->target);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	q_data = mtk_venc_get_q_data(ctx, s->type);
+> > +	if (!q_data)
+> > +		return -EINVAL;
+> > +
+> > +	s->r.top = 0;
+> > +	s->r.left = 0;
+> > +	s->r.width = q_data->visible_width;
+> > +	s->r.height = q_data->visible_height;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int vidioc_venc_s_selection(struct file *file, void *priv,
+> > +				     struct v4l2_selection *s)
+> > +{
+> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> > +	struct mtk_q_data *q_data;
+> > +
+> > +	switch (s->target) {
+> > +	case V4L2_SEL_TGT_CROP_DEFAULT:
+> > +	case V4L2_SEL_TGT_CROP_BOUNDS:
+> > +	case V4L2_SEL_TGT_CROP:
+> > +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> > +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> > +	case V4L2_SEL_TGT_COMPOSE:
+> > +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> > +			mtk_v4l2_err("Invalid s->type = %d", s->type);
+> > +			return -EINVAL;
+> > +		}
+> > +		break;
+> > +	default:
+> > +		mtk_v4l2_err("Invalid s->target = %d", s->target);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	q_data = mtk_venc_get_q_data(ctx, s->type);
+> > +	if (!q_data)
+> > +		return -EINVAL;
+> > +
+> > +	s->r.top = 0;
+> > +	s->r.left = 0;
+> > +	q_data->visible_width = s->r.width;
+> > +	q_data->visible_height = s->r.height;
+> 
+> This makes no sense.
+> 
+> See this page:
+> 
+> https://hverkuil.home.xs4all.nl/spec/media.html#selection-api
+> 
+> For the video output direction (memory -> HW encoder) the data source is
+> the memory, the data sink is the HW encoder. For the video capture direction
+> (HW encoder -> memory) the data source is the HW encoder and the data sink
+> is the memory.
+> 
+> Usually for m2m devices the video output direction may support cropping and
+> the video capture direction may support composing.
+> 
+> It's not clear what you intend here, especially since you set left and right
+> to 0. That's not what the selection operation is supposed to do.
+> 
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-new file mode 100644
-index 0000000..bc23792
---- /dev/null
-+++ b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-@@ -0,0 +1,27 @@
-+* Mediatek AUXADC - Analog to Digital Converter on Mediatek mobile soc (mt65xx/mt81xx/mt27xx)
-+===============
-+
-+The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
-+in some Mediatek SoCs which among other things measures the temperatures
-+in the SoC. It can be used directly with register accesses, but it is also
-+used by thermal controller which reads the temperatures from the AUXADC
-+directly via its own bus interface. See
-+Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-+for the Thermal Controller which holds a phandle to the AUXADC.
-+
-+Required properties:
-+  - compatible: "mediatek,mt2701-auxadc" or "mediatek,mt8173-auxadc"
-+  - reg: Address range of the AUXADC unit.
-+  - clocks: Should contain a clock specifier for each entry in clock-names
-+  - clock-names: Should contain "main".
-+  - #io-channel-cells: Should be 1, see ../iio-bindings.txt
-+
-+Example:
-+
-+auxadc: adc@11001000 {
-+	compatible = "mediatek,mt2701-auxadc";
-+	reg = <0 0x11001000 0 0x1000>;
-+	clocks = <&pericfg CLK_PERI_AUXADC>;
-+	clock-names = "main";
-+	#io-channel-cells = <1>;
-+};
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/auxadc.txt b/Documentation/devicetree/bindings/soc/mediatek/auxadc.txt
-deleted file mode 100644
-index bdb7829..0000000
---- a/Documentation/devicetree/bindings/soc/mediatek/auxadc.txt
-+++ /dev/null
-@@ -1,21 +0,0 @@
--MediaTek AUXADC
--===============
--
--The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
--in some Mediatek SoCs which among other things measures the temperatures
--in the SoC. It can be used directly with register accesses, but it is also
--used by thermal controller which reads the temperatures from the AUXADC
--directly via its own bus interface. See
--Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
--for the Thermal Controller which holds a phandle to the AUXADC.
--
--Required properties:
--- compatible: Must be "mediatek,mt8173-auxadc"
--- reg: Address range of the AUXADC unit
--
--Example:
--
--auxadc: auxadc@11001000 {
--	compatible = "mediatek,mt8173-auxadc";
--	reg = <0 0x11001000 0 0x1000>;
--};
--- 
-1.7.9.5
+We only support simple crop, but as you mentioned we need to use
+g/s_selection not g/s_crop.
+This provide our user space application could get/set encode region to
+driver and encode region should always start from (0,0) to (width,
+height).
+That's why we always set top and left to 0.
+
+
+best regards,
+Tiffany
+
+> Regards,
+> 
+> 	Hans
+> 
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int vidioc_venc_qbuf(struct file *file, void *priv,
+> >  			    struct v4l2_buffer *buf)
+> >  {
+> > @@ -688,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+> >  
+> >  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+> >  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+> > +
+> > +	.vidioc_g_selection		= vidioc_venc_g_selection,
+> > +	.vidioc_s_selection		= vidioc_venc_s_selection,
+> >  };
+> >  
+> >  static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+> > 
