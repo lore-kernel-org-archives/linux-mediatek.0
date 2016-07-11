@@ -1,168 +1,53 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v9 01/10] clk: fix initial state of critical clock's
- parents
-Date: Mon, 11 Jul 2016 16:24:12 +0800
-Message-ID: <1468225452.31247.7.camel@mtksdaap41>
-References: <1466581229-2342-1-git-send-email-erin.lo@mediatek.com>
-	 <1466581229-2342-2-git-send-email-erin.lo@mediatek.com>
-	 <20160702012140.GB17071@codeaurora.org>
-	 <1467604308.26485.4.camel@mtksdaap41>
-	 <146802073038.73491.6675612765998057903@resonance>
+From: dawei chien <dawei.chien@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: thermal: Add binding document for
+ Mediatek thermal controller
+Date: Mon, 11 Jul 2016 16:52:04 +0800
+Message-ID: <1468227124.15776.29.camel@mtksdaap41>
+References: <1467882386-40544-1-git-send-email-dawei.chien@mediatek.com>
+	 <1467882386-40544-2-git-send-email-dawei.chien@mediatek.com>
+	 <577E385C.9080501@ti.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <146802073038.73491.6675612765998057903@resonance>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Cc: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <577E385C.9080501@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Keerthy <a0393675@ti.com>
+Cc: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mike,
+Dear Keerthy,
 
-On Fri, 2016-07-08 at 16:32 -0700, Michael Turquette wrote:
-> Hi James,
+On Thu, 2016-07-07 at 16:39 +0530, Keerthy wrote:
 > 
-> Quoting James Liao (2016-07-03 20:51:48)
-> > On Fri, 2016-07-01 at 18:21 -0700, Stephen Boyd wrote:
-> > > (Resending to everyone)
-> > > 
-> > > On 06/22, Erin Lo wrote:
-> > > > From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > 
-> > > > This patch fixed wrong state of parent clocks if they are registered
-> > > > after critical clocks.
-> > > > 
-> > > > Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > 
-> > > It would be nice if you included the information about the
-> > > problem from James' previous mail. This says what it does, but
-> > > doesn't explain what the problem is and how it is fixing it.
-> > > 
-> > > > ---
-> > > >  drivers/clk/clk.c | 9 ++++++++-
-> > > >  1 file changed, 8 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> > > > index d584004..e9f5f89 100644
-> > > > --- a/drivers/clk/clk.c
-> > > > +++ b/drivers/clk/clk.c
-> > > > @@ -2388,8 +2388,15 @@ static int __clk_core_init(struct clk_core *core)
-> > > >     hlist_for_each_entry_safe(orphan, tmp2, &clk_orphan_list, child_node) {
-> > > >             struct clk_core *parent = __clk_init_parent(orphan);
-> > > >  
-> > > > -           if (parent)
-> > > > +           if (parent) {
-> > > >                     clk_core_reparent(orphan, parent);
-> > > > +
-> > > > +                   if (orphan->prepare_count)
-> > > > +                           clk_core_prepare(parent);
-> > > > +
-> > > > +                   if (orphan->enable_count)
-> > > > +                           clk_core_enable(parent);
-> > > > +           }
-> > > >     }
-> > > 
-> > > I'm pretty sure I pointed this problem out to Mike when the
-> > > critical clk patches were being pushed. I can't recall what the
-> > > plan was though to fix the problem. I'm pretty sure he said that
-> > > clk_core_reparent() would take care of it, but obviously it is
-> > > not doing that. Or perhaps it was that clk handoff should figure
-> > > out that the parents of a critical clk are also on and thus keep
-> > > them on.
-> > 
-> > Hi Mike
-> > 
-> > Is there any other patch to fix this issue? Or did I misuse critical
-> > clock flag?
+> On Thursday 07 July 2016 02:36 PM, Dawei Chien wrote:
+> > This adds the device tree binding documentation for the mediatek thermal
+> > controller found on Mediatek MT2701.
+> >
+> > Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+> > ---
+> >   .../bindings/thermal/mediatek-thermal.txt          |    2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > index 81f9a51..bb55e79 100644
+> > --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
+> > @@ -8,7 +8,7 @@ apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
+> >   is also needed.
+> >
+> >   Required properties:
+> > -- compatible: "mediatek,mt8173-thermal"
+> > +- compatible: "mediatek,mt8173-thermal" or "mediatek,mt2701-thermal"
 > 
-> There is no fix yes. Your fix is basically correct. I was mistaken back
-> when I told you and Stephen that the framework already took care of
-> this.
+> - compatible :
+>   - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
+>   - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
+
+Thank you, I will update it on next version.
+
 > 
-> However, instead of "open coding" this solution, I would rather re-use
-> the __clk_set_parent_{before,after} helpers instead. Can you review/test
-> the following patch and let me know what you think?
-> 
-> Thanks,
-> Mike
-> 
-> 
-> 
-> From c0163b3f719b1e219b28ad425f94f9ef54a25a8f Mon Sep 17 00:00:00 2001
-> From: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-> Date: Fri, 8 Jul 2016 16:05:22 -0700
-> Subject: [PATCH] clk: migrate ref counts when orphans are reunited
-> 
-> It's always nice to see families reunited, and this is equally true when
-> talking about parent clocks and their children. However, if the orphan
-> clk had a positive prepare_count or enable_count, then we would not
-> migrate those counts up the parent chain correctly.
-> 
-> This has manifested with the recent critical clocks feature, which often
-> enables clocks very early, before their parents have been registered.
-> 
-> Fixed by replacing the call to clk_core_reparent with calls to
-> __clk_set_parent_{before,after}.
-> 
-> Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Cc: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/clk/clk.c | 10 ++++++++--
->  1 file changed, 8 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index 820a939fb6bb..70efe4c4e0cc 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -2449,8 +2449,14 @@ static int __clk_core_init(struct clk_core *core)
->  	hlist_for_each_entry_safe(orphan, tmp2, &clk_orphan_list, child_node) {
->  		struct clk_core *parent = __clk_init_parent(orphan);
->  
-> -		if (parent)
-> -			clk_core_reparent(orphan, parent);
-
-Is it correct to remove clk_core_reparent()? It lacks
-__clk_recalc_accuracies() and __clk_recalc_rates(), so the new parent's
-rate will not propagate correctly.
-
-For example, I set vdec_sel as a critical clock. Without your patch, the
-result was:
-
-    vdecpll         0            0   338000000
-       vdecpll_ck   1            1   338000000
-          vdec_sel  1            1   338000000
-
-With your patch, it became:
-
-    vdecpll         1            1   338000000
-       vdecpll_ck   1            1           0
-          vdec_sel  1            1           0
-
-The prepare_count and enable_count are correct with your patch, but the
-rates of vdecpll_ck and vdec_sel become incorrect.
-
-
-Best regards,
-
-James
-
-> +		/*
-> +		 * we could call __clk_set_parent, but that would result in a
-> +		 * reducant call to the .set_rate op, if it exists
-> +		 */
-> +		if (parent) {
-> +			__clk_set_parent_before(orphan, parent);
-> +			__clk_set_parent_after(orphan, parent, NULL);
-> +		}
->  	}
->  
->  	/*
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >   - reg: Address range of the thermal controller
+> >   - interrupts: IRQ for the thermal controller
+> >   - clocks, clock-names: Clocks needed for the thermal controller. required
+> >
