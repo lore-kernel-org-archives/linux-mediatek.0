@@ -1,151 +1,143 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
-Date: Mon, 11 Jul 2016 11:58:49 +0800
-Message-ID: <1468209529.3725.25.camel@mtksdaap41>
-References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
-	 <577D0576.2050706@xs4all.nl> <1467886612.21382.18.camel@mtksdaap41>
-	 <e2952cc2-3abd-894e-9481-b91a45cf7891@xs4all.nl>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH] vcodec: mediatek: Add g/s_selection support for V4L2
+ Encoder
+Date: Mon, 11 Jul 2016 06:32:10 +0200
+Message-ID: <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
+References: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e2952cc2-3abd-894e-9481-b91a45cf7891@xs4all.nl>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com, Kamil Debski <k.debski@samsung.com>, Marek Szyprowski <m.szyprowski@samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+Hi Tiffany,
 
-On Fri, 2016-07-08 at 13:44 +0200, Hans Verkuil wrote:
-> On 07/07/2016 12:16 PM, tiffany lin wrote:
-> > Hi Hans,
-> > 
-> > 
-> > On Wed, 2016-07-06 at 15:19 +0200, Hans Verkuil wrote:
-> >> Hi Tiffany,
-> >>
-> >> I plan to review this patch series on Friday, but one obvious question is
-> >> what the reason for these failures is:
-> >>
-> >>> Input/Output configuration ioctls:
-> >>>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-> >>>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-> >>>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-> >>>         test VIDIOC_G/S_EDID: OK (Not Supported)
-> >>>
-> >>>         Control ioctls:
-> >>>                 test VIDIOC_QUERYCTRL/MENU: OK
-> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(357): g_ctrl returned an error (11)
-> >>>                 test VIDIOC_G/S_CTRL: FAIL
-> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(579): g_ext_ctrls returned an error (11)
-> >>>                 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
-> > These fails are because VIDIOC_G_CTRL and VIDIOC_G_EXT_CTRLS return
-> > V4L2_CID_MIN_BUFFERS_FOR_CAPTURE only when dirver in MTK_STATE_HEADER
-> > state, or it will return EAGAIN.
-> > This could help user space get correct value, not default value that may
-> > changed base on media content.
-> 
-> OK, I really don't like this. I also looked what the s5p-mfc-dec driver does (the only other
-> driver currently implementing this), and that returns -EINVAL.
-> 
-> My proposal would be to change this. If this information isn't known yet, why not
-> just return 0 as the value? The doc would have to be updated and (preferably) also
-> the s5p-mfc-dec driver. I've added Samsung devs to the Cc list, let me know what you
-> think.
-> 
-Got it. We will return 0 as the value instead EAGAIN.
+My apologies for the delay, but here is my review at last:
 
-> > 
-> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(721): subscribe event for control 'User Controls' failed
-> >>>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
-> > Driver do not support subscribe event for control 'User Controls' for
-> > now.
-> > Do we need to support this?
+On 05/30/2016 09:52 AM, Tiffany Lin wrote:
+> This patch add g/s_selection support for MT8173
 > 
-> I don't see why this would fail. It's OK to subscribe to such controls, although
-> you'll never get an event.
+> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   74 ++++++++++++++++++++
+>  1 file changed, 74 insertions(+)
 > 
-Got it. I will rerun using latest v4l2-compliance test check this.
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> index 6e72d73..23ef9a1 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> @@ -630,6 +630,77 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+>  	return vidioc_try_fmt(f, fmt);
+>  }
+>  
+> +static int vidioc_venc_g_selection(struct file *file, void *priv,
+> +				     struct v4l2_selection *s)
+> +{
+> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> +	struct mtk_q_data *q_data;
+> +
+> +	/* crop means compose for output devices */
+> +	switch (s->target) {
+> +	case V4L2_SEL_TGT_CROP_DEFAULT:
+> +	case V4L2_SEL_TGT_CROP_BOUNDS:
+> +	case V4L2_SEL_TGT_CROP:
+> +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> +	case V4L2_SEL_TGT_COMPOSE:
+> +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> +			mtk_v4l2_err("Invalid s->type = %d", s->type);
+> +			return -EINVAL;
+> +		}
+> +		break;
+> +	default:
+> +		mtk_v4l2_err("Invalid s->target = %d", s->target);
+> +		return -EINVAL;
+> +	}
+> +
+> +	q_data = mtk_venc_get_q_data(ctx, s->type);
+> +	if (!q_data)
+> +		return -EINVAL;
+> +
+> +	s->r.top = 0;
+> +	s->r.left = 0;
+> +	s->r.width = q_data->visible_width;
+> +	s->r.height = q_data->visible_height;
+> +
+> +	return 0;
+> +}
+> +
+> +static int vidioc_venc_s_selection(struct file *file, void *priv,
+> +				     struct v4l2_selection *s)
+> +{
+> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> +	struct mtk_q_data *q_data;
+> +
+> +	switch (s->target) {
+> +	case V4L2_SEL_TGT_CROP_DEFAULT:
+> +	case V4L2_SEL_TGT_CROP_BOUNDS:
+> +	case V4L2_SEL_TGT_CROP:
+> +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> +	case V4L2_SEL_TGT_COMPOSE:
+> +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
+> +			mtk_v4l2_err("Invalid s->type = %d", s->type);
+> +			return -EINVAL;
+> +		}
+> +		break;
+> +	default:
+> +		mtk_v4l2_err("Invalid s->target = %d", s->target);
+> +		return -EINVAL;
+> +	}
+> +
+> +	q_data = mtk_venc_get_q_data(ctx, s->type);
+> +	if (!q_data)
+> +		return -EINVAL;
+> +
+> +	s->r.top = 0;
+> +	s->r.left = 0;
+> +	q_data->visible_width = s->r.width;
+> +	q_data->visible_height = s->r.height;
 
-> >>>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-> >>>                 Standard Controls: 2 Private Controls: 0
-> >>>
-> >>>         Format ioctls:
-> >>>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-> >>>                 test VIDIOC_G/S_PARM: OK (Not Supported)
-> >>>                 test VIDIOC_G_FBUF: OK (Not Supported)
-> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-formats.cpp(405): expected EINVAL, but got 11 when getting format for buftype 9
-> >>>                 test VIDIOC_G_FMT: FAIL
-> > This is because vidioc_vdec_g_fmt only succeed when context is in
-> > MTK_STATE_HEADER state, or user space cannot get correct format data
-> > using this function.
-> 
-> Comparing this to s5p-mfc-dec I see that -EINVAL is returned in that case.
-> 
-> I am not opposed to using EAGAIN in s5p-mfc-dec as well. Marek, Kamil, what is
-> your opinion?
-> 
-> > 
-> >>>                 test VIDIOC_TRY_FMT: OK (Not Supported)
-> >>>                 test VIDIOC_S_FMT: OK (Not Supported)
-> >>>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-> >>>
-> >>>         Codec ioctls:
-> >>>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-> >>>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-> >>>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-> >>>
-> >>>         Buffer ioctls:
-> >>>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
-> > Our OUTPUT and CAPTURE queue support both VB2_DMABUF and VB2_MMAP, user
-> > space can select which to use in runtime.
-> > So our driver default support v4l2_m2m_ioctl_expbuf functionality.
-> > In v4l2-compliance test, it will check v4l2_m2m_ioctl_expbuf only valid
-> > when node->valid_memorytype is V4L2_MEMORY_MMAP.
-> > So when go through node->valid_memorytype is V4L2_MEMORY_DMABUF, it
-> > fail.
-> 
-> valid_memorytype should have both MMAP and DMABUF flags.
-> 
-> But v4l-utils-1.6.0 is way too old to be certain it isn't some v4l2-compliance bug
-> that has since been fixed.
-> 
-Got it. I will rerun using master branch to check this.
+This makes no sense.
 
-best regards,
-Tiffany
+See this page:
 
-> Regards,
+https://hverkuil.home.xs4all.nl/spec/media.html#selection-api
+
+For the video output direction (memory -> HW encoder) the data source is
+the memory, the data sink is the HW encoder. For the video capture direction
+(HW encoder -> memory) the data source is the HW encoder and the data sink
+is the memory.
+
+Usually for m2m devices the video output direction may support cropping and
+the video capture direction may support composing.
+
+It's not clear what you intend here, especially since you set left and right
+to 0. That's not what the selection operation is supposed to do.
+
+Regards,
+
+	Hans
+
+> +
+> +	return 0;
+> +}
+> +
+>  static int vidioc_venc_qbuf(struct file *file, void *priv,
+>  			    struct v4l2_buffer *buf)
+>  {
+> @@ -688,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+>  
+>  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+>  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+> +
+> +	.vidioc_g_selection		= vidioc_venc_g_selection,
+> +	.vidioc_s_selection		= vidioc_venc_s_selection,
+>  };
+>  
+>  static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
 > 
-> 	Hans
-> 
-> > 
-> > 
-> > best regards,
-> > Tiffany
-> > 
-> > 
-> > 
-> >>>                 test VIDIOC_EXPBUF: FAIL
-> >>>
-> >>>
-> >>> Total: 38, Succeeded: 33, Failed: 5, Warnings: 0
-> >>
-> >> If it is due to a bug in v4l2-compliance, then let me know and I'll fix it. If not,
-> >> then it should be fixed in the driver.
-> >>
-> >> Frankly, it was the presence of these failures that made me think this patch series
-> >> wasn't final. Before a v4l2 driver can be accepted in the kernel, v4l2-compliance must pass.
-> >>
-> >> Regards,
-> >>
-> >> 	Hans
-> > 
-> > 
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe linux-media" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > 
