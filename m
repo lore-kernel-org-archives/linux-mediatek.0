@@ -1,40 +1,55 @@
-From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
-Subject: Re: [PATCH v5 00/44] dma-mapping: Use unsigned long for dma_attrs
-Date: Tue, 12 Jul 2016 14:19:07 +0200
-Message-ID: <5784E03B.6060000@samsung.com>
-References: <1467275019-30789-1-git-send-email-k.kozlowski@samsung.com>
- <20160712121625.GP23520@phenom.ffwll.local>
+From: Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [patch] drm/mediatek/mtk_mipi_tx: checking the wrong variable
+Date: Tue, 12 Jul 2016 14:47:27 +0200
+Message-ID: <20160712124727.GX23520@phenom.ffwll.local>
+References: <20160701135934.GA15723@mwanda>
+ <f665b4b4-c7b3-f07a-4185-fe551d334623@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-m68k-owner@vger.kernel.org>
-In-reply-to: <20160712121625.GP23520@phenom.ffwll.local>
-Sender: linux-m68k-owner@vger.kernel.org
-To: Andrew Morton <akpm@linux-foundation.org>, linux-mips@linux-mips.org, linux-ia64@vger.kernel.org, linux-doc@vger.kernel.org, linux-pci@vger.kernel.org, linux-fbdev@vger.kernel.org, dri-devel@lists.freedesktop.org, sparclinux@vger.kernel.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-c6x-dev@linux-c6x.org, linux-rdma@vger.kernel.org, linux-hexagon@vger.kernel.org, linux-sh@vger.kernel.org, hch@infradead.org, linux-rockchip@lists.infradead.org, nouveau@lists.freedesktop.org, xen-devel@lists.xenproject.org, linux-snps-arc@lists.infradead.org, linux-media@vger.kernel.org, linux-xtensa@linux-xtensa.org, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, linux-arm-msm@vger.kernel.org, linux-m68k@lists.linux-m68k.org, linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org, linux-metag@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <f665b4b4-c7b3-f07a-4185-fe551d334623@gmail.com>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>, David Airlie <airlied@linux.ie>, CK Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/12/2016 02:16 PM, Daniel Vetter wrote:
-> On Thu, Jun 30, 2016 at 10:23:39AM +0200, Krzysztof Kozlowski wrote:
->> Hi,
->>
->>
->> This is fifth approach for replacing struct dma_attrs with unsigned
->> long.
->>
->> The main patch (1/44) doing the change is split into many subpatches
->> for easier review (2-42).  They should be squashed together when
->> applying.
+On Sat, Jul 02, 2016 at 06:44:13PM +0200, Matthias Brugger wrote:
 > 
-> For all the drm driver patches:
 > 
-> Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+> On 07/01/2016 03:59 PM, Dan Carpenter wrote:
+> > We should be checking "phy_provider" here not "phy".
+> > 
+> > Fixes: 2e54c14e310f ('drm/mediatek: Add DSI sub driver')
+> > Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > 
 > 
-> Should I pull these in through drm-misc, or do you prefer to merge them
-> through a special topic branch (with everything else) instead on your own?
-> -Daniel
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Thanks. I saw today that Andrew Morton applied the patchset so I think
-he will handle it.
+Applied to drm-misc, thanks.
+-Daniel
 
-Best regards,
-Krzysztof
+> 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+> > index cf8f38d..1c366f8 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+> > @@ -431,7 +431,7 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+> >  	phy_set_drvdata(phy, mipi_tx);
+> > 
+> >  	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> > -	if (IS_ERR(phy)) {
+> > +	if (IS_ERR(phy_provider)) {
+> >  		ret = PTR_ERR(phy_provider);
+> >  		return ret;
+> >  	}
+> > 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
