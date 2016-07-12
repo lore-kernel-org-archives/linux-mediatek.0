@@ -1,148 +1,160 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v7 1/4] soc: mediatek: Refine scpsys to support multiple
- platform
-Date: Tue, 12 Jul 2016 10:21:13 +0200
-Message-ID: <f904dc9b-d723-f466-0ee4-78af920ccd72@gmail.com>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v7 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
+Date: Tue, 12 Jul 2016 17:01:11 +0800
+Message-ID: <1468314071.24705.4.camel@mhfsdcap03>
 References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
- <1463390894-32062-2-git-send-email-jamesjj.liao@mediatek.com>
- <6762e420-0d68-0376-b584-bfc878b5e95f@gmail.com>
- <1467783564.26485.22.camel@mtksdaap41> <577E3AE9.5080202@gmail.com>
- <1468227390.31247.20.camel@mtksdaap41> <57839AE3.2070103@gmail.com>
- <1468294448.31247.28.camel@mtksdaap41>
+	 <1463390894-32062-3-git-send-email-jamesjj.liao@mediatek.com>
+	 <34025ec4-19d3-8b25-d669-50c6f19159cd@gmail.com>
+	 <1467782540.26485.11.camel@mtksdaap41> <577FA0D9.8070408@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1468294448.31247.28.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <577FA0D9.8070408@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh@kernel.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Matthias,
 
+On Fri, 2016-07-08 at 14:47 +0200, Matthias Brugger wrote:
+> 
+> On 06/07/16 07:22, James Liao wrote:
+> > On Sat, 2016-07-02 at 18:35 +0200, Matthias Brugger wrote:
+> >>
+> >> On 05/16/2016 11:28 AM, James Liao wrote:
+> >>> Some power domain comsumers may init before module_init.
+> >>> So the power domain provider (scpsys) need to be initialized
+> >>> earlier too.
+> >>>
+> >>> Take an example for our IOMMU (M4U) and SMI. SMI is a bridge
+> >>> between IOMMU and multimedia HW. SMI is responsible to
+> >>> enable/disable iommu and help transfer data for each multimedia
+> >>> HW. Both of them have to wait until the power and clocks are
+> >>> enabled.
+> >>>
+> >>> So scpsys driver should be initialized before SMI, and SMI should
+> >>> be initialized before IOMMU, and then init IOMMU consumers
+> >>> (display/vdec/venc/camera etc.).
+> >>>
+> >>> IOMMU is subsys_init by default. So we need to init scpsys driver
+> >>> before subsys_init.
+> >>>
+> >>> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+> >>> Reviewed-by: Kevin Hilman <khilman@baylibre.com>
+> >>> ---
+> >>>   drivers/soc/mediatek/mtk-scpsys.c | 19 ++++++++++++++++++-
+> >>>   1 file changed, 18 insertions(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> index 5870a24..00c0adb 100644
+> >>> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> >>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> >>> @@ -617,4 +617,21 @@ static struct platform_driver scpsys_drv = {
+> >>>   		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
+> >>>   	},
+> >>>   };
+> >>> -builtin_platform_driver(scpsys_drv);
+> >>> +
+> >>> +static int __init scpsys_drv_init(void)
+> >>> +{
+> >>> +	return platform_driver_register(&scpsys_drv);
+> >>> +}
+> >>> +
+> >>> +/*
+> >>> + * There are some Mediatek drivers which depend on the power domain driver need
+> >>> + * to probe in earlier initcall levels. So scpsys driver also need to probe
+> >>> + * earlier.
+> >>> + *
+> >>> + * IOMMU(M4U) and SMI drivers for example. SMI is a bridge between IOMMU and
+> >>> + * multimedia HW. IOMMU depends on SMI, and SMI is a power domain consumer,
+> >>> + * so the proper probe sequence should be scpsys -> SMI -> IOMMU driver.
+> >>> + * IOMMU drivers are initialized during subsys_init by default, so we need to
+> >>> + * move SMI and scpsys drivers to subsys_init or earlier init levels.
+> >>> + */
+> >>> +subsys_initcall(scpsys_drv_init);
+> >>>
+> >>
+> >> Can't we achieve this with probe deferring? I'm not really keen on
+> >> coding the order of the different drivers like this.
+> >
+> > Hi Matthias,
+> >
+> > Some drivers such as IOMMU don't support probe deferring. So scpsys need
+> > to init before them by changing init level.
+> >
+> 
+> SMI larbs return EPROBE_DEFER if it can't find the PM provider for it's 
+> domain, so this part should not be the problem. The larbs get added as 
+> components in the probe, when the PM provider is present.
+> 
+> The iommu driver uses the larbs as components. As long as not all 
+> components are present the iommu does not bind them. So from what I see 
+> this should work without any problem.
+> 
+> Can you please specify where the iommu dirver has a problem. Maybe we 
+> need to fix the driver rather then scpsys.
 
-On 12/07/16 05:34, James Liao wrote:
-> Hi Matthias,
->
-> On Mon, 2016-07-11 at 15:10 +0200, Matthias Brugger wrote:
->>
->> On 11/07/16 10:56, James Liao wrote:
->>
->> [...]
->>
->>>>>>> @@ -467,28 +386,54 @@ static int scpsys_probe(struct platform_device *pdev)
->>>>>>>    			if (PTR_ERR(scpd->supply) == -ENODEV)
->>>>>>>    				scpd->supply = NULL;
->>>>>>>    			else
->>>>>>> -				return PTR_ERR(scpd->supply);
->>>>>>> +				return ERR_CAST(scpd->supply);
->>>>>>>    		}
->>>>>>>    	}
->>>>>>>
->>>>>>> -	pd_data->num_domains = NUM_DOMAINS;
->>>>>>> +	pd_data->num_domains = num;
->>>>>>>
->>>>>>> -	for (i = 0; i < NUM_DOMAINS; i++) {
->>>>>>> +	init_clks(pdev, clk);
->>>>>>> +
->>>>>>> +	for (i = 0; i < num; i++) {
->>>>>>>    		struct scp_domain *scpd = &scp->domains[i];
->>>>>>>    		struct generic_pm_domain *genpd = &scpd->genpd;
->>>>>>>    		const struct scp_domain_data *data = &scp_domain_data[i];
->>>>>>>
->>>>>>> +		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
->>>>>>> +			struct clk *c = clk[data->clk_id[j]];
->>>>>>> +
->>>>>>> +			if (IS_ERR(c)) {
->>>>>>> +				dev_err(&pdev->dev, "%s: clk unavailable\n",
->>>>>>> +					data->name);
->>>>>>> +				return ERR_CAST(c);
->>>>>>> +			}
->>>>>>> +
->>>>>>> +			scpd->clk[j] = c;
->>>>>>
->>>>>> Put this in the else branch. Apart from that is there any reason you
->>>>>
->>>>> Do you mean to change like this?
->>>>>
->>>>> 	if (IS_ERR(c)) {
->>>>> 		...
->>>>> 		return ERR_CAST(c);
->>>>> 	} else {
->>>>> 		scpd->clk[j] = c;
->>>>> 	}
->>>>>
->>>>> checkpatch.pl will warn for above code due to it returns in 'if' branch.
->>>>>
->>>>
->>>> I tried that on top of next-20160706 and it checkpatch didn't throw any
->>>> warning. Which kernel version are based on?
->>>
->>> I don't remember which version of checkpatch warn on this pattern. This
->>> patch series develop across several kernel versions.
->>
->> We as the kernel community develop against master or linux-next. We only
->> care about older kernel version in the sense that we intent hard not to
->> break any userspace/kernel or firmware/kernel interfaces. Apart from
->> that it's up to every individual to backport patches from mainline
->> kernel to his respective version. But that's nothing the community as a
->> hole can take care of.
->>
->>>
->>> So do you prefer to put "scpd->clk[j] = c;" into 'else' branch?
->>>
->>
->> Yes please :)
->
-> Yingjoe had tested in the latest checkpatch.pl and it showed checkpatch
-> warn on the else-branch. He had replied the results in previous email.
->
+We got a problem while bootup, the hang backtrace is like below(Sorry, I
+can't find the full backtrace now):
+ 
+[    7.832359] Call trace:
+[    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
+[    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
 
-Yes you are right. Not sure what I was testing. Sorry for that.
+The reason is that "larb->mmu" is NULL while DRM call mtk_smi_larb_get.
+ 
+DRM call iommu_present to wait for whether IOMMU is ready[1].
+But in the  MTK-IOMMU, It will call
+bus_set_iommu->mtk_iommu_add_device->mtk_iommu_attach_device, then it's
+able to transfer "struct mtk_smi_iommu" to SMI whose probe maybe delayed
+by power-domain, then SMI could finish its probe.
 
->>>>>> moved the for up in the function? If not, I would prefer not to move it,
->>>>>> to make it easier to read the diff.
->>>>>
->>>>> The new 'for' block are far different from original one. And I think
->>>>> it's easy to read if we keep simple assign statements in the same block.
->>>>>
->>>>
->>>> It's different in the sense that it checks if struct clk *c is an error.
->>>> I don't see the reason why we need to move it up in the file.
->>>> It's not too important but I would prefer not to move it if there is no
->>>> reason.
->>>
->>> I think I may misunderstand your comments. Which 'for' block did you
->>> mention for? 'for (i = 0; i < num ...' or 'for (j = 0; j < MAX_CLKS
->>> && ...' ?
->>>
->>> The 'for(i)' exists in original code, this patch just change its counter
->>> from 'NUM_DOMAINS' to 'num'. The 'for(j)' is a new for-block, so it was
->>> not moved from other blocks.
->>>
->>
->> for (j = 0; j < MAX_CLKS... is present in the actual scpsys_probe in
->> linux-next (line 485 as of today). This patch moves this for a few lines
->> up, to be precise before executing this code sequence:
->> <code>
->> pd_data->domains[i] = genpd;
->> scpd->scp = scp;
->>
->> scpd->data = data;
->> </code>
->>
->> AFAIK there is no reason to do so. It adds unnecessary complexity to the
->> patch. So please fix this together with the other comments you got.
->
-> I see. So you prefer to put the for(j < MAX_CLKS) after 'scpd->data =
-> data' right? I can change it in next patch.
->
+So If DRM probe is called after the time of calling bus_set_iommu and
+before the time of SMI probe finish, this problem can be reproduced.
 
-Ok, thanks.
+The root cause is that iommu_present cann't indicate that MTK-IOMMU and
+SMI is ready actually. in other words, the DRM cann't detect
+whether the SMI has probed done.
 
-Regards,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+If we move scpsys_init from module_initcall to subsys_initcall, the
+IOMMU and SMI could be probe done during the subsys_initcall period. 
+this issue can be avoid.
+And as we grep before, there are also some examples whose power-domain
+is also not module_init[2].
+core_initcall(exynos4_pm_init_power_domain);
+subsys_initcall(imx_pgc_init);
+
+If you think that this patch will hide the problem above, then I have to
+add a new function, like below:
+//==================
+bool mtk_smi_larb_ready(struct device *larbdev)
+{
+	struct mtk_smi_larb *larb = dev_get_drvdata(larbdev);
+
+	return larb && !!larb->mmu;
+}
+//=================
+
+And in the probe of all the MTK-IOMMU consumer, we have to add this:
+//====================
+	if (!mtk_smi_larb_ready(&larb_pdev->dev))
+		return -EPROBE_DEFER;
+//====================
+
+The sequence is a little complex, If I don't explain clearly, please
+tell me.
+Any other suggestion about this? Thanks.
+ 
+[1]:https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-3.18/drivers/gpu/drm/mediatek/mtk_drm_drv.c#150 
+[2]:http://lists.infradead.org/pipermail/linux-mediatek/2015-December/003416.html
+
+> 
+> Regards,
+> Matthias
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
