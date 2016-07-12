@@ -1,136 +1,80 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v7 1/4] soc: mediatek: Refine scpsys to support multiple
- platform
-Date: Tue, 12 Jul 2016 11:34:08 +0800
-Message-ID: <1468294448.31247.28.camel@mtksdaap41>
-References: <1463390894-32062-1-git-send-email-jamesjj.liao@mediatek.com>
-	 <1463390894-32062-2-git-send-email-jamesjj.liao@mediatek.com>
-	 <6762e420-0d68-0376-b584-bfc878b5e95f@gmail.com>
-	 <1467783564.26485.22.camel@mtksdaap41> <577E3AE9.5080202@gmail.com>
-	 <1468227390.31247.20.camel@mtksdaap41> <57839AE3.2070103@gmail.com>
+From: =?UTF-8?B?V3UtQ2hlbmcgTGkgKOadjuWLmeiqoCk=?=
+	<wuchengli@chromium.org>
+Subject: Re: [PATCH v3 3/9] DocBook/v4l: Add compressed video formats used on
+ MT8173 codec driver
+Date: Tue, 12 Jul 2016 16:16:14 +0800
+Message-ID: <CAOMLVLiZU3D587dSyp2b2v4DV+MS9vh85bA4BoG7ddK6556rbA@mail.gmail.com>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+ <1464611363-14936-2-git-send-email-tiffany.lin@mediatek.com>
+ <1464611363-14936-3-git-send-email-tiffany.lin@mediatek.com>
+ <1464611363-14936-4-git-send-email-tiffany.lin@mediatek.com>
+ <5a793171-24a7-4e9e-8bfd-f668c789f8e0@xs4all.nl> <1468205771.3725.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <57839AE3.2070103@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sascha Hauer <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1468205771.3725.8.camel@mtksdaap41>
+Sender: linux-media-owner@vger.kernel.org
+To: tiffany lin <tiffany.lin@mediatek.com>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Hans Verkuil <hans.verkuil@cisco.com>, Daniel Thompson <daniel.thompson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Lin PoChun <PoChun.Lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
-
-On Mon, 2016-07-11 at 15:10 +0200, Matthias Brugger wrote:
-> 
-> On 11/07/16 10:56, James Liao wrote:
-> 
-> [...]
-> 
-> >>>>> @@ -467,28 +386,54 @@ static int scpsys_probe(struct platform_device *pdev)
-> >>>>>    			if (PTR_ERR(scpd->supply) == -ENODEV)
-> >>>>>    				scpd->supply = NULL;
-> >>>>>    			else
-> >>>>> -				return PTR_ERR(scpd->supply);
-> >>>>> +				return ERR_CAST(scpd->supply);
-> >>>>>    		}
-> >>>>>    	}
-> >>>>>
-> >>>>> -	pd_data->num_domains = NUM_DOMAINS;
-> >>>>> +	pd_data->num_domains = num;
-> >>>>>
-> >>>>> -	for (i = 0; i < NUM_DOMAINS; i++) {
-> >>>>> +	init_clks(pdev, clk);
-> >>>>> +
-> >>>>> +	for (i = 0; i < num; i++) {
-> >>>>>    		struct scp_domain *scpd = &scp->domains[i];
-> >>>>>    		struct generic_pm_domain *genpd = &scpd->genpd;
-> >>>>>    		const struct scp_domain_data *data = &scp_domain_data[i];
-> >>>>>
-> >>>>> +		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
-> >>>>> +			struct clk *c = clk[data->clk_id[j]];
-> >>>>> +
-> >>>>> +			if (IS_ERR(c)) {
-> >>>>> +				dev_err(&pdev->dev, "%s: clk unavailable\n",
-> >>>>> +					data->name);
-> >>>>> +				return ERR_CAST(c);
-> >>>>> +			}
-> >>>>> +
-> >>>>> +			scpd->clk[j] = c;
-> >>>>
-> >>>> Put this in the else branch. Apart from that is there any reason you
-> >>>
-> >>> Do you mean to change like this?
-> >>>
-> >>> 	if (IS_ERR(c)) {
-> >>> 		...
-> >>> 		return ERR_CAST(c);
-> >>> 	} else {
-> >>> 		scpd->clk[j] = c;
-> >>> 	}
-> >>>
-> >>> checkpatch.pl will warn for above code due to it returns in 'if' branch.
-> >>>
-> >>
-> >> I tried that on top of next-20160706 and it checkpatch didn't throw any
-> >> warning. Which kernel version are based on?
-> >
-> > I don't remember which version of checkpatch warn on this pattern. This
-> > patch series develop across several kernel versions.
-> 
-> We as the kernel community develop against master or linux-next. We only 
-> care about older kernel version in the sense that we intent hard not to 
-> break any userspace/kernel or firmware/kernel interfaces. Apart from 
-> that it's up to every individual to backport patches from mainline 
-> kernel to his respective version. But that's nothing the community as a 
-> hole can take care of.
-> 
-> >
-> > So do you prefer to put "scpd->clk[j] = c;" into 'else' branch?
-> >
-> 
-> Yes please :)
-
-Yingjoe had tested in the latest checkpatch.pl and it showed checkpatch
-warn on the else-branch. He had replied the results in previous email.
- 
-> >>>> moved the for up in the function? If not, I would prefer not to move it,
-> >>>> to make it easier to read the diff.
-> >>>
-> >>> The new 'for' block are far different from original one. And I think
-> >>> it's easy to read if we keep simple assign statements in the same block.
-> >>>
-> >>
-> >> It's different in the sense that it checks if struct clk *c is an error.
-> >> I don't see the reason why we need to move it up in the file.
-> >> It's not too important but I would prefer not to move it if there is no
-> >> reason.
-> >
-> > I think I may misunderstand your comments. Which 'for' block did you
-> > mention for? 'for (i = 0; i < num ...' or 'for (j = 0; j < MAX_CLKS
-> > && ...' ?
-> >
-> > The 'for(i)' exists in original code, this patch just change its counter
-> > from 'NUM_DOMAINS' to 'num'. The 'for(j)' is a new for-block, so it was
-> > not moved from other blocks.
-> >
-> 
-> for (j = 0; j < MAX_CLKS... is present in the actual scpsys_probe in 
-> linux-next (line 485 as of today). This patch moves this for a few lines 
-> up, to be precise before executing this code sequence:
-> <code>
-> pd_data->domains[i] = genpd;
-> scpd->scp = scp;
-> 
-> scpd->data = data;
-> </code>
-> 
-> AFAIK there is no reason to do so. It adds unnecessary complexity to the 
-> patch. So please fix this together with the other comments you got.
-
-I see. So you prefer to put the for(j < MAX_CLKS) after 'scpd->data =
-data' right? I can change it in next patch.
-
-
-Best regards,
-
-James
+On Mon, Jul 11, 2016 at 10:56 AM, tiffany lin <tiffany.lin@mediatek.com> wrote:
+> Hi Hans,
+>
+> On Fri, 2016-07-08 at 12:23 +0200, Hans Verkuil wrote:
+>> On 05/30/2016 02:29 PM, Tiffany Lin wrote:
+>> > Add V4L2_PIX_FMT_MT21 documentation
+>> >
+>> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+>> > ---
+>> >  Documentation/DocBook/media/v4l/pixfmt.xml |    6 ++++++
+>> >  1 file changed, 6 insertions(+)
+>> >
+>> > diff --git a/Documentation/DocBook/media/v4l/pixfmt.xml b/Documentation/DocBook/media/v4l/pixfmt.xml
+>> > index 5a08aee..d40e0ce 100644
+>> > --- a/Documentation/DocBook/media/v4l/pixfmt.xml
+>> > +++ b/Documentation/DocBook/media/v4l/pixfmt.xml
+>> > @@ -1980,6 +1980,12 @@ array. Anything what's in between the UYVY lines is JPEG data and should be
+>> >  concatenated to form the JPEG stream. </para>
+>> >  </entry>
+>> >       </row>
+>> > +     <row id="V4L2_PIX_FMT_MT21">
+>> > +       <entry><constant>V4L2_PIX_FMT_MT21</constant></entry>
+>> > +       <entry>'MT21'</entry>
+>> > +       <entry>Compressed two-planar YVU420 format used by Mediatek MT8173
+>> > +       codec driver.</entry>
+>>
+>> Can you give a few more details? The encoder driver doesn't seem to produce this
+>> format, so who is creating this? Where is this format documented?
+Decoder hardware produces MT21 (compressed). Image processor can
+convert it to a format that can be input of display driver. Tiffany.
+When do you plan to upstream image processor (mtk-mdp)?
+>
+> It can be as input format for encoder, MDP and display drivers in our
+> platform.
+I remember display driver can only accept uncompressed MT21. Right?
+Basically V4L2_PIX_FMT_MT21 is compressed and is like an opaque
+format. It's not usable until it's decompressed and converted by image
+processor.
+> This private format is only available in our platform.
+> So I put it in "Reserved Format Identifiers" sections.
+>
+>
+> best regards,
+> Tiffany
+>
+>> Regards,
+>>
+>>       Hans
+>>
+>> > +     </row>
+>> >     </tbody>
+>> >        </tgroup>
+>> >      </table>
+>> >
+>
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
