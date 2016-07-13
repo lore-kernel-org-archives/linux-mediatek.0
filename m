@@ -1,29 +1,21 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH] [media] mtk-vcodec: fix type mismatches
-Date: Wed, 13 Jul 2016 17:56:26 +0800
-Message-ID: <1468403786.32454.16.camel@mtksdaap41>
-References: <20160711213959.2481081-1-arnd@arndb.de>
+From: pochun lin <pochun.lin@mediatek.com>
+Subject: Re: [PATCH v2] [media] mtk-vcodec: fix more type mismatches
+Date: Wed, 13 Jul 2016 18:52:43 +0800
+Message-ID: <1468407163.3555.1.camel@mtksdaap41>
+References: <20160713084916.2765651-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20160711213959.2481081-1-arnd@arndb.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20160713084916.2765651-1-arnd@arndb.de>
+Sender: linux-media-owner@vger.kernel.org
 To: Arnd Bergmann <arnd@arndb.de>
-Cc: linux-kernel@vger.kernel.org, Hans Verkuil <hans.verkuil@cisco.com>, PoChun Lin <pochun.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Arnd,
 
-On Mon, 2016-07-11 at 23:37 +0200, Arnd Bergmann wrote:
+On Wed, 2016-07-13 at 10:47 +0200, Arnd Bergmann wrote:
 > The newly added mtk-vcodec driver produces a number of warnings in an ARM
 > allmodconfig build, mainly since it assumes that dma_addr_t is 32-bit wide:
 > 
@@ -31,55 +23,18 @@ On Mon, 2016-07-11 at 23:37 +0200, Arnd Bergmann wrote:
 > mtk-vcodec/venc/venc_vp8_if.c:212:191: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
 > mtk-vcodec/venc/venc_h264_if.c: In function 'h264_enc_alloc_work_buf':
 > mtk-vcodec/venc/venc_h264_if.c:297:190: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
-> mtk-vcodec/mtk_vcodec_enc.c: In function 'mtk_venc_worker':
-> mtk-vcodec/mtk_vcodec_enc.c:1030:46: error: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'size_t {aka unsigned int}' [-Werror=format=]
->   mtk_v4l2_debug(2,
-> mtk-vcodec/mtk_vcodec_enc.c:1030:46: error: format '%lx' expects argument of type 'long unsigned int', but argument 10 has type 'size_t {aka unsigned int}' [-Werror=format=]
-> mtk-vcodec/venc_vpu_if.c: In function 'vpu_enc_ipi_handler':
-> mtk-vcodec/venc_vpu_if.c:40:30: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
->   struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)msg->venc_inst;
 > 
 > This rearranges the format strings and type casts to what they should have been
-> in order to avoid the warnings.
+> in order to avoid the warnings. e0f80d8d62f5 ("[media] mtk-vcodec: fix two compiler
+> warnings") fixed some of the problems that were introduced at the same time, but
+> missed two others.
 > 
 > Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 > ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c    | 8 ++++----
 >  drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c | 4 ++--
 >  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c  | 4 ++--
->  drivers/media/platform/mtk-vcodec/venc_vpu_if.c       | 4 ++--
->  4 files changed, 10 insertions(+), 10 deletions(-)
+>  2 files changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 6dcae0a0a1f2..0b25a8700877 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -1028,15 +1028,15 @@ static void mtk_venc_worker(struct work_struct *work)
->  	bs_buf.size = (size_t)dst_buf->planes[0].length;
->  
->  	mtk_v4l2_debug(2,
-> -			"Framebuf VA=%p PA=%llx Size=0x%lx;VA=%p PA=0x%llx Size=0x%lx;VA=%p PA=0x%llx Size=%zu",
-> +			"Framebuf VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx",
->  			frm_buf.fb_addr[0].va,
-> -			(u64)frm_buf.fb_addr[0].dma_addr,
-> +			&frm_buf.fb_addr[0].dma_addr,
->  			frm_buf.fb_addr[0].size,
->  			frm_buf.fb_addr[1].va,
-> -			(u64)frm_buf.fb_addr[1].dma_addr,
-> +			&frm_buf.fb_addr[1].dma_addr,
->  			frm_buf.fb_addr[1].size,
->  			frm_buf.fb_addr[2].va,
-> -			(u64)frm_buf.fb_addr[2].dma_addr,
-> +			&frm_buf.fb_addr[2].dma_addr,
->  			frm_buf.fb_addr[2].size);
-This change will make debug message dump address of dma_addr field but
-not the value of the dma_addr we want.
-How about change it from
-PA=%llx -> PA=%u
-(u64)frm_buf.fb_addr[0].dma_addr -> (u32)frm_buf.fb_addr[0].dma_addr,
-
->  
->  	ret = venc_if_encode(ctx, VENC_START_OPT_ENCODE_FRAME,
 > diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
 > index f4e18bb44cb9..9a600525b3c1 100644
 > --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
@@ -96,13 +51,13 @@ PA=%llx -> PA=%u
 >  				 inst->work_bufs[i].size);
 >  	}
 >  
-Same as above.
 
-best regards,
-Tiffany
+This modified will dump dma_addr's address, not dma_addr value.
+In actually, we need to dump dma_addr value.
+Thanks.
 
 > diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index 431ae706a427..5b35aa1900d7 100644
+> index 5b4ef0f1740c..60bbcd2a0510 100644
 > --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
 > +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
 > @@ -210,9 +210,9 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
@@ -117,25 +72,8 @@ Tiffany
 >  				 inst->work_bufs[i].size);
 >  	}
 >  
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> index b92c6d2a892d..8907b02729fa 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> @@ -37,7 +37,7 @@ static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, void *data)
->  static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
->  {
->  	struct venc_vpu_ipi_msg_common *msg = data;
-> -	struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)msg->venc_inst;
-> +	struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)(uintptr_t)msg->venc_inst;
->  
->  	mtk_vcodec_debug(vpu, "msg_id %x inst %p status %d",
->  			 msg->msg_id, vpu, msg->status);
-> @@ -112,7 +112,7 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
->  
->  	memset(&out, 0, sizeof(out));
->  	out.msg_id = AP_IPIMSG_ENC_INIT;
-> -	out.venc_inst = (unsigned long)vpu;
-> +	out.venc_inst = (uintptr_t)vpu;
->  	if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
->  		mtk_vcodec_err(vpu, "AP_IPIMSG_ENC_INIT fail");
->  		return -EINVAL;
+
+The same as above.
+
+Best Regards
+PoChun
