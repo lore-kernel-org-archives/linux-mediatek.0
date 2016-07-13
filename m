@@ -1,12 +1,14 @@
-From: weiyj_lk-9Onoh4P/yGk@public.gmane.org
-Subject: [PATCH -next] drm/mediatek/mtk_mipi_tx: remove redundant dev_err call
- in mtk_mipi_tx_probe()
-Date: Wed, 13 Jul 2016 12:44:41 +0000
-Message-ID: <1468413881-2588-1-git-send-email-weiyj_lk@163.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: Re: [PATCH] [media] mtk-vcodec: fix type mismatches
+Date: Wed, 13 Jul 2016 15:08:09 +0200
+Message-ID: <4915511.9pXBipIRF8@wuerfel>
+References: <20160711213959.2481081-1-arnd@arndb.de>
+ <1468403786.32454.16.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1468403786.32454.16.camel@mtksdaap41>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -16,36 +18,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, PoChun Lin <pochun.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
+On Wednesday, July 13, 2016 5:56:26 PM CEST tiffany lin wrote:
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > index 6dcae0a0a1f2..0b25a8700877 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+> > @@ -1028,15 +1028,15 @@ static void mtk_venc_worker(struct work_struct *work)
+> >       bs_buf.size = (size_t)dst_buf->planes[0].length;
+> >  
+> >       mtk_v4l2_debug(2,
+> > -                     "Framebuf VA=%p PA=%llx Size=0x%lx;VA=%p PA=0x%llx Size=0x%lx;VA=%p PA=0x%llx Size=%zu",
+> > +                     "Framebuf VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx",
+> >                       frm_buf.fb_addr[0].va,
+> > -                     (u64)frm_buf.fb_addr[0].dma_addr,
+> > +                     &frm_buf.fb_addr[0].dma_addr,
+> >                       frm_buf.fb_addr[0].size,
+> >                       frm_buf.fb_addr[1].va,
+> > -                     (u64)frm_buf.fb_addr[1].dma_addr,
+> > +                     &frm_buf.fb_addr[1].dma_addr,
+> >                       frm_buf.fb_addr[1].size,
+> >                       frm_buf.fb_addr[2].va,
+> > -                     (u64)frm_buf.fb_addr[2].dma_addr,
+> > +                     &frm_buf.fb_addr[2].dma_addr,
+> >                       frm_buf.fb_addr[2].size);
+> This change will make debug message dump address of dma_addr field but
+> not the value of the dma_addr we want.
+> How about change it from
+> PA=%llx -> PA=%u
+> (u64)frm_buf.fb_addr[0].dma_addr -> (u32)frm_buf.fb_addr[0].dma_addr,
+> 
 
-There is a error message within devm_ioremap_resource
-already, so remove the dev_err call to avoid redundant
-error message.
+The %llx works fine with the cast to u64, the change above is mainly for the "%lx"
+on a size_t causing a warning.
 
-Signed-off-by: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
----
- drivers/gpu/drm/mediatek/mtk_mipi_tx.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+The change to %pad is done in order to use a consistent output for the
+dma_addr_t, which had a leading "0x" in two cases but not in the first
+one.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-index 1c366f8..b835bba 100644
---- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-@@ -393,11 +393,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
- 
- 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	mipi_tx->regs = devm_ioremap_resource(dev, mem);
--	if (IS_ERR(mipi_tx->regs)) {
--		ret = PTR_ERR(mipi_tx->regs);
--		dev_err(dev, "Failed to get memory resource: %d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(mipi_tx->regs))
-+		return PTR_ERR(mipi_tx->regs);
- 
- 	ref_clk = devm_clk_get(dev, NULL);
- 	if (IS_ERR(ref_clk)) {
+printk interprets %pad as a pointer to a dma_addr_t and prints the
+address, not the pointer to it, see Documentation/printk-formats.txt,
+which lets you avoid the type cast as well as the 0x.
+
+	Arnd
