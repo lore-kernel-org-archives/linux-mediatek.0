@@ -1,79 +1,51 @@
-From: pochun lin <pochun.lin@mediatek.com>
-Subject: Re: [PATCH v2] [media] mtk-vcodec: fix more type mismatches
-Date: Wed, 13 Jul 2016 18:52:43 +0800
-Message-ID: <1468407163.3555.1.camel@mtksdaap41>
-References: <20160713084916.2765651-1-arnd@arndb.de>
+From: weiyj_lk-9Onoh4P/yGk@public.gmane.org
+Subject: [PATCH -next] drm/mediatek/mtk_mipi_tx: remove redundant dev_err call
+ in mtk_mipi_tx_probe()
+Date: Wed, 13 Jul 2016 12:44:41 +0000
+Message-ID: <1468413881-2588-1-git-send-email-weiyj_lk@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20160713084916.2765651-1-arnd@arndb.de>
-Sender: linux-media-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd,
+From: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
 
-On Wed, 2016-07-13 at 10:47 +0200, Arnd Bergmann wrote:
-> The newly added mtk-vcodec driver produces a number of warnings in an ARM
-> allmodconfig build, mainly since it assumes that dma_addr_t is 32-bit wide:
-> 
-> mtk-vcodec/venc/venc_vp8_if.c: In function 'vp8_enc_alloc_work_buf':
-> mtk-vcodec/venc/venc_vp8_if.c:212:191: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
-> mtk-vcodec/venc/venc_h264_if.c: In function 'h264_enc_alloc_work_buf':
-> mtk-vcodec/venc/venc_h264_if.c:297:190: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
-> 
-> This rearranges the format strings and type casts to what they should have been
-> in order to avoid the warnings. e0f80d8d62f5 ("[media] mtk-vcodec: fix two compiler
-> warnings") fixed some of the problems that were introduced at the same time, but
-> missed two others.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c | 4 ++--
->  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c  | 4 ++--
->  2 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> index f4e18bb44cb9..9a600525b3c1 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> @@ -295,9 +295,9 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst)
->  		wb[i].iova = inst->work_bufs[i].dma_addr;
->  
->  		mtk_vcodec_debug(inst,
-> -				 "work_buf[%d] va=0x%p iova=0x%p size=%zu",
-> +				 "work_buf[%d] va=0x%p iova=%pad size=%zu",
->  				 i, inst->work_bufs[i].va,
-> -				 (void *)inst->work_bufs[i].dma_addr,
-> +				 &inst->work_bufs[i].dma_addr,
->  				 inst->work_bufs[i].size);
->  	}
->  
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
 
-This modified will dump dma_addr's address, not dma_addr value.
-In actually, we need to dump dma_addr value.
-Thanks.
+Signed-off-by: Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>
+---
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index 5b4ef0f1740c..60bbcd2a0510 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> @@ -210,9 +210,9 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
->  		wb[i].iova = inst->work_bufs[i].dma_addr;
->  
->  		mtk_vcodec_debug(inst,
-> -				 "work_bufs[%d] va=0x%p,iova=0x%p,size=%zu",
-> +				 "work_bufs[%d] va=0x%p,iova=%pad,size=%zu",
->  				 i, inst->work_bufs[i].va,
-> -				 (void *)inst->work_bufs[i].dma_addr,
-> +				 &inst->work_bufs[i].dma_addr,
->  				 inst->work_bufs[i].size);
->  	}
->  
-
-The same as above.
-
-Best Regards
-PoChun
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+index 1c366f8..b835bba 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+@@ -393,11 +393,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	mipi_tx->regs = devm_ioremap_resource(dev, mem);
+-	if (IS_ERR(mipi_tx->regs)) {
+-		ret = PTR_ERR(mipi_tx->regs);
+-		dev_err(dev, "Failed to get memory resource: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(mipi_tx->regs))
++		return PTR_ERR(mipi_tx->regs);
+ 
+ 	ref_clk = devm_clk_get(dev, NULL);
+ 	if (IS_ERR(ref_clk)) {
