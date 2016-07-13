@@ -1,53 +1,69 @@
-From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: Add MediaTek USB3 DRD Driver
-Date: Wed, 13 Jul 2016 13:40:11 +0800
-Message-ID: <1468388411.29220.4.camel@mhfsdcap03>
-References: <1465960040-768-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] [media] mtk-vcodec: fix default OUTPUT buffer size
+Date: Wed, 13 Jul 2016 16:05:23 +0800
+Message-ID: <1468397123-9808-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1465960040-768-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Felipe:
+When calculate OUTPUT buffer size in vidioc_try_fmt, it will
+add more size hw need in each plane.
+But in mtk_vcodec_enc_set_default_params, it do not add
+same size in each plane.
+This makes v4l2-compliance test fail.
+This patch fix the issue.
 
-Could you please give me some suggestions if you have already reviewed
-some codes.
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-Thanks a lot.
-
-
-On Wed, 2016-06-15 at 11:07 +0800, Chunfeng Yun wrote:
-> From 48552e96e4e33f8830cb6a59154fe148425532fd Mon Sep 17 00:00:00 2001
-> From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Date: Wed, 15 Jun 2016 10:58:10 +0800
-> Subject: [PATCH v4,0/5] Add MediaTek USB3 DRD Driver
-> 
-> These patches introduce the MediaTek USB3 dual-role controller
-> driver.
-> 
-> The driver can be configured as Dual-Role Device (DRD),
-> Peripheral Only and Host Only (xHCI) modes. It works well
-> with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
-> tested on MT8173 platform which only contains USB2.0 device IP,
-> and on MT6290 platform which contains USB3.0 device IP.
-> 
-> Change in v4:
-> 1. fix build errors on non-mediatek platforms
-> 2. provide manual dual-role switch via debugfs instead of sysfs
-> 
-
-> --
-> 1.7.9.5
-> 
-> 
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index 907a6d1..3ed3f2d 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -328,10 +328,11 @@ static int vidioc_try_fmt(struct v4l2_format *f, struct mtk_video_fmt *fmt)
+ 			pix_fmt_mp->height += 32;
+ 
+ 		mtk_v4l2_debug(0,
+-			"before resize width=%d, height=%d, after resize width=%d, height=%d, sizeimage=%d",
++			"before resize width=%d, height=%d, after resize width=%d, height=%d, sizeimage=%d %d",
+ 			tmp_w, tmp_h, pix_fmt_mp->width,
+ 			pix_fmt_mp->height,
+-			pix_fmt_mp->width * pix_fmt_mp->height);
++			pix_fmt_mp->plane_fmt[0].sizeimage,
++			pix_fmt_mp->plane_fmt[1].sizeimage);
+ 
+ 		pix_fmt_mp->num_planes = fmt->num_planes;
+ 		pix_fmt_mp->plane_fmt[0].sizeimage =
+@@ -1166,9 +1167,13 @@ void mtk_vcodec_enc_set_default_params(struct mtk_vcodec_ctx *ctx)
+ 		(q_data->coded_height + 32) <= MTK_VENC_MAX_H)
+ 		q_data->coded_height += 32;
+ 
+-	q_data->sizeimage[0] = q_data->coded_width * q_data->coded_height;
++	q_data->sizeimage[0] =
++		q_data->coded_width * q_data->coded_height+
++		((ALIGN(q_data->coded_width, 16) * 2) * 16);
+ 	q_data->bytesperline[0] = q_data->coded_width;
+-	q_data->sizeimage[1] = q_data->sizeimage[0] / 2;
++	q_data->sizeimage[1] =
++		(q_data->coded_width * q_data->coded_height) / 2 +
++		(ALIGN(q_data->coded_width, 16) * 16);
+ 	q_data->bytesperline[1] = q_data->coded_width;
+ 
+ 	q_data = &ctx->q_data[MTK_Q_DATA_DST];
+-- 
+1.7.9.5
