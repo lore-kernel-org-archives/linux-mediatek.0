@@ -1,59 +1,87 @@
-From: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH v6 01/46] [media] mtk-vcodec: Remove unused dma_attrs
-Date: Wed, 13 Jul 2016 10:40:52 +0200
-Message-ID: <1468399300-5399-1-git-send-email-k.kozlowski@samsung.com>
+From: Krzysztof Kozlowski <k.kozlowski@samsung.com>
+Subject: [PATCH v6 13/46] drm/mediatek: dma-mapping: Use unsigned long for
+ dma_attrs
+Date: Wed, 13 Jul 2016 10:41:04 +0200
+Message-ID: <1468399300-5399-13-git-send-email-k.kozlowski@samsung.com>
 References: <1468399167-28083-1-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-1-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-2-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-3-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-4-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-5-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-6-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-7-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-8-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-9-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-10-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-11-git-send-email-k.kozlowski@samsung.com>
+ <1468399300-5399-12-git-send-email-k.kozlowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-reply-to: <1468399167-28083-1-git-send-email-k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andrew Morton <akpm-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>
-Cc: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-reply-to: <1468399300-5399-12-git-send-email-k.kozlowski@samsung.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Krzysztof Kozlowski <k.kozlowski@samsung.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hch@infradead.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The local variable dma_attrs is set but never read.
-
-Signed-off-by: Krzysztof Kozlowski <k.kozlowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-
----
-
-Changes since v5:
-New patch.
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 60b0bde232f4..ae1eb8fde7f8 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -246,7 +246,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	struct video_device *vfd_enc;
- 	struct resource *res;
- 	int i, j, ret;
--	DEFINE_DMA_ATTRS(attrs);
- 
- 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
- 	if (!dev)
-@@ -380,9 +379,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		goto err_enc_reg;
- 	}
- 
--	/* Avoid the iommu eat big hunks */
--	dma_set_attr(DMA_ATTR_ALLOC_SINGLE_PAGES, &attrs);
--
- 	mtk_v4l2_debug(0, "encoder registered as /dev/video%d",
- 			vfd_enc->num);
- 
--- 
-1.9.1
+U3BsaXQgb3V0IHN1YnN5c3RlbSBzcGVjaWZpYyBjaGFuZ2VzIGZvciBlYXNpZXIgcmV2aWV3cy4g
+VGhpcyB3aWxsIGJlCnNxdWFzaGVkIHdpdGggbWFpbiBjb21taXQuCgpTaWduZWQtb2ZmLWJ5OiBL
+cnp5c3p0b2YgS296bG93c2tpIDxrLmtvemxvd3NraUBzYW1zdW5nLmNvbT4KW2ZvciBkcm1dCkFj
+a2VkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgotLS0KIGRyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIHwgMTMgKysrKysrLS0tLS0tLQogZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmggfCAgMiArLQogMiBmaWxlcyBjaGFu
+Z2VkLCA3IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9nZW0uYwppbmRleCBmYTJlYzBjZDAwZTguLjdhYmM1NTBlYmMwMCAxMDA2NDQK
+LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKQEAgLTU0LDE1ICs1NCwxNCBAQCBzdHJ1
+Y3QgbXRrX2RybV9nZW1fb2JqICptdGtfZHJtX2dlbV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2Ug
+KmRldiwKIAogCW9iaiA9ICZtdGtfZ2VtLT5iYXNlOwogCi0JaW5pdF9kbWFfYXR0cnMoJm10a19n
+ZW0tPmRtYV9hdHRycyk7Ci0JZG1hX3NldF9hdHRyKERNQV9BVFRSX1dSSVRFX0NPTUJJTkUsICZt
+dGtfZ2VtLT5kbWFfYXR0cnMpOworCW10a19nZW0tPmRtYV9hdHRycyA9IERNQV9BVFRSX1dSSVRF
+X0NPTUJJTkU7CiAKIAlpZiAoIWFsbG9jX2ttYXApCi0JCWRtYV9zZXRfYXR0cihETUFfQVRUUl9O
+T19LRVJORUxfTUFQUElORywgJm10a19nZW0tPmRtYV9hdHRycyk7CisJCW10a19nZW0tPmRtYV9h
+dHRycyB8PSBETUFfQVRUUl9OT19LRVJORUxfTUFQUElORzsKIAogCW10a19nZW0tPmNvb2tpZSA9
+IGRtYV9hbGxvY19hdHRycyhwcml2LT5kbWFfZGV2LCBvYmotPnNpemUsCiAJCQkJCSAgJm10a19n
+ZW0tPmRtYV9hZGRyLCBHRlBfS0VSTkVMLAotCQkJCQkgICZtdGtfZ2VtLT5kbWFfYXR0cnMpOwor
+CQkJCQkgIG10a19nZW0tPmRtYV9hdHRycyk7CiAJaWYgKCFtdGtfZ2VtLT5jb29raWUpIHsKIAkJ
+RFJNX0VSUk9SKCJmYWlsZWQgdG8gYWxsb2NhdGUgJXp4IGJ5dGUgZG1hIGJ1ZmZlciIsIG9iai0+
+c2l6ZSk7CiAJCXJldCA9IC1FTk9NRU07CkBAIC05Myw3ICs5Miw3IEBAIHZvaWQgbXRrX2RybV9n
+ZW1fZnJlZV9vYmplY3Qoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopCiAJCWRybV9wcmltZV9n
+ZW1fZGVzdHJveShvYmosIG10a19nZW0tPnNnKTsKIAllbHNlCiAJCWRtYV9mcmVlX2F0dHJzKHBy
+aXYtPmRtYV9kZXYsIG9iai0+c2l6ZSwgbXRrX2dlbS0+Y29va2llLAotCQkJICAgICAgIG10a19n
+ZW0tPmRtYV9hZGRyLCAmbXRrX2dlbS0+ZG1hX2F0dHJzKTsKKwkJCSAgICAgICBtdGtfZ2VtLT5k
+bWFfYWRkciwgbXRrX2dlbS0+ZG1hX2F0dHJzKTsKIAogCS8qIHJlbGVhc2UgZmlsZSBwb2ludGVy
+IHRvIGdlbSBvYmplY3QuICovCiAJZHJtX2dlbV9vYmplY3RfcmVsZWFzZShvYmopOwpAQCAtMTcz
+LDcgKzE3Miw3IEBAIHN0YXRpYyBpbnQgbXRrX2RybV9nZW1fb2JqZWN0X21tYXAoc3RydWN0IGRy
+bV9nZW1fb2JqZWN0ICpvYmosCiAJdm1hLT52bV9wZ29mZiA9IDA7CiAKIAlyZXQgPSBkbWFfbW1h
+cF9hdHRycyhwcml2LT5kbWFfZGV2LCB2bWEsIG10a19nZW0tPmNvb2tpZSwKLQkJCSAgICAgbXRr
+X2dlbS0+ZG1hX2FkZHIsIG9iai0+c2l6ZSwgJm10a19nZW0tPmRtYV9hdHRycyk7CisJCQkgICAg
+IG10a19nZW0tPmRtYV9hZGRyLCBvYmotPnNpemUsIG10a19nZW0tPmRtYV9hdHRycyk7CiAJaWYg
+KHJldCkKIAkJZHJtX2dlbV92bV9jbG9zZSh2bWEpOwogCkBAIC0yMjQsNyArMjIzLDcgQEAgc3Ry
+dWN0IHNnX3RhYmxlICptdGtfZ2VtX3ByaW1lX2dldF9zZ190YWJsZShzdHJ1Y3QgZHJtX2dlbV9v
+YmplY3QgKm9iaikKIAogCXJldCA9IGRtYV9nZXRfc2d0YWJsZV9hdHRycyhwcml2LT5kbWFfZGV2
+LCBzZ3QsIG10a19nZW0tPmNvb2tpZSwKIAkJCQkgICAgbXRrX2dlbS0+ZG1hX2FkZHIsIG9iai0+
+c2l6ZSwKLQkJCQkgICAgJm10a19nZW0tPmRtYV9hdHRycyk7CisJCQkJICAgIG10a19nZW0tPmRt
+YV9hdHRycyk7CiAJaWYgKHJldCkgewogCQlEUk1fRVJST1IoImZhaWxlZCB0byBhbGxvY2F0ZSBz
+Z3QsICVkXG4iLCByZXQpOwogCQlrZnJlZShzZ3QpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9nZW0uaAppbmRleCAzYTJhNTYyNGExY2IuLjI3NTI3MThmYTViMiAxMDA2NDQKLS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmgKKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmgKQEAgLTM1LDcgKzM1LDcgQEAgc3RydWN0IG10a19k
+cm1fZ2VtX29iaiB7CiAJdm9pZAkJCSpjb29raWU7CiAJdm9pZAkJCSprdmFkZHI7CiAJZG1hX2Fk
+ZHJfdAkJZG1hX2FkZHI7Ci0Jc3RydWN0IGRtYV9hdHRycwlkbWFfYXR0cnM7CisJdW5zaWduZWQg
+bG9uZwkJZG1hX2F0dHJzOwogCXN0cnVjdCBzZ190YWJsZQkJKnNnOwogfTsKIAotLSAKMS45LjEK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
