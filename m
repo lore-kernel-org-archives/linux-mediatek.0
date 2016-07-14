@@ -1,124 +1,60 @@
-From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH] [media] mtk-vcodec: fix type mismatches
-Date: Thu, 14 Jul 2016 15:34:14 +0800
-Message-ID: <1468481654.27199.19.camel@mtksdaap41>
-References: <20160711213959.2481081-1-arnd@arndb.de>
+From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v10 0/4] Mediatek MT8173 CMDQ support
+Date: Thu, 14 Jul 2016 19:28:49 +0800
+Message-ID: <1468495733-12178-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20160711213959.2481081-1-arnd@arndb.de>
-Sender: linux-media-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, PoChun Lin <pochun.lin@mediatek.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-07-11 at 23:37 +0200, Arnd Bergmann wrote:
-> The newly added mtk-vcodec driver produces a number of warnings in an ARM
-> allmodconfig build, mainly since it assumes that dma_addr_t is 32-bit wide:
-> 
-> mtk-vcodec/venc/venc_vp8_if.c: In function 'vp8_enc_alloc_work_buf':
-> mtk-vcodec/venc/venc_vp8_if.c:212:191: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
-> mtk-vcodec/venc/venc_h264_if.c: In function 'h264_enc_alloc_work_buf':
-> mtk-vcodec/venc/venc_h264_if.c:297:190: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
-> mtk-vcodec/mtk_vcodec_enc.c: In function 'mtk_venc_worker':
-> mtk-vcodec/mtk_vcodec_enc.c:1030:46: error: format '%lx' expects argument of type 'long unsigned int', but argument 7 has type 'size_t {aka unsigned int}' [-Werror=format=]
->   mtk_v4l2_debug(2,
-> mtk-vcodec/mtk_vcodec_enc.c:1030:46: error: format '%lx' expects argument of type 'long unsigned int', but argument 10 has type 'size_t {aka unsigned int}' [-Werror=format=]
-> mtk-vcodec/venc_vpu_if.c: In function 'vpu_enc_ipi_handler':
-> mtk-vcodec/venc_vpu_if.c:40:30: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
->   struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)msg->venc_inst;
-> 
-> This rearranges the format strings and type casts to what they should have been
-> in order to avoid the warnings.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c    | 8 ++++----
->  drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c | 4 ++--
->  drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c  | 4 ++--
->  drivers/media/platform/mtk-vcodec/venc_vpu_if.c       | 4 ++--
->  4 files changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 6dcae0a0a1f2..0b25a8700877 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -1028,15 +1028,15 @@ static void mtk_venc_worker(struct work_struct *work)
->  	bs_buf.size = (size_t)dst_buf->planes[0].length;
->  
->  	mtk_v4l2_debug(2,
-> -			"Framebuf VA=%p PA=%llx Size=0x%lx;VA=%p PA=0x%llx Size=0x%lx;VA=%p PA=0x%llx Size=%zu",
-> +			"Framebuf VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx;VA=%p PA=%pad Size=0x%zx",
->  			frm_buf.fb_addr[0].va,
-> -			(u64)frm_buf.fb_addr[0].dma_addr,
-> +			&frm_buf.fb_addr[0].dma_addr,
->  			frm_buf.fb_addr[0].size,
->  			frm_buf.fb_addr[1].va,
-> -			(u64)frm_buf.fb_addr[1].dma_addr,
-> +			&frm_buf.fb_addr[1].dma_addr,
->  			frm_buf.fb_addr[1].size,
->  			frm_buf.fb_addr[2].va,
-> -			(u64)frm_buf.fb_addr[2].dma_addr,
-> +			&frm_buf.fb_addr[2].dma_addr,
->  			frm_buf.fb_addr[2].size);
+Hi,
 
-Acked-by:Tiffany Lin <tiffany.lin@mediatek.com>
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
 
+These patches have a build dependency on top of v4.7-rc1.
 
->  
->  	ret = venc_if_encode(ctx, VENC_START_OPT_ENCODE_FRAME,
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> index f4e18bb44cb9..9a600525b3c1 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> @@ -295,9 +295,9 @@ static int h264_enc_alloc_work_buf(struct venc_h264_inst *inst)
->  		wb[i].iova = inst->work_bufs[i].dma_addr;
->  
->  		mtk_vcodec_debug(inst,
-> -				 "work_buf[%d] va=0x%p iova=0x%p size=%zu",
-> +				 "work_buf[%d] va=0x%p iova=%pad size=%zu",
->  				 i, inst->work_bufs[i].va,
-> -				 (void *)inst->work_bufs[i].dma_addr,
-> +				 &inst->work_bufs[i].dma_addr,
->  				 inst->work_bufs[i].size);
->  	}
->  
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index 431ae706a427..5b35aa1900d7 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> @@ -210,9 +210,9 @@ static int vp8_enc_alloc_work_buf(struct venc_vp8_inst *inst)
->  		wb[i].iova = inst->work_bufs[i].dma_addr;
->  
->  		mtk_vcodec_debug(inst,
-> -				 "work_bufs[%d] va=0x%p,iova=0x%p,size=%zu",
-> +				 "work_bufs[%d] va=0x%p,iova=%pad,size=%zu",
->  				 i, inst->work_bufs[i].va,
-> -				 (void *)inst->work_bufs[i].dma_addr,
-> +				 &inst->work_bufs[i].dma_addr,
->  				 inst->work_bufs[i].size);
->  	}
->  
-> diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> index b92c6d2a892d..8907b02729fa 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-> @@ -37,7 +37,7 @@ static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, void *data)
->  static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
->  {
->  	struct venc_vpu_ipi_msg_common *msg = data;
-> -	struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)msg->venc_inst;
-> +	struct venc_vpu_inst *vpu = (struct venc_vpu_inst *)(uintptr_t)msg->venc_inst;
->  
->  	mtk_vcodec_debug(vpu, "msg_id %x inst %p status %d",
->  			 msg->msg_id, vpu, msg->status);
-> @@ -112,7 +112,7 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
->  
->  	memset(&out, 0, sizeof(out));
->  	out.msg_id = AP_IPIMSG_ENC_INIT;
-> -	out.venc_inst = (unsigned long)vpu;
-> +	out.venc_inst = (uintptr_t)vpu;
->  	if (vpu_enc_send_msg(vpu, &out, sizeof(out))) {
->  		mtk_vcodec_err(vpu, "AP_IPIMSG_ENC_INIT fail");
->  		return -EINVAL;
+Changes since v9:
+ - rename merge_wfe to atomic_exec
+   atomic_exec should merge wfe (wait for event) commands and prevent
+   to suspend gce when gce starts to execute commands after wfe.
+ - merge cmdq_rec into cmdq_task since command buffer allocation for
+   cmdq_task had been modified to the same as cmdq_rec in CMDQ v9
+ - refine mailbox part in device tree binding document
+
+Best regards,
+HS Liao
+
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  CMDQ: Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  CMDQ: save more energy in idle
+
+ .../devicetree/bindings/soc/mediatek/gce.txt       |  47 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+ drivers/soc/mediatek/Kconfig                       |  11 +
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mtk-cmdq.c                    | 987 +++++++++++++++++++++
+ include/soc/mediatek/cmdq.h                        | 179 ++++
+ 6 files changed, 1235 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+ create mode 100644 include/soc/mediatek/cmdq.h
+
+-- 
+1.9.1
