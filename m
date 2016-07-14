@@ -1,67 +1,71 @@
-From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-Subject: [PATCH 1/4] VPU: mediatek: Add mdp support
-Date: Thu, 14 Jul 2016 20:17:58 +0800
-Message-ID: <1468498681-19955-2-git-send-email-minghsiu.tsai@mediatek.com>
-References: <1468498681-19955-1-git-send-email-minghsiu.tsai@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1468498681-19955-1-git-send-email-minghsiu.tsai@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: mt2701: fix non static symbol warning" to the asoc tree
+Date: Thu, 14 Jul 2016 17:32:07 +0100
+Message-ID: <E1bNjYV-0001SJ-C4@debutante>
+References: <1467985293-9041-1-git-send-email-weiyj_lk@163.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1467985293-9041-1-git-send-email-weiyj_lk@163.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+Cc: Garlic Tseng <garlic.tseng@mediatek.com>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-VPU driver add mdp support
+The patch
 
-Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+   ASoC: mediatek: mt2701: fix non static symbol warning
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 25d01dc67894de03de463727633e72e1727b4f6d Mon Sep 17 00:00:00 2001
+From: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+Date: Fri, 8 Jul 2016 13:47:01 +0000
+Subject: [PATCH] ASoC: mediatek: mt2701: fix non static symbol warning
+
+Fixes the following sparse warning:
+
+sound/soc/mediatek/mt2701/mt2701-afe-pcm.c:72:5: warning:
+ symbol 'mt2701_dai_num_to_i2s' was not declared. Should it be static?
+
+Signed-off-by: Wei Yongjun <yongjun_wei@trendmicro.com.cn>
+Acked-by: Garlic Tseng <garlic.tseng@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- drivers/media/platform/mtk-vpu/mtk_vpu.h |    5 +++++
- 1 file changed, 5 insertions(+)
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.h b/drivers/media/platform/mtk-vpu/mtk_vpu.h
-index f457479..291ae46 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.h
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.h
-@@ -53,6 +53,8 @@ typedef void (*ipi_handler_t) (void *data,
- 			 handle H264 video encoder job, and vice versa.
-  * @IPI_VENC_VP8:	 The interrupt fro vpu is to notify kernel to
- 			 handle VP8 video encoder job,, and vice versa.
-+ * @IPI_MDP:		 The interrupt from vpu is to notify kernel to
-+			 handle MDP (Media Data Path) job, and vice versa.
-  * @IPI_MAX:		 The maximum IPI number
-  */
- 
-@@ -63,6 +65,7 @@ enum ipi_id {
- 	IPI_VDEC_VP9,
- 	IPI_VENC_H264,
- 	IPI_VENC_VP8,
-+	IPI_MDP,
- 	IPI_MAX,
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index 15522c08a967..34a6123480d3 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -69,7 +69,7 @@ static const struct mt2701_afe_rate mt2701_afe_i2s_rates[] = {
+ 	{ .rate = 352800, .regvalue = 24 },
  };
  
-@@ -71,11 +74,13 @@ enum ipi_id {
-  *
-  * @VPU_RST_ENC: encoder reset id
-  * @VPU_RST_DEC: decoder reset id
-+ * @VPU_RST_MDP: MDP (Media Data Path) reset id
-  * @VPU_RST_MAX: maximum reset id
-  */
- enum rst_id {
- 	VPU_RST_ENC,
- 	VPU_RST_DEC,
-+	VPU_RST_MDP,
- 	VPU_RST_MAX,
- };
+-int mt2701_dai_num_to_i2s(struct mtk_base_afe *afe, int num)
++static int mt2701_dai_num_to_i2s(struct mtk_base_afe *afe, int num)
+ {
+ 	int val = num - MT2701_IO_I2S;
  
 -- 
-1.7.9.5
+2.8.1
