@@ -1,167 +1,123 @@
-From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v10 4/4] CMDQ: save more energy in idle
-Date: Thu, 14 Jul 2016 19:28:53 +0800
-Message-ID: <1468495733-12178-5-git-send-email-hs.liao@mediatek.com>
-References: <1468495733-12178-1-git-send-email-hs.liao@mediatek.com>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: [PATCH 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Thu, 14 Jul 2016 20:17:59 +0800
+Message-ID: <1468498681-19955-3-git-send-email-minghsiu.tsai@mediatek.com>
+References: <1468498681-19955-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1468495733-12178-1-git-send-email-hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1468498681-19955-1-git-send-email-minghsiu.tsai@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Use clk_disable_unprepare instead of clk_disable to save more energy
-when CMDQ is idle.
+Add a DT binding documentation of MDP for the MT8173 SoC
+from Mediatek
 
-Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-cmdq.c | 55 +++++++++++++++++++++++++++++++++++------
- 1 file changed, 47 insertions(+), 8 deletions(-)
+ .../devicetree/bindings/media/mediatek-mdp.txt     |   92 ++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq.c b/drivers/soc/mediatek/mtk-cmdq.c
-index d032603..35b791eb2 100644
---- a/drivers/soc/mediatek/mtk-cmdq.c
-+++ b/drivers/soc/mediatek/mtk-cmdq.c
-@@ -32,6 +32,7 @@
- #include <linux/spinlock.h>
- #include <linux/suspend.h>
- #include <linux/timer.h>
-+#include <linux/workqueue.h>
- #include <soc/mediatek/cmdq.h>
- 
- #define CMDQ_THR_MAX_COUNT		3 /* main, sub, general(misc) */
-@@ -132,10 +133,16 @@ struct cmdq_task {
- 	struct cmdq_task_cb	cb;
- };
- 
-+struct cmdq_clk_release {
-+	struct cmdq		*cmdq;
-+	struct work_struct	release_work;
-+};
+diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+new file mode 100644
+index 0000000..ef570c3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+@@ -0,0 +1,92 @@
++* Mediatek Media Data Path
 +
- struct cmdq {
- 	struct mbox_controller	mbox;
- 	void __iomem		*base;
- 	u32			irq;
-+	struct workqueue_struct	*clk_release_wq;
- 	struct cmdq_thread	thread[CMDQ_THR_MAX_COUNT];
- 	struct mutex		task_mutex;
- 	struct clk		*clock;
-@@ -301,11 +308,19 @@ static void cmdq_thread_wait_end(struct cmdq_thread *thread,
- static void cmdq_task_exec(struct cmdq_task *task, struct cmdq_thread *thread)
- {
- 	struct cmdq *cmdq = task->cmdq;
--	unsigned long curr_pa, end_pa;
-+	unsigned long curr_pa, end_pa, flags;
- 
- 	task->thread = thread;
- 	if (list_empty(&thread->task_busy_list)) {
--		WARN_ON(clk_enable(cmdq->clock) < 0);
-+		/*
-+		 * Unlock for clk prepare (sleeping function).
-+		 * We are safe to do that since we have task_mutex and
-+		 * only flush will add task.
-+		 */
-+		spin_unlock_irqrestore(&thread->chan->lock, flags);
-+		WARN_ON(clk_prepare_enable(cmdq->clock) < 0);
-+		spin_lock_irqsave(&thread->chan->lock, flags);
++Media Data Path is used for scaling and color space conversion.
 +
- 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
- 
- 		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-@@ -387,6 +402,26 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
- 	cmdq_thread_resume(thread);
- }
- 
-+static void cmdq_clk_release_work(struct work_struct *work_item)
-+{
-+	struct cmdq_clk_release *clk_release = container_of(work_item,
-+			struct cmdq_clk_release, release_work);
-+	struct cmdq *cmdq = clk_release->cmdq;
++Required properties:
++  - compatible : should contain them as below:
++        "mediatek,mt8173-mdp"
++        "mediatek,mt8173-mdp-rdma"
++        "mediatek,mt8173-mdp-rsz"
++        "mediatek,mt8173-mdp-wdma"
++        "mediatek,mt8173-mdp-wrot"
++  - clocks : device clocks
++  - power-domains : a phandle to the power domain.
++  - mediatek,larb : should contain the larbes of current platform
++  - iommus : Mediatek IOMMU H/W has designed the fixed associations with
++        the multimedia H/W. and there is only one multimedia iommu domain.
++        "iommus = <&iommu portid>" the "portid" is from
++        dt-bindings\iommu\mt8173-iommu-port.h, it means that this portid will
++        enable iommu. The portid default is disable iommu if "<&iommu portid>"
++        don't be added.
++  - mediatek,vpu : the node of video processor unit
 +
-+	clk_disable_unprepare(cmdq->clock);
-+	kfree(clk_release);
-+}
++Example:
++	mdp_rdma0: rdma@14001000 {
++		compatible = "mediatek,mt8173-mdp-rdma",
++			     "mediatek,mt8173-mdp";
++		reg = <0 0x14001000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++			 <&mmsys CLK_MM_MUTEX_32K>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
++		mediatek,larb = <&larb0>;
++		mediatek,vpu = <&vpu>;
++	};
 +
-+static void cmdq_clk_release_schedule(struct cmdq *cmdq)
-+{
-+	struct cmdq_clk_release *clk_release;
++	mdp_rdma1: rdma@14002000 {
++		compatible = "mediatek,mt8173-mdp-rdma";
++		reg = <0 0x14002000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_RDMA1>,
++			 <&mmsys CLK_MM_MUTEX_32K>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++		iommus = <&iommu M4U_PORT_MDP_RDMA1>;
++		mediatek,larb = <&larb4>;
++	};
 +
-+	clk_release = kmalloc(sizeof(*clk_release), GFP_ATOMIC);
-+	clk_release->cmdq = cmdq;
-+	INIT_WORK(&clk_release->release_work, cmdq_clk_release_work);
-+	queue_work(cmdq->clk_release_wq, &clk_release->release_work);
-+}
++	mdp_rsz0: rsz@14003000 {
++		compatible = "mediatek,mt8173-mdp-rsz";
++		reg = <0 0x14003000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++	};
 +
- static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 				    struct cmdq_thread *thread)
- {
-@@ -436,7 +471,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 
- 	if (list_empty(&thread->task_busy_list)) {
- 		cmdq_thread_disable(cmdq, thread);
--		clk_disable(cmdq->clock);
-+		cmdq_clk_release_schedule(cmdq);
- 	} else {
- 		mod_timer(&thread->timeout,
- 			  jiffies + msecs_to_jiffies(CMDQ_TIMEOUT_MS));
-@@ -495,7 +530,7 @@ static void cmdq_thread_handle_timeout(unsigned long data)
- 
- 	cmdq_thread_resume(thread);
- 	cmdq_thread_disable(cmdq, thread);
--	clk_disable(cmdq->clock);
-+	cmdq_clk_release_schedule(cmdq);
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
- }
- 
-@@ -783,7 +818,7 @@ static int cmdq_suspend(struct device *dev)
- 		msleep(20);
- 	}
- 
--	clk_unprepare(cmdq->clock);
-+	flush_workqueue(cmdq->clk_release_wq);
- 	return 0;
- }
- 
-@@ -791,7 +826,6 @@ static int cmdq_resume(struct device *dev)
- {
- 	struct cmdq *cmdq = dev_get_drvdata(dev);
- 
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
- 	cmdq->suspended = false;
- 	return 0;
- }
-@@ -800,8 +834,8 @@ static int cmdq_remove(struct platform_device *pdev)
- {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
- 
-+	destroy_workqueue(cmdq->clk_release_wq);
- 	mbox_controller_unregister(&cmdq->mbox);
--	clk_unprepare(cmdq->clock);
- 	return 0;
- }
- 
-@@ -919,8 +953,13 @@ static int cmdq_probe(struct platform_device *pdev)
- 	}
- 
- 	mutex_init(&cmdq->task_mutex);
++	mdp_rsz1: rsz@14004000 {
++		compatible = "mediatek,mt8173-mdp-rsz";
++		reg = <0 0x14004000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++	};
 +
-+	cmdq->clk_release_wq = alloc_ordered_workqueue(
-+			"%s", WQ_MEM_RECLAIM | WQ_HIGHPRI,
-+			"cmdq_clk_release");
++	mdp_rsz2: rsz@14005000 {
++		compatible = "mediatek,mt8173-mdp-rsz";
++		reg = <0 0x14005000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_RSZ2>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++	};
 +
- 	platform_set_drvdata(pdev, cmdq);
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
++	mdp_wdma0: wdma@14006000 {
++		compatible = "mediatek,mt8173-mdp-wdma";
++		reg = <0 0x14006000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_WDMA>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++		iommus = <&iommu M4U_PORT_MDP_WDMA>;
++		mediatek,larb = <&larb0>;
++	};
 +
- 	return 0;
- }
- 
++	mdp_wrot0: wrot@14007000 {
++		compatible = "mediatek,mt8173-mdp-wrot";
++		reg = <0 0x14007000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_WROT0>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++		iommus = <&iommu M4U_PORT_MDP_WROT0>;
++		mediatek,larb = <&larb0>;
++	};
++
++	mdp_wrot1: wrot@14008000 {
++		compatible = "mediatek,mt8173-mdp-wrot";
++		reg = <0 0x14008000 0 0x1000>;
++		clocks = <&mmsys CLK_MM_MDP_WROT1>;
++		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++		iommus = <&iommu M4U_PORT_MDP_WROT1>;
++		mediatek,larb = <&larb4>;
++	};
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.7.9.5
