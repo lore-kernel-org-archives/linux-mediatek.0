@@ -1,218 +1,162 @@
 From: tiffany lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH] vcodec: mediatek: Add g/s_selection support for V4L2
- Encoder
-Date: Thu, 14 Jul 2016 14:27:54 +0800
-Message-ID: <1468477674.32454.36.camel@mtksdaap41>
-References: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
-	 <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
+Subject: Re: [PATCH v3 3/9] DocBook/v4l: Add compressed video formats used
+ on MT8173 codec driver
+Date: Thu, 14 Jul 2016 15:30:10 +0800
+Message-ID: <1468481410.27199.17.camel@mtksdaap41>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+	  <1464611363-14936-2-git-send-email-tiffany.lin@mediatek.com>
+	  <1464611363-14936-3-git-send-email-tiffany.lin@mediatek.com>
+	  <1464611363-14936-4-git-send-email-tiffany.lin@mediatek.com>
+	  <5a793171-24a7-4e9e-8bfd-f668c789f8e0@xs4all.nl>
+	  <1468205771.3725.8.camel@mtksdaap41>
+	  <CAOMLVLiZU3D587dSyp2b2v4DV+MS9vh85bA4BoG7ddK6556rbA@mail.gmail.com>
+	  <1468350511.8843.16.camel@gmail.com> <1468350842.8843.18.camel@gmail.com>
+	 <1468375209.2462.20.camel@mtksdaap41>
+	 <1468418157.2867.12.camel@ndufresne.ca>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
+In-Reply-To: <1468418157.2867.12.camel@ndufresne.ca>
 Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, tiffany.lin@mediatek.com
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Wu-Cheng Li =?UTF-8?Q?=28=E6=9D=8E=E5=8B=99=E8=AA=A0=29?= <wuchengli@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, Hans Verkuil <hans.verkuil@cisco.com>, Daniel Thompson <daniel.thompson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Lin PoChun <PoChun.Lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+Hi Nicolas,
 
+On Wed, 2016-07-13 at 09:55 -0400, Nicolas Dufresne wrote:
+> Le mercredi 13 juillet 2016 =C3=A0 10:00 +0800, tiffany lin a =C3=A9c=
+rit :
+> > Hi Nicolas,
+> >=20
+> > On Tue, 2016-07-12 at 15:14 -0400, Nicolas Dufresne wrote:
+> > > Le mardi 12 juillet 2016 =C3=A0 15:08 -0400, Nicolas Dufresne a =C3=
+=A9crit :
+> > > > Le mardi 12 juillet 2016 =C3=A0 16:16 +0800, Wu-Cheng Li (=E6=9D=
+=8E=E5=8B=99=E8=AA=A0) a =C3=A9crit
+> > :
+> > > > > Decoder hardware produces MT21 (compressed). Image processor
+> > can
+> > > > > convert it to a format that can be input of display driver.
+> > > > > Tiffany.
+> > > > > When do you plan to upstream image processor (mtk-mdp)?
+> > > > > >=20
+> > > > > > It can be as input format for encoder, MDP and display
+> > drivers in
+> > > > > our
+> > > > > > platform.
+> > > > > I remember display driver can only accept uncompressed MT21.
+> > Right?
+> > > > > Basically V4L2_PIX_FMT_MT21 is compressed and is like an opaq=
+ue
+> > > > > format. It's not usable until it's decompressed and converted
+> > by
+> > > > > image
+> > > > > processor.
+> > > >=20
+> > > > Previously it was described as MediaTek block mode, and now as =
+a
+> > > > MediaTek compressed format. It makes me think you have no idea
+> > what
+> > > > this pixel format really is. Is that right ?
+> > > >=20
+> > > > The main reason why I keep asking, is that we often find
+> > similarities
+> > > > between what vendor like to call their proprietary formats. Doi=
+ng
+> > the
+> > > > proper research helps not creating a mess like in Android where
+> > you
+> > > > have a lot of formats that all point to the same format. I
+> > believe
+> > > > there was the same concern when Samsung wanted to introduce the=
+ir
+> > Z-
+> > > > flip-Z NV12 tile format. In the end they simply provided
+> > sufficient
+> > > > documentation so we could document it and implement software
+> > > > converters
+> > > > for test and validation purpose.
+> > >=20
+> > > Here's the kind of information we want in the documentation.
+> > >=20
+> > > https://chromium.googlesource.com/chromium/src/media/+/master/bas=
+e/
+> > vide
+> > > o_types.h#40
+> > >=20
+> > >   // MediaTek proprietary format. MT21 is similar to NV21 except
+> > the memory
+> > >   // layout and pixel layout (swizzles). 12bpp with Y plane
+> > followed by a 2x2
+> > >   // interleaved VU plane. Each image contains two buffers -- Y
+> > plane and VU
+> > >   // plane. Two planes can be non-contiguous in memory. The
+> > starting addresses
+> > >   // of Y plane and VU plane are 4KB alignment.
+> > >   // Suppose image dimension is (width, height). For both Y plane
+> > and VU plane:
+> > >   // Row pitch =3D ((width+15)/16) * 16.
+> > >   // Plane size =3D Row pitch * (((height+31)/32)*32)
+> > >=20
+> > > Now obviously this is incomplete, as the swizzling need to be
+> > documented of course.
+> > >=20
+> > Because it's finally a compressed format from our codec hw, we cann=
+ot
+> > describe its swizzling.
+>=20
+> Can you clarify why it cannot be described ? I don't buy any argument
+> that it's impossible to convert without hardware. Intel did document
+> their compressed formats.
+>=20
+What's the Intel compressed formats? Could you provide link so we could
+reference how they provide this information.
 
-On Mon, 2016-07-11 at 06:32 +0200, Hans Verkuil wrote:
-> Hi Tiffany,
-> 
-> My apologies for the delay, but here is my review at last:
-> 
-> On 05/30/2016 09:52 AM, Tiffany Lin wrote:
-> > This patch add g/s_selection support for MT8173
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > ---
-> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   74 ++++++++++++++++++++
-> >  1 file changed, 74 insertions(+)
-> > 
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > index 6e72d73..23ef9a1 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> > @@ -630,6 +630,77 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
-> >  	return vidioc_try_fmt(f, fmt);
-> >  }
-> >  
-> > +static int vidioc_venc_g_selection(struct file *file, void *priv,
-> > +				     struct v4l2_selection *s)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> > +	struct mtk_q_data *q_data;
-> > +
-> > +	/* crop means compose for output devices */
-> > +	switch (s->target) {
-> > +	case V4L2_SEL_TGT_CROP_DEFAULT:
-> > +	case V4L2_SEL_TGT_CROP_BOUNDS:
-> > +	case V4L2_SEL_TGT_CROP:
-> > +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
-> > +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
-> > +	case V4L2_SEL_TGT_COMPOSE:
-> > +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
-> > +			mtk_v4l2_err("Invalid s->type = %d", s->type);
-> > +			return -EINVAL;
-> > +		}
-> > +		break;
-> > +	default:
-> > +		mtk_v4l2_err("Invalid s->target = %d", s->target);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	q_data = mtk_venc_get_q_data(ctx, s->type);
-> > +	if (!q_data)
-> > +		return -EINVAL;
-> > +
-> > +	s->r.top = 0;
-> > +	s->r.left = 0;
-> > +	s->r.width = q_data->visible_width;
-> > +	s->r.height = q_data->visible_height;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int vidioc_venc_s_selection(struct file *file, void *priv,
-> > +				     struct v4l2_selection *s)
-> > +{
-> > +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> > +	struct mtk_q_data *q_data;
-> > +
-> > +	switch (s->target) {
-> > +	case V4L2_SEL_TGT_CROP_DEFAULT:
-> > +	case V4L2_SEL_TGT_CROP_BOUNDS:
-> > +	case V4L2_SEL_TGT_CROP:
-> > +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
-> > +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
-> > +	case V4L2_SEL_TGT_COMPOSE:
-> > +		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
-> > +			mtk_v4l2_err("Invalid s->type = %d", s->type);
-> > +			return -EINVAL;
-> > +		}
-> > +		break;
-> > +	default:
-> > +		mtk_v4l2_err("Invalid s->target = %d", s->target);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	q_data = mtk_venc_get_q_data(ctx, s->type);
-> > +	if (!q_data)
-> > +		return -EINVAL;
-> > +
-> > +	s->r.top = 0;
-> > +	s->r.left = 0;
-> > +	q_data->visible_width = s->r.width;
-> > +	q_data->visible_height = s->r.height;
-> 
-> This makes no sense.
-> 
-> See this page:
-> 
-> https://hverkuil.home.xs4all.nl/spec/media.html#selection-api
-> 
-> For the video output direction (memory -> HW encoder) the data source is
-> the memory, the data sink is the HW encoder. For the video capture direction
-> (HW encoder -> memory) the data source is the HW encoder and the data sink
-> is the memory.
-> 
-> Usually for m2m devices the video output direction may support cropping and
-> the video capture direction may support composing.
-> 
-> It's not clear what you intend here, especially since you set left and right
-> to 0. That's not what the selection operation is supposed to do.
-> 
-I am confused about about g/s_selection.
-If application want to configure encode area and crop meta-data, it
-should set crop info to OUTPUT queue, is that right?
-if user space still use g/s_crop ioctl, in 
-v4l_g_crop and v4l_s_crop, it set target to V4L2_SEL_TGT_COMPOSE_ACTIVE
-when buf type is V4L2_TYPE_IS_OUTPUT.
+> Debugging an integration with such format that we have literally
+> decided to no make public is a pain. A lot of decoder got abandoned o=
+r
+> never used because of that.
+>=20
+> It would be nice to explain the architecture you are suggesting to ma=
+ke
+> this decoder useful. How will userspace application be able to use yo=
+ur
+> decoder. Will the image processor usable outside the display path ?
+> People might want to do transcoding, or other relatively common task
+> that does not imply a display.
+>=20
 
-It looks like when work with g/s_crop ioctl, command set to OUTPUT
-buffer will use target V4L2_SEL_TGT_COMPOSE_ACTIVE.
-When work with g/s_selection ictol, command set to OUTPUT buffer will
-use V4L2_SEL_TGT_CROP_ACTIVE.
-Is this correct behavior?
+In MT8173 platform, it has MDP driver, it could convert
+V4L2_PIX_FMT_MT21 to V4L2_PIX_FMT_NV12M or V4L2_PIX_FMT_YUV420M.
 
+MDP is stand alone driver, it is usable outside the display path.
 
-static int v4l_g_crop(const struct v4l2_ioctl_ops *ops,
-				struct file *file, void *fh, void *arg)
-{
-	struct v4l2_crop *p = arg;
-	struct v4l2_selection s = {
-		.type = p->type,
-	};
-	int ret;
+NV12M/YUV420M/MT21 -> MDP -> NV12M/YUV420M
 
-	if (ops->vidioc_g_crop)
-		return ops->vidioc_g_crop(file, fh, p);
-	/* simulate capture crop using selection api */
+NV12M/NV21M/YUV420M/YVU420M -> mt8173 Encoder -> H264/VP8
 
-	/* crop means compose for output devices */
-	if (V4L2_TYPE_IS_OUTPUT(p->type))
-		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
-	else
-		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
+H264/VP8/VP9 -> mtk8173 Decoder -> MT21
 
-	ret = ops->vidioc_g_selection(file, fh, &s);
+When encode with MT21 source, the pipeline will be:
+MT21 -> MDP driver-> NV12M/NV21M/YUV420M/YVU420M -> Encoder -> H264/VP8
 
-	/* copying results to old structure on success */
-	if (!ret)
-		p->c = s.r;
-	return ret;
-}
-
-static int v4l_s_crop(const struct v4l2_ioctl_ops *ops,
-				struct file *file, void *fh, void *arg)
-{
-	struct v4l2_crop *p = arg;
-	struct v4l2_selection s = {
-		.type = p->type,
-		.r = p->c,
-	};
-
-	if (ops->vidioc_s_crop)
-		return ops->vidioc_s_crop(file, fh, p);
-	/* simulate capture crop using selection api */
-
-	/* crop means compose for output devices */
-	if (V4L2_TYPE_IS_OUTPUT(p->type))
-		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
-	else
-		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
-
-	return ops->vidioc_s_selection(file, fh, &s);
-}
+When playback, the pipeline will be:
+H264/VP8/VP9 -> Decoder driver -> MT21 -> MDP Driver -> DRM
 
 
 best regards,
 Tiffany
 
 
-
-
-> Regards,
-> 
-> 	Hans
-> 
-> > +
-> > +	return 0;
-> > +}
-> > +
-> >  static int vidioc_venc_qbuf(struct file *file, void *priv,
-> >  			    struct v4l2_buffer *buf)
-> >  {
-> > @@ -688,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
-> >  
-> >  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
-> >  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
-> > +
-> > +	.vidioc_g_selection		= vidioc_venc_g_selection,
-> > +	.vidioc_s_selection		= vidioc_venc_s_selection,
-> >  };
-> >  
-> >  static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
-> > 
+> regards,
+> Nicolas
+>=20
+> p.s.
+> A small note to Wu-Cheng, the definition of the DRM format in your
+> Chromium branch is not correct. DRM uses format modifier, such that t=
+he
+> format is the family, in your case it's most likely NV21, and the
+> modifier is the compression or tiling algorithm in place (or both as
+> needed).
