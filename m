@@ -1,49 +1,87 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH] drm: mediatek: add Maintainers entry for Mediatek DRM
- drivers
-Date: Fri, 15 Jul 2016 11:26:53 +0200
-Message-ID: <1468574813.7213.4.camel@pengutronix.de>
-References: <1468561924-45582-1-git-send-email-ck.hu@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v4 0/8] MT2701 DRM support
+Date: Fri, 15 Jul 2016 18:07:46 +0800
+Message-ID: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468561924-45582-1-git-send-email-ck.hu@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, YT Shen <yt.shen@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@mediatek.com, emil.l.velikov@gmail.com, thierry.reding@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Am Freitag, den 15.07.2016, 13:52 +0800 schrieb CK Hu:
-> Add CK Hu and Philipp Zabel as maintainers for Mediatek DRM drivers.
-> 
-> Signed-off-by: CK Hu <ck.hu@mediatek.com>
+This is MT2701 DRM support PATCH v4, based on 4.7-rc1.
+We add DSI interrupt control, transfer function for MIPI DSI panel support.
+Most codes are the same, except some register changed.
 
-Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
+For example:
+ - DISP_OVL address offset changed, color format definition changed.
+ - DISP_RDMA fifo size changed.
+ - DISP_COLOR offset changed.
 
-> ---
->  MAINTAINERS |    8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7304d2e..2a04cdc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -3973,6 +3973,14 @@ S:	Orphan / Obsolete
->  F:	drivers/gpu/drm/i810/
->  F:	include/uapi/drm/i810_drm.h
->  
-> +DRM DRIVERS FOR MEDIATEK
-> +M:	CK Hu <ck.hu@mediatek.com>
-> +M:	Philipp Zabel <p.zabel@pengutronix.de>
-> +L:	dri-devel@lists.freedesktop.org
-> +S:	Supported
-> +F:	drivers/gpu/drm/mediatek/
-> +F:	Documentation/devicetree/bindings/display/mediatek/
-> +
->  DRM DRIVER FOR MSM ADRENO GPU
->  M:	Rob Clark <robdclark@gmail.com>
->  L:	linux-arm-msm@vger.kernel.org
+We add a new component DDP_COMPONENT_BLS, and the settings are updated.
+And we have shadow register support in MT2701.
 
-regards
-Philipp
+Changes since v3:
+- Add DSI support for MIPI DSI panels
+- Update BLS binding to PWM nodes
+- Remove ufoe device nodes
+- Remove redundant parentheses
+- Remove global variable initialization
+
+Changes since v2:
+- Rename mtk_ddp_mux_sel to mtk_ddp_sout_sel
+- Update mt2701_mtk_ddp_ext components
+- Changed to prefix naming
+- Reorder the patch series
+- Use of_device_get_match_data() to get driver private data
+- Use iopoll macros to implement mtk_disp_mutex_acquire()
+- Removed empty device tree nodes
+
+Changes since v1:
+- Removed BLS bindings and codes, which belong to pwm driver
+- Moved mtk_disp_mutex_acquire() just before mtk_crtc_ddp_config()
+- Split patch into smaller parts
+- Added const keyword to constant structure
+- Removed codes for special memory align
+
+The PATCH depends on the following patch:
+https://patchwork.kernel.org/patch/8832441/ ("dt-bindings: ARM: Mediatek: Document bindings for MT2701"),
+https://patchwork.kernel.org/patch/9140487/ ("dt-bindings: pwm: Add MediaTek display PWM bindings"),
+https://patchwork.kernel.org/patch/9137919/ ("dt-bindings: mediatek: add descriptions for mediatek mt2701 iommu and smi"),
+https://patchwork.kernel.org/patch/9137923/ ("iommu/mediatek: move the common struct into header file"),
+https://patchwork.kernel.org/patch/9137921/ ("memory/mediatek: add support for mt2701"),
+https://patchwork.kernel.org/patch/9137927/ ("iommu/mediatek: add support for mtk iommu generation one HW"),
+https://patchwork.kernel.org/patch/9137931/ ("ARM: dts: mt2701: add iommu/smi dtsi node for mt2701"),
+
+Thanks,
+yt.shen
+
+YT Shen (5):
+  drm/mediatek: rename macros, add chip prefix
+  drm/mediatek: add *driver_data for different hardware settings
+  drm/mediatek: add shadow register support
+  drm/mediatek: add support for Mediatek SoC MT2701
+  arm: dts: mt2701: Add display subsystem related nodes for MT2701
+
+shaoming chen (3):
+  drm/mediatek: add dsi interrupt control
+  drm/mediatek: add dsi transfer function
+  drm/mediatek: add mipi panel support
+
+ arch/arm/boot/dts/mt2701.dtsi               |  100 +++++
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |   32 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   17 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   75 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |  134 ++++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h      |    2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   34 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   14 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   56 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |    9 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c          |  619 ++++++++++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c      |   82 ++--
+ 12 files changed, 1009 insertions(+), 165 deletions(-)
+
+-- 
+1.7.9.5
