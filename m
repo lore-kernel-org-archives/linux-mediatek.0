@@ -1,94 +1,26 @@
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: [PATCH 2/3] mmc: mmc: do not use CMD13 to get status after speed
- mode switch
-Date: Fri, 15 Jul 2016 15:10:57 -0700
-Message-ID: <CAOCOHw67NAinC6dEX0KsDn02kuXyNwznm3-bhptSVvQH0V1dqQ@mail.gmail.com>
-References: <1463647662-27426-1-git-send-email-chaotian.jing@mediatek.com> <1463647662-27426-3-git-send-email-chaotian.jing@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH V2 1/3] dt-bindings: pwm: Add MediaTek display PWM
+ bindings
+Date: Sat, 16 Jul 2016 08:44:04 -0500
+Message-ID: <20160716134404.GA2143@rob-hp-laptop>
+References: <1468225089-28576-1-git-send-email-weiqing.kong@mediatek.com>
+ <1468225089-28576-2-git-send-email-weiqing.kong@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1463647662-27426-3-git-send-email-chaotian.jing@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc <linux-mmc@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Georgi Djakov <georgi.djakov@linaro.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1468225089-28576-2-git-send-email-weiqing.kong@mediatek.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Weiqing Kong <weiqing.kong@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@arm.linux.org.uk>, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, erin.lo@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, yh.huang@mediatek.com, yt.shen@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, May 19, 2016 at 1:47 AM, Chaotian Jing
-<chaotian.jing@mediatek.com> wrote:
-> Per JEDEC spec, it is not recommended to use CMD13 to get card status
-> after speed mode switch. below are two reason about this:
-> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
-> Therefore it is not recommended to use CMD13 to check busy completion
-> of the timing change indication.
-> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
-> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+On Mon, Jul 11, 2016 at 04:18:07PM +0800, Weiqing Kong wrote:
+> Add MT2701 compatible string.
+> 
+> Signed-off-by: Weiqing Kong <weiqing.kong@mediatek.com>
 > ---
->  drivers/mmc/core/mmc.c | 112 ++++++++++++++++++++-----------------------------
->  1 file changed, 45 insertions(+), 67 deletions(-)
->
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-[..]
-> @@ -1274,20 +1254,18 @@ static int mmc_select_hs200(struct mmc_card *card)
->                 err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
->                                    EXT_CSD_HS_TIMING, val,
->                                    card->ext_csd.generic_cmd6_time,
-> -                                  true, send_status, true);
-> +                                  true, false, true);
->                 if (err)
->                         goto err;
->                 old_timing = host->ios.timing;
->                 mmc_set_timing(host, MMC_TIMING_MMC_HS200);
-> -               if (!send_status) {
-> -                       err = mmc_switch_status(card);
-> -                       /*
-> -                        * mmc_select_timing() assumes timing has not changed if
-> -                        * it is a switch error.
-> -                        */
-> -                       if (err == -EBADMSG)
-> -                               mmc_set_timing(host, old_timing);
-> -               }
-> +               err = mmc_switch_status(card);
-> +               /*
-> +                * mmc_select_timing() assumes timing has not changed if
-> +                * it is a switch error.
-> +                */
-> +               if (err == -EBADMSG)
-> +                       mmc_set_timing(host, old_timing);
+>  Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Sorry for not spotting this earlier, but with the move of the call of
-mmc_switch_status() to after mmc_set_timing() we get following error
-with sdhci-msm:
-
-mmc0: mmc_select_hs200 failed, error -110
-mmc0: error -110 whilst initialising MMC card
-mmc0: Reset 0x1 never completed.
-sdhci: =========== REGISTER DUMP (mmc0)===========
-sdhci: Sys addr: 0x00000000 | Version: 0x00002e02
-sdhci: Blk size: 0x00004000 | Blk cnt: 0x00000000
-sdhci: Argument: 0x00000000 | Trn mode: 0x00000000
-sdhci: Present: 0x01f80000 | Host ctl: 0x00000000
-sdhci: Power: 0x00000000 | Blk gap: 0x00000000
-sdhci: Wake-up: 0x00000000 | Clock: 0x00000003
-sdhci: Timeout: 0x00000000 | Int stat: 0x00000000
-sdhci: Int enab: 0x00000000 | Sig enab: 0x00000000
-sdhci: AC12 err: 0x00000000 | Slot int: 0x00000000
-sdhci: Caps: 0x322dc8b2 | Caps_1: 0x00008007
-sdhci: Cmd: 0x00000000 | Max curr: 0x00000000
-sdhci: Host ctl2: 0x00000000
-sdhci: ADMA Err: 0x00000000 | ADMA Ptr: 0x0000000000000000
-sdhci: ===========================================
-
-But I if I understand the commit correctly this is the intention of
-the patch (not the error, but the move).
-
-Regards,
-Bjorn
-
->         }
->  err:
->         if (err)
-> --
-> 1.8.1.1.dirty
->
+Acked-by: Rob Herring <robh@kernel.org>
