@@ -1,127 +1,286 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH 2/3] mmc: mmc: do not use CMD13 to get status after speed
- mode switch
-Date: Tue, 19 Jul 2016 11:31:35 +0200
-Message-ID: <CAPDyKFo0438H8odWks6HeD6E64+oyXYMHESv=pxqQyJe_9oaWA@mail.gmail.com>
-References: <1463647662-27426-1-git-send-email-chaotian.jing@mediatek.com>
- <1463647662-27426-3-git-send-email-chaotian.jing@mediatek.com>
- <CAOCOHw67NAinC6dEX0KsDn02kuXyNwznm3-bhptSVvQH0V1dqQ@mail.gmail.com>
- <CAPDyKFroGBShATJcQ=b2H=k85F+z9=hixpp3Go-j79ZvvLGAwQ@mail.gmail.com> <578CDBD8.2050806@linaro.org>
+From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 5/8] drm/mediatek: add dsi interrupt control
+Date: Tue, 19 Jul 2016 19:08:38 +0800
+Message-ID: <1468926518.24098.33.camel@mtksdaap41>
+References: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
+	 <1468577274-6178-6-git-send-email-yt.shen@mediatek.com>
+	 <1468906767.30644.66.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <578CDBD8.2050806@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Georgi Djakov <georgi.djakov@linaro.org>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc <linux-mmc@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1468906767.30644.66.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, shaoming chen <shaoming.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 18 July 2016 at 15:38, Georgi Djakov <georgi.djakov@linaro.org> wrote:
-> On 07/18/2016 03:50 PM, Ulf Hansson wrote:
->> On 16 July 2016 at 00:10, Bjorn Andersson <bjorn.andersson@linaro.org> wrote:
->>> On Thu, May 19, 2016 at 1:47 AM, Chaotian Jing
->>> <chaotian.jing@mediatek.com> wrote:
->>>> Per JEDEC spec, it is not recommended to use CMD13 to get card status
->>>> after speed mode switch. below are two reason about this:
->>>> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
->>>> Therefore it is not recommended to use CMD13 to check busy completion
->>>> of the timing change indication.
->>>> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
->>>> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
->>>>
->>>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
->>>> ---
->>>>  drivers/mmc/core/mmc.c | 112 ++++++++++++++++++++-----------------------------
->>>>  1 file changed, 45 insertions(+), 67 deletions(-)
->>>>
->>>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
->>> [..]
->>>> @@ -1274,20 +1254,18 @@ static int mmc_select_hs200(struct mmc_card *card)
->>>>                 err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
->>>>                                    EXT_CSD_HS_TIMING, val,
->>>>                                    card->ext_csd.generic_cmd6_time,
->>>> -                                  true, send_status, true);
->>>> +                                  true, false, true);
->>>>                 if (err)
->>>>                         goto err;
->>>>                 old_timing = host->ios.timing;
->>>>                 mmc_set_timing(host, MMC_TIMING_MMC_HS200);
->>>> -               if (!send_status) {
->>>> -                       err = mmc_switch_status(card);
->>>> -                       /*
->>>> -                        * mmc_select_timing() assumes timing has not changed if
->>>> -                        * it is a switch error.
->>>> -                        */
->>>> -                       if (err == -EBADMSG)
->>>> -                               mmc_set_timing(host, old_timing);
->>>> -               }
->>>> +               err = mmc_switch_status(card);
->>>> +               /*
->>>> +                * mmc_select_timing() assumes timing has not changed if
->>>> +                * it is a switch error.
->>>> +                */
->>>> +               if (err == -EBADMSG)
->>>> +                       mmc_set_timing(host, old_timing);
->>>
->>> Sorry for not spotting this earlier, but with the move of the call of
->>> mmc_switch_status() to after mmc_set_timing() we get following error
->>> with sdhci-msm:
->>
->> Thanks for reporting!
->>
->>>
->>> mmc0: mmc_select_hs200 failed, error -110
->>> mmc0: error -110 whilst initialising MMC card
->>> mmc0: Reset 0x1 never completed.
->>> sdhci: =========== REGISTER DUMP (mmc0)===========
->>> sdhci: Sys addr: 0x00000000 | Version: 0x00002e02
->>> sdhci: Blk size: 0x00004000 | Blk cnt: 0x00000000
->>> sdhci: Argument: 0x00000000 | Trn mode: 0x00000000
->>> sdhci: Present: 0x01f80000 | Host ctl: 0x00000000
->>> sdhci: Power: 0x00000000 | Blk gap: 0x00000000
->>> sdhci: Wake-up: 0x00000000 | Clock: 0x00000003
->>> sdhci: Timeout: 0x00000000 | Int stat: 0x00000000
->>> sdhci: Int enab: 0x00000000 | Sig enab: 0x00000000
->>> sdhci: AC12 err: 0x00000000 | Slot int: 0x00000000
->>> sdhci: Caps: 0x322dc8b2 | Caps_1: 0x00008007
->>> sdhci: Cmd: 0x00000000 | Max curr: 0x00000000
->>> sdhci: Host ctl2: 0x00000000
->>> sdhci: ADMA Err: 0x00000000 | ADMA Ptr: 0x0000000000000000
->>> sdhci: ===========================================
->>>
->>> But I if I understand the commit correctly this is the intention of
->>> the patch (not the error, but the move).
->>
->> I tried dropping this change from my next branch, but there are some
->> more changes on top that prevents a "clean" drop. It's certainly
->> doable, but perhaps we can try to narrow down the problem to see if
->> this could/should be fixed in the sdhci msm driver instead!?
->
-> Yes, i am working on it. Seems that if we just ignore the -ETIMEDOUT
-> returned by mmc_switch_status() everything works as before. Currently
-> i am expecting more information about this controller specifics, in
-> order to understand if this could be fixed with a change in the driver
-> only.
+Hi CK,
 
-Thanks for looking into this!
+On Tue, 2016-07-19 at 13:39 +0800, CK Hu wrote:
+> Hi, YT:
+> 
+> Some comments inline.
+> 
+> On Fri, 2016-07-15 at 18:07 +0800, YT Shen wrote:
+> > From: shaoming chen <shaoming.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > add dsi interrupt control
+> > 
+> > Signed-off-by: shaoming chen <shaoming.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dsi.c |  130 ++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 130 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > index 2d808e5..de5ad7f 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > @@ -18,6 +18,7 @@
+> >  #include <drm/drm_panel.h>
+> >  #include <linux/clk.h>
+> >  #include <linux/component.h>
+> > +#include <linux/irq.h>
+> >  #include <linux/of.h>
+> >  #include <linux/of_platform.h>
+> >  #include <linux/of_graph.h>
+> > @@ -32,6 +33,13 @@
+> >  
+> >  #define DSI_START		0x00
+> >  
+> > +#define DSI_INTEN		0x08
+> > +
+> > +#define DSI_INTSTA		0x0c
+> > +#define LPRX_RD_RDY_INT_FLAG	BIT(0)
+> > +#define CMD_DONE_INT_FLAG	BIT(1)
+> > +#define DSI_BUSY		BIT(31)
+> 
+> Why need LPRX_RD_RDY_INT_FLAG, CMD_DONE_INT_FLAG, and DSI_BUSY? Maybe
+> these three should be moved to other patch.
+OK.
 
->
->>
->> I also noticed that below submitted change, which *isn't* applied for
->> next, might be related.
->> https://patchwork.kernel.org/patch/9197881/
->>
->
-> It is not related to this issue, but it is good to have when this is
-> resolved, otherwise we will see the dumpregs output (pr_err now),
-> when controller is initialized without a card in the SD slot.
+> 
+> > +
+> >  #define DSI_CON_CTRL		0x10
+> >  #define DSI_RESET			BIT(0)
+> >  #define DSI_EN				BIT(1)
+> > @@ -74,6 +82,9 @@
+> >  
+> >  #define DSI_HSTX_CKL_WC		0x64
+> >  
+> > +#define DSI_RACK		0x84
+> > +#define RACK			BIT(0)
+> > +
+> >  #define DSI_PHY_LCCON		0x104
+> >  #define LC_HS_TX_EN			BIT(0)
+> >  #define LC_ULPM_EN			BIT(1)
+> > @@ -134,6 +145,18 @@ struct mtk_dsi {
+> >  	struct videomode vm;
+> >  	int refcount;
+> >  	bool enabled;
+> > +	int irq_num, irq_data;
+> > +};
+> > +
+> > +enum {
+> > +	DSI_INT_SLEEPOUT_DONE_FLAG	= BIT(6),
+> > +	DSI_INT_VM_CMD_DONE_FLAG	= BIT(5),
+> > +	DSI_INT_EXT_TE_RDY_FLAG		= BIT(4),
+> > +	DSI_INT_VM_DONE_FLAG		= BIT(3),
+> > +	DSI_INT_TE_RDY_FLAG		= BIT(2),
+> > +	DSI_INT_CMD_DONE_FLAG		= BIT(1),
+> > +	DSI_INT_LPRX_RD_RDY_FLAG	= BIT(0),
+> > +	DSI_INT_ALL_BITS		= (0x7f)
+> >  };
+> 
+> I think you should use '#define' instead of 'enum'. The code would be
+> like below, and these definition should be moved to after DSI_INTEN or
+> DSI_INTSTA.
+> 
+> #define DSI_INT_LPRX_RD_RDY_FLAG	BIT(0)
+> #define DSI_INT_CMD_DONE_FLAG		BIT(1)
+> #define DSI_INT_TE_RDY_FLAG		BIT(2)
+> #define DSI_INT_VM_DONE_FLAG		BIT(3)
+> #define DSI_INT_EXT_TE_RDY_FLAG		BIT(4)
+> #define DSI_INT_VM_CMD_DONE_FLAG	BIT(5)
+> #define DSI_INT_SLEEPOUT_DONE_FLAG	BIT(6)
+> #define DSI_INT_ALL_BITS		(DSI_INT_LPRX_RD_RDY_FLAG | \
+> 					DSI_INT_CMD_DONE_FLAG | \
+> 					DSI_INT_TE_RDY_FLAG | \
+> 					DSI_INT_VM_DONE_FLAG | \
+> 					DSI_INT_EXT_TE_RDY_FLAG | \
+> 					DSI_INT_VM_CMD_DONE_FLAG | \
+> 					DSI_INT_SLEEPOUT_DONE_FLAG)
+> 
+I will update this part in the next version.
 
-Okay, thanks for clarifying. Although, I need an ack from Adrian
-before I apply it.
+> >  
+> >  static inline struct mtk_dsi *encoder_to_dsi(struct drm_encoder *e)
+> > @@ -440,6 +463,94 @@ static void mtk_dsi_start(struct mtk_dsi *dsi)
+> >  	writel(1, dsi->regs + DSI_START);
+> >  }
+> >  
+> > +static void mtk_dsi_set_interrupt_enable(struct mtk_dsi *dsi)
+> > +{
+> > +	u32 inten = DSI_INT_ALL_BITS;
+> > +
+> > +	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO)
+> > +		inten &= ~(DSI_INT_TE_RDY_FLAG | DSI_INT_EXT_TE_RDY_FLAG);
+> > +
+> > +	writel(inten, dsi->regs + DSI_INTEN);
+> > +}
+> > +
+> > +static void mtk_dsi_irq_wakeup(struct mtk_dsi *dsi, u32 irq_bit)
+> > +{
+> > +	dsi->irq_data |= irq_bit;
+> > +}
+> > +
+> > +static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
+> > +{
+> > +	struct mtk_dsi *dsi = dev_id;
+> > +
+> > +	u32 status, tmp;
+> > +
+> > +	status = readl(dsi->regs + DSI_INTSTA);
+> > +
+> > +	if (status & DSI_INT_LPRX_RD_RDY_FLAG) {
+> > +		/* write clear RD_RDY interrupt */
+> > +		/* write clear RD_RDY interrupt must be before DSI_RACK */
+> > +		/* because CMD_DONE will raise after DSI_RACK, */
+> > +		/* so write clear RD_RDY after that will clear CMD_DONE too */
+> > +		do {
+> > +			/* send read ACK */
+> > +			mtk_dsi_mask(dsi, DSI_RACK, RACK, RACK);
+> > +			tmp = readl(dsi->regs + DSI_INTSTA);
+> > +		} while (tmp & DSI_BUSY);
+> > +
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_LPRX_RD_RDY_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_LPRX_RD_RDY_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_CMD_DONE_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_CMD_DONE_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_CMD_DONE_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_TE_RDY_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_TE_RDY_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_TE_RDY_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_VM_DONE_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_VM_DONE_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_VM_DONE_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_EXT_TE_RDY_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_EXT_TE_RDY_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_EXT_TE_RDY_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_VM_CMD_DONE_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_VM_CMD_DONE_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_VM_CMD_DONE_FLAG);
+> > +	}
+> > +
+> > +	if (status & DSI_INT_SLEEPOUT_DONE_FLAG) {
+> > +		mtk_dsi_mask(dsi, DSI_INTSTA, DSI_INT_SLEEPOUT_DONE_FLAG, 0);
+> > +		mtk_dsi_irq_wakeup(dsi, DSI_INT_SLEEPOUT_DONE_FLAG);
+> > +	}
+> 
+> All these 'if' statement do the same thing and I think these could be
+> merge as:
+> 
+> status = readl(dsi->regs + DSI_INTSTA) & DSI_INT_ALL_BITS);
+> if (status) {
+> 	mtk_dsi_mask(dsi, DSI_INTSTA, status, 0);
+> 	mtk_dsi_irq_wakeup(dsi, status);
+> }
+Will do.
 
->
-> Thanks,
-> Georgi
+> 
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> > +
+> > +static s32 mtk_dsi_wait_for_irq_timeout(struct mtk_dsi *dsi, u32 irq_bit,
+> > +					u32 timeout_ms)
+> > +{
+> > +	while (timeout_ms--) {
+> > +		if (dsi->irq_data & irq_bit) {
+> > +			dsi->irq_data &= ~irq_bit;
+> > +			return 0;
+> > +		}
+> > +
+> > +		usleep_range(1000, 1100);
+> > +	}
+> 
+> I think it's better to use wait_event() or something else. Polling with
+> sleep could not react immediately.
+Will check.
 
-Kind regards
-Uffe
+> 
+> > +
+> > +	dsi->irq_data = 0;
+> 
+> Why clear all bit after wait one bit timeout?
+Will check.
+
+> 
+> > +
+> > +	return -1;
+> > +}
+> > +
+> >  static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+> >  {
+> >  	if (WARN_ON(dsi->refcount == 0))
+> > @@ -488,6 +599,7 @@ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+> >  
+> >  	dsi_ps_control_vact(dsi);
+> >  	dsi_config_vdo_timing(dsi);
+> > +	mtk_dsi_set_interrupt_enable(dsi);
+> >  
+> >  	dsi_set_mode(dsi);
+> >  	dsi_clk_hs_mode(dsi, 1);
+> > @@ -883,6 +995,24 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+> >  		return ret;
+> >  	}
+> >  
+> > +	dsi->irq_num = platform_get_irq(pdev, 0);
+> 
+> You use irq_num only in this function, why keep it in dsi structure?
+OK, will remove it from dsi structure.
+
+Regards,
+yt.shen
+
+> 
+> > +	if (dsi->irq_num < 0) {
+> > +		dev_err(&pdev->dev, "failed to request dsi irq resource\n");
+> > +		ret = dsi->irq_num;
+> > +		return -EPROBE_DEFER;
+> > +	}
+> > +
+> > +	irq_set_status_flags(dsi->irq_num, IRQ_TYPE_LEVEL_LOW);
+> > +	ret = devm_request_irq(&pdev->dev, dsi->irq_num, mtk_dsi_irq,
+> > +			       IRQF_TRIGGER_LOW, dev_name(&pdev->dev), dsi);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "failed to request mediatek dsi irq\n");
+> > +		return -EPROBE_DEFER;
+> > +	}
+> > +
+> > +	dsi->irq_data = 0;
+> > +	dev_info(dev, "dsi irq num is 0x%x\n", dsi->irq_num);
+> > +
+> >  	platform_set_drvdata(pdev, dsi);
+> >  
+> >  	return component_add(&pdev->dev, &mtk_dsi_component_ops);
+> 
+> Regards,
+> CK
+> 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
