@@ -1,140 +1,216 @@
-From: Georgi Djakov <georgi.djakov@linaro.org>
-Subject: Re: [PATCH 2/3] mmc: mmc: do not use CMD13 to get status after speed
- mode switch
-Date: Tue, 19 Jul 2016 19:27:31 +0300
-Message-ID: <578E54F3.3000908@linaro.org>
-References: <1463647662-27426-1-git-send-email-chaotian.jing@mediatek.com>
- <1463647662-27426-3-git-send-email-chaotian.jing@mediatek.com>
- <CAOCOHw67NAinC6dEX0KsDn02kuXyNwznm3-bhptSVvQH0V1dqQ@mail.gmail.com>
- <CAPDyKFroGBShATJcQ=b2H=k85F+z9=hixpp3Go-j79ZvvLGAwQ@mail.gmail.com>
- <578CDBD8.2050806@linaro.org>
- <CAPDyKFo0438H8odWks6HeD6E64+oyXYMHESv=pxqQyJe_9oaWA@mail.gmail.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] vcodec: mediatek: Add g/s_selection support for V4L2
+ Encoder
+Date: Wed, 20 Jul 2016 00:44:14 +0800
+Message-ID: <1468946654.30095.4.camel@mtksdaap41>
+References: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
+ <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
+ <1468477674.32454.36.camel@mtksdaap41>
+ <bb96276a-8e6c-a535-6fd3-fe4327238f65@xs4all.nl>
+ <1468844895.12740.15.camel@mtksdaap41>
+ <f2c031e2-82ca-90f4-0900-4dc961a90f58@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFo0438H8odWks6HeD6E64+oyXYMHESv=pxqQyJe_9oaWA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Bjorn Andersson <bjorn.andersson@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mmc <linux-mmc@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <f2c031e2-82ca-90f4-0900-4dc961a90f58-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 07/19/2016 12:31 PM, Ulf Hansson wrote:
-> On 18 July 2016 at 15:38, Georgi Djakov <georgi.djakov@linaro.org> wrote:
->> On 07/18/2016 03:50 PM, Ulf Hansson wrote:
->>> On 16 July 2016 at 00:10, Bjorn Andersson <bjorn.andersson@linaro.org> wrote:
->>>> On Thu, May 19, 2016 at 1:47 AM, Chaotian Jing
->>>> <chaotian.jing@mediatek.com> wrote:
->>>>> Per JEDEC spec, it is not recommended to use CMD13 to get card status
->>>>> after speed mode switch. below are two reason about this:
->>>>> 1. CMD13 cannot be guaranteed due to the asynchronous operation.
->>>>> Therefore it is not recommended to use CMD13 to check busy completion
->>>>> of the timing change indication.
->>>>> 2. After switch to HS200, CMD13 will get response of 0x800, and even the
->>>>> busy signal gets de-asserted, the response of CMD13 is aslo 0x800.
->>>>>
->>>>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
->>>>> ---
->>>>>  drivers/mmc/core/mmc.c | 112 ++++++++++++++++++++-----------------------------
->>>>>  1 file changed, 45 insertions(+), 67 deletions(-)
->>>>>
->>>>> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
->>>> [..]
->>>>> @@ -1274,20 +1254,18 @@ static int mmc_select_hs200(struct mmc_card *card)
->>>>>                 err = __mmc_switch(card, EXT_CSD_CMD_SET_NORMAL,
->>>>>                                    EXT_CSD_HS_TIMING, val,
->>>>>                                    card->ext_csd.generic_cmd6_time,
->>>>> -                                  true, send_status, true);
->>>>> +                                  true, false, true);
->>>>>                 if (err)
->>>>>                         goto err;
->>>>>                 old_timing = host->ios.timing;
->>>>>                 mmc_set_timing(host, MMC_TIMING_MMC_HS200);
->>>>> -               if (!send_status) {
->>>>> -                       err = mmc_switch_status(card);
->>>>> -                       /*
->>>>> -                        * mmc_select_timing() assumes timing has not changed if
->>>>> -                        * it is a switch error.
->>>>> -                        */
->>>>> -                       if (err == -EBADMSG)
->>>>> -                               mmc_set_timing(host, old_timing);
->>>>> -               }
->>>>> +               err = mmc_switch_status(card);
->>>>> +               /*
->>>>> +                * mmc_select_timing() assumes timing has not changed if
->>>>> +                * it is a switch error.
->>>>> +                */
->>>>> +               if (err == -EBADMSG)
->>>>> +                       mmc_set_timing(host, old_timing);
->>>>
->>>> Sorry for not spotting this earlier, but with the move of the call of
->>>> mmc_switch_status() to after mmc_set_timing() we get following error
->>>> with sdhci-msm:
->>>
->>> Thanks for reporting!
->>>
->>>>
->>>> mmc0: mmc_select_hs200 failed, error -110
->>>> mmc0: error -110 whilst initialising MMC card
->>>> mmc0: Reset 0x1 never completed.
->>>> sdhci: =========== REGISTER DUMP (mmc0)===========
->>>> sdhci: Sys addr: 0x00000000 | Version: 0x00002e02
->>>> sdhci: Blk size: 0x00004000 | Blk cnt: 0x00000000
->>>> sdhci: Argument: 0x00000000 | Trn mode: 0x00000000
->>>> sdhci: Present: 0x01f80000 | Host ctl: 0x00000000
->>>> sdhci: Power: 0x00000000 | Blk gap: 0x00000000
->>>> sdhci: Wake-up: 0x00000000 | Clock: 0x00000003
->>>> sdhci: Timeout: 0x00000000 | Int stat: 0x00000000
->>>> sdhci: Int enab: 0x00000000 | Sig enab: 0x00000000
->>>> sdhci: AC12 err: 0x00000000 | Slot int: 0x00000000
->>>> sdhci: Caps: 0x322dc8b2 | Caps_1: 0x00008007
->>>> sdhci: Cmd: 0x00000000 | Max curr: 0x00000000
->>>> sdhci: Host ctl2: 0x00000000
->>>> sdhci: ADMA Err: 0x00000000 | ADMA Ptr: 0x0000000000000000
->>>> sdhci: ===========================================
->>>>
->>>> But I if I understand the commit correctly this is the intention of
->>>> the patch (not the error, but the move).
->>>
->>> I tried dropping this change from my next branch, but there are some
->>> more changes on top that prevents a "clean" drop. It's certainly
->>> doable, but perhaps we can try to narrow down the problem to see if
->>> this could/should be fixed in the sdhci msm driver instead!?
->>
->> Yes, i am working on it. Seems that if we just ignore the -ETIMEDOUT
->> returned by mmc_switch_status() everything works as before. Currently
->> i am expecting more information about this controller specifics, in
->> order to understand if this could be fixed with a change in the driver
->> only.
+Hi Hans,
+
+On Mon, 2016-07-18 at 14:44 +0200, Hans Verkuil wrote:
+> On 07/18/2016 02:28 PM, tiffany lin wrote:
+> > Understood now.
+> > 
+> > Now I am trying to figure out how to make this function right.
+> > Our encoder only support crop range from (0, 0) to (width, height), so
+> > if s->r.top and s->r.left not 0, I will return -EINVAL.
+> > 
+> > 
+> > Another thing is that in v4l2-compliance test, it has testLegacyCrop.
+> > It looks like we still need to support 
+> >  V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> >  V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> >  V4L2_SEL_TGT_COMPOSE:
+> > to pass v4l2 compliance test, Or it will fail in 
+> > fail: v4l2-test-formats.cpp(1318): !doioctl(node, VIDIOC_G_SELECTION,
+> > &sel)
+> > fail: v4l2-test-formats.cpp(1336): testLegacyCrop(node)
+> > test Cropping: FAIL
 > 
-> Thanks for looking into this!
+> Against which kernel are you testing? In the current media_tree master
+> there is a bug in drivers/media/v4l2-core/v4l2-ioctl.c, v4l_cropcap():
+> 
+> This code:
+> 
+> if (WARN_ON(!ops->vidioc_cropcap && !ops->vidioc_cropcap))
+> 
+> should be:
+> 
+> if (WARN_ON(!ops->vidioc_cropcap && !ops->vidioc_g_selection))
+> 
+> The fix is waiting for a pull from Linus.
+> 
+> Also update to the latest v4l2-compliance: I've made some changes that
+> might affect this. And I added additional checks to verify if all the
+> colorspace-related format fields are properly propagated from the
+> output format to the capture format.
 > 
 
-Here is a partial fix, as it resolves the issue for the eMMC only.
-https://patchwork.kernel.org/patch/9237679/
-More investigation ongoing.
+Sorry, I miss this part.
+After update to latest version include this fix, it can pass crop test
+without supporting COMPOSE in output queue.
+Appreciated for your help
 
-Thanks,
-Georgi
+best regards,
+Tiffany
 
->>
->>>
->>> I also noticed that below submitted change, which *isn't* applied for
->>> next, might be related.
->>> https://patchwork.kernel.org/patch/9197881/
->>>
->>
->> It is not related to this issue, but it is good to have when this is
->> resolved, otherwise we will see the dumpregs output (pr_err now),
->> when controller is initialized without a card in the SD slot.
+
+
+> Regards,
 > 
-> Okay, thanks for clarifying. Although, I need an ack from Adrian
-> before I apply it.
+> 	Hans
 > 
->>
->> Thanks,
->> Georgi
-> 
-> Kind regards
-> Uffe
-> 
+> > 
+> > I don't understand the following testing code.
+> > 
+> >         /*
+> >          * If either CROPCAP or G_CROP works, then G_SELECTION should
+> >          * work as well.
+> >          * If neither CROPCAP nor G_CROP work, then G_SELECTION
+> > shouldn't
+> >          * work either.
+> >          */
+> >         if (!doioctl(node, VIDIOC_CROPCAP, &cap)) {
+> >                 fail_on_test(doioctl(node, VIDIOC_G_SELECTION, &sel));
+> > 
+> >                 // Checks for invalid types
+> >                 if (cap.type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> >                         cap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> >                 else
+> >                         cap.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> >                 fail_on_test(doioctl(node, VIDIOC_CROPCAP, &cap) !=
+> > EINVAL);
+> >                 cap.type = 0xff;
+> >                 fail_on_test(doioctl(node, VIDIOC_CROPCAP, &cap) !=
+> > EINVAL);
+> >         } else {
+> >                 fail_on_test(!doioctl(node, VIDIOC_G_SELECTION, &sel));
+> > -> fail here
+> >         }
+> > 
+> > When test OUTPUT queue, it fail because v4l_cropcap will fail when
+> > s.target = V4L2_SEL_TGT_COMPOSE_BOUNDS.
+> > If VIDIOC_CROPCAP ioctl fail, VIDIOC_G_SELECTION should fail.
+> > But VIDIOC_G_SELECTION target on CROP not COMPOSE and it success.
+> > 
+> > 
+> > best regards,
+> > Tiffany
+> > 
+> > 
+> > 
+> >> Regards,
+> >>
+> >> 	Hans
+> >>
+> >>>
+> >>>
+> >>> static int v4l_g_crop(const struct v4l2_ioctl_ops *ops,
+> >>> 				struct file *file, void *fh, void *arg)
+> >>> {
+> >>> 	struct v4l2_crop *p = arg;
+> >>> 	struct v4l2_selection s = {
+> >>> 		.type = p->type,
+> >>> 	};
+> >>> 	int ret;
+> >>>
+> >>> 	if (ops->vidioc_g_crop)
+> >>> 		return ops->vidioc_g_crop(file, fh, p);
+> >>> 	/* simulate capture crop using selection api */
+> >>>
+> >>> 	/* crop means compose for output devices */
+> >>> 	if (V4L2_TYPE_IS_OUTPUT(p->type))
+> >>> 		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
+> >>> 	else
+> >>> 		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
+> >>>
+> >>> 	ret = ops->vidioc_g_selection(file, fh, &s);
+> >>>
+> >>> 	/* copying results to old structure on success */
+> >>> 	if (!ret)
+> >>> 		p->c = s.r;
+> >>> 	return ret;
+> >>> }
+> >>>
+> >>> static int v4l_s_crop(const struct v4l2_ioctl_ops *ops,
+> >>> 				struct file *file, void *fh, void *arg)
+> >>> {
+> >>> 	struct v4l2_crop *p = arg;
+> >>> 	struct v4l2_selection s = {
+> >>> 		.type = p->type,
+> >>> 		.r = p->c,
+> >>> 	};
+> >>>
+> >>> 	if (ops->vidioc_s_crop)
+> >>> 		return ops->vidioc_s_crop(file, fh, p);
+> >>> 	/* simulate capture crop using selection api */
+> >>>
+> >>> 	/* crop means compose for output devices */
+> >>> 	if (V4L2_TYPE_IS_OUTPUT(p->type))
+> >>> 		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
+> >>> 	else
+> >>> 		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
+> >>>
+> >>> 	return ops->vidioc_s_selection(file, fh, &s);
+> >>> }
+> >>>
+> >>>
+> >>> best regards,
+> >>> Tiffany
+> >>>
+> >>>
+> >>>
+> >>>
+> >>>> Regards,
+> >>>>
+> >>>> 	Hans
+> >>>>
+> >>>>> +
+> >>>>> +	return 0;
+> >>>>> +}
+> >>>>> +
+> >>>>>  static int vidioc_venc_qbuf(struct file *file, void *priv,
+> >>>>>  			    struct v4l2_buffer *buf)
+> >>>>>  {
+> >>>>> @@ -688,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+> >>>>>  
+> >>>>>  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+> >>>>>  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+> >>>>> +
+> >>>>> +	.vidioc_g_selection		= vidioc_venc_g_selection,
+> >>>>> +	.vidioc_s_selection		= vidioc_venc_s_selection,
+> >>>>>  };
+> >>>>>  
+> >>>>>  static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+> >>>>>
+> >>>
+> >>>
+> >>> --
+> >>> To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> >>> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> >>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >>>
+> > 
+> > 
