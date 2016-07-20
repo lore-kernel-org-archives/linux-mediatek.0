@@ -1,248 +1,395 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4 6/8] drm/mediatek: add dsi transfer function
-Date: Wed, 20 Jul 2016 13:59:06 +0800
-Message-ID: <1468994346.11841.31.camel@mtksdaap41>
-References: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
- <1468577274-6178-7-git-send-email-yt.shen@mediatek.com>
+From: zhiyong tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/3] iio: adc: mt2701: Add Mediatek auxadc driver for
+ mt2701.
+Date: Wed, 20 Jul 2016 14:02:38 +0800
+Message-ID: <1468994558.419.30.camel@mhfsdcap03>
+References: <1468219197-9572-1-git-send-email-zhiyong.tao@mediatek.com>
+	 <1468219197-9572-3-git-send-email-zhiyong.tao@mediatek.com>
+	 <82fa5ffa-52be-e1ec-83dd-dd92b3f3ef5d@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1468577274-6178-7-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, Russell King <linux@arm.linux.org.uk>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <82fa5ffa-52be-e1ec-83dd-dd92b3f3ef5d-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKU29tZSBjb21tZW50cyBpbmxpbmUuCgpPbiBGcmksIDIwMTYtMDctMTUgYXQgMTg6
-MDcgKzA4MDAsIFlUIFNoZW4gd3JvdGU6Cj4gRnJvbTogc2hhb21pbmcgY2hlbiA8c2hhb21pbmcu
-Y2hlbkBtZWRpYXRlay5jb20+Cj4gCj4gYWRkIGRzaSByZWFkL3dyaXRlIGNvbW1hbmRzIGZvciB0
-cmFuc2ZlciBmdW5jdGlvbgo+IAo+IFNpZ25lZC1vZmYtYnk6IHNoYW9taW5nIGNoZW4gPHNoYW9t
-aW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RzaS5jIHwgIDMyMiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAg
-MSBmaWxlIGNoYW5nZWQsIDMyMiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RzaS5jCj4gaW5kZXggZGU1YWQ3Zi4uMWY5OTg5NCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kc2kuYwo+IEBAIC0yNCw2ICsyNCw3IEBACj4gICNpbmNsdWRlIDxsaW51eC9vZl9n
-cmFwaC5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-cGxhdGZvcm1fZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDx2aWRlby9taXBpX2Rpc3BsYXkuaD4KPiAg
-I2luY2x1ZGUgPHZpZGVvL3ZpZGVvbW9kZS5oPgo+ICAKPiAgI2luY2x1ZGUgIm10a19kcm1fZGRw
-X2NvbXAuaCIKPiBAQCAtODAsOCArODEsMTYgQEAKPiAgI2RlZmluZSBEU0lfSEJQX1dDCQkweDU0
-Cj4gICNkZWZpbmUgRFNJX0hGUF9XQwkJMHg1OAo+ICAKPiArI2RlZmluZSBEU0lfQ01EUV9TSVpF
-CQkweDYwCj4gKyNkZWZpbmUgQ01EUV9TSVpFCQkweDNmCj4gKwo+ICAjZGVmaW5lIERTSV9IU1RY
-X0NLTF9XQwkJMHg2NAo+ICAKPiArI2RlZmluZSBEU0lfUlhfREFUQTAJCTB4NzQKPiArI2RlZmlu
-ZSBEU0lfUlhfREFUQTEJCTB4NzgKPiArI2RlZmluZSBEU0lfUlhfREFUQTIJCTB4N2MKPiArI2Rl
-ZmluZSBEU0lfUlhfREFUQTMJCTB4ODAKPiArCj4gICNkZWZpbmUgRFNJX1JBQ0sJCTB4ODQKPiAg
-I2RlZmluZSBSQUNLCQkJQklUKDApCj4gIAo+IEBAIC0xMTcsOCArMTI2LDI1IEBACj4gICNkZWZp
-bmUgQ0xLX0hTX1BPU1QJCQkoMHhmZiA8PCA4KQo+ICAjZGVmaW5lIENMS19IU19FWElUCQkJKDB4
-ZmYgPDwgMTYpCj4gIAo+ICsjZGVmaW5lIERTSV9DTURRMAkJMHgxODAKPiArCj4gICNkZWZpbmUg
-TlNfVE9fQ1lDTEUobiwgYykgICAgKChuKSAvIChjKSArICgoKG4pICUgKGMpKSA/IDEgOiAwKSkK
-PiAgCj4gKyNkZWZpbmUgTVRLX0RTSV9IT1NUX0lTX1JFQUQodHlwZSkgXAo+ICsJKCh0eXBlID09
-IE1JUElfRFNJX0dFTkVSSUNfUkVBRF9SRVFVRVNUXzBfUEFSQU0pIHx8IFwKPiArCSh0eXBlID09
-IE1JUElfRFNJX0dFTkVSSUNfUkVBRF9SRVFVRVNUXzFfUEFSQU0pIHx8IFwKPiArCSh0eXBlID09
-IE1JUElfRFNJX0dFTkVSSUNfUkVBRF9SRVFVRVNUXzJfUEFSQU0pIHx8IFwKPiArCSh0eXBlID09
-IE1JUElfRFNJX0RDU19SRUFEKSkKPiArCj4gKyNkZWZpbmUgTVRLX0RTSV9IT1NUX0lTX1dSSVRF
-KHR5cGUpIFwKPiArCSgodHlwZSA9PSBNSVBJX0RTSV9HRU5FUklDX1NIT1JUX1dSSVRFXzBfUEFS
-QU0pIHx8IFwKPiArCSh0eXBlID09IE1JUElfRFNJX0dFTkVSSUNfU0hPUlRfV1JJVEVfMV9QQVJB
-TSkgfHwgXAo+ICsJKHR5cGUgPT0gTUlQSV9EU0lfR0VORVJJQ19TSE9SVF9XUklURV8yX1BBUkFN
-KSB8fCBcCj4gKwkodHlwZSA9PSBNSVBJX0RTSV9EQ1NfU0hPUlRfV1JJVEUpIHx8IFwKPiArCSh0
-eXBlID09IE1JUElfRFNJX0RDU19TSE9SVF9XUklURV9QQVJBTSkgfHwgXAo+ICsJKHR5cGUgPT0g
-TUlQSV9EU0lfR0VORVJJQ19MT05HX1dSSVRFKSB8fCBcCj4gKwkodHlwZSA9PSBNSVBJX0RTSV9E
-Q1NfTE9OR19XUklURSkpCj4gKwo+ICBzdHJ1Y3QgcGh5Owo+ICAKPiAgc3RydWN0IG10a19kc2kg
-ewo+IEBAIC0xNDgsNiArMTc0LDM4IEBAIHN0cnVjdCBtdGtfZHNpIHsKPiAgCWludCBpcnFfbnVt
-LCBpcnFfZGF0YTsKPiAgfTsKPiAgCj4gK3N0cnVjdCBkc2lfY21kX3QwIHsKPiArCXU4IGNvbmZp
-ZzsKPiArCXU4IHR5cGU7Cj4gKwl1OCBkYXRhMDsKPiArCXU4IGRhdGExOwo+ICt9Owo+ICsKPiAr
-c3RydWN0IGRzaV9jbWRfdDIgewo+ICsJdTggY29uZmlnOwo+ICsJdTggdHlwZTsKPiArCXUxNiB3
-YzE2Owo+ICsJdTggKnBkYXRhOwo+ICt9Owo+ICsKPiArc3RydWN0IGRzaV9yeF9kYXRhIHsKPiAr
-CXU4IGJ5dGUwOwo+ICsJdTggYnl0ZTE7Cj4gKwl1OCBieXRlMjsKPiArCXU4IGJ5dGUzOwo+ICt9
-Owo+ICsKPiArc3RydWN0IGRzaV90eF9jbWRxIHsKPiArCXU4IGJ5dGUwOwo+ICsJdTggYnl0ZTE7
-Cj4gKwl1OCBieXRlMjsKPiArCXU4IGJ5dGUzOwo+ICt9Owo+ICsKPiArc3RydWN0IGRzaV90eF9j
-bWRxX3JlZ3Mgewo+ICsJc3RydWN0IGRzaV90eF9jbWRxIGRhdGFbMTI4XTsKPiArfTsKPiArCj4g
-IGVudW0gewo+ICAJRFNJX0lOVF9TTEVFUE9VVF9ET05FX0ZMQUcJPSBCSVQoNiksCj4gIAlEU0lf
-SU5UX1ZNX0NNRF9ET05FX0ZMQUcJPSBCSVQoNSksCj4gQEAgLTg1OCw5ICs5MTYsMjczIEBAIHN0
-YXRpYyBpbnQgbXRrX2RzaV9ob3N0X2RldGFjaChzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdCwK
-PiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX3NldF9jbWRxKHZv
-aWQgX19pb21lbSAqcmVnLCB1MzIgbWFzaywgdTMyIGRhdGEpCj4gK3sKPiArCXUzMiB0ZW1wID0g
-cmVhZGwocmVnKTsKPiArCj4gKwl3cml0ZWwoKHRlbXAgJiB+bWFzaykgfCAoZGF0YSAmIG1hc2sp
-LCByZWcpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX3dhaXRfZm9yX2lkbGUoc3Ry
-dWN0IG10a19kc2kgKmRzaSkKPiArewo+ICsJdTMyIHRpbWVvdXRfbXMgPSA1MDAwMDA7IC8qIHRv
-dGFsIDFzIH4gMnMgdGltZW91dCAqLwo+ICsKPiArCXdoaWxlICh0aW1lb3V0X21zLS0pIHsKPiAr
-CQlpZiAoIShyZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIERTSV9CVVNZKSkKPiArCQkJ
-YnJlYWs7Cj4gKwo+ICsJCXVzbGVlcF9yYW5nZSgyLCA0KTsKPiArCX0KPiArCj4gKwlpZiAodGlt
-ZW91dF9tcyA9PSAwKSB7Cj4gKwkJZGV2X2luZm8oZHNpLT5kZXYsICJwb2xsaW5nIGRzaSB3YWl0
-IG5vdCBidXN5IHRpbWVvdXQhXG4iKTsKPiArCj4gKwkJbXRrX2RzaV9lbmFibGUoZHNpKTsKPiAr
-CQltdGtfZHNpX3Jlc2V0X2VuZ2luZShkc2kpOwo+ICsJfQo+ICt9Cj4gKwo+ICtzdGF0aWMgc3Np
-emVfdCBtdGtfZHNpX2hvc3RfcmVhZF9jbWQoc3RydWN0IG10a19kc2kgKmRzaSwKPiArCQkJCSAg
-ICAgY29uc3Qgc3RydWN0IG1pcGlfZHNpX21zZyAqbXNnKQo+ICt7Cj4gKwl1OCBtYXhfdHJ5X2Nv
-dW50ID0gNTsKPiArCXUzMiByZWN2X2RhdGFfY250LCB0bXBfdmFsOwo+ICsJdTMyIHJlY3ZfZGF0
-YTAsIHJlY3ZfZGF0YTEsIHJlY3ZfZGF0YTIsIHJlY3ZfZGF0YTM7Cj4gKwlzdHJ1Y3QgZHNpX3J4
-X2RhdGEgcmVhZF9kYXRhMCwgcmVhZF9kYXRhMSwgcmVhZF9kYXRhMiwgcmVhZF9kYXRhMzsKPiAr
-CXN0cnVjdCBkc2lfY21kX3QwIHQwOwo+ICsJczMyIHJldDsKPiArCj4gKwl1OCAqYnVmZmVyID0g
-bXNnLT5yeF9idWY7Cj4gKwl1OCBidWZmZXJfc2l6ZSA9IG1zZy0+cnhfbGVuOwo+ICsJdTggcGFj
-a2V0X3R5cGU7Cj4gKwo+ICsJaWYgKHJlYWRsKGRzaS0+cmVncyArIERTSV9NT0RFX0NUUkwpICYg
-MHgwMykgewo+ICsJCWRldl9pbmZvKGRzaS0+ZGV2LCAiZHNpIGVuZ2luZSBpcyBub3QgY29tbWFu
-ZCBtb2RlXG4iKTsKPiArCQlyZXR1cm4gLTE7Cj4gKwl9Cj4gKwo+ICsJaWYgKCFidWZmZXIpIHsK
-PiArCQlkZXZfaW5mbyhkc2ktPmRldiwgImRzaSByZWNlaXZlIGJ1ZmZlciBzaXplIG1heSBiZSBO
-VUxMXG4iKTsKPiArCQlyZXR1cm4gLTE7Cj4gKwl9Cj4gKwo+ICsJZG8gewo+ICsJCWlmIChtYXhf
-dHJ5X2NvdW50ID09IDApIHsKPiArCQkJZGV2X2luZm8oZHNpLT5kZXYsICJkc2kgZW5naW5lIHJl
-YWQgY291bnRlciBoYXMgYmVlbiBtYXhpbnVtXG4iKTsKPiArCQkJcmV0dXJuIC0xOwo+ICsJCX0K
-PiArCj4gKwkJbWF4X3RyeV9jb3VudC0tOwo+ICsJCXJlY3ZfZGF0YV9jbnQgPSAwOwo+ICsKPiAr
-CQltdGtfZHNpX3dhaXRfZm9yX2lkbGUoZHNpKTsKPiArCj4gKwkJdDAuY29uZmlnID0gMHgwNDsK
-PiArCQl0MC5kYXRhMCA9ICooKHU4ICopKG1zZy0+dHhfYnVmKSk7Cj4gKwo+ICsJCWlmIChidWZm
-ZXJfc2l6ZSA8IDB4MykKCkl0J3MgYmV0dGVyIHRvIHVzZSAnMycgaW5zdGVhZCBvZiAnMHgzJy4K
-Cj4gKwkJCXQwLnR5cGUgPSBNSVBJX0RTSV9EQ1NfUkVBRDsKPiArCQllbHNlCj4gKwkJCXQwLnR5
-cGUgPSBNSVBJX0RTSV9HRU5FUklDX1JFQURfUkVRVUVTVF8xX1BBUkFNOwo+ICsKPiArCQl0MC5k
-YXRhMSA9IDA7Cj4gKwo+ICsJCXRtcF92YWwgPSAodDAuZGF0YTEgPDwgMjQpIHwgKHQwLmRhdGEw
-IDw8IDE2KSB8ICh0MC50eXBlIDw8IDgpIHwKPiArCQkJdDAuY29uZmlnOwoKV2h5IG5lZWQgJ3N0
-cnVjdCBkc2lfY21kX3QwIHQwJz8gSSB0aGluayBjb2RlIGlzIG1vcmUgc2ltcGxlIHdoZW4gZ2V0
-CnJpZCBvZiB0aGlzIHN0cnVjdHVyZS4gVGhlIGNvZGUgbG9va3MgbGlrZToKCnRtcF92YWwgPSAo
-ZGF0YTEgPDwgMjQpIHwgKGRhdGEwIDw8IDE2KSB8ICh0eXBlIDw8IDgpIHwgY29uZmlnOwoKPiAr
-Cj4gKwkJd3JpdGVsKHRtcF92YWwsIGRzaS0+cmVncyArIERTSV9DTURRMCk7Cj4gKwkJbXRrX2Rz
-aV9tYXNrKGRzaSwgRFNJX0NNRFFfU0laRSwgQ01EUV9TSVpFLCAxKTsKPiArCj4gKwkJbXRrX2Rz
-aV9tYXNrKGRzaSwgRFNJX1JBQ0ssIFJBQ0ssIFJBQ0spOwo+ICsJCW10a19kc2lfbWFzayhkc2ks
-IERTSV9JTlRTVEEsIExQUlhfUkRfUkRZX0lOVF9GTEFHLAo+ICsJCQkgICAgIH5MUFJYX1JEX1JE
-WV9JTlRfRkxBRyk7Cj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0lOVFNUQSwgQ01EX0RPTkVf
-SU5UX0ZMQUcsCj4gKwkJCSAgICAgfkNNRF9ET05FX0lOVF9GTEFHKTsKCkkgdGhpbmsgaW50ZXJy
-dXB0IHN0YXR1cyBzaG91bGQgYmUgY2xlYXJlZCBpbiBpcnEgaGFuZGxlci4gU28geW91IG5lZWQK
-bm90IHRvIGNsZWFyIGl0IGhlcmUuCgo+ICsJCW10a19kc2lfbWFzayhkc2ksIERTSV9JTlRFTiwg
-RFNJX0lOVF9MUFJYX1JEX1JEWV9GTEFHLAo+ICsJCQkgICAgIERTSV9JTlRfTFBSWF9SRF9SRFlf
-RkxBRyk7Cj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0lOVEVOLCBEU0lfSU5UX0NNRF9ET05F
-X0ZMQUcsCj4gKwkJCSAgICAgRFNJX0lOVF9DTURfRE9ORV9GTEFHKTsKCldoeSBlbmFibGUgY21k
-X2RvbmUgaW50ZXJydXB0PyBZb3UganVzdCBuZWVkIGludGVycnVwdCBvZiBMUFJYX1JEX1JEWS4K
-Cj4gKwo+ICsJCW10a19kc2lfc3RhcnQoZHNpKTsKPiArCj4gKwkJZGV2X2luZm8oZHNpLT5kZXYs
-ICJTdGFydCBwb2xsaW5nIERTSSByZWFkIHJlYWR5ISEhXG4iKTsKPiArCj4gKwkJIC8qIDJzIHRp
-bWVvdXQqLwo+ICsJCXJldCA9IG10a19kc2lfd2FpdF9mb3JfaXJxX3RpbWVvdXQoZHNpLAo+ICsJ
-CQkJCQkgICBEU0lfSU5UX0xQUlhfUkRfUkRZX0ZMQUcsCj4gKwkJCQkJCSAgIDIwMDApOwo+ICsJ
-CWlmIChyZXQpIHsKPiArCQkJZGV2X2luZm8oZHNpLT5kZXYsICJQb2xsaW5nIERTSSByZWFkIHJl
-YWR5IHRpbWVvdXQhISFcbiIpOwo+ICsKPiArCQkJbXRrX2RzaV9lbmFibGUoZHNpKTsKPiArCQkJ
-bXRrX2RzaV9yZXNldF9lbmdpbmUoZHNpKTsKPiArCj4gKwkJCXJldHVybiByZXQ7Cj4gKwkJfQo+
-ICsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkVuZCBwb2xsaW5nIERTSSByZWFkIHJlYWR5ISEh
-XG4iKTsKPiArCj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX1JBQ0ssIFJBQ0ssIFJBQ0spOwo+
-ICsJCW10a19kc2lfbWFzayhkc2ksIERTSV9JTlRTVEEsIExQUlhfUkRfUkRZX0lOVF9GTEFHLAo+
-ICsJCQkgICAgIH5MUFJYX1JEX1JEWV9JTlRfRkxBRyk7Cj4gKwo+ICsJCXJlY3ZfZGF0YTAgPSBy
-ZWFkbChkc2ktPnJlZ3MgKyBEU0lfUlhfREFUQTApOwo+ICsJCXJlY3ZfZGF0YTEgPSByZWFkbChk
-c2ktPnJlZ3MgKyBEU0lfUlhfREFUQTEpOwo+ICsJCXJlY3ZfZGF0YTIgPSByZWFkbChkc2ktPnJl
-Z3MgKyBEU0lfUlhfREFUQTIpOwo+ICsJCXJlY3ZfZGF0YTMgPSByZWFkbChkc2ktPnJlZ3MgKyBE
-U0lfUlhfREFUQTMpOwo+ICsKPiArCQlyZWFkX2RhdGEwID0gKigoc3RydWN0IGRzaV9yeF9kYXRh
-ICopKCZyZWN2X2RhdGEwKSk7Cj4gKwkJcmVhZF9kYXRhMSA9ICooKHN0cnVjdCBkc2lfcnhfZGF0
-YSAqKSgmcmVjdl9kYXRhMSkpOwo+ICsJCXJlYWRfZGF0YTIgPSAqKChzdHJ1Y3QgZHNpX3J4X2Rh
-dGEgKikoJnJlY3ZfZGF0YTIpKTsKPiArCQlyZWFkX2RhdGEzID0gKigoc3RydWN0IGRzaV9yeF9k
-YXRhICopKCZyZWN2X2RhdGEzKSk7CgpZb3Ugb25seSB1c2UgcmVhZF9kYXRhMC4gcmVhZF9kYXRh
-MSwgcmVhZF9kYXRhMiwgYW5kIHJlYWRfZGF0YTMgYXJlIGp1c3QKZm9yIGRlYnVnLiBSZW1vdmUg
-dGhlIGRlYnVnIG9ubHkgbW9kaWZpY2F0aW9uIGlmIHRoZXkgYXJlIG5vdCBuZWNlc3NhcnkuCk9y
-IG1vdmUgdGhlbSB0byBhbm90aGVyIHBhdGNoIHRvIG1ha2UgdGhpcyBwYXRjaCBjbGVhci4KCj4g
-Kwo+ICsJCXJldCA9IHJlYWRsKGRzaS0+cmVncyArIERTSV9DTURRX1NJWkUpOwo+ICsJCWRldl9p
-bmZvKGRzaS0+ZGV2LCAiRFNJX0NNRFFfU0laRSA6IDB4JXhcbiIsIHJldCAmIENNRFFfU0laRSk7
-Cj4gKwo+ICsJCXJldCA9IHJlYWRsKGRzaS0+cmVncyArIERTSV9DTURRMCk7Cj4gKwkJZGV2X2lu
-Zm8oZHNpLT5kZXYsICJEU0lfQ01EUV9EQVRBMCA6IDB4JXhcbiIsCj4gKwkJCSByZXQgJiAweGZm
-KTsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkRTSV9DTURRX0RBVEExIDogMHgleFxuIiwKPiAr
-CQkJIChyZXQgPj4gOCkgJiAweGZmKTsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkRTSV9DTURR
-X0RBVEEyIDogMHgleFxuIiwKPiArCQkJIChyZXQgPj4gMTYpICYgMHhmZik7Cj4gKwkJZGV2X2lu
-Zm8oZHNpLT5kZXYsICJEU0lfQ01EUV9EQVRBMyA6IDB4JXhcbiIsCj4gKwkJCSAocmV0ID4+IDI0
-KSAmIDB4ZmYpOwo+ICsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkRTSV9SWF9EQVRBMDogMHgl
-eFxuIiwgcmVjdl9kYXRhMCk7Cj4gKwkJZGV2X2luZm8oZHNpLT5kZXYsICJEU0lfUlhfREFUQTE6
-IDB4JXhcbiIsIHJlY3ZfZGF0YTEpOwo+ICsJCWRldl9pbmZvKGRzaS0+ZGV2LCAiRFNJX1JYX0RB
-VEEyOiAweCV4XG4iLCByZWN2X2RhdGEyKTsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkRTSV9S
-WF9EQVRBMzogMHgleFxuIiwgcmVjdl9kYXRhMyk7Cj4gKwo+ICsJCWRldl9pbmZvKGRzaS0+ZGV2
-LCAicmVhZF9kYXRhMDogJXgsJXgsJXgsJXhcbiIsCj4gKwkJCSByZWFkX2RhdGEwLmJ5dGUwLCBy
-ZWFkX2RhdGEwLmJ5dGUxLCByZWFkX2RhdGEwLmJ5dGUyLAo+ICsJCQkgcmVhZF9kYXRhMC5ieXRl
-Myk7Cj4gKwkJZGV2X2luZm8oZHNpLT5kZXYsICJyZWFkX2RhdGExOiAleCwleCwleCwleFxuIiwK
-PiArCQkJIHJlYWRfZGF0YTEuYnl0ZTAsIHJlYWRfZGF0YTEuYnl0ZTEsIHJlYWRfZGF0YTEuYnl0
-ZTIsCj4gKwkJCSByZWFkX2RhdGExLmJ5dGUzKTsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgInJl
-YWRfZGF0YTI6ICV4LCV4LCV4LCV4XG4iLAo+ICsJCQkgcmVhZF9kYXRhMi5ieXRlMCwgcmVhZF9k
-YXRhMi5ieXRlMSwgcmVhZF9kYXRhMi5ieXRlMiwKPiArCQkJIHJlYWRfZGF0YTIuYnl0ZTMpOwo+
-ICsJCWRldl9pbmZvKGRzaS0+ZGV2LCAicmVhZF9kYXRhMzogJXgsJXgsJXgsJXhcbiIsCj4gKwkJ
-CSByZWFkX2RhdGEzLmJ5dGUwLCByZWFkX2RhdGEzLmJ5dGUxLCByZWFkX2RhdGEzLmJ5dGUyLAo+
-ICsJCQkgcmVhZF9kYXRhMy5ieXRlMyk7Cj4gKwo+ICsJCXBhY2tldF90eXBlID0gcmVhZF9kYXRh
-MC5ieXRlMDsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgIkRTSSByZWFkIHBhY2tldF90eXBlIGlz
-IDB4JXhcbiIsCj4gKwkJCSBwYWNrZXRfdHlwZSk7Cj4gKwo+ICsJCWlmIChwYWNrZXRfdHlwZSA9
-PSAweDFhIHx8IHBhY2tldF90eXBlID09IDB4MWMpIHsKPiArCQkJdm9pZCAqcmVhZF90bXAgPSAo
-dm9pZCAqKSZyZWN2X2RhdGExOwo+ICsKPiArCQkJcmVjdl9kYXRhX2NudCA9IHJlYWRfZGF0YTAu
-Ynl0ZTEgKwo+ICsJCQkJCXJlYWRfZGF0YTAuYnl0ZTIgKiAxNjsKPiArCQkJaWYgKHJlY3ZfZGF0
-YV9jbnQgPiAxMCkKPiArCQkJCXJlY3ZfZGF0YV9jbnQgPSAxMDsKCldoeSBkbyB5b3UgZHJvcCBk
-YXRhIG92ZXIgc2l6ZSBvZiAxMD8gSXNuJ3QgaXQgYW4gZXJyb3I/Cgo+ICsKPiArCQkJaWYgKHJl
-Y3ZfZGF0YV9jbnQgPiBidWZmZXJfc2l6ZSkKPiArCQkJCXJlY3ZfZGF0YV9jbnQgPSBidWZmZXJf
-c2l6ZTsKCklzbid0IGl0IGFuIGVycm9yIHdoaWxlIHlvdSBkcm9wIGRhdGEgb3ZlciB0aGUgYnVm
-ZmVyIHNpemU/Cgo+ICsKPiArCQkJbWVtY3B5KGJ1ZmZlciwgcmVhZF90bXAsIHJlY3ZfZGF0YV9j
-bnQpOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCS8qIHNob3J0ICBwYWNrZXQgKi8KPiArCQkJcmVjdl9k
-YXRhX2NudCA9IDI7Cj4gKwkJCWlmIChyZWN2X2RhdGFfY250ID4gYnVmZmVyX3NpemUpCj4gKwkJ
-CQlyZWN2X2RhdGFfY250ID0gYnVmZmVyX3NpemU7CgpJc24ndCBpdCBhbiBlcnJvciB3aGlsZSB5
-b3UgZHJvcCBkYXRhIG92ZXIgdGhlIGJ1ZmZlciBzaXplPwoKPiArCj4gKwkJCW1lbWNweShidWZm
-ZXIsICZyZWFkX2RhdGEwLmJ5dGUxLCAyKTsKCklmIGJ1ZmZlcl9zaXplIGlzIDEsIHdoeSBkbyB5
-b3Ugc3RpbGwgY29weSAyIGJ5dGVzPwoKPiArCQl9Cj4gKwl9IHdoaWxlIChwYWNrZXRfdHlwZSAh
-PSAweDFjICYmIHBhY2tldF90eXBlICE9IDB4MjEgJiYKPiArCQlwYWNrZXRfdHlwZSAhPSAweDIy
-ICYmIHBhY2tldF90eXBlICE9IDB4MWEpOwoKQ291bGQgeW91IGdpdmUgdGhlc2UgbWFnaWMgbnVt
-YmVyIGEgZGVzY3JpcHRpdmUgbmFtZT8KCj4gKwo+ICsJZGV2X2luZm8oZHNpLT5kZXYsICJkc2kg
-Z2V0ICVkIGJ5dGUgZGF0YSBmcm9tIHRoZSBwYW5lbCBhZGRyZXNzKDB4JXgpXG4iLAo+ICsJCSBy
-ZWN2X2RhdGFfY250LCAqKCh1OCAqKShtc2ctPnR4X2J1ZikpKTsKPiArCj4gKwlyZXR1cm4gcmVj
-dl9kYXRhX2NudDsKPiArfQo+ICsKPiArc3RhdGljIHNzaXplX3QgbXRrX2RzaV9ob3N0X3dyaXRl
-X2NtZChzdHJ1Y3QgbXRrX2RzaSAqZHNpLAo+ICsJCQkJICAgICAgY29uc3Qgc3RydWN0IG1pcGlf
-ZHNpX21zZyAqbXNnKQo+ICt7Cj4gKwl1MzIgaTsKPiArCXUzMiBnb3RvX2FkZHIsIG1hc2tfcGFy
-YSwgc2V0X3BhcmEsIHJlZ192YWw7Cj4gKwl2b2lkIF9faW9tZW0gKmNtZHFfcmVnOwo+ICsJc3Ry
-dWN0IGRzaV9jbWRfdDAgdDA7Cj4gKwlzdHJ1Y3QgZHNpX2NtZF90MiB0MjsKPiArCWNvbnN0IGNo
-YXIgKnR4X2J1ZiA9IG1zZy0+dHhfYnVmOwo+ICsJc3RydWN0IGRzaV90eF9jbWRxX3JlZ3MgKmRz
-aV9jbWRfcmVnOwo+ICsKPiArCWRzaV9jbWRfcmVnID0gKHN0cnVjdCBkc2lfdHhfY21kcV9yZWdz
-ICopKGRzaS0+cmVncyArIERTSV9DTURRMCk7Cj4gKwo+ICsJbXRrX2RzaV93YWl0X2Zvcl9pZGxl
-KGRzaSk7Cj4gKwo+ICsJaWYgKG1zZy0+dHhfbGVuID4gMikgewo+ICsJCXQyLmNvbmZpZyA9IDI7
-Cj4gKwkJdDIudHlwZSA9IG1zZy0+dHlwZTsKPiArCQl0Mi53YzE2ID0gbXNnLT50eF9sZW47Cj4g
-Kwo+ICsJCXJlZ192YWwgPSAodDIud2MxNiA8PCAxNikgfCAodDIudHlwZSA8PCA4KSB8IHQyLmNv
-bmZpZzsKCldoeSBuZWVkICdzdHJ1Y3QgZHNpX2NtZF90MiB0Mic/IEkgdGhpbmsgY29kZSBpcyBt
-b3JlIHNpbXBsZSB3aGVuIGdldApyaWQgb2YgdGhpcyBzdHJ1Y3R1cmUuIFRoZSBjb2RlIGxvb2tz
-IGxpa2U6CgpyZWdfdmFsID0gKHdjMTYgPDwgMTYpIHwgKHR5cGUgPDwgOCkgfCBjb25maWc7Cgo+
-ICsKPiArCQl3cml0ZWwocmVnX3ZhbCwgJmRzaV9jbWRfcmVnLT5kYXRhWzBdKTsKPiArCj4gKwkJ
-Z290b19hZGRyID0gKHUzMikoJmRzaV9jbWRfcmVnLT5kYXRhWzFdLmJ5dGUwKTsKPiArCQltYXNr
-X3BhcmEgPSAoMHhmZiA8PCAoKGdvdG9fYWRkciAmIDB4MykgKiA4KSk7Cj4gKwkJc2V0X3BhcmEg
-PSAodHhfYnVmWzBdIDw8ICgoZ290b19hZGRyICYgMHgzKSAqIDgpKTsKPiArCQljbWRxX3JlZyA9
-ICh2b2lkIF9faW9tZW0gKikoZ290b19hZGRyICYgKH4weDMpKTsKPiArCQltdGtfZHNpX3NldF9j
-bWRxKGNtZHFfcmVnLCBtYXNrX3BhcmEsIHNldF9wYXJhKTsKCkkgdGhpbmsgeW91IGNhbiBtZXJn
-ZSB0aGlzIHNldHRpbmcgaW50byAnZm9yIGxvb3AnIGFuZCB0aGUgbG9vcCBsb29rCmxpa2UgdGhp
-czoKCmZvciAoaSA9IDA7IGkgPCBtc2ctPnR4X2xlbjsgaSsrKSB7Cglnb3RvX2FkZHIgPSAodTMy
-KSgmZHNpX2NtZF9yZWctPmRhdGFbMV0uYnl0ZTApICsgaTsKCW1hc2tfcGFyYSA9ICgweGZmIDw8
-ICgoZ290b19hZGRyICYgMHgzKSAqIDgpKTsKCXNldF9wYXJhID0gKHR4X2J1ZltpXSA8PCAoKGdv
-dG9fYWRkciAmIDB4MykgKiA4KSk7CgljbWRxX3JlZyA9ICh2b2lkIF9faW9tZW0gKikoZ290b19h
-ZGRyICYgKH4weDMpKTsKCW10a19kc2lfc2V0X2NtZHEoY21kcV9yZWcsIG1hc2tfcGFyYSwgc2V0
-X3BhcmEpOwp9Cgo+ICsKPiArCQlmb3IgKGkgPSAxOyBpIDwgbXNnLT50eF9sZW47IGkrKykgewo+
-ICsJCQlnb3RvX2FkZHIgPSAodTMyKSgmZHNpX2NtZF9yZWctPmRhdGFbMV0uYnl0ZTEpICsgaSAt
-IDE7Cj4gKwkJCW1hc2tfcGFyYSA9ICgweGZmIDw8ICgoZ290b19hZGRyICYgMHgzKSAqIDgpKTsK
-PiArCQkJc2V0X3BhcmEgPSAodHhfYnVmW2ldIDw8ICgoZ290b19hZGRyICYgMHgzKSAqIDgpKTsK
-PiArCQkJY21kcV9yZWcgPSAodm9pZCBfX2lvbWVtICopKGdvdG9fYWRkciAmICh+MHgzKSk7Cj4g
-KwkJCW10a19kc2lfc2V0X2NtZHEoY21kcV9yZWcsIG1hc2tfcGFyYSwgc2V0X3BhcmEpOwo+ICsJ
-CX0KPiArCj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0NNRFFfU0laRSwgQ01EUV9TSVpFLAo+
-ICsJCQkgICAgIDIgKyAobXNnLT50eF9sZW4gLSAxKSAvIDQpOwoKSSB0aGluayBpdCBpcyBiZXR0
-ZXIgdG8gY2hhbmdlIGZvcm11bGEgb2YgRFNJX0NNRFFfU0laRSB0byAnMSArCihtc2ctPnR4X2xl
-biArIDMpIC8gNCcuIFRoZSAnMScgbWVhbnMgdGhlIGZpcnN0IGNtZCB3aGljaCBkZXNjcmliZSB0
-aGUKc2l6ZSBvZiB0eF9idWYsIGFuZCB0aGUgcmVzdCBtZWFucyB0aGUgb3RoZXIgY21kcyBmb3Ig
-Ym9keSBvZiB0eF9idWYuCgo+ICsJfSBlbHNlIHsKPiArCQl0MC5jb25maWcgPSAwOwo+ICsJCXQw
-LmRhdGEwID0gdHhfYnVmWzBdOwo+ICsJCWlmIChtc2ctPnR4X2xlbiA9PSAyKSB7Cj4gKwkJCXQw
-LnR5cGUgPSBNSVBJX0RTSV9EQ1NfU0hPUlRfV1JJVEVfUEFSQU07Cj4gKwkJCXQwLmRhdGExID0g
-dHhfYnVmWzFdOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCXQwLnR5cGUgPSBNSVBJX0RTSV9EQ1NfU0hP
-UlRfV1JJVEU7Cj4gKwkJCXQwLmRhdGExID0gMDsKPiArCQl9Cj4gKwo+ICsJCXJlZ192YWwgPSAo
-dDAuZGF0YTEgPDwgMjQpIHwgKHQwLmRhdGEwIDw8IDE2KSB8ICh0MC50eXBlIDw8IDgpIHwKPiAr
-CQkJICAgdDAuY29uZmlnOwo+ICsKPiArCQl3cml0ZWwocmVnX3ZhbCwgJmRzaV9jbWRfcmVnLT5k
-YXRhWzBdKTsKPiArCQltdGtfZHNpX21hc2soZHNpLCBEU0lfQ01EUV9TSVpFLCBDTURRX1NJWkUs
-IDEpOwo+ICsJfQo+ICsKPiArCW10a19kc2lfc3RhcnQoZHNpKTsKPiArCW10a19kc2lfd2FpdF9m
-b3JfaWRsZShkc2kpOwo+ICsKPiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgc3NpemVf
-dCBtdGtfZHNpX2hvc3RfdHJhbnNmZXIoc3RydWN0IG1pcGlfZHNpX2hvc3QgKmhvc3QsCj4gKwkJ
-CQkgICAgIGNvbnN0IHN0cnVjdCBtaXBpX2RzaV9tc2cgKm1zZykKPiArewo+ICsJc3RydWN0IG10
-a19kc2kgKmRzaSA9IGhvc3RfdG9fZHNpKGhvc3QpOwo+ICsJdTggdHlwZSA9IG1zZy0+dHlwZTsK
-PiArCXNzaXplX3QgcmV0ID0gMDsKPiArCj4gKwlpZiAoTVRLX0RTSV9IT1NUX0lTX1JFQUQodHlw
-ZSkpCj4gKwkJcmV0ID0gbXRrX2RzaV9ob3N0X3JlYWRfY21kKGRzaSwgbXNnKTsKPiArCWVsc2Ug
-aWYgKE1US19EU0lfSE9TVF9JU19XUklURSh0eXBlKSkKPiArCQlyZXQgPSBtdGtfZHNpX2hvc3Rf
-d3JpdGVfY21kKGRzaSwgbXNnKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IG1pcGlfZHNpX2hvc3Rfb3BzIG10a19kc2lfb3BzID0gewo+ICAJLmF0
-dGFjaCA9IG10a19kc2lfaG9zdF9hdHRhY2gsCj4gIAkuZGV0YWNoID0gbXRrX2RzaV9ob3N0X2Rl
-dGFjaCwKPiArCS50cmFuc2ZlciA9IG10a19kc2lfaG9zdF90cmFuc2ZlciwKPiAgfTsKPiAgCj4g
-IHN0YXRpYyBpbnQgbXRrX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmlj
-ZSAqbWFzdGVyLCB2b2lkICpkYXRhKQoKClJlZ2FyZHMsCkNLCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1k
-ZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On Mon, 2016-07-18 at 18:12 +0100, Jonathan Cameron wrote:
+> On 11/07/16 07:39, Zhiyong Tao wrote:
+> > Add Mediatek auxadc driver based on iio.
+> > It will register a device in iio and support iio.
+> > So thermal can read auxadc channel to sample data by iio device.
+> > It is tested successfully on mt2701 platform.
+> > Mt8173 and mt6577 platforms are not tested.
+> > But the expectation is compatible.
+> > 
+> > Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Looks good to me.  Couple of really minor points / questions inline...
+> 
+> Just one thing to confirm... (you probably already answered this!)
+> What are the units of the voltage channels?
+> 
+> Jonathan
+
+The units of the voltage channels are mv. 
+
+> > ---
+> >  drivers/iio/adc/Kconfig         |   13 ++
+> >  drivers/iio/adc/Makefile        |    1 +
+> >  drivers/iio/adc/mt6577_auxadc.c |  294 +++++++++++++++++++++++++++++++++++++++
+> >  3 files changed, 308 insertions(+)
+> >  create mode 100644 drivers/iio/adc/mt6577_auxadc.c
+> > 
+> > diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> > index 25378c5..14929fc 100644
+> > --- a/drivers/iio/adc/Kconfig
+> > +++ b/drivers/iio/adc/Kconfig
+> > @@ -305,6 +305,19 @@ config MCP3422
+> >  	  This driver can also be built as a module. If so, the module will be
+> >  	  called mcp3422.
+> >  
+> > +config MEDIATEK_MT6577_AUXADC
+> > +        tristate "MediaTek AUXADC driver"
+> > +        depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +        depends on HAS_IOMEM
+> > +        help
+> > +          Say yes here to enable support for MediaTek mt65xx AUXADC.
+> > +
+> > +          The driver supports immediate mode operation to read from one of sixteen
+> > +          channels (external or internal).
+> > +
+> > +          This driver can also be built as a module. If so, the module will be
+> > +          called mt6577_auxadc.
+> > +
+> >  config MEN_Z188_ADC
+> >  	tristate "MEN 16z188 ADC IP Core support"
+> >  	depends on MCB
+> > diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+> > index 38638d4..8306347 100644
+> > --- a/drivers/iio/adc/Makefile
+> > +++ b/drivers/iio/adc/Makefile
+> > @@ -30,6 +30,7 @@ obj-$(CONFIG_MAX1027) += max1027.o
+> >  obj-$(CONFIG_MAX1363) += max1363.o
+> >  obj-$(CONFIG_MCP320X) += mcp320x.o
+> >  obj-$(CONFIG_MCP3422) += mcp3422.o
+> > +obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
+> >  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
+> >  obj-$(CONFIG_MXS_LRADC) += mxs-lradc.o
+> >  obj-$(CONFIG_NAU7802) += nau7802.o
+> > diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> > new file mode 100644
+> > index 0000000..c7cc901
+> > --- /dev/null
+> > +++ b/drivers/iio/adc/mt6577_auxadc.c
+> > @@ -0,0 +1,294 @@
+> > +/*
+> > + * Copyright (c) 2016 MediaTek Inc.
+> > + * Author: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/err.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/iopoll.h>
+> > +#include <linux/io.h>
+> > +#include <linux/iio/iio.h>
+> > +
+> > +/* Register definitions */
+> > +#define MT6577_AUXADC_CON0                    0x00
+> > +#define MT6577_AUXADC_CON1                    0x04
+> > +#define MT6577_AUXADC_CON2                    0x10
+> > +#define MT6577_AUXADC_STA                     BIT(0)
+> > +
+> > +#define MT6577_AUXADC_DAT0                    0x14
+> > +#define MT6577_AUXADC_RDY0                    BIT(12)
+> > +
+> > +#define MT6577_AUXADC_MISC                    0x94
+> > +#define MT6577_AUXADC_PDN_EN                  BIT(14)
+> > +
+> > +#define MT6577_AUXADC_DAT_MASK                0xfff
+> > +#define MT6577_AUXADC_SLEEP_US                1000
+> > +#define MT6577_AUXADC_TIMEOUT_US              10000
+> > +#define MT6577_AUXADC_POWER_READY_MS          1
+> > +#define MT6577_AUXADC_SAMPLE_READY_US         25
+> > +
+> > +struct mt6577_auxadc_device {
+> > +	void __iomem *reg_base;
+> > +	struct clk *adc_clk;
+> > +	struct mutex lock;
+> > +};
+> > +
+> > +#define MT6577_AUXADC_CHANNEL(idx) {				    \
+> > +		.type = IIO_VOLTAGE,				    \
+> > +		.indexed = 1,					    \
+> > +		.channel = (idx),				    \
+> > +		.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED), \
+> > +}
+> > +
+> > +static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
+> > +	MT6577_AUXADC_CHANNEL(0),
+> > +	MT6577_AUXADC_CHANNEL(1),
+> > +	MT6577_AUXADC_CHANNEL(2),
+> > +	MT6577_AUXADC_CHANNEL(3),
+> > +	MT6577_AUXADC_CHANNEL(4),
+> > +	MT6577_AUXADC_CHANNEL(5),
+> > +	MT6577_AUXADC_CHANNEL(6),
+> > +	MT6577_AUXADC_CHANNEL(7),
+> > +	MT6577_AUXADC_CHANNEL(8),
+> > +	MT6577_AUXADC_CHANNEL(9),
+> > +	MT6577_AUXADC_CHANNEL(10),
+> > +	MT6577_AUXADC_CHANNEL(11),
+> > +	MT6577_AUXADC_CHANNEL(12),
+> > +	MT6577_AUXADC_CHANNEL(13),
+> > +	MT6577_AUXADC_CHANNEL(14),
+> > +	MT6577_AUXADC_CHANNEL(15),
+> > +};
+> > +
+> > +static int mt6577_auxadc_read(struct iio_dev *indio_dev,
+> > +			      struct iio_chan_spec const *chan)
+> > +{
+> > +	u32 rawdata, val;
+> > +	void __iomem *reg_channel;
+> > +	int ret;
+> > +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
+> > +
+> > +	reg_channel = adc_dev->reg_base + MT6577_AUXADC_DAT0 +
+> > +		      chan->channel * 0x04;
+> > +
+> > +	mutex_lock(&adc_dev->lock);
+> > +
+> > +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
+> > +	val &= ~(1 << chan->channel);
+> > +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
+> > +
+> > +	/* read channel and make sure old ready bit == 0 */
+> > +	ret = readl_poll_timeout(reg_channel, val,
+> > +				 ((val & MT6577_AUXADC_RDY0) == 0),
+> > +				 MT6577_AUXADC_SLEEP_US,
+> > +				 MT6577_AUXADC_TIMEOUT_US);
+> > +	if (ret < 0) {
+> > +		dev_err(indio_dev->dev.parent,
+> > +			"wait for channel[%d] ready bit clear time out\n",
+> > +			chan->channel);
+> > +
+> > +		mutex_unlock(&adc_dev->lock);
+> > +
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	/* set bit to trigger sample */
+> > +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
+> > +	val |= 1 << chan->channel;
+> > +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
+> > +
+> > +	/* we must delay here for hardware sample channel data */
+> > +	udelay(MT6577_AUXADC_SAMPLE_READY_US);
+> > +
+> > +	/* check MTK_AUXADC_CON2 if auxadc is idle */
+> > +	ret = readl_poll_timeout(adc_dev->reg_base + MT6577_AUXADC_CON2, val,
+> > +				 ((val & MT6577_AUXADC_STA) == 0),
+> > +				 MT6577_AUXADC_SLEEP_US,
+> > +				 MT6577_AUXADC_TIMEOUT_US);
+> > +	if (ret < 0) {
+> > +		dev_err(indio_dev->dev.parent,
+> > +			"wait for auxadc idle time out\n");
+> > +
+> > +		mutex_unlock(&adc_dev->lock);
+> > +
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	/* read channel and make sure ready bit == 1 */
+> > +	ret = readl_poll_timeout(reg_channel, val,
+> > +				 ((val & MT6577_AUXADC_RDY0) != 0),
+> > +				 MT6577_AUXADC_SLEEP_US,
+> > +				 MT6577_AUXADC_TIMEOUT_US);
+> > +	if (ret < 0) {
+> > +		dev_err(indio_dev->dev.parent,
+> > +			"wait for channel[%d] data ready time out\n",
+> > +			chan->channel);
+> > +
+> > +		mutex_unlock(&adc_dev->lock);
+> > +
+> > +		return -ETIMEDOUT;
+> > +	}
+> > +
+> > +	/* read data */
+> > +	rawdata = readl(reg_channel) & MT6577_AUXADC_DAT_MASK;
+> > +
+> > +	mutex_unlock(&adc_dev->lock);
+> > +
+> > +	return rawdata;
+> > +}
+> > +
+> > +static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
+> > +				  struct iio_chan_spec const *chan,
+> > +				  int *val,
+> > +				  int *val2,
+> > +				  long info)
+> > +{
+> > +	switch (info) {
+> > +	case IIO_CHAN_INFO_PROCESSED:
+> > +		*val = mt6577_auxadc_read(indio_dev, chan);
+> > +		if (*val < 0) {
+> > +			dev_err(indio_dev->dev.parent,
+> > +				"failed to sample data on channel[%d]\n",
+> > +				chan->channel);
+> > +			return *val;
+> > +		}
+> > +		return IIO_VAL_INT;
+> > +
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +}
+> > +
+> > +static const struct iio_info mt6577_auxadc_info = {
+> > +	.driver_module = THIS_MODULE,
+> > +	.read_raw = &mt6577_auxadc_read_raw,
+> > +};
+> > +
+> > +static int mt6577_auxadc_probe(struct platform_device *pdev)
+> > +{
+> > +	struct mt6577_auxadc_device *adc_dev;
+> > +	unsigned long adc_clk_rate;
+> > +	struct resource *res;
+> > +	struct iio_dev *indio_dev;
+> > +	int ret;
+> > +	u32 val;
+> > +
+> > +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
+> > +	if (!indio_dev)
+> > +		return -ENOMEM;
+> > +
+> > +	adc_dev = iio_priv(indio_dev);
+> > +	indio_dev->dev.parent = &pdev->dev;
+> > +	indio_dev->name = dev_name(&pdev->dev);
+> > +	indio_dev->info = &mt6577_auxadc_info;
+> > +	indio_dev->modes = INDIO_DIRECT_MODE;
+> > +	indio_dev->channels = mt6577_auxadc_iio_channels;
+> > +	indio_dev->num_channels = ARRAY_SIZE(mt6577_auxadc_iio_channels);
+> > +
+> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
+> > +	if (IS_ERR(adc_dev->reg_base)) {
+> > +		dev_err(&pdev->dev, "failed to get auxadc base address.\n");
+> > +		return PTR_ERR(adc_dev->reg_base);
+> > +	}
+> > +
+> > +	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
+> > +	if (IS_ERR(adc_dev->adc_clk)) {
+> > +		dev_err(&pdev->dev, "failed to get auxadc clock\n");
+> > +		return PTR_ERR(adc_dev->adc_clk);
+> > +	}
+> > +
+> > +	ret = clk_prepare_enable(adc_dev->adc_clk);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "failed to enable auxadc clock\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	adc_clk_rate = clk_get_rate(adc_dev->adc_clk);
+> > +	if (!adc_clk_rate) {
+> > +		dev_err(&pdev->dev, "null clock rate!\n");
+> > +		goto err_disable_clk;
+> > +	}
+> > +
+> > +	mutex_init(&adc_dev->lock);
+> > +
+> > +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +	val |= MT6577_AUXADC_PDN_EN;
+> > +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +	mdelay(MT6577_AUXADC_POWER_READY_MS);
+> > +
+> > +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +	if ((val & MT6577_AUXADC_PDN_EN) == 0) {
+> That's a high level of paranoia... Any reason to believe this might fail?
+
+Someone reviews the code and gives a suggestion to power off chenck.
+If auxadc clk is off in the case, we can not write MT6577_AUXADC_PDN_EN
+in MT6577_AUXADC_MISC. So it may cause to enable auxadc power failed.
+
+> > +		dev_err(&pdev->dev, "failed to enable auxadc power!\n");
+> > +		goto err_disable_clk;
+> > +	}
+> > +
+> > +	platform_set_drvdata(pdev, indio_dev);
+> > +
+> > +	ret = iio_device_register(indio_dev);
+> > +	if (ret < 0) {
+> I'd have slightly preferred that this error unwind block was also
+> moved to on a goto.  Makes it easier to review as the error block then
+> matches remove (with expected differences!)  Really small point however.
+
+I will update this in next version.
+
+> 
+> > +		dev_err(&pdev->dev, "failed to register iio device!\n");
+> > +		val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +		val &= ~MT6577_AUXADC_PDN_EN;
+> > +		writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +		goto err_disable_clk;
+> > +	}
+> > +
+> > +	return 0;
+> > +
+> > +err_disable_clk:
+> > +	clk_disable_unprepare(adc_dev->adc_clk);
+> > +	return -EINVAL;
+> > +}
+> > +
+> > +static int mt6577_auxadc_remove(struct platform_device *pdev)
+> > +{
+> > +	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
+> > +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
+> > +	u32 val;
+> > +
+> > +	iio_device_unregister(indio_dev);
+> > +
+> > +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +	val &= ~MT6577_AUXADC_PDN_EN;
+> > +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
+> > +
+> > +	clk_disable_unprepare(adc_dev->adc_clk);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct of_device_id mt6577_auxadc_of_match[] = {
+> > +	{ .compatible = "mediatek,mt2701-auxadc", },
+> > +	{ .compatible = "mediatek,mt8173-auxadc", },
+> > +	{ }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, mt6577_auxadc_of_match);
+> > +
+> > +static struct platform_driver mt6577_auxadc_driver = {
+> > +	.driver = {
+> > +		.name   = "mt6577-auxadc",
+> > +		.of_match_table = mt6577_auxadc_of_match,
+> > +	},
+> > +	.probe	= mt6577_auxadc_probe,
+> > +	.remove	= mt6577_auxadc_remove,
+> > +};
+> > +module_platform_driver(mt6577_auxadc_driver);
+> > +
+> > +MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
+> > +MODULE_DESCRIPTION("MTK AUXADC Device Driver");
+> > +MODULE_LICENSE("GPL v2");
+> > 
+> 
