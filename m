@@ -1,71 +1,67 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH 4/4] drm/mediatek: adjust VENCPLL clock for 4K HDMI output
-Date: Wed, 20 Jul 2016 11:55:05 +0200
-Message-ID: <1469008505.5809.41.camel@pengutronix.de>
-References: <1468987385-37353-1-git-send-email-bibby.hsieh@mediatek.com>
- <1468987385-37353-5-git-send-email-bibby.hsieh@mediatek.com>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Wed, 20 Jul 2016 20:14:42 +0800
+Message-ID: <1469016882.12306.3.camel@mtksdaap41>
+References: <1468498681-19955-1-git-send-email-minghsiu.tsai@mediatek.com>
+	 <1468498681-19955-3-git-send-email-minghsiu.tsai@mediatek.com>
+	 <20160716230113.GA31551@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1468987385-37353-5-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20160716230113.GA31551@rob-hp-laptop>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQmliYnksCgpBbSBNaXR0d29jaCwgZGVuIDIwLjA3LjIwMTYsIDEyOjAzICswODAwIHNjaHJp
-ZWIgQmliYnkgSHNpZWg6Cj4gaWYgTVQ4MTczIGRpc3BsYXkgbW9kdWxlIGNhbiBzdXBwb3J0IDRL
-IEhETUkgb3V0cHV0LAo+IHdlIGhhdmUgdG8gYWRqdXN0IFZFTkNQTEwgY2xvY2sgZnJvbSBkZWZh
-dWx0IDY2ME1Iego+IHRvIDgwME1Iei4KCklzIHZlbmNwbGwoX2QyKSB0aGUgYWN0aXZlIHNvdXJj
-ZSBmb3IgdGhlIG1tX3NlbCBtdXg/IElmIHNvLCBpdCBzZWVtcyB0bwptZSB0aGF0IG1tX3NlbCBv
-ciByYXRoZXIgb25lIG9mIGl0cyBjaGlsZHJlbiBzaG91bGQgYmUgc2V0IHRvIDgwMCBNSHosCmFu
-ZCB0aGUgY2xvY2sgZnJhbWV3b3JrIHNob3VsZCBwcm9wYWdhdGUgaXQgdXAgdG8gdmVuY3BsbC4g
-SSBzdXBwb3NlIHRoZQpyZXF1aXJlbWVudCBpcyB0aGF0IHRoZSBpbnB1dCBjbG9ja3MgdG8gYWxs
-IHRoZSBkaXNwbGF5IHVuaXRzIChvdmwsCnJkbWEsIGFuZCBzbyBvbikgbmVlZCB0byBiZSBzdWZm
-aWNpZW50bHkgYWJvdmUgdGhlIHBpeGVsIGNsb2NrLgoKQWxzbywgdGhpcyByZWFkcyBhcyBpZiB3
-ZSB3YW50IHRvIGtlZXAgdGhlIGNsb2NrIGF0IDY2MCBNSHogaWYgNEsgaXMgbm90CnN1cHBvcnRl
-ZCBhdCBhbGwgKGZvciBleGFtcGxlIGJlY2F1c2Ugb2YgYSBicmlkZ2UgY29ubmVjdGVkIGF0IHRo
-ZQpvdXRzaWRlKS4KQWN0dWFsbHksIHdvdWxkIGl0IGJlIGRlc2lyYWJsZSB0byBzd2l0Y2ggdmVu
-Y3BsbCB0byA2NjAgTUh6IGV2ZW4gb24gNEsKY2FwYWJsZSBkZXZpY2VzIGFzIGxvbmcgYXMgb25s
-eSBsb3dlciBwaXhlbCBjbG9ja3MgYXJlIGFjdGl2ZT8KCnJlZ2FyZHMKUGhpbGlwcAoKPiBTaWdu
-ZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgo+IC0tLQo+
-ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyB8ICAgIDkgKysrKysrKysr
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oIHwgICAgMSArCj4gIDIg
-ZmlsZXMgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggYjEyMjNkNS4uZjE1OTE4OSAxMDA2NDQKPiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTIzLDYgKzIzLDcgQEAKPiAgI2luY2x1
-ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX3BsYXRmb3JtLmg+
-Cj4gICNpbmNsdWRlIDxsaW51eC9wbV9ydW50aW1lLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9jbGsu
-aD4KPiAgCj4gICNpbmNsdWRlICJtdGtfZHJtX2NydGMuaCIKPiAgI2luY2x1ZGUgIm10a19kcm1f
-ZGRwLmgiCj4gQEAgLTM2Myw2ICszNjQsMTQgQEAgc3RhdGljIGludCBtdGtfZHJtX3Byb2JlKHN0
-cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4g
-Kwlwcml2YXRlLT52ZW5jcGxsX2NsayA9IGRldm1fY2xrX2dldChkZXYsICJ2ZW5jcGxsIik7Cj4g
-KwlpZiAoSVNfRVJSKHByaXZhdGUtPnZlbmNwbGxfY2xrKSkgewo+ICsJCXJldCA9IFBUUl9FUlIo
-cHJpdmF0ZS0+dmVuY3BsbF9jbGspOwo+ICsJCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCB2
-ZW5jcGxsIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiArCQlyZXR1cm4gcmV0Owo+ICsJfQo+ICsJY2xr
-X3NldF9yYXRlKHByaXZhdGUtPnZlbmNwbGxfY2xrLCA4MDAwMDAwMDApOwo+ICsKPiAgCS8qIEl0
-ZXJhdGUgb3ZlciBzaWJsaW5nIERJU1AgZnVuY3Rpb24gYmxvY2tzICovCj4gIAlmb3JfZWFjaF9j
-aGlsZF9vZl9ub2RlKGRldi0+b2Zfbm9kZS0+cGFyZW50LCBub2RlKSB7Cj4gIAkJY29uc3Qgc3Ry
-dWN0IG9mX2RldmljZV9pZCAqb2ZfaWQ7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZHJ2LmgKPiBpbmRleCBhYTkzODk0Li4yNzNhZDAyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fZHJ2LmgKPiBAQCAtNDAsNiArNDAsNyBAQCBzdHJ1Y3QgbXRrX2RybV9wcml2
-YXRlIHsKPiAgCXZvaWQgX19pb21lbSAqY29uZmlnX3JlZ3M7Cj4gIAlzdHJ1Y3QgZGV2aWNlX25v
-ZGUgKmNvbXBfbm9kZVtERFBfQ09NUE9ORU5UX0lEX01BWF07Cj4gIAlzdHJ1Y3QgbXRrX2RkcF9j
-b21wICpkZHBfY29tcFtERFBfQ09NUE9ORU5UX0lEX01BWF07Cj4gKwlzdHJ1Y3QgY2xrICp2ZW5j
-cGxsX2NsazsKPiAgCj4gIAlzdHJ1Y3Qgewo+ICAJCXN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpz
-dGF0ZTsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRy
-aS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRw
-czovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Sat, 2016-07-16 at 18:01 -0500, Rob Herring wrote:
+> On Thu, Jul 14, 2016 at 08:17:59PM +0800, Minghsiu Tsai wrote:
+> > Add a DT binding documentation of MDP for the MT8173 SoC
+> > from Mediatek
+> > 
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/media/mediatek-mdp.txt     |   92 ++++++++++++++++++++
+> >  1 file changed, 92 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > new file mode 100644
+> > index 0000000..ef570c3
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> > @@ -0,0 +1,92 @@
+> > +* Mediatek Media Data Path
+> > +
+> > +Media Data Path is used for scaling and color space conversion.
+> > +
+> > +Required properties:
+> > +  - compatible : should contain them as below:
+> > +        "mediatek,mt8173-mdp"
+> > +        "mediatek,mt8173-mdp-rdma"
+> > +        "mediatek,mt8173-mdp-rsz"
+> > +        "mediatek,mt8173-mdp-wdma"
+> > +        "mediatek,mt8173-mdp-wrot"
+> > +  - clocks : device clocks
+> > +  - power-domains : a phandle to the power domain.
+> > +  - mediatek,larb : should contain the larbes of current platform
+> > +  - iommus : Mediatek IOMMU H/W has designed the fixed associations with
+> > +        the multimedia H/W. and there is only one multimedia iommu domain.
+> > +        "iommus = <&iommu portid>" the "portid" is from
+> > +        dt-bindings\iommu\mt8173-iommu-port.h, it means that this portid will
+> > +        enable iommu. The portid default is disable iommu if "<&iommu portid>"
+> > +        don't be added.
+> > +  - mediatek,vpu : the node of video processor unit
+> 
+> These properties don't apply to all the nodes. I think you need a 
+> section for each IP block.
+
+
+I will add description for those IP block, thanks.
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
