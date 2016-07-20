@@ -1,216 +1,107 @@
-From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] vcodec: mediatek: Add g/s_selection support for V4L2
- Encoder
-Date: Wed, 20 Jul 2016 00:44:14 +0800
-Message-ID: <1468946654.30095.4.camel@mtksdaap41>
-References: <1464594768-1993-1-git-send-email-tiffany.lin@mediatek.com>
- <4ca82842-968d-a5e2-587d-752c71713607@xs4all.nl>
- <1468477674.32454.36.camel@mtksdaap41>
- <bb96276a-8e6c-a535-6fd3-fe4327238f65@xs4all.nl>
- <1468844895.12740.15.camel@mtksdaap41>
- <f2c031e2-82ca-90f4-0900-4dc961a90f58@xs4all.nl>
+From: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 1/3] memory: mediatek: Add a new interface
+	mtk_smi_larb_is_ready
+Date: Wed, 20 Jul 2016 11:01:59 +0800
+Message-ID: <1468983721-3627-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <f2c031e2-82ca-90f4-0900-4dc961a90f58-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Cc: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+Currently the iommu consumer always call iommu_present to get whether
+the iommu is ready. But in MTK IOMMU, this function can't indicate
+this. The IOMMU call bus_set_iommu->mtk_iommu_add_device->
+mtk_iommu_attach_device to parse the iommu data, then it's able to
+transfer "struct mtk_smi_iommu" to SMI-LARB, and the iommu uses the
+larbs as compoents, the iommu will finish its probe until all the larbs
+probe done.
 
-On Mon, 2016-07-18 at 14:44 +0200, Hans Verkuil wrote:
-> On 07/18/2016 02:28 PM, tiffany lin wrote:
-> > Understood now.
-> > 
-> > Now I am trying to figure out how to make this function right.
-> > Our encoder only support crop range from (0, 0) to (width, height), so
-> > if s->r.top and s->r.left not 0, I will return -EINVAL.
-> > 
-> > 
-> > Another thing is that in v4l2-compliance test, it has testLegacyCrop.
-> > It looks like we still need to support 
-> >  V4L2_SEL_TGT_COMPOSE_DEFAULT:
-> >  V4L2_SEL_TGT_COMPOSE_BOUNDS:
-> >  V4L2_SEL_TGT_COMPOSE:
-> > to pass v4l2 compliance test, Or it will fail in 
-> > fail: v4l2-test-formats.cpp(1318): !doioctl(node, VIDIOC_G_SELECTION,
-> > &sel)
-> > fail: v4l2-test-formats.cpp(1336): testLegacyCrop(node)
-> > test Cropping: FAIL
-> 
-> Against which kernel are you testing? In the current media_tree master
-> there is a bug in drivers/media/v4l2-core/v4l2-ioctl.c, v4l_cropcap():
-> 
-> This code:
-> 
-> if (WARN_ON(!ops->vidioc_cropcap && !ops->vidioc_cropcap))
-> 
-> should be:
-> 
-> if (WARN_ON(!ops->vidioc_cropcap && !ops->vidioc_g_selection))
-> 
-> The fix is waiting for a pull from Linus.
-> 
-> Also update to the latest v4l2-compliance: I've made some changes that
-> might affect this. And I added additional checks to verify if all the
-> colorspace-related format fields are properly propagated from the
-> output format to the capture format.
-> 
+If the iommu consumer(like DRM) begin to probe after the time of
+calling bus_set_iommu and before the time of SMI probe finish, it
+will hang like this:
 
-Sorry, I miss this part.
-After update to latest version include this fix, it can pass crop test
-without supporting COMPOSE in output queue.
-Appreciated for your help
+[    7.832359] Call trace:
+[    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
+[    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
 
-best regards,
-Tiffany
+Because the larb->mmu is NULL at that time.
 
+In order to avoid this issue, we add a new interface
+(mtk_smi_larb_is_ready) for checking whether the IOMMU and SMI have
+finished their probe. If it return false, the iommu consumer should
+probe-defer for the IOMMU and SMI.
 
+Signed-off-by: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+Adding this interface is for avoid adjust the sequence of power
+domain probe[1]. This patch-set is based on next-20160719. And
+patch[1/3] base on [2], patch[3/3] base on [3], both are in the
+pull tree.
 
-> Regards,
-> 
-> 	Hans
-> 
-> > 
-> > I don't understand the following testing code.
-> > 
-> >         /*
-> >          * If either CROPCAP or G_CROP works, then G_SELECTION should
-> >          * work as well.
-> >          * If neither CROPCAP nor G_CROP work, then G_SELECTION
-> > shouldn't
-> >          * work either.
-> >          */
-> >         if (!doioctl(node, VIDIOC_CROPCAP, &cap)) {
-> >                 fail_on_test(doioctl(node, VIDIOC_G_SELECTION, &sel));
-> > 
-> >                 // Checks for invalid types
-> >                 if (cap.type == V4L2_BUF_TYPE_VIDEO_CAPTURE)
-> >                         cap.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> >                 else
-> >                         cap.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
-> >                 fail_on_test(doioctl(node, VIDIOC_CROPCAP, &cap) !=
-> > EINVAL);
-> >                 cap.type = 0xff;
-> >                 fail_on_test(doioctl(node, VIDIOC_CROPCAP, &cap) !=
-> > EINVAL);
-> >         } else {
-> >                 fail_on_test(!doioctl(node, VIDIOC_G_SELECTION, &sel));
-> > -> fail here
-> >         }
-> > 
-> > When test OUTPUT queue, it fail because v4l_cropcap will fail when
-> > s.target = V4L2_SEL_TGT_COMPOSE_BOUNDS.
-> > If VIDIOC_CROPCAP ioctl fail, VIDIOC_G_SELECTION should fail.
-> > But VIDIOC_G_SELECTION target on CROP not COMPOSE and it success.
-> > 
-> > 
-> > best regards,
-> > Tiffany
-> > 
-> > 
-> > 
-> >> Regards,
-> >>
-> >> 	Hans
-> >>
-> >>>
-> >>>
-> >>> static int v4l_g_crop(const struct v4l2_ioctl_ops *ops,
-> >>> 				struct file *file, void *fh, void *arg)
-> >>> {
-> >>> 	struct v4l2_crop *p = arg;
-> >>> 	struct v4l2_selection s = {
-> >>> 		.type = p->type,
-> >>> 	};
-> >>> 	int ret;
-> >>>
-> >>> 	if (ops->vidioc_g_crop)
-> >>> 		return ops->vidioc_g_crop(file, fh, p);
-> >>> 	/* simulate capture crop using selection api */
-> >>>
-> >>> 	/* crop means compose for output devices */
-> >>> 	if (V4L2_TYPE_IS_OUTPUT(p->type))
-> >>> 		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
-> >>> 	else
-> >>> 		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
-> >>>
-> >>> 	ret = ops->vidioc_g_selection(file, fh, &s);
-> >>>
-> >>> 	/* copying results to old structure on success */
-> >>> 	if (!ret)
-> >>> 		p->c = s.r;
-> >>> 	return ret;
-> >>> }
-> >>>
-> >>> static int v4l_s_crop(const struct v4l2_ioctl_ops *ops,
-> >>> 				struct file *file, void *fh, void *arg)
-> >>> {
-> >>> 	struct v4l2_crop *p = arg;
-> >>> 	struct v4l2_selection s = {
-> >>> 		.type = p->type,
-> >>> 		.r = p->c,
-> >>> 	};
-> >>>
-> >>> 	if (ops->vidioc_s_crop)
-> >>> 		return ops->vidioc_s_crop(file, fh, p);
-> >>> 	/* simulate capture crop using selection api */
-> >>>
-> >>> 	/* crop means compose for output devices */
-> >>> 	if (V4L2_TYPE_IS_OUTPUT(p->type))
-> >>> 		s.target = V4L2_SEL_TGT_COMPOSE_ACTIVE;
-> >>> 	else
-> >>> 		s.target = V4L2_SEL_TGT_CROP_ACTIVE;
-> >>>
-> >>> 	return ops->vidioc_s_selection(file, fh, &s);
-> >>> }
-> >>>
-> >>>
-> >>> best regards,
-> >>> Tiffany
-> >>>
-> >>>
-> >>>
-> >>>
-> >>>> Regards,
-> >>>>
-> >>>> 	Hans
-> >>>>
-> >>>>> +
-> >>>>> +	return 0;
-> >>>>> +}
-> >>>>> +
-> >>>>>  static int vidioc_venc_qbuf(struct file *file, void *priv,
-> >>>>>  			    struct v4l2_buffer *buf)
-> >>>>>  {
-> >>>>> @@ -688,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
-> >>>>>  
-> >>>>>  	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
-> >>>>>  	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
-> >>>>> +
-> >>>>> +	.vidioc_g_selection		= vidioc_venc_g_selection,
-> >>>>> +	.vidioc_s_selection		= vidioc_venc_s_selection,
-> >>>>>  };
-> >>>>>  
-> >>>>>  static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
-> >>>>>
-> >>>
-> >>>
-> >>> --
-> >>> To unsubscribe from this list: send the line "unsubscribe linux-media" in
-> >>> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> >>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> >>>
-> > 
-> > 
+[1]:http://lists.infradead.org/pipermail/linux-mediatek/2016-July/006189.html
+[2]:https://patchwork.kernel.org/patch/9164067/
+[3]:http://www.spinics.net/lists/arm-kernel/msg517840.html
+---
+ drivers/memory/mtk-smi.c   | 8 ++++++++
+ include/soc/mediatek/smi.h | 8 ++++++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 4afbc41..3e58cbb7 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -141,6 +141,14 @@ void mtk_smi_larb_put(struct device *larbdev)
+ }
+ EXPORT_SYMBOL_GPL(mtk_smi_larb_put);
+ 
++bool mtk_smi_larb_is_ready(struct device *larbdev)
++{
++	struct mtk_smi_larb *larb = dev_get_drvdata(larbdev);
++
++	return larb && larb->mmu;
++}
++EXPORT_SYMBOL_GPL(mtk_smi_larb_is_ready);
++
+ static int
+ mtk_smi_larb_bind(struct device *dev, struct device *master, void *data)
+ {
+diff --git a/include/soc/mediatek/smi.h b/include/soc/mediatek/smi.h
+index 8893c5e..f0690e0 100644
+--- a/include/soc/mediatek/smi.h
++++ b/include/soc/mediatek/smi.h
+@@ -33,6 +33,9 @@ struct mtk_smi_iommu {
+ 	struct mtk_smi_larb_iommu larb_imu[MTK_LARB_NR_MAX];
+ };
+ 
++/* Whether SMI-larb has probe done. */
++bool mtk_smi_larb_is_ready(struct device *larbdev);
++
+ /*
+  * mtk_smi_larb_get: Enable the power domain and clocks for this local arbiter.
+  *                   It also initialize some basic setting(like iommu).
+@@ -46,6 +49,11 @@ void mtk_smi_larb_put(struct device *larbdev);
+ 
+ #else
+ 
++static inline bool mtk_smi_larb_is_ready(struct device *larbdev)
++{
++	return false;
++}
++
+ static inline int mtk_smi_larb_get(struct device *larbdev)
+ {
+ 	return 0;
+-- 
+1.8.1.1.dirty
