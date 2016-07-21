@@ -1,393 +1,162 @@
-From: Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>
-Subject: Re: [PATCH v5 2/3] iio: adc: mt2701: Add Mediatek auxadc driver for
- mt2701.
-Date: Thu, 21 Jul 2016 10:05:05 +0200 (CEST)
-Message-ID: <alpine.DEB.2.02.1607210956290.30580@pmeerw.net>
-References: <1469085449-22679-1-git-send-email-zhiyong.tao@mediatek.com> <1469085449-22679-3-git-send-email-zhiyong.tao@mediatek.com>
+From: tiffany lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3 0/9] Add MT8173 Video Decoder Driver
+Date: Thu, 21 Jul 2016 17:12:08 +0800
+Message-ID: <1469092328.30095.11.camel@mtksdaap41>
+References: <1464611363-14936-1-git-send-email-tiffany.lin@mediatek.com>
+	 <577D0576.2050706@xs4all.nl> <1467886612.21382.18.camel@mtksdaap41>
+	 <e2952cc2-3abd-894e-9481-b91a45cf7891@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: TEXT/PLAIN; charset=US-ASCII
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469085449-22679-3-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <e2952cc2-3abd-894e-9481-b91a45cf7891-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Kamil Debski <k.debski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 21 Jul 2016, Zhiyong Tao wrote:
+Hi Hans,
 
-> Add Mediatek auxadc driver based on iio.
-> It will register a device in iio and support iio.
-> So thermal can read auxadc channel to sample data by iio device.
-> It is tested successfully on mt2701 platform.
-> Mt8173 and mt6577 platforms are not tested.
-> But the expectation is compatible.
-
-minor comments below, consider if you do another respin
- 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/iio/adc/Kconfig         |   13 ++
->  drivers/iio/adc/Makefile        |    1 +
->  drivers/iio/adc/mt6577_auxadc.c |  289 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 303 insertions(+)
->  create mode 100644 drivers/iio/adc/mt6577_auxadc.c
+On Fri, 2016-07-08 at 13:44 +0200, Hans Verkuil wrote:
+> On 07/07/2016 12:16 PM, tiffany lin wrote:
+> > Hi Hans,
+> > 
+> > 
+> > On Wed, 2016-07-06 at 15:19 +0200, Hans Verkuil wrote:
+> >> Hi Tiffany,
+> >>
+> >> I plan to review this patch series on Friday, but one obvious question is
+> >> what the reason for these failures is:
+> >>
+> >>> Input/Output configuration ioctls:
+> >>>         test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+> >>>         test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+> >>>         test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+> >>>         test VIDIOC_G/S_EDID: OK (Not Supported)
+> >>>
+> >>>         Control ioctls:
+> >>>                 test VIDIOC_QUERYCTRL/MENU: OK
+> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(357): g_ctrl returned an error (11)
+> >>>                 test VIDIOC_G/S_CTRL: FAIL
+> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(579): g_ext_ctrls returned an error (11)
+> >>>                 test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+> > These fails are because VIDIOC_G_CTRL and VIDIOC_G_EXT_CTRLS return
+> > V4L2_CID_MIN_BUFFERS_FOR_CAPTURE only when dirver in MTK_STATE_HEADER
+> > state, or it will return EAGAIN.
+> > This could help user space get correct value, not default value that may
+> > changed base on media content.
 > 
-> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> index 25378c5..14929fc 100644
-> --- a/drivers/iio/adc/Kconfig
-> +++ b/drivers/iio/adc/Kconfig
-> @@ -305,6 +305,19 @@ config MCP3422
->  	  This driver can also be built as a module. If so, the module will be
->  	  called mcp3422.
->  
-> +config MEDIATEK_MT6577_AUXADC
-> +        tristate "MediaTek AUXADC driver"
-> +        depends on ARCH_MEDIATEK || COMPILE_TEST
-> +        depends on HAS_IOMEM
-> +        help
-> +          Say yes here to enable support for MediaTek mt65xx AUXADC.
-> +
-> +          The driver supports immediate mode operation to read from one of sixteen
-> +          channels (external or internal).
-> +
-> +          This driver can also be built as a module. If so, the module will be
-> +          called mt6577_auxadc.
-> +
->  config MEN_Z188_ADC
->  	tristate "MEN 16z188 ADC IP Core support"
->  	depends on MCB
-> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-> index 38638d4..8306347 100644
-> --- a/drivers/iio/adc/Makefile
-> +++ b/drivers/iio/adc/Makefile
-> @@ -30,6 +30,7 @@ obj-$(CONFIG_MAX1027) += max1027.o
->  obj-$(CONFIG_MAX1363) += max1363.o
->  obj-$(CONFIG_MCP320X) += mcp320x.o
->  obj-$(CONFIG_MCP3422) += mcp3422.o
-> +obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
->  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
->  obj-$(CONFIG_MXS_LRADC) += mxs-lradc.o
->  obj-$(CONFIG_NAU7802) += nau7802.o
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> new file mode 100644
-> index 0000000..6240236
-> --- /dev/null
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -0,0 +1,289 @@
-> +/*
-> + * Copyright (c) 2016 MediaTek Inc.
-> + * Author: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/err.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/io.h>
-> +#include <linux/iio/iio.h>
-> +
-> +/* Register definitions */
-> +#define MT6577_AUXADC_CON0                    0x00
-> +#define MT6577_AUXADC_CON1                    0x04
-> +#define MT6577_AUXADC_CON2                    0x10
-> +#define MT6577_AUXADC_STA                     BIT(0)
-> +
-> +#define MT6577_AUXADC_DAT0                    0x14
-> +#define MT6577_AUXADC_RDY0                    BIT(12)
-> +
-> +#define MT6577_AUXADC_MISC                    0x94
-> +#define MT6577_AUXADC_PDN_EN                  BIT(14)
-> +
-> +#define MT6577_AUXADC_DAT_MASK                0xfff
-> +#define MT6577_AUXADC_SLEEP_US                1000
-> +#define MT6577_AUXADC_TIMEOUT_US              10000
-> +#define MT6577_AUXADC_POWER_READY_MS          1
-> +#define MT6577_AUXADC_SAMPLE_READY_US         25
-> +
-> +struct mt6577_auxadc_device {
-> +	void __iomem *reg_base;
-> +	struct clk *adc_clk;
-> +	struct mutex lock;
-> +};
-> +
-> +#define MT6577_AUXADC_CHANNEL(idx) {				    \
-> +		.type = IIO_VOLTAGE,				    \
-> +		.indexed = 1,					    \
-> +		.channel = (idx),				    \
-> +		.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED), \
-> +}
-> +
-> +static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
-> +	MT6577_AUXADC_CHANNEL(0),
-> +	MT6577_AUXADC_CHANNEL(1),
-> +	MT6577_AUXADC_CHANNEL(2),
-> +	MT6577_AUXADC_CHANNEL(3),
-> +	MT6577_AUXADC_CHANNEL(4),
-> +	MT6577_AUXADC_CHANNEL(5),
-> +	MT6577_AUXADC_CHANNEL(6),
-> +	MT6577_AUXADC_CHANNEL(7),
-> +	MT6577_AUXADC_CHANNEL(8),
-> +	MT6577_AUXADC_CHANNEL(9),
-> +	MT6577_AUXADC_CHANNEL(10),
-> +	MT6577_AUXADC_CHANNEL(11),
-> +	MT6577_AUXADC_CHANNEL(12),
-> +	MT6577_AUXADC_CHANNEL(13),
-> +	MT6577_AUXADC_CHANNEL(14),
-> +	MT6577_AUXADC_CHANNEL(15),
-> +};
-> +
-> +static int mt6577_auxadc_read(struct iio_dev *indio_dev,
-> +			      struct iio_chan_spec const *chan)
-> +{
-> +	u32 rawdata, val;
-
-could drop rawdata variable and use val instead
-
-> +	void __iomem *reg_channel;
-> +	int ret;
-> +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
-> +
-> +	reg_channel = adc_dev->reg_base + MT6577_AUXADC_DAT0 +
-> +		      chan->channel * 0x04;
-> +
-> +	mutex_lock(&adc_dev->lock);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +	val &= ~(1 << chan->channel);
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +
-> +	/* read channel and make sure old ready bit == 0 */
-> +	ret = readl_poll_timeout(reg_channel, val,
-> +				 ((val & MT6577_AUXADC_RDY0) == 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for channel[%d] ready bit clear time out\n",
-> +			chan->channel);
-> +
-> +		mutex_unlock(&adc_dev->lock);
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* set bit to trigger sample */
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +	val |= 1 << chan->channel;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +
-> +	/* we must delay here for hardware sample channel data */
-> +	udelay(MT6577_AUXADC_SAMPLE_READY_US);
-> +
-> +	/* check MTK_AUXADC_CON2 if auxadc is idle */
-> +	ret = readl_poll_timeout(adc_dev->reg_base + MT6577_AUXADC_CON2, val,
-> +				 ((val & MT6577_AUXADC_STA) == 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for auxadc idle time out\n");
-> +
-> +		mutex_unlock(&adc_dev->lock);
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* read channel and make sure ready bit == 1 */
-> +	ret = readl_poll_timeout(reg_channel, val,
-> +				 ((val & MT6577_AUXADC_RDY0) != 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for channel[%d] data ready time out\n",
-> +			chan->channel);
-> +
-> +		mutex_unlock(&adc_dev->lock);
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* read data */
-> +	rawdata = readl(reg_channel) & MT6577_AUXADC_DAT_MASK;
-> +
-> +	mutex_unlock(&adc_dev->lock);
-> +
-> +	return rawdata;
-> +}
-> +
-> +static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
-> +				  struct iio_chan_spec const *chan,
-> +				  int *val,
-> +				  int *val2,
-> +				  long info)
-> +{
-> +	switch (info) {
-> +	case IIO_CHAN_INFO_PROCESSED:
-> +		*val = mt6577_auxadc_read(indio_dev, chan);
-> +		if (*val < 0) {
-> +			dev_err(indio_dev->dev.parent,
-> +				"failed to sample data on channel[%d]\n",
-> +				chan->channel);
-> +			return *val;
-> +		}
-> +		return IIO_VAL_INT;
-> +
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static const struct iio_info mt6577_auxadc_info = {
-> +	.driver_module = THIS_MODULE,
-> +	.read_raw = &mt6577_auxadc_read_raw,
-> +};
-> +
-> +static int mt6577_auxadc_probe(struct platform_device *pdev)
-> +{
-> +	struct mt6577_auxadc_device *adc_dev;
-> +	unsigned long adc_clk_rate;
-> +	struct resource *res;
-> +	struct iio_dev *indio_dev;
-> +	int ret;
-> +	u32 val;
-> +
-> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
-> +	if (!indio_dev)
-> +		return -ENOMEM;
-> +
-> +	adc_dev = iio_priv(indio_dev);
-> +	indio_dev->dev.parent = &pdev->dev;
-> +	indio_dev->name = dev_name(&pdev->dev);
-> +	indio_dev->info = &mt6577_auxadc_info;
-> +	indio_dev->modes = INDIO_DIRECT_MODE;
-> +	indio_dev->channels = mt6577_auxadc_iio_channels;
-> +	indio_dev->num_channels = ARRAY_SIZE(mt6577_auxadc_iio_channels);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(adc_dev->reg_base)) {
-> +		dev_err(&pdev->dev, "failed to get auxadc base address.\n");
-
-this is the only error msg ending with a '.'
-
-> +		return PTR_ERR(adc_dev->reg_base);
-> +	}
-> +
-> +	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
-> +	if (IS_ERR(adc_dev->adc_clk)) {
-> +		dev_err(&pdev->dev, "failed to get auxadc clock\n");
-> +		return PTR_ERR(adc_dev->adc_clk);
-> +	}
-> +
-> +	ret = clk_prepare_enable(adc_dev->adc_clk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "failed to enable auxadc clock\n");
-> +		return ret;
-> +	}
-> +
-> +	adc_clk_rate = clk_get_rate(adc_dev->adc_clk);
-> +	if (!adc_clk_rate) {
-> +		dev_err(&pdev->dev, "null clock rate!\n");
-> +		goto err_disable_clk;
-> +	}
-> +
-> +	mutex_init(&adc_dev->lock);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val |= MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	mdelay(MT6577_AUXADC_POWER_READY_MS);
-> +
-> +	platform_set_drvdata(pdev, indio_dev);
-> +
-> +	ret = iio_device_register(indio_dev);
-> +	if (ret < 0) {
-> +		dev_err(&pdev->dev, "failed to register iio device!\n");
-> +		goto err_power_off;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_power_off:
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val &= ~MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +err_disable_clk:
-> +	clk_disable_unprepare(adc_dev->adc_clk);
-> +	return -EINVAL;
-
-not happy with inventing error codes; IMHO you should return the ret given 
-e.g. by iio_device_register()
-
-> +}
-> +
-> +static int mt6577_auxadc_remove(struct platform_device *pdev)
-> +{
-> +	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
-> +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
-> +	u32 val;
-> +
-> +	iio_device_unregister(indio_dev);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val &= ~MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-
-maybe the read/modify/write code sequence could be put into a function to 
-save some lines
-
-something like 
-mt6577_auxadc_mod_reg(reg, or_mask, and_mask) {
-val = readl(reg)
-val |= or_mask;
-val &= ~and_mask;
-writel(val, reg)
-}
-
-> +
-> +	clk_disable_unprepare(adc_dev->adc_clk);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id mt6577_auxadc_of_match[] = {
-> +	{ .compatible = "mediatek,mt2701-auxadc", },
-> +	{ .compatible = "mediatek,mt8173-auxadc", },
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6577_auxadc_of_match);
-> +
-> +static struct platform_driver mt6577_auxadc_driver = {
-> +	.driver = {
-> +		.name   = "mt6577-auxadc",
-> +		.of_match_table = mt6577_auxadc_of_match,
-> +	},
-> +	.probe	= mt6577_auxadc_probe,
-> +	.remove	= mt6577_auxadc_remove,
-> +};
-> +module_platform_driver(mt6577_auxadc_driver);
-> +
-> +MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +MODULE_DESCRIPTION("MTK AUXADC Device Driver");
-> +MODULE_LICENSE("GPL v2");
+> OK, I really don't like this. I also looked what the s5p-mfc-dec driver does (the only other
+> driver currently implementing this), and that returns -EINVAL.
 > 
+> My proposal would be to change this. If this information isn't known yet, why not
+> just return 0 as the value? The doc would have to be updated and (preferably) also
+> the s5p-mfc-dec driver. I've added Samsung devs to the Cc list, let me know what you
+> think.
+> 
+We are ok with just return 0 as the value when header not parsed yet
+We will update decoder with this solution.
 
--- 
 
-Peter Meerwald-Stadler
-+43-664-2444418 (mobile)
+> > 
+> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-controls.cpp(721): subscribe event for control 'User Controls' failed
+> >>>                 test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
+> > Driver do not support subscribe event for control 'User Controls' for
+> > now.
+> > Do we need to support this?
+> 
+> I don't see why this would fail. It's OK to subscribe to such controls, although
+> you'll never get an event.
+> 
+After upgrade to latest v4l-utils,this test pass.
+
+> >>>                 test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+> >>>                 Standard Controls: 2 Private Controls: 0
+> >>>
+> >>>         Format ioctls:
+> >>>                 test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+> >>>                 test VIDIOC_G/S_PARM: OK (Not Supported)
+> >>>                 test VIDIOC_G_FBUF: OK (Not Supported)
+> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-formats.cpp(405): expected EINVAL, but got 11 when getting format for buftype 9
+> >>>                 test VIDIOC_G_FMT: FAIL
+> > This is because vidioc_vdec_g_fmt only succeed when context is in
+> > MTK_STATE_HEADER state, or user space cannot get correct format data
+> > using this function.
+> 
+> Comparing this to s5p-mfc-dec I see that -EINVAL is returned in that case.
+> 
+> I am not opposed to using EAGAIN in s5p-mfc-dec as well. Marek, Kamil, what is
+> your opinion?
+> 
+> > 
+> >>>                 test VIDIOC_TRY_FMT: OK (Not Supported)
+> >>>                 test VIDIOC_S_FMT: OK (Not Supported)
+> >>>                 test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+> >>>
+> >>>         Codec ioctls:
+> >>>                 test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+> >>>                 test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+> >>>                 test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+> >>>
+> >>>         Buffer ioctls:
+> >>>                 test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+> >>>                 fail: ../../../v4l-utils-1.6.0/utils/v4l2-compliance/v4l2-test-buffers.cpp(500): q.has_expbuf(node)
+> > Our OUTPUT and CAPTURE queue support both VB2_DMABUF and VB2_MMAP, user
+> > space can select which to use in runtime.
+> > So our driver default support v4l2_m2m_ioctl_expbuf functionality.
+> > In v4l2-compliance test, it will check v4l2_m2m_ioctl_expbuf only valid
+> > when node->valid_memorytype is V4L2_MEMORY_MMAP.
+> > So when go through node->valid_memorytype is V4L2_MEMORY_DMABUF, it
+> > fail.
+> 
+> valid_memorytype should have both MMAP and DMABUF flags.
+> 
+> But v4l-utils-1.6.0 is way too old to be certain it isn't some v4l2-compliance bug
+> that has since been fixed.
+After upgrade to latest v4l-utils, I still see this issue.
+
+test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+fail: v4l2-test-buffers.cpp(571): q.has_expbuf(node)
+
+best regards,
+Tiffany
+
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> > 
+> > 
+> > best regards,
+> > Tiffany
+> > 
+> > 
+> > 
+> >>>                 test VIDIOC_EXPBUF: FAIL
+> >>>
+> >>>
+> >>> Total: 38, Succeeded: 33, Failed: 5, Warnings: 0
+> >>
+> >> If it is due to a bug in v4l2-compliance, then let me know and I'll fix it. If not,
+> >> then it should be fixed in the driver.
+> >>
+> >> Frankly, it was the presence of these failures that made me think this patch series
+> >> wasn't final. Before a v4l2 driver can be accepted in the kernel, v4l2-compliance must pass.
+> >>
+> >> Regards,
+> >>
+> >> 	Hans
+> > 
+> > 
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> > the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > 
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
