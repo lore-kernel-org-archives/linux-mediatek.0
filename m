@@ -1,375 +1,155 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 2/3] iio: adc: mt2701: Add Mediatek auxadc driver for
- mt2701.
-Date: Sat, 23 Jul 2016 07:49:31 +0200
-Message-ID: <ee510c3e-451b-af15-b32c-ec78a7c69aef@kernel.org>
-References: <1469085449-22679-1-git-send-email-zhiyong.tao@mediatek.com>
- <1469085449-22679-3-git-send-email-zhiyong.tao@mediatek.com>
+From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v5 3/3] arm: dts: mt2701: Add auxadc node.
+Date: Sun, 24 Jul 2016 07:00:53 +0800
+Message-ID: <201607240649.gukdrhZS%fengguang.wu@intel.com>
+References: <1469085449-22679-4-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="OXfL5xGRrasGEqWY"
 Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469085449-22679-3-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1469085449-22679-4-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: kbuild-all-JC7UmRfGjtg@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 21/07/16 09:17, Zhiyong Tao wrote:
-> Add Mediatek auxadc driver based on iio.
-> It will register a device in iio and support iio.
-> So thermal can read auxadc channel to sample data by iio device.
-> It is tested successfully on mt2701 platform.
-> Mt8173 and mt6577 platforms are not tested.
-> But the expectation is compatible.
-> 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-As you are re spinning anyway to address Peter's comments one
-more minor point from me inline
 
-Shaping up to be a nice little driver.
+--OXfL5xGRrasGEqWY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Jonathan
-> ---
->  drivers/iio/adc/Kconfig         |   13 ++
->  drivers/iio/adc/Makefile        |    1 +
->  drivers/iio/adc/mt6577_auxadc.c |  289 +++++++++++++++++++++++++++++++++++++++
->  3 files changed, 303 insertions(+)
->  create mode 100644 drivers/iio/adc/mt6577_auxadc.c
-> 
-> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> index 25378c5..14929fc 100644
-> --- a/drivers/iio/adc/Kconfig
-> +++ b/drivers/iio/adc/Kconfig
-> @@ -305,6 +305,19 @@ config MCP3422
->  	  This driver can also be built as a module. If so, the module will be
->  	  called mcp3422.
->  
-> +config MEDIATEK_MT6577_AUXADC
-> +        tristate "MediaTek AUXADC driver"
-> +        depends on ARCH_MEDIATEK || COMPILE_TEST
-> +        depends on HAS_IOMEM
-> +        help
-> +          Say yes here to enable support for MediaTek mt65xx AUXADC.
-> +
-> +          The driver supports immediate mode operation to read from one of sixteen
-> +          channels (external or internal).
-> +
-> +          This driver can also be built as a module. If so, the module will be
-> +          called mt6577_auxadc.
-> +
->  config MEN_Z188_ADC
->  	tristate "MEN 16z188 ADC IP Core support"
->  	depends on MCB
-> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-> index 38638d4..8306347 100644
-> --- a/drivers/iio/adc/Makefile
-> +++ b/drivers/iio/adc/Makefile
-> @@ -30,6 +30,7 @@ obj-$(CONFIG_MAX1027) += max1027.o
->  obj-$(CONFIG_MAX1363) += max1363.o
->  obj-$(CONFIG_MCP320X) += mcp320x.o
->  obj-$(CONFIG_MCP3422) += mcp3422.o
-> +obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
->  obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
->  obj-$(CONFIG_MXS_LRADC) += mxs-lradc.o
->  obj-$(CONFIG_NAU7802) += nau7802.o
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> new file mode 100644
-> index 0000000..6240236
-> --- /dev/null
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -0,0 +1,289 @@
-> +/*
-> + * Copyright (c) 2016 MediaTek Inc.
-> + * Author: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/err.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/io.h>
-> +#include <linux/iio/iio.h>
-> +
-> +/* Register definitions */
-> +#define MT6577_AUXADC_CON0                    0x00
-> +#define MT6577_AUXADC_CON1                    0x04
-> +#define MT6577_AUXADC_CON2                    0x10
-> +#define MT6577_AUXADC_STA                     BIT(0)
-> +
-> +#define MT6577_AUXADC_DAT0                    0x14
-> +#define MT6577_AUXADC_RDY0                    BIT(12)
-> +
-> +#define MT6577_AUXADC_MISC                    0x94
-> +#define MT6577_AUXADC_PDN_EN                  BIT(14)
-> +
-> +#define MT6577_AUXADC_DAT_MASK                0xfff
-> +#define MT6577_AUXADC_SLEEP_US                1000
-> +#define MT6577_AUXADC_TIMEOUT_US              10000
-> +#define MT6577_AUXADC_POWER_READY_MS          1
-> +#define MT6577_AUXADC_SAMPLE_READY_US         25
-> +
-> +struct mt6577_auxadc_device {
-> +	void __iomem *reg_base;
-> +	struct clk *adc_clk;
-> +	struct mutex lock;
-> +};
-> +
-> +#define MT6577_AUXADC_CHANNEL(idx) {				    \
-> +		.type = IIO_VOLTAGE,				    \
-> +		.indexed = 1,					    \
-> +		.channel = (idx),				    \
-> +		.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED), \
-> +}
-> +
-> +static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
-> +	MT6577_AUXADC_CHANNEL(0),
-> +	MT6577_AUXADC_CHANNEL(1),
-> +	MT6577_AUXADC_CHANNEL(2),
-> +	MT6577_AUXADC_CHANNEL(3),
-> +	MT6577_AUXADC_CHANNEL(4),
-> +	MT6577_AUXADC_CHANNEL(5),
-> +	MT6577_AUXADC_CHANNEL(6),
-> +	MT6577_AUXADC_CHANNEL(7),
-> +	MT6577_AUXADC_CHANNEL(8),
-> +	MT6577_AUXADC_CHANNEL(9),
-> +	MT6577_AUXADC_CHANNEL(10),
-> +	MT6577_AUXADC_CHANNEL(11),
-> +	MT6577_AUXADC_CHANNEL(12),
-> +	MT6577_AUXADC_CHANNEL(13),
-> +	MT6577_AUXADC_CHANNEL(14),
-> +	MT6577_AUXADC_CHANNEL(15),
-> +};
-> +
-> +static int mt6577_auxadc_read(struct iio_dev *indio_dev,
-> +			      struct iio_chan_spec const *chan)
-> +{
-> +	u32 rawdata, val;
-> +	void __iomem *reg_channel;
-> +	int ret;
-> +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
-> +
-> +	reg_channel = adc_dev->reg_base + MT6577_AUXADC_DAT0 +
-> +		      chan->channel * 0x04;
-> +
-> +	mutex_lock(&adc_dev->lock);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +	val &= ~(1 << chan->channel);
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +
-> +	/* read channel and make sure old ready bit == 0 */
-> +	ret = readl_poll_timeout(reg_channel, val,
-> +				 ((val & MT6577_AUXADC_RDY0) == 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for channel[%d] ready bit clear time out\n",
-> +			chan->channel);
-> +
-> +		mutex_unlock(&adc_dev->lock);
-I'd prefer a goto taking us to the mutex unlock a the
-end of the driver.  Makes it harder to get editing
-this driver and breaking the locking wrong in the
-future!
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* set bit to trigger sample */
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +	val |= 1 << chan->channel;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_CON1);
-> +
-> +	/* we must delay here for hardware sample channel data */
-> +	udelay(MT6577_AUXADC_SAMPLE_READY_US);
-> +
-> +	/* check MTK_AUXADC_CON2 if auxadc is idle */
-> +	ret = readl_poll_timeout(adc_dev->reg_base + MT6577_AUXADC_CON2, val,
-> +				 ((val & MT6577_AUXADC_STA) == 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for auxadc idle time out\n");
-> +
-> +		mutex_unlock(&adc_dev->lock);
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* read channel and make sure ready bit == 1 */
-> +	ret = readl_poll_timeout(reg_channel, val,
-> +				 ((val & MT6577_AUXADC_RDY0) != 0),
-> +				 MT6577_AUXADC_SLEEP_US,
-> +				 MT6577_AUXADC_TIMEOUT_US);
-> +	if (ret < 0) {
-> +		dev_err(indio_dev->dev.parent,
-> +			"wait for channel[%d] data ready time out\n",
-> +			chan->channel);
-> +
-> +		mutex_unlock(&adc_dev->lock);
-> +
-> +		return -ETIMEDOUT;
-> +	}
-> +
-> +	/* read data */
-> +	rawdata = readl(reg_channel) & MT6577_AUXADC_DAT_MASK;
-> +
-> +	mutex_unlock(&adc_dev->lock);
-> +
-> +	return rawdata;
-> +}
-> +
-> +static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
-> +				  struct iio_chan_spec const *chan,
-> +				  int *val,
-> +				  int *val2,
-> +				  long info)
-> +{
-> +	switch (info) {
-> +	case IIO_CHAN_INFO_PROCESSED:
-> +		*val = mt6577_auxadc_read(indio_dev, chan);
-> +		if (*val < 0) {
-> +			dev_err(indio_dev->dev.parent,
-> +				"failed to sample data on channel[%d]\n",
-> +				chan->channel);
-> +			return *val;
-> +		}
-> +		return IIO_VAL_INT;
-> +
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static const struct iio_info mt6577_auxadc_info = {
-> +	.driver_module = THIS_MODULE,
-> +	.read_raw = &mt6577_auxadc_read_raw,
-> +};
-> +
-> +static int mt6577_auxadc_probe(struct platform_device *pdev)
-> +{
-> +	struct mt6577_auxadc_device *adc_dev;
-> +	unsigned long adc_clk_rate;
-> +	struct resource *res;
-> +	struct iio_dev *indio_dev;
-> +	int ret;
-> +	u32 val;
-> +
-> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*adc_dev));
-> +	if (!indio_dev)
-> +		return -ENOMEM;
-> +
-> +	adc_dev = iio_priv(indio_dev);
-> +	indio_dev->dev.parent = &pdev->dev;
-> +	indio_dev->name = dev_name(&pdev->dev);
-> +	indio_dev->info = &mt6577_auxadc_info;
-> +	indio_dev->modes = INDIO_DIRECT_MODE;
-> +	indio_dev->channels = mt6577_auxadc_iio_channels;
-> +	indio_dev->num_channels = ARRAY_SIZE(mt6577_auxadc_iio_channels);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
-> +	if (IS_ERR(adc_dev->reg_base)) {
-> +		dev_err(&pdev->dev, "failed to get auxadc base address.\n");
-> +		return PTR_ERR(adc_dev->reg_base);
-> +	}
-> +
-> +	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
-> +	if (IS_ERR(adc_dev->adc_clk)) {
-> +		dev_err(&pdev->dev, "failed to get auxadc clock\n");
-> +		return PTR_ERR(adc_dev->adc_clk);
-> +	}
-> +
-> +	ret = clk_prepare_enable(adc_dev->adc_clk);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "failed to enable auxadc clock\n");
-> +		return ret;
-> +	}
-> +
-> +	adc_clk_rate = clk_get_rate(adc_dev->adc_clk);
-> +	if (!adc_clk_rate) {
-> +		dev_err(&pdev->dev, "null clock rate!\n");
-> +		goto err_disable_clk;
-> +	}
-> +
-> +	mutex_init(&adc_dev->lock);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val |= MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	mdelay(MT6577_AUXADC_POWER_READY_MS);
-> +
-> +	platform_set_drvdata(pdev, indio_dev);
-> +
-> +	ret = iio_device_register(indio_dev);
-> +	if (ret < 0) {
-> +		dev_err(&pdev->dev, "failed to register iio device!\n");
-> +		goto err_power_off;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_power_off:
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val &= ~MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +err_disable_clk:
-> +	clk_disable_unprepare(adc_dev->adc_clk);
-> +	return -EINVAL;
-> +}
-> +
-> +static int mt6577_auxadc_remove(struct platform_device *pdev)
-> +{
-> +	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
-> +	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
-> +	u32 val;
-> +
-> +	iio_device_unregister(indio_dev);
-> +
-> +	val = readl(adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +	val &= ~MT6577_AUXADC_PDN_EN;
-> +	writel(val, adc_dev->reg_base + MT6577_AUXADC_MISC);
-> +
-> +	clk_disable_unprepare(adc_dev->adc_clk);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct of_device_id mt6577_auxadc_of_match[] = {
-> +	{ .compatible = "mediatek,mt2701-auxadc", },
-> +	{ .compatible = "mediatek,mt8173-auxadc", },
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6577_auxadc_of_match);
-> +
-> +static struct platform_driver mt6577_auxadc_driver = {
-> +	.driver = {
-> +		.name   = "mt6577-auxadc",
-> +		.of_match_table = mt6577_auxadc_of_match,
-> +	},
-> +	.probe	= mt6577_auxadc_probe,
-> +	.remove	= mt6577_auxadc_remove,
-> +};
-> +module_platform_driver(mt6577_auxadc_driver);
-> +
-> +MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +MODULE_DESCRIPTION("MTK AUXADC Device Driver");
-> +MODULE_LICENSE("GPL v2");
-> 
+Hi,
+
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on v4.7-rc7 next-20160722]
+[if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
+
+url:    https://github.com/0day-ci/linux/commits/Zhiyong-Tao/AUXADC-Mediatek-auxadc-driver/20160724-043228
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+config: arm-allnoconfig (attached as .config)
+compiler: arm-linux-gnueabi-gcc (Debian 5.4.0-6) 5.4.0 20160609
+reproduce:
+        wget https://git.kernel.org/cgit/linux/kernel/git/wfg/lkp-tests.git/plain/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # save the attached .config to linux build tree
+        make.cross ARCH=arm 
+
+All errors (new ones prefixed by >>):
+
+   Error: arch/arm/boot/dts/mt2701.dtsi:145.22-23 syntax error
+>> FATAL ERROR: Unable to parse input tree
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+
+--OXfL5xGRrasGEqWY
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename=".config.gz"
+Content-Transfer-Encoding: base64
+
+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
+cRUaL7KYpEETXrEV+F5+UKD8/8EhZSe7SwAA
+
+--OXfL5xGRrasGEqWY--
