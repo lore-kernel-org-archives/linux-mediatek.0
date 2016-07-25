@@ -1,163 +1,207 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: Re: [PATCH 2/4] drm/mediatek: enhance the HDMI driving current
-Date: Mon, 25 Jul 2016 14:15:35 +0800
-Message-ID: <1469427335.26205.12.camel@mtksdaap41>
+Subject: Re: [PATCH 3/4] drm/mediatek: fix the wrong pixel clock when
+ resolution is 4K
+Date: Mon, 25 Jul 2016 14:24:05 +0800
+Message-ID: <1469427845.26205.17.camel@mtksdaap41>
 References: <1468987385-37353-1-git-send-email-bibby.hsieh@mediatek.com>
-	 <1468987385-37353-3-git-send-email-bibby.hsieh@mediatek.com>
-	 <1468998902.11841.54.camel@mtksdaap41>
+ <1468987385-37353-4-git-send-email-bibby.hsieh@mediatek.com>
+ <1469001443.11841.59.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1468998902.11841.54.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469001443.11841.59.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Junzhi Zhao <junzhi.zhao@mediatek.com>
+Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, CK,
-
-I'm appreciate your comment.
-
-On Wed, 2016-07-20 at 15:15 +0800, CK Hu wrote:
-> Hi, Bibby:
-> 
-> One comment inline.
-> 
-> On Wed, 2016-07-20 at 12:03 +0800, Bibby Hsieh wrote:
-> > From: Junzhi Zhao <junzhi.zhao@mediatek.com>
-> > 
-> > In order to improve 4K resolution performance,
-> > we have to enhance the HDMI driving currend
-> > when clock rate is greater than 165MHz.
-> > 
-> > Signed-off-by: Junzhi Zhao <junzhi.zhao@mediatek.com>
-> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |   89 +++++++++++++++++-------
-> >  1 file changed, 63 insertions(+), 26 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> > index 8a24754..a871c14 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c
-> > @@ -298,32 +298,69 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-> >  			  (0x1 << PLL_BR_SHIFT),
-> >  			  RG_HDMITX_PLL_BP | RG_HDMITX_PLL_BC |
-> >  			  RG_HDMITX_PLL_BR);
-> > -	mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON3, RG_HDMITX_PRD_IMP_EN);
-> > -	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON4,
-> > -			  (0x3 << PRD_IBIAS_CLK_SHIFT) |
-> > -			  (0x3 << PRD_IBIAS_D2_SHIFT) |
-> > -			  (0x3 << PRD_IBIAS_D1_SHIFT) |
-> > -			  (0x3 << PRD_IBIAS_D0_SHIFT),
-> > -			  RG_HDMITX_PRD_IBIAS_CLK |
-> > -			  RG_HDMITX_PRD_IBIAS_D2 |
-> > -			  RG_HDMITX_PRD_IBIAS_D1 |
-> > -			  RG_HDMITX_PRD_IBIAS_D0);
-> > -	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON3,
-> > -			  (0x0 << DRV_IMP_EN_SHIFT), RG_HDMITX_DRV_IMP_EN);
-> > -	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6,
-> > -			  (hdmi_phy->drv_imp_clk << DRV_IMP_CLK_SHIFT) |
-> > -			  (hdmi_phy->drv_imp_d2 << DRV_IMP_D2_SHIFT) |
-> > -			  (hdmi_phy->drv_imp_d1 << DRV_IMP_D1_SHIFT) |
-> > -			  (hdmi_phy->drv_imp_d0 << DRV_IMP_D0_SHIFT),
-> > -			  RG_HDMITX_DRV_IMP_CLK | RG_HDMITX_DRV_IMP_D2 |
-> > -			  RG_HDMITX_DRV_IMP_D1 | RG_HDMITX_DRV_IMP_D0);
-> > -	mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON5,
-> > -			  (hdmi_phy->ibias << DRV_IBIAS_CLK_SHIFT) |
-> > -			  (hdmi_phy->ibias << DRV_IBIAS_D2_SHIFT) |
-> > -			  (hdmi_phy->ibias << DRV_IBIAS_D1_SHIFT) |
-> > -			  (hdmi_phy->ibias << DRV_IBIAS_D0_SHIFT),
-> > -			  RG_HDMITX_DRV_IBIAS_CLK | RG_HDMITX_DRV_IBIAS_D2 |
-> > -			  RG_HDMITX_DRV_IBIAS_D1 | RG_HDMITX_DRV_IBIAS_D0);
-> > +	if (rate < 165000000) {
-> > +		mtk_hdmi_phy_clear_bits(hdmi_phy, HDMI_CON3,
-> > +					RG_HDMITX_PRD_IMP_EN);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON4,
-> > +				  (0x3 << PRD_IBIAS_CLK_SHIFT) |
-> > +				  (0x3 << PRD_IBIAS_D2_SHIFT) |
-> > +				  (0x3 << PRD_IBIAS_D1_SHIFT) |
-> > +				  (0x3 << PRD_IBIAS_D0_SHIFT),
-> > +				  RG_HDMITX_PRD_IBIAS_CLK |
-> > +				  RG_HDMITX_PRD_IBIAS_D2 |
-> > +				  RG_HDMITX_PRD_IBIAS_D1 |
-> > +				  RG_HDMITX_PRD_IBIAS_D0);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON3,
-> > +				  (0x0 << DRV_IMP_EN_SHIFT),
-> > +				  RG_HDMITX_DRV_IMP_EN);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6,
-> > +				  (hdmi_phy->drv_imp_clk << DRV_IMP_CLK_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d2 << DRV_IMP_D2_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d1 << DRV_IMP_D1_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d0 << DRV_IMP_D0_SHIFT),
-> > +				  RG_HDMITX_DRV_IMP_CLK | RG_HDMITX_DRV_IMP_D2 |
-> > +				  RG_HDMITX_DRV_IMP_D1 | RG_HDMITX_DRV_IMP_D0);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON5,
-> > +				  (hdmi_phy->ibias << DRV_IBIAS_CLK_SHIFT) |
-> > +				  (hdmi_phy->ibias << DRV_IBIAS_D2_SHIFT) |
-> > +				  (hdmi_phy->ibias << DRV_IBIAS_D1_SHIFT) |
-> > +				  (hdmi_phy->ibias << DRV_IBIAS_D0_SHIFT),
-> > +				  RG_HDMITX_DRV_IBIAS_CLK |
-> > +				  RG_HDMITX_DRV_IBIAS_D2 |
-> > +				  RG_HDMITX_DRV_IBIAS_D1 |
-> > +				  RG_HDMITX_DRV_IBIAS_D0);
-> > +	} else {
-> > +		mtk_hdmi_phy_set_bits(hdmi_phy, HDMI_CON3,
-> > +				      RG_HDMITX_PRD_IMP_EN);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON4,
-> > +				  (0x6 << PRD_IBIAS_CLK_SHIFT) |
-> > +				  (0x6 << PRD_IBIAS_D2_SHIFT) |
-> > +				  (0x6 << PRD_IBIAS_D1_SHIFT) |
-> > +				  (0x6 << PRD_IBIAS_D0_SHIFT),
-> > +				  RG_HDMITX_PRD_IBIAS_CLK |
-> > +				  RG_HDMITX_PRD_IBIAS_D2 |
-> > +				  RG_HDMITX_PRD_IBIAS_D1 |
-> > +				  RG_HDMITX_PRD_IBIAS_D0);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON3,
-> > +				  (0xf << DRV_IMP_EN_SHIFT),
-> > +				  RG_HDMITX_DRV_IMP_EN);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON6,
-> > +				  (hdmi_phy->drv_imp_clk << DRV_IMP_CLK_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d2 << DRV_IMP_D2_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d1 << DRV_IMP_D1_SHIFT) |
-> > +				  (hdmi_phy->drv_imp_d0 << DRV_IMP_D0_SHIFT),
-> > +				  RG_HDMITX_DRV_IMP_CLK | RG_HDMITX_DRV_IMP_D2 |
-> > +				  RG_HDMITX_DRV_IMP_D1 | RG_HDMITX_DRV_IMP_D0);
-> > +		mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON5,
-> > +				  (hdmi_phy->ibias_up << DRV_IBIAS_CLK_SHIFT) |
-> > +				  (hdmi_phy->ibias_up << DRV_IBIAS_D2_SHIFT) |
-> > +				  (hdmi_phy->ibias_up << DRV_IBIAS_D1_SHIFT) |
-> > +				  (hdmi_phy->ibias_up << DRV_IBIAS_D0_SHIFT),
-> > +				  RG_HDMITX_DRV_IBIAS_CLK |
-> > +				  RG_HDMITX_DRV_IBIAS_D2 |
-> > +				  RG_HDMITX_DRV_IBIAS_D1 |
-> > +				  RG_HDMITX_DRV_IBIAS_D0);
-> > +	}
-> 
-> 'if' part and 'else' part looks almost the same. Use variable for
-> difference and merge these two part. For example:
-> 
-> if (rate < 165000000)
-> 	prd_ibias = 0x3;
-> else
-> 	prd_ibias = 0x6;
-> 
-> mtk_hdmi_phy_mask(hdmi_phy, HDMI_CON4,
-> 		  (prd_ibias << PRD_IBIAS_CLK_SHIFT) |
-> 		  (prd_ibias << PRD_IBIAS_D2_SHIFT) |
-> 		  (prd_ibias << PRD_IBIAS_D1_SHIFT) |
-> 		  (prd_ibias << PRD_IBIAS_D0_SHIFT),
-> 		  RG_HDMITX_PRD_IBIAS_CLK |
-> 		  RG_HDMITX_PRD_IBIAS_D2 |
-> 		  RG_HDMITX_PRD_IBIAS_D1 |
-> 		  RG_HDMITX_PRD_IBIAS_D0);
-> 
-> >  	return 0;
-> >  }
-> >  
-Ok, I will use variable instead of that.
-> 
-> Regards,
-> CK
-> 
+SGksIENLLAoKVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLgoKT24gV2VkLCAyMDE2LTA3LTIwIGF0
+IDE1OjU3ICswODAwLCBDSyBIdSB3cm90ZToKPiBIaSwgQmliYnk6Cj4gCj4gU29tZSBjb21tZW50
+cyBpbmxpbmUuCj4gCj4gT24gV2VkLCAyMDE2LTA3LTIwIGF0IDEyOjAzICswODAwLCBCaWJieSBI
+c2llaCB3cm90ZToKPiA+IEZyb206IEp1bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5j
+b20+Cj4gPiAKPiA+IFBpeGVsIGNsb2NrIHNob3VsZCBiZSAyOTdNSHogd2hlbiByZXNvbHV0aW9u
+IGlzIDRLLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBKdW56aGkgWmhhbyA8anVuemhpLnpoYW9A
+bWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVo
+QG1lZGlhdGVrLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHBpLmMgfCAgMTg0ICsrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+ID4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxMzEgaW5zZXJ0aW9ucygrKSwgNTMgZGVsZXRpb25zKC0pCj4gPiAKPiA+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+ID4gaW5kZXggZDA1Y2E3OS4uYzBmMDRkMiAx
+MDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiA+ICsr
+KyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMKPiA+IEBAIC02MCwxNCArNjAs
+MzUgQEAgZW51bSBtdGtfZHBpX291dF9jb2xvcl9mb3JtYXQgewo+ID4gIAlNVEtfRFBJX0NPTE9S
+X0ZPUk1BVF9ZQ0JDUl80MjJfRlVMTAo+ID4gIH07Cj4gPiAgCj4gPiArZW51bSBtdGtfZHBpX2Ns
+a19pZCB7Cj4gPiArCU1US19EUElfQ0xLX0RQSV9FTkdJTkUsCj4gPiArCU1US19EUElfQ0xLX0RQ
+SV9QSVhFTCwKPiA+ICsJTVRLX0RQSV9DTEtfVFZEX1BMTCwKPiA+ICsJTVRLX0RQSV9DTEtfVFZE
+UExMX01VWCwKPiA+ICsJTVRLX0RQSV9DTEtfVFZEUExMX0QyLAo+ID4gKwlNVEtfRFBJX0NMS19U
+VkRQTExfRDQsCj4gPiArCU1US19EUElfQ0xLX1RWRFBMTF9EOCwKPiA+ICsJTVRLX0RQSV9DTEtf
+VFZEUExMX0QxNiwKPiA+ICsJTVRLX0RQSV9DTEtfQ09VTlQsCj4gPiArfTsKPiA+ICsKPiA+ICtz
+dGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IG10a19kcGlfY2xrX25hbWVzW01US19EUElfQ0xLX0NP
+VU5UXSA9IHsKPiA+ICsJW01US19EUElfQ0xLX0RQSV9FTkdJTkVdID0gImVuZ2luZSIsCj4gPiAr
+CVtNVEtfRFBJX0NMS19EUElfUElYRUxdID0gInBpeGVsIiwKPiA+ICsJW01US19EUElfQ0xLX1RW
+RF9QTExdID0gInBsbCIsCj4gPiArCVtNVEtfRFBJX0NMS19UVkRQTExfTVVYXSA9ICJ0dmRwbGxf
+bXV4IiwKPiA+ICsJW01US19EUElfQ0xLX1RWRFBMTF9EMl0gPSAidHZkcGxsX2QyIiwKPiA+ICsJ
+W01US19EUElfQ0xLX1RWRFBMTF9ENF0gPSAidHZkcGxsX2Q0IiwKPiA+ICsJW01US19EUElfQ0xL
+X1RWRFBMTF9EOF0gPSAidHZkcGxsX2Q4IiwKPiA+ICsJW01US19EUElfQ0xLX1RWRFBMTF9EMTZd
+ID0gInR2ZHBsbF9kMTYiLAo+ID4gK307Cj4gPiArCj4gPiAgc3RydWN0IG10a19kcGkgewo+ID4g
+IAlzdHJ1Y3QgbXRrX2RkcF9jb21wIGRkcF9jb21wOwo+ID4gIAlzdHJ1Y3QgZHJtX2VuY29kZXIg
+ZW5jb2RlcjsKPiA+ICAJdm9pZCBfX2lvbWVtICpyZWdzOwo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpk
+ZXY7Cj4gPiAtCXN0cnVjdCBjbGsgKmVuZ2luZV9jbGs7Cj4gPiAtCXN0cnVjdCBjbGsgKnBpeGVs
+X2NsazsKPiA+IC0Jc3RydWN0IGNsayAqdHZkX2NsazsKPiA+ICsJc3RydWN0IGNsayAqY2xrW01U
+S19EUElfQ0xLX0NPVU5UXTsKPiA+ICAJaW50IGlycTsKPiA+ICAJc3RydWN0IGRybV9kaXNwbGF5
+X21vZGUgbW9kZTsKPiA+ICAJZW51bSBtdGtfZHBpX291dF9jb2xvcl9mb3JtYXQgY29sb3JfZm9y
+bWF0Owo+ID4gQEAgLTc2LDYgKzk3LDcgQEAgc3RydWN0IG10a19kcGkgewo+ID4gIAllbnVtIG10
+a19kcGlfb3V0X2NoYW5uZWxfc3dhcCBjaGFubmVsX3N3YXA7Cj4gPiAgCWJvb2wgcG93ZXJfc3Rh
+Owo+ID4gIAl1OCBwb3dlcl9jdGw7Cj4gPiArCXZvaWQgKmRhdGE7Cj4gPiAgfTsKPiA+ICAKPiA+
+ICBzdGF0aWMgaW5saW5lIHN0cnVjdCBtdGtfZHBpICptdGtfZHBpX2Zyb21fZW5jb2RlcihzdHJ1
+Y3QgZHJtX2VuY29kZXIgKmUpCj4gPiBAQCAtMTE0LDYgKzEzNiwxMSBAQCBzdHJ1Y3QgbXRrX2Rw
+aV95Y19saW1pdCB7Cj4gPiAgCXUxNiBjX2JvdHRvbTsKPiA+ICB9Owo+ID4gIAo+ID4gK3N0cnVj
+dCBtdGtfZHBpX2NvbmYgewo+ID4gKwlpbnQgKCpwYXJzZV9jbGtfZnJvbV9kdCkoc3RydWN0IG10
+a19kcGkgKmRwaSwgc3RydWN0IGRldmljZV9ub2RlICpucCk7Cj4gPiArCWludCAoKmNsa19jb25m
+aWcpKHN0cnVjdCBtdGtfZHBpICpkcGksIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKTsK
+PiA+ICt9Owo+ID4gKwo+ID4gIHN0YXRpYyB2b2lkIG10a19kcGlfbWFzayhzdHJ1Y3QgbXRrX2Rw
+aSAqZHBpLCB1MzIgb2Zmc2V0LCB1MzIgdmFsLCB1MzIgbWFzaykKPiA+ICB7Cj4gPiAgCXUzMiB0
+bXAgPSByZWFkbChkcGktPnJlZ3MgKyBvZmZzZXQpICYgfm1hc2s7Cj4gPiBAQCAtMzc3LDggKzQw
+NCw4IEBAIHN0YXRpYyB2b2lkIG10a19kcGlfcG93ZXJfb2ZmKHN0cnVjdCBtdGtfZHBpICpkcGks
+IGVudW0gbXRrX2RwaV9wb3dlcl9jdGwgcGN0bCkKPiA+ICAJCXJldHVybjsKPiA+ICAKPiA+ICAJ
+bXRrX2RwaV9kaXNhYmxlKGRwaSk7Cj4gPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPnBp
+eGVsX2Nsayk7Cj4gPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPmVuZ2luZV9jbGspOwo+
+ID4gKwljbGtfZGlzYWJsZV91bnByZXBhcmUoZHBpLT5jbGtbTVRLX0RQSV9DTEtfRFBJX1BJWEVM
+XSk7Cj4gPiArCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPmNsa1tNVEtfRFBJX0NMS19EUElf
+RU5HSU5FXSk7Cj4gPiAgCWRwaS0+cG93ZXJfc3RhID0gZmFsc2U7Cj4gPiAgfQo+ID4gIAo+ID4g
+QEAgLTM5NSwxMyArNDIyLDEzIEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9wb3dlcl9vbihzdHJ1Y3Qg
+bXRrX2RwaSAqZHBpLCBlbnVtIG10a19kcGlfcG93ZXJfY3RsIHBjdGwpCj4gPiAgCWlmIChkcGkt
+PnBvd2VyX3N0YSkKPiA+ICAJCXJldHVybiAwOwo+ID4gIAo+ID4gLQlyZXQgPSBjbGtfcHJlcGFy
+ZV9lbmFibGUoZHBpLT5lbmdpbmVfY2xrKTsKPiA+ICsJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxl
+KGRwaS0+Y2xrW01US19EUElfQ0xLX0RQSV9FTkdJTkVdKTsKPiA+ICAJaWYgKHJldCkgewo+ID4g
+IAkJZGV2X2VycihkcGktPmRldiwgIkZhaWxlZCB0byBlbmFibGUgZW5naW5lIGNsb2NrOiAlZFxu
+IiwgcmV0KTsKPiA+ICAJCWdvdG8gZXJyX2VuZzsKPiA+ICAJfQo+ID4gIAo+ID4gLQlyZXQgPSBj
+bGtfcHJlcGFyZV9lbmFibGUoZHBpLT5waXhlbF9jbGspOwo+ID4gKwlyZXQgPSBjbGtfcHJlcGFy
+ZV9lbmFibGUoZHBpLT5jbGtbTVRLX0RQSV9DTEtfRFBJX1BJWEVMXSk7Cj4gPiAgCWlmIChyZXQp
+IHsKPiA+ICAJCWRldl9lcnIoZHBpLT5kZXYsICJGYWlsZWQgdG8gZW5hYmxlIHBpeGVsIGNsb2Nr
+OiAlZFxuIiwgcmV0KTsKPiA+ICAJCWdvdG8gZXJyX3BpeGVsOwo+ID4gQEAgLTQxMiw3ICs0Mzks
+NyBAQCBzdGF0aWMgaW50IG10a19kcGlfcG93ZXJfb24oc3RydWN0IG10a19kcGkgKmRwaSwgZW51
+bSBtdGtfZHBpX3Bvd2VyX2N0bCBwY3RsKQo+ID4gIAlyZXR1cm4gMDsKPiA+ICAKPiA+ICBlcnJf
+cGl4ZWw6Cj4gPiAtCWNsa19kaXNhYmxlX3VucHJlcGFyZShkcGktPmVuZ2luZV9jbGspOwo+ID4g
+KwljbGtfZGlzYWJsZV91bnByZXBhcmUoZHBpLT5jbGtbTVRLX0RQSV9DTEtfRFBJX0VOR0lORV0p
+Owo+ID4gIGVycl9lbmc6Cj4gPiAgCWRwaS0+cG93ZXJfY3RsICY9IH5wY3RsOwo+ID4gIAlyZXR1
+cm4gcmV0Owo+ID4gQEAgLTQyOCwzNCArNDU1LDE2IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9zZXRf
+ZGlzcGxheV9tb2RlKHN0cnVjdCBtdGtfZHBpICpkcGksCj4gPiAgCXN0cnVjdCBtdGtfZHBpX3N5
+bmNfcGFyYW0gdnN5bmNfbGV2ZW4gPSB7IDAgfTsKPiA+ICAJc3RydWN0IG10a19kcGlfc3luY19w
+YXJhbSB2c3luY19yb2RkID0geyAwIH07Cj4gPiAgCXN0cnVjdCBtdGtfZHBpX3N5bmNfcGFyYW0g
+dnN5bmNfcmV2ZW4gPSB7IDAgfTsKPiA+IC0JdW5zaWduZWQgbG9uZyBwaXhfcmF0ZTsKPiA+IC0J
+dW5zaWduZWQgbG9uZyBwbGxfcmF0ZTsKPiA+IC0JdW5zaWduZWQgaW50IGZhY3RvcjsKPiA+ICsJ
+c3RydWN0IG10a19kcGlfY29uZiAqY29uZjsKPiA+ICsJaW50IHJldDsKPiA+ICAKPiA+ICAJaWYg
+KCFkcGkpIHsKPiA+ICAJCWRldl9lcnIoZHBpLT5kZXYsICJpbnZhbGlkIGFyZ3VtZW50XG4iKTsK
+PiA+ICAJCXJldHVybiAtRUlOVkFMOwo+ID4gIAl9Cj4gPiAgCj4gPiAtCXBpeF9yYXRlID0gMTAw
+MFVMICogbW9kZS0+Y2xvY2s7Cj4gPiAtCWlmIChtb2RlLT5jbG9jayA8PSA3NDAwMCkKPiA+IC0J
+CWZhY3RvciA9IDggKiAzOwo+ID4gLQllbHNlCj4gPiAtCQlmYWN0b3IgPSA0ICogMzsKPiA+IC0J
+cGxsX3JhdGUgPSBwaXhfcmF0ZSAqIGZhY3RvcjsKPiA+IC0KPiA+IC0JZGV2X2RiZyhkcGktPmRl
+diwgIldhbnQgUExMICVsdSBIeiwgcGl4ZWwgY2xvY2sgJWx1IEh6XG4iLAo+ID4gLQkJcGxsX3Jh
+dGUsIHBpeF9yYXRlKTsKPiA+IC0KPiA+IC0JY2xrX3NldF9yYXRlKGRwaS0+dHZkX2NsaywgcGxs
+X3JhdGUpOwo+ID4gLQlwbGxfcmF0ZSA9IGNsa19nZXRfcmF0ZShkcGktPnR2ZF9jbGspOwo+ID4g
+LQo+ID4gLQlwaXhfcmF0ZSA9IHBsbF9yYXRlIC8gZmFjdG9yOwo+ID4gLQljbGtfc2V0X3JhdGUo
+ZHBpLT5waXhlbF9jbGssIHBpeF9yYXRlKTsKPiA+IC0JcGl4X3JhdGUgPSBjbGtfZ2V0X3JhdGUo
+ZHBpLT5waXhlbF9jbGspOwo+ID4gLQo+ID4gLQlkZXZfZGJnKGRwaS0+ZGV2LCAiR290ICBQTEwg
+JWx1IEh6LCBwaXhlbCBjbG9jayAlbHUgSHpcbiIsCj4gPiAtCQlwbGxfcmF0ZSwgcGl4X3JhdGUp
+Owo+ID4gKwljb25mID0gKHN0cnVjdCBtdGtfZHBpX2NvbmYgKilkcGktPmRhdGE7Cj4gPiArCXJl
+dCA9IGNvbmYtPmNsa19jb25maWcoZHBpLCBtb2RlKTsKPiAKPiBOb3RoaW5nIHRvIGRvIHdpdGgg
+cmV0dXJuIGVycm9yPwo+IApPaywgSSB3aWxsIGZpeCB0aGF0Lgo+ID4gIAo+ID4gIAlsaW1pdC5j
+X2JvdHRvbSA9IDB4MDAxMDsKPiA+ICAJbGltaXQuY190b3AgPSAweDBGRTA7Cj4gPiBAQCAtNjU2
+LDIwICs2NjUsMTA5IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY29tcG9uZW50X29wcyBtdGtfZHBp
+X2NvbXBvbmVudF9vcHMgPSB7Cj4gPiAgCS51bmJpbmQgPSBtdGtfZHBpX3VuYmluZCwKPiA+ICB9
+Owo+ID4gIAo+ID4gK3N0YXRpYyBpbnQgbXQ4MTczX3BhcnNlX2Nsa19mcm9tX2R0KHN0cnVjdCBt
+dGtfZHBpICpkcGksIHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApCj4gPiArewo+ID4gKwlpbnQgaTsK
+PiA+ICsKPiA+ICsJZm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUobXRrX2RwaV9jbGtfbmFtZXMp
+OyBpKyspIHsKPiA+ICsJCWRwaS0+Y2xrW2ldID0gb2ZfY2xrX2dldF9ieV9uYW1lKG5wLAo+ID4g
+KwkJCQkJCSAgbXRrX2RwaV9jbGtfbmFtZXNbaV0pOwo+ID4gKwkJaWYgKElTX0VSUihkcGktPmNs
+a1tpXSkpCj4gPiArCQkJcmV0dXJuIFBUUl9FUlIoZHBpLT5jbGtbaV0pOwo+ID4gKwl9Cj4gPiAr
+CXJldHVybiAwOwo+ID4gK30KPiAKPiBJIHRoaW5rIHBhcnNpbmcgZGV2aWNlIHRyZWUgaXMgYSBw
+dXJlIFNXIGJlaGF2aW9yLiBXb3VsZCB0aGlzIHZhcnkgZm9yCj4gZGlmZmVyZW50IE1USyBzb2M/
+Cj4gClllcwo+ID4gKwo+ID4gK3N0YXRpYyBpbnQgbXQ4MTczX2Nsa19jb25maWcoc3RydWN0IG10
+a19kcGkgKmRwaSwgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gPiArewo+ID4gKwl1
+bnNpZ25lZCBsb25nIHBpeF9yYXRlOwo+ID4gKwl1bnNpZ25lZCBsb25nIHBsbF9yYXRlOwo+ID4g
+Kwl1bnNpZ25lZCBpbnQgZmFjdG9yOwo+ID4gKwlzdHJ1Y3QgY2xrICpwYXJlbnQ7Cj4gPiArCWlu
+dCByZXQ7Cj4gPiArCj4gPiArCWlmIChtb2RlLT5jbG9jayA8PSAyNzAwMCkgewo+ID4gKwkJZmFj
+dG9yID0gMTYgKiAzOwo+ID4gKwkJcGFyZW50ID0gZHBpLT5jbGtbTVRLX0RQSV9DTEtfVFZEUExM
+X0QxNl07Cj4gPiArCX0gZWxzZSBpZiAobW9kZS0+Y2xvY2sgPD0gNzQyNTApIHsKPiA+ICsJCWZh
+Y3RvciA9IDggKiAzOwo+ID4gKwkJcGFyZW50ID0gZHBpLT5jbGtbTVRLX0RQSV9DTEtfVFZEUExM
+X0Q4XTsKPiA+ICsJfSBlbHNlIGlmIChtb2RlLT5jbG9jayA8PSAxNjcwMDApIHsKPiA+ICsJCWZh
+Y3RvciA9IDQgKiAzOwo+ID4gKwkJcGFyZW50ID0gZHBpLT5jbGtbTVRLX0RQSV9DTEtfVFZEUExM
+X0Q0XTsKPiA+ICsJfSBlbHNlIHsKPiA+ICsJCWZhY3RvciA9IDIgKiAzOwo+ID4gKwkJcGFyZW50
+ID0gZHBpLT5jbGtbTVRLX0RQSV9DTEtfVFZEUExMX0QyXTsKPiA+ICsJfQo+ID4gKwo+ID4gKwlw
+aXhfcmF0ZSA9IDEwMDBVTCAqIG1vZGUtPmNsb2NrOwo+ID4gKwlwbGxfcmF0ZSA9IHBpeF9yYXRl
+ICogZmFjdG9yOwo+ID4gKwo+ID4gKwlkZXZfZGJnKGRwaS0+ZGV2LCAiV2FudCBQTEwgJWx1IEh6
+LCBwaXhlbCBjbG9jayAlbHUgSHpcbiIsCj4gPiArCQlwbGxfcmF0ZSwgcGl4X3JhdGUpOwo+ID4g
+Kwo+ID4gKwlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHBpLT5jbGtbTVRLX0RQSV9DTEtfVFZE
+UExMX01VWF0pOwo+ID4gKwlpZiAocmV0KSB7Cj4gPiArCQlkZXZfZXJyKGRwaS0+ZGV2LCAidHZk
+cGxsX211eCBlbmFibGUgZmFpbFxuIik7Cj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gKwl9Cj4gPiAr
+Cj4gPiArCXJldCA9IGNsa19zZXRfcGFyZW50KGRwaS0+Y2xrW01US19EUElfQ0xLX1RWRFBMTF9N
+VVhdLCBwYXJlbnQpOwo+ID4gKwlpZiAocmV0KSB7Cj4gPiArCQlkZXZfZXJyKGRwaS0+ZGV2LCAi
+dHZkcGxsX211eCBzZXQgcGFyZW50IGZhaWxcbiIpOwo+IAo+IEJlZm9yZSByZXR1cm4sIHlvdSBt
+YXkgdW5kbyBzb21ldGhpbmcuCkkgdGhpbmsgd2UgY2FuIHJlbW92ZSB0aGlzIGZ1bmN0aW9uIGF0
+IHRoZSBuZXcgdmVyc2lvbiwgYmVjYXVzZSB3ZSBtYWtlCnNvbWUgY2hhbmdlcyBoZXJlIGFjY29y
+ZGluZyBQaGlsaXBwJyBjb21tZW50cy4KPiAKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCX0KPiA+
+ICsJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRwaS0+Y2xrW01US19EUElfQ0xLX1RWRFBMTF9NVVhd
+KTsKPiA+ICsKPiA+ICsJcmV0ID0gY2xrX3NldF9yYXRlKGRwaS0+Y2xrW01US19EUElfQ0xLX1RW
+RF9QTExdLCBwbGxfcmF0ZSk7Cj4gPiArCWlmIChyZXQpIHsKPiA+ICsJCWRldl9lcnIoZHBpLT5k
+ZXYsICJkcGkgcGxsX3JhdGUgc2V0IHJhdGUgZmFpbFxuIik7Cj4gPiArCQlyZXR1cm4gcmV0Owo+
+ID4gKwl9Cj4gPiArCXBsbF9yYXRlID0gY2xrX2dldF9yYXRlKGRwaS0+Y2xrW01US19EUElfQ0xL
+X1RWRF9QTExdKTsKPiA+ICsJcGl4X3JhdGUgPSBjbGtfZ2V0X3JhdGUoZHBpLT5jbGtbTVRLX0RQ
+SV9DTEtfRFBJX1BJWEVMXSk7Cj4gPiArCj4gPiArCWRldl9kYmcoZHBpLT5kZXYsICJHb3QgIFBM
+TCAlbHUgSHosIHBpeGVsIGNsb2NrICVsdSBIelxuIiwKPiA+ICsJCXBsbF9yYXRlLCBwaXhfcmF0
+ZSk7Cj4gPiArCj4gPiArCXJldHVybiAwOwo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMgY29uc3Qg
+c3RydWN0IG10a19kcGlfY29uZiBtdDgxNzNfY29uZiA9IHsKPiA+ICsJLnBhcnNlX2Nsa19mcm9t
+X2R0ID0gbXQ4MTczX3BhcnNlX2Nsa19mcm9tX2R0LAo+ID4gKwkuY2xrX2NvbmZpZyA9IG10ODE3
+M19jbGtfY29uZmlnLAo+ID4gK307Cj4gPiArCj4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9k
+ZXZpY2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9IHsKPiA+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRp
+YXRlayxtdDgxNzMtZHBpIiwKPiA+ICsJCS5kYXRhID0gJm10ODE3M19jb25mLAo+ID4gKwl9LAo+
+ID4gKwl7fQo+ID4gK307Cj4gPiArCj4gPiAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVj
+dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiAgewo+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYg
+PSAmcGRldi0+ZGV2Owo+ID4gIAlzdHJ1Y3QgbXRrX2RwaSAqZHBpOwo+ID4gIAlzdHJ1Y3QgcmVz
+b3VyY2UgKm1lbTsKPiA+ICsJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsK
+PiA+ICAJc3RydWN0IGRldmljZV9ub2RlICplcCwgKmJyaWRnZV9ub2RlID0gTlVMTDsKPiA+ICAJ
+aW50IGNvbXBfaWQ7Cj4gPiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ID4g
+KwlzdHJ1Y3QgbXRrX2RwaV9jb25mICpjb25mOwo+ID4gIAlpbnQgcmV0Owo+ID4gIAo+ID4gKwlt
+YXRjaCA9IG9mX21hdGNoX25vZGUobXRrX2RwaV9vZl9pZHMsIGRldi0+b2Zfbm9kZSk7Cj4gPiAr
+CWlmICghbWF0Y2gpCj4gPiArCQlyZXR1cm4gLUVOT0RFVjsKPiA+ICsKPiA+ICAJZHBpID0gZGV2
+bV9remFsbG9jKGRldiwgc2l6ZW9mKCpkcGkpLCBHRlBfS0VSTkVMKTsKPiA+ICAJaWYgKCFkcGkp
+Cj4gPiAgCQlyZXR1cm4gLUVOT01FTTsKPiA+ICAKPiA+ICAJZHBpLT5kZXYgPSBkZXY7Cj4gPiAr
+CWRwaS0+ZGF0YSA9ICh2b2lkICopbWF0Y2gtPmRhdGE7Cj4gPiArCWNvbmYgPSAoc3RydWN0IG10
+a19kcGlfY29uZiAqKW1hdGNoLT5kYXRhOwo+ID4gIAo+ID4gIAltZW0gPSBwbGF0Zm9ybV9nZXRf
+cmVzb3VyY2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ID4gIAlkcGktPnJlZ3MgPSBkZXZt
+X2lvcmVtYXBfcmVzb3VyY2UoZGV2LCBtZW0pOwo+ID4gQEAgLTY3OSwyNCArNzc3LDkgQEAgc3Rh
+dGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiAg
+CQlyZXR1cm4gcmV0Owo+ID4gIAl9Cj4gPiAgCj4gPiAtCWRwaS0+ZW5naW5lX2NsayA9IGRldm1f
+Y2xrX2dldChkZXYsICJlbmdpbmUiKTsKPiA+IC0JaWYgKElTX0VSUihkcGktPmVuZ2luZV9jbGsp
+KSB7Cj4gPiAtCQlyZXQgPSBQVFJfRVJSKGRwaS0+ZW5naW5lX2Nsayk7Cj4gPiAtCQlkZXZfZXJy
+KGRldiwgIkZhaWxlZCB0byBnZXQgZW5naW5lIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiA+IC0JCXJl
+dHVybiByZXQ7Cj4gPiAtCX0KPiA+IC0KPiA+IC0JZHBpLT5waXhlbF9jbGsgPSBkZXZtX2Nsa19n
+ZXQoZGV2LCAicGl4ZWwiKTsKPiA+IC0JaWYgKElTX0VSUihkcGktPnBpeGVsX2NsaykpIHsKPiA+
+IC0JCXJldCA9IFBUUl9FUlIoZHBpLT5waXhlbF9jbGspOwo+ID4gLQkJZGV2X2VycihkZXYsICJG
+YWlsZWQgdG8gZ2V0IHBpeGVsIGNsb2NrOiAlZFxuIiwgcmV0KTsKPiA+IC0JCXJldHVybiByZXQ7
+Cj4gPiAtCX0KPiA+IC0KPiA+IC0JZHBpLT50dmRfY2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInBs
+bCIpOwo+ID4gLQlpZiAoSVNfRVJSKGRwaS0+dHZkX2NsaykpIHsKPiA+IC0JCXJldCA9IFBUUl9F
+UlIoZHBpLT50dmRfY2xrKTsKPiA+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCB0dmRw
+bGwgY2xvY2s6ICVkXG4iLCByZXQpOwo+ID4gKwlyZXQgPSBjb25mLT5wYXJzZV9jbGtfZnJvbV9k
+dChkcGksIG5wKTsKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJZGV2X2VycihkZXYsICJwYXJzZSB0
+dmQgZGl2IGNsayBmYWlsZWQhIik7Cj4gPiAgCQlyZXR1cm4gcmV0Owo+ID4gIAl9Cj4gPiAgCj4g
+PiBAQCAtNzU0LDExICs4MzcsNiBAQCBzdGF0aWMgaW50IG10a19kcGlfcmVtb3ZlKHN0cnVjdCBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiAgCXJldHVybiAwOwo+ID4gIH0KPiA+ICAKPiA+IC1z
+dGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHBpX29mX2lkc1tdID0gewo+ID4g
+LQl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kcGkiLCB9LAo+ID4gLQl7fQo+ID4g
+LX07Cj4gPiAtCj4gPiAgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfZHBpX2RyaXZlciA9IHsK
+PiA+ICAJLnByb2JlID0gbXRrX2RwaV9wcm9iZSwKPiA+ICAJLnJlbW92ZSA9IG10a19kcGlfcmVt
+b3ZlLAo+IAo+IFJlZ2FyZHMsCj4gQ0sKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
