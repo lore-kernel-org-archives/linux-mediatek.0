@@ -1,81 +1,98 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
 Subject: Re: [PATCH 3/4] drm/mediatek: fix the wrong pixel clock when
  resolution is 4K
-Date: Mon, 25 Jul 2016 14:25:37 +0800
-Message-ID: <1469427937.26205.19.camel@mtksdaap41>
+Date: Mon, 25 Jul 2016 14:49:35 +0800
+Message-ID: <1469429375.11841.69.camel@mtksdaap41>
 References: <1468987385-37353-1-git-send-email-bibby.hsieh@mediatek.com>
-	 <1468987385-37353-4-git-send-email-bibby.hsieh@mediatek.com>
-	 <1469007718.5809.32.camel@pengutronix.de>
+ <1468987385-37353-4-git-send-email-bibby.hsieh@mediatek.com>
+ <1469001443.11841.59.camel@mtksdaap41>
+ <1469427845.26205.17.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469007718.5809.32.camel@pengutronix.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Junzhi Zhao <junzhi.zhao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469427845.26205.17.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Philipp,
-
-Thanks for your comment.
-
-On Wed, 2016-07-20 at 11:41 +0200, Philipp Zabel wrote:
-> Am Mittwoch, den 20.07.2016, 12:03 +0800 schrieb Bibby Hsieh:
-> > From: Junzhi Zhao <junzhi.zhao@mediatek.com>
-> > 
-> > Pixel clock should be 297MHz when resolution is 4K.
-> > 
-> > Signed-off-by: Junzhi Zhao <junzhi.zhao@mediatek.com>
-> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dpi.c |  184 +++++++++++++++++++++++++-----------
-> >  1 file changed, 131 insertions(+), 53 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > index d05ca79..c0f04d2 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > @@ -60,14 +60,35 @@ enum mtk_dpi_out_color_format {
-> >  	MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL
-> >  };
-> >  
-> > +enum mtk_dpi_clk_id {
-> > +	MTK_DPI_CLK_DPI_ENGINE,
-> > +	MTK_DPI_CLK_DPI_PIXEL,
-> > +	MTK_DPI_CLK_TVD_PLL,
-> > +	MTK_DPI_CLK_TVDPLL_MUX,
-> > +	MTK_DPI_CLK_TVDPLL_D2,
-> > +	MTK_DPI_CLK_TVDPLL_D4,
-> > +	MTK_DPI_CLK_TVDPLL_D8,
-> > +	MTK_DPI_CLK_TVDPLL_D16,
-> > +	MTK_DPI_CLK_COUNT,
-> > +};
-> 
-> I think this is going in the wrong direction. If the pixel clock output
-> isn't correct after a clk_set_rate(dpi->pixel_clk, rate), the clock
-> drivers should be fixed, not worked around in the dpi driver.
-> 
-> The TVDPLL_* mux and dividers are not direct inputs to the DPI module:
-> 
->    tvdpll ("pll")
->      |               ..|\
->      v               ..| | mm_sel ----> mm_dpi_engine ("engine")
->    tvdpll_594m(1/3)  ..|/
->      |
->      |`-> tvdpll_d2 -->|\
->      |`-> tvdpll_d4 -->| | dpi0_sel --> mm_dpi_pixel ("pixel")
->      |`-> tvdpll_d8 -->| |
->      `--> tvdpll_d16 ->|/
-> 
-> Currently the code first sets the "pll" to the desired multiple of the
-> pixel clock manually (*3*4, *3*8) and than calls clk_set_rate on the
-> "pixel" clock which gets propagated by the clock framework up to
-> dpi0_sel. Since dpi0_sel doesn't have the CLK_SET_RATE_PARENT flag set,
-> it should just choose the tvdpll_d* input divider. I'd like not to give
-> the dpi driver direct access to all the intermediate clocks.
-> 
-Ok, I will make some modifications according to your comment.
-
-> regards
-> Philipp
+SGksIEJpYmJ5OgoKT24gTW9uLCAyMDE2LTA3LTI1IGF0IDE0OjI0ICswODAwLCBCaWJieSBIc2ll
+aCB3cm90ZToKPiBIaSwgQ0ssCj4gCj4gVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLgo+IAo+IE9u
+IFdlZCwgMjAxNi0wNy0yMCBhdCAxNTo1NyArMDgwMCwgQ0sgSHUgd3JvdGU6Cj4gPiBIaSwgQmli
+Ynk6Cj4gPiAKPiA+IFNvbWUgY29tbWVudHMgaW5saW5lLgo+ID4gCj4gPiBPbiBXZWQsIDIwMTYt
+MDctMjAgYXQgMTI6MDMgKzA4MDAsIEJpYmJ5IEhzaWVoIHdyb3RlOgo+ID4gPiBGcm9tOiBKdW56
+aGkgWmhhbyA8anVuemhpLnpoYW9AbWVkaWF0ZWsuY29tPgo+ID4gPiAKPiA+ID4gUGl4ZWwgY2xv
+Y2sgc2hvdWxkIGJlIDI5N01IeiB3aGVuIHJlc29sdXRpb24gaXMgNEsuCj4gPiA+IAo+ID4gPiBT
+aWduZWQtb2ZmLWJ5OiBKdW56aGkgWmhhbyA8anVuemhpLnpoYW9AbWVkaWF0ZWsuY29tPgo+ID4g
+PiBTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgo+
+ID4gPiAtLS0KPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgfCAgMTg0
+ICsrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+ID4gPiAgMSBmaWxlIGNoYW5n
+ZWQsIDEzMSBpbnNlcnRpb25zKCspLCA1MyBkZWxldGlvbnMoLSkKPiA+ID4gCgpbc25pcC4uLl0K
+Cj4gPiA+ICAKPiA+ID4gK3N0YXRpYyBpbnQgbXQ4MTczX3BhcnNlX2Nsa19mcm9tX2R0KHN0cnVj
+dCBtdGtfZHBpICpkcGksIHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApCj4gPiA+ICt7Cj4gPiA+ICsJ
+aW50IGk7Cj4gPiA+ICsKPiA+ID4gKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShtdGtfZHBp
+X2Nsa19uYW1lcyk7IGkrKykgewo+ID4gPiArCQlkcGktPmNsa1tpXSA9IG9mX2Nsa19nZXRfYnlf
+bmFtZShucCwKPiA+ID4gKwkJCQkJCSAgbXRrX2RwaV9jbGtfbmFtZXNbaV0pOwo+ID4gPiArCQlp
+ZiAoSVNfRVJSKGRwaS0+Y2xrW2ldKSkKPiA+ID4gKwkJCXJldHVybiBQVFJfRVJSKGRwaS0+Y2xr
+W2ldKTsKPiA+ID4gKwl9Cj4gPiA+ICsJcmV0dXJuIDA7Cj4gPiA+ICt9Cj4gPiAKPiA+IEkgdGhp
+bmsgcGFyc2luZyBkZXZpY2UgdHJlZSBpcyBhIHB1cmUgU1cgYmVoYXZpb3IuIFdvdWxkIHRoaXMg
+dmFyeSBmb3IKPiA+IGRpZmZlcmVudCBNVEsgc29jPwo+ID4gCj4gWWVzCgpJIGNhbiBub3QgaW1h
+Z2luZyB0aGF0LCBzbyBjb3VsZCB5b3UgZ2l2ZSBtZSBhbiBleGFtcGxlIHNvdXJjZSBjb2RlIG9m
+Cm90aGVyIE1USyBzb2MgZm9yIHBhcnNlX2Nsa19mcm9tX2R0KCk/Cgo+ID4gPiArCj4gPiA+ICsK
+PiA+ID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RwaV9jb25mIG10ODE3M19jb25mID0gewo+
+ID4gPiArCS5wYXJzZV9jbGtfZnJvbV9kdCA9IG10ODE3M19wYXJzZV9jbGtfZnJvbV9kdCwKPiA+
+ID4gKwkuY2xrX2NvbmZpZyA9IG10ODE3M19jbGtfY29uZmlnLAo+ID4gPiArfTsKPiA+ID4gKwo+
+ID4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9
+IHsKPiA+ID4gKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kcGkiLAo+ID4gPiAr
+CQkuZGF0YSA9ICZtdDgxNzNfY29uZiwKPiA+ID4gKwl9LAo+ID4gPiArCXt9Cj4gPiA+ICt9Owo+
+ID4gPiArCj4gPiA+ICBzdGF0aWMgaW50IG10a19kcGlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2Rl
+dmljZSAqcGRldikKPiA+ID4gIHsKPiA+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+
+ZGV2Owo+ID4gPiAgCXN0cnVjdCBtdGtfZHBpICpkcGk7Cj4gPiA+ICAJc3RydWN0IHJlc291cmNl
+ICptZW07Cj4gPiA+ICsJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsKPiA+
+ID4gIAlzdHJ1Y3QgZGV2aWNlX25vZGUgKmVwLCAqYnJpZGdlX25vZGUgPSBOVUxMOwo+ID4gPiAg
+CWludCBjb21wX2lkOwo+ID4gPiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+
+ID4gPiArCXN0cnVjdCBtdGtfZHBpX2NvbmYgKmNvbmY7Cj4gPiA+ICAJaW50IHJldDsKPiA+ID4g
+IAo+ID4gPiArCW1hdGNoID0gb2ZfbWF0Y2hfbm9kZShtdGtfZHBpX29mX2lkcywgZGV2LT5vZl9u
+b2RlKTsKPiA+ID4gKwlpZiAoIW1hdGNoKQo+ID4gPiArCQlyZXR1cm4gLUVOT0RFVjsKPiA+ID4g
+Kwo+ID4gPiAgCWRwaSA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqZHBpKSwgR0ZQX0tFUk5F
+TCk7Cj4gPiA+ICAJaWYgKCFkcGkpCj4gPiA+ICAJCXJldHVybiAtRU5PTUVNOwo+ID4gPiAgCj4g
+PiA+ICAJZHBpLT5kZXYgPSBkZXY7Cj4gPiA+ICsJZHBpLT5kYXRhID0gKHZvaWQgKiltYXRjaC0+
+ZGF0YTsKPiA+ID4gKwljb25mID0gKHN0cnVjdCBtdGtfZHBpX2NvbmYgKiltYXRjaC0+ZGF0YTsK
+PiA+ID4gIAo+ID4gPiAgCW1lbSA9IHBsYXRmb3JtX2dldF9yZXNvdXJjZShwZGV2LCBJT1JFU09V
+UkNFX01FTSwgMCk7Cj4gPiA+ICAJZHBpLT5yZWdzID0gZGV2bV9pb3JlbWFwX3Jlc291cmNlKGRl
+diwgbWVtKTsKPiA+ID4gQEAgLTY3OSwyNCArNzc3LDkgQEAgc3RhdGljIGludCBtdGtfZHBpX3By
+b2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiA+ICAJCXJldHVybiByZXQ7Cj4g
+PiA+ICAJfQo+ID4gPiAgCj4gPiA+IC0JZHBpLT5lbmdpbmVfY2xrID0gZGV2bV9jbGtfZ2V0KGRl
+diwgImVuZ2luZSIpOwo+ID4gPiAtCWlmIChJU19FUlIoZHBpLT5lbmdpbmVfY2xrKSkgewo+ID4g
+PiAtCQlyZXQgPSBQVFJfRVJSKGRwaS0+ZW5naW5lX2Nsayk7Cj4gPiA+IC0JCWRldl9lcnIoZGV2
+LCAiRmFpbGVkIHRvIGdldCBlbmdpbmUgY2xvY2s6ICVkXG4iLCByZXQpOwo+ID4gPiAtCQlyZXR1
+cm4gcmV0Owo+ID4gPiAtCX0KPiA+ID4gLQo+ID4gPiAtCWRwaS0+cGl4ZWxfY2xrID0gZGV2bV9j
+bGtfZ2V0KGRldiwgInBpeGVsIik7Cj4gPiA+IC0JaWYgKElTX0VSUihkcGktPnBpeGVsX2Nsaykp
+IHsKPiA+ID4gLQkJcmV0ID0gUFRSX0VSUihkcGktPnBpeGVsX2Nsayk7Cj4gPiA+IC0JCWRldl9l
+cnIoZGV2LCAiRmFpbGVkIHRvIGdldCBwaXhlbCBjbG9jazogJWRcbiIsIHJldCk7Cj4gPiA+IC0J
+CXJldHVybiByZXQ7Cj4gPiA+IC0JfQo+ID4gPiAtCj4gPiA+IC0JZHBpLT50dmRfY2xrID0gZGV2
+bV9jbGtfZ2V0KGRldiwgInBsbCIpOwo+ID4gPiAtCWlmIChJU19FUlIoZHBpLT50dmRfY2xrKSkg
+ewo+ID4gPiAtCQlyZXQgPSBQVFJfRVJSKGRwaS0+dHZkX2Nsayk7Cj4gPiA+IC0JCWRldl9lcnIo
+ZGV2LCAiRmFpbGVkIHRvIGdldCB0dmRwbGwgY2xvY2s6ICVkXG4iLCByZXQpOwo+ID4gPiArCXJl
+dCA9IGNvbmYtPnBhcnNlX2Nsa19mcm9tX2R0KGRwaSwgbnApOwo+ID4gPiArCWlmIChyZXQpIHsK
+PiA+ID4gKwkJZGV2X2VycihkZXYsICJwYXJzZSB0dmQgZGl2IGNsayBmYWlsZWQhIik7Cj4gPiA+
+ICAJCXJldHVybiByZXQ7Cj4gPiA+ICAJfQo+ID4gPiAgCj4gPiA+IEBAIC03NTQsMTEgKzgzNyw2
+IEBAIHN0YXRpYyBpbnQgbXRrX2RwaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
+dikKPiA+ID4gIAlyZXR1cm4gMDsKPiA+ID4gIH0KPiA+ID4gIAo+ID4gPiAtc3RhdGljIGNvbnN0
+IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX2RwaV9vZl9pZHNbXSA9IHsKPiA+ID4gLQl7IC5jb21w
+YXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kcGkiLCB9LAo+ID4gPiAtCXt9Cj4gPiA+IC19Owo+
+ID4gPiAtCj4gPiA+ICBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kcGlfZHJpdmVyID0gewo+
+ID4gPiAgCS5wcm9iZSA9IG10a19kcGlfcHJvYmUsCj4gPiA+ICAJLnJlbW92ZSA9IG10a19kcGlf
+cmVtb3ZlLAo+ID4gCj4gPiBSZWdhcmRzLAo+ID4gQ0sKPiA+IAo+IAoKClJlZ2FyZHMsCkNLCj4g
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRl
+dmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8v
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
