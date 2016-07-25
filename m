@@ -1,107 +1,83 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: Re: [PATCH 3/4] drm/mediatek: fix the wrong pixel clock when
- resolution is 4K
-Date: Mon, 25 Jul 2016 16:37:50 +0800
-Message-ID: <1469435870.26205.20.camel@mtksdaap41>
-References: <1468987385-37353-1-git-send-email-bibby.hsieh@mediatek.com>
- <1468987385-37353-4-git-send-email-bibby.hsieh@mediatek.com>
- <1469001443.11841.59.camel@mtksdaap41>
- <1469427845.26205.17.camel@mtksdaap41>
- <1469429375.11841.69.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] memory: mediatek: Add a new interface
+	mtk_smi_larb_is_ready
+Date: Mon, 25 Jul 2016 10:39:52 +0200
+Message-ID: <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
+References: <1468983721-3627-1-git-send-email-yong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469429375.11841.69.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: CK Hu <ck.hu@mediatek.com>
-Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1468983721-3627-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
+Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIENLLAoKVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLgoKT24gTW9uLCAyMDE2LTA3LTI1IGF0
-IDE0OjQ5ICswODAwLCBDSyBIdSB3cm90ZToKPiBIaSwgQmliYnk6Cj4gCj4gT24gTW9uLCAyMDE2
-LTA3LTI1IGF0IDE0OjI0ICswODAwLCBCaWJieSBIc2llaCB3cm90ZToKPiA+IEhpLCBDSywKPiA+
-IAo+ID4gVGhhbmtzIGZvciB5b3VyIGNvbW1lbnRzLgo+ID4gCj4gPiBPbiBXZWQsIDIwMTYtMDct
-MjAgYXQgMTU6NTcgKzA4MDAsIENLIEh1IHdyb3RlOgo+ID4gPiBIaSwgQmliYnk6Cj4gPiA+IAo+
-ID4gPiBTb21lIGNvbW1lbnRzIGlubGluZS4KPiA+ID4gCj4gPiA+IE9uIFdlZCwgMjAxNi0wNy0y
-MCBhdCAxMjowMyArMDgwMCwgQmliYnkgSHNpZWggd3JvdGU6Cj4gPiA+ID4gRnJvbTogSnVuemhp
-IFpoYW8gPGp1bnpoaS56aGFvQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiAKPiA+ID4gPiBQaXhlbCBj
-bG9jayBzaG91bGQgYmUgMjk3TUh6IHdoZW4gcmVzb2x1dGlvbiBpcyA0Sy4KPiA+ID4gPiAKPiA+
-ID4gPiBTaWduZWQtb2ZmLWJ5OiBKdW56aGkgWmhhbyA8anVuemhpLnpoYW9AbWVkaWF0ZWsuY29t
-Pgo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRl
-ay5jb20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHBpLmMgfCAgMTg0ICsrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLQo+ID4gPiA+
-ICAxIGZpbGUgY2hhbmdlZCwgMTMxIGluc2VydGlvbnMoKyksIDUzIGRlbGV0aW9ucygtKQo+ID4g
-PiA+IAo+IAo+IFtzbmlwLi4uXQo+IAo+ID4gPiA+ICAKPiA+ID4gPiArc3RhdGljIGludCBtdDgx
-NzNfcGFyc2VfY2xrX2Zyb21fZHQoc3RydWN0IG10a19kcGkgKmRwaSwgc3RydWN0IGRldmljZV9u
-b2RlICpucCkKPiA+ID4gPiArewo+ID4gPiA+ICsJaW50IGk7Cj4gPiA+ID4gKwo+ID4gPiA+ICsJ
-Zm9yIChpID0gMDsgaSA8IEFSUkFZX1NJWkUobXRrX2RwaV9jbGtfbmFtZXMpOyBpKyspIHsKPiA+
-ID4gPiArCQlkcGktPmNsa1tpXSA9IG9mX2Nsa19nZXRfYnlfbmFtZShucCwKPiA+ID4gPiArCQkJ
-CQkJICBtdGtfZHBpX2Nsa19uYW1lc1tpXSk7Cj4gPiA+ID4gKwkJaWYgKElTX0VSUihkcGktPmNs
-a1tpXSkpCj4gPiA+ID4gKwkJCXJldHVybiBQVFJfRVJSKGRwaS0+Y2xrW2ldKTsKPiA+ID4gPiAr
-CX0KPiA+ID4gPiArCXJldHVybiAwOwo+ID4gPiA+ICt9Cj4gPiA+IAo+ID4gPiBJIHRoaW5rIHBh
-cnNpbmcgZGV2aWNlIHRyZWUgaXMgYSBwdXJlIFNXIGJlaGF2aW9yLiBXb3VsZCB0aGlzIHZhcnkg
-Zm9yCj4gPiA+IGRpZmZlcmVudCBNVEsgc29jPwo+ID4gPiAKPiA+IFllcwo+IAo+IEkgY2FuIG5v
-dCBpbWFnaW5nIHRoYXQsIHNvIGNvdWxkIHlvdSBnaXZlIG1lIGFuIGV4YW1wbGUgc291cmNlIGNv
-ZGUgb2YKPiBvdGhlciBNVEsgc29jIGZvciBwYXJzZV9jbGtfZnJvbV9kdCgpPwo+IApJIHdpbGwg
-ZG8gc29tZSBjaGFuZ2VzIGFjY29yZGluZyB0byB5b3VyIGNvbW1lbnRzLiAKCj4gPiA+ID4gKwo+
-ID4gPiA+ICsKPiA+ID4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZHBpX2NvbmYgbXQ4MTcz
-X2NvbmYgPSB7Cj4gPiA+ID4gKwkucGFyc2VfY2xrX2Zyb21fZHQgPSBtdDgxNzNfcGFyc2VfY2xr
-X2Zyb21fZHQsCj4gPiA+ID4gKwkuY2xrX2NvbmZpZyA9IG10ODE3M19jbGtfY29uZmlnLAo+ID4g
-PiA+ICt9Owo+ID4gPiA+ICsKPiA+ID4gPiArc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2Vf
-aWQgbXRrX2RwaV9vZl9pZHNbXSA9IHsKPiA+ID4gPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0
-ZWssbXQ4MTczLWRwaSIsCj4gPiA+ID4gKwkJLmRhdGEgPSAmbXQ4MTczX2NvbmYsCj4gPiA+ID4g
-Kwl9LAo+ID4gPiA+ICsJe30KPiA+ID4gPiArfTsKPiA+ID4gPiArCj4gPiA+ID4gIHN0YXRpYyBp
-bnQgbXRrX2RwaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gPiA+ICB7
-Cj4gPiA+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+ID4gPiA+ICAJc3Ry
-dWN0IG10a19kcGkgKmRwaTsKPiA+ID4gPiAgCXN0cnVjdCByZXNvdXJjZSAqbWVtOwo+ID4gPiA+
-ICsJc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsKPiA+ID4gPiAgCXN0cnVj
-dCBkZXZpY2Vfbm9kZSAqZXAsICpicmlkZ2Vfbm9kZSA9IE5VTEw7Cj4gPiA+ID4gIAlpbnQgY29t
-cF9pZDsKPiA+ID4gPiArCWNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgKm1hdGNoOwo+ID4gPiA+
-ICsJc3RydWN0IG10a19kcGlfY29uZiAqY29uZjsKPiA+ID4gPiAgCWludCByZXQ7Cj4gPiA+ID4g
-IAo+ID4gPiA+ICsJbWF0Y2ggPSBvZl9tYXRjaF9ub2RlKG10a19kcGlfb2ZfaWRzLCBkZXYtPm9m
-X25vZGUpOwo+ID4gPiA+ICsJaWYgKCFtYXRjaCkKPiA+ID4gPiArCQlyZXR1cm4gLUVOT0RFVjsK
-PiA+ID4gPiArCj4gPiA+ID4gIAlkcGkgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKmRwaSks
-IEdGUF9LRVJORUwpOwo+ID4gPiA+ICAJaWYgKCFkcGkpCj4gPiA+ID4gIAkJcmV0dXJuIC1FTk9N
-RU07Cj4gPiA+ID4gIAo+ID4gPiA+ICAJZHBpLT5kZXYgPSBkZXY7Cj4gPiA+ID4gKwlkcGktPmRh
-dGEgPSAodm9pZCAqKW1hdGNoLT5kYXRhOwo+ID4gPiA+ICsJY29uZiA9IChzdHJ1Y3QgbXRrX2Rw
-aV9jb25mICopbWF0Y2gtPmRhdGE7Cj4gPiA+ID4gIAo+ID4gPiA+ICAJbWVtID0gcGxhdGZvcm1f
-Z2V0X3Jlc291cmNlKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAwKTsKPiA+ID4gPiAgCWRwaS0+cmVn
-cyA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYsIG1lbSk7Cj4gPiA+ID4gQEAgLTY3OSwyNCAr
-Nzc3LDkgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCj4gPiA+ID4gIAkJcmV0dXJuIHJldDsKPiA+ID4gPiAgCX0KPiA+ID4gPiAgCj4gPiA+
-ID4gLQlkcGktPmVuZ2luZV9jbGsgPSBkZXZtX2Nsa19nZXQoZGV2LCAiZW5naW5lIik7Cj4gPiA+
-ID4gLQlpZiAoSVNfRVJSKGRwaS0+ZW5naW5lX2NsaykpIHsKPiA+ID4gPiAtCQlyZXQgPSBQVFJf
-RVJSKGRwaS0+ZW5naW5lX2Nsayk7Cj4gPiA+ID4gLQkJZGV2X2VycihkZXYsICJGYWlsZWQgdG8g
-Z2V0IGVuZ2luZSBjbG9jazogJWRcbiIsIHJldCk7Cj4gPiA+ID4gLQkJcmV0dXJuIHJldDsKPiA+
-ID4gPiAtCX0KPiA+ID4gPiAtCj4gPiA+ID4gLQlkcGktPnBpeGVsX2NsayA9IGRldm1fY2xrX2dl
-dChkZXYsICJwaXhlbCIpOwo+ID4gPiA+IC0JaWYgKElTX0VSUihkcGktPnBpeGVsX2NsaykpIHsK
-PiA+ID4gPiAtCQlyZXQgPSBQVFJfRVJSKGRwaS0+cGl4ZWxfY2xrKTsKPiA+ID4gPiAtCQlkZXZf
-ZXJyKGRldiwgIkZhaWxlZCB0byBnZXQgcGl4ZWwgY2xvY2s6ICVkXG4iLCByZXQpOwo+ID4gPiA+
-IC0JCXJldHVybiByZXQ7Cj4gPiA+ID4gLQl9Cj4gPiA+ID4gLQo+ID4gPiA+IC0JZHBpLT50dmRf
-Y2xrID0gZGV2bV9jbGtfZ2V0KGRldiwgInBsbCIpOwo+ID4gPiA+IC0JaWYgKElTX0VSUihkcGkt
-PnR2ZF9jbGspKSB7Cj4gPiA+ID4gLQkJcmV0ID0gUFRSX0VSUihkcGktPnR2ZF9jbGspOwo+ID4g
-PiA+IC0JCWRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGdldCB0dmRwbGwgY2xvY2s6ICVkXG4iLCBy
-ZXQpOwo+ID4gPiA+ICsJcmV0ID0gY29uZi0+cGFyc2VfY2xrX2Zyb21fZHQoZHBpLCBucCk7Cj4g
-PiA+ID4gKwlpZiAocmV0KSB7Cj4gPiA+ID4gKwkJZGV2X2VycihkZXYsICJwYXJzZSB0dmQgZGl2
-IGNsayBmYWlsZWQhIik7Cj4gPiA+ID4gIAkJcmV0dXJuIHJldDsKPiA+ID4gPiAgCX0KPiA+ID4g
-PiAgCj4gPiA+ID4gQEAgLTc1NCwxMSArODM3LDYgQEAgc3RhdGljIGludCBtdGtfZHBpX3JlbW92
-ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gPiA+ICAJcmV0dXJuIDA7Cj4gPiA+
-ID4gIH0KPiA+ID4gPiAgCj4gPiA+ID4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
-IG10a19kcGlfb2ZfaWRzW10gPSB7Cj4gPiA+ID4gLQl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10ODE3My1kcGkiLCB9LAo+ID4gPiA+IC0Je30KPiA+ID4gPiAtfTsKPiA+ID4gPiAtCj4gPiA+
-ID4gIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2RwaV9kcml2ZXIgPSB7Cj4gPiA+ID4gIAku
-cHJvYmUgPSBtdGtfZHBpX3Byb2JlLAo+ID4gPiA+ICAJLnJlbW92ZSA9IG10a19kcGlfcmVtb3Zl
-LAo+ID4gPiAKPiA+ID4gUmVnYXJkcywKPiA+ID4gQ0sKPiA+ID4gCj4gPiAKPiAKPiAKPiBSZWdh
-cmRzLAo+IENLCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+
+
+On 20/07/16 05:01, Yong Wu wrote:
+> Currently the iommu consumer always call iommu_present to get whether
+> the iommu is ready. But in MTK IOMMU, this function can't indicate
+> this. The IOMMU call bus_set_iommu->mtk_iommu_add_device->
+> mtk_iommu_attach_device to parse the iommu data, then it's able to
+> transfer "struct mtk_smi_iommu" to SMI-LARB, and the iommu uses the
+> larbs as compoents, the iommu will finish its probe until all the larbs
+> probe done.
+>
+> If the iommu consumer(like DRM) begin to probe after the time of
+> calling bus_set_iommu and before the time of SMI probe finish, it
+> will hang like this:
+>
+> [    7.832359] Call trace:
+> [    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
+> [    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
+>
+> Because the larb->mmu is NULL at that time.
+>
+> In order to avoid this issue, we add a new interface
+> (mtk_smi_larb_is_ready) for checking whether the IOMMU and SMI have
+> finished their probe. If it return false, the iommu consumer should
+> probe-defer for the IOMMU and SMI.
+>
+
+Can't we just skip the functions in the probe and call bus_set_iommu 
+only if we were able to bind all components?
+Something like this:
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index c3043d8..0bef49b 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -649,10 +649,14 @@ static int mtk_iommu_probe(struct platform_device 
+*pdev)
+         if (ret)
+                 return ret;
+
++       ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, 
+match);
++       if (ret)
++               return ret;
++
+         if (!iommu_present(&platform_bus_type))
+                 bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+
+-       return component_master_add_with_match(dev, &mtk_iommu_com_ops, 
+match);
++       return ret;
+  } 
+
+ 
+
+  static int mtk_iommu_remove(struct platform_device *pdev)
+
+Regards,
+Matthias
