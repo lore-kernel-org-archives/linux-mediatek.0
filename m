@@ -1,83 +1,69 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] memory: mediatek: Add a new interface
-	mtk_smi_larb_is_ready
-Date: Mon, 25 Jul 2016 10:39:52 +0200
-Message-ID: <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
-References: <1468983721-3627-1-git-send-email-yong.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] GPU-DRM: Delete an unnecessary check before
+ drm_property_unreference_blob()
+Date: Mon, 25 Jul 2016 10:43:32 +0200
+Message-ID: <69fe77a4-d9fd-83b4-7821-f0a3c13d737f@gmail.com>
+References: <5307CAA2.8060406@users.sourceforge.net>
+ <alpine.DEB.2.02.1402212321410.2043@localhost6.localdomain6>
+ <530A086E.8010901@users.sourceforge.net>
+ <alpine.DEB.2.02.1402231635510.1985@localhost6.localdomain6>
+ <530A72AA.3000601@users.sourceforge.net>
+ <alpine.DEB.2.02.1402240658210.2090@localhost6.localdomain6>
+ <530B5FB6.6010207@users.sourceforge.net>
+ <alpine.DEB.2.10.1402241710370.2074@hadrien>
+ <530C5E18.1020800@users.sourceforge.net>
+ <alpine.DEB.2.10.1402251014170.2080@hadrien>
+ <530CD2C4.4050903@users.sourceforge.net>
+ <alpine.DEB.2.10.1402251840450.7035@hadrien>
+ <530CF8FF.8080600@users.sourceforge.net>
+ <alpine.DEB.2.02.1402252117150.2047@localhost6.localdomain6>
+ <530DD06F.4090703@users.sourceforge.net>
+ <alpine.DEB.2.02.1402262129250.2221@localhost6.localdomain6>
+ <5317A59D.4@users.sourceforge.net>
+ <515bcb7e-3e00-3438-cc47-227cfcd41990@users.sourceforge.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1468983721-3627-1-git-send-email-yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tomasz Figa <tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Daniel Kurtz <djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <515bcb7e-3e00-3438-cc47-227cfcd41990@users.sourceforge.net>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: SF Markus Elfring <elfring@users.sourceforge.net>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>
+Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org, Julia Lawall <julia.lawall@lip6.fr>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 20/07/16 05:01, Yong Wu wrote:
-> Currently the iommu consumer always call iommu_present to get whether
-> the iommu is ready. But in MTK IOMMU, this function can't indicate
-> this. The IOMMU call bus_set_iommu->mtk_iommu_add_device->
-> mtk_iommu_attach_device to parse the iommu data, then it's able to
-> transfer "struct mtk_smi_iommu" to SMI-LARB, and the iommu uses the
-> larbs as compoents, the iommu will finish its probe until all the larbs
-> probe done.
+On 22/07/16 12:56, SF Markus Elfring wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Fri, 22 Jul 2016 12:48:12 +0200
 >
-> If the iommu consumer(like DRM) begin to probe after the time of
-> calling bus_set_iommu and before the time of SMI probe finish, it
-> will hang like this:
+> The drm_property_unreference_blob() function tests whether its argument
+> is NULL and then returns immediately.
+> Thus the test around the call is not needed.
 >
-> [    7.832359] Call trace:
-> [    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
-> [    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
+> This issue was detected by using the Coccinelle software.
 >
-> Because the larb->mmu is NULL at that time.
->
-> In order to avoid this issue, we add a new interface
-> (mtk_smi_larb_is_ready) for checking whether the IOMMU and SMI have
-> finished their probe. If it return false, the iommu consumer should
-> probe-defer for the IOMMU and SMI.
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 >
 
-Can't we just skip the functions in the probe and call bus_set_iommu 
-only if we were able to bind all components?
-Something like this:
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index c3043d8..0bef49b 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -649,10 +649,14 @@ static int mtk_iommu_probe(struct platform_device 
-*pdev)
-         if (ret)
-                 return ret;
-
-+       ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, 
-match);
-+       if (ret)
-+               return ret;
-+
-         if (!iommu_present(&platform_bus_type))
-                 bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
-
--       return component_master_add_with_match(dev, &mtk_iommu_com_ops, 
-match);
-+       return ret;
-  } 
-
- 
-
-  static int mtk_iommu_remove(struct platform_device *pdev)
-
-Regards,
-Matthias
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 24aa3ba..07541d0 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -112,9 +112,7 @@ static void mtk_drm_crtc_reset(struct drm_crtc *crtc)
+>  	struct mtk_crtc_state *state;
+>
+>  	if (crtc->state) {
+> -		if (crtc->state->mode_blob)
+> -			drm_property_unreference_blob(crtc->state->mode_blob);
+> -
+> +		drm_property_unreference_blob(crtc->state->mode_blob);
+>  		state = to_mtk_crtc_state(crtc->state);
+>  		memset(state, 0, sizeof(*state));
+>  	} else {
+>
