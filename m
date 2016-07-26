@@ -1,66 +1,41 @@
-From: Tomasz Figa <tfiga@google.com>
-Subject: Re: [PATCH 1/3] memory: mediatek: Add a new interface mtk_smi_larb_is_ready
-Date: Tue, 26 Jul 2016 11:30:42 +0900
-Message-ID: <CAAFQd5AXXpVQU7+ek0Jb_aNm5md=1GVrysEDD5GO7erLUByzrw@mail.gmail.com>
-References: <1468983721-3627-1-git-send-email-yong.wu@mediatek.com> <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
+From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] spi: mediatek: remove spi_master_put in mtk_spi_remove()
+Date: Tue, 26 Jul 2016 14:56:50 +0000
+Message-ID: <1469545010-32327-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@google.com>, Arnd Bergmann <arnd@arndb.de>, Lucas Stach <l.stach@pengutronix.de>, youlin.pei@mediatek.com, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "open list:IOMMU DRIVERS" <iommu@lists.linux-foundation.org>, Joerg Roedel <joro@8bytes.org>
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+The call to spi_master_put() in mtk_spi_remove() is redundant since
+the master is registered using devm_spi_register_master() and no
+reference hold by using spi_master_get() in mtk_spi_remove().
 
-On Mon, Jul 25, 2016 at 5:39 PM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
->
->
-> On 20/07/16 05:01, Yong Wu wrote:
->>
->> Currently the iommu consumer always call iommu_present to get whether
->> the iommu is ready. But in MTK IOMMU, this function can't indicate
->> this. The IOMMU call bus_set_iommu->mtk_iommu_add_device->
->> mtk_iommu_attach_device to parse the iommu data, then it's able to
->> transfer "struct mtk_smi_iommu" to SMI-LARB, and the iommu uses the
->> larbs as compoents, the iommu will finish its probe until all the larbs
->> probe done.
->>
->> If the iommu consumer(like DRM) begin to probe after the time of
->> calling bus_set_iommu and before the time of SMI probe finish, it
->> will hang like this:
->>
->> [    7.832359] Call trace:
->> [    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
->> [    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
->>
->> Because the larb->mmu is NULL at that time.
->>
->> In order to avoid this issue, we add a new interface
->> (mtk_smi_larb_is_ready) for checking whether the IOMMU and SMI have
->> finished their probe. If it return false, the iommu consumer should
->> probe-defer for the IOMMU and SMI.
->>
->
-> Can't we just skip the functions in the probe and call bus_set_iommu only if
-> we were able to bind all components?
-> Something like this:
+This is detected by Coccinelle semantic patch.
 
-Note that we have to call bus_set_iommu() and actually have
-.add_device() and .attach_device() called before any of the slave
-devices probe. I found a similar problem with rockchip IOMMU after
-adding power domain and runtime PM handling there. I also found that
-current design of IOMMU core and related DMA mapping code is utterly
-broken regarding the device add/probe ordering (no support for
-deferring things properly).
+Signed-off-by: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/spi/spi-mt65xx.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-So my idea is to keep .add_device() as is, since typically it doesn't
-seem to require anything from the IOMMU hardware and just initializes
-some per-device data, but make .attach_device() being able to defer
-probe of that device if respective IOMMU has not probed yet. I'm still
-in process of figuring out the right way to achieve it, though...
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 0be89e0..899d7a8 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -685,7 +685,6 @@ static int mtk_spi_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ 
+ 	mtk_spi_reset(mdata);
+-	spi_master_put(master);
+ 
+ 	return 0;
+ }
 
-Best regards,
-Tomasz
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
