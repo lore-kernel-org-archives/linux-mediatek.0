@@ -1,112 +1,148 @@
-From: ville.syrjala@linux.intel.com
-Subject: [PATCH 8/9] drm/mediatek: Use
-	drm_plane_helper_check_state()
-Date: Tue, 26 Jul 2016 19:07:03 +0300
-Message-ID: <1469549224-1860-9-git-send-email-ville.syrjala@linux.intel.com>
-References: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Tue, 26 Jul 2016 13:54:34 -0500
+Message-ID: <20160726185433.GA14609@rob-hp-laptop>
+References: <1469176383-35210-1-git-send-email-minghsiu.tsai@mediatek.com>
+ <1469176383-35210-3-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <1469549224-1860-1-git-send-email-ville.syrjala@linux.intel.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: CK Hu <ck.hu@mediatek.com>, intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1469176383-35210-3-git-send-email-minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogVmlsbGUgU3lyasOkbMOkIDx2aWxsZS5zeXJqYWxhQGxpbnV4LmludGVsLmNvbT4KClJl
-cGxhY2UgdGhlIHVzZSBvZiBkcm1fcGxhbmVfaGVscGVyX2NoZWNrX3VwZGF0ZSgpIHdpdGgKZHJt
-X3BsYW5lX2hlbHBlcl9jaGVja19zdGF0ZSgpIHNpbmNlIHdlIGhhdmUgYSBwbGFuZSBzdGF0ZS4K
-ClRoaXMgYWxzbyBlbGltaW5hdGVzIHRoZSBkb3VibGUgY2xpcHBpbmcgdGhlIGRyaXZlciB3YXMg
-ZG9pbmcKaW4gYm90aCBjaGVjayBhbmQgY29tbWl0IHBoYXNlcykuIEFuZCBpdCBzaG91bGQgZml4
-IHNyYyBjb29yZGluYXRlCmFkZHIgYWRqdXN0ZW1lbnQuIFByZXZpb3VzbHkgdGhlIGRyaXZlciB3
-YXMgZXhwZWN0aW5nIG5lZ2F0aXZlIGRzdApjb29yZGluYXRlcyBhZnRlciBjbGlwcGluZywgd2hp
-Y2ggaXMgbm90IGdvaW5nIGhhcHBlbiwgc28gYW55IGNsaXBwaW5nCmluZHVjZWQgYWRkciBhZGp1
-c3RtZW50IHNpbXBseSBkaWRuJ3QgaGFwcGVuLiBOZWl0aGVyIGRpZCB0aGUgZHJpdmVyCnJlc3Bl
-Y3QgYW55IHVzZXIgY29uZmlndXJlZCBzcmMgY29vcmRpbmF0ZXMsIHNvIHBhbm5pbmcgYW5kIHN1
-Y2ggd291bGQKaGF2ZSBiZWVuIHRvdGFsbHkgYnJva2VuLiBJdCBzaG91bGQgYmUgYWxsIGdvb2Qg
-bm93LgoKQ2M6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+CkNjOiBsaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnClNpZ25lZC1vZmYtYnk6IFZpbGxlIFN5cmrDpGzDpCA8dmlsbGUu
-c3lyamFsYUBsaW51eC5pbnRlbC5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fcGxhbmUuYyB8IDcyICsrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAxIGZp
-bGUgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgNTIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKaW5kZXggMzk5NTc2NWE5MGRjLi41ZjI1MTZm
-Y2EwNzkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5l
-LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwpAQCAtMzAs
-MTUgKzMwLDIwIEBAIHN0YXRpYyBjb25zdCB1MzIgZm9ybWF0c1tdID0gewogCURSTV9GT1JNQVRf
-UkdCNTY1LAogfTsKIAotc3RhdGljIHZvaWQgbXRrX3BsYW5lX2VuYWJsZShzdHJ1Y3QgbXRrX2Ry
-bV9wbGFuZSAqbXRrX3BsYW5lLCBib29sIGVuYWJsZSwKLQkJCSAgICAgZG1hX2FkZHJfdCBhZGRy
-LCBzdHJ1Y3QgZHJtX3JlY3QgKmRlc3QpCitzdGF0aWMgdm9pZCBtdGtfcGxhbmVfZW5hYmxlKHN0
-cnVjdCBtdGtfZHJtX3BsYW5lICptdGtfcGxhbmUsCisJCQkgICAgIGRtYV9hZGRyX3QgYWRkcikK
-IHsKIAlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfcGxhbmUtPmJhc2U7CiAJc3RydWN0
-IG10a19wbGFuZV9zdGF0ZSAqc3RhdGUgPSB0b19tdGtfcGxhbmVfc3RhdGUocGxhbmUtPnN0YXRl
-KTsKIAl1bnNpZ25lZCBpbnQgcGl0Y2gsIGZvcm1hdDsKLQlpbnQgeCwgeTsKKwlib29sIGVuYWJs
-ZTsKIAotCWlmIChXQVJOX09OKCFwbGFuZS0+c3RhdGUgfHwgKGVuYWJsZSAmJiAhcGxhbmUtPnN0
-YXRlLT5mYikpKQorCWlmIChXQVJOX09OKCFwbGFuZS0+c3RhdGUpKQorCQlyZXR1cm47CisKKwll
-bmFibGUgPSBzdGF0ZS0+YmFzZS52aXNpYmxlOworCisJaWYgKFdBUk5fT04oZW5hYmxlICYmICFw
-bGFuZS0+c3RhdGUtPmZiKSkKIAkJcmV0dXJuOwogCiAJaWYgKHBsYW5lLT5zdGF0ZS0+ZmIpIHsK
-QEAgLTQ5LDI3ICs1NCwxNyBAQCBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfZW5hYmxlKHN0cnVjdCBt
-dGtfZHJtX3BsYW5lICptdGtfcGxhbmUsIGJvb2wgZW5hYmxlLAogCQlmb3JtYXQgPSBEUk1fRk9S
-TUFUX1JHQkE4ODg4OwogCX0KIAotCXggPSBwbGFuZS0+c3RhdGUtPmNydGNfeDsKLQl5ID0gcGxh
-bmUtPnN0YXRlLT5jcnRjX3k7Ci0KLQlpZiAoeCA8IDApIHsKLQkJYWRkciAtPSB4ICogNDsKLQkJ
-eCA9IDA7Ci0JfQotCi0JaWYgKHkgPCAwKSB7Ci0JCWFkZHIgLT0geSAqIHBpdGNoOwotCQl5ID0g
-MDsKLQl9CisJYWRkciArPSAoc3RhdGUtPmJhc2Uuc3JjLngxID4+IDE2KSAqIDQ7CisJYWRkciAr
-PSAoc3RhdGUtPmJhc2Uuc3JjLnkxID4+IDE2KSAqIHBpdGNoOwogCiAJc3RhdGUtPnBlbmRpbmcu
-ZW5hYmxlID0gZW5hYmxlOwogCXN0YXRlLT5wZW5kaW5nLnBpdGNoID0gcGl0Y2g7CiAJc3RhdGUt
-PnBlbmRpbmcuZm9ybWF0ID0gZm9ybWF0OwogCXN0YXRlLT5wZW5kaW5nLmFkZHIgPSBhZGRyOwot
-CXN0YXRlLT5wZW5kaW5nLnggPSB4OwotCXN0YXRlLT5wZW5kaW5nLnkgPSB5OwotCXN0YXRlLT5w
-ZW5kaW5nLndpZHRoID0gZGVzdC0+eDIgLSBkZXN0LT54MTsKLQlzdGF0ZS0+cGVuZGluZy5oZWln
-aHQgPSBkZXN0LT55MiAtIGRlc3QtPnkxOworCXN0YXRlLT5wZW5kaW5nLnggPSBzdGF0ZS0+YmFz
-ZS5kc3QueDE7CisJc3RhdGUtPnBlbmRpbmcueSA9IHN0YXRlLT5iYXNlLmRzdC55MTsKKwlzdGF0
-ZS0+cGVuZGluZy53aWR0aCA9IGRybV9yZWN0X3dpZHRoKCZzdGF0ZS0+YmFzZS5kc3QpOworCXN0
-YXRlLT5wZW5kaW5nLmhlaWdodCA9IGRybV9yZWN0X2hlaWdodCgmc3RhdGUtPmJhc2UuZHN0KTsK
-IAl3bWIoKTsgLyogTWFrZSBzdXJlIHRoZSBhYm92ZSBwYXJhbWV0ZXJzIGFyZSBzZXQgYmVmb3Jl
-IHVwZGF0ZSAqLwogCXN0YXRlLT5wZW5kaW5nLmRpcnR5ID0gdHJ1ZTsKIH0KQEAgLTEzNCwyMCAr
-MTI5LDYgQEAgc3RhdGljIGludCBtdGtfcGxhbmVfYXRvbWljX2NoZWNrKHN0cnVjdCBkcm1fcGxh
-bmUgKnBsYW5lLAogewogCXN0cnVjdCBkcm1fZnJhbWVidWZmZXIgKmZiID0gc3RhdGUtPmZiOwog
-CXN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqY3J0Y19zdGF0ZTsKLQlib29sIHZpc2libGU7Ci0Jc3Ry
-dWN0IGRybV9yZWN0IGRlc3QgPSB7Ci0JCS54MSA9IHN0YXRlLT5jcnRjX3gsCi0JCS55MSA9IHN0
-YXRlLT5jcnRjX3ksCi0JCS54MiA9IHN0YXRlLT5jcnRjX3ggKyBzdGF0ZS0+Y3J0Y193LAotCQku
-eTIgPSBzdGF0ZS0+Y3J0Y195ICsgc3RhdGUtPmNydGNfaCwKLQl9OwotCXN0cnVjdCBkcm1fcmVj
-dCBzcmMgPSB7Ci0JCS8qIDE2LjE2IGZpeGVkIHBvaW50ICovCi0JCS54MSA9IHN0YXRlLT5zcmNf
-eCwKLQkJLnkxID0gc3RhdGUtPnNyY195LAotCQkueDIgPSBzdGF0ZS0+c3JjX3ggKyBzdGF0ZS0+
-c3JjX3csCi0JCS55MiA9IHN0YXRlLT5zcmNfeSArIHN0YXRlLT5zcmNfaCwKLQl9OwogCXN0cnVj
-dCBkcm1fcmVjdCBjbGlwID0geyAwLCB9OwogCiAJaWYgKCFmYikKQEAgLTE2OCwxMiArMTQ5LDEw
-IEBAIHN0YXRpYyBpbnQgbXRrX3BsYW5lX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX3BsYW5lICpw
-bGFuZSwKIAljbGlwLngyID0gY3J0Y19zdGF0ZS0+bW9kZS5oZGlzcGxheTsKIAljbGlwLnkyID0g
-Y3J0Y19zdGF0ZS0+bW9kZS52ZGlzcGxheTsKIAotCXJldHVybiBkcm1fcGxhbmVfaGVscGVyX2No
-ZWNrX3VwZGF0ZShwbGFuZSwgc3RhdGUtPmNydGMsIGZiLAotCQkJCQkgICAgICZzcmMsICZkZXN0
-LCAmY2xpcCwKLQkJCQkJICAgICBzdGF0ZS0+cm90YXRpb24sCi0JCQkJCSAgICAgRFJNX1BMQU5F
-X0hFTFBFUl9OT19TQ0FMSU5HLAotCQkJCQkgICAgIERSTV9QTEFORV9IRUxQRVJfTk9fU0NBTElO
-RywKLQkJCQkJICAgICB0cnVlLCB0cnVlLCAmdmlzaWJsZSk7CisJcmV0dXJuIGRybV9wbGFuZV9o
-ZWxwZXJfY2hlY2tfc3RhdGUoc3RhdGUsICZjbGlwLAorCQkJCQkgICAgRFJNX1BMQU5FX0hFTFBF
-Ul9OT19TQ0FMSU5HLAorCQkJCQkgICAgRFJNX1BMQU5FX0hFTFBFUl9OT19TQ0FMSU5HLAorCQkJ
-CQkgICAgdHJ1ZSwgdHJ1ZSk7CiB9CiAKIHN0YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfdXBk
-YXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLApAQCAtMTg0LDI0ICsxNjMsMTMgQEAgc3RhdGlj
-IHZvaWQgbXRrX3BsYW5lX2F0b21pY191cGRhdGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJ
-c3RydWN0IGRybV9nZW1fb2JqZWN0ICpnZW07CiAJc3RydWN0IG10a19kcm1fZ2VtX29iaiAqbXRr
-X2dlbTsKIAlzdHJ1Y3QgbXRrX2RybV9wbGFuZSAqbXRrX3BsYW5lID0gdG9fbXRrX3BsYW5lKHBs
-YW5lKTsKLQlzdHJ1Y3QgZHJtX3JlY3QgZGVzdCA9IHsKLQkJLngxID0gc3RhdGUtPmJhc2UuY3J0
-Y194LAotCQkueTEgPSBzdGF0ZS0+YmFzZS5jcnRjX3ksCi0JCS54MiA9IHN0YXRlLT5iYXNlLmNy
-dGNfeCArIHN0YXRlLT5iYXNlLmNydGNfdywKLQkJLnkyID0gc3RhdGUtPmJhc2UuY3J0Y195ICsg
-c3RhdGUtPmJhc2UuY3J0Y19oLAotCX07Ci0Jc3RydWN0IGRybV9yZWN0IGNsaXAgPSB7IDAsIH07
-CiAKIAlpZiAoIWNydGMpCiAJCXJldHVybjsKIAotCWNsaXAueDIgPSBzdGF0ZS0+YmFzZS5jcnRj
-LT5zdGF0ZS0+bW9kZS5oZGlzcGxheTsKLQljbGlwLnkyID0gc3RhdGUtPmJhc2UuY3J0Yy0+c3Rh
-dGUtPm1vZGUudmRpc3BsYXk7Ci0JZHJtX3JlY3RfaW50ZXJzZWN0KCZkZXN0LCAmY2xpcCk7Ci0K
-IAlnZW0gPSBtdGtfZmJfZ2V0X2dlbV9vYmooc3RhdGUtPmJhc2UuZmIpOwogCW10a19nZW0gPSB0
-b19tdGtfZ2VtX29iaihnZW0pOwotCW10a19wbGFuZV9lbmFibGUobXRrX3BsYW5lLCB0cnVlLCBt
-dGtfZ2VtLT5kbWFfYWRkciwgJmRlc3QpOworCW10a19wbGFuZV9lbmFibGUobXRrX3BsYW5lLCBt
-dGtfZ2VtLT5kbWFfYWRkcik7CiB9CiAKIHN0YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfZGlz
-YWJsZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKLS0gCjIuNy40CgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC1nZnggbWFpbGluZyBsaXN0Cklu
-dGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC1nZngK
+On Fri, Jul 22, 2016 at 04:33:01PM +0800, Minghsiu Tsai wrote:
+> Add a DT binding documentation of MDP for the MT8173 SoC
+> from Mediatek
+> 
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/media/mediatek-mdp.txt     |   96 ++++++++++++++++++++
+>  1 file changed, 96 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> new file mode 100644
+> index 0000000..2dad031
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+> @@ -0,0 +1,96 @@
+> +* Mediatek Media Data Path
+> +
+> +Media Data Path is used for scaling and color space conversion.
+> +
+> +Required properties (all function blocks):
+> +- compatible: "mediatek,<chip>-mdp"
+
+What is this, ...
+
+> +        "mediatek,<chip>-mdp-<function>", one of
+
+and this?
+
+> +        "mediatek,<chip>-mdp-rdma"  - read DMA
+> +        "mediatek,<chip>-mdp-rsz"   - resizer
+> +        "mediatek,<chip>-mdp-wdma"  - write DMA
+> +        "mediatek,<chip>-mdp-wrot"  - write DMA with rotation
+
+List what are valid values of <chip>.
+
+> +- reg: Physical base address and length of the function block register space
+> +- clocks: device clocks
+> +- power-domains: a phandle to the power domain.
+> +- mediatek,vpu: the node of video processor unit
+> +
+> +Required properties (DMA function blocks):
+> +- compatible: Should be one of
+> +        "mediatek,<chip>-mdp-rdma"
+> +        "mediatek,<chip>-mdp-wdma"
+> +        "mediatek,<chip>-mdp-wrot"
+> +- iommus: should point to the respective IOMMU block with master port as
+> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +  for details.
+> +- mediatek,larb: must contain the local arbiters in the current Socs.
+
+It is still not clear which properties apply to which compatible 
+strings.
+
+> +
+> +Example:
+> +	mdp_rdma0: rdma@14001000 {
+> +		compatible = "mediatek,mt8173-mdp-rdma",
+> +			     "mediatek,mt8173-mdp";
+> +		reg = <0 0x14001000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_RDMA0>,
+> +			 <&mmsys CLK_MM_MUTEX_32K>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
+> +		mediatek,larb = <&larb0>;
+> +		mediatek,vpu = <&vpu>;
+> +	};
+> +
+> +	mdp_rdma1: rdma@14002000 {
+> +		compatible = "mediatek,mt8173-mdp-rdma";
+> +		reg = <0 0x14002000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_RDMA1>,
+> +			 <&mmsys CLK_MM_MUTEX_32K>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +		iommus = <&iommu M4U_PORT_MDP_RDMA1>;
+> +		mediatek,larb = <&larb4>;
+> +	};
+> +
+> +	mdp_rsz0: rsz@14003000 {
+> +		compatible = "mediatek,mt8173-mdp-rsz";
+> +		reg = <0 0x14003000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_RSZ0>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +	};
+> +
+> +	mdp_rsz1: rsz@14004000 {
+> +		compatible = "mediatek,mt8173-mdp-rsz";
+> +		reg = <0 0x14004000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_RSZ1>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +	};
+> +
+> +	mdp_rsz2: rsz@14005000 {
+> +		compatible = "mediatek,mt8173-mdp-rsz";
+> +		reg = <0 0x14005000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_RSZ2>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +	};
+> +
+> +	mdp_wdma0: wdma@14006000 {
+> +		compatible = "mediatek,mt8173-mdp-wdma";
+> +		reg = <0 0x14006000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_WDMA>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +		iommus = <&iommu M4U_PORT_MDP_WDMA>;
+> +		mediatek,larb = <&larb0>;
+> +	};
+> +
+> +	mdp_wrot0: wrot@14007000 {
+> +		compatible = "mediatek,mt8173-mdp-wrot";
+> +		reg = <0 0x14007000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_WROT0>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +		iommus = <&iommu M4U_PORT_MDP_WROT0>;
+> +		mediatek,larb = <&larb0>;
+> +	};
+> +
+> +	mdp_wrot1: wrot@14008000 {
+> +		compatible = "mediatek,mt8173-mdp-wrot";
+> +		reg = <0 0x14008000 0 0x1000>;
+> +		clocks = <&mmsys CLK_MM_MDP_WROT1>;
+> +		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +		iommus = <&iommu M4U_PORT_MDP_WROT1>;
+> +		mediatek,larb = <&larb4>;
+> +	};
+> -- 
+> 1.7.9.5
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
