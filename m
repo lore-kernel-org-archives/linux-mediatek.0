@@ -1,69 +1,113 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] GPU-DRM: Delete an unnecessary check before
- drm_property_unreference_blob()
-Date: Mon, 25 Jul 2016 10:43:32 +0200
-Message-ID: <69fe77a4-d9fd-83b4-7821-f0a3c13d737f@gmail.com>
-References: <5307CAA2.8060406@users.sourceforge.net>
- <alpine.DEB.2.02.1402212321410.2043@localhost6.localdomain6>
- <530A086E.8010901@users.sourceforge.net>
- <alpine.DEB.2.02.1402231635510.1985@localhost6.localdomain6>
- <530A72AA.3000601@users.sourceforge.net>
- <alpine.DEB.2.02.1402240658210.2090@localhost6.localdomain6>
- <530B5FB6.6010207@users.sourceforge.net>
- <alpine.DEB.2.10.1402241710370.2074@hadrien>
- <530C5E18.1020800@users.sourceforge.net>
- <alpine.DEB.2.10.1402251014170.2080@hadrien>
- <530CD2C4.4050903@users.sourceforge.net>
- <alpine.DEB.2.10.1402251840450.7035@hadrien>
- <530CF8FF.8080600@users.sourceforge.net>
- <alpine.DEB.2.02.1402252117150.2047@localhost6.localdomain6>
- <530DD06F.4090703@users.sourceforge.net>
- <alpine.DEB.2.02.1402262129250.2221@localhost6.localdomain6>
- <5317A59D.4@users.sourceforge.net>
- <515bcb7e-3e00-3438-cc47-227cfcd41990@users.sourceforge.net>
+From: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH 1/3] memory: mediatek: Add a new interface
+ mtk_smi_larb_is_ready
+Date: Tue, 26 Jul 2016 09:31:48 +0800
+Message-ID: <1469496708.3072.4.camel@mhfsdcap03>
+References: <1468983721-3627-1-git-send-email-yong.wu@mediatek.com>
+	 <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <kernel-janitors-owner@vger.kernel.org>
-In-Reply-To: <515bcb7e-3e00-3438-cc47-227cfcd41990@users.sourceforge.net>
-Sender: kernel-janitors-owner@vger.kernel.org
-To: SF Markus Elfring <elfring@users.sourceforge.net>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org, Julia Lawall <julia.lawall@lip6.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cd01b829-f869-606b-5c1a-8077fbddb085@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Tiffany Lin <tiffany.lin@mediatek.com>, Honghui Zhang <honghui.zhang@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@google.com>, Tomasz Figa <tfiga@google.com>, Arnd Bergmann <arnd@arndb.de>, Lucas Stach <l.stach@pengutronix.de>, youlin.pei@mediatek.com, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, Joerg Roedel <joro@8bytes.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Mon, 2016-07-25 at 10:39 +0200, Matthias Brugger wrote:
+> 
+> On 20/07/16 05:01, Yong Wu wrote:
+> > Currently the iommu consumer always call iommu_present to get whether
+> > the iommu is ready. But in MTK IOMMU, this function can't indicate
+> > this. The IOMMU call bus_set_iommu->mtk_iommu_add_device->
+> > mtk_iommu_attach_device to parse the iommu data, then it's able to
+> > transfer "struct mtk_smi_iommu" to SMI-LARB, and the iommu uses the
+> > larbs as compoents, the iommu will finish its probe until all the larbs
+> > probe done.
+> >
+> > If the iommu consumer(like DRM) begin to probe after the time of
+> > calling bus_set_iommu and before the time of SMI probe finish, it
+> > will hang like this:
+> >
+> > [    7.832359] Call trace:
+> > [    7.834778] [<ffffffc000764424>] mtk_smi_larb_get+0x24/0xa8
+> > [    7.840300] [<ffffffc0005a1390>] mtk_drm_crtc_enable+0x6c/0x450
+> >
+> > Because the larb->mmu is NULL at that time.
+> >
+> > In order to avoid this issue, we add a new interface
+> > (mtk_smi_larb_is_ready) for checking whether the IOMMU and SMI have
+> > finished their probe. If it return false, the iommu consumer should
+> > probe-defer for the IOMMU and SMI.
+> >
+> 
+> Can't we just skip the functions in the probe and call bus_set_iommu 
+> only if we were able to bind all components?
+> Something like this:
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index c3043d8..0bef49b 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -649,10 +649,14 @@ static int mtk_iommu_probe(struct platform_device 
+> *pdev)
+>          if (ret)
+>                  return ret;
+> 
+> +       ret = component_master_add_with_match(dev, &mtk_iommu_com_ops, 
+> match);
+> +       if (ret)
+> +               return ret;
+> +
+>          if (!iommu_present(&platform_bus_type))
+>                  bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+> 
+> -       return component_master_add_with_match(dev, &mtk_iommu_com_ops, 
+> match);
+> +       return ret;
+>   } 
 
+Thanks very much for your suggestion, I have tried and this seems don't
+work.
 
-On 22/07/16 12:56, SF Markus Elfring wrote:
-> From: Markus Elfring <elfring@users.sourceforge.net>
-> Date: Fri, 22 Jul 2016 12:48:12 +0200
->
-> The drm_property_unreference_blob() function tests whether its argument
-> is NULL and then returns immediately.
-> Thus the test around the call is not needed.
->
-> This issue was detected by using the Coccinelle software.
->
-> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
+I don't know much about component, so add some logs.
+                                                                
+ component_master_add_with_match only add the ops into a list, it won't
+wait for the smi-larb probe done. Below is the log, it will return
+quickly. 
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+[    0.095073] mtk-iommu 10205000.iommu: begin to probe 
+[    0.095922] mtk-iommu 10205000.iommu: probe hw init
+[    0.095948] mtk-iommu 10205000.iommu: trying to bring up master
+[    0.095967] mtk-iommu 10205000.iommu: master has incomplete
+components
 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 24aa3ba..07541d0 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -112,9 +112,7 @@ static void mtk_drm_crtc_reset(struct drm_crtc *crtc)
->  	struct mtk_crtc_state *state;
->
->  	if (crtc->state) {
-> -		if (crtc->state->mode_blob)
-> -			drm_property_unreference_blob(crtc->state->mode_blob);
-> -
-> +		drm_property_unreference_blob(crtc->state->mode_blob);
->  		state = to_mtk_crtc_state(crtc->state);
->  		memset(state, 0, sizeof(*state));
->  	} else {
->
+The binder callback(mtk_iommu_bind) is called in this backtrace:
+
+[    0.555718] [<ffff00000849e6ec>] mtk_iommu_bind+0x14/0x48
+[    0.556405] [<ffff00000850a860>] try_to_bring_up_master.part.6
++0x38/0x88
+[    0.557255] [<ffff00000850b014>] component_add+0x158/0x208
+[    0.557954] [<ffff0000087352a4>] mtk_smi_larb_probe+0xf8/0x134
+[    0.558696] [<ffff000008511838>] platform_drv_probe+0x50/0xc8
+[    0.559427] [<ffff00000850fcfc>] driver_probe_device+0x224/0x2c4
+[    0.560191] [<ffff00000850ff08>] __device_attach_driver+0x98/0xc8
+[    0.560966] [<ffff00000850dea0>] bus_for_each_drv+0x58/0x98
+[    0.561676] [<ffff00000850fa3c>] __device_attach+0xbc/0x124
+[    0.562385] [<ffff0000085100a4>] device_initial_probe+0x10/0x18
+[    0.563138] [<ffff00000850ef48>] bus_probe_device+0x90/0x98
+[    0.563848] [<ffff00000850f3e4>] deferred_probe_work_func+0x7c/0xb0
+
+Thus, It looks like mtk_iommu_bind is called in mtk_smi_larb_probe which
+will be delayed by power-domain.
+then iommu_present is true even though M4U and SMI-larb have not
+finished their component binding.
+
+> 
+>  
+> 
+>   static int mtk_iommu_remove(struct platform_device *pdev)
+> 
+> Regards,
+> Matthias
