@@ -1,67 +1,75 @@
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Subject: [PATCH v6 1/3] dt-bindings: auxadc: Add binding document for Mediatek auxadc.
-Date: Wed, 27 Jul 2016 18:02:59 +0800
-Message-ID: <1469613781-1296-2-git-send-email-zhiyong.tao@mediatek.com>
-References: <1469613781-1296-1-git-send-email-zhiyong.tao@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469613781-1296-1-git-send-email-zhiyong.tao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
-Cc: srv_heupstream@mediatek.com, liguo.zhang@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, erin.lo@mediatek.com, dawei.chien@mediatek.com, matthias.bgg@gmail.com, s.hauer@pengutronix.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, robh@kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "spi: mediatek: remove spi_master_put in mtk_spi_remove()" to the spi tree
+Date: Wed, 27 Jul 2016 20:13:33 +0100
+Message-ID: <E1bSUGr-00051R-Fx@debutante>
+References: <1469545010-32327-1-git-send-email-weiyj.lk@gmail.com>
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1469545010-32327-1-git-send-email-weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The commit adds the device tree binding documentation for the mediatek
-auxadc found on Mediatek MT2701.
-Thermal gets auxadc sample data by iio device.
-So the commit changes auxadc device tree binding documentation from
-/soc/mediatek/auxadc.txt to /iio/adc/mt6577_auxadc.txt.
+The patch
 
-Acked-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+   spi: mediatek: remove spi_master_put in mtk_spi_remove()
+
+has been applied to the spi tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From c2b08cede727387a5e19b40fa8e1a1e3a53e8527 Mon Sep 17 00:00:00 2001
+From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Date: Tue, 26 Jul 2016 14:56:50 +0000
+Subject: [PATCH] spi: mediatek: remove spi_master_put in mtk_spi_remove()
+
+The call to spi_master_put() in mtk_spi_remove() is redundant since
+the master is registered using devm_spi_register_master() and no
+reference hold by using spi_master_get() in mtk_spi_remove().
+
+This is detected by Coccinelle semantic patch.
+
+Signed-off-by: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- .../auxadc.txt => iio/adc/mt6577_auxadc.txt}       |   18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
- rename Documentation/devicetree/bindings/{soc/mediatek/auxadc.txt => iio/adc/mt6577_auxadc.txt} (46%)
+ drivers/spi/spi-mt65xx.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/auxadc.txt b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-similarity index 46%
-rename from Documentation/devicetree/bindings/soc/mediatek/auxadc.txt
-rename to Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-index bdb7829..68c45cb 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/auxadc.txt
-+++ b/Documentation/devicetree/bindings/iio/adc/mt6577_auxadc.txt
-@@ -1,4 +1,4 @@
--MediaTek AUXADC
-+* Mediatek AUXADC - Analog to Digital Converter on Mediatek mobile soc (mt65xx/mt81xx/mt27xx)
- ===============
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 0be89e052428..899d7a8f0889 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -685,7 +685,6 @@ static int mtk_spi_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
  
- The Auxiliary Analog/Digital Converter (AUXADC) is an ADC found
-@@ -10,12 +10,20 @@ Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
- for the Thermal Controller which holds a phandle to the AUXADC.
+ 	mtk_spi_reset(mdata);
+-	spi_master_put(master);
  
- Required properties:
--- compatible: Must be "mediatek,mt8173-auxadc"
--- reg: Address range of the AUXADC unit
-+  - compatible: Should be one of:
-+    - "mediatek,mt2701-auxadc": For MT2701 family of SoCs
-+    - "mediatek,mt8173-auxadc": For MT8173 family of SoCs
-+  - reg: Address range of the AUXADC unit.
-+  - clocks: Should contain a clock specifier for each entry in clock-names
-+  - clock-names: Should contain "main".
-+  - #io-channel-cells: Should be 1, see ../iio-bindings.txt
- 
- Example:
- 
--auxadc: auxadc@11001000 {
--	compatible = "mediatek,mt8173-auxadc";
-+auxadc: adc@11001000 {
-+	compatible = "mediatek,mt2701-auxadc";
- 	reg = <0 0x11001000 0 0x1000>;
-+	clocks = <&pericfg CLK_PERI_AUXADC>;
-+	clock-names = "main";
-+	#io-channel-cells = <1>;
- };
+ 	return 0;
+ }
 -- 
-1.7.9.5
+2.8.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
