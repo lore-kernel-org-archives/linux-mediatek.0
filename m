@@ -1,66 +1,69 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3] arm64: dts: mt8173: add mmsel clocks for 4K support
-Date: Wed, 27 Jul 2016 17:25:56 +0800
-Message-ID: <1469611556.11841.77.camel@mtksdaap41>
-References: <1469607914-64831-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH v2 1/3] drm/mediatek: do mtk_hdmi_send_infoframe after
+ HDMI clock enable
+Date: Wed, 27 Jul 2016 11:27:16 +0200
+Message-ID: <1469611636.2470.24.camel@pengutronix.de>
+References: <1469608292-6106-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1469608292-6106-2-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469607914-64831-1-git-send-email-bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Junzhi Zhao <ju>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469608292-6106-2-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Wed, 2016-07-27 at 16:25 +0800, Bibby Hsieh wrote:
-> If MT8173 can support HDMI 4K resoultion, the
-> VENCPLL should be configured to 800MHZ.
-> We didn't set VENCPLL directly, we set the
-> mm_sel to 400MHz statically in the board device tree.
-
-You may rewrite the description as below:
-
-'To support HDMI 4K resolution, mmsys need clock mm_sel to be 400MHz.'
-
-You need not to mention VENCPLL because it's controlled by clock driver.
-
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-> Changes since v2:
->  - Align the clocks of dpi0 node.
-> 
-> Changes since v1:
->  - Do not set the VENCPLL by clk_set_rate
->    at display driver.
->  - Configure the mm_sel to 400MHz statically
->    in the board device tree.
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 78529e4..9c22204 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -690,7 +690,9 @@
->  			compatible = "mediatek,mt8173-mmsys", "syscon";
->  			reg = <0 0x14000000 0 0x1000>;
->  			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-> +			clocks = <&topckgen CLK_TOP_MM_SEL>;
->  			#clock-cells = <1>;
-> +			clock-frequency  = <400000000>;
->  		};
->  
->  		ovl0: ovl@1400c000 {
-
-Regards,
-CK
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+QW0gTWl0dHdvY2gsIGRlbiAyNy4wNy4yMDE2LCAxNjozMSArMDgwMCBzY2hyaWViIEJpYmJ5IEhz
+aWVoOgo+IEZyb206IEp1bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5jb20+Cj4gCj4g
+VGhlIG10a19oZG1pX3NlbmRfaW5mb2ZyYW1lIGhhdmUgdG8KPiBiZSBydW4gYWZ0ZXIgUExMIGFu
+ZCBQSVhFTCBjbG9jayBvZiBIRE1JIGVuYWJsZS4KPiBNYWtlIHN1cmUgdGhhdCBIRE1JIGluZm9y
+ZnJhbWVzIGNhbiBiZSBzZW50Cj4gc3VjY2Vzc2Z1bGx5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEp1
+bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogQmli
+YnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAgIDE5ICsrKysrKysrKysrKy0tLS0tLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCBiYTgxMmVmLi5kODYwOWY1IDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gKysrIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBAQCAtMTEzMywxMiArMTEzMyw2IEBAIHN0
+YXRpYyBpbnQgbXRrX2hkbWlfb3V0cHV0X3NldF9kaXNwbGF5X21vZGUoc3RydWN0IG10a19oZG1p
+ICpoZG1pLAo+ICAJcGh5X3Bvd2VyX29uKGhkbWktPnBoeSk7Cj4gIAltdGtfaGRtaV9hdWRfb3V0
+cHV0X2NvbmZpZyhoZG1pLCBtb2RlKTsKPiAgCj4gLQltdGtfaGRtaV9zZXR1cF9hdWRpb19pbmZv
+ZnJhbWUoaGRtaSk7Cj4gLQltdGtfaGRtaV9zZXR1cF9hdmlfaW5mb2ZyYW1lKGhkbWksIG1vZGUp
+Owo+IC0JbXRrX2hkbWlfc2V0dXBfc3BkX2luZm9mcmFtZShoZG1pLCAibWVkaWF0ZWsiLCAiT24t
+Y2hpcCBIRE1JIik7Cj4gLQlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHXzNEX01BU0sp
+Cj4gLQkJbXRrX2hkbWlfc2V0dXBfdmVuZG9yX3NwZWNpZmljX2luZm9mcmFtZShoZG1pLCBtb2Rl
+KTsKPiAtCj4gIAltdGtfaGRtaV9od192aWRfYmxhY2soaGRtaSwgZmFsc2UpOwo+ICAJbXRrX2hk
+bWlfaHdfYXVkX3VubXV0ZShoZG1pKTsKPiAgCW10a19oZG1pX2h3X3NlbmRfYXZfdW5tdXRlKGhk
+bWkpOwo+IEBAIC0xNDAxLDE0ICsxMzk1LDI1IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX2JyaWRn
+ZV9wcmVfZW5hYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UpCj4gIAloZG1pLT5wb3dlcmVk
+ID0gdHJ1ZTsKPiAgfQo+ICAKPiArc3RhdGljIHZvaWQgbXRrX2hkbWlfc2VuZF9pbmZvZnJhbWUo
+c3RydWN0IG10a19oZG1pICpoZG1pLAo+ICsJCQkJICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2Rl
+ICptb2RlKQo+ICt7Cj4gKwltdGtfaGRtaV9zZXR1cF9hdWRpb19pbmZvZnJhbWUoaGRtaSk7Cj4g
+KwltdGtfaGRtaV9zZXR1cF9hdmlfaW5mb2ZyYW1lKGhkbWksIG1vZGUpOwo+ICsJbXRrX2hkbWlf
+c2V0dXBfc3BkX2luZm9mcmFtZShoZG1pLCAibWVkaWF0ZWsiLCAiT24tY2hpcCBIRE1JIik7Cj4g
+KwlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHXzNEX01BU0spCj4gKwkJbXRrX2hkbWlf
+c2V0dXBfdmVuZG9yX3NwZWNpZmljX2luZm9mcmFtZShoZG1pLCBtb2RlKTsKPiArfQo+ICsKPiAg
+c3RhdGljIHZvaWQgbXRrX2hkbWlfYnJpZGdlX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJp
+ZGdlKQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkgPSBoZG1pX2N0eF9mcm9tX2JyaWRn
+ZShicmlkZ2UpOwo+ICAKPiArCXBoeV9wb3dlcl9vbihoZG1pLT5waHkpOwo+ICAJbXRrX2hkbWlf
+b3V0cHV0X3NldF9kaXNwbGF5X21vZGUoaGRtaSwgJmhkbWktPm1vZGUpOwo+ICAJY2xrX3ByZXBh
+cmVfZW5hYmxlKGhkbWktPmNsa1tNVEtfSERNSV9DTEtfSERNSV9QTExdKTsKPiAgCWNsa19wcmVw
+YXJlX2VuYWJsZShoZG1pLT5jbGtbTVRLX0hETUlfQ0xLX0hETUlfUElYRUxdKTsKPiAtCXBoeV9w
+b3dlcl9vbihoZG1pLT5waHkpOwoKVGhpcyBjaGFuZ2UgaXMgbm90IGRlc2NyaWJlZCBpbiB0aGUg
+cGF0Y2ggZGVzY3JpcHRpb24uIFdoeSBpcyB0aGUgcGh5CnBvd2VyIG9uIG1vdmVkIGFmdGVyIHRo
+ZSBwaXhlbCBjbG9jayBlbmFibGU/Cgo+ICsJbXRrX2hkbWlfc2VuZF9pbmZvZnJhbWUoaGRtaSwg
+JmhkbWktPm1vZGUpOwo+ICAKPiAgCWhkbWktPmVuYWJsZWQgPSB0cnVlOwo+ICB9CgpyZWdhcmRz
+ClBoaWxpcHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
