@@ -1,73 +1,50 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v2 1/3] drm/mediatek: do mtk_hdmi_send_infoframe after HDMI clock enable
-Date: Wed, 27 Jul 2016 16:31:30 +0800
-Message-ID: <1469608292-6106-2-git-send-email-bibby.hsieh@mediatek.com>
-References: <1469608292-6106-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH v2 0/3] MT8173 HDMI 4K support
+Date: Wed, 27 Jul 2016 16:31:29 +0800
+Message-ID: <1469608292-6106-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1469608292-6106-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Junzhi Zhao <junzhi.zhao@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Junzhi Zhao <junzhi.zhao@mediatek.com>
-
-The mtk_hdmi_send_infoframe have to
-be run after PLL and PIXEL clock of HDMI enable.
-Make sure that HDMI inforframes can be sent
-successfully.
-
-Signed-off-by: Junzhi Zhao <junzhi.zhao@mediatek.com>
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c |   19 ++++++++++++-------
- 1 file changed, 12 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index ba812ef..d8609f5 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1133,12 +1133,6 @@ static int mtk_hdmi_output_set_display_mode(struct mtk_hdmi *hdmi,
- 	phy_power_on(hdmi->phy);
- 	mtk_hdmi_aud_output_config(hdmi, mode);
- 
--	mtk_hdmi_setup_audio_infoframe(hdmi);
--	mtk_hdmi_setup_avi_infoframe(hdmi, mode);
--	mtk_hdmi_setup_spd_infoframe(hdmi, "mediatek", "On-chip HDMI");
--	if (mode->flags & DRM_MODE_FLAG_3D_MASK)
--		mtk_hdmi_setup_vendor_specific_infoframe(hdmi, mode);
--
- 	mtk_hdmi_hw_vid_black(hdmi, false);
- 	mtk_hdmi_hw_aud_unmute(hdmi);
- 	mtk_hdmi_hw_send_av_unmute(hdmi);
-@@ -1401,14 +1395,25 @@ static void mtk_hdmi_bridge_pre_enable(struct drm_bridge *bridge)
- 	hdmi->powered = true;
- }
- 
-+static void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi,
-+				    struct drm_display_mode *mode)
-+{
-+	mtk_hdmi_setup_audio_infoframe(hdmi);
-+	mtk_hdmi_setup_avi_infoframe(hdmi, mode);
-+	mtk_hdmi_setup_spd_infoframe(hdmi, "mediatek", "On-chip HDMI");
-+	if (mode->flags & DRM_MODE_FLAG_3D_MASK)
-+		mtk_hdmi_setup_vendor_specific_infoframe(hdmi, mode);
-+}
-+
- static void mtk_hdmi_bridge_enable(struct drm_bridge *bridge)
- {
- 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
- 
-+	phy_power_on(hdmi->phy);
- 	mtk_hdmi_output_set_display_mode(hdmi, &hdmi->mode);
- 	clk_prepare_enable(hdmi->clk[MTK_HDMI_CLK_HDMI_PLL]);
- 	clk_prepare_enable(hdmi->clk[MTK_HDMI_CLK_HDMI_PIXEL]);
--	phy_power_on(hdmi->phy);
-+	mtk_hdmi_send_infoframe(hdmi, &hdmi->mode);
- 
- 	hdmi->enabled = true;
- }
--- 
-1.7.9.5
+VGhpcyBpcyBNVDgxNzMgSERNSSA0SyBzdXBwb3J0IFBBVENIIHYyLCBiYXNlZCBvbiA0LjctcmMx
+LgoKSW4gb3JkZXIgdG8gc3VwcG9ydCBIRE1JIDRLIG9uIE1UODE3MywKd2UgaGF2ZSB0byBtYWtl
+IHNvbWUgbW9kaWZpY2F0aW9ucy4KMSkgTWFrZSBzdXJlIHRoYXQgbXRrX2hkbWlfc2VuZF9pbmZv
+ZnJhbWUgaXMgc2VudCBzdWNjZXNzZnVsbHkuCjIpIEVuaGFuY2UgdGhlIEhETUkgZHJpdmluZyBj
+dXJyZW50IHRvIGltcHJvdmUgcGVyZm9ybWFuY2UuCjMpIE1ha2Ugc3VyZSB0aGF0IHBpeGVsIGNs
+b2NrIGlzIDI5N01IeiB3aGVuIHJlc29sdXRpb24gaXMgNEsuCgpDaGFuZ2VzIHNpbmNlIHYxOgog
+LSBBY2NvcmRpbmcgdG8gdGhlIHN1Z2dlc3Rpb24gZnJvbSBwaGlsaXBwLCBXZSB1c2UgdGhlIG5l
+dwogICBkcGkwX3NlbCByYXRlIHNldCBtZXRob2QuCiAtIGNhbGxzIGNsa19zZXRfcmF0ZSB0byBz
+ZXQgdGhlIGRwaTBfc2VsIGFjY29yZGluZyB0byB0aGUKICAgcGl4ZWwgY2xvY2suCiAtIFJlbW92
+ZSB0aGUgZGlyZWN0IGFjY2VzcyB0byBhbGwgdGhlIGludGVybWVkaWF0ZSBjbG9jayBwYXJ0Lgog
+LSBSZW1vdmUgdGhlIGludGVybWVkaWF0ZSB0dmRwbGxfZCogY2xvY2tzIGluIGR0cy4KIC0gQWNj
+b3JkaW5nIHRvIHN1Z2dlc3Rpb24gZnJvbSBDSywgd2UgcmVuYW1lIHRoZSBjbG9jayBwYXJzZQog
+ICBmdW5jdGlvbiBhbmQgcmVtb3ZlIGl0IGZyb20gbXRrX2RwaV9jb25mIHN0cnVjdC4KIC0gTWVy
+Z2VzIHRoZSBoZG1pIFBsbCBzZXQgcmF0ZSBmb3IgcGl4ZWwgY2xvY2sgZ3JlYXRlciB0aGFuCiAg
+IDE2NU1IeiBhbmQgc21hbGxlciBwYXJ0cy4KClRoZSBQQVRDSCBkZXBlbmRzIG9uIHRoZSBmb2xs
+b3dpbmcgcGF0Y2g6Cmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTI0OTQ0NS8g
+KGFybTY0OiBkdHM6IG10ODE3MzogYWRkIG1tc2VsIGNsb2NrcyBmb3IgNEsgc3VwcG9ydCkKClRo
+YW5rIHlvdS4KQmliYnkgSHNpZWgKCkp1bnpoaSBaaGFvICgzKToKICBkcm0vbWVkaWF0ZWs6IGRv
+IG10a19oZG1pX3NlbmRfaW5mb2ZyYW1lIGFmdGVyIEhETUkgY2xvY2sgZW5hYmxlCiAgZHJtL21l
+ZGlhdGVrOiBlbmhhbmNlIHRoZSBIRE1JIGRyaXZpbmcgY3VycmVudAogIGRybS9tZWRpYXRlazog
+Zml4IHRoZSB3cm9uZyBwaXhlbCBjbG9jayB3aGVuIHJlc29sdXRpb24gaXMgNEsKCiBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAgICAgICAgICAgIHwgIDE0OSArKysrKysrKysr
+KysrKystLS0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAg
+ICAgICAgfCAgIDE5ICstLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRt
+aV9waHkuYyB8ICAgNDIgKysrKystLQogMyBmaWxlcyBjaGFuZ2VkLCAxMzggaW5zZXJ0aW9ucygr
+KSwgNzIgZGVsZXRpb25zKC0pCgotLSAKMS43LjkuNQoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
