@@ -1,91 +1,66 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [PATCH v2 2/3] drm/mediatek: enhance the HDMI driving current
-Date: Wed, 27 Jul 2016 11:25:50 +0200
-Message-ID: <1469611550.2470.22.camel@pengutronix.de>
-References: <1469608292-6106-1-git-send-email-bibby.hsieh@mediatek.com>
- <1469608292-6106-3-git-send-email-bibby.hsieh@mediatek.com>
+From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v3] arm64: dts: mt8173: add mmsel clocks for 4K support
+Date: Wed, 27 Jul 2016 17:25:56 +0800
+Message-ID: <1469611556.11841.77.camel@mtksdaap41>
+References: <1469607914-64831-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469608292-6106-3-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1469607914-64831-1-git-send-email-bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Junzhi Zhao <ju>
 List-Id: linux-mediatek@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIGRlbiAyNy4wNy4yMDE2LCAxNjozMSArMDgwMCBzY2hyaWViIEJpYmJ5IEhz
-aWVoOgo+IEZyb206IEp1bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5jb20+Cj4gCj4g
-SW4gb3JkZXIgdG8gaW1wcm92ZSA0SyByZXNvbHV0aW9uIHBlcmZvcm1hbmNlLAo+IHdlIGhhdmUg
-dG8gZW5oYW5jZSB0aGUgSERNSSBkcml2aW5nIGN1cnJlbmQKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIF4KVHlwbywgcy9jdXJyZW5kL2N1cnJlbnQvCgpCZXNpZGVz
-IHRoYXQsIHRoaXMgcGF0Y2ggbG9va3MgZ29vZCB0byBtZS4KCnJlZ2FyZHMKUGhpbGlwcAoKPiB3
-aGVuIGNsb2NrIHJhdGUgaXMgZ3JlYXRlciB0aGFuIDE2NU1Iei4KPiAKPiBTaWduZWQtb2ZmLWJ5
-OiBKdW56aGkgWmhhbyA8anVuemhpLnpoYW9AbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYtYnk6
-IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMgfCAgIDQyICsrKysrKysrKysr
-KysrKysrLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0aW9ucygrKSwgMTIgZGVs
-ZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-bXQ4MTczX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19o
-ZG1pX3BoeS5jCj4gaW5kZXggOGEyNDc1NC4uNTFjYjljZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+IEBAIC0yNjUsNiArMjY1LDkg
-QEAgc3RhdGljIGludCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVu
-c2lnbmVkIGxvbmcgcmF0ZSwKPiAgCXN0cnVjdCBtdGtfaGRtaV9waHkgKmhkbWlfcGh5ID0gdG9f
-bXRrX2hkbWlfcGh5KGh3KTsKPiAgCXVuc2lnbmVkIGludCBwcmVfZGl2Owo+ICAJdW5zaWduZWQg
-aW50IGRpdjsKPiArCXVuc2lnbmVkIGludCBwcmVfaWJpYXM7Cj4gKwl1bnNpZ25lZCBpbnQgaGRt
-aV9pYmlhczsKPiArCXVuc2lnbmVkIGludCBpbXBfZW47Cj4gIAo+ICAJZGV2X2RiZyhoZG1pX3Bo
-eS0+ZGV2LCAiJXM6ICVsdSBIeiwgcGFyZW50OiAlbHUgSHpcbiIsIF9fZnVuY19fLAo+ICAJCXJh
-dGUsIHBhcmVudF9yYXRlKTsKPiBAQCAtMjk4LDE4ICszMDEsMzEgQEAgc3RhdGljIGludCBtdGtf
-aGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwK
-PiAgCQkJICAoMHgxIDw8IFBMTF9CUl9TSElGVCksCj4gIAkJCSAgUkdfSERNSVRYX1BMTF9CUCB8
-IFJHX0hETUlUWF9QTExfQkMgfAo+ICAJCQkgIFJHX0hETUlUWF9QTExfQlIpOwo+IC0JbXRrX2hk
-bWlfcGh5X2NsZWFyX2JpdHMoaGRtaV9waHksIEhETUlfQ09OMywgUkdfSERNSVRYX1BSRF9JTVBf
-RU4pOwo+ICsJaWYgKHJhdGUgPCAxNjUwMDAwMDApIHsKPiArCQltdGtfaGRtaV9waHlfY2xlYXJf
-Yml0cyhoZG1pX3BoeSwgSERNSV9DT04zLAo+ICsJCQkJCVJHX0hETUlUWF9QUkRfSU1QX0VOKTsK
-PiArCQlwcmVfaWJpYXMgPSAweDM7Cj4gKwkJaW1wX2VuID0gMHgwOwo+ICsJCWhkbWlfaWJpYXMg
-PSBoZG1pX3BoeS0+aWJpYXM7Cj4gKwl9IGVsc2Ugewo+ICsJCW10a19oZG1pX3BoeV9zZXRfYml0
-cyhoZG1pX3BoeSwgSERNSV9DT04zLAo+ICsJCQkJICAgICAgUkdfSERNSVRYX1BSRF9JTVBfRU4p
-Owo+ICsJCXByZV9pYmlhcyA9IDB4NjsKPiArCQlpbXBfZW4gPSAweGY7Cj4gKwkJaGRtaV9pYmlh
-cyA9IGhkbWlfcGh5LT5pYmlhc191cDsKPiArCX0KPiAgCW10a19oZG1pX3BoeV9tYXNrKGhkbWlf
-cGh5LCBIRE1JX0NPTjQsCj4gLQkJCSAgKDB4MyA8PCBQUkRfSUJJQVNfQ0xLX1NISUZUKSB8Cj4g
-LQkJCSAgKDB4MyA8PCBQUkRfSUJJQVNfRDJfU0hJRlQpIHwKPiAtCQkJICAoMHgzIDw8IFBSRF9J
-QklBU19EMV9TSElGVCkgfAo+IC0JCQkgICgweDMgPDwgUFJEX0lCSUFTX0QwX1NISUZUKSwKPiAr
-CQkJICAocHJlX2liaWFzIDw8IFBSRF9JQklBU19DTEtfU0hJRlQpIHwKPiArCQkJICAocHJlX2li
-aWFzIDw8IFBSRF9JQklBU19EMl9TSElGVCkgfAo+ICsJCQkgIChwcmVfaWJpYXMgPDwgUFJEX0lC
-SUFTX0QxX1NISUZUKSB8Cj4gKwkJCSAgKHByZV9pYmlhcyA8PCBQUkRfSUJJQVNfRDBfU0hJRlQp
-LAo+ICAJCQkgIFJHX0hETUlUWF9QUkRfSUJJQVNfQ0xLIHwKPiAgCQkJICBSR19IRE1JVFhfUFJE
-X0lCSUFTX0QyIHwKPiAgCQkJICBSR19IRE1JVFhfUFJEX0lCSUFTX0QxIHwKPiAgCQkJICBSR19I
-RE1JVFhfUFJEX0lCSUFTX0QwKTsKPiAgCW10a19oZG1pX3BoeV9tYXNrKGhkbWlfcGh5LCBIRE1J
-X0NPTjMsCj4gLQkJCSAgKDB4MCA8PCBEUlZfSU1QX0VOX1NISUZUKSwgUkdfSERNSVRYX0RSVl9J
-TVBfRU4pOwo+ICsJCQkgIChpbXBfZW4gPDwgRFJWX0lNUF9FTl9TSElGVCksCj4gKwkJCSAgUkdf
-SERNSVRYX0RSVl9JTVBfRU4pOwo+ICAJbXRrX2hkbWlfcGh5X21hc2soaGRtaV9waHksIEhETUlf
-Q09ONiwKPiAgCQkJICAoaGRtaV9waHktPmRydl9pbXBfY2xrIDw8IERSVl9JTVBfQ0xLX1NISUZU
-KSB8Cj4gIAkJCSAgKGhkbWlfcGh5LT5kcnZfaW1wX2QyIDw8IERSVl9JTVBfRDJfU0hJRlQpIHwK
-PiBAQCAtMzE4LDEyICszMzQsMTQgQEAgc3RhdGljIGludCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUo
-c3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwKPiAgCQkJICBSR19IRE1JVFhf
-RFJWX0lNUF9DTEsgfCBSR19IRE1JVFhfRFJWX0lNUF9EMiB8Cj4gIAkJCSAgUkdfSERNSVRYX0RS
-Vl9JTVBfRDEgfCBSR19IRE1JVFhfRFJWX0lNUF9EMCk7Cj4gIAltdGtfaGRtaV9waHlfbWFzayho
-ZG1pX3BoeSwgSERNSV9DT041LAo+IC0JCQkgIChoZG1pX3BoeS0+aWJpYXMgPDwgRFJWX0lCSUFT
-X0NMS19TSElGVCkgfAo+IC0JCQkgIChoZG1pX3BoeS0+aWJpYXMgPDwgRFJWX0lCSUFTX0QyX1NI
-SUZUKSB8Cj4gLQkJCSAgKGhkbWlfcGh5LT5pYmlhcyA8PCBEUlZfSUJJQVNfRDFfU0hJRlQpIHwK
-PiAtCQkJICAoaGRtaV9waHktPmliaWFzIDw8IERSVl9JQklBU19EMF9TSElGVCksCj4gLQkJCSAg
-UkdfSERNSVRYX0RSVl9JQklBU19DTEsgfCBSR19IRE1JVFhfRFJWX0lCSUFTX0QyIHwKPiAtCQkJ
-ICBSR19IRE1JVFhfRFJWX0lCSUFTX0QxIHwgUkdfSERNSVRYX0RSVl9JQklBU19EMCk7Cj4gKwkJ
-CSAgKGhkbWlfaWJpYXMgPDwgRFJWX0lCSUFTX0NMS19TSElGVCkgfAo+ICsJCQkgIChoZG1pX2li
-aWFzIDw8IERSVl9JQklBU19EMl9TSElGVCkgfAo+ICsJCQkgIChoZG1pX2liaWFzIDw8IERSVl9J
-QklBU19EMV9TSElGVCkgfAo+ICsJCQkgIChoZG1pX2liaWFzIDw8IERSVl9JQklBU19EMF9TSElG
-VCksCj4gKwkJCSAgUkdfSERNSVRYX0RSVl9JQklBU19DTEsgfAo+ICsJCQkgIFJHX0hETUlUWF9E
-UlZfSUJJQVNfRDIgfAo+ICsJCQkgIFJHX0hETUlUWF9EUlZfSUJJQVNfRDEgfAo+ICsJCQkgIFJH
-X0hETUlUWF9EUlZfSUJJQVNfRDApOwo+ICAJcmV0dXJuIDA7Cj4gIH0KPiAgCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcg
-bGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi, Bibby:
+
+On Wed, 2016-07-27 at 16:25 +0800, Bibby Hsieh wrote:
+> If MT8173 can support HDMI 4K resoultion, the
+> VENCPLL should be configured to 800MHZ.
+> We didn't set VENCPLL directly, we set the
+> mm_sel to 400MHz statically in the board device tree.
+
+You may rewrite the description as below:
+
+'To support HDMI 4K resolution, mmsys need clock mm_sel to be 400MHz.'
+
+You need not to mention VENCPLL because it's controlled by clock driver.
+
+> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+> Changes since v2:
+>  - Align the clocks of dpi0 node.
+> 
+> Changes since v1:
+>  - Do not set the VENCPLL by clk_set_rate
+>    at display driver.
+>  - Configure the mm_sel to 400MHz statically
+>    in the board device tree.
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 78529e4..9c22204 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -690,7 +690,9 @@
+>  			compatible = "mediatek,mt8173-mmsys", "syscon";
+>  			reg = <0 0x14000000 0 0x1000>;
+>  			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +			clocks = <&topckgen CLK_TOP_MM_SEL>;
+>  			#clock-cells = <1>;
+> +			clock-frequency  = <400000000>;
+>  		};
+>  
+>  		ovl0: ovl@1400c000 {
+
+Regards,
+CK
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
