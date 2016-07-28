@@ -1,75 +1,85 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Applied "spi: mediatek: remove spi_master_put in mtk_spi_remove()" to the spi tree
-Date: Wed, 27 Jul 2016 20:13:33 +0100
-Message-ID: <E1bSUGr-00051R-Fx@debutante>
-References: <1469545010-32327-1-git-send-email-weiyj.lk@gmail.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469545010-32327-1-git-send-email-weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 4/8] drm/mediatek: add support for Mediatek SoC MT2701
+Date: Thu, 28 Jul 2016 10:07:35 +0800
+Message-ID: <1469671655.11841.85.camel@mtksdaap41>
+References: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
+	 <1468577274-6178-5-git-send-email-yt.shen@mediatek.com>
+	 <1468997599.11841.49.camel@mtksdaap41>
+	 <1469529774.4678.34.camel@mtksdaap41>
+	 <1469613816.2470.50.camel@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1469613816.2470.50.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+Hi, YT:
 
-   spi: mediatek: remove spi_master_put in mtk_spi_remove()
+On Wed, 2016-07-27 at 12:03 +0200, Philipp Zabel wrote:
+> Am Dienstag, den 26.07.2016, 18:42 +0800 schrieb YT Shen:
+> > Hi CK,
+> > 
+> > On Wed, 2016-07-20 at 14:53 +0800, CK Hu wrote:
+> > > Hi, YT:
+> > > 
+> > > Some comments inline.
+> > > 
+> > > On Fri, 2016-07-15 at 18:07 +0800, YT Shen wrote:
+> > > > This patch add support for the Mediatek MT2701 DISP subsystem.
+> > > > There is only one OVL engine in MT2701.
+> > > > 
+> > > > Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > > ---
+> > > >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    6 ++++
+> > > >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    6 ++++
+> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |   41 +++++++++++++++++++++++++++
+> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    7 +++++
+> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |    1 +
+> > > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   31 ++++++++++++++++++++
+> > > >  6 files changed, 92 insertions(+)
+> > > > 
+> > > 
+> > > [snip...]
+> > > 
+> > > >  
+> > > >  static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+> > > > +	{ .compatible = "mediatek,mt2701-disp-ovl",   .data = (void *)MTK_DISP_OVL },
+> > > >  	{ .compatible = "mediatek,mt8173-disp-ovl",   .data = (void *)MTK_DISP_OVL },
+> > > > +	{ .compatible = "mediatek,mt2701-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
+> > > >  	{ .compatible = "mediatek,mt8173-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
+> > > > +	{ .compatible = "mediatek,mt2701-disp-wdma",  .data = (void *)MTK_DISP_WDMA },
+> > > 
+> > > Is WDMA different from MT8173 to MT2701. If they are the same, you need
+> > > not to add compatible of 'mediatek,mt2701-disp-wdma' because use
+> > > 'mediatek,mt8173-disp-wdma' is enough.
+> > Yes, the hardware has differences, so we need add new compatible
+> > 'mt2701-disp-wdma'
+> 
+> It would be nice if you could add a short paragraph to the patch
+> description about what the hardware differences are (probably just
+> changed register layout in most cases).
 
-has been applied to the spi tree at
+If you don't want to add description, you may separate the modification
+of OVL, RDMA, WDMA, PWM to different patch. And you send patch of OVL
+and RDMA first because you have related code modification for these two.
+You temporarily treat WDMA and PWM as MT8173 and it works. And one day
+you need to modify code of WDMA and PWM for MT2701, then you send the
+patch of WDMA and PWM and you need not to add any description because we
+can find out the difference from source code.
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+> 
+> regards
+> Philipp
+> 
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From c2b08cede727387a5e19b40fa8e1a1e3a53e8527 Mon Sep 17 00:00:00 2001
-From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Date: Tue, 26 Jul 2016 14:56:50 +0000
-Subject: [PATCH] spi: mediatek: remove spi_master_put in mtk_spi_remove()
-
-The call to spi_master_put() in mtk_spi_remove() is redundant since
-the master is registered using devm_spi_register_master() and no
-reference hold by using spi_master_get() in mtk_spi_remove().
-
-This is detected by Coccinelle semantic patch.
-
-Signed-off-by: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- drivers/spi/spi-mt65xx.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 0be89e052428..899d7a8f0889 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -685,7 +685,6 @@ static int mtk_spi_remove(struct platform_device *pdev)
- 	pm_runtime_disable(&pdev->dev);
- 
- 	mtk_spi_reset(mdata);
--	spi_master_put(master);
- 
- 	return 0;
- }
--- 
-2.8.1
+Regards,
+CK
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
