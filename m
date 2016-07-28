@@ -1,85 +1,67 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 4/8] drm/mediatek: add support for Mediatek SoC MT2701
-Date: Thu, 28 Jul 2016 10:07:35 +0800
-Message-ID: <1469671655.11841.85.camel@mtksdaap41>
-References: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
-	 <1468577274-6178-5-git-send-email-yt.shen@mediatek.com>
-	 <1468997599.11841.49.camel@mtksdaap41>
-	 <1469529774.4678.34.camel@mtksdaap41>
-	 <1469613816.2470.50.camel@pengutronix.de>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 1/4] drm/mediatek: Add AAL engine basic function
+Date: Thu, 28 Jul 2016 10:22:52 +0800
+Message-ID: <1469672575-5847-2-git-send-email-bibby.hsieh@mediatek.com>
+References: <1469672575-5847-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469613816.2470.50.camel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1469672575-5847-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, YT:
-
-On Wed, 2016-07-27 at 12:03 +0200, Philipp Zabel wrote:
-> Am Dienstag, den 26.07.2016, 18:42 +0800 schrieb YT Shen:
-> > Hi CK,
-> > 
-> > On Wed, 2016-07-20 at 14:53 +0800, CK Hu wrote:
-> > > Hi, YT:
-> > > 
-> > > Some comments inline.
-> > > 
-> > > On Fri, 2016-07-15 at 18:07 +0800, YT Shen wrote:
-> > > > This patch add support for the Mediatek MT2701 DISP subsystem.
-> > > > There is only one OVL engine in MT2701.
-> > > > 
-> > > > Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > ---
-> > > >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    6 ++++
-> > > >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    6 ++++
-> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |   41 +++++++++++++++++++++++++++
-> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    7 +++++
-> > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |    1 +
-> > > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   31 ++++++++++++++++++++
-> > > >  6 files changed, 92 insertions(+)
-> > > > 
-> > > 
-> > > [snip...]
-> > > 
-> > > >  
-> > > >  static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
-> > > > +	{ .compatible = "mediatek,mt2701-disp-ovl",   .data = (void *)MTK_DISP_OVL },
-> > > >  	{ .compatible = "mediatek,mt8173-disp-ovl",   .data = (void *)MTK_DISP_OVL },
-> > > > +	{ .compatible = "mediatek,mt2701-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
-> > > >  	{ .compatible = "mediatek,mt8173-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
-> > > > +	{ .compatible = "mediatek,mt2701-disp-wdma",  .data = (void *)MTK_DISP_WDMA },
-> > > 
-> > > Is WDMA different from MT8173 to MT2701. If they are the same, you need
-> > > not to add compatible of 'mediatek,mt2701-disp-wdma' because use
-> > > 'mediatek,mt8173-disp-wdma' is enough.
-> > Yes, the hardware has differences, so we need add new compatible
-> > 'mt2701-disp-wdma'
-> 
-> It would be nice if you could add a short paragraph to the patch
-> description about what the hardware differences are (probably just
-> changed register layout in most cases).
-
-If you don't want to add description, you may separate the modification
-of OVL, RDMA, WDMA, PWM to different patch. And you send patch of OVL
-and RDMA first because you have related code modification for these two.
-You temporarily treat WDMA and PWM as MT8173 and it works. And one day
-you need to modify code of WDMA and PWM for MT2701, then you send the
-patch of WDMA and PWM and you need not to add any description because we
-can find out the difference from source code.
-
-> 
-> regards
-> Philipp
-> 
-
-Regards,
-CK
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SW4gb3JkZXIgdG8gY29ycmVjdCBicmlnaHRuZXNzIHZhbHVlcywgd2UgaGF2ZQp0byBzdXBwb3J0
+IGdhbW1hIGZ1bmNpdG9uIG9uIE1UODE3My4gSW4gTVQ4MTczLAp3ZSBoYXZlIHR3byBlbmdpbmVz
+IGZvciBzdXBwb3J0aW5nIGdhbW1hIGZ1bmN0aW9uOgpBQUwgYW5kIEdBTU1BLiBUaGlzIHBhdGNo
+IGFkZCBzb21lIEFBTCBlbmdpbmUKYmFzaWMgZnVuY3Rpb24sIGluY2x1ZGUgY29uZmlnLCBzdGFy
+dCBhbmQgc3RvcApmdW5jdGlvbi4KClNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5o
+c2llaEBtZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZGRwX2NvbXAuYyB8ICAgMjkgKysrKysrKysrKysrKysrKysrKysrKysrKystCiAxIGZpbGUgY2hh
+bmdlZCwgMjggaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCmluZGV4IDM5NzBmY2YuLjVmYzk2NzEgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMKKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwpAQCAtMzgsNiArMzgs
+OSBAQAogI2RlZmluZSBESVNQX0NPTE9SX1dJRFRICQkJMHgwYzUwCiAjZGVmaW5lIERJU1BfQ09M
+T1JfSEVJR0hUCQkJMHgwYzU0CiAKKyNkZWZpbmUgRElTUF9BQUxfRU4JCQkJMHgwMDAwCisjZGVm
+aW5lIERJU1BfQUFMX1NJWkUJCQkJMHgwMDMwCisKICNkZWZpbmUJT0RfUkVMQVlfTU9ERQkJQklU
+KDApCiAKICNkZWZpbmUJVUZPX0JZUEFTUwkJQklUKDIpCkBAIC00NSw2ICs0OCw4IEBACiAjZGVm
+aW5lCUNPTE9SX0JZUEFTU19BTEwJQklUKDcpCiAjZGVmaW5lCUNPTE9SX1NFUV9TRUwJCUJJVCgx
+MykKIAorI2RlZmluZSBBQUxfRU4JCQlCSVQoMCkKKwogc3RhdGljIHZvaWQgbXRrX2NvbG9yX2Nv
+bmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBpbnQgdywKIAkJCSAgICAg
+dW5zaWduZWQgaW50IGgsIHVuc2lnbmVkIGludCB2cmVmcmVzaCkKIHsKQEAgLTc2LDYgKzgxLDI4
+IEBAIHN0YXRpYyB2b2lkIG10a191Zm9lX3N0YXJ0KHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAp
+CiAJd3JpdGVsKFVGT19CWVBBU1MsIGNvbXAtPnJlZ3MgKyBESVNQX1JFR19VRk9fU1RBUlQpOwog
+fQogCitzdGF0aWMgdm9pZCBtdGtfYWFsX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21w
+LCB1bnNpZ25lZCBpbnQgdywKKwkJCSAgIHVuc2lnbmVkIGludCBoLCB1bnNpZ25lZCBpbnQgdnJl
+ZnJlc2gpCit7CisJd3JpdGVsKGggPDwgMTYgfCB3LCBjb21wLT5yZWdzICsgRElTUF9BQUxfU0la
+RSk7Cit9CisKK3N0YXRpYyB2b2lkIG10a19hYWxfc3RhcnQoc3RydWN0IG10a19kZHBfY29tcCAq
+Y29tcCkKK3sKKwl3cml0ZWwoQUFMX0VOLCBjb21wLT5yZWdzICsgRElTUF9BQUxfRU4pOworfQor
+CitzdGF0aWMgdm9pZCBtdGtfYWFsX3N0b3Aoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKK3sK
+Kwl3cml0ZWxfcmVsYXhlZCgweDAsIGNvbXAtPnJlZ3MgKyBESVNQX0FBTF9FTik7Cit9CisKK3N0
+YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRkcF9hYWwgPSB7CisJLmNvbmZp
+ZyA9IG10a19hYWxfY29uZmlnLAorCS5zdGFydCA9IG10a19hYWxfc3RhcnQsCisJLnN0b3AgPSBt
+dGtfYWFsX3N0b3AsCit9OworCiBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9mdW5j
+cyBkZHBfY29sb3IgPSB7CiAJLmNvbmZpZyA9IG10a19jb2xvcl9jb25maWcsCiAJLnN0YXJ0ID0g
+bXRrX2NvbG9yX3N0YXJ0LApAQCAtMTEyLDcgKzEzOSw3IEBAIHN0cnVjdCBtdGtfZGRwX2NvbXBf
+bWF0Y2ggewogfTsKIAogc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggbXRr
+X2RkcF9tYXRjaGVzW0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKLQlbRERQX0NPTVBPTkVOVF9B
+QUxdCT0geyBNVEtfRElTUF9BQUwsCTAsIE5VTEwgfSwKKwlbRERQX0NPTVBPTkVOVF9BQUxdCT0g
+eyBNVEtfRElTUF9BQUwsCTAsICZkZHBfYWFsIH0sCiAJW0REUF9DT01QT05FTlRfQ09MT1IwXQk9
+IHsgTVRLX0RJU1BfQ09MT1IsCTAsICZkZHBfY29sb3IgfSwKIAlbRERQX0NPTVBPTkVOVF9DT0xP
+UjFdCT0geyBNVEtfRElTUF9DT0xPUiwJMSwgJmRkcF9jb2xvciB9LAogCVtERFBfQ09NUE9ORU5U
+X0RQSTBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9LAotLSAKMS43LjkuNQoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlz
+dApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0
+b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
