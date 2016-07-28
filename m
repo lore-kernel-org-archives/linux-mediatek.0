@@ -1,140 +1,138 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v4 4/8] drm/mediatek: add support for Mediatek SoC MT2701
-Date: Thu, 28 Jul 2016 17:41:05 +0800
-Message-ID: <1469698865.11841.94.camel@mtksdaap41>
-References: <1468577274-6178-1-git-send-email-yt.shen@mediatek.com>
-	 <1468577274-6178-5-git-send-email-yt.shen@mediatek.com>
-	 <1468997599.11841.49.camel@mtksdaap41>
-	 <1469529774.4678.34.camel@mtksdaap41>
-	 <1469613816.2470.50.camel@pengutronix.de>
-	 <1469671655.11841.85.camel@mtksdaap41>
-	 <1469690256.28644.42.camel@mtksdaap41>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Thu, 28 Jul 2016 10:55:05 -0500
+Message-ID: <CAL_JsqK4Lz9mSJ+EXAY1g9L-CzBmbsed+MfCjkf_545y1Ov0iw@mail.gmail.com>
+References: <1469176383-35210-1-git-send-email-minghsiu.tsai@mediatek.com>
+ <1469176383-35210-3-git-send-email-minghsiu.tsai@mediatek.com>
+ <20160726185433.GA14609@rob-hp-laptop> <1469583886.27630.18.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1469690256.28644.42.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1469583886.27630.18.camel@mtksdaap41>
+Sender: linux-media-owner@vger.kernel.org
+To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Daniel Thompson <daniel.thompson@linaro.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, YT:
+On Tue, Jul 26, 2016 at 8:44 PM, Minghsiu Tsai
+<minghsiu.tsai@mediatek.com> wrote:
+> On Tue, 2016-07-26 at 13:54 -0500, Rob Herring wrote:
+>> On Fri, Jul 22, 2016 at 04:33:01PM +0800, Minghsiu Tsai wrote:
+>> > Add a DT binding documentation of MDP for the MT8173 SoC
+>> > from Mediatek
+>> >
+>> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+>> > ---
+>> >  .../devicetree/bindings/media/mediatek-mdp.txt     |   96 ++++++++++++++++++++
+>> >  1 file changed, 96 insertions(+)
+>> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+>> >
+>> > diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+>> > new file mode 100644
+>> > index 0000000..2dad031
+>> > --- /dev/null
+>> > +++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+>> > @@ -0,0 +1,96 @@
+>> > +* Mediatek Media Data Path
+>> > +
+>> > +Media Data Path is used for scaling and color space conversion.
+>> > +
+>> > +Required properties (all function blocks):
+>> > +- compatible: "mediatek,<chip>-mdp"
+>>
+>> What is this, ...
+>>
+>
+> It is used to match platform driver.
 
+Would structuring things like this work instead:
 
-On Thu, 2016-07-28 at 15:17 +0800, YT Shen wrote:
-> Hi Philipp, CK,
-> 
-> On Thu, 2016-07-28 at 10:07 +0800, CK Hu wrote:
-> > Hi, YT:
-> > 
-> > On Wed, 2016-07-27 at 12:03 +0200, Philipp Zabel wrote:
-> > > Am Dienstag, den 26.07.2016, 18:42 +0800 schrieb YT Shen:
-> > > > Hi CK,
-> > > > 
-> > > > On Wed, 2016-07-20 at 14:53 +0800, CK Hu wrote:
-> > > > > Hi, YT:
-> > > > > 
-> > > > > Some comments inline.
-> > > > > 
-> > > > > On Fri, 2016-07-15 at 18:07 +0800, YT Shen wrote:
-> > > > > > This patch add support for the Mediatek MT2701 DISP subsystem.
-> > > > > > There is only one OVL engine in MT2701.
-> > > > > > 
-> > > > > > Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > > > > > ---
-> > > > > >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |    6 ++++
-> > > > > >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |    6 ++++
-> > > > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      |   41 +++++++++++++++++++++++++++
-> > > > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    7 +++++
-> > > > > >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |    1 +
-> > > > > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   31 ++++++++++++++++++++
-> > > > > >  6 files changed, 92 insertions(+)
-> > > > > > 
-> > > > > 
-> > > > > [snip...]
-> > > > > 
-> > > > > >  
-> > > > > >  static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
-> > > > > > +	{ .compatible = "mediatek,mt2701-disp-ovl",   .data = (void *)MTK_DISP_OVL },
-> > > > > >  	{ .compatible = "mediatek,mt8173-disp-ovl",   .data = (void *)MTK_DISP_OVL },
-> > > > > > +	{ .compatible = "mediatek,mt2701-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
-> > > > > >  	{ .compatible = "mediatek,mt8173-disp-rdma",  .data = (void *)MTK_DISP_RDMA },
-> > > > > > +	{ .compatible = "mediatek,mt2701-disp-wdma",  .data = (void *)MTK_DISP_WDMA },
-> > > > > 
-> > > > > Is WDMA different from MT8173 to MT2701. If they are the same, you need
-> > > > > not to add compatible of 'mediatek,mt2701-disp-wdma' because use
-> > > > > 'mediatek,mt8173-disp-wdma' is enough.
-> > > > Yes, the hardware has differences, so we need add new compatible
-> > > > 'mt2701-disp-wdma'
-> > > 
-> > > It would be nice if you could add a short paragraph to the patch
-> > > description about what the hardware differences are (probably just
-> > > changed register layout in most cases).
-> Thanks for the suggestions, we will add more descriptions in the future.
-> 
-> > 
-> > If you don't want to add description, you may separate the modification
-> > of OVL, RDMA, WDMA, PWM to different patch. And you send patch of OVL
-> > and RDMA first because you have related code modification for these two.
-> > You temporarily treat WDMA and PWM as MT8173 and it works. And one day
-> > you need to modify code of WDMA and PWM for MT2701, then you send the
-> > patch of WDMA and PWM and you need not to add any description because we
-> > can find out the difference from source code.
-> 
-> The display module connections is shown in mt2701_mtk_ddp_main[] and
-> mt2701_mtk_ddp_ext[].
-> OVL -> RDMA -> COLOR -> BLS(pwm) -> DSI
-> RDMA -> DPI
-> 
-> This patch series mainly focus on DSI support for MT2701 SoC and the
-> basic functions.  The BLS(pwm) and DPI parts are not included here.
-> 
-> We will remove 'mt2701-disp-wdma'. We didn't implement its driver and it
-> is unused now.
-> 
-> For the pwm part, we need the device node to establish the display
-> module connections.  The pwm compatible string is described in
-> "dt-bindings: pwm: Add MediaTek display PWM bindings" [1] and the
-> control is implemented in "pwm: Add MediaTek MT2701 display PWM driver
-> support" [2].
-> 
-> For the dpi part, we need the device node to establish the display
-> module connections.  The dpi patch will be in another patch series,
-> split out from "drm/mediatek: fix the wrong pixel clock when resolution
-> is 4K" [3].
+{
+  compatible = "mediatek,<chip>-mdp";
+  ranges = ...;
+  {
+    compatible = "mediatek,<chip>-mdp-rdma";
+    ...
+  };
+  {
+    compatible = "mediatek,<chip>-mdp-wdma";
+    ...
+  };
+  ...
+};
 
-For dpi part, I think you need not to include it in this patch. You can
-send it with the MT2701 DPI patch. For module connection, you can use
-"mediatek,mt8173-dpi" and it works. If you want to add it in this patch,
-please describe the difference of mt8173-dpi and mt2701-dpi in this
-patch.
+>
+>
+>> > +        "mediatek,<chip>-mdp-<function>", one of
+>>
+>> and this?
+>>
+>
+> It is string format of HW block. <chip> could be "mt8173", and
+> <function> are "rdma", "rsz", "wdma", and "wrot".
+>
+>
+>> > +        "mediatek,<chip>-mdp-rdma"  - read DMA
+>> > +        "mediatek,<chip>-mdp-rsz"   - resizer
+>> > +        "mediatek,<chip>-mdp-wdma"  - write DMA
+>> > +        "mediatek,<chip>-mdp-wrot"  - write DMA with rotation
+>>
+>> List what are valid values of <chip>.
+>>
+>
+> <chip> - mt8173. There should be other chip added in future.
+> I will change the property as blow:
+>
+> - compatible: "mediatek,<chip>-mdp"
+>         Should be one of
+>         "mediatek,<chip>-mdp-rdma"  - read DMA
+>         "mediatek,<chip>-mdp-rsz"   - resizer
+>         "mediatek,<chip>-mdp-wdma"  - write DMA
+>         "mediatek,<chip>-mdp-wrot"  - write DMA with rotation
+>         <chip> - could be 8173
+>
+>
+> If don't need <chip>, I also can change it as below. It is more clear.
 
-> 
-> 
-> [1] https://patchwork.kernel.org/patch/9222997/
-> [2] https://patchwork.kernel.org/patch/9223001/
-> [3] https://patchwork.kernel.org/patch/9249471/ 
-> 
-> Regards,
-> yt.shen
-> 
-> > 
-> > > 
-> > > regards
-> > > Philipp
-> > > 
-> > 
-> > Regards,
-> > CK
-> > 
-> 
-> 
+Up to you. Depends on how many different chips you will have.
 
-Regards,
-CK
+> - compatible: "mediatek,mt8173-mdp"
+>         Should be one of
+>         "mediatek,mt8173-mdp-rdma"  - read DMA
+>         "mediatek,mt8173-mdp-rsz"   - resizer
+>         "mediatek,mt8173-mdp-wdma"  - write DMA
+>         "mediatek,mt8173-mdp-wrot"  - write DMA with rotation
+>
+>
+>> > +- reg: Physical base address and length of the function block register space
+>> > +- clocks: device clocks
+>> > +- power-domains: a phandle to the power domain.
+>> > +- mediatek,vpu: the node of video processor unit
+>> > +
+>> > +Required properties (DMA function blocks):
+>> > +- compatible: Should be one of
+>> > +        "mediatek,<chip>-mdp-rdma"
+>> > +        "mediatek,<chip>-mdp-wdma"
+>> > +        "mediatek,<chip>-mdp-wrot"
+>> > +- iommus: should point to the respective IOMMU block with master port as
+>> > +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+>> > +  for details.
+>> > +- mediatek,larb: must contain the local arbiters in the current Socs.
+>>
+>> It is still not clear which properties apply to which compatible
+>> strings.
+>>
+>
+> I found out the document for larb.
+> I will change the property as below:
+>
+> - mediatek,larb: must contain the local arbiters in the current Socs,
+> see
+> Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+>   for details.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+That's good, but not what I meant. You still have properties which
+only apply to certain blocks, but are listed for all blocks like
+mediatek,vpu for example.
+
+Rob
