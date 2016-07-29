@@ -1,59 +1,137 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: Automated autobuilder emails.
-Date: Fri, 29 Jul 2016 17:24:27 +0800
-Message-ID: <1469784267.12040.3.camel@mtksdaap41>
-References: <20160729021658.GA15676@x>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v2] vcodec: mediatek: Add g/s_selection support for V4L2 Encoder
+Date: Fri, 29 Jul 2016 17:50:58 +0800
+Message-ID: <1469785858-44115-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160729021658.GA15676@x>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Josh Triplett <josh-iaAMLnmF4UmaiuxdJuQwMA@public.gmane.org>
-Cc: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   83 ++++++++++++++++++--
+ 1 file changed, 78 insertions(+), 5 deletions(-)
 
-On Thu, 2016-07-28 at 19:16 -0700, Josh Triplett wrote:
-> Hi,
-> 
-> I'm sending this to you because you're the two @mediatek.com folks
-> listed in the kernel MAINTAINERS file, and other mediatek addresses I've
-> tried have bounced.  I'm hoping you know the right people to contact and
-> can forward this mail if needed.
-> 
-> It looks like mediatek has an internal autobuilder,
-> adm_jenkins-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org , sending automated mails about kernel builds
-> outside of Mediatek, to various people at Samsung, @google.com,
-> @chromium.org, and myself.  Based on that selection of addresses, I'm
-> guessing you're trying to run an autobuilder related to Chrome OS?
-> 
-> The autobuilder mails (sample below) include links to servers within
-> mediatek, making them unhelpful for people outside of mediatek.  Could
-> you please not send such mails to people outside your company?
-> 
-> If you're trying to run a build-checking service for people outside your
-> company, you'd need to make the documentation and build logs accessible
-> to people outside your company.  And if you're running an entirely
-> internal autobuilder, it shouldn't be sending mails outside your
-> company.
-> 
-> Thanks,
-> Josh Triplett
-> 
-
-We already suspend our Jenkins auto build, and will modify mailing rule
-to avoid sending mail outside Mediatek company.Sorry for your
-inconvenience.
-
-Eddie
-Thanks
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index 3ed3f2d..8f09dd3 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -487,7 +487,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	struct mtk_q_data *q_data;
+ 	int ret, i;
+ 	struct mtk_video_fmt *fmt;
+-	unsigned int pitch_w_div16;
+ 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+@@ -530,13 +529,12 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
+ 
+-	pitch_w_div16 = DIV_ROUND_UP(q_data->visible_width, 16);
+-	if (pitch_w_div16 % 8 != 0) {
++	if (q_data->visible_width % 16) {
+ 		/* Adjust returned width/height, so application could correctly
+ 		 * allocate hw required memory
+ 		 */
+-		q_data->visible_height += 32;
+-		vidioc_try_fmt(f, q_data->fmt);
++		q_data->coded_height += 32;
++		f->fmt.pix_mp.height += 32;
+ 	}
+ 
+ 	q_data->field = f->fmt.pix_mp.field;
+@@ -631,6 +629,78 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ 	return vidioc_try_fmt(f, fmt);
+ }
+ 
++static int vidioc_venc_g_selection(struct file *file, void *priv,
++				     struct v4l2_selection *s)
++{
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	struct mtk_q_data *q_data;
++
++	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
++		mtk_v4l2_err("Invalid s->type = %d", s->type);
++		return -EINVAL;
++	}
++
++	q_data = mtk_venc_get_q_data(ctx, s->type);
++	if (!q_data)
++		return -EINVAL;
++
++	/* crop means compose for output devices */
++	switch (s->target) {
++	case V4L2_SEL_TGT_CROP_DEFAULT:
++	case V4L2_SEL_TGT_CROP_BOUNDS:
++		s->r.top = 0;
++		s->r.left = 0;
++		s->r.width = q_data->coded_width;
++		s->r.height = q_data->coded_height;
++		break;
++	case V4L2_SEL_TGT_CROP:
++		s->r.top = 0;
++		s->r.left = 0;
++		s->r.width = q_data->visible_width;
++		s->r.height = q_data->visible_height;
++		break;
++	default:
++		mtk_v4l2_err("Invalid s->target = %d", s->target);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static int vidioc_venc_s_selection(struct file *file, void *priv,
++				     struct v4l2_selection *s)
++{
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	struct mtk_q_data *q_data;
++
++	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT) {
++		mtk_v4l2_err("Invalid s->type = %d", s->type);
++		return -EINVAL;
++	}
++
++	q_data = mtk_venc_get_q_data(ctx, s->type);
++	if (!q_data)
++		return -EINVAL;
++
++	switch (s->target) {
++	case V4L2_SEL_TGT_CROP:
++		/* Only support crop from (0,0) */
++		if ((s->r.width > q_data->coded_width) ||
++			(s->r.height > q_data->coded_height)) {
++			return -ERANGE;
++		}
++		s->r.top = 0;
++		s->r.left = 0;
++		q_data->visible_width = s->r.width;
++		q_data->visible_height = s->r.height;
++		break;
++	default:
++		mtk_v4l2_err("Invalid s->target = %d", s->target);
++		return -EINVAL;
++	}
++	return 0;
++}
++
+ static int vidioc_venc_qbuf(struct file *file, void *priv,
+ 			    struct v4l2_buffer *buf)
+ {
+@@ -689,6 +759,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+ 
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
++
++	.vidioc_g_selection		= vidioc_venc_g_selection,
++	.vidioc_s_selection		= vidioc_venc_s_selection,
+ };
+ 
+ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+-- 
+1.7.9.5
