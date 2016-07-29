@@ -1,70 +1,44 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH 2/7] drm/mediatek: plane: Remove plane zpos/index
-Date: Fri, 29 Jul 2016 17:04:09 +0800
-Message-ID: <1469783054-54567-3-git-send-email-bibby.hsieh@mediatek.com>
-References: <1469783054-54567-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4] arm64: dts: mt8173: add mmsel clocks for 4K support
+Date: Fri, 29 Jul 2016 17:09:48 +0800
+Message-ID: <1469783388-56804-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469783054-54567-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, YH Huang <yh.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org" <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Junzhi Zhao <junzhi.zhao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KCkl0IGlzIG5vdCBhY3R1
-YWxseSB1c2VmdWwgdG8gYSBtdGsgcGxhbmUgdG8ga25vdyBpdHMgenBvcy9pbmRleCwgc28ganVz
-dApyZW1vdmUgdGhpcyBmaWVsZC4KClRoaXMgbGV0J3MgdXMgY29tcGxldGVseSByZW1vdmUgc3Ry
-dWN0IG10a19kcm1fcGxhbmUgaW4gYSBmb2xsb3cgdXAgcGF0Y2guCgpTaWduZWQtb2ZmLWJ5OiBE
-YW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBI
-c2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2NydGMuYyAgfCAgICAyICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9wbGFuZS5jIHwgICAgNCArLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9wbGFuZS5oIHwgICAgNCArLS0tCiAzIGZpbGVzIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygr
-KSwgNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMK
-aW5kZXggMjRhYTNiYS4uMTgyMTFhYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kcm1fY3J0Yy5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2NydGMuYwpAQCAtNTU5LDcgKzU1OSw3IEBAIGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVj
-dCBkcm1fZGV2aWNlICpkcm1fZGV2LAogCQkJCSh6cG9zID09IDEpID8gRFJNX1BMQU5FX1RZUEVf
-Q1VSU09SIDoKIAkJCQkJCURSTV9QTEFORV9UWVBFX09WRVJMQVk7CiAJCXJldCA9IG10a19wbGFu
-ZV9pbml0KGRybV9kZXYsICZtdGtfY3J0Yy0+cGxhbmVzW3pwb3NdLAotCQkJCSAgICAgQklUKHBp
-cGUpLCB0eXBlLCB6cG9zKTsKKwkJCQkgICAgIEJJVChwaXBlKSwgdHlwZSk7CiAJCWlmIChyZXQp
-CiAJCQlnb3RvIHVucHJlcGFyZTsKIAl9CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-cGxhbmUuYwppbmRleCAwOTNkYjA3Li5kMjhkYjU3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX3BsYW5lLmMKQEAgLTE4OSw4ICsxODksNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
-IGRybV9wbGFuZV9oZWxwZXJfZnVuY3MgbXRrX3BsYW5lX2hlbHBlcl9mdW5jcyA9IHsKIH07CiAK
-IGludCBtdGtfcGxhbmVfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBzdHJ1Y3QgbXRrX2Ry
-bV9wbGFuZSAqbXRrX3BsYW5lLAotCQkgICB1bnNpZ25lZCBsb25nIHBvc3NpYmxlX2NydGNzLCBl
-bnVtIGRybV9wbGFuZV90eXBlIHR5cGUsCi0JCSAgIHVuc2lnbmVkIGludCB6cG9zKQorCQkgICB1
-bnNpZ25lZCBsb25nIHBvc3NpYmxlX2NydGNzLCBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUpCiB7
-CiAJaW50IGVycjsKIApAQCAtMjAzLDcgKzIwMiw2IEBAIGludCBtdGtfcGxhbmVfaW5pdChzdHJ1
-Y3QgZHJtX2RldmljZSAqZGV2LCBzdHJ1Y3QgbXRrX2RybV9wbGFuZSAqbXRrX3BsYW5lLAogCX0K
-IAogCWRybV9wbGFuZV9oZWxwZXJfYWRkKCZtdGtfcGxhbmUtPmJhc2UsICZtdGtfcGxhbmVfaGVs
-cGVyX2Z1bmNzKTsKLQltdGtfcGxhbmUtPmlkeCA9IHpwb3M7CiAKIAlyZXR1cm4gMDsKIH0KZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmggYi9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5oCmluZGV4IDcyYTdiM2UuLjc0ZGJl
-ZGEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmgK
-KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuaApAQCAtMjAsNyAr
-MjAsNiBAQAogCiBzdHJ1Y3QgbXRrX2RybV9wbGFuZSB7CiAJc3RydWN0IGRybV9wbGFuZQkJYmFz
-ZTsKLQl1bnNpZ25lZCBpbnQJCQlpZHg7CiB9OwogCiBzdHJ1Y3QgbXRrX3BsYW5lX3BlbmRpbmdf
-c3RhdGUgewpAQCAtNTMsNyArNTIsNiBAQCB0b19tdGtfcGxhbmVfc3RhdGUoc3RydWN0IGRybV9w
-bGFuZV9zdGF0ZSAqc3RhdGUpCiB9CiAKIGludCBtdGtfcGxhbmVfaW5pdChzdHJ1Y3QgZHJtX2Rl
-dmljZSAqZGV2LCBzdHJ1Y3QgbXRrX2RybV9wbGFuZSAqbXRrX3BsYW5lLAotCQkgICB1bnNpZ25l
-ZCBsb25nIHBvc3NpYmxlX2NydGNzLCBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUsCi0JCSAgIHVu
-c2lnbmVkIGludCB6cG9zKTsKKwkJICAgdW5zaWduZWQgbG9uZyBwb3NzaWJsZV9jcnRjcywgZW51
-bSBkcm1fcGxhbmVfdHlwZSB0eXBlKTsKIAogI2VuZGlmCi0tIAoxLjcuOS41CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+To support HDMI 4K resolution, mmsys need clcok
+mm_sel to be 400MHz.
+
+The board .dts file should override the clock rate
+property with the higher VENCPLL frequency the board
+supports HDMI 4K resolution.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 78529e4..93d4d17 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -690,6 +690,8 @@
+ 			compatible = "mediatek,mt8173-mmsys", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
+ 			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			clocks = <&topckgen CLK_TOP_MM_SEL>;
++			clock-frequency  = <400000000>;
+ 			#clock-cells = <1>;
+ 		};
+ 
+-- 
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
