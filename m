@@ -1,120 +1,173 @@
-From: Sean Paul <seanpaul@chromium.org>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 Subject: Re: [PATCH 5/7] drm/mediatek: plane: Merge mtk_plane_enable into
  mtk_plane_atomic_update
-Date: Tue, 2 Aug 2016 13:04:54 -0400
-Message-ID: <CAOw6vbLC3hHR3eHGqWqLV+eJf9ebmRJGncEis1xV_g9u2iAODQ@mail.gmail.com>
+Date: Wed, 3 Aug 2016 09:32:02 +0800
+Message-ID: <1470187922.5418.7.camel@mtksdaap41>
 References: <1469783054-54567-1-git-send-email-bibby.hsieh@mediatek.com>
- <1469783054-54567-6-git-send-email-bibby.hsieh@mediatek.com>
- <CAOw6vbJjqOPL86vk5A_17ugWzgdTYH4kZmm5oOqwGtNDeSDX6w@mail.gmail.com>
+	 <1469783054-54567-6-git-send-email-bibby.hsieh@mediatek.com>
+	 <CAOw6vbJjqOPL86vk5A_17ugWzgdTYH4kZmm5oOqwGtNDeSDX6w@mail.gmail.com>
+	 <CAOw6vbLC3hHR3eHGqWqLV+eJf9ebmRJGncEis1xV_g9u2iAODQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAOw6vbJjqOPL86vk5A_17ugWzgdTYH4kZmm5oOqwGtNDeSDX6w@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Cawa Cheng <cawa.cheng@mediatek.com>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAOw6vbLC3hHR3eHGqWqLV+eJf9ebmRJGncEis1xV_g9u2iAODQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Paul <seanpaul@chromium.org>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVHVlLCBBdWcgMiwgMjAxNiBhdCAxOjAyIFBNLCBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9t
-aXVtLm9yZz4gd3JvdGU6Cj4gT24gRnJpLCBKdWwgMjksIDIwMTYgYXQgNTowNCBBTSwgQmliYnkg
-SHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4+IEZyb206IERhbmllbCBL
-dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4+Cj4+IFRoZSBtdGtfcGxhbmVfZW5hYmxlIGlz
-IGp1c3QgY2FsbGVkIG9uY2UgYnkgbXRrX3BsYW5lX2F0b21pY191cGRhdGUuCj4+IFNvLCBtZXJn
-ZSBtdGtfcGxhbmVfZW5hYmxlIGludG8gbXRrX3BsYW5lX2F0b21pY191cGRhdGUuCj4+Cj4+IFdo
-aWxlIHdlIGFyZSBoZXJlLCBhbHNvIGNsZWFuIHVwIHRoZSBmdW5jdGlvbiBhIGJpdCBieSB1c2lu
-ZyBhbiBmYiBsb2NhbAo+PiB2YXJpYWJsZXMuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhz
-aWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBL
-dXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cj4+IC0tLQo+PiAgZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fcGxhbmUuYyB8ICAgNjUgKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0t
-LS0tCj4+ICAxIGZpbGUgY2hhbmdlZCwgMjMgaW5zZXJ0aW9ucygrKSwgNDIgZGVsZXRpb25zKC0p
-Cj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFu
-ZS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwo+PiBpbmRleCAx
-NzE3MmJhLi5iM2RkYjIwIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9wbGFuZS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X3BsYW5lLmMKPj4gQEAgLTMwLDQ0ICszMCw2IEBAIHN0YXRpYyBjb25zdCB1MzIgZm9ybWF0c1td
-ID0gewo+PiAgICAgICAgIERSTV9GT1JNQVRfUkdCNTY1LAo+PiAgfTsKPj4KPj4gLXN0YXRpYyB2
-b2lkIG10a19wbGFuZV9lbmFibGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4KPgo+IEhpIEJp
-YmJ5LAo+IFRoaXMgZG9lc24ndCBtZXJnZSBjbGVhbmx5Lgo+Cj4KPiBJdCBzZWVtcyBsaWtlIHVw
-c3RyZWFtIGhhczoKPgo+IHN0YXRpYyB2b2lkIG10a19wbGFuZV9lbmFibGUoc3RydWN0IG10a19k
-cm1fcGxhbmUgKm10a19wbGFuZSwKPgo+Cj4gV2hlcmVhcyB5b3VyIHZlcnNpb24gb2YgImlzIGJh
-c2VkIG9uIHNvbWUgZG93bnN0cmVhbSB2ZXJzaW9uIG9mCj4gImRybS9tZWRpYXRlazogVXNlIGRy
-bV9wbGFuZV9oZWxwZXJfY2hlY2tfc3RhdGUoKSIgd2hpY2ggY2hhbmdlZCB0aGlzCj4gdG8gc3Ry
-dWN0IGRybV9wbGFuZS4gQ2FuIHlvdSByZXNwaW4gdGhlIHNldCBzdWNoIHRoYXQgdGhlCj4gbXRr
-X2RybV9wbGFuZSByZW1vdmFsIHBhdGNoIGZpeGVzIHRoaXM/CgoKTGV0IG1lIHRyeSB0aGF0IGFn
-YWluLCBsb29rcyBsaWtlIEkgbWFuZ2xlZCBteSBjdXQvcGFzdGU6CgpXaGVyZWFzIHlvdXIgdmVy
-c2lvbiBvZiAiZHJtL21lZGlhdGVrOiBVc2UKZHJtX3BsYW5lX2hlbHBlcl9jaGVja19zdGF0ZSgp
-IiBpcyBiYXNlZCBvbiBzb21lIGRvd25zdHJlYW0gdmVyc2lvbgp3aGljaCBjaGFuZ2VkIHRoaXMg
-dG8gc3RydWN0IGRybV9wbGFuZS4gQ2FuIHlvdSByZXNwaW4gdGhlIHNldCBzdWNoCnRoYXQgdGhl
-IG10a19kcm1fcGxhbmUgcmVtb3ZhbCBwYXRjaCBmaXhlcyB0aGlzPwoKU2VhbgoKPgo+IFlvdXIg
-c2V0IHNob3VsZCBhcHBseSBjbGVhbmx5IHRvCj4gaHR0cHM6Ly9jZ2l0LmZyZWVkZXNrdG9wLm9y
-Zy9+c2VhbnBhdWwvYmlyY2gvP2g9Zm9yLW1pc2MKPgo+IFRoYW5rcywKPgo+IFNlYW4KPgo+Cj4K
-Pj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICBkbWFfYWRkcl90IGFkZHIpCj4+IC17Cj4+
-IC0gICAgICAgc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqc3RhdGUgPSB0b19tdGtfcGxhbmVfc3Rh
-dGUocGxhbmUtPnN0YXRlKTsKPj4gLSAgICAgICB1bnNpZ25lZCBpbnQgcGl0Y2gsIGZvcm1hdDsK
-Pj4gLSAgICAgICBib29sIGVuYWJsZTsKPj4gLQo+PiAtICAgICAgIGlmIChXQVJOX09OKCFwbGFu
-ZS0+c3RhdGUpKQo+PiAtICAgICAgICAgICAgICAgcmV0dXJuOwo+PiAtCj4+IC0gICAgICAgZW5h
-YmxlID0gc3RhdGUtPmJhc2UudmlzaWJsZTsKPj4gLQo+PiAtICAgICAgIGlmIChXQVJOX09OKGVu
-YWJsZSAmJiAhcGxhbmUtPnN0YXRlLT5mYikpCj4+IC0gICAgICAgICAgICAgICByZXR1cm47Cj4+
-IC0KPj4gLSAgICAgICBpZiAocGxhbmUtPnN0YXRlLT5mYikgewo+PiAtICAgICAgICAgICAgICAg
-cGl0Y2ggPSBwbGFuZS0+c3RhdGUtPmZiLT5waXRjaGVzWzBdOwo+PiAtICAgICAgICAgICAgICAg
-Zm9ybWF0ID0gcGxhbmUtPnN0YXRlLT5mYi0+cGl4ZWxfZm9ybWF0Owo+PiAtICAgICAgIH0gZWxz
-ZSB7Cj4+IC0gICAgICAgICAgICAgICBwaXRjaCA9IDA7Cj4+IC0gICAgICAgICAgICAgICBmb3Jt
-YXQgPSBEUk1fRk9STUFUX1JHQkE4ODg4Owo+PiAtICAgICAgIH0KPj4gLQo+PiAtICAgICAgIGFk
-ZHIgKz0gKHN0YXRlLT5iYXNlLnNyYy54MSA+PiAxNikgKiA0Owo+PiAtICAgICAgIGFkZHIgKz0g
-KHN0YXRlLT5iYXNlLnNyYy55MSA+PiAxNikgKiBwaXRjaDsKPj4gLQo+PiAtICAgICAgIHN0YXRl
-LT5wZW5kaW5nLmVuYWJsZSA9IGVuYWJsZTsKPj4gLSAgICAgICBzdGF0ZS0+cGVuZGluZy5waXRj
-aCA9IHBpdGNoOwo+PiAtICAgICAgIHN0YXRlLT5wZW5kaW5nLmZvcm1hdCA9IGZvcm1hdDsKPj4g
-LSAgICAgICBzdGF0ZS0+cGVuZGluZy5hZGRyID0gYWRkcjsKPj4gLSAgICAgICBzdGF0ZS0+cGVu
-ZGluZy54ID0gc3RhdGUtPmJhc2UuZHN0LngxOwo+PiAtICAgICAgIHN0YXRlLT5wZW5kaW5nLnkg
-PSBzdGF0ZS0+YmFzZS5kc3QueTE7Cj4+IC0gICAgICAgc3RhdGUtPnBlbmRpbmcud2lkdGggPSBk
-cm1fcmVjdF93aWR0aCgmc3RhdGUtPmJhc2UuZHN0KTsKPj4gLSAgICAgICBzdGF0ZS0+cGVuZGlu
-Zy5oZWlnaHQgPSBkcm1fcmVjdF9oZWlnaHQoJnN0YXRlLT5iYXNlLmRzdCk7Cj4+IC0gICAgICAg
-d21iKCk7IC8qIE1ha2Ugc3VyZSB0aGUgYWJvdmUgcGFyYW1ldGVycyBhcmUgc2V0IGJlZm9yZSB1
-cGRhdGUgKi8KPj4gLSAgICAgICBzdGF0ZS0+cGVuZGluZy5kaXJ0eSA9IHRydWU7Cj4+IC19Cj4+
-IC0KPj4gIHN0YXRpYyB2b2lkIG10a19wbGFuZV9yZXNldChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZSkKPj4gIHsKPj4gICAgICAgICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZTsKPj4gQEAg
-LTE1NywxNiArMTE5LDM1IEBAIHN0YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfdXBkYXRlKHN0
-cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpvbGRfc3RhdGUpCj4+ICB7Cj4+ICAgICAgICAg
-c3RydWN0IG10a19wbGFuZV9zdGF0ZSAqc3RhdGUgPSB0b19tdGtfcGxhbmVfc3RhdGUocGxhbmUt
-PnN0YXRlKTsKPj4gLSAgICAgICBzdHJ1Y3QgZHJtX2NydGMgKmNydGMgPSBzdGF0ZS0+YmFzZS5j
-cnRjOwo+PiArICAgICAgIHN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9IHBsYW5lLT5zdGF0ZS0+Y3J0
-YzsKPj4gKyAgICAgICBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyICpmYiA9IHBsYW5lLT5zdGF0ZS0+
-ZmI7Cj4+ICAgICAgICAgc3RydWN0IGRybV9nZW1fb2JqZWN0ICpnZW07Cj4+ICAgICAgICAgc3Ry
-dWN0IG10a19kcm1fZ2VtX29iaiAqbXRrX2dlbTsKPj4gKyAgICAgICB1bnNpZ25lZCBpbnQgcGl0
-Y2gsIGZvcm1hdDsKPj4gKyAgICAgICBkbWFfYWRkcl90IGFkZHI7Cj4+Cj4+IC0gICAgICAgaWYg
-KCFjcnRjKQo+PiArICAgICAgIGlmICghY3J0YyB8fCBXQVJOX09OKCFmYikpCj4+ICAgICAgICAg
-ICAgICAgICByZXR1cm47Cj4+Cj4+IC0gICAgICAgZ2VtID0gbXRrX2ZiX2dldF9nZW1fb2JqKHN0
-YXRlLT5iYXNlLmZiKTsKPj4gKyAgICAgICBnZW0gPSBtdGtfZmJfZ2V0X2dlbV9vYmooZmIpOwo+
-PiAgICAgICAgIG10a19nZW0gPSB0b19tdGtfZ2VtX29iaihnZW0pOwo+PiAtICAgICAgIG10a19w
-bGFuZV9lbmFibGUocGxhbmUsIG10a19nZW0tPmRtYV9hZGRyKTsKPj4gKyAgICAgICBhZGRyID0g
-bXRrX2dlbS0+ZG1hX2FkZHI7Cj4+ICsgICAgICAgcGl0Y2ggPSBmYi0+cGl0Y2hlc1swXTsKPj4g
-KyAgICAgICBmb3JtYXQgPSBmYi0+cGl4ZWxfZm9ybWF0Owo+PiArCj4+ICsgICAgICAgYWRkciAr
-PSAocGxhbmUtPnN0YXRlLT5zcmMueDEgPj4gMTYpICogNDsKPj4gKyAgICAgICBhZGRyICs9IChw
-bGFuZS0+c3RhdGUtPnNyYy55MSA+PiAxNikgKiBwaXRjaDsKPj4gKwo+PiArICAgICAgIHN0YXRl
-LT5wZW5kaW5nLmVuYWJsZSA9IHRydWU7Cj4+ICsgICAgICAgc3RhdGUtPnBlbmRpbmcucGl0Y2gg
-PSBwaXRjaDsKPj4gKyAgICAgICBzdGF0ZS0+cGVuZGluZy5mb3JtYXQgPSBmb3JtYXQ7Cj4+ICsg
-ICAgICAgc3RhdGUtPnBlbmRpbmcuYWRkciA9IGFkZHI7Cj4+ICsgICAgICAgc3RhdGUtPnBlbmRp
-bmcueCA9IHBsYW5lLT5zdGF0ZS0+ZHN0LngxOwo+PiArICAgICAgIHN0YXRlLT5wZW5kaW5nLnkg
-PSBwbGFuZS0+c3RhdGUtPmRzdC55MTsKPj4gKyAgICAgICBzdGF0ZS0+cGVuZGluZy53aWR0aCA9
-IGRybV9yZWN0X3dpZHRoKCZwbGFuZS0+c3RhdGUtPmRzdCk7Cj4+ICsgICAgICAgc3RhdGUtPnBl
-bmRpbmcuaGVpZ2h0ID0gZHJtX3JlY3RfaGVpZ2h0KCZwbGFuZS0+c3RhdGUtPmRzdCk7Cj4+ICsg
-ICAgICAgd21iKCk7IC8qIE1ha2Ugc3VyZSB0aGUgYWJvdmUgcGFyYW1ldGVycyBhcmUgc2V0IGJl
-Zm9yZSB1cGRhdGUgKi8KPj4gKyAgICAgICBzdGF0ZS0+cGVuZGluZy5kaXJ0eSA9IHRydWU7Cj4+
-ICB9Cj4+Cj4+ICBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRy
-bV9wbGFuZSAqcGxhbmUsCj4+IC0tCj4+IDEuNy45LjUKPj4KPj4gX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+
-PiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCj4+IGh0dHBzOi8vbGlzdHMuZnJlZWRl
-c2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+On Tue, 2016-08-02 at 13:04 -0400, Sean Paul wrote:
+> On Tue, Aug 2, 2016 at 1:02 PM, Sean Paul <seanpaul@chromium.org> wrote:
+> > On Fri, Jul 29, 2016 at 5:04 AM, Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
+> >> From: Daniel Kurtz <djkurtz@chromium.org>
+> >>
+> >> The mtk_plane_enable is just called once by mtk_plane_atomic_update.
+> >> So, merge mtk_plane_enable into mtk_plane_atomic_update.
+> >>
+> >> While we are here, also clean up the function a bit by using an fb local
+> >> variables.
+> >>
+> >> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> >> Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+> >> ---
+> >>  drivers/gpu/drm/mediatek/mtk_drm_plane.c |   65 +++++++++++-------------------
+> >>  1 file changed, 23 insertions(+), 42 deletions(-)
+> >>
+> >> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> >> index 17172ba..b3ddb20 100644
+> >> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> >> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> >> @@ -30,44 +30,6 @@ static const u32 formats[] = {
+> >>         DRM_FORMAT_RGB565,
+> >>  };
+> >>
+> >> -static void mtk_plane_enable(struct drm_plane *plane,
+> >
+> >
+> > Hi Bibby,
+> > This doesn't merge cleanly.
+> >
+> >
+> > It seems like upstream has:
+> >
+> > static void mtk_plane_enable(struct mtk_drm_plane *mtk_plane,
+> >
+> >
+> > Whereas your version of "is based on some downstream version of
+> > "drm/mediatek: Use drm_plane_helper_check_state()" which changed this
+> > to struct drm_plane. Can you respin the set such that the
+> > mtk_drm_plane removal patch fixes this?
+> 
+> 
+> Let me try that again, looks like I mangled my cut/paste:
+> 
+> Whereas your version of "drm/mediatek: Use
+> drm_plane_helper_check_state()" is based on some downstream version
+> which changed this to struct drm_plane. Can you respin the set such
+> that the mtk_drm_plane removal patch fixes this?
+> 
+Sorry about the mistake, I am going to fix that as soon as possible,
+thanks for your review.
+
+
+Bibby
+> Sean
+> 
+> >
+> > Your set should apply cleanly to
+> > https://cgit.freedesktop.org/~seanpaul/birch/?h=for-misc
+> >
+> > Thanks,
+> >
+> > Sean
+> >
+> >
+> >
+> >> -                            dma_addr_t addr)
+> >> -{
+> >> -       struct mtk_plane_state *state = to_mtk_plane_state(plane->state);
+> >> -       unsigned int pitch, format;
+> >> -       bool enable;
+> >> -
+> >> -       if (WARN_ON(!plane->state))
+> >> -               return;
+> >> -
+> >> -       enable = state->base.visible;
+> >> -
+> >> -       if (WARN_ON(enable && !plane->state->fb))
+> >> -               return;
+> >> -
+> >> -       if (plane->state->fb) {
+> >> -               pitch = plane->state->fb->pitches[0];
+> >> -               format = plane->state->fb->pixel_format;
+> >> -       } else {
+> >> -               pitch = 0;
+> >> -               format = DRM_FORMAT_RGBA8888;
+> >> -       }
+> >> -
+> >> -       addr += (state->base.src.x1 >> 16) * 4;
+> >> -       addr += (state->base.src.y1 >> 16) * pitch;
+> >> -
+> >> -       state->pending.enable = enable;
+> >> -       state->pending.pitch = pitch;
+> >> -       state->pending.format = format;
+> >> -       state->pending.addr = addr;
+> >> -       state->pending.x = state->base.dst.x1;
+> >> -       state->pending.y = state->base.dst.y1;
+> >> -       state->pending.width = drm_rect_width(&state->base.dst);
+> >> -       state->pending.height = drm_rect_height(&state->base.dst);
+> >> -       wmb(); /* Make sure the above parameters are set before update */
+> >> -       state->pending.dirty = true;
+> >> -}
+> >> -
+> >>  static void mtk_plane_reset(struct drm_plane *plane)
+> >>  {
+> >>         struct mtk_plane_state *state;
+> >> @@ -157,16 +119,35 @@ static void mtk_plane_atomic_update(struct drm_plane *plane,
+> >>                                     struct drm_plane_state *old_state)
+> >>  {
+> >>         struct mtk_plane_state *state = to_mtk_plane_state(plane->state);
+> >> -       struct drm_crtc *crtc = state->base.crtc;
+> >> +       struct drm_crtc *crtc = plane->state->crtc;
+> >> +       struct drm_framebuffer *fb = plane->state->fb;
+> >>         struct drm_gem_object *gem;
+> >>         struct mtk_drm_gem_obj *mtk_gem;
+> >> +       unsigned int pitch, format;
+> >> +       dma_addr_t addr;
+> >>
+> >> -       if (!crtc)
+> >> +       if (!crtc || WARN_ON(!fb))
+> >>                 return;
+> >>
+> >> -       gem = mtk_fb_get_gem_obj(state->base.fb);
+> >> +       gem = mtk_fb_get_gem_obj(fb);
+> >>         mtk_gem = to_mtk_gem_obj(gem);
+> >> -       mtk_plane_enable(plane, mtk_gem->dma_addr);
+> >> +       addr = mtk_gem->dma_addr;
+> >> +       pitch = fb->pitches[0];
+> >> +       format = fb->pixel_format;
+> >> +
+> >> +       addr += (plane->state->src.x1 >> 16) * 4;
+> >> +       addr += (plane->state->src.y1 >> 16) * pitch;
+> >> +
+> >> +       state->pending.enable = true;
+> >> +       state->pending.pitch = pitch;
+> >> +       state->pending.format = format;
+> >> +       state->pending.addr = addr;
+> >> +       state->pending.x = plane->state->dst.x1;
+> >> +       state->pending.y = plane->state->dst.y1;
+> >> +       state->pending.width = drm_rect_width(&plane->state->dst);
+> >> +       state->pending.height = drm_rect_height(&plane->state->dst);
+> >> +       wmb(); /* Make sure the above parameters are set before update */
+> >> +       state->pending.dirty = true;
+> >>  }
+> >>
+> >>  static void mtk_plane_atomic_disable(struct drm_plane *plane,
+> >> --
+> >> 1.7.9.5
+> >>
+> >> _______________________________________________
+> >> dri-devel mailing list
+> >> dri-devel@lists.freedesktop.org
+> >> https://lists.freedesktop.org/mailman/listinfo/dri-devel
