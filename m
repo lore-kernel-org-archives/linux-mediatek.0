@@ -1,148 +1,73 @@
-From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] vcodec: mediatek: Add g/s_selection support for V4L2
- Encoder
-Date: Thu, 4 Aug 2016 18:08:15 +0800
-Message-ID: <1470305295-27785-1-git-send-email-tiffany.lin@mediatek.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: Re: [PATCH 2/2 v16] drm/bridge: Add I2C based driver for ps8640 bridge
+Date: Thu, 4 Aug 2016 12:35:59 +0200
+Message-ID: <CAFqH_53PgPs3_h7XNFEu4u0W6GW7vyWCNFf2vq8Yn7sH2LbFwA@mail.gmail.com>
+References: <1464861445-11086-1-git-send-email-jitao.shi@mediatek.com>
+ <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
+ <CACvgo53002XCPLufbJHQLC1uL1nNS7_0gh=napedetmvT6FoSw@mail.gmail.com>
+ <CAGS+omDsDS5tx=+Efq8LWNd3-asU4r2h=-AE6vdKgfG-p6vdAA@mail.gmail.com>
+ <CAKMK7uEkUOq1CB3tj_1Qx50fBpw9B39+c3asX6MPNexT=dv9fA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <CAKMK7uEkUOq1CB3tj_1Qx50fBpw9B39+c3asX6MPNexT=dv9fA@mail.gmail.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, ML dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Thierry Reding <treding@nvidia.com>, devicetree <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Russell King <rmk+kernel@arm.linux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, LAKML <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@samsung.com>, srv_heupstream <srv_heupstream@mediatek.com>, Emil Velikov <emil>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add g/s_selection support for MT8173 v4l2 encoder
-
-Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-v3:
-- add v4l2_s_selection to check constraint flags
-- remove visible_height modification in s_fmt_out
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   81 +++++++++++++++++---
- 1 file changed, 71 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 3ed3f2d..c4b8e00 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -487,7 +487,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
- 	struct mtk_q_data *q_data;
- 	int ret, i;
- 	struct mtk_video_fmt *fmt;
--	unsigned int pitch_w_div16;
- 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
- 
- 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
-@@ -530,15 +529,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
- 	q_data->coded_width = f->fmt.pix_mp.width;
- 	q_data->coded_height = f->fmt.pix_mp.height;
- 
--	pitch_w_div16 = DIV_ROUND_UP(q_data->visible_width, 16);
--	if (pitch_w_div16 % 8 != 0) {
--		/* Adjust returned width/height, so application could correctly
--		 * allocate hw required memory
--		 */
--		q_data->visible_height += 32;
--		vidioc_try_fmt(f, q_data->fmt);
--	}
--
- 	q_data->field = f->fmt.pix_mp.field;
- 	ctx->colorspace = f->fmt.pix_mp.colorspace;
- 	ctx->ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
-@@ -631,6 +621,74 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 	return vidioc_try_fmt(f, fmt);
- }
- 
-+static int vidioc_venc_g_selection(struct file *file, void *priv,
-+				     struct v4l2_selection *s)
-+{
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct mtk_q_data *q_data;
-+
-+	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	q_data = mtk_venc_get_q_data(ctx, s->type);
-+	if (!q_data)
-+		return -EINVAL;
-+
-+	switch (s->target) {
-+	case V4L2_SEL_TGT_CROP_DEFAULT:
-+	case V4L2_SEL_TGT_CROP_BOUNDS:
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		s->r.width = q_data->coded_width;
-+		s->r.height = q_data->coded_height;
-+		break;
-+	case V4L2_SEL_TGT_CROP:
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		s->r.width = q_data->visible_width;
-+		s->r.height = q_data->visible_height;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int vidioc_venc_s_selection(struct file *file, void *priv,
-+				     struct v4l2_selection *s)
-+{
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct mtk_q_data *q_data;
-+	struct v4l2_rect r = s->r;
-+	int err;
-+
-+	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	q_data = mtk_venc_get_q_data(ctx, s->type);
-+	if (!q_data)
-+		return -EINVAL;
-+
-+	switch (s->target) {
-+	case V4L2_SEL_TGT_CROP:
-+		/* Only support crop from (0,0) */
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		r.width = min(r.width, q_data->coded_width);
-+		r.height = min(r.height, q_data->coded_height);
-+		err = v4l2_s_selection(s, &r);
-+		if (err)
-+			return err;
-+		q_data->visible_width = s->r.width;
-+		q_data->visible_height = s->r.height;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
- static int vidioc_venc_qbuf(struct file *file, void *priv,
- 			    struct v4l2_buffer *buf)
- {
-@@ -689,6 +747,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
- 
- 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
- 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
-+
-+	.vidioc_g_selection		= vidioc_venc_g_selection,
-+	.vidioc_s_selection		= vidioc_venc_s_selection,
- };
- 
- static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
--- 
-1.7.9.5
+MjAxNi0wNy0xMiAxMjoxMyBHTVQrMDI6MDAgRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xsLmNo
+PjoKPiBPbiBXZWQsIEp1biAyOSwgMjAxNiBhdCA2OjMxIEFNLCBEYW5pZWwgS3VydHogPGRqa3Vy
+dHpAY2hyb21pdW0ub3JnPiB3cm90ZToKPj4gT24gRnJpLCBKdW4gMTcsIDIwMTYgYXQgMzoxNCBB
+TSwgRW1pbCBWZWxpa292IDxlbWlsLmwudmVsaWtvdkBnbWFpbC5jb20+IHdyb3RlOgo+Pj4+ICtz
+dGF0aWMgc3NpemVfdCBwczg2NDBfdXBkYXRlX2Z3X3N0b3JlKHN0cnVjdCBkZXZpY2UgKmRldiwK
+Pj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkZXZpY2Vf
+YXR0cmlidXRlICphdHRyLAo+Pj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgY29uc3QgY2hhciAqYnVmLCBzaXplX3QgY291bnQpCj4+Pj4gK3sKPj4+PiArICAgICAgIHN0
+cnVjdCBpMmNfY2xpZW50ICpjbGllbnQgPSB0b19pMmNfY2xpZW50KGRldik7Cj4+Pj4gKyAgICAg
+ICBzdHJ1Y3QgcHM4NjQwICpwc19icmlkZ2UgPSBpMmNfZ2V0X2NsaWVudGRhdGEoY2xpZW50KTsK
+Pj4+PiArICAgICAgIGNvbnN0IHN0cnVjdCBmaXJtd2FyZSAqZnc7Cj4+Pj4gKyAgICAgICBpbnQg
+ZXJyb3I7Cj4+Pj4gKwo+Pj4+ICsgICAgICAgZXJyb3IgPSByZXF1ZXN0X2Zpcm13YXJlKCZmdywg
+UFNfRldfTkFNRSwgZGV2KTsKPj4+IENhbiB0aGUgZGV2aWNlIG9wZXJhdGUgd2l0aG91dCBhIGZp
+cm13YXJlID8gSWYgbm90LCB3aHkgaXMgdGhlCj4+PiBmaXJtd2FyZSBsb2FkZWQgc28gbGF0ZXIv
+YWZ0ZXIgdXNlciBpbnRlcmFjdGlvbiAodmlhIHN5c2ZzKSA/IEkgZG9uJ3QKPj4+IHJlY2FsbCBh
+bnkgb3RoZXIgZHJpdmVyIGluIERSTSB0byB1c2Ugc3VjaCBhbiBhcHByb2FjaC4KPj4KPj4gVGhl
+IFBTODY0MCBoYXMgaW50ZXJuYWwgZmxhc2gsIHNvIGl0IHNob3VsZCBhbHdheXMgYWxyZWFkeSBo
+YXZlIGEKPj4gd29ya2luZyBmaXJtd2FyZS4KPj4gVGhpcyBzeXNmcyBpbnRlcmZhY2UgaXMgdXNl
+ZnVsIGZvciB1c2VyIHNwYWNlIGluaXRpYXRlZCBmaWVsZCBmaXJtd2FyZSB1cGRhdGVzLgo+Cj4g
+TWlnaHQgYmUgYmV0dGVyIHRvIGp1c3QgZG8gYSByZXF1ZXN0X2Zpcm13YXJlIG9uIGRyaXZlciBs
+b2FkLCBhbmQKPiBzaW1wbHkgcHJvY2VlZCBpZiBpdCdzIG5vdCB0aGVyZS4gQWRkaW5nIGEgc3lz
+ZnMgaW50ZXJmYWNlICh3aGljaCBpcwo+IGFiaSkgc2VlbXMgd2F5IHRvbyBtdWNoIG92ZXJraWxs
+IGZvciB0aGlzIGltby4gSWYgeW91IHdhbnQgdG8gdXBncmFkZQo+IHRoZSBmaXJtd2FyZSB5b3Ug
+Y2FuIHRoZW4ganVzdCBkcm9wIGl0IGludG8gdGhlIHJpZ2h0IGRpcmVjdG9yeSwgd2l0aAo+IG5v
+IGZ1cnRoZXIgaW50ZXJhY3Rpb24gbmVlZGVkLgoKSU1ITyBJJ20gbm90IHN1cmUgaWYgZm9yIHRo
+aXMgdXNlIGNhc2UgcmVxdWVzdF9maXJtd2FyZSBvbiBkcml2ZXIgbG9hZAppcyBhIGdvb2QgaWRl
+YS4gRmxhc2ggdGhlIG5vbi12b2xhdGlsZSBpbnRlcm5hbCBjaGlwIGNhbiBiZSBhIHNsb3cKb3Bl
+cmF0aW9uIGFuZCBpZiB5b3UgZm9yZ2V0IHRvIHJlbW92ZSB0aGUgZmlybXdhcmUgYWZ0ZXIgZHJv
+cCBpdCBpbnRvCnRoZSByaWdodCBkaXJlY3RvcnkgYXBhcnQgZnJvbSBzbG93IGRvd24gdGhlIGRy
+aXZlciBwcm9iZSB5b3UgY2FuCmRhbWFnZSB0aGUgY2hpcCBkZXBlbmRpbmcgb24gdGhlIHdyaXRl
+IGVuZHVyYW5jZSBvZiB0aGUgY2hpcC4KClRoaXMgc3lzZnMgaW50ZXJmYWNlIGlzIHVzZWQgb24g
+b3RoZXIgc3Vic3lzdGVtcyB3aGVuIHRoZXJlIGlzIGEKbm9uLXZvbGF0aWxlIG1lbW9yeSwgYXMg
+ZXhhbXBsZSB5b3UgY2FuIHNlZSBhdCBbMV0sIFsyXS4gVW5mb3J0dW5hdGVseQpub3QgYWxsIGFy
+ZSB1c2luZyB0aGUgc2FtZSBzeXNmcyBpbnRlcmZhY2UgYW5kIG1heWJlIHRoaXMgc2hvdWxkIGJl
+CnN0YW5kYXJkaXplZCAobWF5YmUgaXQncyBhbiBvcHBvcnR1bml0eSB0byBkZWZpbmUgaXQpCgpS
+ZWdhcmRzLAogRW5yaWMKClsxXSBodHRwOi8vbHhyLmZyZWUtZWxlY3Ryb25zLmNvbS9zb3VyY2Uv
+ZHJpdmVycy9pbnB1dC90b3VjaHNjcmVlbi93ZHQ4N3h4X2kyYy5jI0w5MjIKWzJdIGh0dHA6Ly9s
+eHIuZnJlZS1lbGVjdHJvbnMuY29tL3NvdXJjZS9kcml2ZXJzL3Njc2kvcG04MDAxL3BtODAwMV9j
+dGwuYyNMNzMyCgoKPiAtRGFuaWVsCj4gLS0KPiBEYW5pZWwgVmV0dGVyCj4gU29mdHdhcmUgRW5n
+aW5lZXIsIEludGVsIENvcnBvcmF0aW9uCj4gKzQxICgwKSA3OSAzNjUgNTcgNDggLSBodHRwOi8v
+YmxvZy5mZndsbC5jaAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaS1kZXZlbApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
