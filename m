@@ -1,86 +1,95 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH 2/2 v16] drm/bridge: Add I2C based driver for ps8640
- bridge
-Date: Thu, 4 Aug 2016 12:58:15 +0200
-Message-ID: <20160804105814.GH6232@phenom.ffwll.local>
-References: <1464861445-11086-1-git-send-email-jitao.shi@mediatek.com>
- <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
- <CACvgo53002XCPLufbJHQLC1uL1nNS7_0gh=napedetmvT6FoSw@mail.gmail.com>
- <CAGS+omDsDS5tx=+Efq8LWNd3-asU4r2h=-AE6vdKgfG-p6vdAA@mail.gmail.com>
- <CAKMK7uEkUOq1CB3tj_1Qx50fBpw9B39+c3asX6MPNexT=dv9fA@mail.gmail.com>
- <CAFqH_53PgPs3_h7XNFEu4u0W6GW7vyWCNFf2vq8Yn7sH2LbFwA@mail.gmail.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v6 00/10] MT2701 DRM support
+Date: Thu, 4 Aug 2016 19:07:14 +0800
+Message-ID: <1470308844-20895-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAFqH_53PgPs3_h7XNFEu4u0W6GW7vyWCNFf2vq8Yn7sH2LbFwA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Daniel Vetter <daniel@ffwll.ch>, Daniel Kurtz <djkurtz@chromium.org>, Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, ML dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang =?utf-8?B?KOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, LAKML <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@sam>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Russell King <linux@arm.linux.org.uk>, srv_heupstream@mediatek.com, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Mao Huang <littlecvr@chromium.org>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Kumar Gala <galak@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 04, 2016 at 12:35:59PM +0200, Enric Balletbo Serra wrote:
-> 2016-07-12 12:13 GMT+02:00 Daniel Vetter <daniel@ffwll.ch>:
-> > On Wed, Jun 29, 2016 at 6:31 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
-> >> On Fri, Jun 17, 2016 at 3:14 AM, Emil Velikov <emil.l.velikov@gmail.com> wrote:
-> >>>> +static ssize_t ps8640_update_fw_store(struct device *dev,
-> >>>> +                                     struct device_attribute *attr,
-> >>>> +                                     const char *buf, size_t count)
-> >>>> +{
-> >>>> +       struct i2c_client *client = to_i2c_client(dev);
-> >>>> +       struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> >>>> +       const struct firmware *fw;
-> >>>> +       int error;
-> >>>> +
-> >>>> +       error = request_firmware(&fw, PS_FW_NAME, dev);
-> >>> Can the device operate without a firmware ? If not, why is the
-> >>> firmware loaded so later/after user interaction (via sysfs) ? I don't
-> >>> recall any other driver in DRM to use such an approach.
-> >>
-> >> The PS8640 has internal flash, so it should always already have a
-> >> working firmware.
-> >> This sysfs interface is useful for user space initiated field firmware updates.
-> >
-> > Might be better to just do a request_firmware on driver load, and
-> > simply proceed if it's not there. Adding a sysfs interface (which is
-> > abi) seems way too much overkill for this imo. If you want to upgrade
-> > the firmware you can then just drop it into the right directory, with
-> > no further interaction needed.
-> 
-> IMHO I'm not sure if for this use case request_firmware on driver load
-> is a good idea. Flash the non-volatile internal chip can be a slow
-> operation and if you forget to remove the firmware after drop it into
-> the right directory apart from slow down the driver probe you can
-> damage the chip depending on the write endurance of the chip.
-
-Ah ok. Explaining this in the commit message would be really good.
-
-> This sysfs interface is used on other subsystems when there is a
-> non-volatile memory, as example you can see at [1], [2]. Unfortunately
-> not all are using the same sysfs interface and maybe this should be
-> standardized (maybe it's an opportunity to define it)
-
-+1 on standardizing this.
--Daniel
-> 
-> Regards,
->  Enric
-> 
-> [1] http://lxr.free-electrons.com/source/drivers/input/touchscreen/wdt87xx_i2c.c#L922
-> [2] http://lxr.free-electrons.com/source/drivers/scsi/pm8001/pm8001_ctl.c#L732
-> 
-> 
-> > -Daniel
-> > --
-> > Daniel Vetter
-> > Software Engineer, Intel Corporation
-> > +41 (0) 79 365 57 48 - http://blog.ffwll.ch
-> > _______________________________________________
-> > dri-devel mailing list
-> > dri-devel@lists.freedesktop.org
-> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+VGhpcyBpcyBNVDI3MDEgRFJNIHN1cHBvcnQgUEFUQ0ggdjYsIGJhc2VkIG9uIDQuNy1yYzEuCldl
+IGFkZCBEU0kgaW50ZXJydXB0IGNvbnRyb2wsIHRyYW5zZmVyIGZ1bmN0aW9uIGZvciBNSVBJIERT
+SSBwYW5lbCBzdXBwb3J0LgpNb3N0IGNvZGVzIGFyZSB0aGUgc2FtZSwgZXhjZXB0IHNvbWUgcmVn
+aXN0ZXIgY2hhbmdlZC4KCkZvciBleGFtcGxlOgogLSBESVNQX09WTCBhZGRyZXNzIG9mZnNldCBj
+aGFuZ2VkLCBjb2xvciBmb3JtYXQgZGVmaW5pdGlvbiBjaGFuZ2VkLgogLSBESVNQX1JETUEgZmlm
+byBzaXplIGNoYW5nZWQuCiAtIERJU1BfQ09MT1Igb2Zmc2V0IGNoYW5nZWQuCiAtIE1JUElfVFgg
+c2V0dGluZyBjaGFuZ2VkLgoKV2UgYWRkIGEgbmV3IGNvbXBvbmVudCBERFBfQ09NUE9ORU5UX0JM
+UywgYW5kIHRoZSBjb25uZWN0aW9ucyBhcmUgdXBkYXRlZC4KT1ZMIC0+IFJETUEgLT4gQ09MT1Ig
+LT4gQkxTIC0+IERTSQpSRE1BIC0+IERQSQpBbmQgd2UgaGF2ZSBzaGFkb3cgcmVnaXN0ZXIgc3Vw
+cG9ydCBpbiBNVDI3MDEuCgpDaGFuZ2VzIHNpbmNlIHY1OgotIFJlbW92ZSBEUEkgZGV2aWNlIHRy
+ZWUgYW5kIGNvbXBhdGlibGUgc3RyaW5nCi0gVXNlIG9uZSB3YWl0IHF1ZXVlIHRvIGhhbmRsZSBp
+bnRlcnJ1cHQgc3RhdHVzCi0gVXBkYXRlIHRoZSBpbnRlcnJ1cHQgY2hlY2sgZmxvdyBhbmQgRFNJ
+X0lOVF9BTExfQklUUwotIFVzZSBzYW1lIGZ1bmN0aW9uIGZvciBob3N0IHJlYWQvd3JpdGUgY29t
+bWFuZAotIHZhcmlvdXMgZml4ZXMKCkNoYW5nZXMgc2luY2UgdjQ6Ci0gQWRkIG1lc3NhZ2VzIHdo
+ZW4gdGltZW91dCBpbiBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKCkKLSBBZGQgZGVzY3JpcHRpb25z
+IGZvciBESVNQX1JFR19NVVRFWCByZWdpc3RlcnMKLSBNb3ZlIGNvbm5lY3Rpb24gc2V0dGluZ3Mg
+Zm9yIGRpc3BsYXkgbW9kdWxlcyB0byBhIHNlcGFyYXRlIHBhdGNoCi0gUmVtb3ZlICdtdDI3MDEt
+ZGlzcC13ZG1hJyBiZWNhdXNlIGl0IGlzIHVudXNlZAotIE1vdmUgY2xlYW5pbmcgdXAgYW5kIHJl
+bmFtaW5nIHRvIGEgc2VwYXJhdGUgcGF0Y2gKLSBVc2Ugd2FpdF9ldmVudF9pbnRlcnJ1cHRpYmxl
+X3RpbWVvdXQoKSB0byByZXBsYWNlIHBvbGxpbmcKLSBSZW1vdmUgaXJxX251bSBmcm9tIG10a19k
+c2kgc3RydWN0dXJlCi0gUmVtb3ZlIHJlZHVuZGFudCBhbmQgZGVidWcgY29kZXMKCkNoYW5nZXMg
+c2luY2UgdjM6Ci0gQWRkIERTSSBzdXBwb3J0IGZvciBNSVBJIERTSSBwYW5lbHMKLSBVcGRhdGUg
+QkxTIGJpbmRpbmcgdG8gUFdNIG5vZGVzCi0gUmVtb3ZlIHVmb2UgZGV2aWNlIG5vZGVzCi0gUmVt
+b3ZlIHJlZHVuZGFudCBwYXJlbnRoZXNlcwotIFJlbW92ZSBnbG9iYWwgdmFyaWFibGUgaW5pdGlh
+bGl6YXRpb24KCkNoYW5nZXMgc2luY2UgdjI6Ci0gUmVuYW1lIG10a19kZHBfbXV4X3NlbCB0byBt
+dGtfZGRwX3NvdXRfc2VsCi0gVXBkYXRlIG10MjcwMV9tdGtfZGRwX2V4dCBjb21wb25lbnRzCi0g
+Q2hhbmdlZCB0byBwcmVmaXggbmFtaW5nCi0gUmVvcmRlciB0aGUgcGF0Y2ggc2VyaWVzCi0gVXNl
+IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YSgpIHRvIGdldCBkcml2ZXIgcHJpdmF0ZSBkYXRhCi0g
+VXNlIGlvcG9sbCBtYWNyb3MgdG8gaW1wbGVtZW50IG10a19kaXNwX211dGV4X2FjcXVpcmUoKQot
+IFJlbW92ZWQgZW1wdHkgZGV2aWNlIHRyZWUgbm9kZXMKCkNoYW5nZXMgc2luY2UgdjE6Ci0gUmVt
+b3ZlZCBCTFMgYmluZGluZ3MgYW5kIGNvZGVzLCB3aGljaCBiZWxvbmcgdG8gcHdtIGRyaXZlcgot
+IE1vdmVkIG10a19kaXNwX211dGV4X2FjcXVpcmUoKSBqdXN0IGJlZm9yZSBtdGtfY3J0Y19kZHBf
+Y29uZmlnKCkKLSBTcGxpdCBwYXRjaCBpbnRvIHNtYWxsZXIgcGFydHMKLSBBZGRlZCBjb25zdCBr
+ZXl3b3JkIHRvIGNvbnN0YW50IHN0cnVjdHVyZQotIFJlbW92ZWQgY29kZXMgZm9yIHNwZWNpYWwg
+bWVtb3J5IGFsaWduCgpUaGUgUEFUQ0ggZGVwZW5kcyBvbiB0aGUgZm9sbG93aW5nIHBhdGNoOgpo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzg4MzI0NDEvICgiZHQtYmluZGluZ3M6
+IEFSTTogTWVkaWF0ZWs6IERvY3VtZW50IGJpbmRpbmdzIGZvciBNVDI3MDEiKQpodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkyMjI5OTcvICgiZHQtYmluZGluZ3M6IHB3bTogQWRk
+IE1lZGlhVGVrIGRpc3BsYXkgUFdNIGJpbmRpbmdzIikKaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVs
+Lm9yZy9wYXRjaC85MTY0MDI5LyAoImR0LWJpbmRpbmdzOiBtZWRpYXRlazogYWRkIGRlc2NyaXB0
+aW9ucyBmb3IgbWVkaWF0ZWsgbXQyNzAxIGlvbW11IGFuZCBzbWkiKQpodHRwczovL3BhdGNod29y
+ay5rZXJuZWwub3JnL3BhdGNoLzkxNjQwMTcvICgiaW9tbXUvbWVkaWF0ZWs6IG1vdmUgdGhlIGNv
+bW1vbiBzdHJ1Y3QgaW50byBoZWFkZXIgZmlsZSIpCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
+cmcvcGF0Y2gvOTE2NDAyNS8gKCJtZW1vcnkvbWVkaWF0ZWs6IGFkZCBzdXBwb3J0IGZvciBtdDI3
+MDEiKQpodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkxNjQwNDEvICgiaW9tbXUv
+bWVkaWF0ZWs6IGFkZCBzdXBwb3J0IGZvciBtdGsgaW9tbXUgZ2VuZXJhdGlvbiBvbmUgSFciKQpo
+dHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzkxNjQwMTMvICgiQVJNOiBkdHM6IG10
+MjcwMTogYWRkIGlvbW11L3NtaSBkdHNpIG5vZGUgZm9yIG10MjcwMSIpCgpUaGFua3MsCnl0LnNo
+ZW4KCllUIFNoZW4gKDgpOgogIGRybS9tZWRpYXRlazogcmVuYW1lIG1hY3JvcywgYWRkIGNoaXAg
+cHJlZml4CiAgZHJtL21lZGlhdGVrOiBhZGQgKmRyaXZlcl9kYXRhIGZvciBkaWZmZXJlbnQgaGFy
+ZHdhcmUgc2V0dGluZ3MKICBkcm0vbWVkaWF0ZWs6IGFkZCBzaGFkb3cgcmVnaXN0ZXIgc3VwcG9y
+dAogIGRybS9tZWRpYXRlazogdXBkYXRlIGRpc3BsYXkgbW9kdWxlIGNvbm5lY3Rpb25zCiAgZHJt
+L21lZGlhdGVrOiBjbGVhbmluZyB1cCBhbmQgcmVmaW5lCiAgZHJtL21lZGlhdGVrOiB1cGRhdGUg
+RFNJIHN1YiBkcml2ZXIgZmxvdwogIGRybS9tZWRpYXRlazogYWRkIHN1cHBvcnQgZm9yIE1lZGlh
+dGVrIFNvQyBNVDI3MDEKICBhcm06IGR0czogbXQyNzAxOiBBZGQgZGlzcGxheSBzdWJzeXN0ZW0g
+cmVsYXRlZCBub2RlcyBmb3IgTVQyNzAxCgpzaGFvbWluZyBjaGVuICgyKToKICBkcm0vbWVkaWF0
+ZWs6IGFkZCBkc2kgaW50ZXJydXB0IGNvbnRyb2wKICBkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgdHJh
+bnNmZXIgZnVuY3Rpb24KCiBhcmNoL2FybS9ib290L2R0cy9tdDI3MDEuZHRzaSAgICAgICAgICAg
+ICAgIHwgICA4NiArKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5j
+ICAgICB8ICAgMzIgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMg
+ICAgfCAgIDE3ICstCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgICAg
+IHwgICA3NSArKy0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAg
+IHwgIDEzOCArKysrKystLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmgg
+ICAgICB8ICAgIDIgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
+YyB8ICAgMzQgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgg
+fCAgIDE0ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgfCAg
+IDU0ICsrLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAg
+IDkgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgICAgICB8ICA1MDYg
+KysrKysrKysrKysrKysrKysrKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X21pcGlfdHguYyAgICAgIHwgICA3MSArKy0tCiAxMiBmaWxlcyBjaGFuZ2VkLCA4NzggaW5zZXJ0
+aW9ucygrKSwgMTYwIGRlbGV0aW9ucygtKQoKLS0gCjEuNy45LjUKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
