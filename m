@@ -1,84 +1,39 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3 2/3] drm/mediatek: enhance the HDMI driving current
-Date: Thu, 4 Aug 2016 10:38:30 +0800
-Message-ID: <1470278311-22528-3-git-send-email-bibby.hsieh@mediatek.com>
-References: <1470278311-22528-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH v5] arm64: dts: mt8173: add mmsel clocks for 4K support
+Date: Thu, 4 Aug 2016 10:57:18 +0800
+Message-ID: <1470279438-60372-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1470278311-22528-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, YH Huang <yh.huang@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "dawei.chien@mediatek.com" <dawei.chien@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Junzhi Zhao <junzhi.zhao@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Bibby Hsieh <bibby.hsieh@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogSnVuemhpIFpoYW8gPGp1bnpoaS56aGFvQG1lZGlhdGVrLmNvbT4KCkluIG9yZGVyIHRv
-IGltcHJvdmUgNEsgcmVzb2x1dGlvbiBwZXJmb3JtYW5jZSwKd2UgaGF2ZSB0byBlbmhhbmNlIHRo
-ZSBIRE1JIGRyaXZpbmcgY3VycmVudAp3aGVuIGNsb2NrIHJhdGUgaXMgZ3JlYXRlciB0aGFuIDE2
-NU1Iei4KClNpZ25lZC1vZmYtYnk6IEp1bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5j
-b20+ClNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+
-Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYyB8ICAg
-NDIgKysrKysrKysrKysrKysrKystLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAgaW5zZXJ0aW9u
-cygrKSwgMTIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19tdDgxNzNfaGRtaV9waHkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-bXQ4MTczX2hkbWlfcGh5LmMKaW5kZXggOGEyNDc1NC4uNTFjYjljZiAxMDA2NDQKLS0tIGEvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxNzNfaGRtaV9waHkuYworKysgYi9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210ODE3M19oZG1pX3BoeS5jCkBAIC0yNjUsNiArMjY1LDkg
-QEAgc3RhdGljIGludCBtdGtfaGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVu
-c2lnbmVkIGxvbmcgcmF0ZSwKIAlzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHRvX210
-a19oZG1pX3BoeShodyk7CiAJdW5zaWduZWQgaW50IHByZV9kaXY7CiAJdW5zaWduZWQgaW50IGRp
-djsKKwl1bnNpZ25lZCBpbnQgcHJlX2liaWFzOworCXVuc2lnbmVkIGludCBoZG1pX2liaWFzOwor
-CXVuc2lnbmVkIGludCBpbXBfZW47CiAKIAlkZXZfZGJnKGhkbWlfcGh5LT5kZXYsICIlczogJWx1
-IEh6LCBwYXJlbnQ6ICVsdSBIelxuIiwgX19mdW5jX18sCiAJCXJhdGUsIHBhcmVudF9yYXRlKTsK
-QEAgLTI5OCwxOCArMzAxLDMxIEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfcGxsX3NldF9yYXRlKHN0
-cnVjdCBjbGtfaHcgKmh3LCB1bnNpZ25lZCBsb25nIHJhdGUsCiAJCQkgICgweDEgPDwgUExMX0JS
-X1NISUZUKSwKIAkJCSAgUkdfSERNSVRYX1BMTF9CUCB8IFJHX0hETUlUWF9QTExfQkMgfAogCQkJ
-ICBSR19IRE1JVFhfUExMX0JSKTsKLQltdGtfaGRtaV9waHlfY2xlYXJfYml0cyhoZG1pX3BoeSwg
-SERNSV9DT04zLCBSR19IRE1JVFhfUFJEX0lNUF9FTik7CisJaWYgKHJhdGUgPCAxNjUwMDAwMDAp
-IHsKKwkJbXRrX2hkbWlfcGh5X2NsZWFyX2JpdHMoaGRtaV9waHksIEhETUlfQ09OMywKKwkJCQkJ
-UkdfSERNSVRYX1BSRF9JTVBfRU4pOworCQlwcmVfaWJpYXMgPSAweDM7CisJCWltcF9lbiA9IDB4
-MDsKKwkJaGRtaV9pYmlhcyA9IGhkbWlfcGh5LT5pYmlhczsKKwl9IGVsc2UgeworCQltdGtfaGRt
-aV9waHlfc2V0X2JpdHMoaGRtaV9waHksIEhETUlfQ09OMywKKwkJCQkgICAgICBSR19IRE1JVFhf
-UFJEX0lNUF9FTik7CisJCXByZV9pYmlhcyA9IDB4NjsKKwkJaW1wX2VuID0gMHhmOworCQloZG1p
-X2liaWFzID0gaGRtaV9waHktPmliaWFzX3VwOworCX0KIAltdGtfaGRtaV9waHlfbWFzayhoZG1p
-X3BoeSwgSERNSV9DT040LAotCQkJICAoMHgzIDw8IFBSRF9JQklBU19DTEtfU0hJRlQpIHwKLQkJ
-CSAgKDB4MyA8PCBQUkRfSUJJQVNfRDJfU0hJRlQpIHwKLQkJCSAgKDB4MyA8PCBQUkRfSUJJQVNf
-RDFfU0hJRlQpIHwKLQkJCSAgKDB4MyA8PCBQUkRfSUJJQVNfRDBfU0hJRlQpLAorCQkJICAocHJl
-X2liaWFzIDw8IFBSRF9JQklBU19DTEtfU0hJRlQpIHwKKwkJCSAgKHByZV9pYmlhcyA8PCBQUkRf
-SUJJQVNfRDJfU0hJRlQpIHwKKwkJCSAgKHByZV9pYmlhcyA8PCBQUkRfSUJJQVNfRDFfU0hJRlQp
-IHwKKwkJCSAgKHByZV9pYmlhcyA8PCBQUkRfSUJJQVNfRDBfU0hJRlQpLAogCQkJICBSR19IRE1J
-VFhfUFJEX0lCSUFTX0NMSyB8CiAJCQkgIFJHX0hETUlUWF9QUkRfSUJJQVNfRDIgfAogCQkJICBS
-R19IRE1JVFhfUFJEX0lCSUFTX0QxIHwKIAkJCSAgUkdfSERNSVRYX1BSRF9JQklBU19EMCk7CiAJ
-bXRrX2hkbWlfcGh5X21hc2soaGRtaV9waHksIEhETUlfQ09OMywKLQkJCSAgKDB4MCA8PCBEUlZf
-SU1QX0VOX1NISUZUKSwgUkdfSERNSVRYX0RSVl9JTVBfRU4pOworCQkJICAoaW1wX2VuIDw8IERS
-Vl9JTVBfRU5fU0hJRlQpLAorCQkJICBSR19IRE1JVFhfRFJWX0lNUF9FTik7CiAJbXRrX2hkbWlf
-cGh5X21hc2soaGRtaV9waHksIEhETUlfQ09ONiwKIAkJCSAgKGhkbWlfcGh5LT5kcnZfaW1wX2Ns
-ayA8PCBEUlZfSU1QX0NMS19TSElGVCkgfAogCQkJICAoaGRtaV9waHktPmRydl9pbXBfZDIgPDwg
-RFJWX0lNUF9EMl9TSElGVCkgfApAQCAtMzE4LDEyICszMzQsMTQgQEAgc3RhdGljIGludCBtdGtf
-aGRtaV9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVuc2lnbmVkIGxvbmcgcmF0ZSwK
-IAkJCSAgUkdfSERNSVRYX0RSVl9JTVBfQ0xLIHwgUkdfSERNSVRYX0RSVl9JTVBfRDIgfAogCQkJ
-ICBSR19IRE1JVFhfRFJWX0lNUF9EMSB8IFJHX0hETUlUWF9EUlZfSU1QX0QwKTsKIAltdGtfaGRt
-aV9waHlfbWFzayhoZG1pX3BoeSwgSERNSV9DT041LAotCQkJICAoaGRtaV9waHktPmliaWFzIDw8
-IERSVl9JQklBU19DTEtfU0hJRlQpIHwKLQkJCSAgKGhkbWlfcGh5LT5pYmlhcyA8PCBEUlZfSUJJ
-QVNfRDJfU0hJRlQpIHwKLQkJCSAgKGhkbWlfcGh5LT5pYmlhcyA8PCBEUlZfSUJJQVNfRDFfU0hJ
-RlQpIHwKLQkJCSAgKGhkbWlfcGh5LT5pYmlhcyA8PCBEUlZfSUJJQVNfRDBfU0hJRlQpLAotCQkJ
-ICBSR19IRE1JVFhfRFJWX0lCSUFTX0NMSyB8IFJHX0hETUlUWF9EUlZfSUJJQVNfRDIgfAotCQkJ
-ICBSR19IRE1JVFhfRFJWX0lCSUFTX0QxIHwgUkdfSERNSVRYX0RSVl9JQklBU19EMCk7CisJCQkg
-IChoZG1pX2liaWFzIDw8IERSVl9JQklBU19DTEtfU0hJRlQpIHwKKwkJCSAgKGhkbWlfaWJpYXMg
-PDwgRFJWX0lCSUFTX0QyX1NISUZUKSB8CisJCQkgIChoZG1pX2liaWFzIDw8IERSVl9JQklBU19E
-MV9TSElGVCkgfAorCQkJICAoaGRtaV9pYmlhcyA8PCBEUlZfSUJJQVNfRDBfU0hJRlQpLAorCQkJ
-ICBSR19IRE1JVFhfRFJWX0lCSUFTX0NMSyB8CisJCQkgIFJHX0hETUlUWF9EUlZfSUJJQVNfRDIg
-fAorCQkJICBSR19IRE1JVFhfRFJWX0lCSUFTX0QxIHwKKwkJCSAgUkdfSERNSVRYX0RSVl9JQklB
-U19EMCk7CiAJcmV0dXJuIDA7CiB9CiAKLS0gCjEuNy45LjUKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+To support HDMI 4K resolution, mmsys need clcok
+mm_sel to be 400MHz.
+
+The board .dts file should override the clock rate
+property with the higher VENCPLL frequency the board
+supports HDMI 4K resolution.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 78529e4..c3f32f3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -690,6 +690,8 @@
+ 			compatible = "mediatek,mt8173-mmsys", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
+ 			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
++			assigned-clock-rates = <400000000>;
+ 			#clock-cells = <1>;
+ 		};
+ 
+-- 
+1.7.9.5
