@@ -1,39 +1,53 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v5] arm64: dts: mt8173: add mmsel clocks for 4K support
-Date: Thu, 4 Aug 2016 10:57:18 +0800
-Message-ID: <1470279438-60372-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH v2 4/7] drm/mediatek: Use drm_atomic destroy_state helpers
+Date: Thu, 4 Aug 2016 10:59:54 +0800
+Message-ID: <1470279597-60453-5-git-send-email-bibby.hsieh@mediatek.com>
+References: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, YH Huang <yh.huang@mediatek.com>, CK Hu <ck.hu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, "dawei.chien@mediatek.com" <dawei.chien@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Junzhi Zhao <junzhi.zhao@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-To support HDMI 4K resolution, mmsys need clcok
-mm_sel to be 400MHz.
-
-The board .dts file should override the clock rate
-property with the higher VENCPLL frequency the board
-supports HDMI 4K resolution.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 78529e4..c3f32f3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -690,6 +690,8 @@
- 			compatible = "mediatek,mt8173-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
- 			power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
-+			assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
-+			assigned-clock-rates = <400000000>;
- 			#clock-cells = <1>;
- 		};
- 
--- 
-1.7.9.5
+VXNlIHRoZSBjb3JlIGRlc3Ryb3lfc3RhdGUgaGVscGVycyB0byBkZXN0cm95IGNvcmUgc3RhdGUg
+dG8gZW5zdXJlIHdlIGRvbid0CmxlYWsgaWYvd2hlbiBtb3JlIGZpZWxkcyBnZXQgYWRkZWQgbGF0
+ZXIuCgpTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgpT
+aWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgfCAgICAzICstLQogZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyB8ICAgIDMgKy0tCiAyIGZpbGVz
+IGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKaW5kZXggZDZmYmVmYS4uNzMzYjJhMyAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCisrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwpAQCAtMTEyLDggKzExMiw3IEBAIHN0YXRp
+YyB2b2lkIG10a19kcm1fY3J0Y19yZXNldChzdHJ1Y3QgZHJtX2NydGMgKmNydGMpCiAJc3RydWN0
+IG10a19jcnRjX3N0YXRlICpzdGF0ZTsKIAogCWlmIChjcnRjLT5zdGF0ZSkgewotCQlpZiAoY3J0
+Yy0+c3RhdGUtPm1vZGVfYmxvYikKLQkJCWRybV9wcm9wZXJ0eV91bnJlZmVyZW5jZV9ibG9iKGNy
+dGMtPnN0YXRlLT5tb2RlX2Jsb2IpOworCQlfX2RybV9hdG9taWNfaGVscGVyX2NydGNfZGVzdHJv
+eV9zdGF0ZShjcnRjLT5zdGF0ZSk7CiAKIAkJc3RhdGUgPSB0b19tdGtfY3J0Y19zdGF0ZShjcnRj
+LT5zdGF0ZSk7CiAJCW1lbXNldChzdGF0ZSwgMCwgc2l6ZW9mKCpzdGF0ZSkpOwpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKaW5kZXggODZiN2FlZC4uMTcxNzJiYSAxMDA2
+NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYworKysgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCkBAIC03Myw4ICs3Myw3IEBA
+IHN0YXRpYyB2b2lkIG10a19wbGFuZV9yZXNldChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSkKIAlz
+dHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZTsKIAogCWlmIChwbGFuZS0+c3RhdGUpIHsKLQkJ
+aWYgKHBsYW5lLT5zdGF0ZS0+ZmIpCi0JCQlkcm1fZnJhbWVidWZmZXJfdW5yZWZlcmVuY2UocGxh
+bmUtPnN0YXRlLT5mYik7CisJCV9fZHJtX2F0b21pY19oZWxwZXJfcGxhbmVfZGVzdHJveV9zdGF0
+ZShwbGFuZS0+c3RhdGUpOwogCiAJCXN0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5z
+dGF0ZSk7CiAJCW1lbXNldChzdGF0ZSwgMCwgc2l6ZW9mKCpzdGF0ZSkpOwotLSAKMS43LjkuNQoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
+IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
