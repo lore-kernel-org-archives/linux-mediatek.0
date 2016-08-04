@@ -1,138 +1,148 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v2 3/7] drm/mediatek: Remove mtk_drm_plane
-Date: Thu, 4 Aug 2016 10:59:53 +0800
-Message-ID: <1470279597-60453-4-git-send-email-bibby.hsieh@mediatek.com>
-References: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3] vcodec: mediatek: Add g/s_selection support for V4L2
+ Encoder
+Date: Thu, 4 Aug 2016 18:08:15 +0800
+Message-ID: <1470305295-27785-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KCk5vdyB0aGF0IG10a19k
-cm1fcGxhbmUganVzdCBjb250YWlucyBpdHMgYmFzZSBzdHJ1Y3QgZHJtX3BsYW5lLCB3ZSBjYW4K
-anVzdCByZW1vdmUgaXQgYW5kIHVzZSBzdHJ1Y3QgZHJtX3BsYW5lIGV2ZXJ5d2hlcmUuCgpTaWdu
-ZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0ub3JnPgpTaWduZWQtb2Zm
-LWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgfCAgIDE2ICsrKysrKysrLS0tLS0tLS0K
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgfCAgIDEyICsrKysrLS0t
-LS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuaCB8ICAgMTEgKy0t
-LS0tLS0tLS0KIDMgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMjUgZGVsZXRpb25z
-KC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5j
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCmluZGV4IDE4MjExYWIu
-LmQ2ZmJlZmEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Ny
-dGMuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKQEAgLTMx
-LDcgKzMxLDcgQEAKICAqIHN0cnVjdCBtdGtfZHJtX2NydGMgLSBNZWRpYVRlayBzcGVjaWZpYyBj
-cnRjIHN0cnVjdHVyZS4KICAqIEBiYXNlOiBjcnRjIG9iamVjdC4KICAqIEBlbmFibGVkOiByZWNv
-cmRzIHdoZXRoZXIgY3J0Y19lbmFibGUgc3VjY2VlZGVkCi0gKiBAcGxhbmVzOiBhcnJheSBvZiA0
-IG10a19kcm1fcGxhbmUgc3RydWN0dXJlcywgb25lIGZvciBlYWNoIG92ZXJsYXkgcGxhbmUKKyAq
-IEBwbGFuZXM6IGFycmF5IG9mIDQgZHJtX3BsYW5lIHN0cnVjdHVyZXMsIG9uZSBmb3IgZWFjaCBv
-dmVybGF5IHBsYW5lCiAgKiBAcGVuZGluZ19wbGFuZXM6IHdoZXRoZXIgYW55IHBsYW5lIGhhcyBw
-ZW5kaW5nIGNoYW5nZXMgdG8gYmUgYXBwbGllZAogICogQGNvbmZpZ19yZWdzOiBtZW1vcnkgbWFw
-cGVkIG1tc3lzIGNvbmZpZ3VyYXRpb24gcmVnaXN0ZXIgc3BhY2UKICAqIEBtdXRleDogaGFuZGxl
-IHRvIG9uZSBvZiB0aGUgdGVuIGRpc3BfbXV0ZXggc3RyZWFtcwpAQCAtNDUsNyArNDUsNyBAQCBz
-dHJ1Y3QgbXRrX2RybV9jcnRjIHsKIAlib29sCQkJCXBlbmRpbmdfbmVlZHNfdmJsYW5rOwogCXN0
-cnVjdCBkcm1fcGVuZGluZ192YmxhbmtfZXZlbnQJKmV2ZW50OwogCi0Jc3RydWN0IG10a19kcm1f
-cGxhbmUJCXBsYW5lc1tPVkxfTEFZRVJfTlJdOworCXN0cnVjdCBkcm1fcGxhbmUJCXBsYW5lc1tP
-VkxfTEFZRVJfTlJdOwogCWJvb2wJCQkJcGVuZGluZ19wbGFuZXM7CiAKIAl2b2lkIF9faW9tZW0J
-CQkqY29uZmlnX3JlZ3M7CkBAIC0yNzIsNyArMjcyLDcgQEAgc3RhdGljIGludCBtdGtfY3J0Y19k
-ZHBfaHdfaW5pdChzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YykKIAogCS8qIEluaXRpYWxs
-eSBjb25maWd1cmUgYWxsIHBsYW5lcyAqLwogCWZvciAoaSA9IDA7IGkgPCBPVkxfTEFZRVJfTlI7
-IGkrKykgewotCQlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfY3J0Yy0+cGxhbmVzW2ld
-LmJhc2U7CisJCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV07
-CiAJCXN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwogCiAJCXBsYW5lX3N0YXRl
-ID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7CkBAIC0zNTEsNyArMzUxLDcgQEAg
-c3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjKQog
-CiAJLyogU2V0IGFsbCBwZW5kaW5nIHBsYW5lIHN0YXRlIHRvIGRpc2FibGVkICovCiAJZm9yIChp
-ID0gMDsgaSA8IE9WTF9MQVlFUl9OUjsgaSsrKSB7Ci0JCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
-ID0gJm10a19jcnRjLT5wbGFuZXNbaV0uYmFzZTsKKwkJc3RydWN0IGRybV9wbGFuZSAqcGxhbmUg
-PSAmbXRrX2NydGMtPnBsYW5lc1tpXTsKIAkJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVf
-c3RhdGU7CiAKIAkJcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxhbmVfc3RhdGUocGxhbmUtPnN0YXRl
-KTsKQEAgLTM5Nyw3ICszOTcsNyBAQCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2Zs
-dXNoKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKIAlpZiAobXRrX2NydGMtPmV2ZW50KQogCQltdGtf
-Y3J0Yy0+cGVuZGluZ19uZWVkc192YmxhbmsgPSB0cnVlOwogCWZvciAoaSA9IDA7IGkgPCBPVkxf
-TEFZRVJfTlI7IGkrKykgewotCQlzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfY3J0Yy0+
-cGxhbmVzW2ldLmJhc2U7CisJCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5w
-bGFuZXNbaV07CiAJCXN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwogCiAJCXBs
-YW5lX3N0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7CkBAIC00NzEsNyAr
-NDcxLDcgQEAgdm9pZCBtdGtfY3J0Y19kZHBfaXJxKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yywgc3Ry
-dWN0IG10a19kZHBfY29tcCAqb3ZsKQogCiAJaWYgKG10a19jcnRjLT5wZW5kaW5nX3BsYW5lcykg
-ewogCQlmb3IgKGkgPSAwOyBpIDwgT1ZMX0xBWUVSX05SOyBpKyspIHsKLQkJCXN0cnVjdCBkcm1f
-cGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV0uYmFzZTsKKwkJCXN0cnVjdCBkcm1f
-cGxhbmUgKnBsYW5lID0gJm10a19jcnRjLT5wbGFuZXNbaV07CiAJCQlzdHJ1Y3QgbXRrX3BsYW5l
-X3N0YXRlICpwbGFuZV9zdGF0ZTsKIAogCQkJcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxhbmVfc3Rh
-dGUocGxhbmUtPnN0YXRlKTsKQEAgLTU2NCw4ICs1NjQsOCBAQCBpbnQgbXRrX2RybV9jcnRjX2Ny
-ZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldiwKIAkJCWdvdG8gdW5wcmVwYXJlOwogCX0K
-IAotCXJldCA9IG10a19kcm1fY3J0Y19pbml0KGRybV9kZXYsIG10a19jcnRjLCAmbXRrX2NydGMt
-PnBsYW5lc1swXS5iYXNlLAotCQkJCSZtdGtfY3J0Yy0+cGxhbmVzWzFdLmJhc2UsIHBpcGUpOwor
-CXJldCA9IG10a19kcm1fY3J0Y19pbml0KGRybV9kZXYsIG10a19jcnRjLCAmbXRrX2NydGMtPnBs
-YW5lc1swXSwKKwkJCQkmbXRrX2NydGMtPnBsYW5lc1sxXSwgcGlwZSk7CiAJaWYgKHJldCA8IDAp
-CiAJCWdvdG8gdW5wcmVwYXJlOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxh
-bmUuYwppbmRleCAzMmE4ZTU1Li44NmI3YWVkIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX3BsYW5lLmMKQEAgLTMwLDEwICszMCw5IEBAIHN0YXRpYyBjb25zdCB1MzIgZm9ybWF0
-c1tdID0gewogCURSTV9GT1JNQVRfUkdCNTY1LAogfTsKIAotc3RhdGljIHZvaWQgbXRrX3BsYW5l
-X2VuYWJsZShzdHJ1Y3QgbXRrX2RybV9wbGFuZSAqbXRrX3BsYW5lLAorc3RhdGljIHZvaWQgbXRr
-X3BsYW5lX2VuYWJsZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKIAkJCSAgICAgZG1hX2FkZHJf
-dCBhZGRyKQogewotCXN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lID0gJm10a19wbGFuZS0+YmFzZTsK
-IAlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZSA9IHRvX210a19wbGFuZV9zdGF0ZShwbGFu
-ZS0+c3RhdGUpOwogCXVuc2lnbmVkIGludCBwaXRjaCwgZm9ybWF0OwogCWJvb2wgZW5hYmxlOwpA
-QCAtMTYyLDE0ICsxNjEsMTMgQEAgc3RhdGljIHZvaWQgbXRrX3BsYW5lX2F0b21pY191cGRhdGUo
-c3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCiAJc3RydWN0IGRybV9jcnRjICpjcnRjID0gc3RhdGUt
-PmJhc2UuY3J0YzsKIAlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmdlbTsKIAlzdHJ1Y3QgbXRrX2Ry
-bV9nZW1fb2JqICptdGtfZ2VtOwotCXN0cnVjdCBtdGtfZHJtX3BsYW5lICptdGtfcGxhbmUgPSB0
-b19tdGtfcGxhbmUocGxhbmUpOwogCiAJaWYgKCFjcnRjKQogCQlyZXR1cm47CiAKIAlnZW0gPSBt
-dGtfZmJfZ2V0X2dlbV9vYmooc3RhdGUtPmJhc2UuZmIpOwogCW10a19nZW0gPSB0b19tdGtfZ2Vt
-X29iaihnZW0pOwotCW10a19wbGFuZV9lbmFibGUobXRrX3BsYW5lLCBtdGtfZ2VtLT5kbWFfYWRk
-cik7CisJbXRrX3BsYW5lX2VuYWJsZShwbGFuZSwgbXRrX2dlbS0+ZG1hX2FkZHIpOwogfQogCiBz
-dGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRybV9wbGFuZSAqcGxh
-bmUsCkBAIC0xODgsMTIgKzE4NiwxMiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9wbGFuZV9o
-ZWxwZXJfZnVuY3MgbXRrX3BsYW5lX2hlbHBlcl9mdW5jcyA9IHsKIAkuYXRvbWljX2Rpc2FibGUg
-PSBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUsCiB9OwogCi1pbnQgbXRrX3BsYW5lX2luaXQoc3Ry
-dWN0IGRybV9kZXZpY2UgKmRldiwgc3RydWN0IG10a19kcm1fcGxhbmUgKm10a19wbGFuZSwKK2lu
-dCBtdGtfcGxhbmVfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCBzdHJ1Y3QgZHJtX3BsYW5l
-ICpwbGFuZSwKIAkJICAgdW5zaWduZWQgbG9uZyBwb3NzaWJsZV9jcnRjcywgZW51bSBkcm1fcGxh
-bmVfdHlwZSB0eXBlKQogewogCWludCBlcnI7CiAKLQllcnIgPSBkcm1fdW5pdmVyc2FsX3BsYW5l
-X2luaXQoZGV2LCAmbXRrX3BsYW5lLT5iYXNlLCBwb3NzaWJsZV9jcnRjcywKKwllcnIgPSBkcm1f
-dW5pdmVyc2FsX3BsYW5lX2luaXQoZGV2LCBwbGFuZSwgcG9zc2libGVfY3J0Y3MsCiAJCQkJICAg
-ICAgICZtdGtfcGxhbmVfZnVuY3MsIGZvcm1hdHMsCiAJCQkJICAgICAgIEFSUkFZX1NJWkUoZm9y
-bWF0cyksIHR5cGUsIE5VTEwpOwogCWlmIChlcnIpIHsKQEAgLTIwMSw3ICsxOTksNyBAQCBpbnQg
-bXRrX3BsYW5lX2luaXQoc3RydWN0IGRybV9kZXZpY2UgKmRldiwgc3RydWN0IG10a19kcm1fcGxh
-bmUgKm10a19wbGFuZSwKIAkJcmV0dXJuIGVycjsKIAl9CiAKLQlkcm1fcGxhbmVfaGVscGVyX2Fk
-ZCgmbXRrX3BsYW5lLT5iYXNlLCAmbXRrX3BsYW5lX2hlbHBlcl9mdW5jcyk7CisJZHJtX3BsYW5l
-X2hlbHBlcl9hZGQocGxhbmUsICZtdGtfcGxhbmVfaGVscGVyX2Z1bmNzKTsKIAogCXJldHVybiAw
-OwogfQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUu
-aCBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmgKaW5kZXggNzRkYmVk
-YS4uNmEyMGI0OSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-cGxhbmUuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5oCkBA
-IC0xOCwxMCArMTgsNiBAQAogI2luY2x1ZGUgPGRybS9kcm1fY3J0Yy5oPgogI2luY2x1ZGUgPGxp
-bnV4L3R5cGVzLmg+CiAKLXN0cnVjdCBtdGtfZHJtX3BsYW5lIHsKLQlzdHJ1Y3QgZHJtX3BsYW5l
-CQliYXNlOwotfTsKLQogc3RydWN0IG10a19wbGFuZV9wZW5kaW5nX3N0YXRlIHsKIAlib29sCQkJ
-CWNvbmZpZzsKIAlib29sCQkJCWVuYWJsZTsKQEAgLTQwLDE4ICszNiwxMyBAQCBzdHJ1Y3QgbXRr
-X3BsYW5lX3N0YXRlIHsKIAlzdHJ1Y3QgbXRrX3BsYW5lX3BlbmRpbmdfc3RhdGUJcGVuZGluZzsK
-IH07CiAKLXN0YXRpYyBpbmxpbmUgc3RydWN0IG10a19kcm1fcGxhbmUgKnRvX210a19wbGFuZShz
-dHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSkKLXsKLQlyZXR1cm4gY29udGFpbmVyX29mKHBsYW5lLCBz
-dHJ1Y3QgbXRrX2RybV9wbGFuZSwgYmFzZSk7Ci19Ci0KIHN0YXRpYyBpbmxpbmUgc3RydWN0IG10
-a19wbGFuZV9zdGF0ZSAqCiB0b19tdGtfcGxhbmVfc3RhdGUoc3RydWN0IGRybV9wbGFuZV9zdGF0
-ZSAqc3RhdGUpCiB7CiAJcmV0dXJuIGNvbnRhaW5lcl9vZihzdGF0ZSwgc3RydWN0IG10a19wbGFu
-ZV9zdGF0ZSwgYmFzZSk7CiB9CiAKLWludCBtdGtfcGxhbmVfaW5pdChzdHJ1Y3QgZHJtX2Rldmlj
-ZSAqZGV2LCBzdHJ1Y3QgbXRrX2RybV9wbGFuZSAqbXRrX3BsYW5lLAoraW50IG10a19wbGFuZV9p
-bml0KHN0cnVjdCBkcm1fZGV2aWNlICpkZXYsIHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAogCQkg
-ICB1bnNpZ25lZCBsb25nIHBvc3NpYmxlX2NydGNzLCBlbnVtIGRybV9wbGFuZV90eXBlIHR5cGUp
-OwogCiAjZW5kaWYKLS0gCjEuNy45LjUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAo=
+This patch add g/s_selection support for MT8173 v4l2 encoder
+
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+v3:
+- add v4l2_s_selection to check constraint flags
+- remove visible_height modification in s_fmt_out
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   81 +++++++++++++++++---
+ 1 file changed, 71 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index 3ed3f2d..c4b8e00 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -487,7 +487,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	struct mtk_q_data *q_data;
+ 	int ret, i;
+ 	struct mtk_video_fmt *fmt;
+-	unsigned int pitch_w_div16;
+ 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+@@ -530,15 +529,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
+ 
+-	pitch_w_div16 = DIV_ROUND_UP(q_data->visible_width, 16);
+-	if (pitch_w_div16 % 8 != 0) {
+-		/* Adjust returned width/height, so application could correctly
+-		 * allocate hw required memory
+-		 */
+-		q_data->visible_height += 32;
+-		vidioc_try_fmt(f, q_data->fmt);
+-	}
+-
+ 	q_data->field = f->fmt.pix_mp.field;
+ 	ctx->colorspace = f->fmt.pix_mp.colorspace;
+ 	ctx->ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
+@@ -631,6 +621,74 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ 	return vidioc_try_fmt(f, fmt);
+ }
+ 
++static int vidioc_venc_g_selection(struct file *file, void *priv,
++				     struct v4l2_selection *s)
++{
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	struct mtk_q_data *q_data;
++
++	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++		return -EINVAL;
++
++	q_data = mtk_venc_get_q_data(ctx, s->type);
++	if (!q_data)
++		return -EINVAL;
++
++	switch (s->target) {
++	case V4L2_SEL_TGT_CROP_DEFAULT:
++	case V4L2_SEL_TGT_CROP_BOUNDS:
++		s->r.top = 0;
++		s->r.left = 0;
++		s->r.width = q_data->coded_width;
++		s->r.height = q_data->coded_height;
++		break;
++	case V4L2_SEL_TGT_CROP:
++		s->r.top = 0;
++		s->r.left = 0;
++		s->r.width = q_data->visible_width;
++		s->r.height = q_data->visible_height;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static int vidioc_venc_s_selection(struct file *file, void *priv,
++				     struct v4l2_selection *s)
++{
++	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
++	struct mtk_q_data *q_data;
++	struct v4l2_rect r = s->r;
++	int err;
++
++	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++		return -EINVAL;
++
++	q_data = mtk_venc_get_q_data(ctx, s->type);
++	if (!q_data)
++		return -EINVAL;
++
++	switch (s->target) {
++	case V4L2_SEL_TGT_CROP:
++		/* Only support crop from (0,0) */
++		s->r.top = 0;
++		s->r.left = 0;
++		r.width = min(r.width, q_data->coded_width);
++		r.height = min(r.height, q_data->coded_height);
++		err = v4l2_s_selection(s, &r);
++		if (err)
++			return err;
++		q_data->visible_width = s->r.width;
++		q_data->visible_height = s->r.height;
++		break;
++	default:
++		return -EINVAL;
++	}
++	return 0;
++}
++
+ static int vidioc_venc_qbuf(struct file *file, void *priv,
+ 			    struct v4l2_buffer *buf)
+ {
+@@ -689,6 +747,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+ 
+ 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+ 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
++
++	.vidioc_g_selection		= vidioc_venc_g_selection,
++	.vidioc_s_selection		= vidioc_venc_s_selection,
+ };
+ 
+ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+-- 
+1.7.9.5
