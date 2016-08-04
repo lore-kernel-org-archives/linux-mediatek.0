@@ -1,74 +1,86 @@
 From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 7/7] drm/mediatek: Fix mtk_atomic_complete for
- runtime_pm
-Date: Thu, 4 Aug 2016 12:42:23 +0200
-Message-ID: <20160804104222.GE6232@phenom.ffwll.local>
-References: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
- <1470279597-60453-8-git-send-email-bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH 2/2 v16] drm/bridge: Add I2C based driver for ps8640
+ bridge
+Date: Thu, 4 Aug 2016 12:58:15 +0200
+Message-ID: <20160804105814.GH6232@phenom.ffwll.local>
+References: <1464861445-11086-1-git-send-email-jitao.shi@mediatek.com>
+ <1464861445-11086-2-git-send-email-jitao.shi@mediatek.com>
+ <CACvgo53002XCPLufbJHQLC1uL1nNS7_0gh=napedetmvT6FoSw@mail.gmail.com>
+ <CAGS+omDsDS5tx=+Efq8LWNd3-asU4r2h=-AE6vdKgfG-p6vdAA@mail.gmail.com>
+ <CAKMK7uEkUOq1CB3tj_1Qx50fBpw9B39+c3asX6MPNexT=dv9fA@mail.gmail.com>
+ <CAFqH_53PgPs3_h7XNFEu4u0W6GW7vyWCNFf2vq8Yn7sH2LbFwA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1470279597-60453-8-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <CAFqH_53PgPs3_h7XNFEu4u0W6GW7vyWCNFf2vq8Yn7sH2LbFwA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>, Daniel Kurtz <djkurtz@chromium.org>, Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, ML dri-devel <dri-devel@lists.freedesktop.org>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, Thierry Reding <treding@nvidia.com>, devicetree <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang =?utf-8?B?KOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, LAKML <linux-arm-kernel@lists.infradead.org>, Rahul Sharma <rahul.sharma@sam>
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBBdWcgMDQsIDIwMTYgYXQgMTA6NTk6NTdBTSArMDgwMCwgQmliYnkgSHNpZWggd3Jv
-dGU6Cj4gVG8gcHJvcGVybHkgaW1wbGVtZW50IGF0b21pYyB3LyBydW50aW1lIHBtLCB3ZSBtb3Zl
-Cj4gZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X21vZGVzZXRfZW5hYmxlcygpIGFib3ZlCj4gZHJt
-X2F0b21pY19oZWxwZXJfY29tbWl0X3BsYW5lcygpIHRvIGVuc3VyZSBDUlRDcyBhcmUgZW5hYmxl
-ZCBiZWZvcmUKPiBtb2RpZnlpbmcgcGxhbmUgcmVnaXN0ZXJzLCBhbmQgc2V0IGFjdGl2ZV9vbmx5
-IHRvIHRydWUgdG8gZmlsdGVyIG91dAo+IHBsYW5lIHVwZGF0ZSBub3RpZmljYXRpb25zIHdoZW4g
-dGhlIENSVEMgaXMgZGlzYWJsZWQuCj4gCj4gQWNjb3JkaW5nIHRvIHRoZSBkb2N1bWVudCBmcm9t
-IGxpbnV4IGtlcm5lbDoKPiBTZXQgdGhlIGFjdGl2ZV9vbmx5IHBhcmFtZXRlcnMgdG8gdHJ1ZSBp
-biBvcmRlciBub3QgdG8gcmVjZWl2ZSBwbGFuZQo+IHVwZGF0ZSBub3RpZmljYXRpb25zIHJlbGF0
-ZWQgdG8gYSBkaXNhYmxlZCBDUlRDLiBUaGlzIGF2b2lkcyB0aGUgbmVlZAo+IHRvIG1hbnVhbGx5
-IGlnbm9yZSBwbGFuZSB1cGRhdGVzIGluIGRyaXZlciBjb2RlIHdoZW4gdGhlIGRyaXZlciBhbmQv
-b3IKPiBoYXJkd2FyZSBjYW4ndCBvciBqdXN0IGRvbid0IG5lZWQgdG8gZGVhbCB3aXRoIHVwZGF0
-ZXMgb24gZGlzYWJsZWQKPiBDUlRDcywgZm9yIGV4YW1wbGUgd2hlbiBzdXBwb3J0aW5nIHJ1bnRp
-bWUgUE0uCj4gCj4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlh
-dGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgS3VydHogPGRqa3VydHpAY2hyb21pdW0u
-b3JnPgoKYnR3IGlmIHlvdSB3YW50IHRvIGNsZWFuIHVwIHNvbWUgbW9yZSBjb2RlLCB3b3VsZCBi
-ZSBuZWF0IHRvIHN3aXRjaAptZWRpYXRlayB0byB0aGUgZ2VuZXJpYyBub25ibG9ja2luZyBzdXBw
-b3J0IGluIHRoZSBhdG9taWMgaGVscGVycyBpbnN0ZWFkCm9mIHJvbGxpbmcgeW91ciBvd24uCi1E
-YW5pZWwKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIHwg
-ICAxNyArKysrKysrKysrKysrKysrLQo+ICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygr
-KSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5j
-Cj4gaW5kZXggYjEyMjNkNS4uNTA3MzkyYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2Rydi5jCj4gQEAgLTYxLDEwICs2MSwyNSBAQCBzdGF0aWMgdm9pZCBtdGtfYXRvbWlj
-X2NvbXBsZXRlKHN0cnVjdCBtdGtfZHJtX3ByaXZhdGUgKnByaXZhdGUsCj4gIAo+ICAJbXRrX2F0
-b21pY193YWl0X2Zvcl9mZW5jZXMoc3RhdGUpOwo+ICAKPiArCS8qCj4gKwkgKiBNZWRpYXRlayBk
-cm0gc3VwcG9ydHMgcnVudGltZSBQTSwgc28gcGxhbmUgcmVnaXN0ZXJzIGNhbm5vdCBiZQo+ICsJ
-ICogd3JpdHRlbiB3aGVuIHRoZWlyIGNydGMgaXMgZGlzYWJsZWQuCj4gKwkgKgo+ICsJICogVGhl
-IGNvbW1lbnQgZm9yIGRybV9hdG9taWNfaGVscGVyX2NvbW1pdCBzdGF0ZXM6Cj4gKwkgKiAgICAg
-Rm9yIGRyaXZlcnMgc3VwcG9ydGluZyBydW50aW1lIFBNIHRoZSByZWNvbW1lbmRlZCBzZXF1ZW5j
-ZSBpcwo+ICsJICoKPiArCSAqICAgICBkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfbW9kZXNldF9k
-aXNhYmxlcyhkZXYsIHN0YXRlKTsKPiArCSAqICAgICBkcm1fYXRvbWljX2hlbHBlcl9jb21taXRf
-bW9kZXNldF9lbmFibGVzKGRldiwgc3RhdGUpOwo+ICsJICogICAgIGRybV9hdG9taWNfaGVscGVy
-X2NvbW1pdF9wbGFuZXMoZGV2LCBzdGF0ZSwgdHJ1ZSk7Cj4gKwkgKgo+ICsJICogU2VlIHRoZSBr
-ZXJuZWxkb2MgZW50cmllcyBmb3IgdGhlc2UgdGhyZWUgZnVuY3Rpb25zIGZvciBtb3JlIGRldGFp
-bHMuCj4gKwkgKi8KPiAgCWRybV9hdG9taWNfaGVscGVyX2NvbW1pdF9tb2Rlc2V0X2Rpc2FibGVz
-KGRybSwgc3RhdGUpOwo+IC0JZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X3BsYW5lcyhkcm0sIHN0
-YXRlLCBmYWxzZSk7Cj4gIAlkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfbW9kZXNldF9lbmFibGVz
-KGRybSwgc3RhdGUpOwo+ICsJZHJtX2F0b21pY19oZWxwZXJfY29tbWl0X3BsYW5lcyhkcm0sIHN0
-YXRlLCB0cnVlKTsKPiArCj4gIAlkcm1fYXRvbWljX2hlbHBlcl93YWl0X2Zvcl92YmxhbmtzKGRy
-bSwgc3RhdGUpOwo+ICsKPiAgCWRybV9hdG9taWNfaGVscGVyX2NsZWFudXBfcGxhbmVzKGRybSwg
-c3RhdGUpOwo+ICAJZHJtX2F0b21pY19zdGF0ZV9mcmVlKHN0YXRlKTsKPiAgfQo+IC0tIAo+IDEu
-Ny45LjUKPiAKCi0tIApEYW5pZWwgVmV0dGVyClNvZnR3YXJlIEVuZ2luZWVyLCBJbnRlbCBDb3Jw
-b3JhdGlvbgpodHRwOi8vYmxvZy5mZndsbC5jaApfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
-cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9kcmktZGV2ZWwK
+On Thu, Aug 04, 2016 at 12:35:59PM +0200, Enric Balletbo Serra wrote:
+> 2016-07-12 12:13 GMT+02:00 Daniel Vetter <daniel@ffwll.ch>:
+> > On Wed, Jun 29, 2016 at 6:31 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> >> On Fri, Jun 17, 2016 at 3:14 AM, Emil Velikov <emil.l.velikov@gmail.com> wrote:
+> >>>> +static ssize_t ps8640_update_fw_store(struct device *dev,
+> >>>> +                                     struct device_attribute *attr,
+> >>>> +                                     const char *buf, size_t count)
+> >>>> +{
+> >>>> +       struct i2c_client *client = to_i2c_client(dev);
+> >>>> +       struct ps8640 *ps_bridge = i2c_get_clientdata(client);
+> >>>> +       const struct firmware *fw;
+> >>>> +       int error;
+> >>>> +
+> >>>> +       error = request_firmware(&fw, PS_FW_NAME, dev);
+> >>> Can the device operate without a firmware ? If not, why is the
+> >>> firmware loaded so later/after user interaction (via sysfs) ? I don't
+> >>> recall any other driver in DRM to use such an approach.
+> >>
+> >> The PS8640 has internal flash, so it should always already have a
+> >> working firmware.
+> >> This sysfs interface is useful for user space initiated field firmware updates.
+> >
+> > Might be better to just do a request_firmware on driver load, and
+> > simply proceed if it's not there. Adding a sysfs interface (which is
+> > abi) seems way too much overkill for this imo. If you want to upgrade
+> > the firmware you can then just drop it into the right directory, with
+> > no further interaction needed.
+> 
+> IMHO I'm not sure if for this use case request_firmware on driver load
+> is a good idea. Flash the non-volatile internal chip can be a slow
+> operation and if you forget to remove the firmware after drop it into
+> the right directory apart from slow down the driver probe you can
+> damage the chip depending on the write endurance of the chip.
+
+Ah ok. Explaining this in the commit message would be really good.
+
+> This sysfs interface is used on other subsystems when there is a
+> non-volatile memory, as example you can see at [1], [2]. Unfortunately
+> not all are using the same sysfs interface and maybe this should be
+> standardized (maybe it's an opportunity to define it)
+
++1 on standardizing this.
+-Daniel
+> 
+> Regards,
+>  Enric
+> 
+> [1] http://lxr.free-electrons.com/source/drivers/input/touchscreen/wdt87xx_i2c.c#L922
+> [2] http://lxr.free-electrons.com/source/drivers/scsi/pm8001/pm8001_ctl.c#L732
+> 
+> 
+> > -Daniel
+> > --
+> > Daniel Vetter
+> > Software Engineer, Intel Corporation
+> > +41 (0) 79 365 57 48 - http://blog.ffwll.ch
+> > _______________________________________________
+> > dri-devel mailing list
+> > dri-devel@lists.freedesktop.org
+> > https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
