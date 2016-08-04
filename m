@@ -1,49 +1,85 @@
-From: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 6/7] drm/mediatek: plane: Use FB's format's cpp to compute
- x offset
-Date: Thu, 4 Aug 2016 10:59:56 +0800
-Message-ID: <1470279597-60453-7-git-send-email-bibby.hsieh@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v2 5/7] drm/mediatek: plane: Merge mtk_plane_enable into
+ mtk_plane_atomic_update
+Date: Thu, 4 Aug 2016 10:59:55 +0800
+Message-ID: <1470279597-60453-6-git-send-email-bibby.hsieh@mediatek.com>
 References: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470279597-60453-1-git-send-email-bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1470279597-60453-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-
-Use the framebuffer's format to compute its cpp, and use it when
-calculating the address shift value.
-
-Signed-off-by: Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index b3ddb20..c461a23 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -135,7 +135,7 @@ static void mtk_plane_atomic_update(struct drm_plane *plane,
- 	pitch = fb->pitches[0];
- 	format = fb->pixel_format;
- 
--	addr += (plane->state->src.x1 >> 16) * 4;
-+	addr += (plane->state->src.x1 >> 16) * drm_format_plane_cpp(format, 0);
- 	addr += (plane->state->src.y1 >> 16) * pitch;
- 
- 	state->pending.enable = true;
--- 
-1.7.9.5
+RnJvbTogRGFuaWVsIEt1cnR6IDxkamt1cnR6QGNocm9taXVtLm9yZz4KClRoZSBtdGtfcGxhbmVf
+ZW5hYmxlIGlzIGp1c3QgY2FsbGVkIG9uY2UgYnkgbXRrX3BsYW5lX2F0b21pY191cGRhdGUuClNv
+LCBtZXJnZSBtdGtfcGxhbmVfZW5hYmxlIGludG8gbXRrX3BsYW5lX2F0b21pY191cGRhdGUuCgpX
+aGlsZSB3ZSBhcmUgaGVyZSwgYWxzbyBjbGVhbiB1cCB0aGUgZnVuY3Rpb24gYSBiaXQgYnkgdXNp
+bmcgYW4gZmIgbG9jYWwKdmFyaWFibGVzLgoKU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJp
+YmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogRGFuaWVsIEt1cnR6IDxkamt1
+cnR6QGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9w
+bGFuZS5jIHwgICA2NSArKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0KIDEgZmlsZSBjaGFu
+Z2VkLCAyMyBpbnNlcnRpb25zKCspLCA0MiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fcGxhbmUuYwppbmRleCAxNzE3MmJhLi5iM2RkYjIwIDEwMDY0NAotLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCisrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKQEAgLTMwLDQ0ICszMCw2IEBAIHN0YXRp
+YyBjb25zdCB1MzIgZm9ybWF0c1tdID0gewogCURSTV9GT1JNQVRfUkdCNTY1LAogfTsKIAotc3Rh
+dGljIHZvaWQgbXRrX3BsYW5lX2VuYWJsZShzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwKLQkJCSAg
+ICAgZG1hX2FkZHJfdCBhZGRyKQotewotCXN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnN0YXRlID0g
+dG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5zdGF0ZSk7Ci0JdW5zaWduZWQgaW50IHBpdGNoLCBm
+b3JtYXQ7Ci0JYm9vbCBlbmFibGU7Ci0KLQlpZiAoV0FSTl9PTighcGxhbmUtPnN0YXRlKSkKLQkJ
+cmV0dXJuOwotCi0JZW5hYmxlID0gc3RhdGUtPmJhc2UudmlzaWJsZTsKLQotCWlmIChXQVJOX09O
+KGVuYWJsZSAmJiAhcGxhbmUtPnN0YXRlLT5mYikpCi0JCXJldHVybjsKLQotCWlmIChwbGFuZS0+
+c3RhdGUtPmZiKSB7Ci0JCXBpdGNoID0gcGxhbmUtPnN0YXRlLT5mYi0+cGl0Y2hlc1swXTsKLQkJ
+Zm9ybWF0ID0gcGxhbmUtPnN0YXRlLT5mYi0+cGl4ZWxfZm9ybWF0OwotCX0gZWxzZSB7Ci0JCXBp
+dGNoID0gMDsKLQkJZm9ybWF0ID0gRFJNX0ZPUk1BVF9SR0JBODg4ODsKLQl9Ci0KLQlhZGRyICs9
+IChzdGF0ZS0+YmFzZS5zcmMueDEgPj4gMTYpICogNDsKLQlhZGRyICs9IChzdGF0ZS0+YmFzZS5z
+cmMueTEgPj4gMTYpICogcGl0Y2g7Ci0KLQlzdGF0ZS0+cGVuZGluZy5lbmFibGUgPSBlbmFibGU7
+Ci0Jc3RhdGUtPnBlbmRpbmcucGl0Y2ggPSBwaXRjaDsKLQlzdGF0ZS0+cGVuZGluZy5mb3JtYXQg
+PSBmb3JtYXQ7Ci0Jc3RhdGUtPnBlbmRpbmcuYWRkciA9IGFkZHI7Ci0Jc3RhdGUtPnBlbmRpbmcu
+eCA9IHN0YXRlLT5iYXNlLmRzdC54MTsKLQlzdGF0ZS0+cGVuZGluZy55ID0gc3RhdGUtPmJhc2Uu
+ZHN0LnkxOwotCXN0YXRlLT5wZW5kaW5nLndpZHRoID0gZHJtX3JlY3Rfd2lkdGgoJnN0YXRlLT5i
+YXNlLmRzdCk7Ci0Jc3RhdGUtPnBlbmRpbmcuaGVpZ2h0ID0gZHJtX3JlY3RfaGVpZ2h0KCZzdGF0
+ZS0+YmFzZS5kc3QpOwotCXdtYigpOyAvKiBNYWtlIHN1cmUgdGhlIGFib3ZlIHBhcmFtZXRlcnMg
+YXJlIHNldCBiZWZvcmUgdXBkYXRlICovCi0Jc3RhdGUtPnBlbmRpbmcuZGlydHkgPSB0cnVlOwot
+fQotCiBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfcmVzZXQoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUp
+CiB7CiAJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqc3RhdGU7CkBAIC0xNTcsMTYgKzExOSwzNSBA
+QCBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX3VwZGF0ZShzdHJ1Y3QgZHJtX3BsYW5lICpw
+bGFuZSwKIAkJCQkgICAgc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqb2xkX3N0YXRlKQogewogCXN0
+cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnN0YXRlID0gdG9fbXRrX3BsYW5lX3N0YXRlKHBsYW5lLT5z
+dGF0ZSk7Ci0Jc3RydWN0IGRybV9jcnRjICpjcnRjID0gc3RhdGUtPmJhc2UuY3J0YzsKKwlzdHJ1
+Y3QgZHJtX2NydGMgKmNydGMgPSBwbGFuZS0+c3RhdGUtPmNydGM7CisJc3RydWN0IGRybV9mcmFt
+ZWJ1ZmZlciAqZmIgPSBwbGFuZS0+c3RhdGUtPmZiOwogCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
+Z2VtOwogCXN0cnVjdCBtdGtfZHJtX2dlbV9vYmogKm10a19nZW07CisJdW5zaWduZWQgaW50IHBp
+dGNoLCBmb3JtYXQ7CisJZG1hX2FkZHJfdCBhZGRyOwogCi0JaWYgKCFjcnRjKQorCWlmICghY3J0
+YyB8fCBXQVJOX09OKCFmYikpCiAJCXJldHVybjsKIAotCWdlbSA9IG10a19mYl9nZXRfZ2VtX29i
+aihzdGF0ZS0+YmFzZS5mYik7CisJZ2VtID0gbXRrX2ZiX2dldF9nZW1fb2JqKGZiKTsKIAltdGtf
+Z2VtID0gdG9fbXRrX2dlbV9vYmooZ2VtKTsKLQltdGtfcGxhbmVfZW5hYmxlKHBsYW5lLCBtdGtf
+Z2VtLT5kbWFfYWRkcik7CisJYWRkciA9IG10a19nZW0tPmRtYV9hZGRyOworCXBpdGNoID0gZmIt
+PnBpdGNoZXNbMF07CisJZm9ybWF0ID0gZmItPnBpeGVsX2Zvcm1hdDsKKworCWFkZHIgKz0gKHBs
+YW5lLT5zdGF0ZS0+c3JjLngxID4+IDE2KSAqIDQ7CisJYWRkciArPSAocGxhbmUtPnN0YXRlLT5z
+cmMueTEgPj4gMTYpICogcGl0Y2g7CisKKwlzdGF0ZS0+cGVuZGluZy5lbmFibGUgPSB0cnVlOwor
+CXN0YXRlLT5wZW5kaW5nLnBpdGNoID0gcGl0Y2g7CisJc3RhdGUtPnBlbmRpbmcuZm9ybWF0ID0g
+Zm9ybWF0OworCXN0YXRlLT5wZW5kaW5nLmFkZHIgPSBhZGRyOworCXN0YXRlLT5wZW5kaW5nLngg
+PSBwbGFuZS0+c3RhdGUtPmRzdC54MTsKKwlzdGF0ZS0+cGVuZGluZy55ID0gcGxhbmUtPnN0YXRl
+LT5kc3QueTE7CisJc3RhdGUtPnBlbmRpbmcud2lkdGggPSBkcm1fcmVjdF93aWR0aCgmcGxhbmUt
+PnN0YXRlLT5kc3QpOworCXN0YXRlLT5wZW5kaW5nLmhlaWdodCA9IGRybV9yZWN0X2hlaWdodCgm
+cGxhbmUtPnN0YXRlLT5kc3QpOworCXdtYigpOyAvKiBNYWtlIHN1cmUgdGhlIGFib3ZlIHBhcmFt
+ZXRlcnMgYXJlIHNldCBiZWZvcmUgdXBkYXRlICovCisJc3RhdGUtPnBlbmRpbmcuZGlydHkgPSB0
+cnVlOwogfQogCiBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX2Rpc2FibGUoc3RydWN0IGRy
+bV9wbGFuZSAqcGxhbmUsCi0tIAoxLjcuOS41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0
+cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcmktZGV2ZWwK
