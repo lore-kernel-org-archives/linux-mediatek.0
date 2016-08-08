@@ -1,102 +1,54 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v6 06/10] drm/mediatek: add dsi interrupt control
-Date: Fri, 5 Aug 2016 18:24:26 +0800
-Message-ID: <1470392666.16554.61.camel@mtksdaap41>
-References: <1470308844-20895-1-git-send-email-yt.shen@mediatek.com>
- <1470308844-20895-7-git-send-email-yt.shen@mediatek.com>
+From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v12 0/4] Mediatek MT8173 CMDQ support
+Date: Mon, 8 Aug 2016 16:31:29 +0800
+Message-ID: <1470645093-13309-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1470308844-20895-7-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, dri-devel@lists.freedesktop.org, Russell King <linux@arm.linux.org.uk>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Kumar Gala <galak@codeaurora.org>
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gVGh1LCAyMDE2LTA4LTA0IGF0IDE5OjA3ICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IAo+
-IGFkZCBkc2kgaW50ZXJydXB0IGNvbnRyb2wKPiAKPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBj
-aGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kc2kuYyB8ICAgNzYgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA3NiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggYTljZjVhMS4uZWVhNjE5MiAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC0xOCw2ICsxOCw3IEBACj4gICNpbmNsdWRlIDxk
-cm0vZHJtX3BhbmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPiAgI2luY2x1ZGUgPGxp
-bnV4L2NvbXBvbmVudC5oPgo+ICsjaW5jbHVkZSA8bGludXgvaXJxLmg+Cj4gICNpbmNsdWRlIDxs
-aW51eC9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUg
-PGxpbnV4L29mX2dyYXBoLmg+Cj4gQEAgLTI5LDYgKzMwLDE3IEBACj4gIAo+ICAjZGVmaW5lIERT
-SV9TVEFSVAkJMHgwMAo+ICAKPiArI2RlZmluZSBEU0lfSU5URU4JCTB4MDgKPiArCj4gKyNkZWZp
-bmUgRFNJX0lOVFNUQQkJMHgwYwo+ICsjZGVmaW5lIExQUlhfUkRfUkRZX0lOVF9GTEFHCQlCSVQo
-MCkKPiArI2RlZmluZSBDTURfRE9ORV9JTlRfRkxBRwkJQklUKDEpCj4gKyNkZWZpbmUgVEVfUkRZ
-X0lOVF9GTEFHCQkJQklUKDIpCj4gKyNkZWZpbmUgVk1fRE9ORV9JTlRfRkxBRwkJQklUKDMpCj4g
-KyNkZWZpbmUgRVhUX1RFX1JEWV9JTlRfRkxBRwkJQklUKDQpCj4gKyNkZWZpbmUgRFNJX0lOVF9B
-TExfQklUUwkJMHgxZgo+ICsjZGVmaW5lIERTSV9CVVNZCQkJQklUKDMxKQo+ICsKPiAgI2RlZmlu
-ZSBEU0lfQ09OX0NUUkwJCTB4MTAKPiAgI2RlZmluZSBEU0lfUkVTRVQJCQlCSVQoMCkKPiAgI2Rl
-ZmluZSBEU0lfRU4JCQkJQklUKDEpCj4gQEAgLTcxLDYgKzgzLDkgQEAKPiAgCj4gICNkZWZpbmUg
-RFNJX0hTVFhfQ0tMX1dDCQkweDY0Cj4gIAo+ICsjZGVmaW5lIERTSV9SQUNLCQkweDg0Cj4gKyNk
-ZWZpbmUgUkFDSwkJCQlCSVQoMCkKPiArCj4gICNkZWZpbmUgRFNJX1BIWV9MQ0NPTgkJMHgxMDQK
-PiAgI2RlZmluZSBMQ19IU19UWF9FTgkJCUJJVCgwKQo+ICAjZGVmaW5lIExDX1VMUE1fRU4JCQlC
-SVQoMSkKPiBAQCAtMTMxLDggKzE0NiwxMSBAQCBzdHJ1Y3QgbXRrX2RzaSB7Cj4gIAlzdHJ1Y3Qg
-dmlkZW9tb2RlIHZtOwo+ICAJaW50IHJlZmNvdW50Owo+ICAJYm9vbCBlbmFibGVkOwo+ICsJaW50
-IGlycV9kYXRhOwoKdTMyIGlycV9kYXRhOwoKPiAgfTsKPiAgCj4gK3N0YXRpYyB3YWl0X3F1ZXVl
-X2hlYWRfdCBfZHNpX2lycV93YWl0X3F1ZXVlOwo+ICsKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3Qg
-bXRrX2RzaSAqZW5jb2Rlcl90b19kc2koc3RydWN0IGRybV9lbmNvZGVyICplKQo+ICB7Cj4gIAly
-ZXR1cm4gY29udGFpbmVyX29mKGUsIHN0cnVjdCBtdGtfZHNpLCBlbmNvZGVyKTsKPiBAQCAtNDM3
-LDYgKzQ1NSw0MyBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX3N0YXJ0KHN0cnVjdCBtdGtfZHNpICpk
-c2kpCj4gIAl3cml0ZWwoMSwgZHNpLT5yZWdzICsgRFNJX1NUQVJUKTsKPiAgfQo+ICAKPiArc3Rh
-dGljIHZvaWQgbXRrX2RzaV9zZXRfaW50ZXJydXB0X2VuYWJsZShzdHJ1Y3QgbXRrX2RzaSAqZHNp
-KQo+ICt7Cj4gKwl1MzIgaW50ZW4gPSBEU0lfSU5UX0FMTF9CSVRTOwo+ICsKPiArCWlmIChkc2kt
-Pm1vZGVfZmxhZ3MgJiBNSVBJX0RTSV9NT0RFX1ZJREVPKQo+ICsJCWludGVuICY9IH4oVEVfUkRZ
-X0lOVF9GTEFHIHwgRVhUX1RFX1JEWV9JTlRfRkxBRyk7Cj4gKwo+ICsJd3JpdGVsKGludGVuLCBk
-c2ktPnJlZ3MgKyBEU0lfSU5URU4pOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX2ly
-cV93YWtldXAoc3RydWN0IG10a19kc2kgKmRzaSwgdTMyIGlycV9iaXQpCj4gK3sKPiArCWRzaS0+
-aXJxX2RhdGEgfD0gaXJxX2JpdDsKPiArfQo+ICsKPiArc3RhdGljIGlycXJldHVybl90IG10a19k
-c2lfaXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkKPiArewo+ICsJc3RydWN0IG10a19kc2kgKmRz
-aSA9IGRldl9pZDsKPiArCXUzMiBzdGF0dXMsIHRtcDsKPiArCXUzMiBmbGFnID0gTFBSWF9SRF9S
-RFlfSU5UX0ZMQUcgfCBDTURfRE9ORV9JTlRfRkxBRyB8IFZNX0RPTkVfSU5UX0ZMQUc7Cj4gKwo+
-ICsJc3RhdHVzID0gcmVhZGwoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSk7Cj4gKwo+ICsJaWYgKHN0
-YXR1cyAmIGZsYWcpIHsKPiArCQlkbyB7Cj4gKwkJCW10a19kc2lfbWFzayhkc2ksIERTSV9SQUNL
-LCBSQUNLLCBSQUNLKTsKPiArCQkJdG1wID0gcmVhZGwoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSk7
-Cj4gKwkJfSB3aGlsZSAodG1wICYgRFNJX0JVU1kpOwo+ICsKPiArCQltdGtfZHNpX21hc2soZHNp
-LCBEU0lfSU5UU1RBLCBzdGF0dXMgJiBmbGFnLCAwKTsKPiArCQltdGtfZHNpX2lycV93YWtldXAo
-ZHNpLCBzdGF0dXMgJiBmbGFnKTsKPiArCQl3YWtlX3VwX2ludGVycnVwdGlibGUoJl9kc2lfaXJx
-X3dhaXRfcXVldWUpOwo+ICsJfQo+ICsKPiArCXJldHVybiBJUlFfSEFORExFRDsKPiArfQo+ICsK
-PiAgc3RhdGljIHZvaWQgbXRrX2RzaV9wb3dlcm9mZihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICB7
-Cj4gIAlpZiAoV0FSTl9PTihkc2ktPnJlZmNvdW50ID09IDApKQo+IEBAIC00ODUsNiArNTQwLDcg
-QEAgc3RhdGljIHZvaWQgbXRrX291dHB1dF9kc2lfZW5hYmxlKHN0cnVjdCBtdGtfZHNpICpkc2kp
-Cj4gIAo+ICAJbXRrX2RzaV9wc19jb250cm9sX3ZhY3QoZHNpKTsKPiAgCW10a19kc2lfY29uZmln
-X3Zkb190aW1pbmcoZHNpKTsKPiArCW10a19kc2lfc2V0X2ludGVycnVwdF9lbmFibGUoZHNpKTsK
-PiAgCj4gIAltdGtfZHNpX3NldF9tb2RlKGRzaSk7Cj4gIAltdGtfZHNpX2Nsa19oc19tb2RlKGRz
-aSwgMSk7Cj4gQEAgLTgwNCw2ICs4NjAsNyBAQCBzdGF0aWMgaW50IG10a19kc2lfcHJvYmUoc3Ry
-dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2
-LT5kZXY7Cj4gIAlzdHJ1Y3QgZGV2aWNlX25vZGUgKnJlbW90ZV9ub2RlLCAqZW5kcG9pbnQ7Cj4g
-IAlzdHJ1Y3QgcmVzb3VyY2UgKnJlZ3M7Cj4gKwlpbnQgaXJxX251bTsKPiAgCWludCBjb21wX2lk
-Owo+ICAJaW50IHJldDsKPiAgCj4gQEAgLTg4MCw4ICs5MzcsMjcgQEAgc3RhdGljIGludCBtdGtf
-ZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsK
-PiAgCX0KPiAgCj4gKwlpcnFfbnVtID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPiArCWlm
-IChpcnFfbnVtIDwgMCkgewo+ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1
-ZXN0IGRzaSBpcnEgcmVzb3VyY2VcbiIpOwo+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJ
-fQo+ICsKPiArCWlycV9zZXRfc3RhdHVzX2ZsYWdzKGlycV9udW0sIElSUV9UWVBFX0xFVkVMX0xP
-Vyk7Cj4gKwlyZXQgPSBkZXZtX3JlcXVlc3RfaXJxKCZwZGV2LT5kZXYsIGlycV9udW0sIG10a19k
-c2lfaXJxLAo+ICsJCQkgICAgICAgSVJRRl9UUklHR0VSX0xPVywgZGV2X25hbWUoJnBkZXYtPmRl
-diksIGRzaSk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycigmcGRldi0+ZGV2LCAiZmFpbGVk
-IHRvIHJlcXVlc3QgbWVkaWF0ZWsgZHNpIGlycVxuIik7Cj4gKwkJcmV0dXJuIC1FUFJPQkVfREVG
-RVI7Cj4gKwl9Cj4gKwo+ICsJZHNpLT5pcnFfZGF0YSA9IDA7Cj4gKwlkZXZfaW5mbyhkZXYsICJk
-c2kgaXJxIG51bSBpcyAweCV4XG4iLCBpcnFfbnVtKTsKPiArCj4gIAlwbGF0Zm9ybV9zZXRfZHJ2
-ZGF0YShwZGV2LCBkc2kpOwo+ICAKPiArCWluaXRfd2FpdHF1ZXVlX2hlYWQoJl9kc2lfaXJxX3dh
-aXRfcXVldWUpOwo+ICsKPiAgCXJldHVybiBjb21wb25lbnRfYWRkKCZwZGV2LT5kZXYsICZtdGtf
-ZHNpX2NvbXBvbmVudF9vcHMpOwo+ICB9Cj4gIAoKUmVnYXJkcywKQ0sKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+
+Hi,
+
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
+
+These patches have a build dependency on top of v4.8-rc1.
+
+Changes since v11:
+ - rebase to v4.8-rc1
+ - mutex_init before mbox_controller_register
+ - fix one typo error
+
+Best regards,
+HS Liao
+
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  CMDQ: Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  CMDQ: save more energy in idle
+
+ .../devicetree/bindings/soc/mediatek/gce.txt       |  47 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+ drivers/soc/mediatek/Kconfig                       |  11 +
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mtk-cmdq.c                    | 986 +++++++++++++++++++++
+ include/soc/mediatek/cmdq.h                        | 179 ++++
+ 6 files changed, 1234 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/gce.txt
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
+ create mode 100644 include/soc/mediatek/cmdq.h
+
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
