@@ -1,7 +1,7 @@
 From: Yonglong Wu <yonglong.wu@mediatek.com>
-Subject: [PATCH] usb: hub: change CLEAR_FEATURE to SET_FEATURE
-Date: Tue, 9 Aug 2016 11:26:37 +0800
-Message-ID: <1470713197-7276-1-git-send-email-yonglong.wu@mediatek.com>
+Subject: [RESEND PATCH] usb: hub: change CLEAR_FEATURE to SET_FEATURE
+Date: Tue, 9 Aug 2016 11:31:27 +0800
+Message-ID: <1470713487-7596-1-git-send-email-yonglong.wu@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -15,7 +15,6 @@ From: Yonglong Wu <yonglong.wu@mediatek.com>
 According to USB30 specification, the Function Remote Wakeup field can be
 modified by the SetFeature() requests. SetFeature() is recommended to use.
 
-Change-Id: Ie744b95f12d7d21d9519e766667ed706c8cc33fa
 Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
 ---
  drivers/usb/core/hub.c |    2 +-
