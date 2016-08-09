@@ -1,127 +1,69 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5,2/5] dt-bindings: mt8173-mtu3: add devicetree bindings
-Date: Tue, 9 Aug 2016 16:23:15 +0800
-Message-ID: <1470730998-9563-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1470730998-9563-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [RESEND PATCH] usb: hub: change CLEAR_FEATURE to SET_FEATURE
+Date: Tue, 9 Aug 2016 10:25:55 +0200
+Message-ID: <20160809082555.GA17073@kroah.com>
+References: <1470713487-7596-1-git-send-email-yonglong.wu@mediatek.com>
+ <CAL411-pcupjH7xBH9rR8hs5_EGDidcO3JFkRtE4ENpgq7qvmcQ@mail.gmail.com>
+ <1470730076.4647.10.camel@mhfsdcap03>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470730998-9563-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1470730076.4647.10.camel@mhfsdcap03>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "yonglong.wu" <yonglong.wu@mediatek.com>
+Cc: Peter Chen <hzpeterchen@gmail.com>, djkurtz@chromium.org, srv_heupstream@mediatek.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, lkml <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, linux-mediatek@lists.infradead.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Alan Stern <stern@rowland.harvard.edu>
 List-Id: linux-mediatek@lists.infradead.org
 
-add a DT binding doc for MediaTek USB3 DRD driver
+On Tue, Aug 09, 2016 at 04:07:56PM +0800, yonglong.wu wrote:
+> Hi,
+> On Tue, 2016-08-09 at 14:29 +0800, Peter Chen wrote:
+> 
+>     On Tue, Aug 9, 2016 at 11:31 AM, Yonglong Wu <yonglong.wu@mediatek.com> wrote:
+>     > From: Yonglong Wu <yonglong.wu@mediatek.com>
+>     >
+>     > According to USB30 specification, the Function Remote Wakeup field can be
+>     > modified by the SetFeature() requests. SetFeature() is recommended to use.
+>     >
+>     > Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
+>     > ---
+>     >  drivers/usb/core/hub.c |    2 +-
+>     >  1 file changed, 1 insertion(+), 1 deletion(-)
+>     >
+>     > diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+>     > index bee1351..a6f5095 100644
+>     > --- a/drivers/usb/core/hub.c
+>     > +++ b/drivers/usb/core/hub.c
+>     > @@ -3111,7 +3111,7 @@ static int usb_disable_remote_wakeup(struct usb_device *udev)
+>     >                                 USB_CTRL_SET_TIMEOUT);
+>     >         else
+>     >                 return usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+>     > -                               USB_REQ_CLEAR_FEATURE, USB_RECIP_INTERFACE,
+>     > +                               USB_REQ_SET_FEATURE, USB_RECIP_INTERFACE,
+>     >                                 USB_INTRF_FUNC_SUSPEND, 0, NULL, 0,
+>     >                                 USB_CTRL_SET_TIMEOUT);
+>     >  }
+>     > --
+>     > 1.7.9.5
+>     >
+> 
+>     This requirement is so strange, would you please list the detail
+>     chapter at specification.
+> 
+> 
+> In USB20 specification, describes in chapter 9.4.5: The Remote Wakeup field can
+> be modified by the SetFeature() and ClearFeature() requests using the
+> DEVICE_REMOTE_WAKEUP feature selector.
+> 
+> In USB30 specification, also describes in chapter 9.4.5: The Function Remote
+> Wakeup field can be modified by the SetFeature() requests using the
+> FUNCTION_SUSPEND feature selector.
+> 
+> In USB30 specification only mentioned SetFeature().
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- .../devicetree/bindings/usb/mt8173-mtu3.txt        |   87 ++++++++++++++++++++
- 1 file changed, 87 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
+Can you put this information in the changelog text when you resend this
+again?
 
-diff --git a/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt b/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-new file mode 100644
-index 0000000..e049d19
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mt8173-mtu3.txt
-@@ -0,0 +1,87 @@
-+The device node for Mediatek USB3.0 DRD controller
-+
-+Required properties:
-+ - compatible : should be "mediatek,mt8173-mtu3"
-+ - reg : specifies physical base address and size of the registers
-+ - reg-names: should be "mac" for device IP and "ippc" for IP port control
-+ - interrupts : interrupt used by the device IP
-+ - power-domains : a phandle to USB power domain node to control USB's
-+	mtcmos
-+ - vusb33-supply : regulator of USB avdd3.3v
-+ - clocks : a list of phandle + clock-specifier pairs, one for each
-+	entry in clock-names
-+ - clock-names : must contain "sys_ck" for clock of controller;
-+	"wakeup_deb_p0" and "wakeup_deb_p1" are optional, they are
-+	depends on "mediatek,enable-wakeup"
-+ - phys : a list of phandle + phy specifier pairs
-+ - dr_mode : should be one of "host", "peripheral" or "otg",
-+	refer to usb/generic.txt
-+
-+Optional properties:
-+ - #address-cells, #size-cells : should be '2' if the device has sub-nodes
-+	with 'reg' property
-+ - ranges : allows valid 1:1 translation between child's address space and
-+	parent's address space
-+ - extcon : external connector for vbus and idpin changes detection, needed
-+	when supports dual-role mode.
-+ - vbus-supply : reference to the VBUS regulator, needed when supports
-+	dual-role mode.
-+ - pinctl-names : a pinctrl state named "default" must be defined,
-+	"id_float" and "id_ground" are optinal which depends on
-+	"mediatek,enable-manual-drd"
-+ - pinctrl-0 : pin control group
-+	See: Documentation/devicetree/bindings/pinctrl/pinctrl-binding.txt
-+
-+ - maximum-speed : valid arguments are "super-speed", "high-speed" and
-+	"full-speed"; refer to usb/generic.txt
-+ - enable-manual-drd : supports manual dual-role switch via debugfs; usually
-+	used when receptacle is TYPE-A and also wants to support dual-role
-+	mode.
-+ - mediatek,enable-wakeup : supports ip sleep wakeup used by host mode
-+ - mediatek,syscon-wakeup : phandle to syscon used to access USB wakeup
-+	control register, it depends on "mediatek,enable-wakeup".
-+
-+Sub-nodes:
-+The xhci should be added as subnode to mtu3 as shown in the following example
-+if host mode is enabled. The DT binding details of xhci can be found in:
-+Documentation/devicetree/bindings/usb/mt8173-xhci.txt
-+
-+Example:
-+ssusb: usb@11271000 {
-+	compatible = "mediatek,mt8173-mtu3";
-+	reg = <0 0x11271000 0 0x3000>,
-+	      <0 0x11280700 0 0x0100>;
-+	reg-names = "mac", "ippc";
-+	interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
-+	phys = <&phy_port0 PHY_TYPE_USB3>,
-+	       <&phy_port1 PHY_TYPE_USB2>;
-+	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-+	clocks = <&topckgen CLK_TOP_USB30_SEL>,
-+		 <&pericfg CLK_PERI_USB0>,
-+		 <&pericfg CLK_PERI_USB1>;
-+	clock-names = "sys_ck",
-+		      "wakeup_deb_p0",
-+		      "wakeup_deb_p1";
-+	vusb33-supply = <&mt6397_vusb_reg>;
-+	vbus-supply = <&usb_p0_vbus>;
-+	extcon = <&extcon_usb>;
-+	dr_mode = "otg";
-+	mediatek,enable-wakeup;
-+	mediatek,syscon-wakeup = <&pericfg>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+	ranges;
-+	status = "disabled";
-+
-+	usb_host: xhci@11270000 {
-+		compatible = "mediatek,mt8173-xhci";
-+		reg = <0 0x11270000 0 0x1000>;
-+		reg-names = "mac";
-+		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
-+		power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
-+		clocks = <&topckgen CLK_TOP_USB30_SEL>;
-+		clock-names = "sys_ck";
-+		vusb33-supply = <&mt6397_vusb_reg>;
-+		status = "disabled";
-+	};
-+};
--- 
-1.7.9.5
+thanks,
+
+greg k-h
