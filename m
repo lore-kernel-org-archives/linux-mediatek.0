@@ -1,31 +1,38 @@
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v3,4/5] usb: Add MediaTek USB3 DRD Driver
-Date: Mon, 8 Aug 2016 15:10:54 +0200
-Message-ID: <20160808131054.GA25277@kroah.com>
-References: <1465543962-11678-1-git-send-email-chunfeng.yun@mediatek.com>
- <1465543962-11678-5-git-send-email-chunfeng.yun@mediatek.com>
+From: Yonglong Wu <yonglong.wu@mediatek.com>
+Subject: [PATCH] usb: hub: change CLEAR_FEATURE to SET_FEATURE
+Date: Tue, 9 Aug 2016 11:26:37 +0800
+Message-ID: <1470713197-7276-1-git-send-email-yonglong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1465543962-11678-5-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Yonglong Wu <yonglong.wu@mediatek.com>, djkurtz@chromium.org, srv_heupstream@mediatek.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Alan Stern <stern@rowland.harvard.edu>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jun 10, 2016 at 03:32:41PM +0800, Chunfeng Yun wrote:
-> --- /dev/null
-> +++ b/drivers/usb/mtu3/Makefile
-> @@ -0,0 +1,20 @@
-> +
-> +#ifeq ($(CONFIG_USB_DEBUG),y)
-> +	ccflags-y	+= -DDEBUG
-> +#endif
+From: Yonglong Wu <yonglong.wu@mediatek.com>
 
-There is no CONFIG_USB_DEBUG in the tree anymore, are you sure you
-tested this?  :)
+According to USB30 specification, the Function Remote Wakeup field can be
+modified by the SetFeature() requests. SetFeature() is recommended to use.
 
-thanks,
+Change-Id: Ie744b95f12d7d21d9519e766667ed706c8cc33fa
+Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
+---
+ drivers/usb/core/hub.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-greg k-h
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index bee1351..a6f5095 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -3111,7 +3111,7 @@ static int usb_disable_remote_wakeup(struct usb_device *udev)
+ 				USB_CTRL_SET_TIMEOUT);
+ 	else
+ 		return usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+-				USB_REQ_CLEAR_FEATURE, USB_RECIP_INTERFACE,
++				USB_REQ_SET_FEATURE, USB_RECIP_INTERFACE,
+ 				USB_INTRF_FUNC_SUSPEND,	0, NULL, 0,
+ 				USB_CTRL_SET_TIMEOUT);
+ }
+-- 
+1.7.9.5
