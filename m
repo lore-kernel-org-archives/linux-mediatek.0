@@ -1,49 +1,31 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH 5/9] drm/mediatek: add ARM_SMCCC dependency
-Date: Wed, 10 Aug 2016 23:54:11 +0200
-Message-ID: <20160810215424.1926658-6-arnd@arndb.de>
-References: <20160810215424.1926658-1-arnd@arndb.de>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Wed, 10 Aug 2016 17:20:12 -0500
+Message-ID: <20160810222012.GA30019@rob-hp-laptop>
+References: <1470751137-12403-1-git-send-email-minghsiu.tsai@mediatek.com>
+ <1470751137-12403-3-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20160810215424.1926658-1-arnd@arndb.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1470751137-12403-3-git-send-email-minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-QVJNIFNNQ0NDIGlzIG9ubHkgc2V0IGZvciBBUk12NyBhbmQgQVJNdjggQ1BVcywgYnV0IHdlIGN1
-cnJlbnRseQphbGxvdyB0aGUgZHJpdmVyIHRvIGJlIGJ1aWxkIGZvciBvbGRlciBhcmNoaXRlY3R1
-cmUgbGV2ZWxzIGFzCndlbGwsIHdoaWNoIHJlc3VsdHMgaW4gYSBsaW5rIGZhaWx1cmU6Cgpkcml2
-ZXJzL2dwdS9idWlsdC1pbi5vOiBJbiBmdW5jdGlvbiBgbXRrX2hkbWlfaHdfbWFrZV9yZWdfd3Jp
-dGFibGUnOgo6KC50ZXh0KzB4MWU3MzdjKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgYXJtX3Nt
-Y2NjX3NtYycKClRoaXMgYWRkcyBhIEtjb25maWcgZGVwZW5kZW5jeS4gVGhlIHBhdGNoIGFwcGxp
-ZXMgb24gbXkgdHdvCnByZXZpb3VzIGZpeGVzIHRoYXQgYXJlIG5vdCB5ZXQgYXBwbGllZCwgc28g
-cGxlYXNlIGFwcGx5IGFsbAp0aHJlZSB0byBnZXQgcmFuZGNvbmZpZyBidWlsZHMgdG8gd29yayBj
-b3JyZWN0bHkuCgpTaWduZWQtb2ZmLWJ5OiBBcm5kIEJlcmdtYW5uIDxhcm5kQGFybmRiLmRlPgpG
-aXhlczogOGY4M2YyNjg5MWUxICgiZHJtL21lZGlhdGVrOiBBZGQgSERNSSBzdXBwb3J0IikKUmV2
-aWV3ZWQtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Ci0tLQpT
-ZW50IGZpcnN0IG9uIEp1bmUgMjcgd2hlbiBpdCBmaXJzdCBicm9rZSBpbiBsaW51eC1uZXh0LgpU
-d28gb3RoZXIgZGVwZW5kZW5jaWVzIHdlcmUgYWxyZWFkeSBtaXNzaW5nLCBzbyBJJ20gc2VuZGlu
-ZwphbGwgdGhyZWUgcGF0Y2hlcyBhZ2FpbiBub3cuCi0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL0tjb25maWcgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL0tjb25maWcKaW5kZXggOTZlYmY4YmI2MDI0Li4yOTRkZTQ1NDk5MjIgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCisrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9LY29uZmlnCkBAIC0zLDYgKzMsNyBAQCBjb25maWcgRFJNX01FRElBVEVL
-CiAJZGVwZW5kcyBvbiBEUk0KIAlkZXBlbmRzIG9uIEFSQ0hfTUVESUFURUsgfHwgKEFSTSAmJiBD
-T01QSUxFX1RFU1QpCiAJZGVwZW5kcyBvbiBDT01NT05fQ0xLCisJZGVwZW5kcyBvbiBIQVZFX0FS
-TV9TTUNDQwogCWRlcGVuZHMgb24gT0YKIAlzZWxlY3QgRFJNX0dFTV9DTUFfSEVMUEVSCiAJc2Vs
-ZWN0IERSTV9LTVNfSEVMUEVSCi0tIAoyLjkuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpLWRldmVsCg==
+On Tue, Aug 09, 2016 at 09:58:55PM +0800, Minghsiu Tsai wrote:
+> Add a DT binding documentation of MDP for the MT8173 SoC
+> from Mediatek
+> 
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/media/mediatek-mdp.txt     |  109 ++++++++++++++++++++
+>  1 file changed, 109 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
