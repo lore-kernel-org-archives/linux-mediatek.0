@@ -1,176 +1,120 @@
-From: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Subject: Re: [PATCH v8 1/5] video: rmk's HDMI notification prototype
-Date: Thu, 11 Aug 2016 15:16:53 +0100
-Message-ID: <20160811141653.GV1041@n2100.armlinux.org.uk>
-References: <1470907227-899-1-git-send-email-p.zabel@pengutronix.de>
- <1470907227-899-2-git-send-email-p.zabel@pengutronix.de>
- <57AC53AB.60008@cisco.com>
- <20160811103929.GU1041@n2100.armlinux.org.uk>
- <57AC5831.5050809@cisco.com>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [PATCH] net: ethernet: mediatek: enhance the locking using the
+ lightweight ones
+Date: Thu, 11 Aug 2016 16:28:40 +0200
+Message-ID: <d2456ca1-189e-3440-9f3b-6646fcbd82e5@phrozen.org>
+References: <1470909060-27976-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <57AC5831.5050809-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, PC Liao <pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1470909060-27976-1-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: keyhaede@gmail.com, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 11, 2016 at 12:49:21PM +0200, Hans Verkuil wrote:
-> On 08/11/16 12:39, Russell King - ARM Linux wrote:
-> > On Thu, Aug 11, 2016 at 12:30:03PM +0200, Hans Verkuil wrote:
-> >> Hi Russell,
-> >>
-> >> I like this approach and it is something I will need for other CEC drivers
-> >> (not yet merged) as well.
-> >>
-> >> Just a few comments:
-> >>
-> >> On 08/11/16 11:20, Philipp Zabel wrote:
-> >>> This is Russell's HDMI notification prototype [1], currently waiting
-> >>> for the HDMI CEC situation to resolve.
-> >>>
-> >>> The use case for the notifications on MediaTek MT8173 is to let the
-> >>> (dis)connection notifications control an ALSA jack object.
-> >>>
-> >>> No Signed-off-by since this is not my code, and still up for discussion.
-> >>>
-> >>> [1] https://patchwork.kernel.org/patch/8351501/
-> >>> ---
-> >>>  drivers/video/Kconfig         |  3 +++
-> >>>  drivers/video/Makefile        |  1 +
-> >>>  drivers/video/hdmi-notifier.c | 61 +++++++++++++++++++++++++++++++++++++++++++
-> >>>  include/linux/hdmi-notifier.h | 44 +++++++++++++++++++++++++++++++
-> >>>  4 files changed, 109 insertions(+)
-> >>>  create mode 100644 drivers/video/hdmi-notifier.c
-> >>>  create mode 100644 include/linux/hdmi-notifier.h
-> >>>
-> >>> diff --git a/drivers/video/Kconfig b/drivers/video/Kconfig
-> >>> index 3c20af9..1ee7b9f 100644
-> >>> --- a/drivers/video/Kconfig
-> >>> +++ b/drivers/video/Kconfig
-> >>> @@ -36,6 +36,9 @@ config VIDEOMODE_HELPERS
-> >>>  config HDMI
-> >>>  	bool
-> >>>  
-> >>> +config HDMI_NOTIFIERS
-> >>> +	bool
-> >>> +
-> >>>  if VT
-> >>>  	source "drivers/video/console/Kconfig"
-> >>>  endif
-> >>> diff --git a/drivers/video/Makefile b/drivers/video/Makefile
-> >>> index 9ad3c17..65f5649 100644
-> >>> --- a/drivers/video/Makefile
-> >>> +++ b/drivers/video/Makefile
-> >>> @@ -1,5 +1,6 @@
-> >>>  obj-$(CONFIG_VGASTATE)            += vgastate.o
-> >>>  obj-$(CONFIG_HDMI)                += hdmi.o
-> >>> +obj-$(CONFIG_HDMI_NOTIFIERS)      += hdmi-notifier.o
-> >>>  
-> >>>  obj-$(CONFIG_VT)		  += console/
-> >>>  obj-$(CONFIG_LOGO)		  += logo/
-> >>> diff --git a/drivers/video/hdmi-notifier.c b/drivers/video/hdmi-notifier.c
-> >>> new file mode 100644
-> >>> index 0000000..a233359
-> >>> --- /dev/null
-> >>> +++ b/drivers/video/hdmi-notifier.c
-> >>> @@ -0,0 +1,61 @@
-> >>> +#include <linux/export.h>
-> >>> +#include <linux/hdmi-notifier.h>
-> >>> +#include <linux/notifier.h>
-> >>> +#include <linux/string.h>
-> >>> +
-> >>> +static BLOCKING_NOTIFIER_HEAD(hdmi_notifier);
-> >>> +
-> >>> +int hdmi_register_notifier(struct notifier_block *nb)
-> >>> +{
-> >>> +	return blocking_notifier_chain_register(&hdmi_notifier, nb);
-> >>> +}
-> >>> +EXPORT_SYMBOL_GPL(hdmi_register_notifier);
-> >>> +
-> >>> +int hdmi_unregister_notifier(struct notifier_block *nb)
-> >>> +{
-> >>> +	return blocking_notifier_chain_unregister(&hdmi_notifier, nb);
-> >>> +}
-> >>> +EXPORT_SYMBOL_GPL(hdmi_unregister_notifier);
-> >>> +
-> >>> +void hdmi_event_connect(struct device *dev)
-> >>> +{
-> >>> +	struct hdmi_event_base base;
-> >>> +
-> >>> +	base.source = dev;
-> >>> +
-> >>> +	blocking_notifier_call_chain(&hdmi_notifier, HDMI_CONNECTED, &base);
-> >>> +}
-> >>> +EXPORT_SYMBOL_GPL(hdmi_event_connect);
-> >>> +
-> >>> +void hdmi_event_disconnect(struct device *dev)
-> >>> +{
-> >>> +	struct hdmi_event_base base;
-> >>> +
-> >>> +	base.source = dev;
-> >>> +
-> >>> +	blocking_notifier_call_chain(&hdmi_notifier, HDMI_DISCONNECTED, &base);
-> >>> +}
-> >>> +EXPORT_SYMBOL_GPL(hdmi_event_disconnect);
-> >>> +
-> >>> +void hdmi_event_new_edid(struct device *dev, const void *edid, size_t size)
-> >>
-> >> I would prefer const u8 *edid. It is after all just a u8 array and not some
-> >> opaque data structure.
-> > 
-> > In DRM, the edid is of type "struct edid" (defined in
-> > include/drm/drm_edid.h).  So, making it "const u8 *" means that all
-> > DRM drivers will have to explicitly cast it - not something I'm in
-> > favour of.
+
+
+On 11/08/2016 11:51, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> I thought this was the raw EDID data. But if you pass a struct edid around,
-> then why not make this const struct edid *edid? I fail to see why you would
-> want to use a void pointer here.
-
-struct edid is a DRM thing - it's not generic.  Using struct edid here
-would force everyone to use the DRM structure, whereas other subsystems
-use, eg, unsigned char.
-
-> Also struct edid is for the first EDID block only, whereas CEC drivers need
-> the CEA-861 block to get the physical address.
-
-That may be, but DRM parses the HDMI vendor block too while still using
-struct edid to represent it.  See drm_find_edid_extension() in
-drivers/gpu/drm/drm_edid.c
-
-This is just how DRM is... I'm not sure what the design decisions were
-that came up with this, but it's what we have, and I'm not sure whether
-DRM would be open to changing it.
-
-> > The ELD stands for EDID-like data.  See information on HDA039.  It's a
-> > method of conveying the EDID data specific to audio drivers to them
-> > without having the complexities of parsing the full EDID each time.
-> > It's also exported to userland so that userland can determine the
-> > capabilities of the audio path, again, without having to have full
-> > EDID parsers and exporting the full EDID data block through audio
-> > drivers.
-> > 
+> Since these critical sections protected by page_lock are all entered
+> from the user context or bottom half context, they can be replaced
+> with the spin_lock() or spin_lock_bh instead of spin_lock_irqsave().
 > 
-> OK. Since eld is an unsigned char array I would suggest changing void to
-> unsigned char here.
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+I gave this a quick spin on my board and it worked fine
+
+Acked-by: John Crispin <john@phrozen.org>
+
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c |   19 ++++++++-----------
+>  1 file changed, 8 insertions(+), 11 deletions(-)
 > 
-> Or perhaps const unsigned char eld[128].
-
-Yes, I'll make that change.
-
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index b57ae3a..3a4726e 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -353,18 +353,17 @@ static int mtk_set_mac_address(struct net_device *dev, void *p)
+>  	int ret = eth_mac_addr(dev, p);
+>  	struct mtk_mac *mac = netdev_priv(dev);
+>  	const char *macaddr = dev->dev_addr;
+> -	unsigned long flags;
+>  
+>  	if (ret)
+>  		return ret;
+>  
+> -	spin_lock_irqsave(&mac->hw->page_lock, flags);
+> +	spin_lock_bh(&mac->hw->page_lock);
+>  	mtk_w32(mac->hw, (macaddr[0] << 8) | macaddr[1],
+>  		MTK_GDMA_MAC_ADRH(mac->id));
+>  	mtk_w32(mac->hw, (macaddr[2] << 24) | (macaddr[3] << 16) |
+>  		(macaddr[4] << 8) | macaddr[5],
+>  		MTK_GDMA_MAC_ADRL(mac->id));
+> -	spin_unlock_irqrestore(&mac->hw->page_lock, flags);
+> +	spin_unlock_bh(&mac->hw->page_lock);
+>  
+>  	return 0;
+>  }
+> @@ -748,7 +747,6 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+>  	struct mtk_eth *eth = mac->hw;
+>  	struct mtk_tx_ring *ring = &eth->tx_ring;
+>  	struct net_device_stats *stats = &dev->stats;
+> -	unsigned long flags;
+>  	bool gso = false;
+>  	int tx_num;
+>  
+> @@ -756,14 +754,14 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+>  	 * however we have 2 queues running on the same ring so we need to lock
+>  	 * the ring access
+>  	 */
+> -	spin_lock_irqsave(&eth->page_lock, flags);
+> +	spin_lock(&eth->page_lock);
+>  
+>  	tx_num = mtk_cal_txd_req(skb);
+>  	if (unlikely(atomic_read(&ring->free_count) <= tx_num)) {
+>  		mtk_stop_queue(eth);
+>  		netif_err(eth, tx_queued, dev,
+>  			  "Tx Ring full when queue awake!\n");
+> -		spin_unlock_irqrestore(&eth->page_lock, flags);
+> +		spin_unlock(&eth->page_lock);
+>  		return NETDEV_TX_BUSY;
+>  	}
+>  
+> @@ -788,12 +786,12 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+>  	if (unlikely(atomic_read(&ring->free_count) <= ring->thresh))
+>  		mtk_stop_queue(eth);
+>  
+> -	spin_unlock_irqrestore(&eth->page_lock, flags);
+> +	spin_unlock(&eth->page_lock);
+>  
+>  	return NETDEV_TX_OK;
+>  
+>  drop:
+> -	spin_unlock_irqrestore(&eth->page_lock, flags);
+> +	spin_unlock(&eth->page_lock);
+>  	stats->tx_dropped++;
+>  	dev_kfree_skb(skb);
+>  	return NETDEV_TX_OK;
+> @@ -1347,16 +1345,15 @@ static int mtk_open(struct net_device *dev)
+>  
+>  static void mtk_stop_dma(struct mtk_eth *eth, u32 glo_cfg)
+>  {
+> -	unsigned long flags;
+>  	u32 val;
+>  	int i;
+>  
+>  	/* stop the dma engine */
+> -	spin_lock_irqsave(&eth->page_lock, flags);
+> +	spin_lock_bh(&eth->page_lock);
+>  	val = mtk_r32(eth, glo_cfg);
+>  	mtk_w32(eth, val & ~(MTK_TX_WB_DDONE | MTK_RX_DMA_EN | MTK_TX_DMA_EN),
+>  		glo_cfg);
+> -	spin_unlock_irqrestore(&eth->page_lock, flags);
+> +	spin_unlock_bh(&eth->page_lock);
+>  
+>  	/* wait for dma stop */
+>  	for (i = 0; i < 10; i++) {
+> 
