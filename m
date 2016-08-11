@@ -1,94 +1,109 @@
-From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: [PATCH v8 5/5] drm/mediatek: hdmi: issue notifications
-Date: Thu, 11 Aug 2016 11:20:27 +0200
-Message-ID: <1470907227-899-6-git-send-email-p.zabel@pengutronix.de>
-References: <1470907227-899-1-git-send-email-p.zabel@pengutronix.de>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH] net: ethernet: mediatek: enhance the locking using the lightweight ones
+Date: Thu, 11 Aug 2016 17:51:00 +0800
+Message-ID: <1470909060-27976-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470907227-899-1-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, PC Liao <pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org
+Cc: davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Issue hot-plug detection, EDID update, and ELD update notifications
-from the CEC and HDMI drivers.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Since these critical sections protected by page_lock are all entered
+from the user context or bottom half context, they can be replaced
+with the spin_lock() or spin_lock_bh instead of spin_lock_irqsave().
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_cec.c  | 11 +++++++++++
- drivers/gpu/drm/mediatek/mtk_hdmi.c |  3 +++
- 2 files changed, 14 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |   19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-index 7a3eb8c..f78a73c 100644
---- a/drivers/gpu/drm/mediatek/mtk_cec.c
-+++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-@@ -13,6 +13,7 @@
-  */
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/hdmi-notifier.h>
- #include <linux/io.h>
- #include <linux/interrupt.h>
- #include <linux/platform_device.h>
-@@ -105,6 +106,12 @@ void mtk_cec_set_hpd_event(struct device *dev,
- 	cec->hdmi_dev = hdmi_dev;
- 	cec->hpd_event = hpd_event;
- 	spin_unlock_irqrestore(&cec->lock, flags);
-+
-+	/* Initial notification event to set jack state */
-+	if (mtk_cec_hpd_high(dev))
-+		hdmi_event_connect(hdmi_dev);
-+	else
-+		hdmi_event_disconnect(hdmi_dev);
- }
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index b57ae3a..3a4726e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -353,18 +353,17 @@ static int mtk_set_mac_address(struct net_device *dev, void *p)
+ 	int ret = eth_mac_addr(dev, p);
+ 	struct mtk_mac *mac = netdev_priv(dev);
+ 	const char *macaddr = dev->dev_addr;
+-	unsigned long flags;
  
- bool mtk_cec_hpd_high(struct device *dev)
-@@ -179,6 +186,10 @@ static irqreturn_t mtk_cec_htplg_isr_thread(int irq, void *arg)
- 	if (cec->hpd != hpd) {
- 		dev_dbg(dev, "hotplug event! cur hpd = %d, hpd = %d\n",
- 			cec->hpd, hpd);
-+		if (hpd)
-+			hdmi_event_connect(cec->hdmi_dev);
-+		else
-+			hdmi_event_disconnect(cec->hdmi_dev);
- 		cec->hpd = hpd;
- 		mtk_cec_hpd_event(cec, hpd);
+ 	if (ret)
+ 		return ret;
+ 
+-	spin_lock_irqsave(&mac->hw->page_lock, flags);
++	spin_lock_bh(&mac->hw->page_lock);
+ 	mtk_w32(mac->hw, (macaddr[0] << 8) | macaddr[1],
+ 		MTK_GDMA_MAC_ADRH(mac->id));
+ 	mtk_w32(mac->hw, (macaddr[2] << 24) | (macaddr[3] << 16) |
+ 		(macaddr[4] << 8) | macaddr[5],
+ 		MTK_GDMA_MAC_ADRL(mac->id));
+-	spin_unlock_irqrestore(&mac->hw->page_lock, flags);
++	spin_unlock_bh(&mac->hw->page_lock);
+ 
+ 	return 0;
+ }
+@@ -748,7 +747,6 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	struct mtk_eth *eth = mac->hw;
+ 	struct mtk_tx_ring *ring = &eth->tx_ring;
+ 	struct net_device_stats *stats = &dev->stats;
+-	unsigned long flags;
+ 	bool gso = false;
+ 	int tx_num;
+ 
+@@ -756,14 +754,14 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	 * however we have 2 queues running on the same ring so we need to lock
+ 	 * the ring access
+ 	 */
+-	spin_lock_irqsave(&eth->page_lock, flags);
++	spin_lock(&eth->page_lock);
+ 
+ 	tx_num = mtk_cal_txd_req(skb);
+ 	if (unlikely(atomic_read(&ring->free_count) <= tx_num)) {
+ 		mtk_stop_queue(eth);
+ 		netif_err(eth, tx_queued, dev,
+ 			  "Tx Ring full when queue awake!\n");
+-		spin_unlock_irqrestore(&eth->page_lock, flags);
++		spin_unlock(&eth->page_lock);
+ 		return NETDEV_TX_BUSY;
  	}
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 334562d..478aa73 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -20,6 +20,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/hdmi.h>
-+#include <linux/hdmi-notifier.h>
- #include <linux/i2c.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-@@ -1225,9 +1226,11 @@ static int mtk_hdmi_conn_get_modes(struct drm_connector *conn)
- 	hdmi->dvi_mode = !drm_detect_monitor_audio(edid);
  
- 	drm_mode_connector_update_edid_property(conn, edid);
-+	hdmi_event_new_edid(hdmi->dev, edid, sizeof(*edid));
+@@ -788,12 +786,12 @@ static int mtk_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	if (unlikely(atomic_read(&ring->free_count) <= ring->thresh))
+ 		mtk_stop_queue(eth);
  
- 	ret = drm_add_edid_modes(conn, edid);
- 	drm_edid_to_eld(conn, edid);
-+	hdmi_event_new_eld(hdmi->dev, conn->eld);
- 	kfree(edid);
- 	return ret;
- }
+-	spin_unlock_irqrestore(&eth->page_lock, flags);
++	spin_unlock(&eth->page_lock);
+ 
+ 	return NETDEV_TX_OK;
+ 
+ drop:
+-	spin_unlock_irqrestore(&eth->page_lock, flags);
++	spin_unlock(&eth->page_lock);
+ 	stats->tx_dropped++;
+ 	dev_kfree_skb(skb);
+ 	return NETDEV_TX_OK;
+@@ -1347,16 +1345,15 @@ static int mtk_open(struct net_device *dev)
+ 
+ static void mtk_stop_dma(struct mtk_eth *eth, u32 glo_cfg)
+ {
+-	unsigned long flags;
+ 	u32 val;
+ 	int i;
+ 
+ 	/* stop the dma engine */
+-	spin_lock_irqsave(&eth->page_lock, flags);
++	spin_lock_bh(&eth->page_lock);
+ 	val = mtk_r32(eth, glo_cfg);
+ 	mtk_w32(eth, val & ~(MTK_TX_WB_DDONE | MTK_RX_DMA_EN | MTK_TX_DMA_EN),
+ 		glo_cfg);
+-	spin_unlock_irqrestore(&eth->page_lock, flags);
++	spin_unlock_bh(&eth->page_lock);
+ 
+ 	/* wait for dma stop */
+ 	for (i = 0; i < 10; i++) {
 -- 
-2.8.1
+1.7.9.5
