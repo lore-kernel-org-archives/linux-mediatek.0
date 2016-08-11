@@ -1,84 +1,46 @@
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-Subject: Re: [PATCH v4 3/4] drm/mediatek: Add gamma correction.
-Date: Thu, 11 Aug 2016 11:02:27 +0300
-Message-ID: <20160811080227.GH4329@intel.com>
-References: <1469672575-5847-1-git-send-email-bibby.hsieh@mediatek.com>
- <1469672575-5847-4-git-send-email-bibby.hsieh@mediatek.com>
- <1470900779.2493.20.camel@pengutronix.de>
- <20160811074410.GF4329@intel.com>
- <1470901876.2493.24.camel@pengutronix.de>
+From: <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] dt-binding: correct the larb port offset defines for mt2701
+Date: Thu, 11 Aug 2016 16:07:08 +0800
+Message-ID: <1470902828-32496-1-git-send-email-honghui.zhang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <1470901876.2493.24.camel@pengutronix.de>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
+Cc: catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gVGh1LCBBdWcgMTEsIDIwMTYgYXQgMDk6NTE6MTZBTSArMDIwMCwgUGhpbGlwcCBaYWJlbCB3
-cm90ZToKPiBBbSBEb25uZXJzdGFnLCBkZW4gMTEuMDguMjAxNiwgMTA6NDQgKzAzMDAgc2Nocmll
-YiBWaWxsZSBTeXJqw6Rsw6Q6Cj4gPiBPbiBUaHUsIEF1ZyAxMSwgMjAxNiBhdCAwOTozMjo1OUFN
-ICswMjAwLCBQaGlsaXBwIFphYmVsIHdyb3RlOgo+ID4gPiBBbSBEb25uZXJzdGFnLCBkZW4gMjgu
-MDcuMjAxNiwgMTA6MjIgKzA4MDAgc2NocmllYiBCaWJieSBIc2llaDoKPiA+ID4gPiBBZGQgZ2Ft
-bWEgc2V0IGZ1bmN0aW9uIHRvIGNvcnJlY3QgYnJpZ2h0bmVzcyB2YWx1ZXMuCj4gPiA+ID4gSXQg
-YXBwbGllcyBhcmJpdHJhcnkgbWFwcGluZyBjdXJ2ZSB0byBjb21wZW5zYXRlIHRoZQo+ID4gPiA+
-IGluY29ycmVjdCB0cmFuc2ZlciBmdW5jdGlvbiBvZiB0aGUgcGFuZWwuCj4gPiA+ID4gCj4gPiA+
-ID4gU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4K
-PiA+ID4gPiAtLS0KPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0
-Yy5jICAgICB8ICAgIDggKysrKysrLQo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9jcnRjLmggICAgIHwgICAgMSArCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRp
-YXRlay9tdGtfZHJtX2RkcF9jb21wLmMgfCAgIDMxICsrKysrKysrKysrKysrKysrKysrKysrKysr
-Kwo+ID4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwg
-ICAxMCArKysrKysrKysKPiA+ID4gPiAgNCBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25zKCsp
-LCAxIGRlbGV0aW9uKC0pCj4gPiA+ID4gCj4gPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2NydGMuYwo+ID4gPiA+IGluZGV4IDI0YWEzYmEuLmNiYjQ2MGE1IDEwMDY0NAo+ID4g
-PiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ID4gPiA+
-ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ID4gPiA+IEBA
-IC00MDksNiArNDA5LDkgQEAgc3RhdGljIHZvaWQgbXRrX2RybV9jcnRjX2F0b21pY19mbHVzaChz
-dHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gPiA+ID4gIAl9Cj4gPiA+ID4gIAlpZiAocGVuZGluZ19w
-bGFuZXMpCj4gPiA+ID4gIAkJbXRrX2NydGMtPnBlbmRpbmdfcGxhbmVzID0gdHJ1ZTsKPiA+ID4g
-PiArCWlmIChjcnRjLT5zdGF0ZS0+Y29sb3JfbWdtdF9jaGFuZ2VkKQo+ID4gPiA+ICsJCWZvciAo
-aSA9IDA7IGkgPCBtdGtfY3J0Yy0+ZGRwX2NvbXBfbnI7IGkrKykKPiA+ID4gPiArCQkJbXRrX2Rk
-cF9nYW1tYV9zZXQobXRrX2NydGMtPmRkcF9jb21wW2ldLCBjcnRjLT5zdGF0ZSk7Cj4gPiA+ID4g
-IH0KPiA+ID4gPiAgCj4gPiA+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2NydGNfZnVuY3Mg
-bXRrX2NydGNfZnVuY3MgPSB7Cj4gPiA+ID4gQEAgLTQxOCw2ICs0MjEsNyBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIG10a19jcnRjX2Z1bmNzID0gewo+ID4gPiA+ICAJLnJl
-c2V0CQkJPSBtdGtfZHJtX2NydGNfcmVzZXQsCj4gPiA+ID4gIAkuYXRvbWljX2R1cGxpY2F0ZV9z
-dGF0ZQk9IG10a19kcm1fY3J0Y19kdXBsaWNhdGVfc3RhdGUsCj4gPiA+ID4gIAkuYXRvbWljX2Rl
-c3Ryb3lfc3RhdGUJPSBtdGtfZHJtX2NydGNfZGVzdHJveV9zdGF0ZSwKPiA+ID4gPiArCS5nYW1t
-YV9zZXQJCT0gZHJtX2F0b21pY19oZWxwZXJfbGVnYWN5X2dhbW1hX3NldCwKPiA+ID4gPiAgfTsK
-PiA+ID4gPiAgCj4gPiA+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2NydGNfaGVscGVyX2Z1
-bmNzIG10a19jcnRjX2hlbHBlcl9mdW5jcyA9IHsKPiA+ID4gPiBAQCAtNTY4LDcgKzU3Miw5IEBA
-IGludCBtdGtfZHJtX2NydGNfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm1fZGV2LAo+ID4g
-PiA+ICAJCQkJJm10a19jcnRjLT5wbGFuZXNbMV0uYmFzZSwgcGlwZSk7Cj4gPiA+ID4gIAlpZiAo
-cmV0IDwgMCkKPiA+ID4gPiAgCQlnb3RvIHVucHJlcGFyZTsKPiA+ID4gPiAtCj4gPiA+ID4gKwlk
-cm1fbW9kZV9jcnRjX3NldF9nYW1tYV9zaXplKCZtdGtfY3J0Yy0+YmFzZSwgTVRLX0xVVF9TSVpF
-KTsKPiA+ID4gPiArCWRybV9oZWxwZXJfY3J0Y19lbmFibGVfY29sb3JfbWdtdCgmbXRrX2NydGMt
-PmJhc2UsIE1US19MVVRfU0laRSwKPiA+ID4gPiArCQkJCQkgIE1US19MVVRfU0laRSk7Cj4gPiA+
-IAo+ID4gPiBJIGhhdmUgYXBwbGllZCBhbGwgZm91ciBwYXRjaGVzIGFuZCByZWJhc2VkIG9udG8g
-djQuOC1yYzEsIHJlcGxhY2luZwo+ID4gPiBkcm1faGVscGVyX2NydGNfZW5hYmxlX2NvbG9yX21n
-bXQgd2l0aDoKPiA+ID4gCj4gPiA+IAlkcm1fY3J0Y19lbmFibGVfY29sb3JfbWdtdCgmbXRrX2Ny
-dGMtPmJhc2UsIE1US19MVVRfU0laRSwKPiA+ID4gCQkJCSAgIHRydWUsIE1US19MVVRfU0laRSk7
-Cj4gPiAKPiA+IEJUVyB0aGF0IGxvb2tzIHdyb25nIChhbHJlYWR5IGluIHRoZSBvcmlnaW5hbCku
-IEFGQUlDUyB0aGUgcGF0Y2gganVzdAo+ID4gaGFuZGxlZCB0aGUgZ2FtbWFfbHV0LCBub3QgdGhl
-IGRlZ2FtbWFfbHV0LCBzbyB0ZWxsaW5nIHlvdSBoYXZlIGJvdGgKPiA+IGlzIG5vdCByaWdodC4K
-PiAKPiBUaGFua3MsIHNvIHNob3VsZCB0aGF0IGJlCj4gICAgICAgIGRybV9jcnRjX2VuYWJsZV9j
-b2xvcl9tZ210KCZtdGtfY3J0Yy0+YmFzZSwgMCwgZmFsc2UsCj4gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIE1US19MVVRfU0laRSk7Cj4gaW5zdGVhZCwgc2luY2Ugd2Ugb25seSBo
-YW5kbGUgZ2FtbWE/CgpIbW0uIFllYWgsIHRoYXQgbG9va3MgY29ycmVjdCBzaW5jZSB5b3UgZGlk
-bid0IHNlZW0gdG8gaGF2ZSAiY3RtIiBlaXRoZXIuCgotLSAKVmlsbGUgU3lyasOkbMOkCkludGVs
-IE9UQwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmkt
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6
-Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+larb2 have 23 ports, the LARB3_PORT_OFFSET should be LARB2_PORT_OFFSET
+plus larb2's port number, it should be 44 instead of 43.
+
+Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ include/dt-bindings/memory/mt2701-larb-port.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/dt-bindings/memory/mt2701-larb-port.h b/include/dt-bindings/memory/mt2701-larb-port.h
+index 78f6678..6764d74 100644
+--- a/include/dt-bindings/memory/mt2701-larb-port.h
++++ b/include/dt-bindings/memory/mt2701-larb-port.h
+@@ -26,7 +26,7 @@
+ #define LARB0_PORT_OFFSET		0
+ #define LARB1_PORT_OFFSET		11
+ #define LARB2_PORT_OFFSET		21
+-#define LARB3_PORT_OFFSET		43
++#define LARB3_PORT_OFFSET		44
+ 
+ #define MT2701_M4U_ID_LARB0(port)	((port) + LARB0_PORT_OFFSET)
+ #define MT2701_M4U_ID_LARB1(port)	((port) + LARB1_PORT_OFFSET)
+-- 
+1.8.1.1.dirty
