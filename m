@@ -1,89 +1,99 @@
-From: Russell King - ARM Linux <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
-Subject: Re: [PATCH v8 1/5] video: rmk's HDMI notification prototype
-Date: Thu, 11 Aug 2016 16:03:54 +0100
-Message-ID: <20160811150353.GW1041@n2100.armlinux.org.uk>
-References: <1470907227-899-1-git-send-email-p.zabel@pengutronix.de>
- <1470907227-899-2-git-send-email-p.zabel@pengutronix.de>
- <57AC53AB.60008@cisco.com>
- <20160811103929.GU1041@n2100.armlinux.org.uk>
- <57AC5831.5050809@cisco.com>
- <20160811141653.GV1041@n2100.armlinux.org.uk>
- <57AC9078.2060009@cisco.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v4 9/9] arm64: dts: mediatek: Add Video Decoder for MT8173
+Date: Thu, 11 Aug 2016 17:44:27 +0200
+Message-ID: <de51caf8-6db5-4754-0683-d3390dd2ac09@gmail.com>
+References: <1470840534-4788-1-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-2-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-3-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-4-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-5-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-6-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-7-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-8-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-9-git-send-email-tiffany.lin@mediatek.com>
+ <1470840534-4788-10-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <57AC9078.2060009-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>
-Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, PC Liao <pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1470840534-4788-10-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 11, 2016 at 04:49:28PM +0200, Hans Verkuil wrote:
-> On 08/11/16 16:16, Russell King - ARM Linux wrote:
-> > On Thu, Aug 11, 2016 at 12:49:21PM +0200, Hans Verkuil wrote:
-> >> I thought this was the raw EDID data. But if you pass a struct edid around,
-> >> then why not make this const struct edid *edid? I fail to see why you would
-> >> want to use a void pointer here.
-> > 
-> > struct edid is a DRM thing - it's not generic.  Using struct edid here
-> > would force everyone to use the DRM structure, whereas other subsystems
-> > use, eg, unsigned char.
-> 
-> So how the edid pointer should be interpreted depends on which subsystem
-> sends it? That doesn't sound right. It makes it really hard for the drivers
-> receiving the notifications.
 
-No, that's wrong... and I really don't see why you're trying to make a
-meal of this.
 
-In both cases, it's the EDID as received from the device.  One subsystem
-happens to represent it internally as a "struct edid" in its drivers,
-another subsystem uses "unsigned char []".
+On 10/08/16 16:48, Tiffany Lin wrote:
+> Add video decoder node for MT8173
+>
+> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
+>  1 file changed, 44 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 10f638f..2872cd7 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -974,6 +974,50 @@
+>  			#clock-cells = <1>;
+>  		};
+>
+> +		vcodec_dec: vcodec@16000000 {
+> +			compatible = "mediatek,mt8173-vcodec-dec";
+> +			reg = <0 0x16000000 0 0x100>,	/* VDEC_SYS */
+> +			      <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
+> +			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
+> +			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
+> +			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
+> +			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
+> +			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
+> +			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
+> +			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
+> +			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
+> +			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
+> +			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
+> +			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
+> +			mediatek,larb = <&larb1>;
+> +			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
+> +				 <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
+> +			mediatek,vpu = <&vpu>;
+> +			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
+> +			clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
+> +				 <&topckgen CLK_TOP_UNIVPLL_D2>,
+> +				 <&topckgen CLK_TOP_CCI400_SEL>,
+> +				 <&topckgen CLK_TOP_VDEC_SEL>,
+> +				 <&topckgen CLK_TOP_VCODECPLL>,
+> +				 <&apmixedsys CLK_APMIXED_VENCPLL>,
+> +				 <&topckgen CLK_TOP_VENC_LT_SEL>,
+> +				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
+> +			clock-names = "vcodecpll",
+> +				      "univpll_d2",
+> +				      "clk_cci400_sel",
+> +				      "vdec_sel",
+> +				      "vdecpll",
+> +				      "vencpll",
+> +				      "venc_lt_sel",
+> +				      "vdec_bus_clk_src";
+> +		};
+> +
 
-In order to _cleanly_ accept both styles, without having to resort to
-driver authors needing to litter their code with lots of idiotic casts,
-I'm accepting a void * pointer, so that we can accept _both_ a struct
-edid and an unsigned char array.
+Shouldn't we set here:
+status = "disabled";
 
-Both are compatible with each other.  Both have the same bytes at the
-same offset.  There is no difference between them other than the C
-types that are used by each subsystem.
+To save power on headless systems?
 
-> But I understand that currently the main purpose of the hdmi_event_new_edid
-> is to get the physical address from the EDID for CEC? Or do you have other
-> uses as well?
+Regards,
+Matthias
 
-That is one use, but if an audio driver wants to parse the raw EDID
-instead of the ELD, it can.
-
-What I want to avoid is having the video driver parse lots of different
-bits from the EDID and then send lots of events "just in case" something
-wants some of the parsed information - it's much more efficient to give
-drivers the raw information and allow them to parse what they need from
-the EDID.  I'm not convinced that parsing out the physical address, and
-then passing that from the video side is a good idea.
-
-The reason I made an exception for the ELD is because (a) it's already
-passed between video and audio drivers, (b) the code we have present to
-convert an EDID to ELD is in DRM, and requires DRM data structures
-which won't be available in an audio driver.
-
-If you want a mechanism to pass just the physical address, we could add
-it, and require CEC drivers to make use of both the EDID or physical
-address events.  That would mean situations where the physical address
-is known to be fixed before hand can be easily catered for.
-
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+>  		larb1: larb@16010000 {
+>  			compatible = "mediatek,mt8173-smi-larb";
+>  			reg = <0 0x16010000 0 0x1000>;
+>
