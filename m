@@ -1,132 +1,71 @@
 From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH v4.5 3/4] drm/mediatek: Add gamma correction.
-Date: Thu, 11 Aug 2016 11:11:25 +0200
-Message-ID: <1470906685.2493.34.camel@pengutronix.de>
-References: <1469672575-5847-1-git-send-email-bibby.hsieh@mediatek.com>
- <1469672575-5847-4-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH v8 0/5] ASoC: MT8173 HDMI jack detection
+Date: Thu, 11 Aug 2016 11:20:22 +0200
+Message-ID: <1470907227-899-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1469672575-5847-4-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: alsa-devel@alsa-project.org
+Cc: Jean-Francois Moine <moinejf@free.fr>, Koro Chen <koro.chen@mediatek.com>, Lars-Peter Clausen <lars@metafoo.de>, Russell King - ARM Linux <linux@arm.linux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, Jyri Sarha <jsarha@ti.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Mark Brown <broonie@kernel.org>, Hans Verkuil <hans.verkuil@cisco.com>, Daniel Kurtz <djkurtz@chromium.org>, kernel@pengutronix.de, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbSAyZjNmNGRkYTc0N2MwNjE5NTk0ZDEzOTk2ZTY1NTk4YWI2NzVjNjBjIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29t
-PgpEYXRlOiBUaHUsIDI4IEp1bCAyMDE2IDEwOjIyOjU0ICswODAwClN1YmplY3Q6IFtQQVRDSF0g
-ZHJtL21lZGlhdGVrOiBBZGQgZ2FtbWEgY29ycmVjdGlvbi4KCkFkZCBnYW1tYSBzZXQgZnVuY3Rp
-b24gdG8gY29ycmVjdCBicmlnaHRuZXNzIHZhbHVlcy4KSXQgYXBwbGllcyBhcmJpdHJhcnkgbWFw
-cGluZyBjdXJ2ZSB0byBjb21wZW5zYXRlIHRoZQppbmNvcnJlY3QgdHJhbnNmZXIgZnVuY3Rpb24g
-b2YgdGhlIHBhbmVsLgoKU2lnbmVkLW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1l
-ZGlhdGVrLmNvbT4KU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRy
-b25peC5kZT4KLS0tCkkgaGF2ZSBhcHBsaWVkIHRoaXMgcGF0Y2ggd2l0aCBvbmUgY2hhbmdlIGZy
-b20gdjQ6CiAtIFVzZSBkcm1fY3J0Y19lbmFibGVfY29sb3JfbWdtdCBpbnN0ZWFkIG9mIGRybV9j
-cnRjX2hlbHBlcl9lbmFibGVfY29sb3JfbWdtdAotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2NydGMuYyAgICAgfCAgNyArKysrKystCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RybV9jcnRjLmggICAgIHwgIDEgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fZGRwX2NvbXAuYyB8IDMxICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCiBkcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgMTAgKysrKysrKysrKwog
-NCBmaWxlcyBjaGFuZ2VkLCA0OCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jCmluZGV4IDI0YWEzYmEuLmUzYWMyODAgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYworKysgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKQEAgLTQwOSw2ICs0MDksOSBA
-QCBzdGF0aWMgdm9pZCBtdGtfZHJtX2NydGNfYXRvbWljX2ZsdXNoKHN0cnVjdCBkcm1fY3J0YyAq
-Y3J0YywKIAl9CiAJaWYgKHBlbmRpbmdfcGxhbmVzKQogCQltdGtfY3J0Yy0+cGVuZGluZ19wbGFu
-ZXMgPSB0cnVlOworCWlmIChjcnRjLT5zdGF0ZS0+Y29sb3JfbWdtdF9jaGFuZ2VkKQorCQlmb3Ig
-KGkgPSAwOyBpIDwgbXRrX2NydGMtPmRkcF9jb21wX25yOyBpKyspCisJCQltdGtfZGRwX2dhbW1h
-X3NldChtdGtfY3J0Yy0+ZGRwX2NvbXBbaV0sIGNydGMtPnN0YXRlKTsKIH0KIAogc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fY3J0Y19mdW5jcyBtdGtfY3J0Y19mdW5jcyA9IHsKQEAgLTQxOCw2ICs0
-MjEsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jcnRjX2Z1bmNzIG10a19jcnRjX2Z1bmNz
-ID0gewogCS5yZXNldAkJCT0gbXRrX2RybV9jcnRjX3Jlc2V0LAogCS5hdG9taWNfZHVwbGljYXRl
-X3N0YXRlCT0gbXRrX2RybV9jcnRjX2R1cGxpY2F0ZV9zdGF0ZSwKIAkuYXRvbWljX2Rlc3Ryb3lf
-c3RhdGUJPSBtdGtfZHJtX2NydGNfZGVzdHJveV9zdGF0ZSwKKwkuZ2FtbWFfc2V0CQk9IGRybV9h
-dG9taWNfaGVscGVyX2xlZ2FjeV9nYW1tYV9zZXQsCiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0
-IGRybV9jcnRjX2hlbHBlcl9mdW5jcyBtdGtfY3J0Y19oZWxwZXJfZnVuY3MgPSB7CkBAIC01Njgs
-NyArNTcyLDggQEAgaW50IG10a19kcm1fY3J0Y19jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRy
-bV9kZXYsCiAJCQkJJm10a19jcnRjLT5wbGFuZXNbMV0uYmFzZSwgcGlwZSk7CiAJaWYgKHJldCA8
-IDApCiAJCWdvdG8gdW5wcmVwYXJlOwotCisJZHJtX21vZGVfY3J0Y19zZXRfZ2FtbWFfc2l6ZSgm
-bXRrX2NydGMtPmJhc2UsIE1US19MVVRfU0laRSk7CisJZHJtX2NydGNfZW5hYmxlX2NvbG9yX21n
-bXQoJm10a19jcnRjLT5iYXNlLCAwLCBmYWxzZSwgTVRLX0xVVF9TSVpFKTsKIAlwcml2LT5jcnRj
-W3BpcGVdID0gJm10a19jcnRjLT5iYXNlOwogCXByaXYtPm51bV9waXBlcysrOwogCmRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmggYi9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmgKaW5kZXggODFlNTU2Ni4uZDMzMjU2NCAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5oCisrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaApAQCAtMTksNiArMTksNyBAQAog
-I2luY2x1ZGUgIm10a19kcm1fcGxhbmUuaCIKIAogI2RlZmluZSBPVkxfTEFZRVJfTlIJNAorI2Rl
-ZmluZSBNVEtfTFVUX1NJWkUJNTEyCiAKIGludCBtdGtfZHJtX2NydGNfZW5hYmxlX3ZibGFuayhz
-dHJ1Y3QgZHJtX2RldmljZSAqZHJtLCB1bnNpZ25lZCBpbnQgcGlwZSk7CiB2b2lkIG10a19kcm1f
-Y3J0Y19kaXNhYmxlX3ZibGFuayhzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCB1bnNpZ25lZCBpbnQg
-cGlwZSk7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBf
-Y29tcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwppbmRl
-eCBiYTg5NWM4Li40MmNkNTg3IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kZHBfY29tcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2RkcF9jb21wLmMKQEAgLTI0LDYgKzI0LDcgQEAKICNpbmNsdWRlICJtdGtfZHJtX2Rydi5oIgog
-I2luY2x1ZGUgIm10a19kcm1fcGxhbmUuaCIKICNpbmNsdWRlICJtdGtfZHJtX2RkcF9jb21wLmgi
-CisjaW5jbHVkZSAibXRrX2RybV9jcnRjLmgiCiAKICNkZWZpbmUgRElTUF9PRF9FTgkJCQkweDAw
-MDAKICNkZWZpbmUgRElTUF9PRF9JTlRFTgkJCQkweDAwMDgKQEAgLTQyLDcgKzQzLDExIEBACiAj
-ZGVmaW5lIERJU1BfQUFMX1NJWkUJCQkJMHgwMDMwCiAKICNkZWZpbmUgRElTUF9HQU1NQV9FTgkJ
-CQkweDAwMDAKKyNkZWZpbmUgRElTUF9HQU1NQV9DRkcJCQkJMHgwMDIwCiAjZGVmaW5lIERJU1Bf
-R0FNTUFfU0laRQkJCQkweDAwMzAKKyNkZWZpbmUgRElTUF9HQU1NQV9MVVQJCQkJMHgwNzAwCisK
-KyNkZWZpbmUgTFVUXzEwQklUX01BU0sJCQkJMHgwM2ZmCiAKICNkZWZpbmUJT0RfUkVMQVlfTU9E
-RQkJQklUKDApCiAKQEAgLTU0LDYgKzU5LDcgQEAKICNkZWZpbmUgQUFMX0VOCQkJQklUKDApCiAK
-ICNkZWZpbmUgR0FNTUFfRU4JCUJJVCgwKQorI2RlZmluZSBHQU1NQV9MVVRfRU4JCUJJVCgxKQog
-CiBzdGF0aWMgdm9pZCBtdGtfY29sb3JfY29uZmlnKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAs
-IHVuc2lnbmVkIGludCB3LAogCQkJICAgICB1bnNpZ25lZCBpbnQgaCwgdW5zaWduZWQgaW50IHZy
-ZWZyZXNoKQpAQCAtMTE4LDEzICsxMjQsMzggQEAgc3RhdGljIHZvaWQgbXRrX2dhbW1hX3N0b3Ao
-c3RydWN0IG10a19kZHBfY29tcCAqY29tcCkKIAl3cml0ZWxfcmVsYXhlZCgweDAsIGNvbXAtPnJl
-Z3MgICsgRElTUF9HQU1NQV9FTik7CiB9CiAKK3N0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3Ry
-dWN0IG10a19kZHBfY29tcCAqY29tcCwKKwkJCSAgc3RydWN0IGRybV9jcnRjX3N0YXRlICpzdGF0
-ZSkKK3sKKwl1bnNpZ25lZCBpbnQgaSwgcmVnOworCXN0cnVjdCBkcm1fY29sb3JfbHV0ICpsdXQ7
-CisJdm9pZCBfX2lvbWVtICpsdXRfYmFzZTsKKwl1MzIgd29yZDsKKworCWlmIChzdGF0ZS0+Z2Ft
-bWFfbHV0KSB7CisJCXJlZyA9IHJlYWRsKGNvbXAtPnJlZ3MgKyBESVNQX0dBTU1BX0NGRyk7CisJ
-CXJlZyA9IHJlZyB8IEdBTU1BX0xVVF9FTjsKKwkJd3JpdGVsKHJlZywgY29tcC0+cmVncyArIERJ
-U1BfR0FNTUFfQ0ZHKTsKKwkJbHV0X2Jhc2UgPSBjb21wLT5yZWdzICsgRElTUF9HQU1NQV9MVVQ7
-CisJCWx1dCA9IChzdHJ1Y3QgZHJtX2NvbG9yX2x1dCAqKXN0YXRlLT5nYW1tYV9sdXQtPmRhdGE7
-CisJCWZvciAoaSA9IDA7IGkgPCBNVEtfTFVUX1NJWkU7IGkrKykgeworCQkJd29yZCA9ICgoKGx1
-dFtpXS5yZWQgPj4gNikgJiBMVVRfMTBCSVRfTUFTSykgPDwgMjApICsKKwkJCQkoKChsdXRbaV0u
-Z3JlZW4gPj4gNikgJiBMVVRfMTBCSVRfTUFTSykgPDwgMTApICsKKwkJCQkoKGx1dFtpXS5ibHVl
-ID4+IDYpICYgTFVUXzEwQklUX01BU0spOworCQkJd3JpdGVsKHdvcmQsIChsdXRfYmFzZSArIGkg
-KiA0KSk7CisJCX0KKwl9Cit9CisKIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1
-bmNzIGRkcF9hYWwgPSB7CisJLmdhbW1hX3NldCA9IG10a19nYW1tYV9zZXQsCiAJLmNvbmZpZyA9
-IG10a19hYWxfY29uZmlnLAogCS5zdGFydCA9IG10a19hYWxfc3RhcnQsCiAJLnN0b3AgPSBtdGtf
-YWFsX3N0b3AsCiB9OwogCiBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9mdW5jcyBk
-ZHBfZ2FtbWEgPSB7CisJLmdhbW1hX3NldCA9IG10a19nYW1tYV9zZXQsCiAJLmNvbmZpZyA9IG10
-a19nYW1tYV9jb25maWcsCiAJLnN0YXJ0ID0gbXRrX2dhbW1hX3N0YXJ0LAogCS5zdG9wID0gbXRr
-X2dhbW1hX3N0b3AsCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
-aAppbmRleCA2YjEzYmE5Li5mNGI3ZTBhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2RkcF9jb21wLmgKQEAgLTIxLDYgKzIxLDcgQEAgc3RydWN0IGRldmljZV9ub2RlOwog
-c3RydWN0IGRybV9jcnRjOwogc3RydWN0IGRybV9kZXZpY2U7CiBzdHJ1Y3QgbXRrX3BsYW5lX3N0
-YXRlOworc3RydWN0IGRybV9jcnRjX3N0YXRlOwogCiBlbnVtIG10a19kZHBfY29tcF90eXBlIHsK
-IAlNVEtfRElTUF9PVkwsCkBAIC03Myw2ICs3NCw4IEBAIHN0cnVjdCBtdGtfZGRwX2NvbXBfZnVu
-Y3MgewogCXZvaWQgKCpsYXllcl9vZmYpKHN0cnVjdCBtdGtfZGRwX2NvbXAgKmNvbXAsIHVuc2ln
-bmVkIGludCBpZHgpOwogCXZvaWQgKCpsYXllcl9jb25maWcpKHN0cnVjdCBtdGtfZGRwX2NvbXAg
-KmNvbXAsIHVuc2lnbmVkIGludCBpZHgsCiAJCQkgICAgIHN0cnVjdCBtdGtfcGxhbmVfc3RhdGUg
-KnN0YXRlKTsKKwl2b2lkICgqZ2FtbWFfc2V0KShzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLAor
-CQkJICBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnN0YXRlKTsKIH07CiAKIHN0cnVjdCBtdGtfZGRw
-X2NvbXAgewpAQCAtMTM5LDYgKzE0MiwxMyBAQCBzdGF0aWMgaW5saW5lIHZvaWQgbXRrX2RkcF9j
-b21wX2xheWVyX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLAogCQljb21wLT5mdW5j
-cy0+bGF5ZXJfY29uZmlnKGNvbXAsIGlkeCwgc3RhdGUpOwogfQogCitzdGF0aWMgaW5saW5lIHZv
-aWQgbXRrX2RkcF9nYW1tYV9zZXQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwKKwkJCQkgICAg
-IHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqc3RhdGUpCit7CisJaWYgKGNvbXAtPmZ1bmNzICYmIGNv
-bXAtPmZ1bmNzLT5nYW1tYV9zZXQpCisJCWNvbXAtPmZ1bmNzLT5nYW1tYV9zZXQoY29tcCwgc3Rh
-dGUpOworfQorCiBpbnQgbXRrX2RkcF9jb21wX2dldF9pZChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5v
-ZGUsCiAJCQllbnVtIG10a19kZHBfY29tcF90eXBlIGNvbXBfdHlwZSk7CiBpbnQgbXRrX2RkcF9j
-b21wX2luaXQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlX25vZGUgKmNvbXBfbm9k
-ZSwKLS0gCjIuOC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+Hi,
+
+now that kernel v4.8-rc1 is released and includes the new CEC framework in
+drivers/staging/media/cec, I wonder how to proceed with this. To allow the
+ASoC drivers to present HDMI cable connection state as an ALSA jack, and
+to allow them to update sink capabilities when it signals an EDID change,
+we need a notification mechanism between CEC/HDMI, and ALSA drivers.
+
+I had used Russell's hdmi notification prototype to let the CEC/HDMI
+drivers notify the hdmi-codec and ASoC machine drivers of changes. The
+mtk_cec driver currently is just a placeholder that only handles the HPD
+interrupts.
+
+Should the notifications be integrated with the CEC framework for those
+devices that do have CEC support?
+
+Changes since v7 ("ASoC: MT8173 HDMI codec support"):
+ - Dropped the already applied ELD control and machine driver patches
+ - Dropped the N/CTS helper patch for now, as the helpers don't exist yet.
+ - Lock ELD mutex while copying ELD in hdmi_eld_ctl_get
+
+regards
+Philipp
+
+Philipp Zabel (5):
+  video: rmk's HDMI notification prototype
+  ASoC: hdmi-codec: Use HDMI notifications to add jack support
+  ASoC: mediatek: Add jack detection support to mt8173-rt5650-rt5676
+    machine driver
+  ASoC: mediatek: Add jack detection support to the mt8173-rt5650
+    machine driver
+  drm/mediatek: hdmi: issue notifications
+
+ drivers/gpu/drm/mediatek/mtk_cec.c               | 11 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi.c              |  3 +
+ drivers/video/Kconfig                            |  3 +
+ drivers/video/Makefile                           |  1 +
+ drivers/video/hdmi-notifier.c                    | 61 ++++++++++++++++
+ include/linux/hdmi-notifier.h                    | 44 ++++++++++++
+ include/sound/hdmi-codec.h                       |  6 ++
+ sound/soc/codecs/Kconfig                         |  1 +
+ sound/soc/codecs/hdmi-codec.c                    | 88 +++++++++++++++++++++---
+ sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c | 21 ++++++
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c        | 21 ++++++
+ 11 files changed, 252 insertions(+), 8 deletions(-)
+ create mode 100644 drivers/video/hdmi-notifier.c
+ create mode 100644 include/linux/hdmi-notifier.h
+
+-- 
+2.8.1
