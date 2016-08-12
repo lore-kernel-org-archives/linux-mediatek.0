@@ -1,53 +1,112 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [GIT PULL] drm/mediatek: maintainer entry and gamma support
-Date: Fri, 12 Aug 2016 10:20:34 +0200
-Message-ID: <1470990034.2364.32.camel@pengutronix.de>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH v4 9/9] arm64: dts: mediatek: Add Video Decoder for
+ MT8173
+Date: Fri, 12 Aug 2016 17:21:43 +0800
+Message-ID: <1470993703.12736.6.camel@mtksdaap41>
+References: <1470840534-4788-1-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-2-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-3-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-4-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-5-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-6-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-7-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-8-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-9-git-send-email-tiffany.lin@mediatek.com>
+	 <1470840534-4788-10-git-send-email-tiffany.lin@mediatek.com>
+	 <de51caf8-6db5-4754-0683-d3390dd2ac09@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: David Airlie <airlied@linux.ie>
-Cc: linux-mediatek@lists.infradead.org, kernel@pengutronix.de, dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <de51caf8-6db5-4754-0683-d3390dd2ac09@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgRGF2ZSwKClBsZWFzZSBjb25zaWRlciBtZXJnaW5nIHRoaXMgdGFnLCB3aGljaCBhZGRzIENL
-IEh1IGFuZCBtZSBhcyBtYWludGFpbmVycwpmb3IgdGhlIG1lZGlhdGVrLWRybSBkcml2ZXIgYW5k
-IGFkZHMgZ2FtbWEgY29ycmVjdGlvbiBzdXBwb3J0LgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNp
-bmNlIGNvbW1pdCAyOWI0ODE3ZDQwMThkZjc4MDg2MTU3ZWEzYTU1YzFkOTQyNGE3Y2ZjOgoKICBM
-aW51eCA0LjgtcmMxICgyMDE2LTA4LTA3IDE4OjE4OjAwIC0wNzAwKQoKYXJlIGF2YWlsYWJsZSBp
-biB0aGUgZ2l0IHJlcG9zaXRvcnkgYXQ6CgogIGdpdDovL2dpdC5wZW5ndXRyb25peC5kZS9naXQv
-cHphL2xpbnV4LmdpdCB0YWdzL21lZGlhdGVrLWRybS1uZXh0LTIwMTYtMDgtMTIKCmZvciB5b3Ug
-dG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA3MjE2NDM2NDIwNDE0MTQ0NjQ2ZjVkODM0M2QwNjEzNTVm
-ZDIzNDgzOgoKICBkcm0vbWVkaWF0ZWs6IHNldCBtdDgxNzMgZGl0aGVyaW5nIGZ1bmN0aW9uICgy
-MDE2LTA4LTExIDEwOjUyOjIzICswMjAwKQoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQptZWRpYXRlay1kcm0gbWFpbnRhaW5l
-cnMgYW5kIGdhbW1hIGNvcnJlY3Rpb24KCi0gYWRkIE1BSU5UQUlORVJTIGVudHJ5IGZvciBtZWRp
-YXRlay1kcm0gZHJpdmVyCi0gYWRkIHN1cHBvcnQgZm9yIEFBTCBhbmQgR0FNTUEgZW5naW5lcwot
-IGhvb2sgdXAgZ2FtbWEgY29ycmVjdGlvbiBMVVQKLSBhZGQgc3VwcG9ydCBmb3IgdGVtcG9yYWwg
-ZGl0aGVyaW5nIHRvIE9EIGFuZCBHQU1NQSBlbmdpbmVzCgotLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCkJpYmJ5IEhzaWVoICg0
-KToKICAgICAgZHJtL21lZGlhdGVrOiBBZGQgQUFMIGVuZ2luZSBiYXNpYyBmdW5jdGlvbgogICAg
-ICBkcm0vbWVkaWF0ZWs6IEFkZCBHQU1NQSBlbmdpbmUgYmFzaWMgZnVuY3Rpb24KICAgICAgZHJt
-L21lZGlhdGVrOiBBZGQgZ2FtbWEgY29ycmVjdGlvbi4KICAgICAgZHJtL21lZGlhdGVrOiBzZXQg
-bXQ4MTczIGRpdGhlcmluZyBmdW5jdGlvbgoKQ0sgSHUgKDEpOgogICAgICBkcm06IG1lZGlhdGVr
-OiBhZGQgTWFpbnRhaW5lcnMgZW50cnkgZm9yIE1lZGlhdGVrIERSTSBkcml2ZXJzCgogTUFJTlRB
-SU5FUlMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgOCArKwogZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAgICB8ICAgMyArLQogZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAgICB8ICAgMyArLQogZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fY3J0Yy5jICAgICB8ICAyOCArKysrKy0KIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2NydGMuaCAgICAgfCAgIDMgKwogZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyB8IDE1MSArKysrKysrKysrKysrKysrKysrKysrKysr
-Ky0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgIDE4ICsr
-Ky0KIDcgZmlsZXMgY2hhbmdlZCwgMTk2IGluc2VydGlvbnMoKyksIDE4IGRlbGV0aW9ucygtKQoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVs
-IG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlz
-dHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+Hi Matthias,
+
+On Thu, 2016-08-11 at 17:44 +0200, Matthias Brugger wrote:
+> 
+> On 10/08/16 16:48, Tiffany Lin wrote:
+> > Add video decoder node for MT8173
+> >
+> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
+> >  1 file changed, 44 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > index 10f638f..2872cd7 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> > @@ -974,6 +974,50 @@
+> >  			#clock-cells = <1>;
+> >  		};
+> >
+> > +		vcodec_dec: vcodec@16000000 {
+> > +			compatible = "mediatek,mt8173-vcodec-dec";
+> > +			reg = <0 0x16000000 0 0x100>,	/* VDEC_SYS */
+> > +			      <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
+> > +			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
+> > +			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
+> > +			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
+> > +			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
+> > +			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
+> > +			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
+> > +			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
+> > +			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
+> > +			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
+> > +			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
+> > +			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
+> > +			mediatek,larb = <&larb1>;
+> > +			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
+> > +				 <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
+> > +			mediatek,vpu = <&vpu>;
+> > +			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
+> > +			clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
+> > +				 <&topckgen CLK_TOP_UNIVPLL_D2>,
+> > +				 <&topckgen CLK_TOP_CCI400_SEL>,
+> > +				 <&topckgen CLK_TOP_VDEC_SEL>,
+> > +				 <&topckgen CLK_TOP_VCODECPLL>,
+> > +				 <&apmixedsys CLK_APMIXED_VENCPLL>,
+> > +				 <&topckgen CLK_TOP_VENC_LT_SEL>,
+> > +				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
+> > +			clock-names = "vcodecpll",
+> > +				      "univpll_d2",
+> > +				      "clk_cci400_sel",
+> > +				      "vdec_sel",
+> > +				      "vdecpll",
+> > +				      "vencpll",
+> > +				      "venc_lt_sel",
+> > +				      "vdec_bus_clk_src";
+> > +		};
+> > +
+> 
+> Shouldn't we set here:
+> status = "disabled";
+> 
+> To save power on headless systems?
+> 
+We only power on when there is at least one decode instance created.
+In this case, do we need "status = "disabled";" here?
+I see some other device nodes in dtsi do not add this.
+Sorry, I am just confused when should we add status for device node.
+
+
+best regards,
+Tiffany
+
+> Regards,
+> Matthias
+> 
+> >  		larb1: larb@16010000 {
+> >  			compatible = "mediatek,mt8173-smi-larb";
+> >  			reg = <0 0x16010000 0 0x1000>;
+> >
