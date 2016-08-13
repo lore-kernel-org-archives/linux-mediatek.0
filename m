@@ -1,36 +1,34 @@
-From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Subject: Re: [PATCH] net: ethernet: mediatek: enhance the locking using the
- lightweight ones
-Date: Fri, 12 Aug 2016 20:35:13 -0700 (PDT)
-Message-ID: <20160812.203513.2152152273401119188.davem@davemloft.net>
-References: <1470909060-27976-1-git-send-email-sean.wang@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH 1/2] net: ethernet: mediatek: fixed that initializing u64_stats_sync is missing
+Date: Sat, 13 Aug 2016 19:16:18 +0800
+Message-ID: <1471086979-23032-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470909060-27976-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Thu, 11 Aug 2016 17:51:00 +0800
+To fix runtime warning with lockdep is enabled due that u64_stats_sync
+is not initialized well, so add it.
 
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Since these critical sections protected by page_lock are all entered
-> from the user context or bottom half context, they can be replaced
-> with the spin_lock() or spin_lock_bh instead of spin_lock_irqsave().
-> 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c |    1 +
+ 1 file changed, 1 insertion(+)
 
-Applied to net-next, thanks.
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 3a4726e..f5d2745 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1748,6 +1748,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 		goto free_netdev;
+ 	}
+ 	spin_lock_init(&mac->hw_stats->stats_lock);
++	u64_stats_init(&mac->hw_stats->syncp);
+ 	mac->hw_stats->reg_offset = id * MTK_STAT_OFFSET;
+ 
+ 	SET_NETDEV_DEV(eth->netdev[id], eth->dev);
+-- 
+1.7.9.5
