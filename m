@@ -1,81 +1,55 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v9 06/10] clk: mediatek: Add MT2701 clock support
-Date: Mon, 15 Aug 2016 11:00:34 +0800
-Message-ID: <1471230034.8551.22.camel@mtksdaap41>
-References: <1466581229-2342-1-git-send-email-erin.lo@mediatek.com>
-	 <1466581229-2342-7-git-send-email-erin.lo@mediatek.com>
-	 <20160813004438.GC361@codeaurora.org>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH for v4.8] vcodec:mediatek: Fix visible_height larger than coded_height issue in s_fmt_out
+Date: Mon, 15 Aug 2016 11:08:03 +0800
+Message-ID: <1471230483-23568-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160813004438.GC361@codeaurora.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, John Crispin <blogic@openwrt.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Shunli Wang <shunli.wang@mediatek.com>
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stephen,
+The original code add extra 32 line to visible_height.
+It is incorrect, 32 line should be add to coded_height.
+The purpose is that user space could calcuate real buffer size needed by using
+coded_width * coded_height.
+But this method will make v4l2-compliance test fail, since g_fmt != s_fmt(g_fmt)
+So remove extend visible_height or coded_height, user space should just
+use sizeimage to get real buffer size needed
 
-On Fri, 2016-08-12 at 17:44 -0700, Stephen Boyd wrote:
-> On 06/22, Erin Lo wrote:
-> > diff --git a/drivers/clk/mediatek/clk-mt2701-bdp.c b/drivers/clk/mediatek/clk-mt2701-bdp.c
-> > new file mode 100644
-> > index 0000000..81f628c
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mt2701-bdp.c
-> > @@ -0,0 +1,140 @@
-> > +/*
-> > + * Copyright (c) 2014 MediaTek Inc.
-> > + * Author: Shunli Wang <shunli.wang@mediatek.com>
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify
-> > + * it under the terms of the GNU General Public License version 2 as
-> > + * published by the Free Software Foundation.
-> > + *
-> > + * This program is distributed in the hope that it will be useful,
-> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> > + * GNU General Public License for more details.
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> 
-> Is this include used? I would expect clk-provider.h instead.
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   10 ----------
+ 1 file changed, 10 deletions(-)
 
-Yes, it can be replaced with clk-provider.h. I'll change it in next
-patch series.
-
-> > +#include <linux/platform_device.h>
-> > +
-> > +#include "clk-mtk.h"
-> > +#include "clk-gate.h"
-> > +
-> > +#include <dt-bindings/clock/mt2701-clk.h>
-> > +
-> [..]
-> > +
-> > +static void mtk_bdpsys_init(struct device_node *node)
-> > +{
-> > +	struct clk_onecell_data *clk_data;
-> > +	int r;
-> > +
-> > +	clk_data = mtk_alloc_clk_data(CLK_BDP_NR);
-> > +
-> > +	mtk_clk_register_gates(node, bdp_clks, ARRAY_SIZE(bdp_clks),
-> > +						clk_data);
-> > +
-> > +	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> 
-> Is it possible to move to of_clk_add_hw_provider()? It can be
-> done later if that would mean changing all
-> mtk_clk_register_gates() users.
-
-I would like to keep current implementation due to test/integration
-effort. I prefer to apply clk_hw related APIs on new clk drivers instead
-of modify existing drivers.
-
-
-Best regards,
-
-James
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index a145130..cd36c9e 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -487,7 +487,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	struct mtk_q_data *q_data;
+ 	int ret, i;
+ 	struct mtk_video_fmt *fmt;
+-	unsigned int pitch_w_div16;
+ 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
+ 
+ 	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+@@ -530,15 +529,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
+ 
+-	pitch_w_div16 = DIV_ROUND_UP(q_data->visible_width, 16);
+-	if (pitch_w_div16 % 8 != 0) {
+-		/* Adjust returned width/height, so application could correctly
+-		 * allocate hw required memory
+-		 */
+-		q_data->visible_height += 32;
+-		vidioc_try_fmt(f, q_data->fmt);
+-	}
+-
+ 	q_data->field = f->fmt.pix_mp.field;
+ 	ctx->colorspace = f->fmt.pix_mp.colorspace;
+ 	ctx->ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
+-- 
+1.7.9.5
