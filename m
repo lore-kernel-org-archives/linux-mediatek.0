@@ -1,14 +1,14 @@
 From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v8 2/5] ASoC: hdmi-codec: Use HDMI notifications to add
- jack support
-Date: Mon, 15 Aug 2016 15:23:55 +0100
-Message-ID: <20160815142355.GL9347@sirena.org.uk>
+Subject: Re: [PATCH v8 3/5] ASoC: mediatek: Add jack detection support to
+ mt8173-rt5650-rt5676 machine driver
+Date: Mon, 15 Aug 2016 15:53:25 +0100
+Message-ID: <20160815145325.GN9347@sirena.org.uk>
 References: <1470907227-899-1-git-send-email-p.zabel@pengutronix.de>
- <1470907227-899-3-git-send-email-p.zabel@pengutronix.de>
+ <1470907227-899-4-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4669703912570909187=="
+Content-Type: multipart/mixed; boundary="===============8241500343084367716=="
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1470907227-899-3-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+In-Reply-To: <1470907227-899-4-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -23,41 +23,40 @@ Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, alsa-devel-K7yf7
 List-Id: linux-mediatek@lists.infradead.org
 
 
---===============4669703912570909187==
+--===============8241500343084367716==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="LIxvNfiQb+4m9exP"
+	protocol="application/pgp-signature"; boundary="CoKeqzoheR24UlpS"
 Content-Disposition: inline
 
 
---LIxvNfiQb+4m9exP
+--CoKeqzoheR24UlpS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Thu, Aug 11, 2016 at 11:20:24AM +0200, Philipp Zabel wrote:
-> Use HDMI connection / disconnection notifications to update an ALSA
-> jack object. Also make a copy of the ELD block after every change.
+On Thu, Aug 11, 2016 at 11:20:25AM +0200, Philipp Zabel wrote:
+> Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 
 Acked-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 
---LIxvNfiQb+4m9exP
+--CoKeqzoheR24UlpS
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAEBCAAGBQJXsdB5AAoJECTWi3JdVIfQGE4H+weTmiOf01XUKRy4Dq0SZ7GQ
-VgCcxfsJ7+S1zIcYYSB1G7LXC7Tv4Y50DAGJMm8NEUYoa8BFNeY+R2OQ3dAUbEaT
-4Ijmcka0GXsa2cBpQMfFylfz2GRsE+OmbOQKgGes8VXYvJHQuB6+z3yRuz1sQZ8R
-U70qp8CJzLNDZHdq1Yz3OvIxBw97szSMSANhnmkp2KgThrKPQ/kxE6BIpoF27RDw
-rhhN6etjJO1Ao1QgmEAgknsk1LVZ7G0kJg1C1v+J98K7uq29vbzcu0Q5x1Ot0NaP
-hCWjlJmSVAfLkcl3KSSYnbjYN7TveZ9fJN2qO12uQTUkychnvqLbSok9Elxtqxg=
-=e5J2
+iQEcBAEBCAAGBQJXsddlAAoJECTWi3JdVIfQLPIH/jTynK9k+A+DLfMDAth1cbFe
+K9hvMfZGILT9RrL6VcfqzhKR3JHEdt8OodAuFtQnI3Kd3XmI5mEa/JjwOi4UoPxB
+cBBAEtDMgm1SuNjnFld3Jva7z9yTEzbME+PnV6a8WsaHzQcJ5DXQvs22NQLjlvM1
+IurwRC7NIigGMvY+THl2EpEUnP9hFG8rw1gesoIFcoKUHZqrpgzrpeP4qWZwr1xj
+ZxZCDjvQBVsMivJ7iTxpMH4BhTSV9gd9R/ifAlZYep7E4rNGNfdcGp0HzFnqHYjb
+pV1Ia1VnA9L9hEYK0FSZxDXHQc8hCdViLIgcRN7lfhbaJeahTqvG+2LuHnKVL8I=
+=wE8y
 -----END PGP SIGNATURE-----
 
---LIxvNfiQb+4m9exP--
+--CoKeqzoheR24UlpS--
 
 
---===============4669703912570909187==
+--===============8241500343084367716==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -68,4 +67,4 @@ Linux-mediatek mailing list
 Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============4669703912570909187==--
+--===============8241500343084367716==--
