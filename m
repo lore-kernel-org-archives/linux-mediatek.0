@@ -1,7 +1,7 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH for v4.8] vcodec:mediatek: change H264 profile default to profile high
-Date: Mon, 15 Aug 2016 11:26:02 +0800
-Message-ID: <1471231562-25191-1-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH for v4.8] vcodec:mediatek: Refine H264 encoder driver
+Date: Mon, 15 Aug 2016 11:33:32 +0800
+Message-ID: <1471232012-27624-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -10,26 +10,74 @@ To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@id
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch change default H264 profile from V4L2_MPEG_VIDEO_H264_PROFILE_MAIN
-to V4L2_MPEG_VIDEO_H264_PROFILE_HIGH
+This patch :
+1. remove field and function that unused anymore
+2. add support V4L2_MPEG_VIDEO_H264_LEVEL_4_2
 
 Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../media/platform/mtk-vcodec/venc/venc_h264_if.c  |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 7bef7ba..284c1a7 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -1288,7 +1288,7 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 			0, V4L2_MPEG_VIDEO_HEADER_MODE_SEPARATE);
- 	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_H264_PROFILE,
- 			V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
--			0, V4L2_MPEG_VIDEO_H264_PROFILE_MAIN);
-+			0, V4L2_MPEG_VIDEO_H264_PROFILE_HIGH);
- 	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_H264_LEVEL,
- 			V4L2_MPEG_VIDEO_H264_LEVEL_4_2,
- 			0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
+diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+index 9a60052..63d4be4 100644
+--- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
+@@ -61,6 +61,8 @@ enum venc_h264_bs_mode {
+ 
+ /*
+  * struct venc_h264_vpu_config - Structure for h264 encoder configuration
++ *                               AP-W/R : AP is writer/reader on this item
++ *                               VPU-W/R: VPU is write/reader on this item
+  * @input_fourcc: input fourcc
+  * @bitrate: target bitrate (in bps)
+  * @pic_w: picture width. Picture size is visible stream resolution, in pixels,
+@@ -94,13 +96,13 @@ struct venc_h264_vpu_config {
+ 
+ /*
+  * struct venc_h264_vpu_buf - Structure for buffer information
+- * @align: buffer alignment (in bytes)
++ *                            AP-W/R : AP is writer/reader on this item
++ *                            VPU-W/R: VPU is write/reader on this item
+  * @iova: IO virtual address
+  * @vpua: VPU side memory addr which is used by RC_CODE
+  * @size: buffer size (in bytes)
+  */
+ struct venc_h264_vpu_buf {
+-	u32 align;
+ 	u32 iova;
+ 	u32 vpua;
+ 	u32 size;
+@@ -108,6 +110,8 @@ struct venc_h264_vpu_buf {
+ 
+ /*
+  * struct venc_h264_vsi - Structure for VPU driver control and info share
++ *                        AP-W/R : AP is writer/reader on this item
++ *                        VPU-W/R: VPU is write/reader on this item
+  * This structure is allocated in VPU side and shared to AP side.
+  * @config: h264 encoder configuration
+  * @work_bufs: working buffer information in VPU side
+@@ -150,12 +154,6 @@ struct venc_h264_inst {
+ 	struct mtk_vcodec_ctx *ctx;
+ };
+ 
+-static inline void h264_write_reg(struct venc_h264_inst *inst, u32 addr,
+-				  u32 val)
+-{
+-	writel(val, inst->hw_base + addr);
+-}
+-
+ static inline u32 h264_read_reg(struct venc_h264_inst *inst, u32 addr)
+ {
+ 	return readl(inst->hw_base + addr);
+@@ -214,6 +212,8 @@ static unsigned int h264_get_level(struct venc_h264_inst *inst,
+ 		return 40;
+ 	case V4L2_MPEG_VIDEO_H264_LEVEL_4_1:
+ 		return 41;
++	case V4L2_MPEG_VIDEO_H264_LEVEL_4_2:
++		return 42;
+ 	default:
+ 		mtk_vcodec_debug(inst, "unsupported level %d", level);
+ 		return 31;
 -- 
 1.7.9.5
