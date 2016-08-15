@@ -1,7 +1,7 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH for v4.8] vcodec:mediatek: Refine H264 encoder driver
-Date: Mon, 15 Aug 2016 11:33:32 +0800
-Message-ID: <1471232012-27624-1-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH for v4.8] vcodec:mediatek: Refine VP8 encoder driver
+Date: Mon, 15 Aug 2016 11:37:19 +0800
+Message-ID: <1471232239-28061-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -10,74 +10,65 @@ To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@id
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch :
-1. remove field and function that unused anymore
-2. add support V4L2_MPEG_VIDEO_H264_LEVEL_4_2
+This patch remove field and function that unused anymore
 
 Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
- .../media/platform/mtk-vcodec/venc/venc_h264_if.c  |   16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ .../media/platform/mtk-vcodec/venc/venc_vp8_if.c   |   16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-index 9a60052..63d4be4 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-@@ -61,6 +61,8 @@ enum venc_h264_bs_mode {
+diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+index 60bbcd2..6d97584 100644
+--- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
+@@ -56,6 +56,8 @@ enum venc_vp8_vpu_work_buf {
  
  /*
-  * struct venc_h264_vpu_config - Structure for h264 encoder configuration
-+ *                               AP-W/R : AP is writer/reader on this item
-+ *                               VPU-W/R: VPU is write/reader on this item
+  * struct venc_vp8_vpu_config - Structure for vp8 encoder configuration
++ *                              AP-W/R : AP is writer/reader on this item
++ *                              VPU-W/R: VPU is write/reader on this item
   * @input_fourcc: input fourcc
   * @bitrate: target bitrate (in bps)
   * @pic_w: picture width. Picture size is visible stream resolution, in pixels,
-@@ -94,13 +96,13 @@ struct venc_h264_vpu_config {
+@@ -83,14 +85,14 @@ struct venc_vp8_vpu_config {
+ };
  
  /*
-  * struct venc_h264_vpu_buf - Structure for buffer information
+- * struct venc_vp8_vpu_buf -Structure for buffer information
 - * @align: buffer alignment (in bytes)
-+ *                            AP-W/R : AP is writer/reader on this item
-+ *                            VPU-W/R: VPU is write/reader on this item
++ * struct venc_vp8_vpu_buf - Structure for buffer information
++ *                           AP-W/R : AP is writer/reader on this item
++ *                           VPU-W/R: VPU is write/reader on this item
   * @iova: IO virtual address
   * @vpua: VPU side memory addr which is used by RC_CODE
   * @size: buffer size (in bytes)
   */
- struct venc_h264_vpu_buf {
+ struct venc_vp8_vpu_buf {
 -	u32 align;
  	u32 iova;
  	u32 vpua;
  	u32 size;
-@@ -108,6 +110,8 @@ struct venc_h264_vpu_buf {
+@@ -98,6 +100,8 @@ struct venc_vp8_vpu_buf {
  
  /*
-  * struct venc_h264_vsi - Structure for VPU driver control and info share
-+ *                        AP-W/R : AP is writer/reader on this item
-+ *                        VPU-W/R: VPU is write/reader on this item
+  * struct venc_vp8_vsi - Structure for VPU driver control and info share
++ *                       AP-W/R : AP is writer/reader on this item
++ *                       VPU-W/R: VPU is write/reader on this item
   * This structure is allocated in VPU side and shared to AP side.
-  * @config: h264 encoder configuration
+  * @config: vp8 encoder configuration
   * @work_bufs: working buffer information in VPU side
-@@ -150,12 +154,6 @@ struct venc_h264_inst {
+@@ -138,12 +142,6 @@ struct venc_vp8_inst {
  	struct mtk_vcodec_ctx *ctx;
  };
  
--static inline void h264_write_reg(struct venc_h264_inst *inst, u32 addr,
--				  u32 val)
+-static inline void vp8_enc_write_reg(struct venc_vp8_inst *inst, u32 addr,
+-				     u32 val)
 -{
 -	writel(val, inst->hw_base + addr);
 -}
 -
- static inline u32 h264_read_reg(struct venc_h264_inst *inst, u32 addr)
+ static inline u32 vp8_enc_read_reg(struct venc_vp8_inst *inst, u32 addr)
  {
  	return readl(inst->hw_base + addr);
-@@ -214,6 +212,8 @@ static unsigned int h264_get_level(struct venc_h264_inst *inst,
- 		return 40;
- 	case V4L2_MPEG_VIDEO_H264_LEVEL_4_1:
- 		return 41;
-+	case V4L2_MPEG_VIDEO_H264_LEVEL_4_2:
-+		return 42;
- 	default:
- 		mtk_vcodec_debug(inst, "unsupported level %d", level);
- 		return 31;
 -- 
 1.7.9.5
