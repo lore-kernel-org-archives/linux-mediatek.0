@@ -1,7 +1,7 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v6] vcodec: mediatek: Add g/s_selection support for V4L2 Encoder
-Date: Mon, 15 Aug 2016 10:15:33 +0800
-Message-ID: <1471227333-384-1-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH for v4.8] vcodec:mediatek:code refine for v4l2 Encoder driver
+Date: Mon, 15 Aug 2016 10:31:13 +0800
+Message-ID: <1471228273-27099-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
@@ -10,111 +10,37 @@ To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@id
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch add g/s_selection for MT8173 V4L2 Encoder.
-Only output queue support g/s_selection to configure crop.
-The top/left of active rectangle should always be (0,0)
+This patch remove unused header and define from haeder files
 
 Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
-v6:
-- remove unused err variable from s_selection
-v5:
-- remove visible_height change to a separate patch
-v4:
-- do not return -ERANGE and just select a rectangle that works with the
-  hardware and is closest to the requested rectangle
-- refine v3 note about remove visible_height modification in s_fmt_out
-v3:
-- add v4l2_s_selection to check constraint flags
-- remove visible_height modification in s_fmt_out, it will make v4l2-compliance
-  test Cropping fail becuase visible_height larger than coded_height.
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |   66 ++++++++++++++++++++
- 1 file changed, 66 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |    1 -
+ .../media/platform/mtk-vcodec/mtk_vcodec_intr.h    |    1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 3ed3f2d..b1f0acb 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -631,6 +631,69 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 	return vidioc_try_fmt(f, fmt);
- }
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 94f0a42..3a8e695 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -23,7 +23,6 @@
+ #include <media/v4l2-ioctl.h>
+ #include <media/videobuf2-core.h>
  
-+static int vidioc_venc_g_selection(struct file *file, void *priv,
-+				     struct v4l2_selection *s)
-+{
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct mtk_q_data *q_data;
-+
-+	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	q_data = mtk_venc_get_q_data(ctx, s->type);
-+	if (!q_data)
-+		return -EINVAL;
-+
-+	switch (s->target) {
-+	case V4L2_SEL_TGT_CROP_DEFAULT:
-+	case V4L2_SEL_TGT_CROP_BOUNDS:
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		s->r.width = q_data->coded_width;
-+		s->r.height = q_data->coded_height;
-+		break;
-+	case V4L2_SEL_TGT_CROP:
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		s->r.width = q_data->visible_width;
-+		s->r.height = q_data->visible_height;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int vidioc_venc_s_selection(struct file *file, void *priv,
-+				     struct v4l2_selection *s)
-+{
-+	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-+	struct mtk_q_data *q_data;
-+
-+	if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	q_data = mtk_venc_get_q_data(ctx, s->type);
-+	if (!q_data)
-+		return -EINVAL;
-+
-+	switch (s->target) {
-+	case V4L2_SEL_TGT_CROP:
-+		/* Only support crop from (0,0) */
-+		s->r.top = 0;
-+		s->r.left = 0;
-+		s->r.width = min(s->r.width, q_data->coded_width);
-+		s->r.height = min(s->r.height, q_data->coded_height);
-+		q_data->visible_width = s->r.width;
-+		q_data->visible_height = s->r.height;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
- static int vidioc_venc_qbuf(struct file *file, void *priv,
- 			    struct v4l2_buffer *buf)
- {
-@@ -689,6 +752,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
+-#include "mtk_vcodec_util.h"
  
- 	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
- 	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
-+
-+	.vidioc_g_selection		= vidioc_venc_g_selection,
-+	.vidioc_s_selection		= vidioc_venc_s_selection,
- };
+ #define MTK_VCODEC_DRV_NAME	"mtk_vcodec_drv"
+ #define MTK_VCODEC_ENC_NAME	"mtk-vcodec-enc"
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+index 33e890f..1213185 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+@@ -16,7 +16,6 @@
+ #define _MTK_VCODEC_INTR_H_
  
- static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
+ #define MTK_INST_IRQ_RECEIVED		0x1
+-#define MTK_INST_WORK_THREAD_ABORT_DONE	0x2
+ 
+ struct mtk_vcodec_ctx;
+ 
 -- 
 1.7.9.5
