@@ -1,76 +1,59 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v9 01/10] clk: fix initial state of critical clock's
- parents
-Date: Mon, 15 Aug 2016 10:47:06 +0800
-Message-ID: <1471229226.8551.16.camel@mtksdaap41>
-References: <1466581229-2342-1-git-send-email-erin.lo@mediatek.com>
-	 <1466581229-2342-2-git-send-email-erin.lo@mediatek.com>
-	 <20160702012140.GB17071@codeaurora.org>
-	 <1467604308.26485.4.camel@mtksdaap41>
-	 <146802073038.73491.6675612765998057903@resonance>
-	 <1468225452.31247.7.camel@mtksdaap41> <1470203182.17063.3.camel@mtksdaap41>
-	 <1470721183.8551.6.camel@mtksdaap41> <20160810210922.GD2996@codeaurora.org>
-	 <1470989873.8551.10.camel@mtksdaap41> <20160813003913.GA361@codeaurora.org>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH for v4.8] vcodec:mediatek: Fix fops_vcodec_release flow for V4L2 Encoder
+Date: Mon, 15 Aug 2016 10:47:20 +0800
+Message-ID: <1471229240-38268-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20160813003913.GA361@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Michael Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org, Erin Lo <erin.lo@mediatek.com>, linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Stephen,
+This patch fix that mtk_vcodec_venc_release should be called after v4l2_m2m_ctx_release
 
-On Fri, 2016-08-12 at 17:39 -0700, Stephen Boyd wrote:
-> On 08/12, James Liao wrote:
-> > On Wed, 2016-08-10 at 14:09 -0700, Stephen Boyd wrote:
-> > > (Including lists)
-> > > 
-> > > On 08/09, James Liao wrote:
-> > > > On Wed, 2016-08-03 at 13:46 +0800, James Liao wrote:
-> > > >>
-> > > >> Hi Mike,
-> > > >>
-> > > >> Do you have new patches to fix new clock parents? If not, I think we can
-> > > >> use my patch first. Is it okay?
-> > > >>
-> > > >
-> > > > Hi Stephen,
-> > > >
-> > > > Do you have comments for the bug fixing? I prefer to use my patch (clk:
-> > > > fix initial state of critical clock's parents). How do you think?
-> > > >
-> > > 
-> > > How about we recalc accuracies and rates in addition to the patch
-> > > from Mike? That will fix everything?
-> > 
-> > Hi Stephen,
-> > 
-> > It works!
-> > 
-> > I'll send a new series of MT2701 clock support in few days. Should I
-> > include this patch in my series? Or you'll merge it into clk-next
-> > directly?
-> > 
-> 
-> Thanks. I can take that as a tested-by? I can merge it into
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |    7 ++++++-
+ .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c |    6 +++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
 
-Yes, please feel free to add:
-
-Tested-by: James Liao <jamesjj.liao@mediatek.com>
-
-> clk-next directly, but do we need to put the mt2701 patches on a
-> separate branch to merge into arm-soc? If so we'll need to put
-> this patch first to avoid bisection failures.
-
-I prefer to merge clk driver into mainline first. Patches that depend on
-mt2701 clks such as dtsi can base on next kernel release.
-
-
-Best regards,
-
-James
-
-
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index b1f0acb..a145130 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -1354,5 +1354,10 @@ int mtk_venc_lock(struct mtk_vcodec_ctx *ctx)
+ 
+ void mtk_vcodec_enc_release(struct mtk_vcodec_ctx *ctx)
+ {
+-	venc_if_deinit(ctx);
++	int ret = venc_if_deinit(ctx);
++
++	if (ret)
++		mtk_v4l2_err("venc_if_deinit failed=%d", ret);
++
++	ctx->state = MTK_STATE_FREE;
+ }
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index c7806ec..5cd2151 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -218,11 +218,15 @@ static int fops_vcodec_release(struct file *file)
+ 	mtk_v4l2_debug(1, "[%d] encoder", ctx->id);
+ 	mutex_lock(&dev->dev_mutex);
+ 
++	/*
++	 * Call v4l2_m2m_ctx_release to make sure the worker thread is not
++	 * running after venc_if_deinit.
++	 */
++	v4l2_m2m_ctx_release(ctx->m2m_ctx);
+ 	mtk_vcodec_enc_release(ctx);
+ 	v4l2_fh_del(&ctx->fh);
+ 	v4l2_fh_exit(&ctx->fh);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+-	v4l2_m2m_ctx_release(ctx->m2m_ctx);
+ 
+ 	list_del_init(&ctx->list);
+ 	dev->num_instances--;
+-- 
+1.7.9.5
