@@ -1,61 +1,34 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH net v3 1/3] net: ethernet: mediatek: fix RMII mode and add REVMII supported by GMAC
-Date: Tue, 16 Aug 2016 13:55:13 +0800
-Message-ID: <1471326915-15162-2-git-send-email-sean.wang@mediatek.com>
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [PATCH net v3 0/3] Fix warning and issue
+Date: Mon, 15 Aug 2016 23:08:54 -0700 (PDT)
+Message-ID: <20160815.230854.848606545686293886.davem@davemloft.net>
 References: <1471326915-15162-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1471326915-15162-1-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1471326915-15162-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch fixes up the incorrect setup of reduced MII (RMII) on GMAC
-and adds the supplement for the setup of reverse MII (REVMII) on GMAC
-, and rearranges the error handling for invalid PHY argument.
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Tue, 16 Aug 2016 13:55:12 +0800
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |   15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+> This patch set fixes the following warning and issues
+> 
+> v1 -> v2: Fix message typos and add coverletter
+> 
+> v2 -> v3: Split from the previous series for submitting bug fixes 
+> as a series targeting 'net'
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 88b04dd..f19b8b9 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -245,12 +245,16 @@ static int mtk_phy_connect(struct mtk_mac *mac)
- 	case PHY_INTERFACE_MODE_MII:
- 		ge_mode = 1;
- 		break;
--	case PHY_INTERFACE_MODE_RMII:
-+	case PHY_INTERFACE_MODE_REVMII:
- 		ge_mode = 2;
- 		break;
-+	case PHY_INTERFACE_MODE_RMII:
-+		if (!mac->id)
-+			goto err_phy;
-+		ge_mode = 3;
-+		break;
- 	default:
--		dev_err(eth->dev, "invalid phy_mode\n");
--		return -1;
-+		goto err_phy;
- 	}
- 
- 	/* put the gmac into the right mode */
-@@ -272,6 +276,11 @@ static int mtk_phy_connect(struct mtk_mac *mac)
- 	of_node_put(np);
- 
- 	return 0;
-+
-+err_phy:
-+	of_node_put(np);
-+	dev_err(eth->dev, "invalid phy_mode\n");
-+	return -EINVAL;
- }
- 
- static int mtk_mdio_init(struct mtk_eth *eth)
--- 
-1.7.9.5
+Series applied, thanks.
