@@ -1,44 +1,63 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [PATCH v12 2/4] CMDQ: Mediatek CMDQ driver
-Date: Tue, 16 Aug 2016 16:20:27 +0800
-Message-ID: <1471335627.22752.4.camel@mtksdaap41>
-References: <1470645093-13309-1-git-send-email-hs.liao@mediatek.com>
-	 <1470645093-13309-3-git-send-email-hs.liao@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v4 1/3] drm/mediatek: do mtk_hdmi_send_infoframe after HDMI
+ clock enable
+Date: Wed, 17 Aug 2016 14:58:06 +0800
+Message-ID: <1471417088-2993-2-git-send-email-bibby.hsieh@mediatek.com>
+References: <1471417088-2993-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1470645093-13309-3-git-send-email-hs.liao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>, Monica Wang <monica.wang@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1471417088-2993-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
-
-Sorry to disturb you.
-Do you have any further comment on CMDQ v12?
-
-Thanks.
-HS
-
-On Mon, 2016-08-08 at 16:31 +0800, HS Liao wrote:
-> This patch is first version of Mediatek Command Queue(CMDQ) driver. The
-> CMDQ is used to help write registers with critical time limitation,
-> such as updating display configuration during the vblank. It controls
-> Global Command Engine (GCE) hardware to achieve this requirement.
-> Currently, CMDQ only supports display related hardwares, but we expect
-> it can be extended to other hardwares for future requirements.
-> 
-> Signed-off-by: HS Liao <hs.liao@mediatek.com>
-> Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> ---
->  drivers/soc/mediatek/Kconfig    |  11 +
->  drivers/soc/mediatek/Makefile   |   1 +
->  drivers/soc/mediatek/mtk-cmdq.c | 948 ++++++++++++++++++++++++++++++++++++++++
->  include/soc/mediatek/cmdq.h     | 179 ++++++++
->  4 files changed, 1139 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mtk-cmdq.c
->  create mode 100644 include/soc/mediatek/cmdq.h
-> 
-[...]
+RnJvbTogSnVuemhpIFpoYW8gPGp1bnpoaS56aGFvQG1lZGlhdGVrLmNvbT4KClRoZSBtdGtfaGRt
+aV9zZW5kX2luZm9mcmFtZSBoYXZlIHRvCmJlIHJ1biBhZnRlciBQTEwgYW5kIFBJWEVMIGNsb2Nr
+IG9mIEhETUkgZW5hYmxlLgpNYWtlIHN1cmUgdGhhdCBIRE1JIGluZm9yZnJhbWVzIGNhbiBiZSBz
+ZW50CnN1Y2Nlc3NmdWxseS4KClNpZ25lZC1vZmYtYnk6IEp1bnpoaSBaaGFvIDxqdW56aGkuemhh
+b0BtZWRpYXRlay5jb20+ClNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVoIDxiaWJieS5oc2llaEBt
+ZWRpYXRlay5jb20+Ci0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAg
+IDE3ICsrKysrKysrKysrLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwg
+NiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCmluZGV4IDMzNDU2
+MmQuLjg3NWIwNDUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRt
+aS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCkBAIC0xMTMzLDEy
+ICsxMTMzLDYgQEAgc3RhdGljIGludCBtdGtfaGRtaV9vdXRwdXRfc2V0X2Rpc3BsYXlfbW9kZShz
+dHJ1Y3QgbXRrX2hkbWkgKmhkbWksCiAJcGh5X3Bvd2VyX29uKGhkbWktPnBoeSk7CiAJbXRrX2hk
+bWlfYXVkX291dHB1dF9jb25maWcoaGRtaSwgbW9kZSk7CiAKLQltdGtfaGRtaV9zZXR1cF9hdWRp
+b19pbmZvZnJhbWUoaGRtaSk7Ci0JbXRrX2hkbWlfc2V0dXBfYXZpX2luZm9mcmFtZShoZG1pLCBt
+b2RlKTsKLQltdGtfaGRtaV9zZXR1cF9zcGRfaW5mb2ZyYW1lKGhkbWksICJtZWRpYXRlayIsICJP
+bi1jaGlwIEhETUkiKTsKLQlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHXzNEX01BU0sp
+Ci0JCW10a19oZG1pX3NldHVwX3ZlbmRvcl9zcGVjaWZpY19pbmZvZnJhbWUoaGRtaSwgbW9kZSk7
+Ci0KIAltdGtfaGRtaV9od192aWRfYmxhY2soaGRtaSwgZmFsc2UpOwogCW10a19oZG1pX2h3X2F1
+ZF91bm11dGUoaGRtaSk7CiAJbXRrX2hkbWlfaHdfc2VuZF9hdl91bm11dGUoaGRtaSk7CkBAIC0x
+NDAxLDYgKzEzOTUsMTYgQEAgc3RhdGljIHZvaWQgbXRrX2hkbWlfYnJpZGdlX3ByZV9lbmFibGUo
+c3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKIAloZG1pLT5wb3dlcmVkID0gdHJ1ZTsKIH0KIAor
+c3RhdGljIHZvaWQgbXRrX2hkbWlfc2VuZF9pbmZvZnJhbWUoc3RydWN0IG10a19oZG1pICpoZG1p
+LAorCQkJCSAgICBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKK3sKKwltdGtfaGRtaV9z
+ZXR1cF9hdWRpb19pbmZvZnJhbWUoaGRtaSk7CisJbXRrX2hkbWlfc2V0dXBfYXZpX2luZm9mcmFt
+ZShoZG1pLCBtb2RlKTsKKwltdGtfaGRtaV9zZXR1cF9zcGRfaW5mb2ZyYW1lKGhkbWksICJtZWRp
+YXRlayIsICJPbi1jaGlwIEhETUkiKTsKKwlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFH
+XzNEX01BU0spCisJCW10a19oZG1pX3NldHVwX3ZlbmRvcl9zcGVjaWZpY19pbmZvZnJhbWUoaGRt
+aSwgbW9kZSk7Cit9CisKIHN0YXRpYyB2b2lkIG10a19oZG1pX2JyaWRnZV9lbmFibGUoc3RydWN0
+IGRybV9icmlkZ2UgKmJyaWRnZSkKIHsKIAlzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkgPSBoZG1pX2N0
+eF9mcm9tX2JyaWRnZShicmlkZ2UpOwpAQCAtMTQwOSw2ICsxNDEzLDcgQEAgc3RhdGljIHZvaWQg
+bXRrX2hkbWlfYnJpZGdlX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQogCWNsa19w
+cmVwYXJlX2VuYWJsZShoZG1pLT5jbGtbTVRLX0hETUlfQ0xLX0hETUlfUExMXSk7CiAJY2xrX3By
+ZXBhcmVfZW5hYmxlKGhkbWktPmNsa1tNVEtfSERNSV9DTEtfSERNSV9QSVhFTF0pOwogCXBoeV9w
+b3dlcl9vbihoZG1pLT5waHkpOworCW10a19oZG1pX3NlbmRfaW5mb2ZyYW1lKGhkbWksICZoZG1p
+LT5tb2RlKTsKIAogCWhkbWktPmVuYWJsZWQgPSB0cnVlOwogfQotLSAKMS43LjkuNQoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxp
+bmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
