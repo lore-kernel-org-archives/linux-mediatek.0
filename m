@@ -1,55 +1,73 @@
-From: Keerthy <a0393675-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] dt-bindings: thermal: Add binding document for
- Mediatek thermal controller
-Date: Thu, 18 Aug 2016 10:28:57 +0530
-Message-ID: <1b5a218d-0f39-5bed-6881-2f8b74708897@ti.com>
-References: <1471492253-7185-1-git-send-email-dawei.chien@mediatek.com>
- <1471492253-7185-2-git-send-email-dawei.chien@mediatek.com>
+From: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v7 0/3] AUXADC: Mediatek auxadc driver
+Date: Thu, 18 Aug 2016 15:11:34 +0800
+Message-ID: <1471504297-26947-1-git-send-email-zhiyong.tao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1471492253-7185-2-git-send-email-dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+This series includes three patches:
+1.Change the device tree binding documentation.
+2.Add auxadc driver based on linux iio.
+3.Add auxadc nodes in the mediatek MT2701 dtsi file.
 
+Changes in patch v7:
+changes since v6:
+-Rebase to v4.8-rcl.
 
-On Thursday 18 August 2016 09:20 AM, Dawei Chien wrote:
-> This adds the device tree binding documentation for the mediatek thermal
-> controller found on Mediatek MT2701.
+Changes in patch v6:
+1).Add commit message in auxadc node patch which dependents on "Add clock support for Mediatek MT2701"[1].
+2).Use val variable instead of rawdata variable and Change 'mutex_unlock' to 'goto err_timeout' in 'mt6577_auxadc_read'.
+3).Remove '.' in the log when failed to get auxadc base address.
+4).Change 'return -EINVAL' to 'return ret' and add 'ret = -EINVAL' when get null clock rate.
+5).Add inline function 'mt6577_auxadc_mod_reg' to replace read/modify/write code sequence.
 
-Reviewed-by: Keerthy <j-keerthy-l0cyMroinI0@public.gmane.org>
+Changes in patch v5:
+1).Add 'Acked-by' information in commit message.
+1).Change auxadc compatible in binding document.
+2).Remove power on failed check.
+3).Moved power off error unwind block to 'err_power_off'.
 
->
-> Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../bindings/thermal/mediatek-thermal.txt          |    4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> index 81f9a51..e2f494d 100644
-> --- a/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek-thermal.txt
-> @@ -8,7 +8,9 @@ apmixedsys register space via AHB bus accesses, so a phandle to the APMIXEDSYS
->  is also needed.
->
->  Required properties:
-> -- compatible: "mediatek,mt8173-thermal"
-> +- compatible:
-> +  - "mediatek,mt8173-thermal" : For MT8173 family of SoCs
-> +  - "mediatek,mt2701-thermal" : For MT2701 family of SoCs
->  - reg: Address range of the thermal controller
->  - interrupts: IRQ for the thermal controller
->  - clocks, clock-names: Clocks needed for the thermal controller. required
->
+Changes in patch v4:
+1).Change the file name 'mt65xx_auxdc.txt' to 'mt6577_auxdc.txt'.
+2).Remove 'break' after 'return' in 'mt6577_auxadc_read_raw'.
+3).Use 'mt2701' instead of 'auxadc' in dts commit message.
+4).Change 'auxadc@' to 'adc@' in mt2701.dtsi.
+
+Changes in patch v3:
+1).Add '#' before 'io-channel-cells' and change 'auxadc@' to 'adc@' in auxadc binding document.
+2).Fix CONFIG_MEDIATEK_MT65XX_AUXADC sequence as alphabetical order.
+3).Change the prefix 'MT65XX' to 'MT6577' to match auxadc driver name.
+4).Remove the delays stored in 'mt6577_auxadc_device' and use the defined delay directly.
+5).Use '-ETIMEDOUT' instead of '-EINVAL'.
+6).Return value directly in 'mt6577_auxadc_read_raw'.
+7).Add power off and unprepare clock if 'iio_device_register' failed.
+8).Change 'Registers' to 'Register'.
+
+Changes in patch v2:
+1).Change the file name mt65xx_auxadc.c to mt6577_auxadc.c.
+2).Add 'depends on ARCH_MEDIATEK || COMPILE_TEST and HAS_IOMEM' for MEDIATEK_MT65XX_AUXADC config.
+3).Add check case for return value of 'readl_poll_timeout'.
+4).Remove returning 1 and 0 for SCALE and OFFSET. use channel type 'IIO_CHAN_INFO_PROCESSED' instead of 'IIO_CHAN_INFO_RAW'.
+5).Remove 'IIO_CHAN_INFO_OFFSET' and 'IIO_CHAN_INFO_SCALE' in 'MT65XX_AUXADC_CHANNEL' channel type.
+6).Add check case when auxadc power on failure. if auxadc power on failure, clk_disable_unprepare should be executed.
+7).Put 'platform_set_drvdata' before 'iio_device_register'.
+8).Fix coding style and spelling error.
+
+Zhiyong Tao (3):
+  dt-bindings: auxadc: Add binding document for Mediatek auxadc.
+  iio: adc: mt2701: Add Mediatek auxadc driver for mt2701.
+  arm: dts: mt2701: Add auxadc node.
+
+ .../auxadc.txt => iio/adc/mt6577_auxadc.txt}       |   18 +-
+ arch/arm/boot/dts/mt2701.dtsi                      |    9 +
+ drivers/iio/adc/Kconfig                            |   13 +
+ drivers/iio/adc/Makefile                           |    1 +
+ drivers/iio/adc/mt6577_auxadc.c                    |  291 ++++++++++++++++++++
+ 5 files changed, 327 insertions(+), 5 deletions(-)
+ rename Documentation/devicetree/bindings/{soc/mediatek/auxadc.txt => iio/adc/mt6577_auxadc.txt} (46%)
+ create mode 100644 drivers/iio/adc/mt6577_auxadc.c
