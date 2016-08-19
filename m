@@ -1,43 +1,125 @@
-From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Subject: Re: [PATCH v3 3/4] media: Add Mediatek MDP Driver
-Date: Fri, 19 Aug 2016 08:03:29 +0200
-Message-ID: <2d18a4ee-69e6-e400-22b6-b3867b91b5c0@xs4all.nl>
-References: <1470751137-12403-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1470751137-12403-4-git-send-email-minghsiu.tsai@mediatek.com>
- <861e5c51-1333-fdc7-2793-d4741a48c72f@xs4all.nl>
- <1471586051.1540.11.camel@mtksdaap41>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: [PATCH v4 4/4] arm64: dts: mediatek: Add MDP for MT8173
+Date: Fri, 19 Aug 2016 19:39:27 +0800
+Message-ID: <1471606767-3218-5-git-send-email-minghsiu.tsai@mediatek.com>
+References: <1471606767-3218-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1471586051.1540.11.camel@mtksdaap41>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1471606767-3218-1-git-send-email-minghsiu.tsai@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/19/2016 07:54 AM, Minghsiu Tsai wrote:
-> On Mon, 2016-08-15 at 14:55 +0200, Hans Verkuil wrote:
->> On 08/09/2016 03:58 PM, Minghsiu Tsai wrote:
->> This isn't right. For VIDEO_CAPTURE you support the COMPOSE targets, and for
->> the VIDEO_OUTPUT you support the CROP targets. Right now I can use e.g. TGT_CROP
->> with VIDEO_CAPTURE, which isn't correct.
->>
->> s_selection has the same problem.
->>
-> 
-> So my understanding is
-> VIDEO_OUTPUT -> only allow to use target XXX_CROP_XXX
-> VIDEO_CAPTURE -> only allow to use target XXX_COMPOSE_XXX
-> 
-> Am I right?
+Add MDP node for MT8173
 
-Correct.
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   84 ++++++++++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
 
-Regards,
-
-	Hans
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 10f638f..cd93228 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -41,6 +41,14 @@
+ 		dpi0 = &dpi0;
+ 		dsi0 = &dsi0;
+ 		dsi1 = &dsi1;
++		mdp_rdma0 = &mdp_rdma0;
++		mdp_rdma1 = &mdp_rdma1;
++		mdp_rsz0 = &mdp_rsz0;
++		mdp_rsz1 = &mdp_rsz1;
++		mdp_rsz2 = &mdp_rsz2;
++		mdp_wdma0 = &mdp_wdma0;
++		mdp_wrot0 = &mdp_wrot0;
++		mdp_wrot1 = &mdp_wrot1;
+ 	};
+ 
+ 	cpus {
+@@ -716,6 +724,82 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mdp {
++			compatible = "mediatek,mt8173-mdp";
++			#address-cells = <2>;
++			#size-cells = <2>;
++			ranges;
++			mediatek,vpu = <&vpu>;
++
++			mdp_rdma0: rdma@14001000 {
++				compatible = "mediatek,mt8173-mdp-rdma";
++				reg = <0 0x14001000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++					 <&mmsys CLK_MM_MUTEX_32K>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++				iommus = <&iommu M4U_PORT_MDP_RDMA0>;
++				mediatek,larb = <&larb0>;
++			};
++
++			mdp_rdma1: rdma@14002000 {
++				compatible = "mediatek,mt8173-mdp-rdma";
++				reg = <0 0x14002000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_RDMA1>,
++					 <&mmsys CLK_MM_MUTEX_32K>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++				iommus = <&iommu M4U_PORT_MDP_RDMA1>;
++				mediatek,larb = <&larb4>;
++			};
++
++			mdp_rsz0: rsz@14003000 {
++				compatible = "mediatek,mt8173-mdp-rsz";
++				reg = <0 0x14003000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			};
++
++			mdp_rsz1: rsz@14004000 {
++				compatible = "mediatek,mt8173-mdp-rsz";
++				reg = <0 0x14004000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			};
++
++			mdp_rsz2: rsz@14005000 {
++				compatible = "mediatek,mt8173-mdp-rsz";
++				reg = <0 0x14005000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_RSZ2>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++			};
++
++			mdp_wdma0: wdma@14006000 {
++				compatible = "mediatek,mt8173-mdp-wdma";
++				reg = <0 0x14006000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_WDMA>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++				iommus = <&iommu M4U_PORT_MDP_WDMA>;
++				mediatek,larb = <&larb0>;
++			};
++
++			mdp_wrot0: wrot@14007000 {
++				compatible = "mediatek,mt8173-mdp-wrot";
++				reg = <0 0x14007000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_WROT0>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++				iommus = <&iommu M4U_PORT_MDP_WROT0>;
++				mediatek,larb = <&larb0>;
++			};
++
++			mdp_wrot1: wrot@14008000 {
++				compatible = "mediatek,mt8173-mdp-wrot";
++				reg = <0 0x14008000 0 0x1000>;
++				clocks = <&mmsys CLK_MM_MDP_WROT1>;
++				power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++				iommus = <&iommu M4U_PORT_MDP_WROT1>;
++				mediatek,larb = <&larb4>;
++			};
++		};
++
+ 		ovl0: ovl@1400c000 {
+ 			compatible = "mediatek,mt8173-disp-ovl";
+ 			reg = <0 0x1400c000 0 0x1000>;
+-- 
+1.7.9.5
