@@ -1,48 +1,113 @@
-From: Yonglong Wu <yonglong.wu@mediatek.com>
-Subject: [PATCH,v2] usb: hub: change CLEAR_FEATURE to SET_FEATURE
-Date: Fri, 19 Aug 2016 11:37:26 +0800
-Message-ID: <1471577846-15816-1-git-send-email-yonglong.wu@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v11 1/9] clk: mediatek: remove __init from clk registration functions
+Date: Fri, 19 Aug 2016 13:34:48 +0800
+Message-ID: <1471584896-9986-2-git-send-email-erin.lo@mediatek.com>
+References: <1471584896-9986-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1471584896-9986-1-git-send-email-erin.lo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Yonglong Wu <yonglong.wu@mediatek.com>, djkurtz@chromium.org, srv_heupstream@mediatek.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Alan Stern <stern@rowland.harvard.edu>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Yonglong Wu <yonglong.wu@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
 
-In USB20 specification, describes in chapter 9.4.5: The Remote Wakeup
-field can be modified by the SetFeature() and ClearFeature() requests
-using the DEVICE_REMOTE_WAKEUP feature selector.
+Remove __init from functions that will be used by init functions
+that support probe deferral.
 
-In USB30 specification, also describes in chapter 9.4.5: The Function
-Remote Wakeup field can be modified by the SetFeature() requests
-using the FUNCTION_SUSPEND feature selector. In chapter 9.4.9 Set
-Feature reference, it describes Function Remote Wake Enabled/Disabled
-at suspend options by SET_FEATURE.
-
-In USB30 specification only mentioned SetFeature(), so we need use
-SET_FEATURE replace CLEAR_FEATURE to disable USB30 function remote
-wakeup in suspend options.
-
-Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Signed-off-by: Erin Lo <erin.lo@mediatek.com>
 ---
- drivers/usb/core/hub.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-gate.c |  2 +-
+ drivers/clk/mediatek/clk-mtk.c  | 12 ++++++------
+ drivers/clk/mediatek/clk-pll.c  |  2 +-
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index bee1351..a6f5095 100644
---- a/drivers/usb/core/hub.c
-+++ b/drivers/usb/core/hub.c
-@@ -3111,7 +3111,7 @@ static int usb_disable_remote_wakeup(struct usb_device *udev)
- 				USB_CTRL_SET_TIMEOUT);
- 	else
- 		return usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
--				USB_REQ_CLEAR_FEATURE, USB_RECIP_INTERFACE,
-+				USB_REQ_SET_FEATURE, USB_RECIP_INTERFACE,
- 				USB_INTRF_FUNC_SUSPEND,	0, NULL, 0,
- 				USB_CTRL_SET_TIMEOUT);
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index 2a76901..d8787bf 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -97,7 +97,7 @@ const struct clk_ops mtk_clk_gate_ops_setclr_inv = {
+ 	.disable	= mtk_cg_disable_inv,
+ };
+ 
+-struct clk * __init mtk_clk_register_gate(
++struct clk *mtk_clk_register_gate(
+ 		const char *name,
+ 		const char *parent_name,
+ 		struct regmap *regmap,
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 5ada644..bb30f70 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -24,7 +24,7 @@
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+ 
+-struct clk_onecell_data * __init mtk_alloc_clk_data(unsigned int clk_num)
++struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
+ {
+ 	int i;
+ 	struct clk_onecell_data *clk_data;
+@@ -49,7 +49,7 @@ err_out:
+ 	return NULL;
  }
+ 
+-void __init mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
++void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
+ 		int num, struct clk_onecell_data *clk_data)
+ {
+ 	int i;
+@@ -72,7 +72,7 @@ void __init mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
+ 	}
+ }
+ 
+-void __init mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
++void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
+ 		int num, struct clk_onecell_data *clk_data)
+ {
+ 	int i;
+@@ -95,7 +95,7 @@ void __init mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
+ 	}
+ }
+ 
+-int __init mtk_clk_register_gates(struct device_node *node,
++int mtk_clk_register_gates(struct device_node *node,
+ 		const struct mtk_gate *clks,
+ 		int num, struct clk_onecell_data *clk_data)
+ {
+@@ -135,7 +135,7 @@ int __init mtk_clk_register_gates(struct device_node *node,
+ 	return 0;
+ }
+ 
+-struct clk * __init mtk_clk_register_composite(const struct mtk_composite *mc,
++struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		void __iomem *base, spinlock_t *lock)
+ {
+ 	struct clk *clk;
+@@ -222,7 +222,7 @@ err_out:
+ 	return ERR_PTR(ret);
+ }
+ 
+-void __init mtk_clk_register_composites(const struct mtk_composite *mcs,
++void mtk_clk_register_composites(const struct mtk_composite *mcs,
+ 		int num, void __iomem *base, spinlock_t *lock,
+ 		struct clk_onecell_data *clk_data)
+ {
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 966cab1..0c2deac 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -313,7 +313,7 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ 	return clk;
+ }
+ 
+-void __init mtk_clk_register_plls(struct device_node *node,
++void mtk_clk_register_plls(struct device_node *node,
+ 		const struct mtk_pll_data *plls, int num_plls, struct clk_onecell_data *clk_data)
+ {
+ 	void __iomem *base;
 -- 
-1.7.9.5
+1.9.1
