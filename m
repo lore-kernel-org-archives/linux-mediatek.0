@@ -1,45 +1,48 @@
-From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v10 8/9] arm: dts: mt2701: Add clock controller device
- nodes
-Date: Thu, 18 Aug 2016 17:18:05 -0700
-Message-ID: <20160819001805.GR361@codeaurora.org>
-References: <1471332629-15722-1-git-send-email-erin.lo@mediatek.com>
- <1471332629-15722-9-git-send-email-erin.lo@mediatek.com>
+From: Yonglong Wu <yonglong.wu@mediatek.com>
+Subject: [PATCH,v2] usb: hub: change CLEAR_FEATURE to SET_FEATURE
+Date: Fri, 19 Aug 2016 11:37:26 +0800
+Message-ID: <1471577846-15816-1-git-send-email-yonglong.wu@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1471332629-15722-9-git-send-email-erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Yonglong Wu <yonglong.wu@mediatek.com>, djkurtz@chromium.org, srv_heupstream@mediatek.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Alan Stern <stern@rowland.harvard.edu>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/16, Erin Lo wrote:
-> From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> Add clock controller nodes for MT2701, include topckgen, infracfg,
-> pericfg, apmixedsys, mmsys, imgsys, vdecsys, hifsys, ethsys and
-> bdpsys. This patch also add two oscillators that provide clocks for
-> MT2701.
-> 
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
+From: Yonglong Wu <yonglong.wu@mediatek.com>
 
-This should go through arm-soc tree, so do you need a stable
-branch in clk tree to pull through arm-soc, or are we going to
-wait a release cycle on the dts patches?
+In USB20 specification, describes in chapter 9.4.5: The Remote Wakeup
+field can be modified by the SetFeature() and ClearFeature() requests
+using the DEVICE_REMOTE_WAKEUP feature selector.
 
+In USB30 specification, also describes in chapter 9.4.5: The Function
+Remote Wakeup field can be modified by the SetFeature() requests
+using the FUNCTION_SUSPEND feature selector. In chapter 9.4.9 Set
+Feature reference, it describes Function Remote Wake Enabled/Disabled
+at suspend options by SET_FEATURE.
+
+In USB30 specification only mentioned SetFeature(), so we need use
+SET_FEATURE replace CLEAR_FEATURE to disable USB30 function remote
+wakeup in suspend options.
+
+Signed-off-by: Yonglong Wu <yonglong.wu@mediatek.com>
+---
+ drivers/usb/core/hub.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index bee1351..a6f5095 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -3111,7 +3111,7 @@ static int usb_disable_remote_wakeup(struct usb_device *udev)
+ 				USB_CTRL_SET_TIMEOUT);
+ 	else
+ 		return usb_control_msg(udev, usb_sndctrlpipe(udev, 0),
+-				USB_REQ_CLEAR_FEATURE, USB_RECIP_INTERFACE,
++				USB_REQ_SET_FEATURE, USB_RECIP_INTERFACE,
+ 				USB_INTRF_FUNC_SUSPEND,	0, NULL, 0,
+ 				USB_CTRL_SET_TIMEOUT);
+ }
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+1.7.9.5
