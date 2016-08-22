@@ -1,59 +1,36 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v7 3/3] arm: dts: mt2701: Add auxadc node.
-Date: Sun, 21 Aug 2016 19:58:40 +0100
-Message-ID: <c238236c-2445-7802-6f2e-2f4776778c36@kernel.org>
-References: <1471504297-26947-1-git-send-email-zhiyong.tao@mediatek.com>
- <1471504297-26947-4-git-send-email-zhiyong.tao@mediatek.com>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 2/4] dt-bindings: Add a binding for Mediatek MDP
+Date: Mon, 22 Aug 2016 09:08:02 +0800
+Message-ID: <1471828082.30956.1.camel@mtksdaap41>
+References: <1471606767-3218-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <1471606767-3218-3-git-send-email-minghsiu.tsai@mediatek.com>
+         <20160819141655.GA18486@rob-hp-laptop>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1471504297-26947-4-git-send-email-zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <20160819141655.GA18486@rob-hp-laptop>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 18/08/16 08:11, Zhiyong Tao wrote:
-> The commit adds auxadc nodes to the Mediatek MT2701 dtsi file.
+On Fri, 2016-08-19 at 09:16 -0500, Rob Herring wrote:
+> On Fri, Aug 19, 2016 at 07:39:25PM +0800, Minghsiu Tsai wrote:
+> > Add a DT binding documentation of MDP for the MT8173 SoC
+> > from Mediatek
+> > 
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  .../devicetree/bindings/media/mediatek-mdp.txt     |  109 ++++++++++++++++++++
+> >  1 file changed, 109 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
 > 
-> Signed-off-by: Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
-> This patch dependents on "Add clock support for Mediatek MT2701"[1].
-> Please accept this patch together with [1].
-> [1]http://lists.infradead.org/pipermail/linux-mediatek/2016-August/006620.html
-Guessing this is working it's way ultimately through arm-soc.  Patches
-1 and 2 are now heading through the iio / staging-iio route and should be
-merging in the next merge window if nothing odd happens.
+> Please add acks when posting new versions.
+> 
+> Rob
 
-Thanks,
-
-Jonathan
-> ---
->  arch/arm/boot/dts/mt2701.dtsi |    9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index 7eab6f4..8e6a18c 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -175,6 +175,15 @@
->  		      <0 0x10216000 0 0x2000>;
->  	};
->  
-> +	auxadc: adc@11001000 {
-> +		compatible = "mediatek,mt2701-auxadc";
-> +		reg = <0 0x11001000 0 0x1000>;
-> +		clocks = <&pericfg CLK_PERI_AUXADC>;
-> +		clock-names = "main";
-> +		#io-channel-cells = <1>;
-> +		status = "disabled";
-> +	};
-> +
->  	uart0: serial@11002000 {
->  		compatible = "mediatek,mt2701-uart",
->  			     "mediatek,mt6577-uart";
-> 
+Sorry for my mistake. I will add it in next version.
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
