@@ -1,367 +1,422 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH net-next] net: ethernet: mediatek: modify to use the PDMA
- instead of the QDMA for Ethernet RX
-Date: Wed, 24 Aug 2016 15:57:02 +0200
-Message-ID: <382defe8-fb7e-7b24-c628-d9666389a347@phrozen.org>
-References: <1472042992-911-1-git-send-email-nelson.chang@mediatek.com>
- <a1b6a821-fdc1-0946-f526-68639bedadfc@phrozen.org>
- <6133E9B12438EA40B35401C719F0B99B0118AF8846@mtkmbs01n1>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH v12 1/4] clk: mediatek: Add MT2701 clock support
+Date: Wed, 24 Aug 2016 10:49:17 -0700
+Message-ID: <20160824174917.GB19826@codeaurora.org>
+References: <1471854565-19810-1-git-send-email-erin.lo@mediatek.com>
+ <1471854565-19810-2-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <6133E9B12438EA40B35401C719F0B99B0118AF8846@mtkmbs01n1>
-Sender: netdev-owner@vger.kernel.org
-To: =?UTF-8?B?TmVsc29uIENoYW5nICjlvLXlrrbnpaUp?= <nelson.chang@mediatek.com>, "davem@davemloft.net" <davem@davemloft.net>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Felix Fietkau <nbd@nbd.name>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "nelsonch.tw@gmail.com" <nelsonch.tw@gmail.com>, =?UTF-8?B?U2VhbiBXYW5nICjnjovlv5fkupgp?= <sean.wang@mediatek.com>, =?UTF-8?B?U3RldmVuIExpdSAo5YqJ5Lq66LGqKQ==?= <steven.liu@mediatek.com>, =?UTF-8?B?Q2FybG9zIEh1YW5nICjpu4Plo6vlvbAp?= <Carlos.Huang@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1471854565-19810-2-git-send-email-erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mike Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+On 08/22, Erin Lo wrote:
+> +
+> +static void __init mtk_infrasys_init_early(struct device_node *node)
+> +{
+> +	int r, i;
+> +
+> +	if (!infra_clk_data) {
+> +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
+> +
+> +		for (i = 0; i < CLK_INFRA_NR; i++)
+> +			infra_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
+> +	}
+> +
+> +	mtk_clk_register_factors(infra_fixed_divs, ARRAY_SIZE(infra_fixed_divs),
+> +						infra_clk_data);
+> +
+> +	r = of_clk_add_provider(node, of_clk_src_onecell_get, infra_clk_data);
+> +	if (r)
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +			__func__, r);
+> +}
+> +CLK_OF_DECLARE(mtk_infra, "mediatek,mt2701-infracfg", mtk_infrasys_init_early);
 
+This should use CLK_OF_DECLARE_DRIVER? Has this been tested on
+latest clk-next? Some recent patches make it so that
+CLK_OF_DECLARE() prevents platform devices from being created for
+the associated DT nodes that match during of_clk_init().
 
-On 24/08/2016 15:39, Nelson Chang (張家祥) wrote:
-> Hi John,
-> 
-> The QDMA only has one RX and is without HW LRO feature. The HW QoS is QDMA's
->  TX feature with multiple TX rings.
-> The Mediatek Ethernet hardware added the features of HW LRO and multiple RX
->  rings started from MT7623, but they are only add in the PDMA, not in the
->  QDMA.
-> So we would like to modify to use PDMA for RX to add the features of HW LRO
->  and multiple RX ring in the future.
+> +
+> +static int mtk_infrasys_init(struct device_node *node)
+> +{
+> +	int r, i;
+> +
+> +	if (!infra_clk_data) {
+> +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
+> +	} else {
+> +		for (i = 0; i < CLK_INFRA_NR; i++) {
+> +			if (infra_clk_data->clks[i] == ERR_PTR(-EPROBE_DEFER))
+> +				infra_clk_data->clks[i] = ERR_PTR(-ENOENT);
+> +		}
+> +	}
+> +
+> +	mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
+> +						infra_clk_data);
+> +	mtk_clk_register_factors(infra_fixed_divs, ARRAY_SIZE(infra_fixed_divs),
+> +						infra_clk_data);
+> +
+> +	r = of_clk_add_provider(node, of_clk_src_onecell_get, infra_clk_data);
+> +	if (r)
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +			__func__, r);
+> +
+> +	return r;
+> +}
+> +
+> +static const struct mtk_gate_regs peri0_cg_regs = {
+> +	.set_ofs = 0x0008,
+> +	.clr_ofs = 0x0010,
+> +	.sta_ofs = 0x0018,
+> +};
+> +
+> +static const struct mtk_gate_regs peri1_cg_regs = {
+> +	.set_ofs = 0x000c,
+> +	.clr_ofs = 0x0014,
+> +	.sta_ofs = 0x001c,
+> +};
+> +
+> +#define GATE_PERI0(_id, _name, _parent, _shift) {	\
+> +		.id = _id,				\
+> +		.name = _name,				\
+> +		.parent_name = _parent,			\
+> +		.regs = &peri0_cg_regs,			\
+> +		.shift = _shift,			\
+> +		.ops = &mtk_clk_gate_ops_setclr,	\
+> +	}
+> +
+> +#define GATE_PERI1(_id, _name, _parent, _shift) {	\
+> +		.id = _id,				\
+> +		.name = _name,				\
+> +		.parent_name = _parent,			\
+> +		.regs = &peri1_cg_regs,			\
+> +		.shift = _shift,			\
+> +		.ops = &mtk_clk_gate_ops_setclr,	\
+> +	}
+> +
+> +static const struct mtk_gate peri_clks[] = {
+> +	GATE_PERI1(CLK_PERI_USB0_MCU, "usb0_mcu_ck", "axi_sel", 31),
+> +	GATE_PERI1(CLK_PERI_ETH, "eth_ck", "clk26m", 30),
+> +	GATE_PERI1(CLK_PERI_SPI0, "spi0_ck", "spi0_sel", 29),
+> +	GATE_PERI1(CLK_PERI_AUXADC, "auxadc_ck", "clk26m", 28),
+> +	GATE_PERI0(CLK_PERI_I2C3, "i2c3_ck", "clk26m", 27),
+> +	GATE_PERI0(CLK_PERI_I2C2, "i2c2_ck", "axi_sel", 26),
+> +	GATE_PERI0(CLK_PERI_I2C1, "i2c1_ck", "axi_sel", 25),
+> +	GATE_PERI0(CLK_PERI_I2C0, "i2c0_ck", "axi_sel", 24),
+> +	GATE_PERI0(CLK_PERI_BTIF, "bitif_ck", "axi_sel", 23),
+> +	GATE_PERI0(CLK_PERI_UART3, "uart3_ck", "axi_sel", 22),
+> +	GATE_PERI0(CLK_PERI_UART2, "uart2_ck", "axi_sel", 21),
+> +	GATE_PERI0(CLK_PERI_UART1, "uart1_ck", "axi_sel", 20),
+> +	GATE_PERI0(CLK_PERI_UART0, "uart0_ck", "axi_sel", 19),
+> +	GATE_PERI0(CLK_PERI_NLI, "nli_ck", "axi_sel", 18),
+> +	GATE_PERI0(CLK_PERI_MSDC50_3, "msdc50_3_ck", "emmc_hclk_sel", 17),
+> +	GATE_PERI0(CLK_PERI_MSDC30_3, "msdc30_3_ck", "msdc30_3_sel", 16),
+> +	GATE_PERI0(CLK_PERI_MSDC30_2, "msdc30_2_ck", "msdc30_2_sel", 15),
+> +	GATE_PERI0(CLK_PERI_MSDC30_1, "msdc30_1_ck", "msdc30_1_sel", 14),
+> +	GATE_PERI0(CLK_PERI_MSDC30_0, "msdc30_0_ck", "msdc30_0_sel", 13),
+> +	GATE_PERI0(CLK_PERI_AP_DMA, "ap_dma_ck", "axi_sel", 12),
+> +	GATE_PERI0(CLK_PERI_USB1, "usb1_ck", "usb20_sel", 11),
+> +	GATE_PERI0(CLK_PERI_USB0, "usb0_ck", "usb20_sel", 10),
+> +	GATE_PERI0(CLK_PERI_PWM, "pwm_ck", "axi_sel", 9),
+> +	GATE_PERI0(CLK_PERI_PWM7, "pwm7_ck", "axi_sel", 8),
+> +	GATE_PERI0(CLK_PERI_PWM6, "pwm6_ck", "axi_sel", 7),
+> +	GATE_PERI0(CLK_PERI_PWM5, "pwm5_ck", "axi_sel", 6),
+> +	GATE_PERI0(CLK_PERI_PWM4, "pwm4_ck", "axi_sel", 5),
+> +	GATE_PERI0(CLK_PERI_PWM3, "pwm3_ck", "axi_sel", 4),
+> +	GATE_PERI0(CLK_PERI_PWM2, "pwm2_ck", "axi_sel", 3),
+> +	GATE_PERI0(CLK_PERI_PWM1, "pwm1_ck", "axi_sel", 2),
+> +	GATE_PERI0(CLK_PERI_THERM, "therm_ck", "axi_sel", 1),
+> +	GATE_PERI0(CLK_PERI_NFI, "nfi_ck", "nfi2x_sel", 0),
+> +
+> +	GATE_PERI1(CLK_PERI_FCI, "fci_ck", "ms_card_sel", 11),
+> +	GATE_PERI1(CLK_PERI_SPI2, "spi2_ck", "spi2_sel", 10),
+> +	GATE_PERI1(CLK_PERI_SPI1, "spi1_ck", "spi1_sel", 9),
+> +	GATE_PERI1(CLK_PERI_HOST89_DVD, "host89_dvd_ck", "aud2dvd_sel", 8),
+> +	GATE_PERI1(CLK_PERI_HOST89_SPI, "host89_spi_ck", "spi0_sel", 7),
+> +	GATE_PERI1(CLK_PERI_HOST89_INT, "host89_int_ck", "axi_sel", 6),
+> +	GATE_PERI1(CLK_PERI_FLASH, "flash_ck", "nfi2x_sel", 5),
+> +	GATE_PERI1(CLK_PERI_NFI_PAD, "nfi_pad_ck", "nfi1x_pad", 4),
+> +	GATE_PERI1(CLK_PERI_NFI_ECC, "nfi_ecc_ck", "nfi1x_pad", 3),
+> +	GATE_PERI1(CLK_PERI_GCPU, "gcpu_ck", "axi_sel", 2),
+> +	GATE_PERI1(CLK_PERI_USB_SLV, "usbslv_ck", "axi_sel", 1),
+> +	GATE_PERI1(CLK_PERI_USB1_MCU, "usb1_mcu_ck", "axi_sel", 0),
+> +};
+> +
+> +static const char * const uart_ck_sel_parents[] = {
+> +	"clk26m",
+> +	"uart_sel",
+> +};
+> +
+> +static const struct mtk_composite peri_muxs[] = {
+> +	MUX(CLK_PERI_UART0_SEL, "uart0_ck_sel", uart_ck_sel_parents,
+> +		0x40c, 0, 1),
+> +	MUX(CLK_PERI_UART1_SEL, "uart1_ck_sel", uart_ck_sel_parents,
+> +		0x40c, 1, 1),
+> +	MUX(CLK_PERI_UART2_SEL, "uart2_ck_sel", uart_ck_sel_parents,
+> +		0x40c, 2, 1),
+> +	MUX(CLK_PERI_UART3_SEL, "uart3_ck_sel", uart_ck_sel_parents,
+> +		0x40c, 3, 1),
+> +};
+> +
+> +static int mtk_pericfg_init(struct device_node *node)
+> +{
+> +	struct clk_onecell_data *clk_data;
+> +	void __iomem *base;
+> +	int r;
+> +
+> +	base = of_iomap(node, 0);
+> +	if (!base) {
+> +		pr_err("%s(): ioremap failed\n", __func__);
 
-in general there is nothing to prevent this change but my understanding
-was that QDMA HWLRO was broken on mt7621, which is why we used 2 DMA
-engines on that SoC and that it was fixed on MT7623.
+Please pass the device structure to these callbacks so that we
+can use standard devm_ioremap() type APIs like normal platform
+drivers.
 
-when i wrote this driver a specific requirement from MTK/WCN was to have
-TX and RX QDMA. if this requirement has changed then fine. please do
-confirm though that you really want PDMA for RX.
+> +		return -ENOMEM;
+> +	}
+> +
+> +	clk_data = mtk_alloc_clk_data(CLK_PERI_NR);
+> +
+> +	mtk_clk_register_gates(node, peri_clks, ARRAY_SIZE(peri_clks),
+> +						clk_data);
+> +
+> +	mtk_clk_register_composites(peri_muxs, ARRAY_SIZE(peri_muxs), base,
+> +			&lock, clk_data);
+> +
+> +	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +	if (r)
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +			__func__, r);
+> +
+> +	return r;
+> +}
+> +
+> +#define MT8590_PLL_FMAX		(2000 * MHZ)
+> +#define CON0_MT8590_RST_BAR	BIT(27)
+> +
+> +#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg, \
+> +			_pd_shift, _tuner_reg, _pcw_reg, _pcw_shift) {	\
+> +		.id = _id,						\
+> +		.name = _name,						\
+> +		.reg = _reg,						\
+> +		.pwr_reg = _pwr_reg,					\
+> +		.en_mask = _en_mask,					\
+> +		.flags = _flags,					\
+> +		.rst_bar_mask = CON0_MT8590_RST_BAR,			\
+> +		.fmax = MT8590_PLL_FMAX,				\
+> +		.pcwbits = _pcwbits,					\
+> +		.pd_reg = _pd_reg,					\
+> +		.pd_shift = _pd_shift,					\
+> +		.tuner_reg = _tuner_reg,				\
+> +		.pcw_reg = _pcw_reg,					\
+> +		.pcw_shift = _pcw_shift,				\
+> +	}
+> +
+> +static const struct mtk_pll_data apmixed_plls[] = {
+> +	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x200, 0x20c, 0x80000001,
+> +			PLL_AO, 21, 0x204, 24, 0x0, 0x204, 0),
+> +	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x210, 0x21c, 0xf0000001,
+> +		  HAVE_RST_BAR, 21, 0x210, 4, 0x0, 0x214, 0),
+> +	PLL(CLK_APMIXED_UNIVPLL, "univpll", 0x220, 0x22c, 0xf3000001,
+> +		  HAVE_RST_BAR, 7, 0x220, 4, 0x0, 0x224, 14),
+> +	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x230, 0x23c, 0x00000001, 0,
+> +				21, 0x230, 4, 0x0, 0x234, 0),
+> +	PLL(CLK_APMIXED_MSDCPLL, "msdcpll", 0x240, 0x24c, 0x00000001, 0,
+> +				21, 0x240, 4, 0x0, 0x244, 0),
+> +	PLL(CLK_APMIXED_TVDPLL, "tvdpll", 0x250, 0x25c, 0x00000001, 0,
+> +				21, 0x250, 4, 0x0, 0x254, 0),
+> +	PLL(CLK_APMIXED_AUD1PLL, "aud1pll", 0x270, 0x27c, 0x00000001, 0,
+> +				31, 0x270, 4, 0x0, 0x274, 0),
+> +	PLL(CLK_APMIXED_TRGPLL, "trgpll", 0x280, 0x28c, 0x00000001, 0,
+> +				31, 0x280, 4, 0x0, 0x284, 0),
+> +	PLL(CLK_APMIXED_ETHPLL, "ethpll", 0x290, 0x29c, 0x00000001, 0,
+> +				31, 0x290, 4, 0x0, 0x294, 0),
+> +	PLL(CLK_APMIXED_VDECPLL, "vdecpll", 0x2a0, 0x2ac, 0x00000001, 0,
+> +				31, 0x2a0, 4, 0x0, 0x2a4, 0),
+> +	PLL(CLK_APMIXED_HADDS2PLL, "hadds2pll", 0x2b0, 0x2bc, 0x00000001, 0,
+> +				31, 0x2b0, 4, 0x0, 0x2b4, 0),
+> +	PLL(CLK_APMIXED_AUD2PLL, "aud2pll", 0x2c0, 0x2cc, 0x00000001, 0,
+> +				31, 0x2c0, 4, 0x0, 0x2c4, 0),
+> +	PLL(CLK_APMIXED_TVD2PLL, "tvd2pll", 0x2d0, 0x2dc, 0x00000001, 0,
+> +				21, 0x2d0, 4, 0x0, 0x2d4, 0),
+> +};
+> +
+> +static int mtk_apmixedsys_init(struct device_node *node)
+> +{
+> +	struct clk_onecell_data *clk_data;
+> +	int r;
+> +
+> +	clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR);
+> +	if (!clk_data)
+> +		return -ENOMEM;
+> +
+> +	mtk_clk_register_plls(node, apmixed_plls, ARRAY_SIZE(apmixed_plls),
+> +								clk_data);
+> +
+> +	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+> +	if (r)
+> +		pr_err("%s(): could not register clock provider: %d\n",
+> +			__func__, r);
 
-	John
+These three lines could be moved to the caller so taht we don't
+duplicate the same logic over and over.
 
+> +
+> +	return r;
+> +}
+> +
+> +static const struct of_device_id of_match_clk_mt2701[] = {
+> +	{
+> +		.compatible = "mediatek,mt2701-topckgen",
+> +		.data = mtk_topckgen_init,
+> +	}, {
+> +		.compatible = "mediatek,mt2701-infracfg",
+> +		.data = mtk_infrasys_init,
+> +	}, {
+> +		.compatible = "mediatek,mt2701-pericfg",
+> +		.data = mtk_pericfg_init,
+> +	}, {
+> +		.compatible = "mediatek,mt2701-apmixedsys",
+> +		.data = mtk_apmixedsys_init,
+> +	}, {
+> +		/* sentinel */
+> +	}
+> +};
+> +
+> +static int clk_mt2701_probe(struct platform_device *pdev)
+> +{
+> +	int (*clk_init)(struct device_node *);
+> +	const struct of_device_id *of_id;
+> +
+> +	pr_warn("%s():%d: %s\n", __func__, __LINE__, pdev->name);
+> +
+> +	of_id = of_match_node(of_match_clk_mt2701, pdev->dev.of_node);
+> +	if (!of_id || !of_id->data)
+> +		return -EINVAL;
 
+This can be
 
+	clk_init = of_device_get_match_data(of_match_clk_mt2701, &pdev->dev);
+	if (!clk_init)
+		return -EINVAL;
 
-> Thanks.
-> 
-> 
-> BRs,
-> Nelson
-> -----Original Message-----
-> From: John Crispin [mailto:john@phrozen.org] 
-> Sent: Wednesday, August 24, 2016 8:58 PM
-> To: Nelson Chang (張家祥); davem@davemloft.net
-> Cc: netdev@vger.kernel.org; Felix Fietkau;
->  linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com; Sean Wang
->  (王志亘); Steven Liu (劉人豪); Carlos Huang (黃士彰)
-> Subject: Re: [PATCH net-next] net: ethernet: mediatek: modify to use the
->  PDMA instead of the QDMA for Ethernet RX
-> 
-> 
-> 
-> On 24/08/2016 14:49, Nelson Chang wrote:
->> Because the PDMA has richer features than the QDMA for Ethernet RX 
->> (such as multiple RX rings, HW LRO, etc.), the patch modifies to use 
->> the PDMA to handle Ethernet RX.
-> 
-> Hi,
-> 
-> QDMA support is needed for the HW QoS to work. QDMA also has HW_LRO support
->  you just need to port the additional code from the MTK SDK to make it work.
->  additionally QDMA has more than 1 internal ring/queue that you can use, you
->  would need to change the RX ring to be a linked list and enable that
->  feature as is already done in the RX path.
-> 
-> although the patch is technically not wrong i am not sure if it makes sense
->  and the description is for certain not correct. could it be that you are
->  basing your assumption on some old SDK ethernet driver ? newer version have
->  the described features for the new QDMA engine supported if i am not
->  mistaken.
-> 
-> 	John
-> 
->>
->> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
->> ---
->>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 72 
->> +++++++++++++++++------------  
->> drivers/net/ethernet/mediatek/mtk_eth_soc.h | 31 ++++++++++++-
->>  2 files changed, 72 insertions(+), 31 deletions(-)  mode change 
->> 100644 => 100755 drivers/net/ethernet/mediatek/mtk_eth_soc.c
->>  mode change 100644 => 100755 
->> drivers/net/ethernet/mediatek/mtk_eth_soc.h
->>
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c 
->> b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->> old mode 100644
->> new mode 100755
->> index 1801fd8..27a9156
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
->> @@ -342,25 +342,27 @@ static void mtk_mdio_cleanup(struct mtk_eth *eth)
->>  	mdiobus_free(eth->mii_bus);
->>  }
->>  
->> -static inline void mtk_irq_disable(struct mtk_eth *eth, u32 mask)
->> +static inline void mtk_irq_disable(struct mtk_eth *eth,
->> +				   unsigned reg, u32 mask)
->>  {
->>  	unsigned long flags;
->>  	u32 val;
->>  
->>  	spin_lock_irqsave(&eth->irq_lock, flags);
->> -	val = mtk_r32(eth, MTK_QDMA_INT_MASK);
->> -	mtk_w32(eth, val & ~mask, MTK_QDMA_INT_MASK);
->> +	val = mtk_r32(eth, reg);
->> +	mtk_w32(eth, val & ~mask, reg);
->>  	spin_unlock_irqrestore(&eth->irq_lock, flags);  }
->>  
->> -static inline void mtk_irq_enable(struct mtk_eth *eth, u32 mask)
->> +static inline void mtk_irq_enable(struct mtk_eth *eth,
->> +				  unsigned reg, u32 mask)
->>  {
->>  	unsigned long flags;
->>  	u32 val;
->>  
->>  	spin_lock_irqsave(&eth->irq_lock, flags);
->> -	val = mtk_r32(eth, MTK_QDMA_INT_MASK);
->> -	mtk_w32(eth, val | mask, MTK_QDMA_INT_MASK);
->> +	val = mtk_r32(eth, reg);
->> +	mtk_w32(eth, val | mask, reg);
->>  	spin_unlock_irqrestore(&eth->irq_lock, flags);  }
->>  
->> @@ -1012,7 +1014,7 @@ static int mtk_napi_tx(struct napi_struct *napi, int
->  budget)
->>  		return budget;
->>  
->>  	napi_complete(napi);
->> -	mtk_irq_enable(eth, MTK_TX_DONE_INT);
->> +	mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->>  
->>  	return tx_done;
->>  }
->> @@ -1024,12 +1026,12 @@ static int mtk_napi_rx(struct napi_struct *napi,
->  int budget)
->>  	int rx_done = 0;
->>  
->>  	mtk_handle_status_irq(eth);
->> -	mtk_w32(eth, MTK_RX_DONE_INT, MTK_QMTK_INT_STATUS);
->> +	mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
->>  	rx_done = mtk_poll_rx(napi, budget, eth);
->>  
->>  	if (unlikely(netif_msg_intr(eth))) {
->> -		status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
->> -		mask = mtk_r32(eth, MTK_QDMA_INT_MASK);
->> +		status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
->> +		mask = mtk_r32(eth, MTK_PDMA_INT_MASK);
->>  		dev_info(eth->dev,
->>  			 "done rx %d, intr 0x%08x/0x%x\n",
->>  			 rx_done, status, mask);
->> @@ -1038,12 +1040,12 @@ static int mtk_napi_rx(struct napi_struct *napi,
->  int budget)
->>  	if (rx_done == budget)
->>  		return budget;
->>  
->> -	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
->> +	status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
->>  	if (status & MTK_RX_DONE_INT)
->>  		return budget;
->>  
->>  	napi_complete(napi);
->> -	mtk_irq_enable(eth, MTK_RX_DONE_INT);
->> +	mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  
->>  	return rx_done;
->>  }
->> @@ -1092,6 +1094,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
->>  	mtk_w32(eth,
->>  		ring->phys + ((MTK_DMA_SIZE - 1) * sz),
->>  		MTK_QTX_DRX_PTR);
->> +	mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES, 
->> +MTK_QTX_CFG(0));
->>  
->>  	return 0;
->>  
->> @@ -1162,11 +1165,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth)
->>  	 */
->>  	wmb();
->>  
->> -	mtk_w32(eth, eth->rx_ring.phys, MTK_QRX_BASE_PTR0);
->> -	mtk_w32(eth, MTK_DMA_SIZE, MTK_QRX_MAX_CNT0);
->> -	mtk_w32(eth, eth->rx_ring.calc_idx, MTK_QRX_CRX_IDX0);
->> -	mtk_w32(eth, MTK_PST_DRX_IDX0, MTK_QDMA_RST_IDX);
->> -	mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES, MTK_QTX_CFG(0));
->> +	mtk_w32(eth, eth->rx_ring.phys, MTK_PRX_BASE_PTR0);
->> +	mtk_w32(eth, MTK_DMA_SIZE, MTK_PRX_MAX_CNT0);
->> +	mtk_w32(eth, eth->rx_ring.calc_idx, MTK_PRX_CRX_IDX0);
->> +	mtk_w32(eth, MTK_PST_DRX_IDX0, MTK_PDMA_RST_IDX);
->>  
->>  	return 0;
->>  }
->> @@ -1285,7 +1287,7 @@ static irqreturn_t mtk_handle_irq_rx(int irq, 
->> void *_eth)
->>  
->>  	if (likely(napi_schedule_prep(&eth->rx_napi))) {
->>  		__napi_schedule(&eth->rx_napi);
->> -		mtk_irq_disable(eth, MTK_RX_DONE_INT);
->> +		mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  	}
->>  
->>  	return IRQ_HANDLED;
->> @@ -1297,7 +1299,7 @@ static irqreturn_t mtk_handle_irq_tx(int irq, 
->> void *_eth)
->>  
->>  	if (likely(napi_schedule_prep(&eth->tx_napi))) {
->>  		__napi_schedule(&eth->tx_napi);
->> -		mtk_irq_disable(eth, MTK_TX_DONE_INT);
->> +		mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->>  	}
->>  
->>  	return IRQ_HANDLED;
->> @@ -1308,11 +1310,12 @@ static void mtk_poll_controller(struct 
->> net_device *dev)  {
->>  	struct mtk_mac *mac = netdev_priv(dev);
->>  	struct mtk_eth *eth = mac->hw;
->> -	u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
->>  
->> -	mtk_irq_disable(eth, int_mask);
->> +	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->> +	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  	mtk_handle_irq_rx(eth->irq[2], dev);
->> -	mtk_irq_enable(eth, int_mask);
->> +	mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->> +	mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  }
->>  #endif
->>  
->> @@ -1327,11 +1330,15 @@ static int mtk_start_dma(struct mtk_eth *eth)
->>  	}
->>  
->>  	mtk_w32(eth,
->> -		MTK_TX_WB_DDONE | MTK_RX_DMA_EN | MTK_TX_DMA_EN |
->> -		MTK_RX_2B_OFFSET | MTK_DMA_SIZE_16DWORDS |
->> -		MTK_RX_BT_32DWORDS | MTK_NDP_CO_PRO,
->> +		MTK_TX_WB_DDONE | MTK_TX_DMA_EN |
->> +		MTK_DMA_SIZE_16DWORDS | MTK_NDP_CO_PRO,
->>  		MTK_QDMA_GLO_CFG);
->>  
->> +	mtk_w32(eth,
->> +		MTK_RX_DMA_EN | MTK_RX_2B_OFFSET |
->> +		MTK_RX_BT_32DWORDS | MTK_MULTI_EN,
->> +		MTK_PDMA_GLO_CFG);
->> +
->>  	return 0;
->>  }
->>  
->> @@ -1349,7 +1356,8 @@ static int mtk_open(struct net_device *dev)
->>  
->>  		napi_enable(&eth->tx_napi);
->>  		napi_enable(&eth->rx_napi);
->> -		mtk_irq_enable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
->> +		mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->> +		mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  	}
->>  	atomic_inc(&eth->dma_refcnt);
->>  
->> @@ -1394,7 +1402,8 @@ static int mtk_stop(struct net_device *dev)
->>  	if (!atomic_dec_and_test(&eth->dma_refcnt))
->>  		return 0;
->>  
->> -	mtk_irq_disable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
->> +	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
->> +	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
->>  	napi_disable(&eth->tx_napi);
->>  	napi_disable(&eth->rx_napi);
->>  
->> @@ -1448,7 +1457,9 @@ static int __init mtk_hw_init(struct mtk_eth 
->> *eth)
->>  
->>  	/* disable delay and normal interrupt */
->>  	mtk_w32(eth, 0, MTK_QDMA_DELAY_INT);
->> -	mtk_irq_disable(eth, ~0);
->> +	mtk_w32(eth, 0, MTK_PDMA_DELAY_INT);
->> +	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, ~0);
->> +	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, ~0);
->>  	mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
->>  	mtk_w32(eth, 0, MTK_RST_GL);
->>  
->> @@ -1504,7 +1515,8 @@ static void mtk_uninit(struct net_device *dev)
->>  
->>  	phy_disconnect(mac->phy_dev);
->>  	mtk_mdio_cleanup(eth);
->> -	mtk_irq_disable(eth, ~0);
->> +	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, ~0);
->> +	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, ~0);
->>  	free_irq(eth->irq[1], dev);
->>  	free_irq(eth->irq[2], dev);
->>  }
->> @@ -1683,7 +1695,7 @@ static void mtk_get_ethtool_stats(struct net_device
->  *dev,
->>  	}
->>  
->>  	do {
->> -		data_src = (u64*)hwstats;
->> +		data_src = (u64 *)hwstats;
->>  		data_dst = data;
->>  		start = u64_stats_fetch_begin_irq(&hwstats->syncp);
->>  
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h 
->> b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> old mode 100644
->> new mode 100755
->> index f82e3ac..7c1f3f2
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> @@ -68,6 +68,32 @@
->>  /* Unicast Filter MAC Address Register - High */
->>  #define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
->>  
->> +/* PDMA RX Base Pointer Register */
->> +#define MTK_PRX_BASE_PTR0	0x900
->> +
->> +/* PDMA RX Maximum Count Register */
->> +#define MTK_PRX_MAX_CNT0	0x904
->> +
->> +/* PDMA RX CPU Pointer Register */
->> +#define MTK_PRX_CRX_IDX0	0x908
->> +
->> +/* PDMA Global Configuration Register */
->> +#define MTK_PDMA_GLO_CFG	0xa04
->> +#define MTK_MULTI_EN		BIT(10)
->> +
->> +/* PDMA Reset Index Register */
->> +#define MTK_PDMA_RST_IDX	0xa08
->> +#define MTK_PST_DRX_IDX0	BIT(16)
->> +
->> +/* PDMA Delay Interrupt Register */
->> +#define MTK_PDMA_DELAY_INT	0xa0c
->> +
->> +/* PDMA Interrupt Status Register */
->> +#define MTK_PDMA_INT_STATUS	0xa20
->> +
->> +/* PDMA Interrupt Mask Register */
->> +#define MTK_PDMA_INT_MASK	0xa28
->> +
->>  /* PDMA Interrupt grouping registers */
->>  #define MTK_PDMA_INT_GRP1	0xa50
->>  #define MTK_PDMA_INT_GRP2	0xa54
->> @@ -119,13 +145,16 @@
->>  
->>  /* QDMA Interrupt Status Register */
->>  #define MTK_QMTK_INT_STATUS	0x1A18
->> +#define MTK_RX_DONE_INT3	BIT(19)
->> +#define MTK_RX_DONE_INT2	BIT(18)
->>  #define MTK_RX_DONE_INT1	BIT(17)
->>  #define MTK_RX_DONE_INT0	BIT(16)
->>  #define MTK_TX_DONE_INT3	BIT(3)
->>  #define MTK_TX_DONE_INT2	BIT(2)
->>  #define MTK_TX_DONE_INT1	BIT(1)
->>  #define MTK_TX_DONE_INT0	BIT(0)
->> -#define MTK_RX_DONE_INT		(MTK_RX_DONE_INT0 | MTK_RX_DONE_INT1)
->> +#define MTK_RX_DONE_INT		(MTK_RX_DONE_INT0 | MTK_RX_DONE_INT1 | \
->> +				 MTK_RX_DONE_INT2 | MTK_RX_DONE_INT3)
->>  #define MTK_TX_DONE_INT		(MTK_TX_DONE_INT0 | MTK_TX_DONE_INT1 | \
->>  				 MTK_TX_DONE_INT2 | MTK_TX_DONE_INT3)
->>  
->>
-> 
+> +
+> +	clk_init = of_id->data;
+> +	return clk_init(pdev->dev.of_node);
+> +}
+> +
+> +static struct platform_driver clk_mt2701_drv = {
+> +	.probe = clk_mt2701_probe,
+> +	.driver = {
+> +		.name = "clk-mt2701",
+> +		.owner = THIS_MODULE,
+> +		.of_match_table = of_match_clk_mt2701,
+> +	},
+> +};
+> +
+> +static int __init clk_mt2701_init(void)
+> +{
+> +	return platform_driver_register(&clk_mt2701_drv);
+> +}
+> +
+> +arch_initcall(clk_mt2701_init);
+> diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+> index bb30f70..6a015a8 100644
+> --- a/drivers/clk/mediatek/clk-mtk.c
+> +++ b/drivers/clk/mediatek/clk-mtk.c
+> @@ -58,6 +58,9 @@ void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_fixed_clk *rc = &clks[i];
+>  
+> +		if (!IS_ERR_OR_NULL(clk_data->clks[rc->id]))
+> +			continue;
+> +
+>  		clk = clk_register_fixed_rate(NULL, rc->name, rc->parent, 0,
+>  					      rc->rate);
+>  
+> @@ -81,6 +84,9 @@ void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_fixed_factor *ff = &clks[i];
+>  
+> +		if (!IS_ERR_OR_NULL(clk_data->clks[ff->id]))
+> +			continue;
+> +
+>  		clk = clk_register_fixed_factor(NULL, ff->name, ff->parent_name,
+>  				CLK_SET_RATE_PARENT, ff->mult, ff->div);
+>  
+> @@ -116,6 +122,9 @@ int mtk_clk_register_gates(struct device_node *node,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_gate *gate = &clks[i];
+>  
+> +		if (!IS_ERR_OR_NULL(clk_data->clks[gate->id]))
+> +			continue;
+> +
+>  		clk = mtk_clk_register_gate(gate->name, gate->parent_name,
+>  				regmap,
+>  				gate->regs->set_ofs,
+> @@ -232,6 +241,9 @@ void mtk_clk_register_composites(const struct mtk_composite *mcs,
+>  	for (i = 0; i < num; i++) {
+>  		const struct mtk_composite *mc = &mcs[i];
+>  
+> +		if (!IS_ERR_OR_NULL(clk_data->clks[mc->id]))
+> +			continue;
+> +
+>  		clk = mtk_clk_register_composite(mc, base, lock);
+>  
+>  		if (IS_ERR(clk)) {
+> @@ -244,3 +256,31 @@ void mtk_clk_register_composites(const struct mtk_composite *mcs,
+>  			clk_data->clks[mc->id] = clk;
+>  	}
+>  }
+> +
+> +void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+> +			int num, void __iomem *base, spinlock_t *lock,
+> +				struct clk_onecell_data *clk_data)
+> +{
+> +	struct clk *clk;
+> +	int i;
+> +
+> +	for (i = 0; i <  num; i++) {
+> +		const struct mtk_clk_divider *mcd = &mcds[i];
+> +
+> +		if (!IS_ERR_OR_NULL(clk_data->clks[mcd->id]))
+
+This dereferences clk_data...
+
+> +			continue;
+> +
+> +		clk = clk_register_divider(NULL, mcd->name, mcd->parent_name,
+> +			mcd->flags, base +  mcd->div_reg, mcd->div_shift,
+> +			mcd->div_width, mcd->clk_divider_flags, lock);
+> +
+> +		if (IS_ERR(clk)) {
+> +			pr_err("Failed to register clk %s: %ld\n",
+> +				mcd->name, PTR_ERR(clk));
+> +			continue;
+> +		}
+> +
+> +		if (clk_data)
+
+And then we check it for NULL here? That doesn't make any sense.
+
+> +			clk_data->clks[mcd->id] = clk;
+> +	}
+> +}
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
