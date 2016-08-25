@@ -1,59 +1,64 @@
 From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH net-next v3 2/2] net: ethernet: mediatek: modify GDM to
- send packets to the PDMA for RX
-Date: Thu, 25 Aug 2016 14:10:33 +0200
-Message-ID: <8d3d9d71-9497-5e57-2c51-f360aa7d7849@phrozen.org>
-References: <1472091991-1814-1-git-send-email-nelson.chang@mediatek.com>
- <1472091991-1814-3-git-send-email-nelson.chang@mediatek.com>
+Subject: Re: [RESEND PATCH net 01/10] net: ethernet: mediatek: fix fails from
+ TX housekeeping due to incorrect port setup
+Date: Thu, 25 Aug 2016 14:19:49 +0200
+Message-ID: <6c5c3a5e-caf3-cc6f-6611-e5fb416c809e@phrozen.org>
+References: <1472121901-15629-1-git-send-email-sean.wang@mediatek.com>
+ <1472121901-15629-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472091991-1814-3-git-send-email-nelson.chang@mediatek.com>
+In-Reply-To: <1472121901-15629-2-git-send-email-sean.wang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: Nelson Chang <nelson.chang@mediatek.com>, davem@davemloft.net
-Cc: netdev@vger.kernel.org, nbd@openwrt.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+To: Sean Wang <sean.wang@mediatek.com>, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 25/08/2016 04:26, Nelson Chang wrote:
-> Because we change to use the PDMA as the Ethernet RX DMA engine,
-> the patch modifies to set GDM to send packets to PDMA for RX.
+On 25/08/2016 12:44, Sean Wang wrote:
+> which net device the SKB is complete for depends on the forward port
+> on txd4 on the corresponding TX descriptor, but the information isn't
+> set up well in case of  SKB fragments that would lead to watchdog timeout
+> from the upper layer, so fix it up.
 > 
-> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+Acked-by: John Crispin <john@phrozen.org>
 > ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++--
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h | 0
->  2 files changed, 2 insertions(+), 2 deletions(-)
->  mode change 100755 => 100644 drivers/net/ethernet/mediatek/mtk_eth_soc.c
->  mode change 100755 => 100644 drivers/net/ethernet/mediatek/mtk_eth_soc.h
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
 > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> old mode 100755
-> new mode 100644
-> index cbeb793..c47fef4
+> index 1801fd8..6e4a6ca 100644
 > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -1473,9 +1473,9 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
->  	for (i = 0; i < 2; i++) {
->  		u32 val = mtk_r32(eth, MTK_GDMA_FWD_CFG(i));
+> @@ -587,14 +587,15 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+>  	dma_addr_t mapped_addr;
+>  	unsigned int nr_frags;
+>  	int i, n_desc = 1;
+> -	u32 txd4 = 0;
+> +	u32 txd4 = 0, fport;
 >  
-> -		/* setup the forward port to send frame to QDMA */
-> +		/* setup the forward port to send frame to PDMA */
->  		val &= ~0xffff;
-> -		val |= 0x5555;
-> +		val |= 0x0000;
-
-masking it and then setting it to 0 makes no sense. simply remove the
-2nd line.
-
-	John
-
+>  	itxd = ring->next_free;
+>  	if (itxd == ring->last_free)
+>  		return -ENOMEM;
 >  
->  		/* Enable RX checksum */
->  		val |= MTK_GDMA_ICS_EN | MTK_GDMA_TCS_EN | MTK_GDMA_UCS_EN;
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> old mode 100755
-> new mode 100644
+>  	/* set the forward port */
+> -	txd4 |= (mac->id + 1) << TX_DMA_FPORT_SHIFT;
+> +	fport = (mac->id + 1) << TX_DMA_FPORT_SHIFT;
+> +	txd4 |= fport;
+>  
+>  	tx_buf = mtk_desc_to_tx_buf(ring, itxd);
+>  	memset(tx_buf, 0, sizeof(*tx_buf));
+> @@ -652,7 +653,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+>  			WRITE_ONCE(txd->txd3, (TX_DMA_SWC |
+>  					       TX_DMA_PLEN0(frag_map_size) |
+>  					       last_frag * TX_DMA_LS0));
+> -			WRITE_ONCE(txd->txd4, 0);
+> +			WRITE_ONCE(txd->txd4, fport);
+>  
+>  			tx_buf->skb = (struct sk_buff *)MTK_DMA_DUMMY_DESC;
+>  			tx_buf = mtk_desc_to_tx_buf(ring, txd);
 > 
