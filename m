@@ -1,52 +1,67 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: Re: [RESEND PATCH net 10/10] net: ethernet: mediatek: fix error
- handling inside mtk_mdio_init
-Date: Thu, 25 Aug 2016 15:39:50 +0200
-Message-ID: <a35808ec-8701-f1cb-f44a-965fe341af2a@phrozen.org>
-References: <1472121901-15629-1-git-send-email-sean.wang@mediatek.com>
- <1472121901-15629-11-git-send-email-sean.wang@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Subject: Re: [PATCH v13 0/4] Mediatek MT8173 CMDQ support
+Date: Thu, 25 Aug 2016 19:12:57 +0530
+Message-ID: <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
+References: <1472009252-1074-1-git-send-email-hs.liao@mediatek.com>
+ <20b10079-3ae2-9da9-1149-0bceabac9837@gmail.com> <1472132247.26044.23.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472121901-15629-11-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1472132247.26044.23.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Horng-Shyang Liao <hs.liao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 25/08/2016 12:45, Sean Wang wrote:
-> return -ENODEV if no child is found in MDIO bus.
-> 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Acked-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 05d85da..2d547c2 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -300,7 +300,7 @@ static int mtk_mdio_init(struct mtk_eth *eth)
->  	}
->  
->  	if (!of_device_is_available(mii_np)) {
-> -		err = 0;
-> +		err = -ENODEV;
->  		goto err_put_node;
->  	}
->  
-> 
+On Thu, Aug 25, 2016 at 7:07 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> Hi Matthias,
+>
+> On Wed, 2016-08-24 at 13:00 +0200, Matthias Brugger wrote:
+>> On 24/08/16 05:27, HS Liao wrote:
+> [...]
+>> > Changes since v12:
+>> >  - remove mediatek,gce from device tree
+>>
+>> Why? The binding got accepted by Rob.
+>
+> We can get cmdq dev from mailbox controller,
+> so we don't need mediatek,gce anymore.
+>
+>> >
+>> > Best regards,
+>> > HS Liao
+>> >
+>> > HS Liao (4):
+>> >   dt-bindings: soc: Add documentation for the MediaTek GCE unit
+>> >   CMDQ: Mediatek CMDQ driver
+>> >   arm64: dts: mt8173: Add GCE node
+>> >   CMDQ: save more energy in idle
+>> >
+>> >  .../devicetree/bindings/soc/mediatek/gce.txt       |  44 +
+>> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+>> >  drivers/soc/mediatek/Kconfig                       |  11 +
+>> >  drivers/soc/mediatek/Makefile                      |   1 +
+>> >  drivers/soc/mediatek/mtk-cmdq.c                    | 983 +++++++++++++++++++++
+>>
+>> The driver uses the mailbox framework, so it should live in the
+>> drivers/mailbox folder.
+>
+> As you know, the maximum number of gce threads is 16.
+> However, we plan to support more clients in the future,
+> and they may need to use more than 16 gce threads.
+>
+> For this issue, our plan is to let multiple clients share the same gce
+> thread; i.e. we will acquire gce thread for client dynamically by
+> internal policy in cmdq driver.
+> Unfortunately. mailbox channel has exclusive feature.
+> Quote from comment of mbox_request_channel().
+> "The channel is exclusively allocated and can't be used by another
+> client before the owner calls mbox_free_channel."
+> Therefore, we plan to remove mailbox framework from cmdq driver in the
+> future.
+>
+Platforms that need shared access to a channel, implement a 'server'
+driver that serialise (which is needed still) the access to common
+channel. If you think you don't need mutual exclusion and don't care
+about replies, simply share the mailbox handle among different
+clients.
