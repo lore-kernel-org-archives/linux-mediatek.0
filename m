@@ -1,15 +1,15 @@
 From: John Crispin <john@phrozen.org>
-Subject: Re: [RESEND PATCH net 03/10] net: ethernet: mediatek: fix API usage
- with skb_free_frag
-Date: Thu, 25 Aug 2016 14:20:58 +0200
-Message-ID: <f2adea70-e456-3655-71c7-028c4990a62a@phrozen.org>
+Subject: Re: [RESEND PATCH net 05/10] net: ethernet: mediatek: fix logic
+ unbalance between probe and remove
+Date: Thu, 25 Aug 2016 14:22:35 +0200
+Message-ID: <2730e1f7-466e-39b7-3fba-4f31343c9cb3@phrozen.org>
 References: <1472121901-15629-1-git-send-email-sean.wang@mediatek.com>
- <1472121901-15629-4-git-send-email-sean.wang@mediatek.com>
+ <1472121901-15629-6-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472121901-15629-4-git-send-email-sean.wang@mediatek.com>
+In-Reply-To: <1472121901-15629-6-git-send-email-sean.wang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
 To: Sean Wang <sean.wang@mediatek.com>, davem@davemloft.net
 Cc: netdev@vger.kernel.org, nbd@openwrt.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
@@ -18,7 +18,8 @@ List-Id: linux-mediatek@lists.infradead.org
 
 
 On 25/08/2016 12:44, Sean Wang wrote:
-> use skb_free_frag() instead of legacy put_page()
+> original mdio_cleanup is not in the symmetric place against where
+> mdio_init is, so relocate mdio_cleanup to the right one.
 > 
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
@@ -29,16 +30,23 @@ Acked-by: John Crispin <john@phrozen.org>
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 02b048f..1b131a1 100644
+> index 9883dac..5bd31f8 100644
 > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -864,7 +864,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  		/* receive data */
->  		skb = build_skb(data, ring->frag_size);
->  		if (unlikely(!skb)) {
-> -			put_page(virt_to_head_page(new_data));
-> +			skb_free_frag(new_data);
->  			netdev->stats.rx_dropped++;
->  			goto release_desc;
->  		}
+> @@ -1504,7 +1504,6 @@ static void mtk_uninit(struct net_device *dev)
+>  	struct mtk_eth *eth = mac->hw;
+>  
+>  	phy_disconnect(mac->phy_dev);
+> -	mtk_mdio_cleanup(eth);
+>  	mtk_irq_disable(eth, ~0);
+>  }
+>  
+> @@ -1915,6 +1914,7 @@ static int mtk_remove(struct platform_device *pdev)
+>  	netif_napi_del(&eth->tx_napi);
+>  	netif_napi_del(&eth->rx_napi);
+>  	mtk_cleanup(eth);
+> +	mtk_mdio_cleanup(eth);
+>  
+>  	return 0;
+>  }
 > 
