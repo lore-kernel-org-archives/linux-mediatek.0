@@ -1,7 +1,7 @@
 From: Sean@vger.kernel.org, Wang@vger.kernel.org
-Subject: [PATCH net 02/10] net: ethernet: mediatek: fix incorrect return value of devm_clk_get with EPROBE_DEFER
-Date: Thu, 25 Aug 2016 18:22:29 +0800
-Message-ID: <1472120557-15216-3-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net 09/10] net: ethernet: mediatek: use devm_mdiobus_alloc instead of mdiobus_alloc inside mtk_mdio_init
+Date: Thu, 25 Aug 2016 18:22:36 +0800
+Message-ID: <1472120557-15216-10-git-send-email-sean.wang@mediatek.com>
 References: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,36 +14,55 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-If the return value of devm_clk_get is EPROBE_DEFER, we should
-defer probing the driver. The change is verified and works based
-on 4.8-rc1 staying with the latest clk-next code for MT7623.
+a lot of parts in the driver uses devm_* APIs to gain benefits from the
+device resource management, so devm_mdiobus_alloc is also used instead
+of mdiobus_alloc to have more elegant code flow.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 6e4a6ca..02b048f 100644
+index e3baa63..05d85da 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1851,8 +1851,15 @@ static int mtk_probe(struct platform_device *pdev)
- 	eth->clk_gp1 = devm_clk_get(&pdev->dev, "gp1");
- 	eth->clk_gp2 = devm_clk_get(&pdev->dev, "gp2");
- 	if (IS_ERR(eth->clk_esw) || IS_ERR(eth->clk_gp1) ||
--	    IS_ERR(eth->clk_gp2) || IS_ERR(eth->clk_ethif))
--		return -ENODEV;
-+	    IS_ERR(eth->clk_gp2) || IS_ERR(eth->clk_ethif)) {
-+		if (PTR_ERR(eth->clk_esw) == -EPROBE_DEFER ||
-+		    PTR_ERR(eth->clk_gp1) == -EPROBE_DEFER ||
-+		    PTR_ERR(eth->clk_gp1) == -EPROBE_DEFER ||
-+		    PTR_ERR(eth->clk_gp2) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+		else
-+			return -ENODEV;
-+	}
+@@ -304,7 +304,7 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 		goto err_put_node;
+ 	}
  
- 	clk_prepare_enable(eth->clk_ethif);
- 	clk_prepare_enable(eth->clk_esw);
+-	eth->mii_bus = mdiobus_alloc();
++	eth->mii_bus = devm_mdiobus_alloc(eth->dev);
+ 	if (!eth->mii_bus) {
+ 		err = -ENOMEM;
+ 		goto err_put_node;
+@@ -318,18 +318,9 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 
+ 	snprintf(eth->mii_bus->id, MII_BUS_ID_SIZE, "%s", mii_np->name);
+ 	err = of_mdiobus_register(eth->mii_bus, mii_np);
+-	if (err)
+-		goto err_free_bus;
+-	of_node_put(mii_np);
+-
+-	return 0;
+-
+-err_free_bus:
+-	mdiobus_free(eth->mii_bus);
+ 
+ err_put_node:
+ 	of_node_put(mii_np);
+-	eth->mii_bus = NULL;
+ 	return err;
+ }
+ 
+@@ -339,8 +330,6 @@ static void mtk_mdio_cleanup(struct mtk_eth *eth)
+ 		return;
+ 
+ 	mdiobus_unregister(eth->mii_bus);
+-	of_node_put(eth->mii_bus->dev.of_node);
+-	mdiobus_free(eth->mii_bus);
+ }
+ 
+ static inline void mtk_irq_disable(struct mtk_eth *eth, u32 mask)
 -- 
 1.9.1
