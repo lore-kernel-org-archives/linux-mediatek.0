@@ -1,12 +1,10 @@
 From: Sean@vger.kernel.org, Wang@vger.kernel.org
-Subject: [PATCH net 08/10] net: ethernet: mediatek: fix the missing of_node_put() after node is used done inside mtk_mdio_init
-Date: Thu, 25 Aug 2016 18:22:35 +0800
-Message-ID: <1472120557-15216-9-git-send-email-sean.wang@mediatek.com>
-References: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net 00/10] net: ethernet: mediatek: a couple of fixes
+Date: Thu, 25 Aug 2016 18:22:27 +0800
+Message-ID: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
 To: john@phrozen.org, davem@davemloft.net
 Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
@@ -14,25 +12,30 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-This patch adds the missing of_node_put() after finishing the usage
-of of_get_child_by_name.
+a couple of fixes come out from integrating with linux-4.8 rc1
+they all are verified and workable on linux-4.8 rc1
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 1 +
- 1 file changed, 1 insertion(+)
+Sean Wang (10):
+  net: ethernet: mediatek: fix fails from TX housekeeping due to
+    incorrect port setup
+  net: ethernet: mediatek: fix incorrect return value of devm_clk_get
+    with EPROBE_DEFER
+  net: ethernet: mediatek: fix API usage with skb_free_frag
+  net: ethernet: mediatek: remove redundant free_irq for
+    devm_request_irq allocated irq
+  net: ethernet: mediatek: fix logic unbalance between probe and remove
+  net: ethernet: mediatek: fix the loss of pin-mux setting for GMAC2
+  net: ethernet: mediatek: fix issue of driver removal with interface is
+    up
+  net: ethernet: mediatek: fix the missing of_node_put() after node is
+    used done inside mtk_mdio_init
+  net: ethernet: mediatek: use devm_mdiobus_alloc instead of
+    mdiobus_alloc inside mtk_mdio_init
+  net: ethernet: mediatek: fix error handling inside mtk_mdio_init
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index c573475..e3baa63 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -320,6 +320,7 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	err = of_mdiobus_register(eth->mii_bus, mii_np);
- 	if (err)
- 		goto err_free_bus;
-+	of_node_put(mii_np);
- 
- 	return 0;
- 
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 74 +++++++++++++++++++----------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  3 ++
+ 2 files changed, 52 insertions(+), 25 deletions(-)
+
 -- 
 1.9.1
