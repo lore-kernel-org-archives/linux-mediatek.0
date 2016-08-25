@@ -1,7 +1,7 @@
 From: Sean@vger.kernel.org, Wang@vger.kernel.org
-Subject: [PATCH net 03/10] net: ethernet: mediatek: fix API usage with skb_free_frag
-Date: Thu, 25 Aug 2016 18:22:30 +0800
-Message-ID: <1472120557-15216-4-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net 05/10] net: ethernet: mediatek: fix logic unbalance between probe and remove
+Date: Thu, 25 Aug 2016 18:22:32 +0800
+Message-ID: <1472120557-15216-6-git-send-email-sean.wang@mediatek.com>
 References: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,7 +14,8 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-use skb_free_frag() instead of legacy put_page()
+original mdio_cleanup is not in the symmetric place against where
+mdio_init is, so relocate mdio_cleanup to the right one.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
@@ -22,17 +23,24 @@ Signed-off-by: Sean Wang <sean.wang@mediatek.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 02b048f..1b131a1 100644
+index 9883dac..5bd31f8 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -864,7 +864,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		/* receive data */
- 		skb = build_skb(data, ring->frag_size);
- 		if (unlikely(!skb)) {
--			put_page(virt_to_head_page(new_data));
-+			skb_free_frag(new_data);
- 			netdev->stats.rx_dropped++;
- 			goto release_desc;
- 		}
+@@ -1504,7 +1504,6 @@ static void mtk_uninit(struct net_device *dev)
+ 	struct mtk_eth *eth = mac->hw;
+ 
+ 	phy_disconnect(mac->phy_dev);
+-	mtk_mdio_cleanup(eth);
+ 	mtk_irq_disable(eth, ~0);
+ }
+ 
+@@ -1915,6 +1914,7 @@ static int mtk_remove(struct platform_device *pdev)
+ 	netif_napi_del(&eth->tx_napi);
+ 	netif_napi_del(&eth->rx_napi);
+ 	mtk_cleanup(eth);
++	mtk_mdio_cleanup(eth);
+ 
+ 	return 0;
+ }
 -- 
 1.9.1
