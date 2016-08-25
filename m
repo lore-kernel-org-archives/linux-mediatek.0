@@ -1,42 +1,51 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v12 2/4] reset: mediatek: Add MT2701 reset driver
-Date: Wed, 24 Aug 2016 10:50:49 -0700
-Message-ID: <20160824175049.GC19826@codeaurora.org>
-References: <1471854565-19810-1-git-send-email-erin.lo@mediatek.com>
- <1471854565-19810-3-git-send-email-erin.lo@mediatek.com>
+From: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH V5, 0/5] Add MediaTek USB3 DRD Driver
+Date: Thu, 25 Aug 2016 09:40:28 +0800
+Message-ID: <1472089228.27677.6.camel@mhfsdcap03>
+References: <1470730998-9563-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1472020923.27677.1.camel@mhfsdcap03> <1472038159.11480.2.camel@suse.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1471854565-19810-3-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472038159.11480.2.camel-IBi9RG/b67k@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/22, Erin Lo wrote:
-> diff --git a/drivers/clk/mediatek/clk-mt2701-hif.c b/drivers/clk/mediatek/clk-mt2701-hif.c
-> index 18b4ab5..702fd74 100644
-> --- a/drivers/clk/mediatek/clk-mt2701-hif.c
-> +++ b/drivers/clk/mediatek/clk-mt2701-hif.c
-> @@ -52,11 +52,15 @@ static int mtk_hifsys_init(struct device_node *node)
->  						clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		return r;
-> +	}
-> +
-> +	mtk_register_reset_controller(node, 1, 0x34);
+Hi,
 
-The cleanup here isn't great. mtk_register_reset_controller()
-should really return an error so that we can properly cleanup if
-needed. Fixing that in a later patch would be a good idea.
+On Wed, 2016-08-24 at 13:29 +0200, Oliver Neukum wrote:
+> On Wed, 2016-08-24 at 14:42 +0800, chunfeng yun wrote:
+> > Dear all,
+> > 
+> >     Could you please help me to review the code? 
+> 
+> Is the structure
+> 
+> struct qmu_gpd
+> 
+> shared with the hardware? Do I read this correctly that
+> you do PIO to endpoint 0 but DMA to the others?
+> 
+Yes, you are right.
 
+> Could you resend the series?
+> 
+I will do it soon
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+Thank you.
+
+> 	Regards
+> 		Oliver
+> 
+> 
