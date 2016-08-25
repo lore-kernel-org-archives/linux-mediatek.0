@@ -1,52 +1,87 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [RESEND PATCH net 05/10] net: ethernet: mediatek: fix logic
- unbalance between probe and remove
-Date: Thu, 25 Aug 2016 14:22:35 +0200
-Message-ID: <2730e1f7-466e-39b7-3fba-4f31343c9cb3@phrozen.org>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [RESEND PATCH net 06/10] net: ethernet: mediatek: fix the loss
+ of pin-mux setting for GMAC2
+Date: Thu, 25 Aug 2016 15:30:34 +0200
+Message-ID: <20160825133034.GA25046@lunn.ch>
 References: <1472121901-15629-1-git-send-email-sean.wang@mediatek.com>
- <1472121901-15629-6-git-send-email-sean.wang@mediatek.com>
+ <1472121901-15629-7-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472121901-15629-6-git-send-email-sean.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1472121901-15629-7-git-send-email-sean.wang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>, davem@davemloft.net
-Cc: netdev@vger.kernel.org, nbd@openwrt.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Aug 25, 2016 at 06:44:57PM +0800, Sean Wang wrote:
+> ommited the setting about pin-mux which results in incorrect signals
+> being routed on GMAC2.
 
+Hi Sean
 
-On 25/08/2016 12:44, Sean Wang wrote:
-> original mdio_cleanup is not in the symmetric place against where
-> mdio_init is, so relocate mdio_cleanup to the right one.
+Please could you explain this some more. I don't know too much about
+pinctrl, but i've never seen a driver have to do anything with it. The
+core driver code handles it all, selecting the default state. See
+seeing this here makes me wonder if it is correct.
+
+Thanks
+	Andrew
+
 > 
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-
-Acked-by: John Crispin <john@phrozen.org>
-
 > ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 14 ++++++++++++++
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  3 +++
+>  2 files changed, 17 insertions(+)
 > 
 > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 9883dac..5bd31f8 100644
+> index 5bd31f8..0a4c782 100644
 > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -1504,7 +1504,6 @@ static void mtk_uninit(struct net_device *dev)
->  	struct mtk_eth *eth = mac->hw;
+> @@ -1415,6 +1415,7 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
+>  	usleep_range(10, 20);
+>  	reset_control_deassert(eth->rstc);
+>  	usleep_range(10, 20);
+> +	pinctrl_select_state(eth->pins, eth->ephy_default);
 >  
->  	phy_disconnect(mac->phy_dev);
-> -	mtk_mdio_cleanup(eth);
->  	mtk_irq_disable(eth, ~0);
->  }
+>  	/* Set GE2 driving and slew rate */
+>  	regmap_write(eth->pctl, GPIO_DRV_SEL10, 0xa00);
+> @@ -1858,6 +1859,19 @@ static int mtk_probe(struct platform_device *pdev)
+>  			return -ENODEV;
+>  	}
 >  
-> @@ -1915,6 +1914,7 @@ static int mtk_remove(struct platform_device *pdev)
->  	netif_napi_del(&eth->tx_napi);
->  	netif_napi_del(&eth->rx_napi);
->  	mtk_cleanup(eth);
-> +	mtk_mdio_cleanup(eth);
->  
->  	return 0;
->  }
+> +	eth->pins = devm_pinctrl_get(&pdev->dev);
+> +	if (IS_ERR(eth->pins)) {
+> +		dev_err(&pdev->dev, "cannot get pinctrl\n");
+> +		return PTR_ERR(eth->pins);
+> +	}
+> +
+> +	eth->ephy_default =
+> +		pinctrl_lookup_state(eth->pins, "default");
+> +	if (IS_ERR(eth->ephy_default)) {
+> +		dev_err(&pdev->dev, "cannot get pinctrl state\n");
+> +		return PTR_ERR(eth->ephy_default);
+> +	}
+> +
+>  	clk_prepare_enable(eth->clk_ethif);
+>  	clk_prepare_enable(eth->clk_esw);
+>  	clk_prepare_enable(eth->clk_gp1);
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index f82e3ac..13d3f1b 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -404,6 +404,9 @@ struct mtk_eth {
+>  	struct clk			*clk_esw;
+>  	struct clk			*clk_gp1;
+>  	struct clk			*clk_gp2;
+> +	struct pinctrl			*pins;
+> +	struct pinctrl_state		*ephy_default;
+> +
+>  	struct mii_bus			*mii_bus;
+>  	struct work_struct		pending_work;
+>  };
+> -- 
+> 1.9.1
 > 
