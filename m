@@ -1,14 +1,13 @@
-From: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v3 1/2] net: ethernet: mediatek: modify to use the
- PDMA instead of the QDMA for Ethernet RX
-Date: Thu, 25 Aug 2016 10:26:30 +0800
-Message-ID: <1472091991-1814-2-git-send-email-nelson.chang@mediatek.com>
-References: <1472091991-1814-1-git-send-email-nelson.chang@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [RESEND PATCH, v5 3/5] usb: xhci-mtk: make IPPC register optional
+Date: Thu, 25 Aug 2016 11:05:27 +0800
+Message-ID: <1472094329-18466-4-git-send-email-chunfeng.yun@mediatek.com>
+References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472091991-1814-1-git-send-email-nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1472094329-18466-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -18,300 +17,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nelsonch.tw-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Because the PDMA has richer features than the QDMA for Ethernet RX
-(such as multiple RX rings, HW LRO, etc.),
-the patch modifies to use the PDMA to handle Ethernet RX.
+Make IPPC register optional to support host side of dual-role mode,
+due to it is moved into common glue layer for simplification.
 
-Signed-off-by: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 76 +++++++++++++++++------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 31 +++++++++++-
- 2 files changed, 74 insertions(+), 33 deletions(-)
- mode change 100644 => 100755 drivers/net/ethernet/mediatek/mtk_eth_soc.c
- mode change 100644 => 100755 drivers/net/ethernet/mediatek/mtk_eth_soc.h
+ drivers/usb/host/xhci-mtk.c |   36 +++++++++++++++++++++++++++++-------
+ 1 file changed, 29 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-old mode 100644
-new mode 100755
-index 1801fd8..cbeb793
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -342,25 +342,27 @@ static void mtk_mdio_cleanup(struct mtk_eth *eth)
- 	mdiobus_free(eth->mii_bus);
- }
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 79959f1..4bf99b9 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -94,6 +94,9 @@ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+ 	int ret;
+ 	int i;
  
--static inline void mtk_irq_disable(struct mtk_eth *eth, u32 mask)
-+static inline void mtk_irq_disable(struct mtk_eth *eth,
-+				   unsigned reg, u32 mask)
++	if (ippc == NULL)
++		return 0;
++
+ 	/* power on host ip */
+ 	value = readl(&ippc->ip_pw_ctr1);
+ 	value &= ~CTRL1_IP_HOST_PDN;
+@@ -139,6 +142,9 @@ static int xhci_mtk_host_disable(struct xhci_hcd_mtk *mtk)
+ 	int ret;
+ 	int i;
+ 
++	if (ippc == NULL)
++		return 0;
++
+ 	/* power down all u3 ports */
+ 	for (i = 0; i < mtk->num_u3_ports; i++) {
+ 		value = readl(&ippc->u3_ctrl_p[i]);
+@@ -173,6 +179,9 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
+ 	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
+ 	u32 value;
+ 
++	if (ippc == NULL)
++		return 0;
++
+ 	/* reset whole ip */
+ 	value = readl(&ippc->ip_pw_ctr0);
+ 	value |= CTRL0_IP_SW_RST;
+@@ -475,6 +484,7 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ /* called during probe() after chip reset completes */
+ static int xhci_mtk_setup(struct usb_hcd *hcd)
  {
- 	unsigned long flags;
- 	u32 val;
++	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
+ 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
+ 	int ret;
  
- 	spin_lock_irqsave(&eth->irq_lock, flags);
--	val = mtk_r32(eth, MTK_QDMA_INT_MASK);
--	mtk_w32(eth, val & ~mask, MTK_QDMA_INT_MASK);
-+	val = mtk_r32(eth, reg);
-+	mtk_w32(eth, val & ~mask, reg);
- 	spin_unlock_irqrestore(&eth->irq_lock, flags);
- }
- 
--static inline void mtk_irq_enable(struct mtk_eth *eth, u32 mask)
-+static inline void mtk_irq_enable(struct mtk_eth *eth,
-+				  unsigned reg, u32 mask)
- {
- 	unsigned long flags;
- 	u32 val;
- 
- 	spin_lock_irqsave(&eth->irq_lock, flags);
--	val = mtk_r32(eth, MTK_QDMA_INT_MASK);
--	mtk_w32(eth, val | mask, MTK_QDMA_INT_MASK);
-+	val = mtk_r32(eth, reg);
-+	mtk_w32(eth, val | mask, reg);
- 	spin_unlock_irqrestore(&eth->irq_lock, flags);
- }
- 
-@@ -897,12 +899,12 @@ release_desc:
- 		 * we continue
- 		 */
- 		wmb();
--		mtk_w32(eth, ring->calc_idx, MTK_QRX_CRX_IDX0);
-+		mtk_w32(eth, ring->calc_idx, MTK_PRX_CRX_IDX0);
- 		done++;
+@@ -482,12 +492,21 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+ 		ret = xhci_mtk_ssusb_config(mtk);
+ 		if (ret)
+ 			return ret;
++	}
++
++	ret = xhci_gen_setup(hcd, xhci_mtk_quirks);
++	if (ret)
++		return ret;
++
++	if (usb_hcd_is_primary_hcd(hcd)) {
++		mtk->num_u3_ports = xhci->num_usb3_ports;
++		mtk->num_u2_ports = xhci->num_usb2_ports;
+ 		ret = xhci_mtk_sch_init(mtk);
+ 		if (ret)
+ 			return ret;
  	}
  
- 	if (done < budget)
--		mtk_w32(eth, MTK_RX_DONE_INT, MTK_QMTK_INT_STATUS);
-+		mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
- 
- 	return done;
+-	return xhci_gen_setup(hcd, xhci_mtk_quirks);
++	return ret;
  }
-@@ -1012,7 +1014,7 @@ static int mtk_napi_tx(struct napi_struct *napi, int budget)
- 		return budget;
  
- 	napi_complete(napi);
--	mtk_irq_enable(eth, MTK_TX_DONE_INT);
-+	mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
+ static int xhci_mtk_probe(struct platform_device *pdev)
+@@ -586,7 +605,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	mtk->hcd = platform_get_drvdata(pdev);
+ 	platform_set_drvdata(pdev, mtk);
  
- 	return tx_done;
- }
-@@ -1024,12 +1026,12 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
- 	int rx_done = 0;
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "mac");
+ 	hcd->regs = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(hcd->regs)) {
+ 		ret = PTR_ERR(hcd->regs);
+@@ -595,11 +614,14 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	hcd->rsrc_start = res->start;
+ 	hcd->rsrc_len = resource_size(res);
  
- 	mtk_handle_status_irq(eth);
--	mtk_w32(eth, MTK_RX_DONE_INT, MTK_QMTK_INT_STATUS);
-+	mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
- 	rx_done = mtk_poll_rx(napi, budget, eth);
- 
- 	if (unlikely(netif_msg_intr(eth))) {
--		status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
--		mask = mtk_r32(eth, MTK_QDMA_INT_MASK);
-+		status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
-+		mask = mtk_r32(eth, MTK_PDMA_INT_MASK);
- 		dev_info(eth->dev,
- 			 "done rx %d, intr 0x%08x/0x%x\n",
- 			 rx_done, status, mask);
-@@ -1038,12 +1040,12 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
- 	if (rx_done == budget)
- 		return budget;
- 
--	status = mtk_r32(eth, MTK_QMTK_INT_STATUS);
-+	status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
- 	if (status & MTK_RX_DONE_INT)
- 		return budget;
- 
- 	napi_complete(napi);
--	mtk_irq_enable(eth, MTK_RX_DONE_INT);
-+	mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- 
- 	return rx_done;
- }
-@@ -1092,6 +1094,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	mtk_w32(eth,
- 		ring->phys + ((MTK_DMA_SIZE - 1) * sz),
- 		MTK_QTX_DRX_PTR);
-+	mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES, MTK_QTX_CFG(0));
- 
- 	return 0;
- 
-@@ -1162,11 +1165,10 @@ static int mtk_rx_alloc(struct mtk_eth *eth)
- 	 */
- 	wmb();
- 
--	mtk_w32(eth, eth->rx_ring.phys, MTK_QRX_BASE_PTR0);
--	mtk_w32(eth, MTK_DMA_SIZE, MTK_QRX_MAX_CNT0);
--	mtk_w32(eth, eth->rx_ring.calc_idx, MTK_QRX_CRX_IDX0);
--	mtk_w32(eth, MTK_PST_DRX_IDX0, MTK_QDMA_RST_IDX);
--	mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES, MTK_QTX_CFG(0));
-+	mtk_w32(eth, eth->rx_ring.phys, MTK_PRX_BASE_PTR0);
-+	mtk_w32(eth, MTK_DMA_SIZE, MTK_PRX_MAX_CNT0);
-+	mtk_w32(eth, eth->rx_ring.calc_idx, MTK_PRX_CRX_IDX0);
-+	mtk_w32(eth, MTK_PST_DRX_IDX0, MTK_PDMA_RST_IDX);
- 
- 	return 0;
- }
-@@ -1285,7 +1287,7 @@ static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
- 
- 	if (likely(napi_schedule_prep(&eth->rx_napi))) {
- 		__napi_schedule(&eth->rx_napi);
--		mtk_irq_disable(eth, MTK_RX_DONE_INT);
-+		mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+-	mtk->ippc_regs = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(mtk->ippc_regs)) {
+-		ret = PTR_ERR(mtk->ippc_regs);
+-		goto put_usb2_hcd;
++	mtk->ippc_regs = NULL;
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ippc");
++	if (res) {	/* ippc register is optional */
++		mtk->ippc_regs = devm_ioremap_resource(dev, res);
++		if (IS_ERR(mtk->ippc_regs)) {
++			ret = PTR_ERR(mtk->ippc_regs);
++			goto put_usb2_hcd;
++		}
  	}
  
- 	return IRQ_HANDLED;
-@@ -1297,7 +1299,7 @@ static irqreturn_t mtk_handle_irq_tx(int irq, void *_eth)
- 
- 	if (likely(napi_schedule_prep(&eth->tx_napi))) {
- 		__napi_schedule(&eth->tx_napi);
--		mtk_irq_disable(eth, MTK_TX_DONE_INT);
-+		mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
- 	}
- 
- 	return IRQ_HANDLED;
-@@ -1308,11 +1310,12 @@ static void mtk_poll_controller(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
- 	struct mtk_eth *eth = mac->hw;
--	u32 int_mask = MTK_TX_DONE_INT | MTK_RX_DONE_INT;
- 
--	mtk_irq_disable(eth, int_mask);
-+	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
-+	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- 	mtk_handle_irq_rx(eth->irq[2], dev);
--	mtk_irq_enable(eth, int_mask);
-+	mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
-+	mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- }
- #endif
- 
-@@ -1327,11 +1330,15 @@ static int mtk_start_dma(struct mtk_eth *eth)
- 	}
- 
- 	mtk_w32(eth,
--		MTK_TX_WB_DDONE | MTK_RX_DMA_EN | MTK_TX_DMA_EN |
--		MTK_RX_2B_OFFSET | MTK_DMA_SIZE_16DWORDS |
--		MTK_RX_BT_32DWORDS | MTK_NDP_CO_PRO,
-+		MTK_TX_WB_DDONE | MTK_TX_DMA_EN |
-+		MTK_DMA_SIZE_16DWORDS | MTK_NDP_CO_PRO,
- 		MTK_QDMA_GLO_CFG);
- 
-+	mtk_w32(eth,
-+		MTK_RX_DMA_EN | MTK_RX_2B_OFFSET |
-+		MTK_RX_BT_32DWORDS | MTK_MULTI_EN,
-+		MTK_PDMA_GLO_CFG);
-+
- 	return 0;
- }
- 
-@@ -1349,7 +1356,8 @@ static int mtk_open(struct net_device *dev)
- 
- 		napi_enable(&eth->tx_napi);
- 		napi_enable(&eth->rx_napi);
--		mtk_irq_enable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
-+		mtk_irq_enable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
-+		mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- 	}
- 	atomic_inc(&eth->dma_refcnt);
- 
-@@ -1394,7 +1402,8 @@ static int mtk_stop(struct net_device *dev)
- 	if (!atomic_dec_and_test(&eth->dma_refcnt))
- 		return 0;
- 
--	mtk_irq_disable(eth, MTK_TX_DONE_INT | MTK_RX_DONE_INT);
-+	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, MTK_TX_DONE_INT);
-+	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- 	napi_disable(&eth->tx_napi);
- 	napi_disable(&eth->rx_napi);
- 
-@@ -1448,7 +1457,9 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
- 
- 	/* disable delay and normal interrupt */
- 	mtk_w32(eth, 0, MTK_QDMA_DELAY_INT);
--	mtk_irq_disable(eth, ~0);
-+	mtk_w32(eth, 0, MTK_PDMA_DELAY_INT);
-+	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, ~0);
-+	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, ~0);
- 	mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
- 	mtk_w32(eth, 0, MTK_RST_GL);
- 
-@@ -1504,7 +1515,8 @@ static void mtk_uninit(struct net_device *dev)
- 
- 	phy_disconnect(mac->phy_dev);
- 	mtk_mdio_cleanup(eth);
--	mtk_irq_disable(eth, ~0);
-+	mtk_irq_disable(eth, MTK_QDMA_INT_MASK, ~0);
-+	mtk_irq_disable(eth, MTK_PDMA_INT_MASK, ~0);
- 	free_irq(eth->irq[1], dev);
- 	free_irq(eth->irq[2], dev);
- }
-@@ -1683,7 +1695,7 @@ static void mtk_get_ethtool_stats(struct net_device *dev,
- 	}
- 
- 	do {
--		data_src = (u64*)hwstats;
-+		data_src = (u64 *)hwstats;
- 		data_dst = data;
- 		start = u64_stats_fetch_begin_irq(&hwstats->syncp);
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-old mode 100644
-new mode 100755
-index f82e3ac..7c1f3f2
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -68,6 +68,32 @@
- /* Unicast Filter MAC Address Register - High */
- #define MTK_GDMA_MAC_ADRH(x)	(0x50C + (x * 0x1000))
- 
-+/* PDMA RX Base Pointer Register */
-+#define MTK_PRX_BASE_PTR0	0x900
-+
-+/* PDMA RX Maximum Count Register */
-+#define MTK_PRX_MAX_CNT0	0x904
-+
-+/* PDMA RX CPU Pointer Register */
-+#define MTK_PRX_CRX_IDX0	0x908
-+
-+/* PDMA Global Configuration Register */
-+#define MTK_PDMA_GLO_CFG	0xa04
-+#define MTK_MULTI_EN		BIT(10)
-+
-+/* PDMA Reset Index Register */
-+#define MTK_PDMA_RST_IDX	0xa08
-+#define MTK_PST_DRX_IDX0	BIT(16)
-+
-+/* PDMA Delay Interrupt Register */
-+#define MTK_PDMA_DELAY_INT	0xa0c
-+
-+/* PDMA Interrupt Status Register */
-+#define MTK_PDMA_INT_STATUS	0xa20
-+
-+/* PDMA Interrupt Mask Register */
-+#define MTK_PDMA_INT_MASK	0xa28
-+
- /* PDMA Interrupt grouping registers */
- #define MTK_PDMA_INT_GRP1	0xa50
- #define MTK_PDMA_INT_GRP2	0xa54
-@@ -119,13 +145,16 @@
- 
- /* QDMA Interrupt Status Register */
- #define MTK_QMTK_INT_STATUS	0x1A18
-+#define MTK_RX_DONE_INT3	BIT(19)
-+#define MTK_RX_DONE_INT2	BIT(18)
- #define MTK_RX_DONE_INT1	BIT(17)
- #define MTK_RX_DONE_INT0	BIT(16)
- #define MTK_TX_DONE_INT3	BIT(3)
- #define MTK_TX_DONE_INT2	BIT(2)
- #define MTK_TX_DONE_INT1	BIT(1)
- #define MTK_TX_DONE_INT0	BIT(0)
--#define MTK_RX_DONE_INT		(MTK_RX_DONE_INT0 | MTK_RX_DONE_INT1)
-+#define MTK_RX_DONE_INT		(MTK_RX_DONE_INT0 | MTK_RX_DONE_INT1 | \
-+				 MTK_RX_DONE_INT2 | MTK_RX_DONE_INT3)
- #define MTK_TX_DONE_INT		(MTK_TX_DONE_INT0 | MTK_TX_DONE_INT1 | \
- 				 MTK_TX_DONE_INT2 | MTK_TX_DONE_INT3)
- 
+ 	for (phy_num = 0; phy_num < mtk->num_phys; phy_num++) {
 -- 
-1.9.1
+1.7.9.5
