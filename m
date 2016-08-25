@@ -1,7 +1,7 @@
 From: Sean@vger.kernel.org, Wang@vger.kernel.org
-Subject: [PATCH net 07/10] net: ethernet: mediatek: fix issue of driver removal with interface is up
-Date: Thu, 25 Aug 2016 18:22:34 +0800
-Message-ID: <1472120557-15216-8-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net 03/10] net: ethernet: mediatek: fix API usage with skb_free_frag
+Date: Thu, 25 Aug 2016 18:22:30 +0800
+Message-ID: <1472120557-15216-4-git-send-email-sean.wang@mediatek.com>
 References: <1472120557-15216-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,59 +14,25 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-1) mtk_stop() must be called to stop for freeing DMA resources 
-acquired and restoring state changed by mtk_open() when module 
-removal.
-
-2) group clock disabled related function into mtk_hw_deinit which 
-could be reused with others functionality such as the whole ethernet 
-reset that would be posted in the later series of patches.
+use skb_free_frag() instead of legacy put_page()
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 0a4c782..c573475 100644
+index 02b048f..1b131a1 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1478,6 +1478,16 @@ static int __init mtk_hw_init(struct mtk_eth *eth)
- 	return 0;
- }
- 
-+static int mtk_hw_deinit(struct mtk_eth *eth)
-+{
-+	clk_disable_unprepare(eth->clk_esw);
-+	clk_disable_unprepare(eth->clk_gp1);
-+	clk_disable_unprepare(eth->clk_gp2);
-+	clk_disable_unprepare(eth->clk_ethif);
-+
-+	return 0;
-+}
-+
- static int __init mtk_init(struct net_device *dev)
- {
- 	struct mtk_mac *mac = netdev_priv(dev);
-@@ -1919,11 +1929,15 @@ err_free_dev:
- static int mtk_remove(struct platform_device *pdev)
- {
- 	struct mtk_eth *eth = platform_get_drvdata(pdev);
-+	int i;
- 
--	clk_disable_unprepare(eth->clk_ethif);
--	clk_disable_unprepare(eth->clk_esw);
--	clk_disable_unprepare(eth->clk_gp1);
--	clk_disable_unprepare(eth->clk_gp2);
-+	/* stop all devices to make sure that dma is properly shut down */
-+	for (i = 0; i < MTK_MAC_COUNT; i++) {
-+		if (!eth->netdev[i])
-+			continue;
-+		mtk_stop(eth->netdev[i]);
-+	}
-+	mtk_hw_deinit(eth);
- 
- 	netif_napi_del(&eth->tx_napi);
- 	netif_napi_del(&eth->rx_napi);
+@@ -864,7 +864,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		/* receive data */
+ 		skb = build_skb(data, ring->frag_size);
+ 		if (unlikely(!skb)) {
+-			put_page(virt_to_head_page(new_data));
++			skb_free_frag(new_data);
+ 			netdev->stats.rx_dropped++;
+ 			goto release_desc;
+ 		}
 -- 
 1.9.1
