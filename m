@@ -1,67 +1,63 @@
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Subject: Re: [PATCH v13 0/4] Mediatek MT8173 CMDQ support
-Date: Thu, 25 Aug 2016 19:12:57 +0530
-Message-ID: <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
-References: <1472009252-1074-1-git-send-email-hs.liao@mediatek.com>
- <20b10079-3ae2-9da9-1149-0bceabac9837@gmail.com> <1472132247.26044.23.camel@mtksdaap41>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [RESEND PATCH net 02/10] net: ethernet: mediatek: fix incorrect
+ return value of devm_clk_get with EPROBE_DEFER
+Date: Thu, 25 Aug 2016 15:49:10 +0200
+Message-ID: <e1e9ca7a-c33b-3a9e-fd47-48f80bb10a32@phrozen.org>
+References: <1472121901-15629-1-git-send-email-sean.wang@mediatek.com>
+ <1472121901-15629-3-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1472132247.26044.23.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Horng-Shyang Liao <hs.liao@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1472121901-15629-3-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>, davem@davemloft.net
+Cc: netdev@vger.kernel.org, nbd@openwrt.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Aug 25, 2016 at 7:07 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
-> Hi Matthias,
->
-> On Wed, 2016-08-24 at 13:00 +0200, Matthias Brugger wrote:
->> On 24/08/16 05:27, HS Liao wrote:
-> [...]
->> > Changes since v12:
->> >  - remove mediatek,gce from device tree
->>
->> Why? The binding got accepted by Rob.
->
-> We can get cmdq dev from mailbox controller,
-> so we don't need mediatek,gce anymore.
->
->> >
->> > Best regards,
->> > HS Liao
->> >
->> > HS Liao (4):
->> >   dt-bindings: soc: Add documentation for the MediaTek GCE unit
->> >   CMDQ: Mediatek CMDQ driver
->> >   arm64: dts: mt8173: Add GCE node
->> >   CMDQ: save more energy in idle
->> >
->> >  .../devicetree/bindings/soc/mediatek/gce.txt       |  44 +
->> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
->> >  drivers/soc/mediatek/Kconfig                       |  11 +
->> >  drivers/soc/mediatek/Makefile                      |   1 +
->> >  drivers/soc/mediatek/mtk-cmdq.c                    | 983 +++++++++++++++++++++
->>
->> The driver uses the mailbox framework, so it should live in the
->> drivers/mailbox folder.
->
-> As you know, the maximum number of gce threads is 16.
-> However, we plan to support more clients in the future,
-> and they may need to use more than 16 gce threads.
->
-> For this issue, our plan is to let multiple clients share the same gce
-> thread; i.e. we will acquire gce thread for client dynamically by
-> internal policy in cmdq driver.
-> Unfortunately. mailbox channel has exclusive feature.
-> Quote from comment of mbox_request_channel().
-> "The channel is exclusively allocated and can't be used by another
-> client before the owner calls mbox_free_channel."
-> Therefore, we plan to remove mailbox framework from cmdq driver in the
-> future.
->
-Platforms that need shared access to a channel, implement a 'server'
-driver that serialise (which is needed still) the access to common
-channel. If you think you don't need mutual exclusion and don't care
-about replies, simply share the mailbox handle among different
-clients.
+
+
+On 25/08/2016 12:44, Sean Wang wrote:
+> If the return value of devm_clk_get is EPROBE_DEFER, we should
+> defer probing the driver. The change is verified and works based
+> on 4.8-rc1 staying with the latest clk-next code for MT7623.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 6e4a6ca..02b048f 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -1851,8 +1851,15 @@ static int mtk_probe(struct platform_device *pdev)
+>  	eth->clk_gp1 = devm_clk_get(&pdev->dev, "gp1");
+>  	eth->clk_gp2 = devm_clk_get(&pdev->dev, "gp2");
+>  	if (IS_ERR(eth->clk_esw) || IS_ERR(eth->clk_gp1) ||
+> -	    IS_ERR(eth->clk_gp2) || IS_ERR(eth->clk_ethif))
+> -		return -ENODEV;
+> +	    IS_ERR(eth->clk_gp2) || IS_ERR(eth->clk_ethif)) {
+> +		if (PTR_ERR(eth->clk_esw) == -EPROBE_DEFER ||
+> +		    PTR_ERR(eth->clk_gp1) == -EPROBE_DEFER ||
+> +		    PTR_ERR(eth->clk_gp1) == -EPROBE_DEFER ||
+> +		    PTR_ERR(eth->clk_gp2) == -EPROBE_DEFER)
+> +			return -EPROBE_DEFER;
+> +		else
+> +			return -ENODEV;
+> +	}
+
+Hi Sean,
+
+this looks a bit tedious. maybe a better solution would be to add an
+array to struct mtk_eth for the clocks and an enum for the index
+mapping. that would allow the usage of loops to work out if all clocks
+are fine. the following code calling clk_prepare_enable() could then
+also be turned into a loop
+
+	John
+
+>  
+>  	clk_prepare_enable(eth->clk_ethif);
+>  	clk_prepare_enable(eth->clk_esw);
+> 
