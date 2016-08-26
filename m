@@ -1,43 +1,40 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [RESEND PATCH net 06/10] net: ethernet: mediatek: fix the loss
-Date: Fri, 26 Aug 2016 16:17:59 +0200
-Message-ID: <20160826141759.GG25046@lunn.ch>
-References: <20160825133034.GA25046@lunn.ch>
- <1472182419-17998-1-git-send-email-sean.wang@mediatek.com>
+From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH -next] iio: adc: mt2701: Remove redundant dev_err call in mt6577_auxadc_probe()
+Date: Fri, 26 Aug 2016 14:26:21 +0000
+Message-ID: <1472221581-28836-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1472182419-17998-1-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-> Hi Andrew,
-> 
-> Here pinctrl is used to setup what function the group of the pins is
-> for.
+From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 
-Agreed.
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
+
+Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+---
+ drivers/iio/adc/mt6577_auxadc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+index 2d104c8..a268954 100644
+--- a/drivers/iio/adc/mt6577_auxadc.c
++++ b/drivers/iio/adc/mt6577_auxadc.c
+@@ -206,10 +206,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
  
-> The group of the pins could be configured for the function provided 
-> by the SoC, such as general purpose I/O or specific function such as
-> ethernet depending on what products or boards you design for various 
-> customers or vendors. Thanks for device tree introducing, it is easy 
-> to find what resources the board needs including the pins usage is 
-> also defined here.
-
-All clear. However, if the ethernet driver has loaded, it means the
-device tree says the ethernet should be loaded, unless it happens to
-be on some discoverable bus. And so the device tree node for the
-ethernet should also contain the needed pinctrl properties.  The core
-driver code should of seen these properties and already enabled the
-correct pinctrl state before the driver probes.
-
-This is how every other driver works. Like i said, i don't think i've
-seen any other driver do its own pinctrl. So i just need a simple
-description, what is different here, why does this driver need to do
-it, when no other does?
-
-    Andrew
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(adc_dev->reg_base)) {
+-		dev_err(&pdev->dev, "failed to get auxadc base address\n");
++	if (IS_ERR(adc_dev->reg_base))
+ 		return PTR_ERR(adc_dev->reg_base);
+-	}
+ 
+ 	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
+ 	if (IS_ERR(adc_dev->adc_clk)) {
