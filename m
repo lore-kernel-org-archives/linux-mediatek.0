@@ -1,40 +1,42 @@
-From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH -next] iio: adc: mt2701: Remove redundant dev_err call in mt6577_auxadc_probe()
-Date: Fri, 26 Aug 2016 14:26:21 +0000
-Message-ID: <1472221581-28836-1-git-send-email-weiyj.lk@gmail.com>
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [PATCH net-next v4 0/2] net: ethernet: mediatek: modify to use
+ the PDMA for Ethernet RX
+Date: Fri, 26 Aug 2016 21:07:16 -0700 (PDT)
+Message-ID: <20160826.210716.476405113982102387.davem@davemloft.net>
+References: <1472144983-5048-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472144983-5048-1-git-send-email-nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nelsonch.tw-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+From: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Date: Fri, 26 Aug 2016 01:09:41 +0800
 
-There is a error message within devm_ioremap_resource
-already, so remove the dev_err call to avoid redundant
-error message.
+> This series have some modifications and refines to support Ethernet RX by the PDMA.
+> 
+> changes since v4:
+> - Remove the redundant OR operation in mtk_hw_init()
+> 
+> changes since v3:
+> - Add GDM hardware settings to send packets to PDMA for RX
+> 
+> changes since v2:
+> - Fix the bugs of PDMA cpu index and interrupt settings in mtk_poll_rx()
+> 
+> changes since v1:
+> - Modify to use the PDMA instead of the QDMA for Ethernet RX
 
-Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
----
- drivers/iio/adc/mt6577_auxadc.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-index 2d104c8..a268954 100644
---- a/drivers/iio/adc/mt6577_auxadc.c
-+++ b/drivers/iio/adc/mt6577_auxadc.c
-@@ -206,10 +206,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(adc_dev->reg_base)) {
--		dev_err(&pdev->dev, "failed to get auxadc base address\n");
-+	if (IS_ERR(adc_dev->reg_base))
- 		return PTR_ERR(adc_dev->reg_base);
--	}
- 
- 	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
- 	if (IS_ERR(adc_dev->adc_clk)) {
+Series applied, thanks.
