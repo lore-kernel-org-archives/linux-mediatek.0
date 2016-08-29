@@ -1,64 +1,60 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v12 1/4] clk: mediatek: Add MT2701 clock support
-Date: Mon, 29 Aug 2016 10:46:23 -0700
-Message-ID: <20160829174623.GB19826@codeaurora.org>
-References: <1471854565-19810-1-git-send-email-erin.lo@mediatek.com>
- <1471854565-19810-2-git-send-email-erin.lo@mediatek.com>
- <20160824174917.GB19826@codeaurora.org>
- <1472271377.21203.12.camel@mtksdaap41>
+From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH -next] iio: adc: mt2701: Remove redundant dev_err call in
+ mt6577_auxadc_probe()
+Date: Mon, 29 Aug 2016 19:47:51 +0100
+Message-ID: <88307772-dd0f-a2f2-efd8-6c64a0cb14e4@kernel.org>
+References: <1472221581-28836-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-clk-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1472271377.21203.12.camel@mtksdaap41>
-Sender: linux-clk-owner@vger.kernel.org
-To: James Liao <jamesjj.liao@mediatek.com>
-Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Shunli Wang <shunli.wang@mediatek.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1472221581-28836-1-git-send-email-weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Zhiyong Tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/27, James Liao wrote:
-> On Wed, 2016-08-24 at 10:49 -0700, Stephen Boyd wrote:
-> > On 08/22, Erin Lo wrote:
-> > > +
-> > > +static void __init mtk_infrasys_init_early(struct device_node *node)
-> > > +{
-> > > +	int r, i;
-> > > +
-> > > +	if (!infra_clk_data) {
-> > > +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
-> > > +
-> > > +		for (i = 0; i < CLK_INFRA_NR; i++)
-> > > +			infra_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
-> > > +	}
-> > > +
-> > > +	mtk_clk_register_factors(infra_fixed_divs, ARRAY_SIZE(infra_fixed_divs),
-> > > +						infra_clk_data);
-> > > +
-> > > +	r = of_clk_add_provider(node, of_clk_src_onecell_get, infra_clk_data);
-> > > +	if (r)
-> > > +		pr_err("%s(): could not register clock provider: %d\n",
-> > > +			__func__, r);
-> > > +}
-> > > +CLK_OF_DECLARE(mtk_infra, "mediatek,mt2701-infracfg", mtk_infrasys_init_early);
-> > 
-> > This should use CLK_OF_DECLARE_DRIVER? Has this been tested on
-> > latest clk-next? Some recent patches make it so that
-> > CLK_OF_DECLARE() prevents platform devices from being created for
-> > the associated DT nodes that match during of_clk_init().
+On 26/08/16 15:26, Wei Yongjun wrote:
+> From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 > 
-> Oops, you are right. Clocks in infra_clks are gone on clk-next, but they
-> are good on v4.8-rc1.
+> There is a error message within devm_ioremap_resource
+> already, so remove the dev_err call to avoid redundant
+> error message.
 > 
-> I register clk13m in infra_fixed_divs through CLK_OF_DECLARE() so that
-> it can be registered as early as possible because it will be referred by
-> the timer driver. Is there a formal way to separate clock registrations
-> on the same clock provider? Or should I move infra_clks registration
-> into CLK_OF_DECLARE()?
+> Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Hi Wei,
 
-The way to do this is use CLK_OF_DECLARE_DRIVER() and then do the
-early clks in the CLK_OF callback and the rest of them in the
-driver probe.
+I'm not so sure these are actually redundant.  Overly verbose perhaps,
+but they do provide additional information in the log as the
+devm_ioremap_resource doesn't know 'what' has failed, merely how
+it has failed.
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+I'm happy to take these, if the driver author / maintainers
+agree, but I'm not keen enough to take them without that.
+
+Zhiyong Tao, what do you think on this one?
+
+Jonathan
+> ---
+>  drivers/iio/adc/mt6577_auxadc.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index 2d104c8..a268954 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -206,10 +206,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
+>  
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
+> -	if (IS_ERR(adc_dev->reg_base)) {
+> -		dev_err(&pdev->dev, "failed to get auxadc base address\n");
+> +	if (IS_ERR(adc_dev->reg_base))
+>  		return PTR_ERR(adc_dev->reg_base);
+> -	}
+>  
+>  	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
+>  	if (IS_ERR(adc_dev->adc_clk)) {
+> 
+> 
+> 
