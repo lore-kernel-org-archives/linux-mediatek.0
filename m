@@ -1,116 +1,53 @@
-From: mtk04561 <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [Patch] mtd: fix writing incorrect ECC parity data in OOB region.
-Date: Mon, 29 Aug 2016 11:58:13 +0800
-Message-ID: <1472443093.27061.4.camel@mtkswgap22>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [RESEND PATCH net 06/10] net: ethernet: mediatek: fix the loss
+Date: Mon, 29 Aug 2016 12:27:13 +0800
+Message-ID: <1472444833-28693-1-git-send-email-sean.wang@mediatek.com>
+References: <20160826141759.GG25046@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20160826141759.GG25046@lunn.ch>
+Sender: netdev-owner@vger.kernel.org
+To: andrew@lunn.ch
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Boris,
+Date: Fri, 26 Aug 2016 16:17:59 +0200, Andrew Lunn wrote:
+>> Hi Andrew,
+>> 
+>> Here pinctrl is used to setup what function the group of the pins is
+>> for.
+>
+>Agreed.
+> 
+>> The group of the pins could be configured for the function provided 
+>> by the SoC, such as general purpose I/O or specific function such as
+>> ethernet depending on what products or boards you design for various 
+>> customers or vendors. Thanks for device tree introducing, it is easy 
+>> to find what resources the board needs including the pins usage is 
+>> also defined here.
+>
+>All clear. However, if the ethernet driver has loaded, it means the
+>device tree says the ethernet should be loaded, unless it happens to
+>be on some discoverable bus. And so the device tree node for the
+>ethernet should also contain the needed pinctrl properties.  The core
+>driver code should of seen these properties and already enabled the
+>correct pinctrl state before the driver probes.
+>
+>This is how every other driver works. Like i said, i don't think i've
+>seen any other driver do its own pinctrl. So i just need a simple
+>description, what is different here, why does this driver need to do
+>it, when no other does?
+>
+>    Andrew
+>
 
-I found a problem in current Mediatek upstream NAND driver (of nand/next
-branch). When testing the upstream driver with UBIFS file system, it has
-some chance to create incorrect ECC data in the second subpage, this
-makes UBIFS failed to mount. Below patch fixes this problem. Please help
-to review the patch and upstream. Thank you.
+You are right
+all that I need about pinctrl are all being done with core driver 
+as you said, so the patch I did seems the redundant work and i will remove 
+it from the patch set.
 
-Best regards,
-Roger
+thanks for your patient and careful reviewing and that also helps me getting 
+familiar with based driver with pinctrl more :)
 
-
-
-Description:
-When mtk_ecc_encode() is writing the ECC parity data to the OOB region,
-because each register is 4 bytes in length, but the len's unit is in
-bytes, the operation in the for loop will cross the ECC's boundary.
-
-And when mtk_nfc_do_write_page() comparing the sector number, because
-the sector number field is at the 12th-bit position of NFI_BYTELEN
-register, the masked register should be shifted 12 bits before being
-compared. The result of this bug may cause the second subpage has
-incomplete ECC parity bytes.
-
-Test:
-The patch passed the test of UBIFS file-system read/write on Mediatek's
-RFB. The tested driver is checked-out from LEDE OpenWRT project's
-upstream driver, which is pretty much same as nand/next branch upstream
-driver(git clone https://git.lede-project.org/source.git). 
-
-
-Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-index 25a4fbd..0a7ce8d 100644
---- a/drivers/mtd/nand/mtk_ecc.c
-+++ b/drivers/mtd/nand/mtk_ecc.c
-@@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct
-mtk_ecc_config *config,
-                   u8 *data, u32 bytes)
- {
-        dma_addr_t addr;
--       u32 *p, len, i;
-+       u8 *p;
-+       u32 len, i, val;
-        int ret = 0;
-
-        addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
-@@ -395,8 +396,11 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct
-mtk_ecc_config *config,
-        p = (u32 *)(data + bytes);
-
-        /* write the parity bytes generated by the ECC back to the OOB
-region */
--       for (i = 0; i < len; i++)
--               p[i] = readl(ecc->regs + ECC_ENCPAR(i));
-+       for (i = 0; i < len; i++) {
-+               if ((i % 4) == 0)
-+                       val = readl(ecc->regs + ECC_ENCPAR(i >> 2));
-+               p[i] = *((u8 *)&val + (i % 4));
-+       }
- timeout:
-
-        dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
-diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-index ddaa2ac..9c49121 100644
---- a/drivers/mtd/nand/mtk_nand.c
-+++ b/drivers/mtd/nand/mtk_nand.c
-@@ -699,8 +699,8 @@ static int mtk_nfc_do_write_page(struct mtd_info
-*mtd, struct nand_chip *chip,
-        }
-
-        ret = readl_poll_timeout_atomic(nfc->regs + NFI_ADDRCNTR, reg,
--                                       (reg & CNTR_MASK) >=
-chip->ecc.steps,
--                                       10, MTK_TIMEOUT);
-+                                       ((reg & CNTR_MASK) >> 12) >=
-+                                       chip->ecc.steps, 10,
-MTK_TIMEOUT);
-        if (ret)
-                dev_err(dev, "hwecc write timeout\n");
-
-@@ -902,8 +902,8 @@ static int mtk_nfc_read_subpage(struct mtd_info
-*mtd, struct nand_chip *chip,
-                dev_warn(nfc->dev, "read ahb/dma done timeout\n");
-
-        rc = readl_poll_timeout_atomic(nfc->regs + NFI_BYTELEN, reg,
--                                      (reg & CNTR_MASK) >= sectors, 10,
--                                      MTK_TIMEOUT);
-+                                      ((reg & CNTR_MASK) >> 12) >=
-sectors,
-+                                      10, MTK_TIMEOUT);
-        if (rc < 0) {
-                dev_err(nfc->dev, "subpage done timeout\n");
-                bitflips = -EIO;
+Sean
