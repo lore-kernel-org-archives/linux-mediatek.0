@@ -1,58 +1,64 @@
-From: Andrew Lunn <andrew@lunn.ch>
-Subject: Re: [PATCH net v2 9/9] net: ethernet: mediatek: fix error handling
- inside mtk_mdio_init
-Date: Mon, 29 Aug 2016 18:36:28 +0200
-Message-ID: <20160829163628.GC17231@lunn.ch>
-References: <1472447003-30726-1-git-send-email-sean.wang@mediatek.com>
- <1472447003-30726-10-git-send-email-sean.wang@mediatek.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH v12 1/4] clk: mediatek: Add MT2701 clock support
+Date: Mon, 29 Aug 2016 10:46:23 -0700
+Message-ID: <20160829174623.GB19826@codeaurora.org>
+References: <1471854565-19810-1-git-send-email-erin.lo@mediatek.com>
+ <1471854565-19810-2-git-send-email-erin.lo@mediatek.com>
+ <20160824174917.GB19826@codeaurora.org>
+ <1472271377.21203.12.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1472447003-30726-10-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+In-Reply-To: <1472271377.21203.12.camel@mtksdaap41>
+Sender: linux-clk-owner@vger.kernel.org
+To: James Liao <jamesjj.liao@mediatek.com>
+Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, Shunli Wang <shunli.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Aug 29, 2016 at 01:03:23PM +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On 08/27, James Liao wrote:
+> On Wed, 2016-08-24 at 10:49 -0700, Stephen Boyd wrote:
+> > On 08/22, Erin Lo wrote:
+> > > +
+> > > +static void __init mtk_infrasys_init_early(struct device_node *node)
+> > > +{
+> > > +	int r, i;
+> > > +
+> > > +	if (!infra_clk_data) {
+> > > +		infra_clk_data = mtk_alloc_clk_data(CLK_INFRA_NR);
+> > > +
+> > > +		for (i = 0; i < CLK_INFRA_NR; i++)
+> > > +			infra_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
+> > > +	}
+> > > +
+> > > +	mtk_clk_register_factors(infra_fixed_divs, ARRAY_SIZE(infra_fixed_divs),
+> > > +						infra_clk_data);
+> > > +
+> > > +	r = of_clk_add_provider(node, of_clk_src_onecell_get, infra_clk_data);
+> > > +	if (r)
+> > > +		pr_err("%s(): could not register clock provider: %d\n",
+> > > +			__func__, r);
+> > > +}
+> > > +CLK_OF_DECLARE(mtk_infra, "mediatek,mt2701-infracfg", mtk_infrasys_init_early);
+> > 
+> > This should use CLK_OF_DECLARE_DRIVER? Has this been tested on
+> > latest clk-next? Some recent patches make it so that
+> > CLK_OF_DECLARE() prevents platform devices from being created for
+> > the associated DT nodes that match during of_clk_init().
 > 
-> return -ENODEV if no child is found in MDIO bus.
-
-The "no child" is wrong here, and got me confused. What the code is
-actually doing is of_device_is_available() which is looking to see if
-there is a status = "okay". So what the change log should say is:
-
-Return -ENODEV if the MDIO bus is disabled in the device tree.
-
-Once that has been corrected:
-
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-
-    Andrew
-
-
+> Oops, you are right. Clocks in infra_clks are gone on clk-next, but they
+> are good on v4.8-rc1.
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Acked-by: John Crispin <john@phrozen.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index f741c6a..e48b2a4 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -304,7 +304,7 @@ static int mtk_mdio_init(struct mtk_eth *eth)
->  	}
->  
->  	if (!of_device_is_available(mii_np)) {
-> -		ret = 0;
-> +		ret = -ENODEV;
->  		goto err_put_node;
->  	}
->  
-> -- 
-> 1.9.1
-> 
+> I register clk13m in infra_fixed_divs through CLK_OF_DECLARE() so that
+> it can be registered as early as possible because it will be referred by
+> the timer driver. Is there a formal way to separate clock registrations
+> on the same clock provider? Or should I move infra_clks registration
+> into CLK_OF_DECLARE()?
+
+The way to do this is use CLK_OF_DECLARE_DRIVER() and then do the
+early clks in the CLK_OF callback and the rest of them in the
+driver probe.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
