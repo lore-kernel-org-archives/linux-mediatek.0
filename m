@@ -1,55 +1,164 @@
-From: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Subject: Re: [RESEND PATCH, v5 3/5] usb: xhci-mtk: make IPPC register optional
-Date: Mon, 29 Aug 2016 11:01:02 +0300
-Message-ID: <877fb0dmwx.fsf@linux.intel.com>
-References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com> <1472094329-18466-4-git-send-email-chunfeng.yun@mediatek.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [Patch] mtd: fix writing incorrect ECC parity data in OOB region.
+Date: Mon, 29 Aug 2016 10:10:06 +0200
+Message-ID: <20160829101006.2b200e0a@bbrezillon>
+References: <1472443093.27061.4.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-        micalg=pgp-sha256; protocol="application/pgp-signature"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1472094329-18466-4-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472443093.27061.4.camel@mtkswgap22>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: mtk04561 <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
++Jorge
 
-Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
-> Make IPPC register optional to support host side of dual-role mode,
-> due to it is moved into common glue layer for simplification.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Hi Roger,
 
-Mathias? Are you taking these patches?? I don't wanna take peripheral
-side driver if you won't take xhci side.
+On Mon, 29 Aug 2016 11:58:13 +0800
+mtk04561 <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
-=2D-=20
-balbi
+> Hi Boris,
+> 
+> I found a problem in current Mediatek upstream NAND driver (of nand/next
+> branch). When testing the upstream driver with UBIFS file system, it has
+> some chance to create incorrect ECC data in the second subpage, this
+> makes UBIFS failed to mount. Below patch fixes this problem. Please help
+> to review the patch and upstream. Thank you.
+> 
+> Best regards,
+> Roger
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+Can you put this message after the '---' (below your SoB), so that it
+does not appear when applying the patch.
 
------BEGIN PGP SIGNATURE-----
+> 
+> 
+> 
+> Description:
 
-iQIcBAEBCAAGBQJXw+u+AAoJEIaOsuA1yqREKkAP/ikhY29E16Jwp2Jywxc4yL/3
-rqH7iup7K0So3dLjxjxSWM6/NPT61pMeRQ7HUAeVqhxAKjb4oV4XE2gBjo6b/O7/
-OinXS5EWmCoc5kiwFvjgPM1EnWZptH9PyvFHIoX0Qa7QtLB5vMuSrmpH8m2AeTlP
-WIHJICko0KGLfhsmNFz6iioQknFv+vGF9Te9NjAbg3TJD+Ib+vYVs830+D5wnzov
-r+3xnrSoes1yOdJ4p/DBrHZMGOoY6lQiHeIwGb1W8fG9nIFOX+DFGCR1bj9TQ13G
-colFol08GX2DYR80ialyjDkM9KcJWJBX1rPuJgc5mYFXxcNBI8OWtIo1EnvYz4RM
-QF07KaKaTpaJwAK+qE66NNw/br6nyOR6tDYXrskIkkOoYdTurClAp3QEkRhhsyfo
-0f/RpsovG9fLVQUzd8ChPfj9AK13z7KLA8XRgfK7D/HwHHrDRky4nXvvbO9F0HNd
-AT4qRvhOCeWbsba+3LszG6bf6XsI6qnbfqwbTR2GWMEhv1XtnbB8fAPAjBOfRGb+
-wsh0+71U4aBkAUonucCG7iAgXQqB4xKnmPXm8fhDzN59aHFqr+JgjJL6zDhgVL7a
-UwEt2bDZCEPEaiPRdaZurYYTtpSXeFsMkABi1pZBWKcMVt6x1HntuwfV+xJY5rL3
-+KQGs73PNObOQgkq+1H6
-=5epm
------END PGP SIGNATURE-----
---=-=-=--
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Drop the 'Description:' line.
+
+> When mtk_ecc_encode() is writing the ECC parity data to the OOB region,
+> because each register is 4 bytes in length, but the len's unit is in
+> bytes, the operation in the for loop will cross the ECC's boundary.
+> 
+> And when mtk_nfc_do_write_page() comparing the sector number, because
+> the sector number field is at the 12th-bit position of NFI_BYTELEN
+> register, the masked register should be shifted 12 bits before being
+> compared. The result of this bug may cause the second subpage has
+> incomplete ECC parity bytes.
+
+Maybe you could split those changes in 2 patches (not a strong
+requirement).
+
+> 
+> Test:
+
+Drop the 'Test:' line.
+
+> The patch passed the test of UBIFS file-system read/write on Mediatek's
+> RFB. The tested driver is checked-out from LEDE OpenWRT project's
+> upstream driver, which is pretty much same as nand/next branch upstream
+> driver(git clone https://git.lede-project.org/source.git). 
+> 
+> 
+> Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> index 25a4fbd..0a7ce8d 100644
+> --- a/drivers/mtd/nand/mtk_ecc.c
+> +++ b/drivers/mtd/nand/mtk_ecc.c
+> @@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct
+> mtk_ecc_config *config,
+>                    u8 *data, u32 bytes)
+>  {
+>         dma_addr_t addr;
+> -       u32 *p, len, i;
+> +       u8 *p;
+> +       u32 len, i, val;
+>         int ret = 0;
+> 
+>         addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+> @@ -395,8 +396,11 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct
+> mtk_ecc_config *config,
+>         p = (u32 *)(data + bytes);
+
+Hm, you should now do:
+
+	p = data + bytes;
+
+> 
+>         /* write the parity bytes generated by the ECC back to the OOB
+> region */
+> -       for (i = 0; i < len; i++)
+> -               p[i] = readl(ecc->regs + ECC_ENCPAR(i));
+> +       for (i = 0; i < len; i++) {
+> +               if ((i % 4) == 0)
+> +                       val = readl(ecc->regs + ECC_ENCPAR(i >> 2));
+> +               p[i] = *((u8 *)&val + (i % 4));
+
+Please, use a shift operator here:
+
+		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+
+Otherwise you're exposed to endianness conversion problems (this works
+fine in your case because you're using a little-endian kernel).
+
+> +       }
+>  timeout:
+> 
+>         dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
+> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+> index ddaa2ac..9c49121 100644
+> --- a/drivers/mtd/nand/mtk_nand.c
+> +++ b/drivers/mtd/nand/mtk_nand.c
+> @@ -699,8 +699,8 @@ static int mtk_nfc_do_write_page(struct mtd_info
+> *mtd, struct nand_chip *chip,
+>         }
+> 
+>         ret = readl_poll_timeout_atomic(nfc->regs + NFI_ADDRCNTR, reg,
+> -                                       (reg & CNTR_MASK) >=
+> chip->ecc.steps,
+> -                                       10, MTK_TIMEOUT);
+> +                                       ((reg & CNTR_MASK) >> 12) >=
+> +                                       chip->ecc.steps, 10,
+
+Please keep '((reg & CNTR_MASK) >> 12) >= chip->ecc.steps' on the same
+line.
+
+If you want to comply with the 80 char lines, you can do:
+
+	ret = readl_poll_timeout_atomic(nfc->regs + NFI_ADDRCNTR, reg,
+				((reg & CNTR_MASK) >> 12) >= chip->ecc.steps,
+				10, MTK_TIMEOUT);
+
+
+>         if (ret)
+>                 dev_err(dev, "hwecc write timeout\n");
+> 
+> @@ -902,8 +902,8 @@ static int mtk_nfc_read_subpage(struct mtd_info
+> *mtd, struct nand_chip *chip,
+>                 dev_warn(nfc->dev, "read ahb/dma done timeout\n");
+> 
+>         rc = readl_poll_timeout_atomic(nfc->regs + NFI_BYTELEN, reg,
+> -                                      (reg & CNTR_MASK) >= sectors, 10,
+> -                                      MTK_TIMEOUT);
+> +                                      ((reg & CNTR_MASK) >> 12) >=
+> sectors,
+> +                                      10, MTK_TIMEOUT);
+>         if (rc < 0) {
+>                 dev_err(nfc->dev, "subpage done timeout\n");
+>                 bitflips = -EIO;
+> 
+> 
