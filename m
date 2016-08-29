@@ -1,53 +1,57 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [RESEND PATCH net 06/10] net: ethernet: mediatek: fix the loss
-Date: Mon, 29 Aug 2016 12:27:13 +0800
-Message-ID: <1472444833-28693-1-git-send-email-sean.wang@mediatek.com>
-References: <20160826141759.GG25046@lunn.ch>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH net v2 0/9] net: ethernet: mediatek: a couple of fixes
+Date: Mon, 29 Aug 2016 13:03:14 +0800
+Message-ID: <1472447003-30726-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20160826141759.GG25046@lunn.ch>
-Sender: netdev-owner@vger.kernel.org
-To: andrew@lunn.ch
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
+Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Date: Fri, 26 Aug 2016 16:17:59 +0200, Andrew Lunn wrote:
->> Hi Andrew,
->> 
->> Here pinctrl is used to setup what function the group of the pins is
->> for.
->
->Agreed.
-> 
->> The group of the pins could be configured for the function provided 
->> by the SoC, such as general purpose I/O or specific function such as
->> ethernet depending on what products or boards you design for various 
->> customers or vendors. Thanks for device tree introducing, it is easy 
->> to find what resources the board needs including the pins usage is 
->> also defined here.
->
->All clear. However, if the ethernet driver has loaded, it means the
->device tree says the ethernet should be loaded, unless it happens to
->be on some discoverable bus. And so the device tree node for the
->ethernet should also contain the needed pinctrl properties.  The core
->driver code should of seen these properties and already enabled the
->correct pinctrl state before the driver probes.
->
->This is how every other driver works. Like i said, i don't think i've
->seen any other driver do its own pinctrl. So i just need a simple
->description, what is different here, why does this driver need to do
->it, when no other does?
->
->    Andrew
->
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-You are right
-all that I need about pinctrl are all being done with core driver 
-as you said, so the patch I did seems the redundant work and i will remove 
-it from the patch set.
+a couple of fixes come out from integrating with linux-4.8 rc1
+they all are verified and workable on linux-4.8 rc1
 
-thanks for your patient and careful reviewing and that also helps me getting 
-familiar with based driver with pinctrl more :)
+changes since v1:
+- usage of loops to work out if all required clock are ready instead
+of tedious coding
+- remove redundant pinctrl setup that is already done by core driver
+thanks for careful and patient reviewing by Andrew Lunn
+- splitting distinct changes into the separate patches
+- change variable naming from err to ret for readable coding
 
-Sean
+Sean Wang (9):
+  net: ethernet: mediatek: fix fails from TX housekeeping due to
+    incorrect port setup
+  net: ethernet: mediatek: fix incorrect return value of devm_clk_get
+    with EPROBE_DEFER
+  net: ethernet: mediatek: fix API usage with skb_free_frag
+  net: ethernet: mediatek: remove redundant free_irq for
+    devm_request_irq allocated irq
+  net: ethernet: mediatek: fix logic unbalance between probe and remove
+  net: ethernet: mediatek: fix issue of driver removal with interface is
+    up
+  net: ethernet: mediatek: fix the missing of_node_put() after node is
+    used done inside mtk_mdio_init
+  net: ethernet: mediatek: use devm_mdiobus_alloc instead of
+    mdiobus_alloc inside mtk_mdio_init
+  net: ethernet: mediatek: fix error handling inside mtk_mdio_init
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 82 +++++++++++++++--------------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 22 +++++---
+ 2 files changed, 56 insertions(+), 48 deletions(-)
+
+-- 
+1.9.1
