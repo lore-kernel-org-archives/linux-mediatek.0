@@ -1,32 +1,46 @@
-From: RogerCC.Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v2 0/2] mtd: nand: fix writing incorrect ECC parity data
- in OOB region.
-Date: Mon, 29 Aug 2016 19:53:30 +0800
-Message-ID: <1472471610.11041.10.camel@mtkswgap22>
-References: <1472443093.27061.4.camel@mtkswgap22>
- <20160829101006.2b200e0a@bbrezillon> <1472470803.11041.4.camel@mtkswgap22>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH net v2 8/9] net: ethernet: mediatek: use
+ devm_mdiobus_alloc instead of mdiobus_alloc inside mtk_mdio_init
+Date: Mon, 29 Aug 2016 15:06:28 +0200
+Message-ID: <20160829130628.GD12465@lunn.ch>
+References: <1472447003-30726-1-git-send-email-sean.wang@mediatek.com>
+ <1472447003-30726-9-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472470803.11041.4.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1472447003-30726-9-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Boris and all,
+On Mon, Aug 29, 2016 at 01:03:22PM +0800, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> a lot of parts in the driver uses devm_* APIs to gain benefits from the
+> device resource management, so devm_mdiobus_alloc is also used instead
+> of mdiobus_alloc to have more elegant code flow.
+> 
+> Using common code provided by the devm_* helps to
+> 1) have simplified the code flow as [1] says
+> 2) decrease the risk of incorrect error handling by human
+> 3) only a few drivers used it since it ware proposed on linux 3.16,
+> so just hope to promote for this.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> 
+> ---
+> ref.
+> [1] https://patchwork.ozlabs.org/patch/344093/
+> ---
 
-I am sorry that though I have change the sender name in the email, but
-It seems the patchwork still show the wrong name, I will check what
-wrong with my email, sorry for the inconvenience.
+Hi Sean
 
-Roger
+Your footnote is below the ---, so won't make it into the change log. 
+
+Apart from that,
+
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+
+    Andrew
