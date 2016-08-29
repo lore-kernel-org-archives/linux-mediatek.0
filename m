@@ -1,57 +1,55 @@
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net v2 5/9] net: ethernet: mediatek: fix logic unbalance
- between probe and remove
-Date: Mon, 29 Aug 2016 13:03:19 +0800
-Message-ID: <1472447003-30726-6-git-send-email-sean.wang@mediatek.com>
-References: <1472447003-30726-1-git-send-email-sean.wang@mediatek.com>
+From: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: Re: [RESEND PATCH, v5 3/5] usb: xhci-mtk: make IPPC register optional
+Date: Mon, 29 Aug 2016 11:01:02 +0300
+Message-ID: <877fb0dmwx.fsf@linux.intel.com>
+References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com> <1472094329-18466-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472447003-30726-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: multipart/signed; boundary="=-=-=";
+        micalg=pgp-sha256; protocol="application/pgp-signature"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1472094329-18466-4-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-original mdio_cleanup is not in the symmetric place against where
-mdio_init is, so relocate mdio_cleanup to the right one.
+Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> writes:
+> Make IPPC register optional to support host side of dual-role mode,
+> due to it is moved into common glue layer for simplification.
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Mathias? Are you taking these patches?? I don't wanna take peripheral
+side driver if you won't take xhci side.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 2c5754e..17dd2f8 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1508,7 +1508,6 @@ static void mtk_uninit(struct net_device *dev)
- 	struct mtk_eth *eth = mac->hw;
- 
- 	phy_disconnect(mac->phy_dev);
--	mtk_mdio_cleanup(eth);
- 	mtk_irq_disable(eth, ~0);
- }
- 
-@@ -1913,6 +1912,7 @@ static int mtk_remove(struct platform_device *pdev)
- 	netif_napi_del(&eth->tx_napi);
- 	netif_napi_del(&eth->rx_napi);
- 	mtk_cleanup(eth);
-+	mtk_mdio_cleanup(eth);
- 
- 	return 0;
- }
--- 
-1.9.1
+=2D-=20
+balbi
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIcBAEBCAAGBQJXw+u+AAoJEIaOsuA1yqREKkAP/ikhY29E16Jwp2Jywxc4yL/3
+rqH7iup7K0So3dLjxjxSWM6/NPT61pMeRQ7HUAeVqhxAKjb4oV4XE2gBjo6b/O7/
+OinXS5EWmCoc5kiwFvjgPM1EnWZptH9PyvFHIoX0Qa7QtLB5vMuSrmpH8m2AeTlP
+WIHJICko0KGLfhsmNFz6iioQknFv+vGF9Te9NjAbg3TJD+Ib+vYVs830+D5wnzov
+r+3xnrSoes1yOdJ4p/DBrHZMGOoY6lQiHeIwGb1W8fG9nIFOX+DFGCR1bj9TQ13G
+colFol08GX2DYR80ialyjDkM9KcJWJBX1rPuJgc5mYFXxcNBI8OWtIo1EnvYz4RM
+QF07KaKaTpaJwAK+qE66NNw/br6nyOR6tDYXrskIkkOoYdTurClAp3QEkRhhsyfo
+0f/RpsovG9fLVQUzd8ChPfj9AK13z7KLA8XRgfK7D/HwHHrDRky4nXvvbO9F0HNd
+AT4qRvhOCeWbsba+3LszG6bf6XsI6qnbfqwbTR2GWMEhv1XtnbB8fAPAjBOfRGb+
+wsh0+71U4aBkAUonucCG7iAgXQqB4xKnmPXm8fhDzN59aHFqr+JgjJL6zDhgVL7a
+UwEt2bDZCEPEaiPRdaZurYYTtpSXeFsMkABi1pZBWKcMVt6x1HntuwfV+xJY5rL3
++KQGs73PNObOQgkq+1H6
+=5epm
+-----END PGP SIGNATURE-----
+--=-=-=--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
