@@ -1,79 +1,60 @@
-From: zhiyong tao <zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH -next] iio: adc: mt2701: Remove redundant dev_err call
- in mt6577_auxadc_probe()
-Date: Tue, 30 Aug 2016 09:29:59 +0800
-Message-ID: <1472520599.24148.13.camel@mhfsdcap03>
-References: <1472221581-28836-1-git-send-email-weiyj.lk@gmail.com>
- <88307772-dd0f-a2f2-efd8-6c64a0cb14e4@kernel.org>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net v3 1/9] net: ethernet: mediatek: fix fails from TX housekeeping due to incorrect port setup
+Date: Tue, 30 Aug 2016 10:59:17 +0800
+Message-ID: <1472525965-10661-2-git-send-email-sean.wang@mediatek.com>
+References: <1472525965-10661-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <88307772-dd0f-a2f2-efd8-6c64a0cb14e4-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, liguo.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, Peter Meerwald-Stadler <pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org>, Hartmut Knaack <knaack.h-Mmb7MZpHnFY@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1472525965-10661-1-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-08-29 at 19:47 +0100, Jonathan Cameron wrote:
-> On 26/08/16 15:26, Wei Yongjun wrote:
-> > From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-> > 
-> > There is a error message within devm_ioremap_resource
-> > already, so remove the dev_err call to avoid redundant
-> > error message.
-> > 
-> > Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
-> Hi Wei,
-> 
-> I'm not so sure these are actually redundant.  Overly verbose perhaps,
-> but they do provide additional information in the log as the
-> devm_ioremap_resource doesn't know 'what' has failed, merely how
-> it has failed.
-> 
-> I'm happy to take these, if the driver author / maintainers
-> agree, but I'm not keen enough to take them without that.
-> 
-> Zhiyong Tao, what do you think on this one?
-> 
-> Jonathan
+From: Sean Wang <sean.wang@mediatek.com>
 
-Dear Jonathan,
+which net device the SKB is complete for depends on the forward port
+on txd4 on the corresponding TX descriptor, but the information isn't
+set up well in case of  SKB fragments that would lead to watchdog timeout
+from the upper layer, so fix it up.
 
-Thank you for your suggestion. I think that we can know 'what' has
-failed in the driver, if we retain the error message log. It maybe 
-advantageous to debug issues.
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: John Crispin <john@phrozen.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-Zhiyong
-> > ---
-> >  drivers/iio/adc/mt6577_auxadc.c | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> > index 2d104c8..a268954 100644
-> > --- a/drivers/iio/adc/mt6577_auxadc.c
-> > +++ b/drivers/iio/adc/mt6577_auxadc.c
-> > @@ -206,10 +206,8 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
-> >  
-> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >  	adc_dev->reg_base = devm_ioremap_resource(&pdev->dev, res);
-> > -	if (IS_ERR(adc_dev->reg_base)) {
-> > -		dev_err(&pdev->dev, "failed to get auxadc base address\n");
-> > +	if (IS_ERR(adc_dev->reg_base))
-> >  		return PTR_ERR(adc_dev->reg_base);
-> > -	}
-> >  
-> >  	adc_dev->adc_clk = devm_clk_get(&pdev->dev, "main");
-> >  	if (IS_ERR(adc_dev->adc_clk)) {
-> > 
-> > 
-> > 
-> 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 1801fd8..6e4a6ca 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -587,14 +587,15 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 	dma_addr_t mapped_addr;
+ 	unsigned int nr_frags;
+ 	int i, n_desc = 1;
+-	u32 txd4 = 0;
++	u32 txd4 = 0, fport;
+ 
+ 	itxd = ring->next_free;
+ 	if (itxd == ring->last_free)
+ 		return -ENOMEM;
+ 
+ 	/* set the forward port */
+-	txd4 |= (mac->id + 1) << TX_DMA_FPORT_SHIFT;
++	fport = (mac->id + 1) << TX_DMA_FPORT_SHIFT;
++	txd4 |= fport;
+ 
+ 	tx_buf = mtk_desc_to_tx_buf(ring, itxd);
+ 	memset(tx_buf, 0, sizeof(*tx_buf));
+@@ -652,7 +653,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 			WRITE_ONCE(txd->txd3, (TX_DMA_SWC |
+ 					       TX_DMA_PLEN0(frag_map_size) |
+ 					       last_frag * TX_DMA_LS0));
+-			WRITE_ONCE(txd->txd4, 0);
++			WRITE_ONCE(txd->txd4, fport);
+ 
+ 			tx_buf->skb = (struct sk_buff *)MTK_DMA_DUMMY_DESC;
+ 			tx_buf = mtk_desc_to_tx_buf(ring, txd);
+-- 
+1.9.1
