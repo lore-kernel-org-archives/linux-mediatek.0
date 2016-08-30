@@ -1,11 +1,14 @@
 From: <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 0/2] mtd: nand: fix writing incorrect ECC data in OOB region
-Date: Tue, 30 Aug 2016 11:02:10 +0800
-Message-ID: <1472526132-12049-1-git-send-email-rogercc.lin@mediatek.com>
+Subject: [PATCH v3 2/2] mtd: nand: fix chances to create incomplete ECC data
+ when writing
+Date: Tue, 30 Aug 2016 11:02:12 +0800
+Message-ID: <1472526132-12049-3-git-send-email-rogercc.lin@mediatek.com>
+References: <1472526132-12049-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472526132-12049-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -21,22 +24,50 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-This series fix chances to write incorrect ECC data which may cause uncorrectable ECC error when reading.
+When mtk_nfc_do_write_page() comparing the sector number,because the
+sector number field is at the 12th-bit position of NFI_BYTELEN
+register,the masked register should be shifted 12 bits before being
+compared.The result of this bug may cause the second subpage has
+incomplete ECC parity bytes.
 
-changes since v2:
-- use macro for shift operation.
-
-changes since v1:
-- separate patches into 2.
-- use shift operator with byte access to avoid endianness conversion problems.
-- follow linux coding style.
-
-The patch passed the test of UBIFS file-system read/write on Mediatek's RFB. The tested driver is checked-out from LEDE OpenWRT project's upstream driver, which is pretty much same as nand/next branch upstream driver(git clone https://git.lede-project.org/source.git).
-
-RogerCC Lin (2):
-  mtd: nand: fix generating over-boundary ECC data when writing.
-  mtd: nand: fix chances to create incomplete ECC data when writing.
-
- drivers/mtd/nand/mtk_ecc.c  |   12 ++++++++----
+Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
  drivers/mtd/nand/mtk_nand.c |    9 +++++----
- 2 files changed, 13 insertions(+), 8 deletions(-)
+ 1 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+index ddaa2ac..260bd20 100644
+--- a/drivers/mtd/nand/mtk_nand.c
++++ b/drivers/mtd/nand/mtk_nand.c
+@@ -93,6 +93,7 @@
+ #define		NFI_FSM_MASK		(0xf << 16)
+ #define NFI_ADDRCNTR		(0x70)
+ #define		CNTR_MASK		GENMASK(16, 12)
++#define		ADDRCNTR_SEC_SHIFT	(12)
+ #define NFI_STRADDR		(0x80)
+ #define NFI_BYTELEN		(0x84)
+ #define NFI_CSEL		(0x90)
+@@ -699,8 +700,8 @@ static int mtk_nfc_do_write_page(struct mtd_info *mtd, struct nand_chip *chip,
+ 	}
+ 
+ 	ret = readl_poll_timeout_atomic(nfc->regs + NFI_ADDRCNTR, reg,
+-					(reg & CNTR_MASK) >= chip->ecc.steps,
+-					10, MTK_TIMEOUT);
++		((reg & CNTR_MASK) >> ADDRCNTR_SEC_SHIFT) >= chip->ecc.steps,
++		10, MTK_TIMEOUT);
+ 	if (ret)
+ 		dev_err(dev, "hwecc write timeout\n");
+ 
+@@ -902,8 +903,8 @@ static int mtk_nfc_read_subpage(struct mtd_info *mtd, struct nand_chip *chip,
+ 		dev_warn(nfc->dev, "read ahb/dma done timeout\n");
+ 
+ 	rc = readl_poll_timeout_atomic(nfc->regs + NFI_BYTELEN, reg,
+-				       (reg & CNTR_MASK) >= sectors, 10,
+-				       MTK_TIMEOUT);
++		((reg & CNTR_MASK) >> ADDRCNTR_SEC_SHIFT) >= sectors,
++		10, MTK_TIMEOUT);
+ 	if (rc < 0) {
+ 		dev_err(nfc->dev, "subpage done timeout\n");
+ 		bitflips = -EIO;
+-- 
+1.7.0.4
