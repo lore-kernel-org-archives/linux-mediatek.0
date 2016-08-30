@@ -1,7 +1,7 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH net v3 9/9] net: ethernet: mediatek: fix error handling inside mtk_mdio_init
-Date: Tue, 30 Aug 2016 10:59:25 +0800
-Message-ID: <1472525965-10661-10-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net v3 4/9] net: ethernet: mediatek: remove redundant free_irq for devm_request_irq allocated irq
+Date: Tue, 30 Aug 2016 10:59:20 +0800
+Message-ID: <1472525965-10661-5-git-send-email-sean.wang@mediatek.com>
 References: <1472525965-10661-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -14,27 +14,28 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Return -ENODEV if the MDIO bus is disabled in the device tree.
+these irqs are not used for shared irq and disabled during ethernet stops.
+irq requested by devm_request_irq is safe to be freed automatically on
+driver detach.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Acked-by: John Crispin <john@phrozen.org>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 2fc48bb..dfc12ab 100644
+index 0f0072e..8d87748 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -304,7 +304,7 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 	}
+@@ -1510,8 +1510,6 @@ static void mtk_uninit(struct net_device *dev)
+ 	phy_disconnect(mac->phy_dev);
+ 	mtk_mdio_cleanup(eth);
+ 	mtk_irq_disable(eth, ~0);
+-	free_irq(eth->irq[1], dev);
+-	free_irq(eth->irq[2], dev);
+ }
  
- 	if (!of_device_is_available(mii_np)) {
--		ret = 0;
-+		ret = -ENODEV;
- 		goto err_put_node;
- 	}
- 
+ static int mtk_do_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 -- 
 1.9.1
