@@ -1,11 +1,14 @@
-From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 0/5] Add MT8173 MDP Driver
-Date: Tue, 30 Aug 2016 20:25:39 +0800
-Message-ID: <1472559944-55114-1-git-send-email-minghsiu.tsai@mediatek.com>
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v4 1/2] mtd: nand: fix generating over-boundary ECC data when
+ writing
+Date: Tue, 30 Aug 2016 20:35:47 +0800
+Message-ID: <1472560548-30567-2-git-send-email-rogercc.lin@mediatek.com>
+References: <1472560548-30567-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472560548-30567-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -15,196 +18,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Changes in v5:
-- Add ack in the comment of dts patch 
-- Fix s/g_selection()
-- Separate format V4L2_PIX_FMT_MT21C into new patch  
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Changes in v4:
-- Add "depends on HAS_DMA" in Kconfig.
-- Fix s/g_selection()
-- Replace struct v4l2_crop with u32 and struct v4l2_rect
-- Remove VB2_USERPTR
-- Move mutex lock after ctx allocation in mtk_mdp_m2m_open()
-- Add new format V4L2_PIX_FMT_YVU420 to support software on Android platform.
-- Only width/height of image in format V4L2_PIX_FMT_MT21 is aligned to 16/16,
-  other ones are aligned to 2/2 by default
+When mtk_ecc_encode() is writing the ECC parity data to the OOB
+region,because each register is 4 bytes in length,but the len's unit is
+in bytes,the operation in the for loop will cross the ECC's boundary.
 
-Changes in v3:
-- Modify device ndoe as structured one.
-- Fix conflict in dts on Linux 4.8-rc1
+Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/mtd/nand/mtk_ecc.c |   12 ++++++++----
+ 1 files changed, 8 insertions(+), 4 deletions(-)
 
-Changes in v2:
-- Add section to describe blocks function in dts-bindings
-- Remove the assignment of device_caps in querycap()
-- Remove format's name assignment
-- Copy colorspace-related parameters from OUTPUT to CAPTURE
-- Use m2m helper functions
-- Fix DMA allocation failure
-- Initialize lazily vpu instance in streamon()
-
-==============
- Introduction
-==============
-
-The purpose of this series is to add the driver for Media Data Path HW embedded in the Mediatek's MT8173 SoC.
-MDP is used for scaling and color space conversion.
-
-It could convert V4L2_PIX_FMT_MT21 to V4L2_PIX_FMT_NV12M or V4L2_PIX_FMT_YUV420M.
-
-NV12M/YUV420M/MT21 -> MDP -> NV12M/YUV420M
-
-This patch series rely on MTK VPU driver in patch series "Add MT8173 Video Encoder Driver and VPU Driver"[1] and "Add MT8173 Video Decoder Driver"[2].
-MDP driver rely on VPU driver to load, communicate with VPU.
-
-Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
-
-[1]https://patchwork.kernel.org/patch/9002171/
-[2]https://patchwork.kernel.org/patch/9141245/
-
-==================
- Device interface
-==================
-
-In principle the driver bases on v4l2 memory-to-memory framework:
-it provides a single video node and each opened file handle gets its own private context with separate buffer queues. Each context consist of 2 buffer queues: OUTPUT (for source buffers) and CAPTURE (for destination buffers).
-OUTPUT and CAPTURE buffer could be MMAP or DMABUF memory type.
-
-v4l2-compliance test output:
-# v4l2-compliance -d /dev/image-proc0
-v4l2-compliance SHA   : a737a6161485fffb70bf51e4fd7f6e2d910174c1
-
-Driver Info:
-        Driver name   : mtk-mdp
-        Card type     : soc:mdp
-        Bus info      : platform:mt8173
-        Driver version: 4.8.0
-        Capabilities  : 0x84204000
-                Video Memory-to-Memory Multiplanar
-                Streaming
-                Extended Pix Format
-                Device Capabilities
-        Device Caps   : 0x04204000
-                Video Memory-to-Memory Multiplanar
-                Streaming
-                Extended Pix Format
-
-Compliance test for device /dev/image-proc0 (not using libv4l2):
-
-Required ioctls:
-        test VIDIOC_QUERYCAP: OK
-
-Allow for multiple opens:
-        test second video open: OK
-        test VIDIOC_QUERYCAP: OK
-        test VIDIOC_G/S_PRIORITY: OK
-        test for unlimited opens: OK
-
-Debug ioctls:
-        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-        test VIDIOC_LOG_STATUS: OK (Not Supported)
-
-Input ioctls:
-        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-        test VIDIOC_ENUMAUDIO: OK (Not Supported)
-        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDIO: OK (Not Supported)
-        Inputs: 0 Audio Inputs: 0 Tuners: 0
-
-Output ioctls:
-        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-        Outputs: 0 Audio Outputs: 0 Modulators: 0
-
-Input/Output configuration ioctls:
-        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-        test VIDIOC_G/S_EDID: OK (Not Supported)
-
-        Control ioctls:
-                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
-                test VIDIOC_QUERYCTRL: OK
-                test VIDIOC_G/S_CTRL: OK
-                test VIDIOC_G/S/TRY_EXT_CTRLS: OK
-                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
-                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-                Standard Controls: 5 Private Controls: 0
-
-        Format ioctls:
-                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-                test VIDIOC_G/S_PARM: OK (Not Supported)
-                test VIDIOC_G_FBUF: OK (Not Supported)
-                test VIDIOC_G_FMT: OK
-                test VIDIOC_TRY_FMT: OK
-                test VIDIOC_S_FMT: OK
-                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-                test Cropping: OK
-                test Composing: OK
-                test Scaling: OK
-
-        Codec ioctls:
-                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-
-        Buffer ioctls:
-                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-                test VIDIOC_EXPBUF: OK
-
-Test input 0:
-
-
-Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
-
-
-Minghsiu Tsai (5):
-  VPU: mediatek: Add mdp support
-  dt-bindings: Add a binding for Mediatek MDP
-  media: Add Mediatek MDP Driver
-  arm64: dts: mediatek: Add MDP for MT8173
-  media: mtk-mdp: support pixelformat V4L2_PIX_FMT_MT21C
-
- .../devicetree/bindings/media/mediatek-mdp.txt     |  109 ++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   84 ++
- drivers/media/platform/Kconfig                     |   17 +
- drivers/media/platform/Makefile                    |    2 +
- drivers/media/platform/mtk-mdp/Makefile            |    9 +
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.c      |  159 +++
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.h      |   72 ++
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c      |  294 +++++
- drivers/media/platform/mtk-mdp/mtk_mdp_core.h      |  260 ++++
- drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h       |  126 ++
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c       | 1278 ++++++++++++++++++++
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h       |   22 +
- drivers/media/platform/mtk-mdp/mtk_mdp_regs.c      |  156 +++
- drivers/media/platform/mtk-mdp/mtk_mdp_regs.h      |   31 +
- drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c       |  145 +++
- drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h       |   41 +
- drivers/media/platform/mtk-vpu/mtk_vpu.h           |    5 +
- 17 files changed, 2810 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
- create mode 100644 drivers/media/platform/mtk-mdp/Makefile
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_core.c
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_core.h
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_regs.c
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_regs.h
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
- create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h
-
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index 25a4fbd..495538e 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 		   u8 *data, u32 bytes)
+ {
+ 	dma_addr_t addr;
+-	u32 *p, len, i;
++	u8 *p;
++	u32 len, i, val;
+ 	int ret = 0;
+ 
+ 	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+@@ -392,11 +393,14 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 
+ 	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+ 	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+-	p = (u32 *)(data + bytes);
++	p = data + bytes;
+ 
+ 	/* write the parity bytes generated by the ECC back to the OOB region */
+-	for (i = 0; i < len; i++)
+-		p[i] = readl(ecc->regs + ECC_ENCPAR(i));
++	for (i = 0; i < len; i++) {
++		if ((i % 4) == 0)
++			val = readl(ecc->regs + ECC_ENCPAR(i >> 2));
++		p[i] = (val >> ((i % 4) * 8)) & 0xff;
++	}
+ timeout:
+ 
+ 	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
 -- 
-1.7.9.5
+1.7.0.4
