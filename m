@@ -1,82 +1,56 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [RESEND PATCH, v5 4/5] usb: Add MediaTek USB3 DRD Driver
-Date: Wed, 31 Aug 2016 20:11:26 +0800
-Message-ID: <1472645486.27677.42.camel@mhfsdcap03>
-References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1472094329-18466-5-git-send-email-chunfeng.yun@mediatek.com>
-         <1472113973.2877.22.camel@suse.com> <1472204307.27677.41.camel@mhfsdcap03>
-         <20160830172055.GA29742@kroah.com>
+From: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+Subject: Re: [PATCH] rtc: constify rtc_class_ops structures
+Date: Wed, 31 Aug 2016 20:43:15 +0300
+Message-ID: <20160831174315.4djfepwsrxmuhp56@tarshish>
+References: <1472630725-25465-1-git-send-email-Julia.Lawall@lip6.fr>
+Reply-To: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160830172055.GA29742@kroah.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Oliver Neukum <oneukum@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Pawel Moll <pawel.moll@arm.com>, KumarGala <galak@codeaurora.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, AlanCooper <alcooperx@gmail.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>, Alan Stern <stern@rowland.harvard.edu>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <rtc-linux+bncBCU23FWZQ4FBBN5OTS7AKGQE4AEWB5I-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+Sender: rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org
+Content-Disposition: inline
+In-Reply-To: <1472630725-25465-1-git-send-email-Julia.Lawall-L2FTfq7BK8M@public.gmane.org>
+List-Post: <https://groups.google.com/group/rtc-linux/post>, <mailto:rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Help: <https://groups.google.com/support/>, <mailto:rtc-linux+help-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Archive: <https://groups.google.com/group/rtc-linux
+List-Subscribe: <https://groups.google.com/group/rtc-linux/subscribe>, <mailto:rtc-linux+subscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>
+List-Unsubscribe: <mailto:googlegroups-manage+712029733259+unsubscribe-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org>,
+ <https://groups.google.com/group/rtc-linux/subscribe>
+To: Julia Lawall <Julia.Lawall-L2FTfq7BK8M@public.gmane.org>
+Cc: Alessandro Zummo <a.zummo-BfzFCNDTiLLj+vYz1yj4TQ@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Stephen Warren <swarren-3lzwWm7+Weoh9ZMKESR00Q@public.gmane.org>, Hans Ulli Kroll <ulli.kroll-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Alexandre Belloni <alexandre.belloni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, rtc-linux-/JYPxA39Uh5TLH3MbocFFw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wan ZongShun <mcuos.com-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-08-30 at 19:20 +0200, Greg Kroah-Hartman wrote:
-> On Fri, Aug 26, 2016 at 05:38:27PM +0800, chunfeng yun wrote:
-> > Hi,
-> > 
-> > On Thu, 2016-08-25 at 10:32 +0200, Oliver Neukum wrote:
-> > > On Thu, 2016-08-25 at 11:05 +0800, Chunfeng Yun wrote:
-> > > > This patch adds support for the MediaTek USB3 controller
-> > > > integrated into MT8173. It can be configured as Dual-Role
-> > > > Device (DRD), Peripheral Only and Host Only (xHCI) modes.
-> > > > 
-> > > 
-> > > > +/**
-> > > > + * General Purpose Descriptor (GPD):
-> > > > + *	The format of TX GPD is a little different from RX one.
-> > > > + *	And the size of GPD is 16 bytes.
-> > > > + *
-> > > > + * @flag:
-> > > > + *	bit0: Hardware Own (HWO)
-> > > > + *	bit1: Buffer Descriptor Present (BDP), always 0, BD is not supported
-> > > > + *	bit2: Bypass (BPS), 1: HW skips this GPD if HWO = 1
-> > > > + *	bit7: Interrupt On Completion (IOC)
-> > > > + * @chksum: This is used to validate the contents of this GPD;
-> > > > + *	If TXQ_CS_EN / RXQ_CS_EN bit is set, an interrupt is issued
-> > > > + *	when checksum validation fails;
-> > > > + *	Checksum value is calculated over the 16 bytes of the GPD by default;
-> > > > + * @data_buf_len (RX ONLY): This value indicates the length of
-> > > > + *	the assigned data buffer
-> > > > + * @next_gpd: Physical address of the next GPD
-> > > > + * @buffer: Physical address of the data buffer
-> > > > + * @buf_len:
-> > > > + *	(TX): This value indicates the length of the assigned data buffer
-> > > > + *	(RX): The total length of data received
-> > > > + * @ext_len: reserved
-> > > > + * @ext_flag:
-> > > > + *	bit5 (TX ONLY): Zero Length Packet (ZLP),
-> > > > + */
-> > > > +struct qmu_gpd {
-> > > > +	u8 flag;
-> > > > +	u8 chksum;
-> > > > +	u16 data_buf_len;
-> > > > +	u32 next_gpd;
-> > > > +	u32 buffer;
-> > > > +	u16 buf_len;
-> > > > +	u8 ext_len;
-> > > > +	u8 ext_flag;
-> > > > +} __packed;
-> > > 
-> > > It looks like this is shared with hardware in memory.
-> > > But you leave the endianness of the bigger fields undeclared.
-> > > 
-> > The driver only supports Little-Endian SoCs currently, because I have no
-> > Big-Endian platform to test it.
-> 
-> that's ok, you still have to mark the endian of the data and use it in
-> that manner, you can't just not worry about it.
-> 
-> Please fix up.
-Ok, I will do it
+Hi Julia,
 
-thank you
-> 
-> thanks,
-> 
-> greg k-h
+On Wed, Aug 31, 2016 at 10:05:25AM +0200, Julia Lawall wrote:
+> Check for rtc_class_ops structures that are only passed to
+> devm_rtc_device_register, rtc_device_register,
+> platform_device_register_data, all of which declare the corresponding
+> parameter as const.  Declare rtc_class_ops structures that have these
+> properties as const.
+
+[...]
+
+> Signed-off-by: Julia Lawall <Julia.Lawall-L2FTfq7BK8M@public.gmane.org>
+
+For rtc-digicolor.c:
+
+Acked-by: Baruch Siach <baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org>
+
+Thanks,
+baruch
+
+-- 
+     http://baruch.siach.name/blog/                  ~. .~   Tk Open Systems
+=}------------------------------------------------ooO--U--Ooo------------{=
+   - baruch-NswTu9S1W3P6gbPvEgmw2w@public.gmane.org - tel: +972.52.368.4656, http://www.tkos.co.il -
+
+-- 
+You received this message because you are subscribed to "rtc-linux".
+Membership options at http://groups.google.com/group/rtc-linux .
+Please read http://groups.google.com/group/rtc-linux/web/checklist
+before submitting a driver.
+--- 
+You received this message because you are subscribed to the Google Groups "rtc-linux" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to rtc-linux+unsubscribe-/JYPxA39Uh5TLH3MbocFF+G/Ez6ZCGd0@public.gmane.org
+For more options, visit https://groups.google.com/d/optout.
