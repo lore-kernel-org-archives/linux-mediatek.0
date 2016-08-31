@@ -1,95 +1,82 @@
-From: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v13 0/4] Mediatek MT8173 CMDQ support
-Date: Wed, 31 Aug 2016 14:15:29 +0530
-Message-ID: <CABb+yY3uJMxcPgV4agGOd447ETe5UF-EqKWadvgfzy_QzzeGCQ@mail.gmail.com>
-References: <1472009252-1074-1-git-send-email-hs.liao@mediatek.com>
- <20b10079-3ae2-9da9-1149-0bceabac9837@gmail.com>
- <1472132247.26044.23.camel@mtksdaap41>
- <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
- <1472631185.21158.44.camel@mtksdaap41>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: Re: [RESEND PATCH, v5 4/5] usb: Add MediaTek USB3 DRD Driver
+Date: Wed, 31 Aug 2016 20:11:26 +0800
+Message-ID: <1472645486.27677.42.camel@mhfsdcap03>
+References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com>
+         <1472094329-18466-5-git-send-email-chunfeng.yun@mediatek.com>
+         <1472113973.2877.22.camel@suse.com> <1472204307.27677.41.camel@mhfsdcap03>
+         <20160830172055.GA29742@kroah.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472631185.21158.44.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160830172055.GA29742@kroah.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Oliver Neukum <oneukum@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Pawel Moll <pawel.moll@arm.com>, KumarGala <galak@codeaurora.org>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, AlanCooper <alcooperx@gmail.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>, Alan Stern <stern@rowland.harvard.edu>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Aug 31, 2016 at 1:43 PM, Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+On Tue, 2016-08-30 at 19:20 +0200, Greg Kroah-Hartman wrote:
+> On Fri, Aug 26, 2016 at 05:38:27PM +0800, chunfeng yun wrote:
+> > Hi,
+> > 
+> > On Thu, 2016-08-25 at 10:32 +0200, Oliver Neukum wrote:
+> > > On Thu, 2016-08-25 at 11:05 +0800, Chunfeng Yun wrote:
+> > > > This patch adds support for the MediaTek USB3 controller
+> > > > integrated into MT8173. It can be configured as Dual-Role
+> > > > Device (DRD), Peripheral Only and Host Only (xHCI) modes.
+> > > > 
+> > > 
+> > > > +/**
+> > > > + * General Purpose Descriptor (GPD):
+> > > > + *	The format of TX GPD is a little different from RX one.
+> > > > + *	And the size of GPD is 16 bytes.
+> > > > + *
+> > > > + * @flag:
+> > > > + *	bit0: Hardware Own (HWO)
+> > > > + *	bit1: Buffer Descriptor Present (BDP), always 0, BD is not supported
+> > > > + *	bit2: Bypass (BPS), 1: HW skips this GPD if HWO = 1
+> > > > + *	bit7: Interrupt On Completion (IOC)
+> > > > + * @chksum: This is used to validate the contents of this GPD;
+> > > > + *	If TXQ_CS_EN / RXQ_CS_EN bit is set, an interrupt is issued
+> > > > + *	when checksum validation fails;
+> > > > + *	Checksum value is calculated over the 16 bytes of the GPD by default;
+> > > > + * @data_buf_len (RX ONLY): This value indicates the length of
+> > > > + *	the assigned data buffer
+> > > > + * @next_gpd: Physical address of the next GPD
+> > > > + * @buffer: Physical address of the data buffer
+> > > > + * @buf_len:
+> > > > + *	(TX): This value indicates the length of the assigned data buffer
+> > > > + *	(RX): The total length of data received
+> > > > + * @ext_len: reserved
+> > > > + * @ext_flag:
+> > > > + *	bit5 (TX ONLY): Zero Length Packet (ZLP),
+> > > > + */
+> > > > +struct qmu_gpd {
+> > > > +	u8 flag;
+> > > > +	u8 chksum;
+> > > > +	u16 data_buf_len;
+> > > > +	u32 next_gpd;
+> > > > +	u32 buffer;
+> > > > +	u16 buf_len;
+> > > > +	u8 ext_len;
+> > > > +	u8 ext_flag;
+> > > > +} __packed;
+> > > 
+> > > It looks like this is shared with hardware in memory.
+> > > But you leave the endianness of the bigger fields undeclared.
+> > > 
+> > The driver only supports Little-Endian SoCs currently, because I have no
+> > Big-Endian platform to test it.
+> 
+> that's ok, you still have to mark the endian of the data and use it in
+> that manner, you can't just not worry about it.
+> 
+> Please fix up.
+Ok, I will do it
 
->> >> The driver uses the mailbox framework, so it should live in the
->> >> drivers/mailbox folder.
->> >
->> > As you know, the maximum number of gce threads is 16.
->> > However, we plan to support more clients in the future,
->> > and they may need to use more than 16 gce threads.
->> >
->> > For this issue, our plan is to let multiple clients share the same gce
->> > thread; i.e. we will acquire gce thread for client dynamically by
->> > internal policy in cmdq driver.
->> > Unfortunately. mailbox channel has exclusive feature.
->> > Quote from comment of mbox_request_channel().
->> > "The channel is exclusively allocated and can't be used by another
->> > client before the owner calls mbox_free_channel."
->> > Therefore, we plan to remove mailbox framework from cmdq driver in the
->> > future.
->> >
->> Platforms that need shared access to a channel, implement a 'server'
->> driver that serialise (which is needed still) the access to common
->> channel. If you think you don't need mutual exclusion and don't care
->> about replies, simply share the mailbox handle among different
->> clients.
->
-> Thank you for your kindly reply.
-> We would like to discuss further with you on this topic.
->
-> Our requirement is
-> (1) cmdq task cannot be split, and
-> (2) cmdq thread can have multiple cmdq tasks from different clients.
->
-> According to your comment "implement a 'server' driver that serialise
-> the access to common channel", do you mean we should implement cmdq
-> client (mailbox client) as a server and other clients call the functions
-> of cmdq client?
->
-> clients --> cmdq client (mailbox client) --> cmdq (mailbox controller)
->
-> If so, could you please tell us the benefit of using mailbox framework?
->
-You don't have to reinvent 80% of the wheel and reuse the mailbox.c
-core that supports many features and is tested on many platforms. Your
-implementation is going to be quite similar, only you clump all the
-code in one file and you use different terminology.
-
-You said "we will acquire gce thread for client dynamically by
-internal policy in cmdq driver"
-On mailbox api, this maps to simply sharing the channel/thread handle,
-protected by a lock, among clients on some basis (like FCFS or
-whatever you internal policy is). So your server driver could be very
-thin. And all your clients could follow the mailbox api (which is good
-from the point of reusability/portability).
-
-> Our original plan is to let cmdq driver manage cmdq thread internally.
-> Cmdq driver can choose a suitable cmdq thread to execute a flushed cmdq
-> task dynamically, and client doesn't need to know the existence of cmdq
-> thread.
->
->
-> Could you also please tell us the purpose of putting all mailbox
-> driver into mailbox folder?
-> We know that some other drivers also follow this rule, and just want
-> to know more details.
->
-Any driver that implements the Mailbox API should live in
-drivers/mailbox/.  And why you should implement mailbox api, is
-explained above.
+thank you
+> 
+> thanks,
+> 
+> greg k-h
