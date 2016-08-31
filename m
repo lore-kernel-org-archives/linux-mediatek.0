@@ -1,22 +1,31 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net v3 0/9] net: ethernet: mediatek: a couple of fixes
-Date: Wed, 31 Aug 2016 14:23:53 -0700 (PDT)
-Message-ID: <20160831.142353.2083084385981759052.davem@davemloft.net>
-References: <1472525965-10661-1-git-send-email-sean.wang@mediatek.com>
+From: Julia Lawall <Julia.Lawall@lip6.fr>
+Subject: [PATCH 0/5] constify ethtool_ops structures
+Date: Thu,  1 Sep 2016 00:21:18 +0200
+Message-ID: <1472682083-5219-1-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472525965-10661-1-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: linux-usb@vger.kernel.org
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?S=C3=B6ren=20Brinkmann?= <soren.brinkmann@xilinx.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang@mediatek.com>
-Date: Tue, 30 Aug 2016 10:59:16 +0800
+Constify ethtool_ops structures.
 
-> a couple of fixes come out from integrating with linux-4.8 rc1
-> they all are verified and workable on linux-4.8 rc1
+---
 
-I get rejects when I try to apply this to the current tree.
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |    2 +-
+ drivers/net/ethernet/synopsys/dwc_eth_qos.c       |    2 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c |    2 +-
+ drivers/net/usb/r8152.c                           |    2 +-
+ drivers/staging/netlogic/xlr_net.c                |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
