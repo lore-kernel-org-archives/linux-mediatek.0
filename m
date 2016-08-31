@@ -1,82 +1,78 @@
-From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [RESEND PATCH, v5 4/5] usb: Add MediaTek USB3 DRD Driver
-Date: Tue, 30 Aug 2016 19:20:55 +0200
-Message-ID: <20160830172055.GA29742@kroah.com>
-References: <1472094329-18466-1-git-send-email-chunfeng.yun@mediatek.com>
- <1472094329-18466-5-git-send-email-chunfeng.yun@mediatek.com>
- <1472113973.2877.22.camel@suse.com>
- <1472204307.27677.41.camel@mhfsdcap03>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] mtd: nand: fix generating over-boundary ECC data
+ when writing
+Date: Wed, 31 Aug 2016 10:09:11 +0200
+Message-ID: <20160831100911.2926b969@bbrezillon>
+References: <1472560548-30567-1-git-send-email-rogercc.lin@mediatek.com>
+ <1472560548-30567-2-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1472204307.27677.41.camel@mhfsdcap03>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: chunfeng yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, KumarGala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, AlanCooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1472560548-30567-2-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Aug 26, 2016 at 05:38:27PM +0800, chunfeng yun wrote:
-> Hi,
+On Tue, 30 Aug 2016 20:35:47 +0800
+RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+
+> From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > 
-> On Thu, 2016-08-25 at 10:32 +0200, Oliver Neukum wrote:
-> > On Thu, 2016-08-25 at 11:05 +0800, Chunfeng Yun wrote:
-> > > This patch adds support for the MediaTek USB3 controller
-> > > integrated into MT8173. It can be configured as Dual-Role
-> > > Device (DRD), Peripheral Only and Host Only (xHCI) modes.
-> > > 
-> > 
-> > > +/**
-> > > + * General Purpose Descriptor (GPD):
-> > > + *	The format of TX GPD is a little different from RX one.
-> > > + *	And the size of GPD is 16 bytes.
-> > > + *
-> > > + * @flag:
-> > > + *	bit0: Hardware Own (HWO)
-> > > + *	bit1: Buffer Descriptor Present (BDP), always 0, BD is not supported
-> > > + *	bit2: Bypass (BPS), 1: HW skips this GPD if HWO = 1
-> > > + *	bit7: Interrupt On Completion (IOC)
-> > > + * @chksum: This is used to validate the contents of this GPD;
-> > > + *	If TXQ_CS_EN / RXQ_CS_EN bit is set, an interrupt is issued
-> > > + *	when checksum validation fails;
-> > > + *	Checksum value is calculated over the 16 bytes of the GPD by default;
-> > > + * @data_buf_len (RX ONLY): This value indicates the length of
-> > > + *	the assigned data buffer
-> > > + * @next_gpd: Physical address of the next GPD
-> > > + * @buffer: Physical address of the data buffer
-> > > + * @buf_len:
-> > > + *	(TX): This value indicates the length of the assigned data buffer
-> > > + *	(RX): The total length of data received
-> > > + * @ext_len: reserved
-> > > + * @ext_flag:
-> > > + *	bit5 (TX ONLY): Zero Length Packet (ZLP),
-> > > + */
-> > > +struct qmu_gpd {
-> > > +	u8 flag;
-> > > +	u8 chksum;
-> > > +	u16 data_buf_len;
-> > > +	u32 next_gpd;
-> > > +	u32 buffer;
-> > > +	u16 buf_len;
-> > > +	u8 ext_len;
-> > > +	u8 ext_flag;
-> > > +} __packed;
-> > 
-> > It looks like this is shared with hardware in memory.
-> > But you leave the endianness of the bigger fields undeclared.
-> > 
-> The driver only supports Little-Endian SoCs currently, because I have no
-> Big-Endian platform to test it.
+> When mtk_ecc_encode() is writing the ECC parity data to the OOB
+> region,because each register is 4 bytes in length,but the len's unit is
+> in bytes,the operation in the for loop will cross the ECC's boundary.
+> 
+> Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/mtd/nand/mtk_ecc.c |   12 ++++++++----
+>  1 files changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> index 25a4fbd..495538e 100644
+> --- a/drivers/mtd/nand/mtk_ecc.c
+> +++ b/drivers/mtd/nand/mtk_ecc.c
+> @@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+>  		   u8 *data, u32 bytes)
+>  {
+>  	dma_addr_t addr;
+> -	u32 *p, len, i;
+> +	u8 *p;
+> +	u32 len, i, val;
+>  	int ret = 0;
+>  
+>  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+> @@ -392,11 +393,14 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+>  
+>  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+>  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+> -	p = (u32 *)(data + bytes);
+> +	p = data + bytes;
+>  
+>  	/* write the parity bytes generated by the ECC back to the OOB region */
+> -	for (i = 0; i < len; i++)
+> -		p[i] = readl(ecc->regs + ECC_ENCPAR(i));
+> +	for (i = 0; i < len; i++) {
+> +		if ((i % 4) == 0)
+> +			val = readl(ecc->regs + ECC_ENCPAR(i >> 2));
 
-that's ok, you still have to mark the endian of the data and use it in
-that manner, you can't just not worry about it.
+I'm nitpicking, but I'd prefer to have 'i / 4' instead of 'i >> 2' to
+be consistent with the 'i % 4' operation, and I also find it clearer.
 
-Please fix up.
+If you agree, I can do this change while applying the patch, no need to
+resend.
 
-thanks,
-
-greg k-h
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> +		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+> +	}
+>  timeout:
+>  
+>  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
