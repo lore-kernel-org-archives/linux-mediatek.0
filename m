@@ -1,91 +1,84 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [PATCH v13 0/4] Mediatek MT8173 CMDQ support
-Date: Wed, 31 Aug 2016 16:13:05 +0800
-Message-ID: <1472631185.21158.44.camel@mtksdaap41>
-References: <1472009252-1074-1-git-send-email-hs.liao@mediatek.com>
-         <20b10079-3ae2-9da9-1149-0bceabac9837@gmail.com>
-         <1472132247.26044.23.camel@mtksdaap41>
-         <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
+From: RogerCC.Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 1/2] mtd: nand: fix generating over-boundary ECC data
+ when writing
+Date: Wed, 31 Aug 2016 16:19:09 +0800
+Message-ID: <1472631549.5133.3.camel@mtkswgap22>
+References: <1472560548-30567-1-git-send-email-rogercc.lin@mediatek.com>
+ <1472560548-30567-2-git-send-email-rogercc.lin@mediatek.com>
+ <20160831100911.2926b969@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160831100911.2926b969@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jassi,
+On Wed, 2016-08-31 at 10:09 +0200, Boris Brezillon wrote:
+> On Tue, 30 Aug 2016 20:35:47 +0800
+> RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> > From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > 
+> > When mtk_ecc_encode() is writing the ECC parity data to the OOB
+> > region,because each register is 4 bytes in length,but the len's unit is
+> > in bytes,the operation in the for loop will cross the ECC's boundary.
+> > 
+> > Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/mtd/nand/mtk_ecc.c |   12 ++++++++----
+> >  1 files changed, 8 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> > index 25a4fbd..495538e 100644
+> > --- a/drivers/mtd/nand/mtk_ecc.c
+> > +++ b/drivers/mtd/nand/mtk_ecc.c
+> > @@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+> >  		   u8 *data, u32 bytes)
+> >  {
+> >  	dma_addr_t addr;
+> > -	u32 *p, len, i;
+> > +	u8 *p;
+> > +	u32 len, i, val;
+> >  	int ret = 0;
+> >  
+> >  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+> > @@ -392,11 +393,14 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+> >  
+> >  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+> >  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+> > -	p = (u32 *)(data + bytes);
+> > +	p = data + bytes;
+> >  
+> >  	/* write the parity bytes generated by the ECC back to the OOB region */
+> > -	for (i = 0; i < len; i++)
+> > -		p[i] = readl(ecc->regs + ECC_ENCPAR(i));
+> > +	for (i = 0; i < len; i++) {
+> > +		if ((i % 4) == 0)
+> > +			val = readl(ecc->regs + ECC_ENCPAR(i >> 2));
+> 
+> I'm nitpicking, but I'd prefer to have 'i / 4' instead of 'i >> 2' to
+> be consistent with the 'i % 4' operation, and I also find it clearer.
+> 
+> If you agree, I can do this change while applying the patch, no need to
+> resend.
 
-On Thu, 2016-08-25 at 19:12 +0530, Jassi Brar wrote:
-> On Thu, Aug 25, 2016 at 7:07 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
-> > Hi Matthias,
-> >
-> > On Wed, 2016-08-24 at 13:00 +0200, Matthias Brugger wrote:
-> >> On 24/08/16 05:27, HS Liao wrote:
-[...]
-> >> > HS Liao (4):
-> >> >   dt-bindings: soc: Add documentation for the MediaTek GCE unit
-> >> >   CMDQ: Mediatek CMDQ driver
-> >> >   arm64: dts: mt8173: Add GCE node
-> >> >   CMDQ: save more energy in idle
-> >> >
-> >> >  .../devicetree/bindings/soc/mediatek/gce.txt       |  44 +
-> >> >  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
-> >> >  drivers/soc/mediatek/Kconfig                       |  11 +
-> >> >  drivers/soc/mediatek/Makefile                      |   1 +
-> >> >  drivers/soc/mediatek/mtk-cmdq.c                    | 983 +++++++++++++++++++++
-> >>
-> >> The driver uses the mailbox framework, so it should live in the
-> >> drivers/mailbox folder.
-> >
-> > As you know, the maximum number of gce threads is 16.
-> > However, we plan to support more clients in the future,
-> > and they may need to use more than 16 gce threads.
-> >
-> > For this issue, our plan is to let multiple clients share the same gce
-> > thread; i.e. we will acquire gce thread for client dynamically by
-> > internal policy in cmdq driver.
-> > Unfortunately. mailbox channel has exclusive feature.
-> > Quote from comment of mbox_request_channel().
-> > "The channel is exclusively allocated and can't be used by another
-> > client before the owner calls mbox_free_channel."
-> > Therefore, we plan to remove mailbox framework from cmdq driver in the
-> > future.
-> >
-> Platforms that need shared access to a channel, implement a 'server'
-> driver that serialise (which is needed still) the access to common
-> channel. If you think you don't need mutual exclusion and don't care
-> about replies, simply share the mailbox handle among different
-> clients.
+Of course, please apply the patch with 'i / 4', 
+thank you.
 
-Thank you for your kindly reply.
-We would like to discuss further with you on this topic.
-
-Our requirement is
-(1) cmdq task cannot be split, and
-(2) cmdq thread can have multiple cmdq tasks from different clients.
-
-According to your comment "implement a 'server' driver that serialise
-the access to common channel", do you mean we should implement cmdq
-client (mailbox client) as a server and other clients call the functions
-of cmdq client?
-
-clients --> cmdq client (mailbox client) --> cmdq (mailbox controller)
-
-If so, could you please tell us the benefit of using mailbox framework?
-
-Our original plan is to let cmdq driver manage cmdq thread internally.
-Cmdq driver can choose a suitable cmdq thread to execute a flushed cmdq
-task dynamically, and client doesn't need to know the existence of cmdq
-thread.
-
-
-Could you also please tell us the purpose of putting all mailbox
-driver into mailbox folder?
-We know that some other drivers also follow this rule, and just want
-to know more details.
-
-Thanks,
-HS
+> > +		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+> > +	}
+> >  timeout:
+> >  
+> >  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
+> 
