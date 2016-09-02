@@ -1,85 +1,89 @@
-From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v13 0/4] Mediatek MT8173 CMDQ support
-Date: Fri, 2 Sep 2016 16:50:49 +0800
-Message-ID: <1472806249.17078.2.camel@mtksdaap41>
-References: <1472009252-1074-1-git-send-email-hs.liao@mediatek.com>
-         <20b10079-3ae2-9da9-1149-0bceabac9837@gmail.com>
-         <1472132247.26044.23.camel@mtksdaap41>
-         <CABb+yY2-cug=iwjTJEx_NQ9gj+8SZ1uHoD5hVGQDkQ7t5P=vSA@mail.gmail.com>
-         <1472631185.21158.44.camel@mtksdaap41>
-         <CABb+yY3uJMxcPgV4agGOd447ETe5UF-EqKWadvgfzy_QzzeGCQ@mail.gmail.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v7 0/9] MT2701 DRM support
+Date: Fri, 2 Sep 2016 19:24:35 +0800
+Message-ID: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CABb+yY3uJMxcPgV4agGOd447ETe5UF-EqKWadvgfzy_QzzeGCQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jassi,
-
-On Wed, 2016-08-31 at 14:15 +0530, Jassi Brar wrote:
-> On Wed, Aug 31, 2016 at 1:43 PM, Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-[...]
-> >> Platforms that need shared access to a channel, implement a 'server'
-> >> driver that serialise (which is needed still) the access to common
-> >> channel. If you think you don't need mutual exclusion and don't care
-> >> about replies, simply share the mailbox handle among different
-> >> clients.
-> >
-> > Thank you for your kindly reply.
-> > We would like to discuss further with you on this topic.
-> >
-> > Our requirement is
-> > (1) cmdq task cannot be split, and
-> > (2) cmdq thread can have multiple cmdq tasks from different clients.
-> >
-> > According to your comment "implement a 'server' driver that serialise
-> > the access to common channel", do you mean we should implement cmdq
-> > client (mailbox client) as a server and other clients call the functions
-> > of cmdq client?
-> >
-> > clients --> cmdq client (mailbox client) --> cmdq (mailbox controller)
-> >
-> > If so, could you please tell us the benefit of using mailbox framework?
-> >
-> You don't have to reinvent 80% of the wheel and reuse the mailbox.c
-> core that supports many features and is tested on many platforms. Your
-> implementation is going to be quite similar, only you clump all the
-> code in one file and you use different terminology.
-> 
-> You said "we will acquire gce thread for client dynamically by
-> internal policy in cmdq driver"
-> On mailbox api, this maps to simply sharing the channel/thread handle,
-> protected by a lock, among clients on some basis (like FCFS or
-> whatever you internal policy is). So your server driver could be very
-> thin. And all your clients could follow the mailbox api (which is good
-> from the point of reusability/portability).
-> 
-> > Our original plan is to let cmdq driver manage cmdq thread internally.
-> > Cmdq driver can choose a suitable cmdq thread to execute a flushed cmdq
-> > task dynamically, and client doesn't need to know the existence of cmdq
-> > thread.
-> >
-> >
-> > Could you also please tell us the purpose of putting all mailbox
-> > driver into mailbox folder?
-> > We know that some other drivers also follow this rule, and just want
-> > to know more details.
-> >
-> Any driver that implements the Mailbox API should live in
-> drivers/mailbox/.  And why you should implement mailbox api, is
-> explained above.
-
-Thank you for your explanation.
-I will move cmdq driver to mailbox folder in the next version.
-
-Thanks,
-HS
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+VGhpcyBpcyBNVDI3MDEgRFJNIHN1cHBvcnQgUEFUQ0ggdjcsIGJhc2VkIG9uIDQuOC1yYzEuCldl
+IGFkZCBEU0kgaW50ZXJydXB0IGNvbnRyb2wsIHRyYW5zZmVyIGZ1bmN0aW9uIGZvciBNSVBJIERT
+SSBwYW5lbCBzdXBwb3J0LgpNb3N0IGNvZGVzIGFyZSB0aGUgc2FtZSwgZXhjZXB0IHNvbWUgcmVn
+aXN0ZXIgY2hhbmdlZC4KCkZvciBleGFtcGxlOgogLSBESVNQX09WTCBhZGRyZXNzIG9mZnNldCBj
+aGFuZ2VkLCBjb2xvciBmb3JtYXQgZGVmaW5pdGlvbiBjaGFuZ2VkLgogLSBESVNQX1JETUEgZmlm
+byBzaXplIGNoYW5nZWQuCiAtIERJU1BfQ09MT1Igb2Zmc2V0IGNoYW5nZWQuCiAtIE1JUElfVFgg
+c2V0dGluZyBjaGFuZ2VkLgoKV2UgYWRkIGEgbmV3IGNvbXBvbmVudCBERFBfQ09NUE9ORU5UX0JM
+UywgYW5kIHRoZSBjb25uZWN0aW9ucyBhcmUgdXBkYXRlZC4KT1ZMIC0+IFJETUEgLT4gQ09MT1Ig
+LT4gQkxTIC0+IERTSQpSRE1BIC0+IERQSQpBbmQgd2UgaGF2ZSBzaGFkb3cgcmVnaXN0ZXIgc3Vw
+cG9ydCBpbiBNVDI3MDEuCgpXZSByZW1vdmUgZHRzIHBhdGNoIGZyb20gdGhlIHBhdGNoIHNlcmll
+cywgd2hpY2ggZGVwZW5kcyBvbiBNVDI3MDEgQ0NGIGFuZCBzY3BzeXMuCgpDaGFuZ2VzIHNpbmNl
+IHY2OgotIENoYW5nZSBkYXRhIHR5cGUgb2YgaXJxX2RhdGEgdG8gdTMyCi0gUmV3cml0ZSBtdGtf
+ZHNpX2hvc3RfdHJhbnNmZXIoKSBmb3Igc2ltcGxpZnkKLSBNb3ZlIHNvbWUgTUlQSV9UWCBjb25m
+aWcgdG8gcGF0Y2ggb2YgImRybS9tZWRpYXRlazogYWRkCipkcml2ZXJfZGF0YSBmb3IgZGlmZmVy
+ZW50IGhhcmR3YXJlIHNldHRpbmdzIi4KLSBSZW1vdmUgZGV2aWNlIHRyZWUgZnJvbSB0aGlzIHBh
+dGNoIHNlcmllcwoKQ2hhbmdlcyBzaW5jZSB2NToKLSBSZW1vdmUgRFBJIGRldmljZSB0cmVlIGFu
+ZCBjb21wYXRpYmxlIHN0cmluZwotIFVzZSBvbmUgd2FpdCBxdWV1ZSB0byBoYW5kbGUgaW50ZXJy
+dXB0IHN0YXR1cwotIFVwZGF0ZSB0aGUgaW50ZXJydXB0IGNoZWNrIGZsb3cgYW5kIERTSV9JTlRf
+QUxMX0JJVFMKLSBVc2Ugc2FtZSBmdW5jdGlvbiBmb3IgaG9zdCByZWFkL3dyaXRlIGNvbW1hbmQK
+LSB2YXJpb3VzIGZpeGVzCgpDaGFuZ2VzIHNpbmNlIHY0OgotIEFkZCBtZXNzYWdlcyB3aGVuIHRp
+bWVvdXQgaW4gbXRrX2Rpc3BfbXV0ZXhfYWNxdWlyZSgpCi0gQWRkIGRlc2NyaXB0aW9ucyBmb3Ig
+RElTUF9SRUdfTVVURVggcmVnaXN0ZXJzCi0gTW92ZSBjb25uZWN0aW9uIHNldHRpbmdzIGZvciBk
+aXNwbGF5IG1vZHVsZXMgdG8gYSBzZXBhcmF0ZSBwYXRjaAotIFJlbW92ZSAnbXQyNzAxLWRpc3At
+d2RtYScgYmVjYXVzZSBpdCBpcyB1bnVzZWQKLSBNb3ZlIGNsZWFuaW5nIHVwIGFuZCByZW5hbWlu
+ZyB0byBhIHNlcGFyYXRlIHBhdGNoCi0gVXNlIHdhaXRfZXZlbnRfaW50ZXJydXB0aWJsZV90aW1l
+b3V0KCkgdG8gcmVwbGFjZSBwb2xsaW5nCi0gUmVtb3ZlIGlycV9udW0gZnJvbSBtdGtfZHNpIHN0
+cnVjdHVyZQotIFJlbW92ZSByZWR1bmRhbnQgYW5kIGRlYnVnIGNvZGVzCgpDaGFuZ2VzIHNpbmNl
+IHYzOgotIEFkZCBEU0kgc3VwcG9ydCBmb3IgTUlQSSBEU0kgcGFuZWxzCi0gVXBkYXRlIEJMUyBi
+aW5kaW5nIHRvIFBXTSBub2RlcwotIFJlbW92ZSB1Zm9lIGRldmljZSBub2RlcwotIFJlbW92ZSBy
+ZWR1bmRhbnQgcGFyZW50aGVzZXMKLSBSZW1vdmUgZ2xvYmFsIHZhcmlhYmxlIGluaXRpYWxpemF0
+aW9uCgpDaGFuZ2VzIHNpbmNlIHYyOgotIFJlbmFtZSBtdGtfZGRwX211eF9zZWwgdG8gbXRrX2Rk
+cF9zb3V0X3NlbAotIFVwZGF0ZSBtdDI3MDFfbXRrX2RkcF9leHQgY29tcG9uZW50cwotIENoYW5n
+ZWQgdG8gcHJlZml4IG5hbWluZwotIFJlb3JkZXIgdGhlIHBhdGNoIHNlcmllcwotIFVzZSBvZl9k
+ZXZpY2VfZ2V0X21hdGNoX2RhdGEoKSB0byBnZXQgZHJpdmVyIHByaXZhdGUgZGF0YQotIFVzZSBp
+b3BvbGwgbWFjcm9zIHRvIGltcGxlbWVudCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKCkKLSBSZW1v
+dmVkIGVtcHR5IGRldmljZSB0cmVlIG5vZGVzCgpDaGFuZ2VzIHNpbmNlIHYxOgotIFJlbW92ZWQg
+QkxTIGJpbmRpbmdzIGFuZCBjb2Rlcywgd2hpY2ggYmVsb25nIHRvIHB3bSBkcml2ZXIKLSBNb3Zl
+ZCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKCkganVzdCBiZWZvcmUgbXRrX2NydGNfZGRwX2NvbmZp
+ZygpCi0gU3BsaXQgcGF0Y2ggaW50byBzbWFsbGVyIHBhcnRzCi0gQWRkZWQgY29uc3Qga2V5d29y
+ZCB0byBjb25zdGFudCBzdHJ1Y3R1cmUKLSBSZW1vdmVkIGNvZGVzIGZvciBzcGVjaWFsIG1lbW9y
+eSBhbGlnbgoKVGhlIFBBVENIIGRlcGVuZHMgb24gdGhlIGZvbGxvd2luZyBwYXRjaDoKaHR0cHM6
+Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85Mjg5NDAxLyAoImR0LWJpbmRpbmdzOiBBUk06
+IE1lZGlhdGVrOiBEb2N1bWVudCBiaW5kaW5ncyBmb3IgTVQyNzAxIikgCmh0dHBzOi8vcGF0Y2h3
+b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTIyMjk5Ny8gKCJkdC1iaW5kaW5nczogcHdtOiBBZGQgTWVk
+aWFUZWsgZGlzcGxheSBQV00gYmluZGluZ3MiKSAKClRoYW5rcywKeXQuc2hlbgoKWVQgU2hlbiAo
+Nyk6CiAgZHJtL21lZGlhdGVrOiByZW5hbWUgbWFjcm9zLCBhZGQgY2hpcCBwcmVmaXgKICBkcm0v
+bWVkaWF0ZWs6IGFkZCAqZHJpdmVyX2RhdGEgZm9yIGRpZmZlcmVudCBoYXJkd2FyZSBzZXR0aW5n
+cwogIGRybS9tZWRpYXRlazogYWRkIHNoYWRvdyByZWdpc3RlciBzdXBwb3J0CiAgZHJtL21lZGlh
+dGVrOiB1cGRhdGUgZGlzcGxheSBtb2R1bGUgY29ubmVjdGlvbnMKICBkcm0vbWVkaWF0ZWs6IGNs
+ZWFuaW5nIHVwIGFuZCByZWZpbmUKICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBEU0kgc3ViIGRyaXZl
+ciBmbG93CiAgZHJtL21lZGlhdGVrOiBhZGQgc3VwcG9ydCBmb3IgTWVkaWF0ZWsgU29DIE1UMjcw
+MQoKc2hhb21pbmcgY2hlbiAoMik6CiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIGludGVycnVwdCBj
+b250cm9sCiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIHRyYW5zZmVyIGZ1bmN0aW9uCgogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAgICB8ICAzMiArKy0KIGRyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9yZG1hLmMgICAgfCAgMTcgKy0KIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgICAgfCAgNzUgKysrLS0KIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcC5jICAgICAgfCAxMzggKysrKysrLS0tCiBkcml2ZXJz
+L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuaCAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgfCAgMzQgKystCiBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgIDE0ICsKIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgfCAgNTQgKysrLQogZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAgOSArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RzaS5jICAgICAgICAgIHwgNDMyICsrKysrKysrKysrKysrKysrKysrKysrKy0tLS0K
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgfCAgNzAgKysrLS0K
+IDExIGZpbGVzIGNoYW5nZWQsIDcxNyBpbnNlcnRpb25zKCspLCAxNjAgZGVsZXRpb25zKC0pCgot
+LSAKMS45LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
+dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
