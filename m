@@ -1,95 +1,53 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next v5 2/2] net: ethernet: mediatek: enhance RX path by aggregating more SKBs into NAPI
-Date: Sat, 3 Sep 2016 17:59:27 +0800
-Message-ID: <1472896767-18352-3-git-send-email-sean.wang@mediatek.com>
-References: <1472896767-18352-1-git-send-email-sean.wang@mediatek.com>
+From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v14 0/4] Mediatek MT8173 CMDQ support
+Date: Mon, 5 Sep 2016 09:44:41 +0800
+Message-ID: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1472896767-18352-1-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcLQFizaE/u3fw@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-The patch adds support for aggregating more SKBs feed into NAPI in
-order to get more benefits from generic receive offload (GRO) by
-peeking at the RX ring status and moving more packets right before
-returning from NAPI RX polling handler if NAPI budgets are still
-available and some packets already present in hardware.
+Hi,
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 31 ++++++++++++++++-------------
- 1 file changed, 17 insertions(+), 14 deletions(-)
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index a1bdb53..66fd45a 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -893,14 +893,14 @@ release_desc:
- 
- 		done++;
- 	}
--	/* make sure that all changes to the dma ring are flushed before
--	 * we continue
--	 */
--	wmb();
--	mtk_w32(eth, ring->calc_idx, MTK_PRX_CRX_IDX0);
- 
--	if (done < budget)
--		mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
-+	if (done) {
-+		/* make sure that all changes to the dma ring are flushed before
-+		 * we continue
-+		 */
-+		wmb();
-+		mtk_w32(eth, ring->calc_idx, MTK_PRX_CRX_IDX0);
-+	}
- 
- 	return done;
- }
-@@ -1020,10 +1020,13 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
- 	struct mtk_eth *eth = container_of(napi, struct mtk_eth, rx_napi);
- 	u32 status, mask;
- 	int rx_done = 0;
-+	int remain_budget = budget;
- 
- 	mtk_handle_status_irq(eth);
-+
-+poll_again:
- 	mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
--	rx_done = mtk_poll_rx(napi, budget, eth);
-+	rx_done = mtk_poll_rx(napi, remain_budget, eth);
- 
- 	if (unlikely(netif_msg_intr(eth))) {
- 		status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
-@@ -1032,18 +1035,18 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
- 			 "done rx %d, intr 0x%08x/0x%x\n",
- 			 rx_done, status, mask);
- 	}
--
--	if (rx_done == budget)
-+	if (rx_done == remain_budget)
- 		return budget;
- 
- 	status = mtk_r32(eth, MTK_PDMA_INT_STATUS);
--	if (status & MTK_RX_DONE_INT)
--		return budget;
--
-+	if (status & MTK_RX_DONE_INT) {
-+		remain_budget -= rx_done;
-+		goto poll_again;
-+	}
- 	napi_complete(napi);
- 	mtk_irq_enable(eth, MTK_PDMA_INT_MASK, MTK_RX_DONE_INT);
- 
--	return rx_done;
-+	return rx_done + budget - remain_budget;
- }
- 
- static int mtk_tx_alloc(struct mtk_eth *eth)
+These patches have a build dependency on top of v4.8-rc1.
+
+Changes since v13:
+ - move to mailbox folder
+ - simplify cmdq_thread_is_in_wfe
+
+Best regards,
+HS Liao
+
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  CMDQ: Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  CMDQ: save more energy in idle
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt        |  43 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+ drivers/mailbox/Kconfig                            |  10 +
+ drivers/mailbox/Makefile                           |   2 +
+ drivers/mailbox/mtk-cmdq.c                         | 965 +++++++++++++++++++++
+ include/linux/mailbox/mtk-cmdq.h                   | 180 ++++
+ 6 files changed, 1210 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+ create mode 100644 drivers/mailbox/mtk-cmdq.c
+ create mode 100644 include/linux/mailbox/mtk-cmdq.h
+
 -- 
 1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
