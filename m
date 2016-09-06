@@ -1,43 +1,43 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH] vcodec: mediatek: Add V4L2_CAP_TIMEPERFRAME capability setting
-Date: Tue, 6 Sep 2016 13:51:45 +0800
-Message-ID: <1473141105-47201-1-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH] vcodec: mediatek: add Maintainers entry for Mediatek MT8173 vcodec drivers
+Date: Tue, 6 Sep 2016 14:35:30 +0800
+Message-ID: <1473143730-22156-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
 To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch setting V4L2_CAP_TIMEPERFRAME capability in
-vidioc_venc_s/g_parm functions
+Add Tiffany Lin and Andrew-CT Chen as maintainers for
+Mediatek MT8173 vcodec drivers
 
 Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c |    3 +++
- 1 file changed, 3 insertions(+)
+ MAINTAINERS |    9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 34fd89c..d0c2b9a 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -243,6 +243,8 @@ static int vidioc_venc_s_parm(struct file *file, void *priv,
- 			a->parm.output.timeperframe.numerator;
- 	ctx->param_change |= MTK_ENCODE_PARAM_FRAMERATE;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 0a16a82..ed830c7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -7590,6 +7590,15 @@ F:	include/uapi/linux/meye.h
+ F:	include/uapi/linux/ivtv*
+ F:	include/uapi/linux/uvcvideo.h
  
-+	a->parm.output.capability = V4L2_CAP_TIMEPERFRAME;
++MT8173 MEDIA DRIVER
++M:	Tiffany Lin <tiffany.lin@mediatek.com>
++M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
++S:	Supported
++F:	drivers/media/platform/mtk-vcodec/
++F:	drivers/media/platform/mtk-vpu/
++F:	Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
 +
- 	return 0;
- }
- 
-@@ -254,6 +256,7 @@ static int vidioc_venc_g_parm(struct file *file, void *priv,
- 	if (a->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
- 		return -EINVAL;
- 
-+	a->parm.output.capability = V4L2_CAP_TIMEPERFRAME;
- 	a->parm.output.timeperframe.denominator =
- 			ctx->enc_params.framerate_num;
- 	a->parm.output.timeperframe.numerator =
+ MEDIATEK ETHERNET DRIVER
+ M:	Felix Fietkau <nbd@openwrt.org>
+ M:	John Crispin <blogic@openwrt.org>
 -- 
 1.7.9.5
