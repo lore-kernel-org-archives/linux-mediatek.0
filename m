@@ -1,44 +1,66 @@
-From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Subject: Re: [PATCH net-next v5 0/2] net: ethernet: mediatek: add
- enhancements to RX path
-Date: Tue, 06 Sep 2016 13:33:34 -0700 (PDT)
-Message-ID: <20160906.133334.2283994202447289212.davem@davemloft.net>
-References: <1472896767-18352-1-git-send-email-sean.wang@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v7 6/9] drm/mediatek: add dsi interrupt control
+Date: Wed, 7 Sep 2016 09:39:08 +0800
+Message-ID: <1473212348.11736.16.camel@mtksdaap41>
+References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
+ <1472815484-43821-7-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1472896767-18352-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, objelf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1472815484-43821-7-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Sat, 3 Sep 2016 17:59:25 +0800
-
-> Changes since v1:
-> - fix message typos and add coverletter
->   
-> Changes since v2:
-> - split from the previous series for submitting add enhancements as 
-> a series targeting 'net-next' and add indents before comments.
-> 
-> Changes since v3:
-> - merge the patch using PDMA RX path
-> - fixed the input of mtk_poll_rx is with the remaining budget
-> 
-> Changes since v4:
-> - save one wmb and register update when no packet is being handled
-> inside mtk_poll_rx call
-> - fixed incorrect return packet count from mtk_napi_rx
-
-Series applied.
+SGksIFlUOgoKT24gRnJpLCAyMDE2LTA5LTAyIGF0IDE5OjI0ICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IAo+
+IGFkZCBkc2kgaW50ZXJydXB0IGNvbnRyb2wKPiAKPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBj
+aGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kc2kuYyB8IDc2ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA3NiBpbnNlcnRpb25zKCspCj4gCgpbc25pcC4uLl0K
+Cj4gIAo+ICtzdGF0aWMgd2FpdF9xdWV1ZV9oZWFkX3QgX2RzaV9pcnFfd2FpdF9xdWV1ZTsKCkkg
+dGhpbmsgaXQncyBiZXR0ZXIgdG8gbW92ZSB0aGlzIGdsb2JhbCB2YXJpYWJsZSBpbnRvIHBsYXRm
+b3JtIGRyaXZlcgpkYXRhLiBNYXliZSBvbmUgZGF5IHlvdSBoYXZlIHR3byBkc2kgZGV2aWNlIGFu
+ZCBvbmUgZ2xvYmFsIHZhcmlhYmxlIGlzCm5vdCBlbm91Z2guCgo+ICsKCltzbmlwLi4uXQoKPiAr
+Cj4gK3N0YXRpYyBpcnFyZXR1cm5fdCBtdGtfZHNpX2lycShpbnQgaXJxLCB2b2lkICpkZXZfaWQp
+Cj4gK3sKPiArCXN0cnVjdCBtdGtfZHNpICpkc2kgPSBkZXZfaWQ7Cj4gKwl1MzIgc3RhdHVzLCB0
+bXA7Cj4gKwl1MzIgZmxhZyA9IExQUlhfUkRfUkRZX0lOVF9GTEFHIHwgQ01EX0RPTkVfSU5UX0ZM
+QUcgfCBWTV9ET05FX0lOVF9GTEFHOwo+ICsKPiArCXN0YXR1cyA9IHJlYWRsKGRzaS0+cmVncyAr
+IERTSV9JTlRTVEEpOwoKSWYgeW91IGRlZmluZSBhcwoKc3RhdHVzID0gcmVhZGwoZHNpLT5yZWdz
+ICsgRFNJX0lOVFNUQSkgJiBmbGFnOwoKWW91IGNhbiByZW1vdmUgJ2ZsYWcnIGluIGJlbG93IHN0
+YXRlbWVudHMgYW5kIHJlZHVjZSBjb2RlIHNpemUuCgo+ICsKPiArCWlmIChzdGF0dXMgJiBmbGFn
+KSB7Cj4gKwkJZG8gewo+ICsJCQltdGtfZHNpX21hc2soZHNpLCBEU0lfUkFDSywgUkFDSywgUkFD
+Syk7Cj4gKwkJCXRtcCA9IHJlYWRsKGRzaS0+cmVncyArIERTSV9JTlRTVEEpOwo+ICsJCX0gd2hp
+bGUgKHRtcCAmIERTSV9CVVNZKTsKPiArCj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0lOVFNU
+QSwgc3RhdHVzICYgZmxhZywgMCk7Cj4gKwkJbXRrX2RzaV9pcnFfZGF0YV9zZXQoZHNpLCBzdGF0
+dXMgJiBmbGFnKTsKPiArCQl3YWtlX3VwX2ludGVycnVwdGlibGUoJl9kc2lfaXJxX3dhaXRfcXVl
+dWUpOwo+ICsJfQo+ICsKPiArCXJldHVybiBJUlFfSEFORExFRDsKPiArfQo+ICsKCltzbmlwLi4u
+XQoKPiAgCj4gQEAgLTg2OSw4ICs5MjYsMjcgQEAgc3RhdGljIGludCBtdGtfZHNpX3Byb2JlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJcmV0dXJuIHJldDsKPiAgCX0KPiAgCj4g
+KwlpcnFfbnVtID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPiArCWlmIChpcnFfbnVtIDwg
+MCkgewo+ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1ZXN0IGRzaSBpcnEg
+cmVzb3VyY2VcbiIpOwo+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJfQo+ICsKPiArCWly
+cV9zZXRfc3RhdHVzX2ZsYWdzKGlycV9udW0sIElSUV9UWVBFX0xFVkVMX0xPVyk7Cj4gKwlyZXQg
+PSBkZXZtX3JlcXVlc3RfaXJxKCZwZGV2LT5kZXYsIGlycV9udW0sIG10a19kc2lfaXJxLAo+ICsJ
+CQkgICAgICAgSVJRRl9UUklHR0VSX0xPVywgZGV2X25hbWUoJnBkZXYtPmRldiksIGRzaSk7Cj4g
+KwlpZiAocmV0KSB7Cj4gKwkJZGV2X2VycigmcGRldi0+ZGV2LCAiZmFpbGVkIHRvIHJlcXVlc3Qg
+bWVkaWF0ZWsgZHNpIGlycVxuIik7Cj4gKwkJcmV0dXJuIC1FUFJPQkVfREVGRVI7Cj4gKwl9Cj4g
+Kwo+ICsJZHNpLT5pcnFfZGF0YSA9IDA7CgpZb3UgdXNlIGRldm1fa3phbGxvYygpIHRvIGFsbG9j
+YXRlICdkc2knLCBzbyB0aGlzIHN0YXRlbWVudCBpcwpyZWR1bmRhbnQuCgo+ICsJZGV2X2luZm8o
+ZGV2LCAiZHNpIGlycSBudW0gaXMgMHgleFxuIiwgaXJxX251bSk7Cj4gKwo+ICAJcGxhdGZvcm1f
+c2V0X2RydmRhdGEocGRldiwgZHNpKTsKPiAgCj4gKwlpbml0X3dhaXRxdWV1ZV9oZWFkKCZfZHNp
+X2lycV93YWl0X3F1ZXVlKTsKPiArCj4gIAlyZXR1cm4gY29tcG9uZW50X2FkZCgmcGRldi0+ZGV2
+LCAmbXRrX2RzaV9jb21wb25lbnRfb3BzKTsKPiAgfQoKClJlZ2FyZHMsCkNLIAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
