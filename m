@@ -1,45 +1,65 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v2] vcodec: mediatek: add Maintainers entry for Mediatek MT8173 vcodec drivers
-Date: Wed, 7 Sep 2016 14:29:16 +0800
-Message-ID: <1473229756-13424-1-git-send-email-tiffany.lin@mediatek.com>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [PATCH net-next v5 1/2] net: ethernet: mediatek: enhance RX path
+ by reducing the frequency of the memory barrier used
+Date: Wed, 7 Sep 2016 08:35:32 +0200
+Message-ID: <a12e7967-992a-c0d4-01f0-b1699bd5808b@phrozen.org>
+References: <1472896767-18352-1-git-send-email-sean.wang@mediatek.com>
+ <1472896767-18352-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1472896767-18352-2-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: sean.wang@mediatek.com, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Tiffany Lin and Andrew-CT Chen as maintainers for
-Mediatek MT8173 vcodec drivers
 
-Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
----
-v2: Rename MT8173 MEDIA DRIVER to MEDIATEK MEDIA DRIVER
----
- MAINTAINERS |    9 +++++++++
- 1 file changed, 9 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0a16a82..96854c1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7590,6 +7590,15 @@ F:	include/uapi/linux/meye.h
- F:	include/uapi/linux/ivtv*
- F:	include/uapi/linux/uvcvideo.h
- 
-+MEDIATEK MEDIA DRIVER
-+M:	Tiffany Lin <tiffany.lin@mediatek.com>
-+M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-+S:	Supported
-+F:	drivers/media/platform/mtk-vcodec/
-+F:	drivers/media/platform/mtk-vpu/
-+F:	Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
-+
- MEDIATEK ETHERNET DRIVER
- M:	Felix Fietkau <nbd@openwrt.org>
- M:	John Crispin <blogic@openwrt.org>
--- 
-1.7.9.5
+On 03/09/2016 11:59, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> The patch makes move wmb() to outside the loop that could help
+> RX path handling more faster although that RX descriptors aren't
+> freed for DMA to use as soon as possible, but based on my experiment
+> and the result shows it still can reach about 943Mbpis without
+> performance drop that is tested based on the setup with one port
+> using Giga PHY and 256 RX descriptors for DMA to move.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+gave it a quick spin on my hardware and it works well even when using
+more than 1 gmac.
+
+Acked-by: John Crispin <john@phrozen.org>
+
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 431b851..a1bdb53 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -890,13 +890,14 @@ release_desc:
+>  		rxd->rxd2 = RX_DMA_PLEN0(ring->buf_size);
+>  
+>  		ring->calc_idx = idx;
+> -		/* make sure that all changes to the dma ring are flushed before
+> -		 * we continue
+> -		 */
+> -		wmb();
+> -		mtk_w32(eth, ring->calc_idx, MTK_PRX_CRX_IDX0);
+> +
+>  		done++;
+>  	}
+> +	/* make sure that all changes to the dma ring are flushed before
+> +	 * we continue
+> +	 */
+> +	wmb();
+> +	mtk_w32(eth, ring->calc_idx, MTK_PRX_CRX_IDX0);
+>  
+>  	if (done < budget)
+>  		mtk_w32(eth, MTK_RX_DONE_INT, MTK_PDMA_INT_STATUS);
+> 
