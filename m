@@ -1,50 +1,42 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH 3/4] vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for v4l2 decoder
-Date: Wed, 7 Sep 2016 14:56:42 +0800
-Message-ID: <1473231403-14900-4-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH 2/4] docs-rst: Add compressed video formats used on MT8173 codec driver
+Date: Wed, 7 Sep 2016 14:56:41 +0800
+Message-ID: <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
 References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
  <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
+In-Reply-To: <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add V4L2_PIX_FMT_MT21C support
+Add V4L2_PIX_FMT_MT21C documentation
 
 Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ Documentation/media/uapi/v4l/pixfmt-reserved.rst |    6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 28a8453..fd3befc 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -25,7 +25,7 @@
- #include "mtk_vcodec_dec_pm.h"
+diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+index 0dd2f7f..2e21fbc 100644
+--- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
++++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+@@ -339,7 +339,13 @@ please make a proposal on the linux-media mailing list.
+ 	  array. Anything what's in between the UYVY lines is JPEG data and
+ 	  should be concatenated to form the JPEG stream.
  
- #define OUT_FMT_IDX	0
--#define CAP_FMT_IDX	0
-+#define CAP_FMT_IDX	3
++    -  .. _V4L2-PIX-FMT-MT21C:
  
- #define MTK_VDEC_MIN_W	64U
- #define MTK_VDEC_MIN_H	64U
-@@ -48,6 +48,11 @@ static struct mtk_video_fmt mtk_video_formats[] = {
- 		.type = MTK_FMT_DEC,
- 		.num_planes = 1,
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_MT21C,
-+		.type = MTK_FMT_FRAME,
-+		.num_planes = 2,
-+	},
- };
++       -  ``V4L2_PIX_FMT_MT21C``
++
++       -  'MT21C'
++
++       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
  
- static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
+ .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+ 
 -- 
 1.7.9.5
