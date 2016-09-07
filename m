@@ -1,47 +1,65 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v3] vcodec: mediatek: add Maintainers entry for Mediatek MT8173 vcodec drivers
-Date: Wed, 7 Sep 2016 15:08:17 +0800
-Message-ID: <1473232097-39272-1-git-send-email-tiffany.lin@mediatek.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH 2/4] docs-rst: Add compressed video formats used on MT8173
+ codec driver
+Date: Wed, 7 Sep 2016 11:23:55 +0200
+Message-ID: <246f1aca-0b46-b2f1-edd0-158a2a07b1d9@xs4all.nl>
+References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
+ <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
+ <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Tiffany Lin and Andrew-CT Chen as maintainers for
-Mediatek MT8173 vcodec drivers
+On 09/07/16 08:56, Tiffany Lin wrote:
+> Add V4L2_PIX_FMT_MT21C documentation
+>
+> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> ---
+>  Documentation/media/uapi/v4l/pixfmt-reserved.rst |    6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> index 0dd2f7f..2e21fbc 100644
+> --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> @@ -339,7 +339,13 @@ please make a proposal on the linux-media mailing list.
+>  	  array. Anything what's in between the UYVY lines is JPEG data and
+>  	  should be concatenated to form the JPEG stream.
+>
+> +    -  .. _V4L2-PIX-FMT-MT21C:
+>
+> +       -  ``V4L2_PIX_FMT_MT21C``
+> +
+> +       -  'MT21C'
+> +
+> +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
 
-Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-Signed-off-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
----
-v3: Move MEDIATEK MEDIA DRIVER after MEDIATEK ETHERNET DRIVER to follow
-    alphabet sequence
-v2: Rename MT8173 MEDIA DRIVER to MEDIATEK MEDIA DRIVER
----
- MAINTAINERS |    9 +++++++++
- 1 file changed, 9 insertions(+)
+This really needs to be expanded.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0a16a82..14a48cc 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7597,6 +7597,15 @@ L:	netdev@vger.kernel.org
- S:	Maintained
- F:	drivers/net/ethernet/mediatek/
- 
-+MEDIATEK MEDIA DRIVER
-+M:	Tiffany Lin <tiffany.lin@mediatek.com>
-+M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-+S:	Supported
-+F:	drivers/media/platform/mtk-vcodec/
-+F:	drivers/media/platform/mtk-vpu/
-+F:	Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+F:	Documentation/devicetree/bindings/media/mediatek-vpu.txt
-+
- MEDIATEK MT7601U WIRELESS LAN DRIVER
- M:	Jakub Kicinski <kubakici@wp.pl>
- L:	linux-wireless@vger.kernel.org
--- 
-1.7.9.5
+Ideally this should reference the precise specification of this format if
+available.
+
+It certainly should explain which HW blocks of the mediatek SoC use this
+format, it should explain that is it meant as an opaque intermediate format
+between those blocks.
+
+If you have some characteristics (i.e. is it lossy or lossless 
+compression, I
+presume it's lossless), then that will be useful to add as well.
+
+We like to have as much information about formats as possible.
+
+Regards,
+
+	Hans
+
+>
+>  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+>
+>
