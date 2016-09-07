@@ -1,16 +1,11 @@
 From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 4/4] arm64: dts: mediatek: Add Video Decoder for MT8173
-Date: Wed, 7 Sep 2016 14:56:43 +0800
-Message-ID: <1473231403-14900-5-git-send-email-tiffany.lin@mediatek.com>
-References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-4-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH 0/4] Add V4L2_PIX_FMT_MT21C format for MT8173 codec driver
+Date: Wed, 7 Sep 2016 14:56:39 +0800
+Message-ID: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473231403-14900-4-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -24,67 +19,39 @@ To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent
 Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add video decoder node for MT8173
+This patch series add Mediatek compressed block format V4L2_PIX_FMT_MT21C, the
+decoder driver will decoded bitstream to V4L2_PIX_FMT_MT21C format.
 
-Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+User space applications could use MT8173 MDP driver to convert V4L2_PIX_FMT_MT21C to
+V4L2_PIX_FMT_NV12M, V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 10f638f..2872cd7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -974,6 +974,50 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		vcodec_dec: vcodec@16000000 {
-+			compatible = "mediatek,mt8173-vcodec-dec";
-+			reg = <0 0x16000000 0 0x100>,	/* VDEC_SYS */
-+			      <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
-+			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
-+			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
-+			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
-+			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
-+			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
-+			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
-+			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
-+			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
-+			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
-+			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
-+			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larb = <&larb1>;
-+			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
-+			mediatek,vpu = <&vpu>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
-+			clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+				 <&topckgen CLK_TOP_UNIVPLL_D2>,
-+				 <&topckgen CLK_TOP_CCI400_SEL>,
-+				 <&topckgen CLK_TOP_VDEC_SEL>,
-+				 <&topckgen CLK_TOP_VCODECPLL>,
-+				 <&apmixedsys CLK_APMIXED_VENCPLL>,
-+				 <&topckgen CLK_TOP_VENC_LT_SEL>,
-+				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
-+			clock-names = "vcodecpll",
-+				      "univpll_d2",
-+				      "clk_cci400_sel",
-+				      "vdec_sel",
-+				      "vdecpll",
-+				      "vencpll",
-+				      "venc_lt_sel",
-+				      "vdec_bus_clk_src";
-+		};
-+
- 		larb1: larb@16010000 {
- 			compatible = "mediatek,mt8173-smi-larb";
- 			reg = <0 0x16010000 0 0x1000>;
+MDP driver[1] is stand alone driver.
+
+Usage:
+MT21C -> MT8173 MDP -> NV12M/YUV420M/YVU420
+NV12M/NV21M/YUV420M/YVU420M -> mt8173 Encoder -> H264/VP8
+H264/VP8/VP9 -> mtk8173 Decoder -> MT21C
+
+When encode with MT21 source, the pipeline will be:
+MT21C -> MDP driver-> NV12M/NV21M/YUV420M/YVU420M -> Encoder -> H264/VP8
+
+When playback, the pipeline will be:
+H264/VP8/VP9 -> Decoder driver -> MT21C -> MDP Driver -> DRM
+
+[1]https://patchwork.kernel.org/patch/9305329/
+
+Tiffany Lin (4):
+  v4l: add Mediatek compressed video block format
+  docs-rst: Add compressed video formats used on MT8173 codec driver
+  vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for v4l2 decoder
+  arm64: dts: mediatek: Add Video Decoder for MT8173
+
+ Documentation/media/uapi/v4l/pixfmt-reserved.rst   |    6 +++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   44 ++++++++++++++++++++
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 +++-
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
+ include/uapi/linux/videodev2.h                     |    1 +
+ 5 files changed, 58 insertions(+), 1 deletion(-)
+
 -- 
 1.7.9.5
