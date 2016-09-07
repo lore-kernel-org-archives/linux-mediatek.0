@@ -1,65 +1,52 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH 2/4] docs-rst: Add compressed video formats used on MT8173
- codec driver
-Date: Wed, 7 Sep 2016 11:23:55 +0200
-Message-ID: <246f1aca-0b46-b2f1-edd0-158a2a07b1d9@xs4all.nl>
-References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
- <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+From: Axel Lin <axel.lin@ingics.com>
+Subject: [PATCH] thermal: mtk_thermal: Check return value of devm_thermal_zone_of_sensor_register
+Date: Wed,  7 Sep 2016 17:24:52 +0800
+Message-ID: <1473240292-10116-1-git-send-email-axel.lin@ingics.com>
+Return-path: <linux-pm-owner@vger.kernel.org>
+Sender: linux-pm-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, Axel Lin <axel.lin@ingics.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/07/16 08:56, Tiffany Lin wrote:
-> Add V4L2_PIX_FMT_MT21C documentation
->
-> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> ---
->  Documentation/media/uapi/v4l/pixfmt-reserved.rst |    6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> index 0dd2f7f..2e21fbc 100644
-> --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> @@ -339,7 +339,13 @@ please make a proposal on the linux-media mailing list.
->  	  array. Anything what's in between the UYVY lines is JPEG data and
->  	  should be concatenated to form the JPEG stream.
->
-> +    -  .. _V4L2-PIX-FMT-MT21C:
->
-> +       -  ``V4L2_PIX_FMT_MT21C``
-> +
-> +       -  'MT21C'
-> +
-> +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
+devm_thermal_zone_of_sensor_register can fail, so check it's return value.
 
-This really needs to be expanded.
+Signed-off-by: Axel Lin <axel.lin@ingics.com>
+---
+ drivers/thermal/mtk_thermal.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-Ideally this should reference the precise specification of this format if
-available.
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 7b233c7..34169c3 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -584,6 +584,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	const struct of_device_id *of_id;
+ 	u64 auxadc_phys_base, apmixed_phys_base;
++	struct thermal_zone_device *tzdev;
+ 
+ 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+ 	if (!mt)
+@@ -666,11 +667,17 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-					     &mtk_thermal_ops);
++	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
++						     &mtk_thermal_ops);
++	if (IS_ERR(tzdev)) {
++		ret = PTR_ERR(tzdev);
++		goto err_disable_clk_peri_therm;
++	}
+ 
+ 	return 0;
+ 
++err_disable_clk_peri_therm:
++	clk_disable_unprepare(mt->clk_peri_therm);
+ err_disable_clk_auxadc:
+ 	clk_disable_unprepare(mt->clk_auxadc);
+ 
+-- 
+2.7.4
 
-It certainly should explain which HW blocks of the mediatek SoC use this
-format, it should explain that is it meant as an opaque intermediate format
-between those blocks.
-
-If you have some characteristics (i.e. is it lossy or lossless 
-compression, I
-presume it's lossless), then that will be useful to add as well.
-
-We like to have as much information about formats as possible.
-
-Regards,
-
-	Hans
-
->
->  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
->
->
