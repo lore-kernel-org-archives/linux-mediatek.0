@@ -1,14 +1,14 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 7/9] drm/mediatek: add dsi transfer function
-Date: Wed, 7 Sep 2016 10:33:52 +0800
-Message-ID: <1473215632.11736.21.camel@mtksdaap41>
+Subject: Re: [PATCH v7 8/9] drm/mediatek: update DSI sub driver flow
+Date: Wed, 7 Sep 2016 12:58:03 +0800
+Message-ID: <1473224283.11736.27.camel@mtksdaap41>
 References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
- <1472815484-43821-8-git-send-email-yt.shen@mediatek.com>
+ <1472815484-43821-9-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1472815484-43821-8-git-send-email-yt.shen@mediatek.com>
+In-Reply-To: <1472815484-43821-9-git-send-email-yt.shen@mediatek.com>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
  <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
 List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
@@ -23,27 +23,14 @@ Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao 
 List-Id: linux-mediatek@lists.infradead.org
 
 SGksIFlUOgoKT24gRnJpLCAyMDE2LTA5LTAyIGF0IDE5OjI0ICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IAo+
-IGFkZCBkc2kgcmVhZC93cml0ZSBjb21tYW5kcyBmb3IgdHJhbnNmZXIgZnVuY3Rpb24KPiAKPiBT
-aWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4K
-PiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDE4OCArKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAxODggaW5z
-ZXJ0aW9ucygrKQo+IAoKW3NuaXAuLi5dCgo+ICAKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9pcnFf
-ZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1MzIgaXJxX2JpdCkKPiArewo+ICsJZHNp
-LT5pcnFfZGF0YSAmPSB+aXJxX2JpdDsKPiArfQo+ICsKCltzbmlwLi4uXQoKPiArCj4gK3N0YXRp
-YyBzMzIgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZShzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1MzIg
-aXJxX2ZsYWcsCj4gKwkJCQkgICAgIHVuc2lnbmVkIGludCB0aW1lb3V0KQo+ICt7Cj4gKwlzMzIg
-cmV0ID0gMDsKPiArCXVuc2lnbmVkIGxvbmcgamlmZmllcyA9IG1zZWNzX3RvX2ppZmZpZXModGlt
-ZW91dCk7Cj4gKwo+ICsJcmV0ID0gd2FpdF9ldmVudF9pbnRlcnJ1cHRpYmxlX3RpbWVvdXQoX2Rz
-aV9pcnFfd2FpdF9xdWV1ZSwKPiArCQkJCQkgICAgICAgZHNpLT5pcnFfZGF0YSAmIGlycV9mbGFn
-LAo+ICsJCQkJCSAgICAgICBqaWZmaWVzKTsKPiArCWlmIChyZXQgPT0gMCkgewo+ICsJCWRldl9p
-bmZvKGRzaS0+ZGV2LCAiV2FpdCBEU0kgSVJRKDB4JTA4eCkgVGltZW91dFxuIiwgaXJxX2ZsYWcp
-Owo+ICsKPiArCQltdGtfZHNpX2VuYWJsZShkc2kpOwo+ICsJCW10a19kc2lfcmVzZXRfZW5naW5l
-KGRzaSk7Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIHJldDsKPiArfQoKSSB0aGluayBtdGtfZHNpX2ly
-cV9kYXRhX2NsZWFyKCkgYW5kIG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoKSBzaG91bGQKYmUg
-bW92ZWQgdG8gdGhlIDZ0aCBwYXRjaCBbMV0gb2YgdGhpcyBzZXJpZXMgYmVjYXVzZSB0aGVzZSB0
-d28gZnVuY3Rpb25zCmRlYWwgdGhlIGlycSBjb250cm9sLgoKClsxXSBodHRwczovL3BhdGNod29y
-ay5rZXJuZWwub3JnL3BhdGNoLzkzMTA4MTkvCgoKUmVnYXJkcywKQ0sKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QK
-ZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9w
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Ogo+IFRoaXMgcGF0Y2ggdXBkYXRlIGVuYWJsZS9kaXNhYmxlIGZsb3cgb2YgRFNJIG1vZHVsZSBh
+bmQgTUlQSSBUWCBtb2R1bGUKPiAKPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFv
+bWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBZVCBTaGVuIDx5dC5zaGVu
+QG1lZGlhdGVrLmNvbT4KPiAtLS0KCkkgdGhpbmsgdGhlIGRlc2NyaXB0aW9uIGlzIHRvbyBzaW1w
+bGUuIFBsZWFzZSBicmllZmx5IGRlc2NyaWJlIFdIWSBvZgp0aGlzIHBhdGNoLiBUaGUgb3JpZ2lu
+YWwgZW5hYmxlL2Rpc2FibGUgZmxvdyBpcyB3b3JrYWJsZSwgc28gd2h5IGRvIHlvdQpuZWVkIHRo
+aXMgcGF0Y2g/IFdpdGhvdXQgdGhpcyBwYXRjaCwgd2hhdCBwcm9ibGVtIHdvdWxkIGhhcHBlbj8K
+ClJlZ2FyZHMsCkNLCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
+dmVsCg==
