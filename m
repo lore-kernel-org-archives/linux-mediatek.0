@@ -1,78 +1,61 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH 0/4] Add V4L2_PIX_FMT_MT21C format for MT8173 codec driver
-Date: Thu, 8 Sep 2016 11:27:17 +0200
-Message-ID: <64676168-8c5f-3720-820a-17e7bdbcc735@xs4all.nl>
-References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
- <e4d91e67-0b36-3675-575a-c5f38a68dbdb@xs4all.nl>
- <1473325879.26612.2.camel@mtksdaap41>
+From: Mars Cheng <mars.cheng@mediatek.com>
+Subject: [PATCH 0/4] Add MT6797 SoC basic support
+Date: Thu, 8 Sep 2016 18:49:49 +0800
+Message-ID: <1473331794-27542-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473325879.26612.2.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Erin Lo <erin.lo@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+Cc: linux-clk@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/08/16 11:11, Tiffany Lin wrote:
-> Hi Hans,
->
-> On Thu, 2016-09-08 at 09:21 +0200, Hans Verkuil wrote:
->> Hi Tiffany,
->>
->> On 09/07/2016 08:56 AM, Tiffany Lin wrote:
->>> This patch series add Mediatek compressed block format V4L2_PIX_FMT_MT21C, the
->>> decoder driver will decoded bitstream to V4L2_PIX_FMT_MT21C format.
->>>
->>> User space applications could use MT8173 MDP driver to convert V4L2_PIX_FMT_MT21C to
->>> V4L2_PIX_FMT_NV12M, V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
->>>
->>> MDP driver[1] is stand alone driver.
->>>
->>> Usage:
->>> MT21C -> MT8173 MDP -> NV12M/YUV420M/YVU420
->>> NV12M/NV21M/YUV420M/YVU420M -> mt8173 Encoder -> H264/VP8
->>> H264/VP8/VP9 -> mtk8173 Decoder -> MT21C
->>>
->>> When encode with MT21 source, the pipeline will be:
->>> MT21C -> MDP driver-> NV12M/NV21M/YUV420M/YVU420M -> Encoder -> H264/VP8
->>>
->>> When playback, the pipeline will be:
->>> H264/VP8/VP9 -> Decoder driver -> MT21C -> MDP Driver -> DRM
->>>
->>> [1]https://patchwork.kernel.org/patch/9305329/
->>>
->>> Tiffany Lin (4):
->>>   v4l: add Mediatek compressed video block format
->>>   docs-rst: Add compressed video formats used on MT8173 codec driver
->>>   vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for v4l2 decoder
->>>   arm64: dts: mediatek: Add Video Decoder for MT8173
->>>
->>>  Documentation/media/uapi/v4l/pixfmt-reserved.rst   |    6 +++
->>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   44 ++++++++++++++++++++
->>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 +++-
->>>  drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
->>>  include/uapi/linux/videodev2.h                     |    1 +
->>>  5 files changed, 58 insertions(+), 1 deletion(-)
->>>
->>
->> So basically the video decoder is useless without support for this format and
->> without the MDP driver, right?
->>
-> Yes. It also require new vpu firmware.
-> Andrew will help release new vpu firmware include encode/decode/mdp
-> capability.
+This patch set adds basic chip support for mediatek's first 10-core
+chip, X20, also known as MT6797.
 
-OK, then I'll park this until:
+- Based on 4.8-rc1
+- Based on the MT2701 patch by Erin Lo[1]
+- Modify irq-mtk-sysirq to support 2 base address
 
-- the MT21C patch series is OK
-- the MDP patch series is OK
-- the new firmware is released
+[1] https://lkml.org/lkml/2016/8/22/128
 
-For the record: the decoder patch series is OK as far as I am concerned.
-It's in my mtkdec branch.
+Mars Cheng (4):
+  Document: DT: Add bindings for mediatek MT6797 SoC Platform
+  irqchip: mtk-sysirq: support second intpol base
+  arm64: dts: mediatek: add mt6797 support
+  clk: mediatek: Add MT6797 clock support
 
-Regards,
+ Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    3 +-
+ .../interrupt-controller/mediatek,sysirq.txt       |    4 +-
+ .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |   36 +
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  237 +++++++
+ drivers/clk/mediatek/Kconfig                       |   36 +
+ drivers/clk/mediatek/Makefile                      |    5 +
+ drivers/clk/mediatek/clk-mt6797-img.c              |   87 +++
+ drivers/clk/mediatek/clk-mt6797-mm.c               |  146 ++++
+ drivers/clk/mediatek/clk-mt6797-vdec.c             |  102 +++
+ drivers/clk/mediatek/clk-mt6797-venc.c             |   86 +++
+ drivers/clk/mediatek/clk-mt6797.c                  |  716 ++++++++++++++++++++
+ drivers/irqchip/irq-mtk-sysirq.c                   |   42 +-
+ include/dt-bindings/clock/mt6797-clk.h             |  281 ++++++++
+ 22 files changed, 1784 insertions(+), 9 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797.c
+ create mode 100644 include/dt-bindings/clock/mt6797-clk.h
 
-	Hans
+--
+1.7.9.5
