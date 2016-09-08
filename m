@@ -1,73 +1,205 @@
-From: Marc Zyngier <marc.zyngier@arm.com>
-Subject: Re: [PATCH 1/4] Document: DT: Add bindings for mediatek MT6797 SoC
- Platform
-Date: Thu, 8 Sep 2016 13:37:00 +0100
-Message-ID: <57D15B6C.6080305@arm.com>
-References: <1473331794-27542-1-git-send-email-mars.cheng@mediatek.com>
- <1473331794-27542-2-git-send-email-mars.cheng@mediatek.com>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: [PATCH v6 0/6] Add MT8173 MDP Driver
+Date: Thu, 8 Sep 2016 21:09:00 +0800
+Message-ID: <1473340146-6598-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473331794-27542-2-git-send-email-mars.cheng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Mars Cheng <mars.cheng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Erin Lo <erin.lo@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
-Cc: linux-clk@vger.kernel.org, CC Hwang <cc.hwang@mediatek.com>, Loda Choui <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Scott Shu <scott.shu@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 08/09/16 11:49, Mars Cheng wrote:
-> This adds DT binding documentation for Mediatek MT6797.
-> 
-> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.txt |    4 ++++
->  .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
->  .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
->  .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
->  .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
->  .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
->  .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
->  .../bindings/arm/mediatek/mediatek,vencsys.txt     |    3 ++-
->  .../interrupt-controller/mediatek,sysirq.txt       |    4 +++-
->  .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
->  10 files changed, 16 insertions(+), 2 deletions(-)
+Changes in v6:
+- s_selection() can't set the _DEFAULT and _BOUNDS targets
+- Add Maintainers entry
 
-[...]
+Changes in v5:
+- Add ack in the comment of dts patch
+- Fix s/g_selection()
+- Separate format V4L2_PIX_FMT_MT21C into new patch  
 
-> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> index 9d1d72c..3d97eb4 100644
-> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> @@ -8,6 +8,7 @@ Required properties:
->  	"mediatek,mt8173-sysirq"
->  	"mediatek,mt8135-sysirq"
->  	"mediatek,mt8127-sysirq"
-> +	"mediatek,mt6797-sysirq"
->  	"mediatek,mt6795-sysirq"
->  	"mediatek,mt6755-sysirq"
->  	"mediatek,mt6592-sysirq"
-> @@ -21,7 +22,8 @@ Required properties:
->  - interrupt-parent: phandle of irq parent for sysirq. The parent must
->    use the same interrupt-cells format as GIC.
->  - reg: Physical base address of the intpol registers and length of memory
-> -  mapped region.
-> +  mapped region. Could be up to 2 registers here at max. Ex: 6797 needs 2 reg,
-> +  others need 1.
+Changes in v4:
+- Add "depends on HAS_DMA" in Kconfig.
+- Fix s/g_selection()
+- Replace struct v4l2_crop with u32 and struct v4l2_rect
+- Remove VB2_USERPTR
+- Move mutex lock after ctx allocation in mtk_mdp_m2m_open()
+- Add new format V4L2_PIX_FMT_YVU420 to support software on Android platform.
+- Only width/height of image in format V4L2_PIX_FMT_MT21 is aligned to 16/16,
+  other ones are aligned to 2/2 by default
 
-Two things:
+Changes in v3:
+- Modify device ndoe as structured one.
+- Fix conflict in dts on Linux 4.8-rc1
 
-- Please make this a separate patch that can be reviewed independently
-of the rest of the changes, which are just adding new compatible
-identifiers.
+Changes in v2:
+- Add section to describe blocks function in dts-bindings
+- Remove the assignment of device_caps in querycap()
+- Remove format's name assignment
+- Copy colorspace-related parameters from OUTPUT to CAPTURE
+- Use m2m helper functions
+- Fix DMA allocation failure
+- Initialize lazily vpu instance in streamon()
 
-- Why can't you simply expose it as a separate controller? Looking at
-the way you're changing the corresponding driver, it looks like you're
-simply adding an extra base/size. If you simply had a base for the
-corresponding GIC interrupts, you could handle as many region as you
-want, and have a more generic driver.
+==============
+ Introduction
+==============
 
-Thanks,
+The purpose of this series is to add the driver for Media Data Path HW embedded in the Mediatek's MT8173 SoC.
+MDP is used for scaling and color space conversion.
 
-	M.
+It could convert V4L2_PIX_FMT_MT21 to V4L2_PIX_FMT_NV12M or V4L2_PIX_FMT_YUV420M.
+
+NV12M/YUV420M/MT21 -> MDP -> NV12M/YUV420M
+
+This patch series rely on MTK VPU driver in patch series "Add MT8173 Video Encoder Driver and VPU Driver"[1] and "Add MT8173 Video Decoder Driver"[2].
+MDP driver rely on VPU driver to load, communicate with VPU.
+
+Internally the driver uses videobuf2 framework and MTK IOMMU and MTK SMI both have been merged in v4.6-rc1.
+
+[1]https://patchwork.kernel.org/patch/9002171/
+[2]https://patchwork.kernel.org/patch/9141245/
+
+==================
+ Device interface
+==================
+
+In principle the driver bases on v4l2 memory-to-memory framework:
+it provides a single video node and each opened file handle gets its own private context with separate buffer queues. Each context consist of 2 buffer queues: OUTPUT (for source buffers) and CAPTURE (for destination buffers).
+OUTPUT and CAPTURE buffer could be MMAP or DMABUF memory type.
+
+v4l2-compliance test output:
+v4l2-compliance SHA   : abc1453dfe89f244dccd3460d8e1a2e3091cbadb
+
+Driver Info:
+        Driver name   : mtk-mdp
+        Card type     : soc:mdp
+        Bus info      : platform:mt8173
+        Driver version: 4.8.0
+        Capabilities  : 0x84204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/image-proc0 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+                test VIDIOC_QUERYCTRL: OK
+                test VIDIOC_G/S_CTRL: OK
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 5 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK (Not Supported)
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK
+                test Composing: OK
+                test Scaling: OK
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+
+Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
+
+Minghsiu Tsai (6):
+  VPU: mediatek: Add mdp support
+  dt-bindings: Add a binding for Mediatek MDP
+  media: Add Mediatek MDP Driver
+  arm64: dts: mediatek: Add MDP for MT8173
+  media: mtk-mdp: support pixelformat V4L2_PIX_FMT_MT21C
+  media: mtk-mdp: add Maintainers entry for Mediatek MDP driver
+
+ .../devicetree/bindings/media/mediatek-mdp.txt     |  109 ++
+ MAINTAINERS                                        |    9 +
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   84 ++
+ drivers/media/platform/Kconfig                     |   17 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-mdp/Makefile            |    9 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c      |  159 +++
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h      |   72 ++
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c      |  294 +++++
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h      |  260 ++++
+ drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h       |  126 ++
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c       | 1278 ++++++++++++++++++++
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h       |   22 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_regs.c      |  156 +++
+ drivers/media/platform/mtk-mdp/mtk_mdp_regs.h      |   31 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c       |  145 +++
+ drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h       |   41 +
+ drivers/media/platform/mtk-vpu/mtk_vpu.h           |    5 +
+ 18 files changed, 2819 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-mdp.txt
+ create mode 100644 drivers/media/platform/mtk-mdp/Makefile
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_ipi.h
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_m2m.h
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_regs.c
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_regs.h
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+ create mode 100644 drivers/media/platform/mtk-mdp/mtk_mdp_vpu.h
+
 -- 
-Jazz is not dead. It just smells funny...
+1.7.9.5
