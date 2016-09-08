@@ -1,66 +1,96 @@
-From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] [media] VPU: mediatek: fix null pointer dereference on
- pdev
-Date: Thu, 8 Sep 2016 13:21:46 +0800
-Message-ID: <1473312106.22713.1.camel@mtksdaap41>
-References: <20160907171027.16424-1-colin.king@canonical.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH 2/4] docs-rst: Add compressed video formats used on
+ MT8173 codec driver
+Date: Thu, 8 Sep 2016 14:44:29 +0800
+Message-ID: <1473317069.22713.24.camel@mtksdaap41>
+References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
+         <1473231403-14900-2-git-send-email-tiffany.lin@mediatek.com>
+         <1473231403-14900-3-git-send-email-tiffany.lin@mediatek.com>
+         <246f1aca-0b46-b2f1-edd0-158a2a07b1d9@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20160907171027.16424-1-colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Colin King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
-Cc: Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Wei Yongjun <yongjun_wei-zrsr2BFq86L20UzCJQGyNP8+0UxHXcjY@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <246f1aca-0b46-b2f1-edd0-158a2a07b1d9@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-09-07 at 18:10 +0100, Colin King wrote:
-> From: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
+Hi Hans,
+
+On Wed, 2016-09-07 at 11:23 +0200, Hans Verkuil wrote:
+> On 09/07/16 08:56, Tiffany Lin wrote:
+> > Add V4L2_PIX_FMT_MT21C documentation
+> >
+> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> > ---
+> >  Documentation/media/uapi/v4l/pixfmt-reserved.rst |    6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > index 0dd2f7f..2e21fbc 100644
+> > --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > @@ -339,7 +339,13 @@ please make a proposal on the linux-media mailing list.
+> >  	  array. Anything what's in between the UYVY lines is JPEG data and
+> >  	  should be concatenated to form the JPEG stream.
+> >
+> > +    -  .. _V4L2-PIX-FMT-MT21C:
+> >
+> > +       -  ``V4L2_PIX_FMT_MT21C``
+> > +
+> > +       -  'MT21C'
+> > +
+> > +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
 > 
-> pdev is being null checked, however, prior to that it is being
-> dereferenced by platform_get_drvdata.  Move the assignments of
-> vpu and run to after the pdev null check to avoid a potential
-> null pointer dereference.
+> This really needs to be expanded.
+> 
+> Ideally this should reference the precise specification of this format if
+> available.
 > 
 
-Reviewed-by:Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-> Signed-off-by: Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>
-> ---
->  drivers/media/platform/mtk-vpu/mtk_vpu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+> It certainly should explain which HW blocks of the mediatek SoC use this
+> format, it should explain that is it meant as an opaque intermediate format
+> between those blocks.
 > 
-> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> index c9bf58c..43907a3 100644
-> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> @@ -523,9 +523,9 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
->  
->  int vpu_load_firmware(struct platform_device *pdev)
->  {
-> -	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-> +	struct mtk_vpu *vpu;
->  	struct device *dev = &pdev->dev;
-> -	struct vpu_run *run = &vpu->run;
-> +	struct vpu_run *run;
->  	const struct firmware *vpu_fw = NULL;
->  	int ret;
->  
-> @@ -534,6 +534,9 @@ int vpu_load_firmware(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> +	vpu = platform_get_drvdata(pdev);
-> +	run = &vpu->run;
-> +
->  	mutex_lock(&vpu->vpu_mutex);
->  	if (vpu->fw_loaded) {
->  		mutex_unlock(&vpu->vpu_mutex);
+
+Yes. it is an opaque intermediate format.
+VDEC HW only output MT21C format, and it need MDP HW to convert to other
+standard format.
+
+At first, we plan to put "convert MT21C to other standard format" in our
+v4l2 decoder driver, actually in VPU firmware.
+In this case, there is no need to expose MT21C format to user space.
+
+But consider that MDP is a stand alone HW (interrupt, power, clk),
+combine decode and format convert in one decode step impact performance.
+VDEC HW and MDP HW could process different frame at same time.
+MDP may also used by other modules to do format convert, not only VDEC.
+
+That's why we need to expose MT21C to user space.
+When user space application enumerate VDEC and display HW and found that
+the format is not match.
+It need to use MDP driver to do format convert.
+
+
+> If you have some characteristics (i.e. is it lossy or lossless 
+> compression, I
+> presume it's lossless), then that will be useful to add as well.
+> 
+I will update this in next version.
+
+
+best regards,
+Tiffany
+
+> We like to have as much information about formats as possible.
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> >
+> >  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+> >
+> >
