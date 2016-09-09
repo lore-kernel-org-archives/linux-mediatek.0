@@ -1,57 +1,46 @@
-From: Jacek Anaszewski <j.anaszewski@samsung.com>
-Subject: Re: [PATCH] [media] platform: constify vb2_ops structures
-Date: Fri, 09 Sep 2016 11:48:34 +0200
-Message-ID: <fe79a710-f524-a161-2211-3b536c9da255@samsung.com>
-References: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: [PATCH v2 2/4] docs-rst: Add compressed video formats used on MT8173 codec driver
+Date: Fri, 9 Sep 2016 23:48:05 +0800
+Message-ID: <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
+References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
+ <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-reply-to: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-media-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>, Sylwester Nawrocki <s.nawrocki@samsung.com>
-Cc: kernel-janitors@vger.kernel.org, Fabien Dessenne <fabien.dessenne@st.com>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Kamil Debski <kamil@wypas.org>, Kyungmin Park <kyungmin.park@samsung.com>, Benoit Parrot <bparrot@ti.com>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Ludovic Desroches <ludovic.desroches@atmel.com>, Hyun Kwon <hyun.kwon@xilinx.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Michal Simek <michal.simek@xilinx.com>, =?UTF-8?Q?S=c3=b6ren_Brinkmann?= <soren.brinkmann@xilinx.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Julia,
+Add V4L2_PIX_FMT_MT21C documentation
 
-On 09/09/2016 01:59 AM, Julia Lawall wrote:
-> Check for vb2_ops structures that are only stored in the ops field of a
-> vb2_queue structure.  That field is declared const, so vb2_ops structures
-> that have this property can be declared as const also.
->
-> The semantic patch that makes this change is as follows:
-> (http://coccinelle.lip6.fr/)
->
-[...]
+Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+---
+ Documentation/media/uapi/v4l/pixfmt-reserved.rst |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-> diff --git a/drivers/media/platform/s5p-jpeg/jpeg-core.c b/drivers/media/platform/s5p-jpeg/jpeg-core.c
-> index 785e693..d9c07b8 100644
-> --- a/drivers/media/platform/s5p-jpeg/jpeg-core.c
-> +++ b/drivers/media/platform/s5p-jpeg/jpeg-core.c
-> @@ -2538,7 +2538,7 @@ static void s5p_jpeg_stop_streaming(struct vb2_queue *q)
->  	pm_runtime_put(ctx->jpeg->dev);
->  }
->
-> -static struct vb2_ops s5p_jpeg_qops = {
-> +static const struct vb2_ops s5p_jpeg_qops = {
->  	.queue_setup		= s5p_jpeg_queue_setup,
->  	.buf_prepare		= s5p_jpeg_buf_prepare,
->  	.buf_queue		= s5p_jpeg_buf_queue,
-> diff --git a/drivers/media/platform/ti-vpe/cal.c b/drivers/media/platform/ti-vpe/cal.c
-> index e967fcf..44323cb 100644
-> --- a/drivers/media/platform/ti-vpe/cal.c
-> +++ b/drivers/media/platform/ti-vpe/cal.c
-> @@ -1379,7 +1379,7 @@ static void cal_stop_streaming(struct vb2_queue *vq)
->  	cal_runtime_put(ctx->dev);
->  }
-
-Thanks for the patch.
-
-For s5p-jpeg driver:
-
-Reviewed-by: Jacek Anaszewski <j.anaszewski@samsung.com>
-
+diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+index 0dd2f7f..0989e99 100644
+--- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
++++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+@@ -339,7 +339,17 @@ please make a proposal on the linux-media mailing list.
+ 	  array. Anything what's in between the UYVY lines is JPEG data and
+ 	  should be concatenated to form the JPEG stream.
+ 
++    -  .. _V4L2-PIX-FMT-MT21C:
+ 
++       -  ``V4L2_PIX_FMT_MT21C``
++
++       -  'MT21C'
++
++       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
++          The compression is lossless.
++          It is an opaque intermediate format, and MDP HW could convert
++          V4L2_PIX_FMT_MT21C to V4L2_PIX_FMT_NV12M,
++          V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
+ 
+ .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+ 
 -- 
-Best regards,
-Jacek Anaszewski
+1.7.9.5
