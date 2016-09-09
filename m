@@ -1,81 +1,60 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v2 4/4] arm64: dts: mediatek: Add Video Decoder for MT8173
-Date: Fri, 9 Sep 2016 23:48:07 +0800
-Message-ID: <1473436087-21943-5-git-send-email-tiffany.lin@mediatek.com>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 3/4] vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for
+ v4l2 decoder
+Date: Fri, 9 Sep 2016 23:48:06 +0800
+Message-ID: <1473436087-21943-4-git-send-email-tiffany.lin@mediatek.com>
 References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
  <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
  <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
- <1473436087-21943-4-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473436087-21943-4-git-send-email-tiffany.lin@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1473436087-21943-3-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add video decoder node for MT8173
+Add V4L2_PIX_FMT_MT21C support
 
-Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |   44 ++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 10f638f..2872cd7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -974,6 +974,50 @@
- 			#clock-cells = <1>;
- 		};
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 28a8453..fd3befc 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -25,7 +25,7 @@
+ #include "mtk_vcodec_dec_pm.h"
  
-+		vcodec_dec: vcodec@16000000 {
-+			compatible = "mediatek,mt8173-vcodec-dec";
-+			reg = <0 0x16000000 0 0x100>,	/* VDEC_SYS */
-+			      <0 0x16020000 0 0x1000>,	/* VDEC_MISC */
-+			      <0 0x16021000 0 0x800>,	/* VDEC_LD */
-+			      <0 0x16021800 0 0x800>,	/* VDEC_TOP */
-+			      <0 0x16022000 0 0x1000>,	/* VDEC_CM */
-+			      <0 0x16023000 0 0x1000>,	/* VDEC_AD */
-+			      <0 0x16024000 0 0x1000>,	/* VDEC_AV */
-+			      <0 0x16025000 0 0x1000>,	/* VDEC_PP */
-+			      <0 0x16026800 0 0x800>,	/* VDEC_HWD */
-+			      <0 0x16027000 0 0x800>,	/* VDEC_HWQ */
-+			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
-+			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
-+			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larb = <&larb1>;
-+			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
-+				 <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
-+			mediatek,vpu = <&vpu>;
-+			power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
-+			clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+				 <&topckgen CLK_TOP_UNIVPLL_D2>,
-+				 <&topckgen CLK_TOP_CCI400_SEL>,
-+				 <&topckgen CLK_TOP_VDEC_SEL>,
-+				 <&topckgen CLK_TOP_VCODECPLL>,
-+				 <&apmixedsys CLK_APMIXED_VENCPLL>,
-+				 <&topckgen CLK_TOP_VENC_LT_SEL>,
-+				 <&topckgen CLK_TOP_VCODECPLL_370P5>;
-+			clock-names = "vcodecpll",
-+				      "univpll_d2",
-+				      "clk_cci400_sel",
-+				      "vdec_sel",
-+				      "vdecpll",
-+				      "vencpll",
-+				      "venc_lt_sel",
-+				      "vdec_bus_clk_src";
-+		};
-+
- 		larb1: larb@16010000 {
- 			compatible = "mediatek,mt8173-smi-larb";
- 			reg = <0 0x16010000 0 0x1000>;
+ #define OUT_FMT_IDX	0
+-#define CAP_FMT_IDX	0
++#define CAP_FMT_IDX	3
+ 
+ #define MTK_VDEC_MIN_W	64U
+ #define MTK_VDEC_MIN_H	64U
+@@ -48,6 +48,11 @@ static struct mtk_video_fmt mtk_video_formats[] = {
+ 		.type = MTK_FMT_DEC,
+ 		.num_planes = 1,
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_MT21C,
++		.type = MTK_FMT_FRAME,
++		.num_planes = 2,
++	},
+ };
+ 
+ static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
 -- 
 1.7.9.5
