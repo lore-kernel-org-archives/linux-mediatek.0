@@ -1,46 +1,51 @@
 From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: [PATCH v2 2/4] docs-rst: Add compressed video formats used on MT8173 codec driver
-Date: Fri, 9 Sep 2016 23:48:05 +0800
-Message-ID: <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
-References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
- <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH v2 0/4] Add V4L2_PIX_FMT_MT21C format for MT8173 codec driver
+Date: Fri, 9 Sep 2016 23:48:03 +0800
+Message-ID: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
 Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Tiffany.lin@mediatek.com, Tiffany Lin <tiffany.lin@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add V4L2_PIX_FMT_MT21C documentation
+This patch series add Mediatek compressed block format V4L2_PIX_FMT_MT21C,
+the decoder driver will decoded bitstream to V4L2_PIX_FMT_MT21C format.
 
-Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+User space applications could use MT8173 MDP driver to convert V4L2_PIX_FMT_MT21C
+to V4L2_PIX_FMT_NV12M, V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
+MDP driver[1] is stand alone driver.
+
+Usage:
+MT21C -> MT8173 MDP -> NV12M/YUV420M/YVU420 NV12M/NV21M/YUV420M/YVU420M -> mt8173 Encoder -> H264/VP8
+H264/VP8/VP9 -> mtk8173 Decoder -> MT21C
+
+When encode with MT21 source, the pipeline will be:
+MT21C -> MDP driver-> NV12M/NV21M/YUV420M/YVU420M -> Encoder -> H264/VP8
+
+When playback, the pipeline will be:
+H264/VP8/VP9 -> Decoder driver -> MT21C -> MDP Driver -> DRM
+
+[1]https://patchwork.kernel.org/patch/9305329/
+
 ---
- Documentation/media/uapi/v4l/pixfmt-reserved.rst |   10 ++++++++++
- 1 file changed, 10 insertions(+)
+v2: add more information for MT21C in docs-rst
+---
 
-diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-index 0dd2f7f..0989e99 100644
---- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-+++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-@@ -339,7 +339,17 @@ please make a proposal on the linux-media mailing list.
- 	  array. Anything what's in between the UYVY lines is JPEG data and
- 	  should be concatenated to form the JPEG stream.
- 
-+    -  .. _V4L2-PIX-FMT-MT21C:
- 
-+       -  ``V4L2_PIX_FMT_MT21C``
-+
-+       -  'MT21C'
-+
-+       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
-+          The compression is lossless.
-+          It is an opaque intermediate format, and MDP HW could convert
-+          V4L2_PIX_FMT_MT21C to V4L2_PIX_FMT_NV12M,
-+          V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
- 
- .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
- 
+
+Tiffany Lin (4):
+  v4l: add Mediatek compressed video block format
+  docs-rst: Add compressed video formats used on MT8173 codec driver
+  vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for v4l2 decoder
+  arm64: dts: mediatek: Add Video Decoder for MT8173
+
+ Documentation/media/uapi/v4l/pixfmt-reserved.rst   |   10 +++++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   44 ++++++++++++++++++++
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 +++-
+ drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
+ include/uapi/linux/videodev2.h                     |    1 +
+ 5 files changed, 62 insertions(+), 1 deletion(-)
+
 -- 
 1.7.9.5
