@@ -1,58 +1,85 @@
-From: andrew-ct chen <andrew-ct.chen@mediatek.com>
-Subject: Re: [PATCH] [media] VPU: mediatek: fix null pointer dereference on
- pdev
-Date: Fri, 9 Sep 2016 09:25:14 +0800
-Message-ID: <1473384314.10811.0.camel@mtksdaap41>
-References: <20160907171027.16424-1-colin.king@canonical.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH] [media] platform: constify vb2_ops structures
+Date: Fri, 09 Sep 2016 11:42:19 +0300
+Message-ID: <1520635.43zSurJaks@avalon>
+References: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160907171027.16424-1-colin.king@canonical.com>
+In-Reply-To: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Colin King <colin.king@canonical.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>, kernel-janitors@vger.kernel.org, Fabien Dessenne <fabien.dessenne@st.com>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Kamil Debski <kamil@wypas.org>, Kyungmin Park <kyungmin.park@samsung.com>, Benoit Parrot <bparrot@ti.com>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Ludovic Desroches <ludovic.desroches@atmel.com>, Hyun Kwon <hyun.kwon@xilinx.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Michal Simek <michal.simek@xilinx.com>, =?ISO-8859-1?Q?S=F6ren?= Brinkmann <soren.brinkmann@xilinx.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.orgAndrzej
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-09-07 at 18:10 +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> pdev is being null checked, however, prior to that it is being
-> dereferenced by platform_get_drvdata.  Move the assignments of
-> vpu and run to after the pdev null check to avoid a potential
-> null pointer dereference.
-> 
+Hi Julia,
 
-Reviewed-by:Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Thank you for the patch.
 
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/media/platform/mtk-vpu/mtk_vpu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+On Friday 09 Sep 2016 01:59:10 Julia Lawall wrote:
+> Check for vb2_ops structures that are only stored in the ops field of a
+> vb2_queue structure.  That field is declared const, so vb2_ops structures
+> that have this property can be declared as const also.
 > 
-> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> index c9bf58c..43907a3 100644
-> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> @@ -523,9 +523,9 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
->  
->  int vpu_load_firmware(struct platform_device *pdev)
->  {
-> -	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-> +	struct mtk_vpu *vpu;
->  	struct device *dev = &pdev->dev;
-> -	struct vpu_run *run = &vpu->run;
-> +	struct vpu_run *run;
->  	const struct firmware *vpu_fw = NULL;
->  	int ret;
->  
-> @@ -534,6 +534,9 @@ int vpu_load_firmware(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> +	vpu = platform_get_drvdata(pdev);
-> +	run = &vpu->run;
-> +
->  	mutex_lock(&vpu->vpu_mutex);
->  	if (vpu->fw_loaded) {
->  		mutex_unlock(&vpu->vpu_mutex);
+> The semantic patch that makes this change is as follows:
+> (http://coccinelle.lip6.fr/)
+> 
+> // <smpl>
+> @r disable optional_qualifier@
+> identifier i;
+> position p;
+> @@
+> static struct vb2_ops i@p = { ... };
+> 
+> @ok@
+> identifier r.i;
+> struct vb2_queue e;
+> position p;
+> @@
+> e.ops = &i@p;
+> 
+> @bad@
+> position p != {r.p,ok.p};
+> identifier r.i;
+> struct vb2_ops e;
+> @@
+> e@i@p
+> 
+> @depends on !bad disable optional_qualifier@
+> identifier r.i;
+> @@
+> static
+> +const
+>  struct vb2_ops i = { ... };
+> // </smpl>
+> 
+> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+
+For the drivers below,
+
+>  drivers/media/platform/m2m-deinterlace.c                 |    2 +-
+>  drivers/media/platform/rcar-vin/rcar-dma.c               |    2 +-
+>  drivers/media/platform/rcar_jpu.c                        |    2 +-
+>  drivers/media/platform/sh_vou.c                          |    2 +-
+>  drivers/media/platform/soc_camera/atmel-isi.c            |    2 +-
+>  drivers/media/platform/soc_camera/sh_mobile_ceu_camera.c |    2 +-
+>  drivers/media/platform/vim2m.c                           |    2 +-
+>  drivers/media/platform/xilinx/xilinx-dma.c               |    2 +-
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+For
+
+>  drivers/media/platform/soc_camera/rcar_vin.c             |    2 +-
+
+you can also add my
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+tag, but the driver will be scheduled for removal very soon.
+
+-- 
+Regards,
+
+Laurent Pinchart
