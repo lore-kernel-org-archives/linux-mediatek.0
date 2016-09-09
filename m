@@ -1,16 +1,13 @@
 From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 3/4] vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for
- v4l2 decoder
-Date: Fri, 9 Sep 2016 23:48:06 +0800
-Message-ID: <1473436087-21943-4-git-send-email-tiffany.lin@mediatek.com>
+Subject: [PATCH v2 1/4] v4l: add Mediatek compressed video block format
+Date: Fri, 9 Sep 2016 23:48:04 +0800
+Message-ID: <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
 References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
- <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
- <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1473436087-21943-3-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <1473436087-21943-1-git-send-email-tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -24,37 +21,39 @@ To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent
 Cc: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add V4L2_PIX_FMT_MT21C support
+Add V4L2_PIX_FMT_MT21C format used on MT8173 driver.
+It is compressed format and need MT8173 MDP driver to transfer to other
+standard format.
 
 Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/media/v4l2-core/v4l2-ioctl.c |    1 +
+ include/uapi/linux/videodev2.h       |    1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 28a8453..fd3befc 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -25,7 +25,7 @@
- #include "mtk_vcodec_dec_pm.h"
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index 2bd1581..1d45c58 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1288,6 +1288,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 		case V4L2_PIX_FMT_JPGL:		descr = "JPEG Lite"; break;
+ 		case V4L2_PIX_FMT_SE401:	descr = "GSPCA SE401"; break;
+ 		case V4L2_PIX_FMT_S5C_UYVY_JPG:	descr = "S5C73MX interleaved UYVY/JPEG"; break;
++		case V4L2_PIX_FMT_MT21C:	descr = "Mediatek Compressed Format"; break;
+ 		default:
+ 			WARN(1, "Unknown pixelformat 0x%08x\n", fmt->pixelformat);
+ 			if (fmt->description[0])
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 43326c3..ddd0083 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -635,6 +635,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_Y8I      v4l2_fourcc('Y', '8', 'I', ' ') /* Greyscale 8-bit L/R interleaved */
+ #define V4L2_PIX_FMT_Y12I     v4l2_fourcc('Y', '1', '2', 'I') /* Greyscale 12-bit L/R interleaved */
+ #define V4L2_PIX_FMT_Z16      v4l2_fourcc('Z', '1', '6', ' ') /* Depth data 16-bit */
++#define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
  
- #define OUT_FMT_IDX	0
--#define CAP_FMT_IDX	0
-+#define CAP_FMT_IDX	3
- 
- #define MTK_VDEC_MIN_W	64U
- #define MTK_VDEC_MIN_H	64U
-@@ -48,6 +48,11 @@ static struct mtk_video_fmt mtk_video_formats[] = {
- 		.type = MTK_FMT_DEC,
- 		.num_planes = 1,
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_MT21C,
-+		.type = MTK_FMT_FRAME,
-+		.num_planes = 2,
-+	},
- };
- 
- static const struct mtk_codec_framesizes mtk_vdec_framesizes[] = {
+ /* SDR formats - used only for Software Defined Radio devices */
+ #define V4L2_SDR_FMT_CU8          v4l2_fourcc('C', 'U', '0', '8') /* IQ u8 */
 -- 
 1.7.9.5
