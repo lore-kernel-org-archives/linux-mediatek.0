@@ -1,88 +1,43 @@
-From: Benoit Parrot <bparrot@ti.com>
-Subject: Re: [PATCH] [media] platform: constify vb2_ops structures
-Date: Fri, 9 Sep 2016 11:03:55 -0500
-Message-ID: <20160909160355.GC27225@ti.com>
-References: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
+From: Wei Yongjun <weiyj.lk@gmail.com>
+Subject: [PATCH -next] drm/mediatek: Remove redundant dev_err call in mtk_drm_probe()
+Date: Sat, 10 Sep 2016 12:33:29 +0000
+Message-ID: <1473510809-26606-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1473379150-17315-1-git-send-email-Julia.Lawall@lip6.fr>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: Sylwester Nawrocki <s.nawrocki@samsung.com>, kernel-janitors@vger.kernel.org, Fabien Dessenne <fabien.dessenne@st.com>, linux-samsung-soc@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>, Andrzej Hajda <a.hajda@samsung.com>, Kamil Debski <kamil@wypas.org>, Kyungmin Park <kyungmin.park@samsung.com>, Guennadi Liakhovetski <g.liakhovetski@gmx.de>, Ludovic Desroches <ludovic.desroches@atmel.com>, Hyun Kwon <hyun.kwon@xilinx.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Michal Simek <michal.simek@xilinx.com>, =?iso-8859-1?Q?S=F6ren?= Brinkmann <soren.brinkmann@xilinx.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.orglinux-
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Wei Yongjun <weiyongjun1@huawei.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+From: Wei Yongjun <weiyongjun1@huawei.com>
 
-Thanks for the patch.
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
 
-Julia Lawall <Julia.Lawall@lip6.fr> wrote on Fri [2016-Sep-09 01:59:10 +0200]:
-> Check for vb2_ops structures that are only stored in the ops field of a
-> vb2_queue structure.  That field is declared const, so vb2_ops structures
-> that have this property can be declared as const also.
-> 
-> The semantic patch that makes this change is as follows:
-> (http://coccinelle.lip6.fr/)
-> 
-> // <smpl>
-> @r disable optional_qualifier@
-> identifier i;
-> position p;
-> @@
-> static struct vb2_ops i@p = { ... };
-> 
-> @ok@
-> identifier r.i;
-> struct vb2_queue e;
-> position p;
-> @@
-> e.ops = &i@p;
-> 
-> @bad@
-> position p != {r.p,ok.p};
-> identifier r.i;
-> struct vb2_ops e;
-> @@
-> e@i@p
-> 
-> @depends on !bad disable optional_qualifier@
-> identifier r.i;
-> @@
-> static
-> +const
->  struct vb2_ops i = { ... };
-> // </smpl>
-> 
-> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
-> 
-> ---
->  drivers/media/platform/exynos-gsc/gsc-m2m.c              |    2 +-
->  drivers/media/platform/exynos4-is/fimc-capture.c         |    2 +-
->  drivers/media/platform/exynos4-is/fimc-m2m.c             |    2 +-
->  drivers/media/platform/m2m-deinterlace.c                 |    2 +-
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c       |    2 +-
->  drivers/media/platform/mx2_emmaprp.c                     |    2 +-
->  drivers/media/platform/rcar-vin/rcar-dma.c               |    2 +-
->  drivers/media/platform/rcar_jpu.c                        |    2 +-
->  drivers/media/platform/s5p-g2d/g2d.c                     |    2 +-
->  drivers/media/platform/s5p-jpeg/jpeg-core.c              |    2 +-
->  drivers/media/platform/sh_vou.c                          |    2 +-
->  drivers/media/platform/soc_camera/atmel-isi.c            |    2 +-
->  drivers/media/platform/soc_camera/rcar_vin.c             |    2 +-
->  drivers/media/platform/soc_camera/sh_mobile_ceu_camera.c |    2 +-
->  drivers/media/platform/sti/bdisp/bdisp-v4l2.c            |    2 +-
+Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-For the following 2 drivers,
-
->  drivers/media/platform/ti-vpe/cal.c                      |    2 +-
->  drivers/media/platform/ti-vpe/vpe.c                      |    2 +-
-
-Reviewed-by: Benoit Parrot <bparrot@ti.com>
-
->  drivers/media/platform/vim2m.c                           |    2 +-
->  drivers/media/platform/xilinx/xilinx-dma.c               |    2 +-
->  19 files changed, 19 insertions(+), 19 deletions(-)
-
-Regards,
-Benoit Parrot
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 72c1ae4..f4f90e8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -365,12 +365,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	private->config_regs = devm_ioremap_resource(dev, mem);
+-	if (IS_ERR(private->config_regs)) {
+-		ret = PTR_ERR(private->config_regs);
+-		dev_err(dev, "Failed to ioremap mmsys-config resource: %d\n",
+-			ret);
+-		return ret;
+-	}
++	if (IS_ERR(private->config_regs))
++		return PTR_ERR(private->config_regs);
+ 
+ 	/* Iterate over sibling DISP function blocks */
+ 	for_each_child_of_node(dev->of_node->parent, node) {
