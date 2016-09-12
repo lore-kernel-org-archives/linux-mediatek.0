@@ -1,50 +1,73 @@
 From: YT Shen <yt.shen@mediatek.com>
-Subject: Re: [PATCH v7 8/9] drm/mediatek: update DSI sub driver flow
-Date: Mon, 12 Sep 2016 18:15:47 +0800
-Message-ID: <1473675347.12398.24.camel@mtksdaap41>
+Subject: Re: [PATCH v7 6/9] drm/mediatek: add dsi interrupt control
+Date: Mon, 12 Sep 2016 18:16:00 +0800
+Message-ID: <1473675360.12398.25.camel@mtksdaap41>
 References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
-         <1472815484-43821-9-git-send-email-yt.shen@mediatek.com>
-         <1473224283.11736.27.camel@mtksdaap41>
+ <1472815484-43821-7-git-send-email-yt.shen@mediatek.com>
+ <1473212348.11736.16.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473224283.11736.27.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473212348.11736.16.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK,
-
-On Wed, 2016-09-07 at 12:58 +0800, CK Hu wrote:
-> Hi, YT:
-> 
-> On Fri, 2016-09-02 at 19:24 +0800, YT Shen wrote:
-> > This patch update enable/disable flow of DSI module and MIPI TX module
-> > 
-> > Signed-off-by: shaoming chen <shaoming.chen@mediatek.com>
-> > Signed-off-by: YT Shen <yt.shen@mediatek.com>
-> > ---
-> 
-> I think the description is too simple. Please briefly describe WHY of
-> this patch. The original enable/disable flow is workable, so why do you
-> need this patch? Without this patch, what problem would happen?
-Got it, we will update more descriptions in the next version.
-There is no transfer/interrupt function in the upstream DSI driver.
-We also implement the following function [1][2] in this patch series.
-
-Original flow works on there is a bridge chip: DSI -> bridge -> panel.
-In this case: DSI -> panel, the DSI sub driver flow should be updated.
-We need to initialize DSI first so that we can send commands to panel.
-
-[1] https://patchwork.kernel.org/patch/9310819/
-drm/mediatek: add dsi interrupt control
-[2] https://patchwork.kernel.org/patch/9310823/
-drm/mediatek: add dsi transfer function
-
-> 
-> Regards,
-> CK
-> 
-> 
+SGkgQ0ssCgpPbiBXZWQsIDIwMTYtMDktMDcgYXQgMDk6MzkgKzA4MDAsIENLIEh1IHdyb3RlOgo+
+IEhpLCBZVDoKPiAKPiBPbiBGcmksIDIwMTYtMDktMDIgYXQgMTk6MjQgKzA4MDAsIFlUIFNoZW4g
+d3JvdGU6Cj4gPiBGcm9tOiBzaGFvbWluZyBjaGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNv
+bT4KPiA+IAo+ID4gYWRkIGRzaSBpbnRlcnJ1cHQgY29udHJvbAo+ID4gCj4gPiBTaWduZWQtb2Zm
+LWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KPiA+IC0tLQo+
+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA3NiArKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gIDEgZmlsZSBjaGFuZ2VkLCA3NiBpbnNlcnRp
+b25zKCspCj4gPiAKPiAKPiBbc25pcC4uLl0KPiAKPiA+ICAKPiA+ICtzdGF0aWMgd2FpdF9xdWV1
+ZV9oZWFkX3QgX2RzaV9pcnFfd2FpdF9xdWV1ZTsKPiAKPiBJIHRoaW5rIGl0J3MgYmV0dGVyIHRv
+IG1vdmUgdGhpcyBnbG9iYWwgdmFyaWFibGUgaW50byBwbGF0Zm9ybSBkcml2ZXIKPiBkYXRhLiBN
+YXliZSBvbmUgZGF5IHlvdSBoYXZlIHR3byBkc2kgZGV2aWNlIGFuZCBvbmUgZ2xvYmFsIHZhcmlh
+YmxlIGlzCj4gbm90IGVub3VnaC4KT0ssIHdlIHdpbGwgbW92ZSBfZHNpX2lycV93YWl0X3F1ZXVl
+IGludG8gcGxhdGZvcm0gZHJpdmVyIGRhdGEuCgo+IAo+ID4gKwo+IAo+IFtzbmlwLi4uXQo+IAo+
+ID4gKwo+ID4gK3N0YXRpYyBpcnFyZXR1cm5fdCBtdGtfZHNpX2lycShpbnQgaXJxLCB2b2lkICpk
+ZXZfaWQpCj4gPiArewo+ID4gKwlzdHJ1Y3QgbXRrX2RzaSAqZHNpID0gZGV2X2lkOwo+ID4gKwl1
+MzIgc3RhdHVzLCB0bXA7Cj4gPiArCXUzMiBmbGFnID0gTFBSWF9SRF9SRFlfSU5UX0ZMQUcgfCBD
+TURfRE9ORV9JTlRfRkxBRyB8IFZNX0RPTkVfSU5UX0ZMQUc7Cj4gPiArCj4gPiArCXN0YXR1cyA9
+IHJlYWRsKGRzaS0+cmVncyArIERTSV9JTlRTVEEpOwo+IAo+IElmIHlvdSBkZWZpbmUgYXMKPiAK
+PiBzdGF0dXMgPSByZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKSAmIGZsYWc7Cj4gCj4gWW91
+IGNhbiByZW1vdmUgJ2ZsYWcnIGluIGJlbG93IHN0YXRlbWVudHMgYW5kIHJlZHVjZSBjb2RlIHNp
+emUuCldpbGwgZG8uCgo+IAo+ID4gKwo+ID4gKwlpZiAoc3RhdHVzICYgZmxhZykgewo+ID4gKwkJ
+ZG8gewo+ID4gKwkJCW10a19kc2lfbWFzayhkc2ksIERTSV9SQUNLLCBSQUNLLCBSQUNLKTsKPiA+
+ICsJCQl0bXAgPSByZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5UU1RBKTsKPiA+ICsJCX0gd2hpbGUg
+KHRtcCAmIERTSV9CVVNZKTsKPiA+ICsKPiA+ICsJCW10a19kc2lfbWFzayhkc2ksIERTSV9JTlRT
+VEEsIHN0YXR1cyAmIGZsYWcsIDApOwo+ID4gKwkJbXRrX2RzaV9pcnFfZGF0YV9zZXQoZHNpLCBz
+dGF0dXMgJiBmbGFnKTsKPiA+ICsJCXdha2VfdXBfaW50ZXJydXB0aWJsZSgmX2RzaV9pcnFfd2Fp
+dF9xdWV1ZSk7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcmV0dXJuIElSUV9IQU5ETEVEOwo+ID4gK30K
+PiA+ICsKPiAKPiBbc25pcC4uLl0KPiAKPiA+ICAKPiA+IEBAIC04NjksOCArOTI2LDI3IEBAIHN0
+YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4g
+IAkJcmV0dXJuIHJldDsKPiA+ICAJfQo+ID4gIAo+ID4gKwlpcnFfbnVtID0gcGxhdGZvcm1fZ2V0
+X2lycShwZGV2LCAwKTsKPiA+ICsJaWYgKGlycV9udW0gPCAwKSB7Cj4gPiArCQlkZXZfZXJyKCZw
+ZGV2LT5kZXYsICJmYWlsZWQgdG8gcmVxdWVzdCBkc2kgaXJxIHJlc291cmNlXG4iKTsKPiA+ICsJ
+CXJldHVybiAtRVBST0JFX0RFRkVSOwo+ID4gKwl9Cj4gPiArCj4gPiArCWlycV9zZXRfc3RhdHVz
+X2ZsYWdzKGlycV9udW0sIElSUV9UWVBFX0xFVkVMX0xPVyk7Cj4gPiArCXJldCA9IGRldm1fcmVx
+dWVzdF9pcnEoJnBkZXYtPmRldiwgaXJxX251bSwgbXRrX2RzaV9pcnEsCj4gPiArCQkJICAgICAg
+IElSUUZfVFJJR0dFUl9MT1csIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBkc2kpOwo+ID4gKwlpZiAo
+cmV0KSB7Cj4gPiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gcmVxdWVzdCBtZWRp
+YXRlayBkc2kgaXJxXG4iKTsKPiA+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ID4gKwl9Cj4g
+PiArCj4gPiArCWRzaS0+aXJxX2RhdGEgPSAwOwo+IAo+IFlvdSB1c2UgZGV2bV9remFsbG9jKCkg
+dG8gYWxsb2NhdGUgJ2RzaScsIHNvIHRoaXMgc3RhdGVtZW50IGlzCj4gcmVkdW5kYW50LgpXaWxs
+IHJlbW92ZS4KClJlZ2FyZHMsCnl0LnNoZW4KCj4gCj4gPiArCWRldl9pbmZvKGRldiwgImRzaSBp
+cnEgbnVtIGlzIDB4JXhcbiIsIGlycV9udW0pOwo+ID4gKwo+ID4gIAlwbGF0Zm9ybV9zZXRfZHJ2
+ZGF0YShwZGV2LCBkc2kpOwo+ID4gIAo+ID4gKwlpbml0X3dhaXRxdWV1ZV9oZWFkKCZfZHNpX2ly
+cV93YWl0X3F1ZXVlKTsKPiA+ICsKPiA+ICAJcmV0dXJuIGNvbXBvbmVudF9hZGQoJnBkZXYtPmRl
+diwgJm10a19kc2lfY29tcG9uZW50X29wcyk7Cj4gPiAgfQo+IAo+IAo+IFJlZ2FyZHMsCj4gQ0sg
+Cj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+ZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0
+dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
