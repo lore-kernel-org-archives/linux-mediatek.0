@@ -1,55 +1,152 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v4 3/3] drm/mediatek: fix the wrong pixel clock when
- resolution is 4K
-Date: Mon, 12 Sep 2016 11:15:42 +0800
-Message-ID: <1473650142.28437.5.camel@mtksdaap41>
-References: <1471417088-2993-1-git-send-email-bibby.hsieh@mediatek.com>
- <1471417088-2993-4-git-send-email-bibby.hsieh@mediatek.com>
+From: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 1/4] Document: DT: Add bindings for mediatek MT6797 SoC
+ Platform
+Date: Mon, 12 Sep 2016 08:57:26 +0100
+Message-ID: <57D65FE6.5040706@arm.com>
+References: <1473331794-27542-1-git-send-email-mars.cheng@mediatek.com>
+ <1473331794-27542-2-git-send-email-mars.cheng@mediatek.com>
+ <57D15B6C.6080305@arm.com> <1473343735.1896.15.camel@mtkswgap22>
+ <57D17667.1020201@arm.com> <1473645103.27628.6.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1471417088-2993-4-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: Junzhi Zhao <junzhi.zhao@mediatek.com>, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1473645103.27628.6.camel@mtkswgap22>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Choui <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Scott Shu <scott.shu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKU29ycnkgZm9yIHRoZSBsYXRlIHJlcGx5LgoKT24gV2VkLCAyMDE2LTA4LTE3
-IGF0IDE0OjU4ICswODAwLCBCaWJieSBIc2llaCB3cm90ZToKPiBGcm9tOiBKdW56aGkgWmhhbyA8
-anVuemhpLnpoYW9AbWVkaWF0ZWsuY29tPgo+IAo+IFBpeGVsIGNsb2NrIHNob3VsZCBiZSAyOTdN
-SHogd2hlbiByZXNvbHV0aW9uIGlzIDRLLgo+IAoKRnJvbSB0aGUgY29kZSB5b3UgbW9kaWZpZWQs
-IEkgdGhpbmsgdGl0bGUgc2hvdWxkIGJlOiAiRW5sYXJnZSBwbGxfcmF0ZQpyYW5nZSBmcm9tICg8
-b3JpZ2luYWwgbG93ZXIgYm91bmQ+LCA8b3JpZ2luYWwgdXBwZXIgYm91bmQ+KSB0byAoPG5ldwps
-b3dlciBib3VuZD4sIDxuZXcgdXBwZXIgYm91bmQ+KSIKCkluIGRlc2NyaXB0aW9uLCB5b3UgY2Fu
-IGV4cGxhaW4gdGhlIHBsbF9yYXRlIGZvciA0SyBhbmQgdGhpcyBlbmxhcmdlbWVudApjb3VsZCBz
-dXBwb3J0IG1vcmUgcmVzb2x1dGlvbiBpbmNsdWRlIDRLIChOb3Qgb25seSA0SykuCgo+IFNpZ25l
-ZC1vZmYtYnk6IEp1bnpoaSBaaGFvIDxqdW56aGkuemhhb0BtZWRpYXRlay5jb20+Cj4gU2lnbmVk
-LW9mZi1ieTogQmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyB8ICAgIDkgKysrKysrKy0tCj4gIDEg
-ZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBpLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gaW5kZXggMDE4NmU1MC4uOTBmYjgzMSAxMDA2NDQKPiAt
-LS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IEBAIC00MzIsMTEgKzQzMiwxNiBAQCBzdGF0aWMg
-aW50IG10a19kcGlfc2V0X2Rpc3BsYXlfbW9kZShzdHJ1Y3QgbXRrX2RwaSAqZHBpLAo+ICAJdW5z
-aWduZWQgbG9uZyBwbGxfcmF0ZTsKPiAgCXVuc2lnbmVkIGludCBmYWN0b3I7Cj4gIAo+ICsJLyog
-bGV0IHBsbF9yYXRlIGNhbiBmaXggdGhlIHZhbGlkIHJhbmdlIG9mIHR2ZHBsbCAoMUd+MkdIeikg
-Ki8KPiAgCXBpeF9yYXRlID0gMTAwMFVMICogbW9kZS0+Y2xvY2s7Cj4gLQlpZiAobW9kZS0+Y2xv
-Y2sgPD0gNzQwMDApCj4gKwlpZiAobW9kZS0+Y2xvY2sgPD0gMjcwMDApCj4gKwkJZmFjdG9yID0g
-MTYgKiAzOwo+ICsJZWxzZSBpZiAobW9kZS0+Y2xvY2sgPD0gODQwMDApCj4gIAkJZmFjdG9yID0g
-OCAqIDM7Cj4gLQllbHNlCj4gKwllbHNlIGlmIChtb2RlLT5jbG9jayA8PSAxNjcwMDApCj4gIAkJ
-ZmFjdG9yID0gNCAqIDM7Cj4gKwllbHNlCj4gKwkJZmFjdG9yID0gMiAqIDM7Cj4gIAlwbGxfcmF0
-ZSA9IHBpeF9yYXRlICogZmFjdG9yOwo+ICAKPiAgCWRldl9kYmcoZHBpLT5kZXYsICJXYW50IFBM
-TCAlbHUgSHosIHBpeGVsIGNsb2NrICVsdSBIelxuIiwKClJlZ2FyZHMsCkNLCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+On 12/09/16 02:51, Mars Cheng wrote:
+> On Thu, 2016-09-08 at 15:32 +0100, Marc Zyngier wrote:
+>> On 08/09/16 15:08, Mars Cheng wrote:
+>>> Hi Marc
+>>>
+>>> Thanks for your review. the response inlined.
+>>>
+>>> On Thu, 2016-09-08 at 13:37 +0100, Marc Zyngier wrote:
+>>>> On 08/09/16 11:49, Mars Cheng wrote:
+>>>>> This adds DT binding documentation for Mediatek MT6797.
+>>>>>
+>>>>> Signed-off-by: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>>>>> ---
+>>> [...]
+>>>>
+>>>>> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+>>>>> index 9d1d72c..3d97eb4 100644
+>>>>> --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+>>>>> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
+>>>>> @@ -8,6 +8,7 @@ Required properties:
+>>>>>  	"mediatek,mt8173-sysirq"
+>>>>>  	"mediatek,mt8135-sysirq"
+>>>>>  	"mediatek,mt8127-sysirq"
+>>>>> +	"mediatek,mt6797-sysirq"
+>>>>>  	"mediatek,mt6795-sysirq"
+>>>>>  	"mediatek,mt6755-sysirq"
+>>>>>  	"mediatek,mt6592-sysirq"
+>>>>> @@ -21,7 +22,8 @@ Required properties:
+>>>>>  - interrupt-parent: phandle of irq parent for sysirq. The parent must
+>>>>>    use the same interrupt-cells format as GIC.
+>>>>>  - reg: Physical base address of the intpol registers and length of memory
+>>>>> -  mapped region.
+>>>>> +  mapped region. Could be up to 2 registers here at max. Ex: 6797 needs 2 reg,
+>>>>> +  others need 1.
+>>>>
+>>>> Two things:
+>>>>
+>>>> - Please make this a separate patch that can be reviewed independently
+>>>> of the rest of the changes, which are just adding new compatible
+>>>> identifiers.
+>>>
+>>> Will fix this in the next patch set.
+>>>
+>>>>
+>>>> - Why can't you simply expose it as a separate controller? Looking at
+>>>> the way you're changing the corresponding driver, it looks like you're
+>>>> simply adding an extra base/size. If you simply had a base for the
+>>>> corresponding GIC interrupts, you could handle as many region as you
+>>>> want, and have a more generic driver.
+>>>>
+>>>
+>>> May I know the meaning of "simply expose it as a separate controller"?
+>>
+>> At the moment, you have something like this:
+>>
+>> 	sysirq: intpol-controller@10200620 {
+>> 		compatible = "mediatek,mt6755-sysirq",
+>> 			     "mediatek,mt6577-sysirq";
+>> 		interrupt-controller;
+>> 		#interrupt-cells = <3>;
+>> 		interrupt-parent = <&gic>;
+>> 		reg = <0 0x10200620 0 0x20>;
+>> 	};
+>>
+>> I suggest that, when you have a second base (which is effectively
+>> another controller), you add:
+>>
+>> 	sysirq2: intpol-controller@10201620 {
+>> 		compatible = "mediatek,mt6755-sysirq",
+>> 			     "mediatek,mt6577-sysirq";
+>> 		interrupt-controller;
+>> 		#interrupt-cells = <3>;
+>> 		interrupt-parent = <&gic>;
+>> 		irq-base = <32>;
+>> 		reg = <0 0x10201620 0 0x20>;
+>> 	};
+>>
+>> Where irq-base is the first SPI this is connected to (the lack of
+>> property indicates implies that irq-base is 0). This becomes a very
+>> simple change in the driver.
+>>
+>>> Or you might like to suggest me any similar driver as a reference? I
+>>> will examine it. Current design is based on the fact: We expect
+>>> irq-mtk-sysirq needs the optional second base but the third one will not
+>>> happen.
+>>>
+>>> If we really need more than 2 bases, we can figure out a more generic
+>>> driver at the time, right?
+>>
+>> I'd rather fix the driver and the binding to do the right thing once and
+>> for all. In my experience, you will need to add a third base in six
+>> months, and a fourth soon after. I'd rather either support an arbitrary
+>> number of bases, or a single one per controller (and have multiple
+>> controllers).
+> Hi Marc
+> 
+> Thanks for suggesting this approach I never thought.
+> 
+> However, I will modify the irq-mtk-sysirq driver to handle as many bases
+> as we specify in current node in the next patch set. Will not use the
+> second interrupt node in DT. The main reason is to simplify the writing
+> of DT. Or we need to know which interrupt node to be specified for other
+> nodes. As you said that might be the third or fourth bases, that will
+> complicate the writing of DT more.
+> 
+> Would you think this is OK?
+
+There is still one thing that is not completely obvious to me: How do
+you map a new set of registers to the corresponding base GIC SPI?
+
+At the moment, this is an implicit SPI0 (hwirq 32 on the GIC). I don't
+think assuming that all the banks will forever be contiguous is a safe
+bet, so introducing some form of sparseness support seems beneficial.
+
+As for simplifying the DT, I'm not convinced either. You already deal
+with two interrupt controllers (the GIC and this intpol), which means
+you need to locally annotate some DT nodes to point to the GIC. With my
+scheme, you keep annotating more (or use the extended interrupt
+specifier notation), but that doesn't feel like a massive burden. How
+often do you write a DT from scratch?
+
+Anyway, this is up to you. My only requirements is about being able to
+support an arbitrary numbers of register sets, with arbitrary SPI bases.
+
+Thanks,
+
+	M.
+-- 
+Jazz is not dead. It just smells funny...
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
