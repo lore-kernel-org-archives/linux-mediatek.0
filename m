@@ -1,94 +1,314 @@
 From: YT Shen <yt.shen@mediatek.com>
-Subject: [PATCH v8 6/9] drm/mediatek: add dsi interrupt control
-Date: Mon, 12 Sep 2016 20:01:09 +0800
-Message-ID: <1473681672-47144-7-git-send-email-yt.shen@mediatek.com>
+Subject: [PATCH v8 8/9] drm/mediatek: update DSI sub driver flow
+Date: Mon, 12 Sep 2016 20:01:11 +0800
+Message-ID: <1473681672-47144-9-git-send-email-yt.shen@mediatek.com>
 References: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, YT Shen <yt.shen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@med
 List-Id: linux-mediatek@lists.infradead.org
 
-RnJvbTogc2hhb21pbmcgY2hlbiA8c2hhb21pbmcuY2hlbkBtZWRpYXRlay5jb20+CgphZGQgZHNp
-IGludGVycnVwdCBjb250cm9sCgpTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFvbWlu
-Zy5jaGVuQG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
-aS5jIHwgNzggKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBj
-aGFuZ2VkLCA3OCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKaW5k
-ZXggNGVmZWIzOC4uMDE5ZTUyNiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kc2kuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCkBAIC0x
-OCw2ICsxOCw3IEBACiAjaW5jbHVkZSA8ZHJtL2RybV9wYW5lbC5oPgogI2luY2x1ZGUgPGxpbnV4
-L2Nsay5oPgogI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgorI2luY2x1ZGUgPGxpbnV4L2ly
-cS5oPgogI2luY2x1ZGUgPGxpbnV4L29mLmg+CiAjaW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0u
-aD4KICNpbmNsdWRlIDxsaW51eC9vZl9ncmFwaC5oPgpAQCAtMjksNiArMzAsMTcgQEAKIAogI2Rl
-ZmluZSBEU0lfU1RBUlQJCTB4MDAKIAorI2RlZmluZSBEU0lfSU5URU4JCTB4MDgKKworI2RlZmlu
-ZSBEU0lfSU5UU1RBCQkweDBjCisjZGVmaW5lIExQUlhfUkRfUkRZX0lOVF9GTEFHCQlCSVQoMCkK
-KyNkZWZpbmUgQ01EX0RPTkVfSU5UX0ZMQUcJCUJJVCgxKQorI2RlZmluZSBURV9SRFlfSU5UX0ZM
-QUcJCQlCSVQoMikKKyNkZWZpbmUgVk1fRE9ORV9JTlRfRkxBRwkJQklUKDMpCisjZGVmaW5lIEVY
-VF9URV9SRFlfSU5UX0ZMQUcJCUJJVCg0KQorI2RlZmluZSBEU0lfSU5UX0FMTF9CSVRTCQkweDFm
-CisjZGVmaW5lIERTSV9CVVNZCQkJQklUKDMxKQorCiAjZGVmaW5lIERTSV9DT05fQ1RSTAkJMHgx
-MAogI2RlZmluZSBEU0lfUkVTRVQJCQlCSVQoMCkKICNkZWZpbmUgRFNJX0VOCQkJCUJJVCgxKQpA
-QCAtNzEsNiArODMsOSBAQAogCiAjZGVmaW5lIERTSV9IU1RYX0NLTF9XQwkJMHg2NAogCisjZGVm
-aW5lIERTSV9SQUNLCQkweDg0CisjZGVmaW5lIFJBQ0sJCQkJQklUKDApCisKICNkZWZpbmUgRFNJ
-X1BIWV9MQ0NPTgkJMHgxMDQKICNkZWZpbmUgTENfSFNfVFhfRU4JCQlCSVQoMCkKICNkZWZpbmUg
-TENfVUxQTV9FTgkJCUJJVCgxKQpAQCAtMTMxLDYgKzE0Niw4IEBAIHN0cnVjdCBtdGtfZHNpIHsK
-IAlzdHJ1Y3QgdmlkZW9tb2RlIHZtOwogCWludCByZWZjb3VudDsKIAlib29sIGVuYWJsZWQ7CisJ
-dTMyIGlycV9kYXRhOworCXdhaXRfcXVldWVfaGVhZF90IGlycV93YWl0X3F1ZXVlOwogfTsKIAog
-c3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RzaSAqZW5jb2Rlcl90b19kc2koc3RydWN0IGRybV9l
-bmNvZGVyICplKQpAQCAtNDM3LDYgKzQ1NCw0OCBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX3N0YXJ0
-KHN0cnVjdCBtdGtfZHNpICpkc2kpCiAJd3JpdGVsKDEsIGRzaS0+cmVncyArIERTSV9TVEFSVCk7
-CiB9CiAKK3N0YXRpYyB2b2lkIG10a19kc2lfc2V0X2ludGVycnVwdF9lbmFibGUoc3RydWN0IG10
-a19kc2kgKmRzaSkKK3sKKwl1MzIgaW50ZW4gPSBEU0lfSU5UX0FMTF9CSVRTOworCisJaWYgKGRz
-aS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU8pCisJCWludGVuICY9IH4oVEVfUkRZ
-X0lOVF9GTEFHIHwgRVhUX1RFX1JEWV9JTlRfRkxBRyk7CisKKwl3cml0ZWwoaW50ZW4sIGRzaS0+
-cmVncyArIERTSV9JTlRFTik7Cit9CisKK3N0YXRpYyB2b2lkIG10a19kc2lfaXJxX2RhdGFfc2V0
-KHN0cnVjdCBtdGtfZHNpICpkc2ksIHUzMiBpcnFfYml0KQoreworCWRzaS0+aXJxX2RhdGEgfD0g
-aXJxX2JpdDsKK30KKworc3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3Qg
-bXRrX2RzaSAqZHNpLCB1MzIgaXJxX2JpdCkKK3sKKwlkc2ktPmlycV9kYXRhICY9IH5pcnFfYml0
-OworfQorCitzdGF0aWMgaXJxcmV0dXJuX3QgbXRrX2RzaV9pcnEoaW50IGlycSwgdm9pZCAqZGV2
-X2lkKQoreworCXN0cnVjdCBtdGtfZHNpICpkc2kgPSBkZXZfaWQ7CisJdTMyIHN0YXR1cywgdG1w
-OworCXUzMiBmbGFnID0gTFBSWF9SRF9SRFlfSU5UX0ZMQUcgfCBDTURfRE9ORV9JTlRfRkxBRyB8
-IFZNX0RPTkVfSU5UX0ZMQUc7CisKKwlzdGF0dXMgPSByZWFkbChkc2ktPnJlZ3MgKyBEU0lfSU5U
-U1RBKSAmIGZsYWc7CisKKwlpZiAoc3RhdHVzKSB7CisJCWRvIHsKKwkJCW10a19kc2lfbWFzayhk
-c2ksIERTSV9SQUNLLCBSQUNLLCBSQUNLKTsKKwkJCXRtcCA9IHJlYWRsKGRzaS0+cmVncyArIERT
-SV9JTlRTVEEpOworCQl9IHdoaWxlICh0bXAgJiBEU0lfQlVTWSk7CisKKwkJbXRrX2RzaV9tYXNr
-KGRzaSwgRFNJX0lOVFNUQSwgc3RhdHVzLCAwKTsKKwkJbXRrX2RzaV9pcnFfZGF0YV9zZXQoZHNp
-LCBzdGF0dXMpOworCQl3YWtlX3VwX2ludGVycnVwdGlibGUoJmRzaS0+aXJxX3dhaXRfcXVldWUp
-OworCX0KKworCXJldHVybiBJUlFfSEFORExFRDsKK30KKwogc3RhdGljIHZvaWQgbXRrX2RzaV9w
-b3dlcm9mZihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQogewogCWlmIChXQVJOX09OKGRzaS0+cmVmY291
-bnQgPT0gMCkpCkBAIC00ODUsNiArNTQ0LDcgQEAgc3RhdGljIHZvaWQgbXRrX291dHB1dF9kc2lf
-ZW5hYmxlKHN0cnVjdCBtdGtfZHNpICpkc2kpCiAKIAltdGtfZHNpX3BzX2NvbnRyb2xfdmFjdChk
-c2kpOwogCW10a19kc2lfY29uZmlnX3Zkb190aW1pbmcoZHNpKTsKKwltdGtfZHNpX3NldF9pbnRl
-cnJ1cHRfZW5hYmxlKGRzaSk7CiAKIAltdGtfZHNpX3NldF9tb2RlKGRzaSk7CiAJbXRrX2RzaV9j
-bGtfaHNfbW9kZShkc2ksIDEpOwpAQCAtNzkzLDYgKzg1Myw3IEBAIHN0YXRpYyBpbnQgbXRrX2Rz
-aV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCXN0cnVjdCBkZXZpY2UgKmRl
-diA9ICZwZGV2LT5kZXY7CiAJc3RydWN0IGRldmljZV9ub2RlICpyZW1vdGVfbm9kZSwgKmVuZHBv
-aW50OwogCXN0cnVjdCByZXNvdXJjZSAqcmVnczsKKwlpbnQgaXJxX251bTsKIAlpbnQgY29tcF9p
-ZDsKIAlpbnQgcmV0OwogCkBAIC04NjksNiArOTMwLDIzIEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9w
-cm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCQlyZXR1cm4gcmV0OwogCX0KIAor
-CWlycV9udW0gPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYsIDApOworCWlmIChpcnFfbnVtIDwgMCkg
-eworCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gcmVxdWVzdCBkc2kgaXJxIHJlc291
-cmNlXG4iKTsKKwkJcmV0dXJuIC1FUFJPQkVfREVGRVI7CisJfQorCisJaXJxX3NldF9zdGF0dXNf
-ZmxhZ3MoaXJxX251bSwgSVJRX1RZUEVfTEVWRUxfTE9XKTsKKwlyZXQgPSBkZXZtX3JlcXVlc3Rf
-aXJxKCZwZGV2LT5kZXYsIGlycV9udW0sIG10a19kc2lfaXJxLAorCQkJICAgICAgIElSUUZfVFJJ
-R0dFUl9MT1csIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBkc2kpOworCWlmIChyZXQpIHsKKwkJZGV2
-X2VycigmcGRldi0+ZGV2LCAiZmFpbGVkIHRvIHJlcXVlc3QgbWVkaWF0ZWsgZHNpIGlycVxuIik7
-CisJCXJldHVybiAtRVBST0JFX0RFRkVSOworCX0KKwlkZXZfaW5mbyhkZXYsICJkc2kgaXJxIG51
-bSBpcyAweCV4XG4iLCBpcnFfbnVtKTsKKworCWluaXRfd2FpdHF1ZXVlX2hlYWQoJmRzaS0+aXJx
-X3dhaXRfcXVldWUpOworCiAJcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgZHNpKTsKIAogCXJl
-dHVybiBjb21wb25lbnRfYWRkKCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMpOwot
-LSAKMS45LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpo
-dHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+This patch update enable/disable flow of DSI module and MIPI TX module.
+Original flow works on there is a bridge chip: DSI -> bridge -> panel.
+In this case: DSI -> panel, the DSI sub driver flow should be updated.
+We need to initialize DSI first so that we can send commands to panel.
+
+Signed-off-by: shaoming chen <shaoming.chen@mediatek.com>
+Signed-off-by: YT Shen <yt.shen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c     | 102 +++++++++++++++++++++++++++------
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c |  32 ++++++-----
+ 2 files changed, 101 insertions(+), 33 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index cc67cd7..50f633a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -95,6 +95,8 @@
+ #define DSI_RACK		0x84
+ #define RACK				BIT(0)
+ 
++#define DSI_MEM_CONTI		0x90
++
+ #define DSI_PHY_LCCON		0x104
+ #define LC_HS_TX_EN			BIT(0)
+ #define LC_ULPM_EN			BIT(1)
+@@ -127,6 +129,10 @@
+ #define CLK_HS_POST			(0xff << 8)
+ #define CLK_HS_EXIT			(0xff << 16)
+ 
++#define DSI_VM_CMD_CON		0x130
++#define VM_CMD_EN			BIT(0)
++#define TS_VFP_EN			BIT(5)
++
+ #define DSI_CMDQ0		0x180
+ #define CONFIG				(0xff << 0)
+ #define SHORT_PACKET			0
+@@ -250,7 +256,9 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	 * mipi_ratio is mipi clk coefficient for balance the pixel clk in mipi.
+ 	 * we set mipi_ratio is 1.05.
+ 	 */
+-	dsi->data_rate = dsi->vm.pixelclock * 3 * 21 / (1 * 1000 * 10);
++	dsi->data_rate = dsi->vm.pixelclock * 12 * 21;
++	dsi->data_rate /= (dsi->lanes * 1000 * 10);
++	dev_info(dev, "set mipitx's data rate: %dMHz\n", dsi->data_rate);
+ 
+ 	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate * 1000000);
+ 	if (ret < 0) {
+@@ -272,10 +280,6 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 		goto err_disable_engine_clk;
+ 	}
+ 
+-	mtk_dsi_enable(dsi);
+-	mtk_dsi_reset_engine(dsi);
+-	mtk_dsi_phy_timconfig(dsi);
+-
+ 	return 0;
+ 
+ err_disable_engine_clk:
+@@ -290,7 +294,7 @@ err_refcount:
+ static void mtk_dsi_clk_ulp_mode_enter(struct mtk_dsi *dsi)
+ {
+ 	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_HS_TX_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_ULPM_EN, 0);
++	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_ULPM_EN, LC_ULPM_EN);
+ }
+ 
+ static void mtk_dsi_clk_ulp_mode_leave(struct mtk_dsi *dsi)
+@@ -303,7 +307,7 @@ static void mtk_dsi_clk_ulp_mode_leave(struct mtk_dsi *dsi)
+ static void mtk_dsi_lane0_ulp_mode_enter(struct mtk_dsi *dsi)
+ {
+ 	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_HS_TX_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_ULPM_EN, 0);
++	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_ULPM_EN, LD0_ULPM_EN);
+ }
+ 
+ static void mtk_dsi_lane0_ulp_mode_leave(struct mtk_dsi *dsi)
+@@ -339,11 +343,21 @@ static void mtk_dsi_set_mode(struct mtk_dsi *dsi)
+ 		if ((dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) &&
+ 		    !(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_SYNC_PULSE))
+ 			vid_mode = BURST_MODE;
++		else
++			vid_mode = SYNC_EVENT_MODE;
+ 	}
+ 
+ 	writel(vid_mode, dsi->regs + DSI_MODE_CTRL);
+ }
+ 
++static void mtk_dsi_set_vm_cmd(struct mtk_dsi *dsi)
++{
++	writel(0x3c, dsi->regs + DSI_MEM_CONTI);
++
++	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, VM_CMD_EN, VM_CMD_EN);
++	mtk_dsi_mask(dsi, DSI_VM_CMD_CON, TS_VFP_EN, TS_VFP_EN);
++}
++
+ static void mtk_dsi_ps_control_vact(struct mtk_dsi *dsi)
+ {
+ 	struct videomode *vm = &dsi->vm;
+@@ -400,6 +414,9 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ 		break;
+ 	}
+ 
++	tmp_reg |= (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS) << 6;
++	tmp_reg |= (dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET) >> 3;
++
+ 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
+ }
+ 
+@@ -478,6 +495,16 @@ static void mtk_dsi_start(struct mtk_dsi *dsi)
+ 	writel(1, dsi->regs + DSI_START);
+ }
+ 
++static void mtk_dsi_stop(struct mtk_dsi *dsi)
++{
++	writel(0, dsi->regs + DSI_START);
++}
++
++static void mtk_dsi_set_cmd_mode(struct mtk_dsi *dsi)
++{
++	writel(CMD_MODE, dsi->regs + DSI_MODE_CTRL);
++}
++
+ static void mtk_dsi_set_interrupt_enable(struct mtk_dsi *dsi)
+ {
+ 	u32 inten = DSI_INT_ALL_BITS;
+@@ -520,6 +547,25 @@ static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void mtk_dsi_switch_to_cmd_mode(struct mtk_dsi *dsi)
++{
++	s32 ret = 0;
++	unsigned long timeout = msecs_to_jiffies(500);
++
++	mtk_dsi_irq_data_clear(dsi, VM_DONE_INT_FLAG);
++	mtk_dsi_set_cmd_mode(dsi);
++
++	ret = wait_event_interruptible_timeout(dsi->irq_wait_queue,
++					       dsi->irq_data & VM_DONE_INT_FLAG,
++					       timeout);
++	if (ret == 0) {
++		dev_info(dsi->dev, "dsi wait engine idle timeout\n");
++
++		mtk_dsi_enable(dsi);
++		mtk_dsi_reset_engine(dsi);
++	}
++}
++
+ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ {
+ 	if (WARN_ON(dsi->refcount == 0))
+@@ -528,6 +574,17 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	if (--dsi->refcount != 0)
+ 		return;
+ 
++	mtk_dsi_switch_to_cmd_mode(dsi);
++
++	if (dsi->panel) {
++		if (drm_panel_unprepare(dsi->panel)) {
++			DRM_ERROR("failed to unprepare the panel\n");
++			return;
++		}
++	}
++
++	mtk_dsi_reset_engine(dsi);
++
+ 	mtk_dsi_lane0_ulp_mode_enter(dsi);
+ 	mtk_dsi_clk_ulp_mode_enter(dsi);
+ 
+@@ -546,29 +603,37 @@ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+ 	if (dsi->enabled)
+ 		return;
+ 
+-	if (dsi->panel) {
+-		if (drm_panel_prepare(dsi->panel)) {
+-			DRM_ERROR("failed to setup the panel\n");
+-			return;
+-		}
+-	}
+-
+ 	ret = mtk_dsi_poweron(dsi);
+ 	if (ret < 0) {
+ 		DRM_ERROR("failed to power on dsi\n");
+ 		return;
+ 	}
+ 
++	usleep_range(20000, 21000);
++
+ 	mtk_dsi_rxtx_control(dsi);
++	mtk_dsi_phy_timconfig(dsi);
++	mtk_dsi_ps_control_vact(dsi);
++	mtk_dsi_set_vm_cmd(dsi);
++	mtk_dsi_config_vdo_timing(dsi);
++	mtk_dsi_set_interrupt_enable(dsi);
+ 
++	mtk_dsi_enable(dsi);
+ 	mtk_dsi_clk_ulp_mode_leave(dsi);
+ 	mtk_dsi_lane0_ulp_mode_leave(dsi);
+ 	mtk_dsi_clk_hs_mode(dsi, 0);
+-	mtk_dsi_set_mode(dsi);
+ 
+-	mtk_dsi_ps_control_vact(dsi);
+-	mtk_dsi_config_vdo_timing(dsi);
+-	mtk_dsi_set_interrupt_enable(dsi);
++	if (dsi->panel) {
++		if (drm_panel_prepare(dsi->panel)) {
++			DRM_ERROR("failed to prepare the panel\n");
++			return;
++		}
++
++		if (drm_panel_enable(dsi->panel)) {
++			DRM_ERROR("failed to enable the panel\n");
++			return;
++		}
++	}
+ 
+ 	mtk_dsi_set_mode(dsi);
+ 	mtk_dsi_clk_hs_mode(dsi, 1);
+@@ -590,6 +655,7 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+ 		}
+ 	}
+ 
++	mtk_dsi_stop(dsi);
+ 	mtk_dsi_poweroff(dsi);
+ 
+ 	dsi->enabled = false;
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+index 108d31a..34e95c6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+@@ -177,7 +177,9 @@ static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
+ 
+ 	dev_dbg(mipi_tx->dev, "prepare: %u Hz\n", mipi_tx->data_rate);
+ 
+-	if (mipi_tx->data_rate >= 500000000) {
++	if (mipi_tx->data_rate > 1250000000) {
++		return -EINVAL;
++	} else if (mipi_tx->data_rate >= 500000000) {
+ 		txdiv = 1;
+ 		txdiv0 = 0;
+ 		txdiv1 = 0;
+@@ -201,6 +203,10 @@ static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
+ 		return -EINVAL;
+ 	}
+ 
++	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_TOP_CON,
++				RG_DSI_LNT_IMP_CAL_CODE | RG_DSI_LNT_HS_BIAS_EN,
++				(8 << 4) | RG_DSI_LNT_HS_BIAS_EN);
++
+ 	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_BG_CON,
+ 				RG_DSI_VOUT_MSK |
+ 				RG_DSI_BG_CKEN | RG_DSI_BG_CORE_EN,
+@@ -210,24 +216,18 @@ static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
+ 
+ 	usleep_range(30, 100);
+ 
+-	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_TOP_CON,
+-				RG_DSI_LNT_IMP_CAL_CODE | RG_DSI_LNT_HS_BIAS_EN,
+-				(8 << 4) | RG_DSI_LNT_HS_BIAS_EN);
+-
+-	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_DSI_CON,
+-			     RG_DSI_CKG_LDOOUT_EN | RG_DSI_LDOCORE_EN);
++	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_CON,
++				RG_DSI_CKG_LDOOUT_EN | RG_DSI_LDOCORE_EN,
++				RG_DSI_CKG_LDOOUT_EN | RG_DSI_LDOCORE_EN);
+ 
+ 	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_PLL_PWR,
+ 				RG_DSI_MPPLL_SDM_PWR_ON |
+ 				RG_DSI_MPPLL_SDM_ISO_EN,
+ 				RG_DSI_MPPLL_SDM_PWR_ON);
+ 
+-	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_DSI_PLL_CON0,
+-			       RG_DSI_MPPLL_PLL_EN);
+-
+ 	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_PLL_CON0,
+-				RG_DSI_MPPLL_TXDIV0 | RG_DSI_MPPLL_TXDIV1 |
+-				RG_DSI_MPPLL_PREDIV,
++				RG_DSI_MPPLL_PREDIV | RG_DSI_MPPLL_TXDIV0 |
++				RG_DSI_MPPLL_TXDIV1 | RG_DSI_MPPLL_POSDIV,
+ 				(txdiv0 << 3) | (txdiv1 << 5));
+ 
+ 	/*
+@@ -242,10 +242,12 @@ static int mtk_mipi_tx_pll_prepare(struct clk_hw *hw)
+ 		      26000000);
+ 	writel(pcw, mipi_tx->regs + MIPITX_DSI_PLL_CON2);
+ 
+-	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_DSI_PLL_CON1,
+-			     RG_DSI_MPPLL_SDM_FRA_EN);
++	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_PLL_CON1,
++				RG_DSI_MPPLL_SDM_FRA_EN,
++				RG_DSI_MPPLL_SDM_FRA_EN);
+ 
+-	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_DSI_PLL_CON0, RG_DSI_MPPLL_PLL_EN);
++	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_DSI_PLL_CON0,
++				RG_DSI_MPPLL_PLL_EN, RG_DSI_MPPLL_PLL_EN);
+ 
+ 	usleep_range(20, 100);
+ 
+-- 
+1.9.1
