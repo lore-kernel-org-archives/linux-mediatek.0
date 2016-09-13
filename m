@@ -1,25 +1,62 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH 3/6] pinctrl: mediatek: constify gpio_chip structures
-Date: Tue, 13 Sep 2016 10:40:04 +0200
-Message-ID: <CACRpkdZD2QD50B785M5a8LpoaJuwBjmn-yo0tmwJaMVj2Et39A@mail.gmail.com>
-References: <1473596082-32690-1-git-send-email-Julia.Lawall@lip6.fr> <1473596082-32690-4-git-send-email-Julia.Lawall@lip6.fr>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] thermal: mtk_thermal: Check return value of
+ devm_thermal_zone_of_sensor_register
+Date: Tue, 13 Sep 2016 10:46:24 +0200
+Message-ID: <bc716480-59f6-7f6f-6a18-dca7f0296015@gmail.com>
+References: <1473240292-10116-1-git-send-email-axel.lin@ingics.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <1473596082-32690-4-git-send-email-Julia.Lawall@lip6.fr>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Julia Lawall <Julia.Lawall@lip6.fr>
-Cc: kernel-janitors@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-pm-owner@vger.kernel.org>
+In-Reply-To: <1473240292-10116-1-git-send-email-axel.lin@ingics.com>
+Sender: linux-pm-owner@vger.kernel.org
+To: Axel Lin <axel.lin@ingics.com>, Zhang Rui <rui.zhang@intel.com>
+Cc: Eduardo Valentin <edubezval@gmail.com>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Sep 11, 2016 at 2:14 PM, Julia Lawall <Julia.Lawall@lip6.fr> wrote:
 
-> These structures are only used to copy into other structures, so declare
-> them as const.
-(...)
-> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
 
-Patch applied.
+On 07/09/16 11:24, Axel Lin wrote:
+> devm_thermal_zone_of_sensor_register can fail, so check it's return value.
+>
+> Signed-off-by: Axel Lin <axel.lin@ingics.com>
+> ---
+>  drivers/thermal/mtk_thermal.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
+>
 
-Yours,
-Linus Walleij
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> index 7b233c7..34169c3 100644
+> --- a/drivers/thermal/mtk_thermal.c
+> +++ b/drivers/thermal/mtk_thermal.c
+> @@ -584,6 +584,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>  	struct resource *res;
+>  	const struct of_device_id *of_id;
+>  	u64 auxadc_phys_base, apmixed_phys_base;
+> +	struct thermal_zone_device *tzdev;
+>
+>  	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+>  	if (!mt)
+> @@ -666,11 +667,17 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+>
+>  	platform_set_drvdata(pdev, mt);
+>
+> -	devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+> -					     &mtk_thermal_ops);
+> +	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+> +						     &mtk_thermal_ops);
+> +	if (IS_ERR(tzdev)) {
+> +		ret = PTR_ERR(tzdev);
+> +		goto err_disable_clk_peri_therm;
+> +	}
+>
+>  	return 0;
+>
+> +err_disable_clk_peri_therm:
+> +	clk_disable_unprepare(mt->clk_peri_therm);
+>  err_disable_clk_auxadc:
+>  	clk_disable_unprepare(mt->clk_auxadc);
+>
+>
