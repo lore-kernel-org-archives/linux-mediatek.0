@@ -1,67 +1,25 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 9/9] drm/mediatek: add support for Mediatek SoC MT2701
-Date: Tue, 13 Sep 2016 13:32:23 +0800
-Message-ID: <1473744743.28437.26.camel@mtksdaap41>
-References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
- <1472815484-43821-10-git-send-email-yt.shen@mediatek.com>
- <1473226653.11736.33.camel@mtksdaap41>
- <1473675413.12398.29.camel@mtksdaap41>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 3/6] pinctrl: mediatek: constify gpio_chip structures
+Date: Tue, 13 Sep 2016 10:40:04 +0200
+Message-ID: <CACRpkdZD2QD50B785M5a8LpoaJuwBjmn-yo0tmwJaMVj2Et39A@mail.gmail.com>
+References: <1473596082-32690-1-git-send-email-Julia.Lawall@lip6.fr> <1473596082-32690-4-git-send-email-Julia.Lawall@lip6.fr>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473675413.12398.29.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1473596082-32690-4-git-send-email-Julia.Lawall@lip6.fr>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Julia Lawall <Julia.Lawall@lip6.fr>
+Cc: kernel-janitors@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gTW9uLCAyMDE2LTA5LTEyIGF0IDE4OjE2ICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IEhpIENLLAo+IAo+IE9uIFdlZCwgMjAxNi0wOS0wNyBhdCAxMzozNyArMDgwMCwgQ0sgSHUg
-d3JvdGU6Cj4gPiBIaSwgWVQ6Cj4gPiAKPiA+IE9uIEZyaSwgMjAxNi0wOS0wMiBhdCAxOToyNCAr
-MDgwMCwgWVQgU2hlbiB3cm90ZToKPiA+ID4gVGhpcyBwYXRjaCBhZGQgc3VwcG9ydCBmb3IgdGhl
-IE1lZGlhdGVrIE1UMjcwMSBESVNQIHN1YnN5c3RlbS4KPiA+ID4gVGhlcmUgaXMgb25seSBvbmUg
-T1ZMIGVuZ2luZSBpbiBNVDI3MDEuCj4gPiA+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBZVCBTaGVu
-IDx5dC5zaGVuQG1lZGlhdGVrLmNvbT4KPiA+IAo+ID4gW3NuaXAuLi5dCj4gPiAKPiA+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gPiA+IGluZGV4IDRi
-NGU0NDkuLjQ2NTgxOWIgMTAwNjQ0Cj4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2RkcF9jb21wLmMKPiA+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuYwo+ID4gPiBAQCAtMTEyLDYgKzExMiw3IEBAIHN0cnVjdCBtdGtf
-ZGRwX2NvbXBfbWF0Y2ggewo+ID4gPiAgCj4gPiA+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19k
-ZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhdID0gewo+
-ID4gPiAgCVtERFBfQ09NUE9ORU5UX0FBTF0JPSB7IE1US19ESVNQX0FBTCwJMCwgTlVMTCB9LAo+
-ID4gPiArCVtERFBfQ09NUE9ORU5UX0JMU10JPSB7IE1US19ESVNQX1BXTSwJMCwgTlVMTCB9LAo+
-ID4gCj4gPiBJIHRoaW5rIEJMUyBpcyBkaWZmZXJlbnQgdGhhbiBQV00sIHNvIHRoaXMgc3RhdGVt
-ZW50IHNob3VsZCBiZQo+ID4gCj4gPiBbRERQX0NPTVBPTkVOVF9CTFNdID0geyBNVEtfRElTUF9C
-TFMsIDAsIE5VTEwgfTsKPiBUaGUgQkxTIG1vZHVsZSBhY3R1YWxseSBpcyBhIG11bHRpZnVuY3Rp
-b24gZGV2aWNlLCBvbmUgb2YgdGhlbSBpcyB0aGUKPiBQV00gZnVuY3Rpb24uICBXZSBvbmx5IHVw
-c3RyZWFtIFBXTSBmdW5jdGlvbiBbMV0gbm93LCBhbmQgaXQgaXMKPiBhY2NlcHRlZC4gIFdoZW4g
-dGhlcmUgYXJlIHJlYWwgdXNlIGNhc2UgKGdhbW1hIGZ1bmN0aW9uKSwgd2Ugd2lsbCB1cGRhdGUK
-PiB0aGlzIHBhcnQuICBXaGF0IGRvIHlvdSB0aGluaz8KCkkgdGhpbmsgQkxTID0gUFdNICsgR0FN
-TUEgYW5kIHRoZSBkZXZpY2Ugd2l0aCByZWdpc3RlciByYW5nZSBmcm9tCjB4MTQwMGEwMDAgdG8g
-MHgxNDAwYWZmZiBzaG91bGQgYmUgY2FsbGVkIEJMUy4gSSB0aGluayB0aGlzIGRldmljZSBpcwpj
-YWxsZWQgUFdNIGluIFsxXSBiZWNhdXNlIGl0IGp1c3QgdXNlIGl0cyBQV00gZnVuY3Rpb24gYW5k
-IGl0J3Mgbm90CnN1aXRhYmxlLiBBdCBsZWFzdCBpbiBEUk0gZHJpdmVyLCB3ZSBzaG91bGQgdXNl
-IHRoZSB0ZXJtIEJMUyByYXRoZXIgdGhhbgpQV00uIE1heWJlIHdlIHNob3VsZCBkZWZpbmUgYXMg
-YmVsb3c6CgpbRERQX0NPTVBPTkVOVF9CTFNdID0geyBNVEtfRElTUF9CTFMsIDAsIE5VTEwgfTsK
-CmFuZAoKeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1wd20iLCAgIC5kYXRh
-ID0gKHZvaWQKKilNVEtfRElTUF9CTFMgfSwKCgpSZWdhcmRzLApDSwoKWzFdIGh0dHBzOi8vcGF0
-Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTIyMzAwMS8KCj4gCj4gUmVnYXJkcywKPiB5dC5zaGVu
-Cj4gCj4gWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvOTIyMzAwMS8KPiAK
-PiA+IAo+ID4gCj4gPiA+ICAJW0REUF9DT01QT05FTlRfQ09MT1IwXQk9IHsgTVRLX0RJU1BfQ09M
-T1IsCTAsICZkZHBfY29sb3IgfSwKPiA+ID4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjFdCT0geyBN
-VEtfRElTUF9DT0xPUiwJMSwgJmRkcF9jb2xvciB9LAo+ID4gPiAgCVtERFBfQ09NUE9ORU5UX0RQ
-STBdCT0geyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+ID4gCj4gPiBSZWdhcmRzLAo+ID4gQ0sKPiA+
-IAo+ID4gCj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Au
-b3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRl
-dmVsCg==
+On Sun, Sep 11, 2016 at 2:14 PM, Julia Lawall <Julia.Lawall@lip6.fr> wrote:
+
+> These structures are only used to copy into other structures, so declare
+> them as const.
+(...)
+> Signed-off-by: Julia Lawall <Julia.Lawall@lip6.fr>
+
+Patch applied.
+
+Yours,
+Linus Walleij
