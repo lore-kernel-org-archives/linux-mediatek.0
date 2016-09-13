@@ -1,144 +1,53 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 3/3] arm: dts: thermal: add thermal/auxadc node.
-Date: Tue, 13 Sep 2016 10:48:09 +0200
-Message-ID: <31cc0928-f7f4-ae0a-bdd6-b8a574211a8d@gmail.com>
-References: <1471492253-7185-1-git-send-email-dawei.chien@mediatek.com>
- <1471492253-7185-4-git-send-email-dawei.chien@mediatek.com>
- <1473121447.2201.20.camel@intel.com> <1473121807.2201.23.camel@intel.com>
- <1473132510.15922.13.camel@mtksdaap41> <1473241631.8994.2.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 6/9] drm/mediatek: add dsi interrupt control
+Date: Tue, 13 Sep 2016 16:55:04 +0800
+Message-ID: <1473756904.28437.32.camel@mtksdaap41>
+References: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
+ <1473681672-47144-7-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473241631.8994.2.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dawei Chien <dawei.chien@mediatek.com>, Zhang Rui <rui.zhang@intel.com>
-Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Russell King <linux@armlinux.org.uk>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Fan Chen <fan.chen@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Erin Lo <erin.lo@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473681672-47144-7-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 07/09/16 11:47, Dawei Chien wrote:
-> On Tue, 2016-09-06 at 11:28 +0800, Dawei Chien wrote:
->> Dear Rui,
->>
->> On Tue, 2016-09-06 at 08:30 +0800, Zhang Rui wrote:
->>> On 二, 2016-09-06 at 08:24 +0800, Zhang Rui wrote:
->>>> On 四, 2016-08-18 at 11:50 +0800, Dawei Chien wrote:
->>>>>
->>>>> This adds the thermal controller and auxadc nodes
->>>>> to the Mediatek MT2701 dtsi file.
->>>>>
->>>>> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
->>>>> ---
->>>>> This patch depned on:
->>>>> https://patchwork.kernel.org/patch/9249589/
->>>>> https://patchwork.kernel.org/patch/9249589/
->>>> Hmm, does this mean that I should take all these three patches and
->>>> hold
->>>> the patches in next merge window until the above patch has been
->>>> merged?
->>>>
->> Yes, this patch is base on auxadc patchset.
->>
->>> Patch 3/3 can not be applied on top of upstream kernel, so I guess it
->>> still has some other dependencies.
->>> I think I can apply patch 1, 2 first. And patch 3/3 should be handled
->>> in the dt tree.
->>
->> Sorry, this patch is also need Mediatek's clock patchset what I miss to
->> add in dependency list, I would resend this dt tree once clock patch
->> merge, or resend this for right dependency on next version, thank you.
->
-> Actually, since patch1/patch2 would be OK so far, I would just only
-> resend patch3 after MTK clock pathcset ready, I prefer to merge
-> patch1/patch2 if possible, thank you.
->
-
- From my side that's ok.
-
-Regards,
-Matthias
-
->
->>> thanks,
->>> rui
->>>> thanks,
->>>> rui
->>>>>
->>>>> ---
->>>>>  arch/arm/boot/dts/mt2701.dtsi |   44
->>>>> +++++++++++++++++++++++++++++++++++++++++
->>>>>  1 file changed, 44 insertions(+)
->>>>>
->>>>> diff --git a/arch/arm/boot/dts/mt2701.dtsi
->>>>> b/arch/arm/boot/dts/mt2701.dtsi
->>>>> index e9150a4..cee4724 100644
->>>>> --- a/arch/arm/boot/dts/mt2701.dtsi
->>>>> +++ b/arch/arm/boot/dts/mt2701.dtsi
->>>>> @@ -87,6 +87,36 @@
->>>>>  		clock-output-names = "rtc32k";
->>>>>  	};
->>>>>
->>>>> +	thermal-zones {
->>>>> +		cpu_thermal: cpu_thermal {
->>>>> +			polling-delay-passive = <1000>; /*
->>>>> milliseconds */
->>>>> +			polling-delay = <1000>; /* milliseconds */
->>>>> +
->>>>> +			thermal-sensors = <&thermal 0>;
->>>>> +			sustainable-power = <1000>;
->>>>> +
->>>>> +			trips {
->>>>> +				threshold: trip-point@0 {
->>>>> +					temperature = <68000>;
->>>>> +					hysteresis = <2000>;
->>>>> +					type = "passive";
->>>>> +				};
->>>>> +
->>>>> +				target: trip-point@1 {
->>>>> +					temperature = <85000>;
->>>>> +					hysteresis = <2000>;
->>>>> +					type = "passive";
->>>>> +				};
->>>>> +
->>>>> +				cpu_crit: cpu_crit@0 {
->>>>> +					temperature = <115000>;
->>>>> +					hysteresis = <2000>;
->>>>> +					type = "critical";
->>>>> +				};
->>>>> +			};
->>>>> +		};
->>>>> +	};
->>>>> +
->>>>>  	timer {
->>>>>  		compatible = "arm,armv7-timer";
->>>>>  		interrupt-parent = <&gic>;
->>>>> @@ -222,4 +252,18 @@
->>>>>  		clock-names = "baud", "bus";
->>>>>  		status = "disabled";
->>>>>  	};
->>>>> +
->>>>> +	thermal: thermal@1100b000 {
->>>>> +		#thermal-sensor-cells = <0>;
->>>>> +		compatible = "mediatek,mt2701-thermal";
->>>>> +		reg = <0 0x1100b000 0 0x1000>;
->>>>> +		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
->>>>> +		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg
->>>>> CLK_PERI_AUXADC>;
->>>>> +		clock-names = "therm", "auxadc";
->>>>> +		resets = <&pericfg 0x10>;
->>>>> +		reset-names = "therm";
->>>>> +		mediatek,auxadc = <&auxadc>;
->>>>> +		mediatek,apmixedsys = <&apmixedsys>;
->>>>> +	};
->>>>> +
->>>>>  };
->>>> --
->>>> To unsubscribe from this list: send the line "unsubscribe linux-pm"
->>>> in
->>>> the body of a message to majordomo@vger.kernel.org
->>>> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->>
->
->
+SGksIFlUOgoKT24gTW9uLCAyMDE2LTA5LTEyIGF0IDIwOjAxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IAo+
+IGFkZCBkc2kgaW50ZXJydXB0IGNvbnRyb2wKPiAKPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBj
+aGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kc2kuYyB8IDc4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCA3OCBpbnNlcnRpb25zKCspCj4gCgpbc25pcC4uLl0K
+Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX3NldF9pbnRlcnJ1cHRfZW5hYmxlKHN0cnVjdCBt
+dGtfZHNpICpkc2kpCj4gK3sKPiArCXUzMiBpbnRlbiA9IERTSV9JTlRfQUxMX0JJVFM7Cj4gKwo+
+ICsJaWYgKGRzaS0+bW9kZV9mbGFncyAmIE1JUElfRFNJX01PREVfVklERU8pCj4gKwkJaW50ZW4g
+Jj0gfihURV9SRFlfSU5UX0ZMQUcgfCBFWFRfVEVfUkRZX0lOVF9GTEFHKTsKPiArCj4gKwl3cml0
+ZWwoaW50ZW4sIGRzaS0+cmVncyArIERTSV9JTlRFTik7Cj4gK30KPiArCgpbc25pcC4uLl0KCj4g
+Kwo+ICtzdGF0aWMgaXJxcmV0dXJuX3QgbXRrX2RzaV9pcnEoaW50IGlycSwgdm9pZCAqZGV2X2lk
+KQo+ICt7Cj4gKwlzdHJ1Y3QgbXRrX2RzaSAqZHNpID0gZGV2X2lkOwo+ICsJdTMyIHN0YXR1cywg
+dG1wOwo+ICsJdTMyIGZsYWcgPSBMUFJYX1JEX1JEWV9JTlRfRkxBRyB8IENNRF9ET05FX0lOVF9G
+TEFHIHwgVk1fRE9ORV9JTlRfRkxBRzsKCldoeSBkbyB5b3Ugb25seSBwcm9jZXNzIHRoZXNlIHRo
+cmVlIGlycT8gWW91IGFsc28gZW5hYmxlIFRFX1JEWV9JTlRfRkxBRwomIEVYVF9URV9SRFlfSU5U
+X0ZMQUcgaW4gbXRrX2RzaV9zZXRfaW50ZXJydXB0X2VuYWJsZSgpLiBQcm9jZXNzIHRoZXNlCnR3
+byBpcnEgaGVyZSBvciBub3QgZW5hYmxlIHRoZW0gaW4gbXRrX2RzaV9zZXRfaW50ZXJydXB0X2Vu
+YWJsZSgpLgoKUmVnYXJkcywKQ0sKCj4gKwo+ICsJc3RhdHVzID0gcmVhZGwoZHNpLT5yZWdzICsg
+RFNJX0lOVFNUQSkgJiBmbGFnOwo+ICsKPiArCWlmIChzdGF0dXMpIHsKPiArCQlkbyB7Cj4gKwkJ
+CW10a19kc2lfbWFzayhkc2ksIERTSV9SQUNLLCBSQUNLLCBSQUNLKTsKPiArCQkJdG1wID0gcmVh
+ZGwoZHNpLT5yZWdzICsgRFNJX0lOVFNUQSk7Cj4gKwkJfSB3aGlsZSAodG1wICYgRFNJX0JVU1kp
+Owo+ICsKPiArCQltdGtfZHNpX21hc2soZHNpLCBEU0lfSU5UU1RBLCBzdGF0dXMsIDApOwo+ICsJ
+CW10a19kc2lfaXJxX2RhdGFfc2V0KGRzaSwgc3RhdHVzKTsKPiArCQl3YWtlX3VwX2ludGVycnVw
+dGlibGUoJmRzaS0+aXJxX3dhaXRfcXVldWUpOwo+ICsJfQo+ICsKPiArCXJldHVybiBJUlFfSEFO
+RExFRDsKPiArfQo+ICsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
