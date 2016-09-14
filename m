@@ -1,156 +1,116 @@
-From: YT Shen <yt.shen@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
 Subject: Re: [PATCH v7 7/9] drm/mediatek: add dsi transfer function
-Date: Wed, 14 Sep 2016 15:22:22 +0800
-Message-ID: <1473837742.24354.28.camel@mtksdaap41>
+Date: Wed, 14 Sep 2016 15:34:57 +0800
+Message-ID: <1473838497.10216.5.camel@mtksdaap41>
 References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
-         <1472815484-43821-8-git-send-email-yt.shen@mediatek.com>
-         <1473215632.11736.21.camel@mtksdaap41>
-         <1473675381.12398.27.camel@mtksdaap41>
-         <1473758754.28437.40.camel@mtksdaap41>
-         <1473833946.24354.8.camel@mtksdaap41> <1473835151.10216.2.camel@mtksdaap41>
+ <1472815484-43821-8-git-send-email-yt.shen@mediatek.com>
+ <1473215632.11736.21.camel@mtksdaap41>
+ <1473675381.12398.27.camel@mtksdaap41>
+ <1473758754.28437.40.camel@mtksdaap41>
+ <1473833946.24354.8.camel@mtksdaap41> <1473835151.10216.2.camel@mtksdaap41>
+ <1473837742.24354.28.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1473835151.10216.2.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473837742.24354.28.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi CK,
-
-On Wed, 2016-09-14 at 14:39 +0800, CK Hu wrote:
-> Hi, YT:
-> 
-> On Wed, 2016-09-14 at 14:19 +0800, YT Shen wrote:
-> > Hi CK,
-> > 
-> > On Tue, 2016-09-13 at 17:25 +0800, CK Hu wrote:
-> > > Hi, YT:
-> > > 
-> > > On Mon, 2016-09-12 at 18:16 +0800, YT Shen wrote:
-> > > > Hi CK,
-> > > > 
-> > > > On Wed, 2016-09-07 at 10:33 +0800, CK Hu wrote:
-> > > > > Hi, YT:
-> > > > > 
-> > > > > On Fri, 2016-09-02 at 19:24 +0800, YT Shen wrote:
-> > > > > > From: shaoming chen <shaoming.chen@mediatek.com>
-> > > > > > 
-> > > > > > add dsi read/write commands for transfer function
-> > > > > > 
-> > > > > > Signed-off-by: shaoming chen <shaoming.chen@mediatek.com>
-> > > > > > ---
-> > > > > >  drivers/gpu/drm/mediatek/mtk_dsi.c | 188 +++++++++++++++++++++++++++++++++++++
-> > > > > >  1 file changed, 188 insertions(+)
-> > > > > > 
-> > > > > 
-> > > > > [snip...]
-> > > > > 
-> > > > > >  
-> > > > > > +static void mtk_dsi_irq_data_clear(struct mtk_dsi *dsi, u32 irq_bit)
-> > > > > > +{
-> > > > > > +	dsi->irq_data &= ~irq_bit;
-> > > > > > +}
-> > > > > > +
-> > > > > 
-> > > > > [snip...]
-> > > > > 
-> > > > > > +
-> > > > > > +static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
-> > > > > > +				     unsigned int timeout)
-> > > > > > +{
-> > > > > > +	s32 ret = 0;
-> > > > > > +	unsigned long jiffies = msecs_to_jiffies(timeout);
-> > > > > > +
-> > > > > > +	ret = wait_event_interruptible_timeout(_dsi_irq_wait_queue,
-> > > > > > +					       dsi->irq_data & irq_flag,
-> > > > > > +					       jiffies);
-> > > > > > +	if (ret == 0) {
-> > > > > > +		dev_info(dsi->dev, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
-> > > > > > +
-> > > > > > +		mtk_dsi_enable(dsi);
-> > > > > > +		mtk_dsi_reset_engine(dsi);
-> > > > > > +	}
-> > > > > > +
-> > > > > > +	return ret;
-> > > > > > +}
-> > > > > 
-> > > > > I think mtk_dsi_irq_data_clear() and mtk_dsi_wait_for_irq_done() should
-> > > > > be moved to the 6th patch [1] of this series because these two functions
-> > > > > deal the irq control.
-> > > > We will move mtk_dsi_irq_data_clear() to patch "drm/mediatek: add dsi
-> > > > interrupt control" and put mtk_dsi_wait_for_irq_done() here, because it
-> > > > is used in the transfer function.
-> > > 
-> > > mtk_dsi_irq_data_clear() is also only used in transfer function now. I
-> > > think both function could be used for other application rather than
-> > > transfer function, so these two function are general function for irq
-> > > control.
-> > We will rollback the changes here.  Move mtk_dsi_irq_data_clear() to
-> > original place.
-> > 
-> > Add new functions could be used in the future will have problems.
-> > warning: 'mtk_dsi_wait_for_irq_done' defined but not used
-> > [-Wunused-function]
-> >  static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
-> > warning: 'mtk_dsi_irq_data_clear' defined but not used
-> > [-Wunused-function]
-> >  static void mtk_dsi_irq_data_clear(struct mtk_dsi *dsi, u32 irq_bit)
-> 
-> Please refer to [1], '__maybe_unused' can fix your problem.
-> 
-> [1]
-> http://lxr.free-electrons.com/source/drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c#L76
-Add __maybe_unused just let GCC not produce a warning for this function.
-So you want add patch like this?
-
-[PATCH v7 6/9] drm/mediatek: add dsi interrupt control
-+static __maybe_unused s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi
-*dsi, u32 irq_flag,
-
-+static __maybe_unused void mtk_dsi_irq_data_set(struct mtk_dsi *dsi,
-u32 irq_bit)
-
-[PATCH v7 7/9] drm/mediatek: add dsi transfer function
--static __maybe_unused s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi
-*dsi, u32 irq_flag,
-+static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
-
--static __maybe_unused void mtk_dsi_irq_data_clear(struct mtk_dsi *dsi,
-u32 irq_bit)
-+static void mtk_dsi_irq_data_clear(struct mtk_dsi *dsi, u32 irq_bit)
-
-Put the static function earlier and add __maybe_unused annotations.
-Then remove _maybe_unused annotations later.  Or you want to keep
-__maybe_unused annotations inside?  Sounds unnecessary, it is different
-from your reference sharp_panel_read().
-
-> 
-> Regards,
-> CK
-> 
-> > 
-> > > Regards,
-> > > CK
-> > > 
-> > > > 
-> > > > Regards,
-> > > > yt.shen
-> > > > > 
-> > > > > 
-> > > > > [1] https://patchwork.kernel.org/patch/9310819/
-> > > > > 
-> > > > > 
-> > > > > Regards,
-> > > > > CK
-> > > > > 
-> > > > 
-> > > > 
-> > > 
-> > > 
-> > 
-> > 
-> 
-> 
+SGksIFlUOgoKT24gV2VkLCAyMDE2LTA5LTE0IGF0IDE1OjIyICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IEhpIENLLAo+IAo+IE9uIFdlZCwgMjAxNi0wOS0xNCBhdCAxNDozOSArMDgwMCwgQ0sgSHUg
+d3JvdGU6Cj4gPiBIaSwgWVQ6Cj4gPiAKPiA+IE9uIFdlZCwgMjAxNi0wOS0xNCBhdCAxNDoxOSAr
+MDgwMCwgWVQgU2hlbiB3cm90ZToKPiA+ID4gSGkgQ0ssCj4gPiA+IAo+ID4gPiBPbiBUdWUsIDIw
+MTYtMDktMTMgYXQgMTc6MjUgKzA4MDAsIENLIEh1IHdyb3RlOgo+ID4gPiA+IEhpLCBZVDoKPiA+
+ID4gPiAKPiA+ID4gPiBPbiBNb24sIDIwMTYtMDktMTIgYXQgMTg6MTYgKzA4MDAsIFlUIFNoZW4g
+d3JvdGU6Cj4gPiA+ID4gPiBIaSBDSywKPiA+ID4gPiA+IAo+ID4gPiA+ID4gT24gV2VkLCAyMDE2
+LTA5LTA3IGF0IDEwOjMzICswODAwLCBDSyBIdSB3cm90ZToKPiA+ID4gPiA+ID4gSGksIFlUOgo+
+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gT24gRnJpLCAyMDE2LTA5LTAyIGF0IDE5OjI0ICswODAw
+LCBZVCBTaGVuIHdyb3RlOgo+ID4gPiA+ID4gPiA+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9t
+aW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+IGFkZCBk
+c2kgcmVhZC93cml0ZSBjb21tYW5kcyBmb3IgdHJhbnNmZXIgZnVuY3Rpb24KPiA+ID4gPiA+ID4g
+PiAKPiA+ID4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFvbWluZy5j
+aGVuQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiA+ID4gPiAtLS0KPiA+ID4gPiA+ID4gPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDE4OCArKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrCj4gPiA+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxODggaW5zZXJ0
+aW9ucygrKQo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gW3NuaXAuLi5d
+Cj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ICAKPiA+ID4gPiA+ID4gPiArc3RhdGljIHZvaWQg
+bXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1MzIgaXJxX2JpdCkK
+PiA+ID4gPiA+ID4gPiArewo+ID4gPiA+ID4gPiA+ICsJZHNpLT5pcnFfZGF0YSAmPSB+aXJxX2Jp
+dDsKPiA+ID4gPiA+ID4gPiArfQo+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gCj4gPiA+ID4g
+PiA+IFtzbmlwLi4uXQo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4g
+K3N0YXRpYyBzMzIgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZShzdHJ1Y3QgbXRrX2RzaSAqZHNp
+LCB1MzIgaXJxX2ZsYWcsCj4gPiA+ID4gPiA+ID4gKwkJCQkgICAgIHVuc2lnbmVkIGludCB0aW1l
+b3V0KQo+ID4gPiA+ID4gPiA+ICt7Cj4gPiA+ID4gPiA+ID4gKwlzMzIgcmV0ID0gMDsKPiA+ID4g
+PiA+ID4gPiArCXVuc2lnbmVkIGxvbmcgamlmZmllcyA9IG1zZWNzX3RvX2ppZmZpZXModGltZW91
+dCk7Cj4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ICsJcmV0ID0gd2FpdF9ldmVudF9pbnRl
+cnJ1cHRpYmxlX3RpbWVvdXQoX2RzaV9pcnFfd2FpdF9xdWV1ZSwKPiA+ID4gPiA+ID4gPiArCQkJ
+CQkgICAgICAgZHNpLT5pcnFfZGF0YSAmIGlycV9mbGFnLAo+ID4gPiA+ID4gPiA+ICsJCQkJCSAg
+ICAgICBqaWZmaWVzKTsKPiA+ID4gPiA+ID4gPiArCWlmIChyZXQgPT0gMCkgewo+ID4gPiA+ID4g
+PiA+ICsJCWRldl9pbmZvKGRzaS0+ZGV2LCAiV2FpdCBEU0kgSVJRKDB4JTA4eCkgVGltZW91dFxu
+IiwgaXJxX2ZsYWcpOwo+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiArCQltdGtfZHNpX2Vu
+YWJsZShkc2kpOwo+ID4gPiA+ID4gPiA+ICsJCW10a19kc2lfcmVzZXRfZW5naW5lKGRzaSk7Cj4g
+PiA+ID4gPiA+ID4gKwl9Cj4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ICsJcmV0dXJuIHJl
+dDsKPiA+ID4gPiA+ID4gPiArfQo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gSSB0aGluayBtdGtf
+ZHNpX2lycV9kYXRhX2NsZWFyKCkgYW5kIG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoKSBzaG91
+bGQKPiA+ID4gPiA+ID4gYmUgbW92ZWQgdG8gdGhlIDZ0aCBwYXRjaCBbMV0gb2YgdGhpcyBzZXJp
+ZXMgYmVjYXVzZSB0aGVzZSB0d28gZnVuY3Rpb25zCj4gPiA+ID4gPiA+IGRlYWwgdGhlIGlycSBj
+b250cm9sLgo+ID4gPiA+ID4gV2Ugd2lsbCBtb3ZlIG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0
+byBwYXRjaCAiZHJtL21lZGlhdGVrOiBhZGQgZHNpCj4gPiA+ID4gPiBpbnRlcnJ1cHQgY29udHJv
+bCIgYW5kIHB1dCBtdGtfZHNpX3dhaXRfZm9yX2lycV9kb25lKCkgaGVyZSwgYmVjYXVzZSBpdAo+
+ID4gPiA+ID4gaXMgdXNlZCBpbiB0aGUgdHJhbnNmZXIgZnVuY3Rpb24uCj4gPiA+ID4gCj4gPiA+
+ID4gbXRrX2RzaV9pcnFfZGF0YV9jbGVhcigpIGlzIGFsc28gb25seSB1c2VkIGluIHRyYW5zZmVy
+IGZ1bmN0aW9uIG5vdy4gSQo+ID4gPiA+IHRoaW5rIGJvdGggZnVuY3Rpb24gY291bGQgYmUgdXNl
+ZCBmb3Igb3RoZXIgYXBwbGljYXRpb24gcmF0aGVyIHRoYW4KPiA+ID4gPiB0cmFuc2ZlciBmdW5j
+dGlvbiwgc28gdGhlc2UgdHdvIGZ1bmN0aW9uIGFyZSBnZW5lcmFsIGZ1bmN0aW9uIGZvciBpcnEK
+PiA+ID4gPiBjb250cm9sLgo+ID4gPiBXZSB3aWxsIHJvbGxiYWNrIHRoZSBjaGFuZ2VzIGhlcmUu
+ICBNb3ZlIG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0bwo+ID4gPiBvcmlnaW5hbCBwbGFjZS4K
+PiA+ID4gCj4gPiA+IEFkZCBuZXcgZnVuY3Rpb25zIGNvdWxkIGJlIHVzZWQgaW4gdGhlIGZ1dHVy
+ZSB3aWxsIGhhdmUgcHJvYmxlbXMuCj4gPiA+IHdhcm5pbmc6ICdtdGtfZHNpX3dhaXRfZm9yX2ly
+cV9kb25lJyBkZWZpbmVkIGJ1dCBub3QgdXNlZAo+ID4gPiBbLVd1bnVzZWQtZnVuY3Rpb25dCj4g
+PiA+ICBzdGF0aWMgczMyIG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoc3RydWN0IG10a19kc2kg
+KmRzaSwgdTMyIGlycV9mbGFnLAo+ID4gPiB3YXJuaW5nOiAnbXRrX2RzaV9pcnFfZGF0YV9jbGVh
+cicgZGVmaW5lZCBidXQgbm90IHVzZWQKPiA+ID4gWy1XdW51c2VkLWZ1bmN0aW9uXQo+ID4gPiAg
+c3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1
+MzIgaXJxX2JpdCkKPiA+IAo+ID4gUGxlYXNlIHJlZmVyIHRvIFsxXSwgJ19fbWF5YmVfdW51c2Vk
+JyBjYW4gZml4IHlvdXIgcHJvYmxlbS4KPiA+IAo+ID4gWzFdCj4gPiBodHRwOi8vbHhyLmZyZWUt
+ZWxlY3Ryb25zLmNvbS9zb3VyY2UvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNoYXJwLWxx
+MTAxcjFzeDAxLmMjTDc2Cj4gQWRkIF9fbWF5YmVfdW51c2VkIGp1c3QgbGV0IEdDQyBub3QgcHJv
+ZHVjZSBhIHdhcm5pbmcgZm9yIHRoaXMgZnVuY3Rpb24uCj4gU28geW91IHdhbnQgYWRkIHBhdGNo
+IGxpa2UgdGhpcz8KPiAKPiBbUEFUQ0ggdjcgNi85XSBkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgaW50
+ZXJydXB0IGNvbnRyb2wKPiArc3RhdGljIF9fbWF5YmVfdW51c2VkIHMzMiBtdGtfZHNpX3dhaXRf
+Zm9yX2lycV9kb25lKHN0cnVjdCBtdGtfZHNpCj4gKmRzaSwgdTMyIGlycV9mbGFnLAo+IAo+ICtz
+dGF0aWMgX19tYXliZV91bnVzZWQgdm9pZCBtdGtfZHNpX2lycV9kYXRhX3NldChzdHJ1Y3QgbXRr
+X2RzaSAqZHNpLAo+IHUzMiBpcnFfYml0KQo+IAo+IFtQQVRDSCB2NyA3LzldIGRybS9tZWRpYXRl
+azogYWRkIGRzaSB0cmFuc2ZlciBmdW5jdGlvbgo+IC1zdGF0aWMgX19tYXliZV91bnVzZWQgczMy
+IG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoc3RydWN0IG10a19kc2kKPiAqZHNpLCB1MzIgaXJx
+X2ZsYWcsCj4gK3N0YXRpYyBzMzIgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZShzdHJ1Y3QgbXRr
+X2RzaSAqZHNpLCB1MzIgaXJxX2ZsYWcsCj4gCj4gLXN0YXRpYyBfX21heWJlX3VudXNlZCB2b2lk
+IG10a19kc2lfaXJxX2RhdGFfY2xlYXIoc3RydWN0IG10a19kc2kgKmRzaSwKPiB1MzIgaXJxX2Jp
+dCkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAq
+ZHNpLCB1MzIgaXJxX2JpdCkKPiAKPiBQdXQgdGhlIHN0YXRpYyBmdW5jdGlvbiBlYXJsaWVyIGFu
+ZCBhZGQgX19tYXliZV91bnVzZWQgYW5ub3RhdGlvbnMuCj4gVGhlbiByZW1vdmUgX21heWJlX3Vu
+dXNlZCBhbm5vdGF0aW9ucyBsYXRlci4gIE9yIHlvdSB3YW50IHRvIGtlZXAKPiBfX21heWJlX3Vu
+dXNlZCBhbm5vdGF0aW9ucyBpbnNpZGU/ICBTb3VuZHMgdW5uZWNlc3NhcnksIGl0IGlzIGRpZmZl
+cmVudAo+IGZyb20geW91ciByZWZlcmVuY2Ugc2hhcnBfcGFuZWxfcmVhZCgpLgoKUmVtb3Zpbmcg
+J19fbWF5YmVfdW51c2VkJyBpbiBsYXRlciBwYXRjaCBsb29rcyBnb29kIHRvIG1lLgoKUmVnYXJk
+cywKQ0sKCj4gCj4gPiAKPiA+IFJlZ2FyZHMsCj4gPiBDSwo+ID4gCj4gPiA+IAo+ID4gPiA+IFJl
+Z2FyZHMsCj4gPiA+ID4gQ0sKPiA+ID4gPiAKPiA+ID4gPiA+IAo+ID4gPiA+ID4gUmVnYXJkcywK
+PiA+ID4gPiA+IHl0LnNoZW4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBb
+MV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85MzEwODE5Lwo+ID4gPiA+ID4g
+PiAKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IFJlZ2FyZHMsCj4gPiA+ID4gPiA+IENLCj4gPiA+
+ID4gPiA+IAo+ID4gPiA+ID4gCj4gPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gCj4g
+PiA+IAo+ID4gCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcmktZGV2ZWwK
