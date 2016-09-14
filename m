@@ -1,116 +1,63 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v7 7/9] drm/mediatek: add dsi transfer function
-Date: Wed, 14 Sep 2016 15:34:57 +0800
-Message-ID: <1473838497.10216.5.camel@mtksdaap41>
-References: <1472815484-43821-1-git-send-email-yt.shen@mediatek.com>
- <1472815484-43821-8-git-send-email-yt.shen@mediatek.com>
- <1473215632.11736.21.camel@mtksdaap41>
- <1473675381.12398.27.camel@mtksdaap41>
- <1473758754.28437.40.camel@mtksdaap41>
- <1473833946.24354.8.camel@mtksdaap41> <1473835151.10216.2.camel@mtksdaap41>
- <1473837742.24354.28.camel@mtksdaap41>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v2 2/4] docs-rst: Add compressed video formats used on
+ MT8173 codec driver
+Date: Wed, 14 Sep 2016 13:51:17 +0200
+Message-ID: <e0d40ba4-a53e-72ca-0c45-2ab578922d9c@xs4all.nl>
+References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
+ <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
+ <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473837742.24354.28.camel@mtksdaap41>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gV2VkLCAyMDE2LTA5LTE0IGF0IDE1OjIyICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IEhpIENLLAo+IAo+IE9uIFdlZCwgMjAxNi0wOS0xNCBhdCAxNDozOSArMDgwMCwgQ0sgSHUg
-d3JvdGU6Cj4gPiBIaSwgWVQ6Cj4gPiAKPiA+IE9uIFdlZCwgMjAxNi0wOS0xNCBhdCAxNDoxOSAr
-MDgwMCwgWVQgU2hlbiB3cm90ZToKPiA+ID4gSGkgQ0ssCj4gPiA+IAo+ID4gPiBPbiBUdWUsIDIw
-MTYtMDktMTMgYXQgMTc6MjUgKzA4MDAsIENLIEh1IHdyb3RlOgo+ID4gPiA+IEhpLCBZVDoKPiA+
-ID4gPiAKPiA+ID4gPiBPbiBNb24sIDIwMTYtMDktMTIgYXQgMTg6MTYgKzA4MDAsIFlUIFNoZW4g
-d3JvdGU6Cj4gPiA+ID4gPiBIaSBDSywKPiA+ID4gPiA+IAo+ID4gPiA+ID4gT24gV2VkLCAyMDE2
-LTA5LTA3IGF0IDEwOjMzICswODAwLCBDSyBIdSB3cm90ZToKPiA+ID4gPiA+ID4gSGksIFlUOgo+
-ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gT24gRnJpLCAyMDE2LTA5LTAyIGF0IDE5OjI0ICswODAw
-LCBZVCBTaGVuIHdyb3RlOgo+ID4gPiA+ID4gPiA+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9t
-aW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+IGFkZCBk
-c2kgcmVhZC93cml0ZSBjb21tYW5kcyBmb3IgdHJhbnNmZXIgZnVuY3Rpb24KPiA+ID4gPiA+ID4g
-PiAKPiA+ID4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBjaGVuIDxzaGFvbWluZy5j
-aGVuQG1lZGlhdGVrLmNvbT4KPiA+ID4gPiA+ID4gPiAtLS0KPiA+ID4gPiA+ID4gPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDE4OCArKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrCj4gPiA+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAxODggaW5zZXJ0
-aW9ucygrKQo+ID4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gW3NuaXAuLi5d
-Cj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiA+ICAKPiA+ID4gPiA+ID4gPiArc3RhdGljIHZvaWQg
-bXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1MzIgaXJxX2JpdCkK
-PiA+ID4gPiA+ID4gPiArewo+ID4gPiA+ID4gPiA+ICsJZHNpLT5pcnFfZGF0YSAmPSB+aXJxX2Jp
-dDsKPiA+ID4gPiA+ID4gPiArfQo+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gCj4gPiA+ID4g
-PiA+IFtzbmlwLi4uXQo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gPiArCj4gPiA+ID4gPiA+ID4g
-K3N0YXRpYyBzMzIgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZShzdHJ1Y3QgbXRrX2RzaSAqZHNp
-LCB1MzIgaXJxX2ZsYWcsCj4gPiA+ID4gPiA+ID4gKwkJCQkgICAgIHVuc2lnbmVkIGludCB0aW1l
-b3V0KQo+ID4gPiA+ID4gPiA+ICt7Cj4gPiA+ID4gPiA+ID4gKwlzMzIgcmV0ID0gMDsKPiA+ID4g
-PiA+ID4gPiArCXVuc2lnbmVkIGxvbmcgamlmZmllcyA9IG1zZWNzX3RvX2ppZmZpZXModGltZW91
-dCk7Cj4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ICsJcmV0ID0gd2FpdF9ldmVudF9pbnRl
-cnJ1cHRpYmxlX3RpbWVvdXQoX2RzaV9pcnFfd2FpdF9xdWV1ZSwKPiA+ID4gPiA+ID4gPiArCQkJ
-CQkgICAgICAgZHNpLT5pcnFfZGF0YSAmIGlycV9mbGFnLAo+ID4gPiA+ID4gPiA+ICsJCQkJCSAg
-ICAgICBqaWZmaWVzKTsKPiA+ID4gPiA+ID4gPiArCWlmIChyZXQgPT0gMCkgewo+ID4gPiA+ID4g
-PiA+ICsJCWRldl9pbmZvKGRzaS0+ZGV2LCAiV2FpdCBEU0kgSVJRKDB4JTA4eCkgVGltZW91dFxu
-IiwgaXJxX2ZsYWcpOwo+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiArCQltdGtfZHNpX2Vu
-YWJsZShkc2kpOwo+ID4gPiA+ID4gPiA+ICsJCW10a19kc2lfcmVzZXRfZW5naW5lKGRzaSk7Cj4g
-PiA+ID4gPiA+ID4gKwl9Cj4gPiA+ID4gPiA+ID4gKwo+ID4gPiA+ID4gPiA+ICsJcmV0dXJuIHJl
-dDsKPiA+ID4gPiA+ID4gPiArfQo+ID4gPiA+ID4gPiAKPiA+ID4gPiA+ID4gSSB0aGluayBtdGtf
-ZHNpX2lycV9kYXRhX2NsZWFyKCkgYW5kIG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoKSBzaG91
-bGQKPiA+ID4gPiA+ID4gYmUgbW92ZWQgdG8gdGhlIDZ0aCBwYXRjaCBbMV0gb2YgdGhpcyBzZXJp
-ZXMgYmVjYXVzZSB0aGVzZSB0d28gZnVuY3Rpb25zCj4gPiA+ID4gPiA+IGRlYWwgdGhlIGlycSBj
-b250cm9sLgo+ID4gPiA+ID4gV2Ugd2lsbCBtb3ZlIG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0
-byBwYXRjaCAiZHJtL21lZGlhdGVrOiBhZGQgZHNpCj4gPiA+ID4gPiBpbnRlcnJ1cHQgY29udHJv
-bCIgYW5kIHB1dCBtdGtfZHNpX3dhaXRfZm9yX2lycV9kb25lKCkgaGVyZSwgYmVjYXVzZSBpdAo+
-ID4gPiA+ID4gaXMgdXNlZCBpbiB0aGUgdHJhbnNmZXIgZnVuY3Rpb24uCj4gPiA+ID4gCj4gPiA+
-ID4gbXRrX2RzaV9pcnFfZGF0YV9jbGVhcigpIGlzIGFsc28gb25seSB1c2VkIGluIHRyYW5zZmVy
-IGZ1bmN0aW9uIG5vdy4gSQo+ID4gPiA+IHRoaW5rIGJvdGggZnVuY3Rpb24gY291bGQgYmUgdXNl
-ZCBmb3Igb3RoZXIgYXBwbGljYXRpb24gcmF0aGVyIHRoYW4KPiA+ID4gPiB0cmFuc2ZlciBmdW5j
-dGlvbiwgc28gdGhlc2UgdHdvIGZ1bmN0aW9uIGFyZSBnZW5lcmFsIGZ1bmN0aW9uIGZvciBpcnEK
-PiA+ID4gPiBjb250cm9sLgo+ID4gPiBXZSB3aWxsIHJvbGxiYWNrIHRoZSBjaGFuZ2VzIGhlcmUu
-ICBNb3ZlIG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0bwo+ID4gPiBvcmlnaW5hbCBwbGFjZS4K
-PiA+ID4gCj4gPiA+IEFkZCBuZXcgZnVuY3Rpb25zIGNvdWxkIGJlIHVzZWQgaW4gdGhlIGZ1dHVy
-ZSB3aWxsIGhhdmUgcHJvYmxlbXMuCj4gPiA+IHdhcm5pbmc6ICdtdGtfZHNpX3dhaXRfZm9yX2ly
-cV9kb25lJyBkZWZpbmVkIGJ1dCBub3QgdXNlZAo+ID4gPiBbLVd1bnVzZWQtZnVuY3Rpb25dCj4g
-PiA+ICBzdGF0aWMgczMyIG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoc3RydWN0IG10a19kc2kg
-KmRzaSwgdTMyIGlycV9mbGFnLAo+ID4gPiB3YXJuaW5nOiAnbXRrX2RzaV9pcnFfZGF0YV9jbGVh
-cicgZGVmaW5lZCBidXQgbm90IHVzZWQKPiA+ID4gWy1XdW51c2VkLWZ1bmN0aW9uXQo+ID4gPiAg
-c3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAqZHNpLCB1
-MzIgaXJxX2JpdCkKPiA+IAo+ID4gUGxlYXNlIHJlZmVyIHRvIFsxXSwgJ19fbWF5YmVfdW51c2Vk
-JyBjYW4gZml4IHlvdXIgcHJvYmxlbS4KPiA+IAo+ID4gWzFdCj4gPiBodHRwOi8vbHhyLmZyZWUt
-ZWxlY3Ryb25zLmNvbS9zb3VyY2UvZHJpdmVycy9ncHUvZHJtL3BhbmVsL3BhbmVsLXNoYXJwLWxx
-MTAxcjFzeDAxLmMjTDc2Cj4gQWRkIF9fbWF5YmVfdW51c2VkIGp1c3QgbGV0IEdDQyBub3QgcHJv
-ZHVjZSBhIHdhcm5pbmcgZm9yIHRoaXMgZnVuY3Rpb24uCj4gU28geW91IHdhbnQgYWRkIHBhdGNo
-IGxpa2UgdGhpcz8KPiAKPiBbUEFUQ0ggdjcgNi85XSBkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgaW50
-ZXJydXB0IGNvbnRyb2wKPiArc3RhdGljIF9fbWF5YmVfdW51c2VkIHMzMiBtdGtfZHNpX3dhaXRf
-Zm9yX2lycV9kb25lKHN0cnVjdCBtdGtfZHNpCj4gKmRzaSwgdTMyIGlycV9mbGFnLAo+IAo+ICtz
-dGF0aWMgX19tYXliZV91bnVzZWQgdm9pZCBtdGtfZHNpX2lycV9kYXRhX3NldChzdHJ1Y3QgbXRr
-X2RzaSAqZHNpLAo+IHUzMiBpcnFfYml0KQo+IAo+IFtQQVRDSCB2NyA3LzldIGRybS9tZWRpYXRl
-azogYWRkIGRzaSB0cmFuc2ZlciBmdW5jdGlvbgo+IC1zdGF0aWMgX19tYXliZV91bnVzZWQgczMy
-IG10a19kc2lfd2FpdF9mb3JfaXJxX2RvbmUoc3RydWN0IG10a19kc2kKPiAqZHNpLCB1MzIgaXJx
-X2ZsYWcsCj4gK3N0YXRpYyBzMzIgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZShzdHJ1Y3QgbXRr
-X2RzaSAqZHNpLCB1MzIgaXJxX2ZsYWcsCj4gCj4gLXN0YXRpYyBfX21heWJlX3VudXNlZCB2b2lk
-IG10a19kc2lfaXJxX2RhdGFfY2xlYXIoc3RydWN0IG10a19kc2kgKmRzaSwKPiB1MzIgaXJxX2Jp
-dCkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3QgbXRrX2RzaSAq
-ZHNpLCB1MzIgaXJxX2JpdCkKPiAKPiBQdXQgdGhlIHN0YXRpYyBmdW5jdGlvbiBlYXJsaWVyIGFu
-ZCBhZGQgX19tYXliZV91bnVzZWQgYW5ub3RhdGlvbnMuCj4gVGhlbiByZW1vdmUgX21heWJlX3Vu
-dXNlZCBhbm5vdGF0aW9ucyBsYXRlci4gIE9yIHlvdSB3YW50IHRvIGtlZXAKPiBfX21heWJlX3Vu
-dXNlZCBhbm5vdGF0aW9ucyBpbnNpZGU/ICBTb3VuZHMgdW5uZWNlc3NhcnksIGl0IGlzIGRpZmZl
-cmVudAo+IGZyb20geW91ciByZWZlcmVuY2Ugc2hhcnBfcGFuZWxfcmVhZCgpLgoKUmVtb3Zpbmcg
-J19fbWF5YmVfdW51c2VkJyBpbiBsYXRlciBwYXRjaCBsb29rcyBnb29kIHRvIG1lLgoKUmVnYXJk
-cywKQ0sKCj4gCj4gPiAKPiA+IFJlZ2FyZHMsCj4gPiBDSwo+ID4gCj4gPiA+IAo+ID4gPiA+IFJl
-Z2FyZHMsCj4gPiA+ID4gQ0sKPiA+ID4gPiAKPiA+ID4gPiA+IAo+ID4gPiA+ID4gUmVnYXJkcywK
-PiA+ID4gPiA+IHl0LnNoZW4KPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IAo+ID4gPiA+ID4gPiBb
-MV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC85MzEwODE5Lwo+ID4gPiA+ID4g
-PiAKPiA+ID4gPiA+ID4gCj4gPiA+ID4gPiA+IFJlZ2FyZHMsCj4gPiA+ID4gPiA+IENLCj4gPiA+
-ID4gPiA+IAo+ID4gPiA+ID4gCj4gPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiAKPiA+ID4gCj4g
-PiA+IAo+ID4gCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVl
-ZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9kcmktZGV2ZWwK
+Hi Tiffany,
+
+On 09/09/2016 05:48 PM, Tiffany Lin wrote:
+> Add V4L2_PIX_FMT_MT21C documentation
+> 
+> Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> ---
+>  Documentation/media/uapi/v4l/pixfmt-reserved.rst |   10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> index 0dd2f7f..0989e99 100644
+> --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> @@ -339,7 +339,17 @@ please make a proposal on the linux-media mailing list.
+>  	  array. Anything what's in between the UYVY lines is JPEG data and
+>  	  should be concatenated to form the JPEG stream.
+>  
+> +    -  .. _V4L2-PIX-FMT-MT21C:
+>  
+> +       -  ``V4L2_PIX_FMT_MT21C``
+> +
+> +       -  'MT21C'
+> +
+> +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
+> +          The compression is lossless.
+> +          It is an opaque intermediate format, and MDP HW could convert
+
+Is it OK if I change this to:
+
+" and the MDP hardware must be used to convert"
+
+> +          V4L2_PIX_FMT_MT21C to V4L2_PIX_FMT_NV12M,
+> +          V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
+
+and here "and" should be replaced by "or".
+
+Regards,
+
+	Hans
+
+>  
+>  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+>  
+> 
