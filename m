@@ -1,106 +1,98 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next 6/7] net: ethernet: mediatek: add more resets for internal ethernet circuit block
-Date: Wed, 14 Sep 2016 11:50:40 +0800
-Message-ID: <1473825041-21072-7-git-send-email-sean.wang@mediatek.com>
-References: <1473825041-21072-1-git-send-email-sean.wang@mediatek.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH 0/4] Add V4L2_PIX_FMT_MT21C format for MT8173 codec
+ driver
+Date: Wed, 14 Sep 2016 12:52:37 +0800
+Message-ID: <1473828757.25758.4.camel@mtksdaap41>
+References: <1473231403-14900-1-git-send-email-tiffany.lin@mediatek.com>
+         <e4d91e67-0b36-3675-575a-c5f38a68dbdb@xs4all.nl>
+         <1473325879.26612.2.camel@mtksdaap41>
+         <64676168-8c5f-3720-820a-17e7bdbcc735@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1473825041-21072-1-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <64676168-8c5f-3720-820a-17e7bdbcc735@xs4all.nl>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Hi Hans,
 
-struct mtk_eth has already contained struct regmap ethsys pointer
-to the address range of the internal circuit reset, so we reuse it
-to reset more internal blocks on ethernet hardware such as packet
-processing engine (PPE) and frame engine (FE) instead of rstc which
-deals with FE only.
+On Thu, 2016-09-08 at 11:27 +0200, Hans Verkuil wrote:
+> On 09/08/16 11:11, Tiffany Lin wrote:
+> > Hi Hans,
+> >
+> > On Thu, 2016-09-08 at 09:21 +0200, Hans Verkuil wrote:
+> >> Hi Tiffany,
+> >>
+> >> On 09/07/2016 08:56 AM, Tiffany Lin wrote:
+> >>> This patch series add Mediatek compressed block format V4L2_PIX_FMT_MT21C, the
+> >>> decoder driver will decoded bitstream to V4L2_PIX_FMT_MT21C format.
+> >>>
+> >>> User space applications could use MT8173 MDP driver to convert V4L2_PIX_FMT_MT21C to
+> >>> V4L2_PIX_FMT_NV12M, V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
+> >>>
+> >>> MDP driver[1] is stand alone driver.
+> >>>
+> >>> Usage:
+> >>> MT21C -> MT8173 MDP -> NV12M/YUV420M/YVU420
+> >>> NV12M/NV21M/YUV420M/YVU420M -> mt8173 Encoder -> H264/VP8
+> >>> H264/VP8/VP9 -> mtk8173 Decoder -> MT21C
+> >>>
+> >>> When encode with MT21 source, the pipeline will be:
+> >>> MT21C -> MDP driver-> NV12M/NV21M/YUV420M/YVU420M -> Encoder -> H264/VP8
+> >>>
+> >>> When playback, the pipeline will be:
+> >>> H264/VP8/VP9 -> Decoder driver -> MT21C -> MDP Driver -> DRM
+> >>>
+> >>> [1]https://patchwork.kernel.org/patch/9305329/
+> >>>
+> >>> Tiffany Lin (4):
+> >>>   v4l: add Mediatek compressed video block format
+> >>>   docs-rst: Add compressed video formats used on MT8173 codec driver
+> >>>   vcodec: mediatek: Add V4L2_PIX_FMT_MT21C support for v4l2 decoder
+> >>>   arm64: dts: mediatek: Add Video Decoder for MT8173
+> >>>
+> >>>  Documentation/media/uapi/v4l/pixfmt-reserved.rst   |    6 +++
+> >>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |   44 ++++++++++++++++++++
+> >>>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c |    7 +++-
+> >>>  drivers/media/v4l2-core/v4l2-ioctl.c               |    1 +
+> >>>  include/uapi/linux/videodev2.h                     |    1 +
+> >>>  5 files changed, 58 insertions(+), 1 deletion(-)
+> >>>
+> >>
+> >> So basically the video decoder is useless without support for this format and
+> >> without the MDP driver, right?
+> >>
+> > Yes. It also require new vpu firmware.
+> > Andrew will help release new vpu firmware include encode/decode/mdp
+> > capability.
+> 
+> OK, then I'll park this until:
+> 
+> - the MT21C patch series is OK
+> - the MDP patch series is OK
+> - the new firmware is released
+> 
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 27 +++++++++++++++------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  6 +++++-
- 2 files changed, 20 insertions(+), 13 deletions(-)
+> For the record: the decoder patch series is OK as far as I am concerned.
+> It's in my mtkdec branch.
+> 
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b9ddbcb..48cddf9 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1414,6 +1414,19 @@ static int mtk_stop(struct net_device *dev)
- 	return 0;
- }
- 
-+static void ethsys_reset(struct mtk_eth *eth, u32 reset_bits)
-+{
-+	regmap_update_bits(eth->ethsys, ETHSYS_RSTCTRL,
-+			   reset_bits,
-+			   reset_bits);
-+
-+	usleep_range(1000, 1100);
-+	regmap_update_bits(eth->ethsys, ETHSYS_RSTCTRL,
-+			   reset_bits,
-+			   ~reset_bits);
-+	mdelay(10);
-+}
-+
- static int mtk_hw_init(struct mtk_eth *eth)
- {
- 	int i, val;
-@@ -1428,12 +1441,8 @@ static int mtk_hw_init(struct mtk_eth *eth)
- 	clk_prepare_enable(eth->clks[MTK_CLK_ESW]);
- 	clk_prepare_enable(eth->clks[MTK_CLK_GP1]);
- 	clk_prepare_enable(eth->clks[MTK_CLK_GP2]);
--
--	/* reset the frame engine */
--	reset_control_assert(eth->rstc);
--	usleep_range(10, 20);
--	reset_control_deassert(eth->rstc);
--	usleep_range(10, 20);
-+	ethsys_reset(eth, RSTCTRL_FE);
-+	ethsys_reset(eth, RSTCTRL_PPE);
- 
- 	regmap_read(eth->ethsys, ETHSYS_SYSCFG0, &val);
- 	for (i = 0; i < MTK_MAC_COUNT; i++) {
-@@ -1894,12 +1903,6 @@ static int mtk_probe(struct platform_device *pdev)
- 		return PTR_ERR(eth->pctl);
- 	}
- 
--	eth->rstc = devm_reset_control_get(&pdev->dev, "eth");
--	if (IS_ERR(eth->rstc)) {
--		dev_err(&pdev->dev, "no eth reset found\n");
--		return PTR_ERR(eth->rstc);
--	}
--
- 	for (i = 0; i < 3; i++) {
- 		eth->irq[i] = platform_get_irq(pdev, i);
- 		if (eth->irq[i] < 0) {
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 388cbe7..7efa00f 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -266,6 +266,11 @@
- #define SYSCFG0_GE_MASK		0x3
- #define SYSCFG0_GE_MODE(x, y)	(x << (12 + (y * 2)))
- 
-+/*ethernet reset control register*/
-+#define ETHSYS_RSTCTRL		0x34
-+#define RSTCTRL_FE		BIT(6)
-+#define RSTCTRL_PPE		BIT(31)
-+
- struct mtk_rx_dma {
- 	unsigned int rxd1;
- 	unsigned int rxd2;
-@@ -423,7 +428,6 @@ struct mtk_rx_ring {
- struct mtk_eth {
- 	struct device			*dev;
- 	void __iomem			*base;
--	struct reset_control		*rstc;
- 	spinlock_t			page_lock;
- 	spinlock_t			irq_lock;
- 	struct net_device		dummy_dev;
--- 
-1.9.1
+Appreciated for your help.
+We had upstream new MT21C, MDP and new VPU firmware.
+
+MT21C patch series: https://patchwork.kernel.org/patch/9323883/
+MDP patch series: https://patchwork.kernel.org/patch/9321343/
+VPU firmware: https://patchwork.linuxtv.org/patch/36968/
+
+
+best regards,
+Tiffany
+
+
+
+> Regards,
+> 
+> 	Hans
