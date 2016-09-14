@@ -1,46 +1,44 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH net-next 2/3] net: ethernet: mediatek: add ethtool
- functions to configure RX flows of HW LRO
-Date: Tue, 13 Sep 2016 11:26:51 -0700
-Message-ID: <0416bf6a-1a3d-f8fe-9150-8f143c48ee8c@gmail.com>
-References: <1473774866-3156-1-git-send-email-nelson.chang@mediatek.com>
- <1473774866-3156-3-git-send-email-nelson.chang@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net-next 0/7] add enhancement into the existing reset flow
+Date: Wed, 14 Sep 2016 11:50:34 +0800
+Message-ID: <1473825041-21072-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1473774866-3156-3-git-send-email-nelson.chang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: Nelson Chang <nelson.chang@mediatek.com>, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/13/2016 06:54 AM, Nelson Chang wrote:
-> The codes add ethtool functions to set RX flows for HW LRO. Because the
-> HW LRO hardware can only recognize the destination IP of TCP/IP RX flows,
-> the ethtool command to add HW LRO flow is as below:
-> ethtool -N [devname] flow-type tcp4 dst-ip [ip_addr] loc [0~1]
-> 
-> Otherwise, cause the hardware can set total four destination IPs, each
-> GMAC (GMAC1/GMAC2) can set two IPs separately at most.
-> 
-> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
-> ---
+From: Sean Wang <sean.wang@mediatek.com>
 
-> +
-> +static int mtk_set_features(struct net_device *dev, netdev_features_t features)
-> +{
-> +	int err = 0;
-> +
-> +	if (!((dev->features ^ features) & NETIF_F_LRO))
-> +		return 0;
-> +
-> +	if (!(features & NETIF_F_LRO))
-> +		mtk_hwlro_netdev_disable(dev);
+Current driver only resets DMA used by descriptor rings which
+can't guarantee it can recover all various kinds of fatal
+errors, so the patch
+1) tries to reset the underlying hardware resource from scratch on
+Mediatek SoC required for ethernet running.
+2) refactors code in order to the reusability of existing code.
+3) considers handling for race condition between the reset flow and
+callbacks registered into core driver called about hardware accessing.
+4) introduces power domain usage to hardware setup which leads to have
+cleanly and completely restore to the state as the initial.
 
-you may want to implement a fix_features ndo operations which makes sure
-that NETIF_F_LRO is turned on in case a RX flow is programmed,
-otherwise, it may be confusing to the user that a flow was programmed,
-but no offload is happening.
+Sean Wang (7):
+  net: ethernet: mediatek: refactoring mtk_hw_init to be reused
+  net: ethernet: mediatek: add mtk_hw_deinit call as the opposite to
+    mtk_hw_init call
+  net: ethernet: mediatek: cleanup error path inside mtk_hw_init
+  net: ethernet: mediatek: add controlling power domain the ethernet
+    belongs to
+  net: ethernet: mediatek: add the whole ethernet reset into the reset
+    process
+  net: ethernet: mediatek: add more resets for internal ethernet circuit
+    block
+  net: ethernet: mediatek: avoid race condition during the reset process
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 227 +++++++++++++++++++++-------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  15 +-
+ 2 files changed, 187 insertions(+), 55 deletions(-)
+
 -- 
-Florian
+1.9.1
