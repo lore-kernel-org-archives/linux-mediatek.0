@@ -1,59 +1,111 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: RE: [PATCH net-next 2/3] net: ethernet: mediatek: add ethtool
- functions to configure RX flows of HW LRO
-Date: Wed, 14 Sep 2016 13:22:39 +0800
-Message-ID: <1473830559.25065.10.camel@mtksdaap41>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 8/9] drm/mediatek: update DSI sub driver flow
+Date: Wed, 14 Sep 2016 13:42:21 +0800
+Message-ID: <1473831741.28437.78.camel@mtksdaap41>
+References: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
+ <1473681672-47144-9-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: f.fainelli@gmail.com, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473681672-47144-9-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-(resend)
-
-Thanks Florian for the review!
-I will add ndo_fix_features hook in v2 to prevent the case that a user
-wants to turn off NETIF_F_LRO but RX flow is programmed.
-If any programmed RX flow exists, NETIF_F_LRO cannot be turned off.
-
------Original Message-----
-From: Florian Fainelli [mailto:f.fainelli@gmail.com]
-Sent: Wednesday, September 14, 2016 2:27 AM
-To: Nelson Chang (張家祥); john@phrozen.org; davem@davemloft.net
-Cc: nbd@openwrt.org; netdev@vger.kernel.org;
-linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
-Subject: Re: [PATCH net-next 2/3] net: ethernet: mediatek: add ethtool
-functions to configure RX flows of HW LRO
-
-On 09/13/2016 06:54 AM, Nelson Chang wrote:
-> The codes add ethtool functions to set RX flows for HW LRO. Because 
-> the HW LRO hardware can only recognize the destination IP of TCP/IP
-RX 
-> flows, the ethtool command to add HW LRO flow is as below:
-> ethtool -N [devname] flow-type tcp4 dst-ip [ip_addr] loc [0~1]
-> 
-> Otherwise, cause the hardware can set total four destination IPs,
-each 
-> GMAC (GMAC1/GMAC2) can set two IPs separately at most.
-> 
-> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
-> ---
-
-> +
-> +static int mtk_set_features(struct net_device *dev, netdev_features_t
-> +features) {
-> +	int err = 0;
-> +
-> +	if (!((dev->features ^ features) & NETIF_F_LRO))
-> +		return 0;
-> +
-> +	if (!(features & NETIF_F_LRO))
-> +		mtk_hwlro_netdev_disable(dev);
-
-you may want to implement a fix_features ndo operations which makes sure
-that NETIF_F_LRO is turned on in case a RX flow is programmed,
-otherwise, it may be confusing to the user that a flow was programmed,
-but no offload is happening.
+SGksIFlUOgoKT24gTW9uLCAyMDE2LTA5LTEyIGF0IDIwOjAxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IFRoaXMgcGF0Y2ggdXBkYXRlIGVuYWJsZS9kaXNhYmxlIGZsb3cgb2YgRFNJIG1vZHVsZSBh
+bmQgTUlQSSBUWCBtb2R1bGUuCj4gT3JpZ2luYWwgZmxvdyB3b3JrcyBvbiB0aGVyZSBpcyBhIGJy
+aWRnZSBjaGlwOiBEU0kgLT4gYnJpZGdlIC0+IHBhbmVsLgo+IEluIHRoaXMgY2FzZTogRFNJIC0+
+IHBhbmVsLCB0aGUgRFNJIHN1YiBkcml2ZXIgZmxvdyBzaG91bGQgYmUgdXBkYXRlZC4KPiBXZSBu
+ZWVkIHRvIGluaXRpYWxpemUgRFNJIGZpcnN0IHNvIHRoYXQgd2UgY2FuIHNlbmQgY29tbWFuZHMg
+dG8gcGFuZWwuCj4gCj4gU2lnbmVkLW9mZi1ieTogc2hhb21pbmcgY2hlbiA8c2hhb21pbmcuY2hl
+bkBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRl
+ay5jb20+Cj4gLS0tCj4gIAoKW3NuaXAuLi5dCgo+ICAKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9z
+d2l0Y2hfdG9fY21kX21vZGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiArewo+ICsJczMyIHJldCA9
+IDA7Cj4gKwl1bnNpZ25lZCBsb25nIHRpbWVvdXQgPSBtc2Vjc190b19qaWZmaWVzKDUwMCk7Cj4g
+Kwo+ICsJbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihkc2ksIFZNX0RPTkVfSU5UX0ZMQUcpOwo+ICsJ
+bXRrX2RzaV9zZXRfY21kX21vZGUoZHNpKTsKPiArCj4gKwlyZXQgPSB3YWl0X2V2ZW50X2ludGVy
+cnVwdGlibGVfdGltZW91dChkc2ktPmlycV93YWl0X3F1ZXVlLAo+ICsJCQkJCSAgICAgICBkc2kt
+PmlycV9kYXRhICYgVk1fRE9ORV9JTlRfRkxBRywKPiArCQkJCQkgICAgICAgdGltZW91dCk7Cj4g
+KwlpZiAocmV0ID09IDApIHsKPiArCQlkZXZfaW5mbyhkc2ktPmRldiwgImRzaSB3YWl0IGVuZ2lu
+ZSBpZGxlIHRpbWVvdXRcbiIpOwo+ICsKPiArCQltdGtfZHNpX2VuYWJsZShkc2kpOwo+ICsJCW10
+a19kc2lfcmVzZXRfZW5naW5lKGRzaSk7Cj4gKwl9CgpJIHRoaW5rIHlvdSBzaG91bGQgcmVwbGFj
+ZSB0aGlzIGV2ZW50LXdhaXRpbmcgd2l0aAptdGtfZHNpX3dhaXRfZm9yX2lycV9kb25lKCkuIEFu
+ZCB0aGlzIGlzIGEgcmVhc29uIGZvciBtb3ZpbmcKbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZSgp
+IHRvIHRoZSBwYXRjaCBvZiBpcnEgY29udHJvbC4KCj4gK30KPiArCj4gIHN0YXRpYyB2b2lkIG10
+a19kc2lfcG93ZXJvZmYoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJaWYgKFdBUk5fT04o
+ZHNpLT5yZWZjb3VudCA9PSAwKSkKPiBAQCAtNTI4LDYgKzU3NCwxNyBAQCBzdGF0aWMgdm9pZCBt
+dGtfZHNpX3Bvd2Vyb2ZmKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gIAlpZiAoLS1kc2ktPnJlZmNv
+dW50ICE9IDApCj4gIAkJcmV0dXJuOwo+ICAKPiArCW10a19kc2lfc3dpdGNoX3RvX2NtZF9tb2Rl
+KGRzaSk7Cj4gKwo+ICsJaWYgKGRzaS0+cGFuZWwpIHsKPiArCQlpZiAoZHJtX3BhbmVsX3VucHJl
+cGFyZShkc2ktPnBhbmVsKSkgewo+ICsJCQlEUk1fRVJST1IoImZhaWxlZCB0byB1bnByZXBhcmUg
+dGhlIHBhbmVsXG4iKTsKPiArCQkJcmV0dXJuOwo+ICsJCX0KPiArCX0KCkkgdGhpbmsgZHJtX3Bh
+bmVsX3VucHJlcGFyZSBzaG91bGQgYmUgcGxhY2VkIGFmdGVyIGRzaSBpcyBkaXNhYmxlZC4gU28K
+bW92ZSB0aGlzIHBhcnQgYWZ0ZXIgY2FsbGluZyBtdGtfZHNpX3Bvd2Vyb2ZmKCkgaW4KbXRrX291
+dHB1dF9kc2lfZGlzYWJsZSgpLgoKPiArCj4gKwltdGtfZHNpX3Jlc2V0X2VuZ2luZShkc2kpOwo+
+ICsKPiAgCW10a19kc2lfbGFuZTBfdWxwX21vZGVfZW50ZXIoZHNpKTsKPiAgCW10a19kc2lfY2xr
+X3VscF9tb2RlX2VudGVyKGRzaSk7Cj4gIAo+IEBAIC01NDYsMjkgKzYwMywzNyBAQCBzdGF0aWMg
+dm9pZCBtdGtfb3V0cHV0X2RzaV9lbmFibGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCWlmIChk
+c2ktPmVuYWJsZWQpCj4gIAkJcmV0dXJuOwo+ICAKPiAtCWlmIChkc2ktPnBhbmVsKSB7Cj4gLQkJ
+aWYgKGRybV9wYW5lbF9wcmVwYXJlKGRzaS0+cGFuZWwpKSB7Cj4gLQkJCURSTV9FUlJPUigiZmFp
+bGVkIHRvIHNldHVwIHRoZSBwYW5lbFxuIik7Cj4gLQkJCXJldHVybjsKPiAtCQl9Cj4gLQl9Cj4g
+LQo+ICAJcmV0ID0gbXRrX2RzaV9wb3dlcm9uKGRzaSk7Cj4gIAlpZiAocmV0IDwgMCkgewo+ICAJ
+CURSTV9FUlJPUigiZmFpbGVkIHRvIHBvd2VyIG9uIGRzaVxuIik7Cj4gIAkJcmV0dXJuOwo+ICAJ
+fQo+ICAKPiArCXVzbGVlcF9yYW5nZSgyMDAwMCwgMjEwMDApOwo+ICsKPiAgCW10a19kc2lfcnh0
+eF9jb250cm9sKGRzaSk7Cj4gKwltdGtfZHNpX3BoeV90aW1jb25maWcoZHNpKTsKPiArCW10a19k
+c2lfcHNfY29udHJvbF92YWN0KGRzaSk7Cj4gKwltdGtfZHNpX3NldF92bV9jbWQoZHNpKTsKPiAr
+CW10a19kc2lfY29uZmlnX3Zkb190aW1pbmcoZHNpKTsKPiArCW10a19kc2lfc2V0X2ludGVycnVw
+dF9lbmFibGUoZHNpKTsKPiAgCj4gKwltdGtfZHNpX2VuYWJsZShkc2kpOwo+ICAJbXRrX2RzaV9j
+bGtfdWxwX21vZGVfbGVhdmUoZHNpKTsKPiAgCW10a19kc2lfbGFuZTBfdWxwX21vZGVfbGVhdmUo
+ZHNpKTsKPiAgCW10a19kc2lfY2xrX2hzX21vZGUoZHNpLCAwKTsKPiAtCW10a19kc2lfc2V0X21v
+ZGUoZHNpKTsKPiAgCj4gLQltdGtfZHNpX3BzX2NvbnRyb2xfdmFjdChkc2kpOwo+IC0JbXRrX2Rz
+aV9jb25maWdfdmRvX3RpbWluZyhkc2kpOwo+IC0JbXRrX2RzaV9zZXRfaW50ZXJydXB0X2VuYWJs
+ZShkc2kpOwo+ICsJaWYgKGRzaS0+cGFuZWwpIHsKPiArCQlpZiAoZHJtX3BhbmVsX3ByZXBhcmUo
+ZHNpLT5wYW5lbCkpIHsKPiArCQkJRFJNX0VSUk9SKCJmYWlsZWQgdG8gcHJlcGFyZSB0aGUgcGFu
+ZWxcbiIpOwo+ICsJCQlyZXR1cm47Cj4gKwkJfQo+ICsKPiArCQlpZiAoZHJtX3BhbmVsX2VuYWJs
+ZShkc2ktPnBhbmVsKSkgewo+ICsJCQlEUk1fRVJST1IoImZhaWxlZCB0byBlbmFibGUgdGhlIHBh
+bmVsXG4iKTsKPiArCQkJcmV0dXJuOwo+ICsJCX0KPiArCX0KCkkgdGhpbmsgZHJtX3BhbmVsX3By
+ZXBhcmUoKSBzaG91bGQgYmUgY2FsbGVkIGJlZm9yZSBEU0kgaXMgZW5hYmxlZCBhbmQKZHJtX3Bh
+bmVsX2VuYWJsZSgpIHNob3VsZCBiZSBjYWxsZWQgYWZ0ZXIgRFNJIGlzIGVuYWJsZWQuIEJ1dCB5
+b3UgbWF5CmVuY291bnRlciB0aGUgcHJvYmxlbSB0aGF0IHBhbmVsIG5lZWQgdHJhbnNmZXIgZGF0
+YSB3aGVuIHByZXBhcmUgYW5kIHlvdQpjYW4gcmVmZXIgdG8gWzFdLgoKWzFdCmh0dHA6Ly9seHIu
+ZnJlZS1lbGVjdHJvbnMuY29tL3NvdXJjZS9kcml2ZXJzL2dwdS9kcm0vZXh5bm9zL2V4eW5vc19k
+cm1fZHNpLmMjTDE0MzEKCj4gIAo+ICAJbXRrX2RzaV9zZXRfbW9kZShkc2kpOwo+ICAJbXRrX2Rz
+aV9jbGtfaHNfbW9kZShkc2ksIDEpOwo+IEBAIC01OTAsNiArNjU1LDcgQEAgc3RhdGljIHZvaWQg
+bXRrX291dHB1dF9kc2lfZGlzYWJsZShzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAJCX0KPiAgCX0K
+PiAgCj4gKwltdGtfZHNpX3N0b3AoZHNpKTsKPiAgCW10a19kc2lfcG93ZXJvZmYoZHNpKTsKPiAg
+Cj4gIAlkc2ktPmVuYWJsZWQgPSBmYWxzZTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19taXBpX3R4LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21p
+cGlfdHguYwo+IGluZGV4IDEwOGQzMWEuLjM0ZTk1YzYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX21pcGlfdHguYwo+IEBAIC0xNzcsNyArMTc3LDkgQEAgc3RhdGljIGludCBtdGtf
+bWlwaV90eF9wbGxfcHJlcGFyZShzdHJ1Y3QgY2xrX2h3ICpodykKPiAgCj4gIAlkZXZfZGJnKG1p
+cGlfdHgtPmRldiwgInByZXBhcmU6ICV1IEh6XG4iLCBtaXBpX3R4LT5kYXRhX3JhdGUpOwo+ICAK
+PiAtCWlmIChtaXBpX3R4LT5kYXRhX3JhdGUgPj0gNTAwMDAwMDAwKSB7Cj4gKwlpZiAobWlwaV90
+eC0+ZGF0YV9yYXRlID4gMTI1MDAwMDAwMCkgewo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsJfSBl
+bHNlIGlmIChtaXBpX3R4LT5kYXRhX3JhdGUgPj0gNTAwMDAwMDAwKSB7CgpXaGF0IGlzIHRoZSBy
+ZWxhdGlvbnNoaXAgb2YgdGhpcyBwYXJ0IGFuZCAiRFNJIGRyaXZlciBmbG93Ij8gV291bGQgdGhp
+cwpiZSBhbiBpbmRlcGVuZGVudCBwYXRjaD8KCj4gIAkJdHhkaXYgPSAxOwo+ICAJCXR4ZGl2MCA9
+IDA7Cj4gIAkJdHhkaXYxID0gMDsKPiBAQCAtMjAxLDYgKzIwMywxMCBAQCBzdGF0aWMgaW50IG10
+a19taXBpX3R4X3BsbF9wcmVwYXJlKHN0cnVjdCBjbGtfaHcgKmh3KQo+ICAJCXJldHVybiAtRUlO
+VkFMOwo+ICAJfQo+ICAKPiArCW10a19taXBpX3R4X3VwZGF0ZV9iaXRzKG1pcGlfdHgsIE1JUElU
+WF9EU0lfVE9QX0NPTiwKPiArCQkJCVJHX0RTSV9MTlRfSU1QX0NBTF9DT0RFIHwgUkdfRFNJX0xO
+VF9IU19CSUFTX0VOLAo+ICsJCQkJKDggPDwgNCkgfCBSR19EU0lfTE5UX0hTX0JJQVNfRU4pOwo+
+ICsKPiAgCW10a19taXBpX3R4X3VwZGF0ZV9iaXRzKG1pcGlfdHgsIE1JUElUWF9EU0lfQkdfQ09O
+LAo+ICAJCQkJUkdfRFNJX1ZPVVRfTVNLIHwKPiAgCQkJCVJHX0RTSV9CR19DS0VOIHwgUkdfRFNJ
+X0JHX0NPUkVfRU4sCj4gIAoKWW91IG1vZGlmeSBtYW55IHBsYWNlIHdpdGhvdXQgJ2lmIChkc2kt
+PnBhbmVsKScuIEFyZSBhbGwgdGhlc2UKbW9kaWZpY2F0aW9ucyBjb21wYXRpYmxlIHdpdGggYnJp
+ZGdlIGNhc2U/CgpSZWdhcmRzLApDSwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
