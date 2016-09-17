@@ -1,29 +1,31 @@
 From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net] net: ethernet: mediatek: fix module loading
- automatically based on MODULE_DEVICE_TABLE
-Date: Fri, 16 Sep 2016 04:20:45 -0400 (EDT)
-Message-ID: <20160916.042045.2235738935632187131.davem@davemloft.net>
-References: <1473859774-6327-1-git-send-email-sean.wang@mediatek.com>
+Subject: Re: [PATCH net-next v2 0/3] net: ethernet: mediatek: add HW LRO
+ functions
+Date: Sat, 17 Sep 2016 09:46:26 -0400 (EDT)
+Message-ID: <20160917.094626.1566729007953672684.davem@davemloft.net>
+References: <1473832739-4983-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1473859774-6327-1-git-send-email-sean.wang@mediatek.com>
+In-Reply-To: <1473832739-4983-1-git-send-email-nelson.chang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: sean.wang@mediatek.com
-Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
+To: nelson.chang@mediatek.com
+Cc: john@phrozen.org, f.fainelli@gmail.com, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang@mediatek.com>
-Date: Wed, 14 Sep 2016 21:29:34 +0800
+From: Nelson Chang <nelson.chang@mediatek.com>
+Date: Wed, 14 Sep 2016 13:58:56 +0800
 
-> From: Sean Wang <sean.wang@mediatek.com>
+> The series add the large receive offload (LRO) functions by hardware and
+> the ethtool functions to configure RX flows of HW LRO.
 > 
-> The device table is required to load modules based on
-> modaliases. After adding MODULE_DEVICE_TABLE, below entries
-> for example will be added to modules.alias:
-> alias of:N*T*Cmediatek,mt7623-ethC* mtk_eth_soc
+> changes since v2:
+> - Add ndo_fix_features to prevent NETIF_F_LRO off while RX flow is programmed
+> - Rephrase the dts property is a capability if the hardware supports LRO
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> changes since v1:
+> - Add HW LRO support
+> - Add ethtool hooks to set LRO RX flows
 
-Applied.
+This doesn't apply cleanly to net-next.
