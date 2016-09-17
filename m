@@ -1,44 +1,40 @@
 From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: [PATCH net-next v3 3/3] net: ethernet: mediatek: add the dts property to set if the HW supports LRO
-Date: Sat, 17 Sep 2016 23:50:57 +0800
-Message-ID: <1474127457-13143-4-git-send-email-nelson.chang@mediatek.com>
-References: <1474127457-13143-1-git-send-email-nelson.chang@mediatek.com>
+Subject: [PATCH net-next v3 0/3] net: ethernet: mediatek: add HW LRO functions
+Date: Sat, 17 Sep 2016 23:54:07 +0800
+Message-ID: <1474127650-20271-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1474127457-13143-1-git-send-email-nelson.chang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
 To: john@phrozen.org, davem@davemloft.net
 Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com, Nelson Chang <nelson.chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add the dts property for the capability if the hardware supports LRO.
+The series add the large receive offload (LRO) functions by hardware and
+the ethtool functions to configure RX flows of HW LRO.
 
-Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
----
- Documentation/devicetree/bindings/net/mediatek-net.txt | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+changes since v3:
+- Respin the patch by the newer driver
+- Move the dts description of hwlro to optional properties
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index 32eaaca..6103e55 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -24,7 +24,7 @@ Required properties:
- Optional properties:
- - interrupt-parent: Should be the phandle for the interrupt controller
-   that services interrupts for this device
--
-+- mediatek,hwlro: the capability if the hardware supports LRO functions
- 
- * Ethernet MAC node
- 
-@@ -51,6 +51,7 @@ eth: ethernet@1b100000 {
- 	reset-names = "eth";
- 	mediatek,ethsys = <&ethsys>;
- 	mediatek,pctl = <&syscfg_pctl_a>;
-+	mediatek,hwlro;
- 	#address-cells = <1>;
- 	#size-cells = <0>;
- 
+changes since v2:
+- Add ndo_fix_features to prevent NETIF_F_LRO off while RX flow is programmed
+- Rephrase the dts property is a capability if the hardware supports LRO
+
+changes since v1:
+- Add HW LRO support
+- Add ethtool hooks to set LRO RX flows
+
+Nelson Chang (3):
+  net: ethernet: mediatek: add HW LRO functions of PDMA RX rings
+  net: ethernet: mediatek: add ethtool functions to configure RX flows
+    of HW LRO
+  net: ethernet: mediatek: add dts configuration to enable HW LRO
+
+ .../devicetree/bindings/net/mediatek-net.txt       |   2 +
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c        | 433 +++++++++++++++++++--
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h        |  75 +++-
+ 3 files changed, 485 insertions(+), 25 deletions(-)
+
 -- 
 1.9.1
