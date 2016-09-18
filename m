@@ -1,64 +1,44 @@
-From: Baoyou Xie <baoyou.xie@linaro.org>
-Subject: [PATCH] drm/mediatek: mark symbols static where possible
-Date: Sun, 18 Sep 2016 22:02:15 +0800
-Message-ID: <1474207335-21966-1-git-send-email-baoyou.xie@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Subject: [PATCH] ARM: mediatek: clean up mach-mediatek/Makefile
+Date: Mon, 19 Sep 2016 03:11:13 +0900
+Message-ID: <1474222273-23116-1-git-send-email-yamada.masahiro@socionext.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We get 4 warnings when building kernel with W=1:
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1089:6: warning: no previous prototype for 'mtk_hdmi_audio_enable' [-Wmissing-prototypes]
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1095:6: warning: no previous prototype for 'mtk_hdmi_audio_disable' [-Wmissing-prototypes]
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1101:5: warning: no previous prototype for 'mtk_hdmi_audio_set_param' [-Wmissing-prototypes]
-drivers/gpu/drm/mediatek/mtk_hdmi.c:1627:5: warning: no previous prototype for 'mtk_hdmi_audio_digital_mute' [-Wmissing-prototypes]
+Kbuild descends into arch/arm/mach-mediatek/Makefile only when
+CONFIG_ARCH_MEDIATEK is enabled.  So, obj-$(CONFIG_ARCH_MEDIATEK)
+is always equivalent to obj-y in this Makefile.
 
-In fact, both functions are only used in the file in which they are
-declared and don't need a declaration, but can be made static.
-So this patch marks both functions with 'static'.
-
-Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
+Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 334562d..be4e19c 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1086,19 +1086,19 @@ static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
- 	return 0;
- }
- 
--void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
-+static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
- {
- 	mtk_hdmi_aud_enable_packet(hdmi, true);
- 	hdmi->audio_enable = true;
- }
- 
--void mtk_hdmi_audio_disable(struct mtk_hdmi *hdmi)
-+static void mtk_hdmi_audio_disable(struct mtk_hdmi *hdmi)
- {
- 	mtk_hdmi_aud_enable_packet(hdmi, false);
- 	hdmi->audio_enable = false;
- }
- 
--int mtk_hdmi_audio_set_param(struct mtk_hdmi *hdmi,
-+static int mtk_hdmi_audio_set_param(struct mtk_hdmi *hdmi,
- 			     struct hdmi_audio_param *param)
- {
- 	if (!hdmi->audio_enable) {
-@@ -1624,7 +1624,8 @@ static void mtk_hdmi_audio_shutdown(struct device *dev, void *data)
- 	mtk_hdmi_audio_disable(hdmi);
- }
- 
--int mtk_hdmi_audio_digital_mute(struct device *dev, void *data, bool enable)
-+static int
-+mtk_hdmi_audio_digital_mute(struct device *dev, void *data, bool enable)
- {
- 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
- 
+ arch/arm/mach-mediatek/Makefile | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/mach-mediatek/Makefile b/arch/arm/mach-mediatek/Makefile
+index 2116460..dadae67 100644
+--- a/arch/arm/mach-mediatek/Makefile
++++ b/arch/arm/mach-mediatek/Makefile
+@@ -1,4 +1,2 @@
+-ifeq ($(CONFIG_SMP),y)
+-obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o
+-endif
+-obj-$(CONFIG_ARCH_MEDIATEK) += mediatek.o
++obj-$(CONFIG_SMP)	+= platsmp.o
++obj-y			+= mediatek.o
 -- 
-2.7.4
+1.9.1
