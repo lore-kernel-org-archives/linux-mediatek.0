@@ -1,40 +1,64 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: [PATCH net-next v3 0/3] net: ethernet: mediatek: add HW LRO functions
-Date: Sat, 17 Sep 2016 23:54:07 +0800
-Message-ID: <1474127650-20271-1-git-send-email-nelson.chang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com, Nelson Chang <nelson.chang@mediatek.com>
+From: Baoyou Xie <baoyou.xie@linaro.org>
+Subject: [PATCH] drm/mediatek: mark symbols static where possible
+Date: Sun, 18 Sep 2016 22:02:15 +0800
+Message-ID: <1474207335-21966-1-git-send-email-baoyou.xie@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn
 List-Id: linux-mediatek@lists.infradead.org
 
-The series add the large receive offload (LRO) functions by hardware and
-the ethtool functions to configure RX flows of HW LRO.
+We get 4 warnings when building kernel with W=1:
+drivers/gpu/drm/mediatek/mtk_hdmi.c:1089:6: warning: no previous prototype for 'mtk_hdmi_audio_enable' [-Wmissing-prototypes]
+drivers/gpu/drm/mediatek/mtk_hdmi.c:1095:6: warning: no previous prototype for 'mtk_hdmi_audio_disable' [-Wmissing-prototypes]
+drivers/gpu/drm/mediatek/mtk_hdmi.c:1101:5: warning: no previous prototype for 'mtk_hdmi_audio_set_param' [-Wmissing-prototypes]
+drivers/gpu/drm/mediatek/mtk_hdmi.c:1627:5: warning: no previous prototype for 'mtk_hdmi_audio_digital_mute' [-Wmissing-prototypes]
 
-changes since v3:
-- Respin the patch by the newer driver
-- Move the dts description of hwlro to optional properties
+In fact, both functions are only used in the file in which they are
+declared and don't need a declaration, but can be made static.
+So this patch marks both functions with 'static'.
 
-changes since v2:
-- Add ndo_fix_features to prevent NETIF_F_LRO off while RX flow is programmed
-- Rephrase the dts property is a capability if the hardware supports LRO
+Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-changes since v1:
-- Add HW LRO support
-- Add ethtool hooks to set LRO RX flows
-
-Nelson Chang (3):
-  net: ethernet: mediatek: add HW LRO functions of PDMA RX rings
-  net: ethernet: mediatek: add ethtool functions to configure RX flows
-    of HW LRO
-  net: ethernet: mediatek: add dts configuration to enable HW LRO
-
- .../devicetree/bindings/net/mediatek-net.txt       |   2 +
- drivers/net/ethernet/mediatek/mtk_eth_soc.c        | 433 +++++++++++++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h        |  75 +++-
- 3 files changed, 485 insertions(+), 25 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 334562d..be4e19c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1086,19 +1086,19 @@ static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
+ 	return 0;
+ }
+ 
+-void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
++static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
+ {
+ 	mtk_hdmi_aud_enable_packet(hdmi, true);
+ 	hdmi->audio_enable = true;
+ }
+ 
+-void mtk_hdmi_audio_disable(struct mtk_hdmi *hdmi)
++static void mtk_hdmi_audio_disable(struct mtk_hdmi *hdmi)
+ {
+ 	mtk_hdmi_aud_enable_packet(hdmi, false);
+ 	hdmi->audio_enable = false;
+ }
+ 
+-int mtk_hdmi_audio_set_param(struct mtk_hdmi *hdmi,
++static int mtk_hdmi_audio_set_param(struct mtk_hdmi *hdmi,
+ 			     struct hdmi_audio_param *param)
+ {
+ 	if (!hdmi->audio_enable) {
+@@ -1624,7 +1624,8 @@ static void mtk_hdmi_audio_shutdown(struct device *dev, void *data)
+ 	mtk_hdmi_audio_disable(hdmi);
+ }
+ 
+-int mtk_hdmi_audio_digital_mute(struct device *dev, void *data, bool enable)
++static int
++mtk_hdmi_audio_digital_mute(struct device *dev, void *data, bool enable)
+ {
+ 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+ 
 -- 
-1.9.1
+2.7.4
