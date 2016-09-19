@@ -1,63 +1,63 @@
-From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v14 0/4] Mediatek MT8173 CMDQ support
-Date: Mon, 19 Sep 2016 14:43:59 +0800
-Message-ID: <1474267439.23652.2.camel@mtksdaap41>
-References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH v5 0/2] mtd: nand: fix writing incorrect ECC parity data
+ in OOB region
+Date: Mon, 19 Sep 2016 11:47:58 +0200
+Message-ID: <20160919114758.37ec6606@bbrezillon>
+References: <1474253606-9965-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1473039885-24009-1-git-send-email-hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh@media>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1474253606-9965-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-09-05 at 09:44 +0800, HS Liao wrote:
-> Hi,
-> 
-> This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
-> to help write registers with critical time limitation, such as
-> updating display configuration during the vblank. It controls Global
-> Command Engine (GCE) hardware to achieve this requirement.
-> 
-> These patches have a build dependency on top of v4.8-rc1.
-> 
-> Changes since v13:
->  - move to mailbox folder
->  - simplify cmdq_thread_is_in_wfe
-> 
-> Best regards,
-> HS Liao
-> 
-> HS Liao (4):
->   dt-bindings: soc: Add documentation for the MediaTek GCE unit
->   CMDQ: Mediatek CMDQ driver
->   arm64: dts: mt8173: Add GCE node
->   CMDQ: save more energy in idle
-> 
->  .../devicetree/bindings/mailbox/mtk-gce.txt        |  43 +
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
->  drivers/mailbox/Kconfig                            |  10 +
->  drivers/mailbox/Makefile                           |   2 +
->  drivers/mailbox/mtk-cmdq.c                         | 965 +++++++++++++++++++++
->  include/linux/mailbox/mtk-cmdq.h                   | 180 ++++
->  6 files changed, 1210 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
->  create mode 100644 drivers/mailbox/mtk-cmdq.c
->  create mode 100644 include/linux/mailbox/mtk-cmdq.h
-> 
+On Mon, 19 Sep 2016 10:53:24 +0800
+RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 
-Hi Jassi,
+> From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> This series fix chances to write incorrect ECC data which may cause uncorrectable ECC error when reading.
 
-Sorry to disturb you.
-Do you have any further comment on CMDQ v14?
+Applied (I'll send a PR to Brian).
 
-Thanks.
-HS
+Thanks,
 
+Boris
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
+> change since v4:
+> - use (i / 4) instead of (i >> 2) to make code more clear.
+> 
+> changes since v3:
+> - use macro for function arguments.
+> 
+> changes since v2:
+> - use macro for shift operation.
+> 
+> changes since v1:
+> - separate patches into 2.
+> - use shift operator with byte access to avoid endianness conversion problems.
+> - follow linux coding style.
+> 
+> The patch passed the test of UBIFS file-system read/write on Mediatek's RFB. The tested driver is checked-out from LEDE OpenWRT project's upstream driver, which is pretty much same as nand/next branch upstream driver(git clone https://git.lede-project.org/source.git).
+> 
+> 
+> RogerCC Lin (2):
+>   mtd: nand: fix generating over-boundary ECC data when writing
+>   mtd: nand: fix chances to create incomplete ECC data when writing
+> 
+>  drivers/mtd/nand/mtk_ecc.c  |   12 ++++++++----
+>  drivers/mtd/nand/mtk_nand.c |    7 +++++--
+>  2 files changed, 13 insertions(+), 6 deletions(-)
+> 
