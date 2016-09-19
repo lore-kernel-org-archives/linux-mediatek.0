@@ -1,61 +1,77 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v8 9/9] drm/mediatek: add support for Mediatek SoC MT2701
-Date: Mon, 19 Sep 2016 09:08:48 +0800
-Message-ID: <1474247328.24685.9.camel@mtksdaap41>
-References: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
- <1473681672-47144-10-git-send-email-yt.shen@mediatek.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [PATCH v2 2/4] docs-rst: Add compressed video formats used on
+ MT8173 codec driver
+Date: Mon, 19 Sep 2016 10:06:33 +0800
+Message-ID: <1474250793.25758.8.camel@mtksdaap41>
+References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
+         <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
+         <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
+         <e0d40ba4-a53e-72ca-0c45-2ab578922d9c@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1473681672-47144-10-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <e0d40ba4-a53e-72ca-0c45-2ab578922d9c@xs4all.nl>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gTW9uLCAyMDE2LTA5LTEyIGF0IDIwOjAxICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IFRoaXMgcGF0Y2ggYWRkIHN1cHBvcnQgZm9yIHRoZSBNZWRpYXRlayBNVDI3MDEgRElTUCBz
-dWJzeXN0ZW0uCj4gVGhlcmUgaXMgb25seSBvbmUgT1ZMIGVuZ2luZSBpbiBNVDI3MDEuCj4gCj4g
-U2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgICAgfCAgNiArKysrKysKPiAg
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAgICB8ICA2ICsrKysrKwo+
-ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgMTcgKysrKysr
-KysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
-YyB8ICA3ICsrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
-ICAgICB8IDI5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHNpLmMgICAgICAgICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgfCAgNiArKysrKysKPiAgNyBmaWxlcyBjaGFuZ2Vk
-LCA3MiBpbnNlcnRpb25zKCspCj4gCgpbc25pcC4uLl0KCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gaW5kZXggNGI0ZTQ0OS4uNDY1ODE5YiAxMDA2NDQK
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gKysr
-IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IEBAIC0xMTIs
-NiArMTEyLDcgQEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4gIAo+ICBzdGF0aWMgY29u
-c3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVO
-VF9JRF9NQVhdID0gewo+ICAJW0REUF9DT01QT05FTlRfQUFMXQk9IHsgTVRLX0RJU1BfQUFMLAkw
-LCBOVUxMIH0sCj4gKwlbRERQX0NPTVBPTkVOVF9CTFNdCT0geyBNVEtfRElTUF9QV00sCTAsIE5V
-TEwgfSwKCkkgd291bGQgbGlrZSB0byBtb3ZlIHRoaXMgbW9kaWZpY2F0aW9uIHRvIHRoZSBwYXRj
-aCBvZiAiQWRkIEJMUwpjb21wb25lbnQiLiBKdXN0IGxpa2UgJ3NoYWRvdyByZWdpc3RlcicsIGV2
-ZW4gd2UgZmlyc3QgaW50cm9kdWNlIGl0IGluCk1UMjcwMSwgd2Ugc2VwYXJhdGUgaXQgaW4gYW5v
-dGhlciBpbmRlcGVuZGVudCBwYXRjaCBiZWNhdXNlIGl0IG1heSBiZQppbmNsdWRlZCBpbiBvdGhl
-ciBNZWRpYXRlayBTb2MuIEkgcHJlZmVyIG1vZGlmaWNhdGlvbiBvZiB0aGlzIHBhdGNoIGlzCnNv
-bWV0aGluZyB3aGljaCBleGlzdCBpbiBNVDgxNzMgYnV0IGlzIGRpZmZlcmVudCBpbiBNVDI3MDEu
-IAoKUmVnYXJkcywKQ0sKCj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBdCT0geyBNVEtfRElTUF9D
-T0xPUiwJMCwgJmRkcF9jb2xvciB9LAo+ICAJW0REUF9DT01QT05FTlRfQ09MT1IxXQk9IHsgTVRL
-X0RJU1BfQ09MT1IsCTEsICZkZHBfY29sb3IgfSwKPiAgCVtERFBfQ09NUE9ORU5UX0RQSTBdCT0g
-eyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+IEBAIC0xMzAsMTEgKzEzMSwxNyBAQCBzdGF0aWMgY29u
-c3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVO
-VF9JRF9NQVhdID0gewo+ICAJW0REUF9DT01QT05FTlRfV0RNQTFdCT0geyBNVEtfRElTUF9XRE1B
-LAkxLCBOVUxMIH0sCj4gIH07Cj4gIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+Hi Hans,
+
+On Wed, 2016-09-14 at 13:51 +0200, Hans Verkuil wrote:
+> Hi Tiffany,
+> 
+> On 09/09/2016 05:48 PM, Tiffany Lin wrote:
+> > Add V4L2_PIX_FMT_MT21C documentation
+> > 
+> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
+> > ---
+> >  Documentation/media/uapi/v4l/pixfmt-reserved.rst |   10 ++++++++++
+> >  1 file changed, 10 insertions(+)
+> > 
+> > diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > index 0dd2f7f..0989e99 100644
+> > --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
+> > @@ -339,7 +339,17 @@ please make a proposal on the linux-media mailing list.
+> >  	  array. Anything what's in between the UYVY lines is JPEG data and
+> >  	  should be concatenated to form the JPEG stream.
+> >  
+> > +    -  .. _V4L2-PIX-FMT-MT21C:
+> >  
+> > +       -  ``V4L2_PIX_FMT_MT21C``
+> > +
+> > +       -  'MT21C'
+> > +
+> > +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
+> > +          The compression is lossless.
+> > +          It is an opaque intermediate format, and MDP HW could convert
+> 
+> Is it OK if I change this to:
+> 
+> " and the MDP hardware must be used to convert"
+> 
+
+Yes. It's better to make it more clear how to use MT21C.
+Thanks for the help.
+
+> > +          V4L2_PIX_FMT_MT21C to V4L2_PIX_FMT_NV12M,
+> > +          V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
+> 
+> and here "and" should be replaced by "or".
+> 
+Yes. it should be "or". Sorry about that.
+
+
+best regards,
+Tiffany
+
+> Regards,
+> 
+> 	Hans
+> 
+> >  
+> >  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+> >  
+> > 
