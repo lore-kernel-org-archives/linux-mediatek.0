@@ -1,77 +1,70 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v2 2/4] docs-rst: Add compressed video formats used on
- MT8173 codec driver
-Date: Mon, 19 Sep 2016 10:06:33 +0800
-Message-ID: <1474250793.25758.8.camel@mtksdaap41>
-References: <1473436087-21943-1-git-send-email-tiffany.lin@mediatek.com>
-         <1473436087-21943-2-git-send-email-tiffany.lin@mediatek.com>
-         <1473436087-21943-3-git-send-email-tiffany.lin@mediatek.com>
-         <e0d40ba4-a53e-72ca-0c45-2ab578922d9c@xs4all.nl>
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v5 1/2] mtd: nand: fix generating over-boundary ECC data when
+ writing
+Date: Mon, 19 Sep 2016 10:53:25 +0800
+Message-ID: <1474253606-9965-2-git-send-email-rogercc.lin@mediatek.com>
+References: <1474253606-9965-1-git-send-email-rogercc.lin@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e0d40ba4-a53e-72ca-0c45-2ab578922d9c@xs4all.nl>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1474253606-9965-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
+From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On Wed, 2016-09-14 at 13:51 +0200, Hans Verkuil wrote:
-> Hi Tiffany,
-> 
-> On 09/09/2016 05:48 PM, Tiffany Lin wrote:
-> > Add V4L2_PIX_FMT_MT21C documentation
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > ---
-> >  Documentation/media/uapi/v4l/pixfmt-reserved.rst |   10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> > 
-> > diff --git a/Documentation/media/uapi/v4l/pixfmt-reserved.rst b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> > index 0dd2f7f..0989e99 100644
-> > --- a/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> > +++ b/Documentation/media/uapi/v4l/pixfmt-reserved.rst
-> > @@ -339,7 +339,17 @@ please make a proposal on the linux-media mailing list.
-> >  	  array. Anything what's in between the UYVY lines is JPEG data and
-> >  	  should be concatenated to form the JPEG stream.
-> >  
-> > +    -  .. _V4L2-PIX-FMT-MT21C:
-> >  
-> > +       -  ``V4L2_PIX_FMT_MT21C``
-> > +
-> > +       -  'MT21C'
-> > +
-> > +       -  Compressed two-planar YVU420 format used by Mediatek MT8173.
-> > +          The compression is lossless.
-> > +          It is an opaque intermediate format, and MDP HW could convert
-> 
-> Is it OK if I change this to:
-> 
-> " and the MDP hardware must be used to convert"
-> 
+When mtk_ecc_encode() is writing the ECC parity data to the OOB
+region,because each register is 4 bytes in length,but the len's unit is
+in bytes,the operation in the for loop will cross the ECC's boundary.
 
-Yes. It's better to make it more clear how to use MT21C.
-Thanks for the help.
+Signed-off-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+---
+ drivers/mtd/nand/mtk_ecc.c |   12 ++++++++----
+ 1 files changed, 8 insertions(+), 4 deletions(-)
 
-> > +          V4L2_PIX_FMT_MT21C to V4L2_PIX_FMT_NV12M,
-> > +          V4L2_PIX_FMT_YUV420M and V4L2_PIX_FMT_YVU420.
-> 
-> and here "and" should be replaced by "or".
-> 
-Yes. it should be "or". Sorry about that.
-
-
-best regards,
-Tiffany
-
-> Regards,
-> 
-> 	Hans
-> 
-> >  
-> >  .. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
-> >  
-> > 
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index 25a4fbd..d54f666 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -366,7 +366,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 		   u8 *data, u32 bytes)
+ {
+ 	dma_addr_t addr;
+-	u32 *p, len, i;
++	u8 *p;
++	u32 len, i, val;
+ 	int ret = 0;
+ 
+ 	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+@@ -392,11 +393,14 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 
+ 	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+ 	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+-	p = (u32 *)(data + bytes);
++	p = data + bytes;
+ 
+ 	/* write the parity bytes generated by the ECC back to the OOB region */
+-	for (i = 0; i < len; i++)
+-		p[i] = readl(ecc->regs + ECC_ENCPAR(i));
++	for (i = 0; i < len; i++) {
++		if ((i % 4) == 0)
++			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
++		p[i] = (val >> ((i % 4) * 8)) & 0xff;
++	}
+ timeout:
+ 
+ 	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
+-- 
+1.7.0.4
