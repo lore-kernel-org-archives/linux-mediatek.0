@@ -1,56 +1,23 @@
-From: Rick Chang <rick.chang@mediatek.com>
-Subject: [RESEND PATCH 3/3] arm: dts: mt2701: Add node for Mediatek JPEG Decoder
-Date: Mon, 19 Sep 2016 11:05:41 +0800
-Message-ID: <1474254341-23715-4-git-send-email-rick.chang@mediatek.com>
-References: <1474254341-23715-1-git-send-email-rick.chang@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next v3 0/3] net: ethernet: mediatek: add HW LRO
+ functions
+Date: Mon, 19 Sep 2016 01:41:16 -0400 (EDT)
+Message-ID: <20160919.014116.1081824362658548519.davem@davemloft.net>
+References: <1474127650-20271-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1474254341-23715-1-git-send-email-rick.chang@mediatek.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Rick Chang <rick.chang@mediatek.com>
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1474127650-20271-1-git-send-email-nelson.chang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: nelson.chang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: Rick Chang <rick.chang@mediatek.com>
-Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
----
-This patch depends on: 
-  CCF "arm: dts: mt2701: Add clock controller device nodes"[1]
-  power domain patch "Mediatek MT2701 SCPSYS power domain support v7"[2]
-  iommu and smi "Add the dtsi node of iommu and smi for mt2701"[3]
+From: Nelson Chang <nelson.chang@mediatek.com>
+Date: Sat, 17 Sep 2016 23:54:07 +0800
 
-[1] https://patchwork.kernel.org/patch/9109081
-[2] http://lists.infradead.org/pipermail/linux-mediatek/2016-May/005429.html
-[3] https://patchwork.kernel.org/patch/9164013/
----
- arch/arm/boot/dts/mt2701.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+> The series add the large receive offload (LRO) functions by hardware and
+> the ethtool functions to configure RX flows of HW LRO.
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index d550d36..a9838bd 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -284,6 +284,20 @@
- 		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
- 	};
- 
-+	jpegdec: jpegdec@15004000 {
-+		compatible = "mediatek,mt2701-jpgdec";
-+		reg = <0 0x15004000 0 0x1000>;
-+		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
-+		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
-+			  <&imgsys CLK_IMG_JPGDEC>;
-+		clock-names = "jpgdec-smi",
-+			      "jpgdec";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-+		mediatek,larb = <&larb2>;
-+		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
-+			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
-+	};
-+
- 	vdecsys: syscon@16000000 {
- 		compatible = "mediatek,mt2701-vdecsys", "syscon";
- 		reg = <0 0x16000000 0 0x1000>;
--- 
-1.9.1
+Series applied.
