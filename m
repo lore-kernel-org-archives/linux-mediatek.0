@@ -1,44 +1,61 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: [PATCH] ARM: mediatek: clean up mach-mediatek/Makefile
-Date: Mon, 19 Sep 2016 03:11:13 +0900
-Message-ID: <1474222273-23116-1-git-send-email-yamada.masahiro@socionext.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v8 9/9] drm/mediatek: add support for Mediatek SoC MT2701
+Date: Mon, 19 Sep 2016 09:08:48 +0800
+Message-ID: <1474247328.24685.9.camel@mtksdaap41>
+References: <1473681672-47144-1-git-send-email-yt.shen@mediatek.com>
+ <1473681672-47144-10-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-arm-kernel@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Masahiro Yamada <yamada.masahiro@socionext.com>, linux-mediatek@lists.infradead.org, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1473681672-47144-10-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Kbuild descends into arch/arm/mach-mediatek/Makefile only when
-CONFIG_ARCH_MEDIATEK is enabled.  So, obj-$(CONFIG_ARCH_MEDIATEK)
-is always equivalent to obj-y in this Makefile.
-
-Signed-off-by: Masahiro Yamada <yamada.masahiro@socionext.com>
----
-
- arch/arm/mach-mediatek/Makefile | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm/mach-mediatek/Makefile b/arch/arm/mach-mediatek/Makefile
-index 2116460..dadae67 100644
---- a/arch/arm/mach-mediatek/Makefile
-+++ b/arch/arm/mach-mediatek/Makefile
-@@ -1,4 +1,2 @@
--ifeq ($(CONFIG_SMP),y)
--obj-$(CONFIG_ARCH_MEDIATEK) += platsmp.o
--endif
--obj-$(CONFIG_ARCH_MEDIATEK) += mediatek.o
-+obj-$(CONFIG_SMP)	+= platsmp.o
-+obj-y			+= mediatek.o
--- 
-1.9.1
+SGksIFlUOgoKT24gTW9uLCAyMDE2LTA5LTEyIGF0IDIwOjAxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IFRoaXMgcGF0Y2ggYWRkIHN1cHBvcnQgZm9yIHRoZSBNZWRpYXRlayBNVDI3MDEgRElTUCBz
+dWJzeXN0ZW0uCj4gVGhlcmUgaXMgb25seSBvbmUgT1ZMIGVuZ2luZSBpbiBNVDI3MDEuCj4gCj4g
+U2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYyAgICAgfCAgNiArKysrKysKPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAgICB8ICA2ICsrKysrKwo+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHAuYyAgICAgIHwgMTcgKysrKysr
+KysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
+YyB8ICA3ICsrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMg
+ICAgICB8IDI5ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHNpLmMgICAgICAgICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgfCAgNiArKysrKysKPiAgNyBmaWxlcyBjaGFuZ2Vk
+LCA3MiBpbnNlcnRpb25zKCspCj4gCgpbc25pcC4uLl0KCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gaW5kZXggNGI0ZTQ0OS4uNDY1ODE5YiAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IEBAIC0xMTIs
+NiArMTEyLDcgQEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4gIAo+ICBzdGF0aWMgY29u
+c3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVO
+VF9JRF9NQVhdID0gewo+ICAJW0REUF9DT01QT05FTlRfQUFMXQk9IHsgTVRLX0RJU1BfQUFMLAkw
+LCBOVUxMIH0sCj4gKwlbRERQX0NPTVBPTkVOVF9CTFNdCT0geyBNVEtfRElTUF9QV00sCTAsIE5V
+TEwgfSwKCkkgd291bGQgbGlrZSB0byBtb3ZlIHRoaXMgbW9kaWZpY2F0aW9uIHRvIHRoZSBwYXRj
+aCBvZiAiQWRkIEJMUwpjb21wb25lbnQiLiBKdXN0IGxpa2UgJ3NoYWRvdyByZWdpc3RlcicsIGV2
+ZW4gd2UgZmlyc3QgaW50cm9kdWNlIGl0IGluCk1UMjcwMSwgd2Ugc2VwYXJhdGUgaXQgaW4gYW5v
+dGhlciBpbmRlcGVuZGVudCBwYXRjaCBiZWNhdXNlIGl0IG1heSBiZQppbmNsdWRlZCBpbiBvdGhl
+ciBNZWRpYXRlayBTb2MuIEkgcHJlZmVyIG1vZGlmaWNhdGlvbiBvZiB0aGlzIHBhdGNoIGlzCnNv
+bWV0aGluZyB3aGljaCBleGlzdCBpbiBNVDgxNzMgYnV0IGlzIGRpZmZlcmVudCBpbiBNVDI3MDEu
+IAoKUmVnYXJkcywKQ0sKCj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBdCT0geyBNVEtfRElTUF9D
+T0xPUiwJMCwgJmRkcF9jb2xvciB9LAo+ICAJW0REUF9DT01QT05FTlRfQ09MT1IxXQk9IHsgTVRL
+X0RJU1BfQ09MT1IsCTEsICZkZHBfY29sb3IgfSwKPiAgCVtERFBfQ09NUE9ORU5UX0RQSTBdCT0g
+eyBNVEtfRFBJLAkJMCwgTlVMTCB9LAo+IEBAIC0xMzAsMTEgKzEzMSwxNyBAQCBzdGF0aWMgY29u
+c3Qgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVO
+VF9JRF9NQVhdID0gewo+ICAJW0REUF9DT01QT05FTlRfV0RNQTFdCT0geyBNVEtfRElTUF9XRE1B
+LAkxLCBOVUxMIH0sCj4gIH07Cj4gIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
+ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpLWRldmVsCg==
