@@ -1,50 +1,146 @@
-From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v5 0/2] mtd: nand: fix writing incorrect ECC parity data in
- OOB region
-Date: Mon, 19 Sep 2016 10:53:24 +0800
-Message-ID: <1474253606-9965-1-git-send-email-rogercc.lin@mediatek.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: [RESEND PATCH 0/3] Add Mediatek JPEG Decoder
+Date: Mon, 19 Sep 2016 11:05:38 +0800
+Message-ID: <1474254341-23715-1-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Rick Chang <rick.chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+This series of patches provide a v4l2 driver to control Mediatek JPEG hw
+for decoding JPEG image and Motion JPEG bitstream.
 
-This series fix chances to write incorrect ECC data which may cause uncorrectable ECC error when reading.
+* Dependency
+The patch "arm: dts: mt2701: Add node for JPEG decoder" depends on: 
+  CCF "arm: dts: mt2701: Add clock controller device nodes"[1]
+  power domain patch "Mediatek MT2701 SCPSYS power domain support v7"[2]
+  iommu and smi "Add the dtsi node of iommu and smi for mt2701"[3]
 
-change since v4:
-- use (i / 4) instead of (i >> 2) to make code more clear.
+[1] https://patchwork.kernel.org/patch/9109081
+[2] http://lists.infradead.org/pipermail/linux-mediatek/2016-May/005429.html
+[3] https://patchwork.kernel.org/patch/9164013/
 
-changes since v3:
-- use macro for function arguments.
+* Compliance test
+v4l2-compliance SHA   : abc1453dfe89f244dccd3460d8e1a2e3091cbadb
 
-changes since v2:
-- use macro for shift operation.
+Driver Info:
+        Driver name   : mtk-jpeg decode
+        Card type     : mtk-jpeg decoder
+        Bus info      : platform:15004000.jpegdec
+        Driver version: 4.8.0
+        Capabilities  : 0x84204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
 
-changes since v1:
-- separate patches into 2.
-- use shift operator with byte access to avoid endianness conversion problems.
-- follow linux coding style.
+Compliance test for device /dev/video3 (not using libv4l2):
 
-The patch passed the test of UBIFS file-system read/write on Mediatek's RFB. The tested driver is checked-out from LEDE OpenWRT project's upstream driver, which is pretty much same as nand/next branch upstream driver(git clone https://git.lede-project.org/source.git).
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK (Not Supported)
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK
+                test Scaling: OK
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
 
 
-RogerCC Lin (2):
-  mtd: nand: fix generating over-boundary ECC data when writing
-  mtd: nand: fix chances to create incomplete ECC data when writing
+Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
 
- drivers/mtd/nand/mtk_ecc.c  |   12 ++++++++----
- drivers/mtd/nand/mtk_nand.c |    7 +++++--
- 2 files changed, 13 insertions(+), 6 deletions(-)
+Rick Chang (3):
+  dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+  vcodec: mediatek: Add Mediatek JPEG Decoder Driver
+  arm: dts: mt2701: Add node for Mediatek JPEG Decoder
+
+ .../bindings/media/mediatek-jpeg-codec.txt         |   35 +
+ arch/arm/boot/dts/mt2701.dtsi                      |   14 +
+ drivers/media/platform/Kconfig                     |   15 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-jpeg/Makefile           |    4 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 1271 ++++++++++++++++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  141 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c      |  417 +++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h      |   91 ++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c   |  160 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h   |   25 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h     |   58 +
+ 12 files changed, 2233 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+ create mode 100644 drivers/media/platform/mtk-jpeg/Makefile
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+
+-- 
+1.9.1
