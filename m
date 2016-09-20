@@ -1,63 +1,40 @@
-From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
-Subject: Re: [PATCH v5 0/2] mtd: nand: fix writing incorrect ECC parity data
- in OOB region
-Date: Mon, 19 Sep 2016 11:47:58 +0200
-Message-ID: <20160919114758.37ec6606@bbrezillon>
-References: <1474253606-9965-1-git-send-email-rogercc.lin@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net-next] net: ethernet: mediatek: enhance with avoiding superfluous assignment inside mtk_get_ethtool_stats
+Date: Tue, 20 Sep 2016 11:26:48 +0800
+Message-ID: <1474342008-22496-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474253606-9965-1-git-send-email-rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, steven.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org, blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 19 Sep 2016 10:53:24 +0800
-RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+From: Sean Wang <sean.wang@mediatek.com>
 
-> From: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> This series fix chances to write incorrect ECC data which may cause uncorrectable ECC error when reading.
+data_src is unchanged inside the loop, so this patch moves
+the assignment to outside the loop to avoid unnecessarily
+assignment
 
-Applied (I'll send a PR to Brian).
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Thanks,
-
-Boris
-
-> 
-> change since v4:
-> - use (i / 4) instead of (i >> 2) to make code more clear.
-> 
-> changes since v3:
-> - use macro for function arguments.
-> 
-> changes since v2:
-> - use macro for shift operation.
-> 
-> changes since v1:
-> - separate patches into 2.
-> - use shift operator with byte access to avoid endianness conversion problems.
-> - follow linux coding style.
-> 
-> The patch passed the test of UBIFS file-system read/write on Mediatek's RFB. The tested driver is checked-out from LEDE OpenWRT project's upstream driver, which is pretty much same as nand/next branch upstream driver(git clone https://git.lede-project.org/source.git).
-> 
-> 
-> RogerCC Lin (2):
->   mtd: nand: fix generating over-boundary ECC data when writing
->   mtd: nand: fix chances to create incomplete ECC data when writing
-> 
->  drivers/mtd/nand/mtk_ecc.c  |   12 ++++++++----
->  drivers/mtd/nand/mtk_nand.c |    7 +++++--
->  2 files changed, 13 insertions(+), 6 deletions(-)
-> 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 481f360..ca6b501 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2137,8 +2137,9 @@ static void mtk_get_ethtool_stats(struct net_device *dev,
+ 		}
+ 	}
+ 
++	data_src = (u64 *)hwstats;
++
+ 	do {
+-		data_src = (u64 *)hwstats;
+ 		data_dst = data;
+ 		start = u64_stats_fetch_begin_irq(&hwstats->syncp);
+ 
+-- 
+1.9.1
