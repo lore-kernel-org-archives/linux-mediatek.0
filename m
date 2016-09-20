@@ -1,10 +1,12 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next] net: ethernet: mediatek: enhance with avoiding superfluous assignment inside mtk_get_ethtool_stats
-Date: Tue, 20 Sep 2016 11:26:48 +0800
-Message-ID: <1474342008-22496-1-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net-next 3/3] net: ethernet: mediatek: add the dts property to set if TRGMII supported on GMAC0
+Date: Tue, 20 Sep 2016 15:59:20 +0800
+Message-ID: <1474358360-29901-4-git-send-email-sean.wang@mediatek.com>
+References: <1474358360-29901-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1474358360-29901-1-git-send-email-sean.wang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
 To: john@phrozen.org, davem@davemloft.net
 Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
@@ -12,29 +14,28 @@ List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-data_src is unchanged inside the loop, so this patch moves
-the assignment to outside the loop to avoid unnecessarily
-assignment
+Add the dts property for the capability if TRGMII supported on GAMC0
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/net/mediatek-net.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 481f360..ca6b501 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2137,8 +2137,9 @@ static void mtk_get_ethtool_stats(struct net_device *dev,
- 		}
- 	}
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 6103e55..32f79d8 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -31,7 +31,10 @@ Optional properties:
+ Required properties:
+ - compatible: Should be "mediatek,eth-mac"
+ - reg: The number of the MAC
+-- phy-handle: see ethernet.txt file in the same directory.
++- phy-handle: see ethernet.txt file in the same directory and
++	the additional phy-mode "tgrmii" is provided in order to connect
++	with the internal switch MT7530 which is only applicable when reg
++	is equal to 0.
  
-+	data_src = (u64 *)hwstats;
-+
- 	do {
--		data_src = (u64 *)hwstats;
- 		data_dst = data;
- 		start = u64_stats_fetch_begin_irq(&hwstats->syncp);
+ Example:
  
 -- 
 1.9.1
