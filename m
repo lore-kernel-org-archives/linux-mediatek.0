@@ -1,45 +1,28 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: clk-mt8173: Unmap region obtained by
- of_iomap
-Date: Wed, 21 Sep 2016 11:29:48 +0800
-Message-ID: <1474428588.10249.0.camel@mtksdaap41>
-References: <1474360242-15126-1-git-send-email-arvind.yadav.cs@gmail.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next] net: ethernet: mediatek: enhance with
+ avoiding superfluous assignment inside mtk_get_ethtool_stats
+Date: Wed, 21 Sep 2016 00:07:32 -0400 (EDT)
+Message-ID: <20160921.000732.1476178907311873337.davem@davemloft.net>
+References: <1474342008-22496-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474360242-15126-1-git-send-email-arvind.yadav.cs@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arvind Yadav <arvind.yadav.cs@gmail.com>
-Cc: mturquette@baylibre.com, sboyd@codeaurora.org, matthias.bgg@gmail.com, djkurtz@chromium.org, p.zabel@pengutronix.de, yingjoe.chen@mediatek.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1474342008-22496-1-git-send-email-sean.wang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-09-20 at 14:00 +0530, Arvind Yadav wrote:
-> From: Arvind Yadav <arvind.yadav.cs@gmail.com>
-> 
-> Free memory mapping, if init is not successful.
-> 
-> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
+From: <sean.wang@mediatek.com>
+Date: Tue, 20 Sep 2016 11:26:48 +0800
 
-Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
-
-> ---
->  drivers/clk/mediatek/clk-mt8173.c |    4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-> index 10c9860..0ac3aee 100644
-> --- a/drivers/clk/mediatek/clk-mt8173.c
-> +++ b/drivers/clk/mediatek/clk-mt8173.c
-> @@ -1074,8 +1074,10 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
->  	}
->  
->  	mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
-> -	if (!clk_data)
-> +	if (!clk_data) {
-> +		iounmap(base);
->  		return;
-> +	}
->  
->  	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
->  
+> data_src is unchanged inside the loop, so this patch moves
+> the assignment to outside the loop to avoid unnecessarily
+> assignment
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+
+Applied.
