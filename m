@@ -1,140 +1,62 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH net-next 3/3] net: ethernet: mediatek: add the dts property to set if TRGMII supported on GMAC0
-Date: Wed, 21 Sep 2016 14:16:30 +0800
-Message-ID: <1474438590-6855-1-git-send-email-sean.wang@mediatek.com>
-References: <1474358360-29901-4-git-send-email-sean.wang@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH net-next 1/3] net: ethernet: mediatek: add extension of
+ phy-mode for TRGMII
+Date: Wed, 21 Sep 2016 15:33:09 +0800
+Message-ID: <1474443189-8836-1-git-send-email-sean.wang@mediatek.com>
+References: <064d43fb-2942-efd2-6dc7-09f47a256691@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1474358360-29901-4-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: andrew@lunn.ch
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <064d43fb-2942-efd2-6dc7-09f47a256691-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Date: Tue, 20 Sep 2016 21:37:58 +0200, Andrew Lunn <andrew@lunn.ch> wrote:
->On Tue, Sep 20, 2016 at 03:59:20PM +0800, sean.wang@mediatek.com wrote:
->> From: Sean Wang <sean.wang@mediatek.com>
->>
->> Add the dts property for the capability if TRGMII supported on GAMC0
->>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> ---
->>  Documentation/devicetree/bindings/net/mediatek-net.txt | 5 ++++-
->>  1 file changed, 4 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
->> index 6103e55..32f79d8 100644
->> --- a/Documentation/devicetree/bindings/net/mediatek-net.txt
->> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
->> @@ -31,7 +31,10 @@ Optional properties:
->>  Required properties:
->>  - compatible: Should be "mediatek,eth-mac"
->>  - reg: The number of the MAC
->> -- phy-handle: see ethernet.txt file in the same directory.
->> +- phy-handle: see ethernet.txt file in the same directory and
->> +     the additional phy-mode "tgrmii" is provided in order to connect
->> +     with the internal switch MT7530 which is only applicable when reg
->> +     is equal to 0.
+Date: Tue, 20 Sep 2016 14:23:24 -0700, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>On 09/20/2016 12:59 AM, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+>> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> 
+>> adds PHY-mode "trgmii" as an extension for the operation
+>> mode of the PHY interface, TRGMII can be compatible with
+>> RGMII, so the extended mode doesn't really have effects on
+>> the target MAC and PHY, is used as the indication if the
+>> current MAC is connected to an internal switch or external
+>> PHY respectively by the given configuration on the board and
+>> then to perform the corresponding setup on TRGMII hardware
+>> module.
 >
->Humm. How is the switch connected? Is it on the MDIO bus?
+>Based on my googling, it seems like Turbo RGMII is a Mediatek-specific
+>thing for now, but this could become standard and used by other vendors
+>at some point, so I would be inclined to just extend the phy-mode
+>property to support trgmii as another interface type.
+>
+>If you do so, do you also mind proposing an update to the Device Tree
+>specification:
+>
+>https://www.devicetree.org/specifications/
+>
+>Thanks!
 
-the switch is connected to MDIO bus
-
->If it is on the mdio bus, the binding is going to look something like:
->
->eth: ethernet@1b100000 {
->        compatible = "mediatek,mt7623-eth";
->        reg = <0 0x1b100000 0 0x20000>;
->        clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
->                 <&ethsys CLK_ETHSYS_ESW>,
->                 <&ethsys CLK_ETHSYS_GP2>,
->                 <&ethsys CLK_ETHSYS_GP1>;
->        clock-names = "ethif", "esw", "gp2", "gp1";
->        interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW
->                      GIC_SPI 199 IRQ_TYPE_LEVEL_LOW
->                      GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
->        power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
->        resets = <&ethsys MT2701_ETHSYS_ETH_RST>;
->        reset-names = "eth";
->        mediatek,ethsys = <&ethsys>;
->        mediatek,pctl = <&syscfg_pctl_a>;
->        #address-cells = <1>;
->        #size-cells = <0>;
->
->        gmac1: mac@0 {
->                compatible = "mediatek,eth-mac";
->                reg = <0>;
->        };
->
->        gmac2: mac@1 {
->                compatible = "mediatek,eth-mac";
->                reg = <1>;
->        };
->
->        mdio-bus {
->               reg = <1>;
->               #address-cells = <1>;
->               #size-cells = <0>;
->
->               switch0: switch0@0 {
->                       compatible = "marvell,mv88e6085";
->                       #address-cells = <1>;
->                       #size-cells = <0>;
->                       reg = <0>;
->                       dsa,member = <0 0>;
->
->                       ports {
->                               #address-cells = <1>;
->                               #size-cells = <0>;
->                               port@0 {
->                                       reg = <0>;
->                                       label = "lan0";
->...
->...
->In this case the switch is an MDIO device, not an PHY. It will not
->have an phy-mode. It cannot have a phy mode, it is not a PHY.
->
->Or am i missing something here?
->
->Thanks
->
+I am willing to do the these thing
 
 1)
-
-The switch driver is not supported for DSA so far yet 
-but DSA is good thing and I will try make it happen
-in the near future.
-
-And another question about DSA, that is
-if I use DSA for switch, how to know the relationship
-between MAC and DSA ? such like I could know relationship 
-between MAC and PHY by phy-handle.
-
-The cause I ask is becasue I think it's good if the topology
-about MAC/PHYs/Switch is known just by dts files.
+in the next version, I will extend rgmii mode as
+another interface type as PHY_INTERFACE_MODE_TRGMII
+defined in linux/phy.h instead of extension only inside
+the current driver. This change also helps to save some code.
 
 2)
+I send another separate patch for updating the Device Tree
+specification about TRGMII adding description
 
-The phy-mode I mention is for fixed-link. For current MAC driver, 
-it just uses fixed phy to adapt into the part of switch, so the 
-device tree looks something like the below. 
-
-&eth {
-        status = "okay";
-        gmac0: mac@0 {
-                compatible = "mediatek,eth-mac";
-                reg = <0>;
-                phy-mode = "trgmii";
-                fixed-link {
-                        speed = <1000>;
-                        full-duplex;
-                        pause;
-                };
-        };
-
-        gmac1: mac@1 {
-                compatible = "mediatek,eth-mac";
-                reg = <1>;
-                phy-handle = <&phy5>;
-        };
+are these all okay for you?
