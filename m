@@ -1,42 +1,45 @@
-From: Florian Fainelli <f.fainelli@gmail.com>
-Subject: Re: [PATCH net-next 1/3] net: ethernet: mediatek: add extension of
- phy-mode for TRGMII
-Date: Tue, 20 Sep 2016 14:23:24 -0700
-Message-ID: <064d43fb-2942-efd2-6dc7-09f47a256691@gmail.com>
-References: <1474358360-29901-1-git-send-email-sean.wang@mediatek.com>
- <1474358360-29901-2-git-send-email-sean.wang@mediatek.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: clk-mt8173: Unmap region obtained by
+ of_iomap
+Date: Wed, 21 Sep 2016 11:29:48 +0800
+Message-ID: <1474428588.10249.0.camel@mtksdaap41>
+References: <1474360242-15126-1-git-send-email-arvind.yadav.cs@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1474358360-29901-2-git-send-email-sean.wang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: sean.wang@mediatek.com, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474360242-15126-1-git-send-email-arvind.yadav.cs@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Arvind Yadav <arvind.yadav.cs@gmail.com>
+Cc: mturquette@baylibre.com, sboyd@codeaurora.org, matthias.bgg@gmail.com, djkurtz@chromium.org, p.zabel@pengutronix.de, yingjoe.chen@mediatek.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/20/2016 12:59 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
+On Tue, 2016-09-20 at 14:00 +0530, Arvind Yadav wrote:
+> From: Arvind Yadav <arvind.yadav.cs@gmail.com>
 > 
-> adds PHY-mode "trgmii" as an extension for the operation
-> mode of the PHY interface, TRGMII can be compatible with
-> RGMII, so the extended mode doesn't really have effects on
-> the target MAC and PHY, is used as the indication if the
-> current MAC is connected to an internal switch or external
-> PHY respectively by the given configuration on the board and
-> then to perform the corresponding setup on TRGMII hardware
-> module.
+> Free memory mapping, if init is not successful.
+> 
+> Signed-off-by: Arvind Yadav <arvind.yadav.cs@gmail.com>
 
-Based on my googling, it seems like Turbo RGMII is a Mediatek-specific
-thing for now, but this could become standard and used by other vendors
-at some point, so I would be inclined to just extend the phy-mode
-property to support trgmii as another interface type.
+Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
 
-If you do so, do you also mind proposing an update to the Device Tree
-specification:
-
-https://www.devicetree.org/specifications/
-
-Thanks!
--- 
-Florian
+> ---
+>  drivers/clk/mediatek/clk-mt8173.c |    4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
+> index 10c9860..0ac3aee 100644
+> --- a/drivers/clk/mediatek/clk-mt8173.c
+> +++ b/drivers/clk/mediatek/clk-mt8173.c
+> @@ -1074,8 +1074,10 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
+>  	}
+>  
+>  	mt8173_pll_clk_data = clk_data = mtk_alloc_clk_data(CLK_APMIXED_NR_CLK);
+> -	if (!clk_data)
+> +	if (!clk_data) {
+> +		iounmap(base);
+>  		return;
+> +	}
+>  
+>  	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
+>  
