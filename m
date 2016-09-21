@@ -1,37 +1,123 @@
-From: Wei Yongjun <weiyj.lk@gmail.com>
-Subject: [PATCH -next] soc: mediatek: PMIC wrap: fix missing clk_disable_unprepare() on error in pwrap_probe()
-Date: Wed, 21 Sep 2016 15:08:31 +0000
-Message-ID: <1474470511-2458-1-git-send-email-weiyj.lk@gmail.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH net-next 3/3] net: ethernet: mediatek: add the dts property to set if TRGMII supported on GMAC0
+Date: Wed, 21 Sep 2016 23:37:36 +0800
+Message-ID: <1474472256-23533-1-git-send-email-sean.wang@mediatek.com>
+References: <20160921141720.GN22292@lunn.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20160921141720.GN22292@lunn.ch>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Arnd Bergmann <arnd@arndb.de>, John Crispin <blogic@openwrt.org>, Henry Chen <henryc.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: andrew@lunn.ch
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wei Yongjun <weiyongjun1@huawei.com>
+Date: Wed, 21 Sep 2016 16:17:20 +0200, Andrew Lunn <andrew@lunn.ch> wrote:
+>On Wed, Sep 21, 2016 at 02:16:30PM +0800, Sean Wang wrote:
+>> Date: Tue, 20 Sep 2016 21:37:58 +0200, Andrew Lunn <andrew@lunn.ch> wrote:
+>> >On Tue, Sep 20, 2016 at 03:59:20PM +0800, sean.wang@mediatek.com wrote:
+>> >> From: Sean Wang <sean.wang@mediatek.com>
+>> >>
+>> >> Add the dts property for the capability if TRGMII supported on GAMC0
+>> >>
+>> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 
-Fix the missing clk_disable_unprepare() before return
-from pwrap_probe() in the error handling case.
+.... deleted
 
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+>> >In this case the switch is an MDIO device, not an PHY. It will not
+>> >have an phy-mode. It cannot have a phy mode, it is not a PHY.
+>> >
+>> >Or am i missing something here?
+>> >
+>> >Thanks
+>> >
+>> 
+>> 1)
+>> 
+>> The switch driver is not supported for DSA so far yet 
+>> but DSA is good thing and I will try make it happen
+>> in the near future.
+>
+>O.K. But if i understand correctly, the TRGMII is so you can use the
+>switch. So it needs to work when you have DSA.
+>
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index a5f1093..4da3bb2 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1200,7 +1200,8 @@ static int pwrap_probe(struct platform_device *pdev)
- 
- 	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
- 		dev_dbg(wrp->dev, "initialization isn't finished\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto err_out2;
- 	}
- 
- 	/* Initialize watchdog, may not be done by the bootloader */
+yes, you are right. TRGMII for now is dedicated for switch
+and furthermore it needs doing calibration between the host and
+the switch before it works, that I expect to put
+the logic of calibration into setup callback of DSA driver.
+
+
+>> And another question about DSA, that is
+>> if I use DSA for switch, how to know the relationship
+>> between MAC and DSA ? such like I could know relationship 
+>> between MAC and PHY by phy-handle.
+>
+>It will look like what i stated above. But i missed the cpu node in
+>the ports, which is what you are asking about. There will also be a
+>node like:
+>
+>                            port@6 {
+>                                     reg = <6>;
+>                                     label = "cpu";
+>                                     ethernet = <&gmac1>;
+>                             };
+>
+>And this is how you couple the MAC to DSA.
+
+thanks, it is answerig my question : i can get the relationship from 
+the node of cpu port pointing to what MAC it runs for.
+
+>> The cause I ask is becasue I think it's good if the topology
+>> about MAC/PHYs/Switch is known just by dts files.
+>> 
+>> 2)
+>> 
+>> The phy-mode I mention is for fixed-link. For current MAC driver, 
+>> it just uses fixed phy to adapt into the part of switch, so the 
+>> device tree looks something like the below. 
+>> 
+>> &eth {
+>>         status = "okay";
+>>         gmac0: mac@0 {
+>>                 compatible = "mediatek,eth-mac";
+>>                 reg = <0>;
+>>                 phy-mode = "trgmii";
+>>                 fixed-link {
+>>                         speed = <1000>;
+>>                         full-duplex;
+>>                         pause;
+>>                 };
+>>         };
+>> 
+>>         gmac1: mac@1 {
+>>                 compatible = "mediatek,eth-mac";
+>>                 reg = <1>;
+>>                 phy-handle = <&phy5>;
+>>         };
+>
+>
+>static int mtk_phy_connect(struct mtk_mac *mac)
+>{
+>        struct mtk_eth *eth = mac->hw;
+>        struct device_node *np;
+>        u32 val;
+>
+>        np = of_parse_phandle(mac->of_node, "phy-handle", 0);
+>        if (!np && of_phy_is_fixed_link(mac->of_node))
+>                if (!of_phy_register_fixed_link(mac->of_node))
+>                        np = of_node_get(mac->of_node);
+>	...
+>        ...
+>        mtk_phy_connect_node(eth, mac, np);
+>
+>
+>So in the case of a fixed-phy, you do look in the MAC node, and when
+>there is a phy-handle, you look in the PHY node.
+>
+>So this does work....
+
+yes , it is all
+
+>
+>   Andrew
