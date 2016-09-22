@@ -1,32 +1,49 @@
 From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH net-next] Documentation: devicetree: revise ethernet
- device-tree binding about TRGMII
-Date: Thu, 22 Sep 2016 19:48:47 +0300
-Message-ID: <0582f22e-6e6f-1564-fcdd-1bcfc3562cf3@cogentembedded.com>
-References: <1474560996-20863-1-git-send-email-sean.wang@mediatek.com>
+Subject: Re: [PATCH net-next v2 0/3] add support for RGMII on GMAC0 through
+ TRGMII hardware module
+Date: Thu, 22 Sep 2016 20:08:47 +0300
+Message-ID: <b2157c96-0b5c-5b7a-31c2-9eb4df71c73d@cogentembedded.com>
+References: <1474511636-11644-1-git-send-email-sean.wang@mediatek.com>
+ <20160922.082247.198689057396545219.davem@davemloft.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474560996-20863-1-git-send-email-sean.wang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sean.wang@mediatek.com, davem@davemloft.net, john@phrozen.org
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, keyhaede@gmail.com, objelf@gmail.com
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20160922.082247.198689057396545219.davem@davemloft.net>
+Sender: netdev-owner@vger.kernel.org
+To: David Miller <davem@davemloft.net>, sean.wang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, andrew@lunn.ch, f.fainelli@gmail.com, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 09/22/2016 07:16 PM, sean.wang@mediatek.com wrote:
+Hello.
 
-> From: Sean Wang <sean.wang@mediatek.com>
+On 09/22/2016 03:22 PM, David Miller wrote:
+
+>> By default, GMAC0 is connected to built-in switch called
+>> MT7530 through the proprietary interface called Turbo RGMII
+>> (TRGMII). TRGMII also supports well for RGMII as generic external
+>> PHY uses but requires some slight changes to the setup of TRGMII
+>> and doesn't have well support on current driver.
+>>
+>> So this patchset
+>> 1) provides the slight changes of the setup for RGMII can work
+>>    through TRGMII
+>> 2) adds additional setting "trgmii" as PHY_INTERFACE_MODE_TRGMII
+>>    about phy-mode on device tree to make GMAC0 distinguish which
+>>    mode it runs
+>> 3) changes dynamically source clock, TX/RX delay and interface
+>>    mode on TRGMII for adapting various link
+>>
+>> Changes since v1:
+>> - fixed the style of comment which doesn't have a space at
+>>    the beginning and end of comment lines
+>> - add support for phy-mode "trgmii" as PHY_INTERFACE_MODE_TRGMII
+>>    into linux/phy.h
+>> - enhance the Documentation about device tree binding for trgmii
+>>   which is applicable only for GMAC0 which uses fixed-link
 >
-> fix typo in mediatek-net.txt and add phy-mode "trgmii" to ethernet.txt
+> Series applied.
 
-    These changes are unrelated to each other, so there should be 2 separate 
-patches. And have the patches I reviewed been merged already, why are you 
-sending an incremental patch?
-
-> Cc: devicetree@vger.kernel.org
-> Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-[...]
+    Despite my comments? Sigh...
 
 MBR, Sergei
