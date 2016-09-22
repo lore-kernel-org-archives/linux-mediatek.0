@@ -1,50 +1,89 @@
 From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next] net: ethernet: mediatek: remove superfluous local variable for phy address
-Date: Thu, 22 Sep 2016 16:36:15 +0800
-Message-ID: <1474533375-22423-1-git-send-email-sean.wang@mediatek.com>
+Subject: [PATCH net-next] net: ethernet: mediatek: use [get|set]_link_ksettings
+Date: Thu, 22 Sep 2016 16:42:03 +0800
+Message-ID: <1474533723-22629-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
 To: john@phrozen.org, davem@davemloft.net
 Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-remove the unused variable for parsing PHY address
-and the related logic for sanity test which would
-be all already handled done when of_mdiobus_register
-was called
+1) use new api [get|set]_link_ksettings instead
+of [get|set]_settings old ones.
 
-Reported-by: Nelson Chang <nelson.chang@mediatek.com>
+2) dev->phydev is sure being ready before calling
+these callbacks, so removing all the sanity check
+if it is existing.
+
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 10 +---------
- 1 file changed, 1 insertion(+), 9 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 33 +++++++++++------------------
+ 1 file changed, 12 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 6b7acf4..1918c39 100644
+index 1918c39..a65801a 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -226,17 +226,9 @@ static void mtk_phy_link_adjust(struct net_device *dev)
- static int mtk_phy_connect_node(struct mtk_eth *eth, struct mtk_mac *mac,
- 				struct device_node *phy_node)
- {
--	const __be32 *_addr = NULL;
- 	struct phy_device *phydev;
--	int phy_mode, addr;
-+	int phy_mode;
+@@ -2034,35 +2034,26 @@ static int mtk_cleanup(struct mtk_eth *eth)
+ 	return 0;
+ }
  
--	_addr = of_get_property(phy_node, "reg", NULL);
+-static int mtk_get_settings(struct net_device *dev,
+-			    struct ethtool_cmd *cmd)
++int mtk_get_link_ksettings(struct net_device *ndev,
++			   struct ethtool_link_ksettings *cmd)
+ {
+-	struct mtk_mac *mac = netdev_priv(dev);
+-	int err;
++	struct mtk_mac *mac = netdev_priv(ndev);
+ 
+ 	if (unlikely(test_bit(MTK_RESETTING, &mac->hw->state)))
+ 		return -EBUSY;
+ 
+-	err = phy_read_status(dev->phydev);
+-	if (err)
+-		return -ENODEV;
 -
--	if (!_addr || (be32_to_cpu(*_addr) >= 0x20)) {
--		pr_err("%s: invalid phy address\n", phy_node->name);
--		return -EINVAL;
+-	return phy_ethtool_gset(dev->phydev, cmd);
++	return phy_ethtool_ksettings_get(ndev->phydev, cmd);
+ }
+ 
+-static int mtk_set_settings(struct net_device *dev,
+-			    struct ethtool_cmd *cmd)
++int mtk_set_link_ksettings(struct net_device *ndev,
++			   const struct ethtool_link_ksettings *cmd)
+ {
+-	struct mtk_mac *mac = netdev_priv(dev);
++	struct mtk_mac *mac = netdev_priv(ndev);
+ 
+-	if (cmd->phy_address != dev->phydev->mdio.addr) {
+-		dev->phydev = mdiobus_get_phy(mac->hw->mii_bus,
+-					       cmd->phy_address);
+-		if (!dev->phydev)
+-			return -ENODEV;
 -	}
--	addr = be32_to_cpu(*_addr);
- 	phy_mode = of_get_phy_mode(phy_node);
- 	if (phy_mode < 0) {
- 		dev_err(eth->dev, "incorrect phy-mode %d\n", phy_mode);
++	if (unlikely(test_bit(MTK_RESETTING, &mac->hw->state)))
++		return -EBUSY;
+ 
+-	return phy_ethtool_sset(dev->phydev, cmd);
++	return phy_ethtool_ksettings_set(ndev->phydev, cmd);
+ }
+ 
+ static void mtk_get_drvinfo(struct net_device *dev,
+@@ -2225,8 +2216,8 @@ static int mtk_set_rxnfc(struct net_device *dev, struct ethtool_rxnfc *cmd)
+ }
+ 
+ static const struct ethtool_ops mtk_ethtool_ops = {
+-	.get_settings		= mtk_get_settings,
+-	.set_settings		= mtk_set_settings,
++	.get_link_ksettings	= mtk_get_link_ksettings,
++	.set_link_ksettings	= mtk_set_link_ksettings,
+ 	.get_drvinfo		= mtk_get_drvinfo,
+ 	.get_msglevel		= mtk_get_msglevel,
+ 	.set_msglevel		= mtk_set_msglevel,
 -- 
 1.9.1
