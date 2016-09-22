@@ -1,54 +1,32 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next] Documentation: devicetree: revise ethernet device-tree binding about TRGMII
-Date: Fri, 23 Sep 2016 00:16:36 +0800
-Message-ID: <1474560996-20863-1-git-send-email-sean.wang@mediatek.com>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Subject: Re: [PATCH net-next] Documentation: devicetree: revise ethernet
+ device-tree binding about TRGMII
+Date: Thu, 22 Sep 2016 19:48:47 +0300
+Message-ID: <0582f22e-6e6f-1564-fcdd-1bcfc3562cf3@cogentembedded.com>
+References: <1474560996-20863-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net, sergei.shtylyov@cogentembedded.com, john@phrozen.org
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474560996-20863-1-git-send-email-sean.wang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sean.wang@mediatek.com, davem@davemloft.net, john@phrozen.org
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 09/22/2016 07:16 PM, sean.wang@mediatek.com wrote:
 
-fix typo in mediatek-net.txt and add phy-mode "trgmii" to ethernet.txt
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> fix typo in mediatek-net.txt and add phy-mode "trgmii" to ethernet.txt
 
-Cc: devicetree@vger.kernel.org
-Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- Documentation/devicetree/bindings/net/ethernet.txt     | 4 ++--
- Documentation/devicetree/bindings/net/mediatek-net.txt | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+    These changes are unrelated to each other, so there should be 2 separate 
+patches. And have the patches I reviewed been merged already, why are you 
+sending an incremental patch?
 
-diff --git a/Documentation/devicetree/bindings/net/ethernet.txt b/Documentation/devicetree/bindings/net/ethernet.txt
-index 5d88f37..e1d7681 100644
---- a/Documentation/devicetree/bindings/net/ethernet.txt
-+++ b/Documentation/devicetree/bindings/net/ethernet.txt
-@@ -11,8 +11,8 @@ The following properties are common to the Ethernet controllers:
-   the maximum frame size (there's contradiction in ePAPR).
- - phy-mode: string, operation mode of the PHY interface; supported values are
-   "mii", "gmii", "sgmii", "qsgmii", "tbi", "rev-mii", "rmii", "rgmii", "rgmii-id",
--  "rgmii-rxid", "rgmii-txid", "rtbi", "smii", "xgmii"; this is now a de-facto
--  standard property;
-+  "rgmii-rxid", "rgmii-txid", "rtbi", "smii", "xgmii", "trgmii"; this is now a
-+  de-facto standard property;
- - phy-connection-type: the same as "phy-mode" property but described in ePAPR;
- - phy-handle: phandle, specifies a reference to a node representing a PHY
-   device; this property is described in ePAPR and so preferred;
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index bae848e..da05f8b 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -34,7 +34,7 @@ Required properties:
- - phy-handle: see ethernet.txt file in the same directory and
- 	the phy-mode "trgmii" required being provided when reg
- 	is equal to 0 and the MAC uses fixed-link to connect
--	with inernal switch such as MT7530.
-+	with internal switch such as MT7530.
- 
- Example:
- 
--- 
-1.9.1
+> Cc: devicetree@vger.kernel.org
+> Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+[...]
+
+MBR, Sergei
