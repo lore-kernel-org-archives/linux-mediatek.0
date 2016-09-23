@@ -1,34 +1,85 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH net-next v2 0/3] add support for RGMII on GMAC0 through
- TRGMII hardware module
-Date: Fri, 23 Sep 2016 13:23:17 +0300
-Message-ID: <70bd0439-f093-a5e2-bfae-3a9e09e536c3@cogentembedded.com>
-References: <1474511636-11644-1-git-send-email-sean.wang@mediatek.com>
- <20160922.082247.198689057396545219.davem@davemloft.net>
- <b2157c96-0b5c-5b7a-31c2-9eb4df71c73d@cogentembedded.com>
- <20160922.201303.415060758995900781.davem@davemloft.net>
+From: Grant Likely <grant.likely-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [DTSpec PATCH] Document additional "phy-connection-type" values
+Date: Fri, 23 Sep 2016 11:34:28 +0100
+Message-ID: <CACxGe6un_6pNMOGVtTraY69QbiBXNXBH2ojk57p-Tc8fcRZ9UQ@mail.gmail.com>
+References: <1474613260-15457-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160922.201303.415060758995900781.davem@davemloft.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: sean.wang@mediatek.com, john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, andrew@lunn.ch, f.fainelli@gmail.com, keyhaede@gmail.com, objelf@gmail.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1474613260-15457-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-spec-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello.
-
-On 9/23/2016 3:13 AM, David Miller wrote:
-
->>    Despite my comments? Sigh...
+On Fri, Sep 23, 2016 at 7:47 AM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 >
-> Sorry, I thought he had addressed your feedback in v2.
+> Add the following values to the "phy-connection-type" property:
+>
+> * Turbo Reduced Gigabit Media Independent Interface ``trgmii``
+>
+> Suggested-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-    IIRC, I had only commented to v2, not v1.
+Applied, thanks.
 
-> I'll wait longer next time.
+g.
 
-    Thank you. :-)
-
-MBR, Sergei
+> ---
+>  source/device-bindings.rst |   39 ++++++++++++++++++++-------------------
+>  1 file changed, 20 insertions(+), 19 deletions(-)
+>
+> diff --git a/source/device-bindings.rst b/source/device-bindings.rst
+> index 7020267..9de6f3c 100644
+> --- a/source/device-bindings.rst
+> +++ b/source/device-bindings.rst
+> @@ -332,25 +332,26 @@ the network device class.
+>  .. tabularcolumns:: | l J |
+>  .. table:: Defined values for the ``phy-connection-type`` Property
+>
+> -   =============================================== ============
+> -   Connection type                                 Value
+> -   =============================================== ============
+> -   Media Independent Interface                     ``mii``
+> -   Reduced Media Independent Interface             ``rmii``
+> -   Gigabit Media Independent Interface             ``gmii``
+> -   Reduced Gigabit Media Independent               ``rgmii``
+> -   rgmii with internal delay                       ``rgmii-id``
+> -   rgmii with internal delay on TX only            ``rgmii-txid``
+> -   rgmii with internal delay on RX only            ``rgmii-rxid``
+> -   Ten Bit Interface                               ``tbi``
+> -   Reduced Ten Bit Interface                       ``rtbi``
+> -   Serial Media Independent Interface              ``smii``
+> -   Serial Gigabit Media Independent Interface      ``sgmii``
+> -   Reverse Media Independent Interface             ``rev-mii``
+> -   10 Gigabits Media Independent Interface         ``xgmii``
+> -   Multimedia over Coaxial                         ``moca``
+> -   Quad Serial Gigabit Media Independent Interface ``qsgmii``
+> -   =============================================== ============
+> +   ================================================= ============
+> +   Connection type                                   Value
+> +   ================================================= ============
+> +   Media Independent Interface                       ``mii``
+> +   Reduced Media Independent Interface               ``rmii``
+> +   Gigabit Media Independent Interface               ``gmii``
+> +   Reduced Gigabit Media Independent                 ``rgmii``
+> +   rgmii with internal delay                         ``rgmii-id``
+> +   rgmii with internal delay on TX only              ``rgmii-txid``
+> +   rgmii with internal delay on RX only              ``rgmii-rxid``
+> +   Ten Bit Interface                                 ``tbi``
+> +   Reduced Ten Bit Interface                         ``rtbi``
+> +   Serial Media Independent Interface                ``smii``
+> +   Serial Gigabit Media Independent Interface        ``sgmii``
+> +   Reverse Media Independent Interface               ``rev-mii``
+> +   10 Gigabits Media Independent Interface           ``xgmii``
+> +   Multimedia over Coaxial                           ``moca``
+> +   Quad Serial Gigabit Media Independent Interface   ``qsgmii``
+> +   Turbo Reduced Gigabit Media Independent Interface ``trgmii``
+> +   ================================================= ============
+>
+>  ``phy-handle`` Property
+>  ^^^^^^^^^^^^^^^^^^^^^^^
+> --
+> 1.7.9.5
+>
