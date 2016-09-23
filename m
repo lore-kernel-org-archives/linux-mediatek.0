@@ -1,92 +1,41 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH net-next v2 1/3] net: ethernet: mediatek: add extension of phy-mode for TRGMII
-Date: Fri, 23 Sep 2016 11:32:51 +0800
-Message-ID: <1474601571-9647-1-git-send-email-sean.wang@mediatek.com>
-References: <9e375cf6-8283-b6fb-f21f-5d013c3172fa@cogentembedded.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH net-next v2] Documentation: devicetree: revise ethernet device-tree binding about TRGMII
+Date: Fri, 23 Sep 2016 14:04:09 +0800
+Message-ID: <1474610649-18582-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <9e375cf6-8283-b6fb-f21f-5d013c3172fa@cogentembedded.com>
-Sender: netdev-owner@vger.kernel.org
-To: sergei.shtylyov@cogentembedded.com
-Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: davem@davemloft.net, sergei.shtylyov@cogentembedded.com
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Date: Thu, 22 Sep 2016 14:30:53 +0300, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com> wrote:
->>Hello.
->
->On 9/22/2016 5:33 AM, sean.wang@mediatek.com wrote:
->
->> From: Sean Wang <sean.wang@mediatek.com>
->>
->> adds PHY-mode "trgmii" as an extension for the operation mode of the 
->> PHY interface for PHY_INTERFACE_MODE_TRGMII.
+From: Sean Wang <sean.wang@mediatek.com>
 
-.. deleted
+add phy-mode "trgmii" to
+Documentation/devicetree/bindings/net/ethernet.txt
 
->>  	switch (of_get_phy_mode(np)) {
->> +	case PHY_INTERFACE_MODE_TRGMII:
->> +		mac->trgmii = true;
->>  	case PHY_INTERFACE_MODE_RGMII_TXID:
->>  	case PHY_INTERFACE_MODE_RGMII_RXID:
->>  	case PHY_INTERFACE_MODE_RGMII_ID:
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h 
->> b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> index 7c5e534..e3b9525 100644
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
->> @@ -529,6 +529,8 @@ struct mtk_eth {
->>   * @hw:			Backpointer to our main datastruture
->>   * @hw_stats:		Packet statistics counter
->>   * @phy_dev:		The attached PHY if available
->> + * @trgmii		Indicate if the MAC uses TRGMII connected to internal
->> +			switch
->>   */
->>  struct mtk_mac {
->>  	int				id;
->> @@ -539,6 +541,7 @@ struct mtk_mac {
->>  	struct phy_device		*phy_dev;
->>  	__be32				hwlro_ip[MTK_MAX_LRO_IP_CNT];
->>  	int				hwlro_ip_cnt;
->> +	bool				trgmii;
->
->     I don't see where this is used.
+Cc: devicetree@vger.kernel.org
+Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ Documentation/devicetree/bindings/net/ethernet.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I set trgmii as below
-  	switch (of_get_phy_mode(np)) {
-	case PHY_INTERFACE_MODE_TRGMII:
-		mac->trgmii = true;
-  	case PHY_INTERFACE_MODE_RGMII_TXID:
-
->[...]
->> diff --git a/include/linux/phy.h b/include/linux/phy.h index 
->> 2d24b28..e25f183 100644
->> --- a/include/linux/phy.h
->> +++ b/include/linux/phy.h
->> @@ -80,6 +80,7 @@ typedef enum {
->>  	PHY_INTERFACE_MODE_XGMII,
->>  	PHY_INTERFACE_MODE_MOCA,
->>  	PHY_INTERFACE_MODE_QSGMII,
->> +	PHY_INTERFACE_MODE_TRGMII,
->>  	PHY_INTERFACE_MODE_MAX,
->>  } phy_interface_t;
->>
->> @@ -123,6 +124,8 @@ static inline const char *phy_modes(phy_interface_t interface)
->>  		return "moca";
->>  	case PHY_INTERFACE_MODE_QSGMII:
->>  		return "qsgmii";
->> +	case PHY_INTERFACE_MODE_TRGMII:
->> +		return "trgmii";
->>  	default:
->>  		return "unknown";
->>  	}
->
->    I think this should be done in a separate phylib patch.
-
-this patch is applied, so I am so little confused how to do this.
-next time I will note placing modification for generic layer
-into separate patch.
-
->
->MBR, Sergei
->
+diff --git a/Documentation/devicetree/bindings/net/ethernet.txt b/Documentation/devicetree/bindings/net/ethernet.txt
+index 5d88f37..e1d7681 100644
+--- a/Documentation/devicetree/bindings/net/ethernet.txt
++++ b/Documentation/devicetree/bindings/net/ethernet.txt
+@@ -11,8 +11,8 @@ The following properties are common to the Ethernet controllers:
+   the maximum frame size (there's contradiction in ePAPR).
+ - phy-mode: string, operation mode of the PHY interface; supported values are
+   "mii", "gmii", "sgmii", "qsgmii", "tbi", "rev-mii", "rmii", "rgmii", "rgmii-id",
+-  "rgmii-rxid", "rgmii-txid", "rtbi", "smii", "xgmii"; this is now a de-facto
+-  standard property;
++  "rgmii-rxid", "rgmii-txid", "rtbi", "smii", "xgmii", "trgmii"; this is now a
++  de-facto standard property;
+ - phy-connection-type: the same as "phy-mode" property but described in ePAPR;
+ - phy-handle: phandle, specifies a reference to a node representing a PHY
+   device; this property is described in ePAPR and so preferred;
+-- 
+1.9.1
