@@ -1,39 +1,76 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH net-next] Documentation: devicetree: fix typo in MediaTek ethernet device-tree binding
-Date: Fri, 23 Sep 2016 14:09:32 +0800
-Message-ID: <1474610972-14974-1-git-send-email-sean.wang@mediatek.com>
+From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [DTSpec PATCH] Document additional "phy-connection-type" values
+Date: Fri, 23 Sep 2016 14:47:40 +0800
+Message-ID: <1474613260-15457-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net, sergei.shtylyov@cogentembedded.com
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, john@phrozen.org, keyhaede@gmail.com, objelf@gmail.com, Sean Wang <sean.wang@mediatek.com>
+Return-path: <devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: grant.likely-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: devicetree-spec-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-fix typo in
-Documentation/devicetree/bindings/net/mediatek-net.txt
+Add the following values to the "phy-connection-type" property:
 
-Cc: devicetree@vger.kernel.org
-Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+* Turbo Reduced Gigabit Media Independent Interface ``trgmii``
+
+Suggested-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 ---
- Documentation/devicetree/bindings/net/mediatek-net.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ source/device-bindings.rst |   39 ++++++++++++++++++++-------------------
+ 1 file changed, 20 insertions(+), 19 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index 7111278..f095257 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -34,7 +34,7 @@ Required properties:
- - phy-handle: see ethernet.txt file in the same directory and
- 	the phy-mode "trgmii" required being provided when reg
- 	is equal to 0 and the MAC uses fixed-link to connect
--	with inernal switch such as MT7530.
-+	with internal switch such as MT7530.
+diff --git a/source/device-bindings.rst b/source/device-bindings.rst
+index 7020267..9de6f3c 100644
+--- a/source/device-bindings.rst
++++ b/source/device-bindings.rst
+@@ -332,25 +332,26 @@ the network device class.
+ .. tabularcolumns:: | l J |
+ .. table:: Defined values for the ``phy-connection-type`` Property
  
- Example:
+-   =============================================== ============
+-   Connection type                                 Value
+-   =============================================== ============
+-   Media Independent Interface                     ``mii``
+-   Reduced Media Independent Interface             ``rmii``
+-   Gigabit Media Independent Interface             ``gmii``
+-   Reduced Gigabit Media Independent               ``rgmii``
+-   rgmii with internal delay                       ``rgmii-id``
+-   rgmii with internal delay on TX only            ``rgmii-txid``
+-   rgmii with internal delay on RX only            ``rgmii-rxid``
+-   Ten Bit Interface                               ``tbi``
+-   Reduced Ten Bit Interface                       ``rtbi``
+-   Serial Media Independent Interface              ``smii``
+-   Serial Gigabit Media Independent Interface      ``sgmii``
+-   Reverse Media Independent Interface             ``rev-mii``
+-   10 Gigabits Media Independent Interface         ``xgmii``
+-   Multimedia over Coaxial                         ``moca``
+-   Quad Serial Gigabit Media Independent Interface ``qsgmii``
+-   =============================================== ============
++   ================================================= ============
++   Connection type                                   Value
++   ================================================= ============
++   Media Independent Interface                       ``mii``
++   Reduced Media Independent Interface               ``rmii``
++   Gigabit Media Independent Interface               ``gmii``
++   Reduced Gigabit Media Independent                 ``rgmii``
++   rgmii with internal delay                         ``rgmii-id``
++   rgmii with internal delay on TX only              ``rgmii-txid``
++   rgmii with internal delay on RX only              ``rgmii-rxid``
++   Ten Bit Interface                                 ``tbi``
++   Reduced Ten Bit Interface                         ``rtbi``
++   Serial Media Independent Interface                ``smii``
++   Serial Gigabit Media Independent Interface        ``sgmii``
++   Reverse Media Independent Interface               ``rev-mii``
++   10 Gigabits Media Independent Interface           ``xgmii``
++   Multimedia over Coaxial                           ``moca``
++   Quad Serial Gigabit Media Independent Interface   ``qsgmii``
++   Turbo Reduced Gigabit Media Independent Interface ``trgmii``
++   ================================================= ============
  
+ ``phy-handle`` Property
+ ^^^^^^^^^^^^^^^^^^^^^^^
 -- 
-1.9.1
+1.7.9.5
