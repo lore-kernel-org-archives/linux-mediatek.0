@@ -1,85 +1,34 @@
-From: Grant Likely <grant.likely-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Subject: Re: [DTSpec PATCH] Document additional "phy-connection-type" values
-Date: Fri, 23 Sep 2016 11:34:28 +0100
-Message-ID: <CACxGe6un_6pNMOGVtTraY69QbiBXNXBH2ojk57p-Tc8fcRZ9UQ@mail.gmail.com>
-References: <1474613260-15457-1-git-send-email-sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1474613260-15457-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-spec-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-spec-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH] [media] VPU: mediatek: Fix return value in case of error
+Date: Fri, 23 Sep 2016 23:19:01 +0200
+Message-ID: <1474665541-7454-1-git-send-email-christophe.jaillet@wanadoo.fr>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: mchehab@kernel.org, matthias.bgg@gmail.com
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Sep 23, 2016 at 7:47 AM,  <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> Add the following values to the "phy-connection-type" property:
->
-> * Turbo Reduced Gigabit Media Independent Interface ``trgmii``
->
-> Suggested-by: Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+If 'dma_alloc_coherent()' returns NULL, 'vpu_alloc_ext_mem()' will
+return 0 which means success.
+Return -ENOMEM instead.
 
-Applied, thanks.
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-g.
-
-> ---
->  source/device-bindings.rst |   39 ++++++++++++++++++++-------------------
->  1 file changed, 20 insertions(+), 19 deletions(-)
->
-> diff --git a/source/device-bindings.rst b/source/device-bindings.rst
-> index 7020267..9de6f3c 100644
-> --- a/source/device-bindings.rst
-> +++ b/source/device-bindings.rst
-> @@ -332,25 +332,26 @@ the network device class.
->  .. tabularcolumns:: | l J |
->  .. table:: Defined values for the ``phy-connection-type`` Property
->
-> -   =============================================== ============
-> -   Connection type                                 Value
-> -   =============================================== ============
-> -   Media Independent Interface                     ``mii``
-> -   Reduced Media Independent Interface             ``rmii``
-> -   Gigabit Media Independent Interface             ``gmii``
-> -   Reduced Gigabit Media Independent               ``rgmii``
-> -   rgmii with internal delay                       ``rgmii-id``
-> -   rgmii with internal delay on TX only            ``rgmii-txid``
-> -   rgmii with internal delay on RX only            ``rgmii-rxid``
-> -   Ten Bit Interface                               ``tbi``
-> -   Reduced Ten Bit Interface                       ``rtbi``
-> -   Serial Media Independent Interface              ``smii``
-> -   Serial Gigabit Media Independent Interface      ``sgmii``
-> -   Reverse Media Independent Interface             ``rev-mii``
-> -   10 Gigabits Media Independent Interface         ``xgmii``
-> -   Multimedia over Coaxial                         ``moca``
-> -   Quad Serial Gigabit Media Independent Interface ``qsgmii``
-> -   =============================================== ============
-> +   ================================================= ============
-> +   Connection type                                   Value
-> +   ================================================= ============
-> +   Media Independent Interface                       ``mii``
-> +   Reduced Media Independent Interface               ``rmii``
-> +   Gigabit Media Independent Interface               ``gmii``
-> +   Reduced Gigabit Media Independent                 ``rgmii``
-> +   rgmii with internal delay                         ``rgmii-id``
-> +   rgmii with internal delay on TX only              ``rgmii-txid``
-> +   rgmii with internal delay on RX only              ``rgmii-rxid``
-> +   Ten Bit Interface                                 ``tbi``
-> +   Reduced Ten Bit Interface                         ``rtbi``
-> +   Serial Media Independent Interface                ``smii``
-> +   Serial Gigabit Media Independent Interface        ``sgmii``
-> +   Reverse Media Independent Interface               ``rev-mii``
-> +   10 Gigabits Media Independent Interface           ``xgmii``
-> +   Multimedia over Coaxial                           ``moca``
-> +   Quad Serial Gigabit Media Independent Interface   ``qsgmii``
-> +   Turbo Reduced Gigabit Media Independent Interface ``trgmii``
-> +   ================================================= ============
->
->  ``phy-handle`` Property
->  ^^^^^^^^^^^^^^^^^^^^^^^
-> --
-> 1.7.9.5
->
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index c9bf58c97878..3edb5ed852e6 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -674,7 +674,7 @@ static int vpu_alloc_ext_mem(struct mtk_vpu *vpu, u32 fw_type)
+ 					       GFP_KERNEL);
+ 	if (!vpu->extmem[fw_type].va) {
+ 		dev_err(dev, "Failed to allocate the extended program memory\n");
+-		return PTR_ERR(vpu->extmem[fw_type].va);
++		return -ENOMEM;
+ 	}
+ 
+ 	/* Disable extend0. Enable extend1 */
+-- 
+2.7.4
