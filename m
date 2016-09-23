@@ -1,26 +1,39 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next v2 0/3] add support for RGMII on GMAC0 through
- TRGMII hardware module
-Date: Thu, 22 Sep 2016 20:13:03 -0400 (EDT)
-Message-ID: <20160922.201303.415060758995900781.davem@davemloft.net>
-References: <1474511636-11644-1-git-send-email-sean.wang@mediatek.com>
-        <20160922.082247.198689057396545219.davem@davemloft.net>
-        <b2157c96-0b5c-5b7a-31c2-9eb4df71c73d@cogentembedded.com>
+From: Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH net-next] Documentation: devicetree: revise ethernet device-tree binding about TRGMII
+Date: Fri, 23 Sep 2016 10:52:40 +0800
+Message-ID: <1474599160-7958-1-git-send-email-sean.wang@mediatek.com>
+References: <0582f22e-6e6f-1564-fcdd-1bcfc3562cf3@cogentembedded.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b2157c96-0b5c-5b7a-31c2-9eb4df71c73d@cogentembedded.com>
+In-Reply-To: <0582f22e-6e6f-1564-fcdd-1bcfc3562cf3@cogentembedded.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: sergei.shtylyov@cogentembedded.com
-Cc: sean.wang@mediatek.com, john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, andrew@lunn.ch, f.fainelli@gmail.com, keyhaede@gmail.com, objelf@gmail.com
+Cc: john@phrozen.org, davem@davemloft.net, nbd@openwrt.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, keyhaede@gmail.com, objelf@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Date: Thu, 22 Sep 2016 20:08:47 +0300
+Date: Thu, 22 Sep 2016 19:48:47 +0300, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com> wrote:
+>On 09/22/2016 07:16 PM, sean.wang@mediatek.com wrote:
+>
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> fix typo in mediatek-net.txt and add phy-mode "trgmii" to ethernet.txt
+>
+>    These changes are unrelated to each other, so there should be 2 separate 
+>patches. And have the patches I reviewed been merged already, why are you 
+>sending an incremental patch?
+>
 
->    Despite my comments? Sigh...
+okay, I will make them into distinct patchs.
 
-Sorry, I thought he had addressed your feedback in v2.
+I saw they had been applied so I created an incremental
+patch based on codebase after applied.
 
-I'll wait longer next time.
+>> Cc: devicetree@vger.kernel.org
+>> Reported-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>[...]
+>
+>MBR, Sergei
+>
+>
