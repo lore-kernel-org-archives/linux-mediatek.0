@@ -1,37 +1,37 @@
-From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Subject: Re: [PATCH net-next] Documentation: devicetree: fix typo in
- MediaTek ethernet device-tree binding
-Date: Sat, 24 Sep 2016 08:26:28 -0400 (EDT)
-Message-ID: <20160924.082628.83563118728819765.davem@davemloft.net>
-References: <1474610972-14974-1-git-send-email-sean.wang@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1474610972-14974-1-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, objelf-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+From: Baoyou Xie <baoyou.xie@linaro.org>
+Subject: [PATCH 1/2] drm/rockchip: add missing header dependencies
+Date: Sun, 25 Sep 2016 15:38:28 +0800
+Message-ID: <1474789109-22010-1-git-send-email-baoyou.xie@linaro.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com, mark.yao@rock-chips.com, heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
 List-Id: linux-mediatek@lists.infradead.org
 
-From: <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Date: Fri, 23 Sep 2016 14:09:32 +0800
+We get 2 warnings when building kernel with W=1:
+drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:130:5: warning: no previous prototype for 'rockchip_drm_fbdev_init' [-Wmissing-prototypes]
+drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:173:6: warning: no previous prototype for 'rockchip_drm_fbdev_fini' [-Wmissing-prototypes]
 
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> fix typo in
-> Documentation/devicetree/bindings/net/mediatek-net.txt
-> 
-> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Reported-by: Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In fact, these functions are declared
+in drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h,
+so this patch adds missing header dependencies.
 
-Applied.
+Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+index 207e01d..a16c69f 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+@@ -20,6 +20,7 @@
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_gem.h"
+ #include "rockchip_drm_fb.h"
++#include "rockchip_drm_fbdev.h"
+ 
+ #define PREFERRED_BPP		32
+ #define to_drm_private(x) \
+-- 
+2.7.4
