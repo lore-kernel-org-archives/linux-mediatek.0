@@ -1,47 +1,29 @@
-From: Baoyou Xie <baoyou.xie@linaro.org>
-Subject: [PATCH 2/2] drm/rockchip: mark symbols static where possible
-Date: Sun, 25 Sep 2016 15:43:08 +0800
-Message-ID: <1474789388-3284-1-git-send-email-baoyou.xie@linaro.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ck.hu@mediatek.com, p.zabel@pengutronix.de, airlied@linux.ie, matthias.bgg@gmail.com, mark.yao@rock-chips.com, heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
+From: Nelson Chang <nelson.chang@mediatek.com>
+Subject: [PATCH net-next 0/2] net: ethernet: mediatek: some bug fixes for PDAM and HW LRO
+Date: Mon, 26 Sep 2016 14:33:48 +0800
+Message-ID: <1474871630-4134-1-git-send-email-nelson.chang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com, Nelson Chang <nelson.chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-We get 2 warnings when building kernel with W=1:
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:309:6: warning: no previous prototype for 'rockchip_drm_fb_suspend' [-Wmissing-prototypes]
-drivers/gpu/drm/rockchip/rockchip_drm_drv.c:318:6: warning: no previous prototype for 'rockchip_drm_fb_resume' [-Wmissing-prototypes]
+1) Add to stop PDMA while stopping the frame engine
+2) Modify the register settings for LRO relinquishments
+3) Jump out from the waiting loop while LRO relinquishments are done
 
-In fact, these functions are only used in the file in which they are
-declared and don't need a declaration, but can be made static.
-So this patch marks these functions with 'static'.
+Nelson Chang (2):
+  net: ethernet: mediatek: add to stop PDMA while stopping the frame
+    engine
+  net: ethernet: mediatek: bug fix to disable HW LRO
 
-Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 ++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+ mode change 100644 => 100755 drivers/net/ethernet/mediatek/mtk_eth_soc.c
+ mode change 100644 => 100755 drivers/net/ethernet/mediatek/mtk_eth_soc.h
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 76eaf1d..38c3be5 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -309,7 +309,7 @@ static struct drm_driver rockchip_drm_driver = {
- };
- 
- #ifdef CONFIG_PM_SLEEP
--void rockchip_drm_fb_suspend(struct drm_device *drm)
-+static void rockchip_drm_fb_suspend(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
- 
-@@ -318,7 +318,7 @@ void rockchip_drm_fb_suspend(struct drm_device *drm)
- 	console_unlock();
- }
- 
--void rockchip_drm_fb_resume(struct drm_device *drm)
-+static void rockchip_drm_fb_resume(struct drm_device *drm)
- {
- 	struct rockchip_drm_private *priv = drm->dev_private;
- 
 -- 
-2.7.4
+1.9.1
