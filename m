@@ -1,19 +1,33 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH net-next 2/2] net: ethernet: mediatek: bug fix to disable
- HW LRO
-Date: Mon, 26 Sep 2016 14:21:15 +0300
-Message-ID: <7124ebf3-8001-ed55-d727-3a524e0088ee@cogentembedded.com>
-References: <1474871630-4134-1-git-send-email-nelson.chang@mediatek.com>
- <1474871630-4134-3-git-send-email-nelson.chang@mediatek.com>
+From: Nelson Chang <nelson.chang@mediatek.com>
+Subject: RE: [PATCH net-next 2/2] net: ethernet: mediatek: bug fix to
+ disable HW LRO
+Date: Mon, 26 Sep 2016 19:43:45 +0800
+Message-ID: <1474890225.2669.4.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1474871630-4134-3-git-send-email-nelson.chang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: Nelson Chang <nelson.chang@mediatek.com>, john@phrozen.org, davem@davemloft.net
+To: sergei.shtylyov@cogentembedded.com, john@phrozen.org, davem@davemloft.net
 Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
+
+Hi Sergei,
+
+Because these modifications are both related to LRO relinquishments, I
+put them in a single patch.
+
+
+Nelson
+
+-----Original Message-----
+From: Sergei Shtylyov [mailto:sergei.shtylyov@cogentembedded.com] 
+Sent: Monday, September 26, 2016 7:21 PM
+To: Nelson Chang (張家祥); john@phrozen.org; davem@davemloft.net
+Cc: nbd@openwrt.org; netdev@vger.kernel.org;
+linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
+Subject: Re: [PATCH net-next 2/2] net: ethernet: mediatek: bug fix to
+disable HW LRO
 
 Hello.
 
