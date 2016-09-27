@@ -1,55 +1,37 @@
-From: Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH 2/2] drm/rockchip: mark symbols static where possible
-Date: Tue, 27 Sep 2016 12:34:44 -0400
-Message-ID: <CAOw6vbL-3nvtxP-O2qnWYGZQXa_9fRm0TA9y88VLfhqfGRVNqw@mail.gmail.com>
-References: <1474789388-3284-1-git-send-email-baoyou.xie@linaro.org>
+From: Nelson Chang <nelson.chang@mediatek.com>
+Subject: RE: [PATCH net-next 0/2] net: ethernet: mediatek: some bug fixes
+ for PDAM and HW LRO
+Date: Wed, 28 Sep 2016 01:16:25 +0800
+Message-ID: <1474996585.11000.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1474789388-3284-1-git-send-email-baoyou.xie@linaro.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Baoyou Xie <baoyou.xie@linaro.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, linux-rockchip@lists.infradead.org, tang.qiang007@zte.com.cn, Baoyou Xie <xie.baoyou@zte.com.cn>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, han.fei@zte.com.cn, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
+To: davem@davemloft.net
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gU3VuLCBTZXAgMjUsIDIwMTYgYXQgMzo0MyBBTSwgQmFveW91IFhpZSA8YmFveW91LnhpZUBs
-aW5hcm8ub3JnPiB3cm90ZToKPiBXZSBnZXQgMiB3YXJuaW5ncyB3aGVuIGJ1aWxkaW5nIGtlcm5l
-bCB3aXRoIFc9MToKPiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5j
-OjMwOTo2OiB3YXJuaW5nOiBubyBwcmV2aW91cyBwcm90b3R5cGUgZm9yICdyb2NrY2hpcF9kcm1f
-ZmJfc3VzcGVuZCcgWy1XbWlzc2luZy1wcm90b3R5cGVzXQo+IGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmM6MzE4OjY6IHdhcm5pbmc6IG5vIHByZXZpb3VzIHByb3Rv
-dHlwZSBmb3IgJ3JvY2tjaGlwX2RybV9mYl9yZXN1bWUnIFstV21pc3NpbmctcHJvdG90eXBlc10K
-Pgo+IEluIGZhY3QsIHRoZXNlIGZ1bmN0aW9ucyBhcmUgb25seSB1c2VkIGluIHRoZSBmaWxlIGlu
-IHdoaWNoIHRoZXkgYXJlCj4gZGVjbGFyZWQgYW5kIGRvbid0IG5lZWQgYSBkZWNsYXJhdGlvbiwg
-YnV0IGNhbiBiZSBtYWRlIHN0YXRpYy4KPiBTbyB0aGlzIHBhdGNoIG1hcmtzIHRoZXNlIGZ1bmN0
-aW9ucyB3aXRoICdzdGF0aWMnLgo+Cj4gU2lnbmVkLW9mZi1ieTogQmFveW91IFhpZSA8YmFveW91
-LnhpZUBsaW5hcm8ub3JnPgoKQXBwbGllZCB0byAtbWlzYywgdGhhbmtzLgoKU2VhbgoKPiAtLS0K
-PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyB8IDQgKystLQo+
-ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Cj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggNzZlYWYx
-ZC4uMzhjM2JlNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2No
-aXBfZHJtX2Rydi5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV9kcnYuYwo+IEBAIC0zMDksNyArMzA5LDcgQEAgc3RhdGljIHN0cnVjdCBkcm1fZHJpdmVyIHJv
-Y2tjaGlwX2RybV9kcml2ZXIgPSB7Cj4gIH07Cj4KPiAgI2lmZGVmIENPTkZJR19QTV9TTEVFUAo+
-IC12b2lkIHJvY2tjaGlwX2RybV9mYl9zdXNwZW5kKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0pCj4g
-K3N0YXRpYyB2b2lkIHJvY2tjaGlwX2RybV9mYl9zdXNwZW5kKHN0cnVjdCBkcm1fZGV2aWNlICpk
-cm0pCj4gIHsKPiAgICAgICAgIHN0cnVjdCByb2NrY2hpcF9kcm1fcHJpdmF0ZSAqcHJpdiA9IGRy
-bS0+ZGV2X3ByaXZhdGU7Cj4KPiBAQCAtMzE4LDcgKzMxOCw3IEBAIHZvaWQgcm9ja2NoaXBfZHJt
-X2ZiX3N1c3BlbmQoc3RydWN0IGRybV9kZXZpY2UgKmRybSkKPiAgICAgICAgIGNvbnNvbGVfdW5s
-b2NrKCk7Cj4gIH0KPgo+IC12b2lkIHJvY2tjaGlwX2RybV9mYl9yZXN1bWUoc3RydWN0IGRybV9k
-ZXZpY2UgKmRybSkKPiArc3RhdGljIHZvaWQgcm9ja2NoaXBfZHJtX2ZiX3Jlc3VtZShzdHJ1Y3Qg
-ZHJtX2RldmljZSAqZHJtKQo+ICB7Cj4gICAgICAgICBzdHJ1Y3Qgcm9ja2NoaXBfZHJtX3ByaXZh
-dGUgKnByaXYgPSBkcm0tPmRldl9wcml2YXRlOwo+Cj4gLS0KPiAyLjcuNAo+Cl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxp
-c3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNr
-dG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Got it. I'll notice that for later patches.
+Thanks David.
+
+-----Original Message-----
+From: David Miller [mailto:davem@davemloft.net] 
+Sent: Tuesday, September 27, 2016 9:42 PM
+To: Nelson Chang (張家祥)
+Cc: john@phrozen.org; nbd@openwrt.org; netdev@vger.kernel.org;
+linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
+Subject: Re: [PATCH net-next 0/2] net: ethernet: mediatek: some bug
+fixes for PDAM and HW LRO
+
+From: Nelson Chang <nelson.chang@mediatek.com>
+Date: Mon, 26 Sep 2016 14:33:48 +0800
+
+> 1) Add to stop PDMA while stopping the frame engine
+> 2) Modify the register settings for LRO relinquishments
+> 3) Jump out from the waiting loop while LRO relinquishments are done
+
+Series applied, but like Sergei I think you should have split patch
+#2 into two separate patches.
+
+You even list the changes individually here in your header posting.
