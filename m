@@ -1,44 +1,28 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: RE: [PATCH net-next 2/2] net: ethernet: mediatek: bug fix to
- disable HW LRO
-Date: Mon, 26 Sep 2016 19:43:45 +0800
-Message-ID: <1474890225.2669.4.camel@mtksdaap41>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net-next 0/2] net: ethernet: mediatek: some bug fixes
+ for PDAM and HW LRO
+Date: Tue, 27 Sep 2016 09:42:24 -0400 (EDT)
+Message-ID: <20160927.094224.1540701192272023517.davem@davemloft.net>
+References: <1474871630-4134-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: Text/Plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1474871630-4134-1-git-send-email-nelson.chang@mediatek.com>
 Sender: netdev-owner@vger.kernel.org
-To: sergei.shtylyov@cogentembedded.com, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+To: nelson.chang@mediatek.com
+Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sergei,
+From: Nelson Chang <nelson.chang@mediatek.com>
+Date: Mon, 26 Sep 2016 14:33:48 +0800
 
-Because these modifications are both related to LRO relinquishments, I
-put them in a single patch.
+> 1) Add to stop PDMA while stopping the frame engine
+> 2) Modify the register settings for LRO relinquishments
+> 3) Jump out from the waiting loop while LRO relinquishments are done
 
+Series applied, but like Sergei I think you should have split patch
+#2 into two separate patches.
 
-Nelson
-
------Original Message-----
-From: Sergei Shtylyov [mailto:sergei.shtylyov@cogentembedded.com] 
-Sent: Monday, September 26, 2016 7:21 PM
-To: Nelson Chang (張家祥); john@phrozen.org; davem@davemloft.net
-Cc: nbd@openwrt.org; netdev@vger.kernel.org;
-linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
-Subject: Re: [PATCH net-next 2/2] net: ethernet: mediatek: bug fix to
-disable HW LRO
-
-Hello.
-
-On 9/26/2016 9:33 AM, Nelson Chang wrote:
-
-> (1) Modify the register settings for LRO relinquishments
-> (2) Jump out from the waiting loop while LRO relinquishments are done
-
-    Why this is done in a single patch?
-
-> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
-[...]
-
-MBR, Sergei
+You even list the changes individually here in your header
+posting.
