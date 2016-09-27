@@ -1,49 +1,68 @@
-From: Sean Paul <seanpaul@google.com>
-Subject: Re: [PATCH 1/2] drm/rockchip: add missing header dependencies
-Date: Tue, 27 Sep 2016 12:34:04 -0400
-Message-ID: <CAOw6vbJLhUHdditnN6W2K=NQ71b_+oHyDF6GfxOEvw9zPHrn3A@mail.gmail.com>
-References: <1474789109-22010-1-git-send-email-baoyou.xie@linaro.org>
+From: Sean Paul <seanpaul@chromium.org>
+Subject: Re: [PATCH] drm/mediatek: mark symbols static where possible
+Date: Tue, 27 Sep 2016 12:34:31 -0400
+Message-ID: <CAOw6vb+VKVBRVU+OR0wVxYMMEU5OHRznbfZ2veZS0VATY+16hg@mail.gmail.com>
+References: <1474789265-30142-1-git-send-email-baoyou.xie@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1474789109-22010-1-git-send-email-baoyou.xie@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1474789265-30142-1-git-send-email-baoyou.xie@linaro.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Baoyou Xie <baoyou.xie@linaro.org>
-Cc: CK HU <ck.hu@mediatek.com>, p.zabel@pengutronix.de, Dave Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?B?5aea5pm65oOF?= <mark.yao@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>, Baoyou Xie <xie.baoyou@zte.com.cn>, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-rockchip@lists.infradead.org, tang.qiang007@zte.com.cn, Baoyou Xie <xie.baoyou@zte.com.cn>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, han.fei@zte.com.cn, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, Sep 25, 2016 at 3:38 AM, Baoyou Xie <baoyou.xie@linaro.org> wrote:
-> We get 2 warnings when building kernel with W=1:
-> drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:130:5: warning: no previous prototype for 'rockchip_drm_fbdev_init' [-Wmissing-prototypes]
-> drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c:173:6: warning: no previous prototype for 'rockchip_drm_fbdev_fini' [-Wmissing-prototypes]
->
-> In fact, these functions are declared
-> in drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h,
-> so this patch adds missing header dependencies.
->
-> Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
-
-
-Applied to -misc, thanks.
-
-Sean
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-> index 207e01d..a16c69f 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-> @@ -20,6 +20,7 @@
->  #include "rockchip_drm_drv.h"
->  #include "rockchip_drm_gem.h"
->  #include "rockchip_drm_fb.h"
-> +#include "rockchip_drm_fbdev.h"
->
->  #define PREFERRED_BPP          32
->  #define to_drm_private(x) \
-> --
-> 2.7.4
->
+T24gU3VuLCBTZXAgMjUsIDIwMTYgYXQgMzo0MSBBTSwgQmFveW91IFhpZSA8YmFveW91LnhpZUBs
+aW5hcm8ub3JnPiB3cm90ZToKPiBXZSBnZXQgNCB3YXJuaW5ncyB3aGVuIGJ1aWxkaW5nIGtlcm5l
+bCB3aXRoIFc9MToKPiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYzoxMDg5OjY6
+IHdhcm5pbmc6IG5vIHByZXZpb3VzIHByb3RvdHlwZSBmb3IgJ210a19oZG1pX2F1ZGlvX2VuYWJs
+ZScgWy1XbWlzc2luZy1wcm90b3R5cGVzXQo+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+aGRtaS5jOjEwOTU6Njogd2FybmluZzogbm8gcHJldmlvdXMgcHJvdG90eXBlIGZvciAnbXRrX2hk
+bWlfYXVkaW9fZGlzYWJsZScgWy1XbWlzc2luZy1wcm90b3R5cGVzXQo+IGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaS5jOjExMDE6NTogd2FybmluZzogbm8gcHJldmlvdXMgcHJvdG90
+eXBlIGZvciAnbXRrX2hkbWlfYXVkaW9fc2V0X3BhcmFtJyBbLVdtaXNzaW5nLXByb3RvdHlwZXNd
+Cj4gZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmM6MTYyNzo1OiB3YXJuaW5nOiBu
+byBwcmV2aW91cyBwcm90b3R5cGUgZm9yICdtdGtfaGRtaV9hdWRpb19kaWdpdGFsX211dGUnIFst
+V21pc3NpbmctcHJvdG90eXBlc10KPgo+IEluIGZhY3QsIGJvdGggZnVuY3Rpb25zIGFyZSBvbmx5
+IHVzZWQgaW4gdGhlIGZpbGUgaW4gd2hpY2ggdGhleSBhcmUKPiBkZWNsYXJlZCBhbmQgZG9uJ3Qg
+bmVlZCBhIGRlY2xhcmF0aW9uLCBidXQgY2FuIGJlIG1hZGUgc3RhdGljLgo+IFNvIHRoaXMgcGF0
+Y2ggbWFya3MgYm90aCBmdW5jdGlvbnMgd2l0aCAnc3RhdGljJy4KPgo+IFNpZ25lZC1vZmYtYnk6
+IEJhb3lvdSBYaWUgPGJhb3lvdS54aWVAbGluYXJvLm9yZz4KCkFwcGxpZWQgdG8gLW1pc2MsIHRo
+YW5rcy4KClNlYW4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5j
+IHwgOSArKysrKy0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNCBkZWxl
+dGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gaW5kZXggMzM0NTYy
+ZC4uYmU0ZTE5YyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hk
+bWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gQEAgLTEw
+ODYsMTkgKzEwODYsMTkgQEAgc3RhdGljIGludCBtdGtfaGRtaV9vdXRwdXRfaW5pdChzdHJ1Y3Qg
+bXRrX2hkbWkgKmhkbWkpCj4gICAgICAgICByZXR1cm4gMDsKPiAgfQo+Cj4gLXZvaWQgbXRrX2hk
+bWlfYXVkaW9fZW5hYmxlKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSkKPiArc3RhdGljIHZvaWQgbXRr
+X2hkbWlfYXVkaW9fZW5hYmxlKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSkKPiAgewo+ICAgICAgICAg
+bXRrX2hkbWlfYXVkX2VuYWJsZV9wYWNrZXQoaGRtaSwgdHJ1ZSk7Cj4gICAgICAgICBoZG1pLT5h
+dWRpb19lbmFibGUgPSB0cnVlOwo+ICB9Cj4KPiAtdm9pZCBtdGtfaGRtaV9hdWRpb19kaXNhYmxl
+KHN0cnVjdCBtdGtfaGRtaSAqaGRtaSkKPiArc3RhdGljIHZvaWQgbXRrX2hkbWlfYXVkaW9fZGlz
+YWJsZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkpCj4gIHsKPiAgICAgICAgIG10a19oZG1pX2F1ZF9l
+bmFibGVfcGFja2V0KGhkbWksIGZhbHNlKTsKPiAgICAgICAgIGhkbWktPmF1ZGlvX2VuYWJsZSA9
+IGZhbHNlOwo+ICB9Cj4KPiAtaW50IG10a19oZG1pX2F1ZGlvX3NldF9wYXJhbShzdHJ1Y3QgbXRr
+X2hkbWkgKmhkbWksCj4gK3N0YXRpYyBpbnQgbXRrX2hkbWlfYXVkaW9fc2V0X3BhcmFtKHN0cnVj
+dCBtdGtfaGRtaSAqaGRtaSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBo
+ZG1pX2F1ZGlvX3BhcmFtICpwYXJhbSkKPiAgewo+ICAgICAgICAgaWYgKCFoZG1pLT5hdWRpb19l
+bmFibGUpIHsKPiBAQCAtMTYyNCw3ICsxNjI0LDggQEAgc3RhdGljIHZvaWQgbXRrX2hkbWlfYXVk
+aW9fc2h1dGRvd24oc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhKQo+ICAgICAgICAgbXRr
+X2hkbWlfYXVkaW9fZGlzYWJsZShoZG1pKTsKPiAgfQo+Cj4gLWludCBtdGtfaGRtaV9hdWRpb19k
+aWdpdGFsX211dGUoc3RydWN0IGRldmljZSAqZGV2LCB2b2lkICpkYXRhLCBib29sIGVuYWJsZSkK
+PiArc3RhdGljIGludAo+ICttdGtfaGRtaV9hdWRpb19kaWdpdGFsX211dGUoc3RydWN0IGRldmlj
+ZSAqZGV2LCB2b2lkICpkYXRhLCBib29sIGVuYWJsZSkKPiAgewo+ICAgICAgICAgc3RydWN0IG10
+a19oZG1pICpoZG1pID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4KPiAtLQo+IDIuNy40Cj4KX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1h
+aWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
