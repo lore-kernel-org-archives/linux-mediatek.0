@@ -1,37 +1,71 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: RE: [PATCH net-next 0/2] net: ethernet: mediatek: some bug fixes
- for PDAM and HW LRO
-Date: Wed, 28 Sep 2016 01:16:25 +0800
-Message-ID: <1474996585.11000.2.camel@mtksdaap41>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v5 1/3] drm/mediatek: do mtk_hdmi_send_infoframe after HDMI clock enable
+Date: Thu, 29 Sep 2016 11:02:13 +0800
+Message-ID: <1475118135-56780-2-git-send-email-bibby.hsieh@mediatek.com>
+References: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: davem@davemloft.net
-Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Junzhi Zhao <junzhi.zhao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Got it. I'll notice that for later patches.
-Thanks David.
+From: Junzhi Zhao <junzhi.zhao@mediatek.com>
 
------Original Message-----
-From: David Miller [mailto:davem@davemloft.net] 
-Sent: Tuesday, September 27, 2016 9:42 PM
-To: Nelson Chang (張家祥)
-Cc: john@phrozen.org; nbd@openwrt.org; netdev@vger.kernel.org;
-linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
-Subject: Re: [PATCH net-next 0/2] net: ethernet: mediatek: some bug
-fixes for PDAM and HW LRO
+The mtk_hdmi_send_infoframe have to
+be run after PLL and PIXEL clock of HDMI enable.
+Make sure that HDMI inforframes can be sent
+successfully.
 
-From: Nelson Chang <nelson.chang@mediatek.com>
-Date: Mon, 26 Sep 2016 14:33:48 +0800
+Signed-off-by: Junzhi Zhao <junzhi.zhao@mediatek.com>
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c |   17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-> 1) Add to stop PDMA while stopping the frame engine
-> 2) Modify the register settings for LRO relinquishments
-> 3) Jump out from the waiting loop while LRO relinquishments are done
-
-Series applied, but like Sergei I think you should have split patch
-#2 into two separate patches.
-
-You even list the changes individually here in your header posting.
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 334562d..875b045 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1133,12 +1133,6 @@ static int mtk_hdmi_output_set_display_mode(struct mtk_hdmi *hdmi,
+ 	phy_power_on(hdmi->phy);
+ 	mtk_hdmi_aud_output_config(hdmi, mode);
+ 
+-	mtk_hdmi_setup_audio_infoframe(hdmi);
+-	mtk_hdmi_setup_avi_infoframe(hdmi, mode);
+-	mtk_hdmi_setup_spd_infoframe(hdmi, "mediatek", "On-chip HDMI");
+-	if (mode->flags & DRM_MODE_FLAG_3D_MASK)
+-		mtk_hdmi_setup_vendor_specific_infoframe(hdmi, mode);
+-
+ 	mtk_hdmi_hw_vid_black(hdmi, false);
+ 	mtk_hdmi_hw_aud_unmute(hdmi);
+ 	mtk_hdmi_hw_send_av_unmute(hdmi);
+@@ -1401,6 +1395,16 @@ static void mtk_hdmi_bridge_pre_enable(struct drm_bridge *bridge)
+ 	hdmi->powered = true;
+ }
+ 
++static void mtk_hdmi_send_infoframe(struct mtk_hdmi *hdmi,
++				    struct drm_display_mode *mode)
++{
++	mtk_hdmi_setup_audio_infoframe(hdmi);
++	mtk_hdmi_setup_avi_infoframe(hdmi, mode);
++	mtk_hdmi_setup_spd_infoframe(hdmi, "mediatek", "On-chip HDMI");
++	if (mode->flags & DRM_MODE_FLAG_3D_MASK)
++		mtk_hdmi_setup_vendor_specific_infoframe(hdmi, mode);
++}
++
+ static void mtk_hdmi_bridge_enable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+@@ -1409,6 +1413,7 @@ static void mtk_hdmi_bridge_enable(struct drm_bridge *bridge)
+ 	clk_prepare_enable(hdmi->clk[MTK_HDMI_CLK_HDMI_PLL]);
+ 	clk_prepare_enable(hdmi->clk[MTK_HDMI_CLK_HDMI_PIXEL]);
+ 	phy_power_on(hdmi->phy);
++	mtk_hdmi_send_infoframe(hdmi, &hdmi->mode);
+ 
+ 	hdmi->enabled = true;
+ }
+-- 
+1.7.9.5
