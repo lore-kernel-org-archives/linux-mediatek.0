@@ -1,55 +1,37 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v5 3/3] drm/mediatek: modify the factor to make the pll_rate set in the 1G-2G range
-Date: Thu, 29 Sep 2016 11:02:15 +0800
-Message-ID: <1475118135-56780-4-git-send-email-bibby.hsieh@mediatek.com>
-References: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH] drm/mediatek: fix a typo
+Date: Thu, 29 Sep 2016 11:22:02 +0800
+Message-ID: <1475119322-58657-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Junzhi Zhao <junzhi.zhao@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Junzhi Zhao <junzhi.zhao@mediatek.com>
-
-Currently, the code sets the "pll" to the desired multiple
-of the pixel clock manully(4*3m 8*3,etc).  The valid range
-of the pll is 1G-2G, however, when the pixel clock is bigger
-than 167MHz,  the "pll" will be set to a invalid value( > 2G),
-then the "pll" will be 2GHz, thus the pixel clock will be in
-correct. Change the factor to make the "pll" be set in the
-(1G, 2G) range.
-
-Signed-off-by: Junzhi Zhao <junzhi.zhao@mediatek.com>
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c |    9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 0186e50..90fb831 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -432,11 +432,16 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	unsigned long pll_rate;
- 	unsigned int factor;
- 
-+	/* let pll_rate can fix the valid range of tvdpll (1G~2GHz) */
- 	pix_rate = 1000UL * mode->clock;
--	if (mode->clock <= 74000)
-+	if (mode->clock <= 27000)
-+		factor = 16 * 3;
-+	else if (mode->clock <= 84000)
- 		factor = 8 * 3;
--	else
-+	else if (mode->clock <= 167000)
- 		factor = 4 * 3;
-+	else
-+		factor = 2 * 3;
- 	pll_rate = pix_rate * factor;
- 
- 	dev_dbg(dpi->dev, "Want PLL %lu Hz, pixel clock %lu Hz\n",
--- 
-1.7.9.5
+Rml4IHRoZSB0eXBvOiBPRF9SRUxBWU1PREUtPk9EX0NGRwoKU2lnbmVkLW9mZi1ieTogQmliYnkg
+SHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIHwgICAgMiArLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHJtX2RkcF9jb21wLmMKaW5kZXggZGYzM2IzYy4uYWE1ZjIwZiAxMDA2NDQKLS0tIGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYworKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCkBAIC0xMjMsNyArMTIzLDcgQEAgc3RhdGlj
+IHZvaWQgbXRrX29kX2NvbmZpZyhzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wLCB1bnNpZ25lZCBp
+bnQgdywKIAkJCSAgdW5zaWduZWQgaW50IGJwYykKIHsKIAl3cml0ZWwodyA8PCAxNiB8IGgsIGNv
+bXAtPnJlZ3MgKyBESVNQX09EX1NJWkUpOwotCXdyaXRlbChPRF9SRUxBWU1PREUsIGNvbXAtPnJl
+Z3MgKyBPRF9SRUxBWU1PREUpOworCXdyaXRlbChPRF9SRUxBWU1PREUsIGNvbXAtPnJlZ3MgKyBP
+RF9DRkcpOwogCW10a19kaXRoZXJfc2V0KGNvbXAsIGJwYywgRElTUF9PRF9DRkcpOwogfQogCi0t
+IAoxLjcuOS41CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
