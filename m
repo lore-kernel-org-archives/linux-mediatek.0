@@ -1,91 +1,59 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
 Subject: Re: [PATCH] mtd: mtk: avoid warning in mtk_ecc_encode
-Date: Fri, 30 Sep 2016 18:51:39 +0200
-Message-ID: <20160930185139.15c8be66@bbrezillon>
+Date: Fri, 30 Sep 2016 19:25:17 +0200
+Message-ID: <201609301925.17577.arnd@arndb.de>
 References: <20160930163429.380785-1-arnd@arndb.de>
+ <20160930185139.15c8be66@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20160930163429.380785-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Richard Weinberger <richard@nod.at>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20160930185139.15c8be66@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd,
-
-On Fri, 30 Sep 2016 18:33:02 +0200
-Arnd Bergmann <arnd@arndb.de> wrote:
-
-> When building with -Wmaybe-uninitialized, gcc produces a silly false positive
-> warning for the mtk_ecc_encode function:
+On Friday 30 September 2016, Boris Brezillon wrote:
+> > +     /* copy into possibly unaligned OOB region with actual length */
+> > +     memcpy(data + bytes, eccdata, len);
 > 
-> drivers/mtd/nand/mtk_ecc.c: In function 'mtk_ecc_encode':
-> drivers/mtd/nand/mtk_ecc.c:402:15: error: 'val' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+> Is it better than
 > 
-> The function for some reason contains a double byte swap on big-endian
-> builds to get the OOB data into the correct order again, and is written
-> in a slightly confusing way.
+>         for (i = 0; i < len; i += 4) {
+>                 u32 val = __raw_readl(ecc->regs + ECC_ENCPAR(i / 4));
 > 
-> Using a simple memcpy32_fromio() to read the data simplifies it a lot
-> so it becomes more readable and produces no warning. However, the
-> output might not have 32-bit alignment, so we have to use another
-> memcpy to avoid taking alignment faults or writing beyond the end
-> of the array.
+>                 memcpy(data + bytes + i, &val, min(len, 4));
+>         }
 > 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/mtd/nand/mtk_ecc.c | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> index d54f666417e1..237c83124a7d 100644
-> --- a/drivers/mtd/nand/mtk_ecc.c
-> +++ b/drivers/mtd/nand/mtk_ecc.c
-> @@ -366,9 +366,9 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
->  		   u8 *data, u32 bytes)
->  {
->  	dma_addr_t addr;
-> -	u8 *p;
-> -	u32 len, i, val;
-> -	int ret = 0;
-> +	u32 len;
-> +	u8 eccdata[112];
-> +	int ret;
->  
->  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
->  	ret = dma_mapping_error(ecc->dev, addr);
-> @@ -393,14 +393,12 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
->  
->  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
->  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
-> -	p = data + bytes;
->  
-> -	/* write the parity bytes generated by the ECC back to the OOB region */
-> -	for (i = 0; i < len; i++) {
-> -		if ((i % 4) == 0)
-> -			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
-> -		p[i] = (val >> ((i % 4) * 8)) & 0xff;
-> -	}
-> +	/* write the parity bytes generated by the ECC back to temp buffer */
-> +	__ioread32_copy(eccdata, ecc->regs + ECC_ENCPAR(0), round_up(len, 4));
-> +
-> +	/* copy into possibly unaligned OOB region with actual length */
-> +	memcpy(data + bytes, eccdata, len);
+> I'm probably missing something, but what's the point of creating a
+> temporary buffer of 112 bytes on the stack since you'll have to copy
+> this data to the oob buffer at some point?
 
-Is it better than
 
-	for (i = 0; i < len; i += 4) {
-		u32 val = __raw_readl(ecc->regs + ECC_ENCPAR(i / 4));
+I tried something like that first, but wasn't too happy with it for
+a number of small reasons:
 
-		memcpy(data + bytes + i, &val, min(len, 4));
-	}
+- __raw_readl in a driver is not usually the right API, __memcpy32_from_io
+  uses it internally, but it's better for a driver not to rely on that,
+  in case we need some barriers (which we may in factt need for other drivers).
 
-I'm probably missing something, but what's the point of creating a
-temporary buffer of 112 bytes on the stack since you'll have to copy
-this data to the oob buffer at some point?
+- the min(len,4) expression is incorrect, fixing that makes it more complicated
+  again
 
->  timeout:
->  
->  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
+- I didn't like to call memcpy() multiple times, as that might get turned
+  into an external function call (the compiler is free to optimize small
+  memcpy calls or not).
+
+I agree that he 112 byte buffer isn't ideal either, it just seemed to
+be the lesser annoyance.
+
+	Arnd
