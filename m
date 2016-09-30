@@ -1,51 +1,55 @@
-From: Baoyou Xie <baoyou.xie@linaro.org>
-Subject: [PATCH] net: ethernet: mediatek: mark symbols static where possible
-Date: Fri, 30 Sep 2016 15:48:50 +0800
-Message-ID: <1475221730-18773-1-git-send-email-baoyou.xie@linaro.org>
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com
-Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, arnd@arndb.de, baoyou.xie@linaro.org, xie.baoyou@zte.com.cn, han.fei@zte.com.cn, tang.qiang007@zte.com.cn
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v14 4/4] CMDQ: save more energy in idle
+Date: Fri, 30 Sep 2016 16:56:06 +0800
+Message-ID: <1475225766.25044.33.camel@mtksdaap41>
+References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+         <1473039885-24009-5-git-send-email-hs.liao@mediatek.com>
+         <CABb+yY1YqyReK5bii6n5a_rJ6fgpPi=aC3sfKJdomvM5+NG9FA@mail.gmail.com>
+         <1474622885.21723.25.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1474622885.21723.25.camel@mtksdaap41>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jo
 List-Id: linux-mediatek@lists.infradead.org
 
-We get 2 warnings when building kernel with W=1:
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:2041:5: warning: no previous prototype for 'mtk_get_link_ksettings' [-Wmissing-prototypes]
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:2052:5: warning: no previous prototype for 'mtk_set_link_ksettings' [-Wmissing-prototypes]
+On Fri, 2016-09-23 at 17:28 +0800, Horng-Shyang Liao wrote:
+> On Thu, 2016-09-22 at 13:22 +0530, Jassi Brar wrote:
+> > On Mon, Sep 5, 2016 at 7:14 AM, HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > > Use clk_disable_unprepare instead of clk_disable to save more energy
+> > > when CMDQ is idle.
+> > >
+> > > Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > > ---
+> > >  drivers/mailbox/mtk-cmdq.c | 54 +++++++++++++++++++++++++++++++++++++++-------
+> > 
+> > The driver is introduced by second patch of the set, so it makes sense
+> > to merge this patch into patch 2/4.
+> 
+> Hi Jassi,
+> 
+> Could you take a look at previous discussion between Matthias and me?
+> http://lkml.iu.edu/hypermail/linux/kernel/1606.2/05239.html
+> His basic idea is to simplify first working version.
+> Therefore, I move some code to this patch.
+> 
+> Thanks,
+> HS
+> 
 
-In fact, these functions are only used in the file in which they are
-declared and don't need a declaration, but can be made static.
-So this patch marks these functions with 'static'.
+Hi Jassi,
 
-Signed-off-by: Baoyou Xie <baoyou.xie@linaro.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+What do you think about our previous discussion?
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index ddf20a0..ad4ab97 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2038,8 +2038,8 @@ static int mtk_cleanup(struct mtk_eth *eth)
- 	return 0;
- }
- 
--int mtk_get_link_ksettings(struct net_device *ndev,
--			   struct ethtool_link_ksettings *cmd)
-+static int mtk_get_link_ksettings(struct net_device *ndev,
-+				  struct ethtool_link_ksettings *cmd)
- {
- 	struct mtk_mac *mac = netdev_priv(ndev);
- 
-@@ -2049,8 +2049,8 @@ int mtk_get_link_ksettings(struct net_device *ndev,
- 	return phy_ethtool_ksettings_get(ndev->phydev, cmd);
- }
- 
--int mtk_set_link_ksettings(struct net_device *ndev,
--			   const struct ethtool_link_ksettings *cmd)
-+static int mtk_set_link_ksettings(struct net_device *ndev,
-+				  const struct ethtool_link_ksettings *cmd)
- {
- 	struct mtk_mac *mac = netdev_priv(ndev);
- 
--- 
-2.7.4
+Thanks,
+HS
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
