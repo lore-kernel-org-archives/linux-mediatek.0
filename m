@@ -1,92 +1,108 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: fix a typo
-Date: Mon, 3 Oct 2016 10:46:14 +0200
-Message-ID: <8ac926cb-e585-0a4c-97cc-8948d17b4bba@gmail.com>
-References: <1475119322-58657-1-git-send-email-bibby.hsieh@mediatek.com>
- <1475121682.18843.2.camel@mtksdaap41>
- <1f324471-bebb-c8bf-75c1-391355c50a99@gmail.com>
- <1475205119.13345.6.camel@mtksdaap41>
+From: John Crispin <john@phrozen.org>
+Subject: Re: [PATCH net-next 1/3] net: ethernet: mediatek: get the chip id by
+ ETHDMASYS registers
+Date: Mon, 3 Oct 2016 21:17:02 +0200
+Message-ID: <c558924d-0b58-8783-0c43-4dd064260dc2@phrozen.org>
+References: <1475479131-19822-1-git-send-email-nelson.chang@mediatek.com>
+ <1475479131-19822-2-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1475205119.13345.6.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1475479131-19822-2-git-send-email-nelson.chang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: Nelson Chang <nelson.chang@mediatek.com>, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Nelson,
 
+comments inline
 
-On 30/09/16 05:11, Bibby Hsieh wrote:
-> On Thu, 2016-09-29 at 10:46 +0200, Matthias Brugger wrote:
->>
->> On 29/09/16 06:01, CK Hu wrote:
->>> Acked-by: CK Hu <ck.hu@mediatek.com>
->>>
->>> On Thu, 2016-09-29 at 11:22 +0800, Bibby Hsieh wrote:
->>>> Fix the typo: OD_RELAYMODE->OD_CFG
->>>>
->>
->
-> Hi, Matthias
-> Thanks for your reply.
->
->> Although it is quite clear what the patch does, could you write one
->> sentence to explain what it does. Maybe explain even which effect it
->> has, which error get fixed etc.
->
-> Ok, I will do that.
->
->> As we are getting public available boards now, we should take more care
->> about fixes. If you have a fix for a commit introduced in an earlier
->> version of linux and it should be fixed for this version as well (e.g.
->> v4.6 does have the feature but it does not work correctly) then please
->> add these two lines before your Signed-off-by:
->> Fixes: <commit-hash> ("<commit subject line>")
->> Cc: stable@vger.kernel.org # v4.6+
->>
->> Where v4.6+ stands for the oldest version where this should get fixed.
->>
->
-> Ok, but the patch hasn't been merged into v4.8 (just in drm-next [1] and
-> linux-next [2]), how can I mark that?
->
+On 03/10/2016 09:18, Nelson Chang wrote:
+> The driver gets the chip id by ETHSYS_CHIPID0_3/ETHSYS_CHIPID4_7 registers
+> in mtk_probe().
+> 
+> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 27 +++++++++++++++++++++++++++
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 +++++
+>  2 files changed, 32 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index ad4ab97..a3e4ae6 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -2323,6 +2323,27 @@ free_netdev:
+>  	return err;
+>  }
+>  
+> +static u32 mtk_get_chip_id(struct mtk_eth *eth)
+> +{
+> +	u32 val[2], id[4];
+> +	u32 chip_id;
+> +
+> +	regmap_read(eth->ethsys, ETHSYS_CHIPID0_3, &val[0]);
+> +	regmap_read(eth->ethsys, ETHSYS_CHIPID4_7, &val[1]);
+> +
+> +	id[3] = ((val[0] >> 16) & 0xff) - '0';
+> +	id[2] = ((val[0] >> 24) & 0xff) - '0';
+> +	id[1] = (val[1] & 0xff) - '0';
+> +	id[0] = ((val[1] >> 8) & 0xff) - '0';
+> +
+> +	chip_id = (id[3] * 1000) + (id[2] * 100) +
+> +		  (id[1] * 10) + id[0];
+> +
+> +	dev_info(eth->dev, "chip id = %d\n", chip_id);
 
+the chip id is printed here
 
-If the commit get's into v4.9 then make sure that this patch get's 
-merged into the fixes for v4.9 by the corresponding maintainer.
+> +	return chip_id;
+> +}
+> +
+>  static int mtk_probe(struct platform_device *pdev)
+>  {
+>  	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> @@ -2388,6 +2409,12 @@ static int mtk_probe(struct platform_device *pdev)
+>  	if (err)
+>  		return err;
+>  
+> +	eth->chip_id = mtk_get_chip_id(eth);
+> +	if (!eth->chip_id) {
+> +		dev_err(&pdev->dev, "failed to get chip id\n");
+> +		return -ENODEV;
+> +	}
+> +
 
-Regards,
-Matthias
+and the error check happens here. maybe you could move the dev_err to
+the above function.
 
-> [1]
-> https://cgit.freedesktop.org/~airlied/linux/commit/?h=drm-next&id=7216436420414144646f5d8343d061355fd23483
-> [2]
-> https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/?id=7216436420414144646f5d8343d061355fd23483
->
->
->> Thanks a lot,
->> Matthias
->>
->>>> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
->>>> ---
->>>>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    2 +-
->>>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
->>>> index df33b3c..aa5f20f 100644
->>>> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
->>>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
->>>> @@ -123,7 +123,7 @@ static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
->>>>  			  unsigned int bpc)
->>>>  {
->>>>  	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
->>>> -	writel(OD_RELAYMODE, comp->regs + OD_RELAYMODE);
->>>> +	writel(OD_RELAYMODE, comp->regs + OD_CFG);
->>>>  	mtk_dither_set(comp, bpc, DISP_OD_CFG);
->>>>  }
->>>>
->>>
->>>
->
+	John
+
+>  	for_each_child_of_node(pdev->dev.of_node, mac_np) {
+>  		if (!of_device_is_compatible(mac_np,
+>  					     "mediatek,eth-mac"))
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index 3003195..a5b422b 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -342,6 +342,10 @@
+>  #define GPIO_BIAS_CTRL		0xed0
+>  #define GPIO_DRV_SEL10		0xf00
+>  
+> +/* ethernet subsystem chip id register */
+> +#define ETHSYS_CHIPID0_3	0x0
+> +#define ETHSYS_CHIPID4_7	0x4
+> +
+>  /* ethernet subsystem config register */
+>  #define ETHSYS_SYSCFG0		0x14
+>  #define SYSCFG0_GE_MASK		0x3
+> @@ -534,6 +538,7 @@ struct mtk_eth {
+>  	unsigned long			sysclk;
+>  	struct regmap			*ethsys;
+>  	struct regmap			*pctl;
+> +	u32				chip_id;
+>  	bool				hwlro;
+>  	atomic_t			dma_refcnt;
+>  	struct mtk_tx_ring		tx_ring;
+> 
