@@ -1,74 +1,92 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: [PATCH net-next 2/3] net: ethernet: mediatek: get hw lro capability by the chip id instead of by the dtsi
-Date: Mon, 3 Oct 2016 15:18:50 +0800
-Message-ID: <1475479131-19822-3-git-send-email-nelson.chang@mediatek.com>
-References: <1475479131-19822-1-git-send-email-nelson.chang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] drm/mediatek: fix a typo
+Date: Mon, 3 Oct 2016 10:46:14 +0200
+Message-ID: <8ac926cb-e585-0a4c-97cc-8948d17b4bba@gmail.com>
+References: <1475119322-58657-1-git-send-email-bibby.hsieh@mediatek.com>
+ <1475121682.18843.2.camel@mtksdaap41>
+ <1f324471-bebb-c8bf-75c1-391355c50a99@gmail.com>
+ <1475205119.13345.6.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1475479131-19822-1-git-send-email-nelson.chang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com, Nelson Chang <nelson.chang@mediatek.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1475205119.13345.6.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: CK Hu <ck.hu@mediatek.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Because hw lro started to be supported from MT7623, the proper way to check if
-the feature is capable is to judge by the chip id instead of by the dtsi.
 
-Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
- 2 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index a3e4ae6..3d16a0c 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2344,6 +2344,14 @@ static u32 mtk_get_chip_id(struct mtk_eth *eth)
- 	return chip_id;
- }
- 
-+static bool mtk_is_hwlro_supported(struct mtk_eth *eth)
-+{
-+	if (eth->chip_id == MT7623_ETH)
-+		return true;
-+	else
-+		return false;
-+}
-+
- static int mtk_probe(struct platform_device *pdev)
- {
- 	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-@@ -2383,8 +2391,6 @@ static int mtk_probe(struct platform_device *pdev)
- 		return PTR_ERR(eth->pctl);
- 	}
- 
--	eth->hwlro = of_property_read_bool(pdev->dev.of_node, "mediatek,hwlro");
--
- 	for (i = 0; i < 3; i++) {
- 		eth->irq[i] = platform_get_irq(pdev, i);
- 		if (eth->irq[i] < 0) {
-@@ -2415,6 +2421,8 @@ static int mtk_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	eth->hwlro = mtk_is_hwlro_supported(eth);
-+
- 	for_each_child_of_node(pdev->dev.of_node, mac_np) {
- 		if (!of_device_is_compatible(mac_np,
- 					     "mediatek,eth-mac"))
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index a5b422b..58738fd 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -345,6 +345,7 @@
- /* ethernet subsystem chip id register */
- #define ETHSYS_CHIPID0_3	0x0
- #define ETHSYS_CHIPID4_7	0x4
-+#define MT7623_ETH		(7623)
- 
- /* ethernet subsystem config register */
- #define ETHSYS_SYSCFG0		0x14
--- 
-1.9.1
+On 30/09/16 05:11, Bibby Hsieh wrote:
+> On Thu, 2016-09-29 at 10:46 +0200, Matthias Brugger wrote:
+>>
+>> On 29/09/16 06:01, CK Hu wrote:
+>>> Acked-by: CK Hu <ck.hu@mediatek.com>
+>>>
+>>> On Thu, 2016-09-29 at 11:22 +0800, Bibby Hsieh wrote:
+>>>> Fix the typo: OD_RELAYMODE->OD_CFG
+>>>>
+>>
+>
+> Hi, Matthias
+> Thanks for your reply.
+>
+>> Although it is quite clear what the patch does, could you write one
+>> sentence to explain what it does. Maybe explain even which effect it
+>> has, which error get fixed etc.
+>
+> Ok, I will do that.
+>
+>> As we are getting public available boards now, we should take more care
+>> about fixes. If you have a fix for a commit introduced in an earlier
+>> version of linux and it should be fixed for this version as well (e.g.
+>> v4.6 does have the feature but it does not work correctly) then please
+>> add these two lines before your Signed-off-by:
+>> Fixes: <commit-hash> ("<commit subject line>")
+>> Cc: stable@vger.kernel.org # v4.6+
+>>
+>> Where v4.6+ stands for the oldest version where this should get fixed.
+>>
+>
+> Ok, but the patch hasn't been merged into v4.8 (just in drm-next [1] and
+> linux-next [2]), how can I mark that?
+>
+
+
+If the commit get's into v4.9 then make sure that this patch get's 
+merged into the fixes for v4.9 by the corresponding maintainer.
+
+Regards,
+Matthias
+
+> [1]
+> https://cgit.freedesktop.org/~airlied/linux/commit/?h=drm-next&id=7216436420414144646f5d8343d061355fd23483
+> [2]
+> https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/?id=7216436420414144646f5d8343d061355fd23483
+>
+>
+>> Thanks a lot,
+>> Matthias
+>>
+>>>> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+>>>> ---
+>>>>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    2 +-
+>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+>>>> index df33b3c..aa5f20f 100644
+>>>> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+>>>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+>>>> @@ -123,7 +123,7 @@ static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
+>>>>  			  unsigned int bpc)
+>>>>  {
+>>>>  	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
+>>>> -	writel(OD_RELAYMODE, comp->regs + OD_RELAYMODE);
+>>>> +	writel(OD_RELAYMODE, comp->regs + OD_CFG);
+>>>>  	mtk_dither_set(comp, bpc, DISP_OD_CFG);
+>>>>  }
+>>>>
+>>>
+>>>
+>
