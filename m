@@ -1,38 +1,29 @@
-From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-Subject: Re: [PATCH net-next v2 2/3] net: ethernet: mediatek: get hw lro
+From: David Laight <David.Laight@ACULAB.COM>
+Subject: RE: [PATCH net-next v2 2/3] net: ethernet: mediatek: get hw lro
  capability by the chip id instead of by the dtsi
-Date: Wed, 5 Oct 2016 15:57:57 +0300
-Message-ID: <d3baf861-b319-af95-8e0e-2c0cae1f071b@cogentembedded.com>
+Date: Wed, 5 Oct 2016 13:07:11 +0000
+Message-ID: <063D6719AE5E284EB5DD2968C1650D6DB01E3898@AcuExch.aculab.com>
 References: <1475671572.6101.7.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <netdev-owner@vger.kernel.org>
 In-Reply-To: <1475671572.6101.7.camel@mtksdaap41>
+Content-Language: en-US
 Sender: netdev-owner@vger.kernel.org
-To: Nelson Chang <nelson.chang@mediatek.com>, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+To: 'Nelson Chang' <nelson.chang@mediatek.com>, "sergei.shtylyov@cogentembedded.com" <sergei.shtylyov@cogentembedded.com>, "john@phrozen.org" <john@phrozen.org>, "davem@davemloft.net" <davem@davemloft.net>
+Cc: "nbd@openwrt.org" <nbd@openwrt.org>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "nelsonch.tw@gmail.com" <nelsonch.tw@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On 10/05/2016 03:46 PM, Nelson Chang wrote:
-
->> +static bool mtk_is_hwlro_supported(struct mtk_eth *eth) {
->> +     if (eth->chip_id == MT7623_ETH)
->> +             return true;
->> +     else
->> +             return false;
->
->         return eth->chip_id == MT7623_ETH;
->
-> => Since there will be more chips support hw lro in the future, keep the
-> original codes to have the scalability like this:
-> if (eth->chip_id == MTxxxx_ETH ||
->     eth->chip_id == MTyyyy_ETH ||
->     ....)
-> 	return true;
-
-    Then use *switch*, not *if*.
-
-> Nelson
-
-MBR, Sergei
+RnJvbTogTmVsc29uIENoYW5nDQo+IFNlbnQ6IDA1IE9jdG9iZXIgMjAxNiAxMzo0Ng0KPiA+ICtz
+dGF0aWMgYm9vbCBtdGtfaXNfaHdscm9fc3VwcG9ydGVkKHN0cnVjdCBtdGtfZXRoICpldGgpIHsN
+Cj4gPiArICAgICBpZiAoZXRoLT5jaGlwX2lkID09IE1UNzYyM19FVEgpDQo+ID4gKyAgICAgICAg
+ICAgICByZXR1cm4gdHJ1ZTsNCj4gPiArICAgICBlbHNlDQo+ID4gKyAgICAgICAgICAgICByZXR1
+cm4gZmFsc2U7DQo+IA0KPiAgICAgICAgIHJldHVybiBldGgtPmNoaXBfaWQgPT0gTVQ3NjIzX0VU
+SDsNCj4gDQo+ID0+IFNpbmNlIHRoZXJlIHdpbGwgYmUgbW9yZSBjaGlwcyBzdXBwb3J0IGh3IGxy
+byBpbiB0aGUgZnV0dXJlLCBrZWVwIHRoZQ0KPiBvcmlnaW5hbCBjb2RlcyB0byBoYXZlIHRoZSBz
+Y2FsYWJpbGl0eSBsaWtlIHRoaXM6DQo+IGlmIChldGgtPmNoaXBfaWQgPT0gTVR4eHh4X0VUSCB8
+fA0KPiAgICAgZXRoLT5jaGlwX2lkID09IE1UeXl5eV9FVEggfHwNCj4gICAgIC4uLi4pDQo+IAly
+ZXR1cm4gdHJ1ZTsNCg0KTm90aGluZyB3cm9uZyB3aXRoOg0KDQoJcmV0dXJuIGV0aC0+Y2hpcF9p
+ZCA9PSBNVHh4eHhfRVRIIHx8DQoJCWV0aC0+Y2hpcF9pZCA9PSBNVHl5eXlfRVRIOw0KDQoJRGF2
+aWQNCg0K
