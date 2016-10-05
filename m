@@ -1,113 +1,164 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: Re: [PATCH net-next 2/3] net: ethernet: mediatek: get hw lro
- capability by the chip id instead of by the dtsi
-Date: Tue, 4 Oct 2016 20:22:41 +0800
-Message-ID: <1475583761.7983.12.camel@mtksdaap41>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [PATCH v14 2/4] CMDQ: Mediatek CMDQ driver
+Date: Wed, 5 Oct 2016 10:54:24 +0800
+Message-ID: <1475636064.21937.25.camel@mtksdaap41>
+References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+         <1473039885-24009-3-git-send-email-hs.liao@mediatek.com>
+         <1475204778.13398.28.camel@mtksdaap41>
+         <1475225778.25044.35.camel@mtksdaap41>
+         <1475226691.13398.35.camel@mtksdaap41> <1475228829.3658.1.camel@mtksdaap41>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: john@phrozen.org, davem@davemloft.net
-Cc: netdev@vger.kernel.org, nbd@openwrt.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1475228829.3658.1.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: CK Hu <ck.hu@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar <jassisinghbrar@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.co>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
-
-do you plan to add more chips to the mtk_is_hwlro_supporte() function ?
-=> yes, there will be more chips with hw lro in the future, so i think
-using mtk_is_hwlro_supporte() function can have the scalability.
-
-Thanks.
-
-
-Nelson
-
------Original Message-----
-From: John Crispin [mailto:john@phrozen.org] 
-Sent: Tuesday, October 04, 2016 3:19 AM
-To: Nelson Chang (張家祥); davem@davemloft.net
-Cc: netdev@vger.kernel.org; nbd@openwrt.org;
-linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
-Subject: Re: [PATCH net-next 2/3] net: ethernet: mediatek: get hw lro
-capability by the chip id instead of by the dtsi
-
-Hi Nelson,
-
-comment inline
-
-On 03/10/2016 09:18, Nelson Chang wrote:
-> Because hw lro started to be supported from MT7623, the proper way to 
-> check if the feature is capable is to judge by the chip id instead of
-by the dtsi.
+On Fri, 2016-09-30 at 17:47 +0800, Horng-Shyang Liao wrote:
+> On Fri, 2016-09-30 at 17:11 +0800, CK Hu wrote:
+> > Hi, HS:
+> > 
+> > One comment inline
+> > 
+> > On Fri, 2016-09-30 at 16:56 +0800, Horng-Shyang Liao wrote:
+> > > Hi CK,
+> > > 
+> > > Please see my inline reply.
+> > > 
+> > > On Fri, 2016-09-30 at 11:06 +0800, CK Hu wrote:
+> > > > Hi, HS:
+> > > > 
+> > > > On Mon, 2016-09-05 at 09:44 +0800, HS Liao wrote:
+> > > > > This patch is first version of Mediatek Command Queue(CMDQ) driver. The
+> > > > > CMDQ is used to help write registers with critical time limitation,
+> > > > > such as updating display configuration during the vblank. It controls
+> > > > > Global Command Engine (GCE) hardware to achieve this requirement.
+> > > > > Currently, CMDQ only supports display related hardwares, but we expect
+> > > > > it can be extended to other hardwares for future requirements.
+> > > > > 
+> > > > > Signed-off-by: HS Liao <hs.liao@mediatek.com>
+> > > > > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> > > > > ---
+> > > > 
+> > > > [snip...]
+> > > > 
+> > > > > +
+> > > > > +struct cmdq_task {
+> > > > > +	struct cmdq		*cmdq;
+> > > > > +	struct list_head	list_entry;
+> > > > > +	void			*va_base;
+> > > > > +	dma_addr_t		pa_base;
+> > > > > +	size_t			cmd_buf_size; /* command occupied size */
+> > > > > +	size_t			buf_size; /* real buffer size */
+> > > > > +	bool			finalized;
+> > > > > +	struct cmdq_thread	*thread;
+> > > > 
+> > > > I think thread info could be removed from cmdq_task. Only
+> > > > cmdq_task_handle_error() and cmdq_task_insert_into_thread() use
+> > > > task->thread and caller of both function has the thread info. So you
+> > > > could just pass thread info into these two function and remove thread
+> > > > info in cmdq_task.
+> > > 
+> > > This modification will remove 1 pointer but add 2 pointers. Moreover,
+> > > more pointers will need to be delivered between functions for future
+> > > extension. IMHO, it would be better to keep thread pointer inside
+> > > cmdq_task.
+> > > 
+> > > > > +	struct cmdq_task_cb	cb;
+> > > > 
+> > > > I think this callback function is equal to mailbox client tx_done
+> > > > callback. It's better to use already-defined interface rather than
+> > > > creating your own.
+> > > 
+> > > This is because CMDQ driver allows different callback functions for
+> > > different tasks, but mailbox only allows one callback function per
+> > > channel. But, I think I can add a wrapper for tx_done to call CMDQ
+> > > callback functions. So, I will use tx_done in CMDQ v15.
+> > 
+> > Up to now, one callback function for one channel is enough for DRM. So
+> > 'different callback function for different sent-message' looks like an
+> > advanced function. Maybe you should not include it in first patch. 
+> > 
+> > Regards,
+> > CK
 > 
-> Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++++--  
-> drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
->  2 files changed, 11 insertions(+), 2 deletions(-)
+> Hi CK,
 > 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c 
-> b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index a3e4ae6..3d16a0c 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2344,6 +2344,14 @@ static u32 mtk_get_chip_id(struct mtk_eth *eth)
->  	return chip_id;
->  }
->  
-> +static bool mtk_is_hwlro_supported(struct mtk_eth *eth) {
-> +	if (eth->chip_id == MT7623_ETH)
-> +		return true;
-> +	else
-> +		return false;
-> +}
-> +
->  static int mtk_probe(struct platform_device *pdev)  {
->  	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 
-> 0); @@ -2383,8 +2391,6 @@ static int mtk_probe(struct platform_device
-*pdev)
->  		return PTR_ERR(eth->pctl);
->  	}
->  
-> -	eth->hwlro = of_property_read_bool(pdev->dev.of_node,
-"mediatek,hwlro");
-> -
->  	for (i = 0; i < 3; i++) {
->  		eth->irq[i] = platform_get_irq(pdev, i);
->  		if (eth->irq[i] < 0) {
-> @@ -2415,6 +2421,8 @@ static int mtk_probe(struct platform_device
-*pdev)
->  		return -ENODEV;
->  	}
->  
-> +	eth->hwlro = mtk_is_hwlro_supported(eth);
-> +
-
-do you plan to add more chips to the mtk_is_hwlro_supporte() function ?
-if not a simple
-
-	eth->hwlro = (eth->chip_id == MT7623_ETH);
-
-might be enough
-
-	John
-
-
->  	for_each_child_of_node(pdev->dev.of_node, mac_np) {
->  		if (!of_device_is_compatible(mac_np,
->  					     "mediatek,eth-mac"))
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h 
-> b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index a5b422b..58738fd 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -345,6 +345,7 @@
->  /* ethernet subsystem chip id register */
->  #define ETHSYS_CHIPID0_3	0x0
->  #define ETHSYS_CHIPID4_7	0x4
-> +#define MT7623_ETH		(7623)
->  
->  /* ethernet subsystem config register */
->  #define ETHSYS_SYSCFG0		0x14
+> OK. I will do it.
 > 
+> Thanks,
+> HS
+> 
+> [snip...]
+
+
+Hi CK,
+
+After I trace mailbox driver, I realize that CMDQ driver cannot use
+tx_done.
+
+CMDQ clients will flush many tasks into CMDQ driver, and then CMDQ
+driver will apply these tasks into GCE HW "immediately". These tasks,
+which are queued in GCE HW, may not execute immediately since they
+may need to wait event(s), e.g. vsync.
+
+However, in mailbox driver, mailbox uses a software buffer to queue
+sent messages. It only sends next message until previous message is
+done. This cannot fulfill CMDQ's requirement.
+
+Quote some code from mailbox driver. Please notice "active_req" part.
+
+static void msg_submit(struct mbox_chan *chan)
+{
+	...
+	if (!chan->msg_count || chan->active_req)
+		goto exit;
+	...
+	err = chan->mbox->ops->send_data(chan, data);
+	if (!err) {
+		chan->active_req = data;
+		chan->msg_count--;
+	}
+	...
+}
+
+static void tx_tick(struct mbox_chan *chan, int r)
+{
+	...
+	spin_lock_irqsave(&chan->lock, flags);
+	mssg = chan->active_req;
+	chan->active_req = NULL;
+	spin_unlock_irqrestore(&chan->lock, flags);
+	...
+}
+
+Current workable CMDQ driver uses mbox_client_txdone() to prevent
+this issue, and then uses self callback functions to handle done tasks.
+
+int cmdq_task_flush_async(struct cmdq_client *client, struct cmdq_task
+*task, cmdq_async_flush_cb cb, void *data)
+{
+	...
+	mbox_send_message(client->chan, task);
+	/* We can send next task immediately, so just call txdone. */
+	mbox_client_txdone(client->chan, 0);
+	...
+}
+
+Another solution is to use rx_callback; i.e. CMDQ mailbox controller
+call mbox_chan_received_data() when CMDQ task is done. But, this may
+violate the design of mailbox. What do you think?
+
+Thanks,
+HS
+
+
+Hi Jassi,
+
+Do you have any suggestion about previous situation?
+
+Thanks,
+HS
