@@ -1,65 +1,126 @@
-From: Nelson Chang <nelson.chang@mediatek.com>
-Subject: RE: [PATCH net-next v2 2/3] net: ethernet: mediatek: get hw lro
- capability by the chip id instead of by the dtsi
-Date: Wed, 5 Oct 2016 21:21:18 +0800
-Message-ID: <1475673678.6101.11.camel@mtksdaap41>
+From: Jassi Brar <jaswinder.singh@linaro.org>
+Subject: Re: [PATCH v14 2/4] CMDQ: Mediatek CMDQ driver
+Date: Wed, 5 Oct 2016 20:13:32 +0530
+Message-ID: <CAJe_ZheeEe0xEj733pxr4q=-YzxKHgRM4MMPDJNHa9uRC9Q2zA@mail.gmail.com>
+References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+ <1473039885-24009-3-git-send-email-hs.liao@mediatek.com> <1475204778.13398.28.camel@mtksdaap41>
+ <1475225778.25044.35.camel@mtksdaap41> <1475226691.13398.35.camel@mtksdaap41>
+ <1475228829.3658.1.camel@mtksdaap41> <1475636064.21937.25.camel@mtksdaap41>
+ <CAJe_ZhcXw1-MOEiiix5VTtKEVr9Z23s_OyikboDYCd0RQwS5pg@mail.gmail.com> <1475670705.335.27.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-Sender: netdev-owner@vger.kernel.org
-To: David.Laight@ACULAB.COM, sergei.shtylyov@cogentembedded.com, john@phrozen.org, davem@davemloft.net
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1475670705.335.27.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Horng-Shyang Liao <hs.liao@mediatek.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Monica Wang <monica.wang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jassi Brar <jassisinghbrar@gmail.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Devicetree List <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Glory Hung <glory.hung@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sergei, David,
+On 5 October 2016 at 18:01, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> On Wed, 2016-10-05 at 09:07 +0530, Jassi Brar wrote:
+>> On 5 October 2016 at 08:24, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+>> > On Fri, 2016-09-30 at 17:47 +0800, Horng-Shyang Liao wrote:
+>> >> On Fri, 2016-09-30 at 17:11 +0800, CK Hu wrote:
+>>
+>> >
+>> > After I trace mailbox driver, I realize that CMDQ driver cannot use
+>> > tx_done.
+>> >
+>> > CMDQ clients will flush many tasks into CMDQ driver, and then CMDQ
+>> > driver will apply these tasks into GCE HW "immediately". These tasks,
+>> > which are queued in GCE HW, may not execute immediately since they
+>> > may need to wait event(s), e.g. vsync.
+>> >
+>> > However, in mailbox driver, mailbox uses a software buffer to queue
+>> > sent messages. It only sends next message until previous message is
+>> > done. This cannot fulfill CMDQ's requirement.
+>> >
+>> I understand
+>>  a) GCE HW can internally queue many tasks in some 'FIFO'
+>>  b) Execution of some task may have to wait until some external event
+>> occurs (like vsync)
+>>  c) GCE does not generate irq/flag for each task executed (?)
+>>
+>> If so, may be your tx_done should return 'true' so long as the GCE HW
+>> can accept tasks in its 'FIFO'. For mailbox api, any task that is
+>> queued on GCE, is assumed to be transmitted.
+>>
+>> > Quote some code from mailbox driver. Please notice "active_req" part.
+>> >
+>> > static void msg_submit(struct mbox_chan *chan)
+>> > {
+>> >         ...
+>> >         if (!chan->msg_count || chan->active_req)
+>> >                 goto exit;
+>> >         ...
+>> >         err = chan->mbox->ops->send_data(chan, data);
+>> >         if (!err) {
+>> >                 chan->active_req = data;
+>> >                 chan->msg_count--;
+>> >         }
+>> >         ...
+>> > }
+>> >
+>> > static void tx_tick(struct mbox_chan *chan, int r)
+>> > {
+>> >         ...
+>> >         spin_lock_irqsave(&chan->lock, flags);
+>> >         mssg = chan->active_req;
+>> >         chan->active_req = NULL;
+>> >         spin_unlock_irqrestore(&chan->lock, flags);
+>> >         ...
+>> > }
+>> >
+>> > Current workable CMDQ driver uses mbox_client_txdone() to prevent
+>> > this issue, and then uses self callback functions to handle done tasks.
+>> >
+>> > int cmdq_task_flush_async(struct cmdq_client *client, struct cmdq_task
+>> > *task, cmdq_async_flush_cb cb, void *data)
+>> > {
+>> >         ...
+>> >         mbox_send_message(client->chan, task);
+>> >         /* We can send next task immediately, so just call txdone. */
+>> >         mbox_client_txdone(client->chan, 0);
+>> >         ...
+>> > }
+>> >
+>> > Another solution is to use rx_callback; i.e. CMDQ mailbox controller
+>> > call mbox_chan_received_data() when CMDQ task is done. But, this may
+>> > violate the design of mailbox. What do you think?
+>> >
+>> If my point (c) above does not hold, maybe look at implementing
+>> tx_done() callback and submit next task from the callback of last
+>> done.
+>
+>
+> Hi Jassi,
+>
+> For point (c), GCE irq means 1~n tasks done or
+> 0~n tasks done + 1 task error.
+> In irq, we can know which tasks are done by register and GCE pc.
+>
+> As I mentioned before, we cannot submit next task after previous task
+> call tx_done. We need to submit multiple tasks to GCE HW immediately
+> and queue them in GCE HW.
 
-I think modifying that as below is clear and scalable. Agree?
+> Let me explain this requirement by mouse
+> cursor example. User may move mouse quickly between two vsync, so DRM
+> may update display registers frequently. For CMDQ, that means many tasks
+> are flushed into CMDQ driver, and CMDQ driver needs to process all of
+> them in next vblank. Therefore, we cannot block any CMDQ task in SW
+> buffer.
+>
+We are interested only in the current position of cursor and not its
+trail. Also the current position should be updated at next vsync (and
+not the one after it).
+Going by this example, if the GCE HW can take in 'N' tasks at a time,
+then the N+1th submission should shift out (drop) the 1st task queued.
+So that at any time GCE HW has only the latest N tasks. Right?
 
-static bool mtk_is_hwlro_supported(struct mtk_eth *eth)
-{
-	switch (eth->chip_id) {
-	case MT7623_ETH:
-		return true;
-	}
+ If yes, maybe you don't need to care about tx-done and simply keep
+shoving tasks as you generate them.
 
-	return false;
-}
-
-Thanks.
-
-
-Nelson
------Original Message-----
-From: David Laight [mailto:David.Laight@ACULAB.COM] 
-Sent: Wednesday, October 05, 2016 9:07 PM
-To: Nelson Chang (張家祥); sergei.shtylyov@cogentembedded.com;
-john@phrozen.org; davem@davemloft.net
-Cc: nbd@openwrt.org; netdev@vger.kernel.org;
-linux-mediatek@lists.infradead.org; nelsonch.tw@gmail.com
-Subject: RE: [PATCH net-next v2 2/3] net: ethernet: mediatek: get hw lro
-capability by the chip id instead of by the dtsi
-
-From: Nelson Chang
-> Sent: 05 October 2016 13:46
-> > +static bool mtk_is_hwlro_supported(struct mtk_eth *eth) {
-> > +     if (eth->chip_id == MT7623_ETH)
-> > +             return true;
-> > +     else
-> > +             return false;
-> 
->         return eth->chip_id == MT7623_ETH;
-> 
-> => Since there will be more chips support hw lro in the future, keep 
-> the original codes to have the scalability like this:
-> if (eth->chip_id == MTxxxx_ETH ||
->     eth->chip_id == MTyyyy_ETH ||
->     ....)
-> 	return true;
-
-Nothing wrong with:
-
-	return eth->chip_id == MTxxxx_ETH ||
-		eth->chip_id == MTyyyy_ETH;
-
-	David
+ If no, maybe your client driver need to emulate such a circular
+buffer where oldest task is overwritten by newest submission. And you
+submit the circular buffer (most relevant tasks) at one go to the GCE
+HW.
