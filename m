@@ -1,121 +1,95 @@
-From: Horng-Shyang Liao <hs.liao@mediatek.com>
-Subject: Re: [PATCH v14 2/4] CMDQ: Mediatek CMDQ driver
-Date: Wed, 5 Oct 2016 20:31:45 +0800
-Message-ID: <1475670705.335.27.camel@mtksdaap41>
-References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
-         <1473039885-24009-3-git-send-email-hs.liao@mediatek.com>
-         <1475204778.13398.28.camel@mtksdaap41>
-         <1475225778.25044.35.camel@mtksdaap41>
-         <1475226691.13398.35.camel@mtksdaap41> <1475228829.3658.1.camel@mtksdaap41>
-         <1475636064.21937.25.camel@mtksdaap41>
-         <CAJe_ZhcXw1-MOEiiix5VTtKEVr9Z23s_OyikboDYCd0RQwS5pg@mail.gmail.com>
+From: Nelson Chang <nelson.chang@mediatek.com>
+Subject: [PATCH net-next v2 RESEND 1/3] net: ethernet: mediatek: get the chip id by ETHDMASYS registers
+Date: Wed, 5 Oct 2016 20:32:20 +0800
+Message-ID: <1475670742-11498-2-git-send-email-nelson.chang@mediatek.com>
+References: <1475670742-11498-1-git-send-email-nelson.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAJe_ZhcXw1-MOEiiix5VTtKEVr9Z23s_OyikboDYCd0RQwS5pg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jassi Brar <jaswinder.singh@linaro.org>
-Cc: CK Hu <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Monica Wang <monica.wang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jassi Brar <jassisinghbrar@gmail.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Devicetree List <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Glory Hung <glory.hung@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm->
+Content-Type: text/plain
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <1475670742-11498-1-git-send-email-nelson.chang@mediatek.com>
+Sender: netdev-owner@vger.kernel.org
+To: john@phrozen.org, davem@davemloft.net
+Cc: nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com, Nelson Chang <nelson.chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-10-05 at 09:07 +0530, Jassi Brar wrote:
-> On 5 October 2016 at 08:24, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
-> > On Fri, 2016-09-30 at 17:47 +0800, Horng-Shyang Liao wrote:
-> >> On Fri, 2016-09-30 at 17:11 +0800, CK Hu wrote:
-> 
-> >
-> > After I trace mailbox driver, I realize that CMDQ driver cannot use
-> > tx_done.
-> >
-> > CMDQ clients will flush many tasks into CMDQ driver, and then CMDQ
-> > driver will apply these tasks into GCE HW "immediately". These tasks,
-> > which are queued in GCE HW, may not execute immediately since they
-> > may need to wait event(s), e.g. vsync.
-> >
-> > However, in mailbox driver, mailbox uses a software buffer to queue
-> > sent messages. It only sends next message until previous message is
-> > done. This cannot fulfill CMDQ's requirement.
-> >
-> I understand
->  a) GCE HW can internally queue many tasks in some 'FIFO'
->  b) Execution of some task may have to wait until some external event
-> occurs (like vsync)
->  c) GCE does not generate irq/flag for each task executed (?)
-> 
-> If so, may be your tx_done should return 'true' so long as the GCE HW
-> can accept tasks in its 'FIFO'. For mailbox api, any task that is
-> queued on GCE, is assumed to be transmitted.
-> 
-> > Quote some code from mailbox driver. Please notice "active_req" part.
-> >
-> > static void msg_submit(struct mbox_chan *chan)
-> > {
-> >         ...
-> >         if (!chan->msg_count || chan->active_req)
-> >                 goto exit;
-> >         ...
-> >         err = chan->mbox->ops->send_data(chan, data);
-> >         if (!err) {
-> >                 chan->active_req = data;
-> >                 chan->msg_count--;
-> >         }
-> >         ...
-> > }
-> >
-> > static void tx_tick(struct mbox_chan *chan, int r)
-> > {
-> >         ...
-> >         spin_lock_irqsave(&chan->lock, flags);
-> >         mssg = chan->active_req;
-> >         chan->active_req = NULL;
-> >         spin_unlock_irqrestore(&chan->lock, flags);
-> >         ...
-> > }
-> >
-> > Current workable CMDQ driver uses mbox_client_txdone() to prevent
-> > this issue, and then uses self callback functions to handle done tasks.
-> >
-> > int cmdq_task_flush_async(struct cmdq_client *client, struct cmdq_task
-> > *task, cmdq_async_flush_cb cb, void *data)
-> > {
-> >         ...
-> >         mbox_send_message(client->chan, task);
-> >         /* We can send next task immediately, so just call txdone. */
-> >         mbox_client_txdone(client->chan, 0);
-> >         ...
-> > }
-> >
-> > Another solution is to use rx_callback; i.e. CMDQ mailbox controller
-> > call mbox_chan_received_data() when CMDQ task is done. But, this may
-> > violate the design of mailbox. What do you think?
-> >
-> If my point (c) above does not hold, maybe look at implementing
-> tx_done() callback and submit next task from the callback of last
-> done.
+The driver gets the chip id by ETHSYS_CHIPID0_3/ETHSYS_CHIPID4_7 registers
+in mtk_probe().
 
+Signed-off-by: Nelson Chang <nelson.chang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 29 +++++++++++++++++++++++++++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 +++++
+ 2 files changed, 34 insertions(+)
 
-Hi Jassi,
-
-For point (c), GCE irq means 1~n tasks done or
-0~n tasks done + 1 task error.
-In irq, we can know which tasks are done by register and GCE pc.
-
-As I mentioned before, we cannot submit next task after previous task
-call tx_done. We need to submit multiple tasks to GCE HW immediately
-and queue them in GCE HW. Let me explain this requirement by mouse
-cursor example. User may move mouse quickly between two vsync, so DRM
-may update display registers frequently. For CMDQ, that means many tasks
-are flushed into CMDQ driver, and CMDQ driver needs to process all of
-them in next vblank. Therefore, we cannot block any CMDQ task in SW
-buffer.
-
-CMDQ needs to call callback function to notice clients which tasks are
-done. In my previous e-mail, I mentioned that rx_callback may be an
-alternative solution. However, it seems to violate the design of
-mailbox. Therefore, I think mailbox may not have a good solution for
-CMDQ callback currently. IMHO, the better way is to use CMDQ self
-callback for now.
-
-Thanks,
-HS
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index ad4ab97..0c67ab1 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2323,6 +2323,31 @@ free_netdev:
+ 	return err;
+ }
+ 
++static int mtk_get_chip_id(struct mtk_eth *eth, u32 *chip_id)
++{
++	u32 val[2], id[4];
++
++	regmap_read(eth->ethsys, ETHSYS_CHIPID0_3, &val[0]);
++	regmap_read(eth->ethsys, ETHSYS_CHIPID4_7, &val[1]);
++
++	id[3] = ((val[0] >> 16) & 0xff) - '0';
++	id[2] = ((val[0] >> 24) & 0xff) - '0';
++	id[1] = (val[1] & 0xff) - '0';
++	id[0] = ((val[1] >> 8) & 0xff) - '0';
++
++	*chip_id = (id[3] * 1000) + (id[2] * 100) +
++		   (id[1] * 10) + id[0];
++
++	if (!(*chip_id)) {
++		dev_err(eth->dev, "failed to get chip id\n");
++		return -ENODEV;
++	}
++
++	dev_info(eth->dev, "chip id = %d\n", *chip_id);
++
++	return 0;
++}
++
+ static int mtk_probe(struct platform_device *pdev)
+ {
+ 	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+@@ -2388,6 +2413,10 @@ static int mtk_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
++	err = mtk_get_chip_id(eth, &eth->chip_id);
++	if (err)
++		return err;
++
+ 	for_each_child_of_node(pdev->dev.of_node, mac_np) {
+ 		if (!of_device_is_compatible(mac_np,
+ 					     "mediatek,eth-mac"))
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 3003195..a5b422b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -342,6 +342,10 @@
+ #define GPIO_BIAS_CTRL		0xed0
+ #define GPIO_DRV_SEL10		0xf00
+ 
++/* ethernet subsystem chip id register */
++#define ETHSYS_CHIPID0_3	0x0
++#define ETHSYS_CHIPID4_7	0x4
++
+ /* ethernet subsystem config register */
+ #define ETHSYS_SYSCFG0		0x14
+ #define SYSCFG0_GE_MASK		0x3
+@@ -534,6 +538,7 @@ struct mtk_eth {
+ 	unsigned long			sysclk;
+ 	struct regmap			*ethsys;
+ 	struct regmap			*pctl;
++	u32				chip_id;
+ 	bool				hwlro;
+ 	atomic_t			dma_refcnt;
+ 	struct mtk_tx_ring		tx_ring;
+-- 
+1.9.1
