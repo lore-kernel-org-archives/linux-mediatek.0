@@ -1,54 +1,160 @@
-From: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH net-next v3 3/3] net: ethernet: mediatek: remove hwlro
- property in the device tree
-Date: Thu, 6 Oct 2016 19:44:03 +0800
-Message-ID: <1475754243-12557-4-git-send-email-nelson.chang@mediatek.com>
-References: <1475754243-12557-1-git-send-email-nelson.chang@mediatek.com>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [PATCH v14 2/4] CMDQ: Mediatek CMDQ driver
+Date: Thu, 6 Oct 2016 21:01:37 +0800
+Message-ID: <1475758897.4102.31.camel@mtksdaap41>
+References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+         <1473039885-24009-3-git-send-email-hs.liao@mediatek.com>
+         <1475204778.13398.28.camel@mtksdaap41>
+         <1475225778.25044.35.camel@mtksdaap41>
+         <1475226691.13398.35.camel@mtksdaap41> <1475228829.3658.1.camel@mtksdaap41>
+         <1475636064.21937.25.camel@mtksdaap41>
+         <CAJe_ZhcXw1-MOEiiix5VTtKEVr9Z23s_OyikboDYCd0RQwS5pg@mail.gmail.com>
+         <1475670705.335.27.camel@mtksdaap41>
+         <CAJe_ZheeEe0xEj733pxr4q=-YzxKHgRM4MMPDJNHa9uRC9Q2zA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1475754243-12557-1-git-send-email-nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nbd-p3rKhJxN3npAfugRpC6u6w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, nelsonch.tw-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAJe_ZheeEe0xEj733pxr4q=-YzxKHgRM4MMPDJNHa9uRC9Q2zA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jassi Brar <jaswinder.singh@linaro.org>
+Cc: CK Hu <ck.hu@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Monica Wang <monica.wang@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Jassi Brar <jassisinghbrar@gmail.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Devicetree List <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Glory Hung <glory.hung@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm->
 List-Id: linux-mediatek@lists.infradead.org
 
-Since the proper way to check the hw lro capability is by the chip id,
-hwlro property in the device tree should be removed.
+On Wed, 2016-10-05 at 20:13 +0530, Jassi Brar wrote:
+> On 5 October 2016 at 18:01, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> > On Wed, 2016-10-05 at 09:07 +0530, Jassi Brar wrote:
+> >> On 5 October 2016 at 08:24, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> >> > On Fri, 2016-09-30 at 17:47 +0800, Horng-Shyang Liao wrote:
+> >> >> On Fri, 2016-09-30 at 17:11 +0800, CK Hu wrote:
+> >>
+> >> >
+> >> > After I trace mailbox driver, I realize that CMDQ driver cannot use
+> >> > tx_done.
+> >> >
+> >> > CMDQ clients will flush many tasks into CMDQ driver, and then CMDQ
+> >> > driver will apply these tasks into GCE HW "immediately". These tasks,
+> >> > which are queued in GCE HW, may not execute immediately since they
+> >> > may need to wait event(s), e.g. vsync.
+> >> >
+> >> > However, in mailbox driver, mailbox uses a software buffer to queue
+> >> > sent messages. It only sends next message until previous message is
+> >> > done. This cannot fulfill CMDQ's requirement.
+> >> >
+> >> I understand
+> >>  a) GCE HW can internally queue many tasks in some 'FIFO'
+> >>  b) Execution of some task may have to wait until some external event
+> >> occurs (like vsync)
+> >>  c) GCE does not generate irq/flag for each task executed (?)
+> >>
+> >> If so, may be your tx_done should return 'true' so long as the GCE HW
+> >> can accept tasks in its 'FIFO'. For mailbox api, any task that is
+> >> queued on GCE, is assumed to be transmitted.
+> >>
+> >> > Quote some code from mailbox driver. Please notice "active_req" part.
+> >> >
+> >> > static void msg_submit(struct mbox_chan *chan)
+> >> > {
+> >> >         ...
+> >> >         if (!chan->msg_count || chan->active_req)
+> >> >                 goto exit;
+> >> >         ...
+> >> >         err = chan->mbox->ops->send_data(chan, data);
+> >> >         if (!err) {
+> >> >                 chan->active_req = data;
+> >> >                 chan->msg_count--;
+> >> >         }
+> >> >         ...
+> >> > }
+> >> >
+> >> > static void tx_tick(struct mbox_chan *chan, int r)
+> >> > {
+> >> >         ...
+> >> >         spin_lock_irqsave(&chan->lock, flags);
+> >> >         mssg = chan->active_req;
+> >> >         chan->active_req = NULL;
+> >> >         spin_unlock_irqrestore(&chan->lock, flags);
+> >> >         ...
+> >> > }
+> >> >
+> >> > Current workable CMDQ driver uses mbox_client_txdone() to prevent
+> >> > this issue, and then uses self callback functions to handle done tasks.
+> >> >
+> >> > int cmdq_task_flush_async(struct cmdq_client *client, struct cmdq_task
+> >> > *task, cmdq_async_flush_cb cb, void *data)
+> >> > {
+> >> >         ...
+> >> >         mbox_send_message(client->chan, task);
+> >> >         /* We can send next task immediately, so just call txdone. */
+> >> >         mbox_client_txdone(client->chan, 0);
+> >> >         ...
+> >> > }
+> >> >
+> >> > Another solution is to use rx_callback; i.e. CMDQ mailbox controller
+> >> > call mbox_chan_received_data() when CMDQ task is done. But, this may
+> >> > violate the design of mailbox. What do you think?
+> >> >
+> >> If my point (c) above does not hold, maybe look at implementing
+> >> tx_done() callback and submit next task from the callback of last
+> >> done.
+> >
+> >
+> > Hi Jassi,
+> >
+> > For point (c), GCE irq means 1~n tasks done or
+> > 0~n tasks done + 1 task error.
+> > In irq, we can know which tasks are done by register and GCE pc.
+> >
+> > As I mentioned before, we cannot submit next task after previous task
+> > call tx_done. We need to submit multiple tasks to GCE HW immediately
+> > and queue them in GCE HW.
+> 
+> > Let me explain this requirement by mouse
+> > cursor example. User may move mouse quickly between two vsync, so DRM
+> > may update display registers frequently. For CMDQ, that means many tasks
+> > are flushed into CMDQ driver, and CMDQ driver needs to process all of
+> > them in next vblank. Therefore, we cannot block any CMDQ task in SW
+> > buffer.
+> >
+> We are interested only in the current position of cursor and not its
+> trail. Also the current position should be updated at next vsync (and
+> not the one after it).
+> Going by this example, if the GCE HW can take in 'N' tasks at a time,
+> then the N+1th submission should shift out (drop) the 1st task queued.
+> So that at any time GCE HW has only the latest N tasks. Right?
+> 
+>  If yes, maybe you don't need to care about tx-done and simply keep
+> shoving tasks as you generate them.
+> 
+>  If no, maybe your client driver need to emulate such a circular
+> buffer where oldest task is overwritten by newest submission. And you
+> submit the circular buffer (most relevant tasks) at one go to the GCE
+> HW.
 
-Signed-off-by: Nelson Chang <nelson.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- Documentation/devicetree/bindings/net/mediatek-net.txt | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index f095257..c010faf 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -24,7 +24,6 @@ Required properties:
- Optional properties:
- - interrupt-parent: Should be the phandle for the interrupt controller
-   that services interrupts for this device
--- mediatek,hwlro: the capability if the hardware supports LRO functions
- 
- * Ethernet MAC node
- 
-@@ -54,7 +53,6 @@ eth: ethernet@1b100000 {
- 	reset-names = "eth";
- 	mediatek,ethsys = <&ethsys>;
- 	mediatek,pctl = <&syscfg_pctl_a>;
--	mediatek,hwlro;
- 	#address-cells = <1>;
- 	#size-cells = <0>;
- 
--- 
-1.9.1
+Hi Jassi,
+
+CMDQ driver doesn't know the task type, so CMDQ cannot decide which
+tasks can be dropped. So, I think the answer is "no".
+
+Client driver is also hard to emulate a circular buffer where oldest
+task is overwritten by newest submission. Let me illustrate with DRM
+client (display driver). For DRM, the only way to know the latest
+mouse cursor task before vsync is vsync interrupt. However, if we
+keep latest mouse cursor task and start to send it to CMDQ after
+vsync, the task may be executed outside the vblank and generate garbage
+on screen in this case. (since we allow nested interrupt) We can wait
+one more vsync to prevent garbage, but we will lose mouse cursor
+performance. Therefore, our current solution is to flush all DRM tasks
+into CMDQ, and queue all tasks in GCE HW. When GCE get vsync event, it
+can finish all tasks within vblank to fulfill DRM's requirement.
+
+Back to our original statement, we need to flush all tasks to queue
+in GCE HW; i.e. we need to use mbox_client_txdone after
+mbox_send_message, or send tx_done once mailbox controller receive
+message (task). However, we still need a way to notice done tasks to
+clients. Currently, we don't have a good way to call callback in mailbox
+framework. Therefore, CMDQ driver has its owner callback functions.
+
+Thanks,
+HS
