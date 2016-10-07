@@ -1,31 +1,35 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next v3 0/3] net: ethernet: mediatek: check the hw
- lro capability by the chip id instead of the dtsi
-Date: Thu, 06 Oct 2016 21:08:34 -0400 (EDT)
-Message-ID: <20161006.210834.726391081639977552.davem@davemloft.net>
-References: <1475754243-12557-1-git-send-email-nelson.chang@mediatek.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH 0/2] fix issue: vblank interrupts are never disabled
+Date: Fri, 7 Oct 2016 18:37:48 +0800
+Message-ID: <CAGS+omDG9ge+U4kXQcmV_YDO8frWh8V5RAZ=107jHo4Uq_QBeA@mail.gmail.com>
+References: <1475119789-64619-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1475754243-12557-1-git-send-email-nelson.chang@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: nelson.chang@mediatek.com
-Cc: john@phrozen.org, nbd@openwrt.org, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, nelsonch.tw@gmail.com
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1475119789-64619-1-git-send-email-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Nelson Chang <nelson.chang@mediatek.com>
-Date: Thu, 6 Oct 2016 19:44:00 +0800
+On Thu, Sep 29, 2016 at 11:29 AM, Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
+>
+> Clean the interrupt status before enable interrupt
+> and set the vblank_disable_allowed to fix the issue.
 
-> The series modify to check if hw lro is supported by the chip id.
-> 
-> changes since v3:
-> - Refine mtk_is_hwlro_supported() function
-> 
-> changes since v2:
-> - Refine mtk_get_chip_id() function
-> 
-> changes since v1:
-> - Because hw lro started to be supported from MT7623, the proper way to check if the feature is capable is to judge by the chip id instead of by the dtsi.
+For the series:
 
-Series applied, thanks.
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+>
+> Bibby Hsieh (2):
+>   drm/mediatek: set vblank_disable_allowed to true
+>   drm/mediatek: clear IRQ status before enable OVL interrupt
+>
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c |    1 +
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c  |    1 +
+>  2 files changed, 2 insertions(+)
+>
+> --
+> 1.7.9.5
+>
