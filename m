@@ -1,171 +1,129 @@
-From: "FedEx International MailService" <matthew.rutherford-kzyZuuwxmiwRmelmmXo44Q@public.gmane.org>
-Subject: Problems with item delivery, n.000927677
-Date: Sun, 9 Oct 2016 19:28:07 +0000
-Message-ID: <38fb76d91f317ad40b85b9a8972cc59a@rwctickets.com>
-Reply-To: FedEx International MailService <matthew.rutherford-kzyZuuwxmiwRmelmmXo44Q@public.gmane.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [RESEND PATCH v6, 3/5] usb: xhci-mtk: make IPPC register optional
+Date: Mon, 10 Oct 2016 12:55:13 +0200
+Message-ID: <62b78471-d93f-a5c2-20ef-dfeeea1720db@gmail.com>
+References: <1474437277-27201-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1474437277-27201-4-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_efb230bf0e5d52747219f0e2e21c7771"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1474437277-27201-4-git-send-email-chunfeng.yun@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>
+Cc: Oliver Neukum <oneukum@suse.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
---b1_efb230bf0e5d52747219f0e2e21c7771
-Content-Type: text/plain; charset=us-ascii
-
-Dear Customer,
-
-We could not deliver your parcel.
-Please, open email attachment to print shipment label.
-
-Yours trully,
-Matthew Rutherford,
-FedEx Delivery Manager.
 
 
---b1_efb230bf0e5d52747219f0e2e21c7771
-Content-Type: application/zip; name="000927677.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=000927677.zip
+On 09/21/2016 07:54 AM, Chunfeng Yun wrote:
+> Make IPPC register optional to support host side of dual-role mode,
+> due to it is moved into common glue layer for simplification.
+>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/host/xhci-mtk.c |   36 +++++++++++++++++++++++++++++-------
+>  1 file changed, 29 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 79959f1..4bf99b9 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -94,6 +94,9 @@ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
+>  	int ret;
+>  	int i;
+>
+> +	if (ippc == NULL)
+> +		return 0;
+> +
+>  	/* power on host ip */
+>  	value = readl(&ippc->ip_pw_ctr1);
+>  	value &= ~CTRL1_IP_HOST_PDN;
+> @@ -139,6 +142,9 @@ static int xhci_mtk_host_disable(struct xhci_hcd_mtk *mtk)
+>  	int ret;
+>  	int i;
+>
+> +	if (ippc == NULL)
+> +		return 0;
+> +
+>  	/* power down all u3 ports */
+>  	for (i = 0; i < mtk->num_u3_ports; i++) {
+>  		value = readl(&ippc->u3_ctrl_p[i]);
+> @@ -173,6 +179,9 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
+>  	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
+>  	u32 value;
+>
+> +	if (ippc == NULL)
+> +		return 0;
+> +
 
-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
+I would prefer to add a flag/bool in xhci_hcd_mtk to signal the absence 
+of the ippc. Or at least use a macro which checks the presence before 
+calling any of this three functions.
 
-
---b1_efb230bf0e5d52747219f0e2e21c7771
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---b1_efb230bf0e5d52747219f0e2e21c7771--
+Regards,
+Matthias
+>  	/* reset whole ip */
+>  	value = readl(&ippc->ip_pw_ctr0);
+>  	value |= CTRL0_IP_SW_RST;
+> @@ -475,6 +484,7 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+>  /* called during probe() after chip reset completes */
+>  static int xhci_mtk_setup(struct usb_hcd *hcd)
+>  {
+> +	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
+>  	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
+>  	int ret;
+>
+> @@ -482,12 +492,21 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+>  		ret = xhci_mtk_ssusb_config(mtk);
+>  		if (ret)
+>  			return ret;
+> +	}
+> +
+> +	ret = xhci_gen_setup(hcd, xhci_mtk_quirks);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (usb_hcd_is_primary_hcd(hcd)) {
+> +		mtk->num_u3_ports = xhci->num_usb3_ports;
+> +		mtk->num_u2_ports = xhci->num_usb2_ports;
+>  		ret = xhci_mtk_sch_init(mtk);
+>  		if (ret)
+>  			return ret;
+>  	}
+>
+> -	return xhci_gen_setup(hcd, xhci_mtk_quirks);
+> +	return ret;
+>  }
+>
+>  static int xhci_mtk_probe(struct platform_device *pdev)
+> @@ -586,7 +605,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  	mtk->hcd = platform_get_drvdata(pdev);
+>  	platform_set_drvdata(pdev, mtk);
+>
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "mac");
+>  	hcd->regs = devm_ioremap_resource(dev, res);
+>  	if (IS_ERR(hcd->regs)) {
+>  		ret = PTR_ERR(hcd->regs);
+> @@ -595,11 +614,14 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  	hcd->rsrc_start = res->start;
+>  	hcd->rsrc_len = resource_size(res);
+>
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+> -	mtk->ippc_regs = devm_ioremap_resource(dev, res);
+> -	if (IS_ERR(mtk->ippc_regs)) {
+> -		ret = PTR_ERR(mtk->ippc_regs);
+> -		goto put_usb2_hcd;
+> +	mtk->ippc_regs = NULL;
+> +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ippc");
+> +	if (res) {	/* ippc register is optional */
+> +		mtk->ippc_regs = devm_ioremap_resource(dev, res);
+> +		if (IS_ERR(mtk->ippc_regs)) {
+> +			ret = PTR_ERR(mtk->ippc_regs);
+> +			goto put_usb2_hcd;
+> +		}
+>  	}
+>
+>  	for (phy_num = 0; phy_num < mtk->num_phys; phy_num++) {
+>
