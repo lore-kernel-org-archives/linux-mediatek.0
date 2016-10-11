@@ -1,71 +1,84 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [RESEND PATCH v6, 3/5] usb: xhci-mtk: make IPPC register
- optional
-Date: Tue, 11 Oct 2016 10:44:06 +0800
-Message-ID: <1476153846.15546.15.camel@mhfsdcap03>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [RESEND PATCH v6, 4/5] usb: Add MediaTek USB3 DRD Driver
+Date: Tue, 11 Oct 2016 11:14:23 +0800
+Message-ID: <1476155663.15546.32.camel@mhfsdcap03>
 References: <1474437277-27201-1-git-send-email-chunfeng.yun@mediatek.com>
-         <1474437277-27201-4-git-send-email-chunfeng.yun@mediatek.com>
-         <62b78471-d93f-a5c2-20ef-dfeeea1720db@gmail.com>
+ <1474437277-27201-5-git-send-email-chunfeng.yun@mediatek.com>
+ <49293f1b-42b5-f06b-8fdc-f46fe996e237@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <62b78471-d93f-a5c2-20ef-dfeeea1720db@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Oliver Neukum <oneukum@suse.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <49293f1b-42b5-f06b-8fdc-f46fe996e237-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-10-10 at 12:55 +0200, Matthias Brugger wrote:
+On Mon, 2016-10-10 at 13:00 +0200, Matthias Brugger wrote:
 > 
 > On 09/21/2016 07:54 AM, Chunfeng Yun wrote:
-> > Make IPPC register optional to support host side of dual-role mode,
-> > due to it is moved into common glue layer for simplification.
+> > This patch adds support for the MediaTek USB3 controller
+> > integrated into MT8173. It can be configured as Dual-Role
+> > Device (DRD), Peripheral Only and Host Only (xHCI) modes.
 > >
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 > > ---
-> >  drivers/usb/host/xhci-mtk.c |   36 +++++++++++++++++++++++++++++-------
-> >  1 file changed, 29 insertions(+), 7 deletions(-)
+> >  drivers/usb/Kconfig                |    2 +
+> >  drivers/usb/Makefile               |    1 +
+> >  drivers/usb/mtu3/Kconfig           |   54 +++
+> >  drivers/usb/mtu3/Makefile          |   19 +
+> >  drivers/usb/mtu3/mtu3.h            |  422 +++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_core.c       |  871 +++++++++++++++++++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_dr.c         |  379 ++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_dr.h         |  108 +++++
+> >  drivers/usb/mtu3/mtu3_gadget.c     |  731 +++++++++++++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_gadget_ep0.c |  883 ++++++++++++++++++++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_host.c       |  294 ++++++++++++
+> >  drivers/usb/mtu3/mtu3_hw_regs.h    |  473 +++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_plat.c       |  490 ++++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_qmu.c        |  599 ++++++++++++++++++++++++
+> >  drivers/usb/mtu3/mtu3_qmu.h        |   43 ++
+> >  15 files changed, 5369 insertions(+)
+> >  create mode 100644 drivers/usb/mtu3/Kconfig
+> >  create mode 100644 drivers/usb/mtu3/Makefile
+> >  create mode 100644 drivers/usb/mtu3/mtu3.h
+> >  create mode 100644 drivers/usb/mtu3/mtu3_core.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_dr.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_dr.h
+> >  create mode 100644 drivers/usb/mtu3/mtu3_gadget.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_gadget_ep0.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_host.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_hw_regs.h
+> >  create mode 100644 drivers/usb/mtu3/mtu3_plat.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_qmu.c
+> >  create mode 100644 drivers/usb/mtu3/mtu3_qmu.h
 > >
-> > diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> > index 79959f1..4bf99b9 100644
-> > --- a/drivers/usb/host/xhci-mtk.c
-> > +++ b/drivers/usb/host/xhci-mtk.c
-> > @@ -94,6 +94,9 @@ static int xhci_mtk_host_enable(struct xhci_hcd_mtk *mtk)
-> >  	int ret;
-> >  	int i;
-> >
-> > +	if (ippc == NULL)
-> > +		return 0;
-> > +
-> >  	/* power on host ip */
-> >  	value = readl(&ippc->ip_pw_ctr1);
-> >  	value &= ~CTRL1_IP_HOST_PDN;
-> > @@ -139,6 +142,9 @@ static int xhci_mtk_host_disable(struct xhci_hcd_mtk *mtk)
-> >  	int ret;
-> >  	int i;
-> >
-> > +	if (ippc == NULL)
-> > +		return 0;
-> > +
-> >  	/* power down all u3 ports */
-> >  	for (i = 0; i < mtk->num_u3_ports; i++) {
-> >  		value = readl(&ippc->u3_ctrl_p[i]);
-> > @@ -173,6 +179,9 @@ static int xhci_mtk_ssusb_config(struct xhci_hcd_mtk *mtk)
-> >  	struct mu3c_ippc_regs __iomem *ippc = mtk->ippc_regs;
-> >  	u32 value;
-> >
-> > +	if (ippc == NULL)
-> > +		return 0;
-> > +
 > 
-> I would prefer to add a flag/bool in xhci_hcd_mtk to signal the absence 
-> of the ippc. Or at least use a macro which checks the presence before 
-> calling any of this three functions.
+> As Oliver already said, this patch is quiet big which makes it difficult 
+> to review.
+> I propose to provide a first implementation with minimal functionality 
+> and incremental patches on top of this when the first got merged.
+> 
+> You could split the patch in three series/parts:
+> 1. Host only
+> 2. Peripheral only
+> 3. Dual mode
+> 
+> What do you think?
 
-Ok. I will modify it later.
+Ok, I'll split the patch into some small ones as many as possible.
 
-thanks.
+Thanks a lot
 > 
 > Regards,
 > Matthias
+> 
