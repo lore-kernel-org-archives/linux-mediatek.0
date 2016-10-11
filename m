@@ -1,160 +1,61 @@
-From: "FedEx 2Day A.M." <stephen.dunn-oJh5rUXhnlHQT0dZR+AlfA@public.gmane.org>
-Subject: Delivery Notification, ID 000799467
-Date: Mon, 10 Oct 2016 16:33:55 +0000
-Message-ID: <a1f5e25888434e79ddefecae80ace4e2@lipavi.com>
-Reply-To: "FedEx 2Day A.M." <stephen.dunn-oJh5rUXhnlHQT0dZR+AlfA@public.gmane.org>
+From: Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v14 2/4] CMDQ: Mediatek CMDQ driver
+Date: Tue, 11 Oct 2016 10:40:32 +0800
+Message-ID: <1476153632.477.2.camel@mtksdaap41>
+References: <1473039885-24009-1-git-send-email-hs.liao@mediatek.com>
+         <1473039885-24009-3-git-send-email-hs.liao@mediatek.com>
+         <1475204778.13398.28.camel@mtksdaap41>
+         <1475225778.25044.35.camel@mtksdaap41>
+         <1475226691.13398.35.camel@mtksdaap41> <1475228829.3658.1.camel@mtksdaap41>
+         <1475636064.21937.25.camel@mtksdaap41>
+         <CAJe_ZhcXw1-MOEiiix5VTtKEVr9Z23s_OyikboDYCd0RQwS5pg@mail.gmail.com>
+         <1475670705.335.27.camel@mtksdaap41>
+         <CAJe_ZheeEe0xEj733pxr4q=-YzxKHgRM4MMPDJNHa9uRC9Q2zA@mail.gmail.com>
+         <1475758897.4102.31.camel@mtksdaap41>
+         <CAJe_ZheptRQSmQp2gagqUyXqkOpi1qaTo8QPDTFpQ-+62B6kUw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_99fd0b2c7a10400d10cb327c166e1d6b"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAJe_ZheptRQSmQp2gagqUyXqkOpi1qaTo8QPDTFpQ-+62B6kUw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jassi Brar <jaswinder.singh-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Devicetree List <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm->
 List-Id: linux-mediatek@lists.infradead.org
 
---b1_99fd0b2c7a10400d10cb327c166e1d6b
-Content-Type: text/plain; charset=us-ascii
+On Thu, 2016-10-06 at 18:40 +0530, Jassi Brar wrote:
+> On 6 October 2016 at 18:31, Horng-Shyang Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> 
+> > Back to our original statement, we need to flush all tasks to queue
+> > in GCE HW; i.e. we need to use mbox_client_txdone after
+> > mbox_send_message, or send tx_done once mailbox controller receive
+> > message (task). However, we still need a way to notice done tasks to
+> > clients. Currently, we don't have a good way to call callback in mailbox
+> > framework. Therefore, CMDQ driver has its owner callback functions.
+> >
+> mbox_client_txdone() is called by the client driver when only it knows
+> the messages has been transmitted (i.e your submitted tasks are done).
+> Obviously the client driver should do any callbacks to its users
+> upstream.
 
-Dear Customer,
+Hi Jassi,
 
-Courier was unable to deliver the parcel to you.
-Shipment Label is attached to this email.
+In current CMDQ driver, mbox_client_txdone() is called to prevent the
+blocking of chan->active_req. It is not the real point of CMDQ task
+done, so the client driver cannot do any callbacks to its user upstream.
 
-Yours faithfully,
-Stephen Dunn,
-Sr. Support Manager.
+(1) If we don't use mbox_client_txdone(), could you tell us an
+    alternative way to prevent the blocking of chan->active_req?
+    And then we can use tx_done when CMDQ task is relly done.
+(2) If we use mbox_client_txdone() to prevent the blocking of
+    chan->active_req, could CMDQ driver just uses self-defined callback
+    function to notice client driver CMDQ task done?
 
-
---b1_99fd0b2c7a10400d10cb327c166e1d6b
-Content-Type: application/zip; name="000799467.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=000799467.zip
-
-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
-LndzZlBLBQYAAAAAAgACAIoAAAAUFwAAAAA=
+Thanks,
+HS
 
 
---b1_99fd0b2c7a10400d10cb327c166e1d6b
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---b1_99fd0b2c7a10400d10cb327c166e1d6b--
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
