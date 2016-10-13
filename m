@@ -1,60 +1,195 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] binding: irqchip: mtk-cirq: Add binding document
-Date: Thu, 13 Oct 2016 15:00:11 +0200
-Message-ID: <58b24238-659c-c7da-d93c-65db63990930@gmail.com>
-References: <1476335194-26604-1-git-send-email-youlin.pei@mediatek.com>
- <1476335194-26604-2-git-send-email-youlin.pei@mediatek.com>
+From: "FedEx International Next Flight"
+ <johnnie.sawyer-u2wxBKrVOcSMgVVjhmAvEC2fVQZHdLSJ@public.gmane.org>
+Subject: Unable to deliver your item, #0000187931
+Date: Thu, 13 Oct 2016 21:20:46 +0000
+Message-ID: <c77cc18560c100c8c522812f87ea29be@alvaradoartgallery.info>
+Reply-To: FedEx International Next Flight
+ <johnnie.sawyer-u2wxBKrVOcSMgVVjhmAvEC2fVQZHdLSJ@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1476335194-26604-2-git-send-email-youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: multipart/mixed; boundary="b1_4addb0ff6ef3a806c5d72547e0c14425"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+--b1_4addb0ff6ef3a806c5d72547e0c14425
+Content-Type: text/plain; charset=us-ascii
+
+Dear Customer,
+
+This is to confirm that one or more of your parcels has been shipped.
+Please, download Delivery Label attached to this email.
+
+Thanks and best regards,
+Johnnie Sawyer,
+FedEx Delivery Manager.
 
 
-On 10/13/2016 07:06 AM, Youlin Pei wrote:
-> This commit adds the device tree binding document for
-> the mediatek cirq.
->
-> Signed-off-by: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->
-> ---
-> base on v4.8-rc1
-> ---
->  .../interrupt-controller/mediatek,cirq.txt         |   30 ++++++++++++++++++++
->  1 file changed, 30 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
->
-> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-> new file mode 100644
-> index 0000000..ad16953
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-> @@ -0,0 +1,30 @@
-> +* Mediatek 27xx cirq
-> +
-> +In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
-> +works outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
-> +The external interrupts (outside MCUSYS) will feed through CIRQ and connect
-> +to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
-> +interrupts and generated a pulse signal to parent interrupt controller when
-> +flush command is executed. With CIRQ, MCUSYS can be completely turned off
-> +to improve the system power consumption without losing interrupts.
-> +
-> +Required properties:
-> +- compatible: should be: "mediatek,mt2701-cirq".
+--b1_4addb0ff6ef3a806c5d72547e0c14425
+Content-Type: application/zip; name="FedEx_ID_0000187931.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=FedEx_ID_0000187931.zip
 
-The cirq is present in several SoCs. I suppose it is the same core in 
-all of them. So we can name it mediatek,mtk-cirq and add a 
-mediatek,mtXXXX-cirq for every SoC, just in case we will need it.
+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
 
-Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+--b1_4addb0ff6ef3a806c5d72547e0c14425
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_4addb0ff6ef3a806c5d72547e0c14425--
