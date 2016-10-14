@@ -1,195 +1,379 @@
-From: "FedEx International Next Flight"
- <johnnie.sawyer-u2wxBKrVOcSMgVVjhmAvEC2fVQZHdLSJ@public.gmane.org>
-Subject: Unable to deliver your item, #0000187931
-Date: Thu, 13 Oct 2016 21:20:46 +0000
-Message-ID: <c77cc18560c100c8c522812f87ea29be@alvaradoartgallery.info>
-Reply-To: FedEx International Next Flight
- <johnnie.sawyer-u2wxBKrVOcSMgVVjhmAvEC2fVQZHdLSJ@public.gmane.org>
+From: Youlin Pei <youlin.pei@mediatek.com>
+Subject: Re: [PATCH 2/3] irqchip: mtk-cirq: Add mediatek mtk-cirq implement
+Date: Fri, 14 Oct 2016 16:13:24 +0800
+Message-ID: <1476432804.5408.34.camel@mtksdaap41>
+References: <1476335194-26604-1-git-send-email-youlin.pei@mediatek.com>
+ <1476335194-26604-3-git-send-email-youlin.pei@mediatek.com>
+ <20161013092808.3c4181dd@arm.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="b1_4addb0ff6ef3a806c5d72547e0c14425"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20161013092808.3c4181dd@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, hongkun.cao@mediatek.com, Jason Cooper <jason@lakedaemon.net>, srv_heupstream@mediatek.com, erin.lo@mediatek.com, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, yong.wu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
---b1_4addb0ff6ef3a806c5d72547e0c14425
-Content-Type: text/plain; charset=us-ascii
+Hi Marc,
+Thanks for your review.
+On Thu, 2016-10-13 at 09:28 +0100, Marc Zyngier wrote:
+> On Thu, 13 Oct 2016 13:06:33 +0800
+> Youlin Pei <youlin.pei@mediatek.com> wrote:
+> 
+> > This commit add the mtk-cirq implement for mt2701.
 
-Dear Customer,
+> Can you please expand this a bit?
 
-This is to confirm that one or more of your parcels has been shipped.
-Please, download Delivery Label attached to this email.
+Okay, I will improve it as following:
 
-Thanks and best regards,
-Johnnie Sawyer,
-FedEx Delivery Manager.
+In Mediatek SOCs, the CIRQ is a low power interrupt controller designed
+to works outside MCUSYS which comprises with Cortex-Ax cores,CCI and
+GIC.
 
+The CIRQ controller is integrated in between MCUSYS(include Cortex-Ax,
+CCI and GIC) and interrupt sources as the second level interrupt
+controller. The external interrupts which outside MCUSYS will feed
+through CIRQ then bypass to GIC. CIRQ can monitors all edge trigger
+interupts. When an edge interrupt is triggered, CIRQ can record the
+status and generate a pulse signal to GIC when flush command executed.
 
---b1_4addb0ff6ef3a806c5d72547e0c14425
-Content-Type: application/zip; name="FedEx_ID_0000187931.zip"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename=FedEx_ID_0000187931.zip
+When system enters sleep mode, MCUSYS will be turned off to improve
+power consumption, also GIC is power down. The edge trigger interrupts
+will be lost in this scenario without CIRQ.
 
-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
+This patch provides the CIRQ irqchip implement.
 
+> 
+> > 
+> > Signed-off-by: Youlin Pei <youlin.pei@mediatek.com>
+> > ---
+> >  drivers/irqchip/Makefile       |    2 +-
+> >  drivers/irqchip/irq-mtk-cirq.c |  257 ++++++++++++++++++++++++++++++++++++++++
+> >  2 files changed, 258 insertions(+), 1 deletion(-)
+> >  create mode 100644 drivers/irqchip/irq-mtk-cirq.c
+> > 
+> > diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
+> > index 4c203b6..eee95c6 100644
+> > --- a/drivers/irqchip/Makefile
+> > +++ b/drivers/irqchip/Makefile
+> > @@ -59,7 +59,7 @@ obj-$(CONFIG_BCM7120_L2_IRQ)		+= irq-bcm7120-l2.o
+> >  obj-$(CONFIG_BRCMSTB_L2_IRQ)		+= irq-brcmstb-l2.o
+> >  obj-$(CONFIG_KEYSTONE_IRQ)		+= irq-keystone.o
+> >  obj-$(CONFIG_MIPS_GIC)			+= irq-mips-gic.o
+> > -obj-$(CONFIG_ARCH_MEDIATEK)		+= irq-mtk-sysirq.o
+> > +obj-$(CONFIG_ARCH_MEDIATEK)		+= irq-mtk-sysirq.o irq-mtk-cirq.o
+> >  obj-$(CONFIG_ARCH_DIGICOLOR)		+= irq-digicolor.o
+> >  obj-$(CONFIG_RENESAS_H8300H_INTC)	+= irq-renesas-h8300h.o
+> >  obj-$(CONFIG_RENESAS_H8S_INTC)		+= irq-renesas-h8s.o
+> > diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
+> > new file mode 100644
+> > index 0000000..544767d
+> > --- /dev/null
+> > +++ b/drivers/irqchip/irq-mtk-cirq.c
+> > @@ -0,0 +1,257 @@
+> > +/*
+> > + * Copyright (c) 2016 MediaTek Inc.
+> > + * Author: Youlin.Pei <youlin.pei@mediatek.com>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#include <linux/irq.h>
+> > +#include <linux/irqchip.h>
+> > +#include <linux/irqdomain.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_irq.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/io.h>
+> > +#include <linux/slab.h>
+> > +#include <linux/spinlock.h>
+> > +#include <linux/syscore_ops.h>
+> > +
+> > +#define CIRQ_MASK_SET	0xC0
+> > +#define CIRQ_MASK_CLR	0x100
+> > +#define CIRQ_SENS_SET	0x180
+> > +#define CIRQ_SENS_CLR	0x1C0
+> > +#define CIRQ_POL_SET	0x240
+> > +#define CIRQ_POL_CLR	0x280
+> > +#define CIRQ_CONTROL	0x300
+> > +
+> > +#define CIRQ_EN		0x1
+> > +#define CIRQ_EDGE	0x2
+> > +#define CIRQ_FLUSH	0x4
+> > +
+> > +#define CIRQ_IRQ_NUM    0x200
+> > +
+> > +struct mtk_cirq_chip_data {
+> > +	void __iomem *base;
+> > +	unsigned int ext_irq_start;
+> > +};
+> > +
+> > +struct mtk_cirq_chip_data *cirq_data;
+> 
+> Any reason why this is not static?
 
---b1_4addb0ff6ef3a806c5d72547e0c14425
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+My fault, will fix it in next version.
 
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+> > +
+> > +static void mtk_cirq_write_mask(struct irq_data *data, unsigned int offset)
+> > +{
+> > +	struct mtk_cirq_chip_data *chip_data = data->chip_data;
+> > +	unsigned int cirq_num = data->hwirq - chip_data->ext_irq_start;
+> 
+> I wonder why you have to compute this offset. Ideally, data->hwirq
+> should be the bit position (starting at zero). The fact that you have
+> an offset between the pin number in this driver and the IRQ number in
+> the GIC or sysirq should be resolved at alloc time.
 
---b1_4addb0ff6ef3a806c5d72547e0c14425--
+Okay, will fix it in next version.
+
+> 
+> > +	u32 mask = 1 << (cirq_num % 32);
+> > +
+> > +	writel(mask, chip_data->base + offset + (cirq_num / 32) * 4);
+> > +}
+> > +
+> > +static void mtk_cirq_mask(struct irq_data *data)
+> > +{
+> > +	mtk_cirq_write_mask(data, CIRQ_MASK_SET);
+> > +	irq_chip_mask_parent(data);
+> > +}
+> > +
+> > +static void mtk_cirq_unmask(struct irq_data *data)
+> > +{
+> > +	mtk_cirq_write_mask(data, CIRQ_MASK_CLR);
+> > +	irq_chip_unmask_parent(data);
+> > +}
+> > +
+> > +static int mtk_cirq_set_type(struct irq_data *data, unsigned int type)
+> > +{
+> > +	int ret;
+> > +
+> > +	switch (type & IRQ_TYPE_SENSE_MASK) {
+> > +	case IRQ_TYPE_EDGE_FALLING:
+> > +		mtk_cirq_write_mask(data, CIRQ_POL_CLR);
+> > +		mtk_cirq_write_mask(data, CIRQ_SENS_CLR);
+> > +		break;
+> > +	case IRQ_TYPE_EDGE_RISING:
+> > +		mtk_cirq_write_mask(data, CIRQ_POL_SET);
+> > +		mtk_cirq_write_mask(data, CIRQ_SENS_CLR);
+> > +		break;
+> > +	case IRQ_TYPE_LEVEL_LOW:
+> > +		mtk_cirq_write_mask(data, CIRQ_POL_CLR);
+> > +		mtk_cirq_write_mask(data, CIRQ_SENS_SET);
+> > +		break;
+> > +	case IRQ_TYPE_LEVEL_HIGH:
+> > +		mtk_cirq_write_mask(data, CIRQ_POL_SET);
+> > +		mtk_cirq_write_mask(data, CIRQ_SENS_SET);
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	data = data->parent_data;
+> > +	ret = data->chip->irq_set_type(data, type);
+> > +	return ret;
+> > +}
+> > +
+> > +static struct irq_chip mtk_cirq_chip = {
+> > +	.name			= "MT_CIRQ",
+> > +	.irq_mask		= mtk_cirq_mask,
+> > +	.irq_unmask		= mtk_cirq_unmask,
+> > +	.irq_eoi		= irq_chip_eoi_parent,
+> > +	.irq_set_type		= mtk_cirq_set_type,
+> > +	.irq_retrigger		= irq_chip_retrigger_hierarchy,
+> > +#ifdef CONFIG_SMP
+> > +	.irq_set_affinity	= irq_chip_set_affinity_parent,
+> > +#endif
+> > +};
+> 
+> I'm surprised that you don't implement irq_set_wake. Do you wake-up on
+> *any* interrupt?
+
+The CIRQ controller don't have the wake up function, so irq_set_wake
+is not implemented.
+
+> 
+> > +
+> > +static int mtk_cirq_domain_translate(struct irq_domain *d,
+> > +				     struct irq_fwspec *fwspec,
+> > +				     unsigned long *hwirq,
+> > +				     unsigned int *type)
+> > +{
+> > +	if (is_of_node(fwspec->fwnode)) {
+> > +		if (fwspec->param_count != 3)
+> > +			return -EINVAL;
+> > +
+> > +		/* No PPI should point to this domain */
+> > +		if (fwspec->param[0] != 0)
+> > +			return -EINVAL;
+> > +
+> > +		/* cirq support irq number check */
+> > +		if (fwspec->param[1] < ;)
+> > +			return -EINVAL;
+> > +
+> > +		*hwirq = fwspec->param[1];
+> 
+> So if you turn this into:
+> 
+> 		*hwirq = fwspec->param[1] - cirq_data->ext_irq_start;
+> 
+> and drop the above offset computing in your write function, you'd have
+> something that'd make a bit more sense.
+
+Okay, will fix it in next version. Thanks!
+
+> 
+> > +		*type = fwspec->param[2] & IRQ_TYPE_SENSE_MASK;
+> > +		return 0;
+> > +	}
+> > +
+> > +	return -EINVAL;
+> > +}
+> > +
+> > +static int mtk_cirq_domain_alloc(struct irq_domain *domain, unsigned int virq,
+> > +				 unsigned int nr_irqs, void *arg)
+> > +{
+> > +	int i;
+> > +	irq_hw_number_t hwirq;
+> > +	struct irq_fwspec *fwspec = arg;
+> > +	struct irq_fwspec parent_fwspec = *fwspec;
+> > +
+> > +	if (fwspec->param_count != 3)
+> > +		return -EINVAL;
+> > +
+> > +	/* cirq doesn't support PPI */
+> > +	if (fwspec->param[0])
+> > +		return -EINVAL;
+> > +
+> > +	if (fwspec->param[1] < cirq_data->ext_irq_start)
+> > +		return -EINVAL;
+> > +
+> > +	hwirq = fwspec->param[1];
+> > +	for (i = 0; i < nr_irqs; i++)
+> > +		irq_domain_set_hwirq_and_chip(domain, virq + i, hwirq + i,
+> > +					      &mtk_cirq_chip,
+> > +					      domain->host_data);
+> > +
+> > +	parent_fwspec.fwnode = domain->parent->fwnode;
+> > +	return irq_domain_alloc_irqs_parent(domain, virq, nr_irqs,
+> > +					    &parent_fwspec);
+> > +}
+> > +
+> > +static const struct irq_domain_ops cirq_domain_ops = {
+> > +	.translate	= mtk_cirq_domain_translate,
+> > +	.alloc		= mtk_cirq_domain_alloc,
+> > +	.free		= irq_domain_free_irqs_common,
+> > +};
+> > +
+> > +#ifdef CONFIG_PM_SLEEP
+> > +static int mtk_cirq_suspend(void)
+> > +{
+> > +	u32 value;
+> > +
+> > +	/* set edge_only mode, record edge-triggerd interrupts */
+> > +	/* enable cirq */
+> > +	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
+> > +	value |= (CIRQ_EDGE | CIRQ_EN);
+> > +	writel(value, cirq_data->base + CIRQ_CONTROL);
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_cirq_resume(void)
+> > +{
+> > +	u32 value;
+> > +
+> > +	/* flush recored interrupts, will send signals to parent controller */
+> > +	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
+> > +	writel(value | CIRQ_FLUSH, cirq_data->base + CIRQ_CONTROL);
+> > +
+> > +	/* disable cirq */
+> > +	value = readl_relaxed(cirq_data->base + CIRQ_CONTROL);
+> > +	value &= ~(CIRQ_EDGE | CIRQ_EN);
+> > +	writel(value, cirq_data->base + CIRQ_CONTROL);
+> > +}
+> > +
+> > +static struct syscore_ops mtk_cirq_syscore_ops = {
+> > +	.suspend	= mtk_cirq_suspend,
+> > +	.resume		= mtk_cirq_resume,
+> > +};
+> > +
+> > +static void mtk_cirq_syscore_init(void)
+> > +{
+> > +	register_syscore_ops(&mtk_cirq_syscore_ops);
+> > +}
+> > +#else
+> > +static inline void mtk_cirq_syscore_init(void) {}
+> > +#endif
+> > +
+> > +static int __init mtk_cirq_of_init(struct device_node *node,
+> > +				   struct device_node *parent)
+> > +{
+> > +	struct irq_domain *domain, *domain_parent;
+> > +	int ret;
+> > +
+> > +	domain_parent = irq_find_host(parent);
+> > +	if (!domain_parent) {
+> > +		pr_err("mtk_cirq: interrupt-parent not found\n");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	cirq_data = kzalloc(sizeof(*cirq_data), GFP_KERNEL);
+> > +	if (!cirq_data)
+> > +		return -ENOMEM;
+> > +
+> > +	cirq_data->base = of_iomap(node, 0);
+> > +	if (!cirq_data->base) {
+> > +		pr_err("mtk_cirq: unable to map cirq register\n");
+> > +		ret = -ENXIO;
+> > +		goto out_free;
+> > +	}
+> > +
+> > +	if (of_property_read_u32(node, "mediatek,ext-irq-start",
+> > +				 &cirq_data->ext_irq_start)) {
+> > +		ret = -EINVAL;
+> > +		goto out_free;
+> > +	}
+> > +
+> > +	domain = irq_domain_add_hierarchy(domain_parent, 0, CIRQ_IRQ_NUM, node,
+> > +					  &cirq_domain_ops, cirq_data);
+> > +	if (!domain) {
+> > +		ret = -ENOMEM;
+> > +		goto out_unmap;
+> > +	}
+> > +
+> > +	mtk_cirq_syscore_init();
+> > +
+> > +	return 0;
+> > +
+> > +out_unmap:
+> > +	iounmap(cirq_data->base);
+> > +out_free:
+> > +	kfree(cirq_data);
+> > +	return ret;
+> > +}
+> > +
+> > +IRQCHIP_DECLARE(mtk_cirq, "mediatek,mt2701-cirq", mtk_cirq_of_init);
+> 
+> Thanks,
+> 
+> 	M.
+Thanks,
+Youlin 
