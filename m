@@ -1,65 +1,50 @@
-From: Youlin Pei <youlin.pei@mediatek.com>
-Subject: Re: [PATCH 1/3] binding: irqchip: mtk-cirq: Add binding document
-Date: Fri, 14 Oct 2016 16:23:29 +0800
-Message-ID: <1476433409.5408.37.camel@mtksdaap41>
-References: <1476335194-26604-1-git-send-email-youlin.pei@mediatek.com>
-         <1476335194-26604-2-git-send-email-youlin.pei@mediatek.com>
-         <58b24238-659c-c7da-d93c-65db63990930@gmail.com>
+From: Jean Delvare <jdelvare@suse.de>
+Subject: [PATCH] clk: mediatek: Add hardware dependency
+Date: Fri, 14 Oct 2016 14:44:13 +0200
+Message-ID: <20161014144413.1f0225b5@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <58b24238-659c-c7da-d93c-65db63990930@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Rob Herring <robh+dt@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, hongkun.cao@mediatek.com, yong.wu@mediatek.com, erin.lo@mediatek.com
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
-Thanks for your review.
+Only propose the mediatek clock drivers on this platform, unless
+build-testing.
 
-On Thu, 2016-10-13 at 15:00 +0200, Matthias Brugger wrote:
-> 
-> On 10/13/2016 07:06 AM, Youlin Pei wrote:
-> > This commit adds the device tree binding document for
-> > the mediatek cirq.
-> >
-> > Signed-off-by: Youlin Pei <youlin.pei@mediatek.com>
-> >
-> > ---
-> > base on v4.8-rc1
-> > ---
-> >  .../interrupt-controller/mediatek,cirq.txt         |   30 ++++++++++++++++++++
-> >  1 file changed, 30 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-> >
-> > diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-> > new file mode 100644
-> > index 0000000..ad16953
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
-> > @@ -0,0 +1,30 @@
-> > +* Mediatek 27xx cirq
-> > +
-> > +In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
-> > +works outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
-> > +The external interrupts (outside MCUSYS) will feed through CIRQ and connect
-> > +to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
-> > +interrupts and generated a pulse signal to parent interrupt controller when
-> > +flush command is executed. With CIRQ, MCUSYS can be completely turned off
-> > +to improve the system power consumption without losing interrupts.
-> > +
-> > +Required properties:
-> > +- compatible: should be: "mediatek,mt2701-cirq".
-> 
-> The cirq is present in several SoCs. I suppose it is the same core in 
-> all of them. So we can name it mediatek,mtk-cirq and add a 
-> mediatek,mtXXXX-cirq for every SoC, just in case we will need it.
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Cc: Shunli Wang <shunli.wang@mediatek.com>
+Cc: James Liao <jamesjj.liao@mediatek.com>
+Cc: Erin Lo <erin.lo@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>
+Cc: Michael Turquette <mturquette@baylibre.com>
+---
+ drivers/clk/mediatek/Kconfig |    2 ++
+ 1 file changed, 2 insertions(+)
 
-Okay, will change it in next version. Thanks.
+--- linux-4.9-rc0.orig/drivers/clk/mediatek/Kconfig	2016-10-13 11:39:40.416106971 +0200
++++ linux-4.9-rc0/drivers/clk/mediatek/Kconfig	2016-10-14 14:37:48.319588483 +0200
+@@ -8,6 +8,7 @@ config COMMON_CLK_MEDIATEK
+ 
+ config COMMON_CLK_MT8135
+ 	bool "Clock driver for Mediatek MT8135"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK
+ 	---help---
+@@ -15,6 +16,7 @@ config COMMON_CLK_MT8135
+ 
+ config COMMON_CLK_MT8173
+ 	bool "Clock driver for Mediatek MT8173"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+ 	default ARCH_MEDIATEK
+ 	---help---
 
-> 
-> Thanks,
-> Matthias
-Thanks.
-Youlin
+
+-- 
+Jean Delvare
+SUSE L3 Support
