@@ -1,54 +1,182 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] clk: mediatek: Add hardware dependency
-Date: Fri, 14 Oct 2016 19:43:29 +0200
-Message-ID: <d698e9d7-cb57-ae75-e26a-c0dc1c5fce1b@gmail.com>
-References: <20161014144413.1f0225b5@endymion>
+From: "FedEx International MailService" <tony.dyer-GAab4oQ9DAenMLx/lKYAZdBPR1lH4CV8@public.gmane.org>
+Subject: Problems with item delivery, n.00413180
+Date: Fri, 14 Oct 2016 16:02:41 -0600
+Message-ID: <6a616cb85cf324ef4ecbdec4f3d43757@jeffwoodsradio.com>
+Reply-To: FedEx International MailService <tony.dyer-GAab4oQ9DAenMLx/lKYAZdBPR1lH4CV8@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20161014144413.1f0225b5@endymion>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
+Content-Type: multipart/mixed; boundary="b1_e86cd29d6918b35a2320fb34c3a59070"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+--b1_e86cd29d6918b35a2320fb34c3a59070
+Content-Type: text/plain; charset=us-ascii
+
+Dear Customer,
+
+Your parcel has arrived at October 12. Courier was unable to deliver the parcel to you.
+Please, open email attachment to print shipment label.
+
+Thank you for choosing FedEx,
+Tony Dyer,
+FedEx Station Agent.
 
 
-On 10/14/2016 02:44 PM, Jean Delvare wrote:
-> Only propose the mediatek clock drivers on this platform, unless
-> build-testing.
->
-> Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Cc: Shunli Wang <shunli.wang@mediatek.com>
-> Cc: James Liao <jamesjj.liao@mediatek.com>
-> Cc: Erin Lo <erin.lo@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Stephen Boyd <sboyd@codeaurora.org>
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> ---
->  drivers/clk/mediatek/Kconfig |    2 ++
->  1 file changed, 2 insertions(+)
->
-> --- linux-4.9-rc0.orig/drivers/clk/mediatek/Kconfig	2016-10-13 11:39:40.416106971 +0200
-> +++ linux-4.9-rc0/drivers/clk/mediatek/Kconfig	2016-10-14 14:37:48.319588483 +0200
-> @@ -8,6 +8,7 @@ config COMMON_CLK_MEDIATEK
->
->  config COMMON_CLK_MT8135
->  	bool "Clock driver for Mediatek MT8135"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	select COMMON_CLK_MEDIATEK
->  	default ARCH_MEDIATEK
->  	---help---
-> @@ -15,6 +16,7 @@ config COMMON_CLK_MT8135
->
->  config COMMON_CLK_MT8173
->  	bool "Clock driver for Mediatek MT8173"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	select COMMON_CLK_MEDIATEK
->  	default ARCH_MEDIATEK
->  	---help---
->
->
+--b1_e86cd29d6918b35a2320fb34c3a59070
+Content-Type: application/zip; name="00413180.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=00413180.zip
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+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
+AAIAAgB1AAAABBwAAAAA
+
+
+--b1_e86cd29d6918b35a2320fb34c3a59070
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_e86cd29d6918b35a2320fb34c3a59070--
