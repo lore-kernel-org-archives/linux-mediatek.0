@@ -1,212 +1,197 @@
-From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v15 4/4] CMDQ: save energy
-Date: Mon, 17 Oct 2016 18:11:57 +0800
-Message-ID: <1476699117-3001-5-git-send-email-hs.liao@mediatek.com>
-References: <1476699117-3001-1-git-send-email-hs.liao@mediatek.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: [PATCH 1/2] iommu/mediatek: Convert M4Uv2 to iommu_fwspec
+Date: Mon, 17 Oct 2016 12:49:20 +0100
+Message-ID: <0205bf6404b16bdebe8039bfc65570a2a6f9f960.1476704508.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1476699117-3001-1-git-send-email-hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcLQFizaE/u3fw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-1. take suspend/resume into consideration
-2. use clk_disable_unprepare instead of clk_disable to save more energy
-   when CMDQ is idle.
+Our per-device data consists of the M4U instance and firmware-provided
+list of LARB IDs, which is a perfect fit for the generic iommu_fwspec
+machinery. Use that directly as a simpler alternative to the custom
+archdata code.
 
-Signed-off-by: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+CC: Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 94 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 88 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index d086fd8..f235249 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -22,6 +22,7 @@
- #include <linux/mailbox_controller.h>
- #include <linux/mailbox/mtk-cmdq-mailbox.h>
- #include <linux/timer.h>
-+#include <linux/workqueue.h>
- 
- #define CMDQ_THR_MAX_COUNT		3 /* main, sub, general(misc) */
- #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
-@@ -75,12 +76,19 @@ struct cmdq_task {
- 	struct cmdq_pkt		*pkt; /* the packet sent from mailbox client */
- };
- 
-+struct cmdq_clk_release {
-+	struct cmdq		*cmdq;
-+	struct work_struct	release_work;
-+};
-+
- struct cmdq {
- 	struct mbox_controller	mbox;
- 	void __iomem		*base;
- 	u32			irq;
-+	struct workqueue_struct	*clk_release_wq;
- 	struct cmdq_thread	thread[CMDQ_THR_MAX_COUNT];
- 	struct clk		*clock;
-+	bool			suspended;
- };
- 
- static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
-@@ -202,10 +210,13 @@ static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
+These are fairly mechanical cleanups, so I'm pretty confident, but it
+still bears mentioning that they're only compile-tested as I don't have
+the relevant hardware.
+
+Robin.
+
+ drivers/iommu/mtk_iommu.c | 75 ++++++++++++-----------------------------------
+ 1 file changed, 18 insertions(+), 57 deletions(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index b12c12d74c33..13bb57995cd3 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -195,14 +195,14 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ static void mtk_iommu_config(struct mtk_iommu_data *data,
+ 			     struct device *dev, bool enable)
  {
- 	struct cmdq *cmdq;
- 	struct cmdq_task *task;
--	unsigned long curr_pa, end_pa;
-+	unsigned long curr_pa, end_pa, flags;
- 
- 	cmdq = dev_get_drvdata(thread->chan->mbox->dev);
- 
-+	/* Client should not flush new tasks if suspended. */
-+	WARN_ON(cmdq->suspended);
-+
- 	task = kzalloc(sizeof(*task), GFP_ATOMIC);
- 	task->cmdq = cmdq;
- 	INIT_LIST_HEAD(&task->list_entry);
-@@ -215,7 +226,14 @@ static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
- 	task->pkt = pkt;
- 
- 	if (list_empty(&thread->task_busy_list)) {
--		WARN_ON(clk_enable(cmdq->clock) < 0);
-+		/*
-+		 * Unlock for clk prepare (sleeping function).
-+		 * This is safe since clk_prepare_enable has internal locks.
-+		 */
-+		spin_unlock_irqrestore(&thread->chan->lock, flags);
-+		WARN_ON(clk_prepare_enable(cmdq->clock) < 0);
-+		spin_lock_irqsave(&thread->chan->lock, flags);
-+
- 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
- 
- 		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-@@ -297,6 +315,26 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
- 	cmdq_thread_resume(thread);
- }
- 
-+static void cmdq_clk_release_work(struct work_struct *work_item)
-+{
-+	struct cmdq_clk_release *clk_release = container_of(work_item,
-+			struct cmdq_clk_release, release_work);
-+	struct cmdq *cmdq = clk_release->cmdq;
-+
-+	clk_disable_unprepare(cmdq->clock);
-+	kfree(clk_release);
-+}
-+
-+static void cmdq_clk_release_schedule(struct cmdq *cmdq)
-+{
-+	struct cmdq_clk_release *clk_release;
-+
-+	clk_release = kmalloc(sizeof(*clk_release), GFP_ATOMIC);
-+	clk_release->cmdq = cmdq;
-+	INIT_WORK(&clk_release->release_work, cmdq_clk_release_work);
-+	queue_work(cmdq->clk_release_wq, &clk_release->release_work);
-+}
-+
- static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 				    struct cmdq_thread *thread)
- {
-@@ -346,7 +384,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 
- 	if (list_empty(&thread->task_busy_list)) {
- 		cmdq_thread_disable(cmdq, thread);
--		clk_disable(cmdq->clock);
-+		cmdq_clk_release_schedule(cmdq);
- 	} else {
- 		mod_timer(&thread->timeout,
- 			  jiffies + msecs_to_jiffies(CMDQ_TIMEOUT_MS));
-@@ -405,16 +443,50 @@ static void cmdq_thread_handle_timeout(unsigned long data)
- 
- 	cmdq_thread_resume(thread);
- 	cmdq_thread_disable(cmdq, thread);
--	clk_disable(cmdq->clock);
-+	cmdq_clk_release_schedule(cmdq);
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
- }
- 
-+static int cmdq_suspend(struct device *dev)
-+{
-+	struct cmdq *cmdq = dev_get_drvdata(dev);
-+	struct cmdq_thread *thread;
+-	struct mtk_iommu_client_priv *head, *cur, *next;
+ 	struct mtk_smi_larb_iommu    *larb_mmu;
+ 	unsigned int                 larbid, portid;
++	struct iommu_fwspec *fwspec = dev->iommu_fwspec;
 +	int i;
-+	bool task_running = false;
-+
-+	cmdq->suspended = true;
-+
-+	for (i = 0; i < ARRAY_SIZE(cmdq->thread); i++) {
-+		thread = &cmdq->thread[i];
-+		if (!list_empty(&thread->task_busy_list)) {
-+			mod_timer(&thread->timeout, jiffies + 1);
-+			task_running = true;
-+		}
-+	}
-+
-+	if (task_running) {
-+		dev_warn(dev, "exist running task(s) in suspend\n");
-+		schedule();
-+	}
-+
-+	flush_workqueue(cmdq->clk_release_wq);
-+	return 0;
-+}
-+
-+static int cmdq_resume(struct device *dev)
-+{
-+	struct cmdq *cmdq = dev_get_drvdata(dev);
-+
-+	cmdq->suspended = false;
-+	return 0;
-+}
-+
- static int cmdq_remove(struct platform_device *pdev)
+ 
+-	head = dev->archdata.iommu;
+-	list_for_each_entry_safe(cur, next, &head->client, client) {
+-		larbid = MTK_M4U_TO_LARB(cur->mtk_m4u_id);
+-		portid = MTK_M4U_TO_PORT(cur->mtk_m4u_id);
++	for (i = 0; i < fwspec->num_ids; ++i) {
++		larbid = MTK_M4U_TO_LARB(fwspec->ids[i]);
++		portid = MTK_M4U_TO_PORT(fwspec->ids[i]);
+ 		larb_mmu = &data->smi_imu.larb_imu[larbid];
+ 
+ 		dev_dbg(dev, "%s iommu port: %d\n",
+@@ -282,14 +282,12 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 				   struct device *dev)
  {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_client_priv *priv = dev->archdata.iommu;
+-	struct mtk_iommu_data *data;
++	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
+ 	int ret;
  
-+	destroy_workqueue(cmdq->clk_release_wq);
- 	mbox_controller_unregister(&cmdq->mbox);
--	clk_unprepare(cmdq->clock);
- 	return 0;
+-	if (!priv)
++	if (!data)
+ 		return -ENODEV;
+ 
+-	data = dev_get_drvdata(priv->m4udev);
+ 	if (!data->m4u_dom) {
+ 		data->m4u_dom = dom;
+ 		ret = mtk_iommu_domain_finalise(data);
+@@ -310,13 +308,11 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ static void mtk_iommu_detach_device(struct iommu_domain *domain,
+ 				    struct device *dev)
+ {
+-	struct mtk_iommu_client_priv *priv = dev->archdata.iommu;
+-	struct mtk_iommu_data *data;
++	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
+ 
+-	if (!priv)
++	if (!data)
+ 		return;
+ 
+-	data = dev_get_drvdata(priv->m4udev);
+ 	mtk_iommu_config(data, dev, false);
  }
  
-@@ -530,11 +602,20 @@ static int cmdq_probe(struct platform_device *pdev)
- 		return err;
- 	}
+@@ -366,8 +362,8 @@ static int mtk_iommu_add_device(struct device *dev)
+ {
+ 	struct iommu_group *group;
  
-+	cmdq->clk_release_wq = alloc_ordered_workqueue(
-+			"%s", WQ_MEM_RECLAIM | WQ_HIGHPRI,
-+			"cmdq_clk_release");
-+
- 	platform_set_drvdata(pdev, cmdq);
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
-+
- 	return 0;
+-	if (!dev->archdata.iommu) /* Not a iommu client device */
+-		return -ENODEV;
++	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
++		return -ENODEV; /* Not a iommu client device */
+ 
+ 	group = iommu_group_get_for_dev(dev);
+ 	if (IS_ERR(group))
+@@ -379,33 +375,21 @@ static int mtk_iommu_add_device(struct device *dev)
+ 
+ static void mtk_iommu_remove_device(struct device *dev)
+ {
+-	struct mtk_iommu_client_priv *head, *cur, *next;
+-
+-	head = dev->archdata.iommu;
+-	if (!head)
++	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
+-	list_for_each_entry_safe(cur, next, &head->client, client) {
+-		list_del(&cur->client);
+-		kfree(cur);
+-	}
+-	kfree(head);
+-	dev->archdata.iommu = NULL;
+-
+ 	iommu_group_remove_device(dev);
++	iommu_fwspec_free(dev);
  }
  
-+static const struct dev_pm_ops cmdq_pm_ops = {
-+	.suspend = cmdq_suspend,
-+	.resume = cmdq_resume,
-+};
-+
- static const struct of_device_id cmdq_of_ids[] = {
- 	{.compatible = "mediatek,mt8173-gce",},
- 	{}
-@@ -545,6 +626,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 	.remove = cmdq_remove,
- 	.driver = {
- 		.name = "mtk_cmdq",
-+		.pm = &cmdq_pm_ops,
- 		.of_match_table = cmdq_of_ids,
+ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+ {
+-	struct mtk_iommu_data *data;
+-	struct mtk_iommu_client_priv *priv;
++	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
+ 
+-	priv = dev->archdata.iommu;
+-	if (!priv)
++	if (!data)
+ 		return ERR_PTR(-ENODEV);
+ 
+ 	/* All the client devices are in the same m4u iommu-group */
+-	data = dev_get_drvdata(priv->m4udev);
+ 	if (!data->m4u_group) {
+ 		data->m4u_group = iommu_group_alloc();
+ 		if (IS_ERR(data->m4u_group))
+@@ -416,7 +400,6 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+ 
+ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ {
+-	struct mtk_iommu_client_priv *head, *priv, *next;
+ 	struct platform_device *m4updev;
+ 
+ 	if (args->args_count != 1) {
+@@ -425,38 +408,16 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ 		return -EINVAL;
  	}
- };
+ 
+-	if (!dev->archdata.iommu) {
++	if (!dev->iommu_fwspec->iommu_priv) {
+ 		/* Get the m4u device */
+ 		m4updev = of_find_device_by_node(args->np);
+ 		if (WARN_ON(!m4updev))
+ 			return -EINVAL;
+ 
+-		head = kzalloc(sizeof(*head), GFP_KERNEL);
+-		if (!head)
+-			return -ENOMEM;
+-
+-		dev->archdata.iommu = head;
+-		INIT_LIST_HEAD(&head->client);
+-		head->m4udev = &m4updev->dev;
+-	} else {
+-		head = dev->archdata.iommu;
++		dev->iommu_fwspec->iommu_priv = platform_get_drvdata(m4updev);
+ 	}
+ 
+-	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
+-	if (!priv)
+-		goto err_free_mem;
+-
+-	priv->mtk_m4u_id = args->args[0];
+-	list_add_tail(&priv->client, &head->client);
+-
+-	return 0;
+-
+-err_free_mem:
+-	list_for_each_entry_safe(priv, next, &head->client, client)
+-		kfree(priv);
+-	kfree(head);
+-	dev->archdata.iommu = NULL;
+-	return -ENOMEM;
++	return iommu_fwspec_add_ids(dev, args->args, 1);
+ }
+ 
+ static struct iommu_ops mtk_iommu_ops = {
 -- 
 1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
