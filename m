@@ -1,252 +1,190 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH 2/2] iommu/mediatek: Convert M4Uv1 to iommu_fwspec
-Date: Mon, 17 Oct 2016 12:49:21 +0100
-Message-ID: <a40dbcc1ff40bf09483316354d2fdcb2d432eb81.1476704508.git.robin.murphy@arm.com>
-References: <0205bf6404b16bdebe8039bfc65570a2a6f9f960.1476704508.git.robin.murphy@arm.com>
+From: "FedEx Standard Overnight" <luis.mcgowan-x0Q2EdOri6ZBDgjK7y7TUQ@public.gmane.org>
+Subject: Problems with item delivery, n.00546006
+Date: Mon, 17 Oct 2016 07:15:44 -0600
+Message-ID: <209e21cb6e9b8bfe123cbc5d50a4c750@buzzwtf.com>
+Reply-To: FedEx Standard Overnight <luis.mcgowan-x0Q2EdOri6ZBDgjK7y7TUQ@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <0205bf6404b16bdebe8039bfc65570a2a6f9f960.1476704508.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/mixed; boundary="b1_f77b505f3306ddaf8af37bdf6e615bd9"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Our per-device data consists of the M4U instance and firmware-provided
-list of LARB IDs, which is a perfect fit for the generic iommu_fwspec
-machinery. Use that directly instead of the custom archdata code - while
-we can't rely on the of_xlate() mechanism to initialise things until the
-32-bit ARM DMA code learns about groups and default domains, it still
-results in a reasonable simplification overall.
+--b1_f77b505f3306ddaf8af37bdf6e615bd9
+Content-Type: text/plain; charset=us-ascii
 
-CC: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
- drivers/iommu/mtk_iommu.h    |  6 ---
- drivers/iommu/mtk_iommu_v1.c | 95 +++++++++++++++++---------------------------
- 2 files changed, 36 insertions(+), 65 deletions(-)
+Dear Customer,
 
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 3dab13b4a211..f59609f20270 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -34,12 +34,6 @@ struct mtk_iommu_suspend_reg {
- 	u32				int_main_control;
- };
- 
--struct mtk_iommu_client_priv {
--	struct list_head		client;
--	unsigned int			mtk_m4u_id;
--	struct device			*m4udev;
--};
--
- struct mtk_iommu_domain;
- 
- struct mtk_iommu_data {
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index b8aeb0768483..884c80cb795e 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -204,14 +204,14 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
- static void mtk_iommu_config(struct mtk_iommu_data *data,
- 			     struct device *dev, bool enable)
- {
--	struct mtk_iommu_client_priv *head, *cur, *next;
- 	struct mtk_smi_larb_iommu    *larb_mmu;
- 	unsigned int                 larbid, portid;
-+	struct iommu_fwspec *fwspec = dev->iommu_fwspec;
-+	int i;
- 
--	head = dev->archdata.iommu;
--	list_for_each_entry_safe(cur, next, &head->client, client) {
--		larbid = mt2701_m4u_to_larb(cur->mtk_m4u_id);
--		portid = mt2701_m4u_to_port(cur->mtk_m4u_id);
-+	for (i = 0; i < fwspec->num_ids; ++i) {
-+		larbid = mt2701_m4u_to_larb(fwspec->ids[i]);
-+		portid = mt2701_m4u_to_port(fwspec->ids[i]);
- 		larb_mmu = &data->smi_imu.larb_imu[larbid];
- 
- 		dev_dbg(dev, "%s iommu port: %d\n",
-@@ -271,14 +271,12 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 				   struct device *dev)
- {
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
--	struct mtk_iommu_client_priv *priv = dev->archdata.iommu;
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
- 	int ret;
- 
--	if (!priv)
-+	if (!data)
- 		return -ENODEV;
- 
--	data = dev_get_drvdata(priv->m4udev);
- 	if (!data->m4u_dom) {
- 		data->m4u_dom = dom;
- 		ret = mtk_iommu_domain_finalise(data);
-@@ -295,13 +293,11 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- static void mtk_iommu_detach_device(struct iommu_domain *domain,
- 				    struct device *dev)
- {
--	struct mtk_iommu_client_priv *priv = dev->archdata.iommu;
--	struct mtk_iommu_data *data;
-+	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
- 
--	if (!priv)
-+	if (!data)
- 		return;
- 
--	data = dev_get_drvdata(priv->m4udev);
- 	mtk_iommu_config(data, dev, false);
- }
- 
-@@ -366,6 +362,8 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return pa;
- }
- 
-+static struct iommu_ops mtk_iommu_ops;
-+
- /*
-  * MTK generation one iommu HW only support one iommu domain, and all the client
-  * sharing the same iova address space.
-@@ -373,7 +371,7 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- static int mtk_iommu_create_mapping(struct device *dev,
- 				    struct of_phandle_args *args)
- {
--	struct mtk_iommu_client_priv *head, *priv, *next;
-+	struct mtk_iommu_data *data;
- 	struct platform_device *m4updev;
- 	struct dma_iommu_mapping *mtk_mapping;
- 	struct device *m4udev;
-@@ -385,41 +383,37 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 		return -EINVAL;
- 	}
- 
--	if (!dev->archdata.iommu) {
-+	if (!dev->iommu_fwspec) {
-+		ret = iommu_fwspec_init(dev, &args->np->fwnode, &mtk_iommu_ops);
-+		if (ret)
-+			return ret;
-+	} else if (dev->iommu_fwspec->ops != &mtk_iommu_ops) {
-+		return -EINVAL;
-+	}
-+
-+	if (!dev->iommu_fwspec->iommu_priv) {
- 		/* Get the m4u device */
- 		m4updev = of_find_device_by_node(args->np);
- 		if (WARN_ON(!m4updev))
- 			return -EINVAL;
- 
--		head = kzalloc(sizeof(*head), GFP_KERNEL);
--		if (!head)
--			return -ENOMEM;
--
--		dev->archdata.iommu = head;
--		INIT_LIST_HEAD(&head->client);
--		head->m4udev = &m4updev->dev;
--	} else {
--		head = dev->archdata.iommu;
-+		dev->iommu_fwspec->iommu_priv = platform_get_drvdata(m4updev);
- 	}
- 
--	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
--	if (!priv) {
--		ret = -ENOMEM;
--		goto err_free_mem;
--	}
--	priv->mtk_m4u_id = args->args[0];
--	list_add_tail(&priv->client, &head->client);
-+	ret = iommu_fwspec_add_ids(dev, args->args, 1);
-+	if (ret)
-+		return ret;
- 
--	m4udev = head->m4udev;
-+	data = dev->iommu_fwspec->iommu_priv;
-+	m4udev = data->dev;
- 	mtk_mapping = m4udev->archdata.iommu;
- 	if (!mtk_mapping) {
- 		/* MTK iommu support 4GB iova address space. */
- 		mtk_mapping = arm_iommu_create_mapping(&platform_bus_type,
- 						0, 1ULL << 32);
--		if (IS_ERR(mtk_mapping)) {
--			ret = PTR_ERR(mtk_mapping);
--			goto err_free_mem;
--		}
-+		if (IS_ERR(mtk_mapping))
-+			return PTR_ERR(mtk_mapping);
-+
- 		m4udev->archdata.iommu = mtk_mapping;
- 	}
- 
-@@ -432,11 +426,6 @@ static int mtk_iommu_create_mapping(struct device *dev,
- err_release_mapping:
- 	arm_iommu_release_mapping(mtk_mapping);
- 	m4udev->archdata.iommu = NULL;
--err_free_mem:
--	list_for_each_entry_safe(priv, next, &head->client, client)
--		kfree(priv);
--	kfree(head);
--	dev->archdata.iommu = NULL;
- 	return ret;
- }
- 
-@@ -458,8 +447,8 @@ static int mtk_iommu_add_device(struct device *dev)
- 		of_node_put(iommu_spec.np);
- 	}
- 
--	if (!dev->archdata.iommu) /* Not a iommu client device */
--		return -ENODEV;
-+	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
-+		return -ENODEV; /* Not a iommu client device */
- 
- 	group = iommu_group_get_for_dev(dev);
- 	if (IS_ERR(group))
-@@ -471,33 +460,21 @@ static int mtk_iommu_add_device(struct device *dev)
- 
- static void mtk_iommu_remove_device(struct device *dev)
- {
--	struct mtk_iommu_client_priv *head, *cur, *next;
--
--	head = dev->archdata.iommu;
--	if (!head)
-+	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
--	list_for_each_entry_safe(cur, next, &head->client, client) {
--		list_del(&cur->client);
--		kfree(cur);
--	}
--	kfree(head);
--	dev->archdata.iommu = NULL;
--
- 	iommu_group_remove_device(dev);
-+	iommu_fwspec_free(dev);
- }
- 
- static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- {
--	struct mtk_iommu_data *data;
--	struct mtk_iommu_client_priv *priv;
-+	struct mtk_iommu_data *data = dev->iommu_fwspec->iommu_priv;
- 
--	priv = dev->archdata.iommu;
--	if (!priv)
-+	if (!data)
- 		return ERR_PTR(-ENODEV);
- 
- 	/* All the client devices are in the same m4u iommu-group */
--	data = dev_get_drvdata(priv->m4udev);
- 	if (!data->m4u_group) {
- 		data->m4u_group = iommu_group_alloc();
- 		if (IS_ERR(data->m4u_group))
--- 
-1.9.1
+Courier was unable to deliver the parcel to you.
+Delivery Label is attached to this email.
+
+Thanks and best regards,
+Luis Mcgowan,
+FedEx Support Agent.
+
+
+--b1_f77b505f3306ddaf8af37bdf6e615bd9
+Content-Type: application/zip; name="Label_00546006.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=Label_00546006.zip
+
+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
+
+
+--b1_f77b505f3306ddaf8af37bdf6e615bd9
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_f77b505f3306ddaf8af37bdf6e615bd9--
