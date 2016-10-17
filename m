@@ -1,47 +1,94 @@
-From: Javier Martinez Canillas <javier@osg.samsung.com>
-Subject: [PATCH 1/2] mmc: mediatek: Fix module autoload
-Date: Mon, 17 Oct 2016 13:13:44 -0300
-Message-ID: <1476720825-30442-1-git-send-email-javier@osg.samsung.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Javier Martinez Canillas <javier@osg.samsung.com>, linux-mmc@vger.kernel.org, Geert Uytterhoeven <geert@linux-m68k.org>, Douglas Anderson <dianders@chromium.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>
+From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+Subject: [PATCH 02/28] [v2] mtd: mtk: avoid warning in mtk_ecc_encode
+Date: Tue, 18 Oct 2016 00:05:31 +0200
+Message-ID: <20161017220557.1688282-2-arnd@arndb.de>
+References: <20161017220342.1627073-1-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161017220342.1627073-1-arnd-r2nGTMty4D4@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-If the driver is built as a module, autoload won't work because the module
-alias information is not filled. So user-space can't match the registered
-device with the corresponding module.
+When building with -Wmaybe-uninitialized, gcc produces a silly false positive
+warning for the mtk_ecc_encode function:
 
-Export the module alias information using the MODULE_DEVICE_TABLE() macro.
+drivers/mtd/nand/mtk_ecc.c: In function 'mtk_ecc_encode':
+drivers/mtd/nand/mtk_ecc.c:402:15: error: 'val' may be used uninitialized in this function [-Werror=maybe-uninitialized]
 
-Before this patch:
+The function for some reason contains a double byte swap on big-endian
+builds to get the OOB data into the correct order again, and is written
+in a slightly confusing way.
 
-$ modinfo drivers/mmc/host/mtk-sd.ko | grep alias
-$
+Using a simple memcpy32_fromio() to read the data simplifies it a lot
+so it becomes more readable and produces no warning. However, the
+output might not have 32-bit alignment, so we have to use another
+memcpy to avoid taking alignment faults or writing beyond the end
+of the array.
 
-After this patch:
-
-$ modinfo drivers/mmc/host/mtk-sd.ko | grep alias
-alias:          of:N*T*Cmediatek,mt8135-mmcC*
-alias:          of:N*T*Cmediatek,mt8135-mmc
-
-Signed-off-by: Javier Martinez Canillas <javier@osg.samsung.com>
+Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
 ---
+v2: move temporary buffer into struct mtk_ecc instead of having it
+    on the stack, as suggested by Boris Brezillon
+---
+ drivers/mtd/nand/mtk_ecc.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
- drivers/mmc/host/mtk-sd.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 84e9afcb5c09..86af0b199a54 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1713,6 +1713,7 @@ static const struct of_device_id msdc_of_ids[] = {
- 	{   .compatible = "mediatek,mt8135-mmc", },
- 	{}
+diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+index d54f666..dbf2562 100644
+--- a/drivers/mtd/nand/mtk_ecc.c
++++ b/drivers/mtd/nand/mtk_ecc.c
+@@ -86,6 +86,8 @@ struct mtk_ecc {
+ 	struct completion done;
+ 	struct mutex lock;
+ 	u32 sectors;
++
++	u8 eccdata[112];
  };
-+MODULE_DEVICE_TABLE(of, msdc_of_ids);
  
- static struct platform_driver mt_msdc_driver = {
- 	.probe = msdc_drv_probe,
+ static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
+@@ -366,9 +368,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 		   u8 *data, u32 bytes)
+ {
+ 	dma_addr_t addr;
+-	u8 *p;
+-	u32 len, i, val;
+-	int ret = 0;
++	u32 len;
++	int ret;
+ 
+ 	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+ 	ret = dma_mapping_error(ecc->dev, addr);
+@@ -393,14 +394,12 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+ 
+ 	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+ 	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+-	p = data + bytes;
+ 
+-	/* write the parity bytes generated by the ECC back to the OOB region */
+-	for (i = 0; i < len; i++) {
+-		if ((i % 4) == 0)
+-			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
+-		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+-	}
++	/* write the parity bytes generated by the ECC back to temp buffer */
++	__ioread32_copy(ecc->eccdata, ecc->regs + ECC_ENCPAR(0), round_up(len, 4));
++
++	/* copy into possibly unaligned OOB region with actual length */
++	memcpy(data + bytes, ecc->eccdata, len);
+ timeout:
+ 
+ 	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
 -- 
-2.7.4
+2.9.0
