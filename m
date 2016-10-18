@@ -1,43 +1,105 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v2] drm/mediatek: fix a typo
-Date: Tue, 18 Oct 2016 17:44:59 +0800
-Message-ID: <1476783899.25750.3.camel@mtksdaap41>
-References: <1476779039-28963-1-git-send-email-bibby.hsieh@mediatek.com>
+From: RogerCC.Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 02/28] [v2] mtd: mtk: avoid warning in mtk_ecc_encode
+Date: Tue, 18 Oct 2016 18:12:32 +0800
+Message-ID: <1476785552.24626.4.camel@mtkswgap22>
+References: <20161017220342.1627073-1-arnd@arndb.de>
+ <20161017220557.1688282-2-arnd@arndb.de>
+ <20161018071948.0b7eef05@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476779039-28963-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20161018071948.0b7eef05@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Cc: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linus Torvalds <torvalds-de/tnXTf+JLsfHDXvbKv3WD2FQJk+8+b@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Acked-by: CK Hu <ck.hu@mediatek.com>
+On Tue, 2016-10-18 at 07:19 +0200, Boris Brezillon wrote:
+> On Tue, 18 Oct 2016 00:05:31 +0200
+> Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org> wrote:
+> 
+> > When building with -Wmaybe-uninitialized, gcc produces a silly false positive
+> > warning for the mtk_ecc_encode function:
+> > 
+> > drivers/mtd/nand/mtk_ecc.c: In function 'mtk_ecc_encode':
+> > drivers/mtd/nand/mtk_ecc.c:402:15: error: 'val' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+> > 
+> > The function for some reason contains a double byte swap on big-endian
+> > builds to get the OOB data into the correct order again, and is written
+> > in a slightly confusing way.
+> > 
+> > Using a simple memcpy32_fromio() to read the data simplifies it a lot
+> > so it becomes more readable and produces no warning. However, the
+> > output might not have 32-bit alignment, so we have to use another
+> > memcpy to avoid taking alignment faults or writing beyond the end
+> > of the array.
+> > 
+> > Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+> 
+> Jorge, RogerCC, can I have an Acked-by and/or Tested-by for this patch?
+Tested, this patch is OK,
+Tested-by: RogerCC Lin <rogercc.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On Tue, 2016-10-18 at 16:23 +0800, Bibby Hsieh wrote:
-> If we want to set the hardware OD to relay mode,
-> we have to set OD_CFG register rather than
-> OD_RELAYMODE; otherwise, the system will access
-> the wrong address.
 > 
-> Fixes: 7216436420414144646f5d8343d061355fd23483 ("drm/mediatek: set mt8173 dithering function")
-> Cc: stable@vger.kernel.org # v4.9+
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> > ---
+> > v2: move temporary buffer into struct mtk_ecc instead of having it
+> >     on the stack, as suggested by Boris Brezillon
+> > ---
+> >  drivers/mtd/nand/mtk_ecc.c | 19 +++++++++----------
+> >  1 file changed, 9 insertions(+), 10 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> > index d54f666..dbf2562 100644
+> > --- a/drivers/mtd/nand/mtk_ecc.c
+> > +++ b/drivers/mtd/nand/mtk_ecc.c
+> > @@ -86,6 +86,8 @@ struct mtk_ecc {
+> >  	struct completion done;
+> >  	struct mutex lock;
+> >  	u32 sectors;
+> > +
+> > +	u8 eccdata[112];
+> >  };
+> >  
+> >  static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
+> > @@ -366,9 +368,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+> >  		   u8 *data, u32 bytes)
+> >  {
+> >  	dma_addr_t addr;
+> > -	u8 *p;
+> > -	u32 len, i, val;
+> > -	int ret = 0;
+> > +	u32 len;
+> > +	int ret;
+> >  
+> >  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+> >  	ret = dma_mapping_error(ecc->dev, addr);
+> > @@ -393,14 +394,12 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+> >  
+> >  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+> >  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+> > -	p = data + bytes;
+> >  
+> > -	/* write the parity bytes generated by the ECC back to the OOB region */
+> > -	for (i = 0; i < len; i++) {
+> > -		if ((i % 4) == 0)
+> > -			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
+> > -		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+> > -	}
+> > +	/* write the parity bytes generated by the ECC back to temp buffer */
+> > +	__ioread32_copy(ecc->eccdata, ecc->regs + ECC_ENCPAR(0), round_up(len, 4));
+> > +
+> > +	/* copy into possibly unaligned OOB region with actual length */
+> > +	memcpy(data + bytes, ecc->eccdata, len);
+> >  timeout:
+> >  
+> >  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index df33b3c..aa5f20f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -123,7 +123,7 @@ static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			  unsigned int bpc)
->  {
->  	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
-> -	writel(OD_RELAYMODE, comp->regs + OD_RELAYMODE);
-> +	writel(OD_RELAYMODE, comp->regs + OD_CFG);
->  	mtk_dither_set(comp, bpc, DISP_OD_CFG);
->  }
->  
