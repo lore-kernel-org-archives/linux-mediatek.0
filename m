@@ -1,66 +1,91 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5 0/3] MT8173 HDMI 4K support
-Date: Tue, 18 Oct 2016 09:38:28 +0800
-Message-ID: <1476754708.25750.1.camel@mtksdaap41>
-References: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH 02/28] [v2] mtd: mtk: avoid warning in mtk_ecc_encode
+Date: Tue, 18 Oct 2016 07:19:48 +0200
+Message-ID: <20161018071948.0b7eef05@bbrezillon>
+References: <20161017220342.1627073-1-arnd@arndb.de>
+        <20161017220557.1688282-2-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1475118135-56780-1-git-send-email-bibby.hsieh@mediatek.com>
+In-Reply-To: <20161017220557.1688282-2-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+To: Arnd Bergmann <arnd@arndb.de>, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz@linaro.org>, RogerCC Lin <rogercc.lin@mediatek.com>
+Cc: Richard Weinberger <richard@nod.at>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Linus Torvalds <torvalds@linux-foundation.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-09-29 at 11:02 +0800, Bibby Hsieh wrote:
-> This is MT8173 HDMI 4K support PATCH v5, based on 4.8-rc1.
-> 
-> In order to support HDMI 4K on MT8173,
-> we have to make some modifications.
-> 1) Make sure that mtk_hdmi_send_infoframe is sent successfully.
-> 2) Enhance the HDMI driving current to improve performance.
-> 3) Make sure that pixel clock is 297MHz when resolution is 4K.
-> 
+On Tue, 18 Oct 2016 00:05:31 +0200
+Arnd Bergmann <arnd@arndb.de> wrote:
 
-For this series,
-Acked-by: CK Hu <ck.hu@mediatek.com>
+> When building with -Wmaybe-uninitialized, gcc produces a silly false positive
+> warning for the mtk_ecc_encode function:
+> 
+> drivers/mtd/nand/mtk_ecc.c: In function 'mtk_ecc_encode':
+> drivers/mtd/nand/mtk_ecc.c:402:15: error: 'val' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+> 
+> The function for some reason contains a double byte swap on big-endian
+> builds to get the OOB data into the correct order again, and is written
+> in a slightly confusing way.
+> 
+> Using a simple memcpy32_fromio() to read the data simplifies it a lot
+> so it becomes more readable and produces no warning. However, the
+> output might not have 32-bit alignment, so we have to use another
+> memcpy to avoid taking alignment faults or writing beyond the end
+> of the array.
+> 
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-> Changes since v4:
->  - Update commit message and patch title.
+Jorge, RogerCC, can I have an Acked-by and/or Tested-by for this patch?
+
+> ---
+> v2: move temporary buffer into struct mtk_ecc instead of having it
+>     on the stack, as suggested by Boris Brezillon
+> ---
+>  drivers/mtd/nand/mtk_ecc.c | 19 +++++++++----------
+>  1 file changed, 9 insertions(+), 10 deletions(-)
 > 
-> Changes since v3:
->  - Rebase to 4.8-rc1.
->  - The valid range of tvdpll is 1G to 2G Hz, so, we Change the
->    if statement of mode->clock to fit that and add a comment.
-> 
-> Changes since v2:
->  - Remove the change about preparation for MT2701 support.
-> 
-> Changes since v1:
->  - According to the suggestion from philipp, We use the new
->    dpi0_sel rate set method.
->  - calls clk_set_rate to set the dpi0_sel according to the
->    pixel clock.
->  - Remove the direct access to all the intermediate clock part.
->  - Remove the intermediate tvdpll_d* clocks in dts.
->  - According to suggestion from CK, we rename the clock parse
->    function and remove it from mtk_dpi_conf struct.
->  - Merges the hdmi Pll set rate for pixel clock greater than
->    165MHz and smaller parts.
-> 
-> The PATCH depends on the following patch:
-> https://patchwork.kernel.org/patch/9262575/
-> (arm64: dts: mt8173: add mmsel clocks for 4K support)
-> 
-> Junzhi Zhao (3):
->   drm/mediatek: do mtk_hdmi_send_infoframe after HDMI clock enable
->   drm/mediatek: enhance the HDMI driving current
->   drm/mediatek: modify the factor to make the pll_rate set in the 1G-2G
->     range
-> 
->  drivers/gpu/drm/mediatek/mtk_dpi.c             |    9 +++--
->  drivers/gpu/drm/mediatek/mtk_hdmi.c            |   17 ++++++----
->  drivers/gpu/drm/mediatek/mtk_mt8173_hdmi_phy.c |   42 +++++++++++++++++-------
->  3 files changed, 48 insertions(+), 20 deletions(-)
-> 
+> diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
+> index d54f666..dbf2562 100644
+> --- a/drivers/mtd/nand/mtk_ecc.c
+> +++ b/drivers/mtd/nand/mtk_ecc.c
+> @@ -86,6 +86,8 @@ struct mtk_ecc {
+>  	struct completion done;
+>  	struct mutex lock;
+>  	u32 sectors;
+> +
+> +	u8 eccdata[112];
+>  };
+>  
+>  static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
+> @@ -366,9 +368,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+>  		   u8 *data, u32 bytes)
+>  {
+>  	dma_addr_t addr;
+> -	u8 *p;
+> -	u32 len, i, val;
+> -	int ret = 0;
+> +	u32 len;
+> +	int ret;
+>  
+>  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
+>  	ret = dma_mapping_error(ecc->dev, addr);
+> @@ -393,14 +394,12 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
+>  
+>  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
+>  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
+> -	p = data + bytes;
+>  
+> -	/* write the parity bytes generated by the ECC back to the OOB region */
+> -	for (i = 0; i < len; i++) {
+> -		if ((i % 4) == 0)
+> -			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
+> -		p[i] = (val >> ((i % 4) * 8)) & 0xff;
+> -	}
+> +	/* write the parity bytes generated by the ECC back to temp buffer */
+> +	__ioread32_copy(ecc->eccdata, ecc->regs + ECC_ENCPAR(0), round_up(len, 4));
+> +
+> +	/* copy into possibly unaligned OOB region with actual length */
+> +	memcpy(data + bytes, ecc->eccdata, len);
+>  timeout:
+>  
+>  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);
