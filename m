@@ -1,108 +1,119 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH 02/28] [v2] mtd: mtk: avoid warning in mtk_ecc_encode
-Date: Tue, 18 Oct 2016 21:45:05 +0200
-Message-ID: <20161018214505.489628db@bbrezillon>
-References: <20161017220342.1627073-1-arnd@arndb.de>
-        <20161017220557.1688282-2-arnd@arndb.de>
-        <20161018071948.0b7eef05@bbrezillon>
-        <1476785552.24626.4.camel@mtkswgap22>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v7, 1/8] dt-bindings: mt8173-xhci: support host side of dual-role mode
+Date: Wed, 19 Oct 2016 10:28:20 +0800
+Message-ID: <1476844107-31087-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1476844107-31087-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476785552.24626.4.camel@mtkswgap22>
-Sender: linux-kernel-owner@vger.kernel.org
-To: "RogerCC.Lin" <rogercc.lin@mediatek.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Jorge Ramirez-Ortiz <jorge.ramirez-ortiz@linaro.org>, Richard Weinberger <richard@nod.at>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Linus Torvalds <torvalds@linux-foundation.org>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1476844107-31087-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 18 Oct 2016 18:12:32 +0800
-RogerCC.Lin <rogercc.lin@mediatek.com> wrote:
+Some resources, such as IPPC register etc, shared with device
+driver are moved into common glue layer when xHCI driver is the
+host side of dual-role mode and they should be changed as optional
+properties if they are required ones before. For clarity, add
+a new part of binding to support host side of dual-role mode.
 
-> On Tue, 2016-10-18 at 07:19 +0200, Boris Brezillon wrote:
-> > On Tue, 18 Oct 2016 00:05:31 +0200
-> > Arnd Bergmann <arnd@arndb.de> wrote:
-> >   
-> > > When building with -Wmaybe-uninitialized, gcc produces a silly false positive
-> > > warning for the mtk_ecc_encode function:
-> > > 
-> > > drivers/mtd/nand/mtk_ecc.c: In function 'mtk_ecc_encode':
-> > > drivers/mtd/nand/mtk_ecc.c:402:15: error: 'val' may be used uninitialized in this function [-Werror=maybe-uninitialized]
-> > > 
-> > > The function for some reason contains a double byte swap on big-endian
-> > > builds to get the OOB data into the correct order again, and is written
-> > > in a slightly confusing way.
-> > > 
-> > > Using a simple memcpy32_fromio() to read the data simplifies it a lot
-> > > so it becomes more readable and produces no warning. However, the
-> > > output might not have 32-bit alignment, so we have to use another
-> > > memcpy to avoid taking alignment faults or writing beyond the end
-> > > of the array.
-> > > 
-> > > Signed-off-by: Arnd Bergmann <arnd@arndb.de>  
-> > 
-> > Jorge, RogerCC, can I have an Acked-by and/or Tested-by for this patch?  
-> Tested, this patch is OK,
-> Tested-by: RogerCC Lin <rogercc.lin@mediatek.com>
+Additionally add optional properties of pinctrl for host only mode
 
-Acked-by: Boris Brezillon <boris.brezillon@free-electrons.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ .../devicetree/bindings/usb/mt8173-xhci.txt        |   54 +++++++++++++++++++-
+ 1 file changed, 52 insertions(+), 2 deletions(-)
 
-Brian, can you take this patch for the next -rc?
+diff --git a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+index b3a7ffa..2a930bd 100644
+--- a/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
++++ b/Documentation/devicetree/bindings/usb/mt8173-xhci.txt
+@@ -2,10 +2,18 @@ MT8173 xHCI
+ 
+ The device node for Mediatek SOC USB3.0 host controller
+ 
++There are two scenarios: the first one only supports xHCI driver;
++the second one supports dual-role mode, and the host is based on xHCI
++driver. Take account of backward compatibility, we divide bindings
++into two parts.
++
++1st: only supports xHCI driver
++------------------------------------------------------------------------
++
+ Required properties:
+  - compatible : should contain "mediatek,mt8173-xhci"
+- - reg : specifies physical base address and size of the registers,
+-	the first one for MAC, the second for IPPC
++ - reg : specifies physical base address and size of the registers
++ - reg-names: should be "mac" for xHCI MAC and "ippc" for IP port control
+  - interrupts : interrupt used by the controller
+  - power-domains : a phandle to USB power domain node to control USB's
+ 	mtcmos
+@@ -27,12 +35,16 @@ Optional properties:
+ 	control register, it depends on "mediatek,wakeup-src".
+  - vbus-supply : reference to the VBUS regulator;
+  - usb3-lpm-capable : supports USB3.0 LPM
++ - pinctrl-names : a pinctrl state named "default" must be defined
++ - pinctrl-0 : pin control group
++	See: Documentation/devicetree/bindings/pinctrl/pinctrl-binding.txt
+ 
+ Example:
+ usb30: usb@11270000 {
+ 	compatible = "mediatek,mt8173-xhci";
+ 	reg = <0 0x11270000 0 0x1000>,
+ 	      <0 0x11280700 0 0x0100>;
++	reg-names = "mac", "ippc";
+ 	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
+ 	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+ 	clocks = <&topckgen CLK_TOP_USB30_SEL>,
+@@ -49,3 +61,41 @@ usb30: usb@11270000 {
+ 	mediatek,syscon-wakeup = <&pericfg>;
+ 	mediatek,wakeup-src = <1>;
+ };
++
++2nd: dual-role mode with xHCI driver
++------------------------------------------------------------------------
++
++In the case, xhci is added as subnode to mtu3. An example and the DT binding
++details of mtu3 can be found in:
++Documentation/devicetree/bindings/usb/mtu3.txt
++
++Required properties:
++ - compatible : should contain "mediatek,mt8173-xhci"
++ - reg : specifies physical base address and size of the registers
++ - reg-names: should be "mac" for xHCI MAC
++ - interrupts : interrupt used by the host controller
++ - power-domains : a phandle to USB power domain node to control USB's
++	mtcmos
++ - vusb33-supply : regulator of USB avdd3.3v
++
++ - clocks : a list of phandle + clock-specifier pairs, one for each
++	entry in clock-names
++ - clock-names : must be
++	"sys_ck": for clock of xHCI MAC
++
++Optional properties:
++ - vbus-supply : reference to the VBUS regulator;
++ - usb3-lpm-capable : supports USB3.0 LPM
++
++Example:
++usb30: usb@11270000 {
++	compatible = "mediatek,mt8173-xhci";
++	reg = <0 0x11270000 0 0x1000>;
++	reg-names = "mac";
++	interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_LOW>;
++	power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
++	clocks = <&topckgen CLK_TOP_USB30_SEL>;
++	clock-names = "sys_ck";
++	vusb33-supply = <&mt6397_vusb_reg>;
++	usb3-lpm-capable;
++};
+-- 
+1.7.9.5
 
-> 
-> >   
-> > > ---
-> > > v2: move temporary buffer into struct mtk_ecc instead of having it
-> > >     on the stack, as suggested by Boris Brezillon
-> > > ---
-> > >  drivers/mtd/nand/mtk_ecc.c | 19 +++++++++----------
-> > >  1 file changed, 9 insertions(+), 10 deletions(-)
-> > > 
-> > > diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-> > > index d54f666..dbf2562 100644
-> > > --- a/drivers/mtd/nand/mtk_ecc.c
-> > > +++ b/drivers/mtd/nand/mtk_ecc.c
-> > > @@ -86,6 +86,8 @@ struct mtk_ecc {
-> > >  	struct completion done;
-> > >  	struct mutex lock;
-> > >  	u32 sectors;
-> > > +
-> > > +	u8 eccdata[112];
-> > >  };
-> > >  
-> > >  static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
-> > > @@ -366,9 +368,8 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
-> > >  		   u8 *data, u32 bytes)
-> > >  {
-> > >  	dma_addr_t addr;
-> > > -	u8 *p;
-> > > -	u32 len, i, val;
-> > > -	int ret = 0;
-> > > +	u32 len;
-> > > +	int ret;
-> > >  
-> > >  	addr = dma_map_single(ecc->dev, data, bytes, DMA_TO_DEVICE);
-> > >  	ret = dma_mapping_error(ecc->dev, addr);
-> > > @@ -393,14 +394,12 @@ int mtk_ecc_encode(struct mtk_ecc *ecc, struct mtk_ecc_config *config,
-> > >  
-> > >  	/* Program ECC bytes to OOB: per sector oob = FDM + ECC + SPARE */
-> > >  	len = (config->strength * ECC_PARITY_BITS + 7) >> 3;
-> > > -	p = data + bytes;
-> > >  
-> > > -	/* write the parity bytes generated by the ECC back to the OOB region */
-> > > -	for (i = 0; i < len; i++) {
-> > > -		if ((i % 4) == 0)
-> > > -			val = readl(ecc->regs + ECC_ENCPAR(i / 4));
-> > > -		p[i] = (val >> ((i % 4) * 8)) & 0xff;
-> > > -	}
-> > > +	/* write the parity bytes generated by the ECC back to temp buffer */
-> > > +	__ioread32_copy(ecc->eccdata, ecc->regs + ECC_ENCPAR(0), round_up(len, 4));
-> > > +
-> > > +	/* copy into possibly unaligned OOB region with actual length */
-> > > +	memcpy(data + bytes, ecc->eccdata, len);
-> > >  timeout:
-> > >  
-> > >  	dma_unmap_single(ecc->dev, addr, bytes, DMA_TO_DEVICE);  
-> >   
-> 
-> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
