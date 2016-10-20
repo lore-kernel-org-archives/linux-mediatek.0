@@ -1,440 +1,370 @@
-From: Russell King - ARM Linux <linux@armlinux.org.uk>
+From: Sean Paul <seanpaul@chromium.org>
 Subject: Re: [PATCH] drm: convert DT component matching to
  component_match_add_release()
-Date: Thu, 20 Oct 2016 22:50:22 +0100
-Message-ID: <20161020215022.GZ1041@n2100.armlinux.org.uk>
+Date: Thu, 20 Oct 2016 19:15:56 -0400
+Message-ID: <CAOw6vbJ64JOugR2b3R87pFRDGDVs9HM3uZJM2z1-jHyhPf6WOA@mail.gmail.com>
 References: <E1bwo6l-0005Io-Q1@rmk-PC.armlinux.org.uk>
  <CAOw6vbK=z3wJKTh8jZoU2Gj1PtTLLH_sAUUShbsxL=Qi7d+FLw@mail.gmail.com>
+ <20161020215022.GZ1041@n2100.armlinux.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAOw6vbK=z3wJKTh8jZoU2Gj1PtTLLH_sAUUShbsxL=Qi7d+FLw@mail.gmail.com>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Sean Paul <seanpaul@chromium.org>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Heiko Stuebner <heiko@sntech.de>, Liviu Dudau <liviu.dudau@arm.com>, Benjamin Gaignard <benjamin.gaignard@linaro.org>, Chen-Yu Tsai <wens@csie.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Xinwei Kong <kong.kongxinwei@hisilicon.com>, Tomi Valkeinen <tomi.valkeinen@ti.com>, Mali DP Maintainers <malidp@foss.arm.com>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, CK Hu <ck.hu@mediatek.com>, Chen Feng <puck.chen@hisilicon.com>, Jyri Sarha <jsarha@ti.com>, Christian Gmeiner <christian.gmeiner@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>L
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20161020215022.GZ1041@n2100.armlinux.org.uk>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Russell King - ARM Linux <linux@armlinux.org.uk>
+Cc: Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>, Chen-Yu Tsai <wens@csie.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Mali DP Maintainers <malidp@foss.arm.com>, Chen Feng <puck.chen@hisilicon.com>, linux-arm-msm <linux-arm-msm@vger.kernel.org>, Jyri Sarha <jsarha@ti.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, Maxime Ripard <maxime.ripard@free-electrons.com>, freedreno@lists.freedesktop.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Oct 20, 2016 at 04:39:04PM -0400, Sean Paul wrote:
-> On Wed, Oct 19, 2016 at 6:28 AM, Russell King
-> <rmk+kernel@armlinux.org.uk> wrote:
-> > Convert DT component matching to use component_match_add_release().
-> >
-> > Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> > ---
-> > Can we please get this patch from May merged into the drm-misc or
-> > whatever trees so that we don't end up with conflicts?  I've no idea
-> > who looks after drm-misc, as they have _still_ failed to add
-> > themselves to MAINTAINERS.
-> 
-> I think Daniel explained pretty clearly why this wasn't happening in
-> the previous thread.
-> 
-> Next time you send a v2, can you please mark it as such and include a
-> "Changes in v2" section?
-
-Why - nothing's changed other than a rebase onto 4.9-rc1.  This isn't
-a "I've changed it in XYZ way, so here's a new copy".  It's being
-posted in the hope that someone will finally either comment on it or
-merge the damn thing, rather than ignoring it was done when it was
-last posted.
-
-> >  drivers/gpu/drm/arm/hdlcd_drv.c                 |  3 ++-
-> >  drivers/gpu/drm/arm/malidp_drv.c                |  4 +++-
-> >  drivers/gpu/drm/armada/armada_drv.c             |  2 +-
-> >  drivers/gpu/drm/drm_of.c                        | 28 +++++++++++++++++++++++--
-> >  drivers/gpu/drm/etnaviv/etnaviv_drv.c           |  5 +++--
-> >  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  7 ++++---
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  4 +++-
-> >  drivers/gpu/drm/msm/msm_drv.c                   | 12 ++++++-----
-> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ++++--
-> >  drivers/gpu/drm/sti/sti_drv.c                   |  5 +++--
-> >  drivers/gpu/drm/sun4i/sun4i_drv.c               |  3 ++-
-> >  drivers/gpu/drm/tilcdc/tilcdc_external.c        |  4 +++-
-> >  include/drm/drm_of.h                            | 12 +++++++++++
-> >  13 files changed, 73 insertions(+), 22 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> > index fb6a418ce6be..6477d1a65266 100644
-> > --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> > +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> > @@ -453,7 +453,8 @@ static int hdlcd_probe(struct platform_device *pdev)
-> >                 return -EAGAIN;
-> >         }
-> >
-> > -       component_match_add(&pdev->dev, &match, compare_dev, port);
-> > +       drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
-> > +       of_node_put(port);
-> 
-> There's no mention in your commit message about fixing these node leaks.
-
-Isn't that kind-of the whole point of this patch?
-
-> >
-> >         return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
-> >                                                match);
-> > diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-> > index 9280358b8f15..9f4739452a25 100644
-> > --- a/drivers/gpu/drm/arm/malidp_drv.c
-> > +++ b/drivers/gpu/drm/arm/malidp_drv.c
-> > @@ -493,7 +493,9 @@ static int malidp_platform_probe(struct platform_device *pdev)
-> >                 return -EAGAIN;
-> >         }
-> >
-> > -       component_match_add(&pdev->dev, &match, malidp_compare_dev, port);
-> > +       drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
-> > +                                  port);
-> > +       of_node_put(port);
-> >         return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
-> >                                                match);
-> >  }
-> > diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-> > index 1e0e68f608e4..94e46da9a758 100644
-> > --- a/drivers/gpu/drm/armada/armada_drv.c
-> > +++ b/drivers/gpu/drm/armada/armada_drv.c
-> > @@ -254,7 +254,7 @@ static void armada_add_endpoints(struct device *dev,
-> >                         continue;
-> >                 }
-> >
-> > -               component_match_add(dev, match, compare_of, remote);
-> > +               drm_of_component_match_add(dev, match, compare_of, remote);
-> >                 of_node_put(remote);
-> >         }
-> >  }
-> > diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> > index bc98bb94264d..47848ed8ca48 100644
-> > --- a/drivers/gpu/drm/drm_of.c
-> > +++ b/drivers/gpu/drm/drm_of.c
-> > @@ -6,6 +6,11 @@
-> >  #include <drm/drm_crtc.h>
-> >  #include <drm/drm_of.h>
-> >
-> > +static void drm_release_of(struct device *dev, void *data)
-> > +{
-> > +       of_node_put(data);
-> > +}
-> > +
-> >  /**
-> >   * drm_crtc_port_mask - find the mask of a registered CRTC by port OF node
-> >   * @dev: DRM device
-> > @@ -64,6 +69,24 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
-> >  EXPORT_SYMBOL(drm_of_find_possible_crtcs);
-> >
-> >  /**
-> > + * drm_of_component_match_add - Add a component helper OF node match rule
-> > + * @master: master device
-> > + * @matchptr: component match pointer
-> > + * @compare: compare function used for matching component
-> > + * @node: of_node
-> > + */
-> > +void drm_of_component_match_add(struct device *master,
-> > +                               struct component_match **matchptr,
-> > +                               int (*compare)(struct device *, void *),
-> > +                               struct device_node *node)
-> > +{
-> > +       of_node_get(node);
-> > +       component_match_add_release(master, matchptr, drm_release_of,
-> > +                                   compare, node);
-> > +}
-> > +EXPORT_SYMBOL_GPL(drm_of_component_match_add);
-> > +
-> > +/**
-> >   * drm_of_component_probe - Generic probe function for a component based master
-> >   * @dev: master device containing the OF node
-> >   * @compare_of: compare function used for matching components
-> > @@ -101,7 +124,7 @@ int drm_of_component_probe(struct device *dev,
-> >                         continue;
-> >                 }
-> >
-> > -               component_match_add(dev, &match, compare_of, port);
-> > +               drm_of_component_match_add(dev, &match, compare_of, port);
-> >                 of_node_put(port);
-> >         }
-> >
-> > @@ -140,7 +163,8 @@ int drm_of_component_probe(struct device *dev,
-> >                                 continue;
-> >                         }
-> >
-> > -                       component_match_add(dev, &match, compare_of, remote);
-> > +                       drm_of_component_match_add(dev, &match, compare_of,
-> > +                                                  remote);
-> >                         of_node_put(remote);
-> >                 }
-> >                 of_node_put(port);
-> > diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> > index aa687669e22b..0dee6acbd880 100644
-> > --- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> > +++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> > @@ -16,6 +16,7 @@
-> >
-> >  #include <linux/component.h>
-> >  #include <linux/of_platform.h>
-> > +#include <drm/drm_of.h>
-> >
-> >  #include "etnaviv_drv.h"
-> >  #include "etnaviv_gpu.h"
-> > @@ -629,8 +630,8 @@ static int etnaviv_pdev_probe(struct platform_device *pdev)
-> >                         if (!core_node)
-> >                                 break;
-> >
-> > -                       component_match_add(&pdev->dev, &match, compare_of,
-> > -                                           core_node);
-> > +                       drm_of_component_match_add(&pdev->dev, &match,
-> > +                                                  compare_of, core_node);
-> >                         of_node_put(core_node);
-> >                 }
-> >         } else if (dev->platform_data) {
-> > diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> > index 90377a609c98..e88fde18c946 100644
-> > --- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> > +++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> > @@ -24,6 +24,7 @@
-> >  #include <drm/drm_fb_cma_helper.h>
-> >  #include <drm/drm_atomic_helper.h>
-> >  #include <drm/drm_crtc_helper.h>
-> > +#include <drm/drm_of.h>
-> >
-> >  #include "kirin_drm_drv.h"
-> >
-> > @@ -260,14 +261,13 @@ static struct device_node *kirin_get_remote_node(struct device_node *np)
-> >                 DRM_ERROR("no valid endpoint node\n");
-> >                 return ERR_PTR(-ENODEV);
-> >         }
-> > -       of_node_put(endpoint);
-> >
-> >         remote = of_graph_get_remote_port_parent(endpoint);
-> > +       of_node_put(endpoint);
-> 
-> Another bug that's being fixed without mention in the commit.
-> 
-> >         if (!remote) {
-> >                 DRM_ERROR("no valid remote node\n");
-> >                 return ERR_PTR(-ENODEV);
-> >         }
-> > -       of_node_put(remote);
-> >
-> >         if (!of_device_is_available(remote)) {
-> >                 DRM_ERROR("not available for remote node\n");
-> > @@ -294,7 +294,8 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
-> >         if (IS_ERR(remote))
-> >                 return PTR_ERR(remote);
-> >
-> > -       component_match_add(dev, &match, compare_of, remote);
-> > +       drm_of_component_match_add(dev, &match, compare_of, remote);
-> > +       of_node_put(remote);
-> >
-> >         return component_master_add_with_match(dev, &kirin_drm_ops, match);
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index cf83f6507ec8..9c5430fb82a2 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -18,6 +18,7 @@
-> >  #include <drm/drm_crtc_helper.h>
-> >  #include <drm/drm_gem.h>
-> >  #include <drm/drm_gem_cma_helper.h>
-> > +#include <drm/drm_of.h>
-> >  #include <linux/component.h>
-> >  #include <linux/iommu.h>
-> >  #include <linux/of_address.h>
-> > @@ -415,7 +416,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
-> >                     comp_type == MTK_DPI) {
-> >                         dev_info(dev, "Adding component match for %s\n",
-> >                                  node->full_name);
-> > -                       component_match_add(dev, &match, compare_of, node);
-> > +                       drm_of_component_match_add(dev, &match, compare_of,
-> > +                                                  node);
-> >                 } else {
-> >                         struct mtk_ddp_comp *comp;
-> >
-> > diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-> > index fb5c0b0a7594..84d38eaea585 100644
-> > --- a/drivers/gpu/drm/msm/msm_drv.c
-> > +++ b/drivers/gpu/drm/msm/msm_drv.c
-> > @@ -15,6 +15,8 @@
-> >   * this program.  If not, see <http://www.gnu.org/licenses/>.
-> >   */
-> >
-> > +#include <drm/drm_of.h>
-> > +
-> >  #include "msm_drv.h"
-> >  #include "msm_debugfs.h"
-> >  #include "msm_fence.h"
-> > @@ -919,8 +921,8 @@ static int add_components_mdp(struct device *mdp_dev,
-> >                         continue;
-> >                 }
-> >
-> > -               component_match_add(master_dev, matchptr, compare_of, intf);
-> > -
-> > +               drm_of_component_match_add(master_dev, matchptr, compare_of,
-> > +                                          intf);
-> >                 of_node_put(intf);
-> >                 of_node_put(ep_node);
-> >         }
-> > @@ -962,8 +964,8 @@ static int add_display_components(struct device *dev,
-> >                 put_device(mdp_dev);
-> >
-> >                 /* add the MDP component itself */
-> > -               component_match_add(dev, matchptr, compare_of,
-> > -                                   mdp_dev->of_node);
-> > +               drm_of_component_match_add(dev, matchptr, compare_of,
-> > +                                          mdp_dev->of_node);
-> >         } else {
-> >                 /* MDP4 */
-> >                 mdp_dev = dev;
-> > @@ -996,7 +998,7 @@ static int add_gpu_components(struct device *dev,
-> >         if (!np)
-> >                 return 0;
-> >
-> > -       component_match_add(dev, matchptr, compare_of, np);
-> > +       drm_of_component_match_add(dev, matchptr, compare_of, np);
-> >
-> >         of_node_put(np);
-> >
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> > index 8c8cbe837e61..6fe161192bb4 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> > @@ -20,6 +20,7 @@
-> >  #include <drm/drm_crtc_helper.h>
-> >  #include <drm/drm_fb_helper.h>
-> >  #include <drm/drm_gem_cma_helper.h>
-> > +#include <drm/drm_of.h>
-> >  #include <linux/dma-mapping.h>
-> >  #include <linux/pm_runtime.h>
-> >  #include <linux/module.h>
-> > @@ -388,7 +389,7 @@ static void rockchip_add_endpoints(struct device *dev,
-> >                         continue;
-> >                 }
-> >
-> > -               component_match_add(dev, match, compare_of, remote);
-> > +               drm_of_component_match_add(dev, match, compare_of, remote);
-> >                 of_node_put(remote);
-> >         }
-> >  }
-> > @@ -437,7 +438,8 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
-> >                 }
-> >
-> >                 of_node_put(iommu);
-> > -               component_match_add(dev, &match, compare_of, port->parent);
-> > +               drm_of_component_match_add(dev, &match, compare_of,
-> > +                                          port->parent);
-> >                 of_node_put(port);
-> >         }
-> >
-> > diff --git a/drivers/gpu/drm/sti/sti_drv.c b/drivers/gpu/drm/sti/sti_drv.c
-> > index 2784919a7366..5e819876e642 100644
-> > --- a/drivers/gpu/drm/sti/sti_drv.c
-> > +++ b/drivers/gpu/drm/sti/sti_drv.c
-> > @@ -17,6 +17,7 @@
-> >  #include <drm/drm_crtc_helper.h>
-> >  #include <drm/drm_gem_cma_helper.h>
-> >  #include <drm/drm_fb_cma_helper.h>
-> > +#include <drm/drm_of.h>
-> >
-> >  #include "sti_crtc.h"
-> >  #include "sti_drv.h"
-> > @@ -423,8 +424,8 @@ static int sti_platform_probe(struct platform_device *pdev)
-> >         child_np = of_get_next_available_child(node, NULL);
-> >
-> >         while (child_np) {
-> > -               component_match_add(dev, &match, compare_of, child_np);
-> > -               of_node_put(child_np);
-> > +               drm_of_component_match_add(dev, &match, compare_of,
-> > +                                          child_np);
-> >                 child_np = of_get_next_available_child(node, child_np);
-> >         }
-> >
-> > diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> > index 0da9862ad8ed..b3c4ad605e81 100644
-> > --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-> > +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> > @@ -18,6 +18,7 @@
-> >  #include <drm/drm_fb_cma_helper.h>
-> >  #include <drm/drm_gem_cma_helper.h>
-> >  #include <drm/drm_fb_helper.h>
-> > +#include <drm/drm_of.h>
-> >
-> >  #include "sun4i_crtc.h"
-> >  #include "sun4i_drv.h"
-> > @@ -239,7 +240,7 @@ static int sun4i_drv_add_endpoints(struct device *dev,
-> >                 /* Add current component */
-> >                 DRM_DEBUG_DRIVER("Adding component %s\n",
-> >                                  of_node_full_name(node));
-> > -               component_match_add(dev, match, compare_of, node);
-> > +               drm_of_component_match_add(dev, match, compare_of, node);
-> >                 count++;
-> >         }
-> >
-> > diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> > index 68e895021005..06a4c584f3cb 100644
-> > --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> > +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> > @@ -10,6 +10,7 @@
-> >
-> >  #include <linux/component.h>
-> >  #include <linux/of_graph.h>
-> > +#include <drm/drm_of.h>
-> >
-> >  #include "tilcdc_drv.h"
-> >  #include "tilcdc_external.h"
-> > @@ -160,7 +161,8 @@ int tilcdc_get_external_components(struct device *dev,
-> >
-> >                 dev_dbg(dev, "Subdevice node '%s' found\n", node->name);
-> >                 if (match)
-> > -                       component_match_add(dev, match, dev_match_of, node);
-> > +                       drm_of_component_match_add(dev, match, dev_match_of,
-> > +                                                  node);
-> >                 of_node_put(node);
-> >                 count++;
-> >         }
-> > diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-> > index 3fd87b386ed7..d6b4c5587bbe 100644
-> > --- a/include/drm/drm_of.h
-> > +++ b/include/drm/drm_of.h
-> > @@ -4,6 +4,7 @@
-> >  #include <linux/of_graph.h>
-> >
-> >  struct component_master_ops;
-> > +struct component_match;
-> >  struct device;
-> >  struct drm_device;
-> >  struct drm_encoder;
-> > @@ -12,6 +13,10 @@ struct device_node;
-> >  #ifdef CONFIG_OF
-> >  extern uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
-> >                                            struct device_node *port);
-> > +extern void drm_of_component_match_add(struct device *master,
-> > +                                      struct component_match **matchptr,
-> > +                                      int (*compare)(struct device *, void *),
-> > +                                      struct device_node *node);
-> >  extern int drm_of_component_probe(struct device *dev,
-> >                                   int (*compare_of)(struct device *, void *),
-> >                                   const struct component_master_ops *m_ops);
-> > @@ -25,6 +30,13 @@ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
-> >         return 0;
-> >  }
-> >
-> > +static void drm_of_component_match_add(struct device *master,
-> > +                                      struct component_match **matchptr,
-> > +                                      int (*compare)(struct device *, void *),
-> > +                                      struct device_node *node)
-> > +{
-> > +}
-> > +
-> >  static inline int
-> >  drm_of_component_probe(struct device *dev,
-> >                        int (*compare_of)(struct device *, void *),
-> > --
-> > 2.1.0
-> >
-> >
-> > _______________________________________________
-> > linux-arm-kernel mailing list
-> > linux-arm-kernel@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
--- 
-RMK's Patch system: http://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line: currently at 9.6Mbps down 400kbps up
-according to speedtest.net.
+T24gVGh1LCBPY3QgMjAsIDIwMTYgYXQgNTo1MCBQTSwgUnVzc2VsbCBLaW5nIC0gQVJNIExpbnV4
+CjxsaW51eEBhcm1saW51eC5vcmcudWs+IHdyb3RlOgo+IE9uIFRodSwgT2N0IDIwLCAyMDE2IGF0
+IDA0OjM5OjA0UE0gLTA0MDAsIFNlYW4gUGF1bCB3cm90ZToKPj4gT24gV2VkLCBPY3QgMTksIDIw
+MTYgYXQgNjoyOCBBTSwgUnVzc2VsbCBLaW5nCj4+IDxybWsra2VybmVsQGFybWxpbnV4Lm9yZy51
+az4gd3JvdGU6Cj4+ID4gQ29udmVydCBEVCBjb21wb25lbnQgbWF0Y2hpbmcgdG8gdXNlIGNvbXBv
+bmVudF9tYXRjaF9hZGRfcmVsZWFzZSgpLgo+PiA+Cj4+ID4gU2lnbmVkLW9mZi1ieTogUnVzc2Vs
+bCBLaW5nIDxybWsra2VybmVsQGFybWxpbnV4Lm9yZy51az4KPj4gPiAtLS0KPj4gPiBDYW4gd2Ug
+cGxlYXNlIGdldCB0aGlzIHBhdGNoIGZyb20gTWF5IG1lcmdlZCBpbnRvIHRoZSBkcm0tbWlzYyBv
+cgo+PiA+IHdoYXRldmVyIHRyZWVzIHNvIHRoYXQgd2UgZG9uJ3QgZW5kIHVwIHdpdGggY29uZmxp
+Y3RzPyAgSSd2ZSBubyBpZGVhCj4+ID4gd2hvIGxvb2tzIGFmdGVyIGRybS1taXNjLCBhcyB0aGV5
+IGhhdmUgX3N0aWxsXyBmYWlsZWQgdG8gYWRkCj4+ID4gdGhlbXNlbHZlcyB0byBNQUlOVEFJTkVS
+Uy4KPj4KPj4gSSB0aGluayBEYW5pZWwgZXhwbGFpbmVkIHByZXR0eSBjbGVhcmx5IHdoeSB0aGlz
+IHdhc24ndCBoYXBwZW5pbmcgaW4KPj4gdGhlIHByZXZpb3VzIHRocmVhZC4KPj4KPj4gTmV4dCB0
+aW1lIHlvdSBzZW5kIGEgdjIsIGNhbiB5b3UgcGxlYXNlIG1hcmsgaXQgYXMgc3VjaCBhbmQgaW5j
+bHVkZSBhCj4+ICJDaGFuZ2VzIGluIHYyIiBzZWN0aW9uPwo+Cj4gV2h5IC0gbm90aGluZydzIGNo
+YW5nZWQgb3RoZXIgdGhhbiBhIHJlYmFzZSBvbnRvIDQuOS1yYzEuICBUaGlzIGlzbid0Cj4gYSAi
+SSd2ZSBjaGFuZ2VkIGl0IGluIFhZWiB3YXksIHNvIGhlcmUncyBhIG5ldyBjb3B5Ii4KCgpDaGFu
+Z2VzIGluIHYyOiBOb25lCgpJcyBzdGlsbCB1c2VmdWwgc2luY2U6CmEpIHRoZSBkaWZmc3RhdCBp
+cyBkaWZmZXJlbnQgZnJvbSB2MSwgd2hpY2ggbmVjZXNzaXRhdGVzIG1lIGdvaW5nCnRocm91Z2gg
+Ym90aCB2ZXJzaW9ucyB0byBzZWUgd2hhdCdzIGNoYW5nZWQgZnJvbSB0aGUgcHJldmlvdXMgcmV2
+aWV3cwoob25seSB0byBmaW5kIG91dCBteXNlbGYgdGhhdCBpdCdzIGJlZW4gcmViYXNlZCBhbmQg
+YSBmdW5jdGlvbiBoYXMKY2hhbmdlZCBuYW1lcykKYikgaW4gSnVuZSwgeW91IHNhaWQgeW91IHdl
+cmUgZ29pbmcgdG8gcm9sbCBhIG5ldyB2ZXJzaW9uIHdpdGggdGhlCmNvbW1vbiBPRiBiaXRzIGV4
+dHJhY3RlZC4gaXQncyBuaWNlIHRvIGtub3cgYXQgdGhlIG91dHNldCB0aGF0IHRoaXMKaGFzL2hh
+c24ndCBoYXBwZW5lZAoKQWxzbywgcHJlZmFjaW5nIHRoZSBzdWJqZWN0IHdpdGggW1BBVENIIHYy
+XSBvciBbUEFUQ0ggUkVTRU5EXSBsZXRzIG1lCmtub3cgdGhlcmUgaXMgcHJpb3IgaGlzdG9yeSB3
+aXRoIHRoZSBjaGFuZ2UuIFJlYWRpbmcgdGhlIHByZXZpb3VzCnZlcnNpb24gaXMgaGVscGZ1bCB0
+byBzZWUgd2hhdCByZXZpZXdlcidzIGNvbmNlcm5zIHdlcmUsIGFuZCB3aGV0aGVyCnRoZXkndmUg
+YmVlbiBhZGRyZXNzZWQuCgoKPiBJdCdzIGJlaW5nCj4gcG9zdGVkIGluIHRoZSBob3BlIHRoYXQg
+c29tZW9uZSB3aWxsIGZpbmFsbHkgZWl0aGVyIGNvbW1lbnQgb24gaXQgb3IKPiBtZXJnZSB0aGUg
+ZGFtbiB0aGluZywgcmF0aGVyIHRoYW4gaWdub3JpbmcgaXQgd2FzIGRvbmUgd2hlbiBpdCB3YXMK
+PiBsYXN0IHBvc3RlZC4KPgo+PiA+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL2hkbGNkX2Rydi5jICAg
+ICAgICAgICAgICAgICB8ICAzICsrLQo+PiA+ICBkcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9k
+cnYuYyAgICAgICAgICAgICAgICB8ICA0ICsrKy0KPj4gPiAgZHJpdmVycy9ncHUvZHJtL2FybWFk
+YS9hcm1hZGFfZHJ2LmMgICAgICAgICAgICAgfCAgMiArLQo+PiA+ICBkcml2ZXJzL2dwdS9kcm0v
+ZHJtX29mLmMgICAgICAgICAgICAgICAgICAgICAgICB8IDI4ICsrKysrKysrKysrKysrKysrKysr
+KysrLS0KPj4gPiAgZHJpdmVycy9ncHUvZHJtL2V0bmF2aXYvZXRuYXZpdl9kcnYuYyAgICAgICAg
+ICAgfCAgNSArKystLQo+PiA+ICBkcml2ZXJzL2dwdS9kcm0vaGlzaWxpY29uL2tpcmluL2tpcmlu
+X2RybV9kcnYuYyB8ICA3ICsrKystLS0KPj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZHJ2LmMgICAgICAgICAgfCAgNCArKystCj4+ID4gIGRyaXZlcnMvZ3B1L2RybS9tc20v
+bXNtX2Rydi5jICAgICAgICAgICAgICAgICAgIHwgMTIgKysrKysrLS0tLS0KPj4gPiAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYyAgICAgfCAgNiArKysrLS0KPj4g
+PiAgZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHJ2LmMgICAgICAgICAgICAgICAgICAgfCAgNSAr
+KystLQo+PiA+ICBkcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfZHJ2LmMgICAgICAgICAgICAg
+ICB8ICAzICsrLQo+PiA+ICBkcml2ZXJzL2dwdS9kcm0vdGlsY2RjL3RpbGNkY19leHRlcm5hbC5j
+ICAgICAgICB8ICA0ICsrKy0KPj4gPiAgaW5jbHVkZS9kcm0vZHJtX29mLmggICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgfCAxMiArKysrKysrKysrKwo+PiA+ICAxMyBmaWxlcyBjaGFuZ2VkLCA3
+MyBpbnNlcnRpb25zKCspLCAyMiBkZWxldGlvbnMoLSkKPj4gPgo+PiA+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vYXJtL2hkbGNkX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL2FybS9oZGxj
+ZF9kcnYuYwo+PiA+IGluZGV4IGZiNmE0MThjZTZiZS4uNjQ3N2QxYTY1MjY2IDEwMDY0NAo+PiA+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vaGRsY2RfZHJ2LmMKPj4gPiArKysgYi9kcml2ZXJz
+L2dwdS9kcm0vYXJtL2hkbGNkX2Rydi5jCj4+ID4gQEAgLTQ1Myw3ICs0NTMsOCBAQCBzdGF0aWMg
+aW50IGhkbGNkX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ID4gICAgICAg
+ICAgICAgICAgIHJldHVybiAtRUFHQUlOOwo+PiA+ICAgICAgICAgfQo+PiA+Cj4+ID4gLSAgICAg
+ICBjb21wb25lbnRfbWF0Y2hfYWRkKCZwZGV2LT5kZXYsICZtYXRjaCwgY29tcGFyZV9kZXYsIHBv
+cnQpOwo+PiA+ICsgICAgICAgZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoJnBkZXYtPmRldiwg
+Jm1hdGNoLCBjb21wYXJlX2RldiwgcG9ydCk7Cj4+ID4gKyAgICAgICBvZl9ub2RlX3B1dChwb3J0
+KTsKPj4KPj4gVGhlcmUncyBubyBtZW50aW9uIGluIHlvdXIgY29tbWl0IG1lc3NhZ2UgYWJvdXQg
+Zml4aW5nIHRoZXNlIG5vZGUgbGVha3MuCj4KPiBJc24ndCB0aGF0IGtpbmQtb2YgdGhlIHdob2xl
+IHBvaW50IG9mIHRoaXMgcGF0Y2g/Cj4KCk5vdCBhY2NvcmRpbmcgdG8gdGhlIGNvbW1pdCBtc2cs
+IGl0IGlzbid0LgoKWW91IGNvdWxkIGhhdmUganVzdCBkb25lIHRoZSBvZl9ub2RlX3B1dCBhZGRz
+L3JlbG9jYXRpb25zIHdpdGhvdXQKd3JhcHBpbmcgY29tcG9uZW50X21hdGNoX2FkZF9yZWxlYXNl
+LgoKU2VhbgoKPj4gPgo+PiA+ICAgICAgICAgcmV0dXJuIGNvbXBvbmVudF9tYXN0ZXJfYWRkX3dp
+dGhfbWF0Y2goJnBkZXYtPmRldiwgJmhkbGNkX21hc3Rlcl9vcHMsCj4+ID4gICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXRjaCk7Cj4+ID4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL2Fy
+bS9tYWxpZHBfZHJ2LmMKPj4gPiBpbmRleCA5MjgwMzU4YjhmMTUuLjlmNDczOTQ1MmEyNSAxMDA2
+NDQKPj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYuYwo+PiA+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4+ID4gQEAgLTQ5Myw3ICs0OTMsOSBA
+QCBzdGF0aWMgaW50IG1hbGlkcF9wbGF0Zm9ybV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNl
+ICpwZGV2KQo+PiA+ICAgICAgICAgICAgICAgICByZXR1cm4gLUVBR0FJTjsKPj4gPiAgICAgICAg
+IH0KPj4gPgo+PiA+IC0gICAgICAgY29tcG9uZW50X21hdGNoX2FkZCgmcGRldi0+ZGV2LCAmbWF0
+Y2gsIG1hbGlkcF9jb21wYXJlX2RldiwgcG9ydCk7Cj4+ID4gKyAgICAgICBkcm1fb2ZfY29tcG9u
+ZW50X21hdGNoX2FkZCgmcGRldi0+ZGV2LCAmbWF0Y2gsIG1hbGlkcF9jb21wYXJlX2RldiwKPj4g
+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBvcnQpOwo+PiA+ICsgICAgICAg
+b2Zfbm9kZV9wdXQocG9ydCk7Cj4+ID4gICAgICAgICByZXR1cm4gY29tcG9uZW50X21hc3Rlcl9h
+ZGRfd2l0aF9tYXRjaCgmcGRldi0+ZGV2LCAmbWFsaWRwX21hc3Rlcl9vcHMsCj4+ID4gICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXRjaCk7Cj4+ID4gIH0K
+Pj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2LmMgYi9k
+cml2ZXJzL2dwdS9kcm0vYXJtYWRhL2FybWFkYV9kcnYuYwo+PiA+IGluZGV4IDFlMGU2OGY2MDhl
+NC4uOTRlNDZkYTlhNzU4IDEwMDY0NAo+PiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm1hZGEv
+YXJtYWRhX2Rydi5jCj4+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2FybWFkYS9hcm1hZGFfZHJ2
+LmMKPj4gPiBAQCAtMjU0LDcgKzI1NCw3IEBAIHN0YXRpYyB2b2lkIGFybWFkYV9hZGRfZW5kcG9p
+bnRzKHN0cnVjdCBkZXZpY2UgKmRldiwKPj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBjb250
+aW51ZTsKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+Cj4+ID4gLSAgICAgICAgICAgICAgIGNv
+bXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29tcGFyZV9vZiwgcmVtb3RlKTsKPj4gPiAr
+ICAgICAgICAgICAgICAgZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29t
+cGFyZV9vZiwgcmVtb3RlKTsKPj4gPiAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocmVtb3Rl
+KTsKPj4gPiAgICAgICAgIH0KPj4gPiAgfQo+PiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
+cm0vZHJtX29mLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPj4gPiBpbmRleCBiYzk4YmI5
+NDI2NGQuLjQ3ODQ4ZWQ4Y2E0OCAxMDA2NDQKPj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJt
+X29mLmMKPj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMKPj4gPiBAQCAtNiw2ICs2
+LDExIEBACj4+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2NydGMuaD4KPj4gPiAgI2luY2x1ZGUgPGRy
+bS9kcm1fb2YuaD4KPj4gPgo+PiA+ICtzdGF0aWMgdm9pZCBkcm1fcmVsZWFzZV9vZihzdHJ1Y3Qg
+ZGV2aWNlICpkZXYsIHZvaWQgKmRhdGEpCj4+ID4gK3sKPj4gPiArICAgICAgIG9mX25vZGVfcHV0
+KGRhdGEpOwo+PiA+ICt9Cj4+ID4gKwo+PiA+ICAvKioKPj4gPiAgICogZHJtX2NydGNfcG9ydF9t
+YXNrIC0gZmluZCB0aGUgbWFzayBvZiBhIHJlZ2lzdGVyZWQgQ1JUQyBieSBwb3J0IE9GIG5vZGUK
+Pj4gPiAgICogQGRldjogRFJNIGRldmljZQo+PiA+IEBAIC02NCw2ICs2OSwyNCBAQCB1aW50MzJf
+dCBkcm1fb2ZfZmluZF9wb3NzaWJsZV9jcnRjcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+PiA+
+ICBFWFBPUlRfU1lNQk9MKGRybV9vZl9maW5kX3Bvc3NpYmxlX2NydGNzKTsKPj4gPgo+PiA+ICAv
+KioKPj4gPiArICogZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQgLSBBZGQgYSBjb21wb25lbnQg
+aGVscGVyIE9GIG5vZGUgbWF0Y2ggcnVsZQo+PiA+ICsgKiBAbWFzdGVyOiBtYXN0ZXIgZGV2aWNl
+Cj4+ID4gKyAqIEBtYXRjaHB0cjogY29tcG9uZW50IG1hdGNoIHBvaW50ZXIKPj4gPiArICogQGNv
+bXBhcmU6IGNvbXBhcmUgZnVuY3Rpb24gdXNlZCBmb3IgbWF0Y2hpbmcgY29tcG9uZW50Cj4+ID4g
+KyAqIEBub2RlOiBvZl9ub2RlCj4+ID4gKyAqLwo+PiA+ICt2b2lkIGRybV9vZl9jb21wb25lbnRf
+bWF0Y2hfYWRkKHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKiptYXRjaHB0ciwKPj4gPiArICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGludCAoKmNvbXBhcmUpKHN0cnVjdCBkZXZpY2Ug
+Kiwgdm9pZCAqKSwKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBk
+ZXZpY2Vfbm9kZSAqbm9kZSkKPj4gPiArewo+PiA+ICsgICAgICAgb2Zfbm9kZV9nZXQobm9kZSk7
+Cj4+ID4gKyAgICAgICBjb21wb25lbnRfbWF0Y2hfYWRkX3JlbGVhc2UobWFzdGVyLCBtYXRjaHB0
+ciwgZHJtX3JlbGVhc2Vfb2YsCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgY29tcGFyZSwgbm9kZSk7Cj4+ID4gK30KPj4gPiArRVhQT1JUX1NZTUJPTF9HUEwoZHJtX29m
+X2NvbXBvbmVudF9tYXRjaF9hZGQpOwo+PiA+ICsKPj4gPiArLyoqCj4+ID4gICAqIGRybV9vZl9j
+b21wb25lbnRfcHJvYmUgLSBHZW5lcmljIHByb2JlIGZ1bmN0aW9uIGZvciBhIGNvbXBvbmVudCBi
+YXNlZCBtYXN0ZXIKPj4gPiAgICogQGRldjogbWFzdGVyIGRldmljZSBjb250YWluaW5nIHRoZSBP
+RiBub2RlCj4+ID4gICAqIEBjb21wYXJlX29mOiBjb21wYXJlIGZ1bmN0aW9uIHVzZWQgZm9yIG1h
+dGNoaW5nIGNvbXBvbmVudHMKPj4gPiBAQCAtMTAxLDcgKzEyNCw3IEBAIGludCBkcm1fb2ZfY29t
+cG9uZW50X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPj4gPiAgICAgICAgICAgICAgICAgICAg
+ICAgICBjb250aW51ZTsKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+Cj4+ID4gLSAgICAgICAg
+ICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNvbXBhcmVfb2YsIHBvcnQp
+Owo+PiA+ICsgICAgICAgICAgICAgICBkcm1fb2ZfY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZt
+YXRjaCwgY29tcGFyZV9vZiwgcG9ydCk7Cj4+ID4gICAgICAgICAgICAgICAgIG9mX25vZGVfcHV0
+KHBvcnQpOwo+PiA+ICAgICAgICAgfQo+PiA+Cj4+ID4gQEAgLTE0MCw3ICsxNjMsOCBAQCBpbnQg
+ZHJtX29mX2NvbXBvbmVudF9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsCj4+ID4gICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBjb250aW51ZTsKPj4gPiAgICAgICAgICAgICAgICAgICAg
+ICAgICB9Cj4+ID4KPj4gPiAtICAgICAgICAgICAgICAgICAgICAgICBjb21wb25lbnRfbWF0Y2hf
+YWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwo+PiA+ICsgICAgICAgICAgICAg
+ICAgICAgICAgIGRybV9vZl9jb21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJl
+X29mLAo+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIHJlbW90ZSk7Cj4+ID4gICAgICAgICAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQocmVt
+b3RlKTsKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+ICAgICAgICAgICAgICAgICBvZl9ub2Rl
+X3B1dChwb3J0KTsKPj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2V0bmF2aXYvZXRu
+YXZpdl9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZfZHJ2LmMKPj4gPiBp
+bmRleCBhYTY4NzY2OWUyMmIuLjBkZWU2YWNiZDg4MCAxMDA2NDQKPj4gPiAtLS0gYS9kcml2ZXJz
+L2dwdS9kcm0vZXRuYXZpdi9ldG5hdml2X2Rydi5jCj4+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L2V0bmF2aXYvZXRuYXZpdl9kcnYuYwo+PiA+IEBAIC0xNiw2ICsxNiw3IEBACj4+ID4KPj4gPiAg
+I2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+PiA+ICAjaW5jbHVkZSA8bGludXgvb2ZfcGxh
+dGZvcm0uaD4KPj4gPiArI2luY2x1ZGUgPGRybS9kcm1fb2YuaD4KPj4gPgo+PiA+ICAjaW5jbHVk
+ZSAiZXRuYXZpdl9kcnYuaCIKPj4gPiAgI2luY2x1ZGUgImV0bmF2aXZfZ3B1LmgiCj4+ID4gQEAg
+LTYyOSw4ICs2MzAsOCBAQCBzdGF0aWMgaW50IGV0bmF2aXZfcGRldl9wcm9iZShzdHJ1Y3QgcGxh
+dGZvcm1fZGV2aWNlICpwZGV2KQo+PiA+ICAgICAgICAgICAgICAgICAgICAgICAgIGlmICghY29y
+ZV9ub2RlKQo+PiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7Cj4+ID4K
+Pj4gPiAtICAgICAgICAgICAgICAgICAgICAgICBjb21wb25lbnRfbWF0Y2hfYWRkKCZwZGV2LT5k
+ZXYsICZtYXRjaCwgY29tcGFyZV9vZiwKPj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGNvcmVfbm9kZSk7Cj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoJnBkZXYtPmRldiwgJm1hdGNoLAo+PiA+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbXBhcmVfb2Ys
+IGNvcmVfbm9kZSk7Cj4+ID4gICAgICAgICAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQoY29y
+ZV9ub2RlKTsKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+ICAgICAgICAgfSBlbHNlIGlmIChk
+ZXYtPnBsYXRmb3JtX2RhdGEpIHsKPj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2hp
+c2lsaWNvbi9raXJpbi9raXJpbl9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vaGlzaWxpY29u
+L2tpcmluL2tpcmluX2RybV9kcnYuYwo+PiA+IGluZGV4IDkwMzc3YTYwOWM5OC4uZTg4ZmRlMThj
+OTQ2IDEwMDY0NAo+PiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9oaXNpbGljb24va2lyaW4va2ly
+aW5fZHJtX2Rydi5jCj4+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2hpc2lsaWNvbi9raXJpbi9r
+aXJpbl9kcm1fZHJ2LmMKPj4gPiBAQCAtMjQsNiArMjQsNyBAQAo+PiA+ICAjaW5jbHVkZSA8ZHJt
+L2RybV9mYl9jbWFfaGVscGVyLmg+Cj4+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2F0b21pY19oZWxw
+ZXIuaD4KPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPj4gPiArI2luY2x1
+ZGUgPGRybS9kcm1fb2YuaD4KPj4gPgo+PiA+ICAjaW5jbHVkZSAia2lyaW5fZHJtX2Rydi5oIgo+
+PiA+Cj4+ID4gQEAgLTI2MCwxNCArMjYxLDEzIEBAIHN0YXRpYyBzdHJ1Y3QgZGV2aWNlX25vZGUg
+KmtpcmluX2dldF9yZW1vdGVfbm9kZShzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+PiA+ICAgICAg
+ICAgICAgICAgICBEUk1fRVJST1IoIm5vIHZhbGlkIGVuZHBvaW50IG5vZGVcbiIpOwo+PiA+ICAg
+ICAgICAgICAgICAgICByZXR1cm4gRVJSX1BUUigtRU5PREVWKTsKPj4gPiAgICAgICAgIH0KPj4g
+PiAtICAgICAgIG9mX25vZGVfcHV0KGVuZHBvaW50KTsKPj4gPgo+PiA+ICAgICAgICAgcmVtb3Rl
+ID0gb2ZfZ3JhcGhfZ2V0X3JlbW90ZV9wb3J0X3BhcmVudChlbmRwb2ludCk7Cj4+ID4gKyAgICAg
+ICBvZl9ub2RlX3B1dChlbmRwb2ludCk7Cj4+Cj4+IEFub3RoZXIgYnVnIHRoYXQncyBiZWluZyBm
+aXhlZCB3aXRob3V0IG1lbnRpb24gaW4gdGhlIGNvbW1pdC4KPj4KPj4gPiAgICAgICAgIGlmICgh
+cmVtb3RlKSB7Cj4+ID4gICAgICAgICAgICAgICAgIERSTV9FUlJPUigibm8gdmFsaWQgcmVtb3Rl
+IG5vZGVcbiIpOwo+PiA+ICAgICAgICAgICAgICAgICByZXR1cm4gRVJSX1BUUigtRU5PREVWKTsK
+Pj4gPiAgICAgICAgIH0KPj4gPiAtICAgICAgIG9mX25vZGVfcHV0KHJlbW90ZSk7Cj4+ID4KPj4g
+PiAgICAgICAgIGlmICghb2ZfZGV2aWNlX2lzX2F2YWlsYWJsZShyZW1vdGUpKSB7Cj4+ID4gICAg
+ICAgICAgICAgICAgIERSTV9FUlJPUigibm90IGF2YWlsYWJsZSBmb3IgcmVtb3RlIG5vZGVcbiIp
+Owo+PiA+IEBAIC0yOTQsNyArMjk0LDggQEAgc3RhdGljIGludCBraXJpbl9kcm1fcGxhdGZvcm1f
+cHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gPiAgICAgICAgIGlmIChJU19F
+UlIocmVtb3RlKSkKPj4gPiAgICAgICAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIocmVtb3RlKTsK
+Pj4gPgo+PiA+IC0gICAgICAgY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFy
+ZV9vZiwgcmVtb3RlKTsKPj4gPiArICAgICAgIGRybV9vZl9jb21wb25lbnRfbWF0Y2hfYWRkKGRl
+diwgJm1hdGNoLCBjb21wYXJlX29mLCByZW1vdGUpOwo+PiA+ICsgICAgICAgb2Zfbm9kZV9wdXQo
+cmVtb3RlKTsKPj4gPgo+PiA+ICAgICAgICAgcmV0dXJuIGNvbXBvbmVudF9tYXN0ZXJfYWRkX3dp
+dGhfbWF0Y2goZGV2LCAma2lyaW5fZHJtX29wcywgbWF0Y2gpOwo+PiA+Cj4+ID4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPj4gPiBpbmRleCBjZjgzZjY1MDdlYzguLjljNTQz
+MGZiODJhMiAxMDA2NDQKPj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kcnYuYwo+PiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5j
+Cj4+ID4gQEAgLTE4LDYgKzE4LDcgQEAKPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxw
+ZXIuaD4KPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtLmg+Cj4+ID4gICNpbmNsdWRlIDxkcm0v
+ZHJtX2dlbV9jbWFfaGVscGVyLmg+Cj4+ID4gKyNpbmNsdWRlIDxkcm0vZHJtX29mLmg+Cj4+ID4g
+ICNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPj4gPiAgI2luY2x1ZGUgPGxpbnV4L2lvbW11
+Lmg+Cj4+ID4gICNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4+ID4gQEAgLTQxNSw3ICs0
+MTYsOCBAQCBzdGF0aWMgaW50IG10a19kcm1fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAq
+cGRldikKPj4gPiAgICAgICAgICAgICAgICAgICAgIGNvbXBfdHlwZSA9PSBNVEtfRFBJKSB7Cj4+
+ID4gICAgICAgICAgICAgICAgICAgICAgICAgZGV2X2luZm8oZGV2LCAiQWRkaW5nIGNvbXBvbmVu
+dCBtYXRjaCBmb3IgJXNcbiIsCj4+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+bm9kZS0+ZnVsbF9uYW1lKTsKPj4gPiAtICAgICAgICAgICAgICAgICAgICAgICBjb21wb25lbnRf
+bWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLCBub2RlKTsKPj4gPiArICAgICAgICAg
+ICAgICAgICAgICAgICBkcm1fb2ZfY29tcG9uZW50X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29t
+cGFyZV9vZiwKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBub2RlKTsKPj4gPiAgICAgICAgICAgICAgICAgfSBlbHNlIHsKPj4gPiAgICAgICAg
+ICAgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wICpjb21wOwo+PiA+Cj4+ID4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tc20vbXNtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJt
+L21zbS9tc21fZHJ2LmMKPj4gPiBpbmRleCBmYjVjMGIwYTc1OTQuLjg0ZDM4ZWFlYTU4NSAxMDA2
+NDQKPj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbXNtL21zbV9kcnYuYwo+PiA+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tc20vbXNtX2Rydi5jCj4+ID4gQEAgLTE1LDYgKzE1LDggQEAKPj4gPiAg
+ICogdGhpcyBwcm9ncmFtLiAgSWYgbm90LCBzZWUgPGh0dHA6Ly93d3cuZ251Lm9yZy9saWNlbnNl
+cy8+Lgo+PiA+ICAgKi8KPj4gPgo+PiA+ICsjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+PiA+ICsK
+Pj4gPiAgI2luY2x1ZGUgIm1zbV9kcnYuaCIKPj4gPiAgI2luY2x1ZGUgIm1zbV9kZWJ1Z2ZzLmgi
+Cj4+ID4gICNpbmNsdWRlICJtc21fZmVuY2UuaCIKPj4gPiBAQCAtOTE5LDggKzkyMSw4IEBAIHN0
+YXRpYyBpbnQgYWRkX2NvbXBvbmVudHNfbWRwKHN0cnVjdCBkZXZpY2UgKm1kcF9kZXYsCj4+ID4g
+ICAgICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4+ID4gICAgICAgICAgICAgICAgIH0K
+Pj4gPgo+PiA+IC0gICAgICAgICAgICAgICBjb21wb25lbnRfbWF0Y2hfYWRkKG1hc3Rlcl9kZXYs
+IG1hdGNocHRyLCBjb21wYXJlX29mLCBpbnRmKTsKPj4gPiAtCj4+ID4gKyAgICAgICAgICAgICAg
+IGRybV9vZl9jb21wb25lbnRfbWF0Y2hfYWRkKG1hc3Rlcl9kZXYsIG1hdGNocHRyLCBjb21wYXJl
+X29mLAo+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbnRm
+KTsKPj4gPiAgICAgICAgICAgICAgICAgb2Zfbm9kZV9wdXQoaW50Zik7Cj4+ID4gICAgICAgICAg
+ICAgICAgIG9mX25vZGVfcHV0KGVwX25vZGUpOwo+PiA+ICAgICAgICAgfQo+PiA+IEBAIC05NjIs
+OCArOTY0LDggQEAgc3RhdGljIGludCBhZGRfZGlzcGxheV9jb21wb25lbnRzKHN0cnVjdCBkZXZp
+Y2UgKmRldiwKPj4gPiAgICAgICAgICAgICAgICAgcHV0X2RldmljZShtZHBfZGV2KTsKPj4gPgo+
+PiA+ICAgICAgICAgICAgICAgICAvKiBhZGQgdGhlIE1EUCBjb21wb25lbnQgaXRzZWxmICovCj4+
+ID4gLSAgICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaHB0ciwgY29t
+cGFyZV9vZiwKPj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtZHBfZGV2
+LT5vZl9ub2RlKTsKPj4gPiArICAgICAgICAgICAgICAgZHJtX29mX2NvbXBvbmVudF9tYXRjaF9h
+ZGQoZGV2LCBtYXRjaHB0ciwgY29tcGFyZV9vZiwKPj4gPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgbWRwX2Rldi0+b2Zfbm9kZSk7Cj4+ID4gICAgICAgICB9IGVs
+c2Ugewo+PiA+ICAgICAgICAgICAgICAgICAvKiBNRFA0ICovCj4+ID4gICAgICAgICAgICAgICAg
+IG1kcF9kZXYgPSBkZXY7Cj4+ID4gQEAgLTk5Niw3ICs5OTgsNyBAQCBzdGF0aWMgaW50IGFkZF9n
+cHVfY29tcG9uZW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4+ID4gICAgICAgICBpZiAoIW5wKQo+
+PiA+ICAgICAgICAgICAgICAgICByZXR1cm4gMDsKPj4gPgo+PiA+IC0gICAgICAgY29tcG9uZW50
+X21hdGNoX2FkZChkZXYsIG1hdGNocHRyLCBjb21wYXJlX29mLCBucCk7Cj4+ID4gKyAgICAgICBk
+cm1fb2ZfY29tcG9uZW50X21hdGNoX2FkZChkZXYsIG1hdGNocHRyLCBjb21wYXJlX29mLCBucCk7
+Cj4+ID4KPj4gPiAgICAgICAgIG9mX25vZGVfcHV0KG5wKTsKPj4gPgo+PiA+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYwo+PiA+IGluZGV4IDhjOGNiZTgzN2U2
+MS4uNmZlMTYxMTkyYmI0IDEwMDY0NAo+PiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9yb2NrY2hpcF9kcm1fZHJ2LmMKPj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2Rydi5jCj4+ID4gQEAgLTIwLDYgKzIwLDcgQEAKPj4gPiAgI2luY2x1ZGUg
+PGRybS9kcm1fY3J0Y19oZWxwZXIuaD4KPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fZmJfaGVscGVy
+Lmg+Cj4+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2dlbV9jbWFfaGVscGVyLmg+Cj4+ID4gKyNpbmNs
+dWRlIDxkcm0vZHJtX29mLmg+Cj4+ID4gICNpbmNsdWRlIDxsaW51eC9kbWEtbWFwcGluZy5oPgo+
+PiA+ICAjaW5jbHVkZSA8bGludXgvcG1fcnVudGltZS5oPgo+PiA+ICAjaW5jbHVkZSA8bGludXgv
+bW9kdWxlLmg+Cj4+ID4gQEAgLTM4OCw3ICszODksNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9h
+ZGRfZW5kcG9pbnRzKHN0cnVjdCBkZXZpY2UgKmRldiwKPj4gPiAgICAgICAgICAgICAgICAgICAg
+ICAgICBjb250aW51ZTsKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+Cj4+ID4gLSAgICAgICAg
+ICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgY29tcGFyZV9vZiwgcmVtb3Rl
+KTsKPj4gPiArICAgICAgICAgICAgICAgZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBt
+YXRjaCwgY29tcGFyZV9vZiwgcmVtb3RlKTsKPj4gPiAgICAgICAgICAgICAgICAgb2Zfbm9kZV9w
+dXQocmVtb3RlKTsKPj4gPiAgICAgICAgIH0KPj4gPiAgfQo+PiA+IEBAIC00MzcsNyArNDM4LDgg
+QEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fcGxhdGZvcm1fcHJvYmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldikKPj4gPiAgICAgICAgICAgICAgICAgfQo+PiA+Cj4+ID4gICAgICAgICAg
+ICAgICAgIG9mX25vZGVfcHV0KGlvbW11KTsKPj4gPiAtICAgICAgICAgICAgICAgY29tcG9uZW50
+X21hdGNoX2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9vZiwgcG9ydC0+cGFyZW50KTsKPj4gPiAr
+ICAgICAgICAgICAgICAgZHJtX29mX2NvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCAmbWF0Y2gsIGNv
+bXBhcmVfb2YsCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHBvcnQtPnBhcmVudCk7Cj4+ID4gICAgICAgICAgICAgICAgIG9mX25vZGVfcHV0KHBvcnQpOwo+
+PiA+ICAgICAgICAgfQo+PiA+Cj4+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdGkv
+c3RpX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3N0aS9zdGlfZHJ2LmMKPj4gPiBpbmRleCAyNzg0
+OTE5YTczNjYuLjVlODE5ODc2ZTY0MiAxMDA2NDQKPj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+c3RpL3N0aV9kcnYuYwo+PiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9zdGkvc3RpX2Rydi5jCj4+
+ID4gQEAgLTE3LDYgKzE3LDcgQEAKPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fY3J0Y19oZWxwZXIu
+aD4KPj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fZ2VtX2NtYV9oZWxwZXIuaD4KPj4gPiAgI2luY2x1
+ZGUgPGRybS9kcm1fZmJfY21hX2hlbHBlci5oPgo+PiA+ICsjaW5jbHVkZSA8ZHJtL2RybV9vZi5o
+Pgo+PiA+Cj4+ID4gICNpbmNsdWRlICJzdGlfY3J0Yy5oIgo+PiA+ICAjaW5jbHVkZSAic3RpX2Ry
+di5oIgo+PiA+IEBAIC00MjMsOCArNDI0LDggQEAgc3RhdGljIGludCBzdGlfcGxhdGZvcm1fcHJv
+YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gPiAgICAgICAgIGNoaWxkX25wID0g
+b2ZfZ2V0X25leHRfYXZhaWxhYmxlX2NoaWxkKG5vZGUsIE5VTEwpOwo+PiA+Cj4+ID4gICAgICAg
+ICB3aGlsZSAoY2hpbGRfbnApIHsKPj4gPiAtICAgICAgICAgICAgICAgY29tcG9uZW50X21hdGNo
+X2FkZChkZXYsICZtYXRjaCwgY29tcGFyZV9vZiwgY2hpbGRfbnApOwo+PiA+IC0gICAgICAgICAg
+ICAgICBvZl9ub2RlX3B1dChjaGlsZF9ucCk7Cj4+ID4gKyAgICAgICAgICAgICAgIGRybV9vZl9j
+b21wb25lbnRfbWF0Y2hfYWRkKGRldiwgJm1hdGNoLCBjb21wYXJlX29mLAo+PiA+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjaGlsZF9ucCk7Cj4+ID4gICAgICAg
+ICAgICAgICAgIGNoaWxkX25wID0gb2ZfZ2V0X25leHRfYXZhaWxhYmxlX2NoaWxkKG5vZGUsIGNo
+aWxkX25wKTsKPj4gPiAgICAgICAgIH0KPj4gPgo+PiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
+dS9kcm0vc3VuNGkvc3VuNGlfZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfZHJ2
+LmMKPj4gPiBpbmRleCAwZGE5ODYyYWQ4ZWQuLmIzYzRhZDYwNWU4MSAxMDA2NDQKPj4gPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vc3VuNGkvc3VuNGlfZHJ2LmMKPj4gPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vc3VuNGkvc3VuNGlfZHJ2LmMKPj4gPiBAQCAtMTgsNiArMTgsNyBAQAo+PiA+ICAjaW5j
+bHVkZSA8ZHJtL2RybV9mYl9jbWFfaGVscGVyLmg+Cj4+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2dl
+bV9jbWFfaGVscGVyLmg+Cj4+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2ZiX2hlbHBlci5oPgo+PiA+
+ICsjaW5jbHVkZSA8ZHJtL2RybV9vZi5oPgo+PiA+Cj4+ID4gICNpbmNsdWRlICJzdW40aV9jcnRj
+LmgiCj4+ID4gICNpbmNsdWRlICJzdW40aV9kcnYuaCIKPj4gPiBAQCAtMjM5LDcgKzI0MCw3IEBA
+IHN0YXRpYyBpbnQgc3VuNGlfZHJ2X2FkZF9lbmRwb2ludHMoc3RydWN0IGRldmljZSAqZGV2LAo+
+PiA+ICAgICAgICAgICAgICAgICAvKiBBZGQgY3VycmVudCBjb21wb25lbnQgKi8KPj4gPiAgICAg
+ICAgICAgICAgICAgRFJNX0RFQlVHX0RSSVZFUigiQWRkaW5nIGNvbXBvbmVudCAlc1xuIiwKPj4g
+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvZl9ub2RlX2Z1bGxfbmFtZShub2Rl
+KSk7Cj4+ID4gLSAgICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwg
+Y29tcGFyZV9vZiwgbm9kZSk7Cj4+ID4gKyAgICAgICAgICAgICAgIGRybV9vZl9jb21wb25lbnRf
+bWF0Y2hfYWRkKGRldiwgbWF0Y2gsIGNvbXBhcmVfb2YsIG5vZGUpOwo+PiA+ICAgICAgICAgICAg
+ICAgICBjb3VudCsrOwo+PiA+ICAgICAgICAgfQo+PiA+Cj4+ID4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX2V4dGVybmFsLmMgYi9kcml2ZXJzL2dwdS9kcm0vdGls
+Y2RjL3RpbGNkY19leHRlcm5hbC5jCj4+ID4gaW5kZXggNjhlODk1MDIxMDA1Li4wNmE0YzU4NGYz
+Y2IgMTAwNjQ0Cj4+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3RpbGNkYy90aWxjZGNfZXh0ZXJu
+YWwuYwo+PiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS90aWxjZGMvdGlsY2RjX2V4dGVybmFsLmMK
+Pj4gPiBAQCAtMTAsNiArMTAsNyBAQAo+PiA+Cj4+ID4gICNpbmNsdWRlIDxsaW51eC9jb21wb25l
+bnQuaD4KPj4gPiAgI2luY2x1ZGUgPGxpbnV4L29mX2dyYXBoLmg+Cj4+ID4gKyNpbmNsdWRlIDxk
+cm0vZHJtX29mLmg+Cj4+ID4KPj4gPiAgI2luY2x1ZGUgInRpbGNkY19kcnYuaCIKPj4gPiAgI2lu
+Y2x1ZGUgInRpbGNkY19leHRlcm5hbC5oIgo+PiA+IEBAIC0xNjAsNyArMTYxLDggQEAgaW50IHRp
+bGNkY19nZXRfZXh0ZXJuYWxfY29tcG9uZW50cyhzdHJ1Y3QgZGV2aWNlICpkZXYsCj4+ID4KPj4g
+PiAgICAgICAgICAgICAgICAgZGV2X2RiZyhkZXYsICJTdWJkZXZpY2Ugbm9kZSAnJXMnIGZvdW5k
+XG4iLCBub2RlLT5uYW1lKTsKPj4gPiAgICAgICAgICAgICAgICAgaWYgKG1hdGNoKQo+PiA+IC0g
+ICAgICAgICAgICAgICAgICAgICAgIGNvbXBvbmVudF9tYXRjaF9hZGQoZGV2LCBtYXRjaCwgZGV2
+X21hdGNoX29mLCBub2RlKTsKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICBkcm1fb2ZfY29t
+cG9uZW50X21hdGNoX2FkZChkZXYsIG1hdGNoLCBkZXZfbWF0Y2hfb2YsCj4+ID4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbm9kZSk7Cj4+ID4gICAg
+ICAgICAgICAgICAgIG9mX25vZGVfcHV0KG5vZGUpOwo+PiA+ICAgICAgICAgICAgICAgICBjb3Vu
+dCsrOwo+PiA+ICAgICAgICAgfQo+PiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fb2Yu
+aCBiL2luY2x1ZGUvZHJtL2RybV9vZi5oCj4+ID4gaW5kZXggM2ZkODdiMzg2ZWQ3Li5kNmI0YzU1
+ODdiYmUgMTAwNjQ0Cj4+ID4gLS0tIGEvaW5jbHVkZS9kcm0vZHJtX29mLmgKPj4gPiArKysgYi9p
+bmNsdWRlL2RybS9kcm1fb2YuaAo+PiA+IEBAIC00LDYgKzQsNyBAQAo+PiA+ICAjaW5jbHVkZSA8
+bGludXgvb2ZfZ3JhcGguaD4KPj4gPgo+PiA+ICBzdHJ1Y3QgY29tcG9uZW50X21hc3Rlcl9vcHM7
+Cj4+ID4gK3N0cnVjdCBjb21wb25lbnRfbWF0Y2g7Cj4+ID4gIHN0cnVjdCBkZXZpY2U7Cj4+ID4g
+IHN0cnVjdCBkcm1fZGV2aWNlOwo+PiA+ICBzdHJ1Y3QgZHJtX2VuY29kZXI7Cj4+ID4gQEAgLTEy
+LDYgKzEzLDEwIEBAIHN0cnVjdCBkZXZpY2Vfbm9kZTsKPj4gPiAgI2lmZGVmIENPTkZJR19PRgo+
+PiA+ICBleHRlcm4gdWludDMyX3QgZHJtX29mX2ZpbmRfcG9zc2libGVfY3J0Y3Moc3RydWN0IGRy
+bV9kZXZpY2UgKmRldiwKPj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgc3RydWN0IGRldmljZV9ub2RlICpwb3J0KTsKPj4gPiArZXh0ZXJuIHZvaWQgZHJtX29m
+X2NvbXBvbmVudF9tYXRjaF9hZGQoc3RydWN0IGRldmljZSAqbWFzdGVyLAo+PiA+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBjb21wb25lbnRfbWF0Y2ggKipt
+YXRjaHB0ciwKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpbnQg
+KCpjb21wYXJlKShzdHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4+ID4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0IGRldmljZV9ub2RlICpub2RlKTsKPj4gPiAg
+ZXh0ZXJuIGludCBkcm1fb2ZfY29tcG9uZW50X3Byb2JlKHN0cnVjdCBkZXZpY2UgKmRldiwKPj4g
+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW50ICgqY29tcGFyZV9vZikoc3Ry
+dWN0IGRldmljZSAqLCB2b2lkICopLAo+PiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBjb25zdCBzdHJ1Y3QgY29tcG9uZW50X21hc3Rlcl9vcHMgKm1fb3BzKTsKPj4gPiBAQCAt
+MjUsNiArMzAsMTMgQEAgc3RhdGljIGlubGluZSB1aW50MzJfdCBkcm1fb2ZfZmluZF9wb3NzaWJs
+ZV9jcnRjcyhzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LAo+PiA+ICAgICAgICAgcmV0dXJuIDA7Cj4+
+ID4gIH0KPj4gPgo+PiA+ICtzdGF0aWMgdm9pZCBkcm1fb2ZfY29tcG9uZW50X21hdGNoX2FkZChz
+dHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgc3RydWN0IGNvbXBvbmVudF9tYXRjaCAqKm1hdGNocHRyLAo+PiA+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGludCAoKmNvbXBhcmUpKHN0cnVjdCBkZXZp
+Y2UgKiwgdm9pZCAqKSwKPj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGUpCj4+ID4gK3sKPj4gPiArfQo+PiA+ICsKPj4gPiAg
+c3RhdGljIGlubGluZSBpbnQKPj4gPiAgZHJtX29mX2NvbXBvbmVudF9wcm9iZShzdHJ1Y3QgZGV2
+aWNlICpkZXYsCj4+ID4gICAgICAgICAgICAgICAgICAgICAgICBpbnQgKCpjb21wYXJlX29mKShz
+dHJ1Y3QgZGV2aWNlICosIHZvaWQgKiksCj4+ID4gLS0KPj4gPiAyLjEuMAo+PiA+Cj4+ID4KPj4g
+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiA+IGxp
+bnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cj4+ID4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5p
+bmZyYWRlYWQub3JnCj4+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1hcm0ta2VybmVsCj4KPiAtLQo+IFJNSydzIFBhdGNoIHN5c3RlbTogaHR0cDov
+L3d3dy5hcm1saW51eC5vcmcudWsvZGV2ZWxvcGVyL3BhdGNoZXMvCj4gRlRUQyBicm9hZGJhbmQg
+Zm9yIDAuOG1pbGUgbGluZTogY3VycmVudGx5IGF0IDkuNk1icHMgZG93biA0MDBrYnBzIHVwCj4g
+YWNjb3JkaW5nIHRvIHNwZWVkdGVzdC5uZXQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3Rz
+LmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaS1kZXZlbAo=
