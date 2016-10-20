@@ -1,424 +1,498 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm: convert DT component matching to
- component_match_add_release()
-Date: Thu, 20 Oct 2016 08:36:11 +0200
-Message-ID: <20161020063611.GJ20761@phenom.ffwll.local>
-References: <E1bwo6l-0005Io-Q1@rmk-PC.armlinux.org.uk>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: [PATCH v9 1/4] soc: mediatek: Refine scpsys to support multiple platform
+Date: Thu, 20 Oct 2016 16:56:35 +0800
+Message-ID: <1476953798-23263-2-git-send-email-jamesjj.liao@mediatek.com>
+References: <1476953798-23263-1-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <E1bwo6l-0005Io-Q1@rmk-PC.armlinux.org.uk>
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Russell King <rmk+kernel@armlinux.org.uk>
-Cc: dri-devel@lists.freedesktop.org, David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>, Chen-Yu Tsai <wens@csie.org>, Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>, Mali DP Maintainers <malidp@foss.arm.com>, linux-arm-msm@vger.kernel.org, Chen Feng <puck.chen@hisilicon.com>, Jyri Sarha <jsarha@ti.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Vincent Abriou <vincent.abriou@st.com>, linux-arm-kernel@lists.infradead.org, Maxime Ripard <maxime.ripard@free-electrons.com>, freedreno@lists.freedesktop.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1476953798-23263-1-git-send-email-jamesjj.liao@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Sascha Hauer <kernel@pengutronix.de>
+Cc: Rob Herring <robh@kernel.org>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 19, 2016 at 11:28:27AM +0100, Russell King wrote:
-> Convert DT component matching to use component_match_add_release().
-> 
-> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> ---
-> Can we please get this patch from May merged into the drm-misc or
-> whatever trees so that we don't end up with conflicts?  I've no idea
-> who looks after drm-misc, as they have _still_ failed to add
-> themselves to MAINTAINERS.
+Refine scpsys driver common code to support multiple SoC / platform.
 
-Can pick, once someone from the arm world smashes at least an ack on this.
-But I have no clue about of/DT, so won't just merge it.
+Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
+Reviewed-by: Kevin Hilman <khilman@baylibre.com>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 348 +++++++++++++++++++++++---------------
+ 1 file changed, 210 insertions(+), 138 deletions(-)
 
-And yes drm-misc will get a MAINTAINERS entry, after ks, because there's
-some things to discuss about what that one needs to look like.
--Daniel
-
-> 
->  drivers/gpu/drm/arm/hdlcd_drv.c                 |  3 ++-
->  drivers/gpu/drm/arm/malidp_drv.c                |  4 +++-
->  drivers/gpu/drm/armada/armada_drv.c             |  2 +-
->  drivers/gpu/drm/drm_of.c                        | 28 +++++++++++++++++++++++--
->  drivers/gpu/drm/etnaviv/etnaviv_drv.c           |  5 +++--
->  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  7 ++++---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  4 +++-
->  drivers/gpu/drm/msm/msm_drv.c                   | 12 ++++++-----
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ++++--
->  drivers/gpu/drm/sti/sti_drv.c                   |  5 +++--
->  drivers/gpu/drm/sun4i/sun4i_drv.c               |  3 ++-
->  drivers/gpu/drm/tilcdc/tilcdc_external.c        |  4 +++-
->  include/drm/drm_of.h                            | 12 +++++++++++
->  13 files changed, 73 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> index fb6a418ce6be..6477d1a65266 100644
-> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> @@ -453,7 +453,8 @@ static int hdlcd_probe(struct platform_device *pdev)
->  		return -EAGAIN;
->  	}
->  
-> -	component_match_add(&pdev->dev, &match, compare_dev, port);
-> +	drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
-> +	of_node_put(port);
->  
->  	return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
->  					       match);
-> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-> index 9280358b8f15..9f4739452a25 100644
-> --- a/drivers/gpu/drm/arm/malidp_drv.c
-> +++ b/drivers/gpu/drm/arm/malidp_drv.c
-> @@ -493,7 +493,9 @@ static int malidp_platform_probe(struct platform_device *pdev)
->  		return -EAGAIN;
->  	}
->  
-> -	component_match_add(&pdev->dev, &match, malidp_compare_dev, port);
-> +	drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
-> +				   port);
-> +	of_node_put(port);
->  	return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
->  					       match);
->  }
-> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-> index 1e0e68f608e4..94e46da9a758 100644
-> --- a/drivers/gpu/drm/armada/armada_drv.c
-> +++ b/drivers/gpu/drm/armada/armada_drv.c
-> @@ -254,7 +254,7 @@ static void armada_add_endpoints(struct device *dev,
->  			continue;
->  		}
->  
-> -		component_match_add(dev, match, compare_of, remote);
-> +		drm_of_component_match_add(dev, match, compare_of, remote);
->  		of_node_put(remote);
->  	}
->  }
-> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
-> index bc98bb94264d..47848ed8ca48 100644
-> --- a/drivers/gpu/drm/drm_of.c
-> +++ b/drivers/gpu/drm/drm_of.c
-> @@ -6,6 +6,11 @@
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_of.h>
->  
-> +static void drm_release_of(struct device *dev, void *data)
-> +{
-> +	of_node_put(data);
-> +}
-> +
->  /**
->   * drm_crtc_port_mask - find the mask of a registered CRTC by port OF node
->   * @dev: DRM device
-> @@ -64,6 +69,24 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  EXPORT_SYMBOL(drm_of_find_possible_crtcs);
->  
->  /**
-> + * drm_of_component_match_add - Add a component helper OF node match rule
-> + * @master: master device
-> + * @matchptr: component match pointer
-> + * @compare: compare function used for matching component
-> + * @node: of_node
-> + */
-> +void drm_of_component_match_add(struct device *master,
-> +				struct component_match **matchptr,
-> +				int (*compare)(struct device *, void *),
-> +				struct device_node *node)
-> +{
-> +	of_node_get(node);
-> +	component_match_add_release(master, matchptr, drm_release_of,
-> +				    compare, node);
-> +}
-> +EXPORT_SYMBOL_GPL(drm_of_component_match_add);
-> +
-> +/**
->   * drm_of_component_probe - Generic probe function for a component based master
->   * @dev: master device containing the OF node
->   * @compare_of: compare function used for matching components
-> @@ -101,7 +124,7 @@ int drm_of_component_probe(struct device *dev,
->  			continue;
->  		}
->  
-> -		component_match_add(dev, &match, compare_of, port);
-> +		drm_of_component_match_add(dev, &match, compare_of, port);
->  		of_node_put(port);
->  	}
->  
-> @@ -140,7 +163,8 @@ int drm_of_component_probe(struct device *dev,
->  				continue;
->  			}
->  
-> -			component_match_add(dev, &match, compare_of, remote);
-> +			drm_of_component_match_add(dev, &match, compare_of,
-> +						   remote);
->  			of_node_put(remote);
->  		}
->  		of_node_put(port);
-> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> index aa687669e22b..0dee6acbd880 100644
-> --- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> +++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-> @@ -16,6 +16,7 @@
->  
->  #include <linux/component.h>
->  #include <linux/of_platform.h>
-> +#include <drm/drm_of.h>
->  
->  #include "etnaviv_drv.h"
->  #include "etnaviv_gpu.h"
-> @@ -629,8 +630,8 @@ static int etnaviv_pdev_probe(struct platform_device *pdev)
->  			if (!core_node)
->  				break;
->  
-> -			component_match_add(&pdev->dev, &match, compare_of,
-> -					    core_node);
-> +			drm_of_component_match_add(&pdev->dev, &match,
-> +						   compare_of, core_node);
->  			of_node_put(core_node);
->  		}
->  	} else if (dev->platform_data) {
-> diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> index 90377a609c98..e88fde18c946 100644
-> --- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> +++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c
-> @@ -24,6 +24,7 @@
->  #include <drm/drm_fb_cma_helper.h>
->  #include <drm/drm_atomic_helper.h>
->  #include <drm/drm_crtc_helper.h>
-> +#include <drm/drm_of.h>
->  
->  #include "kirin_drm_drv.h"
->  
-> @@ -260,14 +261,13 @@ static struct device_node *kirin_get_remote_node(struct device_node *np)
->  		DRM_ERROR("no valid endpoint node\n");
->  		return ERR_PTR(-ENODEV);
->  	}
-> -	of_node_put(endpoint);
->  
->  	remote = of_graph_get_remote_port_parent(endpoint);
-> +	of_node_put(endpoint);
->  	if (!remote) {
->  		DRM_ERROR("no valid remote node\n");
->  		return ERR_PTR(-ENODEV);
->  	}
-> -	of_node_put(remote);
->  
->  	if (!of_device_is_available(remote)) {
->  		DRM_ERROR("not available for remote node\n");
-> @@ -294,7 +294,8 @@ static int kirin_drm_platform_probe(struct platform_device *pdev)
->  	if (IS_ERR(remote))
->  		return PTR_ERR(remote);
->  
-> -	component_match_add(dev, &match, compare_of, remote);
-> +	drm_of_component_match_add(dev, &match, compare_of, remote);
-> +	of_node_put(remote);
->  
->  	return component_master_add_with_match(dev, &kirin_drm_ops, match);
->  
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index cf83f6507ec8..9c5430fb82a2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -18,6 +18,7 @@
->  #include <drm/drm_crtc_helper.h>
->  #include <drm/drm_gem.h>
->  #include <drm/drm_gem_cma_helper.h>
-> +#include <drm/drm_of.h>
->  #include <linux/component.h>
->  #include <linux/iommu.h>
->  #include <linux/of_address.h>
-> @@ -415,7 +416,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  		    comp_type == MTK_DPI) {
->  			dev_info(dev, "Adding component match for %s\n",
->  				 node->full_name);
-> -			component_match_add(dev, &match, compare_of, node);
-> +			drm_of_component_match_add(dev, &match, compare_of,
-> +						   node);
->  		} else {
->  			struct mtk_ddp_comp *comp;
->  
-> diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-> index fb5c0b0a7594..84d38eaea585 100644
-> --- a/drivers/gpu/drm/msm/msm_drv.c
-> +++ b/drivers/gpu/drm/msm/msm_drv.c
-> @@ -15,6 +15,8 @@
->   * this program.  If not, see <http://www.gnu.org/licenses/>.
->   */
->  
-> +#include <drm/drm_of.h>
-> +
->  #include "msm_drv.h"
->  #include "msm_debugfs.h"
->  #include "msm_fence.h"
-> @@ -919,8 +921,8 @@ static int add_components_mdp(struct device *mdp_dev,
->  			continue;
->  		}
->  
-> -		component_match_add(master_dev, matchptr, compare_of, intf);
-> -
-> +		drm_of_component_match_add(master_dev, matchptr, compare_of,
-> +					   intf);
->  		of_node_put(intf);
->  		of_node_put(ep_node);
->  	}
-> @@ -962,8 +964,8 @@ static int add_display_components(struct device *dev,
->  		put_device(mdp_dev);
->  
->  		/* add the MDP component itself */
-> -		component_match_add(dev, matchptr, compare_of,
-> -				    mdp_dev->of_node);
-> +		drm_of_component_match_add(dev, matchptr, compare_of,
-> +					   mdp_dev->of_node);
->  	} else {
->  		/* MDP4 */
->  		mdp_dev = dev;
-> @@ -996,7 +998,7 @@ static int add_gpu_components(struct device *dev,
->  	if (!np)
->  		return 0;
->  
-> -	component_match_add(dev, matchptr, compare_of, np);
-> +	drm_of_component_match_add(dev, matchptr, compare_of, np);
->  
->  	of_node_put(np);
->  
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> index 8c8cbe837e61..6fe161192bb4 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -20,6 +20,7 @@
->  #include <drm/drm_crtc_helper.h>
->  #include <drm/drm_fb_helper.h>
->  #include <drm/drm_gem_cma_helper.h>
-> +#include <drm/drm_of.h>
->  #include <linux/dma-mapping.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/module.h>
-> @@ -388,7 +389,7 @@ static void rockchip_add_endpoints(struct device *dev,
->  			continue;
->  		}
->  
-> -		component_match_add(dev, match, compare_of, remote);
-> +		drm_of_component_match_add(dev, match, compare_of, remote);
->  		of_node_put(remote);
->  	}
->  }
-> @@ -437,7 +438,8 @@ static int rockchip_drm_platform_probe(struct platform_device *pdev)
->  		}
->  
->  		of_node_put(iommu);
-> -		component_match_add(dev, &match, compare_of, port->parent);
-> +		drm_of_component_match_add(dev, &match, compare_of,
-> +					   port->parent);
->  		of_node_put(port);
->  	}
->  
-> diff --git a/drivers/gpu/drm/sti/sti_drv.c b/drivers/gpu/drm/sti/sti_drv.c
-> index 2784919a7366..5e819876e642 100644
-> --- a/drivers/gpu/drm/sti/sti_drv.c
-> +++ b/drivers/gpu/drm/sti/sti_drv.c
-> @@ -17,6 +17,7 @@
->  #include <drm/drm_crtc_helper.h>
->  #include <drm/drm_gem_cma_helper.h>
->  #include <drm/drm_fb_cma_helper.h>
-> +#include <drm/drm_of.h>
->  
->  #include "sti_crtc.h"
->  #include "sti_drv.h"
-> @@ -423,8 +424,8 @@ static int sti_platform_probe(struct platform_device *pdev)
->  	child_np = of_get_next_available_child(node, NULL);
->  
->  	while (child_np) {
-> -		component_match_add(dev, &match, compare_of, child_np);
-> -		of_node_put(child_np);
-> +		drm_of_component_match_add(dev, &match, compare_of,
-> +					   child_np);
->  		child_np = of_get_next_available_child(node, child_np);
->  	}
->  
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> index 0da9862ad8ed..b3c4ad605e81 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> @@ -18,6 +18,7 @@
->  #include <drm/drm_fb_cma_helper.h>
->  #include <drm/drm_gem_cma_helper.h>
->  #include <drm/drm_fb_helper.h>
-> +#include <drm/drm_of.h>
->  
->  #include "sun4i_crtc.h"
->  #include "sun4i_drv.h"
-> @@ -239,7 +240,7 @@ static int sun4i_drv_add_endpoints(struct device *dev,
->  		/* Add current component */
->  		DRM_DEBUG_DRIVER("Adding component %s\n",
->  				 of_node_full_name(node));
-> -		component_match_add(dev, match, compare_of, node);
-> +		drm_of_component_match_add(dev, match, compare_of, node);
->  		count++;
->  	}
->  
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> index 68e895021005..06a4c584f3cb 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> @@ -10,6 +10,7 @@
->  
->  #include <linux/component.h>
->  #include <linux/of_graph.h>
-> +#include <drm/drm_of.h>
->  
->  #include "tilcdc_drv.h"
->  #include "tilcdc_external.h"
-> @@ -160,7 +161,8 @@ int tilcdc_get_external_components(struct device *dev,
->  
->  		dev_dbg(dev, "Subdevice node '%s' found\n", node->name);
->  		if (match)
-> -			component_match_add(dev, match, dev_match_of, node);
-> +			drm_of_component_match_add(dev, match, dev_match_of,
-> +						   node);
->  		of_node_put(node);
->  		count++;
->  	}
-> diff --git a/include/drm/drm_of.h b/include/drm/drm_of.h
-> index 3fd87b386ed7..d6b4c5587bbe 100644
-> --- a/include/drm/drm_of.h
-> +++ b/include/drm/drm_of.h
-> @@ -4,6 +4,7 @@
->  #include <linux/of_graph.h>
->  
->  struct component_master_ops;
-> +struct component_match;
->  struct device;
->  struct drm_device;
->  struct drm_encoder;
-> @@ -12,6 +13,10 @@ struct device_node;
->  #ifdef CONFIG_OF
->  extern uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  					   struct device_node *port);
-> +extern void drm_of_component_match_add(struct device *master,
-> +				       struct component_match **matchptr,
-> +				       int (*compare)(struct device *, void *),
-> +				       struct device_node *node);
->  extern int drm_of_component_probe(struct device *dev,
->  				  int (*compare_of)(struct device *, void *),
->  				  const struct component_master_ops *m_ops);
-> @@ -25,6 +30,13 @@ static inline uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
->  	return 0;
->  }
->  
-> +static void drm_of_component_match_add(struct device *master,
-> +				       struct component_match **matchptr,
-> +				       int (*compare)(struct device *, void *),
-> +				       struct device_node *node)
-> +{
-> +}
-> +
->  static inline int
->  drm_of_component_probe(struct device *dev,
->  		       int (*compare_of)(struct device *, void *),
-> -- 
-> 2.1.0
-> 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 837effe..fa9ee69 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -11,17 +11,15 @@
+  * GNU General Public License for more details.
+  */
+ #include <linux/clk.h>
+-#include <linux/delay.h>
++#include <linux/init.h>
+ #include <linux/io.h>
+-#include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
+-#include <linux/init.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
+-#include <linux/regmap.h>
+-#include <linux/soc/mediatek/infracfg.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/soc/mediatek/infracfg.h>
++
+ #include <dt-bindings/power/mt8173-power.h>
+ 
+ #define SPM_VDE_PWR_CON			0x0210
+@@ -34,6 +32,7 @@
+ #define SPM_MFG_2D_PWR_CON		0x02c0
+ #define SPM_MFG_ASYNC_PWR_CON		0x02c4
+ #define SPM_USB_PWR_CON			0x02cc
++
+ #define SPM_PWR_STATUS			0x060c
+ #define SPM_PWR_STATUS_2ND		0x0610
+ 
+@@ -55,12 +54,21 @@
+ #define PWR_STATUS_USB			BIT(25)
+ 
+ enum clk_id {
+-	MT8173_CLK_NONE,
+-	MT8173_CLK_MM,
+-	MT8173_CLK_MFG,
+-	MT8173_CLK_VENC,
+-	MT8173_CLK_VENC_LT,
+-	MT8173_CLK_MAX,
++	CLK_NONE,
++	CLK_MM,
++	CLK_MFG,
++	CLK_VENC,
++	CLK_VENC_LT,
++	CLK_MAX,
++};
++
++static const char * const clk_names[] = {
++	NULL,
++	"mm",
++	"mfg",
++	"venc",
++	"venc_lt",
++	NULL,
+ };
+ 
+ #define MAX_CLKS	2
+@@ -76,98 +84,6 @@ struct scp_domain_data {
+ 	bool active_wakeup;
+ };
+ 
+-static const struct scp_domain_data scp_domain_data[] = {
+-	[MT8173_POWER_DOMAIN_VDEC] = {
+-		.name = "vdec",
+-		.sta_mask = PWR_STATUS_VDEC,
+-		.ctl_offs = SPM_VDE_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {MT8173_CLK_MM},
+-	},
+-	[MT8173_POWER_DOMAIN_VENC] = {
+-		.name = "venc",
+-		.sta_mask = PWR_STATUS_VENC,
+-		.ctl_offs = SPM_VEN_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {MT8173_CLK_MM, MT8173_CLK_VENC},
+-	},
+-	[MT8173_POWER_DOMAIN_ISP] = {
+-		.name = "isp",
+-		.sta_mask = PWR_STATUS_ISP,
+-		.ctl_offs = SPM_ISP_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {MT8173_CLK_MM},
+-	},
+-	[MT8173_POWER_DOMAIN_MM] = {
+-		.name = "mm",
+-		.sta_mask = PWR_STATUS_DISP,
+-		.ctl_offs = SPM_DIS_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(12, 12),
+-		.clk_id = {MT8173_CLK_MM},
+-		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
+-			MT8173_TOP_AXI_PROT_EN_MM_M1,
+-	},
+-	[MT8173_POWER_DOMAIN_VENC_LT] = {
+-		.name = "venc_lt",
+-		.sta_mask = PWR_STATUS_VENC_LT,
+-		.ctl_offs = SPM_VEN2_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {MT8173_CLK_MM, MT8173_CLK_VENC_LT},
+-	},
+-	[MT8173_POWER_DOMAIN_AUDIO] = {
+-		.name = "audio",
+-		.sta_mask = PWR_STATUS_AUDIO,
+-		.ctl_offs = SPM_AUDIO_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {MT8173_CLK_NONE},
+-	},
+-	[MT8173_POWER_DOMAIN_USB] = {
+-		.name = "usb",
+-		.sta_mask = PWR_STATUS_USB,
+-		.ctl_offs = SPM_USB_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(15, 12),
+-		.clk_id = {MT8173_CLK_NONE},
+-		.active_wakeup = true,
+-	},
+-	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
+-		.name = "mfg_async",
+-		.sta_mask = PWR_STATUS_MFG_ASYNC,
+-		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = 0,
+-		.clk_id = {MT8173_CLK_MFG},
+-	},
+-	[MT8173_POWER_DOMAIN_MFG_2D] = {
+-		.name = "mfg_2d",
+-		.sta_mask = PWR_STATUS_MFG_2D,
+-		.ctl_offs = SPM_MFG_2D_PWR_CON,
+-		.sram_pdn_bits = GENMASK(11, 8),
+-		.sram_pdn_ack_bits = GENMASK(13, 12),
+-		.clk_id = {MT8173_CLK_NONE},
+-	},
+-	[MT8173_POWER_DOMAIN_MFG] = {
+-		.name = "mfg",
+-		.sta_mask = PWR_STATUS_MFG,
+-		.ctl_offs = SPM_MFG_PWR_CON,
+-		.sram_pdn_bits = GENMASK(13, 8),
+-		.sram_pdn_ack_bits = GENMASK(21, 16),
+-		.clk_id = {MT8173_CLK_NONE},
+-		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
+-			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
+-			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
+-			MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
+-	},
+-};
+-
+-#define NUM_DOMAINS	ARRAY_SIZE(scp_domain_data)
+-
+ struct scp;
+ 
+ struct scp_domain {
+@@ -179,7 +95,7 @@ struct scp_domain {
+ };
+ 
+ struct scp {
+-	struct scp_domain domains[NUM_DOMAINS];
++	struct scp_domain *domains;
+ 	struct genpd_onecell_data pd_data;
+ 	struct device *dev;
+ 	void __iomem *base;
+@@ -408,57 +324,55 @@ static bool scpsys_active_wakeup(struct device *dev)
+ 	return scpd->data->active_wakeup;
+ }
+ 
+-static int scpsys_probe(struct platform_device *pdev)
++static void init_clks(struct platform_device *pdev, struct clk *clk[CLK_MAX])
++{
++	int i;
++
++	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
++		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
++}
++
++static struct scp *init_scp(struct platform_device *pdev,
++			const struct scp_domain_data *scp_domain_data, int num)
+ {
+ 	struct genpd_onecell_data *pd_data;
+ 	struct resource *res;
+-	int i, j, ret;
++	int i, j;
+ 	struct scp *scp;
+-	struct clk *clk[MT8173_CLK_MAX];
++	struct clk *clk[CLK_MAX];
+ 
+ 	scp = devm_kzalloc(&pdev->dev, sizeof(*scp), GFP_KERNEL);
+ 	if (!scp)
+-		return -ENOMEM;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	scp->dev = &pdev->dev;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	scp->base = devm_ioremap_resource(&pdev->dev, res);
+ 	if (IS_ERR(scp->base))
+-		return PTR_ERR(scp->base);
++		return ERR_CAST(scp->base);
++
++	scp->domains = devm_kzalloc(&pdev->dev,
++				sizeof(*scp->domains) * num, GFP_KERNEL);
++	if (!scp->domains)
++		return ERR_PTR(-ENOMEM);
+ 
+ 	pd_data = &scp->pd_data;
+ 
+ 	pd_data->domains = devm_kzalloc(&pdev->dev,
+-			sizeof(*pd_data->domains) * NUM_DOMAINS, GFP_KERNEL);
++			sizeof(*pd_data->domains) * num, GFP_KERNEL);
+ 	if (!pd_data->domains)
+-		return -ENOMEM;
+-
+-	clk[MT8173_CLK_MM] = devm_clk_get(&pdev->dev, "mm");
+-	if (IS_ERR(clk[MT8173_CLK_MM]))
+-		return PTR_ERR(clk[MT8173_CLK_MM]);
+-
+-	clk[MT8173_CLK_MFG] = devm_clk_get(&pdev->dev, "mfg");
+-	if (IS_ERR(clk[MT8173_CLK_MFG]))
+-		return PTR_ERR(clk[MT8173_CLK_MFG]);
+-
+-	clk[MT8173_CLK_VENC] = devm_clk_get(&pdev->dev, "venc");
+-	if (IS_ERR(clk[MT8173_CLK_VENC]))
+-		return PTR_ERR(clk[MT8173_CLK_VENC]);
+-
+-	clk[MT8173_CLK_VENC_LT] = devm_clk_get(&pdev->dev, "venc_lt");
+-	if (IS_ERR(clk[MT8173_CLK_VENC_LT]))
+-		return PTR_ERR(clk[MT8173_CLK_VENC_LT]);
++		return ERR_PTR(-ENOMEM);
+ 
+ 	scp->infracfg = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
+ 			"infracfg");
+ 	if (IS_ERR(scp->infracfg)) {
+ 		dev_err(&pdev->dev, "Cannot find infracfg controller: %ld\n",
+ 				PTR_ERR(scp->infracfg));
+-		return PTR_ERR(scp->infracfg);
++		return ERR_CAST(scp->infracfg);
+ 	}
+ 
+-	for (i = 0; i < NUM_DOMAINS; i++) {
++	for (i = 0; i < num; i++) {
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		const struct scp_domain_data *data = &scp_domain_data[i];
+ 
+@@ -467,13 +381,15 @@ static int scpsys_probe(struct platform_device *pdev)
+ 			if (PTR_ERR(scpd->supply) == -ENODEV)
+ 				scpd->supply = NULL;
+ 			else
+-				return PTR_ERR(scpd->supply);
++				return ERR_CAST(scpd->supply);
+ 		}
+ 	}
+ 
+-	pd_data->num_domains = NUM_DOMAINS;
++	pd_data->num_domains = num;
+ 
+-	for (i = 0; i < NUM_DOMAINS; i++) {
++	init_clks(pdev, clk);
++
++	for (i = 0; i < num; i++) {
+ 		struct scp_domain *scpd = &scp->domains[i];
+ 		struct generic_pm_domain *genpd = &scpd->genpd;
+ 		const struct scp_domain_data *data = &scp_domain_data[i];
+@@ -482,13 +398,37 @@ static int scpsys_probe(struct platform_device *pdev)
+ 		scpd->scp = scp;
+ 
+ 		scpd->data = data;
+-		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++)
+-			scpd->clk[j] = clk[data->clk_id[j]];
++
++		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
++			struct clk *c = clk[data->clk_id[j]];
++
++			if (IS_ERR(c)) {
++				dev_err(&pdev->dev, "%s: clk unavailable\n",
++					data->name);
++				return ERR_CAST(c);
++			}
++
++			scpd->clk[j] = c;
++		}
+ 
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
+ 		genpd->dev_ops.active_wakeup = scpsys_active_wakeup;
++	}
++
++	return scp;
++}
++
++static void mtk_register_power_domains(struct platform_device *pdev,
++				struct scp *scp, int num)
++{
++	struct genpd_onecell_data *pd_data;
++	int i, ret;
++
++	for (i = 0; i < num; i++) {
++		struct scp_domain *scpd = &scp->domains[i];
++		struct generic_pm_domain *genpd = &scpd->genpd;
+ 
+ 		/*
+ 		 * Initially turn on all domains to make the domains usable
+@@ -507,6 +447,123 @@ static int scpsys_probe(struct platform_device *pdev)
+ 	 * valid.
+ 	 */
+ 
++	pd_data = &scp->pd_data;
++
++	ret = of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
++	if (ret)
++		dev_err(&pdev->dev, "Failed to add OF provider: %d\n", ret);
++}
++
++/*
++ * MT8173 power domain support
++ */
++
++static const struct scp_domain_data scp_domain_data_mt8173[] = {
++	[MT8173_POWER_DOMAIN_VDEC] = {
++		.name = "vdec",
++		.sta_mask = PWR_STATUS_VDEC,
++		.ctl_offs = SPM_VDE_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.clk_id = {CLK_MM},
++	},
++	[MT8173_POWER_DOMAIN_VENC] = {
++		.name = "venc",
++		.sta_mask = PWR_STATUS_VENC,
++		.ctl_offs = SPM_VEN_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.clk_id = {CLK_MM, CLK_VENC},
++	},
++	[MT8173_POWER_DOMAIN_ISP] = {
++		.name = "isp",
++		.sta_mask = PWR_STATUS_ISP,
++		.ctl_offs = SPM_ISP_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.clk_id = {CLK_MM},
++	},
++	[MT8173_POWER_DOMAIN_MM] = {
++		.name = "mm",
++		.sta_mask = PWR_STATUS_DISP,
++		.ctl_offs = SPM_DIS_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.clk_id = {CLK_MM},
++		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
++			MT8173_TOP_AXI_PROT_EN_MM_M1,
++	},
++	[MT8173_POWER_DOMAIN_VENC_LT] = {
++		.name = "venc_lt",
++		.sta_mask = PWR_STATUS_VENC_LT,
++		.ctl_offs = SPM_VEN2_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.clk_id = {CLK_MM, CLK_VENC_LT},
++	},
++	[MT8173_POWER_DOMAIN_AUDIO] = {
++		.name = "audio",
++		.sta_mask = PWR_STATUS_AUDIO,
++		.ctl_offs = SPM_AUDIO_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.clk_id = {CLK_NONE},
++	},
++	[MT8173_POWER_DOMAIN_USB] = {
++		.name = "usb",
++		.sta_mask = PWR_STATUS_USB,
++		.ctl_offs = SPM_USB_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.clk_id = {CLK_NONE},
++		.active_wakeup = true,
++	},
++	[MT8173_POWER_DOMAIN_MFG_ASYNC] = {
++		.name = "mfg_async",
++		.sta_mask = PWR_STATUS_MFG_ASYNC,
++		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = 0,
++		.clk_id = {CLK_MFG},
++	},
++	[MT8173_POWER_DOMAIN_MFG_2D] = {
++		.name = "mfg_2d",
++		.sta_mask = PWR_STATUS_MFG_2D,
++		.ctl_offs = SPM_MFG_2D_PWR_CON,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.clk_id = {CLK_NONE},
++	},
++	[MT8173_POWER_DOMAIN_MFG] = {
++		.name = "mfg",
++		.sta_mask = PWR_STATUS_MFG,
++		.ctl_offs = SPM_MFG_PWR_CON,
++		.sram_pdn_bits = GENMASK(13, 8),
++		.sram_pdn_ack_bits = GENMASK(21, 16),
++		.clk_id = {CLK_NONE},
++		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
++			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
++			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
++			MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
++	},
++};
++
++#define NUM_DOMAINS_MT8173	ARRAY_SIZE(scp_domain_data_mt8173)
++
++static int __init scpsys_probe_mt8173(struct platform_device *pdev)
++{
++	struct scp *scp;
++	struct genpd_onecell_data *pd_data;
++	int ret;
++
++	scp = init_scp(pdev, scp_domain_data_mt8173, NUM_DOMAINS_MT8173);
++	if (IS_ERR(scp))
++		return PTR_ERR(scp);
++
++	mtk_register_power_domains(pdev, scp, NUM_DOMAINS_MT8173);
++
++	pd_data = &scp->pd_data;
++
+ 	ret = pm_genpd_add_subdomain(pd_data->domains[MT8173_POWER_DOMAIN_MFG_ASYNC],
+ 		pd_data->domains[MT8173_POWER_DOMAIN_MFG_2D]);
+ 	if (ret && IS_ENABLED(CONFIG_PM))
+@@ -517,21 +574,36 @@ static int scpsys_probe(struct platform_device *pdev)
+ 	if (ret && IS_ENABLED(CONFIG_PM))
+ 		dev_err(&pdev->dev, "Failed to add subdomain: %d\n", ret);
+ 
+-	ret = of_genpd_add_provider_onecell(pdev->dev.of_node, pd_data);
+-	if (ret)
+-		dev_err(&pdev->dev, "Failed to add OF provider: %d\n", ret);
+-
+ 	return 0;
+ }
+ 
++/*
++ * scpsys driver init
++ */
++
+ static const struct of_device_id of_scpsys_match_tbl[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-scpsys",
++		.data = scpsys_probe_mt8173,
+ 	}, {
+ 		/* sentinel */
+ 	}
+ };
+ 
++static int scpsys_probe(struct platform_device *pdev)
++{
++	int (*probe)(struct platform_device *);
++	const struct of_device_id *of_id;
++
++	of_id = of_match_node(of_scpsys_match_tbl, pdev->dev.of_node);
++	if (!of_id || !of_id->data)
++		return -EINVAL;
++
++	probe = of_id->data;
++
++	return probe(pdev);
++}
++
+ static struct platform_driver scpsys_drv = {
+ 	.probe = scpsys_probe,
+ 	.driver = {
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+1.9.1
