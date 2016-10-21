@@ -1,7 +1,7 @@
 From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: [PATCH 3/4] mtk_mdp_m2m: remove an unused struct
-Date: Fri, 21 Oct 2016 11:59:18 -0200
-Message-ID: <624b0ea4550b90318ec2293d80b1caa5bafd2a35.1477058332.git.mchehab@s-opensource.com>
+Subject: [PATCH 4/4] mtk-mdp: fix compilation warnings if !DEBUG
+Date: Fri, 21 Oct 2016 11:59:19 -0200
+Message-ID: <5a24855fda4d91a58f119c2d70177017e06fc6f0.1477058332.git.mchehab@s-opensource.com>
 References: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -14,32 +14,38 @@ Sender: linux-media-owner@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:48:33: warning: ‘mtk_mdp_size_align’ defined but not used [-Wunused-variable]
- static struct mtk_mdp_pix_align mtk_mdp_size_align = {
-                                 ^~~~~~~~~~~~~~~~~~
+The mtk_mdp_dbg() is empty if !DEBUG. This causes the following
+warnings:
+
+	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c: In function ‘mtk_mdp_try_fmt_mplane’:
+	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:231:52: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+	        org_w, org_h, pix_mp->width, pix_mp->height);
+                                                    ^
+	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c: In function ‘mtk_mdp_m2m_start_streaming’:
+	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:414:21: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+	        ctx->id, ret);
+	                     ^
+
+With could actually make the code to do something wrong. So,
+add an empty block to make it be parsed ok.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
 ---
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 7 -------
- 1 file changed, 7 deletions(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-index 065502757133..33124a6c9951 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-@@ -45,13 +45,6 @@ struct mtk_mdp_pix_limit {
- 	u16 target_rot_en_h;
- };
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+index 2e979f97d1df..848569d4ab90 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+@@ -250,7 +250,7 @@ extern int mtk_mdp_dbg_level;
  
--static struct mtk_mdp_pix_align mtk_mdp_size_align = {
--	.org_w			= 16,
--	.org_h			= 16,
--	.target_w		= 2,
--	.target_h		= 2,
--};
--
- static const struct mtk_mdp_fmt mtk_mdp_formats[] = {
- 	{
- 		.pixelformat	= V4L2_PIX_FMT_NV12M,
+ #else
+ 
+-#define mtk_mdp_dbg(level, fmt, args...)
++#define mtk_mdp_dbg(level, fmt, args...) {}
+ #define mtk_mdp_err(fmt, args...)
+ #define mtk_mdp_dbg_enter()
+ #define mtk_mdp_dbg_leave()
 -- 
 2.7.4
