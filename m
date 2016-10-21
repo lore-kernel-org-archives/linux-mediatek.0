@@ -1,11 +1,8 @@
 From: Mauro Carvalho Chehab <mchehab@s-opensource.com>
-Subject: [PATCH 4/4] mtk-mdp: fix compilation warnings if !DEBUG
-Date: Fri, 21 Oct 2016 11:59:19 -0200
-Message-ID: <5a24855fda4d91a58f119c2d70177017e06fc6f0.1477058332.git.mchehab@s-opensource.com>
+Subject: [PATCH 2/4] mtk_mdp_vpu: remove a double unlock at the error path
+Date: Fri, 21 Oct 2016 11:59:17 -0200
+Message-ID: <768767961c64dea3fdd86132c9eba87ae652d588.1477058332.git.mchehab@s-opensource.com>
 References: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
 In-Reply-To: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
@@ -14,38 +11,25 @@ Sender: linux-media-owner@vger.kernel.org
 Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The mtk_mdp_dbg() is empty if !DEBUG. This causes the following
-warnings:
-
-	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c: In function ‘mtk_mdp_try_fmt_mplane’:
-	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:231:52: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
-	        org_w, org_h, pix_mp->width, pix_mp->height);
-                                                    ^
-	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c: In function ‘mtk_mdp_m2m_start_streaming’:
-	drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:414:21: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
-	        ctx->id, ret);
-	                     ^
-
-With could actually make the code to do something wrong. So,
-add an empty block to make it be parsed ok.
+As warned by smatch:
+	drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c:98 mtk_mdp_vpu_send_msg() error: double unlock 'mutex:&ctx->mdp_dev->vpulock'
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
 ---
- drivers/media/platform/mtk-mdp/mtk_mdp_core.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-index 2e979f97d1df..848569d4ab90 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-@@ -250,7 +250,7 @@ extern int mtk_mdp_dbg_level;
- 
- #else
- 
--#define mtk_mdp_dbg(level, fmt, args...)
-+#define mtk_mdp_dbg(level, fmt, args...) {}
- #define mtk_mdp_err(fmt, args...)
- #define mtk_mdp_dbg_enter()
- #define mtk_mdp_dbg_leave()
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+index b38d29e99f7a..5c8caa864e32 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+@@ -91,7 +91,6 @@ static int mtk_mdp_vpu_send_msg(void *msg, int len, struct mtk_mdp_vpu *vpu,
+ 	mutex_lock(&ctx->mdp_dev->vpulock);
+ 	err = vpu_ipi_send(vpu->pdev, (enum ipi_id)id, msg, len);
+ 	if (err) {
+-		mutex_unlock(&ctx->mdp_dev->vpulock);
+ 		dev_err(&ctx->mdp_dev->pdev->dev,
+ 			"vpu_ipi_send fail status %d\n", err);
+ 	}
 -- 
 2.7.4
