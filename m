@@ -1,55 +1,63 @@
-From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [SPAM][PATCH 3/4] mtk_mdp_m2m: remove an unused struct
-Date: Mon, 24 Oct 2016 19:47:31 +0800
-Message-ID: <1477309651.29543.22.camel@mtksdaap41>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: Re: [PATCH 3/4] mtk_mdp_m2m: remove an unused struct
+Date: Mon, 24 Oct 2016 19:49:55 +0800
+Message-ID: <1477309795.29543.23.camel@mtksdaap41>
 References: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
- <624b0ea4550b90318ec2293d80b1caa5bafd2a35.1477058332.git.mchehab@s-opensource.com>
+         <624b0ea4550b90318ec2293d80b1caa5bafd2a35.1477058332.git.mchehab@s-opensource.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <624b0ea4550b90318ec2293d80b1caa5bafd2a35.1477058332.git.mchehab-JsYNTwtnfakRB7SZvlqPiA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-JsYNTwtnfakRB7SZvlqPiA@public.gmane.org>
-Cc: Mauro Carvalho Chehab <mchehab-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <624b0ea4550b90318ec2293d80b1caa5bafd2a35.1477058332.git.mchehab@s-opensource.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gRnJpLCAyMDE2LTEwLTIxIGF0IDExOjU5IC0wMjAwLCBNYXVybyBDYXJ2YWxobyBDaGVoYWIg
-d3JvdGU6Cj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwL210a19tZHBfbTJtLmM6NDg6
-MzM6IHdhcm5pbmc6IOKAmG10a19tZHBfc2l6ZV9hbGlnbuKAmSBkZWZpbmVkIGJ1dCBub3QgdXNl
-ZCBbLVd1bnVzZWQtdmFyaWFibGVdCj4gIHN0YXRpYyBzdHJ1Y3QgbXRrX21kcF9waXhfYWxpZ24g
-bXRrX21kcF9zaXplX2FsaWduID0gewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IF5+fn5+fn5+fn5+fn5+fn5+fgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hdXJvIENhcnZhbGhvIENo
-ZWhhYiA8bWNoZWhhYkBzLW9wZW5zb3VyY2UuY29tPgo+IC0tLQo+ICBkcml2ZXJzL21lZGlhL3Bs
-YXRmb3JtL210ay1tZHAvbXRrX21kcF9tMm0uYyB8IDcgLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdl
-ZCwgNyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9tdGstbWRwL210a19tZHBfbTJtLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAv
-bXRrX21kcF9tMm0uYwo+IGluZGV4IDA2NTUwMjc1NzEzMy4uMzMxMjRhNmM5OTUxIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcC9tdGtfbWRwX20ybS5jCj4gKysr
-IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwL210a19tZHBfbTJtLmMKPiBAQCAtNDUs
-MTMgKzQ1LDYgQEAgc3RydWN0IG10a19tZHBfcGl4X2xpbWl0IHsKPiAgCXUxNiB0YXJnZXRfcm90
-X2VuX2g7Cj4gIH07Cj4gIAo+IC1zdGF0aWMgc3RydWN0IG10a19tZHBfcGl4X2FsaWduIG10a19t
-ZHBfc2l6ZV9hbGlnbiA9IHsKPiAtCS5vcmdfdwkJCT0gMTYsCj4gLQkub3JnX2gJCQk9IDE2LAo+
-IC0JLnRhcmdldF93CQk9IDIsCj4gLQkudGFyZ2V0X2gJCT0gMiwKPiAtfTsKPiAtCgpIaSBNYXVy
-bywKClRoZSBzdHJ1Y3R1cmUgaXMgdXNlZCBmb3IgdGhlIGZvcm1hdCBWNEwyX1BJWF9GTVRfTVQy
-MUMgd2hpY2ggaXMgYWRkZWQKaW4gdGhlIGxhdGVyIHBhdGNoLgoiW21lZGlhXSBtZWRpYTogbXRr
-LW1kcDogc3VwcG9ydCBwaXhlbGZvcm1hdCBWNEwyX1BJWF9GTVRfTVQyMUMiCgpJIGp1c3Qga25v
-dyBjaGVja3BhdGNoIHNob3VsZCBiZSBydW4gcGF0Y2ggYnkgcGF0Y2gsIHNvIHRoaXMgd2Fybmlu
-ZwptZXNzYWdlIHdpbGwgYmUgZ2VuZXJhdGVkIHdpdGhvdXQgdGhlIE1UMjFDIHBhdGNoLgoKSSBm
-b3VuZCBhbGwgbXRrLW1kcCBwYXRjaGVzIGhhdmUgYmVlbiBtZXJnZWQgaW4gbWVkaWEgdHJlZSwg
-c28gaXMgdGhpcwpwYXRjaCBzdGlsbCBuZWVkZWQ/CgpJZiB5ZXMsIHJlbW92ZSAnbXRrX21kcF9z
-aXplX2FsaWduJyBpbiB0aGlzIHBhdGNoLCBhbmQgcmUtYWRkZWQgaXQgaW4KdGhlIE1UMjFDIHBh
-dGNoLiAKCgptaW5naHNpdQoKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbWRwX2ZtdCBtdGtf
-bWRwX2Zvcm1hdHNbXSA9IHsKPiAgCXsKPiAgCQkucGl4ZWxmb3JtYXQJPSBWNEwyX1BJWF9GTVRf
-TlYxMk0sCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCg==
+On Fri, 2016-10-21 at 11:59 -0200, Mauro Carvalho Chehab wrote:
+> drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:48:33: warning: ‘mtk_mdp_size_align’ defined but not used [-Wunused-variable]
+>  static struct mtk_mdp_pix_align mtk_mdp_size_align = {
+>                                  ^~~~~~~~~~~~~~~~~~
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+> ---
+>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 7 -------
+>  1 file changed, 7 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> index 065502757133..33124a6c9951 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> @@ -45,13 +45,6 @@ struct mtk_mdp_pix_limit {
+>  	u16 target_rot_en_h;
+>  };
+>  
+> -static struct mtk_mdp_pix_align mtk_mdp_size_align = {
+> -	.org_w			= 16,
+> -	.org_h			= 16,
+> -	.target_w		= 2,
+> -	.target_h		= 2,
+> -};
+> -
+
+Hi Mauro,
+
+The structure is used for the format V4L2_PIX_FMT_MT21C which is added
+in the later patch.
+"[media] media: mtk-mdp: support pixelformat V4L2_PIX_FMT_MT21C"
+
+I just know checkpatch should be run patch by patch, so this warning
+message will be generated without the MT21C patch.
+
+I found all mtk-mdp patches have been merged in media tree, so is this
+patch still needed?
+
+If yes, remove 'mtk_mdp_size_align' in this patch, and re-added it in
+the MT21C patch. 
+
+
+minghsiu
+
+>  static const struct mtk_mdp_fmt mtk_mdp_formats[] = {
+>  	{
+>  		.pixelformat	= V4L2_PIX_FMT_NV12M,
