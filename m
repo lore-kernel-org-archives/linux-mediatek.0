@@ -1,40 +1,53 @@
-From: Wei Yongjun <weiyj.lk@gmail.com>
-Subject: [PATCH -next] ARM: mediatek: add terminate entry for of_device_id tables
-Date: Sun, 23 Oct 2016 11:42:57 +0000
-Message-ID: <1477222977-1336-1-git-send-email-weiyj.lk@gmail.com>
+From: "weiyongjun (A)" <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+Subject: RE: [PATCH -next] ARM: mediatek: add terminate entry for
+ of_device_id tables
+Date: Mon, 24 Oct 2016 00:24:41 +0000
+Message-ID: <6AADFAC011213A4C87B956458587ADB46DF125@SZXEMI508-MBX.china.huawei.com>
+References: <1477222977-1336-1-git-send-email-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Russell King <linux@armlinux.org.uk>
-Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1477222977-1336-1-git-send-email-weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: zh-CN
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+Cc: "linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wei Yongjun <weiyongjun1@huawei.com>
 
-Make sure of_device_id tables are NULL terminated.
 
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- arch/arm/mach-mediatek/platsmp.c | 2 ++
- 1 file changed, 2 insertions(+)
+> -----Original Message-----
+> From: Wei Yongjun [mailto:weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org]
+> Sent: Sunday, October 23, 2016 7:43 PM
+> To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>; Russell King
+> <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>
+> Cc: weiyongjun (A) <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>; linux-arm-
+> kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org; linux-
+> kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Subject: [PATCH -next] ARM: mediatek: add terminate entry for
+> of_device_id tables
+> 
+> From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+> 
+> Make sure of_device_id tables are NULL terminated.
+> 
+> Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+> ---
+>  arch/arm/mach-mediatek/platsmp.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
-index b821e34..e6cffc7 100644
---- a/arch/arm/mach-mediatek/platsmp.c
-+++ b/arch/arm/mach-mediatek/platsmp.c
-@@ -54,11 +54,13 @@ static const struct of_device_id mtk_tz_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt8135", .data = &mtk_mt8135_tz_boot },
- 	{ .compatible   = "mediatek,mt8127", .data = &mtk_mt8135_tz_boot },
- 	{ .compatible   = "mediatek,mt2701", .data = &mtk_mt8135_tz_boot },
-+	{ },
- };
- 
- static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
- 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
- 	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
-+	{ },
- };
- 
- static void __iomem *mtk_smp_base;
+Sorry, this patch is not correct since mtk_tz_smp_boot_infos is used
+as ARRAY_SIZE(mtk_tz_smp_boot_infos), please ignore it.
+
+Regards,
+Yongjun Wei
