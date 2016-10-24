@@ -1,79 +1,78 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH v5 3/9] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Mon, 24 Oct 2016 11:22:08 +0800
-Message-ID: <1477279328.10501.10.camel@mtksdaap41>
-References: <1472818800-22558-1-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-2-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-3-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-4-git-send-email-tiffany.lin@mediatek.com>
-         <20161021110104.5733240e@vento.lan>
+From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: FW: [PATCH] mtk-vcodec: fix some smatch warnings
+Date: Mon, 24 Oct 2016 11:49:35 +0800
+Message-ID: <1477280975.10501.16.camel@mtksdaap41>
+References: <066110a3574ef835ba47a0996343474288da72cc.1477058315.git.mchehab@s-opensource.com>
+         <6D1A1B40F9E1B64689A7C1952F8B336792FED2F0@mtkmbs08n1>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161021110104.5733240e@vento.lan>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab@osg.samsung.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <6D1A1B40F9E1B64689A7C1952F8B336792FED2F0@mtkmbs08n1>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
+Cc: daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Mauro,
-
-On Fri, 2016-10-21 at 11:01 -0200, Mauro Carvalho Chehab wrote:
-> Em Fri, 2 Sep 2016 20:19:54 +0800
-> Tiffany Lin <tiffany.lin@mediatek.com> escreveu:
-> 
-> > Add v4l2 layer decoder driver for MT8173
-> > 
-> > Signed-off-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> 
-> > +int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
-> > +{
-> > +	int ret = 0;
-> > +
-> > +	switch (fourcc) {
-> > +	case V4L2_PIX_FMT_H264:
-> > +	case V4L2_PIX_FMT_VP8:
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> 
-> Did you ever test this driver? The above code will *always* return
-> -EINVAL, with will cause vidioc_vdec_s_fmt() to always fail!
-> 
-> I suspect that what you wanted to do, instead, is:
-> 
-> 	switch (fourcc) {
-> 	case V4L2_PIX_FMT_H264:
-> 	case V4L2_PIX_FMT_VP8:
-> 		break;
-> 	default:
-> 		return -EINVAL;
-> 
-
-The original idea here is that vp8 and h264 are added in later patches.
-If get this patch without later patches, it should return -EINVAL.
 
 
-> Btw, this patch series has also several issues that were pointed by
-> checkpatch. Please *always* run checkpatch when submitting your work.
+> Fix this bug:
+> 	drivers/media/platform/mtk-vcodec/vdec_drv_if.c:38 vdec_if_init() info: ignoring unreachable code.
 > 
-> You should take a look at the Kernel documentation about how to
-> submit patches, at:
-> 	https://mchehab.fedorapeople.org/kernel_docs/process/index.html
+> With is indeed a real problem that prevents the driver to work!
 > 
-> PS.: this time, I fixed the checkpatch issues for you. So, let me know
-> if the patch below is OK, and I'll merge it at media upstream,
-> assuming that the other patches in this series are ok.
+> While here, also remove an used var, as reported by smatch:
 > 
+> 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c: In function 'mtk_vcodec_init_dec_pm':
+> 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c:29:17: warning: variable 'dev' set but not used [-Wunused-but-set-variable]
+> 	  struct device *dev;
+> 	                 ^~~
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab-JsYNTwtnfakRB7SZvlqPiA@public.gmane.org>
 
-I did run checkpatch, but I don't know why these issues missed.
-probably I run checkpatch for all files not for patches.
-I will take a look at the documentation and keep this in mind for future
-upstream.
-Appreciated for your help.
+Acked-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c | 2 --
+>  drivers/media/platform/mtk-vcodec/vdec_drv_if.c       | 1 +
+>  2 files changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> index 18182f5676d8..79ca03ac449c 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> @@ -26,14 +26,12 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)  {
+>  	struct device_node *node;
+>  	struct platform_device *pdev;
+> -	struct device *dev;
+>  	struct mtk_vcodec_pm *pm;
+>  	int ret = 0;
+>  
+>  	pdev = mtkdev->plat_dev;
+>  	pm = &mtkdev->pm;
+>  	pm->mtkdev = mtkdev;
+> -	dev = &pdev->dev;
+>  	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
+>  	if (!node) {
+>  		mtk_v4l2_err("of_parse_phandle mediatek,larb fail!"); diff --git a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> index 3cb04ef45144..9813b2ffd5fa 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec_drv_if.c
+> @@ -31,6 +31,7 @@ int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
+>  	switch (fourcc) {
+>  	case V4L2_PIX_FMT_H264:
+>  	case V4L2_PIX_FMT_VP8:
+> +		break;
+>  	default:
+>  		return -EINVAL;
+>  	}
+> --
+> 2.7.4
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-media" in the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org More majordomo info at  http://vger.kernel.org/majordomo-info.html
 
 
-best regards,
-Tiffany
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
