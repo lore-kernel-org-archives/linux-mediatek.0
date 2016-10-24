@@ -1,111 +1,105 @@
-From: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5 3/9] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Mon, 24 Oct 2016 18:49:12 +0800
-Message-ID: <1477306152.2916.1.camel@mtksdaap41>
-References: <1472818800-22558-1-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-2-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-3-git-send-email-tiffany.lin@mediatek.com>
-         <1472818800-22558-4-git-send-email-tiffany.lin@mediatek.com>
-         <20161021110104.5733240e@vento.lan> <1477279328.10501.10.camel@mtksdaap41>
-         <20161024070542.65e11e37@vento.lan>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: Re: [PATCH 1/4] mtk_mdp_vpu: fix build with COMPILE_TEST for 32 bits
+Date: Mon, 24 Oct 2016 19:26:02 +0800
+Message-ID: <1477308362.29543.7.camel@mtksdaap41>
+References: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20161024070542.65e11e37-ch4gOOMV7nf/PtFMR13I2A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, PoChun.Lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <cd14afdb178cf490e257368bc899c7a0c690d140.1477058332.git.mchehab@s-opensource.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Mauro,
 
-On Mon, 2016-10-24 at 07:05 -0200, Mauro Carvalho Chehab wrote:
-> Em Mon, 24 Oct 2016 11:22:08 +0800
-> Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
-> 
-> > Hi Mauro,
-> > 
-> > On Fri, 2016-10-21 at 11:01 -0200, Mauro Carvalho Chehab wrote:
-> > > Em Fri, 2 Sep 2016 20:19:54 +0800
-> > > Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> escreveu:
-> > >   
-> > > > Add v4l2 layer decoder driver for MT8173
-> > > > 
-> > > > Signed-off-by: Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>  
-> > >   
-> > > > +int vdec_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
-> > > > +{
-> > > > +	int ret = 0;
-> > > > +
-> > > > +	switch (fourcc) {
-> > > > +	case V4L2_PIX_FMT_H264:
-> > > > +	case V4L2_PIX_FMT_VP8:
-> > > > +	default:
-> > > > +		return -EINVAL;
-> > > > +	}  
-> > > 
-> > > Did you ever test this driver? The above code will *always* return
-> > > -EINVAL, with will cause vidioc_vdec_s_fmt() to always fail!
-> > > 
-> > > I suspect that what you wanted to do, instead, is:
-> > > 
-> > > 	switch (fourcc) {
-> > > 	case V4L2_PIX_FMT_H264:
-> > > 	case V4L2_PIX_FMT_VP8:
-> > > 		break;
-> > > 	default:
-> > > 		return -EINVAL;
-> > >   
-> > 
-> > The original idea here is that vp8 and h264 are added in later patches.
-> > If get this patch without later patches, it should return -EINVAL.
-> 
-> I noticed your idea, but next time, don't add dead code like that.
-> Reviewers check patch by patch at the order they're present at the
-> patch series.
-> 
-> So, don't add something broken by purpose, assuming that it would
-> be fixed later.
-> 
-Got it.
-> > 
-> > 
-> > > Btw, this patch series has also several issues that were pointed by
-> > > checkpatch. Please *always* run checkpatch when submitting your work.
-> > > 
-> > > You should take a look at the Kernel documentation about how to
-> > > submit patches, at:
-> > > 	https://mchehab.fedorapeople.org/kernel_docs/process/index.html
-> > > 
-> > > PS.: this time, I fixed the checkpatch issues for you. So, let me know
-> > > if the patch below is OK, and I'll merge it at media upstream,
-> > > assuming that the other patches in this series are ok.
-> > >   
-> > 
-> > I did run checkpatch, but I don't know why these issues missed.
-> > probably I run checkpatch for all files not for patches.
-> > I will take a look at the documentation and keep this in mind for future
-> > upstream.
-> > Appreciated for your help.
-> 
-> Checkpatch should be run patch by patch, as we expect that all patches
-> will follow the coding style and will compile fine, without introducing
-> warnings.
-> 
-> I do compile the Kernel for every single patch I merge.
-> 
-Got it. I will follow this.
+This issue has been fixed by the patch below and merged in media tree,
+and also signed by you.
 
-best regards,
-Tiffany
+Is it duplicate?
 
-> Regards,
-> Mauro
+commit 37bf7e34ecc817ce6b8278588aeb22aab5635e1c
+Author: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Date:   Mon Sep 19 03:34:42 2016 -0300
+
+    [media] media: mtk-mdp: fix build warning in arch x86
+
+    This patch fix build warning in arch x86
+
+    Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+    Signed-off-by: Hans Verkuil <hans.verkuil@cisco.com>
+    Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
 
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+
+On Fri, 2016-10-21 at 11:59 -0200, Mauro Carvalho Chehab wrote:
+> When building on i386 in 32 bits, several new warnings appear:
+> 
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c: In function 'mtk_mdp_vpu_handle_init_ack':
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c:28:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+>   struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)msg->ap_inst;
+>                             ^
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c: In function 'mtk_mdp_vpu_ipi_handler':
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c:40:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+>   struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)msg->ap_inst;
+>                             ^
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c: In function 'mtk_mdp_vpu_send_ap_ipi':
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c:111:16: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+>   msg.ap_inst = (uint64_t)vpu;
+>                 ^
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c: In function 'mtk_mdp_vpu_init':
+> drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c:129:16: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+>   msg.ap_inst = (uint64_t)vpu;
+>                 ^
+> 
+> That's because the driver assumes that it will be built only on
+> 64 bits. As we don't want extra warnings when building with 32
+> bits, we need to double-cast.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+> ---
+>  drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+> index fb07bf3dbd8b..b38d29e99f7a 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+> @@ -25,7 +25,7 @@ static inline struct mtk_mdp_ctx *vpu_to_ctx(struct mtk_mdp_vpu *vpu)
+>  
+>  static void mtk_mdp_vpu_handle_init_ack(struct mdp_ipi_comm_ack *msg)
+>  {
+> -	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)msg->ap_inst;
+> +	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)(long)msg->ap_inst;
+>  
+>  	/* mapping VPU address to kernel virtual address */
+>  	vpu->vsi = (struct mdp_process_vsi *)
+> @@ -37,7 +37,7 @@ static void mtk_mdp_vpu_ipi_handler(void *data, unsigned int len, void *priv)
+>  {
+>  	unsigned int msg_id = *(unsigned int *)data;
+>  	struct mdp_ipi_comm_ack *msg = (struct mdp_ipi_comm_ack *)data;
+> -	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)msg->ap_inst;
+> +	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)(long)msg->ap_inst;
+>  	struct mtk_mdp_ctx *ctx;
+>  
+>  	vpu->failure = msg->status;
+> @@ -108,7 +108,7 @@ static int mtk_mdp_vpu_send_ap_ipi(struct mtk_mdp_vpu *vpu, uint32_t msg_id)
+>  	msg.msg_id = msg_id;
+>  	msg.ipi_id = IPI_MDP;
+>  	msg.vpu_inst_addr = vpu->inst_addr;
+> -	msg.ap_inst = (uint64_t)vpu;
+> +	msg.ap_inst = (uint64_t)(long)vpu;
+>  	err = mtk_mdp_vpu_send_msg((void *)&msg, sizeof(msg), vpu, IPI_MDP);
+>  	if (!err && vpu->failure)
+>  		err = -EINVAL;
+> @@ -126,7 +126,7 @@ int mtk_mdp_vpu_init(struct mtk_mdp_vpu *vpu)
+>  
+>  	msg.msg_id = AP_MDP_INIT;
+>  	msg.ipi_id = IPI_MDP;
+> -	msg.ap_inst = (uint64_t)vpu;
+> +	msg.ap_inst = (uint64_t)(long)vpu;
+>  	err = mtk_mdp_vpu_send_msg((void *)&msg, sizeof(msg), vpu, IPI_MDP);
+>  	if (!err && vpu->failure)
+>  		err = -EINVAL;
