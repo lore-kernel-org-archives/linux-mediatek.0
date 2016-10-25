@@ -1,37 +1,54 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v17 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Tue, 25 Oct 2016 14:23:01 +0200
-Message-ID: <e00519e2-990c-b9b2-71d4-a4c8d36f5e65@gmail.com>
-References: <1472280263-18177-1-git-send-email-jitao.shi@mediatek.com>
- <1472280263-18177-2-git-send-email-jitao.shi@mediatek.com>
- <CAFqH_50_OwsbMWHkT_eukF52BVZYyMbGiamXO=pV4PpJq6BADA@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v9 1/4] soc: mediatek: Refine scpsys to support multiple
+ platform
+Date: Tue, 25 Oct 2016 16:04:05 +0200
+Message-ID: <1d5cda95-467a-4f95-1cc9-b8f156271a54@gmail.com>
+References: <1476953798-23263-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1476953798-23263-2-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFqH_50_OwsbMWHkT_eukF52BVZYyMbGiamXO=pV4PpJq6BADA@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Enric Balletbo Serra <eballetbo@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, bibby.hsieh@mediatek.com, ck.hu@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Inki Dae <inki.dae@samsung.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1476953798-23263-2-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi James,
 
+On 10/20/2016 10:56 AM, James Liao wrote:
+> -static int scpsys_probe(struct platform_device *pdev)
+> +static void init_clks(struct platform_device *pdev, struct clk *clk[CLK_MAX])
 
-On 10/18/2016 04:37 PM, Enric Balletbo Serra wrote:
-[...]
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-[...]
->> +
->> +/* Firmware */
->> +#define PS_FW_NAME             "ps864x_fw.bin"
->> +
->
-> From where I can download this firmware image?
->
+I prefer struct clk **clk.
 
-I suppose this FW bits have to be added to linux-firmware repository 
-first, before this patch can be accepted.
+> +{
+> +	int i;
+> +
+> +	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
+> +		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
+> +}
+> +
+> +static struct scp *init_scp(struct platform_device *pdev,
+> +			const struct scp_domain_data *scp_domain_data, int num)
+>  {
+>  	struct genpd_onecell_data *pd_data;
+>  	struct resource *res;
+> -	int i, j, ret;
+> +	int i, j;
+>  	struct scp *scp;
+> -	struct clk *clk[MT8173_CLK_MAX];
+> +	struct clk *clk[CLK_MAX];
+
+should be *[CLK_MAX - 1] but I would prefer to define in the enum:
+CLK_MAX = CLK_VENC_LT,
+
+If you are ok with it, I can fix both of my comments when applying.
 
 Regards,
 Matthias
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
