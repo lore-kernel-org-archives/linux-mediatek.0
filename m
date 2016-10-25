@@ -1,184 +1,37 @@
-From: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2] drm/mediatek: fixed the calc method of data rate per lane
-Date: Tue, 25 Oct 2016 13:40:45 +0800
-Message-ID: <1477374045-2837-1-git-send-email-jitao.shi@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [v17 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
+Date: Tue, 25 Oct 2016 14:23:01 +0200
+Message-ID: <e00519e2-990c-b9b2-71d4-a4c8d36f5e65@gmail.com>
+References: <1472280263-18177-1-git-send-email-jitao.shi@mediatek.com>
+ <1472280263-18177-2-git-send-email-jitao.shi@mediatek.com>
+ <CAFqH_50_OwsbMWHkT_eukF52BVZYyMbGiamXO=pV4PpJq6BADA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, stonea168-9Onoh4P/yGk@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFqH_50_OwsbMWHkT_eukF52BVZYyMbGiamXO=pV4PpJq6BADA@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, bibby.hsieh@mediatek.com, ck.hu@mediatek.com, Russell King <rmk+kernel@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Inki Dae <inki.dae@samsung.com>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe>
 List-Id: linux-mediatek@lists.infradead.org
 
-Tune dsi frame rate by pixel clock, dsi add some extra signal (i.e. Tlpx,
-Ths-prepare, Ths-zero, Ths-trail,Ths-exit) when enter and exit LP mode, this
-signal will cause h-time larger than normal and reduce FPS.
-Need to multiply a coefficient to offset the extra signal's effect.
-coefficient = ((htotal*bpp/lane_number)+Tlpx+Ths_prep+Ths_zero+Ths_trail+
-                Ths_exit)/(htotal*bpp/lane_number))
 
-Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
-Change since v1:
- - phy_timing2 and phy_timing3 refer clock cycle time.
- - define values of LPX HS_PRPR HS_ZERO HS_TRAIL TA_GO TA_SURE TA_GET DA_HS_EXIT
----
- drivers/gpu/drm/mediatek/mtk_dsi.c |  103 +++++++++++++++++++++++-------------
- 1 file changed, 67 insertions(+), 36 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 28b2044..ade6f46 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -85,16 +85,16 @@
- #define LD0_WAKEUP_EN			BIT(2)
- 
- #define DSI_PHY_TIMECON0	0x110
--#define LPX				(0xff << 0)
--#define HS_PRPR				(0xff << 8)
--#define HS_ZERO				(0xff << 16)
--#define HS_TRAIL			(0xff << 24)
-+#define LPX				(5 << 0)
-+#define HS_PRPR				(6 << 8)
-+#define HS_ZERO				(10 << 16)
-+#define HS_TRAIL			(8 << 24)
- 
- #define DSI_PHY_TIMECON1	0x114
--#define TA_GO				(0xff << 0)
--#define TA_SURE				(0xff << 8)
--#define TA_GET				(0xff << 16)
--#define DA_HS_EXIT			(0xff << 24)
-+#define TA_GO				(20 << 0)
-+#define TA_SURE				(7 << 8)
-+#define TA_GET				(25 << 16)
-+#define DA_HS_EXIT			(7 << 24)
- 
- #define DSI_PHY_TIMECON2	0x118
- #define CONT_DET			(0xff << 0)
-@@ -158,28 +158,14 @@ static void mtk_dsi_mask(struct mtk_dsi *dsi, u32 offset, u32 mask, u32 data)
- 	writel((temp & ~mask) | (data & mask), dsi->regs + offset);
- }
- 
--static void dsi_phy_timconfig(struct mtk_dsi *dsi)
-+static void dsi_phy_timconfig(struct mtk_dsi *dsi, u32 phy_timing0,
-+			      u32 phy_timing1, u32 phy_timing2,
-+			      u32 phy_timing3)
- {
--	u32 timcon0, timcon1, timcon2, timcon3;
--	unsigned int ui, cycle_time;
--	unsigned int lpx;
--
--	ui = 1000 / dsi->data_rate + 0x01;
--	cycle_time = 8000 / dsi->data_rate + 0x01;
--	lpx = 5;
--
--	timcon0 = (8 << 24) | (0xa << 16) | (0x6 << 8) | lpx;
--	timcon1 = (7 << 24) | (5 * lpx << 16) | ((3 * lpx) / 2) << 8 |
--		  (4 * lpx);
--	timcon2 = ((NS_TO_CYCLE(0x64, cycle_time) + 0xa) << 24) |
--		  (NS_TO_CYCLE(0x150, cycle_time) << 16);
--	timcon3 = (2 * lpx) << 16 | NS_TO_CYCLE(80 + 52 * ui, cycle_time) << 8 |
--		   NS_TO_CYCLE(0x40, cycle_time);
--
--	writel(timcon0, dsi->regs + DSI_PHY_TIMECON0);
--	writel(timcon1, dsi->regs + DSI_PHY_TIMECON1);
--	writel(timcon2, dsi->regs + DSI_PHY_TIMECON2);
--	writel(timcon3, dsi->regs + DSI_PHY_TIMECON3);
-+	writel(phy_timing0, dsi->regs + DSI_PHY_TIMECON0);
-+	writel(phy_timing1, dsi->regs + DSI_PHY_TIMECON1);
-+	writel(phy_timing2, dsi->regs + DSI_PHY_TIMECON2);
-+	writel(phy_timing3, dsi->regs + DSI_PHY_TIMECON3);
- }
- 
- static void mtk_dsi_enable(struct mtk_dsi *dsi)
-@@ -202,19 +188,51 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- {
- 	struct device *dev = dsi->dev;
- 	int ret;
-+	u64 bit_clock, total_bits;
-+	u32 htotal, htotal_bits, bit_per_pixel, overhead_cycles, overhead_bits;
-+	u32 phy_timing0, phy_timing1, phy_timing2, phy_timing3;
-+	u32 ui, cycle_time;
- 
- 	if (++dsi->refcount != 1)
- 		return 0;
- 
-+	switch (dsi->format) {
-+	case MIPI_DSI_FMT_RGB565:
-+		bit_per_pixel = 16;
-+		break;
-+	case MIPI_DSI_FMT_RGB666_PACKED:
-+		bit_per_pixel = 18;
-+		break;
-+	case MIPI_DSI_FMT_RGB666:
-+	case MIPI_DSI_FMT_RGB888:
-+	default:
-+		bit_per_pixel = 24;
-+		break;
-+	}
-+	/**
-+	 * data_rate = (pixel_clock) * bit_per_pixel * mipi_ratio / lane_num;
-+	 * vm.pixelclock is Khz, data_rata unit is Hz, so need to multiply 1000
-+	 * mipi_ratio is (htotal * byte_per_pixel / lane_num + Tlpx + Ths_prep
-+	 *		  + Thstrail + Ths_exit + Ths_zero) /
-+	 *		 (htotal * byte_per_pixel /lane_number)
-+	 */
-+	bit_clock = dsi->vm.pixelclock * 1000 * bit_per_pixel;
-+	htotal = dsi->vm.hactive + dsi->vm.hback_porch + dsi->vm.hfront_porch +
-+		 dsi->vm.hsync_len;
-+	htotal_bits = htotal * bit_per_pixel;
-+
- 	/**
--	 * data_rate = (pixel_clock / 1000) * pixel_dipth * mipi_ratio;
--	 * pixel_clock unit is Khz, data_rata unit is MHz, so need divide 1000.
--	 * mipi_ratio is mipi clk coefficient for balance the pixel clk in mipi.
--	 * we set mipi_ratio is 1.05.
-+	 * overhead = lpx + hs_prepare + hs_zero + hs_trail + hs_exit
- 	 */
--	dsi->data_rate = dsi->vm.pixelclock * 3 * 21 / (1 * 1000 * 10);
-+	overhead_cycles = LPX + (HS_PRPR >> 8) + (HS_ZERO >> 16) +
-+			  (HS_TRAIL >> 24) + (DA_HS_EXIT >> 24);
-+	overhead_bits = overhead_cycles * dsi->lanes * 8;
-+	total_bits = htotal_bits + overhead_bits;
- 
--	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate * 1000000);
-+	dsi->data_rate = DIV_ROUND_UP_ULL(bit_clock * total_bits,
-+					  htotal_bits * dsi->lanes);
-+
-+	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate);
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to set data rate: %d\n", ret);
- 		goto err_refcount;
-@@ -236,7 +254,20 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 
- 	mtk_dsi_enable(dsi);
- 	mtk_dsi_reset(dsi);
--	dsi_phy_timconfig(dsi);
-+
-+	ui = 1000 / dsi->data_rate + 0x01;
-+	cycle_time = 8000 / dsi->data_rate + 0x01;
-+
-+	phy_timing0 = LPX | HS_PRPR | HS_ZERO | HS_TRAIL;
-+	phy_timing1 = TA_GO | TA_SURE | TA_GET | DA_HS_EXIT;
-+	phy_timing2 = ((NS_TO_CYCLE(0x64, cycle_time) + 0xa) << 24) |
-+		      (NS_TO_CYCLE(0x150, cycle_time) << 16);
-+	phy_timing3 = (2 * LPX) << 16 |
-+		      NS_TO_CYCLE(80 + 52 * ui, cycle_time) << 8 |
-+		      NS_TO_CYCLE(0x40, cycle_time);
-+
-+	dsi_phy_timconfig(dsi, phy_timing0, phy_timing1, phy_timing2,
-+			  phy_timing3);
- 
- 	return 0;
- 
--- 
-1.7.9.5
+On 10/18/2016 04:37 PM, Enric Balletbo Serra wrote:
+[...]
+>> --- /dev/null
+>> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
+[...]
+>> +
+>> +/* Firmware */
+>> +#define PS_FW_NAME             "ps864x_fw.bin"
+>> +
+>
+> From where I can download this firmware image?
+>
+
+I suppose this FW bits have to be added to linux-firmware repository 
+first, before this patch can be accepted.
+
+Regards,
+Matthias
