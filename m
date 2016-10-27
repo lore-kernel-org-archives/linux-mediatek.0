@@ -1,40 +1,44 @@
-From: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
-Subject: Re: [PATCH v7, 0/8] Add MediaTek USB3 DRD Driver
-Date: Thu, 27 Oct 2016 17:05:55 +0200
-Message-ID: <20161027150555.GA13414@kroah.com>
-References: <1476844107-31087-1-git-send-email-chunfeng.yun@mediatek.com>
+From: =?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@laposte.net>
+Subject: [PATCH next 2/2] media: mtk-mdp: NULL-terminate mtk_mdp_comp_dt_ids
+Date: Thu, 27 Oct 2016 22:23:25 +0200
+Message-ID: <20161027202325.20680-2-vincent.stehle@laposte.net>
+References: <1473340146-6598-4-git-send-email-minghsiu.tsai@mediatek.com>
+ <20161027202325.20680-1-vincent.stehle@laposte.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1476844107-31087-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20161027202325.20680-1-vincent.stehle@laposte.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, =?UTF-8?q?Vincent=20Stehl=C3=A9?= <vincent.stehle@laposte.net>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@s-opensource.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Oct 19, 2016 at 10:28:19AM +0800, Chunfeng Yun wrote:
-> These patches introduce the MediaTek USB3 dual-role controller
-> driver.
-> 
-> The driver can be configured as Dual-Role Device (DRD),
-> Peripheral Only and Host Only (xHCI) modes. It works well
-> with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
-> tested on MT8173 platform which only contains USB2.0 device IP,
-> and on MT6290 platform which contains USB3.0 device IP.
-> 
-> Change in v7:
-> 1. split dual-role driver into four patchs
-> 2. remove QMU done tasklet
-> 3. add a bool in xhci_hcd_mtk to signal absence of IPPC
+The mtk_mdp_comp_dt_ids[] array should be NULL-terminated; add therefore an
+empty entry in the end.
 
-Given a lack of objection from anyone, I've now merged these to my tree
-to get them a spin in the 0-day build-bot.
+Fixes: c8eb2d7e8202fd9c ("[media] media: Add Mediatek MDP Driver")
+Signed-off-by: Vincent Stehlé <vincent.stehle@laposte.net>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>
+Cc: Mauro Carvalho Chehab <mchehab@s-opensource.com>
+---
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-thanks,
-
-greg k-h
---
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 40a229d..53296e2 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -50,7 +50,8 @@ static const struct of_device_id mtk_mdp_comp_dt_ids[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt8173-mdp-wrot",
+ 		.data = (void *)MTK_MDP_WROT
+-	}
++	},
++	{ },
+ };
+ 
+ static const struct of_device_id mtk_mdp_of_ids[] = {
+-- 
+2.9.3
