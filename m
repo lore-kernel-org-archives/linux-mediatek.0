@@ -1,148 +1,178 @@
-From: Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v4] drm/mediatek: fixed the calc method of data rate per lane
-Date: Thu, 27 Oct 2016 10:21:25 +0800
-Message-ID: <1477534885-1073-1-git-send-email-jitao.shi@mediatek.com>
+From: "FedEx 2Day A.M." <brett.reed-TTYyM/R2iXTXJLKp6sIUmUEOCMrvLtNR@public.gmane.org>
+Subject: Problem with parcel shipping, ID:000707313
+Date: Thu, 27 Oct 2016 08:55:43 +0000
+Message-ID: <4ad3afd5503032eda59f4fa68683488f@prediksijitu388.com>
+Reply-To: "FedEx 2Day A.M." <brett.reed-TTYyM/R2iXTXJLKp6sIUmUEOCMrvLtNR@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>, ck.hu@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Jitao Shi <jitao.shi@mediatek.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Inki Dae <inki.dae@samsung.com>, Rahul Sharma <rahul.sharma@samsung.com>, Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, Andy Yan <andy.yan@rock-chips.com>, Russell King <rmk+kernel@arm.linux.org.uk>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, yingjoe.chen@medi
+Content-Type: multipart/mixed; boundary="b1_cbdc8c0e39ad7961bcee1a7e090c2447"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-  Tune dsi frame rate by pixel clock, dsi add some extra signal (i.e.
-Tlpx, Ths-prepare, Ths-zero, Ths-trail,Ths-exit) when enter and exit LP
-mode, those signals will cause h-time larger than normal and reduce FPS.
-So need to multiply a coefficient to offset the extra signal's effect.
-  coefficient = ((htotal*bpp/lane_number)+Tlpx+Ths_prep+Ths_zero+
-		 Ths_trail+Ths_exit)/(htotal*bpp/lane_number)
+--b1_cbdc8c0e39ad7961bcee1a7e090c2447
+Content-Type: text/plain; charset=us-ascii
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
-Chnage since v3:
- - wrapp the commit msg.
- - fix alignment of some lines. 
+Dear Customer,
 
-Change since v2:
- - move phy timing back to dsi_phy_timconfig.
+We could not deliver your parcel.
+Shipment Label is attached to email.
 
-Change since v1:
- - phy_timing2 and phy_timing3 refer clock cycle time.
- - define values of LPX HS_PRPR HS_ZERO HS_TRAIL TA_GO TA_SURE TA_GET DA_HS_EXIT.
----
- drivers/gpu/drm/mediatek/mtk_dsi.c |   71 +++++++++++++++++++++++++-----------
- 1 file changed, 49 insertions(+), 22 deletions(-)
+Yours trully,
+Brett Reed,
+FedEx Delivery Agent.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 28b2044..5defe58 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -85,16 +85,16 @@
- #define LD0_WAKEUP_EN			BIT(2)
- 
- #define DSI_PHY_TIMECON0	0x110
--#define LPX				(0xff << 0)
--#define HS_PRPR				(0xff << 8)
--#define HS_ZERO				(0xff << 16)
--#define HS_TRAIL			(0xff << 24)
-+#define LPX				(5 << 0)
-+#define HS_PRPR				(6 << 8)
-+#define HS_ZERO				(10 << 16)
-+#define HS_TRAIL			(8 << 24)
- 
- #define DSI_PHY_TIMECON1	0x114
--#define TA_GO				(0xff << 0)
--#define TA_SURE				(0xff << 8)
--#define TA_GET				(0xff << 16)
--#define DA_HS_EXIT			(0xff << 24)
-+#define TA_GO				(20 << 0)
-+#define TA_SURE				(7 << 8)
-+#define TA_GET				(25 << 16)
-+#define DA_HS_EXIT			(7 << 24)
- 
- #define DSI_PHY_TIMECON2	0x118
- #define CONT_DET			(0xff << 0)
-@@ -161,20 +161,17 @@ static void mtk_dsi_mask(struct mtk_dsi *dsi, u32 offset, u32 mask, u32 data)
- static void dsi_phy_timconfig(struct mtk_dsi *dsi)
- {
- 	u32 timcon0, timcon1, timcon2, timcon3;
--	unsigned int ui, cycle_time;
--	unsigned int lpx;
-+	u32 ui, cycle_time;
- 
- 	ui = 1000 / dsi->data_rate + 0x01;
- 	cycle_time = 8000 / dsi->data_rate + 0x01;
--	lpx = 5;
- 
--	timcon0 = (8 << 24) | (0xa << 16) | (0x6 << 8) | lpx;
--	timcon1 = (7 << 24) | (5 * lpx << 16) | ((3 * lpx) / 2) << 8 |
--		  (4 * lpx);
-+	timcon0 = LPX | HS_PRPR | HS_ZERO | HS_TRAIL;
-+	timcon1 = 4 * LPX | (3 * LPX / 2) << 8 | 5 * LPX << 16 | DA_HS_EXIT;
- 	timcon2 = ((NS_TO_CYCLE(0x64, cycle_time) + 0xa) << 24) |
- 		  (NS_TO_CYCLE(0x150, cycle_time) << 16);
--	timcon3 = (2 * lpx) << 16 | NS_TO_CYCLE(80 + 52 * ui, cycle_time) << 8 |
--		   NS_TO_CYCLE(0x40, cycle_time);
-+	timcon3 = NS_TO_CYCLE(0x40, cycle_time) | (2 * LPX) << 16 |
-+		  NS_TO_CYCLE(80 + 52 * ui, cycle_time) << 8;
- 
- 	writel(timcon0, dsi->regs + DSI_PHY_TIMECON0);
- 	writel(timcon1, dsi->regs + DSI_PHY_TIMECON1);
-@@ -202,19 +199,49 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- {
- 	struct device *dev = dsi->dev;
- 	int ret;
-+	u64 bit_clock, total_bits;
-+	u32 htotal, htotal_bits, bit_per_pixel, overhead_cycles, overhead_bits;
- 
- 	if (++dsi->refcount != 1)
- 		return 0;
- 
-+	switch (dsi->format) {
-+	case MIPI_DSI_FMT_RGB565:
-+		bit_per_pixel = 16;
-+		break;
-+	case MIPI_DSI_FMT_RGB666_PACKED:
-+		bit_per_pixel = 18;
-+		break;
-+	case MIPI_DSI_FMT_RGB666:
-+	case MIPI_DSI_FMT_RGB888:
-+	default:
-+		bit_per_pixel = 24;
-+		break;
-+	}
- 	/**
--	 * data_rate = (pixel_clock / 1000) * pixel_dipth * mipi_ratio;
--	 * pixel_clock unit is Khz, data_rata unit is MHz, so need divide 1000.
--	 * mipi_ratio is mipi clk coefficient for balance the pixel clk in mipi.
--	 * we set mipi_ratio is 1.05.
-+	 * data_rate = (pixel_clock) * bit_per_pixel * mipi_ratio / lane_num;
-+	 * vm.pixelclock is Khz, data_rata unit is Hz, so need to multiply 1000
-+	 * mipi_ratio is (htotal * byte_per_pixel / lane_num + Tlpx + Ths_prep
-+	 *		  + Thstrail + Ths_exit + Ths_zero) /
-+	 *		 (htotal * byte_per_pixel /lane_number)
- 	 */
--	dsi->data_rate = dsi->vm.pixelclock * 3 * 21 / (1 * 1000 * 10);
-+	bit_clock = dsi->vm.pixelclock * 1000 * bit_per_pixel;
-+	htotal = dsi->vm.hactive + dsi->vm.hback_porch + dsi->vm.hfront_porch +
-+		 dsi->vm.hsync_len;
-+	htotal_bits = htotal * bit_per_pixel;
-+
-+	/**
-+	 * overhead = lpx + hs_prepare + hs_zero + hs_trail + hs_exit
-+	 */
-+	overhead_cycles = LPX + (HS_PRPR >> 8) + (HS_ZERO >> 16) +
-+			  (HS_TRAIL >> 24) + (DA_HS_EXIT >> 24);
-+	overhead_bits = overhead_cycles * dsi->lanes * 8;
-+	total_bits = htotal_bits + overhead_bits;
-+
-+	dsi->data_rate = DIV_ROUND_UP_ULL(bit_clock * total_bits,
-+					  htotal_bits * dsi->lanes);
- 
--	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate * 1000000);
-+	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate);
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to set data rate: %d\n", ret);
- 		goto err_refcount;
--- 
-1.7.9.5
+
+--b1_cbdc8c0e39ad7961bcee1a7e090c2447
+Content-Type: application/zip; name="FedEx_000707313.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=FedEx_000707313.zip
+
+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
+
+
+--b1_cbdc8c0e39ad7961bcee1a7e090c2447
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_cbdc8c0e39ad7961bcee1a7e090c2447--
