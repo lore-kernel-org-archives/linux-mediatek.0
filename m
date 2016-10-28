@@ -1,70 +1,73 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: fix null pointer dereference
-Date: Fri, 28 Oct 2016 16:34:46 +0800
-Message-ID: <1477643686.17640.3.camel@mtksdaap41>
-References: <20161026140904.26798-1-matthias.bgg@gmail.com>
+From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v9 1/4] soc: mediatek: Refine scpsys to support multiple
+ platform
+Date: Fri, 28 Oct 2016 17:36:48 +0800
+Message-ID: <1477647408.24014.6.camel@mtksdaap41>
+References: <1476953798-23263-1-git-send-email-jamesjj.liao@mediatek.com>
+         <1476953798-23263-2-git-send-email-jamesjj.liao@mediatek.com>
+         <1d5cda95-467a-4f95-1cc9-b8f156271a54@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20161026140904.26798-1-matthias.bgg@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: p.zabel@pengutronix.de, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1d5cda95-467a-4f95-1cc9-b8f156271a54-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias:
+Hi Matthias,
 
-Even though OVL HW would not be enabled before component_add() in
-current design, your patch would be safe for any situation.
+Sorry for late reply due to our email service.
 
-Acked-by CK Hu <ck.hu@mediatek.com>
-
-Regards,
-CK
-
-On Wed, 2016-10-26 at 16:09 +0200, Matthias Brugger wrote:
-> The probe function requests the interrupt before initializing
-> the ddp component. Which leads to a null pointer dereference at boot.
-> Fix this by requesting the interrput after all components got
-> initialized properly.
+On Tue, 2016-10-25 at 16:04 +0200, Matthias Brugger wrote:
+> Hi James,
 > 
-> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC
-> MT8173.")
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
+> On 10/20/2016 10:56 AM, James Liao wrote:
+> > -static int scpsys_probe(struct platform_device *pdev)
+> > +static void init_clks(struct platform_device *pdev, struct clk *clk[CLK_MAX])
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 019b7ca..1e78159 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -250,13 +250,6 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->  	if (irq < 0)
->  		return irq;
->  
-> -	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
-> -			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
-> -	if (ret < 0) {
-> -		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
-> -		return ret;
-> -	}
-> -
->  	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_OVL);
->  	if (comp_id < 0) {
->  		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
-> @@ -272,6 +265,13 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->  
->  	platform_set_drvdata(pdev, priv);
->  
-> +	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
-> +			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
-> +	if (ret < 0) {
-> +		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
-> +		return ret;
-> +	}
-> +
->  	ret = component_add(dev, &mtk_disp_ovl_component_ops);
->  	if (ret)
->  		dev_err(dev, "Failed to add component: %d\n", ret);
+> I prefer struct clk **clk.
+
+Okay.
+
+> > +{
+> > +	int i;
+> > +
+> > +	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
+> > +		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
+> > +}
+> > +
+> > +static struct scp *init_scp(struct platform_device *pdev,
+> > +			const struct scp_domain_data *scp_domain_data, int num)
+> >  {
+> >  	struct genpd_onecell_data *pd_data;
+> >  	struct resource *res;
+> > -	int i, j, ret;
+> > +	int i, j;
+> >  	struct scp *scp;
+> > -	struct clk *clk[MT8173_CLK_MAX];
+> > +	struct clk *clk[CLK_MAX];
+> 
+> should be *[CLK_MAX - 1] but I would prefer to define in the enum:
+> CLK_MAX = CLK_VENC_LT,
+
+After init_clks() the clk[] will have valid contents between
+clk[1]..clk[CLK_MAX-1], so it's necessary to declare clk[] with CLK_MAX
+elements.
+
+> If you are ok with it, I can fix both of my comments when applying.
+
+Yes. struct clk **clk can be applied directly. But I think clk[CLK_MAX]
+should be kept in current implementation.
+
+
+Best regards,
+
+James
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
