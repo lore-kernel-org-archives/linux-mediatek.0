@@ -1,34 +1,70 @@
-From: Vincent =?iso-8859-1?Q?Stehl=E9?= <vincent.stehle@laposte.net>
-Subject: Re: [PATCH next 1/2] media: mtk-mdp: fix video_device_release
- argument
-Date: Fri, 28 Oct 2016 09:52:54 +0200
-Message-ID: <20161028075253.gdy2bbugih6oqncw@romuald.bergerie>
-References: <1473340146-6598-4-git-send-email-minghsiu.tsai@mediatek.com>
- <20161027202325.20680-1-vincent.stehle@laposte.net>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: fix null pointer dereference
+Date: Fri, 28 Oct 2016 16:34:46 +0800
+Message-ID: <1477643686.17640.3.camel@mtksdaap41>
+References: <20161026140904.26798-1-matthias.bgg@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20161027202325.20680-1-vincent.stehle@laposte.net>
-Sender: linux-media-owner@vger.kernel.org
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Mauro Carvalho Chehab <mchehab@s-opensource.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20161026140904.26798-1-matthias.bgg@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: p.zabel@pengutronix.de, airlied@linux.ie, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Oct 27, 2016 at 10:23:24PM +0200, Vincent Stehlé wrote:
-> video_device_release() takes a pointer to struct video_device as argument.
-> Fix two call sites where the address of the pointer is passed instead.
+Hi, Matthias:
 
-Sorry, I messed up: please ignore that "fix". The 0day robot made me
-realize this is indeed not a proper fix.
+Even though OVL HW would not be enabled before component_add() in
+current design, your patch would be safe for any situation.
 
-The issue remains, though: we cannot call video_device_release() on the
-vdev structure member, as this will in turn call kfree(). Most probably,
-vdev needs to be dynamically allocated, or the call to
-video_device_release() dropped completely.
+Acked-by CK Hu <ck.hu@mediatek.com>
 
-Sorry for the bad patch.
+Regards,
+CK
 
-Best regards,
-
-Vincent.
+On Wed, 2016-10-26 at 16:09 +0200, Matthias Brugger wrote:
+> The probe function requests the interrupt before initializing
+> the ddp component. Which leads to a null pointer dereference at boot.
+> Fix this by requesting the interrput after all components got
+> initialized properly.
+> 
+> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC
+> MT8173.")
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index 019b7ca..1e78159 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -250,13 +250,6 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+>  	if (irq < 0)
+>  		return irq;
+>  
+> -	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
+> -			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
+> -	if (ret < 0) {
+> -		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
+> -		return ret;
+> -	}
+> -
+>  	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_OVL);
+>  	if (comp_id < 0) {
+>  		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
+> @@ -272,6 +265,13 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
+>  
+>  	platform_set_drvdata(pdev, priv);
+>  
+> +	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
+> +			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
+> +	if (ret < 0) {
+> +		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
+> +		return ret;
+> +	}
+> +
+>  	ret = component_add(dev, &mtk_disp_ovl_component_ops);
+>  	if (ret)
+>  		dev_err(dev, "Failed to add component: %d\n", ret);
