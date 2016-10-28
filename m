@@ -1,93 +1,42 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7, 0/8] Add MediaTek USB3 DRD Driver
-Date: Fri, 28 Oct 2016 12:37:39 +0200
-Message-ID: <28f6db69-88ca-4715-1e46-6d5e5efb949c@gmail.com>
-References: <1476844107-31087-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] drm/mediatek: fix null pointer dereference
+Date: Fri, 28 Oct 2016 12:39:37 +0200
+Message-ID: <87c18360-467c-267b-1400-48d985ecdc8a@gmail.com>
+References: <20161026140904.26798-1-matthias.bgg@gmail.com>
+ <1477643686.17640.3.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1476844107-31087-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>
-Cc: Oliver Neukum <oneukum@suse.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Alan Cooper <alcooperx@gmail.com>, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1477643686.17640.3.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: airlied-cv59FeDIM0c@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Chunfeng,
-
-On 10/19/2016 04:28 AM, Chunfeng Yun wrote:
-> These patches introduce the MediaTek USB3 dual-role controller
-> driver.
->
-> The driver can be configured as Dual-Role Device (DRD),
-> Peripheral Only and Host Only (xHCI) modes. It works well
-> with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
-> tested on MT8173 platform which only contains USB2.0 device IP,
-> and on MT6290 platform which contains USB3.0 device IP.
->
-> Change in v7:
-> 1. split dual-role driver into four patchs
-> 2. remove QMU done tasklet
-> 3. add a bool in xhci_hcd_mtk to signal absence of IPPC
->
-> Change in v6:
-> 1. handle endianness of GPD and SETUP data
-> 2. remove dummy error log and return suitable error number
-> 3. cancel delay work when deregiseter driver
->
-> Change in v5:
-> 1. modify some comments
-> 2. rename some unsuitable variables
-> 3. add reg-names property for host node
-> 4. add USB_MTU3_DEBUG to control debug messages
->
-> Change in v4:
-> 1. fix build errors on non-mediatek platforms
-> 2. provide manual dual-role switch via debugfs instead of sysfs
->
-> Change in v3:
-> 1. fix some typo error
-> 2. rename mtu3.txt to mt8173-mtu3.txt
->
-> Change in v2:
-> 1. modify binding docs according to suggestions
-> 2. modify some comments and remove some dummy blank lines
-> 3. fix memory leakage
->
->
-> Chunfeng Yun (8):
->   dt-bindings: mt8173-xhci: support host side of dual-role mode
->   dt-bindings: mt8173-mtu3: add devicetree bindings
->   usb: xhci-mtk: make IPPC register optional
->   usb: Add MediaTek USB3 DRD driver
->   usb: mtu3: Super-Speed Peripheral mode support
->   usb: mtu3: host only mode support
->   usb: mtu3: dual-role mode support
->   arm64: dts: mediatek: add USB3 DRD driver
->
-
-I tried the driver with my mt8173-evb, but wasn't able to get USB 
-working (no usb stick detected when adding to the usb port).
-
-# dmesg |grep mtu
-[    0.428420] mtu3 11271000.usb: failed to get vusb33
-[    0.510570] mtu3 11271000.usb: failed to get vbus
-[    0.592103] mtu3 11271000.usb: failed to get vbus
 
 
-Relevant config options:
-CONFIG_USB_MTU3=y
-CONFIG_USB_MTU3_HOST=y
-CONFIG_USB_MTU3_DEBUG=y
-CONFIG_PHY_MT65XX_USB3=y
+On 10/28/2016 10:34 AM, CK Hu wrote:
+> Hi, Matthias:
+>
+> Even though OVL HW would not be enabled before component_add() in
+> current design, your patch would be safe for any situation.
 
+Maybe the FW I use left an interrupt pending before loading the kernel 
+and this leads to the case where we enter the handler before all data 
+structures are set up.
 
-Looks like an error in the device tree. I can see that the mt6397 
-regulater get's initialized *after* the mtu3 driver:
-[    0.505166] mt6397-regulator mt6397-regulator: Chip ID = 0x4097
+>
+> Acked-by CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Not sure if this is related.
-Any idea whats going wrong here?
+Thanks!
 
-Cheers,
 Matthias
