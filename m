@@ -1,64 +1,25 @@
-From: Paul Bolle <pebolle@tiscali.nl>
-Subject: pinctrl: mediatek: build failure if CONFIG_IRQ_DOMAIN is not set
-Date: Fri, 28 Oct 2016 19:20:33 +0200
-Message-ID: <1477675233.2167.11.camel@tiscali.nl>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: pinctrl: mediatek: build failure if CONFIG_IRQ_DOMAIN is not set
+Date: Sat, 29 Oct 2016 10:36:01 +0200
+Message-ID: <CACRpkdZ-8jSfyvP_kmVEW=N0FWv+vc+z08roFn4dsvRFxg7Amw@mail.gmail.com>
+References: <1477675233.2167.11.camel@tiscali.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <1477675233.2167.11.camel@tiscali.nl>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Paul Bolle <pebolle@tiscali.nl>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+On Fri, Oct 28, 2016 at 7:20 PM, Paul Bolle <pebolle@tiscali.nl> wrote:
 
-0) A rather spartan build, on x86_64, which did include
-drivers/pinctrl/mediatek/pinctrl-mtk-common.o failed like this:
+> 3) Would you like me to submit a proper (but lightly tested) patch or
+> do you prefer to fix this yourself?
 
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c: In function ‘mtk_gpio_to_irq’:
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c:838:8: error: implicit declaration of function ‘irq_find_mapping’ [-Werror=implicit-function-declaration]
-  irq = irq_find_mapping(pctl->domain, pin->eint.eintnum);
-        ^~~~~~~~~~~~~~~~
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c: In function ‘mtk_pctrl_init’:
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c:1474:17: error: implicit declaration of function ‘irq_domain_add_linear’ [-Werror=implicit-function-declaration]
-  pctl->domain = irq_domain_add_linear(np,
-                 ^~~~~~~~~~~~~~~~~~~~~
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c:1475:27: error: ‘irq_domain_simple_ops’ undeclared (first use in this function)
-   pctl->devdata->ap_num, &irq_domain_simple_ops, NULL);
-                           ^~~~~~~~~~~~~~~~~~~~~
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c:1475:27: note: each undeclared identifier is reported only once for each function it appears in
-drivers/pinctrl/mediatek/pinctrl-mtk-common.c:1484:14: error: implicit declaration of function ‘irq_create_mapping’ [-Werror=implicit-function-declaration]
-   int virq = irq_create_mapping(pctl->domain, i);
-              ^~~~~~~~~~~~~~~~~~
-cc1: some warnings being treated as errors
-make[3]: *** [drivers/pinctrl/mediatek/pinctrl-mtk-common.o] Error 1
-make[2]: *** [drivers/pinctrl/mediatek] Error 2
-make[1]: *** [drivers/pinctrl] Error 2
-make: *** [drivers] Error 2
+Please send a tested patch, I'll apply it.
 
-1) That build had CONFIG_COMPILE_TEST set (obviously) but
-CONFIG_IRQ_DOMAIN not set.
+Thanks for finding this!
 
-2) This quick hack fixes that for me:
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 419ea4d5964d..066087156dcc 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -7,6 +7,7 @@ config PINCTRL_MTK
-        select GENERIC_PINCONF
-        select GPIOLIB
-        select OF_GPIO
-+       select IRQ_DOMAIN
- 
- # For ARMv7 SoCs
- config PINCTRL_MT2701
-
-3) Would you like me to submit a proper (but lightly tested) patch or
-do you prefer to fix this yourself?
-
-Thanks,
-
-
-Paul Bolle
+Yours,
+Linus Walleij
