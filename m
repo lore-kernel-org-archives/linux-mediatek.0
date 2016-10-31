@@ -1,99 +1,102 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH v9 2/4] soc: mediatek: Init MT8173 scpsys driver earlier
-Date: Mon, 31 Oct 2016 10:08:22 +0800
-Message-ID: <1477879702.6649.4.camel@mtksdaap41>
-References: <1476953798-23263-1-git-send-email-jamesjj.liao@mediatek.com>
-         <1476953798-23263-3-git-send-email-jamesjj.liao@mediatek.com>
-         <14a1ebb2-fda2-278b-b2f0-8f9c6ff6a83d@gmail.com>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v7, 0/8] Add MediaTek USB3 DRD Driver
+Date: Mon, 31 Oct 2016 11:31:30 +0800
+Message-ID: <1477884690.4516.35.camel@mhfsdcap03>
+References: <1476844107-31087-1-git-send-email-chunfeng.yun@mediatek.com>
+         <28f6db69-88ca-4715-1e46-6d5e5efb949c@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <14a1ebb2-fda2-278b-b2f0-8f9c6ff6a83d@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Yong Wu <yong.wu@mediatek.com>
-Cc: Sascha Hauer <kernel@pengutronix.de>, Rob Herring <robh@kernel.org>, Kevin Hilman <khilman@kernel.org>, Daniel Kurtz <djkurtz@chromium.org>, srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <28f6db69-88ca-4715-1e46-6d5e5efb949c-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Oliver Neukum <oneukum-IBi9RG/b67k@public.gmane.org>, Alan Stern <stern-nwvwT67g6+6dFdvTe/nMLpVzexx5G7lz@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Sergei Shtylyov <sergei.shtylyov-M4DtvfQ/ZS1MRgGoP+s0PdBPR1lH4CV8@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Alan Cooper <alcooperx-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, 2016-10-31 at 01:08 +0100, Matthias Brugger wrote:
-> Hi James,
+On Fri, 2016-10-28 at 12:37 +0200, Matthias Brugger wrote:
+> Hi Chunfeng,
 > 
-> On 10/20/2016 10:56 AM, James Liao wrote:
-> > Some power domain comsumers may init before module_init.
-> > So the power domain provider (scpsys) need to be initialized
-> > earlier too.
+> On 10/19/2016 04:28 AM, Chunfeng Yun wrote:
+> > These patches introduce the MediaTek USB3 dual-role controller
+> > driver.
 > >
-> > Take an example for our IOMMU (M4U) and SMI. SMI is a bridge
-> > between IOMMU and multimedia HW. SMI is responsible to
-> > enable/disable iommu and help transfer data for each multimedia
-> > HW. Both of them have to wait until the power and clocks are
-> > enabled.
+> > The driver can be configured as Dual-Role Device (DRD),
+> > Peripheral Only and Host Only (xHCI) modes. It works well
+> > with Mass Storage, RNDIS and g_zero on FS/HS and SS. And it is
+> > tested on MT8173 platform which only contains USB2.0 device IP,
+> > and on MT6290 platform which contains USB3.0 device IP.
+[...]
 > >
-> > So scpsys driver should be initialized before SMI, and SMI should
-> > be initialized before IOMMU, and then init IOMMU consumers
-> > (display/vdec/venc/camera etc.).
+> > Change in v2:
+> > 1. modify binding docs according to suggestions
+> > 2. modify some comments and remove some dummy blank lines
+> > 3. fix memory leakage
 > >
-> > IOMMU is subsys_init by default. So we need to init scpsys driver
-> > before subsys_init.
 > >
-> > Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> > Reviewed-by: Kevin Hilman <khilman@baylibre.com>
-> > ---
+> > Chunfeng Yun (8):
+> >   dt-bindings: mt8173-xhci: support host side of dual-role mode
+> >   dt-bindings: mt8173-mtu3: add devicetree bindings
+> >   usb: xhci-mtk: make IPPC register optional
+> >   usb: Add MediaTek USB3 DRD driver
+> >   usb: mtu3: Super-Speed Peripheral mode support
+> >   usb: mtu3: host only mode support
+> >   usb: mtu3: dual-role mode support
+> >   arm64: dts: mediatek: add USB3 DRD driver
+> >
 > 
-> I didn't applied this patch for now.
-> I answered you in v7 of this series [1]. I would prefer to see if we can 
-> fix that otherwise.
+> I tried the driver with my mt8173-evb, but wasn't able to get USB 
+> working (no usb stick detected when adding to the usb port).
 > 
-> Would be great if you or Yong could provide some feedback.
+Can you test it again by USB3.0 type-A port? If it works, then
+regulators of vusb33 and vbus are got after PROBE_DEFER of
+mt6397-regulator driver;
+
+For OTG port, need cherry pick a patch:
+
+https://patchwork.kernel.org/patch/9055261/
+
+which is abandoned because GPIO driver owner wants to fix all pins with
+the same problem.
+
+Then device will be recognized well when connected to PC with OTG cable.
+
+But it is a trouble for OTG host mode, due to vbus 5.5V of OTG port is
+originally provided by charger driver which is not upstreamed on EVB
+board, we need rework the board to control vbus by gpio.
+There is a simple way, you can plug in a self-powered hub to test OTG
+host mode.
+
+
+> # dmesg |grep mtu
+> [    0.428420] mtu3 11271000.usb: failed to get vusb33
+> [    0.510570] mtu3 11271000.usb: failed to get vbus
+> [    0.592103] mtu3 11271000.usb: failed to get vbus
 > 
-> Thanks,
+> 
+> Relevant config options:
+> CONFIG_USB_MTU3=y
+> CONFIG_USB_MTU3_HOST=y
+> CONFIG_USB_MTU3_DEBUG=y
+> CONFIG_PHY_MT65XX_USB3=y
+> 
+> 
+> Looks like an error in the device tree. I can see that the mt6397 
+> regulater get's initialized *after* the mtu3 driver:
+> [    0.505166] mt6397-regulator mt6397-regulator: Chip ID = 0x4097
+> 
+> Not sure if this is related.
+> Any idea whats going wrong here?
+> 
+as above.
+
+Sorry for inconvenience
+
+> Cheers,
 > Matthias
-> 
-> [1] https://patchwork.kernel.org/patch/9397405/
-> 
-> >  drivers/soc/mediatek/mtk-scpsys.c | 19 ++++++++++++++++++-
-> >  1 file changed, 18 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> > index fa9ee69..dd7a07d 100644
-> > --- a/drivers/soc/mediatek/mtk-scpsys.c
-> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> > @@ -613,4 +613,21 @@ static int scpsys_probe(struct platform_device *pdev)
-> >  		.of_match_table = of_match_ptr(of_scpsys_match_tbl),
-> >  	},
-> >  };
-> > -builtin_platform_driver(scpsys_drv);
-> > +
-> > +static int __init scpsys_drv_init(void)
-> > +{
-> > +	return platform_driver_register(&scpsys_drv);
-> > +}
-> > +
-> > +/*
-> > + * There are some Mediatek drivers which depend on the power domain driver need
-> > + * to probe in earlier initcall levels. So scpsys driver also need to probe
-> > + * earlier.
-> > + *
-> > + * IOMMU(M4U) and SMI drivers for example. SMI is a bridge between IOMMU and
-> > + * multimedia HW. IOMMU depends on SMI, and SMI is a power domain consumer,
-> > + * so the proper probe sequence should be scpsys -> SMI -> IOMMU driver.
-> > + * IOMMU drivers are initialized during subsys_init by default, so we need to
-> > + * move SMI and scpsys drivers to subsys_init or earlier init levels.
-> > + */
-> > +subsys_initcall(scpsys_drv_init);
-> >
-
-Hi Matthias,
-
-I got it, thanks.
 
 
-Hi Yong,
-
-Is this patch still needed on latest kernel for IOMMU driver? Or we have
-other solutions for IOMMU driver init?
-
-
-Best regards,
-
-James
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
