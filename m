@@ -1,77 +1,154 @@
-From: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 1/3] dt-bindings: mediatek: Add a binding for Mediatek JPEG
- Decoder
-Date: Fri, 4 Nov 2016 13:51:18 +0800
-Message-ID: <1478238680-11310-2-git-send-email-rick.chang@mediatek.com>
-References: <1478238680-11310-1-git-send-email-rick.chang@mediatek.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: [PATCH v3 0/3] Add Mediatek JPEG Decoder
+Date: Fri, 4 Nov 2016 13:51:17 +0800
+Message-ID: <1478238680-11310-1-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1478238680-11310-1-git-send-email-rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Rick Chang <rick.chang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Add a DT binding documentation for Mediatek JPEG Decoder of
-MT2701 SoC.
+This series of patches provide a v4l2 driver to control Mediatek JPEG decoder
+for decoding JPEG image and Motion JPEG bitstream.
 
-Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- .../bindings/media/mediatek-jpeg-codec.txt         | 35 ++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+changes since v2:
+- Revise DT binding documentation 
+
+changes since v1:
+- Rebase for v4.9-rc1.
+- Update Compliance test version and result
+- Remove redundant path in Makefile
+- Fix potential build error without CONFIG_PM_RUNTIME and CONFIG_PM_SLEEP
+- Fix warnings from patch check and smatch check
+
+* Dependency
+The patch "arm: dts: mt2701: Add node for JPEG decoder" depends on: 
+  CCF "Add clock support for Mediatek MT2701"[1]
+  iommu and smi "Add the dtsi node of iommu and smi for mt2701"[2]
+
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2016-October/007271.html
+[2] https://patchwork.kernel.org/patch/9164013/
+
+* Compliance test
+v4l2-compliance SHA   : 4ad7174b908a36c4f315e3fe2efa7e2f8a6f375a
+
+Driver Info:
+        Driver name   : mtk-jpeg decode
+        Card type     : mtk-jpeg decoder
+        Bus info      : platform:15004000.jpegdec
+        Driver version: 4.9.0
+        Capabilities  : 0x84204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video3 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK (Not Supported)
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK
+                test Scaling: OK
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+
+Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
+
+Rick Chang (3):
+  dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+  vcodec: mediatek: Add Mediatek JPEG Decoder Driver
+  arm: dts: mt2701: Add node for Mediatek JPEG Decoder
+
+ .../bindings/media/mediatek-jpeg-codec.txt         |   35 +
+ arch/arm/boot/dts/mt2701.dtsi                      |   14 +
+ drivers/media/platform/Kconfig                     |   15 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-jpeg/Makefile           |    2 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 1271 ++++++++++++++++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  141 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c      |  417 +++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h      |   91 ++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c   |  160 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h   |   25 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h     |   58 +
+ 12 files changed, 2231 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+ create mode 100644 drivers/media/platform/mtk-jpeg/Makefile
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-new file mode 100644
-index 0000000..b2b19ed
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-@@ -0,0 +1,35 @@
-+* Mediatek JPEG Decoder
-+
-+Mediatek JPEG Decoder is the JPEG decode hw present in Mediatek SoCs
-+
-+Required properties:
-+- compatible : "mediatek,mt2701-jpgdec"
-+- reg : physical base address of the jpeg decoder registers and length of
-+  memory mapped region.
-+- interrupts : interrupt number to the interrupt controller.
-+- clocks: device clocks, see
-+  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-+- clock-names: must contain "jpgdec-smi" and "jpgdec".
-+- power-domains: a phandle to the power domain, see
-+  Documentation/devicetree/bindings/power/power_domain.txt for details.
-+- mediatek,larb: must contain the local arbiters in the current Socs, see
-+  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-+  for details.
-+- iommus: should point to the respective IOMMU block with master port as
-+  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-+  for details.
-+
-+Example:
-+	jpegdec: jpegdec@15004000 {
-+		compatible = "mediatek,mt2701-jpgdec";
-+		reg = <0 0x15004000 0 0x1000>;
-+		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
-+		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
-+			  <&imgsys CLK_IMG_JPGDEC>;
-+		clock-names = "jpgdec-smi",
-+			      "jpgdec";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-+		mediatek,larb = <&larb2>;
-+		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
-+			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
-+	};
 -- 
 1.9.1
