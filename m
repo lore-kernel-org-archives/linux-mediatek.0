@@ -1,75 +1,74 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: [PATCH 00/22] mtd: nand: return error code of nand_scan(_ident,_tail) on error
-Date: Fri,  4 Nov 2016 19:42:48 +0900
-Message-ID: <1478256190-7452-1-git-send-email-yamada.masahiro@socionext.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v2 1/3] dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+Date: Fri, 04 Nov 2016 17:56:29 +0200
+Message-ID: <1792025.53iDXU6qZ9@avalon>
+References: <1477898217-19250-1-git-send-email-rick.chang@mediatek.com> <1838616.gXE7Zi2nyC@avalon> <1478235060.23008.35.camel@mtksdaap41>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478235060.23008.35.camel@mtksdaap41>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-mtd@lists.infradead.org
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>, Sylvain Lemieux <slemieux.tyco@gmail.com>, Josh Wu <rainyfeeling@outlook.com>, Matthias Brugger <matthias.bgg@gmail.com>, Stefan Agner <stefan@agner.ch>, Vladimir Zapolskiy <vz@mleia.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Boris Brezillon <boris.brezillon@free-electrons.com>, Brian Norris <computersforpeace@gmail.com>, Ezequiel Garcia <ezequiel.garcia@free-electrons.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Kamal Dasu <kdasu.kdev@gmail.com>, bcm-kernel-feedback-list@broadcom.com, linuxppc-dev@lists.ozlabs.org, Wenyou Yang <wenyou.yang@atmel.com>, linux-arm-kernel@lists.infradead.org
+To: Rick Chang <rick.chang@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Rick,
 
-nand_scan(), nand_scan_ident(), nand_scan_tail() return
-an appropriate negative value on error.
+On Friday 04 Nov 2016 12:51:00 Rick Chang wrote:
+> On Thu, 2016-11-03 at 20:34 +0200, Laurent Pinchart wrote:
+> > On Thursday 03 Nov 2016 20:33:12 Laurent Pinchart wrote:
+> >> On Monday 31 Oct 2016 15:16:55 Rick Chang wrote:
+> >>> Add a DT binding documentation for Mediatek JPEG Decoder of
+> >>> MT2701 SoC.
+> >>> 
+> >>> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+> >>> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> >>> ---
+> >>> 
+> >>>  .../bindings/media/mediatek-jpeg-codec.txt         | 35 ++++++++++++++
+> >>>  1 file changed, 35 insertions(+)
+> >>>  create mode 100644
+> >>> Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> >>> 
+> >>> diff --git
+> >>> a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> >>> b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt new
+> >>> file mode 100644
+> >>> index 0000000..514e656
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> >>> @@ -0,0 +1,35 @@
+> >>> +* Mediatek JPEG Codec
+> >> 
+> >> Is it a codec or a decoder only ?
+> >> 
+> >>> +Mediatek JPEG Codec device driver is a v4l2 driver which can decode
+> >>> +JPEG-encoded video frames.
+> >> 
+> >> DT bindings should not reference drivers, they are OS-agnostic.
+> >> 
+> >>> +Required properties:
+> >>> +  - compatible : "mediatek,mt2701-jpgdec"
+> > 
+> > Is the JPEG decoder found in MT2701 only, or in other Mediatek SoCs as
+> > well ?
+>
+> Yes, the JPEG decoder is found in other Mediatek SoCs. However, the JPEG
+> decoder HW in different SoCs have different register base, interrupt,
+> power-domain and iommu setting.
 
-Most of drivers return the value from them on error,
-but some of them return the fixed error code -ENXIO
-(and a few return -ENODEV).
+That's fine, and that's exactly what the device tree is used for. When an 
+identical IP core is integrated differently in different SoCs, the driver 
+retrieves the resources (base address, clocks, IOMMU, interrupt, power domain 
+and more) from the device tree without any need for SoC-specific code.
 
-This series make those drivers return more precise error code.
+> This patch series is only applicable in MT2701.
 
-
-Masahiro Yamada (22):
-  mtd: nand: ams-delta: return error code of nand_scan() on error
-  mtd: nand: cmx270: return error code of nand_scan() on error
-  mtd: nand: cs553x: return error code of nand_scan() on error
-  mtd: nand: gpio: return error code of nand_scan() on error
-  mtd: nand: mpc5121: return error code of nand_scan() on error
-  mtd: nand: tmio: return error code of nand_scan() on error
-  mtd: nand: orion: return error code of nand_scan() on error
-  mtd: nand: pasemi: return error code of nand_scan() on error
-  mtd: nand: plat_nand: return error code of nand_scan() on error
-  mtd: nand: atmel: return error code of nand_scan_ident/tail() on error
-  mtd: nand: brcmnand: return error code of nand_scan_ident/tail() on
-    error
-  mtd: nand: fsmc: return error code of nand_scan_ident/tail() on error
-  mtd: nand: lpc32xx: return error code of nand_scan_ident/tail() on
-    error
-  mtd: nand: mediatek: return error code of nand_scan_ident/tail() on
-    error
-  mtd: nand: mxc: return error code of nand_scan_ident/tail() on error
-  mtd: nand: omap2: return error code of nand_scan_ident/tail() on error
-  mtd: nand: vf610: return error code of nand_scan_ident/tail() on error
-  mtd: nand: cafe: return error code of nand_scan_ident() on error
-  mtd: nand: hisi504: return error code of nand_scan_ident() on error
-  mtd: nand: pxa3xx: return error code of nand_scan_ident() on error
-  mtd: nand: nandsim: remove unneeded checks for nand_scan_ident/tail()
-  mtd: nand: socrates: use nand_scan() for nand_scan_ident/tail() combo
-
- drivers/mtd/nand/ams-delta.c         |  5 ++---
- drivers/mtd/nand/atmel_nand.c        | 10 ++++------
- drivers/mtd/nand/brcmnand/brcmnand.c | 10 ++++++----
- drivers/mtd/nand/cafe_nand.c         |  5 ++---
- drivers/mtd/nand/cmx270_nand.c       |  4 ++--
- drivers/mtd/nand/cs553x_nand.c       |  5 ++---
- drivers/mtd/nand/fsmc_nand.c         |  9 ++++-----
- drivers/mtd/nand/gpio.c              |  5 ++---
- drivers/mtd/nand/hisi504_nand.c      |  4 +---
- drivers/mtd/nand/lpc32xx_mlc.c       | 10 ++++------
- drivers/mtd/nand/lpc32xx_slc.c       |  9 +++------
- drivers/mtd/nand/mpc5121_nfc.c       |  4 ++--
- drivers/mtd/nand/mtk_nand.c          |  4 ++--
- drivers/mtd/nand/mxc_nand.c          | 10 ++++------
- drivers/mtd/nand/nandsim.c           |  4 ----
- drivers/mtd/nand/omap2.c             |  9 ++++-----
- drivers/mtd/nand/orion_nand.c        |  5 ++---
- drivers/mtd/nand/pasemi_nand.c       |  5 ++---
- drivers/mtd/nand/plat_nand.c         |  5 ++---
- drivers/mtd/nand/pxa3xx_nand.c       |  5 +++--
- drivers/mtd/nand/socrates_nand.c     | 12 ++----------
- drivers/mtd/nand/tmio_nand.c         |  6 +++---
- drivers/mtd/nand/vf610_nfc.c         | 10 ++++------
- 23 files changed, 62 insertions(+), 93 deletions(-)
+That was precisely my question, apart from integration properties, is there 
+anything specific to the MT2701 in patches 1/3 and 2/3 ?
 
 -- 
-1.9.1
+Regards,
+
+Laurent Pinchart
