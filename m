@@ -1,47 +1,89 @@
-From: Daniel Kurtz <djkurtz@chromium.org>
-Subject: Re: [v17 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-Date: Fri, 4 Nov 2016 17:21:14 -0600
-Message-ID: <CAGS+omDmFdqzuFqcCe9gFGemZc88Yt0_3_o2KwOgW=GN_kCakQ@mail.gmail.com>
-References: <1472280263-18177-1-git-send-email-jitao.shi@mediatek.com>
- <1472280263-18177-2-git-send-email-jitao.shi@mediatek.com>
- <CAFqH_50_OwsbMWHkT_eukF52BVZYyMbGiamXO=pV4PpJq6BADA@mail.gmail.com> <e00519e2-990c-b9b2-71d4-a4c8d36f5e65@gmail.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+Date: Sat, 05 Nov 2016 01:32:35 +0200
+Message-ID: <4460771.lgvC1NvD9I@avalon>
+References: <1478238680-11310-1-git-send-email-rick.chang@mediatek.com> <1478238680-11310-2-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <e00519e2-990c-b9b2-71d4-a4c8d36f5e65@gmail.com>
+In-Reply-To: <1478238680-11310-2-git-send-email-rick.chang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, David Airlie <airlied@linux.ie>, Thierry Reding <treding@nvidia.com>, Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Andy Yan <andy.yan@rock-chips.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, =?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <bibby.hsieh@mediatek.com>, =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>
+To: Rick Chang <rick.chang@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Oct 25, 2016 at 6:23 AM, Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
->
-> On 10/18/2016 04:37 PM, Enric Balletbo Serra wrote:
-> [...]
->>> --- /dev/null
->>> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> [...]
->>>
->>> +
->>> +/* Firmware */
->>> +#define PS_FW_NAME             "ps864x_fw.bin"
->>> +
->>
->> From where I can download this firmware image?
->
-> I suppose this FW bits have to be added to linux-firmware repository first, before this patch can be accepted.
+Hi Rick,
 
-All PS8640 devices should already ship with working firmware.
-The firmware update procedure is only used in the unlikely event where
-one wants to update the bridge to a different firmware provided by
-Parade.
+Thank you for the patch.
 
-Why must the lack of firmware really block landing this driver?
+On Friday 04 Nov 2016 13:51:18 Rick Chang wrote:
+> Add a DT binding documentation for Mediatek JPEG Decoder of
+> MT2701 SoC.
 
-If this is really so, can we just land the functional part of the
-driver first, and add the firmware update in a follow-up patch.
+This version looks much better !
 
->
-> Regards,
-> Matthias
+> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> ---
+>  .../bindings/media/mediatek-jpeg-codec.txt         | 35 +++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt new file
+> mode 100644
+> index 0000000..b2b19ed
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> @@ -0,0 +1,35 @@
+> +* Mediatek JPEG Decoder
+> +
+> +Mediatek JPEG Decoder is the JPEG decode hw present in Mediatek SoCs
+
+Nitpicking, I'd write hardware instead of hw.
+
+> +Required properties:
+> +- compatible : "mediatek,mt2701-jpgdec"
+
+As commented on the previous version, is this JPEG decoder unique to the 
+MT2701, or is it also used (possibly with different interrupts, clocks, ...) 
+in other SoCs ? In the latter case, if the JPEG decoder IP core is identical 
+in multiple SoCs, a more generic compatible string would be better.
+
+> +- reg : physical base address of the jpeg decoder registers and length of
+> +  memory mapped region.
+> +- interrupts : interrupt number to the interrupt controller.
+> +- clocks: device clocks, see
+> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> +- clock-names: must contain "jpgdec-smi" and "jpgdec".
+> +- power-domains: a phandle to the power domain, see
+> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> +- mediatek,larb: must contain the local arbiters in the current Socs, see
+> + 
+> Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +  for details.
+> +- iommus: should point to the respective IOMMU block with master port as
+> +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +  for details.
+> +
+> +Example:
+> +	jpegdec: jpegdec@15004000 {
+> +		compatible = "mediatek,mt2701-jpgdec";
+> +		reg = <0 0x15004000 0 0x1000>;
+> +		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
+> +			  <&imgsys CLK_IMG_JPGDEC>;
+> +		clock-names = "jpgdec-smi",
+> +			      "jpgdec";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+> +		mediatek,larb = <&larb2>;
+> +		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
+> +			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
+> +	};
+
+-- 
+Regards,
+
+Laurent Pinchart
