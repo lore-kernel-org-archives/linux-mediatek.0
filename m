@@ -1,82 +1,103 @@
-From: Erin Lo <erin.lo@mediatek.com>
-Subject: [PATCH v15 4/4] arm: dts: mt2701: Use real clock for UARTs
-Date: Fri, 4 Nov 2016 15:43:08 +0800
-Message-ID: <1478245388-1412-5-git-send-email-erin.lo@mediatek.com>
-References: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
+From: "FedEx International Economy" <pedro.winter-pu5Zf8qdzgI5keSXRn1yqg@public.gmane.org>
+Subject: Delivery Notification, ID 00364597
+Date: Fri, 4 Nov 2016 05:09:48 -0400
+Message-ID: <05275bbbc77b8862e073c223a43350f0@clickbible.org>
+Reply-To: FedEx International Economy <pedro.winter-pu5Zf8qdzgI5keSXRn1yqg@public.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, ms.chen@mediatek.com, robert.chou@mediatek.com, Erin Lo <erin.lo@mediatek.com>
+Content-Type: multipart/mixed; boundary="b1_ea6666ef550769613f4d30058d5a17e9"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-We used to use a fixed rate clock for the UARTs. Now that we have clock
-support we can associate the correct clocks to the UARTs and drop the
-26MHz fixed rate UART clock.
+--b1_ea6666ef550769613f4d30058d5a17e9
+Content-Type: text/plain; charset=us-ascii
 
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
----
- arch/arm/boot/dts/mt2701.dtsi | 18 ++++++++----------
- 1 file changed, 8 insertions(+), 10 deletions(-)
+Dear Customer,
 
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index c9a8dbf..7eab6f4 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -73,12 +73,6 @@
- 		#clock-cells = <0>;
- 	};
- 
--	uart_clk: dummy26m {
--		compatible = "fixed-clock";
--		clock-frequency = <26000000>;
--		#clock-cells = <0>;
--	};
--
- 	clk26m: oscillator@0 {
- 		compatible = "fixed-clock";
- 		#clock-cells = <0>;
-@@ -186,7 +180,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11002000 0 0x400>;
- 		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -195,7 +190,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11003000 0 0x400>;
- 		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -204,7 +200,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11004000 0 0x400>;
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- 
-@@ -213,7 +210,8 @@
- 			     "mediatek,mt6577-uart";
- 		reg = <0 0x11005000 0 0x400>;
- 		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
--		clocks = <&uart_clk>;
-+		clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
-+		clock-names = "baud", "bus";
- 		status = "disabled";
- 	};
- };
--- 
-1.9.1
+We could not deliver your parcel.
+Please, download Delivery Label attached to this email.
+
+Thanks and best regards,
+Pedro Winter,
+FedEx Operation Agent.
+
+
+--b1_ea6666ef550769613f4d30058d5a17e9
+Content-Type: application/zip; name="FedEx_00364597.zip"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=FedEx_00364597.zip
+
+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
+UEsFBgAAAAABAAEARAAAAKUKAAAAAA==
+
+
+--b1_ea6666ef550769613f4d30058d5a17e9
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--b1_ea6666ef550769613f4d30058d5a17e9--
