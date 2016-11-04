@@ -1,80 +1,129 @@
-From: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3] clk: mediatek: Allow changing PLL rate when it is off
-Date: Fri, 4 Nov 2016 14:42:56 +0800
-Message-ID: <1478241776-50687-1-git-send-email-jamesjj.liao@mediatek.com>
+From: Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH v15 0/4] Add clock support for Mediatek MT2701
+Date: Fri, 4 Nov 2016 15:43:04 +0800
+Message-ID: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mike Turquette <mturquette-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, ms.chen@mediatek.com, robert.chou@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Some modules may need to change its clock rate before turn on it.
-So changing PLL's rate when it is off should be allowed.
-This patch removes PLL enabled check before set rate, so that
-PLLs can set new frequency even if they are off.
+This series is based on v4.9-rc1, add clock and reset controller support
+for Mediatek MT2701.
 
-On MT8173 for example, ARMPLL's enable bit can be controlled by
-other HW. That means ARMPLL may be turned on even if we (CPU / SW)
-set ARMPLL's enable bit as 0. In this case, SW may want and can
-still change ARMPLL's rate by changing its pcw and postdiv settings.
-But without this patch, new pcw setting will not be applied because
-its enable bit is 0.
+changes since v14:
+- Correct commit messages of dts.
+- Refine style of init/probe functions.
+- Get reg addresses from platform_get_resouce() and devm_ioremap_resource().
+- Minor coding style changes.
 
-Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Acked-by: Michael Turquette <mturuqette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
----
-Please refer to previous comments in [1] and [2].
-
-changes since v2:
+changes since v13:
 - Rebase to v4.9-rc1.
 
+changes since v12:
+- Rebase to clk-next.
+- Use CLK_OF_DECLARE_DRIVER() instead of CLK_OF_DECLARE().
+- Use dev_* and devm_* APIs instead of pr_* and ioremap().
+- Refine init functions. Share error messages in common probe().
+- Fix null pointer checking for clk_data.
+
+changes since v11:
+- Rebase to clk-next.
+- Return error code from probe() if clock registration fail.
+
+changes since v10:
+- Remove COMMON_CLK dependency from clk/mediatek/Kconfig.
+
+changes since v9:
+- Rebase to v4.8-rc1.
+- Drop a fix patch of parent clock initial state. It will be replaced by a new
+  patch from Mike/Stephen.
+- Replace clk.h with clk-provider.h.
+- Correct register settings of clocks.
+
+changes since v8:
+- Rebase to v4.7-rc1.
+- Include mt2701-resets.h in mt2701.dtsi.
+- Remove an unused property from apmixedsys DT node.
+
+changes since v7:
+- Rebase to clk-next.
+- Implement subsystem clocks in seperated files.
+- Replace critical clock enabling with CLK_IS_CRITICAL flag.
+- Reduce most clock registrations in CLK_OF_DECLARE().
+- Remove __init and __initconst from most init fucntions and data,
+  and replace driver registration with platform_driver_register().
+- Replace some common function or variable names with unique names.
+- Use real clock for UARTs.
+
+changes since v6:
+- Rebase to v4.6-rc1.
+- Register subsystem clocks in probe() instead of CLK_OF_DECLARE().
+- Add clocks that referred by subsystem clocks.
+- Fix clk_data size of apmixedsys.
+- Add config options for each subsystem clock provider.
+
+changes since v5:
+- Rebase to v4.5-rc1 and [1].
+- Enable critical clocks for MT2701
+- Refine dt-binding documents, add reset controller support for hifsys.
+
+changes since v4:
+- Rebase to v4.5-rc1.
+- Remove CLK_SET_RATE_PARENT from divider flags.
+- Add img_jpgdec_smi clock.
+- Move clk/mediatek/Kconfig into menu section in clk/Kconfig.
+
+changes since v3:
+- Change the parent of mm_mdp_bls_26m from clk26m to pwm_sel.
+
+changes since v2:
+- Fix ethsys definition.
+- Replace read-modify-write with regmap_update_bits() in clock operations.
+- Move mt2701-resets.h to include/dt-bindings/reset/.
+- Add hifsys reset patch from John Crispin.
+
 changes since v1:
-- Add more explanation in commit messages.
+- Document MT2701 compatible strings.
 
-[1] https://patchwork.kernel.org/patch/7983221/
-[2] https://patchwork.kernel.org/patch/7998891/
+[1] https://patchwork.kernel.org/patch/8147901/
 
- drivers/clk/mediatek/clk-pll.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+Erin Lo (1):
+  arm: dts: mt2701: Use real clock for UARTs
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 0c2deac..80f57b4 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -91,9 +91,6 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 		int postdiv)
- {
- 	u32 con1, val;
--	int pll_en;
--
--	pll_en = readl(pll->base_addr + REG_CON0) & CON0_BASE_EN;
- 
- 	/* set postdiv */
- 	val = readl(pll->pd_addr);
-@@ -114,15 +111,13 @@ static void mtk_pll_set_rate_regs(struct mtk_clk_pll *pll, u32 pcw,
- 
- 	con1 = readl(pll->base_addr + REG_CON1);
- 
--	if (pll_en)
--		con1 |= CON0_PCW_CHG;
-+	con1 |= CON0_PCW_CHG;
- 
- 	writel(con1, pll->base_addr + REG_CON1);
- 	if (pll->tuner_addr)
- 		writel(con1 + 1, pll->tuner_addr);
- 
--	if (pll_en)
--		udelay(20);
-+	udelay(20);
- }
- 
- /*
--- 
-1.9.1
+James Liao (1):
+  arm: dts: mt2701: Add clock controller device nodes
+
+Shunli Wang (2):
+  clk: mediatek: Add MT2701 clock support
+  reset: mediatek: Add MT2701 reset driver
+
+ arch/arm/boot/dts/mt2701.dtsi          |   50 +-
+ drivers/clk/mediatek/Kconfig           |   43 ++
+ drivers/clk/mediatek/Makefile          |    7 +
+ drivers/clk/mediatek/clk-gate.c        |   52 ++
+ drivers/clk/mediatek/clk-gate.h        |    2 +
+ drivers/clk/mediatek/clk-mt2701-bdp.c  |  138 +++++
+ drivers/clk/mediatek/clk-mt2701-eth.c  |   80 +++
+ drivers/clk/mediatek/clk-mt2701-hif.c  |   81 +++
+ drivers/clk/mediatek/clk-mt2701-img.c  |   80 +++
+ drivers/clk/mediatek/clk-mt2701-mm.c   |  123 ++++
+ drivers/clk/mediatek/clk-mt2701-vdec.c |   91 +++
+ drivers/clk/mediatek/clk-mt2701.c      | 1035 ++++++++++++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c         |   40 ++
+ drivers/clk/mediatek/clk-mtk.h         |   41 +-
+ drivers/clk/mediatek/clk-pll.c         |    1 +
+ 15 files changed, 1854 insertions(+), 10 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-bdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-hif.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt2701.c
 
 --
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+1.9.1
+
