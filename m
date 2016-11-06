@@ -1,16 +1,14 @@
-From: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] dt-bindings: mediatek: Add a binding for
- Mediatek JPEG Decoder
-Date: Sat, 5 Nov 2016 16:19:49 +0800
-Message-ID: <1478333989.27859.27.camel@mtksdaap41>
-References: <1478238680-11310-1-git-send-email-rick.chang@mediatek.com>
- <1478238680-11310-2-git-send-email-rick.chang@mediatek.com>
- <4460771.lgvC1NvD9I@avalon>
+From: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Subject: Re: [PATCH 00/22] mtd: nand: return error code of
+ nand_scan(_ident,_tail) on error
+Date: Sun, 6 Nov 2016 23:55:08 +0100
+Message-ID: <20161106235508.52374ac3@bbrezillon>
+References: <1478256190-7452-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <4460771.lgvC1NvD9I@avalon>
+In-Reply-To: <1478256190-7452-1-git-send-email-yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -20,91 +18,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>
+Cc: Kamal Dasu <kdasu.kdev-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Josh Wu <rainyfeeling-1ViLX0X+lBJBDgjK7y7TUQ@public.gmane.org>, linuxppc-dev-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, Vladimir Zapolskiy <vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org>, Wenyou Yang <wenyou.yang-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ezequiel Garcia <ezequiel.garcia-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Sylvain Lemieux <slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Laurent,
+On Fri,  4 Nov 2016 19:42:48 +0900
+Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org> wrote:
 
-Thanks for your prompt reply. I will fix them in patch v4.
-
-On Sat, 2016-11-05 at 01:32 +0200, Laurent Pinchart wrote:
-> Hi Rick,
+> nand_scan(), nand_scan_ident(), nand_scan_tail() return
+> an appropriate negative value on error.
 > 
-> Thank you for the patch.
+> Most of drivers return the value from them on error,
+> but some of them return the fixed error code -ENXIO
+> (and a few return -ENODEV).
 > 
-> On Friday 04 Nov 2016 13:51:18 Rick Chang wrote:
-> > Add a DT binding documentation for Mediatek JPEG Decoder of
-> > MT2701 SoC.
+> This series make those drivers return more precise error code.
+
+Applied and fixed the bug I found in patch 13.
+
+Thanks,
+
+Boris
+
 > 
-> This version looks much better !
-
-I'm glad to hear that!
-
-> > Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> >  .../bindings/media/mediatek-jpeg-codec.txt         | 35 +++++++++++++++++++
-> >  1 file changed, 35 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-> > b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt new file
-> > mode 100644
-> > index 0000000..b2b19ed
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-> > @@ -0,0 +1,35 @@
-> > +* Mediatek JPEG Decoder
-> > +
-> > +Mediatek JPEG Decoder is the JPEG decode hw present in Mediatek SoCs
 > 
-> Nitpicking, I'd write hardware instead of hw.
-
-OK.
-
-> > +Required properties:
-> > +- compatible : "mediatek,mt2701-jpgdec"
+> Masahiro Yamada (22):
+>   mtd: nand: ams-delta: return error code of nand_scan() on error
+>   mtd: nand: cmx270: return error code of nand_scan() on error
+>   mtd: nand: cs553x: return error code of nand_scan() on error
+>   mtd: nand: gpio: return error code of nand_scan() on error
+>   mtd: nand: mpc5121: return error code of nand_scan() on error
+>   mtd: nand: tmio: return error code of nand_scan() on error
+>   mtd: nand: orion: return error code of nand_scan() on error
+>   mtd: nand: pasemi: return error code of nand_scan() on error
+>   mtd: nand: plat_nand: return error code of nand_scan() on error
+>   mtd: nand: atmel: return error code of nand_scan_ident/tail() on error
+>   mtd: nand: brcmnand: return error code of nand_scan_ident/tail() on
+>     error
+>   mtd: nand: fsmc: return error code of nand_scan_ident/tail() on error
+>   mtd: nand: lpc32xx: return error code of nand_scan_ident/tail() on
+>     error
+>   mtd: nand: mediatek: return error code of nand_scan_ident/tail() on
+>     error
+>   mtd: nand: mxc: return error code of nand_scan_ident/tail() on error
+>   mtd: nand: omap2: return error code of nand_scan_ident/tail() on error
+>   mtd: nand: vf610: return error code of nand_scan_ident/tail() on error
+>   mtd: nand: cafe: return error code of nand_scan_ident() on error
+>   mtd: nand: hisi504: return error code of nand_scan_ident() on error
+>   mtd: nand: pxa3xx: return error code of nand_scan_ident() on error
+>   mtd: nand: nandsim: remove unneeded checks for nand_scan_ident/tail()
+>   mtd: nand: socrates: use nand_scan() for nand_scan_ident/tail() combo
 > 
-> As commented on the previous version, is this JPEG decoder unique to the 
-> MT2701, or is it also used (possibly with different interrupts, clocks, ...) 
-> in other SoCs ? In the latter case, if the JPEG decoder IP core is identical 
-> in multiple SoCs, a more generic compatible string would be better.
-
-I understand your question. The essence of this patch series targeting
-is the JPEG decoder IP which is integrated in mt2701.I will check it
-with our hardware engineer and making a more generic compatible string
-if the IP is used in multiple SoCs.
-
-> > +- reg : physical base address of the jpeg decoder registers and length of
-> > +  memory mapped region.
-> > +- interrupts : interrupt number to the interrupt controller.
-> > +- clocks: device clocks, see
-> > +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> > +- clock-names: must contain "jpgdec-smi" and "jpgdec".
-> > +- power-domains: a phandle to the power domain, see
-> > +  Documentation/devicetree/bindings/power/power_domain.txt for details.
-> > +- mediatek,larb: must contain the local arbiters in the current Socs, see
-> > + 
-> > Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> > +  for details.
-> > +- iommus: should point to the respective IOMMU block with master port as
-> > +  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> > +  for details.
-> > +
-> > +Example:
-> > +	jpegdec: jpegdec@15004000 {
-> > +		compatible = "mediatek,mt2701-jpgdec";
-> > +		reg = <0 0x15004000 0 0x1000>;
-> > +		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
-> > +			  <&imgsys CLK_IMG_JPGDEC>;
-> > +		clock-names = "jpgdec-smi",
-> > +			      "jpgdec";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> > +		mediatek,larb = <&larb2>;
-> > +		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
-> > +			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
-> > +	};
+>  drivers/mtd/nand/ams-delta.c         |  5 ++---
+>  drivers/mtd/nand/atmel_nand.c        | 10 ++++------
+>  drivers/mtd/nand/brcmnand/brcmnand.c | 10 ++++++----
+>  drivers/mtd/nand/cafe_nand.c         |  5 ++---
+>  drivers/mtd/nand/cmx270_nand.c       |  4 ++--
+>  drivers/mtd/nand/cs553x_nand.c       |  5 ++---
+>  drivers/mtd/nand/fsmc_nand.c         |  9 ++++-----
+>  drivers/mtd/nand/gpio.c              |  5 ++---
+>  drivers/mtd/nand/hisi504_nand.c      |  4 +---
+>  drivers/mtd/nand/lpc32xx_mlc.c       | 10 ++++------
+>  drivers/mtd/nand/lpc32xx_slc.c       |  9 +++------
+>  drivers/mtd/nand/mpc5121_nfc.c       |  4 ++--
+>  drivers/mtd/nand/mtk_nand.c          |  4 ++--
+>  drivers/mtd/nand/mxc_nand.c          | 10 ++++------
+>  drivers/mtd/nand/nandsim.c           |  4 ----
+>  drivers/mtd/nand/omap2.c             |  9 ++++-----
+>  drivers/mtd/nand/orion_nand.c        |  5 ++---
+>  drivers/mtd/nand/pasemi_nand.c       |  5 ++---
+>  drivers/mtd/nand/plat_nand.c         |  5 ++---
+>  drivers/mtd/nand/pxa3xx_nand.c       |  5 +++--
+>  drivers/mtd/nand/socrates_nand.c     | 12 ++----------
+>  drivers/mtd/nand/tmio_nand.c         |  6 +++---
+>  drivers/mtd/nand/vf610_nfc.c         | 10 ++++------
+>  23 files changed, 62 insertions(+), 93 deletions(-)
 > 
