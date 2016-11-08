@@ -1,53 +1,65 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v4 1/3] dt-bindings: mediatek: Add a binding for Mediatek
- JPEG Decoder
-Date: Mon, 7 Nov 2016 18:00:31 +0100
-Message-ID: <134eb37e-b33e-3ce9-f413-70f57a5d622b@gmail.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: mediatek: Add a binding for
+ Mediatek JPEG Decoder
+Date: Tue, 8 Nov 2016 10:23:02 +0800
+Message-ID: <1478571782.28520.19.camel@mtksdaap41>
 References: <1478501839-2775-1-git-send-email-rick.chang@mediatek.com>
- <1478501839-2775-2-git-send-email-rick.chang@mediatek.com>
+         <1478501839-2775-2-git-send-email-rick.chang@mediatek.com>
+         <134eb37e-b33e-3ce9-f413-70f57a5d622b@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1478501839-2775-2-git-send-email-rick.chang@mediatek.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Rick Chang <rick.chang@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <134eb37e-b33e-3ce9-f413-70f57a5d622b@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+Dear Matthias,
 
+Thank you for your review.I will include your advice in patch v5.
 
-On 07/11/16 07:57, Rick Chang wrote:
-> Add a DT binding documentation for Mediatek JPEG Decoder of
-> MT2701 SoC.
->
-> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> ---
->  .../bindings/media/mediatek-jpeg-codec.txt         | 35 ++++++++++++++++++++++
->  1 file changed, 35 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
->
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-> new file mode 100644
-> index 0000000..c7dbcc2
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
-> @@ -0,0 +1,35 @@
-> +* Mediatek JPEG Decoder
-> +
-> +Mediatek JPEG Decoder is the JPEG decode hardware present in Mediatek SoCs
-> +
-> +Required properties:
-> +- compatible : "mediatek,jpgdec"
+On Mon, 2016-11-07 at 18:00 +0100, Matthias Brugger wrote:
+> 
+> On 07/11/16 07:57, Rick Chang wrote:
+> > Add a DT binding documentation for Mediatek JPEG Decoder of
+> > MT2701 SoC.
+> >
+> > Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> > ---
+> >  .../bindings/media/mediatek-jpeg-codec.txt         | 35 ++++++++++++++++++++++
+> >  1 file changed, 35 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> > new file mode 100644
+> > index 0000000..c7dbcc2
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-codec.txt
+> > @@ -0,0 +1,35 @@
+> > +* Mediatek JPEG Decoder
+> > +
+> > +Mediatek JPEG Decoder is the JPEG decode hardware present in Mediatek SoCs
+> > +
+> > +Required properties:
+> > +- compatible : "mediatek,jpgdec"
+> 
+> Is this block in all arm SoCs from Mediatek?
 
-Is this block in all arm SoCs from Mediatek?
-If not, then I would prefer to use "mediatek,mtXXXX-jpgdec"
-where XXXX stands for the oldest model which has this block.
+JPEG Decoder hardware is in most of Mediatek SoCs, but I can't guarantee
+that each of them has identical IP.
 
-In parallel to that the dts should have this compatible plus the one for 
-mt2701, for example:
-compatible = "mediatek,mt2701-uart", "mediatek,mt6577-uart"
+> If not, then I would prefer to use "mediatek,mtXXXX-jpgdec"
+> where XXXX stands for the oldest model which has this block.
+> 
+> In parallel to that the dts should have this compatible plus the one for 
+> mt2701, for example:
+> compatible = "mediatek,mt2701-uart", "mediatek,mt6577-uart"
 
-Thanks,
-Matthias
+The oldest model that I can make sure this patch series work on is
+mt8173.I will add it to the compatible string.
+
+> Thanks,
+> Matthias
