@@ -1,89 +1,79 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v15 4/4] arm: dts: mt2701: Use real clock for UARTs
-Date: Wed, 9 Nov 2016 18:20:21 +0100
-Message-ID: <eece3eba-fd24-ad96-ca20-c08403894b00@gmail.com>
-References: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
- <1478245388-1412-5-git-send-email-erin.lo@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/3] binding: irqchip: mtk-cirq: Add binding document
+Date: Wed, 9 Nov 2016 12:26:13 -0600
+Message-ID: <20161109182613.7tvzewua6ewxdvjc@rob-hp-laptop>
+References: <1478001122-8664-1-git-send-email-youlin.pei@mediatek.com>
+ <1478001122-8664-2-git-send-email-youlin.pei@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478245388-1412-5-git-send-email-erin.lo@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1478001122-8664-2-git-send-email-youlin.pei@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, ms.chen@mediatek.com, robert.chou@mediatek.com
+To: Youlin Pei <youlin.pei@mediatek.com>
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.de>, Jason Cooper <jason@lakedaemon.net>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, hongkun.cao@mediatek.com, yong.wu@mediatek.com, erin.lo@mediatek.com, chieh-jay.liu@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 11/04/2016 08:43 AM, Erin Lo wrote:
-> We used to use a fixed rate clock for the UARTs. Now that we have clock
-> support we can associate the correct clocks to the UARTs and drop the
-> 26MHz fixed rate UART clock.
->
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-
-Applied, thanks.
-
+On Tue, Nov 01, 2016 at 07:52:00PM +0800, Youlin Pei wrote:
+> This commit adds the device tree binding document for
+> the mediatek cirq.
+> 
+> Signed-off-by: Youlin Pei <youlin.pei@mediatek.com>
 > ---
->  arch/arm/boot/dts/mt2701.dtsi | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
->
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index c9a8dbf..7eab6f4 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -73,12 +73,6 @@
->  		#clock-cells = <0>;
->  	};
->
-> -	uart_clk: dummy26m {
-> -		compatible = "fixed-clock";
-> -		clock-frequency = <26000000>;
-> -		#clock-cells = <0>;
-> -	};
-> -
->  	clk26m: oscillator@0 {
->  		compatible = "fixed-clock";
->  		#clock-cells = <0>;
-> @@ -186,7 +180,8 @@
->  			     "mediatek,mt6577-uart";
->  		reg = <0 0x11002000 0 0x400>;
->  		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
-> -		clocks = <&uart_clk>;
-> +		clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
-> +		clock-names = "baud", "bus";
->  		status = "disabled";
->  	};
->
-> @@ -195,7 +190,8 @@
->  			     "mediatek,mt6577-uart";
->  		reg = <0 0x11003000 0 0x400>;
->  		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
-> -		clocks = <&uart_clk>;
-> +		clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
-> +		clock-names = "baud", "bus";
->  		status = "disabled";
->  	};
->
-> @@ -204,7 +200,8 @@
->  			     "mediatek,mt6577-uart";
->  		reg = <0 0x11004000 0 0x400>;
->  		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
-> -		clocks = <&uart_clk>;
-> +		clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
-> +		clock-names = "baud", "bus";
->  		status = "disabled";
->  	};
->
-> @@ -213,7 +210,8 @@
->  			     "mediatek,mt6577-uart";
->  		reg = <0 0x11005000 0 0x400>;
->  		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
-> -		clocks = <&uart_clk>;
-> +		clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
-> +		clock-names = "baud", "bus";
->  		status = "disabled";
->  	};
->  };
->
+>  .../interrupt-controller/mediatek,cirq.txt         |   30 ++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
+> new file mode 100644
+> index 0000000..84e8123
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,cirq.txt
+> @@ -0,0 +1,30 @@
+> +* Mediatek 27xx cirq
+> +
+> +In Mediatek SOCs, the CIRQ is a low power interrupt controller designed to
+> +works outside MCUSYS which comprises with Cortex-Ax cores,CCI and GIC.
+
+s/works/work/
+
+> +The external interrupts (outside MCUSYS) will feed through CIRQ and connect
+> +to GIC in MCUSYS. When CIRQ is enabled, it will record the edge-sensitive
+> +interrupts and generated a pulse signal to parent interrupt controller when
+
+s/generated/generate/
+
+> +flush command is executed. With CIRQ, MCUSYS can be completely turned off
+> +to improve the system power consumption without losing interrupts.
+> +
+> +Required properties:
+> +- compatible: should be: "mediatek,mtk-cirq".
+
+This should be SoC specific. This is fine as a fallback if the same 
+block is in many SoCs, but mediatek and mtk is a bit redundant.
+
+> +- interrupt-controller : Identifies the node as an interrupt controller.
+> +- #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
+> +- interrupt-parent: phandle of irq parent for cirq. The parent must
+> +  use the same interrupt-cells format as GIC.
+> +- reg: Physical base address of the cirq registers and length of memory
+> +  mapped region.
+> +- mediatek,ext-irq-start: Identifies external irq start number in different
+> +  SOCs.
+
+Wouldn't this always be 32 if the GIC is the parent? If 32 is the common 
+case, then use the SoC compatible to determine this value.
+
+> +
+> +Example:
+> +	cirq: interrupt-controller@10204000 {
+> +		compatible = "mediatek,mtk-cirq";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		interrupt-parent = <&sysirq>;
+> +		reg = <0 0x10204000 0 0x4000>;
+> +		mediatek,ext-irq-start = <32>;
+> +	};
+> -- 
+> 1.7.9.5
+> 
