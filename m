@@ -1,36 +1,84 @@
-From: Stephen Boyd <sboyd@codeaurora.org>
-Subject: Re: [PATCH v15 2/4] reset: mediatek: Add MT2701 reset driver
-Date: Tue, 8 Nov 2016 16:01:20 -0800
-Message-ID: <20161109000120.GQ16026@codeaurora.org>
-References: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
- <1478245388-1412-3-git-send-email-erin.lo@mediatek.com>
+From: Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>
+Subject: [bug report] [media] vcodec: mediatek: Add Mediatek V4L2 Video
+ Decoder Driver
+Date: Wed, 9 Nov 2016 16:28:20 +0300
+Message-ID: <20161109132820.GA26677@mwanda>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1478245388-1412-3-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Mike Turquette <mturquette@baylibre.com>, Rob Herring <robh@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, ms.chen@mediatek.com, robert.chou@mediatek.com, Shunli Wang <shunli.wang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 11/04, Erin Lo wrote:
-> From: Shunli Wang <shunli.wang@mediatek.com>
-> 
-> In infrasys and perifsys, there are many reset
-> control bits for kinds of modules. These bits are
-> used as actual reset controllers to be registered
-> into kernel's generic reset controller framework.
-> 
-> Signed-off-by: Shunli Wang <shunli.wang@mediatek.com>
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> Tested-by: John Crispin <blogic@openwrt.org>
-> Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
-> ---
+Hello Tiffany Lin,
 
-Applied to clk-next
+The patch 590577a4e525: "[media] vcodec: mediatek: Add Mediatek V4L2
+Video Decoder Driver" from Sep 2, 2016, leads to the following static
+checker warning:
 
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
+	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:536 vidioc_vdec_qbuf()
+	error: buffer overflow 'vq->bufs' 32 <= u32max
+
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+   520  static int vidioc_vdec_qbuf(struct file *file, void *priv,
+   521                              struct v4l2_buffer *buf)
+   522  {
+   523          struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+   524          struct vb2_queue *vq;
+   525          struct vb2_buffer *vb;
+   526          struct mtk_video_dec_buf *mtkbuf;
+   527          struct vb2_v4l2_buffer  *vb2_v4l2;
+   528  
+   529          if (ctx->state == MTK_STATE_ABORT) {
+   530                  mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
+   531                                  ctx->id);
+   532                  return -EIO;
+   533          }
+   534  
+   535          vq = v4l2_m2m_get_vq(ctx->m2m_ctx, buf->type);
+   536          vb = vq->bufs[buf->index];
+
+Smatch thinks that "buf->index" comes straight from the user without
+being checked and that this is a buffer overflow.  It seems simple
+enough to analyse the call tree.
+
+__video_do_ioctl()
+->  v4l_qbuf()
+  -> vidioc_vdec_qbuf()
+
+It seems like Smatch is correct.  I looked at a different implementation
+of this and that one wasn't checked either so maybe there is something
+I am not seeing.
+
+This has obvious security implications.  Can someone take a look at
+this?
+
+   537          vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
+   538          mtkbuf = container_of(vb2_v4l2, struct mtk_video_dec_buf, vb);
+   539  
+   540          if ((buf->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) &&
+   541              (buf->m.planes[0].bytesused == 0)) {
+   542                  mtkbuf->lastframe = true;
+   543                  mtk_v4l2_debug(1, "[%d] (%d) id=%d lastframe=%d (%d,%d, %d) vb=%p",
+   544                           ctx->id, buf->type, buf->index,
+   545                           mtkbuf->lastframe, buf->bytesused,
+   546                           buf->m.planes[0].bytesused, buf->length,
+   547                           vb);
+   548          }
+   549  
+   550          return v4l2_m2m_qbuf(file, ctx->m2m_ctx, buf);
+   551  }
+
+regards,
+dan carpenter
