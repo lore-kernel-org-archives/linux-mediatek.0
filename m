@@ -1,106 +1,89 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [bug report] [media] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Wed, 9 Nov 2016 14:45:21 +0100
-Message-ID: <9794dab1-94ba-c384-85c5-edb8831810ff@xs4all.nl>
-References: <20161109132820.GA26677@mwanda>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v15 4/4] arm: dts: mt2701: Use real clock for UARTs
+Date: Wed, 9 Nov 2016 18:20:21 +0100
+Message-ID: <eece3eba-fd24-ad96-ca20-c08403894b00@gmail.com>
+References: <1478245388-1412-1-git-send-email-erin.lo@mediatek.com>
+ <1478245388-1412-5-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20161109132820.GA26677@mwanda>
-Sender: linux-media-owner@vger.kernel.org
-To: Dan Carpenter <dan.carpenter@oracle.com>, tiffany.lin@mediatek.com
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478245388-1412-5-git-send-email-erin.lo@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>, Mike Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@codeaurora.org>, Rob Herring <robh@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Sascha Hauer <kernel@pengutronix.de>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, srv_heupstream@mediatek.com, ms.chen@mediatek.com, robert.chou@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-On 11/09/16 14:28, Dan Carpenter wrote:
-> Hello Tiffany Lin,
->
-> The patch 590577a4e525: "[media] vcodec: mediatek: Add Mediatek V4L2
-> Video Decoder Driver" from Sep 2, 2016, leads to the following static
-> checker warning:
->
-> 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:536 vidioc_vdec_qbuf()
-> 	error: buffer overflow 'vq->bufs' 32 <= u32max
->
-> drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
->    520  static int vidioc_vdec_qbuf(struct file *file, void *priv,
->    521                              struct v4l2_buffer *buf)
->    522  {
->    523          struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
->    524          struct vb2_queue *vq;
->    525          struct vb2_buffer *vb;
->    526          struct mtk_video_dec_buf *mtkbuf;
->    527          struct vb2_v4l2_buffer  *vb2_v4l2;
->    528
->    529          if (ctx->state == MTK_STATE_ABORT) {
->    530                  mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
->    531                                  ctx->id);
->    532                  return -EIO;
->    533          }
->    534
->    535          vq = v4l2_m2m_get_vq(ctx->m2m_ctx, buf->type);
->    536          vb = vq->bufs[buf->index];
->
-> Smatch thinks that "buf->index" comes straight from the user without
-> being checked and that this is a buffer overflow.  It seems simple
-> enough to analyse the call tree.
->
-> __video_do_ioctl()
-> ->  v4l_qbuf()
->   -> vidioc_vdec_qbuf()
->
-> It seems like Smatch is correct.  I looked at a different implementation
-> of this and that one wasn't checked either so maybe there is something
-> I am not seeing.
->
-> This has obvious security implications.  Can someone take a look at
-> this?
 
-This is indeed wrong.
 
-The v4l2_m2m_qbuf() call at the end of this function calls in turn 
-vb2_qbuf which
-will check the index. But if you override vidioc_qbuf (or 
-vidioc_prepare), then
-you need to check the index value.
-
-I double-checked all cases where vidioc_qbuf was set to a 
-driver-specific function
-and this is the only driver that doesn't check the index field. In all 
-other cases
-it is either checked, or it is not used before calling into the vb1/vb2 
-framework
-which checks this.
-
-So luckily this only concerns this driver.
-
-Regards,
-
-	Hans
-
+On 11/04/2016 08:43 AM, Erin Lo wrote:
+> We used to use a fixed rate clock for the UARTs. Now that we have clock
+> support we can associate the correct clocks to the UARTs and drop the
+> 26MHz fixed rate UART clock.
 >
->    537          vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
->    538          mtkbuf = container_of(vb2_v4l2, struct mtk_video_dec_buf, vb);
->    539
->    540          if ((buf->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) &&
->    541              (buf->m.planes[0].bytesused == 0)) {
->    542                  mtkbuf->lastframe = true;
->    543                  mtk_v4l2_debug(1, "[%d] (%d) id=%d lastframe=%d (%d,%d, %d) vb=%p",
->    544                           ctx->id, buf->type, buf->index,
->    545                           mtkbuf->lastframe, buf->bytesused,
->    546                           buf->m.planes[0].bytesused, buf->length,
->    547                           vb);
->    548          }
->    549
->    550          return v4l2_m2m_qbuf(file, ctx->m2m_ctx, buf);
->    551  }
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+
+Applied, thanks.
+
+> ---
+>  arch/arm/boot/dts/mt2701.dtsi | 18 ++++++++----------
+>  1 file changed, 8 insertions(+), 10 deletions(-)
 >
-> regards,
-> dan carpenter
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-media" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index c9a8dbf..7eab6f4 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -73,12 +73,6 @@
+>  		#clock-cells = <0>;
+>  	};
+>
+> -	uart_clk: dummy26m {
+> -		compatible = "fixed-clock";
+> -		clock-frequency = <26000000>;
+> -		#clock-cells = <0>;
+> -	};
+> -
+>  	clk26m: oscillator@0 {
+>  		compatible = "fixed-clock";
+>  		#clock-cells = <0>;
+> @@ -186,7 +180,8 @@
+>  			     "mediatek,mt6577-uart";
+>  		reg = <0 0x11002000 0 0x400>;
+>  		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&uart_clk>;
+> +		clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
+> +		clock-names = "baud", "bus";
+>  		status = "disabled";
+>  	};
+>
+> @@ -195,7 +190,8 @@
+>  			     "mediatek,mt6577-uart";
+>  		reg = <0 0x11003000 0 0x400>;
+>  		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&uart_clk>;
+> +		clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
+> +		clock-names = "baud", "bus";
+>  		status = "disabled";
+>  	};
+>
+> @@ -204,7 +200,8 @@
+>  			     "mediatek,mt6577-uart";
+>  		reg = <0 0x11004000 0 0x400>;
+>  		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&uart_clk>;
+> +		clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
+> +		clock-names = "baud", "bus";
+>  		status = "disabled";
+>  	};
+>
+> @@ -213,7 +210,8 @@
+>  			     "mediatek,mt6577-uart";
+>  		reg = <0 0x11005000 0 0x400>;
+>  		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks = <&uart_clk>;
+> +		clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
+> +		clock-names = "baud", "bus";
+>  		status = "disabled";
+>  	};
+>  };
 >
