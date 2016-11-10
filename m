@@ -1,77 +1,42 @@
-From: Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [bug report] [media] vcodec: mediatek: Add Mediatek V4L2 Video
- Decoder Driver
-Date: Thu, 10 Nov 2016 16:30:04 +0300
-Message-ID: <20161110120028.GG28558@mwanda>
-References: <20161109132820.GA26677@mwanda>
- <9794dab1-94ba-c384-85c5-edb8831810ff@xs4all.nl>
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH 0/2] mmc: allow mmc_alloc_host() and tmio_mmc_host_alloc()
+Date: Thu, 10 Nov 2016 14:35:59 +0100
+Message-ID: <20161110133559.GA10191@kroah.com>
+References: <1478784263-18777-1-git-send-email-yamada.masahiro@socionext.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-media-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
 Content-Disposition: inline
-In-Reply-To: <9794dab1-94ba-c384-85c5-edb8831810ff@xs4all.nl>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: tiffany.lin@mediatek.com, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <1478784263-18777-1-git-send-email-yamada.masahiro@socionext.com>
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sascha Sommer <saschasommer@freenet.de>, Johan Hovold <johan@kernel.org>, Sonic Zhang <sonic.zhang@analog.com>, devel@driverdev.osuosl.org, Russell King <linux@armlinux.org.uk>, Jaehoon Chung <jh80.chung@samsung.com>, Chen-Yu Tsai <wens@csie.org>, Pierre Ossman <pierre@ossman.eu>, Harald Welte <HaraldWelte@viatech.com>, Alex Dubov <oakad@yahoo.com>, adi-buildroot-devel@lists.sourceforge.net, =?utf-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>, linux-mediatek@lists.infradead.org, Ben Dooks <ben-linux@fluff.org>, Tony Olech <tony.olech@elandigitalsystems.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Nicolas Pitre <nico@fluxnic.net>, linux-usb@vger.kernel.org, linux-mm
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Nov 09, 2016 at 02:45:21PM +0100, Hans Verkuil wrote:
-> On 11/09/16 14:28, Dan Carpenter wrote:
-> >Hello Tiffany Lin,
-> >
-> >The patch 590577a4e525: "[media] vcodec: mediatek: Add Mediatek V4L2
-> >Video Decoder Driver" from Sep 2, 2016, leads to the following static
-> >checker warning:
-> >
-> >	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:536 vidioc_vdec_qbuf()
-> >	error: buffer overflow 'vq->bufs' 32 <= u32max
-> >
-> >drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-> >   520  static int vidioc_vdec_qbuf(struct file *file, void *priv,
-> >   521                              struct v4l2_buffer *buf)
-> >   522  {
-> >   523          struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> >   524          struct vb2_queue *vq;
-> >   525          struct vb2_buffer *vb;
-> >   526          struct mtk_video_dec_buf *mtkbuf;
-> >   527          struct vb2_v4l2_buffer  *vb2_v4l2;
-> >   528
-> >   529          if (ctx->state == MTK_STATE_ABORT) {
-> >   530                  mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
-> >   531                                  ctx->id);
-> >   532                  return -EIO;
-> >   533          }
-> >   534
-> >   535          vq = v4l2_m2m_get_vq(ctx->m2m_ctx, buf->type);
-> >   536          vb = vq->bufs[buf->index];
-> >
-> >Smatch thinks that "buf->index" comes straight from the user without
-> >being checked and that this is a buffer overflow.  It seems simple
-> >enough to analyse the call tree.
-> >
-> >__video_do_ioctl()
-> >->  v4l_qbuf()
-> >  -> vidioc_vdec_qbuf()
-> >
-> >It seems like Smatch is correct.  I looked at a different implementation
-> >of this and that one wasn't checked either so maybe there is something
-> >I am not seeing.
-> >
-> >This has obvious security implications.  Can someone take a look at
-> >this?
+On Thu, Nov 10, 2016 at 10:24:21PM +0900, Masahiro Yamada wrote:
 > 
-> This is indeed wrong.
+> sdhci_alloc_host() returns an error pointer when it fails.
+> but mmc_alloc_host() cannot.
 > 
-> The v4l2_m2m_qbuf() call at the end of this function calls in turn
-> vb2_qbuf which
-> will check the index.
+> This series allow to propagate a proper error code
+> when host-allocation fails.
 
-There could be an issue before you reach v4l2_m2m_qbuf() because we
-set "mtkbuf->lastframe = true;" so we could be corrupting random
-memory.
+Why?  What can we really do about the error except give up?  Why does
+having a explicit error value make any difference to the caller, they
+can't do anything different, right?
 
-I re-reviewed the other function I looked at earlier and that one was OK
-though.
+I suggest just leaving it as-is, it's simple, and you don't have to mess
+with PTR_ERR() anywhere.
 
-regards,
-dan carpenter
+thanks,
+
+greg k-h
