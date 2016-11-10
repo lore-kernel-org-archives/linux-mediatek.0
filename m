@@ -1,161 +1,121 @@
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: Re: [PATCH 4/4] dts: arm64: enable mmc3 for supporting sdio feature
-Date: Thu, 10 Nov 2016 10:08:10 +0800
-Message-ID: <1478743690.19253.4.camel@mtksdaap41>
-References: <1478585341-6749-1-git-send-email-yong.mao@mediatek.com>
-         <1478585341-6749-5-git-send-email-yong.mao@mediatek.com>
+From: Tiffany Lin <tiffany.lin@mediatek.com>
+Subject: Re: [bug report] [media] vcodec: mediatek: Add Mediatek V4L2 Video
+ Decoder Driver
+Date: Thu, 10 Nov 2016 12:31:30 +0800
+Message-ID: <1478752290.2580.6.camel@mtksdaap41>
+References: <20161109132820.GA26677@mwanda>
+         <9794dab1-94ba-c384-85c5-edb8831810ff@xs4all.nl>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478585341-6749-5-git-send-email-yong.mao@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, YH Huang <yh.huang@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, Mathias Nyman <mathias.nyman@linux.intel.com>, srv_heupstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, linux-mediatek@lists.infradead.org, Will Deacon <will.deacon@arm.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Rob Herring <robh+dt@kernel.org>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Eddie Huang <eddie.huang@mediat>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <9794dab1-94ba-c384-85c5-edb8831810ff@xs4all.nl>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2016-11-08 at 14:09 +0800, Yong Mao wrote:
-> From: yong mao <yong.mao@mediatek.com>
+Hi Hans, Dan,
+
+On Wed, 2016-11-09 at 14:45 +0100, Hans Verkuil wrote:
+> On 11/09/16 14:28, Dan Carpenter wrote:
+> > Hello Tiffany Lin,
+> >
+> > The patch 590577a4e525: "[media] vcodec: mediatek: Add Mediatek V4L2
+> > Video Decoder Driver" from Sep 2, 2016, leads to the following static
+> > checker warning:
+> >
+> > 	drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:536 vidioc_vdec_qbuf()
+> > 	error: buffer overflow 'vq->bufs' 32 <= u32max
+> >
+> > drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> >    520  static int vidioc_vdec_qbuf(struct file *file, void *priv,
+> >    521                              struct v4l2_buffer *buf)
+> >    522  {
+> >    523          struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
+> >    524          struct vb2_queue *vq;
+> >    525          struct vb2_buffer *vb;
+> >    526          struct mtk_video_dec_buf *mtkbuf;
+> >    527          struct vb2_v4l2_buffer  *vb2_v4l2;
+> >    528
+> >    529          if (ctx->state == MTK_STATE_ABORT) {
+> >    530                  mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
+> >    531                                  ctx->id);
+> >    532                  return -EIO;
+> >    533          }
+> >    534
+> >    535          vq = v4l2_m2m_get_vq(ctx->m2m_ctx, buf->type);
+> >    536          vb = vq->bufs[buf->index];
+> >
+> > Smatch thinks that "buf->index" comes straight from the user without
+> > being checked and that this is a buffer overflow.  It seems simple
+> > enough to analyse the call tree.
+> >
+> > __video_do_ioctl()
+> > ->  v4l_qbuf()
+> >   -> vidioc_vdec_qbuf()
+> >
+> > It seems like Smatch is correct.  I looked at a different implementation
+> > of this and that one wasn't checked either so maybe there is something
+> > I am not seeing.
+> >
+> > This has obvious security implications.  Can someone take a look at
+> > this?
 > 
-> Add description of mmc3 for supporting sdio feature
+> This is indeed wrong.
 > 
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts |   82 +++++++++++++++++++++++++++
->  1 file changed, 82 insertions(+)
+> The v4l2_m2m_qbuf() call at the end of this function calls in turn 
+> vb2_qbuf which
+> will check the index. But if you override vidioc_qbuf (or 
+> vidioc_prepare), then
+> you need to check the index value.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> index 2a7f731..4dbd299 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> @@ -43,6 +43,14 @@
->  		enable-active-high;
->  	};
->  
-> +	sdio_fixed_3v3: fixedregulator@0 {
+> I double-checked all cases where vidioc_qbuf was set to a 
+> driver-specific function
+> and this is the only driver that doesn't check the index field. In all 
+> other cases
+> it is either checked, or it is not used before calling into the vb1/vb2 
+> framework
+> which checks this.
+> 
+> So luckily this only concerns this driver.
 
-This should be regulator@1 instead of fixedregulator.
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "3V3";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		gpio = <&pio 85 GPIO_ACTIVE_HIGH>;
-> +	};
-> +
->  	connector {
->  		compatible = "hdmi-connector";
->  		label = "hdmi";
-> @@ -139,6 +147,25 @@
->  	vqmmc-supply = <&mt6397_vmc_reg>;
->  };
->  
-> +&mmc3 {
-> +	status = "okay";
-> +	pinctrl-names = "default", "state_uhs";
-> +	pinctrl-0 = <&mmc3_pins_default>;
-> +	pinctrl-1 = <&mmc3_pins_uhs>;
-> +	bus-width = <4>;
-> +	max-frequency = <200000000>;
-> +	cap-sd-highspeed;
-> +	sd-uhs-sdr50;
-> +	sd-uhs-sdr104;
-> +	sdr104-clk-delay = <5>;
-> +	keep-power-in-suspend;
-> +	enable-sdio-wakeup;
-> +	cap-sdio-irq;
-> +	vmmc-supply = <&sdio_fixed_3v3>;
-> +	vqmmc-supply = <&mt6397_vgp3_reg>;
-> +	non-removable;
-> +};
-> +
->  &pio {
->  	disp_pwm0_pins: disp_pwm0_pins {
->  		pins1 {
-> @@ -197,6 +224,36 @@
->  		};
->  	};
->  
-> +	mmc3_pins_default: mmc3default {
-
-Please keep nodes in &pio sorted, move this one after mmc1_pins_uhs.
-
-> +		pins_dat {
-> +			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
-> +				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-> +				 <MT8173_PIN_24_MSDC3_DAT2__FUNC_MSDC3_DAT2>,
-> +				 <MT8173_PIN_25_MSDC3_DAT3__FUNC_MSDC3_DAT3>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_cmd {
-> +			pinmux = <MT8173_PIN_27_MSDC3_CMD__FUNC_MSDC3_CMD>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <MT8173_PIN_26_MSDC3_CLK__FUNC_MSDC3_CLK>;
-> +			bias-pull-down;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +		};
-> +
-> +		pins_pdn {
-> +			pinmux = <MT8173_PIN_85_AUD_DAT_MOSI__FUNC_GPIO85>;
-> +			output-low;
-> +		};
-
-This one is used in regulator, not really an mmc pin.
-Also, you don't need to add node for gpio usage, request_gpio will set
-mode for you.
-So please remove pins_pdn node.
+Thanks for point out this issue.
+As Hans' mentioned, our driver access index field in v4l2_buffer before
+framework check buffer index.
+We will prepare patch for this issue.
 
 
-> +	};
-> +
->  	mmc0_pins_uhs: mmc0 {
->  		pins_cmd_dat {
->  			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
-> @@ -243,6 +300,31 @@
->  			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
->  		};
->  	};
-> +
-> +	mmc3_pins_uhs: mmc3 {
+best regards,
+Tiffany
 
 
-Please keep nodes in &pio sorted, move this one after mmc1_pins_uhs.
-
-
-Joe.C
-
-> +		pins_dat {
-> +			pinmux = <MT8173_PIN_22_MSDC3_DAT0__FUNC_MSDC3_DAT0>,
-> +				 <MT8173_PIN_23_MSDC3_DAT1__FUNC_MSDC3_DAT1>,
-> +				 <MT8173_PIN_24_MSDC3_DAT2__FUNC_MSDC3_DAT2>,
-> +				 <MT8173_PIN_25_MSDC3_DAT3__FUNC_MSDC3_DAT3>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_cmd {
-> +			pinmux = <MT8173_PIN_27_MSDC3_CMD__FUNC_MSDC3_CMD>;
-> +			input-enable;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +			bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +
-> +		pins_clk {
-> +			pinmux = <MT8173_PIN_26_MSDC3_CLK__FUNC_MSDC3_CLK>;
-> +			drive-strength = <MTK_DRIVE_8mA>;
-> +			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-> +		};
-> +	};
->  };
->  
->  &pwm0 {
+> 
+> Regards,
+> 
+> 	Hans
+> 
+> >
+> >    537          vb2_v4l2 = container_of(vb, struct vb2_v4l2_buffer, vb2_buf);
+> >    538          mtkbuf = container_of(vb2_v4l2, struct mtk_video_dec_buf, vb);
+> >    539
+> >    540          if ((buf->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) &&
+> >    541              (buf->m.planes[0].bytesused == 0)) {
+> >    542                  mtkbuf->lastframe = true;
+> >    543                  mtk_v4l2_debug(1, "[%d] (%d) id=%d lastframe=%d (%d,%d, %d) vb=%p",
+> >    544                           ctx->id, buf->type, buf->index,
+> >    545                           mtkbuf->lastframe, buf->bytesused,
+> >    546                           buf->m.planes[0].bytesused, buf->length,
+> >    547                           vb);
+> >    548          }
+> >    549
+> >    550          return v4l2_m2m_qbuf(file, ctx->m2m_ctx, buf);
+> >    551  }
+> >
+> > regards,
+> > dan carpenter
+> > --
+> > To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >
