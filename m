@@ -1,118 +1,72 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] [media] mtk-mdp: allocate video_device dynamically
-Date: Fri, 11 Nov 2016 11:51:57 +0100
-Message-ID: <d21cd419-e1fc-4d2e-a2a9-74c535865762@xs4all.nl>
-References: <1478522529-57129-1-git-send-email-minghsiu.tsai@mediatek.com>
- <1478522529-57129-2-git-send-email-minghsiu.tsai@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v9 04/10] drm/mediatek: add BLS component
+Date: Fri, 11 Nov 2016 19:55:40 +0800
+Message-ID: <1478865346-19043-5-git-send-email-yt.shen@mediatek.com>
+References: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478522529-57129-2-git-send-email-minghsiu.tsai@mediatek.com>
+In-Reply-To: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
-Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, YT Shen <yt.shen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@med
 List-Id: linux-mediatek@lists.infradead.org
 
-Almost correct:
+Add BLS component for PWM + GAMMA function
 
-On 11/07/2016 01:42 PM, Minghsiu Tsai wrote:
-> It can fix known problems with embedded video_device structs.
-> 
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> ---
->  drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 +-
->  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  | 33 ++++++++++++++++-----------
->  2 files changed, 21 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-> index 848569d..ad1cff3 100644
-> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
-> @@ -167,7 +167,7 @@ struct mtk_mdp_dev {
->  	struct mtk_mdp_comp		*comp[MTK_MDP_COMP_ID_MAX];
->  	struct v4l2_m2m_dev		*m2m_dev;
->  	struct list_head		ctx_list;
-> -	struct video_device		vdev;
-> +	struct video_device		*vdev;
->  	struct v4l2_device		v4l2_dev;
->  	struct workqueue_struct		*job_wq;
->  	struct platform_device		*vpu_dev;
-> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> index 9a747e7..b8dee1c 100644
-> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-> @@ -1236,16 +1236,22 @@ int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
->  	int ret;
->  
->  	mdp->variant = &mtk_mdp_default_variant;
-> -	mdp->vdev.device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
-> -	mdp->vdev.fops = &mtk_mdp_m2m_fops;
-> -	mdp->vdev.ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
-> -	mdp->vdev.release = video_device_release_empty;
-> -	mdp->vdev.lock = &mdp->lock;
-> -	mdp->vdev.vfl_dir = VFL_DIR_M2M;
-> -	mdp->vdev.v4l2_dev = &mdp->v4l2_dev;
-> -	snprintf(mdp->vdev.name, sizeof(mdp->vdev.name), "%s:m2m",
-> +	mdp->vdev = video_device_alloc();
-> +	if (!mdp->vdev) {
-> +		dev_err(dev, "failed to allocate video device\n");
-> +		ret = -ENOMEM;
-> +		goto err_video_alloc;
-> +	}
-> +	mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
-> +	mdp->vdev->fops = &mtk_mdp_m2m_fops;
-> +	mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
-> +	mdp->vdev->release = video_device_release;
-> +	mdp->vdev->lock = &mdp->lock;
-> +	mdp->vdev->vfl_dir = VFL_DIR_M2M;
-> +	mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
-> +	snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
->  		 MTK_MDP_MODULE_NAME);
-> -	video_set_drvdata(&mdp->vdev, mdp);
-> +	video_set_drvdata(mdp->vdev, mdp);
->  
->  	mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
->  	if (IS_ERR(mdp->m2m_dev)) {
-> @@ -1254,26 +1260,27 @@ int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
->  		goto err_m2m_init;
->  	}
->  
-> -	ret = video_register_device(&mdp->vdev, VFL_TYPE_GRABBER, 2);
-> +	ret = video_register_device(mdp->vdev, VFL_TYPE_GRABBER, 2);
->  	if (ret) {
->  		dev_err(dev, "failed to register video device\n");
->  		goto err_vdev_register;
->  	}
->  
->  	v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
-> -		  mdp->vdev.num);
-> +		  mdp->vdev->num);
->  	return 0;
->  
->  err_vdev_register:
->  	v4l2_m2m_release(mdp->m2m_dev);
->  err_m2m_init:
-> -	video_device_release(&mdp->vdev);
-> +	video_unregister_device(mdp->vdev);
+Signed-off-by: YT Shen <yt.shen@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 5 ++++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 2 ++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-This should remain video_device_release: the video_register_device call failed, so
-the device hasn't been registered. In that case just release the device (i.e.
-free the allocated memory).
-
-> +err_video_alloc:
->  
->  	return ret;
->  }
->  
->  void mtk_mdp_unregister_m2m_device(struct mtk_mdp_dev *mdp)
->  {
-> -	video_device_release(&mdp->vdev);
-> +	video_unregister_device(mdp->vdev);
->  	v4l2_m2m_release(mdp->m2m_dev);
->  }
-> 
-
-Regards,
-
-	Hans
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 661a4a0..b78b2e6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -235,6 +235,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
+ 	[MTK_DISP_PWM] = "pwm",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
++	[MTK_DISP_BLS] = "bls",
+ };
+ 
+ struct mtk_ddp_comp_match {
+@@ -245,6 +246,7 @@ struct mtk_ddp_comp_match {
+ 
+ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_AAL]	= { MTK_DISP_AAL,	0, &ddp_aal },
++	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
+ 	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, &ddp_color },
+ 	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, &ddp_color },
+ 	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, NULL },
+@@ -303,7 +305,8 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
+ 	comp->id = comp_id;
+ 	comp->funcs = funcs ?: mtk_ddp_matches[comp_id].funcs;
+ 
+-	if (comp_id == DDP_COMPONENT_DPI0 ||
++	if (comp_id == DDP_COMPONENT_BLS ||
++	    comp_id == DDP_COMPONENT_DPI0 ||
+ 	    comp_id == DDP_COMPONENT_DSI0 ||
+ 	    comp_id == DDP_COMPONENT_PWM0) {
+ 		comp->regs = NULL;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 2f6872a..30faf46 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -36,11 +36,13 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_PWM,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
++	MTK_DISP_BLS,
+ 	MTK_DDP_COMP_TYPE_MAX,
+ };
+ 
+ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_AAL,
++	DDP_COMPONENT_BLS,
+ 	DDP_COMPONENT_COLOR0,
+ 	DDP_COMPONENT_COLOR1,
+ 	DDP_COMPONENT_DPI0,
+-- 
+1.9.1
