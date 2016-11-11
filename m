@@ -1,78 +1,69 @@
-From: Masahiro Yamada <yamada.masahiro@socionext.com>
-Subject: Re: [PATCH 0/2] mmc: allow mmc_alloc_host() and tmio_mmc_host_alloc()
-Date: Fri, 11 Nov 2016 12:19:05 +0900
-Message-ID: <CAK7LNAThxsE3QW4EdPUyxmxbnt_PPjeogi8Fox5AHkddsuu-Sg@mail.gmail.com>
-References: <1478784263-18777-1-git-send-email-yamada.masahiro@socionext.com>
- <20161110133559.GA10191@kroah.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Subject: Re: [PATCH v16 0/5] Mediatek MT8173 CMDQ support
+Date: Fri, 11 Nov 2016 11:15:41 +0530
+Message-ID: <CABb+yY3mi3M0xqNao=DRYN6Np0LOBfS669iUa_hWo2w1MmM1sw@mail.gmail.com>
+References: <1477999698-6288-1-git-send-email-hs.liao@mediatek.com> <1478776558.15447.2.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
-In-Reply-To: <20161110133559.GA10191@kroah.com>
-List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
-List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
-List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
-List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
-List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>,
- <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Errors-To: driverdev-devel-bounces@linuxdriverproject.org
-Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Adrian Hunter <adrian.hunter@intel.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, Sascha Sommer <saschasommer@freenet.de>, Johan Hovold <johan@kernel.org>, Sonic Zhang <sonic.zhang@analog.com>, devel@driverdev.osuosl.org, Russell King <linux@armlinux.org.uk>, Jaehoon Chung <jh80.chung@samsung.com>, Chen-Yu Tsai <wens@csie.org>, Pierre Ossman <pierre@ossman.eu>, Harald Welte <HaraldWelte@viatech.com>, Alex Dubov <oakad@yahoo.com>, adi-buildroot-devel@lists.sourceforge.net, =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Ben Dooks <ben-linux@fluff.org>, Tony Olech <tony.olech@elandigitalsystems.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-omap@vger.kernel.org, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Nicol
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478776558.15447.2.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Horng-Shyang Liao <hs.liao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-2016-11-10 22:35 GMT+09:00 Greg Kroah-Hartman <gregkh@linuxfoundation.org>:
-> On Thu, Nov 10, 2016 at 10:24:21PM +0900, Masahiro Yamada wrote:
+On Thu, Nov 10, 2016 at 4:45 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> On Tue, 2016-11-01 at 19:28 +0800, HS Liao wrote:
+>> Hi,
 >>
->> sdhci_alloc_host() returns an error pointer when it fails.
->> but mmc_alloc_host() cannot.
+>> This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+>> to help write registers with critical time limitation, such as
+>> updating display configuration during the vblank. It controls Global
+>> Command Engine (GCE) hardware to achieve this requirement.
 >>
->> This series allow to propagate a proper error code
->> when host-allocation fails.
+>> These patches have a build dependency on top of v4.9-rc1.
+>>
+>> Changes since v15:
+>>  - separate "suspend and resume" patch from "save energy" patch
+>>  - don't stop running tasks in cmdq_suspend()
+>>    (i.e. leave no running tasks guarantee to clients)
+>>
+>> Best regards,
+>> HS Liao
+>>
+>> HS Liao (5):
+>>   dt-bindings: soc: Add documentation for the MediaTek GCE unit
+>>   CMDQ: Mediatek CMDQ driver
+>>   arm64: dts: mt8173: Add GCE node
+>>   CMDQ: suspend and resume
+>>   CMDQ: save energy
+>>
+>>  .../devicetree/bindings/mailbox/mtk-gce.txt        |  43 ++
+>>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+>>  drivers/mailbox/Kconfig                            |  10 +
+>>  drivers/mailbox/Makefile                           |   2 +
+>>  drivers/mailbox/mtk-cmdq-mailbox.c                 | 632 +++++++++++++++++++++
+>>  drivers/soc/mediatek/Kconfig                       |  11 +
+>>  drivers/soc/mediatek/Makefile                      |   1 +
+>>  drivers/soc/mediatek/mtk-cmdq-helper.c             | 310 ++++++++++
+>>  include/linux/mailbox/mtk-cmdq-mailbox.h           |  67 +++
+>>  include/linux/soc/mediatek/mtk-cmdq.h              | 182 ++++++
+>>  10 files changed, 1268 insertions(+)
+>>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+>>  create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+>>  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+>>  create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+>>  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+>>
 >
-> Why?  What can we really do about the error except give up?  Why does
-> having a explicit error value make any difference to the caller, they
-> can't do anything different, right?
+>
+> Hi Jassi, Matthias,
+>
+> Sorry to disturb you.
+>
+No, you don't disturb, but the controller driver and protocol driver,
+introduced in the same patch, does :)   So does the suspend/resume
+support (patch 4&5) added  separately as a patch on top. Please
+reorganise the patchset.
 
-
-The error code is shown in the console, like
-
-  probe of 5a000000.sdhc failed with error -12
-
-
-The proper error code will give a clue
-why the driver failed to probe.
-
-
-> I suggest just leaving it as-is, it's simple, and you don't have to mess
-> with PTR_ERR() anywhere.
-
-
-Why?
-
-Most of driver just give up probing for any error,
-but we still do ERR_PTR()/PTR_ERR() here and there.
-I think this patch is the same pattern.
-
-If a function returns NULL on failure, we need to think about
-"what is the most common failure case".
-
-Currently, MMC drivers assume -ENOMEM is the best
-fit for mmc_alloc_host(), but the assumption is fragile.
-
-Already, mmc_alloc_host() calls a function
-that returns not only -ENOMEM, but also -ENOSPC.
-
-In the future, some other failure cases might be
-added to mmc_alloc_host().
-
-Once we decide the API returns an error pointer,
-drivers just propagate the return value from the API.
-This is much more stable implementation.
-
-
-
--- 
-Best Regards
-Masahiro Yamada
+Thanks.
