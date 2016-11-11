@@ -1,110 +1,215 @@
-From: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v9 01/10] drm/mediatek: rename macros, add chip prefix
-Date: Fri, 11 Nov 2016 19:55:37 +0800
-Message-ID: <1478865346-19043-2-git-send-email-yt.shen@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v9 03/10] drm/mediatek: add shadow register support
+Date: Fri, 11 Nov 2016 19:55:39 +0800
+Message-ID: <1478865346-19043-4-git-send-email-yt.shen@mediatek.com>
 References: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1478865346-19043-1-git-send-email-yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Cc: David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>, Chris Wilson <chris-Y6uKTt2uX1cEflXRtASbqLVCufUGDwFn@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Jie Qiu <jie.qiu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mao Huang <littlecvr-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Dan Carpenter <dan.carpenter-QHcLZuEGTsvQT0dZR+AlfA@public.gmane.org>, Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, shaoming chen <shaoming.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Maxime Ripard <maxime.ripard-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, YT Shen <yt.shen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@med
 List-Id: linux-mediatek@lists.infradead.org
 
-Add MT8173 prefix for hardware related macros.
+We need to acquire mutex before using the resources,
+and need to release it after finished.
+So we don't need to write registers in the blanking period.
 
-Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: YT Shen <yt.shen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 60 +++++++++++++++++-----------------
- 1 file changed, 30 insertions(+), 30 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 76 ++++++++++++++++++++-------------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c  | 25 +++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h  |  2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  1 +
+ 4 files changed, 75 insertions(+), 29 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 01a21dd..a4f2b3a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -329,6 +329,42 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+ 	pm_runtime_put(drm->dev);
+ }
+ 
++static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
++{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
++	struct mtk_ddp_comp *ovl = mtk_crtc->ddp_comp[0];
++	unsigned int i;
++
++	/*
++	 * TODO: instead of updating the registers here, we should prepare
++	 * working registers in atomic_commit and let the hardware command
++	 * queue update module registers on vblank.
++	 */
++	if (state->pending_config) {
++		mtk_ddp_comp_config(ovl, state->pending_width,
++				    state->pending_height,
++				    state->pending_vrefresh, 0);
++
++		state->pending_config = false;
++	}
++
++	if (mtk_crtc->pending_planes) {
++		for (i = 0; i < OVL_LAYER_NR; i++) {
++			struct drm_plane *plane = &mtk_crtc->planes[i];
++			struct mtk_plane_state *plane_state;
++
++			plane_state = to_mtk_plane_state(plane->state);
++
++			if (plane_state->pending.config) {
++				mtk_ddp_comp_layer_config(ovl, i, plane_state);
++				plane_state->pending.config = false;
++			}
++		}
++		mtk_crtc->pending_planes = false;
++	}
++}
++
+ static void mtk_drm_crtc_enable(struct drm_crtc *crtc)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+@@ -405,6 +441,7 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+ 				      struct drm_crtc_state *old_crtc_state)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	struct mtk_drm_private *priv = crtc->dev->dev_private;
+ 	unsigned int pending_planes = 0;
+ 	int i;
+ 
+@@ -423,6 +460,13 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	}
+ 	if (pending_planes)
+ 		mtk_crtc->pending_planes = true;
++
++	if (priv->data->shadow_register) {
++		mtk_disp_mutex_acquire(mtk_crtc->mutex);
++		mtk_crtc_ddp_config(crtc);
++		mtk_disp_mutex_release(mtk_crtc->mutex);
++	}
++
+ 	if (crtc->state->color_mgmt_changed)
+ 		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+ 			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
+@@ -471,36 +515,10 @@ static int mtk_drm_crtc_init(struct drm_device *drm,
+ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *ovl)
+ {
+ 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+-	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+-	unsigned int i;
++	struct mtk_drm_private *priv = crtc->dev->dev_private;
+ 
+-	/*
+-	 * TODO: instead of updating the registers here, we should prepare
+-	 * working registers in atomic_commit and let the hardware command
+-	 * queue update module registers on vblank.
+-	 */
+-	if (state->pending_config) {
+-		mtk_ddp_comp_config(ovl, state->pending_width,
+-				    state->pending_height,
+-				    state->pending_vrefresh, 0);
+-
+-		state->pending_config = false;
+-	}
+-
+-	if (mtk_crtc->pending_planes) {
+-		for (i = 0; i < OVL_LAYER_NR; i++) {
+-			struct drm_plane *plane = &mtk_crtc->planes[i];
+-			struct mtk_plane_state *plane_state;
+-
+-			plane_state = to_mtk_plane_state(plane->state);
+-
+-			if (plane_state->pending.config) {
+-				mtk_ddp_comp_layer_config(ovl, i, plane_state);
+-				plane_state->pending.config = false;
+-			}
+-		}
+-		mtk_crtc->pending_planes = false;
+-	}
++	if (!priv->data->shadow_register)
++		mtk_crtc_ddp_config(crtc);
+ 
+ 	mtk_drm_finish_page_flip(mtk_crtc);
+ }
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index 17ba935..2fc4321 100644
+index 8030769..b77d456 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -36,21 +36,21 @@
+@@ -12,6 +12,7 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+@@ -32,10 +33,13 @@
+ #define DISP_REG_CONFIG_MMSYS_CG_CON0		0x100
+ 
+ #define DISP_REG_MUTEX_EN(n)	(0x20 + 0x20 * (n))
++#define DISP_REG_MUTEX(n)	(0x24 + 0x20 * (n))
+ #define DISP_REG_MUTEX_RST(n)	(0x28 + 0x20 * (n))
  #define DISP_REG_MUTEX_MOD(n)	(0x2c + 0x20 * (n))
  #define DISP_REG_MUTEX_SOF(n)	(0x30 + 0x20 * (n))
  
--#define MUTEX_MOD_DISP_OVL0		BIT(11)
--#define MUTEX_MOD_DISP_OVL1		BIT(12)
--#define MUTEX_MOD_DISP_RDMA0		BIT(13)
--#define MUTEX_MOD_DISP_RDMA1		BIT(14)
--#define MUTEX_MOD_DISP_RDMA2		BIT(15)
--#define MUTEX_MOD_DISP_WDMA0		BIT(16)
--#define MUTEX_MOD_DISP_WDMA1		BIT(17)
--#define MUTEX_MOD_DISP_COLOR0		BIT(18)
--#define MUTEX_MOD_DISP_COLOR1		BIT(19)
--#define MUTEX_MOD_DISP_AAL		BIT(20)
--#define MUTEX_MOD_DISP_GAMMA		BIT(21)
--#define MUTEX_MOD_DISP_UFOE		BIT(22)
--#define MUTEX_MOD_DISP_PWM0		BIT(23)
--#define MUTEX_MOD_DISP_PWM1		BIT(24)
--#define MUTEX_MOD_DISP_OD		BIT(25)
-+#define MT8173_MUTEX_MOD_DISP_OVL0		BIT(11)
-+#define MT8173_MUTEX_MOD_DISP_OVL1		BIT(12)
-+#define MT8173_MUTEX_MOD_DISP_RDMA0		BIT(13)
-+#define MT8173_MUTEX_MOD_DISP_RDMA1		BIT(14)
-+#define MT8173_MUTEX_MOD_DISP_RDMA2		BIT(15)
-+#define MT8173_MUTEX_MOD_DISP_WDMA0		BIT(16)
-+#define MT8173_MUTEX_MOD_DISP_WDMA1		BIT(17)
-+#define MT8173_MUTEX_MOD_DISP_COLOR0		BIT(18)
-+#define MT8173_MUTEX_MOD_DISP_COLOR1		BIT(19)
-+#define MT8173_MUTEX_MOD_DISP_AAL		BIT(20)
-+#define MT8173_MUTEX_MOD_DISP_GAMMA		BIT(21)
-+#define MT8173_MUTEX_MOD_DISP_UFOE		BIT(22)
-+#define MT8173_MUTEX_MOD_DISP_PWM0		BIT(23)
-+#define MT8173_MUTEX_MOD_DISP_PWM1		BIT(24)
-+#define MT8173_MUTEX_MOD_DISP_OD		BIT(25)
++#define INT_MUTEX				BIT(1)
++
+ #define MT8173_MUTEX_MOD_DISP_OVL0		BIT(11)
+ #define MT8173_MUTEX_MOD_DISP_OVL1		BIT(12)
+ #define MT8173_MUTEX_MOD_DISP_RDMA0		BIT(13)
+@@ -300,6 +304,27 @@ void mtk_disp_mutex_disable(struct mtk_disp_mutex *mutex)
+ 	writel(0, ddp->regs + DISP_REG_MUTEX_EN(mutex->id));
+ }
  
- #define MUTEX_SOF_SINGLE_MODE		0
- #define MUTEX_SOF_DSI0			1
-@@ -80,21 +80,21 @@ struct mtk_ddp {
++void mtk_disp_mutex_acquire(struct mtk_disp_mutex *mutex)
++{
++	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
++					   mutex[mutex->id]);
++	u32 tmp;
++
++	writel(1, ddp->regs + DISP_REG_MUTEX_EN(mutex->id));
++	writel(1, ddp->regs + DISP_REG_MUTEX(mutex->id));
++	if (readl_poll_timeout_atomic(ddp->regs + DISP_REG_MUTEX(mutex->id),
++				      tmp, tmp & INT_MUTEX, 1, 10000))
++		pr_err("could not acquire mutex %d\n", mutex->id);
++}
++
++void mtk_disp_mutex_release(struct mtk_disp_mutex *mutex)
++{
++	struct mtk_ddp *ddp = container_of(mutex, struct mtk_ddp,
++					   mutex[mutex->id]);
++
++	writel(0, ddp->regs + DISP_REG_MUTEX(mutex->id));
++}
++
+ static int mtk_ddp_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp.h
+index 92c1175..f9a7991 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.h
+@@ -37,5 +37,7 @@ void mtk_disp_mutex_remove_comp(struct mtk_disp_mutex *mutex,
+ 				enum mtk_ddp_comp_id id);
+ void mtk_disp_mutex_unprepare(struct mtk_disp_mutex *mutex);
+ void mtk_disp_mutex_put(struct mtk_disp_mutex *mutex);
++void mtk_disp_mutex_acquire(struct mtk_disp_mutex *mutex);
++void mtk_disp_mutex_release(struct mtk_disp_mutex *mutex);
+ 
+ #endif /* MTK_DRM_DDP_H */
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index fa0b106..94f8b66 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -33,6 +33,7 @@ struct mtk_mmsys_driver_data {
+ 	unsigned int main_len;
+ 	const enum mtk_ddp_comp_id *ext_path;
+ 	unsigned int ext_len;
++	bool shadow_register;
  };
  
- static const unsigned int mutex_mod[DDP_COMPONENT_ID_MAX] = {
--	[DDP_COMPONENT_AAL] = MUTEX_MOD_DISP_AAL,
--	[DDP_COMPONENT_COLOR0] = MUTEX_MOD_DISP_COLOR0,
--	[DDP_COMPONENT_COLOR1] = MUTEX_MOD_DISP_COLOR1,
--	[DDP_COMPONENT_GAMMA] = MUTEX_MOD_DISP_GAMMA,
--	[DDP_COMPONENT_OD] = MUTEX_MOD_DISP_OD,
--	[DDP_COMPONENT_OVL0] = MUTEX_MOD_DISP_OVL0,
--	[DDP_COMPONENT_OVL1] = MUTEX_MOD_DISP_OVL1,
--	[DDP_COMPONENT_PWM0] = MUTEX_MOD_DISP_PWM0,
--	[DDP_COMPONENT_PWM1] = MUTEX_MOD_DISP_PWM1,
--	[DDP_COMPONENT_RDMA0] = MUTEX_MOD_DISP_RDMA0,
--	[DDP_COMPONENT_RDMA1] = MUTEX_MOD_DISP_RDMA1,
--	[DDP_COMPONENT_RDMA2] = MUTEX_MOD_DISP_RDMA2,
--	[DDP_COMPONENT_UFOE] = MUTEX_MOD_DISP_UFOE,
--	[DDP_COMPONENT_WDMA0] = MUTEX_MOD_DISP_WDMA0,
--	[DDP_COMPONENT_WDMA1] = MUTEX_MOD_DISP_WDMA1,
-+	[DDP_COMPONENT_AAL] = MT8173_MUTEX_MOD_DISP_AAL,
-+	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
-+	[DDP_COMPONENT_COLOR1] = MT8173_MUTEX_MOD_DISP_COLOR1,
-+	[DDP_COMPONENT_GAMMA] = MT8173_MUTEX_MOD_DISP_GAMMA,
-+	[DDP_COMPONENT_OD] = MT8173_MUTEX_MOD_DISP_OD,
-+	[DDP_COMPONENT_OVL0] = MT8173_MUTEX_MOD_DISP_OVL0,
-+	[DDP_COMPONENT_OVL1] = MT8173_MUTEX_MOD_DISP_OVL1,
-+	[DDP_COMPONENT_PWM0] = MT8173_MUTEX_MOD_DISP_PWM0,
-+	[DDP_COMPONENT_PWM1] = MT8173_MUTEX_MOD_DISP_PWM1,
-+	[DDP_COMPONENT_RDMA0] = MT8173_MUTEX_MOD_DISP_RDMA0,
-+	[DDP_COMPONENT_RDMA1] = MT8173_MUTEX_MOD_DISP_RDMA1,
-+	[DDP_COMPONENT_RDMA2] = MT8173_MUTEX_MOD_DISP_RDMA2,
-+	[DDP_COMPONENT_UFOE] = MT8173_MUTEX_MOD_DISP_UFOE,
-+	[DDP_COMPONENT_WDMA0] = MT8173_MUTEX_MOD_DISP_WDMA0,
-+	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
- };
- 
- static unsigned int mtk_ddp_mout_en(enum mtk_ddp_comp_id cur,
+ struct mtk_drm_private {
 -- 
 1.9.1
