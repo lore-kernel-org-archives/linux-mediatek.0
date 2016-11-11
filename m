@@ -1,72 +1,122 @@
 From: YT Shen <yt.shen@mediatek.com>
-Subject: [PATCH v9 04/10] drm/mediatek: add BLS component
-Date: Fri, 11 Nov 2016 19:55:40 +0800
-Message-ID: <1478865346-19043-5-git-send-email-yt.shen@mediatek.com>
-References: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
+Subject: [PATCH v9 00/10] MT2701 DRM support
+Date: Fri, 11 Nov 2016 19:55:36 +0800
+Message-ID: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
 Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, YT Shen <yt.shen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstream@med
 List-Id: linux-mediatek@lists.infradead.org
 
-Add BLS component for PWM + GAMMA function
+This is MT2701 DRM support PATCH v9, based on 4.9-rc1.
+We add DSI interrupt control, transfer function for MIPI DSI panel support.
+Most codes are the same, except some register changed.
 
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 5 ++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 2 ++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+For example:
+ - DISP_OVL address offset changed, color format definition changed.
+ - DISP_RDMA fifo size changed.
+ - DISP_COLOR offset changed.
+ - MIPI_TX setting changed.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 661a4a0..b78b2e6 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -235,6 +235,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
- 	[MTK_DISP_PWM] = "pwm",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
-+	[MTK_DISP_BLS] = "bls",
- };
- 
- struct mtk_ddp_comp_match {
-@@ -245,6 +246,7 @@ struct mtk_ddp_comp_match {
- 
- static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL]	= { MTK_DISP_AAL,	0, &ddp_aal },
-+	[DDP_COMPONENT_BLS]	= { MTK_DISP_BLS,	0, NULL },
- 	[DDP_COMPONENT_COLOR0]	= { MTK_DISP_COLOR,	0, &ddp_color },
- 	[DDP_COMPONENT_COLOR1]	= { MTK_DISP_COLOR,	1, &ddp_color },
- 	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, NULL },
-@@ -303,7 +305,8 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	comp->id = comp_id;
- 	comp->funcs = funcs ?: mtk_ddp_matches[comp_id].funcs;
- 
--	if (comp_id == DDP_COMPONENT_DPI0 ||
-+	if (comp_id == DDP_COMPONENT_BLS ||
-+	    comp_id == DDP_COMPONENT_DPI0 ||
- 	    comp_id == DDP_COMPONENT_DSI0 ||
- 	    comp_id == DDP_COMPONENT_PWM0) {
- 		comp->regs = NULL;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 2f6872a..30faf46 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -36,11 +36,13 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_PWM,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
-+	MTK_DISP_BLS,
- 	MTK_DDP_COMP_TYPE_MAX,
- };
- 
- enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_AAL,
-+	DDP_COMPONENT_BLS,
- 	DDP_COMPONENT_COLOR0,
- 	DDP_COMPONENT_COLOR1,
- 	DDP_COMPONENT_DPI0,
+We add a new component DDP_COMPONENT_BLS, and the connections are updated.
+OVL -> RDMA -> COLOR -> BLS -> DSI
+RDMA -> DPI
+And we have shadow register support in MT2701.
+
+We remove dts patch from the patch series, which depends on MT2701 CCF and scpsys.
+
+Changes since v8:
+- enable 3 DSI interrupts only
+- move mtk_dsi_wait_for_irq_done() to the patch of irq control
+- use the name BLS in DRM driver part
+- move BLS declaration to a separate patch
+- update mtk_dsi_switch_to_cmd_mode()
+- update mtk_output_dsi_enable() and mtk_output_dsi_disable()
+
+Changes since v7:
+- Remove redundant codes
+- Move the definition of DDP_COMPONENT_BLS to patch of "drm/mediatek: update display module connections"
+- Move _dsi_irq_wait_queue into platform driver data
+- Move mtk_dsi_irq_data_clear() to patch of "drm/mediatek: add dsi interrupt control"
+- Add more descriptions in the commit messages
+
+Changes since v6:
+- Change data type of irq_data to u32
+- Rewrite mtk_dsi_host_transfer() for simplify
+- Move some MIPI_TX config to patch of "drm/mediatek: add *driver_data for different hardware settings".
+- Remove device tree from this patch series
+
+Changes since v5:
+- Remove DPI device tree and compatible string
+- Use one wait queue to handle interrupt status
+- Update the interrupt check flow and DSI_INT_ALL_BITS
+- Use same function for host read/write command
+- various fixes
+
+Changes since v4:
+- Add messages when timeout in mtk_disp_mutex_acquire()
+- Add descriptions for DISP_REG_MUTEX registers
+- Move connection settings for display modules to a separate patch
+- Remove 'mt2701-disp-wdma' because it is unused
+- Move cleaning up and renaming to a separate patch
+- Use wait_event_interruptible_timeout() to replace polling
+- Remove irq_num from mtk_dsi structure
+- Remove redundant and debug codes
+
+Changes since v3:
+- Add DSI support for MIPI DSI panels
+- Update BLS binding to PWM nodes
+- Remove ufoe device nodes
+- Remove redundant parentheses
+- Remove global variable initialization
+
+Changes since v2:
+- Rename mtk_ddp_mux_sel to mtk_ddp_sout_sel
+- Update mt2701_mtk_ddp_ext components
+- Changed to prefix naming
+- Reorder the patch series
+- Use of_device_get_match_data() to get driver private data
+- Use iopoll macros to implement mtk_disp_mutex_acquire()
+- Removed empty device tree nodes
+
+Changes since v1:
+- Removed BLS bindings and codes, which belong to pwm driver
+- Moved mtk_disp_mutex_acquire() just before mtk_crtc_ddp_config()
+- Split patch into smaller parts
+- Added const keyword to constant structure
+- Removed codes for special memory align
+
+Thanks,
+yt.shen
+
+YT Shen (8):
+  drm/mediatek: rename macros, add chip prefix
+  drm/mediatek: add *driver_data for different hardware settings
+  drm/mediatek: add shadow register support
+  drm/mediatek: add BLS component
+  drm/mediatek: update display module connections
+  drm/mediatek: cleaning up and refine
+  drm/mediatek: update DSI sub driver flow for sending commands to panel
+  drm/mediatek: add support for Mediatek SoC MT2701
+
+shaoming chen (2):
+  drm/mediatek: add dsi interrupt control
+  drm/mediatek: add dsi transfer function
+
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  33 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  17 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  76 +++--
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 138 ++++++---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h      |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  38 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  15 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  54 +++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   9 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c          | 429 ++++++++++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c      |  70 +++--
+ 11 files changed, 715 insertions(+), 166 deletions(-)
+
 -- 
 1.9.1
