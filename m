@@ -1,7 +1,7 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] arm: mediatek: dts changes for v4.10
-Date: Mon, 14 Nov 2016 19:36:36 +0100
-Message-ID: <c148f205-79fc-3578-84db-cce4063e42ec@gmail.com>
+Subject: [GIT PULL] arm: mediatek: kconfig changes for v4.10
+Date: Mon, 14 Nov 2016 19:37:51 +0100
+Message-ID: <b9bf2483-533d-ffd1-b23f-d89d20b8a73a@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
@@ -16,7 +16,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 Hi Arnd and Olof,
@@ -32,35 +32,20 @@ The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
 
 are available in the git repository at:
 
-   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-dts
+   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-kconfig
 
-for you to fetch changes up to 28d6e3647bd7c869bfc251f9a7e283d78cef5fc5:
+for you to fetch changes up to 494975c9cc00f69bf71de0991dcebda9b2911aa0:
 
-   arm: dts: mt2701: Use real clock for UARTs (2016-11-11 15:25:09 +0100)
-
-----------------------------------------------------------------
-- Add bindings for mtk-scpsys for mt2701
-- Add clocks for auxadc on mt8173-evb
-- Add nodes needed by clock controller for mt2701
-- Use clocks from the clock controller for the uart of mt2701
+   ARM: mediatek: clean up mach-mediatek/Makefile (2016-10-31 15:26:23 
+-0600)
 
 ----------------------------------------------------------------
-Erin Lo (1):
-       arm: dts: mt2701: Use real clock for UARTs
+- clean up mach-mediatek Makefile as kbuild only descends into the folder if
+   ARCH_MEDIATEK is enabled
 
-James Liao (1):
-       arm: dts: mt2701: Add clock controller device nodes
+----------------------------------------------------------------
+Masahiro Yamada (1):
+       ARM: mediatek: clean up mach-mediatek/Makefile
 
-Matthias Brugger (1):
-       arm64: dts: mt8173: Fix auxadc node
-
-Shunli Wang (1):
-       soc: mediatek: Add MT2701 power dt-bindings
-
-  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 13 +++---
-  arch/arm/boot/dts/mt2701.dtsi                      | 50 
-+++++++++++++++++++---
-  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  3 ++
-  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++
-  4 files changed, 83 insertions(+), 10 deletions(-)
-  create mode 100644 include/dt-bindings/power/mt2701-power.h
+  arch/arm/mach-mediatek/Makefile | 6 ++----
+  1 file changed, 2 insertions(+), 4 deletions(-)
