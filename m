@@ -1,33 +1,66 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v5 1/3] dt-bindings: mediatek: Add a binding for Mediatek
- JPEG Decoder
-Date: Mon, 14 Nov 2016 11:11:08 -0600
-Message-ID: <20161114171108.vmihebue2pocm6jt@rob-hp-laptop>
-References: <1478586880-3923-1-git-send-email-rick.chang@mediatek.com>
- <1478586880-3923-2-git-send-email-rick.chang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] arm: mediatek: dts changes for v4.10
+Date: Mon, 14 Nov 2016 19:36:36 +0100
+Message-ID: <c148f205-79fc-3578-84db-cce4063e42ec@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1478586880-3923-2-git-send-email-rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Nov 08, 2016 at 02:34:38PM +0800, Rick Chang wrote:
-> Add a DT binding documentation for Mediatek JPEG Decoder of
-> MT2701 SoC.
-> 
-> Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../bindings/media/mediatek-jpeg-decoder.txt       | 37 ++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+Hi Arnd and Olof,
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+although late, please pull the following changes.
+
+Thanks,
+Matthias
+---
+The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+
+   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
+
+are available in the git repository at:
+
+   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-dts
+
+for you to fetch changes up to 28d6e3647bd7c869bfc251f9a7e283d78cef5fc5:
+
+   arm: dts: mt2701: Use real clock for UARTs (2016-11-11 15:25:09 +0100)
+
+----------------------------------------------------------------
+- Add bindings for mtk-scpsys for mt2701
+- Add clocks for auxadc on mt8173-evb
+- Add nodes needed by clock controller for mt2701
+- Use clocks from the clock controller for the uart of mt2701
+
+----------------------------------------------------------------
+Erin Lo (1):
+       arm: dts: mt2701: Use real clock for UARTs
+
+James Liao (1):
+       arm: dts: mt2701: Add clock controller device nodes
+
+Matthias Brugger (1):
+       arm64: dts: mt8173: Fix auxadc node
+
+Shunli Wang (1):
+       soc: mediatek: Add MT2701 power dt-bindings
+
+  .../devicetree/bindings/soc/mediatek/scpsys.txt    | 13 +++---
+  arch/arm/boot/dts/mt2701.dtsi                      | 50 
++++++++++++++++++++---
+  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  3 ++
+  include/dt-bindings/power/mt2701-power.h           | 27 ++++++++++++
+  4 files changed, 83 insertions(+), 10 deletions(-)
+  create mode 100644 include/dt-bindings/power/mt2701-power.h
