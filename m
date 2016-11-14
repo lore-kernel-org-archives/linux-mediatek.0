@@ -1,105 +1,135 @@
-From: CK Hu <ck.hu@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 Subject: Re: [PATCH v9 00/10] MT2701 DRM support
-Date: Mon, 14 Nov 2016 15:14:11 +0800
-Message-ID: <1479107651.2963.2.camel@mtksdaap41>
+Date: Mon, 14 Nov 2016 15:45:54 +0800
+Message-ID: <1479109554.9518.3.camel@mtksdaap41>
 References: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <1478865346-19043-1-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: YT Shen <yt.shen@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Cc: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Mao Huang <littlecvr@chromium.org>, CK Hu <ck.hu@mediatek.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Thierry Reding <thierry.reding@gmail.com>, Jie Qiu <jie.qiu@mediatek.com>, Maxime Ripard <maxime.ripard@free-electrons.com>, Chris Wilson <chris@chris-wilson.co.uk>, shaoming chen <shaoming.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Dan Carpenter <dan.carpenter@oracle.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, srv_heupstrea
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gRnJpLCAyMDE2LTExLTExIGF0IDE5OjU1ICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IFRoaXMgaXMgTVQyNzAxIERSTSBzdXBwb3J0IFBBVENIIHY5LCBiYXNlZCBvbiA0LjktcmMx
-Lgo+IFdlIGFkZCBEU0kgaW50ZXJydXB0IGNvbnRyb2wsIHRyYW5zZmVyIGZ1bmN0aW9uIGZvciBN
-SVBJIERTSSBwYW5lbCBzdXBwb3J0Lgo+IE1vc3QgY29kZXMgYXJlIHRoZSBzYW1lLCBleGNlcHQg
-c29tZSByZWdpc3RlciBjaGFuZ2VkLgo+IAo+IEZvciBleGFtcGxlOgo+ICAtIERJU1BfT1ZMIGFk
-ZHJlc3Mgb2Zmc2V0IGNoYW5nZWQsIGNvbG9yIGZvcm1hdCBkZWZpbml0aW9uIGNoYW5nZWQuCj4g
-IC0gRElTUF9SRE1BIGZpZm8gc2l6ZSBjaGFuZ2VkLgo+ICAtIERJU1BfQ09MT1Igb2Zmc2V0IGNo
-YW5nZWQuCj4gIC0gTUlQSV9UWCBzZXR0aW5nIGNoYW5nZWQuCj4gCj4gV2UgYWRkIGEgbmV3IGNv
-bXBvbmVudCBERFBfQ09NUE9ORU5UX0JMUywgYW5kIHRoZSBjb25uZWN0aW9ucyBhcmUgdXBkYXRl
-ZC4KPiBPVkwgLT4gUkRNQSAtPiBDT0xPUiAtPiBCTFMgLT4gRFNJCj4gUkRNQSAtPiBEUEkKPiBB
-bmQgd2UgaGF2ZSBzaGFkb3cgcmVnaXN0ZXIgc3VwcG9ydCBpbiBNVDI3MDEuCj4gCj4gV2UgcmVt
-b3ZlIGR0cyBwYXRjaCBmcm9tIHRoZSBwYXRjaCBzZXJpZXMsIHdoaWNoIGRlcGVuZHMgb24gTVQy
-NzAxIENDRiBhbmQgc2Nwc3lzLgoKRm9yIHRoaXMgc2VyaWVzLCBpdCBsb29rcyBnb29kIHRvIG1l
-LgpBY2tlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KCj4gCj4gQ2hhbmdlcyBzaW5j
-ZSB2ODoKPiAtIGVuYWJsZSAzIERTSSBpbnRlcnJ1cHRzIG9ubHkKPiAtIG1vdmUgbXRrX2RzaV93
-YWl0X2Zvcl9pcnFfZG9uZSgpIHRvIHRoZSBwYXRjaCBvZiBpcnEgY29udHJvbAo+IC0gdXNlIHRo
-ZSBuYW1lIEJMUyBpbiBEUk0gZHJpdmVyIHBhcnQKPiAtIG1vdmUgQkxTIGRlY2xhcmF0aW9uIHRv
-IGEgc2VwYXJhdGUgcGF0Y2gKPiAtIHVwZGF0ZSBtdGtfZHNpX3N3aXRjaF90b19jbWRfbW9kZSgp
-Cj4gLSB1cGRhdGUgbXRrX291dHB1dF9kc2lfZW5hYmxlKCkgYW5kIG10a19vdXRwdXRfZHNpX2Rp
-c2FibGUoKQo+IAo+IENoYW5nZXMgc2luY2Ugdjc6Cj4gLSBSZW1vdmUgcmVkdW5kYW50IGNvZGVz
-Cj4gLSBNb3ZlIHRoZSBkZWZpbml0aW9uIG9mIEREUF9DT01QT05FTlRfQkxTIHRvIHBhdGNoIG9m
-ICJkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBkaXNwbGF5IG1vZHVsZSBjb25uZWN0aW9ucyIKPiAtIE1v
-dmUgX2RzaV9pcnFfd2FpdF9xdWV1ZSBpbnRvIHBsYXRmb3JtIGRyaXZlciBkYXRhCj4gLSBNb3Zl
-IG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0byBwYXRjaCBvZiAiZHJtL21lZGlhdGVrOiBhZGQg
-ZHNpIGludGVycnVwdCBjb250cm9sIgo+IC0gQWRkIG1vcmUgZGVzY3JpcHRpb25zIGluIHRoZSBj
-b21taXQgbWVzc2FnZXMKPiAKPiBDaGFuZ2VzIHNpbmNlIHY2Ogo+IC0gQ2hhbmdlIGRhdGEgdHlw
-ZSBvZiBpcnFfZGF0YSB0byB1MzIKPiAtIFJld3JpdGUgbXRrX2RzaV9ob3N0X3RyYW5zZmVyKCkg
-Zm9yIHNpbXBsaWZ5Cj4gLSBNb3ZlIHNvbWUgTUlQSV9UWCBjb25maWcgdG8gcGF0Y2ggb2YgImRy
-bS9tZWRpYXRlazogYWRkICpkcml2ZXJfZGF0YSBmb3IgZGlmZmVyZW50IGhhcmR3YXJlIHNldHRp
-bmdzIi4KPiAtIFJlbW92ZSBkZXZpY2UgdHJlZSBmcm9tIHRoaXMgcGF0Y2ggc2VyaWVzCj4gCj4g
-Q2hhbmdlcyBzaW5jZSB2NToKPiAtIFJlbW92ZSBEUEkgZGV2aWNlIHRyZWUgYW5kIGNvbXBhdGli
-bGUgc3RyaW5nCj4gLSBVc2Ugb25lIHdhaXQgcXVldWUgdG8gaGFuZGxlIGludGVycnVwdCBzdGF0
-dXMKPiAtIFVwZGF0ZSB0aGUgaW50ZXJydXB0IGNoZWNrIGZsb3cgYW5kIERTSV9JTlRfQUxMX0JJ
-VFMKPiAtIFVzZSBzYW1lIGZ1bmN0aW9uIGZvciBob3N0IHJlYWQvd3JpdGUgY29tbWFuZAo+IC0g
-dmFyaW91cyBmaXhlcwo+IAo+IENoYW5nZXMgc2luY2UgdjQ6Cj4gLSBBZGQgbWVzc2FnZXMgd2hl
-biB0aW1lb3V0IGluIG10a19kaXNwX211dGV4X2FjcXVpcmUoKQo+IC0gQWRkIGRlc2NyaXB0aW9u
-cyBmb3IgRElTUF9SRUdfTVVURVggcmVnaXN0ZXJzCj4gLSBNb3ZlIGNvbm5lY3Rpb24gc2V0dGlu
-Z3MgZm9yIGRpc3BsYXkgbW9kdWxlcyB0byBhIHNlcGFyYXRlIHBhdGNoCj4gLSBSZW1vdmUgJ210
-MjcwMS1kaXNwLXdkbWEnIGJlY2F1c2UgaXQgaXMgdW51c2VkCj4gLSBNb3ZlIGNsZWFuaW5nIHVw
-IGFuZCByZW5hbWluZyB0byBhIHNlcGFyYXRlIHBhdGNoCj4gLSBVc2Ugd2FpdF9ldmVudF9pbnRl
-cnJ1cHRpYmxlX3RpbWVvdXQoKSB0byByZXBsYWNlIHBvbGxpbmcKPiAtIFJlbW92ZSBpcnFfbnVt
-IGZyb20gbXRrX2RzaSBzdHJ1Y3R1cmUKPiAtIFJlbW92ZSByZWR1bmRhbnQgYW5kIGRlYnVnIGNv
-ZGVzCj4gCj4gQ2hhbmdlcyBzaW5jZSB2MzoKPiAtIEFkZCBEU0kgc3VwcG9ydCBmb3IgTUlQSSBE
-U0kgcGFuZWxzCj4gLSBVcGRhdGUgQkxTIGJpbmRpbmcgdG8gUFdNIG5vZGVzCj4gLSBSZW1vdmUg
-dWZvZSBkZXZpY2Ugbm9kZXMKPiAtIFJlbW92ZSByZWR1bmRhbnQgcGFyZW50aGVzZXMKPiAtIFJl
-bW92ZSBnbG9iYWwgdmFyaWFibGUgaW5pdGlhbGl6YXRpb24KPiAKPiBDaGFuZ2VzIHNpbmNlIHYy
-Ogo+IC0gUmVuYW1lIG10a19kZHBfbXV4X3NlbCB0byBtdGtfZGRwX3NvdXRfc2VsCj4gLSBVcGRh
-dGUgbXQyNzAxX210a19kZHBfZXh0IGNvbXBvbmVudHMKPiAtIENoYW5nZWQgdG8gcHJlZml4IG5h
-bWluZwo+IC0gUmVvcmRlciB0aGUgcGF0Y2ggc2VyaWVzCj4gLSBVc2Ugb2ZfZGV2aWNlX2dldF9t
-YXRjaF9kYXRhKCkgdG8gZ2V0IGRyaXZlciBwcml2YXRlIGRhdGEKPiAtIFVzZSBpb3BvbGwgbWFj
-cm9zIHRvIGltcGxlbWVudCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKCkKPiAtIFJlbW92ZWQgZW1w
-dHkgZGV2aWNlIHRyZWUgbm9kZXMKPiAKPiBDaGFuZ2VzIHNpbmNlIHYxOgo+IC0gUmVtb3ZlZCBC
-TFMgYmluZGluZ3MgYW5kIGNvZGVzLCB3aGljaCBiZWxvbmcgdG8gcHdtIGRyaXZlcgo+IC0gTW92
-ZWQgbXRrX2Rpc3BfbXV0ZXhfYWNxdWlyZSgpIGp1c3QgYmVmb3JlIG10a19jcnRjX2RkcF9jb25m
-aWcoKQo+IC0gU3BsaXQgcGF0Y2ggaW50byBzbWFsbGVyIHBhcnRzCj4gLSBBZGRlZCBjb25zdCBr
-ZXl3b3JkIHRvIGNvbnN0YW50IHN0cnVjdHVyZQo+IC0gUmVtb3ZlZCBjb2RlcyBmb3Igc3BlY2lh
-bCBtZW1vcnkgYWxpZ24KPiAKPiBUaGFua3MsCj4geXQuc2hlbgo+IAo+IFlUIFNoZW4gKDgpOgo+
-ICAgZHJtL21lZGlhdGVrOiByZW5hbWUgbWFjcm9zLCBhZGQgY2hpcCBwcmVmaXgKPiAgIGRybS9t
-ZWRpYXRlazogYWRkICpkcml2ZXJfZGF0YSBmb3IgZGlmZmVyZW50IGhhcmR3YXJlIHNldHRpbmdz
-Cj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBzaGFkb3cgcmVnaXN0ZXIgc3VwcG9ydAo+ICAgZHJtL21l
-ZGlhdGVrOiBhZGQgQkxTIGNvbXBvbmVudAo+ICAgZHJtL21lZGlhdGVrOiB1cGRhdGUgZGlzcGxh
-eSBtb2R1bGUgY29ubmVjdGlvbnMKPiAgIGRybS9tZWRpYXRlazogY2xlYW5pbmcgdXAgYW5kIHJl
-ZmluZQo+ICAgZHJtL21lZGlhdGVrOiB1cGRhdGUgRFNJIHN1YiBkcml2ZXIgZmxvdyBmb3Igc2Vu
-ZGluZyBjb21tYW5kcyB0byBwYW5lbAo+ICAgZHJtL21lZGlhdGVrOiBhZGQgc3VwcG9ydCBmb3Ig
-TWVkaWF0ZWsgU29DIE1UMjcwMQo+IAo+IHNoYW9taW5nIGNoZW4gKDIpOgo+ICAgZHJtL21lZGlh
-dGVrOiBhZGQgZHNpIGludGVycnVwdCBjb250cm9sCj4gICBkcm0vbWVkaWF0ZWs6IGFkZCBkc2kg
-dHJhbnNmZXIgZnVuY3Rpb24KPiAKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
-X292bC5jICAgICB8ICAzMyArKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
-X3JkbWEuYyAgICB8ICAxNyArLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9j
-cnRjLmMgICAgIHwgIDc2ICsrKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
-X2RkcC5jICAgICAgfCAxMzggKysrKysrLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2RkcC5oICAgICAgfCAgIDIgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5jIHwgIDM4ICsrLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5oIHwgIDE1ICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmMgICAgICB8ICA1NCArKystCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-ZHJtX2Rydi5oICAgICAgfCAgIDkgKwo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rz
-aS5jICAgICAgICAgIHwgNDI5ICsrKysrKysrKysrKysrKysrKysrKysrKy0tLS0KPiAgZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMgICAgICB8ICA3MCArKystLQo+ICAxMSBm
-aWxlcyBjaGFuZ2VkLCA3MTUgaW5zZXJ0aW9ucygrKSwgMTY2IGRlbGV0aW9ucygtKQo+IAoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBt
-YWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3Rz
-LmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Hi, YT
+
+On Fri, 2016-11-11 at 19:55 +0800, YT Shen wrote:
+> This is MT2701 DRM support PATCH v9, based on 4.9-rc1.
+> We add DSI interrupt control, transfer function for MIPI DSI panel support.
+> Most codes are the same, except some register changed.
+> 
+> For example:
+>  - DISP_OVL address offset changed, color format definition changed.
+>  - DISP_RDMA fifo size changed.
+>  - DISP_COLOR offset changed.
+>  - MIPI_TX setting changed.
+> 
+> We add a new component DDP_COMPONENT_BLS, and the connections are updated.
+> OVL -> RDMA -> COLOR -> BLS -> DSI
+> RDMA -> DPI
+> And we have shadow register support in MT2701.
+> 
+> We remove dts patch from the patch series, which depends on MT2701 CCF and scpsys.
+> 
+
+I test this series on MT8173 platform, it looks pretty good to me,
+thanks for your patches.
+
+Tested-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+
+> Changes since v8:
+> - enable 3 DSI interrupts only
+> - move mtk_dsi_wait_for_irq_done() to the patch of irq control
+> - use the name BLS in DRM driver part
+> - move BLS declaration to a separate patch
+> - update mtk_dsi_switch_to_cmd_mode()
+> - update mtk_output_dsi_enable() and mtk_output_dsi_disable()
+> 
+> Changes since v7:
+> - Remove redundant codes
+> - Move the definition of DDP_COMPONENT_BLS to patch of "drm/mediatek: update display module connections"
+> - Move _dsi_irq_wait_queue into platform driver data
+> - Move mtk_dsi_irq_data_clear() to patch of "drm/mediatek: add dsi interrupt control"
+> - Add more descriptions in the commit messages
+> 
+> Changes since v6:
+> - Change data type of irq_data to u32
+> - Rewrite mtk_dsi_host_transfer() for simplify
+> - Move some MIPI_TX config to patch of "drm/mediatek: add *driver_data for different hardware settings".
+> - Remove device tree from this patch series
+> 
+> Changes since v5:
+> - Remove DPI device tree and compatible string
+> - Use one wait queue to handle interrupt status
+> - Update the interrupt check flow and DSI_INT_ALL_BITS
+> - Use same function for host read/write command
+> - various fixes
+> 
+> Changes since v4:
+> - Add messages when timeout in mtk_disp_mutex_acquire()
+> - Add descriptions for DISP_REG_MUTEX registers
+> - Move connection settings for display modules to a separate patch
+> - Remove 'mt2701-disp-wdma' because it is unused
+> - Move cleaning up and renaming to a separate patch
+> - Use wait_event_interruptible_timeout() to replace polling
+> - Remove irq_num from mtk_dsi structure
+> - Remove redundant and debug codes
+> 
+> Changes since v3:
+> - Add DSI support for MIPI DSI panels
+> - Update BLS binding to PWM nodes
+> - Remove ufoe device nodes
+> - Remove redundant parentheses
+> - Remove global variable initialization
+> 
+> Changes since v2:
+> - Rename mtk_ddp_mux_sel to mtk_ddp_sout_sel
+> - Update mt2701_mtk_ddp_ext components
+> - Changed to prefix naming
+> - Reorder the patch series
+> - Use of_device_get_match_data() to get driver private data
+> - Use iopoll macros to implement mtk_disp_mutex_acquire()
+> - Removed empty device tree nodes
+> 
+> Changes since v1:
+> - Removed BLS bindings and codes, which belong to pwm driver
+> - Moved mtk_disp_mutex_acquire() just before mtk_crtc_ddp_config()
+> - Split patch into smaller parts
+> - Added const keyword to constant structure
+> - Removed codes for special memory align
+> 
+> Thanks,
+> yt.shen
+> 
+> YT Shen (8):
+>   drm/mediatek: rename macros, add chip prefix
+>   drm/mediatek: add *driver_data for different hardware settings
+>   drm/mediatek: add shadow register support
+>   drm/mediatek: add BLS component
+>   drm/mediatek: update display module connections
+>   drm/mediatek: cleaning up and refine
+>   drm/mediatek: update DSI sub driver flow for sending commands to panel
+>   drm/mediatek: add support for Mediatek SoC MT2701
+> 
+> shaoming chen (2):
+>   drm/mediatek: add dsi interrupt control
+>   drm/mediatek: add dsi transfer function
+> 
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  33 ++-
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  17 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  76 +++--
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c      | 138 ++++++---
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h      |   2 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  38 ++-
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  15 +
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  54 +++-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   9 +
+>  drivers/gpu/drm/mediatek/mtk_dsi.c          | 429 ++++++++++++++++++++++++----
+>  drivers/gpu/drm/mediatek/mtk_mipi_tx.c      |  70 +++--
+>  11 files changed, 715 insertions(+), 166 deletions(-)
+> 
+
+-- 
+Bibby
