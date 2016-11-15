@@ -1,193 +1,121 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH] drm/mediatek: use HDMI state notifier support
-Date: Tue, 15 Nov 2016 19:39:51 +0100
-Message-ID: <20161115183951.840-1-p.zabel@pengutronix.de>
+From: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: [PATCH v9 3/3] ASoC: mediatek: Add jack detection support to the
+ mt8173-rt5650 machine driver
+Date: Tue, 15 Nov 2016 19:52:40 +0100
+Message-ID: <1479235960-23696-4-git-send-email-p.zabel@pengutronix.de>
+References: <1479235960-23696-1-git-send-email-p.zabel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Russell King <linux@armlinux.org.uk>, Hans Verkuil <hans.verkuil@cisco.com>, PC Liao <pc.liao@mediatek.com>, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1479235960-23696-1-git-send-email-p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
+Cc: Jean-Francois Moine <moinejf-GANU6spQydw@public.gmane.org>, Koro Chen <koro.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Lars-Peter Clausen <lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org>, Russell King - ARM Linux <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Cawa Cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, PC Liao <pc.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SXNzdWUgaG90LXBsdWcgZGV0ZWN0aW9uLCBFRElEIHVwZGF0ZSwgYW5kIEVMRCB1cGRhdGUgbm90
-aWZpY2F0aW9ucwpmcm9tIHRoZSBDRUMgYW5kIEhETUkgZHJpdmVycyB1c2luZyB0aGUgSERNSSBz
-dGF0ZSBub3RpZmllciBzdXBwb3J0LgoKU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8cC56
-YWJlbEBwZW5ndXRyb25peC5kZT4KLS0tClRoaXMgcGF0Y2ggZGVwZW5kcyBvbiB0aGUgInZpZGVv
-OiBhZGQgSERNSSBzdGF0ZSBub3RpZmllciBzdXBwb3J0IiBwYXRjaCBbMV0gYnkKSGFucyBWZXJr
-dWlsLCBiYXNlZCBvbiBSdXNzZWxsIEtpbmcncyBlYXJsaWVyIHZlcnNpb24uIFdpdGggdGhpcyB3
-ZSBjYW4gcmVwbGFjZQp0aGUgY3VzdG9tIGNhbGxiYWNrIGludGVyZmFjZSBiZXR3ZWVuIEhETUkg
-YW5kIENFQyBkcml2ZXJzIHdpdGggYSBjb21tb24KbWVjaGFuaXNtLiBJdCB3aWxsIGFsc28gYWxs
-b3cgb3RoZXIgZHJpdmVycyBzdWNoIGFzIGhkbWktY29kZWMgdG8gcmVhY3QgdG8gdGhlCmVtaXR0
-ZWQgZXZlbnRzLgoKWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3JnL3BhdGNoLzM4MTA5
-LwotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmMgIHwgNTYgKysrKysrKysr
-KystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19jZWMuaCAgfCAyNiAtLS0tLS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19oZG1pLmMgfCA0NiArKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0KIDMgZmlsZXMg
-Y2hhbmdlZCwgNDQgaW5zZXJ0aW9ucygrKSwgODQgZGVsZXRpb25zKC0pCiBkZWxldGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jZWMuaAoKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2NlYy5jCmluZGV4IDdhM2ViOGMuLjlhMTgwN2IgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19jZWMuYwpAQCAtMTMsMTIgKzEzLDExIEBACiAgKi8KICNpbmNsdWRlIDxsaW51eC9jbGsu
-aD4KICNpbmNsdWRlIDxsaW51eC9kZWxheS5oPgorI2luY2x1ZGUgPGxpbnV4L2hkbWktbm90aWZp
-ZXIuaD4KICNpbmNsdWRlIDxsaW51eC9pby5oPgogI2luY2x1ZGUgPGxpbnV4L2ludGVycnVwdC5o
-PgogI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgogCi0jaW5jbHVkZSAibXRrX2Nl
-Yy5oIgotCiAjZGVmaW5lIFRSX0NPTkZJRwkJMHgwMAogI2RlZmluZSBDTEVBUl9DRUNfSVJRCQkJ
-QklUKDE1KQogCkBAIC01NSwxMiArNTQsOSBAQAogCiBzdHJ1Y3QgbXRrX2NlYyB7CiAJdm9pZCBf
-X2lvbWVtICpyZWdzOworCXN0cnVjdCBoZG1pX25vdGlmaWVyICpub3RpZmllcjsKIAlzdHJ1Y3Qg
-Y2xrICpjbGs7CiAJaW50IGlycTsKLQlib29sIGhwZDsKLQl2b2lkICgqaHBkX2V2ZW50KShib29s
-IGhwZCwgc3RydWN0IGRldmljZSAqZGV2KTsKLQlzdHJ1Y3QgZGV2aWNlICpoZG1pX2RldjsKLQlz
-cGlubG9ja190IGxvY2s7CiB9OwogCiBzdGF0aWMgdm9pZCBtdGtfY2VjX2NsZWFyX2JpdHMoc3Ry
-dWN0IG10a19jZWMgKmNlYywgdW5zaWduZWQgaW50IG9mZnNldCwKQEAgLTk0LDIwICs5MCw3IEBA
-IHN0YXRpYyB2b2lkIG10a19jZWNfbWFzayhzdHJ1Y3QgbXRrX2NlYyAqY2VjLCB1bnNpZ25lZCBp
-bnQgb2Zmc2V0LAogCXdyaXRlbCh2YWwsIGNlYy0+cmVncyArIG9mZnNldCk7CiB9CiAKLXZvaWQg
-bXRrX2NlY19zZXRfaHBkX2V2ZW50KHN0cnVjdCBkZXZpY2UgKmRldiwKLQkJCSAgIHZvaWQgKCpo
-cGRfZXZlbnQpKGJvb2wgaHBkLCBzdHJ1Y3QgZGV2aWNlICpkZXYpLAotCQkJICAgc3RydWN0IGRl
-dmljZSAqaGRtaV9kZXYpCi17Ci0Jc3RydWN0IG10a19jZWMgKmNlYyA9IGRldl9nZXRfZHJ2ZGF0
-YShkZXYpOwotCXVuc2lnbmVkIGxvbmcgZmxhZ3M7Ci0KLQlzcGluX2xvY2tfaXJxc2F2ZSgmY2Vj
-LT5sb2NrLCBmbGFncyk7Ci0JY2VjLT5oZG1pX2RldiA9IGhkbWlfZGV2OwotCWNlYy0+aHBkX2V2
-ZW50ID0gaHBkX2V2ZW50OwotCXNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJmNlYy0+bG9jaywgZmxh
-Z3MpOwotfQotCi1ib29sIG10a19jZWNfaHBkX2hpZ2goc3RydWN0IGRldmljZSAqZGV2KQorc3Rh
-dGljIGJvb2wgbXRrX2NlY19ocGRfaGlnaChzdHJ1Y3QgZGV2aWNlICpkZXYpCiB7CiAJc3RydWN0
-IG10a19jZWMgKmNlYyA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwogCXVuc2lnbmVkIGludCBzdGF0
-dXM7CkBAIC0xNTIsMjEgKzEzNSw2IEBAIHN0YXRpYyB2b2lkIG10a19jZWNfY2xlYXJfaHRwbGdf
-aXJxKHN0cnVjdCBtdGtfY2VjICpjZWMpCiAJCQkgICBSWF9JTlRfMzJLX0NMUiB8IEhETUlfSFRQ
-TEdfSU5UXzMyS19DTFIpOwogfQogCi1zdGF0aWMgdm9pZCBtdGtfY2VjX2hwZF9ldmVudChzdHJ1
-Y3QgbXRrX2NlYyAqY2VjLCBib29sIGhwZCkKLXsKLQl2b2lkICgqaHBkX2V2ZW50KShib29sIGhw
-ZCwgc3RydWN0IGRldmljZSAqZGV2KTsKLQlzdHJ1Y3QgZGV2aWNlICpoZG1pX2RldjsKLQl1bnNp
-Z25lZCBsb25nIGZsYWdzOwotCi0Jc3Bpbl9sb2NrX2lycXNhdmUoJmNlYy0+bG9jaywgZmxhZ3Mp
-OwotCWhwZF9ldmVudCA9IGNlYy0+aHBkX2V2ZW50OwotCWhkbWlfZGV2ID0gY2VjLT5oZG1pX2Rl
-djsKLQlzcGluX3VubG9ja19pcnFyZXN0b3JlKCZjZWMtPmxvY2ssIGZsYWdzKTsKLQotCWlmICho
-cGRfZXZlbnQpCi0JCWhwZF9ldmVudChocGQsIGhkbWlfZGV2KTsKLX0KLQogc3RhdGljIGlycXJl
-dHVybl90IG10a19jZWNfaHRwbGdfaXNyX3RocmVhZChpbnQgaXJxLCB2b2lkICphcmcpCiB7CiAJ
-c3RydWN0IGRldmljZSAqZGV2ID0gYXJnOwpAQCAtMTc2LDExICsxNDQsMTMgQEAgc3RhdGljIGly
-cXJldHVybl90IG10a19jZWNfaHRwbGdfaXNyX3RocmVhZChpbnQgaXJxLCB2b2lkICphcmcpCiAJ
-bXRrX2NlY19jbGVhcl9odHBsZ19pcnEoY2VjKTsKIAlocGQgPSBtdGtfY2VjX2hwZF9oaWdoKGRl
-dik7CiAKLQlpZiAoY2VjLT5ocGQgIT0gaHBkKSB7CisJaWYgKGNlYy0+bm90aWZpZXItPmNvbm5l
-Y3RlZCAhPSBocGQpIHsKIAkJZGV2X2RiZyhkZXYsICJob3RwbHVnIGV2ZW50ISBjdXIgaHBkID0g
-JWQsIGhwZCA9ICVkXG4iLAotCQkJY2VjLT5ocGQsIGhwZCk7Ci0JCWNlYy0+aHBkID0gaHBkOwot
-CQltdGtfY2VjX2hwZF9ldmVudChjZWMsIGhwZCk7CisJCQljZWMtPm5vdGlmaWVyLT5jb25uZWN0
-ZWQsIGhwZCk7CisJCWlmIChocGQpCisJCQloZG1pX2V2ZW50X2Nvbm5lY3QoY2VjLT5ub3RpZmll
-cik7CisJCWVsc2UKKwkJCWhkbWlfZXZlbnRfZGlzY29ubmVjdChjZWMtPm5vdGlmaWVyKTsKIAl9
-CiAJcmV0dXJuIElSUV9IQU5ETEVEOwogfQpAQCAtMTk3LDcgKzE2Nyw2IEBAIHN0YXRpYyBpbnQg
-bXRrX2NlY19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCQlyZXR1cm4gLUVO
-T01FTTsKIAogCXBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGNlYyk7Ci0Jc3Bpbl9sb2NrX2lu
-aXQoJmNlYy0+bG9jayk7CiAKIAlyZXMgPSBwbGF0Zm9ybV9nZXRfcmVzb3VyY2UocGRldiwgSU9S
-RVNPVVJDRV9NRU0sIDApOwogCWNlYy0+cmVncyA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYs
-IHJlcyk7CkBAIC0yMjAsNiArMTg5LDEyIEBAIHN0YXRpYyBpbnQgbXRrX2NlY19wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCQlyZXR1cm4gY2VjLT5pcnE7CiAJfQogCisJY2Vj
-LT5ub3RpZmllciA9IGhkbWlfbm90aWZpZXJfZ2V0KGRldik7CisJaWYgKCFjZWMtPm5vdGlmaWVy
-KSB7CisJCWNsa19kaXNhYmxlX3VucHJlcGFyZShjZWMtPmNsayk7CisJCXJldHVybiAtRU5PTUVN
-OworCX0KKwogCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoZGV2LCBjZWMtPmlycSwg
-TlVMTCwKIAkJCQkJbXRrX2NlY19odHBsZ19pc3JfdGhyZWFkLAogCQkJCQlJUlFGX1NIQVJFRCB8
-IElSUUZfVFJJR0dFUl9MT1cgfApAQCAtMjQ1LDYgKzIyMCw3IEBAIHN0YXRpYyBpbnQgbXRrX2Nl
-Y19yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIHsKIAlzdHJ1Y3QgbXRrX2Nl
-YyAqY2VjID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7CiAKKwloZG1pX25vdGlmaWVyX3B1
-dChjZWMtPm5vdGlmaWVyKTsKIAltdGtfY2VjX2h0cGxnX2lycV9kaXNhYmxlKGNlYyk7CiAJY2xr
-X2Rpc2FibGVfdW5wcmVwYXJlKGNlYy0+Y2xrKTsKIAlyZXR1cm4gMDsKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2NlYy5oCmRlbGV0ZWQgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAxMDA1N2I3Li4wMDAw
-MDAwCi0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmgKKysrIC9kZXYvbnVs
-bApAQCAtMSwyNiArMCwwIEBACi0vKgotICogQ29weXJpZ2h0IChjKSAyMDE0IE1lZGlhVGVrIElu
-Yy4KLSAqIEF1dGhvcjogSmllIFFpdSA8amllLnFpdUBtZWRpYXRlay5jb20+Ci0gKgotICogVGhp
-cyBwcm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9v
-ciBtb2RpZnkKLSAqIGl0IHVuZGVyIHRoZSB0ZXJtcyBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGlj
-IExpY2Vuc2UgdmVyc2lvbiAyIGFzCi0gKiBwdWJsaXNoZWQgYnkgdGhlIEZyZWUgU29mdHdhcmUg
-Rm91bmRhdGlvbi4KLSAqCi0gKiBUaGlzIHByb2dyYW0gaXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhv
-cGUgdGhhdCBpdCB3aWxsIGJlIHVzZWZ1bCwKLSAqIGJ1dCBXSVRIT1VUIEFOWSBXQVJSQU5UWTsg
-d2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mCi0gKiBNRVJDSEFOVEFCSUxJVFkg
-b3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuICBTZWUgdGhlCi0gKiBHTlUgR2Vu
-ZXJhbCBQdWJsaWMgTGljZW5zZSBmb3IgbW9yZSBkZXRhaWxzLgotICovCi0jaWZuZGVmIF9NVEtf
-Q0VDX0gKLSNkZWZpbmUgX01US19DRUNfSAotCi0jaW5jbHVkZSA8bGludXgvdHlwZXMuaD4KLQot
-c3RydWN0IGRldmljZTsKLQotdm9pZCBtdGtfY2VjX3NldF9ocGRfZXZlbnQoc3RydWN0IGRldmlj
-ZSAqZGV2LAotCQkJICAgdm9pZCAoKmhvdHBsdWdfZXZlbnQpKGJvb2wgaHBkLCBzdHJ1Y3QgZGV2
-aWNlICpkZXYpLAotCQkJICAgc3RydWN0IGRldmljZSAqaGRtaV9kZXYpOwotYm9vbCBtdGtfY2Vj
-X2hwZF9oaWdoKHN0cnVjdCBkZXZpY2UgKmRldik7Ci0KLSNlbmRpZiAvKiBfTVRLX0NFQ19IICov
-CmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCmluZGV4IDcxMjI3ZGUuLmMwNGE3MWEgMTAw
-NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCisrKyBiL2RyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCkBAIC0yMCw2ICsyMCw3IEBACiAjaW5jbHVk
-ZSA8bGludXgvY2xrLmg+CiAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KICNpbmNsdWRlIDxsaW51
-eC9oZG1pLmg+CisjaW5jbHVkZSA8bGludXgvaGRtaS1ub3RpZmllci5oPgogI2luY2x1ZGUgPGxp
-bnV4L2kyYy5oPgogI2luY2x1ZGUgPGxpbnV4L2lvLmg+CiAjaW5jbHVkZSA8bGludXgva2VybmVs
-Lmg+CkBAIC0zMiw3ICszMyw2IEBACiAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+
-CiAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+CiAjaW5jbHVkZSA8c291bmQvaGRtaS1jb2RlYy5o
-PgotI2luY2x1ZGUgIm10a19jZWMuaCIKICNpbmNsdWRlICJtdGtfaGRtaS5oIgogI2luY2x1ZGUg
-Im10a19oZG1pX3JlZ3MuaCIKIApAQCAtMTUzLDYgKzE1Myw4IEBAIHN0cnVjdCBtdGtfaGRtaSB7
-CiAJc3RydWN0IGRldmljZSAqZGV2OwogCXN0cnVjdCBwaHkgKnBoeTsKIAlzdHJ1Y3QgZGV2aWNl
-ICpjZWNfZGV2OworCXN0cnVjdCBoZG1pX25vdGlmaWVyICpub3RpZmllcjsKKwlzdHJ1Y3Qgbm90
-aWZpZXJfYmxvY2sgbmI7CiAJc3RydWN0IGkyY19hZGFwdGVyICpkZGNfYWRwdDsKIAlzdHJ1Y3Qg
-Y2xrICpjbGtbTVRLX0hETUlfQ0xLX0NPVU5UXTsKIAlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSBt
-b2RlOwpAQCAtMTE5NiwxOSArMTE5OCwxMCBAQCBzdGF0aWMgZW51bSBkcm1fY29ubmVjdG9yX3N0
-YXR1cyBoZG1pX2Nvbm5fZGV0ZWN0KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uLAogewogCXN0
-cnVjdCBtdGtfaGRtaSAqaGRtaSA9IGhkbWlfY3R4X2Zyb21fY29ubihjb25uKTsKIAotCXJldHVy
-biBtdGtfY2VjX2hwZF9oaWdoKGhkbWktPmNlY19kZXYpID8KKwlyZXR1cm4gaGRtaS0+bm90aWZp
-ZXItPmNvbm5lY3RlZCA/CiAJICAgICAgIGNvbm5lY3Rvcl9zdGF0dXNfY29ubmVjdGVkIDogY29u
-bmVjdG9yX3N0YXR1c19kaXNjb25uZWN0ZWQ7CiB9CiAKLXN0YXRpYyB2b2lkIGhkbWlfY29ubl9k
-ZXN0cm95KHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uKQotewotCXN0cnVjdCBtdGtfaGRtaSAq
-aGRtaSA9IGhkbWlfY3R4X2Zyb21fY29ubihjb25uKTsKLQotCW10a19jZWNfc2V0X2hwZF9ldmVu
-dChoZG1pLT5jZWNfZGV2LCBOVUxMLCBOVUxMKTsKLQotCWRybV9jb25uZWN0b3JfY2xlYW51cChj
-b25uKTsKLX0KLQogc3RhdGljIGludCBtdGtfaGRtaV9jb25uX2dldF9tb2RlcyhzdHJ1Y3QgZHJt
-X2Nvbm5lY3RvciAqY29ubikKIHsKIAlzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkgPSBoZG1pX2N0eF9m
-cm9tX2Nvbm4oY29ubik7CkBAIC0xMjI1LDkgKzEyMTgsMTEgQEAgc3RhdGljIGludCBtdGtfaGRt
-aV9jb25uX2dldF9tb2RlcyhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubikKIAloZG1pLT5kdmlf
-bW9kZSA9ICFkcm1fZGV0ZWN0X21vbml0b3JfYXVkaW8oZWRpZCk7CiAKIAlkcm1fbW9kZV9jb25u
-ZWN0b3JfdXBkYXRlX2VkaWRfcHJvcGVydHkoY29ubiwgZWRpZCk7CisJaGRtaV9ldmVudF9uZXdf
-ZWRpZChoZG1pLT5ub3RpZmllciwgZWRpZCwgc2l6ZW9mKCplZGlkKSk7CiAKIAlyZXQgPSBkcm1f
-YWRkX2VkaWRfbW9kZXMoY29ubiwgZWRpZCk7CiAJZHJtX2VkaWRfdG9fZWxkKGNvbm4sIGVkaWQp
-OworCWhkbWlfZXZlbnRfbmV3X2VsZChoZG1pLT5ub3RpZmllciwgY29ubi0+ZWxkKTsKIAlrZnJl
-ZShlZGlkKTsKIAlyZXR1cm4gcmV0OwogfQpAQCAtMTI2OSw3ICsxMjY0LDcgQEAgc3RhdGljIGNv
-bnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2Z1bmNzIG10a19oZG1pX2Nvbm5lY3Rvcl9mdW5jcyA9
-IHsKIAkuZHBtcyA9IGRybV9hdG9taWNfaGVscGVyX2Nvbm5lY3Rvcl9kcG1zLAogCS5kZXRlY3Qg
-PSBoZG1pX2Nvbm5fZGV0ZWN0LAogCS5maWxsX21vZGVzID0gZHJtX2hlbHBlcl9wcm9iZV9zaW5n
-bGVfY29ubmVjdG9yX21vZGVzLAotCS5kZXN0cm95ID0gaGRtaV9jb25uX2Rlc3Ryb3ksCisJLmRl
-c3Ryb3kgPSBkcm1fY29ubmVjdG9yX2NsZWFudXAsCiAJLnJlc2V0ID0gZHJtX2F0b21pY19oZWxw
-ZXJfY29ubmVjdG9yX3Jlc2V0LAogCS5hdG9taWNfZHVwbGljYXRlX3N0YXRlID0gZHJtX2F0b21p
-Y19oZWxwZXJfY29ubmVjdG9yX2R1cGxpY2F0ZV9zdGF0ZSwKIAkuYXRvbWljX2Rlc3Ryb3lfc3Rh
-dGUgPSBkcm1fYXRvbWljX2hlbHBlcl9jb25uZWN0b3JfZGVzdHJveV9zdGF0ZSwKQEAgLTEyODIs
-MTIgKzEyNzcsMTYgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fY29ubmVjdG9yX2hlbHBlcl9m
-dW5jcwogCS5iZXN0X2VuY29kZXIgPSBtdGtfaGRtaV9jb25uX2Jlc3RfZW5jLAogfTsKIAotc3Rh
-dGljIHZvaWQgbXRrX2hkbWlfaHBkX2V2ZW50KGJvb2wgaHBkLCBzdHJ1Y3QgZGV2aWNlICpkZXYp
-CitzdGF0aWMgaW50IG10a19oZG1pX25vdGlmeShzdHJ1Y3Qgbm90aWZpZXJfYmxvY2sgKm5iLCB1
-bnNpZ25lZCBsb25nIGV2ZW50LAorCQkJICAgIHZvaWQgKmRhdGEpCiB7Ci0Jc3RydWN0IG10a19o
-ZG1pICpoZG1pID0gZGV2X2dldF9kcnZkYXRhKGRldik7CisJc3RydWN0IG10a19oZG1pICpoZG1p
-ID0gY29udGFpbmVyX29mKG5iLCBzdHJ1Y3QgbXRrX2hkbWksIG5iKTsKIAotCWlmIChoZG1pICYm
-IGhkbWktPmJyaWRnZS5lbmNvZGVyICYmIGhkbWktPmJyaWRnZS5lbmNvZGVyLT5kZXYpCisJaWYg
-KChldmVudCA9PSBIRE1JX0NPTk5FQ1RFRCB8fCBldmVudCA9PSBIRE1JX0RJU0NPTk5FQ1RFRCkg
-JiYKKwkgICAgKGhkbWktPmJyaWRnZS5lbmNvZGVyICYmIGhkbWktPmJyaWRnZS5lbmNvZGVyLT5k
-ZXYpKQogCQlkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQoaGRtaS0+YnJpZGdlLmVuY29kZXItPmRl
-dik7CisKKwlyZXR1cm4gTk9USUZZX09LOwogfQogCiAvKgpAQCAtMTMzMCw4ICsxMzI5LDYgQEAg
-c3RhdGljIGludCBtdGtfaGRtaV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlk
-Z2UpCiAJCX0KIAl9CiAKLQltdGtfY2VjX3NldF9ocGRfZXZlbnQoaGRtaS0+Y2VjX2RldiwgbXRr
-X2hkbWlfaHBkX2V2ZW50LCBoZG1pLT5kZXYpOwotCiAJcmV0dXJuIDA7CiB9CiAKQEAgLTE3MDcs
-NiArMTcwNCwxNSBAQCBzdGF0aWMgaW50IG10a19kcm1faGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZv
-cm1fZGV2aWNlICpwZGV2KQogCQlyZXR1cm4gcmV0OwogCX0KIAorCWhkbWktPm5vdGlmaWVyID0g
-aGRtaV9ub3RpZmllcl9nZXQoaGRtaS0+Y2VjX2Rldik7CisJaWYgKCFoZG1pLT5ub3RpZmllcikK
-KwkJcmV0dXJuIC1FTk9NRU07CisKKwloZG1pLT5uYi5ub3RpZmllcl9jYWxsID0gbXRrX2hkbWlf
-bm90aWZ5OworCXJldCA9IGhkbWlfbm90aWZpZXJfcmVnaXN0ZXIoaGRtaS0+bm90aWZpZXIsICZo
-ZG1pLT5uYik7CisJaWYgKHJldCkKKwkJZ290byBlcnJfbm90aWZpZXJfcHV0OworCiAJbXRrX2hk
-bWlfcmVnaXN0ZXJfYXVkaW9fZHJpdmVyKGRldik7CiAKIAloZG1pLT5icmlkZ2UuZnVuY3MgPSAm
-bXRrX2hkbWlfYnJpZGdlX2Z1bmNzOwpAQCAtMTcxNCw3ICsxNzIwLDcgQEAgc3RhdGljIGludCBt
-dGtfZHJtX2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAlyZXQgPSBk
-cm1fYnJpZGdlX2FkZCgmaGRtaS0+YnJpZGdlKTsKIAlpZiAocmV0KSB7CiAJCWRldl9lcnIoZGV2
-LCAiZmFpbGVkIHRvIGFkZCBicmlkZ2UsIHJldCA9ICVkXG4iLCByZXQpOwotCQlyZXR1cm4gcmV0
-OworCQlnb3RvIGVycl9ub3RpZmllcl91bnJlZ2lzdGVyOwogCX0KIAogCXJldCA9IG10a19oZG1p
-X2Nsa19lbmFibGVfYXVkaW8oaGRtaSk7CkBAIC0xNzI4LDYgKzE3MzQsMTAgQEAgc3RhdGljIGlu
-dCBtdGtfZHJtX2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogZXJy
-X2JyaWRnZV9yZW1vdmU6CiAJZHJtX2JyaWRnZV9yZW1vdmUoJmhkbWktPmJyaWRnZSk7CitlcnJf
-bm90aWZpZXJfdW5yZWdpc3RlcjoKKwloZG1pX25vdGlmaWVyX3VucmVnaXN0ZXIoaGRtaS0+bm90
-aWZpZXIsICZoZG1pLT5uYik7CitlcnJfbm90aWZpZXJfcHV0OgorCWhkbWlfbm90aWZpZXJfcHV0
-KGhkbWktPm5vdGlmaWVyKTsKIAlyZXR1cm4gcmV0OwogfQogCi0tIAoyLjEwLjIKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
-IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
-ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+Find the HDMI state notifier device (CEC) in the device tree and pass it
+to hdmi-codec.
+
+Signed-off-by: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+---
+Changes since v8:
+ - Rebased onto the "video: add HDMI state notifier support" patch.
+   Now we look for the CEC device in the device tree to pass it to
+   hdmi_codec_set_jack_detect.
+---
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c | 42 +++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index ba65f41..daf00cf 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -17,7 +17,9 @@
+ #include <linux/module.h>
+ #include <linux/gpio.h>
+ #include <linux/of_gpio.h>
++#include <linux/of_platform.h>
+ #include <sound/soc.h>
++#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include "../../codecs/rt5645.h"
+ 
+@@ -166,6 +168,27 @@ static struct snd_soc_dai_link_component mt8173_rt5650_codecs[] = {
+ 	},
+ };
+ 
++static struct snd_soc_jack mt8173_hdmi_card_jack;
++
++static int mt8173_hdmi_init(struct snd_soc_pcm_runtime *runtime)
++{
++	struct snd_soc_card *card = runtime->card;
++	struct snd_soc_codec *codec = runtime->codec;
++	struct device *cec_dev = snd_soc_card_get_drvdata(card);
++	int ret;
++
++	/* Enable jack detection */
++	ret = snd_soc_card_jack_new(card, "HDMI Jack", SND_JACK_LINEOUT,
++				    &mt8173_hdmi_card_jack, NULL, 0);
++	if (ret) {
++		dev_err(card->dev, "HDMI Jack creation failed: %d\n", ret);
++		return ret;
++	}
++
++	return hdmi_codec_set_jack_detect(codec, &mt8173_hdmi_card_jack,
++					  cec_dev);
++}
++
+ enum {
+ 	DAI_LINK_PLAYBACK,
+ 	DAI_LINK_CAPTURE,
+@@ -228,6 +251,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
+ 		.no_pcm = 1,
+ 		.codec_dai_name = "i2s-hifi",
+ 		.dpcm_playback = 1,
++		.init = mt8173_hdmi_init,
+ 	},
+ };
+ 
+@@ -249,6 +273,8 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 	struct snd_soc_card *card = &mt8173_rt5650_card;
+ 	struct device_node *platform_node;
+ 	struct device_node *np;
++	struct device_node *cec_np;
++	struct platform_device *cec_pdev;
+ 	const char *codec_capture_dai;
+ 	int i, ret;
+ 
+@@ -313,6 +339,22 @@ static int mt8173_rt5650_dev_probe(struct platform_device *pdev)
+ 	card->dev = &pdev->dev;
+ 	platform_set_drvdata(pdev, card);
+ 
++	/* The CEC module handles HDMI hotplug detection */
++	cec_np = of_find_compatible_node(pdev->dev.of_node->parent, NULL,
++					 "mediatek,mt8173-cec");
++	if (!cec_np) {
++		dev_err(&pdev->dev, "Failed to find CEC node\n");
++		return -EINVAL;
++	}
++
++	cec_pdev = of_find_device_by_node(cec_np);
++	if (!cec_pdev) {
++		dev_err(&pdev->dev, "Waiting for CEC device %s\n",
++			cec_np->full_name);
++		return -EPROBE_DEFER;
++	}
++
++	snd_soc_card_set_drvdata(card, &cec_pdev->dev);
+ 	ret = devm_snd_soc_register_card(&pdev->dev, card);
+ 	if (ret)
+ 		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
+-- 
+2.10.2
