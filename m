@@ -1,55 +1,110 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [GIT PULL] arm: mediatek: soc changes for v4.10
-Date: Mon, 14 Nov 2016 19:39:10 +0100
-Message-ID: <002ed210-0f74-e938-b69f-c91ae98d37e4@gmail.com>
+From: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Subject: [PATCH v2] [media] mtk-mdp: allocate video_device dynamically
+Date: Tue, 15 Nov 2016 09:34:34 +0800
+Message-ID: <1479173674-42775-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, daniel.thompson@linaro.org, Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Pawel Osciak <posciak@chromium.org>
+Cc: srv_heupstream@mediatek.com, Eddie Huang <eddie.huang@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd and Olof,
+It can fix known problems with embedded video_device structs.
 
-Although a bit late, please take the following changes into account.
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 
-Thanks a lot,
-Matthias
 ---
-The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+Changes in v2:
+. Call video_device_release() instead of video_unregister_device()
+  in mtk_mdp_register_m2m_device()
 
-   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
 
-are available in the git repository at:
+---
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 +-
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  | 33 ++++++++++++++++-----------
+ 2 files changed, 21 insertions(+), 14 deletions(-)
 
-   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-soc
-
-for you to fetch changes up to 112ef1882e12094c823937f9d72f2f598db02df7:
-
-   soc: mediatek: Add MT2701 scpsys driver (2016-10-31 00:58:58 +0100)
-
-----------------------------------------------------------------
-- prepare mtk-scpsys to for multi soc support
-- add support for mt2701 to mtk-scpsys
-
-----------------------------------------------------------------
-James Liao (1):
-       soc: mediatek: Refine scpsys to support multiple platform
-
-Shunli Wang (1):
-       soc: mediatek: Add MT2701 scpsys driver
-
-  drivers/soc/mediatek/Kconfig      |   2 +-
-  drivers/soc/mediatek/mtk-scpsys.c | 465 
-++++++++++++++++++++++++++------------
-  2 files changed, 327 insertions(+), 140 deletions(-)
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+index 848569d..ad1cff3 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+@@ -167,7 +167,7 @@ struct mtk_mdp_dev {
+ 	struct mtk_mdp_comp		*comp[MTK_MDP_COMP_ID_MAX];
+ 	struct v4l2_m2m_dev		*m2m_dev;
+ 	struct list_head		ctx_list;
+-	struct video_device		vdev;
++	struct video_device		*vdev;
+ 	struct v4l2_device		v4l2_dev;
+ 	struct workqueue_struct		*job_wq;
+ 	struct platform_device		*vpu_dev;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+index 9a747e7..13afe48 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+@@ -1236,16 +1236,22 @@ int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
+ 	int ret;
+ 
+ 	mdp->variant = &mtk_mdp_default_variant;
+-	mdp->vdev.device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
+-	mdp->vdev.fops = &mtk_mdp_m2m_fops;
+-	mdp->vdev.ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
+-	mdp->vdev.release = video_device_release_empty;
+-	mdp->vdev.lock = &mdp->lock;
+-	mdp->vdev.vfl_dir = VFL_DIR_M2M;
+-	mdp->vdev.v4l2_dev = &mdp->v4l2_dev;
+-	snprintf(mdp->vdev.name, sizeof(mdp->vdev.name), "%s:m2m",
++	mdp->vdev = video_device_alloc();
++	if (!mdp->vdev) {
++		dev_err(dev, "failed to allocate video device\n");
++		ret = -ENOMEM;
++		goto err_video_alloc;
++	}
++	mdp->vdev->device_caps = V4L2_CAP_VIDEO_M2M_MPLANE | V4L2_CAP_STREAMING;
++	mdp->vdev->fops = &mtk_mdp_m2m_fops;
++	mdp->vdev->ioctl_ops = &mtk_mdp_m2m_ioctl_ops;
++	mdp->vdev->release = video_device_release;
++	mdp->vdev->lock = &mdp->lock;
++	mdp->vdev->vfl_dir = VFL_DIR_M2M;
++	mdp->vdev->v4l2_dev = &mdp->v4l2_dev;
++	snprintf(mdp->vdev->name, sizeof(mdp->vdev->name), "%s:m2m",
+ 		 MTK_MDP_MODULE_NAME);
+-	video_set_drvdata(&mdp->vdev, mdp);
++	video_set_drvdata(mdp->vdev, mdp);
+ 
+ 	mdp->m2m_dev = v4l2_m2m_init(&mtk_mdp_m2m_ops);
+ 	if (IS_ERR(mdp->m2m_dev)) {
+@@ -1254,26 +1260,27 @@ int mtk_mdp_register_m2m_device(struct mtk_mdp_dev *mdp)
+ 		goto err_m2m_init;
+ 	}
+ 
+-	ret = video_register_device(&mdp->vdev, VFL_TYPE_GRABBER, 2);
++	ret = video_register_device(mdp->vdev, VFL_TYPE_GRABBER, 2);
+ 	if (ret) {
+ 		dev_err(dev, "failed to register video device\n");
+ 		goto err_vdev_register;
+ 	}
+ 
+ 	v4l2_info(&mdp->v4l2_dev, "driver registered as /dev/video%d",
+-		  mdp->vdev.num);
++		  mdp->vdev->num);
+ 	return 0;
+ 
+ err_vdev_register:
+ 	v4l2_m2m_release(mdp->m2m_dev);
+ err_m2m_init:
+-	video_device_release(&mdp->vdev);
++	video_device_release(mdp->vdev);
++err_video_alloc:
+ 
+ 	return ret;
+ }
+ 
+ void mtk_mdp_unregister_m2m_device(struct mtk_mdp_dev *mdp)
+ {
+-	video_device_release(&mdp->vdev);
++	video_unregister_device(mdp->vdev);
+ 	v4l2_m2m_release(mdp->m2m_dev);
+ }
+-- 
+1.9.1
