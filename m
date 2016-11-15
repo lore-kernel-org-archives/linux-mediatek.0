@@ -1,1256 +1,1988 @@
-From: Archit Taneja <architt-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
-Subject: Re: [PATCH v18 2/2] drm/bridge: Add I2C based driver for ps8640
- bridge
-Date: Tue, 15 Nov 2016 11:33:11 +0530
-Message-ID: <e3f0b17c-28bf-8518-539a-ab303c3f4045@codeaurora.org>
-References: <1479130908-17593-1-git-send-email-jitao.shi@mediatek.com>
- <1479130908-17593-2-git-send-email-jitao.shi@mediatek.com>
+From: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5 2/3] vcodec: mediatek: Add Mediatek JPEG Decoder
+ Driver
+Date: Tue, 15 Nov 2016 18:31:57 +0800
+Message-ID: <1479205917.2808.8.camel@mtksdaap41>
+References: <1478586880-3923-1-git-send-email-rick.chang@mediatek.com>
+         <1478586880-3923-3-git-send-email-rick.chang@mediatek.com>
+         <c0c2be8e-51ff-843a-6f3d-1fa0170cb209@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1479130908-17593-2-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <c0c2be8e-51ff-843a-6f3d-1fa0170cb209-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Thierry Reding <treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.h
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Hans,
 
-On 11/14/2016 07:11 PM, Jitao Shi wrote:
-> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
+Thank you for your review. I will fix those problems in patch v6.
 
-Thanks for the incorporating the fixes. I have commented on one issue
-below.
+On Fri, 2016-11-11 at 16:10 +0100, Hans Verkuil wrote:
+> A quick review:
+> 
+> On 11/08/2016 07:34 AM, Rick Chang wrote:
+> > Add v4l2 driver for Mediatek JPEG Decoder
+> > 
+> > Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/media/platform/Kconfig                   |   15 +
+> >  drivers/media/platform/Makefile                  |    2 +
+> >  drivers/media/platform/mtk-jpeg/Makefile         |    2 +
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c  | 1275 ++++++++++++++++++++++
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h  |  141 +++
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c    |  417 +++++++
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h    |   91 ++
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c |  160 +++
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h |   25 +
+> >  drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h   |   58 +
+> >  10 files changed, 2186 insertions(+)
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/Makefile
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+> >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+> > 
+> > diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+> > index 754edbf1..96c9887 100644
+> > --- a/drivers/media/platform/Kconfig
+> > +++ b/drivers/media/platform/Kconfig
+> > @@ -162,6 +162,21 @@ config VIDEO_CODA
+> >  	   Coda is a range of video codec IPs that supports
+> >  	   H.264, MPEG-4, and other video formats.
+> >  
+> > +config VIDEO_MEDIATEK_JPEG
+> > +	tristate "Mediatek JPEG Codec driver"
+> > +	depends on MTK_IOMMU_V1 || COMPILE_TEST
+> > +	depends on VIDEO_DEV && VIDEO_V4L2
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on HAS_DMA
+> > +	select VIDEOBUF2_DMA_CONTIG
+> > +	select V4L2_MEM2MEM_DEV
+> > +	---help---
+> > +	  Mediatek jpeg codec driver provides HW capability to decode
+> > +	  JPEG format
+> > +
+> > +	  To compile this driver as a module, choose M here: the
+> > +	  module will be called mtk-jpeg
+> > +
+> >  config VIDEO_MEDIATEK_VPU
+> >  	tristate "Mediatek Video Processor Unit"
+> >  	depends on VIDEO_DEV && VIDEO_V4L2 && HAS_DMA
+> > diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+> > index f842933..cf701e3 100644
+> > --- a/drivers/media/platform/Makefile
+> > +++ b/drivers/media/platform/Makefile
+> > @@ -68,3 +68,5 @@ obj-$(CONFIG_VIDEO_MEDIATEK_VPU)	+= mtk-vpu/
+> >  obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC)	+= mtk-vcodec/
+> >  
+> >  obj-$(CONFIG_VIDEO_MEDIATEK_MDP)	+= mtk-mdp/
+> > +
+> > +obj-$(CONFIG_VIDEO_MEDIATEK_JPEG)	+= mtk-jpeg/
+> > diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mtk-jpeg/Makefile
+> > new file mode 100644
+> > index 0000000..b2e6069
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mtk-jpeg/Makefile
+> > @@ -0,0 +1,2 @@
+> > +mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_hw.o mtk_jpeg_parse.o
+> > +obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> > new file mode 100644
+> > index 0000000..33ddf79
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> > @@ -0,0 +1,1275 @@
+> > +/*
+> > + * Copyright (c) 2016 MediaTek Inc.
+> > + * Author: Ming Hsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *         Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/err.h>
+> > +#include <linux/interrupt.h>
+> > +#include <linux/io.h>
+> > +#include <linux/kernel.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of_platform.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/spinlock.h>
+> > +#include <media/v4l2-event.h>
+> > +#include <media/v4l2-mem2mem.h>
+> > +#include <media/v4l2-ioctl.h>
+> > +#include <media/videobuf2-core.h>
+> > +#include <media/videobuf2-dma-contig.h>
+> > +#include <soc/mediatek/smi.h>
+> > +#include <asm/dma-iommu.h>
+> > +
+> > +#include "mtk_jpeg_hw.h"
+> > +#include "mtk_jpeg_core.h"
+> > +#include "mtk_jpeg_parse.h"
+> > +
+> > +static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+> > +	{
+> > +		.name		= "JPEG JFIF",
+> > +		.fourcc		= V4L2_PIX_FMT_JPEG,
+> > +		.colplanes	= 1,
+> > +		.flags		= MTK_JPEG_FMT_FLAG_DEC_OUTPUT,
+> > +	},
+> > +	{
+> > +		.name		= "YUV 4:2:0 non-contiguous 3-planar, Y/Cb/Cr",
+> > +		.fourcc		= V4L2_PIX_FMT_YUV420M,
+> > +		.h_sample	= {4, 2, 2},
+> > +		.v_sample	= {4, 2, 2},
+> > +		.colplanes	= 3,
+> > +		.h_align	= 5,
+> > +		.v_align	= 4,
+> > +		.flags		= MTK_JPEG_FMT_FLAG_DEC_CAPTURE,
+> > +	},
+> > +	{
+> > +		.name		= "YUV 4:2:2 non-contiguous 3-planar, Y/Cb/Cr",
+> > +		.fourcc		= V4L2_PIX_FMT_YUV422M,
+> > +		.h_sample	= {4, 2, 2},
+> > +		.v_sample	= {4, 4, 4},
+> > +		.colplanes	= 3,
+> > +		.h_align	= 5,
+> > +		.v_align	= 3,
+> > +		.flags		= MTK_JPEG_FMT_FLAG_DEC_CAPTURE,
+> 
+> You probably don't need the name since it is filled in by the v4l2 core
+> (v4l2-ioctls.c).
+
+Ok.
+
+> > +	},
+> > +};
+> > +
+> > +#define MTK_JPEG_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_formats)
+> > +
+> > +enum {
+> > +	MTK_JPEG_BUF_FLAGS_INIT			= 0,
+> > +	MTK_JPEG_BUF_FLAGS_LAST_FRAME		= 1,
+> > +};
+> > +
+> > +struct mtk_jpeg_src_buf {
+> > +	struct vb2_v4l2_buffer b;
+> > +	struct list_head list;
+> > +	int flags;
+> > +	struct mtk_jpeg_dec_param dec_param;
+> > +};
+> > +
+> > +static int debug;
+> > +module_param(debug, int, 0644);
+> > +
+> > +static inline struct mtk_jpeg_ctx *mtk_jpeg_fh_to_ctx(struct v4l2_fh *fh)
+> > +{
+> > +	return container_of(fh, struct mtk_jpeg_ctx, fh);
+> > +}
+> > +
+> > +static inline struct mtk_jpeg_src_buf *mtk_jpeg_vb2_to_srcbuf(
+> > +							struct vb2_buffer *vb)
+> > +{
+> > +	return container_of(to_vb2_v4l2_buffer(vb), struct mtk_jpeg_src_buf, b);
+> > +}
+> > +
+> > +static int mtk_jpeg_querycap(struct file *file, void *priv,
+> > +			     struct v4l2_capability *cap)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+> > +
+> > +	strlcpy(cap->driver, MTK_JPEG_NAME " decoder", sizeof(cap->driver));
+> > +	strlcpy(cap->card, MTK_JPEG_NAME " decoder", sizeof(cap->card));
+> > +	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:%s",
+> > +		 dev_name(jpeg->dev));
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_enum_fmt(struct mtk_jpeg_fmt *mtk_jpeg_formats, int n,
+> > +			     struct v4l2_fmtdesc *f, u32 type)
+> > +{
+> > +	int i, num = 0;
+> > +
+> > +	for (i = 0; i < n; ++i) {
+> > +		if (mtk_jpeg_formats[i].flags & type) {
+> > +			if (num == f->index)
+> > +				break;
+> > +			++num;
+> > +		}
+> > +	}
+> > +
+> > +	if (i >= n)
+> > +		return -EINVAL;
+> > +
+> > +	f->pixelformat = mtk_jpeg_formats[i].fourcc;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+> > +				     struct v4l2_fmtdesc *f)
+> > +{
+> > +	return mtk_jpeg_enum_fmt(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS, f,
+> > +				 MTK_JPEG_FMT_FLAG_DEC_CAPTURE);
+> > +}
+> > +
+> > +static int mtk_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
+> > +				     struct v4l2_fmtdesc *f)
+> > +{
+> > +	return mtk_jpeg_enum_fmt(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS, f,
+> > +				 MTK_JPEG_FMT_FLAG_DEC_OUTPUT);
+> > +}
+> > +
+> > +static struct mtk_jpeg_q_data *mtk_jpeg_get_q_data(struct mtk_jpeg_ctx *ctx,
+> > +						   enum v4l2_buf_type type)
+> > +{
+> > +	if (V4L2_TYPE_IS_OUTPUT(type))
+> > +		return &ctx->out_q;
+> > +	else
+> 
+> No need for 'else'.
+
+Ok.
+
+> > +		return &ctx->cap_q;
+> > +}
+> > +
+> > +static struct mtk_jpeg_fmt *mtk_jpeg_find_format(struct mtk_jpeg_ctx *ctx,
+> > +						 u32 pixelformat,
+> > +						 unsigned int fmt_type)
+> > +{
+> > +	unsigned int k, fmt_flag;
+> > +
+> > +	fmt_flag = (fmt_type == MTK_JPEG_FMT_TYPE_OUTPUT) ?
+> > +		   MTK_JPEG_FMT_FLAG_DEC_OUTPUT :
+> > +		   MTK_JPEG_FMT_FLAG_DEC_CAPTURE;
+> > +
+> > +	for (k = 0; k < MTK_JPEG_NUM_FORMATS; k++) {
+> > +		struct mtk_jpeg_fmt *fmt = &mtk_jpeg_formats[k];
+> > +
+> > +		if (fmt->fourcc == pixelformat && fmt->flags & fmt_flag)
+> > +			return fmt;
+> > +	}
+> > +
+> > +	return NULL;
+> > +}
+> > +
+> > +static void mtk_jpeg_bound_align_image(u32 *w, unsigned int wmin,
+> > +				       unsigned int wmax, unsigned int walign,
+> > +				       u32 *h, unsigned int hmin,
+> > +				       unsigned int hmax, unsigned int halign)
+> > +{
+> > +	int width, height, w_step, h_step;
+> > +
+> > +	width = *w;
+> > +	height = *h;
+> > +	w_step = 1 << walign;
+> > +	h_step = 1 << halign;
+> > +
+> > +	v4l_bound_align_image(w, wmin, wmax, walign, h, hmin, hmax, halign, 0);
+> > +	if (*w < width && (*w + w_step) <= wmax)
+> > +		*w += w_step;
+> > +	if (*h < height && (*h + h_step) <= hmax)
+> > +		*h += h_step;
+> > +}
+> > +
+> > +static void mtk_jpeg_adjust_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+> > +				       struct v4l2_format *f)
+> > +{
+> > +	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > +	struct mtk_jpeg_q_data *q_data;
+> > +	int i;
+> > +
+> > +	q_data = mtk_jpeg_get_q_data(ctx, f->type);
+> > +
+> > +	pix_mp->width = q_data->w;
+> > +	pix_mp->height = q_data->h;
+> > +	pix_mp->pixelformat = q_data->fmt->fourcc;
+> > +	pix_mp->num_planes = q_data->fmt->colplanes;
+> > +
+> > +	for (i = 0; i < pix_mp->num_planes; i++) {
+> > +		pix_mp->plane_fmt[i].bytesperline = q_data->bytesperline[i];
+> > +		pix_mp->plane_fmt[i].sizeimage = q_data->sizeimage[i];
+> > +	}
+> > +}
+> > +
+> > +static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
+> > +				   struct mtk_jpeg_fmt *fmt,
+> > +				   struct mtk_jpeg_ctx *ctx, int q_type)
+> > +{
+> > +	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	int i;
+> > +
+> > +	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
+> > +	pix_mp->field = V4L2_FIELD_NONE;
+> > +
+> > +	if (ctx->state != MTK_JPEG_INIT) {
+> > +		mtk_jpeg_adjust_fmt_mplane(ctx, f);
+> > +		goto end;
+> > +	}
+> > +
+> > +	pix_mp->num_planes = fmt->colplanes;
+> > +	pix_mp->pixelformat = fmt->fourcc;
+> > +
+> > +	if (q_type == MTK_JPEG_FMT_TYPE_OUTPUT) {
+> > +		struct v4l2_plane_pix_format *pfmt = &pix_mp->plane_fmt[0];
+> > +
+> > +		mtk_jpeg_bound_align_image(&pix_mp->width, MTK_JPEG_MIN_WIDTH,
+> > +					   MTK_JPEG_MAX_WIDTH, 0,
+> > +					   &pix_mp->height, MTK_JPEG_MIN_HEIGHT,
+> > +					   MTK_JPEG_MAX_HEIGHT, 0);
+> > +
+> > +		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
+> > +		pfmt->bytesperline = 0;
+> > +		/* Source size must be aligned to 128 */
+> > +		pfmt->sizeimage = mtk_jpeg_align(pfmt->sizeimage, 128);
+> > +		if (pfmt->sizeimage == 0)
+> > +			pfmt->sizeimage = MTK_JPEG_DEFAULT_SIZEIMAGE;
+> > +		goto end;
+> > +	}
+> > +
+> > +	/* type is MTK_JPEG_FMT_TYPE_CAPTURE */
+> > +	mtk_jpeg_bound_align_image(&pix_mp->width, MTK_JPEG_MIN_WIDTH,
+> > +				   MTK_JPEG_MAX_WIDTH, fmt->h_align,
+> > +				   &pix_mp->height, MTK_JPEG_MIN_HEIGHT,
+> > +				   MTK_JPEG_MAX_HEIGHT, fmt->v_align);
+> > +
+> > +	for (i = 0; i < fmt->colplanes; i++) {
+> > +		struct v4l2_plane_pix_format *pfmt = &pix_mp->plane_fmt[i];
+> > +		u32 stride = pix_mp->width * fmt->h_sample[i] / 4;
+> > +		u32 h = pix_mp->height * fmt->v_sample[i] / 4;
+> > +
+> > +		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
+> > +		pfmt->bytesperline = stride;
+> > +		pfmt->sizeimage = stride * h;
+> > +	}
+> > +end:
+> > +	v4l2_dbg(2, debug, &jpeg->v4l2_dev, "wxh:%ux%u\n",
+> > +		 pix_mp->width, pix_mp->height);
+> > +	for (i = 0; i < pix_mp->num_planes; i++) {
+> > +		v4l2_dbg(2, debug, &jpeg->v4l2_dev,
+> > +			 "plane[%d] bpl=%u, size=%u\n",
+> > +			 i,
+> > +			 pix_mp->plane_fmt[i].bytesperline,
+> > +			 pix_mp->plane_fmt[i].sizeimage);
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_g_fmt_vid_mplane(struct file *file, void *priv,
+> > +				     struct v4l2_format *f)
+> > +{
+> > +	struct vb2_queue *vq;
+> > +	struct mtk_jpeg_q_data *q_data = NULL;
+> > +	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	int i;
+> > +
+> > +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > +	if (!vq)
+> > +		return -EINVAL;
+> > +
+> > +	q_data = mtk_jpeg_get_q_data(ctx, f->type);
+> > +
+> > +	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
+> > +	pix_mp->width = q_data->w;
+> > +	pix_mp->height = q_data->h;
+> > +	pix_mp->field = V4L2_FIELD_NONE;
+> > +	pix_mp->pixelformat = q_data->fmt->fourcc;
+> > +	pix_mp->num_planes = q_data->fmt->colplanes;
+> > +	pix_mp->colorspace = ctx->colorspace;
+> > +	pix_mp->ycbcr_enc = ctx->ycbcr_enc;
+> > +	pix_mp->xfer_func = ctx->xfer_func;
+> > +	pix_mp->quantization = ctx->quantization;
+> > +
+> > +	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) g_fmt:%s wxh:%ux%u\n",
+> > +		 f->type, q_data->fmt->name, pix_mp->width, pix_mp->height);
+> > +
+> > +	for (i = 0; i < pix_mp->num_planes; i++) {
+> > +		struct v4l2_plane_pix_format *pfmt = &pix_mp->plane_fmt[i];
+> > +
+> > +		pfmt->bytesperline = q_data->bytesperline[i];
+> > +		pfmt->sizeimage = q_data->sizeimage[i];
+> > +		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
+> > +
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev,
+> > +			 "plane[%d] bpl=%u, size=%u\n",
+> > +			 i,
+> > +			 pfmt->bytesperline,
+> > +			 pfmt->sizeimage);
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_try_fmt_vid_cap_mplane(struct file *file, void *priv,
+> > +					   struct v4l2_format *f)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+> > +	struct mtk_jpeg_fmt *fmt;
+> > +
+> > +	fmt = mtk_jpeg_find_format(ctx, f->fmt.pix_mp.pixelformat,
+> > +				   MTK_JPEG_FMT_TYPE_CAPTURE);
+> > +	if (!fmt)
+> > +		fmt = ctx->cap_q.fmt;
+> > +
+> > +	v4l2_dbg(2, debug, &ctx->jpeg->v4l2_dev, "(%d) try_fmt:%s\n",
+> > +		 f->type, fmt->name);
+> > +
+> > +	return mtk_jpeg_try_fmt_mplane(f, fmt, ctx, MTK_JPEG_FMT_TYPE_CAPTURE);
+> > +}
+> > +
+> > +static int mtk_jpeg_try_fmt_vid_out_mplane(struct file *file, void *priv,
+> > +					   struct v4l2_format *f)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+> > +	struct mtk_jpeg_fmt *fmt;
+> > +
+> > +	fmt = mtk_jpeg_find_format(ctx, f->fmt.pix_mp.pixelformat,
+> > +				   MTK_JPEG_FMT_TYPE_OUTPUT);
+> > +	if (!fmt)
+> > +		fmt = ctx->out_q.fmt;
+> > +
+> > +	v4l2_dbg(2, debug, &ctx->jpeg->v4l2_dev, "(%d) try_fmt:%s\n",
+> > +		 f->type, fmt->name);
+> > +
+> > +	return mtk_jpeg_try_fmt_mplane(f, fmt, ctx, MTK_JPEG_FMT_TYPE_OUTPUT);
+> > +}
+> > +
+> > +static int mtk_jpeg_s_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+> > +				 struct v4l2_format *f)
+> > +{
+> > +	struct vb2_queue *vq;
+> > +	struct mtk_jpeg_q_data *q_data = NULL;
+> > +	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	unsigned int f_type;
+> > +	int i;
+> > +
+> > +	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
+> > +	if (!vq)
+> > +		return -EINVAL;
+> > +
+> > +	q_data = mtk_jpeg_get_q_data(ctx, f->type);
+> > +
+> > +	if (vb2_is_busy(vq)) {
+> > +		v4l2_err(&jpeg->v4l2_dev, "queue busy\n");
+> > +		return -EBUSY;
+> > +	}
+> > +
+> > +	f_type = V4L2_TYPE_IS_OUTPUT(f->type) ?
+> > +			 MTK_JPEG_FMT_TYPE_OUTPUT : MTK_JPEG_FMT_TYPE_CAPTURE;
+> > +
+> > +	q_data->fmt = mtk_jpeg_find_format(ctx, pix_mp->pixelformat, f_type);
+> > +	q_data->w = pix_mp->width;
+> > +	q_data->h = pix_mp->height;
+> > +	ctx->colorspace = pix_mp->colorspace;
+> > +	ctx->ycbcr_enc = pix_mp->ycbcr_enc;
+> > +	ctx->xfer_func = pix_mp->xfer_func;
+> > +	ctx->quantization = pix_mp->quantization;
+> > +
+> > +	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) s_fmt:%s wxh:%ux%u\n",
+> > +		 f->type, q_data->fmt->name, q_data->w, q_data->h);
+> > +
+> > +	for (i = 0; i < q_data->fmt->colplanes; i++) {
+> > +		q_data->bytesperline[i] = pix_mp->plane_fmt[i].bytesperline;
+> > +		q_data->sizeimage[i] = pix_mp->plane_fmt[i].sizeimage;
+> > +
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev,
+> > +			 "plane[%d] bpl=%u, size=%u\n",
+> > +			 i, q_data->bytesperline[i], q_data->sizeimage[i]);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_s_fmt_vid_out_mplane(struct file *file, void *priv,
+> > +					 struct v4l2_format *f)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = mtk_jpeg_try_fmt_vid_out_mplane(file, priv, f);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_fh_to_ctx(priv), f);
+> > +}
+> > +
+> > +static int mtk_jpeg_s_fmt_vid_cap_mplane(struct file *file, void *priv,
+> > +					 struct v4l2_format *f)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = mtk_jpeg_try_fmt_vid_cap_mplane(file, priv, f);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return mtk_jpeg_s_fmt_mplane(mtk_jpeg_fh_to_ctx(priv), f);
+> > +}
+> > +
+> > +static void mtk_jpeg_queue_src_chg_event(struct mtk_jpeg_ctx *ctx)
+> > +{
+> > +	static const struct v4l2_event ev_src_ch = {
+> > +		.type = V4L2_EVENT_SOURCE_CHANGE,
+> > +		.u.src_change.changes =
+> > +		V4L2_EVENT_SRC_CH_RESOLUTION,
+> > +	};
+> > +
+> > +	v4l2_event_queue_fh(&ctx->fh, &ev_src_ch);
+> > +}
+> > +
+> > +static int mtk_jpeg_subscribe_event(struct v4l2_fh *fh,
+> > +				    const struct v4l2_event_subscription *sub)
+> > +{
+> > +	switch (sub->type) {
+> > +	case V4L2_EVENT_SOURCE_CHANGE:
+> > +		return v4l2_src_change_event_subscribe(fh, sub);
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +}
+> > +
+> > +static int mtk_jpeg_g_selection(struct file *file, void *priv,
+> > +				struct v4l2_selection *s)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+> > +
+> > +	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> > +		return -EINVAL;
+> > +
+> > +	switch (s->target) {
+> > +	case V4L2_SEL_TGT_COMPOSE:
+> > +	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+> > +		s->r.width = ctx->out_q.w;
+> > +		s->r.height = ctx->out_q.h;
+> > +		s->r.left = 0;
+> > +		s->r.top = 0;
+> > +		break;
+> > +	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+> > +	case V4L2_SEL_TGT_COMPOSE_PADDED:
+> > +		s->r.width = ctx->cap_q.w;
+> > +		s->r.height = ctx->cap_q.h;
+> > +		s->r.left = 0;
+> > +		s->r.top = 0;
+> > +		break;
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_s_selection(struct file *file, void *priv,
+> > +				struct v4l2_selection *s)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+> > +
+> > +	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+> > +		return -EINVAL;
+> > +
+> > +	switch (s->target) {
+> > +	case V4L2_SEL_TGT_COMPOSE:
+> > +		s->r.left = 0;
+> > +		s->r.top = 0;
+> > +		s->r.width = ctx->out_q.w;
+> > +		s->r.height = ctx->out_q.h;
+> > +		break;
+> > +	default:
+> > +		return -EINVAL;
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_qbuf(struct file *file, void *priv, struct v4l2_buffer *buf)
+> > +{
+> > +	struct v4l2_fh *fh = file->private_data;
+> > +	struct vb2_queue *vq;
+> > +	struct vb2_buffer *vb;
+> > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > +
+> > +	if (buf->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+> > +		goto end;
+> > +
+> > +	vq = v4l2_m2m_get_vq(fh->m2m_ctx, buf->type);
+> > +	vb = vq->bufs[buf->index];
+> > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+> > +	jpeg_src_buf->flags = (buf->m.planes[0].bytesused == 0) ?
+> > +		MTK_JPEG_BUF_FLAGS_LAST_FRAME : MTK_JPEG_BUF_FLAGS_INIT;
+> > +end:
+> > +	return v4l2_m2m_qbuf(file, fh->m2m_ctx, buf);
+> > +}
+> > +
+> > +static const struct v4l2_ioctl_ops mtk_jpeg_ioctl_ops = {
+> > +	.vidioc_querycap                = mtk_jpeg_querycap,
+> > +	.vidioc_enum_fmt_vid_cap_mplane = mtk_jpeg_enum_fmt_vid_cap,
+> > +	.vidioc_enum_fmt_vid_out_mplane = mtk_jpeg_enum_fmt_vid_out,
+> > +	.vidioc_try_fmt_vid_cap_mplane	= mtk_jpeg_try_fmt_vid_cap_mplane,
+> > +	.vidioc_try_fmt_vid_out_mplane	= mtk_jpeg_try_fmt_vid_out_mplane,
+> > +	.vidioc_g_fmt_vid_cap_mplane    = mtk_jpeg_g_fmt_vid_mplane,
+> > +	.vidioc_g_fmt_vid_out_mplane    = mtk_jpeg_g_fmt_vid_mplane,
+> > +	.vidioc_s_fmt_vid_cap_mplane    = mtk_jpeg_s_fmt_vid_cap_mplane,
+> > +	.vidioc_s_fmt_vid_out_mplane    = mtk_jpeg_s_fmt_vid_out_mplane,
+> > +	.vidioc_qbuf                    = mtk_jpeg_qbuf,
+> > +	.vidioc_subscribe_event         = mtk_jpeg_subscribe_event,
+> > +	.vidioc_g_selection		= mtk_jpeg_g_selection,
+> > +	.vidioc_s_selection		= mtk_jpeg_s_selection,
+> > +
+> > +	.vidioc_create_bufs		= v4l2_m2m_ioctl_create_bufs,
+> > +	.vidioc_prepare_buf		= v4l2_m2m_ioctl_prepare_buf,
+> > +	.vidioc_reqbufs                 = v4l2_m2m_ioctl_reqbufs,
+> > +	.vidioc_querybuf                = v4l2_m2m_ioctl_querybuf,
+> > +	.vidioc_dqbuf                   = v4l2_m2m_ioctl_dqbuf,
+> > +	.vidioc_expbuf                  = v4l2_m2m_ioctl_expbuf,
+> > +	.vidioc_streamon                = v4l2_m2m_ioctl_streamon,
+> > +	.vidioc_streamoff               = v4l2_m2m_ioctl_streamoff,
+> > +
+> > +	.vidioc_unsubscribe_event	= v4l2_event_unsubscribe,
+> > +};
+> > +
+> > +static int mtk_jpeg_queue_setup(struct vb2_queue *q,
+> > +				unsigned int *num_buffers,
+> > +				unsigned int *num_planes,
+> > +				unsigned int sizes[],
+> > +				struct device *alloc_ctxs[])
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
+> > +	struct mtk_jpeg_q_data *q_data = NULL;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	int i;
+> > +
+> > +	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) buf_req count=%u\n",
+> > +		 q->type, *num_buffers);
+> > +
+> > +	q_data = mtk_jpeg_get_q_data(ctx, q->type);
+> > +	if (!q_data)
+> > +		return -EINVAL;
+> > +
+> > +	*num_planes = q_data->fmt->colplanes;
+> > +	for (i = 0; i < q_data->fmt->colplanes; i++) {
+> > +		sizes[i] = q_data->sizeimage[i];
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "sizeimage[%d]=%u\n",
+> > +			 i, sizes[i]);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > +	struct mtk_jpeg_q_data *q_data = NULL;
+> > +	int i;
+> > +
+> > +	q_data = mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
+> > +	if (!q_data)
+> > +		return -EINVAL;
+> > +
+> > +	for (i = 0; i < q_data->fmt->colplanes; i++)
+> > +		vb2_set_plane_payload(vb, i, q_data->sizeimage[i]);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static bool mtk_jpeg_check_resolution_change(struct mtk_jpeg_ctx *ctx,
+> > +					     struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	struct mtk_jpeg_q_data *q_data;
+> > +
+> > +	q_data = &ctx->out_q;
+> > +	if (q_data->w != param->pic_w || q_data->h != param->pic_h) {
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Picture size change\n");
+> > +		return true;
+> > +	}
+> > +
+> > +	q_data = &ctx->cap_q;
+> > +	if (q_data->fmt != mtk_jpeg_find_format(ctx, param->dst_fourcc,
+> > +						MTK_JPEG_FMT_TYPE_CAPTURE)) {
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "format change\n");
+> > +		return true;
+> > +	}
+> > +	return false;
+> > +}
+> > +
+> > +static void mtk_jpeg_set_queue_data(struct mtk_jpeg_ctx *ctx,
+> > +				    struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	struct mtk_jpeg_q_data *q_data;
+> > +	int i;
+> > +
+> > +	q_data = &ctx->out_q;
+> > +	q_data->w = param->pic_w;
+> > +	q_data->h = param->pic_h;
+> > +
+> > +	q_data = &ctx->cap_q;
+> > +	q_data->w = param->dec_w;
+> > +	q_data->h = param->dec_h;
+> > +	q_data->fmt = mtk_jpeg_find_format(ctx,
+> > +					   param->dst_fourcc,
+> > +					   MTK_JPEG_FMT_TYPE_CAPTURE);
+> > +
+> > +	for (i = 0; i < q_data->fmt->colplanes; i++) {
+> > +		q_data->bytesperline[i] = param->mem_stride[i];
+> > +		q_data->sizeimage[i] = param->comp_size[i];
+> > +	}
+> > +
+> > +	v4l2_dbg(1, debug, &jpeg->v4l2_dev,
+> > +		 "set_parse cap:%s pic(%u, %u), buf(%u, %u)\n",
+> > +		 q_data->fmt->name, param->pic_w, param->pic_h,
+> > +		 param->dec_w, param->dec_h);
+> > +}
+> > +
+> > +static void mtk_jpeg_buf_queue(struct vb2_buffer *vb)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+> > +	struct mtk_jpeg_dec_param *param;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > +	bool header_valid;
+> > +
+> > +	v4l2_dbg(2, debug, &jpeg->v4l2_dev, "(%d) buf_q id=%d, vb=%p",
+> > +		 vb->vb2_queue->type, vb->index, vb);
+> > +
+> > +	if (vb->vb2_queue->type != V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+> > +		goto end;
+> > +
+> > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+> > +	param = &jpeg_src_buf->dec_param;
+> > +	memset(param, 0, sizeof(*param));
+> > +
+> > +	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+> > +		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos");
+> > +		goto end;
+> > +	}
+> > +	header_valid = mtk_jpeg_parse(param, (u8 *)vb2_plane_vaddr(vb, 0),
+> > +				      vb2_get_plane_payload(vb, 0));
+> > +	if (!header_valid) {
+> > +		v4l2_err(&jpeg->v4l2_dev, "Header invalid.\n");
+> > +		vb2_buffer_done(vb, VB2_BUF_STATE_ERROR);
+> > +		return;
+> > +	}
+> > +
+> > +	if (ctx->state == MTK_JPEG_INIT) {
+> > +		mtk_jpeg_queue_src_chg_event(ctx);
+> > +		mtk_jpeg_set_queue_data(ctx, param);
+> > +		ctx->state = MTK_JPEG_RUNNING;
+> > +	}
+> > +end:
+> > +	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, to_vb2_v4l2_buffer(vb));
+> > +}
+> > +
+> > +static void *mtk_jpeg_buf_remove(struct mtk_jpeg_ctx *ctx,
+> > +				 enum v4l2_buf_type type)
+> > +{
+> > +	if (V4L2_TYPE_IS_OUTPUT(type))
+> > +		return v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> > +	else
+> > +		return v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> > +}
+> > +
+> > +static int mtk_jpeg_start_streaming(struct vb2_queue *q, unsigned int count)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
+> > +	int ret = 0;
+> > +
+> > +	ret = pm_runtime_get_sync(ctx->jpeg->dev);
+> > +
+> 
+> If start_streaming returns an error, then you must call
+> v4l2_m2m_buf_done(to_vb2_v4l2_buffer(vb), VB2_BUF_STATE_QUEUED) for all
+> buffers. Similar to what happens in stop_streaming, but with a different VB2_BUF_STATE.
+
+Ok.
+
+> > +	return ret > 0 ? 0 : ret;
+> > +}
+> > +
+> > +static void mtk_jpeg_stop_streaming(struct vb2_queue *q)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
+> > +	struct vb2_buffer *vb;
+> > +
+> > +	/*
+> > +	 * STREAMOFF is an acknowledgment for source change event.
+> > +	 * Before STREAMOFF, we still have to return the old resolution and
+> > +	 * subsampling. Update capture queue when the stream is off.
+> > +	 */
+> > +	if (ctx->state == MTK_JPEG_SOURCE_CHANGE &&
+> > +	    !V4L2_TYPE_IS_OUTPUT(q->type)) {
+> > +		struct mtk_jpeg_src_buf *src_buf;
+> > +
+> > +		vb = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > +		src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+> > +		mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
+> > +		ctx->state = MTK_JPEG_RUNNING;
+> > +	} else if (V4L2_TYPE_IS_OUTPUT(q->type)) {
+> > +		ctx->state = MTK_JPEG_INIT;
+> > +	}
+> > +
+> > +	vb = mtk_jpeg_buf_remove(ctx, q->type);
+> > +	while (vb) {
+> > +		v4l2_m2m_buf_done(to_vb2_v4l2_buffer(vb), VB2_BUF_STATE_ERROR);
+> > +		vb = mtk_jpeg_buf_remove(ctx, q->type);
+> > +	}
+> > +
+> > +	pm_runtime_put_sync(ctx->jpeg->dev);
+> > +}
+> > +
+> > +static struct vb2_ops mtk_jpeg_qops = {
+> > +	.queue_setup        = mtk_jpeg_queue_setup,
+> > +	.buf_prepare        = mtk_jpeg_buf_prepare,
+> > +	.buf_queue          = mtk_jpeg_buf_queue,
+> > +	.wait_prepare       = vb2_ops_wait_prepare,
+> > +	.wait_finish        = vb2_ops_wait_finish,
+> > +	.start_streaming    = mtk_jpeg_start_streaming,
+> > +	.stop_streaming     = mtk_jpeg_stop_streaming,
+> > +};
+> > +
+> > +static void mtk_jpeg_set_dec_src(struct mtk_jpeg_ctx *ctx,
+> > +				 struct vb2_buffer *src_buf,
+> > +				 struct mtk_jpeg_bs *bs)
+> > +{
+> > +	bs->str_addr = vb2_dma_contig_plane_dma_addr(src_buf, 0);
+> > +	bs->end_addr = bs->str_addr +
+> > +			 mtk_jpeg_align(vb2_get_plane_payload(src_buf, 0), 16);
+> > +	bs->size = mtk_jpeg_align(vb2_plane_size(src_buf, 0), 128);
+> > +}
+> > +
+> > +static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+> > +				struct mtk_jpeg_dec_param *param,
+> > +				struct vb2_buffer *dst_buf,
+> > +				struct mtk_jpeg_fb *fb)
+> > +{
+> > +	int i;
+> > +
+> > +	if (param->comp_num != dst_buf->num_planes) {
+> > +		dev_err(ctx->jpeg->dev, "plane number mismatch (%u != %u)\n",
+> > +			param->comp_num, dst_buf->num_planes);
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	for (i = 0; i < dst_buf->num_planes; i++) {
+> > +		if (vb2_plane_size(dst_buf, i) < param->comp_size[i]) {
+> > +			dev_err(ctx->jpeg->dev,
+> > +				"buffer size is underflow (%lu < %u)\n",
+> > +				vb2_plane_size(dst_buf, 0),
+> > +				param->comp_size[i]);
+> > +			return -EINVAL;
+> > +		}
+> > +		fb->plane_addr[i] = vb2_dma_contig_plane_dma_addr(dst_buf, i);
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_jpeg_device_run(void *priv)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = priv;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	struct vb2_buffer *src_buf, *dst_buf;
+> > +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> > +	unsigned long flags;
+> > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > +	struct mtk_jpeg_bs bs;
+> > +	struct mtk_jpeg_fb fb;
+> > +	int i;
+> > +
+> > +	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > +	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(src_buf);
+> > +
+> > +	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+> > +		for (i = 0; i < dst_buf->num_planes; i++)
+> > +			vb2_set_plane_payload(dst_buf, i, 0);
+> > +		buf_state = VB2_BUF_STATE_DONE;
+> > +		goto dec_end;
+> > +	}
+> > +
+> > +	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+> > +		mtk_jpeg_queue_src_chg_event(ctx);
+> > +		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> > +		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > +		return;
+> > +	}
+> > +
+> > +	mtk_jpeg_set_dec_src(ctx, src_buf, &bs);
+> > +	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, dst_buf, &fb))
+> > +		goto dec_end;
+> > +
+> > +	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > +	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+> > +	mtk_jpeg_dec_set_config(jpeg->dec_reg_base,
+> > +				&jpeg_src_buf->dec_param, &bs, &fb);
+> > +
+> > +	mtk_jpeg_dec_start(jpeg->dec_reg_base);
+> > +	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
+> > +	return;
+> > +
+> > +dec_end:
+> > +	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> > +	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf), buf_state);
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(dst_buf), buf_state);
+> > +	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > +}
+> > +
+> > +static int mtk_jpeg_job_ready(void *priv)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = priv;
+> > +
+> > +	return (ctx->state == MTK_JPEG_RUNNING) ? 1 : 0;
+> > +}
+> > +
+> > +static void mtk_jpeg_job_abort(void *priv)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = priv;
+> > +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> > +	struct vb2_buffer *src_buf, *dst_buf;
+> > +
+> > +	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> > +	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf), VB2_BUF_STATE_ERROR);
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(dst_buf), VB2_BUF_STATE_ERROR);
+> > +	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > +}
+> > +
+> > +static struct v4l2_m2m_ops mtk_jpeg_m2m_ops = {
+> > +	.device_run = mtk_jpeg_device_run,
+> > +	.job_ready  = mtk_jpeg_job_ready,
+> > +	.job_abort  = mtk_jpeg_job_abort,
+> > +};
+> > +
+> > +static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+> > +			       struct vb2_queue *dst_vq)
+> > +{
+> > +	struct mtk_jpeg_ctx *ctx = priv;
+> > +	int ret;
+> > +
+> > +	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> > +	src_vq->io_modes = VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
+> 
+> I would drop USERPTR, it really makes little sense for dma_contig.
+
+Ok.
+
+> > +	src_vq->drv_priv = ctx;
+> > +	src_vq->buf_struct_size = sizeof(struct mtk_jpeg_src_buf);
+> > +	src_vq->ops = &mtk_jpeg_qops;
+> > +	src_vq->mem_ops = &vb2_dma_contig_memops;
+> > +	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> > +	src_vq->lock = &ctx->jpeg->lock;
+> > +	src_vq->dev = ctx->jpeg->dev;
+> > +	ret = vb2_queue_init(src_vq);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> > +	dst_vq->io_modes = VB2_DMABUF | VB2_MMAP | VB2_USERPTR;
+> 
+> Ditto.
+
+Ok.
+
+> > +	dst_vq->drv_priv = ctx;
+> > +	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+> > +	dst_vq->ops = &mtk_jpeg_qops;
+> > +	dst_vq->mem_ops = &vb2_dma_contig_memops;
+> > +	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> > +	dst_vq->lock = &ctx->jpeg->lock;
+> > +	dst_vq->dev = ctx->jpeg->dev;
+> > +	ret = vb2_queue_init(dst_vq);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = mtk_smi_larb_get(jpeg->larb);
+> > +	if (ret)
+> > +		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+> > +	clk_prepare_enable(jpeg->clk_jdec_smi);
+> > +	clk_prepare_enable(jpeg->clk_jdec);
+> > +}
+> > +
+> > +static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+> > +{
+> > +	clk_disable_unprepare(jpeg->clk_jdec);
+> > +	clk_disable_unprepare(jpeg->clk_jdec_smi);
+> > +	mtk_smi_larb_put(jpeg->larb);
+> > +}
+> > +
+> > +static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = priv;
+> > +	struct mtk_jpeg_ctx *ctx;
+> > +	struct vb2_buffer *src_buf, *dst_buf;
+> > +	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> > +	u32	dec_irq_ret;
+> > +	u32 dec_ret;
+> > +	int i;
+> > +
+> > +	ctx = v4l2_m2m_get_curr_priv(jpeg->m2m_dev);
+> > +	if (!ctx) {
+> > +		v4l2_err(&jpeg->v4l2_dev, "Context is NULL\n");
+> > +		return IRQ_HANDLED;
+> > +	}
+> > +
+> > +	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> > +	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> > +	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(src_buf);
+> > +
+> > +	dec_ret = mtk_jpeg_dec_get_int_status(jpeg->dec_reg_base);
+> > +	dec_irq_ret = mtk_jpeg_dec_enum_result(dec_ret);
+> > +
+> > +	if (dec_irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
+> > +		mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+> > +
+> > +	if (dec_irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE) {
+> > +		dev_err(jpeg->dev, "decode failed\n");
+> > +		goto dec_end;
+> > +	}
+> > +
+> > +	for (i = 0; i < dst_buf->num_planes; i++)
+> > +		vb2_set_plane_payload(dst_buf, i,
+> > +				      jpeg_src_buf->dec_param.comp_size[i]);
+> > +
+> > +	buf_state = VB2_BUF_STATE_DONE;
+> > +
+> > +dec_end:
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf), buf_state);
+> > +	v4l2_m2m_buf_done(to_vb2_v4l2_buffer(dst_buf), buf_state);
+> > +	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > +	return IRQ_HANDLED;
+> > +}
+> > +
+> > +static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
+> > +{
+> > +	struct mtk_jpeg_q_data *q = &ctx->out_q;
+> > +	int i;
+> > +
+> > +	ctx->colorspace = V4L2_COLORSPACE_JPEG,
+> > +	ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > +	ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > +	ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> > +
+> > +	q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_JPEG,
+> > +					      MTK_JPEG_FMT_TYPE_OUTPUT);
+> > +	q->w = MTK_JPEG_MIN_WIDTH;
+> > +	q->h = MTK_JPEG_MIN_HEIGHT;
+> > +	q->bytesperline[0] = 0;
+> > +	q->sizeimage[0] = MTK_JPEG_DEFAULT_SIZEIMAGE;
+> > +
+> > +	q = &ctx->cap_q;
+> > +	q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_YUV420M,
+> > +					      MTK_JPEG_FMT_TYPE_CAPTURE);
+> > +	q->w = MTK_JPEG_MIN_WIDTH;
+> > +	q->h = MTK_JPEG_MIN_HEIGHT;
+> > +
+> > +	for (i = 0; i < q->fmt->colplanes; i++) {
+> > +		u32 stride = q->w * q->fmt->h_sample[i] / 4;
+> > +		u32 h = q->h * q->fmt->v_sample[i] / 4;
+> > +
+> > +		q->bytesperline[i] = stride;
+> > +		q->sizeimage[i] = stride * h;
+> > +	}
+> > +}
+> > +
+> > +static int mtk_jpeg_open(struct file *file)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+> > +	struct video_device *vfd = video_devdata(file);
+> > +	struct mtk_jpeg_ctx *ctx;
+> > +	int ret = 0;
+> > +
+> > +	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+> > +	if (!ctx)
+> > +		return -ENOMEM;
+> > +
+> > +	if (mutex_lock_interruptible(&jpeg->lock)) {
+> > +		ret = -ERESTARTSYS;
+> > +		goto free;
+> > +	}
+> > +
+> > +	v4l2_fh_init(&ctx->fh, vfd);
+> > +	file->private_data = &ctx->fh;
+> > +	v4l2_fh_add(&ctx->fh);
+> > +
+> > +	ctx->jpeg = jpeg;
+> > +	ctx->fh.m2m_ctx = v4l2_m2m_ctx_init(jpeg->m2m_dev, ctx,
+> > +					    mtk_jpeg_queue_init);
+> > +	if (IS_ERR(ctx->fh.m2m_ctx)) {
+> > +		ret = PTR_ERR(ctx->fh.m2m_ctx);
+> > +		goto error;
+> > +	}
+> > +
+> > +	mtk_jpeg_set_default_params(ctx);
+> > +	mutex_unlock(&jpeg->lock);
+> > +	return 0;
+> > +
+> > +error:
+> > +	v4l2_fh_del(&ctx->fh);
+> > +	v4l2_fh_exit(&ctx->fh);
+> > +	mutex_unlock(&jpeg->lock);
+> > +free:
+> > +	kfree(ctx);
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_jpeg_release(struct file *file)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+> > +	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(file->private_data);
+> > +
+> > +	mutex_lock(&jpeg->lock);
+> > +	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+> > +	v4l2_fh_del(&ctx->fh);
+> > +	v4l2_fh_exit(&ctx->fh);
+> > +	kfree(ctx);
+> > +	mutex_unlock(&jpeg->lock);
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct v4l2_file_operations mtk_jpeg_fops = {
+> > +	.owner          = THIS_MODULE,
+> > +	.open           = mtk_jpeg_open,
+> > +	.release        = mtk_jpeg_release,
+> > +	.poll           = v4l2_m2m_fop_poll,
+> > +	.unlocked_ioctl = video_ioctl2,
+> > +	.mmap           = v4l2_m2m_fop_mmap,
+> > +};
+> > +
+> > +static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+> > +{
+> > +	struct device_node *node;
+> > +	struct platform_device *pdev;
+> > +
+> > +	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
+> > +	if (!node)
+> > +		return -EINVAL;
+> > +	pdev = of_find_device_by_node(node);
+> > +	if (WARN_ON(!pdev)) {
+> > +		of_node_put(node);
+> > +		return -EINVAL;
+> > +	}
+> > +	of_node_put(node);
+> > +
+> > +	jpeg->larb = &pdev->dev;
+> > +
+> > +	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
+> > +	if (IS_ERR(jpeg->clk_jdec))
+> > +		return -EINVAL;
+> > +
+> > +	jpeg->clk_jdec_smi = devm_clk_get(jpeg->dev, "jpgdec-smi");
+> > +	if (IS_ERR(jpeg->clk_jdec_smi))
+> > +		return -EINVAL;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_probe(struct platform_device *pdev)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg;
+> > +	struct resource *res;
+> > +	int dec_irq;
+> > +	int ret;
+> > +
+> > +	jpeg = devm_kzalloc(&pdev->dev, sizeof(*jpeg), GFP_KERNEL);
+> > +	if (!jpeg)
+> > +		return -ENOMEM;
+> > +
+> > +	mutex_init(&jpeg->lock);
+> > +	spin_lock_init(&jpeg->hw_lock);
+> > +	jpeg->dev = &pdev->dev;
+> > +
+> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	jpeg->dec_reg_base = devm_ioremap_resource(&pdev->dev, res);
+> > +	if (IS_ERR(jpeg->dec_reg_base)) {
+> > +		ret = PTR_ERR(jpeg->dec_reg_base);
+> > +		return ret;
+> > +	}
+> > +
+> > +	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> > +	dec_irq = platform_get_irq(pdev, 0);
+> > +	if (!res || dec_irq < 0) {
+> > +		dev_err(&pdev->dev, "Failed to get dec_irq %d.\n", dec_irq);
+> > +		ret = -EINVAL;
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = devm_request_irq(&pdev->dev, dec_irq, mtk_jpeg_dec_irq, 0,
+> > +			       pdev->name, jpeg);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to request dec_irq %d (%d)\n",
+> > +			dec_irq, ret);
+> > +		ret = -EINVAL;
+> > +		goto err_req_irq;
+> > +	}
+> > +
+> > +	ret = mtk_jpeg_clk_init(jpeg);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
+> > +		goto err_clk_init;
+> > +	}
+> > +
+> > +	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
+> > +		ret = -EINVAL;
+> > +		goto err_dev_register;
+> > +	}
+> > +
+> > +	jpeg->m2m_dev = v4l2_m2m_init(&mtk_jpeg_m2m_ops);
+> > +	if (IS_ERR(jpeg->m2m_dev)) {
+> > +		v4l2_err(&jpeg->v4l2_dev, "Failed to init mem2mem device\n");
+> > +		ret = PTR_ERR(jpeg->m2m_dev);
+> > +		goto err_m2m_init;
+> > +	}
+> > +
+> > +	jpeg->dec_vdev = video_device_alloc();
+> > +	if (!jpeg->dec_vdev) {
+> > +		ret = -ENOMEM;
+> > +		goto err_dec_vdev_alloc;
+> > +	}
+> > +	snprintf(jpeg->dec_vdev->name, sizeof(jpeg->dec_vdev->name),
+> > +		 "%s-dec", MTK_JPEG_NAME);
+> > +	jpeg->dec_vdev->fops = &mtk_jpeg_fops;
+> > +	jpeg->dec_vdev->ioctl_ops = &mtk_jpeg_ioctl_ops;
+> > +	jpeg->dec_vdev->minor = -1;
+> > +	jpeg->dec_vdev->release = video_device_release;
+> > +	jpeg->dec_vdev->lock = &jpeg->lock;
+> > +	jpeg->dec_vdev->v4l2_dev = &jpeg->v4l2_dev;
+> > +	jpeg->dec_vdev->vfl_dir = VFL_DIR_M2M;
+> > +	jpeg->dec_vdev->device_caps = V4L2_CAP_STREAMING |
+> > +				      V4L2_CAP_VIDEO_M2M_MPLANE;
+> > +
+> > +	ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
+> > +	if (ret) {
+> > +		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
+> > +		goto err_dec_vdev_register;
+> > +	}
+> > +
+> > +	video_set_drvdata(jpeg->dec_vdev, jpeg);
+> > +	v4l2_info(&jpeg->v4l2_dev,
+> > +		  "decoder device registered as /dev/video%d (%d,%d)\n",
+> > +		  jpeg->dec_vdev->num, VIDEO_MAJOR, jpeg->dec_vdev->minor);
+> > +
+> > +	platform_set_drvdata(pdev, jpeg);
+> > +
+> > +	pm_runtime_enable(&pdev->dev);
+> > +
+> > +	return 0;
+> > +
+> > +err_dec_vdev_register:
+> > +	video_device_release(jpeg->dec_vdev);
+> > +
+> > +err_dec_vdev_alloc:
+> > +	v4l2_m2m_release(jpeg->m2m_dev);
+> > +
+> > +err_m2m_init:
+> > +	v4l2_device_unregister(&jpeg->v4l2_dev);
+> > +
+> > +err_dev_register:
+> > +
+> > +err_clk_init:
+> > +
+> > +err_req_irq:
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_jpeg_remove(struct platform_device *pdev)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
+> > +
+> > +	pm_runtime_disable(&pdev->dev);
+> > +	video_unregister_device(jpeg->dec_vdev);
+> > +	video_device_release(jpeg->dec_vdev);
+> > +	v4l2_m2m_release(jpeg->m2m_dev);
+> > +	v4l2_device_unregister(&jpeg->v4l2_dev);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +#ifdef CONFIG_PM
+> > +static int mtk_jpeg_pm_suspend(struct device *dev)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+> > +
+> > +	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+> > +	mtk_jpeg_clk_off(jpeg);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_pm_resume(struct device *dev)
+> > +{
+> > +	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+> > +
+> > +	mtk_jpeg_clk_on(jpeg);
+> > +	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+> > +
+> > +	return 0;
+> > +}
+> > +#endif /* CONFIG_PM */
+> > +
+> > +#ifdef CONFIG_PM_SLEEP
+> > +static int mtk_jpeg_suspend(struct device *dev)
+> > +{
+> > +	int ret;
+> > +
+> > +	if (pm_runtime_suspended(dev))
+> > +		return 0;
+> > +
+> > +	ret = mtk_jpeg_pm_suspend(dev);
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_jpeg_resume(struct device *dev)
+> > +{
+> > +	int ret;
+> > +
+> > +	if (pm_runtime_suspended(dev))
+> > +		return 0;
+> > +
+> > +	ret = mtk_jpeg_pm_resume(dev);
+> > +
+> > +	return ret;
+> > +}
+> > +#endif /* CONFIG_PM_SLEEP */
+> > +
+> > +static const struct dev_pm_ops mtk_jpeg_pm_ops = {
+> > +	SET_SYSTEM_SLEEP_PM_OPS(mtk_jpeg_suspend, mtk_jpeg_resume)
+> > +	SET_RUNTIME_PM_OPS(mtk_jpeg_pm_suspend, mtk_jpeg_pm_resume, NULL)
+> > +};
+> > +
+> > +static const struct of_device_id mtk_jpeg_match[] = {
+> > +	{
+> > +		.compatible = "mediatek,mt8173-jpgdec",
+> > +		.data       = NULL,
+> > +	},
+> > +	{
+> > +		.compatible = "mediatek,mt2701-jpgdec",
+> > +		.data       = NULL,
+> > +	},
+> > +	{},
+> > +};
+> > +
+> > +MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
+> > +
+> > +static struct platform_driver mtk_jpeg_driver = {
+> > +	.probe = mtk_jpeg_probe,
+> > +	.remove = mtk_jpeg_remove,
+> > +	.driver = {
+> > +		.owner          = THIS_MODULE,
+> > +		.name           = MTK_JPEG_NAME,
+> > +		.of_match_table = mtk_jpeg_match,
+> > +		.pm             = &mtk_jpeg_pm_ops,
+> > +	},
+> > +};
+> > +
+> > +module_platform_driver(mtk_jpeg_driver);
+> > +
+> > +MODULE_DESCRIPTION("MediaTek JPEG codec driver");
+> > +MODULE_LICENSE("GPL v2");
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > new file mode 100644
+> > index 0000000..d862e3b
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+> > @@ -0,0 +1,141 @@
+> > +/*
+> > + * Copyright (c) 2016 MediaTek Inc.
+> > + * Author: Ming Hsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *         Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#ifndef _MTK_JPEG_CORE_H
+> > +#define _MTK_JPEG_CORE_H
+> > +
+> > +#include <linux/interrupt.h>
+> > +#include <media/v4l2-ctrls.h>
+> > +#include <media/v4l2-device.h>
+> > +#include <media/v4l2-fh.h>
+> > +
+> > +#define MTK_JPEG_NAME		"mtk-jpeg"
+> > +
+> > +#define MTK_JPEG_FMT_FLAG_DEC_OUTPUT	BIT(0)
+> > +#define MTK_JPEG_FMT_FLAG_DEC_CAPTURE	BIT(1)
+> > +
+> > +#define MTK_JPEG_FMT_TYPE_OUTPUT	1
+> > +#define MTK_JPEG_FMT_TYPE_CAPTURE	2
+> > +
+> > +#define MTK_JPEG_MIN_WIDTH	32
+> > +#define MTK_JPEG_MIN_HEIGHT	32
+> > +#define MTK_JPEG_MAX_WIDTH	8192
+> > +#define MTK_JPEG_MAX_HEIGHT	8192
+> > +
+> > +#define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
+> > +
+> > +enum mtk_jpeg_ctx_state {
+> > +	MTK_JPEG_INIT = 0,
+> > +	MTK_JPEG_RUNNING,
+> > +	MTK_JPEG_SOURCE_CHANGE,
+> > +};
+> > +
+> > +/**
+> > + * struct mt_jpeg - JPEG IP abstraction
+> > + * @lock:		the mutex protecting this structure
+> > + * @hw_lock:		spinlock protecting the hw device resource
+> > + * @workqueue:		decode work queue
+> > + * @dev:		JPEG device
+> > + * @v4l2_dev:		v4l2 device for mem2mem mode
+> > + * @m2m_dev:		v4l2 mem2mem device data
+> > + * @alloc_ctx:		videobuf2 memory allocator's context
+> > + * @dec_vdev:		video device node for decoder mem2mem mode
+> > + * @dec_reg_base:	JPEG registers mapping
+> > + * @clk_jdec:		JPEG hw working clock
+> > + * @clk_jdec_smi:	JPEG SMI bus clock
+> > + * @larb:		SMI device
+> > + */
+> > +struct mtk_jpeg_dev {
+> > +	struct mutex		lock;
+> > +	spinlock_t		hw_lock;
+> > +	struct workqueue_struct	*workqueue;
+> > +	struct device		*dev;
+> > +	struct v4l2_device	v4l2_dev;
+> > +	struct v4l2_m2m_dev	*m2m_dev;
+> > +	void			*alloc_ctx;
+> > +	struct video_device	*dec_vdev;
+> > +	void __iomem		*dec_reg_base;
+> > +	struct clk		*clk_jdec;
+> > +	struct clk		*clk_jdec_smi;
+> > +	struct device		*larb;
+> > +};
+> > +
+> > +/**
+> > + * struct jpeg_fmt - driver's internal color format data
+> > + * @name:	format descritpion
+> > + * @fourcc:	the fourcc code, 0 if not applicable
+> > + * @h_sample:	horizontal sample count of plane in 4 * 4 pixel image
+> > + * @v_sample:	vertical sample count of plane in 4 * 4 pixel image
+> > + * @colplanes:	number of color planes (1 for packed formats)
+> > + * @h_align:	horizontal alignment order (align to 2^h_align)
+> > + * @v_align:	vertical alignment order (align to 2^v_align)
+> > + * @flags:	flags describing format applicability
+> > + */
+> > +struct mtk_jpeg_fmt {
+> > +	char	*name;
+> > +	u32	fourcc;
+> > +	int	h_sample[VIDEO_MAX_PLANES];
+> > +	int	v_sample[VIDEO_MAX_PLANES];
+> > +	int	colplanes;
+> > +	int	h_align;
+> > +	int	v_align;
+> > +	u32	flags;
+> > +};
+> > +
+> > +/**
+> > + * mtk_jpeg_q_data - parameters of one queue
+> > + * @fmt:	  driver-specific format of this queue
+> > + * @w:		  image width
+> > + * @h:		  image height
+> > + * @bytesperline: distance in bytes between the leftmost pixels in two adjacent
+> > + *                lines
+> > + * @sizeimage:	  image buffer size in bytes
+> > + */
+> > +struct mtk_jpeg_q_data {
+> > +	struct mtk_jpeg_fmt	*fmt;
+> > +	u32			w;
+> > +	u32			h;
+> > +	u32			bytesperline[VIDEO_MAX_PLANES];
+> > +	u32			sizeimage[VIDEO_MAX_PLANES];
+> > +};
+> > +
+> > +/**
+> > + * mtk_jpeg_ctx - the device context data
+> > + * @jpeg:		JPEG IP device for this context
+> > + * @out_q:		source (output) queue information
+> > + * @cap_q:		destination (capture) queue queue information
+> > + * @fh:			V4L2 file handle
+> > + * @dec_param		parameters for HW decoding
+> > + * @state:		state of the context
+> > + * @header_valid:	set if header has been parsed and valid
+> > + * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
+> > + * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
+> > + * @quantization: enum v4l2_quantization, colorspace quantization
+> > + * @xfer_func: enum v4l2_xfer_func, colorspace transfer function
+> > + */
+> > +struct mtk_jpeg_ctx {
+> > +	struct mtk_jpeg_dev		*jpeg;
+> > +	struct mtk_jpeg_q_data		out_q;
+> > +	struct mtk_jpeg_q_data		cap_q;
+> > +	struct v4l2_fh			fh;
+> > +	enum mtk_jpeg_ctx_state		state;
+> > +
+> > +	enum v4l2_colorspace colorspace;
+> > +	enum v4l2_ycbcr_encoding ycbcr_enc;
+> > +	enum v4l2_quantization quantization;
+> > +	enum v4l2_xfer_func xfer_func;
+> > +};
+> > +
+> > +#endif /* _MTK_JPEG_CORE_H */
+> > diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+> > new file mode 100644
+> > index 0000000..a6315f3
+> > --- /dev/null
+> > +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+> > @@ -0,0 +1,417 @@
+> > +/*
+> > + * Copyright (c) 2016 MediaTek Inc.
+> > + * Author: Ming Hsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *         Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > + *
+> > + * This program is free software; you can redistribute it and/or modify
+> > + * it under the terms of the GNU General Public License version 2 as
+> > + * published by the Free Software Foundation.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> > +
+> > +#include <linux/io.h>
+> > +#include <linux/kernel.h>
+> > +#include <media/videobuf2-core.h>
+> > +
+> > +#include "mtk_jpeg_hw.h"
+> > +
+> > +#define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
+> > +
+> > +enum mtk_jpeg_color {
+> > +	MTK_JPEG_COLOR_420		= 0x00221111,
+> > +	MTK_JPEG_COLOR_422		= 0x00211111,
+> > +	MTK_JPEG_COLOR_444		= 0x00111111,
+> > +	MTK_JPEG_COLOR_422V		= 0x00121111,
+> > +	MTK_JPEG_COLOR_422X2		= 0x00412121,
+> > +	MTK_JPEG_COLOR_422VX2		= 0x00222121,
+> > +	MTK_JPEG_COLOR_400		= 0x00110000
+> > +};
+> > +
+> > +static inline int mtk_jpeg_verify_align(u32 val, int align, u32 reg)
+> > +{
+> > +	if (val & (align - 1)) {
+> > +		pr_err("mtk-jpeg: write reg %x without %d align\n", reg, align);
+> > +		return -1;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_jpeg_decide_format(struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	param->src_color = (param->sampling_w[0] << 20) |
+> > +			   (param->sampling_h[0] << 16) |
+> > +			   (param->sampling_w[1] << 12) |
+> > +			   (param->sampling_h[1] << 8) |
+> > +			   (param->sampling_w[2] << 4) |
+> > +			   (param->sampling_h[2]);
+> > +
+> > +	param->uv_brz_w = 0;
+> > +	switch (param->src_color) {
+> > +	case MTK_JPEG_COLOR_444:
+> > +		param->uv_brz_w = 1;
+> > +		param->dst_fourcc = V4L2_PIX_FMT_YUV422M;
+> > +		break;
+> > +	case MTK_JPEG_COLOR_422X2:
+> > +	case MTK_JPEG_COLOR_422:
+> > +		param->dst_fourcc = V4L2_PIX_FMT_YUV422M;
+> > +		break;
+> > +	case MTK_JPEG_COLOR_422V:
+> > +	case MTK_JPEG_COLOR_422VX2:
+> > +		param->uv_brz_w = 1;
+> > +		param->dst_fourcc = V4L2_PIX_FMT_YUV420M;
+> > +		break;
+> > +	case MTK_JPEG_COLOR_420:
+> > +		param->dst_fourcc = V4L2_PIX_FMT_YUV420M;
+> > +		break;
+> > +	case MTK_JPEG_COLOR_400:
+> > +		param->dst_fourcc = V4L2_PIX_FMT_GREY;
+> > +		break;
+> > +	default:
+> > +		param->dst_fourcc = 0;
+> > +		return -1;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_jpeg_calc_mcu(struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	u32 factor_w, factor_h;
+> > +	u32 i, comp, blk;
+> > +
+> > +	factor_w = 2 + param->sampling_w[0];
+> > +	factor_h = 2 + param->sampling_h[0];
+> > +	param->mcu_w = (param->pic_w + (1 << factor_w) - 1) >> factor_w;
+> > +	param->mcu_h = (param->pic_h + (1 << factor_h) - 1) >> factor_h;
+> > +	param->total_mcu = param->mcu_w * param->mcu_h;
+> > +	param->unit_num = ((param->pic_w + 7) >> 3) * ((param->pic_h + 7) >> 3);
+> > +	param->blk_num = 0;
+> > +	for (i = 0; i < MTK_JPEG_COMP_MAX; i++) {
+> > +		param->blk_comp[i] = 0;
+> > +		if (i >= param->comp_num)
+> > +			continue;
+> > +		param->blk_comp[i] = param->sampling_w[i] *
+> > +				     param->sampling_h[i];
+> > +		param->blk_num += param->blk_comp[i];
+> > +	}
+> > +
+> > +	param->membership = 0;
+> > +	for (i = 0, blk = 0, comp = 0; i < MTK_JPEG_BLOCK_MAX; i++) {
+> > +		if (i < param->blk_num && comp < param->comp_num) {
+> > +			u32 tmp;
+> > +
+> > +			tmp = (0x04 + (comp & 0x3));
+> > +			param->membership |= tmp << (i * 3);
+> > +			if (++blk == param->blk_comp[comp]) {
+> > +				comp++;
+> > +				blk = 0;
+> > +			}
+> > +		} else {
+> > +			param->membership |=  7 << (i * 3);
+> > +		}
+> > +	}
+> > +}
+> > +
+> > +static void mtk_jpeg_calc_dma_group(struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	u32 factor_mcu = 3;
+> > +
+> > +	if (param->src_color == MTK_JPEG_COLOR_444 &&
+> > +	    param->dst_fourcc == V4L2_PIX_FMT_YUV422M)
+> > +		factor_mcu = 4;
+> > +	else if (param->src_color == MTK_JPEG_COLOR_422V &&
+> > +		 param->dst_fourcc == V4L2_PIX_FMT_YUV420M)
+> > +		factor_mcu = 4;
+> > +	else if (param->src_color == MTK_JPEG_COLOR_422X2 &&
+> > +		 param->dst_fourcc == V4L2_PIX_FMT_YUV422M)
+> > +		factor_mcu = 2;
+> > +	else if (param->src_color == MTK_JPEG_COLOR_400 ||
+> > +		 (param->src_color & 0x0FFFF) == 0)
+> > +		factor_mcu = 4;
+> > +
+> > +	param->dma_mcu = 1 << factor_mcu;
+> > +	param->dma_group = param->mcu_w / param->dma_mcu;
+> > +	param->dma_last_mcu = param->mcu_w % param->dma_mcu;
+> > +	if (param->dma_last_mcu)
+> > +		param->dma_group++;
+> > +	else
+> > +		param->dma_last_mcu = param->dma_mcu;
+> > +}
+> > +
+> > +static int mtk_jpeg_calc_dst_size(struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	u32 i, padding_w;
+> > +	u32 ds_row_h[3];
+> > +	u32 brz_w[3];
+> > +
+> > +	brz_w[0] = 0;
+> > +	brz_w[1] = param->uv_brz_w;
+> > +	brz_w[2] = brz_w[1];
+> > +
+> > +	for (i = 0; i < param->comp_num; i++) {
+> > +		if (brz_w[i] > 3)
+> > +			return -1;
+> > +
+> > +		padding_w = param->mcu_w * MTK_JPEG_DCTSIZE *
+> > +				param->sampling_w[i];
+> > +		/* output format is 420/422 */
+> > +		param->comp_w[i] = padding_w >> brz_w[i];
+> > +		param->comp_w[i] = mtk_jpeg_align(param->comp_w[i],
+> > +						  MTK_JPEG_DCTSIZE);
+> > +		param->img_stride[i] = i ? mtk_jpeg_align(param->comp_w[i], 16)
+> > +					: mtk_jpeg_align(param->comp_w[i], 32);
+> > +		ds_row_h[i] = (MTK_JPEG_DCTSIZE * param->sampling_h[i]);
+> > +	}
+> > +	param->dec_w = param->img_stride[0];
+> > +	param->dec_h = ds_row_h[0] * param->mcu_h;
+> > +
+> > +	for (i = 0; i < MTK_JPEG_COMP_MAX; i++) {
+> > +		/* They must be equal in frame mode. */
+> > +		param->mem_stride[i] = param->img_stride[i];
+> > +		param->comp_size[i] = param->mem_stride[i] * ds_row_h[i] *
+> > +				      param->mcu_h;
+> > +	}
+> > +
+> > +	param->y_size = param->comp_size[0];
+> > +	param->uv_size = param->comp_size[1];
+> > +	param->dec_size = param->y_size + (param->uv_size << 1);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +int mtk_jpeg_dec_fill_param(struct mtk_jpeg_dec_param *param)
+> > +{
+> > +	if (mtk_jpeg_decide_format(param))
+> > +		return -1;
+> > +
+> > +	mtk_jpeg_calc_mcu(param);
+> > +	mtk_jpeg_calc_dma_group(param);
+> > +	if (mtk_jpeg_calc_dst_size(param))
+> > +		return -2;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +u32 mtk_jpeg_dec_get_int_status(void __iomem *base)
+> > +{
+> > +	u32 ret;
+> > +
+> > +	ret = readl(base + JPGDEC_REG_INTERRUPT_STATUS) & BIT_INQST_MASK_ALLIRQ;
+> > +	if (ret)
+> > +		writel(ret, base + JPGDEC_REG_INTERRUPT_STATUS);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +u32 mtk_jpeg_dec_enum_result(u32 irq_result)
+> > +{
+> > +	if (irq_result & BIT_INQST_MASK_EOF)
+> > +		return MTK_JPEG_DEC_RESULT_EOF_DONE;
+> > +	else if (irq_result & BIT_INQST_MASK_PAUSE)
+> > +		return MTK_JPEG_DEC_RESULT_PAUSE;
+> > +	else if (irq_result & BIT_INQST_MASK_UNDERFLOW)
+> > +		return MTK_JPEG_DEC_RESULT_UNDERFLOW;
+> > +	else if (irq_result & BIT_INQST_MASK_OVERFLOW)
+> > +		return MTK_JPEG_DEC_RESULT_OVERFLOW;
+> > +	else if (irq_result & BIT_INQST_MASK_ERROR_BS)
+> > +		return MTK_JPEG_DEC_RESULT_ERROR_BS;
+> 
+> No need for 'else' here since the previous 'if' always returns if true.
+
+Ok.
+
+> > +
+> > +	return MTK_JPEG_DEC_RESULT_ERROR_UNKNOWN;
+> > +}
+> > +
+> > +void mtk_jpeg_dec_start(void __iomem *base)
+> > +{
+> > +	writel(0, base + JPGDEC_REG_TRIG);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_soft_reset(void __iomem *base)
+> > +{
+> > +	writel(0x0000FFFF, base + JPGDEC_REG_INTERRUPT_STATUS);
+> > +	writel(0x00, base + JPGDEC_REG_RESET);
+> > +	writel(0x01, base + JPGDEC_REG_RESET);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_hard_reset(void __iomem *base)
+> > +{
+> > +	writel(0x00, base + JPGDEC_REG_RESET);
+> > +	writel(0x10, base + JPGDEC_REG_RESET);
+> > +}
+> > +
+> > +void mtk_jpeg_dec_reset(void __iomem *base)
+> > +{
+> > +	mtk_jpeg_dec_soft_reset(base);
+> > +	mtk_jpeg_dec_hard_reset(base);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_brz_factor(void __iomem *base, u8 yscale_w,
+> > +					u8 yscale_h, u8 uvscale_w, u8 uvscale_h)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = (uvscale_h << 12) | (uvscale_w << 8) |
+> > +	      (yscale_h << 4) | yscale_w;
+> > +	writel(val, base + JPGDEC_REG_BRZ_FACTOR);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_dst_bank0(void __iomem *base, u32 addr_y,
+> > +				       u32 addr_u, u32 addr_v)
+> > +{
+> > +	mtk_jpeg_verify_align(addr_y, 16, JPGDEC_REG_DEST_ADDR0_Y);
+> > +	writel(addr_y, base + JPGDEC_REG_DEST_ADDR0_Y);
+> > +	mtk_jpeg_verify_align(addr_u, 16, JPGDEC_REG_DEST_ADDR0_U);
+> > +	writel(addr_u, base + JPGDEC_REG_DEST_ADDR0_U);
+> > +	mtk_jpeg_verify_align(addr_v, 16, JPGDEC_REG_DEST_ADDR0_V);
+> > +	writel(addr_v, base + JPGDEC_REG_DEST_ADDR0_V);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_dst_bank1(void __iomem *base, u32 addr_y,
+> > +				       u32 addr_u, u32 addr_v)
+> > +{
+> > +	writel(addr_y, base + JPGDEC_REG_DEST_ADDR1_Y);
+> > +	writel(addr_u, base + JPGDEC_REG_DEST_ADDR1_U);
+> > +	writel(addr_v, base + JPGDEC_REG_DEST_ADDR1_V);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_mem_stride(void __iomem *base, u32 stride_y,
+> > +					u32 stride_uv)
+> > +{
+> > +	writel((stride_y & 0xFFFF), base + JPGDEC_REG_STRIDE_Y);
+> > +	writel((stride_uv & 0xFFFF), base + JPGDEC_REG_STRIDE_UV);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_img_stride(void __iomem *base, u32 stride_y,
+> > +					u32 stride_uv)
+> > +{
+> > +	writel((stride_y & 0xFFFF), base + JPGDEC_REG_IMG_STRIDE_Y);
+> > +	writel((stride_uv & 0xFFFF), base + JPGDEC_REG_IMG_STRIDE_UV);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_pause_mcu_idx(void __iomem *base, u32 idx)
+> > +{
+> > +	writel(idx & 0x0003FFFFFF, base + JPGDEC_REG_PAUSE_MCU_NUM);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_dec_mode(void __iomem *base, u32 mode)
+> > +{
+> > +	writel(mode & 0x03, base + JPGDEC_REG_OPERATION_MODE);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_bs_write_ptr(void __iomem *base, u32 ptr)
+> > +{
+> > +	mtk_jpeg_verify_align(ptr, 16, JPGDEC_REG_FILE_BRP);
+> > +	writel(ptr, base + JPGDEC_REG_FILE_BRP);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_bs_info(void __iomem *base, u32 addr, u32 size)
+> > +{
+> > +	mtk_jpeg_verify_align(addr, 16, JPGDEC_REG_FILE_ADDR);
+> > +	mtk_jpeg_verify_align(size, 128, JPGDEC_REG_FILE_TOTAL_SIZE);
+> > +	writel(addr, base + JPGDEC_REG_FILE_ADDR);
+> > +	writel(size, base + JPGDEC_REG_FILE_TOTAL_SIZE);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_comp_id(void __iomem *base, u32 id_y, u32 id_u,
+> > +				     u32 id_v)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = ((id_y & 0x00FF) << 24) | ((id_u & 0x00FF) << 16) |
+> > +	      ((id_v & 0x00FF) << 8);
+> > +	writel(val, base + JPGDEC_REG_COMP_ID);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_total_mcu(void __iomem *base, u32 num)
+> > +{
+> > +	writel(num - 1, base + JPGDEC_REG_TOTAL_MCU_NUM);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_comp0_du(void __iomem *base, u32 num)
+> > +{
+> > +	writel(num - 1, base + JPGDEC_REG_COMP0_DATA_UNIT_NUM);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_du_membership(void __iomem *base, u32 member,
+> > +					   u32 gmc, u32 isgray)
+> > +{
+> > +	if (isgray)
+> > +		member = 0x3FFFFFFC;
+> > +	member |= (isgray << 31) | (gmc << 30);
+> > +	writel(member, base + JPGDEC_REG_DU_CTRL);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_q_table(void __iomem *base, u32 id0, u32 id1,
+> > +				     u32 id2)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = ((id0 & 0x0f) << 8) | ((id1 & 0x0f) << 4) | ((id2 & 0x0f) << 0);
+> > +	writel(val, base + JPGDEC_REG_QT_ID);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_dma_group(void __iomem *base, u32 mcu_group,
+> > +				       u32 group_num, u32 last_mcu)
+> > +{
+> > +	u32 val;
+> > +
+> > +	val = (((mcu_group - 1) & 0x00FF) << 16) |
+> > +	      (((group_num - 1) & 0x007F) << 8) |
+> > +	      ((last_mcu - 1) & 0x00FF);
+> > +	writel(val, base + JPGDEC_REG_WDMA_CTRL);
+> > +}
+> > +
+> > +static void mtk_jpeg_dec_set_sampling_factor(void __iomem *base, u32 comp_num,
+> > +					     u32 y_w, u32 y_h, u32 u_w,
+> > +					     u32 u_h, u32 v_w, u32 v_h)
+> > +{
+> > +	u32 val;
+> > +	u32 y_wh = (MTK_JPEG_DUNUM_MASK(y_w) << 2) | MTK_JPEG_DUNUM_MASK(y_h);
+> > +	u32 u_wh = (MTK_JPEG_DUNUM_MASK(u_w) << 2) | MTK_JPEG_DUNUM_MASK(u_h);
+> > +	u32 v_wh = (MTK_JPEG_DUNUM_MASK(v_w) << 2) | MTK_JPEG_DUNUM_MASK(v_h);
+> > +
+> > +	if (comp_num == 1)
+> > +		val = 0;
+> > +	else
+> > +		val = (y_wh << 8) | (u_wh << 4) | v_wh;
+> > +	writel(val, base + JPGDEC_REG_DU_NUM);
+> > +}
+> > +
+> > +void mtk_jpeg_dec_set_config(void __iomem *base,
+> > +			     struct mtk_jpeg_dec_param *config,
+> > +			     struct mtk_jpeg_bs *bs,
+> > +			     struct mtk_jpeg_fb *fb)
+> > +{
+> > +	mtk_jpeg_dec_set_brz_factor(base, 0, 0, config->uv_brz_w, 0);
+> > +	mtk_jpeg_dec_set_dec_mode(base, 0);
+> > +	mtk_jpeg_dec_set_comp0_du(base, config->unit_num);
+> > +	mtk_jpeg_dec_set_total_mcu(base, config->total_mcu);
+> > +	mtk_jpeg_dec_set_bs_info(base, bs->str_addr, bs->size);
+> > +	mtk_jpeg_dec_set_bs_write_ptr(base, bs->end_addr);
+> > +	mtk_jpeg_dec_set_du_membership(base, config->membership, 1,
+> > +				       (config->comp_num == 1) ? 1 : 0);
+> > +	mtk_jpeg_dec_set_comp_id(base, config->comp_id[0], config->comp_id[1],
+> > +				 config->comp_id[2]);
+> > +	mtk_jpeg_dec_set_q_table(base, config->qtbl_num[0],
+> > +				 config->qtbl_num[1], config->qtbl_num[2]);
+> > +	mtk_jpeg_dec_set_sampling_factor(base, config->comp_num,
+> > +					 config->sampling_w[0],
+> > +					 config->sampling_h[0],
+> > +					 config->sampling_w[1],
+> > +					 config->sampling_h[1],
+> > +					 config->sampling_w[2],
+> > +					 config->sampling_h[2]);
+> > +	mtk_jpeg_dec_set_mem_stride(base, config->mem_stride[0],
+> > +				    config->mem_stride[1]);
+> > +	mtk_jpeg_dec_set_img_stride(base, config->img_stride[0],
+> > +				    config->img_stride[1]);
+> > +	mtk_jpeg_dec_set_dst_bank0(base, fb->plane_addr[0],
+> > +				   fb->plane_addr[1], fb->plane_addr[2]);
+> > +	mtk_jpeg_dec_set_dst_bank1(base, 0, 0, 0);
+> > +	mtk_jpeg_dec_set_dma_group(base, config->dma_mcu, config->dma_group,
+> > +				   config->dma_last_mcu);
+> > +	mtk_jpeg_dec_set_pause_mcu_idx(base, config->total_mcu);
+> > +}
+> 
+> Regards,
+> 
+> 	Hans
 
 
-The only thing that seems to be left now is the firmware update bits, right?
-
-Can we get the firmware pushed on the linux-firmware git repo [1]?
-
-Or
-
-Remove the firmware update parts for now (including the SPI stuff,
-since that seems to be only used for writing fw)?
-
-[1] http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
-
-Thanks,
-Archit
-
->
-> Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-> Reviewed-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
-> Changes since v17:
->  - remove some unused head files.
->  - add macros for ps8640 pages.
->  - remove ddc_i2c client
->  - add mipi_dsi_device_register_full
->  - remove the manufacturer from the name and i2c_device_id
->
-> Changes since v16:
->  - Disable ps8640 DSI MCS Function.
->  - Rename gpios name more clearly.
->  - Tune the ps8640 power on sequence.
->
-> Changes since v15:
->  - Drop drm_connector_(un)register calls from parade ps8640.
->    The main DRM driver mtk_drm_drv now calls
->    drm_connector_register_all() after drm_dev_register() in the
->    mtk_drm_bind() function. That function should iterate over all
->    connectors and call drm_connector_register() for each of them.
->    So, remove drm_connector_(un)register calls from parade ps8640.
->
-> Changes since v14:
->  - update copyright info.
->  - change bridge_to_ps8640 and connector_to_ps8640 to inline function.
->  - fix some coding style.
->  - use sizeof as array counter.
->  - use drm_get_edid when read edid.
->  - add mutex when firmware updating.
->
-> Changes since v13:
->  - add const on data, ps8640_write_bytes(struct i2c_client *client, const u8 *data, u16 data_len)
->  - fix PAGE2_SW_REST tyro.
->  - move the buf[3] init to entrance of the function.
->
-> Changes since v12:
->  - fix hw_chip_id build warning
->
-> Changes since v11:
->  - Remove depends on I2C, add DRM depends
->  - Reuse ps8640_write_bytes() in ps8640_write_byte()
->  - Use timer check for polling like the routines in <linux/iopoll.h>
->  - Fix no drm_connector_unregister/drm_connector_cleanup when ps8640_bridge_attach fail
->  - Check the ps8640 hardware id in ps8640_validate_firmware
->  - Remove fw_version check
->  - Move ps8640_validate_firmware before ps8640_enter_bl
->  - Add ddc_i2c unregister when probe fail and ps8640_remove
-> ---
->  drivers/gpu/drm/bridge/Kconfig         |   12 +
->  drivers/gpu/drm/bridge/Makefile        |    1 +
->  drivers/gpu/drm/bridge/parade-ps8640.c | 1079 ++++++++++++++++++++++++++++++++
->  3 files changed, 1092 insertions(+)
->  create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
->
-> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-> index 10e12e7..7f41bbc 100644
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -57,6 +57,18 @@ config DRM_PARADE_PS8622
->  	---help---
->  	  Parade eDP-LVDS bridge chip driver.
->
-> +config DRM_PARADE_PS8640
-> +	tristate "Parade PS8640 MIPI DSI to eDP Converter"
-> +	depends on DRM
-> +	depends on OF
-> +	select DRM_KMS_HELPER
-> +	select DRM_MIPI_DSI
-> +	select DRM_PANEL
-> +	---help---
-> +	  Choose this option if you have PS8640 for display
-> +	  The PS8640 is a high-performance and low-power
-> +	  MIPI DSI to eDP converter
-> +
->  config DRM_SII902X
->  	tristate "Silicon Image sii902x RGB/HDMI bridge"
->  	depends on OF
-> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-> index cdf3a3c..7d93d40 100644
-> --- a/drivers/gpu/drm/bridge/Makefile
-> +++ b/drivers/gpu/drm/bridge/Makefile
-> @@ -6,6 +6,7 @@ obj-$(CONFIG_DRM_DW_HDMI) += dw-hdmi.o
->  obj-$(CONFIG_DRM_DW_HDMI_AHB_AUDIO) += dw-hdmi-ahb-audio.o
->  obj-$(CONFIG_DRM_NXP_PTN3460) += nxp-ptn3460.o
->  obj-$(CONFIG_DRM_PARADE_PS8622) += parade-ps8622.o
-> +obj-$(CONFIG_DRM_PARADE_PS8640) += parade-ps8640.o
->  obj-$(CONFIG_DRM_SII902X) += sii902x.o
->  obj-$(CONFIG_DRM_TOSHIBA_TC358767) += tc358767.o
->  obj-$(CONFIG_DRM_ANALOGIX_DP) += analogix/
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
-> new file mode 100644
-> index 0000000..2d9c337
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> @@ -0,0 +1,1079 @@
-> +/*
-> + * Copyright (c) 2016 MediaTek Inc.
-> + *
-> + * This program is free software; you can redistribute it and/or modify
-> + * it under the terms of the GNU General Public License version 2 as
-> + * published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/err.h>
-> +#include <linux/firmware.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/i2c.h>
-> +#include <linux/module.h>
-> +#include <linux/of_graph.h>
-> +#include <linux/regulator/consumer.h>
-> +#include <asm/unaligned.h>
-> +#include <drm/drm_panel.h>
-> +
-> +#include <drmP.h>
-> +#include <drm_atomic_helper.h>
-> +#include <drm_crtc_helper.h>
-> +#include <drm_edid.h>
-> +#include <drm_mipi_dsi.h>
-> +
-> +#define PAGE1_VSTART		0x6b
-> +#define PAGE2_SPI_CFG3		0x82
-> +#define I2C_TO_SPI_RESET	0x20
-> +#define PAGE2_ROMADD_BYTE1	0x8e
-> +#define PAGE2_ROMADD_BYTE2	0x8f
-> +#define PAGE2_SWSPI_WDATA	0x90
-> +#define PAGE2_SWSPI_RDATA	0x91
-> +#define PAGE2_SWSPI_LEN		0x92
-> +#define PAGE2_SWSPI_CTL		0x93
-> +#define TRIGGER_NO_READBACK	0x05
-> +#define TRIGGER_READBACK	0x01
-> +#define PAGE2_SPI_STATUS	0x9e
-> +#define SPI_READY		0x0c
-> +#define PAGE2_GPIO_L		0xa6
-> +#define PAGE2_GPIO_H		0xa7
-> +#define PS_GPIO9		BIT(1)
-> +#define PAGE2_IROM_CTRL		0xb0
-> +#define IROM_ENABLE		0xc0
-> +#define IROM_DISABLE		0x80
-> +#define PAGE2_SW_RESET		0xbc
-> +#define SPI_SW_RESET		BIT(7)
-> +#define MPU_SW_RESET		BIT(6)
-> +#define PAGE2_ENCTLSPI_WR	0xda
-> +#define PAGE2_I2C_BYPASS	0xea
-> +#define I2C_BYPASS_EN		0xd0
-> +#define PAGE2_MCS_EN		0xf3
-> +#define MCS_EN			BIT(0)
-> +#define PAGE3_SET_ADD		0xfe
-> +#define PAGE3_SET_VAL		0xff
-> +#define VDO_CTL_ADD		0x13
-> +#define VDO_DIS			0x18
-> +#define VDO_EN			0x1c
-> +#define PAGE4_REV_L		0xf0
-> +#define PAGE4_REV_H		0xf1
-> +#define PAGE4_CHIP_L		0xf2
-> +#define PAGE4_CHIP_H		0xf3
-> +
-> +#define PAGE0_DP_CNTL	0
-> +#define PAGE1_VDO_BDG	1
-> +#define PAGE2_TOP_CNTL	2
-> +#define PAGE3_DSI_CNTL1	3
-> +#define PAGE4_MIPI_PHY	4
-> +#define PAGE5_VPLL	5
-> +#define PAGE6_DSI_CNTL2	6
-> +#define PAGE7_SPI_CNTL	7
-> +#define MAX_DEVS		0x8
-> +
-> +/* Firmware */
-> +#define PS_FW_NAME		"ps864x_fw.bin"
-> +
-> +#define FW_CHIP_ID_OFFSET	0
-> +#define FW_VERSION_OFFSET	2
-> +#define EDID_I2C_ADDR		0x50
-> +
-> +#define WRITE_STATUS_REG_CMD	0x01
-> +#define READ_STATUS_REG_CMD	0x05
-> +#define BUSY			BIT(0)
-> +#define CLEAR_ALL_PROTECT	0x00
-> +#define BLK_PROTECT_BITS	0x0c
-> +#define STATUS_REG_PROTECT	BIT(7)
-> +#define WRITE_ENABLE_CMD	0x06
-> +#define CHIP_ERASE_CMD		0xc7
-> +
-> +struct ps8640_info {
-> +	u8 family_id;
-> +	u8 variant_id;
-> +	u16 version;
-> +};
-> +
-> +struct ps8640 {
-> +	struct drm_connector connector;
-> +	struct drm_bridge bridge;
-> +	struct edid *edid;
-> +	struct mipi_dsi_device *dsi;
-> +	struct i2c_client *page[MAX_DEVS];
-> +	struct regulator_bulk_data supplies[2];
-> +	struct drm_panel *panel;
-> +	struct gpio_desc *gpio_reset;
-> +	struct gpio_desc *gpio_power_down;
-> +	struct gpio_desc *gpio_mode_sel;
-> +	bool enabled;
-> +
-> +	/* firmware file info */
-> +	struct ps8640_info info;
-> +	bool in_fw_update;
-> +	/* for firmware update protect */
-> +	struct mutex fw_mutex;
-> +};
-> +
-> +static const u8 enc_ctrl_code[6] = { 0xaa, 0x55, 0x50, 0x41, 0x52, 0x44 };
-> +static const u8 hw_chip_id[4] = { 0x00, 0x0a, 0x00, 0x30 };
-> +
-> +static inline struct ps8640 *bridge_to_ps8640(struct drm_bridge *e)
-> +{
-> +	return container_of(e, struct ps8640, bridge);
-> +}
-> +
-> +static inline struct ps8640 *connector_to_ps8640(struct drm_connector *e)
-> +{
-> +	return container_of(e, struct ps8640, connector);
-> +}
-> +
-> +static int ps8640_read(struct i2c_client *client, u8 reg, u8 *data,
-> +		       u16 data_len)
-> +{
-> +	int ret;
-> +	struct i2c_msg msgs[] = {
-> +		{
-> +		 .addr = client->addr,
-> +		 .flags = 0,
-> +		 .len = 1,
-> +		 .buf = &reg,
-> +		},
-> +		{
-> +		 .addr = client->addr,
-> +		 .flags = I2C_M_RD,
-> +		 .len = data_len,
-> +		 .buf = data,
-> +		}
-> +	};
-> +
-> +	ret = i2c_transfer(client->adapter, msgs, 2);
-> +
-> +	if (ret == 2)
-> +		return 0;
-> +	if (ret < 0)
-> +		return ret;
-> +	else
-> +		return -EIO;
-> +}
-> +
-> +static int ps8640_write_bytes(struct i2c_client *client, const u8 *data,
-> +			      u16 data_len)
-> +{
-> +	int ret;
-> +	struct i2c_msg msg;
-> +
-> +	msg.addr = client->addr;
-> +	msg.flags = 0;
-> +	msg.len = data_len;
-> +	msg.buf = (u8 *)data;
-> +
-> +	ret = i2c_transfer(client->adapter, &msg, 1);
-> +	if (ret == 1)
-> +		return 0;
-> +	if (ret < 0)
-> +		return ret;
-> +	else
-> +		return -EIO;
-> +}
-> +
-> +static int ps8640_write_byte(struct i2c_client *client, u8 reg,  u8 data)
-> +{
-> +	u8 buf[] = { reg, data };
-> +
-> +	return ps8640_write_bytes(client, buf, sizeof(buf));
-> +}
-> +
-> +static void ps8640_get_mcu_fw_version(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE5_VPLL];
-> +	u8 fw_ver[2];
-> +
-> +	ps8640_read(client, 0x4, fw_ver, sizeof(fw_ver));
-> +	ps_bridge->info.version = (fw_ver[0] << 8) | fw_ver[1];
-> +
-> +	DRM_INFO_ONCE("ps8640 rom fw version %d.%d\n", fw_ver[0], fw_ver[1]);
-> +}
-> +
-> +static int ps8640_bridge_unmute(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE3_DSI_CNTL1];
-> +	u8 vdo_ctrl_buf[3] = { PAGE3_SET_ADD, VDO_CTL_ADD, VDO_EN };
-> +
-> +	return ps8640_write_bytes(client, vdo_ctrl_buf, sizeof(vdo_ctrl_buf));
-> +}
-> +
-> +static int ps8640_bridge_mute(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE3_DSI_CNTL1];
-> +	u8 vdo_ctrl_buf[3] = { PAGE3_SET_ADD, VDO_CTL_ADD, VDO_DIS };
-> +
-> +	return ps8640_write_bytes(client, vdo_ctrl_buf, sizeof(vdo_ctrl_buf));
-> +}
-> +
-> +static void ps8640_pre_enable(struct drm_bridge *bridge)
-> +{
-> +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	struct i2c_client *page1 = ps_bridge->page[PAGE1_VDO_BDG];
-> +	int err;
-> +	u8 set_vdo_done, mcs_en, vstart;
-> +	ktime_t timeout;
-> +
-> +	if (ps_bridge->in_fw_update)
-> +		return;
-> +
-> +	if (ps_bridge->enabled)
-> +		return;
-> +
-> +	err = drm_panel_prepare(ps_bridge->panel);
-> +	if (err < 0) {
-> +		DRM_ERROR("failed to prepare panel: %d\n", err);
-> +		return;
-> +	}
-> +
-> +	err = regulator_bulk_enable(ARRAY_SIZE(ps_bridge->supplies),
-> +				    ps_bridge->supplies);
-> +	if (err < 0) {
-> +		DRM_ERROR("cannot enable regulators %d\n", err);
-> +		goto err_panel_unprepare;
-> +	}
-> +
-> +	gpiod_set_value(ps_bridge->gpio_power_down, 1);
-> +	gpiod_set_value(ps_bridge->gpio_reset, 0);
-> +	usleep_range(2000, 2500);
-> +	gpiod_set_value(ps_bridge->gpio_reset, 1);
-> +
-> +	/*
-> +	 * Wait for the ps8640 embed mcu ready
-> +	 * First wait 200ms and then check the mcu ready flag every 20ms
-> +	 */
-> +	msleep(200);
-> +
-> +	timeout = ktime_add_ms(ktime_get(), 200);
-> +	for (;;) {
-> +		err = ps8640_read(client, PAGE2_GPIO_H, &set_vdo_done, 1);
-> +		if (err < 0) {
-> +			DRM_ERROR("failed read PAGE2_GPIO_H: %d\n", err);
-> +			goto err_regulators_disable;
-> +		}
-> +		if ((set_vdo_done & PS_GPIO9) == PS_GPIO9)
-> +			break;
-> +		if (ktime_compare(ktime_get(), timeout) > 0)
-> +			break;
-> +		msleep(20);
-> +	}
-> +
-> +	msleep(50);
-> +
-> +	ps8640_read(page1, PAGE1_VSTART, &vstart, 1);
-> +	DRM_INFO("PS8640 PAGE1.0x6B = 0x%x\n", vstart);
-> +
-> +	/**
-> +	 * The Manufacturer Command Set (MCS) is a device dependent interface
-> +	 * intended for factory programming of the display module default
-> +	 * parameters. Once the display module is configured, the MCS shall be
-> +	 * disabled by the manufacturer. Once disabled, all MCS commands are
-> +	 * ignored by the display interface.
-> +	 */
-> +	ps8640_read(client, PAGE2_MCS_EN, &mcs_en, 1);
-> +	ps8640_write_byte(client, PAGE2_MCS_EN, mcs_en & ~MCS_EN);
-> +
-> +	if (ps_bridge->info.version == 0)
-> +		ps8640_get_mcu_fw_version(ps_bridge);
-> +
-> +	err = ps8640_bridge_unmute(ps_bridge);
-> +	if (err)
-> +		DRM_ERROR("failed to enable unmutevideo: %d\n", err);
-> +	/* Switch access edp panel's edid through i2c */
-> +	ps8640_write_byte(client, PAGE2_I2C_BYPASS, I2C_BYPASS_EN);
-> +	ps_bridge->enabled = true;
-> +
-> +	return;
-> +
-> +err_regulators_disable:
-> +	regulator_bulk_disable(ARRAY_SIZE(ps_bridge->supplies),
-> +			       ps_bridge->supplies);
-> +err_panel_unprepare:
-> +	drm_panel_unprepare(ps_bridge->panel);
-> +}
-> +
-> +static void ps8640_enable(struct drm_bridge *bridge)
-> +{
-> +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +	int err;
-> +
-> +	err = drm_panel_enable(ps_bridge->panel);
-> +	if (err < 0)
-> +		DRM_ERROR("failed to enable panel: %d\n", err);
-> +}
-> +
-> +static void ps8640_disable(struct drm_bridge *bridge)
-> +{
-> +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +	int err;
-> +
-> +	err = drm_panel_disable(ps_bridge->panel);
-> +	if (err < 0)
-> +		DRM_ERROR("failed to disable panel: %d\n", err);
-> +}
-> +
-> +static void ps8640_post_disable(struct drm_bridge *bridge)
-> +{
-> +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +	int err;
-> +
-> +	if (ps_bridge->in_fw_update)
-> +		return;
-> +
-> +	if (!ps_bridge->enabled)
-> +		return;
-> +
-> +	ps_bridge->enabled = false;
-> +
-> +	err = ps8640_bridge_mute(ps_bridge);
-> +	if (err < 0)
-> +		DRM_ERROR("failed to unmutevideo: %d\n", err);
-> +
-> +	gpiod_set_value(ps_bridge->gpio_reset, 0);
-> +	gpiod_set_value(ps_bridge->gpio_power_down, 0);
-> +	err = regulator_bulk_disable(ARRAY_SIZE(ps_bridge->supplies),
-> +				     ps_bridge->supplies);
-> +	if (err < 0)
-> +		DRM_ERROR("cannot disable regulators %d\n", err);
-> +
-> +	err = drm_panel_unprepare(ps_bridge->panel);
-> +	if (err)
-> +		DRM_ERROR("failed to unprepare panel: %d\n", err);
-> +}
-> +
-> +static int ps8640_get_modes(struct drm_connector *connector)
-> +{
-> +	struct ps8640 *ps_bridge = connector_to_ps8640(connector);
-> +	struct edid *edid;
-> +	int num_modes = 0;
-> +	bool power_off;
-> +
-> +	if (ps_bridge->edid)
-> +		return drm_add_edid_modes(connector, ps_bridge->edid);
-> +
-> +	power_off = !ps_bridge->enabled;
-> +	ps8640_pre_enable(&ps_bridge->bridge);
-> +
-> +	edid = drm_get_edid(connector, ps_bridge->page[0]->adapter);
-> +	if (!edid)
-> +		goto out;
-> +
-> +	ps_bridge->edid = edid;
-> +	drm_mode_connector_update_edid_property(connector, ps_bridge->edid);
-> +	num_modes = drm_add_edid_modes(connector, ps_bridge->edid);
-> +
-> +out:
-> +	if (power_off)
-> +		ps8640_post_disable(&ps_bridge->bridge);
-> +
-> +	return num_modes;
-> +}
-> +
-> +static const struct drm_connector_helper_funcs ps8640_connector_helper_funcs = {
-> +	.get_modes = ps8640_get_modes,
-> +};
-> +
-> +static enum drm_connector_status ps8640_detect(struct drm_connector *connector,
-> +					       bool force)
-> +{
-> +	return connector_status_connected;
-> +}
-> +
-> +static const struct drm_connector_funcs ps8640_connector_funcs = {
-> +	.dpms = drm_atomic_helper_connector_dpms,
-> +	.fill_modes = drm_helper_probe_single_connector_modes,
-> +	.detect = ps8640_detect,
-> +	.reset = drm_atomic_helper_connector_reset,
-> +	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-> +	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
-> +};
-> +
-> +int ps8640_bridge_attach(struct drm_bridge *bridge)
-> +{
-> +	struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
-> +	struct device *dev = &ps_bridge->page[0]->dev;
-> +	struct device_node *in_ep, *dsi_node = NULL;
-> +	struct mipi_dsi_device *dsi;
-> +	struct mipi_dsi_host *host = NULL;
-> +	int ret;
-> +	const struct mipi_dsi_device_info info = { .type = "ps8640",
-> +						   .channel = 0,
-> +						   .node = NULL,
-> +						 };
-> +
-> +	ret = drm_connector_init(bridge->dev, &ps_bridge->connector,
-> +				 &ps8640_connector_funcs,
-> +				 DRM_MODE_CONNECTOR_eDP);
-> +
-> +	if (ret) {
-> +		DRM_ERROR("Failed to initialize connector with drm: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	drm_connector_helper_add(&ps_bridge->connector,
-> +				 &ps8640_connector_helper_funcs);
-> +
-> +	ps_bridge->connector.dpms = DRM_MODE_DPMS_ON;
-> +	drm_mode_connector_attach_encoder(&ps_bridge->connector,
-> +					  bridge->encoder);
-> +
-> +	if (ps_bridge->panel)
-> +		drm_panel_attach(ps_bridge->panel, &ps_bridge->connector);
-> +
-> +	/* port@0 is ps8640 dsi input port */
-> +	in_ep = of_graph_get_endpoint_by_regs(dev->of_node, 0, -1);
-> +	if (in_ep) {
-> +		dsi_node = of_graph_get_remote_port_parent(in_ep);
-> +		of_node_put(in_ep);
-> +	}
-> +
-> +	if (dsi_node) {
-> +		host = of_find_mipi_dsi_host_by_node(dsi_node);
-> +		of_node_put(dsi_node);
-> +		if (!host) {
-> +			ret = -ENODEV;
-> +			goto err;
-> +		}
-> +	}
-
-There's still a possibility of us trying to register the dsi
-device here to a null host.
-
-Suggested code:
-
-	in_ep = of_graph_get_endpoint_by_regs(dev->of_node, 0, -1);
-	if (!in_ep) {
-		ret = -ENODEV;
-		goto err;
-	}
-
-	dsi_node = of_graph_get_remote_port_parent(in_ep);
-	if (!dsi_node) {
-		of_node_put(in_ep);
-		ret = -ENODEV;
-		goto err;
-	}
-
-	of_node_put(in_ep);
-	of_node_put(dsi_node);
-
-	host = of_find_mipi_dsi_host_by_node(dsi_node);
-	if (!host) {
-		ret = -EPROBE_DEFER;
-		goto err;
-	}
-
-Thanks,
-Archit
-
-> +
-> +	dsi = mipi_dsi_device_register_full(host, &info);
-> +	if (IS_ERR(dsi)) {
-> +		dev_err(dev, "failed to create dsi device\n");
-> +		ret = PTR_ERR(dsi);
-> +		goto err;
-> +	}
-> +
-> +	ps_bridge->dsi = dsi;
-> +
-> +	dsi->host = host;
-> +	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
-> +				     MIPI_DSI_MODE_VIDEO_SYNC_PULSE;
-> +	dsi->format = MIPI_DSI_FMT_RGB888;
-> +	dsi->lanes = 4;
-> +	ret = mipi_dsi_attach(dsi);
-> +	if (ret)
-> +		goto err_dsi_attach;
-> +
-> +	return 0;
-> +
-> +err_dsi_attach:
-> +	mipi_dsi_device_unregister(dsi);
-> +err:
-> +	if (ps_bridge->panel)
-> +		drm_panel_detach(ps_bridge->panel);
-> +	drm_connector_cleanup(&ps_bridge->connector);
-> +	return ret;
-> +}
-> +
-> +static const struct drm_bridge_funcs ps8640_bridge_funcs = {
-> +	.attach = ps8640_bridge_attach,
-> +	.disable = ps8640_disable,
-> +	.post_disable = ps8640_post_disable,
-> +	.pre_enable = ps8640_pre_enable,
-> +	.enable = ps8640_enable,
-> +};
-> +
-> +/* Firmware Version is returned as Major.Minor */
-> +static ssize_t ps8640_fw_version_show(struct device *dev,
-> +				      struct device_attribute *attr, char *buf)
-> +{
-> +	struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +	struct ps8640_info *info = &ps_bridge->info;
-> +
-> +	return scnprintf(buf, PAGE_SIZE, "%u.%u\n", info->version >> 8,
-> +			 info->version & 0xff);
-> +}
-> +
-> +/* Hardware Version is returned as FamilyID.VariantID */
-> +static ssize_t ps8640_hw_version_show(struct device *dev,
-> +				      struct device_attribute *attr, char *buf)
-> +{
-> +	struct ps8640 *ps_bridge = dev_get_drvdata(dev);
-> +	struct ps8640_info *info = &ps_bridge->info;
-> +
-> +	return scnprintf(buf, PAGE_SIZE, "ps%u.%u\n", info->family_id,
-> +			 info->variant_id);
-> +}
-> +
-> +static int ps8640_spi_send_cmd(struct ps8640 *ps_bridge, u8 *cmd, u8 cmd_len)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	u8 i, buf[3] = { PAGE2_SWSPI_LEN, cmd_len - 1, TRIGGER_NO_READBACK };
-> +	int ret;
-> +
-> +	ret = ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +	if (ret)
-> +		goto err;
-> +
-> +	/* write command in write port */
-> +	for (i = 0; i < cmd_len; i++) {
-> +		ret = ps8640_write_byte(client, PAGE2_SWSPI_WDATA, cmd[i]);
-> +		if (ret)
-> +			goto err_irom_disable;
-> +	}
-> +
-> +	ret = ps8640_write_bytes(client, buf, sizeof(buf));
-> +	if (ret)
-> +		goto err_irom_disable;
-> +
-> +	ret = ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +	if (ret)
-> +		goto err;
-> +
-> +	return 0;
-> +err_irom_disable:
-> +	ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +err:
-> +	dev_err(&client->dev, "send command err: %d\n", ret);
-> +	return ret;
-> +}
-> +
-> +static int ps8640_wait_spi_ready(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	u8 spi_rdy_st;
-> +	ktime_t timeout;
-> +
-> +	timeout = ktime_add_ms(ktime_get(), 200);
-> +	for (;;) {
-> +		ps8640_read(client, PAGE2_SPI_STATUS, &spi_rdy_st, 1);
-> +		if ((spi_rdy_st & SPI_READY) != SPI_READY)
-> +			break;
-> +
-> +		if (ktime_compare(ktime_get(), timeout) > 0) {
-> +			dev_err(&client->dev, "wait spi ready timeout\n");
-> +			return -EBUSY;
-> +		}
-> +
-> +		msleep(20);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int ps8640_wait_spi_nobusy(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	u8 spi_status, buf[3] = { PAGE2_SWSPI_LEN, 0, TRIGGER_READBACK };
-> +	int ret;
-> +	ktime_t timeout;
-> +
-> +	timeout = ktime_add_ms(ktime_get(), 500);
-> +	for (;;) {
-> +		/* 0x05 RDSR; Read-Status-Register */
-> +		ret = ps8640_write_byte(client, PAGE2_SWSPI_WDATA,
-> +					READ_STATUS_REG_CMD);
-> +		if (ret)
-> +			goto err_send_cmd_exit;
-> +
-> +		ret = ps8640_write_bytes(client, buf, 3);
-> +		if (ret)
-> +			goto err_send_cmd_exit;
-> +
-> +		/* delay for cmd send */
-> +		usleep_range(300, 500);
-> +		/* wait for SPI ROM until not busy */
-> +		ret = ps8640_read(client, PAGE2_SWSPI_RDATA, &spi_status, 1);
-> +		if (ret)
-> +			goto err_send_cmd_exit;
-> +
-> +		if (!(spi_status & BUSY))
-> +			break;
-> +
-> +		if (ktime_compare(ktime_get(), timeout) > 0) {
-> +			dev_err(&client->dev, "wait spi no busy timeout: %d\n",
-> +				ret);
-> +			return -EBUSY;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +
-> +err_send_cmd_exit:
-> +	dev_err(&client->dev, "send command err: %d\n", ret);
-> +	return ret;
-> +}
-> +
-> +static int ps8640_wait_rom_idle(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE0_DP_CNTL];
-> +	int ret;
-> +
-> +	ret = ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +	if (ret)
-> +		goto exit;
-> +
-> +	ret = ps8640_wait_spi_ready(ps_bridge);
-> +	if (ret)
-> +		goto err_spi;
-> +
-> +	ret = ps8640_wait_spi_nobusy(ps_bridge);
-> +	if (ret)
-> +		goto err_spi;
-> +
-> +	ret = ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +	if (ret)
-> +		goto exit;
-> +
-> +	return 0;
-> +
-> +err_spi:
-> +	ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +exit:
-> +	dev_err(&client->dev, "wait ps8640 rom idle fail: %d\n", ret);
-> +
-> +	return ret;
-> +}
-> +
-> +static int ps8640_spi_dl_mode(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	int ret;
-> +
-> +	/* switch ps8640 mode to spi dl mode */
-> +	if (ps_bridge->gpio_mode_sel)
-> +		gpiod_set_value(ps_bridge->gpio_mode_sel, 0);
-> +
-> +	/* reset spi interface */
-> +	ret = ps8640_write_byte(client, PAGE2_SW_RESET,
-> +				SPI_SW_RESET | MPU_SW_RESET);
-> +	if (ret)
-> +		goto exit;
-> +
-> +	ret = ps8640_write_byte(client, PAGE2_SW_RESET, MPU_SW_RESET);
-> +	if (ret)
-> +		goto exit;
-> +
-> +	return 0;
-> +
-> +exit:
-> +	dev_err(&client->dev, "fail reset spi interface: %d\n", ret);
-> +
-> +	return ret;
-> +}
-> +
-> +static int ps8640_rom_prepare(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	struct device *dev = &client->dev;
-> +	u8 i, cmd[2];
-> +	int ret;
-> +
-> +	cmd[0] = WRITE_ENABLE_CMD;
-> +	ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +	if (ret) {
-> +		dev_err(dev, "failed enable-write-status-register: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	cmd[0] = WRITE_STATUS_REG_CMD;
-> +	cmd[1] = CLEAR_ALL_PROTECT;
-> +	ret = ps8640_spi_send_cmd(ps_bridge, cmd, 2);
-> +	if (ret) {
-> +		dev_err(dev, "fail disable all protection: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/* wait for SPI module ready */
-> +	ret = ps8640_wait_rom_idle(ps_bridge);
-> +	if (ret) {
-> +		dev_err(dev, "fail wait rom idle: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_ENABLE);
-> +	for (i = 0; i < ARRAY_SIZE(enc_ctrl_code); i++)
-> +		ps8640_write_byte(client, PAGE2_ENCTLSPI_WR, enc_ctrl_code[i]);
-> +	ps8640_write_byte(client, PAGE2_IROM_CTRL, IROM_DISABLE);
-> +
-> +	/* Enable-Write-Status-Register */
-> +	cmd[0] = WRITE_ENABLE_CMD;
-> +	ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +	if (ret) {
-> +		dev_err(dev, "fail enable-write-status-register: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/* chip erase command */
-> +	cmd[0] = CHIP_ERASE_CMD;
-> +	ret = ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +	if (ret) {
-> +		dev_err(dev, "fail disable all protection: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = ps8640_wait_rom_idle(ps_bridge);
-> +	if (ret) {
-> +		dev_err(dev, "fail wait rom idle: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int ps8640_check_chip_id(struct ps8640 *ps_bridge)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE4_MIPI_PHY];
-> +	u8 buf[4];
-> +
-> +	ps8640_read(client, PAGE4_REV_L, buf, 4);
-> +	return memcmp(buf, hw_chip_id, sizeof(buf));
-> +}
-> +
-> +static int ps8640_validate_firmware(struct ps8640 *ps_bridge,
-> +				    const struct firmware *fw)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[0];
-> +	u16 fw_chip_id;
-> +
-> +	/*
-> +	 * Get the chip_id from the firmware. Make sure that it is the
-> +	 * right controller to do the firmware and config update.
-> +	 */
-> +	fw_chip_id = get_unaligned_le16(fw->data + FW_CHIP_ID_OFFSET);
-> +
-> +	if (fw_chip_id != 0x8640 && ps8640_check_chip_id(ps_bridge) == 0) {
-> +		dev_err(&client->dev,
-> +			"chip id mismatch: fw 0x%x vs. chip 0x8640\n",
-> +			fw_chip_id);
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int ps8640_write_rom(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE0_DP_CNTL];
-> +	struct device *dev = &client->dev;
-> +	struct i2c_client *client2 = ps_bridge->page[PAGE2_TOP_CNTL];
-> +	struct i2c_client *client7 = ps_bridge->page[PAGE7_SPI_CNTL];
-> +	size_t pos, cpy_len;
-> +	u8 buf[257];
-> +	int ret;
-> +
-> +	ps8640_write_byte(client2, PAGE2_SPI_CFG3, I2C_TO_SPI_RESET);
-> +	msleep(100);
-> +	ps8640_write_byte(client2, PAGE2_SPI_CFG3, 0x00);
-> +
-> +	for (pos = 0; pos < fw->size; pos += cpy_len) {
-> +		buf[0] = PAGE2_ROMADD_BYTE1;
-> +		buf[1] = pos >> 8;
-> +		buf[2] = pos >> 16;
-> +		ret = ps8640_write_bytes(client2, buf, 3);
-> +		if (ret)
-> +			goto error;
-> +		cpy_len = fw->size >= 256 + pos ? 256 : fw->size - pos;
-> +		buf[0] = 0;
-> +		memcpy(buf + 1, fw->data + pos, cpy_len);
-> +		ret = ps8640_write_bytes(client7, buf, cpy_len + 1);
-> +		if (ret)
-> +			goto error;
-> +
-> +		dev_dbg(dev, "fw update completed %zu / %zu bytes\n", pos,
-> +			fw->size);
-> +	}
-> +	return 0;
-> +
-> +error:
-> +	dev_err(dev, "failed write external flash, %d\n", ret);
-> +	return ret;
-> +}
-> +
-> +static int ps8640_spi_normal_mode(struct ps8640 *ps_bridge)
-> +{
-> +	u8 cmd[2];
-> +	struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
-> +
-> +	/* Enable-Write-Status-Register */
-> +	cmd[0] = WRITE_ENABLE_CMD;
-> +	ps8640_spi_send_cmd(ps_bridge, cmd, 1);
-> +
-> +	/* protect BPL/BP0/BP1 */
-> +	cmd[0] = WRITE_STATUS_REG_CMD;
-> +	cmd[1] = BLK_PROTECT_BITS | STATUS_REG_PROTECT;
-> +	ps8640_spi_send_cmd(ps_bridge, cmd, 2);
-> +
-> +	/* wait for SPI rom ready */
-> +	ps8640_wait_rom_idle(ps_bridge);
-> +
-> +	/* disable PS8640 mapping function */
-> +	ps8640_write_byte(client, PAGE2_ENCTLSPI_WR, 0x00);
-> +
-> +	if (ps_bridge->gpio_mode_sel)
-> +		gpiod_set_value(ps_bridge->gpio_mode_sel, 1);
-> +	return 0;
-> +}
-> +
-> +static int ps8640_enter_bl(struct ps8640 *ps_bridge)
-> +{
-> +	ps_bridge->in_fw_update = true;
-> +	return ps8640_spi_dl_mode(ps_bridge);
-> +}
-> +
-> +static void ps8640_exit_bl(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +	ps8640_spi_normal_mode(ps_bridge);
-> +	ps_bridge->in_fw_update = false;
-> +}
-> +
-> +static int ps8640_load_fw(struct ps8640 *ps_bridge, const struct firmware *fw)
-> +{
-> +	struct i2c_client *client = ps_bridge->page[PAGE0_DP_CNTL];
-> +	struct device *dev = &client->dev;
-> +	int ret;
-> +	bool ps8640_status_backup = ps_bridge->enabled;
-> +
-> +	ret = ps8640_validate_firmware(ps_bridge, fw);
-> +	if (ret)
-> +		return ret;
-> +
-> +	mutex_lock(&ps_bridge->fw_mutex);
-> +	if (!ps_bridge->in_fw_update) {
-> +		if (!ps8640_status_backup)
-> +			ps8640_pre_enable(&ps_bridge->bridge);
-> +
-> +		ret = ps8640_enter_bl(ps_bridge);
-> +		if (ret)
-> +			goto exit;
-> +	}
-> +
-> +	ret = ps8640_rom_prepare(ps_bridge);
-> +	if (ret)
-> +		goto exit;
-> +
-> +	ret = ps8640_write_rom(ps_bridge, fw);
-> +
-> +exit:
-> +	if (ret)
-> +		dev_err(dev, "Failed to load firmware, %d\n", ret);
-> +
-> +	ps8640_exit_bl(ps_bridge, fw);
-> +	if (!ps8640_status_backup)
-> +		ps8640_post_disable(&ps_bridge->bridge);
-> +	mutex_unlock(&ps_bridge->fw_mutex);
-> +	return ret;
-> +}
-> +
-> +static ssize_t ps8640_update_fw_store(struct device *dev,
-> +				      struct device_attribute *attr,
-> +				      const char *buf, size_t count)
-> +{
-> +	struct i2c_client *client = to_i2c_client(dev);
-> +	struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> +	const struct firmware *fw;
-> +	int error;
-> +
-> +	error = request_firmware(&fw, PS_FW_NAME, dev);
-> +	if (error) {
-> +		dev_err(dev, "Unable to open firmware %s: %d\n",
-> +			PS_FW_NAME, error);
-> +		return error;
-> +	}
-> +
-> +	error = ps8640_load_fw(ps_bridge, fw);
-> +	if (error)
-> +		dev_err(dev, "The firmware update failed(%d)\n", error);
-> +	else
-> +		dev_info(dev, "The firmware update succeeded\n");
-> +
-> +	release_firmware(fw);
-> +	return error ? error : count;
-> +}
-> +
-> +static DEVICE_ATTR(fw_version, S_IRUGO, ps8640_fw_version_show, NULL);
-> +static DEVICE_ATTR(hw_version, S_IRUGO, ps8640_hw_version_show, NULL);
-> +static DEVICE_ATTR(update_fw, S_IWUSR, NULL, ps8640_update_fw_store);
-> +
-> +static struct attribute *ps8640_attrs[] = {
-> +	&dev_attr_fw_version.attr,
-> +	&dev_attr_hw_version.attr,
-> +	&dev_attr_update_fw.attr,
-> +	NULL
-> +};
-> +
-> +static const struct attribute_group ps8640_attr_group = {
-> +	.attrs = ps8640_attrs,
-> +};
-> +
-> +static void ps8640_remove_sysfs_group(void *data)
-> +{
-> +	struct ps8640 *ps_bridge = data;
-> +
-> +	sysfs_remove_group(&ps_bridge->page[0]->dev.kobj, &ps8640_attr_group);
-> +}
-> +
-> +static int ps8640_probe(struct i2c_client *client,
-> +			const struct i2c_device_id *id)
-> +{
-> +	struct device *dev = &client->dev;
-> +	struct ps8640 *ps_bridge;
-> +	struct device_node *np = dev->of_node;
-> +	struct device_node *port, *out_ep;
-> +	struct device_node *panel_node = NULL;
-> +	int ret;
-> +	u32 i;
-> +
-> +	ps_bridge = devm_kzalloc(dev, sizeof(*ps_bridge), GFP_KERNEL);
-> +	if (!ps_bridge)
-> +		return -ENOMEM;
-> +
-> +	/* port@1 is ps8640 output port */
-> +	port = of_graph_get_port_by_id(np, 1);
-> +	if (port) {
-> +		out_ep = of_get_child_by_name(port, "endpoint");
-> +		of_node_put(port);
-> +		if (out_ep) {
-> +			panel_node = of_graph_get_remote_port_parent(out_ep);
-> +			of_node_put(out_ep);
-> +		}
-> +	}
-> +	if (panel_node) {
-> +		ps_bridge->panel = of_drm_find_panel(panel_node);
-> +		of_node_put(panel_node);
-> +		if (!ps_bridge->panel)
-> +			return -EPROBE_DEFER;
-> +	}
-> +
-> +	mutex_init(&ps_bridge->fw_mutex);
-> +	ps_bridge->supplies[0].supply = "vdd33";
-> +	ps_bridge->supplies[1].supply = "vdd12";
-> +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(ps_bridge->supplies),
-> +				      ps_bridge->supplies);
-> +	if (ret) {
-> +		dev_info(dev, "failed to get regulators: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ps_bridge->gpio_mode_sel = devm_gpiod_get_optional(&client->dev,
-> +							     "mode-sel",
-> +							     GPIOD_OUT_HIGH);
-> +	if (IS_ERR(ps_bridge->gpio_mode_sel)) {
-> +		ret = PTR_ERR(ps_bridge->gpio_mode_sel);
-> +		dev_err(dev, "cannot get mode-sel %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ps_bridge->gpio_power_down = devm_gpiod_get(&client->dev, "sleep",
-> +					       GPIOD_OUT_LOW);
-> +	if (IS_ERR(ps_bridge->gpio_power_down)) {
-> +		ret = PTR_ERR(ps_bridge->gpio_power_down);
-> +		dev_err(dev, "cannot get sleep: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	/*
-> +	 * Request the reset pin low to avoid the bridge being
-> +	 * initialized prematurely
-> +	 */
-> +	ps_bridge->gpio_reset = devm_gpiod_get(&client->dev, "reset",
-> +					       GPIOD_OUT_LOW);
-> +	if (IS_ERR(ps_bridge->gpio_reset)) {
-> +		ret = PTR_ERR(ps_bridge->gpio_reset);
-> +		dev_err(dev, "cannot get reset: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	ps_bridge->bridge.funcs = &ps8640_bridge_funcs;
-> +	ps_bridge->bridge.of_node = dev->of_node;
-> +
-> +	ps_bridge->page[0] = client;
-> +
-> +	/*
-> +	 * ps8640 uses multiple addresses, use dummy devices for them
-> +	 * page[0]: for DP control
-> +	 * page[1]: for VIDEO Bridge
-> +	 * page[2]: for control top
-> +	 * page[3]: for DSI Link Control1
-> +	 * page[4]: for MIPI Phy
-> +	 * page[5]: for VPLL
-> +	 * page[6]: for DSI Link Control2
-> +	 * page[7]: for spi rom mapping
-> +	 */
-> +	for (i = 1; i < MAX_DEVS; i++) {
-> +		ps_bridge->page[i] = i2c_new_dummy(client->adapter,
-> +						   client->addr + i);
-> +		if (!ps_bridge->page[i]) {
-> +			dev_err(dev, "failed i2c dummy device, address%02x\n",
-> +				client->addr + i);
-> +			ret = -EBUSY;
-> +			goto exit_dummy;
-> +		}
-> +	}
-> +	i2c_set_clientdata(client, ps_bridge);
-> +
-> +	ret = sysfs_create_group(&client->dev.kobj, &ps8640_attr_group);
-> +	if (ret) {
-> +		dev_err(dev, "failed to create sysfs entries: %d\n", ret);
-> +		goto exit_dummy;
-> +	}
-> +
-> +	ret = devm_add_action(dev, ps8640_remove_sysfs_group, ps_bridge);
-> +	if (ret) {
-> +		dev_err(dev, "failed to add sysfs cleanup action: %d\n", ret);
-> +		goto exit_remove_sysfs;
-> +	}
-> +
-> +	ret = drm_bridge_add(&ps_bridge->bridge);
-> +	if (ret) {
-> +		dev_err(dev, "Failed to add bridge: %d\n", ret);
-> +		goto exit_remove_sysfs;
-> +	}
-> +	return 0;
-> +
-> +exit_remove_sysfs:
-> +	sysfs_remove_group(&ps_bridge->page[0]->dev.kobj, &ps8640_attr_group);
-> +exit_dummy:
-> +	while (--i)
-> +		i2c_unregister_device(ps_bridge->page[i]);
-> +	return ret;
-> +}
-> +
-> +static int ps8640_remove(struct i2c_client *client)
-> +{
-> +	struct ps8640 *ps_bridge = i2c_get_clientdata(client);
-> +	int i = MAX_DEVS;
-> +
-> +	drm_bridge_remove(&ps_bridge->bridge);
-> +	sysfs_remove_group(&ps_bridge->page[0]->dev.kobj, &ps8640_attr_group);
-> +	while (--i)
-> +		i2c_unregister_device(ps_bridge->page[i]);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct i2c_device_id ps8640_i2c_table[] = {
-> +	{ "ps8640", 0 },
-> +	{ /* sentinel */ },
-> +};
-> +MODULE_DEVICE_TABLE(i2c, ps8640_i2c_table);
-> +
-> +static const struct of_device_id ps8640_match[] = {
-> +	{ .compatible = "parade,ps8640" },
-> +	{ /* sentinel */ },
-> +};
-> +MODULE_DEVICE_TABLE(of, ps8640_match);
-> +
-> +static struct i2c_driver ps8640_driver = {
-> +	.id_table = ps8640_i2c_table,
-> +	.probe = ps8640_probe,
-> +	.remove = ps8640_remove,
-> +	.driver = {
-> +		.name = "ps8640",
-> +		.of_match_table = ps8640_match,
-> +	},
-> +};
-> +module_i2c_driver(ps8640_driver);
-> +
-> +MODULE_AUTHOR("Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +MODULE_AUTHOR("CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>");
-> +MODULE_DESCRIPTION("PARADE ps8640 DSI-eDP converter driver");
-> +MODULE_LICENSE("GPL v2");
->
-
--- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
-a Linux Foundation Collaborative Project
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
