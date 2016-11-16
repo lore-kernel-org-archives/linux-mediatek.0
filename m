@@ -1,50 +1,54 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] iommu: mtk: add common-clk dependency
-Date: Wed, 16 Nov 2016 16:28:13 +0100
-Message-ID: <20161116152837.3508723-1-arnd@arndb.de>
+From: Colin King <colin.king@canonical.com>
+Subject: [PATCH] [media] VPU: mediatek: fix dereference of pdev before checking it is null
+Date: Wed, 16 Nov 2016 19:16:50 +0000
+Message-ID: <20161116191650.11486-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, John Crispin <blogic@openwrt.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-After the MT2701 clock driver was added, we get a harmless warning for
-the iommu driver that selects it, when compile-testing without
-COMMON_CLK.
+From: Colin Ian King <colin.king@canonical.com>
 
-warning: (MTK_IOMMU_V1) selects COMMON_CLK_MT2701_IMGSYS which has unmet direct dependencies (COMMON_CLK)
+pdev is dereferenced using platform_get_drvdata before a check to
+see if it is null, hence there could be a potential null pointer
+dereference issue. Instead, first check if pdev is null and only then
+deference pdev when initializing vpu.
 
-Adding a dependency on COMMON_CLK avoids the warning.
+Found with static analysis by CoverityScan, CID 1357797
 
-Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
 ---
- drivers/iommu/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/iommu/Kconfig b/drivers/iommu/Kconfig
-index 8ee54d71c7eb..bb537d06d319 100644
---- a/drivers/iommu/Kconfig
-+++ b/drivers/iommu/Kconfig
-@@ -346,7 +346,7 @@ config MTK_IOMMU
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index c9bf58c..41f31b2 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -523,9 +523,9 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
  
- config MTK_IOMMU_V1
- 	bool "MTK IOMMU Version 1 (M4U gen1) Support"
--	depends on ARM
-+	depends on ARM && COMMON_CLK
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select ARM_DMA_USE_IOMMU
- 	select IOMMU_API
+ int vpu_load_firmware(struct platform_device *pdev)
+ {
+-	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
++	struct mtk_vpu *vpu;
+ 	struct device *dev = &pdev->dev;
+-	struct vpu_run *run = &vpu->run;
++	struct vpu_run *run;
+ 	const struct firmware *vpu_fw = NULL;
+ 	int ret;
+ 
+@@ -533,6 +533,8 @@ int vpu_load_firmware(struct platform_device *pdev)
+ 		dev_err(dev, "VPU platform device is invalid\n");
+ 		return -EINVAL;
+ 	}
++	vpu = platform_get_drvdata(pdev);
++	run = &vpu->run;
+ 
+ 	mutex_lock(&vpu->vpu_mutex);
+ 	if (vpu->fw_loaded) {
 -- 
-2.9.0
+2.10.2
