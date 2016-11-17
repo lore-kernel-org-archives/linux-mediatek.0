@@ -1,169 +1,61 @@
-From: Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v6 0/3] Add Mediatek JPEG Decoder
-Date: Thu, 17 Nov 2016 11:38:32 +0800
-Message-ID: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
+From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v5] drm/mediatek: fixed the calc method of data rate per
+ lane
+Date: Thu, 17 Nov 2016 13:36:46 +0800
+Message-ID: <1479361006.13083.7.camel@mtksdaap41>
+References: <1479266454-31892-1-git-send-email-jitao.shi@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Rick Chang <rick.chang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1479266454-31892-1-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This series of patches provide a v4l2 driver to control Mediatek JPEG decoder
-for decoding JPEG image and Motion JPEG bitstream.
-
-changes since v5:
-- remove redundant name from struct mtk_jpeg_fmt
-- Set state of all buffers to VB2_BUF_STATE_QUEUED if fail in start streaming
-- Remove VB2_USERPTR
-- Add check for buffer index
-
-changes since v4:
-- Change file name of binding documentation
-- Revise DT binding documentation
-- Revise compatible string
-
-changes since v3:
-- Revise DT binding documentation
-- Revise compatible string
-
-changes since v2:
-- Revise DT binding documentation 
-
-changes since v1:
-- Rebase for v4.9-rc1.
-- Update Compliance test version and result
-- Remove redundant path in Makefile
-- Fix potential build error without CONFIG_PM_RUNTIME and CONFIG_PM_SLEEP
-- Fix warnings from patch check and smatch check
-
-* Dependency
-The patch "arm: dts: mt2701: Add node for JPEG decoder" depends on: 
-  CCF "Add clock support for Mediatek MT2701"[1]
-  iommu and smi "Add the dtsi node of iommu and smi for mt2701"[2]
-
-[1] http://lists.infradead.org/pipermail/linux-mediatek/2016-October/007271.html
-[2] https://patchwork.kernel.org/patch/9164013/
-
-* Compliance test
-v4l2-compliance SHA   : 4ad7174b908a36c4f315e3fe2efa7e2f8a6f375a
-
-Driver Info:
-        Driver name   : mtk-jpeg decode
-        Card type     : mtk-jpeg decoder
-        Bus info      : platform:15004000.jpegdec
-        Driver version: 4.9.0
-        Capabilities  : 0x84204000
-                Video Memory-to-Memory Multiplanar
-                Streaming
-                Extended Pix Format
-                Device Capabilities
-        Device Caps   : 0x04204000
-                Video Memory-to-Memory Multiplanar
-                Streaming
-                Extended Pix Format
-
-Compliance test for device /dev/video3 (not using libv4l2):
-
-Required ioctls:
-        test VIDIOC_QUERYCAP: OK
-
-Allow for multiple opens:
-        test second video open: OK
-        test VIDIOC_QUERYCAP: OK
-        test VIDIOC_G/S_PRIORITY: OK
-        test for unlimited opens: OK
-
-Debug ioctls:
-        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
-        test VIDIOC_LOG_STATUS: OK (Not Supported)
-
-Input ioctls:
-        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
-        test VIDIOC_ENUMAUDIO: OK (Not Supported)
-        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDIO: OK (Not Supported)
-        Inputs: 0 Audio Inputs: 0 Tuners: 0
-
-Output ioctls:
-        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
-        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
-        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
-        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
-        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
-        Outputs: 0 Audio Outputs: 0 Modulators: 0
-
-Input/Output configuration ioctls:
-        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
-        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
-        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
-        test VIDIOC_G/S_EDID: OK (Not Supported)
-
-        Control ioctls:
-                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
-                test VIDIOC_QUERYCTRL: OK (Not Supported)
-                test VIDIOC_G/S_CTRL: OK (Not Supported)
-                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
-                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
-                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
-                Standard Controls: 0 Private Controls: 0
-
-        Format ioctls:
-                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
-                test VIDIOC_G/S_PARM: OK (Not Supported)
-                test VIDIOC_G_FBUF: OK (Not Supported)
-                test VIDIOC_G_FMT: OK
-                test VIDIOC_TRY_FMT: OK
-                test VIDIOC_S_FMT: OK
-                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
-                test Cropping: OK (Not Supported)
-                test Composing: OK
-                test Scaling: OK
-
-        Codec ioctls:
-                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
-                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
-                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
-
-        Buffer ioctls:
-                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
-                test VIDIOC_EXPBUF: OK
-
-Test input 0:
+Hi, Jitao:
 
 
-Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
+On Wed, 2016-11-16 at 11:20 +0800, Jitao Shi wrote:
+> Tune dsi frame rate by pixel clock, dsi add some extra signal (i.e.
+> Tlpx, Ths-prepare, Ths-zero, Ths-trail,Ths-exit) when enter and exit LP
+> mode, those signals will cause h-time larger than normal and reduce FPS.
+> So need to multiply a coefficient to offset the extra signal's effect.
+>   coefficient = ((htotal*bpp/lane_number)+Tlpx+Ths_prep+Ths_zero+
+> 		 Ths_trail+Ths_exit)/(htotal*bpp/lane_number)
+> 
+> Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-Rick Chang (3):
-  dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
-  vcodec: mediatek: Add Mediatek JPEG Decoder Driver
-  arm: dts: mt2701: Add node for Mediatek JPEG Decoder
+It looks good to me.
+But this patch conflict with [1] which is one patch of MT2701 series. I
+want to apply MT2701 patches first, so please help to refine this patch
+based on MT2701 patches.
 
- .../bindings/media/mediatek-jpeg-decoder.txt       |   37 +
- arch/arm/boot/dts/mt2701.dtsi                      |   14 +
- drivers/media/platform/Kconfig                     |   15 +
- drivers/media/platform/Makefile                    |    2 +
- drivers/media/platform/mtk-jpeg/Makefile           |    2 +
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 1303 ++++++++++++++++++++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  139 +++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c      |  417 +++++++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h      |   91 ++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c   |  160 +++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h   |   25 +
- drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h     |   58 +
- 12 files changed, 2263 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
- create mode 100644 drivers/media/platform/mtk-jpeg/Makefile
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
- create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+[1] https://patchwork.kernel.org/patch/9422821/
 
--- 
-1.9.1
+Regards,
+CK
+
+> ---
+> Change since v4:
+>  - tune the calc comment more clear.
+>  - define the phy timings as constants.
+> 
+> Chnage since v3:
+>  - wrapp the commit msg.
+>  - fix alignment of some lines. 
+> 
+> Change since v2:
+>  - move phy timing back to dsi_phy_timconfig.
+> 
+> Change since v1:
+>  - phy_timing2 and phy_timing3 refer clock cycle time.
+>  - define values of LPX HS_PRPR HS_ZERO HS_TRAIL TA_GO TA_SURE TA_GET DA_HS_EXIT.
+> ---
+>  
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
