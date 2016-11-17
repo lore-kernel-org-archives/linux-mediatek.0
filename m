@@ -1,61 +1,100 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v5] drm/mediatek: fixed the calc method of data rate per
- lane
-Date: Thu, 17 Nov 2016 13:36:46 +0800
-Message-ID: <1479361006.13083.7.camel@mtksdaap41>
-References: <1479266454-31892-1-git-send-email-jitao.shi@mediatek.com>
+From: Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>
+Subject: Re: [PATCH] iommu: mtk: add common-clk dependency
+Date: Thu, 17 Nov 2016 15:35:02 -0800
+Message-ID: <20161117233502.GW25626@codeaurora.org>
+References: <20161116152837.3508723-1-arnd@arndb.de>
+	<20161116193850.GK25626@codeaurora.org>
+	<1479345958.17679.11.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1479266454-31892-1-git-send-email-jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Ajay Kumar <ajaykumar.rs-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Inki Dae <inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Rahul Sharma <rahul.sharma-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vincent Palatin <vpalatin-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Russell King <rmk+kernel-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1479345958.17679.11.camel@mtksdaap41>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Jitao:
-
-
-On Wed, 2016-11-16 at 11:20 +0800, Jitao Shi wrote:
-> Tune dsi frame rate by pixel clock, dsi add some extra signal (i.e.
-> Tlpx, Ths-prepare, Ths-zero, Ths-trail,Ths-exit) when enter and exit LP
-> mode, those signals will cause h-time larger than normal and reduce FPS.
-> So need to multiply a coefficient to offset the extra signal's effect.
->   coefficient = ((htotal*bpp/lane_number)+Tlpx+Ths_prep+Ths_zero+
-> 		 Ths_trail+Ths_exit)/(htotal*bpp/lane_number)
+On 11/17, Honghui Zhang wrote:
+> On Wed, 2016-11-16 at 11:38 -0800, Stephen Boyd wrote:
+> > On 11/16, Arnd Bergmann wrote:
+> > > After the MT2701 clock driver was added, we get a harmless warning for
+> > > the iommu driver that selects it, when compile-testing without
+> > > COMMON_CLK.
+> > > 
+> > > warning: (MTK_IOMMU_V1) selects COMMON_CLK_MT2701_IMGSYS which has unmet direct dependencies (COMMON_CLK)
+> > > 
+> > > Adding a dependency on COMMON_CLK avoids the warning.
+> > > 
+> > > Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> > > Signed-off-by: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
+> > 
+> > Hm.. why is an iommu driver selecting a clk driver? They should
+> > be using standard clk APIs so it's not like they need it for
+> > build time correctness. Shouldn't we drop the selects instead?
+> > Those look to have been introduced a few kernel versions ago, but
+> > they were selecting options that didn't exist until a few days
+> > ago when I merged the mediatek clk driver. The clk options are
+> > user-visible, so it should be possible to select them in the
+> > configuration phase.
+> > 
 > 
-> Signed-off-by: Jitao Shi <jitao.shi-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-It looks good to me.
-But this patch conflict with [1] which is one patch of MT2701 series. I
-want to apply MT2701 patches first, so please help to refine this patch
-based on MT2701 patches.
-
-[1] https://patchwork.kernel.org/patch/9422821/
-
-Regards,
-CK
-
-> ---
-> Change since v4:
->  - tune the calc comment more clear.
->  - define the phy timings as constants.
+> Hi, Stephen,
+>   I'm a bit out of date of the current clock code. Mediatek IOMMU v1
+> driver will need smi driver to enable iommu clients. And smi driver is
+> also respond to enable/disable the susbsys clocks for multi-media HW.
+> The relationship between iommu and smi is like the graphics below[1].
 > 
-> Chnage since v3:
->  - wrapp the commit msg.
->  - fix alignment of some lines. 
+>               EMI (External Memory Interface)
+>                |
+>               m4u (Multimedia Memory Management Unit)
+>                |
+>            SMI Common(Smart Multimedia Interface Common)
+>                |
+>        +----------------+-------
+>        |                |
+>        |                |
+>    SMI larb0        SMI larb1   ... SoCs have several SMI local
+> arbiter(larb).
+>    (display)         (vdec)
+>        |                |
+>        |                |
+>  +-----+-----+     +----+----+
+>  |     |     |     |    |    |
+>  |     |     |...  |    |    |  ... There are different ports in each
+> larb.
+>  |     |     |     |    |    |
+> OVL0 RDMA0 WDMA0  MC   PP   VLD
 > 
-> Change since v2:
->  - move phy timing back to dsi_phy_timconfig.
 > 
-> Change since v1:
->  - phy_timing2 and phy_timing3 refer clock cycle time.
->  - define values of LPX HS_PRPR HS_ZERO HS_TRAIL TA_GO TA_SURE TA_GET DA_HS_EXIT.
-> ---
->  
+> When enable SMI driver it will need those subsys clock provider.
+> But those clocks providers are disabled in default. Since it's needed by
+> smi driver, and smi was select by MTK_IOMMU_V1, I figure it should be
+> select by MTK_IOMMU_V1 too.
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Ok I understand all that, but I don't understand why that means
+we need to have select statements for clk drivers still. If
+anything, that logic would mean the SMI driver should select clk
+drivers. I hope it isn't doing that.
+
+BTW, I don't understand the mtk_smi_larb_get() API. It looks like
+we expect the SMI driver to probe and succeed before the
+mtk_smi_larb_get() function is called. That seems fairly brittle
+in the face of probe defer or device ordering changes.
+
+The SMI driver actually looks like a bus driver for an
+interconnect as well, but drivers/memory is for memory
+controllers? Odd but I can get over that.
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
