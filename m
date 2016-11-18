@@ -1,62 +1,32 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [Resend PATCH] drm/mediatek: fix null pointer dereference
-Date: Fri, 18 Nov 2016 11:06:10 +0100
-Message-ID: <13893536-4b1f-4ff9-c265-971f08623ea5@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Geliang Tang <geliangtang@gmail.com>
+Subject: [PATCH] drm: mediatek: use ERR_CAST inlined function
+Date: Fri, 18 Nov 2016 22:03:29 +0800
+Message-ID: <6ead9aa2438aa8ce5ba8b9a1f1c661b9d4e53c26.1479460645.git.geliangtang@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, matthias.bgg@gmail.com
+To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Geliang Tang <geliangtang@gmail.com>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-The probe function requests the interrupt before initializing
-the ddp component. Which leads to a null pointer dereference at boot.
-Fix this by requesting the interrput after all components got
-initialized properly.
+Use ERR_CAST inlined function instead of ERR_PTR(PTR_ERR(...)).
 
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC
-MT8173.")
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Geliang Tang <geliangtang@gmail.com>
 ---
-  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 14 +++++++-------
-  1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c 
-b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 019b7ca..1e78159 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -250,13 +250,6 @@ static int mtk_disp_ovl_probe(struct 
-platform_device *pdev)
-  	if (irq < 0)
-  		return irq;
-
--	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
--			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
--	if (ret < 0) {
--		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
--		return ret;
--	}
--
-  	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_OVL);
-  	if (comp_id < 0) {
-  		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
-@@ -272,6 +265,13 @@ static int mtk_disp_ovl_probe(struct 
-platform_device *pdev)
-
-  	platform_set_drvdata(pdev, priv);
-
-+	ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
-+			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
-+	if (ret < 0) {
-+		dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
-+		return ret;
-+	}
-+
-  	ret = component_add(dev, &mtk_disp_ovl_component_ops);
-  	if (ret)
-  		dev_err(dev, "Failed to add component: %d\n", ret);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 7abc550..8d25ff0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -245,7 +245,7 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
+ 
+ 	if (IS_ERR(mtk_gem))
+-		return ERR_PTR(PTR_ERR(mtk_gem));
++		return ERR_CAST(mtk_gem);
+ 
+ 	expected = sg_dma_address(sg->sgl);
+ 	for_each_sg(sg->sgl, s, sg->nents, i) {
 -- 
-2.10.1
+2.9.3
