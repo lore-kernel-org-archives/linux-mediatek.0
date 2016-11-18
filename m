@@ -1,35 +1,80 @@
-From: Geliang Tang <geliangtang@gmail.com>
-Subject: [PATCH] pinctrl: mediatek: use builtin_platform_driver
-Date: Fri, 18 Nov 2016 22:12:29 +0800
-Message-ID: <70fcc58b7e9219a9fbe3695df927041b8234dd08.1479457060.git.geliangtang@gmail.com>
-References: <7746cfe83ca3e96ccdf503669db3ace0e3081b7f.1479455552.git.geliangtang@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 3/3] [media] mtk-mdp: mark PM functions as __maybe_unused
+Date: Fri, 18 Nov 2016 17:16:06 +0100
+Message-ID: <20161118161621.798004-3-arnd@arndb.de>
+References: <20161118161621.798004-1-arnd@arndb.de>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <7746cfe83ca3e96ccdf503669db3ace0e3081b7f.1479455552.git.geliangtang@gmail.com>
+In-Reply-To: <20161118161621.798004-1-arnd@arndb.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, Paul Gortmaker <paul.gortmaker@windriver.com>
-Cc: Geliang Tang <geliangtang@gmail.com>, linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Use builtin_platform_driver() helper to simplify the code.
+The driver still produces a warning when CONFIG_PM is disabled, an
+earlier fix only partially solved this:
 
-Signed-off-by: Geliang Tang <geliangtang@gmail.com>
+media/platform/mtk-mdp/mtk_mdp_core.c:72:13: error: 'mtk_mdp_clock_off' defined but not used [-Werror=unused-function]
+media/platform/mtk-mdp/mtk_mdp_core.c:63:13: error: 'mtk_mdp_clock_on' defined but not used [-Werror=unused-function]
+
+This removes the incorrect #ifdef again and instead marks the PM
+functions as __maybe_unused, which reliably shuts up the warning.
+
+Fixes: 1b06fcf56aa6 ("[media] media: mtk-mdp: fix build error")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt6397.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-index 6eccb85..afcede7 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-@@ -64,8 +64,4 @@ static struct platform_driver mtk_pinctrl_driver = {
- 	},
- };
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 51f2b50e406f..9e4eb7dcc424 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -234,8 +234,7 @@ static int mtk_mdp_remove(struct platform_device *pdev)
+ 	return 0;
+ }
  
--static int __init mtk_pinctrl_init(void)
--{
--	return platform_driver_register(&mtk_pinctrl_driver);
--}
--device_initcall(mtk_pinctrl_init);
-+builtin_platform_driver(mtk_pinctrl_driver);
+-#ifdef CONFIG_PM
+-static int mtk_mdp_pm_suspend(struct device *dev)
++static int __maybe_unused mtk_mdp_pm_suspend(struct device *dev)
+ {
+ 	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
+ 
+@@ -244,7 +243,7 @@ static int mtk_mdp_pm_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int mtk_mdp_pm_resume(struct device *dev)
++static int __maybe_unused mtk_mdp_pm_resume(struct device *dev)
+ {
+ 	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
+ 
+@@ -252,10 +251,8 @@ static int mtk_mdp_pm_resume(struct device *dev)
+ 
+ 	return 0;
+ }
+-#endif /* CONFIG_PM */
+ 
+-#ifdef CONFIG_PM_SLEEP
+-static int mtk_mdp_suspend(struct device *dev)
++static int __maybe_unused mtk_mdp_suspend(struct device *dev)
+ {
+ 	if (pm_runtime_suspended(dev))
+ 		return 0;
+@@ -263,14 +260,13 @@ static int mtk_mdp_suspend(struct device *dev)
+ 	return mtk_mdp_pm_suspend(dev);
+ }
+ 
+-static int mtk_mdp_resume(struct device *dev)
++static int __maybe_unused mtk_mdp_resume(struct device *dev)
+ {
+ 	if (pm_runtime_suspended(dev))
+ 		return 0;
+ 
+ 	return mtk_mdp_pm_resume(dev);
+ }
+-#endif /* CONFIG_PM_SLEEP */
+ 
+ static const struct dev_pm_ops mtk_mdp_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(mtk_mdp_suspend, mtk_mdp_resume)
 -- 
-2.9.3
+2.9.0
