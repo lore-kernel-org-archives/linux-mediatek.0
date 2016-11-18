@@ -1,63 +1,55 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v5] drm/mediatek: fixed the calc method of data rate per
- lane
-Date: Fri, 18 Nov 2016 13:17:35 +0800
-Message-ID: <1479446255.24375.3.camel@mtksdaap41>
-References: <1479266454-31892-1-git-send-email-jitao.shi@mediatek.com>
- <1479361006.13083.7.camel@mtksdaap41>
- <CAGS+omBpdRH5ZnvcApX_pevwSBHwUon77DhhjX0p9aQXuOy4DA@mail.gmail.com>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL] arm: mediatek: dts changes for v4.10
+Date: Thu, 17 Nov 2016 23:45:45 -0800
+Message-ID: <20161118074545.GS1785@localhost>
+References: <c148f205-79fc-3578-84db-cce4063e42ec@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <CAGS+omBpdRH5ZnvcApX_pevwSBHwUon77DhhjX0p9aQXuOy4DA@mail.gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, stonea168@163.com, dri-devel <dri-devel@lists.freedesktop.org>, Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?= <yingjoe.chen@mediatek.com>, Ajay Kumar <ajaykumar.rs@samsung.com>, Vincent Palatin <vpalatin@chromium.org>, cawa cheng <cawa.cheng@mediatek.com>, Russell King <rmk+kernel@arm.linux.org.uk>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, Andy Yan <andy.yan@rock-chips.com>, Matthias Brugger <matthias.bgg@gmail.com>, Eddie Huang =?UTF-8?Q?=28=E9=BB=83=E6=99=BA=E5=82=91=29?= <eddie.huang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.o>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <c148f205-79fc-3578-84db-cce4063e42ec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIERhbmllbDoKCk9uIEZyaSwgMjAxNi0xMS0xOCBhdCAxMToyMiArMDgwMCwgRGFuaWVsIEt1
-cnR6IHdyb3RlOgo+IEhpIENLLAo+IAo+IE9uIFRodSwgTm92IDE3LCAyMDE2IGF0IDE6MzYgUE0s
-IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+IHdyb3RlOgo+ID4gSGksIEppdGFvOgo+ID4KPiA+
-Cj4gPiBPbiBXZWQsIDIwMTYtMTEtMTYgYXQgMTE6MjAgKzA4MDAsIEppdGFvIFNoaSB3cm90ZToK
-PiA+PiBUdW5lIGRzaSBmcmFtZSByYXRlIGJ5IHBpeGVsIGNsb2NrLCBkc2kgYWRkIHNvbWUgZXh0
-cmEgc2lnbmFsIChpLmUuCj4gPj4gVGxweCwgVGhzLXByZXBhcmUsIFRocy16ZXJvLCBUaHMtdHJh
-aWwsVGhzLWV4aXQpIHdoZW4gZW50ZXIgYW5kIGV4aXQgTFAKPiA+PiBtb2RlLCB0aG9zZSBzaWdu
-YWxzIHdpbGwgY2F1c2UgaC10aW1lIGxhcmdlciB0aGFuIG5vcm1hbCBhbmQgcmVkdWNlIEZQUy4K
-PiA+PiBTbyBuZWVkIHRvIG11bHRpcGx5IGEgY29lZmZpY2llbnQgdG8gb2Zmc2V0IHRoZSBleHRy
-YSBzaWduYWwncyBlZmZlY3QuCj4gPj4gICBjb2VmZmljaWVudCA9ICgoaHRvdGFsKmJwcC9sYW5l
-X251bWJlcikrVGxweCtUaHNfcHJlcCtUaHNfemVybysKPiA+PiAgICAgICAgICAgICAgICBUaHNf
-dHJhaWwrVGhzX2V4aXQpLyhodG90YWwqYnBwL2xhbmVfbnVtYmVyKQo+ID4+Cj4gPj4gU2lnbmVk
-LW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+ID4KPiA+IEl0IGxv
-b2tzIGdvb2QgdG8gbWUuCj4gPiBCdXQgdGhpcyBwYXRjaCBjb25mbGljdCB3aXRoIFsxXSB3aGlj
-aCBpcyBvbmUgcGF0Y2ggb2YgTVQyNzAxIHNlcmllcy4gSQo+ID4gd2FudCB0byBhcHBseSBNVDI3
-MDEgcGF0Y2hlcyBmaXJzdCwgc28gcGxlYXNlIGhlbHAgdG8gcmVmaW5lIHRoaXMgcGF0Y2gKPiA+
-IGJhc2VkIG9uIE1UMjcwMSBwYXRjaGVzLgo+IAo+IEkgZG9uJ3QgdGhpbmsgdGhlIE1UMjcwMSBE
-U0kgcGF0Y2hlcyBhcmUgcXVpdGUgcmVhZHkgeWV0IChJIGp1c3QKPiByZXZpZXdlZCB0aGUgb25l
-IGJlbG93KS4KPiBDYW4gd2UgaW5zdGVhZCBsYW5kIEppdGFvJ3Mgc21hbGwgdGFyZ2V0ZWQgY2hh
-bmdlIGZpcnN0LCBhbmQgdGhlbgo+IHJlYmFzZSB0aGUgTVQyNzAxIHNlcmllcyBvbiB0b3AuCj4g
-Cj4gVGhhbmtzLAo+IC1EYW4KCgpNVDI3MDEgc2VyaWVzIGxvb2tzIHN0aWxsIGhhdmUgc29tZSBk
-ZWZlY3QgdG8gYmUgZml4ZWQuClRoZXJlZm9yZSwgSSB3b3VsZCBhcHBseSB0aGlzIHBhdGNoIGZp
-cnN0LgpUaGFua3MgZm9yIHlvdXIgaGVscC4KClJlZ2FyZHMsCkNLCgo+ID4KPiA+IFsxXSBodHRw
-czovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzk0MjI4MjEvCj4gPgo+ID4gUmVnYXJkcywK
-PiA+IENLCj4gPgo+ID4+IC0tLQo+ID4+IENoYW5nZSBzaW5jZSB2NDoKPiA+PiAgLSB0dW5lIHRo
-ZSBjYWxjIGNvbW1lbnQgbW9yZSBjbGVhci4KPiA+PiAgLSBkZWZpbmUgdGhlIHBoeSB0aW1pbmdz
-IGFzIGNvbnN0YW50cy4KPiA+Pgo+ID4+IENobmFnZSBzaW5jZSB2MzoKPiA+PiAgLSB3cmFwcCB0
-aGUgY29tbWl0IG1zZy4KPiA+PiAgLSBmaXggYWxpZ25tZW50IG9mIHNvbWUgbGluZXMuCj4gPj4K
-PiA+PiBDaGFuZ2Ugc2luY2UgdjI6Cj4gPj4gIC0gbW92ZSBwaHkgdGltaW5nIGJhY2sgdG8gZHNp
-X3BoeV90aW1jb25maWcuCj4gPj4KPiA+PiBDaGFuZ2Ugc2luY2UgdjE6Cj4gPj4gIC0gcGh5X3Rp
-bWluZzIgYW5kIHBoeV90aW1pbmczIHJlZmVyIGNsb2NrIGN5Y2xlIHRpbWUuCj4gPj4gIC0gZGVm
-aW5lIHZhbHVlcyBvZiBMUFggSFNfUFJQUiBIU19aRVJPIEhTX1RSQUlMIFRBX0dPIFRBX1NVUkUg
-VEFfR0VUIERBX0hTX0VYSVQuCj4gPj4gLS0tCj4gPj4KPiA+CgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmkt
-ZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsCg==
+On Mon, Nov 14, 2016 at 07:36:36PM +0100, Matthias Brugger wrote:
+> Hi Arnd and Olof,
+> 
+> although late, please pull the following changes.
+> 
+> Thanks,
+> Matthias
+> ---
+> The following changes since commit 1001354ca34179f3db924eb66672442a173147dc:
+> 
+>   Linux 4.9-rc1 (2016-10-15 12:17:50 -0700)
+> 
+> are available in the git repository at:
+> 
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-dts
+> 
+> for you to fetch changes up to 28d6e3647bd7c869bfc251f9a7e283d78cef5fc5:
+> 
+>   arm: dts: mt2701: Use real clock for UARTs (2016-11-11 15:25:09 +0100)
+> 
+> ----------------------------------------------------------------
+> - Add bindings for mtk-scpsys for mt2701
+> - Add clocks for auxadc on mt8173-evb
+> - Add nodes needed by clock controller for mt2701
+> - Use clocks from the clock controller for the uart of mt2701
+
+
+Merged, thanks!
+
+
+-Olof
