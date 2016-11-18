@@ -1,14 +1,14 @@
 From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL] arm: mediatek: dts changes for v4.10
-Date: Thu, 17 Nov 2016 23:45:45 -0800
-Message-ID: <20161118074545.GS1785@localhost>
-References: <c148f205-79fc-3578-84db-cce4063e42ec@gmail.com>
+Subject: Re: [GIT PULL] arm: mediatek: kconfig changes for v4.10
+Date: Thu, 17 Nov 2016 23:46:33 -0800
+Message-ID: <20161118074633.GT1785@localhost>
+References: <b9bf2483-533d-ffd1-b23f-d89d20b8a73a@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <c148f205-79fc-3578-84db-cce4063e42ec-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <b9bf2483-533d-ffd1-b23f-d89d20b8a73a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
@@ -19,10 +19,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Cc: Masahiro Yamada <yamada.masahiro-uWyLwvC0a2jby3iVrkZq2A@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Nov 14, 2016 at 07:36:36PM +0100, Matthias Brugger wrote:
+On Mon, Nov 14, 2016 at 07:37:51PM +0100, Matthias Brugger wrote:
 > Hi Arnd and Olof,
 > 
 > although late, please pull the following changes.
@@ -36,20 +36,17 @@ On Mon, Nov 14, 2016 at 07:36:36PM +0100, Matthias Brugger wrote:
 > 
 > are available in the git repository at:
 > 
->   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-dts
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.9-next-kconfig
 > 
-> for you to fetch changes up to 28d6e3647bd7c869bfc251f9a7e283d78cef5fc5:
+> for you to fetch changes up to 494975c9cc00f69bf71de0991dcebda9b2911aa0:
 > 
->   arm: dts: mt2701: Use real clock for UARTs (2016-11-11 15:25:09 +0100)
+>   ARM: mediatek: clean up mach-mediatek/Makefile (2016-10-31 15:26:23 -0600)
 > 
 > ----------------------------------------------------------------
-> - Add bindings for mtk-scpsys for mt2701
-> - Add clocks for auxadc on mt8173-evb
-> - Add nodes needed by clock controller for mt2701
-> - Use clocks from the clock controller for the uart of mt2701
+> - clean up mach-mediatek Makefile as kbuild only descends into the folder if
+>   ARCH_MEDIATEK is enabled
 
-
-Merged, thanks!
+Merged, thanks.
 
 
 -Olof
