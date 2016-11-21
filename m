@@ -1,51 +1,59 @@
-From: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] pinctrl: mediatek: use builtin_platform_driver
-Date: Fri, 18 Nov 2016 15:53:20 -0800
-Message-ID: <1479513200.25135.0.camel@mussux00>
-References: <7746cfe83ca3e96ccdf503669db3ace0e3081b7f.1479455552.git.geliangtang@gmail.com>
- <70fcc58b7e9219a9fbe3695df927041b8234dd08.1479457060.git.geliangtang@gmail.com>
+From: andrew-ct chen <andrew-ct.chen@mediatek.com>
+Subject: Re: [PATCH] [media] VPU: mediatek: fix dereference of pdev before
+ checking it is null
+Date: Mon, 21 Nov 2016 19:16:29 +0800
+Message-ID: <1479726989.25126.2.camel@mtksdaap41>
+References: <20161116191650.11486-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <70fcc58b7e9219a9fbe3695df927041b8234dd08.1479457060.git.geliangtang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Geliang Tang <geliangtang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Gortmaker <paul.gortmaker-CWA4WttNNZF54TAoqtyWWQ@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20161116191650.11486-1-colin.king@canonical.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Colin King <colin.king@canonical.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, Wei Yongjun <yongjun_wei@trendmicro.com.cn>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2016-11-18 at 22:12 +0800, Geliang Tang wrote:
-> Use builtin_platform_driver() helper to simplify the code.
+On Wed, 2016-11-16 at 19:16 +0000, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> Signed-off-by: Geliang Tang <geliangtang-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> pdev is dereferenced using platform_get_drvdata before a check to
+> see if it is null, hence there could be a potential null pointer
+> dereference issue. Instead, first check if pdev is null and only then
+> deference pdev when initializing vpu.
+> 
+> Found with static analysis by CoverityScan, CID 1357797
+> 
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mt6397.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
+
+Reviewed-by: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+
+>  drivers/media/platform/mtk-vpu/mtk_vpu.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> index 6eccb85..afcede7 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-> @@ -64,8 +64,4 @@ static struct platform_driver mtk_pinctrl_driver = {
->  	},
->  };
+> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> index c9bf58c..41f31b2 100644
+> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> @@ -523,9 +523,9 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
 >  
-> -static int __init mtk_pinctrl_init(void)
-> -{
-> -	return platform_driver_register(&mtk_pinctrl_driver);
-> -}
-> -device_initcall(mtk_pinctrl_init);
-> +builtin_platform_driver(mtk_pinctrl_driver);
-
-Acked-by: Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Thanks,
-Hongzhou
+>  int vpu_load_firmware(struct platform_device *pdev)
+>  {
+> -	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+> +	struct mtk_vpu *vpu;
+>  	struct device *dev = &pdev->dev;
+> -	struct vpu_run *run = &vpu->run;
+> +	struct vpu_run *run;
+>  	const struct firmware *vpu_fw = NULL;
+>  	int ret;
+>  
+> @@ -533,6 +533,8 @@ int vpu_load_firmware(struct platform_device *pdev)
+>  		dev_err(dev, "VPU platform device is invalid\n");
+>  		return -EINVAL;
+>  	}
+> +	vpu = platform_get_drvdata(pdev);
+> +	run = &vpu->run;
+>  
+>  	mutex_lock(&vpu->vpu_mutex);
+>  	if (vpu->fw_loaded) {
