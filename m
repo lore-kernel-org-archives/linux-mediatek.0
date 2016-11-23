@@ -1,64 +1,63 @@
-From: Rick Chang <rick.chang@mediatek.com>
-Subject: Re: [PATCH v6 3/3] arm: dts: mt2701: Add node for Mediatek JPEG
- Decoder
-Date: Wed, 23 Nov 2016 17:43:23 +0800
-Message-ID: <1479894203.8964.29.camel@mtksdaap41>
-References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
-         <1479353915-5043-4-git-send-email-rick.chang@mediatek.com>
-         <d602365a-e87b-5bae-8698-bd43063ef079@xs4all.nl>
-         <1479784905.8964.15.camel@mtksdaap41>
-         <badf8125-27ed-9c5b-fbc0-75716ffdfb0e@xs4all.nl>
-         <1479866054.8964.21.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 6/6] pinctrl: mt8173: set GPIO16 to usb iddig mode
+Date: Wed, 23 Nov 2016 19:32:48 +0100
+Message-ID: <42f5df18-2edd-08f2-a833-9c92ac85e87c@gmail.com>
+References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1462868614-20602-7-git-send-email-chunfeng.yun@mediatek.com>
+ <CACRpkdaeD5mk7LXEWnE0=Xute8-JA-fa4tVt4fYhujEXeq2+9w@mail.gmail.com>
+ <1462991546.11623.3.camel@mussux00> <1463017282.11651.82.camel@mhfsdcap03>
+ <1463018942.1608.5.camel@mussux00> <1463021701.25171.5.camel@mussux00>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479866054.8964.21.camel@mtksdaap41>
+In-Reply-To: <1463021701.25171.5.camel@mussux00>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+To: Hongzhou Yang <hongzhou.yang@mediatek.com>, chunfeng yun <chunfeng.yun@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Maoguang Meng <maoguang.meng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Biao Huang <biao.huang@mediatek.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-kernel@vger.kernel
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2016-11-23 at 09:54 +0800, Rick Chang wrote:
-> Hi Hans,
-> 
-> On Tue, 2016-11-22 at 13:43 +0100, Hans Verkuil wrote:
-> > On 22/11/16 04:21, Rick Chang wrote:
-> > > Hi Hans,
-> > >
-> > > On Mon, 2016-11-21 at 15:51 +0100, Hans Verkuil wrote:
-> > >> On 17/11/16 04:38, Rick Chang wrote:
-> > >>> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
-> > >>> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> > >>> ---
-> > >>> This patch depends on:
-> > >>>   CCF "Add clock support for Mediatek MT2701"[1]
-> > >>>   iommu and smi "Add the dtsi node of iommu and smi for mt2701"[2]
-> > >>>
-> > >>> [1] http://lists.infradead.org/pipermail/linux-mediatek/2016-October/007271.html
-> > >>> [2] https://patchwork.kernel.org/patch/9164013/
-> > >>
-> > >> I assume that 1 & 2 will appear in 4.10? So this patch needs to go in
-> > >> after the
-> > >> other two are merged in 4.10?
-> > >>
-> > >> Regards,
-> > >>
-> > >> 	Hans
-> > >
-> > > [1] will appear in 4.10, but [2] will appear latter than 4.10.So this
-> > > patch needs to go in after [1] & [2] will be merged in 4.11.
-> > 
-> > So what should I do? Merge the driver for 4.11 and wait with this patch
-> > until [2] is merged in 4.11? Does that sound reasonable?
-> > 
-> > Regards,
-> > 
-> > 	Hans
-> 
-> What do you think about this? You merge the driver first and I send this
-> patch again after [1] & [2] is merged.
+Hi Hongzhou,
 
-BTW, to prevent merging conflict, the dtsi should be merged by mediatek
-SoC maintainer, Matthias.I think we can only take care on the driver
-part at this moment.
+On 12/05/16 04:55, Hongzhou Yang wrote:
+> On Wed, 2016-05-11 at 19:09 -0700, Hongzhou Yang wrote:
+>> On Thu, 2016-05-12 at 09:41 +0800, chunfeng yun wrote:
+>>> Hi,
+>>>
+>>> On Wed, 2016-05-11 at 11:32 -0700, Hongzhou Yang wrote:
+>>>> On Wed, 2016-05-11 at 13:56 +0200, Linus Walleij wrote:
+>>>>> On Tue, May 10, 2016 at 10:23 AM, Chunfeng Yun
+>>>>> <chunfeng.yun@mediatek.com> wrote:
+>>>>>
+>>>>>> the default mode of GPIO16 pin is gpio, when set EINT16 to
+>>>>>> IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
+>>>>>> fixed when set its default mode as usb iddig.
+>>>>>>
+>>>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>>>>
+>>>>
+>>>> Chunfeng, GPIO16 can be used as EINT16 mode, but the pinmux should be 0.
+>>>> If you want to set its default mode to iddig, you should set it in dts.
+>>>>
+>>> I set it in DTS, but it didn't work, because when usb driver requested
+>>> IRQ, pinmux was switched back to default mode set by
+>>> MTK_EINT_FUNCTION().
+>>>
+>>
+>> After confirmed, there are something wrong with data sheet and pinmux
+>> table, and GPIO16 can only receive interrupt by mode 1. So
+>>
+>> Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+>>
+>
+> Linus,
+>
+> We find there are some other pins still have the same problem, so please
+> hold on it. Sorry for so much noise.
+>
+
+Did you made any progress on this? I didn't see any patch on the mailing 
+list.
+
+Regards,
+Matthias
