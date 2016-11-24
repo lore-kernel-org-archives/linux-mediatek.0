@@ -1,63 +1,50 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 6/6] pinctrl: mt8173: set GPIO16 to usb iddig mode
-Date: Wed, 23 Nov 2016 19:32:48 +0100
-Message-ID: <42f5df18-2edd-08f2-a833-9c92ac85e87c@gmail.com>
-References: <1462868614-20602-1-git-send-email-chunfeng.yun@mediatek.com>
- <1462868614-20602-7-git-send-email-chunfeng.yun@mediatek.com>
- <CACRpkdaeD5mk7LXEWnE0=Xute8-JA-fa4tVt4fYhujEXeq2+9w@mail.gmail.com>
- <1462991546.11623.3.camel@mussux00> <1463017282.11651.82.camel@mhfsdcap03>
- <1463018942.1608.5.camel@mussux00> <1463021701.25171.5.camel@mussux00>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: Re: [PATCH v7 4/4] vcodec: mediatek: Add Maintainers entry for
+ Mediatek JPEG driver
+Date: Thu, 24 Nov 2016 10:53:48 +0800
+Message-ID: <1479956028.8964.33.camel@mtksdaap41>
+References: <1479786377-11567-1-git-send-email-rick.chang@mediatek.com>
+         <1479786377-11567-5-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1463021701.25171.5.camel@mussux00>
+In-Reply-To: <1479786377-11567-5-git-send-email-rick.chang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hongzhou Yang <hongzhou.yang@mediatek.com>, chunfeng yun <chunfeng.yun@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Maoguang Meng <maoguang.meng@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mathias Nyman <mathias.nyman@intel.com>, Alan Stern <stern@rowland.harvard.edu>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>, Pawel Moll <pawel.moll@arm.com>, Kumar Gala <galak@codeaurora.org>, Sascha Hauer <s.hauer@pengutronix.de>, Biao Huang <biao.huang@mediatek.com>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-kernel@vger.kernel
+To: Hans Verkuil <hans.verkuil@cisco.com>
+Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hongzhou,
+Hi Hans,
 
-On 12/05/16 04:55, Hongzhou Yang wrote:
-> On Wed, 2016-05-11 at 19:09 -0700, Hongzhou Yang wrote:
->> On Thu, 2016-05-12 at 09:41 +0800, chunfeng yun wrote:
->>> Hi,
->>>
->>> On Wed, 2016-05-11 at 11:32 -0700, Hongzhou Yang wrote:
->>>> On Wed, 2016-05-11 at 13:56 +0200, Linus Walleij wrote:
->>>>> On Tue, May 10, 2016 at 10:23 AM, Chunfeng Yun
->>>>> <chunfeng.yun@mediatek.com> wrote:
->>>>>
->>>>>> the default mode of GPIO16 pin is gpio, when set EINT16 to
->>>>>> IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
->>>>>> fixed when set its default mode as usb iddig.
->>>>>>
->>>>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>>>>
->>>>
->>>> Chunfeng, GPIO16 can be used as EINT16 mode, but the pinmux should be 0.
->>>> If you want to set its default mode to iddig, you should set it in dts.
->>>>
->>> I set it in DTS, but it didn't work, because when usb driver requested
->>> IRQ, pinmux was switched back to default mode set by
->>> MTK_EINT_FUNCTION().
->>>
->>
->> After confirmed, there are something wrong with data sheet and pinmux
->> table, and GPIO16 can only receive interrupt by mode 1. So
->>
->> Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
->>
->
-> Linus,
->
-> We find there are some other pins still have the same problem, so please
-> hold on it. Sorry for so much noise.
->
+Is it possible to update this patch? or I should create another new one.
 
-Did you made any progress on this? I didn't see any patch on the mailing 
-list.
+I may need to update it.
 
-Regards,
-Matthias
+Sorry for the inconvenience.
+
+On Tue, 2016-11-22 at 11:46 +0800, Rick Chang wrote:
+> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> ---
+>  MAINTAINERS | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 93e9f42..a9e7ee0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -7818,6 +7818,13 @@ L:	netdev@vger.kernel.org
+>  S:	Maintained
+>  F:	drivers/net/ethernet/mediatek/
+>  
+> +MEDIATEK JPEG DRIVER
+> +M:	Rick Chang <rick.chang@mediatek.com>
+> +M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> +S:	Supported
+> +F:	drivers/media/platform/mtk-jpeg/
+> +F:	Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+> +
+>  MEDIATEK MEDIA DRIVER
+>  M:	Tiffany Lin <tiffany.lin@mediatek.com>
+>  M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
