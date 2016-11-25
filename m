@@ -1,50 +1,106 @@
-From: Rick Chang <rick.chang@mediatek.com>
-Subject: Re: [PATCH v7 4/4] vcodec: mediatek: Add Maintainers entry for
- Mediatek JPEG driver
-Date: Thu, 24 Nov 2016 10:53:48 +0800
-Message-ID: <1479956028.8964.33.camel@mtksdaap41>
-References: <1479786377-11567-1-git-send-email-rick.chang@mediatek.com>
-         <1479786377-11567-5-git-send-email-rick.chang@mediatek.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v10 00/13] MT2701 DRM support
+Date: Fri, 25 Nov 2016 18:34:23 +0800
+Message-ID: <1480070076-6196-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1479786377-11567-5-git-send-email-rick.chang@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hans.verkuil@cisco.com>
-Cc: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Maxime Ripard <maxime.ripard@free-electrons.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Hans,
-
-Is it possible to update this patch? or I should create another new one.
-
-I may need to update it.
-
-Sorry for the inconvenience.
-
-On Tue, 2016-11-22 at 11:46 +0800, Rick Chang wrote:
-> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> ---
->  MAINTAINERS | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 93e9f42..a9e7ee0 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -7818,6 +7818,13 @@ L:	netdev@vger.kernel.org
->  S:	Maintained
->  F:	drivers/net/ethernet/mediatek/
->  
-> +MEDIATEK JPEG DRIVER
-> +M:	Rick Chang <rick.chang@mediatek.com>
-> +M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> +S:	Supported
-> +F:	drivers/media/platform/mtk-jpeg/
-> +F:	Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
-> +
->  MEDIATEK MEDIA DRIVER
->  M:	Tiffany Lin <tiffany.lin@mediatek.com>
->  M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+VGhpcyBpcyBNVDI3MDEgRFJNIHN1cHBvcnQgUEFUQ0ggdjEwLCBiYXNlZCBvbiA0LjktcmMxLgpX
+ZSBhZGQgRFNJIGludGVycnVwdCBjb250cm9sLCB0cmFuc2ZlciBmdW5jdGlvbiBmb3IgTUlQSSBE
+U0kgcGFuZWwgc3VwcG9ydC4KTW9zdCBjb2RlcyBhcmUgdGhlIHNhbWUsIGV4Y2VwdCBzb21lIHJl
+Z2lzdGVyIGNoYW5nZWQuCgpGb3IgZXhhbXBsZToKIC0gRElTUF9PVkwgYWRkcmVzcyBvZmZzZXQg
+Y2hhbmdlZCwgY29sb3IgZm9ybWF0IGRlZmluaXRpb24gY2hhbmdlZC4KIC0gRElTUF9SRE1BIGZp
+Zm8gc2l6ZSBjaGFuZ2VkLgogLSBESVNQX0NPTE9SIG9mZnNldCBjaGFuZ2VkLgogLSBNSVBJX1RY
+IHNldHRpbmcgY2hhbmdlZC4KCldlIGFkZCBhIG5ldyBjb21wb25lbnQgRERQX0NPTVBPTkVOVF9C
+TFMsIGFuZCB0aGUgY29ubmVjdGlvbnMgYXJlIHVwZGF0ZWQuCk9WTCAtPiBSRE1BIC0+IENPTE9S
+IC0+IEJMUyAtPiBEU0kKUkRNQSAtPiBEUEkKQW5kIHdlIGhhdmUgc2hhZG93IHJlZ2lzdGVyIHN1
+cHBvcnQgaW4gTVQyNzAxLgoKV2UgcmVtb3ZlIGR0cyBwYXRjaCBmcm9tIHRoZSBwYXRjaCBzZXJp
+ZXMsIHdoaWNoIGRlcGVuZHMgb24gTVQyNzAxIENDRiBhbmQgc2Nwc3lzLgoKQ2hhbmdlcyBzaW5j
+ZSB2OToKLSBTcGxpdCBEU0kgcGF0Y2hlcyBpbnRvIHNtYWxsZXIgcGFydHMKLSBVc2UgYSByZWFs
+IGxpbnV4IGVycm5vIGZvciByZXR1cm4gdmFsdWUKLSBBZGQgZXJyb3IgaGFuZGxpbmcgaW4gbXRr
+X291dHB1dF9kc2lfZW5hYmxlKCkKLSBSZW1vdmUgdW51c2VkIGNoYW5nZXMgYW5kIHJlZHVuZGFu
+dCBkZWxheXMKLSBBZGQgaGVscGVycyBhbmQgbWFjcm9zIGZvciBjb25maWd1cmF0aW9uCi0gQ29t
+YmluZSAiZHJtL21lZGlhdGVrOiByZW5hbWUgbWFjcm9zLCBhZGQgY2hpcCBwcmVmaXgiIGFuZCAi
+ZHJtL21lZGlhdGVrOiBhZGQgKmRyaXZlcl9kYXRhIGZvciBkaWZmZXJlbnQgaGFyZHdhcmUgc2V0
+dGluZyIKCkNoYW5nZXMgc2luY2Ugdjg6Ci0gZW5hYmxlIDMgRFNJIGludGVycnVwdHMgb25seQot
+IG1vdmUgbXRrX2RzaV93YWl0X2Zvcl9pcnFfZG9uZSgpIHRvIHRoZSBwYXRjaCBvZiBpcnEgY29u
+dHJvbAotIHVzZSB0aGUgbmFtZSBCTFMgaW4gRFJNIGRyaXZlciBwYXJ0Ci0gbW92ZSBCTFMgZGVj
+bGFyYXRpb24gdG8gYSBzZXBhcmF0ZSBwYXRjaAotIHVwZGF0ZSBtdGtfZHNpX3N3aXRjaF90b19j
+bWRfbW9kZSgpCi0gdXBkYXRlIG10a19vdXRwdXRfZHNpX2VuYWJsZSgpIGFuZCBtdGtfb3V0cHV0
+X2RzaV9kaXNhYmxlKCkKCkNoYW5nZXMgc2luY2Ugdjc6Ci0gUmVtb3ZlIHJlZHVuZGFudCBjb2Rl
+cwotIE1vdmUgdGhlIGRlZmluaXRpb24gb2YgRERQX0NPTVBPTkVOVF9CTFMgdG8gcGF0Y2ggb2Yg
+ImRybS9tZWRpYXRlazogdXBkYXRlIGRpc3BsYXkgbW9kdWxlIGNvbm5lY3Rpb25zIgotIE1vdmUg
+X2RzaV9pcnFfd2FpdF9xdWV1ZSBpbnRvIHBsYXRmb3JtIGRyaXZlciBkYXRhCi0gTW92ZSBtdGtf
+ZHNpX2lycV9kYXRhX2NsZWFyKCkgdG8gcGF0Y2ggb2YgImRybS9tZWRpYXRlazogYWRkIGRzaSBp
+bnRlcnJ1cHQgY29udHJvbCIKLSBBZGQgbW9yZSBkZXNjcmlwdGlvbnMgaW4gdGhlIGNvbW1pdCBt
+ZXNzYWdlcwoKQ2hhbmdlcyBzaW5jZSB2NjoKLSBDaGFuZ2UgZGF0YSB0eXBlIG9mIGlycV9kYXRh
+IHRvIHUzMgotIFJld3JpdGUgbXRrX2RzaV9ob3N0X3RyYW5zZmVyKCkgZm9yIHNpbXBsaWZ5Ci0g
+TW92ZSBzb21lIE1JUElfVFggY29uZmlnIHRvIHBhdGNoIG9mICJkcm0vbWVkaWF0ZWs6IGFkZCAq
+ZHJpdmVyX2RhdGEgZm9yIGRpZmZlcmVudCBoYXJkd2FyZSBzZXR0aW5ncyIuCi0gUmVtb3ZlIGRl
+dmljZSB0cmVlIGZyb20gdGhpcyBwYXRjaCBzZXJpZXMKCkNoYW5nZXMgc2luY2UgdjU6Ci0gUmVt
+b3ZlIERQSSBkZXZpY2UgdHJlZSBhbmQgY29tcGF0aWJsZSBzdHJpbmcKLSBVc2Ugb25lIHdhaXQg
+cXVldWUgdG8gaGFuZGxlIGludGVycnVwdCBzdGF0dXMKLSBVcGRhdGUgdGhlIGludGVycnVwdCBj
+aGVjayBmbG93IGFuZCBEU0lfSU5UX0FMTF9CSVRTCi0gVXNlIHNhbWUgZnVuY3Rpb24gZm9yIGhv
+c3QgcmVhZC93cml0ZSBjb21tYW5kCi0gdmFyaW91cyBmaXhlcwoKQ2hhbmdlcyBzaW5jZSB2NDoK
+LSBBZGQgbWVzc2FnZXMgd2hlbiB0aW1lb3V0IGluIG10a19kaXNwX211dGV4X2FjcXVpcmUoKQot
+IEFkZCBkZXNjcmlwdGlvbnMgZm9yIERJU1BfUkVHX01VVEVYIHJlZ2lzdGVycwotIE1vdmUgY29u
+bmVjdGlvbiBzZXR0aW5ncyBmb3IgZGlzcGxheSBtb2R1bGVzIHRvIGEgc2VwYXJhdGUgcGF0Y2gK
+LSBSZW1vdmUgJ210MjcwMS1kaXNwLXdkbWEnIGJlY2F1c2UgaXQgaXMgdW51c2VkCi0gTW92ZSBj
+bGVhbmluZyB1cCBhbmQgcmVuYW1pbmcgdG8gYSBzZXBhcmF0ZSBwYXRjaAotIFVzZSB3YWl0X2V2
+ZW50X2ludGVycnVwdGlibGVfdGltZW91dCgpIHRvIHJlcGxhY2UgcG9sbGluZwotIFJlbW92ZSBp
+cnFfbnVtIGZyb20gbXRrX2RzaSBzdHJ1Y3R1cmUKLSBSZW1vdmUgcmVkdW5kYW50IGFuZCBkZWJ1
+ZyBjb2RlcwoKQ2hhbmdlcyBzaW5jZSB2MzoKLSBBZGQgRFNJIHN1cHBvcnQgZm9yIE1JUEkgRFNJ
+IHBhbmVscwotIFVwZGF0ZSBCTFMgYmluZGluZyB0byBQV00gbm9kZXMKLSBSZW1vdmUgdWZvZSBk
+ZXZpY2Ugbm9kZXMKLSBSZW1vdmUgcmVkdW5kYW50IHBhcmVudGhlc2VzCi0gUmVtb3ZlIGdsb2Jh
+bCB2YXJpYWJsZSBpbml0aWFsaXphdGlvbgoKQ2hhbmdlcyBzaW5jZSB2MjoKLSBSZW5hbWUgbXRr
+X2RkcF9tdXhfc2VsIHRvIG10a19kZHBfc291dF9zZWwKLSBVcGRhdGUgbXQyNzAxX210a19kZHBf
+ZXh0IGNvbXBvbmVudHMKLSBDaGFuZ2VkIHRvIHByZWZpeCBuYW1pbmcKLSBSZW9yZGVyIHRoZSBw
+YXRjaCBzZXJpZXMKLSBVc2Ugb2ZfZGV2aWNlX2dldF9tYXRjaF9kYXRhKCkgdG8gZ2V0IGRyaXZl
+ciBwcml2YXRlIGRhdGEKLSBVc2UgaW9wb2xsIG1hY3JvcyB0byBpbXBsZW1lbnQgbXRrX2Rpc3Bf
+bXV0ZXhfYWNxdWlyZSgpCi0gUmVtb3ZlZCBlbXB0eSBkZXZpY2UgdHJlZSBub2RlcwoKQ2hhbmdl
+cyBzaW5jZSB2MToKLSBSZW1vdmVkIEJMUyBiaW5kaW5ncyBhbmQgY29kZXMsIHdoaWNoIGJlbG9u
+ZyB0byBwd20gZHJpdmVyCi0gTW92ZWQgbXRrX2Rpc3BfbXV0ZXhfYWNxdWlyZSgpIGp1c3QgYmVm
+b3JlIG10a19jcnRjX2RkcF9jb25maWcoKQotIFNwbGl0IHBhdGNoIGludG8gc21hbGxlciBwYXJ0
+cwotIEFkZGVkIGNvbnN0IGtleXdvcmQgdG8gY29uc3RhbnQgc3RydWN0dXJlCi0gUmVtb3ZlZCBj
+b2RlcyBmb3Igc3BlY2lhbCBtZW1vcnkgYWxpZ24KClRoYW5rcywKeXQuc2hlbgoKWVQgU2hlbiAo
+MTEpOgogIGRybS9tZWRpYXRlazogYWRkIGhlbHBlcnMgZm9yIGNvdmVydGluZyBmcm9tIHRoZSBn
+ZW5lcmljIGNvbXBvbmVudHMKICBkcm0vbWVkaWF0ZWs6IGFkZCAqZHJpdmVyX2RhdGEgZm9yIGRp
+ZmZlcmVudCBoYXJkd2FyZSBzZXR0aW5ncwogIGRybS9tZWRpYXRlazogYWRkIHNoYWRvdyByZWdp
+c3RlciBzdXBwb3J0CiAgZHJtL21lZGlhdGVrOiBhZGQgQkxTIGNvbXBvbmVudAogIGRybS9tZWRp
+YXRlazogdXBkYXRlIGRpc3BsYXkgbW9kdWxlIGNvbm5lY3Rpb25zCiAgZHJtL21lZGlhdGVrOiBj
+bGVhbmluZyB1cCBhbmQgcmVmaW5lCiAgZHJtL21lZGlhdGVrOiBhZGQgbWlwaV90eCBkYXRhIHJh
+dGUgY2hlY2sKICBkcm0vbWVkaWF0ZWs6IGFkZCBkc2kgdWxwIG1vZGUgY29udHJvbAogIGRybS9t
+ZWRpYXRlazogYWRkIGRzaSByeHR4IGNvbnRyb2wKICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBEU0kg
+c3ViIGRyaXZlciBmbG93IGZvciBzZW5kaW5nIGNvbW1hbmRzIHRvIHBhbmVsCiAgZHJtL21lZGlh
+dGVrOiBhZGQgc3VwcG9ydCBmb3IgTWVkaWF0ZWsgU29DIE1UMjcwMQoKc2hhb21pbmcgY2hlbiAo
+Mik6CiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIGludGVycnVwdCBjb250cm9sCiAgZHJtL21lZGlh
+dGVrOiBhZGQgZHNpIHRyYW5zZmVyIGZ1bmN0aW9uCgogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX292bC5jICAgICB8ICA2NCArKystLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX3JkbWEuYyAgICB8ICAzOSArKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2NydGMuYyAgICAgfCAgNzYgKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2RkcC5jICAgICAgfCAxMzggKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kZHAuaCAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHJtX2RkcF9jb21wLmMgfCAgNDEgKystCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kZHBfY29tcC5oIHwgICA3ICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2Rydi5jICAgICAgfCAgNTQgKysrLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+ZHJ2LmggICAgICB8ICAgOSArCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAg
+ICAgICAgIHwgNDMwICsrKysrKysrKysrKysrKysrKysrKysrKy0tLS0KIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgfCAgNDIgKystCiAxMSBmaWxlcyBjaGFuZ2Vk
+LCA3MzcgaW5zZXJ0aW9ucygrKSwgMTY1IGRlbGV0aW9ucygtKQoKLS0gCjEuOS4xCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVl
+ZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
