@@ -1,45 +1,70 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [RESEND PATCH] pinctrl: mt8173: set GPIO16 to usb iddig mode
-Date: Wed, 30 Nov 2016 10:21:31 +0800
-Message-ID: <1480472491-4644-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Rick Chang <rick.chang@mediatek.com>
+Subject: [PATCH v8 1/4] dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+Date: Wed, 30 Nov 2016 11:08:57 +0800
+Message-ID: <1480475340-21893-2-git-send-email-rick.chang@mediatek.com>
+References: <1480475340-21893-1-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Courbot <gnurou-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Biao Huang <biao.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Hongzhou Yang <hongzhou.yang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <1480475340-21893-1-git-send-email-rick.chang@mediatek.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Rick Chang <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-the default mode of GPIO16 pin is gpio, when set EINT16 to
-IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
-fixed when set its default mode as usb iddig.
+Add a DT binding documentation for Mediatek JPEG Decoder of
+MT2701 SoC.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/media/mediatek-jpeg-decoder.txt       | 37 ++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-index 13e5b68..9b018fd 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-@@ -201,7 +201,7 @@
- 	MTK_PIN(
- 		PINCTRL_PIN(16, "IDDIG"),
- 		NULL, "mt8173",
--		MTK_EINT_FUNCTION(0, 16),
-+		MTK_EINT_FUNCTION(1, 16),
- 		MTK_FUNCTION(0, "GPIO16"),
- 		MTK_FUNCTION(1, "IDDIG"),
- 		MTK_FUNCTION(2, "CMFLASH"),
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+new file mode 100644
+index 0000000..3813947
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+@@ -0,0 +1,37 @@
++* Mediatek JPEG Decoder
++
++Mediatek JPEG Decoder is the JPEG decode hardware present in Mediatek SoCs
++
++Required properties:
++- compatible : must be one of the following string:
++	"mediatek,mt8173-jpgdec"
++	"mediatek,mt2701-jpgdec"
++- reg : physical base address of the jpeg decoder registers and length of
++  memory mapped region.
++- interrupts : interrupt number to the interrupt controller.
++- clocks: device clocks, see
++  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
++- clock-names: must contain "jpgdec-smi" and "jpgdec".
++- power-domains: a phandle to the power domain, see
++  Documentation/devicetree/bindings/power/power_domain.txt for details.
++- mediatek,larb: must contain the local arbiters in the current Socs, see
++  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
++  for details.
++- iommus: should point to the respective IOMMU block with master port as
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  for details.
++
++Example:
++	jpegdec: jpegdec@15004000 {
++		compatible = "mediatek,mt2701-jpgdec";
++		reg = <0 0x15004000 0 0x1000>;
++		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
++		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
++			  <&imgsys CLK_IMG_JPGDEC>;
++		clock-names = "jpgdec-smi",
++			      "jpgdec";
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
++		mediatek,larb = <&larb2>;
++		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
++			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
++	};
 -- 
-1.7.9.5
+1.9.1
