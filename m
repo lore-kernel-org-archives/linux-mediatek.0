@@ -1,51 +1,35 @@
-From: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v8 4/4] vcodec: mediatek: Add Maintainers entry for Mediatek
- JPEG driver
-Date: Wed, 30 Nov 2016 11:09:00 +0800
-Message-ID: <1480475340-21893-5-git-send-email-rick.chang@mediatek.com>
-References: <1480475340-21893-1-git-send-email-rick.chang@mediatek.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH net 00/16] net: fix fixed-link phydev leaks
+Date: Tue, 29 Nov 2016 23:17:21 -0500 (EST)
+Message-ID: <20161129.231721.971587311467577164.davem@davemloft.net>
+References: <1480357509-28074-1-git-send-email-johan@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1480475340-21893-1-git-send-email-rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <1480357509-28074-1-git-send-email-johan@kernel.org>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: johan@kernel.org
+Cc: vbridger@opensource.altera.com, f.fainelli@gmail.com, fugang.duan@nxp.com, pantelis.antoniou@gmail.com, vbordug@ru.mvista.com, claudiu.manoil@freescale.com, leoli@freescale.com, thomas.petazzoni@free-electrons.com, nbd@openwrt.org, blogic@openwrt.org, matthias.bgg@gmail.com, sergei.shtylyov@cogentembedded.com, lars.persson@axis.com, mugunthanvnm@ti.com, grygorii.strashko@ti.com, robh+dt@kernel.org, frowand.list@gmail.com, andrew@lunn.ch, vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org, nios2-dev@lists.rocketboards.org, linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-omap@vger.kernel.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+From: Johan Hovold <johan@kernel.org>
+Date: Mon, 28 Nov 2016 19:24:53 +0100
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 93e9f42..6f68fb6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -7818,6 +7818,13 @@ L:	netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
- S:	Maintained
- F:	drivers/net/ethernet/mediatek/
- 
-+MEDIATEK JPEG DRIVER
-+M:	Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+M:	Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-+S:	Supported
-+F:	drivers/media/platform/mtk-jpeg/
-+F:	Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
-+
- MEDIATEK MEDIA DRIVER
- M:	Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
- M:	Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
--- 
-1.9.1
+> This series fixes failures to deregister and free fixed-link phydevs
+> that have been registered using the of_phy_register_fixed_link()
+> interface.
+> 
+> All but two drivers currently fail to do this and this series fixes most
+> of them with the exception of a staging driver and the stmmac drivers
+> which will be fixed by follow-on patches.
+> 
+> Included are also a couple of fixes for related of-node leaks.
+> 
+> Note that all patches except the of_mdio one have been compile-tested
+> only.
+> 
+> Also note that the series is against net due to dependencies not yet in
+> net-next.
+
+Series applied, thanks Johan.
