@@ -1,46 +1,62 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v10 09/13] drm/mediatek: add mipi_tx data rate check
-Date: Wed, 30 Nov 2016 19:05:11 +0800
-Message-ID: <1480503911.13978.12.camel@mtksdaap41>
-References: <1480070076-6196-1-git-send-email-yt.shen@mediatek.com>
- <1480070076-6196-10-git-send-email-yt.shen@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/1] usb: return error code when platform_get_irq fails
+Date: Wed, 30 Nov 2016 14:41:23 +0100
+Message-ID: <52a774c0-9bca-6d1b-a470-f07caefa5d3a@gmail.com>
+References: <1480424255-25059-1-git-send-email-bianpan2016@163.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1480070076-6196-10-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1480424255-25059-1-git-send-email-bianpan2016-9Onoh4P/yGk@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Pan Bian <bianpan2016-9Onoh4P/yGk@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKCk9uIEZyaSwgMjAxNi0xMS0yNSBhdCAxODozNCArMDgwMCwgWVQgU2hlbiB3cm90
-ZToKPiBtb2RpZnkgZGF0YSByYXRlIGxpbWl0YXRpb24gKD5sR2Jwcy9sYW5lKSBmb3IgbWlwaXR4
-Cj4gCgpJIHRoaW5rIE1UMjcwMSBEUk0gY2FuIHdvcmsgY29ycmVjdGx5IHdpdGhvdXQgdGhpcyBw
-YXRjaC4KV2h5IGRvIHlvdSBwdXQgdGhpcyBwYXRjaCBpbiBNVDI3MDEgc2VyaWVzPwpNYXliZSB5
-b3UgY2FuIHNlbmQgdGhpcyBwYXRjaCBpbmRlcGVuZGVudGx5LgoKUmVnYXJkcywKQ0sKCj4gU2ln
-bmVkLW9mZi1ieTogc2hhb21pbmcgY2hlbiA8c2hhb21pbmcuY2hlbkBtZWRpYXRlay5jb20+Cj4g
-U2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jIHwgNCArKystCj4gIDEgZmlsZSBj
-aGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX21pcGlfdHguYwo+IGluZGV4IGZkODQ5MTQuLjFlZjAwYWMgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKPiArKysgYi9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYwo+IEBAIC0xNzcsNyArMTc3LDkgQEAg
-c3RhdGljIGludCBtdGtfbWlwaV90eF9wbGxfcHJlcGFyZShzdHJ1Y3QgY2xrX2h3ICpodykKPiAg
-Cj4gIAlkZXZfZGJnKG1pcGlfdHgtPmRldiwgInByZXBhcmU6ICV1IEh6XG4iLCBtaXBpX3R4LT5k
-YXRhX3JhdGUpOwo+ICAKPiAtCWlmIChtaXBpX3R4LT5kYXRhX3JhdGUgPj0gNTAwMDAwMDAwKSB7
-Cj4gKwlpZiAobWlwaV90eC0+ZGF0YV9yYXRlID4gMTI1MDAwMDAwMCkgewo+ICsJCXJldHVybiAt
-RUlOVkFMOwo+ICsJfSBlbHNlIGlmIChtaXBpX3R4LT5kYXRhX3JhdGUgPj0gNTAwMDAwMDAwKSB7
-Cj4gIAkJdHhkaXYgPSAxOwo+ICAJCXR4ZGl2MCA9IDA7Cj4gIAkJdHhkaXYxID0gMDsKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFp
-bGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5m
-cmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+
+
+On 29/11/16 13:57, Pan Bian wrote:
+> In function xhci_mtk_probe(), variable ret takes the return value. Its
+> value should be negative on failures. However, when the call to function
+> platform_get_irq() fails, it does not set the error code, and 0 will be
+> returned. 0 indicates no error. As a result, the callers of function
+> xhci_mtk_probe() will not be able to detect the error. This patch fixes
+> the bug by assigning the return value of platform_get_irq() to variable
+> ret if it fails.
+>
+> Signed-off-by: Pan Bian <bianpan2016-9Onoh4P/yGk@public.gmane.org>
+> ---
+>  drivers/usb/host/xhci-mtk.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 79959f1..f2365a4 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -560,8 +560,10 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>  		goto disable_ldos;
+>
+>  	irq = platform_get_irq(pdev, 0);
+> -	if (irq < 0)
+> +	if (irq < 0) {
+> +		ret = irq;
+>  		goto disable_clk;
+> +	}
+>
+>  	/* Initialize dma_mask and coherent_dma_mask to 32-bits */
+>  	ret = dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
+>
+
+
+Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+
+Next time please make sure to send the patch to all relevant lists and 
+people (get_maintainer.pl).
+
+Regards,
+Matthias
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
