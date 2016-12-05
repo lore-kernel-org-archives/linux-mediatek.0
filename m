@@ -1,66 +1,75 @@
-From: Corentin Labbe <clabbe.montjoie-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v1 1/2] Add crypto driver support for some MediaTek chips
-Date: Mon, 5 Dec 2016 09:52:20 +0100
-Message-ID: <20161205085220.GA333@Red>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 2/2] crypto: mediatek - add DT bindings documentation
+Date: Mon, 5 Dec 2016 11:18:06 +0100
+Message-ID: <4b0df417-825f-65c6-4c02-85fe1c20ce50@gmail.com>
 References: <1480921284-45827-1-git-send-email-ryder.lee@mediatek.com>
- <1480921284-45827-2-git-send-email-ryder.lee@mediatek.com>
+ <1480921284-45827-3-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1480921284-45827-2-git-send-email-ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Roy Luo <cheng-hao.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1480921284-45827-3-git-send-email-ryder.lee@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>, Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello
 
-I have two minor comment.
 
-On Mon, Dec 05, 2016 at 03:01:23PM +0800, Ryder Lee wrote:
-> This adds support for the MediaTek hardware accelerator on
-> mt7623/mt2701/mt8521p SoC.
-> 
-> This driver currently implement:
-> - SHA1 and SHA2 family(HMAC) hash alogrithms.
+On 05/12/16 08:01, Ryder Lee wrote:
+> Add DT bindings documentation for the crypto driver
+>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  .../devicetree/bindings/crypto/mediatek-crypto.txt | 32 ++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+>
+> diff --git a/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+> new file mode 100644
+> index 0000000..8b1db08
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+> @@ -0,0 +1,32 @@
+> +MediaTek cryptographic accelerators
+> +
+> +Required properties:
+> +- compatible: Should be "mediatek,mt7623-crypto"
 
-There is a typo for algorithms.
+Do you know how big the difference is between the crypto engine for 
+mt7623/mt2701/mt8521p in comparison, let's say mt8173 or mt6797?
+Do this SoCs have a crypot engine? If so and they are quite similar, we 
+might think of adding a mtk-crypto binding and add soc specific bindings.
 
-[...]
-> +/**
-> + * struct mtk_desc - DMA descriptor
-> + * @hdr:	the descriptor control header
-> + * @buf:	DMA address of input buffer segment
-> + * @ct:		DMA address of command token that control operation flow
-> + * @ct_hdr:	the command token control header
-> + * @tag:	the user-defined field
-> + * @tfm:	DMA address of transform state
-> + * @bound:	align descriptors offset boundary
-> + *
-> + * Structure passed to the crypto engine to describe where source
-> + * data needs to be fetched and how it needs to be processed.
-> + */
-> +struct mtk_desc {
-> +	u32 hdr;
-> +	u32 buf;
-> +	u32 ct;
-> +	u32 ct_hdr;
-> +	u32 tag;
-> +	u32 tfm;
-> +	u32 bound[2];
-> +};
+Regards,
+Matthias
 
-Do you have tested this descriptor with BE/LE kernel ?
-
-Regards
-Corentin Labbe
+> +- reg: Address and length of the register set for the device
+> +- interrupts: Should contain the five crypto engines interrupts in numeric
+> +	order. These are global system and four descriptor rings.
+> +- clocks: the clock used by the core
+> +- clock-names: the names of the clock listed in the clocks property. These are
+> +	"ethif", "cryp"
+> +- power-domains: Must contain a reference to the PM domain.
+> +
+> +
+> +Optional properties:
+> +- interrupt-parent: Should be the phandle for the interrupt controller
+> +  that services interrupts for this device
+> +
+> +
+> +Example:
+> +	crypto: crypto@1b240000 {
+> +		compatible = "mediatek,mt7623-crypto";
+> +		reg = <0 0x1b240000 0 0x20000>;
+> +		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
+> +			 <&ethsys CLK_ETHSYS_CRYPTO>;
+> +		clock-names = "ethif","cryp";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
+> +	};
+>
