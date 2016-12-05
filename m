@@ -1,43 +1,55 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [v2, PATCH] pinctrl: mt8173: set GPIO16 to usb iddig mode
-Date: Mon, 5 Dec 2016 09:50:34 +0800
-Message-ID: <1480902634.6851.2.camel@mhfsdcap03>
-References: <1480901933-6971-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v1 0/2] Add MediaTek crypto acclelrator driver
+Date: Mon, 5 Dec 2016 15:01:22 +0800
+Message-ID: <1480921284-45827-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1480901933-6971-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Alexandre Courbot <gnurou@gmail.com>, Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-On Mon, 2016-12-05 at 09:38 +0800, Chunfeng Yun wrote:
-> the default mode of GPIO16 pin is gpio, when set EINT16 to
-> IRQ_TYPE_LEVEL_HIGH, no interrupt is triggered, it can be
-> fixed when set its default mode as usb iddig.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Acked-by: Hongzhou Yang <hongzhou.yang@mediatek.com>
+Hello,
 
-Please ignore the v2 patch, just add Acked-by, sorry
+This adds support for the MediaTek hardware accelerator on 
+mt7623 SoC.
 
-> ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-> index 13e5b68..9b018fd 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8173.h
-> @@ -201,7 +201,7 @@
->  	MTK_PIN(
->  		PINCTRL_PIN(16, "IDDIG"),
->  		NULL, "mt8173",
-> -		MTK_EINT_FUNCTION(0, 16),
-> +		MTK_EINT_FUNCTION(1, 16),
->  		MTK_FUNCTION(0, "GPIO16"),
->  		MTK_FUNCTION(1, "IDDIG"),
->  		MTK_FUNCTION(2, "CMFLASH"),
+This driver currently implement: 
+- SHA1 and SHA2 family(HMAC) hash alogrithms.
+- AES block cipher in CBC/ECB mode with 128/196/256 bits keys.
+
+Changes since v1:
+- remove EXPORT_SYMBOL
+- remove unused PRNG setting
+- sort headers in alphabetical order
+- add a definition for IRQ unmber
+- replace ambiguous definition
+- add more annotation and function comment
+- add COMPILE_TEST in Kconfig
+
+
+Ryder Lee (2):
+  Add crypto driver support for some MediaTek chips
+  crypto: mediatek - add DT bindings documentation
+
+ .../devicetree/bindings/crypto/mediatek-crypto.txt |   32 +
+ drivers/crypto/Kconfig                             |   17 +
+ drivers/crypto/Makefile                            |    1 +
+ drivers/crypto/mediatek/Makefile                   |    2 +
+ drivers/crypto/mediatek/mtk-aes.c                  |  763 +++++++++++
+ drivers/crypto/mediatek/mtk-platform.c             |  580 ++++++++
+ drivers/crypto/mediatek/mtk-platform.h             |  235 ++++
+ drivers/crypto/mediatek/mtk-regs.h                 |  194 +++
+ drivers/crypto/mediatek/mtk-sha.c                  | 1423 ++++++++++++++++++++
+ 9 files changed, 3247 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+ create mode 100644 drivers/crypto/mediatek/Makefile
+ create mode 100644 drivers/crypto/mediatek/mtk-aes.c
+ create mode 100644 drivers/crypto/mediatek/mtk-platform.c
+ create mode 100644 drivers/crypto/mediatek/mtk-platform.h
+ create mode 100644 drivers/crypto/mediatek/mtk-regs.h
+ create mode 100644 drivers/crypto/mediatek/mtk-sha.c
+
+-- 
+1.9.1
