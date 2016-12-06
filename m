@@ -1,69 +1,48 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: Re: [PATCH v10 13/13] drm/mediatek: add support for Mediatek SoC
- MT2701
-Date: Mon, 5 Dec 2016 21:01:23 +0800
-Message-ID: <1480942883.18661.16.camel@mtksdaap41>
-References: <1480070076-6196-1-git-send-email-yt.shen@mediatek.com>
- <1480070076-6196-14-git-send-email-yt.shen@mediatek.com>
- <1be9b66b-eff2-4232-fe17-5d1735999d0b@gmail.com>
+From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 2/2] firmware: qcom: scm: Fix interrupted SCM calls
+Date: Tue, 6 Dec 2016 11:54:57 +0000
+Message-ID: <20161206115456.GC2498@arm.com>
+References: <1480405463-23165-1-git-send-email-andy.gross@linaro.org>
+ <1480405463-23165-3-git-send-email-andy.gross@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1be9b66b-eff2-4232-fe17-5d1735999d0b@gmail.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>, Jie Qiu <jie.qiu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, yingjoe.chen@mediatek.com, Dan Carpenter <dan.carpenter@oracle.com>, Jitao Shi <jitao.shi@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Maxime Ripard <maxime.ripard@free-electrons.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1480405463-23165-3-git-send-email-andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: jesper.nilsson-VrBV9hrLPhE@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, lars.persson-VrBV9hrLPhE@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, niklas.cassel-VrBV9hrLPhE@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-T24gV2VkLCAyMDE2LTExLTMwIGF0IDE1OjAzICswMTAwLCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3Rl
-Ogo+IAo+IE9uIDI1LzExLzE2IDExOjM0LCBZVCBTaGVuIHdyb3RlOgo+IAo+ID4gIHN0YXRpYyBj
-b25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kaXNwX3JkbWFfZHJpdmVyX2R0X21hdGNoW10g
-PSB7Cj4gPiArCXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtcmRtYSIsCj4g
-PiArCSAgLmRhdGEgPSAmbXQyNzAxX3JkbWFfZHJpdmVyX2RhdGF9LAo+ID4gIAl7IC5jb21wYXRp
-YmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLXJkbWEiLAo+ID4gIAkgIC5kYXRhID0gJm10ODE3
-M19yZG1hX2RyaXZlcl9kYXRhfSwKPiA+ICAJe30sCj4gCj4gWy4uLl0KPiAKPiA+ICBzdGF0aWMg
-Y29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBkZHBfZHJpdmVyX2R0X21hdGNoW10gPSB7Cj4gPiAr
-CXsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtbXV0ZXgiLCAuZGF0YSA9IG10
-MjcwMV9tdXRleF9tb2R9LAo+ID4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1k
-aXNwLW11dGV4IiwgLmRhdGEgPSBtdDgxNzNfbXV0ZXhfbW9kfSwKPiA+ICAJe30sCj4gPiAgfTsK
-PiAKPiBbLi4uXQo+IAo+ID4KPiA+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBt
-dGtfZGlzcF9jb2xvcl9kcml2ZXJfZHRfbWF0Y2hbXSA9IHsKPiA+ICsJeyAuY29tcGF0aWJsZSA9
-ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1jb2xvciIsCj4gPiArCSAgLmRhdGEgPSAmbXQyNzAxX2Nv
-bG9yX2RyaXZlcl9kYXRhfSwKPiA+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMt
-ZGlzcC1jb2xvciIsCj4gPiAgCSAgLmRhdGEgPSAmbXQ4MTczX2NvbG9yX2RyaXZlcl9kYXRhfSwK
-PiA+ICAJe30sCj4gCj4gWy4uLl0KPiAKPiA+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rldmlj
-ZV9pZCBtdGtfZHJtX29mX2lkc1tdID0gewo+ID4gKwl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVr
-LG10MjcwMS1tbXN5cyIsCj4gPiArCSAgLmRhdGEgPSAmbXQyNzAxX21tc3lzX2RyaXZlcl9kYXRh
-fSwKPiA+ICAJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtbW1zeXMiLAo+ID4gIAkg
-IC5kYXRhID0gJm10ODE3M19tbXN5c19kcml2ZXJfZGF0YX0sCj4gPiAgCXsgfQo+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gPiBpbmRleCAwNTY5ZjJlLi5mNjNjYzkxIDEwMDY0NAo+
-ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gQEAgLTEyMDMsNiArMTIwMyw3IEBA
-IHN0YXRpYyBpbnQgbXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikK
-PiA+ICB9Cj4gPgo+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kc2lf
-b2ZfbWF0Y2hbXSA9IHsKPiA+ICsJeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZHNp
-IiB9LAo+ID4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kc2kiIH0sCj4gPiAg
-CXsgfSwKPiA+ICB9Owo+IAo+IFsuLi5dCj4gCj4gPgo+ID4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-b2ZfZGV2aWNlX2lkIG10a19taXBpX3R4X21hdGNoW10gPSB7Cj4gPiArCXsgLmNvbXBhdGlibGUg
-PSAibWVkaWF0ZWssbXQyNzAxLW1pcGktdHgiLAo+ID4gKwkgIC5kYXRhID0gJm10MjcwMV9taXBp
-dHhfZGF0YSB9LAo+ID4gIAl7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1taXBpLXR4
-IiwKPiA+ICAJICAuZGF0YSA9ICZtdDgxNzNfbWlwaXR4X2RhdGEgfSwKPiA+ICAJe30sCj4gCj4g
-SSdtIG5vdCBzdXJlIGlmIEkgbWlzc2VkIHNvbWUsIGJ1dCB5b3Ugc2hvdWxkIHVwZGF0ZSB0aGUg
-YmluZGluZyAKPiBkZXNjcmlwdGlvbiBmb3IgbmV3bHkgYWRkZWQgYmluZGluZ3MuCj4gCj4gVGhh
-bmtzIGEgbG90LAo+IE1hdHRoaWFzCk9oLCB5b3UgYXJlIHJpZ2h0LiAgSSB0aG91Z2h0IHRoZXJl
-IGlzIGFscmVhZHkgc2VudCBiaW5kaW5nIGRlc2NyaXB0aW9uCmJ1dCBhY3R1YWxseSBuby4gIEkg
-d2lsbCB1cGRhdGUgdGhpcyBwYXJ0IGZvciBuZXdseSBhZGRlZCBiaW5kaW5ncy4KClRoYW5rcyBm
-b3IgaW5mb3JtaW5nLgp5dC5zaGVuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMuZnJl
-ZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGlu
-Zm8vZHJpLWRldmVsCg==
+On Tue, Nov 29, 2016 at 01:44:23AM -0600, Andy Gross wrote:
+> This patch adds a Qualcomm specific quirk to the arm_smccc_smc call.
+> 
+> On Qualcomm ARM64 platforms, the SMC call can return before it has
+> completed.  If this occurs, the call can be restarted, but it requires
+> using the returned session ID value from the interrupted SMC call.
+> 
+> The quirk stores off the session ID from the interrupted call in the
+> quirk structure so that it can be used by the caller.
+> 
+> This patch folds in a fix given by Sricharan R:
+> https://lkml.org/lkml/2016/9/28/272
+> 
+> Signed-off-by: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> ---
+>  arch/arm64/kernel/smccc-call.S |  9 ++++++++-
+>  drivers/firmware/qcom_scm-64.c | 11 +++++++++--
+>  include/linux/arm-smccc.h      | 11 ++++++++---
+>  3 files changed, 25 insertions(+), 6 deletions(-)
+
+Acked-by: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+
+Will
