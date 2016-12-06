@@ -1,75 +1,72 @@
-From: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>
+From: Andy Gross <andy.gross@linaro.org>
 Subject: Re: [PATCH 1/2] arm: kernel: Add SMC structure parameter
-Date: Tue, 6 Dec 2016 11:55:08 +0000
-Message-ID: <20161206115507.GD2498@arm.com>
+Date: Tue, 6 Dec 2016 12:01:57 -0600
+Message-ID: <20161206180157.GB2870@hector.attlocal.net>
 References: <1480405463-23165-1-git-send-email-andy.gross@linaro.org>
  <1480405463-23165-2-git-send-email-andy.gross@linaro.org>
+ <20161206115507.GD2498@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1480405463-23165-2-git-send-email-andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: jesper.nilsson-VrBV9hrLPhE@public.gmane.org, lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Srinivas Kandagatla <srinivas.kandagatla-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, lars.persson-VrBV9hrLPhE@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, niklas.cassel-VrBV9hrLPhE@public.gmane.org, ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <20161206115507.GD2498@arm.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Will Deacon <will.deacon@arm.com>
+Cc: jesper.nilsson@axis.com, lorenzo.pieralisi@arm.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux@armlinux.org.uk, matthias.bgg@gmail.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, lars.persson@axis.com, p.zabel@pengutronix.de, niklas.cassel@axis.com, ck.hu@mediatek.com, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, Bjorn Andersson <bjorn.andersson@linaro.org>, Kevin Hilman <khilman@baylibre.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andy,
-
-On Tue, Nov 29, 2016 at 01:44:22AM -0600, Andy Gross wrote:
-> This patch adds a quirk parameter to the arm_smccc_smc call.  The quirk
-> structure allows for specialized SMC operations due to SoC specific
-> requirements.
+On Tue, Dec 06, 2016 at 11:55:08AM +0000, Will Deacon wrote:
+> Hi Andy,
 > 
-> This patch also fixes up all the current users of the arm_smccc_smc API.
+> On Tue, Nov 29, 2016 at 01:44:22AM -0600, Andy Gross wrote:
+> > This patch adds a quirk parameter to the arm_smccc_smc call.  The quirk
+> > structure allows for specialized SMC operations due to SoC specific
+> > requirements.
+> > 
+> > This patch also fixes up all the current users of the arm_smccc_smc API.
+> > 
+> > This patch and partial implementation was suggested by Will Deacon.
+> > 
+> > Signed-off-by: Andy Gross <andy.gross@linaro.org>
+> > ---
+> >  arch/arm/kernel/smccc-call.S         |  3 ++-
+> >  arch/arm/mach-artpec/board-artpec6.c |  2 +-
+> >  arch/arm64/kernel/asm-offsets.c      |  7 +++++--
+> >  arch/arm64/kernel/smccc-call.S       |  3 ++-
+> >  drivers/clk/rockchip/clk-ddr.c       |  6 +++---
+> >  drivers/devfreq/rk3399_dmc.c         |  6 +++---
+> >  drivers/firmware/meson/meson_sm.c    |  2 +-
+> >  drivers/firmware/psci.c              |  2 +-
+> >  drivers/firmware/qcom_scm-64.c       |  4 ++--
+> >  drivers/gpu/drm/mediatek/mtk_hdmi.c  |  2 +-
+> >  include/linux/arm-smccc.h            | 18 ++++++++++++++++--
+> >  11 files changed, 37 insertions(+), 18 deletions(-)
 > 
-> This patch and partial implementation was suggested by Will Deacon.
+> Thanks for respinning this; I'd forgotten about it!
 > 
-> Signed-off-by: Andy Gross <andy.gross-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> ---
->  arch/arm/kernel/smccc-call.S         |  3 ++-
->  arch/arm/mach-artpec/board-artpec6.c |  2 +-
->  arch/arm64/kernel/asm-offsets.c      |  7 +++++--
->  arch/arm64/kernel/smccc-call.S       |  3 ++-
->  drivers/clk/rockchip/clk-ddr.c       |  6 +++---
->  drivers/devfreq/rk3399_dmc.c         |  6 +++---
->  drivers/firmware/meson/meson_sm.c    |  2 +-
->  drivers/firmware/psci.c              |  2 +-
->  drivers/firmware/qcom_scm-64.c       |  4 ++--
->  drivers/gpu/drm/mediatek/mtk_hdmi.c  |  2 +-
->  include/linux/arm-smccc.h            | 18 ++++++++++++++++--
->  11 files changed, 37 insertions(+), 18 deletions(-)
+> > diff --git a/arch/arm/kernel/smccc-call.S b/arch/arm/kernel/smccc-call.S
+> > index 37669e7..e77950a 100644
+> > --- a/arch/arm/kernel/smccc-call.S
+> > +++ b/arch/arm/kernel/smccc-call.S
+> > @@ -47,7 +47,8 @@ UNWIND(	.fnend)
+> >  /*
+> >   * void smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2,
+> >   *		  unsigned long a3, unsigned long a4, unsigned long a5,
+> > - *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res)
+> > + *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res,
+> > + *		  struct arm_smccc_quirk *quirk)
+> 
+> I'd not thought of doing it like this -- I envisaged embedding the quirk
+> structure into arm_smccc_res, but this works too. I wonder if we could avoid
+> having to pass NULL everywhere if we renamed arm_smccc_{hvc.smc} and added
+> a default wrapper around them?
+> 
+> For example, rename arm_smccc_smc to __arm_smccc_smc, add a macro called
+> arm_smccc_smc that passes a NULL argument for the quirk, then finally add
+> a macro arm_smccc_smc_quirk that takes the additional parameter?
 
-Thanks for respinning this; I'd forgotten about it!
+This would work pretty well.  I'll send another version with this
+implementation.
 
-> diff --git a/arch/arm/kernel/smccc-call.S b/arch/arm/kernel/smccc-call.S
-> index 37669e7..e77950a 100644
-> --- a/arch/arm/kernel/smccc-call.S
-> +++ b/arch/arm/kernel/smccc-call.S
-> @@ -47,7 +47,8 @@ UNWIND(	.fnend)
->  /*
->   * void smccc_smc(unsigned long a0, unsigned long a1, unsigned long a2,
->   *		  unsigned long a3, unsigned long a4, unsigned long a5,
-> - *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res)
-> + *		  unsigned long a6, unsigned long a7, struct arm_smccc_res *res,
-> + *		  struct arm_smccc_quirk *quirk)
-
-I'd not thought of doing it like this -- I envisaged embedding the quirk
-structure into arm_smccc_res, but this works too. I wonder if we could avoid
-having to pass NULL everywhere if we renamed arm_smccc_{hvc.smc} and added
-a default wrapper around them?
-
-For example, rename arm_smccc_smc to __arm_smccc_smc, add a macro called
-arm_smccc_smc that passes a NULL argument for the quirk, then finally add
-a macro arm_smccc_smc_quirk that takes the additional parameter?
-
-Will
+Regards,
+Andy
