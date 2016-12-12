@@ -1,99 +1,124 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v1 2/2] crypto: mediatek - add DT bindings documentation
-Date: Fri, 9 Dec 2016 10:45:00 +0100
-Message-ID: <826b263f-8963-11c9-0302-8048cd1dea8e@gmail.com>
-References: <1480921284-45827-1-git-send-email-ryder.lee@mediatek.com>
- <1480921284-45827-3-git-send-email-ryder.lee@mediatek.com>
- <4b0df417-825f-65c6-4c02-85fe1c20ce50@gmail.com>
- <1481188776.14860.26.camel@mtkswgap22>
+From: Ricky Liang <jcliang-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v8 2/4] vcodec: mediatek: Add Mediatek JPEG Decoder Driver
+Date: Mon, 12 Dec 2016 12:34:01 +0800
+Message-ID: <CAAJzSMfNyMiia==mXKo6aBw1VxMBxGE20LB870Zm1u9mCoioyQ@mail.gmail.com>
+References: <1480475340-21893-1-git-send-email-rick.chang@mediatek.com> <1480475340-21893-3-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1481188776.14860.26.camel@mtkswgap22>
+In-Reply-To: <1480475340-21893-3-git-send-email-rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Herbert Xu <herbert-lOAM2aK0SrRLBo1qDEOMRrpzq4S04n8Q@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Roy Luo <cheng-hao.luo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Rick,
 
+On Wed, Nov 30, 2016 at 11:08 AM, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> Add v4l2 driver for Mediatek JPEG Decoder
+>
+> Signed-off-by: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 
-On 08/12/16 10:19, Ryder Lee wrote:
-> Hello,
->
-> On Mon, 2016-12-05 at 11:18 +0100, Matthias Brugger wrote:
->>
->> On 05/12/16 08:01, Ryder Lee wrote:
->>> Add DT bindings documentation for the crypto driver
->>>
->>> Signed-off-by: Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>> ---
->>>  .../devicetree/bindings/crypto/mediatek-crypto.txt | 32 ++++++++++++++++++++++
->>>  1 file changed, 32 insertions(+)
->>>  create mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
->>>
->>> diff --git a/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
->>> new file mode 100644
->>> index 0000000..8b1db08
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
->>> @@ -0,0 +1,32 @@
->>> +MediaTek cryptographic accelerators
->>> +
->>> +Required properties:
->>> +- compatible: Should be "mediatek,mt7623-crypto"
->>
->> Do you know how big the difference is between the crypto engine for
->> mt7623/mt2701/mt8521p in comparison, let's say mt8173 or mt6797?
->> Do this SoCs have a crypot engine? If so and they are quite similar, we
->> might think of adding a mtk-crypto binding and add soc specific bindings.
->
-> This engine is just available in mt7623/mt2701/mt8521p series SoCs and
-> they have no difference.
->
-> But there are still other crypto IPs in MTK, i think maybe we could use
-> "mediatek,{IP name}-crypto” to distinguish them ?
->
+<snip...>
 
-Sounds good, thanks for the clarification.
+> +static bool mtk_jpeg_check_resolution_change(struct mtk_jpeg_ctx *ctx,
+> +                                            struct mtk_jpeg_dec_param *param)
+> +{
+> +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> +       struct mtk_jpeg_q_data *q_data;
+> +
+> +       q_data = &ctx->out_q;
+> +       if (q_data->w != param->pic_w || q_data->h != param->pic_h) {
+> +               v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Picture size change\n");
+> +               return true;
+> +       }
+> +
+> +       q_data = &ctx->cap_q;
+> +       if (q_data->fmt != mtk_jpeg_find_format(ctx, param->dst_fourcc,
+> +                                               MTK_JPEG_FMT_TYPE_CAPTURE)) {
+> +               v4l2_dbg(1, debug, &jpeg->v4l2_dev, "format change\n");
+> +               return true;
+> +       }
+> +       return false;
 
-Matthias
+<snip...>
 
+> +static void mtk_jpeg_device_run(void *priv)
+> +{
+> +       struct mtk_jpeg_ctx *ctx = priv;
+> +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+> +       struct vb2_buffer *src_buf, *dst_buf;
+> +       enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+> +       unsigned long flags;
+> +       struct mtk_jpeg_src_buf *jpeg_src_buf;
+> +       struct mtk_jpeg_bs bs;
+> +       struct mtk_jpeg_fb fb;
+> +       int i;
+> +
+> +       src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> +       dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> +       jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(src_buf);
+> +
+> +       if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+> +               for (i = 0; i < dst_buf->num_planes; i++)
+> +                       vb2_set_plane_payload(dst_buf, i, 0);
+> +               buf_state = VB2_BUF_STATE_DONE;
+> +               goto dec_end;
+> +       }
+> +
+> +       if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+> +               mtk_jpeg_queue_src_chg_event(ctx);
+> +               ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> +               v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> +               return;
+> +       }
 
->> Regards,
->> Matthias
->>
->>> +- reg: Address and length of the register set for the device
->>> +- interrupts: Should contain the five crypto engines interrupts in numeric
->>> +	order. These are global system and four descriptor rings.
->>> +- clocks: the clock used by the core
->>> +- clock-names: the names of the clock listed in the clocks property. These are
->>> +	"ethif", "cryp"
->>> +- power-domains: Must contain a reference to the PM domain.
->>> +
->>> +
->>> +Optional properties:
->>> +- interrupt-parent: Should be the phandle for the interrupt controller
->>> +  that services interrupts for this device
->>> +
->>> +
->>> +Example:
->>> +	crypto: crypto@1b240000 {
->>> +		compatible = "mediatek,mt7623-crypto";
->>> +		reg = <0 0x1b240000 0 0x20000>;
->>> +		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>,
->>> +			     <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>,
->>> +			     <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>,
->>> +			     <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>,
->>> +			     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>;
->>> +		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
->>> +			 <&ethsys CLK_ETHSYS_CRYPTO>;
->>> +		clock-names = "ethif","cryp";
->>> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
->>> +	};
->>>
->
->
+This only detects source change if multiple OUPUT buffers are queued.
+It does not catch the source change in the following scenario:
+
+- OUPUT buffers for jpeg1 enqueued
+- OUTPUT queue STREAMON
+- userspace creates CAPTURE buffers
+- CAPTURE buffers enqueued
+- CAPTURE queue STREAMON
+- decode
+- OUTPUT queue STREAMOFF
+- userspace recreates OUTPUT buffers for jpeg2
+- OUTPUT buffers for jpeg2 enqueued
+- OUTPUT queue STREAMON
+
+In the above sequence if jpeg2's decoded size is larger than jpeg1 the
+function fails to detect that the existing CAPTURE buffers are not big
+enough to hold the decoded data.
+
+A possible fix is to pass *dst_buf to
+mtk_jpeg_check_resolution_change(), and check in the function that all
+the dst_buf planes are large enough to hold the decoded data.
+
+> +
+> +       mtk_jpeg_set_dec_src(ctx, src_buf, &bs);
+> +       if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, dst_buf, &fb))
+> +               goto dec_end;
+> +
+> +       spin_lock_irqsave(&jpeg->hw_lock, flags);
+> +       mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+> +       mtk_jpeg_dec_set_config(jpeg->dec_reg_base,
+> +                               &jpeg_src_buf->dec_param, &bs, &fb);
+> +
+> +       mtk_jpeg_dec_start(jpeg->dec_reg_base);
+> +       spin_unlock_irqrestore(&jpeg->hw_lock, flags);
+> +       return;
+> +
+> +dec_end:
+> +       v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +       v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> +       v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf), buf_state);
+> +       v4l2_m2m_buf_done(to_vb2_v4l2_buffer(dst_buf), buf_state);
+> +       v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> +}
+
+<snip...>
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
