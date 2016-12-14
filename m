@@ -1,135 +1,191 @@
-From: Ricky Liang <jcliang@chromium.org>
-Subject: Re: [PATCH v8 2/4] vcodec: mediatek: Add Mediatek JPEG Decoder Driver
-Date: Wed, 14 Dec 2016 15:29:00 +0800
-Message-ID: <CAAJzSMca41ExE+k924D6M-1=t8v+aduTC2FwfqdpF4R32kBuGQ@mail.gmail.com>
-References: <1480475340-21893-1-git-send-email-rick.chang@mediatek.com>
- <1480475340-21893-3-git-send-email-rick.chang@mediatek.com>
- <CAAJzSMfNyMiia==mXKo6aBw1VxMBxGE20LB870Zm1u9mCoioyQ@mail.gmail.com> <1481533621.13825.2.camel@mtksdaap41>
+From: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v9 0/4] Add Mediatek JPEG Decoder
+Date: Wed, 14 Dec 2016 16:04:46 +0800
+Message-ID: <1481702690-10476-1-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1481533621.13825.2.camel@mtksdaap41>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rick Chang <rick.chang@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, open list <linux-kernel@vger.kernel.org>, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Bin Liu <bin.liu@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Bin Liu <bin.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rick,
+This series of patches provide a v4l2 driver to control Mediatek JPEG decoder
+for decoding JPEG image and Motion JPEG bitstream.
 
-Can you upload patchset v9 to address the issue? Thanks!
+changes since v8:
+- Fix state error in first bit stream when capture buffer has been stream on.
+  This will trigger device run inadvertently.
 
-On Mon, Dec 12, 2016 at 5:07 PM, Rick Chang <rick.chang@mediatek.com> wrote:
-> Hi Ricky,
->
-> Thanks for your feedback. We will fix the problem in another patch.
->
-> On Mon, 2016-12-12 at 12:34 +0800, Ricky Liang wrote:
->> Hi Rick,
->>
->> On Wed, Nov 30, 2016 at 11:08 AM, Rick Chang <rick.chang@mediatek.com> wrote:
->> > Add v4l2 driver for Mediatek JPEG Decoder
->> >
->> > Signed-off-by: Rick Chang <rick.chang@mediatek.com>
->> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
->>
->> <snip...>
->>
->> > +static bool mtk_jpeg_check_resolution_change(struct mtk_jpeg_ctx *ctx,
->> > +                                            struct mtk_jpeg_dec_param *param)
->> > +{
->> > +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
->> > +       struct mtk_jpeg_q_data *q_data;
->> > +
->> > +       q_data = &ctx->out_q;
->> > +       if (q_data->w != param->pic_w || q_data->h != param->pic_h) {
->> > +               v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Picture size change\n");
->> > +               return true;
->> > +       }
->> > +
->> > +       q_data = &ctx->cap_q;
->> > +       if (q_data->fmt != mtk_jpeg_find_format(ctx, param->dst_fourcc,
->> > +                                               MTK_JPEG_FMT_TYPE_CAPTURE)) {
->> > +               v4l2_dbg(1, debug, &jpeg->v4l2_dev, "format change\n");
->> > +               return true;
->> > +       }
->> > +       return false;
->>
->> <snip...>
->>
->> > +static void mtk_jpeg_device_run(void *priv)
->> > +{
->> > +       struct mtk_jpeg_ctx *ctx = priv;
->> > +       struct mtk_jpeg_dev *jpeg = ctx->jpeg;
->> > +       struct vb2_buffer *src_buf, *dst_buf;
->> > +       enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
->> > +       unsigned long flags;
->> > +       struct mtk_jpeg_src_buf *jpeg_src_buf;
->> > +       struct mtk_jpeg_bs bs;
->> > +       struct mtk_jpeg_fb fb;
->> > +       int i;
->> > +
->> > +       src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
->> > +       dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
->> > +       jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(src_buf);
->> > +
->> > +       if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
->> > +               for (i = 0; i < dst_buf->num_planes; i++)
->> > +                       vb2_set_plane_payload(dst_buf, i, 0);
->> > +               buf_state = VB2_BUF_STATE_DONE;
->> > +               goto dec_end;
->> > +       }
->> > +
->> > +       if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
->> > +               mtk_jpeg_queue_src_chg_event(ctx);
->> > +               ctx->state = MTK_JPEG_SOURCE_CHANGE;
->> > +               v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
->> > +               return;
->> > +       }
->>
->> This only detects source change if multiple OUPUT buffers are queued.
->> It does not catch the source change in the following scenario:
->>
->> - OUPUT buffers for jpeg1 enqueued
->> - OUTPUT queue STREAMON
->> - userspace creates CAPTURE buffers
->> - CAPTURE buffers enqueued
->> - CAPTURE queue STREAMON
->> - decode
->> - OUTPUT queue STREAMOFF
->> - userspace recreates OUTPUT buffers for jpeg2
->> - OUTPUT buffers for jpeg2 enqueued
->> - OUTPUT queue STREAMON
->>
->> In the above sequence if jpeg2's decoded size is larger than jpeg1 the
->> function fails to detect that the existing CAPTURE buffers are not big
->> enough to hold the decoded data.
->>
->> A possible fix is to pass *dst_buf to
->> mtk_jpeg_check_resolution_change(), and check in the function that all
->> the dst_buf planes are large enough to hold the decoded data.
->>
->> > +
->> > +       mtk_jpeg_set_dec_src(ctx, src_buf, &bs);
->> > +       if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, dst_buf, &fb))
->> > +               goto dec_end;
->> > +
->> > +       spin_lock_irqsave(&jpeg->hw_lock, flags);
->> > +       mtk_jpeg_dec_reset(jpeg->dec_reg_base);
->> > +       mtk_jpeg_dec_set_config(jpeg->dec_reg_base,
->> > +                               &jpeg_src_buf->dec_param, &bs, &fb);
->> > +
->> > +       mtk_jpeg_dec_start(jpeg->dec_reg_base);
->> > +       spin_unlock_irqrestore(&jpeg->hw_lock, flags);
->> > +       return;
->> > +
->> > +dec_end:
->> > +       v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
->> > +       v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
->> > +       v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf), buf_state);
->> > +       v4l2_m2m_buf_done(to_vb2_v4l2_buffer(dst_buf), buf_state);
->> > +       v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
->> > +}
->>
->> <snip...>
->
->
+changes since v7:
+- Update MAINTAINERS
+
+changes since v6:
+- fix kbuild test fail
+- Add patch for MAINTAINERS
+
+changes since v5:
+- remove redundant name from struct mtk_jpeg_fmt
+- Set state of all buffers to VB2_BUF_STATE_QUEUED if fail in start streaming
+- Remove VB2_USERPTR
+- Add check for buffer index
+
+changes since v4:
+- Change file name of binding documentation
+- Revise DT binding documentation
+- Revise compatible string
+
+changes since v3:
+- Revise DT binding documentation
+- Revise compatible string
+
+changes since v2:
+- Revise DT binding documentation 
+
+changes since v1:
+- Rebase for v4.9-rc1.
+- Update Compliance test version and result
+- Remove redundant path in Makefile
+- Fix potential build error without CONFIG_PM_RUNTIME and CONFIG_PM_SLEEP
+- Fix warnings from patch check and smatch check
+
+* Dependency
+The patch "arm: dts: mt2701: Add node for JPEG decoder" depends on: 
+  CCF "Add clock support for Mediatek MT2701"[1]
+  iommu and smi "Add the dtsi node of iommu and smi for mt2701"[2]
+
+[1] http://lists.infradead.org/pipermail/linux-mediatek/2016-October/007271.html
+[2] https://patchwork.kernel.org/patch/9164013/
+
+* Compliance test
+v4l2-compliance SHA   : 4ad7174b908a36c4f315e3fe2efa7e2f8a6f375a
+
+Driver Info:
+        Driver name   : mtk-jpeg decode
+        Card type     : mtk-jpeg decoder
+        Bus info      : platform:15004000.jpegdec
+        Driver version: 4.9.0
+        Capabilities  : 0x84204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+                Device Capabilities
+        Device Caps   : 0x04204000
+                Video Memory-to-Memory Multiplanar
+                Streaming
+                Extended Pix Format
+
+Compliance test for device /dev/video3 (not using libv4l2):
+
+Required ioctls:
+        test VIDIOC_QUERYCAP: OK
+
+Allow for multiple opens:
+        test second video open: OK
+        test VIDIOC_QUERYCAP: OK
+        test VIDIOC_G/S_PRIORITY: OK
+        test for unlimited opens: OK
+
+Debug ioctls:
+        test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+        test VIDIOC_LOG_STATUS: OK (Not Supported)
+
+Input ioctls:
+        test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+        test VIDIOC_ENUMAUDIO: OK (Not Supported)
+        test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDIO: OK (Not Supported)
+        Inputs: 0 Audio Inputs: 0 Tuners: 0
+
+Output ioctls:
+        test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+        test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+        test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+        test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+        test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+        Outputs: 0 Audio Outputs: 0 Modulators: 0
+
+Input/Output configuration ioctls:
+        test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+        test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+        test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+        test VIDIOC_G/S_EDID: OK (Not Supported)
+
+        Control ioctls:
+                test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK (Not Supported)
+                test VIDIOC_QUERYCTRL: OK (Not Supported)
+                test VIDIOC_G/S_CTRL: OK (Not Supported)
+                test VIDIOC_G/S/TRY_EXT_CTRLS: OK (Not Supported)
+                test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK (Not Supported)
+                test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+                Standard Controls: 0 Private Controls: 0
+
+        Format ioctls:
+                test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+                test VIDIOC_G/S_PARM: OK (Not Supported)
+                test VIDIOC_G_FBUF: OK (Not Supported)
+                test VIDIOC_G_FMT: OK
+                test VIDIOC_TRY_FMT: OK
+                test VIDIOC_S_FMT: OK
+                test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+                test Cropping: OK (Not Supported)
+                test Composing: OK
+                test Scaling: OK
+
+        Codec ioctls:
+                test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+                test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+                test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+        Buffer ioctls:
+                test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+                test VIDIOC_EXPBUF: OK
+
+Test input 0:
+
+
+Total: 43, Succeeded: 43, Failed: 0, Warnings: 0
+
+Rick Chang (4):
+  dt-bindings: mediatek: Add a binding for Mediatek JPEG Decoder
+  vcodec: mediatek: Add Mediatek JPEG Decoder Driver
+  arm: dts: mt2701: Add node for Mediatek JPEG Decoder
+  vcodec: mediatek: Add Maintainers entry for Mediatek JPEG driver
+
+ .../bindings/media/mediatek-jpeg-decoder.txt       |   37 +
+ MAINTAINERS                                        |    7 +
+ arch/arm/boot/dts/mt2701.dtsi                      |   14 +
+ drivers/media/platform/Kconfig                     |   15 +
+ drivers/media/platform/Makefile                    |    2 +
+ drivers/media/platform/mtk-jpeg/Makefile           |    2 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 1306 ++++++++++++++++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  139 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c      |  417 +++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h      |   91 ++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c   |  160 +++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h   |   25 +
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h     |   58 +
+ 13 files changed, 2273 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+ create mode 100644 drivers/media/platform/mtk-jpeg/Makefile
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h
+
+-- 
+1.9.1
