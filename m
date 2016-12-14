@@ -1,52 +1,51 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 2/2] crypto: mediatek - add DT bindings documentation
-Date: Tue, 13 Dec 2016 14:06:20 -0600
-Message-ID: <20161213200620.kh34dptxpdcbhkhl@rob-hp-laptop>
-References: <1481592676-2248-1-git-send-email-ryder.lee@mediatek.com>
- <1481592676-2248-3-git-send-email-ryder.lee@mediatek.com>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH] drm/mediatek: Support UYVY and YUYV format for overlay
+Date: Wed, 14 Dec 2016 13:14:33 +0800
+Message-ID: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1481592676-2248-3-git-send-email-ryder.lee@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, Dec 13, 2016 at 09:31:16AM +0800, Ryder Lee wrote:
-> Add DT bindings documentation for the crypto driver
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
->  .../devicetree/bindings/crypto/mediatek-crypto.txt | 32 ++++++++++++++++++++++
->  1 file changed, 32 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-> new file mode 100644
-> index 0000000..47a786e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
-> @@ -0,0 +1,32 @@
-> +MediaTek cryptographic accelerators
-> +
-> +Required properties:
-> +- compatible: Should be "mediatek,eip97-crypto"
-> +- reg: Address and length of the register set for the device
-> +- interrupts: Should contain the five crypto engines interrupts in numeric
-> +	order. These are global system and four descriptor rings.
-> +- clocks: the clock used by the core
-> +- clock-names: the names of the clock listed in the clocks property. These are
-> +	"ethif", "cryp"
-> +- power-domains: Must contain a reference to the PM domain.
-> +
-> +
-> +Optional properties:
-> +- interrupt-parent: Should be the phandle for the interrupt controller
-> +  that services interrupts for this device
-
-This is not optional. It's perhaps inherited from the parent. You can 
-drop it as it's implied by interrupts property.
-
-Rob
+TVQ4MTczIG92ZXJsYXkgY2FuIHN1cHBvcnQgVVlWWSBhbmQgWVVZViBmb3JtYXQsCndlIGFkZCB0
+aGUgZm9ybWF0IGluIERSTSBkcml2ZXIuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8Ymli
+YnkuaHNpZWhAbWVkaWF0ZWsuY29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZGlzcF9vdmwuYyAgfCA2ICsrKysrKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+cGxhbmUuYyB8IDIgKysKIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspCgpkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCmluZGV4IDAxOWI3Y2EuLjBhMzQwZjMgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYworKysgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKQEAgLTQ0LDYgKzQ0LDggQEAK
+ICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCODg4CSgxIDw8IDEyKQogI2RlZmluZSBPVkxfQ09O
+X0NMUkZNVF9SR0JBODg4OAkoMiA8PCAxMikKICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQVJHQjg4
+ODgJKDMgPDwgMTIpCisjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1VZVlkJKDQgPDwgMTIpCisjZGVm
+aW5lIE9WTF9DT05fQ0xSRk1UX1lVWVYJKDUgPDwgMTIpCiAjZGVmaW5lCU9WTF9DT05fQUVOCQlC
+SVQoOCkKICNkZWZpbmUJT1ZMX0NPTl9BTFBIQQkJMHhmZgogCkBAIC0xNjEsNiArMTYzLDEwIEBA
+IHN0YXRpYyB1bnNpZ25lZCBpbnQgb3ZsX2ZtdF9jb252ZXJ0KHVuc2lnbmVkIGludCBmbXQpCiAJ
+Y2FzZSBEUk1fRk9STUFUX1hCR1I4ODg4OgogCWNhc2UgRFJNX0ZPUk1BVF9BQkdSODg4ODoKIAkJ
+cmV0dXJuIE9WTF9DT05fQ0xSRk1UX1JHQkE4ODg4IHwgT1ZMX0NPTl9CWVRFX1NXQVA7CisJY2Fz
+ZSBEUk1fRk9STUFUX1lVWVY6CisJCXJldHVybiBPVkxfQ09OX0NMUkZNVF9ZVVlWOworCWNhc2Ug
+RFJNX0ZPUk1BVF9VWVZZOgorCQlyZXR1cm4gT1ZMX0NPTl9DTFJGTVRfVVlWWTsKIAl9CiB9CiAK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCmluZGV4IGM0NjFhMjMuLmI5
+NGM2ZWUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5l
+LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwpAQCAtMjgs
+NiArMjgsOCBAQAogCURSTV9GT1JNQVRfWFJHQjg4ODgsCiAJRFJNX0ZPUk1BVF9BUkdCODg4OCwK
+IAlEUk1fRk9STUFUX1JHQjU2NSwKKwlEUk1fRk9STUFUX1lVWVYsCisJRFJNX0ZPUk1BVF9VWVZZ
+LAogfTsKIAogc3RhdGljIHZvaWQgbXRrX3BsYW5lX3Jlc2V0KHN0cnVjdCBkcm1fcGxhbmUgKnBs
+YW5lKQotLSAKMS45LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9w
+Lm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1k
+ZXZlbAo=
