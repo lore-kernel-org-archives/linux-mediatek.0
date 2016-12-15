@@ -1,110 +1,62 @@
-From: Marc Kleine-Budde <mkl-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 8/8] Makefile: drop -D__CHECK_ENDIAN__ from cflags
-Date: Thu, 15 Dec 2016 08:57:57 +0100
-Message-ID: <4b0172bd-2779-35b2-96af-407087db844e@pengutronix.de>
-References: <1481778865-27667-1-git-send-email-mst@redhat.com>
- <1481778865-27667-9-git-send-email-mst@redhat.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH] drm/mediatek: Support UYVY and YUYV format for overlay
+Date: Thu, 15 Dec 2016 17:08:19 +0800
+Message-ID: <CAGS+omCYjJxkfAjPHHL_rsKoOH-2-stcqx12CVTfFz=Ei60Jmg@mail.gmail.com>
+References: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4190790300631420360=="
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1481778865-27667-9-git-send-email-mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Michael S. Tsirkin" <mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, Alexander Aring <aar-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Stefan Schmidt <stefan-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-can-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-bluetooth-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, nios2-dev-g9ZBwUv/Ih/yUk5EbOjzuce+I+R0W71w@public.gmane.org, wil6210-A+ZNKFmMK5xy9aJCnZT0Uw@public.gmane.org, linux-wpan-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel <dri-devel@lists.freedesktop.org>, Mao Huang <littlecvr@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============4190790300631420360==
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature";
- boundary="20OdsOHopTjIkLdocWTx6rgi2767kTTSI"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---20OdsOHopTjIkLdocWTx6rgi2767kTTSI
-Content-Type: multipart/mixed; boundary="sdkl0Xxt0KtFM41xEtdan2EW1NXVMs5c1";
- protected-headers="v1"
-From: Marc Kleine-Budde <mkl-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-To: "Michael S. Tsirkin" <mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>,
- Alexander Aring <aar-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Stefan Schmidt
- <stefan-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>,
- linux-bluetooth-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-can-u79uwXL29TY76Z2rM5mHXA@public.gmane.org,
- netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, nios2-dev-g9ZBwUv/Ih/yUk5EbOjzuce+I+R0W71w@public.gmane.org,
- linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wil6210-A+ZNKFmMK5xy9aJCnZT0Uw@public.gmane.org,
- brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org,
- linux-wpan-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org,
- linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Message-ID: <4b0172bd-2779-35b2-96af-407087db844e-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH 8/8] Makefile: drop -D__CHECK_ENDIAN__ from cflags
-References: <1481778865-27667-1-git-send-email-mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
- <1481778865-27667-9-git-send-email-mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-In-Reply-To: <1481778865-27667-9-git-send-email-mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-
---sdkl0Xxt0KtFM41xEtdan2EW1NXVMs5c1
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-On 12/15/2016 06:15 AM, Michael S. Tsirkin wrote:
-> That's the default now, no need for makefiles to set it.
->=20
-> Signed-off-by: Michael S. Tsirkin <mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> ---
-[...]
->  drivers/net/can/Makefile                                  | 1 -
-
-For drivers/net/can/Makefile:
-
-Acked-by: Marc Kleine-Budde <mkl-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-
-regards,
-Marc
-
---=20
-Pengutronix e.K.                  | Marc Kleine-Budde           |
-Industrial Linux Solutions        | Phone: +49-231-2826-924     |
-Vertretung West/Dortmund          | Fax:   +49-5121-206917-5555 |
-Amtsgericht Hildesheim, HRA 2686  | http://www.pengutronix.de   |
-
-
---sdkl0Xxt0KtFM41xEtdan2EW1NXVMs5c1--
-
---20OdsOHopTjIkLdocWTx6rgi2767kTTSI
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEES2FAuYbJvAGobdVQPTuqJaypJWoFAlhSTQUACgkQPTuqJayp
-JWrYQwgAgF2pgtnOHFbQf8oOT0jYDqhXKpceBGDqy6nW6Dfs66GUNSM4nq3EHz99
-s4Slq4IQjzACZjHbO0s/lALFRfK/BKYCmuRhBQ/iE2wjBTBw3Ej4keoXl9OiKvN+
-VteIS+Y5REHxYDLfNRl15oCrn5s8oiImp93dl3rVHjIbMYq4mnWqapXK3Utj6GZf
-l6FOT/t1I1i62GTeCwjwlTUC0MId3PYCQRax1JnjZsEWx/hHbaJUN26JGISns2uL
-r1as5wh3Y1ey0l0+NdVpkAX1v9/BlqS56H1CdgCw2ucNo0GA3F5/Y9CGHjUcT47X
-2l3UqTcMhQdEoPBTKauMUmq7YcACQw==
-=NRSu
------END PGP SIGNATURE-----
-
---20OdsOHopTjIkLdocWTx6rgi2767kTTSI--
-
-
---===============4190790300631420360==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4190790300631420360==--
+SGkgQmliYnksCgpPbiBXZWQsIERlYyAxNCwgMjAxNiBhdCAxOjE0IFBNLCBCaWJieSBIc2llaCA8
+YmliYnkuaHNpZWhAbWVkaWF0ZWsuY29tPiB3cm90ZToKPgo+IE1UODE3MyBvdmVybGF5IGNhbiBz
+dXBwb3J0IFVZVlkgYW5kIFlVWVYgZm9ybWF0LAo+IHdlIGFkZCB0aGUgZm9ybWF0IGluIERSTSBk
+cml2ZXIuCj4KPiBTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8YmliYnkuaHNpZWhAbWVkaWF0
+ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMg
+IHwgNiArKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYyB8
+IDIgKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKPiBpbmRleCAwMTliN2NhLi4wYTM0MGYzIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwo+IEBAIC00NCw2ICs0NCw4
+IEBACj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCODg4ICAoMSA8PCAxMikKPiAgI2RlZmlu
+ZSBPVkxfQ09OX0NMUkZNVF9SR0JBODg4OCAgICAgICAgKDIgPDwgMTIpCj4gICNkZWZpbmUgT1ZM
+X0NPTl9DTFJGTVRfQVJHQjg4ODggICAgICAgICgzIDw8IDEyKQo+ICsjZGVmaW5lIE9WTF9DT05f
+Q0xSRk1UX1VZVlkgICAgKDQgPDwgMTIpCj4gKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfWVVZViAg
+ICAoNSA8PCAxMikKPiAgI2RlZmluZSAgICAgICAgT1ZMX0NPTl9BRU4gICAgICAgICAgICAgQklU
+KDgpCj4gICNkZWZpbmUgICAgICAgIE9WTF9DT05fQUxQSEEgICAgICAgICAgIDB4ZmYKPgo+IEBA
+IC0xNjEsNiArMTYzLDEwIEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQgb3ZsX2ZtdF9jb252ZXJ0KHVu
+c2lnbmVkIGludCBmbXQpCj4gICAgICAgICBjYXNlIERSTV9GT1JNQVRfWEJHUjg4ODg6Cj4gICAg
+ICAgICBjYXNlIERSTV9GT1JNQVRfQUJHUjg4ODg6Cj4gICAgICAgICAgICAgICAgIHJldHVybiBP
+VkxfQ09OX0NMUkZNVF9SR0JBODg4OCB8IE9WTF9DT05fQllURV9TV0FQOwo+ICsgICAgICAgY2Fz
+ZSBEUk1fRk9STUFUX1lVWVY6Cj4gKyAgICAgICAgICAgICAgIHJldHVybiBPVkxfQ09OX0NMUkZN
+VF9ZVVlWOwo+ICsgICAgICAgY2FzZSBEUk1fRk9STUFUX1VZVlk6Cj4gKyAgICAgICAgICAgICAg
+IHJldHVybiBPVkxfQ09OX0NMUkZNVF9VWVZZOwoKbml0OiBwcm9iYWJseSBiZXR0ZXIgdG8gYWxw
+aGFiZXRpemUgdGhlc2UgKFVZVlkgYmVmb3JlIFlVVlUpLgoKPiAgICAgICAgIH0KPiAgfQo+Cj4g
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gaW5kZXggYzQ2MWEyMy4u
+Yjk0YzZlZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9w
+bGFuZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxhbmUuYwo+
+IEBAIC0yOCw2ICsyOCw4IEBACj4gICAgICAgICBEUk1fRk9STUFUX1hSR0I4ODg4LAo+ICAgICAg
+ICAgRFJNX0ZPUk1BVF9BUkdCODg4OCwKPiAgICAgICAgIERSTV9GT1JNQVRfUkdCNTY1LAo+ICsg
+ICAgICAgRFJNX0ZPUk1BVF9ZVVlWLAo+ICsgICAgICAgRFJNX0ZPUk1BVF9VWVZZLAoKCm5pdDog
+cHJvYmFibHkgYmV0dGVyIHRvIGFscGhhYmV0aXplIHRoZXNlLgoKT3RoZXIgdGhhbiB0aGF0LAoK
+UmV2aWV3ZWQtYnk6IERhbmllbCBLdXJ0eiA8ZGprdXJ0ekBjaHJvbWl1bS5vcmc+Cgo+Cj4gIH07
+Cj4KPiAgc3RhdGljIHZvaWQgbXRrX3BsYW5lX3Jlc2V0KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
+KQo+IC0tCj4gMS45LjEKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmkt
+ZGV2ZWwK
