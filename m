@@ -1,69 +1,34 @@
-From: Kees Cook <keescook@chromium.org>
-Subject: [PATCH] mtk-vcodec: use designated initializers
-Date: Fri, 16 Dec 2016 17:00:31 -0800
-Message-ID: <20161217010031.GA140323@beast>
+From: Ricky Liang <jcliang@chromium.org>
+Subject: Re: [PATCH v9 2/4] vcodec: mediatek: Add Mediatek JPEG Decoder Driver
+Date: Sun, 18 Dec 2016 14:53:20 +0800
+Message-ID: <CAAJzSMfb=_Td+_f-q0mOTX5dGFC1Roxxm7+-yjavKFo3DO8YUw@mail.gmail.com>
+References: <1481702690-10476-1-git-send-email-rick.chang@mediatek.com> <1481702690-10476-3-git-send-email-rick.chang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-media-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hans.verkuil@cisco.com>, PoChun Lin <pochun.lin@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Julia Lawall <Julia.Lawall@lip6.fr>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1481702690-10476-3-git-send-email-rick.chang@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rick Chang <rick.chang@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Bin Liu <bin.liu@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, srv_heupstream@mediatek.com, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Prepare to mark sensitive kernel structures for randomization by making
-sure they're using designated initializers. These were identified during
-allyesconfig builds of x86, arm, and arm64, with most initializer fixes
-extracted from grsecurity.
+On Wed, Dec 14, 2016 at 4:04 PM, Rick Chang <rick.chang@mediatek.com> wrote:
+> Add v4l2 driver for Mediatek JPEG Decoder
+>
+> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
+> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+> ---
+>  drivers/media/platform/Kconfig                   |   15 +
+>  drivers/media/platform/Makefile                  |    2 +
+>  drivers/media/platform/mtk-jpeg/Makefile         |    2 +
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c  | 1306 ++++++++++++++++++++++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h  |  139 +++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c    |  417 +++++++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h    |   91 ++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c |  160 +++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h |   25 +
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h   |   58 +
+>  10 files changed, 2215 insertions(+)
 
-Signed-off-by: Kees Cook <keescook@chromium.org>
----
- drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c | 8 ++++----
- drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c  | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-index b76c80bdf30b..4eb3be37ba14 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-@@ -665,10 +665,10 @@ static int h264_enc_deinit(unsigned long handle)
- }
- 
- static const struct venc_common_if venc_h264_if = {
--	h264_enc_init,
--	h264_enc_encode,
--	h264_enc_set_param,
--	h264_enc_deinit,
-+	.init = h264_enc_init,
-+	.encode = h264_enc_encode,
-+	.set_param = h264_enc_set_param,
-+	.deinit = h264_enc_deinit,
- };
- 
- const struct venc_common_if *get_h264_enc_comm_if(void);
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-index 544f57186243..a6fa145f2c54 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-@@ -470,10 +470,10 @@ static int vp8_enc_deinit(unsigned long handle)
- }
- 
- static const struct venc_common_if venc_vp8_if = {
--	vp8_enc_init,
--	vp8_enc_encode,
--	vp8_enc_set_param,
--	vp8_enc_deinit,
-+	.init = vp8_enc_init,
-+	.encode = vp8_enc_encode,
-+	.set_param = vp8_enc_set_param,
-+	.deinit = vp8_enc_deinit,
- };
- 
- const struct venc_common_if *get_vp8_enc_comm_if(void);
--- 
-2.7.4
-
-
--- 
-Kees Cook
-Nexus Security
+Reviewed-by: Ricky Liang <jcliang@chromium.org>
+Tested-by: Ricky Liang <jcliang@chromium.org>
