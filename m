@@ -1,34 +1,63 @@
-From: Ricky Liang <jcliang@chromium.org>
-Subject: Re: [PATCH v9 2/4] vcodec: mediatek: Add Mediatek JPEG Decoder Driver
-Date: Sun, 18 Dec 2016 14:53:20 +0800
-Message-ID: <CAAJzSMfb=_Td+_f-q0mOTX5dGFC1Roxxm7+-yjavKFo3DO8YUw@mail.gmail.com>
-References: <1481702690-10476-1-git-send-email-rick.chang@mediatek.com> <1481702690-10476-3-git-send-email-rick.chang@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v3 0/2] Add MediaTek crypto accelerator driver
+Date: Mon, 19 Dec 2016 10:20:43 +0800
+Message-ID: <1482114045-18716-1-git-send-email-ryder.lee@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1481702690-10476-3-git-send-email-rick.chang@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rick Chang <rick.chang@mediatek.com>
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, Bin Liu <bin.liu@mediatek.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, srv_heupstream@mediatek.com, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..." <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, Roy Luo <cheng-hao.luo@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Dec 14, 2016 at 4:04 PM, Rick Chang <rick.chang@mediatek.com> wrote:
-> Add v4l2 driver for Mediatek JPEG Decoder
->
-> Signed-off-by: Rick Chang <rick.chang@mediatek.com>
-> Signed-off-by: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
-> ---
->  drivers/media/platform/Kconfig                   |   15 +
->  drivers/media/platform/Makefile                  |    2 +
->  drivers/media/platform/mtk-jpeg/Makefile         |    2 +
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c  | 1306 ++++++++++++++++++++++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h  |  139 +++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.c    |  417 +++++++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_hw.h    |   91 ++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.c |  160 +++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_parse.h |   25 +
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_reg.h   |   58 +
->  10 files changed, 2215 insertions(+)
+Hello,
 
-Reviewed-by: Ricky Liang <jcliang@chromium.org>
-Tested-by: Ricky Liang <jcliang@chromium.org>
+This adds support for the MediaTek hardware accelerator on
+some SoCs.
+
+This driver currently implement: 
+- SHA1 and SHA2 family(HMAC) hash algorithms.
+- AES block cipher in CBC/ECB mode with 128/196/256 bits keys.
+
+Chances since v3:
+-remove unused structure member
+-drop interrupt-parent from DT bindings documentation
+
+Changes since v2:
+- use byteorder conversion macros and type identifiers for descriptors
+- revise register definition macros to make it more clear
+- revise DT compatiable string
+
+Changes since v1:
+- remove EXPORT_SYMBOL
+- remove unused PRNG setting
+- sort headers in alphabetical order
+- add a definition for IRQ unmber
+- replace ambiguous definition
+- add more annotation and function comment
+- add COMPILE_TEST in Kconfig
+
+Ryder Lee (2):
+  Add crypto driver support for some MediaTek chips
+  crypto: mediatek - add DT bindings documentation
+
+ .../devicetree/bindings/crypto/mediatek-crypto.txt |   27 +
+ drivers/crypto/Kconfig                             |   17 +
+ drivers/crypto/Makefile                            |    1 +
+ drivers/crypto/mediatek/Makefile                   |    2 +
+ drivers/crypto/mediatek/mtk-aes.c                  |  765 +++++++++++
+ drivers/crypto/mediatek/mtk-platform.c             |  604 ++++++++
+ drivers/crypto/mediatek/mtk-platform.h             |  238 ++++
+ drivers/crypto/mediatek/mtk-regs.h                 |  194 +++
+ drivers/crypto/mediatek/mtk-sha.c                  | 1437 ++++++++++++++++++++
+ 9 files changed, 3285 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/crypto/mediatek-crypto.txt
+ create mode 100644 drivers/crypto/mediatek/Makefile
+ create mode 100644 drivers/crypto/mediatek/mtk-aes.c
+ create mode 100644 drivers/crypto/mediatek/mtk-platform.c
+ create mode 100644 drivers/crypto/mediatek/mtk-platform.h
+ create mode 100644 drivers/crypto/mediatek/mtk-regs.h
+ create mode 100644 drivers/crypto/mediatek/mtk-sha.c
+
+-- 
+1.9.1
