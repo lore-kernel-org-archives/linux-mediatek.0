@@ -1,37 +1,56 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH] usb: make the MTK XHCI driver compile for older MIPS SoCs
-Date: Tue, 20 Dec 2016 19:08:58 +0100
-Message-ID: <1482257338-60884-1-git-send-email-john@phrozen.org>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Subject: [PATCH] ARM: dts: mediatek: update my email address
+Date: Tue, 20 Dec 2016 20:04:34 +0100
+Message-ID: <1482260674-61835-1-git-send-email-john@phrozen.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-The MIPS based MT7621 shares the same XHCI core as the newer generation of
-ARM based SoCs. The driver works out of the box and we only need to make it
-buildable in Kconfig.
+This patch updates my email address as I no longer have access to the old
+one.
 
-Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 ---
- drivers/usb/host/Kconfig |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/mt7623-evb.dts |    2 +-
+ arch/arm/boot/dts/mt7623.dtsi    |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
-index 0b80cee..eb121b2 100644
---- a/drivers/usb/host/Kconfig
-+++ b/drivers/usb/host/Kconfig
-@@ -45,9 +45,9 @@ config USB_XHCI_PLATFORM
- 	  If unsure, say N.
- 
- config USB_XHCI_MTK
--	tristate "xHCI support for Mediatek MT65xx"
-+	tristate "xHCI support for Mediatek MT65xx/MT7621"
- 	select MFD_SYSCON
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on (MIPS && SOC_MT7621) || ARCH_MEDIATEK || COMPILE_TEST
- 	---help---
- 	  Say 'Y' to enable the support for the xHCI host controller
- 	  found in Mediatek MT65xx SoCs.
+diff --git a/arch/arm/boot/dts/mt7623-evb.dts b/arch/arm/boot/dts/mt7623-evb.dts
+index a9ee2d6..b60b41c 100644
+--- a/arch/arm/boot/dts/mt7623-evb.dts
++++ b/arch/arm/boot/dts/mt7623-evb.dts
+@@ -1,6 +1,6 @@
+ /*
+  * Copyright (c) 2016 MediaTek Inc.
+- * Author: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
++ * Author: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 2 as
+diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+index fd2b614..6af8e60 100644
+--- a/arch/arm/boot/dts/mt7623.dtsi
++++ b/arch/arm/boot/dts/mt7623.dtsi
+@@ -1,6 +1,6 @@
+ /*
+  * Copyright (c) 2016 MediaTek Inc.
+- * Author: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
++ * Author: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 2 as
 -- 
 1.7.10.4
