@@ -1,49 +1,61 @@
-From: Luca Coelho <luca-XPOmlcxoEMv1KXRcyAk9cg@public.gmane.org>
-Subject: Re: [PATCH 8/8] Makefile: drop -D__CHECK_ENDIAN__ from cflags
-Date: Mon, 19 Dec 2016 11:08:10 +0200
-Message-ID: <1482138490.26174.7.camel@coelho.fi>
-References: <1481778865-27667-1-git-send-email-mst@redhat.com>
- <1481778865-27667-9-git-send-email-mst@redhat.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: Support UYVY and YUYV format for overlay
+Date: Tue, 20 Dec 2016 14:59:17 +0800
+Message-ID: <1482217157.18168.10.camel@mtksdaap41>
+References: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1481778865-27667-9-git-send-email-mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Michael S. Tsirkin" <mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Emmanuel Grumbach <emmanuel.grumbach-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Stanislaw Gruszka <sgruszka-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Gustavo Padovan <gustavo-THi1TnShQwVAfugRpC6u6w@public.gmane.org>, Arend van Spriel <arend.vanspriel-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, Jakub Kicinski <kubakici-5tc4TXWwyLM@public.gmane.org>, Stefan Schmidt <stefan-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wil6210-A+ZNKFmMK5xy9aJCnZT0Uw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chris Snook <chris.snook-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Wolfgang Grandegger <wg-5Yr1BZd7O62+XT7JhA+gdA@public.gmane.org>, Jay Cliburn <jcliburn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-wpan-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Johan Hedberg <johan.hedberg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Johannes Berg <johannes.berg-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Intel Linux Wireless <linuxwifi-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Alexander Aring <aar-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Marcel Holtmann <marcel-kz+m5ild9QBg9hUCZPvPmw@public.gmane.org>, Hante Meuleman <hante.meuleman-dY08KVG/lbpWk0Htik3J/w@public.gmane.org>, linux-can-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Marc Kleine-Budde <mkl-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kall
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2016-12-15 at 07:15 +0200, Michael S. Tsirkin wrote:
-> That's the default now, no need for makefiles to set it.
-> 
-> Signed-off-by: Michael S. Tsirkin <mst-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-> ---
->  drivers/bluetooth/Makefile                                | 2 --
->  drivers/net/can/Makefile                                  | 1 -
->  drivers/net/ethernet/altera/Makefile                      | 1 -
->  drivers/net/ethernet/atheros/alx/Makefile                 | 1 -
->  drivers/net/ethernet/freescale/Makefile                   | 2 --
->  drivers/net/wireless/ath/Makefile                         | 2 --
->  drivers/net/wireless/ath/wil6210/Makefile                 | 2 --
->  drivers/net/wireless/broadcom/brcm80211/brcmfmac/Makefile | 2 --
->  drivers/net/wireless/broadcom/brcm80211/brcmsmac/Makefile | 1 -
->  drivers/net/wireless/intel/iwlegacy/Makefile              | 2 --
->  drivers/net/wireless/intel/iwlwifi/Makefile               | 2 +-
->  drivers/net/wireless/intel/iwlwifi/dvm/Makefile           | 2 +-
->  drivers/net/wireless/intel/iwlwifi/mvm/Makefile           | 2 +-
-
-For the drivers/net/wireless/intel/iwlwifi/ part:
-
-Acked-by: Luca Coelho <luciano.coelho-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-
---
-Luca.
+SGkgQmliYnksCgpPbiBXZWQsIDIwMTYtMTItMTQgYXQgMTM6MTQgKzA4MDAsIEJpYmJ5IEhzaWVo
+IHdyb3RlOgo+IE1UODE3MyBvdmVybGF5IGNhbiBzdXBwb3J0IFVZVlkgYW5kIFlVWVYgZm9ybWF0
+LAo+IHdlIGFkZCB0aGUgZm9ybWF0IGluIERSTSBkcml2ZXIuCj4gCj4gU2lnbmVkLW9mZi1ieTog
+QmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICB8IDYgKysrKysrCj4gIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgfCAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwg
+OCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZGlzcF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwu
+Ywo+IGluZGV4IDAxOWI3Y2EuLjBhMzQwZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kaXNwX292bC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX292bC5jCj4gQEAgLTQ0LDYgKzQ0LDggQEAKPiAgI2RlZmluZSBPVkxfQ09OX0NM
+UkZNVF9SR0I4ODgJKDEgPDwgMTIpCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODgJ
+KDIgPDwgMTIpCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQVJHQjg4ODgJKDMgPDwgMTIpCj4g
+KyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfVVlWWQkoNCA8PCAxMikKPiArI2RlZmluZSBPVkxfQ09O
+X0NMUkZNVF9ZVVlWCSg1IDw8IDEyKQo+ICAjZGVmaW5lCU9WTF9DT05fQUVOCQlCSVQoOCkKPiAg
+I2RlZmluZQlPVkxfQ09OX0FMUEhBCQkweGZmCj4gIAo+IEBAIC0xNjEsNiArMTYzLDEwIEBAIHN0
+YXRpYyB1bnNpZ25lZCBpbnQgb3ZsX2ZtdF9jb252ZXJ0KHVuc2lnbmVkIGludCBmbXQpCj4gIAlj
+YXNlIERSTV9GT1JNQVRfWEJHUjg4ODg6Cj4gIAljYXNlIERSTV9GT1JNQVRfQUJHUjg4ODg6Cj4g
+IAkJcmV0dXJuIE9WTF9DT05fQ0xSRk1UX1JHQkE4ODg4IHwgT1ZMX0NPTl9CWVRFX1NXQVA7Cj4g
+KwljYXNlIERSTV9GT1JNQVRfWVVZVjoKPiArCQlyZXR1cm4gT1ZMX0NPTl9DTFJGTVRfWVVZVjsK
+PiArCWNhc2UgRFJNX0ZPUk1BVF9VWVZZOgo+ICsJCXJldHVybiBPVkxfQ09OX0NMUkZNVF9VWVZZ
+Owo+ICAJfQo+ICB9CllvdXIgcGF0Y2ggbG9va3MgZ29vZCwgYnV0IEkgYW0gbm90IHN1cmUgYWJv
+dXQgc29tZSBkZXRhaWxzLgpBRkFJSywgdGhlcmUgaXMgYSBjb2xvciBtYXRyaXggaGVyZSB0byBk
+ZXNjcmliZSBob3cgdG8gdHJhbnNmb3JtIGZyb20KQlQuNjAxIC8gQlQuNzA5IC8gb3RoZXIgY29s
+b3Igc3BhY2UgdG8gUkdCIGNvbG9yIHNwYWNlLiAgWW91IGNhbiB1c2UgdGhlCmRlZmF1bHQgdmFs
+dWUgaWYgeW91IGRvbid0IGNhcmUgaG93IGNvbG9ycyBhcmUgcmVwcmVzZW50ZWQuICBPciB5b3Ug
+Y2FuCnNwZWNpZnkgdGhlIG1hdHJpeCBpbiB0aGlzIHBhdGNoLgoKUmVnYXJkcywKeXQuc2hlbgoK
+PiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5l
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gaW5kZXggYzQ2
+MWEyMy4uYjk0YzZlZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9wbGFuZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxh
+bmUuYwo+IEBAIC0yOCw2ICsyOCw4IEBACj4gIAlEUk1fRk9STUFUX1hSR0I4ODg4LAo+ICAJRFJN
+X0ZPUk1BVF9BUkdCODg4OCwKPiAgCURSTV9GT1JNQVRfUkdCNTY1LAo+ICsJRFJNX0ZPUk1BVF9Z
+VVlWLAo+ICsJRFJNX0ZPUk1BVF9VWVZZLAo+ICB9Owo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX3Bs
+YW5lX3Jlc2V0KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
+dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
