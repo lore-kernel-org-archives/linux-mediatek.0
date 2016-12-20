@@ -1,61 +1,37 @@
-From: YT Shen <yt.shen@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: Support UYVY and YUYV format for overlay
-Date: Tue, 20 Dec 2016 14:59:17 +0800
-Message-ID: <1482217157.18168.10.camel@mtksdaap41>
-References: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1481692473-18755-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+From: John Crispin <john@phrozen.org>
+Subject: [PATCH] usb: make the MTK XHCI driver compile for older MIPS SoCs
+Date: Tue, 20 Dec 2016 19:08:58 +0100
+Message-ID: <1482257338-60884-1-git-send-email-john@phrozen.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, John Crispin <john@phrozen.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGkgQmliYnksCgpPbiBXZWQsIDIwMTYtMTItMTQgYXQgMTM6MTQgKzA4MDAsIEJpYmJ5IEhzaWVo
-IHdyb3RlOgo+IE1UODE3MyBvdmVybGF5IGNhbiBzdXBwb3J0IFVZVlkgYW5kIFlVWVYgZm9ybWF0
-LAo+IHdlIGFkZCB0aGUgZm9ybWF0IGluIERSTSBkcml2ZXIuCj4gCj4gU2lnbmVkLW9mZi1ieTog
-QmliYnkgSHNpZWggPGJpYmJ5LmhzaWVoQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICB8IDYgKysrKysrCj4gIGRyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgfCAyICsrCj4gIDIgZmlsZXMgY2hhbmdlZCwg
-OCBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZGlzcF9vdmwuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwu
-Ywo+IGluZGV4IDAxOWI3Y2EuLjBhMzQwZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kaXNwX292bC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kaXNwX292bC5jCj4gQEAgLTQ0LDYgKzQ0LDggQEAKPiAgI2RlZmluZSBPVkxfQ09OX0NM
-UkZNVF9SR0I4ODgJKDEgPDwgMTIpCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCQTg4ODgJ
-KDIgPDwgMTIpCj4gICNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfQVJHQjg4ODgJKDMgPDwgMTIpCj4g
-KyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRfVVlWWQkoNCA8PCAxMikKPiArI2RlZmluZSBPVkxfQ09O
-X0NMUkZNVF9ZVVlWCSg1IDw8IDEyKQo+ICAjZGVmaW5lCU9WTF9DT05fQUVOCQlCSVQoOCkKPiAg
-I2RlZmluZQlPVkxfQ09OX0FMUEhBCQkweGZmCj4gIAo+IEBAIC0xNjEsNiArMTYzLDEwIEBAIHN0
-YXRpYyB1bnNpZ25lZCBpbnQgb3ZsX2ZtdF9jb252ZXJ0KHVuc2lnbmVkIGludCBmbXQpCj4gIAlj
-YXNlIERSTV9GT1JNQVRfWEJHUjg4ODg6Cj4gIAljYXNlIERSTV9GT1JNQVRfQUJHUjg4ODg6Cj4g
-IAkJcmV0dXJuIE9WTF9DT05fQ0xSRk1UX1JHQkE4ODg4IHwgT1ZMX0NPTl9CWVRFX1NXQVA7Cj4g
-KwljYXNlIERSTV9GT1JNQVRfWVVZVjoKPiArCQlyZXR1cm4gT1ZMX0NPTl9DTFJGTVRfWVVZVjsK
-PiArCWNhc2UgRFJNX0ZPUk1BVF9VWVZZOgo+ICsJCXJldHVybiBPVkxfQ09OX0NMUkZNVF9VWVZZ
-Owo+ICAJfQo+ICB9CllvdXIgcGF0Y2ggbG9va3MgZ29vZCwgYnV0IEkgYW0gbm90IHN1cmUgYWJv
-dXQgc29tZSBkZXRhaWxzLgpBRkFJSywgdGhlcmUgaXMgYSBjb2xvciBtYXRyaXggaGVyZSB0byBk
-ZXNjcmliZSBob3cgdG8gdHJhbnNmb3JtIGZyb20KQlQuNjAxIC8gQlQuNzA5IC8gb3RoZXIgY29s
-b3Igc3BhY2UgdG8gUkdCIGNvbG9yIHNwYWNlLiAgWW91IGNhbiB1c2UgdGhlCmRlZmF1bHQgdmFs
-dWUgaWYgeW91IGRvbid0IGNhcmUgaG93IGNvbG9ycyBhcmUgcmVwcmVzZW50ZWQuICBPciB5b3Ug
-Y2FuCnNwZWNpZnkgdGhlIG1hdHJpeCBpbiB0aGlzIHBhdGNoLgoKUmVnYXJkcywKeXQuc2hlbgoK
-PiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5l
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gaW5kZXggYzQ2
-MWEyMy4uYjk0YzZlZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9wbGFuZS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fcGxh
-bmUuYwo+IEBAIC0yOCw2ICsyOCw4IEBACj4gIAlEUk1fRk9STUFUX1hSR0I4ODg4LAo+ICAJRFJN
-X0ZPUk1BVF9BUkdCODg4OCwKPiAgCURSTV9GT1JNQVRfUkdCNTY1LAo+ICsJRFJNX0ZPUk1BVF9Z
-VVlWLAo+ICsJRFJNX0ZPUk1BVF9VWVZZLAo+ICB9Owo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX3Bs
-YW5lX3Jlc2V0KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lKQoKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRl
-dmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
+The MIPS based MT7621 shares the same XHCI core as the newer generation of
+ARM based SoCs. The driver works out of the box and we only need to make it
+buildable in Kconfig.
+
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ drivers/usb/host/Kconfig |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
+index 0b80cee..eb121b2 100644
+--- a/drivers/usb/host/Kconfig
++++ b/drivers/usb/host/Kconfig
+@@ -45,9 +45,9 @@ config USB_XHCI_PLATFORM
+ 	  If unsure, say N.
+ 
+ config USB_XHCI_MTK
+-	tristate "xHCI support for Mediatek MT65xx"
++	tristate "xHCI support for Mediatek MT65xx/MT7621"
+ 	select MFD_SYSCON
+-	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on (MIPS && SOC_MT7621) || ARCH_MEDIATEK || COMPILE_TEST
+ 	---help---
+ 	  Say 'Y' to enable the support for the xHCI host controller
+ 	  found in Mediatek MT65xx SoCs.
+-- 
+1.7.10.4
