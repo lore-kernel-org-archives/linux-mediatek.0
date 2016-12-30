@@ -1,94 +1,87 @@
-From: Vivek Gautam <vivek.gautam@codeaurora.org>
-Subject: [PATCH] thermal: mtk_thermal: Staticise a number of data variables
-Date: Wed, 28 Dec 2016 14:16:45 +0530
-Message-ID: <1482914805-21950-1-git-send-email-vivek.gautam@codeaurora.org>
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: [PATCH v2] drm/mediatek: Support UYVY and YUYV format for overlay
+Date: Fri, 30 Dec 2016 14:26:23 +0800
+Message-ID: <1483079183-38637-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: rui.zhang@intel.com, matthias.bgg@gmail.com, edubezval@gmail.com, dawei.chien@mediatek.com
-Cc: Vivek Gautam <vivek.gautam@codeaurora.org>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-Sparse throws following warnings:
-drivers/thermal/mtk_thermal.c:186:11: warning: symbol 'mt8173_bank_data' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:193:11: warning: symbol 'mt8173_msr' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:197:11: warning: symbol 'mt8173_adcpnp' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:201:11: warning: symbol 'mt8173_mux_values' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:204:11: warning: symbol 'mt2701_bank_data' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:208:11: warning: symbol 'mt2701_msr' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:212:11: warning: symbol 'mt2701_adcpnp' was not declared. Should it be static?
-drivers/thermal/mtk_thermal.c:216:11: warning: symbol 'mt2701_mux_values' was not declared. Should it be static?
+MT8173 overlay can support UYVY and YUYV format,
+we add the format in DRM driver.
 
-Make these variables as static to fix these warnings.
-
-Signed-off-by: Vivek Gautam <vivek.gautam@codeaurora.org>
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
 ---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 21 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c |  2 ++
+ 2 files changed, 23 insertions(+)
 
-Based on Torvald's master branch. Build tested.
-
- drivers/thermal/mtk_thermal.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 34169c32d495..1aff7fde54b1 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -183,37 +183,37 @@ struct mtk_thermal {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index c703102..de05845 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -40,10 +40,13 @@
+ #define	OVL_RDMA_MEM_GMC	0x40402020
+ 
+ #define OVL_CON_BYTE_SWAP	BIT(24)
++#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
+ #define OVL_CON_CLRFMT_RGB565	(0 << 12)
+ #define OVL_CON_CLRFMT_RGB888	(1 << 12)
+ #define OVL_CON_CLRFMT_RGBA8888	(2 << 12)
+ #define OVL_CON_CLRFMT_ARGB8888	(3 << 12)
++#define OVL_CON_CLRFMT_UYVY	(4 << 12)
++#define OVL_CON_CLRFMT_YUYV	(5 << 12)
+ #define	OVL_CON_AEN		BIT(8)
+ #define	OVL_CON_ALPHA		0xff
+ 
+@@ -162,6 +165,21 @@ static unsigned int ovl_fmt_convert(unsigned int fmt)
+ 	case DRM_FORMAT_XBGR8888:
+ 	case DRM_FORMAT_ABGR8888:
+ 		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
++	case DRM_FORMAT_UYVY:
++		return OVL_CON_CLRFMT_UYVY;
++	case DRM_FORMAT_YUYV:
++		return OVL_CON_CLRFMT_YUYV;
++	}
++}
++
++static bool ovl_yuv_space(unsigned int fmt)
++{
++	switch (fmt) {
++	case DRM_FORMAT_UYVY:
++	case DRM_FORMAT_YUYV:
++		return true;
++	default:
++		return false;
+ 	}
+ }
+ 
+@@ -183,6 +201,9 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+ 	if (idx != 0)
+ 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
+ 
++	if (ovl_yuv_space(fmt))
++		con |= OVL_CON_MTX_YUV_TO_RGB;
++
+ 	writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
+ 	writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
+ 	writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index c461a23..8c02d1d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -28,6 +28,8 @@
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_RGB565,
++	DRM_FORMAT_UYVY,
++	DRM_FORMAT_YUYV,
  };
  
- /* MT8173 thermal sensor data */
--const int mt8173_bank_data[MT8173_NUM_ZONES][3] = {
-+static const int mt8173_bank_data[MT8173_NUM_ZONES][3] = {
- 	{ MT8173_TS2, MT8173_TS3 },
- 	{ MT8173_TS2, MT8173_TS4 },
- 	{ MT8173_TS1, MT8173_TS2, MT8173_TSABB },
- 	{ MT8173_TS2 },
- };
- 
--const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
-+static const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
- 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR2
- };
- 
--const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
-+static const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
- 	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2, TEMP_ADCPNP3
- };
- 
--const int mt8173_mux_values[MT8173_NUM_SENSORS] = { 0, 1, 2, 3, 16 };
-+static const int mt8173_mux_values[MT8173_NUM_SENSORS] = { 0, 1, 2, 3, 16 };
- 
- /* MT2701 thermal sensor data */
--const int mt2701_bank_data[MT2701_NUM_SENSORS] = {
-+static const int mt2701_bank_data[MT2701_NUM_SENSORS] = {
- 	MT2701_TS1, MT2701_TS2, MT2701_TSABB
- };
- 
--const int mt2701_msr[MT2701_NUM_SENSORS_PER_ZONE] = {
-+static const int mt2701_msr[MT2701_NUM_SENSORS_PER_ZONE] = {
- 	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2
- };
- 
--const int mt2701_adcpnp[MT2701_NUM_SENSORS_PER_ZONE] = {
-+static const int mt2701_adcpnp[MT2701_NUM_SENSORS_PER_ZONE] = {
- 	TEMP_ADCPNP0, TEMP_ADCPNP1, TEMP_ADCPNP2
- };
- 
--const int mt2701_mux_values[MT2701_NUM_SENSORS] = { 0, 1, 16 };
-+static const int mt2701_mux_values[MT2701_NUM_SENSORS] = { 0, 1, 16 };
- 
- /**
-  * The MT8173 thermal controller has four banks. Each bank can read up to
+ static void mtk_plane_reset(struct drm_plane *plane)
 -- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-a Linux Foundation Collaborative Project
+1.9.1
