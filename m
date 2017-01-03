@@ -1,87 +1,63 @@
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v2] drm/mediatek: Support UYVY and YUYV format for overlay
-Date: Fri, 30 Dec 2016 14:26:23 +0800
-Message-ID: <1483079183-38637-1-git-send-email-bibby.hsieh@mediatek.com>
+From: HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v19 0/4] Mediatek MT8173 CMDQ support
+Date: Tue, 3 Jan 2017 11:05:47 +0800
+Message-ID: <1483412751-28690-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jassi Brar <jassisinghbrar-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Monica Wang <monica.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jiaguang Zhang <jiaguang.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Nicolas Boichat <drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, cawa cheng <cawa.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, HS Liao <hs.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Damon Chu <damon.chu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Daoyuan Huang <daoyuan.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Houlong Wei <houlong.wei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Glory Hung <glory.hung-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK HU <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Josh-YC Liu <josh-yc.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dennis-YC Hsieh <dennis-yc.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-MT8173 overlay can support UYVY and YUYV format,
-we add the format in DRM driver.
 
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 21 +++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_plane.c |  2 ++
- 2 files changed, 23 insertions(+)
+Hi,
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index c703102..de05845 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -40,10 +40,13 @@
- #define	OVL_RDMA_MEM_GMC	0x40402020
- 
- #define OVL_CON_BYTE_SWAP	BIT(24)
-+#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
- #define OVL_CON_CLRFMT_RGB565	(0 << 12)
- #define OVL_CON_CLRFMT_RGB888	(1 << 12)
- #define OVL_CON_CLRFMT_RGBA8888	(2 << 12)
- #define OVL_CON_CLRFMT_ARGB8888	(3 << 12)
-+#define OVL_CON_CLRFMT_UYVY	(4 << 12)
-+#define OVL_CON_CLRFMT_YUYV	(5 << 12)
- #define	OVL_CON_AEN		BIT(8)
- #define	OVL_CON_ALPHA		0xff
- 
-@@ -162,6 +165,21 @@ static unsigned int ovl_fmt_convert(unsigned int fmt)
- 	case DRM_FORMAT_XBGR8888:
- 	case DRM_FORMAT_ABGR8888:
- 		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
-+	case DRM_FORMAT_UYVY:
-+		return OVL_CON_CLRFMT_UYVY;
-+	case DRM_FORMAT_YUYV:
-+		return OVL_CON_CLRFMT_YUYV;
-+	}
-+}
-+
-+static bool ovl_yuv_space(unsigned int fmt)
-+{
-+	switch (fmt) {
-+	case DRM_FORMAT_UYVY:
-+	case DRM_FORMAT_YUYV:
-+		return true;
-+	default:
-+		return false;
- 	}
- }
- 
-@@ -183,6 +201,9 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	if (idx != 0)
- 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
- 
-+	if (ovl_yuv_space(fmt))
-+		con |= OVL_CON_MTX_YUV_TO_RGB;
-+
- 	writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
- 	writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
- 	writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index c461a23..8c02d1d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -28,6 +28,8 @@
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
- 	DRM_FORMAT_RGB565,
-+	DRM_FORMAT_UYVY,
-+	DRM_FORMAT_YUYV,
- };
- 
- static void mtk_plane_reset(struct drm_plane *plane)
+This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+to help write registers with critical time limitation, such as
+updating display configuration during the vblank. It controls Global
+Command Engine (GCE) hardware to achieve this requirement.
+
+These patches have a build dependency on top of v4.10-rc1.
+
+Changes since v18:
+ - add "select MAILBOX" into CMDQ helper
+ - remove power saving part to prevent a potential bug
+
+Best regards,
+HS Liao
+
+HS Liao (4):
+  dt-bindings: soc: Add documentation for the MediaTek GCE unit
+  mailbox: mediatek: Add Mediatek CMDQ driver
+  arm64: dts: mt8173: Add GCE node
+  soc: mediatek: Add Mediatek CMDQ helper
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt        |  43 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+ drivers/mailbox/Kconfig                            |  10 +
+ drivers/mailbox/Makefile                           |   2 +
+ drivers/mailbox/mtk-cmdq-mailbox.c                 | 596 +++++++++++++++++++++
+ drivers/soc/mediatek/Kconfig                       |  12 +
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c             | 310 +++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h           |  75 +++
+ include/linux/soc/mediatek/mtk-cmdq.h              | 174 ++++++
+ 10 files changed, 1233 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+ create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+ create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+ create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+ create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+
 -- 
 1.9.1
