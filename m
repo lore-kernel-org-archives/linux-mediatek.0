@@ -1,44 +1,96 @@
-From: HS Liao <hs.liao@mediatek.com>
-Subject: [PATCH v19 3/4] arm64: dts: mt8173: Add GCE node
-Date: Tue, 3 Jan 2017 11:05:50 +0800
-Message-ID: <1483412751-28690-4-git-send-email-hs.liao@mediatek.com>
-References: <1483412751-28690-1-git-send-email-hs.liao@mediatek.com>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v2] drm/mediatek: Support UYVY and YUYV format for overlay
+Date: Tue, 3 Jan 2017 14:27:37 +0800
+Message-ID: <CAGS+omDHrYnUeRybHt+FtmjLS8d6jO-3==DYYCzbuhFZJME_Gg@mail.gmail.com>
+References: <1483079183-38637-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1483412751-28690-1-git-send-email-hs.liao@mediatek.com>
+In-Reply-To: <1483079183-38637-1-git-send-email-bibby.hsieh@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.co>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-This patch adds the device node of the GCE hardware for CMDQ module.
+On Fri, Dec 30, 2016 at 2:26 PM, Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
+>
+> MT8173 overlay can support UYVY and YUYV format,
+> we add the format in DRM driver.
+>
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 21 +++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.c |  2 ++
+>  2 files changed, 23 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> index c703102..de05845 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> @@ -40,10 +40,13 @@
+>  #define        OVL_RDMA_MEM_GMC        0x40402020
+>
+>  #define OVL_CON_BYTE_SWAP      BIT(24)
+> +#define OVL_CON_MTX_YUV_TO_RGB (6 << 16)
+>  #define OVL_CON_CLRFMT_RGB565  (0 << 12)
+>  #define OVL_CON_CLRFMT_RGB888  (1 << 12)
+>  #define OVL_CON_CLRFMT_RGBA8888        (2 << 12)
+>  #define OVL_CON_CLRFMT_ARGB8888        (3 << 12)
+> +#define OVL_CON_CLRFMT_UYVY    (4 << 12)
+> +#define OVL_CON_CLRFMT_YUYV    (5 << 12)
 
-Signed-off-by: HS Liao <hs.liao@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Why not just add " | OVL_CON_MTX_YUV_TO_RGB" here in the definition of
+these two constants, instead of adding a helper function?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 12e7027..9f93447 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -422,6 +422,16 @@
- 			status = "disabled";
- 		};
- 
-+		gce: gce@10212000 {
-+			compatible = "mediatek,mt8173-gce";
-+			reg = <0 0x10212000 0 0x1000>;
-+			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&infracfg CLK_INFRA_GCE>;
-+			clock-names = "gce";
-+
-+			#mbox-cells = <2>;
-+		};
-+
- 		mipi_tx0: mipi-dphy@10215000 {
- 			compatible = "mediatek,mt8173-mipi-tx";
- 			reg = <0 0x10215000 0 0x1000>;
--- 
-1.9.1
+>  #define        OVL_CON_AEN             BIT(8)
+>  #define        OVL_CON_ALPHA           0xff
+>
+> @@ -162,6 +165,21 @@ static unsigned int ovl_fmt_convert(unsigned int fmt)
+>         case DRM_FORMAT_XBGR8888:
+>         case DRM_FORMAT_ABGR8888:
+>                 return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
+> +       case DRM_FORMAT_UYVY:
+> +               return OVL_CON_CLRFMT_UYVY;
+> +       case DRM_FORMAT_YUYV:
+> +               return OVL_CON_CLRFMT_YUYV;
+> +       }
+> +}
+> +
+> +static bool ovl_yuv_space(unsigned int fmt)
+> +{
+> +       switch (fmt) {
+> +       case DRM_FORMAT_UYVY:
+> +       case DRM_FORMAT_YUYV:
+> +               return true;
+> +       default:
+> +               return false;
+>         }
+>  }
+>
+> @@ -183,6 +201,9 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+>         if (idx != 0)
+>                 con |= OVL_CON_AEN | OVL_CON_ALPHA;
+>
+> +       if (ovl_yuv_space(fmt))
+> +               con |= OVL_CON_MTX_YUV_TO_RGB;
+> +
+>         writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
+>         writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
+>         writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> index c461a23..8c02d1d 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> @@ -28,6 +28,8 @@
+>         DRM_FORMAT_XRGB8888,
+>         DRM_FORMAT_ARGB8888,
+>         DRM_FORMAT_RGB565,
+> +       DRM_FORMAT_UYVY,
+> +       DRM_FORMAT_YUYV,
+>  };
+>
+>  static void mtk_plane_reset(struct drm_plane *plane)
+> --
+> 1.9.1
+>
