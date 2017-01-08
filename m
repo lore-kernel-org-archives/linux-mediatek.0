@@ -1,55 +1,128 @@
-From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 2/2] media: rc: add driver for IR remote receiver on
- MT7623 SoC
-Date: Fri, 6 Jan 2017 15:41:30 +0800
-Message-ID: <1483688490.16976.26.camel@mtkswgap22>
-References: <1483632384-8107-1-git-send-email-sean.wang@mediatek.com>
-         <CGME20170105160810epcas3p1b7a85197c15fbbe87e08c736259935d6@epcas3p1.samsung.com>
-         <1483632384-8107-3-git-send-email-sean.wang@mediatek.com>
-         <20170106034346.7njhyhtsc4yado5c@gangnam.samsung>
+From: Bhumika Goyal <bhumirks@gmail.com>
+Subject: [PATCH] drivers: phy: constify phy_ops structures
+Date: Sun,  8 Jan 2017 16:05:56 +0530
+Message-ID: <1483871756-19008-1-git-send-email-bhumirks@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170106034346.7njhyhtsc4yado5c-8vUhnHFVuGn35fTxX1Dczw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Cc: mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: julia.lawall@lip6.fr, kishon@ti.com, rjui@broadcom.com, sbranden@broadcom.com, jonmason@broadcom.com, bcm-kernel-feedback-list@broadcom.com, chunfeng.yun@mediatek.com, yoshihiro.shimoda.uh@renesas.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Cc: Bhumika Goyal <bhumirks@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andi,
+Declare phy_ops structures as const as they are only passed as an
+argument to the function devm_phy_create. This argument is of type const
+struct phy_ops *, so phy_ops structures having this property can be
+declared as const.
+Done using Coccinelle:
 
-Thank for your reminder. I will refine the code based on your work.
-to have elegant code and easy error handling.
+@r1 disable optional_qualifier @
+identifier i;
+position p;
+@@
+static struct phy_ops i@p = {...};
 
-Sean
+@ok1@
+identifier r1.i;
+position p;
+@@
+devm_phy_create(...,&i@p)
 
-On Fri, 2017-01-06 at 12:43 +0900, Andi Shyti wrote:
-> Hi Sean,
-> 
-> > +	ir->rc = rc_allocate_device();
-> 
-> Yes, you should use devm_rc_allocate_device(...)
-> 
-> Besides, standing to this patch which is not in yet:
-> 
-> https://lkml.org/lkml/2016/12/18/39
-> 
-> rc_allocate_device should provide the driver type during
-> allocation, so it should be:
-> 
-> 	ir->rc = rc_allocate_device(RC_DRIVER_IR_RAW);
-> 
-> and this line can be removed:
-> 
-> > +	ir->rc->driver_type = RC_DRIVER_IR_RAW;
-> 
-> I don't know when Mauro will take the patch above.
-> 
-> Andi
+@bad@
+position p!={r1.p,ok1.p};
+identifier r1.i;
+@@
+i@p
 
+@depends on !bad disable optional_qualifier@
+identifier r1.i;
+@@
++const
+struct phy_ops i;
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+File size details:
+
+   text	   data	    bss	    dec	    hex	filename
+   1504	    264	      0	   1768	    6e8	phy/phy-bcm-cygnus-pcie.o
+   1576	    192	      0	   1768	    6e8	phy/phy-bcm-cygnus-pcie.o
+
+   1083	    264	      0	   1347	    543	phy/phy-hi6220-usb.o
+   1155	    192	      0	   1347	    543	phy/phy-hi6220-usb.o
+
+   2767	    264	      0	   3031	    bd7	phy/phy-mt65xx-usb3.o
+   2829	    192	      0	   3021	    bcd	phy/phy-mt65xx-usb3.o
+
+   2710	    304	      0	   3014	    bc6	phy/phy-rcar-gen3-usb2.o
+   2766	    240	      0	   3006	    bbe	phy/phy-rcar-gen3-usb2.o
+
+Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
+---
+ drivers/phy/phy-bcm-cygnus-pcie.c | 2 +-
+ drivers/phy/phy-hi6220-usb.c      | 2 +-
+ drivers/phy/phy-mt65xx-usb3.c     | 2 +-
+ drivers/phy/phy-rcar-gen3-usb2.c  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/phy/phy-bcm-cygnus-pcie.c b/drivers/phy/phy-bcm-cygnus-pcie.c
+index 082c03f..0f4ac5d 100644
+--- a/drivers/phy/phy-bcm-cygnus-pcie.c
++++ b/drivers/phy/phy-bcm-cygnus-pcie.c
+@@ -114,7 +114,7 @@ static int cygnus_pcie_phy_power_off(struct phy *p)
+ 	return cygnus_pcie_power_config(phy, false);
+ }
+ 
+-static struct phy_ops cygnus_pcie_phy_ops = {
++static const struct phy_ops cygnus_pcie_phy_ops = {
+ 	.power_on = cygnus_pcie_phy_power_on,
+ 	.power_off = cygnus_pcie_phy_power_off,
+ 	.owner = THIS_MODULE,
+diff --git a/drivers/phy/phy-hi6220-usb.c b/drivers/phy/phy-hi6220-usb.c
+index b2141cb..398c102 100644
+--- a/drivers/phy/phy-hi6220-usb.c
++++ b/drivers/phy/phy-hi6220-usb.c
+@@ -112,7 +112,7 @@ static int hi6220_phy_exit(struct phy *phy)
+ 	return hi6220_phy_setup(priv, false);
+ }
+ 
+-static struct phy_ops hi6220_phy_ops = {
++static const struct phy_ops hi6220_phy_ops = {
+ 	.init		= hi6220_phy_start,
+ 	.exit		= hi6220_phy_exit,
+ 	.owner		= THIS_MODULE,
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index 4d85e73..d972067 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -506,7 +506,7 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
+ 	return instance->phy;
+ }
+ 
+-static struct phy_ops mt65xx_u3phy_ops = {
++static const struct phy_ops mt65xx_u3phy_ops = {
+ 	.init		= mt65xx_phy_init,
+ 	.exit		= mt65xx_phy_exit,
+ 	.power_on	= mt65xx_phy_power_on,
+diff --git a/drivers/phy/phy-rcar-gen3-usb2.c b/drivers/phy/phy-rcar-gen3-usb2.c
+index c63da1b..17be045 100644
+--- a/drivers/phy/phy-rcar-gen3-usb2.c
++++ b/drivers/phy/phy-rcar-gen3-usb2.c
+@@ -350,7 +350,7 @@ static int rcar_gen3_phy_usb2_power_off(struct phy *p)
+ 	return ret;
+ }
+ 
+-static struct phy_ops rcar_gen3_phy_usb2_ops = {
++static const struct phy_ops rcar_gen3_phy_usb2_ops = {
+ 	.init		= rcar_gen3_phy_usb2_init,
+ 	.exit		= rcar_gen3_phy_usb2_exit,
+ 	.power_on	= rcar_gen3_phy_usb2_power_on,
+-- 
+1.9.1
