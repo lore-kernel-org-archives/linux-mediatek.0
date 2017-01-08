@@ -1,86 +1,63 @@
-From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [PATCH 3/4] ARM: dts: mt7623: Add Geek Force config
-Date: Sun,  8 Jan 2017 14:30:59 +0100
-Message-ID: <20170108133100.10428-4-afaerber@suse.de>
-References: <20170108133100.10428-1-afaerber@suse.de>
+From: Sean Young <sean@mess.org>
+Subject: Re: [PATCH 2/2] media: rc: add driver for IR remote receiver on
+ MT7623 SoC
+Date: Sun, 8 Jan 2017 21:16:24 +0000
+Message-ID: <20170108211624.GB7866@gofer.mess.org>
+References: <1483632384-8107-1-git-send-email-sean.wang@mediatek.com>
+ <1483632384-8107-3-git-send-email-sean.wang@mediatek.com>
+ <20170105171240.GA9136@gofer.mess.org>
+ <1483687885.16976.19.camel@mtkswgap22>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170108133100.10428-1-afaerber@suse.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: linux-mediatek@lists.infradead.org
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Paul Lai <paul@asiarf.com>, linux-kernel@vger.kernel.org, Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1483687885.16976.19.camel@mtkswgap22>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: mchehab@osg.samsung.com, hdegoede@redhat.com, hkallweit1@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, andi.shyti@samsung.com, hverkuil@xs4all.nl, ivo.g.dimitrov.75@gmail.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-U2lnbmVkLW9mZi1ieTogQW5kcmVhcyBGw6RyYmVyIDxhZmFlcmJlckBzdXNlLmRlPgotLS0KIGFy
-Y2gvYXJtL2Jvb3QvZHRzL01ha2VmaWxlICAgICAgICAgICAgIHwgIDEgKwogYXJjaC9hcm0vYm9v
-dC9kdHMvbXQ3NjIzLWdlZWtmb3JjZS5kdHMgfCA3NyArKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrCiAyIGZpbGVzIGNoYW5nZWQsIDc4IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBhcmNoL2FybS9ib290L2R0cy9tdDc2MjMtZ2Vla2ZvcmNlLmR0cwoKZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtL2Jvb3QvZHRzL01ha2VmaWxlIGIvYXJjaC9hcm0vYm9vdC9kdHMvTWFrZWZp
-bGUKaW5kZXggZmE2ODg0My4uZmMxZDRiZSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMv
-TWFrZWZpbGUKKysrIGIvYXJjaC9hcm0vYm9vdC9kdHMvTWFrZWZpbGUKQEAgLTk4Nyw2ICs5ODcs
-NyBAQCBkdGItJChDT05GSUdfQVJDSF9NRURJQVRFSykgKz0gXAogCW10NjU4OS1hcXVhcmlzNS5k
-dGIgXAogCW10NjU5Mi1ldmIuZHRiIFwKIAltdDc2MjMtZXZiLmR0YiBcCisJbXQ3NjIzLWdlZWtm
-b3JjZS5kdGIgXAogCW10ODEyNy1tb29zZS5kdGIgXAogCW10ODEzNS1ldmJwMS5kdGIKIGR0Yi0k
-KENPTkZJR19BUkNIX1pYKSArPSB6eDI5NjcwMi1hZDEuZHRiCmRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9ib290L2R0cy9tdDc2MjMtZ2Vla2ZvcmNlLmR0cyBiL2FyY2gvYXJtL2Jvb3QvZHRzL210NzYy
-My1nZWVrZm9yY2UuZHRzCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAuLmFiNGNl
-Y2QKLS0tIC9kZXYvbnVsbAorKysgYi9hcmNoL2FybS9ib290L2R0cy9tdDc2MjMtZ2Vla2ZvcmNl
-LmR0cwpAQCAtMCwwICsxLDc3IEBACisvKgorICogQ29weXJpZ2h0IChjKSAyMDE2LTIwMTcgQW5k
-cmVhcyBGw6RyYmVyCisgKgorICogVGhpcyBmaWxlIGlzIGR1YWwtbGljZW5zZWQ6IHlvdSBjYW4g
-dXNlIGl0IGVpdGhlciB1bmRlciB0aGUgdGVybXMKKyAqIG9mIHRoZSBHUEwgb3IgdGhlIFgxMSBs
-aWNlbnNlLCBhdCB5b3VyIG9wdGlvbi4gTm90ZSB0aGF0IHRoaXMgZHVhbAorICogbGljZW5zaW5n
-IG9ubHkgYXBwbGllcyB0byB0aGlzIGZpbGUsIGFuZCBub3QgdGhpcyBwcm9qZWN0IGFzIGEKKyAq
-IHdob2xlLgorICoKKyAqICBhKSBUaGlzIGZpbGUgaXMgZnJlZSBzb2Z0d2FyZTsgeW91IGNhbiBy
-ZWRpc3RyaWJ1dGUgaXQgYW5kL29yCisgKiAgICAgbW9kaWZ5IGl0IHVuZGVyIHRoZSB0ZXJtcyBv
-ZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYXMKKyAqICAgICBwdWJsaXNoZWQgYnkg
-dGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbjsgZWl0aGVyIHZlcnNpb24gMiBvZiB0aGUKKyAq
-ICAgICBMaWNlbnNlLCBvciAoYXQgeW91ciBvcHRpb24pIGFueSBsYXRlciB2ZXJzaW9uLgorICoK
-KyAqICAgICBUaGlzIGZpbGUgaXMgZGlzdHJpYnV0ZWQgaW4gdGhlIGhvcGUgdGhhdCBpdCB3aWxs
-IGJlIHVzZWZ1bCwKKyAqICAgICBidXQgV0lUSE9VVCBBTlkgV0FSUkFOVFk7IHdpdGhvdXQgZXZl
-biB0aGUgaW1wbGllZCB3YXJyYW50eSBvZgorICogICAgIE1FUkNIQU5UQUJJTElUWSBvciBGSVRO
-RVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0aGUKKyAqICAgICBHTlUgR2VuZXJh
-bCBQdWJsaWMgTGljZW5zZSBmb3IgbW9yZSBkZXRhaWxzLgorICoKKyAqIE9yLCBhbHRlcm5hdGl2
-ZWx5LAorICoKKyAqICBiKSBQZXJtaXNzaW9uIGlzIGhlcmVieSBncmFudGVkLCBmcmVlIG9mIGNo
-YXJnZSwgdG8gYW55IHBlcnNvbgorICogICAgIG9idGFpbmluZyBhIGNvcHkgb2YgdGhpcyBzb2Z0
-d2FyZSBhbmQgYXNzb2NpYXRlZCBkb2N1bWVudGF0aW9uCisgKiAgICAgZmlsZXMgKHRoZSAiU29m
-dHdhcmUiKSwgdG8gZGVhbCBpbiB0aGUgU29mdHdhcmUgd2l0aG91dAorICogICAgIHJlc3RyaWN0
-aW9uLCBpbmNsdWRpbmcgd2l0aG91dCBsaW1pdGF0aW9uIHRoZSByaWdodHMgdG8gdXNlLAorICog
-ICAgIGNvcHksIG1vZGlmeSwgbWVyZ2UsIHB1Ymxpc2gsIGRpc3RyaWJ1dGUsIHN1YmxpY2Vuc2Us
-IGFuZC9vcgorICogICAgIHNlbGwgY29waWVzIG9mIHRoZSBTb2Z0d2FyZSwgYW5kIHRvIHBlcm1p
-dCBwZXJzb25zIHRvIHdob20gdGhlCisgKiAgICAgU29mdHdhcmUgaXMgZnVybmlzaGVkIHRvIGRv
-IHNvLCBzdWJqZWN0IHRvIHRoZSBmb2xsb3dpbmcKKyAqICAgICBjb25kaXRpb25zOgorICoKKyAq
-ICAgICBUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGlj
-ZSBzaGFsbCBiZQorICogICAgIGluY2x1ZGVkIGluIGFsbCBjb3BpZXMgb3Igc3Vic3RhbnRpYWwg
-cG9ydGlvbnMgb2YgdGhlIFNvZnR3YXJlLgorICoKKyAqICAgICBUSEUgU09GVFdBUkUgSVMgUFJP
-VklERUQgIkFTIElTIiwgV0lUSE9VVCBXQVJSQU5UWSBPRiBBTlkgS0lORCwKKyAqICAgICBFWFBS
-RVNTIE9SIElNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJ
-RVMKKyAqICAgICBPRiBNRVJDSEFOVEFCSUxJVFksIEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQ
-VVJQT1NFIEFORAorICogICAgIE5PTklORlJJTkdFTUVOVC4gSU4gTk8gRVZFTlQgU0hBTEwgVEhF
-IEFVVEhPUlMgT1IgQ09QWVJJR0hUCisgKiAgICAgSE9MREVSUyBCRSBMSUFCTEUgRk9SIEFOWSBD
-TEFJTSwgREFNQUdFUyBPUiBPVEhFUiBMSUFCSUxJVFksCisgKiAgICAgV0hFVEhFUiBJTiBBTiBB
-Q1RJT04gT0YgQ09OVFJBQ1QsIFRPUlQgT1IgT1RIRVJXSVNFLCBBUklTSU5HCisgKiAgICAgRlJP
-TSwgT1VUIE9GIE9SIElOIENPTk5FQ1RJT04gV0lUSCBUSEUgU09GVFdBUkUgT1IgVEhFIFVTRSBP
-UgorICogICAgIE9USEVSIERFQUxJTkdTIElOIFRIRSBTT0ZUV0FSRS4KKyAqLworCisvZHRzLXYx
-LzsKKworI2luY2x1ZGUgIm10NzYyMy5kdHNpIgorCisvIHsKKwltb2RlbCA9ICJBc2lhUkYgR2Vl
-ayBGb3JjZSI7CisJY29tcGF0aWJsZSA9ICJhc2lhcmYsZ2Vla2ZvcmNlIiwgIm1lZGlhdGVrLG10
-NzYyMyI7CisKKwlhbGlhc2VzIHsKKwkJc2VyaWFsMCA9ICZ1YXJ0MDsKKwkJc2VyaWFsMSA9ICZ1
-YXJ0MTsKKwkJc2VyaWFsMiA9ICZ1YXJ0MjsKKwl9OworCisJY2hvc2VuIHsKKwkJc3Rkb3V0LXBh
-dGggPSAic2VyaWFsMjoxMTUyMDBuOCI7CisJfTsKKworCW1lbW9yeSB7CisJCXJlZyA9IDwwIDB4
-ODAwMDAwMDAgMCAweDQwMDAwMDAwPjsKKwl9OworfTsKKworLyogb24gUmFzcGJlcnJ5IFBpIGNv
-bm5lY3RvciAqLworJnVhcnQwIHsKKwlzdGF0dXMgPSAib2theSI7Cit9OworCismdWFydDEgewor
-CXN0YXR1cyA9ICJva2F5IjsKK307CisKKyZ1YXJ0MiB7CisJc3RhdHVzID0gIm9rYXkiOworfTsK
-LS0gCjIuMTAuMgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LWFybS1rZXJuZWwK
+Hi Sean,
+
+On Fri, Jan 06, 2017 at 03:31:25PM +0800, Sean Wang wrote:
+> On Thu, 2017-01-05 at 17:12 +0000, Sean Young wrote:
+> > On Fri, Jan 06, 2017 at 12:06:24AM +0800, sean.wang@mediatek.com wrote:
+> > > +	/* Handle pulse and space until end of message */
+> > > +	for (i = 0 ; i < MTK_CHKDATA_SZ ; i++) {
+> > > +		val = mtk_r32(ir, MTK_CHKDATA_REG(i));
+> > > +		dev_dbg(ir->dev, "@reg%d=0x%08x\n", i, val);
+> > > +
+> > > +		for (j = 0 ; j < 4 ; j++) {
+> > > +			wid = (val & (0xff << j * 8)) >> j * 8;
+> > > +			rawir.pulse = !rawir.pulse;
+> > > +			rawir.duration = wid * (MTK_IR_SAMPLE + 1);
+> > > +			ir_raw_event_store_with_filter(ir->rc, &rawir);
+> > > +
+> > > +			if (MTK_IR_END(wid))
+> > > +				goto end_msg;
+> > > +		}
+> > > +	}
+> > 
+> > If I read this correctly, there is a maximum of 17 * 4 = 68 edges per
+> > IR message. The rc6 mce key 0 (scancode 0x800f0400) is 69 edges, so that
+> > won't work.
+> > 
+> Uh, this is related to hardware limitation. Maximum number hardware
+> holds indeed is only 68 edges as you said :( 
+> 
+> For the case, I will try change the logic into that the whole message 
+> is dropped if no end of message is seen within 68 counts to avoid
+> wasting CPU for decoding. 
+
+I'm not sure it is worthwhile dropping the IR in that case. The processing
+is minimal and it might be possible that we have just enough IR to decode
+a scancode even if the trailing end of message is missing. Note that
+the call to ir_raw_event_set_idle() will generate an timeout IR event, so
+there will always be an end of message marker.
+
+All I wanted to do was point out a limitation in case there is a
+workaround; if there is not then we might as well make do with the IR
+we do have.
+
+Thanks
+Sean
