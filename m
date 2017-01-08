@@ -1,128 +1,35 @@
-From: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] drivers: phy: constify phy_ops structures
-Date: Sun,  8 Jan 2017 16:05:56 +0530
-Message-ID: <1483871756-19008-1-git-send-email-bhumirks@gmail.com>
+From: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: [PATCH 0/4] ARM: dts: mt7623: Add initial Geek Force support
+Date: Sun,  8 Jan 2017 14:30:56 +0100
+Message-ID: <20170108133100.10428-1-afaerber@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: julia.lawall@lip6.fr, kishon@ti.com, rjui@broadcom.com, sbranden@broadcom.com, jonmason@broadcom.com, bcm-kernel-feedback-list@broadcom.com, chunfeng.yun@mediatek.com, yoshihiro.shimoda.uh@renesas.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Lai <paul-37fROp6E04DQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Declare phy_ops structures as const as they are only passed as an
-argument to the function devm_phy_create. This argument is of type const
-struct phy_ops *, so phy_ops structures having this property can be
-declared as const.
-Done using Coccinelle:
 
-@r1 disable optional_qualifier @
-identifier i;
-position p;
-@@
-static struct phy_ops i@p = {...};
+Andreas Färber (4):
+  Documentation: devicetree: Add vendor prefix for AsiaRF
+  Documentation: devicetree: arm: mediatek: Add Geek Force board
+  ARM: dts: mt7623: Add Geek Force config
+  MAINTAINERS: Extend ARM/Mediatek SoC support section
 
-@ok1@
-identifier r1.i;
-position p;
-@@
-devm_phy_create(...,&i@p)
+ Documentation/devicetree/bindings/arm/mediatek.txt |  3 +
+ .../devicetree/bindings/vendor-prefixes.txt        |  1 +
+ MAINTAINERS                                        |  2 +
+ arch/arm/boot/dts/Makefile                         |  1 +
+ arch/arm/boot/dts/mt7623-geekforce.dts             | 77 ++++++++++++++++++++++
+ 5 files changed, 84 insertions(+)
+ create mode 100644 arch/arm/boot/dts/mt7623-geekforce.dts
 
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
-
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct phy_ops i;
-
-File size details:
-
-   text	   data	    bss	    dec	    hex	filename
-   1504	    264	      0	   1768	    6e8	phy/phy-bcm-cygnus-pcie.o
-   1576	    192	      0	   1768	    6e8	phy/phy-bcm-cygnus-pcie.o
-
-   1083	    264	      0	   1347	    543	phy/phy-hi6220-usb.o
-   1155	    192	      0	   1347	    543	phy/phy-hi6220-usb.o
-
-   2767	    264	      0	   3031	    bd7	phy/phy-mt65xx-usb3.o
-   2829	    192	      0	   3021	    bcd	phy/phy-mt65xx-usb3.o
-
-   2710	    304	      0	   3014	    bc6	phy/phy-rcar-gen3-usb2.o
-   2766	    240	      0	   3006	    bbe	phy/phy-rcar-gen3-usb2.o
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/phy/phy-bcm-cygnus-pcie.c | 2 +-
- drivers/phy/phy-hi6220-usb.c      | 2 +-
- drivers/phy/phy-mt65xx-usb3.c     | 2 +-
- drivers/phy/phy-rcar-gen3-usb2.c  | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/phy/phy-bcm-cygnus-pcie.c b/drivers/phy/phy-bcm-cygnus-pcie.c
-index 082c03f..0f4ac5d 100644
---- a/drivers/phy/phy-bcm-cygnus-pcie.c
-+++ b/drivers/phy/phy-bcm-cygnus-pcie.c
-@@ -114,7 +114,7 @@ static int cygnus_pcie_phy_power_off(struct phy *p)
- 	return cygnus_pcie_power_config(phy, false);
- }
- 
--static struct phy_ops cygnus_pcie_phy_ops = {
-+static const struct phy_ops cygnus_pcie_phy_ops = {
- 	.power_on = cygnus_pcie_phy_power_on,
- 	.power_off = cygnus_pcie_phy_power_off,
- 	.owner = THIS_MODULE,
-diff --git a/drivers/phy/phy-hi6220-usb.c b/drivers/phy/phy-hi6220-usb.c
-index b2141cb..398c102 100644
---- a/drivers/phy/phy-hi6220-usb.c
-+++ b/drivers/phy/phy-hi6220-usb.c
-@@ -112,7 +112,7 @@ static int hi6220_phy_exit(struct phy *phy)
- 	return hi6220_phy_setup(priv, false);
- }
- 
--static struct phy_ops hi6220_phy_ops = {
-+static const struct phy_ops hi6220_phy_ops = {
- 	.init		= hi6220_phy_start,
- 	.exit		= hi6220_phy_exit,
- 	.owner		= THIS_MODULE,
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index 4d85e73..d972067 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -506,7 +506,7 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 	return instance->phy;
- }
- 
--static struct phy_ops mt65xx_u3phy_ops = {
-+static const struct phy_ops mt65xx_u3phy_ops = {
- 	.init		= mt65xx_phy_init,
- 	.exit		= mt65xx_phy_exit,
- 	.power_on	= mt65xx_phy_power_on,
-diff --git a/drivers/phy/phy-rcar-gen3-usb2.c b/drivers/phy/phy-rcar-gen3-usb2.c
-index c63da1b..17be045 100644
---- a/drivers/phy/phy-rcar-gen3-usb2.c
-+++ b/drivers/phy/phy-rcar-gen3-usb2.c
-@@ -350,7 +350,7 @@ static int rcar_gen3_phy_usb2_power_off(struct phy *p)
- 	return ret;
- }
- 
--static struct phy_ops rcar_gen3_phy_usb2_ops = {
-+static const struct phy_ops rcar_gen3_phy_usb2_ops = {
- 	.init		= rcar_gen3_phy_usb2_init,
- 	.exit		= rcar_gen3_phy_usb2_exit,
- 	.power_on	= rcar_gen3_phy_usb2_power_on,
 -- 
-1.9.1
+2.10.2
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
