@@ -1,8 +1,8 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
 Subject: Re: [PATCH v6 3/3] arm: dts: mt2701: Add node for Mediatek JPEG
  Decoder
-Date: Mon, 9 Jan 2017 19:45:36 +0100
-Message-ID: <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
+Date: Mon, 9 Jan 2017 19:47:32 +0100
+Message-ID: <8eefb7b1-94a9-feb5-3d69-51563b2e9d5e@gmail.com>
 References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
  <1479353915-5043-4-git-send-email-rick.chang@mediatek.com>
  <d602365a-e87b-5bae-8698-bd43063ef079@xs4all.nl>
@@ -11,47 +11,57 @@ References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
  <1479866054.8964.21.camel@mtksdaap41> <1479894203.8964.29.camel@mtksdaap41>
  <1483670099.18931.5.camel@mtksdaap41>
  <974d20f3-5133-0869-2a35-c1617bec5d6e@xs4all.nl>
+ <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <974d20f3-5133-0869-2a35-c1617bec5d6e-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Rick Chang <rick.chang@mediatek.com>
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 09/01/17 12:29, Hans Verkuil wrote:
-> Hi Rick,
+On 09/01/17 19:45, Matthias Brugger wrote:
 >
-> On 01/06/2017 03:34 AM, Rick Chang wrote:
->> Hi Hans,
+>
+> On 09/01/17 12:29, Hans Verkuil wrote:
+>> Hi Rick,
 >>
->> The dependence on [1] has been merged in 4.10, but [2] has not.Do you have
->> any idea about this patch series? Should we wait for [2] or we could merge
->> the source code and dt-binding first?
+>> On 01/06/2017 03:34 AM, Rick Chang wrote:
+>>> Hi Hans,
+>>>
+>>> The dependence on [1] has been merged in 4.10, but [2] has not.Do you
+>>> have
+>>> any idea about this patch series? Should we wait for [2] or we could
+>>> merge
+>>> the source code and dt-binding first?
+>>
+>> Looking at [2] I noticed that the last comment was July 4th. What is
+>> the reason
+>> it hasn't been merged yet?
+>>
+>> If I know [2] will be merged for 4.11, then I am fine with merging
+>> this media
+>> patch series. The dependency of this patch on [2] is something Mauro
+>> can handle.
+>>
+>> If [2] is not merged for 4.11, then I think it is better to wait until
+>> it is
+>> merged.
+>>
 >
-> Looking at [2] I noticed that the last comment was July 4th. What is the reason
-> it hasn't been merged yet?
+> I can't take [2] because there is no scpsys in the dts present. It seems
+> that it got never posted.
 >
-> If I know [2] will be merged for 4.11, then I am fine with merging this media
-> patch series. The dependency of this patch on [2] is something Mauro can handle.
->
-> If [2] is not merged for 4.11, then I think it is better to wait until it is
-> merged.
+> Rick can you please follow-up with James and provide a patch which adds
+> a scpsys node to the mt2701.dtsi?
 >
 
-I can't take [2] because there is no scpsys in the dts present. It seems 
-that it got never posted.
-
-Rick can you please follow-up with James and provide a patch which adds 
-a scpsys node to the mt2701.dtsi?
+Ah I forgot, dts patches should go through my tree, so Hans please don't 
+merge this patch. Bindings should go through your branch though.
 
 Thanks,
 Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
