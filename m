@@ -1,71 +1,56 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: devicetree: Add document bindings for
- mtk-cir
-Date: Mon, 9 Jan 2017 12:32:14 -0600
-Message-ID: <20170109183214.xonv52sn3fo4exqp@rob-hp-laptop>
-References: <1483632384-8107-1-git-send-email-sean.wang@mediatek.com>
- <1483632384-8107-2-git-send-email-sean.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v6 3/3] arm: dts: mt2701: Add node for Mediatek JPEG
+ Decoder
+Date: Mon, 9 Jan 2017 19:45:36 +0100
+Message-ID: <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
+References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
+ <1479353915-5043-4-git-send-email-rick.chang@mediatek.com>
+ <d602365a-e87b-5bae-8698-bd43063ef079@xs4all.nl>
+ <1479784905.8964.15.camel@mtksdaap41>
+ <badf8125-27ed-9c5b-fbc0-75716ffdfb0e@xs4all.nl>
+ <1479866054.8964.21.camel@mtksdaap41> <1479894203.8964.29.camel@mtksdaap41>
+ <1483670099.18931.5.camel@mtksdaap41>
+ <974d20f3-5133-0869-2a35-c1617bec5d6e@xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1483632384-8107-2-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <974d20f3-5133-0869-2a35-c1617bec5d6e-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
-Cc: mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+To: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 06, 2017 at 12:06:23AM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
-> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> 
-> This patch adds documentation for devicetree bindings for
-> Mediatek IR controller.
-> 
-> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/media/mtk-cir.txt          | 23 ++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
->  create mode 100644 linux-4.8.rc1_p0/Documentation/devicetree/bindings/media/mtk-cir.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mtk-cir.txt b/Documentation/devicetree/bindings/media/mtk-cir.txt
-> new file mode 100644
-> index 0000000..bbedd71
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/mtk-cir.txt
-> @@ -0,0 +1,23 @@
-> +Device-Tree bindings for Mediatek IR controller found in Mediatek SoC family
-> +
-> +Required properties:
-> +- compatible	    : "mediatek,mt7623-ir"
-> +- clocks	    : list of clock specifiers, corresponding to
-> +		      entries in clock-names property;
-> +- clock-names	    : should contain "clk" entries;
-> +- interrupts	    : should contain IR IRQ number;
-> +- reg		    : should contain IO map address for IR.
-> +
-> +Optional properties:
-> +- linux,rc-map-name : Remote control map name.
 
-Would 'label' be appropriate here instead? If not, this needs to be 
-documented in a common location and explained better.
 
-> +
-> +Example:
-> +
-> +cir: cir@0x10013000 {
+On 09/01/17 12:29, Hans Verkuil wrote:
+> Hi Rick,
+>
+> On 01/06/2017 03:34 AM, Rick Chang wrote:
+>> Hi Hans,
+>>
+>> The dependence on [1] has been merged in 4.10, but [2] has not.Do you have
+>> any idea about this patch series? Should we wait for [2] or we could merge
+>> the source code and dt-binding first?
+>
+> Looking at [2] I noticed that the last comment was July 4th. What is the reason
+> it hasn't been merged yet?
+>
+> If I know [2] will be merged for 4.11, then I am fine with merging this media
+> patch series. The dependency of this patch on [2] is something Mauro can handle.
+>
+> If [2] is not merged for 4.11, then I think it is better to wait until it is
+> merged.
+>
 
-Drop the '0x'.
+I can't take [2] because there is no scpsys in the dts present. It seems 
+that it got never posted.
 
-> +	compatible = "mediatek,mt7623-ir";
-> +	reg = <0 0x10013000 0 0x1000>;
-> +	interrupts = <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
-> +	clocks = <&infracfg CLK_INFRA_IRRX>;
-> +	clock-names = "clk";
-> +	linux,rc-map-name = "rc-rc6-mce";
-> +};
-> -- 
-> 1.9.1
-> 
+Rick can you please follow-up with James and provide a patch which adds 
+a scpsys node to the mt2701.dtsi?
+
+Thanks,
+Matthias
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
