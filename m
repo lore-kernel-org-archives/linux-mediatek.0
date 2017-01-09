@@ -1,44 +1,72 @@
-From: Sean Young <sean@mess.org>
-Subject: Re: [PATCH 2/2] media: rc: add driver for IR remote receiver on
- MT7623 SoC
-Date: Mon, 9 Jan 2017 12:39:42 +0000
-Message-ID: <20170109123942.GA15215@gofer.mess.org>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] Documentation: devicetree: Add document bindings for
+ mtk-cir
+Date: Mon, 9 Jan 2017 12:32:14 -0600
+Message-ID: <20170109183214.xonv52sn3fo4exqp@rob-hp-laptop>
 References: <1483632384-8107-1-git-send-email-sean.wang@mediatek.com>
- <1483632384-8107-3-git-send-email-sean.wang@mediatek.com>
- <20170105171240.GA9136@gofer.mess.org>
- <1483687885.16976.19.camel@mtkswgap22>
- <20170108211624.GB7866@gofer.mess.org>
- <1483931601.16976.48.camel@mtkswgap22>
+ <1483632384-8107-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1483931601.16976.48.camel@mtkswgap22>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, ivo.g.dimitrov.75@gmail.com, keyhaede@gmail.com, mchehab@osg.samsung.com, linux-kernel@vger.kernel.org, andi.shyti@samsung.com, hverkuil@xs4all.nl, hdegoede@redhat.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
+In-Reply-To: <1483632384-8107-2-git-send-email-sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Cc: mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 09, 2017 at 11:13:21AM +0800, Sean Wang wrote:
-> I had another question. I found multiple and same IR messages being
-> received when using SONY remote controller. Should driver needs to
-> report each message or only one of these to the upper layer ?
+On Fri, Jan 06, 2017 at 12:06:23AM +0800, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> From: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> 
+> This patch adds documentation for devicetree bindings for
+> Mediatek IR controller.
+> 
+> Signed-off-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/media/mtk-cir.txt          | 23 ++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+>  create mode 100644 linux-4.8.rc1_p0/Documentation/devicetree/bindings/media/mtk-cir.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mtk-cir.txt b/Documentation/devicetree/bindings/media/mtk-cir.txt
+> new file mode 100644
+> index 0000000..bbedd71
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mtk-cir.txt
+> @@ -0,0 +1,23 @@
+> +Device-Tree bindings for Mediatek IR controller found in Mediatek SoC family
+> +
+> +Required properties:
+> +- compatible	    : "mediatek,mt7623-ir"
+> +- clocks	    : list of clock specifiers, corresponding to
+> +		      entries in clock-names property;
+> +- clock-names	    : should contain "clk" entries;
+> +- interrupts	    : should contain IR IRQ number;
+> +- reg		    : should contain IO map address for IR.
+> +
+> +Optional properties:
+> +- linux,rc-map-name : Remote control map name.
 
-In general the driver shouldn't try to change any IR message, this should
-be done in rc-core if necessary.
+Would 'label' be appropriate here instead? If not, this needs to be 
+documented in a common location and explained better.
 
-rc-core should handle this correctly. If the same key is received twice
-within IR_KEYPRESS_TIMEOUT (250ms) then it not reported to the input
-layer.
+> +
+> +Example:
+> +
+> +cir: cir@0x10013000 {
 
-Thanks
-Sean
+Drop the '0x'.
+
+> +	compatible = "mediatek,mt7623-ir";
+> +	reg = <0 0x10013000 0 0x1000>;
+> +	interrupts = <GIC_SPI 87 IRQ_TYPE_LEVEL_LOW>;
+> +	clocks = <&infracfg CLK_INFRA_IRRX>;
+> +	clock-names = "clk";
+> +	linux,rc-map-name = "rc-rc6-mce";
+> +};
+> -- 
+> 1.9.1
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
