@@ -1,91 +1,103 @@
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 Subject: Re: [PATCH 0/4] ARM: dts: mt7623: Add initial Geek Force support
-Date: Tue, 10 Jan 2017 10:48:47 +0100
-Message-ID: <d6bd3783-d124-9871-d3b4-93e366517895@suse.de>
+Date: Tue, 10 Jan 2017 11:06:51 +0100
+Message-ID: <c284189d-bc50-221c-8072-3538e9ed5cd3@phrozen.org>
 References: <20170108133100.10428-1-afaerber@suse.de>
  <91f5ec74-1aa1-f2ad-24e9-14267cbe8498@phrozen.org>
+ <d6bd3783-d124-9871-d3b4-93e366517895@suse.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <91f5ec74-1aa1-f2ad-24e9-14267cbe8498@phrozen.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <john@phrozen.org>, linux-mediatek@lists.infradead.org
-Cc: devicetree@vger.kernel.org, Paul Lai <paul@asiarf.com>, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <d6bd3783-d124-9871-d3b4-93e366517895-l3A5Bk7waGM@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
-
-Am 10.01.2017 um 08:00 schrieb John Crispin:
-> On 08/01/2017 14:30, Andreas Färber wrote:
->>
->> Andreas Färber (4):
->>   Documentation: devicetree: Add vendor prefix for AsiaRF
->>   Documentation: devicetree: arm: mediatek: Add Geek Force board
->>   ARM: dts: mt7623: Add Geek Force config
->>   MAINTAINERS: Extend ARM/Mediatek SoC support section
->>
-> 
-> Hi,
-> 
-> i need to NAK this series. the asiarf board is nothing more than the
-> official MTK EVB with AsiaRF written on it. this board is already
-> supported by linux (arch/arm/boot/dts/mt7623-evb.dts) please extend the
-> EVB dts file nstead of adding a duplicate and letting the original bitrot.
-
-Well, I disagree.
-
-First of all I'm not letting "the original" bitrot, because I have
-nothing to do with that .dts! If anyone is to blame for letting it
-bitrot since February 2016, pick your own nose:
-
-http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/log/arch/arm/boot/dts/mt7623-evb.dts
-
-Second, I have no Mediatek documentation or even picture to identify any
-similarities between my board and that Mediatek EVB, so no, I can't hack
-on the -evb.dts file. I wrote my .dts from scratch, not even having
-access to /proc/device-tree on its 3.10 kernel for comparison.
-
-Third, by your argumentation we shouldn't be adding, e.g., Odroid .dts
-files either because they were based on a Samsung SMDK, or .dts files
-for Amlogic TV boxes because they're almost identical to reference
-designs, etc.
-Users need to know which .dts file to choose, so having a sane .dts
-filename is warranted. Depending on how similar they are, one could
-either #include the -evb.dts or factor out a shared .dtsi, but that
-takes us back to the previous point of hardly anyone having access to
-EVB information to identify such a subset. Therefore duplicating trivial
-nodes is the method of choice for all practical purposes - mt7623.dtsi
-is getting reused just fine.
-
-Comparing our two .dts files, mine has two more UART nodes enabled, the
-U-Boot bootloader's baudrate set to actually get serial output, a
-different board compatible string for identification, and I chose the
-new dual-licensing header that is being requested for new DT files.
-
-For lack of schematics I figured out UART1 by testing - continuity tests
-for GND, console=ttySx,115200n8 and trial-and-error for RX/TX. Obviously
-I can't do that for a board I don't have access to.
-UART2 and UART0 pins were clear, but only UART2 was obvious from ttyMT2.
-
-Do you actually have access to a Geek Force board yourself, or what are
-you basing your claims on? Mine looks different from the Indiegogo
-picture and thus has different identification from that on
-https://wikidevi.com/wiki/AsiaRF_WS2977 (WS3301, MT7623N RFB_V10).
-
-If you confirm the EVB's baudrate I can happily send that part your way.
-I've seen 921600 on the Helio X20 96board for instance.
-
-Also, none of what you've said justifies NAK'ing patch 4/4, which
-applies to any mt7* and arm64 .dts, including yours.
-
-While we're at it, I noticed that mainline has a "mediatek,mt7623-eth"
-network driver but no corresponding .dtsi node. Talk about bitrot...
-
-Regards,
-Andreas
-
--- 
-SUSE Linux GmbH, Maxfeldstr. 5, 90409 Nürnberg, Germany
-GF: Felix Imendörffer, Jane Smithard, Graham Norton
-HRB 21284 (AG Nürnberg)
+CgpPbiAxMC8wMS8yMDE3IDEwOjQ4LCBBbmRyZWFzIEbDpHJiZXIgd3JvdGU6Cj4gSGksCj4gCj4g
+QW0gMTAuMDEuMjAxNyB1bSAwODowMCBzY2hyaWViIEpvaG4gQ3Jpc3BpbjoKPj4gT24gMDgvMDEv
+MjAxNyAxNDozMCwgQW5kcmVhcyBGw6RyYmVyIHdyb3RlOgo+Pj4KPj4+IEFuZHJlYXMgRsOkcmJl
+ciAoNCk6Cj4+PiAgIERvY3VtZW50YXRpb246IGRldmljZXRyZWU6IEFkZCB2ZW5kb3IgcHJlZml4
+IGZvciBBc2lhUkYKPj4+ICAgRG9jdW1lbnRhdGlvbjogZGV2aWNldHJlZTogYXJtOiBtZWRpYXRl
+azogQWRkIEdlZWsgRm9yY2UgYm9hcmQKPj4+ICAgQVJNOiBkdHM6IG10NzYyMzogQWRkIEdlZWsg
+Rm9yY2UgY29uZmlnCj4+PiAgIE1BSU5UQUlORVJTOiBFeHRlbmQgQVJNL01lZGlhdGVrIFNvQyBz
+dXBwb3J0IHNlY3Rpb24KPj4+Cj4+Cj4+IEhpLAo+Pgo+PiBpIG5lZWQgdG8gTkFLIHRoaXMgc2Vy
+aWVzLiB0aGUgYXNpYXJmIGJvYXJkIGlzIG5vdGhpbmcgbW9yZSB0aGFuIHRoZQo+PiBvZmZpY2lh
+bCBNVEsgRVZCIHdpdGggQXNpYVJGIHdyaXR0ZW4gb24gaXQuIHRoaXMgYm9hcmQgaXMgYWxyZWFk
+eQo+PiBzdXBwb3J0ZWQgYnkgbGludXggKGFyY2gvYXJtL2Jvb3QvZHRzL210NzYyMy1ldmIuZHRz
+KSBwbGVhc2UgZXh0ZW5kIHRoZQo+PiBFVkIgZHRzIGZpbGUgbnN0ZWFkIG9mIGFkZGluZyBhIGR1
+cGxpY2F0ZSBhbmQgbGV0dGluZyB0aGUgb3JpZ2luYWwgYml0cm90Lgo+IAo+IFdlbGwsIEkgZGlz
+YWdyZWUuCgpyZWFkaW5nIHRoZSByZXN0IG9mIHRoZSBlbWFpbCB5b3Ugc2VlbSB0byBiZSBxdWl0
+ZSBhZ3JvIGFib3V0IHRoaXMuCgo+IAo+IEZpcnN0IG9mIGFsbCBJJ20gbm90IGxldHRpbmcgInRo
+ZSBvcmlnaW5hbCIgYml0cm90LCBiZWNhdXNlIEkgaGF2ZQo+IG5vdGhpbmcgdG8gZG8gd2l0aCB0
+aGF0IC5kdHMhIElmIGFueW9uZSBpcyB0byBibGFtZSBmb3IgbGV0dGluZyBpdAo+IGJpdHJvdCBz
+aW5jZSBGZWJydWFyeSAyMDE2LCBwaWNrIHlvdXIgb3duIG5vc2U6Cj4KPiBodHRwOi8vZ2l0Lmtl
+cm5lbC5vcmcvY2dpdC9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9sb2cvYXJj
+aC9hcm0vYm9vdC9kdHMvbXQ3NjIzLWV2Yi5kdHMKCndoYXQgc2hvdWxkIGkgcGljayBteSBub3Nl
+IGFib3V0ID8gaSBtYWRlIG10NzYyMyB3b3JrLCB0aGVuIHdhaXRlZCBmb3IKNC4xMC1yYzEgdG8g
+YmUgb3V0IGZvciBjbGstbXQyNzAxIHNvIHRoYXQgaSBjYW4gY29udGludWUgYWRkaW5nIHRoZQpt
+aXNzaW5nIHN1cHBvcnQKCgo+IFNlY29uZCwgSSBoYXZlIG5vIE1lZGlhdGVrIGRvY3VtZW50YXRp
+b24gb3IgZXZlbiBwaWN0dXJlIHRvIGlkZW50aWZ5IGFueQo+IHNpbWlsYXJpdGllcyBiZXR3ZWVu
+IG15IGJvYXJkIGFuZCB0aGF0IE1lZGlhdGVrIEVWQiwgc28gbm8sIEkgY2FuJ3QgaGFjawo+IG9u
+IHRoZSAtZXZiLmR0cyBmaWxlLiBJIHdyb3RlIG15IC5kdHMgZnJvbSBzY3JhdGNoLCBub3QgZXZl
+biBoYXZpbmcKPiBhY2Nlc3MgdG8gL3Byb2MvZGV2aWNlLXRyZWUgb24gaXRzIDMuMTAga2VybmVs
+IGZvciBjb21wYXJpc29uLgoKb2ssIHRoYXQgaW5mbyBpcyBtb3N0IGxpa2VseSB1bmRlciBOREEK
+Cj4gCj4gVGhpcmQsIGJ5IHlvdXIgYXJndW1lbnRhdGlvbiB3ZSBzaG91bGRuJ3QgYmUgYWRkaW5n
+LCBlLmcuLCBPZHJvaWQgLmR0cwo+IGZpbGVzIGVpdGhlciBiZWNhdXNlIHRoZXkgd2VyZSBiYXNl
+ZCBvbiBhIFNhbXN1bmcgU01ESywgb3IgLmR0cyBmaWxlcwo+IGZvciBBbWxvZ2ljIFRWIGJveGVz
+IGJlY2F1c2UgdGhleSdyZSBhbG1vc3QgaWRlbnRpY2FsIHRvIHJlZmVyZW5jZQo+IGRlc2lnbnMs
+IGV0Yy4KPiBVc2VycyBuZWVkIHRvIGtub3cgd2hpY2ggLmR0cyBmaWxlIHRvIGNob29zZSwgc28g
+aGF2aW5nIGEgc2FuZSAuZHRzCj4gZmlsZW5hbWUgaXMgd2FycmFudGVkLiBEZXBlbmRpbmcgb24g
+aG93IHNpbWlsYXIgdGhleSBhcmUsIG9uZSBjb3VsZAo+IGVpdGhlciAjaW5jbHVkZSB0aGUgLWV2
+Yi5kdHMgb3IgZmFjdG9yIG91dCBhIHNoYXJlZCAuZHRzaSwgYnV0IHRoYXQKPiB0YWtlcyB1cyBi
+YWNrIHRvIHRoZSBwcmV2aW91cyBwb2ludCBvZiBoYXJkbHkgYW55b25lIGhhdmluZyBhY2Nlc3Mg
+dG8KPiBFVkIgaW5mb3JtYXRpb24gdG8gaWRlbnRpZnkgc3VjaCBhIHN1YnNldC4gVGhlcmVmb3Jl
+IGR1cGxpY2F0aW5nIHRyaXZpYWwKPiBub2RlcyBpcyB0aGUgbWV0aG9kIG9mIGNob2ljZSBmb3Ig
+YWxsIHByYWN0aWNhbCBwdXJwb3NlcyAtIG10NzYyMy5kdHNpCj4gaXMgZ2V0dGluZyByZXVzZWQg
+anVzdCBmaW5lLgo+IAoKaW4gdGhhdCBjYXNlIGFkZCBhIGR0c2kgZmlsZSBmb3IgdGhlIEVWQiBh
+bmQgaW5jbHVkZSBpdCBpbiB5b3VyIGdlZWsKYm9hcmQuZHRzIGFuZCBvbmx5IHVwZGF0ZSB0aGUg
+Y29tcGF0IHN0cmluZy4KCj4gQ29tcGFyaW5nIG91ciB0d28gLmR0cyBmaWxlcywgbWluZSBoYXMg
+dHdvIG1vcmUgVUFSVCBub2RlcyBlbmFibGVkLCB0aGUKPiBVLUJvb3QgYm9vdGxvYWRlcidzIGJh
+dWRyYXRlIHNldCB0byBhY3R1YWxseSBnZXQgc2VyaWFsIG91dHB1dCwgYQo+IGRpZmZlcmVudCBi
+b2FyZCBjb21wYXRpYmxlIHN0cmluZyBmb3IgaWRlbnRpZmljYXRpb24sIGFuZCBJIGNob3NlIHRo
+ZQo+IG5ldyBkdWFsLWxpY2Vuc2luZyBoZWFkZXIgdGhhdCBpcyBiZWluZyByZXF1ZXN0ZWQgZm9y
+IG5ldyBEVCBmaWxlcy4KCjEpIGF0IHRoZSB0aW1lIHdlIGFkZGUgdGhpcyB0aGUgdWFydCBzdXBw
+b3J0IHdhcyBub3QgcmVhZHkKMikgdGhlIGJvb3Rsb2FkZXIgaSBhbSB1c2luZyBpcyBhIGN1c3Rv
+bSBidWlsdCBvbmUgaGVuY2UgdGhlIHJhbmRvbSBiYXVkcmF0ZQozKSB5b3UgY2FuIGp1c3QgdXBk
+YWUgdGhlIGxpY2Vuc2UgaWYgeW91IHdhbnQgdG8sIG5vIHByb2JsZW0KCj4gRm9yIGxhY2sgb2Yg
+c2NoZW1hdGljcyBJIGZpZ3VyZWQgb3V0IFVBUlQxIGJ5IHRlc3RpbmcgLSBjb250aW51aXR5IHRl
+c3RzCj4gZm9yIEdORCwgY29uc29sZT10dHlTeCwxMTUyMDBuOCBhbmQgdHJpYWwtYW5kLWVycm9y
+IGZvciBSWC9UWC4gT2J2aW91c2x5Cj4gSSBjYW4ndCBkbyB0aGF0IGZvciBhIGJvYXJkIEkgZG9u
+J3QgaGF2ZSBhY2Nlc3MgdG8uCj4gVUFSVDIgYW5kIFVBUlQwIHBpbnMgd2VyZSBjbGVhciwgYnV0
+IG9ubHkgVUFSVDIgd2FzIG9idmlvdXMgZnJvbSB0dHlNVDIuCgp5b3UgZG8gaGF2ZSB0aGUgRVZC
+IGRpcmVjdGx5IGluIGZyb250IG9mIHlvdSA7KQoKPiBEbyB5b3UgYWN0dWFsbHkgaGF2ZSBhY2Nl
+c3MgdG8gYSBHZWVrIEZvcmNlIGJvYXJkIHlvdXJzZWxmLCBvciB3aGF0IGFyZQo+IHlvdSBiYXNp
+bmcgeW91ciBjbGFpbXMgb24/IE1pbmUgbG9va3MgZGlmZmVyZW50IGZyb20gdGhlIEluZGllZ29n
+bwo+IHBpY3R1cmUgYW5kIHRodXMgaGFzIGRpZmZlcmVudCBpZGVudGlmaWNhdGlvbiBmcm9tIHRo
+YXQgb24KPiBodHRwczovL3dpa2lkZXZpLmNvbS93aWtpL0FzaWFSRl9XUzI5NzcgKFdTMzMwMSwg
+TVQ3NjIzTiBSRkJfVjEwKS4KCmkgZG9udCBuZWVkIHRoZSBnZWVrIGJvYXJkIGFzIGkgaGF2ZSB0
+aGUgRVZCIGFuZCB0aGV5IGFyZSBpZGVudGljYWwKYWNjb3JkaW5nIHRvIE1USwoKPiBJZiB5b3Ug
+Y29uZmlybSB0aGUgRVZCJ3MgYmF1ZHJhdGUgSSBjYW4gaGFwcGlseSBzZW5kIHRoYXQgcGFydCB5
+b3VyIHdheS4KPiBJJ3ZlIHNlZW4gOTIxNjAwIG9uIHRoZSBIZWxpbyBYMjAgOTZib2FyZCBmb3Ig
+aW5zdGFuY2UuCgpzZWUgYWJvdmUKCj4gQWxzbywgbm9uZSBvZiB3aGF0IHlvdSd2ZSBzYWlkIGp1
+c3RpZmllcyBOQUsnaW5nIHBhdGNoIDQvNCwgd2hpY2gKPiBhcHBsaWVzIHRvIGFueSBtdDcqIGFu
+ZCBhcm02NCAuZHRzLCBpbmNsdWRpbmcgeW91cnMuCgphZ3JlZWQsIGkgbmV2ZXIgZXZlbiBtZW50
+aW9uZWQgNC80Cgo+IFdoaWxlIHdlJ3JlIGF0IGl0LCBJIG5vdGljZWQgdGhhdCBtYWlubGluZSBo
+YXMgYSAibWVkaWF0ZWssbXQ3NjIzLWV0aCIKPiBuZXR3b3JrIGRyaXZlciBidXQgbm8gY29ycmVz
+cG9uZGluZyAuZHRzaSBub2RlLiBUYWxrIGFib3V0IGJpdHJvdC4uLgoKdGhlIGlkZWEgaXMgdGhh
+dCB3ZSB3b3JrIHRvZ2V0aGVyIHRvIG1ha2UgdGhpbnMgb3B0aW1hbC4gdGhpcyBpcyBub3QgYQp5
+b3Ugb3IgaXMgcmlnaHQuIHRoaXMgaXMgYWJvdXQgdGhlIEZPU1MgcGVlciByZXZpZXcgcHJvY2Vz
+cy4gcGxlYXNlIGRvbnQKYmUgc28gYWdyby4KCnRvIG1lIGl0IHNlZW1zIHN1Ym9wdGltYWwgdG8g
+c3VwcG9ydCAyIGR0cyBmaWxlcyBmb3IgdGhlIHNhbWUgYm9hcmQuCgoJSm9obgoKCj4gCj4gUmVn
+YXJkcywKPiBBbmRyZWFzCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
