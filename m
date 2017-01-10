@@ -1,73 +1,109 @@
-From: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v6 3/3] arm: dts: mt2701: Add node for Mediatek JPEG
- Decoder
-Date: Tue, 10 Jan 2017 09:28:38 +0800
-Message-ID: <1484011718.10361.7.camel@mtksdaap41>
-References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
-         <1479353915-5043-4-git-send-email-rick.chang@mediatek.com>
-         <d602365a-e87b-5bae-8698-bd43063ef079@xs4all.nl>
-         <1479784905.8964.15.camel@mtksdaap41>
-         <badf8125-27ed-9c5b-fbc0-75716ffdfb0e@xs4all.nl>
-         <1479866054.8964.21.camel@mtksdaap41> <1479894203.8964.29.camel@mtksdaap41>
-         <1483670099.18931.5.camel@mtksdaap41>
-         <974d20f3-5133-0869-2a35-c1617bec5d6e@xs4all.nl>
-         <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Tue, 10 Jan 2017 10:32:54 +0800
+Message-ID: <1484015574.26901.6.camel@mtksdaap41>
+References: <20170109113621.31d384c9@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <c35bd06d-f012-1289-e765-02dc26b87e27-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170109113621.31d384c9@endymion>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Shunli Wang <shunli.wang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Matthias,
+Hi Jean,
 
-On Mon, 2017-01-09 at 19:45 +0100, Matthias Brugger wrote:
+On Mon, 2017-01-09 at 11:36 +0100, Jean Delvare wrote:
+> If I say "no" to "Clock driver for Mediatek MT2701", I don't want to
+> be asked individually about each sub-driver. No means no.
 > 
-> On 09/01/17 12:29, Hans Verkuil wrote:
-> > Hi Rick,
-> >
-> > On 01/06/2017 03:34 AM, Rick Chang wrote:
-> >> Hi Hans,
-> >>
-> >> The dependence on [1] has been merged in 4.10, but [2] has not.Do you have
-> >> any idea about this patch series? Should we wait for [2] or we could merge
-> >> the source code and dt-binding first?
-> >
-> > Looking at [2] I noticed that the last comment was July 4th. What is the reason
-> > it hasn't been merged yet?
-> >
-> > If I know [2] will be merged for 4.11, then I am fine with merging this media
-> > patch series. The dependency of this patch on [2] is something Mauro can handle.
-> >
-> > If [2] is not merged for 4.11, then I think it is better to wait until it is
-> > merged.
-> >
+> Additionally, this driver shouldn't be proposed at all on non-mediatek
+> builds, unless build-testing.
 > 
-> I can't take [2] because there is no scpsys in the dts present. It seems 
-> that it got never posted.
+> Signed-off-by: Jean Delvare <jdelvare@suse.de>
+> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> Cc: Shunli Wang <shunli.wang@mediatek.com>
+> Cc: James Liao <jamesjj.liao@mediatek.com>
+> Cc: Erin Lo <erin.lo@mediatek.com>
+> Cc: Stephen Boyd <sboyd@codeaurora.org>
+> Cc: Michael Turquette <mturquette@baylibre.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+
+Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
+
+> ---
+> As a side note, is there any rationale for splitting this driver into
+> that many small sub-drivers? Looks overengineered to me.
+
+These are 'subsystem' clocks and can be controlled only if their
+corresponding drivers are ready to control power domains and clocks.
+
+> As another side note, I wonder why so many clock drivers have
+> "COMMON" in their symbol names. Looks wrong to me.
+
+CCF (Common Clock Framework) uses option 'COMMON_CLK', so CCF platform
+drivers use 'COMMON_CLK_' to be their option prefix.
+
+>  drivers/clk/mediatek/Kconfig |   13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
 > 
-> Rick can you please follow-up with James and provide a patch which adds 
-> a scpsys node to the mt2701.dtsi?
+> --- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-01 23:31:53.000000000 +0100
+> +++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
+> @@ -8,6 +8,7 @@ config COMMON_CLK_MEDIATEK
+>  
+>  config COMMON_CLK_MT2701
+>  	bool "Clock driver for Mediatek MT2701"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+>  	select COMMON_CLK_MEDIATEK
+>  	default ARCH_MEDIATEK
+>  	---help---
+> @@ -15,37 +16,37 @@ config COMMON_CLK_MT2701
+>  
+>  config COMMON_CLK_MT2701_MMSYS
+>  	bool "Clock driver for Mediatek MT2701 mmsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 mmsys clocks.
+>  
+>  config COMMON_CLK_MT2701_IMGSYS
+>  	bool "Clock driver for Mediatek MT2701 imgsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 imgsys clocks.
+>  
+>  config COMMON_CLK_MT2701_VDECSYS
+>  	bool "Clock driver for Mediatek MT2701 vdecsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 vdecsys clocks.
+>  
+>  config COMMON_CLK_MT2701_HIFSYS
+>  	bool "Clock driver for Mediatek MT2701 hifsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 hifsys clocks.
+>  
+>  config COMMON_CLK_MT2701_ETHSYS
+>  	bool "Clock driver for Mediatek MT2701 ethsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 ethsys clocks.
+>  
+>  config COMMON_CLK_MT2701_BDPSYS
+>  	bool "Clock driver for Mediatek MT2701 bdpsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 bdpsys clocks.
+>  
+> 
 > 
 
-James sent three MT2701 dts patches [1] two weeks ago, these three
-patches include scpsys node. Please take a reference. And We will send
-new MT2701 ionmmu/smi dtsi node patch base on [1] later, thus you can
-accept and merge to 4.11.
 
-[1]
-https://patchwork.kernel.org/patch/9489991/
-https://patchwork.kernel.org/patch/9489985/
-https://patchwork.kernel.org/patch/9489989/
-
-Thanks,
-Eddie
-
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
