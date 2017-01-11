@@ -1,87 +1,115 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
-Date: Wed, 11 Jan 2017 09:56:28 +0800
-Message-ID: <1484099788.26901.8.camel@mtksdaap41>
-References: <20170109113621.31d384c9@endymion>
-         <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
-         <20170110130300.167d215b@endymion>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v11 00/12] MT2701 DRM support
+Date: Wed, 11 Jan 2017 14:51:01 +0800
+Message-ID: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170110130300.167d215b@endymion>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-01-10 at 13:03 +0100, Jean Delvare wrote:
-> On Mon, 9 Jan 2017 21:08:50 +0100, Andreas Färber wrote:
-> > Hi Jean,
-> > 
-> > Am 09.01.2017 um 11:36 schrieb Jean Delvare:
-> > > If I say "no" to "Clock driver for Mediatek MT2701", I don't want to
-> > > be asked individually about each sub-driver. No means no.
-> > > 
-> > > Additionally, this driver shouldn't be proposed at all on non-mediatek
-> > > builds, unless build-testing.
-> > > 
-> > > Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> > > Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-> > > Cc: Shunli Wang <shunli.wang@mediatek.com>
-> > > Cc: James Liao <jamesjj.liao@mediatek.com>
-> > > Cc: Erin Lo <erin.lo@mediatek.com>
-> > > Cc: Stephen Boyd <sboyd@codeaurora.org>
-> > > Cc: Michael Turquette <mturquette@baylibre.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > ---
-> > [...]
-> > > As another side note, I wonder why so many clock drivers have
-> > > "COMMON" in their symbol names. Looks wrong to me.
-> > 
-> > It refers to the Common Clock Framework:
-> > https://www.kernel.org/doc/Documentation/clk.txt
-> 
-> OK, thanks for the explanation. Still seems overkill to me to prefix
-> everything with COMMON_CLK when the drivers live under drivers/clk, but
-> oh well :-)
-> 
-> > > --- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-01 23:31:53.000000000 +0100
-> > > +++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
-> > > @@ -8,6 +8,7 @@ config COMMON_CLK_MEDIATEK
-> > >  
-> > >  config COMMON_CLK_MT2701
-> > >  	bool "Clock driver for Mediatek MT2701"
-> > > +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > >  	select COMMON_CLK_MEDIATEK
-> > >  	default ARCH_MEDIATEK
-> > 
-> > Should the default then become y for simplicity?
-> 
-> I left it as is as it is the same already done in other drivers in the
-> same directory. I agree "default y" would do the same in practice.
-> 
-> > Another aspect here is that this is a 32-bit SoC but it propagates into
-> > the arm64 configs, so maybe (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST?
-> > 
-> > Same for mt2701 pinctrl.
-> > 
-> > http://kernel.opensuse.org/cgit/kernel-source/plain/config/arm64/default?id=ff90e915117c5d7a8bb00dc0bc1d3145ebe985ec
-> 
-> Actually I thought the driver was needed primarily on arm64 because of
-> this configuration file. If that's not the case then I can resubmit
-> with the suggested change, no problem.
-> 
-> What about MT8135 and MT8173, are they 32-bit SoCs as well?
-
-MT8135 is a 32-bit SoC and MT8173 is a 64-bit SoC.
-
-> > (...)
-> > Anyway, a step forward,
-> > 
-> > Reviewed-by: Andreas Färber <afaerber@suse.de>
-> 
-> Thanks for the review.
-> 
-
-
+VGhpcyBpcyBNVDI3MDEgRFJNIHN1cHBvcnQgUEFUQ0ggdjEwLCBiYXNlZCBvbiA0LjEwLXJjMS4K
+V2UgYWRkIERTSSBpbnRlcnJ1cHQgY29udHJvbCwgdHJhbnNmZXIgZnVuY3Rpb24gZm9yIE1JUEkg
+RFNJIHBhbmVsIHN1cHBvcnQuCk1vc3QgY29kZXMgYXJlIHRoZSBzYW1lLCBleGNlcHQgc29tZSBy
+ZWdpc3RlciBjaGFuZ2VkLgoKRm9yIGV4YW1wbGU6CiAtIERJU1BfT1ZMIGFkZHJlc3Mgb2Zmc2V0
+IGNoYW5nZWQsIGNvbG9yIGZvcm1hdCBkZWZpbml0aW9uIGNoYW5nZWQuCiAtIERJU1BfUkRNQSBm
+aWZvIHNpemUgY2hhbmdlZC4KIC0gRElTUF9DT0xPUiBvZmZzZXQgY2hhbmdlZC4KIC0gTUlQSV9U
+WCBzZXR0aW5nIGNoYW5nZWQuCgpXZSBhZGQgYSBuZXcgY29tcG9uZW50IEREUF9DT01QT05FTlRf
+QkxTLCBhbmQgdGhlIGNvbm5lY3Rpb25zIGFyZSB1cGRhdGVkLgpPVkwgLT4gUkRNQSAtPiBDT0xP
+UiAtPiBCTFMgLT4gRFNJClJETUEgLT4gRFBJCkFuZCB3ZSBoYXZlIHNoYWRvdyByZWdpc3RlciBz
+dXBwb3J0IGluIE1UMjcwMS4KCkNoYW5nZXMgc2luY2UgdjEwOgotIEFkZCBiaW5kaW5nIGRlc2Ny
+aXB0aW9ucyBmb3IgbmV3bHkgYWRkZWQgYmluZGluZ3MKLSBSZW1vdmUgY29sb3IgZGF0YSBwb2lu
+dGVyIGZyb20gZ2VuZXJpYyBtdGtfZGRwX2NvbXAKLSBSZW1vdmUgImRybS9tZWRpYXRlazogYWRk
+IG1pcGlfdHggZGF0YSByYXRlIGNoZWNrIiBmcm9tIHRoZSBwYXRjaCBzZXJpZXMKLSBSZW1vdmUg
+ImRybS9tZWRpYXRlazogYWRkIGRzaSB1bHAgbW9kZSBjb250cm9sIiBmcm9tIHRoZSBwYXRjaCBz
+ZXJpZXMKLSBVcGRhdGUgZGVzY3JpcHRpb25zIGZvciAiZHJtL21lZGlhdGVrOiBhZGQgbm9uLWNv
+bnRpbnVvdXMgY2xvY2sgbW9kZSBhbmQgRU9UIHBhY2tldCBjb250cm9sIgotIEZpeCBEU0kgZGlz
+YWJsZSBmbG93CgpDaGFuZ2VzIHNpbmNlIHY5OgotIFNwbGl0IERTSSBwYXRjaGVzIGludG8gc21h
+bGxlciBwYXJ0cwotIFVzZSBhIHJlYWwgbGludXggZXJybm8gZm9yIHJldHVybiB2YWx1ZQotIEFk
+ZCBlcnJvciBoYW5kbGluZyBpbiBtdGtfb3V0cHV0X2RzaV9lbmFibGUoKQotIFJlbW92ZSB1bnVz
+ZWQgY2hhbmdlcyBhbmQgcmVkdW5kYW50IGRlbGF5cwotIEFkZCBoZWxwZXJzIGFuZCBtYWNyb3Mg
+Zm9yIGNvbmZpZ3VyYXRpb24KLSBDb21iaW5lICJkcm0vbWVkaWF0ZWs6IHJlbmFtZSBtYWNyb3Ms
+IGFkZCBjaGlwIHByZWZpeCIgYW5kICJkcm0vbWVkaWF0ZWs6IGFkZCAqZHJpdmVyX2RhdGEgZm9y
+IGRpZmZlcmVudCBoYXJkd2FyZSBzZXR0aW5nIgoKQ2hhbmdlcyBzaW5jZSB2ODoKLSBlbmFibGUg
+MyBEU0kgaW50ZXJydXB0cyBvbmx5Ci0gbW92ZSBtdGtfZHNpX3dhaXRfZm9yX2lycV9kb25lKCkg
+dG8gdGhlIHBhdGNoIG9mIGlycSBjb250cm9sCi0gdXNlIHRoZSBuYW1lIEJMUyBpbiBEUk0gZHJp
+dmVyIHBhcnQKLSBtb3ZlIEJMUyBkZWNsYXJhdGlvbiB0byBhIHNlcGFyYXRlIHBhdGNoCi0gdXBk
+YXRlIG10a19kc2lfc3dpdGNoX3RvX2NtZF9tb2RlKCkKLSB1cGRhdGUgbXRrX291dHB1dF9kc2lf
+ZW5hYmxlKCkgYW5kIG10a19vdXRwdXRfZHNpX2Rpc2FibGUoKQoKQ2hhbmdlcyBzaW5jZSB2NzoK
+LSBSZW1vdmUgcmVkdW5kYW50IGNvZGVzCi0gTW92ZSB0aGUgZGVmaW5pdGlvbiBvZiBERFBfQ09N
+UE9ORU5UX0JMUyB0byBwYXRjaCBvZiAiZHJtL21lZGlhdGVrOiB1cGRhdGUgZGlzcGxheSBtb2R1
+bGUgY29ubmVjdGlvbnMiCi0gTW92ZSBfZHNpX2lycV93YWl0X3F1ZXVlIGludG8gcGxhdGZvcm0g
+ZHJpdmVyIGRhdGEKLSBNb3ZlIG10a19kc2lfaXJxX2RhdGFfY2xlYXIoKSB0byBwYXRjaCBvZiAi
+ZHJtL21lZGlhdGVrOiBhZGQgZHNpIGludGVycnVwdCBjb250cm9sIgotIEFkZCBtb3JlIGRlc2Ny
+aXB0aW9ucyBpbiB0aGUgY29tbWl0IG1lc3NhZ2VzCgpDaGFuZ2VzIHNpbmNlIHY2OgotIENoYW5n
+ZSBkYXRhIHR5cGUgb2YgaXJxX2RhdGEgdG8gdTMyCi0gUmV3cml0ZSBtdGtfZHNpX2hvc3RfdHJh
+bnNmZXIoKSBmb3Igc2ltcGxpZnkKLSBNb3ZlIHNvbWUgTUlQSV9UWCBjb25maWcgdG8gcGF0Y2gg
+b2YgImRybS9tZWRpYXRlazogYWRkICpkcml2ZXJfZGF0YSBmb3IgZGlmZmVyZW50IGhhcmR3YXJl
+IHNldHRpbmdzIi4KLSBSZW1vdmUgZGV2aWNlIHRyZWUgZnJvbSB0aGlzIHBhdGNoIHNlcmllcwoK
+Q2hhbmdlcyBzaW5jZSB2NToKLSBSZW1vdmUgRFBJIGRldmljZSB0cmVlIGFuZCBjb21wYXRpYmxl
+IHN0cmluZwotIFVzZSBvbmUgd2FpdCBxdWV1ZSB0byBoYW5kbGUgaW50ZXJydXB0IHN0YXR1cwot
+IFVwZGF0ZSB0aGUgaW50ZXJydXB0IGNoZWNrIGZsb3cgYW5kIERTSV9JTlRfQUxMX0JJVFMKLSBV
+c2Ugc2FtZSBmdW5jdGlvbiBmb3IgaG9zdCByZWFkL3dyaXRlIGNvbW1hbmQKLSB2YXJpb3VzIGZp
+eGVzCgpDaGFuZ2VzIHNpbmNlIHY0OgotIEFkZCBtZXNzYWdlcyB3aGVuIHRpbWVvdXQgaW4gbXRr
+X2Rpc3BfbXV0ZXhfYWNxdWlyZSgpCi0gQWRkIGRlc2NyaXB0aW9ucyBmb3IgRElTUF9SRUdfTVVU
+RVggcmVnaXN0ZXJzCi0gTW92ZSBjb25uZWN0aW9uIHNldHRpbmdzIGZvciBkaXNwbGF5IG1vZHVs
+ZXMgdG8gYSBzZXBhcmF0ZSBwYXRjaAotIFJlbW92ZSAnbXQyNzAxLWRpc3Atd2RtYScgYmVjYXVz
+ZSBpdCBpcyB1bnVzZWQKLSBNb3ZlIGNsZWFuaW5nIHVwIGFuZCByZW5hbWluZyB0byBhIHNlcGFy
+YXRlIHBhdGNoCi0gVXNlIHdhaXRfZXZlbnRfaW50ZXJydXB0aWJsZV90aW1lb3V0KCkgdG8gcmVw
+bGFjZSBwb2xsaW5nCi0gUmVtb3ZlIGlycV9udW0gZnJvbSBtdGtfZHNpIHN0cnVjdHVyZQotIFJl
+bW92ZSByZWR1bmRhbnQgYW5kIGRlYnVnIGNvZGVzCgpDaGFuZ2VzIHNpbmNlIHYzOgotIEFkZCBE
+U0kgc3VwcG9ydCBmb3IgTUlQSSBEU0kgcGFuZWxzCi0gVXBkYXRlIEJMUyBiaW5kaW5nIHRvIFBX
+TSBub2RlcwotIFJlbW92ZSB1Zm9lIGRldmljZSBub2RlcwotIFJlbW92ZSByZWR1bmRhbnQgcGFy
+ZW50aGVzZXMKLSBSZW1vdmUgZ2xvYmFsIHZhcmlhYmxlIGluaXRpYWxpemF0aW9uCgpDaGFuZ2Vz
+IHNpbmNlIHYyOgotIFJlbmFtZSBtdGtfZGRwX211eF9zZWwgdG8gbXRrX2RkcF9zb3V0X3NlbAot
+IFVwZGF0ZSBtdDI3MDFfbXRrX2RkcF9leHQgY29tcG9uZW50cwotIENoYW5nZWQgdG8gcHJlZml4
+IG5hbWluZwotIFJlb3JkZXIgdGhlIHBhdGNoIHNlcmllcwotIFVzZSBvZl9kZXZpY2VfZ2V0X21h
+dGNoX2RhdGEoKSB0byBnZXQgZHJpdmVyIHByaXZhdGUgZGF0YQotIFVzZSBpb3BvbGwgbWFjcm9z
+IHRvIGltcGxlbWVudCBtdGtfZGlzcF9tdXRleF9hY3F1aXJlKCkKLSBSZW1vdmVkIGVtcHR5IGRl
+dmljZSB0cmVlIG5vZGVzCgpDaGFuZ2VzIHNpbmNlIHYxOgotIFJlbW92ZWQgQkxTIGJpbmRpbmdz
+IGFuZCBjb2Rlcywgd2hpY2ggYmVsb25nIHRvIHB3bSBkcml2ZXIKLSBNb3ZlZCBtdGtfZGlzcF9t
+dXRleF9hY3F1aXJlKCkganVzdCBiZWZvcmUgbXRrX2NydGNfZGRwX2NvbmZpZygpCi0gU3BsaXQg
+cGF0Y2ggaW50byBzbWFsbGVyIHBhcnRzCi0gQWRkZWQgY29uc3Qga2V5d29yZCB0byBjb25zdGFu
+dCBzdHJ1Y3R1cmUKLSBSZW1vdmVkIGNvZGVzIGZvciBzcGVjaWFsIG1lbW9yeSBhbGlnbgoKVGhh
+bmtzLAp5dC5zaGVuCgpZVCBTaGVuICgxMCk6CiAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlh
+dGVrOiB1cGRhdGUgc3VwcG9ydGVkIGNoaXBzCiAgZHJtL21lZGlhdGVrOiBhZGQgaGVscGVycyBm
+b3IgY292ZXJ0aW5nIGZyb20gdGhlIGdlbmVyaWMgY29tcG9uZW50cwogIGRybS9tZWRpYXRlazog
+YWRkICpkcml2ZXJfZGF0YSBmb3IgZGlmZmVyZW50IGhhcmR3YXJlIHNldHRpbmdzCiAgZHJtL21l
+ZGlhdGVrOiBhZGQgc2hhZG93IHJlZ2lzdGVyIHN1cHBvcnQKICBkcm0vbWVkaWF0ZWs6IGFkZCBC
+TFMgY29tcG9uZW50CiAgZHJtL21lZGlhdGVrOiB1cGRhdGUgZGlzcGxheSBtb2R1bGUgY29ubmVj
+dGlvbnMKICBkcm0vbWVkaWF0ZWs6IGNsZWFuaW5nIHVwIGFuZCByZWZpbmUKICBkcm0vbWVkaWF0
+ZWs6IGFkZCBub24tY29udGludW91cyBjbG9jayBtb2RlIGFuZCBFT1QgcGFja2V0IGNvbnRyb2wK
+ICBkcm0vbWVkaWF0ZWs6IHVwZGF0ZSBEU0kgc3ViIGRyaXZlciBmbG93IGZvciBzZW5kaW5nIGNv
+bW1hbmRzIHRvIHBhbmVsCiAgZHJtL21lZGlhdGVrOiBhZGQgc3VwcG9ydCBmb3IgTWVkaWF0ZWsg
+U29DIE1UMjcwMQoKc2hhb21pbmcgY2hlbiAoMik6CiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIGlu
+dGVycnVwdCBjb250cm9sCiAgZHJtL21lZGlhdGVrOiBhZGQgZHNpIHRyYW5zZmVyIGZ1bmN0aW9u
+CgogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQgICAgfCAg
+IDIgKwogLi4uL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHNpLnR4dCAgICAg
+fCAgIDIgKwogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jICAgICAgICAg
+ICAgfCAgNjQgKysrLQogZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuYyAg
+ICAgICAgICAgfCAgMzkgKy0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMu
+YyAgICAgICAgICAgIHwgIDc1ICsrLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJt
+X2RkcC5jICAgICAgICAgICAgIHwgMTM4ICsrKysrLS0KIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
+ay9tdGtfZHJtX2RkcC5oICAgICAgICAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2RkcF9jb21wLmMgICAgICAgIHwgIDY5ICsrKy0KIGRyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggICAgICAgIHwgICAyICsKIGRyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgICAgICAgIHwgIDU0ICsrLQogZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggICAgICAgICAgICAgfCAgIDkgKwogZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyAgICAgICAgICAgICAgICAgfCA0MTQgKysr
+KysrKysrKysrKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHgu
+YyAgICAgICAgICAgICB8ICAzOCArLQogMTMgZmlsZXMgY2hhbmdlZCwgNzUwIGluc2VydGlvbnMo
+KyksIDE1OCBkZWxldGlvbnMoLSkKCi0tIAoxLjkuMQoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpLWRldmVsCg==
