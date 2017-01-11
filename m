@@ -1,68 +1,57 @@
-From: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
-Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
-Date: Wed, 11 Jan 2017 13:41:46 +0100
-Message-ID: <20170111134146.36878e01@endymion>
-References: <20170109113621.31d384c9@endymion>
- <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
- <20170110130300.167d215b@endymion>
- <1484099788.26901.8.camel@mtksdaap41>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1484099788.26901.8.camel@mtksdaap41>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH 1/2] crypto: mediatek - remove ARM dependencies
+Date: Wed, 11 Jan 2017 14:50:19 +0100
+Message-ID: <20170111135104.3961730-1-arnd@arndb.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: Arnd Bergmann <arnd@arndb.de>, "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi James,
+Building the mediatek driver on an older ARM architecture results in a
+harmless warning:
 
-On Wed, 11 Jan 2017 09:56:28 +0800, James Liao wrote:
-> On Tue, 2017-01-10 at 13:03 +0100, Jean Delvare wrote:
-> > What about MT8135 and MT8173, are they 32-bit SoCs as well?
-> 
-> MT8135 is a 32-bit SoC and MT8173 is a 64-bit SoC.
+warning: (ARCH_OMAP2PLUS_TYPICAL && CRYPTO_DEV_MEDIATEK) selects NEON which has unmet direct dependencies (VFPv3 && CPU_V7)
 
-OK, so would the following change make sense?
+We could add an explicit dependency on CPU_V7, but it seems nicer to
+open up the build to additional configurations. This replaces the ARM
+optimized algorithm selection with the normal one that all other drivers
+use, and that in turn lets us relax the dependency on ARM and drop
+a number of the unrelated 'select' statements.
 
+Obviously a real user would still select those other optimized drivers
+as a fallback, but as there is no strict dependency, we can leave that
+up to the user.
+
+Fixes: 785e5c616c84 ("crypto: mediatek - Add crypto driver support for some MediaTek chips")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- drivers/clk/mediatek/Kconfig |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/crypto/Kconfig | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
---- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
-+++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-11 13:40:21.965890913 +0100
-@@ -52,16 +52,16 @@ config COMMON_CLK_MT2701_BDPSYS
+diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+index 8ded3af88b16..9d37ae07b4ce 100644
+--- a/drivers/crypto/Kconfig
++++ b/drivers/crypto/Kconfig
+@@ -555,15 +555,12 @@ config CRYPTO_DEV_ROCKCHIP
  
- config COMMON_CLK_MT8135
- 	bool "Clock driver for Mediatek MT8135"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
--	default ARCH_MEDIATEK
-+	default y
- 	---help---
- 	  This driver supports Mediatek MT8135 clocks.
- 
- config COMMON_CLK_MT8173
- 	bool "Clock driver for Mediatek MT8173"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
--	default ARCH_MEDIATEK
-+	default y
- 	---help---
- 	  This driver supports Mediatek MT8173 clocks.
-
-Thanks,
+ config CRYPTO_DEV_MEDIATEK
+ 	tristate "MediaTek's EIP97 Cryptographic Engine driver"
+-	depends on ARM && (ARCH_MEDIATEK || COMPILE_TEST)
+-	select NEON
+-	select KERNEL_MODE_NEON
+-	select ARM_CRYPTO
++	depends on (ARM && ARCH_MEDIATEK) || COMPILE_TEST
+ 	select CRYPTO_AES
+ 	select CRYPTO_BLKCIPHER
+-	select CRYPTO_SHA1_ARM_NEON
+-	select CRYPTO_SHA256_ARM
+-	select CRYPTO_SHA512_ARM
++	select CRYPTO_SHA1
++	select CRYPTO_SHA256
++	select CRYPTO_SHA512
+ 	select CRYPTO_HMAC
+ 	help
+ 	  This driver allows you to utilize the hardware crypto accelerator
 -- 
-Jean Delvare
-SUSE L3 Support
+2.9.0
