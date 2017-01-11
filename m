@@ -1,49 +1,82 @@
-From: Andi Shyti <andi.shyti-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] media: rc: add driver for IR remote receiver on
- MT7623 SoC
-Date: Wed, 11 Jan 2017 07:45:43 +0900
-Message-ID: <20170110224543.uuoa7ofkvolz6inp@gangnam.samsung>
-References: <CGME20170110120828epcas4p42482b7920c7a7dabd4c7794959f6d264@epcas4p4.samsung.com>
- <201701102015.fSM15CvI%fengguang.wu@intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-disposition: inline
-In-reply-to: <201701102015.fSM15CvI%fengguang.wu-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Cc: sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, kbuild-all-JC7UmRfGjtg@public.gmane.org, mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, sean-hENCXIMQXOg@public.gmane.org, ivo.g.dimitrov.75-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, keyhaede-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH 37/62] watchdog: mtk_wdt: Convert to use device managed functions and other improvements
+Date: Tue, 10 Jan 2017 16:44:46 -0800
+Message-ID: <1484095516-12720-7-git-send-email-linux@roeck-us.net>
+References: <1484091325-9199-1-git-send-email-linux@roeck-us.net>
+ <1484095516-12720-1-git-send-email-linux@roeck-us.net>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1484095516-12720-1-git-send-email-linux@roeck-us.net>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Wim Van Sebroeck <wim@iguana.be>
+Cc: linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Sean,
+Use device managed functions to simplify error handling, reduce
+source code size, improve readability, and reduce the likelyhood of bugs.
+Other improvements as listed below.
 
->    include/linux/compiler.h:253:8: sparse: attribute 'no_sanitize_address': unknown attribute
-> >> drivers/media/rc/mtk-cir.c:215:41: sparse: too many arguments for function devm_rc_allocate_device
->    drivers/media/rc/mtk-cir.c: In function 'mtk_ir_probe':
->    drivers/media/rc/mtk-cir.c:215:11: error: too many arguments to function 'devm_rc_allocate_device'
->      ir->rc = devm_rc_allocate_device(dev, RC_DRIVER_IR_RAW);
->               ^~~~~~~~~~~~~~~~~~~~~~~
->    In file included from drivers/media/rc/mtk-cir.c:22:0:
->    include/media/rc-core.h:213:16: note: declared here
->     struct rc_dev *devm_rc_allocate_device(struct device *dev);
->                    ^~~~~~~~~~~~~~~~~~~~~~~
-> 
-> vim +/devm_rc_allocate_device +215 drivers/media/rc/mtk-cir.c
-> 
->    209		ir->base = devm_ioremap_resource(dev, res);
->    210		if (IS_ERR(ir->base)) {
->    211			dev_err(dev, "failed to map registers\n");
->    212			return PTR_ERR(ir->base);
->    213		}
->    214	
->  > 215		ir->rc = devm_rc_allocate_device(dev, RC_DRIVER_IR_RAW);
+The conversion was done automatically with coccinelle using the
+following semantic patches. The semantic patches and the scripts used
+to generate this commit log are available at
+https://github.com/groeck/coccinelle-patches
 
-this error comes because the patches I pointed out have not been
-applied yet. I guess you can ignore them as long as you tested
-yours on top those patches.
+- Drop assignments to otherwise unused variables
+- Drop remove function
+- Use devm_watchdog_register_driver() to register watchdog device
+- Replace shutdown function with call to watchdog_stop_on_reboot()
 
-Andi
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+ drivers/watchdog/mtk_wdt.c | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 7ed417a765c7..db2e70ed368b 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -192,7 +192,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 
+ 	mtk_wdt_stop(&mtk_wdt->wdt_dev);
+ 
+-	err = watchdog_register_device(&mtk_wdt->wdt_dev);
++	watchdog_stop_on_reboot(&mtk_wdt->wdt_dev);
++	err = devm_watchdog_register_device(&pdev->dev, &mtk_wdt->wdt_dev);
+ 	if (unlikely(err))
+ 		return err;
+ 
+@@ -202,23 +203,6 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static void mtk_wdt_shutdown(struct platform_device *pdev)
+-{
+-	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
+-
+-	if (watchdog_active(&mtk_wdt->wdt_dev))
+-		mtk_wdt_stop(&mtk_wdt->wdt_dev);
+-}
+-
+-static int mtk_wdt_remove(struct platform_device *pdev)
+-{
+-	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
+-
+-	watchdog_unregister_device(&mtk_wdt->wdt_dev);
+-
+-	return 0;
+-}
+-
+ #ifdef CONFIG_PM_SLEEP
+ static int mtk_wdt_suspend(struct device *dev)
+ {
+@@ -256,8 +240,6 @@ static const struct dev_pm_ops mtk_wdt_pm_ops = {
+ 
+ static struct platform_driver mtk_wdt_driver = {
+ 	.probe		= mtk_wdt_probe,
+-	.remove		= mtk_wdt_remove,
+-	.shutdown	= mtk_wdt_shutdown,
+ 	.driver		= {
+ 		.name		= DRV_NAME,
+ 		.pm		= &mtk_wdt_pm_ops,
+-- 
+2.7.4
