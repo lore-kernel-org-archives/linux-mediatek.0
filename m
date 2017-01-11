@@ -1,50 +1,68 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 2/2] media: rc: add driver for IR remote receiver on
- MT7623 SoC
-Date: Wed, 11 Jan 2017 17:27:19 +0800
-Message-ID: <1484126839.4057.32.camel@mtkswgap22>
-References: <CGME20170110120828epcas4p42482b7920c7a7dabd4c7794959f6d264@epcas4p4.samsung.com>
-         <201701102015.fSM15CvI%fengguang.wu@intel.com>
-         <20170110224543.uuoa7ofkvolz6inp@gangnam.samsung>
+From: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Wed, 11 Jan 2017 13:41:46 +0100
+Message-ID: <20170111134146.36878e01@endymion>
+References: <20170109113621.31d384c9@endymion>
+ <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
+ <20170110130300.167d215b@endymion>
+ <1484099788.26901.8.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170110224543.uuoa7ofkvolz6inp@gangnam.samsung>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Andi Shyti <andi.shyti@samsung.com>
-Cc: kbuild test robot <lkp@intel.com>, kbuild-all@01.org, mchehab@osg.samsung.com, hdegoede@redhat.com, hkallweit1@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com, hverkuil@xs4all.nl, sean@mess.org, ivo.g.dimitrov.75@gmail.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1484099788.26901.8.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-okay, I will continue to work based on your changes unless someone else
-has concerns
+Hi James,
 
-On Wed, 2017-01-11 at 07:45 +0900, Andi Shyti wrote:
-> Hi Sean,
+On Wed, 11 Jan 2017 09:56:28 +0800, James Liao wrote:
+> On Tue, 2017-01-10 at 13:03 +0100, Jean Delvare wrote:
+> > What about MT8135 and MT8173, are they 32-bit SoCs as well?
 > 
-> >    include/linux/compiler.h:253:8: sparse: attribute 'no_sanitize_address': unknown attribute
-> > >> drivers/media/rc/mtk-cir.c:215:41: sparse: too many arguments for function devm_rc_allocate_device
-> >    drivers/media/rc/mtk-cir.c: In function 'mtk_ir_probe':
-> >    drivers/media/rc/mtk-cir.c:215:11: error: too many arguments to function 'devm_rc_allocate_device'
-> >      ir->rc = devm_rc_allocate_device(dev, RC_DRIVER_IR_RAW);
-> >               ^~~~~~~~~~~~~~~~~~~~~~~
-> >    In file included from drivers/media/rc/mtk-cir.c:22:0:
-> >    include/media/rc-core.h:213:16: note: declared here
-> >     struct rc_dev *devm_rc_allocate_device(struct device *dev);
-> >                    ^~~~~~~~~~~~~~~~~~~~~~~
-> > 
-> > vim +/devm_rc_allocate_device +215 drivers/media/rc/mtk-cir.c
-> > 
-> >    209		ir->base = devm_ioremap_resource(dev, res);
-> >    210		if (IS_ERR(ir->base)) {
-> >    211			dev_err(dev, "failed to map registers\n");
-> >    212			return PTR_ERR(ir->base);
-> >    213		}
-> >    214	
-> >  > 215		ir->rc = devm_rc_allocate_device(dev, RC_DRIVER_IR_RAW);
-> 
-> this error comes because the patches I pointed out have not been
-> applied yet. I guess you can ignore them as long as you tested
-> yours on top those patches.
-> 
-> Andi
+> MT8135 is a 32-bit SoC and MT8173 is a 64-bit SoC.
+
+OK, so would the following change make sense?
+
+---
+ drivers/clk/mediatek/Kconfig |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
++++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-11 13:40:21.965890913 +0100
+@@ -52,16 +52,16 @@ config COMMON_CLK_MT2701_BDPSYS
+ 
+ config COMMON_CLK_MT8135
+ 	bool "Clock driver for Mediatek MT8135"
+-	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+-	default ARCH_MEDIATEK
++	default y
+ 	---help---
+ 	  This driver supports Mediatek MT8135 clocks.
+ 
+ config COMMON_CLK_MT8173
+ 	bool "Clock driver for Mediatek MT8173"
+-	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+-	default ARCH_MEDIATEK
++	default y
+ 	---help---
+ 	  This driver supports Mediatek MT8173 clocks.
+
+Thanks,
+-- 
+Jean Delvare
+SUSE L3 Support
