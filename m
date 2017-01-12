@@ -1,71 +1,66 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
-Date: Thu, 12 Jan 2017 11:39:52 +0800
-Message-ID: <1484192392.26901.12.camel@mtksdaap41>
-References: <20170109113621.31d384c9@endymion>
-         <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
-         <20170110130300.167d215b@endymion>     <1484099788.26901.8.camel@mtksdaap41>
-         <20170111134146.36878e01@endymion>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v5] arm64: dts: mt8173: add mmsel clocks for 4K support
+Date: Thu, 12 Jan 2017 12:50:44 +0800
+Message-ID: <CAGS+omAZvHmSz6bJcvisC1LZgxwbd-HzvYMDrHXzfkY3mZZEsw@mail.gmail.com>
+References: <1470279438-60372-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170111134146.36878e01@endymion>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1470279438-60372-1-git-send-email-bibby.hsieh@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, James Liao <jamesjj.liao@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Jean,
+Hi Matthias,
 
-On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
-> Hi James,
-> 
-> On Wed, 11 Jan 2017 09:56:28 +0800, James Liao wrote:
-> > On Tue, 2017-01-10 at 13:03 +0100, Jean Delvare wrote:
-> > > What about MT8135 and MT8173, are they 32-bit SoCs as well?
-> > 
-> > MT8135 is a 32-bit SoC and MT8173 is a 64-bit SoC.
-> 
-> OK, so would the following change make sense?
-> 
+(Trying again to send plain text email)...
+
+On Thu, Aug 4, 2016 at 10:57 AM, Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
+> To support HDMI 4K resolution, mmsys need clcok
+> mm_sel to be 400MHz.
+>
+> The board .dts file should override the clock rate
+> property with the higher VENCPLL frequency the board
+> supports HDMI 4K resolution.
+>
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+
+Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+
+
+It looks like this patch was lost.  It is actually a prerequisite for
+MTK 4k HDMI support, which already landed in v4.9.
+
+See the email thread entitled:
+[PATCH v5 0/3] MT8173 HDMI 4K support <https://lkml.org/lkml/2016/9/28/893>
+
+Or these three:
+
+0d2200794f0a drm/mediatek: modify the factor to make the pll_rate set
+in the 1G-2G range
+968253bd7caa drm/mediatek: enhance the HDMI driving current
+d542b7c473f0 drm/mediatek: do mtk_hdmi_send_infoframe after HDMI clock enable
+
+-Dan
+
 > ---
->  drivers/clk/mediatek/Kconfig |    8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> --- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
-> +++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-11 13:40:21.965890913 +0100
-> @@ -52,16 +52,16 @@ config COMMON_CLK_MT2701_BDPSYS
->  
->  config COMMON_CLK_MT8135
->  	bool "Clock driver for Mediatek MT8135"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST
->  	select COMMON_CLK_MEDIATEK
-> -	default ARCH_MEDIATEK
-> +	default y
->  	---help---
->  	  This driver supports Mediatek MT8135 clocks.
->  
->  config COMMON_CLK_MT8173
->  	bool "Clock driver for Mediatek MT8173"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
->  	select COMMON_CLK_MEDIATEK
-> -	default ARCH_MEDIATEK
-> +	default y
->  	---help---
->  	  This driver supports Mediatek MT8173 clocks.
-> 
-> Thanks,
-
-Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
-think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
-platform.
-
-
-Best regards,
-
-James
-
-
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi |    2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 78529e4..c3f32f3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -690,6 +690,8 @@
+>                         compatible = "mediatek,mt8173-mmsys", "syscon";
+>                         reg = <0 0x14000000 0 0x1000>;
+>                         power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> +                       assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+> +                       assigned-clock-rates = <400000000>;
+>                         #clock-cells = <1>;
+>                 };
+>
+> --
+> 1.7.9.5
+>
