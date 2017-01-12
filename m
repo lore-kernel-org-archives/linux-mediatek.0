@@ -1,40 +1,51 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH 0/4] ARM: dts: mt7623: Add initial Geek Force support
-Date: Thu, 12 Jan 2017 09:23:14 +0100
-Message-ID: <0bd6567e-1c5b-0ff6-d044-57d25e1a40d2@phrozen.org>
-References: <20170108133100.10428-1-afaerber@suse.de>
- <91f5ec74-1aa1-f2ad-24e9-14267cbe8498@phrozen.org>
- <d6bd3783-d124-9871-d3b4-93e366517895@suse.de>
- <3fecb422-8185-7ee0-c203-2bfdc4fd1393@phrozen.org>
+From: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Thu, 12 Jan 2017 09:40:11 +0100
+Message-ID: <20170112094011.0e0a32e6@endymion>
+References: <20170109113621.31d384c9@endymion>
+ <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
+ <20170110130300.167d215b@endymion>
+ <1484099788.26901.8.camel@mtksdaap41>
+ <20170111134146.36878e01@endymion>
+ <1484192392.26901.12.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3fecb422-8185-7ee0-c203-2bfdc4fd1393-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Lai <paul-37fROp6E04DQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1484192392.26901.12.camel@mtksdaap41>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Andreas,
+Hi James,
 
-had a look last night why the ethernet dtsi was not added and it
-obviously was not added as we were waiting for the clk-mt2701 to be
-merged. the ethernet dtsi will have phandles pointing at the clk nodes
-which did not exist at the time. same is true for the PWM code.
+On Thu, 12 Jan 2017 11:39:52 +0800, James Liao wrote:
+> On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
+> >  config COMMON_CLK_MT8173
+> >  	bool "Clock driver for Mediatek MT8173"
+> > -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+> >  	select COMMON_CLK_MEDIATEK
+> > -	default ARCH_MEDIATEK
+> > +	default y
+> >  	---help---
+> >  	  This driver supports Mediatek MT8173 clocks.
+> 
+> Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
+> think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
+> platform.
 
-i sat down last night and worked out what pending patches i still have
-for mt7623 and out of the ~80 required to get v4.4 working i only need
-around 10 for v4.10-rc1.
+OK, I'll leave that one alone then, thanks for the information.
 
-i started to rebase these patches last night and will have time to test
-them tomorrow or early next week. as the pwrap node alone is around 200
-lines of devicetree we need to figure out a way to add this to the dts
-files without duplicating it. i'll try to post a series early next week
-that we can then discuss and rebase your geekboard patches on.
-
-	John
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-- 
+Jean Delvare
+SUSE L3 Support
