@@ -1,71 +1,71 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 1/2] Documentation: devicetree: Add document bindings for mtk-cir
-Date: Wed, 11 Jan 2017 15:27:14 -0600
-Message-ID: <CAL_JsqLruJnURULQx1PvemY0dHR62kV6rL-YyAp32vf26FTotw@mail.gmail.com>
-References: <1483632384-8107-1-git-send-email-sean.wang@mediatek.com>
- <1483632384-8107-2-git-send-email-sean.wang@mediatek.com> <20170109183214.xonv52sn3fo4exqp@rob-hp-laptop>
- <1484015754.4057.4.camel@mtkswgap22>
+From: James Liao <jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Thu, 12 Jan 2017 11:39:52 +0800
+Message-ID: <1484192392.26901.12.camel@mtksdaap41>
+References: <20170109113621.31d384c9@endymion>
+         <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
+         <20170110130300.167d215b@endymion>     <1484099788.26901.8.camel@mtksdaap41>
+         <20170111134146.36878e01@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <1484015754.4057.4.camel@mtkswgap22>
-Sender: linux-media-owner@vger.kernel.org
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@osg.samsung.com>, Hans de Goede <hdegoede@redhat.com>, Heiner Kallweit <hkallweit1@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Andi Shyti <andi.shyti@samsung.com>, Hans Verkuil <hverkuil@xs4all.nl>, Sean Young <sean@mess.org>, Ivaylo Dimitrov <ivo.g.dimitrov.75@gmail.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, sean wang <keyhaede@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170111134146.36878e01@endymion>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>
+Cc: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Mon, Jan 9, 2017 at 8:35 PM, Sean Wang <sean.wang@mediatek.com> wrote:
-> Hi Rob,
->
-> thanks for your effort for reviewing. I added comments inline.
->
-> On Mon, 2017-01-09 at 12:32 -0600, Rob Herring wrote:
->> On Fri, Jan 06, 2017 at 12:06:23AM +0800, sean.wang@mediatek.com wrote:
->> > From: Sean Wang <sean.wang@mediatek.com>
->> >
->> > This patch adds documentation for devicetree bindings for
->> > Mediatek IR controller.
->> >
->> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> > ---
->> >  .../devicetree/bindings/media/mtk-cir.txt          | 23 ++++++++++++++++++++++
->> >  1 file changed, 23 insertions(+)
->> >  create mode 100644 linux-4.8.rc1_p0/Documentation/devicetree/bindings/media/mtk-cir.txt
->> >
->> > diff --git a/Documentation/devicetree/bindings/media/mtk-cir.txt b/Documentation/devicetree/bindings/media/mtk-cir.txt
->> > new file mode 100644
->> > index 0000000..bbedd71
->> > --- /dev/null
->> > +++ b/Documentation/devicetree/bindings/media/mtk-cir.txt
->> > @@ -0,0 +1,23 @@
->> > +Device-Tree bindings for Mediatek IR controller found in Mediatek SoC family
->> > +
->> > +Required properties:
->> > +- compatible           : "mediatek,mt7623-ir"
->> > +- clocks       : list of clock specifiers, corresponding to
->> > +                 entries in clock-names property;
->> > +- clock-names          : should contain "clk" entries;
->> > +- interrupts           : should contain IR IRQ number;
->> > +- reg                  : should contain IO map address for IR.
->> > +
->> > +Optional properties:
->> > +- linux,rc-map-name : Remote control map name.
->>
->> Would 'label' be appropriate here instead? If not, this needs to be
->> documented in a common location and explained better.
->>
-> I checked with how the way applied in other IR drivers is and found that
-> most IR driver also use the same label to identify the scan/key table
-> they prefer to use such as gpio-ir-recv, ir-hix5hd2, meson-ir and
-> sunxi-cir or use hard coding inside the driver. So I thought it should
-> be appropriate here currently.
+Hi Jean,
 
-Maybe so, but anything with linux prefix gets extra scrutiny and I'm
-not sure that happened on the previous cases. If label has the same
-meaning, then we should start using that and deprecate this property.
-In any case, a property used by multiple bindings needs to be
-documented in a common place. The explanation of the property is bad
-too. It just spells out RC with no explanation. I'm sure you just
-copy-n-pasted it from the others, but that doesn't make it okay.
+On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
+> Hi James,
+> 
+> On Wed, 11 Jan 2017 09:56:28 +0800, James Liao wrote:
+> > On Tue, 2017-01-10 at 13:03 +0100, Jean Delvare wrote:
+> > > What about MT8135 and MT8173, are they 32-bit SoCs as well?
+> > 
+> > MT8135 is a 32-bit SoC and MT8173 is a 64-bit SoC.
+> 
+> OK, so would the following change make sense?
+> 
+> ---
+>  drivers/clk/mediatek/Kconfig |    8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> --- linux-4.10-rc2.orig/drivers/clk/mediatek/Kconfig	2017-01-09 11:17:37.542344083 +0100
+> +++ linux-4.10-rc2/drivers/clk/mediatek/Kconfig	2017-01-11 13:40:21.965890913 +0100
+> @@ -52,16 +52,16 @@ config COMMON_CLK_MT2701_BDPSYS
+>  
+>  config COMMON_CLK_MT8135
+>  	bool "Clock driver for Mediatek MT8135"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST
+>  	select COMMON_CLK_MEDIATEK
+> -	default ARCH_MEDIATEK
+> +	default y
+>  	---help---
+>  	  This driver supports Mediatek MT8135 clocks.
+>  
+>  config COMMON_CLK_MT8173
+>  	bool "Clock driver for Mediatek MT8173"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+>  	select COMMON_CLK_MEDIATEK
+> -	default ARCH_MEDIATEK
+> +	default y
+>  	---help---
+>  	  This driver supports Mediatek MT8173 clocks.
+> 
+> Thanks,
 
-Rob
+Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
+think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
+platform.
+
+
+Best regards,
+
+James
+
+
