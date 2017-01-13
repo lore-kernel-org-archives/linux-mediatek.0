@@ -1,30 +1,94 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH -next] crypto: mediatek - make symbol of_crypto_id static
-Date: Fri, 13 Jan 2017 22:37:09 +0800
-Message-ID: <20170113143709.GA26101@gondor.apana.org.au>
-References: <20170112150321.4187-1-weiyj.lk@gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 1/3] arm: dts: mt2701: Sort DT nodes by register address
+Date: Fri, 13 Jan 2017 15:38:44 +0100
+Message-ID: <bcc5c785-be25-d63b-3041-ae0009a9dc72@gmail.com>
+References: <1482904006-44232-1-git-send-email-jamesjj.liao@mediatek.com>
+ <1482904006-44232-2-git-send-email-jamesjj.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-crypto-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170112150321.4187-1-weiyj.lk@gmail.com>
-Sender: linux-crypto-owner@vger.kernel.org
-To: Wei Yongjun <weiyj.lk@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Wei Yongjun <weiyongjun1@huawei.com>, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1482904006-44232-2-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 12, 2017 at 03:03:21PM +0000, Wei Yongjun wrote:
-> From: Wei Yongjun <weiyongjun1@huawei.com>
-> 
-> Fixes the following sparse warning:
-> 
-> drivers/crypto/mediatek/mtk-platform.c:585:27: warning:
->  symbol 'of_crypto_id' was not declared. Should it be static?
-> 
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
 
-Patch applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+
+On 28/12/16 06:46, James Liao wrote:
+> This patch rearrange MT2701 DT nodes to keep them in ascending order.
+>
+> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt2701.dtsi | 36 ++++++++++++++++++------------------
+>  1 file changed, 18 insertions(+), 18 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 7eab6f4..73f4b7c 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -96,24 +96,6 @@
+>  			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+>  	};
+>
+> -	pio: pinctrl@10005000 {
+> -		compatible = "mediatek,mt2701-pinctrl";
+> -		reg = <0 0x1000b000 0 0x1000>;
+> -		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> -		pins-are-numbered;
+> -		gpio-controller;
+> -		#gpio-cells = <2>;
+> -		interrupt-controller;
+> -		#interrupt-cells = <2>;
+> -		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
+> -			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
+> -	};
+
+Applied the whole series. I fixed the unit address of pio to 1000b000 
+and it's order in the file.
+
+Please check v4.10-next/dts32
+
+Thanks,
+Mathias
+
+> -
+> -	syscfg_pctl_a: syscfg@10005000 {
+> -		compatible = "mediatek,mt2701-pctl-a-syscfg", "syscon";
+> -		reg = <0 0x10005000 0 0x1000>;
+> -	};
+> -
+>  	topckgen: syscon@10000000 {
+>  		compatible = "mediatek,mt2701-topckgen", "syscon";
+>  		reg = <0 0x10000000 0 0x1000>;
+> @@ -134,6 +116,24 @@
+>  		#reset-cells = <1>;
+>  	};
+>
+> +	pio: pinctrl@10005000 {
+> +		compatible = "mediatek,mt2701-pinctrl";
+> +		reg = <0 0x1000b000 0 0x1000>;
+> +		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> +		pins-are-numbered;
+> +		gpio-controller;
+> +		#gpio-cells = <2>;
+> +		interrupt-controller;
+> +		#interrupt-cells = <2>;
+> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
+> +			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
+> +	};
+> +
+> +	syscfg_pctl_a: syscfg@10005000 {
+> +		compatible = "mediatek,mt2701-pctl-a-syscfg", "syscon";
+> +		reg = <0 0x10005000 0 0x1000>;
+> +	};
+> +
+>  	watchdog: watchdog@10007000 {
+>  		compatible = "mediatek,mt2701-wdt",
+>  			     "mediatek,mt6589-wdt";
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
