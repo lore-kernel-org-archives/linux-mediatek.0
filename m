@@ -1,92 +1,73 @@
-From: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Fri, 13 Jan 2017 15:13:29 +0800
-Message-ID: <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
-References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 0/3] media: rc: add support for IR receiver on MT7623 SoC
+Date: Fri, 13 Jan 2017 15:35:36 +0800
+Message-ID: <1484292939-9454-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1484291609-20195-1-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: mchehab@osg.samsung.com, hdegoede@redhat.com, hkallweit1@gmail.com, robh+dt@kernel.org, mark.rutland@arm.com, matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, ivo.g.dimitrov.75@gmail.com, keyhaede@gmail.com, sean@mess.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, andi.shyti@samsung.com, hverkuil@xs4all.nl, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Add Mediatek nor flash node.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
- arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
- 2 files changed, 37 insertions(+)
+This patchset introduces consumer IR (CIR) support on MT7623 SoC 
+that also works on other similar SoCs and implements raw mode for
+more compatibility with different protocols. The driver simply
+reports the duration of pulses and spaces to rc-core logic to
+decode.
 
-diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-index 082ca88..85e5ae8 100644
---- a/arch/arm/boot/dts/mt2701-evb.dts
-+++ b/arch/arm/boot/dts/mt2701-evb.dts
-@@ -24,6 +24,31 @@
- 	};
- };
- 
-+&nor_flash {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&nor_pins_default>;
-+	status = "okay";
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+	};
-+};
-+
-+&pio {
-+	nor_pins_default: nor {
-+		pins1 {
-+			pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
-+				 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
-+				 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
-+				 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
-+				 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
-+				 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
-+			drive-strength = <MTK_DRIVE_4mA>;
-+			bias-pull-up;
-+		};
-+	};
-+};
-+
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index bdf8954..1eefce4 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -227,6 +227,18 @@
- 		status = "disabled";
- 	};
- 
-+	nor_flash: spi@11014000 {
-+		compatible = "mediatek,mt2701-nor",
-+			     "mediatek,mt8173-nor";
-+		reg = <0 0x11014000 0 0xe0>;
-+		clocks = <&pericfg CLK_PERI_FLASH>,
-+			 <&topckgen CLK_TOP_FLASH_SEL>;
-+		clock-names = "spi", "sf";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	mmsys: syscon@14000000 {
- 		compatible = "mediatek,mt2701-mmsys", "syscon";
- 		reg = <0 0x14000000 0 0x1000>;
+Changes since v1:
+- change compatible string from "mediatek,mt7623-ir" into 
+"mediatek,mt7623-cir"
+- use KBUILD_MODNAME to provide consistent device name used in driver.
+- remove unused fields in struct mtk_ir.
+- use synchronize_irq to give protection between IRQ handler and 
+remove handler.
+- use devm_rc_allocate_device based on Andi Shyti's work.
+- simplify error handling patch with devm_rc_register_device and devm_rc_allocate_device.
+- remove unused spinlock.
+- add comments about hardware limitation and related workarounds.
+- enhance the caculation of sampling period for easiler assigned specific 
+value.
+- refine git description.
+- fix IR message handling between IR hardware and rc-core.
+
+Changes since v2:
+- remove extra rc_unregister_device to avoid double frees issue
+since rc_unregister_device was used.
+- enhance comments description
+- remove redundant mtk irq disable/enable pair inside the IRQ handler
+- move keymap table property document into a common place
+
+Sean Wang (3):
+  Documentation: devicetree: move shared property used by rc into a
+    common place
+  Documentation: devicetree: Add document bindings for mtk-cir
+  media: rc: add driver for IR remote receiver on MT7623 SoC
+
+ .../devicetree/bindings/media/gpio-ir-receiver.txt |   3 +-
+ .../devicetree/bindings/media/hix5hd2-ir.txt       |   2 +-
+ .../devicetree/bindings/media/mtk-cir.txt          |  23 ++
+ Documentation/devicetree/bindings/media/rc.txt     | 116 ++++++++
+ .../devicetree/bindings/media/sunxi-ir.txt         |   2 +-
+ drivers/media/rc/Kconfig                           |  11 +
+ drivers/media/rc/Makefile                          |   1 +
+ drivers/media/rc/mtk-cir.c                         | 330 +++++++++++++++++++++
+ 8 files changed, 485 insertions(+), 3 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mtk-cir.txt
+ create mode 100644 Documentation/devicetree/bindings/media/rc.txt
+ create mode 100644 drivers/media/rc/mtk-cir.c
+
 -- 
-1.7.9.5
+1.9.1
