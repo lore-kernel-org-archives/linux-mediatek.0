@@ -1,137 +1,110 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 2/6] arm: dts: mt2701: Add iommu/smi device node
-Date: Fri, 13 Jan 2017 16:05:01 +0100
-Message-ID: <02062506-f917-0140-4934-31d7d3317b80@gmail.com>
-References: <1484296978-18572-1-git-send-email-erin.lo@mediatek.com>
- <1484296978-18572-3-git-send-email-erin.lo@mediatek.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
+Date: Fri, 13 Jan 2017 16:12:20 +0100
+Message-ID: <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
+References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
+ <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
+ <20170113151747.6bc85245@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484296978-18572-3-git-send-email-erin.lo@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Erin Lo <erin.lo@mediatek.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Honghui Zhang <honghui.zhang@mediatek.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20170113151747.6bc85245@bbrezillon>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Erin,
 
-I just took the patch from Honghui he send in june.
-Please see my comment inline.
 
-On 13/01/17 09:42, Erin Lo wrote:
-> From: Honghui Zhang <honghui.zhang@mediatek.com>
+On 13/01/17 15:17, Boris Brezillon wrote:
+> On Fri, 13 Jan 2017 15:13:29 +0800
+> Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
 >
-> Add the device node of iommu and smi for MT2701.
+>> Add Mediatek nor flash node.
+>>
+>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+>> ---
+>>  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
+>>  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
+>>  2 files changed, 37 insertions(+)
+>>
+>> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+>> index 082ca88..85e5ae8 100644
+>> --- a/arch/arm/boot/dts/mt2701-evb.dts
+>> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+>> @@ -24,6 +24,31 @@
+>>  	};
+>>  };
+>>
+>> +&nor_flash {
+>> +	pinctrl-names = "default";
+>> +	pinctrl-0 = <&nor_pins_default>;
+>> +	status = "okay";
+>> +	flash@0 {
+>> +		compatible = "jedec,spi-nor";
+>> +		reg = <0>;
+>> +	};
+>> +};
+>> +
+>> +&pio {
+>> +	nor_pins_default: nor {
+>> +		pins1 {
+>> +			pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
+>> +				 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
+>> +				 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
+>> +				 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
+>> +				 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
+>> +				 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
+>> +			drive-strength = <MTK_DRIVE_4mA>;
+>> +			bias-pull-up;
+>> +		};
+>> +	};
+>> +};
+>> +
+>>  &uart0 {
+>>  	status = "okay";
+>>  };
+>> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+>> index bdf8954..1eefce4 100644
+>> --- a/arch/arm/boot/dts/mt2701.dtsi
+>> +++ b/arch/arm/boot/dts/mt2701.dtsi
+>> @@ -227,6 +227,18 @@
+>>  		status = "disabled";
+>>  	};
+>>
+>> +	nor_flash: spi@11014000 {
+>> +		compatible = "mediatek,mt2701-nor",
+>> +			     "mediatek,mt8173-nor";
 >
-> Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> ---
->  arch/arm/boot/dts/mt2701.dtsi | 54 +++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 54 insertions(+)
+> Why define both here? Is "mediatek,mt8173-nor" really providing a
+> subset of the features supported by "mediatek,mt2701-nor"?
 >
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index eb4c6fd..87be52c 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -17,6 +17,7 @@
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/reset/mt2701-resets.h>
-> +#include <dt-bindings/memory/mt2701-larb-port.h>
->  #include "skeleton64.dtsi"
->  #include "mt2701-pinfunc.h"
->
-> @@ -161,6 +162,16 @@
->  		clock-names = "system-clk", "rtc-clk";
->  	};
->
-> +	smi_common: smi@1000c000 {
-> +		compatible = "mediatek,mt2701-smi-common";
-> +		reg = <0 0x1000c000 0 0x1000>;
-> +		clocks = <&infracfg CLK_INFRA_SMI>,
-> +			 <&mmsys CLK_MM_SMI_COMMON>,
-> +			 <&infracfg CLK_INFRA_SMI>;
-> +		clock-names = "apb", "smi", "async";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> +	};
-> +
->  	sysirq: interrupt-controller@10200100 {
->  		compatible = "mediatek,mt2701-sysirq",
->  			     "mediatek,mt6577-sysirq";
-> @@ -170,6 +181,16 @@
->  		reg = <0 0x10200100 0 0x1c>;
->  	};
->
-> +	iommu: mmsys_iommu@10205000 {
-> +		compatible = "mediatek,mt2701-m4u";
-> +		reg = <0 0x10205000 0 0x1000>;
-> +		interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_LOW>;
-> +		clocks = <&infracfg CLK_INFRA_M4U>;
-> +		clock-names = "bclk";
-> +		mediatek,larbs = <&larb0 &larb1 &larb2>;
-> +		#iommu-cells = <1>;
-> +	};
-> +
->  	apmixedsys: syscon@10209000 {
->  		compatible = "mediatek,mt2701-apmixedsys", "syscon";
->  		reg = <0 0x10209000 0 0x1000>;
-> @@ -272,18 +293,51 @@
->  		#clock-cells = <1>;
->  	};
->
-> +	larb0: larb@14010000 {
-> +		compatible = "mediatek,mt2701-smi-larb";
-> +		reg = <0 0x14010000 0 0x1000>;
-> +		mediatek,smi = <&smi_common>;
-> +		mediatek,larbidx = <0>;
 
-Did I miss something? 'mediatek,larbidx' does not sound familiar to me.
+I think even if the ip block is the same, we should provide both 
+bindings, just in case in the future we find out that mt2701 has some 
+hidden bug, feature or bug-feature. This way even if we update the 
+driver, we stay compatible with older device tree blobs in the wild.
+
+We can drop the mt2701-nor in the bindings definition if you want.
 
 Regards,
 Matthias
 
-> +		clocks = <&mmsys CLK_MM_SMI_LARB0>,
-> +			 <&mmsys CLK_MM_SMI_LARB0>;
-> +		clock-names = "apb", "smi";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_DISP>;
-> +	};
-> +
->  	imgsys: syscon@15000000 {
->  		compatible = "mediatek,mt2701-imgsys", "syscon";
->  		reg = <0 0x15000000 0 0x1000>;
->  		#clock-cells = <1>;
->  	};
+>> +		reg = <0 0x11014000 0 0xe0>;
+>> +		clocks = <&pericfg CLK_PERI_FLASH>,
+>> +			 <&topckgen CLK_TOP_FLASH_SEL>;
+>> +		clock-names = "spi", "sf";
+>> +		#address-cells = <1>;
+>> +		#size-cells = <0>;
+>> +		status = "disabled";
+>> +	};
+>> +
+>>  	mmsys: syscon@14000000 {
+>>  		compatible = "mediatek,mt2701-mmsys", "syscon";
+>>  		reg = <0 0x14000000 0 0x1000>;
 >
-> +	larb2: larb@15001000 {
-> +		compatible = "mediatek,mt2701-smi-larb";
-> +		reg = <0 0x15001000 0 0x1000>;
-> +		mediatek,smi = <&smi_common>;
-> +		mediatek,larbidx = <2>;
-> +		clocks = <&imgsys CLK_IMG_SMI_COMM>,
-> +			 <&imgsys CLK_IMG_SMI_COMM>;
-> +		clock-names = "apb", "smi";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
-> +	};
-> +
->  	vdecsys: syscon@16000000 {
->  		compatible = "mediatek,mt2701-vdecsys", "syscon";
->  		reg = <0 0x16000000 0 0x1000>;
->  		#clock-cells = <1>;
->  	};
->
-> +	larb1: larb@16010000 {
-> +		compatible = "mediatek,mt2701-smi-larb";
-> +		reg = <0 0x16010000 0 0x1000>;
-> +		mediatek,smi = <&smi_common>;
-> +		mediatek,larbidx = <1>;
-> +		clocks = <&vdecsys CLK_VDEC_CKGEN>,
-> +			 <&vdecsys CLK_VDEC_LARB>;
-> +		clock-names = "apb", "smi";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_VDEC>;
-> +	};
-> +
->  	hifsys: syscon@1a000000 {
->  		compatible = "mediatek,mt2701-hifsys", "syscon";
->  		reg = <0 0x1a000000 0 0x1000>;
->
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
