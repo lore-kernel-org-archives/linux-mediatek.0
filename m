@@ -1,114 +1,94 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Fri, 13 Jan 2017 16:21:04 +0100
-Message-ID: <20170113162104.4d2a624c@bbrezillon>
-References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
-        <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
-        <20170113151747.6bc85245@bbrezillon>
-        <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 6/6] arm: dts: mt2701: Add thermal device node.
+Date: Fri, 13 Jan 2017 16:27:57 +0100
+Message-ID: <c8bbd4a4-2207-44f0-4462-3761c1d6c8a9@gmail.com>
+References: <1484296978-18572-1-git-send-email-erin.lo@mediatek.com>
+ <1484296978-18572-7-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
+In-Reply-To: <1484296978-18572-7-git-send-email-erin.lo@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Guochun Mao <guochun.mao@mediatek.com>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Marek Vasut <marek.vasut@gmail.com>, Richard Weinberger <richard@nod.at>, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Dawei Chien <dawei.chien@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 13 Jan 2017 16:12:20 +0100
-Matthias Brugger <matthias.bgg@gmail.com> wrote:
 
-> On 13/01/17 15:17, Boris Brezillon wrote:
-> > On Fri, 13 Jan 2017 15:13:29 +0800
-> > Guochun Mao <guochun.mao@mediatek.com> wrote:
-> >  
-> >> Add Mediatek nor flash node.
-> >>
-> >> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
-> >> ---
-> >>  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
-> >>  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
-> >>  2 files changed, 37 insertions(+)
-> >>
-> >> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-> >> index 082ca88..85e5ae8 100644
-> >> --- a/arch/arm/boot/dts/mt2701-evb.dts
-> >> +++ b/arch/arm/boot/dts/mt2701-evb.dts
-> >> @@ -24,6 +24,31 @@
-> >>  	};
-> >>  };
-> >>
-> >> +&nor_flash {
-> >> +	pinctrl-names = "default";
-> >> +	pinctrl-0 = <&nor_pins_default>;
-> >> +	status = "okay";
-> >> +	flash@0 {
-> >> +		compatible = "jedec,spi-nor";
-> >> +		reg = <0>;
-> >> +	};
-> >> +};
-> >> +
-> >> +&pio {
-> >> +	nor_pins_default: nor {
-> >> +		pins1 {
-> >> +			pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
-> >> +				 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
-> >> +				 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
-> >> +				 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
-> >> +				 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
-> >> +				 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
-> >> +			drive-strength = <MTK_DRIVE_4mA>;
-> >> +			bias-pull-up;
-> >> +		};
-> >> +	};
-> >> +};
-> >> +
-> >>  &uart0 {
-> >>  	status = "okay";
-> >>  };
-> >> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> >> index bdf8954..1eefce4 100644
-> >> --- a/arch/arm/boot/dts/mt2701.dtsi
-> >> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> >> @@ -227,6 +227,18 @@
-> >>  		status = "disabled";
-> >>  	};
-> >>
-> >> +	nor_flash: spi@11014000 {
-> >> +		compatible = "mediatek,mt2701-nor",
-> >> +			     "mediatek,mt8173-nor";  
-> >
-> > Why define both here? Is "mediatek,mt8173-nor" really providing a
-> > subset of the features supported by "mediatek,mt2701-nor"?
-> >  
-> 
-> I think even if the ip block is the same, we should provide both 
-> bindings, just in case in the future we find out that mt2701 has some 
-> hidden bug, feature or bug-feature. This way even if we update the 
-> driver, we stay compatible with older device tree blobs in the wild.
 
-I'm fine with this approach, but in this case, defining both is wrong.
+On 13/01/17 09:42, Erin Lo wrote:
+> From: Dawei Chien <dawei.chien@mediatek.com>
+>
+> Add thermal controller device nodes for MT2701.
+>
+> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt2701.dtsi | 43 +++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 3847f70..c43d5f8 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -89,6 +89,36 @@
+>  		clock-output-names = "rtc32k";
+>  	};
+>
+> +	thermal-zones {
+> +		cpu_thermal: cpu_thermal {
+> +			polling-delay-passive = <1000>; /* milliseconds */
+> +			polling-delay = <1000>; /* milliseconds */
+> +
+> +			thermal-sensors = <&thermal 0>;
+> +			sustainable-power = <1000>;
+> +
+> +			trips {
+> +				threshold: trip-point@0 {
+> +					temperature = <68000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				target: trip-point@1 {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				cpu_crit: cpu_crit@0 {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>  	timer {
+>  		compatible = "arm,armv7-timer";
+>  		interrupt-parent = <&gic>;
+> @@ -270,6 +300,19 @@
+>  		status = "disabled";
+>  	};
+>
+> +	thermal: thermal@1100b000 {
+> +		#thermal-sensor-cells = <0>;
+> +		compatible = "mediatek,mt2701-thermal";
+> +		reg = <0 0x1100b000 0 0x1000>;
+> +		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
+> +		clock-names = "therm", "auxadc";
+> +		resets = <&pericfg 0x10>;
 
-> 
-> We can drop the mt2701-nor in the bindings definition if you want.
+should be MT2701_PERI_AUXADC_SW_RST, right?
 
-Yes, please.
-
-> 
-> Regards,
-> Matthias
-> 
-> >> +		reg = <0 0x11014000 0 0xe0>;
-> >> +		clocks = <&pericfg CLK_PERI_FLASH>,
-> >> +			 <&topckgen CLK_TOP_FLASH_SEL>;
-> >> +		clock-names = "spi", "sf";
-> >> +		#address-cells = <1>;
-> >> +		#size-cells = <0>;
-> >> +		status = "disabled";
-> >> +	};
-> >> +
-> >>  	mmsys: syscon@14000000 {
-> >>  		compatible = "mediatek,mt2701-mmsys", "syscon";
-> >>  		reg = <0 0x14000000 0 0x1000>;  
-> >  
+> +		reset-names = "therm";
+> +		mediatek,auxadc = <&auxadc>;
+> +		mediatek,apmixedsys = <&apmixedsys>;
+> +	};
+> +
+>  	nandc: nfi@1100d000 {
+>  		compatible = "mediatek,mt2701-nfc";
+>  		reg = <0 0x1100d000 0 0x1000>;
+>
