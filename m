@@ -1,54 +1,136 @@
-From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH] arm64: dts: mt8173: Fix cpu_thermal cooling-maps contributions
-Date: Fri, 13 Jan 2017 10:30:05 +0800
-Message-ID: <20170113023006.150845-1-djkurtz@chromium.org>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Javi Merino <javi.merino-5wv7dgnIgG8@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Andrew-CT Chen <andrew-ct.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yong Wu <yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED
-        DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v2 1/2] mmc: core: Fix CMD6 timeout issue
+Date: Fri, 13 Jan 2017 11:35:16 +0800
+Message-ID: <b6efb075-226a-c7c8-2c6d-7d61d78eced1@rock-chips.com>
+References: <1483433397-11756-1-git-send-email-yong.mao@mediatek.com>
+ <1483433397-11756-2-git-send-email-yong.mao@mediatek.com>
+ <CAPDyKFrkehvdnYgau1zFmgcHUniMbcat_NOLkB7bSGWF+b=c9Q@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrkehvdnYgau1zFmgcHUniMbcat_NOLkB7bSGWF+b=c9Q@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Yong Mao <yong.mao@mediatek.com>
+Cc: shawn.lin@rock-chips.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Adrian Hunter <adrian.hunter@intel.com>, Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-According to [0], the contribution field for each cooling-device express
-their relative power efficiency. Higher weights express higher power
-efficiency.  Weighting is relative such that if each cooling device has a
-weight of 1 they are considered equal. This is particularly useful in
-heterogeneous systems where two cooling devices may perform the same kind
-of compute, but with different efficiency.
+On 2017/1/12 23:21, Ulf Hansson wrote:
+> - trimmed cc-list
+>
+> On 3 January 2017 at 09:49, Yong Mao <yong.mao@mediatek.com> wrote:
+>> From: yong mao <yong.mao@mediatek.com>
+>>
+>> When initializing EMMC, after switch to HS400,
+>> it will issue CMD6 to change ext_csd,
+>> if first CMD6 got CRC error,
+>> the repeat CMD6 may get timeout,
+>> that's because card is not back to transfer state immediately.
+>>
+>> For resolving this issue, it need check if card is busy
+>> before sending repeat CMD6.
+>
+> I agree that doing retries in this path might may not be correctly
+> done, but currently we do it as best effort.
+>
+> We should probably change this to *not* retry the CMD6 command, in
+> cases when we have a MMC_RSP_R1B response, because of the reasons you
+> describe.
+> I get the feeling that these retry attempts for CMD6, may instead hide
+> other real issues and making it harder to narrow them down. Don't you
+> think?
+>
+> This leads to my following question:
+> Why do you get a CRC error at the first CMD6 attempt? That shouldn't
+> happen, right?
+>
+> Perhaps you can elaborate on what of the CMD6 commands in the HS400
+> enabling sequence that fails. It may help us to understand, perhaps
+> there may be something in that sequence that should be changed.
+>
+>>
+>> Not only CMD6 here has this issue, but also other R1B CMD has
+>> the same issue.
+>
+> Yes, agree!
+>
+> However, can you please try to point out some other commands than CM6
+> that you see uses *retries*, has R1B response, and which you believe
+> may not be properly managed.
+>
+> Dealing with R1B responses isn't always straight forward. Therefore I
+> am wondering whether we perhaps should just not allow "automatic
+> retries" in cases when R1B responses is used.
+>
+> The reason why I think that is easier, is because of the complexity we
+> have when dealing with R1B responses.
+>
 
-[0] Documentation/thermal/power_allocator.txt
+I'm just thinking a interesting question: What will happen if someone
+uses a userspace tool to switch the partition to RPMB when we are in
+command queue mode? It will fails to finish CMD6 and the emmc should be
+busy for a while. So now we shouldn't retry CMD6 but need to send a
+CMD13 to make sure it's back to transfer state OR a HPI to break it. We
+should be able to cover these cases not only from kernel context but
+also the interaction between user and kernel.
 
-According to Mediatek IC designer, the power efficiency ratio between the
-LITTLE core cluster (cooling-device cpu0) and big core cluster
-(cooling-device cpu1) is around 3:1 (3072:1024).
+> As for example the timeout may differ depending on the command, so
+> just guessing that 500 ms might work, isn't good enough. Moreover we
+> would need to deal with MMC_CAP_WAIT_WHILE_BUSY, etc. Currently I am
+> not saying that we shouldn't do this, but then I first need to
+> understand how big of problem this is.
+>
+>>
+>> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>> ---
+>>  drivers/mmc/core/core.c |   19 +++++++++++++++++++
+>>  1 file changed, 19 insertions(+)
+>>
+>> diff --git a/drivers/mmc/core/core.c b/drivers/mmc/core/core.c
+>> index 1076b9d..8674dbb 100644
+>> --- a/drivers/mmc/core/core.c
+>> +++ b/drivers/mmc/core/core.c
+>> @@ -566,6 +566,25 @@ void mmc_wait_for_req_done(struct mmc_host *host, struct mmc_request *mrq)
+>>
+>>                 mmc_retune_recheck(host);
+>>
+>> +               /*
+>> +                * If a R1B CMD such as CMD6 occur CRC error,
+>> +                * it will retry 3 times here.
+>> +                * But before retrying, it must ensure card is in
+>> +                * transfer state.
+>> +                * Otherwise, the next retried CMD will got TMO error.
+>> +                */
+>> +               if (mmc_resp_type(cmd) == MMC_RSP_R1B && host->ops->card_busy) {
+>> +                       int tries = 500; /* Wait aprox 500ms at maximum */
+>> +
+>> +                       while (host->ops->card_busy(host) && --tries)
+>> +                               mmc_delay(1);
+>> +
+>> +                       if (tries == 0) {
+>> +                               cmd->error = -EBUSY;
+>> +                               break;
+>> +                       }
+>> +               }
+>> +
+>>                 pr_debug("%s: req failed (CMD%u): %d, retrying...\n",
+>>                          mmc_hostname(host), cmd->opcode, cmd->error);
+>>                 cmd->retries--;
+>> --
+>> 1.7.9.5
+>>
+>
+> Kind regards
+> Uffe
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-mmc" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>
 
-Signed-off-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 12e702771f5c..9a3b0d20f7a8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -182,12 +182,12 @@
- 				map@0 {
- 					trip = <&target>;
- 					cooling-device = <&cpu0 0 0>;
--					contribution = <1024>;
-+					contribution = <3072>;
- 				};
- 				map@1 {
- 					trip = <&target>;
- 					cooling-device = <&cpu2 0 0>;
--					contribution = <2048>;
-+					contribution = <1024>;
- 				};
- 			};
- 		};
 -- 
-2.11.0.390.gc69c2f50cf-goog
+Best Regards
+Shawn Lin
 
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
