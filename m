@@ -1,38 +1,62 @@
-From: Herbert Xu <herbert@gondor.apana.org.au>
-Subject: Re: [PATCH 2/2] crypto: mediatek - fix format string for 64-bit
- builds
-Date: Fri, 13 Jan 2017 00:44:44 +0800
-Message-ID: <20170112164444.GC20313@gondor.apana.org.au>
-References: <20170111135104.3961730-1-arnd@arndb.de>
- <20170111135601.4047225-1-arnd@arndb.de>
+From: Horng-Shyang Liao <hs.liao@mediatek.com>
+Subject: Re: [PATCH v20 0/4] Mediatek MT8173 CMDQ support
+Date: Fri, 13 Jan 2017 09:27:06 +0800
+Message-ID: <1484270826.14822.1.camel@mtksdaap41>
+References: <1483499169-16329-1-git-send-email-hs.liao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170111135601.4047225-1-arnd@arndb.de>
+In-Reply-To: <1483499169-16329-1-git-send-email-hs.liao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: "David S. Miller" <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-crypto@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>, Josh-YC Liu <josh-yc.liu@mediatek.com>, Glory Hung <glory.hung@mediatek.com>, Jiaguang Zhang <jiaguang.zhang@mediatek.com>, Dennis-YC Hsieh <dennis-yc.hsieh@media>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 11, 2017 at 02:55:20PM +0100, Arnd Bergmann wrote:
-> After I enabled COMPILE_TEST for non-ARM targets, I ran into these
-> warnings:
+On Wed, 2017-01-04 at 11:06 +0800, HS Liao wrote:
+> Hi,
 > 
-> crypto/mediatek/mtk-aes.c: In function 'mtk_aes_info_map':
-> crypto/mediatek/mtk-aes.c:224:28: error: format '%d' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Werror=format=]
->    dev_err(cryp->dev, "dma %d bytes error\n", sizeof(*info));
-> crypto/mediatek/mtk-sha.c:344:28: error: format '%d' expects argument of type 'int', but argument 3 has type 'long unsigned int' [-Werror=format=]
-> crypto/mediatek/mtk-sha.c:550:21: error: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'size_t {aka long unsigned int}' [-Werror=format=]
+> This is Mediatek MT8173 Command Queue(CMDQ) driver. The CMDQ is used
+> to help write registers with critical time limitation, such as
+> updating display configuration during the vblank. It controls Global
+> Command Engine (GCE) hardware to achieve this requirement.
 > 
-> The correct format for size_t is %zu, so use that in all three
-> cases.
+> These patches have a build dependency on top of v4.10-rc2.
 > 
-> Fixes: 785e5c616c84 ("crypto: mediatek - Add crypto driver support for some MediaTek chips")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Changes since v19:
+>  - rebase to v4.10-rc2
+> 
+> Best regards,
+> HS Liao
+> 
+> HS Liao (4):
+>   dt-bindings: soc: Add documentation for the MediaTek GCE unit
+>   mailbox: mediatek: Add Mediatek CMDQ driver
+>   arm64: dts: mt8173: Add GCE node
+>   soc: mediatek: Add Mediatek CMDQ helper
+> 
+>  .../devicetree/bindings/mailbox/mtk-gce.txt        |  43 ++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  10 +
+>  drivers/mailbox/Kconfig                            |  10 +
+>  drivers/mailbox/Makefile                           |   2 +
+>  drivers/mailbox/mtk-cmdq-mailbox.c                 | 596 +++++++++++++++++++++
+>  drivers/soc/mediatek/Kconfig                       |  12 +
+>  drivers/soc/mediatek/Makefile                      |   1 +
+>  drivers/soc/mediatek/mtk-cmdq-helper.c             | 310 +++++++++++
+>  include/linux/mailbox/mtk-cmdq-mailbox.h           |  75 +++
+>  include/linux/soc/mediatek/mtk-cmdq.h              | 174 ++++++
+>  10 files changed, 1233 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+>  create mode 100644 drivers/mailbox/mtk-cmdq-mailbox.c
+>  create mode 100644 drivers/soc/mediatek/mtk-cmdq-helper.c
+>  create mode 100644 include/linux/mailbox/mtk-cmdq-mailbox.h
+>  create mode 100644 include/linux/soc/mediatek/mtk-cmdq.h
+> 
 
-Patch applied.  Thanks.
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+Hi Jassi, Matthias,
+
+Sorry to disturb you.
+Do you have any further comments on CMDQ v20?
+
+Thanks.
+HS
