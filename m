@@ -1,94 +1,63 @@
 From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/3] arm: dts: mt2701: Sort DT nodes by register address
-Date: Fri, 13 Jan 2017 15:38:44 +0100
-Message-ID: <bcc5c785-be25-d63b-3041-ae0009a9dc72@gmail.com>
-References: <1482904006-44232-1-git-send-email-jamesjj.liao@mediatek.com>
- <1482904006-44232-2-git-send-email-jamesjj.liao@mediatek.com>
+Subject: Re: [PATCH] ARM: dts: mediatek: update my email address
+Date: Fri, 13 Jan 2017 15:44:55 +0100
+Message-ID: <8cfed4a6-5fb6-a79c-0094-b7c3fd7fb219@gmail.com>
+References: <1482260674-61835-1-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1482904006-44232-2-git-send-email-jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Russell King <linux-lFZ/pmaqli7XmaaqVzeoHQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1482260674-61835-1-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 28/12/16 06:46, James Liao wrote:
-> This patch rearrange MT2701 DT nodes to keep them in ascending order.
+On 20/12/16 20:04, John Crispin wrote:
+> This patch updates my email address as I no longer have access to the old
+> one.
 >
-> Signed-off-by: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 > ---
->  arch/arm/boot/dts/mt2701.dtsi | 36 ++++++++++++++++++------------------
->  1 file changed, 18 insertions(+), 18 deletions(-)
+>  arch/arm/boot/dts/mt7623-evb.dts |    2 +-
+>  arch/arm/boot/dts/mt7623.dtsi    |    2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index 7eab6f4..73f4b7c 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -96,24 +96,6 @@
->  			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
->  	};
+
+Applied, thanks.
+
+> diff --git a/arch/arm/boot/dts/mt7623-evb.dts b/arch/arm/boot/dts/mt7623-evb.dts
+> index a9ee2d6..b60b41c 100644
+> --- a/arch/arm/boot/dts/mt7623-evb.dts
+> +++ b/arch/arm/boot/dts/mt7623-evb.dts
+> @@ -1,6 +1,6 @@
+>  /*
+>   * Copyright (c) 2016 MediaTek Inc.
+> - * Author: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> + * Author: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+>   *
+>   * This program is free software; you can redistribute it and/or modify
+>   * it under the terms of the GNU General Public License version 2 as
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index fd2b614..6af8e60 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -1,6 +1,6 @@
+>  /*
+>   * Copyright (c) 2016 MediaTek Inc.
+> - * Author: John Crispin <blogic-p3rKhJxN3npAfugRpC6u6w@public.gmane.org>
+> + * Author: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+>   *
+>   * This program is free software; you can redistribute it and/or modify
+>   * it under the terms of the GNU General Public License version 2 as
 >
-> -	pio: pinctrl@10005000 {
-> -		compatible = "mediatek,mt2701-pinctrl";
-> -		reg = <0 0x1000b000 0 0x1000>;
-> -		mediatek,pctl-regmap = <&syscfg_pctl_a>;
-> -		pins-are-numbered;
-> -		gpio-controller;
-> -		#gpio-cells = <2>;
-> -		interrupt-controller;
-> -		#interrupt-cells = <2>;
-> -		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
-> -			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
-> -	};
-
-Applied the whole series. I fixed the unit address of pio to 1000b000 
-and it's order in the file.
-
-Please check v4.10-next/dts32
-
-Thanks,
-Mathias
-
-> -
-> -	syscfg_pctl_a: syscfg@10005000 {
-> -		compatible = "mediatek,mt2701-pctl-a-syscfg", "syscon";
-> -		reg = <0 0x10005000 0 0x1000>;
-> -	};
-> -
->  	topckgen: syscon@10000000 {
->  		compatible = "mediatek,mt2701-topckgen", "syscon";
->  		reg = <0 0x10000000 0 0x1000>;
-> @@ -134,6 +116,24 @@
->  		#reset-cells = <1>;
->  	};
->
-> +	pio: pinctrl@10005000 {
-> +		compatible = "mediatek,mt2701-pinctrl";
-> +		reg = <0 0x1000b000 0 0x1000>;
-> +		mediatek,pctl-regmap = <&syscfg_pctl_a>;
-> +		pins-are-numbered;
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +		interrupt-controller;
-> +		#interrupt-cells = <2>;
-> +		interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>;
-> +	};
-> +
-> +	syscfg_pctl_a: syscfg@10005000 {
-> +		compatible = "mediatek,mt2701-pctl-a-syscfg", "syscon";
-> +		reg = <0 0x10005000 0 0x1000>;
-> +	};
-> +
->  	watchdog: watchdog@10007000 {
->  		compatible = "mediatek,mt2701-wdt",
->  			     "mediatek,mt6589-wdt";
->
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
