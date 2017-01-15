@@ -1,139 +1,185 @@
-From: Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [PATCH v2 5/6] arm: dts: mt2701: Add ethernet device node.
-Date: Sun, 15 Jan 2017 00:10:49 +0800
-Message-ID: <1484410249.3343.25.camel@mtkswgap22>
-References: <1484296978-18572-1-git-send-email-erin.lo@mediatek.com>
-         <1484296978-18572-6-git-send-email-erin.lo@mediatek.com>
-         <f9f5616f-a327-be4d-3d1d-4555e67d123a@phrozen.org>
+From: Marek Vasut <marek.vasut@gmail.com>
+Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
+Date: Sun, 15 Jan 2017 01:23:48 +0100
+Message-ID: <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com>
+References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
+ <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
+ <20170113151747.6bc85245@bbrezillon>
+ <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
+ <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com>
+ <20170113172825.75d545a3@bbrezillon>
+ <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com>
+ <20170113175628.1793f433@bbrezillon>
+ <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com>
+ <20170114092958.022f2fc8@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f9f5616f-a327-be4d-3d1d-4555e67d123a@phrozen.org>
+In-Reply-To: <20170114092958.022f2fc8@bbrezillon>
 Sender: linux-kernel-owner@vger.kernel.org
-To: John Crispin <john@phrozen.org>
-Cc: Erin Lo <erin.lo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Guochun Mao <guochun.mao@mediatek.com>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Richard Weinberger <richard@nod.at>, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Russell King <linux@armlinux.org.uk>, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi John,
-
-the watchdog driver should just be the driver that includes
-reset functions called from driver and then send reset signal
-to abnormal hw.. 
-
-however luckily ETHDMA_RST provided from watchdog is not required
-and even actually the latest driver didn't refer to the property
-no longer. So i will remove it from dtsi in the next version 
-
-  Sean
-
-
-On Sat, 2017-01-14 at 11:32 +0100, John Crispin wrote:
-> Hi Erin,
+On 01/14/2017 09:29 AM, Boris Brezillon wrote:
+> On Fri, 13 Jan 2017 18:33:40 +0100
+> Marek Vasut <marek.vasut@gmail.com> wrote:
 > 
-> small comment inline
+>> On 01/13/2017 05:56 PM, Boris Brezillon wrote:
+>>> On Fri, 13 Jan 2017 17:44:12 +0100
+>>> Marek Vasut <marek.vasut@gmail.com> wrote:
+>>>   
+>>>> On 01/13/2017 05:28 PM, Boris Brezillon wrote:  
+>>>>> On Fri, 13 Jan 2017 17:13:55 +0100
+>>>>> Marek Vasut <marek.vasut@gmail.com> wrote:
+>>>>>     
+>>>>>> On 01/13/2017 04:12 PM, Matthias Brugger wrote:    
+>>>>>>>
+>>>>>>>
+>>>>>>> On 13/01/17 15:17, Boris Brezillon wrote:      
+>>>>>>>> On Fri, 13 Jan 2017 15:13:29 +0800
+>>>>>>>> Guochun Mao <guochun.mao@mediatek.com> wrote:
+>>>>>>>>      
+>>>>>>>>> Add Mediatek nor flash node.
+>>>>>>>>>
+>>>>>>>>> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+>>>>>>>>> ---
+>>>>>>>>>  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
+>>>>>>>>>  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
+>>>>>>>>>  2 files changed, 37 insertions(+)
+>>>>>>>>>
+>>>>>>>>> diff --git a/arch/arm/boot/dts/mt2701-evb.dts
+>>>>>>>>> b/arch/arm/boot/dts/mt2701-evb.dts
+>>>>>>>>> index 082ca88..85e5ae8 100644
+>>>>>>>>> --- a/arch/arm/boot/dts/mt2701-evb.dts
+>>>>>>>>> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+>>>>>>>>> @@ -24,6 +24,31 @@
+>>>>>>>>>      };
+>>>>>>>>>  };
+>>>>>>>>>
+>>>>>>>>> +&nor_flash {
+>>>>>>>>> +    pinctrl-names = "default";
+>>>>>>>>> +    pinctrl-0 = <&nor_pins_default>;
+>>>>>>>>> +    status = "okay";
+>>>>>>>>> +    flash@0 {
+>>>>>>>>> +        compatible = "jedec,spi-nor";
+>>>>>>>>> +        reg = <0>;
+>>>>>>>>> +    };
+>>>>>>>>> +};
+>>>>>>>>> +
+>>>>>>>>> +&pio {
+>>>>>>>>> +    nor_pins_default: nor {
+>>>>>>>>> +        pins1 {
+>>>>>>>>> +            pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
+>>>>>>>>> +                 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
+>>>>>>>>> +                 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
+>>>>>>>>> +                 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
+>>>>>>>>> +                 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
+>>>>>>>>> +                 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
+>>>>>>>>> +            drive-strength = <MTK_DRIVE_4mA>;
+>>>>>>>>> +            bias-pull-up;
+>>>>>>>>> +        };
+>>>>>>>>> +    };
+>>>>>>>>> +};
+>>>>>>>>> +
+>>>>>>>>>  &uart0 {
+>>>>>>>>>      status = "okay";
+>>>>>>>>>  };
+>>>>>>>>> diff --git a/arch/arm/boot/dts/mt2701.dtsi
+>>>>>>>>> b/arch/arm/boot/dts/mt2701.dtsi
+>>>>>>>>> index bdf8954..1eefce4 100644
+>>>>>>>>> --- a/arch/arm/boot/dts/mt2701.dtsi
+>>>>>>>>> +++ b/arch/arm/boot/dts/mt2701.dtsi
+>>>>>>>>> @@ -227,6 +227,18 @@
+>>>>>>>>>          status = "disabled";
+>>>>>>>>>      };
+>>>>>>>>>
+>>>>>>>>> +    nor_flash: spi@11014000 {
+>>>>>>>>> +        compatible = "mediatek,mt2701-nor",
+>>>>>>>>> +                 "mediatek,mt8173-nor";      
+>>>>>>>>
+>>>>>>>> Why define both here? Is "mediatek,mt8173-nor" really providing a
+>>>>>>>> subset of the features supported by "mediatek,mt2701-nor"?
+>>>>>>>>      
+>>>>>>>
+>>>>>>> I think even if the ip block is the same, we should provide both
+>>>>>>> bindings, just in case in the future we find out that mt2701 has some
+>>>>>>> hidden bug, feature or bug-feature. This way even if we update the
+>>>>>>> driver, we stay compatible with older device tree blobs in the wild.
+>>>>>>>
+>>>>>>> We can drop the mt2701-nor in the bindings definition if you want.     
+>>>>>
+>>>>> Oh, sorry, I misunderstood. What I meant is that if you want to
+>>>>> list/support all possible compatibles, maybe you should just put one
+>>>>> compatible in your DT and patch your driver (+ binding doc) to define
+>>>>> all of them.    
+>>>>
+>>>> Uh, what ? I lost you here :-)
 > 
-> On 13/01/2017 09:42, Erin Lo wrote:
-> > From: Sean Wang <sean.wang@mediatek.com>
-> > 
-> > Add ethernet device node for MT2701.
-> > 
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-> > ---
-> >  arch/arm/boot/dts/mt2701-evb.dts | 40 ++++++++++++++++++++++++++++++++++++++++
-> >  arch/arm/boot/dts/mt2701.dtsi    | 22 ++++++++++++++++++++++
-> >  2 files changed, 62 insertions(+)
-> > 
-> > diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-> > index a483798..40abd3b 100644
-> > --- a/arch/arm/boot/dts/mt2701-evb.dts
-> > +++ b/arch/arm/boot/dts/mt2701-evb.dts
-> > @@ -28,7 +28,47 @@
-> >  	status = "okay";
-> >  };
-> >  
-> > +&eth {
-> > +	mac-address = [00 00 00 00 00 00];
-> > +	status = "okay";
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&gmac1_pins>;
-> > +	gmac1: mac@1 {
-> > +		compatible = "mediatek,eth-mac";
-> > +		reg = <1>;
-> > +		phy-handle = <&phy5>;
-> > +	};
-> > +
-> > +	mdio-bus {
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +		phy5: ethernet-phy@5 {
-> > +			reg = <5>;
-> > +			phy-mode = "rgmii-rxid";
-> > +		};
-> > +	};
-> > +};
-> > +
-> >  &pio {
-> > +	gmac1_pins: eth@0 {
-> > +		pins_eth {
-> > +			pinmux = <MT2701_PIN_275_MDC__FUNC_MDC>,
-> > +				 <MT2701_PIN_276_MDIO__FUNC_MDIO>,
-> > +				 <MT2701_PIN_262_G2_TXEN__FUNC_G2_TXEN>,
-> > +				 <MT2701_PIN_263_G2_TXD3__FUNC_G2_TXD3>,
-> > +				 <MT2701_PIN_264_G2_TXD2__FUNC_G2_TXD2>,
-> > +				 <MT2701_PIN_265_G2_TXD1__FUNC_G2_TXD1>,
-> > +				 <MT2701_PIN_266_G2_TXD0__FUNC_G2_TXD0>,
-> > +				 <MT2701_PIN_267_G2_TXC__FUNC_G2_TXC>,
-> > +				 <MT2701_PIN_268_G2_RXC__FUNC_G2_RXC>,
-> > +				 <MT2701_PIN_269_G2_RXD0__FUNC_G2_RXD0>,
-> > +				 <MT2701_PIN_270_G2_RXD1__FUNC_G2_RXD1>,
-> > +				 <MT2701_PIN_271_G2_RXD2__FUNC_G2_RXD2>,
-> > +				 <MT2701_PIN_272_G2_RXD3__FUNC_G2_RXD3>,
-> > +				 <MT2701_PIN_274_G2_RXDV__FUNC_G2_RXDV>;
-> > +		};
-> > +	};
-> > +
-> >  	spi_pins_a: spi0@0 {
-> >  		pins_spi {
-> >  			pinmux = <MT2701_PIN_53_SPI0_CSN__FUNC_SPI0_CS>,
-> > diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> > index 4f52019..3847f70 100644
-> > --- a/arch/arm/boot/dts/mt2701.dtsi
-> > +++ b/arch/arm/boot/dts/mt2701.dtsi
-> > @@ -381,6 +381,28 @@
-> >  		#clock-cells = <1>;
-> >  	};
-> >  
-> > +	eth: ethernet@1b100000 {
-> > +		compatible = "mediatek,mt7623-eth";
-> > +		reg = <0 0x1b100000 0 0x20000>;
-> > +		interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_SPI 199 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
-> > +		clocks = <&topckgen CLK_TOP_ETHIF_SEL>,
-> > +			 <&apmixedsys CLK_APMIXED_TRGPLL>,
-> > +			 <&ethsys CLK_ETHSYS_ESW>,
-> > +			 <&ethsys CLK_ETHSYS_GP2>,
-> > +			 <&ethsys CLK_ETHSYS_GP1>;
-> > +		clock-names = "ethif", "trgpll", "esw", "gp2", "gp1";
-> > +		power-domains = <&scpsys MT2701_POWER_DOMAIN_ETH>;
-> > +		resets = <&watchdog MT2701_TOPRGU_ETHDMA_RST>;
+> I mean adding a new entry in the mtk_nor_of_ids table (in
+> mtk-quadspi.c) so that the mediatek,mt2701-nor compatible string can be
+> matched directly, and you won't need to define 2 compatible strings in
+> your device tree.
+
+But then you grow the table in the driver, is that what we want if we
+can avoid that ?
+
+>>>>  
+>>>>>> This exactly. We should have a DT compat in the form:
+>>>>>> compatible = "vendor,<soc>-block", "vendor,<oldest-compat-soc>-block";
+>>>>>> Then if we find a problem in the future, we can match on the
+>>>>>> "vendor,<soc>-block" and still support the old DTs.    
+>>>>>
+>>>>> Not sure it's only in term of whose IP appeared first. My understanding
+>>>>> is that it's a way to provide inheritance. For example:
+>>>>>
+>>>>> 	"<soc-vendor>,<ip-version>", "<ip-vendor>,<ip-version>";
+>>>>>
+>>>>> or
+>>>>>
+>>>>> 	"<soc-vendor>,<full-featured-ip-version>","<soc-vendor>,<basic-feature-ip-version>";
+>>>>>
+>>>>> BTW, which one is the oldest between mt8173 and mt2701? :-)    
+>>>>
+>>>> And that's another thing and I agree with you, but I don't think that's
+>>>> what we're discussing in this thread. But (!), OT, I think we should
+>>>> codify the rules in Documentation/ . This discussion came up multiple
+>>>> times recently.
+>>>>
+>>>> And my question still stands, what do we put into the DT here, IMO
+>>>> compatible = "mediatek,mt2701-nor", "mediatek,mt8173-nor";  
+>>>
+>>> I'd say
+>>>
+>>> 	compatible = "mediatek,mt8173-nor";
+>>>
+>>> because both compatible are referring to very specific IP version. It's
+>>> not the same as  
+>>
+>> But then you don't have the ability to handle a block in this particular
+>> SoC in case there's a bug found in it in the future,
+>> so IMO it should be:
+>>
+>> compatible = "mediatek,mt2701-nor", "mediatek,mt8173-nor";
 > 
-> are you sure this is correct ? on mt7623 we point the reset at ethsys
-> and not the watchdog.
+> Sorry again, I meant
 > 
-> 	John
+> 	compatible = "mediatek,mt2701-nor";
 > 
-> > +		reset-names = "eth";
-> > +		mediatek,ethsys = <&ethsys>;
-> > +		mediatek,pctl = <&syscfg_pctl_a>;
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +		status = "disabled";
-> > +	};
-> > +
-> >  	bdpsys: syscon@1c000000 {
-> >  		compatible = "mediatek,mt2701-bdpsys", "syscon";
-> >  		reg = <0 0x1c000000 0 0x1000>;
-> > 
+>>
+>>> 	compatible = "mediatek,mt8173-nor", "mediatek,mt81xx-nor";  
+>>
+>> This doesn't look right, since here we add two new compatibles ...
+> 
+> That was just an example to describe how compatible inheritance works
+> (at least that's my understanding of it), it does not apply to this
+> particular use case.
+
+Well this is OK I guess, but then you can also use "mediatek,mt8173-nor"
+as the oldest supported compatible and be done with it, no ? It looks a
+bit crappy though, I admit that ...
+
+-- 
+Best regards,
+Marek Vasut
