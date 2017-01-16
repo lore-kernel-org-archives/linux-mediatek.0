@@ -1,115 +1,83 @@
-From: CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v11 02/12] drm/mediatek: add helpers for coverting from
- the generic components
-Date: Mon, 16 Jan 2017 09:09:36 +0800
-Message-ID: <1484528976.11503.1.camel@mtksdaap41>
-References: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
-         <1484117473-46644-3-git-send-email-yt.shen@mediatek.com>
+From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v4 5/5] ARM: dts: mt2701: add iommu/smi dtsi node for
+ mt2701
+Date: Mon, 16 Jan 2017 10:48:50 +0800
+Message-ID: <1484534930.27576.1.camel@mtksdaap41>
+References: <1465379461-14757-1-git-send-email-honghui.zhang@mediatek.com>
+         <1465379461-14757-6-git-send-email-honghui.zhang@mediatek.com>
+         <09eaf7a5-2b18-1ea6-5699-2e968c6b79a4@gmail.com>
+         <51441f39-e5b5-2cce-63ab-47bd3cf298b3@gmail.com>
+         <1467595950.8420.2.camel@mtksdaap41> <577A1794.5040509@gmail.com>
+         <5a45da57-9262-b1ff-1c6a-c5c211c1bfd4@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1484117473-46644-3-git-send-email-yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <5a45da57-9262-b1ff-1c6a-c5c211c1bfd4-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org, treding-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, pebolle-IWqWACnzNjzz+pZb47iToQ@public.gmane.org, kendrick.hsu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, arnd-r2nGTMty4D4@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, catalin.marinas-5wv7dgnIgG8@public.gmane.org, will.deacon-5wv7dgnIgG8@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, tfiga-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, djkurtz-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-01-11 at 14:51 +0800, YT Shen wrote:
-> define helpers for converting from 'mtk_ddp_comp' to 'mtk_disp_ovl'
-> define helpers for converting from 'mtk_ddp_comp' to 'mtk_disp_rdma'
+On Fri, 2017-01-13 at 15:54 +0100, Matthias Brugger wrote:
 > 
-> Signed-off-by: YT Shen <yt.shen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-Acked-by CK Hu <ck.hu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 15 +++++++++------
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 15 +++++++++------
->  2 files changed, 18 insertions(+), 12 deletions(-)
+> On 04/07/16 10:00, Matthias Brugger wrote:
+> >
+> >
+> > On 04/07/16 03:32, Honghui Zhang wrote:
+> >> On Sun, 2016-07-03 at 21:12 +0200, Matthias Brugger wrote:
+> >>>
+> >>> On 07/03/2016 08:24 AM, Matthias Brugger wrote:
+> >>>>
+> >>>>
+> >>>> On 06/08/2016 11:51 AM, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org wrote:
+> >>>>> From: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>>>>
+> >>>>> Add the dtsi node of iommu and smi for mt2701.
+> >>>>>
+> >>>>> Signed-off-by: Honghui Zhang <honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> >>>>> ---
+> >>>>>   arch/arm/boot/dts/mt2701.dtsi | 51
+> >>>>> +++++++++++++++++++++++++++++++++++++++++++
+> >>>>>   1 file changed, 51 insertions(+)
+> >>>>>
+> >>>>
+> >>>> Applied,
+> >>>
+> >>> Please resend the patch including the infracfg and mmsys node.
+> >>>
+> >>
+> >> Hi, Matthias,
+> >>
+> >> Please hold this one.
+> >> This one is based on CCF "arm: dts: mt2701: Add clock controller device
+> >> nodes"[1] and power domain patch "Mediatek MT2701 SCPSYS power domain
+> >> support v7"[2],
+> >> But these two patchset are still being reviewed now.
+> >>
+> >> Do you think it's better that I send this one later after ccf and power
+> >> domain patch got merged? I will send this patch later if it's OK with
+> >> you.
+> >>
+> >
+> > Sounds good.
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index c703102..ce2759f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -57,6 +57,11 @@ struct mtk_disp_ovl {
->  	struct drm_crtc			*crtc;
->  };
->  
-> +static inline struct mtk_disp_ovl *comp_to_ovl(struct mtk_ddp_comp *comp)
-> +{
-> +	return container_of(comp, struct mtk_disp_ovl, ddp_comp);
-> +}
-> +
->  static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
->  {
->  	struct mtk_disp_ovl *priv = dev_id;
-> @@ -76,20 +81,18 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
->  static void mtk_ovl_enable_vblank(struct mtk_ddp_comp *comp,
->  				  struct drm_crtc *crtc)
->  {
-> -	struct mtk_disp_ovl *priv = container_of(comp, struct mtk_disp_ovl,
-> -						 ddp_comp);
-> +	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
->  
-> -	priv->crtc = crtc;
-> +	ovl->crtc = crtc;
->  	writel(0x0, comp->regs + DISP_REG_OVL_INTSTA);
->  	writel_relaxed(OVL_FME_CPL_INT, comp->regs + DISP_REG_OVL_INTEN);
->  }
->  
->  static void mtk_ovl_disable_vblank(struct mtk_ddp_comp *comp)
->  {
-> -	struct mtk_disp_ovl *priv = container_of(comp, struct mtk_disp_ovl,
-> -						 ddp_comp);
-> +	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
->  
-> -	priv->crtc = NULL;
-> +	ovl->crtc = NULL;
->  	writel_relaxed(0x0, comp->regs + DISP_REG_OVL_INTEN);
->  }
->  
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> index 0df05f9..21eff6f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-> @@ -49,6 +49,11 @@ struct mtk_disp_rdma {
->  	struct drm_crtc			*crtc;
->  };
->  
-> +static inline struct mtk_disp_rdma *comp_to_rdma(struct mtk_ddp_comp *comp)
-> +{
-> +	return container_of(comp, struct mtk_disp_rdma, ddp_comp);
-> +}
-> +
->  static irqreturn_t mtk_disp_rdma_irq_handler(int irq, void *dev_id)
->  {
->  	struct mtk_disp_rdma *priv = dev_id;
-> @@ -77,20 +82,18 @@ static void rdma_update_bits(struct mtk_ddp_comp *comp, unsigned int reg,
->  static void mtk_rdma_enable_vblank(struct mtk_ddp_comp *comp,
->  				   struct drm_crtc *crtc)
->  {
-> -	struct mtk_disp_rdma *priv = container_of(comp, struct mtk_disp_rdma,
-> -						  ddp_comp);
-> +	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
->  
-> -	priv->crtc = crtc;
-> +	rdma->crtc = crtc;
->  	rdma_update_bits(comp, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT,
->  			 RDMA_FRAME_END_INT);
->  }
->  
->  static void mtk_rdma_disable_vblank(struct mtk_ddp_comp *comp)
->  {
-> -	struct mtk_disp_rdma *priv = container_of(comp, struct mtk_disp_rdma,
-> -						  ddp_comp);
-> +	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
->  
-> -	priv->crtc = NULL;
-> +	rdma->crtc = NULL;
->  	rdma_update_bits(comp, DISP_REG_RDMA_INT_ENABLE, RDMA_FRAME_END_INT, 0);
->  }
->  
+> Applied now to v4.10-next/dts32
+> 
+> Thanks.
+> 
+
+Thanks.
+
+> >
+> > Thanks a lot,
+> > Matthias
+> >
+> >> Thanks.
+> >> [1] https://patchwork.kernel.org/patch/9109081
+> >> [2]
+> >> http://lists.infradead.org/pipermail/linux-mediatek/2016-May/005429.html
+> >>
 
 
 --
