@@ -1,214 +1,184 @@
-From: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Mon, 16 Jan 2017 17:09:13 +0100
-Message-ID: <e01fba49-2478-5abe-0b47-6b5c322ada9c@gmail.com>
-References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
- <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
- <20170113151747.6bc85245@bbrezillon>
- <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
- <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com>
- <20170113172825.75d545a3@bbrezillon>
- <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com>
- <20170113175628.1793f433@bbrezillon>
- <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com>
- <20170114092958.022f2fc8@bbrezillon>
- <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com>
- <20170116094032.6f471f11@bbrezillon>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
+Subject: Re: [PATCH 0/4] ARM: dts: mt7623: Add initial Geek Force support
+Date: Mon, 16 Jan 2017 20:31:48 +0100
+Message-ID: <71841212-be03-5285-6ca6-b1fd9ce1d8db@suse.de>
+References: <20170108133100.10428-1-afaerber@suse.de>
+ <91f5ec74-1aa1-f2ad-24e9-14267cbe8498@phrozen.org>
+ <d6bd3783-d124-9871-d3b4-93e366517895@suse.de>
+ <3fecb422-8185-7ee0-c203-2bfdc4fd1393@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170116094032.6f471f11@bbrezillon>
+In-Reply-To: <3fecb422-8185-7ee0-c203-2bfdc4fd1393-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Lai <paul-37fROp6E04DQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/16/2017 09:40 AM, Boris Brezillon wrote:
-> On Sun, 15 Jan 2017 01:23:48 +0100
-> Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> 
->> On 01/14/2017 09:29 AM, Boris Brezillon wrote:
->>> On Fri, 13 Jan 2017 18:33:40 +0100
->>> Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->>>   
->>>> On 01/13/2017 05:56 PM, Boris Brezillon wrote:  
->>>>> On Fri, 13 Jan 2017 17:44:12 +0100
->>>>> Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->>>>>     
->>>>>> On 01/13/2017 05:28 PM, Boris Brezillon wrote:    
->>>>>>> On Fri, 13 Jan 2017 17:13:55 +0100
->>>>>>> Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->>>>>>>       
->>>>>>>> On 01/13/2017 04:12 PM, Matthias Brugger wrote:      
->>>>>>>>>
->>>>>>>>>
->>>>>>>>> On 13/01/17 15:17, Boris Brezillon wrote:        
->>>>>>>>>> On Fri, 13 Jan 2017 15:13:29 +0800
->>>>>>>>>> Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->>>>>>>>>>        
->>>>>>>>>>> Add Mediatek nor flash node.
->>>>>>>>>>>
->>>>>>>>>>> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->>>>>>>>>>> ---
->>>>>>>>>>>  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
->>>>>>>>>>>  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
->>>>>>>>>>>  2 files changed, 37 insertions(+)
->>>>>>>>>>>
->>>>>>>>>>> diff --git a/arch/arm/boot/dts/mt2701-evb.dts
->>>>>>>>>>> b/arch/arm/boot/dts/mt2701-evb.dts
->>>>>>>>>>> index 082ca88..85e5ae8 100644
->>>>>>>>>>> --- a/arch/arm/boot/dts/mt2701-evb.dts
->>>>>>>>>>> +++ b/arch/arm/boot/dts/mt2701-evb.dts
->>>>>>>>>>> @@ -24,6 +24,31 @@
->>>>>>>>>>>      };
->>>>>>>>>>>  };
->>>>>>>>>>>
->>>>>>>>>>> +&nor_flash {
->>>>>>>>>>> +    pinctrl-names = "default";
->>>>>>>>>>> +    pinctrl-0 = <&nor_pins_default>;
->>>>>>>>>>> +    status = "okay";
->>>>>>>>>>> +    flash@0 {
->>>>>>>>>>> +        compatible = "jedec,spi-nor";
->>>>>>>>>>> +        reg = <0>;
->>>>>>>>>>> +    };
->>>>>>>>>>> +};
->>>>>>>>>>> +
->>>>>>>>>>> +&pio {
->>>>>>>>>>> +    nor_pins_default: nor {
->>>>>>>>>>> +        pins1 {
->>>>>>>>>>> +            pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
->>>>>>>>>>> +                 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
->>>>>>>>>>> +                 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
->>>>>>>>>>> +                 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
->>>>>>>>>>> +                 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
->>>>>>>>>>> +                 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
->>>>>>>>>>> +            drive-strength = <MTK_DRIVE_4mA>;
->>>>>>>>>>> +            bias-pull-up;
->>>>>>>>>>> +        };
->>>>>>>>>>> +    };
->>>>>>>>>>> +};
->>>>>>>>>>> +
->>>>>>>>>>>  &uart0 {
->>>>>>>>>>>      status = "okay";
->>>>>>>>>>>  };
->>>>>>>>>>> diff --git a/arch/arm/boot/dts/mt2701.dtsi
->>>>>>>>>>> b/arch/arm/boot/dts/mt2701.dtsi
->>>>>>>>>>> index bdf8954..1eefce4 100644
->>>>>>>>>>> --- a/arch/arm/boot/dts/mt2701.dtsi
->>>>>>>>>>> +++ b/arch/arm/boot/dts/mt2701.dtsi
->>>>>>>>>>> @@ -227,6 +227,18 @@
->>>>>>>>>>>          status = "disabled";
->>>>>>>>>>>      };
->>>>>>>>>>>
->>>>>>>>>>> +    nor_flash: spi@11014000 {
->>>>>>>>>>> +        compatible = "mediatek,mt2701-nor",
->>>>>>>>>>> +                 "mediatek,mt8173-nor";        
->>>>>>>>>>
->>>>>>>>>> Why define both here? Is "mediatek,mt8173-nor" really providing a
->>>>>>>>>> subset of the features supported by "mediatek,mt2701-nor"?
->>>>>>>>>>        
->>>>>>>>>
->>>>>>>>> I think even if the ip block is the same, we should provide both
->>>>>>>>> bindings, just in case in the future we find out that mt2701 has some
->>>>>>>>> hidden bug, feature or bug-feature. This way even if we update the
->>>>>>>>> driver, we stay compatible with older device tree blobs in the wild.
->>>>>>>>>
->>>>>>>>> We can drop the mt2701-nor in the bindings definition if you want.       
->>>>>>>
->>>>>>> Oh, sorry, I misunderstood. What I meant is that if you want to
->>>>>>> list/support all possible compatibles, maybe you should just put one
->>>>>>> compatible in your DT and patch your driver (+ binding doc) to define
->>>>>>> all of them.      
->>>>>>
->>>>>> Uh, what ? I lost you here :-)  
->>>
->>> I mean adding a new entry in the mtk_nor_of_ids table (in
->>> mtk-quadspi.c) so that the mediatek,mt2701-nor compatible string can be
->>> matched directly, and you won't need to define 2 compatible strings in
->>> your device tree.  
->>
->> But then you grow the table in the driver, is that what we want if we
->> can avoid that ?
-> 
-> The space you save by not growing the mtk_nor_of_ids table is lost in
-> your dtbs, so I'm not sure the size argument is relevant here. Also,
-> note that distros are shipping a lot of dtbs, and you're likely to have
-> several boards based on the mt2701 SoC, so, for this specific use case,
-> it's better to make the in-driver of-id table grow than specifying 2
-> compatibles in the DT. But as I said, I'm not sure we should rely on
-> this argument to decide which approach to choose (we're talking about a
-> few bytes here).
-> 
->>
->>>>>>    
->>>>>>>> This exactly. We should have a DT compat in the form:
->>>>>>>> compatible = "vendor,<soc>-block", "vendor,<oldest-compat-soc>-block";
->>>>>>>> Then if we find a problem in the future, we can match on the
->>>>>>>> "vendor,<soc>-block" and still support the old DTs.      
->>>>>>>
->>>>>>> Not sure it's only in term of whose IP appeared first. My understanding
->>>>>>> is that it's a way to provide inheritance. For example:
->>>>>>>
->>>>>>> 	"<soc-vendor>,<ip-version>", "<ip-vendor>,<ip-version>";
->>>>>>>
->>>>>>> or
->>>>>>>
->>>>>>> 	"<soc-vendor>,<full-featured-ip-version>","<soc-vendor>,<basic-feature-ip-version>";
->>>>>>>
->>>>>>> BTW, which one is the oldest between mt8173 and mt2701? :-)      
->>>>>>
->>>>>> And that's another thing and I agree with you, but I don't think that's
->>>>>> what we're discussing in this thread. But (!), OT, I think we should
->>>>>> codify the rules in Documentation/ . This discussion came up multiple
->>>>>> times recently.
->>>>>>
->>>>>> And my question still stands, what do we put into the DT here, IMO
->>>>>> compatible = "mediatek,mt2701-nor", "mediatek,mt8173-nor";    
->>>>>
->>>>> I'd say
->>>>>
->>>>> 	compatible = "mediatek,mt8173-nor";
->>>>>
->>>>> because both compatible are referring to very specific IP version. It's
->>>>> not the same as    
+Am 10.01.2017 um 11:18 schrieb John Crispin:
+> On 10/01/2017 10:48, Andreas Färber wrote:
+>> Am 10.01.2017 um 08:00 schrieb John Crispin:
+>>> On 08/01/2017 14:30, Andreas Färber wrote:
 >>>>
->>>> But then you don't have the ability to handle a block in this particular
->>>> SoC in case there's a bug found in it in the future,
->>>> so IMO it should be:
+>>>> Andreas Färber (4):
+>>>>   Documentation: devicetree: Add vendor prefix for AsiaRF
+>>>>   Documentation: devicetree: arm: mediatek: Add Geek Force board
+>>>>   ARM: dts: mt7623: Add Geek Force config
+>>>>   MAINTAINERS: Extend ARM/Mediatek SoC support section
 >>>>
->>>> compatible = "mediatek,mt2701-nor", "mediatek,mt8173-nor";  
 >>>
->>> Sorry again, I meant
+>>> Hi,
 >>>
->>> 	compatible = "mediatek,mt2701-nor";
->>>   
->>>>  
->>>>> 	compatible = "mediatek,mt8173-nor", "mediatek,mt81xx-nor";    
->>>>
->>>> This doesn't look right, since here we add two new compatibles ...  
->>>
->>> That was just an example to describe how compatible inheritance works
->>> (at least that's my understanding of it), it does not apply to this
->>> particular use case.  
+>>> i need to NAK this series. the asiarf board is nothing more than the
+>>> official MTK EVB with AsiaRF written on it. this board is already
+>>> supported by linux (arch/arm/boot/dts/mt7623-evb.dts) please extend the
+>>> EVB dts file nstead of adding a duplicate and letting the original
+> bitrot.
 >>
->> Well this is OK I guess, but then you can also use "mediatek,mt8173-nor"
->> as the oldest supported compatible and be done with it, no ? It looks a
->> bit crappy though, I admit that ...
+>> Well, I disagree.
+> 
+> reading the rest of the email you seem to be quite agro about this.
+
+Please re-read your reply above and my comments and reconsider your
+attitude when replying in the future. It's not about whether these
+patches go in or not, it's about your wording. And that continues with
+aggressively throwing around the term "agro" in two mails already. I
+don't see anything aggressive or angry in my original cover letter that
+would've prompted your reply and can only interpret that as your own
+frustration with your mt7623 progress. Instead you should've taken the
+time to explain a bit better what you really meant, then we could've
+spared or shortened this lengthy discussion and have a v2 already.
+
+>> First of all I'm not letting "the original" bitrot, because I have
+>> nothing to do with that .dts! If anyone is to blame for letting it
+>> bitrot since February 2016, pick your own nose:
+>>
+>>
+> http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/log/arch/arm/boot/dts/mt7623-evb.dts
+> 
+> what should i pick my nose about ?
+
+Don't blame _me_ for "bitrot" of a file _you_ added almost a year ago
+that did not see any updates since.
+
+Nothing wrong with you not working on something, just don't blame me for
+it then, especially when I don't (knowingly) have that hardware and have
+never come in touch with it before. I am new to linux-mediatek and had
+checked LAKML in vein for any mt7623 patches before sending mine.
+
+[snip]
+>> Third, by your argumentation we shouldn't be adding, e.g., Odroid .dts
+>> files either because they were based on a Samsung SMDK, or .dts files
+>> for Amlogic TV boxes because they're almost identical to reference
+>> designs, etc.
+>> Users need to know which .dts file to choose, so having a sane .dts
+>> filename is warranted. Depending on how similar they are, one could
+>> either #include the -evb.dts or factor out a shared .dtsi, but that
+>> takes us back to the previous point of hardly anyone having access to
+>> EVB information to identify such a subset. Therefore duplicating trivial
+>> nodes is the method of choice for all practical purposes - mt7623.dtsi
+>> is getting reused just fine.
 >>
 > 
-> Let's stop bikeshedding and wait for DT maintainers feedback
-> before taking a decision ;-).
+> in that case add a dtsi file for the EVB and include it in your geek
+> board.dts and only update the compat string.
 
-+1 :)
+The question that I am not in a position to answer is: Are those two
+boards identical or just very similar? Paul in CC can hopefully clarify
+this when he is back. Matthias as maintainer has also remained silent.
 
-> Rob, Mark, any opinion?
+>> Comparing our two .dts files, mine has two more UART nodes enabled, the
+>> U-Boot bootloader's baudrate set to actually get serial output, a
+>> different board compatible string for identification, and I chose the
+>> new dual-licensing header that is being requested for new DT files.
 > 
+> 1) at the time we adde this the uart support was not ready
 
+> 2) the bootloader i am using is a custom built one hence the random baudrate
+
+Well, did the _original_ bootloader use 115200? In that case we could
+update -evb.dts with it, and you could still override it via console=
+for your custom build.
+
+Or maybe having source access you could even contribute to mainline
+U-Boot, so we can all work on the same codebase? I read a BPi-R2 is
+coming up with mt7623, so booting without appended .dtb and uImage will
+come in handy for more people than just EVB owners and Geek Force
+backers. I'd happily contribute to making bootefi command work.
+
+> 3) you can just updae the license if you want to, no problem
+
+OK, will gladly look into the feasibility.
+
+>> For lack of schematics I figured out UART1 by testing - continuity tests
+>> for GND, console=ttySx,115200n8 and trial-and-error for RX/TX. Obviously
+>> I can't do that for a board I don't have access to.
+>> UART2 and UART0 pins were clear, but only UART2 was obvious from ttyMT2.
+> 
+> you do have the EVB directly in front of you
+> 
+>> Do you actually have access to a Geek Force board yourself, or what are
+>> you basing your claims on? Mine looks different from the Indiegogo
+>> picture and thus has different identification from that on
+>> https://wikidevi.com/wiki/AsiaRF_WS2977 (WS3301, MT7623N RFB_V10).
+> 
+> i dont need the geek board as i have the EVB and they are identical
+> according to MTK
+> 
+>> If you confirm the EVB's baudrate I can happily send that part your way.
+>> I've seen 921600 on the Helio X20 96board for instance.
+> 
+> see above
+
+So... 4) add my UART nodes to your -evb.dts? Any nitpicks on the actual
+patch 3/4?
+
+>> Also, none of what you've said justifies NAK'ing patch 4/4, which
+>> applies to any mt7* and arm64 .dts, including yours.
+> 
+> agreed, i never even mentioned 4/4
+
+You replied to the cover letter 0/4 "i need to NAK this series" - and
+series includes all four patches. Therefore my frustration with your
+hip-shot reply. If you haven't read the patch, don't NAK it!
+
+In fact still no one replied to it at all, even now that you're aware of
+its existence.
+
+>> While we're at it, I noticed that mainline has a "mediatek,mt7623-eth"
+>> network driver but no corresponding .dtsi node. Talk about bitrot...
+> 
+> the idea is that we work together to make thins optimal. this is not a
+> you or is right. this is about the FOSS peer review process. please dont
+> be so agro.
+
+See above, please reconsider your tone. Peer review is no excuse for
+rude and destructive behavior towards contributors you don't know.
+
+Had you looked at the lists and codebase you would know that I am not
+new to FOSS.
+
+And please stop writing "agro", it sounds like some pothead making a
+peace sign; not helpful among professional software developers.
+
+Taking the time to start your sentences with a capital letter would also
+be a respectful gesture.
+
+> to me it seems suboptimal to support 2 dts files for the same board.
+
+If it is the identical board, then we are in violent agreement. I just
+find all your replies to me offensive so far, I don't know you and thus
+have no reason to trust your unsubstantiated claims about my board.
+
+Regards,
+
+Andreas
 
 -- 
-Best regards,
-Marek Vasut
+SUSE Linux GmbH, Maxfeldstr. 5, 90409 Nürnberg, Germany
+GF: Felix Imendörffer, Jane Smithard, Graham Norton
+HRB 21284 (AG Nürnberg)
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
 the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
