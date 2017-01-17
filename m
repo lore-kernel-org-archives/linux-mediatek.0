@@ -1,80 +1,96 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v11 06/12] drm/mediatek: update display module connections
-Date: Tue, 17 Jan 2017 13:19:40 +0800
-Message-ID: <1484630380.5483.1.camel@mtksdaap41>
-References: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
- <1484117473-46644-7-git-send-email-yt.shen@mediatek.com>
+From: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v3] arm: dts: mt2701: Add thermal device node.
+Date: Tue, 17 Jan 2017 17:24:09 +0800
+Message-ID: <1484645049-4477-2-git-send-email-erin.lo@mediatek.com>
+References: <1484645049-4477-1-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1484117473-46644-7-git-send-email-yt.shen@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: YT Shen <yt.shen@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <1484645049-4477-1-git-send-email-erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIFlUOgoKT24gV2VkLCAyMDE3LTAxLTExIGF0IDE0OjUxICswODAwLCBZVCBTaGVuIHdyb3Rl
-Ogo+IHVwZGF0ZSBjb25uZWN0aW9ucyBmb3IgT1ZMLCBSRE1BLCBCTFMsIERTSQo+IAo+IFNpZ25l
-ZC1vZmYtYnk6IFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPgoKQWNrZWQtYnk6IENLIEh1
-IDxjay5odUBtZWRpYXRlay5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9kZHAuYyB8IDI1ICsrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNo
-YW5nZWQsIDI1IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19kcm1fZGRwLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
-bV9kZHAuYwo+IGluZGV4IGI3N2Q0NTYuLmE5YjIwOWMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHAuYwo+IEBAIC0zMiw2ICszMiwxMCBAQAo+ICAjZGVmaW5lIERJU1Bf
-UkVHX0NPTkZJR19ESVNQX1JETUExX01PVVRfRU4JMHgwYzgKPiAgI2RlZmluZSBESVNQX1JFR19D
-T05GSUdfTU1TWVNfQ0dfQ09OMAkJMHgxMDAKPiAgCj4gKyNkZWZpbmUgRElTUF9SRUdfQ09ORklH
-X0RJU1BfT1ZMX01PVVRfRU4JMHgwMzAKPiArI2RlZmluZSBESVNQX1JFR19DT05GSUdfT1VUX1NF
-TAkJCTB4MDRjCj4gKyNkZWZpbmUgRElTUF9SRUdfQ09ORklHX0RTSV9TRUwJCQkweDA1MAo+ICsK
-PiAgI2RlZmluZSBESVNQX1JFR19NVVRFWF9FTihuKQkoMHgyMCArIDB4MjAgKiAobikpCj4gICNk
-ZWZpbmUgRElTUF9SRUdfTVVURVgobikJKDB4MjQgKyAweDIwICogKG4pKQo+ICAjZGVmaW5lIERJ
-U1BfUkVHX01VVEVYX1JTVChuKQkoMHgyOCArIDB4MjAgKiAobikpCj4gQEAgLTcxLDYgKzc1LDEw
-IEBACj4gICNkZWZpbmUgRFBJMF9TRUxfSU5fUkRNQTEJCTB4MQo+ICAjZGVmaW5lIENPTE9SMV9T
-RUxfSU5fT1ZMMQkJMHgxCj4gIAo+ICsjZGVmaW5lIE9WTF9NT1VUX0VOX1JETUEJCTB4MQo+ICsj
-ZGVmaW5lIEJMU19UT19EU0lfUkRNQTFfVE9fRFBJMQkweDgKPiArI2RlZmluZSBEU0lfU0VMX0lO
-X0JMUwkJCTB4MAo+ICsKPiAgc3RydWN0IG10a19kaXNwX211dGV4IHsKPiAgCWludCBpZDsKPiAg
-CWJvb2wgY2xhaW1lZDsKPiBAQCAtMTExLDYgKzExOSw5IEBAIHN0YXRpYyB1bnNpZ25lZCBpbnQg
-bXRrX2RkcF9tb3V0X2VuKGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKPiAgCWlmIChjdXIgPT0g
-RERQX0NPTVBPTkVOVF9PVkwwICYmIG5leHQgPT0gRERQX0NPTVBPTkVOVF9DT0xPUjApIHsKPiAg
-CQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19ESVNQX09WTDBfTU9VVF9FTjsKPiAgCQl2YWx1ZSA9
-IE9WTDBfTU9VVF9FTl9DT0xPUjA7Cj4gKwl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5U
-X09WTDAgJiYgbmV4dCA9PSBERFBfQ09NUE9ORU5UX1JETUEwKSB7Cj4gKwkJKmFkZHIgPSBESVNQ
-X1JFR19DT05GSUdfRElTUF9PVkxfTU9VVF9FTjsKPiArCQl2YWx1ZSA9IE9WTF9NT1VUX0VOX1JE
-TUE7Cj4gIAl9IGVsc2UgaWYgKGN1ciA9PSBERFBfQ09NUE9ORU5UX09EICYmIG5leHQgPT0gRERQ
-X0NPTVBPTkVOVF9SRE1BMCkgewo+ICAJCSphZGRyID0gRElTUF9SRUdfQ09ORklHX0RJU1BfT0Rf
-TU9VVF9FTjsKPiAgCQl2YWx1ZSA9IE9EX01PVVRfRU5fUkRNQTA7Cj4gQEAgLTE0OCw2ICsxNTks
-OSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfc2VsX2luKGVudW0gbXRrX2RkcF9jb21w
-X2lkIGN1ciwKPiAgCX0gZWxzZSBpZiAoY3VyID09IEREUF9DT01QT05FTlRfT1ZMMSAmJiBuZXh0
-ID09IEREUF9DT01QT05FTlRfQ09MT1IxKSB7Cj4gIAkJKmFkZHIgPSBESVNQX1JFR19DT05GSUdf
-RElTUF9DT0xPUjFfU0VMX0lOOwo+ICAJCXZhbHVlID0gQ09MT1IxX1NFTF9JTl9PVkwxOwo+ICsJ
-fSBlbHNlIGlmIChjdXIgPT0gRERQX0NPTVBPTkVOVF9CTFMgJiYgbmV4dCA9PSBERFBfQ09NUE9O
-RU5UX0RTSTApIHsKPiArCQkqYWRkciA9IERJU1BfUkVHX0NPTkZJR19EU0lfU0VMOwo+ICsJCXZh
-bHVlID0gRFNJX1NFTF9JTl9CTFM7Cj4gIAl9IGVsc2Ugewo+ICAJCXZhbHVlID0gMDsKPiAgCX0K
-PiBAQCAtMTU1LDYgKzE2OSwxNSBAQCBzdGF0aWMgdW5zaWduZWQgaW50IG10a19kZHBfc2VsX2lu
-KGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKPiAgCXJldHVybiB2YWx1ZTsKPiAgfQo+ICAKPiAr
-c3RhdGljIHZvaWQgbXRrX2RkcF9zb3V0X3NlbCh2b2lkIF9faW9tZW0gKmNvbmZpZ19yZWdzLAo+
-ICsJCQkgICAgIGVudW0gbXRrX2RkcF9jb21wX2lkIGN1ciwKPiArCQkJICAgICBlbnVtIG10a19k
-ZHBfY29tcF9pZCBuZXh0KQo+ICt7Cj4gKwlpZiAoY3VyID09IEREUF9DT01QT05FTlRfQkxTICYm
-IG5leHQgPT0gRERQX0NPTVBPTkVOVF9EU0kwKQo+ICsJCXdyaXRlbF9yZWxheGVkKEJMU19UT19E
-U0lfUkRNQTFfVE9fRFBJMSwKPiArCQkJICAgICAgIGNvbmZpZ19yZWdzICsgRElTUF9SRUdfQ09O
-RklHX09VVF9TRUwpOwo+ICt9Cj4gKwo+ICB2b2lkIG10a19kZHBfYWRkX2NvbXBfdG9fcGF0aCh2
-b2lkIF9faW9tZW0gKmNvbmZpZ19yZWdzLAo+ICAJCQkgICAgICBlbnVtIG10a19kZHBfY29tcF9p
-ZCBjdXIsCj4gIAkJCSAgICAgIGVudW0gbXRrX2RkcF9jb21wX2lkIG5leHQpCj4gQEAgLTE2Nyw2
-ICsxOTAsOCBAQCB2b2lkIG10a19kZHBfYWRkX2NvbXBfdG9fcGF0aCh2b2lkIF9faW9tZW0gKmNv
-bmZpZ19yZWdzLAo+ICAJCXdyaXRlbF9yZWxheGVkKHJlZywgY29uZmlnX3JlZ3MgKyBhZGRyKTsK
-PiAgCX0KPiAgCj4gKwltdGtfZGRwX3NvdXRfc2VsKGNvbmZpZ19yZWdzLCBjdXIsIG5leHQpOwo+
-ICsKPiAgCXZhbHVlID0gbXRrX2RkcF9zZWxfaW4oY3VyLCBuZXh0LCAmYWRkcik7Cj4gIAlpZiAo
-dmFsdWUpIHsKPiAgCQlyZWcgPSByZWFkbF9yZWxheGVkKGNvbmZpZ19yZWdzICsgYWRkcikgfCB2
-YWx1ZTsKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-cmktZGV2ZWwgbWFpbGluZyBsaXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0
-cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+From: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+
+Add thermal controller device nodes for MT2701.
+
+Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ arch/arm/boot/dts/mt2701.dtsi | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
+
+diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+index 4cfec57..26a88cb 100644
+--- a/arch/arm/boot/dts/mt2701.dtsi
++++ b/arch/arm/boot/dts/mt2701.dtsi
+@@ -89,6 +89,36 @@
+ 		clock-output-names = "rtc32k";
+ 	};
+ 
++	thermal-zones {
++		cpu_thermal: cpu_thermal {
++			polling-delay-passive = <1000>; /* milliseconds */
++			polling-delay = <1000>; /* milliseconds */
++
++			thermal-sensors = <&thermal 0>;
++			sustainable-power = <1000>;
++
++			trips {
++				threshold: trip-point@0 {
++					temperature = <68000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
++				target: trip-point@1 {
++					temperature = <85000>;
++					hysteresis = <2000>;
++					type = "passive";
++				};
++
++				cpu_crit: cpu_crit@0 {
++					temperature = <115000>;
++					hysteresis = <2000>;
++					type = "critical";
++				};
++			};
++		};
++	};
++
+ 	timer {
+ 		compatible = "arm,armv7-timer";
+ 		interrupt-parent = <&gic>;
+@@ -270,6 +300,19 @@
+ 		status = "disabled";
+ 	};
+ 
++	thermal: thermal@1100b000 {
++		#thermal-sensor-cells = <0>;
++		compatible = "mediatek,mt2701-thermal";
++		reg = <0 0x1100b000 0 0x1000>;
++		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
++		clock-names = "therm", "auxadc";
++		resets = <&pericfg MT2701_PERI_THERM_SW_RST>;
++		reset-names = "therm";
++		mediatek,auxadc = <&auxadc>;
++		mediatek,apmixedsys = <&apmixedsys>;
++	};
++
+ 	nandc: nfi@1100d000 {
+ 		compatible = "mediatek,mt2701-nfc";
+ 		reg = <0 0x1100d000 0 0x1000>;
+-- 
+1.9.1
