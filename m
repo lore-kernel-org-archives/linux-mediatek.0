@@ -1,66 +1,66 @@
-From: Thomas Petazzoni <thomas.petazzoni@free-electrons.com>
-Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Tue, 17 Jan 2017 14:36:50 +1100
-Message-ID: <20170117143650.5db87148@free-electrons.com>
-References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
-        <1484291609-20195-3-git-send-email-guochun.mao@mediatek.com>
-        <20170113151747.6bc85245@bbrezillon>
-        <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
-        <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com>
-        <20170113172825.75d545a3@bbrezillon>
-        <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com>
-        <20170113175628.1793f433@bbrezillon>
-        <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com>
-        <20170114092958.022f2fc8@bbrezillon>
-        <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com>
-        <20170116094032.6f471f11@bbrezillon>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v11 05/12] drm/mediatek: add BLS component
+Date: Tue, 17 Jan 2017 13:07:56 +0800
+Message-ID: <1484629676.5483.0.camel@mtksdaap41>
+References: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
+ <1484117473-46644-6-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170116094032.6f471f11@bbrezillon>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>
-Cc: Marek Vasut <marek.vasut@gmail.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Guochun Mao <guochun.mao@mediatek.com>, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1484117473-46644-6-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hello,
-
-(Side note: you guys should learn about stripping irrelevant parts of
-an e-mail when replying!)
-
-On Mon, 16 Jan 2017 09:40:32 +0100, Boris Brezillon wrote:
-
-> > Well this is OK I guess, but then you can also use "mediatek,mt8173-nor"
-> > as the oldest supported compatible and be done with it, no ? It looks a
-> > bit crappy though, I admit that ...
-> 
-> Let's stop bikeshedding and wait for DT maintainers feedback
-> before taking a decision ;-).
-> 
-> Rob, Mark, any opinion?
-
-I agree that a clarification would be good. There are really two
-options:
-
- 1. Have two compatible strings in the DT, the one that matches the
-    exact SoC where the IP is found (first compatible string) and the
-    one that matches some other SoC where the same IP is found (second
-    compatible string). Originally, Linux only supports the second
-    compatible string in its device driver, but if it happens that a
-    difference is found between two IPs that we thought were the same,
-    we can add support for the first compatible string in the driver,
-    with a slightly different behavior.
-
- 2. Have a single compatible string in the DT, matching the exact SoC
-    where the IP is found. This involves adding immediately this
-    compatible string in the corresponding driver.
-
-I've not really been able to figure out which of the two options is the
-most future-proof/appropriate.
-
-Thomas
--- 
-Thomas Petazzoni, CTO, Free Electrons
-Embedded Linux and Kernel engineering
-http://free-electrons.com
+SGksIFlUOgoKT24gV2VkLCAyMDE3LTAxLTExIGF0IDE0OjUxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IEFkZCBCTFMgY29tcG9uZW50IGZvciBQV00gKyBHQU1NQSBmdW5jdGlvbgo+IAo+IFNpZ25l
+ZC1vZmYtYnk6IFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0ZWsuY29tPgoKQWNrZWQtYnk6IENLIEh1
+IDxjay5odUBtZWRpYXRlay5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kZHBfY29tcC5jIHwgNSArKysrLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kZHBfY29tcC5oIHwgMiArKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9u
+cygrKSwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZGRwX2NvbXAuYwo+IGluZGV4IDNmZjc4OGMuLmY2ZTg1M2EgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMKPiBAQCAtMjU1LDYgKzI1NSw3IEBA
+IHN0YXRpYyB2b2lkIG10a19nYW1tYV9zZXQoc3RydWN0IG10a19kZHBfY29tcCAqY29tcCwKPiAg
+CVtNVEtfRElTUF9QV01dID0gInB3bSIsCj4gIAlbTVRLX0RJU1BfTVVURVhdID0gIm11dGV4IiwK
+PiAgCVtNVEtfRElTUF9PRF0gPSAib2QiLAo+ICsJW01US19ESVNQX0JMU10gPSAiYmxzIiwKPiAg
+fTsKPiAgCj4gIHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggewo+IEBAIC0yNjUsNiArMjY2LDcg
+QEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4gIAo+ICBzdGF0aWMgY29uc3Qgc3RydWN0
+IG10a19kZHBfY29tcF9tYXRjaCBtdGtfZGRwX21hdGNoZXNbRERQX0NPTVBPTkVOVF9JRF9NQVhd
+ID0gewo+ICAJW0REUF9DT01QT05FTlRfQUFMXQk9IHsgTVRLX0RJU1BfQUFMLAkwLCAmZGRwX2Fh
+bCB9LAo+ICsJW0REUF9DT01QT05FTlRfQkxTXQk9IHsgTVRLX0RJU1BfQkxTLAkwLCBOVUxMIH0s
+Cj4gIAlbRERQX0NPTVBPTkVOVF9DT0xPUjBdCT0geyBNVEtfRElTUF9DT0xPUiwJMCwgJmRkcF9j
+b2xvciB9LAo+ICAJW0REUF9DT01QT05FTlRfQ09MT1IxXQk9IHsgTVRLX0RJU1BfQ09MT1IsCTEs
+ICZkZHBfY29sb3IgfSwKPiAgCVtERFBfQ09NUE9ORU5UX0RQSTBdCT0geyBNVEtfRFBJLAkJMCwg
+TlVMTCB9LAo+IEBAIC0zMzYsNyArMzM4LDggQEAgaW50IG10a19kZHBfY29tcF9pbml0KHN0cnVj
+dCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZV9ub2RlICpub2RlLAo+ICAJY29tcC0+aWQgPSBj
+b21wX2lkOwo+ICAJY29tcC0+ZnVuY3MgPSBmdW5jcyA/OiBtdGtfZGRwX21hdGNoZXNbY29tcF9p
+ZF0uZnVuY3M7Cj4gIAo+IC0JaWYgKGNvbXBfaWQgPT0gRERQX0NPTVBPTkVOVF9EUEkwIHx8Cj4g
+KwlpZiAoY29tcF9pZCA9PSBERFBfQ09NUE9ORU5UX0JMUyB8fAo+ICsJICAgIGNvbXBfaWQgPT0g
+RERQX0NPTVBPTkVOVF9EUEkwIHx8Cj4gIAkgICAgY29tcF9pZCA9PSBERFBfQ09NUE9ORU5UX0RT
+STAgfHwKPiAgCSAgICBjb21wX2lkID09IEREUF9DT01QT05FTlRfUFdNMCkgewo+ICAJCWNvbXAt
+PnJlZ3MgPSBOVUxMOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kZHBfY29tcC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2Nv
+bXAuaAo+IGluZGV4IDIyYTMzZWUuLjA4MjhjZjggMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBAQCAtMzYsMTEgKzM2LDEzIEBAIGVudW0gbXRr
+X2RkcF9jb21wX3R5cGUgewo+ICAJTVRLX0RJU1BfUFdNLAo+ICAJTVRLX0RJU1BfTVVURVgsCj4g
+IAlNVEtfRElTUF9PRCwKPiArCU1US19ESVNQX0JMUywKPiAgCU1US19ERFBfQ09NUF9UWVBFX01B
+WCwKPiAgfTsKPiAgCj4gIGVudW0gbXRrX2RkcF9jb21wX2lkIHsKPiAgCUREUF9DT01QT05FTlRf
+QUFMLAo+ICsJRERQX0NPTVBPTkVOVF9CTFMsCj4gIAlERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiAg
+CUREUF9DT01QT05FTlRfQ09MT1IxLAo+ICAJRERQX0NPTVBPTkVOVF9EUEkwLAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5n
+IGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
