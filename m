@@ -1,51 +1,96 @@
-From: Marek Vasut <marek.vasut@gmail.com>
-Subject: Re: [PATCH -next] mtd: nand: mediatek: remove redundant dev_err call
- in mtk_nfc_probe()
-Date: Tue, 17 Jan 2017 16:20:13 +0100
-Message-ID: <998d159a-d262-6849-b518-6282ae0e183a@gmail.com>
-References: <20170117142246.9607-1-weiyj.lk@gmail.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/6] phy: phy-mt65xx-usb3: add reference clock of usb3 analog phy
+Date: Wed, 18 Jan 2017 13:51:00 +0800
+Message-ID: <1484718665-11584-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20170117142246.9607-1-weiyj.lk@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Wei Yongjun <weiyj.lk@gmail.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, Richard Weinberger <richard@nod.at>, David Woodhouse <dwmw2@infradead.org>, Brian Norris <computersforpeace@gmail.com>, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 01/17/2017 03:22 PM, Wei Yongjun wrote:
-> From: Wei Yongjun <weiyongjun1@huawei.com>
-> 
-> There is a error message within devm_ioremap_resource
-> already, so remove the dev_err call to avoid redundant
-> error message.
-> 
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+usually, the reference clock of usb3 analog phy comes from
+26M oscillator directly, but some SoCs are not, add it for
+compatibility.
 
-Acked-by: Marek Vasut <marek.vasut@gmail.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/phy/phy-mt65xx-usb3.c |   36 ++++++++++++++++++++++++++++--------
+ 1 file changed, 28 insertions(+), 8 deletions(-)
 
-> ---
->  drivers/mtd/nand/mtk_nand.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
-> index 6c3eed3..6c517c6 100644
-> --- a/drivers/mtd/nand/mtk_nand.c
-> +++ b/drivers/mtd/nand/mtk_nand.c
-> @@ -1383,7 +1383,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
->  	nfc->regs = devm_ioremap_resource(dev, res);
->  	if (IS_ERR(nfc->regs)) {
->  		ret = PTR_ERR(nfc->regs);
-> -		dev_err(dev, "no nfi base\n");
->  		goto release_ecc;
->  	}
->  
-> 
-> 
-> 
-
-
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index d972067..fc9a4f0 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -149,7 +149,8 @@ struct mt65xx_phy_instance {
+ struct mt65xx_u3phy {
+ 	struct device *dev;
+ 	void __iomem *sif_base;	/* include sif2, but exclude port's */
+-	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
++	struct clk *u2ref_clk;	/* reference clock of u2 analog phy */
++	struct clk *u3ref_clk;	/* reference clock of u3 analog phy */
+ 	const struct mt65xx_phy_pdata *pdata;
+ 	struct mt65xx_phy_instance **phys;
+ 	int nphys;
+@@ -429,11 +430,17 @@ static int mt65xx_phy_init(struct phy *phy)
+ {
+ 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
+ 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
++	struct clk *ref_clk;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(u3phy->u3phya_ref);
++	if (instance->type == PHY_TYPE_USB2)
++		ref_clk = u3phy->u2ref_clk;
++	else
++		ref_clk = u3phy->u3ref_clk;
++
++	ret = clk_prepare_enable(ref_clk);
+ 	if (ret) {
+-		dev_err(u3phy->dev, "failed to enable u3phya_ref\n");
++		dev_err(u3phy->dev, "failed to enable ref clk\n");
+ 		return ret;
+ 	}
+ 
+@@ -464,9 +471,16 @@ static int mt65xx_phy_exit(struct phy *phy)
+ {
+ 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
+ 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
++	struct clk *ref_clk;
+ 
+ 	phy_instance_exit(u3phy, instance);
+-	clk_disable_unprepare(u3phy->u3phya_ref);
++
++	if (instance->type == PHY_TYPE_USB2)
++		ref_clk = u3phy->u2ref_clk;
++	else
++		ref_clk = u3phy->u3ref_clk;
++
++	clk_disable_unprepare(ref_clk);
+ 	return 0;
+ }
+ 
+@@ -566,10 +580,16 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 		return PTR_ERR(u3phy->sif_base);
+ 	}
+ 
+-	u3phy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
+-	if (IS_ERR(u3phy->u3phya_ref)) {
+-		dev_err(dev, "error to get u3phya_ref\n");
+-		return PTR_ERR(u3phy->u3phya_ref);
++	u3phy->u2ref_clk = devm_clk_get(dev, "u2ref_clk");
++	if (IS_ERR(u3phy->u2ref_clk)) {
++		dev_err(dev, "failed to get u2ref_clk\n");
++		return PTR_ERR(u3phy->u2ref_clk);
++	}
++
++	u3phy->u3ref_clk = devm_clk_get(dev, "u3ref_clk");
++	if (IS_ERR(u3phy->u3ref_clk)) {
++		dev_err(dev, "failed to get u3ref_clk\n");
++		return PTR_ERR(u3phy->u3ref_clk);
+ 	}
+ 
+ 	port = 0;
 -- 
-Best regards,
-Marek Vasut
+1.7.9.5
