@@ -1,114 +1,153 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 2/6] usb: mtu3: add reference clock
-Date: Wed, 18 Jan 2017 14:08:23 +0800
-Message-ID: <1484719707-12107-2-git-send-email-chunfeng.yun@mediatek.com>
-References: <1484719707-12107-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] mm/memblock.c: remove unnecessary log and clean up
+Date: Wed, 18 Jan 2017 14:16:05 +0800
+Message-ID: <1484720165-25403-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1484719707-12107-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <owner-linux-mm@kvack.org>
+Sender: owner-linux-mm@kvack.org
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-usually, the reference clock comes from 26M oscillator directly,
-but some SoCs are not, add it for compatibility.
+There is no variable named flags in memblock_add() and memblock_reserve()
+so remove it from the log messages.
+This patch also cleans up the type casting for phys_addr_t by using
+%pa to print them.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3.h      |    1 +
- drivers/usb/mtu3/mtu3_plat.c |   21 +++++++++++++++++++--
- 2 files changed, 20 insertions(+), 2 deletions(-)
+ mm/memblock.c | 54 +++++++++++++++++++++++++-----------------------------
+ 1 file changed, 25 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index ba9df71..aa6fd6a 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -225,6 +225,7 @@ struct ssusb_mtk {
- 	/* common power & clock */
- 	struct regulator *vusb33;
- 	struct clk *sys_clk;
-+	struct clk *ref_clk;
- 	/* otg */
- 	struct otg_switch_mtk otg_switch;
- 	enum usb_dr_mode dr_mode;
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 6344859..19a345d 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -123,7 +123,13 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- 	ret = clk_prepare_enable(ssusb->sys_clk);
- 	if (ret) {
- 		dev_err(ssusb->dev, "failed to enable sys_clk\n");
--		goto clk_err;
-+		goto sys_clk_err;
-+	}
-+
-+	ret = clk_prepare_enable(ssusb->ref_clk);
-+	if (ret) {
-+		dev_err(ssusb->dev, "failed to enable ref_clk\n");
-+		goto ref_clk_err;
- 	}
+diff --git a/mm/memblock.c b/mm/memblock.c
+index 7608bc3..8683f02 100644
+--- a/mm/memblock.c
++++ b/mm/memblock.c
+@@ -611,10 +611,10 @@ int __init_memblock memblock_add_node(phys_addr_t base, phys_addr_t size,
  
- 	ret = ssusb_phy_init(ssusb);
-@@ -143,8 +149,10 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- phy_err:
- 	ssusb_phy_exit(ssusb);
- phy_init_err:
-+	clk_disable_unprepare(ssusb->ref_clk);
-+ref_clk_err:
- 	clk_disable_unprepare(ssusb->sys_clk);
--clk_err:
-+sys_clk_err:
- 	regulator_disable(ssusb->vusb33);
- vusb33_err:
- 
-@@ -154,6 +162,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
+ int __init_memblock memblock_add(phys_addr_t base, phys_addr_t size)
  {
- 	clk_disable_unprepare(ssusb->sys_clk);
-+	clk_disable_unprepare(ssusb->ref_clk);
- 	regulator_disable(ssusb->vusb33);
- 	ssusb_phy_power_off(ssusb);
- 	ssusb_phy_exit(ssusb);
-@@ -216,6 +225,12 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 		return PTR_ERR(ssusb->sys_clk);
- 	}
- 
-+	ssusb->ref_clk = devm_clk_get(dev, "ref_ck");
-+	if (IS_ERR(ssusb->ref_clk)) {
-+		dev_err(dev, "failed to get ref clock\n");
-+		return PTR_ERR(ssusb->ref_clk);
-+	}
+-	memblock_dbg("memblock_add: [%#016llx-%#016llx] flags %#02lx %pF\n",
+-		     (unsigned long long)base,
+-		     (unsigned long long)base + size - 1,
+-		     0UL, (void *)_RET_IP_);
++	phys_addr_t end = base + size - 1;
 +
- 	ssusb->num_phys = of_count_phandle_with_args(node,
- 			"phys", "#phy-cells");
- 	if (ssusb->num_phys > 0) {
-@@ -428,6 +443,7 @@ static int __maybe_unused mtu3_suspend(struct device *dev)
- 	ssusb_host_disable(ssusb, true);
- 	ssusb_phy_power_off(ssusb);
- 	clk_disable_unprepare(ssusb->sys_clk);
-+	clk_disable_unprepare(ssusb->ref_clk);
- 	ssusb_wakeup_enable(ssusb);
++	memblock_dbg("memblock_add: [%pa-%pa] %pF\n",
++		     &base, &end, (void *)_RET_IP_);
  
+ 	return memblock_add_range(&memblock.memory, base, size, MAX_NUMNODES, 0);
+ }
+@@ -718,10 +718,10 @@ int __init_memblock memblock_remove(phys_addr_t base, phys_addr_t size)
+ 
+ int __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
+ {
+-	memblock_dbg("   memblock_free: [%#016llx-%#016llx] %pF\n",
+-		     (unsigned long long)base,
+-		     (unsigned long long)base + size - 1,
+-		     (void *)_RET_IP_);
++	phys_addr_t end = base + size - 1;
++
++	memblock_dbg("   memblock_free: [%pa-%pa] %pF\n",
++		     &base, &end, (void *)_RET_IP_);
+ 
+ 	kmemleak_free_part_phys(base, size);
+ 	return memblock_remove_range(&memblock.reserved, base, size);
+@@ -729,10 +729,10 @@ int __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
+ 
+ int __init_memblock memblock_reserve(phys_addr_t base, phys_addr_t size)
+ {
+-	memblock_dbg("memblock_reserve: [%#016llx-%#016llx] flags %#02lx %pF\n",
+-		     (unsigned long long)base,
+-		     (unsigned long long)base + size - 1,
+-		     0UL, (void *)_RET_IP_);
++	phys_addr_t end = base + size - 1;
++
++	memblock_dbg("memblock_reserve: [%pa-%pa] %pF\n",
++		     &base, &end, (void *)_RET_IP_);
+ 
+ 	return memblock_add_range(&memblock.reserved, base, size, MAX_NUMNODES, 0);
+ }
+@@ -1202,8 +1202,8 @@ phys_addr_t __init memblock_alloc_base(phys_addr_t size, phys_addr_t align, phys
+ 	alloc = __memblock_alloc_base(size, align, max_addr);
+ 
+ 	if (alloc == 0)
+-		panic("ERROR: Failed to allocate 0x%llx bytes below 0x%llx.\n",
+-		      (unsigned long long) size, (unsigned long long) max_addr);
++		panic("ERROR: Failed to allocate %pa bytes below %pa.\n",
++		      &size, &max_addr);
+ 
+ 	return alloc;
+ }
+@@ -1673,7 +1673,7 @@ phys_addr_t __init_memblock memblock_get_current_limit(void)
+ 
+ static void __init_memblock memblock_dump(struct memblock_type *type, char *name)
+ {
+-	unsigned long long base, size;
++	phys_addr_t base, end, size;
+ 	unsigned long flags;
+ 	int idx;
+ 	struct memblock_region *rgn;
+@@ -1685,23 +1685,24 @@ static void __init_memblock memblock_dump(struct memblock_type *type, char *name
+ 
+ 		base = rgn->base;
+ 		size = rgn->size;
++		end = base + size - 1;
+ 		flags = rgn->flags;
+ #ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
+ 		if (memblock_get_region_node(rgn) != MAX_NUMNODES)
+ 			snprintf(nid_buf, sizeof(nid_buf), " on node %d",
+ 				 memblock_get_region_node(rgn));
+ #endif
+-		pr_info(" %s[%#x]\t[%#016llx-%#016llx], %#llx bytes%s flags: %#lx\n",
+-			name, idx, base, base + size - 1, size, nid_buf, flags);
++		pr_info(" %s[%#x]\t[%pa-%pa], %pa bytes%s flags: %#lx\n",
++			name, idx, &base, &end, &size, nid_buf, flags);
+ 	}
+ }
+ 
+ void __init_memblock __memblock_dump_all(void)
+ {
+ 	pr_info("MEMBLOCK configuration:\n");
+-	pr_info(" memory size = %#llx reserved size = %#llx\n",
+-		(unsigned long long)memblock.memory.total_size,
+-		(unsigned long long)memblock.reserved.total_size);
++	pr_info(" memory size = %pa reserved size = %pa\n",
++		&memblock.memory.total_size,
++		&memblock.reserved.total_size);
+ 
+ 	memblock_dump(&memblock.memory, "memory");
+ 	memblock_dump(&memblock.reserved, "reserved");
+@@ -1727,19 +1728,14 @@ static int memblock_debug_show(struct seq_file *m, void *private)
+ 	struct memblock_type *type = m->private;
+ 	struct memblock_region *reg;
+ 	int i;
++	phys_addr_t end;
+ 
+ 	for (i = 0; i < type->cnt; i++) {
+ 		reg = &type->regions[i];
+-		seq_printf(m, "%4d: ", i);
+-		if (sizeof(phys_addr_t) == 4)
+-			seq_printf(m, "0x%08lx..0x%08lx\n",
+-				   (unsigned long)reg->base,
+-				   (unsigned long)(reg->base + reg->size - 1));
+-		else
+-			seq_printf(m, "0x%016llx..0x%016llx\n",
+-				   (unsigned long long)reg->base,
+-				   (unsigned long long)(reg->base + reg->size - 1));
++		end = reg->base + reg->size - 1;
+ 
++		seq_printf(m, "%4d: ", i);
++		seq_printf(m, "%pa..%pa\n", &reg->base, &end);
+ 	}
  	return 0;
-@@ -445,6 +461,7 @@ static int __maybe_unused mtu3_resume(struct device *dev)
- 
- 	ssusb_wakeup_disable(ssusb);
- 	clk_prepare_enable(ssusb->sys_clk);
-+	clk_prepare_enable(ssusb->ref_clk);
- 	ssusb_phy_power_on(ssusb);
- 	ssusb_host_enable(ssusb);
- 
+ }
 -- 
-1.7.9.5
+1.9.1
+
+--
+To unsubscribe, send a message with 'unsubscribe linux-mm' in
+the body to majordomo@kvack.org.  For more info on Linux MM,
+see: http://www.linux-mm.org/ .
+Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
