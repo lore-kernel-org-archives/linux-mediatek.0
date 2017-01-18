@@ -1,662 +1,177 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH 3/6] phy: phy-mt65xx-usb3: add support for mt2712 platform
-Date: Wed, 18 Jan 2017 13:51:02 +0800
-Message-ID: <1484718665-11584-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1484718665-11584-1-git-send-email-chunfeng.yun@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v11 07/12] drm/mediatek: cleaning up and refine
+Date: Wed, 18 Jan 2017 13:55:32 +0800
+Message-ID: <1484718932.26941.1.camel@mtksdaap41>
+References: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
+ <1484117473-46644-8-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1484718665-11584-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Cc: Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1484117473-46644-8-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There are some variations from mt2701 to mt2712:
-1. banks shared by multiple ports are put back into each port,
-    such as SPLLC and U2FREQ;
-2. add a new bank MISC for u2port, and CHIP for u3port;
-3. bank's offset in each port are also rearranged;
-
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/phy/phy-mt65xx-usb3.c |  326 ++++++++++++++++++++++++++---------------
- 1 file changed, 208 insertions(+), 118 deletions(-)
-
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index c187a3b..d515c69 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -23,46 +23,54 @@
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- 
--/*
-- * for sifslv2 register, but exclude port's;
-- * relative to USB3_SIF2_BASE base address
-- */
--#define SSUSB_SIFSLV_SPLLC		0x0000
--#define SSUSB_SIFSLV_U2FREQ		0x0100
--
--/* offsets of banks in each u2phy registers */
--#define SSUSB_SIFSLV_U2PHY_COM_BASE	0x0000
--/* offsets of banks in each u3phy registers */
--#define SSUSB_SIFSLV_U3PHYD_BASE	0x0000
--#define SSUSB_SIFSLV_U3PHYA_BASE	0x0200
--
--#define U3P_USBPHYACR0		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0000)
-+/* version V1 sub-banks offset base address */
-+/* banks shared by multiple phys */
-+#define SSUSB_SIFSLV_V1_SPLLC		0x000	/* shared by u3 phys */
-+#define SSUSB_SIFSLV_V1_U2FREQ		0x100	/* shared by u2 phys */
-+/* u2 phy bank */
-+#define SSUSB_SIFSLV_V1_U2PHY_COM	0x000
-+/* u3 phy banks */
-+#define SSUSB_SIFSLV_V1_U3PHYD		0x000
-+#define SSUSB_SIFSLV_V1_U3PHYA		0x200
-+
-+/* version V2 sub-banks offset base address */
-+/* u2 phy banks */
-+#define SSUSB_SIFSLV_V2_MISC		0x000
-+#define SSUSB_SIFSLV_V2_U2FREQ		0x100
-+#define SSUSB_SIFSLV_V2_U2PHY_COM	0x300
-+/* u3 phy banks */
-+#define SSUSB_SIFSLV_V2_SPLLC		0x000
-+#define SSUSB_SIFSLV_V2_CHIP		0x100
-+#define SSUSB_SIFSLV_V2_U3PHYD		0x200
-+#define SSUSB_SIFSLV_V2_U3PHYA		0x400
-+
-+#define U3P_USBPHYACR0		0x000
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
- 
--#define U3P_USBPHYACR2		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0008)
-+#define U3P_USBPHYACR2		0x008
- #define PA2_RG_SIF_U2PLL_FORCE_EN	BIT(18)
- 
--#define U3P_USBPHYACR5		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0014)
-+#define U3P_USBPHYACR5		0x014
- #define PA5_RG_U2_HSTX_SRCAL_EN	BIT(15)
- #define PA5_RG_U2_HSTX_SRCTRL		GENMASK(14, 12)
- #define PA5_RG_U2_HSTX_SRCTRL_VAL(x)	((0x7 & (x)) << 12)
- #define PA5_RG_U2_HS_100U_U3_EN	BIT(11)
- 
--#define U3P_USBPHYACR6		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0018)
-+#define U3P_USBPHYACR6		0x018
- #define PA6_RG_U2_BC11_SW_EN		BIT(23)
- #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
- #define PA6_RG_U2_SQTH		GENMASK(3, 0)
- #define PA6_RG_U2_SQTH_VAL(x)	(0xf & (x))
- 
--#define U3P_U2PHYACR4		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0020)
-+#define U3P_U2PHYACR4		0x020
- #define P2C_RG_USB20_GPIO_CTL		BIT(9)
- #define P2C_USB20_GPIO_MODE		BIT(8)
- #define P2C_U2_GPIO_CTR_MSK	(P2C_RG_USB20_GPIO_CTL | P2C_USB20_GPIO_MODE)
- 
--#define U3D_U2PHYDCR0		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0060)
-+#define U3D_U2PHYDCR0		0x060
- #define P2C_RG_SIF_U2PLL_FORCE_ON	BIT(24)
- 
--#define U3P_U2PHYDTM0		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0068)
-+#define U3P_U2PHYDTM0		0x068
- #define P2C_FORCE_UART_EN		BIT(26)
- #define P2C_FORCE_DATAIN		BIT(23)
- #define P2C_FORCE_DM_PULLDOWN		BIT(21)
-@@ -84,47 +92,44 @@
- 		P2C_FORCE_TERMSEL | P2C_RG_DMPULLDOWN | \
- 		P2C_RG_DPPULLDOWN | P2C_RG_TERMSEL)
- 
--#define U3P_U2PHYDTM1		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x006C)
-+#define U3P_U2PHYDTM1		0x06C
- #define P2C_RG_UART_EN			BIT(16)
- #define P2C_RG_VBUSVALID		BIT(5)
- #define P2C_RG_SESSEND			BIT(4)
- #define P2C_RG_AVALID			BIT(2)
- 
--#define U3P_U3_PHYA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0000)
--#define P3A_RG_U3_VUSB10_ON		BIT(5)
--
--#define U3P_U3_PHYA_REG6	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0018)
-+#define U3P_U3_PHYA_REG6	0x018
- #define P3A_RG_TX_EIDLE_CM		GENMASK(31, 28)
- #define P3A_RG_TX_EIDLE_CM_VAL(x)	((0xf & (x)) << 28)
- 
--#define U3P_U3_PHYA_REG9	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0024)
-+#define U3P_U3_PHYA_REG9	0x024
- #define P3A_RG_RX_DAC_MUX		GENMASK(5, 1)
- #define P3A_RG_RX_DAC_MUX_VAL(x)	((0x1f & (x)) << 1)
- 
--#define U3P_U3PHYA_DA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0100)
-+#define U3P_U3_PHYA_DA_REG0	0x100
- #define P3A_RG_XTAL_EXT_EN_U3		GENMASK(11, 10)
- #define P3A_RG_XTAL_EXT_EN_U3_VAL(x)	((0x3 & (x)) << 10)
- 
--#define U3P_PHYD_CDR1		(SSUSB_SIFSLV_U3PHYD_BASE + 0x005c)
-+#define U3P_U3_PHYD_CDR1		0x05c
- #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
- #define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
- #define P3D_RG_CDR_BIR_LTD0		GENMASK(12, 8)
- #define P3D_RG_CDR_BIR_LTD0_VAL(x)	((0x1f & (x)) << 8)
- 
--#define U3P_XTALCTL3		(SSUSB_SIFSLV_SPLLC + 0x0018)
-+#define U3P_SPLLC_XTALCTL3		0x018
- #define XC3_RG_U3_XTAL_RX_PWD		BIT(9)
- #define XC3_RG_U3_FRC_XTAL_RX_PWD	BIT(8)
- 
--#define U3P_U2FREQ_FMCR0	(SSUSB_SIFSLV_U2FREQ + 0x00)
-+#define U3P_U2FREQ_FMCR0	0x00
- #define P2F_RG_MONCLK_SEL	GENMASK(27, 26)
- #define P2F_RG_MONCLK_SEL_VAL(x)	((0x3 & (x)) << 26)
- #define P2F_RG_FREQDET_EN	BIT(24)
- #define P2F_RG_CYCLECNT		GENMASK(23, 0)
- #define P2F_RG_CYCLECNT_VAL(x)	((P2F_RG_CYCLECNT) & (x))
- 
--#define U3P_U2FREQ_VALUE	(SSUSB_SIFSLV_U2FREQ + 0x0c)
-+#define U3P_U2FREQ_VALUE	0x0c
- 
--#define U3P_U2FREQ_FMMONR1	(SSUSB_SIFSLV_U2FREQ + 0x10)
-+#define U3P_U2FREQ_FMMONR1	0x10
- #define P2F_USB_FM_VALID	BIT(0)
- #define P2F_RG_FRCK_EN		BIT(8)
- 
-@@ -133,14 +138,37 @@
- #define U3P_SR_COEF_DIVISOR	1000
- #define U3P_FM_DET_CYCLE_CNT	1024
- 
-+enum mt_phy_version {
-+	MT_PHY_V1 = 1,
-+	MT_PHY_V2,
-+};
-+
- struct mt65xx_phy_pdata {
- 	/* avoid RX sensitivity level degradation only for mt8173 */
- 	bool avoid_rx_sen_degradation;
-+	enum mt_phy_version version;
-+};
-+
-+struct u2phy_banks {
-+	void __iomem *misc;
-+	void __iomem *fmreg;
-+	void __iomem *com;
-+};
-+
-+struct u3phy_banks {
-+	void __iomem *spllc;
-+	void __iomem *chip;
-+	void __iomem *phyd; /* include u3phyd_bank2 */
-+	void __iomem *phya; /* include u3phya_da */
- };
- 
- struct mt65xx_phy_instance {
- 	struct phy *phy;
- 	void __iomem *port_base;
-+	union {
-+		struct u2phy_banks u2_banks;
-+		struct u3phy_banks u3_banks;
-+	};
- 	u32 index;
- 	u8 type;
- };
-@@ -158,49 +186,53 @@ struct mt65xx_u3phy {
- static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *sif_base = u3phy->sif_base;
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *fmreg = u2_banks->fmreg;
-+	void __iomem *com = u2_banks->com;
- 	int calibration_val;
- 	int fm_out;
- 	u32 tmp;
- 
- 	/* enable USB ring oscillator */
--	tmp = readl(instance->port_base + U3P_USBPHYACR5);
-+	tmp = readl(com + U3P_USBPHYACR5);
- 	tmp |= PA5_RG_U2_HSTX_SRCAL_EN;
--	writel(tmp, instance->port_base + U3P_USBPHYACR5);
-+	writel(tmp, com + U3P_USBPHYACR5);
- 	udelay(1);
- 
- 	/*enable free run clock */
--	tmp = readl(sif_base + U3P_U2FREQ_FMMONR1);
-+	tmp = readl(fmreg + U3P_U2FREQ_FMMONR1);
- 	tmp |= P2F_RG_FRCK_EN;
--	writel(tmp, sif_base + U3P_U2FREQ_FMMONR1);
-+	writel(tmp, fmreg + U3P_U2FREQ_FMMONR1);
- 
- 	/* set cycle count as 1024, and select u2 channel */
--	tmp = readl(sif_base + U3P_U2FREQ_FMCR0);
-+	tmp = readl(fmreg + U3P_U2FREQ_FMCR0);
- 	tmp &= ~(P2F_RG_CYCLECNT | P2F_RG_MONCLK_SEL);
- 	tmp |= P2F_RG_CYCLECNT_VAL(U3P_FM_DET_CYCLE_CNT);
--	tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index >> 1);
--	writel(tmp, sif_base + U3P_U2FREQ_FMCR0);
-+	if (u3phy->pdata->version == MT_PHY_V1)
-+		tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index >> 1);
-+
-+	writel(tmp, fmreg + U3P_U2FREQ_FMCR0);
- 
- 	/* enable frequency meter */
--	tmp = readl(sif_base + U3P_U2FREQ_FMCR0);
-+	tmp = readl(fmreg + U3P_U2FREQ_FMCR0);
- 	tmp |= P2F_RG_FREQDET_EN;
--	writel(tmp, sif_base + U3P_U2FREQ_FMCR0);
-+	writel(tmp, fmreg + U3P_U2FREQ_FMCR0);
- 
- 	/* ignore return value */
--	readl_poll_timeout(sif_base + U3P_U2FREQ_FMMONR1, tmp,
-+	readl_poll_timeout(fmreg + U3P_U2FREQ_FMMONR1, tmp,
- 		  (tmp & P2F_USB_FM_VALID), 10, 200);
- 
--	fm_out = readl(sif_base + U3P_U2FREQ_VALUE);
-+	fm_out = readl(fmreg + U3P_U2FREQ_VALUE);
- 
- 	/* disable frequency meter */
--	tmp = readl(sif_base + U3P_U2FREQ_FMCR0);
-+	tmp = readl(fmreg + U3P_U2FREQ_FMCR0);
- 	tmp &= ~P2F_RG_FREQDET_EN;
--	writel(tmp, sif_base + U3P_U2FREQ_FMCR0);
-+	writel(tmp, fmreg + U3P_U2FREQ_FMCR0);
- 
- 	/*disable free run clock */
--	tmp = readl(sif_base + U3P_U2FREQ_FMMONR1);
-+	tmp = readl(fmreg + U3P_U2FREQ_FMMONR1);
- 	tmp &= ~P2F_RG_FRCK_EN;
--	writel(tmp, sif_base + U3P_U2FREQ_FMMONR1);
-+	writel(tmp, fmreg + U3P_U2FREQ_FMMONR1);
- 
- 	if (fm_out) {
- 		/* ( 1024 / FM_OUT ) x reference clock frequency x 0.028 */
-@@ -215,48 +247,48 @@ static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 		instance->index, fm_out, calibration_val);
- 
- 	/* set HS slew rate */
--	tmp = readl(instance->port_base + U3P_USBPHYACR5);
-+	tmp = readl(com + U3P_USBPHYACR5);
- 	tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
- 	tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(calibration_val);
--	writel(tmp, instance->port_base + U3P_USBPHYACR5);
-+	writel(tmp, com + U3P_USBPHYACR5);
- 
- 	/* disable USB ring oscillator */
--	tmp = readl(instance->port_base + U3P_USBPHYACR5);
-+	tmp = readl(com + U3P_USBPHYACR5);
- 	tmp &= ~PA5_RG_U2_HSTX_SRCAL_EN;
--	writel(tmp, instance->port_base + U3P_USBPHYACR5);
-+	writel(tmp, com + U3P_USBPHYACR5);
- }
- 
- static void u3_phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *port_base = instance->port_base;
-+	struct u3phy_banks *u3_banks = &instance->u3_banks;
- 	u32 tmp;
- 
- 	/* gating PCIe Analog XTAL clock */
--	tmp = readl(u3phy->sif_base + U3P_XTALCTL3);
-+	tmp = readl(u3_banks->spllc + U3P_SPLLC_XTALCTL3);
- 	tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
--	writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
-+	writel(tmp, u3_banks->spllc + U3P_SPLLC_XTALCTL3);
- 
- 	/* gating XSQ */
--	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_DA_REG0);
- 	tmp &= ~P3A_RG_XTAL_EXT_EN_U3;
- 	tmp |= P3A_RG_XTAL_EXT_EN_U3_VAL(2);
--	writel(tmp, port_base + U3P_U3PHYA_DA_REG0);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_DA_REG0);
- 
--	tmp = readl(port_base + U3P_U3_PHYA_REG9);
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG9);
- 	tmp &= ~P3A_RG_RX_DAC_MUX;
- 	tmp |= P3A_RG_RX_DAC_MUX_VAL(4);
--	writel(tmp, port_base + U3P_U3_PHYA_REG9);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_REG9);
- 
--	tmp = readl(port_base + U3P_U3_PHYA_REG6);
-+	tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG6);
- 	tmp &= ~P3A_RG_TX_EIDLE_CM;
- 	tmp |= P3A_RG_TX_EIDLE_CM_VAL(0xe);
--	writel(tmp, port_base + U3P_U3_PHYA_REG6);
-+	writel(tmp, u3_banks->phya + U3P_U3_PHYA_REG6);
- 
--	tmp = readl(port_base + U3P_PHYD_CDR1);
-+	tmp = readl(u3_banks->phyd + U3P_U3_PHYD_CDR1);
- 	tmp &= ~(P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1);
- 	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
--	writel(tmp, port_base + U3P_PHYD_CDR1);
-+	writel(tmp, u3_banks->phyd + U3P_U3_PHYD_CDR1);
- 
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, instance->index);
- }
-@@ -264,51 +296,52 @@ static void u3_phy_instance_init(struct mt65xx_u3phy *u3phy,
- static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *port_base = instance->port_base;
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
- 	u32 index = instance->index;
- 	u32 tmp;
- 
- 	/* switch to USB function. (system register, force ip into usb mode) */
--	tmp = readl(port_base + U3P_U2PHYDTM0);
-+	tmp = readl(com + U3P_U2PHYDTM0);
- 	tmp &= ~P2C_FORCE_UART_EN;
- 	tmp |= P2C_RG_XCVRSEL_VAL(1) | P2C_RG_DATAIN_VAL(0);
--	writel(tmp, port_base + U3P_U2PHYDTM0);
-+	writel(tmp, com + U3P_U2PHYDTM0);
- 
--	tmp = readl(port_base + U3P_U2PHYDTM1);
-+	tmp = readl(com + U3P_U2PHYDTM1);
- 	tmp &= ~P2C_RG_UART_EN;
--	writel(tmp, port_base + U3P_U2PHYDTM1);
-+	writel(tmp, com + U3P_U2PHYDTM1);
- 
- 	if (!index) {
--		tmp = readl(port_base + U3P_U2PHYACR4);
-+		tmp = readl(com + U3P_U2PHYACR4);
- 		tmp &= ~P2C_U2_GPIO_CTR_MSK;
--		writel(tmp, port_base + U3P_U2PHYACR4);
-+		writel(tmp, com + U3P_U2PHYACR4);
- 	}
- 
- 	if (u3phy->pdata->avoid_rx_sen_degradation) {
- 		if (!index) {
--			tmp = readl(port_base + U3P_USBPHYACR2);
-+			tmp = readl(com + U3P_USBPHYACR2);
- 			tmp |= PA2_RG_SIF_U2PLL_FORCE_EN;
--			writel(tmp, port_base + U3P_USBPHYACR2);
-+			writel(tmp, com + U3P_USBPHYACR2);
- 
--			tmp = readl(port_base + U3D_U2PHYDCR0);
-+			tmp = readl(com + U3D_U2PHYDCR0);
- 			tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
--			writel(tmp, port_base + U3D_U2PHYDCR0);
-+			writel(tmp, com + U3D_U2PHYDCR0);
- 		} else {
--			tmp = readl(port_base + U3D_U2PHYDCR0);
-+			tmp = readl(com + U3D_U2PHYDCR0);
- 			tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
--			writel(tmp, port_base + U3D_U2PHYDCR0);
-+			writel(tmp, com + U3D_U2PHYDCR0);
- 
--			tmp = readl(port_base + U3P_U2PHYDTM0);
-+			tmp = readl(com + U3P_U2PHYDTM0);
- 			tmp |= P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM;
--			writel(tmp, port_base + U3P_U2PHYDTM0);
-+			writel(tmp, com + U3P_U2PHYDTM0);
- 		}
- 	}
- 
--	tmp = readl(port_base + U3P_USBPHYACR6);
-+	tmp = readl(com + U3P_USBPHYACR6);
- 	tmp &= ~PA6_RG_U2_BC11_SW_EN;	/* DP/DM BC1.1 path Disable */
- 	tmp &= ~PA6_RG_U2_SQTH;
- 	tmp |= PA6_RG_U2_SQTH_VAL(2);
--	writel(tmp, port_base + U3P_USBPHYACR6);
-+	writel(tmp, com + U3P_USBPHYACR6);
- 
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
-@@ -316,41 +349,42 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *port_base = instance->port_base;
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
- 	u32 index = instance->index;
- 	u32 tmp;
- 
- 	/* (force_suspendm=0) (let suspendm=1, enable usb 480MHz pll) */
--	tmp = readl(port_base + U3P_U2PHYDTM0);
-+	tmp = readl(com + U3P_U2PHYDTM0);
- 	tmp &= ~(P2C_FORCE_SUSPENDM | P2C_RG_XCVRSEL);
- 	tmp &= ~(P2C_RG_DATAIN | P2C_DTM0_PART_MASK);
--	writel(tmp, port_base + U3P_U2PHYDTM0);
-+	writel(tmp, com + U3P_U2PHYDTM0);
- 
- 	/* OTG Enable */
--	tmp = readl(port_base + U3P_USBPHYACR6);
-+	tmp = readl(com + U3P_USBPHYACR6);
- 	tmp |= PA6_RG_U2_OTG_VBUSCMP_EN;
--	writel(tmp, port_base + U3P_USBPHYACR6);
-+	writel(tmp, com + U3P_USBPHYACR6);
- 
- 	if (!index) {
- 		/* switch 100uA current to SSUSB */
--		tmp = readl(port_base + U3P_USBPHYACR5);
-+		tmp = readl(com + U3P_USBPHYACR5);
- 		tmp |= PA5_RG_U2_HS_100U_U3_EN;
--		writel(tmp, port_base + U3P_USBPHYACR5);
-+		writel(tmp, com + U3P_USBPHYACR5);
- 	}
- 
--	tmp = readl(port_base + U3P_U2PHYDTM1);
-+	tmp = readl(com + U3P_U2PHYDTM1);
- 	tmp |= P2C_RG_VBUSVALID | P2C_RG_AVALID;
- 	tmp &= ~P2C_RG_SESSEND;
--	writel(tmp, port_base + U3P_U2PHYDTM1);
-+	writel(tmp, com + U3P_U2PHYDTM1);
- 
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
--		tmp = readl(port_base + U3D_U2PHYDCR0);
-+		tmp = readl(com + U3D_U2PHYDCR0);
- 		tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
--		writel(tmp, port_base + U3D_U2PHYDCR0);
-+		writel(tmp, com + U3D_U2PHYDCR0);
- 
--		tmp = readl(port_base + U3P_U2PHYDTM0);
-+		tmp = readl(com + U3P_U2PHYDTM0);
- 		tmp |= P2C_RG_SUSPENDM | P2C_FORCE_SUSPENDM;
--		writel(tmp, port_base + U3P_U2PHYDTM0);
-+		writel(tmp, com + U3P_U2PHYDTM0);
- 	}
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
-@@ -358,42 +392,43 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *port_base = instance->port_base;
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
- 	u32 index = instance->index;
- 	u32 tmp;
- 
--	tmp = readl(port_base + U3P_U2PHYDTM0);
-+	tmp = readl(com + U3P_U2PHYDTM0);
- 	tmp &= ~(P2C_RG_XCVRSEL | P2C_RG_DATAIN);
- 	tmp |= P2C_FORCE_SUSPENDM;
--	writel(tmp, port_base + U3P_U2PHYDTM0);
-+	writel(tmp, com + U3P_U2PHYDTM0);
- 
- 	/* OTG Disable */
--	tmp = readl(port_base + U3P_USBPHYACR6);
-+	tmp = readl(com + U3P_USBPHYACR6);
- 	tmp &= ~PA6_RG_U2_OTG_VBUSCMP_EN;
--	writel(tmp, port_base + U3P_USBPHYACR6);
-+	writel(tmp, com + U3P_USBPHYACR6);
- 
- 	if (!index) {
- 		/* switch 100uA current back to USB2.0 */
--		tmp = readl(port_base + U3P_USBPHYACR5);
-+		tmp = readl(com + U3P_USBPHYACR5);
- 		tmp &= ~PA5_RG_U2_HS_100U_U3_EN;
--		writel(tmp, port_base + U3P_USBPHYACR5);
-+		writel(tmp, com + U3P_USBPHYACR5);
- 	}
- 
- 	/* let suspendm=0, set utmi into analog power down */
--	tmp = readl(port_base + U3P_U2PHYDTM0);
-+	tmp = readl(com + U3P_U2PHYDTM0);
- 	tmp &= ~P2C_RG_SUSPENDM;
--	writel(tmp, port_base + U3P_U2PHYDTM0);
-+	writel(tmp, com + U3P_U2PHYDTM0);
- 	udelay(1);
- 
--	tmp = readl(port_base + U3P_U2PHYDTM1);
-+	tmp = readl(com + U3P_U2PHYDTM1);
- 	tmp &= ~(P2C_RG_VBUSVALID | P2C_RG_AVALID);
- 	tmp |= P2C_RG_SESSEND;
--	writel(tmp, port_base + U3P_U2PHYDTM1);
-+	writel(tmp, com + U3P_U2PHYDTM1);
- 
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
--		tmp = readl(port_base + U3D_U2PHYDCR0);
-+		tmp = readl(com + U3D_U2PHYDCR0);
- 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
--		writel(tmp, port_base + U3D_U2PHYDCR0);
-+		writel(tmp, com + U3D_U2PHYDCR0);
- 	}
- 
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
-@@ -402,18 +437,55 @@ static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- static void phy_instance_exit(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
--	void __iomem *port_base = instance->port_base;
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
- 	u32 index = instance->index;
- 	u32 tmp;
- 
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
--		tmp = readl(port_base + U3D_U2PHYDCR0);
-+		tmp = readl(com + U3D_U2PHYDCR0);
- 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
--		writel(tmp, port_base + U3D_U2PHYDCR0);
-+		writel(tmp, com + U3D_U2PHYDCR0);
- 
--		tmp = readl(port_base + U3P_U2PHYDTM0);
-+		tmp = readl(com + U3P_U2PHYDTM0);
- 		tmp &= ~P2C_FORCE_SUSPENDM;
--		writel(tmp, port_base + U3P_U2PHYDTM0);
-+		writel(tmp, com + U3P_U2PHYDTM0);
-+	}
-+}
-+
-+static void phy_v1_banks_init(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	struct u3phy_banks *u3_banks = &instance->u3_banks;
-+
-+	if (instance->type == PHY_TYPE_USB2) {
-+		u2_banks->misc = NULL;
-+		u2_banks->fmreg = u3phy->sif_base + SSUSB_SIFSLV_V1_U2FREQ;
-+		u2_banks->com = instance->port_base + SSUSB_SIFSLV_V1_U2PHY_COM;
-+	} else if (instance->type == PHY_TYPE_USB3) {
-+		u3_banks->spllc = u3phy->sif_base + SSUSB_SIFSLV_V1_SPLLC;
-+		u3_banks->chip = NULL;
-+		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V1_U3PHYD;
-+		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V1_U3PHYA;
-+	}
-+}
-+
-+static void phy_v2_banks_init(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	struct u3phy_banks *u3_banks = &instance->u3_banks;
-+
-+	if (instance->type == PHY_TYPE_USB2) {
-+		u2_banks->misc = instance->port_base + SSUSB_SIFSLV_V2_MISC;
-+		u2_banks->fmreg = instance->port_base + SSUSB_SIFSLV_V2_U2FREQ;
-+		u2_banks->com = instance->port_base + SSUSB_SIFSLV_V2_U2PHY_COM;
-+	} else if (instance->type == PHY_TYPE_USB3) {
-+		u3_banks->spllc = instance->port_base + SSUSB_SIFSLV_V2_SPLLC;
-+		u3_banks->chip = instance->port_base + SSUSB_SIFSLV_V2_CHIP;
-+		u3_banks->phyd = instance->port_base + SSUSB_SIFSLV_V2_U3PHYD;
-+		u3_banks->phya = instance->port_base + SSUSB_SIFSLV_V2_U3PHYA;
- 	}
- }
- 
-@@ -490,7 +562,6 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 	struct device_node *phy_np = args->np;
- 	int index;
- 
--
- 	if (args->args_count != 1) {
- 		dev_err(dev, "invalid number of cells in 'phy' property\n");
- 		return ERR_PTR(-EINVAL);
-@@ -508,13 +579,21 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 	}
- 
- 	instance->type = args->args[0];
--
- 	if (!(instance->type == PHY_TYPE_USB2 ||
- 	      instance->type == PHY_TYPE_USB3)) {
- 		dev_err(dev, "unsupported device type: %d\n", instance->type);
- 		return ERR_PTR(-EINVAL);
- 	}
- 
-+	if (u3phy->pdata->version == MT_PHY_V1) {
-+		phy_v1_banks_init(u3phy, instance);
-+	} else if (u3phy->pdata->version == MT_PHY_V2) {
-+		phy_v2_banks_init(u3phy, instance);
-+	} else {
-+		dev_err(dev, "phy version is not supported\n");
-+		return ERR_PTR(-EINVAL);
-+	}
-+
- 	return instance->phy;
- }
- 
-@@ -528,14 +607,22 @@ static struct phy *mt65xx_phy_xlate(struct device *dev,
- 
- static const struct mt65xx_phy_pdata mt2701_pdata = {
- 	.avoid_rx_sen_degradation = false,
-+	.version = MT_PHY_V1,
-+};
-+
-+static const struct mt65xx_phy_pdata mt2712_pdata = {
-+	.avoid_rx_sen_degradation = false,
-+	.version = MT_PHY_V2,
- };
- 
- static const struct mt65xx_phy_pdata mt8173_pdata = {
- 	.avoid_rx_sen_degradation = true,
-+	.version = MT_PHY_V1,
- };
- 
- static const struct of_device_id mt65xx_u3phy_id_table[] = {
- 	{ .compatible = "mediatek,mt2701-u3phy", .data = &mt2701_pdata },
-+	{ .compatible = "mediatek,mt2712-u3phy", .data = &mt2712_pdata },
- 	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
- 	{ },
- };
-@@ -571,11 +658,14 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
- 	u3phy->dev = dev;
- 	platform_set_drvdata(pdev, u3phy);
- 
--	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	u3phy->sif_base = devm_ioremap_resource(dev, sif_res);
--	if (IS_ERR(u3phy->sif_base)) {
--		dev_err(dev, "failed to remap sif regs\n");
--		return PTR_ERR(u3phy->sif_base);
-+	if (u3phy->pdata->version == MT_PHY_V1) {
-+		/* get banks shared by multiple phys */
-+		sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+		u3phy->sif_base = devm_ioremap_resource(dev, sif_res);
-+		if (IS_ERR(u3phy->sif_base)) {
-+			dev_err(dev, "failed to remap sif regs\n");
-+			return PTR_ERR(u3phy->sif_base);
-+		}
- 	}
- 
- 	u3phy->u2ref_clk = devm_clk_get(dev, "u2ref_clk");
--- 
-1.7.9.5
+SGksIFlUOgoKT24gV2VkLCAyMDE3LTAxLTExIGF0IDE0OjUxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IGNsZWFuaW5nIHVwIHVudXNlZCBkZWZpbmUgYW5kIHJlZmluZSBmdW5jdGlvbiBuYW1lIGFu
+ZCB2YXJpYWJsZQo+IAo+IFNpZ25lZC1vZmYtYnk6IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNo
+ZW5AbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFlUIFNoZW4gPHl0LnNoZW5AbWVkaWF0
+ZWsuY29tPgoKQWNrZWQtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cgo+IC0tLQo+ICBk
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jICAgICB8IDczICsrKysrKysrKysrKysr
+KystLS0tLS0tLS0tLS0tLS0tLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBp
+X3R4LmMgfCAgOCArKy0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgMzkgaW5zZXJ0aW9ucygrKSwgNDIg
+ZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
+dGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gaW5kZXggMmM0
+MmY5MC4uNmY0YjNiYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC0y
+Nyw5ICsyNyw2IEBACj4gIAo+ICAjaW5jbHVkZSAibXRrX2RybV9kZHBfY29tcC5oIgo+ICAKPiAt
+I2RlZmluZSBEU0lfVklERU9fRklGT19ERVBUSAkoMTkyMCAvIDQpCj4gLSNkZWZpbmUgRFNJX0hP
+U1RfRklGT19ERVBUSAk2NAo+IC0KPiAgI2RlZmluZSBEU0lfU1RBUlQJCTB4MDAKPiAgCj4gICNk
+ZWZpbmUgRFNJX0NPTl9DVFJMCQkweDEwCj4gQEAgLTQ2LDcgKzQzLDcgQEAKPiAgI2RlZmluZSBN
+SVhfTU9ERQkJCUJJVCgxNykKPiAgCj4gICNkZWZpbmUgRFNJX1RYUlhfQ1RSTAkJMHgxOAo+IC0j
+ZGVmaW5lIFZDX05VTQkJCQkoMiA8PCAwKQo+ICsjZGVmaW5lIFZDX05VTQkJCQlCSVQoMSkKPiAg
+I2RlZmluZSBMQU5FX05VTQkJCSgweGYgPDwgMikKPiAgI2RlZmluZSBESVNfRU9UCQkJCUJJVCg2
+KQo+ICAjZGVmaW5lIE5VTExfRU4JCQkJQklUKDcpCj4gQEAgLTE2NCw3ICsxNjEsNyBAQCBzdGF0
+aWMgdm9pZCBtdGtfZHNpX21hc2soc3RydWN0IG10a19kc2kgKmRzaSwgdTMyIG9mZnNldCwgdTMy
+IG1hc2ssIHUzMiBkYXRhKQo+ICAJd3JpdGVsKCh0ZW1wICYgfm1hc2spIHwgKGRhdGEgJiBtYXNr
+KSwgZHNpLT5yZWdzICsgb2Zmc2V0KTsKPiAgfQo+ICAKPiAtc3RhdGljIHZvaWQgZHNpX3BoeV90
+aW1jb25maWcoc3RydWN0IG10a19kc2kgKmRzaSkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9waHlf
+dGltY29uZmlnKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gIHsKPiAgCXUzMiB0aW1jb24wLCB0aW1j
+b24xLCB0aW1jb24yLCB0aW1jb24zOwo+ICAJdTMyIHVpLCBjeWNsZV90aW1lOwo+IEBAIC0xOTYs
+NyArMTkzLDcgQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9kaXNhYmxlKHN0cnVjdCBtdGtfZHNpICpk
+c2kpCj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfQ09OX0NUUkwsIERTSV9FTiwgMCk7Cj4gIH0K
+PiAgCj4gLXN0YXRpYyB2b2lkIG10a19kc2lfcmVzZXQoc3RydWN0IG10a19kc2kgKmRzaSkKPiAr
+c3RhdGljIHZvaWQgbXRrX2RzaV9yZXNldF9lbmdpbmUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAg
+ewo+ICAJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0NPTl9DVFJMLCBEU0lfUkVTRVQsIERTSV9SRVNF
+VCk7Cj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfQ09OX0NUUkwsIERTSV9SRVNFVCwgMCk7Cj4g
+QEAgLTI2Nyw4ICsyNjQsOCBAQCBzdGF0aWMgaW50IG10a19kc2lfcG93ZXJvbihzdHJ1Y3QgbXRr
+X2RzaSAqZHNpKQo+ICAJfQo+ICAKPiAgCW10a19kc2lfZW5hYmxlKGRzaSk7Cj4gLQltdGtfZHNp
+X3Jlc2V0KGRzaSk7Cj4gLQlkc2lfcGh5X3RpbWNvbmZpZyhkc2kpOwo+ICsJbXRrX2RzaV9yZXNl
+dF9lbmdpbmUoZHNpKTsKPiArCW10a19kc2lfcGh5X3RpbWNvbmZpZyhkc2kpOwo+ICAKPiAgCXJl
+dHVybiAwOwo+ICAKPiBAQCAtMjgxLDMzICsyNzgsMzMgQEAgc3RhdGljIGludCBtdGtfZHNpX3Bv
+d2Vyb24oc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCXJldHVybiByZXQ7Cj4gIH0KPiAgCj4gLXN0
+YXRpYyB2b2lkIGRzaV9jbGtfdWxwX21vZGVfZW50ZXIoc3RydWN0IG10a19kc2kgKmRzaSkKPiAr
+c3RhdGljIHZvaWQgbXRrX2RzaV9jbGtfdWxwX21vZGVfZW50ZXIoc3RydWN0IG10a19kc2kgKmRz
+aSkKPiAgewo+ICAJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX1BIWV9MQ0NPTiwgTENfSFNfVFhfRU4s
+IDApOwo+ICAJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX1BIWV9MQ0NPTiwgTENfVUxQTV9FTiwgMCk7
+Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGRzaV9jbGtfdWxwX21vZGVfbGVhdmUoc3RydWN0IG10
+a19kc2kgKmRzaSkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9jbGtfdWxwX21vZGVfbGVhdmUoc3Ry
+dWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX1BIWV9MQ0NP
+TiwgTENfVUxQTV9FTiwgMCk7Cj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfUEhZX0xDQ09OLCBM
+Q19XQUtFVVBfRU4sIExDX1dBS0VVUF9FTik7Cj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfUEhZ
+X0xDQ09OLCBMQ19XQUtFVVBfRU4sIDApOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBkc2lfbGFu
+ZTBfdWxwX21vZGVfZW50ZXIoc3RydWN0IG10a19kc2kgKmRzaSkKPiArc3RhdGljIHZvaWQgbXRr
+X2RzaV9sYW5lMF91bHBfbW9kZV9lbnRlcihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICB7Cj4gIAlt
+dGtfZHNpX21hc2soZHNpLCBEU0lfUEhZX0xEMENPTiwgTEQwX0hTX1RYX0VOLCAwKTsKPiAgCW10
+a19kc2lfbWFzayhkc2ksIERTSV9QSFlfTEQwQ09OLCBMRDBfVUxQTV9FTiwgMCk7Cj4gIH0KPiAg
+Cj4gLXN0YXRpYyB2b2lkIGRzaV9sYW5lMF91bHBfbW9kZV9sZWF2ZShzdHJ1Y3QgbXRrX2RzaSAq
+ZHNpKQo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX2xhbmUwX3VscF9tb2RlX2xlYXZlKHN0cnVjdCBt
+dGtfZHNpICpkc2kpCj4gIHsKPiAgCW10a19kc2lfbWFzayhkc2ksIERTSV9QSFlfTEQwQ09OLCBM
+RDBfVUxQTV9FTiwgMCk7Cj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfUEhZX0xEMENPTiwgTEQw
+X1dBS0VVUF9FTiwgTEQwX1dBS0VVUF9FTik7Cj4gIAltdGtfZHNpX21hc2soZHNpLCBEU0lfUEhZ
+X0xEMENPTiwgTEQwX1dBS0VVUF9FTiwgMCk7Cj4gIH0KPiAgCj4gLXN0YXRpYyBib29sIGRzaV9j
+bGtfaHNfc3RhdGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiArc3RhdGljIGJvb2wgbXRrX2RzaV9j
+bGtfaHNfc3RhdGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJdTMyIHRtcF9yZWcxOwo+
+ICAKPiBAQCAtMzE1LDE1ICszMTIsMTUgQEAgc3RhdGljIGJvb2wgZHNpX2Nsa19oc19zdGF0ZShz
+dHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAJcmV0dXJuICgodG1wX3JlZzEgJiBMQ19IU19UWF9FTikg
+PT0gMSkgPyB0cnVlIDogZmFsc2U7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGRzaV9jbGtfaHNf
+bW9kZShzdHJ1Y3QgbXRrX2RzaSAqZHNpLCBib29sIGVudGVyKQo+ICtzdGF0aWMgdm9pZCBtdGtf
+ZHNpX2Nsa19oc19tb2RlKHN0cnVjdCBtdGtfZHNpICpkc2ksIGJvb2wgZW50ZXIpCj4gIHsKPiAt
+CWlmIChlbnRlciAmJiAhZHNpX2Nsa19oc19zdGF0ZShkc2kpKQo+ICsJaWYgKGVudGVyICYmICFt
+dGtfZHNpX2Nsa19oc19zdGF0ZShkc2kpKQo+ICAJCW10a19kc2lfbWFzayhkc2ksIERTSV9QSFlf
+TENDT04sIExDX0hTX1RYX0VOLCBMQ19IU19UWF9FTik7Cj4gLQllbHNlIGlmICghZW50ZXIgJiYg
+ZHNpX2Nsa19oc19zdGF0ZShkc2kpKQo+ICsJZWxzZSBpZiAoIWVudGVyICYmIG10a19kc2lfY2xr
+X2hzX3N0YXRlKGRzaSkpCj4gIAkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX1BIWV9MQ0NPTiwgTENf
+SFNfVFhfRU4sIDApOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBkc2lfc2V0X21vZGUoc3RydWN0
+IG10a19kc2kgKmRzaSkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9zZXRfbW9kZShzdHJ1Y3QgbXRr
+X2RzaSAqZHNpKQo+ICB7Cj4gIAl1MzIgdmlkX21vZGUgPSBDTURfTU9ERTsKPiAgCj4gQEAgLTMz
+OCw3ICszMzUsNyBAQCBzdGF0aWMgdm9pZCBkc2lfc2V0X21vZGUoc3RydWN0IG10a19kc2kgKmRz
+aSkKPiAgCXdyaXRlbCh2aWRfbW9kZSwgZHNpLT5yZWdzICsgRFNJX01PREVfQ1RSTCk7Cj4gIH0K
+PiAgCj4gLXN0YXRpYyB2b2lkIGRzaV9wc19jb250cm9sX3ZhY3Qoc3RydWN0IG10a19kc2kgKmRz
+aSkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9wc19jb250cm9sX3ZhY3Qoc3RydWN0IG10a19kc2kg
+KmRzaSkKPiAgewo+ICAJc3RydWN0IHZpZGVvbW9kZSAqdm0gPSAmZHNpLT52bTsKPiAgCXUzMiBk
+c2lfYnVmX2JwcCwgcHNfd2M7Cj4gQEAgLTM3Miw3ICszNjksNyBAQCBzdGF0aWMgdm9pZCBkc2lf
+cHNfY29udHJvbF92YWN0KHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gIAl3cml0ZWwocHNfd2MsIGRz
+aS0+cmVncyArIERTSV9IU1RYX0NLTF9XQyk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGRzaV9y
+eHR4X2NvbnRyb2woc3RydWN0IG10a19kc2kgKmRzaSkKPiArc3RhdGljIHZvaWQgbXRrX2RzaV9y
+eHR4X2NvbnRyb2woc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJdTMyIHRtcF9yZWc7Cj4g
+IAo+IEBAIC0zOTcsOSArMzk0LDkgQEAgc3RhdGljIHZvaWQgZHNpX3J4dHhfY29udHJvbChzdHJ1
+Y3QgbXRrX2RzaSAqZHNpKQo+ICAJd3JpdGVsKHRtcF9yZWcsIGRzaS0+cmVncyArIERTSV9UWFJY
+X0NUUkwpOwo+ICB9Cj4gIAo+IC1zdGF0aWMgdm9pZCBkc2lfcHNfY29udHJvbChzdHJ1Y3QgbXRr
+X2RzaSAqZHNpKQo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX3BzX2NvbnRyb2woc3RydWN0IG10a19k
+c2kgKmRzaSkKPiAgewo+IC0JdW5zaWduZWQgaW50IGRzaV90bXBfYnVmX2JwcDsKPiArCXUzMiBk
+c2lfdG1wX2J1Zl9icHA7Cj4gIAl1MzIgdG1wX3JlZzsKPiAgCj4gIAlzd2l0Y2ggKGRzaS0+Zm9y
+bWF0KSB7Cj4gQEAgLTQyOSwxMiArNDI2LDEyIEBAIHN0YXRpYyB2b2lkIGRzaV9wc19jb250cm9s
+KHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gIAl3cml0ZWwodG1wX3JlZywgZHNpLT5yZWdzICsgRFNJ
+X1BTQ1RSTCk7Cj4gIH0KPiAgCj4gLXN0YXRpYyB2b2lkIGRzaV9jb25maWdfdmRvX3RpbWluZyhz
+dHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX2NvbmZpZ192ZG9fdGlt
+aW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gIHsKPiAtCXVuc2lnbmVkIGludCBob3Jpem9udGFs
+X3N5bmNfYWN0aXZlX2J5dGU7Cj4gLQl1bnNpZ25lZCBpbnQgaG9yaXpvbnRhbF9iYWNrcG9yY2hf
+Ynl0ZTsKPiAtCXVuc2lnbmVkIGludCBob3Jpem9udGFsX2Zyb250cG9yY2hfYnl0ZTsKPiAtCXVu
+c2lnbmVkIGludCBkc2lfdG1wX2J1Zl9icHA7Cj4gKwl1MzIgaG9yaXpvbnRhbF9zeW5jX2FjdGl2
+ZV9ieXRlOwo+ICsJdTMyIGhvcml6b250YWxfYmFja3BvcmNoX2J5dGU7Cj4gKwl1MzIgaG9yaXpv
+bnRhbF9mcm9udHBvcmNoX2J5dGU7Cj4gKwl1MzIgZHNpX3RtcF9idWZfYnBwOwo+ICAKPiAgCXN0
+cnVjdCB2aWRlb21vZGUgKnZtID0gJmRzaS0+dm07Cj4gIAo+IEBAIC00NjMsNyArNDYwLDcgQEAg
+c3RhdGljIHZvaWQgZHNpX2NvbmZpZ192ZG9fdGltaW5nKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4g
+IAl3cml0ZWwoaG9yaXpvbnRhbF9iYWNrcG9yY2hfYnl0ZSwgZHNpLT5yZWdzICsgRFNJX0hCUF9X
+Qyk7Cj4gIAl3cml0ZWwoaG9yaXpvbnRhbF9mcm9udHBvcmNoX2J5dGUsIGRzaS0+cmVncyArIERT
+SV9IRlBfV0MpOwo+ICAKPiAtCWRzaV9wc19jb250cm9sKGRzaSk7Cj4gKwltdGtfZHNpX3BzX2Nv
+bnRyb2woZHNpKTsKPiAgfQo+ICAKPiAgc3RhdGljIHZvaWQgbXRrX2RzaV9zdGFydChzdHJ1Y3Qg
+bXRrX2RzaSAqZHNpKQo+IEBAIC00ODAsOCArNDc3LDggQEAgc3RhdGljIHZvaWQgbXRrX2RzaV9w
+b3dlcm9mZihzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAJaWYgKC0tZHNpLT5yZWZjb3VudCAhPSAw
+KQo+ICAJCXJldHVybjsKPiAgCj4gLQlkc2lfbGFuZTBfdWxwX21vZGVfZW50ZXIoZHNpKTsKPiAt
+CWRzaV9jbGtfdWxwX21vZGVfZW50ZXIoZHNpKTsKPiArCW10a19kc2lfbGFuZTBfdWxwX21vZGVf
+ZW50ZXIoZHNpKTsKPiArCW10a19kc2lfY2xrX3VscF9tb2RlX2VudGVyKGRzaSk7Cj4gIAo+ICAJ
+bXRrX2RzaV9kaXNhYmxlKGRzaSk7Cj4gIAo+IEBAIC01MTEsMTggKzUwOCwxOCBAQCBzdGF0aWMg
+dm9pZCBtdGtfb3V0cHV0X2RzaV9lbmFibGUoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCQlyZXR1
+cm47Cj4gIAl9Cj4gIAo+IC0JZHNpX3J4dHhfY29udHJvbChkc2kpOwo+ICsJbXRrX2RzaV9yeHR4
+X2NvbnRyb2woZHNpKTsKPiAgCj4gLQlkc2lfY2xrX3VscF9tb2RlX2xlYXZlKGRzaSk7Cj4gLQlk
+c2lfbGFuZTBfdWxwX21vZGVfbGVhdmUoZHNpKTsKPiAtCWRzaV9jbGtfaHNfbW9kZShkc2ksIDAp
+Owo+IC0JZHNpX3NldF9tb2RlKGRzaSk7Cj4gKwltdGtfZHNpX2Nsa191bHBfbW9kZV9sZWF2ZShk
+c2kpOwo+ICsJbXRrX2RzaV9sYW5lMF91bHBfbW9kZV9sZWF2ZShkc2kpOwo+ICsJbXRrX2RzaV9j
+bGtfaHNfbW9kZShkc2ksIDApOwo+ICsJbXRrX2RzaV9zZXRfbW9kZShkc2kpOwo+ICAKPiAtCWRz
+aV9wc19jb250cm9sX3ZhY3QoZHNpKTsKPiAtCWRzaV9jb25maWdfdmRvX3RpbWluZyhkc2kpOwo+
+ICsJbXRrX2RzaV9wc19jb250cm9sX3ZhY3QoZHNpKTsKPiArCW10a19kc2lfY29uZmlnX3Zkb190
+aW1pbmcoZHNpKTsKPiAgCj4gLQlkc2lfc2V0X21vZGUoZHNpKTsKPiAtCWRzaV9jbGtfaHNfbW9k
+ZShkc2ksIDEpOwo+ICsJbXRrX2RzaV9zZXRfbW9kZShkc2kpOwo+ICsJbXRrX2RzaV9jbGtfaHNf
+bW9kZShkc2ksIDEpOwo+ICAKPiAgCW10a19kc2lfc3RhcnQoZHNpKTsKPiAgCj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKPiBpbmRleCBjNGEwMTY1Li5mZDg0OTE0IDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jCj4gKysrIGIv
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmMKPiBAQCAtMTM0LDcgKzEzNCw3
+IEBAIHN0cnVjdCBtdGtfbWlwaXR4X2RhdGEgewo+ICBzdHJ1Y3QgbXRrX21pcGlfdHggewo+ICAJ
+c3RydWN0IGRldmljZSAqZGV2Owo+ICAJdm9pZCBfX2lvbWVtICpyZWdzOwo+IC0JdW5zaWduZWQg
+aW50IGRhdGFfcmF0ZTsKPiArCXUzMiBkYXRhX3JhdGU7Cj4gIAljb25zdCBzdHJ1Y3QgbXRrX21p
+cGl0eF9kYXRhICpkcml2ZXJfZGF0YTsKPiAgCXN0cnVjdCBjbGtfaHcgcGxsX2h3Owo+ICAJc3Ry
+dWN0IGNsayAqcGxsOwo+IEBAIC0xNzIsNyArMTcyLDcgQEAgc3RhdGljIHZvaWQgbXRrX21pcGlf
+dHhfdXBkYXRlX2JpdHMoc3RydWN0IG10a19taXBpX3R4ICptaXBpX3R4LCB1MzIgb2Zmc2V0LAo+
+ICBzdGF0aWMgaW50IG10a19taXBpX3R4X3BsbF9wcmVwYXJlKHN0cnVjdCBjbGtfaHcgKmh3KQo+
+ICB7Cj4gIAlzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHggPSBtdGtfbWlwaV90eF9mcm9tX2Ns
+a19odyhodyk7Cj4gLQl1bnNpZ25lZCBpbnQgdHhkaXYsIHR4ZGl2MCwgdHhkaXYxOwo+ICsJdTgg
+dHhkaXYsIHR4ZGl2MCwgdHhkaXYxOwo+ICAJdTY0IHBjdzsKPiAgCj4gIAlkZXZfZGJnKG1pcGlf
+dHgtPmRldiwgInByZXBhcmU6ICV1IEh6XG4iLCBtaXBpX3R4LT5kYXRhX3JhdGUpOwo+IEBAIC0z
+MjYsNyArMzI2LDcgQEAgc3RhdGljIHVuc2lnbmVkIGxvbmcgbXRrX21pcGlfdHhfcGxsX3JlY2Fs
+Y19yYXRlKHN0cnVjdCBjbGtfaHcgKmh3LAo+ICBzdGF0aWMgaW50IG10a19taXBpX3R4X3Bvd2Vy
+X29uX3NpZ25hbChzdHJ1Y3QgcGh5ICpwaHkpCj4gIHsKPiAgCXN0cnVjdCBtdGtfbWlwaV90eCAq
+bWlwaV90eCA9IHBoeV9nZXRfZHJ2ZGF0YShwaHkpOwo+IC0JdW5zaWduZWQgaW50IHJlZzsKPiAr
+CXUzMiByZWc7Cj4gIAo+ICAJZm9yIChyZWcgPSBNSVBJVFhfRFNJX0NMT0NLX0xBTkU7Cj4gIAkg
+ICAgIHJlZyA8PSBNSVBJVFhfRFNJX0RBVEFfTEFORTM7IHJlZyArPSA0KQo+IEBAIC0zNTcsNyAr
+MzU3LDcgQEAgc3RhdGljIGludCBtdGtfbWlwaV90eF9wb3dlcl9vbihzdHJ1Y3QgcGh5ICpwaHkp
+Cj4gIHN0YXRpYyB2b2lkIG10a19taXBpX3R4X3Bvd2VyX29mZl9zaWduYWwoc3RydWN0IHBoeSAq
+cGh5KQo+ICB7Cj4gIAlzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHggPSBwaHlfZ2V0X2RydmRh
+dGEocGh5KTsKPiAtCXVuc2lnbmVkIGludCByZWc7Cj4gKwl1MzIgcmVnOwo+ICAKPiAgCW10a19t
+aXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9EU0lfVE9QX0NPTiwKPiAgCQkJICAgICBS
+R19EU0lfUEFEX1RJRV9MT1dfRU4pOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAo=
