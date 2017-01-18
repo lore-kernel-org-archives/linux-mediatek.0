@@ -1,70 +1,60 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 2/2] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Wed, 18 Jan 2017 15:34:02 -0600
-Message-ID: <20170118213402.rbduvubbsdpvfgad@rob-hp-laptop>
-References: <1484215490-7494-1-git-send-email-yong.mao@mediatek.com>
- <1484215490-7494-3-git-send-email-yong.mao@mediatek.com>
+Subject: Re: [PATCH v1 1/2] Documentation: mtk-quadspi: update DT bindings
+Date: Wed, 18 Jan 2017 16:08:09 -0600
+Message-ID: <20170118220809.pmaa2f3kwiddehti@rob-hp-laptop>
+References: <1484291609-20195-1-git-send-email-guochun.mao@mediatek.com>
+ <1484291609-20195-2-git-send-email-guochun.mao@mediatek.com>
+ <20170113151326.11e9451a@bbrezillon>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1484215490-7494-3-git-send-email-yong.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, Nicolas Boichat <drinkcat@chromium.org>, srv_heupstream@mediatek.com, Javier Martinez Canillas <javier@osg.samsung.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mmc@vger.kernel.org, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+In-Reply-To: <20170113151326.11e9451a@bbrezillon>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Guochun Mao <guochun.mao@mediatek.com>, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Marek Vasut <marek.vasut@gmail.com>, linux-mtd@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, Jan 12, 2017 at 06:04:50PM +0800, Yong Mao wrote:
-> From: yong mao <yong.mao@mediatek.com>
+On Fri, Jan 13, 2017 at 03:13:26PM +0100, Boris Brezillon wrote:
+> On Fri, 13 Jan 2017 15:13:28 +0800
+> Guochun Mao <guochun.mao@mediatek.com> wrote:
 > 
-> Add description for hs200-cmd-int-delay
-> Add description for hs400-cmd-int-delay
-> Add description for cmd-resp-sel
+> > Add "mediatek,mt2701-nor" for nor flash node's compatible.
+> > 
+> > Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/mtd/mtk-quadspi.txt        |    4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > index fb314f0..f83d31d 100644
+> > --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> > @@ -1,7 +1,9 @@
+> >  * Serial NOR flash controller for MTK MT81xx (and similar)
+> >  
+> >  Required properties:
+> > -- compatible: 	  should be "mediatek,mt8173-nor";
+> > +- compatible: 	  should contain:
+> > +		  "mediatek,mt2701-nor" for MT2701,
+> > +		  "mediatek,mt8173-nor" for MT8173.
 > 
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt |    6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> index 0120c7f..2dbb3b0 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> @@ -21,6 +21,9 @@ Optional properties:
->  - assigned-clocks: PLL of the source clock
->  - assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
->  - hs400-ds-delay: HS400 DS delay setting
-> +- hs200-cmd-int-delay: HS200 command internal delay setting
-> +- hs400-cmd-int-delay: HS400 command internal delay setting
+> Do you need to define a new compatible? If the IPs are exactly the same
+> in both SoCs it shouldn't be needed.
 
-What are the units and range of values? These need vendor prefix as 
-well.
+Rather the 2701 should contain both strings in that case.
 
-> +- cmd-resp-sel: command response sample selection
+Rob
 
-Looks like a boolean. State that and make the default the more common 
-case.
-
->  
->  Examples:
->  mmc0: mmc@11230000 {
-> @@ -38,4 +41,7 @@ mmc0: mmc@11230000 {
->  	assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
->  	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
->  	hs400-ds-delay = <0x14015>;
-> +	hs200-cmd-int-delay = <26>;
-> +	hs400-cmd-int-delay = <14>;
-> +	cmd-resp-sel = <0>; /* 0: rising, 1: falling */
->  };
-> -- 
-> 1.7.9.5
-> 
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
