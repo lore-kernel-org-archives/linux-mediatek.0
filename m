@@ -1,153 +1,109 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH] mm/memblock.c: remove unnecessary log and clean up
-Date: Wed, 18 Jan 2017 14:16:05 +0800
-Message-ID: <1484720165-25403-1-git-send-email-miles.chen@mediatek.com>
+From: CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v11 08/12] drm/mediatek: add dsi interrupt control
+Date: Wed, 18 Jan 2017 14:21:33 +0800
+Message-ID: <1484720493.26941.2.camel@mtksdaap41>
+References: <1484117473-46644-1-git-send-email-yt.shen@mediatek.com>
+ <1484117473-46644-9-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <owner-linux-mm@kvack.org>
-Sender: owner-linux-mm@kvack.org
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, Miles Chen <miles.chen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1484117473-46644-9-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: YT Shen <yt.shen@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, shaoming chen <shaoming.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-There is no variable named flags in memblock_add() and memblock_reserve()
-so remove it from the log messages.
-This patch also cleans up the type casting for phys_addr_t by using
-%pa to print them.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- mm/memblock.c | 54 +++++++++++++++++++++++++-----------------------------
- 1 file changed, 25 insertions(+), 29 deletions(-)
-
-diff --git a/mm/memblock.c b/mm/memblock.c
-index 7608bc3..8683f02 100644
---- a/mm/memblock.c
-+++ b/mm/memblock.c
-@@ -611,10 +611,10 @@ int __init_memblock memblock_add_node(phys_addr_t base, phys_addr_t size,
- 
- int __init_memblock memblock_add(phys_addr_t base, phys_addr_t size)
- {
--	memblock_dbg("memblock_add: [%#016llx-%#016llx] flags %#02lx %pF\n",
--		     (unsigned long long)base,
--		     (unsigned long long)base + size - 1,
--		     0UL, (void *)_RET_IP_);
-+	phys_addr_t end = base + size - 1;
-+
-+	memblock_dbg("memblock_add: [%pa-%pa] %pF\n",
-+		     &base, &end, (void *)_RET_IP_);
- 
- 	return memblock_add_range(&memblock.memory, base, size, MAX_NUMNODES, 0);
- }
-@@ -718,10 +718,10 @@ int __init_memblock memblock_remove(phys_addr_t base, phys_addr_t size)
- 
- int __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
- {
--	memblock_dbg("   memblock_free: [%#016llx-%#016llx] %pF\n",
--		     (unsigned long long)base,
--		     (unsigned long long)base + size - 1,
--		     (void *)_RET_IP_);
-+	phys_addr_t end = base + size - 1;
-+
-+	memblock_dbg("   memblock_free: [%pa-%pa] %pF\n",
-+		     &base, &end, (void *)_RET_IP_);
- 
- 	kmemleak_free_part_phys(base, size);
- 	return memblock_remove_range(&memblock.reserved, base, size);
-@@ -729,10 +729,10 @@ int __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
- 
- int __init_memblock memblock_reserve(phys_addr_t base, phys_addr_t size)
- {
--	memblock_dbg("memblock_reserve: [%#016llx-%#016llx] flags %#02lx %pF\n",
--		     (unsigned long long)base,
--		     (unsigned long long)base + size - 1,
--		     0UL, (void *)_RET_IP_);
-+	phys_addr_t end = base + size - 1;
-+
-+	memblock_dbg("memblock_reserve: [%pa-%pa] %pF\n",
-+		     &base, &end, (void *)_RET_IP_);
- 
- 	return memblock_add_range(&memblock.reserved, base, size, MAX_NUMNODES, 0);
- }
-@@ -1202,8 +1202,8 @@ phys_addr_t __init memblock_alloc_base(phys_addr_t size, phys_addr_t align, phys
- 	alloc = __memblock_alloc_base(size, align, max_addr);
- 
- 	if (alloc == 0)
--		panic("ERROR: Failed to allocate 0x%llx bytes below 0x%llx.\n",
--		      (unsigned long long) size, (unsigned long long) max_addr);
-+		panic("ERROR: Failed to allocate %pa bytes below %pa.\n",
-+		      &size, &max_addr);
- 
- 	return alloc;
- }
-@@ -1673,7 +1673,7 @@ phys_addr_t __init_memblock memblock_get_current_limit(void)
- 
- static void __init_memblock memblock_dump(struct memblock_type *type, char *name)
- {
--	unsigned long long base, size;
-+	phys_addr_t base, end, size;
- 	unsigned long flags;
- 	int idx;
- 	struct memblock_region *rgn;
-@@ -1685,23 +1685,24 @@ static void __init_memblock memblock_dump(struct memblock_type *type, char *name
- 
- 		base = rgn->base;
- 		size = rgn->size;
-+		end = base + size - 1;
- 		flags = rgn->flags;
- #ifdef CONFIG_HAVE_MEMBLOCK_NODE_MAP
- 		if (memblock_get_region_node(rgn) != MAX_NUMNODES)
- 			snprintf(nid_buf, sizeof(nid_buf), " on node %d",
- 				 memblock_get_region_node(rgn));
- #endif
--		pr_info(" %s[%#x]\t[%#016llx-%#016llx], %#llx bytes%s flags: %#lx\n",
--			name, idx, base, base + size - 1, size, nid_buf, flags);
-+		pr_info(" %s[%#x]\t[%pa-%pa], %pa bytes%s flags: %#lx\n",
-+			name, idx, &base, &end, &size, nid_buf, flags);
- 	}
- }
- 
- void __init_memblock __memblock_dump_all(void)
- {
- 	pr_info("MEMBLOCK configuration:\n");
--	pr_info(" memory size = %#llx reserved size = %#llx\n",
--		(unsigned long long)memblock.memory.total_size,
--		(unsigned long long)memblock.reserved.total_size);
-+	pr_info(" memory size = %pa reserved size = %pa\n",
-+		&memblock.memory.total_size,
-+		&memblock.reserved.total_size);
- 
- 	memblock_dump(&memblock.memory, "memory");
- 	memblock_dump(&memblock.reserved, "reserved");
-@@ -1727,19 +1728,14 @@ static int memblock_debug_show(struct seq_file *m, void *private)
- 	struct memblock_type *type = m->private;
- 	struct memblock_region *reg;
- 	int i;
-+	phys_addr_t end;
- 
- 	for (i = 0; i < type->cnt; i++) {
- 		reg = &type->regions[i];
--		seq_printf(m, "%4d: ", i);
--		if (sizeof(phys_addr_t) == 4)
--			seq_printf(m, "0x%08lx..0x%08lx\n",
--				   (unsigned long)reg->base,
--				   (unsigned long)(reg->base + reg->size - 1));
--		else
--			seq_printf(m, "0x%016llx..0x%016llx\n",
--				   (unsigned long long)reg->base,
--				   (unsigned long long)(reg->base + reg->size - 1));
-+		end = reg->base + reg->size - 1;
- 
-+		seq_printf(m, "%4d: ", i);
-+		seq_printf(m, "%pa..%pa\n", &reg->base, &end);
- 	}
- 	return 0;
- }
--- 
-1.9.1
-
---
-To unsubscribe, send a message with 'unsubscribe linux-mm' in
-the body to majordomo@kvack.org.  For more info on Linux MM,
-see: http://www.linux-mm.org/ .
-Don't email: <a href=mailto:"dont@kvack.org"> email@kvack.org </a>
+SGksIFlUOgoKT24gV2VkLCAyMDE3LTAxLTExIGF0IDE0OjUxICswODAwLCBZVCBTaGVuIHdyb3Rl
+Ogo+IEZyb206IHNoYW9taW5nIGNoZW4gPHNoYW9taW5nLmNoZW5AbWVkaWF0ZWsuY29tPgo+IAo+
+IGFkZCBkc2kgaW50ZXJydXB0IGNvbnRyb2wKPiAKPiBTaWduZWQtb2ZmLWJ5OiBzaGFvbWluZyBj
+aGVuIDxzaGFvbWluZy5jaGVuQG1lZGlhdGVrLmNvbT4KCkFja2VkLWJ5OiBDSyBIdSA8Y2suaHVA
+bWVkaWF0ZWsuY29tPgoKPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
+YyB8IDkyICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBj
+aGFuZ2VkLCA5MiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5j
+Cj4gaW5kZXggNmY0YjNiYi4uNDc0ODYxYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+c2kuYwo+IEBAIC0xOCw2ICsxOCw3IEBACj4gICNpbmNsdWRlIDxkcm0vZHJtX3BhbmVsLmg+Cj4g
+ICNpbmNsdWRlIDxsaW51eC9jbGsuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+
+ICsjaW5jbHVkZSA8bGludXgvaXJxLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5j
+bHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2dyYXBoLmg+
+Cj4gQEAgLTI5LDYgKzMwLDE2IEBACj4gIAo+ICAjZGVmaW5lIERTSV9TVEFSVAkJMHgwMAo+ICAK
+PiArI2RlZmluZSBEU0lfSU5URU4JCTB4MDgKPiArCj4gKyNkZWZpbmUgRFNJX0lOVFNUQQkJMHgw
+Ywo+ICsjZGVmaW5lIExQUlhfUkRfUkRZX0lOVF9GTEFHCQlCSVQoMCkKPiArI2RlZmluZSBDTURf
+RE9ORV9JTlRfRkxBRwkJQklUKDEpCj4gKyNkZWZpbmUgVEVfUkRZX0lOVF9GTEFHCQkJQklUKDIp
+Cj4gKyNkZWZpbmUgVk1fRE9ORV9JTlRfRkxBRwkJQklUKDMpCj4gKyNkZWZpbmUgRVhUX1RFX1JE
+WV9JTlRfRkxBRwkJQklUKDQpCj4gKyNkZWZpbmUgRFNJX0JVU1kJCQlCSVQoMzEpCj4gKwo+ICAj
+ZGVmaW5lIERTSV9DT05fQ1RSTAkJMHgxMAo+ICAjZGVmaW5lIERTSV9SRVNFVAkJCUJJVCgwKQo+
+ICAjZGVmaW5lIERTSV9FTgkJCQlCSVQoMSkKPiBAQCAtNzEsNiArODIsOSBAQAo+ICAKPiAgI2Rl
+ZmluZSBEU0lfSFNUWF9DS0xfV0MJCTB4NjQKPiAgCj4gKyNkZWZpbmUgRFNJX1JBQ0sJCTB4ODQK
+PiArI2RlZmluZSBSQUNLCQkJCUJJVCgwKQo+ICsKPiAgI2RlZmluZSBEU0lfUEhZX0xDQ09OCQkw
+eDEwNAo+ICAjZGVmaW5lIExDX0hTX1RYX0VOCQkJQklUKDApCj4gICNkZWZpbmUgTENfVUxQTV9F
+TgkJCUJJVCgxKQo+IEBAIC0xMzcsNiArMTUxLDggQEAgc3RydWN0IG10a19kc2kgewo+ICAJc3Ry
+dWN0IHZpZGVvbW9kZSB2bTsKPiAgCWludCByZWZjb3VudDsKPiAgCWJvb2wgZW5hYmxlZDsKPiAr
+CXUzMiBpcnFfZGF0YTsKPiArCXdhaXRfcXVldWVfaGVhZF90IGlycV93YWl0X3F1ZXVlOwo+ICB9
+Owo+ICAKPiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RzaSAqZW5jb2Rlcl90b19kc2koc3Ry
+dWN0IGRybV9lbmNvZGVyICplKQo+IEBAIC00NjksNiArNDg1LDY0IEBAIHN0YXRpYyB2b2lkIG10
+a19kc2lfc3RhcnQoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgCXdyaXRlbCgxLCBkc2ktPnJlZ3Mg
+KyBEU0lfU1RBUlQpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfZHNpX3NldF9pbnRlcnJ1
+cHRfZW5hYmxlKHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gK3sKPiArCXUzMiBpbnRlbiA9IExQUlhf
+UkRfUkRZX0lOVF9GTEFHIHwgQ01EX0RPTkVfSU5UX0ZMQUcgfCBWTV9ET05FX0lOVF9GTEFHOwo+
+ICsKPiArCXdyaXRlbChpbnRlbiwgZHNpLT5yZWdzICsgRFNJX0lOVEVOKTsKPiArfQo+ICsKPiAr
+c3RhdGljIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9zZXQoc3RydWN0IG10a19kc2kgKmRzaSwgdTMy
+IGlycV9iaXQpCj4gK3sKPiArCWRzaS0+aXJxX2RhdGEgfD0gaXJxX2JpdDsKPiArfQo+ICsKPiAr
+c3RhdGljIF9fbWF5YmVfdW51c2VkIHZvaWQgbXRrX2RzaV9pcnFfZGF0YV9jbGVhcihzdHJ1Y3Qg
+bXRrX2RzaSAqZHNpLCB1MzIgaXJxX2JpdCkKPiArewo+ICsJZHNpLT5pcnFfZGF0YSAmPSB+aXJx
+X2JpdDsKPiArfQo+ICsKPiArc3RhdGljIF9fbWF5YmVfdW51c2VkIHMzMiBtdGtfZHNpX3dhaXRf
+Zm9yX2lycV9kb25lKHN0cnVjdCBtdGtfZHNpICpkc2ksIHUzMiBpcnFfZmxhZywKPiArCQkJCSAg
+ICAgdW5zaWduZWQgaW50IHRpbWVvdXQpCj4gK3sKPiArCXMzMiByZXQgPSAwOwo+ICsJdW5zaWdu
+ZWQgbG9uZyBqaWZmaWVzID0gbXNlY3NfdG9famlmZmllcyh0aW1lb3V0KTsKPiArCj4gKwlyZXQg
+PSB3YWl0X2V2ZW50X2ludGVycnVwdGlibGVfdGltZW91dChkc2ktPmlycV93YWl0X3F1ZXVlLAo+
+ICsJCQkJCSAgICAgICBkc2ktPmlycV9kYXRhICYgaXJxX2ZsYWcsCj4gKwkJCQkJICAgICAgIGpp
+ZmZpZXMpOwo+ICsJaWYgKHJldCA9PSAwKSB7Cj4gKwkJRFJNX1dBUk4oIldhaXQgRFNJIElSUSgw
+eCUwOHgpIFRpbWVvdXRcbiIsIGlycV9mbGFnKTsKPiArCj4gKwkJbXRrX2RzaV9lbmFibGUoZHNp
+KTsKPiArCQltdGtfZHNpX3Jlc2V0X2VuZ2luZShkc2kpOwo+ICsJfQo+ICsKPiArCXJldHVybiBy
+ZXQ7Cj4gK30KPiArCj4gK3N0YXRpYyBpcnFyZXR1cm5fdCBtdGtfZHNpX2lycShpbnQgaXJxLCB2
+b2lkICpkZXZfaWQpCj4gK3sKPiArCXN0cnVjdCBtdGtfZHNpICpkc2kgPSBkZXZfaWQ7Cj4gKwl1
+MzIgc3RhdHVzLCB0bXA7Cj4gKwl1MzIgZmxhZyA9IExQUlhfUkRfUkRZX0lOVF9GTEFHIHwgQ01E
+X0RPTkVfSU5UX0ZMQUcgfCBWTV9ET05FX0lOVF9GTEFHOwo+ICsKPiArCXN0YXR1cyA9IHJlYWRs
+KGRzaS0+cmVncyArIERTSV9JTlRTVEEpICYgZmxhZzsKPiArCj4gKwlpZiAoc3RhdHVzKSB7Cj4g
+KwkJZG8gewo+ICsJCQltdGtfZHNpX21hc2soZHNpLCBEU0lfUkFDSywgUkFDSywgUkFDSyk7Cj4g
+KwkJCXRtcCA9IHJlYWRsKGRzaS0+cmVncyArIERTSV9JTlRTVEEpOwo+ICsJCX0gd2hpbGUgKHRt
+cCAmIERTSV9CVVNZKTsKPiArCj4gKwkJbXRrX2RzaV9tYXNrKGRzaSwgRFNJX0lOVFNUQSwgc3Rh
+dHVzLCAwKTsKPiArCQltdGtfZHNpX2lycV9kYXRhX3NldChkc2ksIHN0YXR1cyk7Cj4gKwkJd2Fr
+ZV91cF9pbnRlcnJ1cHRpYmxlKCZkc2ktPmlycV93YWl0X3F1ZXVlKTsKPiArCX0KPiArCj4gKwly
+ZXR1cm4gSVJRX0hBTkRMRUQ7Cj4gK30KPiArCj4gIHN0YXRpYyB2b2lkIG10a19kc2lfcG93ZXJv
+ZmYoc3RydWN0IG10a19kc2kgKmRzaSkKPiAgewo+ICAJaWYgKFdBUk5fT04oZHNpLT5yZWZjb3Vu
+dCA9PSAwKSkKPiBAQCAtNTE3LDYgKzU5MSw3IEBAIHN0YXRpYyB2b2lkIG10a19vdXRwdXRfZHNp
+X2VuYWJsZShzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAKPiAgCW10a19kc2lfcHNfY29udHJvbF92
+YWN0KGRzaSk7Cj4gIAltdGtfZHNpX2NvbmZpZ192ZG9fdGltaW5nKGRzaSk7Cj4gKwltdGtfZHNp
+X3NldF9pbnRlcnJ1cHRfZW5hYmxlKGRzaSk7Cj4gIAo+ICAJbXRrX2RzaV9zZXRfbW9kZShkc2kp
+Owo+ICAJbXRrX2RzaV9jbGtfaHNfbW9kZShkc2ksIDEpOwo+IEBAIC04MTgsNiArODkzLDcgQEAg
+c3RhdGljIGludCBtdGtfZHNpX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4g
+IAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+ICAJc3RydWN0IGRldmljZV9ub2Rl
+ICpyZW1vdGVfbm9kZSwgKmVuZHBvaW50Owo+ICAJc3RydWN0IHJlc291cmNlICpyZWdzOwo+ICsJ
+aW50IGlycV9udW07Cj4gIAlpbnQgY29tcF9pZDsKPiAgCWludCByZXQ7Cj4gIAo+IEBAIC04OTQs
+NiArOTcwLDIyIEBAIHN0YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2
+aWNlICpwZGV2KQo+ICAJCXJldHVybiByZXQ7Cj4gIAl9Cj4gIAo+ICsJaXJxX251bSA9IHBsYXRm
+b3JtX2dldF9pcnEocGRldiwgMCk7Cj4gKwlpZiAoaXJxX251bSA8IDApIHsKPiArCQlkZXZfZXJy
+KCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gcmVxdWVzdCBkc2kgaXJxIHJlc291cmNlXG4iKTsKPiAr
+CQlyZXR1cm4gLUVQUk9CRV9ERUZFUjsKPiArCX0KPiArCj4gKwlpcnFfc2V0X3N0YXR1c19mbGFn
+cyhpcnFfbnVtLCBJUlFfVFlQRV9MRVZFTF9MT1cpOwo+ICsJcmV0ID0gZGV2bV9yZXF1ZXN0X2ly
+cSgmcGRldi0+ZGV2LCBpcnFfbnVtLCBtdGtfZHNpX2lycSwKPiArCQkJICAgICAgIElSUUZfVFJJ
+R0dFUl9MT1csIGRldl9uYW1lKCZwZGV2LT5kZXYpLCBkc2kpOwo+ICsJaWYgKHJldCkgewo+ICsJ
+CWRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byByZXF1ZXN0IG1lZGlhdGVrIGRzaSBpcnFc
+biIpOwo+ICsJCXJldHVybiAtRVBST0JFX0RFRkVSOwo+ICsJfQo+ICsKPiArCWluaXRfd2FpdHF1
+ZXVlX2hlYWQoJmRzaS0+aXJxX3dhaXRfcXVldWUpOwo+ICsKPiAgCXBsYXRmb3JtX3NldF9kcnZk
+YXRhKHBkZXYsIGRzaSk7Cj4gIAo+ICAJcmV0dXJuIGNvbXBvbmVudF9hZGQoJnBkZXYtPmRldiwg
+Jm10a19kc2lfY29tcG9uZW50X29wcyk7CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
