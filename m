@@ -1,95 +1,103 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/6] usb: mtu3: add reference clock
-Date: Thu, 19 Jan 2017 13:22:56 +0100
-Message-ID: <7fc9de99-4bef-ddf2-c5fe-985f8d2348d2@gmail.com>
-References: <1484719707-12107-1-git-send-email-chunfeng.yun@mediatek.com>
- <1484719707-12107-2-git-send-email-chunfeng.yun@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
+Date: Thu, 19 Jan 2017 08:18:41 -0600
+Message-ID: <CAL_Jsq+S-FYy4SmjJ3fWzBugw2zCj5TQkkfUA8QVL7SLJW3E1g@mail.gmail.com>
+References: <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
+ <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com> <20170113172825.75d545a3@bbrezillon>
+ <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com> <20170113175628.1793f433@bbrezillon>
+ <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com> <20170114092958.022f2fc8@bbrezillon>
+ <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com> <20170116094032.6f471f11@bbrezillon>
+ <20170117143650.5db87148@free-electrons.com> <20170118222010.ivc6jxpnrumemvdf@rob-hp-laptop>
+ <20170119103829.524ce715@free-electrons.com> <CAL_Jsq+EyHtC7THLCJcwgtVtVESMOdmi3T3bBxgOqJt6BCtCHQ@mail.gmail.com>
+ <20170119091428.598eb987@bbrezillon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484719707-12107-2-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <20170119091428.598eb987@bbrezillon>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>
+Cc: "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Guochun Mao <guochun.mao@mediatek.com>, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+On Thu, Jan 19, 2017 at 2:14 AM, Boris Brezillon
+<boris.brezillon@free-electrons.com> wrote:
+> Hi Rob,
+>
+> On Wed, 18 Jan 2017 20:51:08 -0600
+> Rob Herring <robh@kernel.org> wrote:
+>
+>> On Wed, Jan 18, 2017 at 5:38 PM, Thomas Petazzoni
+>> <thomas.petazzoni@free-electrons.com> wrote:
+>> > Hello,
+>> >
+>> > On Wed, 18 Jan 2017 16:20:10 -0600, Rob Herring wrote:
+>> >
+>> >> > > Rob, Mark, any opinion?
+>> >> >
+>> >>
+>> >> Sigh, is how to do compatibles really not yet understood?
+>> >
+>> > Well, it seems like not everyone necessarily understands what is the
+>> > best strategy to adopt (me included).
+>> >
+>> >> > I agree that a clarification would be good. There are really two
+>> >> > options:
+>> >> >
+>> >> >  1. Have two compatible strings in the DT, the one that matches the
+>> >> >     exact SoC where the IP is found (first compatible string) and the
+>> >> >     one that matches some other SoC where the same IP is found (second
+>> >> >     compatible string). Originally, Linux only supports the second
+>> >> >     compatible string in its device driver, but if it happens that a
+>> >> >     difference is found between two IPs that we thought were the same,
+>> >> >     we can add support for the first compatible string in the driver,
+>> >> >     with a slightly different behavior.
+>> >>
+>> >> This. And no wildcards in the compatible string.
+>> >
+>> > OK. So it means that today we do something like:
+>> >
+>> >         compatible = "baz,foo-12", "baz,foo-00";
+>> >
+>> > and support only baz,foo-00 in the driver. If tomorrow we discover
+>> > that there is in fact a difference between the two IP blocks, we can
+>> > add support for baz,foo-12 in the driver, and handle the differences.
+>> >
+>> > But then, the DT still contains:
+>> >
+>> >         compatible = "baz,foo-12", "baz,foo-00";
+>> >
+>> > and therefore pretends that the IP block is compatible with
+>> > "baz,foo-00" which is in fact *not* the case. It was a mistake to
+>> > consider it as compatible. So we keep living with a DT that has
+>> > incorrect information.
+>>
+>> I wouldn't say it's a mistake necessarily. The old compatible would
+>> probably work to some extent. I'd assume it was tested to some level.
+>> Or it could be other changes exposing a difference.
+>
+> One last question and I'm done: is something like that acceptable?
+>
+>         compatible = "<vendor>,<old-soc>","<vendor>,<new-soc>";
+>
+> This can happen when someone adds support for an unsupported feature
+> on a brand new SoC, and then someone else use the same driver for an
+> older SoC embedding the same IP but still wants to add a new compatible
+> just in case these 2 IPs appear to be slightly different.
 
+Yes, it's old and new compatible strings in this case and it's newest
+compatible string first.
 
-On 18/01/17 07:08, Chunfeng Yun wrote:
-> usually, the reference clock comes from 26M oscillator directly,
-> but some SoCs are not, add it for compatibility.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/usb/mtu3/mtu3.h      |    1 +
->  drivers/usb/mtu3/mtu3_plat.c |   21 +++++++++++++++++++--
->  2 files changed, 20 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-> index ba9df71..aa6fd6a 100644
-> --- a/drivers/usb/mtu3/mtu3.h
-> +++ b/drivers/usb/mtu3/mtu3.h
-> @@ -225,6 +225,7 @@ struct ssusb_mtk {
->  	/* common power & clock */
->  	struct regulator *vusb33;
->  	struct clk *sys_clk;
-> +	struct clk *ref_clk;
->  	/* otg */
->  	struct otg_switch_mtk otg_switch;
->  	enum usb_dr_mode dr_mode;
-> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-> index 6344859..19a345d 100644
-> --- a/drivers/usb/mtu3/mtu3_plat.c
-> +++ b/drivers/usb/mtu3/mtu3_plat.c
-> @@ -123,7 +123,13 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
->  	ret = clk_prepare_enable(ssusb->sys_clk);
->  	if (ret) {
->  		dev_err(ssusb->dev, "failed to enable sys_clk\n");
-> -		goto clk_err;
-> +		goto sys_clk_err;
-> +	}
-> +
-> +	ret = clk_prepare_enable(ssusb->ref_clk);
-> +	if (ret) {
-> +		dev_err(ssusb->dev, "failed to enable ref_clk\n");
-> +		goto ref_clk_err;
->  	}
->
->  	ret = ssusb_phy_init(ssusb);
-> @@ -143,8 +149,10 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
->  phy_err:
->  	ssusb_phy_exit(ssusb);
->  phy_init_err:
-> +	clk_disable_unprepare(ssusb->ref_clk);
-> +ref_clk_err:
->  	clk_disable_unprepare(ssusb->sys_clk);
-> -clk_err:
-> +sys_clk_err:
->  	regulator_disable(ssusb->vusb33);
->  vusb33_err:
->
-> @@ -154,6 +162,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
->  static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
->  {
->  	clk_disable_unprepare(ssusb->sys_clk);
-> +	clk_disable_unprepare(ssusb->ref_clk);
->  	regulator_disable(ssusb->vusb33);
->  	ssusb_phy_power_off(ssusb);
->  	ssusb_phy_exit(ssusb);
-> @@ -216,6 +225,12 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
->  		return PTR_ERR(ssusb->sys_clk);
->  	}
->
-> +	ssusb->ref_clk = devm_clk_get(dev, "ref_ck");
-> +	if (IS_ERR(ssusb->ref_clk)) {
-> +		dev_err(dev, "failed to get ref clock\n");
-> +		return PTR_ERR(ssusb->ref_clk);
-> +	}
-> +
+> Here the order of compat strings is no longer following a clear rule
+> like 'most-specific compatible first' or 'newest IP/SoC version first',
+> it's completely dependent on the order these IPs were supported in the
+> OS (Linux). I'm perfectly fine with that BTW, just want to make sure
+> this is authorized.
 
-That would break older dts bindings, right?
-ref_ck must be optional for the code.
+I guess we should say "newest compatible for IP first" instead. There
+are some exceptions where we add fallbacks later on, but that falls
+under the most-specific part.
 
-Regards,
-Matthias
+It's order that the bindings are defined, not Linux support really,
+but in practice those are the same.
+
+Rob
