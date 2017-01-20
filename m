@@ -1,54 +1,104 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 2/3] dts: mediatek: configure some fixed mmc parameters
-Date: Fri, 20 Jan 2017 08:59:08 +0100
-Message-ID: <CAPDyKFrHCy7bLb-wDRWpELAB5VxPc4tjyWKd31YufEZC_AQtVA@mail.gmail.com>
-References: <1484821156-20565-1-git-send-email-yong.mao@mediatek.com> <1484821156-20565-3-git-send-email-yong.mao@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2,
+ 2/6] phy: phy-mt65xx-usb3: move clock from phy node into port nodes
+Date: Fri, 20 Jan 2017 16:18:37 +0800
+Message-ID: <1484900321-26933-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <1484821156-20565-3-git-send-email-yong.mao@mediatek.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 19 January 2017 at 11:19, Yong Mao <yong.mao@mediatek.com> wrote:
-> From: yong mao <yong.mao@mediatek.com>
->
-> configure some fixed mmc parameters
->
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+the reference clock of HighSpeed port is 48M which comes from PLL;
+the reference clock of SuperSpeed port is 26M which usually comes
+from 26M oscillator directly, but some SoCs are not, add it for
+compatibility, and put them into port node for flexibility.
 
-Please change the prefix of the commit message header to "ARM64: dts: mt8173:".
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/phy/phy-mt65xx-usb3.c |   21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-Also make sure you send this to the ARM mailing list as well.
-
-In general, I think it's better DTS changes go via the ARM SoC tree,
-but I can pick it up if it's trivial and I get an ack from the SoC
-maintainer.
-
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts |    3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> index 0ecaad4..403705e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-> @@ -134,6 +134,9 @@
->         bus-width = <8>;
->         max-frequency = <50000000>;
->         cap-mmc-highspeed;
-> +       mtk-hs200-cmd-int-delay=<26>;
-> +       mtk-hs400-cmd-int-delay=<14>;
-> +       mtk-hs400-cmd-resp-sel=<0>; /* 0:rising, 1:falling */
->         vmmc-supply = <&mt6397_vemc_3v3_reg>;
->         vqmmc-supply = <&mt6397_vio18_reg>;
->         non-removable;
-> --
-> 1.7.9.5
->
-
-Kind regards
-Uffe
+diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
+index 93f57d9..0995433 100644
+--- a/drivers/phy/phy-mt65xx-usb3.c
++++ b/drivers/phy/phy-mt65xx-usb3.c
+@@ -141,6 +141,7 @@ struct mt65xx_phy_pdata {
+ struct mt65xx_phy_instance {
+ 	struct phy *phy;
+ 	void __iomem *port_base;
++	struct clk *ref_clk;	/* reference clock of anolog phy */
+ 	u32 index;
+ 	u8 type;
+ };
+@@ -148,7 +149,6 @@ struct mt65xx_phy_instance {
+ struct mt65xx_u3phy {
+ 	struct device *dev;
+ 	void __iomem *sif_base;	/* only shared sif */
+-	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
+ 	const struct mt65xx_phy_pdata *pdata;
+ 	struct mt65xx_phy_instance **phys;
+ 	int nphys;
+@@ -422,9 +422,9 @@ static int mt65xx_phy_init(struct phy *phy)
+ 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(u3phy->u3phya_ref);
++	ret = clk_prepare_enable(instance->ref_clk);
+ 	if (ret) {
+-		dev_err(u3phy->dev, "failed to enable u3phya_ref\n");
++		dev_err(u3phy->dev, "failed to enable ref_clk\n");
+ 		return ret;
+ 	}
+ 
+@@ -467,7 +467,7 @@ static int mt65xx_phy_exit(struct phy *phy)
+ 	if (instance->type == PHY_TYPE_USB2)
+ 		phy_instance_exit(u3phy, instance);
+ 
+-	clk_disable_unprepare(u3phy->u3phya_ref);
++	clk_disable_unprepare(instance->ref_clk);
+ 	return 0;
+ }
+ 
+@@ -567,12 +567,6 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 		return PTR_ERR(u3phy->sif_base);
+ 	}
+ 
+-	u3phy->u3phya_ref = devm_clk_get(dev, "u3phya_ref");
+-	if (IS_ERR(u3phy->u3phya_ref)) {
+-		dev_err(dev, "error to get u3phya_ref\n");
+-		return PTR_ERR(u3phy->u3phya_ref);
+-	}
+-
+ 	port = 0;
+ 	for_each_child_of_node(np, child_np) {
+ 		struct mt65xx_phy_instance *instance;
+@@ -607,6 +601,13 @@ static int mt65xx_u3phy_probe(struct platform_device *pdev)
+ 			goto put_child;
+ 		}
+ 
++		instance->ref_clk = devm_clk_get(&phy->dev, "ref_clk");
++		if (IS_ERR(instance->ref_clk)) {
++			dev_err(dev, "failed to get ref_clk(id-%d)\n", port);
++			retval = PTR_ERR(instance->ref_clk);
++			goto put_child;
++		}
++
+ 		instance->phy = phy;
+ 		instance->index = port;
+ 		phy_set_drvdata(phy, instance);
+-- 
+1.7.9.5
