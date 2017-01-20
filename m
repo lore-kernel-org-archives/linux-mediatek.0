@@ -1,268 +1,113 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v2, 1/6] phy: phy-mt65xx-usb3: split SuperSpeed port into two ones
-Date: Fri, 20 Jan 2017 16:18:36 +0800
-Message-ID: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v3 3/3] mmc: mediatek: Use data tune for CMD line tune
+Date: Fri, 20 Jan 2017 09:22:04 +0100
+Message-ID: <CAPDyKFrg1pgs9Kdx6Wia_Pb7fdBjO=mwfMTzicAOqx4CVrohLg@mail.gmail.com>
+References: <1484821156-20565-1-git-send-email-yong.mao@mediatek.com> <1484821156-20565-4-git-send-email-yong.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1484821156-20565-4-git-send-email-yong.mao@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+To: Yong Mao <yong.mao@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Currently usb3 port in fact includes two sub-ports, but it is not
-flexible for some cases, such as following one:
-    usb3 port0 includes u2port0 and u3port0;
-    usb2 port0 includes u2port1;
-If wants to support only HS, we can use u2port0 or u2port1, when
-select u2port0, u3port0 is not needed;
-If wants to support SS, we can compound u2port0 and u3port0,
-or u2port1 and u3port0, if select latter one, u2port0 is not needed.
+[...]
 
-So it's more flexible to split usb3 port into two ones and also try
-best to save power by disabling unnecessary ports.
+>  struct msdc_delay_phase {
+> @@ -331,6 +339,9 @@ struct msdc_host {
+>         unsigned char timing;
+>         bool vqmmc_enabled;
+>         u32 hs400_ds_delay;
+> +       u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104 */
+> +       u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
+> +       u32 hs400_cmd_resp_sel;  /* cmd response sample selection for HS400 */
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/phy/phy-mt65xx-usb3.c |  119 +++++++++++++++++++++--------------------
- 1 file changed, 60 insertions(+), 59 deletions(-)
+When you converted the DT binding, this should become bool instead.
 
-diff --git a/drivers/phy/phy-mt65xx-usb3.c b/drivers/phy/phy-mt65xx-usb3.c
-index d972067..93f57d9 100644
---- a/drivers/phy/phy-mt65xx-usb3.c
-+++ b/drivers/phy/phy-mt65xx-usb3.c
-@@ -30,11 +30,11 @@
- #define SSUSB_SIFSLV_SPLLC		0x0000
- #define SSUSB_SIFSLV_U2FREQ		0x0100
- 
--/* offsets of sub-segment in each port registers */
-+/* offsets of banks in each u2phy registers */
- #define SSUSB_SIFSLV_U2PHY_COM_BASE	0x0000
--#define SSUSB_SIFSLV_U3PHYD_BASE	0x0100
--#define SSUSB_USB30_PHYA_SIV_B_BASE	0x0300
--#define SSUSB_SIFSLV_U3PHYA_DA_BASE	0x0400
-+/* offsets of banks in each u3phy registers */
-+#define SSUSB_SIFSLV_U3PHYD_BASE	0x0000
-+#define SSUSB_SIFSLV_U3PHYA_BASE	0x0200
- 
- #define U3P_USBPHYACR0		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0000)
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
-@@ -49,7 +49,6 @@
- #define PA5_RG_U2_HS_100U_U3_EN	BIT(11)
- 
- #define U3P_USBPHYACR6		(SSUSB_SIFSLV_U2PHY_COM_BASE + 0x0018)
--#define PA6_RG_U2_ISO_EN		BIT(31)
- #define PA6_RG_U2_BC11_SW_EN		BIT(23)
- #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
- #define PA6_RG_U2_SQTH		GENMASK(3, 0)
-@@ -91,18 +90,18 @@
- #define P2C_RG_SESSEND			BIT(4)
- #define P2C_RG_AVALID			BIT(2)
- 
--#define U3P_U3_PHYA_REG0	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0000)
-+#define U3P_U3_PHYA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0000)
- #define P3A_RG_U3_VUSB10_ON		BIT(5)
- 
--#define U3P_U3_PHYA_REG6	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0018)
-+#define U3P_U3_PHYA_REG6	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0018)
- #define P3A_RG_TX_EIDLE_CM		GENMASK(31, 28)
- #define P3A_RG_TX_EIDLE_CM_VAL(x)	((0xf & (x)) << 28)
- 
--#define U3P_U3_PHYA_REG9	(SSUSB_USB30_PHYA_SIV_B_BASE + 0x0024)
-+#define U3P_U3_PHYA_REG9	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0024)
- #define P3A_RG_RX_DAC_MUX		GENMASK(5, 1)
- #define P3A_RG_RX_DAC_MUX_VAL(x)	((0x1f & (x)) << 1)
- 
--#define U3P_U3PHYA_DA_REG0	(SSUSB_SIFSLV_U3PHYA_DA_BASE + 0x0000)
-+#define U3P_U3PHYA_DA_REG0	(SSUSB_SIFSLV_U3PHYA_BASE + 0x0100)
- #define P3A_RG_XTAL_EXT_EN_U3		GENMASK(11, 10)
- #define P3A_RG_XTAL_EXT_EN_U3_VAL(x)	((0x3 & (x)) << 10)
- 
-@@ -148,7 +147,7 @@ struct mt65xx_phy_instance {
- 
- struct mt65xx_u3phy {
- 	struct device *dev;
--	void __iomem *sif_base;	/* include sif2, but exclude port's */
-+	void __iomem *sif_base;	/* only shared sif */
- 	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
- 	const struct mt65xx_phy_pdata *pdata;
- 	struct mt65xx_phy_instance **phys;
-@@ -178,7 +177,7 @@ static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 	tmp = readl(sif_base + U3P_U2FREQ_FMCR0);
- 	tmp &= ~(P2F_RG_CYCLECNT | P2F_RG_MONCLK_SEL);
- 	tmp |= P2F_RG_CYCLECNT_VAL(U3P_FM_DET_CYCLE_CNT);
--	tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index);
-+	tmp |= P2F_RG_MONCLK_SEL_VAL(instance->index >> 1);
- 	writel(tmp, sif_base + U3P_U2FREQ_FMCR0);
- 
- 	/* enable frequency meter */
-@@ -226,6 +225,41 @@ static void hs_slew_rate_calibrate(struct mt65xx_u3phy *u3phy,
- 	writel(tmp, instance->port_base + U3P_USBPHYACR5);
- }
- 
-+static void u3_phy_instance_init(struct mt65xx_u3phy *u3phy,
-+	struct mt65xx_phy_instance *instance)
-+{
-+	void __iomem *port_base = instance->port_base;
-+	u32 tmp;
-+
-+	/* gating PCIe Analog XTAL clock */
-+	tmp = readl(u3phy->sif_base + U3P_XTALCTL3);
-+	tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
-+	writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
-+
-+	/* gating XSQ */
-+	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
-+	tmp &= ~P3A_RG_XTAL_EXT_EN_U3;
-+	tmp |= P3A_RG_XTAL_EXT_EN_U3_VAL(2);
-+	writel(tmp, port_base + U3P_U3PHYA_DA_REG0);
-+
-+	tmp = readl(port_base + U3P_U3_PHYA_REG9);
-+	tmp &= ~P3A_RG_RX_DAC_MUX;
-+	tmp |= P3A_RG_RX_DAC_MUX_VAL(4);
-+	writel(tmp, port_base + U3P_U3_PHYA_REG9);
-+
-+	tmp = readl(port_base + U3P_U3_PHYA_REG6);
-+	tmp &= ~P3A_RG_TX_EIDLE_CM;
-+	tmp |= P3A_RG_TX_EIDLE_CM_VAL(0xe);
-+	writel(tmp, port_base + U3P_U3_PHYA_REG6);
-+
-+	tmp = readl(port_base + U3P_PHYD_CDR1);
-+	tmp &= ~(P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1);
-+	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
-+	writel(tmp, port_base + U3P_PHYD_CDR1);
-+
-+	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, instance->index);
-+}
-+
- static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	struct mt65xx_phy_instance *instance)
- {
-@@ -275,26 +309,6 @@ static void phy_instance_init(struct mt65xx_u3phy *u3phy,
- 	tmp |= PA6_RG_U2_SQTH_VAL(2);
- 	writel(tmp, port_base + U3P_USBPHYACR6);
- 
--	tmp = readl(port_base + U3P_U3PHYA_DA_REG0);
--	tmp &= ~P3A_RG_XTAL_EXT_EN_U3;
--	tmp |= P3A_RG_XTAL_EXT_EN_U3_VAL(2);
--	writel(tmp, port_base + U3P_U3PHYA_DA_REG0);
--
--	tmp = readl(port_base + U3P_U3_PHYA_REG9);
--	tmp &= ~P3A_RG_RX_DAC_MUX;
--	tmp |= P3A_RG_RX_DAC_MUX_VAL(4);
--	writel(tmp, port_base + U3P_U3_PHYA_REG9);
--
--	tmp = readl(port_base + U3P_U3_PHYA_REG6);
--	tmp &= ~P3A_RG_TX_EIDLE_CM;
--	tmp |= P3A_RG_TX_EIDLE_CM_VAL(0xe);
--	writel(tmp, port_base + U3P_U3_PHYA_REG6);
--
--	tmp = readl(port_base + U3P_PHYD_CDR1);
--	tmp &= ~(P3D_RG_CDR_BIR_LTD0 | P3D_RG_CDR_BIR_LTD1);
--	tmp |= P3D_RG_CDR_BIR_LTD0_VAL(0xc) | P3D_RG_CDR_BIR_LTD1_VAL(0x3);
--	writel(tmp, port_base + U3P_PHYD_CDR1);
--
- 	dev_dbg(u3phy->dev, "%s(%d)\n", __func__, index);
- }
- 
-@@ -305,13 +319,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	u32 index = instance->index;
- 	u32 tmp;
- 
--	if (!index) {
--		/* Set RG_SSUSB_VUSB10_ON as 1 after VUSB10 ready */
--		tmp = readl(port_base + U3P_U3_PHYA_REG0);
--		tmp |= P3A_RG_U3_VUSB10_ON;
--		writel(tmp, port_base + U3P_U3_PHYA_REG0);
--	}
--
- 	/* (force_suspendm=0) (let suspendm=1, enable usb 480MHz pll) */
- 	tmp = readl(port_base + U3P_U2PHYDTM0);
- 	tmp &= ~(P2C_FORCE_SUSPENDM | P2C_RG_XCVRSEL);
-@@ -324,10 +331,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	writel(tmp, port_base + U3P_USBPHYACR6);
- 
- 	if (!index) {
--		tmp = readl(u3phy->sif_base + U3P_XTALCTL3);
--		tmp |= XC3_RG_U3_XTAL_RX_PWD | XC3_RG_U3_FRC_XTAL_RX_PWD;
--		writel(tmp, u3phy->sif_base + U3P_XTALCTL3);
--
- 		/* switch 100uA current to SSUSB */
- 		tmp = readl(port_base + U3P_USBPHYACR5);
- 		tmp |= PA5_RG_U2_HS_100U_U3_EN;
-@@ -339,12 +342,6 @@ static void phy_instance_power_on(struct mt65xx_u3phy *u3phy,
- 	tmp &= ~P2C_RG_SESSEND;
- 	writel(tmp, port_base + U3P_U2PHYDTM1);
- 
--	/* USB 2.0 slew rate calibration */
--	tmp = readl(port_base + U3P_USBPHYACR5);
--	tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
--	tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(4);
--	writel(tmp, port_base + U3P_USBPHYACR5);
--
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
- 		tmp = readl(port_base + U3D_U2PHYDCR0);
- 		tmp |= P2C_RG_SIF_U2PLL_FORCE_ON;
-@@ -392,12 +389,6 @@ static void phy_instance_power_off(struct mt65xx_u3phy *u3phy,
- 	tmp |= P2C_RG_SESSEND;
- 	writel(tmp, port_base + U3P_U2PHYDTM1);
- 
--	if (!index) {
--		tmp = readl(port_base + U3P_U3_PHYA_REG0);
--		tmp &= ~P3A_RG_U3_VUSB10_ON;
--		writel(tmp, port_base + U3P_U3_PHYA_REG0);
--	}
--
- 	if (u3phy->pdata->avoid_rx_sen_degradation && index) {
- 		tmp = readl(port_base + U3D_U2PHYDCR0);
- 		tmp &= ~P2C_RG_SIF_U2PLL_FORCE_ON;
-@@ -437,7 +428,11 @@ static int mt65xx_phy_init(struct phy *phy)
- 		return ret;
- 	}
- 
--	phy_instance_init(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_init(u3phy, instance);
-+	else
-+		u3_phy_instance_init(u3phy, instance);
-+
- 	return 0;
- }
- 
-@@ -446,8 +441,10 @@ static int mt65xx_phy_power_on(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_power_on(u3phy, instance);
--	hs_slew_rate_calibrate(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2) {
-+		phy_instance_power_on(u3phy, instance);
-+		hs_slew_rate_calibrate(u3phy, instance);
-+	}
- 	return 0;
- }
- 
-@@ -456,7 +453,9 @@ static int mt65xx_phy_power_off(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_power_off(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_power_off(u3phy, instance);
-+
- 	return 0;
- }
- 
-@@ -465,7 +464,9 @@ static int mt65xx_phy_exit(struct phy *phy)
- 	struct mt65xx_phy_instance *instance = phy_get_drvdata(phy);
- 	struct mt65xx_u3phy *u3phy = dev_get_drvdata(phy->dev.parent);
- 
--	phy_instance_exit(u3phy, instance);
-+	if (instance->type == PHY_TYPE_USB2)
-+		phy_instance_exit(u3phy, instance);
-+
- 	clk_disable_unprepare(u3phy->u3phya_ref);
- 	return 0;
- }
--- 
-1.7.9.5
+>         bool hs400_mode;        /* current eMMC will run at hs400 mode */
+>         struct msdc_save_para save_para; /* used when gate HCLK */
+>         struct msdc_tune_para def_tune_para; /* default tune setting */
+
+[...]
+
+> +static void msdc_of_property_parse(struct platform_device *pdev,
+> +                                  struct msdc_host *host)
+> +{
+> +       if (!of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
+> +                                 &host->hs400_ds_delay))
+> +               dev_dbg(&pdev->dev, "hs400-ds-delay: %x\n",
+> +                       host->hs400_ds_delay);
+
+Writing a dev_dbg for each parsed DT property, seems a bit silly. Can
+you please remove that.
+
+> +
+> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs200-cmd-int-delay",
+> +                                 &host->hs200_cmd_int_delay))
+> +               dev_dbg(&pdev->dev, "host->hs200-cmd-int-delay: %x\n",
+> +                       host->hs200_cmd_int_delay);
+> +
+> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs400-cmd-int-delay",
+> +                                 &host->hs400_cmd_int_delay))
+> +               dev_dbg(&pdev->dev, "host->hs400-cmd-int-delay: %x\n",
+> +                       host->hs400_cmd_int_delay);
+> +
+> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs400-cmd-resp-sel",
+> +                                 &host->hs400_cmd_resp_sel))
+> +               dev_dbg(&pdev->dev, "host->hs200_cmd-resp-sel: %x\n",
+> +                       host->hs400_cmd_resp_sel);
+> +}
+> +
+>  static int msdc_drv_probe(struct platform_device *pdev)
+>  {
+>         struct mmc_host *mmc;
+> @@ -1497,7 +1635,6 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>         ret = mmc_of_parse(mmc);
+>         if (ret)
+>                 goto host_free;
+> -
+
+Whitespace.
+
+>         res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>         host->base = devm_ioremap_resource(&pdev->dev, res);
+>         if (IS_ERR(host->base)) {
+> @@ -1548,10 +1685,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                 goto host_free;
+>         }
+>
+> -       if (!of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
+> -                                 &host->hs400_ds_delay))
+> -               dev_dbg(&pdev->dev, "hs400-ds-delay: %x\n",
+> -                       host->hs400_ds_delay);
+> +       msdc_of_property_parse(pdev, host);
+>
+>         host->dev = &pdev->dev;
+>         host->mmc = mmc;
+> @@ -1663,6 +1797,7 @@ static void msdc_save_reg(struct msdc_host *host)
+>         host->save_para.patch_bit0 = readl(host->base + MSDC_PATCH_BIT);
+>         host->save_para.patch_bit1 = readl(host->base + MSDC_PATCH_BIT1);
+>         host->save_para.pad_ds_tune = readl(host->base + PAD_DS_TUNE);
+> +       host->save_para.pad_cmd_tune = readl(host->base + PAD_CMD_TUNE);
+>         host->save_para.emmc50_cfg0 = readl(host->base + EMMC50_CFG0);
+>  }
+>
+> @@ -1675,6 +1810,7 @@ static void msdc_restore_reg(struct msdc_host *host)
+>         writel(host->save_para.patch_bit0, host->base + MSDC_PATCH_BIT);
+>         writel(host->save_para.patch_bit1, host->base + MSDC_PATCH_BIT1);
+>         writel(host->save_para.pad_ds_tune, host->base + PAD_DS_TUNE);
+> +       writel(host->save_para.pad_cmd_tune, host->base + PAD_CMD_TUNE);
+>         writel(host->save_para.emmc50_cfg0, host->base + EMMC50_CFG0);
+>  }
+>
+> --
+> 1.7.9.5
+>
+
+Please also fold in the change suggested/reported by the kbuild test robot.
+
+Besides the minor things, this looks good to me!
+
+Kind regards
+Uffe
