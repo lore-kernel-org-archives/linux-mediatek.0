@@ -1,65 +1,49 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH v2, 4/6] arm64: dts: mt8173: split usb SuperSpeed port into two ports
-Date: Fri, 20 Jan 2017 16:18:39 +0800
-Message-ID: <1484900321-26933-4-git-send-email-chunfeng.yun@mediatek.com>
-References: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Stephen Boyd <sboyd@codeaurora.org>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Fri, 20 Jan 2017 15:22:14 -0800
+Message-ID: <20170120232214.GC20800@codeaurora.org>
+References: <20170109113621.31d384c9@endymion>
+ <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
+ <20170110130300.167d215b@endymion>
+ <1484099788.26901.8.camel@mtksdaap41>
+ <20170111134146.36878e01@endymion>
+ <1484192392.26901.12.camel@mtksdaap41>
+ <20170112094011.0e0a32e6@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-clk-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20170112094011.0e0a32e6@endymion>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-split the old SuperSpeed port node into a HighSpeed one and a new
-SuperSpeed one.
+On 01/12, Jean Delvare wrote:
+> Hi James,
+> 
+> On Thu, 12 Jan 2017 11:39:52 +0800, James Liao wrote:
+> > On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
+> > >  config COMMON_CLK_MT8173
+> > >  	bool "Clock driver for Mediatek MT8173"
+> > > -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+> > >  	select COMMON_CLK_MEDIATEK
+> > > -	default ARCH_MEDIATEK
+> > > +	default y
+> > >  	---help---
+> > >  	  This driver supports Mediatek MT8173 clocks.
+> > 
+> > Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
+> > think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
+> > platform.
+> 
+> OK, I'll leave that one alone then, thanks for the information.
+> 
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi |   19 +++++++++++++------
- 1 file changed, 13 insertions(+), 6 deletions(-)
+Is this patch going another round? I haven't seen anything on the
+list so far.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 12e7027..1074ed2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -724,8 +724,9 @@
- 			      <0 0x11280700 0 0x0100>;
- 			reg-names = "mac", "ippc";
- 			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
--			phys = <&phy_port0 PHY_TYPE_USB3>,
--			       <&phy_port1 PHY_TYPE_USB2>;
-+			phys = <&u2port0 PHY_TYPE_USB2>,
-+			       <&u3port0 PHY_TYPE_USB3>,
-+			       <&u2port1 PHY_TYPE_USB2>;
- 			power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
- 			clocks = <&topckgen CLK_TOP_USB30_SEL>,
- 				 <&pericfg CLK_PERI_USB0>,
-@@ -761,14 +762,20 @@
- 			ranges;
- 			status = "okay";
- 
--			phy_port0: port@11290800 {
--				reg = <0 0x11290800 0 0x800>;
-+			u2port0: port@11290800 {
-+				reg = <0 0x11290800 0 0x100>;
- 				#phy-cells = <1>;
- 				status = "okay";
- 			};
- 
--			phy_port1: port@11291000 {
--				reg = <0 0x11291000 0 0x800>;
-+			u3port0: port@11290900 {
-+				reg = <0 0x11290900 0 0x700>;
-+				#phy-cells = <1>;
-+				status = "okay";
-+			};
-+
-+			u2port1: port@11291000 {
-+				reg = <0 0x11291000 0 0x100>;
- 				#phy-cells = <1>;
- 				status = "okay";
- 			};
 -- 
-1.7.9.5
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum,
+a Linux Foundation Collaborative Project
