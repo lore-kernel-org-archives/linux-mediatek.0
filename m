@@ -1,113 +1,65 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v3 3/3] mmc: mediatek: Use data tune for CMD line tune
-Date: Fri, 20 Jan 2017 09:22:04 +0100
-Message-ID: <CAPDyKFrg1pgs9Kdx6Wia_Pb7fdBjO=mwfMTzicAOqx4CVrohLg@mail.gmail.com>
-References: <1484821156-20565-1-git-send-email-yong.mao@mediatek.com> <1484821156-20565-4-git-send-email-yong.mao@mediatek.com>
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH v2, 4/6] arm64: dts: mt8173: split usb SuperSpeed port into two ports
+Date: Fri, 20 Jan 2017 16:18:39 +0800
+Message-ID: <1484900321-26933-4-git-send-email-chunfeng.yun@mediatek.com>
+References: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484821156-20565-4-git-send-email-yong.mao@mediatek.com>
+In-Reply-To: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Chaotian Jing <chaotian.jing@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, linux-mediatek@lists.infradead.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-mediatek@lists.infradead.org
 
-[...]
+split the old SuperSpeed port node into a HighSpeed one and a new
+SuperSpeed one.
 
->  struct msdc_delay_phase {
-> @@ -331,6 +339,9 @@ struct msdc_host {
->         unsigned char timing;
->         bool vqmmc_enabled;
->         u32 hs400_ds_delay;
-> +       u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104 */
-> +       u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
-> +       u32 hs400_cmd_resp_sel;  /* cmd response sample selection for HS400 */
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi |   19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-When you converted the DT binding, this should become bool instead.
-
->         bool hs400_mode;        /* current eMMC will run at hs400 mode */
->         struct msdc_save_para save_para; /* used when gate HCLK */
->         struct msdc_tune_para def_tune_para; /* default tune setting */
-
-[...]
-
-> +static void msdc_of_property_parse(struct platform_device *pdev,
-> +                                  struct msdc_host *host)
-> +{
-> +       if (!of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
-> +                                 &host->hs400_ds_delay))
-> +               dev_dbg(&pdev->dev, "hs400-ds-delay: %x\n",
-> +                       host->hs400_ds_delay);
-
-Writing a dev_dbg for each parsed DT property, seems a bit silly. Can
-you please remove that.
-
-> +
-> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs200-cmd-int-delay",
-> +                                 &host->hs200_cmd_int_delay))
-> +               dev_dbg(&pdev->dev, "host->hs200-cmd-int-delay: %x\n",
-> +                       host->hs200_cmd_int_delay);
-> +
-> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs400-cmd-int-delay",
-> +                                 &host->hs400_cmd_int_delay))
-> +               dev_dbg(&pdev->dev, "host->hs400-cmd-int-delay: %x\n",
-> +                       host->hs400_cmd_int_delay);
-> +
-> +       if (!of_property_read_u32(pdev->dev.of_node, "mtk-hs400-cmd-resp-sel",
-> +                                 &host->hs400_cmd_resp_sel))
-> +               dev_dbg(&pdev->dev, "host->hs200_cmd-resp-sel: %x\n",
-> +                       host->hs400_cmd_resp_sel);
-> +}
-> +
->  static int msdc_drv_probe(struct platform_device *pdev)
->  {
->         struct mmc_host *mmc;
-> @@ -1497,7 +1635,6 @@ static int msdc_drv_probe(struct platform_device *pdev)
->         ret = mmc_of_parse(mmc);
->         if (ret)
->                 goto host_free;
-> -
-
-Whitespace.
-
->         res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->         host->base = devm_ioremap_resource(&pdev->dev, res);
->         if (IS_ERR(host->base)) {
-> @@ -1548,10 +1685,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
->                 goto host_free;
->         }
->
-> -       if (!of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
-> -                                 &host->hs400_ds_delay))
-> -               dev_dbg(&pdev->dev, "hs400-ds-delay: %x\n",
-> -                       host->hs400_ds_delay);
-> +       msdc_of_property_parse(pdev, host);
->
->         host->dev = &pdev->dev;
->         host->mmc = mmc;
-> @@ -1663,6 +1797,7 @@ static void msdc_save_reg(struct msdc_host *host)
->         host->save_para.patch_bit0 = readl(host->base + MSDC_PATCH_BIT);
->         host->save_para.patch_bit1 = readl(host->base + MSDC_PATCH_BIT1);
->         host->save_para.pad_ds_tune = readl(host->base + PAD_DS_TUNE);
-> +       host->save_para.pad_cmd_tune = readl(host->base + PAD_CMD_TUNE);
->         host->save_para.emmc50_cfg0 = readl(host->base + EMMC50_CFG0);
->  }
->
-> @@ -1675,6 +1810,7 @@ static void msdc_restore_reg(struct msdc_host *host)
->         writel(host->save_para.patch_bit0, host->base + MSDC_PATCH_BIT);
->         writel(host->save_para.patch_bit1, host->base + MSDC_PATCH_BIT1);
->         writel(host->save_para.pad_ds_tune, host->base + PAD_DS_TUNE);
-> +       writel(host->save_para.pad_cmd_tune, host->base + PAD_CMD_TUNE);
->         writel(host->save_para.emmc50_cfg0, host->base + EMMC50_CFG0);
->  }
->
-> --
-> 1.7.9.5
->
-
-Please also fold in the change suggested/reported by the kbuild test robot.
-
-Besides the minor things, this looks good to me!
-
-Kind regards
-Uffe
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index 12e7027..1074ed2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -724,8 +724,9 @@
+ 			      <0 0x11280700 0 0x0100>;
+ 			reg-names = "mac", "ippc";
+ 			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_LOW>;
+-			phys = <&phy_port0 PHY_TYPE_USB3>,
+-			       <&phy_port1 PHY_TYPE_USB2>;
++			phys = <&u2port0 PHY_TYPE_USB2>,
++			       <&u3port0 PHY_TYPE_USB3>,
++			       <&u2port1 PHY_TYPE_USB2>;
+ 			power-domains = <&scpsys MT8173_POWER_DOMAIN_USB>;
+ 			clocks = <&topckgen CLK_TOP_USB30_SEL>,
+ 				 <&pericfg CLK_PERI_USB0>,
+@@ -761,14 +762,20 @@
+ 			ranges;
+ 			status = "okay";
+ 
+-			phy_port0: port@11290800 {
+-				reg = <0 0x11290800 0 0x800>;
++			u2port0: port@11290800 {
++				reg = <0 0x11290800 0 0x100>;
+ 				#phy-cells = <1>;
+ 				status = "okay";
+ 			};
+ 
+-			phy_port1: port@11291000 {
+-				reg = <0 0x11291000 0 0x800>;
++			u3port0: port@11290900 {
++				reg = <0 0x11290900 0 0x700>;
++				#phy-cells = <1>;
++				status = "okay";
++			};
++
++			u2port1: port@11291000 {
++				reg = <0 0x11291000 0 0x100>;
+ 				#phy-cells = <1>;
+ 				status = "okay";
+ 			};
+-- 
+1.7.9.5
