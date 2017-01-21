@@ -1,20 +1,37 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 5/6] dt-bindings: mt8173-xhci: add reference clock
-Date: Sat, 21 Jan 2017 14:12:50 -0600
-Message-ID: <20170121201250.dpowjr3mlwuew3gx@rob-hp-laptop>
-References: <1484719707-12107-1-git-send-email-chunfeng.yun@mediatek.com>
- <1484719707-12107-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [RESEND PATCH 1/2] Documentation: devicetree: Add i2c binding
+ for mediatek MT2701 Soc Platform
+Date: Sat, 21 Jan 2017 14:22:53 -0600
+Message-ID: <20170121202253.4yq7jcj7uhvf7bds@rob-hp-laptop>
+References: <1484732461-13594-1-git-send-email-jun.gao@mediatek.com>
+ <1484732461-13594-2-git-send-email-jun.gao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1484719707-12107-5-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <1484732461-13594-2-git-send-email-jun.gao@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jun Gao <jun.gao@mediatek.com>
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com, Wolfram Sang <wsa@the-dreams.de>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 18, 2017 at 02:08:26PM +0800, Chunfeng Yun wrote:
-> add a reference clock for compatibility
+On Wed, Jan 18, 2017 at 05:41:00PM +0800, Jun Gao wrote:
+> From: Jun Gao <jun.gao@mediatek.com>
+> 
+> This add i2c DT binding to i2c-mt6577.txt for MT2701.
+> 
+> Signed-off-by: Jun Gao <jun.gao@mediatek.com>
+> ---
+>  .../devicetree/bindings/i2c/i2c-mt6577.txt         |   11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 
-Same question here, too.
+Acked-by: Rob Herring <robh@kernel.org>
