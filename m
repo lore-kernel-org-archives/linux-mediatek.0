@@ -1,138 +1,163 @@
-From: Bhumika Goyal <bhumirks@gmail.com>
-Subject: [PATCH] media: platform: constify vb2_ops structures
-Date: Sat, 21 Jan 2017 14:59:44 +0530
-Message-ID: <1484990984-16136-1-git-send-email-bhumirks@gmail.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: julia.lawall@lip6.fr, prabhakar.csengg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com, andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Bhumika Goyal <bhumirks@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RESEND PATCH 6/6] dt-bindings: phy-mt65xx-usb: add support for
+ mt2712 platform
+Date: Sat, 21 Jan 2017 14:08:44 -0600
+Message-ID: <20170121200844.k5ivauhws43ac2s2@rob-hp-laptop>
+References: <1484719214-11989-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1484719214-11989-6-git-send-email-chunfeng.yun@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1484719214-11989-6-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Declare vb2_ops structures as const as they are only stored in
-the ops field of a vb2_queue structure. This field is of type
-const, so vb2_ops structures having same properties can be made
-const too.
-Done using Coccinelle:
+On Wed, Jan 18, 2017 at 02:00:14PM +0800, Chunfeng Yun wrote:
+> add a new compatible string for "mt2712", and a new reference clock
+> for SuperSpeed analog phy;
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> ---
+>  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |   81 +++++++++++++++++---
+>  1 file changed, 70 insertions(+), 11 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> index 33a2b1e..8f91136 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
+> @@ -6,19 +6,25 @@ This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
+>  Required properties (controller (parent) node):
+>   - compatible	: should be one of
+>  		  "mediatek,mt2701-u3phy"
+> +		  "mediatek,mt2712-u3phy"
+>  		  "mediatek,mt8173-u3phy"
+> - - reg		: offset and length of register for phy, exclude port's
+> -		  register.
+>   - clocks	: a list of phandle + clock-specifier pairs, one for each
+>  		  entry in clock-names
+>   - clock-names	: must contain
+> -		  "u3phya_ref": for reference clock of usb3.0 analog phy.
+> +		  "u2ref_clk": 48M reference clock of HighSpeed analog phy.
+> +		  "u3ref_clk": 26M reference clock of SuperSpeed analog phy,
+> +			sometimes is 24M, 25M or 27M, depended on platform.
 
-@r1 disable optional_qualifier@
-identifier i;
-position p;
-@@
-static struct vb2_ops i@p={...};
+_clk is redundant.
 
-@ok1@
-identifier r1.i;
-position p;
-struct sta2x11_vip vip;
-struct vb2_queue q;
-@@
-(
-vip.vb_vidq.ops=&i@p
-|
-q.ops=&i@p
-)
+>  
+>  Required nodes	: a sub-node is required for each port the controller
+>  		  provides. Address range information including the usual
+>  		  'reg' property is used inside these nodes to describe
+>  		  the controller's topology.
+>  
+> +Optional properties (controller (parent) node):
+> + - reg		: offset and length of register shared by multiple ports,
+> +		  exclude port's private register. It is needed on mt2701
+> +		  and mt8173, but not on mt2712.
+> +
+>  Required properties (port (child) node):
+>  - reg		: address and length of the register set for the port.
+>  - #phy-cells	: should be 1 (See second example)
+> @@ -31,21 +37,27 @@ Example:
+>  u3phy: usb-phy@11290000 {
+>  	compatible = "mediatek,mt8173-u3phy";
+>  	reg = <0 0x11290000 0 0x800>;
+> -	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
+> -	clock-names = "u3phya_ref";
+> +	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>, <&clk26m>;
+> +	clock-names = "u2ref_clk", "u3ref_clk";
+>  	#address-cells = <2>;
+>  	#size-cells = <2>;
+>  	ranges;
+>  	status = "okay";
+>  
+> -	phy_port0: port@11290800 {
+> -		reg = <0 0x11290800 0 0x800>;
+> +	u2port0: port@11290800 {
 
-@bad@
-position p!={r1.p,ok1.p};
-identifier r1.i;
-@@
-i@p
+port is for OF graph. This should be usb-phy@... instead.
 
-@depends on !bad disable optional_qualifier@
-identifier r1.i;
-@@
-+const
-struct vb2_ops i;
-
-Cross compiled the media/platform/blackfin/bfin_capture.o file for
-blackfin architecture.
-
-File size before:
-  text	   data	    bss	    dec	    hex	filename
-  6776	    176	      0	   6952	   1b28 platform/blackfin/bfin_capture.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-   6816	    136	      0	   6952	   1b28 platform/blackfin/bfin_capture.o
-
-File size before:
-   text	   data	    bss	    dec	    hex	filename
-  12852	    456	    272	  13580	   350c platform/davinci/vpif_capture.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-  12932	    360	    272	  13564	   34fc platform/davinci/vpif_capture.o
-
-File size before:
-   text	   data	    bss	    dec	    hex	filename
-  12285	    360	    276	  12921	   3279 platform/davinci/vpif_display.o
-
-File size after:
-   text	   data	    bss	    dec	    hex	filename
-  12365	    296	    276	  12937	   3289 platform/davinci/vpif_display.o
-
-File size details before and after applying the patch remains the same for
-drivers/media/platform/pxa_camera.o
-
-Signed-off-by: Bhumika Goyal <bhumirks@gmail.com>
----
- drivers/media/platform/davinci/vpif_capture.c | 2 +-
- drivers/media/platform/davinci/vpif_display.c | 2 +-
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  | 2 +-
- drivers/media/platform/pxa_camera.c           | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/media/platform/davinci/vpif_capture.c b/drivers/media/platform/davinci/vpif_capture.c
-index f791f5c..54c54d9 100644
---- a/drivers/media/platform/davinci/vpif_capture.c
-+++ b/drivers/media/platform/davinci/vpif_capture.c
-@@ -309,7 +309,7 @@ static void vpif_stop_streaming(struct vb2_queue *vq)
- 	spin_unlock_irqrestore(&common->irqlock, flags);
- }
- 
--static struct vb2_ops video_qops = {
-+static const struct vb2_ops video_qops = {
- 	.queue_setup		= vpif_buffer_queue_setup,
- 	.buf_prepare		= vpif_buffer_prepare,
- 	.start_streaming	= vpif_start_streaming,
-diff --git a/drivers/media/platform/davinci/vpif_display.c b/drivers/media/platform/davinci/vpif_display.c
-index e5f1844..9604afd 100644
---- a/drivers/media/platform/davinci/vpif_display.c
-+++ b/drivers/media/platform/davinci/vpif_display.c
-@@ -289,7 +289,7 @@ static void vpif_stop_streaming(struct vb2_queue *vq)
- 	spin_unlock_irqrestore(&common->irqlock, flags);
- }
- 
--static struct vb2_ops video_qops = {
-+static const struct vb2_ops video_qops = {
- 	.queue_setup		= vpif_buffer_queue_setup,
- 	.wait_prepare		= vb2_ops_wait_prepare,
- 	.wait_finish		= vb2_ops_wait_finish,
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-index 13afe48..3038d62 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-@@ -621,7 +621,7 @@ static void mtk_mdp_m2m_buf_queue(struct vb2_buffer *vb)
- 	v4l2_m2m_buf_queue(ctx->m2m_ctx, to_vb2_v4l2_buffer(vb));
- }
- 
--static struct vb2_ops mtk_mdp_m2m_qops = {
-+static const struct vb2_ops mtk_mdp_m2m_qops = {
- 	.queue_setup	 = mtk_mdp_m2m_queue_setup,
- 	.buf_prepare	 = mtk_mdp_m2m_buf_prepare,
- 	.buf_queue	 = mtk_mdp_m2m_buf_queue,
-diff --git a/drivers/media/platform/pxa_camera.c b/drivers/media/platform/pxa_camera.c
-index 929006f..17167d1 100644
---- a/drivers/media/platform/pxa_camera.c
-+++ b/drivers/media/platform/pxa_camera.c
-@@ -1530,7 +1530,7 @@ static void pxac_vb2_stop_streaming(struct vb2_queue *vq)
- 		pxa_camera_wakeup(pcdev, buf, VB2_BUF_STATE_ERROR);
- }
- 
--static struct vb2_ops pxac_vb2_ops = {
-+static const struct vb2_ops pxac_vb2_ops = {
- 	.queue_setup		= pxac_vb2_queue_setup,
- 	.buf_init		= pxac_vb2_init,
- 	.buf_prepare		= pxac_vb2_prepare,
--- 
-1.9.1
+> +		reg = <0 0x11290800 0 0x100>;
+> +		#phy-cells = <1>;
+> +		status = "okay";
+> +	};
+> +
+> +	u3port0: port@11290900 {
+> +		reg = <0 0x11290800 0 0x700>;
+>  		#phy-cells = <1>;
+>  		status = "okay";
+>  	};
+>  
+> -	phy_port1: port@11291000 {
+> -		reg = <0 0x11291000 0 0x800>;
+> +	u2port1: port@11291000 {
+> +		reg = <0 0x11291000 0 0x100>;
+>  		#phy-cells = <1>;
+>  		status = "okay";
+>  	};
+> @@ -64,7 +76,54 @@ Example:
+>  
+>  usb30: usb@11270000 {
+>  	...
+> -	phys = <&phy_port0 PHY_TYPE_USB3>;
+> -	phy-names = "usb3-0";
+> +	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
+> +	phy-names = "usb2-0", "usb3-0";
+>  	...
+>  };
+> +
+> +
+> +Layout differences of banks between mt8173/mt2701 and mt2712
+> +-------------------------------------------------------------
+> +mt8173 and mt2701:
+> +port        offset    bank
+> +shared      0x0000    SPLLC
+> +            0x0100    FMREG
+> +u2 port0    0x0800    U2PHY_COM
+> +u3 port0    0x0900    U3PHYD
+> +            0x0a00    U3PHYD_BANK2
+> +            0x0b00    U3PHYA
+> +            0x0c00    U3PHYA_DA
+> +u2 port1    0x1000    U2PHY_COM
+> +u3 port1    0x1100    U3PHYD
+> +            0x1200    U3PHYD_BANK2
+> +            0x1300    U3PHYA
+> +            0x1400    U3PHYA_DA
+> +u2 port2    0x1800    U2PHY_COM
+> +            ...
+> +
+> +mt2712:
+> +port        offset    bank
+> +u2 port0    0x0000    MISC
+> +            0x0100    FMREG
+> +            0x0300    U2PHY_COM
+> +u3 port0    0x0700    SPLLC
+> +            0x0800    CHIP
+> +            0x0900    U3PHYD
+> +            0x0a00    U3PHYD_BANK2
+> +            0x0b00    U3PHYA
+> +            0x0c00    U3PHYA_DA
+> +u2 port1    0x1000    MISC
+> +            0x1100    FMREG
+> +            0x1300    U2PHY_COM
+> +u3 port1    0x1700    SPLLC
+> +            0x1800    CHIP
+> +            0x1900    U3PHYD
+> +            0x1a00    U3PHYD_BANK2
+> +            0x1b00    U3PHYA
+> +            0x1c00    U3PHYA_DA
+> +u2 port2    0x2000    MISC
+> +            ...
+> +
+> +    SPLLC shared by u3 ports and FMREG shared by u2 ports on
+> +mt8173/mt2701 are put back into each port; a new bank MISC for
+> +u2 ports and CHIP for u3 ports are added on mt2712.
+> -- 
+> 1.7.9.5
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
