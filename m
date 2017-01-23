@@ -1,64 +1,72 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: arm64: dts: mt8173: add node for thermal calibration
-Date: Mon, 23 Jan 2017 10:20:02 +0100
-Message-ID: <f33ae1e4-ff12-7468-67e4-5e5b28dd67bb@gmail.com>
-References: <1484286771-35913-1-git-send-email-dawei.chien@mediatek.com>
- <CAGS+omA=aip76=8CcGY7gPUrHj9eLLem=8MBziz99fVDq86zPQ@mail.gmail.com>
+From: YT Shen <yt.shen@mediatek.com>
+Subject: [PATCH v12 01/12] dt-bindings: display: mediatek: update supported
+ chips
+Date: Mon, 23 Jan 2017 19:05:14 +0800
+Message-ID: <1485169525-22163-2-git-send-email-yt.shen@mediatek.com>
+References: <1485169525-22163-1-git-send-email-yt.shen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omA=aip76=8CcGY7gPUrHj9eLLem=8MBziz99fVDq86zPQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>, Dawei Chien <dawei.chien@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Pawel Moll <pawel.moll@arm.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, Kumar Gala <galak@codeaurora.org>, "open list:OPEN FIRMWARE AND..." <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-pm@vger.kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, srv_heupstream <srv_heupstream@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, Punit Agrawal <punit.agrawal@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1485169525-22163-1-git-send-email-yt.shen@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: dri-devel@lists.freedesktop.org, Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, srv_heupstream@mediatek.com, emil.l.velikov@gmail.com, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 01/13/2017 09:51 AM, Daniel Kurtz wrote:
-> On Fri, Jan 13, 2017 at 1:52 PM, Dawei Chien <dawei.chien@mediatek.com> wrote:
->>
->> From: "dawei.chien@mediatek.com" <dawei.chien@mediatek.com>
->>
->> Add this for supporting thermal calibration by e-fuse data.
->>
->> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
->
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
->
-
-applied, thanks
-
->> ---
->>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 7 +++++++
->>  1 file changed, 7 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> index 12e7027..adfac1e 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
->> @@ -401,6 +401,11 @@
->>                 efuse: efuse@10206000 {
->>                         compatible = "mediatek,mt8173-efuse";
->>                         reg = <0 0x10206000 0 0x1000>;
->> +                       #address-cells = <1>;
->> +                       #size-cells = <1>;
->> +                       thermal_calibration: calib@528 {
->> +                               reg = <0x528 0xc>;
->> +                       };
->>                 };
->>
->>                 apmixedsys: clock-controller@10209000 {
->> @@ -574,6 +579,8 @@
->>                         resets = <&pericfg MT8173_PERI_THERM_SW_RST>;
->>                         mediatek,auxadc = <&auxadc>;
->>                         mediatek,apmixedsys = <&apmixedsys>;
->> +                       nvmem-cells = <&thermal_calibration>;
->> +                       nvmem-cell-names = "calibration-data";
->>                 };
->>
->>                 nor_flash: spi@1100d000 {
->> --
->> 1.9.1
->>
+QWRkIGRlY3JpcHRpb25zIGFib3V0IHN1cHBvcnRlZCBjaGlwcywgaW5jbHVkaW5nIE1UMjcwMSAm
+IE1UODE3MwoKU2lnbmVkLW9mZi1ieTogWVQgU2hlbiA8eXQuc2hlbkBtZWRpYXRlay5jb20+CkFj
+a2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgotLS0KIERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IHwg
+MiArKwogRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
+bWVkaWF0ZWssZHNpLnR4dCAgfCAyICsrCiAyIGZpbGVzIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygr
+KQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKaW5kZXggZGI2ZTc3ZS4u
+YWNmNjFmMSAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rp
+c3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGlzcC50eHQKQEAgLTQw
+LDYgKzQwLDcgQEAgUmVxdWlyZWQgcHJvcGVydGllcyAoYWxsIGZ1bmN0aW9uIGJsb2Nrcyk6CiAJ
+Im1lZGlhdGVrLDxjaGlwPi1kcGkiICAgICAgICAtIERQSSBjb250cm9sbGVyLCBzZWUgbWVkaWF0
+ZWssZHBpLnR4dAogCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC1tdXRleCIgLSBkaXNwbGF5IG11dGV4
+CiAJIm1lZGlhdGVrLDxjaGlwPi1kaXNwLW9kIiAgICAtIG92ZXJkcml2ZQorICB0aGUgc3VwcG9y
+dGVkIGNoaXBzIGFyZSBtdDI3MDEgYW5kIG10ODE3My4KIC0gcmVnOiBQaHlzaWNhbCBiYXNlIGFk
+ZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgZnVuY3Rpb24gYmxvY2sgcmVnaXN0ZXIgc3BhY2UKIC0g
+aW50ZXJydXB0czogVGhlIGludGVycnVwdCBzaWduYWwgZnJvbSB0aGUgZnVuY3Rpb24gYmxvY2sg
+KHJlcXVpcmVkLCBleGNlcHQgZm9yCiAgIG1lcmdlIGFuZCBzcGxpdCBmdW5jdGlvbiBibG9ja3Mp
+LgpAQCAtNTQsNiArNTUsNyBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzIChETUEgZnVuY3Rpb24gYmxv
+Y2tzKToKIAkibWVkaWF0ZWssPGNoaXA+LWRpc3Atb3ZsIgogCSJtZWRpYXRlayw8Y2hpcD4tZGlz
+cC1yZG1hIgogCSJtZWRpYXRlayw8Y2hpcD4tZGlzcC13ZG1hIgorICB0aGUgc3VwcG9ydGVkIGNo
+aXBzIGFyZSBtdDI3MDEgYW5kIG10ODE3My4KIC0gbGFyYjogU2hvdWxkIGNvbnRhaW4gYSBwaGFu
+ZGxlIHBvaW50aW5nIHRvIHRoZSBsb2NhbCBhcmJpdGVyIGRldmljZSBhcyBkZWZpbmVkCiAgIGlu
+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2MvbWVkaWF0ZWsvbWVkaWF0ZWss
+c21pLWxhcmIudHh0CiAtIGlvbW11czogU2hvdWxkIHBvaW50IHRvIHRoZSByZXNwZWN0aXZlIElP
+TU1VIGJsb2NrIHdpdGggbWFzdGVyIHBvcnQgYXMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQgYi9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
+ayxkc2kudHh0CmluZGV4IDJiMTU4NWEuLmZhZGYzMjcgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQK
+KysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
+bWVkaWF0ZWssZHNpLnR4dApAQCAtNyw2ICs3LDcgQEAgY2hhbm5lbCBvdXRwdXQuCiAKIFJlcXVp
+cmVkIHByb3BlcnRpZXM6CiAtIGNvbXBhdGlibGU6ICJtZWRpYXRlayw8Y2hpcD4tZHNpIgorICB0
+aGUgc3VwcG9ydGVkIGNoaXBzIGFyZSBtdDI3MDEgYW5kIG10ODE3My4KIC0gcmVnOiBQaHlzaWNh
+bCBiYXNlIGFkZHJlc3MgYW5kIGxlbmd0aCBvZiB0aGUgY29udHJvbGxlcidzIHJlZ2lzdGVycwog
+LSBpbnRlcnJ1cHRzOiBUaGUgaW50ZXJydXB0IHNpZ25hbCBmcm9tIHRoZSBmdW5jdGlvbiBibG9j
+ay4KIC0gY2xvY2tzOiBkZXZpY2UgY2xvY2tzCkBAIC0yNSw2ICsyNiw3IEBAIFRoZSBNSVBJIFRY
+IGNvbmZpZ3VyYXRpb24gbW9kdWxlIGNvbnRyb2xzIHRoZSBNSVBJIEQtUEhZLgogCiBSZXF1aXJl
+ZCBwcm9wZXJ0aWVzOgogLSBjb21wYXRpYmxlOiAibWVkaWF0ZWssPGNoaXA+LW1pcGktdHgiCisg
+IHRoZSBzdXBwb3J0ZWQgY2hpcHMgYXJlIG10MjcwMSBhbmQgbXQ4MTczLgogLSByZWc6IFBoeXNp
+Y2FsIGJhc2UgYWRkcmVzcyBhbmQgbGVuZ3RoIG9mIHRoZSBjb250cm9sbGVyJ3MgcmVnaXN0ZXJz
+CiAtIGNsb2NrczogUExMIHJlZmVyZW5jZSBjbG9jawogLSBjbG9jay1vdXRwdXQtbmFtZXM6IG5h
+bWUgb2YgdGhlIG91dHB1dCBjbG9jayBsaW5lIHRvIHRoZSBEU0kgZW5jb2RlcgotLSAKMS45LjEK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRyaS1kZXZl
+bCBtYWlsaW5nIGxpc3QKZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xp
+c3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAo=
