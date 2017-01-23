@@ -1,31 +1,38 @@
-From: Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [RESEND PATCH net] macsec: fix validation failed in
- asynchronous operation.
-Date: Mon, 23 Jan 2017 09:39:35 +0800
-Message-ID: <1485135575.5237.15.camel@mtkswgap22>
-References: <1484988127-25860-1-git-send-email-ryder.lee@mediatek.com>
-         <20170122.164450.1158725072101098502.davem@davemloft.net>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH 0/4] leds: add leds-mt6323 support on MT7623 SoC
+Date: Mon, 23 Jan 2017 11:54:41 +0800
+Message-ID: <1485143685-11808-1-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20170122.164450.1158725072101098502.davem@davemloft.net>
-Sender: netdev-owner@vger.kernel.org
-To: David Miller <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, sd@queasysnail.net, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+Return-path: <linux-leds-owner@vger.kernel.org>
+Sender: linux-leds-owner@vger.kernel.org
+To: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-Sorry for forgetting to explain it. 
+From: Sean Wang <sean.wang@mediatek.com>
 
-The original patch was incomplete, but I sent it out by mistake... 
-So please ignore it.
+MT7623 SoC uses MT6323 PMIC as the default power supply
+which has LED function insides. The patchset introduces
+the LED support for MT6323 with on, off and hardware
+dimmed and blinked and it should work on other similar
+SoCs if also using MT6323.
 
-On Sun, 2017-01-22 at 16:44 -0500, David Miller wrote:
-> Why are you resending this?
-> 
-> The original posting on Jan 20th made it to the mailing list and is queued
-> up in patchwork just fine.
-> 
-> Also, regardless of the reason, a "RESEND" patch should always contain an
-> explanation of why it needs to be resent.  So that the maintainer doesn't
-> need to ask questions like I am right now.
+Sean Wang (4):
+  Documentation: devicetree: Add document bindings for leds-mt6323
+  Documentation: devicetree: Add LED subnode binding for MT6323 PMIC
+  leds: Add LED support for MT6323 PMIC
+  mfd: mt6397: Add MT6323 LED support into MT6397 driver
+
+ .../devicetree/bindings/leds/leds-mt6323.txt       |  60 ++++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   4 +
+ drivers/leds/Kconfig                               |   8 +
+ drivers/leds/Makefile                              |   3 +
+ drivers/leds/leds-mt6323.c                         | 390 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |   4 +
+ 6 files changed, 469 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ create mode 100644 drivers/leds/leds-mt6323.c
+
+-- 
+1.9.1
