@@ -1,79 +1,72 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Tue, 24 Jan 2017 11:31:18 +0100
-Message-ID: <20170124113118.304a860c@bbrezillon>
-References: <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
-        <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com>
-        <20170113172825.75d545a3@bbrezillon>
-        <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com>
-        <20170113175628.1793f433@bbrezillon>
-        <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com>
-        <20170114092958.022f2fc8@bbrezillon>
-        <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com>
-        <20170116094032.6f471f11@bbrezillon>
-        <20170117143650.5db87148@free-electrons.com>
-        <20170118222010.ivc6jxpnrumemvdf@rob-hp-laptop>
-        <20170119103829.524ce715@free-electrons.com>
-        <CAL_Jsq+EyHtC7THLCJcwgtVtVESMOdmi3T3bBxgOqJt6BCtCHQ@mail.gmail.com>
-        <20170119091428.598eb987@bbrezillon>
-        <CAL_Jsq+S-FYy4SmjJ3fWzBugw2zCj5TQkkfUA8QVL7SLJW3E1g@mail.gmail.com>
-        <1485052600.19995.10.camel@mhfsdcap03>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 2/3] dts: mediatek: configure some fixed mmc parameters
+Date: Tue, 24 Jan 2017 11:36:48 +0100
+Message-ID: <e4fc97fa-b898-e838-56db-0dc5079a2e95@gmail.com>
+References: <1484821156-20565-1-git-send-email-yong.mao@mediatek.com>
+ <1484821156-20565-3-git-send-email-yong.mao@mediatek.com>
+ <CAPDyKFrHCy7bLb-wDRWpELAB5VxPc4tjyWKd31YufEZC_AQtVA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1485052600.19995.10.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guochun Mao <guochun.mao@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Thomas Petazzoni <thomas.petazzoni@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Richard Weinberger <richard@nod.at>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFrHCy7bLb-wDRWpELAB5VxPc4tjyWKd31YufEZC_AQtVA@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>, Yong Mao <yong.mao@mediatek.com>
+Cc: srv_heupstream <srv_heupstream@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Sun, 22 Jan 2017 10:36:40 +0800
-Guochun Mao <guochun.mao@mediatek.com> wrote:
+Hi Ulf,
 
-> Hi,
-> On Thu, 2017-01-19 at 08:18 -0600, Rob Herring wrote:
-> > On Thu, Jan 19, 2017 at 2:14 AM, Boris Brezillon  
-> > > One last question and I'm done: is something like that acceptable?
-> > >
-> > >         compatible = "<vendor>,<old-soc>","<vendor>,<new-soc>";
-> > >
-> > > This can happen when someone adds support for an unsupported feature
-> > > on a brand new SoC, and then someone else use the same driver for an
-> > > older SoC embedding the same IP but still wants to add a new compatible
-> > > just in case these 2 IPs appear to be slightly different.  
-> > 
-> > Yes, it's old and new compatible strings in this case and it's newest
-> > compatible string first.
-> >   
-> > > Here the order of compat strings is no longer following a clear rule
-> > > like 'most-specific compatible first' or 'newest IP/SoC version first',
-> > > it's completely dependent on the order these IPs were supported in the
-> > > OS (Linux). I'm perfectly fine with that BTW, just want to make sure
-> > > this is authorized.  
-> > 
-> > I guess we should say "newest compatible for IP first" instead. There
-> > are some exceptions where we add fallbacks later on, but that falls
-> > under the most-specific part.
-> > 
-> > It's order that the bindings are defined, not Linux support really,
-> > but in practice those are the same.
-> > 
-> > Rob  
-> 
-> Thanks for all your effort for code reviewing.
-> Our mt2701-nor's hardware is designed base on mt8713-nor,
-> even so, there would be some slight difference.
-> If I don't misunderstand your viewpoint in this discussion,
-> there's no need to drop mt2701-nor compatible.
+On 01/20/2017 08:59 AM, Ulf Hansson wrote:
+> On 19 January 2017 at 11:19, Yong Mao <yong.mao@mediatek.com> wrote:
+>> From: yong mao <yong.mao@mediatek.com>
+>>
+>> configure some fixed mmc parameters
+>>
+>> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+>> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
+>
+> Please change the prefix of the commit message header to "ARM64: dts: mt8173:".
+>
+> Also make sure you send this to the ARM mailing list as well.
+>
+> In general, I think it's better DTS changes go via the ARM SoC tree,
+> but I can pick it up if it's trivial and I get an ack from the SoC
+> maintainer.
+>
 
-No, just update the documentation as suggested by Rob.
-
-> And if not, is there any other suggestion?
-
-Nope, and my apologies for being so insistent on something I obviously
-misunderstood.
+I can take them through my tree, let's wait at Rob's opinion of v4.
 
 Regards,
+Matthias
 
-Boris
+>> ---
+>>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts |    3 +++
+>>  1 file changed, 3 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> index 0ecaad4..403705e 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+>> @@ -134,6 +134,9 @@
+>>         bus-width = <8>;
+>>         max-frequency = <50000000>;
+>>         cap-mmc-highspeed;
+>> +       mtk-hs200-cmd-int-delay=<26>;
+>> +       mtk-hs400-cmd-int-delay=<14>;
+>> +       mtk-hs400-cmd-resp-sel=<0>; /* 0:rising, 1:falling */
+>>         vmmc-supply = <&mt6397_vemc_3v3_reg>;
+>>         vqmmc-supply = <&mt6397_vio18_reg>;
+>>         non-removable;
+>> --
+>> 1.7.9.5
+>>
+>
+> Kind regards
+> Uffe
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>
