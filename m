@@ -1,43 +1,51 @@
 From: Jean Delvare <jdelvare@suse.de>
-Subject: [PATCH] clk: mediatek: Fix MT8135 dependencies
-Date: Tue, 24 Jan 2017 13:09:12 +0100
-Message-ID: <20170124130912.14375a32@endymion>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Tue, 24 Jan 2017 13:58:36 +0100
+Message-ID: <20170124135836.17f32ade@endymion>
+References: <20170109113621.31d384c9@endymion>
+        <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
 Sender: linux-clk-owner@vger.kernel.org
-To: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, James Liao <jamesjj.liao@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The MT8135 is a 32-bit SoC, so only propose it on ARM architecture,
-not ARM64.
+Hallo Andreas,
 
-Signed-off-by: Jean Delvare <jdelvare@suse.de>
-Fixes: 234d511d8c15 ("clk: mediatek: Add hardware dependency")
-Cc: Andreas Färber <afaerber@suse.de>
-Cc: James Liao <jamesjj.liao@mediatek.com>
-Cc: Stephen Boyd <sboyd@codeaurora.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/clk/mediatek/Kconfig |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On Mon, 9 Jan 2017 21:08:50 +0100, Andreas Färber wrote:
+> Another aspect here is that this is a 32-bit SoC but it propagates into
+> the arm64 configs, so maybe (ARCH_MEDIATEK && !ARM64) || COMPILE_TEST?
+> 
+> Same for mt2701 pinctrl.
 
---- linux-4.10-rc4.orig/drivers/clk/mediatek/Kconfig	2017-01-24 12:55:50.192100713 +0100
-+++ linux-4.10-rc4/drivers/clk/mediatek/Kconfig	2017-01-24 12:59:08.703066604 +0100
-@@ -52,9 +52,9 @@ config COMMON_CLK_MT2701_BDPSYS
- 
- config COMMON_CLK_MT8135
- 	bool "Clock driver for Mediatek MT8135"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
--	default ARCH_MEDIATEK
-+	default ARCH_MEDIATEK && ARM
- 	---help---
- 	  This driver supports Mediatek MT8135 clocks.
- 
+I took a look and the pinctrl situation is different:
+
+config PINCTRL_MT2701
+	bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
+	(...)
+	default MACH_MT2701
+
+So the user will not be prompt about it on ARM64 (unless build-testing)
+because MACH_MT2701 isn't set on ARM64. The only issue with this
+construct is that you end up with useless symbols defined in the
+configuration file (they can only be "n".) So I would argue that the
+following is preferred:
+
+config PINCTRL_MT2701
+	bool "Mediatek MT2701 pin control"
+	(...)
+	depends on MACH_MT2701 || COMPILE_TEST
+	default MACH_MT2701
+
+And same for the other 3 PINCTRL_MT* options. Yes, that means the user
+will be asked about the options on Mediatek kernels, but actually I
+believe this is desirable, as advanced users should be allowed to
+disable specific drivers if they know what they are doing. Other users
+can just stick to the default.
 
 -- 
 Jean Delvare
