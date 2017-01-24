@@ -1,100 +1,49 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2] clk: mediatek: Fix MT2701 dependencies
-Date: Wed, 25 Jan 2017 00:45:58 +0100
-Message-ID: <0ae71217-a526-b6fa-4ebe-988eb4697b01@gmail.com>
-References: <20170124130704.14015da3@endymion>
+Subject: Re: [PATCH] clk: mediatek: Fix MT8135 dependencies
+Date: Wed, 25 Jan 2017 00:46:35 +0100
+Message-ID: <dda838f6-ba77-b3f9-7567-3cdfb4a6ccd7@gmail.com>
+References: <20170124130912.14375a32@endymion>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170124130704.14015da3@endymion>
+In-Reply-To: <20170124130912.14375a32@endymion>
 Sender: linux-clk-owner@vger.kernel.org
 To: Jean Delvare <jdelvare@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
+Cc: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 01/24/2017 01:07 PM, Jean Delvare wrote:
-> If I say "no" to "Clock driver for Mediatek MT2701", I don't want to
-> be asked individually about each sub-driver. No means no.
->
-> Additionally, this driver shouldn't be proposed at all on non-mediatek
-> builds, unless build-testing.
+On 01/24/2017 01:09 PM, Jean Delvare wrote:
+> The MT8135 is a 32-bit SoC, so only propose it on ARM architecture,
+> not ARM64.
 >
 > Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
-> Reviewed-by: Andreas Färber <afaerber@suse.de>
-> Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
-> Cc: Shunli Wang <shunli.wang@mediatek.com>
-> Cc: Erin Lo <erin.lo@mediatek.com>
+> Fixes: 234d511d8c15 ("clk: mediatek: Add hardware dependency")
+> Cc: Andreas Färber <afaerber@suse.de>
+> Cc: James Liao <jamesjj.liao@mediatek.com>
 > Cc: Stephen Boyd <sboyd@codeaurora.org>
-> Cc: Michael Turquette <mturquette@baylibre.com>
 > Cc: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
-> Changes since v1:
->  * Restrict to 32-bit ARM.
->
->  drivers/clk/mediatek/Kconfig |   15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
+>  drivers/clk/mediatek/Kconfig |    4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-> --- linux-4.10-rc4.orig/drivers/clk/mediatek/Kconfig	2017-01-16 11:13:07.146675028 +0100
-> +++ linux-4.10-rc4/drivers/clk/mediatek/Kconfig	2017-01-24 12:55:50.192100713 +0100
-> @@ -8,44 +8,45 @@ config COMMON_CLK_MEDIATEK
+> --- linux-4.10-rc4.orig/drivers/clk/mediatek/Kconfig	2017-01-24 12:55:50.192100713 +0100
+> +++ linux-4.10-rc4/drivers/clk/mediatek/Kconfig	2017-01-24 12:59:08.703066604 +0100
+> @@ -52,9 +52,9 @@ config COMMON_CLK_MT2701_BDPSYS
 >
->  config COMMON_CLK_MT2701
->  	bool "Clock driver for Mediatek MT2701"
+>  config COMMON_CLK_MT8135
+>  	bool "Clock driver for Mediatek MT8135"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
 > +	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
 >  	select COMMON_CLK_MEDIATEK
 > -	default ARCH_MEDIATEK
 > +	default ARCH_MEDIATEK && ARM
 >  	---help---
->  	  This driver supports Mediatek MT2701 basic clocks.
->
->  config COMMON_CLK_MT2701_MMSYS
->  	bool "Clock driver for Mediatek MT2701 mmsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 mmsys clocks.
->
->  config COMMON_CLK_MT2701_IMGSYS
->  	bool "Clock driver for Mediatek MT2701 imgsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 imgsys clocks.
->
->  config COMMON_CLK_MT2701_VDECSYS
->  	bool "Clock driver for Mediatek MT2701 vdecsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 vdecsys clocks.
->
->  config COMMON_CLK_MT2701_HIFSYS
->  	bool "Clock driver for Mediatek MT2701 hifsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 hifsys clocks.
->
->  config COMMON_CLK_MT2701_ETHSYS
->  	bool "Clock driver for Mediatek MT2701 ethsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 ethsys clocks.
->
->  config COMMON_CLK_MT2701_BDPSYS
->  	bool "Clock driver for Mediatek MT2701 bdpsys"
-> -	select COMMON_CLK_MT2701
-> +	depends on COMMON_CLK_MT2701
->  	---help---
->  	  This driver supports Mediatek MT2701 bdpsys clocks.
->
+>  	  This driver supports Mediatek MT8135 clocks.
 >
 >
