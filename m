@@ -1,43 +1,76 @@
-From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
-Date: Tue, 24 Jan 2017 14:12:45 +0800
-Message-ID: <1485238365.30572.5.camel@mtksdaap41>
-References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v4 1/3] mmc: dt-bindings: update Mediatek MMC bindings
+Date: Tue, 24 Jan 2017 09:02:32 +0100
+Message-ID: <CAPDyKFqo7fMTp3YPJwgoa4u3iAie2U884VUfTnMQ_js8neMqTQ@mail.gmail.com>
+References: <1484988923-1543-1-git-send-email-yong.mao@mediatek.com>
+ <1484988923-1543-2-git-send-email-yong.mao@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1484988923-1543-2-git-send-email-yong.mao@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Yong Mao <yong.mao@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SGksIEJpYmJ5OgoKT24gVHVlLCAyMDE3LTAxLTI0IGF0IDEzOjEwICswODAwLCBCaWJieSBIc2ll
-aCB3cm90ZToKPiBDdXJyZW50IE1lZGlhdGVrIERSTSBkcml2ZXIgZG9lcyBub3Qgc3VwcG9ydCBp
-bnRlcmxhY2VkIG1vZGUsIGFuZAo+IHdpbGwgaGFuZyBpZiBzdWNoIHJlc29sdXRpb24gaXMgdXNl
-ZDogRmlsdGVyIHRob3NlIHRvIHByZXZlbnQKPiBrZXJuZWwgaGFuZ3MsIHVudGlsIHRoZSBEUk0g
-ZHJpdmVyIGlzIGZpeGVkIHByb3Blcmx5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVo
-IDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+CgpBY2tlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlh
-dGVrLmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwg
-MiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCAwZThjNGQ5Li5lMzM2NzhkIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBAQCAtMTI0NCw2ICsxMjQ0LDggQEAgc3RhdGljIGlu
-dCBtdGtfaGRtaV9jb25uX21vZGVfdmFsaWQoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm4sCj4g
-IAkJCXJldHVybiBNT0RFX0JBRDsKPiAgCX0KPiAgCj4gKwlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1f
-TU9ERV9GTEFHX0lOVEVSTEFDRSkKPiArCQlyZXR1cm4gTU9ERV9OT19JTlRFUkxBQ0U7Cj4gIAlp
-ZiAobW9kZS0+Y2xvY2sgPCAyNzAwMCkKPiAgCQlyZXR1cm4gTU9ERV9DTE9DS19MT1c7Cj4gIAlp
-ZiAobW9kZS0+Y2xvY2sgPiAyOTcwMDApCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
-ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVsCg==
++Rob, devicetree
+
+On 21 January 2017 at 09:55, Yong Mao <yong.mao@mediatek.com> wrote:
+> From: yong mao <yong.mao@mediatek.com>
+>
+> Add description for mediatek,hs200-cmd-int-delay
+> Add description for mediatek,hs400-cmd-int-delay
+> Add description for mediatek,hs400-cmd-resp-sel-rising
+>
+> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+
+You need an ack from a DT maintainer for this. I have added Rob and
+the devicetree list on cc.
+
+Kind regards
+Uffe
+
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.txt |   12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> index 0120c7f..4182ea3 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+> @@ -21,6 +21,15 @@ Optional properties:
+>  - assigned-clocks: PLL of the source clock
+>  - assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
+>  - hs400-ds-delay: HS400 DS delay setting
+> +- mediatek,hs200-cmd-int-delay: HS200 command internal delay setting.
+> +                               This field has total 32 stages.
+> +                               The value is an integer from 0 to 31.
+> +- mediatek,hs400-cmd-int-delay: HS400 command internal delay setting
+> +                               This field has total 32 stages.
+> +                               The value is an integer from 0 to 31.
+> +- mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
+> +                                      If present,HS400 command responses are sampled on rising edges.
+> +                                      If not present,HS400 command responses are sampled on falling edges.
+>
+>  Examples:
+>  mmc0: mmc@11230000 {
+> @@ -38,4 +47,7 @@ mmc0: mmc@11230000 {
+>         assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
+>         assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
+>         hs400-ds-delay = <0x14015>;
+> +       mediatek,hs200-cmd-int-delay = <26>;
+> +       mediatek,hs400-cmd-int-delay = <14>;
+> +       mediatek,hs400-cmd-resp-sel-rising;
+>  };
+> --
+> 1.7.9.5
+>
