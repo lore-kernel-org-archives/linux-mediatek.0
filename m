@@ -1,52 +1,94 @@
-From: Jean Delvare <jdelvare@suse.de>
-Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
-Date: Tue, 24 Jan 2017 10:46:28 +0100
-Message-ID: <20170124104628.40678047@endymion>
-References: <20170109113621.31d384c9@endymion>
-        <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
-        <20170110130300.167d215b@endymion>
-        <1484099788.26901.8.camel@mtksdaap41>
-        <20170111134146.36878e01@endymion>
-        <1484192392.26901.12.camel@mtksdaap41>
-        <20170112094011.0e0a32e6@endymion>
-        <20170120232214.GC20800@codeaurora.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3] arm: dts: mt2701: Add thermal device node.
+Date: Tue, 24 Jan 2017 11:26:06 +0100
+Message-ID: <50d4ca10-cf7a-84d4-1e8c-fdcbbe2f7145@gmail.com>
+References: <1484645049-4477-1-git-send-email-erin.lo@mediatek.com>
+ <1484645049-4477-2-git-send-email-erin.lo@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170120232214.GC20800@codeaurora.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1484645049-4477-2-git-send-email-erin.lo@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Erin Lo <erin.lo@mediatek.com>
+Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Dawei Chien <dawei.chien@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 20 Jan 2017 15:22:14 -0800, Stephen Boyd wrote:
-> On 01/12, Jean Delvare wrote:
-> > Hi James,
-> > 
-> > On Thu, 12 Jan 2017 11:39:52 +0800, James Liao wrote:
-> > > On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
-> > > >  config COMMON_CLK_MT8173
-> > > >  	bool "Clock driver for Mediatek MT8173"
-> > > > -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> > > > +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
-> > > >  	select COMMON_CLK_MEDIATEK
-> > > > -	default ARCH_MEDIATEK
-> > > > +	default y
-> > > >  	---help---
-> > > >  	  This driver supports Mediatek MT8173 clocks.
-> > > 
-> > > Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
-> > > think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
-> > > platform.
-> > 
-> > OK, I'll leave that one alone then, thanks for the information.
-> 
-> Is this patch going another round? I haven't seen anything on the
-> list so far.
 
-Sorry for the delay, I'll send an update later today.
 
--- 
-Jean Delvare
-SUSE L3 Support
+On 01/17/2017 10:24 AM, Erin Lo wrote:
+> From: Dawei Chien <dawei.chien@mediatek.com>
+>
+> Add thermal controller device nodes for MT2701.
+>
+> Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+> Signed-off-by: Erin Lo <erin.lo@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt2701.dtsi | 43 +++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 43 insertions(+)
+>
+
+Applied, thanks
+
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 4cfec57..26a88cb 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -89,6 +89,36 @@
+>  		clock-output-names = "rtc32k";
+>  	};
+>
+> +	thermal-zones {
+> +		cpu_thermal: cpu_thermal {
+> +			polling-delay-passive = <1000>; /* milliseconds */
+> +			polling-delay = <1000>; /* milliseconds */
+> +
+> +			thermal-sensors = <&thermal 0>;
+> +			sustainable-power = <1000>;
+> +
+> +			trips {
+> +				threshold: trip-point@0 {
+> +					temperature = <68000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				target: trip-point@1 {
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				cpu_crit: cpu_crit@0 {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>  	timer {
+>  		compatible = "arm,armv7-timer";
+>  		interrupt-parent = <&gic>;
+> @@ -270,6 +300,19 @@
+>  		status = "disabled";
+>  	};
+>
+> +	thermal: thermal@1100b000 {
+> +		#thermal-sensor-cells = <0>;
+> +		compatible = "mediatek,mt2701-thermal";
+> +		reg = <0 0x1100b000 0 0x1000>;
+> +		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_THERM>, <&pericfg CLK_PERI_AUXADC>;
+> +		clock-names = "therm", "auxadc";
+> +		resets = <&pericfg MT2701_PERI_THERM_SW_RST>;
+> +		reset-names = "therm";
+> +		mediatek,auxadc = <&auxadc>;
+> +		mediatek,apmixedsys = <&apmixedsys>;
+> +	};
+> +
+>  	nandc: nfi@1100d000 {
+>  		compatible = "mediatek,mt2701-nfc";
+>  		reg = <0 0x1100d000 0 0x1000>;
+>
