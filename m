@@ -1,75 +1,100 @@
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 2/6] usb: mtu3: add reference clock
-Date: Wed, 25 Jan 2017 00:23:23 +0100
-Message-ID: <60a7c32a-b7d9-5856-2a61-3670e266bea3@gmail.com>
-References: <1484719707-12107-1-git-send-email-chunfeng.yun@mediatek.com>
- <1484719707-12107-2-git-send-email-chunfeng.yun@mediatek.com>
- <7fc9de99-4bef-ddf2-c5fe-985f8d2348d2@gmail.com>
- <1484878825.10292.58.camel@mhfsdcap03>
+Subject: Re: [PATCH v2] clk: mediatek: Fix MT2701 dependencies
+Date: Wed, 25 Jan 2017 00:45:58 +0100
+Message-ID: <0ae71217-a526-b6fa-4ebe-988eb4697b01@gmail.com>
+References: <20170124130704.14015da3@endymion>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484878825.10292.58.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Mathias Nyman <mathias.nyman@intel.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170124130704.14015da3@endymion>
+Sender: linux-clk-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Erin Lo <erin.lo@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 01/20/2017 03:20 AM, Chunfeng Yun wrote:
-> On Thu, 2017-01-19 at 13:22 +0100, Matthias Brugger wrote:
->>
->> On 18/01/17 07:08, Chunfeng Yun wrote:
->>> usually, the reference clock comes from 26M oscillator directly,
->>> but some SoCs are not, add it for compatibility.
->>>
->>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->>> ---
->>>  drivers/usb/mtu3/mtu3.h      |    1 +
->>>  drivers/usb/mtu3/mtu3_plat.c |   21 +++++++++++++++++++--
->>>  2 files changed, 20 insertions(+), 2 deletions(-)
-> [...]
->>> @@ -154,6 +162,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
->>>  static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
->>>  {
->>>  	clk_disable_unprepare(ssusb->sys_clk);
->>> +	clk_disable_unprepare(ssusb->ref_clk);
->>>  	regulator_disable(ssusb->vusb33);
->>>  	ssusb_phy_power_off(ssusb);
->>>  	ssusb_phy_exit(ssusb);
->>> @@ -216,6 +225,12 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
->>>  		return PTR_ERR(ssusb->sys_clk);
->>>  	}
->>>
->>> +	ssusb->ref_clk = devm_clk_get(dev, "ref_ck");
->>> +	if (IS_ERR(ssusb->ref_clk)) {
->>> +		dev_err(dev, "failed to get ref clock\n");
->>> +		return PTR_ERR(ssusb->ref_clk);
->>> +	}
->>> +
->>
->> That would break older dts bindings, right?
-> Yes, So I send a new patch for the related dts. Maybe it's not a
-> problem, only one dts file need be updated currently.
+On 01/24/2017 01:07 PM, Jean Delvare wrote:
+> If I say "no" to "Clock driver for Mediatek MT2701", I don't want to
+> be asked individually about each sub-driver. No means no.
 >
->> ref_ck must be optional for the code.
-> I tend to make it be optional for the dts, but not for the code.
-> There are some "fixed-clock" which can be treated as dummy ones, and if
-> a clock is really optional, we can use one fixed-clock in dts, and keep
-> the code simple.
-> In fact, the reference clock is essential for usb controller.
+> Additionally, this driver shouldn't be proposed at all on non-mediatek
+> builds, unless build-testing.
+>
+> Signed-off-by: Jean Delvare <jdelvare@suse.de>
+> Fixes: e9862118272a ("clk: mediatek: Add MT2701 clock support")
+> Reviewed-by: Andreas Färber <afaerber@suse.de>
+> Reviewed-by: James Liao <jamesjj.liao@mediatek.com>
+> Cc: Shunli Wang <shunli.wang@mediatek.com>
+> Cc: Erin Lo <erin.lo@mediatek.com>
+> Cc: Stephen Boyd <sboyd@codeaurora.org>
+> Cc: Michael Turquette <mturquette@baylibre.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> ---
+> Changes since v1:
+>  * Restrict to 32-bit ARM.
+>
+>  drivers/clk/mediatek/Kconfig |   15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
+>
 
-Well the thing is that there are devices in the field with an older dtb 
-which would break on a newer kernel. That's why we need to make it work 
-with the old dtb in the code as well.
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Regards,
-Matthias
-
->>
->> Regards,
->> Matthias
+> --- linux-4.10-rc4.orig/drivers/clk/mediatek/Kconfig	2017-01-16 11:13:07.146675028 +0100
+> +++ linux-4.10-rc4/drivers/clk/mediatek/Kconfig	2017-01-24 12:55:50.192100713 +0100
+> @@ -8,44 +8,45 @@ config COMMON_CLK_MEDIATEK
+>
+>  config COMMON_CLK_MT2701
+>  	bool "Clock driver for Mediatek MT2701"
+> +	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+>  	select COMMON_CLK_MEDIATEK
+> -	default ARCH_MEDIATEK
+> +	default ARCH_MEDIATEK && ARM
+>  	---help---
+>  	  This driver supports Mediatek MT2701 basic clocks.
+>
+>  config COMMON_CLK_MT2701_MMSYS
+>  	bool "Clock driver for Mediatek MT2701 mmsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 mmsys clocks.
+>
+>  config COMMON_CLK_MT2701_IMGSYS
+>  	bool "Clock driver for Mediatek MT2701 imgsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 imgsys clocks.
+>
+>  config COMMON_CLK_MT2701_VDECSYS
+>  	bool "Clock driver for Mediatek MT2701 vdecsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 vdecsys clocks.
+>
+>  config COMMON_CLK_MT2701_HIFSYS
+>  	bool "Clock driver for Mediatek MT2701 hifsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 hifsys clocks.
+>
+>  config COMMON_CLK_MT2701_ETHSYS
+>  	bool "Clock driver for Mediatek MT2701 ethsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 ethsys clocks.
+>
+>  config COMMON_CLK_MT2701_BDPSYS
+>  	bool "Clock driver for Mediatek MT2701 bdpsys"
+> -	select COMMON_CLK_MT2701
+> +	depends on COMMON_CLK_MT2701
+>  	---help---
+>  	  This driver supports Mediatek MT2701 bdpsys clocks.
+>
 >
 >
