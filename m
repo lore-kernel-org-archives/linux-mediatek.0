@@ -1,74 +1,43 @@
 From: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v3] drm/mediatek: Support UYVY and YUYV format for
- overlay
-Date: Tue, 24 Jan 2017 13:40:50 +0800
-Message-ID: <1485236450.30572.3.camel@mtksdaap41>
-References: <1485232858-40418-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
+Date: Tue, 24 Jan 2017 14:12:45 +0800
+Message-ID: <1485238365.30572.5.camel@mtksdaap41>
+References: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1485232858-40418-1-git-send-email-bibby.hsieh@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Cc: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
+Cc: linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>, Daniel Vetter <daniel.vetter@ffwll.ch>, Cawa Cheng <cawa.cheng@mediatek.com>, dri-devel@lists.freedesktop.org, Mao Huang <littlecvr@chromium.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Bibby:
-
-On Tue, 2017-01-24 at 12:40 +0800, Bibby Hsieh wrote:
-> MT8173 overlay can support UYVY and YUYV format,
-> we add the format in DRM driver.
-> 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-
-Acked-by: CK Hu <ck.hu@mediatek.com>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 7 +++++++
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 2 ++
->  2 files changed, 9 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index c703102..53f2001 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -40,10 +40,13 @@
->  #define	OVL_RDMA_MEM_GMC	0x40402020
->  
->  #define OVL_CON_BYTE_SWAP	BIT(24)
-> +#define OVL_CON_MTX_YUV_TO_RGB	(6 << 16)
->  #define OVL_CON_CLRFMT_RGB565	(0 << 12)
->  #define OVL_CON_CLRFMT_RGB888	(1 << 12)
->  #define OVL_CON_CLRFMT_RGBA8888	(2 << 12)
->  #define OVL_CON_CLRFMT_ARGB8888	(3 << 12)
-> +#define OVL_CON_CLRFMT_UYVY	(4 << 12)
-> +#define OVL_CON_CLRFMT_YUYV	(5 << 12)
->  #define	OVL_CON_AEN		BIT(8)
->  #define	OVL_CON_ALPHA		0xff
->  
-> @@ -162,6 +165,10 @@ static unsigned int ovl_fmt_convert(unsigned int fmt)
->  	case DRM_FORMAT_XBGR8888:
->  	case DRM_FORMAT_ABGR8888:
->  		return OVL_CON_CLRFMT_RGBA8888 | OVL_CON_BYTE_SWAP;
-> +	case DRM_FORMAT_UYVY:
-> +		return OVL_CON_CLRFMT_UYVY | OVL_CON_MTX_YUV_TO_RGB;
-> +	case DRM_FORMAT_YUYV:
-> +		return OVL_CON_CLRFMT_YUYV | OVL_CON_MTX_YUV_TO_RGB;
->  	}
->  }
->  
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> index c461a23..8c02d1d 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -28,6 +28,8 @@
->  	DRM_FORMAT_XRGB8888,
->  	DRM_FORMAT_ARGB8888,
->  	DRM_FORMAT_RGB565,
-> +	DRM_FORMAT_UYVY,
-> +	DRM_FORMAT_YUYV,
->  };
->  
->  static void mtk_plane_reset(struct drm_plane *plane)
+SGksIEJpYmJ5OgoKT24gVHVlLCAyMDE3LTAxLTI0IGF0IDEzOjEwICswODAwLCBCaWJieSBIc2ll
+aCB3cm90ZToKPiBDdXJyZW50IE1lZGlhdGVrIERSTSBkcml2ZXIgZG9lcyBub3Qgc3VwcG9ydCBp
+bnRlcmxhY2VkIG1vZGUsIGFuZAo+IHdpbGwgaGFuZyBpZiBzdWNoIHJlc29sdXRpb24gaXMgdXNl
+ZDogRmlsdGVyIHRob3NlIHRvIHByZXZlbnQKPiBrZXJuZWwgaGFuZ3MsIHVudGlsIHRoZSBEUk0g
+ZHJpdmVyIGlzIGZpeGVkIHByb3Blcmx5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJpYmJ5IEhzaWVo
+IDxiaWJieS5oc2llaEBtZWRpYXRlay5jb20+CgpBY2tlZC1ieTogQ0sgSHUgPGNrLmh1QG1lZGlh
+dGVrLmNvbT4KCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIHwg
+MiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19oZG1pLmMKPiBpbmRleCAwZThjNGQ5Li5lMzM2NzhkIDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMKPiBAQCAtMTI0NCw2ICsxMjQ0LDggQEAgc3RhdGljIGlu
+dCBtdGtfaGRtaV9jb25uX21vZGVfdmFsaWQoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm4sCj4g
+IAkJCXJldHVybiBNT0RFX0JBRDsKPiAgCX0KPiAgCj4gKwlpZiAobW9kZS0+ZmxhZ3MgJiBEUk1f
+TU9ERV9GTEFHX0lOVEVSTEFDRSkKPiArCQlyZXR1cm4gTU9ERV9OT19JTlRFUkxBQ0U7Cj4gIAlp
+ZiAobW9kZS0+Y2xvY2sgPCAyNzAwMCkKPiAgCQlyZXR1cm4gTU9ERV9DTE9DS19MT1c7Cj4gIAlp
+ZiAobW9kZS0+Y2xvY2sgPiAyOTcwMDApCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZHJpLWRldmVsIG1haWxpbmcgbGlzdApkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpLWRldmVsCg==
