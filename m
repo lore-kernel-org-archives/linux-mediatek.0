@@ -1,76 +1,52 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v4 1/3] mmc: dt-bindings: update Mediatek MMC bindings
-Date: Tue, 24 Jan 2017 09:02:32 +0100
-Message-ID: <CAPDyKFqo7fMTp3YPJwgoa4u3iAie2U884VUfTnMQ_js8neMqTQ@mail.gmail.com>
-References: <1484988923-1543-1-git-send-email-yong.mao@mediatek.com>
- <1484988923-1543-2-git-send-email-yong.mao@mediatek.com>
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Re: [PATCH] clk: mediatek: Fix MT2701 dependencies
+Date: Tue, 24 Jan 2017 10:46:28 +0100
+Message-ID: <20170124104628.40678047@endymion>
+References: <20170109113621.31d384c9@endymion>
+        <c3da261a-eb85-9b30-d5e2-05863d2efad2@suse.de>
+        <20170110130300.167d215b@endymion>
+        <1484099788.26901.8.camel@mtksdaap41>
+        <20170111134146.36878e01@endymion>
+        <1484192392.26901.12.camel@mtksdaap41>
+        <20170112094011.0e0a32e6@endymion>
+        <20170120232214.GC20800@codeaurora.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1484988923-1543-2-git-send-email-yong.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Yong Mao <yong.mao@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Linus Walleij <linus.walleij@linaro.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Eddie Huang <eddie.huang@mediatek.com>, Chaotian Jing <chaotian.jing@mediatek.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20170120232214.GC20800@codeaurora.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: Stephen Boyd <sboyd@codeaurora.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>, linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, Shunli Wang <shunli.wang@mediatek.com>, Michael Turquette <mturquette@baylibre.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-+Rob, devicetree
+On Fri, 20 Jan 2017 15:22:14 -0800, Stephen Boyd wrote:
+> On 01/12, Jean Delvare wrote:
+> > Hi James,
+> > 
+> > On Thu, 12 Jan 2017 11:39:52 +0800, James Liao wrote:
+> > > On Wed, 2017-01-11 at 13:41 +0100, Jean Delvare wrote:
+> > > >  config COMMON_CLK_MT8173
+> > > >  	bool "Clock driver for Mediatek MT8173"
+> > > > -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > > +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+> > > >  	select COMMON_CLK_MEDIATEK
+> > > > -	default ARCH_MEDIATEK
+> > > > +	default y
+> > > >  	---help---
+> > > >  	  This driver supports Mediatek MT8173 clocks.
+> > > 
+> > > Although MT8173 is a 64-bit SoC, but 32-bit kernel can run on it. So I
+> > > think it no need to limit COMMON_CLK_MT8173 only be enabled on ARM64
+> > > platform.
+> > 
+> > OK, I'll leave that one alone then, thanks for the information.
+> 
+> Is this patch going another round? I haven't seen anything on the
+> list so far.
 
-On 21 January 2017 at 09:55, Yong Mao <yong.mao@mediatek.com> wrote:
-> From: yong mao <yong.mao@mediatek.com>
->
-> Add description for mediatek,hs200-cmd-int-delay
-> Add description for mediatek,hs400-cmd-int-delay
-> Add description for mediatek,hs400-cmd-resp-sel-rising
->
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+Sorry for the delay, I'll send an update later today.
 
-You need an ack from a DT maintainer for this. I have added Rob and
-the devicetree list on cc.
-
-Kind regards
-Uffe
-
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.txt |   12 ++++++++++++
->  1 file changed, 12 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> index 0120c7f..4182ea3 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
-> @@ -21,6 +21,15 @@ Optional properties:
->  - assigned-clocks: PLL of the source clock
->  - assigned-clock-parents: parent of source clock, used for HS400 mode to get 400Mhz source clock
->  - hs400-ds-delay: HS400 DS delay setting
-> +- mediatek,hs200-cmd-int-delay: HS200 command internal delay setting.
-> +                               This field has total 32 stages.
-> +                               The value is an integer from 0 to 31.
-> +- mediatek,hs400-cmd-int-delay: HS400 command internal delay setting
-> +                               This field has total 32 stages.
-> +                               The value is an integer from 0 to 31.
-> +- mediatek,hs400-cmd-resp-sel-rising:  HS400 command response sample selection
-> +                                      If present,HS400 command responses are sampled on rising edges.
-> +                                      If not present,HS400 command responses are sampled on falling edges.
->
->  Examples:
->  mmc0: mmc@11230000 {
-> @@ -38,4 +47,7 @@ mmc0: mmc@11230000 {
->         assigned-clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>;
->         assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
->         hs400-ds-delay = <0x14015>;
-> +       mediatek,hs200-cmd-int-delay = <26>;
-> +       mediatek,hs400-cmd-int-delay = <14>;
-> +       mediatek,hs400-cmd-resp-sel-rising;
->  };
-> --
-> 1.7.9.5
->
+-- 
+Jean Delvare
+SUSE L3 Support
