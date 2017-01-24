@@ -1,70 +1,44 @@
-From: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
-Subject: [PATCH v2] clk: mediatek: Fix MT2701 dependencies
-Date: Tue, 24 Jan 2017 13:07:04 +0100
-Message-ID: <20170124130704.14015da3@endymion>
+From: Jean Delvare <jdelvare@suse.de>
+Subject: [PATCH] clk: mediatek: Fix MT8135 dependencies
+Date: Tue, 24 Jan 2017 13:09:12 +0100
+Message-ID: <20170124130912.14375a32@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>, Stephen Boyd <sboyd@codeaurora.org>, Matthias Brugger <matthias.bgg@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-SWYgSSBzYXkgIm5vIiB0byAiQ2xvY2sgZHJpdmVyIGZvciBNZWRpYXRlayBNVDI3MDEiLCBJIGRv
-bid0IHdhbnQgdG8KYmUgYXNrZWQgaW5kaXZpZHVhbGx5IGFib3V0IGVhY2ggc3ViLWRyaXZlci4g
-Tm8gbWVhbnMgbm8uCgpBZGRpdGlvbmFsbHksIHRoaXMgZHJpdmVyIHNob3VsZG4ndCBiZSBwcm9w
-b3NlZCBhdCBhbGwgb24gbm9uLW1lZGlhdGVrCmJ1aWxkcywgdW5sZXNzIGJ1aWxkLXRlc3Rpbmcu
-CgpTaWduZWQtb2ZmLWJ5OiBKZWFuIERlbHZhcmUgPGpkZWx2YXJlQHN1c2UuZGU+CkZpeGVzOiBl
-OTg2MjExODI3MmEgKCJjbGs6IG1lZGlhdGVrOiBBZGQgTVQyNzAxIGNsb2NrIHN1cHBvcnQiKQpS
-ZXZpZXdlZC1ieTogQW5kcmVhcyBGw6RyYmVyIDxhZmFlcmJlckBzdXNlLmRlPgpSZXZpZXdlZC1i
-eTogSmFtZXMgTGlhbyA8amFtZXNqai5saWFvQG1lZGlhdGVrLmNvbT4KQ2M6IFNodW5saSBXYW5n
-IDxzaHVubGkud2FuZ0BtZWRpYXRlay5jb20+CkNjOiBFcmluIExvIDxlcmluLmxvQG1lZGlhdGVr
-LmNvbT4KQ2M6IFN0ZXBoZW4gQm95ZCA8c2JveWRAY29kZWF1cm9yYS5vcmc+CkNjOiBNaWNoYWVs
-IFR1cnF1ZXR0ZSA8bXR1cnF1ZXR0ZUBiYXlsaWJyZS5jb20+CkNjOiBNYXR0aGlhcyBCcnVnZ2Vy
-IDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgotLS0KQ2hhbmdlcyBzaW5jZSB2MToKICogUmVzdHJp
-Y3QgdG8gMzItYml0IEFSTS4KCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9LY29uZmlnIHwgICAxNSAr
-KysrKysrKy0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDcgZGVsZXRp
-b25zKC0pCgotLS0gbGludXgtNC4xMC1yYzQub3JpZy9kcml2ZXJzL2Nsay9tZWRpYXRlay9LY29u
-ZmlnCTIwMTctMDEtMTYgMTE6MTM6MDcuMTQ2Njc1MDI4ICswMTAwCisrKyBsaW51eC00LjEwLXJj
-NC9kcml2ZXJzL2Nsay9tZWRpYXRlay9LY29uZmlnCTIwMTctMDEtMjQgMTI6NTU6NTAuMTkyMTAw
-NzEzICswMTAwCkBAIC04LDQ0ICs4LDQ1IEBAIGNvbmZpZyBDT01NT05fQ0xLX01FRElBVEVLCiAK
-IGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMQogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0
-ZWsgTVQyNzAxIgorCWRlcGVuZHMgb24gKEFSQ0hfTUVESUFURUsgJiYgQVJNKSB8fCBDT01QSUxF
-X1RFU1QKIAlzZWxlY3QgQ09NTU9OX0NMS19NRURJQVRFSwotCWRlZmF1bHQgQVJDSF9NRURJQVRF
-SworCWRlZmF1bHQgQVJDSF9NRURJQVRFSyAmJiBBUk0KIAktLS1oZWxwLS0tCiAJICBUaGlzIGRy
-aXZlciBzdXBwb3J0cyBNZWRpYXRlayBNVDI3MDEgYmFzaWMgY2xvY2tzLgogCiBjb25maWcgQ09N
-TU9OX0NMS19NVDI3MDFfTU1TWVMKIAlib29sICJDbG9jayBkcml2ZXIgZm9yIE1lZGlhdGVrIE1U
-MjcwMSBtbXN5cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1P
-Tl9DTEtfTVQyNzAxCiAJLS0taGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0
-ZWsgTVQyNzAxIG1tc3lzIGNsb2Nrcy4KIAogY29uZmlnIENPTU1PTl9DTEtfTVQyNzAxX0lNR1NZ
-UwogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0ZWsgTVQyNzAxIGltZ3N5cyIKLQlzZWxl
-Y3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQyNzAxCiAJLS0t
-aGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAxIGltZ3N5cyBj
-bG9ja3MuCiAKIGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMV9WREVDU1lTCiAJYm9vbCAiQ2xvY2sg
-ZHJpdmVyIGZvciBNZWRpYXRlayBNVDI3MDEgdmRlY3N5cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19N
-VDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQyNzAxCiAJLS0taGVscC0tLQogCSAgVGhp
-cyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAxIHZkZWNzeXMgY2xvY2tzLgogCiBjb25m
-aWcgQ09NTU9OX0NMS19NVDI3MDFfSElGU1lTCiAJYm9vbCAiQ2xvY2sgZHJpdmVyIGZvciBNZWRp
-YXRlayBNVDI3MDEgaGlmc3lzIgotCXNlbGVjdCBDT01NT05fQ0xLX01UMjcwMQorCWRlcGVuZHMg
-b24gQ09NTU9OX0NMS19NVDI3MDEKIAktLS1oZWxwLS0tCiAJICBUaGlzIGRyaXZlciBzdXBwb3J0
-cyBNZWRpYXRlayBNVDI3MDEgaGlmc3lzIGNsb2Nrcy4KIAogY29uZmlnIENPTU1PTl9DTEtfTVQy
-NzAxX0VUSFNZUwogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0ZWsgTVQyNzAxIGV0aHN5
-cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQy
-NzAxCiAJLS0taGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAx
-IGV0aHN5cyBjbG9ja3MuCiAKIGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMV9CRFBTWVMKIAlib29s
-ICJDbG9jayBkcml2ZXIgZm9yIE1lZGlhdGVrIE1UMjcwMSBiZHBzeXMiCi0Jc2VsZWN0IENPTU1P
-Tl9DTEtfTVQyNzAxCisJZGVwZW5kcyBvbiBDT01NT05fQ0xLX01UMjcwMQogCS0tLWhlbHAtLS0K
-IAkgIFRoaXMgZHJpdmVyIHN1cHBvcnRzIE1lZGlhdGVrIE1UMjcwMSBiZHBzeXMgY2xvY2tzLgog
-CgoKLS0gCkplYW4gRGVsdmFyZQpTVVNFIEwzIFN1cHBvcnQKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+The MT8135 is a 32-bit SoC, so only propose it on ARM architecture,
+not ARM64.
+
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Fixes: 234d511d8c15 ("clk: mediatek: Add hardware dependency")
+Cc: Andreas Färber <afaerber@suse.de>
+Cc: James Liao <jamesjj.liao@mediatek.com>
+Cc: Stephen Boyd <sboyd@codeaurora.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+---
+ drivers/clk/mediatek/Kconfig |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- linux-4.10-rc4.orig/drivers/clk/mediatek/Kconfig	2017-01-24 12:55:50.192100713 +0100
++++ linux-4.10-rc4/drivers/clk/mediatek/Kconfig	2017-01-24 12:59:08.703066604 +0100
+@@ -52,9 +52,9 @@ config COMMON_CLK_MT2701_BDPSYS
+ 
+ config COMMON_CLK_MT8135
+ 	bool "Clock driver for Mediatek MT8135"
+-	depends on ARCH_MEDIATEK || COMPILE_TEST
++	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+ 	select COMMON_CLK_MEDIATEK
+-	default ARCH_MEDIATEK
++	default ARCH_MEDIATEK && ARM
+ 	---help---
+ 	  This driver supports Mediatek MT8135 clocks.
+ 
+
+-- 
+Jean Delvare
+SUSE L3 Support
