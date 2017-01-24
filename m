@@ -1,49 +1,67 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] spi: mediatek: Manually set dma_ops for spi_master device
-Date: Tue, 24 Jan 2017 15:48:10 +0000
-Message-ID: <20170124154810.ikbxaptvtg5wamzj@sirena.org.uk>
-References: <20170124132519.13271-1-djkurtz@chromium.org>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 08/16] arm: dts: add spi nodes to the mt7623.dtsi file
+Date: Tue, 24 Jan 2017 23:39:21 +0100
+Message-ID: <69d73342-d710-5f6d-567b-8e75a84fdb18@gmail.com>
+References: <1485170975-51813-1-git-send-email-john@phrozen.org>
+ <1485170975-51813-9-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="mcsshc5kysm7bzpr"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20170124132519.13271-1-djkurtz@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Leilk Liu <leilk.liu@mediatek.com>, dtor@chromium.org, groeck@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset=windows-1252; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1485170975-51813-9-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
 
---mcsshc5kysm7bzpr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-On Tue, Jan 24, 2017 at 09:25:19PM +0800, Daniel Kurtz wrote:
+On 01/23/2017 12:29 PM, John Crispin wrote:
+> Add SPI nodes to the mt7623.dtsi file.
+>
+> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi |   12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 8ac4569..c8f38e1 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -15,6 +15,7 @@
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/clock/mt2701-clk.h>
+> +#include <dt-bindings/phy/phy.h>
 
-> The master_spi device is not a platform, rather it is created
-> in spi_alloc_device(), and its dma_ops are never set.
+Why do you need this include here?
 
-Which is good because it's not a physical device and doesn't do DMA.
+Regards,
+Matthias
 
-> Alternatively, perhaps we should be using master->dev.parent to dma map bufs
-> in the "no dma channel case".
-
-Yes, exactly.
-
---mcsshc5kysm7bzpr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAliHdzkACgkQJNaLcl1U
-h9DYFgf/RAP7LNat/ZiStAf6zAsauNnrsFdxwXxpji/rbrLtVViNwU+KkaS9Mwsd
-7gZzX8aY8aQXLvd7R2AucRgwXck+s7AnHB6s5o+ZP2Enxk7s1KxyjxV3f1O5dQBq
-FP74m+3QwtavhxSt7+9K6DytbnCOLRV4+w1KX3NEKvwyqZMIujhFpZor2oX/yhwU
-n1BsXSVrVpIdpBDhq0s/sWBx3YPuE+ukOKQLQmp8A61rW73lloVMpD9ePh5MrhFk
-biBI1ca1YGZMcaESZFsfywNLo9NxiFpeXQ10nrP6aqnHWa/sO4SqoQDM9/f7k2b1
-xDGgo5WvKyVmeHLTbnCwGZ9X4sxBpQ==
-=miIC
------END PGP SIGNATURE-----
-
---mcsshc5kysm7bzpr--
+>  #include <dt-bindings/pinctrl/mt7623-pinfunc.h>
+>  #include <dt-bindings/power/mt2701-power.h>
+>  #include <dt-bindings/reset/mt2701-resets.h>
+> @@ -281,6 +282,17 @@
+>  		status = "disabled";
+>  	};
+>
+> +	spi: spi@1100a000 {
+> +		compatible = "mediatek,mt7623-spi",
+> +			     "mediatek,mt6589-spi";
+> +		reg = <0 0x1100a000 0 0x1000>;
+> +		interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
+> +		clocks = <&pericfg CLK_PERI_SPI0>;
+> +		clock-names = "main";
+> +
+> +		status = "disabled";
+> +	};
+> +
+>  	hifsys: syscon@1a000000 {
+>  		compatible = "mediatek,mt7623-hifsys",
+>  			     "mediatek,mt2701-hifsys",
+>
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
