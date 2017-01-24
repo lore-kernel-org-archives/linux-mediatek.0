@@ -1,55 +1,36 @@
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Subject: [PATCH v3] drm/mediatek: Support UYVY and YUYV format for overlay
-Date: Tue, 24 Jan 2017 12:40:58 +0800
-Message-ID: <1485232858-40418-1-git-send-email-bibby.hsieh@mediatek.com>
+Subject: [PATCH] drm/mediatek: hdmi: Filter interlaced resolutions
+Date: Tue, 24 Jan 2017 13:10:04 +0800
+Message-ID: <1485234604-19889-1-git-send-email-bibby.hsieh@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Cawa Cheng <cawa.cheng@mediatek.com>, Mao Huang <littlecvr@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Sascha Hauer <kernel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Yingjoe Chen <yingjoe.chen@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, YT Shen <yt.shen@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>, CK Hu <ck.hu@mediatek.com>, Mao Huang <littlecvr@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-TVQ4MTczIG92ZXJsYXkgY2FuIHN1cHBvcnQgVVlWWSBhbmQgWVVZViBmb3JtYXQsCndlIGFkZCB0
-aGUgZm9ybWF0IGluIERSTSBkcml2ZXIuCgpTaWduZWQtb2ZmLWJ5OiBCaWJieSBIc2llaCA8Ymli
-YnkuaHNpZWhAbWVkaWF0ZWsuY29tPgpSZXZpZXdlZC1ieTogRGFuaWVsIEt1cnR6IDxkamt1cnR6
-QGNocm9taXVtLm9yZz4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3Zs
-LmMgIHwgNyArKysrKysrCiBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5j
-IHwgMiArKwogMiBmaWxlcyBjaGFuZ2VkLCA5IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMKaW5kZXggYzcwMzEwMi4uNTNmMjAwMSAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX292bC5jCisrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9vdmwuYwpAQCAtNDAsMTAgKzQwLDEzIEBACiAjZGVm
-aW5lCU9WTF9SRE1BX01FTV9HTUMJMHg0MDQwMjAyMAogCiAjZGVmaW5lIE9WTF9DT05fQllURV9T
-V0FQCUJJVCgyNCkKKyNkZWZpbmUgT1ZMX0NPTl9NVFhfWVVWX1RPX1JHQgkoNiA8PCAxNikKICNk
-ZWZpbmUgT1ZMX0NPTl9DTFJGTVRfUkdCNTY1CSgwIDw8IDEyKQogI2RlZmluZSBPVkxfQ09OX0NM
-UkZNVF9SR0I4ODgJKDEgPDwgMTIpCiAjZGVmaW5lIE9WTF9DT05fQ0xSRk1UX1JHQkE4ODg4CSgy
-IDw8IDEyKQogI2RlZmluZSBPVkxfQ09OX0NMUkZNVF9BUkdCODg4OAkoMyA8PCAxMikKKyNkZWZp
-bmUgT1ZMX0NPTl9DTFJGTVRfVVlWWQkoNCA8PCAxMikKKyNkZWZpbmUgT1ZMX0NPTl9DTFJGTVRf
-WVVZVgkoNSA8PCAxMikKICNkZWZpbmUJT1ZMX0NPTl9BRU4JCUJJVCg4KQogI2RlZmluZQlPVkxf
-Q09OX0FMUEhBCQkweGZmCiAKQEAgLTE2Miw2ICsxNjUsMTAgQEAgc3RhdGljIHVuc2lnbmVkIGlu
-dCBvdmxfZm10X2NvbnZlcnQodW5zaWduZWQgaW50IGZtdCkKIAljYXNlIERSTV9GT1JNQVRfWEJH
-Ujg4ODg6CiAJY2FzZSBEUk1fRk9STUFUX0FCR1I4ODg4OgogCQlyZXR1cm4gT1ZMX0NPTl9DTFJG
-TVRfUkdCQTg4ODggfCBPVkxfQ09OX0JZVEVfU1dBUDsKKwljYXNlIERSTV9GT1JNQVRfVVlWWToK
-KwkJcmV0dXJuIE9WTF9DT05fQ0xSRk1UX1VZVlkgfCBPVkxfQ09OX01UWF9ZVVZfVE9fUkdCOwor
-CWNhc2UgRFJNX0ZPUk1BVF9ZVVlWOgorCQlyZXR1cm4gT1ZMX0NPTl9DTFJGTVRfWVVZViB8IE9W
-TF9DT05fTVRYX1lVVl9UT19SR0I7CiAJfQogfQogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kcm1fcGxhbmUuYwppbmRleCBjNDYxYTIzLi44YzAyZDFkIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMKQEAgLTI4LDYgKzI4LDggQEAKIAlEUk1fRk9STUFUX1hS
-R0I4ODg4LAogCURSTV9GT1JNQVRfQVJHQjg4ODgsCiAJRFJNX0ZPUk1BVF9SR0I1NjUsCisJRFJN
-X0ZPUk1BVF9VWVZZLAorCURSTV9GT1JNQVRfWVVZViwKIH07CiAKIHN0YXRpYyB2b2lkIG10a19w
-bGFuZV9yZXNldChzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSkKLS0gCjEuOS4xCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkcmktZGV2ZWwgbWFpbGluZyBs
-aXN0CmRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKaHR0cHM6Ly9saXN0cy5mcmVlZGVz
-a3RvcC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcmktZGV2ZWwK
+Current Mediatek DRM driver does not support interlaced mode, and
+will hang if such resolution is used: Filter those to prevent
+kernel hangs, until the DRM driver is fixed properly.
+
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index 0e8c4d9..e33678d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1244,6 +1244,8 @@ static int mtk_hdmi_conn_mode_valid(struct drm_connector *conn,
+ 			return MODE_BAD;
+ 	}
+ 
++	if (mode->flags & DRM_MODE_FLAG_INTERLACE)
++		return MODE_NO_INTERLACE;
+ 	if (mode->clock < 27000)
+ 		return MODE_CLOCK_LOW;
+ 	if (mode->clock > 297000)
+-- 
+1.9.1
