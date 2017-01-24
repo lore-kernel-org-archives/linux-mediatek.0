@@ -1,98 +1,70 @@
-From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH v1 2/2] arm: dts: mt2701: add nor flash node
-Date: Tue, 24 Jan 2017 11:38:41 +0100
-Message-ID: <3b86fcfd-9f8a-b324-e164-20582a0b2e40@phrozen.org>
-References: <d7b866ad-5b2f-62d3-3aa3-6fa42803d625@gmail.com>
- <b850b751-1d8d-0053-cf1f-d5314542e5c3@gmail.com>
- <20170113172825.75d545a3@bbrezillon>
- <86c997be-f500-eaa1-3ba5-d21cff6223b7@gmail.com>
- <20170113175628.1793f433@bbrezillon>
- <0fafcd8d-cf99-de6b-728f-5e3637810b68@gmail.com>
- <20170114092958.022f2fc8@bbrezillon>
- <e7fa1542-f0e2-0e45-23b3-25d6491ae40d@gmail.com>
- <20170116094032.6f471f11@bbrezillon>
- <20170117143650.5db87148@free-electrons.com>
- <20170118222010.ivc6jxpnrumemvdf@rob-hp-laptop>
- <20170119103829.524ce715@free-electrons.com>
- <CAL_Jsq+EyHtC7THLCJcwgtVtVESMOdmi3T3bBxgOqJt6BCtCHQ@mail.gmail.com>
- <20170119091428.598eb987@bbrezillon>
- <CAL_Jsq+S-FYy4SmjJ3fWzBugw2zCj5TQkkfUA8QVL7SLJW3E1g@mail.gmail.com>
- <1485052600.19995.10.camel@mhfsdcap03> <20170124113118.304a860c@bbrezillon>
+From: Jean Delvare <jdelvare-l3A5Bk7waGM@public.gmane.org>
+Subject: [PATCH v2] clk: mediatek: Fix MT2701 dependencies
+Date: Tue, 24 Jan 2017 13:07:04 +0100
+Message-ID: <20170124130704.14015da3@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170124113118.304a860c@bbrezillon>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber-l3A5Bk7waGM@public.gmane.org>, Shunli Wang <shunli.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-
-
-On 24/01/2017 11:31, Boris Brezillon wrote:
-> On Sun, 22 Jan 2017 10:36:40 +0800
-> Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
-> 
->> Hi,
->> On Thu, 2017-01-19 at 08:18 -0600, Rob Herring wrote:
->>> On Thu, Jan 19, 2017 at 2:14 AM, Boris Brezillon  
->>>> One last question and I'm done: is something like that acceptable?
->>>>
->>>>         compatible = "<vendor>,<old-soc>","<vendor>,<new-soc>";
->>>>
->>>> This can happen when someone adds support for an unsupported feature
->>>> on a brand new SoC, and then someone else use the same driver for an
->>>> older SoC embedding the same IP but still wants to add a new compatible
->>>> just in case these 2 IPs appear to be slightly different.  
->>>
->>> Yes, it's old and new compatible strings in this case and it's newest
->>> compatible string first.
->>>   
->>>> Here the order of compat strings is no longer following a clear rule
->>>> like 'most-specific compatible first' or 'newest IP/SoC version first',
->>>> it's completely dependent on the order these IPs were supported in the
->>>> OS (Linux). I'm perfectly fine with that BTW, just want to make sure
->>>> this is authorized.  
->>>
->>> I guess we should say "newest compatible for IP first" instead. There
->>> are some exceptions where we add fallbacks later on, but that falls
->>> under the most-specific part.
->>>
->>> It's order that the bindings are defined, not Linux support really,
->>> but in practice those are the same.
->>>
->>> Rob  
->>
->> Thanks for all your effort for code reviewing.
->> Our mt2701-nor's hardware is designed base on mt8713-nor,
->> even so, there would be some slight difference.
->> If I don't misunderstand your viewpoint in this discussion,
->> there's no need to drop mt2701-nor compatible.
-> 
-> No, just update the documentation as suggested by Rob.
-> 
->> And if not, is there any other suggestion?
-> 
-> Nope, and my apologies for being so insistent on something I obviously
-> misunderstood.
-> 
-> Regards,
-> 
-> Boris
-
-
-Hi,
-
-could you please add the mt7623 compat string to the documentation
-aswell while at it ? mt7623/mt2701 are essentially the same and it'll
-safe us time and effort and not cause merge order conflicts. otherwise i
-would need to wait till the mt2701 patch is merged before i can send the
-mt7623 one
-
-Thanks !
-	John
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+SWYgSSBzYXkgIm5vIiB0byAiQ2xvY2sgZHJpdmVyIGZvciBNZWRpYXRlayBNVDI3MDEiLCBJIGRv
+bid0IHdhbnQgdG8KYmUgYXNrZWQgaW5kaXZpZHVhbGx5IGFib3V0IGVhY2ggc3ViLWRyaXZlci4g
+Tm8gbWVhbnMgbm8uCgpBZGRpdGlvbmFsbHksIHRoaXMgZHJpdmVyIHNob3VsZG4ndCBiZSBwcm9w
+b3NlZCBhdCBhbGwgb24gbm9uLW1lZGlhdGVrCmJ1aWxkcywgdW5sZXNzIGJ1aWxkLXRlc3Rpbmcu
+CgpTaWduZWQtb2ZmLWJ5OiBKZWFuIERlbHZhcmUgPGpkZWx2YXJlQHN1c2UuZGU+CkZpeGVzOiBl
+OTg2MjExODI3MmEgKCJjbGs6IG1lZGlhdGVrOiBBZGQgTVQyNzAxIGNsb2NrIHN1cHBvcnQiKQpS
+ZXZpZXdlZC1ieTogQW5kcmVhcyBGw6RyYmVyIDxhZmFlcmJlckBzdXNlLmRlPgpSZXZpZXdlZC1i
+eTogSmFtZXMgTGlhbyA8amFtZXNqai5saWFvQG1lZGlhdGVrLmNvbT4KQ2M6IFNodW5saSBXYW5n
+IDxzaHVubGkud2FuZ0BtZWRpYXRlay5jb20+CkNjOiBFcmluIExvIDxlcmluLmxvQG1lZGlhdGVr
+LmNvbT4KQ2M6IFN0ZXBoZW4gQm95ZCA8c2JveWRAY29kZWF1cm9yYS5vcmc+CkNjOiBNaWNoYWVs
+IFR1cnF1ZXR0ZSA8bXR1cnF1ZXR0ZUBiYXlsaWJyZS5jb20+CkNjOiBNYXR0aGlhcyBCcnVnZ2Vy
+IDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPgotLS0KQ2hhbmdlcyBzaW5jZSB2MToKICogUmVzdHJp
+Y3QgdG8gMzItYml0IEFSTS4KCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9LY29uZmlnIHwgICAxNSAr
+KysrKysrKy0tLS0tLS0KIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDcgZGVsZXRp
+b25zKC0pCgotLS0gbGludXgtNC4xMC1yYzQub3JpZy9kcml2ZXJzL2Nsay9tZWRpYXRlay9LY29u
+ZmlnCTIwMTctMDEtMTYgMTE6MTM6MDcuMTQ2Njc1MDI4ICswMTAwCisrKyBsaW51eC00LjEwLXJj
+NC9kcml2ZXJzL2Nsay9tZWRpYXRlay9LY29uZmlnCTIwMTctMDEtMjQgMTI6NTU6NTAuMTkyMTAw
+NzEzICswMTAwCkBAIC04LDQ0ICs4LDQ1IEBAIGNvbmZpZyBDT01NT05fQ0xLX01FRElBVEVLCiAK
+IGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMQogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0
+ZWsgTVQyNzAxIgorCWRlcGVuZHMgb24gKEFSQ0hfTUVESUFURUsgJiYgQVJNKSB8fCBDT01QSUxF
+X1RFU1QKIAlzZWxlY3QgQ09NTU9OX0NMS19NRURJQVRFSwotCWRlZmF1bHQgQVJDSF9NRURJQVRF
+SworCWRlZmF1bHQgQVJDSF9NRURJQVRFSyAmJiBBUk0KIAktLS1oZWxwLS0tCiAJICBUaGlzIGRy
+aXZlciBzdXBwb3J0cyBNZWRpYXRlayBNVDI3MDEgYmFzaWMgY2xvY2tzLgogCiBjb25maWcgQ09N
+TU9OX0NMS19NVDI3MDFfTU1TWVMKIAlib29sICJDbG9jayBkcml2ZXIgZm9yIE1lZGlhdGVrIE1U
+MjcwMSBtbXN5cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1P
+Tl9DTEtfTVQyNzAxCiAJLS0taGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0
+ZWsgTVQyNzAxIG1tc3lzIGNsb2Nrcy4KIAogY29uZmlnIENPTU1PTl9DTEtfTVQyNzAxX0lNR1NZ
+UwogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0ZWsgTVQyNzAxIGltZ3N5cyIKLQlzZWxl
+Y3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQyNzAxCiAJLS0t
+aGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAxIGltZ3N5cyBj
+bG9ja3MuCiAKIGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMV9WREVDU1lTCiAJYm9vbCAiQ2xvY2sg
+ZHJpdmVyIGZvciBNZWRpYXRlayBNVDI3MDEgdmRlY3N5cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19N
+VDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQyNzAxCiAJLS0taGVscC0tLQogCSAgVGhp
+cyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAxIHZkZWNzeXMgY2xvY2tzLgogCiBjb25m
+aWcgQ09NTU9OX0NMS19NVDI3MDFfSElGU1lTCiAJYm9vbCAiQ2xvY2sgZHJpdmVyIGZvciBNZWRp
+YXRlayBNVDI3MDEgaGlmc3lzIgotCXNlbGVjdCBDT01NT05fQ0xLX01UMjcwMQorCWRlcGVuZHMg
+b24gQ09NTU9OX0NMS19NVDI3MDEKIAktLS1oZWxwLS0tCiAJICBUaGlzIGRyaXZlciBzdXBwb3J0
+cyBNZWRpYXRlayBNVDI3MDEgaGlmc3lzIGNsb2Nrcy4KIAogY29uZmlnIENPTU1PTl9DTEtfTVQy
+NzAxX0VUSFNZUwogCWJvb2wgIkNsb2NrIGRyaXZlciBmb3IgTWVkaWF0ZWsgTVQyNzAxIGV0aHN5
+cyIKLQlzZWxlY3QgQ09NTU9OX0NMS19NVDI3MDEKKwlkZXBlbmRzIG9uIENPTU1PTl9DTEtfTVQy
+NzAxCiAJLS0taGVscC0tLQogCSAgVGhpcyBkcml2ZXIgc3VwcG9ydHMgTWVkaWF0ZWsgTVQyNzAx
+IGV0aHN5cyBjbG9ja3MuCiAKIGNvbmZpZyBDT01NT05fQ0xLX01UMjcwMV9CRFBTWVMKIAlib29s
+ICJDbG9jayBkcml2ZXIgZm9yIE1lZGlhdGVrIE1UMjcwMSBiZHBzeXMiCi0Jc2VsZWN0IENPTU1P
+Tl9DTEtfTVQyNzAxCisJZGVwZW5kcyBvbiBDT01NT05fQ0xLX01UMjcwMQogCS0tLWhlbHAtLS0K
+IAkgIFRoaXMgZHJpdmVyIHN1cHBvcnRzIE1lZGlhdGVrIE1UMjcwMSBiZHBzeXMgY2xvY2tzLgog
+CgoKLS0gCkplYW4gRGVsdmFyZQpTVVNFIEwzIFN1cHBvcnQKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
