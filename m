@@ -1,46 +1,86 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] spi: mediatek: Manually set dma_ops for spi_master device
-Date: Wed, 25 Jan 2017 12:34:29 +0000
-Message-ID: <20170125123429.dj4zln2kukuw3omx@sirena.org.uk>
-References: <20170124132519.13271-1-djkurtz@chromium.org>
- <b1180920-8ead-40e8-6155-8510226e719b@arm.com>
- <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [GIT PULL] arm: mediatek: dts changes for v4.11
+Date: Wed, 25 Jan 2017 14:46:56 +0100
+Message-ID: <82e017a8-ade7-b16f-740c-6c106f2f8049@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="ifkw4txuyvsbvaok"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Leilk Liu <leilk.liu@mediatek.com>, open list <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, Dmitry Torokhov <dtor@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, zhiyong.tao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, honghui.zhang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, xiaolei li <xiaolei.li-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Arnd, hi Olof,
 
---ifkw4txuyvsbvaok
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Please merge the following changes for 32-bit dts files.
 
-On Wed, Jan 25, 2017 at 06:24:12PM +0800, Daniel Kurtz wrote:
+Thanks,
+Matthias
 
-> I'm in a bit over my head here, any suggestions on how to fix this?
+---
 
-As both Robin and I said the driver should be using the platform device
-which physically exists rather than the virtual master device.
+The following changes since commit 7ce7d89f48834cefece7804d38fc5d85382edf77:
 
---ifkw4txuyvsbvaok
-Content-Type: application/pgp-signature; name="signature.asc"
+   Linux 4.10-rc1 (2016-12-25 16:13:08 -0800)
 
------BEGIN PGP SIGNATURE-----
+are available in the git repository at:
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAliIm1QACgkQJNaLcl1U
-h9BAqQf/ZQzDC6EehMwdLhUewjMWTxLSj5pYb4bHPz1GYfvP42MPZKCcAKcLJ6+2
-ahGaFpeeaiYUqcb6ch3bHZ2CdJdEC6BJbFyF6Je862zXr3dKwLUV2ZTLXv9Hw9Fr
-GvS3G5DW6TsM/swiOR6KzIz3DgtNtCrPHkcOG3doOmZLjyL/by8Cadmu3/h1VzjP
-Cv5rGKnB8e/a6DFBU7HXzjRz7r6JNoTdSMslKrNiX2ybWRnnc+LRIjLgW2VjpGWW
-pm5awGUS/Id17fQzbXhrZIKmOC/cG0nHBVDun6FBv0DCibAjZ2kIfaQU2mT0H84Z
-pwtRFG5mmvdIezvnfL48FbNF5nUSHQ==
-=APxn
------END PGP SIGNATURE-----
+   https://github.com/mbgg/linux-mediatek.git tags/v4.10-next-dts32
 
---ifkw4txuyvsbvaok--
+for you to fetch changes up to e348dc74f798c2df31c685bf0c814396f4f3b735:
+
+   arm: dts: mt2701: Add thermal device node. (2017-01-24 11:24:35 +0100)
+
+----------------------------------------------------------------
+Lots of updates for mt2701:
+Rearrange the dt nodes and fix unit address for pincontroler
+Add nodes for:
+- clock controller subsystems
+- scpsys controller
+- iommu and smi
+- spi
+- nand
+- auxadc
+- thermal controller and zones
+
+Email address updated for mt7623 devicetree files.
+
+----------------------------------------------------------------
+Dawei Chien (1):
+       arm: dts: mt2701: Add thermal device node.
+
+Honghui Zhang (1):
+       ARM: dts: mt2701: add iommu/smi dtsi node for mt2701
+
+James Liao (3):
+       arm: dts: mt2701: Sort DT nodes by register address
+       arm: dts: mt2701: Add subsystem clock controller device nodes
+       arm: dts: mt2701: Add power domain controller device node
+
+John Crispin (1):
+       ARM: dts: mediatek: update my email address
+
+Leilk Liu (1):
+       arm: dts: mt2701: Add spi device node
+
+Xiaolei Li (1):
+       arm: dts: mt2701: Add nand device node
+
+Zhiyong Tao (1):
+       arm: dts: mt2701: Add auxadc device node.
+
+  arch/arm/boot/dts/mt2701-evb.dts |  54 +++++++++
+  arch/arm/boot/dts/mt2701.dtsi    | 247 
+++++++++++++++++++++++++++++++++++++---
+  arch/arm/boot/dts/mt7623-evb.dts |   2 +-
+  arch/arm/boot/dts/mt7623.dtsi    |   2 +-
+  4 files changed, 285 insertions(+), 20 deletions(-)
