@@ -1,57 +1,83 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/2] Documentation: devicetree: change the mediatek
- ethernet compatible string
-Date: Wed, 25 Jan 2017 11:43:16 +0100
-Message-ID: <95bbd455-fb78-b41c-ef09-6d35671e68c3@gmail.com>
-References: <1485332455-34743-1-git-send-email-john@phrozen.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Use real dependencies
+Date: Wed, 25 Jan 2017 11:57:45 +0100
+Message-ID: <a2d129dd-3195-e187-1941-486423939914@gmail.com>
+References: <20170125103209.1d97b0bd@endymion>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1485332455-34743-1-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
-Cc: netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20170125103209.1d97b0bd@endymion>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Jean Delvare <jdelvare@suse.de>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, Biao Huang <biao.huang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
 List-Id: linux-mediatek@lists.infradead.org
 
 
 
-On 01/25/2017 09:20 AM, John Crispin wrote:
-> When the binding was defined, I was not aware that mt2701 was an earlier
-> version of the SoC. For sake of consistency, the ethernet driver should
-> use mt2701 inside the compat string as this is the earliest SoC with the
-> ethernet core.
+On 01/25/2017 10:32 AM, Jean Delvare wrote:
+> Do not hide pinctrl drivers for Mediatek platforms using
+> conditionals. Doing so actually leaves the symbols present (but
+> always disabled) on all other platforms, which is confusing and
+> inefficient. Better use real dependencies so that the symbols do not
+> exist at all on platforms where they are not relevant.
 >
-> The ethernet driver is currently of no real use until we finish and
-> upstream the DSA driver. There are no users of this binding yet. It should
-> be safe to fix this now before it is too late and we need to provide
-> backward compatibility for the mt7623-eth compat string.
->
-> Reported-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Jean Delvare <jdelvare@suse.de>
+> Reported-by: Andreas Färber <afaerber@suse.de>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
 > ---
+>  drivers/pinctrl/mediatek/Kconfig |   15 ++++++++++-----
+>  1 file changed, 10 insertions(+), 5 deletions(-)
+>
 
-sounds reasonable to me:
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
->  Documentation/devicetree/bindings/net/mediatek-net.txt |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> --- linux-4.10-rc4.orig/drivers/pinctrl/mediatek/Kconfig	2017-01-01 23:31:53.000000000 +0100
+> +++ linux-4.10-rc4/drivers/pinctrl/mediatek/Kconfig	2017-01-25 10:29:00.465436987 +0100
+> @@ -10,25 +10,29 @@ config PINCTRL_MTK
 >
-> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-> index c010faf..c7194e8 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-> @@ -7,7 +7,7 @@ have dual GMAC each represented by a child node..
->  * Ethernet controller node
+>  # For ARMv7 SoCs
+>  config PINCTRL_MT2701
+> -	bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
+> +	bool "Mediatek MT2701 pin control"
+> +	depends on MACH_MT2701 || COMPILE_TEST
+>  	depends on OF
+>  	default MACH_MT2701
+>  	select PINCTRL_MTK
 >
->  Required properties:
-> -- compatible: Should be "mediatek,mt7623-eth"
-> +- compatible: Should be "mediatek,mt2701-eth"
->  - reg: Address and length of the register set for the device
->  - interrupts: Should contain the three frame engines interrupts in numeric
->  	order. These are fe_int0, fe_int1 and fe_int2.
+>  config PINCTRL_MT7623
+> -	bool "Mediatek MT7623 pin control" if COMPILE_TEST && !MACH_MT7623
+> +	bool "Mediatek MT7623 pin control"
+> +	depends on MACH_MT7623 || COMPILE_TEST
+>  	depends on OF
+>  	default MACH_MT7623
+>  	select PINCTRL_MTK_COMMON
 >
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>  config PINCTRL_MT8135
+> -	bool "Mediatek MT8135 pin control" if COMPILE_TEST && !MACH_MT8135
+> +	bool "Mediatek MT8135 pin control"
+> +	depends on MACH_MT8135 || COMPILE_TEST
+>  	depends on OF
+>  	default MACH_MT8135
+>  	select PINCTRL_MTK
+>
+>  config PINCTRL_MT8127
+> -	bool "Mediatek MT8127 pin control" if COMPILE_TEST && !MACH_MT8127
+> +	bool "Mediatek MT8127 pin control"
+> +	depends on MACH_MT8127 || COMPILE_TEST
+>  	depends on OF
+>  	default MACH_MT8127
+>  	select PINCTRL_MTK
+> @@ -43,7 +47,8 @@ config PINCTRL_MT8173
+>
+>  # For PMIC
+>  config PINCTRL_MT6397
+> -	bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
+> +	bool "Mediatek MT6397 pin control"
+> +	depends on MFD_MT6397 || COMPILE_TEST
+>  	depends on OF
+>  	default MFD_MT6397
+>  	select PINCTRL_MTK
+>
+>
