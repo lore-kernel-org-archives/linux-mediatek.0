@@ -1,69 +1,91 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [PATCH] media: platform: constify vb2_ops structures
-Date: Wed, 25 Jan 2017 10:08:34 +0000
-Message-ID: <CA+V-a8scvMreQDdftDsP3B75ENSMu+OaUM0tUD-c1NPSZnznDg@mail.gmail.com>
-References: <1484990984-16136-1-git-send-email-bhumirks@gmail.com>
+From: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH] spi: mediatek: Manually set dma_ops for spi_master device
+Date: Wed, 25 Jan 2017 18:24:12 +0800
+Message-ID: <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
+References: <20170124132519.13271-1-djkurtz@chromium.org> <b1180920-8ead-40e8-6155-8510226e719b@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1484990984-16136-1-git-send-email-bhumirks@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bhumika Goyal <bhumirks@gmail.com>
-Cc: Julia Lawall <julia.lawall@lip6.fr>, Mauro Carvalho Chehab <mchehab@kernel.org>, minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com, andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com, linux-media <linux-media@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <b1180920-8ead-40e8-6155-8510226e719b-5wv7dgnIgG8@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:SPI SUBSYSTEM" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi,
+Hi Robin,
 
-Thanks for the patch.
+On Tue, Jan 24, 2017 at 11:14 PM, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org> wrote:
+> Hi Dan,
 
-On Sat, Jan 21, 2017 at 9:29 AM, Bhumika Goyal <bhumirks@gmail.com> wrote:
-> Declare vb2_ops structures as const as they are only stored in
-> the ops field of a vb2_queue structure. This field is of type
-> const, so vb2_ops structures having same properties can be made
-> const too.
-> Done using Coccinelle:
->
-> @r1 disable optional_qualifier@
-> identifier i;
-> position p;
-> @@
-> static struct vb2_ops i@p={...};
->
-> @ok1@
-> identifier r1.i;
-> position p;
-> struct sta2x11_vip vip;
-> struct vb2_queue q;
-> @@
-> (
-> vip.vb_vidq.ops=&i@p
-> |
-> q.ops=&i@p
-> )
->
-> @bad@
-> position p!={r1.p,ok1.p};
-> identifier r1.i;
-> @@
-> i@p
->
-> @depends on !bad disable optional_qualifier@
-> identifier r1.i;
-> @@
-> +const
-> struct vb2_ops i;
->
-> Cross compiled the media/platform/blackfin/bfin_capture.o file for
-> blackfin architecture.
->
-> File size before:
->   text     data     bss     dec     hex filename
->   6776      176       0    6952    1b28 platform/blackfin/bfin_capture.o
->
-The description doesnt match the changes. Can you please split the
-patches separately one for vpif_capture.c and vpif_display.c,
-one for mtk_mdp_m2m.c and lastly for pxa_camera.c .
+[snip...]
 
+>> And I really don't know why we needed to set the coherent_dma_mask to 0 to
+>> avoid SPI transaction errors.
+>
+> Following what I mentioned above, "git grep dma_alloc drivers/spi" makes
+> it seem like coherent DMA isn't used anywhere relevant, which is rather
+> puzzling. Unless of course somewhere along the line somebody's done the
+> dev->dma_mask = &dev->dma_coherent_mask hack, with the result that
+> writing one mask hits both, making *all* DMA fail and big transfers fall
+> back to PIO.
 
-Cheers,
---Prabhakar Lad
+You mean this last line?
+
+>> @@ -575,6 +576,10 @@ static int mtk_spi_probe(struct platform_device *pdev)
+>>               goto err_put_master;
+>>       }
+>>
+>> +     /* Call of_dma_configure to set up spi_master's dma_ops */
+>> +     of_dma_configure(&master->dev, master->dev.of_node);
+>> +     /* But explicitly set the coherent_dma_mask to 0 */
+>> +     master->dev.coherent_dma_mask = 0;
+>>       if (!pdev->dev.dma_mask)
+>>               pdev->dev.dma_mask = &pdev->dev.coherent_dma_mask;
+                                  ^^^^^
+
+As predicted, setting the dma_mask = 0 causes "all DMA to fail".  In
+particular, dma_capable() always returns false, so
+swiotlb_map_sg_attrs() takes the map_single() path, instead of just
+assigning:
+
+   sg->dma_address = dev_addr;
+
+swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl, int nelems,
+                     enum dma_data_direction dir, unsigned long attrs)
+{
+        struct scatterlist *sg;
+        int i;
+
+        BUG_ON(dir == DMA_NONE);
+
+        for_each_sg(sgl, sg, nelems, i) {
+                phys_addr_t paddr = sg_phys(sg);
+                dma_addr_t dev_addr = phys_to_dma(hwdev, paddr);
+
+                if (swiotlb_force == SWIOTLB_FORCE ||
+                    !dma_capable(hwdev, dev_addr, sg->length)) {
+                        phys_addr_t map = map_single(hwdev, sg_phys(sg),
+                                                     sg->length, dir, attrs);
+                        ...
+                        }
+                        sg->dma_address = phys_to_dma(hwdev, map);
+                } else
+                        sg->dma_address = dev_addr;
+                sg_dma_len(sg) = sg->length;
+        }
+        return nelems;
+}
+
+So, I think this means that the only reason the MTK SPI driver ever
+worked before was that it was tested on an older kernel, so the
+spi_master was defaulting to swiotlb_dma_ops with a 0 dma_mask, and
+therefore it was using SWIOTLB bounce buffers (via 'map_single'), and
+not actually ever doing real DMA.
+
+I'm in a bit over my head here, any suggestions on how to fix this?
+
+-Dan
+--
+To unsubscribe from this list: send the line "unsubscribe linux-spi" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
