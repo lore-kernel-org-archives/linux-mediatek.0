@@ -1,61 +1,102 @@
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: mediatek: dts changes for v4.11
-Date: Wed, 25 Jan 2017 14:48:24 +0100
-Message-ID: <943b4e63-d2bc-0b9c-f4a7-4689f2ac48ea@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] spi: mediatek: Manually set dma_ops for spi_master device
+Date: Wed, 25 Jan 2017 17:59:43 +0000
+Message-ID: <0548db75-042b-4bef-02db-767ea9ccd7e4@arm.com>
+References: <20170124132519.13271-1-djkurtz@chromium.org>
+ <b1180920-8ead-40e8-6155-8510226e719b@arm.com>
+ <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: arm@kernel.org
-Cc: Dawei Chien <dawei.chien@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Leilk Liu <leilk.liu@mediatek.com>, open list <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, Dmitry Torokhov <dtor@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Arnd, hi Olof,
+On 25/01/17 10:24, Daniel Kurtz wrote:
+> Hi Robin,
+> 
+> On Tue, Jan 24, 2017 at 11:14 PM, Robin Murphy <robin.murphy@arm.com> wrote:
+>> Hi Dan,
+> 
+> [snip...]
+> 
+>>> And I really don't know why we needed to set the coherent_dma_mask to 0 to
+>>> avoid SPI transaction errors.
+>>
+>> Following what I mentioned above, "git grep dma_alloc drivers/spi" makes
+>> it seem like coherent DMA isn't used anywhere relevant, which is rather
+>> puzzling. Unless of course somewhere along the line somebody's done the
+>> dev->dma_mask = &dev->dma_coherent_mask hack, with the result that
+>> writing one mask hits both, making *all* DMA fail and big transfers fall
+>> back to PIO.
+> 
+> You mean this last line?
+> 
+>>> @@ -575,6 +576,10 @@ static int mtk_spi_probe(struct platform_device *pdev)
+>>>               goto err_put_master;
+>>>       }
+>>>
+>>> +     /* Call of_dma_configure to set up spi_master's dma_ops */
+>>> +     of_dma_configure(&master->dev, master->dev.of_node);
+>>> +     /* But explicitly set the coherent_dma_mask to 0 */
+>>> +     master->dev.coherent_dma_mask = 0;
+>>>       if (!pdev->dev.dma_mask)
+>>>               pdev->dev.dma_mask = &pdev->dev.coherent_dma_mask;
+>                                   ^^^^^
 
-Please merge the following changes for 64-bit dts files.
+Ha, I totally failed to spot that!
 
-Thanks,
-Matthias
+> As predicted, setting the dma_mask = 0 causes "all DMA to fail".  In
+> particular, dma_capable() always returns false, so
+> swiotlb_map_sg_attrs() takes the map_single() path, instead of just
+> assigning:
+> 
+>    sg->dma_address = dev_addr;
+> 
+> swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl, int nelems,
+>                      enum dma_data_direction dir, unsigned long attrs)
+> {
+>         struct scatterlist *sg;
+>         int i;
+> 
+>         BUG_ON(dir == DMA_NONE);
+> 
+>         for_each_sg(sgl, sg, nelems, i) {
+>                 phys_addr_t paddr = sg_phys(sg);
+>                 dma_addr_t dev_addr = phys_to_dma(hwdev, paddr);
+> 
+>                 if (swiotlb_force == SWIOTLB_FORCE ||
+>                     !dma_capable(hwdev, dev_addr, sg->length)) {
+>                         phys_addr_t map = map_single(hwdev, sg_phys(sg),
+>                                                      sg->length, dir, attrs);
+>                         ...
+>                         }
+>                         sg->dma_address = phys_to_dma(hwdev, map);
+>                 } else
+>                         sg->dma_address = dev_addr;
+>                 sg_dma_len(sg) = sg->length;
+>         }
+>         return nelems;
+> }
+> 
+> So, I think this means that the only reason the MTK SPI driver ever
+> worked before was that it was tested on an older kernel, so the
+> spi_master was defaulting to swiotlb_dma_ops with a 0 dma_mask, and
+> therefore it was using SWIOTLB bounce buffers (via 'map_single'), and
+> not actually ever doing real DMA.
 
----
+Well, it's still "real DMA" if the device is able to slurp data out of
+the bounce buffer. That suggests there might be some mismatch between
+the default DMA mask it's getting given and the actual hardware
+capability (i.e. the bounce buffer happens to fall somewhere accessible,
+but other addresses may not be) - is crazy 33-bit mode involved here?
 
-The following changes since commit 7ce7d89f48834cefece7804d38fc5d85382edf77:
+Robin.
 
-   Linux 4.10-rc1 (2016-12-25 16:13:08 -0800)
-
-are available in the git repository at:
-
-   https://github.com/mbgg/linux-mediatek.git tags/v4.10-next-dts
-
-for you to fetch changes up to 6de18454e06f4eb9c0c7008d3999cd1d0b289d42:
-
-   arm64: dts: mt8173: add node for thermal calibration (2017-01-23 
-10:18:13 +0100)
-
-----------------------------------------------------------------
-For mt8173:
-- set mm_sel clock to 400 MHz to support 4K HDMI
-- adjust power efficiency between the little and big cores
-- add a node for thermal calibration via e-fuse data
-
-----------------------------------------------------------------
-Bibby Hsieh (1):
-       arm64: dts: mt8173: add mmsel clocks for 4K support
-
-Daniel Kurtz (1):
-       arm64: dts: mt8173: Fix cpu_thermal cooling-maps contributions
-
-dawei.chien@mediatek.com (1):
-       arm64: dts: mt8173: add node for thermal calibration
-
-  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 13 +++++++++++--
-  1 file changed, 11 insertions(+), 2 deletions(-)
+> I'm in a bit over my head here, any suggestions on how to fix this?
+> 
+> -Dan
+> 
