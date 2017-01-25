@@ -1,102 +1,38 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] spi: mediatek: Manually set dma_ops for spi_master device
-Date: Wed, 25 Jan 2017 17:59:43 +0000
-Message-ID: <0548db75-042b-4bef-02db-767ea9ccd7e4@arm.com>
-References: <20170124132519.13271-1-djkurtz@chromium.org>
- <b1180920-8ead-40e8-6155-8510226e719b@arm.com>
- <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
+From: David Miller <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>
+Subject: Re: [PATCH 2/2] net-next: ethernet: mediatek: change the
+ compatible string
+Date: Wed, 25 Jan 2017 14:36:20 -0500 (EST)
+Message-ID: <20170125.143620.2147272337043372320.davem@davemloft.net>
+References: <1485332455-34743-1-git-send-email-john@phrozen.org>
+        <1485332455-34743-2-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGS+omBV3o1hergAjU3_9ok5NTmk8Z315zo3yW9jU_jA+reZCQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Kurtz <djkurtz@chromium.org>
-Cc: Leilk Liu <leilk.liu@mediatek.com>, open list <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, Dmitry Torokhov <dtor@chromium.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1485332455-34743-2-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 25/01/17 10:24, Daniel Kurtz wrote:
-> Hi Robin,
-> 
-> On Tue, Jan 24, 2017 at 11:14 PM, Robin Murphy <robin.murphy@arm.com> wrote:
->> Hi Dan,
-> 
-> [snip...]
-> 
->>> And I really don't know why we needed to set the coherent_dma_mask to 0 to
->>> avoid SPI transaction errors.
->>
->> Following what I mentioned above, "git grep dma_alloc drivers/spi" makes
->> it seem like coherent DMA isn't used anywhere relevant, which is rather
->> puzzling. Unless of course somewhere along the line somebody's done the
->> dev->dma_mask = &dev->dma_coherent_mask hack, with the result that
->> writing one mask hits both, making *all* DMA fail and big transfers fall
->> back to PIO.
-> 
-> You mean this last line?
-> 
->>> @@ -575,6 +576,10 @@ static int mtk_spi_probe(struct platform_device *pdev)
->>>               goto err_put_master;
->>>       }
->>>
->>> +     /* Call of_dma_configure to set up spi_master's dma_ops */
->>> +     of_dma_configure(&master->dev, master->dev.of_node);
->>> +     /* But explicitly set the coherent_dma_mask to 0 */
->>> +     master->dev.coherent_dma_mask = 0;
->>>       if (!pdev->dev.dma_mask)
->>>               pdev->dev.dma_mask = &pdev->dev.coherent_dma_mask;
->                                   ^^^^^
+From: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Date: Wed, 25 Jan 2017 09:20:55 +0100
 
-Ha, I totally failed to spot that!
+> When the binding was defined, I was not aware that mt2701 was an earlier
+> version of the SoC. For sake of consistency, the ethernet driver should
+> use mt2701 inside the compat string as this is the earliest SoC with the
+> ethernet core.
+> 
+> The ethernet driver is currently of no real use until we finish and
+> upstream the DSA driver. There are no users of this binding yet. It should
+> be safe to fix this now before it is too late and we need to provide
+> backward compatibility for the mt7623-eth compat string.
+> 
+> Reported-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 
-> As predicted, setting the dma_mask = 0 causes "all DMA to fail".  In
-> particular, dma_capable() always returns false, so
-> swiotlb_map_sg_attrs() takes the map_single() path, instead of just
-> assigning:
-> 
->    sg->dma_address = dev_addr;
-> 
-> swiotlb_map_sg_attrs(struct device *hwdev, struct scatterlist *sgl, int nelems,
->                      enum dma_data_direction dir, unsigned long attrs)
-> {
->         struct scatterlist *sg;
->         int i;
-> 
->         BUG_ON(dir == DMA_NONE);
-> 
->         for_each_sg(sgl, sg, nelems, i) {
->                 phys_addr_t paddr = sg_phys(sg);
->                 dma_addr_t dev_addr = phys_to_dma(hwdev, paddr);
-> 
->                 if (swiotlb_force == SWIOTLB_FORCE ||
->                     !dma_capable(hwdev, dev_addr, sg->length)) {
->                         phys_addr_t map = map_single(hwdev, sg_phys(sg),
->                                                      sg->length, dir, attrs);
->                         ...
->                         }
->                         sg->dma_address = phys_to_dma(hwdev, map);
->                 } else
->                         sg->dma_address = dev_addr;
->                 sg_dma_len(sg) = sg->length;
->         }
->         return nelems;
-> }
-> 
-> So, I think this means that the only reason the MTK SPI driver ever
-> worked before was that it was tested on an older kernel, so the
-> spi_master was defaulting to swiotlb_dma_ops with a 0 dma_mask, and
-> therefore it was using SWIOTLB bounce buffers (via 'map_single'), and
-> not actually ever doing real DMA.
-
-Well, it's still "real DMA" if the device is able to slurp data out of
-the bounce buffer. That suggests there might be some mismatch between
-the default DMA mask it's getting given and the actual hardware
-capability (i.e. the bounce buffer happens to fall somewhere accessible,
-but other addresses may not be) - is crazy 33-bit mode involved here?
-
-Robin.
-
-> I'm in a bit over my head here, any suggestions on how to fix this?
-> 
-> -Dan
-> 
+Applied.
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
