@@ -1,85 +1,69 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Use real dependencies
-Date: Wed, 25 Jan 2017 10:34:16 +0100
-Message-ID: <60806c78-92fb-559a-8f88-a5dc4ee68252@phrozen.org>
-References: <20170125103209.1d97b0bd@endymion>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [PATCH] media: platform: constify vb2_ops structures
+Date: Wed, 25 Jan 2017 10:08:34 +0000
+Message-ID: <CA+V-a8scvMreQDdftDsP3B75ENSMu+OaUM0tUD-c1NPSZnznDg@mail.gmail.com>
+References: <1484990984-16136-1-git-send-email-bhumirks@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20170125103209.1d97b0bd@endymion>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>, James Liao <jamesjj.liao@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1484990984-16136-1-git-send-email-bhumirks@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bhumika Goyal <bhumirks@gmail.com>
+Cc: Julia Lawall <julia.lawall@lip6.fr>, Mauro Carvalho Chehab <mchehab@kernel.org>, minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com, andrew-ct.chen@mediatek.com, matthias.bgg@gmail.com, linux-media <linux-media@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi,
+
+Thanks for the patch.
+
+On Sat, Jan 21, 2017 at 9:29 AM, Bhumika Goyal <bhumirks@gmail.com> wrote:
+> Declare vb2_ops structures as const as they are only stored in
+> the ops field of a vb2_queue structure. This field is of type
+> const, so vb2_ops structures having same properties can be made
+> const too.
+> Done using Coccinelle:
+>
+> @r1 disable optional_qualifier@
+> identifier i;
+> position p;
+> @@
+> static struct vb2_ops i@p={...};
+>
+> @ok1@
+> identifier r1.i;
+> position p;
+> struct sta2x11_vip vip;
+> struct vb2_queue q;
+> @@
+> (
+> vip.vb_vidq.ops=&i@p
+> |
+> q.ops=&i@p
+> )
+>
+> @bad@
+> position p!={r1.p,ok1.p};
+> identifier r1.i;
+> @@
+> i@p
+>
+> @depends on !bad disable optional_qualifier@
+> identifier r1.i;
+> @@
+> +const
+> struct vb2_ops i;
+>
+> Cross compiled the media/platform/blackfin/bfin_capture.o file for
+> blackfin architecture.
+>
+> File size before:
+>   text     data     bss     dec     hex filename
+>   6776      176       0    6952    1b28 platform/blackfin/bfin_capture.o
+>
+The description doesnt match the changes. Can you please split the
+patches separately one for vpif_capture.c and vpif_display.c,
+one for mtk_mdp_m2m.c and lastly for pxa_camera.c .
 
 
-On 25/01/2017 10:32, Jean Delvare wrote:
-> Do not hide pinctrl drivers for Mediatek platforms using
-> conditionals. Doing so actually leaves the symbols present (but
-> always disabled) on all other platforms, which is confusing and
-> inefficient. Better use real dependencies so that the symbols do not
-> exist at all on platforms where they are not relevant.
-> 
-> Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Reported-by: Andreas Färber <afaerber@suse.de>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-
-for the mt7623 part
-
-Acked-by: John Crispin <john@phrozen.org>
-
-> ---
->  drivers/pinctrl/mediatek/Kconfig |   15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
-> 
-> --- linux-4.10-rc4.orig/drivers/pinctrl/mediatek/Kconfig	2017-01-01 23:31:53.000000000 +0100
-> +++ linux-4.10-rc4/drivers/pinctrl/mediatek/Kconfig	2017-01-25 10:29:00.465436987 +0100
-> @@ -10,25 +10,29 @@ config PINCTRL_MTK
->  
->  # For ARMv7 SoCs
->  config PINCTRL_MT2701
-> -	bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
-> +	bool "Mediatek MT2701 pin control"
-> +	depends on MACH_MT2701 || COMPILE_TEST
->  	depends on OF
->  	default MACH_MT2701
->  	select PINCTRL_MTK
->  
->  config PINCTRL_MT7623
-> -	bool "Mediatek MT7623 pin control" if COMPILE_TEST && !MACH_MT7623
-> +	bool "Mediatek MT7623 pin control"
-> +	depends on MACH_MT7623 || COMPILE_TEST
->  	depends on OF
->  	default MACH_MT7623
->  	select PINCTRL_MTK_COMMON
->  
->  config PINCTRL_MT8135
-> -	bool "Mediatek MT8135 pin control" if COMPILE_TEST && !MACH_MT8135
-> +	bool "Mediatek MT8135 pin control"
-> +	depends on MACH_MT8135 || COMPILE_TEST
->  	depends on OF
->  	default MACH_MT8135
->  	select PINCTRL_MTK
->  
->  config PINCTRL_MT8127
-> -	bool "Mediatek MT8127 pin control" if COMPILE_TEST && !MACH_MT8127
-> +	bool "Mediatek MT8127 pin control"
-> +	depends on MACH_MT8127 || COMPILE_TEST
->  	depends on OF
->  	default MACH_MT8127
->  	select PINCTRL_MTK
-> @@ -43,7 +47,8 @@ config PINCTRL_MT8173
->  
->  # For PMIC
->  config PINCTRL_MT6397
-> -	bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
-> +	bool "Mediatek MT6397 pin control"
-> +	depends on MFD_MT6397 || COMPILE_TEST
->  	depends on OF
->  	default MFD_MT6397
->  	select PINCTRL_MTK
-> 
-> 
+Cheers,
+--Prabhakar Lad
