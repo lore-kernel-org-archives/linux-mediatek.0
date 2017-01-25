@@ -1,43 +1,78 @@
-From: John Crispin <john@phrozen.org>
-Subject: [PATCH 2/2] net-next: ethernet: mediatek: change the compatible string
-Date: Wed, 25 Jan 2017 09:20:55 +0100
-Message-ID: <1485332455-34743-2-git-send-email-john@phrozen.org>
-References: <1485332455-34743-1-git-send-email-john@phrozen.org>
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1485332455-34743-1-git-send-email-john@phrozen.org>
-Sender: netdev-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "David S. Miller" <davem@davemloft.net>
-Cc: netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>
+From: Jean Delvare <jdelvare@suse.de>
+Subject: [PATCH] pinctrl: mediatek: Use real dependencies
+Date: Wed, 25 Jan 2017 10:32:09 +0100
+Message-ID: <20170125103209.1d97b0bd@endymion>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
 List-Id: linux-mediatek@lists.infradead.org
 
-When the binding was defined, I was not aware that mt2701 was an earlier
-version of the SoC. For sake of consistency, the ethernet driver should
-use mt2701 inside the compat string as this is the earliest SoC with the
-ethernet core.
+Do not hide pinctrl drivers for Mediatek platforms using
+conditionals. Doing so actually leaves the symbols present (but
+always disabled) on all other platforms, which is confusing and
+inefficient. Better use real dependencies so that the symbols do not
+exist at all on platforms where they are not relevant.
 
-The ethernet driver is currently of no real use until we finish and
-upstream the DSA driver. There are no users of this binding yet. It should
-be safe to fix this now before it is too late and we need to provide
-backward compatibility for the mt7623-eth compat string.
-
-Reported-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: John Crispin <john@phrozen.org>
+Signed-off-by: Jean Delvare <jdelvare@suse.de>
+Reported-by: Andreas Färber <afaerber@suse.de>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/pinctrl/mediatek/Kconfig |   15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 25ae0c5..9e75768 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2515,7 +2515,7 @@ static int mtk_remove(struct platform_device *pdev)
- }
+--- linux-4.10-rc4.orig/drivers/pinctrl/mediatek/Kconfig	2017-01-01 23:31:53.000000000 +0100
++++ linux-4.10-rc4/drivers/pinctrl/mediatek/Kconfig	2017-01-25 10:29:00.465436987 +0100
+@@ -10,25 +10,29 @@ config PINCTRL_MTK
  
- const struct of_device_id of_mtk_match[] = {
--	{ .compatible = "mediatek,mt7623-eth" },
-+	{ .compatible = "mediatek,mt2701-eth" },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, of_mtk_match);
+ # For ARMv7 SoCs
+ config PINCTRL_MT2701
+-	bool "Mediatek MT2701 pin control" if COMPILE_TEST && !MACH_MT2701
++	bool "Mediatek MT2701 pin control"
++	depends on MACH_MT2701 || COMPILE_TEST
+ 	depends on OF
+ 	default MACH_MT2701
+ 	select PINCTRL_MTK
+ 
+ config PINCTRL_MT7623
+-	bool "Mediatek MT7623 pin control" if COMPILE_TEST && !MACH_MT7623
++	bool "Mediatek MT7623 pin control"
++	depends on MACH_MT7623 || COMPILE_TEST
+ 	depends on OF
+ 	default MACH_MT7623
+ 	select PINCTRL_MTK_COMMON
+ 
+ config PINCTRL_MT8135
+-	bool "Mediatek MT8135 pin control" if COMPILE_TEST && !MACH_MT8135
++	bool "Mediatek MT8135 pin control"
++	depends on MACH_MT8135 || COMPILE_TEST
+ 	depends on OF
+ 	default MACH_MT8135
+ 	select PINCTRL_MTK
+ 
+ config PINCTRL_MT8127
+-	bool "Mediatek MT8127 pin control" if COMPILE_TEST && !MACH_MT8127
++	bool "Mediatek MT8127 pin control"
++	depends on MACH_MT8127 || COMPILE_TEST
+ 	depends on OF
+ 	default MACH_MT8127
+ 	select PINCTRL_MTK
+@@ -43,7 +47,8 @@ config PINCTRL_MT8173
+ 
+ # For PMIC
+ config PINCTRL_MT6397
+-	bool "Mediatek MT6397 pin control" if COMPILE_TEST && !MFD_MT6397
++	bool "Mediatek MT6397 pin control"
++	depends on MFD_MT6397 || COMPILE_TEST
+ 	depends on OF
+ 	default MFD_MT6397
+ 	select PINCTRL_MTK
+
+
 -- 
-1.7.10.4
+Jean Delvare
+SUSE L3 Support
