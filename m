@@ -1,54 +1,54 @@
-From: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] Documentation: mtk-quadspi: update DT bindings
-Date: Thu, 26 Jan 2017 17:38:27 +0100
-Message-ID: <bca4628c-b203-9464-5810-152facdc4a66@atmel.com>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
- <1485315515-29942-2-git-send-email-guochun.mao@mediatek.com>
+From: Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 2/2] spi: mediatek: Only do dma for 4-byte aligned buffers
+Date: Thu, 26 Jan 2017 08:42:20 -0800
+Message-ID: <CAE_wzQ_kC4nc28VU-msZkMAnChtkY6uWiSWFv8x4BHh3B7RJXA@mail.gmail.com>
+References: <20170126162154.124287-1-djkurtz@chromium.org>
+ <20170126162154.124287-2-djkurtz@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1485315515-29942-2-git-send-email-guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
-Cc: David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20170126162154.124287-2-djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: drinkcat-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, Leilk Liu <leilk.liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dmitry Torokhov <dtor-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, open list <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:SPI SUBSYSTEM" <linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Guenter Roeck <groeck-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le 25/01/2017 à 04:38, Guochun Mao a écrit :
-> Add "mediatek,mt2701-nor" for nor flash node's compatible.
-> 
-> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  .../devicetree/bindings/mtd/mtk-quadspi.txt        |    8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> index fb314f0..5ded66a 100644
-> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> +++ b/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
-> @@ -1,7 +1,13 @@
->  * Serial NOR flash controller for MTK MT81xx (and similar)
->  
->  Required properties:
-> -- compatible: 	  should be "mediatek,mt8173-nor";
-> +- compatible: 	  The possible values are:
-> +		  "mediatek,mt2701-nor"
-> +		  "mediatek,mt7623-nor"
-> +		  "mediatek,mt8173-nor"
-> +		  For mt8173, compatible should be "mediatek,mt8173-nor".
-> +		  For every other SoC, should contain both the SoC-specific compatible string
-> +		  and "mediatek,mt8173-nor".
->  - reg: 		  physical base address and length of the controller's register
->  - clocks: 	  the phandle of the clocks needed by the nor controller
->  - clock-names: 	  the names of the clocks
-> 
+Hi Daniel,
 
-Rob, is it ok for you if I take this patch in the spi-nor tree?
+On Thu, Jan 26, 2017 at 8:21 AM, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+> Mediatek SPI DMA only works when tx and rx buffer addresses are 4-byte
+> aligned.
+>
+> Unaligned DMA transactions appeared to work previously, since we the
+> spi core was incorrectly using the spi_master device for dma, which
+> had a 0 dma_mask, and therefore the swiotlb dma map operations were
+> falling back to using bounce buffers.  Since each DMA transaction would
+> use its own buffer, the mapped starting address of each transaction was
+> always aligned.  When doing real DMA, the mapped address will share the
+> alignment of the raw tx/rx buffer provided by the SPI user, which may or
+> may not be aligned.
+>
+> If a buffer is not aligned, we cannot use DMA, and must use FIFO based
+> transaction instead.
 
-Best regards,
+>From spi.h:
 
-Cyrille
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+/**
+ * struct spi_transfer - a read/write buffer pair
+ * @tx_buf: data to be written (dma-safe memory), or NULL
+ * @rx_buf: data to be read (dma-safe memory), or NULL
+
+DMA-safe memory is ___cacheline_aligned, so it appears to be user (of
+the SPI) error providing "bad" memory for transfers.
+
+Thanks,
+Dmitry
