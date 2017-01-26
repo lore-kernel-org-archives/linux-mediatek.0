@@ -1,32 +1,80 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: mediatek: Use real dependencies
-Date: Thu, 26 Jan 2017 16:26:29 +0100
-Message-ID: <CACRpkdah+XHgyePTEFU0t4x8C_VkViNKNFWbCJLNne5LOWToog@mail.gmail.com>
-References: <20170125103209.1d97b0bd@endymion>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20170125103209.1d97b0bd@endymion>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Jean Delvare <jdelvare@suse.de>
-Cc: "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Matthias Brugger <matthias.bgg@gmail.com>, Biao Huang <biao.huang@mediatek.com>, James Liao <jamesjj.liao@mediatek.com>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: [PATCH 1/2] spi: When no dma_chan map buffers with spi_master's parent
+Date: Fri, 27 Jan 2017 00:21:53 +0800
+Message-ID: <20170126162154.124287-1-djkurtz@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: dtor@chromium.org, groeck@chromium.org, drinkcat@chromium.org, Robin Murphy <robin.murphy@arm.com>, Daniel Kurtz <djkurtz@chromium.org>, Leilk Liu <leilk.liu@mediatek.com>, Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+        support" <linux-mediatek@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 25, 2017 at 10:32 AM, Jean Delvare <jdelvare@suse.de> wrote:
+Back before commit 1dccb598df54 ("arm64: simplify dma_get_ops"), for
+arm64, devices for which dma_ops were not explicitly set were automatically
+configured to use swiotlb_dma_ops, since this was hard-coded as the
+global "dma_ops" in arm64_dma_init().
 
-> Do not hide pinctrl drivers for Mediatek platforms using
-> conditionals. Doing so actually leaves the symbols present (but
-> always disabled) on all other platforms, which is confusing and
-> inefficient. Better use real dependencies so that the symbols do not
-> exist at all on platforms where they are not relevant.
->
-> Signed-off-by: Jean Delvare <jdelvare@suse.de>
-> Reported-by: Andreas F=C3=A4rber <afaerber@suse.de>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Now that global "dma_ops" has been removed, all devices much have their
+dma_ops explicitly set by a call to arch_setup_dma_ops(), otherwise the
+device is assigned dummy_dma_ops, and thus calls to map_sg for such a
+device will fail (return 0).
 
-Patch applied with Matthias' review tag.
+Mediatek SPI uses DMA but does not use a dma channel.  Support for this
+was added by commit c37f45b5f1cd ("spi: support spi without dma channel
+to use can_dma()"), which uses the master_spi dev to DMA map buffers.
 
-Yours,
-Linus Walleij
+The master_spi device is not a platform device, rather it is created
+in spi_alloc_device(), and therefore its dma_ops are never set.
+
+Therefore, when the mediatek SPI driver when it does DMA (for large SPI
+transactions > 32 bytes), SPI will use spi_map_buf()->dma_map_sg() to
+map the buffer for use in DMA.  But dma_map_sg()->dma_map_sg_attrs() returns
+0, because ops->map_sg is dummy_dma_ops->__dummy_map_sg, and hence
+spi_map_buf() returns -ENOMEM (-12).
+
+Fix this by using the real spi_master's parent device which should be a
+real physical device with DMA properties.
+
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+Fixes: c37f45b5f1cd ("spi: support spi without dma channel to use can_dma()")
+Cc: Leilk Liu <leilk.liu@mediatek.com>
+---
+ drivers/spi/spi.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index 656dd3e3220c..f4d412e48e1c 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -805,12 +805,12 @@ static int __spi_map_msg(struct spi_master *master, struct spi_message *msg)
+ 	if (master->dma_tx)
+ 		tx_dev = master->dma_tx->device->dev;
+ 	else
+-		tx_dev = &master->dev;
++		tx_dev = master->dev.parent;
+ 
+ 	if (master->dma_rx)
+ 		rx_dev = master->dma_rx->device->dev;
+ 	else
+-		rx_dev = &master->dev;
++		rx_dev = master->dev.parent;
+ 
+ 	list_for_each_entry(xfer, &msg->transfers, transfer_list) {
+ 		if (!master->can_dma(master, msg->spi, xfer))
+@@ -852,12 +852,12 @@ static int __spi_unmap_msg(struct spi_master *master, struct spi_message *msg)
+ 	if (master->dma_tx)
+ 		tx_dev = master->dma_tx->device->dev;
+ 	else
+-		tx_dev = &master->dev;
++		tx_dev = master->dev.parent;
+ 
+ 	if (master->dma_rx)
+ 		rx_dev = master->dma_rx->device->dev;
+ 	else
+-		rx_dev = &master->dev;
++		rx_dev = master->dev.parent;
+ 
+ 	list_for_each_entry(xfer, &msg->transfers, transfer_list) {
+ 		if (!master->can_dma(master, msg->spi, xfer))
+-- 
+2.11.0.483.g087da7b7c-goog
