@@ -1,52 +1,36 @@
-From: John Crispin <john@phrozen.org>
-Subject: Re: [PATCH 0/2] clk: mediatek: add missing ethernet reset definition
-Date: Fri, 27 Jan 2017 06:00:26 +0100
-Message-ID: <6803ef87-fb22-075c-bee1-3c0adb8e297d@phrozen.org>
-References: <1485175707-58528-1-git-send-email-john@phrozen.org>
- <20170127001441.GS8801@codeaurora.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170127001441.GS8801@codeaurora.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Stephen Boyd <sboyd@codeaurora.org>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Michael Turquette <mturquette@baylibre.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Erin Lo <erin.lo@mediatek.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Shailendra Verma <shailendra.v@samsung.com>
+Subject: [PATCH] Soc: mediatek - Fix possible NULL derefrence.
+Date: Fri, 27 Jan 2017 16:47:48 +0530
+Message-ID: <1485515868-3671-1-git-send-email-shailendra.v@samsung.com>
+References: <CGME20170127111755epcas4p4f4bf0401e49ddd4563b0365b838d3dde@epcas4p4.samsung.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <blogic@openwrt.org>, Henry Chen <henryc.chen@mediatek.com>, Daniel Kurtz <djkurtz@chromium.org>, Arnd Bergmann <arnd@arndb.de>, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, p.shailesh@samsung.com, ashish.kalra@samsung.com, Shailendra Verma <shailendra.v@samsung.com>, Shailendra Verma <shailendra.capricorn@gmail.com>
 List-Id: linux-mediatek@lists.infradead.org
 
+of_match_device could return NULL, and so can cause a NULL
+pointer dereference later.
 
+Signed-off-by: Shailendra Verma <shailendra.v@samsung.com>
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c |    5 +++++
+ 1 file changed, 5 insertions(+)
 
-On 27/01/2017 01:14, Stephen Boyd wrote:
-> On 01/23, John Crispin wrote:
->> When the clk code for mt2701 was merged, we forgot to add the reset
->> controller of the ethernet subsystem. This series adds the missing code
->> and header files required to reference the bits from within a devicetree
->> file.
->>
->> John Crispin (2):
->>   clk: mediatek: add mt2701 ethernet reset
->>   reset: mediatek: Add MT2701 ethsys reset controller include file
->>
->>  drivers/clk/mediatek/clk-mt2701-eth.c     |    2 ++
->>  include/dt-bindings/reset/mt2701-resets.h |    7 +++++++
-> 
-> Any planned DT users in the next merge window? Should I put this
-> into a topic branch? Do you want a clk maintainer ack? At the
-> least we need someone like James to ack this first.
-> 
-
-Hi Stephen,
-
-the addition of the dtsi snippets for the ethernet core is pending due
-to this patch. getting it into v4.11 would be geat so that i can sent
-dtsi changes during the next merge window.
-
-	John
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index a5f1093..c48db98 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -1117,6 +1117,11 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	const struct of_device_id *of_slave_id = NULL;
+ 	struct resource *res;
+ 
++	if (!of_id) {
++		dev_err(&pdev->dev, "Error: No device match found\n");
++		return -ENODEV;
++	}
++
+ 	if (pdev->dev.of_node->child)
+ 		of_slave_id = of_match_node(of_slave_match_tbl,
+ 					    pdev->dev.of_node->child);
+-- 
+1.7.9.5
