@@ -1,168 +1,188 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2, 6/6] dt-bindings: phy-mt65xx-usb: add support for new
- version phy
-Date: Fri, 27 Jan 2017 14:07:02 -0600
-Message-ID: <20170127200702.biyvgzgoq3yxx7yx@rob-hp-laptop>
-References: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
- <1484900321-26933-6-git-send-email-chunfeng.yun@mediatek.com>
+Subject: Re: [PATCH 13/16] arm: dts: rename mt7623-evb.dts to
+ arch/arm/boot/dts/mt7623n-rfb.dtsi
+Date: Fri, 27 Jan 2017 14:13:28 -0600
+Message-ID: <20170127201328.gao42m5hsaeaq4bz@rob-hp-laptop>
+References: <1485170975-51813-1-git-send-email-john@phrozen.org>
+ <1485170975-51813-14-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <1484900321-26933-6-git-send-email-chunfeng.yun@mediatek.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>, Mark Rutland <mark.rutland@arm.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <1485170975-51813-14-git-send-email-john@phrozen.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: John Crispin <john@phrozen.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, Jan 20, 2017 at 04:18:41PM +0800, Chunfeng Yun wrote:
-> add a new compatible string for "mt2712", and move reference clock
-> into each port node;
+On Mon, Jan 23, 2017 at 12:29:32PM +0100, John Crispin wrote:
+> There are 2 versions of the SoC. MT7623N is almost identical to MT7623A
+> but has some additional multimedia features. The reference boards are
+> available as NAND or MMC and might have a different ethernet setup. In
+> order to reduce the duplication of devicetree code we add an intermediate
+> dtsi file for these reference boards. Additionally MTK/WCN pointed out,
+> that the EVB is yet another board and the board in question is infact the
+> RFB. Take this into account while renaming the files.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>  Signed-off-by: John Crispin <john@phrozen.org>
 > ---
->  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |   91 +++++++++++++++++---
->  1 file changed, 77 insertions(+), 14 deletions(-)
+>  Documentation/devicetree/bindings/arm/mediatek.txt |    4 +--
+>  arch/arm/boot/dts/Makefile                         |    2 +-
+>  arch/arm/boot/dts/mt7623-evb.dts                   |   33 --------------------
+>  arch/arm/boot/dts/mt7623n-rfb-nand.dts             |   21 +++++++++++++
+>  arch/arm/boot/dts/mt7623n-rfb.dtsi                 |   29 +++++++++++++++++
+>  5 files changed, 53 insertions(+), 36 deletions(-)
+>  delete mode 100644 arch/arm/boot/dts/mt7623-evb.dts
+>  create mode 100644 arch/arm/boot/dts/mt7623n-rfb-nand.dts
+>  create mode 100644 arch/arm/boot/dts/mt7623n-rfb.dtsi
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> index 33a2b1e..1d06604 100644
-> --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> @@ -6,21 +6,27 @@ This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
->  Required properties (controller (parent) node):
->   - compatible	: should be one of
->  		  "mediatek,mt2701-u3phy"
-> +		  "mediatek,mt2712-u3phy"
->  		  "mediatek,mt8173-u3phy"
-> - - reg		: offset and length of register for phy, exclude port's
-> -		  register.
-> - - clocks	: a list of phandle + clock-specifier pairs, one for each
-> -		  entry in clock-names
-> - - clock-names	: must contain
-> -		  "u3phya_ref": for reference clock of usb3.0 analog phy.
->  
->  Required nodes	: a sub-node is required for each port the controller
->  		  provides. Address range information including the usual
->  		  'reg' property is used inside these nodes to describe
->  		  the controller's topology.
->  
-> +Optional properties (controller (parent) node):
-> + - reg		: offset and length of register shared by multiple ports,
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.txt b/Documentation/devicetree/bindings/arm/mediatek.txt
+> index c860b24..71149cb 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.txt
+> @@ -38,9 +38,9 @@ Supported boards:
+>  - Evaluation board for MT6795(Helio X10):
+>      Required root node properties:
+>        - compatible = "mediatek,mt6795-evb", "mediatek,mt6795";
+> -- Evaluation board for MT7623:
+> +- Reference  board for MT7623N with NAND:
+>      Required root node properties:
+> -      - compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
+> +      - compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
 
-How is this optional?
+Seems like we should have mt7623n as a compatible.
 
-> +		  exclude port's private register. It is needed on mt2701
-> +		  and mt8173, but not on mt2712.
+>  - MTK mt8127 tablet moose EVB:
+>      Required root node properties:
+>        - compatible = "mediatek,mt8127-moose", "mediatek,mt8127";
+> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> index cccdbcb..9735c2c 100644
+> --- a/arch/arm/boot/dts/Makefile
+> +++ b/arch/arm/boot/dts/Makefile
+> @@ -976,7 +976,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+>  	mt6580-evbp1.dtb \
+>  	mt6589-aquaris5.dtb \
+>  	mt6592-evb.dtb \
+> -	mt7623-evb.dtb \
+> +	mt7623n-rfb-nand.dtb \
+>  	mt8127-moose.dtb \
+>  	mt8135-evbp1.dtb
+>  dtb-$(CONFIG_ARCH_ZX) += zx296702-ad1.dtb
+> diff --git a/arch/arm/boot/dts/mt7623-evb.dts b/arch/arm/boot/dts/mt7623-evb.dts
+> deleted file mode 100644
+> index 58ed038..0000000
+> --- a/arch/arm/boot/dts/mt7623-evb.dts
+> +++ /dev/null
+> @@ -1,33 +0,0 @@
+> -/*
+> - * Copyright (c) 2016 MediaTek Inc.
+> - * Author: John Crispin <blogic@openwrt.org>
+> - *
+> - * This program is free software; you can redistribute it and/or modify
+> - * it under the terms of the GNU General Public License version 2 as
+> - * published by the Free Software Foundation.
+> - *
+> - * This program is distributed in the hope that it will be useful,
+> - * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> - * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> - * GNU General Public License for more details.
+> - */
+> -
+> -/dts-v1/;
+> -#include "mt7623-mt6323.dtsi"
+> -
+> -/ {
+> -	model = "MediaTek MT7623 evaluation board";
+> -	compatible = "mediatek,mt7623-evb", "mediatek,mt7623";
+> -
+> -	chosen {
+> -		stdout-path = &uart2;
+> -	};
+> -
+> -	memory {
+> -		reg = <0 0x80000000 0 0x40000000>;
+> -	};
+> -};
+> -
+> -&uart2 {
+> -	status = "okay";
+> -};
+> diff --git a/arch/arm/boot/dts/mt7623n-rfb-nand.dts b/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+> new file mode 100644
+> index 0000000..436d51c
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/mt7623n-rfb-nand.dts
+> @@ -0,0 +1,21 @@
+> +/*
+> + * Copyright (c) 2016 MediaTek Inc.
+> + * Author: John Crispin <blogic@openwrt.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
 > +
->  Required properties (port (child) node):
->  - reg		: address and length of the register set for the port.
-> +- clocks	: a list of phandle + clock-specifier pairs, one for each
-> +		  entry in clock-names
-> +- clock-names	: must contain
-> +		  "ref_clk": 48M reference clock for HighSpeed analog phy; and
-
-_clk is redundant. Just "ref"
-
-> +			26M reference clock for SuperSpeed analog phy, sometimes is
-> +			24M, 25M or 27M, depended on platform.
->  - #phy-cells	: should be 1 (See second example)
->  		  cell after port phandle is phy type from:
->  			- PHY_TYPE_USB2
-> @@ -31,21 +37,31 @@ Example:
->  u3phy: usb-phy@11290000 {
->  	compatible = "mediatek,mt8173-u3phy";
->  	reg = <0 0x11290000 0 0x800>;
-> -	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> -	clock-names = "u3phya_ref";
->  	#address-cells = <2>;
->  	#size-cells = <2>;
->  	ranges;
->  	status = "okay";
->  
-> -	phy_port0: port@11290800 {
-> -		reg = <0 0x11290800 0 0x800>;
-> +	u2port0: port@11290800 {
-> +		reg = <0 0x11290800 0 0x100>;
-> +		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> +		clock-names = "ref_clk";
->  		#phy-cells = <1>;
->  		status = "okay";
->  	};
->  
-> -	phy_port1: port@11291000 {
-> -		reg = <0 0x11291000 0 0x800>;
-> +	u3port0: port@11290900 {
-> +		reg = <0 0x11290800 0 0x700>;
-> +		clocks = <&clk26m>;
-> +		clock-names = "ref_clk";
-> +		#phy-cells = <1>;
-> +		status = "okay";
+> +/dts-v1/;
+> +#include "mt7623n-rfb.dtsi"
+> +
+> +/ {
+> +	model = "MediaTek MT7623N NAND reference board";
+> +	compatible = "mediatek,mt7623n-rfb-nand", "mediatek,mt7623";
+> +};
+> diff --git a/arch/arm/boot/dts/mt7623n-rfb.dtsi b/arch/arm/boot/dts/mt7623n-rfb.dtsi
+> new file mode 100644
+> index 0000000..d46390e
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/mt7623n-rfb.dtsi
+> @@ -0,0 +1,29 @@
+> +/*
+> + * Copyright (c) 2016 MediaTek Inc.
+> + * Author: John Crispin <blogic@openwrt.org>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License version 2 as
+> + * published by the Free Software Foundation.
+> + *
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> + */
+> +
+> +#include "mt7623-mt6323.dtsi"
+> +
+> +/ {
+> +	chosen {
+> +		stdout-path = &uart2;
 > +	};
 > +
-> +	u2port1: port@11291000 {
-> +		reg = <0 0x11291000 0 0x100>;
-> +		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> +		clock-names = "ref_clk";
->  		#phy-cells = <1>;
->  		status = "okay";
->  	};
-> @@ -64,7 +80,54 @@ Example:
->  
->  usb30: usb@11270000 {
->  	...
-> -	phys = <&phy_port0 PHY_TYPE_USB3>;
-> -	phy-names = "usb3-0";
-> +	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
-> +	phy-names = "usb2-0", "usb3-0";
->  	...
->  };
+> +	memory {
+
+Unless it can change:
+
+memory@80000000
+
+> +		reg = <0 0x80000000 0 0x40000000>;
+> +	};
+> +};
 > +
-> +
-> +Layout differences of banks between mt8173/mt2701 and mt2712
-> +-------------------------------------------------------------
-> +mt8173 and mt2701:
-> +port        offset    bank
-> +shared      0x0000    SPLLC
-> +            0x0100    FMREG
-> +u2 port0    0x0800    U2PHY_COM
-> +u3 port0    0x0900    U3PHYD
-> +            0x0a00    U3PHYD_BANK2
-> +            0x0b00    U3PHYA
-> +            0x0c00    U3PHYA_DA
-> +u2 port1    0x1000    U2PHY_COM
-> +u3 port1    0x1100    U3PHYD
-> +            0x1200    U3PHYD_BANK2
-> +            0x1300    U3PHYA
-> +            0x1400    U3PHYA_DA
-> +u2 port2    0x1800    U2PHY_COM
-> +            ...
-> +
-> +mt2712:
-> +port        offset    bank
-> +u2 port0    0x0000    MISC
-> +            0x0100    FMREG
-> +            0x0300    U2PHY_COM
-> +u3 port0    0x0700    SPLLC
-> +            0x0800    CHIP
-> +            0x0900    U3PHYD
-> +            0x0a00    U3PHYD_BANK2
-> +            0x0b00    U3PHYA
-> +            0x0c00    U3PHYA_DA
-> +u2 port1    0x1000    MISC
-> +            0x1100    FMREG
-> +            0x1300    U2PHY_COM
-> +u3 port1    0x1700    SPLLC
-> +            0x1800    CHIP
-> +            0x1900    U3PHYD
-> +            0x1a00    U3PHYD_BANK2
-> +            0x1b00    U3PHYA
-> +            0x1c00    U3PHYA_DA
-> +u2 port2    0x2000    MISC
-> +            ...
-> +
-> +    SPLLC shared by u3 ports and FMREG shared by u2 ports on
-> +mt8173/mt2701 are put back into each port; a new bank MISC for
-> +u2 ports and CHIP for u3 ports are added on mt2712.
+> +&uart2 {
+> +	status = "okay";
+> +};
 > -- 
-> 1.7.9.5
+> 1.7.10.4
 > 
