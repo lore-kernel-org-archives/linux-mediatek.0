@@ -1,38 +1,59 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] Documentation: mtk-quadspi: update DT bindings
-Date: Fri, 27 Jan 2017 16:29:36 -0600
-Message-ID: <20170127222936.d342eloplti27p4s@rob-hp-laptop>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
- <1485315515-29942-2-git-send-email-guochun.mao@mediatek.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] Documentation: devicetree: change the mediatek
+ ethernet compatible string
+Date: Fri, 27 Jan 2017 16:41:05 -0600
+Message-ID: <20170127224105.e6di34pd3dwgn2hr@rob-hp-laptop>
+References: <1485332455-34743-1-git-send-email-john@phrozen.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <1485315515-29942-2-git-send-email-guochun.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=gmane.org@lists.infradead.org
-To: Guochun Mao <guochun.mao@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Marek Vasut <marek.vasut@gmail.com>, linux-mtd@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <1485332455-34743-1-git-send-email-john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 25, 2017 at 11:38:34AM +0800, Guochun Mao wrote:
-> Add "mediatek,mt2701-nor" for nor flash node's compatible.
+On Wed, Jan 25, 2017 at 09:20:54AM +0100, John Crispin wrote:
+> When the binding was defined, I was not aware that mt2701 was an earlier
+> version of the SoC. For sake of consistency, the ethernet driver should
+> use mt2701 inside the compat string as this is the earliest SoC with the
+> ethernet core.
 > 
-> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> The ethernet driver is currently of no real use until we finish and
+> upstream the DSA driver. There are no users of this binding yet. It should
+> be safe to fix this now before it is too late and we need to provide
+> backward compatibility for the mt7623-eth compat string.
+
+Thanks for the explanation.
+
+> Reported-by: Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> Signed-off-by: John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>
 > ---
->  .../devicetree/bindings/mtd/mtk-quadspi.txt        |    8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/net/mediatek-net.txt |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> index c010faf..c7194e8 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek-net.txt
+> +++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+> @@ -7,7 +7,7 @@ have dual GMAC each represented by a child node..
+>  * Ethernet controller node
+>  
+>  Required properties:
+> -- compatible: Should be "mediatek,mt7623-eth"
+> +- compatible: Should be "mediatek,mt2701-eth"
 
-Acked-by: Rob Herring <robh@kernel.org>
+You should have both strings with 2701 being last. That way if you ever 
+find a difference in the 7623, you don't need a DT update to fix it.
 
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
+>  - reg: Address and length of the register set for the device
+>  - interrupts: Should contain the three frame engines interrupts in numeric
+>  	order. These are fe_int0, fe_int1 and fe_int2.
+> -- 
+> 1.7.10.4
+> 
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
