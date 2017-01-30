@@ -1,31 +1,31 @@
-From: Olof Johansson <olof@lixom.net>
-Subject: Re: [GIT PULL] arm: mediatek: dts changes for v4.11
-Date: Sun, 29 Jan 2017 17:20:16 -0800
-Message-ID: <20170130012016.GB3133@localhost>
-References: <82e017a8-ade7-b16f-740c-6c106f2f8049@gmail.com>
+From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
+Subject: Re: [GIT PULL] arm64: mediatek: dts changes for v4.11
+Date: Sun, 29 Jan 2017 17:21:27 -0800
+Message-ID: <20170130012127.GC3133@localhost>
+References: <943b4e63-d2bc-0b9c-f4a7-4689f2ac48ea@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <82e017a8-ade7-b16f-740c-6c106f2f8049@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: James Liao <jamesjj.liao@mediatek.com>, Leilk Liu <leilk.liu@mediatek.com>, zhiyong.tao@mediatek.com, John Crispin <john@phrozen.org>, Dawei Chien <dawei.chien@mediatek.com>, arm@kernel.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, honghui.zhang@mediatek.com, xiaolei li <xiaolei.li@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+In-Reply-To: <943b4e63-d2bc-0b9c-f4a7-4689f2ac48ea-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
+List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
+ <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 25, 2017 at 02:46:56PM +0100, Matthias Brugger wrote:
+On Wed, Jan 25, 2017 at 02:48:24PM +0100, Matthias Brugger wrote:
 > Hi Arnd, hi Olof,
 > 
-> Please merge the following changes for 32-bit dts files.
+> Please merge the following changes for 64-bit dts files.
 > 
 > Thanks,
 > Matthias
@@ -38,27 +38,20 @@ On Wed, Jan 25, 2017 at 02:46:56PM +0100, Matthias Brugger wrote:
 > 
 > are available in the git repository at:
 > 
->   https://github.com/mbgg/linux-mediatek.git tags/v4.10-next-dts32
+>   https://github.com/mbgg/linux-mediatek.git tags/v4.10-next-dts
 > 
-> for you to fetch changes up to e348dc74f798c2df31c685bf0c814396f4f3b735:
+> for you to fetch changes up to 6de18454e06f4eb9c0c7008d3999cd1d0b289d42:
 > 
->   arm: dts: mt2701: Add thermal device node. (2017-01-24 11:24:35 +0100)
+>   arm64: dts: mt8173: add node for thermal calibration (2017-01-23 10:18:13
+> +0100)
 > 
 > ----------------------------------------------------------------
-> Lots of updates for mt2701:
-> Rearrange the dt nodes and fix unit address for pincontroler
-> Add nodes for:
-> - clock controller subsystems
-> - scpsys controller
-> - iommu and smi
-> - spi
-> - nand
-> - auxadc
-> - thermal controller and zones
-> 
-> Email address updated for mt7623 devicetree files.
+> For mt8173:
+> - set mm_sel clock to 400 MHz to support 4K HDMI
+> - adjust power efficiency between the little and big cores
+> - add a node for thermal calibration via e-fuse data
 
-Merged, thanks!
+Merged, thanks.
 
 
 -Olof
