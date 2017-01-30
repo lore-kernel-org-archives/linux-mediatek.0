@@ -1,57 +1,66 @@
-From: Olof Johansson <olof-nZhT3qVonbNeoWH0uzbU5w@public.gmane.org>
-Subject: Re: [GIT PULL] arm64: mediatek: dts changes for v4.11
-Date: Sun, 29 Jan 2017 17:21:27 -0800
-Message-ID: <20170130012127.GC3133@localhost>
-References: <943b4e63-d2bc-0b9c-f4a7-4689f2ac48ea@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 1/2] spi: When no dma_chan map buffers with spi_master's
+ parent
+Date: Mon, 30 Jan 2017 11:44:30 +0000
+Message-ID: <81ab617f-95fb-17d1-88d2-5cf5f74bab03@arm.com>
+References: <20170126162154.124287-1-djkurtz@chromium.org>
+ <CAHp75Vfzz7U3=R4dFSgr-eXuOfH1_eLDKcPSWmWdUcTS_tggdw@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <943b4e63-d2bc-0b9c-f4a7-4689f2ac48ea-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, arm-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Bibby Hsieh <bibby.hsieh-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <CAHp75Vfzz7U3=R4dFSgr-eXuOfH1_eLDKcPSWmWdUcTS_tggdw@mail.gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Andy Shevchenko <andy.shevchenko@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Leilk Liu <leilk.liu@mediatek.com>, open list <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, dtor@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, Jan 25, 2017 at 02:48:24PM +0100, Matthias Brugger wrote:
-> Hi Arnd, hi Olof,
+On 28/01/17 22:17, Andy Shevchenko wrote:
+> On Thu, Jan 26, 2017 at 6:21 PM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+>> Back before commit 1dccb598df54 ("arm64: simplify dma_get_ops"), for
+>> arm64, devices for which dma_ops were not explicitly set were automatically
+>> configured to use swiotlb_dma_ops, since this was hard-coded as the
+>> global "dma_ops" in arm64_dma_init().
+>>
+>> Now that global "dma_ops" has been removed, all devices much have their
+>> dma_ops explicitly set by a call to arch_setup_dma_ops(), otherwise the
+>> device is assigned dummy_dma_ops, and thus calls to map_sg for such a
+>> device will fail (return 0).
+>>
+>> Mediatek SPI uses DMA but does not use a dma channel.  Support for this
+>> was added by commit c37f45b5f1cd ("spi: support spi without dma channel
+>> to use can_dma()"), which uses the master_spi dev to DMA map buffers.
+>>
+>> The master_spi device is not a platform device, rather it is created
+>> in spi_alloc_device(), and therefore its dma_ops are never set.
+>>
+>> Therefore, when the mediatek SPI driver when it does DMA (for large SPI
+>> transactions > 32 bytes), SPI will use spi_map_buf()->dma_map_sg() to
+>> map the buffer for use in DMA.  But dma_map_sg()->dma_map_sg_attrs() returns
+>> 0, because ops->map_sg is dummy_dma_ops->__dummy_map_sg, and hence
+>> spi_map_buf() returns -ENOMEM (-12).
+>>
+>> Fix this by using the real spi_master's parent device which should be a
+>> real physical device with DMA properties.
 > 
-> Please merge the following changes for 64-bit dts files.
-> 
-> Thanks,
-> Matthias
-> 
-> ---
-> 
-> The following changes since commit 7ce7d89f48834cefece7804d38fc5d85382edf77:
-> 
->   Linux 4.10-rc1 (2016-12-25 16:13:08 -0800)
-> 
-> are available in the git repository at:
-> 
->   https://github.com/mbgg/linux-mediatek.git tags/v4.10-next-dts
-> 
-> for you to fetch changes up to 6de18454e06f4eb9c0c7008d3999cd1d0b289d42:
-> 
->   arm64: dts: mt8173: add node for thermal calibration (2017-01-23 10:18:13
-> +0100)
-> 
-> ----------------------------------------------------------------
-> For mt8173:
-> - set mm_sel clock to 400 MHz to support 4K HDMI
-> - adjust power efficiency between the little and big cores
-> - add a node for thermal calibration via e-fuse data
+> Wouldn't be better to copy necessary stuff from parent device to its
+> child? Like DMA mask propagation (I dunno if there are such in SPI,
+> but at least many other drivers are doing that).
 
-Merged, thanks.
+Absolutely not. The "necessary stuff" includes arch-specific things
+which would require filling the SPI code with arch-specific #ifdefs, and
+may go as far as private data structures held by other drivers (e.g.
+IOMMUs) which the SPI code cannot even touch, let alone know what to do
+with. The "parent device" here *is* the real DMA master device (as
+described by firmware and configured by the arch code accordingly), so
+using any other device for DMA is just plain wrong.
 
-
--Olof
+Robin.
