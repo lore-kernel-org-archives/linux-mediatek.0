@@ -1,15 +1,14 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 1/2] spi: When no dma_chan map buffers with spi_master's
- parent
-Date: Mon, 30 Jan 2017 11:44:30 +0000
-Message-ID: <81ab617f-95fb-17d1-88d2-5cf5f74bab03@arm.com>
-References: <20170126162154.124287-1-djkurtz@chromium.org>
- <CAHp75Vfzz7U3=R4dFSgr-eXuOfH1_eLDKcPSWmWdUcTS_tggdw@mail.gmail.com>
+From: Boris Brezillon <boris.brezillon@free-electrons.com>
+Subject: Re: [PATCH -next] mtd: nand: mediatek: remove redundant dev_err
+ call in mtk_nfc_probe()
+Date: Mon, 30 Jan 2017 13:36:47 +0100
+Message-ID: <20170130133647.1c383bd8@bbrezillon>
+References: <20170117142246.9607-1-weiyj.lk@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <CAHp75Vfzz7U3=R4dFSgr-eXuOfH1_eLDKcPSWmWdUcTS_tggdw@mail.gmail.com>
+In-Reply-To: <20170117142246.9607-1-weiyj.lk@gmail.com>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -19,48 +18,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andy Shevchenko <andy.shevchenko@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Leilk Liu <leilk.liu@mediatek.com>, open list <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, dtor@chromium.org, "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+To: Wei Yongjun <weiyj.lk@gmail.com>
+Cc: Richard Weinberger <richard@nod.at>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Marek Vasut <marek.vasut@gmail.com>, Wei Yongjun <weiyongjun1@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On 28/01/17 22:17, Andy Shevchenko wrote:
-> On Thu, Jan 26, 2017 at 6:21 PM, Daniel Kurtz <djkurtz@chromium.org> wrote:
->> Back before commit 1dccb598df54 ("arm64: simplify dma_get_ops"), for
->> arm64, devices for which dma_ops were not explicitly set were automatically
->> configured to use swiotlb_dma_ops, since this was hard-coded as the
->> global "dma_ops" in arm64_dma_init().
->>
->> Now that global "dma_ops" has been removed, all devices much have their
->> dma_ops explicitly set by a call to arch_setup_dma_ops(), otherwise the
->> device is assigned dummy_dma_ops, and thus calls to map_sg for such a
->> device will fail (return 0).
->>
->> Mediatek SPI uses DMA but does not use a dma channel.  Support for this
->> was added by commit c37f45b5f1cd ("spi: support spi without dma channel
->> to use can_dma()"), which uses the master_spi dev to DMA map buffers.
->>
->> The master_spi device is not a platform device, rather it is created
->> in spi_alloc_device(), and therefore its dma_ops are never set.
->>
->> Therefore, when the mediatek SPI driver when it does DMA (for large SPI
->> transactions > 32 bytes), SPI will use spi_map_buf()->dma_map_sg() to
->> map the buffer for use in DMA.  But dma_map_sg()->dma_map_sg_attrs() returns
->> 0, because ops->map_sg is dummy_dma_ops->__dummy_map_sg, and hence
->> spi_map_buf() returns -ENOMEM (-12).
->>
->> Fix this by using the real spi_master's parent device which should be a
->> real physical device with DMA properties.
+On Tue, 17 Jan 2017 14:22:46 +0000
+Wei Yongjun <weiyj.lk@gmail.com> wrote:
+
+> From: Wei Yongjun <weiyongjun1@huawei.com>
 > 
-> Wouldn't be better to copy necessary stuff from parent device to its
-> child? Like DMA mask propagation (I dunno if there are such in SPI,
-> but at least many other drivers are doing that).
+> There is a error message within devm_ioremap_resource
+> already, so remove the dev_err call to avoid redundant
+> error message.
+> 
 
-Absolutely not. The "necessary stuff" includes arch-specific things
-which would require filling the SPI code with arch-specific #ifdefs, and
-may go as far as private data structures held by other drivers (e.g.
-IOMMUs) which the SPI code cannot even touch, let alone know what to do
-with. The "parent device" here *is* the real DMA master device (as
-described by firmware and configured by the arch code accordingly), so
-using any other device for DMA is just plain wrong.
+Applied.
 
-Robin.
+Thanks,
+
+Boris
+
+> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+> ---
+>  drivers/mtd/nand/mtk_nand.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/mtd/nand/mtk_nand.c b/drivers/mtd/nand/mtk_nand.c
+> index 6c3eed3..6c517c6 100644
+> --- a/drivers/mtd/nand/mtk_nand.c
+> +++ b/drivers/mtd/nand/mtk_nand.c
+> @@ -1383,7 +1383,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
+>  	nfc->regs = devm_ioremap_resource(dev, res);
+>  	if (IS_ERR(nfc->regs)) {
+>  		ret = PTR_ERR(nfc->regs);
+> -		dev_err(dev, "no nfi base\n");
+>  		goto release_ecc;
+>  	}
+>  
+> 
+> 
+> 
