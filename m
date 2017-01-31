@@ -1,35 +1,155 @@
-From: Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] Documentation: mtk-quadspi: update DT bindings
-Date: Mon, 30 Jan 2017 13:49:52 +0100
-Message-ID: <90bfb55c-eb01-af2f-d2f7-49f1f33da3b2@atmel.com>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
- <1485315515-29942-2-git-send-email-guochun.mao@mediatek.com>
- <20170127222936.d342eloplti27p4s@rob-hp-laptop>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "spi: mediatek: Only do dma for 4-byte aligned buffers" to
+ the spi tree
+Date: Tue, 31 Jan 2017 20:02:52 +0000
+Message-ID: <E1cYedg-0005l9-8F@debutante>
+References: <20170126162154.124287-2-djkurtz@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170127222936.d342eloplti27p4s@rob-hp-laptop>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20170126162154.124287-2-djkurtz@chromium.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Daniel Kurtz <djkurtz@chromium.org>
+Cc: drinkcat@chromium.org, Leilk Liu <leilk.liu@mediatek.com>, Robin Murphy <robin.murphy@arm.com>, open list <linux-kernel@vger.kernel.org>, linux-spi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>, "moderated list:ARM/Mediatek SoC,
+ support" <linux-mediatek@lists.infradead.org>, groeck@chromium.org, dtor@chromium.org, "moderated list:ARM/Mediatek SoC,
+ support" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-Le 27/01/2017 à 23:29, Rob Herring a écrit :
-> On Wed, Jan 25, 2017 at 11:38:34AM +0800, Guochun Mao wrote:
->> Add "mediatek,mt2701-nor" for nor flash node's compatible.
->>
->> Signed-off-by: Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
->> ---
->>  .../devicetree/bindings/mtd/mtk-quadspi.txt        |    8 +++++++-
->>  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> 
-Applied to the github spi-nor tree.
+The patch
 
-Thanks!
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+   spi: mediatek: Only do dma for 4-byte aligned buffers
+
+has been applied to the spi tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 1ce24864bff40e11500a699789412115fdf244bf Mon Sep 17 00:00:00 2001
+From: Daniel Kurtz <djkurtz@chromium.org>
+Date: Fri, 27 Jan 2017 00:21:54 +0800
+Subject: [PATCH] spi: mediatek: Only do dma for 4-byte aligned buffers
+
+Mediatek SPI DMA only works when tx and rx buffer addresses are 4-byte
+aligned.
+
+Unaligned DMA transactions appeared to work previously, since we the
+spi core was incorrectly using the spi_master device for dma, which
+had a 0 dma_mask, and therefore the swiotlb dma map operations were
+falling back to using bounce buffers.  Since each DMA transaction would
+use its own buffer, the mapped starting address of each transaction was
+always aligned.  When doing real DMA, the mapped address will share the
+alignment of the raw tx/rx buffer provided by the SPI user, which may or
+may not be aligned.
+
+If a buffer is not aligned, we cannot use DMA, and must use FIFO based
+transaction instead.
+
+So, this patch implements a scheme that allows using the FIFO for
+arbitrary length transactions (larger than the 32-byte FIFO size) by
+reloading the FIFO in the interrupt handler.
+
+Signed-off-by: Daniel Kurtz <djkurtz@chromium.org>
+Cc: Leilk Liu <leilk.liu@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ drivers/spi/spi-mt65xx.c | 37 +++++++++++++++++++++++++++++++++----
+ 1 file changed, 33 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 899d7a8f0889..278867a31950 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -73,7 +73,7 @@
+ #define MTK_SPI_IDLE 0
+ #define MTK_SPI_PAUSED 1
+ 
+-#define MTK_SPI_MAX_FIFO_SIZE 32
++#define MTK_SPI_MAX_FIFO_SIZE 32U
+ #define MTK_SPI_PACKET_SIZE 1024
+ 
+ struct mtk_spi_compatible {
+@@ -333,7 +333,7 @@ static int mtk_spi_fifo_transfer(struct spi_master *master,
+ 	struct mtk_spi *mdata = spi_master_get_devdata(master);
+ 
+ 	mdata->cur_transfer = xfer;
+-	mdata->xfer_len = xfer->len;
++	mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, xfer->len);
+ 	mtk_spi_prepare_transfer(master, xfer);
+ 	mtk_spi_setup_packet(master);
+ 
+@@ -410,7 +410,10 @@ static bool mtk_spi_can_dma(struct spi_master *master,
+ 			    struct spi_device *spi,
+ 			    struct spi_transfer *xfer)
+ {
+-	return xfer->len > MTK_SPI_MAX_FIFO_SIZE;
++	/* Buffers for DMA transactions must be 4-byte aligned */
++	return (xfer->len > MTK_SPI_MAX_FIFO_SIZE &&
++		(unsigned long)xfer->tx_buf % 4 == 0 &&
++		(unsigned long)xfer->rx_buf % 4 == 0);
+ }
+ 
+ static int mtk_spi_setup(struct spi_device *spi)
+@@ -451,7 +454,33 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
+ 					&reg_val, remainder);
+ 			}
+ 		}
+-		spi_finalize_current_transfer(master);
++
++		trans->len -= mdata->xfer_len;
++		if (!trans->len) {
++			spi_finalize_current_transfer(master);
++			return IRQ_HANDLED;
++		}
++
++		if (trans->tx_buf)
++			trans->tx_buf += mdata->xfer_len;
++		if (trans->rx_buf)
++			trans->rx_buf += mdata->xfer_len;
++
++		mdata->xfer_len = min(MTK_SPI_MAX_FIFO_SIZE, trans->len);
++		mtk_spi_setup_packet(master);
++
++		cnt = trans->len / 4;
++		iowrite32_rep(mdata->base + SPI_TX_DATA_REG, trans->tx_buf, cnt);
++
++		remainder = trans->len % 4;
++		if (remainder > 0) {
++			reg_val = 0;
++			memcpy(&reg_val, trans->tx_buf + (cnt * 4), remainder);
++			writel(reg_val, mdata->base + SPI_TX_DATA_REG);
++		}
++
++		mtk_spi_enable_transfer(master);
++
+ 		return IRQ_HANDLED;
+ 	}
+ 
+-- 
+2.11.0
