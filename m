@@ -1,50 +1,51 @@
-From: James Liao <jamesjj.liao@mediatek.com>
-Subject: Re: [PATCH 2/2] net-next: ethernet: mediatek: change the compatible
- string
-Date: Thu, 2 Feb 2017 13:07:29 +0800
-Message-ID: <1486012049.25978.1.camel@mtksdaap41>
-References: <1485332455-34743-1-git-send-email-john@phrozen.org>
-         <1485332455-34743-2-git-send-email-john@phrozen.org>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] iommu: mtk: remove bogus 'select' statements
+Date: Thu,  2 Feb 2017 15:29:03 +0100
+Message-ID: <20170202142921.3467470-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1485332455-34743-2-git-send-email-john@phrozen.org>
-Sender: netdev-owner@vger.kernel.org
-To: John Crispin <john@phrozen.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org, Honghui Zhang <honghui.zhang@mediatek.com>, Andy Fleming <afleming@gmail.com>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-01-25 at 09:20 +0100, John Crispin wrote:
-> When the binding was defined, I was not aware that mt2701 was an earlier
-> version of the SoC. For sake of consistency, the ethernet driver should
-> use mt2701 inside the compat string as this is the earliest SoC with the
-> ethernet core.
-> 
-> The ethernet driver is currently of no real use until we finish and
-> upstream the DSA driver. There are no users of this binding yet. It should
-> be safe to fix this now before it is too late and we need to provide
-> backward compatibility for the mt7623-eth compat string.
-> 
-> Reported-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: John Crispin <john@phrozen.org>
+The mediatek IOMMU driver enables some drivers that it does not directly
+rely on, and that causes a warning for build testing:
 
-Acked-by: James Liao <jamesjj.liao@mediatek.com>
+warning: (MTK_IOMMU_V1) selects COMMON_CLK_MT2701_VDECSYS which has unmet direct dependencies (COMMON_CLK && COMMON_CLK_MT2701)
+warning: (MTK_IOMMU_V1) selects COMMON_CLK_MT2701_IMGSYS which has unmet direct dependencies (COMMON_CLK && COMMON_CLK_MT2701)
+warning: (MTK_IOMMU_V1) selects COMMON_CLK_MT2701_MMSYS which has unmet direct dependencies (COMMON_CLK && COMMON_CLK_MT2701)
 
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 25ae0c5..9e75768 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2515,7 +2515,7 @@ static int mtk_remove(struct platform_device *pdev)
->  }
->  
->  const struct of_device_id of_mtk_match[] = {
-> -	{ .compatible = "mediatek,mt7623-eth" },
-> +	{ .compatible = "mediatek,mt2701-eth" },
->  	{},
->  };
->  MODULE_DEVICE_TABLE(of, of_mtk_match);
+This removes the select statements.
+
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/iommu/Kconfig | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/iommu/Kconfig b/drivers/iommu/Kconfig
+index bb537d06d319..8b6fd8928819 100644
+--- a/drivers/iommu/Kconfig
++++ b/drivers/iommu/Kconfig
+@@ -352,9 +352,6 @@ config MTK_IOMMU_V1
+ 	select IOMMU_API
+ 	select MEMORY
+ 	select MTK_SMI
+-	select COMMON_CLK_MT2701_MMSYS
+-	select COMMON_CLK_MT2701_IMGSYS
+-	select COMMON_CLK_MT2701_VDECSYS
+ 	help
+ 	  Support for the M4U on certain Mediatek SoCs. M4U generation 1 HW is
+ 	  Multimedia Memory Managememt Unit. This option enables remapping of
+-- 
+2.9.0
