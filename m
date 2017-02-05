@@ -1,133 +1,100 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH 08/10] iommu/mediatek: Make use of iommu_device_register
-	interface
-Date: Fri,  3 Feb 2017 16:17:46 +0100
-Message-ID: <1486135068-23994-9-git-send-email-joro@8bytes.org>
-References: <1486135068-23994-1-git-send-email-joro@8bytes.org>
+From: Guochun Mao <guochun.mao@mediatek.com>
+Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
+Date: Sun, 5 Feb 2017 12:00:49 +0800
+Message-ID: <1486267249.10417.9.camel@mhfsdcap03>
+References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
+ <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <1486135068-23994-1-git-send-email-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
-	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
-Cc: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Boris Brezillon <boris.brezillon@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+On Wed, 2017-01-25 at 11:38 +0800, Guochun Mao wrote:
+> Add Mediatek nor flash node.
+> 
+> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> ---
+>  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
+>  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
+>  2 files changed, 37 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
+> index 082ca88..85e5ae8 100644
+> --- a/arch/arm/boot/dts/mt2701-evb.dts
+> +++ b/arch/arm/boot/dts/mt2701-evb.dts
+> @@ -24,6 +24,31 @@
+>  	};
+>  };
+>  
+> +&nor_flash {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&nor_pins_default>;
+> +	status = "okay";
+> +	flash@0 {
+> +		compatible = "jedec,spi-nor";
+> +		reg = <0>;
+> +	};
+> +};
+> +
+> +&pio {
+> +	nor_pins_default: nor {
+> +		pins1 {
+> +			pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
+> +				 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
+> +				 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
+> +				 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
+> +				 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
+> +				 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
+> +			drive-strength = <MTK_DRIVE_4mA>;
+> +			bias-pull-up;
+> +		};
+> +	};
+> +};
+> +
+>  &uart0 {
+>  	status = "okay";
+>  };
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index bdf8954..1eefce4 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -227,6 +227,18 @@
+>  		status = "disabled";
+>  	};
+>  
+> +	nor_flash: spi@11014000 {
+> +		compatible = "mediatek,mt2701-nor",
+> +			     "mediatek,mt8173-nor";
+> +		reg = <0 0x11014000 0 0xe0>;
+> +		clocks = <&pericfg CLK_PERI_FLASH>,
+> +			 <&topckgen CLK_TOP_FLASH_SEL>;
+> +		clock-names = "spi", "sf";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		status = "disabled";
+> +	};
+> +
+>  	mmsys: syscon@14000000 {
+>  		compatible = "mediatek,mt2701-mmsys", "syscon";
+>  		reg = <0 0x14000000 0 0x1000>;
 
-Register individual Mediatek IOMMUs to the iommu core and
-add sysfs entries.
+Hi,
+mtk-quadspi.txt had been updated as suggested.
+Is there suggestion about this patch?
+Thanks.
 
-Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Signed-off-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
----
- drivers/iommu/mtk_iommu.c | 26 ++++++++++++++++++++++++++
- drivers/iommu/mtk_iommu.h |  2 ++
- 2 files changed, 28 insertions(+)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 1479c76..9fb7258 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -360,11 +360,15 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 
- static int mtk_iommu_add_device(struct device *dev)
- {
-+	struct mtk_iommu_data *data;
- 	struct iommu_group *group;
- 
- 	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
- 		return -ENODEV; /* Not a iommu client device */
- 
-+	data = dev->iommu_fwspec->iommu_priv;
-+	iommu_device_link(&data->iommu, dev);
-+
- 	group = iommu_group_get_for_dev(dev);
- 	if (IS_ERR(group))
- 		return PTR_ERR(group);
-@@ -375,9 +379,14 @@ static int mtk_iommu_add_device(struct device *dev)
- 
- static void mtk_iommu_remove_device(struct device *dev)
- {
-+	struct mtk_iommu_data *data;
-+
- 	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
-+	data = dev->iommu_fwspec->iommu_priv;
-+	iommu_device_unlink(&data->iommu, dev);
-+
- 	iommu_group_remove_device(dev);
- 	iommu_fwspec_free(dev);
- }
-@@ -497,6 +506,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	struct mtk_iommu_data   *data;
- 	struct device           *dev = &pdev->dev;
- 	struct resource         *res;
-+	resource_size_t		ioaddr;
- 	struct component_match  *match = NULL;
- 	void                    *protect;
- 	int                     i, larb_nr, ret;
-@@ -519,6 +529,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	data->base = devm_ioremap_resource(dev, res);
- 	if (IS_ERR(data->base))
- 		return PTR_ERR(data->base);
-+	ioaddr = res->start;
- 
- 	data->irq = platform_get_irq(pdev, 0);
- 	if (data->irq < 0)
-@@ -567,6 +578,18 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
-+	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
-+				     "mtk-iommu.%pa", &ioaddr);
-+	if (ret)
-+		return ret;
-+
-+	data->iommu.ops    = &mtk_iommu_ops;
-+	data->iommu.fwnode = &pdev->dev.of_node->fwnode;
-+
-+	ret = iommu_device_register(&data->iommu);
-+	if (ret)
-+		return ret;
-+
- 	if (!iommu_present(&platform_bus_type))
- 		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
- 
-@@ -577,6 +600,9 @@ static int mtk_iommu_remove(struct platform_device *pdev)
- {
- 	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
- 
-+	iommu_device_sysfs_remove(&data->iommu);
-+	iommu_device_unregister(&data->iommu);
-+
- 	if (iommu_present(&platform_bus_type))
- 		bus_set_iommu(&platform_bus_type, NULL);
- 
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index 50177f7..2a28ead 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -47,6 +47,8 @@ struct mtk_iommu_data {
- 	struct iommu_group		*m4u_group;
- 	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
- 	bool                            enable_4GB;
-+
-+	struct iommu_device		iommu;
- };
- 
- static inline int compare_of(struct device *dev, void *data)
--- 
-1.9.1
+BR,
+Guochun
