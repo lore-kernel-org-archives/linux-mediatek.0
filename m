@@ -1,100 +1,47 @@
-From: Guochun Mao <guochun.mao@mediatek.com>
-Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
-Date: Sun, 5 Feb 2017 12:00:49 +0800
-Message-ID: <1486267249.10417.9.camel@mhfsdcap03>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
- <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
+From: Wei Yongjun <weiyj.lk-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH -next] usb: mtu3: remove redundant dev_err call in get_ssusb_rscs()
+Date: Sun,  5 Feb 2017 16:25:38 +0000
+Message-ID: <20170205162538.25781-1-weiyj.lk@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=ISO-8859-1
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Boris Brezillon <boris.brezillon@free-electrons.com>, Marek Vasut <marek.vasut@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Cc: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Wed, 2017-01-25 at 11:38 +0800, Guochun Mao wrote:
-> Add Mediatek nor flash node.
-> 
-> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
-> ---
->  arch/arm/boot/dts/mt2701-evb.dts |   25 +++++++++++++++++++++++++
->  arch/arm/boot/dts/mt2701.dtsi    |   12 ++++++++++++
->  2 files changed, 37 insertions(+)
-> 
-> diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-> index 082ca88..85e5ae8 100644
-> --- a/arch/arm/boot/dts/mt2701-evb.dts
-> +++ b/arch/arm/boot/dts/mt2701-evb.dts
-> @@ -24,6 +24,31 @@
->  	};
->  };
->  
-> +&nor_flash {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&nor_pins_default>;
-> +	status = "okay";
-> +	flash@0 {
-> +		compatible = "jedec,spi-nor";
-> +		reg = <0>;
-> +	};
-> +};
-> +
-> +&pio {
-> +	nor_pins_default: nor {
-> +		pins1 {
-> +			pinmux = <MT2701_PIN_240_EXT_XCS__FUNC_EXT_XCS>,
-> +				 <MT2701_PIN_241_EXT_SCK__FUNC_EXT_SCK>,
-> +				 <MT2701_PIN_239_EXT_SDIO0__FUNC_EXT_SDIO0>,
-> +				 <MT2701_PIN_238_EXT_SDIO1__FUNC_EXT_SDIO1>,
-> +				 <MT2701_PIN_237_EXT_SDIO2__FUNC_EXT_SDIO2>,
-> +				 <MT2701_PIN_236_EXT_SDIO3__FUNC_EXT_SDIO3>;
-> +			drive-strength = <MTK_DRIVE_4mA>;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +};
-> +
->  &uart0 {
->  	status = "okay";
->  };
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index bdf8954..1eefce4 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -227,6 +227,18 @@
->  		status = "disabled";
->  	};
->  
-> +	nor_flash: spi@11014000 {
-> +		compatible = "mediatek,mt2701-nor",
-> +			     "mediatek,mt8173-nor";
-> +		reg = <0 0x11014000 0 0xe0>;
-> +		clocks = <&pericfg CLK_PERI_FLASH>,
-> +			 <&topckgen CLK_TOP_FLASH_SEL>;
-> +		clock-names = "spi", "sf";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		status = "disabled";
-> +	};
-> +
->  	mmsys: syscon@14000000 {
->  		compatible = "mediatek,mt2701-mmsys", "syscon";
->  		reg = <0 0x14000000 0 0x1000>;
+From: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
 
-Hi,
-mtk-quadspi.txt had been updated as suggested.
-Is there suggestion about this patch?
-Thanks.
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
 
-BR,
-Guochun
+Signed-off-by: Wei Yongjun <weiyongjun1-hv44wF8Li93QT0dZR+AlfA@public.gmane.org>
+---
+ drivers/usb/mtu3/mtu3_plat.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 19a345d..4559baa 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -252,10 +252,8 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 
+ 	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "ippc");
+ 	ssusb->ippc_base = devm_ioremap_resource(dev, res);
+-	if (IS_ERR(ssusb->ippc_base)) {
+-		dev_err(dev, "failed to map memory for ippc\n");
++	if (IS_ERR(ssusb->ippc_base))
+ 		return PTR_ERR(ssusb->ippc_base);
+-	}
+ 
+ 	ssusb->dr_mode = usb_get_dr_mode(dev);
+ 	if (ssusb->dr_mode == USB_DR_MODE_UNKNOWN) {
+
+
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
