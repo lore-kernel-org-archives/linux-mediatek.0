@@ -1,100 +1,80 @@
-From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v2 3/6] usb: xhci-mtk: add reference clock
-Date: Mon, 6 Feb 2017 17:28:58 +0800
-Message-ID: <1486373341-4399-3-git-send-email-chunfeng.yun@mediatek.com>
-References: <1486373341-4399-1-git-send-email-chunfeng.yun@mediatek.com>
+From: Mars Cheng <mars.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 00/10] Add Basic SoC support for MT6797
+Date: Mon, 6 Feb 2017 20:15:26 +0800
+Message-ID: <1486383336-16892-1-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1486373341-4399-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: CC Hwang <cc.hwang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Loda Chou <loda.chou-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Miles Chen <miles.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jades Shih <jades.shih-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, My Chuang <my.chuang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, wsd_upstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Stephen Boyd <sboyd-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chieh-Jay Liu <Chieh-Jay.Liu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-usually, the reference clock comes from 26M oscillator directly,
-but some SoCs are not, add it for compatibility.
+This patch set adds basic SoC support for mediatek's first 10-core
+chip, X20, also known as MT6797.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/usb/host/xhci-mtk.c |   22 ++++++++++++++++++++++
- drivers/usb/host/xhci-mtk.h |    1 +
- 2 files changed, 23 insertions(+)
+- based on 4.10-rc2
+- support multiple base address for sysirq
+- support common clk
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 1094ebd..75bae8e 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -212,6 +212,12 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- {
- 	int ret;
- 
-+	ret = clk_prepare_enable(mtk->ref_clk);
-+	if (ret) {
-+		dev_err(mtk->dev, "failed to enable ref_clk\n");
-+		goto ref_clk_err;
-+	}
-+
- 	ret = clk_prepare_enable(mtk->sys_clk);
- 	if (ret) {
- 		dev_err(mtk->dev, "failed to enable sys_clk\n");
-@@ -238,6 +244,8 @@ static int xhci_mtk_clks_enable(struct xhci_hcd_mtk *mtk)
- usb_p0_err:
- 	clk_disable_unprepare(mtk->sys_clk);
- sys_clk_err:
-+	clk_disable_unprepare(mtk->ref_clk);
-+ref_clk_err:
- 	return -EINVAL;
- }
- 
-@@ -248,6 +256,7 @@ static void xhci_mtk_clks_disable(struct xhci_hcd_mtk *mtk)
- 		clk_disable_unprepare(mtk->wk_deb_p0);
- 	}
- 	clk_disable_unprepare(mtk->sys_clk);
-+	clk_disable_unprepare(mtk->ref_clk);
- }
- 
- /* only clocks can be turn off for ip-sleep wakeup mode */
-@@ -550,6 +559,19 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 		return PTR_ERR(mtk->sys_clk);
- 	}
- 
-+	/*
-+	 * reference clock is usually a "fixed-clock", make it optional
-+	 * for backward compatibility and ignore the error if it does
-+	 * not exist.
-+	 */
-+	mtk->ref_clk = devm_clk_get(dev, "ref_ck");
-+	if (IS_ERR(mtk->ref_clk)) {
-+		if (PTR_ERR(mtk->ref_clk) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+
-+		mtk->ref_clk = NULL;
-+	}
-+
- 	mtk->lpm_support = of_property_read_bool(node, "usb3-lpm-capable");
- 
- 	ret = usb_wakeup_of_property_parse(mtk, node);
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 2845c49..3aa5e1d 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -124,6 +124,7 @@ struct xhci_hcd_mtk {
- 	struct regulator *vusb33;
- 	struct regulator *vbus;
- 	struct clk *sys_clk;	/* sys and mac clock */
-+	struct clk *ref_clk;
- 	struct clk *wk_deb_p0;	/* port0's wakeup debounce clock */
- 	struct clk *wk_deb_p1;
- 	struct regmap *pericfg;
--- 
+Changes since v1:
+- add multiple base addresses support, v1 only allow 2 bases
+- clean up clk driver
+
+
+Kevin-CW Chen (2):
+  dt-bindings: arm: mediatek: document clk bindings for MT6797
+  clk: mediatek: add clk support for MT6797
+
+Mars Cheng (8):
+  Document: DT: mediatek: multiple base address support for sysirq
+  irqchip: mtk-sysirq: extend intpol base to arbitrary number
+  Document: DT: Add bindings for mediatek MT6797 SoC Platform
+  arm64: dts: mediatek: add mt6797 support
+  soc: mediatek: refine scysys for mediatek platforms
+  soc: mediatek: add MT6797 power dt-bindings
+  soc: mediatek: add MT6797 scysys support
+  arm64: dts: mediatek: add clk nodes for MT6797
+
+ Documentation/devicetree/bindings/arm/mediatek.txt |    4 +
+ .../bindings/arm/mediatek/mediatek,apmixedsys.txt  |    1 +
+ .../bindings/arm/mediatek/mediatek,imgsys.txt      |    1 +
+ .../bindings/arm/mediatek/mediatek,infracfg.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |    1 +
+ .../bindings/arm/mediatek/mediatek,topckgen.txt    |    1 +
+ .../bindings/arm/mediatek/mediatek,vdecsys.txt     |    1 +
+ .../bindings/arm/mediatek/mediatek,vencsys.txt     |    3 +-
+ .../interrupt-controller/mediatek,sysirq.txt       |   14 +-
+ .../devicetree/bindings/serial/mtk-uart.txt        |    1 +
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |    6 +-
+ arch/arm64/boot/dts/mediatek/Makefile              |    1 +
+ arch/arm64/boot/dts/mediatek/mt6797-evb.dts        |   36 +
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi           |  250 +++++++
+ drivers/clk/mediatek/Kconfig                       |   33 +
+ drivers/clk/mediatek/Makefile                      |    5 +
+ drivers/clk/mediatek/clk-mt6797-img.c              |   76 +++
+ drivers/clk/mediatek/clk-mt6797-mm.c               |  136 ++++
+ drivers/clk/mediatek/clk-mt6797-vdec.c             |   93 +++
+ drivers/clk/mediatek/clk-mt6797-venc.c             |   78 +++
+ drivers/clk/mediatek/clk-mt6797.c                  |  716 ++++++++++++++++++++
+ drivers/irqchip/irq-mtk-sysirq.c                   |   71 +-
+ drivers/soc/mediatek/mtk-scpsys.c                  |  149 +++-
+ include/dt-bindings/clock/mt6797-clk.h             |  281 ++++++++
+ include/dt-bindings/power/mt6797-power.h           |   30 +
+ 25 files changed, 1956 insertions(+), 33 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6797-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6797.dtsi
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt6797.c
+ create mode 100644 include/dt-bindings/clock/mt6797-clk.h
+ create mode 100644 include/dt-bindings/power/mt6797-power.h
+
+--
 1.7.9.5
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
