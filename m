@@ -1,49 +1,117 @@
-From: Boris Brezillon <boris.brezillon@free-electrons.com>
-Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
-Date: Mon, 6 Feb 2017 08:45:44 +0100
-Message-ID: <20170206084544.24878633@bbrezillon>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
-        <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
-        <1486267249.10417.9.camel@mhfsdcap03>
+From: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH v2 2/6] usb: mtu3: add reference clock
+Date: Mon, 6 Feb 2017 17:28:57 +0800
+Message-ID: <1486373341-4399-2-git-send-email-chunfeng.yun@mediatek.com>
+References: <1486373341-4399-1-git-send-email-chunfeng.yun@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1486267249.10417.9.camel@mhfsdcap03>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Guochun Mao <guochun.mao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Marek Vasut <marek.vasut@gmail.com>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org, John Crispin <john@phrozen.org>, linux-mediatek@lists.infradead.org, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1486373341-4399-1-git-send-email-chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mathias Nyman <mathias.nyman-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Felipe Balbi <felipe.balbi-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Guochun,
+usually, the reference clock comes from 26M oscillator directly,
+but some SoCs are not, add it for compatibility.
 
-On Sun, 5 Feb 2017 12:00:49 +0800
-Guochun Mao <guochun.mao@mediatek.com> wrote:
+Signed-off-by: Chunfeng Yun <chunfeng.yun-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/usb/mtu3/mtu3.h      |    1 +
+ drivers/usb/mtu3/mtu3_plat.c |   28 ++++++++++++++++++++++++++--
+ 2 files changed, 27 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+index ba9df71..aa6fd6a 100644
+--- a/drivers/usb/mtu3/mtu3.h
++++ b/drivers/usb/mtu3/mtu3.h
+@@ -225,6 +225,7 @@ struct ssusb_mtk {
+ 	/* common power & clock */
+ 	struct regulator *vusb33;
+ 	struct clk *sys_clk;
++	struct clk *ref_clk;
+ 	/* otg */
+ 	struct otg_switch_mtk otg_switch;
+ 	enum usb_dr_mode dr_mode;
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 6344859..c3125da 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -123,7 +123,13 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
+ 	ret = clk_prepare_enable(ssusb->sys_clk);
+ 	if (ret) {
+ 		dev_err(ssusb->dev, "failed to enable sys_clk\n");
+-		goto clk_err;
++		goto sys_clk_err;
++	}
++
++	ret = clk_prepare_enable(ssusb->ref_clk);
++	if (ret) {
++		dev_err(ssusb->dev, "failed to enable ref_clk\n");
++		goto ref_clk_err;
+ 	}
+ 
+ 	ret = ssusb_phy_init(ssusb);
+@@ -143,8 +149,10 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
+ phy_err:
+ 	ssusb_phy_exit(ssusb);
+ phy_init_err:
++	clk_disable_unprepare(ssusb->ref_clk);
++ref_clk_err:
+ 	clk_disable_unprepare(ssusb->sys_clk);
+-clk_err:
++sys_clk_err:
+ 	regulator_disable(ssusb->vusb33);
+ vusb33_err:
+ 
+@@ -154,6 +162,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
+ static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
+ {
+ 	clk_disable_unprepare(ssusb->sys_clk);
++	clk_disable_unprepare(ssusb->ref_clk);
+ 	regulator_disable(ssusb->vusb33);
+ 	ssusb_phy_power_off(ssusb);
+ 	ssusb_phy_exit(ssusb);
+@@ -216,6 +225,19 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 		return PTR_ERR(ssusb->sys_clk);
+ 	}
+ 
++	/*
++	 * reference clock is usually a "fixed-clock", make it optional
++	 * for backward compatibility and ignore the error if it does
++	 * not exist.
++	 */
++	ssusb->ref_clk = devm_clk_get(dev, "ref_ck");
++	if (IS_ERR(ssusb->ref_clk)) {
++		if (PTR_ERR(ssusb->ref_clk) == -EPROBE_DEFER)
++			return -EPROBE_DEFER;
++
++		ssusb->ref_clk = NULL;
++	}
++
+ 	ssusb->num_phys = of_count_phandle_with_args(node,
+ 			"phys", "#phy-cells");
+ 	if (ssusb->num_phys > 0) {
+@@ -428,6 +450,7 @@ static int __maybe_unused mtu3_suspend(struct device *dev)
+ 	ssusb_host_disable(ssusb, true);
+ 	ssusb_phy_power_off(ssusb);
+ 	clk_disable_unprepare(ssusb->sys_clk);
++	clk_disable_unprepare(ssusb->ref_clk);
+ 	ssusb_wakeup_enable(ssusb);
+ 
+ 	return 0;
+@@ -445,6 +468,7 @@ static int __maybe_unused mtu3_resume(struct device *dev)
+ 
+ 	ssusb_wakeup_disable(ssusb);
+ 	clk_prepare_enable(ssusb->sys_clk);
++	clk_prepare_enable(ssusb->ref_clk);
+ 	ssusb_phy_power_on(ssusb);
+ 	ssusb_host_enable(ssusb);
+ 
+-- 
+1.7.9.5
 
-> >  
-> > +	nor_flash: spi@11014000 {
-> > +		compatible = "mediatek,mt2701-nor",
-> > +			     "mediatek,mt8173-nor";
-> > +		reg = <0 0x11014000 0 0xe0>;
-> > +		clocks = <&pericfg CLK_PERI_FLASH>,
-> > +			 <&topckgen CLK_TOP_FLASH_SEL>;
-> > +		clock-names = "spi", "sf";
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +		status = "disabled";
-> > +	};
-> > +
-> >  	mmsys: syscon@14000000 {
-> >  		compatible = "mediatek,mt2701-mmsys", "syscon";
-> >  		reg = <0 0x14000000 0 0x1000>;  
-> 
-> Hi,
-> mtk-quadspi.txt had been updated as suggested.
-> Is there suggestion about this patch?
-
-It should probably go through the Mediatek tree. Matthias, any opinion?
-
-Regards,
-
-Boris
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
