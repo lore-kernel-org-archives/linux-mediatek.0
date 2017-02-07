@@ -1,182 +1,92 @@
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH v2, 6/6] dt-bindings: phy-mt65xx-usb: add support for
- new version phy
-Date: Tue, 7 Feb 2017 14:30:21 +0800
-Message-ID: <1486449021.3750.25.camel@mhfsdcap03>
-References: <1484900321-26933-1-git-send-email-chunfeng.yun@mediatek.com>
- <1484900321-26933-6-git-send-email-chunfeng.yun@mediatek.com>
- <20170127200702.biyvgzgoq3yxx7yx@rob-hp-laptop>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH] [media] mtk-vcodec: fix build errors without DEBUG
+Date: Tue, 7 Feb 2017 15:40:44 +0800
+Message-ID: <1486453244-26094-1-git-send-email-minghsiu.tsai@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20170127200702.biyvgzgoq3yxx7yx@rob-hp-laptop>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Felipe Balbi <felipe.balbi@linux.intel.com>, Ian Campbell <ijc+devicetree@hellion.org.uk>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Fri, 2017-01-27 at 14:07 -0600, Rob Herring wrote:
-> On Fri, Jan 20, 2017 at 04:18:41PM +0800, Chunfeng Yun wrote:
-> > add a new compatible string for "mt2712", and move reference clock
-> > into each port node;
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/phy/phy-mt65xx-usb.txt     |   91 +++++++++++++++++---
-> >  1 file changed, 77 insertions(+), 14 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > index 33a2b1e..1d06604 100644
-> > --- a/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > +++ b/Documentation/devicetree/bindings/phy/phy-mt65xx-usb.txt
-> > @@ -6,21 +6,27 @@ This binding describes a usb3.0 phy for mt65xx platforms of Medaitek SoC.
-> >  Required properties (controller (parent) node):
-> >   - compatible	: should be one of
-> >  		  "mediatek,mt2701-u3phy"
-> > +		  "mediatek,mt2712-u3phy"
-> >  		  "mediatek,mt8173-u3phy"
-> > - - reg		: offset and length of register for phy, exclude port's
-> > -		  register.
-> > - - clocks	: a list of phandle + clock-specifier pairs, one for each
-> > -		  entry in clock-names
-> > - - clock-names	: must contain
-> > -		  "u3phya_ref": for reference clock of usb3.0 analog phy.
-> >  
-> >  Required nodes	: a sub-node is required for each port the controller
-> >  		  provides. Address range information including the usual
-> >  		  'reg' property is used inside these nodes to describe
-> >  		  the controller's topology.
-> >  
-> > +Optional properties (controller (parent) node):
-> > + - reg		: offset and length of register shared by multiple ports,
-> 
-> How is this optional?
-I put register shared by ports in parent node, but no shared register
-for new phy, so change it as optional.
+Fix build errors after removing DEBUG definition.
 
-> 
-> > +		  exclude port's private register. It is needed on mt2701
-> > +		  and mt8173, but not on mt2712.
-> > +
-> >  Required properties (port (child) node):
-> >  - reg		: address and length of the register set for the port.
-> > +- clocks	: a list of phandle + clock-specifier pairs, one for each
-> > +		  entry in clock-names
-> > +- clock-names	: must contain
-> > +		  "ref_clk": 48M reference clock for HighSpeed analog phy; and
-> 
-> _clk is redundant. Just "ref"
-Ok
-> 
-> > +			26M reference clock for SuperSpeed analog phy, sometimes is
-> > +			24M, 25M or 27M, depended on platform.
-> >  - #phy-cells	: should be 1 (See second example)
-> >  		  cell after port phandle is phy type from:
-> >  			- PHY_TYPE_USB2
-> > @@ -31,21 +37,31 @@ Example:
-> >  u3phy: usb-phy@11290000 {
-> >  	compatible = "mediatek,mt8173-u3phy";
-> >  	reg = <0 0x11290000 0 0x800>;
-> > -	clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> > -	clock-names = "u3phya_ref";
-> >  	#address-cells = <2>;
-> >  	#size-cells = <2>;
-> >  	ranges;
-> >  	status = "okay";
-> >  
-> > -	phy_port0: port@11290800 {
-> > -		reg = <0 0x11290800 0 0x800>;
-> > +	u2port0: port@11290800 {
-> > +		reg = <0 0x11290800 0 0x100>;
-> > +		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> > +		clock-names = "ref_clk";
-> >  		#phy-cells = <1>;
-> >  		status = "okay";
-> >  	};
-> >  
-> > -	phy_port1: port@11291000 {
-> > -		reg = <0 0x11291000 0 0x800>;
-> > +	u3port0: port@11290900 {
-> > +		reg = <0 0x11290800 0 0x700>;
-> > +		clocks = <&clk26m>;
-> > +		clock-names = "ref_clk";
-> > +		#phy-cells = <1>;
-> > +		status = "okay";
-> > +	};
-> > +
-> > +	u2port1: port@11291000 {
-> > +		reg = <0 0x11291000 0 0x100>;
-> > +		clocks = <&apmixedsys CLK_APMIXED_REF2USB_TX>;
-> > +		clock-names = "ref_clk";
-> >  		#phy-cells = <1>;
-> >  		status = "okay";
-> >  	};
-> > @@ -64,7 +80,54 @@ Example:
-> >  
-> >  usb30: usb@11270000 {
-> >  	...
-> > -	phys = <&phy_port0 PHY_TYPE_USB3>;
-> > -	phy-names = "usb3-0";
-> > +	phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
-> > +	phy-names = "usb2-0", "usb3-0";
-> >  	...
-> >  };
-> > +
-> > +
-> > +Layout differences of banks between mt8173/mt2701 and mt2712
-> > +-------------------------------------------------------------
-> > +mt8173 and mt2701:
-> > +port        offset    bank
-> > +shared      0x0000    SPLLC
-> > +            0x0100    FMREG
-> > +u2 port0    0x0800    U2PHY_COM
-> > +u3 port0    0x0900    U3PHYD
-> > +            0x0a00    U3PHYD_BANK2
-> > +            0x0b00    U3PHYA
-> > +            0x0c00    U3PHYA_DA
-> > +u2 port1    0x1000    U2PHY_COM
-> > +u3 port1    0x1100    U3PHYD
-> > +            0x1200    U3PHYD_BANK2
-> > +            0x1300    U3PHYA
-> > +            0x1400    U3PHYA_DA
-> > +u2 port2    0x1800    U2PHY_COM
-> > +            ...
-> > +
-> > +mt2712:
-> > +port        offset    bank
-> > +u2 port0    0x0000    MISC
-> > +            0x0100    FMREG
-> > +            0x0300    U2PHY_COM
-> > +u3 port0    0x0700    SPLLC
-> > +            0x0800    CHIP
-> > +            0x0900    U3PHYD
-> > +            0x0a00    U3PHYD_BANK2
-> > +            0x0b00    U3PHYA
-> > +            0x0c00    U3PHYA_DA
-> > +u2 port1    0x1000    MISC
-> > +            0x1100    FMREG
-> > +            0x1300    U2PHY_COM
-> > +u3 port1    0x1700    SPLLC
-> > +            0x1800    CHIP
-> > +            0x1900    U3PHYD
-> > +            0x1a00    U3PHYD_BANK2
-> > +            0x1b00    U3PHYA
-> > +            0x1c00    U3PHYA_DA
-> > +u2 port2    0x2000    MISC
-> > +            ...
-> > +
-> > +    SPLLC shared by u3 ports and FMREG shared by u2 ports on
-> > +mt8173/mt2701 are put back into each port; a new bank MISC for
-> > +u2 ports and CHIP for u3 ports are added on mt2712.
-> > -- 
-> > 1.7.9.5
-> > 
+Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 9 ++++-----
+ drivers/media/platform/mtk-vcodec/vdec_vpu_if.c    | 5 ++---
+ drivers/media/platform/mtk-vcodec/venc_vpu_if.c    | 4 +---
+ 3 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 0746592..6219c7d 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -1126,15 +1126,14 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+ 		 * if there is no SPS header or picture info
+ 		 * in bs
+ 		 */
+-		int log_level = ret ? 0 : 1;
+ 
+ 		src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+ 		v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
+ 					VB2_BUF_STATE_DONE);
+-		mtk_v4l2_debug(log_level,
+-				"[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+-				ctx->id, src_buf->index,
+-				src_mem.size, ret, res_chg);
++		mtk_v4l2_debug(ret ? 0 : 1,
++			       "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
++			       ctx->id, src_buf->index,
++			       src_mem.size, ret, res_chg);
+ 		return;
+ 	}
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 5a24c51..1abd14e 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -70,9 +70,8 @@ void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ {
+ 	int err;
+-	uint32_t msg_id = *(uint32_t *)msg;
+ 
+-	mtk_vcodec_debug(vpu, "id=%X", msg_id);
++	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
+ 
+ 	vpu->failure = 0;
+ 	vpu->signaled = 0;
+@@ -80,7 +79,7 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ 	err = vpu_ipi_send(vpu->dev, vpu->id, msg, len);
+ 	if (err) {
+ 		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X status=%d",
+-			       vpu->id, msg_id, err);
++			       vpu->id, *(uint32_t *)msg, err);
+ 		return err;
+ 	}
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+index a01c759..0d882ac 100644
+--- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+@@ -79,10 +79,8 @@ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+ 
+ 	status = vpu_ipi_send(vpu->dev, vpu->id, msg, len);
+ 	if (status) {
+-		uint32_t msg_id = *(uint32_t *)msg;
+-
+ 		mtk_vcodec_err(vpu, "vpu_ipi_send msg_id %x len %d fail %d",
+-			       msg_id, len, status);
++			       *(uint32_t *)msg, len, status);
+ 		return -EINVAL;
+ 	}
+ 	if (vpu->failure)
+-- 
+1.9.1
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
