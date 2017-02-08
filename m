@@ -1,41 +1,54 @@
-From: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH] thermal: mt8173: minor mtk_thermal.c cleanups
-Date: Wed, 8 Feb 2017 13:31:02 +0800
-Message-ID: <1486531862-31945-1-git-send-email-dawei.chien@mediatek.com>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v2 4/4] mfd: mt6397: Add MT6323 LED support into MT6397
+ driver
+Date: Wed, 8 Feb 2017 12:21:37 +0000
+Message-ID: <20170208122137.qi6ondxend2lejyk@dell>
+References: <1486520357-13096-1-git-send-email-sean.wang@mediatek.com>
+ <1486520357-13096-5-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-leds-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1486520357-13096-5-git-send-email-sean.wang@mediatek.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: sean.wang@mediatek.com
+Cc: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Thermal driver should read TEMP_MSR3 if thermal bank with 4 sensors.
-However, Currently thermal driver don't need read TEMP_MSR3 since
-thermal controller only use 3 sensors for each thermal bank.
+On Wed, 08 Feb 2017, sean.wang@mediatek.com wrote:
 
-Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- drivers/thermal/mtk_thermal.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Add compatible string as "mt6323-led" that will make
+> the OF core spawn child devices for the LED subnode
+> of that MT6323 MFD device.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/mfd/mt6397-core.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 34169c3..c124151 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -191,7 +191,7 @@ struct mtk_thermal {
- };
- 
- const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
--	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR2
-+	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
- };
- 
- const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
+Applied, thanks.
+
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index e14d8b0..8e601c8 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -48,6 +48,10 @@
+>  		.name = "mt6323-regulator",
+>  		.of_compatible = "mediatek,mt6323-regulator"
+>  	},
+> +	{
+> +		.name = "mt6323-led",
+> +		.of_compatible = "mediatek,mt6323-led"
+> +	},
+>  };
+>  
+>  static const struct mfd_cell mt6397_devs[] = {
+
 -- 
-1.9.1
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Lee Jones
+Linaro STMicroelectronics Landing Team Lead
+Linaro.org │ Open source software for ARM SoCs
+Follow Linaro: Facebook | Twitter | Blog
