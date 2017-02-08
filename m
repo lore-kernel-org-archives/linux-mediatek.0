@@ -1,42 +1,23 @@
-From: <sean.wang@mediatek.com>
-Subject: [PATCH v2 4/4] mfd: mt6397: Add MT6323 LED support into MT6397 driver
-Date: Wed, 8 Feb 2017 10:19:17 +0800
-Message-ID: <1486520357-13096-5-git-send-email-sean.wang@mediatek.com>
+From: Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH v2 1/4] Documentation: devicetree: Add document bindings
+ for leds-mt6323
+Date: Wed, 8 Feb 2017 03:47:26 +0100
+Message-ID: <20170208024726.GD29174@lunn.ch>
 References: <1486520357-13096-1-git-send-email-sean.wang@mediatek.com>
+ <1486520357-13096-2-git-send-email-sean.wang@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-leds-owner@vger.kernel.org>
-In-Reply-To: <1486520357-13096-1-git-send-email-sean.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1486520357-13096-2-git-send-email-sean.wang@mediatek.com>
 Sender: linux-leds-owner@vger.kernel.org
-To: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
-Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
+To: sean.wang@mediatek.com
+Cc: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, keyhaede@gmail.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+> +			led0: isink0 {
+> +				lebel = "LED0"
 
-Add compatible string as "mt6323-led" that will make
-the OF core spawn child devices for the LED subnode
-of that MT6323 MFD device.
+label, not lebel.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- drivers/mfd/mt6397-core.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index e14d8b0..8e601c8 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -48,6 +48,10 @@
- 		.name = "mt6323-regulator",
- 		.of_compatible = "mediatek,mt6323-regulator"
- 	},
-+	{
-+		.name = "mt6323-led",
-+		.of_compatible = "mediatek,mt6323-led"
-+	},
- };
- 
- static const struct mfd_cell mt6397_devs[] = {
--- 
-1.9.1
+       Andrew
