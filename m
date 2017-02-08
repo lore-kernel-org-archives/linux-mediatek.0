@@ -1,40 +1,115 @@
-From: Wei Yongjun <weiyj.lk@gmail.com>
-Subject: [PATCH -next] [media] mtk-vcodec: remove redundant return value check of platform_get_resource()
-Date: Tue,  7 Feb 2017 15:16:20 +0000
-Message-ID: <20170207151620.12711-1-weiyj.lk@gmail.com>
+From: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH] [media] mtk-vcodec: fix build errors without DEBUG
+Date: Wed, 8 Feb 2017 09:38:27 +0800
+Message-ID: <1486517907.18649.1.camel@mtksdaap41>
+References: <1486453244-26094-1-git-send-email-minghsiu.tsai@mediatek.com>
+         <CAGS+omAU7UohsUkXwwHyhNh_dSX=R9tLKYvSV5767m81sTf_RA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=ISO-8859-1
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Wei Yongjun <weiyongjun1@huawei.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAGS+omAU7UohsUkXwwHyhNh_dSX=R9tLKYvSV5767m81sTf_RA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mauro Carvalho Chehab <mchehab-JPH+aEBZ4P+UEJcrhfAQsw@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pawel Osciak <posciak-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, srv_heupstream <srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Tiffany Lin <tiffany.lin-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, "open list:OPEN FIRMWARE AND..." <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/Mediatek SoC support" <linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Wei Yongjun <weiyongjun1@huawei.com>
+On Tue, 2017-02-07 at 20:17 +0800, Daniel Kurtz wrote:
+> On Tue, Feb 7, 2017 at 3:40 PM, Minghsiu Tsai
+> <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
+> > Fix build errors after removing DEBUG definition.
+> 
+> It would be useful to specify which build errors were fixed by this
+> patch, and a brief description of why - namely because when DEBUG is
+> not defined, mtk_v4l2_debug() is an empty macros, and therefore the
+> arguments are unused.
+> 
+> With an updated commit message, this patch is:
+> 
+> Reviewed-by: Daniel Kurtz <djkurtz-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> 
 
-Remove unneeded error handling on the result of a call
-to platform_get_resource() when the value is passed to
-devm_ioremap_resource().
+Hi Daniel,
+Thanks for your review and comment. I will update it soon.
 
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 5 -----
- 1 file changed, 5 deletions(-)
+> >
+> > Signed-off-by: Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+> > ---
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 9 ++++-----
+> >  drivers/media/platform/mtk-vcodec/vdec_vpu_if.c    | 5 ++---
+> >  drivers/media/platform/mtk-vcodec/venc_vpu_if.c    | 4 +---
+> >  3 files changed, 7 insertions(+), 11 deletions(-)
+> >
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> > index 0746592..6219c7d 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+> > @@ -1126,15 +1126,14 @@ static void vb2ops_vdec_buf_queue(struct vb2_buffer *vb)
+> >                  * if there is no SPS header or picture info
+> >                  * in bs
+> >                  */
+> > -               int log_level = ret ? 0 : 1;
+> >
+> >                 src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
+> >                 v4l2_m2m_buf_done(to_vb2_v4l2_buffer(src_buf),
+> >                                         VB2_BUF_STATE_DONE);
+> > -               mtk_v4l2_debug(log_level,
+> > -                               "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+> > -                               ctx->id, src_buf->index,
+> > -                               src_mem.size, ret, res_chg);
+> > +               mtk_v4l2_debug(ret ? 0 : 1,
+> > +                              "[%d] vdec_if_decode() src_buf=%d, size=%zu, fail=%d, res_chg=%d",
+> > +                              ctx->id, src_buf->index,
+> > +                              src_mem.size, ret, res_chg);
+> >                 return;
+> >         }
+> >
+> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > index 5a24c51..1abd14e 100644
+> > --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > @@ -70,9 +70,8 @@ void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+> >  static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+> >  {
+> >         int err;
+> > -       uint32_t msg_id = *(uint32_t *)msg;
+> >
+> > -       mtk_vcodec_debug(vpu, "id=%X", msg_id);
+> > +       mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
+> >
+> >         vpu->failure = 0;
+> >         vpu->signaled = 0;
+> > @@ -80,7 +79,7 @@ static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+> >         err = vpu_ipi_send(vpu->dev, vpu->id, msg, len);
+> >         if (err) {
+> >                 mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X status=%d",
+> > -                              vpu->id, msg_id, err);
+> > +                              vpu->id, *(uint32_t *)msg, err);
+> >                 return err;
+> >         }
+> >
+> > diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+> > index a01c759..0d882ac 100644
+> > --- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+> > +++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+> > @@ -79,10 +79,8 @@ static int vpu_enc_send_msg(struct venc_vpu_inst *vpu, void *msg,
+> >
+> >         status = vpu_ipi_send(vpu->dev, vpu->id, msg, len);
+> >         if (status) {
+> > -               uint32_t msg_id = *(uint32_t *)msg;
+> > -
+> >                 mtk_vcodec_err(vpu, "vpu_ipi_send msg_id %x len %d fail %d",
+> > -                              msg_id, len, status);
+> > +                              *(uint32_t *)msg, len, status);
+> >                 return -EINVAL;
+> >         }
+> >         if (vpu->failure)
+> > --
+> > 1.9.1
+> >
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index aa81f3c..83f859e 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -269,11 +269,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 
- 	for (i = VENC_SYS, j = 0; i < NUM_MAX_VCODEC_REG_BASE; i++, j++) {
- 		res = platform_get_resource(pdev, IORESOURCE_MEM, j);
--		if (res == NULL) {
--			dev_err(&pdev->dev, "get memory resource failed.");
--			ret = -ENXIO;
--			goto err_res;
--		}
- 		dev->reg_base[i] = devm_ioremap_resource(&pdev->dev, res);
- 		if (IS_ERR((__force void *)dev->reg_base[i])) {
- 			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
