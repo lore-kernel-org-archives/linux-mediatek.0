@@ -1,85 +1,133 @@
-From: Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] arm64: use is_vmalloc_addr
-Date: Thu, 9 Feb 2017 19:28:19 +0800
-Message-ID: <1486639699.14885.4.camel@mtkswgap22>
-References: <201702091600.7Yg9Yj0D%fengguang.wu@intel.com>
+From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH 09/11] iommu/mediatek: Make use of iommu_device_register
+	interface
+Date: Thu,  9 Feb 2017 12:32:58 +0100
+Message-ID: <1486639981-32368-10-git-send-email-joro@8bytes.org>
+References: <1486639981-32368-1-git-send-email-joro@8bytes.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <201702091600.7Yg9Yj0D%fengguang.wu@intel.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: kbuild test robot <lkp@intel.com>
-Cc: wsd_upstream@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, kbuild-all@01.org, linux-arm-kernel@lists.infradead.org
+Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+In-Reply-To: <1486639981-32368-1-git-send-email-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
+List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
+List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
+	<mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
+Sender: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+To: Will Deacon <will.deacon-5wv7dgnIgG8@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Alex Williamson <alex.williamson-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thu, 2017-02-09 at 16:37 +0800, kbuild test robot wrote:
-> Hi Miles,
-> 
-> [auto build test WARNING on arm64/for-next/core]
-> [also build test WARNING on v4.10-rc7 next-20170208]
-> [if your patch is applied to the wrong git tree, please drop us a note to help improve the system]
-> 
-> url:    https://github.com/0day-ci/linux/commits/Miles-Chen/arm64-use-is_vmalloc_addr/20170209-103100
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git for-next/core
-> config: arm64-defconfig (attached as .config)
-> compiler: aarch64-linux-gnu-gcc (Debian 6.1.1-9) 6.1.1 20160705
-> reproduce:
->         wget https://git.kernel.org/cgit/linux/kernel/git/wfg/lkp-tests.git/plain/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # save the attached .config to linux build tree
->         make.cross ARCH=arm64 
-> 
-> All warnings (new ones prefixed by >>):
-> 
->    arch/arm64/mm/ioremap.c: In function '__iounmap':
-> >> arch/arm64/mm/ioremap.c:91:22: warning: passing argument 1 of 'is_vmalloc_addr' makes pointer from integer without a cast [-Wint-conversion]
->      if (is_vmalloc_addr(addr))
->                          ^~~~
->    In file included from arch/arm64/mm/ioremap.c:24:0:
->    include/linux/mm.h:472:20: note: expected 'const void *' but argument is of type 'long unsigned int'
->     static inline bool is_vmalloc_addr(const void *x)
->                        ^~~~~~~~~~~~~~~
-> 
+From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
 
-Sorry for that. I'll send patch v2 without the build warning.
+Register individual Mediatek IOMMUs to the iommu core and
+add sysfs entries.
 
-> vim +/is_vmalloc_addr +91 arch/arm64/mm/ioremap.c
-> 
->     75	
->     76	void __iomem *__ioremap(phys_addr_t phys_addr, size_t size, pgprot_t prot)
->     77	{
->     78		return __ioremap_caller(phys_addr, size, prot,
->     79					__builtin_return_address(0));
->     80	}
->     81	EXPORT_SYMBOL(__ioremap);
->     82	
->     83	void __iounmap(volatile void __iomem *io_addr)
->     84	{
->     85		unsigned long addr = (unsigned long)io_addr & PAGE_MASK;
->     86	
->     87		/*
->     88		 * We could get an address outside vmalloc range in case
->     89		 * of ioremap_cache() reusing a RAM mapping.
->     90		 */
->   > 91		if (is_vmalloc_addr(addr))
->     92			vunmap((void *)addr);
->     93	}
->     94	EXPORT_SYMBOL(__iounmap);
->     95	
->     96	void __iomem *ioremap_cache(phys_addr_t phys_addr, size_t size)
->     97	{
->     98		/* For normal memory we already have a cacheable mapping. */
->     99		if (pfn_valid(__phys_to_pfn(phys_addr)))
-> 
-> ---
-> 0-DAY kernel test infrastructure                Open Source Technology Center
-> https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+Cc: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+---
+ drivers/iommu/mtk_iommu.c | 26 ++++++++++++++++++++++++++
+ drivers/iommu/mtk_iommu.h |  2 ++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 1479c76..d484fa6 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -360,11 +360,15 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 
+ static int mtk_iommu_add_device(struct device *dev)
+ {
++	struct mtk_iommu_data *data;
+ 	struct iommu_group *group;
+ 
+ 	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
+ 		return -ENODEV; /* Not a iommu client device */
+ 
++	data = dev->iommu_fwspec->iommu_priv;
++	iommu_device_link(&data->iommu, dev);
++
+ 	group = iommu_group_get_for_dev(dev);
+ 	if (IS_ERR(group))
+ 		return PTR_ERR(group);
+@@ -375,9 +379,14 @@ static int mtk_iommu_add_device(struct device *dev)
+ 
+ static void mtk_iommu_remove_device(struct device *dev)
+ {
++	struct mtk_iommu_data *data;
++
+ 	if (!dev->iommu_fwspec || dev->iommu_fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
++	data = dev->iommu_fwspec->iommu_priv;
++	iommu_device_unlink(&data->iommu, dev);
++
+ 	iommu_group_remove_device(dev);
+ 	iommu_fwspec_free(dev);
+ }
+@@ -497,6 +506,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	struct mtk_iommu_data   *data;
+ 	struct device           *dev = &pdev->dev;
+ 	struct resource         *res;
++	resource_size_t		ioaddr;
+ 	struct component_match  *match = NULL;
+ 	void                    *protect;
+ 	int                     i, larb_nr, ret;
+@@ -519,6 +529,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	data->base = devm_ioremap_resource(dev, res);
+ 	if (IS_ERR(data->base))
+ 		return PTR_ERR(data->base);
++	ioaddr = res->start;
+ 
+ 	data->irq = platform_get_irq(pdev, 0);
+ 	if (data->irq < 0)
+@@ -567,6 +578,18 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
++	ret = iommu_device_sysfs_add(&data->iommu, dev, NULL,
++				     "mtk-iommu.%pa", &ioaddr);
++	if (ret)
++		return ret;
++
++	iommu_device_set_ops(&data->iommu, &mtk_iommu_ops);
++	iommu_device_set_fwnode(&data->iommu, &pdev->dev.of_node->fwnode);
++
++	ret = iommu_device_register(&data->iommu);
++	if (ret)
++		return ret;
++
+ 	if (!iommu_present(&platform_bus_type))
+ 		bus_set_iommu(&platform_bus_type, &mtk_iommu_ops);
+ 
+@@ -577,6 +600,9 @@ static int mtk_iommu_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_iommu_data *data = platform_get_drvdata(pdev);
+ 
++	iommu_device_sysfs_remove(&data->iommu);
++	iommu_device_unregister(&data->iommu);
++
+ 	if (iommu_present(&platform_bus_type))
+ 		bus_set_iommu(&platform_bus_type, NULL);
+ 
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index 50177f7..2a28ead 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -47,6 +47,8 @@ struct mtk_iommu_data {
+ 	struct iommu_group		*m4u_group;
+ 	struct mtk_smi_iommu		smi_imu;      /* SMI larb iommu info */
+ 	bool                            enable_4GB;
++
++	struct iommu_device		iommu;
+ };
+ 
+ static inline int compare_of(struct device *dev, void *data)
+-- 
+1.9.1
