@@ -1,86 +1,44 @@
-From: Mars Cheng <mars.cheng@mediatek.com>
-Subject: Re: [PATCH v2 01/10] Document: DT: mediatek: multiple base address
- support for sysirq
-Date: Thu, 9 Feb 2017 09:47:57 +0800
-Message-ID: <1486604877.29572.9.camel@mtkswgap22>
-References: <1486383336-16892-1-git-send-email-mars.cheng@mediatek.com>
-         <1486383336-16892-2-git-send-email-mars.cheng@mediatek.com>
-         <20170208232039.p7ljh4krndtn2edy@rob-hp-laptop>
+From: Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] arm64: use linux/sizes.h for constants
+Date: Thu, 9 Feb 2017 09:52:03 +0800
+Message-ID: <1486605123-30819-1-git-send-email-miles.chen@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20170208232039.p7ljh4krndtn2edy@rob-hp-laptop>
-Sender: linux-clk-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Will Deacon <will.deacon@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Chieh-Jay Liu <Chieh-Jay.Liu@mediatek.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
+Cc: Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi Rob,
+Use linux/size.h to improve code readability.
 
-On Wed, 2017-02-08 at 17:20 -0600, Rob Herring wrote:
-> On Mon, Feb 06, 2017 at 08:15:27PM +0800, Mars Cheng wrote:
-> > This describes how to specify multiple base addresses for sysirq
-> > in mediatek platforms.
-> > 
-> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> > ---
-> >  .../interrupt-controller/mediatek,sysirq.txt       |   13 +++++++++----
-> >  1 file changed, 9 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> > index 9d1d72c..1718454 100644
-> > --- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> > +++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,sysirq.txt
-> > @@ -18,16 +18,21 @@ Required properties:
-> >  	"mediatek,mt2701-sysirq"
-> >  - interrupt-controller : Identifies the node as an interrupt controller
-> >  - #interrupt-cells : Use the same format as specified by GIC in arm,gic.txt.
-> > +- #intpol-bases: Indicate how many base addresses to be used, default is 1.
-> 
-> There is no point in this. It can either be implied by the compatible 
-> string or you just try to get the resource for the 2nd region. (Or in DT 
-> terms, get the size of reg.)
-> 
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ arch/arm64/kernel/process.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Originally I try to mimic #redistributor-regions in
-Documentation/devicetree/bindings/interrupt-controller/arm,gic-v3.txt.
-
-But I think you are right since irq-gic-v3 has several kinds of bases in
-reg so that they need an indicator to decode. For irq-mtk-sysirq, we can
-just try 2nd region and increment a counter to get the number of bases.
-
-Will fix this in v3.
-
-Thanks.
-
-> >  - interrupt-parent: phandle of irq parent for sysirq. The parent must
-> >    use the same interrupt-cells format as GIC.
-> >  - reg: Physical base address of the intpol registers and length of memory
-> > -  mapped region.
-> > +  mapped region. Could be multiple bases here. Ex: mt6797 needs 2 reg, others
-> > +  need 1. If not set, the default is 1.
-> >  
-> >  Example:
-> > -	sysirq: interrupt-controller@10200100 {
-> > -		compatible = "mediatek,mt6589-sysirq", "mediatek,mt6577-sysirq";
-> > +	sysirq: intpol-controller@10200620 {
-> > +		compatible = "mediatek,mt6797-sysirq",
-> > +			     "mediatek,mt6577-sysirq";
-> >  		interrupt-controller;
-> >  		#interrupt-cells = <3>;
-> > +		#intpol-bases = <2>;
-> >  		interrupt-parent = <&gic>;
-> > -		reg = <0 0x10200100 0 0x1c>;
-> > +		reg = <0 0x10220620 0 0x20>,
-> > +		      <0 0x10220690 0 0x10>;
-> >  	};
-> > -- 
-> > 1.7.9.5
-> > 
-> > --
-> > To unsubscribe from this list: send the line "unsubscribe devicetree" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-
-
+diff --git a/arch/arm64/kernel/process.c b/arch/arm64/kernel/process.c
+index a3a2816..aaac783 100644
+--- a/arch/arm64/kernel/process.c
++++ b/arch/arm64/kernel/process.c
+@@ -407,7 +407,7 @@ unsigned long arch_align_stack(unsigned long sp)
+ unsigned long arch_randomize_brk(struct mm_struct *mm)
+ {
+ 	if (is_compat_task())
+-		return randomize_page(mm->brk, 0x02000000);
++		return randomize_page(mm->brk, SZ_32M);
+ 	else
+-		return randomize_page(mm->brk, 0x40000000);
++		return randomize_page(mm->brk, SZ_1G);
+ }
+-- 
+1.9.1
