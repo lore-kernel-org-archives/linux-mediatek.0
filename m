@@ -1,49 +1,140 @@
-From: Tiffany Lin <tiffany.lin@mediatek.com>
-Subject: Re: [PATCH -next] [media] mtk-vcodec: remove redundant return value
- check of platform_get_resource()
-Date: Fri, 10 Feb 2017 11:35:13 +0800
-Message-ID: <1486697713.3862.6.camel@mtksdaap41>
-References: <20170207151620.12711-1-weiyj.lk@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 07/10] soc: mediatek: refine scysys for mediatek
+ platforms
+Date: Sun, 12 Feb 2017 00:15:14 +0100
+Message-ID: <aa492e68-c754-bfe6-c4b9-7f39822ed5ea@gmail.com>
+References: <1486383336-16892-1-git-send-email-mars.cheng@mediatek.com>
+ <1486383336-16892-8-git-send-email-mars.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=windows-1252; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20170207151620.12711-1-weiyj.lk@gmail.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Wei Yongjun <weiyj.lk@gmail.com>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Wei Yongjun <weiyongjun1@huawei.com>, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <1486383336-16892-8-git-send-email-mars.cheng@mediatek.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Mars Cheng <mars.cheng@mediatek.com>
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, Jades Shih <jades.shih@mediatek.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, My Chuang <my.chuang@mediatek.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, wsd_upstream@mediatek.com, Marc Zyngier <marc.zyngier@arm.com>, Thomas Gleixner <tglx@linutronix.de>, Will Deacon <will.deacon@arm.com>, Stephen Boyd <sboyd@codeaurora.org>, linux-clk@vger.kernel.org, Chieh-Jay Liu <Chieh-Jay.Liu@mediatek.com>, Kevin-CW Chen <kevin-cw.chen@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Tue, 2017-02-07 at 15:16 +0000, Wei Yongjun wrote:
-> From: Wei Yongjun <weiyongjun1@huawei.com>
-> 
-> Remove unneeded error handling on the result of a call
-> to platform_get_resource() when the value is passed to
-> devm_ioremap_resource().
-> 
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
-Acked-by:Tiffany Lin <tiffany.lin@mediatek.com>
 
+
+On 02/06/2017 01:15 PM, Mars Cheng wrote:
+> This adds 2 refinements: avoid fixed spm power statue and add vdec item
+>
+
+Please be more explicit in the commit message.
+
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Kevin-CW Chen <kevin-cw.chen@mediatek.com>
 > ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 5 -----
->  1 file changed, 5 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> index aa81f3c..83f859e 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> @@ -269,11 +269,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->  
->  	for (i = VENC_SYS, j = 0; i < NUM_MAX_VCODEC_REG_BASE; i++, j++) {
->  		res = platform_get_resource(pdev, IORESOURCE_MEM, j);
-> -		if (res == NULL) {
-> -			dev_err(&pdev->dev, "get memory resource failed.");
-> -			ret = -ENXIO;
-> -			goto err_res;
-> -		}
->  		dev->reg_base[i] = devm_ioremap_resource(&pdev->dev, res);
->  		if (IS_ERR((__force void *)dev->reg_base[i])) {
->  			ret = PTR_ERR((__force void *)dev->reg_base[i]);
-> 
-> 
-> 
+>  drivers/soc/mediatek/mtk-scpsys.c |   35 +++++++++++++++++++++++++++++------
+>  1 file changed, 29 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index beb7916..a8ba800 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -71,6 +71,7 @@ enum clk_id {
+>  	CLK_VENC,
+>  	CLK_VENC_LT,
+>  	CLK_ETHIF,
+> +	CLK_VDEC,
+>  	CLK_MAX,
+>  };
+>
+> @@ -81,6 +82,7 @@ enum clk_id {
+>  	"venc",
+>  	"venc_lt",
+>  	"ethif",
+> +	"vdec",
+>  	NULL,
+>  };
+
+Put CLK_VDEC addition in the patch where you add support for mt6797.
+
+Thanks,
+Matthias
+
+>
+> @@ -107,21 +109,28 @@ struct scp_domain {
+>  	struct regulator *supply;
+>  };
+>
+> +struct scp_ctrl_reg {
+> +	int pwr_sta_offs;
+> +	int pwr_sta2nd_offs;
+> +};
+> +
+>  struct scp {
+>  	struct scp_domain *domains;
+>  	struct genpd_onecell_data pd_data;
+>  	struct device *dev;
+>  	void __iomem *base;
+>  	struct regmap *infracfg;
+> +	struct scp_ctrl_reg ctrl_reg;
+>  };
+>
+>  static int scpsys_domain_is_on(struct scp_domain *scpd)
+>  {
+>  	struct scp *scp = scpd->scp;
+>
+> -	u32 status = readl(scp->base + SPM_PWR_STATUS) & scpd->data->sta_mask;
+> -	u32 status2 = readl(scp->base + SPM_PWR_STATUS_2ND) &
+> -				scpd->data->sta_mask;
+> +	u32 status = readl(scp->base + scp->ctrl_reg.pwr_sta_offs) &
+> +						scpd->data->sta_mask;
+> +	u32 status2 = readl(scp->base + scp->ctrl_reg.pwr_sta2nd_offs) &
+> +						scpd->data->sta_mask;
+>
+>  	/*
+>  	 * A domain is on when both status bits are set. If only one is set
+> @@ -346,7 +355,8 @@ static void init_clks(struct platform_device *pdev, struct clk **clk)
+>  }
+>
+>  static struct scp *init_scp(struct platform_device *pdev,
+> -			const struct scp_domain_data *scp_domain_data, int num)
+> +			const struct scp_domain_data *scp_domain_data, int num,
+> +			struct scp_ctrl_reg *scp_ctrl_reg)
+>  {
+>  	struct genpd_onecell_data *pd_data;
+>  	struct resource *res;
+> @@ -358,6 +368,9 @@ static struct scp *init_scp(struct platform_device *pdev,
+>  	if (!scp)
+>  		return ERR_PTR(-ENOMEM);
+>
+> +	scp->ctrl_reg.pwr_sta_offs = scp_ctrl_reg->pwr_sta_offs;
+> +	scp->ctrl_reg.pwr_sta2nd_offs = scp_ctrl_reg->pwr_sta2nd_offs;
+> +
+>  	scp->dev = &pdev->dev;
+>
+>  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> @@ -556,8 +569,13 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>  static int __init scpsys_probe_mt2701(struct platform_device *pdev)
+>  {
+>  	struct scp *scp;
+> +	struct scp_ctrl_reg scp_reg;
+>
+> -	scp = init_scp(pdev, scp_domain_data_mt2701, NUM_DOMAINS_MT2701);
+> +	scp_reg.pwr_sta_offs = SPM_PWR_STATUS;
+> +	scp_reg.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND;
+> +
+> +	scp = init_scp(pdev, scp_domain_data_mt2701, NUM_DOMAINS_MT2701,
+> +		       &scp_reg);
+>  	if (IS_ERR(scp))
+>  		return PTR_ERR(scp);
+>
+> @@ -667,8 +685,13 @@ static int __init scpsys_probe_mt8173(struct platform_device *pdev)
+>  	struct scp *scp;
+>  	struct genpd_onecell_data *pd_data;
+>  	int ret;
+> +	struct scp_ctrl_reg scp_reg;
+> +
+> +	scp_reg.pwr_sta_offs = SPM_PWR_STATUS;
+> +	scp_reg.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND;
+>
+> -	scp = init_scp(pdev, scp_domain_data_mt8173, NUM_DOMAINS_MT8173);
+> +	scp = init_scp(pdev, scp_domain_data_mt8173, NUM_DOMAINS_MT8173,
+> +		       &scp_reg);
+>  	if (IS_ERR(scp))
+>  		return PTR_ERR(scp);
+>
+>
