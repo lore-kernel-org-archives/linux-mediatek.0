@@ -1,58 +1,62 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
-Date: Sun, 12 Feb 2017 00:35:34 +0100
-Message-ID: <77e0e3b0-2fe4-b32b-9099-11ce9811ba15@gmail.com>
-References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
- <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
- <1486267249.10417.9.camel@mhfsdcap03> <20170206084544.24878633@bbrezillon>
+From: Daniel Kurtz <djkurtz@chromium.org>
+Subject: Re: [PATCH v6] clk: mediatek: Export CPU mux clocks for CPU frequency control
+Date: Sun, 12 Feb 2017 11:31:35 +0800
+Message-ID: <CAGS+omCf0ubiVbUQ58tPvM0jshadKgiB-FnMXEdC=0XB6ygArQ@mail.gmail.com>
+References: <1442230072-31593-1-git-send-email-pi-cheng.chen@linaro.org>
+ <CAGS+omCkYTPyjMk6QaoxGAL4QVU8VcpWyFqWhST+iP2EFRcRYg@mail.gmail.com>
+ <CALx668XVnhhLJWs7RBxvaX=SU=S9=wFVT9HMDP2edqiH4Jio4A@mail.gmail.com>
+ <20151217090628.GA317@quark.deferred.io> <CAGS+omCV-90OsBk1c1Xj9_20yC5CmPNtMb+K9R7=mOiTg3sAJw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20170206084544.24878633@bbrezillon>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Boris Brezillon <boris.brezillon-wi1+55ScJUtKEb57/3fJTNBPR1lH4CV8@public.gmane.org>, Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Cc: Marek Vasut <marek.vasut-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Richard Weinberger <richard-/L3Ra7n9ekc@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, John Crispin <john-Pj+rj9U5foFAfugRpC6u6w@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Cyrille Pitchen <cyrille.pitchen-AIFe0yeh4nAAvxtiuMwx3w@public.gmane.org>, Brian Norris <computersforpeace-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAGS+omCV-90OsBk1c1Xj9_20yC5CmPNtMb+K9R7=mOiTg3sAJw@mail.gmail.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Michael Turquette <mturquette@baylibre.com>
+Cc: Pi-Cheng Chen <pi-cheng.chen@linaro.org>, Stephen Boyd <sboyd@codeaurora.org>, James Liao <jamesjj.liao@mediatek.com>, Sascha Hauer <s.hauer@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Linaro Kernel Mailman List <linaro-kernel@lists.linaro.org>
 List-Id: linux-mediatek@lists.infradead.org
 
+Hi Mike, Pi-Cheng, Matthias,
 
-
-On 02/06/2017 08:45 AM, Boris Brezillon wrote:
-> Hi Guochun,
+On Mon, Feb 15, 2016 at 11:28 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+> Hi Mike, Pi-Cheng,
 >
-> On Sun, 5 Feb 2017 12:00:49 +0800
-> Guochun Mao <guochun.mao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org> wrote:
->
->
+> On Thu, Dec 17, 2015 at 5:06 PM, Michael Turquette
+> <mturquette@baylibre.com> wrote:
+>> On 12/01, Pi-Cheng Chen wrote:
+>>> On Mon, Nov 30, 2015 at 11:48 AM, Daniel Kurtz <djkurtz@chromium.org> wrote:
+>>> > Hi Pi-Cheng and Michael,
+>>> >
+>>> > On Mon, Sep 14, 2015 at 7:27 PM, Pi-Cheng Chen <pi-cheng.chen@linaro.org> wrote:
+>>> >> From: "pi-cheng.chen" <pi-cheng.chen@linaro.org>
+>>> >>
+>>> >> This patch adds CPU mux clocks which are used by Mediatek cpufreq driver
+>>> >> for intermediate clock source switching.
+>>> >
+>>> > It looks like this patch was never picked up.
+>>> > It is required for MT8173 cpufreq.
+>>> >
+>>> > What is the plan to get this one merged?
 >>>
->>> +	nor_flash: spi@11014000 {
->>> +		compatible = "mediatek,mt2701-nor",
->>> +			     "mediatek,mt8173-nor";
->>> +		reg = <0 0x11014000 0 0xe0>;
->>> +		clocks = <&pericfg CLK_PERI_FLASH>,
->>> +			 <&topckgen CLK_TOP_FLASH_SEL>;
->>> +		clock-names = "spi", "sf";
->>> +		#address-cells = <1>;
->>> +		#size-cells = <0>;
->>> +		status = "disabled";
->>> +	};
->>> +
->>>  	mmsys: syscon@14000000 {
->>>  		compatible = "mediatek,mt2701-mmsys", "syscon";
->>>  		reg = <0 0x14000000 0 0x1000>;
+>>> Hi Dan,
+>>> Mike is working on a new CCF feature called "coordinated clock rate changes"
+>>> which would help to migrate mt8173-cpufreq driver to generic cpufreq-dt
+>>> driver, and I am working with him to port MT8173 clock driver on the new
+>>> feature. So I think that's why this patch was not picked since it will
+>>> be migrated to new implementation once the new feature's ready.
+>>>
+>>> @Mike:
+>>> Are you plannig to post those patches on the mailing list ?
+>>> Or is it fine for you to take this first and then I will refine it for
+>>> the new feature later?
 >>
->> Hi,
->> mtk-quadspi.txt had been updated as suggested.
->> Is there suggestion about this patch?
+>> I plan to post those patches next week.
 >
-> It should probably go through the Mediatek tree. Matthias, any opinion?
->
+> Were these patches ever posted?
+> I'm not really sure what patch set I am looking for.
 
-Yes, I will take this one through mine tree.
+Another friendly (+1 year) ping on the status of the "coordinated
+clock rate changes" patches that were a prerequisite to finally finish
+merging the complete Mediatek MT8173 cpufreq implementation.
 
 Thanks,
-Matthias
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+-Dan
