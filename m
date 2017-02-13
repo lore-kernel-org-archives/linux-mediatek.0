@@ -1,67 +1,119 @@
-From: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH] thermal: mt8173: minor mtk_thermal.c cleanups
-Date: Mon, 13 Feb 2017 17:01:58 +0800
-Message-ID: <1486976518.24087.7.camel@mtksdaap41>
-References: <1486531862-31945-1-git-send-email-dawei.chien@mediatek.com>
-         <ebdf54af-6290-9654-c475-53dd580582a0@gmail.com>
+From: Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Subject: Re: [PATCH v6 3/3] arm: dts: mt2701: Add node for Mediatek JPEG
+ Decoder
+Date: Mon, 13 Feb 2017 11:42:48 +0100
+Message-ID: <bc20ac4c-c746-6143-a695-12edef92f036@xs4all.nl>
+References: <1479353915-5043-1-git-send-email-rick.chang@mediatek.com>
+ <1479353915-5043-4-git-send-email-rick.chang@mediatek.com>
+ <d602365a-e87b-5bae-8698-bd43063ef079@xs4all.nl>
+ <1479784905.8964.15.camel@mtksdaap41>
+ <badf8125-27ed-9c5b-fbc0-75716ffdfb0e@xs4all.nl>
+ <1479866054.8964.21.camel@mtksdaap41> <1479894203.8964.29.camel@mtksdaap41>
+ <1483670099.18931.5.camel@mtksdaap41>
+ <974d20f3-5133-0869-2a35-c1617bec5d6e@xs4all.nl>
+ <c35bd06d-f012-1289-e765-02dc26b87e27@gmail.com>
+ <1484011718.10361.7.camel@mtksdaap41>
+ <267403e5-18ac-0c74-10ca-cc36b909dfb4@gmail.com>
+ <1486606247.4093.9.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <ebdf54af-6290-9654-c475-53dd580582a0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <1486606247.4093.9.camel@mtksdaap41>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Pawel Moll <pawel.moll-5wv7dgnIgG8@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Ian Campbell <ijc+devicetree-KcIKpvwj1kUDXYZnReoRVg@public.gmane.org>, Kumar Gala <galak-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Sascha Hauer <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Fan Chen <fan.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Yingjoe Chen <yingjoe.chen-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Erin Lo <erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+To: Rick Chang <rick.chang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Eddie Huang <eddie.huang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <laurent.pinchart+renesas-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Minghsiu Tsai <minghsiu.tsai-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, James Liao <jamesjj.liao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-Hi, Matthias,
+Hi Rick,
 
-On Thu, 2017-02-09 at 22:25 +0100, Matthias Brugger wrote:
+On 02/09/2017 03:10 AM, Rick Chang wrote:
+> Hi Hans,
 > 
-> On 02/08/2017 06:31 AM, Dawei Chien wrote:
-> > Thermal driver should read TEMP_MSR3 if thermal bank with 4 sensors.
-> > However, Currently thermal driver don't need read TEMP_MSR3 since
-> > thermal controller only use 3 sensors for each thermal bank.
-> >
-> > Signed-off-by: Dawei Chien <dawei.chien-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> > ---
-> 
-> Actually the commit message should state:
-> Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
-> 
-> ...and get backported to v4.9 and v4.10.
-> 
-> Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> 
-> Regards,
-> Matthias
+> All the dependences of this patch have been merged into v4.10-next.Could
+> you take v9 of this patch set? Matthias will help us to take the dts
+> part.
 
-Thank you for your review. I would add below commit message on next
-version. However, currently 8173 thermal driver would not read TEMP_MSR3
-since thermal driver only use 3 sensors on each bank, this patch would
-not effect temperature.
-Only if thermal driver use 4 sensors on any thermal bank, would read
-third sensor two times, and lose fourth sensor of vale.
-Fixes: b7cf0053738c ("thermal: Add Mediatek thermal driver for mt2701.")
+Apologies for the delay. I'm posting the pull request today, but I don't know
+if Mauro will pick it up for 4.11.
 
-> >  drivers/thermal/mtk_thermal.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-> > index 34169c3..c124151 100644
-> > --- a/drivers/thermal/mtk_thermal.c
-> > +++ b/drivers/thermal/mtk_thermal.c
-> > @@ -191,7 +191,7 @@ struct mtk_thermal {
-> >  };
-> >
-> >  const int mt8173_msr[MT8173_NUM_SENSORS_PER_ZONE] = {
-> > -	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR2
-> > +	TEMP_MSR0, TEMP_MSR1, TEMP_MSR2, TEMP_MSR3
-> >  };
-> >
-> >  const int mt8173_adcpnp[MT8173_NUM_SENSORS_PER_ZONE] = {
-> >
+Mauro, since this needs to be coordinated with Matthias can you let him know
+whether this will go in for 4.11 or 4.12?
 
+Regards,
+
+	Hans
+
+> 
+> Best Regards,
+> Rick
+> 
+> On Fri, 2017-01-13 at 16:02 +0100, Matthias Brugger wrote:
+>> Hi James,
+>>
+>> On 10/01/17 02:28, Eddie Huang wrote:
+>>> Hi Matthias,
+>>>
+>>> On Mon, 2017-01-09 at 19:45 +0100, Matthias Brugger wrote:
+>>>>
+>>>> On 09/01/17 12:29, Hans Verkuil wrote:
+>>>>> Hi Rick,
+>>>>>
+>>>>> On 01/06/2017 03:34 AM, Rick Chang wrote:
+>>>>>> Hi Hans,
+>>>>>>
+>>>>>> The dependence on [1] has been merged in 4.10, but [2] has not.Do you have
+>>>>>> any idea about this patch series? Should we wait for [2] or we could merge
+>>>>>> the source code and dt-binding first?
+>>>>>
+>>>>> Looking at [2] I noticed that the last comment was July 4th. What is the reason
+>>>>> it hasn't been merged yet?
+>>>>>
+>>>>> If I know [2] will be merged for 4.11, then I am fine with merging this media
+>>>>> patch series. The dependency of this patch on [2] is something Mauro can handle.
+>>>>>
+>>>>> If [2] is not merged for 4.11, then I think it is better to wait until it is
+>>>>> merged.
+>>>>>
+>>>>
+>>>> I can't take [2] because there is no scpsys in the dts present. It seems
+>>>> that it got never posted.
+>>>>
+>>>> Rick can you please follow-up with James and provide a patch which adds
+>>>> a scpsys node to the mt2701.dtsi?
+>>>>
+>>>
+>>> James sent three MT2701 dts patches [1] two weeks ago, these three
+>>> patches include scpsys node. Please take a reference. And We will send
+>>> new MT2701 ionmmu/smi dtsi node patch base on [1] later, thus you can
+>>> accept and merge to 4.11.
+>>>
+>>
+>> Thanks for the clarification. I pulled all this patches into 
+>> v4.10-next/dts32
+>>
+>> Hans will you take v9 of this patch set?
+>> Then I'll take the dts patch.
+>>
+>> Regards,
+>> Matthias
+>>
+>>> [1]
+>>> https://patchwork.kernel.org/patch/9489991/
+>>> https://patchwork.kernel.org/patch/9489985/
+>>> https://patchwork.kernel.org/patch/9489989/
+>>>
+>>> Thanks,
+>>> Eddie
+>>>
+>>>
+> 
+> 
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-media" in
+> the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> 
 
 --
 To unsubscribe from this list: send the line "unsubscribe devicetree" in
