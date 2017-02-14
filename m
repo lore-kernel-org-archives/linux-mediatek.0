@@ -1,58 +1,66 @@
-From: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Subject: [PATCH v3 3/3] ARM: dts: mt2701: Add mtk-cirq node for mt2701
-Date: Tue, 14 Feb 2017 10:56:01 +0800
-Message-ID: <1487040961-18319-4-git-send-email-youlin.pei@mediatek.com>
-References: <1487040961-18319-1-git-send-email-youlin.pei@mediatek.com>
+From: Guochun Mao <guochun.mao@mediatek.com>
+Subject: Re: [PATCH v2 2/2] arm: dts: mt2701: add nor flash node
+Date: Tue, 14 Feb 2017 11:58:53 +0800
+Message-ID: <1487044733.19037.0.camel@mhfsdcap03>
+References: <1485315515-29942-1-git-send-email-guochun.mao@mediatek.com>
+ <1485315515-29942-3-git-send-email-guochun.mao@mediatek.com>
+ <1486267249.10417.9.camel@mhfsdcap03> <20170206084544.24878633@bbrezillon>
+ <77e0e3b0-2fe4-b32b-9099-11ce9811ba15@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1487040961-18319-1-git-send-email-youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Marc Zyngier <marc.zyngier-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Jason Cooper <jason-NLaQJdtUoK4Be96aLqz0jA@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, hongkun.cao-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, yong.wu-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org, erin.lo-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <77e0e3b0-2fe4-b32b-9099-11ce9811ba15@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Boris Brezillon <boris.brezillon@free-electrons.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, Richard Weinberger <richard@nod.at>, Russell King <linux@armlinux.org.uk>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Marek Vasut <marek.vasut@gmail.com>, Rob Herring <robh+dt@kernel.org>, "linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>, John Crispin <john@phrozen.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Cyrille Pitchen <cyrille.pitchen@atmel.com>, Brian Norris <computersforpeace@gmail.com>, David Woodhouse <dwmw2@infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-mediatek@lists.infradead.org
 
-This commit add mtk-cirq node to mt2701 dtsi.
+On Sun, 2017-02-12 at 07:35 +0800, Matthias Brugger wrote:
+> 
+> On 02/06/2017 08:45 AM, Boris Brezillon wrote:
+> > Hi Guochun,
+> >
+> > On Sun, 5 Feb 2017 12:00:49 +0800
+> > Guochun Mao <guochun.mao@mediatek.com> wrote:
+> >
+> >
+> >>>
+> >>> +   nor_flash: spi@11014000 {
+> >>> +           compatible = "mediatek,mt2701-nor",
+> >>> +                        "mediatek,mt8173-nor";
+> >>> +           reg = <0 0x11014000 0 0xe0>;
+> >>> +           clocks = <&pericfg CLK_PERI_FLASH>,
+> >>> +                    <&topckgen CLK_TOP_FLASH_SEL>;
+> >>> +           clock-names = "spi", "sf";
+> >>> +           #address-cells = <1>;
+> >>> +           #size-cells = <0>;
+> >>> +           status = "disabled";
+> >>> +   };
+> >>> +
+> >>>     mmsys: syscon@14000000 {
+> >>>             compatible = "mediatek,mt2701-mmsys", "syscon";
+> >>>             reg = <0 0x14000000 0 0x1000>;
+> >>
+> >> Hi,
+> >> mtk-quadspi.txt had been updated as suggested.
+> >> Is there suggestion about this patch?
+> >
+> > It should probably go through the Mediatek tree. Matthias, any opinion?
+> >
+> 
+> Yes, I will take this one through mine tree.
+> 
+> Thanks,
+> Matthias
 
-Signed-off-by: Youlin Pei <youlin.pei-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
----
- arch/arm/boot/dts/mt2701.dtsi |   12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 7eab6f4..6ac9108 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -21,7 +21,7 @@
- 
- / {
- 	compatible = "mediatek,mt2701";
--	interrupt-parent = <&sysirq>;
-+	interrupt-parent = <&cirq>;
- 
- 	cpus {
- 		#address-cells = <1>;
-@@ -158,6 +158,16 @@
- 		reg = <0 0x10200100 0 0x1c>;
- 	};
- 
-+	cirq: interrupt-controller@10204000 {
-+		compatible = "mediatek,mt2701-cirq",
-+			     "mediatek,mtk-cirq";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		interrupt-parent = <&sysirq>;
-+		reg = <0 0x10204000 0 0x400>;
-+		mediatek,ext-irq-range = <32 200>;
-+	};
-+
- 	apmixedsys: syscon@10209000 {
- 		compatible = "mediatek,mt2701-apmixedsys", "syscon";
- 		reg = <0 0x10209000 0 0x1000>;
--- 
-1.7.9.5
-
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Thanks,
+Guochun
