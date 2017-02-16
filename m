@@ -1,53 +1,42 @@
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Subject: [PATCH 2/2] ASoC: mediatek: add power-domains for
-	mt2701-afe-pcm.txt
-Date: Thu, 16 Feb 2017 13:27:16 +0800
-Message-ID: <1487222836-21174-3-git-send-email-garlic.tseng@mediatek.com>
-References: <1487222836-21174-1-git-send-email-garlic.tseng@mediatek.com>
+From: Long Cheng <long.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
+Subject: [PATCH 0/4] add uart DMA function
+Date: Thu, 16 Feb 2017 19:07:27 +0800
+Message-ID: <1487243251-964-1-git-send-email-long.cheng@mediatek.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1487222836-21174-1-git-send-email-garlic.tseng@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: broonie@kernel.org, tiwai@suse.de
-Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>
+Cc: dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
 List-Id: linux-mediatek@lists.infradead.org
 
-This add power-domains for mt2701-afe-pcm
+In Mediatek SOCs, the uart can support DMA function.
+Base on DMA engine formwork, we add the DMA code to support uart. And put the code under drivers/dma.
 
-Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
----
- Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt | 2 ++
- 1 file changed, 2 insertions(+)
+This series contains document bindings, Kconfig to control the function enable or not,
+device tree including interrupt and dma device node, the code of UART DMA function.
 
-diff --git a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-index 3e623a7..9800a56 100644
---- a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-+++ b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
-@@ -4,6 +4,7 @@ Required properties:
- - compatible = "mediatek,mt2701-audio";
- - reg: register location and size
- - interrupts: Should contain AFE interrupt
-+- power-domains: should define the power domain
- - clock-names: should have these clock names:
- 		"infra_sys_audio_clk",
- 		"top_audio_mux1_sel",
-@@ -58,6 +59,7 @@ Example:
- 		      <0 0x112A0000 0 0x20000>;
- 		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
- 			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
- 		clocks = <&infracfg CLK_INFRA_AUDIO>,
- 			 <&topckgen CLK_TOP_AUD_MUX1_SEL>,
- 			 <&topckgen CLK_TOP_AUD_MUX2_SEL>,
+Long Cheng (4):
+  dt-bindings: dma: uart: add uart dma bindings
+  dmaengine: mtk_uart_dma: add Mediatek uart DMA support
+  serial: 8250-mtk: add uart DMA support
+  arm: dts: mt2701: add uart APDMA to device tree
+
+ .../devicetree/bindings/dma/mtk_uart_dma.txt       |   32 +
+ arch/arm/boot/dts/mt2701-evb.dts                   |   22 +
+ arch/arm/boot/dts/mt2701.dtsi                      |   29 +
+ drivers/dma/Kconfig                                |    9 +
+ drivers/dma/Makefile                               |    1 +
+ drivers/dma/mtk_uart_dma.c                         |  955 ++++++++++++++++++++
+ drivers/tty/serial/8250/8250_mtk.c                 |  194 +++-
+ 7 files changed, 1241 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/dma/mtk_uart_dma.txt
+ create mode 100644 drivers/dma/mtk_uart_dma.c
+
 -- 
-1.9.1
+1.7.9.5
+
+--
+To unsubscribe from this list: send the line "unsubscribe devicetree" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
