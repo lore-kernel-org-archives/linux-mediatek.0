@@ -1,32 +1,68 @@
-From: Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>
-Subject: Re: [PATCH 3/4] serial: 8250-mtk: add uart DMA support
-Date: Thu, 16 Feb 2017 14:23:42 +0100
-Message-ID: <2041319.BERnyvUuuK@wuerfel>
-References: <1487243251-964-1-git-send-email-long.cheng@mediatek.com> <1487243251-964-4-git-send-email-long.cheng@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Subject: Re: [PATCH v20 2/4] mailbox: mediatek: Add Mediatek CMDQ driver
+Date: Thu, 16 Feb 2017 21:02:32 +0530
+Message-ID: <CABb+yY0jCGqnrMLkkTNoEmLX4jDstWh7-UYhDyKjV-gFOnxpsg@mail.gmail.com>
+References: <1483499169-16329-1-git-send-email-hs.liao@mediatek.com>
+ <1483499169-16329-3-git-send-email-hs.liao@mediatek.com> <CABb+yY23TUB8NpmpiO=cCmVFAVJMqKPfGgX14j+_Yj7tJvMOuQ@mail.gmail.com>
+ <1485419833.990.1.camel@mtksdaap41> <CABb+yY13VaFpYz6EExvAXLpAqEWDJ4R50WG0DYbXO6iCESbA5A@mail.gmail.com>
+ <1486359476.11424.33.camel@mtksdaap41>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1487243251-964-4-git-send-email-long.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Long Cheng <long.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Vinod Koul <vinod.koul-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Russell King <linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Jiri Slaby <jslaby-IBi9RG/b67k@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-serial-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, srv_heupstream-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1486359476.11424.33.camel@mtksdaap41>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Horng-Shyang Liao <hs.liao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Daniel Kurtz <djkurtz@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>, Devicetree List <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, Sascha Hauer <kernel@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Boichat <drinkcat@chromium.org>, CK HU <ck.hu@mediatek.com>, cawa cheng <cawa.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>, YT Shen <yt.shen@mediatek.com>, Daoyuan Huang <daoyuan.huang@mediatek.com>, Damon Chu <damon.chu@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-On Thursday, February 16, 2017 7:07:30 PM CET Long Cheng wrote:
-> Modify uart register to support DMA function.
-> 
-> Signed-off-by: Long Cheng <long.cheng-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>
-> ---
->  drivers/tty/serial/8250/8250_mtk.c |  194 +++++++++++++++++++++++++++++++++++-
->  1 file changed, 193 insertions(+), 1 deletion(-)
-> 
-
-This code looks a lot like the one in 8250_omap.c and 8250_dma.c.
-Could it be made more generic so we can share more of the implementation?
-
-	Arnd
---
-To unsubscribe from this list: send the line "unsubscribe devicetree" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
+On Mon, Feb 6, 2017 at 11:07 AM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+> Hi Jassi,
+>
+> On Wed, 2017-02-01 at 10:52 +0530, Jassi Brar wrote:
+>> On Thu, Jan 26, 2017 at 2:07 PM, Horng-Shyang Liao <hs.liao@mediatek.com> wrote:
+>> > Hi Jassi,
+>> >
+>> > On Thu, 2017-01-26 at 10:08 +0530, Jassi Brar wrote:
+>> >> On Wed, Jan 4, 2017 at 8:36 AM, HS Liao <hs.liao@mediatek.com> wrote:
+>> >>
+>> >> > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+>> >> > new file mode 100644
+>> >> > index 0000000..747bcd3
+>> >> > --- /dev/null
+>> >> > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+>> >>
+>> >> ...
+>> >>
+>> >> > +static void cmdq_task_exec(struct cmdq_pkt *pkt, struct cmdq_thread *thread)
+>> >> > +{
+>> >> > +       struct cmdq *cmdq;
+>> >> > +       struct cmdq_task *task;
+>> >> > +       unsigned long curr_pa, end_pa;
+>> >> > +
+>> >> > +       cmdq = dev_get_drvdata(thread->chan->mbox->dev);
+>> >> > +
+>> >> > +       /* Client should not flush new tasks if suspended. */
+>> >> > +       WARN_ON(cmdq->suspended);
+>> >> > +
+>> >> > +       task = kzalloc(sizeof(*task), GFP_ATOMIC);
+>> >> > +       task->cmdq = cmdq;
+>> >> > +       INIT_LIST_HEAD(&task->list_entry);
+>> >> > +       task->pa_base = dma_map_single(cmdq->mbox.dev, pkt->va_base,
+>> >> > +                                      pkt->cmd_buf_size, DMA_TO_DEVICE);
+>> >> >
+>> >> You seem to parse the requests and responses, that should ideally be
+>> >> done in client driver.
+>> >> Also, we are here in atomic context, can you move it in client driver
+>> >> (before the spin_lock)?
+>> >> Maybe by adding a new 'pa_base' member as well in 'cmdq_pkt'.
+>> >
+>> > will do
+>
+> I agree with moving dma_map_single out from spin_lock.
+>
+> However, mailbox clients cannot map virtual memory to mailbox
+> controller's device for DMA.
+>
+If DMA is a resource used by MBox to transfer data, then yes the
+mapping needs to be done in the Mbox controller driver. To map memory
+outside of spinlock, you could schedule a tasklet in send_data() ?
