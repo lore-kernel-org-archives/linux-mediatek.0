@@ -1,69 +1,73 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 1/2] ASoC: mediatek: add power-domain
- get/put ctrl for mt2701
-Date: Thu, 16 Feb 2017 18:26:49 +0000
-Message-ID: <20170216182649.k6vj3rpvzgbquax5@sirena.org.uk>
-References: <1487222836-21174-1-git-send-email-garlic.tseng@mediatek.com>
- <1487222836-21174-2-git-send-email-garlic.tseng@mediatek.com>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============4594696179428460377=="
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <1487222836-21174-2-git-send-email-garlic.tseng@mediatek.com>
-List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: alsa-devel-bounces@alsa-project.org
-To: Garlic Tseng <garlic.tseng@mediatek.com>
-Cc: alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, tiwai@suse.de, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Applied "ASoC: mediatek: add power-domains for mt2701-afe-pcm.txt" to the asoc tree
+Date: Thu, 16 Feb 2017 19:04:51 +0000
+Message-ID: <E1ceRMJ-0007hQ-44@debutante>
+References: <1487222836-21174-3-git-send-email-garlic.tseng@mediatek.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1487222836-21174-3-git-send-email-garlic.tseng@mediatek.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
 List-Id: linux-mediatek@lists.infradead.org
 
+The patch
 
---===============4594696179428460377==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="4uhon5fj5av5susm"
-Content-Disposition: inline
+   ASoC: mediatek: add power-domains for mt2701-afe-pcm.txt
 
+has been applied to the asoc tree at
 
---4uhon5fj5av5susm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
 
-On Thu, Feb 16, 2017 at 01:27:15PM +0800, Garlic Tseng wrote:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
->  	pm_runtime_enable(&pdev->dev);
->  	if (!pm_runtime_enabled(&pdev->dev))
->  		goto err_pm_disable;
-> +	pm_runtime_get_sync(&pdev->dev);
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-You should really check for errors here.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
---4uhon5fj5av5susm
-Content-Type: application/pgp-signature; name="signature.asc"
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
+Mark
 
-iQEzBAABCAAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAlil7ugACgkQJNaLcl1U
-h9Auvgf8DP/0a3HINQuPRhOmPw6Qg6w3EuAY0C7UhkYDZ22QXhW3EzCfTI5LbOGv
-BRuDgmtVSDnLDnJfTbMeCewScIXHErJaNSZCboXmRakzkA+2JgbquJigPh8qMg4F
-5KY0ykAodCWRmLQu3qGiCta3wgpZg/0izc1cxyDRp8lOAFIySpplhxuy+FME8PyO
-7/fUxOGE5AobH8wA4pK78tW+os+ZG7fqry3pqQnEmaYQIWQ2A19wY0zLOMXqw9H3
-XKtgdK+0TAACWwsAaQZj04RtLi7/HqbFsQiz5aSij0r4iuqhBLDSHR3zxJq3hX6H
-4+DoqtgrXcQn+pcAmu0z6X6juaBCWg==
-=RCKs
------END PGP SIGNATURE-----
+>From ee9dc31962ac7141df6926b8696edf8831dde76c Mon Sep 17 00:00:00 2001
+From: Garlic Tseng <garlic.tseng@mediatek.com>
+Date: Thu, 16 Feb 2017 13:27:16 +0800
+Subject: [PATCH] ASoC: mediatek: add power-domains for mt2701-afe-pcm.txt
 
---4uhon5fj5av5susm--
+This add power-domains for mt2701-afe-pcm
 
---===============4594696179428460377==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
-
---===============4594696179428460377==--
+diff --git a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+index 3e623a724e55..9800a560e0c2 100644
+--- a/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
++++ b/Documentation/devicetree/bindings/sound/mt2701-afe-pcm.txt
+@@ -4,6 +4,7 @@ Required properties:
+ - compatible = "mediatek,mt2701-audio";
+ - reg: register location and size
+ - interrupts: Should contain AFE interrupt
++- power-domains: should define the power domain
+ - clock-names: should have these clock names:
+ 		"infra_sys_audio_clk",
+ 		"top_audio_mux1_sel",
+@@ -58,6 +59,7 @@ Example:
+ 		      <0 0x112A0000 0 0x20000>;
+ 		interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>,
+ 			     <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
++		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+ 		clocks = <&infracfg CLK_INFRA_AUDIO>,
+ 			 <&topckgen CLK_TOP_AUD_MUX1_SEL>,
+ 			 <&topckgen CLK_TOP_AUD_MUX2_SEL>,
+-- 
+2.11.0
