@@ -1,73 +1,58 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "ASoC: mediatek: add power-domain get/put ctrl for mt2701" to the asoc tree
-Date: Thu, 16 Feb 2017 19:04:54 +0000
-Message-ID: <E1ceRMM-0007iZ-43@debutante>
-References: <1487222836-21174-2-git-send-email-garlic.tseng@mediatek.com>
+From: <sean.wang@mediatek.com>
+Subject: [PATCH v3 0/4] leds: add leds-mt6323 support on MT7623 SoC
+Date: Fri, 17 Feb 2017 14:05:56 +0800
+Message-ID: <1487311560-26684-1-git-send-email-sean.wang@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1487222836-21174-2-git-send-email-garlic.tseng@mediatek.com>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>broonie@kernel.org, tiwai@suse.de, alsa-devel@alsa-project.org, ir.lian@mediatek.com, srv_heupstream@mediatek.com, garlic.tseng@mediatek.com, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.orgalsa-devel@alsa-project.org
+To: rpurdie@rpsys.net, jacek.anaszewski@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com, pavel@ucw.cz, robh+dt@kernel.org, mark.rutland@arm.com
+Cc: devicetree@vger.kernel.org, linux-leds@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, keyhaede@gmail.com, Sean Wang <sean.wang@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-The patch
+From: Sean Wang <sean.wang@mediatek.com>
 
-   ASoC: mediatek: add power-domain get/put ctrl for mt2701
+MT7623 SoC uses MT6323 PMIC as the default power supply
+which has LED function insides. The patchset introduces
+the LED support for MT6323 with on, off and hardware
+dimmed and blinked and it should work on other similar
+SoCs if also using MT6323.
 
-has been applied to the asoc tree at
+Changes since v1:
+- fixed typo in the comments
+- sorted include directives alphabetically
+- applied all register definitions with MT6323 prefix
+- removed the redundant structure declaration
+- fixed coding style defined in kernel doc format consistently
+- added error handling into all the occurrences where regmap APIs
+  are used
+- removed loudly debug message
+- made magic constant into meaningful macro
+- added missing mutex_destroy when module removed called
+- updated module license with GPL
+- fixed sparse warnings
 
-   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+Changes since v2:
+- fixed the typo in devicetree Documentation
+- cleaned up the style and explanation in the comments
+- applied all macro/struct/function definitions with MT6323 prefix
+- put the logic about the setup from device tree into the function for simplicity
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Sean Wang (4):
+  Documentation: devicetree: Add document bindings for leds-mt6323
+  Documentation: devicetree: Add LED subnode binding for MT6323 PMIC
+  leds: Add LED support for MT6323 PMIC
+  mfd: mt6397: Add MT6323 LED support into MT6397 driver
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+ .../devicetree/bindings/leds/leds-mt6323.txt       |  60 +++
+ Documentation/devicetree/bindings/mfd/mt6397.txt   |   4 +
+ drivers/leds/Kconfig                               |   8 +
+ drivers/leds/Makefile                              |   1 +
+ drivers/leds/leds-mt6323.c                         | 470 +++++++++++++++++++++
+ drivers/mfd/mt6397-core.c                          |   4 +
+ 6 files changed, 547 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6323.txt
+ create mode 100644 drivers/leds/leds-mt6323.c
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
->From cc3e1ce2c73c0e44373eb364f94e4fefebf7719e Mon Sep 17 00:00:00 2001
-From: Garlic Tseng <garlic.tseng@mediatek.com>
-Date: Thu, 16 Feb 2017 13:27:15 +0800
-Subject: [PATCH] ASoC: mediatek: add power-domain get/put ctrl for mt2701
-
-add power-domain ctrl for audio driver
-
-Signed-off-by: Garlic Tseng <garlic.tseng@mediatek.com>
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-index 34a6123480d3..c7fa3e663463 100644
---- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-+++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-@@ -1578,6 +1578,7 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
- 	pm_runtime_enable(&pdev->dev);
- 	if (!pm_runtime_enabled(&pdev->dev))
- 		goto err_pm_disable;
-+	pm_runtime_get_sync(&pdev->dev);
- 
- 	ret = snd_soc_register_platform(&pdev->dev, &mtk_afe_pcm_platform);
- 	if (ret) {
-@@ -1617,6 +1618,7 @@ static int mt2701_afe_pcm_dev_remove(struct platform_device *pdev)
- 	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		mt2701_afe_runtime_suspend(&pdev->dev);
-+	pm_runtime_put_sync(&pdev->dev);
- 
- 	snd_soc_unregister_component(&pdev->dev);
- 	snd_soc_unregister_platform(&pdev->dev);
 -- 
-2.11.0
+1.9.1
