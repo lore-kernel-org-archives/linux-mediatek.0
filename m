@@ -1,47 +1,39 @@
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] soc: mediatek: PMIC wrap: Fix error handling
-Date: Sun, 19 Feb 2017 14:12:49 +0100
-Message-ID: <20170219131249.12010-1-christophe.jaillet@wanadoo.fr>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: matthias.bgg@gmail.com, blogic@openwrt.org, arnd@arndb.de, henryc.chen@mediatek.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+From: Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 0/9]  improve performances on mediatek crypto driver
+Date: Mon, 20 Feb 2017 17:26:53 +0800
+Message-ID: <1487582822-30393-1-git-send-email-ryder.lee@mediatek.com>
+Mime-Version: 1.0
+Content-Type: text/plain
+Return-path: <linux-crypto-owner@vger.kernel.org>
+Sender: linux-crypto-owner@vger.kernel.org
+To: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>
 List-Id: linux-mediatek@lists.infradead.org
 
-According to error handling in this function, it is likely that going to
-'err_out2' was expected here.
+Hi all,
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+Some patches of this series improve the performances whereas others
+clean up code and refine data structure to make it more efficient.
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index a5f10936fb9c..285b434449a6 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1200,7 +1200,8 @@ static int pwrap_probe(struct platform_device *pdev)
- 
- 	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & PWRAP_STATE_INIT_DONE0)) {
- 		dev_dbg(wrp->dev, "initialization isn't finished\n");
--		return -ENODEV;
-+		ret = -ENODEV;
-+		goto err_out2;
- 	}
- 
- 	/* Initialize watchdog, may not be done by the bootloader */
-@@ -1220,8 +1221,10 @@ static int pwrap_probe(struct platform_device *pdev)
- 		goto err_out2;
- 
- 	wrp->regmap = devm_regmap_init(wrp->dev, NULL, wrp, &pwrap_regmap_config);
--	if (IS_ERR(wrp->regmap))
--		return PTR_ERR(wrp->regmap);
-+	if (IS_ERR(wrp->regmap)) {
-+		ret = PTR_ERR(wrp->regmap);
-+		goto err_out2;
-+	}
- 
- 	ret = of_platform_populate(np, NULL, NULL, wrp->dev);
- 	if (ret) {
+It also adds support to AES-OFB and AES-CFB128. The new mode has been
+tested by using the tcrypt
+
+Ryder Lee (9):
+  crypto: mediatek - rework interrupt handler
+  crypto: mediatek - add MTK_* prefix and correct annotations.
+  crypto: mediatek - make mtk_sha_xmit() more generic
+  crypto: mediatek - simplify descriptor ring management
+  crypto: mediatek - add queue_task tasklet
+  crypto: mediatek - fix error handling in mtk_aes_complete()
+  crypto: mediatek - add mtk_aes_gcm_tag_verify()
+  crypto: mediatek - make hardware operation flow more efficient
+  crypto: mediatek - add support to OFB mode and CFB128 mode
+
+ drivers/crypto/mediatek/mtk-aes.c      | 503 +++++++++++++++++++--------------
+ drivers/crypto/mediatek/mtk-platform.c |  15 +-
+ drivers/crypto/mediatek/mtk-platform.h |  56 ++--
+ drivers/crypto/mediatek/mtk-sha.c      | 309 ++++++++------------
+ 4 files changed, 446 insertions(+), 437 deletions(-)
+
 -- 
-2.9.3
+1.9.1
