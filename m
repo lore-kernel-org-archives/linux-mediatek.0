@@ -1,11 +1,14 @@
-From: Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH] ASoC: mediatek: add I2C dependency for CS42XX8
-Date: Tue, 21 Feb 2017 23:00:46 +0100
-Message-ID: <20170221220108.200734-1-arnd@arndb.de>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "ASoC: mediatek: add I2C dependency for
+	CS42XX8" to the asoc tree
+Date: Tue, 21 Feb 2017 15:05:10 -0800
+Message-ID: <E1cgJUc-0004l6-Gv@finisterre>
+References: <20170221220108.200734-1-arnd@arndb.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <alsa-devel-bounces@alsa-project.org>
+In-Reply-To: <20170221220108.200734-1-arnd@arndb.de>
 List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
 List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
@@ -15,9 +18,41 @@ List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
  <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
 Errors-To: alsa-devel-bounces@alsa-project.org
 Sender: alsa-devel-bounces@alsa-project.org
-To: Mark Brown <broonie@kernel.org>
-Cc: Koro Chen <koro.chen@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Garlic Tseng <garlic.tseng@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org
+To: Arnd Bergmann <arnd@arndb.de>
+Cc: Koro Chen <koro.chen@mediatek.com>, alsa-devel@alsa-project.org, Garlic Tseng <garlic.tseng@mediatek.com>, linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
+
+The patch
+
+   ASoC: mediatek: add I2C dependency for CS42XX8
+
+has been applied to the asoc tree at
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git 
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+>From 72cedf599fcebfd6cd2550274d7855838068d28c Mon Sep 17 00:00:00 2001
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Tue, 21 Feb 2017 23:00:46 +0100
+Subject: [PATCH] ASoC: mediatek: add I2C dependency for CS42XX8
 
 We should not select drivers that depend on I2C when that is disabled,
 as it results in a build error:
@@ -29,6 +64,7 @@ sound/soc/codecs/cs42xx8-i2c.c:60:1: error: type defaults to 'int' in declaratio
 
 Fixes: 1f458d53f76c ("ASoC: mediatek: Add mt2701-cs42448 driver and config option.")
 Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
  sound/soc/mediatek/Kconfig | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -47,4 +83,4 @@ index 05cf809cf9e1..d7013bde6f45 100644
  	select SND_SOC_BT_SCO
  	help
 -- 
-2.9.0
+2.11.0
