@@ -1,29 +1,50 @@
-From: David Miller <davem@davemloft.net>
-Subject: Re: [PATCH net-next v2] macsec: fix validation failed in
- asynchronous operation.
-Date: Tue, 21 Feb 2017 13:14:11 -0500 (EST)
-Message-ID: <20170221.131411.2277956930369431131.davem@davemloft.net>
-References: <1487670045-54641-1-git-send-email-ryder.lee@mediatek.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] ASoC: mediatek: add I2C dependency for CS42XX8
+Date: Tue, 21 Feb 2017 23:00:46 +0100
+Message-ID: <20170221220108.200734-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: Text/Plain; charset=us-ascii
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <1487670045-54641-1-git-send-email-ryder.lee@mediatek.com>
-Sender: netdev-owner@vger.kernel.org
-To: ryder.lee@mediatek.com
-Cc: sd@queasysnail.net, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <http://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <http://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: alsa-devel-bounces@alsa-project.org
+To: Mark Brown <broonie@kernel.org>
+Cc: Koro Chen <koro.chen@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, Garlic Tseng <garlic.tseng@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, PC Liao <pc.liao@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-mediatek@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
-Date: Tue, 21 Feb 2017 17:40:45 +0800
+We should not select drivers that depend on I2C when that is disabled,
+as it results in a build error:
 
-> MACSec test failed when asynchronous crypto operations is used. It
-> encounters packet validation failed since macsec_skb_cb(skb)->valid
-> is always 'false'.
-> 
-> This patch adds missing "macsec_skb_cb(skb)->valid = true" in
-> macsec_decrypt_done() when "err == 0".
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+warning: (SND_SOC_MT2701_CS42448) selects SND_SOC_CS42XX8_I2C which has unmet direct dependencies (SOUND && !M68K && !UML && SND && SND_SOC && I2C)
+sound/soc/codecs/cs42xx8-i2c.c:60:1: warning: data definition has no type or storage class
+ module_i2c_driver(cs42xx8_i2c_driver);
+sound/soc/codecs/cs42xx8-i2c.c:60:1: error: type defaults to 'int' in declaration of 'module_i2c_driver' [-Werror=implicit-int]
 
-Applied, thanks.
+Fixes: 1f458d53f76c ("ASoC: mediatek: Add mt2701-cs42448 driver and config option.")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ sound/soc/mediatek/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 05cf809cf9e1..d7013bde6f45 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -13,7 +13,7 @@ config SND_SOC_MT2701
+ 
+ config SND_SOC_MT2701_CS42448
+ 	tristate "ASoc Audio driver for MT2701 with CS42448 codec"
+-	depends on SND_SOC_MT2701
++	depends on SND_SOC_MT2701 && I2C
+ 	select SND_SOC_CS42XX8_I2C
+ 	select SND_SOC_BT_SCO
+ 	help
+-- 
+2.9.0
